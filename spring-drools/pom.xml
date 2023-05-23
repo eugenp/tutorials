@@ -39,7 +39,7 @@
         <dependency>
             <groupId>org.kie</groupId>
             <artifactId>kie-spring</artifactId>
-            <version>${drools-version}</version>
+            <version>${kie-spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -75,7 +75,8 @@
     </dependencies>
 
     <properties>
-        <drools-version>7.0.0.Final</drools-version>
+        <drools-version>8.34.0.Final</drools-version>
+        <kie-spring.version>7.73.0.Final</kie-spring.version>
     </properties>
 
 </project>

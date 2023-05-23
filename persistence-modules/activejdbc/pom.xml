@@ -74,9 +74,9 @@
     </build>
 
     <properties>
-        <activejdbc.version>2.0</activejdbc.version>
+        <activejdbc.version>3.4-j11</activejdbc.version>
         <environments>development.test,development</environments>
-        <mysql.connector.version>5.1.34</mysql.connector.version>
+        <mysql.connector.version>8.0.32</mysql.connector.version>
     </properties>
 
 </project>

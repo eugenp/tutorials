@@ -1,0 +1,1 @@
+- [Difference Between parallelStream() and stream().parallel() in Java](https://www.baeldung.com/java-parallelstream-vs-stream-parallel)

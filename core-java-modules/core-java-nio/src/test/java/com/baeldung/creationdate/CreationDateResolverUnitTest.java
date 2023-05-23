@@ -21,9 +21,11 @@ public class CreationDateResolverUnitTest {
 
         final Instant response = creationDateResolver.resolveCreationTimeWithBasicAttributes(path);
 
-        assertTrue(Instant
-          .now()
-          .isAfter(response));
+        Optional.of(response).ifPresent((value) -> {
+            assertTrue(Instant
+              .now()
+              .isAfter(value));
+        });
 
     }
 

@@ -10,7 +10,7 @@ import java.time.format.DateTimeFormatter;
 
 public class RecordFieldSetMapper implements FieldSetMapper<Transaction> {
 
-    public Transaction mapFieldSet(FieldSet fieldSet) throws BindException {
+    public Transaction mapFieldSet(FieldSet fieldSet) {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyy");
 

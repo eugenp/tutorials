@@ -18,14 +18,14 @@ class MockitoMisusingMockOrSpyUnitTest {
         List<String> list = new ArrayList<String>();
 
         assertThatThrownBy(() -> doReturn(100).when(list).size())
-            .isInstanceOf(NotAMockException.class)
-            .hasMessageContaining("Argument passed to when() is not a mock!");
+          .isInstanceOf(NotAMockException.class)
+          .hasMessageContaining("Argument passed to when() is not a mock!");
     }
-    
+
     @Test
     void givenASpy_whenDoReturn_thenNoError() {
         final List<String> spyList = spy(new ArrayList<>());
-        
+
         assertThatNoException().isThrownBy(() -> doReturn(100).when(spyList).size());
     }
 }

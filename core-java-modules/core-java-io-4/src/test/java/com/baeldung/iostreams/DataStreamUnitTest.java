@@ -23,32 +23,29 @@ public class DataStreamUnitTest {
 
     @Test
     public void whenUsingByteStream_thenWriteTextToFile() throws IOException {
-        DataStream dataStream = new DataStream();
-        dataStream.textDataProcessingByteStream(dataProcessingTextFile, textFileContent);
+        DataStream.textDataProcessingByteStream(dataProcessingTextFile, textFileContent);
 
         File file = new File(dataProcessingTextFile);
         assertTrue(file.exists());
         assertEquals(textFileContent, FileUtils.readFileToString(file, "utf-8"));
 
-        Files.delete(Paths.get(dataProcessingTextFile));
+        Files.deleteIfExists(Paths.get(dataProcessingTextFile));
     }
 
     @Test
     public void whenUsingCharStream_thenWriteTextToFile() throws IOException {
-        DataStream dataStream = new DataStream();
-        dataStream.textDataProcessingCharStream(dataProcessingTextFile, textFileContent);
+        DataStream.textDataProcessingCharStream(dataProcessingTextFile, textFileContent);
 
         File file = new File(dataProcessingTextFile);
         assertTrue(file.exists());
         assertEquals(textFileContent, FileUtils.readFileToString(file, "utf-8"));
 
-        Files.delete(Paths.get(dataProcessingTextFile));
+        Files.deleteIfExists(Paths.get(dataProcessingTextFile));
     }
 
     @Test
     public void whenUsingStreams_thenWriteNonTextData() throws IOException {
-        DataStream dataStream = new DataStream();
-        dataStream.nonTextDataProcessing(dataProcessingImageFile, dataProcessingByteStreamFile, dataProcessingCharStreamFile);
+        DataStream.nonTextDataProcessing(dataProcessingImageFile, dataProcessingByteStreamFile, dataProcessingCharStreamFile);
 
         File file = new File(dataProcessingImageFile);
         File byteStreamOutputFile = new File(dataProcessingByteStreamFile);
@@ -60,7 +57,7 @@ public class DataStreamUnitTest {
         assertTrue(FileUtils.contentEquals(file, byteStreamOutputFile));
         assertFalse(FileUtils.contentEquals(file, charStreamOutputFile));
 
-        Files.delete(Paths.get(dataProcessingByteStreamFile));
-        Files.delete(Paths.get(dataProcessingCharStreamFile));
+        Files.deleteIfExists(Paths.get(dataProcessingByteStreamFile));
+        Files.deleteIfExists(Paths.get(dataProcessingCharStreamFile));
     }
 }
