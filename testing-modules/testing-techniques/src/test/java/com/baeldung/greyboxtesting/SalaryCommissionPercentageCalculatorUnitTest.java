@@ -1,6 +1,5 @@
 package com.baeldung.greyboxtesting;
 
-import greyboxtesting.SalaryCommissionPercentageCalculator;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -8,11 +7,11 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.math.BigDecimal;
 import java.util.stream.Stream;
 
-import static greyboxtesting.SalaryCommissionPercentageCalculator.*;
-import static greyboxtesting.SalaryCommissionPercentageCalculator.Level.*;
-import static greyboxtesting.SalaryCommissionPercentageCalculator.SalesImpact.*;
-import static greyboxtesting.SalaryCommissionPercentageCalculator.Seniority.*;
-import static greyboxtesting.SalaryCommissionPercentageCalculator.Type.*;
+import static com.baeldung.greyboxtesting.SalaryCommissionPercentageCalculator.*;
+import static com.baeldung.greyboxtesting.SalaryCommissionPercentageCalculator.Level.*;
+import static com.baeldung.greyboxtesting.SalaryCommissionPercentageCalculator.SalesImpact.*;
+import static com.baeldung.greyboxtesting.SalaryCommissionPercentageCalculator.Seniority.*;
+import static com.baeldung.greyboxtesting.SalaryCommissionPercentageCalculator.Type.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SalaryCommissionPercentageCalculatorUnitTest {
