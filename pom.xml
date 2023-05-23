@@ -473,7 +473,7 @@
 
                 <module>image-processing</module>
 
-                <module>jenkins-modules</module>
+                <!--<module>jenkins-modules</module>-->
                 <module>jhipster-modules</module>
             </modules>
         </profile>
@@ -633,7 +633,7 @@
 
                 <module>image-processing</module>
 
-                <module>jenkins-modules</module>
+                <!--<module>jenkins-modules</module>-->
                 <module>jhipster-modules</module>
             </modules>
 
@@ -926,6 +926,7 @@
                 <module>vaadin</module>
                 <module>libraries-3</module>
                 <module>web-modules</module>
+                <module>jenkins-modules</module>
                 <module>xml</module>
                 <module>xml-2</module>
             </modules>
@@ -1187,6 +1188,7 @@
                 <module>vaadin</module>
                 <module>libraries-3</module>
                 <module>web-modules</module>
+                <module>jenkins-modules</module>
                 <module>xml</module>
                 <module>xml-2</module>
             </modules>
