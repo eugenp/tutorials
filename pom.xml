@@ -425,7 +425,6 @@
                 <module>spring-static-resources</module>
                 <module>spring-swagger-codegen</module>
                 <module>spring-web-modules</module>
-                <module>testing-modules</module>
                 <module>video-tutorials</module>
             </modules>
 
@@ -593,7 +592,6 @@
                 <module>spring-static-resources</module>
                 <module>spring-swagger-codegen</module>
                 <module>spring-web-modules</module>
-                <module>testing-modules</module>
                 <module>video-tutorials</module>
             </modules>
 
@@ -791,7 +789,7 @@
                 <module>quarkus-modules</module>
                 <module>spring-reactive-modules</module>
                 <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
-                <module>testing-modules/testing-assertions</module>
+                <module>testing-modules</module>
                 <module>testing-modules/mockito-simple</module>
 
                 <module>rule-engines-modules</module>
@@ -1052,7 +1050,7 @@
                 <module>quarkus-modules</module>
                 <module>spring-reactive-modules</module>
                 <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
-                <module>testing-modules/testing-assertions</module>
+                <module>testing-modules</module>
                 <module>testing-modules/mockito-simple</module>
 
                 <module>rule-engines-modules</module>
