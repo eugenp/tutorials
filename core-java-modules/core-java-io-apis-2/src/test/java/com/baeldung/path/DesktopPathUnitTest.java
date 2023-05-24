@@ -1,12 +1,10 @@
 package com.baeldung.path;
 
-import org.junit.jupiter.api.Test;
-
 import java.io.File;
 
-import static org.junit.Assert.assertEquals;
-
 import javax.swing.filechooser.FileSystemView;
+
+import org.junit.jupiter.api.Test;
 
 public class DesktopPathUnitTest {
     // Adapt DESKTOP_PATH variable to your own system path
