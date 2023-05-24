@@ -473,7 +473,6 @@
 
                 <module>image-processing</module>
 
-                <!--<module>jenkins-modules</module>-->
                 <module>jhipster-modules</module>
             </modules>
         </profile>
@@ -633,7 +632,6 @@
 
                 <module>image-processing</module>
 
-                <!--<module>jenkins-modules</module>-->
                 <module>jhipster-modules</module>
             </modules>
 
