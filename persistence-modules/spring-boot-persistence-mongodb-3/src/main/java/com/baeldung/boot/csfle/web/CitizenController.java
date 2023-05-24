@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.baeldung.boot.csfle.data.Citizen;
-import com.baeldung.boot.csfle.data.EncryptedCitizen;
 import com.baeldung.boot.csfle.service.CitizenService;
 
 @RestController
@@ -32,7 +31,7 @@ public class CitizenController {
     }
 
     @PostMapping
-    public EncryptedCitizen post(@RequestBody Citizen citizen) {
+    public Object post(@RequestBody Citizen citizen) {
         return service.save(citizen);
     }
 }

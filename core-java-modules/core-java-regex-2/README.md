@@ -5,4 +5,6 @@
 - [Converting Camel Case and Title Case to Words in Java](https://www.baeldung.com/java-camel-case-title-case-to-words)
 - [How to Use Regular Expressions to Replace Tokens in Strings in Java](https://www.baeldung.com/java-regex-token-replacement)
 - [Creating a Java Array from Regular Expression Matches](https://www.baeldung.com/java-array-regex-matches)
+- [Getting the Text That Follows After the Regex Match in Java](https://www.baeldung.com/java-regex-text-after-match)
+- [Regular Expression: \z vs \Z Anchors in Java](https://www.baeldung.com/java-regular-expression-z-vs-z-anchors)
 - More articles: [[<-- prev]](/core-java-modules/core-java-regex)

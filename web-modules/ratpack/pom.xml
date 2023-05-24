@@ -86,7 +86,7 @@
     </dependencies>
 
     <properties>
-        <ratpack.version>1.5.4</ratpack.version>
+        <ratpack.version>1.9.0</ratpack.version>
         <httpclient.version>4.5.3</httpclient.version>
         <httpcore.version>4.4.6</httpcore.version>
         <hystrix.version>1.5.12</hystrix.version>

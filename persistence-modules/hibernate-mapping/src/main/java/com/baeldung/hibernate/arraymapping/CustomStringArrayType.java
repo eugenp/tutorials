@@ -8,58 +8,56 @@ import java.sql.SQLException;
 import java.sql.Types;
 import java.util.Arrays;
 
-import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.hibernate.usertype.UserType;
 
-public class CustomStringArrayType implements UserType {
+public class CustomStringArrayType implements UserType<String[]> {
 
     @Override
-    public int[] sqlTypes() {
-        return new int[]{Types.ARRAY};
+    public int getSqlType() {
+        return Types.ARRAY;
     }
 
     @Override
-    public Class returnedClass() {
+    public Class<String[]> returnedClass() {
         return String[].class;
     }
 
     @Override
-    public boolean equals(Object x, Object y) throws HibernateException {
+    public boolean equals(String[] x, String[] y) {
         if (x instanceof String[] && y instanceof String[]) {
-            return Arrays.deepEquals((String[])x, (String[])y);
+            return Arrays.deepEquals(x, y);
         } else {
             return false;
         }
     }
 
     @Override
-    public int hashCode(Object x) throws HibernateException {
-        return Arrays.hashCode((String[])x);
+    public int hashCode(String[] x) {
+        return Arrays.hashCode(x);
     }
 
     @Override
-    public Object nullSafeGet(ResultSet rs, String[] names, SharedSessionContractImplementor session, Object owner)
-      throws HibernateException, SQLException {
-        Array array = rs.getArray(names[0]);
-        return array != null ? array.getArray() : null;
+    public String[] nullSafeGet(ResultSet rs, int position, SharedSessionContractImplementor session, Object owner) throws SQLException {
+        Array array = rs.getArray(position);
+        return array != null ? (String[]) array.getArray() : null;
     }
 
     @Override
-    public void nullSafeSet(PreparedStatement st, Object value, int index, SharedSessionContractImplementor session)
-      throws HibernateException, SQLException {
-        if (value != null && st != null) {
-            Array array = session.connection().createArrayOf("text", (String[])value);
-            st.setArray(index, array);
-        } else {
-            st.setNull(index, sqlTypes()[0]);
+    public void nullSafeSet(PreparedStatement st, String[] value, int index, SharedSessionContractImplementor session) throws SQLException {
+        if (st != null) {
+            if (value != null) {
+                Array array = session.getJdbcConnectionAccess().obtainConnection().createArrayOf("text", value);
+                st.setArray(index, array);
+            } else {
+                st.setNull(index, Types.ARRAY);
+            }
         }
     }
 
     @Override
-    public Object deepCopy(Object value) throws HibernateException {
-        String[] a = (String[])value;
-        return Arrays.copyOf(a, a.length);
+    public String[] deepCopy(String[] value) {
+        return value != null ? Arrays.copyOf(value, value.length) : null;
     }
 
     @Override
@@ -68,18 +66,18 @@ public class CustomStringArrayType implements UserType {
     }
 
     @Override
-    public Serializable disassemble(Object value) throws HibernateException {
-        return (Serializable) value;
+    public Serializable disassemble(String[] value) {
+        return value;
     }
 
     @Override
-    public Object assemble(Serializable cached, Object owner) throws HibernateException {
-        return cached;
+    public String[] assemble(Serializable cached, Object owner) {
+        return (String[]) cached;
     }
 
     @Override
-    public Object replace(Object original, Object target, Object owner) throws HibernateException {
-        return original;
+    public String[] replace(String[] detached, String[] managed, Object owner) {
+        return detached;
     }
 
 }
