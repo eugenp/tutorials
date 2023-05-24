@@ -83,7 +83,8 @@
                         </extensions>
                     </synchronization>
                     <args>-Xmx2048m -XX:PermSize=256m -Dtomee.serialization.class.blacklist=-
-                        -Dtomee.serialization.class.whitelist=*</args>
+                        -Dtomee.serialization.class.whitelist=*
+                    </args>
                     <removeDefaultWebapps>true</removeDefaultWebapps>
                 </configuration>
             </plugin>

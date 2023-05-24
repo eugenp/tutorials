@@ -10,5 +10,16 @@ public class Credentials {
         this.password = password;
         this.key = key;
     }
-}
 
+    public String getName() {
+        return name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getKey() {
+        return key;
+    }
+}

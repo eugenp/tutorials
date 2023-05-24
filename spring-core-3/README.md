@@ -10,4 +10,5 @@ This module contains articles about core Spring functionality
 - [Design Patterns in the Spring Framework](https://www.baeldung.com/spring-framework-design-patterns)
 - [Difference Between BeanFactory and ApplicationContext](https://www.baeldung.com/spring-beanfactory-vs-applicationcontext)
 - [Custom Scope in Spring](http://www.baeldung.com/spring-custom-scope)
+- [The Spring ApplicationContext](https://www.baeldung.com/spring-application-context)
 - More articles: [[<-- prev]](/spring-core-2) [[next -->]](/spring-core-4)

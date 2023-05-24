@@ -1,10 +1,13 @@
 package com.baeldung.hibernate.creationupdatetimestamp;
 
+import static org.hibernate.FlushMode.MANUAL;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.text.SimpleDateFormat;
 import java.time.Instant;
+import java.util.Date;
 
 import org.h2.Driver;
 import org.hibernate.Session;
@@ -71,22 +74,26 @@ class HibernateCreationUpdateTimestampIntegrationTest {
     }
 
     @Test
-    void whenCreatingEntity_ThenCreatedOnAndLastUpdatedOnAreNotEqual() {
+    void whenCreatingEntity_ThenCreatedOnAndLastUpdatedOnAreEqual() {
         session = sessionFactory.openSession();
         session.beginTransaction();
         Book book = new Book();
 
         session.save(book);
-        session.getTransaction()
-          .commit();
+        session.getTransaction().commit();
         session.close();
 
-        assertNotEquals(book.getCreatedOn(), book.getLastUpdatedOn());
+        Date createdOn = Date.from(book.getCreatedOn());
+        Date lastUpdatedOn = Date.from(book.getLastUpdatedOn());
+        SimpleDateFormat formatter = new SimpleDateFormat("dd MM yyyy HH:mm:ss");
+
+        assertEquals(formatter.format(createdOn), formatter.format(lastUpdatedOn));
     }
 
     @Test
     void whenUpdatingEntity_ThenLastUpdatedOnIsUpdatedAndCreatedOnStaysTheSame() {
         session = sessionFactory.openSession();
+        session.setHibernateFlushMode(MANUAL);
         session.beginTransaction();
         Book book = new Book();
         session.save(book);
@@ -96,8 +103,9 @@ class HibernateCreationUpdateTimestampIntegrationTest {
 
         String newName = "newName";
         book.setTitle(newName);
-        session.getTransaction()
-          .commit();
+        session.save(book);
+        session.flush();
+        session.getTransaction().commit();
         session.close();
         Instant createdOnAfterUpdate = book.getCreatedOn();
         Instant lastUpdatedOnAfterUpdate = book.getLastUpdatedOn();
