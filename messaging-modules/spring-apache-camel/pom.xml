@@ -85,7 +85,7 @@
         <camel.version>3.15.0</camel.version>
     </properties>
 
-   <profiles>
+    <profiles>
         <profile>
             <id>spring-boot</id>
             <build>

@@ -1,7 +1,7 @@
 package com.baeldung.jpa.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 @Entity(name = "MyArticle")
 @Table(name = Article.TABLE_NAME)

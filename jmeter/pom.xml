@@ -50,13 +50,13 @@
                 <artifactId>jmeter-maven-plugin</artifactId>
                 <version>${jmeter-maven-plugin.version}</version>
                 <executions>
-                 <!-- Generate JMeter configuration -->
-                            <execution>
-                                <id>configuration</id>
-                                <goals>
-                                    <goal>configure</goal>
-                                </goals>
-                            </execution>
+                    <!-- Generate JMeter configuration -->
+                    <execution>
+                        <id>configuration</id>
+                        <goals>
+                            <goal>configure</goal>
+                        </goals>
+                    </execution>
                     <execution>
                         <id>jmeter-tests</id>
                         <goals>
@@ -72,10 +72,6 @@
         </plugins>
     </build>
 
-    <properties>
-        <jmeter-maven-plugin.version>3.7.0</jmeter-maven-plugin.version>
-    </properties>
-    
     <profiles>
         <profile>
             <id>dashboard</id>
@@ -166,5 +162,9 @@
             </properties>
         </profile>
     </profiles>
+
+    <properties>
+        <jmeter-maven-plugin.version>3.7.0</jmeter-maven-plugin.version>
+    </properties>
 
 </project>

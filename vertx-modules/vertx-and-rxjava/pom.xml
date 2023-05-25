@@ -36,17 +36,12 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                </configuration>
             </plugin>
         </plugins>
     </build>
 
     <properties>
-        <vertx.version>3.5.0.Beta1</vertx.version>
+        <vertx.version>3.9.15</vertx.version>
     </properties>
 
 </project>

@@ -148,7 +148,7 @@
         <start-class>com.baeldung.boot.Application</start-class>
         <git-commit-id-plugin.version>2.2.4</git-commit-id-plugin.version>
         <spock.version>2.4-M1-groovy-4.0</spock.version>
-        <gmavenplus-plugin.version>2.0.0</gmavenplus-plugin.version>
+        <gmavenplus-plugin.version>2.1.0</gmavenplus-plugin.version>
         <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
         <redis.version>0.7.2</redis.version>
         <spring-boot.version>2.5.0</spring-boot.version>
