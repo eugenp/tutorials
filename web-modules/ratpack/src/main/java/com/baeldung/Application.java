@@ -8,6 +8,8 @@ import com.baeldung.repository.EmployeeRepository;
 import com.baeldung.repository.EmployeeRepositoryImpl;
 import com.zaxxer.hikari.HikariConfig;
 import io.netty.buffer.PooledByteBufAllocator;
+import ratpack.exec.ExecController;
+import ratpack.exec.internal.DefaultExecController;
 import ratpack.func.Action;
 import ratpack.func.Function;
 import ratpack.guice.BindingsSpec;
@@ -36,13 +38,14 @@ public class Application {
         };
 
         final Action<BindingsSpec> bindingsSpecAction = bindings -> bindings.module(HikariModule.class, hikariConfigAction);
+        ExecController execController = new DefaultExecController(2);
         final HttpClient httpClient = HttpClient.of(httpClientSpec -> {
             httpClientSpec.poolSize(10)
                 .connectTimeout(Duration.of(60, ChronoUnit.SECONDS))
                 .maxContentLength(ServerConfig.DEFAULT_MAX_CONTENT_LENGTH)
                 .responseMaxChunkSize(16384)
                 .readTimeout(Duration.of(60, ChronoUnit.SECONDS))
-                .byteBufAllocator(PooledByteBufAllocator.DEFAULT);
+                .byteBufAllocator(PooledByteBufAllocator.DEFAULT).execController(execController);
         });
         final Function<Registry, Registry> registryFunction = Guice.registry(bindingsSpecAction);
 
