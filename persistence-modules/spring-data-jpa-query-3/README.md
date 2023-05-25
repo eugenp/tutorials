@@ -8,6 +8,7 @@ This module contains articles about querying data using Spring Data JPA.
 - [Joining Tables With Spring Data JPA Specifications](https://www.baeldung.com/spring-jpa-joining-tables)
 - [NonUniqueResultException in Spring Data JPA](https://www.baeldung.com/spring-jpa-non-unique-result-exception)
 - [Spring Data Repositories – Collections vs. Stream](https://www.baeldung.com/spring-data-collections-vs-stream)
+- [Converting List to Page Using Spring Data JPA](https://www.baeldung.com/spring-data-jpa-convert-list-page)
 - More articles: [[<-- prev]](../spring-data-jpa-query-2)
 
 ### Eclipse Config 
