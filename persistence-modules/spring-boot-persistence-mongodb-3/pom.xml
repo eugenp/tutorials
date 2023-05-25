@@ -48,10 +48,10 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <dependency> 
-            <groupId>org.mongodb</groupId> 
-            <artifactId>mongodb-crypt</artifactId> 
-            <version>${mongodb-crypt.version}</version> 
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongodb-crypt</artifactId>
+            <version>${mongodb-crypt.version}</version>
         </dependency>
         <dependency>
             <groupId>de.flapdoodle.embed</groupId>
@@ -64,5 +64,5 @@
         <mongodb-crypt.version>1.7.3</mongodb-crypt.version>
         <mongodb-driver.version>4.9.1</mongodb-driver.version>
     </properties>
-    
+
 </project>
