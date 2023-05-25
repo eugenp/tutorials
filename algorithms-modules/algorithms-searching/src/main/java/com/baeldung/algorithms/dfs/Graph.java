@@ -23,7 +23,7 @@ public class Graph {
         adjVertices.get(src).add(dest);
     }
 
-    public void dfsWithoutRecursion(int start) {
+    public boolean[] dfsWithoutRecursion(int start) {
         Stack<Integer> stack = new Stack<Integer>();
         boolean[] isVisited = new boolean[adjVertices.size()];
         stack.push(start);
@@ -38,20 +38,22 @@ public class Graph {
                 }
             }
         }
+        return isVisited;
     }
 
-    public void dfs(int start) {
+    public boolean[] dfs(int start) {
         boolean[] isVisited = new boolean[adjVertices.size()];
-        dfsRecursive(start, isVisited);
+        return dfsRecursive(start, isVisited);
     }
 
-    private void dfsRecursive(int current, boolean[] isVisited) {
+    private boolean[] dfsRecursive(int current, boolean[] isVisited) {
         isVisited[current] = true;
         visit(current);
         for (int dest : adjVertices.get(current)) {
             if (!isVisited[dest])
                 dfsRecursive(dest, isVisited);
         }
+        return isVisited;
     }
 
     public List<Integer> topologicalSort(int start) {
