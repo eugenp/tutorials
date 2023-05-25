@@ -1,14 +1,35 @@
 spring:
-  datasource:
-    url: jdbc:mysql://localhost:3306/test?useLegacyDatetimeCode=false
-    username: root
-    password:
-
+  profiles:
+    active: "dev2"
+  main:
+    banner-mode: "off"
   jpa:
     hibernate:
       ddl-auto: update
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQL5Dialect
+        dialect: org.hibernate.dialect.MySQL8Dialect
         jdbc:
           time_zone: UTC
+---
+
+spring:
+  profiles: "dev1"
+  datasource:
+    url: jdbc:mysql://localhost:3306/test?
+    username: root
+    password:
+
+---
+
+spring:
+  profiles: "dev2"
+  datasource:
+    url: >-
+         jdbc:mysql://localhost:3306/test_db?sslMode=VERIFY_CA&
+         trustCertificateKeyStoreUrl=file:/Users/saikatchakraborty/tutorials/persistence-modules/spring-boot-mysql/mysql-server/certs/truststore.jks&
+         trustCertificateKeyStorePassword=mypassword&
+         clientCertificateKeyStoreUrl=file:/Users/saikatchakraborty/tutorials/persistence-modules/spring-boot-mysql/mysql-server/certs/client-cert.jks&
+         clientCertificateKeyStorePassword=mypassword
+    username: test_user
+    password: Password2022

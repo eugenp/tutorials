@@ -26,4 +26,5 @@ public class SpringOraclePoolingApplicationOracleUCPLiveTest {
         assertTrue(dataSource instanceof oracle.ucp.jdbc.UCPDataSource);
     }
 
+    
 }

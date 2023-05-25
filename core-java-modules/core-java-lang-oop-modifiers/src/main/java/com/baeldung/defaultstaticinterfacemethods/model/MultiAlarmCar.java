@@ -32,4 +32,9 @@ public class MultiAlarmCar implements Vehicle, Alarm {
     public String turnAlarmOff() {
         return Vehicle.super.turnAlarmOff() + " " + Alarm.super.turnAlarmOff();
     }
+
+    @Override
+    public double getSpeed() {
+        return 0;
+    }
 }

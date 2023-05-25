@@ -10,6 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpHeaders;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.junit.jupiter.web.SpringJUnitWebConfig;
 import org.springframework.test.web.servlet.MockMvc;
@@ -51,9 +52,23 @@ public class ReadHeaderRestControllerIntegrationTest {
 
     @Test
     public void whenGetRequestSentToGreeting_thenStatusOKAndGreetingReturned() throws Exception {
-        mockMvc.perform(get("/greeting").header("accept-language", "de"))
+        mockMvc.perform(get("/greeting").header(HttpHeaders.ACCEPT_LANGUAGE, "de"))
             .andExpect(status().isOk())
             .andExpect(content().string("Hallo!"));
+    }
+    
+    @Test
+    public void whenPrioritizedListGetRequestSentToGreeting_thenStatusOKAndGreetingReturned() throws Exception {
+        mockMvc.perform(get("/greeting").header(HttpHeaders.ACCEPT_LANGUAGE, "fr,en,de"))
+            .andExpect(status().isOk())
+            .andExpect(content().string("Bonjour!"));
+    }
+    
+    @Test
+    public void whenWeightedListGetRequestSentToGreeting_thenStatusOKAndGreetingReturned() throws Exception {
+        mockMvc.perform(get("/greeting").header(HttpHeaders.ACCEPT_LANGUAGE, "Accept-Language: es; q=1.0, de; q=0.5"))
+            .andExpect(status().isOk())
+            .andExpect(content().string("Hola!"));
     }
 
     @Test

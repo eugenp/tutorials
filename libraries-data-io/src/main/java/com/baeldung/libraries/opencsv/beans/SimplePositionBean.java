@@ -26,4 +26,8 @@ public class SimplePositionBean extends CsvBean {
         this.exampleColTwo = exampleColTwo;
     }
 
+    @Override
+    public String toString() {
+        return exampleColOne + ',' + exampleColTwo;
+    }
 }

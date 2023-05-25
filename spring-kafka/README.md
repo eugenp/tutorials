@@ -10,6 +10,7 @@ This module contains articles about Spring with Kafka
 - [Send Large Messages With Kafka](https://www.baeldung.com/java-kafka-send-large-message)
 - [Configuring Kafka SSL Using Spring Boot](https://www.baeldung.com/spring-boot-kafka-ssl)
 - [Kafka Streams With Spring Boot](https://www.baeldung.com/spring-boot-kafka-streams)
+- [Get the Number of Messages in an Apache Kafka Topic](https://www.baeldung.com/java-kafka-count-topic-messages)
 
 ### Intro
 

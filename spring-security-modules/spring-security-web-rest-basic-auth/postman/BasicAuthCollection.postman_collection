@@ -1,0 +1,62 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Baeldung - Basic Auth",
+		"_postman_id": "a1e733bc-15ca-3c5d-7fdb-d119518ed3eb",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "using authorization tab",
+			"request": {
+				"url": "http://localhost:8080/postman-test",
+				"method": "GET",
+				"header": [
+					{
+						"key": "admin",
+						"value": "baeldung",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YmFlbGR1bmc=",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "using header tab",
+			"request": {
+				"url": "http://localhost:8080/postman-test",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46YmFlbGR1bmc=",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "using interceptor",
+			"request": {
+				"url": "http://localhost:8080/postman-test",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

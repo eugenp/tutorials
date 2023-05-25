@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung.feign</groupId>
     <artifactId>feign</artifactId>
     <name>feign</name>
 
@@ -11,12 +12,6 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../parent-boot-2</relativePath>
     </parent>
-
-    <properties>
-        <java.version>1.8</java.version>
-        <feign.version>11.8</feign.version>
-        <wsdl4j.version>1.6.3</wsdl4j.version>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -68,7 +63,19 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>io.github.openfeign.form</groupId>
+            <artifactId>feign-form-spring</artifactId>
+            <version>${feign.form.spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.tomakehurst</groupId>
+            <artifactId>wiremock-jre8</artifactId>
+            <version>${wire.mock.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -90,12 +97,10 @@
                 <configuration>
                     <packageName>com.baeldung.feign.soap</packageName>
                     <sources>
-                        <source>src/main/resources/users.xsd</source>
+                        <source>${project.basedir}/src/main/resources/users.xsd</source>
                     </sources>
-
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.jvnet.jaxb2.maven2</groupId>
                 <artifactId>maven-jaxb2-plugin</artifactId>
@@ -111,7 +116,6 @@
                             <schemaIncludes>
                                 <include>*.xsd</include>
                             </schemaIncludes>
-
                             <generatePackage>com.baeldung.feign.soap</generatePackage>
                             <generateDirectory>target/generated-sources/jaxb</generateDirectory>
                         </configuration>
@@ -119,6 +123,14 @@
                 </executions>
             </plugin>
         </plugins>
-
     </build>
+
+    <properties>
+        <feign.version>11.8</feign.version>
+        <wsdl4j.version>1.6.3</wsdl4j.version>
+        <feign.form.spring.version>3.8.0</feign.form.spring.version>
+        <spring.cloud.openfeign.version>3.1.2</spring.cloud.openfeign.version>
+        <wire.mock.version>2.33.2</wire.mock.version>
+    </properties>
+
 </project>

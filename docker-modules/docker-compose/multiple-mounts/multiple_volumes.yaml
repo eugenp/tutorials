@@ -1,0 +1,15 @@
+services:
+  my_app:
+    image: web-app:latest
+    container_name: web-app
+    ports:
+      - "8080:8080"
+    volumes:
+      - first-volume-data:/container-path-1
+      - second-volume-data:/container-path-2:ro
+
+volumes:
+  first-volume-data:
+    driver: local
+  second-volume-data:
+    driver: local

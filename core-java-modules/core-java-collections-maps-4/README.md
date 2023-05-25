@@ -8,3 +8,4 @@ This module contains articles about Map data structures in Java.
 - [Java HashMap With Different Value Types](https://www.baeldung.com/java-hashmap-different-value-types)
 - [Difference Between Map and HashMap in Java](https://www.baeldung.com/java-map-vs-hashmap)
 - [How to Create a New Entry in a Map](https://www.baeldung.com/java-map-new-entry)
+- [Difference Between Map and MultivaluedMap in Java](https://www.baeldung.com/java-map-vs-multivaluedmap)

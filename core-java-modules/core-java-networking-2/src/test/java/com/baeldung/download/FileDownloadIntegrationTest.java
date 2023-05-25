@@ -1,10 +1,7 @@
 package com.baeldung.download;
 
-import org.junit.After;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import static org.junit.Assert.assertTrue;
 
-import javax.xml.bind.DatatypeConverter;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
@@ -13,13 +10,17 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.concurrent.ExecutionException;
 
-import static org.junit.Assert.assertTrue;
+import javax.xml.bind.DatatypeConverter;
+
+import org.junit.After;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 public class FileDownloadIntegrationTest {
     
-    static String FILE_URL = "https://s3.amazonaws.com/baeldung.com/Do+JSON+with+Jackson+by+Baeldung.pdf";
+    static String FILE_URL = "https://s3.amazonaws.com/baeldung.com/Do+JSON+with+Jackson.pdf?__s=vatuzcrazsqopnn7finb";
     static String FILE_NAME = "file.dat";
-    static String FILE_MD5_HASH = "c959feb066b37f5c4f0e0f45bbbb4f86";
+    static String FILE_MD5_HASH = "CE20E17B1E1FBF65A85E74AC00FA1FD8";
     
     @Test
     public void givenJavaIO_whenDownloadingFile_thenDownloadShouldBeCorrect() throws NoSuchAlgorithmException, IOException {

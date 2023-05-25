@@ -12,4 +12,4 @@ This module contains articles about various Apache libraries and utilities
 - [Getting Started with Java and Zookeeper](https://www.baeldung.com/java-zookeeper)
 - [Introduction to Apache Curator](https://www.baeldung.com/apache-curator)
 - [A Quick Guide to Apache Geode](https://www.baeldung.com/apache-geode)
-- [Guide to Solr in Java with Apache Solrj](https://www.baeldung.com/apache-solrj)
+- [Guide To Solr in Java With Apache SolrJ](https://www.baeldung.com/apache-solrj)

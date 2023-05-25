@@ -15,20 +15,15 @@
     </parent>
 
     <modules>
-        <module>jackson</module>
         <module>jackson-annotations</module>
         <module>jackson-conversions</module>
         <module>jackson-conversions-2</module>
+        <module>jackson-core</module>
         <module>jackson-custom-conversions</module>
         <module>jackson-exceptions</module>
     </modules>
 
     <dependencies>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
         <!--jackson for xml -->
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>

@@ -3,10 +3,15 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>libraries-primitive</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>libraries-primitive</name>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/it.unimi.dsi/fastutil -->
@@ -63,12 +68,6 @@
     <properties>
         <fastutil.version>8.2.2</fastutil.version>
         <eclipse-collections.version>10.0.0</eclipse-collections.version>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <jmh-core.version>1.28</jmh-core.version>
-        <jmh-generator.version>1.28</jmh-generator.version>
-        <junit-jupiter.version>5.8.1</junit-jupiter.version>
-        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
     </properties>
 
 </project>

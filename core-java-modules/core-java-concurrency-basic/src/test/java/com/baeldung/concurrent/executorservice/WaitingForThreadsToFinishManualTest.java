@@ -1,14 +1,23 @@
 package com.baeldung.concurrent.executorservice;
 
-import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import static junit.framework.TestCase.assertTrue;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.*;
+import java.util.concurrent.Callable;
+import java.util.concurrent.CompletionService;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorCompletionService;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.RejectedExecutionException;
+import java.util.concurrent.TimeUnit;
 
-import static junit.framework.TestCase.assertTrue;
+import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class WaitingForThreadsToFinishManualTest {
 
@@ -26,18 +35,18 @@ public class WaitingForThreadsToFinishManualTest {
             Thread.currentThread().interrupt();
         }
     }
-    
+
     @Test
     public void givenMultipleThreads_whenUsingCountDownLatch_thenMainShoudWaitForAllToFinish() {
 
         ExecutorService WORKER_THREAD_POOL = Executors.newFixedThreadPool(10);
-        
+
         try {
             long startTime = System.currentTimeMillis();
 
             // create a CountDownLatch that waits for the 2 threads to finish
             CountDownLatch latch = new CountDownLatch(2);
-            
+
             for (int i = 0; i < 2; i++) {
                 WORKER_THREAD_POOL.submit(() -> {
                     try {
@@ -69,13 +78,13 @@ public class WaitingForThreadsToFinishManualTest {
         ExecutorService WORKER_THREAD_POOL = Executors.newFixedThreadPool(10);
 
         List<Callable<String>> callables = Arrays.asList(
-            new DelayedCallable("fast thread", 100), 
+            new DelayedCallable("fast thread", 100),
             new DelayedCallable("slow thread", 3000));
 
         try {
             long startProcessingTime = System.currentTimeMillis();
             List<Future<String>> futures = WORKER_THREAD_POOL.invokeAll(callables);
-            
+
             awaitTerminationAfterShutdown(WORKER_THREAD_POOL);
 
             try {
@@ -100,7 +109,7 @@ public class WaitingForThreadsToFinishManualTest {
 
         } catch (ExecutionException | InterruptedException ex) {
             ex.printStackTrace();
-        }       
+        }
     }
 
     @Test
@@ -109,7 +118,7 @@ public class WaitingForThreadsToFinishManualTest {
         CompletionService<String> service = new ExecutorCompletionService<>(WORKER_THREAD_POOL);
 
         List<Callable<String>> callables = Arrays.asList(
-            new DelayedCallable("fast thread", 100), 
+            new DelayedCallable("fast thread", 100),
             new DelayedCallable("slow thread", 3000));
 
         for (Callable<String> callable : callables) {

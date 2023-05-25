@@ -18,10 +18,16 @@
             <artifactId>optaplanner-core</artifactId>
             <version>${optaplanner-core.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.optaplanner</groupId>
+            <artifactId>optaplanner-test</artifactId>
+            <version>${optaplanner-core.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <properties>
-        <optaplanner-core.version>7.9.0.Final</optaplanner-core.version>
+        <optaplanner-core.version>8.24.0.Final</optaplanner-core.version>
     </properties>
 
 </project>

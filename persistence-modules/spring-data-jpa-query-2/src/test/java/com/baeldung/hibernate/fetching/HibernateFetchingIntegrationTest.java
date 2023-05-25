@@ -15,7 +15,7 @@ public class HibernateFetchingIntegrationTest {
 
     // this loads sample data in the database
     @Before
-    public void addFecthingTestData() {
+    public void addFetchingTestData() {
         FetchingAppView fav = new FetchingAppView();
         fav.createTestData();
     }

@@ -11,10 +11,30 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.experimental</groupId>
+                <artifactId>spring-modulith-bom</artifactId>
+                <version>0.5.1</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
@@ -58,9 +78,35 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>io.leangen.graphql</groupId>
-            <artifactId>spqr</artifactId>
-            <version>0.11.2</version>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
+            <version>0.10.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss</groupId>
+            <artifactId>jandex</artifactId>
+            <version>2.4.3.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-spring-boot2</artifactId>
+            <version>1.7.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.github.tomakehurst/wiremock-jre8 -->
+        <dependency>
+            <groupId>com.github.tomakehurst</groupId>
+            <artifactId>wiremock-jre8</artifactId>
+            <version>2.34.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.experimental</groupId>
+            <artifactId>spring-modulith-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.experimental</groupId>
+            <artifactId>spring-modulith-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -92,6 +138,27 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.jboss.jandex</groupId>
+                <artifactId>jandex-maven-plugin</artifactId>
+                <version>1.2.3</version>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <id>make-index</id>
+                        <goals>
+                            <goal>jandex</goal>
+                        </goals>
+                        <configuration>
+                            <fileSets>
+                                <fileSet>
+                                    <directory>${project.build.outputDirectory}</directory>
+                                </fileSet>
+                            </fileSets>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
@@ -102,6 +169,7 @@
         <spring.data.version>2.4.5</spring.data.version>
         <jackson-databind.version>0.2.1</jackson-databind.version>
         <springfox.version>2.9.2</springfox.version>
+        <start-class>com.baeldung.openapi.OpenApiApplication</start-class>
     </properties>
 
 </project>

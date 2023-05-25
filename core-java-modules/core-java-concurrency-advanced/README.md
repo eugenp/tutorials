@@ -12,5 +12,4 @@ This module contains articles about advanced topics about multithreading with co
 - [Guide to the Java Phaser](https://www.baeldung.com/java-phaser)
 - [An Introduction to Atomic Variables in Java](https://www.baeldung.com/java-atomic-variables)
 - [CyclicBarrier in Java](https://www.baeldung.com/java-cyclic-barrier)
-- [Guide to the Volatile Keyword in Java](https://www.baeldung.com/java-volatile)
 - More Articles: [[next -->]](/core-java-modules/core-java-concurrency-advanced-2)

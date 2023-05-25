@@ -1,26 +1,28 @@
 package com.baeldung.roles.rolesauthorities.config;
 
-import com.baeldung.roles.rolesauthorities.CustomAuthenticationProvider;
-import com.baeldung.roles.rolesauthorities.persistence.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
+
+import com.baeldung.roles.rolesauthorities.CustomAuthenticationProvider;
+import com.baeldung.roles.rolesauthorities.persistence.UserRepository;
 
 @Configuration
 @ComponentScan(basePackages = {"com.baeldung.rolesauthorities"})
 @EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig {
 
 	@Autowired
 	private UserRepository userRepository;
@@ -31,39 +33,43 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private LogoutSuccessHandler myLogoutSuccessHandler;
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(authProvider());
+    @Bean
+    public AuthenticationManager authManager(HttpSecurity http) throws Exception {
+        return http.getSharedObject(AuthenticationManagerBuilder.class)
+            .authenticationProvider(authProvider())
+            .build();
     }
 
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring()
+    @Bean
+    public WebSecurityCustomizer webSecurityCustomizer() {
+        return (web) -> web.ignoring()
             .antMatchers("/resources/**");
     }
-
     
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-    	
-        http
-            .csrf().disable()
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.csrf()
+            .disable()
             .authorizeRequests()
-                .antMatchers("/login*", "/logout*", "/protectedbynothing*", "/home*").permitAll()
-                .antMatchers("/protectedbyrole").hasRole("USER")
-                .antMatchers("/protectedbyauthority").hasAuthority("READ_PRIVILEGE")
-                .and()
+            .antMatchers("/login*", "/logout*", "/protectedbynothing*", "/home*")
+            .permitAll()
+            .antMatchers("/protectedbyrole")
+            .hasRole("USER")
+            .antMatchers("/protectedbyauthority")
+            .hasAuthority("READ_PRIVILEGE")
+            .and()
             .formLogin()
-                .loginPage("/login")
-                .failureUrl("/login?error=true")
-                .permitAll()
-                .and()
+            .loginPage("/login")
+            .failureUrl("/login?error=true")
+            .permitAll()
+            .and()
             .logout()
-                .logoutSuccessHandler(myLogoutSuccessHandler)
-                .invalidateHttpSession(false)
-                .logoutSuccessUrl("/logout.html?logSucc=true")
-                .deleteCookies("JSESSIONID")
-                .permitAll();
+            .logoutSuccessHandler(myLogoutSuccessHandler)
+            .invalidateHttpSession(false)
+            .logoutSuccessUrl("/logout.html?logSucc=true")
+            .deleteCookies("JSESSIONID")
+            .permitAll();
+        return http.build();
     }
 
     @Bean

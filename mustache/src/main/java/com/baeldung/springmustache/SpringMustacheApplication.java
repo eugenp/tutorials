@@ -1,12 +1,11 @@
 package com.baeldung.springmustache;
 
+import com.samskivert.mustache.DefaultCollector;
 import com.samskivert.mustache.Mustache;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.mustache.MustacheEnvironmentCollector;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.core.env.Environment;
 
 @SpringBootApplication
 @ComponentScan(basePackages = {"com.baeldung"})
@@ -17,16 +16,11 @@ public class SpringMustacheApplication {
     }
 
     @Bean
-    public Mustache.Compiler mustacheCompiler(Mustache.TemplateLoader templateLoader, Environment environment) {
-
-        MustacheEnvironmentCollector collector = new MustacheEnvironmentCollector();
-        collector.setEnvironment(environment);
-
+    public Mustache.Compiler mustacheCompiler(Mustache.TemplateLoader templateLoader) {
         return Mustache.compiler()
           .defaultValue("Some Default Value")
           .withLoader(templateLoader)
-          .withCollector(collector);
-
+          .withCollector(new DefaultCollector());
     }
 }
 

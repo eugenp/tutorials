@@ -36,8 +36,8 @@
             <scope>runtime</scope>
         </dependency>
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
             <scope>runtime</scope>
         </dependency>
     </dependencies>
@@ -122,6 +122,7 @@
         <docker.image.prefix>${azure.containerRegistry}.azurecr.io</docker.image.prefix>
         <docker-maven-plugin.version>1.1.0</docker-maven-plugin.version>
         <azure-webapp-maven-plugin.version>1.1.0</azure-webapp-maven-plugin.version>
+        <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
     </properties>
 
 </project>

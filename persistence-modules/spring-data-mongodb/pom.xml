@@ -73,6 +73,12 @@
             <artifactId>querydsl-apt</artifactId>
             <version>${querydsl.version}</version>
         </dependency>
+        <dependency>
+            <groupId>de.flapdoodle.embed</groupId>
+            <artifactId>de.flapdoodle.embed.mongo</artifactId>
+            <version>${embed.mongo.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -103,6 +109,7 @@
         <mongodb-reactivestreams.version>4.1.0</mongodb-reactivestreams.version>
         <projectreactor.version>3.2.0.RELEASE</projectreactor.version>
         <mongodb-driver.version>4.0.5</mongodb-driver.version>
+        <embed.mongo.version>3.2.6</embed.mongo.version>
     </properties>
 
 </project>

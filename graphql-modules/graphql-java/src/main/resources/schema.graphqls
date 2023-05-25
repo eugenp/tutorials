@@ -1,0 +1,43 @@
+type Book {
+  title: String!
+  author: Author
+}
+
+type Author {
+  name: String!
+  surname: String!
+}
+
+type Query {
+  allBooks: [Book]
+  products(size: Int, page: Int): [Product]!
+  product(id: Int): Product!
+}
+
+
+
+type Product {
+  id: ID
+  name: String!
+  description: String
+  attribute_string:String
+  attribute_list:[AttributeKeyValuePair]
+  attributes: JSON
+}
+
+type AttributeKeyValuePair {
+  key:String
+  value:Attribute
+}
+
+type Attribute {
+  name:String
+  description:String
+  unit:String
+}
+scalar JSON
+
+
+schema {
+  query: Query
+}

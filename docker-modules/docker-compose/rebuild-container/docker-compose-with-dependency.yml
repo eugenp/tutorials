@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  ubuntu:
+    image: "ubuntu:latest"
+    tty: true
+    depends_on:
+      - "alpine"
+  alpine:
+    image: "alpine:latest"
+    tty: true

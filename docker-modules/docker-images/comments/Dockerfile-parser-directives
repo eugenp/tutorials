@@ -1,0 +1,4 @@
+# escape=`
+FROM ubuntu:latest
+RUN echo 'This is a Baeldung tutorial&' `
+  && echo 'Print more stuff'

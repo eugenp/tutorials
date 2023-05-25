@@ -30,9 +30,9 @@
             <version>${tomcat.embeded.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.sun.mail</groupId>
-            <artifactId>javax.mail</artifactId>
-            <version>${javax.mail.version}</version>
+            <groupId>org.eclipse.angus</groupId>
+            <artifactId>angus-mail</artifactId>
+            <version>${angus.mail.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.github.seancfoley/ipaddress -->
         <dependency>
@@ -51,6 +51,18 @@
             <groupId>com.googlecode.java-ipv6</groupId>
             <artifactId>java-ipv6</artifactId>
             <version>${googlecode.ipv6.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/commons-validator/commons-validator -->
+        <dependency>
+            <groupId>commons-validator</groupId>
+            <artifactId>commons-validator</artifactId>
+            <version>${apache.commons-validator.version}</version>
         </dependency>
     </dependencies>
 
@@ -83,7 +95,8 @@
         <seancfoley.ipaddress.version>5.3.3</seancfoley.ipaddress.version>
         <jgonian.commons-ip-math.version>1.32</jgonian.commons-ip-math.version>
         <googlecode.ipv6.version>0.17</googlecode.ipv6.version>
-        <javax.mail.version>1.6.2</javax.mail.version>
+        <angus.mail.version>2.0.1</angus.mail.version>
+        <apache.commons-validator.version>1.7</apache.commons-validator.version>
     </properties>
 
 </project>

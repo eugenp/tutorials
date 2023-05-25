@@ -1,0 +1,13 @@
+spring:
+    datasource:
+        driver-class-name: com.mysql.jdbc.Driver
+        hikari:
+            pool-name: hikari-pool
+        url: jdbc:mysql://localhost:3306/baeldung?verifyServerCertificate=false&useSSL=false&requireSSL=false
+        username: root
+
+    jpa:
+        hibernate:
+            ddl-auto: create
+        properties:
+            globally_quoted_identifiers: true

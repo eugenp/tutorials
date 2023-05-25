@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>docker-compose-2</artifactId>
+    <description>Demo project for Spring Boot and Docker - Module docker-compose-2</description>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-2</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-boot-2</relativePath>
+    </parent>
+
+</project>

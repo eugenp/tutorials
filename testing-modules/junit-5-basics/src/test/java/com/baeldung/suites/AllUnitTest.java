@@ -1,12 +1,13 @@
 package com.baeldung.suites;
 
-import org.junit.platform.runner.JUnitPlatform;
+import org.junit.platform.suite.api.ExcludePackages;
 import org.junit.platform.suite.api.SelectPackages;
-import org.junit.runner.RunWith;
+import org.junit.platform.suite.api.Suite;
 
-@RunWith(JUnitPlatform.class)
+@Suite
 @SelectPackages("com.baeldung")
-// @SelectClasses({AssertionTest.class, AssumptionTest.class, ExceptionTest.class})
+@ExcludePackages("com.baeldung.suites")
 public class AllUnitTest {
 
 }
+ 

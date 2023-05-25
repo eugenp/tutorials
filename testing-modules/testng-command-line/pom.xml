@@ -78,7 +78,6 @@
                 </pluginManagement>
             </build>
         </profile>
-
         <profile>
             <id>ExecuteTestSuite</id>
             <activation>
@@ -101,6 +100,7 @@
             </build>
         </profile>
     </profiles>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -112,4 +112,5 @@
         <maven.compiler.plugin.version>3.8.0</maven.compiler.plugin.version>
         <maven.surefire.plugin.version>2.22.1</maven.surefire.plugin.version>
     </properties>
+
 </project>

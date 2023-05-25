@@ -14,7 +14,7 @@ import org.springframework.web.client.RestTemplate;
 
 public class LargeFileDownloadIntegrationTest {
 
-    static String FILE_URL = "https://s3.amazonaws.com/baeldung.com/Do+JSON+with+Jackson+by+Baeldung.pdf";
+    static String FILE_URL = "https://s3.amazonaws.com/baeldung.com/Do+JSON+with+Jackson.pdf?__s=vatuzcrazsqopnn7finb";
 
     RestTemplate restTemplate;
 

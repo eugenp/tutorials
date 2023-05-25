@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>patterns-modules</artifactId>
+    <name>patterns-modules</name>
+    <packaging>pom</packaging>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <modules>
+        <module>design-patterns-architectural</module>
+        <module>design-patterns-behavioral</module>
+        <module>design-patterns-behavioral-2</module>
+        <module>design-patterns-cloud</module>
+        <module>design-patterns-creational</module>
+        <module>design-patterns-creational-2</module>
+        <module>design-patterns-functional</module>
+        <module>design-patterns-singleton</module>
+        <module>design-patterns-structural</module>
+        <module>dip</module>
+        <module>cqrs-es</module>
+        <module>front-controller</module>
+        <module>intercepting-filter</module>
+        <module>solid</module>
+        <module>clean-architecture</module>
+        <module>enterprise-patterns</module>
+        <module>coupling</module>
+        <module>idd</module>
+    </modules>
+
+</project>

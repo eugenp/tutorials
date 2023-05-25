@@ -11,4 +11,5 @@ This module contains articles about MongoDB in Java.
 - [MongoDB Aggregations Using Java](https://www.baeldung.com/java-mongodb-aggregations)
 - [Retrieve a Value from MongoDB by Its Key Name](https://www.baeldung.com/mongodb-get-value-by-key-name)
 - [Push and Set Operations in Same MongoDB Update](https://www.baeldung.com/java-mongodb-push-set)
+- [Checking Connection to MongoDB](https://www.baeldung.com/mongodb-check-connection)
 - More articles: [[<-- prev]](../java-mongodb)

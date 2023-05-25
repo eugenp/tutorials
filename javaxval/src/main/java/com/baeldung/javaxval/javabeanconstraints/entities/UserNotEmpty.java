@@ -1,6 +1,6 @@
 package com.baeldung.javaxval.javabeanconstraints.entities;
 
-import javax.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotEmpty;
 
 public class UserNotEmpty {
 

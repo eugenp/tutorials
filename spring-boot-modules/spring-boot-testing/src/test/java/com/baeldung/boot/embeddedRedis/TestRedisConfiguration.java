@@ -14,6 +14,9 @@ public class TestRedisConfiguration {
 
     public TestRedisConfiguration(final RedisProperties redisProperties) {
         this.redisServer = new RedisServer(redisProperties.getRedisPort());
+        //Uncomment below if running on windows and can't start redis server
+//        this.redisServer = RedisServer.builder().setting("maxheap 200m").port(6379).setting("bind localhost").build();
+//        redisServer.start();
     }
 
     @PostConstruct

@@ -1,33 +1,33 @@
 package com.baeldung.junit5.order;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 @TestMethodOrder(CustomOrder.class)
 public class CustomOrderUnitTest {
-    private static StringBuilder output = new StringBuilder("");
-    
+
+    private static final StringBuilder output = new StringBuilder("");
+
     @Test
-    public void myATest() {
+    void myATest() {
         output.append("A");
     }
-    
+
     @Test
-    public void myBTest() {
-        output.append("B");        
+    void myBTest() {
+        output.append("B");
     }
-    
+
     @Test
-    public void myaTest() {
+    void myaTest() {
         output.append("a");
     }
 
- 
     @AfterAll
     public static void assertOutput() {
-        assertEquals(output.toString(), "AaB");
+        assertEquals("AaB", output.toString());
     }
 }

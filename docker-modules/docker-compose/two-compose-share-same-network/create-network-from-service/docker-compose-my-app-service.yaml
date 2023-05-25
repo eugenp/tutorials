@@ -1,0 +1,13 @@
+services:
+  my_app:
+    image: web-app:latest
+    container_name: web-app
+    ports:
+      - "8080:8080"
+    networks:
+      - my-app
+
+networks:
+  my-app:
+    name: redis_network
+    external: true

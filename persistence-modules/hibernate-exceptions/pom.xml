@@ -25,11 +25,6 @@
             <version>${hibernate.version}</version>
         </dependency>
         <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-            <version>${jaxb.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>${h2.version}</version>
@@ -37,8 +32,8 @@
     </dependencies>
 
     <properties>
-        <hsqldb.version>2.4.0</hsqldb.version>
-        <jaxb.version>2.3.0</jaxb.version>
+        <hsqldb.version>2.7.1</hsqldb.version>
+        <h2.version>2.1.214</h2.version>
     </properties>
 
 </project>

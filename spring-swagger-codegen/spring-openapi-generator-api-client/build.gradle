@@ -96,7 +96,7 @@ if(hasProperty('target') && target == 'android') {
 
 ext {
     swagger_annotations_version = "1.5.22"
-    jackson_version = "2.10.1"
+    jackson_version = "2.13.3"
     jackson_databind_version = "2.10.1"
     jackson_databind_nullable_version = "0.2.1"
     spring_web_version = "4.3.9.RELEASE"

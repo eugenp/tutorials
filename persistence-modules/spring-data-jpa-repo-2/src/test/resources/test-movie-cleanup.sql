@@ -1,1 +1,1 @@
-DELETE FROM Movie;
+DELETE FROM "movie";

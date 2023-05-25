@@ -23,7 +23,7 @@
         <dependency>
             <groupId>io.mantisrx</groupId>
             <artifactId>mantis-runtime</artifactId>
-            <version>1.2.63</version>
+            <version>${mantis-runtime.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.slf4j</groupId>
@@ -38,7 +38,7 @@
         <dependency>
             <groupId>net.andreinc.mockneat</groupId>
             <artifactId>mockneat</artifactId>
-            <version>0.4.2</version>
+            <version>${mockneat.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -62,5 +62,10 @@
             <url>https://jcenter.bintray.com/</url>
         </repository>
     </repositories>
+
+    <properties>
+        <mantis-runtime.version>1.2.63</mantis-runtime.version>
+        <mockneat.version>0.4.2</mockneat.version>
+    </properties>
 
 </project>

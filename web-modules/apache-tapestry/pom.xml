@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>apache-tapestry</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>apache-tapestry</name>
+    <packaging>war</packaging>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>web-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <!-- To set up an application with a database, change the artifactId below to tapestry-hibernate, -->
+        <!-- and add a dependency on your JDBC driver. You'll also need to add Hibernate configuration -->
+        <!-- files, such as hibernate.cfg.xml. -->
+        <dependency>
+            <groupId>org.apache.tapestry</groupId>
+            <artifactId>tapestry-core</artifactId>
+            <version>${tapestry.version}</version>
+        </dependency>
+        <!-- Include the Log4j implementation for the SLF4J logging framework -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j-release-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tapestry</groupId>
+            <artifactId>tapestry-webresources</artifactId>
+            <version>${tapestry.version}</version>
+        </dependency>
+        <!-- Uncomment this to add support for file uploads: -->
+        <!-- <dependency> -->
+        <!-- <groupId>org.apache.tapestry</groupId> -->
+        <!-- <artifactId>tapestry-upload</artifactId> -->
+        <!-- <version>${tapestry.version}</version> -->
+        <!-- </dependency> -->
+        <!-- A dependency on either JUnit or TestNG is required, or the surefire plugin (which runs the -->
+        <!-- tests) will fail, preventing Maven from packaging the WAR. Tapestry includes a large number -->
+        <!-- of testing facilities designed for use with TestNG (http://testng.org/), -->
+        <!-- so it's recommended. -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng-release-version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tapestry</groupId>
+            <artifactId>tapestry-test</artifactId>
+            <version>${tapestry.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- Provided by the servlet container, but sometimes referenced in the application code. -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>${servlet-api-release-version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- Provide dependency to the Tapestry javadoc taglet which replaces the Maven component report -->
+        <dependency>
+            <groupId>org.apache.tapestry</groupId>
+            <artifactId>tapestry-javadoc</artifactId>
+            <version>${tapestry.version}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>apache-tapestry</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${compiler.plugin.version}</version>
+                <configuration>
+                    <source>${source.version}</source>
+                    <target>${target.version}</target>
+                    <optimize>true</optimize>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${compiler.surefire.version}</version>
+                <configuration>
+                    <systemPropertyVariables>
+                        <tapestry.execution-mode>Qa</tapestry.execution-mode>
+                    </systemPropertyVariables>
+                </configuration>
+            </plugin>
+            <!-- Run the application using "mvn jetty:run" -->
+            <plugin>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>maven-jetty-plugin</artifactId>
+                <version>${compiler.jetty.version}</version>
+                <configuration>
+                    <!-- Log to the console. -->
+                    <requestLog implementation="org.mortbay.jetty.NCSARequestLog">
+                        <!-- This doesn't do anything for Jetty, but is a workaround -->
+                        <!-- for a Maven bug that prevents the requestLog from being set. -->
+                        <append>true</append>
+                    </requestLog>
+                    <systemProperties>
+                        <systemProperty>
+                            <name>tapestry.execution-mode</name>
+                            <value>development</value>
+                        </systemProperty>
+                    </systemProperties>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.1</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>jboss</id>
+            <url>http://repository.jboss.org/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>
+
+    <properties>
+        <compiler.jetty.version>6.1.16</compiler.jetty.version>
+        <compiler.surefire.version>3.0.0-M5</compiler.surefire.version>
+        <compiler.plugin.version>3.8.1</compiler.plugin.version>
+        <source.version>11</source.version>
+        <target.version>11</target.version>
+        <tapestry.version>5.8.2</tapestry.version>
+        <servlet-api-release-version>2.5</servlet-api-release-version>
+        <testng-release-version>6.8.21</testng-release-version>
+        <slf4j-release-version>1.7.19</slf4j-release-version>
+    </properties>
+
+</project>

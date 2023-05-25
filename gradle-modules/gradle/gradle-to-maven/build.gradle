@@ -1,0 +1,81 @@
+repositories {
+    mavenCentral()
+}
+
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+
+group = 'com.baeldung'
+
+// by default, pom's artifactId is taken from the directory name
+
+version = '0.0.1'
+
+dependencies {
+    implementation 'org.slf4j:slf4j-api:1.7.25'
+    testImplementation 'junit:junit:4.12'
+}
+
+// basic publishing
+
+//publishing {
+//    publications {
+//        customLibrary(MavenPublication) {
+//            from components.java
+//        }
+//    }
+//
+//    repositories {
+//        maven {
+//            name = 'sampleRepo'
+//            url = layout.buildDirectory.dir("repo")
+//        }
+//    }
+//}
+
+// customized publishing
+
+publishing {
+    publications {
+        customLibrary(MavenPublication) {
+            groupId = 'com.baeldung.sample'
+            artifactId = 'gradle-maven-converter'
+            version = '0.0.1-maven'
+
+            from components.java
+
+            pom {
+                name = 'Sample Library'
+                description = 'A description of sample library'
+                url = 'http://www.example.com/library'
+                licenses {
+                    license {
+                        name = 'The Apache License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+            }
+
+            pom.withXml {
+                asNode()
+                .dependencies
+                .dependency
+                .findAll { dependency ->
+                    // find all dependencies with runtime scope
+                    dependency.scope.text() == 'runtime'
+                }
+                .each { dependency ->
+                    // set the scope to 'compile'
+                    dependency.scope*.value = 'compile'
+                }
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            name = 'sampleRepo'
+            url = layout.buildDirectory.dir("repo")
+        }
+    }
+}

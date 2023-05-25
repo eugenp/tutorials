@@ -4,13 +4,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Set;
 
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
 
-import com.baeldung.javaxval.LocaleAwareUnitTest;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import com.baeldung.javaxval.LocaleAwareUnitTest;
 
 public class RegistrationFormUnitTest extends LocaleAwareUnitTest {
     private static Validator validator;

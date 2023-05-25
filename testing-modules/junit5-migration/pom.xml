@@ -22,7 +22,7 @@
         </dependency>
         <dependency>
             <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-runner</artifactId>
+            <artifactId>junit-platform-suite</artifactId>
             <version>${junit-platform.version}</version>
             <scope>test</scope>
         </dependency>

@@ -219,11 +219,11 @@
         <!-- <start-class>com.baeldung.jdbcauthentication.postgre.PostgreJdbcAuthenticationApplication</start-class> -->
         <!--This runs the example with the multiple logins application -->
         <start-class>com.baeldung.multiplelogin.MultipleLoginApplication</start-class>
-        <!--If you want to run the example with the multiple http elements, comment the tag above and 
-            uncomment the one below -->
+        <!--If you want to run the example with the multiple http elements, comment the tag above and -->
+        <!-- uncomment the one below -->
         <!--<start-class>com.baeldung.multipleentrypoints.MultipleEntryPointsApplication</start-class> -->
-        <!--If you want to run the example with the Https enabled endpoints, comment the tag above and 
-            uncomment the one below -->
+        <!--If you want to run the example with the Https enabled endpoints, comment the tag above and -->
+        <!--uncomment the one below -->
         <!-- <start-class>com.baeldung.ssl.HttpsEnabledApplication</start-class> -->
         <taglibs-standard.version>1.1.2</taglibs-standard.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>

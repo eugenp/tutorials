@@ -104,7 +104,7 @@ public class RegexUnitTest {
 
     @Test
     public void givenNumberRange_whenMatchesAccurately_thenCorrect2() {
-        int matches = runTest("[30-35]", "Two Uppercase alphabets 34 overall");
+        int matches = runTest("3[0-5]", "Two Uppercase alphabets 34 overall");
         assertTrue(matches > 0);
         assertEquals(matches, 1);
     }

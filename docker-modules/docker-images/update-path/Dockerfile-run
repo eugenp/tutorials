@@ -1,0 +1,4 @@
+FROM ubuntu:latest
+RUN echo $PATH
+RUN export PATH="$PATH:/etc/profile"; echo $PATH
+RUN echo $PATH

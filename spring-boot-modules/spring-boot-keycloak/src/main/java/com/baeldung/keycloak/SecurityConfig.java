@@ -1,42 +1,51 @@
 package com.baeldung.keycloak;
 
-import org.keycloak.adapters.springboot.KeycloakSpringBootConfigResolver;
-import org.keycloak.adapters.springsecurity.KeycloakConfiguration;
-import org.keycloak.adapters.springsecurity.authentication.KeycloakAuthenticationProvider;
-import org.keycloak.adapters.springsecurity.config.KeycloakWebSecurityConfigurerAdapter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.core.authority.mapping.SimpleAuthorityMapper;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer;
 import org.springframework.security.core.session.SessionRegistryImpl;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.session.RegisterSessionAuthenticationStrategy;
 import org.springframework.security.web.authentication.session.SessionAuthenticationStrategy;
 
-@KeycloakConfiguration
-class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
-    // Submits the KeycloakAuthenticationProvider to the AuthenticationManager
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        KeycloakAuthenticationProvider keycloakAuthenticationProvider = keycloakAuthenticationProvider();
-        keycloakAuthenticationProvider.setGrantedAuthoritiesMapper(new SimpleAuthorityMapper());
-        auth.authenticationProvider(keycloakAuthenticationProvider);
+@Configuration
+@EnableWebSecurity
+class SecurityConfig {
+
+    private final KeycloakLogoutHandler keycloakLogoutHandler;
+
+    SecurityConfig(KeycloakLogoutHandler keycloakLogoutHandler) {
+        this.keycloakLogoutHandler = keycloakLogoutHandler;
     }
 
-    // Specifies the session authentication strategy
     @Bean
-    @Override
     protected SessionAuthenticationStrategy sessionAuthenticationStrategy() {
         return new RegisterSessionAuthenticationStrategy(new SessionRegistryImpl());
     }
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        super.configure(http);
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-            .antMatchers("/customers*", "/users*")
-            .hasRole("user")
+            .antMatchers("/customers*")
+            .hasRole("USER")
             .anyRequest()
             .permitAll();
+        http.oauth2Login()
+            .and()
+            .logout()
+            .addLogoutHandler(keycloakLogoutHandler)
+            .logoutSuccessUrl("/");
+        http.oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt);
+        return http.build();
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
+        return http.getSharedObject(AuthenticationManagerBuilder.class)
+            .build();
     }
 }

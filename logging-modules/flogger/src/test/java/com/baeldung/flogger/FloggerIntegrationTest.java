@@ -5,7 +5,6 @@ import com.google.common.flogger.LoggerConfig;
 import com.google.common.flogger.StackSize;
 import org.junit.Test;
 
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.stream.IntStream;
 
@@ -22,13 +21,6 @@ public class FloggerIntegrationTest {
     public void givenAnInterval_shouldLogAfterEveryInterval() {
         IntStream.range(0, 100).forEach(value -> {
             logger.atInfo().every(40).log("This log shows [every 40 iterations] => %d", value);
-        });
-    }
-
-    @Test
-    public void givenATimeInterval_shouldLogAfterEveryTimeInterval() {
-        IntStream.range(0, 1_000_0000).forEach(value -> {
-            logger.atInfo().atMostEvery(10, TimeUnit.SECONDS).log("This log shows [every 10 seconds] => %d", value);
         });
     }
 

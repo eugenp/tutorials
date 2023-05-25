@@ -1,0 +1,25 @@
+spring:
+  application.name: client-service
+  cloud:
+    kubernetes:
+      reload:
+        enabled: true
+      discovery:
+        enabled: true
+        all-namespaces: false
+        primary-port-name: "default-http"
+        discovery-server-url: "http://myapp-discoveryserver"
+        include-not-ready-addresses: true
+server.port: 8080
+management:
+  endpoint:
+    restart:
+      enabled: true
+    health:
+      enabled: true
+    info:
+      enabled: true
+ribbon:
+  http:
+    client:
+      enabled: true

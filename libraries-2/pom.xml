@@ -12,22 +12,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <repositories>
-        <repository>
-            <id>jboss-public-repository-group</id>
-            <name>JBoss Public Repository Group</name>
-            <url>http://repository.jboss.org/nexus/content/groups/public/</url>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>never</updatePolicy>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>daily</updatePolicy>
-            </snapshots>
-        </repository>
-    </repositories>
-
     <dependencies>
         <dependency>
             <groupId>org.mapdb</groupId>
@@ -49,8 +33,8 @@
             <artifactId>jbpm-test</artifactId>
             <version>${jbpm.version}</version>
             <exclusions>
-                <!-- junit4 dependency is excluded as it should to be resolved from junit-vintage-engine 
-                    included in parent-modules. -->
+                <!-- junit4 dependency is excluded as it should to be resolved from junit-vintage-engine -->
+                <!-- included in parent-modules. -->
                 <exclusion>
                     <groupId>junit</groupId>
                     <artifactId>junit</artifactId>
@@ -82,6 +66,12 @@
             <groupId>edu.uci.ics</groupId>
             <artifactId>crawler4j</artifactId>
             <version>${crawler4j.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.sleepycat</groupId>
+                    <artifactId>je</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.github.jknack</groupId>
@@ -119,22 +109,40 @@
             <artifactId>spring-jdbc</artifactId>
             <version>${spring.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.sleepycat</groupId>
+            <artifactId>je</artifactId>
+            <version>18.3.12</version>
+        </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <argLine>--add-exports=java.base/jdk.internal.ref=ALL-UNNAMED --add-exports=java.base/sun.nio.ch=ALL-UNNAMED --add-exports=jdk.unsupported/sun.misc=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED</argLine>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
-        <mapdb.version>3.0.7</mapdb.version>
-        <classgraph.version>4.8.28</classgraph.version>
-        <jbpm.version>6.0.0.Final</jbpm.version>
-        <picocli.version>3.9.6</picocli.version>
-        <chronicle.map.version>3.17.2</chronicle.map.version>
+        <mapdb.version>3.0.8</mapdb.version>
+        <classgraph.version>4.8.153</classgraph.version>
+        <jbpm.version>7.20.0.Final</jbpm.version>
+        <picocli.version>4.7.0</picocli.version>
+        <chronicle.map.version>3.24ea1</chronicle.map.version>
         <crawler4j.version>4.4.0</crawler4j.version>
-        <spring-boot-starter.version>2.1.4.RELEASE</spring-boot-starter.version>
-        <mesos.library.version>0.28.3</mesos.library.version>
+        <spring-boot-starter.version>2.7.8</spring-boot-starter.version>
+        <mesos.library.version>1.11.0</mesos.library.version>
         <parallel-collectors.version>1.1.0</parallel-collectors.version>
-        <handlebars.version>4.1.2</handlebars.version>
-        <jasperreports.version>6.17.0</jasperreports.version>
-        <spring.version>5.1.9.RELEASE</spring.version>
-        <hsqldb.version>2.5.0</hsqldb.version>
+        <handlebars.version>4.3.1</handlebars.version>
+        <jasperreports.version>6.20.0</jasperreports.version>
+        <spring.version>5.3.25</spring.version>
+        <hsqldb.version>2.7.1</hsqldb.version>
     </properties>
 
 </project>

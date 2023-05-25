@@ -43,7 +43,7 @@
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-api-jdo</artifactId>
-            <version>${datanucleus.version}</version>
+            <version>${datanucleus-api.version}</version>
         </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
@@ -115,6 +115,24 @@
             <artifactId>mysql</artifactId>
             <version>${testcontainers-version}</version>
         </dependency>
+        <!-- flexypool -->
+        <dependency>
+            <groupId>com.vladmihalcea.flexy-pool</groupId>
+            <artifactId>flexy-micrometer-metrics</artifactId>
+            <version>${flexy-pool.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.vladmihalcea.flexy-pool</groupId>
+            <artifactId>flexy-hikaricp</artifactId>
+            <version>${flexy-pool.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.vladmihalcea.flexy-pool</groupId>
+                    <artifactId>flexy-dropwizard-metrics</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
         <!-- Spring Core dependencies -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -127,13 +145,18 @@
         </dependency>
         <!-- MySQL -->
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
         </dependency>
         <!-- Utility dependencies -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.ebean</groupId>
+            <artifactId>ebean-api</artifactId>
+            <version>${ebean.version}</version>
         </dependency>
     </dependencies>
 
@@ -142,6 +165,7 @@
         <plugins>
             <!-- Reladomo -->
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
                 <version>${maven-antrun-plugin.version}</version>
                 <executions>
@@ -154,24 +178,22 @@
                         <configuration>
                             <tasks>
                                 <property name="plugin_classpath"
-                                    refid="maven.plugin.classpath" />
+                                    refid="maven.plugin.classpath"/>
                                 <taskdef name="gen-reladomo" classpath="plugin_classpath"
-                                    classname="com.gs.fw.common.mithra.generator.MithraGenerator" />
+                                    classname="com.gs.fw.common.mithra.generator.MithraGenerator"/>
                                 <gen-reladomo
                                     xml="${project.basedir}/src/main/resources/reladomo/ReladomoClassList.xml"
-                                    generateGscListMethod="true"
                                     generatedDir="${project.build.directory}/generated-sources/reladomo"
-                                    nonGeneratedDir="${project.basedir}/src/main/java" />
-
+                                    nonGeneratedDir="${project.basedir}/src/main/java"/>
                                 <taskdef name="gen-ddl"
                                     classname="com.gs.fw.common.mithra.generator.dbgenerator.MithraDbDefinitionGenerator"
                                     loaderRef="reladomoGenerator">
-                                    <classpath refid="maven.plugin.classpath" />
+                                    <classpath refid="maven.plugin.classpath"/>
                                 </taskdef>
                                 <gen-ddl
                                     xml="${project.basedir}/src/main/resources/reladomo/ReladomoClassList.xml"
                                     generatedDir="${project.build.directory}/generated-db/sql"
-                                    databaseType="postgres" />
+                                    databaseType="postgres"/>
                             </tasks>
                         </configuration>
                     </execution>
@@ -268,18 +290,20 @@
 
     <properties>
         <ebean.plugin.version>11.11.2</ebean.plugin.version>
-        <reladomo.version>16.5.1</reladomo.version>
+        <reladomo.version>18.1.0</reladomo.version>
         <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
         <maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
-        <ormlite.version>5.0</ormlite.version>
-        <datanucleus.version>5.1.1</datanucleus.version>
-        <datanucleus-maven-plugin.version>5.0.2</datanucleus-maven-plugin.version>
-        <datanucleus-jdo-query.version>5.0.4</datanucleus-jdo-query.version>
-        <javax.jdo.version>3.2.0-m7</javax.jdo.version>
-        <HikariCP.version>3.4.5</HikariCP.version>
-        <ebean.version>11.22.4</ebean.version>
-        <debezium.version>1.4.2.Final</debezium.version>
-        <testcontainers-version>1.15.3</testcontainers-version>
+        <ormlite.version>6.1</ormlite.version>
+        <datanucleus.version>6.0.3</datanucleus.version>
+        <datanucleus-api.version>6.0.1</datanucleus-api.version>
+        <datanucleus-maven-plugin.version>6.0.0-release</datanucleus-maven-plugin.version>
+        <datanucleus-jdo-query.version>6.0.1</datanucleus-jdo-query.version>
+        <javax.jdo.version>3.2.1</javax.jdo.version>
+        <HikariCP.version>5.0.1</HikariCP.version>
+        <ebean.version>13.15.2</ebean.version>
+        <debezium.version>2.1.3.Final</debezium.version>
+        <flexy-pool.version>2.2.3</flexy-pool.version>
+        <testcontainers-version>1.17.6</testcontainers-version>
     </properties>
 
 </project>

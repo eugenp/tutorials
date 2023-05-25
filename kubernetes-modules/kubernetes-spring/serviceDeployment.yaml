@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: demo
+  name: demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: demo
+    spec:
+      containers:
+      - image: docker.io/library/demo:0.0.1-SNAPSHOT
+        name: demo
+        resources: {}
+        imagePullPolicy: Never
+
+status: {}

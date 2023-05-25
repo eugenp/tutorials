@@ -27,8 +27,8 @@ public class UserController {
 		LOG.info("Fetching all the users");
 		return Arrays.asList(
 				new User(UUID.randomUUID().toString(), "User1", "user1@test.com"),
-				new User(UUID.randomUUID().toString(), "User1", "user1@test.com"),
-				new User(UUID.randomUUID().toString(), "User1", "user1@test.com"));
+				new User(UUID.randomUUID().toString(), "User2", "user2@test.com"),
+				new User(UUID.randomUUID().toString(), "User3", "user3@test.com"));
 	}
 
 }

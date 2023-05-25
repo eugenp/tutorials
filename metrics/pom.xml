@@ -78,7 +78,7 @@
         <dependency>
             <groupId>com.netflix.spectator</groupId>
             <artifactId>spectator-api</artifactId>
-            <version>1.0.11</version>
+            <version>${spectator-api.version}</version>
         </dependency>
     </dependencies>
 
@@ -90,6 +90,7 @@
         <!-- <fasterxml.jackson.version>2.9.1</fasterxml.jackson.version> -->
         <spring-boot-starter-web.version>2.0.7.RELEASE</spring-boot-starter-web.version>
         <metrics-aspectj.version>1.1.0</metrics-aspectj.version>
+        <spectator-api.version>1.0.11</spectator-api.version>
     </properties>
 
 </project>

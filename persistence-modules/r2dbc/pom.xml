@@ -39,7 +39,6 @@
         <dependency>
             <groupId>io.r2dbc</groupId>
             <artifactId>r2dbc-h2</artifactId>
-            <version>${r2dbc-h2.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -49,6 +48,34 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-r2dbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>r2dbc-postgresql</artifactId>
+            <version>${r2dbc.postgresql.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${jdbc.postgresql.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>${flyway.core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.r2dbc</groupId>
+            <artifactId>r2dbc-h2</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -62,7 +89,9 @@
     </build>
 
     <properties>
-        <r2dbc-h2.version>0.8.1.RELEASE</r2dbc-h2.version>
+        <flyway.core.version>9.16.0</flyway.core.version>
+        <jdbc.postgresql.version>42.5.4</jdbc.postgresql.version>
+        <r2dbc.postgresql.version>1.0.1.RELEASE</r2dbc.postgresql.version>
     </properties>
 
 </project>

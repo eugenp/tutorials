@@ -1,0 +1,12 @@
+services:
+  my_app:
+    image: web-app:latest
+    container_name: web-app
+    ports:
+      - "8080:8080"
+    networks:
+      - network-example
+
+networks:
+  network-example:
+    external: true

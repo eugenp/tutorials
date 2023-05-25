@@ -96,7 +96,23 @@ public class Java8EncodeDecodeUnitTest {
         assertNotNull(decodedMime);
     }
 
-    //
+    @Test
+    public void whenEncodedStringHasValidCharacters_thenStringCanBeDecoded() {
+        final String encodedString = "dGVzdCMkaW5wdXQ+";
+        final byte[] decodedBytes = Base64.getDecoder().decode(encodedString);
+        final String decodedString = new String(decodedBytes);
+
+        assertNotNull(decodedString);
+    }
+    
+    @Test(expected = IllegalArgumentException.class)
+    public void whenEncodedStringHasInvalidCharacters_thenIllegalArgumentException() {
+        final String encodedString = "dGVzdCMkaW5wdXQ#";
+        final byte[] decodedBytes = Base64.getDecoder().decode(encodedString);
+        final String decodedString = new String(decodedBytes);
+
+        assertNotNull(decodedString);
+    }
 
     private static StringBuilder getMimeBuffer() {
         final StringBuilder buffer = new StringBuilder();

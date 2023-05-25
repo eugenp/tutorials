@@ -37,6 +37,8 @@ public class GregorianDateTestHelper {
     }
 
     public void assertFebruary29th() {
+    	Assert.assertTrue(matcher.matches("1904-02-29"));
+    	Assert.assertTrue(matcher.matches("1996-02-29"));
         Assert.assertTrue(matcher.matches("2000-02-29"));
         Assert.assertTrue(matcher.matches("2400-02-29"));
         Assert.assertTrue(matcher.matches("2800-02-29"));
@@ -44,6 +46,8 @@ public class GregorianDateTestHelper {
         Assert.assertTrue(matcher.matches("2024-02-29"));
         Assert.assertTrue(matcher.matches("2028-02-29"));
 
+        Assert.assertFalse(matcher.matches("1900-02-29"));
+        Assert.assertFalse(matcher.matches("1999-02-29"));
         Assert.assertFalse(matcher.matches("2017-02-29"));
         Assert.assertFalse(matcher.matches("2018-02-29"));
         Assert.assertFalse(matcher.matches("2019-02-29"));

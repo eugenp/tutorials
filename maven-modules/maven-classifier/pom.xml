@@ -7,16 +7,16 @@
     <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
 
-    <modules>
-        <module>maven-classifier-example-consumer</module>
-        <module>maven-classifier-example-provider</module>
-    </modules>
-
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>maven-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+
+    <modules>
+        <module>maven-classifier-example-consumer</module>
+        <module>maven-classifier-example-provider</module>
+    </modules>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>

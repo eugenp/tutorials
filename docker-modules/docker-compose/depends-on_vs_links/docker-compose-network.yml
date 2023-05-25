@@ -1,0 +1,36 @@
+services:
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - db:/var/lib/postgresql/data
+    networks:
+      - mynet
+
+  web-app:
+    image: web-app:latest
+    depends_on:
+      - db
+    networks:
+      - mynet
+    ports:
+      - 8080:8080
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: postgres
+
+networks:
+  mynet:
+    driver: bridge
+
+volumes:
+  db:
+    driver: local

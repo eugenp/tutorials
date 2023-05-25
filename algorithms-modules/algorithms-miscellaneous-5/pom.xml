@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>algorithms-miscellaneous-5</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>algorithms-miscellaneous-5</name>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>algorithms-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>${commons-codec.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-math3</artifactId>
+            <version>${commons-math3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>pl.allegro.finance</groupId>
+            <artifactId>tradukisto</artifactId>
+            <version>${tradukisto.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+        <!-- API, java.xml.bind module -->
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>${xml-bind-api.version}</version>
+        </dependency>
+        <!-- Runtime, com.sun.xml.bind module -->
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>${jaxb-runtime.version}</version>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <xml-bind-api.version>4.0.0</xml-bind-api.version>
+        <jaxb-runtime.version>4.0.0</jaxb-runtime.version>
+    </properties>
+
+</project>

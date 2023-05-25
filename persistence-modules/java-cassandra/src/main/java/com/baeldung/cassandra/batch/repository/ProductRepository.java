@@ -62,12 +62,13 @@ public class ProductRepository {
 
         executeStatement(createTable.build(), keyspace);
 	}
-	
+
     /**
-     * Insert two variant Product into same table using a batch query.
-     *  
-	 * @param Product
-	 */
+     *  Insert two variant Product into same table using a batch query.
+     *
+     * @param productVariant1
+     * @param productVariant2
+     */
     public void insertProductVariantBatch(Product productVariant1,Product productVariant2) {
     	UUID productId = UUID.randomUUID();
         BoundStatement productBoundStatement1 = this.getProductVariantInsertStatement(productVariant1,productId);
@@ -83,7 +84,7 @@ public class ProductRepository {
      /**
      * Insert two same Product into related tables using a batch query.
 	 * 
-	 * @param book
+	 * @param product
 	 */
      public void insertProductBatch(Product product) {
         UUID productId = UUID.randomUUID();

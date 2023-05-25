@@ -13,7 +13,7 @@ import org.springframework.kafka.core.KafkaAdmin;
 @Configuration
 public class KafkaTopicConfig {
 
-    @Value(value = "${kafka.bootstrapAddress}")
+    @Value(value = "${spring.kafka.bootstrap-servers}")
     private String bootstrapAddress;
 
     @Value(value = "${message.topic.name}")
@@ -30,6 +30,9 @@ public class KafkaTopicConfig {
 
     @Value(value = "${greeting.topic.name}")
     private String greetingTopicName;
+
+    @Value(value = "${multi.type.topic.name}")
+    private String multiTypeTopicName;
 
     @Bean
     public KafkaAdmin kafkaAdmin() {
@@ -65,5 +68,10 @@ public class KafkaTopicConfig {
         configs.put("max.message.bytes", "20971520");
         newTopic.configs(configs);
         return newTopic;
+    }
+
+    @Bean
+    public NewTopic multiTypeTopic() {
+        return new NewTopic(multiTypeTopicName, 1, (short) 1);
     }
 }

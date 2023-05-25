@@ -1,0 +1,105 @@
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "org.shipkit:shipkit:2.3.5"
+    }
+}
+
+plugins {
+    id 'java'
+}
+
+apply from: 'aplugin.gradle'
+apply plugin: 'org.shipkit.bintray-release'
+
+
+//hello task
+task hello {
+    doLast {
+        println 'Baeldung'
+    }
+}
+
+//Groovy in gradle task
+task toLower {
+    doLast {
+        String someString = 'HELLO FROM BAELDUNG'
+        println "Original: " + someString
+        println "Lower case: " + someString.toLowerCase()
+    }
+}
+
+
+// Task dependencies
+task helloGradle {
+    doLast {
+        println 'Hello Gradle!'
+    }
+}
+
+task fromBaeldung(dependsOn: helloGradle) {
+    doLast {
+        println "I'm from Baeldung"
+    }
+}
+
+
+//Adding behavior to a task via api
+task helloBaeldung {
+    doLast {
+        println 'I will be executed second'
+    }
+}
+
+helloBaeldung.doFirst {
+    println 'I will be executed first'
+}
+
+helloBaeldung.doLast {
+    println 'I will be executed third'
+}
+
+helloBaeldung {
+    doLast {
+        println 'I will be executed fourth'
+    }
+}
+
+
+//Adding extra task properties
+task ourTask {
+    ext.theProperty = "theValue"
+}
+
+task printTaskProperty {
+    doLast {
+        println ourTask.theProperty
+    }
+}
+
+
+//Declaring dependencies
+dependencies {
+    implementation group:
+      'org.springframework', name: 'spring-core', version: '4.3.5.RELEASE'
+    implementation 'org.springframework:spring-core:4.3.5.RELEASE',
+            'org.springframework:spring-aop:4.3.5.RELEASE'
+    implementation(
+        [group: 'org.springframework', name: 'spring-core', version: '4.3.5.RELEASE'],
+        [group: 'org.springframework', name: 'spring-aop', version: '4.3.5.RELEASE']
+    )
+    testImplementation('org.hibernate:hibernate-core:5.2.12.Final') {
+        transitive = true
+    }
+    runtimeOnly(group: 'org.hibernate', name: 'hibernate-core', version: '5.2.12.Final') {
+        transitive = false
+    }
+    runtimeOnly "org.codehaus.groovy:groovy-all:2.4.11@jar"
+    runtimeOnly group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.4.11', ext: 'jar'
+
+    implementation fileTree(dir: 'libs', include: '*.jar')
+}

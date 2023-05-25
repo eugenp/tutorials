@@ -1,0 +1,36 @@
+
+plugins {
+    id 'application'
+}
+
+apply plugin: 'application'
+mainClassName = 'employee.EmployeeApp'
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+println 'This is executed during configuration phase'
+
+task configured {
+    println 'The project is configured'
+}
+
+wrapper {
+    gradleVersion = '5.3.1'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.10'
+    testImplementation('junit:junit:4.13')
+    testRuntimeOnly('junit:junit:4.13')
+}
+
+test {
+    useJUnit()
+}
+

@@ -11,6 +11,7 @@
 		<property name="hibernate.connection.password">iamtheking</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 		<property name="show_sql">true</property>
+		<property name="hibernate.globally_quoted_identifiers">true</property>
 		<mapping class="com.baeldung.hibernate.fetching.model.UserLazy" />
         <mapping class="com.baeldung.hibernate.fetching.model.OrderDetail" />
 	</session-factory>

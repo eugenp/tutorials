@@ -6,7 +6,7 @@
 <hibernate-configuration>
 	<session-factory>
 	    <property name="hibernate.connection.driver_class">org.h2.Driver</property>
-		<property name="hibernate.connection.url">jdbc:h2:mem:testdb</property>
+		<property name="hibernate.connection.url">jdbc:h2:mem:testdb;MODE=LEGACY</property>
 		<property name="hibernate.connection.username">sa</property>
 		<property name="hibernate.connection.password"></property>
 		<property name="hibernate.dialect">org.hibernate.dialect.H2Dialect</property>
@@ -14,5 +14,6 @@
 	    <property name="hibernate.hbm2ddl.import_files">import-db.sql</property>
 	    <property name="show_sql">false</property>        
 	    <mapping resource="com/baeldung/hibernate/criteria/model/Item.hbm.xml" />
+			<mapping resource="com/baeldung/hibernate/criteria/model/Employee.hbm.xml" />
 	</session-factory>
 </hibernate-configuration>

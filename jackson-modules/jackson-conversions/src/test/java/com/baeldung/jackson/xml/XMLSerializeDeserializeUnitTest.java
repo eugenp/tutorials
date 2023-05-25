@@ -48,8 +48,7 @@ public class XMLSerializeDeserializeUnitTest {
     public void whenJavaGotFromXmlFile_thenCorrect() throws IOException {
         File file = new File("src/test/resources/simple_bean.xml");
         XmlMapper xmlMapper = new XmlMapper();
-        String xml = inputStreamToString(new FileInputStream(file));
-        SimpleBean value = xmlMapper.readValue(xml, SimpleBean.class);
+        SimpleBean value = xmlMapper.readValue(file, SimpleBean.class);
         assertTrue(value.getX() == 1 && value.getY() == 2);
     }
 
@@ -121,19 +120,6 @@ public class XMLSerializeDeserializeUnitTest {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         xmlMapper.writeValue(byteArrayOutputStream, person);
         assertEquals(expectedXml, byteArrayOutputStream.toString());
-    }
-
-    private static String inputStreamToString(InputStream is) throws IOException {
-        BufferedReader br;
-        StringBuilder sb = new StringBuilder();
-
-        String line;
-        br = new BufferedReader(new InputStreamReader(is));
-        while ((line = br.readLine()) != null) {
-            sb.append(line);
-        }
-        br.close();
-        return sb.toString();
     }
 }
 

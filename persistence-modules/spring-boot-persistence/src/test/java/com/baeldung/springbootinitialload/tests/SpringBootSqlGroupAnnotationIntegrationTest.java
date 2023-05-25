@@ -17,8 +17,10 @@ import com.baeldung.boot.repository.EmployeeRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
-@SqlGroup({ @Sql(scripts = "/employees_schema.sql", config = @SqlConfig(transactionMode = TransactionMode.ISOLATED)),
-            @Sql("/import_employees.sql")})
+@SqlGroup({
+  @Sql(scripts = "/employees_schema.sql", config = @SqlConfig(transactionMode = TransactionMode.ISOLATED)),
+  @Sql("/import_employees.sql")}
+)
 public class SpringBootSqlGroupAnnotationIntegrationTest {
 
     @Autowired

@@ -4,7 +4,6 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>jackson-conversions-2</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <name>jackson-conversions-2</name>
 
     <parent>
@@ -32,6 +31,17 @@
             <artifactId>jackson-dataformat-csv</artifactId>
             <version>${jackson.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.mock-server</groupId>
+            <artifactId>mockserver-netty</artifactId>
+            <version>${mockserver-netty.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>${json.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -43,5 +53,10 @@
             </resource>
         </resources>
     </build>
+
+    <properties>
+        <mockserver-netty.version>5.13.2</mockserver-netty.version>
+        <json.version>20220320</json.version>
+    </properties>
 
 </project>

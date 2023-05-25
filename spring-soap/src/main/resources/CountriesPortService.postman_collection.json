@@ -1,0 +1,93 @@
+{
+	"info": {
+		"_postman_id": "46f8f766-3850-44bd-8f6f-58a6da4488de",
+		"name": "CountriesPortService",
+		"description": "\n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13842218"
+	},
+	"item": [
+		{
+			"name": "getCountry",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/xml; charset=utf-8"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:gs=\"http://www.baeldung.com/springsoap/gen\">\n    <soap:Body>\n        <gs:getCountryRequest>\n            <gs:name>Spain</gs:name>\n        </gs:getCountryRequest>\n    </soap:Body>\n</soap:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{CountriesPortSoap11BaseUrl}}/ws",
+					"host": [
+						"{{CountriesPortSoap11BaseUrl}}"
+					],
+					"path": [
+						"ws"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "getCountry response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml; charset=utf-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <error>The element or type could not be found undefined</error>\n  </soap:Body>\n</soap:Envelope>\n",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/ws",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ws"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "xml",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/xml; charset=utf-8"
+						}
+					],
+					"cookie": [],
+					"body": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <error>The element or type could not be found undefined</error>\n  </soap:Body>\n</soap:Envelope>\n"
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "CountriesPortSoap11BaseUrl",
+			"value": "http://localhost:8080",
+			"type": "any"
+		}
+	]
+}

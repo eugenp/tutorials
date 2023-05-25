@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div th:if="${param.query != null}">
+    <p th:text="${param.query }"></p>
+</div>
+<div th:if="${param.query != null}">
+    <p th:text="${param.query[0]}" th:unless="${param.query == null}"></p>
+</div>
+<div th:if="${#request.getParameter('query') != null}">
+    <p th:text="${#request.getParameter('query')}" th:unless="${#request.getParameter('query') == null}"></p>
+</div>
+</body>
+</html>

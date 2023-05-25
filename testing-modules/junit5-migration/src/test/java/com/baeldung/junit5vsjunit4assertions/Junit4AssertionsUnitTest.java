@@ -1,5 +1,6 @@
 package com.baeldung.junit5vsjunit4assertions;
 
+import org.hamcrest.MatcherAssert;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -30,7 +31,7 @@ public class Junit4AssertionsUnitTest {
 
     @Test
     public void whenAssertingArraysEquality_thenEqual() {
-        char[] expected = { 'J', 'u', 'n', 'i', 't' };
+        char[] expected = {'J', 'u', 'n', 'i', 't'};
         char[] actual = "Junit".toCharArray();
 
         assertArrayEquals(expected, actual);
@@ -95,7 +96,7 @@ public class Junit4AssertionsUnitTest {
 
     @Test
     public void testAssertThatHasItems() {
-        assertThat(Arrays.asList("Java", "Kotlin", "Scala"), hasItems("Java", "Kotlin"));
+        MatcherAssert.assertThat(Arrays.asList("Java", "Kotlin", "Scala"), hasItems("Java", "Kotlin"));
     }
 
 }

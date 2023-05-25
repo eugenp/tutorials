@@ -10,6 +10,7 @@
 
     <modules>
         <module>aggregator</module>
+        <module>disable-plugin-examples</module>
     </modules>
 
     <!-- to detect the POM hierarchy, just type "mvn dependency:display-ancestors" -->

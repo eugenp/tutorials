@@ -1,9 +1,10 @@
 *.class
 
+.settings
+.project
+
 #folders#
 /target
-/neoDb*
-/data
 /src/main/webapp/WEB-INF/classes
 */META-INF/*
 

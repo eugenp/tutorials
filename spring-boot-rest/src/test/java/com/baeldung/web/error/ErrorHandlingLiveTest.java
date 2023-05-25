@@ -59,8 +59,7 @@ public class ErrorHandlingLiveTest {
             webClient.getOptions()
                 .setThrowExceptionOnFailingStatusCode(false);
             HtmlPage page = webClient.getPage(EXCEPTION_ENDPOINT);
-            assertThat(page.getBody()
-                .asText()).contains("Whitelabel Error Page");
+            assertThat(page.getBody().asNormalizedText()).contains("Whitelabel Error Page");
         }
     }
 }
