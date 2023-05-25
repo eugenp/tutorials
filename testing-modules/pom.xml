@@ -31,7 +31,7 @@
         <module>junit5-migration</module>
         <module>load-testing-comparison</module>
         <module>mockito</module>
-        <module>mockito-simple</module>
+        <!-- <module>mockito-simple</module> --> <!-- Uncomment when testing-modules is moved to JDK9+ -->
         <module>mocks</module>
         <module>mocks-2</module>
         <module>mockserver</module>
@@ -40,6 +40,7 @@
         <module>rest-assured</module>
         <module>rest-testing</module>
         <module>selenium-junit-testng</module>
+        <module>selenium-webdriver</module>
         <module>spring-mockito</module>
         <module>spring-testing-2</module>
         <module>spring-testing</module>

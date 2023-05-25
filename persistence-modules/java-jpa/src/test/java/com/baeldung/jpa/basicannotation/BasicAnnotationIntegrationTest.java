@@ -1,9 +1,9 @@
 package com.baeldung.jpa.basicannotation;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.PersistenceException;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+import jakarta.persistence.PersistenceException;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;

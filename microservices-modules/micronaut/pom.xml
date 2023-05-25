@@ -90,7 +90,7 @@
                                     <mainClass>${exec.mainClass}</mainClass>
                                 </transformer>
                                 <transformer
-                                    implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
+                                    implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
                             </transformers>
                         </configuration>
                     </execution>
@@ -103,7 +103,7 @@
                     <executable>java</executable>
                     <arguments>
                         <argument>-classpath</argument>
-                        <classpath />
+                        <classpath/>
                         <argument>${exec.mainClass}</argument>
                     </arguments>
                 </configuration>
