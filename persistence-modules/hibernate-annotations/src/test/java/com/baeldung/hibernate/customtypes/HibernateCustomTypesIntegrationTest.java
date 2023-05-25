@@ -47,7 +47,7 @@ public class HibernateCustomTypesIntegrationTest {
             boolean contains = session.contains(e);
             assertTrue(contains);
         });
-
+        
     }
 
     @Test

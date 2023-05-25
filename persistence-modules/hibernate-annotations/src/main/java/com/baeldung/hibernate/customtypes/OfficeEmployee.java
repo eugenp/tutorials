@@ -34,7 +34,7 @@ public class OfficeEmployee {
             @AttributeOverride(name = "cityCode", column = @Column(name = "city_code")),
             @AttributeOverride(name = "number", column = @Column(name = "number"))
     })
-    @Type(value = PhoneNumberType.class)
+    @CompositeType(value = PhoneNumberType.class)
     private PhoneNumber employeeNumber;
 
     @CompositeType(value = com.baeldung.hibernate.customtypes.AddressType.class)
@@ -48,11 +48,7 @@ public class OfficeEmployee {
     private Address empAddress;
 
     @Type(value = com.baeldung.hibernate.customtypes.SalaryType.class,
-            parameters = {@Parameter(name = "currency", value = "USD")})
-   @AttributeOverrides({
-            @AttributeOverride(name = "amount", column = @Column(name = "amount")),
-            @AttributeOverride(name = "currency", column = @Column(name = "currency"))
-    })
+      parameters = {@Parameter(name = "currency", value = "USD")})
     private Salary salary;
 
     public Salary getSalary() {

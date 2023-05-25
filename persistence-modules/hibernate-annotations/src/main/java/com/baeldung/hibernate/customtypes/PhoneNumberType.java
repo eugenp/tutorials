@@ -1,6 +1,11 @@
 package com.baeldung.hibernate.customtypes;
 
+import org.hibernate.HibernateException;
+import org.hibernate.engine.spi.SessionFactoryImplementor;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
+import org.hibernate.metamodel.spi.ValueAccess;
+import org.hibernate.type.CompositeType;
+import org.hibernate.usertype.CompositeUserType;
 import org.hibernate.usertype.UserType;
 
 import java.io.Serializable;
@@ -10,7 +15,7 @@ import java.sql.SQLException;
 import java.sql.Types;
 import java.util.Objects;
 
-public class PhoneNumberType implements UserType<PhoneNumber> {
+public class PhoneNumberType implements UserType<PhoneNumber>, CompositeUserType<PhoneNumber> {
 
     @Override
     public int getSqlType() {
@@ -89,5 +94,32 @@ public class PhoneNumberType implements UserType<PhoneNumber> {
     @Override
     public PhoneNumber replace(PhoneNumber detached, PhoneNumber managed, Object owner) {
         return detached;
+    }
+
+    @Override
+    public Object getPropertyValue(PhoneNumber component, int property) throws HibernateException {
+        switch (property) {
+        case 0:
+            return component.getCountryCode();
+        case 1:
+            return component.getCityCode();
+        case 2:
+            return component.getNumber();
+        default:
+            throw new IllegalArgumentException(property +
+                    " is an invalid property index for class type " +
+                    component.getClass().getName());
+    }
+    }
+
+    @Override
+    public PhoneNumber instantiate(ValueAccess values, SessionFactoryImplementor sessionFactory) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public Class<?> embeddable() {
+        return PhoneNumber.class;
     }
 }
