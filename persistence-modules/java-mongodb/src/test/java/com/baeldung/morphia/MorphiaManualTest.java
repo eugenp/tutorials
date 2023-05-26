@@ -31,7 +31,13 @@ import dev.morphia.query.FindOptions;
 import dev.morphia.query.Query;
 import dev.morphia.query.experimental.updates.UpdateOperators;
 
-public class MorphiaIntegrationTest {
+/**
+ * 1. Firstly you have to install a docker service where you can run a docker container. For Windows you can use Docker desktop (where you can have pretty
+ * much the seme functionality as on linux)
+ * 2. Secondly run a mongodb instance: with this command: docker run -d --rm -p 27017:27017 --name mongo2 mongo:5
+ * 3. Thirdly run this test
+ */
+public class MorphiaManualTest {
 
     private static Datastore datastore;
     private static ObjectId id = new ObjectId();
