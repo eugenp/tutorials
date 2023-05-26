@@ -31,6 +31,13 @@
         </pluginManagement>
     </build>
 
+    <repositories>
+        <repository>
+            <id>github.release.repo</id>
+            <url>https://raw.github.com/bulldog2011/bulldog-repo/master/repo/releases/</url>
+        </repository>
+    </repositories>
+
     <properties>
         <bigqueue.version>0.7.0</bigqueue.version>
     </properties>
