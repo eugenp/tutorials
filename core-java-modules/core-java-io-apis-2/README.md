@@ -11,3 +11,4 @@ This module contains articles about core Java input/output(IO) APIs.
 - [Java: Read Multiple Inputs on Same Line](https://www.baeldung.com/java-read-multiple-inputs-same-line)
 - [Storing Java Scanner Input in an Array](https://www.baeldung.com/java-store-scanner-input-in-array)
 - [How to Take Input as String With Spaces in Java Using Scanner?](https://www.baeldung.com/java-scanner-input-with-spaces)
+- [Write Console Output to Text File in Java](https://www.baeldung.com/java-write-console-output-file)
