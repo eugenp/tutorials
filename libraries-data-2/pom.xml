@@ -119,7 +119,7 @@
         <dependency>
             <groupId>io.minio</groupId>
             <artifactId>minio</artifactId>
-            <version>8.5.2</version>
+            <version>${minio.version}</version>
         </dependency>
         <dependency>
             <groupId>org.awaitility</groupId>
@@ -182,6 +182,7 @@
         <awaitility.version>3.0.0</awaitility.version>
         <univocity.version>2.8.4</univocity.version>
         <swagger-parser.version>2.1.13</swagger-parser.version>
+        <minio.version>8.5.2</minio.version>
     </properties>
 
 </project>
