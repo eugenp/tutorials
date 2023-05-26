@@ -3,27 +3,15 @@ package com.baeldung.countrows.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name="PERMISSIONS")
+@Table(name = "PERMISSIONS")
 public class Permission {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator = "permissions_id_sq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "permissions_id_sq")
     @SequenceGenerator(name = "permissions_id_sq", sequenceName = "permissions_id_sq", allocationSize = 1)
     private int id;
 
     private String type;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getType() {
-        return type;
-    }
 
     public void setType(String type) {
         this.type = type;
@@ -31,9 +19,6 @@ public class Permission {
 
     @Override
     public String toString() {
-        return "Permission{" +
-            "id=" + id +
-            ", type='" + type + '\'' +
-            '}';
+        return "Permission{" + "id=" + id + ", type='" + type + '\'' + '}';
     }
 }

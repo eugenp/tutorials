@@ -11,8 +11,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.criteria.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.baeldung.countrows.entity.Account;
 import com.baeldung.countrows.entity.Permission;
 import com.baeldung.countrows.repository.AccountRepository;
@@ -29,18 +31,17 @@ public class AccountStatsLogic {
     @Autowired
     private PermissionRepository permissionRepository;
 
-    public long getAccountCount(){
+    public long getAccountCount() {
         return accountRepository.count();
     }
 
-    public long getAccountCountByUsername(String username){
+    public long getAccountCountByUsername(String username) {
         return accountRepository.countByUsername(username);
     }
 
-    public long getAccountCountByPermission(Permission permission){
+    public long getAccountCountByPermission(Permission permission) {
         return accountRepository.countByPermission(permission);
     }
-
 
     public long getAccountCountByPermissionAndCreatedOn(Permission permission, Date date) throws ParseException {
         return accountRepository.countByPermissionAndCreatedOnGreaterThan(permission, new Timestamp(date.getTime()));
@@ -53,11 +54,11 @@ public class AccountStatsLogic {
         Root<Account> accountRoot = criteriaQuery.from(Account.class);
 
         // select query
-        criteriaQuery
-            .select(builder.count(accountRoot));
+        criteriaQuery.select(builder.count(accountRoot));
 
         // execute and get the result
-        return entityManager.createQuery(criteriaQuery).getSingleResult();
+        return entityManager.createQuery(criteriaQuery)
+            .getSingleResult();
     }
 
     public long getAccountsByPermissionUsingCQ(Permission permission) throws ParseException {
@@ -68,11 +69,11 @@ public class AccountStatsLogic {
         List<Predicate> predicateList = new ArrayList<>(); // list of predicates that will go in where clause
         predicateList.add(builder.equal(accountRoot.get("permission"), permission));
 
-        criteriaQuery
-            .select(builder.count(accountRoot))
+        criteriaQuery.select(builder.count(accountRoot))
             .where(builder.and(predicateList.toArray(new Predicate[0])));
 
-        return entityManager.createQuery(criteriaQuery).getSingleResult();
+        return entityManager.createQuery(criteriaQuery)
+            .getSingleResult();
     }
 
     public long getAccountsByPermissionAndCreateOnUsingCQ(Permission permission, Date date) throws ParseException {
@@ -87,12 +88,12 @@ public class AccountStatsLogic {
         predicateList.add(builder.greaterThan(accountRoot.get("createdOn"), new Timestamp(date.getTime())));
 
         // select query
-        criteriaQuery
-            .select(builder.count(accountRoot))
+        criteriaQuery.select(builder.count(accountRoot))
             .where(builder.and(predicateList.toArray(new Predicate[0])));
 
         // execute and get the result
-        return entityManager.createQuery(criteriaQuery).getSingleResult();
+        return entityManager.createQuery(criteriaQuery)
+            .getSingleResult();
     }
 
     public long getAccountsUsingJPQL() throws ParseException {
@@ -111,13 +112,5 @@ public class AccountStatsLogic {
         query.setParameter(1, permission);
         query.setParameter(2, new Timestamp(date.getTime()));
         return (long) query.getSingleResult();
-    }
-
-    private static Date getDate() throws ParseException {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date parsedDate = dateFormat.parse("2023-04-29");
-
-        System.out.println("parseDate: "+parsedDate);
-        return parsedDate;
     }
 }

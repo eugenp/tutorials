@@ -35,15 +35,15 @@ class AccountStatsUnitTest {
     private AccountStatsLogic accountStatsLogic;
 
     @AfterEach
-    public void afterEach(){
+    public void afterEach() {
         accountRepository.deleteAll();
         permissionRepository.deleteAll();
     }
 
     @Test
-    public void givenAccountInTable_whenPerformCount_returnsAppropriateCount(){
+    public void givenAccountInTable_whenPerformCount_returnsAppropriateCount() {
         savePermissions();
-        Account account = saveAccount();
+        saveAccount();
         assertThat(accountStatsLogic.getAccountCount()).isEqualTo(1);
     }
 
@@ -66,7 +66,7 @@ class AccountStatsUnitTest {
     @Test
     public void givenAccountInTable_whenPerformCountUsingCQ_returnsAppropriateCount() throws ParseException {
         savePermissions();
-        Account account = saveAccount();
+        saveAccount();
         long count = accountStatsLogic.getAccountsUsingCQ();
         assertThat(count).isEqualTo(1);
     }
@@ -90,10 +90,11 @@ class AccountStatsUnitTest {
     @Test
     public void givenAccountInTable_whenPerformCountUsingJPQL_returnsAppropriateCount() throws ParseException {
         savePermissions();
-        Account account = saveAccount();
+        saveAccount();
         long count = accountStatsLogic.getAccountsUsingJPQL();
         assertThat(count).isEqualTo(1);
     }
+
     @Test
     public void givenAccountInTable_whenPerformCountByPermissionUsingJPQL_returnsAppropriateCount() throws ParseException {
         savePermissions();
@@ -101,6 +102,7 @@ class AccountStatsUnitTest {
         long count = accountStatsLogic.getAccountsByPermissionUsingJPQL(account.getPermission());
         assertThat(count).isEqualTo(1);
     }
+
     @Test
     public void givenAccountInTable_whenPerformCountByPermissionAndCreatedOnUsingJPQL_returnsAppropriateCount() throws ParseException {
         savePermissions();
@@ -109,11 +111,11 @@ class AccountStatsUnitTest {
         assertThat(count).isEqualTo(1);
     }
 
-    private Account saveAccount(){
+    private Account saveAccount() {
         return accountRepository.save(getAccount());
     }
 
-    private  void savePermissions(){
+    private void savePermissions() {
         Permission editor = new Permission();
         editor.setType("editor");
         permissionRepository.save(editor);
@@ -123,18 +125,13 @@ class AccountStatsUnitTest {
         permissionRepository.save(admin);
     }
 
-    private static Date getDate() throws ParseException {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date parsedDate = dateFormat.parse("2023-04-29");
-        return parsedDate;
-    }
-
     private Account getAccount() {
         Permission permission = permissionRepository.findByType("admin");
         Account account = new Account();
-        String seed = UUID.randomUUID().toString();
-        account.setUsername("username_"+seed);
-        account.setEmail("username_"+seed+"@gmail.com");
+        String seed = UUID.randomUUID()
+            .toString();
+        account.setUsername("username_" + seed);
+        account.setEmail("username_" + seed + "@gmail.com");
         account.setPermission(permission);
         account.setPassword("password_q1234");
         account.setCreatedOn(Timestamp.from(Instant.now()));
