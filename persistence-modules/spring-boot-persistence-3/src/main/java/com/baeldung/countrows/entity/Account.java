@@ -8,10 +8,10 @@ import java.time.Instant;
 import java.util.Date;
 
 @Entity
-@Table(name="ACCOUNTS")
+@Table(name = "ACCOUNTS")
 public class Account {
     @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator = "accounts_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "accounts_seq")
     @SequenceGenerator(name = "accounts_seq", sequenceName = "accounts_seq", allocationSize = 1)
     @Column(name = "user_id")
     private int userId;
@@ -25,14 +25,6 @@ public class Account {
     @JoinColumn(name = "permissions_id")
     private Permission permission;
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
     public String getUsername() {
         return username;
     }
@@ -41,16 +33,8 @@ public class Account {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
     }
 
     public void setEmail(String email) {
@@ -63,10 +47,6 @@ public class Account {
 
     public void setCreatedOn(Timestamp createdOn) {
         this.createdOn = createdOn;
-    }
-
-    public Timestamp getLastLogin() {
-        return lastLogin;
     }
 
     public void setLastLogin(Timestamp lastLogin) {
@@ -83,14 +63,6 @@ public class Account {
 
     @Override
     public String toString() {
-        return "Account{" +
-            "userId=" + userId +
-            ", username='" + username + '\'' +
-            ", password='" + password + '\'' +
-            ", email='" + email + '\'' +
-            ", createdOn=" + createdOn +
-            ", lastLogin=" + lastLogin +
-            ", permission=" + permission +
-            '}';
+        return "Account{" + "userId=" + userId + ", username='" + username + '\'' + ", password='" + password + '\'' + ", email='" + email + '\'' + ", createdOn=" + createdOn + ", lastLogin=" + lastLogin + ", permission=" + permission + '}';
     }
 }

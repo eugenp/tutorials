@@ -2,6 +2,7 @@ package com.baeldung.countrows.repository;
 
 import com.baeldung.countrows.entity.Account;
 import com.baeldung.countrows.entity.Permission;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
