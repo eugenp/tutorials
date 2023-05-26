@@ -169,14 +169,6 @@
         </plugins>
     </build>
 
-    <repositories>
-        <repository>
-            <id>dynamodb-local</id>
-            <name>DynamoDB Local Release Repository</name>
-            <url>${dynamodblocal.repository.url}</url>
-        </repository>
-    </repositories>
-
     <properties>
         <!-- The main class to start by executing java -jar -->
         <start-class>com.baeldung.Application</start-class>
@@ -186,9 +178,7 @@
         <aws-java-sdk-dynamodb.version>1.11.64</aws-java-sdk-dynamodb.version>
         <bootstrap.version>3.3.7-1</bootstrap.version>
         <sqlite4java.version>1.0.392</sqlite4java.version>
-        <dynamodb.version>1.11.106</dynamodb.version>
-        <dynamodblocal.version>1.11.86</dynamodblocal.version>
-        <dynamodblocal.repository.url>https://s3-us-west-2.amazonaws.com/dynamodb-local/release</dynamodblocal.repository.url>
+        <dynamodblocal.version>1.21.1</dynamodblocal.version>
         <maven-dependency-plugin.version>3.1.1</maven-dependency-plugin.version>
         <spring-boot.version>2.4.7</spring-boot.version>
         <log4j2.version>2.17.1</log4j2.version>
