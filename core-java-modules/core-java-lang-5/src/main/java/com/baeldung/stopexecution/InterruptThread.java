@@ -1,6 +1,6 @@
 package com.baeldung.stopexecution;
 
-public class InterruptThreadToStopExecution extends Thread {
+public class InterruptThread extends Thread {
     @Override
     public void run() {
         while (!isInterrupted()) {

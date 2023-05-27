@@ -4,7 +4,6 @@ import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Locale;
-import java.util.Scanner;
 
 
 public class StopExecutionFurtherCode {
@@ -26,7 +25,7 @@ public class StopExecutionFurtherCode {
         return n * calculateFactorial(n - 1);
     }
 
-    public int stopLoopWhenInputIsFive(int[] x){
+    public int calculateSum(int[] x){
         int sum = 0;
         for (int i = 0; i < 10; i++) {
             if (x[i] < 0){
@@ -47,7 +46,7 @@ public class StopExecutionFurtherCode {
     }
 
 
-    public int stopExecutionUsingLabelledLoop(String[] lines){
+    public int processLines(String[] lines){
         int statusCode = 0;
         parser: for (String line : lines) {
             System.out.println("Processing line: " + line);

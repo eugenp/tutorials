@@ -61,18 +61,20 @@ public class StopExecutionFurtherCodeUnitTest {
     public void stopExecutionInLoopWhenArrayHasNegative() {
         StopExecutionFurtherCode stopExecutionFurtherCode = new StopExecutionFurtherCode();
         int[] nums = {1, 2, 3, -1, 1, 2, 3};
-        int sum = stopExecutionFurtherCode.stopLoopWhenInputIsFive(nums);
+        int sum = stopExecutionFurtherCode.calculateSum(nums);
         assertEquals(6, sum);
     }
 
     @Test
     public void stopExecutionInThreadUsingInterrupt() throws InterruptedException {
-        InterruptThreadToStopExecution stopExecution = new InterruptThreadToStopExecution();
+        InterruptThread stopExecution = new InterruptThread();
 
         stopExecution.start();
         Thread.sleep(2000);
+
         stopExecution.interrupt();
         stopExecution.join();
+
         assertTrue(!stopExecution.isAlive()); ;
     }
 
@@ -80,7 +82,7 @@ public class StopExecutionFurtherCodeUnitTest {
     public void stopExecutionLabelledLoop() {
         StopExecutionFurtherCode furtherCode = new StopExecutionFurtherCode();
         final String[] lines = {"Line 1", "Line 2", "Line 3", "stop", "Line 4", "Line 5"};
-        int statusCode = furtherCode.stopExecutionUsingLabelledLoop(lines);
+        int statusCode = furtherCode.processLines(lines);
         assertEquals(-1, statusCode);
     }
 
