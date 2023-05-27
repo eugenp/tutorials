@@ -101,9 +101,6 @@ public class MessageWithKey {
         consumer = new KafkaConsumer<>(consumerProperties);
 
         admin.createTopics(Collections.singleton(new NewTopic(TOPIC, PARTITIONS, REPLICATION_FACTOR)));
-
-        ProducerRecord<String, String> record = new ProducerRecord<>("", "");
-        record = new ProducerRecord<>()
     }
 
 }
