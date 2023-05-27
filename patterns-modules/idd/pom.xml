@@ -6,9 +6,6 @@
     <artifactId>idd</artifactId>
     <version>1.0</version>
     <name>idd</name>
-    <build>
-        
-    </build>
     <packaging>jar</packaging>
 
     <parent>

@@ -11,40 +11,40 @@
     <artifactId>sentry-servlet</artifactId>
     <name>sentry-servlet</name>
     <packaging>war</packaging>
-    
-    <properties>
-      <sentry.version>6.11.0</sentry.version>
-      <cargo.version>1.10.4</cargo.version>
-      <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
-    </properties>
-    
-    <dependencies>
-      <dependency>
-        <groupId>io.sentry</groupId>
-        <artifactId>sentry-servlet</artifactId>
-        <version>${sentry.version}</version>
-      </dependency>
 
-      <dependency>
-        <groupId>javax.servlet</groupId>
-        <artifactId>javax.servlet-api</artifactId>
-        <scope>provided</scope>
-      </dependency>
+    <properties>
+        <sentry.version>6.11.0</sentry.version>
+        <cargo.version>1.10.4</cargo.version>
+        <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.sentry</groupId>
+            <artifactId>sentry-servlet</artifactId>
+            <version>${sentry.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
-    
+
     <build>
-      <plugins>
-        <plugin>
-          <groupId>org.codehaus.cargo</groupId>
-          <artifactId>cargo-maven3-plugin</artifactId>
-          <version>${cargo.version}</version>
-          <configuration>
-            <container>
-              <containerId>tomcat9x</containerId>
-              <type>embedded</type>
-            </container>
-          </configuration>
-        </plugin>
-      </plugins>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.cargo</groupId>
+                <artifactId>cargo-maven3-plugin</artifactId>
+                <version>${cargo.version}</version>
+                <configuration>
+                    <container>
+                        <containerId>tomcat9x</containerId>
+                        <type>embedded</type>
+                    </container>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 </project>
