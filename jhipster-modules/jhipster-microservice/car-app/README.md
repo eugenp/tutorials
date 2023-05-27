@@ -74,4 +74,4 @@ To configure CI for your project, run the ci-cd sub-generator (`yo jhipster:ci-c
 
 
 ## Relevant Articles:
-[Use Liquibase to Safely Evolve Your Database Schema](https://www.baeldung.com/liquibase-refactor-schema-of-java-app)
+- [Use Liquibase to Safely Evolve Your Database Schema](https://www.baeldung.com/liquibase-refactor-schema-of-java-app)
