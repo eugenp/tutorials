@@ -1,12 +1,13 @@
 package com.baeldung.spring.data.couchbase.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.baeldung.spring.data.couchbase.model.Person;
 
 public interface PersonService {
 
-    Person findOne(String id);
+    Optional<Person> findOne(String id);
 
     List<Person> findAll();
 

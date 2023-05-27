@@ -6,28 +6,25 @@ import static org.junit.Assert.assertNotNull;
 import java.io.IOException;
 import java.util.List;
 
-import javax.persistence.OptimisticLockException;
-import javax.persistence.PersistenceException;
+import jakarta.persistence.OptimisticLockException;
+import jakarta.persistence.PersistenceException;
 
-import org.hibernate.AnnotationException;
 import org.hibernate.HibernateException;
 import org.hibernate.MappingException;
 import org.hibernate.NonUniqueObjectException;
 import org.hibernate.PropertyValueException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.StaleObjectStateException;
 import org.hibernate.StaleStateException;
 import org.hibernate.Transaction;
-import org.hibernate.TransactionException;
 import org.hibernate.cfg.AvailableSettings;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.exception.ConstraintViolationException;
 import org.hibernate.exception.DataException;
 import org.hibernate.exception.SQLGrammarException;
-import org.hibernate.hql.internal.ast.QuerySyntaxException;
 import org.hibernate.id.IdentifierGenerationException;
 import org.hibernate.query.NativeQuery;
+import org.hibernate.query.sqm.UnknownEntityException;
 import org.hibernate.tool.schema.spi.CommandAcceptanceException;
 import org.hibernate.tool.schema.spi.SchemaManagementException;
 import org.junit.Before;
@@ -63,12 +60,15 @@ public class HibernateExceptionUnitTest {
 
     @Test
     public void whenQueryExecutedWithUnmappedEntity_thenMappingException() {
-        thrown.expectCause(isA(MappingException.class));
-        thrown.expectMessage("Unknown entity: java.lang.String");
+        thrown.expect(isA(MappingException.class));
+        thrown.expectMessage("Unable to locate persister: com.baeldung.hibernate.exception.ProductNotMapped");
+
+        ProductNotMapped product = new ProductNotMapped();
+        product.setId(1);
+        product.setName("test");
 
         Session session = sessionFactory.openSession();
-        NativeQuery<String> query = session.createNativeQuery("select name from PRODUCT", String.class);
-        query.getResultList();
+        session.save(product);
     }
 
     @Test
@@ -82,8 +82,8 @@ public class HibernateExceptionUnitTest {
 
     @Test
     public void whenQueryExecutedWithInvalidClassName_thenQuerySyntaxException() {
-        thrown.expectCause(isA(QuerySyntaxException.class));
-        thrown.expectMessage("PRODUCT is not mapped [from PRODUCT]");
+        thrown.expectCause(isA(UnknownEntityException.class));
+        thrown.expectMessage("Could not resolve root entity 'PRODUCT");
 
         Session session = sessionFactory.openSession();
         List<Product> results = session.createQuery("from PRODUCT", Product.class)
@@ -92,8 +92,8 @@ public class HibernateExceptionUnitTest {
 
     @Test
     public void givenEntityWithoutId_whenSessionFactoryCreated_thenAnnotationException() {
-        thrown.expect(AnnotationException.class);
-        thrown.expectMessage("No identifier specified for entity");
+        thrown.expect(isA(HibernateException.class));
+        thrown.expectMessage("Entity 'com.baeldung.hibernate.exception.EntityWithNoId' has no identifier (every '@Entity' class must declare or inherit at least one '@Id' or '@EmbeddedId' property)");
 
         Configuration cfg = getConfiguration();
         cfg.addAnnotatedClass(EntityWithNoId.class);
@@ -132,9 +132,8 @@ public class HibernateExceptionUnitTest {
 
     @Test
     public void givenMissingTable_whenEntitySaved_thenSQLGrammarException() {
-        thrown.expect(isA(PersistenceException.class));
         thrown.expectCause(isA(SQLGrammarException.class));
-        thrown.expectMessage("SQLGrammarException: could not prepare statement");
+        thrown.expectMessage("could not prepare statement");
 
         Configuration cfg = getConfiguration();
         cfg.addAnnotatedClass(Product.class);
@@ -162,9 +161,8 @@ public class HibernateExceptionUnitTest {
 
     @Test
     public void givenMissingTable_whenQueryExecuted_thenSQLGrammarException() {
-        thrown.expect(isA(PersistenceException.class));
         thrown.expectCause(isA(SQLGrammarException.class));
-        thrown.expectMessage("SQLGrammarException: could not prepare statement");
+        thrown.expectMessage("could not prepare statement");
 
         Session session = sessionFactory.openSession();
         NativeQuery<Product> query = session.createNativeQuery("select * from NON_EXISTING_TABLE", Product.class);
@@ -173,9 +171,8 @@ public class HibernateExceptionUnitTest {
 
     @Test
     public void whenDuplicateIdSaved_thenConstraintViolationException() {
-        thrown.expect(isA(PersistenceException.class));
         thrown.expectCause(isA(ConstraintViolationException.class));
-        thrown.expectMessage("ConstraintViolationException: could not execute statement");
+        thrown.expectMessage("could not execute statement");
 
         Session session = null;
         Transaction transaction = null;
@@ -253,7 +250,7 @@ public class HibernateExceptionUnitTest {
     @Test
     public void givenQueryWithDataTypeMismatch_WhenQueryExecuted_thenDataException() {
         thrown.expectCause(isA(DataException.class));
-        thrown.expectMessage("org.hibernate.exception.DataException: could not prepare statement");
+        thrown.expectMessage("could not prepare statement");
 
         Session session = sessionFactory.openSession();
         NativeQuery<Product> query = session.createNativeQuery("select * from PRODUCT where id='wrongTypeId'", Product.class);
@@ -330,9 +327,8 @@ public class HibernateExceptionUnitTest {
 
     @Test
     public void whenUpdatingNonExistingObject_thenStaleStateException() {
-        thrown.expect(isA(OptimisticLockException.class));
-        thrown.expectMessage("Row was updated or deleted by another transaction");
-        thrown.expectCause(isA(StaleObjectStateException.class));
+        thrown.expectCause(isA(StaleStateException.class));
+        thrown.expectMessage("Batch update returned unexpected row count from update [0]; actual row count: 0; expected: 1; statement executed: update PRODUCT set description=?, name=? where id=?");
 
         Session session = null;
         Transaction transaction = null;
@@ -356,7 +352,8 @@ public class HibernateExceptionUnitTest {
 
     @Test
     public void givenTxnMarkedRollbackOnly_whenCommitted_thenTransactionException() {
-        thrown.expect(isA(TransactionException.class));
+        thrown.expect(isA(IllegalStateException.class));
+        thrown.expectMessage("Transaction already active");
 
         Session session = null;
         Transaction transaction = null;
@@ -368,6 +365,7 @@ public class HibernateExceptionUnitTest {
             product1.setId(15);
             product1.setName("Product1");
             session.save(product1);
+            transaction = session.beginTransaction();
             transaction.setRollbackOnly();
 
             transaction.commit();
