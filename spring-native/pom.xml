@@ -72,9 +72,6 @@
         <builder>paketobuildpacks/builder:tiny</builder>
         <spring-boot.version>2.7.1</spring-boot.version>
         <spring-native.version>0.12.1</spring-native.version>
-        <java.version>1.8</java.version>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <maven.compiler.source>1.8</maven.compiler.source>
         <log4j2.version>2.17.1</log4j2.version>
     </properties>
 

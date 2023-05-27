@@ -1,16 +1,15 @@
 package com.baeldung.spring.data.couchbase.model;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 
 import org.joda.time.DateTime;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Version;
 import org.springframework.data.couchbase.core.mapping.Document;
-
-import com.couchbase.client.java.repository.annotation.Field;
+import org.springframework.data.couchbase.core.mapping.Field;
 
 @Document
 public class Student {

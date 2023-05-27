@@ -1,3 +1,7 @@
+### Spring Reactive Articles that are also part of the e-book
+
+This module contains articles about Spring Reactive that are also part of an Ebook.
+
 ## Spring Reactive
 
 This module contains articles describing reactive processing in Spring.
@@ -14,3 +18,7 @@ This module contains articles describing reactive processing in Spring.
 - [Handling Errors in Spring WebFlux](https://www.baeldung.com/spring-webflux-errors)
 - [Spring Security 5 for Reactive Applications](https://www.baeldung.com/spring-security-5-reactive)
 - [Concurrency in Spring WebFlux](https://www.baeldung.com/spring-webflux-concurrency)
+
+### NOTE:
+
+Since this is a module tied to an e-book, it should **not** be moved or used to store the code for any further article.

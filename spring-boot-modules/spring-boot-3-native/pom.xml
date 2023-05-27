@@ -47,6 +47,25 @@
                         <skipNativeTests>true</skipNativeTests>
                     </configuration>
                 </plugin>
+                <!-- We can compile the application in AOT mode but not producing a native image -->
+                <!-- If we active this plugin  -->
+                <!-- and deactive all the pom native component -->
+                <!--     <plugin>
+                         <groupId>org.springframework.boot</groupId>
+                         <artifactId>spring-boot-maven-plugin</artifactId>
+                         <configuration>
+                             <jvmArguments> -agentlib:native-image-agent=config-output-dir=target/native-image
+                             </jvmArguments>
+                         </configuration>
+						 <executions>
+							 <execution>
+								 <id>process-aot</id>
+								 <goals>
+									 <goal>process-aot</goal>
+								 </goals>
+							 </execution>
+						 </executions>
+                     </plugin>  -->
             </plugins>
         </pluginManagement>
     </build>

@@ -2,7 +2,7 @@ package com.baeldung.hibernate.basicannotation;
 
 import java.io.IOException;
 
-import javax.persistence.PersistenceException;
+import jakarta.persistence.PersistenceException;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

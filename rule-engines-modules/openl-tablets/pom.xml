@@ -28,7 +28,7 @@
     </dependencies>
 
     <properties>
-        <openl.version>5.19.4</openl.version>
+        <openl.version>5.26.5</openl.version>
     </properties>
 
 </project>

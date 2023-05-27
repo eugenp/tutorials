@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class KinesisBinderApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(KinesisBinderApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(KinesisBinderApplication.class, args);
+    }
 }

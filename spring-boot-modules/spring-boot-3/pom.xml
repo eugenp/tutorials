@@ -33,6 +33,20 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mock-server</groupId>
+            <artifactId>mockserver-netty</artifactId>
+            <version>${mockserver.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mock-server</groupId>
+            <artifactId>mockserver-client-java</artifactId>
+            <version>${mockserver.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <!-- Treiber: nicht gegen diese API programmieren, erst zur Laufzeit benötigt -->
@@ -102,6 +116,7 @@
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
                     <configuration>
+                        <mainClass>com.baeldung.virtualthreads.VirtualThreadsApp</mainClass>
                         <excludes>
                             <exclude>
                                 <groupId>org.projectlombok</groupId>
@@ -117,13 +132,23 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <compilerArgs>--enable-preview</compilerArgs>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
     <properties>
+        <java.version>19</java.version>
         <mapstruct.version>1.5.2.Final</mapstruct.version>
         <springdoc.version>2.0.0</springdoc.version>
         <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
+        <start-class>com.baeldung.sample.TodoApplication</start-class>
+        <mockserver.version>5.14.0</mockserver.version>
     </properties>
 
 </project>

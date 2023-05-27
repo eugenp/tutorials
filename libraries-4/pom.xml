@@ -99,9 +99,31 @@
             <artifactId>javax.el</artifactId>
             <version>${glassfish.web.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson-annotations.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
+        <jackson-annotations.version>2.14.2</jackson-annotations.version>
+        <jackson-core.version>2.14.2</jackson-core.version>
         <jdeferred.version>1.2.6</jdeferred.version>
         <eclipse-collections.version>8.2.0</eclipse-collections.version>
         <noexception.version>1.1.0</noexception.version>
@@ -118,6 +140,8 @@
         <javax.el.version>3.0.0</javax.el.version>
         <glassfish.web.version>2.2.4</glassfish.web.version>
         <olap4j.version>1.2.0</olap4j.version>
+        <javafx.version>19</javafx.version>
+        <spoon-core.version>10.3.0</spoon-core.version>
     </properties>
 
 </project>

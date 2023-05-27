@@ -13,20 +13,22 @@ public class UploadService {
     private static final String HTTP_FILE_UPLOAD_URL = "http://localhost:8081";
     
     @Autowired
-    private UploadClient client;
-
+    private FileUploadClientWithFallbackFactory fileUploadClient;
+    @Autowired
+    private FileUploadClientWithFallBack fileUploadClientWithFallback;
+    
     public boolean uploadFileWithManualClient(MultipartFile file) {
         UploadResource fileUploadResource = Feign.builder().encoder(new SpringFormEncoder())
                 .target(UploadResource.class, HTTP_FILE_UPLOAD_URL);
         Response response = fileUploadResource.uploadFile(file);
         return response.status() == 200;
     }
-    
-    public String uploadFile(MultipartFile file) {
-        return client.fileUpload(file);
+
+    public String uploadFileWithFallbackFactory(MultipartFile file) {
+        return fileUploadClient.fileUpload(file);
     }
-    
-    public String uploadFileError(MultipartFile file) {
-        return client.fileUpload(file);
+
+    public String uploadFileWithFallback(MultipartFile file) {
+        return fileUploadClientWithFallback.fileUpload(file);
     }
 }

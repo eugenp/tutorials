@@ -27,6 +27,25 @@
             <version>${jmockit.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-suite</artifactId>
+            <version>${junit-platform.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-runner</artifactId>
+            <version>${junit-platform.version}</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -39,6 +58,9 @@
                         -javaagent:${settings.localRepository}/org/jmockit/jmockit/${jmockit.version}/jmockit-${jmockit.version}.jar
                     </argLine>
                     <disableXmlReport>true</disableXmlReport>
+                    <excludes>
+                        <exclude>**/testsuite/**/*UnitTest.java</exclude>
+                    </excludes>
                 </configuration>
             </plugin>
         </plugins>
@@ -46,6 +68,8 @@
 
     <properties>
         <jmockit.version>1.49</jmockit.version>
+        <assertj.version>3.24.2</assertj.version>
+        <junit-platform.version>1.9.2</junit-platform.version>
     </properties>
 
 </project>

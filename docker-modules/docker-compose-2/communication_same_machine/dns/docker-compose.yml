@@ -1,0 +1,20 @@
+services:
+  alpine-app-1:
+    container_name: alpine-app-1
+    image: alpine-app-1
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    tty: true
+    ports:
+      - 8081:8081
+  
+  alpine-app-2:
+    container_name: alpine-app-2
+    image: alpine-app-2
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    tty: true
+    ports:
+      - 8080:8080

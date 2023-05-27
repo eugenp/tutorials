@@ -55,6 +55,42 @@
             </exclusions>
         </dependency>
         <dependency>
+            <groupId>org.apache.httpcomponents.core5</groupId>
+            <artifactId>httpcore5</artifactId>
+            <version>${httpcore5.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.httpcomponents.client5</groupId>
+            <artifactId>httpclient5-fluent</artifactId>
+            <version>${httpclient5-fluent.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.httpcomponents.client5</groupId>
+            <artifactId>httpclient5</artifactId>
+            <version>${httpclient5.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
             <groupId>com.github.tomakehurst</groupId>
             <artifactId>wiremock</artifactId>
             <version>${wiremock.version}</version>
@@ -78,6 +114,10 @@
         <!-- testing -->
         <wiremock.version>2.5.1</wiremock.version>
         <httpclient.version>4.5.8</httpclient.version> <!-- 4.3.6 --> <!-- 4.4-beta1 -->
+        <!-- http client & core 5 -->
+        <httpcore5.version>5.2</httpcore5.version>
+        <httpclient5.version>5.2</httpclient5.version>
+        <httpclient5-fluent.version>5.2</httpclient5-fluent.version>
     </properties>
 
 </project>

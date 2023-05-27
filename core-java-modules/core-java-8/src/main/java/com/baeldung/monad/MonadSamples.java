@@ -28,30 +28,16 @@ class MonadSample1 extends MonadBaseExample {
     public double apply(double n) {
         return subtract1(add3(divideBy2(multiplyBy2(multiplyBy2(2)))));
     }
-
-    public static void main(String[] args) {
-        final MonadSample1 test = new MonadSample1();
-        System.out.println(test.apply(2));
-        //6.0
-    }
-
 }
 
 class MonadSample2 extends MonadBaseExample {
     public double apply(double n) {
-        final double n1 = multiplyBy2(n);
-        final double n2 = multiplyBy2(n1);
-        final double n3 = divideBy2(n2);
-        final double n4 = add3(n3);
+        double n1 = multiplyBy2(n);
+        double n2 = multiplyBy2(n1);
+        double n3 = divideBy2(n2);
+        double n4 = add3(n3);
         return subtract1(n4);
     }
-
-    public static void main(String[] args) {
-        final MonadSample2 test = new MonadSample2();
-        System.out.println(test.apply(2));
-        //6.0
-    }
-
 }
 
 class MonadSample3 extends MonadBaseExample {
@@ -66,11 +52,6 @@ class MonadSample3 extends MonadBaseExample {
                 .get();
     }
 
-    public static void main(String[] args) {
-        final MonadSample3 test = new MonadSample3();
-        System.out.println(test.apply(2));
-        //6.0
-    }
 }
 
  class MonadSample4 extends MonadBaseExample {
@@ -90,24 +71,12 @@ class MonadSample3 extends MonadBaseExample {
          return leftSide.equals(rightSide);
      }
 
-     public static void main(String[] args) {
-         final MonadSample4 test = new MonadSample4();
-
-         System.out.println(test.leftIdentity()); //true
-         System.out.println(test.rightIdentity()); //true
-         System.out.println(test.associativity()); //true
-     }
  }
 
 class MonadSample5 extends MonadBaseExample {
     public boolean fail() {
         Function<Integer, Optional<Integer>> mapping = value -> Optional.of(value == null ? -1 : value + 1);
         return Optional.ofNullable((Integer) null).flatMap(mapping).equals(mapping.apply(null));
-    }
-
-    public static void main(String[] args) {
-        final MonadSample5 test = new MonadSample5();
-        System.out.println(test.fail());
     }
 }
 

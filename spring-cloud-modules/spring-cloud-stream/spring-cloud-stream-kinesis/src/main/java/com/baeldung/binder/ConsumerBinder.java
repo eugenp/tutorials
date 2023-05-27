@@ -1,16 +1,16 @@
 package com.baeldung.binder;
 
-import org.springframework.cloud.stream.annotation.EnableBinding;
-import org.springframework.cloud.stream.annotation.StreamListener;
-import org.springframework.cloud.stream.messaging.Sink;
-import org.springframework.stereotype.Component;
+import java.util.function.Consumer;
 
-@Component
-@EnableBinding(Sink.class)
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
 public class ConsumerBinder {
-
-	@StreamListener(Sink.INPUT)
-	public void consume(String ip) {
-		System.out.println(ip);
-	}
+    @Bean
+    Consumer<String> input() {
+        return str -> {
+            System.out.println(str);
+        };
+    }
 }

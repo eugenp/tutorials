@@ -1,6 +1,6 @@
 package com.baeldung.jpa.entitygraph.model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 public class Comment {

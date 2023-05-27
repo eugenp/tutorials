@@ -1,6 +1,32 @@
 # R2DBC Test configuration
 r2dbc:
   url: r2dbc:h2:mem://./testdb
-  
+  user: local
+  password: local
+
+server:
+  port: 8080
+
+spring:
+  r2dbc:
+    host: localhost
+    port: 8082
+    database: testdb
+    username: local
+    password: local
+
+  h2:
+    console:
+      enabled: true
+      path: h2-console
+
+
+  flyway:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DATABASE_TO_UPPER=false;
+    user: local
+    password: local
+    locations: classpath:db/h2/migration
+  main:
+    allow-bean-definition-overriding: true
   
   

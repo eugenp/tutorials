@@ -1,8 +1,8 @@
 package com.baeldung.javaxval.container.validation.valueextractors;
 
-import javax.validation.valueextraction.ExtractedValue;
-import javax.validation.valueextraction.UnwrapByDefault;
-import javax.validation.valueextraction.ValueExtractor;
+import jakarta.validation.valueextraction.ExtractedValue;
+import jakarta.validation.valueextraction.UnwrapByDefault;
+import jakarta.validation.valueextraction.ValueExtractor;
 
 import com.baeldung.javaxval.container.validation.Profile;
 
