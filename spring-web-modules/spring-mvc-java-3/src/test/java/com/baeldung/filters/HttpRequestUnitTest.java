@@ -1,6 +1,5 @@
-package com.baeldung.web.filter;
+package com.baeldung.filters;
 
-import com.baeldung.filters.CacheRequestContentFilter;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockFilterChain;
 import org.springframework.mock.web.MockHttpServletRequest;
