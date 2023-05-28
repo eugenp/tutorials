@@ -15,12 +15,12 @@
         <dependency>
             <groupId>com.baeldung</groupId>
             <artifactId>maven-classifier-example-provider</artifactId>
-            <version>${maven-classifier-example-provider.version}</version>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.baeldung</groupId>
             <artifactId>maven-classifier-example-provider</artifactId>
-            <version>${maven-classifier-example-provider.version}</version>
+            <version>0.0.1-SNAPSHOT</version>
             <classifier>arbitrary</classifier>
         </dependency>
         <!-- For example purpose not building as it requires both JDK 8 and 11 executables -->
@@ -34,13 +34,13 @@
         <dependency>
             <groupId>com.baeldung</groupId>
             <artifactId>maven-classifier-example-provider</artifactId>
-            <version>${maven-classifier-example-provider.version}</version>
+            <version>0.0.1-SNAPSHOT</version>
             <classifier>sources</classifier>
         </dependency>
         <dependency>
             <groupId>com.baeldung</groupId>
             <artifactId>maven-classifier-example-provider</artifactId>
-            <version>${maven-classifier-example-provider.version}</version>
+            <version>0.0.1-SNAPSHOT</version>
             <classifier>tests</classifier>
         </dependency>
     </dependencies>
@@ -48,7 +48,6 @@
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
-        <maven-classifier-example-provider.version>0.0.1-SNAPSHOT</maven-classifier-example-provider.version>
     </properties>
 
 </project>
