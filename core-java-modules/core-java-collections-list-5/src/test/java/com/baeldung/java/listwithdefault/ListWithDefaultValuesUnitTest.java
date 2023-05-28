@@ -6,12 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.Test;
 
@@ -27,13 +24,6 @@ public class ListWithDefaultValuesUnitTest {
         for (int i = 0; i < size; i++) {
             list.add(value);
         }
-        return list;
-    }
-
-    static <T> List<T> newListWithDefaultStream(T value, int size) {
-        List<T> list = IntStream.range(0, size)
-          .mapToObj(i -> value)
-          .collect(Collectors.toList());
         return list;
     }
 
@@ -99,29 +89,4 @@ public class ListWithDefaultValuesUnitTest {
           .setTime(DATE_NOW.getTime());
         assertEquals(Lists.newArrayList(DATE_NOW, DATE_EPOCH), dateList);
     }
-
-    @Test
-    void whenUsingStream_thenGetExpectedList() {
-        List<String> result = newListWithDefaultStream("new", 5);
-        assertEquals(EXPECTED_LIST, result);
-    }
-
-    @Test
-    void whenUsingNCopy_thenGetExpectedList() {
-        List<String> result = Collections.nCopies(5, "new");
-        assertEquals(EXPECTED_LIST, result);
-
-        //result is an immutable list
-        assertThrows(UnsupportedOperationException.class, () -> result.add("a new string"));
-        assertThrows(UnsupportedOperationException.class, () -> result.remove(0));
-        assertThrows(UnsupportedOperationException.class, () -> result.set(2, "a new string"));
-
-        List<Date> dateList = Collections.nCopies(2, Date.from(Instant.EPOCH));
-        assertEquals(Lists.newArrayList(DATE_EPOCH, DATE_EPOCH), dateList);
-        dateList.get(0)
-          .setTime(DATE_NOW.getTime());
-        assertEquals(Lists.newArrayList(DATE_NOW, DATE_NOW), dateList);
-
-    }
-
 }
