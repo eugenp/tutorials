@@ -14,10 +14,6 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <surefire-version>2.22.2</surefire-version>
-    </properties>
-
     <modules>
         <module>dummy-surefire-junit47</module>
         <module>core-java-exclusions</module>
@@ -29,10 +25,10 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.7.0</version>
+                    <version>${maven-compiler-plugin.version}</version>
                     <configuration>
-                        <source>1.8</source>
-                        <target>1.8</target>
+                        <source>${maven-compiler-plugin.source.version}</source>
+                        <target>${maven-compiler-plugin.tagert.version}</target>
                         <compilerArgs>
                             <arg>-parameters</arg>
                         </compilerArgs>
@@ -62,9 +58,16 @@
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
-                <version>4.13</version>
+                <version>${junit.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <properties>
+        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+        <maven-compiler-plugin.source.version>1.8</maven-compiler-plugin.source.version>
+        <maven-compiler-plugin.tagert.version>1.8</maven-compiler-plugin.tagert.version>
+        <junit.version>4.13</junit.version>
+    </properties>
 
 </project>

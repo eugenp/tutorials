@@ -12,7 +12,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
-                <version>3.2.0</version>
+                <version>${build-helper-maven-plugin}</version>
                 <executions>
                     <execution>
                         <id>add-source</id>
@@ -35,6 +35,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <build-helper-maven-plugin>3.2.0</build-helper-maven-plugin>
     </properties>
 
 </project>
