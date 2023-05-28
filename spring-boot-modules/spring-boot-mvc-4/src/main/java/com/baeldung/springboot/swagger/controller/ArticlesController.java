@@ -21,7 +21,7 @@ public class ArticlesController {
     }
 
     @PostMapping("")
-    public void addArticle(@ModelAttribute Article article) {
+    public void addArticle(Article article) {
         articleService.addArticle(article);
     }
 
