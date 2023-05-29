@@ -1,4 +1,4 @@
-package com.baeldung.array;
+package com.baeldung.arrayconcat;
 
 import com.google.common.primitives.Bytes;
 import org.apache.commons.lang3.ArrayUtils;

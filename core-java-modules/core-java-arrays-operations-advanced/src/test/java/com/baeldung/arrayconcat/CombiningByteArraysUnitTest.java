@@ -1,4 +1,4 @@
-package com.baeldung.array;
+package com.baeldung.arrayconcat;
 
 import org.junit.Before;
 import org.junit.Test;
