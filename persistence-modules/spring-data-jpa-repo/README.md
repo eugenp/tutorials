@@ -10,7 +10,6 @@ This module contains articles about repositories in Spring Data JPA
 - [Spring Data Composable Repositories](https://www.baeldung.com/spring-data-composable-repositories)
 - [Spring Data JPA Repository Populators](https://www.baeldung.com/spring-data-jpa-repository-populators)
 - [Calling Stored Procedures from Spring Data JPA Repositories](https://www.baeldung.com/spring-data-jpa-stored-procedures)
-- [SAML with Spring Boot and Spring Security](https://www.baeldung.com/spring-security-saml)
 - [TRUNCATE TABLE in Spring Data JPA](https://www.baeldung.com/spring-data-jpa-truncate-table)
 - More articles: [[--> next]](../spring-data-jpa-repo-2)
 
