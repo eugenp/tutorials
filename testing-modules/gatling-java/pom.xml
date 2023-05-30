@@ -60,7 +60,12 @@
                 <artifactId>gatling-maven-plugin</artifactId>
                 <version>${gatling-maven-plugin.version}</version>
                 <configuration>
-                    <simulationClass>org.baeldung.EmployeeRegistrationSimulation</simulationClass>
+                    <includes>
+                        <include>org.baeldung.EmployeeRegistrationSimulation</include>
+                        <include>org.baeldung.gatling.http.FetchSinglePostSimulation</include>
+                        <include>org.baeldung.gatling.http.FetchSinglePostSimulationLog</include>
+                    </includes>
+                    <runMultipleSimulations>true</runMultipleSimulations>
                 </configuration>
             </plugin>
         </plugins>
@@ -70,8 +75,8 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <encoding>UTF-8</encoding>
-        <gatling.version>3.9.0</gatling.version>
-        <gatling-maven-plugin.version>4.2.9</gatling-maven-plugin.version>
+        <gatling.version>3.9.5</gatling.version>
+        <gatling-maven-plugin.version>4.3.0</gatling-maven-plugin.version>
         <faker.version>1.0.2</faker.version>
         <spring.version>2.7.5</spring.version>
     </properties>
