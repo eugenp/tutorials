@@ -16,8 +16,8 @@ public class SingletonUnitTest {
         // Serialization
         FileOutputStream fos = new FileOutputStream("singleton.ser");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
-        Singleton acutalSingletonObject = Singleton.getInstance();
-        oos.writeObject(acutalSingletonObject);
+        Singleton actualSingletonObject = Singleton.getInstance();
+        oos.writeObject(actualSingletonObject);
 
         // Deserialization
         Singleton deserializedSingletonObject = null;
@@ -25,7 +25,7 @@ public class SingletonUnitTest {
         ObjectInputStream ois = new ObjectInputStream(fis);
         deserializedSingletonObject = (Singleton) ois.readObject();
         // remove readResolve() from Singleton class and uncomment this to test.
-        //assertNotEquals(acutalSingletonObject.hashCode(), deserializedSingletonObject.hashCode());
+        //assertNotEquals(actualSingletonObject.hashCode(), deserializedSingletonObject.hashCode());
     }
 
     @Test
@@ -34,14 +34,14 @@ public class SingletonUnitTest {
         // Serialization
         FileOutputStream fos = new FileOutputStream("singleton.ser");
         ObjectOutputStream oos = new ObjectOutputStream(fos);
-        Singleton acutalSingletonObject = Singleton.getInstance();
-        oos.writeObject(acutalSingletonObject);
+        Singleton actualSingletonObject = Singleton.getInstance();
+        oos.writeObject(actualSingletonObject);
 
         // Deserialization
         Singleton deserializedSingletonObject = null;
         FileInputStream fis = new FileInputStream("singleton.ser");
         ObjectInputStream ois = new ObjectInputStream(fis);
         deserializedSingletonObject = (Singleton) ois.readObject();
-        assertEquals(acutalSingletonObject.hashCode(), deserializedSingletonObject.hashCode());
+        assertEquals(actualSingletonObject.hashCode(), deserializedSingletonObject.hashCode());
     }
 }
