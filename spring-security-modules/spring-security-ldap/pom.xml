@@ -65,11 +65,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-            <version>${jaxb-api.version}</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -84,7 +79,6 @@
 
     <properties>
         <apacheds.version>1.5.5</apacheds.version>
-        <jaxb-api.version>2.3.1</jaxb-api.version>
     </properties>
 
 </project>

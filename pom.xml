@@ -425,6 +425,7 @@
 
                 <!-- <module>spring-roo</module> --> <!-- Not supported JAVA-17327 -->
 
+                <module>spring-security-modules/spring-security-ldap</module>
                 <module>spring-soap</module>
                 <module>spring-static-resources</module>
                 <module>spring-swagger-codegen</module>
@@ -597,6 +598,7 @@
 
                 <!-- <module>spring-roo</module> --> <!-- Not supported JAVA-17327 -->
 
+                <module>spring-security-modules/spring-security-ldap</module>
                 <module>spring-soap</module>
                 <module>spring-static-resources</module>
                 <module>spring-swagger-codegen</module>
@@ -708,7 +710,6 @@
             </build>
 
             <modules>
-                <module>spring-security-modules</module>
                 <module>lombok-modules</module>
                 <module>osgi</module>
                 <module>spring-katharsis</module>
@@ -912,6 +913,7 @@
                 <module>spring-kafka</module>
 
                 <module>spring-native</module>
+                <module>spring-security-modules</module>
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>
 
