@@ -708,6 +708,7 @@
             </build>
 
             <modules>
+                <module>spring-security-modules</module>
                 <module>lombok-modules</module>
                 <module>osgi</module>
                 <module>spring-katharsis</module>
@@ -911,7 +912,6 @@
                 <module>spring-kafka</module>
 
                 <module>spring-native</module>
-                <module>spring-security-modules</module>
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>
 
