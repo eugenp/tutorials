@@ -3,7 +3,7 @@
 This module contains articles about core features in the Java language
 
 ### Relevant Articles: 
-- [Java Primitives versus Objects](https://www.baeldung.com/java-primitives-vs-objects)
+- [Java Primitives Versus Objects](https://www.baeldung.com/java-primitives-vs-objects)
 - [Command-Line Arguments in Java](https://www.baeldung.com/java-command-line-arguments)
 - [What Is a Pojo Class?](baeldung.com/java-pojo-class)
 - [Java Default Parameters Using Method Overloading](https://www.baeldung.com/java-default-parameters-method-overloading)
