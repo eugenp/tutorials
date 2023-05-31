@@ -2,7 +2,6 @@ package com.baeldung.spring.cloud.bootstrap.svcbook.book;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,8 +22,8 @@ public class BookService {
     }
 
     public Book findBookById(Long bookId) {
-        return Optional.ofNullable(bookRepository.findOne(bookId))
-            .orElseThrow(() -> new BookNotFoundException("Book not found. ID: " + bookId));
+        return bookRepository.findById(bookId)
+            .orElseThrow(() -> new BookNotFoundException(String.format("Book not found. ID: %s", bookId)));
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -37,7 +36,7 @@ public class BookService {
 
     @Transactional(propagation = Propagation.REQUIRED)
     public void deleteBook(Long bookId) {
-        bookRepository.delete(bookId);
+        bookRepository.deleteById(bookId);
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -60,7 +59,8 @@ public class BookService {
     public Book updateBook(Book book, Long bookId) {
         Preconditions.checkNotNull(book);
         Preconditions.checkState(book.getId() == bookId);
-        Preconditions.checkNotNull(bookRepository.findOne(bookId));
+        Preconditions.checkArgument(bookRepository.findById(bookId)
+            .isPresent());
         return bookRepository.save(book);
     }
 }
