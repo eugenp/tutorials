@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--suppress PyInterpreter -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>parent-modules</artifactId>
@@ -418,7 +418,12 @@
 
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
-                <!-- <module>spring-roo</module> --> <!-- JAVA-17327 -->
+
+                <module>spring-exceptions</module>
+                <module>spring-integration</module>
+                <module>spring-jenkins-pipeline</module>
+
+                <!-- <module>spring-roo</module> --> <!-- Not supported JAVA-17327 -->
 
                 <module>spring-security-modules</module>
                 <module>spring-soap</module>
@@ -586,7 +591,12 @@
 
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
-                <!-- <module>spring-roo</module> --> <!-- JAVA-17327 -->
+
+                <module>spring-exceptions</module>
+                <module>spring-integration</module>
+                <module>spring-jenkins-pipeline</module>
+
+                <!-- <module>spring-roo</module> --> <!-- Not supported JAVA-17327 -->
 
                 <module>spring-security-modules</module>
                 <module>spring-soap</module>
@@ -831,7 +841,7 @@
                 <module>disruptor</module>
                 <module>dozer</module>
                 <module>dubbo</module>
-                <!-- <module>feign</module> --> <!-- JAVA-19475 -->
+                <!-- <module>feign</module> --> <!-- JAVA-20337 -->
                 <module>google-cloud</module>
                 <module>graphql-modules</module>
                 <module>grpc</module>
@@ -1093,7 +1103,7 @@
                 <module>dozer</module>
 
                 <module>dubbo</module>
-                <!-- <module>feign</module> -->
+                <!-- <module>feign</module> --> <!-- JAVA-20337 -->
                 <module>google-cloud</module>
                 <module>graphql-modules</module>
                 <module>grpc</module>
