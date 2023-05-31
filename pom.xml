@@ -429,7 +429,6 @@
                 <module>spring-soap</module>
                 <module>spring-static-resources</module>
                 <module>spring-swagger-codegen</module>
-                <module>spring-web-modules</module>
                 <module>testing-modules</module>
                 <module>video-tutorials</module>
             </modules>
@@ -602,7 +601,6 @@
                 <module>spring-soap</module>
                 <module>spring-static-resources</module>
                 <module>spring-swagger-codegen</module>
-                <module>spring-web-modules</module>
                 <module>testing-modules</module>
                 <module>video-tutorials</module>
             </modules>
@@ -925,6 +923,7 @@
                 <module>spring-threads</module>
                 <module>spring-vault</module>
                 <module>spring-websockets</module>
+                <module>spring-web-modules</module>
                 <module>static-analysis</module>
                 <module>tensorflow-java</module>
                 <module>vertx-modules</module>
@@ -1186,6 +1185,7 @@
                 <module>spring-threads</module>
                 <module>spring-vault</module>
                 <module>spring-websockets</module>
+                <module>spring-web-modules</module>
                 <module>static-analysis</module>
                 <module>tensorflow-java</module>
                 <module>vertx-modules</module>
