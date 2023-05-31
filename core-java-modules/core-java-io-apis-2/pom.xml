@@ -99,9 +99,6 @@
             <scope>compile</scope>
         </dependency>
     </dependencies>
-    <properties>
-        <junit-jupiter-version>5.2.0</junit-jupiter-version>
-    </properties>
     <build>
         <finalName>core-java-io-apis-2</finalName>
         <resources>
@@ -111,5 +108,7 @@
             </resource>
         </resources>
     </build>
-
+    <properties>
+        <junit-jupiter-version>5.9.3</junit-jupiter-version>
+    </properties>
 </project>

@@ -20,7 +20,7 @@
         <module>dropwizard</module>
         <module>google-web-toolkit</module>
         <module>jakarta-ee</module>
-       <!-- <module>java-lite</module> Not upgradable to java-17 adding in default-second and  integration-lite-second profile that uses JDK 8-->
+        <!-- <module>java-lite</module> Not upgradable to java-17 adding in default-second and  integration-lite-second profile that uses JDK 8-->
         <module>javax-servlets</module>
         <module>javax-servlets-2</module>
         <module>jee-7</module>
