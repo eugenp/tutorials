@@ -6,7 +6,7 @@ This module contains articles about networking in Java
 
 - [Connecting Through Proxy Servers in Core Java](https://www.baeldung.com/java-connect-via-proxy-server)
 - [Broadcasting and Multicasting in Java](http://www.baeldung.com/java-broadcast-multicast)
-- [A Guide To UDP In Java](http://www.baeldung.com/udp-in-java)
+- [A Guide to UDP In Java](https://www.baeldung.com/udp-in-java)
 - [A Guide to HTTP Cookies in Java](https://www.baeldung.com/cookies-java)
 - [A Guide to the Java URL](http://www.baeldung.com/java-url)
 - [Working with Network Interfaces in Java](http://www.baeldung.com/java-network-interfaces)
