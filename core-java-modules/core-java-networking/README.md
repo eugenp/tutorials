@@ -12,6 +12,6 @@ This module contains articles about networking in Java
 - [Working with Network Interfaces in Java](http://www.baeldung.com/java-network-interfaces)
 - [A Guide to Java Sockets](http://www.baeldung.com/a-guide-to-java-sockets)
 - [Guide to Java URL Encoding/Decoding](http://www.baeldung.com/java-url-encoding-decoding)
-- [Difference between URL and URI](http://www.baeldung.com/java-url-vs-uri)
+- [Difference Between URL and URI](https://www.baeldung.com/java-url-vs-uri)
 - [Read an InputStream using the Java Server Socket](https://www.baeldung.com/java-inputstream-server-socket)
 - [[More -->]](/core-java-modules/core-java-networking-2)
