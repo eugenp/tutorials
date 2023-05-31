@@ -41,14 +41,18 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-io</artifactId>
-            <version>1.3.2</version>
+            <version>${commons-io.version}</version>
         </dependency>
         <dependency>
             <groupId>com.jayway.jsonpath</groupId>
             <artifactId>json-path</artifactId>
-            <version>2.7.0</version>
+            <version>${json-path.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>${jaxb-runtime.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -64,5 +68,11 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <commons-io.version>1.3.2</commons-io.version>
+        <json-path.version>2.7.0</json-path.version>
+        <jaxb-runtime.version>2.3.5</jaxb-runtime.version>
+    </properties>
 
 </project>
