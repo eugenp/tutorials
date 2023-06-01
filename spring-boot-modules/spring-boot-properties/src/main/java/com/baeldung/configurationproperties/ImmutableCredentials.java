@@ -1,7 +1,9 @@
 package com.baeldung.configurationproperties;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.bind.ConstructorBinding;
 
+@ConstructorBinding
 @ConfigurationProperties(prefix = "mail.credentials")
 public class ImmutableCredentials {
 
