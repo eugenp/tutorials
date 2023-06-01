@@ -28,7 +28,7 @@ public class OrdersService {
     public Order createOrder(OrderType orderType, String symbol, BigDecimal quantity, BigDecimal price) {
         
         Order order = new Order();
-        order.setOrderType(OrderType.BUY);
+        order.setOrderType(orderType);
         order.setSymbol(symbol);
         order.setQuantity(quantity);
         order.setPrice(price);
