@@ -38,7 +38,7 @@ import org.apache.hc.core5.ssl.SSLContexts;
 import org.apache.hc.core5.ssl.TrustStrategy;
 
 
-class HttpAsyncClientLiveTest {
+class HttpAsyncClientLiveTest extends GetRequestMockServer {
 
     private static final String HOST = "http://www.google.com";
     private static final String HOST_WITH_SSL = "https://mms.nw.ru/";
