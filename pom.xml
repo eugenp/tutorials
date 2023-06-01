@@ -366,7 +366,6 @@
                 <module>muleesb</module>
                 <module>web-modules/java-lite</module>
                 <module>web-modules/restx</module>
-                <module>web-modules/jee-7</module>
                 <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't support yet the jakarta API-->
                 <module>persistence-modules/hibernate-ogm</module> <!-- hibernate-ogm wasn't updated because it doesn't support jakarta API -->
                 <module>persistence-modules/java-cassandra</module> <!-- JAVA-21464 cassandra-unit library doesn't support to run with jdk9 and above -->
@@ -420,16 +419,13 @@
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
 
-                <module>spring-exceptions</module>
-                <module>spring-integration</module>
-                <module>spring-jenkins-pipeline</module>
-
                 <!-- <module>spring-roo</module> --> <!-- Not supported JAVA-17327 -->
 
-                <module>spring-security-modules/spring-security-ldap</module>
+                <module>spring-security-modules</module>
                 <module>spring-soap</module>
                 <module>spring-static-resources</module>
                 <module>spring-swagger-codegen</module>
+                <module>spring-web-modules</module>
                 <module>testing-modules</module>
                 <module>video-tutorials</module>
             </modules>
@@ -478,7 +474,6 @@
 
                 <module>image-processing</module>
 
-                <module>jenkins-modules</module>
                 <module>jhipster-modules</module>
             </modules>
         </profile>
@@ -547,7 +542,6 @@
                 <module>muleesb</module>
                 <module>web-modules/java-lite</module>
                 <module>web-modules/restx</module>
-                <module>web-modules/jee-7</module>
                 <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't support yet the jakarta API-->
                 <module>persistence-modules/hibernate-ogm</module> <!-- hibernate-ogm wasn't updated because it doesn't support jakarta API -->
                 <module>persistence-modules/java-cassandra</module> <!-- JAVA-21464 cassandra-unit library doesn't support to run with jdk9 and above -->
@@ -593,16 +587,13 @@
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
 
-                <module>spring-exceptions</module>
-                <module>spring-integration</module>
-                <module>spring-jenkins-pipeline</module>
-
                 <!-- <module>spring-roo</module> --> <!-- Not supported JAVA-17327 -->
 
-                <module>spring-security-modules/spring-security-ldap</module>
+                <module>spring-security-modules</module>
                 <module>spring-soap</module>
                 <module>spring-static-resources</module>
                 <module>spring-swagger-codegen</module>
+                <module>spring-web-modules</module>
                 <module>testing-modules</module>
                 <module>video-tutorials</module>
             </modules>
@@ -643,7 +634,6 @@
 
                 <module>image-processing</module>
 
-                <module>jenkins-modules</module>
                 <module>jhipster-modules</module>
             </modules>
 
@@ -913,7 +903,7 @@
                 <module>spring-kafka</module>
 
                 <module>spring-native</module>
-                <module>spring-security-modules</module>
+                <module>spring-security-modules/spring-security-oauth2-testing</module>
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>
 
@@ -925,7 +915,6 @@
                 <module>spring-threads</module>
                 <module>spring-vault</module>
                 <module>spring-websockets</module>
-                <module>spring-web-modules</module>
                 <module>static-analysis</module>
                 <module>tensorflow-java</module>
                 <module>vertx-modules</module>
@@ -937,6 +926,7 @@
                 <module>vaadin</module>
                 <module>libraries-3</module>
                 <module>web-modules</module>
+                <module>jenkins-modules</module>
                 <module>xml</module>
                 <module>xml-2</module>
             </modules>
@@ -1176,7 +1166,6 @@
                 <module>spring-kafka</module>
 
                 <module>spring-native</module>
-                <module>spring-security-modules</module>
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>
 
@@ -1188,7 +1177,6 @@
                 <module>spring-threads</module>
                 <module>spring-vault</module>
                 <module>spring-websockets</module>
-                <module>spring-web-modules</module>
                 <module>static-analysis</module>
                 <module>tensorflow-java</module>
                 <module>vertx-modules</module>
@@ -1200,6 +1188,7 @@
                 <module>vaadin</module>
                 <module>libraries-3</module>
                 <module>web-modules</module>
+                <module>jenkins-modules</module>
                 <module>xml</module>
                 <module>xml-2</module>
             </modules>
