@@ -69,6 +69,11 @@
             <artifactId>javax.annotation-api</artifactId>
             <version>${javax.annotation.version}</version>
         </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -130,6 +135,7 @@
         <h2.version>2.1.214</h2.version>
         <jakarta.xml.bind-api.version>4.0.0</jakarta.xml.bind-api.version>
         <javax.annotation.version>1.3.2</javax.annotation.version>
+        <mysql.version>8.0.33</mysql.version>
     </properties>
 
 </project>
