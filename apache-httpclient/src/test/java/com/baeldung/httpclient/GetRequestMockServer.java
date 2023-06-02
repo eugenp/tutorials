@@ -29,9 +29,8 @@ public class GetRequestMockServer {
     public static final String METHOD = "GET";
 
     @BeforeAll
-    static void startServer() throws IOException, URISyntaxException {
-        //serverPort = getFreePort();
-        serverPort = 8080;
+    static void startServer() throws IOException {
+        serverPort = getFreePort();
         System.out.println("Free port "+serverPort);
         serviceOneUrl = "http://" + SERVER_ADDRESS + ":" + serverPort + PATH_ONE;
         serviceTwoUrl = "http://" + SERVER_ADDRESS + ":" + serverPort + PATH_TWO;
