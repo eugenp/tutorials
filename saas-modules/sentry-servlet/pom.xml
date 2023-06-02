@@ -3,20 +3,15 @@
     xmlns="http://maven.apache.org/POM/4.0.0"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <artifactId>sentry-servlet</artifactId>
+    <name>sentry-servlet</name>
+    <packaging>war</packaging>
+
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>saas-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-    <artifactId>sentry-servlet</artifactId>
-    <name>sentry-servlet</name>
-    <packaging>war</packaging>
-
-    <properties>
-        <sentry.version>6.11.0</sentry.version>
-        <cargo.version>1.10.4</cargo.version>
-        <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -37,7 +32,7 @@
             <plugin>
                 <groupId>org.codehaus.cargo</groupId>
                 <artifactId>cargo-maven3-plugin</artifactId>
-                <version>${cargo.version}</version>
+                <version>${cargo-maven3-plugin.version}</version>
                 <configuration>
                     <container>
                         <containerId>tomcat9x</containerId>
@@ -47,4 +42,10 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <sentry.version>6.11.0</sentry.version>
+        <cargo-maven3-plugin.version>1.10.4</cargo-maven3-plugin.version>
+        <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
+    </properties>
 </project>

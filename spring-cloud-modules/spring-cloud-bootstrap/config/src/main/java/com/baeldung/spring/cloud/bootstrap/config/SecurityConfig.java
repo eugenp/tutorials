@@ -1,23 +1,41 @@
 package com.baeldung.spring.cloud.bootstrap.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.SecurityFilterChain;
 
-@Configuration
 @EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig {
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("configUser").password("configPassword").roles("SYSTEM");
+    @Bean
+    public InMemoryUserDetailsManager userDetailsService(BCryptPasswordEncoder bCryptPasswordEncoder) {
+        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
+        manager.createUser(User.withUsername("configUser")
+            .password(bCryptPasswordEncoder.encode("configPassword"))
+            .roles("SYSTEM")
+            .build());
+        return manager;
     }
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().anyRequest().hasRole("SYSTEM").and().httpBasic().and().csrf().disable();
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.authorizeRequests()
+            .anyRequest()
+            .hasRole("SYSTEM")
+            .and()
+            .httpBasic()
+            .and()
+            .csrf()
+            .disable();
+        return http.build();
+    }
+
+    @Bean
+    public BCryptPasswordEncoder encoder() {
+        return new BCryptPasswordEncoder();
     }
 }
