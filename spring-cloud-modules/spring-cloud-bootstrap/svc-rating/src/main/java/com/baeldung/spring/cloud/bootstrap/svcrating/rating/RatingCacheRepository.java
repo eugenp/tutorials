@@ -6,21 +6,21 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
+import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.core.SetOperations;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
+import org.springframework.stereotype.Repository;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.stereotype.Repository;
 
 @Repository
 public class RatingCacheRepository implements InitializingBean {
 
     @Autowired
-    private JedisConnectionFactory cacheConnectionFactory;
+    private LettuceConnectionFactory cacheConnectionFactory;
 
     private StringRedisTemplate redisTemplate;
     private ValueOperations<String, String> valueOps;

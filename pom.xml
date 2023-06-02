@@ -366,6 +366,7 @@
                 <module>muleesb</module>
                 <module>web-modules/java-lite</module>
                 <module>web-modules/restx</module>
+                <module>web-modules/jee-7</module>
                 <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't support yet the jakarta API-->
                 <module>persistence-modules/hibernate-ogm</module> <!-- hibernate-ogm wasn't updated because it doesn't support jakarta API -->
                 <module>persistence-modules/java-cassandra</module> <!-- JAVA-21464 cassandra-unit library doesn't support to run with jdk9 and above -->
@@ -425,11 +426,10 @@
 
                 <!-- <module>spring-roo</module> --> <!-- Not supported JAVA-17327 -->
 
-                <module>spring-security-modules</module>
+                <module>spring-security-modules/spring-security-ldap</module>
                 <module>spring-soap</module>
                 <module>spring-static-resources</module>
                 <module>spring-swagger-codegen</module>
-                <module>spring-web-modules</module>
                 <module>testing-modules</module>
                 <module>video-tutorials</module>
             </modules>
@@ -547,6 +547,7 @@
                 <module>muleesb</module>
                 <module>web-modules/java-lite</module>
                 <module>web-modules/restx</module>
+                <module>web-modules/jee-7</module>
                 <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't support yet the jakarta API-->
                 <module>persistence-modules/hibernate-ogm</module> <!-- hibernate-ogm wasn't updated because it doesn't support jakarta API -->
                 <module>persistence-modules/java-cassandra</module> <!-- JAVA-21464 cassandra-unit library doesn't support to run with jdk9 and above -->
@@ -598,11 +599,10 @@
 
                 <!-- <module>spring-roo</module> --> <!-- Not supported JAVA-17327 -->
 
-                <module>spring-security-modules</module>
+                <module>spring-security-modules/spring-security-ldap</module>
                 <module>spring-soap</module>
                 <module>spring-static-resources</module>
                 <module>spring-swagger-codegen</module>
-                <module>spring-web-modules</module>
                 <module>testing-modules</module>
                 <module>video-tutorials</module>
             </modules>
@@ -913,7 +913,7 @@
                 <module>spring-kafka</module>
 
                 <module>spring-native</module>
-                <module>spring-security-modules/spring-security-oauth2-testing</module>
+                <module>spring-security-modules</module>
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>
 
@@ -925,6 +925,7 @@
                 <module>spring-threads</module>
                 <module>spring-vault</module>
                 <module>spring-websockets</module>
+                <module>spring-web-modules</module>
                 <module>static-analysis</module>
                 <module>tensorflow-java</module>
                 <module>vertx-modules</module>
@@ -1175,6 +1176,7 @@
                 <module>spring-kafka</module>
 
                 <module>spring-native</module>
+                <module>spring-security-modules</module>
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>
 
@@ -1186,6 +1188,7 @@
                 <module>spring-threads</module>
                 <module>spring-vault</module>
                 <module>spring-websockets</module>
+                <module>spring-web-modules</module>
                 <module>static-analysis</module>
                 <module>tensorflow-java</module>
                 <module>vertx-modules</module>
