@@ -17,7 +17,7 @@ public class TarExtractorCommonsCompressUnitTest {
     public void givenTarFile_whenUntar_thenExtractedToDestination() throws IOException {
         Path destination = Paths.get("/tmp/commons-compress");
 
-        new TarExtractorCommonsCompress(Resources.TAR_FILE, false, destination).untar();
+        new TarExtractorCommonsCompress(Resources.tarFile(), false, destination).untar();
 
         assertTrue(Files.list(destination)
             .findFirst()
@@ -28,7 +28,7 @@ public class TarExtractorCommonsCompressUnitTest {
     public void givenTarGzFile_whenUntar_thenExtractedToDestination() throws IOException {
         Path destination = Paths.get("/tmp/commons-compress-gz");
 
-        new TarExtractorCommonsCompress(Resources.TAR_GZ_FILE, true, destination).untar();
+        new TarExtractorCommonsCompress(Resources.tarGzFile(), true, destination).untar();
 
         assertTrue(Files.list(destination)
             .findFirst()
