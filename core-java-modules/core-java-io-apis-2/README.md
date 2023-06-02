@@ -12,3 +12,4 @@ This module contains articles about core Java input/output(IO) APIs.
 - [Storing Java Scanner Input in an Array](https://www.baeldung.com/java-store-scanner-input-in-array)
 - [How to Take Input as String With Spaces in Java Using Scanner?](https://www.baeldung.com/java-scanner-input-with-spaces)
 - [Write Console Output to Text File in Java](https://www.baeldung.com/java-write-console-output-file)
+- [What’s the difference between Scanner next() and nextLine() methods?](https://www.baeldung.com/java-scanner-next-vs-nextline)
