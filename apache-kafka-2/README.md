@@ -10,3 +10,4 @@ You can build the project from the command line using: *mvn clean install*, or i
 - [Add Custom Headers to a Kafka Message](https://www.baeldung.com/java-kafka-custom-headers)
 - [Get Last N Messages in Apache Kafka Topic](https://www.baeldung.com/java-apache-kafka-get-last-n-messages)
 - [Is a Key Required as Part of Sending Messages to Kafka?](https://www.baeldung.com/java-kafka-message-key)
+- [Read Data From the Beginning Using Kafka Consumer API](https://www.baeldung.com/java-kafka-consumer-api-read)
