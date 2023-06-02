@@ -31,7 +31,6 @@ import org.apache.http.protocol.HttpContext;
 import org.apache.http.ssl.SSLContexts;
 import org.junit.jupiter.api.Test;
 
-import com.baeldung.httpclient.httpclient.GetRequestMockServer;
 
 class HttpAsyncClientV4LiveTest extends GetRequestMockServer {
 
@@ -89,7 +88,7 @@ class HttpAsyncClientV4LiveTest extends GetRequestMockServer {
     void whenUseProxyWithHttpClient_thenCorrect() throws Exception {
         final CloseableHttpAsyncClient client = HttpAsyncClients.createDefault();
         client.start();
-        final HttpHost proxy = new HttpHost("127.0.0.1", GetRequestMockServer.mockServer.getPort());
+        final HttpHost proxy = new HttpHost("127.0.0.1", GetRequestMockServer.serverPort);
         final RequestConfig config = RequestConfig.custom().setProxy(proxy).build();
         final HttpGet request = new HttpGet(HOST_WITH_PROXY);
         request.setConfig(config);

@@ -103,17 +103,14 @@ class HttpAsyncClientLiveTest extends GetRequestMockServer {
 
     @Test
     void whenUseProxyWithHttpClient_thenCorrect() throws Exception {
-        final HttpHost proxy = new HttpHost("127.0.0.1", GetRequestMockServer.mockServer.getPort());
+        final HttpHost proxy = new HttpHost("127.0.0.1", GetRequestMockServer.serverPort);
         DefaultProxyRoutePlanner routePlanner = new DefaultProxyRoutePlanner(proxy);
         final CloseableHttpAsyncClient client = HttpAsyncClients.custom()
             .setRoutePlanner(routePlanner)
             .build();
         client.start();
 
-        final RequestConfig config = RequestConfig.custom().setProxy(proxy).build();
         final SimpleHttpRequest request = new SimpleHttpRequest("GET" ,HOST_WITH_PROXY);
-        request.setConfig(config);
-
         final Future<SimpleHttpResponse> future = client.execute(request, null);
         final HttpResponse  response = future.get();
         assertThat(response.getCode(), equalTo(200));
