@@ -17,7 +17,7 @@ public class TarExtractorAntUnitTest {
     public void givenTarFile_whenUntar_thenExtractedToDestination() throws IOException {
         Path destination = Paths.get("/tmp/ant");
 
-        new TarExtractorAnt(Resources.TAR_FILE, false, destination).untar();
+        new TarExtractorAnt(Resources.tarFile(), false, destination).untar();
 
         assertTrue(Files.list(destination)
             .findFirst()
@@ -28,7 +28,7 @@ public class TarExtractorAntUnitTest {
     public void givenTarGzFile_whenUntar_thenExtractedToDestination() throws IOException {
         Path destination = Paths.get("/tmp/ant-gz");
 
-        new TarExtractorAnt(Resources.TAR_GZ_FILE, true, destination).untar();
+        new TarExtractorAnt(Resources.tarGzFile(), true, destination).untar();
 
         assertTrue(Files.list(destination)
             .findFirst()

@@ -17,7 +17,7 @@ public class TarExtractorVfsUnitTest {
     public void givenTarFile_whenUntar_thenExtractedToDestination() throws IOException {
         Path destination = Paths.get("/tmp/vfs");
 
-        new TarExtractorVfs(Resources.TAR_FILE, false, destination).untar();
+        new TarExtractorVfs(Resources.tarFile(), false, destination).untar();
 
         assertTrue(Files.list(destination)
             .findFirst()
@@ -28,7 +28,7 @@ public class TarExtractorVfsUnitTest {
     public void givenTarGzFile_whenUntar_thenExtractedToDestination() throws IOException {
         Path destination = Paths.get("/tmp/vfs-gz");
 
-        new TarExtractorVfs(Resources.TAR_GZ_FILE, true, destination).untar();
+        new TarExtractorVfs(Resources.tarGzFile(), true, destination).untar();
 
         assertTrue(Files.list(destination)
             .findFirst()

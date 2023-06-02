@@ -41,11 +41,9 @@ public class TarExtractorVfs extends TarExtractor {
             if (entry.isReadable() && entry.getType() == FileType.FILE) {
                 Files.createDirectories(extractTo.getParent());
 
-                try (FileContent fc = entry.getContent(); InputStream stream = fc.getInputStream()) {
+                try (FileContent content = entry.getContent(); InputStream stream = content.getInputStream()) {
                     Files.copy(stream, extractTo, StandardCopyOption.REPLACE_EXISTING);
                 }
-            } else {
-                Files.createDirectories(extractTo);
             }
         }
 
