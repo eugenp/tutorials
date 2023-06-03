@@ -32,7 +32,7 @@ public class RedissonIntegrationTest {
     public static void setUp() {
         redisServer = RedisServer.builder()
                         .port(6379)
-                        .setting("maxheap 128M")
+                        .setting("maxmemory 128M")
                         .build();
         redisServer.start();
         client = Redisson.create();

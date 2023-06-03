@@ -1,10 +1,6 @@
 package com.baeldung.hibernate.customtypes;
 
-import org.hibernate.HibernateException;
-import org.hibernate.engine.spi.SessionFactoryImplementor;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
-import org.hibernate.metamodel.spi.ValueAccess;
-import org.hibernate.usertype.CompositeUserType;
 import org.hibernate.usertype.DynamicParameterizedType;
 import org.hibernate.usertype.UserType;
 
@@ -16,38 +12,13 @@ import java.sql.Types;
 import java.util.Objects;
 import java.util.Properties;
 
-public class SalaryType implements UserType<Salary>, CompositeUserType<Salary>, DynamicParameterizedType {
+public class SalaryType implements UserType<Salary>, DynamicParameterizedType {
 
     private String localCurrency;
 
     @Override
-    public Object getPropertyValue(Salary component, int property) throws HibernateException {
-
-        switch (property) {
-            case 0:
-                return component.getAmount();
-            case 1:
-                return component.getCurrency();
-            default:
-                throw new IllegalArgumentException(property +
-                        " is an invalid property index for class type " +
-                        component.getClass().getName());
-        }
-    }
-
-    @Override
-    public Salary instantiate(ValueAccess values, SessionFactoryImplementor sessionFactory) {
-        return null;
-    }
-
-    @Override
-    public Class<?> embeddable() {
-        return Salary.class;
-    }
-
-    @Override
     public int getSqlType() {
-        return Types.BIGINT;
+        return Types.VARCHAR;
     }
 
     @Override
@@ -74,12 +45,12 @@ public class SalaryType implements UserType<Salary>, CompositeUserType<Salary>, 
     @Override
     public Salary nullSafeGet(ResultSet rs, int position, SharedSessionContractImplementor session, Object owner) throws SQLException {
         Salary salary = new Salary();
-        salary.setAmount(rs.getLong(position));
 
-        if (rs.wasNull())
-            return null;
+        String salaryValue = rs.getString(position);
 
-        salary.setCurrency(rs.getString(position));
+        salary.setAmount(Long.parseLong(salaryValue.split(" ")[1]));
+
+        salary.setCurrency(salaryValue.split(" ")[0]);
 
         return salary;
     }
@@ -87,13 +58,11 @@ public class SalaryType implements UserType<Salary>, CompositeUserType<Salary>, 
     @Override
     public void nullSafeSet(PreparedStatement st, Salary value, int index, SharedSessionContractImplementor session) throws SQLException {
         if (Objects.isNull(value))
-            st.setNull(index, Types.BIGINT);
+            st.setNull(index, Types.VARCHAR);
         else {
-
-            st.setLong(index, SalaryCurrencyConvertor.convert(
-                    value.getAmount(),
-                    value.getCurrency(), localCurrency));
-            st.setString(index + 1, value.getCurrency());
+            Long salaryValue = SalaryCurrencyConvertor.convert(value.getAmount(),
+                    value.getCurrency(), localCurrency);
+            st.setString(index, value.getCurrency() + " " + salaryValue);
         }
     }
 
@@ -117,7 +86,7 @@ public class SalaryType implements UserType<Salary>, CompositeUserType<Salary>, 
 
     @Override
     public Serializable disassemble(Salary value) {
-        return (Serializable) deepCopy(value);
+        return deepCopy(value);
     }
 
     @Override
