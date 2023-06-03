@@ -1,6 +1,6 @@
 package com.baeldung.backoff.jitter;
 
-import io.github.resilience4j.retry.IntervalFunction;
+import io.github.resilience4j.core.IntervalFunction;
 import io.github.resilience4j.retry.Retry;
 import io.github.resilience4j.retry.RetryConfig;
 import org.junit.Before;
@@ -15,8 +15,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.function.Function;
 
 import static com.baeldung.backoff.jitter.BackoffWithJitterUnitTest.RetryProperties.*;
-import static io.github.resilience4j.retry.IntervalFunction.ofExponentialBackoff;
-import static io.github.resilience4j.retry.IntervalFunction.ofExponentialRandomBackoff;
+import static io.github.resilience4j.core.IntervalFunction.ofExponentialBackoff;
+import static io.github.resilience4j.core.IntervalFunction.ofExponentialRandomBackoff;
 import static java.util.Collections.nCopies;
 import static java.util.concurrent.Executors.newFixedThreadPool;
 import static org.mockito.ArgumentMatchers.anyString;

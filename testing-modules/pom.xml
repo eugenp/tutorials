@@ -52,6 +52,7 @@
         <module>xmlunit-2</module>
         <module>zerocode</module>
         <module>mockito-2</module>
+        <module>testing-techniques</module>
         <module>gatling-java</module>
     </modules>
 

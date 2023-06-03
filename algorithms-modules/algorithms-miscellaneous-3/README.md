@@ -10,7 +10,7 @@ This module contains articles about algorithms. Some classes of algorithms, e.g.
 - [Converting Between Roman and Arabic Numerals in Java](https://www.baeldung.com/java-convert-roman-arabic)
 - [Practical Java Examples of the Big O Notation](https://www.baeldung.com/java-algorithm-complexity)
 - [Checking If a List Is Sorted in Java](https://www.baeldung.com/java-check-if-list-sorted)
-- [Checking if a Java Graph has a Cycle](https://www.baeldung.com/java-graph-has-a-cycle)
+- [Checking if a Java Graph Has a Cycle](https://www.baeldung.com/java-graph-has-a-cycle)
 - [A Guide to the Folding Technique in Java](https://www.baeldung.com/folding-hashing-technique)
 - [Creating a Triangle with for Loops in Java](https://www.baeldung.com/java-print-triangle)
 - [The K-Means Clustering Algorithm in Java](https://www.baeldung.com/java-k-means-clustering-algorithm)
