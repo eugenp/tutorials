@@ -428,7 +428,6 @@
 
                 <module>spring-security-modules/spring-security-ldap</module>
                 <module>spring-soap</module>
-                <module>spring-static-resources</module>
                 <module>spring-swagger-codegen</module>
                 <module>testing-modules</module>
                 <module>video-tutorials</module>
@@ -601,7 +600,6 @@
 
                 <module>spring-security-modules/spring-security-ldap</module>
                 <module>spring-soap</module>
-                <module>spring-static-resources</module>
                 <module>spring-swagger-codegen</module>
                 <module>testing-modules</module>
                 <module>video-tutorials</module>
@@ -922,6 +920,7 @@
                 <module>spring-state-machine</module>
                 <module>spring-shell</module>
                 <module>spring-spel</module>
+                <module>spring-static-resources</module>
                 <module>spring-threads</module>
                 <module>spring-vault</module>
                 <module>spring-websockets</module>
@@ -1185,6 +1184,7 @@
                 <module>spring-state-machine</module>
                 <module>spring-shell</module>
                 <module>spring-spel</module>
+                <module>spring-static-resources</module>
                 <module>spring-threads</module>
                 <module>spring-vault</module>
                 <module>spring-websockets</module>
