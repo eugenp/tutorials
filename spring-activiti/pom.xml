@@ -9,12 +9,10 @@
     <description>Demo project for Spring Boot</description>
 
     <parent>
-        <!-- This module uses Activiti version 6.0.0 with support for Spring Boot 1. -->
-        <!-- Upgrade to Boot 2 should be clubbed with upgrade to Activiti 7 -->
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-1</artifactId>
+        <artifactId>parent-boot-2</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-1</relativePath>
+        <relativePath>../parent-boot-2</relativePath>
     </parent>
 
     <dependencyManagement>
@@ -32,17 +30,20 @@
     <dependencies>
         <dependency>
             <groupId>org.activiti</groupId>
-            <artifactId>activiti-spring-boot-starter-basic</artifactId>
-            <version>${activiti.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.activiti</groupId>
-            <artifactId>activiti-spring-boot-starter-security</artifactId>
+            <artifactId>activiti-spring-boot-starter</artifactId>
             <version>${activiti.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
@@ -70,7 +71,7 @@
     </build>
 
     <properties>
-        <activiti.version>6.0.0</activiti.version>
+        <activiti.version>7.1.0.M6</activiti.version>
         <log4j2.version>2.17.1</log4j2.version>
     </properties>
 

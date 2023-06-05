@@ -8,7 +8,7 @@ import org.hibernate.Session;
 import org.junit.*;
 import org.junit.rules.ExpectedException;
 
-import javax.persistence.PersistenceException;
+import jakarta.persistence.PersistenceException;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;

@@ -1,6 +1,8 @@
 package com.baeldung.jgrapht;
 
-import static org.junit.Assert.assertEquals;
+
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
 
@@ -9,15 +11,15 @@ import org.jgrapht.alg.HamiltonianCycle;
 import org.jgrapht.generate.CompleteGraphGenerator;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.SimpleWeightedGraph;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-public class CompleteGraphUnitTest {
+class CompleteGraphUnitTest {
 
     static SimpleWeightedGraph<String, DefaultEdge> completeGraph;
     static int size = 10;
 
-    @Before
+    @BeforeEach
     public void createCompleteGraph() {
         completeGraph = new SimpleWeightedGraph<>(DefaultEdge.class);
         CompleteGraphGenerator<String, DefaultEdge> completeGenerator = new CompleteGraphGenerator<String, DefaultEdge>(size);

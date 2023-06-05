@@ -1,114 +1,78 @@
 package com.baeldung.httpclient.sec;
 
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.protocol.HttpClientContext;
-import org.apache.http.cookie.ClientCookie;
-import org.apache.http.impl.client.BasicCookieStore;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.impl.cookie.BasicClientCookie;
-import org.apache.http.protocol.BasicHttpContext;
-import org.apache.http.protocol.HttpContext;
-import com.baeldung.httpclient.ResponseUtil;
+import com.baeldung.handler.CustomHttpClientResponseHandler;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.hc.client5.http.classic.methods.HttpGet;
+import org.apache.hc.client5.http.cookie.BasicCookieStore;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
+import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
+import org.apache.hc.client5.http.impl.classic.HttpClients;
+import org.apache.hc.client5.http.impl.cookie.BasicClientCookie;
+import org.apache.hc.client5.http.protocol.HttpClientContext;
+
+import org.apache.hc.core5.http.protocol.BasicHttpContext;
+import org.apache.hc.core5.http.protocol.HttpContext;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.assertThat;
 
-public class HttpClientCookieLiveTest {
-
-    private CloseableHttpClient instance;
-
-    private CloseableHttpResponse response;
-    
-    private static Logger log = LoggerFactory.getLogger(HttpClientCookieLiveTest.class);
-
-    @Before
-    public final void before() {
-        instance = HttpClientBuilder.create().build();
-    }
-
-    @After
-    public final void after() throws IllegalStateException, IOException {
-        ResponseUtil.closeResponse(response);
-    }
-
-    // tests
+class HttpClientCookieLiveTest {
 
     @Test
-    public final void whenSettingCookiesOnARequest_thenCorrect() throws IOException {
-        instance = HttpClientBuilder.create().build();
+    final void whenSettingCookiesOnARequest_thenCorrect() throws IOException {
         final HttpGet request = new HttpGet("http://www.github.com");
         request.setHeader("Cookie", "JSESSIONID=1234");
+        try (CloseableHttpClient client = HttpClients.createDefault();
 
-        response = instance.execute(request);
-
-        assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
+            CloseableHttpResponse response = (CloseableHttpResponse) client
+                .execute(request, new CustomHttpClientResponseHandler())) {
+            assertThat(response.getCode(), equalTo(200));
+        }
     }
 
     @Test
-    public final void givenUsingDeprecatedApi_whenSettingCookiesOnTheHttpClient_thenCorrect() throws IOException {
+    final void whenSettingCookiesOnTheHttpClient_thenCookieSentCorrectly() throws IOException {
         final BasicCookieStore cookieStore = new BasicCookieStore();
         final BasicClientCookie cookie = new BasicClientCookie("JSESSIONID", "1234");
         cookie.setDomain(".github.com");
-        cookie.setAttribute(ClientCookie.DOMAIN_ATTR, "true");
-
+        cookie.setAttribute("domain", "true");
         cookie.setPath("/");
         cookieStore.addCookie(cookie);
-        
-        DefaultHttpClient client = new DefaultHttpClient();
-        client.setCookieStore(cookieStore);
-        
-        final HttpGet request = new HttpGet("https://www.github.com");
-
-        response = (CloseableHttpResponse) client.execute(request);
-
-        assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
-    }
-
-    @Test
-    public final void whenSettingCookiesOnTheHttpClient_thenCookieSentCorrectly() throws IOException {
-        final BasicCookieStore cookieStore = new BasicCookieStore();
-        final BasicClientCookie cookie = new BasicClientCookie("JSESSIONID", "1234");
-        cookie.setDomain(".github.com");
-        cookie.setAttribute(ClientCookie.DOMAIN_ATTR, "true");
-        cookie.setPath("/");
-        cookieStore.addCookie(cookie);
-        instance = HttpClientBuilder.create().setDefaultCookieStore(cookieStore).build();
-
         final HttpGet request = new HttpGet("http://www.github.com");
 
-        response = instance.execute(request);
+        try (CloseableHttpClient client = HttpClientBuilder.create()
+            .setDefaultCookieStore(cookieStore)
+            .build();
 
-        assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
+            CloseableHttpResponse response = (CloseableHttpResponse) client
+                .execute(request, new CustomHttpClientResponseHandler())) {
+            assertThat(response.getCode(), equalTo(200));
+        }
+
     }
 
     @Test
-    public final void whenSettingCookiesOnTheRequest_thenCookieSentCorrectly() throws IOException {
+    final void whenSettingCookiesOnTheRequest_thenCookieSentCorrectly() throws IOException {
         final BasicCookieStore cookieStore = new BasicCookieStore();
         final BasicClientCookie cookie = new BasicClientCookie("JSESSIONID", "1234");
         cookie.setDomain(".github.com");
         cookie.setPath("/");
         cookieStore.addCookie(cookie);
-        instance = HttpClientBuilder.create().build();
-
         final HttpGet request = new HttpGet("http://www.github.com");
-
         final HttpContext localContext = new BasicHttpContext();
         localContext.setAttribute(HttpClientContext.COOKIE_STORE, cookieStore);
         // localContext.setAttribute(ClientContext.COOKIE_STORE, cookieStore); // before 4.3
-        response = instance.execute(request, localContext);
 
-        assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
+        try (CloseableHttpClient client = HttpClientBuilder.create().build();
+
+            CloseableHttpResponse response = (CloseableHttpResponse) client
+                .execute(request, localContext, new CustomHttpClientResponseHandler())) {
+            assertThat(response.getCode(), equalTo(200));
+        }
     }
 
 }

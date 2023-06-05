@@ -10,8 +10,8 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>runner</module>
-        <module>core</module>
+        <module>runner-module</module>
+        <module>core-module</module>
     </modules>
 
     <dependencyManagement>
@@ -25,6 +25,7 @@
     </dependencyManagement>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <guava.version>31.1-jre</guava.version>
     </properties>

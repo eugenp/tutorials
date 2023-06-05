@@ -7,7 +7,8 @@ import org.junit.Rule;
 import org.junit.Test;
 
 import java.io.File;
-import java.io.FileOutputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -25,7 +26,7 @@ public class BinaryFileDownloaderIntegrationTest {
         String fileName = "download.txt";
 
         ProgressCallback progressCallback = progress -> assertEquals(100.0, progress, .0);
-        try (BinaryFileWriter writer = new BinaryFileWriter(new FileOutputStream(fileName), progressCallback); BinaryFileDownloader tested = new BinaryFileDownloader(new OkHttpClient(), writer)) {
+        try (BinaryFileWriter writer = new BinaryFileWriter(Files.newOutputStream(Paths.get(fileName)), progressCallback); BinaryFileDownloader tested = new BinaryFileDownloader(new OkHttpClient(), writer)) {
             long downloaded = tested.download(server.url("/greetings").toString());
             assertEquals(body.length(), downloaded);
             File downloadedFile = new File(fileName);

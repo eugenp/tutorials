@@ -79,7 +79,7 @@
         <jooq.version>3.11.11</jooq.version>
         <json.version>20220320</json.version>
         <microstream.storage.version>07.00.00-MS-GA</microstream.storage.version>
-        <h2.version>1.4.200</h2.version>
+        <h2.version>2.1.214</h2.version>
     </properties>
 
 </project>

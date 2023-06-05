@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
-             http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
-	version="2.2">
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             version="3.0"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
 
 	<persistence-unit name="java-jpa-scheduled-day">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
@@ -12,18 +11,14 @@
 		<class>com.baeldung.jpa.basicannotation.Course</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
-			<property name="javax.persistence.jdbc.driver"
-				value="org.h2.Driver" />
-			<property name="javax.persistence.jdbc.url"
-				value="jdbc:h2:mem:test;INIT=RUNSCRIPT FROM 'classpath:database.sql'" />
-			<property name="javax.persistence.jdbc.user" value="sa" />
-			<property name="javax.persistence.jdbc.password" value="" />
-			<property name="hibernate.dialect"
-				value="org.hibernate.dialect.H2Dialect" />
+			<property name="jakarta.persistence.jdbc.driver" value="org.h2.Driver" />
+			<property name="jakarta.persistence.jdbc.url" value="jdbc:h2:mem:test;MODE=LEGACY;INIT=RUNSCRIPT FROM 'classpath:database.sql'" />
+			<property name="jakarta.persistence.jdbc.user" value="sa" />
+			<property name="jakarta.persistence.jdbc.password" value="" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
 			<!--<property name="hibernate.hbm2ddl.auto" value="create-drop" /> -->
 			<property name="show_sql" value="true" />
-			<property name="hibernate.temp.use_jdbc_metadata_defaults"
-				value="false" />
+			<property name="hibernate.temp.use_jdbc_metadata_defaults" value="false" />
 		</properties>
 	</persistence-unit>
 
@@ -34,18 +29,14 @@
 		<class>com.baeldung.jpa.enums.CategoryConverter</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
-			<property name="javax.persistence.jdbc.driver"
-				value="org.h2.Driver" />
-			<property name="javax.persistence.jdbc.url"
-				value="jdbc:h2:mem:test" />
-			<property name="javax.persistence.jdbc.user" value="sa" />
-			<property name="javax.persistence.jdbc.password" value="" />
-			<property name="hibernate.dialect"
-				value="org.hibernate.dialect.H2Dialect" />
+			<property name="jakarta.persistence.jdbc.driver" value="org.h2.Driver" />
+			<property name="jakarta.persistence.jdbc.url" value="jdbc:h2:mem:test;MODE=LEGACY" />
+			<property name="jakarta.persistence.jdbc.user" value="sa" />
+			<property name="jakarta.persistence.jdbc.password" value="" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
 			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
 			<property name="show_sql" value="true" />
-			<property name="hibernate.temp.use_jdbc_metadata_defaults"
-				value="false" />
+			<property name="hibernate.temp.use_jdbc_metadata_defaults" value="false" />
 		</properties>
 	</persistence-unit>
 
@@ -54,39 +45,26 @@
 		<class>com.baeldung.jpa.model.Car</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
-			<property name="javax.persistence.jdbc.driver"
-				value="com.mysql.jdbc.Driver" />
-			<property name="javax.persistence.jdbc.url"
-				value="jdbc:mysql://127.0.0.1:3306/baeldung" />
-			<property name="javax.persistence.jdbc.user"
-				value="baeldung" />
-			<property name="javax.persistence.jdbc.password"
-				value="YourPassword" />
-			<property name="hibernate.dialect"
-				value="org.hibernate.dialect.MySQLDialect" />
+			<property name="jakarta.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1:3306/baeldung" />
+			<property name="jakarta.persistence.jdbc.user" value="baeldung" />
+			<property name="jakarta.persistence.jdbc.password" value="YourPassword" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
 			<property name="hibernate.show_sql" value="true" />
 		</properties>
 	</persistence-unit>
 
-	<persistence-unit name="entity-graph-pu"
-		transaction-type="RESOURCE_LOCAL">
+	<persistence-unit name="entity-graph-pu" transaction-type="RESOURCE_LOCAL">
 		<class>com.baeldung.jpa.entitygraph.model.Post</class>
 		<class>com.baeldung.jpa.entitygraph.model.User</class>
 		<class>com.baeldung.jpa.entitygraph.model.Comment</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
-
 			<!--H2 -->
-			<property name="javax.persistence.jdbc.driver"
-				value="org.h2.Driver" />
-			<property name="javax.persistence.jdbc.url"
-				value="jdbc:h2:mem:entitygraphdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE" />
-
-			<property
-				name="javax.persistence.schema-generation.database.action"
-				value="drop-and-create" />
-			<property name="javax.persistence.sql-load-script-source"
-				value="data-init.sql" />
+			<property name="jakarta.persistence.jdbc.driver" value="org.h2.Driver" />
+			<property name="jakarta.persistence.jdbc.url" value="jdbc:h2:mem:entitygraphdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;NON_KEYWORDS=USER" />
+			<property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create" />
+			<property name="jakarta.persistence.sql-load-script-source" value="data-init.sql" />
 		</properties>
 	</persistence-unit>
 
@@ -96,17 +74,11 @@
 		<class>com.baeldung.jpa.datetime.JPA22DateTimeEntity</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
-			<property name="javax.persistence.jdbc.driver"
-				value="org.postgresql.Driver" />
-			<property name="javax.persistence.jdbc.url"
-				value="jdbc:postgresql://localhost:5432/java8-datetime2" />
-			<property name="javax.persistence.jdbc.user"
-				value="postgres" />
-			<property name="javax.persistence.jdbc.password"
-				value="postgres" />
-			<property
-				name="javax.persistence.schema-generation.database.action"
-				value="drop-and-create" />
+			<property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver" />
+			<property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/java8-datetime2" />
+			<property name="jakarta.persistence.jdbc.user" value="postgres" />
+			<property name="jakarta.persistence.jdbc.password" value="postgres" />
+			<property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create" />
 
 			<!-- configure logging -->
 			<property name="eclipselink.logging.level" value="INFO" />
@@ -124,18 +96,14 @@
 		<class>com.baeldung.jpa.primarykeys.AccountId</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
-			<property name="javax.persistence.jdbc.driver"
-				value="org.h2.Driver" />
-			<property name="javax.persistence.jdbc.url"
-				value="jdbc:h2:mem:test" />
-			<property name="javax.persistence.jdbc.user" value="sa" />
-			<property name="javax.persistence.jdbc.password" value="" />
-			<property name="hibernate.dialect"
-				value="org.hibernate.dialect.H2Dialect" />
+			<property name="jakarta.persistence.jdbc.driver" value="org.h2.Driver" />
+			<property name="jakarta.persistence.jdbc.url" value="jdbc:h2:mem:test;MODE=LEGACY" />
+			<property name="jakarta.persistence.jdbc.user" value="sa" />
+			<property name="jakarta.persistence.jdbc.password" value="" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
 			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
 			<property name="show_sql" value="true" />
-			<property name="hibernate.temp.use_jdbc_metadata_defaults"
-				value="false" />
+			<property name="hibernate.temp.use_jdbc_metadata_defaults" value="false" />
 		</properties>
 	</persistence-unit>
 

@@ -136,7 +136,6 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
-                    <version>${maven-war-plugin.version}</version>
                     <configuration>
                         <warSourceDirectory>src/main/webapp</warSourceDirectory>
                         <warName>springMvcSimple</warName>
@@ -149,8 +148,6 @@
     </build>
 
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
         <hibernate-validator.version>6.0.10.Final</hibernate-validator.version>
         <deploy-path>enter-location-of-server</deploy-path>
         <org.thymeleaf-version>3.0.11.RELEASE</org.thymeleaf-version>

@@ -3,13 +3,17 @@ package com.baeldung.dao;
 import com.baeldung.entity.Person;
 import com.baeldung.entity.QPerson;
 import com.querydsl.core.group.GroupBy;
+import com.querydsl.jpa.JPQLTemplates;
 import com.querydsl.jpa.impl.JPAQuery;
+import com.querydsl.jpa.impl.JPAQueryFactory;
+
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.List;
 import java.util.Map;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 
 @Repository
 public class PersonDaoImpl implements PersonDao {
@@ -57,7 +61,7 @@ public class PersonDaoImpl implements PersonDao {
 
     @Override
     public Map<String, Integer> findMaxAgeByName() {
-        final JPAQuery<Person> query = new JPAQuery<>(em);
+        final JPAQueryFactory query = new JPAQueryFactory(JPQLTemplates.DEFAULT, em);
         final QPerson person = QPerson.person;
 
         return query.from(person).transform(GroupBy.groupBy(person.firstname).as(GroupBy.max(person.age)));

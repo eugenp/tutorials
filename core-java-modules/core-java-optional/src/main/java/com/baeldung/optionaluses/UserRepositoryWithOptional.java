@@ -18,4 +18,13 @@ public class UserRepositoryWithOptional {
 
         return Optional.empty();
     }
+
+    public void throwExceptionWhenUserIsPresent(String id) {
+
+        this.findById(id)
+            .ifPresent(user -> {
+                throw new UserFoundException("User with ID : " + user.getId() + " is found");
+            });
+
+    }
 }

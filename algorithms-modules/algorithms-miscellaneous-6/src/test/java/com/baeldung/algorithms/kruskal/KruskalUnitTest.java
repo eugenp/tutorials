@@ -1,21 +1,23 @@
 package com.baeldung.algorithms.kruskal;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertEquals;
 
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import com.google.common.graph.MutableValueGraph;
 import com.google.common.graph.ValueGraph;
 import com.google.common.graph.ValueGraphBuilder;
 import com.baeldung.algorithms.kruskal.Kruskal;
 
-public class KruskalUnitTest {
+class KruskalUnitTest {
 
     private MutableValueGraph<Integer, Double> graph;
 
-    @Before
+    @BeforeEach
     public void setup() {
         graph = ValueGraphBuilder.undirected().build();
         graph.putEdgeValue(0, 1, 8.0);
@@ -28,7 +30,7 @@ public class KruskalUnitTest {
     }
 
     @Test
-    public void givenGraph_whenMinimumSpanningTree_thenOutputCorrectResult() {
+    void givenGraph_whenMinimumSpanningTree_thenOutputCorrectResult() {
         final Kruskal kruskal = new Kruskal();
         ValueGraph<Integer, Double> spanningTree = kruskal.minSpanningTree(graph);
 
@@ -47,7 +49,7 @@ public class KruskalUnitTest {
     }
 
     @Test
-    public void givenGraph_whenMaximumSpanningTree_thenOutputCorrectResult() {
+    void givenGraph_whenMaximumSpanningTree_thenOutputCorrectResult() {
         final Kruskal kruskal = new Kruskal();
         ValueGraph<Integer, Double> spanningTree = kruskal.maxSpanningTree(graph);
 

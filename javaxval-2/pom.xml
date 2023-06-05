@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>javaxval-2</artifactId>
     <version>0.1-SNAPSHOT</version>
@@ -60,9 +60,6 @@
     <properties>
         <hibernate-validator.version>6.2.3.Final</hibernate-validator.version>
         <hibernate-validator.ap.version>6.2.0.Final</hibernate-validator.ap.version>
-        <maven.compiler.version>3.6.1</maven.compiler.version>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
         <javax.el.version>3.0.0</javax.el.version>
         <org.springframework.version>5.3.21</org.springframework.version>
         <spring.boot.version>2.7.1</spring.boot.version>

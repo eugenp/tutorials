@@ -1,100 +1,72 @@
 package com.baeldung.httpclient;
 
 import com.google.common.collect.Lists;
-import org.apache.http.Header;
-import org.apache.http.HttpHeaders;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.client.methods.RequestBuilder;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.message.BasicHeader;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+
+import org.apache.hc.client5.http.classic.methods.HttpGet;
+import org.apache.hc.client5.http.impl.classic.BasicHttpClientResponseHandler;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.classic.HttpClients;
+import org.apache.hc.core5.http.Header;
+import org.apache.hc.core5.http.HttpHeaders;
+import org.apache.hc.core5.http.message.BasicHeader;
+
+import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 import java.io.IOException;
 import java.util.List;
 
-public class HttpClientHeadersLiveTest {
+class HttpClientHeadersLiveTest {
 
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private static final String SAMPLE_URL = "http://www.github.com";
 
-    private CloseableHttpClient client;
-
-    private CloseableHttpResponse response;
-
-    @Before
-    public final void before() {
-        client = HttpClientBuilder.create().build();
-    }
-
-    @After
-    public final void after() throws IllegalStateException, IOException {
-        ResponseUtil.closeResponse(response);
-    }
-
-    // tests - headers - deprecated
-
     @Test
-    public final void givenNewApi_whenClientUsesCustomUserAgent_thenCorrect() throws ClientProtocolException, IOException {
-        client = HttpClients.custom().setUserAgent("Mozilla/5.0 Firefox/26.0").build();
-
+    void whenClientUsesCustomUserAgent_thenCorrect() throws IOException {
+        final CloseableHttpClient client = HttpClients.custom()
+            .setUserAgent("Mozilla/5.0 Firefox/26.0")
+            .build();
         final HttpGet request = new HttpGet(SAMPLE_URL);
-        response = client.execute(request);
+
+        String response = client.execute(request, new BasicHttpClientResponseHandler());
+        logger.info("Response -> {}", response);
     }
 
-    // tests - headers - user agent
-
     @Test
-    public final void givenConfigOnRequest_whenRequestHasCustomUserAgent_thenCorrect() throws ClientProtocolException, IOException {
-        client = HttpClients.custom().build();
+    void whenRequestHasCustomUserAgent_thenCorrect() throws IOException {
+        CloseableHttpClient client = HttpClients.createDefault();
         final HttpGet request = new HttpGet(SAMPLE_URL);
         request.setHeader(HttpHeaders.USER_AGENT, "Mozilla/5.0 Firefox/26.0");
-        response = client.execute(request);
+        String response = client.execute(request, new BasicHttpClientResponseHandler());
+        logger.info("Response -> {}", response);
     }
 
     @Test
-    public final void givenConfigOnClient_whenRequestHasCustomUserAgent_thenCorrect() throws ClientProtocolException, IOException {
-        client = HttpClients.custom().setUserAgent("Mozilla/5.0 Firefox/26.0").build();
-        response = client.execute(new HttpGet(SAMPLE_URL));
-    }
-
-    // tests - headers - content type
-
-    @Test
-    public final void givenUsingNewApi_whenRequestHasCustomContentType_thenCorrect() throws ClientProtocolException, IOException {
-        client = HttpClients.custom().build();
+    void whenRequestHasCustomContentType_thenCorrect() throws IOException {
         final HttpGet request = new HttpGet(SAMPLE_URL);
         request.setHeader(HttpHeaders.CONTENT_TYPE, "application/json");
-        response = client.execute(request);
+
+        try (CloseableHttpClient client = HttpClients.createDefault()) {
+            String response = client.execute(request, new BasicHttpClientResponseHandler());
+            logger.debug("Response -> {}", response);
+        }
     }
 
     @Test
-    public final void givenRequestBuildWithBuilderWithNewApi_whenRequestHasCustomContentType_thenCorrect() throws ClientProtocolException, IOException {
-        final CloseableHttpClient client2 = HttpClients.custom().build();
+    void givenConfigOnClient_whenRequestHasCustomContentType_thenCorrect() throws IOException {
         final HttpGet request = new HttpGet(SAMPLE_URL);
-        request.setHeader(HttpHeaders.CONTENT_TYPE, "application/json");
-        response = client2.execute(request);
-    }
-
-    @Test
-    public final void givenRequestBuildWithBuilder_whenRequestHasCustomContentType_thenCorrect() throws ClientProtocolException, IOException {
-        client = HttpClients.custom().build();
-        final HttpUriRequest request = RequestBuilder.get().setUri(SAMPLE_URL).setHeader(HttpHeaders.CONTENT_TYPE, "application/json").build();
-        response = client.execute(request);
-    }
-
-    @Test
-    public final void givenConfigOnClient_whenRequestHasCustomContentType_thenCorrect() throws ClientProtocolException, IOException {
         final Header header = new BasicHeader(HttpHeaders.CONTENT_TYPE, "application/json");
         final List<Header> headers = Lists.newArrayList(header);
-        client = HttpClients.custom().setDefaultHeaders(headers).build();
-        final HttpUriRequest request = RequestBuilder.get().setUri(SAMPLE_URL).build();
-        response = client.execute(request);
-    }
 
+
+        try (CloseableHttpClient client = HttpClients.custom()
+            .setDefaultHeaders(headers)
+            .build()) {
+
+            String response = client.execute(request, new BasicHttpClientResponseHandler());
+            logger.debug("Response -> {}", response);
+        }
+    }
 }

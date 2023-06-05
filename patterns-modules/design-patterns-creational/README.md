@@ -9,4 +9,3 @@
 - [How to Replace Many if Statements in Java](https://www.baeldung.com/java-replace-if-statements)
 - [Prototype Pattern in Java](https://www.baeldung.com/java-pattern-prototype)
 - [Implementing Factory Pattern With Generics in Java](https://www.baeldung.com/java-factory-pattern-generics)
-- [The Factory Design Pattern in Java](https://www.baeldung.com/java-factory-pattern)
