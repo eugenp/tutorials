@@ -79,7 +79,7 @@
     </profiles>
 
     <properties>
-        <testng.version>7.1.0</testng.version>
+        <testng.version>7.8.0</testng.version>
     </properties>
 
 </project>
