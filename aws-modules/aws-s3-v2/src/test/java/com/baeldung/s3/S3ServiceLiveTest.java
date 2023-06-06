@@ -18,7 +18,7 @@ import java.util.Collections;
 
 import static org.mockito.Mockito.when;
 
-class S3ServiceUnitTest {
+class S3ServiceLiveTest {
 
     @Mock
     private S3Client s3Client;
