@@ -1,40 +1,40 @@
 package com.baeldung.mock.url;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
-public class UrlFetcherUnitTest {
+class UrlFetcherUnitTest {
 
     private static MockHttpURLConnection mockHttpURLConnection;
 
-    @BeforeClass
+    @BeforeAll
     public static void setUp() {
         mockHttpURLConnection = new MockHttpURLConnection(null);
         URL.setURLStreamHandlerFactory(new MockURLStreamHandlerFactory(mockHttpURLConnection));
     }
 
     @Test
-    public void givenMockedUrl_whenRequestSent_thenIsUrlAvailableTrue() throws Exception {
+    void givenMockedUrl_whenRequestSent_thenIsUrlAvailableTrue() throws Exception {
         mockHttpURLConnection.setResponseCode(HttpURLConnection.HTTP_OK);
         URL url = new URL("https://www.baeldung.com/");
 
         UrlFetcher fetcher = new UrlFetcher(url);
-        assertTrue("Url should be available: ", fetcher.isUrlAvailable());
+        assertTrue(fetcher.isUrlAvailable(), "Url should be available: ");
     }
 
     @Test
-    public void givenMockedUrl_whenRequestSent_thenIsUrlAvailableFalse() throws Exception {
+    void givenMockedUrl_whenRequestSent_thenIsUrlAvailableFalse() throws Exception {
         mockHttpURLConnection.setResponseCode(HttpURLConnection.HTTP_FORBIDDEN);
         URL url = new URL("https://www.baeldung.com/");
 
         UrlFetcher fetcher = new UrlFetcher(url);
-        assertFalse("Url should NOT be available: ", fetcher.isUrlAvailable());
+        assertFalse(fetcher.isUrlAvailable(), "Url should NOT be available: ");
     }
 
 }

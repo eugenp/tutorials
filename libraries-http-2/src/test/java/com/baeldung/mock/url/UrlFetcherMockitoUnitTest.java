@@ -1,19 +1,19 @@
 package com.baeldung.mock.url;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class UrlFetcherMockitoUnitTest {
+class UrlFetcherMockitoUnitTest {
     
     @Test
-    public void givenMockedUrl_whenRequestSent_thenIsUrlAvailableTrue() throws Exception {
+    void givenMockedUrl_whenRequestSent_thenIsUrlAvailableTrue() throws Exception {
         HttpURLConnection mockHttpURLConnection = mock(HttpURLConnection.class);
         when(mockHttpURLConnection.getResponseCode()).thenReturn(HttpURLConnection.HTTP_OK);
         
@@ -21,11 +21,11 @@ public class UrlFetcherMockitoUnitTest {
         when(mockURL.openConnection()).thenReturn(mockHttpURLConnection);
 
         UrlFetcher fetcher = new UrlFetcher(mockURL);
-        assertTrue("Url should be available: ", fetcher.isUrlAvailable());
+        assertTrue(fetcher.isUrlAvailable(), "Url should be available: ");
     }
 
     @Test
-    public void givenMockedUrl_whenRequestSent_thenIsUrlAvailableFalse() throws Exception {
+     void givenMockedUrl_whenRequestSent_thenIsUrlAvailableFalse() throws Exception {
         HttpURLConnection mockHttpURLConnection = mock(HttpURLConnection.class);
         when(mockHttpURLConnection.getResponseCode()).thenReturn(HttpURLConnection.HTTP_NOT_FOUND);
         
@@ -33,7 +33,7 @@ public class UrlFetcherMockitoUnitTest {
         when(mockURL.openConnection()).thenReturn(mockHttpURLConnection);
         
         UrlFetcher fetcher = new UrlFetcher(mockURL);
-        assertFalse("Url should NOT be available: ", fetcher.isUrlAvailable());
+        assertFalse(fetcher.isUrlAvailable(), "Url should NOT be available: ");
     }
 
 }
