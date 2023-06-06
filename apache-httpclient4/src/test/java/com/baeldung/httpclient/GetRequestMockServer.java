@@ -29,9 +29,8 @@ public class GetRequestMockServer {
     public static final String METHOD = "GET";
 
     @BeforeAll
-    static void startServer() throws IOException {
+    static void startServer() throws IOException, URISyntaxException {
         serverPort = getFreePort();
-        System.out.println("Free port "+serverPort);
         serviceOneUrl = "http://" + SERVER_ADDRESS + ":" + serverPort + PATH_ONE;
         serviceTwoUrl = "http://" + SERVER_ADDRESS + ":" + serverPort + PATH_TWO;
         mockServer = startClientAndServer(serverPort);
@@ -45,29 +44,29 @@ public class GetRequestMockServer {
 
     private static void mockGetRequest() {
         new MockServerClient(SERVER_ADDRESS, serverPort)
-          .when(
-            request()
-              .withPath(PATH_ONE)
-              .withMethod(METHOD),
-            exactly(5)
-          )
-          .respond(
-            response()
-              .withStatusCode(HttpStatus.SC_OK)
-              .withBody("{\"status\":\"ok\"}")
-          );
+            .when(
+                request()
+                    .withPath(PATH_ONE)
+                    .withMethod(METHOD),
+                exactly(5)
+            )
+            .respond(
+                response()
+                    .withStatusCode(HttpStatus.SC_OK)
+                    .withBody("{\"status\":\"ok\"}")
+            );
         new MockServerClient(SERVER_ADDRESS, serverPort)
-          .when(
-            request()
-              .withPath(PATH_TWO)
-              .withMethod(METHOD),
-            exactly(1)
-          )
-          .respond(
-            response()
-              .withStatusCode(HttpStatus.SC_OK)
-              .withBody("{\"status\":\"ok\"}")
-          );
+            .when(
+                request()
+                    .withPath(PATH_TWO)
+                    .withMethod(METHOD),
+                exactly(1)
+            )
+            .respond(
+                response()
+                    .withStatusCode(HttpStatus.SC_OK)
+                    .withBody("{\"status\":\"ok\"}")
+            );
     }
 
     private static int getFreePort () throws IOException {
@@ -75,5 +74,4 @@ public class GetRequestMockServer {
             return serverSocket.getLocalPort();
         }
     }
-
 }
