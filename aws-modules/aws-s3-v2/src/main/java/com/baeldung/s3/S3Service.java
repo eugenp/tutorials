@@ -35,9 +35,10 @@ class S3Service {
           .build();
         ListObjectsV2Response listObjectsV2Response = s3Client.listObjectsV2(listObjectsV2Request);
 
-        System.out.println("Number of objects in the bucket: " + listObjectsV2Response.contents()
-          .stream()
-          .count());
+        List<S3Object> contents = listObjectsV2Response.contents();
+
+        System.out.println("Number of objects in the bucket: " + contents.stream().count());
+        contents.stream().forEach(System.out::println);
     }
 
     public void listAllObjectsInBucket(String bucketName) {
@@ -52,9 +53,9 @@ class S3Service {
             ListObjectsV2Response response = s3Client.listObjectsV2(requestBuilder.build());
             nextContinuationToken = response.nextContinuationToken();
 
-            totalObjects += response.contents()
-              .stream()
-              .count();
+            totalObjects += response.contents().stream()
+              .peek(System.out::println)
+              .reduce(0, (subtotal, element) -> subtotal + 1, Integer::sum);
         } while (nextContinuationToken != null);
         System.out.println("Number of objects in the bucket: " + totalObjects);
     }
@@ -69,11 +70,12 @@ class S3Service {
         long totalObjects = 0;
 
         for (ListObjectsV2Response page : listObjectsV2Iterable) {
-            long retrievedPageSize = page.contents().stream().count();
+            long retrievedPageSize = page.contents().stream()
+              .peek(System.out::println)
+              .reduce(0, (subtotal, element) -> subtotal + 1, Integer::sum);
             totalObjects += retrievedPageSize;
             System.out.println("Page size: " + retrievedPageSize);
         }
-
         System.out.println("Total objects in the bucket: " + totalObjects);
     }
 
@@ -88,7 +90,9 @@ class S3Service {
         long totalObjects = 0;
 
         for (ListObjectsV2Response page : listObjectsV2Iterable) {
-            long retrievedPageSize = page.contents().stream().count();
+            long retrievedPageSize = page.contents().stream()
+              .peek(System.out::println)
+              .reduce(0, (subtotal, element) -> subtotal + 1, Integer::sum);
             totalObjects += retrievedPageSize;
             System.out.println("Page size: " + retrievedPageSize);
         }
