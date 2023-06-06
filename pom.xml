@@ -370,6 +370,7 @@
                 <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't support yet the jakarta API-->
                 <module>persistence-modules/hibernate-ogm</module> <!-- hibernate-ogm wasn't updated because it doesn't support jakarta API -->
                 <module>persistence-modules/java-cassandra</module> <!-- JAVA-21464 cassandra-unit library doesn't support to run with jdk9 and above -->
+                <module>persistence-modules/spring-data-cassandra-reactive</module> <!--JAVA-21844-->
             </modules>
 
         </profile>
@@ -551,6 +552,7 @@
                 <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't support yet the jakarta API-->
                 <module>persistence-modules/hibernate-ogm</module> <!-- hibernate-ogm wasn't updated because it doesn't support jakarta API -->
                 <module>persistence-modules/java-cassandra</module> <!-- JAVA-21464 cassandra-unit library doesn't support to run with jdk9 and above -->
+                <module>persistence-modules/spring-data-cassandra-reactive</module> <!--JAVA-21844-->
             </modules>
 
         </profile>
