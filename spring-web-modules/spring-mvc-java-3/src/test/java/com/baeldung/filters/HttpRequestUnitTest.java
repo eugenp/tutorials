@@ -15,10 +15,10 @@ import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class HttpRequestUnitTest {
+public class HttpRequestUnitTest {
 
     @Test
-    void givenHttpServletRequest_whenCalling_getReaderAfter_getInputStream_thenThrowIllegalStateException() throws IOException {
+    public void givenHttpServletRequest_whenCalling_getReaderAfter_getInputStream_thenThrowIllegalStateException() throws IOException {
         HttpServletRequest request = new MockHttpServletRequest();
         try (ServletInputStream ignored = request.getInputStream()) {
             IllegalStateException exception = assertThrows(IllegalStateException.class, request::getReader);
@@ -28,7 +28,7 @@ class HttpRequestUnitTest {
     }
 
     @Test
-    void givenServletRequest_whenDoFilter_thenCanCallBoth() throws ServletException, IOException {
+    public void givenServletRequest_whenDoFilter_thenCanCallBoth() throws ServletException, IOException {
         MockHttpServletRequest req = new MockHttpServletRequest();
         MockHttpServletResponse res = new MockHttpServletResponse();
         MockFilterChain chain = new MockFilterChain();
