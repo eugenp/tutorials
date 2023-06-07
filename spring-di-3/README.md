@@ -9,6 +9,6 @@ This module contains articles about dependency injection with Spring
 - [Finding All Beans with a Custom Annotation](https://www.baeldung.com/spring-injecting-all-annotated-beans)
 - [Guide to Spring @Autowired](http://www.baeldung.com/spring-autowire)
 - [@Order in Spring](http://www.baeldung.com/spring-order)
-- [How to dynamically Autowire a Bean in Spring](https://www.baeldung.com/spring-dynamic-autowire)
+- [How to Dynamically Autowire a Bean in Spring](https://www.baeldung.com/spring-dynamic-autowire)
 - [Spring @Import Annotation](https://www.baeldung.com/spring-import-annotation)
 - More articles: [[<-- prev]](../spring-di-2)[[more -->]](../spring-di-4)

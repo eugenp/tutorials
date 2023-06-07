@@ -44,6 +44,7 @@
         <module>spring-mockito</module>
         <module>spring-testing-2</module>
         <module>spring-testing</module>
+        <module>testing-assertions</module>
         <module>test-containers</module>
         <module>testing-libraries-2</module>
         <module>testing-libraries</module>
@@ -52,6 +53,7 @@
         <module>xmlunit-2</module>
         <module>zerocode</module>
         <module>mockito-2</module>
+        <module>testing-techniques</module>
         <module>gatling-java</module>
     </modules>
 
