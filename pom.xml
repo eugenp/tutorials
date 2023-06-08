@@ -811,6 +811,7 @@
 
                 <module>lightrun</module>
                 <module>tablesaw</module>
+                <module>image-compressing</module>
                 <module>geotools</module>
 
                 <module>jws</module>
@@ -1073,6 +1074,7 @@
 
                 <module>lightrun</module>
                 <module>tablesaw</module>
+                <module>image-compressing</module>
                 <module>geotools</module>
 
                 <module>jws</module>
