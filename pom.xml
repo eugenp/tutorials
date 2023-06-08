@@ -334,7 +334,6 @@
                 <module>parent-spring-6</module>
                 <module>parent-java</module>
 
-                <module>checker-framework</module>
                 <!-- <module>clojure-modules</module> --> <!-- Not a maven project -->
 
                 <module>core-java-modules/core-java-8</module>
@@ -516,7 +515,6 @@
                 <module>parent-spring-6</module>
                 <module>parent-java</module>
 
-                <module>checker-framework</module>
                 <!-- <module>clojure-modules</module> --> <!-- Not a maven project -->
 
                 <module>core-java-modules/core-java-8</module>
@@ -770,6 +768,7 @@
                 <module>asciidoctor</module>
                 <module>aws-modules</module>
 
+                <module>checker-framework</module>
                 <module>couchbase</module>
                 <module>core-groovy-modules</module>
 
@@ -1029,6 +1028,7 @@
                 <module>asciidoctor</module>
                 <module>aws-modules</module>
 
+                <module>checker-framework</module>
                 <module>couchbase</module>
 
                 <module>core-groovy-modules</module>
