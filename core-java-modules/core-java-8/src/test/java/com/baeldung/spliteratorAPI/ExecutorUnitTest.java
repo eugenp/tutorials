@@ -45,9 +45,10 @@ public class ExecutorUnitTest {
 	}
 
 	@Test
-	public void givenAstreamOfArticles_whenProcessedInSequentiallyWithSpliterator_ProducessRightOutput(){
-		List<Article> articles =  Stream.generate(() -> new Article("Java")).limit(35000).collect(Collectors.toList());             Spliterator<Article> spliterator =  articles.spliterator();
-		while(spliterator.tryAdvance(article -> article.setName(article.getName().concat("- published by Baeldung"))));
+	public void givenAstreamOfArticles_whenProcessedInSequentiallyWithSpliterator_ProducessRightOutput() {
+		List<Article> articles = Stream.generate(() -> new Article("Java")).limit(35000).collect(Collectors.toList());
+		Spliterator<Article> spliterator = articles.spliterator();
+		while (spliterator.tryAdvance(article -> article.setName(article.getName().concat("- published by Baeldung"))));
 
 		articles.forEach(article -> assertThat(article.getName()).isEqualTo("Java- published by Baeldung"));
 	}
