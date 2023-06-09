@@ -16,8 +16,8 @@ public class JsonMergeUnitTest {
 
     @Test
     public void givenAnObjectAndJson_whenUsingJsonMerge_thenExpectUpdateInPOJO() throws JsonProcessingException {
-        String newData = "{\"name\":\"Steve\",\"keyboard\":{\"style\":\"Mechanical\"}}";
-        ProgrammerAnnotated programmerToUpdate = new ProgrammerAnnotated("John", "Java", new Keyboard("Membrane", "US"));
+        String newData = "{\"favouriteLanguage\":\"Java\",\"keyboard\":{\"style\":\"Mechanical\"}}";
+        ProgrammerAnnotated programmerToUpdate = new ProgrammerAnnotated("John", "C++", new Keyboard("Membrane", "US"));
 
         ObjectMapper objectMapper = new ObjectMapper();
         ProgrammerAnnotated update = objectMapper.readerForUpdating(programmerToUpdate)
@@ -31,8 +31,8 @@ public class JsonMergeUnitTest {
 
     @Test
     public void givenAnObjectAndJson_whenNotUsingJsonMerge_thenExpectNoUpdateInPOJO() throws JsonProcessingException {
-        String newData = "{\"name\":\"Steve\",\"keyboard\":{\"style\":\"Mechanical\"}}";
-        ProgrammerNotAnnotated programmerToUpdate = new ProgrammerNotAnnotated("John", "Java", new Keyboard("Membrane", "US"));
+        String newData = "{\"favouriteLanguage\":\"Java\",\"keyboard\":{\"style\":\"Mechanical\"}}";
+        ProgrammerNotAnnotated programmerToUpdate = new ProgrammerNotAnnotated("John", "C++", new Keyboard("Membrane", "US"));
 
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectReader objectReader = objectMapper.readerForUpdating(programmerToUpdate);
