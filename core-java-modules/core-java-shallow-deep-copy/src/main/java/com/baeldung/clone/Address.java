@@ -1,7 +1,7 @@
 package core;
 
 /**
- * Model class with
+ * Model class representing Address of a Person
  */
 class Address {
     private String city;
@@ -14,7 +14,6 @@ class Address {
         return city;
     }
 
-    // Setter method for city attribute
     public void setCity(String city) {
         this.city = city;
     }
