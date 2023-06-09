@@ -23,11 +23,11 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.baeldung.spring.jms.testing.EmbeddedActiveMqIntegrationTest.TestConfiguration;
+import com.baeldung.spring.jms.testing.EmbeddedActiveMqManualTest.TestConfiguration;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = { TestConfiguration.class })
-public class EmbeddedActiveMqIntegrationTest {
+public class EmbeddedActiveMqManualTest {
 
     @ClassRule
     public static EmbeddedActiveMQBroker embeddedBroker = new EmbeddedActiveMQBroker();
