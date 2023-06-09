@@ -3,7 +3,7 @@ package core;
 /**
  * Model class representing Address of a Person
  */
-class Address {
+class Address implements Cloneable{
     private String city;
 
     public Address(String city) {
@@ -18,4 +18,8 @@ class Address {
         this.city = city;
     }
 
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
 }

@@ -3,6 +3,7 @@ package core;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotEquals;
 import static org.testng.Assert.assertNotSame;
+import static org.testng.Assert.fail;
 
 import org.testng.annotations.Test;
 
@@ -45,4 +46,25 @@ public class ShallowDeepCopyUnitTest {
         // Verify that the address city is the same in both objects
         assertEquals(original.getAddress().getCity(), deepCopy.getAddress().getCity());
     }
+
+    @Test
+    public void testClone() {
+        Address address = new Address("Bengaluru");
+        Person original = new Person("Rajat", 29, address);
+
+        try {
+            Person cloned = (Person) original.clone();
+            // Verify that the cloned object is not the same as the original object
+            assertNotSame(original, cloned);
+            // Verify that the cloned object has the same values as the original object
+            assertEquals(original.getName(), cloned.getName());
+            assertEquals(original.getAge(), cloned.getAge());
+            assertEquals(original.getAddress().getCity(), cloned.getAddress().getCity());
+            // Verify that the cloned object has a different reference for the Address object
+            assertNotSame(original.getAddress(), cloned.getAddress());
+        } catch (CloneNotSupportedException e) {
+            fail("Cloning not supported");
+        }
+    }
+
 }

@@ -5,7 +5,7 @@ import core.Address;
 /**
  * Model class representing a Person
  */
-public class Person {
+public class Person implements Cloneable{
     private String name;
     private int age;
     private Address address;
@@ -25,6 +25,13 @@ public class Person {
     public Person deepCopy() {
         Address copiedAddress = new Address(this.address.getCity());
         return new Person(this.name, this.age, copiedAddress);
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        Person clonedPerson = (Person) super.clone();
+        clonedPerson.address = (Address) address.clone();
+        return clonedPerson;
     }
 
     public String getName() {
