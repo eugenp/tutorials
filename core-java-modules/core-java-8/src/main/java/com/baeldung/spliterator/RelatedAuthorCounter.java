@@ -1,4 +1,4 @@
-package com.baeldung.spliteratorAPI;
+package com.baeldung.spliterator;
 
 public class RelatedAuthorCounter {
     private final int counter;
