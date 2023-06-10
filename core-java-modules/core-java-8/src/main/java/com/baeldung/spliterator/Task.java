@@ -1,4 +1,4 @@
-package com.baeldung.spliteratorAPI;
+package com.baeldung.spliterator;
 
 import java.util.Spliterator;
 import java.util.concurrent.Callable;
