@@ -1,4 +1,4 @@
-package com.baeldung.spliteratorAPI;
+package com.baeldung.spliterator;
 
 import java.util.List;
 import java.util.stream.Collectors;
