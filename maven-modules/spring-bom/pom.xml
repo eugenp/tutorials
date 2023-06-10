@@ -37,7 +37,7 @@
     </dependencies>
 
     <properties>
-        <spring-framework-bom.version>4.3.8.RELEASE</spring-framework-bom.version>
+        <spring-framework-bom.version>5.3.27</spring-framework-bom.version>
     </properties>
 
 </project>
