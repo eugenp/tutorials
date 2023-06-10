@@ -1,5 +1,8 @@
 package com.baeldung.spliteratorAPI;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Spliterator;
@@ -7,7 +10,6 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
-import static org.assertj.core.api.Assertions.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -52,4 +54,19 @@ public class ExecutorUnitTest {
 
 		articles.forEach(article -> assertThat(article.getName()).isEqualTo("Java- published by Baeldung"));
 	}
+
+	@Test
+	public void givenSpliterator_whenAppliedToListOfArticles_thenSplitIntoEqualHalf() {
+		List<Article> articlesListOne = new ArrayList<>();
+		List<Article> articlesListTwo = new ArrayList<>();
+
+		split1.forEachRemaining(articlesListOne::add);
+		split2.forEachRemaining(articlesListTwo::add);
+
+		System.out.println(articlesListOne.size());
+		System.out.println(articlesListTwo.size());
+
+		assertThat(articlesListOne).doesNotContainAnyElementsOf(articlesListTwo);
+	}
+
 }
