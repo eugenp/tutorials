@@ -1,5 +1,6 @@
 package com.baeldung.spliterator;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Spliterator;
@@ -62,5 +63,19 @@ public class ExecutorUnitTest {
             .concat("- published by Baeldung"))));
 
         articles.forEach(article -> assertThat(article.getName()).isEqualTo("Java- published by Baeldung"));
+    }
+
+    @Test
+    public void givenSpliterator_whenAppliedToListOfArticles_thenSplitIntoEqualHalf() {
+        List<Article> articlesListOne = new ArrayList<>();
+        List<Article> articlesListTwo = new ArrayList<>();
+
+        split1.forEachRemaining(articlesListOne::add);
+        split2.forEachRemaining(articlesListTwo::add);
+
+        System.out.println(articlesListOne.size());
+        System.out.println(articlesListTwo.size());
+
+        assertThat(articlesListOne).doesNotContainAnyElementsOf(articlesListTwo);
     }
 }
