@@ -1,12 +1,13 @@
 package com.baeldung.spring.data.couchbase.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.baeldung.spring.data.couchbase.model.Student;
 
 public interface StudentService {
 
-    Student findOne(String id);
+    Optional<Student> findOne(String id);
 
     List<Student> findAll();
 

@@ -1,8 +1,13 @@
 package com.baeldung.cloud.openfeign.defaulterrorhandling.controller;
 
-import com.baeldung.cloud.openfeign.defaulterrorhandling.client.ProductClient;
-import com.github.tomakehurst.wiremock.WireMockServer;
-import com.github.tomakehurst.wiremock.client.WireMock;
+import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
+import static com.github.tomakehurst.wiremock.client.WireMock.configureFor;
+import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
+import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
+import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.options;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,10 +21,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-import static com.github.tomakehurst.wiremock.client.WireMock.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
+import com.baeldung.cloud.openfeign.defaulterrorhandling.client.ProductClient;
+import com.github.tomakehurst.wiremock.WireMockServer;
+import com.github.tomakehurst.wiremock.client.WireMock;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(ProductController.class)
@@ -37,9 +41,9 @@ public class ProductControllerUnitTest {
 
     @Before
     public void startWireMockServer() {
-        wireMockServer = new WireMockServer(8081);
-        configureFor("localhost", 8081);
+        wireMockServer = new WireMockServer(options().dynamicPort());
         wireMockServer.start();
+        configureFor("localhost", wireMockServer.port());
     }
 
     @After

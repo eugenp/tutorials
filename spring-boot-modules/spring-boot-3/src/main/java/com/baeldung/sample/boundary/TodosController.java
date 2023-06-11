@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.net.URI;
 import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
@@ -34,6 +35,13 @@ public class TodosController {
     private final TodosService service;
     // Mapping zwischen den Schichten
     private final TodoDtoMapper mapper;
+
+
+    @GetMapping(value = {"/name"},produces = DEFAULT_MEDIA_TYPE)
+    public List<String> findAllName(){
+        return List.of("Hello", "World");
+    }
+
 
     @GetMapping(produces = DEFAULT_MEDIA_TYPE)
     public Collection<TodoResponseDto> findAll() {

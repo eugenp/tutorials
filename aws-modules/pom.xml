@@ -15,14 +15,14 @@
 
     <modules>
         <module>aws-app-sync</module>
-        <module>aws-lambda</module>
+        <module>aws-lambda-modules</module>
         <module>aws-miscellaneous</module>
         <module>aws-reactive</module>
         <module>aws-s3</module>
     </modules>
 
     <properties>
-        <aws-java-sdk.version>1.11.290</aws-java-sdk.version>
+        <aws-java-sdk.version>1.12.331</aws-java-sdk.version>
         <maven-shade-plugin.version>3.0.0</maven-shade-plugin.version>
     </properties>
 

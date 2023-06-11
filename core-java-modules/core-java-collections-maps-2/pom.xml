@@ -4,7 +4,6 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-collections-maps-2</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
     <name>core-java-collections-maps-2</name>
     <packaging>jar</packaging>
 
@@ -54,7 +53,7 @@
     </dependencies>
 
     <properties>
-        <streamex.version>0.6.5</streamex.version>
+        <streamex.version>0.8.1</streamex.version>
         <avaitility.version>1.7.0</avaitility.version>
         <eclipse-collections.version>8.2.0</eclipse-collections.version>
         <hppc.version>0.7.2</hppc.version>

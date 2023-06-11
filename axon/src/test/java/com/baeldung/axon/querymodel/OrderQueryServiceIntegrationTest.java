@@ -13,6 +13,7 @@ import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
 
 import java.util.Collections;
@@ -58,6 +59,15 @@ class OrderQueryServiceIntegrationTest {
         assertEquals(OrderStatusResponse.CREATED, response.getOrderStatus());
         assertTrue(response.getProducts()
           .isEmpty());
+    }
+
+    @Test
+    void givenOrderCreatedEventSend_whenCallingAllOrdersStreaming_thenOneOrderIsReturned() {
+        Flux<OrderResponse> result = queryService.allOrdersStreaming();
+        StepVerifier.create(result)
+          .assertNext(order -> assertEquals(orderId, order.getOrderId()))
+          .expectComplete()
+          .verify();
     }
 
     @Test

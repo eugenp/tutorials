@@ -11,11 +11,14 @@
     <name>spring-roo</name>
     <packaging>jar</packaging>
 
+    <!-- The Spring-roo is not supported anymore. Latest update of Spring-roo was in 2017 -->
+    <!-- The official repo of Spring-roo was archived in October 28th, 2018, https://github.com/spring-attic/spring-roo -->
+
     <parent>
         <groupId>io.spring.platform</groupId>
         <artifactId>platform-bom</artifactId>
         <version>Athens-RELEASE</version>
-        <relativePath />
+        <relativePath/>
     </parent>
 
     <dependencyManagement>

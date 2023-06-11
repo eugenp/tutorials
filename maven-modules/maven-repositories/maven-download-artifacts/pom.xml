@@ -13,6 +13,19 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.baeldung</groupId>
+            <artifactId>maven-release-repository</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.baeldung</groupId>
+            <artifactId>maven-snapshot-repository</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
     <repositories>
         <repository>
             <id>nexus-snapshot</id>
@@ -34,19 +47,5 @@
             </snapshots>
         </repository>
     </repositories>
-
-    <dependencies>
-        <dependency>
-            <groupId>com.baeldung</groupId>
-            <artifactId>maven-release-repository</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.baeldung</groupId>
-            <artifactId>maven-snapshot-repository</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-    </dependencies>
 
 </project>

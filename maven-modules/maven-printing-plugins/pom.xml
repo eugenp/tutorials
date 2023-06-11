@@ -27,12 +27,12 @@
                         </goals>
                         <configuration>
                             <target>
-                                <echo message="Hello, world" />
-                                <echo message="Embed a line break: ${line.separator}" />
+                                <echo message="Hello, world"/>
+                                <echo message="Embed a line break: ${line.separator}"/>
                                 <echo message="Build dir: ${project.build.directory}"
-                                    level="info" />
+                                    level="info"/>
                                 <echo file="${basedir}/logs/log-ant-run.txt" append="true"
-                                    message="Save to file!" />
+                                    message="Save to file!"/>
                             </target>
                         </configuration>
                     </execution>

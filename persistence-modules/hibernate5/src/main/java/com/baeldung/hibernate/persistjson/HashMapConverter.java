@@ -1,6 +1,7 @@
 package com.baeldung.hibernate.persistjson;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.persistence.AttributeConverter;
@@ -10,6 +11,7 @@ import org.slf4j.LoggerFactory;
 
 import com.baeldung.hibernate.interceptors.CustomInterceptor;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class HashMapConverter implements AttributeConverter<Map<String, Object>, String> {
@@ -36,7 +38,7 @@ public class HashMapConverter implements AttributeConverter<Map<String, Object>,
 
         Map<String, Object> customerInfo = null;
         try {
-            customerInfo = objectMapper.readValue(customerInfoJSON, Map.class);
+            customerInfo = objectMapper.readValue(customerInfoJSON, new TypeReference<HashMap<String, Object>>() {});
         } catch (final IOException e) {
             logger.error("JSON reading error", e);
         }

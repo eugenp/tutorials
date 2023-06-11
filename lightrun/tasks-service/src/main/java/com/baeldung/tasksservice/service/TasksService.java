@@ -19,6 +19,7 @@ import java.util.UUID;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.baeldung.tasksservice.adapters.repository.TaskRecord;
@@ -29,6 +30,7 @@ public class TasksService {
     @Autowired
     private TasksRepository tasksRepository;
 
+    @Cacheable("tasks")
     public TaskRecord getTaskById(String id) {
         return tasksRepository.findById(id)
             .orElseThrow(() -> new UnknownTaskException(id));

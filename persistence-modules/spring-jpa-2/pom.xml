@@ -101,10 +101,11 @@
 
     <properties>
         <!-- Spring -->
-        <org.springframework.version>5.1.5.RELEASE</org.springframework.version>
+        <org.springframework.version>5.2.0.RELEASE</org.springframework.version>
         <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
         <!-- persistence -->
         <tomcat-dbcp.version>9.0.0.M26</tomcat-dbcp.version>
+        <h2.version>2.1.214</h2.version>
     </properties>
 
 </project>

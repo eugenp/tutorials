@@ -15,13 +15,13 @@
     </parent>
 
     <dependencies>
-        <!-- To set up an application with a database, change the artifactId below to tapestry-hibernate, 
-            and add a dependency on your JDBC driver. You'll also need to add Hibernate configuration files, such 
-            as hibernate.cfg.xml. -->
+        <!-- To set up an application with a database, change the artifactId below to tapestry-hibernate, -->
+        <!-- and add a dependency on your JDBC driver. You'll also need to add Hibernate configuration -->
+        <!-- files, such as hibernate.cfg.xml. -->
         <dependency>
             <groupId>org.apache.tapestry</groupId>
             <artifactId>tapestry-core</artifactId>
-            <version>${tapestry-release-version}</version>
+            <version>${tapestry.version}</version>
         </dependency>
         <!-- Include the Log4j implementation for the SLF4J logging framework -->
         <dependency>
@@ -32,14 +32,18 @@
         <dependency>
             <groupId>org.apache.tapestry</groupId>
             <artifactId>tapestry-webresources</artifactId>
-            <version>${tapestry-release-version}</version>
+            <version>${tapestry.version}</version>
         </dependency>
         <!-- Uncomment this to add support for file uploads: -->
-        <!-- <dependency> <groupId>org.apache.tapestry</groupId> <artifactId>tapestry-upload</artifactId> 
-            <version>${tapestry-release-version}</version> </dependency> -->
-        <!-- A dependency on either JUnit or TestNG is required, or the surefire plugin (which runs the 
-            tests) will fail, preventing Maven from packaging the WAR. Tapestry includes a large number of testing 
-            facilities designed for use with TestNG (http://testng.org/), so it's recommended. -->
+        <!-- <dependency> -->
+        <!-- <groupId>org.apache.tapestry</groupId> -->
+        <!-- <artifactId>tapestry-upload</artifactId> -->
+        <!-- <version>${tapestry.version}</version> -->
+        <!-- </dependency> -->
+        <!-- A dependency on either JUnit or TestNG is required, or the surefire plugin (which runs the -->
+        <!-- tests) will fail, preventing Maven from packaging the WAR. Tapestry includes a large number -->
+        <!-- of testing facilities designed for use with TestNG (http://testng.org/), -->
+        <!-- so it's recommended. -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
@@ -49,7 +53,7 @@
         <dependency>
             <groupId>org.apache.tapestry</groupId>
             <artifactId>tapestry-test</artifactId>
-            <version>${tapestry-release-version}</version>
+            <version>${tapestry.version}</version>
             <scope>test</scope>
         </dependency>
         <!-- Provided by the servlet container, but sometimes referenced in the application code. -->
@@ -63,7 +67,7 @@
         <dependency>
             <groupId>org.apache.tapestry</groupId>
             <artifactId>tapestry-javadoc</artifactId>
-            <version>${tapestry-release-version}</version>
+            <version>${tapestry.version}</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
@@ -99,8 +103,8 @@
                 <configuration>
                     <!-- Log to the console. -->
                     <requestLog implementation="org.mortbay.jetty.NCSARequestLog">
-                        <!-- This doesn't do anything for Jetty, but is a workaround for a Maven bug 
-                            that prevents the requestLog from being set. -->
+                        <!-- This doesn't do anything for Jetty, but is a workaround -->
+                        <!-- for a Maven bug that prevents the requestLog from being set. -->
                         <append>true</append>
                     </requestLog>
                     <systemProperties>
@@ -111,6 +115,18 @@
                     </systemProperties>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.1</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
@@ -119,21 +135,15 @@
             <id>jboss</id>
             <url>http://repository.jboss.org/nexus/content/groups/public/</url>
         </repository>
-        <!-- This repository is only needed when the Tapestry version is a preview release, rather than 
-            a final release. -->
-        <repository>
-            <id>apache-staging</id>
-            <url>https://repository.apache.org/content/groups/staging/</url>
-        </repository>
     </repositories>
 
     <properties>
         <compiler.jetty.version>6.1.16</compiler.jetty.version>
-        <compiler.surefire.version>2.7.2</compiler.surefire.version>
-        <compiler.plugin.version>2.3.2</compiler.plugin.version>
-        <source.version>1.8</source.version>
-        <target.version>1.8</target.version>
-        <tapestry-release-version>5.4.5</tapestry-release-version>
+        <compiler.surefire.version>3.0.0-M5</compiler.surefire.version>
+        <compiler.plugin.version>3.8.1</compiler.plugin.version>
+        <source.version>11</source.version>
+        <target.version>11</target.version>
+        <tapestry.version>5.8.2</tapestry.version>
         <servlet-api-release-version>2.5</servlet-api-release-version>
         <testng-release-version>6.8.21</testng-release-version>
         <slf4j-release-version>1.7.19</slf4j-release-version>

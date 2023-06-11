@@ -8,4 +8,7 @@ This module contains articles about Spring with Thymeleaf
 - [How to Create an Executable JAR with Maven](https://www.baeldung.com/executable-jar-with-maven)
 - [Spring MVC Data and Thymeleaf](https://www.baeldung.com/spring-mvc-thymeleaf-data)
 - [Upload Image With Spring Boot and Thymeleaf](https://www.baeldung.com/spring-boot-thymeleaf-image-upload)
+- [Getting a URL Attribute Value in Thymeleaf](https://www.baeldung.com/thymeleaf-url-attribute-value)
+- [Expression Types in Thymeleaf](https://www.baeldung.com/java-thymeleaf-expression-types)
+- [Difference Between th:text and th:value in Thymeleaf](https://www.baeldung.com/java-thymeleaf-text-vs-value)
 - [[<-- prev]](/spring-thymeleaf)

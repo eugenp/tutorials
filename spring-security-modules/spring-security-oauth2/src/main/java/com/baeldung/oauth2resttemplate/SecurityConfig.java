@@ -15,25 +15,34 @@ import org.springframework.security.oauth2.client.filter.OAuth2ClientAuthenticat
 import org.springframework.security.oauth2.client.filter.OAuth2ClientContextFilter;
 import org.springframework.security.oauth2.client.token.grant.code.AuthorizationCodeResourceDetails;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 import javax.servlet.Filter;
 
 @Configuration
 @EnableOAuth2Client
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig {
     OAuth2ClientContext oauth2ClientContext;
 
     public SecurityConfig(OAuth2ClientContext oauth2ClientContext) {
         this.oauth2ClientContext = oauth2ClientContext;
     }
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/", "/login**", "/error**")
-          .permitAll().anyRequest().authenticated()
-          .and().logout().logoutUrl("/logout").logoutSuccessUrl("/")
-          .and().addFilterBefore(oauth2ClientFilter(), BasicAuthenticationFilter.class);
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.authorizeRequests()
+            .antMatchers("/", "/login**", "/error**")
+            .permitAll()
+            .anyRequest()
+            .authenticated()
+            .and()
+            .logout()
+            .logoutUrl("/logout")
+            .logoutSuccessUrl("/")
+            .and()
+            .addFilterBefore(oauth2ClientFilter(), BasicAuthenticationFilter.class);
+        return http.build();
     }
 
     @Bean

@@ -1,14 +1,11 @@
 package com.baeldung.algorithms.printtriangles;
 
-import junitparams.JUnitParamsRunner;
-import junitparams.Parameters;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
-@RunWith(JUnitParamsRunner.class)
-public class PrintTriangleExamplesUnitTest {
+class PrintTriangleExamplesUnitTest {
 
     private static Object[][] rightTriangles() {
         String expected0 = "";
@@ -38,9 +35,9 @@ public class PrintTriangleExamplesUnitTest {
         };
     }
 
-    @Test
-    @Parameters(method = "rightTriangles")
-    public void whenPrintARightTriangleIsCalled_ThenTheCorrectStringIsReturned(int nrOfRows, String expected) {
+    @ParameterizedTest
+    @MethodSource("rightTriangles")
+    void whenPrintARightTriangleIsCalled_ThenTheCorrectStringIsReturned(int nrOfRows, String expected) {
         String actual = PrintTriangleExamples.printARightTriangle(nrOfRows);
 
         assertEquals(expected, actual);
@@ -74,24 +71,24 @@ public class PrintTriangleExamplesUnitTest {
         };
     }
 
-    @Test
-    @Parameters(method = "isoscelesTriangles")
-    public void whenPrintAnIsoscelesTriangleIsCalled_ThenTheCorrectStringIsReturned(int nrOfRows, String expected) {
+    @ParameterizedTest
+    @MethodSource("isoscelesTriangles")
+    void whenPrintAnIsoscelesTriangleIsCalled_ThenTheCorrectStringIsReturned(int nrOfRows, String expected) {
         String actual = PrintTriangleExamples.printAnIsoscelesTriangle(nrOfRows);
 
         assertEquals(expected, actual);
     }
 
-    @Test
-    @Parameters(method = "isoscelesTriangles")
+    @ParameterizedTest
+    @MethodSource("isoscelesTriangles")
     public void whenPrintAnIsoscelesTriangleUsingStringUtilsIsCalled_ThenTheCorrectStringIsReturned(int nrOfRows, String expected) {
         String actual = PrintTriangleExamples.printAnIsoscelesTriangleUsingStringUtils(nrOfRows);
 
         assertEquals(expected, actual);
     }
-    
-    @Test
-    @Parameters(method = "isoscelesTriangles")
+
+    @ParameterizedTest
+    @MethodSource("isoscelesTriangles")
     public void whenPrintAnIsoscelesTriangleUsingSubstringIsCalled_ThenTheCorrectStringIsReturned(int nrOfRows, String expected) {
         String actual = PrintTriangleExamples.printAnIsoscelesTriangleUsingSubstring(nrOfRows);
 

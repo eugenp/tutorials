@@ -25,14 +25,28 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.amazonaws.secretsmanager</groupId>
+            <artifactId>aws-secretsmanager-jdbc</artifactId>
+            <version>${aws.secrets.manager.jdbc}</version>
+        </dependency>
+        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
         </dependency>
         <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.awspring.cloud</groupId>
+            <artifactId>spring-cloud-starter-aws-secrets-manager-config</artifactId>
+            <version>${aws.secrets.manager.config}</version>
         </dependency>
     </dependencies>
 
@@ -44,5 +58,10 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <aws.secrets.manager.config>2.4.4</aws.secrets.manager.config>
+        <aws.secrets.manager.jdbc>1.0.11</aws.secrets.manager.jdbc>
+    </properties>
 
 </project>

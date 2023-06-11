@@ -9,6 +9,7 @@ import org.axonframework.messaging.responsetypes.ResponseType;
 import org.axonframework.messaging.responsetypes.ResponseTypes;
 import org.axonframework.queryhandling.QueryGateway;
 import org.axonframework.queryhandling.SubscriptionQueryResult;
+import org.reactivestreams.Publisher;
 import org.springframework.stereotype.Service;
 
 import reactor.core.publisher.Flux;
@@ -34,9 +35,14 @@ public class OrderQueryService {
             .collect(Collectors.toList()));
     }
 
+    public Flux<OrderResponse> allOrdersStreaming() {
+        Publisher<Order> publisher = queryGateway.streamingQuery(new FindAllOrderedProductsQuery(), Order.class);
+        return Flux.from(publisher)
+          .map(OrderResponse::new);
+    }
+
     public Integer totalShipped(String productId) {
-        return queryGateway.scatterGather(new TotalProductsShippedQuery(productId),
-            ResponseTypes.instanceOf(Integer.class), 10L, TimeUnit.SECONDS)
+        return queryGateway.scatterGather(new TotalProductsShippedQuery(productId), ResponseTypes.instanceOf(Integer.class), 10L, TimeUnit.SECONDS)
           .reduce(0, Integer::sum);
     }
 

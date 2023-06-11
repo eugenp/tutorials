@@ -11,4 +11,6 @@ This module contains articles about Apache POI.
 - [Creating a MS PowerPoint Presentation in Java](https://www.baeldung.com/apache-poi-slideshow)
 - [Finding the Last Row in an Excel Spreadsheet From Java](https://www.baeldung.com/java-excel-find-last-row)
 - [Setting Formulas in Excel with Apache POI](https://www.baeldung.com/java-apache-poi-set-formulas)
+- [Set the Date Format Using Apache POI](https://www.baeldung.com/java-apache-poi-date-format)
+- [Replacing Variables in a Document Template with Java](https://www.baeldung.com/java-replace-pattern-word-document-doc-docx)
 - More articles: [[<-- prev]](../apache-poi)

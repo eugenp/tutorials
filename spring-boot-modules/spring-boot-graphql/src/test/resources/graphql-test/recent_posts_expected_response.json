@@ -1,0 +1,28 @@
+{
+  "data": {
+    "recentPosts": [
+      {
+        "id": "Post00",
+        "title": "Post 0:0",
+        "category": "Post category",
+        "text": "Post 0 + by author 0",
+        "author": {
+          "id": "Author0",
+          "name": "Author 0",
+          "thumbnail": "http://example.com/authors/0"
+        }
+      },
+      {
+        "id": "Post10",
+        "title": "Post 1:0",
+        "category": "Post category",
+        "text": "Post 0 + by author 1",
+        "author": {
+          "id": "Author1",
+          "name": "Author 1",
+          "thumbnail": "http://example.com/authors/1"
+        }
+      }
+    ]
+  }
+}
