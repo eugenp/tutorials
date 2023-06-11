@@ -4,7 +4,7 @@ import static org.junit.Assert.assertArrayEquals;
 
 import org.junit.jupiter.api.Test;
 
-public class ArraySortingTest {
+public class ArraySortingUnitTest {
     
     @Test
     void givenArray_whenBubbleSorting_thenSorted() {
