@@ -27,15 +27,13 @@ class ListToStringUnitTest {
         List<String> arraysAsList = Arrays.asList("ONE", "TWO", "THREE");
 
         StringJoiner stringJoiner = new StringJoiner(",");
-        arraysAsList.stream()
-            .forEach(v -> stringJoiner.add(v));
+        arraysAsList.forEach(stringJoiner::add);
         String commaSeparatedString = stringJoiner.toString();
 
         assertThat(commaSeparatedString).isEqualTo("ONE,TWO,THREE");
 
         StringJoiner stringJoinerWithDelimiterPrefixSuffix = new StringJoiner(",", "[", "]");
-        arraysAsList.stream()
-            .forEach(v -> stringJoinerWithDelimiterPrefixSuffix.add(v));
+        arraysAsList.forEach(stringJoinerWithDelimiterPrefixSuffix::add);
         String commaSeparatedStringWithDelimiterPrefixSuffix = stringJoinerWithDelimiterPrefixSuffix.toString();
 
         assertThat(commaSeparatedStringWithDelimiterPrefixSuffix).isEqualTo("[ONE,TWO,THREE]");

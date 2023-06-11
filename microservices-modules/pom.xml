@@ -19,6 +19,11 @@
         <module>microprofile</module>
         <module>msf4j</module>
         <module>open-liberty</module>
+        <module>rest-express</module>
     </modules>
+
+    <properties>
+        <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
+    </properties>
 
 </project>

@@ -23,10 +23,15 @@
             <artifactId>commons-io</artifactId>
             <version>${commons-io.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
-        <commons-csv.version>1.4</commons-csv.version>
+        <commons-csv.version>1.10.0</commons-csv.version>
     </properties>
 
 </project>

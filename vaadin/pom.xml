@@ -184,11 +184,10 @@
         <vaadin-client-compiled.version>8.8.5</vaadin-client-compiled.version>
         <vaadin-themes.version>8.8.5</vaadin-themes.version>
         <jetty.plugin.version>9.3.9.v20160517</jetty.plugin.version>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
         <vaadin.widgetset.mode>local</vaadin.widgetset.mode>
         <vaadin.theme>mytheme</vaadin.theme>
         <maven-clean-plugin.version>3.0.0</maven-clean-plugin.version>
+        <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
     </properties>
 
 </project>

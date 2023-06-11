@@ -12,6 +12,8 @@ import com.baeldung.axon.coreapi.queries.Order;
 import com.baeldung.axon.coreapi.queries.OrderUpdatesQuery;
 import com.baeldung.axon.coreapi.queries.TotalProductsShippedQuery;
 
+import org.reactivestreams.Publisher;
+
 import java.util.List;
 
 public interface OrdersEventHandler {
@@ -31,6 +33,8 @@ public interface OrdersEventHandler {
     void on(OrderShippedEvent event);
 
     List<Order> handle(FindAllOrderedProductsQuery query);
+
+    Publisher<Order> handleStreaming(FindAllOrderedProductsQuery query);
 
     Integer handle(TotalProductsShippedQuery query);
 

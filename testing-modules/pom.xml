@@ -22,6 +22,7 @@
         <module>gatling</module>
         <module>groovy-spock</module>
         <module>hamcrest</module>
+        <module>instancio</module>
         <module>junit-4</module>
         <module>junit-5-advanced</module>
         <module>junit-5-basics</module>
@@ -30,17 +31,20 @@
         <module>junit5-migration</module>
         <module>load-testing-comparison</module>
         <module>mockito</module>
-        <module>mockito-simple</module>
+        <!-- <module>mockito-simple</module> --> <!-- Uncomment when testing-modules is moved to JDK9+ -->
         <module>mocks</module>
+        <module>mocks-2</module>
         <module>mockserver</module>
         <module>parallel-tests-junit</module>
         <module>powermock</module>
         <module>rest-assured</module>
         <module>rest-testing</module>
         <module>selenium-junit-testng</module>
+        <module>selenium-webdriver</module>
         <module>spring-mockito</module>
         <module>spring-testing-2</module>
         <module>spring-testing</module>
+        <module>testing-assertions</module>
         <module>test-containers</module>
         <module>testing-libraries-2</module>
         <module>testing-libraries</module>
@@ -48,6 +52,9 @@
         <module>testng-command-line</module>
         <module>xmlunit-2</module>
         <module>zerocode</module>
+        <module>mockito-2</module>
+        <module>testing-techniques</module>
+        <module>gatling-java</module>
     </modules>
 
 </project>

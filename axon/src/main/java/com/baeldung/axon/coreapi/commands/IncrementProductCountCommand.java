@@ -42,9 +42,6 @@ public class IncrementProductCountCommand {
 
     @Override
     public String toString() {
-        return "IncrementProductCountCommand{" +
-                "orderId='" + orderId + '\'' +
-                ", productId='" + productId + '\'' +
-                '}';
+        return "IncrementProductCountCommand{" + "orderId='" + orderId + '\'' + ", productId='" + productId + '\'' + '}';
     }
 }

@@ -18,9 +18,9 @@
         <module>apache-bookkeeper</module>
         <module>apache-cayenne</module>
         <module>apache-derby</module>
+        <module>blaze-persistence</module>
         <module>core-java-persistence</module>
         <module>core-java-persistence-2</module>
-        <module>deltaspike</module>
         <module>elasticsearch</module>
         <module>flyway</module>
         <module>flyway-repair</module>
@@ -28,7 +28,6 @@
         <module>hibernate5</module>
         <module>hibernate-mapping</module> <!-- long running -->
         <module>hibernate-mapping-2</module>
-        <module>hibernate-ogm</module>
         <module>hibernate-annotations</module>
         <module>hibernate-exceptions</module>
         <module>hibernate-libraries</module>
@@ -36,13 +35,13 @@
         <module>hibernate-queries</module>
         <module>hibernate-enterprise</module>
         <module>influxdb</module>
-        <module>java-cassandra</module>
         <module>java-cockroachdb</module>
         <module>java-jdbi</module>
         <module>java-jpa</module> <!-- long running -->
-        <module>java-jpa-2</module> <!-- long running -->
+        <module>java-jpa-2</module>
         <module>java-jpa-3</module>
-        <module>java-mongodb</module> <!-- long running -->
+        <!-- enable it when persistence-modules is migrated to JDK9+ -->
+        <!-- <module>java-mongodb</module>--> <!-- long running -->
         <module>java-mongodb-2</module> <!-- long running -->
         <module>java-mongodb-3</module> <!-- long running -->
         <module>java-mongodb-queries</module> <!-- long running -->
@@ -59,21 +58,24 @@
         <!-- <module>sirix</module> --> <!-- We haven't upgraded to java 11. Fixing in BAEL-10841 -->
         <module>solr</module>
         <module>spring-boot-persistence-2</module>
+        <module>spring-boot-persistence-3</module>
         <module>spring-boot-mysql</module>
         <module>spring-boot-persistence</module>
         <module>spring-boot-persistence-h2</module>
         <module>spring-boot-persistence-mongodb</module>
         <module>spring-boot-persistence-mongodb-2</module>
+        <module>spring-boot-persistence-mongodb-3</module>
         <module>spring-data-arangodb</module>
         <module>spring-data-cassandra</module>
         <module>spring-data-cassandra-test</module>
-        <module>spring-data-cassandra-reactive</module>
+        <!-- <module>spring-data-cassandra-reactive</module> FAILED -->
         <module>spring-data-cosmosdb</module>
         <module>spring-data-couchbase-2</module>
         <module>spring-data-dynamodb</module>
         <module>spring-data-eclipselink</module>
         <module>spring-data-elasticsearch</module>
-        <!-- <module>spring-data-gemfire</module> Fixing in JAVA-11854 -->
+        <!-- <module>spring-data-gemfire</module> Won't Fix in JAVA-14499, The dependencies used are -->
+        <!-- no longer available or maintained. Ref: https://spring.io/projects/spring-data-gemfire#overview -->
         <module>spring-data-geode</module>
         <module>spring-data-jpa-annotations</module>
         <module>spring-data-jpa-crud</module>
@@ -88,30 +90,36 @@
         <module>spring-data-jpa-repo-2</module>
         <module>spring-data-jdbc</module>
         <module>spring-data-keyvalue</module>
-        <module>spring-data-mongodb</module>
+        <!-- <module>spring-data-mongodb</module> FAILED -->
         <module>spring-data-mongodb-2</module>
         <module>spring-data-mongodb-reactive</module>
-        <module>spring-data-neo4j</module>
+        <!-- <module>spring-data-neo4j</module> FAILED -->
         <module>spring-data-redis</module>
-        <module>spring-data-rest</module>
+        <!--        Moved to JDK9+ profiles-->
+        <!--        <module>spring-data-rest</module>-->
         <module>spring-data-rest-2</module>
         <module>spring-data-rest-querydsl</module>
         <module>spring-data-solr</module>
-        <module>spring-hibernate-3</module>
-        <module>spring-hibernate-5</module> <!-- long running -->
-        <module>spring-jpa</module>
-        <module>spring-jpa-2</module>
+        <!-- <module>spring-hibernate-3</module> FAILED -->
+        <!-- <module>spring-hibernate-5</module> FAILED --> <!-- long running -->
+        <!-- <module>spring-jpa</module>
+        <module>spring-jpa-2</module> FAILED -->
         <module>spring-jdbc</module>
         <module>spring-jooq</module>
         <module>spring-mybatis</module>
         <module>spring-persistence-simple</module>
+
+        <module>fauna</module>
+        <module>spring-data-rest</module>
+        <module>java-mongodb</module>
+        <module>questdb</module>
     </modules>
 
     <properties>
         <!-- persistence -->
-        <hibernate.version>5.2.17.Final</hibernate.version>
-        <postgresql.version>42.2.20</postgresql.version>
-        <hsqldb.version>2.3.4</hsqldb.version>
+        <hibernate.version>6.2.0.Final</hibernate.version>
+        <postgresql.version>42.5.4</postgresql.version>
+        <hsqldb.version>2.7.1</hsqldb.version>
         <testcontainers.version>1.16.3</testcontainers.version>
     </properties>
 

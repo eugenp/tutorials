@@ -9,3 +9,4 @@
 - [Differences Between set() and lazySet() in Java Atomic Variables](https://www.baeldung.com/java-atomic-set-vs-lazyset)
 - [Volatile vs. Atomic Variables in Java](https://www.baeldung.com/java-volatile-vs-atomic)
 - [What Is “Locked Ownable Synchronizers” in Thread Dump?](https://www.baeldung.com/locked-ownable-synchronizers)
+- [Understanding java.lang.Thread.State: WAITING (parking)](https://www.baeldung.com/java-lang-thread-state-waiting-parking)

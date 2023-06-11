@@ -1,23 +1,24 @@
 package com.baeldung.algorithms.minimax;
 
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import static org.junit.Assert.*;
-import com.baeldung.algorithms.minimax.MiniMax;
-import com.baeldung.algorithms.minimax.Tree;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-public class MinimaxUnitTest {
+class MinimaxUnitTest {
     private Tree gameTree;
     private MiniMax miniMax;
 
-    @Before
+    @BeforeEach
     public void initMiniMaxUtility() {
         miniMax = new MiniMax();
     }
 
     @Test
-    public void givenMiniMax_whenConstructTree_thenNotNullTree() {
+    void givenMiniMax_whenConstructTree_thenNotNullTree() {
         assertNull(gameTree);
         miniMax.constructTree(6);
         gameTree = miniMax.getTree();
@@ -25,7 +26,7 @@ public class MinimaxUnitTest {
     }
 
     @Test
-    public void givenMiniMax_whenCheckWin_thenComputeOptimal() {
+    void givenMiniMax_whenCheckWin_thenComputeOptimal() {
         miniMax.constructTree(6);
         boolean result = miniMax.checkWin();
         assertTrue(result);

@@ -15,7 +15,7 @@ public class PortScanner {
     private static final int poolSize = 10;
     private static final int timeOut = 200;
 
-    public void runPortScan(String ip, int nbrPortMaxToScan) throws IOException, RuntimeException {
+    public void runPortScan(String ip, int nbrPortMaxToScan) throws IOException {
         ConcurrentLinkedQueue openPorts = new ConcurrentLinkedQueue<>();
         ExecutorService executorService = Executors.newFixedThreadPool(poolSize);
         AtomicInteger port = new AtomicInteger(0);

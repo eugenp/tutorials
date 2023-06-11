@@ -17,7 +17,12 @@ import org.axonframework.config.ProcessingGroup;
 import org.axonframework.eventhandling.EventHandler;
 import org.axonframework.queryhandling.QueryHandler;
 import org.axonframework.queryhandling.QueryUpdateEmitter;
+import org.reactivestreams.Publisher;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
+
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,6 +32,7 @@ import java.util.Optional;
 
 @Service
 @ProcessingGroup("orders")
+@Profile("!mongo")
 public class InMemoryOrdersEventHandler implements OrdersEventHandler {
 
     private final Map<String, Order> orders = new HashMap<>();
@@ -99,6 +105,12 @@ public class InMemoryOrdersEventHandler implements OrdersEventHandler {
     @QueryHandler
     public List<Order> handle(FindAllOrderedProductsQuery query) {
         return new ArrayList<>(orders.values());
+    }
+
+    @QueryHandler
+    public Publisher<Order> handleStreaming(FindAllOrderedProductsQuery query) {
+        return Mono.fromCallable(orders::values)
+          .flatMapMany(Flux::fromIterable);
     }
 
     @QueryHandler

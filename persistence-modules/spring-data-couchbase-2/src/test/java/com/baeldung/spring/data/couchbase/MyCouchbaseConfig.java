@@ -1,42 +1,46 @@
 package com.baeldung.spring.data.couchbase;
 
-import java.util.Arrays;
-import java.util.List;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.couchbase.config.AbstractCouchbaseConfiguration;
 import org.springframework.data.couchbase.core.mapping.event.ValidatingCouchbaseEventListener;
-import org.springframework.data.couchbase.core.query.Consistency;
 import org.springframework.data.couchbase.repository.config.EnableCouchbaseRepositories;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+
+import com.couchbase.client.java.query.QueryScanConsistency;
 
 @Configuration
 @EnableCouchbaseRepositories(basePackages = { "com.baeldung.spring.data.couchbase" })
 public class MyCouchbaseConfig extends AbstractCouchbaseConfiguration {
 
-    public static final List<String> NODE_LIST = Arrays.asList("localhost");
+    public static final String NODE_LIST = "localhost";
     public static final String BUCKET_NAME = "baeldung";
-    public static final String BUCKET_PASSWORD = "";
+    public static final String BUCKET_USERNAME = "baeldung";
+    public static final String BUCKET_PASSWORD = "baeldung";
 
     @Override
-    protected List<String> getBootstrapHosts() {
+    public String getConnectionString() {
         return NODE_LIST;
     }
 
     @Override
-    protected String getBucketName() {
-        return BUCKET_NAME;
+    public String getUserName() {
+        return BUCKET_USERNAME;
     }
 
     @Override
-    protected String getBucketPassword() {
+    public String getPassword() {
         return BUCKET_PASSWORD;
     }
 
     @Override
-    protected Consistency getDefaultConsistency() {
-        return Consistency.READ_YOUR_OWN_WRITES;
+    public String getBucketName() {
+        return BUCKET_NAME;
+    }
+
+    @Override
+    public QueryScanConsistency getDefaultConsistency() {
+        return QueryScanConsistency.REQUEST_PLUS;
     }
 
     @Bean

@@ -3,6 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <groupId>com.baeldung.jee-7</groupId>
     <artifactId>jee-7</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>jee-7</name>
@@ -203,8 +204,8 @@
         </plugins>
         <pluginManagement>
             <plugins>
-                <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no 
-                    influence on the Maven build itself. -->
+                <!--This plugin's configuration is used to store Eclipse m2e settings only. -->
+                <!-- It has no influence on the Maven build itself. -->
                 <plugin>
                     <groupId>org.eclipse.m2e</groupId>
                     <artifactId>lifecycle-mapping</artifactId>
@@ -255,6 +256,17 @@
                         <keep>true</keep>
                         <packageName>com.baeldung.soap.ws.client.generated</packageName>
                         <sourceDestDir>src/main/java</sourceDestDir>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <configuration>
+                        <argLine>
+                            --add-opens java.base/java.lang=ALL-UNNAMED
+                            --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
+                            --add-opens java.base/java.io=ALL-UNNAMED
+                        </argLine>
                     </configuration>
                 </plugin>
             </plugins>
@@ -335,6 +347,15 @@
                                 </configuration>
                             </execution>
                         </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <argLine>
+                                --add-opens java.base/java.lang=ALL-UNNAMED
+                            </argLine>
+                        </configuration>
                     </plugin>
                 </plugins>
             </build>
@@ -513,7 +534,7 @@
         <jboss-batch-api.version>1.0.0.Final</jboss-batch-api.version>
         <jberet.version>1.0.2.Final</jberet.version>
         <jboss-transaction-api.version>1.0.0.Final</jboss-transaction-api.version>
-        <jboss-marshalling.version>1.4.2.Final</jboss-marshalling.version>
+        <jboss-marshalling.version>2.1.1.Final</jboss-marshalling.version>
         <weld.version>2.1.1.Final</weld.version>
         <jersey-container-jetty-servlet.version>2.22.1</jersey-container-jetty-servlet.version>
     </properties>

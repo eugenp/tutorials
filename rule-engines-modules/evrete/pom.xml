@@ -30,7 +30,7 @@
     </dependencies>
 
     <properties>
-        <evrete.version>2.1.04</evrete.version>
+        <evrete.version>3.0.01</evrete.version>
     </properties>
 
 </project>

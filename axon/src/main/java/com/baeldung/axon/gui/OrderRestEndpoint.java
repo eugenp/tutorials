@@ -8,12 +8,14 @@ import com.baeldung.axon.coreapi.commands.IncrementProductCountCommand;
 import com.baeldung.axon.coreapi.commands.ShipOrderCommand;
 import com.baeldung.axon.querymodel.OrderQueryService;
 import com.baeldung.axon.querymodel.OrderResponse;
+
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import reactor.core.publisher.Flux;
 
 import java.util.List;
@@ -33,25 +35,28 @@ public class OrderRestEndpoint {
 
     @PostMapping("/ship-order")
     public CompletableFuture<Void> shipOrder() {
-        String orderId = UUID.randomUUID().toString();
+        String orderId = UUID.randomUUID()
+          .toString();
         return commandGateway.send(new CreateOrderCommand(orderId))
-                             .thenCompose(result -> commandGateway.send(new AddProductCommand(orderId, "Deluxe Chair")))
-                             .thenCompose(result -> commandGateway.send(new ConfirmOrderCommand(orderId)))
-                             .thenCompose(result -> commandGateway.send(new ShipOrderCommand(orderId)));
+          .thenCompose(result -> commandGateway.send(new AddProductCommand(orderId, "Deluxe Chair")))
+          .thenCompose(result -> commandGateway.send(new ConfirmOrderCommand(orderId)))
+          .thenCompose(result -> commandGateway.send(new ShipOrderCommand(orderId)));
     }
 
     @PostMapping("/ship-unconfirmed-order")
     public CompletableFuture<Void> shipUnconfirmedOrder() {
-        String orderId = UUID.randomUUID().toString();
+        String orderId = UUID.randomUUID()
+          .toString();
         return commandGateway.send(new CreateOrderCommand(orderId))
-                             .thenCompose(result -> commandGateway.send(new AddProductCommand(orderId, "Deluxe Chair")))
-                             // This throws an exception, as an Order cannot be shipped if it has not been confirmed yet.
-                             .thenCompose(result -> commandGateway.send(new ShipOrderCommand(orderId)));
+          .thenCompose(result -> commandGateway.send(new AddProductCommand(orderId, "Deluxe Chair")))
+          // This throws an exception, as an Order cannot be shipped if it has not been confirmed yet.
+          .thenCompose(result -> commandGateway.send(new ShipOrderCommand(orderId)));
     }
 
     @PostMapping("/order")
     public CompletableFuture<String> createOrder() {
-        return createOrder(UUID.randomUUID().toString());
+        return createOrder(UUID.randomUUID()
+          .toString());
     }
 
     @PostMapping("/order/{order-id}")
@@ -60,20 +65,17 @@ public class OrderRestEndpoint {
     }
 
     @PostMapping("/order/{order-id}/product/{product-id}")
-    public CompletableFuture<Void> addProduct(@PathVariable("order-id") String orderId,
-                                              @PathVariable("product-id") String productId) {
+    public CompletableFuture<Void> addProduct(@PathVariable("order-id") String orderId, @PathVariable("product-id") String productId) {
         return commandGateway.send(new AddProductCommand(orderId, productId));
     }
 
     @PostMapping("/order/{order-id}/product/{product-id}/increment")
-    public CompletableFuture<Void> incrementProduct(@PathVariable("order-id") String orderId,
-                                                    @PathVariable("product-id") String productId) {
+    public CompletableFuture<Void> incrementProduct(@PathVariable("order-id") String orderId, @PathVariable("product-id") String productId) {
         return commandGateway.send(new IncrementProductCountCommand(orderId, productId));
     }
 
     @PostMapping("/order/{order-id}/product/{product-id}/decrement")
-    public CompletableFuture<Void> decrementProduct(@PathVariable("order-id") String orderId,
-                                                    @PathVariable("product-id") String productId) {
+    public CompletableFuture<Void> decrementProduct(@PathVariable("order-id") String orderId, @PathVariable("product-id") String productId) {
         return commandGateway.send(new DecrementProductCountCommand(orderId, productId));
     }
 
@@ -90,6 +92,11 @@ public class OrderRestEndpoint {
     @GetMapping("/all-orders")
     public CompletableFuture<List<OrderResponse>> findAllOrders() {
         return orderQueryService.findAllOrders();
+    }
+
+    @GetMapping(path = "/all-orders-streaming", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Flux<OrderResponse> allOrdersStreaming() {
+        return orderQueryService.allOrdersStreaming();
     }
 
     @GetMapping("/total-shipped/{product-id}")

@@ -39,9 +39,6 @@ public class ProductRemovedEvent {
 
     @Override
     public String toString() {
-        return "ProductRemovedEvent{" +
-                "orderId='" + orderId + '\'' +
-                ", productId='" + productId + '\'' +
-                '}';
+        return "ProductRemovedEvent{" + "orderId='" + orderId + '\'' + ", productId='" + productId + '\'' + '}';
     }
 }

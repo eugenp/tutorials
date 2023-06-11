@@ -10,6 +10,10 @@ POST http://localhost:8080/ship-unconfirmed-order
 
 GET http://localhost:8080/all-orders
 
+### Receive all existing orders using a stream
+
+GET http://localhost:8080/all-orders-streaming
+
 ### Create Order with id 666a1661-474d-4046-8b12-8b5896312768
 
 POST http://localhost:8080/order/666a1661-474d-4046-8b12-8b5896312768
