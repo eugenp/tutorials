@@ -1,45 +1,59 @@
 package com.baeldung.neo4j;
 
+import static com.baeldung.TestContainersTestBase.DEFAULT_PASSWORD;
+import static com.baeldung.TestContainersTestBase.getNewBoltConnection;
+import static com.baeldung.TestContainersTestBase.neo4jServer;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import org.junit.Assert;
-import org.junit.Ignore;
-import org.junit.Test;
-import org.neo4j.driver.v1.AuthTokens;
-import org.neo4j.driver.v1.Driver;
-import org.neo4j.driver.v1.GraphDatabase;
-import org.neo4j.driver.v1.Session;
-import org.neo4j.driver.v1.StatementResult;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.neo4j.driver.Driver;
+import org.neo4j.driver.Result;
+import org.neo4j.driver.Session;
 
-@Ignore
-public class Neo4JServerLiveTest {
+class Neo4JServerLiveTest {
+
+    private static Session session;
+    private static Driver driver;
+
+    @BeforeAll
+    public static void setup() {
+        driver = getNewBoltConnection();
+    }
+
+    @AfterAll
+    public static void tearDown() {
+        driver.close();
+    }
 
     @Test
-    public void standAloneDriver() {
-        Driver driver = GraphDatabase.driver("bolt://localhost:7687", AuthTokens.basic("neo4j", "12345"));
-        Session session = driver.session();
-
+    void standAloneDriver() {
+        session = driver.session();
         session.run("CREATE (baeldung:Company {name:\"Baeldung\"}) " +
                 "-[:owns]-> (tesla:Car {make: 'tesla', model: 'modelX'})" +
                 "RETURN baeldung, tesla");
 
-        StatementResult result = session.run("MATCH (company:Company)-[:owns]-> (car:Car)" +
+        Result result = session.run("MATCH (company:Company)-[:owns]-> (car:Car)" +
                 "WHERE car.make='tesla' and car.model='modelX'" +
                 "RETURN company.name");
 
-        Assert.assertTrue(result.hasNext());
-        Assert.assertEquals(result.next().get("company.name").asString(), "Baeldung");
+        assertTrue(result.hasNext());
+        assertEquals("Baeldung", result.next().get("company.name").asString());
 
         session.close();
-        driver.close();
     }
     
     @Test
-    public void standAloneJdbc() throws Exception {
-        Connection con = DriverManager.getConnection("jdbc:neo4j:bolt://localhost/?user=neo4j,password=12345,scheme=basic");
+    void standAloneJdbc() throws Exception {
+        String uri = "jdbc:neo4j:" + neo4jServer.getBoltUrl() + "/?user=neo4j,password=" + DEFAULT_PASSWORD + ",scheme=basic";
+        Connection con = DriverManager.getConnection(uri);
 
         // Querying
         try (Statement stmt = con.createStatement()) {
@@ -52,7 +66,7 @@ public class Neo4JServerLiveTest {
                     "RETURN company.name");
 
             while (rs.next()) {
-                Assert.assertEquals(rs.getString("company.name"), "Baeldung");
+                assertEquals("Baeldung", rs.getString("company.name"));
             }
         }
         con.close();

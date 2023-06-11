@@ -1,5 +1,7 @@
 package com.baeldung.spring.data.neo4j.domain;
 
+import static org.neo4j.ogm.annotation.Relationship.Direction.INCOMING;
+
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
@@ -12,7 +14,7 @@ public class Car {
 
     private String make;
 
-    @Relationship(direction = "INCOMING")
+    @Relationship(direction = INCOMING)
     private Company company;
 
     public Car(String make, String model) {
