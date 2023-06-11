@@ -1,7 +1,5 @@
 package com.baeldung.spliterator;
 
-import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Executor {
@@ -11,9 +9,4 @@ public class Executor {
 				RelatedAuthorCounter::accumulate, RelatedAuthorCounter::combine);
 		return wordCounter.getCounter();
 	}
-
-	public static List<Article> generateElements() {
-		return Stream.generate(() -> new Article("Java")).limit(35000).collect(Collectors.toList());
-	}
-
 }
