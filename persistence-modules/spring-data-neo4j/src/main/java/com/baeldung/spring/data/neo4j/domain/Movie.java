@@ -1,5 +1,7 @@
 package com.baeldung.spring.data.neo4j.domain;
 
+import static org.neo4j.ogm.annotation.Relationship.Direction.INCOMING;
+
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.voodoodyne.jackson.jsog.JSOGGenerator;
 
@@ -12,7 +14,6 @@ import java.util.Collection;
 import java.util.List;
 
 @JsonIdentityInfo(generator = JSOGGenerator.class)
-
 @NodeEntity
 public class Movie {
     @Id @GeneratedValue
@@ -23,7 +24,7 @@ public class Movie {
     private int released;
     private String tagline;
 
-    @Relationship(type = "ACTED_IN", direction = Relationship.INCOMING)
+    @Relationship(type = "ACTED_IN", direction = INCOMING)
     private List<Role> roles;
 
     public Movie() {

@@ -1,11 +1,13 @@
 package com.baeldung.neo4j;
 
+import static com.baeldung.TestContainersTestBase.getDriver;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.HashMap;
 import java.util.Map;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.neo4j.ogm.config.Configuration;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.neo4j.ogm.model.Result;
 import org.neo4j.ogm.session.Session;
 import org.neo4j.ogm.session.SessionFactory;
@@ -15,13 +17,18 @@ import com.baeldung.spring.data.neo4j.domain.Company;
 
 public class Neo4jOgmLiveTest {
 
+    private static SessionFactory sessionFactory;
+    private static Session session;
+
+    @BeforeAll
+    public static void oneTimeSetUp() {
+        sessionFactory = new SessionFactory(getDriver(), "com.baeldung.spring.data.neo4j.domain");
+        session = sessionFactory.openSession();
+        session.purgeDatabase();
+    }
+
     @Test
-    public void testOgm() {
-        Configuration conf = new Configuration.Builder().build();
-
-        SessionFactory factory = new SessionFactory(conf, "com.baeldung.spring.data.neo4j.domain");
-        Session session = factory.openSession();
-
+    void testOgm() {
         Car tesla = new Car("tesla", "modelS");
         Company baeldung = new Company("baeldung");
 
@@ -29,7 +36,7 @@ public class Neo4jOgmLiveTest {
 
         session.save(baeldung);
 
-        Assert.assertEquals(1, session.countEntitiesOfType(Company.class));
+        assertEquals(1, session.countEntitiesOfType(Company.class));
 
         Map<String, String> params = new HashMap<>();
         params.put("make", "tesla");
@@ -39,9 +46,9 @@ public class Neo4jOgmLiveTest {
 
         Map<String, Object> firstResult = result.iterator().next();
 
-        Assert.assertEquals(firstResult.size(), 1);
+        assertEquals(1, firstResult.size());
 
         Company actual = (Company) firstResult.get("company");
-        Assert.assertEquals(actual.getName(), baeldung.getName());
+        assertEquals(actual.getName(), baeldung.getName());
     }
 }

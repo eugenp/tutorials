@@ -40,8 +40,6 @@
         <module>java-jpa</module> <!-- long running -->
         <module>java-jpa-2</module>
         <module>java-jpa-3</module>
-        <!-- enable it when persistence-modules is migrated to JDK9+ -->
-        <!-- <module>java-mongodb</module>--> <!-- long running -->
         <module>java-mongodb-2</module> <!-- long running -->
         <module>java-mongodb-3</module> <!-- long running -->
         <module>java-mongodb-queries</module> <!-- long running -->
@@ -90,10 +88,10 @@
         <module>spring-data-jpa-repo-2</module>
         <module>spring-data-jdbc</module>
         <module>spring-data-keyvalue</module>
-        <!-- <module>spring-data-mongodb</module> FAILED -->
+        <module>spring-data-mongodb</module>
         <module>spring-data-mongodb-2</module>
         <module>spring-data-mongodb-reactive</module>
-        <!-- <module>spring-data-neo4j</module> FAILED -->
+        <module>spring-data-neo4j</module>
         <module>spring-data-redis</module>
         <!--        Moved to JDK9+ profiles-->
         <!--        <module>spring-data-rest</module>-->
