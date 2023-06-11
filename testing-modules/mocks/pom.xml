@@ -43,6 +43,26 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <argLine>
+                        --add-opens java.base/java.lang=ALL-UNNAMED
+                        -javaagent:${settings.localRepository}/org/jmockit/jmockit/${jmockit.version}/jmockit-${jmockit.version}.jar
+                        -Djdk.attach.allowAttachSelf
+                    </argLine>
+                    <disableXmlReport>true</disableXmlReport>
+                    <excludes>
+                        <exclude>**/testsuite/**/*UnitTest.java</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
         <javafaker.version>0.15</javafaker.version>
         <jukito.version>1.5</jukito.version>
