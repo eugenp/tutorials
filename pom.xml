@@ -473,8 +473,6 @@
 
                 <module>apache-spark</module>
 
-                <module>image-processing</module>
-
                 <module>jenkins-modules</module>
                 <module>jhipster-modules</module>
             </modules>
@@ -634,8 +632,6 @@
                 <module>parent-java</module>
 
                 <module>apache-spark</module>
-
-                <module>image-processing</module>
 
                 <module>jenkins-modules</module>
                 <module>jhipster-modules</module>
@@ -936,6 +932,7 @@
                 <module>web-modules</module>
                 <module>xml</module>
                 <module>xml-2</module>
+                <module>image-processing</module>
             </modules>
 
             <properties>
@@ -1202,6 +1199,7 @@
                 <module>web-modules</module>
                 <module>xml</module>
                 <module>xml-2</module>
+                <module>image-processing</module>
             </modules>
 
             <properties>
