@@ -1,4 +1,4 @@
-package com.baeldung.s3;
+package com.baeldung.s3.listobjects;
 
 import software.amazon.awssdk.regions.Region;
 

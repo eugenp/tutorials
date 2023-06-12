@@ -1,5 +1,6 @@
-package com.baeldung.s3;
+package com.baeldung.s3.listobjects;
 
+import com.baeldung.s3.listobjects.S3Service;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

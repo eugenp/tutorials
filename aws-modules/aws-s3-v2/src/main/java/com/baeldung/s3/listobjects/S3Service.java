@@ -1,6 +1,5 @@
-package com.baeldung.s3;
+package com.baeldung.s3.listobjects;
 
-import java.nio.ByteBuffer;
 import java.util.List;
 
 import software.amazon.awssdk.auth.credentials.ProfileCredentialsProvider;
