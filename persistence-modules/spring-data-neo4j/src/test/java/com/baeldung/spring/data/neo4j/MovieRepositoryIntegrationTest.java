@@ -1,5 +1,9 @@
 package com.baeldung.spring.data.neo4j;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+
 import com.baeldung.spring.data.neo4j.config.MovieDatabaseNeo4jTestConfiguration;
 import com.baeldung.spring.data.neo4j.domain.Movie;
 import com.baeldung.spring.data.neo4j.domain.Person;
@@ -7,37 +11,44 @@ import com.baeldung.spring.data.neo4j.domain.Role;
 import com.baeldung.spring.data.neo4j.repository.MovieRepository;
 import com.baeldung.spring.data.neo4j.repository.PersonRepository;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.neo4j.harness.Neo4j;
+import org.neo4j.harness.Neo4jBuilders;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.data.neo4j.DataNeo4jTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
 
 import java.util.*;
 
-import static junit.framework.TestCase.assertNull;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
-@RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = MovieDatabaseNeo4jTestConfiguration.class)
 @ActiveProfiles(profiles = "test")
-public class MovieRepositoryIntegrationTest {
+@DataNeo4jTest
+class MovieRepositoryIntegrationTest {
 
     @Autowired
-    private MovieRepository movieRepository;
+    private static MovieRepository movieRepository;
 
     @Autowired
-    private PersonRepository personRepository;
+    private static PersonRepository personRepository;
 
     public MovieRepositoryIntegrationTest() {
     }
 
-    @Before
-    public void initializeDatabase() {
+    private static Neo4j embeddedDatabaseServer;
+
+    @BeforeAll
+    static void initializeNeo4j() {
+
+        embeddedDatabaseServer = Neo4jBuilders.newInProcessBuilder()
+                .withDisabledServer()
+                .build();
+
         System.out.println("seeding embedded database");
         Movie italianJob = new Movie();
         italianJob.setTitle("The Italian Job");
@@ -60,9 +71,23 @@ public class MovieRepositoryIntegrationTest {
         movieRepository.save(italianJob);
     }
 
+    @DynamicPropertySource
+    static void neo4jProperties(DynamicPropertyRegistry registry) {
+
+        registry.add("spring.neo4j.uri", embeddedDatabaseServer::boltURI);
+        registry.add("spring.neo4j.authentication.username", () -> "neo4j");
+        registry.add("spring.neo4j.authentication.password", () -> null);
+    }
+
+    @AfterAll
+    static void stopNeo4j() {
+
+        embeddedDatabaseServer.close();
+    }
+
     @Test
     @DirtiesContext
-    public void testFindByTitle() {
+    void testFindByTitle() {
         System.out.println("findByTitle");
         String title = "The Italian Job";
         Movie result = movieRepository.findByTitle(title);
@@ -72,7 +97,7 @@ public class MovieRepositoryIntegrationTest {
 
     @Test
     @DirtiesContext
-    public void testCount() {
+    void testCount() {
         System.out.println("count");
         long movieCount = movieRepository.count();
 
@@ -81,7 +106,7 @@ public class MovieRepositoryIntegrationTest {
 
     @Test
     @DirtiesContext
-    public void testFindAll() {
+    void testFindAll() {
         System.out.println("findAll");
         Collection<Movie> result = movieRepository.findAll();
         assertNotNull(result);
@@ -90,7 +115,7 @@ public class MovieRepositoryIntegrationTest {
 
     @Test
     @DirtiesContext
-    public void testFindByTitleContaining() {
+    void testFindByTitleContaining() {
         System.out.println("findByTitleContaining");
         String title = "Italian";
         Collection<Movie> result = movieRepository.findByTitleContaining(title);
@@ -100,7 +125,7 @@ public class MovieRepositoryIntegrationTest {
 
     @Test
     @DirtiesContext
-    public void testGraph() {
+    void testGraph() {
         System.out.println("graph");
         List<Map<String, Object>> graph = movieRepository.graph(5);
         assertEquals(1, graph.size());
@@ -114,7 +139,7 @@ public class MovieRepositoryIntegrationTest {
 
     @Test
     @DirtiesContext
-    public void testDeleteMovie() {
+    void testDeleteMovie() {
         System.out.println("deleteMovie");
         movieRepository.delete(movieRepository.findByTitle("The Italian Job"));
         assertNull(movieRepository.findByTitle("The Italian Job"));
@@ -122,7 +147,7 @@ public class MovieRepositoryIntegrationTest {
 
     @Test
     @DirtiesContext
-    public void testDeleteAll() {
+    void testDeleteAll() {
         System.out.println("deleteAll");
         movieRepository.deleteAll();
         Collection<Movie> result = movieRepository.findAll();
