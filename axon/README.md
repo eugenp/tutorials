@@ -21,4 +21,4 @@ Two scripts are included to easily start middleware using Docker matching the pr
 - [Snapshotting Aggregates in Axon](https://www.baeldung.com/axon-snapshotting-aggregates)
 - [Dispatching Queries in Axon Framework](https://www.baeldung.com/axon-query-dispatching)
 - [Persisting the Query Model](https://www.baeldung.com/axon-persisting-query-model)
-- [Using and Testing Axon Applications via REST](https://www.baeldung.com/using-and-testing-axon-applications-via-rest)
+- [Using and Testing Axon Applications via REST](https://www.baeldung.com/axon-using-and-testing-rest)
