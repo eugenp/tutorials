@@ -1,17 +1,19 @@
 package com.baeldung.stopexecution;
 
-import org.junit.Assert;
-import org.junit.jupiter.api.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertThrows;
+import static org.junit.Assert.assertTrue;
 
 import java.net.MalformedURLException;
 
-import static org.junit.Assert.*;
+import org.junit.Assert;
+import org.junit.jupiter.api.Test;
 
 public class StopExecutionFurtherCodeUnitTest {
 
-
     @Test
-    public void stopExecutionIfFlagIsFalse() {
+    void stopExecutionIfFlagIsFalse() {
         StopExecutionFurtherCode stopExecution = new StopExecutionFurtherCode();
         stopExecution.stop();
         int performedTask = stopExecution.performTask(10, 20);
@@ -44,7 +46,7 @@ public class StopExecutionFurtherCodeUnitTest {
             assertThrows(IllegalArgumentException.class, () -> {
                 int result = stopExecutionFurtherCode.stopExecutionUsingException(number1);
             });
-        }catch (Exception e){
+        } catch (Exception e) {
             Assert.fail("Unexpected exception thrown: " + e.getMessage());
         }
 
@@ -60,7 +62,7 @@ public class StopExecutionFurtherCodeUnitTest {
     @Test
     public void stopExecutionInLoopWhenArrayHasNegative() {
         StopExecutionFurtherCode stopExecutionFurtherCode = new StopExecutionFurtherCode();
-        int[] nums = {1, 2, 3, -1, 1, 2, 3};
+        int[] nums = { 1, 2, 3, -1, 1, 2, 3 };
         int sum = stopExecutionFurtherCode.calculateSum(nums);
         assertEquals(6, sum);
     }
@@ -75,16 +77,16 @@ public class StopExecutionFurtherCodeUnitTest {
         stopExecution.interrupt();
         stopExecution.join();
 
-        assertTrue(!stopExecution.isAlive()); ;
+        assertTrue(!stopExecution.isAlive());
+        ;
     }
 
     @Test
     public void stopExecutionLabelledLoop() {
         StopExecutionFurtherCode furtherCode = new StopExecutionFurtherCode();
-        final String[] lines = {"Line 1", "Line 2", "Line 3", "stop", "Line 4", "Line 5"};
+        final String[] lines = { "Line 1", "Line 2", "Line 3", "stop", "Line 4", "Line 5" };
         int statusCode = furtherCode.processLines(lines);
         assertEquals(-1, statusCode);
     }
-
 
 }

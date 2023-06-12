@@ -1,17 +1,18 @@
 package com.baeldung.stopexecution;
 
-import java.io.*;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Locale;
-
 
 public class StopExecutionFurtherCode {
 
     private boolean shouldContinue = true;
 
-    public int performTask(int a, int b){
-        if (!shouldContinue){
+    public int performTask(int a, int b) {
+        if (!shouldContinue) {
             System.exit(0);
         }
         return a + b;
@@ -25,10 +26,10 @@ public class StopExecutionFurtherCode {
         return n * calculateFactorial(n - 1);
     }
 
-    public int calculateSum(int[] x){
+    public int calculateSum(int[] x) {
         int sum = 0;
         for (int i = 0; i < 10; i++) {
-            if (x[i] < 0){
+            if (x[i] < 0) {
                 break;
             }
             sum += x[i];
@@ -36,19 +37,18 @@ public class StopExecutionFurtherCode {
         return sum;
     }
 
-
-    public <T> T stopExecutionUsingException(T object){
-        if (object instanceof Number){
+    public <T> T stopExecutionUsingException(T object) {
+        if (object instanceof Number) {
             throw new IllegalArgumentException("Parameter can not be number.");
         }
-        T upperCase = (T)String.valueOf(object).toUpperCase(Locale.ENGLISH);
+        T upperCase = (T) String.valueOf(object).toUpperCase(Locale.ENGLISH);
         return upperCase;
     }
 
-
-    public int processLines(String[] lines){
+    public int processLines(String[] lines) {
         int statusCode = 0;
-        parser: for (String line : lines) {
+        parser:
+        for (String line : lines) {
             System.out.println("Processing line: " + line);
 
             if (line.equals("stop")) {
@@ -79,7 +79,7 @@ public class StopExecutionFurtherCode {
         }
     }
 
-    public void stop(){
+    public void stop() {
         shouldContinue = false;
     }
 
