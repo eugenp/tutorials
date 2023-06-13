@@ -13,6 +13,7 @@ import com.baeldung.spring.data.neo4j.repository.PersonRepository;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.neo4j.harness.Neo4j;
 import org.neo4j.harness.Neo4jBuilders;
@@ -32,10 +33,10 @@ import java.util.*;
 class MovieRepositoryIntegrationTest {
 
     @Autowired
-    private static MovieRepository movieRepository;
+    private MovieRepository movieRepository;
 
     @Autowired
-    private static PersonRepository personRepository;
+    private PersonRepository personRepository;
 
     public MovieRepositoryIntegrationTest() {
     }
@@ -43,11 +44,14 @@ class MovieRepositoryIntegrationTest {
     private static Neo4j embeddedDatabaseServer;
 
     @BeforeAll
-    static void initializeNeo4j() {
-
+    static void setup() {
         embeddedDatabaseServer = Neo4jBuilders.newInProcessBuilder()
                 .withDisabledServer()
                 .build();
+    }
+
+    @BeforeEach
+    void initializeNeo4j() {
 
         System.out.println("seeding embedded database");
         Movie italianJob = new Movie();
