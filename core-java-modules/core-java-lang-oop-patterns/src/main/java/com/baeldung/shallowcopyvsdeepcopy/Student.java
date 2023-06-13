@@ -16,8 +16,11 @@ public class Student {
         this.studentName = that.getStudentName();
         this.course = new Course(that.getCourse()
             .getCourseId(), that.getCourse()
-            .getCourseName(), that.getCourse()
-            .getAuthor());
+            .getCourseName(), new Author(that.getCourse()
+            .getAuthor()
+            .getAuthorId(), that.getCourse()
+            .getAuthor()
+            .getAuthorName()));
     }
 
     public int getStudentId() {
