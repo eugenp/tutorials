@@ -24,9 +24,17 @@ class DeepCopyUnitTest {
 
         deepCopy.getCourse()
             .setCourseName("Java Masterclass");
+        deepCopy.getCourse()
+            .getAuthor()
+            .setAuthorName("Eugen");
 
         Assertions.assertNotEquals(deepCopy.getCourse()
             .getCourseName(), student.getCourse()
             .getCourseName());
+        Assertions.assertNotEquals(deepCopy.getCourse()
+            .getAuthor()
+            .getAuthorName(), student.getCourse()
+            .getAuthor()
+            .getAuthorName());
     }
 }
