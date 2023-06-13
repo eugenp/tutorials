@@ -79,7 +79,7 @@ public class CancelFluxUnitTest {
             count.incrementAndGet();
         }, e -> System.err.println("Error: " + e.getMessage()));
 
-        Thread.sleep(5000);
+        Thread.sleep(4500);
         System.out.println("Will Dispose The flux Next");
         disposable.dispose();
         if (disposable.isDisposed()) {

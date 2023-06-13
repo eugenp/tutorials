@@ -12,4 +12,5 @@ This module contains articles about core Java Security
 - [Computing an X509 Certificate’s Thumbprint in Java](https://www.baeldung.com/java-x509-certificate-thumbprint)
 - [Error: “trustAnchors parameter must be non-empty”](https://www.baeldung.com/java-trustanchors-parameter-must-be-non-empty)
 - [Common Exceptions of Crypto APIs in Java](https://www.baeldung.com/java-crypto-apis-exceptions)
+- [Hashing With Argon2 in Java](https://www.baeldung.com/java-argon2-hashing)
 - More articles: [[<-- prev]](/core-java-modules/core-java-security-2)

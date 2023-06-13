@@ -1,0 +1,1 @@
+This module contains tutorials related to the image compression in Java.
