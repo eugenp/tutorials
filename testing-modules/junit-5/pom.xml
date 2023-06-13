@@ -121,8 +121,13 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-report-plugin</artifactId>
-                <version>${surefire.report.plugin}</version>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <argLine>
+                        --add-opens java.base/java.lang=ALL-UNNAMED
+                        --add-opens java.base/java.time=ALL-UNNAMED
+                    </argLine>
+                </configuration>
             </plugin>
         </plugins>
     </build>
@@ -131,7 +136,6 @@
         <log4j2.version>2.17.1</log4j2.version>
         <powermock.version>2.0.9</powermock.version>
         <spring.version>5.0.1.RELEASE</spring.version>
-        <surefire.report.plugin>3.0.0-M3</surefire.report.plugin>
         <mockito.version>3.3.0</mockito.version>
     </properties>
 

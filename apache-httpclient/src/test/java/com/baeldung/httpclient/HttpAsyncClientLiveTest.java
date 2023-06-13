@@ -9,6 +9,7 @@ import java.util.concurrent.Future;
 
 import javax.net.ssl.SSLContext;
 
+import org.apache.hc.client5.http.impl.routing.DefaultProxyRoutePlanner;
 import org.junit.jupiter.api.Test;
 
 import org.apache.hc.client5.http.async.methods.SimpleHttpRequest;
@@ -55,12 +56,12 @@ class HttpAsyncClientLiveTest extends GetRequestMockServer {
 
     @Test
     void whenUseHttpAsyncClient_thenCorrect() throws InterruptedException, ExecutionException, IOException {
-        final HttpHost target = new HttpHost(HOST);
+        final HttpHost target = new HttpHost(HOST_WITH_COOKIE);
         final SimpleHttpRequest request = SimpleRequestBuilder.get()
             .setHttpHost(target)
             .build();
 
-        final CloseableHttpAsyncClient client = HttpAsyncClients.createDefault();
+        final CloseableHttpAsyncClient client = HttpAsyncClients.custom().build();
         client.start();
 
 
@@ -102,30 +103,15 @@ class HttpAsyncClientLiveTest extends GetRequestMockServer {
 
     @Test
     void whenUseProxyWithHttpClient_thenCorrect() throws Exception {
-        final CloseableHttpAsyncClient client = HttpAsyncClients.createDefault();
+        final HttpHost proxy = new HttpHost("127.0.0.1", GetRequestMockServer.serverPort);
+        DefaultProxyRoutePlanner routePlanner = new DefaultProxyRoutePlanner(proxy);
+        final CloseableHttpAsyncClient client = HttpAsyncClients.custom()
+            .setRoutePlanner(routePlanner)
+            .build();
         client.start();
-        final HttpHost proxy = new HttpHost("127.0.0.1", 8080);
-        final RequestConfig config = RequestConfig.custom().setProxy(proxy).build();
+
         final SimpleHttpRequest request = new SimpleHttpRequest("GET" ,HOST_WITH_PROXY);
-        request.setConfig(config);
-        final Future<SimpleHttpResponse> future = client.execute(request, new FutureCallback<>(){
-            @Override
-            public void completed(SimpleHttpResponse response) {
-
-                System.out.println("responseData");
-            }
-
-            @Override
-            public void failed(Exception ex) {
-                System.out.println("Error executing HTTP request: " + ex.getMessage());
-            }
-
-            @Override
-            public void cancelled() {
-                System.out.println("HTTP request execution cancelled");
-            }
-        });
-
+        final Future<SimpleHttpResponse> future = client.execute(request, null);
         final HttpResponse  response = future.get();
         assertThat(response.getCode(), equalTo(200));
         client.close();

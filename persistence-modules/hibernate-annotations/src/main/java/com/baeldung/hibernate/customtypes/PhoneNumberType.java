@@ -1,20 +1,37 @@
 package com.baeldung.hibernate.customtypes;
 
-import org.hibernate.engine.spi.SharedSessionContractImplementor;
-import org.hibernate.usertype.UserType;
+import org.hibernate.HibernateException;
+import org.hibernate.engine.spi.SessionFactoryImplementor;
+import org.hibernate.metamodel.spi.ValueAccess;
+import org.hibernate.usertype.CompositeUserType;
 
 import java.io.Serializable;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Types;
 import java.util.Objects;
 
-public class PhoneNumberType implements UserType<PhoneNumber> {
+public class PhoneNumberType implements CompositeUserType<PhoneNumber> {
 
     @Override
-    public int getSqlType() {
-        return Types.INTEGER;
+    public Object getPropertyValue(PhoneNumber component, int property) throws HibernateException {
+        switch (property) {
+            case 0:
+                return component.getCountryCode();
+            case 1:
+                return component.getCityCode();
+            case 2:
+                return component.getNumber();
+            default:
+                throw new IllegalArgumentException(property + " is an invalid property index for class type " + component.getClass().getName());
+        }
+    }
+
+    @Override
+    public PhoneNumber instantiate(ValueAccess values, SessionFactoryImplementor sessionFactory) {
+        return new PhoneNumber(values.getValue(0, Integer.class), values.getValue(1, Integer.class), values.getValue(2,Integer.class));
+    }
+
+    @Override
+    public Class<?> embeddable() {
+        return PhoneNumber.class;
     }
 
     @Override
@@ -35,32 +52,6 @@ public class PhoneNumberType implements UserType<PhoneNumber> {
     @Override
     public int hashCode(PhoneNumber x) {
         return x.hashCode();
-    }
-
-    @Override
-    public PhoneNumber nullSafeGet(ResultSet rs, int position, SharedSessionContractImplementor session, Object owner) throws SQLException {
-        int countryCode = rs.getInt(position);
-
-        if (rs.wasNull())
-            return null;
-
-        int cityCode = rs.getInt(position);
-        int number = rs.getInt(position);
-
-        return new PhoneNumber(countryCode, cityCode, number);
-    }
-
-    @Override
-    public void nullSafeSet(PreparedStatement st, PhoneNumber value, int index, SharedSessionContractImplementor session) throws SQLException {
-        if (Objects.isNull(value)) {
-            st.setNull(index, Types.INTEGER);
-            st.setNull(index+1, Types.INTEGER);
-            st.setNull(index+2, Types.INTEGER);
-        } else {
-            st.setInt(index, value.getCountryCode());
-            st.setInt(index+1, value.getCityCode());
-            st.setInt(index+2, value.getNumber());
-        }
     }
 
     @Override
