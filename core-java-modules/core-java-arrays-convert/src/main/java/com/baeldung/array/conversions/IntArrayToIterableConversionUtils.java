@@ -10,9 +10,7 @@ import java.util.stream.Collectors;
 public class IntArrayToIterableConversionUtils {
 
     public static Iterable<Integer> convertWithStreamToList(int[] array) {
-        return Arrays.stream(array)
-                .boxed()
-                .collect(Collectors.toList());
+        return Arrays.stream(array).boxed().collect(Collectors.toList());
     }
 
     public static Iterable<Integer> convertWithStreamIterator(int[] array) {
