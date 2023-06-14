@@ -4,10 +4,10 @@ import static org.junit.Assert.*;
 
 import org.junit.jupiter.api.*;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+import jakarta.persistence.Query;
 import java.util.Collections;
 import java.util.List;
 
@@ -44,7 +44,7 @@ public class SqlResultSetMappingUnitTest {
 
     @Test
     public void whenNamedQuery_thenMultipleEntityResult() {
-        final Query query = em.createNativeQuery("SELECT e.id, e.name, d.id, d.employeeId, d.dayOfWeek "
+        final Query query = em.createNativeQuery("SELECT e.id as idEmployee, e.name, d.id as daysId, d.employeeId, d.dayOfWeek "
                                                     + " FROM employee e, schedule_days d "
                                                     + " WHERE e.id = d.employeeId", "EmployeeScheduleResults");
         List<Object[]> results = query.getResultList();

@@ -12,4 +12,6 @@
 - [Log Properties in a Spring Boot Application](https://www.baeldung.com/spring-boot-log-properties)
 - [Using Environment Variables in Spring Boot’s application.properties](https://www.baeldung.com/spring-boot-properties-env-variables)
 - [Loading Multiple YAML Configuration Files in Spring Boot](https://www.baeldung.com/spring-boot-load-multiple-yaml-configuration-files)
+- [Using Environment Variables in Spring Boot’s Properties Files](https://www.baeldung.com/spring-boot-properties-env-variables)
+- [Spring Boot Properties Prefix Must Be in Canonical Form](https://www.baeldung.com/spring-boot-properties-canonical-form)
 - More articles: [[<-- prev]](../spring-boot-properties-2)

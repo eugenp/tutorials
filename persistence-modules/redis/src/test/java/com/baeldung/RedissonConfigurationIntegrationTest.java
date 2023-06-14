@@ -32,7 +32,10 @@ public class RedissonConfigurationIntegrationTest {
         port = s.getLocalPort();
         s.close();
 
-        redisServer = new RedisServer(port);
+        redisServer = RedisServer.builder()
+                .port(port)
+                .setting("maxmemory 128M")
+                .build();
         redisServer.start();
     }
 
