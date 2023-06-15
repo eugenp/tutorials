@@ -165,6 +165,18 @@ public class UserRepositoryIntegrationTest {
     }
 
     @Test
+    public void whenByNameOrAge() {
+
+        assertEquals(2, userRepository.findByNameOrAge(USER_NAME_ADAM, 20).size());
+    }
+
+    @Test
+    public void whenByNameOrAgeAndActive() {
+
+        assertEquals(3, userRepository.findByNameOrAgeAndActive(USER_NAME_ADAM, 20, false).size());
+    }
+
+    @Test
     public void whenByNameOrderByName() {
 
         assertEquals(2, userRepository.findByNameOrderByName(USER_NAME_ADAM).size());

@@ -58,6 +58,10 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     List<User> findByNameOrBirthDateAndActive(@Param(value = "nameParam") String nameParam, @Param(value = "birthDateParam") ZonedDateTime birthDateParam,
                                               @Param(value = "activeParam") Boolean activeParam);
 
+    List<User> findByNameOrAge(String name, Integer age);
+
+    List<User> findByNameOrAgeAndActive(String name, Integer age, Boolean active);
+
     List<User> findByNameOrderByName(String name);
 
     List<User> findByNameOrderByNameDesc(String name);
