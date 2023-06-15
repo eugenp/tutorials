@@ -75,7 +75,7 @@ public class MovieRepositoryIntegrationTest {
     public void testCount() {
         System.out.println("count");
         long movieCount = movieRepository.count();
-
+        assertNotNull(movieCount);
         assertEquals(1, movieCount);
     }
 
@@ -83,7 +83,7 @@ public class MovieRepositoryIntegrationTest {
     @DirtiesContext
     public void testFindAll() {
         System.out.println("findAll");
-        Collection<Movie> result = movieRepository.findAll();
+        Collection<Movie> result = (Collection<Movie>) movieRepository.findAll();
         assertNotNull(result);
         assertEquals(1, result.size());
     }
@@ -125,7 +125,7 @@ public class MovieRepositoryIntegrationTest {
     public void testDeleteAll() {
         System.out.println("deleteAll");
         movieRepository.deleteAll();
-        Collection<Movie> result = movieRepository.findAll();
+        Collection<Movie> result = (Collection<Movie>) movieRepository.findAll();
         assertEquals(0, result.size());
     }
 }
