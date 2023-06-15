@@ -62,9 +62,9 @@
             <version>${jackson-databind-nullable.version}</version>
         </dependency>
         <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>${springfox-swagger2.version}</version>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>${springdoc.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -166,10 +166,9 @@
         <spring-modulith-bom.version>0.5.1</spring-modulith-bom.version>
         <jobrunr-spring-boot-starter.version>3.1.1</jobrunr-spring-boot-starter.version>
         <awaitility.version>4.0.3</awaitility.version>
-        <openapi-generator.version>5.1.0</openapi-generator.version>
+        <openapi-generator.version>5.3.0</openapi-generator.version>
         <spring.data.version>2.4.5</spring.data.version>
         <jackson-databind-nullable.version>0.2.1</jackson-databind-nullable.version>
-        <springfox-swagger2.version>2.9.2</springfox-swagger2.version>
         <reflections.version>0.10.2</reflections.version>
         <jandex.version>2.4.3.Final</jandex.version>
         <resilience4j-spring-boot2.version>2.0.2</resilience4j-spring-boot2.version>

@@ -334,7 +334,6 @@
                 <module>parent-spring-6</module>
                 <module>parent-java</module>
 
-                <module>checker-framework</module>
                 <!-- <module>clojure-modules</module> --> <!-- Not a maven project -->
 
                 <module>core-java-modules/core-java-8</module>
@@ -366,7 +365,6 @@
                 <module>muleesb</module>
                 <module>web-modules/java-lite</module>
                 <module>web-modules/restx</module>
-                <module>web-modules/jee-7</module>
                 <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't support yet the jakarta API-->
                 <module>persistence-modules/hibernate-ogm</module> <!-- hibernate-ogm wasn't updated because it doesn't support jakarta API -->
                 <module>persistence-modules/java-cassandra</module> <!-- JAVA-21464 cassandra-unit library doesn't support to run with jdk9 and above -->
@@ -429,7 +427,6 @@
 
                 <module>spring-security-modules/spring-security-ldap</module>
                 <module>spring-soap</module>
-                <module>spring-static-resources</module>
                 <module>spring-swagger-codegen</module>
                 <module>video-tutorials</module>
             </modules>
@@ -476,8 +473,6 @@
 
                 <module>apache-spark</module>
 
-                <module>image-processing</module>
-
                 <module>jenkins-modules</module>
                 <module>jhipster-modules</module>
             </modules>
@@ -516,7 +511,6 @@
                 <module>parent-spring-6</module>
                 <module>parent-java</module>
 
-                <module>checker-framework</module>
                 <!-- <module>clojure-modules</module> --> <!-- Not a maven project -->
 
                 <module>core-java-modules/core-java-8</module>
@@ -547,7 +541,6 @@
                 <module>muleesb</module>
                 <module>web-modules/java-lite</module>
                 <module>web-modules/restx</module>
-                <module>web-modules/jee-7</module>
                 <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't support yet the jakarta API-->
                 <module>persistence-modules/hibernate-ogm</module> <!-- hibernate-ogm wasn't updated because it doesn't support jakarta API -->
                 <module>persistence-modules/java-cassandra</module> <!-- JAVA-21464 cassandra-unit library doesn't support to run with jdk9 and above -->
@@ -602,7 +595,6 @@
 
                 <module>spring-security-modules/spring-security-ldap</module>
                 <module>spring-soap</module>
-                <module>spring-static-resources</module>
                 <module>spring-swagger-codegen</module>
                 <module>video-tutorials</module>
             </modules>
@@ -640,8 +632,6 @@
                 <module>parent-java</module>
 
                 <module>apache-spark</module>
-
-                <module>image-processing</module>
 
                 <module>jenkins-modules</module>
                 <module>jhipster-modules</module>
@@ -770,6 +760,7 @@
                 <module>asciidoctor</module>
                 <module>aws-modules</module>
 
+                <module>checker-framework</module>
                 <module>couchbase</module>
                 <module>core-groovy-modules</module>
 
@@ -811,6 +802,7 @@
 
                 <module>lightrun</module>
                 <module>tablesaw</module>
+                <module>image-compressing</module>
                 <module>geotools</module>
 
                 <module>jws</module>
@@ -922,6 +914,7 @@
                 <module>spring-state-machine</module>
                 <module>spring-shell</module>
                 <module>spring-spel</module>
+                <module>spring-static-resources</module>
                 <module>spring-threads</module>
                 <module>spring-vault</module>
                 <module>spring-websockets</module>
@@ -939,6 +932,7 @@
                 <module>web-modules</module>
                 <module>xml</module>
                 <module>xml-2</module>
+                <module>image-processing</module>
             </modules>
 
             <properties>
@@ -1028,6 +1022,7 @@
                 <module>asciidoctor</module>
                 <module>aws-modules</module>
 
+                <module>checker-framework</module>
                 <module>couchbase</module>
 
                 <module>core-groovy-modules</module>
@@ -1073,6 +1068,7 @@
 
                 <module>lightrun</module>
                 <module>tablesaw</module>
+                <module>image-compressing</module>
                 <module>geotools</module>
 
                 <module>jws</module>
@@ -1185,6 +1181,7 @@
                 <module>spring-state-machine</module>
                 <module>spring-shell</module>
                 <module>spring-spel</module>
+                <module>spring-static-resources</module>
                 <module>spring-threads</module>
                 <module>spring-vault</module>
                 <module>spring-websockets</module>
@@ -1202,6 +1199,7 @@
                 <module>web-modules</module>
                 <module>xml</module>
                 <module>xml-2</module>
+                <module>image-processing</module>
             </modules>
 
             <properties>
