@@ -6,7 +6,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.Iterator;
 
 import org.apache.commons.vfs2.FileContent;
 import org.apache.commons.vfs2.FileObject;
@@ -28,13 +27,10 @@ public class TarExtractorVfs extends TarExtractor {
         Files.copy(getTarStream(), tmpTar, StandardCopyOption.REPLACE_EXISTING);
 
         FileSystemManager fsManager = VFS.getManager();
-        String uri = String.format("%s:file://%s", isGzip() ? "tgz" : "tar", tmpTar.toString());
+        String uri = String.format("%s:file://%s", isGzip() ? "tgz" : "tar", tmpTar);
         FileObject tar = fsManager.resolveFile(uri);
 
-        Iterator<FileObject> contents = tar.iterator();
-        while (contents.hasNext()) {
-            FileObject entry = contents.next();
-
+        for (FileObject entry : tar) {
             Path extractTo = Paths.get(getDestination().toString(), entry.getName()
                 .getPath());
 
