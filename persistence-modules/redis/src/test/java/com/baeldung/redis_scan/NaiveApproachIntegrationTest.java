@@ -27,7 +27,7 @@ public class NaiveApproachIntegrationTest {
 
         redisServer = RedisServer.builder()
                 .port(port)
-                .setting("maxheap 128M")
+                .setting("maxmemory 128M")
                 .build();
     }
 

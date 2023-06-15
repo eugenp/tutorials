@@ -16,9 +16,9 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../../parent-boot-2</relativePath>
     </parent>
-    
+
     <properties>
-    	<keycloak.version>21.0.1</keycloak.version>
+        <keycloak.version>21.0.1</keycloak.version>
     </properties>
 
     <dependencies>
@@ -49,8 +49,8 @@
             <groupId>org.keycloak</groupId>
             <artifactId>keycloak-admin-client</artifactId>
             <version>${keycloak.version}</version>
-	    </dependency>
-	
+        </dependency>
+
         <dependency>
             <groupId>org.keycloak</groupId>
             <artifactId>keycloak-core</artifactId>

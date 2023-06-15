@@ -39,7 +39,7 @@ public class CitizenService {
         if (encryptionConfig.isAutoEncryption()) {
             return mongo.save(citizen);
         } else {
-            EncryptedCitizen encryptedCitizen = new EncryptedCitizen(citizen);
+            EncryptedCitizen encryptedCitizen = new EncryptedCitizen(citizen.getName());
             encryptedCitizen.setEmail(encrypt(citizen.getEmail(), DETERMINISTIC_ALGORITHM));
             encryptedCitizen.setBirthYear(encrypt(citizen.getBirthYear(), RANDOM_ALGORITHM));
 
@@ -77,24 +77,29 @@ public class CitizenService {
         }
     }
 
-    public Binary encrypt(Object value, String algorithm) {
-        if (value == null)
+    public Binary encrypt(BsonValue bsonValue, String algorithm) {
+        if (bsonValue == null)
             return null;
-
-        BsonValue bsonValue;
-        if (value instanceof Integer) {
-            bsonValue = new BsonInt32((Integer) value);
-        } else if (value instanceof String) {
-            bsonValue = new BsonString((String) value);
-        } else {
-            throw new IllegalArgumentException("unsupported type: " + value.getClass());
-        }
 
         EncryptOptions options = new EncryptOptions(algorithm);
         options.keyId(encryptionConfig.getDataKeyId());
 
         BsonBinary encryptedValue = clientEncryption.encrypt(bsonValue, options);
         return new Binary(encryptedValue.getType(), encryptedValue.getData());
+    }
+
+    public Binary encrypt(String value, String algorithm) {
+        if (value == null)
+            return null;
+
+        return encrypt(new BsonString(value), algorithm);
+    }
+
+    public Binary encrypt(Integer value, String algorithm) {
+        if (value == null)
+            return null;
+
+        return encrypt(new BsonInt32(value), algorithm);
     }
 
     public BsonValue decryptProperty(Binary value) {
@@ -108,7 +113,7 @@ public class CitizenService {
         if (encrypted == null)
             return null;
 
-        Citizen citizen = new Citizen(encrypted);
+        Citizen citizen = new Citizen(encrypted.getName());
 
         BsonValue decryptedBirthYear = decryptProperty(encrypted.getBirthYear());
         if (decryptedBirthYear != null) {

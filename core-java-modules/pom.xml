@@ -137,6 +137,7 @@
         <module>core-java-string-conversions-3</module>
         <module>core-java-string-operations</module>
         <module>core-java-string-operations-2</module>
+        <module>core-java-string-operations-6</module>
         <module>core-java-regex</module>
         <module>core-java-regex-2</module>
         <module>core-java-uuid</module>
