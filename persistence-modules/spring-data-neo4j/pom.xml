@@ -108,7 +108,7 @@
         <dependency>
             <groupId>org.neo4j.test</groupId>
             <artifactId>neo4j-harness</artifactId>
-            <version>${neo4j.version}</version>
+            <version>5.5.0</version>
             <scope>test</scope>
             <exclusions>
                 <exclusion>
@@ -129,8 +129,6 @@
         <neo4j-ogm.version>4.0.4</neo4j-ogm.version>
         <neo4j-jdbc.version>4.0.9</neo4j-jdbc.version>
         <neo4j-ogm-embedded-driver.version>3.2.39</neo4j-ogm-embedded-driver.version>
-        <org.slf4j.version>2.0.7</org.slf4j.version>
-        <logback.version>1.4.7</logback.version>
     </properties>
 
 </project>

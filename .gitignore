@@ -121,6 +121,3 @@ devDb*.db
 
 #jaxb
 *.xjb
-
-#spring-data-neo4j
-persistence-modules/spring-data-neo4j/data/**
