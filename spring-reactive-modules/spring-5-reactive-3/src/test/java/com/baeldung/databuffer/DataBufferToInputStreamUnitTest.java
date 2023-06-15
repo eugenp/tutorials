@@ -17,9 +17,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URI;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 class DataBufferToInputStreamUnitTest {
     private String getResponseStub() throws IOException {
@@ -67,7 +70,7 @@ class DataBufferToInputStreamUnitTest {
 
     @Test
     public void testResponseAsInputStream() throws IOException, InterruptedException {
-        String mockUrl = Mockito.anyString();
+        String mockUrl = "http://mockurl.com";
         WebClient mockWebClient = getMockWebClient();
         InputStream inputStream = DataBufferToInputStream.getResponseAsInputStream(mockWebClient, mockUrl);
         byte[] expectedBytes = IOUtils.toByteArray(getResponseStubAsInputStream());

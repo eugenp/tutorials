@@ -1,9 +1,9 @@
 package com.baeldung.jpa.querytypes;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.NamedQuery;
+import jakarta.persistence.Table;
 
 /**
  * User entity class. Used as an asset for JPA Query Types examples.

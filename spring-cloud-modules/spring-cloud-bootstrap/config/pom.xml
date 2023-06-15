@@ -9,9 +9,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-1</artifactId>
+        <artifactId>parent-boot-2</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../../parent-boot-1</relativePath>
+        <relativePath>../../../parent-boot-2</relativePath>
     </parent>
 
     <dependencyManagement>
@@ -33,7 +33,7 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-eureka</artifactId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -42,7 +42,7 @@
     </dependencies>
 
     <properties>
-        <spring-cloud-dependencies.version>Brixton.SR7</spring-cloud-dependencies.version>
+        <spring-cloud-dependencies.version>2021.0.7</spring-cloud-dependencies.version>
     </properties>
 
 </project>

@@ -35,16 +35,20 @@ public class CitizenService {
     @Autowired
     private ClientEncryption clientEncryption;
 
-    public EncryptedCitizen save(Citizen citizen) {
-        EncryptedCitizen encryptedCitizen = new EncryptedCitizen(citizen);
-        encryptedCitizen.setEmail(encrypt(citizen.getEmail(), DETERMINISTIC_ALGORITHM));
-        encryptedCitizen.setBirthYear(encrypt(citizen.getBirthYear(), RANDOM_ALGORITHM));
+    public Object save(Citizen citizen) {
+        if (encryptionConfig.isAutoEncryption()) {
+            return mongo.save(citizen);
+        } else {
+            EncryptedCitizen encryptedCitizen = new EncryptedCitizen(citizen.getName());
+            encryptedCitizen.setEmail(encrypt(citizen.getEmail(), DETERMINISTIC_ALGORITHM));
+            encryptedCitizen.setBirthYear(encrypt(citizen.getBirthYear(), RANDOM_ALGORITHM));
 
-        return mongo.save(encryptedCitizen);
+            return mongo.save(encryptedCitizen);
+        }
     }
 
     public List<Citizen> findAll() {
-        if (!encryptionConfig.getAutoDecryption()) {
+        if (!encryptionConfig.isAutoDecryption()) {
             List<EncryptedCitizen> allEncrypted = mongo.findAll(EncryptedCitizen.class);
 
             return allEncrypted.stream()
@@ -56,34 +60,46 @@ public class CitizenService {
     }
 
     public Citizen findByEmail(String email) {
-        Query byEmail = new Query(Criteria.where("email")
-            .is(encrypt(email, DETERMINISTIC_ALGORITHM)));
-        if (!encryptionConfig.getAutoDecryption()) {
+        Criteria emailCriteria = Criteria.where("email");
+        if (encryptionConfig.isAutoEncryption()) {
+            emailCriteria.is(email);
+        } else {
+            emailCriteria
+                .is(encrypt(email, DETERMINISTIC_ALGORITHM));
+        }
+
+        Query byEmail = new Query(emailCriteria);
+        if (encryptionConfig.isAutoDecryption()) {
+            return mongo.findOne(byEmail, Citizen.class);
+        } else {
             EncryptedCitizen encryptedCitizen = mongo.findOne(byEmail, EncryptedCitizen.class);
             return decrypt(encryptedCitizen);
-        } else {
-            return mongo.findOne(byEmail, Citizen.class);
         }
     }
 
-    public Binary encrypt(Object value, String algorithm) {
-        if (value == null)
+    public Binary encrypt(BsonValue bsonValue, String algorithm) {
+        if (bsonValue == null)
             return null;
-
-        BsonValue bsonValue;
-        if (value instanceof Integer) {
-            bsonValue = new BsonInt32((Integer) value);
-        } else if (value instanceof String) {
-            bsonValue = new BsonString((String) value);
-        } else {
-            throw new IllegalArgumentException("unsupported type: " + value.getClass());
-        }
 
         EncryptOptions options = new EncryptOptions(algorithm);
         options.keyId(encryptionConfig.getDataKeyId());
 
         BsonBinary encryptedValue = clientEncryption.encrypt(bsonValue, options);
         return new Binary(encryptedValue.getType(), encryptedValue.getData());
+    }
+
+    public Binary encrypt(String value, String algorithm) {
+        if (value == null)
+            return null;
+
+        return encrypt(new BsonString(value), algorithm);
+    }
+
+    public Binary encrypt(Integer value, String algorithm) {
+        if (value == null)
+            return null;
+
+        return encrypt(new BsonInt32(value), algorithm);
     }
 
     public BsonValue decryptProperty(Binary value) {
@@ -97,7 +113,7 @@ public class CitizenService {
         if (encrypted == null)
             return null;
 
-        Citizen citizen = new Citizen(encrypted);
+        Citizen citizen = new Citizen(encrypted.getName());
 
         BsonValue decryptedBirthYear = decryptProperty(encrypted.getBirthYear());
         if (decryptedBirthYear != null) {

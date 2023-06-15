@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.time.Duration;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -35,7 +36,10 @@ public class JedisIntegrationTest {
         port = s.getLocalPort();
         s.close();
         
-        redisServer = new RedisServer(port);
+        redisServer = RedisServer.builder()
+                .port(port)
+                .setting("maxmemory 128M")
+                .build();
         redisServer.start();
         
         // Configure JEDIS
@@ -148,7 +152,7 @@ public class JedisIntegrationTest {
             jedis.zadd(key, playerScore.getValue(), playerScore.getKey());
         });
 
-        Set<String> players = jedis.zrevrange(key, 0, 1);
+        List<String> players = jedis.zrevrange(key, 0, 1);
         Assert.assertEquals("PlayerThree", players.iterator().next());
 
         long rank = jedis.zrevrank(key, "PlayerOne");
@@ -184,7 +188,7 @@ public class JedisIntegrationTest {
         p.zadd("ranking", 126, userOneId);
         p.zadd("ranking", 325, userTwoId);
         Response<Boolean> pipeExists = p.sismember("searched#" + userOneId, "paris");
-        Response<Set<String>> pipeRanking = p.zrange("ranking", 0, -1);
+        Response<List<String>> pipeRanking = p.zrange("ranking", 0, -1);
         p.sync();
 
         Assert.assertTrue(pipeExists.get());

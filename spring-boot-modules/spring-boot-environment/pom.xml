@@ -149,7 +149,7 @@
             </properties>
         </profile>
     </profiles>
-    
+
     <properties>
         <jpa.version>2.2</jpa.version>
         <subethasmtp.version>3.1.7</subethasmtp.version>

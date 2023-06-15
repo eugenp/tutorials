@@ -5,18 +5,21 @@ import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
 
-import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.AvailableSettings;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Projections;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Path;
+import jakarta.persistence.criteria.Root;
+import jakarta.persistence.metamodel.SingularAttribute;
 
 public class HibernateProjectionsIntegrationTest {
     private static Session session;
@@ -56,16 +59,20 @@ public class HibernateProjectionsIntegrationTest {
         cfg.setProperty(AvailableSettings.CURRENT_SESSION_CONTEXT_CLASS, "thread");
         return cfg;
     }
-    
-    
+
+
     @SuppressWarnings("deprecation")
     @Test
     public void givenProductData_whenIdAndNameProjectionUsingCriteria_thenListOfObjectArrayReturned() {
-        Criteria criteria = session.createCriteria(Product.class);
-        criteria = criteria.setProjection(Projections.projectionList()
-            .add(Projections.id())
-            .add(Projections.property("name")));
-        List<Object[]> resultList = criteria.list();
+        final CriteriaBuilder criteria = session.getCriteriaBuilder();
+        final CriteriaQuery<Object[]> criteriaQuery = criteria.createQuery(Object[].class);
+        final Root<Product> root = criteriaQuery.from(Product.class);
+        final SingularAttribute<Product, String> name = Product_.name;
+        final SingularAttribute<Product, Long> id = Product_.id;
+        final Path<String> nameProjection = root.get(name);
+        final Path<Long> idProjection = root.get(id);
+        criteriaQuery.multiselect(idProjection, nameProjection);
+        final List<Object[]> resultList = session.createQuery(criteriaQuery).getResultList();
 
         assertNotNull(resultList);
         assertEquals(4, resultList.size());
@@ -82,9 +89,13 @@ public class HibernateProjectionsIntegrationTest {
     
     @Test
     public void givenProductData_whenNameProjectionUsingCriteria_thenListOfStringReturned() {
-        Criteria criteria = session.createCriteria(Product.class);
-        criteria = criteria.setProjection(Projections.property("name"));
-        List resultList = criteria.list();
+        final CriteriaBuilder criteria = session.getCriteriaBuilder();
+        final CriteriaQuery<String> criteriaQuery = criteria.createQuery(String.class);
+        final Root<Product> root = criteriaQuery.from(Product.class);
+        final SingularAttribute<Product, String> name = Product_.name;
+        final Path<String> nameProjection = root.get(name);
+        criteriaQuery.select(nameProjection);
+        final List<String> resultList = session.createQuery(criteriaQuery).getResultList();
 
         assertNotNull(resultList);
         assertEquals(4, resultList.size());
@@ -96,11 +107,12 @@ public class HibernateProjectionsIntegrationTest {
     
     @Test
     public void givenProductData_whenCountByCategoryUsingCriteria_thenOK() {
-        Criteria criteria = session.createCriteria(Product.class);
-        criteria = criteria.setProjection(Projections.projectionList()
-            .add(Projections.groupProperty("category"))
-            .add(Projections.rowCount()));
-        List<Object[]> resultList = criteria.list();
+        final CriteriaBuilder criteria = session.getCriteriaBuilder();
+        final CriteriaQuery<Object[]> criteriaQuery = criteria.createQuery(Object[].class);
+        final Root<Product> root = criteriaQuery.from(Product.class);
+        criteriaQuery.groupBy(root.get("category"));
+        criteriaQuery.multiselect(root.get("category"), criteria.count(root));
+        final List<Object[]> resultList = session.createQuery(criteriaQuery).getResultList();
 
         assertNotNull(resultList);
         assertEquals(3, resultList.size());
@@ -114,12 +126,13 @@ public class HibernateProjectionsIntegrationTest {
     
     @Test
     public void givenProductData_whenCountByCategoryWithAliasUsingCriteria_thenOK() {
-        Criteria criteria = session.createCriteria(Product.class);
-        criteria = criteria.setProjection(Projections.projectionList()
-            .add(Projections.groupProperty("category"))
-            .add(Projections.alias(Projections.rowCount(), "count")));
-        criteria.addOrder(Order.asc("count"));
-        List<Object[]> resultList = criteria.list();
+        final CriteriaBuilder criteria = session.getCriteriaBuilder();
+        final CriteriaQuery<Object[]> criteriaQuery = criteria.createQuery(Object[].class);
+        final Root<Product> root = criteriaQuery.from(Product.class);
+        criteriaQuery.groupBy(root.get("category"));
+        criteriaQuery.multiselect(root.get("category"), criteria.count(root));
+        criteriaQuery.orderBy(criteria.asc(criteria.count(root)));
+        List<Object[]> resultList = session.createQuery(criteriaQuery).getResultList();
 
         assertNotNull(resultList);
         assertEquals(3, resultList.size());
