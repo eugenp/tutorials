@@ -27,23 +27,12 @@
         <dependency>
             <groupId>org.neo4j</groupId>
             <artifactId>neo4j-ogm-embedded-driver</artifactId>
-            <version>${neo4j-ogm-embedded-driver.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.neo4j</groupId>
-            <artifactId>neo4j-ogm-bolt-driver</artifactId>
             <version>${neo4j-ogm.version}</version>
         </dependency>
         <dependency>
             <groupId>org.neo4j.driver</groupId>
             <artifactId>neo4j-java-driver</artifactId>
             <version>${neo4j-java-driver.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.neo4j</groupId>
-            <artifactId>neo4j-jdbc-driver</artifactId>
-            <version>${neo4j-jdbc.version}</version>
-            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.data</groupId>
@@ -81,42 +70,32 @@
             </exclusions>
         </dependency>
         <dependency>
+            <groupId>org.neo4j</groupId>
+            <artifactId>neo4j-ogm-test</artifactId>
+            <version>${neo4j-ogm.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.neo4j.test</groupId>
+            <artifactId>neo4j-harness</artifactId>
+            <version>${neo4j.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <version>${spring-test.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.testcontainers</groupId>
-            <artifactId>neo4j</artifactId>
-            <version>${testcontainers.version}</version>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.jetbrains</groupId>
-                    <artifactId>annotations</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.apache.commons</groupId>
-                    <artifactId>commons-compress</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>javax.xml.bind</groupId>
-                    <artifactId>jaxb-api</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
     </dependencies>
 
     <properties>
-        <neo4j-java-driver.version>5.6.0</neo4j-java-driver.version>
-        <neo4j.version>5.8.0</neo4j.version>
-        <spring-data-neo4j.version>7.0.3</spring-data-neo4j.version>
-        <jackson-jsog.version>1.1.2</jackson-jsog.version>
-        <spring-boot.version>3.1.0</spring-boot.version>
-        <spring-test.version>6.0.8</spring-test.version>
-        <neo4j-ogm.version>4.0.4</neo4j-ogm.version>
-        <neo4j-jdbc.version>4.0.9</neo4j-jdbc.version>
-        <neo4j-ogm-embedded-driver.version>3.2.39</neo4j-ogm-embedded-driver.version>
+        <neo4j-java-driver.version>1.6.2</neo4j-java-driver.version>
+        <neo4j.version>3.4.6</neo4j.version>
+        <spring-data-neo4j.version>5.0.1.RELEASE</spring-data-neo4j.version>
+        <jackson-jsog.version>1.1</jackson-jsog.version>
+        <spring-boot.version>2.0.1.RELEASE</spring-boot.version>
+        <spring-test.version>5.0.1.RELEASE</spring-test.version>
+        <neo4j-ogm.version>3.1.2</neo4j-ogm.version>
     </properties>
 
 </project>
