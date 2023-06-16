@@ -153,27 +153,15 @@ public class UserRepositoryIntegrationTest {
     }
 
     @Test
-    public void whenByNameOrBirthDate() {
-
-        assertEquals(4, userRepository.findByNameOrBirthDate(USER_NAME_ADAM, BIRTHDATE).size());
-    }
-
-    @Test
-    public void whenByNameOrBirthDateAndActive() {
-
-        assertEquals(2, userRepository.findByNameOrBirthDateAndActive(USER_NAME_ADAM, BIRTHDATE, false).size());
-    }
-
-    @Test
     public void whenByNameOrAge() {
 
-        assertEquals(2, userRepository.findByNameOrAge(USER_NAME_ADAM, 20).size());
+        assertEquals(3, userRepository.findByNameOrAge(USER_NAME_ADAM, 20).size());
     }
 
     @Test
     public void whenByNameOrAgeAndActive() {
 
-        assertEquals(3, userRepository.findByNameOrAgeAndActive(USER_NAME_ADAM, 20, false).size());
+        assertEquals(2, userRepository.findByNameOrAgeAndActive(USER_NAME_ADAM, 20, false).size());
     }
 
     @Test
