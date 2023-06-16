@@ -110,6 +110,7 @@
         <module>spring-data-rest</module>
         <module>java-mongodb</module>
         <module>questdb</module>
+        <module>neo4j</module>
     </modules>
 
     <properties>

@@ -369,7 +369,7 @@
                 <module>persistence-modules/hibernate-ogm</module> <!-- hibernate-ogm wasn't updated because it doesn't support jakarta API -->
                 <module>persistence-modules/java-cassandra</module> <!-- JAVA-21464 cassandra-unit library doesn't support to run with jdk9 and above -->
                 <module>persistence-modules/spring-data-cassandra-reactive</module> <!--JAVA-21844-->
-				<module>persistence-modules/spring-data-neo4j</module>
+                <module>persistence-modules/spring-data-neo4j</module>
             </modules>
 
         </profile>
@@ -474,8 +474,6 @@
 
                 <module>apache-spark</module>
 
-                <module>image-processing</module>
-
                 <module>jenkins-modules</module>
                 <module>jhipster-modules</module>
             </modules>
@@ -548,7 +546,7 @@
                 <module>persistence-modules/hibernate-ogm</module> <!-- hibernate-ogm wasn't updated because it doesn't support jakarta API -->
                 <module>persistence-modules/java-cassandra</module> <!-- JAVA-21464 cassandra-unit library doesn't support to run with jdk9 and above -->
                 <module>persistence-modules/spring-data-cassandra-reactive</module> <!--JAVA-21844-->
-				<module>persistence-modules/spring-data-neo4j</module>
+                <module>persistence-modules/spring-data-neo4j</module>
             </modules>
 
         </profile>
@@ -636,8 +634,6 @@
                 <module>parent-java</module>
 
                 <module>apache-spark</module>
-
-                <module>image-processing</module>
 
                 <module>jenkins-modules</module>
                 <module>jhipster-modules</module>
@@ -938,6 +934,7 @@
                 <module>web-modules</module>
                 <module>xml</module>
                 <module>xml-2</module>
+                <module>image-processing</module>
             </modules>
 
             <properties>
@@ -1204,6 +1201,7 @@
                 <module>web-modules</module>
                 <module>xml</module>
                 <module>xml-2</module>
+                <module>image-processing</module>
             </modules>
 
             <properties>
