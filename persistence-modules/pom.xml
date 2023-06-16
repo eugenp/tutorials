@@ -93,7 +93,6 @@
         <!-- <module>spring-data-mongodb</module> FAILED -->
         <module>spring-data-mongodb-2</module>
         <module>spring-data-mongodb-reactive</module>
-        <!-- <module>spring-data-neo4j</module> FAILED -->
         <module>spring-data-redis</module>
         <!--        Moved to JDK9+ profiles-->
         <!--        <module>spring-data-rest</module>-->
