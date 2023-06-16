@@ -12,32 +12,31 @@ import org.junit.jupiter.api.Test;
 import com.google.common.hash.Hashing;
 
 public class HexRepresentationSha1DigestUnitTest {
-    
-    String input = "Hello, World";
-    String expectedHexValue= "907d14fb3af2b0d4f18c2d46abe8aedce17367bd";
 
- 
+    String input = "Hello, World";
+    String expectedHexValue = "907d14fb3af2b0d4f18c2d46abe8aedce17367bd";
+
     @Test
     public void givenMessageDigest_whenUpdatingWithData_thenDigestShouldMatchExpectedValue() throws NoSuchAlgorithmException {
         MessageDigest md = MessageDigest.getInstance("SHA-1");
         md.update(input.getBytes(StandardCharsets.UTF_8));
 
         StringBuilder hexString = new StringBuilder();
-        byte [] digest = md.digest();
+        byte[] digest = md.digest();
 
         for (byte b : digest) {
             hexString.append(String.format("%02x", b));
         }
-        assertEquals(expectedHexValue,hexString.toString());
+        assertEquals(expectedHexValue, hexString.toString());
     }
-    
+
     @Test
     public void givenDigestUtils_whenCalculatingSHA1Hex_thenDigestShouldMatchExpectedValue() throws NoSuchAlgorithmException {
-        assertEquals(expectedHexValue,DigestUtils.sha1Hex(input));
+        assertEquals(expectedHexValue, DigestUtils.sha1Hex(input));
     }
-    
+
     @Test
     public void givenHashingLibrary_whenCalculatingSHA1Hash_thenDigestShouldMatchExpectedValue() throws NoSuchAlgorithmException {
-        assertEquals(expectedHexValue,Hashing.sha1().hashString(input,StandardCharsets.UTF_8).toString());
+        assertEquals(expectedHexValue, Hashing.sha1().hashString(input, StandardCharsets.UTF_8).toString());
     }
 }
