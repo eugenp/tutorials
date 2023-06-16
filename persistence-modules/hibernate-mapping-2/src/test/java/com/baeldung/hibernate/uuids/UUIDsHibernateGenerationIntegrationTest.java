@@ -1,18 +1,12 @@
 package com.baeldung.hibernate.uuids;
 
-import com.baeldung.HibernateUtil;
+import com.baeldung.hibernate.HibernateUtil;
 
-import com.baeldung.uuids.Reservation;
-import com.baeldung.uuids.Sale;
-import com.baeldung.uuids.WebSiteUser;
-import com.baeldung.uuids.Element;
 import org.assertj.core.api.Assertions;
 import java.io.IOException;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.Session;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 import java.util.UUID;
