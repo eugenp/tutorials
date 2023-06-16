@@ -8,6 +8,7 @@ import com.baeldung.repository.EmployeeRepository;
 import com.baeldung.repository.EmployeeRepositoryImpl;
 import com.zaxxer.hikari.HikariConfig;
 import io.netty.buffer.PooledByteBufAllocator;
+import ratpack.exec.internal.DefaultExecController;
 import ratpack.func.Action;
 import ratpack.func.Function;
 import ratpack.guice.BindingsSpec;
@@ -42,7 +43,7 @@ public class Application {
                 .maxContentLength(ServerConfig.DEFAULT_MAX_CONTENT_LENGTH)
                 .responseMaxChunkSize(16384)
                 .readTimeout(Duration.of(60, ChronoUnit.SECONDS))
-                .byteBufAllocator(PooledByteBufAllocator.DEFAULT);
+                .byteBufAllocator(PooledByteBufAllocator.DEFAULT).execController(new DefaultExecController(2));
         });
         final Function<Registry, Registry> registryFunction = Guice.registry(bindingsSpecAction);
 

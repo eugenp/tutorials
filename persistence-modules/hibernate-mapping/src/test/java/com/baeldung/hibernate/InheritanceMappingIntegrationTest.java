@@ -13,6 +13,7 @@ import org.junit.Test;
 import com.baeldung.hibernate.pojo.inheritance.Bag;
 import com.baeldung.hibernate.pojo.inheritance.Book;
 import com.baeldung.hibernate.pojo.inheritance.Car;
+import com.baeldung.hibernate.pojo.inheritance.Laptop;
 import com.baeldung.hibernate.pojo.inheritance.MyEmployee;
 import com.baeldung.hibernate.pojo.inheritance.Pen;
 import com.baeldung.hibernate.pojo.inheritance.Pet;
@@ -81,9 +82,12 @@ public class InheritanceMappingIntegrationTest {
     public void givenSubclasses_whenQueryNonMappedInterface_thenOk() {
         Bag bag = new Bag(1, "large");
         session.save(bag);
+        
+        Laptop laptop = new Laptop(1L, "Dell");
+        session.save(laptop);
 
         assertThat(session.createQuery("from com.baeldung.hibernate.pojo.inheritance.Item")
             .getResultList()
-            .size()).isEqualTo(0);
+            .size()).isEqualTo(1);
     }
 }

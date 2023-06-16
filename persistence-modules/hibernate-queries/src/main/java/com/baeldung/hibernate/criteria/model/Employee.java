@@ -1,7 +1,7 @@
 package com.baeldung.hibernate.criteria.model;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
+import jakarta.persistence.Entity;
 
 @org.hibernate.annotations.NamedQueries({
     @org.hibernate.annotations.NamedQuery(name = "Employee_findByEmployeeId", query = "from Employee where id = :employeeId"),

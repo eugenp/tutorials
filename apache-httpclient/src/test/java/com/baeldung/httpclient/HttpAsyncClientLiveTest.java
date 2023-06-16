@@ -1,7 +1,7 @@
 package com.baeldung.httpclient;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.assertThat;
 
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
@@ -9,30 +9,37 @@ import java.util.concurrent.Future;
 
 import javax.net.ssl.SSLContext;
 
-import org.apache.http.HttpHost;
-import org.apache.http.HttpResponse;
-import org.apache.http.auth.AuthScope;
-import org.apache.http.auth.UsernamePasswordCredentials;
-import org.apache.http.client.CredentialsProvider;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.protocol.HttpClientContext;
-import org.apache.http.conn.ssl.NoopHostnameVerifier;
-import org.apache.http.conn.ssl.TrustStrategy;
-import org.apache.http.impl.client.BasicCookieStore;
-import org.apache.http.impl.client.BasicCredentialsProvider;
-import org.apache.http.impl.cookie.BasicClientCookie;
-import org.apache.http.impl.nio.client.CloseableHttpAsyncClient;
-import org.apache.http.impl.nio.client.HttpAsyncClients;
-import org.apache.http.impl.nio.conn.PoolingNHttpClientConnectionManager;
-import org.apache.http.impl.nio.reactor.DefaultConnectingIOReactor;
-import org.apache.http.nio.reactor.ConnectingIOReactor;
-import org.apache.http.protocol.BasicHttpContext;
-import org.apache.http.protocol.HttpContext;
-import org.apache.http.ssl.SSLContexts;
-import org.junit.Test;
+import org.apache.hc.client5.http.impl.routing.DefaultProxyRoutePlanner;
+import org.junit.jupiter.api.Test;
 
-public class HttpAsyncClientLiveTest {
+import org.apache.hc.client5.http.async.methods.SimpleHttpRequest;
+import org.apache.hc.client5.http.async.methods.SimpleHttpResponse;
+import org.apache.hc.client5.http.async.methods.SimpleRequestBuilder;
+import org.apache.hc.client5.http.auth.AuthScope;
+import org.apache.hc.client5.http.auth.UsernamePasswordCredentials;
+import org.apache.hc.client5.http.classic.methods.HttpGet;
+import org.apache.hc.client5.http.config.RequestConfig;
+import org.apache.hc.client5.http.cookie.BasicCookieStore;
+import org.apache.hc.client5.http.impl.async.CloseableHttpAsyncClient;
+import org.apache.hc.client5.http.impl.async.HttpAsyncClients;
+import org.apache.hc.client5.http.impl.auth.BasicCredentialsProvider;
+import org.apache.hc.client5.http.impl.cookie.BasicClientCookie;
+import org.apache.hc.client5.http.impl.nio.PoolingAsyncClientConnectionManager;
+import org.apache.hc.client5.http.impl.nio.PoolingAsyncClientConnectionManagerBuilder;
+import org.apache.hc.client5.http.protocol.HttpClientContext;
+import org.apache.hc.client5.http.ssl.ClientTlsStrategyBuilder;
+import org.apache.hc.core5.concurrent.FutureCallback;
+import org.apache.hc.core5.http.HttpHost;
+import org.apache.hc.core5.http.HttpResponse;
+import org.apache.hc.core5.http.nio.ssl.TlsStrategy;
+import org.apache.hc.core5.http.protocol.BasicHttpContext;
+import org.apache.hc.core5.http.protocol.HttpContext;
+import org.apache.hc.core5.reactor.IOReactorConfig;
+import org.apache.hc.core5.ssl.SSLContexts;
+import org.apache.hc.core5.ssl.TrustStrategy;
+
+
+class HttpAsyncClientLiveTest extends GetRequestMockServer {
 
     private static final String HOST = "http://www.google.com";
     private static final String HOST_WITH_SSL = "https://mms.nw.ru/";
@@ -48,23 +55,33 @@ public class HttpAsyncClientLiveTest {
     // tests
 
     @Test
-    public void whenUseHttpAsyncClient_thenCorrect() throws InterruptedException, ExecutionException, IOException {
-        final CloseableHttpAsyncClient client = HttpAsyncClients.createDefault();
-        client.start();
-        final HttpGet request = new HttpGet(HOST);
+    void whenUseHttpAsyncClient_thenCorrect() throws InterruptedException, ExecutionException, IOException {
+        final HttpHost target = new HttpHost(HOST_WITH_COOKIE);
+        final SimpleHttpRequest request = SimpleRequestBuilder.get()
+            .setHttpHost(target)
+            .build();
 
-        final Future<HttpResponse> future = client.execute(request, null);
+        final CloseableHttpAsyncClient client = HttpAsyncClients.custom().build();
+        client.start();
+
+
+        final Future<SimpleHttpResponse> future = client.execute(request, null);
         final HttpResponse response = future.get();
 
-        assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
+        assertThat(response.getCode(), equalTo(200));
         client.close();
     }
 
     @Test
-    public void whenUseMultipleHttpAsyncClient_thenCorrect() throws Exception {
-        final ConnectingIOReactor ioReactor = new DefaultConnectingIOReactor();
-        final PoolingNHttpClientConnectionManager cm = new PoolingNHttpClientConnectionManager(ioReactor);
-        final CloseableHttpAsyncClient client = HttpAsyncClients.custom().setConnectionManager(cm).build();
+    void whenUseMultipleHttpAsyncClient_thenCorrect() throws Exception {
+        final IOReactorConfig ioReactorConfig = IOReactorConfig
+            .custom()
+            .build();
+
+        final CloseableHttpAsyncClient client = HttpAsyncClients.custom()
+            .setIOReactorConfig(ioReactorConfig)
+            .build();
+
         client.start();
         final String[] toGet = { "http://www.google.com/", "http://www.apache.org/", "http://www.bing.com/" };
 
@@ -85,36 +102,53 @@ public class HttpAsyncClientLiveTest {
     }
 
     @Test
-    public void whenUseProxyWithHttpClient_thenCorrect() throws Exception {
-        final CloseableHttpAsyncClient client = HttpAsyncClients.createDefault();
+    void whenUseProxyWithHttpClient_thenCorrect() throws Exception {
+        final HttpHost proxy = new HttpHost("127.0.0.1", GetRequestMockServer.serverPort);
+        DefaultProxyRoutePlanner routePlanner = new DefaultProxyRoutePlanner(proxy);
+        final CloseableHttpAsyncClient client = HttpAsyncClients.custom()
+            .setRoutePlanner(routePlanner)
+            .build();
         client.start();
-        final HttpHost proxy = new HttpHost("127.0.0.1", 8080);
-        final RequestConfig config = RequestConfig.custom().setProxy(proxy).build();
-        final HttpGet request = new HttpGet(HOST_WITH_PROXY);
-        request.setConfig(config);
-        final Future<HttpResponse> future = client.execute(request, null);
-        final HttpResponse response = future.get();
-        assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
+
+        final SimpleHttpRequest request = new SimpleHttpRequest("GET" ,HOST_WITH_PROXY);
+        final Future<SimpleHttpResponse> future = client.execute(request, null);
+        final HttpResponse  response = future.get();
+        assertThat(response.getCode(), equalTo(200));
         client.close();
     }
 
     @Test
-    public void whenUseSSLWithHttpAsyncClient_thenCorrect() throws Exception {
+    void whenUseSSLWithHttpAsyncClient_thenCorrect() throws Exception {
         final TrustStrategy acceptingTrustStrategy = (certificate, authType) -> true;
-        final SSLContext sslContext = SSLContexts.custom().loadTrustMaterial(null, acceptingTrustStrategy).build();
 
-        final CloseableHttpAsyncClient client = HttpAsyncClients.custom().setSSLHostnameVerifier(NoopHostnameVerifier.INSTANCE).setSSLContext(sslContext).build();
+        final SSLContext sslContext = SSLContexts.custom()
+            .loadTrustMaterial(null, acceptingTrustStrategy)
+            .build();
+
+        final TlsStrategy tlsStrategy = ClientTlsStrategyBuilder.create()
+            .setSslContext(sslContext)
+            .build();
+
+        final PoolingAsyncClientConnectionManager cm = PoolingAsyncClientConnectionManagerBuilder.create()
+            .setTlsStrategy(tlsStrategy)
+            .build();
+
+        final CloseableHttpAsyncClient client = HttpAsyncClients.custom()
+            .setConnectionManager(cm)
+            .build();
 
         client.start();
-        final HttpGet request = new HttpGet(HOST_WITH_SSL);
-        final Future<HttpResponse> future = client.execute(request, null);
+
+        final SimpleHttpRequest request = new SimpleHttpRequest("GET",HOST_WITH_SSL);
+        final Future<SimpleHttpResponse> future = client.execute(request, null);
+
         final HttpResponse response = future.get();
-        assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
+        assertThat(response.getCode(), equalTo(200));
         client.close();
     }
 
     @Test
-    public void whenUseCookiesWithHttpAsyncClient_thenCorrect() throws Exception {
+    void whenUseCookiesWithHttpAsyncClient_thenCorrect() throws Exception {
         final BasicCookieStore cookieStore = new BasicCookieStore();
         final BasicClientCookie cookie = new BasicClientCookie(COOKIE_NAME, "1234");
         cookie.setDomain(COOKIE_DOMAIN);
@@ -122,29 +156,36 @@ public class HttpAsyncClientLiveTest {
         cookieStore.addCookie(cookie);
         final CloseableHttpAsyncClient client = HttpAsyncClients.custom().build();
         client.start();
-        final HttpGet request = new HttpGet(HOST_WITH_COOKIE);
+        final SimpleHttpRequest request = new SimpleHttpRequest("GET" ,HOST_WITH_COOKIE);
 
         final HttpContext localContext = new BasicHttpContext();
         localContext.setAttribute(HttpClientContext.COOKIE_STORE, cookieStore);
 
-        final Future<HttpResponse> future = client.execute(request, localContext, null);
+        final Future<SimpleHttpResponse> future = client.execute(request, localContext, null);
+
         final HttpResponse response = future.get();
-        assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
+        assertThat(response.getCode(), equalTo(200));
         client.close();
     }
 
     @Test
-    public void whenUseAuthenticationWithHttpAsyncClient_thenCorrect() throws Exception {
-        final CredentialsProvider provider = new BasicCredentialsProvider();
-        final UsernamePasswordCredentials creds = new UsernamePasswordCredentials(DEFAULT_USER, DEFAULT_PASS);
-        provider.setCredentials(AuthScope.ANY, creds);
-        final CloseableHttpAsyncClient client = HttpAsyncClients.custom().setDefaultCredentialsProvider(provider).build();
+    void whenUseAuthenticationWithHttpAsyncClient_thenCorrect() throws Exception {
+        final BasicCredentialsProvider credsProvider = new BasicCredentialsProvider();
+        final UsernamePasswordCredentials credentials =
+            new UsernamePasswordCredentials(DEFAULT_USER, DEFAULT_PASS.toCharArray());
+        credsProvider.setCredentials(new AuthScope(URL_SECURED_BY_BASIC_AUTHENTICATION, 80) ,credentials);
+        final CloseableHttpAsyncClient client = HttpAsyncClients
+            .custom()
+            .setDefaultCredentialsProvider(credsProvider).build();
 
-        final HttpGet request = new HttpGet(URL_SECURED_BY_BASIC_AUTHENTICATION);
+        final SimpleHttpRequest request = new SimpleHttpRequest("GET" ,URL_SECURED_BY_BASIC_AUTHENTICATION);
+
         client.start();
-        final Future<HttpResponse> future = client.execute(request, null);
+
+        final Future<SimpleHttpResponse> future = client.execute(request, null);
+
         final HttpResponse response = future.get();
-        assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
+        assertThat(response.getCode(), equalTo(200));
         client.close();
     }
 
@@ -163,9 +204,9 @@ public class HttpAsyncClientLiveTest {
         @Override
         public void run() {
             try {
-                final Future<HttpResponse> future = client.execute(request, context, null);
+                final Future<SimpleHttpResponse> future = client.execute(SimpleHttpRequest.copy(request), context, null);
                 final HttpResponse response = future.get();
-                assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
+                assertThat(response.getCode(), equalTo(200));
             } catch (final Exception ex) {
                 System.out.println(ex.getLocalizedMessage());
             }

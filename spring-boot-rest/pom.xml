@@ -22,10 +22,10 @@
             <artifactId>spring-boot-starter-web</artifactId>
             <exclusions>
                 <exclusion>
-                  <artifactId>tomcat-embed-el</artifactId>
-                  <groupId>org.apache.tomcat.embed</groupId>
+                    <artifactId>tomcat-embed-el</artifactId>
+                    <groupId>org.apache.tomcat.embed</groupId>
                 </exclusion>
-             </exclusions>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
@@ -50,12 +50,12 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
             <exclusions>
                 <exclusion>
-                  <artifactId>jakarta.xml.bind-api</artifactId>
-                  <groupId>jakarta.xml.bind</groupId>
+                    <artifactId>jakarta.xml.bind-api</artifactId>
+                    <groupId>jakarta.xml.bind</groupId>
                 </exclusion>
                 <exclusion>
-                  <artifactId>txw2</artifactId>
-                  <groupId>org.glassfish.jaxb</groupId>
+                    <artifactId>txw2</artifactId>
+                    <groupId>org.glassfish.jaxb</groupId>
                 </exclusion>
             </exclusions>
         </dependency>
@@ -64,8 +64,8 @@
             <artifactId>spring-boot-starter-data-rest</artifactId>
             <exclusions>
                 <exclusion>
-                  <artifactId>spring-boot-starter-web</artifactId>
-                  <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-web</artifactId>
+                    <groupId>org.springframework.boot</groupId>
                 </exclusion>
             </exclusions>
         </dependency>
@@ -75,8 +75,8 @@
             <artifactId>spring-boot-starter-hateoas</artifactId>
             <exclusions>
                 <exclusion>
-                  <artifactId>spring-boot-starter-web</artifactId>
-                  <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-web</artifactId>
+                    <groupId>org.springframework.boot</groupId>
                 </exclusion>
             </exclusions>
         </dependency>
@@ -87,20 +87,20 @@
             <version>${guava.version}</version>
             <exclusions>
                 <exclusion>
-                  <artifactId>listenablefuture</artifactId>
-                  <groupId>com.google.guava</groupId>
+                    <artifactId>listenablefuture</artifactId>
+                    <groupId>com.google.guava</groupId>
                 </exclusion>
                 <exclusion>
-                  <artifactId>jsr305</artifactId>
-                  <groupId>com.google.code.findbugs</groupId>
+                    <artifactId>jsr305</artifactId>
+                    <groupId>com.google.code.findbugs</groupId>
                 </exclusion>
                 <exclusion>
-                  <artifactId>error_prone_annotations</artifactId>
-                  <groupId>com.google.errorprone</groupId>
+                    <artifactId>error_prone_annotations</artifactId>
+                    <groupId>com.google.errorprone</groupId>
                 </exclusion>
                 <exclusion>
-                  <artifactId>j2objc-annotations</artifactId>
-                  <groupId>com.google.j2objc</groupId>
+                    <artifactId>j2objc-annotations</artifactId>
+                    <groupId>com.google.j2objc</groupId>
                 </exclusion>
             </exclusions>
         </dependency>
@@ -110,8 +110,8 @@
             <scope>test</scope>
             <exclusions>
                 <exclusion>
-                  <artifactId>jakarta.xml.bind-api</artifactId>
-                  <groupId>jakarta.xml.bind</groupId>
+                    <artifactId>jakarta.xml.bind-api</artifactId>
+                    <groupId>jakarta.xml.bind</groupId>
                 </exclusion>
             </exclusions>
         </dependency>
@@ -121,8 +121,8 @@
             <scope>test</scope>
             <exclusions>
                 <exclusion>
-                  <artifactId>commons-logging</artifactId>
-                  <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
                 </exclusion>
             </exclusions>
         </dependency>
@@ -132,16 +132,16 @@
             <version>${modelmapper.version}</version>
         </dependency>
         <dependency>
-          <groupId>io.rest-assured</groupId>
-          <artifactId>rest-assured</artifactId>
-          <version>3.3.0</version>
-          <scope>provided</scope>
-          <exclusions>
-            <exclusion>
-              <artifactId>hamcrest-library</artifactId>
-              <groupId>org.hamcrest</groupId>
-            </exclusion>
-          </exclusions>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>3.3.0</version>
+            <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <artifactId>hamcrest-library</artifactId>
+                    <groupId>org.hamcrest</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.glassfish.jaxb</groupId>
