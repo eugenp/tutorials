@@ -24,6 +24,10 @@ import org.neo4j.graphdb.RelationshipType;
 import org.neo4j.graphdb.Result;
 import org.neo4j.graphdb.Transaction;
 
+/**
+ * To run this test you will need to have an instance of the docker running on your machine (Docker desktop - for Windows and Docker instance for linux)
+ * After your docker instance is up run this test
+ */
 public class Neo4jLiveTest {
 
     private static GraphDatabaseService graphDb;

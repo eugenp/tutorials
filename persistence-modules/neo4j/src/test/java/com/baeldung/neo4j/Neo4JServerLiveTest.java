@@ -18,6 +18,11 @@ import org.neo4j.driver.Driver;
 import org.neo4j.driver.Result;
 import org.neo4j.driver.Session;
 
+
+/**
+ * To run this test you will need to have an instance of the docker running on your machine (Docker desktop - for Windows and Docker instance for linux)
+ * After your docker instance is up run this test
+ */
 class Neo4JServerLiveTest {
 
     private static Session session;
