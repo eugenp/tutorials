@@ -15,6 +15,10 @@ import org.neo4j.ogm.session.SessionFactory;
 import com.baeldung.neo4j.domain.Car;
 import com.baeldung.neo4j.domain.Company;
 
+/**
+ * To run this test you will need to have an instance of the docker running on your machine (Docker desktop - for Windows and Docker instance for linux)
+ * After your docker instance is up run this test
+ */
 public class Neo4jOgmLiveTest {
 
     private static SessionFactory sessionFactory;

@@ -39,7 +39,7 @@ public class TestContainersTestBase {
 
     public static final String SYS_PROPERTY_NEO4J_PASSWORD = "NEO4J_OGM_NEO4J_PASSWORD";
 
-    public static final String DEFAULT_PASSWORD = "verysecret";
+    public static final String DEFAULT_PASSWORD = "12345";
 
     public static Neo4jContainer neo4jServer;
 
