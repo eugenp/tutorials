@@ -21,12 +21,6 @@ public class Person implements Cloneable{
         return new Person(this.name, this.age, this.address);
     }
 
-    // Deep copy implementation
-    public Person deepCopy() {
-        Address copiedAddress = new Address(this.address.getCity());
-        return new Person(this.name, this.age, copiedAddress);
-    }
-
     @Override
     protected Object clone() throws CloneNotSupportedException {
         Person clonedPerson = (Person) super.clone();

@@ -30,23 +30,7 @@ public class ShallowDeepCopyUnitTest {
         assertEquals(original.getAddress(), shallowCopy.getAddress());
     }
 
-    // Unit test for the deepCopy() method
-    @Test
-    void givenTwoDifferentObjects_whenCloned_checkDeepCopy() {
-        Address address = new Address("Shimla");
-        Person original = new Person("Narender", 38, address);
-        // Deep Copy
-        Person deepCopy = original.deepCopy();
-        // Verify the field values of the deepCopy object
-        assertEquals(original.getName(), deepCopy.getName());
-        assertEquals(original.getAge(), deepCopy.getAge());
-
-        // Verify that the address reference is different in both objects
-        assertNotSame(original.getAddress(), deepCopy.getAddress());
-        // Verify that the address city is the same in both objects
-        assertEquals(original.getAddress().getCity(), deepCopy.getAddress().getCity());
-    }
-
+    // Unit test for clone() method which is performing deep copy.
     @Test
     public void testClone() {
         Address address = new Address("Bengaluru");
