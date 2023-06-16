@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class LogAggregationJobIntegrationTest extends MantisJobTestBase<LogAggregate> {
+class LogAggregationJobUnitTest extends MantisJobTestBase<LogAggregate> {
 
     private final static int PORT = 7382;
     private final static String SINK_URL = "http://localhost:" + PORT;

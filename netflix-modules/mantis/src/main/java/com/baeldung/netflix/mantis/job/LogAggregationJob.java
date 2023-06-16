@@ -18,7 +18,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class LogAggregationJob extends MantisJobProvider<LogAggregate> {
 
-    private Sink<LogAggregate> sink = Sinks.eagerSubscribe(Sinks.sse(LogAggregate::toJsonString));
+    private Sink<LogAggregate> sink = Sinks.eagerSubscribe(Sinks.sse(
+        LogAggregate::toJsonString)
+    );
 
     @Override
     public Job<LogAggregate> getJobInstance() {
