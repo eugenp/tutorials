@@ -28,7 +28,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Testcontainers
-public class KafaConsumeLastNMessages {
+public class KafaConsumeLastNMessagesLiveTest {
 
     private static String TOPIC1 = "baeldung-github";
     private static String TOPIC2 = "baeldung-blog";
