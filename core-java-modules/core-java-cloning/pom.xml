@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.baeldung.core-java-modules</groupId>
+	<artifactId>core-java-cloning</artifactId>
+	<name>core-java-cloning</name>
+	<packaging>jar</packaging>
+	<version>0.0.1-SNAPSHOT</version>
+	<properties>
+		<maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
+		<maven.compiler.source.version>10</maven.compiler.source.version>
+		<maven.compiler.target.version>10</maven.compiler.target.version>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>
+				<configuration>
+					<source>${maven.compiler.source.version}</source>
+					<target>${maven.compiler.target.version}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
