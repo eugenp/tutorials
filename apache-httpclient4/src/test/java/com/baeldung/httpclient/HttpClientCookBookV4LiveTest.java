@@ -98,18 +98,27 @@ class HttpClientCookBookV4LiveTest {
         });
     }
 
-//    @Test
-//    void test(){
-//        RequestConfig requestConfig = RequestConfig.custom().
-//            setConnectionRequestTimeout(1000)
-//            .setConnectTimeout(1000)
-//            .setSocketTimeout(1000).build();
-//        HttpClientBuilder builder = HttpClientBuilder.create().setDefaultRequestConfig(requestConfig);
-//    }
+    @Test
+    void givenLowSocketTimeOut_whenSettingTimeoutOnTheClient_thenException(){
+        RequestConfig requestConfig = RequestConfig.custom()
+            .setConnectionRequestTimeout(1000)
+            .setConnectTimeout(1000)
+            .setSocketTimeout(20).build();
+        HttpClientBuilder builder = HttpClientBuilder.create().setDefaultRequestConfig(requestConfig);
+
+        client = builder.build();
+        HttpGet request = new HttpGet(SAMPLE_GET_URL);
+
+        assertThrows(SocketTimeoutException.class, () -> {
+            response = client.execute(request);
+        });
+
+    }
 
     @Test
     void whenExecutingPostRequest_thenNoExceptions() throws IOException {
         response = client.execute(new HttpPost(SAMPLE_POST_URL));
+        assertThat(response.getStatusLine().getStatusCode(), equalTo(301));
     }
 
     @Test
@@ -121,7 +130,8 @@ class HttpClientCookBookV4LiveTest {
         params.add(new BasicNameValuePair("key2", "value2"));
         httpPost.setEntity(new UrlEncodedFormEntity(params, Consts.UTF_8));
 
-        var response = client.execute(httpPost);
+        response = client.execute(new HttpPost(SAMPLE_POST_URL));
+        assertThat(response.getStatusLine().getStatusCode(), equalTo(301));
     }
 
     @Test
@@ -138,6 +148,7 @@ class HttpClientCookBookV4LiveTest {
         HttpGet request = new HttpGet(SAMPLE_GET_URL);
         request.addHeader(HttpHeaders.ACCEPT, "application/xml");
         response = client.execute(request);
+        assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
     }
 
     @Test
