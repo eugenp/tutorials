@@ -31,6 +31,11 @@
             <version>${jaxb-api.version}</version>
         </dependency>
         <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${google-guava.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-crypto</artifactId>
             <version>${spring-security-crypto.version}</version>
@@ -39,9 +44,10 @@
 
     <properties>
         <bouncycastle.version>1.70</bouncycastle.version>
-        <commons-codec.version>1.11</commons-codec.version>
+        <commons-codec.version>1.15</commons-codec.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>
         <spring-security-crypto.version>6.0.3</spring-security-crypto.version>
+        <google-guava.version>31.0.1-jre</google-guava.version>
     </properties>
 
 </project>
