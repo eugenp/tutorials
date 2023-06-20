@@ -31,12 +31,12 @@ public class HexRepresentationSha1DigestUnitTest {
     }
 
     @Test
-    public void givenDigestUtils_whenCalculatingSHA1Hex_thenDigestShouldMatchExpectedValue() throws NoSuchAlgorithmException {
+    public void givenDigestUtils_whenCalculatingSHA1Hex_thenDigestShouldMatchExpectedValue() {
         assertEquals(expectedHexValue, DigestUtils.sha1Hex(input));
     }
 
     @Test
-    public void givenHashingLibrary_whenCalculatingSHA1Hash_thenDigestShouldMatchExpectedValue() throws NoSuchAlgorithmException {
+    public void givenHashingLibrary_whenCalculatingSHA1Hash_thenDigestShouldMatchExpectedValue() {
         assertEquals(expectedHexValue, Hashing.sha1().hashString(input, StandardCharsets.UTF_8).toString());
     }
 }
