@@ -65,7 +65,6 @@ public class Person implements Cloneable {
         Address address = this.getAddress().clone();
         person.setAddress(address);
         return person;
-
     }
 
     @Override

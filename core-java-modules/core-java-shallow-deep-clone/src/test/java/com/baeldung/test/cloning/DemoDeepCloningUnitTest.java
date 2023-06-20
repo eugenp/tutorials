@@ -4,11 +4,13 @@ import com.baeldung.cloning.domain.Address;
 import com.baeldung.cloning.domain.Person;
 import org.junit.Before;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import static org.junit.Assert.assertNotEquals;
 
 public class DemoDeepCloningUnitTest {
-
+    private static final Logger LOGGER = LoggerFactory.getLogger(DemoDeepCloningUnitTest.class);
     Person person = null;
 
     @Before
@@ -28,6 +30,9 @@ public class DemoDeepCloningUnitTest {
         Address address = personDeepCopy.getAddress();
         address.setCity("Chicago City");
         address.setZip("60007");
+
+        LOGGER.info("personDeepCopy obj --\n" + personDeepCopy + "\n"
+                + "person obj --\n" + person);
 
         assertNotEquals(
                 "Deep cloning failed"

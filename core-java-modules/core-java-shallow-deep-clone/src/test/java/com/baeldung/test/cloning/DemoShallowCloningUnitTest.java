@@ -4,11 +4,13 @@ import com.baeldung.cloning.domain.Address;
 import com.baeldung.cloning.domain.Person;
 import org.junit.Before;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import static org.junit.Assert.assertEquals;
 
 public class DemoShallowCloningUnitTest {
-
+    private static final Logger LOGGER = LoggerFactory.getLogger(DemoShallowCloningUnitTest.class);
     Person person = null;
 
     @Before
@@ -21,13 +23,16 @@ public class DemoShallowCloningUnitTest {
     }
 
     @Test
-    public void deepCloneObject_newReference() throws CloneNotSupportedException {
+    public void shallowCloneObject_noNewReference() throws CloneNotSupportedException {
 
         Person personShallowCopy = person.createShallowClone();
         personShallowCopy.setAge(45);
         Address address = personShallowCopy.getAddress();
         address.setCity("Chicago City");
         address.setZip("60007");
+
+        LOGGER.info("personShallowCopy obj --\n" + personShallowCopy + "\n"
+                + "person obj --\n" + person);
 
         assertEquals(
                 "Shallow cloning failed"
