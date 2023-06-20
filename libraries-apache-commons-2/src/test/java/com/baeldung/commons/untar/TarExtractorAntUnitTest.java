@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.stream.Stream;
 
 import org.junit.Test;
 
@@ -19,9 +20,10 @@ public class TarExtractorAntUnitTest {
 
         new TarExtractorAnt(Resources.tarFile(), false, destination).untar();
 
-        assertTrue(Files.list(destination)
-            .findFirst()
-            .isPresent());
+        try (Stream<Path> files = Files.list(destination)) {
+            assertTrue(files.findFirst()
+                .isPresent());
+        }
     }
 
     @Test
@@ -30,8 +32,9 @@ public class TarExtractorAntUnitTest {
 
         new TarExtractorAnt(Resources.tarGzFile(), true, destination).untar();
 
-        assertTrue(Files.list(destination)
-            .findFirst()
-            .isPresent());
+        try (Stream<Path> files = Files.list(destination)) {
+            assertTrue(files.findFirst()
+                .isPresent());
+        }
     }
 }

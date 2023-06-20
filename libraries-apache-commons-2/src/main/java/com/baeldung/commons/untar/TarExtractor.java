@@ -11,7 +11,7 @@ public abstract class TarExtractor {
     private boolean gzip;
     private Path destination;
 
-    public TarExtractor(InputStream in, boolean gzip, Path destination) throws IOException {
+    protected TarExtractor(InputStream in, boolean gzip, Path destination) throws IOException {
         this.tarStream = in;
         this.gzip = gzip;
         this.destination = destination;
@@ -19,7 +19,7 @@ public abstract class TarExtractor {
         Files.createDirectories(destination);
     }
 
-    public TarExtractor(Path tarFile, Path destination) throws IOException {
+    protected TarExtractor(Path tarFile, Path destination) throws IOException {
         this(Files.newInputStream(tarFile), tarFile.endsWith("gz"), destination);
     }
 
@@ -35,5 +35,5 @@ public abstract class TarExtractor {
         return gzip;
     }
 
-    abstract public void untar() throws IOException;
+    public abstract void untar() throws IOException;
 }
