@@ -26,7 +26,7 @@ public class HibernateXMLBootstrapIntegrationTest {
 
         TestEntity newEntity = new TestEntity();
         newEntity.setId(1);
-        session.save(newEntity);
+        session.persist(newEntity);
 
         TestEntity searchEntity = session.find(TestEntity.class, 1);
 
