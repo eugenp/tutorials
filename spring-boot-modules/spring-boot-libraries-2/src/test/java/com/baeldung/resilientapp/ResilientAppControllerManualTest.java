@@ -1,10 +1,6 @@
 package com.baeldung.resilientapp;
 
-import static com.github.tomakehurst.wiremock.client.WireMock.getRequestedFor;
-import static com.github.tomakehurst.wiremock.client.WireMock.ok;
-import static com.github.tomakehurst.wiremock.client.WireMock.serverError;
-
-import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -80,6 +76,15 @@ class ResilientAppControllerManualTest {
         ResponseEntity<String> response2 = restTemplate.getForEntity("/api/retry", String.class);
         Assert.assertEquals(response2.getBody(), "all retries have exhausted");
         EXTERNAL_SERVICE.verify(3, getRequestedFor(urlEqualTo("/api/external")));
+    }
+
+    @Test
+    public void testRetryForServiceUnAvailable() {
+        EXTERNAL_SERVICE.stubFor(WireMock.get("/api/external")
+                .willReturn(serviceUnavailable()));
+        ResponseEntity responseEntity = restTemplate.getForEntity("/api/retryServiceUnAvailable", String.class);
+        EXTERNAL_SERVICE.verify(5, getRequestedFor(urlEqualTo("/api/external")));
+        assertEquals("all retries have exhausted",responseEntity.getBody());
     }
 
     @Test

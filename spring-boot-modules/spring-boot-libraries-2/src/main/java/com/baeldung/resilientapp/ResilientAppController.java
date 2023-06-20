@@ -37,6 +37,12 @@ public class ResilientAppController {
         return externalAPICaller.callApi();
     }
 
+    @GetMapping("/retryServiceUnAvailable")
+    @Retry(name = "retryApiServiceUnAvailable", fallbackMethod = "fallbackAfterRetry")
+    public String retryApiWhenServiceUnAvailable() {
+        return externalAPICaller.callApi();
+    }
+
     @GetMapping("/time-limiter")
     @TimeLimiter(name = "timeLimiterApi")
     public CompletableFuture<String> timeLimiterApi() {
