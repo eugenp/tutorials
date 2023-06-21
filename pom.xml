@@ -356,7 +356,6 @@
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
-                <module>language-interop</module>
 
                 <module>libraries-jdk8</module>
 
@@ -370,6 +369,7 @@
                 <module>persistence-modules/java-cassandra</module> <!-- JAVA-21464 cassandra-unit library doesn't support to run with jdk9 and above -->
                 <module>persistence-modules/spring-data-cassandra-reactive</module> <!--JAVA-21844-->
                 <module>persistence-modules/spring-data-neo4j</module>
+                <module>java-nashorn</module>
             </modules>
 
         </profile>
@@ -534,7 +534,6 @@
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
-                <module>language-interop</module>
 
                 <module>libraries-jdk8</module>
 
@@ -547,6 +546,7 @@
                 <module>persistence-modules/java-cassandra</module> <!-- JAVA-21464 cassandra-unit library doesn't support to run with jdk9 and above -->
                 <module>persistence-modules/spring-data-cassandra-reactive</module> <!--JAVA-21844-->
                 <module>persistence-modules/spring-data-neo4j</module>
+                <module>java-nashorn</module>
             </modules>
 
         </profile>
@@ -937,6 +937,7 @@
                 <module>xml</module>
                 <module>xml-2</module>
                 <module>image-processing</module>
+                <module>language-interop</module>
             </modules>
 
             <properties>
@@ -1204,6 +1205,7 @@
                 <module>xml</module>
                 <module>xml-2</module>
                 <module>image-processing</module>
+                <module>language-interop</module>
             </modules>
 
             <properties>
