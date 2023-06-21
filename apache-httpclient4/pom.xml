@@ -189,6 +189,11 @@
             <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents.client5</groupId>
+            <artifactId>httpclient5</artifactId>
+            <version>${httpclient.version5}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -289,6 +294,7 @@
         <wiremock.version>2.5.1</wiremock.version>
         <httpcore.version>4.4.16</httpcore.version>
         <httpclient.version>4.5.14</httpclient.version>
+        <httpclient.version5>5.2.1</httpclient.version5>
         <mockserver.version>5.11.2</mockserver.version>
         <!-- maven plugins -->
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
