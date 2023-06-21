@@ -9,6 +9,8 @@ spring:
   flyway:
     url: jdbc:postgresql://localhost:8082/flyway-test-db
     locations: classpath:db/postgres/migration
+  main:
+    allow-bean-definition-overriding: true
 # R2DBC URL
 r2dbc:
   url: r2dbc:h2:mem://./testdb

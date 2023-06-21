@@ -71,7 +71,7 @@
             <plugin>
                 <groupId>org.apache.tomee.maven</groupId>
                 <artifactId>tomee-maven-plugin</artifactId>
-                <version>8.0.1</version>
+                <version>${tomee-maven-plugin.version}</version>
                 <configuration>
                     <tomeeHttpPort>8080</tomeeHttpPort>
                     <context>spring-mvc-webflow</context>
@@ -83,16 +83,25 @@
                         </extensions>
                     </synchronization>
                     <args>-Xmx2048m -XX:PermSize=256m -Dtomee.serialization.class.blacklist=-
-                        -Dtomee.serialization.class.whitelist=*</args>
+                        -Dtomee.serialization.class.whitelist=*
+                    </args>
                     <removeDefaultWebapps>true</removeDefaultWebapps>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>${maven-war-plugin.version}</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <argLine>
+                        --add-opens java.base/java.lang=ALL-UNNAMED
+                    </argLine>
                 </configuration>
             </plugin>
         </plugins>
@@ -109,6 +118,7 @@
         <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
         <spring-boot-starter-test.version>1.5.10.RELEASE</spring-boot-starter-test.version>
+        <tomee-maven-plugin.version>8.0.1</tomee-maven-plugin.version>
     </properties>
 
 </project>

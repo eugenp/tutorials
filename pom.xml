@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--suppress PyInterpreter -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>parent-modules</artifactId>
@@ -334,7 +334,6 @@
                 <module>parent-spring-6</module>
                 <module>parent-java</module>
 
-                <module>checker-framework</module>
                 <!-- <module>clojure-modules</module> --> <!-- Not a maven project -->
 
                 <module>core-java-modules/core-java-8</module>
@@ -357,16 +356,20 @@
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
-                <module>language-interop</module>
 
                 <module>libraries-jdk8</module>
 
                 <module>lombok-modules/lombok-custom</module>
 
                 <module>muleesb</module>
-
-                <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't yet the jakarta API-->
-                <module>persistence-modules/hibernate-ogm</module> <!-- hibernate-ogm wasn't updated and not support jakarta API -->
+                <module>web-modules/java-lite</module>
+                <module>web-modules/restx</module>
+                <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't support yet the jakarta API-->
+                <module>persistence-modules/hibernate-ogm</module> <!-- hibernate-ogm wasn't updated because it doesn't support jakarta API -->
+                <module>persistence-modules/java-cassandra</module> <!-- JAVA-21464 cassandra-unit library doesn't support to run with jdk9 and above -->
+                <module>persistence-modules/spring-data-cassandra-reactive</module> <!--JAVA-21844-->
+                <module>persistence-modules/spring-data-neo4j</module>
+                <module>java-nashorn</module>
             </modules>
 
         </profile>
@@ -416,20 +419,17 @@
 
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
-                <!-- <module>spring-roo</module> --> <!-- JAVA-17327 -->
 
-                <module>spring-security-modules</module>
-                <module>spring-shell</module>
+                <module>spring-exceptions</module>
+                <module>spring-integration</module>
+                <module>spring-jenkins-pipeline</module>
+
+                <!-- <module>spring-roo</module> --> <!-- Not supported JAVA-17327 -->
+
+                <module>spring-security-modules/spring-security-ldap</module>
                 <module>spring-soap</module>
-                <module>spring-spel</module>
-                <module>spring-static-resources</module>
                 <module>spring-swagger-codegen</module>
-                <module>spring-web-modules</module>
-                <module>spring-websockets</module>
-                <module>testing-modules</module>
                 <module>video-tutorials</module>
-                <module>xml</module>
-                <module>xml-2</module>
             </modules>
 
         </profile>
@@ -474,8 +474,6 @@
 
                 <module>apache-spark</module>
 
-                <module>image-processing</module>
-
                 <module>jenkins-modules</module>
                 <module>jhipster-modules</module>
             </modules>
@@ -514,7 +512,6 @@
                 <module>parent-spring-6</module>
                 <module>parent-java</module>
 
-                <module>checker-framework</module>
                 <!-- <module>clojure-modules</module> --> <!-- Not a maven project -->
 
                 <module>core-java-modules/core-java-8</module>
@@ -537,15 +534,19 @@
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
-                <module>language-interop</module>
 
                 <module>libraries-jdk8</module>
 
                 <module>lombok-modules/lombok-custom</module>
                 <module>muleesb</module>
-
-                <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't yet the jakarta API-->
-                <module>persistence-modules/hibernate-ogm</module> <!-- hibernate-ogm wasn't updated and not support jakarta API -->
+                <module>web-modules/java-lite</module>
+                <module>web-modules/restx</module>
+                <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't support yet the jakarta API-->
+                <module>persistence-modules/hibernate-ogm</module> <!-- hibernate-ogm wasn't updated because it doesn't support jakarta API -->
+                <module>persistence-modules/java-cassandra</module> <!-- JAVA-21464 cassandra-unit library doesn't support to run with jdk9 and above -->
+                <module>persistence-modules/spring-data-cassandra-reactive</module> <!--JAVA-21844-->
+                <module>persistence-modules/spring-data-neo4j</module>
+                <module>java-nashorn</module>
             </modules>
 
         </profile>
@@ -587,20 +588,17 @@
 
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
-                <!-- <module>spring-roo</module> --> <!-- JAVA-17327 -->
 
-                <module>spring-security-modules</module>
-                <module>spring-shell</module>
+                <module>spring-exceptions</module>
+                <module>spring-integration</module>
+                <module>spring-jenkins-pipeline</module>
+
+                <!-- <module>spring-roo</module> --> <!-- Not supported JAVA-17327 -->
+
+                <module>spring-security-modules/spring-security-ldap</module>
                 <module>spring-soap</module>
-                <module>spring-spel</module>
-                <module>spring-static-resources</module>
                 <module>spring-swagger-codegen</module>
-                <module>spring-web-modules</module>
-                <module>spring-websockets</module>
-                <module>testing-modules</module>
                 <module>video-tutorials</module>
-                <module>xml</module>
-                <module>xml-2</module>
             </modules>
 
         </profile>
@@ -636,8 +634,6 @@
                 <module>parent-java</module>
 
                 <module>apache-spark</module>
-
-                <module>image-processing</module>
 
                 <module>jenkins-modules</module>
                 <module>jhipster-modules</module>
@@ -734,6 +730,8 @@
                 <module>spring-batch-2</module>
                 <module>spring-boot-rest</module>
                 <module>spring-drools</module>
+                <module>spring-cloud-modules/spring-cloud-contract</module>
+                <module>spring-cloud-modules/spring-cloud-data-flow</module>
                 <module>spring-exceptions</module>
                 <module>spring-jenkins-pipeline</module>
                 <module>spring-core</module>
@@ -766,6 +764,7 @@
                 <module>asciidoctor</module>
                 <module>aws-modules</module>
 
+                <module>checker-framework</module>
                 <module>couchbase</module>
                 <module>core-groovy-modules</module>
 
@@ -797,10 +796,8 @@
                 <module>quarkus-modules</module>
                 <module>spring-reactive-modules</module>
                 <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
-                <module>testing-modules/testing-assertions</module>
+                <module>testing-modules</module>
                 <module>testing-modules/mockito-simple</module>
-                <module>persistence-modules/fauna</module>
-                <module>persistence-modules/spring-data-rest</module>
 
                 <module>rule-engines-modules</module>
 
@@ -809,6 +806,7 @@
 
                 <module>lightrun</module>
                 <module>tablesaw</module>
+                <module>image-compressing</module>
                 <module>geotools</module>
 
                 <module>jws</module>
@@ -839,7 +837,7 @@
                 <module>disruptor</module>
                 <module>dozer</module>
                 <module>dubbo</module>
-                <!-- <module>feign</module> --> <!-- JAVA-19475 -->
+                <!-- <module>feign</module> --> <!-- JAVA-20337 -->
                 <module>google-cloud</module>
                 <module>graphql-modules</module>
                 <module>grpc</module>
@@ -881,6 +879,7 @@
                 <module>libraries-primitive</module>
                 <module>libraries-rpc</module>
                 <module>libraries-server</module>
+                <module>libraries-transform</module>
 
                 <module>lucene</module>
                 <module>mapstruct</module>
@@ -910,28 +909,35 @@
                 <module>spring-kafka</module>
 
                 <module>spring-native</module>
-                <module>spring-security-modules/spring-security-oauth2-testing</module>
+                <module>spring-security-modules</module>
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>
 
                 <module>spring-scheduling</module>
 
                 <module>spring-state-machine</module>
+                <module>spring-shell</module>
+                <module>spring-spel</module>
+                <module>spring-static-resources</module>
                 <module>spring-threads</module>
-				<module>spring-vault</module>
+                <module>spring-vault</module>
+                <module>spring-websockets</module>
+                <module>spring-web-modules</module>
                 <module>static-analysis</module>
                 <module>tensorflow-java</module>
                 <module>vertx-modules</module>
                 <module>xstream</module>
                 <module>webrtc</module>
-                <module>persistence-modules/java-mongodb</module>
 
                 <module>messaging-modules</module>
 
-                <module>persistence-modules/questdb</module>
                 <module>vaadin</module>
                 <module>libraries-3</module>
                 <module>web-modules</module>
+                <module>xml</module>
+                <module>xml-2</module>
+                <module>image-processing</module>
+                <module>language-interop</module>
             </modules>
 
             <properties>
@@ -1021,6 +1027,7 @@
                 <module>asciidoctor</module>
                 <module>aws-modules</module>
 
+                <module>checker-framework</module>
                 <module>couchbase</module>
 
                 <module>core-groovy-modules</module>
@@ -1056,10 +1063,8 @@
                 <module>quarkus-modules</module>
                 <module>spring-reactive-modules</module>
                 <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
-                <module>testing-modules/testing-assertions</module>
+                <module>testing-modules</module>
                 <module>testing-modules/mockito-simple</module>
-                <module>persistence-modules/fauna</module>
-                <module>persistence-modules/spring-data-rest</module>
 
                 <module>rule-engines-modules</module>
 
@@ -1068,6 +1073,7 @@
 
                 <module>lightrun</module>
                 <module>tablesaw</module>
+                <module>image-compressing</module>
                 <module>geotools</module>
 
                 <module>jws</module>
@@ -1098,7 +1104,7 @@
                 <module>dozer</module>
 
                 <module>dubbo</module>
-                <!-- <module>feign</module> -->
+                <!-- <module>feign</module> --> <!-- JAVA-20337 -->
                 <module>google-cloud</module>
                 <module>graphql-modules</module>
                 <module>grpc</module>
@@ -1141,6 +1147,7 @@
                 <module>libraries-primitive</module>
                 <module>libraries-rpc</module>
                 <module>libraries-server</module>
+                <module>libraries-transform</module>
 
                 <module>lucene</module>
                 <module>mapstruct</module>
@@ -1170,27 +1177,35 @@
                 <module>spring-kafka</module>
 
                 <module>spring-native</module>
+                <module>spring-security-modules</module>
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>
 
                 <module>spring-scheduling</module>
 
                 <module>spring-state-machine</module>
+                <module>spring-shell</module>
+                <module>spring-spel</module>
+                <module>spring-static-resources</module>
                 <module>spring-threads</module>
-				<module>spring-vault</module>
+                <module>spring-vault</module>
+                <module>spring-websockets</module>
+                <module>spring-web-modules</module>
                 <module>static-analysis</module>
                 <module>tensorflow-java</module>
                 <module>vertx-modules</module>
                 <module>xstream</module>
                 <module>webrtc</module>
-                <module>persistence-modules/java-mongodb</module>
 
                 <module>messaging-modules</module>
 
-                <module>persistence-modules/questdb</module>
                 <module>vaadin</module>
                 <module>libraries-3</module>
                 <module>web-modules</module>
+                <module>xml</module>
+                <module>xml-2</module>
+                <module>image-processing</module>
+                <module>language-interop</module>
             </modules>
 
             <properties>
@@ -1244,7 +1259,7 @@
         <byte-buddy.version>1.12.13</byte-buddy.version>
 
         <!-- logging -->
-        <!-- overwriting in the slf4j and logback in the hibernate-jpa. When updated to the latest version remove the version from that module-->
+        <!-- overwriting in the slf4j and logback in the hibernate-jpa, spring-data-eclipselink. When updated to the latest version remove the version from that module-->
         <org.slf4j.version>1.7.32</org.slf4j.version>
         <logback.version>1.2.7</logback.version>
 

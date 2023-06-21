@@ -21,8 +21,8 @@ import java.util.Map;
 @Configuration
 public class JpaConfiguration extends JpaBaseConfiguration {
 
-    protected JpaConfiguration(DataSource dataSource, JpaProperties properties, ObjectProvider<JtaTransactionManager> jtaTransactionManager, ObjectProvider<TransactionManagerCustomizers> transactionManagerCustomizers) {
-        super(dataSource, properties, jtaTransactionManager, transactionManagerCustomizers);
+    protected JpaConfiguration(DataSource dataSource, JpaProperties properties, ObjectProvider<JtaTransactionManager> jtaTransactionManager) {
+        super(dataSource, properties, jtaTransactionManager);
     }
 
     @Override

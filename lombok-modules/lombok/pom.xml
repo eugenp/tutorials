@@ -49,10 +49,4 @@
         <annotations.version>23.0.0</annotations.version>
     </properties>
 
-    <repositories>
-        <repository>
-            <id>projectlombok.org</id>
-            <url>https://projectlombok.org/edge-releases</url>
-        </repository>
-    </repositories>
 </project>

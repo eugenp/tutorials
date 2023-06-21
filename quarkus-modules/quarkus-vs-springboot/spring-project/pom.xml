@@ -3,7 +3,6 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>spring-project</artifactId>
     <version>0.1-SNAPSHOT</version>
 
@@ -19,7 +18,7 @@
             <dependency>
                 <groupId>org.testcontainers</groupId>
                 <artifactId>testcontainers-bom</artifactId>
-                <version>1.17.2</version>
+                <version>${testcontainers-bom.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -43,7 +42,7 @@
         <dependency>
             <groupId>com.github.jasync-sql</groupId>
             <artifactId>jasync-r2dbc-mysql</artifactId>
-            <version>2.0.8</version>
+            <version>${jasync-r2dbc-mysql.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -104,7 +103,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <source>${maven.compiler.source.version}</source>
                     <target>${maven.compiler.target.version}</target>
@@ -182,7 +180,7 @@
             <id>local-native</id>
             <properties>
                 <repackage.classifier>exec</repackage.classifier>
-                <native-buildtools.version>0.9.11</native-buildtools.version>
+                <native-buildtools.version>${native-buildtools.version}</native-buildtools.version>
             </properties>
             <dependencies>
                 <dependency>
@@ -241,7 +239,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
-                        <version>3.0.0-M6</version>
+                        <version>${maven-surefire-plugin.version}</version>
                         <configuration>
                             <argLine>-DspringAot=true
                                 -agentlib:native-image-agent=access-filter-file=src/test/resources/access-filter.json,config-merge-dir=target/classes/META-INF/native-image
@@ -254,11 +252,15 @@
     </profiles>
 
     <properties>
+        <testcontainers-bom.version>1.17.2</testcontainers-bom.version>
         <java.version>11</java.version>
         <spring-native.version>0.12.1</spring-native.version>
         <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
         <maven.compiler.source.version>11</maven.compiler.source.version>
         <maven.compiler.target.version>11</maven.compiler.target.version>
+        <maven-surefire-plugin.version>3.1.0</maven-surefire-plugin.version>
+        <native-buildtools.version>0.9.11</native-buildtools.version>
+        <jasync-r2dbc-mysql.version>2.0.8</jasync-r2dbc-mysql.version>
     </properties>
 
 </project>

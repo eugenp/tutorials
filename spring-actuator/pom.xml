@@ -19,7 +19,7 @@
         <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
-            <version>5.0.0</version>
+            <version>${jakarta.servlet-api.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -49,7 +49,6 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
-                    <version>3.3.2</version>
                 </plugin>
                 <!-- to run the server, use mvn jetty:run -->
                 <plugin>
@@ -68,6 +67,7 @@
     </build>
 
     <properties>
+        <jakarta.servlet-api.version>5.0.0</jakarta.servlet-api.version>
         <spring-boot.version>3.0.6</spring-boot.version>
         <jetty.version>11.0.15</jetty.version>
     </properties>

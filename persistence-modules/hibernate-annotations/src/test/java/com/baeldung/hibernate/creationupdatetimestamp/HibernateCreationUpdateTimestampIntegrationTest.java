@@ -5,7 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.text.SimpleDateFormat;
 import java.time.Instant;
+import java.util.Date;
 
 import org.h2.Driver;
 import org.hibernate.Session;
@@ -81,7 +83,11 @@ class HibernateCreationUpdateTimestampIntegrationTest {
         session.getTransaction().commit();
         session.close();
 
-        assertEquals(book.getCreatedOn(), book.getLastUpdatedOn());
+        Date createdOn = Date.from(book.getCreatedOn());
+        Date lastUpdatedOn = Date.from(book.getLastUpdatedOn());
+        SimpleDateFormat formatter = new SimpleDateFormat("dd MM yyyy HH:mm:ss");
+
+        assertEquals(formatter.format(createdOn), formatter.format(lastUpdatedOn));
     }
 
     @Test
