@@ -5,6 +5,7 @@ import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.kafka.config.TopicBuilder;
 import org.springframework.kafka.core.KafkaAdmin;
 
 import java.util.HashMap;
@@ -23,7 +24,15 @@ public class KafkaTopicConfig {
         return new KafkaAdmin(configs);
     }
 
-    public NewTopic tempMeasurement() {
-        return new NewTopic("temperature_measurements", 3, (short) 1);
+    public NewTopic celciusTopic() {
+        return TopicBuilder.name("celcius-scale-topic")
+                .partitions(2)
+                .build();
+    }
+
+    public NewTopic kelvinTopic() {
+        return TopicBuilder.name("kelvin-scale-topic")
+                .partitions(1)
+                .build();
     }
 }
