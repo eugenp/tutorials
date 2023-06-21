@@ -19,9 +19,9 @@ public class HttpAsyncClientV5LiveTest {
         final int timeout = 3;
 
         RequestConfig config = RequestConfig.custom()
-            .setConnectTimeout(Timeout.ofMicroseconds(timeout * 1000))
-            .setConnectionRequestTimeout(Timeout.ofMicroseconds(timeout * 1000))
-            .setResponseTimeout(Timeout.ofMicroseconds(timeout * 1000))
+            .setConnectTimeout(Timeout.ofMilliseconds(timeout * 1000))
+            .setConnectionRequestTimeout(Timeout.ofMilliseconds(timeout * 1000))
+            .setResponseTimeout(Timeout.ofMilliseconds(timeout * 1000))
             .build();
         CloseableHttpClient client = HttpClientBuilder.create()
             .setDefaultRequestConfig(config)
