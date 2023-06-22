@@ -19,7 +19,6 @@ import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import org.apache.http.Consts;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
@@ -37,9 +36,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
-
 class HttpClientCookBookV4LiveTest {
-
 
     private static final String SAMPLE_GET_URL = "http://www.google.com";
     private static final String SAMPLE_POST_URL = "http://www.github.com";
@@ -56,8 +53,8 @@ class HttpClientCookBookV4LiveTest {
     @AfterEach
     public final void after() throws IllegalStateException, IOException {
         ResponseUtil.closeResponse(response);
+        ClientUtil.closeClient(client);
     }
-
 
     @Test
     void givenGetRequestExecuted_thenCorrectStatusCode() throws IOException {
@@ -66,7 +63,6 @@ class HttpClientCookBookV4LiveTest {
         assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
     }
 
-
     @Test
     void givenGetRequestExecuted_thenCorrectContentMimeType() throws IOException {
         CloseableHttpResponse response = client.execute(new HttpGet(SAMPLE_GET_URL));
@@ -74,14 +70,12 @@ class HttpClientCookBookV4LiveTest {
         assertThat(contentMimeType, equalTo(ContentType.TEXT_HTML.getMimeType()));
     }
 
-
     @Test
     void  givenGetRequestExecuted_thenCorrectResponse() throws IOException {
         CloseableHttpResponse response = client.execute(new HttpGet(SAMPLE_GET_URL));
         String bodyAsString = EntityUtils.toString(response.getEntity());
         assertThat(bodyAsString, notNullValue());
     }
-
 
     @Test
     void givenLowSocketTimeOut_whenExecutingRequestWithTimeout_thenException() throws IOException {
@@ -112,7 +106,6 @@ class HttpClientCookBookV4LiveTest {
         assertThrows(SocketTimeoutException.class, () -> {
             response = client.execute(request);
         });
-
     }
 
     @Test
@@ -123,7 +116,6 @@ class HttpClientCookBookV4LiveTest {
 
     @Test
     void givenParametersAddedToRequest_thenCorrect() throws IOException {
-
         final HttpPost httpPost = new HttpPost(SAMPLE_POST_URL);
         final List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("key1", "value1"));
