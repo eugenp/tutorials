@@ -24,8 +24,6 @@ public class DeepCopyExampleTest {
 
 		Assertions.assertEquals("Toyota", originalCar.getMake());
 		Assertions.assertEquals("Camry", originalCar.getModel());
-		// Since it's a deep copy, changes in the internal references do not affect the
-		// original object
 		Assertions.assertNotSame(originalCar.getEngine(), deepCopyCar.getEngine());
 	}
 }

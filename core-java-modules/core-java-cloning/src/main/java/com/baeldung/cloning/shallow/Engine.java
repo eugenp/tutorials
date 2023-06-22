@@ -1,7 +1,6 @@
 package com.baeldung.cloning.shallow;
 
 public class Engine {
-
 	private String chessisNumber;
 
 	public Engine(String chessisNumber) {

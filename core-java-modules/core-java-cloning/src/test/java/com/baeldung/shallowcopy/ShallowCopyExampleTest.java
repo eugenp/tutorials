@@ -8,6 +8,7 @@ import com.baeldung.cloning.shallow.Car;
 import com.baeldung.cloning.shallow.Engine;
 
 public class ShallowCopyExampleTest {
+
 	private Car originalCar;
 
 	@BeforeEach
@@ -25,9 +26,6 @@ public class ShallowCopyExampleTest {
 
 		Assertions.assertEquals("Toyota", originalCar.getMake()); //
 		Assertions.assertEquals("Camry", originalCar.getModel());
-
-		// Since it's a shallow copy, changes in the internal references affect the
-		// original object
 		Assertions.assertSame(shallowCopyCar.getEngine(), originalCar.getEngine());
 	}
 }

@@ -1,7 +1,6 @@
 package com.baeldung.cloning.deep;
 
 public class Car implements Cloneable {
-
 	private String make;
 	private String model;
 	private Engine engine;
