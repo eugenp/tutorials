@@ -3,7 +3,6 @@ package com.baeldung.httpclient;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
-
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -13,10 +12,9 @@ import java.util.List;
 
 import org.apache.hc.client5.http.classic.methods.HttpGet;
 import org.apache.hc.client5.http.classic.methods.HttpPost;
+import org.apache.hc.client5.http.entity.UrlEncodedFormEntity;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
-import org.apache.hc.client5.http.ClientProtocolException;
-import org.apache.hc.client5.http.entity.UrlEncodedFormEntity;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
 import org.apache.hc.core5.http.HttpStatus;
 import org.apache.hc.core5.http.NameValuePair;
@@ -28,7 +26,6 @@ import org.junit.jupiter.api.Test;
 import com.baeldung.handler.CustomHttpClientResponseHandler;
 
 class HttpClientParamsLiveTest {
-
 
     private List<NameValuePair> nameValuePairs;
 
@@ -42,16 +39,14 @@ class HttpClientParamsLiveTest {
     }
 
     @Test
-    void givenStringNameValuePairParams_whenGetRequest_thenResponseOk() throws URISyntaxException, ClientProtocolException, IOException {
+    void givenStringNameValuePairParams_whenGetRequest_thenResponseOk() throws URISyntaxException, IOException {
         HttpGet httpGet = new HttpGet("https://postman-echo.com/get");
         URI uri = new URIBuilder(httpGet.getUri()).addParameter("param1", "value1")
             .addParameter("param2", "value2")
             .build();
         httpGet.setUri(uri);
-
-        try (CloseableHttpClient client = HttpClients.createDefault();
-            CloseableHttpResponse response = (CloseableHttpResponse) client
-                .execute(httpGet, new CustomHttpClientResponseHandler())) {
+        CloseableHttpClient client = HttpClients.createDefault();
+        try (CloseableHttpResponse response = (CloseableHttpResponse) client.execute(httpGet, new CustomHttpClientResponseHandler())) {
 
             final int statusCode = response.getCode();
             assertThat(statusCode, equalTo(HttpStatus.SC_OK));
@@ -59,16 +54,14 @@ class HttpClientParamsLiveTest {
     }
 
     @Test
-    void givenStringNameValuePairParams_whenPostRequest_thenResponseOk() throws URISyntaxException, ClientProtocolException, IOException {
+    void givenStringNameValuePairParams_whenPostRequest_thenResponseOk() throws URISyntaxException, IOException {
         HttpPost httpPost = new HttpPost("https://postman-echo.com/post");
         URI uri = new URIBuilder(httpPost.getUri()).addParameter("param1", "value1")
             .addParameter("param2", "value2")
             .build();
         httpPost.setUri(uri);
-
-        try (CloseableHttpClient client = HttpClients.createDefault();
-            CloseableHttpResponse response = (CloseableHttpResponse) client
-                .execute(httpPost, new CustomHttpClientResponseHandler())) {
+        CloseableHttpClient client = HttpClients.createDefault();
+        try (CloseableHttpResponse response = (CloseableHttpResponse) client.execute(httpPost, new CustomHttpClientResponseHandler())) {
 
             final int statusCode = response.getCode();
             assertThat(statusCode, equalTo(HttpStatus.SC_OK));
@@ -76,15 +69,17 @@ class HttpClientParamsLiveTest {
     }
 
     @Test
-    void givenNameValuePairParams_whenGetRequest_thenResponseOk() throws URISyntaxException, ClientProtocolException, IOException {
+    void givenNameValuePairParams_whenGetRequest_thenResponseOk() throws URISyntaxException, IOException {
+        List<NameValuePair> nameValuePairs = new ArrayList<>();
+        nameValuePairs.add(new BasicNameValuePair("param1", "value1"));
+        nameValuePairs.add(new BasicNameValuePair("param2", "value2"));
         HttpGet httpGet = new HttpGet("https://postman-echo.com/get");
         URI uri = new URIBuilder(httpGet.getUri()).addParameters(nameValuePairs)
             .build();
         httpGet.setUri(uri);
 
-        try (CloseableHttpClient client = HttpClients.createDefault();
-            CloseableHttpResponse response = (CloseableHttpResponse) client
-                .execute(httpGet, new CustomHttpClientResponseHandler())) {
+        CloseableHttpClient client = HttpClients.createDefault();
+        try (CloseableHttpResponse response = (CloseableHttpResponse) client.execute(httpGet, new CustomHttpClientResponseHandler())) {
 
             final int statusCode = response.getCode();
             assertThat(statusCode, equalTo(HttpStatus.SC_OK));
@@ -92,15 +87,13 @@ class HttpClientParamsLiveTest {
     }
 
     @Test
-    void givenNameValuePairsParams_whenPostRequest_thenResponseOk() throws URISyntaxException, ClientProtocolException, IOException {
+    void givenNameValuePairsParams_whenPostRequest_thenResponseOk() throws URISyntaxException, IOException {
         HttpPost httpPost = new HttpPost("https://postman-echo.com/post");
         URI uri = new URIBuilder(httpPost.getUri()).addParameters(nameValuePairs)
             .build();
         httpPost.setUri(uri);
-
-        try (CloseableHttpClient client = HttpClients.createDefault();
-            CloseableHttpResponse response = (CloseableHttpResponse) client
-                .execute(httpPost, new CustomHttpClientResponseHandler())) {
+        CloseableHttpClient client = HttpClients.createDefault();
+        try (CloseableHttpResponse response = (CloseableHttpResponse) client.execute(httpPost, new CustomHttpClientResponseHandler())) {
 
             final int statusCode = response.getCode();
             assertThat(statusCode, equalTo(HttpStatus.SC_OK));
@@ -108,13 +101,12 @@ class HttpClientParamsLiveTest {
     }
 
     @Test
-    void givenUrlEncodedEntityParams_whenPostRequest_thenResponseOk() throws URISyntaxException, ClientProtocolException, IOException {
+    void givenUrlEncodedEntityParams_whenPostRequest_thenResponseOk() throws IOException {
         HttpPost httpPost = new HttpPost("https://postman-echo.com/post");
         httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs, StandardCharsets.UTF_8));
 
-        try (CloseableHttpClient client = HttpClients.createDefault();
-            CloseableHttpResponse response = (CloseableHttpResponse) client
-                .execute(httpPost, new CustomHttpClientResponseHandler())) {
+        CloseableHttpClient client = HttpClients.createDefault();
+        try (CloseableHttpResponse response = (CloseableHttpResponse) client.execute(httpPost, new CustomHttpClientResponseHandler())) {
 
             final int statusCode = response.getCode();
             assertThat(statusCode, equalTo(HttpStatus.SC_OK));
