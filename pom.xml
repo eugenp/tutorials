@@ -527,7 +527,7 @@
                 <module>core-java-modules/core-java-streams-2</module>
 
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
-                <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->-
+                <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
 
