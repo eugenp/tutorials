@@ -17,14 +17,13 @@ public class DeepCopyExampleTest {
 	}
 
 	@Test
-    public void testDeepCopy() {
-    	Car deepCopyCar = originalCar.clone(); 
-    	deepCopyCar.setMake("Honda"); 
-    	deepCopyCar.setModel("V8"); 
-    	
-    	Assertions.assertEquals("Toyota", originalCar.getMake()); 
-    	Assertions.assertEquals("Camry", originalCar.getModel()); 
-    	// Since it's a deep copy, changes in the internal references do not affect the original object 
-    	Assertions.assertNotSame(originalCar.getEngine(), deepCopyCar.getEngine());
-    }
+	public void testDeepCopy() {
+		Car deepCopyCar = originalCar.clone();
+		deepCopyCar.setMake("Honda");
+		deepCopyCar.setModel("V8");
+
+		Assertions.assertEquals("Toyota", originalCar.getMake());
+		Assertions.assertEquals("Camry", originalCar.getModel());
+		Assertions.assertNotSame(originalCar.getEngine(), deepCopyCar.getEngine());
+	}
 }
