@@ -93,6 +93,7 @@
         <module>spring-boot-properties</module>
         <module>spring-boot-properties-2</module>
         <module>spring-boot-properties-3</module>
+        <module>spring-boot-properties-4</module>
         <module>spring-boot-properties-migrator-demo</module>
     </modules>
 
