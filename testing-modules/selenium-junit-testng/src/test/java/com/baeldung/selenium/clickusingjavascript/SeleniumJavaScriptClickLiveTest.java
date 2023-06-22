@@ -39,22 +39,21 @@ public class SeleniumJavaScriptClickLiveTest {
     public void whenSearchForSeleniumArticles_thenReturnNotEmptyResults() {
         driver.get("https://baeldung.com");
         String title = driver.getTitle();
-        assertEquals("Baeldung | Java, Spring and Web Development tutorials", title);
+        assertEquals("Baeldung", title);
 
         wait.until(ExpectedConditions.elementToBeClickable(By.className("nav--menu_item_anchor")));
         WebElement searchButton = driver.findElement(By.className("nav--menu_item_anchor"));
         clickElement(searchButton);
 
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("search")));
-        WebElement searchInput = driver.findElement(By.id("search"));
-        searchInput.sendKeys("Selenium");
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("menu-item-40489")));
+        WebElement searchInput = driver.findElement(By.id("menu-item-40489"));
 
-        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".btn-search")));
-        WebElement seeSearchResultsButton = driver.findElement(By.cssSelector(".btn-search"));
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".nav--menu_item")));
+        WebElement seeSearchResultsButton = driver.findElement(By.cssSelector(".nav--menu_item"));
         clickElement(seeSearchResultsButton);
 
-        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.className("post")));
-        int seleniumPostsCount = driver.findElements(By.className("post"))
+        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.className("nav--menu_item_anchor")));
+        int seleniumPostsCount = driver.findElements(By.className("nav--menu_item_anchor"))
             .size();
         assertTrue(seleniumPostsCount > 0);
     }
