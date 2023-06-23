@@ -351,7 +351,6 @@
 
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
-                <module>gradle-modules/gradle/maven-to-gradle</module>
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
 
@@ -529,7 +528,6 @@
 
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
-                <module>gradle-modules/gradle/maven-to-gradle</module>
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
 
@@ -938,6 +936,7 @@
                 <module>xml-2</module>
                 <module>image-processing</module>
                 <module>language-interop</module>
+                <module>gradle-modules/gradle/maven-to-gradle</module>
             </modules>
 
             <properties>
@@ -1206,6 +1205,7 @@
                 <module>xml-2</module>
                 <module>image-processing</module>
                 <module>language-interop</module>
+                <module>gradle-modules/gradle/maven-to-gradle</module>
             </modules>
 
             <properties>
