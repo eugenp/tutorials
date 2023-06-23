@@ -3,10 +3,10 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>spring-boot-testing</artifactId>
-    <name>spring-boot-testing</name>
+    <artifactId>spring-boot-testing-spock</artifactId>
+    <name>spring-boot-testing-spock</name>
     <packaging>war</packaging>
-    <description>This is simple boot application for demonstrating testing features.</description>
+    <description>This is simple boot application for demonstrating spock framework testing features.</description>
 
     <parent>
         <groupId>com.baeldung.spring-boot-modules</groupId>
@@ -29,15 +29,7 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -45,32 +37,26 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <!-- Embedded Redis Server -->
+        <!-- Spock & Spring -->
         <dependency>
-            <groupId>it.ozimov</groupId>
-            <artifactId>embedded-redis</artifactId>
-            <version>${redis.version}</version>
+            <groupId>org.spockframework</groupId>
+            <artifactId>spock-core</artifactId>
+            <version>${spock.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.spockframework</groupId>
+            <artifactId>spock-spring</artifactId>
+            <version>${spock.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
 
     <build>
-        <finalName>spring-boot-testing</finalName>
+        <finalName>spring-boot-testing-spock</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -83,28 +69,18 @@
                 <artifactId>maven-war-plugin</artifactId>
             </plugin>
             <plugin>
-                <groupId>pl.project13.maven</groupId>
-                <artifactId>git-commit-id-plugin</artifactId>
-                <version>${git-commit-id-plugin.version}</version>
+                <groupId>org.codehaus.gmavenplus</groupId>
+                <artifactId>gmavenplus-plugin</artifactId>
+                <version>${gmavenplus-plugin.version}</version>
                 <executions>
                     <execution>
-                        <id>get-the-git-infos</id>
                         <goals>
-                            <goal>revision</goal>
+                            <goal>compileTests</goal>
                         </goals>
-                        <phase>initialize</phase>
-                    </execution>
-                    <execution>
-                        <id>validate-the-git-infos</id>
-                        <goals>
-                            <goal>validateRevision</goal>
-                        </goals>
-                        <phase>package</phase>
                     </execution>
                 </executions>
                 <configuration>
-                    <generateGitPropertiesFile>true</generateGitPropertiesFile>
-                    <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties</generateGitPropertiesFilename>
+                    <targetBytecode>17</targetBytecode>
                 </configuration>
             </plugin>
             <plugin>
@@ -118,12 +94,9 @@
     <properties>
         <!-- The main class to start by executing java -jar -->
         <start-class>com.baeldung.boot.Application</start-class>
-        <git-commit-id-plugin.version>2.2.4</git-commit-id-plugin.version>
         <spock.version>2.4-M1-groovy-4.0</spock.version>
         <gmavenplus-plugin.version>3.0.0</gmavenplus-plugin.version>
         <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
-        <redis.version>0.7.2</redis.version>
-        <spring-boot.version>2.5.0</spring-boot.version>
         <log4j2.version>2.17.1</log4j2.version>
     </properties>
 
