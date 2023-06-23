@@ -1,6 +1,8 @@
 package com.baeldung.httpclient;
 
 
+import org.apache.http.impl.client.HttpClients;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -163,4 +165,22 @@ class HttpClientCookBookV4LiveTest {
             response.close();
         }
     }
+
+    @Test
+    void givenAutoClosableClient_thenCorrect() throws IOException {
+        try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
+            HttpGet httpGet = new HttpGet(SAMPLE_GET_URL);
+            try (CloseableHttpResponse response = httpClient.execute(httpGet)) {
+                // handle response;
+                HttpEntity entity = response.getEntity();
+                if (entity != null) {
+                    try (InputStream instream = entity.getContent()) {
+                        // Process the input stream if needed
+                    }
+                }
+                assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
+            }
+        }
+    }
+
 }
