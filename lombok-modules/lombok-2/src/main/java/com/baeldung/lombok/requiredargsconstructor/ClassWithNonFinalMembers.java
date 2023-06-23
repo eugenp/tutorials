@@ -1,11 +1,11 @@
-package com.baeldung.lombok.reuiredargsconstructor;
+package com.baeldung.lombok.requiredargsconstructor;
 
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-public class ClassWithFinalMembers {
+public class ClassWithNonFinalMembers {
 
-    private final String stringObject;
+    private String stringObject;
 
     public String getStringObject() {
         return stringObject;

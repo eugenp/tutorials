@@ -1,4 +1,4 @@
-package com.baeldung.lombok.reuiredargsconstructor;
+package com.baeldung.lombok.requiredargsconstructor;
 
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
