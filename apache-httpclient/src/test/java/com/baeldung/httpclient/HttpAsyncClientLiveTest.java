@@ -2,14 +2,21 @@ package com.baeldung.httpclient;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.IOException;
+import java.net.SocketTimeoutException;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 import javax.net.ssl.SSLContext;
 
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
 import org.apache.hc.client5.http.impl.routing.DefaultProxyRoutePlanner;
+import org.apache.hc.core5.http.ClassicHttpRequest;
+import org.apache.hc.core5.http.io.support.ClassicRequestBuilder;
+import org.apache.hc.core5.util.Timeout;
 import org.junit.jupiter.api.Test;
 
 import org.apache.hc.client5.http.async.methods.SimpleHttpRequest;
@@ -187,6 +194,29 @@ class HttpAsyncClientLiveTest extends GetRequestMockServer {
         final HttpResponse response = future.get();
         assertThat(response.getCode(), equalTo(200));
         client.close();
+    }
+
+    @Test
+    void givenTimeoutIsConfigured_whenTimeOut_thenTimeoutException() {
+        final int timeout = 3;
+
+        RequestConfig config = RequestConfig.custom()
+            .setConnectTimeout(Timeout.ofMilliseconds(timeout * 1000))
+            .setConnectionRequestTimeout(Timeout.ofMilliseconds(timeout * 1000))
+            .setResponseTimeout(Timeout.ofMilliseconds(timeout * 1000))
+            .build();
+        CloseableHttpClient client = HttpClientBuilder.create()
+            .setDefaultRequestConfig(config)
+            .build();
+
+        ClassicHttpRequest request = ClassicRequestBuilder.get("http://www.google.com:81")
+            .build();
+
+        assertThrows(SocketTimeoutException.class, () -> {
+            client.execute(request, response -> {
+                return response;
+            });
+        });
     }
 
     static class GetThread extends Thread {
