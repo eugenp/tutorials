@@ -29,7 +29,7 @@
         </dependency>
         <dependency>
             <groupId>io.swagger.core.v3</groupId>
-            <artifactId>swagger-core</artifactId>
+            <artifactId>swagger-core-jakarta</artifactId>
             <version>${swagger-core.version}</version>
         </dependency>
         <dependency>
@@ -41,6 +41,11 @@
             <groupId>io.github.springwolf</groupId>
             <artifactId>springwolf-ui</artifactId>
             <version>${springwolf-ui.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.kafka</groupId>
@@ -68,10 +73,10 @@
     </build>
 
     <properties>
-        <swagger-core.version>2.2.8</swagger-core.version>
-        <springwolf-kafka.version>0.11.0</springwolf-kafka.version>
-        <springwolf-ui.version>0.7.0</springwolf-ui.version>
-        <testcontainers-kafka.version>1.16.2</testcontainers-kafka.version>
+        <swagger-core.version>2.2.11</swagger-core.version>
+        <springwolf-kafka.version>0.12.0</springwolf-kafka.version>
+        <springwolf-ui.version>0.8.0</springwolf-ui.version>
+        <testcontainers-kafka.version>1.18.3</testcontainers-kafka.version>
     </properties>
 
 </project>
