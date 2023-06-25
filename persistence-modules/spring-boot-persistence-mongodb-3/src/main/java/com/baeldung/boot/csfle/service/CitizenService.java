@@ -1,6 +1,8 @@
 package com.baeldung.boot.csfle.service;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.bson.BsonBinary;
@@ -26,22 +28,32 @@ public class CitizenService {
     public static final String DETERMINISTIC_ALGORITHM = "AEAD_AES_256_CBC_HMAC_SHA_512-Deterministic";
     public static final String RANDOM_ALGORITHM = "AEAD_AES_256_CBC_HMAC_SHA_512-Random";
 
-    @Autowired
-    private MongoTemplate mongo;
+    private final MongoTemplate mongo;
+    private final EncryptionConfig encryptionConfig;
+    private final ClientEncryption clientEncryption;
 
-    @Autowired
-    private EncryptionConfig encryptionConfig;
-
-    @Autowired
-    private ClientEncryption clientEncryption;
+    public CitizenService(MongoTemplate mongo, EncryptionConfig encryptionConfig, ClientEncryption clientEncryption) {
+        this.mongo = mongo;
+        this.encryptionConfig = encryptionConfig;
+        this.clientEncryption = clientEncryption;
+    }
 
     public Object save(Citizen citizen) {
         if (encryptionConfig.isAutoEncryption()) {
             return mongo.save(citizen);
         } else {
             EncryptedCitizen encryptedCitizen = new EncryptedCitizen(citizen.getName());
-            encryptedCitizen.setEmail(encrypt(citizen.getEmail(), DETERMINISTIC_ALGORITHM));
-            encryptedCitizen.setBirthYear(encrypt(citizen.getBirthYear(), RANDOM_ALGORITHM));
+            if (citizen.getEmail() != null) {
+                encryptedCitizen.setEmail(encrypt(citizen.getEmail(), DETERMINISTIC_ALGORITHM));
+            } else {
+                encryptedCitizen.setEmail(null);
+
+            }
+            if (citizen.getBirthYear() != null) {
+                encryptedCitizen.setBirthYear(encrypt(citizen.getBirthYear(), RANDOM_ALGORITHM));
+            } else {
+                encryptedCitizen.setBirthYear(null);
+            }
 
             return mongo.save(encryptedCitizen);
         }
@@ -78,8 +90,8 @@ public class CitizenService {
     }
 
     public Binary encrypt(BsonValue bsonValue, String algorithm) {
-        if (bsonValue == null)
-            return null;
+        Objects.requireNonNull(bsonValue);
+        Objects.requireNonNull(algorithm);
 
         EncryptOptions options = new EncryptOptions(algorithm);
         options.keyId(encryptionConfig.getDataKeyId());
@@ -89,42 +101,38 @@ public class CitizenService {
     }
 
     public Binary encrypt(String value, String algorithm) {
-        if (value == null)
-            return null;
+        Objects.requireNonNull(value);
+        Objects.requireNonNull(algorithm);
 
         return encrypt(new BsonString(value), algorithm);
     }
 
     public Binary encrypt(Integer value, String algorithm) {
-        if (value == null)
-            return null;
+        Objects.requireNonNull(value);
+        Objects.requireNonNull(algorithm);
 
         return encrypt(new BsonInt32(value), algorithm);
     }
 
     public BsonValue decryptProperty(Binary value) {
-        if (value == null)
-            return null;
+        Objects.requireNonNull(value);
 
         return clientEncryption.decrypt(new BsonBinary(value.getType(), value.getData()));
     }
 
     private Citizen decrypt(EncryptedCitizen encrypted) {
-        if (encrypted == null)
-            return null;
+        Objects.requireNonNull(encrypted);
 
         Citizen citizen = new Citizen(encrypted.getName());
 
-        BsonValue decryptedBirthYear = decryptProperty(encrypted.getBirthYear());
+        BsonValue decryptedBirthYear = encrypted.getBirthYear() != null ? decryptProperty(encrypted.getBirthYear()) : null;
         if (decryptedBirthYear != null) {
-            citizen.setBirthYear(decryptedBirthYear.asInt32()
-                .intValue());
+            citizen.setBirthYear(decryptedBirthYear.asInt32().intValue());
         }
 
-        BsonValue decryptedEmail = decryptProperty(encrypted.getEmail());
+        BsonValue decryptedEmail = encrypted.getEmail() != null ? decryptProperty(encrypted.getEmail()) : null;
         if (decryptedEmail != null) {
-            citizen.setEmail(decryptedEmail.asString()
-                .getValue());
+            citizen.setEmail(decryptedEmail.asString().getValue());
         }
 
         return citizen;
