@@ -3,6 +3,7 @@ package com.baeldung.cloud.openfeign.patcherror.withokhttpclient;
 import com.baeldung.cloud.openfeign.ExampleApplication;
 import com.baeldung.cloud.openfeign.patcherror.withokhttpclient.client.UserClient;
 import com.baeldung.cloud.openfeign.patcherror.model.User;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import feign.FeignException;
 
@@ -16,6 +17,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.io.File;
+import java.io.IOException;
+
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -24,16 +28,11 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestPropertySource(locations = "/test2.properties")
 public class UserClientUnitTest {
 
-    public static final String USER_ID = "100001";
-
-    public static final String EXISTING_USER = "{\n" +
-            "    \"userId\": 100001,\n" +
-            "    \"userName\": \"name\",\n" +
-            "    \"email\": \"email@mail.in\"\n" +
-            "}";
-
     @Autowired
     private UserClient userClient;
+
+    @Autowired
+    private ObjectMapper objectMapper;
 
     private WireMockServer wireMockServer;
 
@@ -44,22 +43,14 @@ public class UserClientUnitTest {
         wireMockServer.start();
     }
 
-    @BeforeEach
-    public void mockGetUserApi() {
-        stubFor(get(urlEqualTo("/api/user/".concat(USER_ID)))
-                .willReturn(aResponse().withStatus(HttpStatus.OK.value())
-                        .withHeader("Content-Type", "application/json")
-                        .withBody(EXISTING_USER)));
-    }
-
     @AfterEach
     public void stopWireMockServer() {
         wireMockServer.stop();
     }
 
     @Test
-    void givenUserExistsAndIsValid_whenUpdateUserCalled_thenReturnSuccess() {
-        User user = userClient.getUser(USER_ID);
+    void givenUserExistsAndIsValid_whenUpdateUserCalled_thenReturnSuccess() throws IOException {
+        User user = objectMapper.readValue(new File("src/test/resources/existing-user.json"), User.class);
         user.setEmail("updated-email@mail.in");
 
         String updatedUserResponse = "{\n" +
@@ -68,12 +59,12 @@ public class UserClientUnitTest {
                 "    \"email\": \"updated-email@mail.in\"\n" +
                 "}";
 
-        stubFor(patch(urlEqualTo("/api/user/".concat(USER_ID)))
-            .willReturn(aResponse().withStatus(HttpStatus.OK.value())
-            .withHeader("Content-Type", "application/json")
-            .withBody(updatedUserResponse)));
+        stubFor(patch(urlEqualTo("/api/user/".concat("100001")))
+                .willReturn(aResponse().withStatus(HttpStatus.OK.value())
+                        .withHeader("Content-Type", "application/json")
+                        .withBody(updatedUserResponse)));
 
-        User updatedUser = userClient.updateUser(USER_ID, user);
+        User updatedUser = userClient.updateUser("100001", user);
 
         assertEquals(user.getUserId(), updatedUser.getUserId());
         assertEquals("updated-name", updatedUser.getUserName());
@@ -81,11 +72,13 @@ public class UserClientUnitTest {
     }
 
     @Test
-    void givenUserNotFound_whenUpdateUserCalled_thenReturnNotFoundErrorAndFeignException() {
-        stubFor(patch(urlEqualTo("/api/user/".concat(USER_ID)))
+    void givenUserNotFound_whenUpdateUserCalled_thenReturnNotFoundErrorAndFeignException() throws IOException {
+        User user = objectMapper.readValue(new File("src/test/resources/existing-user.json"), User.class);
+        user.setEmail("updated-email@mail.in");
+
+        stubFor(patch(urlEqualTo("/api/user/".concat("100001")))
                 .willReturn(aResponse().withStatus(404)));
 
-        assertThrows(FeignException.class, () -> userClient.updateUser(USER_ID,
-            userClient.getUser(USER_ID)));
+        assertThrows(FeignException.class, () -> userClient.updateUser("100001", user));
     }
 }
