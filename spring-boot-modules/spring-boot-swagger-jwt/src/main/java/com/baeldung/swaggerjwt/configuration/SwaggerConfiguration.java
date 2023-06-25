@@ -3,54 +3,32 @@ package com.baeldung.swaggerjwt.configuration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import springfox.documentation.builders.PathSelectors;
-import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.service.*;
-import springfox.documentation.spi.DocumentationType;
-import springfox.documentation.spi.service.contexts.SecurityContext;
-import springfox.documentation.spring.web.plugins.Docket;
-
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import io.swagger.v3.oas.models.Components;
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Contact;
+import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.info.License;
+import io.swagger.v3.oas.models.security.SecurityRequirement;
+import io.swagger.v3.oas.models.security.SecurityScheme;
 
 @Configuration
 public class SwaggerConfiguration {
 
-    public static final String AUTHORIZATION_HEADER = "Authorization";
-
-    private ApiInfo apiInfo() {
-        return new ApiInfo("My REST API", "Some custom description of API.", "1.0", "Terms of service", new Contact("Sallo Szrajbman", "www.baeldung.com", "salloszraj@gmail.com"), "License of API", "API license URL", Collections.emptyList());
-    }
-
     @Bean
-    public Docket api() {
-        return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo())
-          .securityContexts(Arrays.asList(securityContext()))
-          .securitySchemes(Arrays.asList(apiKey()))
-          .select()
-          .apis(RequestHandlerSelectors.any())
-          .paths(PathSelectors.any())
-          .build();
+    public OpenAPI openAPI() {
+        return new OpenAPI().addSecurityItem(new SecurityRequirement().addList("Bearer Authentication"))
+            .components(new Components().addSecuritySchemes("Bearer Authentication", createAPIKeyScheme()))
+            .info(new Info().title("My REST API")
+                .description("Some custom description of API.")
+                .version("1.0").contact(new Contact().name("Sallo Szrajbman").email( "www.baeldung.com").url("salloszraj@gmail.com"))
+                .license(new License().name("License of API")
+                    .url("API license URL")));
     }
 
-    private ApiKey apiKey() {
-        return new ApiKey("JWT", AUTHORIZATION_HEADER, "header");
-    }
-
-    private SecurityContext securityContext() {
-        return SecurityContext.builder()
-          .securityReferences(List.of(defaultAuth()))
-          .operationSelector(o -> o.requestMappingPattern()
-            .matches("/.*"))
-          .build();
-    }
-
-    private SecurityReference defaultAuth() {
-        return SecurityReference.builder()
-          .scopes(new AuthorizationScope[0])
-          .reference("JWT")
-          .build();
+    private SecurityScheme createAPIKeyScheme() {
+        return new SecurityScheme().type(SecurityScheme.Type.HTTP)
+            .bearerFormat("JWT")
+            .scheme("bearer");
     }
 
 }
