@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.baeldung.swagger2bootmvc.model.Foo;
 
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.Parameters;
 
 @Controller
 public class FooController {
@@ -26,7 +26,7 @@ public class FooController {
     @RequestMapping(method = RequestMethod.POST, value = "/foos")
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
-    @ApiImplicitParams({ @ApiImplicitParam(name = "foo", value = "List of strings", paramType = "body", dataType = "Foo") })
+    @Parameters({ @Parameter(name = "foo", description = "List of strings") })
     public Foo create(@RequestBody final Foo foo) {
         foo.setId(Long.parseLong(randomNumeric(2)));
         return foo;
