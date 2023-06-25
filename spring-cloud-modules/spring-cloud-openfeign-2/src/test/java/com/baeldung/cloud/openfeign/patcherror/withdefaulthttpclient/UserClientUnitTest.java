@@ -15,6 +15,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.net.HttpURLConnection;
+
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -46,7 +48,7 @@ public class UserClientUnitTest {
     }
 
     @BeforeEach
-    public void mockGetUser() {
+    public void mockGetUserApi() {
         stubFor(get(urlEqualTo("/api/user/".concat(USER_ID)))
                 .willReturn(aResponse().withStatus(HttpStatus.OK.value())
                         .withHeader("Content-Type", "application/json")

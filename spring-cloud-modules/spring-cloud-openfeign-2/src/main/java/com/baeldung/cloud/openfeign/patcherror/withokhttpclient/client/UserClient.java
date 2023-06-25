@@ -1,6 +1,6 @@
-package com.baeldung.cloud.openfeign.patcherror.withhttpclientconfig.client;
+package com.baeldung.cloud.openfeign.patcherror.withokhttpclient.client;
 
-import com.baeldung.cloud.openfeign.patcherror.withhttpclientconfig.config.FeignConfig;
+import com.baeldung.cloud.openfeign.patcherror.withokhttpclient.config.FeignConfig;
 import com.baeldung.cloud.openfeign.patcherror.model.User;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;

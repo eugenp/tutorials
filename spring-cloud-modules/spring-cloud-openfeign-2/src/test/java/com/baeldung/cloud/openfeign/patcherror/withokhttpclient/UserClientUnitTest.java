@@ -1,7 +1,7 @@
-package com.baeldung.cloud.openfeign.patcherror.withhttpclientconfig;
+package com.baeldung.cloud.openfeign.patcherror.withokhttpclient;
 
 import com.baeldung.cloud.openfeign.ExampleApplication;
-import com.baeldung.cloud.openfeign.patcherror.withhttpclientconfig.client.UserClient;
+import com.baeldung.cloud.openfeign.patcherror.withokhttpclient.client.UserClient;
 import com.baeldung.cloud.openfeign.patcherror.model.User;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import feign.FeignException;
@@ -45,7 +45,7 @@ public class UserClientUnitTest {
     }
 
     @BeforeEach
-    public void mockGetUser() {
+    public void mockGetUserApi() {
         stubFor(get(urlEqualTo("/api/user/".concat(USER_ID)))
                 .willReturn(aResponse().withStatus(HttpStatus.OK.value())
                         .withHeader("Content-Type", "application/json")
