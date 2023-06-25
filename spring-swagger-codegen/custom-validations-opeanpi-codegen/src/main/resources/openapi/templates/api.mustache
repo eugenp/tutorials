@@ -37,7 +37,6 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import org.springframework.http.codec.multipart.Part;
 {{/reactive}}
-import springfox.documentation.annotations.ApiIgnore;
 
 {{#useBeanValidation}}
 import javax.validation.Valid;
@@ -129,13 +128,13 @@ public interface {{classname}} {
         produces = { {{#produces}}"{{{mediaType}}}"{{^-last}}, {{/-last}}{{/produces}} }{{/hasProduces}}{{#hasConsumes}},
         consumes = { {{#consumes}}"{{{mediaType}}}"{{^-last}}, {{/-last}}{{/consumes}} }{{/hasConsumes}}{{/singleContentTypes}}
     )
-    {{#jdk8-default-interface}}default {{/jdk8-default-interface}}{{#responseWrapper}}{{.}}<{{/responseWrapper}}ResponseEntity<{{>returnTypes}}>{{#responseWrapper}}>{{/responseWrapper}} {{#delegate-method}}_{{/delegate-method}}{{operationId}}({{#allParams}}{{>queryParams}}{{>pathParams}}{{>headerParams}}{{>bodyParams}}{{>formParams}}{{>cookieParams}}{{^-last}},{{/-last}}{{#-last}}{{#reactive}}, {{/reactive}}{{/-last}}{{/allParams}}{{#reactive}}@ApiIgnore final ServerWebExchange exchange{{/reactive}}{{#vendorExtensions.x-spring-paginated}}, @ApiIgnore final Pageable pageable{{/vendorExtensions.x-spring-paginated}}){{^jdk8-default-interface}};{{/jdk8-default-interface}}{{#jdk8-default-interface}}{{#unhandledException}} throws Exception{{/unhandledException}} {
+    {{#jdk8-default-interface}}default {{/jdk8-default-interface}}{{#responseWrapper}}{{.}}<{{/responseWrapper}}ResponseEntity<{{>returnTypes}}>{{#responseWrapper}}>{{/responseWrapper}} {{#delegate-method}}_{{/delegate-method}}{{operationId}}({{#allParams}}{{>queryParams}}{{>pathParams}}{{>headerParams}}{{>bodyParams}}{{>formParams}}{{>cookieParams}}{{^-last}},{{/-last}}{{#-last}}{{#reactive}}, {{/reactive}}{{/-last}}{{/allParams}}{{#reactive}}final ServerWebExchange exchange{{/reactive}}{{#vendorExtensions.x-spring-paginated}}, final Pageable pageable{{/vendorExtensions.x-spring-paginated}}){{^jdk8-default-interface}};{{/jdk8-default-interface}}{{#jdk8-default-interface}}{{#unhandledException}} throws Exception{{/unhandledException}} {
         {{#delegate-method}}
         return {{operationId}}({{#allParams}}{{paramName}}{{^-last}}, {{/-last}}{{/allParams}}{{#reactive}}{{#hasParams}}, {{/hasParams}}exchange{{/reactive}}{{#vendorExtensions.x-spring-paginated}}, pageable{{/vendorExtensions.x-spring-paginated}});
     }
 
     // Override this method
-    {{#jdk8-default-interface}}default {{/jdk8-default-interface}} {{#responseWrapper}}{{.}}<{{/responseWrapper}}ResponseEntity<{{>returnTypes}}>{{#responseWrapper}}>{{/responseWrapper}} {{operationId}}({{#allParams}}{{^isFile}}{{^isBodyParam}}{{>optionalDataType}}{{/isBodyParam}}{{#isBodyParam}}{{^reactive}}{{{dataType}}}{{/reactive}}{{#reactive}}{{^isArray}}Mono<{{{dataType}}}>{{/isArray}}{{#isArray}}Flux<{{{baseType}}}>{{/isArray}}{{/reactive}}{{/isBodyParam}}{{/isFile}}{{#isFile}}{{#reactive}}Flux<Part>{{/reactive}}{{^reactive}}MultipartFile{{/reactive}}{{/isFile}} {{paramName}}{{^-last}}, {{/-last}}{{/allParams}}{{#reactive}}{{#hasParams}}, {{/hasParams}}@ApiIgnore final ServerWebExchange exchange{{/reactive}}{{#vendorExtensions.x-spring-paginated}}, @ApiIgnore final Pageable pageable{{/vendorExtensions.x-spring-paginated}}){{#unhandledException}} throws Exception{{/unhandledException}} {
+    {{#jdk8-default-interface}}default {{/jdk8-default-interface}} {{#responseWrapper}}{{.}}<{{/responseWrapper}}ResponseEntity<{{>returnTypes}}>{{#responseWrapper}}>{{/responseWrapper}} {{operationId}}({{#allParams}}{{^isFile}}{{^isBodyParam}}{{>optionalDataType}}{{/isBodyParam}}{{#isBodyParam}}{{^reactive}}{{{dataType}}}{{/reactive}}{{#reactive}}{{^isArray}}Mono<{{{dataType}}}>{{/isArray}}{{#isArray}}Flux<{{{baseType}}}>{{/isArray}}{{/reactive}}{{/isBodyParam}}{{/isFile}}{{#isFile}}{{#reactive}}Flux<Part>{{/reactive}}{{^reactive}}MultipartFile{{/reactive}}{{/isFile}} {{paramName}}{{^-last}}, {{/-last}}{{/allParams}}{{#reactive}}{{#hasParams}}, {{/hasParams}} final ServerWebExchange exchange{{/reactive}}{{#vendorExtensions.x-spring-paginated}}, final Pageable pageable{{/vendorExtensions.x-spring-paginated}}){{#unhandledException}} throws Exception{{/unhandledException}} {
         {{/delegate-method}}
         {{^isDelegate}}
         {{>methodBody}}
