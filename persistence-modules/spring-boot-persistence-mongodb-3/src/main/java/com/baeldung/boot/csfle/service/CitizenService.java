@@ -42,7 +42,8 @@ public class CitizenService {
         if (encryptionConfig.isAutoEncryption()) {
             return mongo.save(citizen);
         } else {
-            EncryptedCitizen encryptedCitizen = new EncryptedCitizen(citizen.getName());
+            EncryptedCitizen encryptedCitizen = new EncryptedCitizen();
+            encryptedCitizen.setName(citizen.getName());
             if (citizen.getEmail() != null) {
                 encryptedCitizen.setEmail(encrypt(citizen.getEmail(), DETERMINISTIC_ALGORITHM));
             } else {
@@ -123,7 +124,8 @@ public class CitizenService {
     private Citizen decrypt(EncryptedCitizen encrypted) {
         Objects.requireNonNull(encrypted);
 
-        Citizen citizen = new Citizen(encrypted.getName());
+        Citizen citizen = new Citizen();
+        citizen.setName(encrypted.getName());
 
         BsonValue decryptedBirthYear = encrypted.getBirthYear() != null ? decryptProperty(encrypted.getBirthYear()) : null;
         if (decryptedBirthYear != null) {
