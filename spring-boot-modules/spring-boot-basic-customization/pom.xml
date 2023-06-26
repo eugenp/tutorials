@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-boot-basic-customization</artifactId>
     <name>spring-boot-basic-customization</name>
@@ -38,5 +38,51 @@
         <!-- The main class to start by executing "java -jar" -->
         <start-class>com.baeldung.changeport.CustomApplication</start-class>
     </properties>
+
+    <profiles>
+        <profile>
+            <id>errorhandling</id>
+            <properties>
+                <spring.boot.mainclass>com.baeldung.errorhandling.ErrorHandlingApplication</spring.boot.mainclass>
+            </properties>
+        </profile>
+        <profile>
+            <id>filter</id>
+            <properties>
+                <spring.boot.mainclass>com.baeldung.bootcustomfilters.SpringBootFiltersApplication</spring.boot.mainclass>
+            </properties>
+        </profile>
+        <profile>
+            <id>customapplication</id>
+            <properties>
+                <spring.boot.mainclass>com.baeldung.changeport.CustomApplication</spring.boot.mainclass>
+            </properties>
+        </profile>
+        <profile>
+            <id>failureanalyzer</id>
+            <properties>
+                <spring.boot.mainclass>com.baeldung.failureanalyzer.FailureAnalyzerApplication</spring.boot.mainclass>
+            </properties>
+        </profile>
+        <profile>
+            <id>favicon</id>
+            <properties>
+                <spring.boot.mainclass>com.baeldung.favicon.FaviconApplication</spring.boot.mainclass>
+            </properties>
+        </profile>
+    </profiles>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>1.5.2.RELEASE</version>
+                <configuration>
+                    <mainClass>${spring.boot.mainclass}</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
