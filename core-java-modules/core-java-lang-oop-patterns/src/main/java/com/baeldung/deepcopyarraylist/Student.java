@@ -1,9 +1,12 @@
 package com.baeldung.deepcopyarraylist;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Student {
+import org.apache.commons.lang3.SerializationUtils;
+
+public class Student implements Serializable {
 
     private int studentId;
     private String studentName;
@@ -25,6 +28,10 @@ public class Student {
 
     public static List<Student> deepCopyUsingCopyConstructor(List<Student> students){
         return students.stream().map(Student::new).collect(Collectors.toList());
+    }
+
+    public static List<Student> deepCopyUsingSerialization(List<Student> students){
+        return students.stream().map(SerializationUtils::clone).collect(Collectors.toList());
     }
 
     public int getStudentId() {

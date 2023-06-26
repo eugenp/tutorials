@@ -1,6 +1,8 @@
 package com.baeldung.deepcopyarraylist;
 
-public class Course {
+import java.io.Serializable;
+
+public class Course implements Serializable {
 
     private Integer courseId;
     private String courseName;
