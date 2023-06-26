@@ -6,8 +6,8 @@
     <groupId>com.baeldung</groupId>
     <artifactId>spring-boot-aws</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-data-3</name>
-    <description>spring-boot-boot</description>
+    <name>spring-boot-aws</name>
+    <description>spring-boot-aws</description>
 
     <parent>
         <groupId>com.baeldung.spring-boot-modules</groupId>

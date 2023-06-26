@@ -139,16 +139,31 @@
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
+            <version>${rest-assured.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>spring-mock-mvc</artifactId>
+            <version>${rest-assured.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>json-schema-validator</artifactId>
+            <version>${rest-assured.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>xml-path</artifactId>
+            <version>${rest-assured.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured-all</artifactId>
+            <version>${rest-assured.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -172,8 +187,9 @@
         <joda-time.version>2.9.6</joda-time.version>
         <msg-simple.version>1.1</msg-simple.version>
         <btf.version>1.2</btf.version>
-        <wiremock.version>2.4.1</wiremock.version>
+        <wiremock.version>2.27.2</wiremock.version>
         <scribejava.version>2.5.3</scribejava.version>
+        <rest-assured.version>5.3.0</rest-assured.version>
     </properties>
 
 </project>

@@ -1,3 +1,3 @@
 ### Relevant Articles:
 
-- [Server-Sent Events (SSE) In JAX-RS](https://www.baeldung.com/java-ee-jax-rs-sse)
+- [Server-Sent Events (SSE) in JAX-RS](https://www.baeldung.com/java-ee-jax-rs-sse)

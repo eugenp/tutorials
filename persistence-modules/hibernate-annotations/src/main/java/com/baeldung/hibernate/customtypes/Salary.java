@@ -1,8 +1,9 @@
 package com.baeldung.hibernate.customtypes;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Salary {
+public class Salary implements Serializable {
 
     private Long amount;
     private String currency;

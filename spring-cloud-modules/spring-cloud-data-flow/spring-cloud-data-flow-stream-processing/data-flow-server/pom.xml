@@ -18,23 +18,9 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring-boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dataflow-dependencies</artifactId>
                 <version>${spring-cloud-dataflow-dependencies.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud-dependencies.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -45,6 +31,7 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-dataflow-server-local</artifactId>
+            <version>1.7.4.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -62,13 +49,22 @@
             <version>${byte-buddy.version}</version>
             <scope>test</scope>
         </dependency>
+         <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy</artifactId>
+            <version>${groovy.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session-data-redis</artifactId>
+        </dependency>
     </dependencies>
 
     <properties>
-        <spring-cloud-dataflow-dependencies.version>1.3.1.RELEASE</spring-cloud-dataflow-dependencies.version>
-        <spring-cloud-dependencies.version>Edgware.SR6</spring-cloud-dependencies.version>
-        <hibernate.compatible.version>5.2.12.Final</hibernate.compatible.version>
-        <spring-boot.version>1.5.22.RELEASE</spring-boot.version>
+        <spring-cloud-dataflow-dependencies.version>2.0.0.RELEASE</spring-cloud-dataflow-dependencies.version>
+        <hibernate.compatible.version>5.6.0.Final</hibernate.compatible.version>
+        <spring-boot.version>2.1.4.RELEASE</spring-boot.version>
+        <groovy.version>3.0.8</groovy.version>
     </properties>
 
 </project>

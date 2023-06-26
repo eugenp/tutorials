@@ -3,7 +3,7 @@ package com.baeldung.jpa.stringcast;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;

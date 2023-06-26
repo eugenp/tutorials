@@ -17,7 +17,6 @@
 
     <modules>
         <!--Won't be upgraded to JDK 17 -->
-        <!--<module>core-java</module> -->
         <!--<module>core-java-8</module> -->
         <!--<module>core-java-8-2</module> -->
         <!--<module>core-java-8-datetime</module> -->
@@ -82,6 +81,7 @@
         <module>core-java-io-4</module>
         <module>core-java-io-apis</module>
         <module>core-java-io-apis-2</module>
+        <module>core-java-io-apis-3</module>
         <module>core-java-io-conversions</module>
         <module>core-java-jar</module>
         <module>core-java-jndi</module>
@@ -135,13 +135,16 @@
         <module>core-java-string-apis-2</module>
         <module>core-java-string-conversions</module>
         <module>core-java-string-conversions-2</module>
+        <module>core-java-string-conversions-3</module>
         <module>core-java-string-operations</module>
         <module>core-java-string-operations-2</module>
+        <module>core-java-string-operations-6</module>
         <module>core-java-regex</module>
         <module>core-java-regex-2</module>
         <module>core-java-uuid</module>
         <module>pre-jpms</module>
         <module>core-java-collections-maps-6</module>
+        <module>core-java-records</module>
     </modules>
 
     <dependencyManagement>
