@@ -24,6 +24,11 @@
             <artifactId>commons-lang3</artifactId>
             <version>${commons.lang3.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.ibm.icu</groupId>
+            <artifactId>icu4j</artifactId>
+            <version>${icu4j.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -39,6 +44,7 @@
     <properties>
         <commons.lang3.version>3.12.0</commons.lang3.version>
         <guava.version>31.1-jre</guava.version>
+        <icu4j.version>61.1</icu4j.version>
     </properties>
 
 </project>

@@ -29,11 +29,6 @@
             <artifactId>jmh-generator-annprocess</artifactId>
             <version>${jmh-generator.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.ibm.icu</groupId>
-            <artifactId>icu4j</artifactId>
-            <version>${icu4j.version}</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -47,7 +42,6 @@
     </build>
 
     <properties>
-        <icu4j.version>61.1</icu4j.version>
         <maven.compiler.release>15</maven.compiler.release>
     </properties>
 

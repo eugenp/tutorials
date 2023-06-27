@@ -12,3 +12,4 @@ This module contains articles about advanced operations on arrays in Java. They 
 - [Concatenate Two Arrays in Java](https://www.baeldung.com/java-concatenate-arrays)
 - [Performance of System.arraycopy() vs. Arrays.copyOf()](https://www.baeldung.com/java-system-arraycopy-arrays-copyof-performance)
 - [Slicing Arrays in Java](https://www.baeldung.com/java-slicing-arrays)
+- [Combining Two or More Byte Arrays](https://www.baeldung.com/java-concatenate-byte-arrays)
