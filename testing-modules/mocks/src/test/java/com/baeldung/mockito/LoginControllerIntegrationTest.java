@@ -1,9 +1,9 @@
 package com.baeldung.mockito;
 
-import com.baeldung.testCase.LoginController;
-import com.baeldung.testCase.LoginDao;
-import com.baeldung.testCase.LoginService;
-import com.baeldung.testCase.UserForm;
+import com.baeldung.testcase.LoginController;
+import com.baeldung.testcase.LoginDao;
+import com.baeldung.testcase.LoginService;
+import com.baeldung.testcase.UserForm;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package com.baeldung.testCase;
+package com.baeldung.testcase;
 
 public class LoginController {
 
