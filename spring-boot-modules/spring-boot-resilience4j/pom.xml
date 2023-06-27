@@ -30,12 +30,12 @@
         <dependency>
             <groupId>io.github.resilience4j</groupId>
             <artifactId>resilience4j-spring-boot2</artifactId>
-            <version>2.0.2</version>
+            <version>${resilience4j-spring-boot2.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-jsr310</artifactId>
-            <version>2.14.2</version>
+            <version>2.15.2</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -45,9 +45,14 @@
         <dependency>
             <groupId>com.github.tomakehurst</groupId>
             <artifactId>wiremock-jre8</artifactId>
-            <version>2.35.0</version>
+            <version>${wiremock-jre8.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <properties>
+        <wiremock-jre8.version>2.35.0</wiremock-jre8.version>
+        <resilience4j-spring-boot2.version>2.0.2</resilience4j-spring-boot2.version>
+    </properties>
 
 </project>
