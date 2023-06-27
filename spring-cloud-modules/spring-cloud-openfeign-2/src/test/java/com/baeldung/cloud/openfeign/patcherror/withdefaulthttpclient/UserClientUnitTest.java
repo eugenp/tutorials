@@ -1,7 +1,7 @@
 package com.baeldung.cloud.openfeign.patcherror.withdefaulthttpclient;
 
 import com.baeldung.cloud.openfeign.ExampleApplication;
-import com.baeldung.cloud.openfeign.patcherror.withdefaulthttpclient.client.UserClient;
+import com.baeldung.cloud.openfeign.patcherror.client.UserClient;
 import com.baeldung.cloud.openfeign.patcherror.model.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.WireMockServer;
@@ -62,7 +62,7 @@ public class UserClientUnitTest {
                         .withBody(updatedUserResponse)));
 
 
-        //assertDoesNotThrow(() -> userClient.updateUser(USER_ID, user));
+        //assertDoesNotThrow(() -> userClient.updateUser("100001", user));
         assertThrows(FeignException.class, () -> userClient.updateUser("100001", user));
     }
 
@@ -71,9 +71,9 @@ public class UserClientUnitTest {
         User user = new ObjectMapper().readValue(new File("src/test/resources/existing-user.json"), User.class);
         user.setEmail("updated-email@mail.in");
 
-        stubFor(patch(urlEqualTo("/api/user/".concat("100001")))
+        stubFor(patch(urlEqualTo("/api/user/".concat("100002")))
                 .willReturn(aResponse().withStatus(404)));
 
-        assertThrows(FeignException.class, () -> userClient.updateUser("100001", user));
+        assertThrows(FeignException.class, () -> userClient.updateUser("100002", user));
     }
 }
