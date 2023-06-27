@@ -47,9 +47,6 @@ public class UserClientUnitTest {
 
     @Test
     void givenUserExistsAndIsValid_whenUpdateUserCalled_thenReturnSuccess() throws IOException {
-        User user = objectMapper.readValue(new File("src/test/resources/existing-user.json"), User.class);
-        user.setEmail("updated-email@mail.in");
-
         String updatedUserResponse = "{\n" +
                 "    \"userId\": 100001,\n" +
                 "    \"userName\": \"updated-name\",\n" +
@@ -57,10 +54,12 @@ public class UserClientUnitTest {
                 "}";
 
         stubFor(patch(urlEqualTo("/api/user/".concat("100001")))
-                .willReturn(aResponse().withStatus(HttpStatus.OK.value())
-                        .withHeader("Content-Type", "application/json")
-                        .withBody(updatedUserResponse)));
+          .willReturn(aResponse().withStatus(HttpStatus.OK.value())
+          .withHeader("Content-Type", "application/json")
+          .withBody(updatedUserResponse)));
 
+        User user = objectMapper.readValue(new File("src/test/resources/existing-user.json"), User.class);
+        user.setEmail("updated-email@mail.in");
         User updatedUser = userClient.updateUser("100001", user);
 
         assertEquals(user.getUserId(), updatedUser.getUserId());
@@ -74,7 +73,7 @@ public class UserClientUnitTest {
         user.setEmail("updated-email@mail.in");
 
         stubFor(patch(urlEqualTo("/api/user/".concat("100002")))
-                .willReturn(aResponse().withStatus(404)));
+          .willReturn(aResponse().withStatus(404)));
 
         assertThrows(FeignException.class, () -> userClient.updateUser("100002", user));
     }
