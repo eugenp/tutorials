@@ -10,7 +10,7 @@ public class BaeldungHomePage {
     private SeleniumConfig config;
     @FindBy(css = ".nav--logo_mobile")
     private WebElement title;
-    @FindBy(css = ".menu-start-here > a")
+    @FindBy(css = ".header--menu")
     private WebElement startHere;
 
     public BaeldungHomePage(SeleniumConfig config) {

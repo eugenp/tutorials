@@ -2,8 +2,8 @@ package com.baeldung.javaxval.methodvalidation.model;
 
 import java.time.LocalDate;
 
-import javax.validation.Valid;
-import javax.validation.constraints.Positive;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Positive;
 
 import org.springframework.validation.annotation.Validated;
 
