@@ -22,7 +22,7 @@ public class PrimaryKeyJoinColumnIntegrationTest {
         emf = Persistence.createEntityManagerFactory("com.baeldung.movie_catalog");
         em = emf.createEntityManager();
         em.getTransaction()
-          .begin();
+            .begin();
         Department department = new Department();
         department.setName("IT");
         em.persist(department);
@@ -31,7 +31,7 @@ public class PrimaryKeyJoinColumnIntegrationTest {
         person.setDepartment(department);
         em.persist(person);
         em.getTransaction()
-          .commit();
+            .commit();
     }
 
     @After
@@ -47,6 +47,6 @@ public class PrimaryKeyJoinColumnIntegrationTest {
         assertEquals("John Doe", person.getName());
         assertNotNull(person.getDepartment());
         assertEquals("IT", person.getDepartment()
-         .getName());
+            .getName());
     }
 }
