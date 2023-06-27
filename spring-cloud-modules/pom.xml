@@ -43,7 +43,7 @@
         <module>spring-cloud-zuul</module>
         <module>spring-cloud-zuul-fallback</module>
         <module>spring-cloud-ribbon-retry</module>
-        <module>spring-cloud-circuit-breaker</module>
+<!--        <module>spring-cloud-circuit-breaker</module>-->
         <module>spring-cloud-eureka-self-preservation</module>
         <module>spring-cloud-openfeign</module>
         <module>spring-cloud-netflix-feign</module>
