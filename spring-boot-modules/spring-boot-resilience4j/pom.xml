@@ -35,7 +35,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
             <artifactId>jackson-datatype-jsr310</artifactId>
-            <version>2.15.2</version>
+            <version>${jackson-datatype-jsr310.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -53,6 +53,7 @@
     <properties>
         <wiremock-jre8.version>2.35.0</wiremock-jre8.version>
         <resilience4j-spring-boot2.version>2.0.2</resilience4j-spring-boot2.version>
+        <jackson-datatype-jsr310.version>2.15.2</jackson-datatype-jsr310.version>
     </properties>
 
 </project>
