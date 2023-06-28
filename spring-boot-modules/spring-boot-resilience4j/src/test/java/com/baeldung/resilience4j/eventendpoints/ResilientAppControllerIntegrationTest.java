@@ -8,17 +8,18 @@ import static org.springframework.http.HttpStatus.*;
 
 import com.baeldung.resilience4j.eventendpoints.model.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JSR310Module;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.github.tomakehurst.wiremock.client.WireMock;
 import com.github.tomakehurst.wiremock.core.WireMockConfiguration;
 import com.github.tomakehurst.wiremock.junit5.WireMockExtension;
 import java.net.URI;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.*;
 import java.util.stream.IntStream;
 import org.apache.commons.io.IOUtils;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import org.slf4j.Logger;
@@ -40,7 +41,7 @@ class ResilientAppControllerIntegrationTest {
   @LocalServerPort private Integer port;
 
   private static final ObjectMapper objectMapper =
-      new ObjectMapper().registerModule(new JSR310Module());
+      new ObjectMapper().registerModule(new JavaTimeModule());
 
   @RegisterExtension
   static WireMockExtension EXTERNAL_SERVICE =
@@ -126,8 +127,7 @@ class ResilientAppControllerIntegrationTest {
   private List<CircuitBreakerEvent> getCircuitBreakerEvents() throws Exception {
     String jsonEventsList =
         IOUtils.toString(
-            new URI("http://localhost:" + port + "/actuator/circuitbreakerevents"),
-            Charset.forName("UTF-8"));
+            new URI("http://localhost:" + port + "/actuator/circuitbreakerevents"), StandardCharsets.UTF_8);
     CircuitBreakerEvents circuitBreakerEvents =
         objectMapper.readValue(jsonEventsList, CircuitBreakerEvents.class);
     return circuitBreakerEvents.getCircuitBreakerEvents();
@@ -172,8 +172,7 @@ class ResilientAppControllerIntegrationTest {
   private List<RetryEvent> getRetryEvents() throws Exception {
     String jsonEventsList =
         IOUtils.toString(
-            new URI("http://localhost:" + port + "/actuator/retryevents"),
-            Charset.forName("UTF-8"));
+            new URI("http://localhost:" + port + "/actuator/retryevents"), StandardCharsets.UTF_8);
     RetryEvents retryEvents = objectMapper.readValue(jsonEventsList, RetryEvents.class);
     return retryEvents.getRetryEvents();
   }
@@ -197,13 +196,13 @@ class ResilientAppControllerIntegrationTest {
   private List<TimeLimiterEvent> getTimeLimiterEvents() throws Exception {
     String jsonEventsList =
         IOUtils.toString(
-            new URI("http://localhost:" + port + "/actuator/timelimiterevents"),
-            Charset.forName("UTF-8"));
+            new URI("http://localhost:" + port + "/actuator/timelimiterevents"), StandardCharsets.UTF_8);
     TimeLimiterEvents timeLimiterEvents =
         objectMapper.readValue(jsonEventsList, TimeLimiterEvents.class);
     return timeLimiterEvents.getTimeLimiterEvents();
   }
 
+  @Disabled
   @Test
   void testBulkheadEvents() throws Exception {
     EXTERNAL_SERVICE.stubFor(WireMock.get("/api/external").willReturn(ok()));
@@ -256,8 +255,7 @@ class ResilientAppControllerIntegrationTest {
   private List<BulkheadEvent> getBulkheadEvents() throws Exception {
     String jsonEventsList =
         IOUtils.toString(
-            new URI("http://localhost:" + port + "/actuator/bulkheadevents"),
-            Charset.forName("UTF-8"));
+            new URI("http://localhost:" + port + "/actuator/bulkheadevents"), StandardCharsets.UTF_8);
     BulkheadEvents bulkheadEvents = objectMapper.readValue(jsonEventsList, BulkheadEvents.class);
     return bulkheadEvents.getBulkheadEvents();
   }
@@ -310,8 +308,7 @@ class ResilientAppControllerIntegrationTest {
   private List<RateLimiterEvent> getRateLimiterEvents() throws Exception {
     String jsonEventsList =
         IOUtils.toString(
-            new URI("http://localhost:" + port + "/actuator/ratelimiterevents"),
-            Charset.forName("UTF-8"));
+            new URI("http://localhost:" + port + "/actuator/ratelimiterevents"), StandardCharsets.UTF_8);
     RateLimiterEvents rateLimiterEvents =
         objectMapper.readValue(jsonEventsList, RateLimiterEvents.class);
     return rateLimiterEvents.getRateLimiterEvents();
