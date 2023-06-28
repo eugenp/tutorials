@@ -2,6 +2,8 @@ package com.baeldung.spring.kafka.topicsandpartitions;
 
 import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.admin.NewTopic;
+import org.apache.kafka.common.config.TopicConfig;
+import org.apache.kafka.common.internals.Topic;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +19,6 @@ public class KafkaTopicConfig {
     @Value(value = "${spring.kafka.bootstrap-servers}")
     private String bootstrapAddress;
 
-    @Bean
     public KafkaAdmin kafkaAdmin() {
         Map<String, Object> configs = new HashMap<>();
         configs.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
@@ -27,12 +28,6 @@ public class KafkaTopicConfig {
     public NewTopic celciusTopic() {
         return TopicBuilder.name("celcius-scale-topic")
                 .partitions(2)
-                .build();
-    }
-
-    public NewTopic kelvinTopic() {
-        return TopicBuilder.name("kelvin-scale-topic")
-                .partitions(1)
                 .build();
     }
 }

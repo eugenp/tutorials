@@ -4,37 +4,33 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CountDownLatch;
 
 @Service
 public class TemperatureConsumer {
 
     private CountDownLatch latch = new CountDownLatch(1);
-    private String payload;
 
-    @KafkaListener(topics = "celcius-scale-topic", concurrency = "1", groupId = "celsius-scale-group")
+    Map<String, Set<String>> consumedRecords = new ConcurrentHashMap<>();
+
+    @KafkaListener(topics = "celcius-scale-topic", groupId = "group-1")
     public void consumer1(ConsumerRecord<?, ?> consumerRecord) {
-        System.out.printf("Consuming %s", consumerRecord.toString());
-        payload = consumerRecord.toString();
-        latch.countDown();
+        computeConsumedRecord("consumer-1", consumerRecord.partition());
     }
 
-    @KafkaListener(topics = "celcius-scale-topic", concurrency = "1", groupId = "celsius-scale-group")
+    @KafkaListener(topics = "celcius-scale-topic", groupId = "group-2")
     public void consumer2(ConsumerRecord<?, ?> consumerRecord) {
-        System.out.printf("Consuming %s", consumerRecord.toString());
-        payload = consumerRecord.toString();
-        latch.countDown();
+        computeConsumedRecord("consumer-2", consumerRecord.partition());
     }
 
-    @KafkaListener(topics = "kelvin-scale-topic", concurrency = "1", groupId = "kelvin-scale-group")
-    public void consumer3(ConsumerRecord<?, ?> consumerRecord) {
-        System.out.printf("Consuming %s", consumerRecord.toString());
-        payload = consumerRecord.toString();
-        latch.countDown();
-    }
-
-    public void resetLatch() {
-        latch = new CountDownLatch(1);
+    private void computeConsumedRecord(String key, int consumerRecord) {
+        consumedRecords.computeIfAbsent(key, k -> new HashSet<>());
+        consumedRecords.computeIfPresent(key, (k, v) -> {
+            v.add(String.valueOf(consumerRecord));
+            return v;
+        });
     }
 
     public CountDownLatch getLatch() {

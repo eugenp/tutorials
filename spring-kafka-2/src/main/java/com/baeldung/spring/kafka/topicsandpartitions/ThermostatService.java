@@ -15,20 +15,10 @@ public class ThermostatService {
     }
 
     public void measureCelsiusAndPublish(int numMeasurements) {
-
         new Random().doubles(25, 35)
                 .limit(numMeasurements)
                 .forEach(tmp -> {
                     kafkaTemplate.send("celcius-scale-topic", tmp);
-                    kafkaTemplate.send("kelvin-scale-topic", celsiusToKelvin(tmp));
                 });
-    }
-
-    private static double celsiusToFahrenheit(double celsius) {
-        return (celsius * 9 / 5) + 32;
-    }
-
-    private static double celsiusToKelvin(double celsius) {
-        return celsius + 273.15;
     }
 }
