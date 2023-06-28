@@ -41,7 +41,6 @@ public class MultipartUpload {
 
         PutObjectRequest request = new PutObjectRequest(existingBucketName, keyName, new File(filePath));
 
-
         request.setGeneralProgressListener(progressListener);
 
         Upload upload = tm.upload(request);
