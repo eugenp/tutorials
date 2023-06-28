@@ -1,7 +1,6 @@
-package com.baeldung.hibernate.onetomany.collection;
+package com.baeldung.hibernate.onetomany.collection.listvsset;
 
 import jakarta.persistence.*;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -16,6 +15,8 @@ public class CustomerEntity {
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<OrderEntity> orderList = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<AddressEntity> addressList = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL)
     private Set<OrderEntity> orderSet = new HashSet<>();
@@ -39,6 +40,14 @@ public class CustomerEntity {
 
     public List<OrderEntity> getOrderList() {
         return orderList;
+    }
+
+    public List<AddressEntity> getAddressList() {
+        return addressList;
+    }
+
+    public void setAddressList(List<AddressEntity> addressList) {
+        this.addressList = addressList;
     }
 
     public void setOrderList(List<OrderEntity> orderList) {

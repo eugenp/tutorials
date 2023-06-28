@@ -1,38 +1,42 @@
-package com.baeldung.hibernate.onetomany.collection;
+package com.baeldung.hibernate.onetomany.collection.listvsset;
 
 import java.util.*;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.test.context.junit4.SpringRunner;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.junit.jupiter.api.Test;
+@DataJpaTest
+@RunWith(SpringRunner.class)
+public class CustomerUnitTest {
 
-import static org.junit.jupiter.api.Assertions.*;
+    @Autowired
+    private TestEntityManager entityManager;
 
-class CustomerUnitTest {
     @Test
-    public void givenCustomers_whenAddedOrders_thenCheckBehavior() {
-        OrderEntity order1 = new OrderEntity();
-        order1.setItem("item1");
+    public void givenCustomers_whenFetchMultipleLists_thenThrowsException() {
+        CustomerEntity customer = new CustomerEntity();
+        OrderEntity order1 = new OrderEntity("order");
+        OrderEntity order2 = new OrderEntity("order");
+        AddressEntity address1 = new AddressEntity("address");
+        AddressEntity address2 = new AddressEntity("address");
 
-        OrderEntity order2 = new OrderEntity();
-        order2.setItem("item2");
+        customer.getOrderList().addAll(Arrays.asList(order1, order2));
+        customer.getAddressList().addAll(Arrays.asList(address1, address2));
 
-        OrderEntity order3 = new OrderEntity();
-        order3.setItem("item1"); // duplicate item
+        entityManager.persist(customer);
+        entityManager.flush();
 
-        List<OrderEntity> orderList = Arrays.asList(order1, order2, order3);
-        Set<OrderEntity> orderSet = new HashSet<>(orderList);
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            entityManager.getEntityManager()
+                    .createQuery("SELECT c FROM CustomerEntity c JOIN FETCH c.orderList JOIN FETCH c.addressList", CustomerEntity.class)
+                    .getResultList();
+        }, "Expected to throw an exception when fetching multiple lists in a single query");
 
-        CustomerEntity customerList = new CustomerEntity();
-        customerList.setOrderList(orderList);
-
-        CustomerEntity customerSet = new CustomerEntity();
-        customerSet.setOrderSet(orderSet);
-
-        assertAll("Customer with List vs Set",
-                () -> assertEquals(3, customerList.getOrderList().size(), "List allows duplicates and thus, size is 3"),
-                () -> assertEquals(2, customerSet.getOrderSet().size(), "Set doesn't allow duplicates and thus, size is 2"),
-                () -> assertTrue(customerList.getOrderList().contains(order3), "List maintains duplicates"),
-                () -> assertFalse(customerSet.getOrderSet().contains(order3), "Set removes duplicates"),
-                () -> assertNotEquals(customerList.getOrderList(), customerSet.getOrderSet(), "List and Set are not equal due to different rules on duplicates and order")
-        );
+        assertThat(exception.getMessage()).contains("cannot simultaneously fetch multiple bags");
     }
 }
