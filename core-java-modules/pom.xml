@@ -145,6 +145,7 @@
         <module>pre-jpms</module>
         <module>core-java-collections-maps-6</module>
         <module>core-java-records</module>
+        <module>core-java-general</module>
     </modules>
 
     <dependencyManagement>
