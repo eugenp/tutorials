@@ -6,11 +6,11 @@
         <class>com.baeldung.persistence.model.Foo</class>
         <class>com.baeldung.persistence.model.Bar</class>
         <properties>
-            <property name="javax.persistence.jdbc.user" value="root"/>
-            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/HIBERTEST"/>
-            <property name="javax.persistence.ddl-generation" value="drop-and-create-tables"/>
-            <property name="javax.persistence.logging.level" value="INFO"/>
+            <property name="jakarta.persistence.jdbc.user" value="root"/>
+            <property name="jakarta.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/HIBERTEST"/>
+            <property name="jakarta.persistence.ddl-generation" value="drop-and-create-tables"/>
+            <property name="jakarta.persistence.logging.level" value="INFO"/>
             <property name="hibernate.show_sql" value="false"/>
             <property name="hibernate.cache.use_second_level_cache" value="false"/>
             <property name="hibernate.cache.use_query_cache" value="false"/>

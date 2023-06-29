@@ -1,23 +1,17 @@
 package com.baeldung.jmockit;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import org.hamcrest.BaseMatcher;
-import org.hamcrest.Description;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-
 import mockit.Delegate;
 import mockit.Expectations;
 import mockit.Mocked;
 import mockit.Verifications;
-import mockit.integration.junit4.JMockit;
+import org.junit.Test;
 
-@RunWith(JMockit.class)
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+
 @SuppressWarnings("unchecked")
 public class ExpectationsIntegrationTest {
 
@@ -91,15 +85,11 @@ public class ExpectationsIntegrationTest {
     @Test
     public void testCustomArgumentMatching(@Mocked ExpectationsCollaborator mock) {
         new Expectations() {{
-            mock.methodForArgThat(withArgThat(new BaseMatcher<Object>() {
-                @Override
+            mock.methodForArgThat(with(new Delegate<Object>() {
                 public boolean matches(Object item) {
                     return item instanceof Model && "info".equals(((Model) item).getInfo());
                 }
 
-                @Override
-                public void describeTo(Description description) {
-                }
             }));
         }};
         mock.methodForArgThat(new Model());

@@ -40,8 +40,6 @@
         <module>java-jpa</module> <!-- long running -->
         <module>java-jpa-2</module>
         <module>java-jpa-3</module>
-        <!-- enable it when persistence-modules is migrated to JDK9+ -->
-        <!-- <module>java-mongodb</module>--> <!-- long running -->
         <module>java-mongodb-2</module> <!-- long running -->
         <module>java-mongodb-3</module> <!-- long running -->
         <module>java-mongodb-queries</module> <!-- long running -->
@@ -68,7 +66,6 @@
         <module>spring-data-arangodb</module>
         <module>spring-data-cassandra</module>
         <module>spring-data-cassandra-test</module>
-        <!-- <module>spring-data-cassandra-reactive</module> FAILED -->
         <module>spring-data-cosmosdb</module>
         <module>spring-data-couchbase-2</module>
         <module>spring-data-dynamodb</module>
@@ -90,10 +87,9 @@
         <module>spring-data-jpa-repo-2</module>
         <module>spring-data-jdbc</module>
         <module>spring-data-keyvalue</module>
-        <!-- <module>spring-data-mongodb</module> FAILED -->
+        <module>spring-data-mongodb</module>
         <module>spring-data-mongodb-2</module>
         <module>spring-data-mongodb-reactive</module>
-        <!-- <module>spring-data-neo4j</module> FAILED -->
         <module>spring-data-redis</module>
         <!--        Moved to JDK9+ profiles-->
         <!--        <module>spring-data-rest</module>-->
@@ -102,17 +98,19 @@
         <module>spring-data-solr</module>
         <!-- <module>spring-hibernate-3</module> FAILED -->
         <!-- <module>spring-hibernate-5</module> FAILED --> <!-- long running -->
-        <!-- <module>spring-jpa</module>
-        <module>spring-jpa-2</module> FAILED -->
+        <module>spring-jpa</module>
+        <module>spring-jpa-2</module>
         <module>spring-jdbc</module>
         <module>spring-jooq</module>
         <module>spring-mybatis</module>
         <module>spring-persistence-simple</module>
+        <module>spring-data-yugabytedb</module>
 
         <module>fauna</module>
         <module>spring-data-rest</module>
         <module>java-mongodb</module>
         <module>questdb</module>
+        <module>neo4j</module>
     </modules>
 
     <properties>

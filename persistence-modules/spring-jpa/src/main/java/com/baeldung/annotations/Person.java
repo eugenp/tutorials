@@ -2,11 +2,11 @@ package com.baeldung.annotations;
 
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.NamedStoredProcedureQueries;
-import javax.persistence.NamedStoredProcedureQuery;
-import javax.persistence.ParameterMode;
-import javax.persistence.StoredProcedureParameter;
+import jakarta.persistence.Entity;
+import jakarta.persistence.NamedStoredProcedureQueries;
+import jakarta.persistence.NamedStoredProcedureQuery;
+import jakarta.persistence.ParameterMode;
+import jakarta.persistence.StoredProcedureParameter;
 
 import com.baeldung.persistence.multiple.model.user.User;
 import org.springframework.data.annotation.CreatedBy;
@@ -16,13 +16,13 @@ import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.Transient;
 
 @Entity
-@NamedStoredProcedureQueries({ 
+@NamedStoredProcedureQueries({
     @NamedStoredProcedureQuery(
         name = "count_by_name", 
         procedureName = "person.count_by_name", 
         parameters = { 
                 @StoredProcedureParameter(
-                    mode = ParameterMode.IN, 
+                    mode = ParameterMode.IN,
                     name = "name", 
                     type = String.class),
                 @StoredProcedureParameter(

@@ -4,8 +4,10 @@ import java.util.Collections;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Profile;
 
-@SpringBootApplication
+@Profile("customapplication")
+@SpringBootApplication(scanBasePackages = "com.baeldung.changeport")
 public class CustomApplication {
 
     public static void main(String[] args) {
