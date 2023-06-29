@@ -51,12 +51,9 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     List<User> findByAgeIn(Collection<Integer> ages);
 
-    @Query(value = "select * from users where (name = :nameParam OR birth_date <> :birthDateParam)", nativeQuery = true)
-    List<User> findByNameOrBirthDate(@Param(value = "nameParam") String nameParam, @Param(value = "birthDateParam") ZonedDateTime birthDateParam);
+    List<User> findByNameOrAge(String name, Integer age);
 
-    @Query(value = "select * from users where (name = :nameParam OR birth_date <> :birthDateParam) and active = :activeParam", nativeQuery = true)
-    List<User> findByNameOrBirthDateAndActive(@Param(value = "nameParam") String nameParam, @Param(value = "birthDateParam") ZonedDateTime birthDateParam,
-                                              @Param(value = "activeParam") Boolean activeParam);
+    List<User> findByNameOrAgeAndActive(String name, Integer age, Boolean active);
 
     List<User> findByNameOrderByName(String name);
 
