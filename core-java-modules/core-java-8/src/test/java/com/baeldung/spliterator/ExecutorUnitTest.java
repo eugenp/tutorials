@@ -1,13 +1,10 @@
 package com.baeldung.spliterator;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 import java.util.Spliterator;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -24,71 +21,19 @@ public class ExecutorUnitTest {
     Stream<Author> stream;
     Spliterator<Author> spliterator;
 
-    List<Author> authorList;
-
     @Before
     public void init() {
         article = new Article(Arrays.asList(new Author("Ahmad", 0), new Author("Eugen", 0), new Author("Alice", 1), new Author("Alice", 1), new Author("Mike", 0), new Author("Alice", 1), new Author("Mike", 0), new Author("Alice", 1), new Author("Mike", 0),
             new Author("Alice", 1), new Author("Mike", 0), new Author("Mike", 0), new Author("Alice", 1), new Author("Mike", 0), new Author("Alice", 1), new Author("Mike", 0), new Author("Alice", 1), new Author("Mike", 0), new Author("Alice", 1),
             new Author("Mike", 0), new Author("Michał", 0), new Author("Loredana", 1)), 0);
 
-        //spliterator = new RelatedAuthorSpliterator(article.getListOfAuthors());
-
-        authorList = new ArrayList<>();
-
-        for(int i= 0; i<1; i++) {
-            authorList.add(new Author("bipin", 1));
-            authorList.add(new Author("dhawal", 1));
-            authorList.add(new Author("eugen", 1));
-            authorList.add(new Author("john", 1));
-
-            authorList.add(new Author("mike", 2));
-            authorList.add(new Author("michal", 2));
-            authorList.add(new Author("alice", 2));
-            authorList.add(new Author("loredana", 2));
-
-            authorList.add(new Author("praveen", 3));
-            authorList.add(new Author("arjun", 3));
-            authorList.add(new Author("kapil", 3));
-        }
+        spliterator = new RelatedAuthorSpliterator(article.getListOfAuthors());
     }
 
-
-    @Test
-    public void authorBatchDivided(){
-
-
-        //Map<Integer, Integer> totalNoOArticles = StreamSupport.stream(new RelatedAuthorSpliterator(authorList), true).collect(new RelatedAuthorBatchCount());
-
-        Map<Integer, Integer> totalNoOArticles = authorList.stream().parallel().collect(new RelatedAuthorBatchCount());
-
-        Set<Map.Entry<Integer,Integer>> entrySet = totalNoOArticles.entrySet();
-        assertEquals(entrySet.size(), 3);
-
-        for(Map.Entry<Integer,Integer> total : totalNoOArticles.entrySet()){
-            if(total.getKey() == 1){
-                System.out.println(total.getKey() + " - " + total.getValue());
-            }
-            else if(total.getKey() == 2){
-                System.out.println(total.getKey() + " - " + total.getValue());
-            }
-            else{
-                System.out.println(total.getKey() + " - " + total.getValue());
-            }
-        }
-    }
     @Test
     public void givenAstreamOfAuthors_whenProcessedInParallelWithCustomSpliterator_coubtProducessRightOutput() {
         Stream<Author> stream2 = StreamSupport.stream(spliterator, true);
-        //assertThat(Executor.countAutors(stream2.parallel())).isEqualTo(9);
-        System.out.println(Executor.countAutors(stream2.parallel()));
-    }
-
-    @Test
-    public void givenAStreamOfAuthors_whenProcessedInParallel_countProducesWrongOutput() {
-        Stream<Author> stream = article.getListOfAuthors().stream();
-        System.out.println(Executor.countAutors(stream.parallel()));
-       // assertThat(Executor.countAutors(stream.parallel())).isGreaterThan(9);
+        assertThat(Executor.countAutors(stream2.parallel())).isEqualTo(9);
     }
 
     @Test

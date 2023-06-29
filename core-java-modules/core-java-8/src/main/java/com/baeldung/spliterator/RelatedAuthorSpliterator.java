@@ -7,34 +7,22 @@ import java.util.function.Consumer;
 
 public class RelatedAuthorSpliterator implements Spliterator<Author> {
 	private final List<Author> list;
-	int current;
-
-	private int end;
+	AtomicInteger current = new AtomicInteger();
 
 	public RelatedAuthorSpliterator(List<Author> list) {
 		this.list = list;
-		end =  list.size()-1;
-	}
-
-	public RelatedAuthorSpliterator(List<Author> list, int start, int end) {
-		this.list = list;
-		this.current=start;
-		this.end= end;
 	}
 
 	@Override
 	public boolean tryAdvance(Consumer<? super Author> action) {
-		if (current <= end) {
-			action.accept(list.get(current));
-			current++;
-			return true;
-		}
-		return false;
+
+		action.accept(list.get(current.getAndIncrement()));
+		return current.get() < list.size();
 	}
 
 	@Override
 	public Spliterator<Author> trySplit() {
-		/*int currentSize = list.size() - current.get();
+		int currentSize = list.size() - current.get();
 		if (currentSize < 10) {
 			return null;
 		}
@@ -45,30 +33,12 @@ public class RelatedAuthorSpliterator implements Spliterator<Author> {
 				return spliterator;
 			}
 		}
-		return null;*/
-		if((end - current) < 100){
-			return null;
-		}
-
-		int splitPos = current + (end -current)/2;
-
-		int relatedArticleBeforePos = list.get(splitPos-1).getRelatedArticleId();
-		int relatedArticleAfterPos = list.get(splitPos).getRelatedArticleId();
-
-		while(relatedArticleBeforePos == relatedArticleAfterPos){
-			splitPos++;
-			relatedArticleBeforePos = relatedArticleAfterPos;
-			relatedArticleAfterPos = list.get(splitPos).getRelatedArticleId();
-		}
-
-		RelatedAuthorSpliterator secondHlf = new RelatedAuthorSpliterator(list,splitPos,end);
-		end = splitPos -1;
-		return secondHlf;
+		return null;
 	}
 
 	@Override
 	public long estimateSize() {
-		return end - current;
+		return list.size() - current.get();
 	}
 
 	@Override
