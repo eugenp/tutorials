@@ -9,6 +9,6 @@ public class TestController {
 
     @PostMapping("/test-request")
     public ResponseEntity<String> testPostRequest() {
-        return ResponseEntity.ok("POST request successfully");
+        return ResponseEntity.ok("POST request successful");
     }
 }
