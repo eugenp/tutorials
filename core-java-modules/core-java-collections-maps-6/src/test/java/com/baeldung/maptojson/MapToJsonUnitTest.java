@@ -17,16 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MapToJsonUnitTest {
-    final TypeAdapter<JsonElement> strictAdapter = new Gson().getAdapter(JsonElement.class);
-
-    public boolean isValid(String json) {
-        try {
-            strictAdapter.fromJson(json);
-        } catch (JsonSyntaxException | IOException e) {
-            return false;
-        }
-        return true;
-    }
+    String originalJsonData = "{\"CS\":\"Post1\",\"Linux\":\"Post1\",\"Kotlin\":\"Post1\"}";
 
     @Test
     public void given_HashMapData_whenUsingJackson_thenConvertToJson() throws JsonProcessingException {
@@ -36,7 +27,7 @@ public class MapToJsonUnitTest {
         data.put("Kotlin", "Post1");
         ObjectMapper objectMapper = new ObjectMapper();
         String jacksonData = objectMapper.writeValueAsString(data);
-        Assertions.assertTrue(isValid(jacksonData));
+        Assertions.assertEquals(originalJsonData,jacksonData);
     }
 
     @Test
@@ -49,7 +40,7 @@ public class MapToJsonUnitTest {
         Type typeObject = new TypeToken<HashMap>() {
         }.getType();
         String gsonData = gson.toJson(data, typeObject);
-        Assertions.assertTrue(isValid(gsonData));
+        Assertions.assertEquals(originalJsonData,gsonData);
     }
 
     @Test
@@ -60,6 +51,6 @@ public class MapToJsonUnitTest {
         data.put("Kotlin", "Post1");
         JSONObject jsonObject = new JSONObject(data);
         String orgJsonData = jsonObject.toString();
-        Assertions.assertTrue(isValid(orgJsonData));
+        Assertions.assertEquals(originalJsonData,orgJsonData);
     }
 }

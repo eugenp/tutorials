@@ -25,7 +25,7 @@ public class PersonDaoIntegrationTest {
     //
 
     @Test
-    public void testCreation() {
+    public void givenExistingPersons_whenFindingPersonByFirstName_thenFound() {
         personDao.save(new Person("Erich", "Gamma"));
         final Person person = new Person("Kent", "Beck");
         personDao.save(person);
@@ -36,7 +36,7 @@ public class PersonDaoIntegrationTest {
     }
 
     @Test
-    public void testMultipleFilter() {
+    public void givenExistingPersons_whenFindingPersonByFirstNameAndSurName_thenFound() {
         personDao.save(new Person("Erich", "Gamma"));
         final Person person = personDao.save(new Person("Ralph", "Beck"));
         final Person person2 = personDao.save(new Person("Ralph", "Johnson"));
@@ -47,7 +47,7 @@ public class PersonDaoIntegrationTest {
     }
 
     @Test
-    public void testOrdering() {
+    public void givenExistingPersons_whenFindingPersonByFirstNameInDescendingOrder_thenFound() {
         final Person person = personDao.save(new Person("Kent", "Gamma"));
         personDao.save(new Person("Ralph", "Johnson"));
         final Person person2 = personDao.save(new Person("Kent", "Zivago"));
@@ -58,7 +58,7 @@ public class PersonDaoIntegrationTest {
     }
 
     @Test
-    public void testMaxAge() {
+    public void givenExistingPersons_whenFindingMaxAge_thenFound() {
         personDao.save(new Person("Kent", "Gamma", 20));
         personDao.save(new Person("Ralph", "Johnson", 35));
         personDao.save(new Person("Kent", "Zivago", 30));
@@ -68,7 +68,7 @@ public class PersonDaoIntegrationTest {
     }
 
     @Test
-    public void testMaxAgeByName() {
+    public void givenExistingPersons_whenFindingMaxAgeByName_thenFound() {
         personDao.save(new Person("Kent", "Gamma", 20));
         personDao.save(new Person("Ralph", "Johnson", 35));
         personDao.save(new Person("Kent", "Zivago", 30));

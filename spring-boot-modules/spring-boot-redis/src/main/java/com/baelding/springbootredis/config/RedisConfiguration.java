@@ -2,7 +2,6 @@ package com.baelding.springbootredis.config;
 
 import com.baelding.springbootredis.model.Session;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.event.EventListener;

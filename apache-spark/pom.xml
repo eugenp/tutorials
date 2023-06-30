@@ -17,17 +17,17 @@
     <dependencies>
         <dependency>
             <groupId>org.apache.spark</groupId>
-            <artifactId>spark-core_2.11</artifactId>
+            <artifactId>spark-core_2.12</artifactId>
             <version>${org.apache.spark.spark-core.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>
-            <artifactId>spark-sql_2.11</artifactId>
+            <artifactId>spark-sql_2.12</artifactId>
             <version>${org.apache.spark.spark-sql.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>
-            <artifactId>spark-graphx_2.11</artifactId>
+            <artifactId>spark-graphx_2.12</artifactId>
             <version>${org.apache.spark.spark-graphx.version}</version>
         </dependency>
         <dependency>
@@ -37,22 +37,22 @@
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>
-            <artifactId>spark-streaming_2.11</artifactId>
+            <artifactId>spark-streaming_2.12</artifactId>
             <version>${org.apache.spark.spark-streaming.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>
-            <artifactId>spark-mllib_2.11</artifactId>
+            <artifactId>spark-mllib_2.12</artifactId>
             <version>${org.apache.spark.spark-mllib.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>
-            <artifactId>spark-streaming-kafka-0-10_2.11</artifactId>
+            <artifactId>spark-streaming-kafka-0-10_2.12</artifactId>
             <version>${org.apache.spark.spark-streaming-kafka.version}</version>
         </dependency>
         <dependency>
             <groupId>com.datastax.spark</groupId>
-            <artifactId>spark-cassandra-connector_2.11</artifactId>
+            <artifactId>spark-cassandra-connector_2.12</artifactId>
             <version>${com.datastax.spark.spark-cassandra-connector.version}</version>
         </dependency>
         <dependency>
@@ -97,17 +97,17 @@
     </repositories>
 
     <properties>
-        <org.apache.spark.spark-core.version>2.4.8</org.apache.spark.spark-core.version>
-        <org.apache.spark.spark-sql.version>2.4.8</org.apache.spark.spark-sql.version>
-        <org.apache.spark.spark-streaming.version>2.4.8</org.apache.spark.spark-streaming.version>
-        <org.apache.spark.spark-mllib.version>2.4.8</org.apache.spark.spark-mllib.version>
-        <org.apache.spark.spark-graphx.version>2.4.8</org.apache.spark.spark-graphx.version>
+        <org.apache.spark.spark-core.version>3.3.2</org.apache.spark.spark-core.version>
+        <org.apache.spark.spark-sql.version>3.3.2</org.apache.spark.spark-sql.version>
+        <org.apache.spark.spark-streaming.version>3.3.2</org.apache.spark.spark-streaming.version>
+        <org.apache.spark.spark-mllib.version>3.3.2</org.apache.spark.spark-mllib.version>
+        <org.apache.spark.spark-graphx.version>3.3.2</org.apache.spark.spark-graphx.version>
         <graphframes.version>0.8.1-spark3.0-s_2.12</graphframes.version>
-        <org.apache.spark.spark-streaming-kafka.version>2.4.8</org.apache.spark.spark-streaming-kafka.version>
-        <com.datastax.spark.spark-cassandra-connector.version>2.5.2</com.datastax.spark.spark-cassandra-connector.version>
+        <org.apache.spark.spark-streaming-kafka.version>3.3.2</org.apache.spark.spark-streaming-kafka.version>
+        <com.datastax.spark.spark-cassandra-connector.version>3.3.0</com.datastax.spark.spark-cassandra-connector.version>
         <com.datastax.spark.spark-cassandra-connector-java.version>1.6.0-M1</com.datastax.spark.spark-cassandra-connector-java.version>
         <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
-        <postgres.version>42.3.3</postgres.version>
+        <postgres.version>42.5.4</postgres.version>
     </properties>
 
 </project>

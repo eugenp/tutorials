@@ -66,12 +66,12 @@
 							 </execution>
 						 </executions>
                      </plugin>  -->
-                 </plugins>
-             </pluginManagement>
-         </build>
+            </plugins>
+        </pluginManagement>
+    </build>
 
-         <profiles>
-             <!-- The native profile is already defined by the parent POM. -->
+    <profiles>
+        <!-- The native profile is already defined by the parent POM. -->
         <!-- To use this plugin, we need GraalVM (located under $GRAALVM_HOME) and -->
         <!-- native-builder (located in the $PATH) -->
         <profile>

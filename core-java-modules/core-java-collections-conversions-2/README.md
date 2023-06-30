@@ -11,4 +11,5 @@ This module contains articles about conversions among Collection types and array
 - [Iterate Over a Set in Java](https://www.baeldung.com/java-iterate-set)
 - [Convert a List of Integers to a List of Strings](https://www.baeldung.com/java-convert-list-integers-to-list-strings)
 - [Combining Two Lists Into a Map in Java](https://www.baeldung.com/java-combine-two-lists-into-map)
+- [Convert a List of Strings to a List of Integers](https://www.baeldung.com/java-convert-list-strings-to-integers)
 - More articles: [[<-- prev]](../core-java-collections-conversions)

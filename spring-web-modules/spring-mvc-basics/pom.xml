@@ -39,6 +39,11 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>${jaxb-runtime.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -54,5 +59,9 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <jaxb-runtime.version>2.3.5</jaxb-runtime.version>
+    </properties>
 
 </project>

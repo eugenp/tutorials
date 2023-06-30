@@ -27,7 +27,7 @@
     </dependencies>
 
     <properties>
-        <optaplanner-core.version>8.24.0.Final</optaplanner-core.version>
+        <optaplanner-core.version>9.38.0.Final</optaplanner-core.version>
     </properties>
 
 </project>
