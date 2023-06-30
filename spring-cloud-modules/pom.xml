@@ -32,7 +32,7 @@
         <module>spring-cloud-aws</module>
         <module>spring-cloud-consul</module>
         <module>spring-cloud-zuul-eureka-integration</module>
-<!--        <module>spring-cloud-contract</module>-->
+        <!--        <module>spring-cloud-contract</module>-->
         <module>spring-cloud-kubernetes</module>
         <module>spring-cloud-open-service-broker</module>
         <module>spring-cloud-archaius</module>
@@ -43,7 +43,7 @@
         <module>spring-cloud-zuul</module>
         <module>spring-cloud-zuul-fallback</module>
         <module>spring-cloud-ribbon-retry</module>
-<!--        <module>spring-cloud-circuit-breaker</module>-->
+        <!--        <module>spring-cloud-circuit-breaker</module>-->
         <module>spring-cloud-eureka-self-preservation</module>
         <module>spring-cloud-openfeign</module>
         <module>spring-cloud-netflix-feign</module>
@@ -52,7 +52,7 @@
         <module>spring-cloud-dapr</module>
         <module>spring-cloud-docker</module>
         <module>spring-cloud-bus</module>
-<!--        <module>spring-cloud-data-flow</module>-->
+        <!--        <module>spring-cloud-data-flow</module>-->
         <module>spring-cloud-sleuth</module>
         <module>spring-cloud-open-telemetry</module>
         <module>spring-cloud-azure</module>
