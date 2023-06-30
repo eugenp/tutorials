@@ -9,16 +9,12 @@ import java.util.concurrent.Future;
 
 import javax.net.ssl.SSLContext;
 
-import org.apache.hc.client5.http.impl.routing.DefaultProxyRoutePlanner;
-import org.junit.jupiter.api.Test;
-
 import org.apache.hc.client5.http.async.methods.SimpleHttpRequest;
 import org.apache.hc.client5.http.async.methods.SimpleHttpResponse;
 import org.apache.hc.client5.http.async.methods.SimpleRequestBuilder;
 import org.apache.hc.client5.http.auth.AuthScope;
 import org.apache.hc.client5.http.auth.UsernamePasswordCredentials;
 import org.apache.hc.client5.http.classic.methods.HttpGet;
-import org.apache.hc.client5.http.config.RequestConfig;
 import org.apache.hc.client5.http.cookie.BasicCookieStore;
 import org.apache.hc.client5.http.impl.async.CloseableHttpAsyncClient;
 import org.apache.hc.client5.http.impl.async.HttpAsyncClients;
@@ -26,9 +22,9 @@ import org.apache.hc.client5.http.impl.auth.BasicCredentialsProvider;
 import org.apache.hc.client5.http.impl.cookie.BasicClientCookie;
 import org.apache.hc.client5.http.impl.nio.PoolingAsyncClientConnectionManager;
 import org.apache.hc.client5.http.impl.nio.PoolingAsyncClientConnectionManagerBuilder;
+import org.apache.hc.client5.http.impl.routing.DefaultProxyRoutePlanner;
 import org.apache.hc.client5.http.protocol.HttpClientContext;
 import org.apache.hc.client5.http.ssl.ClientTlsStrategyBuilder;
-import org.apache.hc.core5.concurrent.FutureCallback;
 import org.apache.hc.core5.http.HttpHost;
 import org.apache.hc.core5.http.HttpResponse;
 import org.apache.hc.core5.http.nio.ssl.TlsStrategy;
@@ -37,6 +33,8 @@ import org.apache.hc.core5.http.protocol.HttpContext;
 import org.apache.hc.core5.reactor.IOReactorConfig;
 import org.apache.hc.core5.ssl.SSLContexts;
 import org.apache.hc.core5.ssl.TrustStrategy;
+import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
+import org.junit.jupiter.api.Test;
 
 
 class HttpAsyncClientLiveTest extends GetRequestMockServer {
@@ -56,12 +54,10 @@ class HttpAsyncClientLiveTest extends GetRequestMockServer {
 
     @Test
     void whenUseHttpAsyncClient_thenCorrect() throws InterruptedException, ExecutionException, IOException {
-        final HttpHost target = new HttpHost(HOST_WITH_COOKIE);
-        final SimpleHttpRequest request = SimpleRequestBuilder.get()
-            .setHttpHost(target)
+        final SimpleHttpRequest request = SimpleRequestBuilder.get(HOST_WITH_COOKIE)
             .build();
-
-        final CloseableHttpAsyncClient client = HttpAsyncClients.custom().build();
+        final CloseableHttpAsyncClient client = HttpAsyncClients.custom()
+            .build();
         client.start();
 
 
@@ -126,6 +122,7 @@ class HttpAsyncClientLiveTest extends GetRequestMockServer {
             .build();
 
         final TlsStrategy tlsStrategy = ClientTlsStrategyBuilder.create()
+            .setHostnameVerifier(SSLConnectionSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER)
             .setSslContext(sslContext)
             .build();
 

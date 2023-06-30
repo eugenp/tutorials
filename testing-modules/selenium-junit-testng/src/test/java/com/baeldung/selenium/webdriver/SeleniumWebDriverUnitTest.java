@@ -16,7 +16,7 @@ public class SeleniumWebDriverUnitTest {
     private WebDriver driver;
 
     private static final String URL = "https://duckduckgo.com/";
-    private static final String INPUT_ID = "search_form_input_homepage";
+    private static final String INPUT_ID = "searchbox_input__bEGm3";
 
     @BeforeEach
     public void setUp() {
@@ -32,7 +32,7 @@ public class SeleniumWebDriverUnitTest {
     @Test
     public void givenDuckDuckGoHomePage_whenInputHelloWorld_thenInputValueIsHelloWorld() {
         driver.get(URL);
-        WebElement inputElement = driver.findElement(By.id(INPUT_ID));
+        WebElement inputElement = driver.findElement(By.className(INPUT_ID));
         inputElement.sendKeys(Keys.chord(Keys.CONTROL, "a"), Keys.DELETE);
         inputElement.sendKeys("Hello World!");
 

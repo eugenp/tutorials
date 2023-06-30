@@ -1,13 +1,16 @@
 package com.baeldung.failureanalyzer;
 
 import ch.qos.logback.classic.spi.ILoggingEvent;
+
 import com.baeldung.failureanalyzer.utils.ListAppender;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.boot.SpringApplication;
 
 import java.util.Collection;
+import java.util.Properties;
 import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -27,7 +30,11 @@ public class FailureAnalyzerAppIntegrationTest {
     @Test
     public void givenBeanCreationErrorInContext_whenContextLoaded_thenFailureAnalyzerLogsReport() {
         try {
-            SpringApplication.run(FailureAnalyzerApplication.class);
+            Properties properties = new Properties();
+            properties.setProperty("spring.profiles.active", "failureanalyzer");
+            SpringApplication app = new SpringApplication(FailureAnalyzerApplication.class);
+            app.setDefaultProperties(properties);
+            app.run();
         } catch (BeanCreationException e) {
             Collection<String> allLoggedEntries = ListAppender.getEvents()
                 .stream()
