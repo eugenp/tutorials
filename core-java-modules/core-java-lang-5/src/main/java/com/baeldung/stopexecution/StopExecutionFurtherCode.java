@@ -41,7 +41,8 @@ public class StopExecutionFurtherCode {
         if (object instanceof Number) {
             throw new IllegalArgumentException("Parameter can not be number.");
         }
-        T upperCase = (T) String.valueOf(object).toUpperCase(Locale.ENGLISH);
+        T upperCase = (T) String.valueOf(object)
+            .toUpperCase(Locale.ENGLISH);
         return upperCase;
     }
 
