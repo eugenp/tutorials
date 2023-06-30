@@ -666,7 +666,6 @@
                 </plugins>
             </build>
 
-
         </profile>
 
         <profile>
@@ -893,7 +892,6 @@
                 <module>protobuffer</module>
                 <module>reactor-core</module>
                 <module>rsocket</module>
-
 
                 <!--  Modules from default second-->
                 <module>spring-5</module>
@@ -1164,7 +1162,6 @@
                 <module>protobuffer</module>
                 <module>reactor-core</module>
                 <module>rsocket</module>
-
 
                 <!--  Modules from default second-->
 
