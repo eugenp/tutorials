@@ -111,19 +111,10 @@
             <artifactId>hsqldb</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.oracle.database.jdbc</groupId>
-            <artifactId>ojdbc8</artifactId>
-            <version>${oracle-database.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.oracle.database.ha</groupId>
-            <artifactId>ons</artifactId>
-            <version>${oracle-database.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.oracle.database.jdbc</groupId>
-            <artifactId>ucp</artifactId>
-            <version>${oracle-database.version}</version>
+            <groupId>com.oracle.database.spring</groupId>
+            <artifactId>oracle-spring-boot-starter-ucp</artifactId>
+            <version>3.1.0</version>   <!-- or 2.7.7 for Spring Boot 2.x -->
+            <type>pom</type>
         </dependency>
     </dependencies>
 
