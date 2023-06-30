@@ -18,7 +18,7 @@ public class CheckFileIsEmptyUnitTest {
     @Test
     void whenFileLengthIsZero_thenTheFileIsEmpty(@TempDir Path tempDir) throws IOException {
         File emptyFile = tempDir.resolve("an-empty-file.txt")
-            .toFile();
+          .toFile();
         emptyFile.createNewFile();
         assertTrue(emptyFile.exists());
         assertEquals(0, emptyFile.length());
@@ -27,26 +27,27 @@ public class CheckFileIsEmptyUnitTest {
     @Test
     void whenFileDoesNotExist_thenFileLengthIsZero(@TempDir Path tempDir) {
         File aNewFile = tempDir.resolve("a-new-file.txt")
-            .toFile();
+          .toFile();
         assertFalse(aNewFile.exists());
         assertEquals(0, aNewFile.length());
     }
 
     boolean isFileEmpty(File file) {
-        if (!file.exists())
+        if (!file.exists()) {
             throw new IllegalArgumentException("Cannot check the file length. The file is not found: " + file.getAbsolutePath());
+        }
         return file.length() == 0;
     }
 
     @Test
     void whenExistingFileLengthIsZero_thenFileIsEmpty(@TempDir Path tempDir) throws IOException {
         File aNewFile = tempDir.resolve("a-new-file.txt")
-            .toFile();
+          .toFile();
         IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, () -> isFileEmpty(aNewFile));
         assertEquals(ex.getMessage(), "Cannot check the file length. The file is not found: " + aNewFile.getAbsolutePath());
 
         File emptyFile = tempDir.resolve("an-empty-file.txt")
-            .toFile();
+          .toFile();
         emptyFile.createNewFile();
         assertTrue(isFileEmpty(emptyFile));
 
