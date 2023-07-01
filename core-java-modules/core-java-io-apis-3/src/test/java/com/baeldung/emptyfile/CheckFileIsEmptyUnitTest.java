@@ -40,7 +40,7 @@ public class CheckFileIsEmptyUnitTest {
     }
 
     @Test
-    void whenTheFileDoesNotExist_ThenIsFilesEmptyThrowsException(@TempDir Path tempDir) {
+    void whenTheFileDoesNotExist_thenIsFilesEmptyThrowsException(@TempDir Path tempDir) {
         File aNewFile = tempDir.resolve("a-new-file.txt")
           .toFile();
         IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, () -> isFileEmpty(aNewFile));
@@ -48,7 +48,7 @@ public class CheckFileIsEmptyUnitTest {
     }
 
     @Test
-    void whenTheFileIsEmpty_ThenIsFilesEmptyReturnsTrue(@TempDir Path tempDir) throws IOException {
+    void whenTheFileIsEmpty_thenIsFilesEmptyReturnsTrue(@TempDir Path tempDir) throws IOException {
         File emptyFile = tempDir.resolve("an-empty-file.txt")
           .toFile();
         emptyFile.createNewFile();
@@ -57,14 +57,14 @@ public class CheckFileIsEmptyUnitTest {
     }
 
     @Test
-    void whenTheFileIsEmpty_ThenFilesSizeReturnsTrue(@TempDir Path tempDir) throws IOException {
+    void whenTheFileIsEmpty_thenFilesSizeReturnsTrue(@TempDir Path tempDir) throws IOException {
         Path emptyFilePath = tempDir.resolve("an-empty-file.txt");
         Files.createFile(emptyFilePath);
         assertEquals(0, Files.size(emptyFilePath));
     }
 
     @Test
-    void whenTheFileDoesNotExist_ThenFilesSizeThrowsException(@TempDir Path tempDir) {
+    void whenTheFileDoesNotExist_thenFilesSizeThrowsException(@TempDir Path tempDir) {
         Path aNewFilePath = tempDir.resolve("a-new-file.txt");
         assertThrows(NoSuchFileException.class, () -> Files.size(aNewFilePath));
     }
