@@ -12,10 +12,20 @@ import org.springframework.stereotype.Service;
 @Service
 public class PulsarConsumer {
 
+    private static final String STRING_TOPIC = "string-topic";
     private static final String USER_TOPIC = "user-topic";
     private static final String USER_DEAD_LETTER_TOPIC = "user-dead-letter-topic";
     private final Logger LOGGER = LoggerFactory.getLogger(PulsarConsumer.class);
 
+    @PulsarListener(
+            subscriptionName = "string-topic-subscription",
+            topics = STRING_TOPIC,
+            subscriptionType = SubscriptionType.Shared
+    )
+    public void stringTopicListener(String str) {
+        LOGGER.info("Received String message: {}", str);
+    }
+    
     @Bean
     DeadLetterPolicy deadLetterPolicy() {
         return DeadLetterPolicy.builder()
@@ -29,6 +39,7 @@ public class PulsarConsumer {
             topics = USER_TOPIC,
             subscriptionType = SubscriptionType.Shared,
             schemaType = SchemaType.JSON,
+            ackMode = AckMode.RECORD,
             deadLetterPolicy = "deadLetterPolicy",
             properties = {"ackTimeout=60s"}
     )
