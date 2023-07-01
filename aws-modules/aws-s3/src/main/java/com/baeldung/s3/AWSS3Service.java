@@ -53,7 +53,7 @@ public class AWSS3Service {
     //uploading object and getting url
     public URL getObjectURL(String bucketName, String key, File file) {
         s3client.putObject(bucketName, key, file);
-        return  s3client.getUrl(bucketName, key);
+        return s3client.getUrl(bucketName, key);
     }
     
     //listing objects
