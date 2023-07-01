@@ -8,6 +8,9 @@
     <artifactId>parent-modules</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <name>parent-modules</name>
+    <modules>
+        <module>java-shallow-vs-deep-copy</module>
+    </modules>
     <packaging>pom</packaging>
 
     <dependencies>
