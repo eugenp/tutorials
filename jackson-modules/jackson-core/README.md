@@ -17,3 +17,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Difference Between asText() and toString() in JsonNode](https://www.baeldung.com/java-jsonnode-astext-vs-tostring)
 - [Deserialize Generic Type with Jackson](https://www.baeldung.com/java-deserialize-generic-type-with-jackson)
 - [Setting Default Values to Null Fields in Jackson Mapping](https://www.baeldung.com/java-jackson-mapping-default-values-null-fields)
+- [Removing JSON Elements With Jackson](https://www.baeldung.com/java-jackson-remove-json-elements)
