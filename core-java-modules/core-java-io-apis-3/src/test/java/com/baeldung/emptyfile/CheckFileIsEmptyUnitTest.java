@@ -16,7 +16,7 @@ import org.junit.jupiter.api.io.TempDir;
 
 public class CheckFileIsEmptyUnitTest {
     @Test
-    void whenFileLengthIsZero_thenTheFileIsEmpty(@TempDir Path tempDir) throws IOException {
+    void whenTheFileIsEmpty_thenFileLengthIsZero(@TempDir Path tempDir) throws IOException {
         File emptyFile = tempDir.resolve("an-empty-file.txt")
           .toFile();
         emptyFile.createNewFile();
@@ -40,12 +40,15 @@ public class CheckFileIsEmptyUnitTest {
     }
 
     @Test
-    void whenExistingFileLengthIsZero_thenFileIsEmpty(@TempDir Path tempDir) throws IOException {
+    void whenTheFileDoesNotExist_ThenIsFilesEmptyThrowsException(@TempDir Path tempDir) {
         File aNewFile = tempDir.resolve("a-new-file.txt")
           .toFile();
         IllegalArgumentException ex = assertThrows(IllegalArgumentException.class, () -> isFileEmpty(aNewFile));
         assertEquals(ex.getMessage(), "Cannot check the file length. The file is not found: " + aNewFile.getAbsolutePath());
+    }
 
+    @Test
+    void whenTheFileIsEmpty_ThenIsFilesEmptyReturnsTrue(@TempDir Path tempDir) throws IOException {
         File emptyFile = tempDir.resolve("an-empty-file.txt")
           .toFile();
         emptyFile.createNewFile();
@@ -54,12 +57,15 @@ public class CheckFileIsEmptyUnitTest {
     }
 
     @Test
-    void whenUsingFilesSizeIsZero_thenFileIsEmpty(@TempDir Path tempDir) throws IOException {
-        Path aNewFilePath = tempDir.resolve("a-new-file.txt");
-        assertThrows(NoSuchFileException.class, () -> Files.size(aNewFilePath));
-
+    void whenTheFileIsEmpty_ThenFilesSizeReturnsTrue(@TempDir Path tempDir) throws IOException {
         Path emptyFilePath = tempDir.resolve("an-empty-file.txt");
         Files.createFile(emptyFilePath);
         assertEquals(0, Files.size(emptyFilePath));
+    }
+
+    @Test
+    void whenTheFileDoesNotExist_ThenFilesSizeThrowsException(@TempDir Path tempDir) {
+        Path aNewFilePath = tempDir.resolve("a-new-file.txt");
+        assertThrows(NoSuchFileException.class, () -> Files.size(aNewFilePath));
     }
 }
