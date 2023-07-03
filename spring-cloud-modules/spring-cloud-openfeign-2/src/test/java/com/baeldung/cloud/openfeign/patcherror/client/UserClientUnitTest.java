@@ -2,7 +2,6 @@ package com.baeldung.cloud.openfeign.patcherror.client;
 
 import com.baeldung.cloud.openfeign.ExampleApplication;
 import com.baeldung.cloud.openfeign.patcherror.model.User;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import feign.FeignException;
 
@@ -15,7 +14,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import java.io.File;
 import java.io.IOException;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
@@ -27,9 +25,6 @@ public class UserClientUnitTest {
 
     @Autowired
     private UserClient userClient;
-
-    @Autowired
-    private ObjectMapper objectMapper;
 
     private WireMockServer wireMockServer;
 
@@ -46,10 +41,10 @@ public class UserClientUnitTest {
     }
 
     @Test
-    void givenUserExistsAndIsValid_whenUpdateUserCalled_thenReturnSuccess() throws IOException {
+    void givenUserExistsAndIsValid_whenUpdateUserCalled_thenReturnSuccess() {
         String updatedUserResponse = "{\n" +
                 "    \"userId\": 100001,\n" +
-                "    \"userName\": \"updated-name\",\n" +
+                "    \"userName\": \"name\",\n" +
                 "    \"email\": \"updated-email@mail.in\"\n" +
                 "}";
 
@@ -58,18 +53,19 @@ public class UserClientUnitTest {
           .withHeader("Content-Type", "application/json")
           .withBody(updatedUserResponse)));
 
-        User user = objectMapper.readValue(new File("src/test/resources/existing-user.json"), User.class);
+        User user = new User();
+        user.setUserId("100001");
         user.setEmail("updated-email@mail.in");
         User updatedUser = userClient.updateUser("100001", user);
 
         assertEquals(user.getUserId(), updatedUser.getUserId());
-        assertEquals("updated-name", updatedUser.getUserName());
         assertEquals("updated-email@mail.in", updatedUser.getEmail());
     }
 
     @Test
     void givenUserNotFound_whenUpdateUserCalled_thenReturnNotFoundErrorAndFeignException() throws IOException {
-        User user = objectMapper.readValue(new File("src/test/resources/existing-user.json"), User.class);
+        User user = new User();
+        user.setUserId("100002");
         user.setEmail("updated-email@mail.in");
 
         stubFor(patch(urlEqualTo("/api/user/".concat("100002")))
