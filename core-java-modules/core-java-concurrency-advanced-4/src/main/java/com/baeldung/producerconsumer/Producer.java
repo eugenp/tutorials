@@ -1,14 +1,15 @@
 package com.baeldung.producerconsumer;
 
+import java.util.logging.Logger;
+
 public class Producer implements Runnable {
+    private static final Logger log = Logger.getLogger(Producer.class.getCanonicalName());
     private final DataQueue dataQueue;
-    private volatile boolean runFlag;
 
     private static int idSequence = 0;
 
     public Producer(DataQueue dataQueue) {
         this.dataQueue = dataQueue;
-        runFlag = true;
     }
 
     @Override
@@ -17,9 +18,8 @@ public class Producer implements Runnable {
     }
 
     public void produce() {
-        while (runFlag) {
-            Message message = generateMessage();
-            while (dataQueue.isFull()) {
+        while (dataQueue.runFlag) {
+            while (dataQueue.isFull() && dataQueue.runFlag) {
                 try {
                     dataQueue.waitOnFull();
                 } catch (InterruptedException e) {
@@ -27,18 +27,21 @@ public class Producer implements Runnable {
                     break;
                 }
             }
-            if (!runFlag) {
+            if (!dataQueue.runFlag) {
                 break;
             }
+            Message message = generateMessage();
             dataQueue.add(message);
             dataQueue.notifyAllForEmpty();
+
         }
-        System.out.println("Producer Stopped");
+        log.info("Producer Stopped");
     }
 
     private Message generateMessage() {
-        Message message = new Message(++idSequence, Math.random());
-        System.out.printf("[%s] Generated Message. Id: %d, Data: %f\n", Thread.currentThread().getName(), message.getId(), message.getData());
+        Message message = new Message(incrementAndGetId(), Math.random());
+        log.info(String.format("[%s] Generated Message. Id: %d, Data: %f%n",
+                Thread.currentThread().getName(), message.getId(), message.getData()));
 
         //Sleeping on random time to make it realistic
         ThreadUtil.sleep((long) (message.getData() * 100));
@@ -46,8 +49,12 @@ public class Producer implements Runnable {
         return message;
     }
 
+    private static int incrementAndGetId() {
+        return ++idSequence;
+    }
+
     public void stop() {
-        runFlag = false;
+        dataQueue.runFlag = false;
         dataQueue.notifyAllForFull();
     }
 }

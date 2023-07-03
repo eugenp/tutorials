@@ -17,26 +17,10 @@
         <relativePath>../../parent-boot-2</relativePath>
     </parent>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.keycloak.bom</groupId>
-                <artifactId>keycloak-adapter-bom</artifactId>
-                <version>${keycloak-adapter-bom.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.keycloak</groupId>
-            <artifactId>keycloak-spring-boot-starter</artifactId>
+            <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -82,6 +66,11 @@
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>${jaxb-runtime.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -93,7 +82,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>jaxb2-maven-plugin</artifactId>
-                <version>2.3.1</version>
+                <version>${jaxb2-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>xjc</id>
@@ -105,7 +94,7 @@
                 <configuration>
                     <packageName>com.baeldung</packageName>
                     <sources>
-                        <source>src/main/resources/products.xsd</source>
+                        <source>/${project.basedir}/src/main/resources/products.xsd</source>
                     </sources>
 
                 </configuration>
@@ -114,7 +103,9 @@
     </build>
 
     <properties>
-        <keycloak-adapter-bom.version>15.0.2</keycloak-adapter-bom.version>
+        <start-class>com.baeldung.keycloak.SpringBoot</start-class>
+        <jaxb-runtime.version>4.0.0</jaxb-runtime.version>
+        <jaxb2-maven-plugin.version>2.5.0</jaxb2-maven-plugin.version>
     </properties>
 
 </project>

@@ -1,0 +1,36 @@
+services:
+  alpine-app-1:
+    container_name: alpine-app-1
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    image: alpine-app-1
+    tty: true
+    ports:
+      - 8080:8080
+    networks:
+      network-example:
+        ipv4_address: 192.168.2.2
+
+  alpine-app-2:
+    container_name: alpine-app-2
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    image: alpine-app-2
+    tty: true
+    ports:
+      - 8081:8081
+    networks:
+      network-example:
+        ipv4_address: 192.168.2.3
+
+networks:
+  network-example:
+    driver: macvlan
+    driver_opts:
+      parent: enp0s3
+    ipam:
+      config:
+        - subnet: 192.168.2.0/24
+          gateway: 192.168.2.1

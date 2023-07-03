@@ -1,17 +1,17 @@
 package com.baeldung.algorithms.mergesort;
 
-import org.junit.Assert;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class MergeSortUnitTest {
+class MergeSortUnitTest {
 
     @Test
-    public void positiveTest() {
+    void positiveTest() {
         int[] actual = { 5, 1, 6, 2, 3, 4 };
         int[] expected = { 1, 2, 3, 4, 5, 6 };
         MergeSort.mergeSort(actual, actual.length);
-        Assert.assertArrayEquals(expected, actual);
+        assertArrayEquals(expected, actual);
     }
 
 }

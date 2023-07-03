@@ -1,10 +1,13 @@
 package com.baeldung.cloud.openfeign.customizederrorhandling.controller;
 
-import com.baeldung.cloud.openfeign.customizederrorhandling.client.ProductClient;
-import com.baeldung.cloud.openfeign.customizederrorhandling.exception.ErrorResponse;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.tomakehurst.wiremock.WireMockServer;
-import com.github.tomakehurst.wiremock.client.WireMock;
+import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
+import static com.github.tomakehurst.wiremock.client.WireMock.configureFor;
+import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
+import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
+import static org.junit.Assert.assertEquals;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,10 +21,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
-import static com.github.tomakehurst.wiremock.client.WireMock.*;
-import static org.junit.Assert.assertEquals;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import com.baeldung.cloud.openfeign.customizederrorhandling.client.ProductClient;
+import com.baeldung.cloud.openfeign.customizederrorhandling.exception.ErrorResponse;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.tomakehurst.wiremock.WireMockServer;
+import com.github.tomakehurst.wiremock.client.WireMock;
 
 
 @RunWith(SpringRunner.class)
@@ -42,8 +46,8 @@ public class ProductControllerUnitTest {
 
     @Before
     public void startWireMockServer() {
-        wireMockServer = new WireMockServer(8081);
-        configureFor("localhost", 8081);
+        wireMockServer = new WireMockServer(8088);
+        configureFor("localhost", 8088);
         wireMockServer.start();
     }
 

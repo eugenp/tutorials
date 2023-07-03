@@ -1,6 +1,5 @@
 package com.baeldung.lombok.valvar;
 
-import lombok.var;
 
 import java.util.ArrayList;
 import java.util.Arrays;

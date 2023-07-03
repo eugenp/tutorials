@@ -29,8 +29,11 @@ public class RedissonIntegrationTest {
     private static RedissonClient client;
 
     @BeforeClass
-    public static void setUp() throws IOException {
-        redisServer = new RedisServer(6379);
+    public static void setUp() {
+        redisServer = RedisServer.builder()
+                        .port(6379)
+                        .setting("maxmemory 128M")
+                        .build();
         redisServer.start();
         client = Redisson.create();
     }

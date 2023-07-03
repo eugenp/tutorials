@@ -2,14 +2,14 @@ package com.baeldung.algorithms.twopointertechnique;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class LinkedListFindMiddleUnitTest {
+class LinkedListFindMiddleUnitTest {
 
     LinkedListFindMiddle linkedListFindMiddle = new LinkedListFindMiddle();
 
     @Test
-    public void givenLinkedListOfMyNodes_whenLinkedListFindMiddle_thenCorrect() {
+    void givenLinkedListOfMyNodes_whenLinkedListFindMiddle_thenCorrect() {
 
         MyNode<String> head = createNodesList(8);
 

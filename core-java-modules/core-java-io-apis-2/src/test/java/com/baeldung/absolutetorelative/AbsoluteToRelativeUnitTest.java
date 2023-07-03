@@ -1,11 +1,10 @@
 package com.baeldung.absolutetorelative;
 
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.Test;
-
 import java.net.URI;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 public class AbsoluteToRelativeUnitTest {
 
@@ -22,7 +21,7 @@ public class AbsoluteToRelativeUnitTest {
     public void givenAbsolutePaths_whenRelativizePathOneToPathTwo_thenRelativeIsReturned() {
         Path result = pathOne.relativize(pathTwo);
 
-        Assertions.assertThat(result)
+        org.assertj.core.api.Assertions.assertThat(result)
                 .isRelative()
                 .isEqualTo(Paths.get("../two.txt"));
     }
@@ -31,7 +30,7 @@ public class AbsoluteToRelativeUnitTest {
     public void givenAbsolutePaths_whenRelativizePathTwoToPathOne_thenRelativeIsReturned() {
         Path result = pathTwo.relativize(pathOne);
 
-        Assertions.assertThat(result)
+        org.assertj.core.api.Assertions.assertThat(result)
                 .isRelative()
                 .isEqualTo(Paths.get("../one.txt"));
     }
@@ -40,7 +39,7 @@ public class AbsoluteToRelativeUnitTest {
     public void givenAbsolutePaths_whenRelativizePathOneParentToPathTwo_thenRelativeIsReturned() {
         Path result = pathOne.getParent().relativize(pathTwo);
 
-        Assertions.assertThat(result)
+        org.assertj.core.api.Assertions.assertThat(result)
                 .isRelative()
                 .isEqualTo(Paths.get("two.txt"));
     }
@@ -49,7 +48,7 @@ public class AbsoluteToRelativeUnitTest {
     public void givenAbsolutePaths_whenRelativizePathOneToPathThree_thenRelativeIsReturned() {
         Path result = pathOne.relativize(pathThree);
 
-        Assertions.assertThat(result)
+        org.assertj.core.api.Assertions.assertThat(result)
                 .isRelative()
                 .isEqualTo(Paths.get("../../foo/three.txt"));
     }
@@ -58,7 +57,7 @@ public class AbsoluteToRelativeUnitTest {
     public void givenAbsolutePaths_whenRelativizePathThreeToPathOne_thenRelativeIsReturned() {
         Path result = pathThree.relativize(pathOne);
 
-        Assertions.assertThat(result)
+        org.assertj.core.api.Assertions.assertThat(result)
                 .isRelative()
                 .isEqualTo(Paths.get("../../bar/one.txt"));
     }
@@ -67,7 +66,7 @@ public class AbsoluteToRelativeUnitTest {
     public void givenAbsoluteURIs_whenRelativizeUriOneToUriTwo_thenAbsoluteIsReturned() {
         URI result = uriOne.relativize(uriTwo);
 
-        Assertions.assertThat(result)
+        org.assertj.core.api.Assertions.assertThat(result)
                 .asString()
                 .contains("/baeldung/bar/two.txt");
     }
@@ -76,7 +75,7 @@ public class AbsoluteToRelativeUnitTest {
     public void givenAbsoluteURIs_whenRelativizeUriOneParentToUriTwo_thenRelativeIsReturned() {
         URI result = pathOne.getParent().toUri().relativize(uriTwo);
 
-        Assertions.assertThat(result)
+        org.assertj.core.api.Assertions.assertThat(result)
                 .asString()
                 .contains("two.txt");
     }
@@ -85,7 +84,7 @@ public class AbsoluteToRelativeUnitTest {
     public void givenAbsoluteURIs_whenRelativizeUriOneParentToUriThree_thenAbsoluteIsReturned() {
         URI result = pathOne.getParent().toUri().relativize(uriThree);
 
-        Assertions.assertThat(result)
+        org.assertj.core.api.Assertions.assertThat(result)
                 .asString()
                 .contains("/baeldung/foo/three.txt");
     }

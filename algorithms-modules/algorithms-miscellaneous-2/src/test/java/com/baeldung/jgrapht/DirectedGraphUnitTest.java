@@ -1,7 +1,9 @@
 package com.baeldung.jgrapht;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,13 +23,13 @@ import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.DirectedSubgraph;
 import org.jgrapht.traverse.BreadthFirstIterator;
 import org.jgrapht.traverse.DepthFirstIterator;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-public class DirectedGraphUnitTest {
+class DirectedGraphUnitTest {
     DirectedGraph<String, DefaultEdge> directedGraph;
 
-    @Before
+    @BeforeEach
     public void createDirectedGraph() {
         directedGraph = new DefaultDirectedGraph<String, DefaultEdge>(DefaultEdge.class);
         IntStream.range(1, 10).forEach(i -> {
@@ -46,7 +48,7 @@ public class DirectedGraphUnitTest {
     }
 
     @Test
-    public void givenDirectedGraph_whenGetStronglyConnectedSubgraphs_thenPathExistsBetweenStronglyconnectedVertices() {
+    void givenDirectedGraph_whenGetStronglyConnectedSubgraphs_thenPathExistsBetweenStronglyconnectedVertices() {
         StrongConnectivityAlgorithm<String, DefaultEdge> scAlg = new KosarajuStrongConnectivityInspector<>(directedGraph);
         List<DirectedSubgraph<String, DefaultEdge>> stronglyConnectedSubgraphs = scAlg.stronglyConnectedSubgraphs();
         List<String> stronglyConnectedVertices = new ArrayList<>(stronglyConnectedSubgraphs.get(3).vertexSet());
@@ -60,7 +62,7 @@ public class DirectedGraphUnitTest {
     }
 
     @Test
-    public void givenDirectedGraphWithCycle_whenCheckCycles_thenDetectCycles() {
+    void givenDirectedGraphWithCycle_whenCheckCycles_thenDetectCycles() {
         CycleDetector<String, DefaultEdge> cycleDetector = new CycleDetector<String, DefaultEdge>(directedGraph);
         assertTrue(cycleDetector.detectCycles());
         Set<String> cycleVertices = cycleDetector.findCycles();
@@ -68,26 +70,26 @@ public class DirectedGraphUnitTest {
     }
 
     @Test
-    public void givenDirectedGraph_whenCreateInstanceDepthFirstIterator_thenGetIterator() {
+    void givenDirectedGraph_whenCreateInstanceDepthFirstIterator_thenGetIterator() {
         DepthFirstIterator depthFirstIterator = new DepthFirstIterator<>(directedGraph);
         assertNotNull(depthFirstIterator);
     }
 
     @Test
-    public void givenDirectedGraph_whenCreateInstanceBreadthFirstIterator_thenGetIterator() {
+    void givenDirectedGraph_whenCreateInstanceBreadthFirstIterator_thenGetIterator() {
         BreadthFirstIterator breadthFirstIterator = new BreadthFirstIterator<>(directedGraph);
         assertNotNull(breadthFirstIterator);
     }
 
     @Test
-    public void givenDirectedGraph_whenGetDijkstraShortestPath_thenGetNotNullPath() {
+    void givenDirectedGraph_whenGetDijkstraShortestPath_thenGetNotNullPath() {
         DijkstraShortestPath dijkstraShortestPath = new DijkstraShortestPath(directedGraph);
         List<String> shortestPath = dijkstraShortestPath.getPath("v1", "v4").getVertexList();
         assertNotNull(shortestPath);
     }
 
     @Test
-    public void givenDirectedGraph_whenGetBellmanFordShortestPath_thenGetNotNullPath() {
+    void givenDirectedGraph_whenGetBellmanFordShortestPath_thenGetNotNullPath() {
         BellmanFordShortestPath bellmanFordShortestPath = new BellmanFordShortestPath(directedGraph);
         List<String> shortestPath = bellmanFordShortestPath.getPath("v1", "v4").getVertexList();
         assertNotNull(shortestPath);
