@@ -19,18 +19,13 @@
 
   <dependencies>
     <dependency>
-      <groupId>jakarta.servlet</groupId>
-      <artifactId>jakarta.servlet-api</artifactId>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.thymeleaf</groupId>
-      <artifactId>thymeleaf-spring6</artifactId>
-      <version>${thymeleaf.spring6.version}</version>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-thymeleaf</artifactId>
+      <version>${spring.boot.starter.thymeleaf}</version>
     </dependency>
     <!-- test scoped -->
     <dependency>
@@ -57,16 +52,9 @@
       <version>${junit.jupiter.engine.version}</version>
       <scope>test</scope>
     </dependency>
-
   </dependencies>
 
   <build>
-    <resources>
-      <resource>
-        <directory>src/main/resources</directory>
-      </resource>
-    </resources>
-
     <plugins>
       <plugin>
         <groupId>org.springframework.boot</groupId>
@@ -91,5 +79,6 @@
     <junit.jupiter.engine.version>5.9.3</junit.jupiter.engine.version>
     <mockito.version>5.3.1</mockito.version>
     <thymeleaf.spring6.version>3.1.1.RELEASE</thymeleaf.spring6.version>
+    <spring.boot.starter.thymeleaf>3.1.1</spring.boot.starter.thymeleaf>
   </properties>
 </project>
