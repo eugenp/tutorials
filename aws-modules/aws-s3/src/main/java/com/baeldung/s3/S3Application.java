@@ -66,6 +66,9 @@ public class S3Application {
           new File("/Users/user/Document/hello.txt")
         );
 
+        //uploading object and getting url
+        awsService.getObjectURL(bucketName, "Document/hello.txt", new File("/Users/user/Document/hello.txt"));
+
         //listing objects
         ObjectListing objectListing = awsService.listObjects(bucketName);
         for(S3ObjectSummary os : objectListing.getObjectSummaries()) {

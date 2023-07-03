@@ -1,5 +1,3 @@
-## Spring Data Neo4j
-
 ### Relevant Articles:
 - [A Guide to Neo4J with Java](https://www.baeldung.com/java-neo4j)
 
