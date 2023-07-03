@@ -7,6 +7,8 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 import java.util.Arrays;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.core.ParameterizedTypeReference;
@@ -59,7 +61,8 @@ public class EmployeeClientUnitTest {
         isNull(),
         eq(responseType)
     );
-    assertEquals(1, result.getNumberOfElements());
-    assertEquals(mockedResponse, result.getContent().get(0));
+    assertEquals(3, result.getNumberOfElements());
+    List<EmployeeDto> content = result.getContent();
+    assertEquals(mockedResponse.getContent(), content);
   }
 }

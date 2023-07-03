@@ -18,7 +18,7 @@ public class EmployeeClient {
     }
 
     public Page<EmployeeDto> getEmployeeDataFromExternalAPI(Pageable pageable) {
-        String url = "http://localhost:8080/external-service/employee";
+        String url = "http://localhost:8080/employee";
 
         UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromUriString(url)
           .queryParam("page", pageable.getPageNumber())
