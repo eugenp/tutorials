@@ -2,10 +2,13 @@ package com.baeldung.deepcopyarraylist;
 
 import java.io.Serializable;
 
-public class Course implements Serializable {
+public class Course implements Serializable, Cloneable {
 
     private Integer courseId;
     private String courseName;
+
+    public Course() {
+    }
 
     public Course(Integer courseId, String courseName) {
         this.courseId = courseId;
@@ -26,5 +29,14 @@ public class Course implements Serializable {
 
     public void setCourseName(String courseName) {
         this.courseName = courseName;
+    }
+
+    @Override
+    public Course clone() {
+        try {
+            return (Course) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
 }

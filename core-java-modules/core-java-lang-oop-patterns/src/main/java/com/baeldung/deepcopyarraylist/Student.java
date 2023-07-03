@@ -6,11 +6,17 @@ import java.util.stream.Collectors;
 
 import org.apache.commons.lang3.SerializationUtils;
 
-public class Student implements Serializable {
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+public class Student implements Serializable, Cloneable {
 
     private int studentId;
     private String studentName;
     private Course course;
+
+    public Student() {
+    }
 
     public Student(int studentId, String studentName, Course course) {
         this.studentId = studentId;
@@ -26,12 +32,37 @@ public class Student implements Serializable {
             .getCourseName());
     }
 
-    public static List<Student> deepCopyUsingCopyConstructor(List<Student> students){
-        return students.stream().map(Student::new).collect(Collectors.toList());
+    public static Student createDeepCopy(Student student) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            return objectMapper.readValue(objectMapper.writeValueAsString(student), Student.class);
+        } catch (JsonProcessingException e) {
+            throw new IllegalArgumentException(e);
+        }
     }
 
-    public static List<Student> deepCopyUsingSerialization(List<Student> students){
-        return students.stream().map(SerializationUtils::clone).collect(Collectors.toList());
+    public static List<Student> deepCopyUsingJackson(List<Student> students) {
+        return students.stream()
+            .map(Student::createDeepCopy)
+            .collect(Collectors.toList());
+    }
+
+    public static List<Student> deepCopyUsingCloneable(List<Student> students) {
+        return students.stream()
+            .map(Student::clone)
+            .collect(Collectors.toList());
+    }
+
+    public static List<Student> deepCopyUsingCopyConstructor(List<Student> students) {
+        return students.stream()
+            .map(Student::new)
+            .collect(Collectors.toList());
+    }
+
+    public static List<Student> deepCopyUsingSerialization(List<Student> students) {
+        return students.stream()
+            .map(SerializationUtils::clone)
+            .collect(Collectors.toList());
     }
 
     public int getStudentId() {
@@ -56,5 +87,17 @@ public class Student implements Serializable {
 
     public void setCourse(Course course) {
         this.course = course;
+    }
+
+    @Override
+    public Student clone() {
+        Student student;
+        try {
+            student = (Student) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
+        student.course = this.course.clone();
+        return student;
     }
 }
