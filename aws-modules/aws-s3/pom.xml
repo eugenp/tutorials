@@ -16,6 +16,12 @@
 
     <dependencies>
         <dependency>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>s3</artifactId>
+            <version>2.20.52</version>
+        </dependency>
+
+        <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-java-sdk</artifactId>
             <version>${aws-java-sdk.version}</version>
@@ -35,6 +41,12 @@
             <groupId>org.lucee</groupId>
             <artifactId>commons-codec</artifactId>
             <version>${commons-codec-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk-s3</artifactId>
+            <version>1.12.490</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 
