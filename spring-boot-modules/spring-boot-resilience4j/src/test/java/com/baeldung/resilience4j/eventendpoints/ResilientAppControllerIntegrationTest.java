@@ -19,7 +19,6 @@ import java.util.Map;
 import java.util.concurrent.*;
 import java.util.stream.IntStream;
 import org.apache.commons.io.IOUtils;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import org.slf4j.Logger;
@@ -30,8 +29,10 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.annotation.DirtiesContext;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 class ResilientAppControllerIntegrationTest {
 
   private final Logger LOGGER = LoggerFactory.getLogger(getClass());
@@ -202,7 +203,6 @@ class ResilientAppControllerIntegrationTest {
     return timeLimiterEvents.getTimeLimiterEvents();
   }
 
-  @Disabled
   @Test
   void testBulkheadEvents() throws Exception {
     EXTERNAL_SERVICE.stubFor(WireMock.get("/api/external").willReturn(ok()));
