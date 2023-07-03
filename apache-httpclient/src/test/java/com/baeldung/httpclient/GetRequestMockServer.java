@@ -7,7 +7,6 @@ import static org.mockserver.model.HttpResponse.response;
 
 import java.io.IOException;
 import java.net.ServerSocket;
-import java.net.URISyntaxException;
 
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.AfterAll;
@@ -18,22 +17,19 @@ import org.mockserver.integration.ClientAndServer;
 public class GetRequestMockServer {
 
     public static ClientAndServer mockServer;
-    public static String serviceOneUrl;
-    public static String serviceTwoUrl;
 
     public static int serverPort;
 
     public static final String SERVER_ADDRESS = "127.0.0.1";
-    public static final String PATH_ONE = "/test1";
-    public static final String PATH_TWO = "/test2";
-    public static final String METHOD = "GET";
+
+    public static final String SECURITY_PATH = "/spring-security-rest-basic-auth/api/foos/1";
+
+    public static final String UPLOAD_PATH = "/spring-mvc-java/stub/multipart";
 
     @BeforeAll
     static void startServer() throws IOException {
         serverPort = getFreePort();
-        System.out.println("Free port "+serverPort);
-        serviceOneUrl = "http://" + SERVER_ADDRESS + ":" + serverPort + PATH_ONE;
-        serviceTwoUrl = "http://" + SERVER_ADDRESS + ":" + serverPort + PATH_TWO;
+        System.out.println("Free port " + serverPort);
         mockServer = startClientAndServer(serverPort);
         mockGetRequest();
     }
@@ -44,33 +40,36 @@ public class GetRequestMockServer {
     }
 
     private static void mockGetRequest() {
-        new MockServerClient(SERVER_ADDRESS, serverPort)
-          .when(
-            request()
-              .withPath(PATH_ONE)
-              .withMethod(METHOD),
-            exactly(5)
-          )
-          .respond(
-            response()
-              .withStatusCode(HttpStatus.SC_OK)
-              .withBody("{\"status\":\"ok\"}")
-          );
-        new MockServerClient(SERVER_ADDRESS, serverPort)
-          .when(
-            request()
-              .withPath(PATH_TWO)
-              .withMethod(METHOD),
-            exactly(1)
-          )
-          .respond(
-            response()
-              .withStatusCode(HttpStatus.SC_OK)
-              .withBody("{\"status\":\"ok\"}")
-          );
+
+        MockServerClient client = new MockServerClient(SERVER_ADDRESS, serverPort);
+
+        client.when(
+                        request()
+                                .withPath(SECURITY_PATH)
+                                .withMethod("GET"),
+                        exactly(1)
+                )
+                .respond(
+                        response()
+                                .withStatusCode(HttpStatus.SC_OK)
+                                .withBody("{\"status\":\"ok\"}")
+                );
+
+        client.when(
+                        request()
+                                .withPath(UPLOAD_PATH)
+                                .withMethod("POST"),
+                        exactly(4)
+                )
+                .respond(
+                        response()
+                                .withStatusCode(HttpStatus.SC_OK)
+                                .withBody("{\"status\":\"ok\"}")
+                                .withHeader("Content-Type", "multipart/form-data")
+                );
     }
 
-    private static int getFreePort () throws IOException {
+    private static int getFreePort() throws IOException {
         try (ServerSocket serverSocket = new ServerSocket(0)) {
             return serverSocket.getLocalPort();
         }

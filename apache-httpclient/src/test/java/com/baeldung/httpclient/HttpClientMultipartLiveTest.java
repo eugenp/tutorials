@@ -4,6 +4,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.apache.hc.core5.http.ClassicHttpResponse;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -28,14 +29,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 
-import com.baeldung.httpclient.handler.CustomHttpClientResponseHandler;
 
-class HttpClientMultipartLiveTest {
+class HttpClientMultipartLiveTest extends GetRequestMockServer {
 
-    // No longer available
-    // private static final String SERVER = "http://echo.200please.com";
-
-    private static final String SERVER = "http://localhost:8080/spring-mvc-java/stub/multipart";
     private static final String TEXTFILENAME = "temp.txt";
     private static final String IMAGEFILENAME = "image.jpg";
     private static final String ZIPFILENAME = "zipFile.zip";
@@ -44,7 +40,8 @@ class HttpClientMultipartLiveTest {
 
     @BeforeEach
     public void before() {
-        post = new HttpPost(SERVER);
+        String URL  = "http://localhost:"+serverPort+"/spring-mvc-java/stub/multipart";
+        post = new HttpPost(URL);
     }
 
     @Test
@@ -66,17 +63,13 @@ class HttpClientMultipartLiveTest {
         final HttpEntity entity = builder.build();
 
         post.setEntity(entity);
-        try(CloseableHttpClient client = HttpClientBuilder.create()
-            .build();
-
-            CloseableHttpResponse response = (CloseableHttpResponse) client
-                .execute(post, new CustomHttpClientResponseHandler())){
+        try(CloseableHttpClient client = HttpClientBuilder.create().build()) {
+            ClassicHttpResponse response = client.execute(post);
             final int statusCode = response.getCode();
-            final String responseString = getContent(response.getEntity());
+            String responseString = getContent(response);
             final String contentTypeInHeader = getContentTypeHeader();
-
             assertThat(statusCode, equalTo(HttpStatus.SC_OK));
-            assertTrue(contentTypeInHeader.contains("Content-Type: multipart/form-data;"));
+            assertTrue(contentTypeInHeader.contains("multipart/form-data"));
             System.out.println(responseString);
             System.out.println("POST Content Type: " + contentTypeInHeader);
         }
@@ -97,16 +90,14 @@ class HttpClientMultipartLiveTest {
         post.setEntity(entity);
 
         try(CloseableHttpClient client = HttpClientBuilder.create()
-            .build();
-
-            CloseableHttpResponse response = (CloseableHttpResponse) client
-                .execute(post, new CustomHttpClientResponseHandler())){
-
+            .build()){
+            CloseableHttpResponse response = client
+                .execute(post);
             final int statusCode = response.getCode();
-            final String responseString = getContent(response.getEntity());
+            final String responseString = getContent(response);
             final String contentTypeInHeader = getContentTypeHeader();
             assertThat(statusCode, equalTo(HttpStatus.SC_OK));
-            assertTrue(contentTypeInHeader.contains("Content-Type: multipart/form-data;"));
+            assertTrue(contentTypeInHeader.contains("multipart/form-data"));
             System.out.println(responseString);
             System.out.println("POST Content Type: " + contentTypeInHeader);
         }
@@ -132,16 +123,16 @@ class HttpClientMultipartLiveTest {
         post.setEntity(entity);
 
         try(CloseableHttpClient client = HttpClientBuilder.create()
-            .build();
+            .build()) {
 
-            CloseableHttpResponse response = (CloseableHttpResponse) client
-                .execute(post, new CustomHttpClientResponseHandler())){
+            CloseableHttpResponse response = client
+                .execute(post);
 
             final int statusCode = response.getCode();
-            final String responseString = getContent(response.getEntity());
+            final String responseString = getContent(response);
             final String contentTypeInHeader = getContentTypeHeader();
             assertThat(statusCode, equalTo(HttpStatus.SC_OK));
-            assertTrue(contentTypeInHeader.contains("Content-Type: multipart/form-data;"));
+            assertTrue(contentTypeInHeader.contains("multipart/form-data;"));
             System.out.println(responseString);
             System.out.println("POST Content Type: " + contentTypeInHeader);
             inputStream.close();
@@ -160,16 +151,15 @@ class HttpClientMultipartLiveTest {
         post.setEntity(entity);
 
         try(CloseableHttpClient client = HttpClientBuilder.create()
-            .build();
+            .build()) {
 
-            CloseableHttpResponse response = (CloseableHttpResponse) client
-                .execute(post, new CustomHttpClientResponseHandler())){
+            CloseableHttpResponse response = client.execute(post);
 
             final int statusCode = response.getCode();
-            final String responseString = getContent(response.getEntity());
+            final String responseString = getContent(response);
             final String contentTypeInHeader = getContentTypeHeader();
             assertThat(statusCode, equalTo(HttpStatus.SC_OK));
-            assertTrue(contentTypeInHeader.contains("Content-Type: multipart/form-data;"));
+            assertTrue(contentTypeInHeader.contains("multipart/form-data;"));
             System.out.println(responseString);
             System.out.println("POST Content Type: " + contentTypeInHeader);
         }
@@ -178,8 +168,8 @@ class HttpClientMultipartLiveTest {
 
     // UTIL
 
-    private String getContent(HttpEntity httpEntity) throws IOException {
-        rd = new BufferedReader(new InputStreamReader(httpEntity.getContent()));
+    private String getContent(ClassicHttpResponse response) throws IOException {
+        rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
         String body = "";
         StringBuilder content = new StringBuilder();
         while ((body = rd.readLine()) != null) {
