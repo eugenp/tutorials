@@ -2,6 +2,7 @@ package com.baeldung.cloud.openfeign.patcherror.client;
 
 import com.baeldung.cloud.openfeign.ExampleApplication;
 import com.baeldung.cloud.openfeign.patcherror.model.User;
+
 import com.github.tomakehurst.wiremock.WireMockServer;
 import feign.FeignException;
 
@@ -13,8 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-
-import java.io.IOException;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -59,11 +58,11 @@ public class UserClientUnitTest {
         User updatedUser = userClient.updateUser("100001", user);
 
         assertEquals(user.getUserId(), updatedUser.getUserId());
-        assertEquals("updated-email@mail.in", updatedUser.getEmail());
+        assertEquals(user.getEmail(), updatedUser.getEmail());
     }
 
     @Test
-    void givenUserNotFound_whenUpdateUserCalled_thenReturnNotFoundErrorAndFeignException() throws IOException {
+    void givenUserNotFound_whenUpdateUserCalled_thenReturnNotFoundErrorAndFeignException() {
         User user = new User();
         user.setUserId("100002");
         user.setEmail("updated-email@mail.in");
