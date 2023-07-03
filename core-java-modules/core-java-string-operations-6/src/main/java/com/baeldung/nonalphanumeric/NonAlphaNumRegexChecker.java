@@ -4,6 +4,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class NonAlphaNumRegexChecker {
+
+    private static final Pattern PATTERN_NON_ALPHNUM_ANYLANG = Pattern.compile("[^\\p{IsAlphabetic}\\p{IsDigit}]");
+    private static final Pattern PATTERN_NON_ALPHNUM_USASCII = Pattern.compile("[^a-zA-Z0-9]+");
     /**
      * checks if a non-alphanumeric character is present. this method would return true if
      * it comes across a non english or non US-ASCII letter
@@ -13,9 +16,8 @@ public class NonAlphaNumRegexChecker {
      */
     public static boolean isNonAlphanumeric(String str) {
 //      Pattern pattern = Pattern.compile("\\W");  //same as [^a-zA-Z0-9]+
-        Pattern pattern = Pattern.compile("[^a-zA-Z0-9]+");
 //      Pattern pattern = Pattern.compile("[^a-zA-Z0-9||\\s]+"); //ignores space
-        Matcher matcher = pattern.matcher(str);
+        Matcher matcher = PATTERN_NON_ALPHNUM_USASCII.matcher(str);
         return matcher.find();
     }
 
@@ -26,9 +28,8 @@ public class NonAlphaNumRegexChecker {
      * @return true if special character found else false
      */
     public static boolean containsNonAlphanumeric(String input) {
-        Pattern pattern = Pattern.compile("[^\\p{IsAlphabetic}\\p{IsDigit}]"); //Binary properties
 //      Pattern pattern = Pattern.compile("[^\\p{Alnum}]", Pattern.UNICODE_CHARACTER_CLASS); //Binary properties
-        Matcher matcher = pattern.matcher(input);
+        Matcher matcher = PATTERN_NON_ALPHNUM_ANYLANG.matcher(input);
         return matcher.find();
     }
 
