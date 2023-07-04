@@ -1,6 +1,7 @@
 package com.baeldung.s3;
 
 import java.io.File;
+import java.net.URL;
 import java.util.List;
 
 import com.amazonaws.services.s3.AmazonS3;
@@ -48,6 +49,11 @@ public class AWSS3Service {
     //uploading object
     public PutObjectResult putObject(String bucketName, String key, File file) {
         return s3client.putObject(bucketName, key, file);
+    }
+    //uploading object and getting url
+    public URL getObjectURL(String bucketName, String key, File file) {
+        s3client.putObject(bucketName, key, file);
+        return s3client.getUrl(bucketName, key);
     }
     
     //listing objects

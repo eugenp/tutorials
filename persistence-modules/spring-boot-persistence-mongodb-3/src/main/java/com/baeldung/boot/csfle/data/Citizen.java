@@ -9,13 +9,6 @@ public class Citizen {
     private String email;
     private Integer birthYear;
 
-    public Citizen() {
-    }
-
-    public Citizen(String name) {
-        this.name = name;
-    }
-
     public String getName() {
         return name;
     }

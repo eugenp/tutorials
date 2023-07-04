@@ -10,8 +10,8 @@ import java.time.LocalDate;
 
 public class MyHandlerProvider extends ReaderWriterProvider {
 
-    public ValueWriter findValueWriter (JSONWriter writeContext,
-                                        Class<?> type) {
+    @Override
+    public ValueWriter findValueWriter (JSONWriter writeContext, Class<?> type) {
         if (type == LocalDate.class) {
             return new CustomDateSerializer();
         }

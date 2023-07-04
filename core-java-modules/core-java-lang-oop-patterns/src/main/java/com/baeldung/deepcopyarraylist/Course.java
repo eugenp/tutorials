@@ -36,7 +36,7 @@ public class Course implements Serializable, Cloneable {
         try {
             return (Course) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new IllegalStateException();
+            throw new AssertionError();
         }
     }
 }

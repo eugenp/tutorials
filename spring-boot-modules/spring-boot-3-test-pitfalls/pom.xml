@@ -83,5 +83,4 @@
         <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
     </properties>
 
-
 </project>

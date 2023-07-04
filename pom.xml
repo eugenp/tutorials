@@ -666,7 +666,6 @@
                 </plugins>
             </build>
 
-
         </profile>
 
         <profile>
@@ -730,6 +729,7 @@
                 <module>spring-drools</module>
                 <module>spring-cloud-modules/spring-cloud-contract</module>
                 <module>spring-cloud-modules/spring-cloud-data-flow</module>
+                <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
                 <module>spring-exceptions</module>
                 <module>spring-jenkins-pipeline</module>
                 <module>spring-core</module>
@@ -893,7 +893,6 @@
                 <module>reactor-core</module>
                 <module>rsocket</module>
 
-
                 <!--  Modules from default second-->
                 <module>spring-5</module>
                 <module>spring-5-webflux</module>
@@ -1000,6 +999,7 @@
                 <module>spring-batch-2</module>
                 <module>spring-boot-rest</module>
                 <module>spring-drools</module>
+                <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
                 <module>spring-exceptions</module>
                 <module>spring-jenkins-pipeline</module>
                 <module>spring-core</module>
@@ -1163,7 +1163,6 @@
                 <module>reactor-core</module>
                 <module>rsocket</module>
 
-
                 <!--  Modules from default second-->
 
                 <module>spring-5</module>
@@ -1297,7 +1296,7 @@
         <gitflow-incremental-builder.version>3.12.2</gitflow-incremental-builder.version>
         <maven-jxr-plugin.version>3.0.0</maven-jxr-plugin.version>
         <maven-pmd-plugin.version>3.19.0</maven-pmd-plugin.version>
-        <lombok.version>1.18.24</lombok.version>
+        <lombok.version>1.18.28</lombok.version>
         <h2.version>2.1.214</h2.version>
         <guava.version>31.1-jre</guava.version>
         <maven-jar-plugin.version>3.2.2</maven-jar-plugin.version>
