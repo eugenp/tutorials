@@ -1,9 +1,7 @@
 package com.baeldung.digitsandnondigits;
 
-import static java.lang.Integer.min;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -33,7 +31,7 @@ public class SplitDigitsAndNondigitsUnitTest {
         assertArrayEquals(EXPECTED2, result2);
     }
 
-    List<String> parseString(String input) {
+    static List<String> parseString(String input) {
         List<String> result = new ArrayList<>();
         int start = 0;
         int state = 0; // 0: init; 1: digit; 2: non-digit
@@ -63,32 +61,5 @@ public class SplitDigitsAndNondigitsUnitTest {
 
         List<String> result2 = parseString(INPUT2);
         assertEquals(EXPECTED_LIST2, result2);
-    }
-
-    @Test
-    void whenRepeat1mTimesOnRegexAndNonRegexApproaches_thenReportTheDifference() {
-        String splitRE = "(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)";
-        int repeat = 1_000_000;
-
-        Stopwatch stopwatch = Stopwatch.createStarted();
-        for (int i = 1; i <= repeat; i++) {
-            INPUT1.split(splitRE);
-        }
-        stopwatch.stop();
-        Duration reCost = stopwatch.elapsed();
-
-        stopwatch.reset();
-        stopwatch.start();
-
-        for (int i = 1; i <= repeat; i++) {
-            parseString(INPUT1);
-        }
-
-        stopwatch.stop();
-        Duration noReCost = stopwatch.elapsed();
-        long times = reCost.dividedBy(noReCost);
-
-        System.out.println(String.format("The Non-RE-based solution is about %d times faster than the RE-based solution.", times));
-
     }
 }
