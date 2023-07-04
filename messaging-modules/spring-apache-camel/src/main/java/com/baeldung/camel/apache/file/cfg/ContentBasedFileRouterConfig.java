@@ -1,6 +1,6 @@
 package com.baeldung.camel.apache.file.cfg;
 
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import org.apache.camel.builder.RouteBuilder;
@@ -20,7 +20,7 @@ public class ContentBasedFileRouterConfig extends CamelConfiguration {
 
 	@Override
 	public List<RouteBuilder> routes() {
-		return Arrays.asList(getContentBasedFileRouter());
+		return Collections.singletonList(getContentBasedFileRouter());
 	}
 
 }
