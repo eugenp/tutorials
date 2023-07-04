@@ -1,22 +1,17 @@
-package com.baeldung.s3.v2;
+package com.baeldung.s3;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import java.io.File;
-import java.util.Collections;
-import java.util.List;
-
-import org.junit.Test;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+
+import java.util.Collections;
 
 import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.CopyObjectRequest;
@@ -24,14 +19,12 @@ import software.amazon.awssdk.services.s3.model.CopyObjectResponse;
 import software.amazon.awssdk.services.s3.model.CreateBucketRequest;
 import software.amazon.awssdk.services.s3.model.DeleteBucketRequest;
 import software.amazon.awssdk.services.s3.model.DeleteObjectRequest;
-import software.amazon.awssdk.services.s3.model.DeleteObjectsRequest;
-import software.amazon.awssdk.services.s3.model.DeleteObjectsResponse;
-import software.amazon.awssdk.services.s3.model.GetObjectRequest;
 import software.amazon.awssdk.services.s3.model.HeadBucketRequest;
+import software.amazon.awssdk.services.s3.model.ListBucketsResponse;
 import software.amazon.awssdk.services.s3.model.ListObjectsV2Request;
 import software.amazon.awssdk.services.s3.model.ListObjectsV2Response;
 
-public class AWSS3ServiceV2IntegrationTest {
+class S3ServiceIntegrationTest {
 
     private static final String BUCKET_NAME = "bucket_name"; 
     private static final String KEY_NAME = "key_name"; 
@@ -41,14 +34,14 @@ public class AWSS3ServiceV2IntegrationTest {
     @Mock
     private S3Client s3Client;
 
-    private AWSS3ServiceV2 s3Service;
+    private S3Service s3Service;
 
     private String AWS_BUCKET = "baeldung-tutorial-s3";
 
     @BeforeEach
     public void setup() {
         MockitoAnnotations.openMocks(this);
-        s3Service = new AWSS3ServiceV2(s3Client);
+        s3Service = new S3Service(s3Client);
     }
 
     @AfterEach
@@ -57,12 +50,12 @@ public class AWSS3ServiceV2IntegrationTest {
         Mockito.verify(s3Client).close();
     }
     @Test 
-    public void whenInitializingAWSS3Service_thenNotNull() { 
-        assertThat(new AWSS3ServiceV2(s3Client)).isNotNull();
+    void whenInitializingAWSS3Service_thenNotNull() {
+        assertThat(new S3Service(s3Client)).isNotNull();
     } 
     
     @Test 
-    public void whenVerifyingIfS3BucketExist_thenCorrect() {
+    void whenVerifyingIfS3BucketExist_thenCorrect() {
         HeadBucketRequest headBucketRequest = HeadBucketRequest.builder()
             .bucket(BUCKET_NAME)
             .build();
@@ -72,21 +65,25 @@ public class AWSS3ServiceV2IntegrationTest {
     } 
  
     @Test 
-    public void whenVerifyingCreationOfS3Bucket_thenCorrect() {
-        CreateBucketRequest request = mock(CreateBucketRequest.class);
+    void whenVerifyingCreationOfS3Bucket_thenCorrect() {
+        CreateBucketRequest bucketRequest = CreateBucketRequest.builder()
+            .bucket(BUCKET_NAME)
+            .build();
 
         s3Service.createBucket(BUCKET_NAME);
-        verify(s3Client).createBucket(request);
+        verify(s3Client).createBucket(bucketRequest);
     } 
  
     @Test 
-    public void whenVerifyingListBuckets_thenCorrect() {
+    void whenVerifyingListBuckets_thenCorrect() {
+        when(s3Client.listBuckets()).thenReturn(ListBucketsResponse.builder().buckets(Collections.emptyList()).build());
+
         s3Service.listBuckets();
-        verify(s3Client).listBuckets();
+        Mockito.verify(s3Client).listBuckets();
     } 
 
     @Test 
-    public void whenDeletingBucket_thenCorrect() {
+    void whenDeletingBucket_thenCorrect() {
         DeleteBucketRequest deleteBucketRequest = DeleteBucketRequest.builder()
             .bucket(BUCKET_NAME)
             .build();
@@ -95,42 +92,30 @@ public class AWSS3ServiceV2IntegrationTest {
         verify(s3Client).deleteBucket(deleteBucketRequest);
     } 
     
-    @Test 
-    public void whenVerifyingPutObject_thenCorrect() { 
-//        File file = mock(File.class);
-//        PutObjectResult result = mock(PutObjectResult.class);
-//        when(s3.putObject(anyString(), anyString(), (File) any())).thenReturn(result);
-//
-//        assertThat(service.putObject(BUCKET_NAME, KEY_NAME, file)).isEqualTo(result);
-//        verify(s3).putObject(BUCKET_NAME, KEY_NAME, file);
-    }
+
     
     @Test 
-    public void whenVerifyingListObjects_thenCorrect() {
-        ListObjectsV2Request request = ListObjectsV2Request.builder().bucket(BUCKET_NAME).build();
+    void whenVerifyingListObjects_thenCorrect() {
+        ListObjectsV2Request request = ListObjectsV2Request.builder().bucket(AWS_BUCKET).build();
         ListObjectsV2Response response = ListObjectsV2Response.builder().contents(Collections.emptyList()).build();
 
         when(s3Client.listObjectsV2(request)).thenReturn(response);
 
         s3Service.listObjects(AWS_BUCKET);
-        Mockito.verify(s3Client).listObjectsV2(request);
+        verify(s3Client).listObjectsV2(request);
     } 
+
     
     @Test 
-    public void whenVerifyingGetObject_thenCorrect() {
-        GetObjectRequest objectRequest = GetObjectRequest.builder()
-            .bucket(BUCKET_NAME)
-            .key(KEY_NAME)
+    void whenVerifyingCopyObject_thenCorrect() {
+        CopyObjectRequest request = CopyObjectRequest.builder()
+            .sourceBucket(BUCKET_NAME)
+            .sourceKey(KEY_NAME)
+            .destinationBucket(BUCKET_NAME2)
+            .destinationKey(KEY_NAME2)
             .build();
 
-        s3Service.getObject(BUCKET_NAME, KEY_NAME);
-        verify(s3Client).getObject(objectRequest);
-    } 
-    
-    @Test 
-    public void whenVerifyingCopyObject_thenCorrect() {
-        CopyObjectRequest request = mock(CopyObjectRequest.class);
-        CopyObjectResponse result = mock(CopyObjectResponse.class);
+        CopyObjectResponse result = CopyObjectResponse.builder().build();
 
         when(s3Client.copyObject(request)).thenReturn(result);
  
@@ -139,7 +124,7 @@ public class AWSS3ServiceV2IntegrationTest {
     } 
     
     @Test 
-    public void whenVerifyingDeleteObject_thenCorrect() {
+    void whenVerifyingDeleteObject_thenCorrect() {
         DeleteObjectRequest deleteObjectRequest = DeleteObjectRequest.builder()
             .bucket(BUCKET_NAME)
             .key(KEY_NAME)
@@ -148,17 +133,5 @@ public class AWSS3ServiceV2IntegrationTest {
         s3Service.deleteObject(BUCKET_NAME, KEY_NAME);
         verify(s3Client).deleteObject(deleteObjectRequest);
     }
-    
-    @Test 
-    public void whenVerifyingDeleteObjects_thenCorrect() {
-        List<String> objKeyList = List.of("Document/hello2.txt", "Document/picture.png");
-        DeleteObjectsRequest request = mock(DeleteObjectsRequest.class);
-        DeleteObjectsResponse response = mock(DeleteObjectsResponse.class);
 
-        when(s3Client.deleteObjects((DeleteObjectsRequest)any())).thenReturn(response);
-        
-        s3Service.deleteObjects(BUCKET_NAME, objKeyList);
-        verify(s3Client).deleteObjects(request);
-    }
-    
 }

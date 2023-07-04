@@ -18,14 +18,9 @@
         <dependency>
             <groupId>software.amazon.awssdk</groupId>
             <artifactId>s3</artifactId>
-            <version>2.20.52</version>
+            <version>${aws.java.sdk.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.amazonaws</groupId>
-            <artifactId>aws-java-sdk</artifactId>
-            <version>${aws-java-sdk.version}</version>
-        </dependency>
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
@@ -41,12 +36,6 @@
             <groupId>org.lucee</groupId>
             <artifactId>commons-codec</artifactId>
             <version>${commons-codec-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.amazonaws</groupId>
-            <artifactId>aws-java-sdk-s3</artifactId>
-            <version>1.12.490</version>
-            <scope>compile</scope>
         </dependency>
     </dependencies>
 
@@ -72,6 +61,7 @@
     </build>
 
     <properties>
+        <aws.java.sdk.version>2.20.52</aws.java.sdk.version>
         <commons-codec-version>1.10.L001</commons-codec-version>
         <jets3t-version>0.9.4.0006L</jets3t-version>
     </properties>
