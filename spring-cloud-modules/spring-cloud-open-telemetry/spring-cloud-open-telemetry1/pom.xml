@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-cloud-open-telemetry1</artifactId>
     <groupId>com.baeldung.spring.cloud</groupId>
@@ -62,12 +62,8 @@
         </dependency>
         <dependency>
             <groupId>io.opentelemetry</groupId>
-            <artifactId>opentelemetry-exporter-otlp-trace</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.grpc</groupId>
-            <artifactId>grpc-okhttp</artifactId>
-            <version>${grpc-okhttp.version}</version>
+            <artifactId>opentelemetry-exporter-otlp</artifactId>
+            <version>${otel-exporter-otlp.version}</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -93,24 +89,11 @@
         </plugins>
     </build>
 
-    <repositories>
-        <repository>
-            <id>spring-milestones</id>
-            <url>https://repo.spring.io/milestone</url>
-        </repository>
-    </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>spring-milestones</id>
-            <url>https://repo.spring.io/milestone</url>
-        </pluginRepository>
-    </pluginRepositories>
-
     <properties>
-        <spring-boot-dependencies.version>2.5.7</spring-boot-dependencies.version>
-        <release.train.version>2020.0.4</release.train.version>
-        <spring-cloud-sleuth-otel.version>1.0.0-M12</spring-cloud-sleuth-otel.version>
-        <grpc-okhttp.version>1.42.1</grpc-okhttp.version>
+        <spring-boot-dependencies.version>2.7.9</spring-boot-dependencies.version>
+        <release.train.version>2021.0.5</release.train.version>
+        <spring-cloud-sleuth-otel.version>1.1.2</spring-cloud-sleuth-otel.version>
+        <otel-exporter-otlp.version>1.23.1</otel-exporter-otlp.version>
     </properties>
 
 </project>

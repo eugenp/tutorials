@@ -1,8 +1,10 @@
 package com.baeldung.cloud.openfeign.customizederrorhandling.config;
 
-import com.baeldung.cloud.openfeign.exception.BadRequestException;
+
 import com.baeldung.cloud.openfeign.customizederrorhandling.exception.ProductNotFoundException;
 import com.baeldung.cloud.openfeign.customizederrorhandling.exception.ProductServiceNotAvailableException;
+import com.baeldung.cloud.openfeign.exception.BadRequestException;
+
 import feign.Response;
 import feign.codec.ErrorDecoder;
 

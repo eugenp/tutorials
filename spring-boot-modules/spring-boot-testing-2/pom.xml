@@ -66,6 +66,18 @@
             <artifactId>testcontainers</artifactId>
             <version>${testcontainers.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${testcontainers.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.redis.testcontainers</groupId>
+            <artifactId>testcontainers-redis-junit-jupiter</artifactId>
+            <version>1.4.6</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>

@@ -1,7 +1,8 @@
 package com.baeldung.cloud.openfeign.defaulterrorhandling.config;
 
-import feign.Logger;
 import org.springframework.context.annotation.Bean;
+
+import feign.Logger;
 
 public class FeignConfig {
 

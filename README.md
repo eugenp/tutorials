@@ -31,7 +31,7 @@ The projects are broadly divided into 3 lists: first, second and heavy.
 
 Next, they are segregated further on the basis of the tests that we want to execute.
 
-Additionally, there are 2 profiles dedicated for JDK9 and above builds.
+Additionally, there are 2 profiles dedicated for JDK9 and above builds - **which require JDK 17**.
 
 We also have a parents profile to build only parent modules.
 
@@ -73,6 +73,10 @@ and
 Building a single module
 ====================
 To build a specific module, run the command: `mvn clean install` in the module directory.
+
+It can happen that your module is part of a parent module e.g. `parent-boot-1`,`parent-spring-5` etc, then you will need to build the parent module first so that you can build your module.
+We have created a `parents` profile that you can use to build just the parent modules, just run the profile as:
+`mvn clean install -Pparents`
 
 
 Building modules from the root of the repository

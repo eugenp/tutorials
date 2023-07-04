@@ -1,12 +1,13 @@
 package com.baeldung.producerconsumer;
 
+import java.util.logging.Logger;
+
 public class Consumer implements Runnable {
+    private static final Logger log = Logger.getLogger(Consumer.class.getCanonicalName());
     private final DataQueue dataQueue;
-    private volatile boolean runFlag;
 
     public Consumer(DataQueue dataQueue) {
         this.dataQueue = dataQueue;
-        runFlag = true;
     }
 
     @Override
@@ -15,9 +16,8 @@ public class Consumer implements Runnable {
     }
 
     public void consume() {
-        while (runFlag) {
-            Message message;
-            if (dataQueue.isEmpty()) {
+        while (dataQueue.runFlag) {
+            while (dataQueue.isEmpty() && dataQueue.runFlag) {
                 try {
                     dataQueue.waitOnEmpty();
                 } catch (InterruptedException e) {
@@ -25,19 +25,21 @@ public class Consumer implements Runnable {
                     break;
                 }
             }
-            if (!runFlag) {
+            if (!dataQueue.runFlag) {
                 break;
             }
-            message = dataQueue.remove();
+            Message message = dataQueue.remove();
             dataQueue.notifyAllForFull();
             useMessage(message);
+
         }
-        System.out.println("Consumer Stopped");
+        log.info("Consumer Stopped");
     }
 
     private void useMessage(Message message) {
         if (message != null) {
-            System.out.printf("[%s] Consuming Message. Id: %d, Data: %f\n", Thread.currentThread().getName(), message.getId(), message.getData());
+            log.info(String.format("[%s] Consuming Message. Id: %d, Data: %f%n",
+                    Thread.currentThread().getName(), message.getId(), message.getData()));
 
             //Sleeping on random time to make it realistic
             ThreadUtil.sleep((long) (message.getData() * 100));
@@ -45,7 +47,7 @@ public class Consumer implements Runnable {
     }
 
     public void stop() {
-        runFlag = false;
+        dataQueue.runFlag = false;
         dataQueue.notifyAllForEmpty();
     }
 }

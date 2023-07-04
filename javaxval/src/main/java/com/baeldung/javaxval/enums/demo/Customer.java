@@ -1,6 +1,6 @@
 package com.baeldung.javaxval.enums.demo;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import com.baeldung.javaxval.enums.constraints.CustomerTypeSubset;
 import com.baeldung.javaxval.enums.constraints.EnumNamePattern;

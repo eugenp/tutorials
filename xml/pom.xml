@@ -181,6 +181,13 @@
                         </goals>
                     </execution>
                 </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.bcel</groupId>
+                        <artifactId>bcel</artifactId>
+                        <version>${bcel.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -368,6 +375,7 @@
         <jsoup.version>1.14.3</jsoup.version>
         <htmlcleaner.version>2.25</htmlcleaner.version>
         <jericho.version>3.4</jericho.version>
+        <bcel.version>6.7.0</bcel.version>
     </properties>
 
 </project>

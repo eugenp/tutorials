@@ -11,15 +11,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.baeldung.boot.csfle.data.Citizen;
-import com.baeldung.boot.csfle.data.EncryptedCitizen;
 import com.baeldung.boot.csfle.service.CitizenService;
 
 @RestController
 @RequestMapping("/citizen")
 public class CitizenController {
 
-    @Autowired
-    private CitizenService service;
+    private final CitizenService service;
+
+    public CitizenController(CitizenService service) {
+        this.service = service;
+    }
 
     @GetMapping
     public List<Citizen> get() {
@@ -32,7 +34,7 @@ public class CitizenController {
     }
 
     @PostMapping
-    public EncryptedCitizen post(@RequestBody Citizen citizen) {
+    public Object post(@RequestBody Citizen citizen) {
         return service.save(citizen);
     }
 }

@@ -18,7 +18,7 @@ public class GuideToJDOIntegrationTest {
     public void givenProduct_WhenNewThenPerformTransaction() {
         PersistenceUnitMetaData pumd = new PersistenceUnitMetaData("dynamic-unit", "RESOURCE_LOCAL", null);
         pumd.addClassName("com.baeldung.libraries.jdo.Product");
-        pumd.setExcludeUnlistedClasses();
+        pumd.setExcludeUnlistedClasses(true);
         pumd.addProperty("javax.jdo.option.ConnectionDriverName", "org.h2.Driver");
         pumd.addProperty("javax.jdo.option.ConnectionURL", "jdbc:h2:mem:mypersistence");
         pumd.addProperty("javax.jdo.option.ConnectionUserName", "sa");
@@ -53,7 +53,7 @@ public class GuideToJDOIntegrationTest {
     public void givenProduct_WhenQueryThenExist() {
         PersistenceUnitMetaData pumd = new PersistenceUnitMetaData("dynamic-unit", "RESOURCE_LOCAL", null);
         pumd.addClassName("com.baeldung.libraries.jdo.Product");
-        pumd.setExcludeUnlistedClasses();
+        pumd.setExcludeUnlistedClasses(true);
         pumd.addProperty("javax.jdo.option.ConnectionDriverName", "org.h2.Driver");
         pumd.addProperty("javax.jdo.option.ConnectionURL", "jdbc:h2:mem:mypersistence");
         pumd.addProperty("javax.jdo.option.ConnectionUserName", "sa");

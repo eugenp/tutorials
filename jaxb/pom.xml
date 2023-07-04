@@ -4,7 +4,6 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>jaxb</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <name>jaxb</name>
 
     <parent>
@@ -24,6 +23,11 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>${jaxb-runtime.version}</version>
         </dependency>
     </dependencies>
 
@@ -55,7 +59,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <execute />
+                                        <execute/>
                                     </action>
                                 </pluginExecution>
                             </pluginExecutions>
@@ -97,8 +101,9 @@
 
     <properties>
         <!-- maven plugins -->
-        <jaxb2-maven-plugin.version>2.3</jaxb2-maven-plugin.version>
+        <jaxb2-maven-plugin.version>3.1.0</jaxb2-maven-plugin.version>
         <lifecycle-mapping-plugin.version>1.0.0</lifecycle-mapping-plugin.version>
+        <jaxb-runtime.version>4.0.0</jaxb-runtime.version>
     </properties>
 
 </project>
