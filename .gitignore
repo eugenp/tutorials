@@ -70,6 +70,7 @@ jmeter/src/main/resources/*-JMeter*.csv
 jmeter/src/main/resources/*ReportsDashboard*.csv
 jmeter/src/main/resources/dashboard/*ReportsDashboard*.csv
 jmeter/src/main/resources/*FileExtractionExample.csv
+jmeter/src/main/resources/*_Summary-Report.csv
 
 ninja/devDb.mv.db
 
@@ -121,3 +122,6 @@ devDb*.db
 
 #jaxb
 *.xjb
+
+#neo4j
+persistence-modules/neo4j/data/**
