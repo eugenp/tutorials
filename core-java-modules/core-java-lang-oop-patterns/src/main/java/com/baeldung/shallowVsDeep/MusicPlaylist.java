@@ -12,12 +12,6 @@ public class MusicPlaylist {
         this.songList = songList;
     }
 
-    //        // Shallow Copy Constructor
-    //        public MusicPlaylist(MusicPlaylist musicPlaylist) {
-    //            this.playlistName = musicPlaylist.getPlaylistName();
-    //            this.songList = musicPlaylist.getSongList();
-    //        }
-
     // Deep Copy Constructor
     public MusicPlaylist(MusicPlaylist musicPlaylist) {
         this.playlistName = musicPlaylist.getPlaylistName();
@@ -25,6 +19,11 @@ public class MusicPlaylist {
         for (Song song : musicPlaylist.getSongList()) {
             this.songList.add(new Song(song));
         }
+    }
+
+    // Shallow Copy Method
+    public MusicPlaylist shallowCopy() {
+        return new MusicPlaylist(this.playlistName, this.songList);
     }
 
     public String getPlaylistName() {

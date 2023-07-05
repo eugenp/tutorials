@@ -5,6 +5,18 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-lang-oop-patterns</artifactId>
     <name>core-java-lang-oop-patterns</name>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>9</source>
+                    <target>9</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
     <packaging>jar</packaging>
 
     <parent>
