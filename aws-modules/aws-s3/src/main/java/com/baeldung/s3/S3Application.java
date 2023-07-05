@@ -23,8 +23,17 @@ public class S3Application {
             return;
         }
 
+
+        s3Service.putObjects(AWS_BUCKET, FileGenerator.generateFiles(1000, 1));
+
         //list all the buckets
         s3Service.listBuckets();
+        s3Service.listObjectsInBucket(AWS_BUCKET);
+        s3Service.listAllObjectsInBucket(AWS_BUCKET);
+        s3Service.listAllObjectsInBucketPaginated(AWS_BUCKET, 500);
+        s3Service.listAllObjectsInBucketPaginatedWithPrefix(AWS_BUCKET, 500, "backup/");
+
+
 
         //deleting bucket
         s3Service.deleteBucket("baeldung-bucket-test2");
