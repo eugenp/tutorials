@@ -7,7 +7,7 @@ import java.net.URISyntaxException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class ZipEntryReaderTest {
+public class ZipEntryReaderUnitTest {
 
     @Test
     public void givenZipFile_thenReadEntriesAndValidateContent() throws URISyntaxException, IOException {
