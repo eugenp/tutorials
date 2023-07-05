@@ -1,16 +1,16 @@
 package com.baeldung.digitsandnondigits;
 
+import static com.baeldung.digitsandnondigits.SplitDigitsAndNondigitsUnitTest.State.INIT;
+import static com.baeldung.digitsandnondigits.SplitDigitsAndNondigitsUnitTest.State.PARSING_DIGIT;
+import static com.baeldung.digitsandnondigits.SplitDigitsAndNondigitsUnitTest.State.PARSING_NON_DIGIT;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-
-import com.google.common.base.Stopwatch;
 
 public class SplitDigitsAndNondigitsUnitTest {
     private static final String INPUT1 = "01Michael Jackson23Michael Jordan42Michael Bolton999Michael Johnson000";
@@ -31,23 +31,27 @@ public class SplitDigitsAndNondigitsUnitTest {
         assertArrayEquals(EXPECTED2, result2);
     }
 
+    enum State {
+        INIT, PARSING_DIGIT, PARSING_NON_DIGIT
+    }
+
     static List<String> parseString(String input) {
         List<String> result = new ArrayList<>();
         int start = 0;
-        int state = 0; // 0: init; 1: digit; 2: non-digit
+        State state = INIT;
         for (int i = 0; i < input.length(); i++) {
             if (input.charAt(i) >= '0' && input.charAt(i) <= '9') {
-                if (state == 2) { // non-digit to digit
+                if (state == PARSING_NON_DIGIT) {
                     result.add(input.substring(start, i));
                     start = i;
                 }
-                state = 1;
+                state = PARSING_DIGIT;
             } else {
-                if (state == 1) {
+                if (state == PARSING_DIGIT) {
                     result.add(input.substring(start, i));
                     start = i;
                 }
-                state = 2;
+                state = PARSING_NON_DIGIT;
             }
         }
         result.add(input.substring(start));
