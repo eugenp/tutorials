@@ -17,8 +17,13 @@
         <dependency>
             <groupId>io.github.resilience4j</groupId>
             <artifactId>resilience4j-retry</artifactId>
-            <version>1.7.1</version>
+            <version>${resilience4j-retry.version}</version>
         </dependency>
+
     </dependencies>
+
+    <properties>
+        <resilience4j-retry.version>2.0.2</resilience4j-retry.version>
+    </properties>
 
 </project>

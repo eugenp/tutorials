@@ -19,23 +19,12 @@
         <dependency>
             <groupId>org.checkerframework</groupId>
             <artifactId>checker-qual</artifactId>
-            <version>${checker-qual.version}</version>
+            <version>${checker.version}</version>
         </dependency>
         <dependency>
             <groupId>org.checkerframework</groupId>
             <artifactId>checker</artifactId>
             <version>${checker.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.checkerframework</groupId>
-            <artifactId>jdk8</artifactId>
-            <version>${jdk8.version}</version>
-        </dependency>
-        <!-- The Type Annotations compiler. Uncomment if using annotations in comments. -->
-        <dependency>
-            <groupId>org.checkerframework</groupId>
-            <artifactId>compiler</artifactId>
-            <version>${checkerframework.compiler.version}</version>
         </dependency>
     </dependencies>
 
@@ -45,32 +34,34 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                    <!-- Uncomment the following line to use the type annotations compiler. -->
-                    <!-- <fork>true</fork> -->
-                    <compilerArguments>
-                        <Xmaxerrs>10000</Xmaxerrs>
-                        <Xmaxwarns>10000</Xmaxwarns>
-                    </compilerArguments>
+                    <fork>true</fork>
+                    <compilerArgument>-Xlint:all</compilerArgument>
+                    <showWarnings>true</showWarnings>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.checkerframework</groupId>
+                            <artifactId>checker</artifactId>
+                            <version>${checker.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
                     <annotationProcessors>
-                        <!-- Add all the checkers you want to enable here -->
                         <annotationProcessor>org.checkerframework.checker.nullness.NullnessChecker</annotationProcessor>
                         <annotationProcessor>org.checkerframework.checker.interning.InterningChecker</annotationProcessor>
                         <annotationProcessor>org.checkerframework.checker.fenum.FenumChecker</annotationProcessor>
                         <annotationProcessor>org.checkerframework.checker.formatter.FormatterChecker</annotationProcessor>
                         <annotationProcessor>org.checkerframework.checker.regex.RegexChecker</annotationProcessor>
                     </annotationProcessors>
-                    <compilerArgs>
-                        <arg>-AprintErrorStack</arg>
-
-                        <!-- location of the annotated JDK, which comes from a Maven dependency -->
-                        <arg>-Xbootclasspath/p:${annotatedJdk}</arg>
-                        <!-- -->
-                        <!-- Uncomment the following line to use the type annotations compiler. -->
-                        <!-- <arg>-J-Xbootclasspath/p:${typeAnnotationsJavac}</arg> -->
-                        <!-- Uncomment the following line to turn type-checking warnings into errors. -->
+                    <compilerArgs combine.children="append">
                         <arg>-Awarns</arg>
+                        <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED</arg>
+                        <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED</arg>
+                        <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED</arg>
+                        <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED</arg>
+                        <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.model=ALL-UNNAMED</arg>
+                        <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED</arg>
+                        <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED</arg>
+                        <arg>-J--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED</arg>
+                        <arg>-J--add-opens=jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED</arg>
                     </compilerArgs>
                 </configuration>
             </plugin>
@@ -78,14 +69,7 @@
     </build>
 
     <properties>
-        <!-- These properties will be set by the Maven Dependency plugin -->
-        <annotatedJdk>${org.checkerframework:jdk8:jar}</annotatedJdk>
-        <!-- Uncomment to use the Type Annotations compiler. -->
-        <!-- <typeAnnotationsJavac>${org.checkerframework:compiler:jar}</typeAnnotationsJavac> -->
-        <checker-qual.version>2.3.1</checker-qual.version>
-        <checker.version>2.3.1</checker.version>
-        <jdk8.version>2.3.1</jdk8.version>
-        <checkerframework.compiler.version>2.3.1</checkerframework.compiler.version>
+        <checker.version>3.35.0</checker.version>
     </properties>
 
 </project>
