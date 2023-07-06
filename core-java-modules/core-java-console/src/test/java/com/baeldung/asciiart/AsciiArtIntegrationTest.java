@@ -1,9 +1,10 @@
 package com.baeldung.asciiart;
 
-import com.baeldung.asciiart.AsciiArt.Settings;
-import org.junit.Test;
+import java.awt.Font;
 
-import java.awt.*;
+import org.junit.jupiter.api.Test;
+
+import com.baeldung.asciiart.AsciiArt.Settings;
 
 public class AsciiArtIntegrationTest {
 
