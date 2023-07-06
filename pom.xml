@@ -666,7 +666,6 @@
                 </plugins>
             </build>
 
-
         </profile>
 
         <profile>
@@ -851,7 +850,6 @@
                 <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>javaxval-2</module>
-                <module>javax-validation-advanced</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
                 <module>jib</module>
@@ -893,7 +891,6 @@
                 <module>protobuffer</module>
                 <module>reactor-core</module>
                 <module>rsocket</module>
-
 
                 <!--  Modules from default second-->
                 <module>spring-5</module>
@@ -1122,7 +1119,6 @@
                 <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>javaxval-2</module>
-                <module>javax-validation-advanced</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
                 <module>jib</module>
@@ -1164,7 +1160,6 @@
                 <module>protobuffer</module>
                 <module>reactor-core</module>
                 <module>rsocket</module>
-
 
                 <!--  Modules from default second-->
 

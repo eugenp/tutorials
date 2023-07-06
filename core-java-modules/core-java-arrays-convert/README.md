@@ -7,3 +7,4 @@ This module contains articles about arrays conversion in Java
 - [Converting Between Stream and Array in Java](https://www.baeldung.com/java-stream-to-array)
 - [Convert a Byte Array to a Numeric Representation in Java](https://www.baeldung.com/java-byte-array-to-number)
 - [Converting a String Array Into an int Array in Java](https://www.baeldung.com/java-convert-string-array-to-int-array)
+- [Convert Java Array to Iterable](https://www.baeldung.com/java-array-convert-to-iterable)

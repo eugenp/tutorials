@@ -7,10 +7,10 @@ import java.io.IOException;
 
 import org.junit.jupiter.api.Test;
 
-public class FileReaderUnitTest {
+class FileReaderUnitTest {
 
     @Test
-    public void whenReadingAFile_thenReadsCharByChar() {
+    void whenReadingAFile_thenReadsCharByChar() {
         StringBuilder result = new StringBuilder();
 
         try (FileReader fr = new FileReader("src/test/resources/sampleText2.txt")) {

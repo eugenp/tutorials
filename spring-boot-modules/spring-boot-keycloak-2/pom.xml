@@ -77,7 +77,6 @@
             <version>${keycloak.version}</version>
         </dependency>
 
-
     </dependencies>
 
     <build>
