@@ -31,9 +31,6 @@ public class EurekaContainerConfig {
                 + eurekaServer.getFirstMappedPort().toString()
                 + "/eureka")
               .applyTo(configurableApplicationContext);
-
         }
-
     }
-
 }
