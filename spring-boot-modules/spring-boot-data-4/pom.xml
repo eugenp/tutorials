@@ -15,18 +15,18 @@
 	<properties>
 		<java.version>17</java.version>
 	</properties>
-	<dependencies>
 
+	<dependencies>
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-<dependency>
-	<groupId>org.mybatis</groupId>
-	<artifactId>mybatis</artifactId>
-	<version>3.5.13</version>
-</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.5.13</version>
+		</dependency>
 	</dependencies>
 
 </project>
