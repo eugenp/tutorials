@@ -68,7 +68,6 @@
         </plugins>
     </build>
 
-
     <properties>
         <dom4j.version>2.1.3</dom4j.version>
         <jackson.version>2.14.1</jackson.version>

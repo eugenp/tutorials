@@ -80,7 +80,6 @@
         </plugins>
     </build>
 
-
     <properties>
         <commons-dbcp2.version>2.9.0</commons-dbcp2.version>
         <log4j-core.version>2.19.0</log4j-core.version>

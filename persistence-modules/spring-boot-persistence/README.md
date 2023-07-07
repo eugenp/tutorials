@@ -7,4 +7,5 @@
 - [Resolving “Failed to Configure a DataSource” Error](https://www.baeldung.com/spring-boot-failed-to-configure-data-source)
 - [Hibernate Field Naming with Spring Boot](https://www.baeldung.com/hibernate-field-naming-spring-boot)
 - [Spring Boot with Hibernate](https://www.baeldung.com/spring-boot-hibernate)
+- [A Guide to Spring AbstractRoutingDatasource](https://www.baeldung.com/spring-abstract-routing-data-source)
 - More articles: [[more -->]](../spring-boot-persistence-2)
