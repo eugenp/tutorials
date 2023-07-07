@@ -57,53 +57,46 @@ public class SqlScriptApplication {
 				{
 					case 1:
 						// Running SQL Script using Plain Java
-for (String sql : sqlLines) {
-	System.out.println("Query: " + sql);
+							for (String sql : sqlLines) {
+								System.out.println("Query: " + sql);
 
-	if (sql.contains("SELECT")) {
-		ResultSet rs = stmt.executeQuery(sql);
-		System.out.print("ID" + "\t" + "Name" + "\t" + "Surname" + "\t" + "Age");
-		System.out.println("");
-		// Extract data from result set
-		while (rs.next()) {
-			// Retrieve by column name
-			int id = rs.getRow();
-			int age = rs.getInt("age");
-			String name = rs.getString("name");
-			String surname = rs.getString("surname");
+								if (sql.contains("SELECT")) {
+									ResultSet rs = stmt.executeQuery(sql);
+									System.out.print("ID" + "\t" + "Name" + "\t" + "Surname" + "\t" + "Age");
+									System.out.println("");
+									// Extract data from result set
+									while (rs.next()) {
+										// Retrieve by column name
+										int id = rs.getRow();
+										int age = rs.getInt("age");
+										String name = rs.getString("name");
+										String surname = rs.getString("surname");
 
-			// Display values
-			System.out.print(id + "\t" + name + "\t" + surname + "\t" + age);
-			System.out.println("");
-		}
-	}
-	else
-		stmt.execute(sql);
-}
+										// Display values
+										System.out.print(id + "\t" + name + "\t" + surname + "\t" + age);
+										System.out.println("");
+									}
+								}
+								else
+									stmt.execute(sql);
+							}
 
 						break;
 
 					case 2:
-// Running SQL Script using Apache iBatis
-ScriptRunner scriptExecutor = new ScriptRunner(conn);
-try (BufferedReader reader = new BufferedReader(new FileReader(filePath)))
-{
-	//Replaced boilerplate code with ScriptRunner
-	scriptExecutor.runScript(reader);
-} catch (FileNotFoundException e) {
-	throw new RuntimeException(e);
-} catch (IOException e) {
-	throw new RuntimeException(e);
-}
+						// Running SQL Script using Apache iBatis
+						ScriptRunner scriptExecutor = new ScriptRunner(conn);
+						try (BufferedReader reader = new BufferedReader(new FileReader(filePath)))
+						{
+							//Replaced boilerplate code with ScriptRunner
+							scriptExecutor.runScript(reader);
+						} catch (FileNotFoundException e) {
+							throw new RuntimeException(e);
+						} catch (IOException e) {
+							throw new RuntimeException(e);
+						}
 						break;
-
-
-
-
 				}
-
-
-
 			}
 		catch(SQLException se)
 		{
