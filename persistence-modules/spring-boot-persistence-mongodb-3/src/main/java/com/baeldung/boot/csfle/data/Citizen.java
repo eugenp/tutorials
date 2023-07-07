@@ -9,15 +9,6 @@ public class Citizen {
     private String email;
     private Integer birthYear;
 
-    public Citizen() {
-    }
-
-    public Citizen(EncryptedCitizen encryptedCitizen) {
-        if (encryptedCitizen != null) {
-            this.name = encryptedCitizen.getName();
-        }
-    }
-
     public String getName() {
         return name;
     }

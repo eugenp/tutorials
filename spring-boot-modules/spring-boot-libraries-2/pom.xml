@@ -16,7 +16,7 @@
             <dependency>
                 <groupId>org.springframework.experimental</groupId>
                 <artifactId>spring-modulith-bom</artifactId>
-                <version>0.5.1</version>
+                <version>${spring-modulith-bom.version}</version>
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
@@ -48,7 +48,7 @@
         <dependency>
             <groupId>org.jobrunr</groupId>
             <artifactId>jobrunr-spring-boot-starter</artifactId>
-            <version>${jobrunr.version}</version>
+            <version>${jobrunr-spring-boot-starter.version}</version>
         </dependency>
         <!-- openapi -->
         <dependency>
@@ -59,7 +59,7 @@
         <dependency>
             <groupId>org.openapitools</groupId>
             <artifactId>jackson-databind-nullable</artifactId>
-            <version>${jackson-databind.version}</version>
+            <version>${jackson-databind-nullable.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springdoc</groupId>
@@ -80,23 +80,23 @@
         <dependency>
             <groupId>org.reflections</groupId>
             <artifactId>reflections</artifactId>
-            <version>0.10.2</version>
+            <version>${reflections.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jboss</groupId>
             <artifactId>jandex</artifactId>
-            <version>2.4.3.Final</version>
+            <version>${jandex.version}</version>
         </dependency>
         <dependency>
             <groupId>io.github.resilience4j</groupId>
             <artifactId>resilience4j-spring-boot2</artifactId>
-            <version>1.7.0</version>
+            <version>${resilience4j-spring-boot2.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.github.tomakehurst/wiremock-jre8 -->
         <dependency>
             <groupId>com.github.tomakehurst</groupId>
             <artifactId>wiremock-jre8</artifactId>
-            <version>2.34.0</version>
+            <version>${wiremock-jre8.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -141,7 +141,7 @@
             <plugin>
                 <groupId>org.jboss.jandex</groupId>
                 <artifactId>jandex-maven-plugin</artifactId>
-                <version>1.2.3</version>
+                <version>${jandex-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <phase>compile</phase>
@@ -163,11 +163,17 @@
     </build>
 
     <properties>
-        <jobrunr.version>3.1.1</jobrunr.version>
+        <spring-modulith-bom.version>0.5.1</spring-modulith-bom.version>
+        <jobrunr-spring-boot-starter.version>3.1.1</jobrunr-spring-boot-starter.version>
         <awaitility.version>4.0.3</awaitility.version>
         <openapi-generator.version>5.3.0</openapi-generator.version>
         <spring.data.version>2.4.5</spring.data.version>
-        <jackson-databind.version>0.2.1</jackson-databind.version>
+        <jackson-databind-nullable.version>0.2.1</jackson-databind-nullable.version>
+        <reflections.version>0.10.2</reflections.version>
+        <jandex.version>2.4.3.Final</jandex.version>
+        <resilience4j-spring-boot2.version>2.0.2</resilience4j-spring-boot2.version>
+        <wiremock-jre8.version>2.34.0</wiremock-jre8.version>
+        <jandex-maven-plugin.version>1.2.3</jandex-maven-plugin.version>
         <springdoc.version>1.7.0</springdoc.version>
         <start-class>com.baeldung.openapi.OpenApiApplication</start-class>
     </properties>

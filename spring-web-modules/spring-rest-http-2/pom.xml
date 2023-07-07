@@ -37,16 +37,16 @@
             <artifactId>resilience4j-timelimiter</artifactId>
             <version>${resilience4j.version}</version>
         </dependency>
-	<dependency>
-	    <groupId>org.springdoc</groupId>
-	    <artifactId>springdoc-openapi-ui</artifactId>
-	    <version>${springdoc.version}</version>
-	</dependency>
-	<dependency>
-	    <groupId>com.google.guava</groupId>
-	    <artifactId>guava</artifactId>
-	    <version>${guava.version}</version>
-	</dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>${springdoc.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>

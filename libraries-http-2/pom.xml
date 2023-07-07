@@ -88,25 +88,25 @@
             <version>${mockito.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency> 
-    		<groupId>org.jmockit</groupId> 
-    		<artifactId>jmockit</artifactId> 
-    		<version>${jmockit.version}</version>
-		</dependency>
+        <dependency>
+            <groupId>org.jmockit</groupId>
+            <artifactId>jmockit</artifactId>
+            <version>${jmockit.version}</version>
+        </dependency>
     </dependencies>
-    
+
     <build>
-    	<plugins>
-    		<plugin>
-            	<artifactId>maven-surefire-plugin</artifactId>
-		            <configuration>
-		               <argLine>
-		                  -javaagent:${settings.localRepository}/org/jmockit/jmockit/${jmockit.version}/jmockit-${jmockit.version}.jar
-		               </argLine>
-		            </configuration>
-	         </plugin>
-    	</plugins>
-    </build>     
+        <plugins>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <argLine>
+                        -javaagent:${settings.localRepository}/org/jmockit/jmockit/${jmockit.version}/jmockit-${jmockit.version}.jar
+                    </argLine>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <properties>
         <okhttp.version>4.9.1</okhttp.version>

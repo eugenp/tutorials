@@ -26,23 +26,6 @@
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
         </dependency>
-        <!-- http client -->
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>${httpclient.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpcore</artifactId>
-            <version>${httpcore.version}</version>
-        </dependency>
         <!-- marshalling -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -66,17 +49,13 @@
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>
             <version>${cucumber.version}</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jbehave</groupId>
             <artifactId>jbehave-core</artifactId>
             <version>${jbehave.version}</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.intuit.karate</groupId>
-            <artifactId>karate-apache</artifactId>
-            <version>${karate.version}</version>
         </dependency>
         <dependency>
             <groupId>com.intuit.karate</groupId>
@@ -94,6 +73,18 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
+        <testResources>
+            <!-- https://github.com/karatelabs/karate#folder-structure -->
+            <testResource>
+                <directory>src/test/java</directory>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </testResource>
+            <testResource>
+                <directory>src/test/resources</directory>
+            </testResource>
+        </testResources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -145,9 +136,7 @@
         <rest-assured.version>2.9.0</rest-assured.version>
         <cucumber.version>6.8.0</cucumber.version>
         <wiremock.version>2.21.0</wiremock.version>
-        <karate.version>0.6.1</karate.version>
-        <httpcore.version>4.4.5</httpcore.version>
-        <httpclient.version>4.5.2</httpclient.version>
+        <karate.version>1.3.1</karate.version>
         <jbehave.version>4.1</jbehave.version>
     </properties>
 
