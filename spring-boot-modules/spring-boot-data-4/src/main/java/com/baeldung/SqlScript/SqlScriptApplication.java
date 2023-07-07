@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Scanner;
 
 
+@SpringBootApplication
 public class SqlScriptApplication {
 	// JDBC driver name and database URL
 	static final String JDBC_DRIVER = "org.h2.Driver";
