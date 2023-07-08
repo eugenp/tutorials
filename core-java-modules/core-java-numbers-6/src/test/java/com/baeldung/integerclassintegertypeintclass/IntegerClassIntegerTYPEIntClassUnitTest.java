@@ -4,7 +4,7 @@ import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
 public class IntegerClassIntegerTYPEIntClassUnitTest {
-    
+
     @Test
     public void givenIntegerClass_whenGetName_thenVerifyClassName() {
         Class<Integer> integerClass = Integer.class;
@@ -12,24 +12,29 @@ public class IntegerClassIntegerTYPEIntClassUnitTest {
         Assertions.assertEquals(Number.class, integerClass.getSuperclass());
         Assertions.assertFalse(integerClass.isPrimitive());
     }
-    
-    public void processInteger(Integer value) {
-        Assertions.assertEquals("Integer", value.getClass().getSimpleName());
+
+    public int sum(int a, int b) {
+        return a + b;
     }
-    
-    public void processInt(int value) {
-        Assertions.assertEquals("int", Integer.TYPE.getName());
+
+    public int sum(Integer a, Integer b) {
+        return a + b;
     }
-    
+
+    public int sum(int a, Integer b) {
+        return a + b;
+    }
+
     @Test
-    public void givenIntegerType_whenProcessIntegerAndProcessInt_thenVerifyClassNames() {
-        int intValue = 42;
-        Integer integerValue = 42;
-        processInteger(intValue);
-        processInteger(integerValue);
-        processInt(intValue);
+    public void givenIntAndInteger_whenAddingValues_thenVerifySum() {
+        int primitiveValue = 10;
+        Integer wrapperValue = Integer.valueOf(primitiveValue);
+        Assertions.assertEquals(20, sum(primitiveValue, primitiveValue));
+        Assertions.assertEquals(20, sum(primitiveValue, wrapperValue));
+        Assertions.assertEquals(20, sum(wrapperValue, wrapperValue));
+        Assertions.assertEquals(Integer.TYPE.getName(), int.class.getName());
     }
-    
+
     @Test
     public void givenIntValue_whenUsingIntClass_thenVerifyIntClassProperties() {
         int intValue = 42;
