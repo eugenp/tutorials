@@ -2,6 +2,7 @@ package com.baeldung.java.properties;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import org.junit.jupiter.api.BeforeEach;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
