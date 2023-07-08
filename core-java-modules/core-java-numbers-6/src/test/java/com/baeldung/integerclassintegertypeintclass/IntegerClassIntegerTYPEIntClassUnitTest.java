@@ -38,5 +38,4 @@ public class IntegerClassIntegerTYPEIntClassUnitTest {
         Assertions.assertTrue(intClass.isPrimitive());
         Assertions.assertEquals(int.class, intClass);
     }
-    
 }
