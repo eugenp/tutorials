@@ -12,12 +12,15 @@ public class IntegerClassIntegerTYPEIntClassUnitTest {
         Assertions.assertEquals(Number.class, integerClass.getSuperclass());
         Assertions.assertFalse(integerClass.isPrimitive());
     }
+    
     public void processInteger(Integer value) {
         Assertions.assertEquals("Integer", value.getClass().getSimpleName());
     }
+    
     public void processInt(int value) {
         Assertions.assertEquals("int", Integer.TYPE.getName());
     }
+    
     @Test
     public void givenIntegerType_whenProcessIntegerAndProcessInt_thenVerifyClassNames() {
         int intValue = 42;
@@ -26,6 +29,7 @@ public class IntegerClassIntegerTYPEIntClassUnitTest {
         processInteger(integerValue);
         processInt(intValue);
     }
+    
     @Test
     public void givenIntValue_whenUsingIntClass_thenVerifyIntClassProperties() {
         int intValue = 42;
@@ -34,4 +38,5 @@ public class IntegerClassIntegerTYPEIntClassUnitTest {
         Assertions.assertTrue(intClass.isPrimitive());
         Assertions.assertEquals(int.class, intClass);
     }
+    
 }
