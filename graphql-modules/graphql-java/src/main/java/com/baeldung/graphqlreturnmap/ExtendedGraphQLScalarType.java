@@ -19,6 +19,6 @@ public class ExtendedGraphQLScalarType extends GraphQLScalarType {
     }
 
     public ExtendedGraphQLScalarType(String name, String description, Coercing coercing, List<GraphQLDirective> directives, ScalarTypeDefinition definition) {
-        super(name, description, coercing, directives, definition);
+        super(name, description, coercing, definition);
     }
 }

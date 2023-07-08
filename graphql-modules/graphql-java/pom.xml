@@ -5,6 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>graphql-java</artifactId>
     <name>graphql-java</name>
+    <packaging>war</packaging>
 
     <parent>
         <groupId>com.baeldung.graphql</groupId>
@@ -27,11 +28,6 @@
             <groupId>com.github.americanexpress.nodes</groupId>
             <artifactId>nodes</artifactId>
             <version>${nodes.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.graphql-java</groupId>
-            <artifactId>graphql-java</artifactId>
-            <version>${graphql-java.version}</version>
         </dependency>
         <dependency>
             <groupId>com.graphql-java</groupId>
