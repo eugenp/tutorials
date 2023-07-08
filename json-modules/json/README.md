@@ -12,4 +12,5 @@ This module contains articles about JSON.
 - [Iterating Over an Instance of org.json.JSONObject](https://www.baeldung.com/jsonobject-iteration)
 - [Escape JSON String in Java](https://www.baeldung.com/java-json-escaping)
 - [Reducing JSON Data Size](https://www.baeldung.com/json-reduce-data-size)
+- [Pretty Print JSON in Java](https://www.baeldung.com/pretty-print-a-json-in-java)
 - More Articles: [[next -->]](../json-2)

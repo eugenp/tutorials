@@ -14,7 +14,7 @@ public class JsonPrettyPrinterUnitTest {
     private core.JsonPrettyPrinter jsonPrettyPrinter = new core.JsonPrettyPrinter();
 
     @Test
-    public void testPrettyPrintJsonUsingDefaultPrettyPrinter() throws JsonProcessingException {
+    public void shouldPrettyPrintJsonStringUsingDefaultPrettyPrinter() throws JsonProcessingException {
         String formattedJsonString = jsonPrettyPrinter.prettyPrintJsonUsingDefaultPrettyPrinter(uglyJsonString);
         String expectedJson = "{\n" +
             "  \"one\" : \"AAA\",\n" +
@@ -28,7 +28,7 @@ public class JsonPrettyPrinterUnitTest {
     }
 
     @Test
-    public void testPrettyPrintUsingGlobalSetting() throws JsonProcessingException {
+    public void shouldPrettyPrintJsonStringUsingGlobalSetting() throws JsonProcessingException {
         String formattedJsonString = jsonPrettyPrinter.prettyPrintUsingGlobalSetting(uglyJsonString);
         String expectedJson = "{\n" +
             "  \"one\" : \"AAA\",\n" +
@@ -42,7 +42,7 @@ public class JsonPrettyPrinterUnitTest {
     }
 
     @Test
-    public void testPrettyPrintUsingGson() {
+    public void shouldPrettyPrintJsonStringUsingGson() {
         String formattedJsonString = jsonPrettyPrinter.prettyPrintUsingGson(uglyJsonString);
         String expectedPrettyJson = "{\n" +
             "  \"one\": \"AAA\",\n" +
