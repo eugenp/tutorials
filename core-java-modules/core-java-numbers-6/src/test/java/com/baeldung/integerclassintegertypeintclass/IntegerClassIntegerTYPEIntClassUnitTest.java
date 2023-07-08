@@ -37,7 +37,6 @@ public class IntegerClassIntegerTYPEIntClassUnitTest {
 
     @Test
     public void givenIntValue_whenUsingIntClass_thenVerifyIntClassProperties() {
-        int intValue = 42;
         Class<?> intClass = int.class;
         Assertions.assertEquals("int", intClass.getName());
         Assertions.assertTrue(intClass.isPrimitive());
