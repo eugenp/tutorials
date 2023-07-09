@@ -1,6 +1,8 @@
 package com.baeldung.stateless;
 
-public class BubbleSort implements SortingStrategy {
+public enum BubbleSort implements SortingStrategy {
+    
+    INSTANCE;
 
     @Override
     public void sort(int[] array) {

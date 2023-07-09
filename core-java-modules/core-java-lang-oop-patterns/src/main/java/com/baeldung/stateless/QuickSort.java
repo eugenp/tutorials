@@ -1,6 +1,8 @@
 package com.baeldung.stateless;
 
-public class QuickSort implements SortingStrategy {
+public enum QuickSort implements SortingStrategy {
+    
+    INSTANCE;
 
     @Override
     public void sort(int[] array) {
