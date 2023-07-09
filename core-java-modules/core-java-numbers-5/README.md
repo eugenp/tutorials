@@ -7,5 +7,5 @@
 - [Make Division of Two Integers Result in a Float](https://www.baeldung.com/java-integer-division-float-result)
 - [Creating Random Numbers With No Duplicates in Java](https://www.baeldung.com/java-unique-random-numbers)
 - [Multiply a BigDecimal by an Integer in Java](https://www.baeldung.com/java-bigdecimal-multiply-integer)
-- [Check if an Integer Value is null or Zero in Java](https://www.baeldung.com/java-check-integer-null-or-zero)
+- [Check if an Integer Value Is Null or Zero in Java](https://www.baeldung.com/java-check-integer-null-or-zero)
 - [Return Absolute Difference of Two Integers in Java](https://www.baeldung.com/java-absolute-difference-of-two-integers)

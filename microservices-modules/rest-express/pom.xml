@@ -24,7 +24,6 @@
     <artifactId>rest-express</artifactId>
     <packaging>jar</packaging>
 
-
     <dependencies>
         <dependency>
             <groupId>com.strategicgains</groupId>

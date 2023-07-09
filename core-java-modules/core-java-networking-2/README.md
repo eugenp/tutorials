@@ -12,6 +12,6 @@ This module contains articles about networking in Java
 - [Authentication with HttpUrlConnection](https://www.baeldung.com/java-http-url-connection)
 - [Download a File From an URL in Java](https://www.baeldung.com/java-download-file)
 - [Handling java.net.ConnectException](https://www.baeldung.com/java-net-connectexception)
-- [Getting MAC addresses in Java](https://www.baeldung.com/java-mac-address)
+- [Getting MAC Addresses in Java](https://www.baeldung.com/java-mac-address)
 - [Sending Emails with Attachments in Java](https://www.baeldung.com/java-send-emails-attachments)
 - [[<-- Prev]](/core-java-modules/core-java-networking)

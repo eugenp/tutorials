@@ -4,10 +4,12 @@ import com.baeldung.swaggerresponses.response.CustomerResponse;
 import com.baeldung.swaggerresponses.response.ErrorResponse;
 import com.baeldung.swaggerresponses.service.CustomerService;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api("Customer Controller")
+@Tag(name = "Customer Controller")
 @RestController
 @RequestMapping("/customers")
 public class CustomerController {
@@ -26,11 +28,11 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @ApiOperation(value = "Gets customer by ID", response = CustomerResponse.class, notes = "Customer must exist")
+    @Operation(summary = "Gets customer by ID", description = "Customer must exist")
     @ApiResponses(value = {
-        @ApiResponse(code = 400, message = "Invalid ID supplied"),
-        @ApiResponse(code = 404, message = "Customer not found"),
-        @ApiResponse(code = 500, message = "Internal server error", response = ErrorResponse.class) })
+            @ApiResponse(responseCode = "200", description = "Ok", content = { @Content(mediaType = "application/json", schema = @Schema(implementation = CustomerResponse.class)) }),
+            @ApiResponse(responseCode = "400", description = "Invalid ID supplied"), @ApiResponse(responseCode = "404", description = "Customer not found"),
+            @ApiResponse(responseCode = "500", description = "Internal server error", content = { @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorResponse.class)) }) })
     @GetMapping("/{id}")
     public ResponseEntity<CustomerResponse> getCustomer(@PathVariable("id") Long id) {
         return ResponseEntity.ok(customerService.getById(id));

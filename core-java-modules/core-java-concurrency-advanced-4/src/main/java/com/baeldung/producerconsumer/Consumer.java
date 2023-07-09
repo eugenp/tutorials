@@ -17,22 +17,21 @@ public class Consumer implements Runnable {
 
     public void consume() {
         while (dataQueue.runFlag) {
-            synchronized (dataQueue) {
-                while (dataQueue.isEmpty() && dataQueue.runFlag) {
-                    try {
-                        dataQueue.waitOnEmpty();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                        break;
-                    }
-                }
-                if (!dataQueue.runFlag) {
+            while (dataQueue.isEmpty() && dataQueue.runFlag) {
+                try {
+                    dataQueue.waitOnEmpty();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                     break;
                 }
-                Message message = dataQueue.remove();
-                dataQueue.notifyAllForFull();
-                useMessage(message);
             }
+            if (!dataQueue.runFlag) {
+                break;
+            }
+            Message message = dataQueue.remove();
+            dataQueue.notifyAllForFull();
+            useMessage(message);
+
         }
         log.info("Consumer Stopped");
     }
@@ -40,7 +39,7 @@ public class Consumer implements Runnable {
     private void useMessage(Message message) {
         if (message != null) {
             log.info(String.format("[%s] Consuming Message. Id: %d, Data: %f%n",
-                Thread.currentThread().getName(), message.getId(), message.getData()));
+                    Thread.currentThread().getName(), message.getId(), message.getData()));
 
             //Sleeping on random time to make it realistic
             ThreadUtil.sleep((long) (message.getData() * 100));

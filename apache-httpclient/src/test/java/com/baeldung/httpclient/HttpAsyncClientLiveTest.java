@@ -9,15 +9,12 @@ import java.util.concurrent.Future;
 
 import javax.net.ssl.SSLContext;
 
-import org.junit.jupiter.api.Test;
-
 import org.apache.hc.client5.http.async.methods.SimpleHttpRequest;
 import org.apache.hc.client5.http.async.methods.SimpleHttpResponse;
 import org.apache.hc.client5.http.async.methods.SimpleRequestBuilder;
 import org.apache.hc.client5.http.auth.AuthScope;
 import org.apache.hc.client5.http.auth.UsernamePasswordCredentials;
 import org.apache.hc.client5.http.classic.methods.HttpGet;
-import org.apache.hc.client5.http.config.RequestConfig;
 import org.apache.hc.client5.http.cookie.BasicCookieStore;
 import org.apache.hc.client5.http.impl.async.CloseableHttpAsyncClient;
 import org.apache.hc.client5.http.impl.async.HttpAsyncClients;
@@ -25,9 +22,9 @@ import org.apache.hc.client5.http.impl.auth.BasicCredentialsProvider;
 import org.apache.hc.client5.http.impl.cookie.BasicClientCookie;
 import org.apache.hc.client5.http.impl.nio.PoolingAsyncClientConnectionManager;
 import org.apache.hc.client5.http.impl.nio.PoolingAsyncClientConnectionManagerBuilder;
+import org.apache.hc.client5.http.impl.routing.DefaultProxyRoutePlanner;
 import org.apache.hc.client5.http.protocol.HttpClientContext;
 import org.apache.hc.client5.http.ssl.ClientTlsStrategyBuilder;
-import org.apache.hc.core5.concurrent.FutureCallback;
 import org.apache.hc.core5.http.HttpHost;
 import org.apache.hc.core5.http.HttpResponse;
 import org.apache.hc.core5.http.nio.ssl.TlsStrategy;
@@ -36,9 +33,11 @@ import org.apache.hc.core5.http.protocol.HttpContext;
 import org.apache.hc.core5.reactor.IOReactorConfig;
 import org.apache.hc.core5.ssl.SSLContexts;
 import org.apache.hc.core5.ssl.TrustStrategy;
+import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
+import org.junit.jupiter.api.Test;
 
 
-class HttpAsyncClientLiveTest {
+class HttpAsyncClientLiveTest extends GetRequestMockServer {
 
     private static final String HOST = "http://www.google.com";
     private static final String HOST_WITH_SSL = "https://mms.nw.ru/";
@@ -55,12 +54,10 @@ class HttpAsyncClientLiveTest {
 
     @Test
     void whenUseHttpAsyncClient_thenCorrect() throws InterruptedException, ExecutionException, IOException {
-        final HttpHost target = new HttpHost(HOST);
-        final SimpleHttpRequest request = SimpleRequestBuilder.get()
-            .setHttpHost(target)
+        final SimpleHttpRequest request = SimpleRequestBuilder.get(HOST_WITH_COOKIE)
             .build();
-
-        final CloseableHttpAsyncClient client = HttpAsyncClients.createDefault();
+        final CloseableHttpAsyncClient client = HttpAsyncClients.custom()
+            .build();
         client.start();
 
 
@@ -102,30 +99,15 @@ class HttpAsyncClientLiveTest {
 
     @Test
     void whenUseProxyWithHttpClient_thenCorrect() throws Exception {
-        final CloseableHttpAsyncClient client = HttpAsyncClients.createDefault();
+        final HttpHost proxy = new HttpHost("127.0.0.1", GetRequestMockServer.serverPort);
+        DefaultProxyRoutePlanner routePlanner = new DefaultProxyRoutePlanner(proxy);
+        final CloseableHttpAsyncClient client = HttpAsyncClients.custom()
+            .setRoutePlanner(routePlanner)
+            .build();
         client.start();
-        final HttpHost proxy = new HttpHost("127.0.0.1", 8080);
-        final RequestConfig config = RequestConfig.custom().setProxy(proxy).build();
+
         final SimpleHttpRequest request = new SimpleHttpRequest("GET" ,HOST_WITH_PROXY);
-        request.setConfig(config);
-        final Future<SimpleHttpResponse> future = client.execute(request, new FutureCallback<>(){
-            @Override
-            public void completed(SimpleHttpResponse response) {
-
-                System.out.println("responseData");
-            }
-
-            @Override
-            public void failed(Exception ex) {
-                System.out.println("Error executing HTTP request: " + ex.getMessage());
-            }
-
-            @Override
-            public void cancelled() {
-                System.out.println("HTTP request execution cancelled");
-            }
-        });
-
+        final Future<SimpleHttpResponse> future = client.execute(request, null);
         final HttpResponse  response = future.get();
         assertThat(response.getCode(), equalTo(200));
         client.close();
@@ -140,6 +122,7 @@ class HttpAsyncClientLiveTest {
             .build();
 
         final TlsStrategy tlsStrategy = ClientTlsStrategyBuilder.create()
+            .setHostnameVerifier(SSLConnectionSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER)
             .setSslContext(sslContext)
             .build();
 
