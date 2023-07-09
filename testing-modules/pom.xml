@@ -39,6 +39,7 @@
         <module>powermock</module>
         <module>rest-assured</module>
         <module>rest-testing</module>
+        <module>selenide</module>
         <module>selenium</module>
         <module>selenium-2</module>
         <module>spring-mockito</module>
