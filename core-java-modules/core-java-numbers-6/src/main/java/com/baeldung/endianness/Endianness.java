@@ -1,8 +1,8 @@
-package com.baeldung.endianess;
+package com.baeldung.endianness;
 
 import java.nio.ByteBuffer;
 
-public class Endianess {
+public class Endianness {
 
     public static void main(String[] args) {
         int value = 123456789;
