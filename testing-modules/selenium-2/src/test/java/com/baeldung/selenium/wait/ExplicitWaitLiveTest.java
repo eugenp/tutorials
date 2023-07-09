@@ -1,22 +1,27 @@
 package com.baeldung.selenium.wait;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+import java.time.Duration;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-final class ImplicitWaitLiveTest {
+final class ExplicitWaitLiveTest {
 
     private static WebDriver driver;
+    private static WebDriverWait wait;
     private static final int TIMEOUT = 10;
 
     private static final By LOCATOR_ABOUT = By.xpath("//a[starts-with(., 'About')]");
@@ -33,21 +38,33 @@ final class ImplicitWaitLiveTest {
 
     private static void options() {
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(TIMEOUT));
     }
 
     @BeforeEach
     public void init() {
         setupChromeDriver();
+        wait = new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT));
     }
 
     @Test
-    void givenPage_whenNavigatingWithImplicitWait_ThenOK() {
+    void givenPage_whenNavigatingWithoutExplicitWait_thenElementNotInteractable() {
+        driver.navigate().to("https://www.baeldung.com/");
+
+        driver.findElement(LOCATOR_ABOUT).click();
+
+        assertThrows(ElementNotInteractableException.class, () -> driver.findElement(LOCATOR_ABOUT_BAELDUNG).click());
+    }
+
+    @Test
+    void givenPage_whenNavigatingWithExplicitWait_thenOK() {
         final String expected = "About Baeldung";
         driver.navigate().to("https://www.baeldung.com/");
 
         driver.findElement(LOCATOR_ABOUT).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(LOCATOR_ABOUT_BAELDUNG));
+
         driver.findElement(LOCATOR_ABOUT_BAELDUNG).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(LOCATOR_ABOUT_HEADER));
 
         final String actual = driver.findElement(LOCATOR_ABOUT_HEADER).getText();
         assertEquals(expected, actual);

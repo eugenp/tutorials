@@ -1,6 +1,10 @@
 package com.baeldung.selenium.wait;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.time.Duration;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,18 +14,17 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 
-import java.time.Duration;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
-final class ExplicitWaitLiveTest {
+final class FluentWaitLiveTest {
 
     private static WebDriver driver;
-    private static WebDriverWait wait;
+    private static Wait<WebDriver> wait;
     private static final int TIMEOUT = 10;
+    private static final int POLL_FREQUENCY = 250;
 
     private static final By LOCATOR_ABOUT = By.xpath("//a[starts-with(., 'About')]");
     private static final By LOCATOR_ABOUT_BAELDUNG = By.xpath("//h3[normalize-space()='About Baeldung']");
@@ -42,11 +45,13 @@ final class ExplicitWaitLiveTest {
     @BeforeEach
     public void init() {
         setupChromeDriver();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT));
+        wait = new FluentWait<>(driver)
+                .withTimeout(Duration.ofSeconds(TIMEOUT))
+                .pollingEvery(Duration.ofMillis(POLL_FREQUENCY));
     }
 
     @Test
-    void givenPage_whenNavigatingWithoutExplicitWait_thenElementNotInteractable() {
+    void givenPage_whenNavigatingWithoutFluentWait_thenElementNotInteractable() {
         driver.navigate().to("https://www.baeldung.com/");
 
         driver.findElement(LOCATOR_ABOUT).click();
@@ -55,7 +60,7 @@ final class ExplicitWaitLiveTest {
     }
 
     @Test
-    void givenPage_whenNavigatingWithExplicitWait_thenOK() {
+    void givenPage_whenNavigatingWithFluentWait_thenOK() {
         final String expected = "About Baeldung";
         driver.navigate().to("https://www.baeldung.com/");
 
