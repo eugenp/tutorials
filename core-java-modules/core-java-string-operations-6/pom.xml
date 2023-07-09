@@ -18,7 +18,16 @@
             <artifactId>commons-lang3</artifactId>
             <version>${apache.commons-lang.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-core</artifactId>
+            <version>${jmh.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-generator-annprocess</artifactId>
+            <version>${jmh.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -38,6 +47,7 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <apache.commons-lang.version>3.12.0</apache.commons-lang.version>
+        <jmh.version>1.36</jmh.version>
     </properties>
 
 </project>
