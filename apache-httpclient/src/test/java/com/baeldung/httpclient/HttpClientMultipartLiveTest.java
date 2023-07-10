@@ -28,7 +28,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 
-
 class HttpClientMultipartLiveTest extends GetRequestMockServer {
 
     // No longer available
@@ -44,15 +43,15 @@ class HttpClientMultipartLiveTest extends GetRequestMockServer {
     @BeforeEach
     public void before() {
         post = new HttpPost(SERVER);
-        String URL  = "http://localhost:"+serverPort+"/spring-mvc-java/stub/multipart";
+        String URL = "http://localhost:" + serverPort + "/spring-mvc-java/stub/multipart";
         post = new HttpPost(URL);
     }
 
     @Test
     void givenFileandMultipleTextParts_whenUploadwithAddPart_thenNoExceptions() throws IOException {
         final URL url = Thread.currentThread()
-                .getContextClassLoader()
-                .getResource("uploads/" + TEXTFILENAME);
+            .getContextClassLoader()
+            .getResource("uploads/" + TEXTFILENAME);
 
         final File file = new File(url.getPath());
         final FileBody fileBody = new FileBody(file, ContentType.DEFAULT_BINARY);
@@ -68,7 +67,7 @@ class HttpClientMultipartLiveTest extends GetRequestMockServer {
 
         post.setEntity(entity);
         try (CloseableHttpClient client = HttpClientBuilder.create()
-                .build()) {
+            .build()) {
 
             client.execute(post, response -> {
                 final int statusCode = response.getCode();
@@ -87,8 +86,8 @@ class HttpClientMultipartLiveTest extends GetRequestMockServer {
     @Test
     void givenFileandTextPart_whenUploadwithAddBinaryBodyandAddTextBody_ThenNoExeption() throws IOException {
         final URL url = Thread.currentThread()
-                .getContextClassLoader()
-                .getResource("uploads/" + TEXTFILENAME);
+            .getContextClassLoader()
+            .getResource("uploads/" + TEXTFILENAME);
         final File file = new File(url.getPath());
         final String message = "This is a multipart post";
         final MultipartEntityBuilder builder = MultipartEntityBuilder.create();
@@ -99,7 +98,7 @@ class HttpClientMultipartLiveTest extends GetRequestMockServer {
         post.setEntity(entity);
 
         try (CloseableHttpClient client = HttpClientBuilder.create()
-                .build()) {
+            .build()) {
 
             client.execute(post, response -> {
 
@@ -118,11 +117,11 @@ class HttpClientMultipartLiveTest extends GetRequestMockServer {
     @Test
     void givenFileAndInputStreamandText_whenUploadwithAddBinaryBodyandAddTextBody_ThenNoException() throws IOException {
         final URL url = Thread.currentThread()
-                .getContextClassLoader()
-                .getResource("uploads/" + ZIPFILENAME);
+            .getContextClassLoader()
+            .getResource("uploads/" + ZIPFILENAME);
         final URL url2 = Thread.currentThread()
-                .getContextClassLoader()
-                .getResource("uploads/" + IMAGEFILENAME);
+            .getContextClassLoader()
+            .getResource("uploads/" + IMAGEFILENAME);
         final InputStream inputStream = new FileInputStream(url.getPath());
         final File file = new File(url2.getPath());
         final String message = "This is a multipart post";
@@ -135,7 +134,7 @@ class HttpClientMultipartLiveTest extends GetRequestMockServer {
         post.setEntity(entity);
 
         try (CloseableHttpClient client = HttpClientBuilder.create()
-                .build()) {
+            .build()) {
 
             client.execute(post, response -> {
                 final int statusCode = response.getCode();
@@ -163,7 +162,7 @@ class HttpClientMultipartLiveTest extends GetRequestMockServer {
         post.setEntity(entity);
 
         try (CloseableHttpClient httpClient = HttpClientBuilder.create()
-                .build()) {
+            .build()) {
 
             httpClient.execute(post, response -> {
                 final int statusCode = response.getCode();
@@ -186,15 +185,15 @@ class HttpClientMultipartLiveTest extends GetRequestMockServer {
         StringBuilder content = new StringBuilder();
         while ((body = rd.readLine()) != null) {
             content.append(body)
-                    .append("\n");
+                .append("\n");
         }
         return content.toString()
-                .trim();
+            .trim();
     }
 
     private String getContentTypeHeader() {
         return post.getEntity()
-                .getContentType();
+            .getContentType();
     }
 
 }
