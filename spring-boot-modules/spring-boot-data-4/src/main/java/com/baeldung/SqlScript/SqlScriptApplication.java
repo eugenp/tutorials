@@ -2,7 +2,7 @@ package com.baeldung.SqlScript;
 
 
 import org.apache.ibatis.jdbc.ScriptRunner;
-
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
