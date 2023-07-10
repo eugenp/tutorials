@@ -44,29 +44,29 @@ public class GetRequestMockServer {
         MockServerClient client = new MockServerClient(SERVER_ADDRESS, serverPort);
 
         client.when(
-                        request()
-                                .withPath(SECURITY_PATH)
-                                .withMethod("GET"),
-                        exactly(1)
-                )
-                .respond(
-                        response()
-                                .withStatusCode(HttpStatus.SC_OK)
-                                .withBody("{\"status\":\"ok\"}")
-                );
+                request()
+                  .withPath(SECURITY_PATH)
+                  .withMethod("GET"), 
+                exactly(1)
+              )
+              .respond(
+                response()
+                  .withStatusCode(HttpStatus.SC_OK)
+                  .withBody("{\"status\":\"ok\"}")
+              );
 
         client.when(
-                        request()
-                                .withPath(UPLOAD_PATH)
-                                .withMethod("POST"),
-                        exactly(4)
-                )
-                .respond(
-                        response()
-                                .withStatusCode(HttpStatus.SC_OK)
-                                .withBody("{\"status\":\"ok\"}")
-                                .withHeader("Content-Type", "multipart/form-data")
-                );
+                request()
+                  .withPath(UPLOAD_PATH)
+                  .withMethod("POST"), 
+                exactly(4)
+              )
+              .respond(
+                response()
+                  .withStatusCode(HttpStatus.SC_OK)
+                  .withBody("{\"status\":\"ok\"}")
+                  .withHeader("Content-Type", "multipart/form-data")
+              );
     }
 
     private static int getFreePort() throws IOException {
