@@ -14,7 +14,7 @@ import com.baeldung.webflux.zipwhen.web.UserController;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
-public class UserControllerTest {
+public class UserControllerUnitTest {
     @Test
     public void givenUserId_whenCombineAllData_thenReturnsMonoWithCombinedData() {
         UserService userService = Mockito.mock(UserService.class);
