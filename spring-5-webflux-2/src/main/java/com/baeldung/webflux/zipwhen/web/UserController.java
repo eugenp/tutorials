@@ -14,16 +14,15 @@ import reactor.core.scheduler.Schedulers;
 import reactor.util.function.Tuples;
 
 public class UserController {
-        private final UserService userService;
-        private final EmailService emailService;
-        private final DatabaseService databaseService;
-        public UserController(UserService userService,
-          EmailService emailService,
-          DatabaseService databaseService) {
-            this.userService = userService;
-            this.emailService = emailService;
-            this.databaseService = databaseService;
-        }
+    private final UserService userService;
+    private final EmailService emailService;
+    private final DatabaseService databaseService;
+
+    public UserController(UserService userService, EmailService emailService, DatabaseService databaseService) {
+        this.userService = userService;
+        this.emailService = emailService;
+        this.databaseService = databaseService;
+    }
 
     @GetMapping("/example/{userId}")
     public Mono<ResponseEntity<String>> combineAllDataFor(@PathVariable String userId) {
