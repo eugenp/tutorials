@@ -2,12 +2,12 @@ package com.baeldung.httpclient.conn;
 
 import java.io.IOException;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
-import org.apache.http.util.EntityUtils;
+import org.apache.hc.client5.http.classic.methods.HttpGet;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager;
+import org.apache.hc.core5.http.HttpEntity;
+import org.apache.hc.core5.http.HttpResponse;
+import org.apache.hc.core5.http.io.entity.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -45,22 +45,21 @@ public class MultiHttpClientConnThread extends Thread {
         try {
             logger.debug("Thread Running: " + getName());
 
-            logger.debug("Thread Running: " + getName());
 
             if (connManager != null) {
                 logger.info("Before - Leased Connections = " + connManager.getTotalStats().getLeased());
                 logger.info("Before - Available Connections = " + connManager.getTotalStats().getAvailable());
             }
 
-            final HttpResponse response = client.execute(get);
+            HttpEntity entity = client.execute(get).getEntity();
 
             if (connManager != null) {
                 leasedConn = connManager.getTotalStats().getLeased();
                 logger.info("After - Leased Connections = " + connManager.getTotalStats().getLeased());
                 logger.info("After - Available Connections = " + connManager.getTotalStats().getAvailable());
             }
+            EntityUtils.consume(entity);
 
-            EntityUtils.consume(response.getEntity());
         } catch (final IOException ex) {
             logger.error("", ex);
         }
