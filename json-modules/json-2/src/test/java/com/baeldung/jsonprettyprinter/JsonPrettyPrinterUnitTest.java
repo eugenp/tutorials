@@ -1,16 +1,14 @@
-package core;
+package com.baeldung.jsonprettyprinter;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class JsonPrettyPrinterUnitTest {
 
     private String uglyJsonString = "{\"one\":\"AAA\",\"two\":[\"BBB\",\"CCC\"],\"three\":{\"four\":\"DDD\",\"five\":[\"EEE\",\"FFF\"]}}";
-    private core.JsonPrettyPrinter jsonPrettyPrinter = new core.JsonPrettyPrinter();
+    private JsonPrettyPrinter jsonPrettyPrinter = new JsonPrettyPrinter();
 
     @Test
     public void shouldPrettyPrintJsonStringUsingDefaultPrettyPrinter() throws JsonProcessingException {
@@ -23,6 +21,7 @@ public class JsonPrettyPrinterUnitTest {
             "    \"five\" : [ \"EEE\", \"FFF\" ]\n" +
             "  }\n" +
             "}";
+        System.out.println("Formatted String: " + formattedJsonString);
         assertEquals(expectedJson, formattedJsonString);
     }
 
@@ -37,6 +36,7 @@ public class JsonPrettyPrinterUnitTest {
             "    \"five\" : [ \"EEE\", \"FFF\" ]\n" +
             "  }\n" +
             "}";
+        System.out.println("Formatted String: " + formattedJsonString);
         assertEquals(expectedJson, formattedJsonString);
     }
 
@@ -57,6 +57,7 @@ public class JsonPrettyPrinterUnitTest {
             "    ]\n" +
             "  }\n" +
             "}";
+        System.out.println("Formatted String: " + formattedJsonString);
         assertEquals(expectedPrettyJson, formattedJsonString);
     }
 }
