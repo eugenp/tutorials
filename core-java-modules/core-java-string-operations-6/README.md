@@ -7,3 +7,4 @@
 - [Fixing “constant string too long” Build Error](https://www.baeldung.com/java-constant-string-too-long-error)
 - [Compact Strings in Java 9](https://www.baeldung.com/java-9-compact-string)
 - [Split a String Into Digit and Non-Digit Substrings](https://www.baeldung.com/java-split-string-digits-letters)
+- [Check if a String Contains Non-Alphanumeric Characters](https://www.baeldung.com/java-string-test-special-characters)
