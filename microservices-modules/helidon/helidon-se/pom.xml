@@ -28,13 +28,13 @@
         <dependency>
             <groupId>io.helidon.webserver</groupId>
             <artifactId>helidon-webserver-netty</artifactId>
-            <version>0.10.6</version>
+            <version>${helidon-webserver-netty.version}</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>io.helidon.webserver</groupId>
             <artifactId>helidon-webserver-json</artifactId>
-            <version>0.11.0</version>
+            <version>${helidon-webserver-json.version}</version>
         </dependency>
         <!--Security -->
         <dependency>
@@ -61,6 +61,8 @@
 
     <properties>
         <helidon.version>3.2.2</helidon.version>
+        <helidon-webserver-netty.version>0.10.6</helidon-webserver-netty.version>
+        <helidon-webserver-json.version>0.11.0</helidon-webserver-json.version>
     </properties>
 
 </project>
