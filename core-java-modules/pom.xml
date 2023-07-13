@@ -93,6 +93,7 @@
         <module>core-java-lang-3</module>
         <module>core-java-lang-4</module>
         <module>core-java-lang-5</module>
+        <module>core-java-lang-6</module>
         <module>core-java-lang-math</module>
         <module>core-java-lang-math-2</module>
         <module>core-java-lang-oop-constructors</module>
