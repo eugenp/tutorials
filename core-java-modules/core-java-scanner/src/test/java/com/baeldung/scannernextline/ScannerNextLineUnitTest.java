@@ -1,11 +1,11 @@
 package com.baeldung.scannernextline;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
 public class ScannerNextLineUnitTest {
 
