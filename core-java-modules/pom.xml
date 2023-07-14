@@ -81,7 +81,6 @@
         <module>core-java-io-4</module>
         <module>core-java-io-apis</module>
         <module>core-java-io-apis-2</module>
-        <module>core-java-io-apis-3</module>
         <module>core-java-io-conversions</module>
         <module>core-java-jar</module>
         <module>core-java-jndi</module>
@@ -125,6 +124,7 @@
         <module>core-java-properties</module>
         <module>core-java-reflection</module>
         <module>core-java-reflection-2</module>
+        <module>core-java-scanner</module>
         <module>core-java-security-2</module>
         <module>core-java-security-3</module>
         <module>core-java-security-algorithms</module>
