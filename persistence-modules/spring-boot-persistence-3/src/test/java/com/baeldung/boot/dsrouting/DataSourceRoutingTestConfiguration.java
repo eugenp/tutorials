@@ -1,4 +1,4 @@
-package com.baeldung.dsrouting;
+package com.baeldung.boot.dsrouting;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,6 +9,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+
+import com.baeldung.dsrouting.ClientDao;
+import com.baeldung.dsrouting.ClientDataSourceRouter;
+import com.baeldung.dsrouting.ClientDatabase;
+import com.baeldung.dsrouting.ClientService;
 
 @Configuration
 public class DataSourceRoutingTestConfiguration {

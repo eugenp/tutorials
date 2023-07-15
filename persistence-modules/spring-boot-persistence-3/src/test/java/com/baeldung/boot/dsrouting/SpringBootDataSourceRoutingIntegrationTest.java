@@ -1,22 +1,32 @@
-package com.baeldung.dsrouting;
+package com.baeldung.boot.dsrouting;
 
 import static org.junit.Assert.assertEquals;
 
 import javax.sql.DataSource;
 
+import com.baeldung.dsrouting.ClientDatabase;
+import com.baeldung.dsrouting.ClientDatabaseContextHolder;
+import com.baeldung.dsrouting.ClientService;
+import com.baeldung.dsrouting.model.ClientADetails;
+import com.baeldung.dsrouting.model.ClientBDetails;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = DataSourceRoutingTestConfiguration.class)
+@SpringBootTest(
+        classes = {ClientADetails.class, ClientBDetails.class})
+@ContextConfiguration(classes = SpringBootDataSourceRoutingTestConfiguration.class)
 @DirtiesContext
-public class DataSourceRoutingIntegrationTest {
+@EnableConfigurationProperties(ClientBDetails.class)
+public class SpringBootDataSourceRoutingIntegrationTest {
 
     @Autowired
     DataSource routingDatasource;

@@ -1,5 +1,9 @@
-package com.baeldung.dsrouting;
+package com.baeldung.boot.dsrouting;
 
+import com.baeldung.dsrouting.ClientDao;
+import com.baeldung.dsrouting.ClientDataSourceRouter;
+import com.baeldung.dsrouting.ClientDatabase;
+import com.baeldung.dsrouting.ClientService;
 import com.baeldung.dsrouting.model.ClientADetails;
 import com.baeldung.dsrouting.model.ClientBDetails;
 import org.springframework.beans.factory.annotation.Autowired;
