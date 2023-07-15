@@ -23,8 +23,8 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
     public MongoClient mongoClient() {
         ConnectionString connectionString = new ConnectionString("mongodb://localhost:27017/test");
         MongoClientSettings mongoClientSettings = MongoClientSettings.builder()
-            .applyConnectionString(connectionString)
-            .build();
+          .applyConnectionString(connectionString)
+          .build();
 
         return MongoClients.create(mongoClientSettings);
     }
