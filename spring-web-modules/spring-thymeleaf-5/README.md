@@ -5,7 +5,7 @@ This module contains articles about Spring with Thymeleaf
 ## Relevant Articles:
 
 - [Changing the Thymeleaf Template Directory in Spring Boot](https://www.baeldung.com/spring-thymeleaf-template-directory)
-- [How to Create an Executable JAR with Maven](https://www.baeldung.com/executable-jar-with-maven)
+- [Add a Checked Attribute to Input Conditionally in Thymeleaf](https://www.baeldung.com/thymeleaf-conditional-checked-attribute)
 - [Spring MVC Data and Thymeleaf](https://www.baeldung.com/spring-mvc-thymeleaf-data)
 - [Upload Image With Spring Boot and Thymeleaf](https://www.baeldung.com/spring-boot-thymeleaf-image-upload)
 - [Getting a URL Attribute Value in Thymeleaf](https://www.baeldung.com/thymeleaf-url-attribute-value)
