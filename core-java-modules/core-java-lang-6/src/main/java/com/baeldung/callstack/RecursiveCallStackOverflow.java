@@ -3,7 +3,7 @@ package com.baeldung.callstack;
 public class RecursiveCallStackOverflow {
     static int depth = 0;
 
-    public static void recursiveStackOverflow() {
+    private static void recursiveStackOverflow() {
         depth++;
         recursiveStackOverflow();
     }
