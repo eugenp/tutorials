@@ -12,7 +12,7 @@
         </layout>
     </appender>
 
-    <root level="warn">
+    <root level="info">
         <appender-ref ref="Console" />
     </root>
 

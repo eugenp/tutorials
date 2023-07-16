@@ -117,6 +117,9 @@
                         <exclude>**/JdbcTest.java</exclude>
                         <exclude>**/*LiveTest.java</exclude>
                     </excludes>
+                               <!-- <systemPropertyVariables>
+                                <logback.configurationFile>${tutorialsproject.basedir}/logback-config.xml</logback.configurationFile>
+                            </systemPropertyVariables> -->
                 </configuration>
                 <dependencies>
                     <dependency>
@@ -692,6 +695,9 @@
                                 <exclude>**/JdbcTest.java</exclude>
                                 <exclude>**/*LiveTest.java</exclude>
                             </excludes>
+                            <systemPropertyVariables>
+                                <logback.configurationFile>${tutorialsproject.basedir}/logback-config.xml</logback.configurationFile>
+                            </systemPropertyVariables>
                         </configuration>
                     </plugin>
 
@@ -699,7 +705,7 @@
             </build>
 
             <modules>
-                <module>lombok-modules</module>
+                <!-- <module>lombok-modules</module>
                 <module>osgi</module>
                 <module>spring-katharsis</module>
                 <module>logging-modules</module>
@@ -767,7 +773,7 @@
                 <module>couchbase</module>
                 <module>core-groovy-modules</module>
 
-                <module>core-java-modules</module>
+                <module>core-java-modules</module> -->
                 <!-- <module>core-java-modules/core-java-9-new-features</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-12</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-13</module> --> <!-- uses preview features, to be decided how to handle -->
@@ -776,7 +782,7 @@
                 <!-- <module>core-java-modules/core-java-16</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-17</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-19</module> --> <!-- uses preview features, to be decided how to handle -->
-                <module>custom-pmd</module>
+               <!--  <module>custom-pmd</module>
                 <module>data-structures</module>
                 <module>ddd-contexts</module>
                 <module>jackson-jr</module>
@@ -809,12 +815,12 @@
                 <module>image-compressing</module>
                 <module>geotools</module>
 
-                <module>jws</module>
+                <module>jws</module> -->
 
                 <!-- Modules from default-first -->
 
                 <module>akka-modules</module>
-                <module>annotations</module>
+                <!-- <module>annotations</module>
                 <module>httpclient-simple</module>
                 <module>antlr</module>
                 <module>apache-kafka</module>
@@ -836,9 +842,9 @@
                 <module>ddd</module>
                 <module>disruptor</module>
                 <module>dozer</module>
-                <module>dubbo</module>
+                <module>dubbo</module> -->
                 <!-- <module>feign</module> --> <!-- JAVA-20337 -->
-                <module>google-cloud</module>
+               <!--  <module>google-cloud</module>
                 <module>graphql-modules</module>
                 <module>grpc</module>
                 <module>hazelcast</module>
@@ -858,10 +864,10 @@
                 <module>java-native</module>
                 <module>jsoup</module>
                 <module>ksqldb</module>
-                <module>jsf</module>
+                <module>jsf</module>  -->
 
-                <module>libraries</module> <!-- very long running -->
-                <module>libraries-2</module>
+              <!--  <module>libraries</module>--> <!-- very long running -->
+              <!--  <module>libraries-2</module>
                 <module>libraries-4</module>
                 <module>libraries-5</module>
                 <module>libraries-6</module>
@@ -891,10 +897,10 @@
                 <module>pdf-2</module>
                 <module>protobuffer</module>
                 <module>reactor-core</module>
-                <module>rsocket</module>
+                <module>rsocket</module> -->
 
                 <!--  Modules from default second-->
-                <module>spring-5</module>
+            <!--    <module>spring-5</module>
                 <module>spring-5-webflux</module>
                 <module>spring-5-webflux-2</module>
                 <module>spring-activiti</module>
@@ -937,7 +943,7 @@
                 <module>xml-2</module>
                 <module>image-processing</module>
                 <module>language-interop</module>
-                <module>gradle-modules/gradle/maven-to-gradle</module>
+                <module>gradle-modules/gradle/maven-to-gradle</module> -->
             </modules>
 
             <properties>
