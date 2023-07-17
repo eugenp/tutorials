@@ -12,6 +12,7 @@ class ProductServiceUnitTest {
         double salePrice = productService.getSalePrice(100, true);
         assertEquals(salePrice, 75);
     }
+
     @Test
     public void givenOriginalPrice_whenGetSalePriceWithFlagFalse_thenReturnsDiscountedPrice() {
         ProductService productService = new ProductService();
