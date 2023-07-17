@@ -1,13 +1,10 @@
 package com.baeldung.jackson.defaultvalues;
 
-import com.fasterxml.jackson.annotation.JsonSetter;
-
-public class JsonSetterDefaultValue {
+public class SetterDefaultValue {
 
     private String required;
     private String optional = "valueIfMissingEntirely";
 
-    @JsonSetter("optional")
     public void setOptional(String optional){
         if(optional == null){
             this.optional = "valueIfNull";
