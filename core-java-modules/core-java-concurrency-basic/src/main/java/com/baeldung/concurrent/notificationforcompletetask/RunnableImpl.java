@@ -1,4 +1,4 @@
-package com.baeldung.concurrent.notificationForCompleteTask;
+package com.baeldung.concurrent.notificationforcompletetask;
 
 public class RunnableImpl implements Runnable {
 

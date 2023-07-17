@@ -1,4 +1,4 @@
-package com.baeldung.concurrent.notificationForCompleteTask;
+package com.baeldung.concurrent.notificationforcompletetask;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
