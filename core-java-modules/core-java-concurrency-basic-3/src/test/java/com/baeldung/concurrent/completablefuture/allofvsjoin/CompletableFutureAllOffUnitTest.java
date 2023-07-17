@@ -14,13 +14,13 @@ public class CompletableFutureAllOffUnitTest {
     @Test
     void whenCallingJoin_thenBlocksThreadAndGetValue() {
         CompletableFuture<String> future = waitAndReturn(1_000, "Harry");
-        assertEquals("Harry", future.join()); // waits one second
+        assertEquals("Harry", future.join());
     }
 
     @Test
     void whenCallingJoin_thenBlocksThreadAndThrowException() {
         CompletableFuture<String> futureError = waitAndThrow(1_000);
-        assertThrows(RuntimeException.class, futureError::join); // waits one second
+        assertThrows(RuntimeException.class, futureError::join);
     }
 
     @Test
@@ -28,8 +28,8 @@ public class CompletableFutureAllOffUnitTest {
         CompletableFuture<String> f1 = waitAndReturn(1_000, "Harry");
         CompletableFuture<String> f2 = waitAndReturn(2_000, "Ron");
 
-        assertEquals("Harry", f1.join()); // waits for one second
-        assertEquals("Ron", f2.join()); // waits for one more second
+        assertEquals("Harry", f1.join());
+        assertEquals("Ron", f2.join());
     }
 
 
@@ -38,11 +38,11 @@ public class CompletableFutureAllOffUnitTest {
         CompletableFuture<String> f1 = waitAndReturn(1_000, "Harry");
         CompletableFuture<String> f2 = waitAndReturn(2_000, "Ron");
 
-        CompletableFuture<Void> combinedFutures = CompletableFuture.allOf(f1, f2); // does NOT wait
-        combinedFutures.join(); // waits for two seconds
+        CompletableFuture<Void> combinedFutures = CompletableFuture.allOf(f1, f2);
+        combinedFutures.join();
 
-        assertEquals("Harry", f1.join()); // does NOT wait
-        assertEquals("Ron", f2.join()); // does NOT wait
+        assertEquals("Harry", f1.join());
+        assertEquals("Ron", f2.join());
     }
 
     @Test
