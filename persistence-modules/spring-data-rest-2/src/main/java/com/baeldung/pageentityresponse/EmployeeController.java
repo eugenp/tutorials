@@ -30,7 +30,8 @@ public class EmployeeController {
     }
 
     @GetMapping("/data")
-    public ResponseEntity<Page<EmployeeDto>> getData(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
+    public ResponseEntity<Page<EmployeeDto>> getData(@RequestParam(defaultValue = "0") int page,
+      @RequestParam(defaultValue = "10") int size) {
         List<EmployeeDto> empList = listImplementation();
 
         int totalSize = empList.size();

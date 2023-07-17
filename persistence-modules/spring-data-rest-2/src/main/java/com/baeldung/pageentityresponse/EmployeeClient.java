@@ -24,8 +24,9 @@ public class EmployeeClient {
           .queryParam("page", pageable.getPageNumber())
           .queryParam("size", pageable.getPageSize());
 
-        ResponseEntity<CustomPageImpl<EmployeeDto>> responseEntity = restTemplate.exchange(uriBuilder.toUriString(), HttpMethod.GET, null, new ParameterizedTypeReference<CustomPageImpl<EmployeeDto>>() {
-        });
+        ResponseEntity<CustomPageImpl<EmployeeDto>> responseEntity = restTemplate.exchange(uriBuilder.toUriString(),
+          HttpMethod.GET, null, new ParameterizedTypeReference<CustomPageImpl<EmployeeDto>>() {
+          });
 
         return responseEntity.getBody();
     }
