@@ -22,7 +22,7 @@ import com.github.tomakehurst.wiremock.WireMockServer;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = ExampleApplication.class)
-public class ProductClientUnitTest {
+public class ProductClientIntegrationTest {
 
     @Autowired
     private ProductClient productClient;

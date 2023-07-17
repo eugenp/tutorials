@@ -31,7 +31,7 @@ import static org.junit.Assert.assertTrue;
 @RunWith(SpringRunner.class)
 @SpringBootTest(properties = {"external.api.url=http://localhost:${wiremock.server.port}"})
 @AutoConfigureWireMock(port = 0)
-public class NetflixFeignUnitTest {
+public class NetflixFeignIntegrationTest {
 
     @Autowired
     private JSONPlaceHolderService jsonPlaceHolderService;
