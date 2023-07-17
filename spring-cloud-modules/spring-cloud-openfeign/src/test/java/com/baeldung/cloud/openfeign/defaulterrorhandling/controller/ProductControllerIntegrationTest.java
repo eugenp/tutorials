@@ -29,7 +29,7 @@ import com.github.tomakehurst.wiremock.client.WireMock;
 @WebMvcTest(ProductController.class)
 @ImportAutoConfiguration({FeignAutoConfiguration.class, TestControllerAdvice.class})
 @EnableWebMvc
-public class ProductControllerUnitTest {
+public class ProductControllerIntegrationTest {
 
     @Autowired
     private ProductClient productClient;

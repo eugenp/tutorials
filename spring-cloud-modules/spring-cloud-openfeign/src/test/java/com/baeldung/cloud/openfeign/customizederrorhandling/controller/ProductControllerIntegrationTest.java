@@ -31,7 +31,7 @@ import com.github.tomakehurst.wiremock.client.WireMock;
 @RunWith(SpringRunner.class)
 @WebMvcTest(ProductController.class)
 @ImportAutoConfiguration({FeignAutoConfiguration.class})
-public class ProductControllerUnitTest {
+public class ProductControllerIntegrationTest {
 
     @Autowired
     private ProductClient productClient;

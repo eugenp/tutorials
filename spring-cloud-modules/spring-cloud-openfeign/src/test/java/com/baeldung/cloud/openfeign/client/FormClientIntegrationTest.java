@@ -29,7 +29,7 @@ import lombok.extern.slf4j.Slf4j;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 @Slf4j
-class FormClientUnitTest {
+class FormClientIntegrationTest {
 
     private static WireMockServer wireMockServer;
 
