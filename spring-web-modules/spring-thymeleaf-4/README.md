@@ -11,4 +11,5 @@ This module contains articles about Spring with Thymeleaf
 - [Getting a URL Attribute Value in Thymeleaf](https://www.baeldung.com/thymeleaf-url-attribute-value)
 - [Expression Types in Thymeleaf](https://www.baeldung.com/java-thymeleaf-expression-types)
 - [Difference Between th:text and th:value in Thymeleaf](https://www.baeldung.com/java-thymeleaf-text-vs-value)
-- [[<-- prev]](/spring-thymeleaf)
+- More articles: [[<-- prev]](../spring-thymeleaf-3) [[next -->]](../spring-thymeleaf-5)
+
