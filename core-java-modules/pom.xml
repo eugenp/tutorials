@@ -92,6 +92,7 @@
         <module>core-java-lang-3</module>
         <module>core-java-lang-4</module>
         <module>core-java-lang-5</module>
+        <module>core-java-lang-6</module>
         <module>core-java-lang-math</module>
         <module>core-java-lang-math-2</module>
         <module>core-java-lang-oop-constructors</module>
@@ -123,6 +124,7 @@
         <module>core-java-properties</module>
         <module>core-java-reflection</module>
         <module>core-java-reflection-2</module>
+        <module>core-java-scanner</module>
         <module>core-java-security-2</module>
         <module>core-java-security-3</module>
         <module>core-java-security-algorithms</module>
@@ -137,6 +139,7 @@
         <module>core-java-string-conversions-3</module>
         <module>core-java-string-operations</module>
         <module>core-java-string-operations-2</module>
+        <module>core-java-string-operations-6</module>
         <module>core-java-regex</module>
         <module>core-java-regex-2</module>
         <module>core-java-uuid</module>

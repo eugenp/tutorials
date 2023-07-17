@@ -23,11 +23,18 @@
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring-test.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <properties>
         <datafaker.version>1.6.0</datafaker.version>
         <jackson.version>2.13.4</jackson.version>
+        <spring-test.version>5.3.25</spring-test.version>
     </properties>
 
 </project>

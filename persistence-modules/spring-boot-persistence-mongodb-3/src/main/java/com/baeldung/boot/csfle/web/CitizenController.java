@@ -17,8 +17,11 @@ import com.baeldung.boot.csfle.service.CitizenService;
 @RequestMapping("/citizen")
 public class CitizenController {
 
-    @Autowired
-    private CitizenService service;
+    private final CitizenService service;
+
+    public CitizenController(CitizenService service) {
+        this.service = service;
+    }
 
     @GetMapping
     public List<Citizen> get() {

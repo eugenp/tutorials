@@ -8,12 +8,12 @@ public class AdvancedCollaborator {
         i = string.length();
     }
     public String methodThatCallsPrivateMethod(int i){
-        return privateMethod() + i;
+        return protectedMethod() + i;
     }
     public int methodThatReturnsThePrivateField(){
         return privateField;
     }
-    private String privateMethod(){
+    protected String protectedMethod(){
         return "default:";
     }
     class InnerAdvancedCollaborator{}

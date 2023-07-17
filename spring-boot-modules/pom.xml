@@ -73,8 +73,10 @@
         <module>spring-boot-swagger-2</module>
         <module>spring-boot-swagger-jwt</module>
         <module>spring-boot-swagger-keycloak</module>
+        <module>spring-boot-swagger-springfox</module>
         <module>spring-boot-testing</module>
         <module>spring-boot-testing-2</module>
+        <module>spring-boot-testing-spock</module>
         <module>spring-boot-vue</module>
         <module>spring-boot-actuator</module>
         <module>spring-boot-data-2</module>
@@ -93,6 +95,7 @@
         <module>spring-boot-properties</module>
         <module>spring-boot-properties-2</module>
         <module>spring-boot-properties-3</module>
+        <module>spring-boot-properties-4</module>
         <module>spring-boot-properties-migrator-demo</module>
     </modules>
 

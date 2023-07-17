@@ -20,10 +20,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
+            <version>${spring-boot.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring-boot.version}</version>
         </dependency>
         <dependency>
             <groupId>commons-lang</groupId>
@@ -34,6 +36,7 @@
 
     <properties>
         <start-class>com.baeldung.properties.yaml.YamlApplication</start-class>
+        <spring-boot.version>3.1.0</spring-boot.version>
     </properties>
 
 </project>

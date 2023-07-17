@@ -11,10 +11,12 @@ import org.junit.Test;
 import jakarta.persistence.TypedQuery;
 import java.time.LocalDate;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static org.hibernate.testing.transaction.TransactionUtil.doInHibernate;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 public class HibernateCustomTypesIntegrationTest {
@@ -74,12 +76,18 @@ public class HibernateCustomTypesIntegrationTest {
 
         doInHibernate(this::sessionFactory, session -> {
             session.save(e);
+            session.flush();
+            session.refresh(e);
 
             TypedQuery<OfficeEmployee> query = session.createQuery("FROM OfficeEmployee OE WHERE OE.empAddress.zipCode = :pinCode", OfficeEmployee.class);
             query.setParameter("pinCode",100);
-            int size = query.getResultList().size();
+            final List<OfficeEmployee> resultList = query.getResultList();
+            int size = resultList.size();
 
             assertEquals(1, size);
+            assertNotNull(resultList.get(0).getEmployeeNumber());
+            assertNotNull(resultList.get(0).getEmpAddress());
+            assertNotNull(resultList.get(0).getSalary());
         });
 
     }

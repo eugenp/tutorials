@@ -12,5 +12,6 @@ This module contains articles about HTTP libraries.
 - [Download a Binary File Using OkHttp](https://www.baeldung.com/java-okhttp-download-binary-file)
 - [Trusting a Self-Signed Certificate in OkHttp](https://www.baeldung.com/okhttp-self-signed-cert)
 - [Trusting All Certificates in OkHttp](https://www.baeldung.com/okhttp-client-trust-all-certificates)
+- [Mock a URL Connection in Java](https://www.baeldung.com/java-simulate-url-connection)
 - More articles [[<-- prev]](/libraries-http)
 
