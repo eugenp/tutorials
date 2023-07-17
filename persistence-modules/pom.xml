@@ -85,6 +85,7 @@
         <module>spring-data-jpa-query-3</module>
         <module>spring-data-jpa-repo</module>
         <module>spring-data-jpa-repo-2</module>
+		<module>spring-data-jpa-repo-4</module>
         <module>spring-data-jdbc</module>
         <module>spring-data-keyvalue</module>
         <module>spring-data-mongodb</module>
