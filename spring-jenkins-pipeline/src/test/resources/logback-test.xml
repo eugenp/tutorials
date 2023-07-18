@@ -6,9 +6,7 @@
         </encoder>
     </appender>
 
-    <logger name="org.apache.cassandra.config" level="WARN"/>
-
-    <logger name="org.apache.cassandra.service" level="WARN"/>
+    <logger name="org.springframework.boot.test.context" level="WARN"/>
 
     <root level="INFO">
         <appender-ref ref="STDOUT" />
