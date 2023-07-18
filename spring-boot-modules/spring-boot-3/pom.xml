@@ -149,7 +149,7 @@
         <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
         <start-class>com.baeldung.sample.TodoApplication</start-class>
         <mockserver.version>5.14.0</mockserver.version>
-        <lombok-mapstruct-binding>0.2.0</lombok-mapstruct-binding>
+        <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
     </properties>
 
 </project>
