@@ -1,12 +1,11 @@
 package com.baeldung.mapclear;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 
 public class MapClearVsNewMapTest {
-
     @Test
     public void given_EmptyMap_whenUsingMapClear_thenMapIsEmpty() {
-        Assertions.assertTrue(true);
+        Assert.assertTrue(true);
     }
 }
