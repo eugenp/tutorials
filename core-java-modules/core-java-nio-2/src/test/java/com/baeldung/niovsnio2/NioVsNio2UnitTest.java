@@ -65,6 +65,7 @@ public class NioVsNio2UnitTest {
     public void listFilesUsingWalk() throws Exception {
         Path path = Paths.get("src/test");
         Stream<Path> walk = Files.walk(path);
-        walk.forEach(System.out::println);
+
+        assertThat(walk.findAny()).isPresent();
     }
 }
