@@ -14,7 +14,7 @@ This module contains articles about Spring with Apache Camel
 ### Framework Versions:
 
 - Spring 5.3.25
-- Apache Camel 3.14.7
+- Apache Camel 3.21.0
 
 ### Build and Run Application
 

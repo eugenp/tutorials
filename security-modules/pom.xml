@@ -17,7 +17,7 @@
         <module>apache-shiro</module>
         <module>cas</module>
         <module>cloud-foundry-uaa</module>
-        <module>java-ee-8-security-api</module>
+        <!-- <module>java-ee-8-security-api</module> --> <!-- Fixing in JAVA-23118 -->
         <module>jee-7-security</module>
         <module>jjwt</module>
         <module>jwt</module>
