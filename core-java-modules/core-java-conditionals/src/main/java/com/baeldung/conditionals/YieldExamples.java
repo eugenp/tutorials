@@ -12,10 +12,10 @@ public class YieldExamples {
         System.out.println(analyze(Number.THREE));
 
         // Example 2
-        System.out.println(analyzeNumberBlock(Number.THREE));
+        System.out.println(analyzeNumberArrow(Number.THREE));
 
         // Example 3
-        System.out.println(analyzeNumberTraditional(Number.THREE));
+        System.out.println(analyzeNumberColon(Number.THREE));
 
     }
 
