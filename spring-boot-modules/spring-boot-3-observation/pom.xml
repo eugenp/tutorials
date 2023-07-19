@@ -66,7 +66,7 @@
         <dependency>
             <groupId>com.github.gavlyukovskiy</groupId>
             <artifactId>p6spy-spring-boot-starter</artifactId>
-            <version>1.9.0</version>
+            <version>${p6spy-spring-boot-starter.version}</version>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
@@ -84,6 +84,7 @@
 
     <properties>
         <start-class>com.baeldung.samples.SimpleObservationApplication</start-class>
+        <p6spy-spring-boot-starter.version>1.9.0</p6spy-spring-boot-starter.version>
     </properties>
 
 </project>
