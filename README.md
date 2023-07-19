@@ -1,6 +1,6 @@
 The Courses
 ==============================
-
+  
 
 Here's the new "Learn Spring" course: <br/>
 **[>> LEARN SPRING - THE MASTER CLASS](https://www.baeldung.com/learn-spring-course?utm_source=github&utm_medium=social&utm_content=tutorials&utm_campaign=ls#master-class)**
