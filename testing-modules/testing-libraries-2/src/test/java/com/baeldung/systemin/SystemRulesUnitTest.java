@@ -8,7 +8,7 @@ import static com.baeldung.systemin.Application.NAME;
 import static org.junit.Assert.assertEquals;
 import static org.junit.contrib.java.lang.system.TextFromStandardInputStream.emptyStandardInputStream;
 
-public class SystemRulesUnit4Test {
+public class SystemRulesUnitTest {
 
     @Rule
     public final TextFromStandardInputStream systemIn = emptyStandardInputStream();

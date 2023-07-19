@@ -7,7 +7,7 @@ import uk.org.webcompere.systemstubs.rules.SystemInRule;
 import static com.baeldung.systemin.Application.NAME;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class SystemStubsUnit4Test {
+public class SystemStubsUnitTest {
 
     @Rule
     public SystemInRule systemInRule = new SystemInRule("Baeldung");

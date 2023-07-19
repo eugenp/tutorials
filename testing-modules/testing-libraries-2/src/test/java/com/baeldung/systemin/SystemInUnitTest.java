@@ -10,7 +10,7 @@ import static com.baeldung.systemin.Application.NAME;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class SystemInUnit5Test {
+class SystemInUnitTest {
     private void provideInput(String data) {
         ByteArrayInputStream testIn = new ByteArrayInputStream(data.getBytes());
         System.setIn(testIn);
