@@ -2,13 +2,26 @@
 
 This module contains articles about Spring with Thymeleaf
 
-## Relevant Articles:
+### Relevant Articles: 
+- [CSRF Protection with Spring MVC and Thymeleaf](https://www.baeldung.com/csrf-thymeleaf-with-spring-security)
+- [Conditionals in Thymeleaf](https://www.baeldung.com/spring-thymeleaf-conditionals)
+- [Iteration in Thymeleaf](https://www.baeldung.com/thymeleaf-iteration)
+- [Spring with Thymeleaf Pagination for a List](https://www.baeldung.com/spring-thymeleaf-pagination)
+- More articles: [[<-- prev]](../spring-thymeleaf-4)
+### Build the Project
 
-- [Changing the Thymeleaf Template Directory in Spring Boot](https://www.baeldung.com/spring-thymeleaf-template-directory)
-- [Add a Checked Attribute to Input Conditionally in Thymeleaf](https://www.baeldung.com/thymeleaf-conditional-checked-attribute)
-- [Spring MVC Data and Thymeleaf](https://www.baeldung.com/spring-mvc-thymeleaf-data)
-- [Upload Image With Spring Boot and Thymeleaf](https://www.baeldung.com/spring-boot-thymeleaf-image-upload)
-- [Getting a URL Attribute Value in Thymeleaf](https://www.baeldung.com/thymeleaf-url-attribute-value)
-- [Expression Types in Thymeleaf](https://www.baeldung.com/java-thymeleaf-expression-types)
-- [Difference Between th:text and th:value in Thymeleaf](https://www.baeldung.com/java-thymeleaf-text-vs-value)
-- [[<-- prev]](/spring-thymeleaf)
+mvn clean install
+
+### Run the Project
+
+mvn cargo:run
+- **note**: starts on port '8082'
+
+Access the pages using the URLs:
+
+ - http://localhost:8082/spring-thymeleaf-5/
+ - http://localhost:8082/spring-thymeleaf-5/addStudent/
+ - http://localhost:8082/spring-thymeleaf-5/listStudents/
+
+The first URL is the home page of the application. The home page has links to the second and third pages.
+
