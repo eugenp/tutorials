@@ -34,7 +34,7 @@ public class YieldExamples {
         return message;
     }
 
-    public static String analyzeNumberBlock(Number number) {
+    public static String analyzeNumberArrow(Number number) {
 
         return switch (number) {
             case ONE -> {
@@ -49,7 +49,7 @@ public class YieldExamples {
         };
     }
 
-    public static String analyzeNumberTraditional(Number number) {
+    public static String analyzeNumberColon(Number number) {
         return switch (number) {
             case ONE:
                 yield "Got a 1";
