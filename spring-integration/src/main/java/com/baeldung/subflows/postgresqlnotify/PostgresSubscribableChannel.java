@@ -15,6 +15,8 @@ import javax.sql.DataSource;
 
 import org.postgresql.PGConnection;
 import org.postgresql.PGNotification;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.task.SimpleAsyncTaskExecutor;
 import org.springframework.integration.channel.AbstractSubscribableChannel;
 import org.springframework.integration.dispatcher.MessageDispatcher;
@@ -38,6 +40,8 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
  * 
  */
 public class PostgresSubscribableChannel extends AbstractSubscribableChannel {
+    
+    private static Logger log = LoggerFactory.getLogger(PostgresSubscribableChannel.class);
 
     private static final String HEADER_FIELD = "h";
     private static final String BODY_FIELD = "b";
@@ -70,6 +74,7 @@ public class PostgresSubscribableChannel extends AbstractSubscribableChannel {
     public boolean subscribe(MessageHandler handler) {
         boolean r = super.subscribe(handler);
         if (r && super.getSubscriberCount() == 1) {
+            log.info("subscribe: starting listener thread...");
             startListenerThread();
         }
         return r;
@@ -79,6 +84,7 @@ public class PostgresSubscribableChannel extends AbstractSubscribableChannel {
     public boolean unsubscribe(MessageHandler handle) {
         boolean r = super.unsubscribe(handle);
         if (r && super.getSubscriberCount() == 0) {
+            log.info("unsubscribe: stopping listener thread...");
             stopListenerThread();
         }
 
@@ -106,7 +112,8 @@ public class PostgresSubscribableChannel extends AbstractSubscribableChannel {
         try {
             String msg = prepareNotifyPayload(message);
             
-            try( Connection c = ds.getConnection()) {              
+            try( Connection c = ds.getConnection()) {
+                log.debug("doSend:sending message: channel={}", channelName);
                 c.createStatement().execute("NOTIFY " + channelName + ", '" + msg + "'");
             }
             
@@ -156,13 +163,17 @@ public class PostgresSubscribableChannel extends AbstractSubscribableChannel {
             startLatch.countDown();
 
             try (Statement st = conn.createStatement()) {
+                log.debug("notifierTask: enabling notifications for channel {}", channelName);
                 st.execute("LISTEN " + channelName);
 
                 PGConnection pgConn = conn.unwrap(PGConnection.class);
 
                 while (!Thread.currentThread()
                     .isInterrupted()) {
+                    log.debug("notifierTask: wainting for notifications. channel={}", channelName);
                     PGNotification[] nts = pgConn.getNotifications();
+                    log.debug("notifierTask: processing {} notification(s)", nts.length);
+
                     for (PGNotification n : nts) {
                         Message<?> msg = convertNotification(n);
                         getDispatcher().dispatch(msg);
