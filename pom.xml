@@ -887,6 +887,7 @@
                 <module>metrics</module>
                 <module>mustache</module>
                 <module>mybatis</module>
+                <module>mybatis-sqlscript</module>
                 <module>pdf</module>
                 <module>pdf-2</module>
                 <module>protobuffer</module>
