@@ -82,7 +82,6 @@
         <module>spring-boot-data-2</module>
         <module>spring-boot-validation</module>
         <module>spring-boot-data-3</module>
-        <module>spring-boot-data-4</module>
         <module>spring-caching</module>
         <module>spring-caching-2</module>
         <module>spring-boot-redis</module>
