@@ -46,13 +46,13 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>6.0.6</version>
+            <version>${spring-test.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>3.1.0</version>
+            <version>${javax.servlet-api.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -62,12 +62,12 @@
         <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-core</artifactId>
-            <version>3.5.4</version>
+            <version>${reactor-core.version}</version>
         </dependency>
         <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-test</artifactId>
-            <version>3.5.4</version>
+            <version>${reactor-test.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -78,7 +78,6 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-
                 </plugin>
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
@@ -95,6 +94,10 @@
     </build>
 
     <properties>
+        <spring-test.version>6.0.6</spring-test.version>
+        <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
+        <reactor-core.version>3.5.4</reactor-core.version>
+        <reactor-test.version>3.5.4></reactor-test.version>
         <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
     </properties>
 

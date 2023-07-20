@@ -369,6 +369,7 @@
                 <module>persistence-modules/spring-data-cassandra-reactive</module> <!--JAVA-21844-->
                 <module>persistence-modules/spring-data-neo4j</module>
                 <module>java-nashorn</module>
+                <module>jeromq</module>
             </modules>
 
         </profile>
@@ -703,6 +704,7 @@
                 <module>osgi</module>
                 <module>spring-katharsis</module>
                 <module>logging-modules</module>
+                <module>spring-boot-documentation</module>
                 <module>spring-boot-modules</module>
                 <module>apache-httpclient</module>
                 <module>apache-httpclient4</module>
@@ -778,7 +780,6 @@
                 <module>custom-pmd</module>
                 <module>data-structures</module>
                 <module>ddd-contexts</module>
-                <module>jackson-jr</module>
                 <module>jackson-modules</module>
                 <module>jmh</module>
                 <module>deeplearning4j</module>
@@ -974,6 +975,7 @@
                 <module>osgi</module>
                 <module>spring-katharsis</module>
                 <module>logging-modules</module>
+                <module>spring-boot-documentation</module>
                 <module>spring-boot-modules</module>
                 <module>apache-httpclient</module>
                 <module>apache-httpclient4</module>
