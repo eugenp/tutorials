@@ -19,8 +19,10 @@ public class DeepCopyArrayListUnitTest {
 
         List<Student> deepCopy = Student.deepCopyUsingCloneable(students);
 
-        Assertions.assertNotEquals(students.get(0), deepCopy.get(0));
-        Assertions.assertNotEquals(students.get(1), deepCopy.get(1));
+        Assertions.assertEquals(students.get(0), deepCopy.get(0));
+        Assertions.assertNotSame(students.get(0),deepCopy.get(0));
+        Assertions.assertEquals(students.get(1), deepCopy.get(1));
+        Assertions.assertNotSame(students.get(1),deepCopy.get(1));
 
     }
 
@@ -37,8 +39,10 @@ public class DeepCopyArrayListUnitTest {
 
         List<Student> deepCopy = Student.deepCopyUsingCopyConstructor(students);
 
-        Assertions.assertNotEquals(students.get(0), deepCopy.get(0));
-        Assertions.assertNotEquals(students.get(1), deepCopy.get(1));
+        Assertions.assertEquals(students.get(0), deepCopy.get(0));
+        Assertions.assertNotSame(students.get(0),deepCopy.get(0));
+        Assertions.assertEquals(students.get(1), deepCopy.get(1));
+        Assertions.assertNotSame(students.get(1),deepCopy.get(1));
     }
 
     @Test
@@ -54,8 +58,10 @@ public class DeepCopyArrayListUnitTest {
 
         List<Student> deepCopy = Student.deepCopyUsingSerialization(students);
 
-        Assertions.assertNotEquals(students.get(0), deepCopy.get(0));
-        Assertions.assertNotEquals(students.get(1), deepCopy.get(1));
+        Assertions.assertEquals(students.get(0), deepCopy.get(0));
+        Assertions.assertNotSame(students.get(0),deepCopy.get(0));
+        Assertions.assertEquals(students.get(1), deepCopy.get(1));
+        Assertions.assertNotSame(students.get(1),deepCopy.get(1));
     }
 
     @Test
@@ -71,7 +77,9 @@ public class DeepCopyArrayListUnitTest {
 
         List<Student> deepCopy = Student.deepCopyUsingJackson(students);
 
-        Assertions.assertNotEquals(students.get(0), deepCopy.get(0));
-        Assertions.assertNotEquals(students.get(1), deepCopy.get(1));
+        Assertions.assertEquals(students.get(0), deepCopy.get(0));
+        Assertions.assertNotSame(students.get(0),deepCopy.get(0));
+        Assertions.assertEquals(students.get(1), deepCopy.get(1));
+        Assertions.assertNotSame(students.get(1),deepCopy.get(1));
     }
 }
