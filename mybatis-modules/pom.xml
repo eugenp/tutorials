@@ -3,8 +3,9 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>mybatis</artifactId>
-    <name>mybatis</name>
+    <artifactId>mybatis-modules</artifactId>
+    <name>mybatis-modules</name>
+    <packaging>pom</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -12,16 +13,10 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis</artifactId>
-            <version>${mybatis.version}</version>
-        </dependency>
-    </dependencies>
 
-    <properties>
-        <mybatis.version>3.2.2</mybatis.version>
-    </properties>
+    <modules>
+        <module>mybatis</module>
+        <module>mybatis-sqlscript</module>
+    </modules>
 
 </project>
