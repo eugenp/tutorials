@@ -17,15 +17,19 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>2.2.220</version>
+            <version>${h2database.version}</version>
+
         </dependency>
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
-            <version>3.5.13</version>
+            <version>${mybatis.version}</version>
         </dependency>
 
     </dependencies>
-
+    <properties>
+        <h2database.version>2.2.220</h2database.version>
+        <mybatis.version>3.5.13</mybatis.version>
+    </properties>
 
 </project>
