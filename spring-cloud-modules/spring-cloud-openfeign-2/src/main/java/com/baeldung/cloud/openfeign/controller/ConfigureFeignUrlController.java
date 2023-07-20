@@ -1,16 +1,7 @@
 package com.baeldung.cloud.openfeign.controller;
 
-import com.baeldung.cloud.openfeign.config.DynamicUrlInterceptor;
-import com.baeldung.cloud.openfeign.client.AlbumClient;
-import com.baeldung.cloud.openfeign.client.PostClient;
-import com.baeldung.cloud.openfeign.client.TodoClient;
-import com.baeldung.cloud.openfeign.model.Album;
-import com.baeldung.cloud.openfeign.model.Post;
-import com.baeldung.cloud.openfeign.model.Todo;
-import feign.Feign;
-import feign.Target;
-import feign.codec.Decoder;
-import feign.codec.Encoder;
+import java.net.URI;
+
 import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
@@ -24,7 +15,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.net.URI;
+import com.baeldung.cloud.openfeign.client.AlbumClient;
+import com.baeldung.cloud.openfeign.client.PostClient;
+import com.baeldung.cloud.openfeign.client.TodoClient;
+import com.baeldung.cloud.openfeign.config.DynamicUrlInterceptor;
+import com.baeldung.cloud.openfeign.model.Album;
+import com.baeldung.cloud.openfeign.model.Post;
+import com.baeldung.cloud.openfeign.model.Todo;
+
+import feign.Feign;
+import feign.Target;
+import feign.codec.Decoder;
+import feign.codec.Encoder;
 
 @RestController
 @Import(FeignClientsConfiguration.class)
