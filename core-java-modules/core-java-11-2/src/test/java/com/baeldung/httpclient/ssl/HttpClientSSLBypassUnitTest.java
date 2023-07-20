@@ -43,7 +43,7 @@ public class HttpClientSSLBypassUnitTest {
 
     @Test
     public void whenHttpsRequest_withDUMMY_CERT_thenCorrect() throws IOException, InterruptedException, NoSuchAlgorithmException, KeyManagementException, URISyntaxException {
-        SSLContext sslContext = SSLContext.getInstance("SSL");
+        SSLContext sslContext = SSLContext.getInstance("SSL"); // OR TLS
         sslContext.init(null, new TrustManager[]{DUMMY_TRUST_MANAGER}, new SecureRandom());
         HttpClient httpClient = HttpClient.newBuilder().sslContext(sslContext).build();
         HttpRequest request = HttpRequest.newBuilder()
