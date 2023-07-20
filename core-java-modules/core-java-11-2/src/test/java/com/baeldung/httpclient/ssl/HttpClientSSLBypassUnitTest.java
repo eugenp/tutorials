@@ -42,9 +42,9 @@ public class HttpClientSSLBypassUnitTest {
     }
 
     @Test
-    public void whenHttpsRequest_withDUMMY_CERT_thenCorrect() throws IOException, InterruptedException, NoSuchAlgorithmException, KeyManagementException, URISyntaxException {
+    public void whenHttpsRequest_withMOCK_CERT_thenCorrect() throws IOException, InterruptedException, NoSuchAlgorithmException, KeyManagementException, URISyntaxException {
         SSLContext sslContext = SSLContext.getInstance("SSL"); // OR TLS
-        sslContext.init(null, new TrustManager[]{DUMMY_TRUST_MANAGER}, new SecureRandom());
+        sslContext.init(null, new TrustManager[]{ MOCK_TRUST_MANAGER }, new SecureRandom());
         HttpClient httpClient = HttpClient.newBuilder().sslContext(sslContext).build();
         HttpRequest request = HttpRequest.newBuilder()
             .uri(new URI("https://wrong.host.badssl.com/"))
@@ -54,7 +54,7 @@ public class HttpClientSSLBypassUnitTest {
     }
 
 
-    private static final TrustManager DUMMY_TRUST_MANAGER = new X509ExtendedTrustManager() {
+    private static final TrustManager MOCK_TRUST_MANAGER = new X509ExtendedTrustManager() {
         @Override
         public java.security.cert.X509Certificate[] getAcceptedIssuers() {
             return new java.security.cert.X509Certificate[0];
