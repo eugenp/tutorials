@@ -43,7 +43,6 @@
 
     <properties>
         <commons.lang3.version>3.12.0</commons.lang3.version>
-        <guava.version>31.1-jre</guava.version>
         <icu4j.version>61.1</icu4j.version>
     </properties>
 
