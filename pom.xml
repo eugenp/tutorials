@@ -1156,7 +1156,7 @@
                 <module>mesos-marathon</module>
                 <module>metrics</module>
                 <module>mustache</module>
-                <module>mybatis</module>
+                <module>mybatis-modules</module>
                 <module>pdf</module>
                 <module>pdf-2</module>
                 <module>protobuffer</module>

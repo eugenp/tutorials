@@ -1,7 +1,8 @@
 package org.baeldung.mybatis_sqlscript;
 
 import org.apache.ibatis.jdbc.ScriptRunner;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -24,7 +25,7 @@ public class Main {
     static final String PASS = "";
     private static Connection conn;
     private static Statement stmt;
-
+    final static Logger logger = Logger.getLogger("Main");
     public static void main(String[] args){
         try {
             //Register JDBC driver
@@ -57,12 +58,12 @@ public class Main {
                 case 1:
                     // Running SQL Script using Plain Java
                     for (String sql : sqlLines) {
-                        System.out.println("Query: " + sql);
+                        logger.info("Query: " + sql);
 
                         if (sql.contains("SELECT")) {
                             ResultSet rs = stmt.executeQuery(sql);
-                            System.out.print("ID" + "\t" + "Name" + "\t" + "Surname" + "\t" + "Age");
-                            System.out.println("");
+                            logger.info("ID" + "\t" + "Name" + "\t" + "Surname" + "\t" + "Age");
+                            logger.info("");
                             // Extract data from result set
                             while (rs.next()) {
                                 // Retrieve by column name
@@ -72,8 +73,8 @@ public class Main {
                                 String surname = rs.getString("surname");
 
                                 // Display values
-                                System.out.print(id + "\t" + name + "\t" + surname + "\t" + age);
-                                System.out.println("");
+                                logger.info(id + "\t" + name + "\t" + surname + "\t" + age);
+                                logger.info("");
                             }
                         }
                         else
@@ -88,14 +89,7 @@ public class Main {
                     scriptExecutor.runScript(reader);
                     reader.close();
                     break;
-
-
-
-
             }
-
-
-
         }
         catch(SQLException se)
         {
@@ -106,7 +100,7 @@ public class Main {
             //Handle errors for Class.forName
             e.printStackTrace();
         }
-        System.out.println("Reached End of Code!");
+        logger.info("Reached End of Code!");
     }
 
 }
