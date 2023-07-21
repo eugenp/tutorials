@@ -39,11 +39,9 @@ public class StopExecutionFurtherCodeUnitTest {
     @Test
     void givenName_whenStopExecutionUsingExceptionCalled_thenNameIsConvertedToUpper() {
         StopExecutionFurtherCode stopExecutionFurtherCode = new StopExecutionFurtherCode();
-
         String name = "John";
         String result1 = stopExecutionFurtherCode.stopExecutionUsingException(name);
         assertEquals("JOHN", result1);
-
         try {
             Integer number1 = 10;
             assertThrows(IllegalArgumentException.class, () -> {
@@ -72,13 +70,10 @@ public class StopExecutionFurtherCodeUnitTest {
     @Test
     void givenThreadRunning_whenInterrupted_thenThreadExecutionIsStopped() throws InterruptedException {
         InterruptThread stopExecution = new InterruptThread();
-
         stopExecution.start();
         Thread.sleep(2000);
-
         stopExecution.interrupt();
         stopExecution.join();
-
         assertTrue(!stopExecution.isAlive());
     }
 

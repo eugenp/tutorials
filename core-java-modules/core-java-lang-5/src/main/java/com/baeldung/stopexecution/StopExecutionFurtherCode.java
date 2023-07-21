@@ -9,16 +9,16 @@ import java.util.Locale;
 
 public class StopExecutionFurtherCode {
 
-    private boolean shouldContinue = true;
+    boolean shouldContinue = true;
 
-    public int performTask(int a, int b) {
+    int performTask(int a, int b) {
         if (!shouldContinue) {
             System.exit(0);
         }
         return a + b;
     }
 
-    public int calculateFactorial(int n) {
+    int calculateFactorial(int n) {
         if (n <= 1) {
             return 1; // base case
         }
@@ -26,7 +26,7 @@ public class StopExecutionFurtherCode {
         return n * calculateFactorial(n - 1);
     }
 
-    public int calculateSum(int[] x) {
+    int calculateSum(int[] x) {
         int sum = 0;
         for (int i = 0; i < 10; i++) {
             if (x[i] < 0) {
@@ -37,7 +37,7 @@ public class StopExecutionFurtherCode {
         return sum;
     }
 
-    public <T> T stopExecutionUsingException(T object) {
+    <T> T stopExecutionUsingException(T object) {
         if (object instanceof Number) {
             throw new IllegalArgumentException("Parameter can not be number.");
         }
@@ -46,24 +46,22 @@ public class StopExecutionFurtherCode {
         return upperCase;
     }
 
-    public int processLines(String[] lines) {
+    int processLines(String[] lines) {
         int statusCode = 0;
         parser:
         for (String line : lines) {
             System.out.println("Processing line: " + line);
-
             if (line.equals("stop")) {
                 System.out.println("Stopping parsing...");
                 statusCode = -1;
                 break parser; // Stop parsing and exit the loop
             }
-
             System.out.println("Line processed.");
         }
         return statusCode;
     }
 
-    public void download(String fileUrl, String destinationPath) throws MalformedURLException {
+    void download(String fileUrl, String destinationPath) throws MalformedURLException {
         if (fileUrl == null || fileUrl.isEmpty() || destinationPath == null || destinationPath.isEmpty()) {
             return;
         }
@@ -80,7 +78,7 @@ public class StopExecutionFurtherCode {
         }
     }
 
-    public void stop() {
+    void stop() {
         shouldContinue = false;
     }
 
