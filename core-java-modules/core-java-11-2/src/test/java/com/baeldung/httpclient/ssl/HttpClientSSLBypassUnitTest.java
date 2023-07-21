@@ -24,7 +24,7 @@ import javax.net.ssl.X509ExtendedTrustManager;
 public class HttpClientSSLBypassUnitTest {
 
     @Test
-    public void whenHttpsRequest_withDisabledHostName_thenCorrect() throws IOException, InterruptedException {
+    public void givenDisableUsingJVMProperty_whenByPassCertificationVerification_thenSuccessHttpResponse() throws IOException, InterruptedException {
         final Properties props = System.getProperties();
         props.setProperty("jdk.internal.httpclient.disableHostnameVerification", Boolean.TRUE.toString());
 
@@ -42,7 +42,7 @@ public class HttpClientSSLBypassUnitTest {
     }
 
     @Test
-    public void whenHttpsRequest_withMOCK_CERT_thenCorrect() throws IOException, InterruptedException, NoSuchAlgorithmException, KeyManagementException, URISyntaxException {
+    public void givenMockTrustManager_whenByPassCertificateVerification_thenSuccessHttpResponse() throws IOException, InterruptedException, NoSuchAlgorithmException, KeyManagementException, URISyntaxException {
         SSLContext sslContext = SSLContext.getInstance("SSL"); // OR TLS
         sslContext.init(null, new TrustManager[]{ MOCK_TRUST_MANAGER }, new SecureRandom());
         HttpClient httpClient = HttpClient.newBuilder().sslContext(sslContext).build();
