@@ -6,19 +6,6 @@ public class YieldExamples {
         ONE, TWO, THREE, FOUR;
     }
 
-    public static void main(String... args) {
-
-        // Example 1
-        System.out.println(analyze(Number.THREE));
-
-        // Example 2
-        System.out.println(analyzeNumberArrow(Number.THREE));
-
-        // Example 3
-        System.out.println(analyzeNumberColon(Number.THREE));
-
-    }
-
     public static String analyze(Number number) {
         String message;
         switch (number) {
