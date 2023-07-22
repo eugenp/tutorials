@@ -1,9 +1,9 @@
 package com.baeldung.cloud.openfeign.config;
 
+import java.util.function.Supplier;
+
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
-
-import java.util.function.Supplier;
 
 public class DynamicUrlInterceptor implements RequestInterceptor {
 
