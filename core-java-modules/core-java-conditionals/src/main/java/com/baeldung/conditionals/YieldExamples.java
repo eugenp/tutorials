@@ -3,7 +3,7 @@ package com.baeldung.conditionals;
 public class YieldExamples {
 
     public enum Number {
-        ONE, TWO, THREE, FOUR;
+        ONE, TWO, THREE, FOUR
     }
 
     public static String analyze(Number number) {
