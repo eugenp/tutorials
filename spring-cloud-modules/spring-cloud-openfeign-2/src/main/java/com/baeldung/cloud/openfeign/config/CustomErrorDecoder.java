@@ -2,6 +2,7 @@ package com.baeldung.cloud.openfeign.config;
 
 import com.baeldung.cloud.openfeign.exception.BadRequestException;
 import com.baeldung.cloud.openfeign.exception.NotFoundException;
+
 import feign.Response;
 import feign.codec.ErrorDecoder;
 

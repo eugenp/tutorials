@@ -1,10 +1,12 @@
 package com.baeldung.cloud.openfeign.client;
 
-import com.baeldung.cloud.openfeign.model.Todo;
-import feign.RequestLine;
+import java.net.URI;
+
 import org.springframework.cloud.openfeign.FeignClient;
 
-import java.net.URI;
+import com.baeldung.cloud.openfeign.model.Todo;
+
+import feign.RequestLine;
 
 @FeignClient(name = "todoClient")
 public interface TodoClient {

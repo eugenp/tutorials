@@ -1,8 +1,8 @@
 package com.baeldung.cloud.openfeign.service;
 
-import com.baeldung.cloud.openfeign.model.Post;
-
 import java.util.List;
+
+import com.baeldung.cloud.openfeign.model.Post;
 
 public interface JSONPlaceHolderService {
 
