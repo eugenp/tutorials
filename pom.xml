@@ -846,6 +846,7 @@
                 <module>jackson-simple</module>
                 <module>java-blockchain</module>
                 <module>java-jdi</module>
+                <module>java-general</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>javax-sound</module>
