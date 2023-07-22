@@ -9,7 +9,7 @@ public class JsonMinifierUnitTest {
 
 
     @Test
-    public void testJsonWhitespaceRemoval() {
+    public void givenWhiteSpaceRemoval_whenJsonContainsWhitespaces_thenWhitespaceRemoved() {
         String expectedJson = "{\"name\":\"John\",\"address\":\"New       York\",\"age\":30,\"phoneNumber\":9999999999}";
         String result = jsonMinifier.removeExtraWhitespace(inputJson);
         System.out.println(result);
@@ -17,7 +17,7 @@ public class JsonMinifierUnitTest {
     }
 
     @Test
-    public void testJsonWhitespaceRemovalUsingJackson() throws Exception {
+    public void givenWhiteSpaceRemovalUsingJackson_whenJsonContainsWhitespaces_thenWhitespaceRemoved() throws Exception {
         String expectedJson = "{\"name\":\"John\",\"address\":\"New       York\",\"age\":30,\"phoneNumber\":9999999999}";
         String result = jsonMinifier.removeExtraWhitespaceUsingJackson(inputJson);
         System.out.println(result);
@@ -25,7 +25,7 @@ public class JsonMinifierUnitTest {
     }
 
     @Test
-    public void testJsonWhitespacesRemovalUsingGson() {
+    public void givenWhiteSpaceRemovalUsingGson_whenJsonContainsWhitespaces_thenWhitespaceRemoved() {
         String expectedJson = "{\"name\":\"John\",\"address\":\"New       York\",\"age\":30,\"phoneNumber\":9999999999}";
         String result = jsonMinifier.removeWhitespacesUsingGson(inputJson);
         System.out.println(result);
