@@ -31,6 +31,7 @@ import org.apache.http.protocol.HttpContext;
 import org.apache.http.ssl.SSLContexts;
 import org.junit.jupiter.api.Test;
 
+import com.baeldung.GetRequestMockServer;
 
 class HttpAsyncClientV4LiveTest extends GetRequestMockServer {
 

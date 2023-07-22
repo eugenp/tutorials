@@ -6,6 +6,10 @@
         </encoder>
     </appender>
 
+    <logger name="org.apache.cassandra.config" level="WARN"/>
+
+    <logger name="org.apache.cassandra.service" level="WARN"/>
+
     <root level="INFO">
         <appender-ref ref="STDOUT" />
     </root>
