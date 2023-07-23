@@ -21,7 +21,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-class HttpClientTimeoutV4LiveTest {
+import com.baeldung.GetRequestMockServer;
+
+class HttpClientTimeoutV4LiveTest extends GetRequestMockServer {
 
     private CloseableHttpResponse response;
 
@@ -97,7 +99,7 @@ class HttpClientTimeoutV4LiveTest {
         int timeout = 20; // seconds
         RequestConfig requestConfig = RequestConfig.custom().setConnectionRequestTimeout(timeout * 1000)
             .setConnectTimeout(timeout * 1000).setSocketTimeout(timeout * 1000).build();
-        HttpGet getMethod = new HttpGet("http://localhost:8082/httpclient-simple/api/bars/1");
+        HttpGet getMethod = new HttpGet(simplePathUrl);
         getMethod.setConfig(requestConfig);
 
         int hardTimeout = 5; // seconds

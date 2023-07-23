@@ -33,7 +33,7 @@ public class PersonSerializerUnitTest {
     }
 
     @Test
-    public void WhenUseCustomGson_ThenDonotSerializeAccountNumAndPassword () {
+    public void whenUseCustomGson_thenDonotSerializeAccountNumAndPassword () {
 
         String personJson = PersonSerializer.serializeWithConfiguredGson(person);
         logger.info(personJson);
@@ -42,7 +42,7 @@ public class PersonSerializerUnitTest {
     }
 
     @Test
-    public void WhenUseDefaultGson_ThenSerializeAccountNumAndPassword () {
+    public void whenUseDefaultGson_thenSerializeAccountNumAndPassword () {
 
         String personJson = PersonSerializer.serializeWithDefaultGson(person);
         logger.info(personJson);
@@ -51,7 +51,7 @@ public class PersonSerializerUnitTest {
     }
 
     @Test
-    public void whenUseSerializedAnnotation_ThenUseSerializedNameinJsonString() {
+    public void whenUseSerializedAnnotation_thenUseSerializedNameinJsonString() {
         String countryJson = PersonSerializer.toJsonString(country);
         logger.info(countryJson);
         assertFalse("Test failed: No change in the keys", countryJson.contains("countryName"));
@@ -64,7 +64,7 @@ public class PersonSerializerUnitTest {
     }
 
     @Test
-    public void whenJsonStrCreatedWithCustomKeys_ThenCreateObjUsingGson() {
+    public void whenJsonStrCreatedWithCustomKeys_thenCreateObjUsingGson() {
         String countryJson = PersonSerializer.toJsonString(country);
         Country country = PersonSerializer.fromJsonString(countryJson);
         logger.info(country.toString());

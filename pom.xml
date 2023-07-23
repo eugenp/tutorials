@@ -780,7 +780,6 @@
                 <module>custom-pmd</module>
                 <module>data-structures</module>
                 <module>ddd-contexts</module>
-                <module>jackson-jr</module>
                 <module>jackson-modules</module>
                 <module>jmh</module>
                 <module>deeplearning4j</module>
