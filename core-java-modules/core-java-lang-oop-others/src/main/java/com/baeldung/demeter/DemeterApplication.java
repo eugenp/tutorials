@@ -9,9 +9,8 @@ public class DemeterApplication {
           .getManager()
           .approveExpense(expenses);
 
-        Department dept = new Department();
-        Manager manager = new Manager();
-
-        employee.submitExpense(dept, manager, expenses);
+        Manager mgr = new Manager();
+        Employee emp = new Employee(mgr);
+        emp.submitExpense(expenses);
     }
 }
