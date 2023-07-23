@@ -21,6 +21,7 @@ import org.springframework.core.task.SimpleAsyncTaskExecutor;
 import org.springframework.integration.channel.AbstractSubscribableChannel;
 import org.springframework.integration.dispatcher.MessageDispatcher;
 import org.springframework.integration.dispatcher.UnicastingDispatcher;
+import org.springframework.integration.support.MessageBuilder;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageDeliveryException;
 import org.springframework.messaging.MessageHandler;
@@ -206,12 +207,10 @@ public class PostgresSubscribableChannel extends AbstractSubscribableChannel {
                 }
 
                 JsonNode body = root.path(BODY_FIELD);
-                if ( body.isTextual()) {
-                    return new GenericMessage<String>(body.asText(), hdr);
-                }
-                else {
-                    return new GenericMessage<JsonNode>(body,hdr);                    
-                }
+                return MessageBuilder
+                  .withPayload(body.isTextual()?body.asText():body)
+                  .copyHeaders(hdr)
+                  .build();
             } catch (Exception ex) {
                 return new ErrorMessage(ex);
             }

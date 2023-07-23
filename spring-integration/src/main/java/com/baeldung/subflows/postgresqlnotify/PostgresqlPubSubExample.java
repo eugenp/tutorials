@@ -79,7 +79,7 @@ public class PostgresqlPubSubExample {
         return new PostgresSubscribableChannel("orders", connectionSupplier, pgds, new ObjectMapper());
     }
     
-    @Transformer(inputChannel = "orders" , outputChannel = "validatedOrders" )
+    @Transformer(inputChannel = "orders" , outputChannel = "orderProcessor" )
     Order validatedOrders(Message<?> orderMessage)  throws JsonProcessingException {
         ObjectNode on = (ObjectNode)orderMessage.getPayload();
         Order order = om.treeToValue(on, Order.class);
@@ -87,7 +87,7 @@ public class PostgresqlPubSubExample {
     }
     
     
-    @ServiceActivator(inputChannel = "validatedOrders")
+    @ServiceActivator(inputChannel = "orderProcessor")
     void processOrder(Order order){
         
         log.info("Processing order: id={}, symbol={}, qty={}, price={}",
