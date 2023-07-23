@@ -125,7 +125,6 @@ public class PostgresSubscribableChannel extends AbstractSubscribableChannel {
     }
     
     protected String prepareNotifyPayload(Message<?> message) throws JsonProcessingException {
-        // Converte headers e payload separadamente
         Map<String, Object> rawMap = new HashMap<>();
         rawMap.putAll(message.getHeaders());
         JsonNode headerData = om.valueToTree(rawMap);
@@ -135,7 +134,6 @@ public class PostgresSubscribableChannel extends AbstractSubscribableChannel {
           .objectNode();
         msg.set(HEADER_FIELD, headerData);
         msg.set(BODY_FIELD, bodyData);
-
         return om.writeValueAsString(msg);
     }
 
