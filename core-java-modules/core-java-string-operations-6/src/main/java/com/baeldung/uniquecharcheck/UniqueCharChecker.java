@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 public class UniqueCharChecker {
 
-    public static boolean checkV1(String str) {
+    public static boolean bruteForceCheck(String str) {
         char[] chars = str.toUpperCase().toCharArray();
         for (int i = 0; i < chars.length; i++) {
             for (int j = i + 1; j < chars.length; j++) {
@@ -19,7 +19,7 @@ public class UniqueCharChecker {
         return true;
     }
 
-    public static boolean checkV2(String str) {
+    public static boolean sortAndThenCheck(String str) {
         char[] chars = str.toUpperCase().toCharArray();
         Arrays.sort(chars);
         for (int i = 0; i < chars.length - 1; i++) {
@@ -30,7 +30,7 @@ public class UniqueCharChecker {
         return true;
     }
 
-    public static boolean checkV3(String str) {
+    public static boolean useSetCheck(String str) {
         char[] chars = str.toUpperCase().toCharArray();
         Set <Character> set = new HashSet <>();
         for (char c: chars) {
@@ -39,7 +39,7 @@ public class UniqueCharChecker {
         return set.size() == str.length();
     }
 
-    public static boolean checkV4(String str) {
+    public static boolean useStreamCheck(String str) {
         boolean isUnique = str.toUpperCase().chars()
                 .mapToObj(c -> (char)c)
                 .collect(Collectors.toSet())
@@ -47,7 +47,7 @@ public class UniqueCharChecker {
         return isUnique;
     }
 
-    public static boolean checkV5(String str) {
+    public static boolean useStringUtilscheck(String str) {
         for (int i = 0; i < str.length(); i++) {
             String curChar = String.valueOf(str.charAt(i));
             String remainingStr = str.substring(i+1);
