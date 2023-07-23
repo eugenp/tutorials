@@ -85,9 +85,14 @@ public class CertificatesUnitTest {
         String filename = System.getProperty("java.home") + relativeCacertsPath;
         FileInputStream is = new FileInputStream(filename);
 
+        System.out.println("Java cacerts path: " + filename);
+
         KeyStore keystore = KeyStore.getInstance(KeyStore.getDefaultType());
         String password = "changeit";
         keystore.load(is, password.toCharArray());
+
+        for (Enumeration<String> e = keystore.aliases(); e.hasMoreElements();)
+            System.out.println(e.nextElement());
 
         return keystore;
     }
