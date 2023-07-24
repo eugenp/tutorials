@@ -17,7 +17,7 @@
         <dependency>
             <groupId>org.neo4j.test</groupId>
             <artifactId>neo4j-harness</artifactId>
-            <version>5.10.0</version>
+            <version>${neo4j-harness.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -47,6 +47,7 @@
 
     <properties>
         <spring-boot.version>2.7.14</spring-boot.version>
+        <neo4j-harness.version>5.10.0</neo4j-harness.version>
     </properties>
 
 </project>
