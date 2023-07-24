@@ -1,11 +1,12 @@
 package com.baeldung.spring.data.neo4j;
 
-import com.baeldung.spring.data.neo4j.domain.Author;
 import com.baeldung.spring.data.neo4j.domain.Book;
 import com.baeldung.spring.data.neo4j.repository.AuthorRepository;
 import com.baeldung.spring.data.neo4j.repository.BookRepository;
-import org.junit.jupiter.api.*;
-import org.neo4j.dbms.api.Neo4jDatabaseManagementServiceBuilder;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.neo4j.harness.Neo4j;
 import org.neo4j.harness.Neo4jBuilders;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,6 @@ import org.springframework.boot.test.autoconfigure.data.neo4j.DataNeo4jTest;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 
-import java.util.Arrays;
 import java.util.List;
 
 @DataNeo4jTest
