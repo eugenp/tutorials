@@ -4,31 +4,17 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
-import java.util.UUID;
 
 
 @Entity
 @Table(name = "`order`")
 public class Order {
-
-    protected Order() {}
-
-    public Order(Long orderId, Long customerId, BigDecimal totalPrice, Status orderStatus, LocalDate orderDate, String deliveryAddress) {
-        this.orderId = orderId;
-        this.customerId = customerId;
-        this.totalPrice = totalPrice;
-        this.orderStatus = orderStatus;
-        this.orderDate = orderDate;
-        this.deliveryAddress = deliveryAddress;
-    }
 
     @Id
     @Column(name = "order_id")
@@ -95,6 +81,17 @@ public class Order {
     }
 
     public void setDeliveryAddress(String deliveryAddress) {
+        this.deliveryAddress = deliveryAddress;
+    }
+
+    protected Order() {}
+
+    public Order(Long orderId, Long customerId, BigDecimal totalPrice, Status orderStatus, LocalDate orderDate, String deliveryAddress) {
+        this.orderId = orderId;
+        this.customerId = customerId;
+        this.totalPrice = totalPrice;
+        this.orderStatus = orderStatus;
+        this.orderDate = orderDate;
         this.deliveryAddress = deliveryAddress;
     }
 

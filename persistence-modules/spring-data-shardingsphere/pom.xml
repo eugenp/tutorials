@@ -15,6 +15,11 @@
         <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
+    <properties>
+        <shardingsphere.version>5.3.2</shardingsphere.version>
+        <mysql.version>8.0.33</mysql.version>
+    </properties>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -40,20 +45,16 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.33</version>
+            <version>${mysql.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.shardingsphere</groupId>
             <artifactId>shardingsphere-jdbc-core</artifactId>
-            <version>5.3.2</version>
+            <version>${shardingsphere.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jdbc</artifactId>
         </dependency>
         <dependency>
             <groupId>org.testcontainers</groupId>
