@@ -13,5 +13,4 @@ import reactor.core.publisher.Flux;
 @Repository
 public interface ProductRepository extends ReactiveSortingRepository<Product, UUID> {
     Flux<Product> findAllBy(Pageable pageable);
-
 }

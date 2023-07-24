@@ -119,5 +119,4 @@ class ProductPaginationControllerIntegrationTest {
             .contains(tuple("product_B", 2.0), atIndex(0))
             .contains(tuple("product_A", 1.0), atIndex(1));
     }
-
 }
