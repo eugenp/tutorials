@@ -11,5 +11,5 @@ public class JniUnsatisfiedLink {
 
     public native String test();
 
-    public native String inexistentDllMethod();
+    public native String nonexistentDllMethod();
 }

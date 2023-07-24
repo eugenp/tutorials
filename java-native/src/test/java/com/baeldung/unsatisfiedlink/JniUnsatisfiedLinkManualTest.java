@@ -25,9 +25,7 @@ public class JniUnsatisfiedLinkManualTest {
     public void whenIncorrectLibName_thenLibNotFound() {
         String libName = "lib" + LIB_NAME + ".so";
 
-        Error error = assertThrows(UnsatisfiedLinkError.class, () -> {
-            System.loadLibrary(libName);
-        });
+        Error error = assertThrows(UnsatisfiedLinkError.class, () -> System.loadLibrary(libName));
 
         assertEquals(String.format("no %s in java.library.path", libName), error.getMessage());
     }
@@ -36,9 +34,7 @@ public class JniUnsatisfiedLinkManualTest {
     public void whenLoadLibraryContainsPathSeparator_thenErrorThrown() {
         String libName = "/" + LIB_NAME;
 
-        Error error = assertThrows(UnsatisfiedLinkError.class, () -> {
-            System.loadLibrary(libName);
-        });
+        Error error = assertThrows(UnsatisfiedLinkError.class, () -> System.loadLibrary(libName));
 
         assertEquals(String.format("Directory separator should not appear in library name: %s", libName), error.getMessage());
     }
@@ -47,9 +43,7 @@ public class JniUnsatisfiedLinkManualTest {
     public void whenLoadWithoutAbsolutePath_thenErrorThrown() {
         String libName = LIB_NAME;
 
-        Error error = assertThrows(UnsatisfiedLinkError.class, () -> {
-            System.load(libName);
-        });
+        Error error = assertThrows(UnsatisfiedLinkError.class, () -> System.load(libName));
 
         assertEquals(String.format("Expecting an absolute path of the library: %s", libName), error.getMessage());
     }
@@ -58,9 +52,7 @@ public class JniUnsatisfiedLinkManualTest {
     public void whenUnlinkedMethod_thenErrorThrown() {
         System.loadLibrary(LIB_NAME);
 
-        Error error = assertThrows(UnsatisfiedLinkError.class, () -> {
-            new JniUnsatisfiedLink().inexistentDllMethod();
-        });
+        Error error = assertThrows(UnsatisfiedLinkError.class, () -> new JniUnsatisfiedLink().nonexistentDllMethod());
 
         assertTrue(error.getMessage()
             .contains("JniUnsatisfiedLink.inexistentDllMethod"));
@@ -68,9 +60,7 @@ public class JniUnsatisfiedLinkManualTest {
 
     @Test
     public void whenIncompatibleArchitecture_thenErrorThrown() {
-        Error error = assertThrows(UnsatisfiedLinkError.class, () -> {
-            System.loadLibrary(LIB_NAME + "32");
-        });
+        Error error = assertThrows(UnsatisfiedLinkError.class, () -> System.loadLibrary(LIB_NAME + "32"));
 
         assertTrue(error.getMessage()
             .contains("wrong ELF class: ELFCLASS32"));
@@ -82,13 +72,11 @@ public class JniUnsatisfiedLinkManualTest {
         assertNotNull(libPath);
 
         String dummyLib = LIB_NAME + "-dummy";
-        if (new File(libPath, dummyLib).isFile()) {
-            Error error = assertThrows(UnsatisfiedLinkError.class, () -> {
-                System.loadLibrary(dummyLib);
-            });
+        assertTrue(new File(libPath, dummyLib).isFile());
 
-            assertTrue(error.getMessage()
-                .contains("file too short"));
-        }
+        Error error = assertThrows(UnsatisfiedLinkError.class, () -> System.loadLibrary(dummyLib));
+
+        assertTrue(error.getMessage()
+            .contains("file too short"));
     }
 }
