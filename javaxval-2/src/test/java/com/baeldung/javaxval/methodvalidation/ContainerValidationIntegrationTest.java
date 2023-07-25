@@ -3,7 +3,7 @@ package com.baeldung.javaxval.methodvalidation;
 import java.time.LocalDate;
 import java.util.List;
 
-import javax.validation.ConstraintViolationException;
+import jakarta.validation.ConstraintViolationException;
 
 import org.junit.Rule;
 import org.junit.Test;

@@ -1,15 +1,15 @@
 package com.baeldung.swaggerexample.entity;
 
-import io.swagger.annotations.ApiModelProperty;
-
+import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
 
 public class Product implements Serializable {
-    @ApiModelProperty(notes = "Product ID", example = "1", required = true)
+
+    @Schema(name = "Product ID", example = "1", required = true)
     private Long id;
-    @ApiModelProperty(notes = "Product name", example = "Product 1", required = false)
+    @Schema(name = "Product name", example = "Product 1", required = false)
     private String name;
-    @ApiModelProperty(notes = "Product price", example = "$100.00", required = true)
+    @Schema(name = "Product price", example = "$100.00", required = true)
     private String price;
 
     // constructor and getter/setters

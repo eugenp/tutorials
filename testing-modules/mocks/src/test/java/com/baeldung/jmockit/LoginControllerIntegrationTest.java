@@ -1,18 +1,13 @@
 package com.baeldung.jmockit;
 
-import mockit.*;
-import mockit.integration.junit4.JMockit;
 import com.baeldung.testCase.LoginController;
 import com.baeldung.testCase.LoginDao;
 import com.baeldung.testCase.LoginService;
 import com.baeldung.testCase.UserForm;
-import org.hamcrest.BaseMatcher;
-import org.hamcrest.Description;
+import mockit.*;
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
-@RunWith(JMockit.class)
 public class LoginControllerIntegrationTest {
 
     @Injectable
@@ -110,15 +105,9 @@ public class LoginControllerIntegrationTest {
             loginService.login((UserForm) any);
             result = true;
             // complex matcher
-            loginService.setCurrentUser(withArgThat(new BaseMatcher<String>() {
-                @Override
+            loginService.setCurrentUser(with(new Delegate<String>() {
                 public boolean matches(Object item) {
                     return item instanceof String && ((String) item).startsWith("foo");
-                }
-
-                @Override
-                public void describeTo(Description description) {
-                    //NOOP
                 }
             }));
         }};

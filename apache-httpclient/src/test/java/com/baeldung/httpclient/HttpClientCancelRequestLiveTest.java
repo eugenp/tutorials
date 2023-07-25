@@ -19,7 +19,7 @@ class HttpClientCancelRequestLiveTest {
     void whenRequestIsCanceled_thenCorrect() throws IOException {
         HttpGet request = new HttpGet(SAMPLE_URL);
         try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
-                httpClient.execute(request, response -> {
+            httpClient.execute(request, response -> {
                 HttpEntity entity = response.getEntity();
 
                 System.out.println("----------------------------------------");
@@ -28,6 +28,12 @@ class HttpClientCancelRequestLiveTest {
                     System.out.println("Response content length: " + entity.getContentLength());
                 }
                 System.out.println("----------------------------------------");
+
+                if (entity != null) {
+                    // Closes this stream and releases any system resources
+                    entity.close();
+                }
+
                 // Do not feel like reading the response body
                 // Call abort on the request object
                 request.abort();

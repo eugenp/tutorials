@@ -1,20 +1,9 @@
 package com.baeldung.jmockit;
 
-import com.baeldung.jmockit.Collaborator;
-import com.baeldung.jmockit.Model;
-import com.baeldung.jmockit.Performer;
+import mockit.*;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
-import mockit.Expectations;
-import mockit.Injectable;
-import mockit.Mocked;
-import mockit.Tested;
-import mockit.Verifications;
-import mockit.integration.junit4.JMockit;
-
-@RunWith(JMockit.class)
 public class ReusingIntegrationTest {
 
     @Injectable

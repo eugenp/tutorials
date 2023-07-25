@@ -351,12 +351,10 @@
 
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
-                <module>gradle-modules/gradle/maven-to-gradle</module>
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
-                <module>language-interop</module>
 
                 <module>libraries-jdk8</module>
 
@@ -369,6 +367,9 @@
                 <module>persistence-modules/hibernate-ogm</module> <!-- hibernate-ogm wasn't updated because it doesn't support jakarta API -->
                 <module>persistence-modules/java-cassandra</module> <!-- JAVA-21464 cassandra-unit library doesn't support to run with jdk9 and above -->
                 <module>persistence-modules/spring-data-cassandra-reactive</module> <!--JAVA-21844-->
+                <module>persistence-modules/spring-data-neo4j</module>
+                <module>java-nashorn</module>
+                <module>jeromq</module>
             </modules>
 
         </profile>
@@ -528,12 +529,10 @@
 
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
-                <module>gradle-modules/gradle/maven-to-gradle</module>
                 <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
-                <module>language-interop</module>
 
                 <module>libraries-jdk8</module>
 
@@ -545,6 +544,8 @@
                 <module>persistence-modules/hibernate-ogm</module> <!-- hibernate-ogm wasn't updated because it doesn't support jakarta API -->
                 <module>persistence-modules/java-cassandra</module> <!-- JAVA-21464 cassandra-unit library doesn't support to run with jdk9 and above -->
                 <module>persistence-modules/spring-data-cassandra-reactive</module> <!--JAVA-21844-->
+                <module>persistence-modules/spring-data-neo4j</module>
+                <module>java-nashorn</module>
             </modules>
 
         </profile>
@@ -666,7 +667,6 @@
                 </plugins>
             </build>
 
-
         </profile>
 
         <profile>
@@ -704,6 +704,7 @@
                 <module>osgi</module>
                 <module>spring-katharsis</module>
                 <module>logging-modules</module>
+                <module>spring-boot-documentation</module>
                 <module>spring-boot-modules</module>
                 <module>apache-httpclient</module>
                 <module>apache-httpclient4</module>
@@ -728,6 +729,9 @@
                 <module>spring-batch-2</module>
                 <module>spring-boot-rest</module>
                 <module>spring-drools</module>
+                <module>spring-cloud-modules/spring-cloud-contract</module>
+                <module>spring-cloud-modules/spring-cloud-data-flow</module>
+                <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
                 <module>spring-exceptions</module>
                 <module>spring-jenkins-pipeline</module>
                 <module>spring-core</module>
@@ -847,7 +851,6 @@
                 <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>javaxval-2</module>
-                <module>javax-validation-advanced</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
                 <module>jib</module>
@@ -864,6 +867,7 @@
                 <module>libraries-6</module>
 
                 <module>libraries-apache-commons</module>
+                <module>libraries-apache-commons-2</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
                 <module>libraries-data-2</module>
@@ -888,7 +892,6 @@
                 <module>protobuffer</module>
                 <module>reactor-core</module>
                 <module>rsocket</module>
-
 
                 <!--  Modules from default second-->
                 <module>spring-5</module>
@@ -933,6 +936,8 @@
                 <module>xml</module>
                 <module>xml-2</module>
                 <module>image-processing</module>
+                <module>language-interop</module>
+                <module>gradle-modules/gradle/maven-to-gradle</module>
             </modules>
 
             <properties>
@@ -970,6 +975,7 @@
                 <module>osgi</module>
                 <module>spring-katharsis</module>
                 <module>logging-modules</module>
+                <module>spring-boot-documentation</module>
                 <module>spring-boot-modules</module>
                 <module>apache-httpclient</module>
                 <module>apache-httpclient4</module>
@@ -994,6 +1000,7 @@
                 <module>spring-batch-2</module>
                 <module>spring-boot-rest</module>
                 <module>spring-drools</module>
+                <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
                 <module>spring-exceptions</module>
                 <module>spring-jenkins-pipeline</module>
                 <module>spring-core</module>
@@ -1114,7 +1121,6 @@
                 <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>javaxval-2</module>
-                <module>javax-validation-advanced</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
                 <module>jib</module>
@@ -1130,6 +1136,7 @@
                 <module>libraries-5</module>
                 <module>libraries-6</module>
                 <module>libraries-apache-commons</module>
+                <module>libraries-apache-commons-2</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
                 <module>libraries-data-2</module>
@@ -1155,7 +1162,6 @@
                 <module>protobuffer</module>
                 <module>reactor-core</module>
                 <module>rsocket</module>
-
 
                 <!--  Modules from default second-->
 
@@ -1200,6 +1206,8 @@
                 <module>xml</module>
                 <module>xml-2</module>
                 <module>image-processing</module>
+                <module>language-interop</module>
+                <module>gradle-modules/gradle/maven-to-gradle</module>
             </modules>
 
             <properties>
@@ -1288,7 +1296,7 @@
         <gitflow-incremental-builder.version>3.12.2</gitflow-incremental-builder.version>
         <maven-jxr-plugin.version>3.0.0</maven-jxr-plugin.version>
         <maven-pmd-plugin.version>3.19.0</maven-pmd-plugin.version>
-        <lombok.version>1.18.24</lombok.version>
+        <lombok.version>1.18.28</lombok.version>
         <h2.version>2.1.214</h2.version>
         <guava.version>31.1-jre</guava.version>
         <maven-jar-plugin.version>3.2.2</maven-jar-plugin.version>
