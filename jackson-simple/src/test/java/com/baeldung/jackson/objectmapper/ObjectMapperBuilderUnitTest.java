@@ -37,7 +37,7 @@ public class ObjectMapperBuilderUnitTest {
 
         String actual = mapper.writeValueAsString(request);
         String expected = "{\n" + "  \"car\" : {\n" + "    \"color\" : \"White\",\n" +
-          "    \"type\" : \"Sedan\"\n" + "  },\n" + "  \"datePurchased\" : \"2023-05-24 12:00 pm IST\"\n" +
+          "    \"type\" : \"Sedan\"\n" + "  },\n" + "  \"datePurchased\" : \"2023-05-24 12:00 PM IST\"\n" +
           "}";
         Assertions.assertEquals(expected, actual);
     }
