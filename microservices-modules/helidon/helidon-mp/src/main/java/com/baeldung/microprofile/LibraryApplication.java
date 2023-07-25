@@ -1,11 +1,10 @@
 package com.baeldung.microprofile;
 
 import com.baeldung.microprofile.web.BookEndpoint;
-import io.helidon.common.CollectionsHelper;
 import io.helidon.microprofile.server.Server;
+import jakarta.ws.rs.ApplicationPath;
+import jakarta.ws.rs.core.Application;
 
-import javax.ws.rs.ApplicationPath;
-import javax.ws.rs.core.Application;
 import java.util.Set;
 
 @ApplicationPath("/library")
@@ -13,7 +12,7 @@ public class LibraryApplication extends Application {
 
     @Override
     public Set<Class<?>> getClasses() {
-        return CollectionsHelper.setOf(BookEndpoint.class);
+        return Set.of(BookEndpoint.class);
     }
 
     public static void main(String... args) {
