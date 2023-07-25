@@ -2,13 +2,9 @@
 
 This module contains articles about Spring with Thymeleaf
 
-## Relevant Articles:
-
-- [Changing the Thymeleaf Template Directory in Spring Boot](https://www.baeldung.com/spring-thymeleaf-template-directory)
-- [How to Create an Executable JAR with Maven](https://www.baeldung.com/executable-jar-with-maven)
-- [Spring MVC Data and Thymeleaf](https://www.baeldung.com/spring-mvc-thymeleaf-data)
-- [Upload Image With Spring Boot and Thymeleaf](https://www.baeldung.com/spring-boot-thymeleaf-image-upload)
-- [Getting a URL Attribute Value in Thymeleaf](https://www.baeldung.com/thymeleaf-url-attribute-value)
-- [Expression Types in Thymeleaf](https://www.baeldung.com/java-thymeleaf-expression-types)
-- [Difference Between th:text and th:value in Thymeleaf](https://www.baeldung.com/java-thymeleaf-text-vs-value)
-- [[<-- prev]](/spring-thymeleaf)
+### Relevant Articles: 
+- [CSRF Protection with Spring MVC and Thymeleaf](https://www.baeldung.com/csrf-thymeleaf-with-spring-security)
+- [Conditionals in Thymeleaf](https://www.baeldung.com/spring-thymeleaf-conditionals)
+- [Iteration in Thymeleaf](https://www.baeldung.com/thymeleaf-iteration)
+- [Spring with Thymeleaf Pagination for a List](https://www.baeldung.com/spring-thymeleaf-pagination)
+- More articles: [[<-- prev]](../spring-thymeleaf-4)
