@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CountDownLatch;
+import java.util.stream.Stream;
 
 @Service
 public class TemperatureConsumer {
@@ -18,11 +19,6 @@ public class TemperatureConsumer {
     @KafkaListener(topics = "celcius-scale-topic", groupId = "group-1")
     public void consumer1(ConsumerRecord<?, ?> consumerRecord) {
         computeConsumedRecord("consumer-1", consumerRecord.partition());
-    }
-
-    @KafkaListener(topics = "celcius-scale-topic", groupId = "group-2")
-    public void consumer2(ConsumerRecord<?, ?> consumerRecord) {
-        computeConsumedRecord("consumer-2", consumerRecord.partition());
     }
 
     private void computeConsumedRecord(String key, int consumerRecord) {

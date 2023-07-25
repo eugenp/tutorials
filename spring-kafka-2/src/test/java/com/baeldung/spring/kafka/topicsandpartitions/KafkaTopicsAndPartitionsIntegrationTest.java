@@ -26,7 +26,7 @@ public class KafkaTopicsAndPartitionsIntegrationTest {
     private TemperatureConsumer consumer;
 
     @Test
-    public void givenTopic_anndConsumerGroup_whenConsumersListenToEvents_thenConsumeItCorrectly() throws Exception {
+    public void givenTopic_andConsumerGroup_whenConsumersListenToEvents_thenConsumeItCorrectly() throws Exception {
         service.measureCelsiusAndPublish(10000);
         consumer.getLatch().await(1, TimeUnit.SECONDS);
         System.out.println(consumer.consumedRecords);
