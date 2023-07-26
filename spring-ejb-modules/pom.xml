@@ -17,6 +17,7 @@
     </parent>
 
     <modules>
+        <module>ejb-beans</module>
         <module>spring-ejb-remote</module>
         <module>spring-ejb-client</module>
         <module>wildfly</module>
