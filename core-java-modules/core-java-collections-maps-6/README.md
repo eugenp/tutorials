@@ -4,3 +4,4 @@
 - [Converting Map<String, Object> to Map<String, String> in Java](https://www.baeldung.com/java-converting-map-string-object-to-string-string)
 - [Converting Object To Map in Java](https://www.baeldung.com/java-convert-object-to-map)
 - [Difference Between Map.clear() and Instantiating a New Map](https://www.baeldung.com/java-map-clear-vs-new-map)
+- [Converting JsonNode Object to Map](https://www.baeldung.com/jackson-jsonnode-map)
