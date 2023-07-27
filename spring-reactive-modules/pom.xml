@@ -18,6 +18,7 @@
 
     <modules>
         <module>spring-5-data-reactive</module>
+        <module>spring-5-data-reactive-2</module>
         <module>spring-5-reactive</module>
         <module>spring-5-reactive-2</module>
         <module>spring-5-reactive-3</module>
