@@ -23,6 +23,7 @@
         <module>groovy-spock</module>
         <module>hamcrest</module>
         <module>instancio</module>
+        <module>jqwik</module>
         <module>junit-4</module>
         <module>junit-5-advanced</module>
         <module>junit-5-basics</module>
