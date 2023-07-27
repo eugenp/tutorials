@@ -1,8 +1,6 @@
 package com.baeldung.spring.kafka.topicsandpartitions;
 
-import org.junit.Before;
 import org.junit.ClassRule;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,8 +8,6 @@ import org.springframework.kafka.test.EmbeddedKafkaBroker;
 import org.springframework.kafka.test.context.EmbeddedKafka;
 
 import java.util.concurrent.TimeUnit;
-
-import static org.junit.Assert.assertTrue;
 
 @SpringBootTest(classes = ThermostatApplicationKafkaApp.class)
 @EmbeddedKafka(partitions = 2, brokerProperties = {"listeners=PLAINTEXT://localhost:9092", "port=9092"})
