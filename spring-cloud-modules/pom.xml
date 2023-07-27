@@ -56,6 +56,7 @@
         <module>spring-cloud-sleuth</module>
         <module>spring-cloud-open-telemetry</module>
         <module>spring-cloud-azure</module>
+        <module>spring-cloud-openfeign-2</module>
     </modules>
 
     <build>

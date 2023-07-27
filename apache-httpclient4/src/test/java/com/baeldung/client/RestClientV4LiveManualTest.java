@@ -1,6 +1,5 @@
 package com.baeldung.client;
 
-import static org.apache.http.conn.ssl.SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
@@ -89,4 +88,5 @@ public class RestClientV4LiveManualTest {
         HttpResponse response = httpClient.execute(getMethod);
         assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
     }
+
 }
