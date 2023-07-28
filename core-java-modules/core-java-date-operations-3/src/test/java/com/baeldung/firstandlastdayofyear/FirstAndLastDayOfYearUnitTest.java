@@ -62,7 +62,7 @@ public class FirstAndLastDayOfYearUnitTest {
 
             if (date.getMonth() == Month.MARCH && date.getDayOfWeek() == DayOfWeek.SATURDAY) {
                 assertEquals("SATURDAY", date.getDayOfWeek()
-                    .toString());
+                  .toString());
             }
         }
     }
