@@ -4,10 +4,11 @@ import com.baeldung.graphql.data.Book;
 import com.baeldung.graphqlreturnmap.entity.Product;
 import com.baeldung.graphqlreturnmap.repository.ProductRepository;
 import com.baeldung.graphqlreturnmap.repository.impl.ProductRepositoryImpl;
-import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+
+import graphql.kickstart.tools.GraphQLQueryResolver;
 
 public class Query implements GraphQLQueryResolver {
 

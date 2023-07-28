@@ -3,9 +3,10 @@ package com.baeldung.graphql.server;
 import com.baeldung.graphql.data.Book;
 import com.baeldung.graphql.data.BookRepository;
 import com.baeldung.graphqlreturnmap.entity.Product;
-import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 
 import java.util.List;
+
+import graphql.kickstart.tools.GraphQLQueryResolver;
 
 public class GraphQLQuery implements GraphQLQueryResolver {
 

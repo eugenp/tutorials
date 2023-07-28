@@ -3,15 +3,14 @@ package com.baeldung.graphqlreturnmap;
 import com.baeldung.graphql.utils.SchemaUtils;
 import com.baeldung.graphqlreturnmap.resolver.ProductResolver;
 import com.baeldung.graphqlreturnmap.resolver.Query;
-import com.coxautodev.graphql.tools.SchemaParser;
 import graphql.ExecutionResult;
 import graphql.GraphQL;
+import graphql.kickstart.tools.SchemaParser;
 import graphql.scalars.ExtendedScalars;
 import graphql.schema.GraphQLSchema;
 import ratpack.handling.Context;
 import ratpack.handling.Handler;
 
-import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -22,7 +21,7 @@ public class AppHandler implements Handler {
     private static final Logger LOGGER = Logger.getLogger(AppHandler.class.getSimpleName());
     private GraphQL graphql;
 
-    public AppHandler() throws Exception {
+    public AppHandler() {
         GraphQLSchema schema = SchemaParser.newParser()
             .resolvers(new Query(), new ProductResolver())
             .scalars(ExtendedScalars.Json)
@@ -33,11 +32,11 @@ public class AppHandler implements Handler {
     }
 
     @Override
-    public void handle(Context context) throws Exception {
+    public void handle(Context context) {
         context.parse(Map.class)
             .then(payload -> {
                 ExecutionResult executionResult = graphql.execute(payload.get(SchemaUtils.QUERY)
-                    .toString(), null, this, Collections.emptyMap());
+                    .toString());
                 Map<String, Object> result = new LinkedHashMap<>();
                 if (executionResult.getErrors()
                     .isEmpty()) {

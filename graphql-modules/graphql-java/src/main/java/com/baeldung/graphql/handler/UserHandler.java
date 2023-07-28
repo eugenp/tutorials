@@ -34,9 +34,7 @@ public class UserHandler implements Handler {
     public void handle(Context context) {
         context.parse(Map.class)
             .then(payload -> {
-                Map<String, Object> parameters = (Map<String, Object>) payload.get("parameters");
-                ExecutionResult executionResult = graphql.execute(payload.get(SchemaUtils.QUERY)
-                    .toString(), null, this, parameters);
+                ExecutionResult executionResult = graphql.execute(payload.get(SchemaUtils.QUERY).toString());
 
                 Map<String, Object> result = new LinkedHashMap<>();
                 if (executionResult.getErrors().isEmpty()) {

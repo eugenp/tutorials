@@ -2,12 +2,13 @@ package com.baeldung.graphqlreturnmap.resolver;
 
 import com.baeldung.graphqlreturnmap.entity.Product;
 import com.baeldung.graphqlreturnmap.model.AttributeKeyValueModel;
-import com.coxautodev.graphql.tools.GraphQLResolver;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.LinkedList;
 import java.util.List;
+
+import graphql.kickstart.tools.GraphQLResolver;
 
 public class ProductResolver implements GraphQLResolver<Product> {
     public ProductResolver(){
