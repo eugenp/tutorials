@@ -1,14 +1,11 @@
 public class PersonTest {
-
-    private List<String> hobbies;
-
-    @BeforeEach
-    public void setUp() {
+   private List<String> hobbies;
+    @Test
+    public void testClone() {
         hobbies = new ArrayList<>();
         hobbies.add("Reading");
         hobbies.add("Swimming");
     }
-
     @Test
     public void testShallowCopy() {
         Person original = new Person("John Bull", 69, hobbies);
