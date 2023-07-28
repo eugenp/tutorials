@@ -7,7 +7,7 @@ public class PersonTest {
         hobbies.add("Swimming");
     }
     @Test
-    public void testShallowCopy() {
+    public givenPersonObject_whenCreatingShallowCopy_thenBothReferToSameData() {
         Person original = new Person("John Bull", 69, hobbies);
 
         Person shallowCopy = original;
@@ -18,7 +18,7 @@ public class PersonTest {
     }
 
     @Test
-    public void testDeepCopy() {
+    public void givenPersonObject_whenCreatingDeepCopy_thenBothReferToDifferentData() {
         Person original = new Person("John Bull", 69, hobbies);
 
         Person deepCopy = (Person) original.clone();
