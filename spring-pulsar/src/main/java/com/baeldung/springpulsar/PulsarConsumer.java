@@ -54,6 +54,6 @@ public class PulsarConsumer {
       subscriptionType = SubscriptionType.Shared
     )
     public void userDlqTopicListener(User user) {
-        LOGGER.info("Received user in user dlq with email: {}", user);
+        LOGGER.info("Received user object in user-DLQ with email: {}", user.getEmail());
     }
 }
