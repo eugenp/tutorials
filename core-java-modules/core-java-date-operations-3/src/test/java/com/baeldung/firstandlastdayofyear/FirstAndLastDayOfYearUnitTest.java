@@ -52,18 +52,4 @@ public class FirstAndLastDayOfYearUnitTest {
         assertEquals("2023-12-31", formattedDate);
     }
 
-    @Test
-    public void givenDateRangeForYear_whenCheckingForMarchSaturday_thenFindsExpectedDay() {
-        LocalDate today = LocalDate.now();
-        LocalDate start = today.with(firstDayOfYear());
-        LocalDate end = today.with(lastDayOfYear());
-
-        for (LocalDate date = start; date.isBefore(end); date = date.plusDays(1)) {
-
-            if (date.getMonth() == Month.MARCH && date.getDayOfWeek() == DayOfWeek.SATURDAY) {
-                assertEquals("SATURDAY", date.getDayOfWeek()
-                  .toString());
-            }
-        }
-    }
 }
