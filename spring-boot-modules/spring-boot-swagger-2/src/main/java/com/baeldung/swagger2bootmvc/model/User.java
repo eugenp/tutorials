@@ -1,12 +1,11 @@
 package com.baeldung.swagger2bootmvc.model;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
-@ApiModel
+@Schema
 public class User {
 
-    @ApiModelProperty(value = "first name of the user", name = "firstName", dataType = "String", example = "Vatsal")
+    @Schema(description = "first name of the user", name = "firstName", type = "string", example = "Vatsal")
     String firstName;
 
     public User() {

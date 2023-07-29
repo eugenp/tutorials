@@ -2,8 +2,8 @@ package com.baeldung.javaxval.methodvalidation.constraints;
 
 import java.time.LocalDate;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
 import com.baeldung.javaxval.methodvalidation.model.Reservation;
 

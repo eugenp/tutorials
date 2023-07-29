@@ -1,5 +1,7 @@
 package com.baeldung.reactive.authresolver;
 
+import java.util.Base64;
+
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.WebTestClient;
-import org.springframework.util.Base64Utils;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = AuthResolverApplication.class)
@@ -22,7 +23,7 @@ public class AuthResolverIntegrationTest {
         testClient
           .get()
           .uri("/customer/welcome")
-          .header("Authorization", "Basic " + Base64Utils.encodeToString("customer1:pass1".getBytes()))
+          .header("Authorization", "Basic " + Base64.getEncoder().encodeToString("customer1:pass1".getBytes()))
           .exchange()
           .expectStatus()
           .isOk();
@@ -33,7 +34,7 @@ public class AuthResolverIntegrationTest {
         testClient
           .get()
           .uri("/customer/welcome")
-          .header("Authorization", "Basic " + Base64Utils.encodeToString("employee1:pass1".getBytes()))
+          .header("Authorization", "Basic " + Base64.getEncoder().encodeToString("employee1:pass1".getBytes()))
           .exchange()
           .expectStatus()
           .isUnauthorized();
@@ -44,7 +45,7 @@ public class AuthResolverIntegrationTest {
         testClient
           .get()
           .uri("/employee/welcome")
-          .header("Authorization", "Basic " + Base64Utils.encodeToString("employee1:pass1".getBytes()))
+          .header("Authorization", "Basic " + Base64.getEncoder().encodeToString("employee1:pass1".getBytes()))
           .exchange()
           .expectStatus()
           .isOk();
@@ -55,7 +56,7 @@ public class AuthResolverIntegrationTest {
         testClient
           .get()
           .uri("/employee/welcome")
-          .header("Authorization", "Basic " + Base64Utils.encodeToString("customer1:pass1".getBytes()))
+          .header("Authorization", "Basic " + Base64.getEncoder().encodeToString("customer1:pass1".getBytes()))
           .exchange()
           .expectStatus()
           .isUnauthorized();

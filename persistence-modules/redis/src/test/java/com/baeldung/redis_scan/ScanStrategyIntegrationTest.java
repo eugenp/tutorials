@@ -8,7 +8,7 @@ import com.baeldung.redis_scan.strategy.impl.Scan;
 import com.baeldung.redis_scan.strategy.impl.Sscan;
 import com.baeldung.redis_scan.strategy.impl.Zscan;
 import org.junit.*;
-import redis.clients.jedis.Tuple;
+import redis.clients.jedis.resps.Tuple;
 import redis.embedded.RedisServer;
 
 import java.io.IOException;
@@ -31,7 +31,10 @@ public class ScanStrategyIntegrationTest {
         port = s.getLocalPort();
         s.close();
 
-        redisServer = new RedisServer(port);
+        redisServer = RedisServer.builder()
+                .port(port)
+                .setting("maxmemory 128M")
+                .build();
     }
 
     @AfterClass
@@ -57,7 +60,7 @@ public class ScanStrategyIntegrationTest {
 
     @Test
     public void testScanStrategy() {
-        HashMap<String, String> keyValues = new HashMap<String, String>();
+        HashMap<String, String> keyValues = new HashMap<>();
         keyValues.put("balls:cricket", "160");
         keyValues.put("balls:football", "450");
         keyValues.put("balls:volleyball", "270");
@@ -66,7 +69,7 @@ public class ScanStrategyIntegrationTest {
         ScanStrategy<String> scanStrategy = new Scan();
         int iterationCount = 2;
         RedisIterator iterator = redisClient.iterator(iterationCount, "ball*", scanStrategy);
-        List<String> results = new LinkedList<String>();
+        List<String> results = new LinkedList<>();
         while (iterator.hasNext()) {
             results.addAll(iterator.next());
         }
@@ -84,7 +87,7 @@ public class ScanStrategyIntegrationTest {
         Sscan scanStrategy = new Sscan("balls");
         int iterationCount = 2;
         RedisIterator iterator = redisClient.iterator(iterationCount, "*", scanStrategy);
-        List<String> results = new LinkedList<String>();
+        List<String> results = new LinkedList<>();
         while (iterator.hasNext()) {
             results.addAll(iterator.next());
         }
@@ -93,7 +96,7 @@ public class ScanStrategyIntegrationTest {
 
     @Test
     public void testHscanStrategy() {
-        HashMap<String, String> hash = new HashMap<String, String>();
+        HashMap<String, String> hash = new HashMap<>();
         hash.put("cricket", "160");
         hash.put("football", "450");
         hash.put("volleyball", "270");
@@ -102,7 +105,7 @@ public class ScanStrategyIntegrationTest {
         Hscan scanStrategy = new Hscan("balls");
         int iterationCount = 2;
         RedisIterator iterator = redisClient.iterator(iterationCount, "*", scanStrategy);
-        List<Map.Entry<String, String>> results = new LinkedList<Map.Entry<String, String>>();
+        List<Map.Entry<String, String>> results = new LinkedList<>();
         while (iterator.hasNext()) {
             results.addAll(iterator.next());
         }
@@ -111,7 +114,7 @@ public class ScanStrategyIntegrationTest {
 
     @Test
     public void testZscanStrategy() {
-        HashMap<String, Double> memberScores = new HashMap<String, Double>();
+        HashMap<String, Double> memberScores = new HashMap<>();
         memberScores.put("cricket", (double) 160);
         memberScores.put("football", (double) 450);
         memberScores.put("volleyball", (double) 270);
@@ -120,7 +123,7 @@ public class ScanStrategyIntegrationTest {
         Zscan scanStrategy = new Zscan("balls");
         int iterationCount = 2;
         RedisIterator iterator = redisClient.iterator(iterationCount, "*", scanStrategy);
-        List<Tuple> results = new LinkedList<Tuple>();
+        List<Tuple> results = new LinkedList<>();
         while (iterator.hasNext()) {
             results.addAll(iterator.next());
         }

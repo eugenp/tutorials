@@ -1,8 +1,5 @@
 package com.baeldung.javaee.security;
 
-import javax.annotation.security.DeclareRoles;
-import javax.inject.Inject;
-import javax.security.enterprise.SecurityContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.HttpConstraint;
 import javax.servlet.annotation.ServletSecurity;

@@ -41,7 +41,6 @@
         </plugins>
     </build>
 
-
     <properties>
         <maven.compiler.source.version>17</maven.compiler.source.version>
         <maven.compiler.target.version>17</maven.compiler.target.version>
