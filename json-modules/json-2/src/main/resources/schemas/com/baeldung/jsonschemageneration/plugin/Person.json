@@ -1,0 +1,54 @@
+{
+  "$defs" : {
+    "Address" : {
+      "type" : "object",
+      "properties" : {
+        "city" : {
+          "type" : "string"
+        },
+        "country" : {
+          "type" : "string"
+        },
+        "street" : {
+          "type" : [ "string", "null" ]
+        }
+      },
+      "required" : [ "city", "country" ],
+      "additionalProperties" : false
+    }
+  },
+  "type" : "object",
+  "properties" : {
+    "address" : {
+      "$ref" : "#/$defs/Address"
+    },
+    "createdAt" : {
+      "type" : "string",
+      "readOnly" : true
+    },
+    "email" : {
+      "type" : "string",
+      "format" : "email",
+      "pattern" : "\\b[A-Za-z0-9._%+-]+@baeldung\\.com\\b"
+    },
+    "friends" : {
+      "maxItems" : 10,
+      "type" : "array",
+      "items" : {
+        "$ref" : "#"
+      }
+    },
+    "id" : {
+      "type" : "string",
+      "readOnly" : true
+    },
+    "name" : {
+      "type" : "string"
+    },
+    "surname" : {
+      "type" : "string"
+    }
+  },
+  "required" : [ "address", "email", "id", "name", "surname" ],
+  "additionalProperties" : false
+}

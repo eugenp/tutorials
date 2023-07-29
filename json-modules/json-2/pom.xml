@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>json-2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -123,6 +123,26 @@
             <artifactId>javax.annotation-api</artifactId>
             <version>1.3.2</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.victools</groupId>
+            <artifactId>jsonschema-generator</artifactId>
+            <version>${jsonschema-generator.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.victools</groupId>
+            <artifactId>jsonschema-module-jackson</artifactId>
+            <version>${jsonschema-generator.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <version>${jakarta.validation.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.victools</groupId>
+            <artifactId>jsonschema-module-jakarta-validation</artifactId>
+            <version>${jsonschema-generator.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -162,6 +182,55 @@
                 </plugin>
             </plugins>
         </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>com.github.victools</groupId>
+                <artifactId>jsonschema-maven-plugin</artifactId>
+                <version>${jsonschema-generator.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <packageNames>
+                        <packageName>com.baeldung.jsonschemageneration.plugin</packageName>
+                    </packageNames>
+                    <classNames>
+                        <className>com.baeldung.jsonschemageneration.plugin.Person</className>
+                    </classNames>
+                    <schemaVersion>DRAFT_2020_12</schemaVersion>
+                    <schemaFilePath>src/main/resources/schemas</schemaFilePath>
+                    <schemaFileName>{1}/{0}.json</schemaFileName>
+                    <failIfNoClassesMatch>true</failIfNoClassesMatch>
+                    <options>
+                        <preset>PLAIN_JSON</preset>
+                        <enabled>
+                            <option>DEFINITIONS_FOR_ALL_OBJECTS</option>
+                            <option>FORBIDDEN_ADDITIONAL_PROPERTIES_BY_DEFAULT</option>
+                        </enabled>
+                        <disabled>SCHEMA_VERSION_INDICATOR</disabled>
+                    </options>
+                    <modules>
+                        <module>
+                            <name>Jackson</name>
+                            <options>
+                                <option>RESPECT_JSONPROPERTY_REQUIRED</option>
+                            </options>
+                        </module>
+                        <module>
+                            <name>JakartaValidation</name>
+                            <options>
+                                <option>NOT_NULLABLE_FIELD_IS_REQUIRED</option>
+                                <option>INCLUDE_PATTERN_EXPRESSIONS</option>
+                            </options>
+                        </module>
+                    </modules>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 
     <properties>
@@ -173,6 +242,8 @@
         <jackson-jsonld.version>0.1.1</jackson-jsonld.version>
         <hydra-jsonld.version>0.4.2</hydra-jsonld.version>
         <jsonld-java.version>0.13.0</jsonld-java.version>
+        <jsonschema-generator.version>4.31.1</jsonschema-generator.version>
+        <jakarta.validation.version>3.0.2</jakarta.validation.version>
     </properties>
 
 </project>
