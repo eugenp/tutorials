@@ -75,7 +75,7 @@
 
     <properties>
         <spring-data-elasticsearch.version>5.1.2</spring-data-elasticsearch.version>
-        <elasticsearch.version>8.8.2</elasticsearch.version>
+        <elasticsearch.version>8.9.0</elasticsearch.version>
         <fastjson.version>2.0.37</fastjson.version>
         <spatial4j.version>0.8</spatial4j.version>
         <jts.version>1.18.2</jts.version>

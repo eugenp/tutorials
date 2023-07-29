@@ -32,7 +32,7 @@ import static org.junit.Assert.assertEquals;
  * This Manual test requires: Elasticsearch instance running on localhost:9200.
  * <p>
  * The following docker command can be used:
- * docker run -d --name elastic-test -p 9200:9200 -e "discovery.type=single-node" -e "xpack.security.enabled=false" docker.elastic.co/elasticsearch/elasticsearch:8.8.2
+ * docker run -d --name elastic-test -p 9200:9200 -e "discovery.type=single-node" -e "xpack.security.enabled=false" docker.elastic.co/elasticsearch/elasticsearch:8.9.0
  */
 @Slf4j
 @Disabled("Manual test")
