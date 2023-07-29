@@ -8,8 +8,8 @@ import org.springframework.pulsar.annotation.EnablePulsar;
 @SpringBootApplication
 public class SpringPulsarApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringPulsarApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SpringPulsarApplication.class, args);
+    }
 
 }
