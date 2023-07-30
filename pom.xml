@@ -370,6 +370,7 @@
                 <module>persistence-modules/spring-data-neo4j</module>
                 <module>java-nashorn</module>
                 <module>jeromq</module>
+                <module>spring-ejb-modules/ejb-beans</module>
             </modules>
 
         </profile>
@@ -546,6 +547,7 @@
                 <module>persistence-modules/spring-data-cassandra-reactive</module> <!--JAVA-21844-->
                 <module>persistence-modules/spring-data-neo4j</module>
                 <module>java-nashorn</module>
+                <module>spring-ejb-modules/ejb-beans</module>
             </modules>
 
         </profile>
@@ -729,6 +731,7 @@
                 <module>spring-batch-2</module>
                 <module>spring-boot-rest</module>
                 <module>spring-drools</module>
+                <module>spring-cloud-modules/spring-cloud-azure</module>
                 <module>spring-cloud-modules/spring-cloud-contract</module>
                 <module>spring-cloud-modules/spring-cloud-data-flow</module>
                 <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
@@ -1000,6 +1003,7 @@
                 <module>spring-batch-2</module>
                 <module>spring-boot-rest</module>
                 <module>spring-drools</module>
+                <module>spring-cloud-modules/spring-cloud-azure</module>
                 <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
                 <module>spring-exceptions</module>
                 <module>spring-jenkins-pipeline</module>
