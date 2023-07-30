@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class TypeHandlingAnnotationsTests {
+public class TypeHandlingAnnotationsUnitTest {
 
     @Test
     public void whenDeserializingPolymorphic_thenCorrect() throws JsonProcessingException {

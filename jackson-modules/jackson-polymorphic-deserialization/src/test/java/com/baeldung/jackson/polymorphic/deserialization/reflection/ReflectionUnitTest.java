@@ -11,7 +11,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.jsontype.NamedType;
 
-public class ReflectionTests {
+public class ReflectionUnitTest {
 
     @Test
     public void whenDeserializingPolymorphic_thenCorrect() throws JsonProcessingException {
