@@ -69,7 +69,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     public AuthenticationEntryPoint authenticationEntryPoint() {
         CasAuthenticationEntryPoint entryPoint = new CasAuthenticationEntryPoint();
-        entryPoint.setLoginUrl("https://localhost:8443/login");
+        entryPoint.setLoginUrl("https://localhost:8443/cas/login");
         entryPoint.setServiceProperties(serviceProperties);
         return entryPoint;
     }
