@@ -79,7 +79,7 @@
         <dependency>
             <groupId>io.hypersistence</groupId>
             <artifactId>hypersistence-utils-hibernate-60</artifactId>
-            <version>3.3.1</version>
+            <version>${hypersistance-utils-hibernate-60.version}</version>
         </dependency>
     </dependencies>
 
@@ -90,6 +90,7 @@
         <hibernate-core.version>6.1.7.Final</hibernate-core.version>
         <maven.deploy.skip>true</maven.deploy.skip>
         <tomcat-dbcp.version>9.0.0.M26</tomcat-dbcp.version>
+        <hypersistance-utils-hibernate-60.version>3.3.1</hypersistance-utils-hibernate-60.version>
     </properties>
 
 </project>

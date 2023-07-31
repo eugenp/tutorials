@@ -95,7 +95,7 @@ public class Student implements Serializable, Cloneable {
         try {
             student = (Student) super.clone();
         } catch (CloneNotSupportedException e) {
-            throw new AssertionError();
+            throw new IllegalStateException(e);
         }
         student.course = this.course.clone();
         return student;

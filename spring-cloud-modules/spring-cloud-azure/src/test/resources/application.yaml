@@ -12,10 +12,10 @@ spring:
             endpoint: https://spring-cloud-azure.vault.azure.net/
 azure:
   keyvault:
-    vaultUrl: myVaultUrl
-    tenantId: myTenantId
-    clientId: myClientId
-    clientSecret: myClientSecret
+    vaultUrl: {$myVaultUrl}
+    tenantId: {$myTenantId}
+    clientId: {$myClientId}
+    clientSecret: {$myClientSecret}
 database:
   secret:
     value: my-database-secret

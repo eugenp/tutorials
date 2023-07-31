@@ -369,6 +369,8 @@
                 <module>persistence-modules/spring-data-cassandra-reactive</module> <!--JAVA-21844-->
                 <module>persistence-modules/spring-data-neo4j</module>
                 <module>java-nashorn</module>
+                <module>jeromq</module>
+                <module>spring-ejb-modules/ejb-beans</module>
             </modules>
 
         </profile>
@@ -545,6 +547,7 @@
                 <module>persistence-modules/spring-data-cassandra-reactive</module> <!--JAVA-21844-->
                 <module>persistence-modules/spring-data-neo4j</module>
                 <module>java-nashorn</module>
+                <module>spring-ejb-modules/ejb-beans</module>
             </modules>
 
         </profile>
@@ -703,6 +706,7 @@
                 <module>osgi</module>
                 <module>spring-katharsis</module>
                 <module>logging-modules</module>
+                <module>spring-boot-documentation</module>
                 <module>spring-boot-modules</module>
                 <module>apache-httpclient</module>
                 <module>apache-httpclient4</module>
@@ -727,6 +731,7 @@
                 <module>spring-batch-2</module>
                 <module>spring-boot-rest</module>
                 <module>spring-drools</module>
+                <module>spring-cloud-modules/spring-cloud-azure</module>
                 <module>spring-cloud-modules/spring-cloud-contract</module>
                 <module>spring-cloud-modules/spring-cloud-data-flow</module>
                 <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
@@ -778,7 +783,6 @@
                 <module>custom-pmd</module>
                 <module>data-structures</module>
                 <module>ddd-contexts</module>
-                <module>jackson-jr</module>
                 <module>jackson-modules</module>
                 <module>jmh</module>
                 <module>deeplearning4j</module>
@@ -850,7 +854,6 @@
                 <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>javaxval-2</module>
-                <module>javax-validation-advanced</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
                 <module>jib</module>
@@ -975,6 +978,7 @@
                 <module>osgi</module>
                 <module>spring-katharsis</module>
                 <module>logging-modules</module>
+                <module>spring-boot-documentation</module>
                 <module>spring-boot-modules</module>
                 <module>apache-httpclient</module>
                 <module>apache-httpclient4</module>
@@ -999,6 +1003,7 @@
                 <module>spring-batch-2</module>
                 <module>spring-boot-rest</module>
                 <module>spring-drools</module>
+                <module>spring-cloud-modules/spring-cloud-azure</module>
                 <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
                 <module>spring-exceptions</module>
                 <module>spring-jenkins-pipeline</module>
@@ -1120,7 +1125,6 @@
                 <module>javax-sound</module>
                 <module>javaxval</module>
                 <module>javaxval-2</module>
-                <module>javax-validation-advanced</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
                 <module>jib</module>
@@ -1271,9 +1275,8 @@
         <exec-maven-plugin.version>3.0.0</exec-maven-plugin.version>
         <java.version>1.8</java.version>
         <log4j.version>1.2.17</log4j.version>
-        <esapi.version>2.5.0.0</esapi.version>
-        <jmh-core.version>1.35</jmh-core.version>
-        <jmh-generator.version>1.35</jmh-generator.version>
+        <jmh-core.version>1.36</jmh-core.version>
+        <jmh-generator.version>1.36</jmh-generator.version>
         <maven-failsafe-plugin.version>2.21.0</maven-failsafe-plugin.version>
         <commons-collections4.version>4.4</commons-collections4.version>
         <commons-io.version>2.11.0</commons-io.version>
