@@ -9,10 +9,10 @@ public class XSLTProcessor {
     public static void transformXMLUsingXSLT(String inputXMLPath, String xsltPath, String outputHTMLPath) throws TransformerException {
         Source xmlSource = new StreamSource(new File(inputXMLPath));
         Source xsltSource = new StreamSource(new File(xsltPath));
-        Result outputResult = new StreamResult(new File(outputHTMLPath));
+        Result output = new StreamResult(new File(outputHTMLPath));
 
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer = transformerFactory.newTransformer(xsltSource);
-        transformer.transform(xmlSource, outputResult);
+        transformer.transform(xmlSource, output);
     }
 }
