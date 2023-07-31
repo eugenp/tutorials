@@ -6,7 +6,7 @@
 
     <appender name="out" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg %kvp%n</pattern>
         </encoder>
     </appender>
 
@@ -66,4 +66,7 @@
         <appender-ref ref="mask" />
     </root>
 
+    <logger name="com.baeldung.parameterized.logging" additivity="false" level="INFO">
+        <appender-ref ref="out"/>
+    </logger>
 </configuration>
