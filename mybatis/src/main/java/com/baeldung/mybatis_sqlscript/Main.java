@@ -29,7 +29,6 @@ public class Main {
         try {
             //Register JDBC driver
             Class.forName(JDBC_DRIVER);
-
             //Open a connection
             System.out.println("Connecting to database...");
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -51,7 +50,6 @@ public class Main {
             System.out.println("Press 2: Execute SQL Script Using Apache iBatis: ");
             List<String> sqlLines=Files.readAllLines(path);
             int choice = sc.nextInt();
-
             switch (choice)
             {
                 case 1:
@@ -59,7 +57,7 @@ public class Main {
                     for (String sql : sqlLines) {
                         System.out.println("Query: " + sql);
 
-                        if (sql.contains("SELECT")) {
+                        if (stmt.execute(sql)) {
                             ResultSet rs = stmt.executeQuery(sql);
                             System.out.print("ID" + "\t" + "Name" + "\t" + "Surname" + "\t" + "Age");
                             System.out.println("");
@@ -76,26 +74,15 @@ public class Main {
                                 System.out.println("");
                             }
                         }
-                        else
-                            stmt.execute(sql);
                     }
-
                     break;
-
                 case 2:
                     ScriptRunner scriptExecutor = new ScriptRunner(conn);
                     BufferedReader reader = new BufferedReader(new FileReader(filePath));
                     scriptExecutor.runScript(reader);
                     reader.close();
                     break;
-
-
-
-
             }
-
-
-
         }
         catch(SQLException se)
         {
@@ -108,7 +95,6 @@ public class Main {
         }
         System.out.println("Reached End of Code!");
     }
-
 }
 
 
