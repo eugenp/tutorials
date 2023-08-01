@@ -17,16 +17,15 @@ import co.elastic.clients.transport.rest_client.RestClientTransport;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpHost;
 import org.elasticsearch.client.RestClient;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.Date;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * This Manual test requires: Elasticsearch instance running on localhost:9200.
@@ -35,11 +34,10 @@ import static org.junit.Assert.assertEquals;
  * docker run -d --name elastic-test -p 9200:9200 -e "discovery.type=single-node" -e "xpack.security.enabled=false" docker.elastic.co/elasticsearch/elasticsearch:8.9.0
  */
 @Slf4j
-@Disabled("Manual test")
 public class ElasticSearchManualTest {
     private ElasticsearchClient client = null;
 
-    @Before
+    @BeforeEach
     public void setUp() throws IOException {
         RestClient restClient = RestClient
                 .builder(HttpHost.create("http://localhost:9200"))
