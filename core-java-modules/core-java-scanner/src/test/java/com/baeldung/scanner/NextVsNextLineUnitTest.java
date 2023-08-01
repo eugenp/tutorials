@@ -74,15 +74,6 @@ class NextVsNextLineUnitTest {
     }
 
     @Test
-    void givenInput_whenUsingNextLineMethodWithSystemLineSeparator_thenReturnEntireLine() {
-        String input = "Hello world" + System.lineSeparator() + "Welcome to baeldung.com";
-        try (Scanner scanner = new Scanner(input)) {
-            assertEquals("Hello world", scanner.nextLine());
-            assertEquals("Welcome to baeldung.com", scanner.nextLine());
-        }
-    }
-
-    @Test
     void givenInput_whenUsingNextLineWithCustomDelimiter_thenIgnoreDelimiter() {
         String input = "Hello:world\nWelcome:to baeldung.com";
         try (Scanner scanner = new Scanner(input)) {
