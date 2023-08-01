@@ -370,7 +370,6 @@
                 <module>persistence-modules/spring-data-neo4j</module>
                 <module>java-nashorn</module>
                 <module>jeromq</module>
-                <module>spring-ejb-modules/ejb-beans</module>
             </modules>
 
         </profile>
@@ -547,7 +546,6 @@
                 <module>persistence-modules/spring-data-cassandra-reactive</module> <!--JAVA-21844-->
                 <module>persistence-modules/spring-data-neo4j</module>
                 <module>java-nashorn</module>
-                <module>spring-ejb-modules/ejb-beans</module>
             </modules>
 
         </profile>
