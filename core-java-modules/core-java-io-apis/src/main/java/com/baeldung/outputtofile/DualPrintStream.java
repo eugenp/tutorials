@@ -41,4 +41,9 @@ class DualPrintStream extends PrintStream {
         super.write(b);
         second.write(b);
     }
+
+    @Override
+    public boolean checkError() {
+        return super.checkError() && second.checkError();
+    }
 }
