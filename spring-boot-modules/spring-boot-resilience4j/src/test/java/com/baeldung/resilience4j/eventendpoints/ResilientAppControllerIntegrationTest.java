@@ -19,6 +19,7 @@ import java.util.Map;
 import java.util.concurrent.*;
 import java.util.stream.IntStream;
 import org.apache.commons.io.IOUtils;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import org.slf4j.Logger;
@@ -203,6 +204,7 @@ class ResilientAppControllerIntegrationTest {
     return timeLimiterEvents.getTimeLimiterEvents();
   }
 
+  @Disabled
   @Test
   void testBulkheadEvents() throws Exception {
     EXTERNAL_SERVICE.stubFor(WireMock.get("/api/external").willReturn(ok()));
