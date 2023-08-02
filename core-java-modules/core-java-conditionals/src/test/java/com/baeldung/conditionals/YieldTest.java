@@ -5,9 +5,9 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-public class YieldTest {
+class YieldTest {
 
-    public enum Number {
+    enum Number {
         ONE, TWO, THREE, FOUR
     }
 
