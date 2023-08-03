@@ -7,7 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.ClassUtils;
@@ -21,7 +21,8 @@ public class ApplicationIntegrationTest {
 
     private Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
 
-    @LocalServerPort private int port = 0;
+    @LocalServerPort
+    private int port = 0;
 
     @Before
     public void init() throws Exception {
@@ -36,7 +37,7 @@ public class ApplicationIntegrationTest {
         request.setName("Spain");
 
         Object response = ws.marshalSendAndReceive("http://localhost:" + port + "/ws", request);
-        
+
         assertThat(response).isNotNull();
     }
 }
