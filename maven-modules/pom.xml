@@ -15,6 +15,9 @@
     </parent>
 
     <modules>
+        <module>maven-pom-types</module>
+        <module>multimodulemavenproject</module>
+        <module>resume-from</module>
         <module>animal-sniffer-mvn-plugin</module>
         <module>compiler-plugin-java-9</module>
         <module>dependency-exclusion</module>

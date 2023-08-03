@@ -941,6 +941,7 @@
                 <module>image-processing</module>
                 <module>language-interop</module>
                 <module>gradle-modules/gradle/maven-to-gradle</module>
+                <module>parent-boot-3</module>
             </modules>
 
             <properties>
@@ -1039,6 +1040,7 @@
                 <module>core-groovy-modules</module>
 
                 <module>core-java-modules</module>
+                <module>gcp-firebase</module>
                 <!-- <module>core-java-modules/core-java-9-new-features</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-12</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-13</module> --> <!-- uses preview features, to be decided how to handle -->
@@ -1227,6 +1229,7 @@
             <modules>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
+                <module>parent-boot-3</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
