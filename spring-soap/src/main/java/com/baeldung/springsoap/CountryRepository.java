@@ -1,12 +1,15 @@
 package com.baeldung.springsoap;
 
-import com.baeldung.springsoap.gen.*;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.annotation.PostConstruct;
+
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
-import javax.annotation.PostConstruct;
-import java.util.HashMap;
-import java.util.Map;
+import com.baeldung.springsoap.client.gen.Country;
+import com.baeldung.springsoap.client.gen.Currency;
 
 @Component
 public class CountryRepository {

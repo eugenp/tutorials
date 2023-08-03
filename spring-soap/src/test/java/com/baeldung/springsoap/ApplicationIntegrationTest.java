@@ -1,6 +1,7 @@
 package com.baeldung.springsoap;
 
-import com.baeldung.springsoap.gen.GetCountryRequest;
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,7 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.ClassUtils;
 import org.springframework.ws.client.core.WebServiceTemplate;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import com.baeldung.springsoap.client.gen.GetCountryRequest;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
@@ -34,6 +35,8 @@ public class ApplicationIntegrationTest {
         GetCountryRequest request = new GetCountryRequest();
         request.setName("Spain");
 
-        assertThat(ws.marshalSendAndReceive("http://localhost:" + port + "/ws", request)).isNotNull();
+        Object response = ws.marshalSendAndReceive("http://localhost:" + port + "/ws", request);
+        
+        assertThat(response).isNotNull();
     }
 }
