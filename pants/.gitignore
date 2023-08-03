@@ -1,5 +1,5 @@
 .idea/
 .pants.d/
-.pid/
+.pids/
 dist/
 pants.toml.bak
