@@ -28,6 +28,9 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import org.junit.jupiter.api.Disabled;
+
+@Disabled //fixing in https://team.baeldung.com/browse/JAVA-23897 
 public class CertificatesUnitTest {
 
     private static final String GODADDY_CA_ALIAS = "godaddyrootg2ca [jdk]";
