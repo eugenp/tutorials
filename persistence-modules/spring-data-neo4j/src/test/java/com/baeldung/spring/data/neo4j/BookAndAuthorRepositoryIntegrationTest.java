@@ -50,19 +50,19 @@ public class BookAndAuthorRepositoryIntegrationTest {
     private AuthorRepository authorRepository;
 
     @Test
-    void testFindOneByTitle() {
+    void givenBookExists_whenFindOneByTitle_thenBookIsReturned() {
         Book book = bookRepository.findOneByTitle("The Two Towers");
         Assertions.assertEquals("978-0547928203", book.getIsbn());
     }
 
     @Test
-    void testFindAllByYear() {
+    void givenOneBookExistsForYear_whenFindAllByYear_thenOneBookIsReturned() {
         List<Book> books = bookRepository.findAllByYear(1954);
         Assertions.assertEquals(1, books.size());
     }
 
     @Test
-    void testFindAuthorByBookTitle() {
+    void givenOneBookExistsAfterYear_whenFindBooksAfterYear_thenOneBookIsReturned() {
         List<Book> books = authorRepository.findBooksAfterYear("J. R. R. Tolkien", 1955);
         Assertions.assertEquals(1, books.size());
     }
