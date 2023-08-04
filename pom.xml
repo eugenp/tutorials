@@ -820,6 +820,7 @@
                 <module>antlr</module>
                 <module>apache-kafka</module>
                 <module>apache-kafka-2</module>
+                <module>apache-kafka-3</module>
                 <module>apache-olingo</module>
 
                 <module>apache-poi-2</module>
@@ -1089,6 +1090,7 @@
                 <module>antlr</module>
                 <module>apache-kafka</module>
                 <module>apache-kafka-2</module>
+                <module>apache-kafka-3</module>
                 <module>apache-olingo</module>
 
                 <module>apache-poi-2</module>
