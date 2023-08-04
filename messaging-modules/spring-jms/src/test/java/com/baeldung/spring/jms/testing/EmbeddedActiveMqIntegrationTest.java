@@ -8,6 +8,8 @@ import javax.jms.TextMessage;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.junit.EmbeddedActiveMQBroker;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,11 +25,9 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.baeldung.spring.jms.testing.EmbeddedActiveMqManualTest.TestConfiguration;
-
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = { TestConfiguration.class })
-public class EmbeddedActiveMqManualTest {
+@ContextConfiguration(classes = { EmbeddedActiveMqIntegrationTest.TestConfiguration.class })
+public class EmbeddedActiveMqIntegrationTest {
 
     @ClassRule
     public static EmbeddedActiveMQBroker embeddedBroker = new EmbeddedActiveMQBroker();
@@ -38,12 +38,23 @@ public class EmbeddedActiveMqManualTest {
     @SpyBean
     private MessageSender messageSender;
 
+    @BeforeClass
+    public static void start() {
+        embeddedBroker.start();
+    }
+
+    @AfterClass
+    public static void stop() {
+        embeddedBroker.stop();
+    }
+
     @Test
-    public void whenListening_thenReceivingCorrectMessage() throws JMSException {
+    public void whenListening_thenReceivingCorrectMessage() throws JMSException, InterruptedException {
         String queueName = "queue-1";
         String messageText = "Test message";
 
         embeddedBroker.pushMessage(queueName, messageText);
+        Thread.sleep(1000L);
         assertEquals(1, embeddedBroker.getMessageCount(queueName));
 
         ArgumentCaptor<TextMessage> messageCaptor = ArgumentCaptor.forClass(TextMessage.class);
@@ -56,12 +67,12 @@ public class EmbeddedActiveMqManualTest {
     }
 
     @Test
-    public void whenSendingMessage_thenCorrectQueueAndMessageText() throws JMSException {
+    public void whenSendingMessage_thenCorrectQueueAndMessageText() throws JMSException, InterruptedException {
         String queueName = "queue-2";
         String messageText = "Test message";
 
         messageSender.sendTextMessage(queueName, messageText);
-
+        Thread.sleep(1000L);
         assertEquals(1, embeddedBroker.getMessageCount(queueName));
         TextMessage sentMessage = embeddedBroker.peekTextMessage(queueName);
         assertEquals(messageText, sentMessage.getText());
