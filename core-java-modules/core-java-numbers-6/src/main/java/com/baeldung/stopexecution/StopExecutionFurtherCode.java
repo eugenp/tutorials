@@ -9,13 +9,17 @@ import java.util.Locale;
 
 public class StopExecutionFurtherCode {
 
-    boolean shouldContinue = false;
+    boolean shouldContinue = true;
 
     int performTask(int a, int b) {
-        if (shouldContinue) {
+        if (!shouldContinue) {
             System.exit(0);
         }
         return a + b;
+    }
+
+    void stop() {
+        this.shouldContinue = false;
     }
 
     int calculateFactorial(int n) {
@@ -78,8 +82,6 @@ public class StopExecutionFurtherCode {
         }
     }
 
-    void stop() {
-        this.shouldContinue = true;
-    }
+
 
 }
