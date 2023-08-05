@@ -1,6 +1,5 @@
 package com.baeldung.jsonschemageneration.simple;
 
-import com.baeldung.jsonschemageneration.recursive.AuthoredArticle;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.victools.jsonschema.generator.*;
 
@@ -14,7 +13,7 @@ public class SimpleSchemaGenerator {
                 .build();
 
         SchemaGenerator generator = new SchemaGenerator(config);
-        JsonNode jsonSchema = generator.generateSchema(AuthoredArticle.class);
+        JsonNode jsonSchema = generator.generateSchema(Article.class);
 
         System.out.println(jsonSchema.toPrettyString());
     }
