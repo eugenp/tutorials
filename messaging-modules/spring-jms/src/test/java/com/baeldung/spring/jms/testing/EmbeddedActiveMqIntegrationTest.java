@@ -23,11 +23,9 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.baeldung.spring.jms.testing.EmbeddedActiveMqManualTest.TestConfiguration;
-
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = { TestConfiguration.class })
-public class EmbeddedActiveMqManualTest {
+@ContextConfiguration(classes = { EmbeddedActiveMqIntegrationTest.TestConfiguration.class })
+public class EmbeddedActiveMqIntegrationTest {
 
     @ClassRule
     public static EmbeddedActiveMQBroker embeddedBroker = new EmbeddedActiveMQBroker();
@@ -43,16 +41,20 @@ public class EmbeddedActiveMqManualTest {
         String queueName = "queue-1";
         String messageText = "Test message";
 
+        assertEquals(0, embeddedBroker.getDestination(queueName).getDestinationStatistics().getDispatched().getCount());
+        assertEquals(0, embeddedBroker.getDestination(queueName).getDestinationStatistics().getMessages().getCount());
+
         embeddedBroker.pushMessage(queueName, messageText);
-        assertEquals(1, embeddedBroker.getMessageCount(queueName));
 
         ArgumentCaptor<TextMessage> messageCaptor = ArgumentCaptor.forClass(TextMessage.class);
-
         Mockito.verify(messageListener, Mockito.timeout(100))
             .sampleJmsListenerMethod(messageCaptor.capture());
-        
+
         TextMessage receivedMessage = messageCaptor.getValue();
         assertEquals(messageText, receivedMessage.getText());
+
+        assertEquals(1, embeddedBroker.getDestination(queueName).getDestinationStatistics().getDispatched().getCount());
+        assertEquals(0, embeddedBroker.getDestination(queueName).getDestinationStatistics().getMessages().getCount());
     }
 
     @Test
@@ -61,7 +63,6 @@ public class EmbeddedActiveMqManualTest {
         String messageText = "Test message";
 
         messageSender.sendTextMessage(queueName, messageText);
-
         assertEquals(1, embeddedBroker.getMessageCount(queueName));
         TextMessage sentMessage = embeddedBroker.peekTextMessage(queueName);
         assertEquals(messageText, sentMessage.getText());
