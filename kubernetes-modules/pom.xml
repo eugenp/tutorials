@@ -16,6 +16,7 @@
         <module>k8s-intro</module>
         <module>k8s-admission-controller</module>
         <module>kubernetes-spring</module>
+        <module>jkube-demo</module>
     </modules>
 
 </project>
