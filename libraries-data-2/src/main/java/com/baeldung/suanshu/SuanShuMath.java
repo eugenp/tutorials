@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory;
 import java.util.List;
 
 class SuanShuMath {
-
+/** fixing in JAVA-24004
     private static final Logger log = LoggerFactory.getLogger(SuanShuMath.class);
 
     public static void main(String[] args) throws Exception {
@@ -137,5 +137,5 @@ class SuanShuMath {
         List<? extends Number> roots = solver.solve(p);
         log.info("Finding polynomial roots: {}", roots);
     }
-
+*//
 }
