@@ -86,11 +86,13 @@
             <artifactId>spring-web</artifactId>
             <version>${spring.version}</version>
         </dependency>
+        <!-- fixing in JAVA-24004
         <dependency>
             <groupId>com.numericalmethod</groupId>
             <artifactId>suanshu</artifactId>
             <version>${suanshu.version}</version>
         </dependency>
+        --> 
         <dependency>
             <groupId>org.derive4j</groupId>
             <artifactId>derive4j</artifactId>
@@ -160,7 +162,8 @@
             </plugin>
         </plugins>
     </build>
-
+   
+    <!-- JAVA-24004 
     <repositories>
         <repository>
             <id>nm-repo</id>
@@ -169,6 +172,7 @@
             <layout>default</layout>
         </repository>
     </repositories>
+    -->
 
     <properties>
         <flink.version>1.16.1</flink.version>
