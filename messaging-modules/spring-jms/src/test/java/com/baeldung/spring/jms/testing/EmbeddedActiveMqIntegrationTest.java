@@ -37,7 +37,7 @@ public class EmbeddedActiveMqIntegrationTest {
     private MessageSender messageSender;
 
     @Test
-    public void whenListening_thenReceivingCorrectMessage() throws JMSException, InterruptedException {
+    public void whenListening_thenReceivingCorrectMessage() throws JMSException {
         String queueName = "queue-1";
         String messageText = "Test message";
 
