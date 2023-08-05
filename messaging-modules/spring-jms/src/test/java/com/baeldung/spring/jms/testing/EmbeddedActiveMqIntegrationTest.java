@@ -8,8 +8,6 @@ import javax.jms.TextMessage;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.junit.EmbeddedActiveMQBroker;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -38,41 +36,33 @@ public class EmbeddedActiveMqIntegrationTest {
     @SpyBean
     private MessageSender messageSender;
 
-    @BeforeClass
-    public static void start() {
-        embeddedBroker.start();
-    }
-
-    @AfterClass
-    public static void stop() {
-        embeddedBroker.stop();
-    }
-
     @Test
     public void whenListening_thenReceivingCorrectMessage() throws JMSException, InterruptedException {
         String queueName = "queue-1";
         String messageText = "Test message";
 
+        assertEquals(0, embeddedBroker.getDestination(queueName).getDestinationStatistics().getDispatched().getCount());
+        assertEquals(0, embeddedBroker.getDestination(queueName).getDestinationStatistics().getMessages().getCount());
+
         embeddedBroker.pushMessage(queueName, messageText);
-        Thread.sleep(1000L);
-        assertEquals(1, embeddedBroker.getMessageCount(queueName));
 
         ArgumentCaptor<TextMessage> messageCaptor = ArgumentCaptor.forClass(TextMessage.class);
-
         Mockito.verify(messageListener, Mockito.timeout(100))
             .sampleJmsListenerMethod(messageCaptor.capture());
-        
+
         TextMessage receivedMessage = messageCaptor.getValue();
         assertEquals(messageText, receivedMessage.getText());
+
+        assertEquals(1, embeddedBroker.getDestination(queueName).getDestinationStatistics().getDispatched().getCount());
+        assertEquals(0, embeddedBroker.getDestination(queueName).getDestinationStatistics().getMessages().getCount());
     }
 
     @Test
-    public void whenSendingMessage_thenCorrectQueueAndMessageText() throws JMSException, InterruptedException {
+    public void whenSendingMessage_thenCorrectQueueAndMessageText() throws JMSException {
         String queueName = "queue-2";
         String messageText = "Test message";
 
         messageSender.sendTextMessage(queueName, messageText);
-        Thread.sleep(1000L);
         assertEquals(1, embeddedBroker.getMessageCount(queueName));
         TextMessage sentMessage = embeddedBroker.peekTextMessage(queueName);
         assertEquals(messageText, sentMessage.getText());
