@@ -18,7 +18,6 @@ public class StopExecutionFurtherCodeUnitTest {
     @Test
     void givenFlagIsFalse_whenStopExecutionCalled_thenTaskNotPerformed() {
         StopExecutionFurtherCode stopExecution = new StopExecutionFurtherCode();
-        stopExecution.stop();
         int performedTask = stopExecution.performTask(10, 20);
         Assert.assertNotEquals(30, performedTask);
     }
@@ -26,7 +25,9 @@ public class StopExecutionFurtherCodeUnitTest {
     @Test
     void givenFlagIsTrue_whenStopExecutionCalled_thenTaskIsPerformed() {
         StopExecutionFurtherCode stopExecution = new StopExecutionFurtherCode();
+        stopExecution.stop();
         int performedTask = stopExecution.performTask(10, 20);
+        System.out.println(performedTask);
         Assert.assertEquals(30, performedTask);
     }
 

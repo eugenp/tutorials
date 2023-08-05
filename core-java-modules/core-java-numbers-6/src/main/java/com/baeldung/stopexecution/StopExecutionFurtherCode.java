@@ -9,10 +9,10 @@ import java.util.Locale;
 
 public class StopExecutionFurtherCode {
 
-    boolean shouldContinue = true;
+    boolean shouldContinue = false;
 
     int performTask(int a, int b) {
-        if (!shouldContinue) {
+        if (shouldContinue) {
             System.exit(0);
         }
         return a + b;
@@ -79,7 +79,7 @@ public class StopExecutionFurtherCode {
     }
 
     void stop() {
-        shouldContinue = false;
+        this.shouldContinue = true;
     }
 
 }
