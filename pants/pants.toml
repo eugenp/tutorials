@@ -11,6 +11,9 @@ root_patterns = [
     "/tests/*",
 ]
 
+[jvm]
+jdk = 1.8
+
 [test]
 timeout_default = 60
 timeout_maximum = 120
