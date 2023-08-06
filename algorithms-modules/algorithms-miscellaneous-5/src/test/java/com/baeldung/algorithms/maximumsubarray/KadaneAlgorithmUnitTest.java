@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class KadaneAlgorithmUnitTest {
 
     @Test
-    void givenArrayWithNegativeNumberWhenMaximumSubarrayThenReturns6() {
+    void givenArrayWithNegativeNumberWhenMaximumSubarrayThenReturnsExpectedResult() {
         //given
         int[] arr = new int[] { -3, 1, -8, 4, -1, 2, 1, -5, 5 };
         //when
@@ -38,5 +38,16 @@ class KadaneAlgorithmUnitTest {
         //then
         assertEquals(10, maxSum);
     }
+    
+    @Test
+	void givenArrayToTestStartIndexWhenMaximumSubarrayThenReturnsExpectedResult() {
+		// given
+		int[] arr = new int[] { 1, 2, -1, 3, -6, -2 };
+		// when
+		KadaneAlgorithm algorithm = new KadaneAlgorithm();
+		int maxSum = algorithm.maxSubArraySum(arr);
+		// then
+		assertEquals(5, maxSum);
+	}
 
 }
