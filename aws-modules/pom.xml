@@ -19,7 +19,6 @@
         <module>aws-miscellaneous</module>
         <module>aws-reactive</module>
         <module>aws-s3</module>
-        <module>aws-s3-v2</module>
     </modules>
 
     <properties>
