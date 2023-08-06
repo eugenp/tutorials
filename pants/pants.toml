@@ -18,7 +18,5 @@ jdk = 1.8
 timeout_default = 60
 timeout_maximum = 120
 
-
-
 [experimental-bsp]
 groups_config_files = ["bsp-groups.toml"]
