@@ -16,7 +16,7 @@
 
     <modules>
         <module>quarkus-project</module>
-        <module>spring-project</module>
+        <!--<module>spring-project</module>--> <!-- Fixing in JAVA-24010 -->
     </modules>
 
 </project>
