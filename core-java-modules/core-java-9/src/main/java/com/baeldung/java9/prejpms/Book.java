@@ -1,4 +1,4 @@
-package com.baeldung.prejpms;
+package com.baeldung.java9.prejpms;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
