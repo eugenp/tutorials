@@ -19,6 +19,7 @@
         <module>json-path</module>
         <module>gson</module>
         <module>gson-2</module>
+        <module>json-arrays</module>
     </modules>
 
     <build>
