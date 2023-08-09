@@ -9,7 +9,6 @@ import java.util.stream.Stream;
 import com.google.common.collect.Sets;
 
 public class CartesianProduct {
-    // Responsible for calculating Cartesian Product using iterative approach.
     public List<List<Object>> getCartesianProductIterative(List<List<Object>> sets) {
         List<List<Object>> result = new ArrayList<>();
         if(sets == null || sets.isEmpty()) {
@@ -31,14 +30,12 @@ public class CartesianProduct {
         return result;
     }
 
-    // Responsible for calculating Cartesian Product using recursive approach.
     public List<List<Object>> getCartesianProductRecursive(List<List<Object>> sets) {
         List<List<Object>> result = new ArrayList<>();
         getCartesianProductRecursiveHelper(sets, 0, new ArrayList<>(), result);
         return result;
     }
 
-    // Helper method for recursive approach
     private void getCartesianProductRecursiveHelper(List<List<Object>> sets, int index, List<Object> current, List<List<Object>> result) {
         if(index == sets.size()) {
             result.add(new ArrayList<>(current));
@@ -52,12 +49,10 @@ public class CartesianProduct {
         }
     }
 
-    // Responsible for calculating Cartesian Product using streams.
     public List<List<Object>> getCartesianProductUsingStreams(List<List<Object>> sets) {
         return cartesianProduct(sets,0).collect(Collectors.toList());
     }
 
-    // Helper method for streams approach.
     public Stream<List<Object>> cartesianProduct(List<List<Object>> sets, int index) {
         if(index == sets.size()) {
             List<Object> emptyList = new ArrayList<>();
@@ -71,7 +66,6 @@ public class CartesianProduct {
             }));
     }
 
-    // Responsible for calculating Cartesian Product using Guava library.
     public List<List<Object>> getCartesianProductUsingGuava(List<Set<Object>> sets) {
         Set<List<Object>> cartesianProduct = Sets.cartesianProduct(sets);
         List<List<Object>> cartesianList = new ArrayList<>(cartesianProduct);
