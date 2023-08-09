@@ -46,10 +46,8 @@ public class HttpClientAdvancedConfigurationIntegrationTest {
     public void givenClientWithCustomUserAgentHeader_whenExecuteRequest_shouldReturn200() throws IOException {
         //given
         String userAgent = "BaeldungAgent/1.0";
-        serviceMock.stubFor(get(urlEqualTo("/detail"))
-          .withHeader("User-Agent", equalTo(userAgent))
-          .willReturn(aResponse()
-            .withStatus(200)));
+        serviceMock.stubFor(get(urlEqualTo("/detail")).withHeader("User-Agent", equalTo(userAgent))
+            .willReturn(aResponse().withStatus(200)));
 
         HttpClient httpClient = HttpClients.createDefault();
         HttpGet httpGet = new HttpGet("http://localhost:8089/detail");
@@ -66,11 +64,9 @@ public class HttpClientAdvancedConfigurationIntegrationTest {
     public void givenClientThatSendDataInBody_whenSendXmlInBody_shouldReturn200() throws IOException {
         //given
         String xmlBody = "<xml><id>1</id></xml>";
-        serviceMock.stubFor(post(urlEqualTo("/person"))
-          .withHeader("Content-Type", equalTo("application/xml"))
-          .withRequestBody(equalTo(xmlBody))
-          .willReturn(aResponse()
-            .withStatus(200)));
+        serviceMock.stubFor(post(urlEqualTo("/person")).withHeader("Content-Type", equalTo("application/xml"))
+            .withRequestBody(equalTo(xmlBody))
+            .willReturn(aResponse().withStatus(200)));
 
         HttpClient httpClient = HttpClients.createDefault();
         HttpPost httpPost = new HttpPost("http://localhost:8089/person");
@@ -89,18 +85,15 @@ public class HttpClientAdvancedConfigurationIntegrationTest {
     @Test
     public void givenServerThatIsBehindProxy_whenClientIsConfiguredToSendRequestViaProxy_shouldReturn200() throws IOException {
         //given
-        proxyMock.stubFor(get(urlMatching(".*"))
-          .willReturn(aResponse().proxiedFrom("http://localhost:8089/")));
+        proxyMock.stubFor(get(urlMatching(".*")).willReturn(aResponse().proxiedFrom("http://localhost:8089/")));
 
-        serviceMock.stubFor(get(urlEqualTo("/private"))
-          .willReturn(aResponse().withStatus(200)));
-
+        serviceMock.stubFor(get(urlEqualTo("/private")).willReturn(aResponse().withStatus(200)));
 
         HttpHost proxy = new HttpHost("localhost", 8090);
         DefaultProxyRoutePlanner routePlanner = new DefaultProxyRoutePlanner(proxy);
         HttpClient httpclient = HttpClients.custom()
-          .setRoutePlanner(routePlanner)
-          .build();
+            .setRoutePlanner(routePlanner)
+            .build();
 
         //when
         final HttpGet httpGet = new HttpGet("http://localhost:8089/private");
@@ -115,11 +108,8 @@ public class HttpClientAdvancedConfigurationIntegrationTest {
     @Test
     public void givenServerThatIsBehindAuthorizationProxy_whenClientSendRequest_shouldAuthorizeProperly() throws IOException {
         //given
-        proxyMock.stubFor(get(urlMatching("/private"))
-          .willReturn(aResponse().proxiedFrom("http://localhost:8089/")));
-        serviceMock.stubFor(get(urlEqualTo("/private"))
-          .willReturn(aResponse().withStatus(200)));
-
+        proxyMock.stubFor(get(urlMatching("/private")).willReturn(aResponse().proxiedFrom("http://localhost:8089/")));
+        serviceMock.stubFor(get(urlEqualTo("/private")).willReturn(aResponse().withStatus(200)));
 
         HttpHost proxy = new HttpHost("localhost", 8090);
         DefaultProxyRoutePlanner routePlanner = new DefaultProxyRoutePlanner(proxy);
@@ -138,12 +128,10 @@ public class HttpClientAdvancedConfigurationIntegrationTest {
         context.setCredentialsProvider(credentialsProvider);
         context.setAuthCache(authCache);
 
-
         HttpClient httpclient = HttpClients.custom()
-          .setRoutePlanner(routePlanner)
-          .setDefaultCredentialsProvider(credentialsProvider)
-          .build();
-
+            .setRoutePlanner(routePlanner)
+            .setDefaultCredentialsProvider(credentialsProvider)
+            .build();
 
         //when
         final HttpGet httpGet = new HttpGet("http://localhost:8089/private");
@@ -155,6 +143,5 @@ public class HttpClientAdvancedConfigurationIntegrationTest {
         proxyMock.verify(getRequestedFor(urlEqualTo("/private")).withHeader("Authorization", containing("Basic")));
         serviceMock.verify(getRequestedFor(urlEqualTo("/private")));
     }
-
 
 }
