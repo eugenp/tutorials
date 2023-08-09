@@ -355,6 +355,7 @@
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
+                <!-- <module>pants</module> --> <!-- Not a maven project -->
 
                 <module>libraries-jdk8</module>
 
