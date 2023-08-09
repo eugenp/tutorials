@@ -1,4 +1,4 @@
-package com.baeldung.httpclient.advancedconfig;
+package com.baeldung.httpclient.httpclient.advancedconfig;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static com.github.tomakehurst.wiremock.client.WireMock.containing;
