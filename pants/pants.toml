@@ -1,0 +1,22 @@
+[GLOBAL]
+backend_packages = [
+   "pants.backend.experimental.java",
+   "pants.backend.experimental.java.lint.google_java_format"
+]
+pants_version = "2.16.0"
+
+[source]
+root_patterns = [
+    "/src/*",
+    "/tests/*",
+]
+
+[jvm]
+jdk = 1.8
+
+[test]
+timeout_default = 60
+timeout_maximum = 120
+
+[experimental-bsp]
+groups_config_files = ["bsp-groups.toml"]
