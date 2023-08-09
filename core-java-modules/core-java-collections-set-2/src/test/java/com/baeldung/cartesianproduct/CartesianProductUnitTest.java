@@ -19,7 +19,7 @@ public class CartesianProductUnitTest {
     );
 
     @Test
-    public void shouldCalculateCartesianProductUsingStreams() {
+    public void whenUsingStreams_thenCalculateCartesianProduct() {
         List<List<Object>> expected = Arrays.asList(
             Arrays.asList(10, "John", 'I'),
             Arrays.asList(10, "John", 'J'),
@@ -30,13 +30,13 @@ public class CartesianProductUnitTest {
             Arrays.asList(20, "Jack", 'I'),
             Arrays.asList(20, "Jack", 'J')
         );
-
         List<List<Object>> cartesianProduct = cp.getCartesianProductUsingStreams(sets);
+
         assertEquals(expected, cartesianProduct);
     }
 
     @Test
-    public void shouldCalculateCartesianProductUsingRecursion() {
+    public void whenUsingRecursion_thenCalculateCartesianProduct() {
         List<List<Object>> expected = Arrays.asList(
             Arrays.asList(10, "John", 'I'),
             Arrays.asList(10, "John", 'J'),
@@ -47,13 +47,13 @@ public class CartesianProductUnitTest {
             Arrays.asList(20, "Jack", 'I'),
             Arrays.asList(20, "Jack", 'J')
         );
-
         List<List<Object>> cartesianProduct = cp.getCartesianProductRecursive(sets);
+
         assertEquals(expected, cartesianProduct);
     }
 
     @Test
-    public void shouldCalculateCartesianProductUsingIterativeApproach() {
+    public void whenUsingIterativeApproach_thenCalculateCartesianProduct() {
         List<List<Object>> expected = Arrays.asList(
             Arrays.asList(20, "Jack", 'J'),
             Arrays.asList(10, "Jack", 'J'),
@@ -64,13 +64,13 @@ public class CartesianProductUnitTest {
             Arrays.asList(20, "John", 'I'),
             Arrays.asList(10, "John", 'I')
         );
-
         List<List<Object>> cartesianProduct = cp.getCartesianProductIterative(sets);
+
         assertEquals(expected, cartesianProduct);
     }
 
     @Test
-    public void shouldCalculateCartesianProductUsingGuava() {
+    public void whenUsingGuava_thenCalculateCartesianProduct() {
         List<Set<Object>> sets = new ArrayList<>();
         sets.add(new HashSet<>(Arrays.asList(10, 20)));
         sets.add(new HashSet<>(Arrays.asList("John", "Jack")));
@@ -86,8 +86,8 @@ public class CartesianProductUnitTest {
             Arrays.asList(10, "Jack", 'I'),
             Arrays.asList(10, "Jack", 'J')
         );
-
         List<List<Object>> cartesianProduct = cp.getCartesianProductUsingGuava(sets);
+
         assertEquals(expected, cartesianProduct);
     }
 }
