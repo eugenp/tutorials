@@ -13,7 +13,7 @@ import org.junit.Test;
 
 import com.baeldung.list.Country;
 
-public class ListContainsElementFromOtherListTest {
+public class ListContainsElementFromOtherListUnitTest {
 
     final private List<String> listOfLetters = Arrays.asList("a", "b", "c", "d");
     final private List<String> listOfLettersWithOverlap = Arrays.asList("d", "e", "f", "g");
