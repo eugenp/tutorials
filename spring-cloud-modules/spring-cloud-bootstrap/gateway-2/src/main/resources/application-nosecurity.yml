@@ -1,0 +1,8 @@
+# Enable this profile to disable security
+spring:
+  autoconfigure:
+    exclude:
+     - org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+     - org.springframework.boot.actuate.autoconfigure.ManagementSecurityAutoConfiguration
+     - org.springframework.boot.autoconfigure.security.reactive.ReactiveSecurityAutoConfiguration
+     - org.springframework.boot.actuate.autoconfigure.security.reactive.ReactiveManagementWebSecurityAutoConfiguration
