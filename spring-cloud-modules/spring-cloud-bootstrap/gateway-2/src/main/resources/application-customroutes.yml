@@ -1,0 +1,26 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: golden_route
+        uri: https://httpbin.org
+        predicates:
+        - Path=/api/**
+        - GoldenCustomer=true
+        filters:
+        - StripPrefix=1
+        - AddRequestHeader=GoldenCustomer,true
+      - id: common_route
+        uri: https://httpbin.org
+        predicates:
+        - Path=/api/**
+        - name: GoldenCustomer
+          args:
+            golden: false
+            customerIdCookie: customerId
+        filters:
+        - StripPrefix=1
+        - AddRequestHeader=GoldenCustomer,false
+        
+              
+        
