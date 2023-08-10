@@ -46,6 +46,11 @@
             <artifactId>commons-io</artifactId>
             <version>${commons-io.version}</version>
         </dependency>
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>${javax.xml.bind.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -58,6 +63,9 @@
                 <configuration>
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
+                    <compilerArgs>
+                        <arg>--add-exports=java.base/com.sun.crypto.provider=ALL-UNNAMED</arg>
+                    </compilerArgs>
                 </configuration>
             </plugin>
         </plugins>
@@ -74,6 +82,7 @@
         <awaitility.version>1.7.0</awaitility.version>
         <maven.compiler.source>1.9</maven.compiler.source>
         <maven.compiler.target>1.9</maven.compiler.target>
+        <javax.xml.bind.version>2.4.0-b180725.0427</javax.xml.bind.version>
     </properties>
 
 </project>
