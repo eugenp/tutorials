@@ -13,7 +13,7 @@ import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.InnerField;
 import org.springframework.data.elasticsearch.annotations.MultiField;
 
-@Document(indexName = "blog", type = "article")
+@Document(indexName = "blog"/*, type = "article"*/)
 public class Article {
 
     @Id
