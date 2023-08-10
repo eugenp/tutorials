@@ -1,0 +1,10 @@
+# Application properties that need to be
+# embedded within the web application can be included here
+server:
+    port: 8443
+    ssl:
+        key-store: classpath:/etc/cas/thekeystore
+        key-store-password: changeit
+spring:
+    main:
+        allow-bean-definition-overriding: true

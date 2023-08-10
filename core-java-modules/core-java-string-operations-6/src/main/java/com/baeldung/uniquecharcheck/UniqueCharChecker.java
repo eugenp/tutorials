@@ -34,9 +34,11 @@ public class UniqueCharChecker {
         char[] chars = str.toUpperCase().toCharArray();
         Set <Character> set = new HashSet <>();
         for (char c: chars) {
-            set.add(c);
+            if (!set.add(c)) {
+                return false;
+            }
         }
-        return set.size() == str.length();
+        return true;
     }
 
     public static boolean useStreamCheck(String str) {

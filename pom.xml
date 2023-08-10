@@ -355,6 +355,7 @@
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
+                <!-- <module>pants</module> --> <!-- Not a maven project -->
 
                 <module>libraries-jdk8</module>
 
@@ -370,7 +371,6 @@
                 <module>persistence-modules/spring-data-neo4j</module>
                 <module>java-nashorn</module>
                 <module>jeromq</module>
-                <module>spring-ejb-modules/ejb-beans</module>
             </modules>
 
         </profile>
@@ -547,7 +547,6 @@
                 <module>persistence-modules/spring-data-cassandra-reactive</module> <!--JAVA-21844-->
                 <module>persistence-modules/spring-data-neo4j</module>
                 <module>java-nashorn</module>
-                <module>spring-ejb-modules/ejb-beans</module>
             </modules>
 
         </profile>
@@ -792,7 +791,7 @@
                 <module>kubernetes-modules</module>
                 <module>libraries-concurrency</module>
                 <module>jhipster-6</module>
-                <module>libraries-testing</module>
+                <!--<module>libraries-testing</module>--> <!-- Fixing in JAVA-24012 -->
                 <module>maven-modules</module>
                 <module>optaplanner</module>
                 <module>persistence-modules</module>
@@ -873,7 +872,7 @@
                 <module>libraries-apache-commons-2</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
-                <module>libraries-data-2</module>
+                <!--<module>libraries-data-2</module>--> <!-- Fixing in JAVA-24007 -->
                 <module>libraries-data-io</module>
                 <module>libraries-files</module>
                 <module>libraries-http</module>
@@ -910,7 +909,7 @@
 
                 <module>spring-kafka</module>
 
-                <module>spring-native</module>
+                <!--<module>spring-native</module>--> <!-- Fixing in JAVA-24009 -->
                 <module>spring-security-modules</module>
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>
@@ -1064,7 +1063,7 @@
                 <module>kubernetes-modules</module>
                 <module>libraries-concurrency</module>
                 <module>jhipster-6</module>
-                <module>libraries-testing</module>
+                <!--<module>libraries-testing</module>--> <!-- Fixing in JAVA-24012 -->
                 <module>maven-modules</module>
                 <module>optaplanner</module>
                 <module>persistence-modules</module>
@@ -1145,7 +1144,7 @@
                 <module>libraries-apache-commons-2</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
-                <module>libraries-data-2</module>
+                <!--<module>libraries-data-2</module>--> <!-- Fixing in JAVA-24007 -->
                 <module>libraries-data-io</module>
                 <module>libraries-files</module>
                 <module>libraries-http</module>
@@ -1183,7 +1182,7 @@
 
                 <module>spring-kafka</module>
 
-                <module>spring-native</module>
+                <!--<module>spring-native</module>--> <!-- Fixing in JAVA-24009 -->
                 <module>spring-security-modules</module>
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>
