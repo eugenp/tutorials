@@ -909,7 +909,7 @@
 
                 <module>spring-kafka</module>
 
-                <!--<module>spring-native</module>--> <!-- Fixing in JAVA-24009 -->
+                <module>spring-native</module>
                 <module>spring-security-modules</module>
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>
