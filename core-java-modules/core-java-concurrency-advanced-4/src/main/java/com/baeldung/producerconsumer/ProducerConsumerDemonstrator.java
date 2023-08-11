@@ -36,8 +36,8 @@ public class ProducerConsumerDemonstrator {
 
     public static void demoMultipleProducersAndMultipleConsumers() {
         DataQueue dataQueue = new DataQueue(MAX_QUEUE_CAPACITY);
-        int producerCount = 3;
-        int consumerCount = 3;
+        int producerCount = 5;
+        int consumerCount = 5;
         List<Thread> threads = new ArrayList<>();
         Producer producer = new Producer(dataQueue);
         for(int i = 0; i < producerCount; i++) {
@@ -45,6 +45,7 @@ public class ProducerConsumerDemonstrator {
             producerThread.start();
             threads.add(producerThread);
         }
+
         Consumer consumer = new Consumer(dataQueue);
         for(int i = 0; i < consumerCount; i++) {
             Thread consumerThread = new Thread(consumer);
@@ -52,8 +53,8 @@ public class ProducerConsumerDemonstrator {
             threads.add(consumerThread);
         }
 
-        // let threads run for two seconds
-        sleep(2000);
+        // let threads run for ten seconds
+        sleep(10000);
 
         // Stop threads
         producer.stop();
