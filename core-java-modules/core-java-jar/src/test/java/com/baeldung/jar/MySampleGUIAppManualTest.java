@@ -1,15 +1,15 @@
 package com.baeldung.jar;
 
-import java.io.IOException;
-
 import org.junit.jupiter.api.Test;
 
-class MySampleGUIAppnUnitTest {
+class MySampleGUIAppManualTest {
+
     @Test
-    void testMain() throws IOException {
+    void testMain() {
         System.setProperty("java.awt.headless", "true");
         String [] args = null;
         System.exit(0);
         MySampleGUIAppn.main(args);
     }
+
 }
