@@ -2,7 +2,7 @@
 
     <container qualifier="wildfly-managed" default="true">
         <configuration>
-            <property name="jbossHome">target/wildfly-8.2.1.Final</property>
+            <property name="jbossHome">target/wildfly-29.0.0.Final</property>
             <property name="serverConfig">standalone.xml</property>
             <property name="outputToConsole">true</property>
             <property name="managementPort">9990</property>
