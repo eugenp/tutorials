@@ -6,11 +6,9 @@ import java.util.stream.IntStream;
 public class SumArraysUsingStreams {
 
     public static int[] sumOfTwoArrays(int[] arr1, int[] arr2) {
-        IntStream stream1 = Arrays.stream(arr1);
-        IntStream stream2 = Arrays.stream(arr2);
-        IntStream stream3 = IntStream.zip(stream1, stream2);
-        IntStream stream4 = stream3.map(pair -> pair[0] + pair[1]);
-        int[] arr3 = stream4.toArray();
+        IntStream range = IntStream.range(0, Math.min(arr1.length, arr2.length));
+        IntStream stream3 = range.map(i -> arr1[i] + arr2[i]);
+        int[] arr3 = stream3.toArray();
         return arr3;
     }
 }
