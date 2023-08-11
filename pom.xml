@@ -1287,7 +1287,7 @@
         <jstl-api.version>1.2</jstl-api.version>
         <javax.servlet.jsp-api.version>2.3.3</javax.servlet.jsp-api.version>
         <jstl.version>1.2</jstl.version>
-        <jackson.version>2.13.3</jackson.version>
+        <jackson.version>2.15.2</jackson.version>
         <commons-fileupload.version>1.4</commons-fileupload.version>
         <junit-platform.version>1.9.2</junit-platform.version>
         <junit-jupiter.version>5.9.2</junit-jupiter.version>
