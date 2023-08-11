@@ -1,4 +1,4 @@
-package com.example.arraysums;
+package com.baeldung.arraysums;
 
 public class SumArraysUsingForLoop {
 
