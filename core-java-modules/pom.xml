@@ -33,7 +33,7 @@
         <module>core-java-11-2</module>
         <module>core-java-11-3</module>
         <module>core-java-11</module>
-        <module>core-java-20</module>
+        <!--<module>core-java-20</module>-->
         <module>core-java-9-improvements</module>
         <module>core-java-collections-array-list</module>
         <module>core-java-9-streams</module>
