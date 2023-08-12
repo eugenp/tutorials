@@ -20,5 +20,7 @@
             <version>${commons-lang3.version}</version>
         </dependency>
     </dependencies>
-
+    <properties>
+        <java.version>11</java.version>
+    </properties>
 </project>
