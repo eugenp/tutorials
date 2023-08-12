@@ -6,19 +6,19 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController
-@RequestMapping("/file")
+@RequestMapping("api/v1/file")
 public class FileController {
 
     @Autowired
     FileService fileService;
 
     @PostMapping("/upload")
-    public String uploadFile(MultipartFile multipartFile) throws Exception {
+    public String uploadFile(@RequestParam("file") MultipartFile multipartFile) throws Exception {
         return this.fileService.uploadFile(multipartFile);
     }
 
     @PostMapping("/update")
-    public String updateFile(MultipartFile multipartFile, @RequestParam String exitingFilePath) throws Exception {
+    public String updateFile(@RequestParam("file") MultipartFile multipartFile, @RequestParam("filePath")  String exitingFilePath) throws Exception {
         return this.fileService.updateFile(multipartFile, exitingFilePath);
     }
 }

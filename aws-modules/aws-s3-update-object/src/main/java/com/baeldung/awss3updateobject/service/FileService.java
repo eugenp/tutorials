@@ -42,7 +42,7 @@ public class FileService {
     }
 
     public String uploadFile(MultipartFile multipartFile) throws Exception {
-        String key = "/documents/" + multipartFile.getName();
+        String key = "/documents/" + multipartFile.getOriginalFilename();
         return this.uploadDocument(this.awsS3Bucket, key, multipartFile);
     }
 
