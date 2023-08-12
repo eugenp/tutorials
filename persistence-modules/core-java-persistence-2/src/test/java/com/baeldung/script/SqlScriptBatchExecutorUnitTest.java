@@ -16,7 +16,7 @@ import java.sql.Statement;
 public class SqlScriptBatchExecutorUnitTest {
     private static final Log logger = LogFactory.getLog(SqlScriptBatchExecutorUnitTest.class);
     private static Connection connection = null;
-    private static final String JDBC_URL = "jdbc:h2:mem:testdb";
+    private static final String JDBC_URL = "jdbc:h2:mem:testdb3";
     private static final String USERNAME = "user";
     private static final String PASSWORD = "password";
 

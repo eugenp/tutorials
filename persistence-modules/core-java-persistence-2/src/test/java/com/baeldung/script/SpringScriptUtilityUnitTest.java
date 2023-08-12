@@ -17,7 +17,7 @@ public class SpringScriptUtilityUnitTest {
     private static final Log logger = LogFactory.getLog(SpringScriptUtilityUnitTest.class);
 
     private static Connection connection = null;
-    private static final String JDBC_URL = "jdbc:h2:mem:testdb";
+    private static final String JDBC_URL = "jdbc:h2:mem:testdb2";
     private static final String USERNAME = "user";
     private static final String PASSWORD = "password";
 
