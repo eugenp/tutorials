@@ -23,3 +23,20 @@ mvn cargo:run
 
 ### Security
 The user/password required is: user1/user1Pass
+
+### Endpoints
+
+All endpoints start with `http://localhost:8082/spring-thymeleaf`:
+
+- `/dates`
+- `/saveStudent`
+- `/objects`
+- `/fragments`
+- `/markup`
+- `/params`
+- `/other`
+- `/function-call`
+- `/html`
+- `/js`
+- `/plain`
+- `/layout`
