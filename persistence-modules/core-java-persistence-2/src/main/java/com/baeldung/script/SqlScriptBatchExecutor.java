@@ -29,8 +29,7 @@ public class SqlScriptBatchExecutor {
             String line;
             while ((line = reader.readLine()) != null) {
                 Matcher commentMatcher = COMMENT_PATTERN.matcher(line);
-                line = commentMatcher.replaceAll(""); // Remove comments
-
+                line = commentMatcher.replaceAll("");
                 line = line.trim();
 
                 if (line.isEmpty()) {

@@ -24,13 +24,14 @@ public class MyBatisScriptUtilityUnitTest {
     public void prepareConnection() throws Exception {
         connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
     }
+
     @AfterAll
     public static void closeConnection() throws Exception {
         connection.close();
     }
+
     @Test
     public void givenConnectionObject_whenSQLFile_thenExecute() throws Exception {
-//        String path = System.getProperty("user.dir") + "\\src\\test\\resources\\employee.sql";
         String path = new File(ClassLoader.getSystemClassLoader()
                 .getResource("employee.sql").getFile()).toPath().toString();
         boolean sendFullScript = false;
