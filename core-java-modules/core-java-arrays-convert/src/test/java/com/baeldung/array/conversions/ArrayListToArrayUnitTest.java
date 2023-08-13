@@ -9,8 +9,8 @@ import org.junit.jupiter.api.Test;
 import com.google.common.collect.Lists;
 
 public class ArrayListToArrayUnitTest {
-    private static final List<String> INPUT_LIST = Lists.newArrayList("Michael Bolton", "Michael Jackson", "Gun and Rose", "Bryan Adams", "Air Supply");
-    private static final String[] EXPECTED_ARRAY = new String[] { "Michael Bolton", "Michael Jackson", "Gun and Rose", "Bryan Adams", "Air Supply" };
+    private static final List<String> INPUT_LIST = Lists.newArrayList("Michael Bolton", "Michael Jackson", "Guns and Roses", "Bryan Adams", "Air Supply");
+    private static final String[] EXPECTED_ARRAY = new String[] { "Michael Bolton", "Michael Jackson", "Guns and Roses", "Bryan Adams", "Air Supply" };
 
     @Test
     void whenUsingForLoop_thenGetExpectedResult() {
