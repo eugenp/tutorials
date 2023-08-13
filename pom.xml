@@ -368,7 +368,6 @@
                 <module>persistence-modules/hibernate-ogm</module> <!-- hibernate-ogm wasn't updated because it doesn't support jakarta API -->
                 <module>persistence-modules/java-cassandra</module> <!-- JAVA-21464 cassandra-unit library doesn't support to run with jdk9 and above -->
                 <module>persistence-modules/spring-data-cassandra-reactive</module> <!--JAVA-21844-->
-                <module>persistence-modules/spring-data-neo4j</module>
                 <module>java-nashorn</module>
                 <module>jeromq</module>
             </modules>
@@ -545,7 +544,6 @@
                 <module>persistence-modules/hibernate-ogm</module> <!-- hibernate-ogm wasn't updated because it doesn't support jakarta API -->
                 <module>persistence-modules/java-cassandra</module> <!-- JAVA-21464 cassandra-unit library doesn't support to run with jdk9 and above -->
                 <module>persistence-modules/spring-data-cassandra-reactive</module> <!--JAVA-21844-->
-                <module>persistence-modules/spring-data-neo4j</module>
                 <module>java-nashorn</module>
             </modules>
 
@@ -940,6 +938,7 @@
                 <module>image-processing</module>
                 <module>language-interop</module>
                 <module>gradle-modules/gradle/maven-to-gradle</module>
+                <module>persistence-modules/spring-data-neo4j</module>
             </modules>
 
             <properties>
@@ -1211,6 +1210,7 @@
                 <module>image-processing</module>
                 <module>language-interop</module>
                 <module>gradle-modules/gradle/maven-to-gradle</module>
+                <module>persistence-modules/spring-data-neo4j</module>
             </modules>
 
             <properties>
