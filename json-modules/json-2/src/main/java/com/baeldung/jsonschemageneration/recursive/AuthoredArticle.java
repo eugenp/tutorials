@@ -4,10 +4,7 @@ import java.util.Date;
 import java.util.UUID;
 
 enum Area {
-    JAVA("JAVA"),
-    KOTLIN("KOTLIN"),
-    SCALA("SCALA"),
-    LINUX("LINUX");
+    JAVA("JAVA"), KOTLIN("KOTLIN"), SCALA("SCALA"), LINUX("LINUX");
 
     private final String area;
 
@@ -36,7 +33,6 @@ public class AuthoredArticle {
     public void setArea(Area area) {
         this.area = area;
     }
-
 
     public Date getCreatedAt() {
         return createdAt;

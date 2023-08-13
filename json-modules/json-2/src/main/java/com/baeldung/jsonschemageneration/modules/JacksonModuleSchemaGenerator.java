@@ -3,7 +3,11 @@ package com.baeldung.jsonschemageneration.modules;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.github.victools.jsonschema.generator.*;
+import com.github.victools.jsonschema.generator.Option;
+import com.github.victools.jsonschema.generator.OptionPreset;
+import com.github.victools.jsonschema.generator.SchemaGenerator;
+import com.github.victools.jsonschema.generator.SchemaGeneratorConfigBuilder;
+import com.github.victools.jsonschema.generator.SchemaVersion;
 import com.github.victools.jsonschema.module.jackson.JacksonModule;
 import com.github.victools.jsonschema.module.jackson.JacksonOption;
 
@@ -14,19 +18,14 @@ import java.util.UUID;
 public class JacksonModuleSchemaGenerator {
     public static void main(String[] args) {
 
-        JacksonModule module = new JacksonModule(
-                JacksonOption.RESPECT_JSONPROPERTY_REQUIRED
-        );
-        SchemaGeneratorConfigBuilder configBuilder = new SchemaGeneratorConfigBuilder(SchemaVersion.DRAFT_2020_12, OptionPreset.PLAIN_JSON)
-                .with(module)
-                .with(Option.EXTRA_OPEN_API_FORMAT_VALUES);
+        JacksonModule module = new JacksonModule(JacksonOption.RESPECT_JSONPROPERTY_REQUIRED);
+        SchemaGeneratorConfigBuilder configBuilder = new SchemaGeneratorConfigBuilder(SchemaVersion.DRAFT_2020_12, OptionPreset.PLAIN_JSON).with(module).with(Option.EXTRA_OPEN_API_FORMAT_VALUES);
 
         SchemaGenerator generator = new SchemaGenerator(configBuilder.build());
         JsonNode jsonSchema = generator.generateSchema(Person.class);
 
         System.out.println(jsonSchema.toPrettyString());
     }
-
 
     static class Person {
 
@@ -50,7 +49,6 @@ public class JacksonModuleSchemaGenerator {
 
         @JsonProperty(access = JsonProperty.Access.READ_WRITE)
         List<Person> friends;
-
 
     }
 

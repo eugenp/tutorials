@@ -5,10 +5,7 @@ import java.util.Date;
 import java.util.UUID;
 
 enum Area {
-    JAVA("JAVA"),
-    KOTLIN("KOTLIN"),
-    SCALA("SCALA"),
-    LINUX("LINUX");
+    JAVA("JAVA"), KOTLIN("KOTLIN"), SCALA("SCALA"), LINUX("LINUX");
 
     private final String area;
 
@@ -27,10 +24,9 @@ public class AdvancedArticle {
 
     private String content;
 
-    @AllowedTypes({Timestamp.class, Date.class})
+    @AllowedTypes({ Timestamp.class, Date.class })
     private Object createdAt;
     private Area area;
-
 
     public Area getArea() {
         return area;
