@@ -1,12 +1,9 @@
 package com.baeldung.jsonschemageneration.modules;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.github.victools.jsonschema.generator.OptionPreset;
 import com.github.victools.jsonschema.generator.SchemaGenerator;
 import com.github.victools.jsonschema.generator.SchemaGeneratorConfigBuilder;
-import com.github.victools.jsonschema.generator.SchemaVersion;
 import com.github.victools.jsonschema.module.jakarta.validation.JakartaValidationModule;
-import com.github.victools.jsonschema.module.jakarta.validation.JakartaValidationOption;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Null;
@@ -17,11 +14,16 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import static com.github.victools.jsonschema.generator.OptionPreset.PLAIN_JSON;
+import static com.github.victools.jsonschema.generator.SchemaVersion.DRAFT_2020_12;
+import static com.github.victools.jsonschema.module.jakarta.validation.JakartaValidationOption.INCLUDE_PATTERN_EXPRESSIONS;
+import static com.github.victools.jsonschema.module.jakarta.validation.JakartaValidationOption.NOT_NULLABLE_FIELD_IS_REQUIRED;
+
 public class JakartaValidationModuleSchemaGenerator {
     public static void main(String[] args) {
 
-        JakartaValidationModule module = new JakartaValidationModule(JakartaValidationOption.NOT_NULLABLE_FIELD_IS_REQUIRED, JakartaValidationOption.INCLUDE_PATTERN_EXPRESSIONS);
-        SchemaGeneratorConfigBuilder configBuilder = new SchemaGeneratorConfigBuilder(SchemaVersion.DRAFT_2020_12, OptionPreset.PLAIN_JSON).with(module);
+        JakartaValidationModule module = new JakartaValidationModule(NOT_NULLABLE_FIELD_IS_REQUIRED, INCLUDE_PATTERN_EXPRESSIONS);
+        SchemaGeneratorConfigBuilder configBuilder = new SchemaGeneratorConfigBuilder(DRAFT_2020_12, PLAIN_JSON).with(module);
 
         SchemaGenerator generator = new SchemaGenerator(configBuilder.build());
         JsonNode jsonSchema = generator.generateSchema(Person.class);
