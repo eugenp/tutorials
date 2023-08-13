@@ -20,6 +20,7 @@
         <module>dependency-exclusion</module>
         <module>host-maven-repo-example</module>
         <module>maven-archetype</module>
+        <module>maven-build-optimization</module>
         <module>maven-builder-plugin</module>
         <module>maven-classifier</module>
         <module>maven-copy-files</module>
