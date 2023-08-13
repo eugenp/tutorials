@@ -1,4 +1,4 @@
-package com.baeldung.testcontainers.middleearth;
+package com.baeldung.testcontainers.support;
 
 import java.util.List;
 

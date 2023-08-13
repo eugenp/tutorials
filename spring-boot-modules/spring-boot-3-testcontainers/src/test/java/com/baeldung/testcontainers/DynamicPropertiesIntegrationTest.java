@@ -11,7 +11,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
@@ -20,8 +19,8 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
 
-import com.baeldung.testcontainers.middleearth.MiddleEarthCharacter;
-import com.baeldung.testcontainers.middleearth.MiddleEarthCharactersRepository;
+import com.baeldung.testcontainers.support.MiddleEarthCharacter;
+import com.baeldung.testcontainers.support.MiddleEarthCharactersRepository;
 
 @Testcontainers
 @SpringBootTest(webEnvironment = DEFINED_PORT)
