@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class SecurityController4 {
+public class GetUserWithAuthenticationPrincipalAnnotationController {
 
     @GetMapping("/user")
     public String getUser(@AuthenticationPrincipal UserDetails userDetails) {

@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class SecurityController3 {
+public class GetUserWithAuthenticationController {
 
-    public SecurityController3() {
+    public GetUserWithAuthenticationController() {
         super();
     }
 

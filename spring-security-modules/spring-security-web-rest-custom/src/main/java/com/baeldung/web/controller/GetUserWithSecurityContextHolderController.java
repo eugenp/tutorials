@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class SecurityController1 {
+public class GetUserWithSecurityContextHolderController {
 
     @Autowired
     private ApplicationEventPublisher eventPublisher;
 
-    public SecurityController1() {
+    public GetUserWithSecurityContextHolderController() {
         super();
     }
 
