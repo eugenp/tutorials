@@ -12,7 +12,7 @@ import java.util.stream.IntStream;
 class GenerationOfAlphabetsUsingForVariousWaysUnitTest {
     @Test
     void givenAForLoop_whenGeneratingAlphabets_thenAssertTrue() {
-        final List<Character> allCapitalAlphabets = new ArrayList<>(Arrays.asList('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'));
+        final List<Character> allCapitalAlphabets = Arrays.asList('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');
         List<Character> alphabets = new ArrayList<>();
         for (char alphabet = 'A'; alphabet <= 'Z'; alphabet++) {
             alphabets.add(alphabet);
@@ -22,7 +22,7 @@ class GenerationOfAlphabetsUsingForVariousWaysUnitTest {
 
     @Test
     void givenStreams_whenGeneratingAlphabets_thenAssertTrue() {
-        final List<Character> allCapitalAlphabets = new ArrayList<>(Arrays.asList('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'));
+        final List<Character> allCapitalAlphabets = Arrays.asList('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');
         final List<Character> alphabets = IntStream.rangeClosed('A', 'Z').mapToObj(c -> (char) c).collect(Collectors.toList());
         Assertions.assertEquals(alphabets, allCapitalAlphabets);
     }
