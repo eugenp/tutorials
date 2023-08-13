@@ -1,4 +1,4 @@
-package com.baeldung.leetcode.magicsquare;
+package com.baeldung.magicsquare;
 
 import org.junit.jupiter.api.Test;
 
