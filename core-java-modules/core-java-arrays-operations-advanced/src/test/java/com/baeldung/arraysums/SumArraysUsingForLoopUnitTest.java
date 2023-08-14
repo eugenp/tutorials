@@ -1,10 +1,10 @@
-package com.baeldung.arraysums.test;
+package com.baeldung.arraysums;
 
 import com.baeldung.arraysums.SumArraysUsingForLoop;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class SumArraysUsingForLoopTest {
+public class SumArraysUsingForLoopUnitTest {
 
     @Test
     public void sumOfTwoArrays_GivenTwoEqualSizedIntArrays_ReturnsCorrectSumArray() {
