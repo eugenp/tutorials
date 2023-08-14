@@ -1,10 +1,10 @@
-package com.baeldung.arraysums.test;
+package com.baeldung.arraysums;
 
 import com.baeldung.arraysums.SumArraysUsingStreams;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class SumArraysUsingStreamsTest {
+public class SumArraysUsingStreamsUnitTest {
 
     @Test
     public void sumOfTwoArraysUsingStreams_GivenTwoEqualSizedIntArrays_ReturnsCorrectSumArray() {
