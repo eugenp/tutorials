@@ -4,7 +4,7 @@ import com.baeldung.arraysums.SumArraysUsingForEach;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class SumArraysUsingForEachTest {
+public class SumArraysUsingForEachUnitTest {
 
     @Test
     public void sumOfTwoArraysUsingForEach_GivenTwoEqualSizedIntArrays_ReturnsCorrectSumArray() {
