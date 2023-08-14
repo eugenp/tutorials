@@ -1,4 +1,4 @@
-package com.baeldung.arraysums.test;
+package com.baeldung.arraysums;
 
 import com.baeldung.arraysums.SumArraysUsingForEach;
 import org.junit.Test;
