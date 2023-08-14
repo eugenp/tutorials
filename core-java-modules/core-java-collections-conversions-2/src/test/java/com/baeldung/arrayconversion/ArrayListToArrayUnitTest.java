@@ -1,4 +1,4 @@
-package com.baeldung.array.conversions;
+package com.baeldung.arrayconversion;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
