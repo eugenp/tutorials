@@ -1,4 +1,4 @@
-package com.baeldung.kafka;
+package com.baeldung.kafka.consumer;
 
 import org.apache.kafka.clients.consumer.*;
 import org.apache.kafka.common.serialization.LongDeserializer;
@@ -8,7 +8,7 @@ import java.time.Duration;
 import java.util.Arrays;
 import java.util.Properties;
 
-public class KafkaJava {
+public class SimpleConsumerWithBootStrapServers {
 
     public static void main(String[] args) {
         try(final Consumer<Long, String> consumer = createConsumer()) {
