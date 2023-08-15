@@ -2,7 +2,7 @@ package com.baeldung.microprofile.util;
 
 import com.baeldung.microprofile.model.Book;
 
-import javax.json.*;
+import jakarta.json.*;
 import java.io.InputStream;
 import java.util.List;
 

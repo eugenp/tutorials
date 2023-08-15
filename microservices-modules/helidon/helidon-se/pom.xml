@@ -28,13 +28,13 @@
         <dependency>
             <groupId>io.helidon.webserver</groupId>
             <artifactId>helidon-webserver-netty</artifactId>
-            <version>${helidon.version}</version>
+            <version>${helidon-webserver-netty.version}</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>io.helidon.webserver</groupId>
             <artifactId>helidon-webserver-json</artifactId>
-            <version>${helidon.version}</version>
+            <version>${helidon-webserver-json.version}</version>
         </dependency>
         <!--Security -->
         <dependency>
@@ -43,19 +43,26 @@
             <version>${helidon.version}</version>
         </dependency>
         <dependency>
-            <groupId>io.helidon.security</groupId>
-            <artifactId>helidon-security-provider-http-auth</artifactId>
+            <groupId>io.helidon.security.providers</groupId>
+            <artifactId>helidon-security-providers-http-auth</artifactId>
             <version>${helidon.version}</version>
         </dependency>
         <dependency>
-            <groupId>io.helidon.security</groupId>
+            <groupId>io.helidon.security.integration</groupId>
             <artifactId>helidon-security-integration-webserver</artifactId>
+            <version>${helidon.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.helidon.webserver</groupId>
+            <artifactId>helidon-webserver-http2</artifactId>
             <version>${helidon.version}</version>
         </dependency>
     </dependencies>
 
     <properties>
-        <helidon.version>0.10.4</helidon.version>
+        <helidon.version>3.2.2</helidon.version>
+        <helidon-webserver-netty.version>0.10.6</helidon-webserver-netty.version>
+        <helidon-webserver-json.version>0.11.0</helidon-webserver-json.version>
     </properties>
 
 </project>

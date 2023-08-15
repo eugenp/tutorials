@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -53,10 +54,8 @@ final class FluentWaitLiveTest {
     @Test
     void givenPage_whenNavigatingWithoutFluentWait_thenElementNotInteractable() {
         driver.navigate().to("https://www.baeldung.com/");
-
-        driver.findElement(LOCATOR_ABOUT).click();
-
-        assertThrows(ElementNotInteractableException.class, () -> driver.findElement(LOCATOR_ABOUT_BAELDUNG).click());
+        WebElement about = driver.findElement(LOCATOR_ABOUT_BAELDUNG);
+        assertThrows(ElementNotInteractableException.class, about::click);
     }
 
     @Test

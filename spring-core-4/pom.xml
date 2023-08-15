@@ -71,6 +71,11 @@
             <artifactId>javax.annotation-api</artifactId>
             <version>${annotation-api.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
+            <version>${apache-commons-text.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -80,6 +85,7 @@
         <servlet-api.version>4.0.0</servlet-api.version>
         <annotation-api.version>1.3.2</annotation-api.version>
         <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
+        <apache-commons-text.version>1.10.0</apache-commons-text.version>
     </properties>
 
 </project>
