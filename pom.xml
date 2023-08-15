@@ -346,7 +346,7 @@
                 <module>core-java-modules/core-java-serialization</module>
                 <module>core-java-modules/core-java-lang</module>
                 <module>core-java-modules/core-java-lang-math-3</module>
-                <module>core-java-modules/core-java-collections-conversions-2</module>
+             
                 <module>core-java-modules/core-java-streams-2</module>
 
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
@@ -524,7 +524,7 @@
                 <module>core-java-modules/core-java-serialization</module>
                 <module>core-java-modules/core-java-lang</module>
                 <module>core-java-modules/core-java-lang-math-3</module>
-                <module>core-java-modules/core-java-collections-conversions-2</module>
+               
                 <module>core-java-modules/core-java-streams-2</module>
 
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
