@@ -27,7 +27,7 @@
     </dependencies>
 
     <properties>
-        <commons-codec.version>1.15</commons-codec.version>
+        <commons-codec.version>1.16.0</commons-codec.version>
     </properties>
 
 </project>
