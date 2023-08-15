@@ -1,5 +1,13 @@
 package com.baeldung.jets3t;
 
+import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -10,8 +18,8 @@ import org.jets3t.service.model.S3Bucket;
 import org.jets3t.service.model.S3Object;
 import org.jets3t.service.model.StorageObject;
 import org.jets3t.service.security.AWSCredentials;
-import org.junit.BeforeClass;
-import org.junit.Test;
+
+
 
 import java.io.*;
 import java.nio.file.Files;
@@ -19,14 +27,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
-import static junit.framework.TestCase.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+
+
+
 
 public class JetS3tLiveTest {
 
-    private Log log = LogFactory.getLog(JetS3tLiveTest.class);
+    private final Log log = LogFactory.getLog(JetS3tLiveTest.class);
 
     private static final String BucketName = "baeldung-barfoo";
     private static final String TestString = "test string";
@@ -35,7 +42,7 @@ public class JetS3tLiveTest {
 
     private static S3Service s3Service;
 
-    @BeforeClass
+    @BeforeAll
     public static void connectS3() throws Exception {
 
         // Replace with your keys
@@ -50,7 +57,7 @@ public class JetS3tLiveTest {
     }
 
     @Test
-    public void givenCreate_AndDeleteBucket_CountGoesUpThenDown() throws Exception {
+    void givenCreate_AndDeleteBucket_CountGoesUpThenDown() throws Exception {
 
         // List buckets, get a count
         S3Bucket[] myBuckets = s3Service.listAllBuckets();
@@ -89,7 +96,7 @@ public class JetS3tLiveTest {
     }
 
     @Test
-    public void givenString_Uploaded_StringInfoIsAvailable() throws Exception {
+    void givenString_Uploaded_StringInfoIsAvailable() throws Exception {
 
         // Create a bucket
         S3Bucket bucket = createBucket();
@@ -120,7 +127,7 @@ public class JetS3tLiveTest {
     }
 
     @Test
-    public void givenStringUploaded_StringIsDownloaded() throws Exception {
+    void givenStringUploaded_StringIsDownloaded() throws Exception {
 
         // Get a bucket
         S3Bucket bucket = createBucket();
@@ -135,7 +142,7 @@ public class JetS3tLiveTest {
         String downloadedString = new BufferedReader(new InputStreamReader(stringObject.getDataInputStream())).lines().collect(Collectors.joining("\n"));
 
         // Verify
-        assertTrue(TestString.equals(downloadedString));
+        assertEquals(TestString, downloadedString);
 
 
         // Clean up for next test
@@ -144,7 +151,7 @@ public class JetS3tLiveTest {
     }
 
     @Test
-    public void givenBinaryFileUploaded_FileIsDownloaded() throws Exception {
+    void givenBinaryFileUploaded_FileIsDownloaded() throws Exception {
 
         // get a bucket
         S3Bucket bucket = createBucket();
@@ -169,7 +176,7 @@ public class JetS3tLiveTest {
         // Get hashes and compare
         String origMD5 = getFileMD5("src/test/resources/test.jpg");
         String newMD5 = getFileMD5("src/test/resources/newtest.jpg");
-        assertTrue(origMD5.equals(newMD5));
+        assertEquals(origMD5, newMD5);
 
         // Clean up
         deleteObject("test.jpg");
@@ -186,7 +193,7 @@ public class JetS3tLiveTest {
 
 
     @Test
-    public void givenStreamDataUploaded_StreamDataIsDownloaded() throws Exception {
+    void givenStreamDataUploaded_StreamDataIsDownloaded() throws Exception {
 
         // get a bucket
         S3Bucket bucket = createBucket();
@@ -233,7 +240,7 @@ public class JetS3tLiveTest {
     }
 
     @Test
-    public void whenFileCopied_CopyIsSame() throws Exception {
+    void whenFileCopied_CopyIsSame() throws Exception {
 
         // get a bucket
         S3Bucket bucket = createBucket();
@@ -260,7 +267,7 @@ public class JetS3tLiveTest {
         // Get hashes and compare
         String origMD5 = getFileMD5("src/test/resources/test.jpg");
         String newMD5 = getFileMD5("src/test/resources/testcopy.jpg");
-        assertTrue(origMD5.equals(newMD5));
+        assertEquals(origMD5, newMD5);
 
         // Clean up
         deleteObject("test.jpg");
@@ -271,7 +278,7 @@ public class JetS3tLiveTest {
 
 
     @Test
-    public void whenFileRenamed_NewNameIsSame() throws Exception {
+    void whenFileRenamed_NewNameIsSame() throws Exception {
 
         // get a bucket
         S3Bucket bucket = createBucket();
@@ -297,7 +304,7 @@ public class JetS3tLiveTest {
         // Get hashes and compare
         String origMD5 = getFileMD5("src/test/resources/test.jpg");
         String newMD5 = getFileMD5("src/test/resources/spidey.jpg");
-        assertTrue(origMD5.equals(newMD5));
+        assertEquals(origMD5, newMD5);
 
         // Clean up
         deleteObject("test.jpg");
@@ -307,7 +314,7 @@ public class JetS3tLiveTest {
     }
 
     @Test
-    public void whenFileMoved_NewInstanceIsSame() throws Exception {
+    void whenFileMoved_NewInstanceIsSame() throws Exception {
 
         // get a bucket
         S3Bucket bucket = createBucket();
@@ -338,7 +345,7 @@ public class JetS3tLiveTest {
         // Get hashes and compare
         String origMD5 = getFileMD5("src/test/resources/test.jpg");
         String newMD5 = getFileMD5("src/test/resources/spidey.jpg");
-        assertTrue(origMD5.equals(newMD5));
+        assertEquals(origMD5, newMD5);
 
         // Clean up
         deleteBucket();
