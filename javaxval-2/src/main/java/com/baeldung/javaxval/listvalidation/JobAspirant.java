@@ -1,12 +1,7 @@
-package com.baeldung.listvalidation.domain;
+package com.baeldung.javaxval.listvalidation;
 
-import com.baeldung.listvalidation.groups.AllLevels;
-import com.baeldung.listvalidation.groups.Junior;
-import com.baeldung.listvalidation.groups.MidSenior;
-import com.baeldung.listvalidation.groups.Senior;
-import org.springframework.lang.Nullable;
+import jakarta.validation.constraints.*;
 
-import javax.validation.constraints.*;
 import java.util.Date;
 
 public class JobAspirant {
@@ -14,7 +9,6 @@ public class JobAspirant {
             @Size(min = 5, message = "Name should have at least 5 characters", groups = AllLevels.class),
             @Size(max = 20, message = "Name should have at most 20 characters", groups = AllLevels.class)
     })
-
     @Pattern.List({
             @Pattern(regexp = "^[\\p{Alpha} ]*$", message = "Name should contain only alphabets and space", groups = AllLevels.class),
             @Pattern(regexp = "^[^\\s].*$", message = "Name should not start with space", groups = AllLevels.class),
@@ -22,17 +16,7 @@ public class JobAspirant {
             @Pattern(regexp = "^((?!  ).)*$", message = "Name should not contain consecutive spaces", groups = AllLevels.class),
             @Pattern(regexp = "^[^a-z].*$", message = "Name should not start with a lower case character", groups = AllLevels.class)
     })
-
-
     private String name;
-
-    public Integer getExperience() {
-        return experience;
-    }
-
-    public void setExperience(Integer experience) {
-        this.experience = experience;
-    }
 
     @Min.List({
             @Min(value = 15, message = "Years of experience cannot be less than 15 Years", groups = Senior.class),
@@ -47,18 +31,16 @@ public class JobAspirant {
     private Integer experience;
 
     @AssertTrue.List({
-            @AssertTrue(message = "Terms and Conditions consent missing for Senior Level Job Application", groups = Senior.class),
-            @AssertTrue(message = "Terms and Conditions consent missing for Mid-Senior Level Job Application", groups = MidSenior.class),
-            @AssertTrue(message = "Terms and Conditions consent missing for Junior Level Job Application", groups = Junior.class)
+            @AssertTrue(message = "Terms and Conditions consent missing for Senior Level Job", groups = Senior.class),
+            @AssertTrue(message = "Terms and Conditions consent missing for Mid-Senior Level Job", groups = MidSenior.class),
+            @AssertTrue(message = "Terms and Conditions consent missing for Junior Level Job", groups = Junior.class)
     })
-    @Nullable
     private Boolean agreement;
 
-    @Nullable
     @Future.List({
-            @Future(message = "Active passport is mandatory for Senior Level Job Application", groups = Senior.class),
-            @Future(message = "Active passport is mandatory for Mid-Senior Level Job Application", groups = MidSenior.class),
-            @Future(message = "Active passport is mandatory for Junior Level Job Application", groups = Junior.class)
+            @Future(message = "Active passport is mandatory for Senior Level Job", groups = Senior.class),
+            @Future(message = "Active passport is mandatory for Mid-Senior Level Job", groups = MidSenior.class),
+            @Future(message = "Active passport is mandatory for Junior Level Job", groups = Junior.class)
     })
     private Date passportExpiryDate;
 
@@ -70,8 +52,6 @@ public class JobAspirant {
                     @Pattern(regexp = "^(Junior)$", message = "Job level should be Junior"
                             ,flags = Pattern.Flag.CASE_INSENSITIVE, groups = Junior.class)
     })
-//    @Pattern(regexp = "^(Senior|MidSenior|Junior)$", message = "Job level should be Senior, MidSenior or Junior"
-//            ,flags = Pattern.Flag.CASE_INSENSITIVE, groups = AllLevels.class)
     private String jobLevel;
 
     public String getJobLevel() {
@@ -103,5 +83,13 @@ public class JobAspirant {
 
     public void setPassportExpiryDate(Date passportExpiryDate) {
         this.passportExpiryDate = passportExpiryDate;
+    }
+
+    public Integer getExperience() {
+        return experience;
+    }
+
+    public void setExperience(Integer experience) {
+        this.experience = experience;
     }
 }
