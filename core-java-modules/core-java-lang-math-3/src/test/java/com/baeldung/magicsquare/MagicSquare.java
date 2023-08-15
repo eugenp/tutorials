@@ -1,4 +1,4 @@
-package com.baeldung.leetcode.magicsquare;
+package com.baeldung.magicsquare;
 
 import org.junit.platform.commons.util.StringUtils;
 
@@ -172,7 +172,9 @@ public class MagicSquare {
                 int value = getCell(x, y);
                 if (value == 0) {
                     sb.append(" ");
-                    sb.append(".".repeat(largestNumberLength));
+                    for (int i = 0; i < largestNumberLength; ++i) {
+                        sb.append(".");
+                    }
                     sb.append(" ");
                 } else {
                     sb.append(String.format(formatString, value));
