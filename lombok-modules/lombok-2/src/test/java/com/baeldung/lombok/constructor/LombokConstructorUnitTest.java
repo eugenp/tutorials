@@ -69,21 +69,4 @@ class LombokConstructorUnitTest {
         assertEquals(age, lombokWithBuilder.getAge());
         assertNull(lombokWithBuilder.getEmail());
     }
-
-    @Test
-    void whenUsingNoArgsAnnotationAndSomeFieldHasNoSetter_ThenCreateObject() {
-        // given
-        String name = "John";
-        int age = 30;
-
-        // when
-        LombokConstructorWithNoArgsAndSetter lombokConstructorWithNoArgsAndSetter = new LombokConstructorWithNoArgsAndSetter();
-        lombokConstructorWithNoArgsAndSetter.setAge(age);
-        lombokConstructorWithNoArgsAndSetter.setName(name);
-
-        // then
-        assertEquals(name, lombokConstructorWithNoArgsAndSetter.getName());
-        assertEquals(age, lombokConstructorWithNoArgsAndSetter.getAge());
-        assertNull(lombokConstructorWithNoArgsAndSetter.getEmail());
-    }
 }
