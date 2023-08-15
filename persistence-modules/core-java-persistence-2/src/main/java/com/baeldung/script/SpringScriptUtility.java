@@ -7,16 +7,14 @@ import org.springframework.jdbc.datasource.init.ScriptUtils;
 import java.sql.Connection;
 
 public class SpringScriptUtility {
-    public static void runScript(
-            String path,
-            Connection connection,
-            boolean continueOrError,
-            boolean ignoreFailedDrops,
-            String commentPrefix,
-            String separator,
-            String blockCommentStartDelimiter,
-            String blockCommentEndDelimiter
-    ) {
+    public static void runScript(String path, Connection connection) {
+        boolean continueOrError = false;
+        boolean ignoreFailedDrops = false;
+        String commentPrefix = "--";
+        String separator = ";";
+        String blockCommentStartDelimiter = "/*";
+        String blockCommentEndDelimiter = "*/";
+
         ScriptUtils.executeSqlScript(
                 connection,
                 new EncodedResource(new PathResource(path)),

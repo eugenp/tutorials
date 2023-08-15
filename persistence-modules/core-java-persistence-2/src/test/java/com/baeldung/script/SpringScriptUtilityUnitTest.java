@@ -35,17 +35,7 @@ public class SpringScriptUtilityUnitTest {
     public void givenConnectionObject_whenSQLFile_thenExecute() throws Exception {
         String path = new File(ClassLoader.getSystemClassLoader()
                 .getResource("employee.sql").getFile()).toPath().toString();
-        boolean ignoredFailedDrops = true, continueOnError = true;
-        String commentPrefix = "--", blockCommentStartDelimiter = "/*", blockCommentEndDelimiter = "*/";
-        String separator = ";";
-        SpringScriptUtility.runScript(path,
-                connection,
-                ignoredFailedDrops,
-                continueOnError,
-                commentPrefix,
-                separator,
-                blockCommentStartDelimiter,
-                blockCommentEndDelimiter);
+        SpringScriptUtility.runScript(path, connection);
 
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery("SELECT COUNT(1) FROM employees");

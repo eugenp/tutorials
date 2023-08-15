@@ -34,12 +34,10 @@ public class MyBatisScriptUtilityUnitTest {
     public void givenConnectionObject_whenSQLFile_thenExecute() throws Exception {
         String path = new File(ClassLoader.getSystemClassLoader()
                 .getResource("employee.sql").getFile()).toPath().toString();
-        boolean sendFullScript = false;
-        boolean stopOnError = true;
-        MyBatisScriptUtility.runScript(path, connection, sendFullScript, stopOnError);
+        MyBatisScriptUtility.runScript(path, connection);
+
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery("SELECT COUNT(1) FROM employees");
-
         if (resultSet.next()) {
             int count = resultSet.getInt(1);
             Assert.assertEquals("Incorrect number of records inserted", 20, count);
