@@ -20,6 +20,7 @@ import org.joda.time.DateTimeZone;
 import org.junit.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.util.StdDateFormat;
@@ -67,6 +68,8 @@ public class JacksonDateUnitTest {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.findAndRegisterModules();
         objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+        objectMapper.enable(SerializationFeature.WRITE_DATES_WITH_ZONE_ID);
+        objectMapper.disable(DeserializationFeature.ADJUST_DATES_TO_CONTEXT_TIME_ZONE);
         ZonedDateTime now = ZonedDateTime.now(ZoneId.of("UTC"));
         String converted = objectMapper.writeValueAsString(now);
      
