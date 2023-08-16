@@ -758,6 +758,7 @@
 
                 <module>algorithms-modules</module>
                 <module>apache-libraries</module>
+                <module>apache-libraries-2</module>
                 <module>apache-poi</module>
                 <module>apache-velocity</module>
                 <module>di-modules</module>
@@ -1025,6 +1026,7 @@
 
                 <module>algorithms-modules</module>
                 <module>apache-libraries</module>
+                <module>apache-libraries-2</module>
                 <module>apache-poi</module>
                 <module>apache-velocity</module>
                 <module>di-modules</module>
