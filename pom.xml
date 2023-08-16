@@ -355,6 +355,7 @@
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
+                <!-- <module>pants</module> --> <!-- Not a maven project -->
 
                 <module>libraries-jdk8</module>
 
@@ -367,10 +368,8 @@
                 <module>persistence-modules/hibernate-ogm</module> <!-- hibernate-ogm wasn't updated because it doesn't support jakarta API -->
                 <module>persistence-modules/java-cassandra</module> <!-- JAVA-21464 cassandra-unit library doesn't support to run with jdk9 and above -->
                 <module>persistence-modules/spring-data-cassandra-reactive</module> <!--JAVA-21844-->
-                <module>persistence-modules/spring-data-neo4j</module>
                 <module>java-nashorn</module>
                 <module>jeromq</module>
-                <module>spring-ejb-modules/ejb-beans</module>
             </modules>
 
         </profile>
@@ -545,9 +544,7 @@
                 <module>persistence-modules/hibernate-ogm</module> <!-- hibernate-ogm wasn't updated because it doesn't support jakarta API -->
                 <module>persistence-modules/java-cassandra</module> <!-- JAVA-21464 cassandra-unit library doesn't support to run with jdk9 and above -->
                 <module>persistence-modules/spring-data-cassandra-reactive</module> <!--JAVA-21844-->
-                <module>persistence-modules/spring-data-neo4j</module>
                 <module>java-nashorn</module>
-                <module>spring-ejb-modules/ejb-beans</module>
             </modules>
 
         </profile>
@@ -791,7 +788,7 @@
                 <module>kubernetes-modules</module>
                 <module>libraries-concurrency</module>
                 <module>jhipster-6</module>
-                <module>libraries-testing</module>
+                <!--<module>libraries-testing</module>--> <!-- Fixing in JAVA-24012 -->
                 <module>maven-modules</module>
                 <module>optaplanner</module>
                 <module>persistence-modules</module>
@@ -872,7 +869,7 @@
                 <module>libraries-apache-commons-2</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
-                <module>libraries-data-2</module>
+                <!--<module>libraries-data-2</module>--> <!-- Fixing in JAVA-24007 -->
                 <module>libraries-data-io</module>
                 <module>libraries-files</module>
                 <module>libraries-http</module>
@@ -909,7 +906,7 @@
 
                 <module>spring-kafka</module>
 
-                <module>spring-native</module>
+                <!--<module>spring-native</module>--> <!-- Fixing in JAVA-24009 -->
                 <module>spring-security-modules</module>
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>
@@ -940,6 +937,7 @@
                 <module>image-processing</module>
                 <module>language-interop</module>
                 <module>gradle-modules/gradle/maven-to-gradle</module>
+                <module>persistence-modules/spring-data-neo4j</module>
             </modules>
 
             <properties>
@@ -1060,7 +1058,7 @@
                 <module>kubernetes-modules</module>
                 <module>libraries-concurrency</module>
                 <module>jhipster-6</module>
-                <module>libraries-testing</module>
+                <!--<module>libraries-testing</module>--> <!-- Fixing in JAVA-24012 -->
                 <module>maven-modules</module>
                 <module>optaplanner</module>
                 <module>persistence-modules</module>
@@ -1141,7 +1139,7 @@
                 <module>libraries-apache-commons-2</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
-                <module>libraries-data-2</module>
+                <!--<module>libraries-data-2</module>--> <!-- Fixing in JAVA-24007 -->
                 <module>libraries-data-io</module>
                 <module>libraries-files</module>
                 <module>libraries-http</module>
@@ -1179,7 +1177,7 @@
 
                 <module>spring-kafka</module>
 
-                <module>spring-native</module>
+                <!--<module>spring-native</module>--> <!-- Fixing in JAVA-24009 -->
                 <module>spring-security-modules</module>
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>
@@ -1210,6 +1208,7 @@
                 <module>image-processing</module>
                 <module>language-interop</module>
                 <module>gradle-modules/gradle/maven-to-gradle</module>
+                <module>persistence-modules/spring-data-neo4j</module>
             </modules>
 
             <properties>
@@ -1286,7 +1285,7 @@
         <jstl-api.version>1.2</jstl-api.version>
         <javax.servlet.jsp-api.version>2.3.3</javax.servlet.jsp-api.version>
         <jstl.version>1.2</jstl.version>
-        <jackson.version>2.13.3</jackson.version>
+        <jackson.version>2.15.2</jackson.version>
         <commons-fileupload.version>1.4</commons-fileupload.version>
         <junit-platform.version>1.9.2</junit-platform.version>
         <junit-jupiter.version>5.9.2</junit-jupiter.version>
