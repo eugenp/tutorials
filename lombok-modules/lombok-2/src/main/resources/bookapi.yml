@@ -1,0 +1,39 @@
+openapi: 3.0.2
+info:
+  version: 1.0.0
+  title: Book Store
+  license:
+    name: MIT
+paths:
+    /books:
+      get:
+        tags:
+          - book
+        summary: Get All Books
+        responses:
+          200:
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Book'
+
+          404:
+            description: Book not found
+            content: { }
+components:
+  schemas:
+    Book:
+      type: object
+      required:
+        - id
+        - name
+        - author
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        author:
+          type: string
