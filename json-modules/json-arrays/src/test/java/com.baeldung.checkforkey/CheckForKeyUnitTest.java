@@ -1,5 +1,7 @@
 package com.baeldung.checkforkey;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.util.Objects;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
@@ -26,7 +28,7 @@ public class CheckForKeyUnitTest {
         boolean result = s.map(entry -> entry.get("colour"))
           .filter(Objects::nonNull)
           .anyMatch(colour -> "green".equals(colour.asText()));
-        assert (result);
+        assertTrue(result);
     }
 
     @Test
@@ -39,7 +41,7 @@ public class CheckForKeyUnitTest {
           .get("colour"))
           .filter(Objects::nonNull)
           .anyMatch(colour -> "green".equals(colour.getAsString()));
-        assert (result);
+        assertTrue(result);
     }
 
 }
