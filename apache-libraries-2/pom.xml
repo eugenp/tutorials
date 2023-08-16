@@ -13,4 +13,17 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
+    <dependencies>
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>${javax.validation.validation-api.version}</version>
+        </dependency>
+    </dependencies>
+
+
+    <properties>
+        <javax.validation.validation-api.version>2.0.1.Final</javax.validation.validation-api.version>
+    </properties>
+
 </project>
