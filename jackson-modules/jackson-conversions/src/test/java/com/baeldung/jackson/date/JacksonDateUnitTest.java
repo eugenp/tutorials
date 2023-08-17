@@ -67,12 +67,12 @@ public class JacksonDateUnitTest {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.findAndRegisterModules();
         objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-        ZonedDateTime now = ZonedDateTime.now(ZoneId.of("UTC"));
+        ZoneId zoneIdUtc = ZoneId.of("UTC");
+        ZonedDateTime now = ZonedDateTime.now(zoneIdUtc);
         String converted = objectMapper.writeValueAsString(now);
      
         ZonedDateTime restored = objectMapper.readValue(converted, ZonedDateTime.class);
-        System.out.println("serialized: " + now);
-        System.out.println("restored: " + restored);
+        restored = restored.withZoneSameInstant(zoneIdUtc);
         assertThat(now, is(restored));
     }
 
