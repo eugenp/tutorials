@@ -40,7 +40,7 @@ public class FileServiceTest {
       }
 
     @Test
-    public void uploadFileTest() throws Exception {
+    public void givenValidFile_whenUploaded_thenKeyMatchesDocumentPath() throws Exception {
         when(multipartFile.getName()).thenReturn("testFile");
         when(multipartFile.getContentType()).thenReturn("application/pdf");
         when(multipartFile.getSize()).thenReturn(1024L);
@@ -56,7 +56,7 @@ public class FileServiceTest {
     }
 
     @Test
-    public void uploadFileErrorTest() throws Exception {
+    public void givenValidFile_whenUploadFailsDueToNoBucket_thenExceptionIsThrown() throws Exception {
         when(multipartFile.getName()).thenReturn("testFile");
         when(multipartFile.getContentType()).thenReturn("application/pdf");
         when(multipartFile.getSize()).thenReturn(1024L);
@@ -70,7 +70,7 @@ public class FileServiceTest {
     }
 
     @Test
-    public void updateFileTest() throws Exception {
+    public void givenExistingFile_whenUpdated_thenSameKeyIsReturned() throws Exception {
         when(multipartFile.getName()).thenReturn("testFile");
         when(multipartFile.getContentType()).thenReturn("application/pdf");
         when(multipartFile.getSize()).thenReturn(1024L);
@@ -87,7 +87,7 @@ public class FileServiceTest {
     }
 
     @Test
-    public void updateFileErrorTest() throws Exception {
+    public void givenFileWithIOException_whenUpdated_thenExceptionIsThrown() throws Exception {
         when(multipartFile.getName()).thenReturn("testFile");
         when(multipartFile.getContentType()).thenReturn("application/pdf");
         when(multipartFile.getSize()).thenReturn(1024L);

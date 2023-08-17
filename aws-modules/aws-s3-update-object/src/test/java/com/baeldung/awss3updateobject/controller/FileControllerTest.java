@@ -34,7 +34,7 @@ public class FileControllerTest {
     }
 
     @Test
-    public void uploadFileTest() throws Exception {
+    public void givenValidMultipartFile_whenUploadedViaEndpoint_thenCorrectPathIsReturned() throws Exception {
         MockMultipartFile multipartFile = new MockMultipartFile("multipartFile", "test.txt",
                 "text/plain", "test data".getBytes());
 
@@ -46,7 +46,7 @@ public class FileControllerTest {
     }
 
     @Test
-    public void updateFileTest() throws Exception {
+    public void givenValidMultipartFileAndExistingPath_whenUpdatedViaEndpoint_thenSamePathIsReturned() throws Exception {
         MockMultipartFile multipartFile = new MockMultipartFile("multipartFile", "test.txt",
                 "text/plain", "test update data".getBytes());
         String existingFilePath = "/documents/existingFile.txt";
