@@ -2,6 +2,7 @@ package com.baeldung.keycloak;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -27,18 +28,30 @@ class SecurityConfig {
         return new RegisterSessionAuthenticationStrategy(new SessionRegistryImpl());
     }
 
+    @Order(1)
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain clientFilterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-            .antMatchers("/customers*")
-            .hasRole("USER")
+            .antMatchers("/")
+            .permitAll()
             .anyRequest()
-            .permitAll();
+            .authenticated();
         http.oauth2Login()
             .and()
             .logout()
             .addLogoutHandler(keycloakLogoutHandler)
             .logoutSuccessUrl("/");
+        return http.build();
+    }
+    
+    @Order(2)
+    @Bean
+    public SecurityFilterChain resourceServerFilterChain(HttpSecurity http) throws Exception {
+        http.authorizeRequests()
+            .antMatchers("/customers*")
+            .hasRole("USER")
+            .anyRequest()
+            .authenticated();
         http.oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt);
         return http.build();
     }
