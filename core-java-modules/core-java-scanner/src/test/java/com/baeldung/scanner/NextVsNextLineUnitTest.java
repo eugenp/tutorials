@@ -18,6 +18,24 @@ class NextVsNextLineUnitTest {
     }
 
     @Test
+    void givenInput_whenUsingNextMethodWithMultipleWhiteSpaces_thenReturnToken() {
+        String input = "Hello        world";
+        try (Scanner scanner = new Scanner(input)) {
+            assertEquals("Hello", scanner.next());
+            assertEquals("world", scanner.next());
+        }
+    }
+
+    @Test
+    void givenInput_whenUsingNextMethodWithTabAndNewLine_thenReturnToken() {
+        String input = "Hello    \t\n world";
+        try (Scanner scanner = new Scanner(input)) {
+            assertEquals("Hello", scanner.next());
+            assertEquals("world", scanner.next());
+        }
+    }
+
+    @Test
     void givenInput_whenUsingNextMethodWithCustomDelimiter_thenReturnToken() {
         String input = "Hello :world";
         try (Scanner scanner = new Scanner(input)) {
@@ -31,6 +49,24 @@ class NextVsNextLineUnitTest {
     @Test
     void givenInput_whenUsingNextLineMethod_thenReturnEntireLine() {
         String input = "Hello world\nWelcome to baeldung.com";
+        try (Scanner scanner = new Scanner(input)) {
+            assertEquals("Hello world", scanner.nextLine());
+            assertEquals("Welcome to baeldung.com", scanner.nextLine());
+        }
+    }
+
+    @Test
+    void givenInput_whenUsingNextLineMethodWithCR_thenReturnEntireLine() {
+        String input = "Hello world\rWelcome to baeldung.com";
+        try (Scanner scanner = new Scanner(input)) {
+            assertEquals("Hello world", scanner.nextLine());
+            assertEquals("Welcome to baeldung.com", scanner.nextLine());
+        }
+    }
+
+    @Test
+    void givenInput_whenUsingNextLineMethodWithCRLF_thenReturnEntireLine() {
+        String input = "Hello world\r\nWelcome to baeldung.com";
         try (Scanner scanner = new Scanner(input)) {
             assertEquals("Hello world", scanner.nextLine());
             assertEquals("Welcome to baeldung.com", scanner.nextLine());

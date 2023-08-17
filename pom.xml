@@ -346,7 +346,7 @@
                 <module>core-java-modules/core-java-serialization</module>
                 <module>core-java-modules/core-java-lang</module>
                 <module>core-java-modules/core-java-lang-math-3</module>
-                <module>core-java-modules/core-java-collections-conversions-2</module>
+             
                 <module>core-java-modules/core-java-streams-2</module>
 
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
@@ -355,6 +355,7 @@
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
+                <!-- <module>pants</module> --> <!-- Not a maven project -->
 
                 <module>libraries-jdk8</module>
 
@@ -367,8 +368,8 @@
                 <module>persistence-modules/hibernate-ogm</module> <!-- hibernate-ogm wasn't updated because it doesn't support jakarta API -->
                 <module>persistence-modules/java-cassandra</module> <!-- JAVA-21464 cassandra-unit library doesn't support to run with jdk9 and above -->
                 <module>persistence-modules/spring-data-cassandra-reactive</module> <!--JAVA-21844-->
-                <module>persistence-modules/spring-data-neo4j</module>
                 <module>java-nashorn</module>
+                <module>jeromq</module>
             </modules>
 
         </profile>
@@ -522,7 +523,7 @@
                 <module>core-java-modules/core-java-serialization</module>
                 <module>core-java-modules/core-java-lang</module>
                 <module>core-java-modules/core-java-lang-math-3</module>
-                <module>core-java-modules/core-java-collections-conversions-2</module>
+               
                 <module>core-java-modules/core-java-streams-2</module>
 
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
@@ -542,7 +543,6 @@
                 <module>persistence-modules/hibernate-ogm</module> <!-- hibernate-ogm wasn't updated because it doesn't support jakarta API -->
                 <module>persistence-modules/java-cassandra</module> <!-- JAVA-21464 cassandra-unit library doesn't support to run with jdk9 and above -->
                 <module>persistence-modules/spring-data-cassandra-reactive</module> <!--JAVA-21844-->
-                <module>persistence-modules/spring-data-neo4j</module>
                 <module>java-nashorn</module>
             </modules>
 
@@ -726,6 +726,7 @@
                 <module>spring-batch-2</module>
                 <module>spring-boot-rest</module>
                 <module>spring-drools</module>
+                <module>spring-cloud-modules/spring-cloud-azure</module>
                 <module>spring-cloud-modules/spring-cloud-contract</module>
                 <module>spring-cloud-modules/spring-cloud-data-flow</module>
                 <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
@@ -755,6 +756,7 @@
 
                 <module>algorithms-modules</module>
                 <module>apache-libraries</module>
+                <module>apache-libraries-2</module>
                 <module>apache-poi</module>
                 <module>apache-velocity</module>
                 <module>di-modules</module>
@@ -777,7 +779,6 @@
                 <module>custom-pmd</module>
                 <module>data-structures</module>
                 <module>ddd-contexts</module>
-                <module>jackson-jr</module>
                 <module>jackson-modules</module>
                 <module>jmh</module>
                 <module>deeplearning4j</module>
@@ -787,7 +788,7 @@
                 <module>kubernetes-modules</module>
                 <module>libraries-concurrency</module>
                 <module>jhipster-6</module>
-                <module>libraries-testing</module>
+                <!--<module>libraries-testing</module>--> <!-- Fixing in JAVA-24012 -->
                 <module>maven-modules</module>
                 <module>optaplanner</module>
                 <module>persistence-modules</module>
@@ -868,7 +869,7 @@
                 <module>libraries-apache-commons-2</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
-                <module>libraries-data-2</module>
+                <!--<module>libraries-data-2</module>--> <!-- Fixing in JAVA-24007 -->
                 <module>libraries-data-io</module>
                 <module>libraries-files</module>
                 <module>libraries-http</module>
@@ -937,6 +938,7 @@
                 <module>image-processing</module>
                 <module>language-interop</module>
                 <module>gradle-modules/gradle/maven-to-gradle</module>
+                <module>persistence-modules/spring-data-neo4j</module>
             </modules>
 
             <properties>
@@ -999,6 +1001,7 @@
                 <module>spring-batch-2</module>
                 <module>spring-boot-rest</module>
                 <module>spring-drools</module>
+                <module>spring-cloud-modules/spring-cloud-azure</module>
                 <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
                 <module>spring-exceptions</module>
                 <module>spring-jenkins-pipeline</module>
@@ -1022,6 +1025,7 @@
 
                 <module>algorithms-modules</module>
                 <module>apache-libraries</module>
+                <module>apache-libraries-2</module>
                 <module>apache-poi</module>
                 <module>apache-velocity</module>
                 <module>di-modules</module>
@@ -1057,7 +1061,7 @@
                 <module>kubernetes-modules</module>
                 <module>libraries-concurrency</module>
                 <module>jhipster-6</module>
-                <module>libraries-testing</module>
+                <!--<module>libraries-testing</module>--> <!-- Fixing in JAVA-24012 -->
                 <module>maven-modules</module>
                 <module>optaplanner</module>
                 <module>persistence-modules</module>
@@ -1138,7 +1142,7 @@
                 <module>libraries-apache-commons-2</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
-                <module>libraries-data-2</module>
+                <!--<module>libraries-data-2</module>--> <!-- Fixing in JAVA-24007 -->
                 <module>libraries-data-io</module>
                 <module>libraries-files</module>
                 <module>libraries-http</module>
@@ -1208,6 +1212,7 @@
                 <module>image-processing</module>
                 <module>language-interop</module>
                 <module>gradle-modules/gradle/maven-to-gradle</module>
+                <module>persistence-modules/spring-data-neo4j</module>
             </modules>
 
             <properties>
@@ -1271,21 +1276,20 @@
         <exec-maven-plugin.version>3.0.0</exec-maven-plugin.version>
         <java.version>1.8</java.version>
         <log4j.version>1.2.17</log4j.version>
-        <esapi.version>2.5.0.0</esapi.version>
-        <jmh-core.version>1.35</jmh-core.version>
-        <jmh-generator.version>1.35</jmh-generator.version>
+        <jmh-core.version>1.36</jmh-core.version>
+        <jmh-generator.version>1.36</jmh-generator.version>
         <maven-failsafe-plugin.version>2.21.0</maven-failsafe-plugin.version>
         <commons-collections4.version>4.4</commons-collections4.version>
         <commons-io.version>2.11.0</commons-io.version>
         <commons-lang.version>2.6</commons-lang.version>
-        <commons-lang3.version>3.12.0</commons-lang3.version>
+        <commons-lang3.version>3.13.0</commons-lang3.version>
         <commons-cli.version>1.5.0</commons-cli.version>
         <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
         <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
         <jstl-api.version>1.2</jstl-api.version>
         <javax.servlet.jsp-api.version>2.3.3</javax.servlet.jsp-api.version>
         <jstl.version>1.2</jstl.version>
-        <jackson.version>2.13.3</jackson.version>
+        <jackson.version>2.15.2</jackson.version>
         <commons-fileupload.version>1.4</commons-fileupload.version>
         <junit-platform.version>1.9.2</junit-platform.version>
         <junit-jupiter.version>5.9.2</junit-jupiter.version>

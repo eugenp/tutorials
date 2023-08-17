@@ -10,4 +10,7 @@
     <root level="INFO">
         <appender-ref ref="STDOUT" />
     </root>
+
+    <!-- Change the log level for software.amazon.awssdk -->
+    <logger name="software.amazon.awssdk" level="info" />
 </configuration>

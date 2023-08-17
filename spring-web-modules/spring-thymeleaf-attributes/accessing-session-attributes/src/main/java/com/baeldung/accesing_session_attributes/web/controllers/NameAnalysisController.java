@@ -20,6 +20,7 @@ import com.baeldung.accesing_session_attributes.business.entities.NameAnalysisEn
 import com.baeldung.accesing_session_attributes.web.beans.SessionNameRequest;
 import com.baeldung.accesing_session_attributes.web.factories.SessionNameRequestFactory;
 
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -27,19 +28,15 @@ import jakarta.servlet.http.HttpServletResponse;
 public class NameAnalysisController {
 
     private NameAnalysisService nameAnalysisService;
-    private HttpServletRequest request;
     private SessionNameRequestFactory sessionNameRequestFactory;
-    private HttpServletResponse response;
-    private JakartaServletWebApplication jakartaServletWebApplication;
+    private JakartaServletWebApplication webApp;
 
     @Autowired
-    public NameAnalysisController(JakartaServletWebApplication jakartaServletWebApplication, HttpServletRequest request, HttpServletResponse response, NameAnalysisService nameAnalysisService, SessionNameRequestFactory sessionNameRequestFactory) {
+    public NameAnalysisController(NameAnalysisService nameAnalysisService, SessionNameRequestFactory sessionNameRequestFactory, ServletContext servletContext) {
         super();
-        this.jakartaServletWebApplication = jakartaServletWebApplication;
-        this.request = request;
-        this.response = response;
         this.nameAnalysisService = nameAnalysisService;
         this.sessionNameRequestFactory = sessionNameRequestFactory;
+        this.webApp = JakartaServletWebApplication.buildApplication(servletContext);
     }
 
     @ModelAttribute("nameRequest")
@@ -53,22 +50,25 @@ public class NameAnalysisController {
     }
 
     @RequestMapping(value = "/name-analysis", params = { "search" })
-    public String performNameAnalysis(final NameRequest nameRequest, final BindingResult bindingResult) {
-        performNameRequest(nameRequest);
+    public String performNameAnalysis(final NameRequest nameRequest, final BindingResult bindingResult, HttpServletRequest request, HttpServletResponse response) {
+        IWebSession webSession = getIWebSession(request, response);
+        performNameRequest(nameRequest, webSession);
         return "name-analysis";
     }
 
     @RequestMapping(value = "/name-analysis/clear")
-    public String clearNameAnalysis() {
-        clearAnalysis();
+    public String clearNameAnalysis(HttpServletRequest request, HttpServletResponse response) {
+        IWebSession webSession = getIWebSession(request, response);
+        clearAnalysis(webSession);
         return "redirect:/name-analysis";
     }
 
     @RequestMapping(value = "/name-analysis/remove-history-request", params = { "id" })
-    public String removeRequest() {
+    public String removeRequest(HttpServletRequest request, HttpServletResponse response) {
         try {
+            IWebSession webSession = getIWebSession(request, response);
             final Integer rowId = Integer.valueOf(request.getParameter("id"));
-            removeRequest(rowId);
+            removeRequest(rowId, webSession);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -76,53 +76,49 @@ public class NameAnalysisController {
         return "redirect:/name-analysis";
     }
 
-    private void removeRequest(Integer rowId) {
-        IWebSession session = getIWebSession();
-        Object requests = session.getAttributeValue("requests");
-        if (rowId != null && requests != null && (requests instanceof List)) {
-            ((List<SessionNameRequest>) requests).remove(rowId.intValue());
+    private void removeRequest(Integer rowId, IWebSession webSession) {
+        if (rowId != null) {
+            List<SessionNameRequest> requests = getRequestsFromSession(webSession);
+            if (requests != null) {
+                requests.remove(rowId.intValue());
+            }
         }
     }
 
-    private void performNameRequest(final NameRequest nameRequest) {
+    private void performNameRequest(final NameRequest nameRequest, IWebSession webSession) {
         try {
             CompletableFuture<NameAnalysisEntity> nameAnalysis = this.nameAnalysisService.searchForName(nameRequest);
             NameAnalysisEntity nameAnalysisEntity = nameAnalysis.get(30, TimeUnit.SECONDS);
-            sessionRegisterRequest(nameRequest);
-            sessionRegisterAnalysis(nameAnalysisEntity);
-            sessionClearAnalysisError();
+            sessionRegisterRequest(nameRequest, webSession);
+            sessionRegisterAnalysis(nameAnalysisEntity, webSession);
+            sessionClearAnalysisError(webSession);
         } catch (Exception e) {
             e.printStackTrace();
-            sessionSetAnalysisError(nameRequest);
+            sessionSetAnalysisError(nameRequest, webSession);
         }
     }
 
-    private void sessionClearAnalysisError() {
-        IWebSession session = getIWebSession();
-        session.setAttributeValue("analysisError", null);
+    private void sessionClearAnalysisError(IWebSession webSession) {
+        webSession.removeAttribute("analysisError");
     }
 
-    private void sessionSetAnalysisError(NameRequest nameRequest) {
-        IWebSession session = getIWebSession();
-        session.setAttributeValue("analysisError", nameRequest);
+    private void sessionSetAnalysisError(NameRequest nameRequest, IWebSession webSession) {
+        webSession.setAttributeValue("analysisError", nameRequest);
     }
 
-    private void clearAnalysis() {
-        IWebSession session = getIWebSession();
-        session.setAttributeValue("lastAnalysis", null);
+    private void clearAnalysis(IWebSession webSession) {
+        webSession.removeAttribute("lastAnalysis");
     }
 
-    private void sessionRegisterAnalysis(NameAnalysisEntity analysis) {
-        IWebSession session = getIWebSession();
-        session.setAttributeValue("lastAnalysis", analysis);
+    private void sessionRegisterAnalysis(NameAnalysisEntity analysis, IWebSession webSession) {
+        webSession.setAttributeValue("lastAnalysis", analysis);
     }
 
-    private void sessionRegisterRequest(NameRequest nameRequest) {
-        IWebSession session = getIWebSession();
-        session.setAttributeValue("lastRequest", nameRequest);
+    private void sessionRegisterRequest(NameRequest nameRequest, IWebSession webSession) {
+        webSession.setAttributeValue("lastRequest", nameRequest);
 
         SessionNameRequest sessionNameRequest = sessionNameRequestFactory.getInstance(nameRequest);
-        List<SessionNameRequest> requests = getRequestsFromSession(session);
+        List<SessionNameRequest> requests = getRequestsFromSession(webSession);
         requests.add(0, sessionNameRequest);
     }
 
@@ -136,8 +132,8 @@ public class NameAnalysisController {
         return (List<SessionNameRequest>) requests;
     }
 
-    private IWebSession getIWebSession() {
-        IServletWebExchange webExchange = this.jakartaServletWebApplication.buildExchange(request, response);
-        return webExchange.getSession();
+    private IWebSession getIWebSession(HttpServletRequest request, HttpServletResponse response) {
+        IServletWebExchange exchange = webApp.buildExchange(request, response);
+        return exchange == null ? null : exchange.getSession();
     }
 }
