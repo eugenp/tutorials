@@ -2,7 +2,6 @@ package com.baeldung.awss3updateobject.service;
 
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.AmazonS3Exception;
-import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.amazonaws.services.s3.model.S3Object;
 import org.junit.jupiter.api.BeforeEach;
@@ -20,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-public class FileServiceTest {
+public class FileServiceUnitTest {
 
     @Mock
     private AmazonS3 amazonS3;
