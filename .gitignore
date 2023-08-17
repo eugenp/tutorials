@@ -125,3 +125,6 @@ devDb*.db
 
 #neo4j
 persistence-modules/neo4j/data/**
+/deep-shallow-copy/.mvn/wrapper
+/deep-shallow-copy/mvnw
+/deep-shallow-copy/mvnw.cmd
