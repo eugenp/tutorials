@@ -122,50 +122,6 @@
 
     <profiles>
         <profile>
-            <id>quotes-application</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.springframework.boot</groupId>
-                        <artifactId>spring-boot-maven-plugin</artifactId>
-                        <configuration>
-                            <mainClass>com.baeldung.springcloudgateway.oauth.backend.QuotesApplication</mainClass>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>gateway-as-resource-server</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.springframework.boot</groupId>
-                        <artifactId>spring-boot-maven-plugin</artifactId>
-                        <configuration>
-                            <mainClass>com.baeldung.springcloudgateway.oauth.server.ResourceServerGatewayApplication</mainClass>
-                            <jvmArguments>-Dspring.profiles.active=resource-server</jvmArguments>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>gateway-as-oauth-client</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.springframework.boot</groupId>
-                        <artifactId>spring-boot-maven-plugin</artifactId>
-                        <configuration>
-                            <mainClass>com.baeldung.springcloudgateway.oauth.server.ResourceServerGatewayApplication</mainClass>
-                            <jvmArguments>-Dspring.profiles.active=oauth-client</jvmArguments>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
             <id>gateway-url-rewrite</id>
             <build>
                 <plugins>
