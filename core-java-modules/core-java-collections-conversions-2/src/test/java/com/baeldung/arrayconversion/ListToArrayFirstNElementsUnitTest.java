@@ -11,19 +11,19 @@ import com.google.common.collect.Lists;
 
 public class ListToArrayFirstNElementsUnitTest {
     private static final List<String> INPUT_LIST = Lists.newArrayList("one", "two", "three", "four", "five", "six", "seven");
-    private static final int N = 5;
+    private static final int n = 5;
 
     @Test
     void whenUsingForLoop_thenGetExpectedArray() {
-        String[] result = new String[N];
-        for (int i = 0; i < N; i++) {
+        String[] result = new String[n];
+        for (int i = 0; i < n; i++) {
             result[i] = INPUT_LIST.get(i);
         }
         assertArrayEquals(new String[] { "one", "two", "three", "four", "five" }, result);
 
-        String[] result2 = new String[N];
+        String[] result2 = new String[n];
         Iterator<String> iterator = INPUT_LIST.iterator();
-        for (int i = 0; i < N && iterator.hasNext(); i++) {
+        for (int i = 0; i < n && iterator.hasNext(); i++) {
             result2[i] = iterator.next();
         }
         assertArrayEquals(new String[] { "one", "two", "three", "four", "five" }, result2);
@@ -31,17 +31,17 @@ public class ListToArrayFirstNElementsUnitTest {
 
     @Test
     void whenUsingSubList_thenGetExpectedArray() {
-        String[] result = new String[N];
-        INPUT_LIST.subList(0, N)
+        String[] result = new String[n];
+        INPUT_LIST.subList(0, n)
           .toArray(result);
         assertArrayEquals(new String[] { "one", "two", "three", "four", "five" }, result);
 
-        String[] result2 = INPUT_LIST.subList(0, N)
+        String[] result2 = INPUT_LIST.subList(0, n)
           .toArray(new String[0]);
         assertArrayEquals(new String[] { "one", "two", "three", "four", "five" }, result2);
 
         // available only for java 11+
-        String[] result3 = INPUT_LIST.subList(0, N)
+        String[] result3 = INPUT_LIST.subList(0, n)
           .toArray(String[]::new);
         assertArrayEquals(new String[] { "one", "two", "three", "four", "five" }, result3);
     }
@@ -49,7 +49,7 @@ public class ListToArrayFirstNElementsUnitTest {
     @Test
     void whenUsingStream_thenGetExpectedArray() {
         String[] result = INPUT_LIST.stream()
-          .limit(N)
+          .limit(n)
           .toArray(String[]::new);
         assertArrayEquals(new String[] { "one", "two", "three", "four", "five" }, result);
     }
