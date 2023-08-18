@@ -42,7 +42,7 @@
         <dependency>
             <groupId>io.asyncer</groupId>
             <artifactId>r2dbc-mysql</artifactId>
-            <version>1.0.2</version>
+            <version>${r2dbc-mysql.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -123,7 +123,7 @@
         <pluginRepository>
             <id>spring-release</id>
             <name>Spring release</name>
-            <url>https://repo.spring.io/release</url>
+            <url>https://repo.spring.io/milestone</url>
         </pluginRepository>
     </pluginRepositories>
 
@@ -158,6 +158,7 @@
                     <plugin>
                         <groupId>org.springframework.experimental</groupId>
                         <artifactId>spring-aot-maven-plugin</artifactId>
+                        <version>${spring-native.version}</version>
                         <executions>
                             <execution>
                                 <id>test-generate</id>
@@ -194,6 +195,7 @@
                     <plugin>
                         <groupId>org.springframework.experimental</groupId>
                         <artifactId>spring-aot-maven-plugin</artifactId>
+                        <version>${spring-native.version}</version>
                         <executions>
                             <execution>
                                 <id>test-generate</id>
@@ -253,11 +255,14 @@
 
     <properties>
         <testcontainers-bom.version>1.17.2</testcontainers-bom.version>
+        <java.version>11</java.version>
         <spring-native.version>0.12.1</spring-native.version>
+        <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
         <maven.compiler.source.version>11</maven.compiler.source.version>
         <maven.compiler.target.version>11</maven.compiler.target.version>
         <maven-surefire-plugin.version>3.1.0</maven-surefire-plugin.version>
         <native-buildtools.version>0.9.11</native-buildtools.version>
+        <r2dbc-mysql.version>1.0.2</r2dbc-mysql.version>
     </properties>
 
 </project>
