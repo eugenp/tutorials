@@ -97,6 +97,7 @@
         <module>spring-boot-properties-3</module>
         <module>spring-boot-properties-4</module>
         <module>spring-boot-properties-migrator-demo</module>
+        <module>spring-boot-documentation</module>
     </modules>
 
     <dependencyManagement>
