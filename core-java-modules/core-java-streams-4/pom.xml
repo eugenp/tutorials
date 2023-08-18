@@ -39,7 +39,7 @@
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>3.23.1</version>
+            <version>${assertj.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -55,7 +55,7 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.12.0</version>
+            <version>${commons-lang3.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -81,7 +81,7 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>${google.guava.version}</version>
+            <version>${guava.version}</version>
         </dependency>
         <dependency>
             <groupId>com.oath.cyclops</groupId>
@@ -114,6 +114,7 @@
 
     <properties>
         <!-- testing -->
+        <assertj.version>3.23.1</assertj.version>
         <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
         <maven.compiler.source>12</maven.compiler.source>
         <maven.compiler.target>12</maven.compiler.target>
@@ -123,7 +124,6 @@
         <io.varv.version>1.0.0-alpha-4</io.varv.version>
         <io.reactor3.version>3.5.1</io.reactor3.version>
         <apache.commons.collection4.version>4.4</apache.commons.collection4.version>
-        <google.guava.version>31.1-jre</google.guava.version>
         <cyclops.version>10.4.1</cyclops.version>
     </properties>
 
