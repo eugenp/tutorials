@@ -8,6 +8,9 @@ import java.util.concurrent.ThreadLocalRandom;
 public class RandomInSetUtil {
 
     public static <T> T getByRandomClass(Set<T> set) {
+        if (set == null || set.isEmpty()) {
+            throw new IllegalArgumentException("The Set cannot be empty.");
+        }
         int randomIndex = new Random().nextInt(set.size());
         int i = 0;
         for (T element : set) {
@@ -16,11 +19,13 @@ public class RandomInSetUtil {
             }
             i++;
         }
-        // Something went wrong while picking a random element
-        return null;
+        throw new IllegalStateException("Something went wrong while picking a random element.");
     }
 
     public static <T> T getByThreadLocalRandom(Set<T> set) {
+        if (set == null || set.isEmpty()) {
+            throw new IllegalArgumentException("The Set cannot be empty.");
+        }
         int randomIndex = ThreadLocalRandom.current().nextInt(set.size());
         int i = 0;
         for (T element : set) {
@@ -29,7 +34,7 @@ public class RandomInSetUtil {
             }
             i++;
         }
-        return null;
+        throw new IllegalStateException("Something went wrong while picking a random element.");
     }
 
     public static void main(String[] args) {
