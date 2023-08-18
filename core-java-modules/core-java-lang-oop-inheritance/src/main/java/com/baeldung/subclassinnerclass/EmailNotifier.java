@@ -9,7 +9,7 @@ public class EmailNotifier extends Notifier {
     }
 
     // Inner class for email connection
-    private static class EmailConnector {
+    static class EmailConnector {
         private String emailHost;
         private int emailPort;
         // Getter Setters
