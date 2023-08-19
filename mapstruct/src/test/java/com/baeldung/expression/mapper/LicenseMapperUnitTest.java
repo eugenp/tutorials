@@ -16,7 +16,7 @@ class LicenseMapperUnitTest {
     LicenseMapper licenseMapper = Mappers.getMapper(LicenseMapper.class);
 
     @Test
-    void givenLicenseDtoWithStartDateAndWithoutEndDate_ThenLicenseShouldBePopulatedWithDefaultEndDate() {
+    void givenLicenseDtoWithStartDateAndWithoutEndDate_WhenMapperMethodIsInvoked_ThenLicenseShouldBePopulatedWithDefaultEndDate() {
         License license = licenseMapper.toLicense(LicenseDto.builder()
             .startDate(LocalDateTime.now())
             .build());
@@ -31,7 +31,7 @@ class LicenseMapperUnitTest {
     }
 
     @Test
-    void givenLicenseDtoWithEndDateAndWithoutStartDate_ThenLicenseShouldBePopulatedWithDefaultStartDate() {
+    void givenLicenseDtoWithEndDateAndWithoutStartDate_WhenMapperMethodIsInvoked_ThenLicenseShouldBePopulatedWithDefaultStartDate() {
         License license = licenseMapper.toLicense(LicenseDto.builder()
             .endDate(LocalDateTime.now()
                 .plusYears(2))
@@ -47,7 +47,7 @@ class LicenseMapperUnitTest {
     }
 
     @Test
-    void givenLicenseDtoWithoutEndDateAndWithoutStartDate_ThenLicenseShouldBePopulatedWithDefaultStartDateAndEndDate() {
+    void givenLicenseDtoWithoutEndDateAndWithoutStartDate_WhenMapperMethodIsInvoked_ThenLicenseShouldBePopulatedWithDefaultStartDateAndEndDate() {
         License license = licenseMapper.toLicense(LicenseDto.builder()
             .build());
         assertThat(license).isNotNull()
@@ -61,7 +61,7 @@ class LicenseMapperUnitTest {
     }
 
     @Test
-    void givenLicenseDtoWithoutStartDateAndEndDate_ThenLicenseShouldBePopulatedWithDefaultDetails() {
+    void givenLicenseDtoWithoutStartDateAndEndDate_WhenMapperMethodIsInvoked_ThenLicenseShouldBePopulatedWithDefaultDetails() {
         License license = licenseMapper.toLicense(LicenseDto.builder()
             .build());
         assertThat(license).isNotNull()
@@ -77,7 +77,7 @@ class LicenseMapperUnitTest {
     }
 
     @Test
-    void givenLicenseDtoWithEndDateInTwoWeeks_ThenLicenseShouldBePopulatedWithReminderSetToTrue() {
+    void givenLicenseDtoWithEndDateInTwoWeeks_WhenMapperMethodIsInvoked_ThenLicenseShouldBePopulatedWithReminderSetToTrue() {
         License license = licenseMapper.toLicense(LicenseDto.builder()
             .endDate(LocalDateTime.now()
                 .plusDays(10))
