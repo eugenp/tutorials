@@ -99,7 +99,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>2.18</version>
+                <version>${maven-failsafe-plugin.version}</version>
                 <executions>
                     <!-- Invokes both the integration-test and the verify goals of the -->
                     <!-- Failsafe Maven plugin -->
@@ -193,6 +193,7 @@
         <git-commit-id-plugin.version>2.2.4</git-commit-id-plugin.version>
         <subethasmtp.version>3.1.7</subethasmtp.version>
         <httpclient.version>4.5.8</httpclient.version>
+        <maven-failsafe-plugin.version>2.18</maven-failsafe-plugin.version>
     </properties>
 
 </project>

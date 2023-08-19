@@ -34,11 +34,6 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <!-- The main class to start by executing "java -jar" -->
-        <start-class>com.baeldung.changeport.CustomApplication</start-class>
-    </properties>
-
     <profiles>
         <profile>
             <id>errorhandling</id>
@@ -77,12 +72,19 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>1.5.2.RELEASE</version>
+                <version>${spring-boot-maven-plugin.version}</version>
                 <configuration>
                     <mainClass>${spring.boot.mainclass}</mainClass>
                 </configuration>
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <spring-boot-maven-plugin.version>1.5.2.RELEASE</spring-boot-maven-plugin.version>
+        <!-- The main class to start by executing "java -jar" -->
+        <start-class>com.baeldung.changeport.CustomApplication</start-class>
+    </properties>
+
 
 </project>

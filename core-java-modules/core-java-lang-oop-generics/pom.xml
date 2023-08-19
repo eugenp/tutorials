@@ -29,7 +29,7 @@
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
                     <compilerArguments>
-                        <Xlint:unchecked />
+                        <Xlint:unchecked/>
                     </compilerArguments>
                 </configuration>
             </plugin>

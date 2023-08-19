@@ -44,7 +44,9 @@ public class HttpClientCancelRequestV4LiveTest {
             System.out.println(response.getStatusLine());
             if (entity != null) {
                 System.out.println("Response content length: " + entity.getContentLength());
+                entity.getContent().close();
             }
+
             System.out.println("----------------------------------------");
 
             // Do not feel like reading the response body

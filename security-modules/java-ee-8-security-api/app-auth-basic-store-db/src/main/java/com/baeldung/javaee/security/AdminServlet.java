@@ -1,6 +1,5 @@
 package com.baeldung.javaee.security;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.HttpConstraint;
 import javax.servlet.annotation.ServletSecurity;
 import javax.servlet.annotation.WebServlet;
@@ -14,7 +13,7 @@ import java.io.IOException;
 public class AdminServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.getWriter().append("User :" + request.getUserPrincipal().getName() + "\n");
         response.getWriter().append("User in Role user_role :" + request.isUserInRole("user_role") + "\n");
         response.getWriter().append("User in Role admin_role :" + request.isUserInRole("admin_role"));

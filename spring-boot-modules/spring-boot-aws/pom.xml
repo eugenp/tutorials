@@ -14,9 +14,6 @@
         <artifactId>spring-boot-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-    <properties>
-        <springboot2.aws.version>1.9.1</springboot2.aws.version>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -43,7 +40,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.2.4</version>
+                <version>${maven-shade-plugin.version}</version>
                 <configuration>
                     <createDependencyReducedPom>false</createDependencyReducedPom>
                 </configuration>
@@ -73,5 +70,10 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <springboot2.aws.version>1.9.1</springboot2.aws.version>
+        <maven-shade-plugin.version>3.2.4</maven-shade-plugin.version>
+    </properties>
 
 </project>

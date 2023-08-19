@@ -14,3 +14,4 @@ The "Learn Spring Security" Classes: http://github.learnspringsecurity.com
 - [Servlet 3 Async Support with Spring MVC and Spring Security](https://www.baeldung.com/spring-mvc-async-security)
 - [Intro to Spring Security Expressions](https://www.baeldung.com/spring-security-expressions)
 - [Error Handling for REST with Spring](https://www.baeldung.com/exception-handling-for-rest-with-spring)
+- [How to Solve 403 Error in Spring Boot POST Request](https://www.baeldung.com/java-spring-fix-403-error)

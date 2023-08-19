@@ -44,7 +44,7 @@
         <module>spring-boot-graphql</module>
         <module>spring-boot-groovy</module>
         <!-- <module>spring-boot-gradle</module> --> <!-- Not a maven project -->
-        <module>spring-boot-jasypt</module>
+        <!--<module>spring-boot-jasypt</module>--> <!-- Fixing in JAVA-24011 -->
         <module>spring-boot-jsp</module>
         <module>spring-boot-keycloak</module>
         <module>spring-boot-keycloak-2</module>
@@ -97,6 +97,7 @@
         <module>spring-boot-properties-3</module>
         <module>spring-boot-properties-4</module>
         <module>spring-boot-properties-migrator-demo</module>
+        <module>spring-boot-documentation</module>
     </modules>
 
     <dependencyManagement>

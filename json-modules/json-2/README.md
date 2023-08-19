@@ -11,5 +11,7 @@ This module contains articles about JSON.
 - [A Guide to FastJson](https://www.baeldung.com/fastjson)
 - [Check Whether a String Is Valid JSON in Java](https://www.baeldung.com/java-validate-json-string)
 - [Getting a Value in JSONObject](https://www.baeldung.com/java-jsonobject-get-value)
+- [Pretty-Print a JSON in Java](https://www.baeldung.com/java-json-pretty-print)
+- [Remove Whitespaces From a JSON in Java](https://www.baeldung.com/java-json-minify-remove-whitespaces)
 - More Articles: [[<-- prev]](/json-modules/json)
 

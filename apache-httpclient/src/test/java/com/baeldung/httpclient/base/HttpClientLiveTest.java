@@ -43,7 +43,7 @@ public class HttpClientLiveTest {
 
     @Test(expected = ConnectTimeoutException.class)
     public final void givenLowTimeout_whenExecutingRequestWithTimeout_thenException() throws IOException {
-        final RequestConfig requestConfig = RequestConfig.custom().setConnectionRequestTimeout(50).setConnectTimeout(50).setSocketTimeout(20).build();
+        final RequestConfig requestConfig = RequestConfig.custom().setConnectionRequestTimeout(5).setConnectTimeout(5).setSocketTimeout(2).build();
         final HttpGet request = new HttpGet(SAMPLE_URL);
         request.setConfig(requestConfig);
         response = instance.execute(request);

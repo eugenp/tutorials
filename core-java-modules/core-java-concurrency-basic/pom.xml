@@ -25,6 +25,11 @@
             <version>${avaitility.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>io.reactivex.rxjava3</groupId>
+            <artifactId>rxjava</artifactId>
+            <version>3.1.6</version>
+        </dependency>
     </dependencies>
 
     <build>

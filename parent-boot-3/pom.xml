@@ -230,7 +230,7 @@
         <maven-resources-plugin.version>3.3.0</maven-resources-plugin.version>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
 
-        <spring-boot.version>3.0.0</spring-boot.version>
+        <spring-boot.version>3.1.2</spring-boot.version>
         <junit-jupiter.version>5.8.2</junit-jupiter.version>
         <native-build-tools-plugin.version>0.9.17</native-build-tools-plugin.version>
         <java.version>17</java.version>
