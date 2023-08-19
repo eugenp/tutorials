@@ -789,7 +789,7 @@
                 <module>kubernetes-modules</module>
                 <module>libraries-concurrency</module>
                 <module>jhipster-6</module>
-                <!--<module>libraries-testing</module>--> <!-- Fixing in JAVA-24012 -->
+                <module>libraries-testing</module>
                 <module>maven-modules</module>
                 <module>optaplanner</module>
                 <module>persistence-modules</module>
@@ -1060,7 +1060,7 @@
                 <module>kubernetes-modules</module>
                 <module>libraries-concurrency</module>
                 <module>jhipster-6</module>
-                <!--<module>libraries-testing</module>--> <!-- Fixing in JAVA-24012 -->
+                <module>libraries-testing</module>
                 <module>maven-modules</module>
                 <module>optaplanner</module>
                 <module>persistence-modules</module>
