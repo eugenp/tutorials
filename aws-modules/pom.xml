@@ -20,6 +20,7 @@
         <module>aws-reactive</module>
         <module>aws-s3</module>
         <module>aws-s3-v2</module>
+        <module>aws-s3-update-object</module>
     </modules>
 
     <properties>
