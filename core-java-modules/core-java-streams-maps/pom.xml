@@ -57,8 +57,6 @@
     </build>
 
     <properties>
-        <!-- testing -->
-        <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
