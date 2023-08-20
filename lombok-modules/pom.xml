@@ -16,7 +16,7 @@
     </parent>
 
     <modules>
-        <!--<module>lombok</module>--> <!-- Fixing in JAVA-24006 -->
+        <module>lombok</module>
         <module>lombok-2</module>
         <!--        <module>lombok-custom</module>--> <!-- this module uses legacy jdk-8 features (tools.jar), so can't upgrade to jdk9 or above-->
     </modules>

@@ -21,7 +21,7 @@ import java.util.List;
 
 @Testcontainers
 @SpringBootTest
-class OrderServiceIntegrationTest {
+class OrderServiceLiveTest {
 
     @Container
     static MySQLContainer<?> mySQLContainer1 = new MySQLContainer<>("mysql:8.0.23")
