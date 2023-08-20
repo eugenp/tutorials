@@ -119,7 +119,6 @@
         <docx4j.version>3.3.5</docx4j.version>
         <angus.mail.version>2.0.1</angus.mail.version>
         <angus.activation.version>2.0.0</angus.activation.version>
-        <logback.version>1.4.8</logback.version>
         <slf4j.version>2.0.4</slf4j.version>
         <lombok.version>1.18.22</lombok.version>
     </properties>
