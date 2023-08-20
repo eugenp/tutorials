@@ -3,9 +3,10 @@ package com.baeldung.subclassinnerclass;
 public class EmailNotifier extends Notifier {
     @Override
     void notify(Message e) {
-        // connect to the email connector and send email
+        // connect to the email connector
         EmailConnector emailConnector = new EmailConnector();
-        emailConnector.publish(e);
+        emailConnector.connect();
+        // send email
     }
 
     // Inner class for email connection
@@ -14,7 +15,7 @@ public class EmailNotifier extends Notifier {
         private int emailPort;
         // Getter Setters
 
-        private void publish(Message e) {
+        private void connect() {
             // connect to the smtp server
         }
     }
