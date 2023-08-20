@@ -9,7 +9,7 @@ import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class JSONComparisonTest {
+public class JSONComparisonUnitTest {
 
     @Test
     void givenTwoJsonFiles_whenCompared_thenTheyAreDifferent() throws IOException {
