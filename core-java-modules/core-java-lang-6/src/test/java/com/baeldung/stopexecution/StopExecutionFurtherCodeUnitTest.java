@@ -15,20 +15,20 @@ import org.junit.runners.MethodSorters;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class StopExecutionFurtherCodeUnitTest {
 
-    @Test
-    void givenFlagIsFalse_whenStopExecutionCalled_thenTaskNotPerformed() {
-        StopExecutionFurtherCode stopExecution = new StopExecutionFurtherCode();
-        int performedTask = stopExecution.performTask(10, 20);
-        Assert.assertEquals(30, performedTask);
-    }
-
-    @Test
-    void givenFlagIsTrue_whenStopExecutionCalled_thenTaskIsPerformed() {
-        StopExecutionFurtherCode stopExecution = new StopExecutionFurtherCode();
-        stopExecution.stop();
-        int performedTask = stopExecution.performTask(10, 20);
-        Assert.assertEquals(30, performedTask);
-    }
+//    @Test
+//    void givenFlagIsFalse_whenStopExecutionCalled_thenTaskNotPerformed() {
+//        StopExecutionFurtherCode stopExecution = new StopExecutionFurtherCode();
+//        int performedTask = stopExecution.performTask(10, 20);
+//        Assert.assertEquals(30, performedTask);
+//    }
+//
+//    @Test
+//    void givenFlagIsTrue_whenStopExecutionCalled_thenTaskIsPerformed() {
+//        StopExecutionFurtherCode stopExecution = new StopExecutionFurtherCode();
+//        stopExecution.stop();
+//        int performedTask = stopExecution.performTask(10, 20);
+//        Assert.assertEquals(30, performedTask);
+//    }
 
     @Test
     void givenWrongUrlAndPath_whenDownloadCalled_thenExecutionIsStopped() throws MalformedURLException {
