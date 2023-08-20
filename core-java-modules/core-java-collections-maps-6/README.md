@@ -8,3 +8,4 @@
 - [How to Modify a Key in a HashMap?](https://www.baeldung.com/java-hashmap-modify-key)
 - [Converting String or String Array to Map in Java](https://www.baeldung.com/java-convert-string-to-map)
 - [Remove Duplicate Values From HashMap in Java](https://www.baeldung.com/java-hashmap-delete-duplicates)
+- [Sorting Java Map in Descending Order](https://www.baeldung.com/java-sort-map-descending)
