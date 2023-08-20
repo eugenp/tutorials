@@ -1265,7 +1265,7 @@
 
         <!-- logging -->
         <!-- overwriting in the slf4j and logback in the hibernate-jpa, spring-data-eclipselink. When updated to the latest version remove the version from that module-->
-        <org.slf4j.version>2.07</org.slf4j.version>
+        <org.slf4j.version>2.0.7</org.slf4j.version>
         <logback.version>1.4.11</logback.version>
 
         <!-- plugins -->
