@@ -43,6 +43,7 @@
 
     <properties>
         <vavr.version>0.10.3</vavr.version>
+        <java.version>11</java.version>
+        <modelmapper.version>3.1.1</modelmapper.version>
     </properties>
-
 </project>
