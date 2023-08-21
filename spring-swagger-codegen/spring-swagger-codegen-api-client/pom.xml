@@ -192,7 +192,6 @@
         <swagger-annotations-version>1.5.15</swagger-annotations-version>
         <spring-web-version>4.3.9.RELEASE</spring-web-version>
         <jodatime-version>2.9.9</jodatime-version>
-        <maven-jar-plugin.version>2.2</maven-jar-plugin.version>
         <maven-gpg-plugin.version>1.5</maven-gpg-plugin.version>
         <maven-source-plugin.version>2.2.1</maven-source-plugin.version>
         <maven-javadoc-plugin.version>2.10.4</maven-javadoc-plugin.version>

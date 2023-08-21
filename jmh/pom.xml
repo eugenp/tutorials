@@ -83,7 +83,6 @@
     </build>
 
     <properties>
-        <maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
         <jol-core.version>0.17</jol-core.version>
         <maven-assembly-plugin.version>3.5.0</maven-assembly-plugin.version>
     </properties>

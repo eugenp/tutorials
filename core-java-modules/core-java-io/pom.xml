@@ -136,7 +136,6 @@
         <!-- Mime Type Libraries -->
         <tika.version>1.18</tika.version>
         <jmime-magic.version>0.1.5</jmime-magic.version>
-        <maven-jar-plugin.version>3.1.0</maven-jar-plugin.version>
         <fscontext.version>4.4.2</fscontext.version>
     </properties>
 
