@@ -58,7 +58,7 @@
         <module>core-java-string-operations-3</module>
         <module>core-java-string-operations-4</module>
         <module>core-java-string-operations-5</module>
-        <!--<module>core-java-strings</module> Failing test cases-->
+        <module>core-java-strings</module> <!--Failing test cases-->
         <module>core-java-time-measurements</module>
         <module>core-java-annotations</module>
         <module>core-java-arrays-sorting</module>
