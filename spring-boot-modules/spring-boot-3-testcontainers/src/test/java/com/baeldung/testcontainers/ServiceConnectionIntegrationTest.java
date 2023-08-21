@@ -48,8 +48,8 @@ class ServiceConnectionIntegrationTest {
         ));
 
         when().get("/characters?race=hobbit")
-            .then().statusCode(200)
-            .and().body("name", hasItems("Frodo", "Samwise"));
+          .then().statusCode(200)
+          .and().body("name", hasItems("Frodo", "Samwise"));
     }
 
 }

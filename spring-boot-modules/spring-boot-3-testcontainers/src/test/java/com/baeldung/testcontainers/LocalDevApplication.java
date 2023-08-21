@@ -8,12 +8,12 @@ import org.springframework.context.annotation.Bean;
 import org.testcontainers.containers.MongoDBContainer;
 import org.testcontainers.utility.DockerImageName;
 
-public class LocalDevApplication {
+class LocalDevApplication {
 
     public static void main(String[] args) {
         SpringApplication.from(Application::main)
-            .with(LocalDevTestcontainersConfig.class)
-            .run(args);
+          .with(LocalDevTestcontainersConfig.class)
+          .run(args);
     }
 
     @TestConfiguration(proxyBeanMethods = false)
