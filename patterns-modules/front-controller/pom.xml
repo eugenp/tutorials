@@ -42,9 +42,7 @@
     </build>
 
     <properties>
-        <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
         <jetty-maven-plugin.version>11.0.13</jetty-maven-plugin.version>
-
     </properties>
 
 </project>

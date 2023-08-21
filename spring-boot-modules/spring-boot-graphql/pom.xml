@@ -51,7 +51,6 @@
         <jsonassert.version>1.5.1</jsonassert.version>
         <jakarta.annotation.version>1.3.5</jakarta.annotation.version>
         <os-maven-plugin.version>1.6.2</os-maven-plugin.version>
-        <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
     </properties>
 
     <dependencies>

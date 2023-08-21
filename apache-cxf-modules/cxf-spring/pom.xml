@@ -117,7 +117,6 @@
     <properties>
         <spring.version>5.3.25</spring.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
-        <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
     </properties>
 
 </project>

@@ -163,7 +163,6 @@
         <start-class>com.baeldung.SpringBootRestApplication</start-class>
         <xstream.version>1.4.11.1</xstream.version>
         <modelmapper.version>3.1.0</modelmapper.version>
-        <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
         <jaxb-runtime.version>2.3.7</jaxb-runtime.version>
     </properties>
 </project>
