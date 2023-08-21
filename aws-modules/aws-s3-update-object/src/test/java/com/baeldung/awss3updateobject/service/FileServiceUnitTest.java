@@ -41,6 +41,7 @@ public class FileServiceUnitTest {
     @Test
     public void givenValidFile_whenUploaded_thenKeyMatchesDocumentPath() throws Exception {
         when(multipartFile.getName()).thenReturn("testFile");
+        when(multipartFile.getOriginalFilename()).thenReturn("testFile");
         when(multipartFile.getContentType()).thenReturn("application/pdf");
         when(multipartFile.getSize()).thenReturn(1024L);
         when(multipartFile.getInputStream()).thenReturn(mock(InputStream.class));
@@ -57,6 +58,7 @@ public class FileServiceUnitTest {
     @Test
     public void givenValidFile_whenUploadFailsDueToNoBucket_thenExceptionIsThrown() throws Exception {
         when(multipartFile.getName()).thenReturn("testFile");
+        when(multipartFile.getOriginalFilename()).thenReturn("testFile");
         when(multipartFile.getContentType()).thenReturn("application/pdf");
         when(multipartFile.getSize()).thenReturn(1024L);
         when(multipartFile.getInputStream()).thenReturn(mock(InputStream.class));
