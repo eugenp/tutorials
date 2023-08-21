@@ -35,4 +35,12 @@ class MathServiceIntegrationTest {
         assertThat(counter.get()).isEqualTo(2);
     }
 
+    @Test
+    void givenCacheableMethod_whenInvokingByExternalCall_thenCacheIsTriggered() {
+        AtomicInteger counter = mathService.resetCounter();
+
+        assertThat(mathService.sumOfSquareOf3()).isEqualTo(18);
+        assertThat(counter.get()).isEqualTo(1);
+    }
+
 }
