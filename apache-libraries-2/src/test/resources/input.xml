@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <person gender="male">
+        <name>John Doe</name>
+        <age>30</age>
+    </person>
+    <person gender="female">
+        <name>Jane Smith</name>
+        <age>25</age>
+    </person>
+</root>
