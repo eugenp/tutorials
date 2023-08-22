@@ -9,7 +9,6 @@ public class Professor {
         this.firstName = firstName;
         this.lastName = lastName;
         this.course = course;
-
     }
 
     public String getFirstName() {

@@ -6,15 +6,11 @@ public class Course {
     private String department;
     private String campus;
 
-
-
-
     public Course(String title, int hours, String department, String campus) {
         this.title = title;
         this.hours = hours;
         this.department = department;
         this.campus = campus;
-
     }
 
     public String getTitle() {
