@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            # Pattern of log message for console appender
+            <Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="org.springframework.boot.test.context" level="WARN"/>
+
+    <logger name="org.springframework.boot.test.autoconfigure.web.servlet" level="WARN"/>
+
+    <root level="INFO">
+        <appender-ref ref="stdout" />
+    </root>
+</configuration>

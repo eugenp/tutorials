@@ -70,6 +70,16 @@
             <version>${assertj.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>${mybatis.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring-jdbc.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -80,6 +90,8 @@
         <json.version>20220320</json.version>
         <microstream.storage.version>07.00.00-MS-GA</microstream.storage.version>
         <h2.version>2.1.214</h2.version>
+        <spring-jdbc.version>5.3.29</spring-jdbc.version>
+        <mybatis.version>3.5.7</mybatis.version>
     </properties>
 
 </project>
