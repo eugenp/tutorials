@@ -1,104 +1,69 @@
 package com.baeldung.s3;
 
 import java.io.File;
-import java.io.IOException;
+import java.util.List;
 
-import org.apache.commons.io.FileUtils;
-
-import com.amazonaws.auth.AWSCredentials;
-import com.amazonaws.auth.AWSStaticCredentialsProvider;
-import com.amazonaws.auth.BasicAWSCredentials;
-import com.amazonaws.regions.Regions;
-import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.AmazonS3ClientBuilder;
-import com.amazonaws.services.s3.model.Bucket;
-import com.amazonaws.services.s3.model.DeleteObjectsRequest;
-import com.amazonaws.services.s3.model.ObjectListing;
-import com.amazonaws.services.s3.model.S3Object;
-import com.amazonaws.services.s3.model.S3ObjectInputStream;
-import com.amazonaws.services.s3.model.S3ObjectSummary;
+import software.amazon.awssdk.regions.Region;
 
 public class S3Application {
 
-    private static final AWSCredentials credentials;
-    private static String bucketName;  
+    private static String AWS_BUCKET = "baeldung-tutorial-s3";
+    public static Region AWS_REGION = Region.EU_CENTRAL_1;
 
-    static {
-        //put your accesskey and secretkey here
-        credentials = new BasicAWSCredentials(
-          "<AWS accesskey>", 
-          "<AWS secretkey>"
-        );
-    }
-    
-    public static void main(String[] args) throws IOException {
-        //set-up the client
-        AmazonS3 s3client = AmazonS3ClientBuilder
-          .standard()
-          .withCredentials(new AWSStaticCredentialsProvider(credentials))
-          .withRegion(Regions.US_EAST_2)
-          .build();
-        
-        AWSS3Service awsService = new AWSS3Service(s3client);
-
-        bucketName = "baeldung-bucket";
+    public static void main(String[] args) {
+        S3Service s3Service = new S3Service(AWS_REGION);
 
         //creating a bucket
-        if(awsService.doesBucketExist(bucketName)) {
+        s3Service.createBucket(AWS_BUCKET);
+
+        //check if a bucket exists
+        if(s3Service.doesBucketExist(AWS_BUCKET)) {
             System.out.println("Bucket name is not available."
-              + " Try again with a different Bucket name.");
+                + " Try again with a different Bucket name.");
             return;
         }
-        awsService.createBucket(bucketName);
-        
-        //list all the buckets
-        for(Bucket s : awsService.listBuckets() ) {
-            System.out.println(s.getName());
-        }
-        
-        //deleting bucket
-        awsService.deleteBucket("baeldung-bucket-test2");
-        
-        //uploading object
-        awsService.putObject(
-          bucketName, 
-          "Document/hello.txt",
-          new File("/Users/user/Document/hello.txt")
-        );
 
-        //uploading object and getting url
-        awsService.getObjectURL(bucketName, "Document/hello.txt", new File("/Users/user/Document/hello.txt"));
+
+        s3Service.putObjects(AWS_BUCKET, FileGenerator.generateFiles(1000, 1));
+
+        //list all the buckets
+        s3Service.listBuckets();
+        s3Service.listObjectsInBucket(AWS_BUCKET);
+        s3Service.listAllObjectsInBucket(AWS_BUCKET);
+        s3Service.listAllObjectsInBucketPaginated(AWS_BUCKET, 500);
+        s3Service.listAllObjectsInBucketPaginatedWithPrefix(AWS_BUCKET, 500, "backup/");
+
+
+
+        //deleting bucket
+        s3Service.deleteBucket("baeldung-bucket-test2");
+
+        //uploading object
+        s3Service.putObject(
+            AWS_BUCKET,
+            "Document/hello.txt",
+            new File("/Users/user/Document/hello.txt")
+        );
 
         //listing objects
-        ObjectListing objectListing = awsService.listObjects(bucketName);
-        for(S3ObjectSummary os : objectListing.getObjectSummaries()) {
-            System.out.println(os.getKey());
-        }
+        s3Service.listObjects(AWS_BUCKET);
 
         //downloading an object
-        S3Object s3object = awsService.getObject(bucketName, "Document/hello.txt");
-        S3ObjectInputStream inputStream = s3object.getObjectContent();
-        FileUtils.copyInputStreamToFile(inputStream, new File("/Users/user/Desktop/hello.txt"));
-        
+        s3Service.getObject(AWS_BUCKET, "Document/hello.txt");
+
         //copying an object
-        awsService.copyObject(
-          "baeldung-bucket", 
-          "picture/pic.png", 
-          "baeldung-bucket2", 
-          "Document/picture.png"
+        s3Service.copyObject(
+            "baeldung-bucket",
+            "picture/pic.png",
+            "baeldung-bucket2",
+            "Document/picture.png"
         );
-        
+
         //deleting an object
-        awsService.deleteObject(bucketName, "Document/hello.txt");
+        s3Service.deleteObject(AWS_BUCKET, "Document/hello.txt");
 
         //deleting multiple objects
-        String objkeyArr[] = {
-          "Document/hello2.txt", 
-          "Document/picture.png"
-        };
-        
-        DeleteObjectsRequest delObjReq = new DeleteObjectsRequest("baeldung-bucket")
-          .withKeys(objkeyArr);
-        awsService.deleteObjects(delObjReq);
+        List<String> objKeyList = List.of("Document/hello2.txt", "Document/picture.png");
+        s3Service.deleteObjects(AWS_BUCKET, objKeyList);
     }
 }

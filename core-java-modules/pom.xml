@@ -75,7 +75,7 @@
         <module>core-java-function</module>
         <module>core-java-functional</module>
         <module>core-java-hex</module>
-        <!--<module>core-java-io</module> Fixing in JAVA-23202-->
+        <module>core-java-io</module>
         <module>core-java-io-2</module>
         <module>core-java-io-3</module>
         <module>core-java-io-4</module>
@@ -143,7 +143,6 @@
         <module>core-java-regex</module>
         <module>core-java-regex-2</module>
         <module>core-java-uuid</module>
-        <module>pre-jpms</module>
         <module>core-java-collections-maps-6</module>
         <module>core-java-records</module>
     </modules>
