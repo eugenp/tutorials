@@ -14,3 +14,4 @@ This module contains articles about core features in the Java language
 - [Convert Between int and char in Java](https://www.baeldung.com/java-convert-int-char)
 - [Converting a Number from One Base to Another in Java](https://www.baeldung.com/java-converting-a-number-from-one-base-to-another)
 - [Check if Command-Line Arguments Are Null in Java](https://www.baeldung.com/java-check-command-line-args)
+- [Creating a Deep vs Shallow Copy of an Object in Java](https://www.baeldung.com/deep-vs-shallow-copy-in-java)

@@ -13,6 +13,15 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
     <build>
         <finalName>core-java-lang-5</finalName>
         <resources>
@@ -24,6 +33,7 @@
     </build>
 
     <properties>
+        <assertj.version>3.24.2</assertj.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <reflections.version>0.10.2</reflections.version>
     </properties>
