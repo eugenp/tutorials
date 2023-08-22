@@ -361,7 +361,7 @@
 
                 <module>lombok-modules/lombok-custom</module>
 
-                <module>muleesb</module>
+<!--                <module>muleesb</module>-->
                 <module>web-modules/java-lite</module>
                 <module>web-modules/restx</module>
                 <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't support yet the jakarta API-->
