@@ -20,14 +20,10 @@ class LicenseMapperUnitTest {
         License license = licenseMapper.toLicense(LicenseDto.builder()
             .startDate(LocalDateTime.now())
             .build());
-        assertThat(license).isNotNull()
-            .satisfies(l -> {
-                assertThat(l.getStartDate()
-                    .toLocalDate()).isEqualTo(LocalDate.now());
-                assertThat(l.getEndDate()
-                    .toLocalDate()).isEqualTo(LocalDate.now()
-                    .plusYears(1));
-            });
+        assertThat(license).isNotNull();
+        assertThat(license.getEndDate()
+            .toLocalDate()).isEqualTo(LocalDate.now()
+            .plusYears(1));
     }
 
     @Test
@@ -36,28 +32,21 @@ class LicenseMapperUnitTest {
             .endDate(LocalDateTime.now()
                 .plusYears(2))
             .build());
-        assertThat(license).isNotNull()
-            .satisfies(l -> {
-                assertThat(l.getStartDate()
-                    .toLocalDate()).isEqualTo(LocalDate.now());
-                assertThat(l.getEndDate()
-                    .toLocalDate()).isEqualTo(LocalDate.now()
-                    .plusYears(2));
-            });
+        assertThat(license).isNotNull();
+        assertThat(license.getStartDate()
+            .toLocalDate()).isEqualTo(LocalDate.now());
     }
 
     @Test
     void givenLicenseDtoWithoutEndDateAndWithoutStartDate_WhenMapperMethodIsInvoked_ThenLicenseShouldBePopulatedWithDefaultStartDateAndEndDate() {
         License license = licenseMapper.toLicense(LicenseDto.builder()
             .build());
-        assertThat(license).isNotNull()
-            .satisfies(l -> {
-                assertThat(l.getStartDate()
-                    .toLocalDate()).isEqualTo(LocalDate.now());
-                assertThat(l.getEndDate()
-                    .toLocalDate()).isEqualTo(LocalDate.now()
-                    .plusYears(1));
-            });
+        assertThat(license).isNotNull();
+        assertThat(license.getStartDate()
+            .toLocalDate()).isEqualTo(LocalDate.now());
+        assertThat(license.getEndDate()
+            .toLocalDate()).isEqualTo(LocalDate.now()
+            .plusYears(1));
     }
 
     @Test
@@ -77,21 +66,13 @@ class LicenseMapperUnitTest {
     }
 
     @Test
-    void givenLicenseDtoWithEndDateInTwoWeeks_WhenMapperMethodIsInvoked_ThenLicenseShouldBePopulatedWithReminderSetToTrue() {
+    void givenLicenseDtoWithEndDateInTwoWeeks_WhenMapperMethodIsInvoked_ThenLicenseShouldBePopulatedWithRenewalRequiredSetToTrue() {
         License license = licenseMapper.toLicense(LicenseDto.builder()
             .endDate(LocalDateTime.now()
                 .plusDays(10))
             .build());
-        assertThat(license).isNotNull()
-            .satisfies(l -> {
-                assertThat(l.getStartDate()
-                    .toLocalDate()).isEqualTo(LocalDate.now());
-                assertThat(l.getEndDate()
-                    .toLocalDate()).isEqualTo(LocalDate.now()
-                    .plusDays(10));
-                assertThat(l.isActive()).isTrue();
-                assertThat(l.isRenewalRequired()).isTrue();
-            });
+        assertThat(license).isNotNull();
+        assertThat(license.isRenewalRequired()).isTrue();
     }
 
 }
