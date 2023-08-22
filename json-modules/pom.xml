@@ -16,10 +16,11 @@
     <modules>
         <module>json</module>
         <module>json-2</module>
+        <module>json-arrays</module>
         <module>json-path</module>
         <module>gson</module>
         <module>gson-2</module>
-        <module>json-arrays</module>
+
     </modules>
 
     <build>
