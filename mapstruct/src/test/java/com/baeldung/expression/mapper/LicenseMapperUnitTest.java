@@ -38,18 +38,6 @@ class LicenseMapperUnitTest {
     }
 
     @Test
-    void givenLicenseDtoWithoutEndDateAndWithoutStartDate_WhenMapperMethodIsInvoked_ThenLicenseShouldBePopulatedWithDefaultStartDateAndEndDate() {
-        License license = licenseMapper.toLicense(LicenseDto.builder()
-            .build());
-        assertThat(license).isNotNull();
-        assertThat(license.getStartDate()
-            .toLocalDate()).isEqualTo(LocalDate.now());
-        assertThat(license.getEndDate()
-            .toLocalDate()).isEqualTo(LocalDate.now()
-            .plusYears(1));
-    }
-
-    @Test
     void givenLicenseDtoWithoutStartDateAndEndDate_WhenMapperMethodIsInvoked_ThenLicenseShouldBePopulatedWithDefaultDetails() {
         License license = licenseMapper.toLicense(LicenseDto.builder()
             .build());
