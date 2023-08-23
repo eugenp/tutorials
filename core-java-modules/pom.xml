@@ -24,7 +24,6 @@
         <!--<module>core-java-collections-conversions-2</module> -->
         <!--<module>core-java-lang</module> -->
         <!--<module>core-java-lang-math-3</module> -->
-        <!--<module>core-java-nio-2</module> -->
         <!--<module>core-java-security</module> -->
         <!--<module>core-java-streams-2</module> -->
         <!--<module>core-java-sun</module> -->
@@ -112,6 +111,7 @@
         <module>core-java-networking-2</module>
         <module>core-java-networking-4</module>
         <module>core-java-nio</module>
+        <module>core-java-nio-2</module>
         <module>core-java-numbers</module>
         <module>core-java-numbers-2</module>
         <module>core-java-numbers-3</module>
