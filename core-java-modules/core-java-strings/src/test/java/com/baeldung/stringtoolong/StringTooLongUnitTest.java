@@ -19,7 +19,7 @@ public class StringTooLongUnitTest {
     
     @Test
     public void whenStoringInFileTooLongString_thenNoCompilationError() throws IOException {
-        FileInputStream fis = new FileInputStream("src/test/resources/stringtoolong.txt");
+        FileInputStream fis = new FileInputStream("src/main/resources/stephenking.txt");
         String stringTooLong = IOUtils.toString(fis, "UTF-8");
         assertThat(stringTooLong).isNotEmpty();
     }
