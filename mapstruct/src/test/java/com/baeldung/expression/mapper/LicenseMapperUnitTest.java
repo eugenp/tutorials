@@ -41,16 +41,14 @@ class LicenseMapperUnitTest {
     void givenLicenseDtoWithoutStartDateAndEndDate_WhenMapperMethodIsInvoked_ThenLicenseShouldBePopulatedWithDefaultDetails() {
         License license = licenseMapper.toLicense(LicenseDto.builder()
             .build());
-        assertThat(license).isNotNull()
-            .satisfies(l -> {
-                assertThat(l.getStartDate()
-                    .toLocalDate()).isEqualTo(LocalDate.now());
-                assertThat(l.getEndDate()
-                    .toLocalDate()).isEqualTo(LocalDate.now()
-                    .plusYears(1));
-                assertThat(l.isActive()).isTrue();
-                assertThat(l.isRenewalRequired()).isFalse();
-            });
+        assertThat(license).isNotNull();
+        assertThat(license.getStartDate()
+            .toLocalDate()).isEqualTo(LocalDate.now());
+        assertThat(license.getEndDate()
+            .toLocalDate()).isEqualTo(LocalDate.now()
+            .plusYears(1));
+        assertThat(license.isActive()).isTrue();
+        assertThat(license.isRenewalRequired()).isFalse();
     }
 
     @Test
