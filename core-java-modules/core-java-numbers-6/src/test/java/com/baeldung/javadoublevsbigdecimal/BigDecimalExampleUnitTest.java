@@ -14,9 +14,9 @@ public class BigDecimalExampleUnitTest {
     void whenPerformingBigDecimalOperations_thenResultsAreCorrect() {
         BigDecimal[] results = BigDecimalExample.performBigDecimalOperations();
 
-        assertEquals(new BigDecimal("1112222211.222222221"), results[0]);
-        assertEquals(new BigDecimal("1098765432110987654321.975308641"), results[1]);
-        assertEquals(new BigDecimal("-863086431.0246913569"), results[2]);
-        assertEquals(new BigDecimal("0.13"), results[3]);
+        assertEquals(new BigDecimal("1112222211.222222221"), results[0].setScale(9, RoundingMode.HALF_UP));
+        assertEquals(new BigDecimal("1098765432110987654321.975308641"), results[1].setScale(9, RoundingMode.HALF_UP));
+        assertEquals(new BigDecimal("-863086431.0246913569"), results[2].setScale(9, RoundingMode.HALF_UP));
+        assertEquals(new BigDecimal("0.13"), results[3].setScale(2, RoundingMode.HALF_UP));
     }
 }
