@@ -868,7 +868,7 @@
                 <module>libraries-apache-commons-2</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
-                <!--<module>libraries-data-2</module>--> <!-- Fixing in JAVA-24007 -->
+                <module>libraries-data-2</module> <!-- Fixing in JAVA-24007 -->
                 <module>libraries-data-io</module>
                 <module>libraries-files</module>
                 <module>libraries-http</module>
@@ -1140,7 +1140,7 @@
                 <module>libraries-apache-commons-2</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
-                <!--<module>libraries-data-2</module>--> <!-- Fixing in JAVA-24007 -->
+                <module>libraries-data-2</module> <!-- Fixing in JAVA-24007 -->
                 <module>libraries-data-io</module>
                 <module>libraries-files</module>
                 <module>libraries-http</module>
