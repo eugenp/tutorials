@@ -1,6 +1,6 @@
 package com.baeldung.javadoublevsbigdecimal;
 
-import com.baeldung.javadoublevsbigdecimal.DoubleExample
+import com.baeldung.javadoublevsbigdecimal.DoubleExample;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
