@@ -32,51 +32,45 @@ class SignedCertificateUnitTest {
     }
 
     @Test
-    void givenSelfSignedCertificate_whenIsSelfSigned_thenReturnTrue() throws Exception {
+    void whenCertificateIsSelfSigned_thenSubjectIsEqualToIssuer() throws Exception {
         X509Certificate certificate = (X509Certificate) keyStore.getCertificate("selfsigned");
         assertEquals(certificate.getSubjectDN(), certificate.getIssuerDN());
     }
 
     @Test
-    void givenSelfSignedCertificate_whenVerifySignature_thenDoNotThrowException() throws Exception {
+    void whenCertificateIsSelfSigned_thenItCanBeVerifiedWithItsOwnPublicKey() throws Exception {
         X509Certificate certificate = (X509Certificate) keyStore.getCertificate("selfsigned");
         assertDoesNotThrow(() -> certificate.verify(certificate.getPublicKey()));
     }
 
     @Test
-    void givenCASignedCertificate_whenVerifySignature_thenThrowException() throws Exception {
+    void whenCertificateIsCASigned_thenItCantBeVerifiedWithItsOwnPublicKey() throws Exception {
         X509Certificate certificate = (X509Certificate) keyStore.getCertificate("baeldung");
         assertThrows(SignatureException.class, () -> certificate.verify(certificate.getPublicKey()));
     }
 
     @Test
-    void givenCACertificate_whenGetRootCertificate_thenRootNotNull() throws Exception {
+    void whenCertificateIsCASigned_thenRootCanBeFoundInTruststore() throws Exception {
         X509Certificate endEntityCertificate = (X509Certificate) keyStore.getCertificate("baeldung");
         X509Certificate rootCertificate = getRootCertificate(endEntityCertificate, trustStore);
         assertNotNull(rootCertificate);
     }
 
     @Test
-    void givenCACertificate_whenIsCASignedKeyUsage_thenReturnTrue() throws Exception {
+    void whenCertificateIsCA_thenItCanBeUsedToSignOtherCertificates() throws Exception {
         X509Certificate certificate = (X509Certificate) keyStore.getCertificate("cloudflare");
         assertTrue(certificate.getKeyUsage()[5]);
     }
 
     @Test
-    void givenSelfSignedCertificate_whenIsCASignedKeyUsage_thenReturnFalse() throws Exception {
-        X509Certificate certificate = (X509Certificate) keyStore.getCertificate("selfsigned");
-        assertNull(certificate.getKeyUsage());
-    }
-
-    @Test
-    void givenCACertificate_whenGetBasicConstraints_thenReturnTrue() throws Exception {
+    void whenCertificateIsCA_thenBasicConstrainsReturnsZeroOrGreaterThanZero() throws Exception {
         X509Certificate certificate = (X509Certificate) keyStore.getCertificate("cloudflare");
         assertNotEquals(-1, certificate.getBasicConstraints());
     }
 
     @Test
-    void givenSelfSignedCertificate_whenIsCASignedBasicConstraints_thenReturnFalse() throws Exception {
+    void whenCertificateIsSelfSigned_thenItCantBeUsedToSignOtherCertificates() throws Exception {
         X509Certificate certificate = (X509Certificate) keyStore.getCertificate("selfsigned");
-        assertEquals(-1, certificate.getBasicConstraints());
+        assertNull(certificate.getKeyUsage());
     }
 }
