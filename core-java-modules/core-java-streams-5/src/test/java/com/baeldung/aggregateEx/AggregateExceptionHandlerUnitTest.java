@@ -28,7 +28,7 @@ public class AggregateExceptionHandlerUnitTest {
 
     private static Object transform(String str) {
         try {
-            return (Integer.parseInt(str));
+            return Integer.parseInt(str);
         } catch (NumberFormatException e) {
             return new RuntimeException(e);
         }
