@@ -1,5 +1,6 @@
 package com.baeldung.selfinvocation;
 
+import com.baeldung.Application;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -8,7 +9,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest(classes = AopApplication.class)
+@SpringBootTest(classes = Application.class)
 class MathServiceIntegrationTest {
 
     @Resource
