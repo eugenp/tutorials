@@ -15,20 +15,23 @@ import org.junit.runners.MethodSorters;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class StopExecutionFurtherCodeUnitTest {
 
-//    @Test
-//    void givenFlagIsFalse_whenStopExecutionCalled_thenTaskNotPerformed() {
-//        StopExecutionFurtherCode stopExecution = new StopExecutionFurtherCode();
-//        int performedTask = stopExecution.performTask(10, 20);
-//        Assert.assertEquals(30, performedTask);
-//    }
-//
-//    @Test
-//    void givenFlagIsTrue_whenStopExecutionCalled_thenTaskIsPerformed() {
-//        StopExecutionFurtherCode stopExecution = new StopExecutionFurtherCode();
-//        stopExecution.stop();
-//        int performedTask = stopExecution.performTask(10, 20);
-//        Assert.assertEquals(30, performedTask);
-//    }
+
+    // I've commented this test case's because the Program will exit JVM whenever System.exit(statusCode) is used.
+    // So the JUnit test program will exit JVM when System.exit(statusCode) executed and other test cases will be discarded.
+    /*@Test
+    void givenFlagIsFalse_whenStopExecutionCalled_thenTaskNotPerformed() {
+        StopExecutionFurtherCode stopExecution = new StopExecutionFurtherCode();
+        int performedTask = stopExecution.performTask(10, 20);
+        Assert.assertEquals(30, performedTask);
+    }
+
+    @Test
+    void givenFlagIsTrue_whenStopExecutionCalled_thenTaskIsPerformed() {
+        StopExecutionFurtherCode stopExecution = new StopExecutionFurtherCode();
+        stopExecution.stop();
+        int performedTask = stopExecution.performTask(10, 20);
+        Assert.assertEquals(30, performedTask);
+    }*/
 
     @Test
     void givenWrongUrlAndPath_whenDownloadCalled_thenExecutionIsStopped() throws MalformedURLException {
