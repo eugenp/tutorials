@@ -27,6 +27,7 @@
         <module>junit-4</module>
         <module>junit-5-advanced</module>
         <module>junit-5-basics</module>
+        <module>junit-5-basics-2</module>
         <module>junit-5</module>
         <module>junit5-annotations</module>
         <module>junit5-migration</module>
