@@ -9,4 +9,5 @@ This module contains articles about basic Java concurrency.
 - [Is CompletableFuture Non-blocking?](https://www.baeldung.com/java-completablefuture-non-blocking)
 - [Returning a Value After Finishing Thread’s Job in Java](https://www.baeldung.com/java-return-value-after-thread-finish)
 - [CompletableFuture and ThreadPool in Java](https://www.baeldung.com/java-completablefuture-threadpool)
+- [CompletableFuture allOf().join() vs. CompletableFuture.join()](https://www.baeldung.com/java-completablefuture-allof-join)
 - [[<-- Prev]](../core-java-concurrency-basic-2)

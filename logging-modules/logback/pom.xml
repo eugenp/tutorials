@@ -25,11 +25,6 @@
             <version>${logback.version}</version>
         </dependency>
         <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-core</artifactId>
-            <version>${logback.version}</version>
-        </dependency>
-        <dependency>
             <groupId>ch.qos.logback.contrib</groupId>
             <artifactId>logback-json-classic</artifactId>
             <version>${logback.contrib.version}</version>
@@ -75,6 +70,12 @@
             <version>${angus.activation.version}</version>
             <scope>runtime</scope>
         </dependency>
+        <dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>provided</scope>
+            <version>${lombok.version}</version>
+		</dependency>
     </dependencies>
 
     <profiles>
@@ -118,8 +119,9 @@
         <docx4j.version>3.3.5</docx4j.version>
         <angus.mail.version>2.0.1</angus.mail.version>
         <angus.activation.version>2.0.0</angus.activation.version>
-        <logback.version>1.3.5</logback.version>
+        <logback.version>1.4.8</logback.version>
         <slf4j.version>2.0.4</slf4j.version>
+        <lombok.version>1.18.22</lombok.version>
     </properties>
 
 </project>

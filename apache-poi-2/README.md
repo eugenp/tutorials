@@ -13,4 +13,5 @@ This module contains articles about Apache POI.
 - [Setting Formulas in Excel with Apache POI](https://www.baeldung.com/java-apache-poi-set-formulas)
 - [Set the Date Format Using Apache POI](https://www.baeldung.com/java-apache-poi-date-format)
 - [Replacing Variables in a Document Template with Java](https://www.baeldung.com/java-replace-pattern-word-document-doc-docx)
+- [Lock Header Rows With Apache POI](https://www.baeldung.com/java-apache-poi-lock-header-rows)
 - More articles: [[<-- prev]](../apache-poi)

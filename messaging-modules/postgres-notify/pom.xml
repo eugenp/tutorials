@@ -42,36 +42,37 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-
+        
     </dependencies>
 
-    <properties>
-        <java.version>1.8</java.version>
-    </properties>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
-    <profiles>
-        <profile>
-            <id>instance1</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.springframework.boot</groupId>
-                        <artifactId>spring-boot-maven-plugin</artifactId>
-                        <configuration>
-                            <jvmArguments>-Dserver.port=8081</jvmArguments>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-
-    </profiles>
+	<properties>
+		<java.version>1.8</java.version>
+	</properties>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+	
+	<profiles>
+		<profile>
+			<id>instance1</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-maven-plugin</artifactId>
+						<configuration>
+							<jvmArguments>-Dserver.port=8081</jvmArguments>						
+						</configuration>						
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		
+	</profiles>
 </project>

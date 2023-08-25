@@ -51,6 +51,8 @@
         <module>spring-security-opa</module>
         <module>spring-security-pkce</module>
         <module>spring-security-azuread</module>
+        <module>spring-security-oauth2-testing</module>
+        <module>spring-security-saml2</module>
     </modules>
 
 </project>
