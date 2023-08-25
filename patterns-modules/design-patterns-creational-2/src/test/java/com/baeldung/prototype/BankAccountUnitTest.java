@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 
 import com.baeldung.prototype.Account.AccountType;
 
-class BankAccountTest {
+class BankAccountUnitTest {
 
     private List<AccountType> accountTypes;
     
