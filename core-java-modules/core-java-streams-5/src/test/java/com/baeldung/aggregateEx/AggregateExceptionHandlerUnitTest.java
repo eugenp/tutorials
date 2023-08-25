@@ -2,9 +2,6 @@ package com.baeldung.aggregateEx;
 
 import com.baeldung.aggregateEx.entity.ExceptionAggregator;
 import com.baeldung.aggregateEx.entity.Result;
-
-import static org.junit.Assert.*;
-
 import io.vavr.control.Either;
 import io.vavr.control.Try;
 import org.junit.Test;
@@ -14,6 +11,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
+
+import static org.junit.Assert.*;
 
 public class AggregateExceptionHandlerUnitTest {
 
@@ -28,14 +27,14 @@ public class AggregateExceptionHandlerUnitTest {
 
     private static Object transform(String str) {
         try {
-            return (Integer.parseInt(str));
+            return Integer.parseInt(str);
         } catch (NumberFormatException e) {
             return new RuntimeException(e);
         }
     }
 
     @Test
-    public void givenExtractedMethod_whenFoundNonInt_thenAggregateException() {
+    public void givenExtractedMethod_whenFoundNonInt_thenSuppressExIntoRuntimeEx() {
         String[] strings = {"1", "2", "3", "a", "b", "c"};
         RuntimeException runEx = Arrays.stream(strings)
                 .map(AggregateExceptionHandlerUnitTest::process)
@@ -49,7 +48,7 @@ public class AggregateExceptionHandlerUnitTest {
     }
 
     @Test
-    public void givenTryCatchInPipeline_whenFoundNonInts_thenAggregateException() {
+    public void givenTryCatchInPipeline_whenFoundNonInts_thenSuppressExIntoRuntimeEx() {
         String[] strings = {"1", "2", "3", "a", "b", "c"};
         RuntimeException runEx = Arrays.stream(strings)
                 .map(str -> {
@@ -70,40 +69,44 @@ public class AggregateExceptionHandlerUnitTest {
     }
 
     @Test
-    public void whenFoundNonInts_thenAggregateExceptionAndReturnOutput() {
+    public void givenExtractedMethodReturnOutputAndEx_whenFoundNonInts_thenSuppressExIntoRuntimeEx() {
         String[] strings = {"1", "2", "3", "a", "b", "c"};
         Map resultMap = Arrays.stream(strings)
                 .map(AggregateExceptionHandlerUnitTest::transform)
                 .collect(Collectors.partitioningBy(o -> o instanceof RuntimeException, Collectors.toList()));
+
         RuntimeException ex = null;
-        if (resultMap.containsKey(Boolean.TRUE)) {
-            List<RuntimeException> exs = (List<RuntimeException>) resultMap.get(Boolean.TRUE);
-            ex = exs.stream()
-                    .reduce(
-                            new RuntimeException("Errors Occurred"), (o1, o2) -> {
-                                o1.addSuppressed(o2);
-                                return o1;
-                            });
-        }
+
+        assertTrue(resultMap.containsKey(Boolean.TRUE));
+
+        List<RuntimeException> exs = (List<RuntimeException>) resultMap.get(Boolean.TRUE);
+        ex = exs.stream()
+                .reduce(
+                        new RuntimeException("Errors Occurred"), (o1, o2) -> {
+                            o1.addSuppressed(o2);
+                            return o1;
+                        });
+
         assertEquals("Errors Occurred", ex.getMessage());
         assertEquals(3, ex.getSuppressed().length);
     }
 
     @Test
-    public void givenWrapFunction_whenFoundNonInts_thenAggregateException() throws ExceptionAggregator {
+    public void givenWrapFunction_whenFoundNonInts_thenUseExAggregator() throws ExceptionAggregator {
         String[] strings = {"1", "2", "3", "a", "b", "c"};
         Map<Boolean, List<Result<Integer>>> resultmap = Arrays.stream(strings)
                 .map(CustomMapper.mapper(Integer::parseInt))
                 .collect(Collectors.partitioningBy(r -> r.getException().isEmpty(), Collectors.toList()));
 
-        if (resultmap.containsKey(Boolean.FALSE)) {
-            List<Result<Integer>> resultList = resultmap.get(Boolean.FALSE);
-            List<Exception> exceptionList = resultList.stream()
-                    .map(opex -> opex.getException().get())
-                    .collect(Collectors.toList());
+        assertTrue(resultmap.containsKey(Boolean.TRUE));
 
-            assertThrows(ExceptionAggregator.class, () -> handleExceptions(exceptionList));
-        }
+        List<Result<Integer>> resultList = resultmap.get(Boolean.FALSE);
+        List<Exception> exceptionList = resultList.stream()
+                .map(opex -> opex.getException().get())
+                .collect(Collectors.toList());
+
+        assertThrows(ExceptionAggregator.class, () -> handleExceptions(exceptionList));
+
     }
 
     private void handleExceptions(List<Exception> exceptions) throws ExceptionAggregator {
@@ -113,7 +116,7 @@ public class AggregateExceptionHandlerUnitTest {
     }
 
     @Test
-    public void givenExCollector_whenFoundNonInts_thenAggregateException() throws ExceptionAggregator {
+    public void givenExCollector_whenFoundNonInts_thenAggregateExInCustomCollector() throws ExceptionAggregator {
         String[] strings = {"1", "2", "3", "a", "b", "c"};
         ExceptionCollector exCollector = Arrays.stream(strings)
                 .collect(ExceptionCollector.of(Integer::parseInt));
@@ -123,21 +126,21 @@ public class AggregateExceptionHandlerUnitTest {
     }
 
     private static Either<RuntimeException, Integer> processAndReturnEither(String str) {
-        Either<RuntimeException, Integer> either = null;
         try {
-            either = Either.right(Integer.parseInt(str));
+            return Either.right(Integer.parseInt(str));
         } catch (NumberFormatException e) {
-            either = Either.left(new RuntimeException(e));
+            return Either.left(new RuntimeException(e));
         }
-        return either;
     }
 
     @Test
-    public void givenVavrEither_whenFoundNonInts_thenAggregateException() {
+    public void givenVavrEither_whenFoundNonInts_thenSuppressExIntoRuntimeEx() {
         List<String> strings = List.of("1", "2", "3", "a", "b", "c");
         Map<Boolean, List<Either<RuntimeException, Integer>>> map = strings.stream()
                 .map(str -> processAndReturnEither(str))
-                .collect(Collectors.partitioningBy((t) -> t.isLeft(), Collectors.toList()));
+                .collect(Collectors.partitioningBy(t -> t.isLeft(), Collectors.toList()));
+
+        assertTrue(map.containsKey(Boolean.TRUE));
 
         RuntimeException runEx = map.get(Boolean.TRUE)
                 .stream().map(either -> either.getLeft())
@@ -149,11 +152,11 @@ public class AggregateExceptionHandlerUnitTest {
     }
 
     @Test
-    public void givenVavrTry_whenFoundNonInts_thenAggregateException() {
+    public void givenVavrTry_whenFoundNonInts_thenSuppressExIntoRuntimeEx() {
         List<String> strings = List.of("1", "2", "3", "a", "b", "c");
         Map<Boolean, List<Try<Integer>>> map = strings.stream()
                 .map(str -> Try.of(() -> Integer.parseInt(str)))
-                .collect(Collectors.partitioningBy((t) -> t.isFailure(), Collectors.toList()));
+                .collect(Collectors.partitioningBy(t -> t.isFailure(), Collectors.toList()));
         Throwable runEx = map.get(Boolean.TRUE).stream()
                 .map(t -> t.getCause())
                 .reduce(new RuntimeException("Errors Occurred"), (o1, o2) -> {
@@ -164,7 +167,7 @@ public class AggregateExceptionHandlerUnitTest {
     }
 
     @Test
-    public void givenVavrEitherAndTry_whenFoundNonInts_thenAggregateException() {
+    public void givenVavrEitherAndTry_whenFoundNonInts_thenSuppressExIntoRuntimeEx() {
         List<String> strings = List.of("1", "2", "3", "a", "b", "c");
         Map<Boolean, List<Either<Throwable, Integer>>> map = strings.stream()
                 .map(str -> Try.of(() -> Integer.parseInt(str)).toEither())
