@@ -48,14 +48,14 @@ public class CasSecuredApplication {
     public ServiceProperties serviceProperties() {
         logger.info("service properties");
         ServiceProperties serviceProperties = new ServiceProperties();
-        serviceProperties.setService("http://cas-client:8900/login/cas");
+        serviceProperties.setService("http://localhost:8900/login/cas");
         serviceProperties.setSendRenew(false);
         return serviceProperties;
     }
 
     @Bean
     public TicketValidator ticketValidator() {
-        return new Cas30ServiceTicketValidator("https://localhost:8443");
+        return new Cas30ServiceTicketValidator("https://localhost:8443/cas");
     }
 
     @Bean
@@ -66,7 +66,7 @@ public class CasSecuredApplication {
         provider.setServiceProperties(serviceProperties);
         provider.setTicketValidator(ticketValidator);
         provider.setUserDetailsService(
-          s -> new User("test@test.com", "Mellon", true, true, true, true,
+          s -> new User("casuser", "Mellon", true, true, true, true,
           AuthorityUtils.createAuthorityList("ROLE_ADMIN")));
         provider.setKey("CAS_PROVIDER_LOCALHOST_8900");
         return provider;
@@ -80,7 +80,7 @@ public class CasSecuredApplication {
 
     @Bean
     public LogoutFilter logoutFilter() {
-        LogoutFilter logoutFilter = new LogoutFilter("https://localhost:8443/logout", securityContextLogoutHandler());
+        LogoutFilter logoutFilter = new LogoutFilter("https://localhost:8443/cas/logout", securityContextLogoutHandler());
         logoutFilter.setFilterProcessesUrl("/logout/cas");
         return logoutFilter;
     }

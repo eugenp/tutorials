@@ -30,13 +30,13 @@ public class Java8ComparatorUnitTest {
         System.out.println("************** Java 8 Comaparator **************");
         Comparator<Player> byRanking = (Player player1, Player player2) -> Integer.compare(player1.getRanking(), player2.getRanking());
 
-        System.out.println("Before Sorting : " + footballTeam);
         Collections.sort(footballTeam, byRanking);
-        System.out.println("After Sorting : " + footballTeam);
-        assertEquals(footballTeam.get(0)
-            .getName(), "Steven");
-        assertEquals(footballTeam.get(2)
-            .getRanking(), 67);
+        assertEquals(footballTeam.get(0).getName(), "Steven");
+        assertEquals(footballTeam.get(0).getRanking(), 45);
+        assertEquals(footballTeam.get(1).getName(), "John");
+        assertEquals(footballTeam.get(1).getRanking(), 59);
+        assertEquals(footballTeam.get(2).getName(), "Roger");
+        assertEquals(footballTeam.get(2).getRanking(), 67);
     }
 
     @Test
@@ -45,24 +45,24 @@ public class Java8ComparatorUnitTest {
         System.out.println("********* byRanking *********");
         Comparator<Player> byRanking = Comparator.comparing(Player::getRanking);
 
-        System.out.println("Before Sorting : " + footballTeam);
         Collections.sort(footballTeam, byRanking);
-        System.out.println("After Sorting : " + footballTeam);
-        assertEquals(footballTeam.get(0)
-            .getName(), "Steven");
-        assertEquals(footballTeam.get(2)
-            .getRanking(), 67);
-        
+        assertEquals(footballTeam.get(0).getName(), "Steven");
+        assertEquals(footballTeam.get(0).getRanking(), 45);
+        assertEquals(footballTeam.get(1).getName(), "John");
+        assertEquals(footballTeam.get(1).getRanking(), 59);
+        assertEquals(footballTeam.get(2).getName(), "Roger");
+        assertEquals(footballTeam.get(2).getRanking(), 67);
+
         System.out.println("********* byAge *********");
         Comparator<Player> byAge = Comparator.comparing(Player::getAge);
 
-        System.out.println("Before Sorting : " + footballTeam);
         Collections.sort(footballTeam, byAge);
-        System.out.println("After Sorting : " + footballTeam);
-        assertEquals(footballTeam.get(0)
-            .getName(), "Roger");
-        assertEquals(footballTeam.get(2)
-            .getRanking(), 45);
+        assertEquals(footballTeam.get(0).getName(), "Roger");
+        assertEquals(footballTeam.get(0).getAge(), 20);
+        assertEquals(footballTeam.get(1).getName(), "John");
+        assertEquals(footballTeam.get(1).getAge(), 22);
+        assertEquals(footballTeam.get(2).getName(), "Steven");
+        assertEquals(footballTeam.get(2).getAge(), 24);
     }
 
 }

@@ -1,15 +1,93 @@
-apply plugin: "org.springframework.boot"
+apply plugin: "java"
 
-bootRun.enabled = false
-bootRun.onlyIf { return false }
-tasks.remove(tasks['bootRun'])
-
-springBoot {
-    mainClassName = "org.apereo.cas.web.CasWebApplication"
+sourceSets {
+    bootRunSources {
+        resources {
+            srcDirs new File("//etc/cas/templates/"), new File("${project.getProjectDir()}/src/main/resources/")
+        }
+    }
 }
 
-bootWar {
+configurations {
+    bootRunConfig {
+        extendsFrom compileClasspath
+        
+        exclude(group: "org.springframework.boot", module: "spring-boot-starter-logging")
+        exclude(group: "ch.qos.logback", module: "logback-core")
+        exclude(group: "ch.qos.logback", module: "logback-classic")
+    }
+}
+
+dependencies {
+    bootRunConfig "org.apereo.cas:cas-server-core"
+    bootRunConfig "org.apereo.cas:cas-server-core-logging"
+    bootRunConfig "org.apereo.cas:cas-server-core-web"
+    bootRunConfig "org.apereo.cas:cas-server-core-webflow"
+    bootRunConfig "org.apereo.cas:cas-server-core-cookie"
+    bootRunConfig "org.apereo.cas:cas-server-core-logout"
+    bootRunConfig "org.apereo.cas:cas-server-core-authentication"
+    bootRunConfig "org.apereo.cas:cas-server-core-validation"
+    bootRunConfig "org.apereo.cas:cas-server-core-audit"
+    bootRunConfig "org.apereo.cas:cas-server-core-tickets"
+    bootRunConfig "org.apereo.cas:cas-server-core-services"
+    bootRunConfig "org.apereo.cas:cas-server-core-util"
+
+    bootRunConfig "org.apereo.cas:cas-server-support-webconfig"
+    bootRunConfig "org.apereo.cas:cas-server-support-thymeleaf"
+    bootRunConfig "org.apereo.cas:cas-server-support-validation"
+    bootRunConfig "org.apereo.cas:cas-server-support-person-directory"
+    
+    bootRunConfig "org.apereo.cas:cas-server-webapp-resources"
+    bootRunConfig "org.apereo.cas:cas-server-webapp-init"
+    bootRunConfig "org.apereo.cas:cas-server-webapp-tomcat"
+    bootRunConfig "org.apereo.cas:cas-server-webapp-init-tomcat"
+
+    bootRunConfig "org.springframework.cloud:spring-cloud-starter-bootstrap"
+    bootRunConfig "org.springframework.boot:spring-boot-devtools"
+}
+
+bootRun {
+    classpath = configurations.bootRunConfig + sourceSets.main.compileClasspath + sourceSets.main.runtimeClasspath
+    sourceResources sourceSets.bootRunSources
     doFirst {
+        systemProperties = System.properties
+    }
+
+    def list = []
+    list.add("-XX:TieredStopAtLevel=1")
+    list.add("-Xverify:none")
+    list.add("--add-modules")
+    list.add("java.se")
+    list.add("--add-exports")
+    list.add("java.base/jdk.internal.ref=ALL-UNNAMED")
+    list.add("--add-opens")
+    list.add("java.base/java.lang=ALL-UNNAMED")
+    list.add("--add-opens")
+    list.add("java.base/java.nio=ALL-UNNAMED")
+    list.add("--add-opens")
+    list.add("java.base/sun.nio.ch=ALL-UNNAMED")
+    list.add("--add-opens")
+    list.add("java.management/sun.management=ALL-UNNAMED")
+    list.add("--add-opens")
+    list.add("jdk.management/com.sun.management.internal=ALL-UNNAMED")
+    list.add("-Xrunjdwp:transport=dt_socket,address=5000,server=y,suspend=n")
+
+    jvmArgs = list
+
+    def appArgList = []
+    args = appArgList
+}
+
+springBoot {
+    buildInfo()
+    mainClass = "org.apereo.cas.web.CasWebApplication"
+    
+    
+    
+    
+}
+
+    bootWar {
         def executable = project.hasProperty("executable") && Boolean.valueOf(project.getProperty("executable"))
         if (executable) {
             logger.info "Including launch script for executable WAR artifact"
@@ -17,8 +95,44 @@ bootWar {
         } else {
             logger.info "WAR artifact is not marked as an executable"
         }
-        archiveName "${casWebApplicationBinaryName}"
-        baseName "cas"
-        excludeDevtools = true
+    
+        archiveFileName = "cas.war"
+        archiveBaseName = "cas"
+
+        entryCompression = ZipEntryCompression.STORED
+
+        /*
+            attachClasses = true
+            classesClassifier = 'classes'
+            archiveClasses = true
+        */
+
+        overlays {
+            /*
+                https://docs.freefair.io/gradle-plugins/current/reference/#_io_freefair_war_overlay
+                Note: The "excludes" property is only for files in the war dependency.
+                If a jar is excluded from the war, it could be brought back into the final war as a dependency
+                of non-war dependencies. Those should be excluded via normal gradle dependency exclusions.
+            */
+            cas {
+                from "org.apereo.cas:cas-server-webapp${project.appServer}:${project.'cas.version'}@war"
+
+
+
+
+
+                provided = false
+                excludes = ["WEB-INF/lib/servlet-api-2*.jar"]
+
+                /*
+                excludes = ["WEB-INF/lib/somejar-1.0*"]
+                enableCompilation = true
+                includes = ["*.xyz"]
+                targetPath = "sub-path/bar"
+                skip = false
+                */
+            }
+        }
     }
-}
+
+bootBuildInfo.mustRunAfter(compileJava)

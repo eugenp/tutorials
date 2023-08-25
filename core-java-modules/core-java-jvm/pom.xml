@@ -168,6 +168,7 @@
 
     <properties>
         <javaassist.version>3.27.0-GA</javaassist.version>
+        <esapi.version>2.5.2.0</esapi.version>
         <jol-core.version>0.10</jol-core.version>
         <asm.version>9.4</asm.version>
         <bcel.version>6.5.0</bcel.version>

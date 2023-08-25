@@ -18,7 +18,7 @@ public class Email {
     private String address;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "employee_id")
+    @JoinColumn(name = "employee_id", referencedColumnName = "id")
     private OfficialEmployee employee;
 
     public Long getId() {
