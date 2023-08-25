@@ -26,7 +26,7 @@
         <module>jee-7</module>
         <module>jooby</module>
         <module>linkrest</module>
-        <!-- <module>ninja</module> --> <!-- JAVA-22066 -->
+        <module>ninja</module>
         <!-- <module>play-modules</module> --> <!-- Not a maven project -->
         <!-- <module>raml-modules</module> --> <!-- Not a maven project -->
         <module>ratpack</module>
