@@ -16,7 +16,7 @@ public class BigDecimalExampleUnitTest {
 
         assertEquals(new BigDecimal("1112222211.222222221"), results[0].setScale(9, RoundingMode.HALF_UP));
         assertEquals(new BigDecimal("123030014929277547.503095577"), results[1].setScale(9, RoundingMode.HALF_UP));
-        assertEquals(new BigDecimal("--863086431.024691357"), results[2].setScale(9, RoundingMode.HALF_UP));
+        assertEquals(new BigDecimal("-863086431.024691357"), results[2].setScale(9, RoundingMode.HALF_UP));
         assertEquals(new BigDecimal("0.13"), results[3].setScale(2, RoundingMode.HALF_UP));
     }
 }
