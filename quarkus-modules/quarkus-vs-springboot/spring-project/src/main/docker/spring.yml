@@ -11,11 +11,14 @@ services:
     command: [ 'mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci' ]
     healthcheck:
       test: mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
+    volumes:
+      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql
   app:
     image: docker.io/library/spring-project:0.1-SNAPSHOT
-    network_mode: "host"
+    ports:
+      - '8080:8080'
     environment:
-      DB_URL: r2dbc:mysql://localhost:3306/baeldung?useSSL=true&requireSSL=true
+      DB_URL: r2dbc:mysql://db:3306/baeldung?useSSL=true&requireSSL=true
       HOST_HOSTNAME: ${EXTERNAL_IP}
     depends_on:
       db:
