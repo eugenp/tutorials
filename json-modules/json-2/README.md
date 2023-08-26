@@ -13,5 +13,6 @@ This module contains articles about JSON.
 - [Getting a Value in JSONObject](https://www.baeldung.com/java-jsonobject-get-value)
 - [Pretty-Print a JSON in Java](https://www.baeldung.com/java-json-pretty-print)
 - [Remove Whitespaces From a JSON in Java](https://www.baeldung.com/java-json-minify-remove-whitespaces)
+- [Programmatic Generation of JSON Schemas in Java](https://www.baeldung.com/java-json-schema-create-automatically)
 - More Articles: [[<-- prev]](/json-modules/json)
 
