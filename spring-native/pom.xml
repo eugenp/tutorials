@@ -17,17 +17,27 @@
 
     <repositories>
         <repository>
-            <id>spring-release</id>
-            <name>Spring release</name>
-            <url>https://repo.spring.io/release</url>
+            <id>spring-milestone</id>
+            <name>Spring Milestone</name>
+            <url>https://repo.spring.io/milestone</url>
+        </repository>
+        <repository>
+            <id>spring-snapshot</id>
+            <name>Spring Snapshot</name>
+            <url>https://repo.spring.io/snapshot</url>
         </repository>
     </repositories>
 
     <pluginRepositories>
         <pluginRepository>
-            <id>spring-release</id>
-            <name>Spring release</name>
-            <url>https://repo.spring.io/release</url>
+            <id>spring-plugins-snapshot</id>
+            <name>Spring Plugins Snapshot</name>
+            <url>https://repo.spring.io/plugins-snapshot</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>spring-plugins-milestone</id>
+            <name>Spring Plugins Milestone</name>
+            <url>https://repo.spring.io/plugins-milestone</url>
         </pluginRepository>
     </pluginRepositories>
 
