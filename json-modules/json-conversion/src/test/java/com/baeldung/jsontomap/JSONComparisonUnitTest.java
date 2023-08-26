@@ -17,6 +17,9 @@ public class JSONComparisonUnitTest {
         Map<String, Object> secondMap = JsonUtils.jsonFileToMap("src/test/resources/second.json");
 
         MapDifference<String, Object> difference = Maps.difference(firstMap, secondMap);
+        difference.entriesDiffering().forEach((key, value) -> {
+            System.out.println(key + ": " + value.leftValue() + " - " + value.rightValue());
+        });
         assertThat(difference.areEqual()).isFalse();
     }
 
