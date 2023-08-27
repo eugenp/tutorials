@@ -427,7 +427,6 @@
                 <!-- <module>spring-roo</module> --> <!-- Not supported JAVA-17327 -->
 
                 <module>spring-security-modules/spring-security-ldap</module>
-                <module>spring-soap</module>
                 <module>spring-swagger-codegen</module>
                 <module>video-tutorials</module>
             </modules>
@@ -475,6 +474,7 @@
                 <module>apache-spark</module>
 
                 <module>jenkins-modules</module>
+                <module>jhipster-6</module>
                 <module>jhipster-modules</module>
             </modules>
         </profile>
@@ -594,7 +594,6 @@
                 <!-- <module>spring-roo</module> --> <!-- Not supported JAVA-17327 -->
 
                 <module>spring-security-modules/spring-security-ldap</module>
-                <module>spring-soap</module>
                 <module>spring-swagger-codegen</module>
                 <module>video-tutorials</module>
             </modules>
@@ -634,6 +633,7 @@
                 <module>apache-spark</module>
 
                 <module>jenkins-modules</module>
+                <module>jhipster-6</module>
                 <module>jhipster-modules</module>
             </modules>
 
@@ -788,7 +788,6 @@
                 <module>guava-modules</module>
                 <module>kubernetes-modules</module>
                 <module>libraries-concurrency</module>
-                <module>jhipster-6</module>
                 <module>libraries-testing</module>
                 <module>maven-modules</module>
                 <module>optaplanner</module>
@@ -908,6 +907,7 @@
                 <module>spring-kafka</module>
 
                 <module>spring-native</module>
+                <module>spring-soap</module>
                 <module>spring-security-modules</module>
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>
@@ -1059,7 +1059,6 @@
                 <module>guava-modules</module>
                 <module>kubernetes-modules</module>
                 <module>libraries-concurrency</module>
-                <module>jhipster-6</module>
                 <module>libraries-testing</module>
                 <module>maven-modules</module>
                 <module>optaplanner</module>
@@ -1180,6 +1179,7 @@
                 <module>spring-kafka</module>
 
                 <module>spring-native</module>
+                <module>spring-soap</module>
                 <module>spring-security-modules</module>
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>
@@ -1261,7 +1261,7 @@
         <hamcrest.version>2.2</hamcrest.version>
         <hamcrest-all.version>1.3</hamcrest-all.version>
         <mockito.version>4.4.0</mockito.version>
-        <byte-buddy.version>1.12.13</byte-buddy.version>
+        <byte-buddy.version>1.14.6</byte-buddy.version>
 
         <!-- logging -->
         <!-- overwriting in the slf4j and logback in the hibernate-jpa, spring-data-eclipselink. When updated to the latest version remove the version from that module-->
@@ -1278,7 +1278,7 @@
         <jmh-generator.version>1.36</jmh-generator.version>
         <maven-failsafe-plugin.version>2.21.0</maven-failsafe-plugin.version>
         <commons-collections4.version>4.4</commons-collections4.version>
-        <commons-io.version>2.11.0</commons-io.version>
+        <commons-io.version>2.13.0</commons-io.version>
         <commons-lang.version>2.6</commons-lang.version>
         <commons-lang3.version>3.13.0</commons-lang3.version>
         <commons-cli.version>1.5.0</commons-cli.version>
@@ -1288,7 +1288,7 @@
         <javax.servlet.jsp-api.version>2.3.3</javax.servlet.jsp-api.version>
         <jstl.version>1.2</jstl.version>
         <jackson.version>2.15.2</jackson.version>
-        <commons-fileupload.version>1.4</commons-fileupload.version>
+        <commons-fileupload.version>1.5</commons-fileupload.version>
         <junit-platform.version>1.9.2</junit-platform.version>
         <junit-jupiter.version>5.9.2</junit-jupiter.version>
         <junit-platform-surefire-provider.version>1.3.2</junit-platform-surefire-provider.version>
@@ -1300,7 +1300,7 @@
         <maven-pmd-plugin.version>3.19.0</maven-pmd-plugin.version>
         <lombok.version>1.18.28</lombok.version>
         <h2.version>2.1.214</h2.version>
-        <guava.version>31.1-jre</guava.version>
+        <guava.version>32.1.2-jre</guava.version>
         <maven-jar-plugin.version>3.2.2</maven-jar-plugin.version>
     </properties>
 
