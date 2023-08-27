@@ -472,6 +472,7 @@
                 <module>apache-spark</module>
 
                 <module>jenkins-modules</module>
+                <module>jhipster-6</module>
                 <module>jhipster-modules</module>
             </modules>
         </profile>
@@ -628,6 +629,7 @@
                 <module>apache-spark</module>
 
                 <module>jenkins-modules</module>
+                <module>jhipster-6</module>
                 <module>jhipster-modules</module>
             </modules>
 
@@ -782,7 +784,6 @@
                 <module>guava-modules</module>
                 <module>kubernetes-modules</module>
                 <module>libraries-concurrency</module>
-                <module>jhipster-6</module>
                 <module>libraries-testing</module>
                 <module>maven-modules</module>
                 <module>optaplanner</module>
@@ -1054,7 +1055,6 @@
                 <module>guava-modules</module>
                 <module>kubernetes-modules</module>
                 <module>libraries-concurrency</module>
-                <module>jhipster-6</module>
                 <module>libraries-testing</module>
                 <module>maven-modules</module>
                 <module>optaplanner</module>
