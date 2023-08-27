@@ -1,3 +1,5 @@
+package java.com.bealdung;
+
 import java.bealdung.objects.Circle;
 import java.bealdung.utils.CopyUtil;
 import java.bealdung.objects.Point;
