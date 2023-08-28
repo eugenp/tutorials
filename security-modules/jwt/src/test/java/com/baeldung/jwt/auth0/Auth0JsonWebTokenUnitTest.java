@@ -103,7 +103,7 @@ public class Auth0JsonWebTokenUnitTest {
         jwtToken = JWT.create()
           .withIssuer(ISSUER)
           .withClaim(DATA_CLAIM, DATA)
-          .withNotBefore(new Date(System.currentTimeMillis() + 1000L))
+          .withNotBefore(new Date(System.currentTimeMillis() + 10000L))
           .sign(algorithm);
 
         assertThrows(IncorrectClaimException.class, () -> {
