@@ -5,6 +5,8 @@ import com.baeldung.aggregateEx.entity.Result;
 import io.vavr.control.Either;
 import io.vavr.control.Try;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,172 +14,138 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+
 
 public class AggregateExceptionHandlerUnitTest {
-
-    private static RuntimeException process(String str) {
-        try {
-            Integer.parseInt(str);
-            return null;
-        } catch (NumberFormatException e) {
-            return new RuntimeException(e);
-        }
-    }
-
-    private static Object transform(String str) {
-        try {
-            return Integer.parseInt(str);
-        } catch (NumberFormatException e) {
-            return new RuntimeException(e);
-        }
-    }
+    static Logger logger = LoggerFactory.getLogger(AggregateExceptionHandlerUnitTest.class);
 
     @Test
-    public void givenExtractedMethod_whenFoundNonInt_thenSuppressExIntoRuntimeEx() {
+    public void givenExtractedMethod_whenFoundEx_thenSuppressExIntoRuntimeEx() {
         String[] strings = {"1", "2", "3", "a", "b", "c"};
-        RuntimeException runEx = Arrays.stream(strings)
-                .map(AggregateExceptionHandlerUnitTest::process)
+        Throwable runEx = Arrays.stream(strings)
+                .map(str -> callProcessThrowsExAndNoOutput(str))
                 .filter(Objects::nonNull)
                 .reduce(new RuntimeException("Errors Occurred"), (o1, o2) -> {
                     o1.addSuppressed(o2);
                     return o1;
                 });
+        processExceptions(runEx);
         assertEquals("Errors Occurred", runEx.getMessage());
         assertEquals(3, runEx.getSuppressed().length);
     }
-
     @Test
-    public void givenTryCatchInPipeline_whenFoundNonInts_thenSuppressExIntoRuntimeEx() {
+    public void givenTryCatchInPipeline_whenFoundEx_thenSuppressExIntoRuntimeEx() {
         String[] strings = {"1", "2", "3", "a", "b", "c"};
-        RuntimeException runEx = Arrays.stream(strings)
-                .map(str -> {
+        RuntimeException runEx = Arrays.stream(strings).map(str -> {
                     try {
-                        Integer.parseInt(str);
+                        processThrowsExAndNoOutput(str);
                         return null;
-                    } catch (NumberFormatException e) {
-                        return new RuntimeException(e);
+                    } catch (RuntimeException e) {
+                        return e;
                     }
-                })
-                .filter(Objects::nonNull)
-                .reduce(new RuntimeException("Errors Occurred"), (o1, o2) -> {
-                    o1.addSuppressed(o2);
-                    return o1;
-                });
+                }).filter(Objects::nonNull)
+                .collect(Collectors.collectingAndThen(Collectors.toList(), list -> {
+                    RuntimeException runtimeException = new RuntimeException("Errors Occurred");
+                    list.forEach(runtimeException::addSuppressed);
+                    return runtimeException;
+                }));
+        processExceptions(runEx);
         assertEquals("Errors Occurred", runEx.getMessage());
         assertEquals(3, runEx.getSuppressed().length);
     }
 
     @Test
-    public void givenExtractedMethodReturnOutputAndEx_whenFoundNonInts_thenSuppressExIntoRuntimeEx() {
-        String[] strings = {"1", "2", "3", "a", "b", "c"};
-        Map resultMap = Arrays.stream(strings)
-                .map(AggregateExceptionHandlerUnitTest::transform)
+    public void givenProcessMethod_whenStreamResultHasExAndOutput_thenHandleExceptionListAndOutputList() {
+        List<String> strings = List.of("1", "2", "3", "a", "b", "c");
+        Map map = strings.stream()
+                .map(s -> processReturnsExAndOutput(s))
                 .collect(Collectors.partitioningBy(o -> o instanceof RuntimeException, Collectors.toList()));
-
-        RuntimeException ex = null;
-
-        assertTrue(resultMap.containsKey(Boolean.TRUE));
-
-        List<RuntimeException> exs = (List<RuntimeException>) resultMap.get(Boolean.TRUE);
-        ex = exs.stream()
-                .reduce(
-                        new RuntimeException("Errors Occurred"), (o1, o2) -> {
-                            o1.addSuppressed(o2);
-                            return o1;
-                        });
-
-        assertEquals("Errors Occurred", ex.getMessage());
-        assertEquals(3, ex.getSuppressed().length);
+        assert(map.containsKey(Boolean.TRUE) && map.containsKey(Boolean.FALSE));
+        handleExceptionsAndOutputs((List<RuntimeException>) map.get(Boolean.TRUE), (List<Integer>)map.get(Boolean.FALSE));
     }
 
     @Test
-    public void givenWrapFunction_whenFoundNonInts_thenUseExAggregator() throws ExceptionAggregator {
-        String[] strings = {"1", "2", "3", "a", "b", "c"};
-        Map<Boolean, List<Result<Integer>>> resultmap = Arrays.stream(strings)
+    public void givenCustomMapper_whenStreamResultHasExAndSuccess_thenHandleExceptionListAndOutputList() {
+        List<String> strings = List.of("1", "2", "3", "a", "b", "c");
+        strings.stream()
                 .map(CustomMapper.mapper(Integer::parseInt))
-                .collect(Collectors.partitioningBy(r -> r.getException().isEmpty(), Collectors.toList()));
-
-        assertTrue(resultmap.containsKey(Boolean.TRUE));
-
-        List<Result<Integer>> resultList = resultmap.get(Boolean.FALSE);
-        List<Exception> exceptionList = resultList.stream()
-                .map(opex -> opex.getException().get())
-                .collect(Collectors.toList());
-
-        assertThrows(ExceptionAggregator.class, () -> handleExceptions(exceptionList));
-
-    }
-
-    private void handleExceptions(List<Exception> exceptions) throws ExceptionAggregator {
-        ExceptionAggregator exceptionAggregator = new ExceptionAggregator("Errors occurred");
-        exceptionAggregator.addExceptions(exceptions);
-        throw exceptionAggregator;
+                .collect(Collectors.collectingAndThen(Collectors.toList(), list -> handleErrorsAndOutPutForResult(list)));
     }
 
     @Test
-    public void givenExCollector_whenFoundNonInts_thenAggregateExInCustomCollector() throws ExceptionAggregator {
+    public void givenCustomCollector_whenStreamResultHasExAndSuccess_thenHandleAggrExceptionAndResults() {
         String[] strings = {"1", "2", "3", "a", "b", "c"};
-        ExceptionCollector exCollector = Arrays.stream(strings)
-                .collect(ExceptionCollector.of(Integer::parseInt));
-        List<Integer> output = exCollector.getResults();
-        List<RuntimeException> runEx = exCollector.getExceptions();
-        assertEquals(3, runEx.size());
+        Arrays.stream(strings)
+                .collect(Collectors.collectingAndThen(CustomCollector.of(Integer::parseInt), col -> {
+                    handleExAndResults(col.getExceptionAggregator(), col.getResults());
+                    return col;
+                }));
     }
 
-    private static Either<RuntimeException, Integer> processAndReturnEither(String str) {
+    @Test
+    public void givenVavrEitherAndTry_whenStreamResultHasExAndSuccess_thenHandleExceptionListAndOutputList() {
+        List<String> strings = List.of("1", "2", "3", "a", "b", "c");
+        strings.stream()
+                .map(str -> Try.of(() -> Integer.parseInt(str)).toEither())
+                .collect(Collectors.collectingAndThen(Collectors.partitioningBy(Either::isLeft, Collectors.toList()), map -> {
+                    handleErrorsAndOutPutForEither(map);
+                    return map;
+                }));
+    }
+
+    private static void processThrowsExAndNoOutput(String input) {
+        //return exception when input is "a", "b", "c"
+        if (input.matches("[a-c]")) {
+            throw new RuntimeException("Downstream method throws exception for " + input);
+        }
+    }
+    private static Throwable callProcessThrowsExAndNoOutput(String input) {
         try {
-            return Either.right(Integer.parseInt(str));
-        } catch (NumberFormatException e) {
-            return Either.left(new RuntimeException(e));
+            processThrowsExAndNoOutput(input);
+            return null;
+        } catch (RuntimeException e) {
+            return e;
         }
     }
 
-    @Test
-    public void givenVavrEither_whenFoundNonInts_thenSuppressExIntoRuntimeEx() {
-        List<String> strings = List.of("1", "2", "3", "a", "b", "c");
-        Map<Boolean, List<Either<RuntimeException, Integer>>> map = strings.stream()
-                .map(str -> processAndReturnEither(str))
-                .collect(Collectors.partitioningBy(t -> t.isLeft(), Collectors.toList()));
-
-        assertTrue(map.containsKey(Boolean.TRUE));
-
-        RuntimeException runEx = map.get(Boolean.TRUE)
-                .stream().map(either -> either.getLeft())
-                .reduce(new RuntimeException("Errors Occurred"), (o1, o2) -> {
-                    o1.addSuppressed(o2);
-                    return o1;
-                });
-        assertEquals(3, runEx.getSuppressed().length);
+    private static Object processReturnsExAndOutput(String input) {
+        logger.info("call a downstream method that returns an Integer");
+        try {
+            return Integer.parseInt(input);
+        } catch (Exception e) {
+            return new RuntimeException("Exception in processWithReturnOutput for " + input, e);
+        }
     }
 
-    @Test
-    public void givenVavrTry_whenFoundNonInts_thenSuppressExIntoRuntimeEx() {
-        List<String> strings = List.of("1", "2", "3", "a", "b", "c");
-        Map<Boolean, List<Try<Integer>>> map = strings.stream()
-                .map(str -> Try.of(() -> Integer.parseInt(str)))
-                .collect(Collectors.partitioningBy(t -> t.isFailure(), Collectors.toList()));
-        Throwable runEx = map.get(Boolean.TRUE).stream()
-                .map(t -> t.getCause())
-                .reduce(new RuntimeException("Errors Occurred"), (o1, o2) -> {
-                    o1.addSuppressed(o2);
-                    return o1;
-                });
-        assertEquals(3, runEx.getSuppressed().length);
+    private static void processExceptions(Throwable throwable) {
+        logger.error("Process Exception" + throwable.getMessage());
     }
 
-    @Test
-    public void givenVavrEitherAndTry_whenFoundNonInts_thenSuppressExIntoRuntimeEx() {
-        List<String> strings = List.of("1", "2", "3", "a", "b", "c");
-        Map<Boolean, List<Either<Throwable, Integer>>> map = strings.stream()
-                .map(str -> Try.of(() -> Integer.parseInt(str)).toEither())
-                .collect(Collectors.partitioningBy(Either::isLeft, Collectors.toList()));
-        Throwable runEx = map.get(Boolean.TRUE).stream()
-                .map(either -> either.getLeft())
-                .reduce(new RuntimeException("Errors Occurred"), (o1, o2) -> {
-                    o1.addSuppressed(o2);
-                    return o1;
-                });
-        assertEquals(3, runEx.getSuppressed().length);
+    private static void handleExceptionsAndOutputs(List<RuntimeException> exs, List output) {
+        logger.info("handle exceptions and output");
+    }
+
+    private static void handleExAndResults(ExceptionAggregator exAgg, List<Integer> results ) {
+        logger.info("handle aggregated exceptions and results" + exAgg.getExceptions().size() + " " + results.size());
+    }
+
+    private static void handleErrorsAndOutPutForEither(Map<Boolean, List<Either<Throwable, Integer>>> map) {
+        logger.info("handle errors and output");
+        map.get(Boolean.TRUE).forEach(either -> logger.error("Process Exception " + either.getLeft()));
+
+        map.get(Boolean.FALSE).forEach(either -> logger.info("Process Result " + either.get()));
+    }
+
+    private static String handleErrorsAndOutPutForResult(List<Result<Integer, Throwable>> successAndErrors) {
+        logger.info("handle errors and output");
+        successAndErrors.forEach(result -> {
+            if (result.getException().isPresent()) {
+                logger.error("Process Exception " + result.getException().get());
+            } else {
+                logger.info("Process Result" + result.getResult());
+            }
+        });
+        return "Errors and Output Handled";
     }
 }

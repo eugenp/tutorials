@@ -4,24 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ExceptionAggregator extends RuntimeException {
-    private List<Exception> exceptions;
+    private List<Throwable> exceptions;
 
     public ExceptionAggregator(String message) {
         super(message);
         exceptions = new ArrayList<>();
     }
 
-    public List<Exception> getExceptions() {
+    public List<Throwable> getExceptions() {
         return exceptions;
     }
 
-    public Exception addException(Exception e) {
+    public Throwable addException(Throwable e) {
         this.addSuppressed(e);
         exceptions.add(e);
         return e;
     }
 
-    public void addExceptions(List<Exception> exceptions) {
+    public void addExceptions(List<Throwable> exceptions) {
         exceptions.forEach(this::addException);
     }
 }
