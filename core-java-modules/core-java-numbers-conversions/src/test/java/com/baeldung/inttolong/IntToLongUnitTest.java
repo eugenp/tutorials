@@ -1,4 +1,4 @@
-package com.baeldung.longtobigdecimal;
+package com.baeldung.inttolong;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
