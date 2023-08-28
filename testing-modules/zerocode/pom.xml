@@ -91,7 +91,6 @@
     </build>
 
     <properties>
-        <maven-failsafe-plugin.version>3.0.0-M5</maven-failsafe-plugin.version>
         <surefire-junit47.version>3.0.0-M5</surefire-junit47.version>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>

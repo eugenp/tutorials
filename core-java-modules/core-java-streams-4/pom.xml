@@ -115,7 +115,6 @@
     <properties>
         <!-- testing -->
         <assertj.version>3.23.1</assertj.version>
-        <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
         <maven.compiler.source>12</maven.compiler.source>
         <maven.compiler.target>12</maven.compiler.target>
         <rx.java.version>1.2.5</rx.java.version>
