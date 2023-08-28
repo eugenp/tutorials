@@ -20,7 +20,7 @@ public class ClampFunctionUnitTest {
     }
 
     /*
-     * This method uses clamp method introduce in Java 21 which is still hypothetical 
+     * This method uses clamp() method introduced in Java 21
     @Test
     public void givenValueWithinRange_whenClamp_thenReturnValue() {
         assertEquals(20, Math.clamp(20, 67,98));
