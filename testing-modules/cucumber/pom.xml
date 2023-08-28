@@ -124,7 +124,6 @@
         <maven.compiler.target>14</maven.compiler.target>
         <cucumber.version>6.10.3</cucumber.version>
         <cucumber-reporting.version>5.4.0</cucumber-reporting.version>
-        <maven-failsafe-plugin.version>2.22.2</maven-failsafe-plugin.version>
         <selenium.version>3.141.59</selenium.version>
         <webdrivermanager.version>4.3.1</webdrivermanager.version>
         <webjars-locator.version>0.40</webjars-locator.version>
