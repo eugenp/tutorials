@@ -21,7 +21,6 @@
         </dependency>
     </dependencies>
 
-
     <properties>
         <javax.validation.validation-api.version>2.0.1.Final</javax.validation.validation-api.version>
     </properties>
