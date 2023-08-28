@@ -1301,7 +1301,7 @@
         <lombok.version>1.18.28</lombok.version>
         <h2.version>2.1.214</h2.version>
         <guava.version>32.1.2-jre</guava.version>
-        <maven-jar-plugin.version>3.2.2</maven-jar-plugin.version>
+        <maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
     </properties>
 
 </project>
