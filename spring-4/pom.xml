@@ -122,6 +122,7 @@
         <hsqldb.version>2.4.0</hsqldb.version>
         <hikaricp.version>4.0.3</hikaricp.version>
         <log4j2.version>2.17.1</log4j2.version>
+        <logback.version>1.2.7</logback.version>
     </properties>
 
 </project>
