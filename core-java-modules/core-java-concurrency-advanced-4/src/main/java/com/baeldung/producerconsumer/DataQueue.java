@@ -58,4 +58,8 @@ public class DataQueue {
             return queue.poll();
         }
     }
+
+    public Integer getSize() {
+        return queue.size();
+    }
 }
