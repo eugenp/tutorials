@@ -132,7 +132,6 @@
         <!-- Mime Type Libraries -->
         <tika.version>2.8.0</tika.version>
         <jmime-magic.version>0.1.5</jmime-magic.version>
-        <maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
         <fscontext.version>4.4.2</fscontext.version>
         <jakarta-activation-api.version>2.1.2</jakarta-activation-api.version>
         <angus-activation.version>2.0.1</angus-activation.version>

@@ -166,7 +166,6 @@
         <javassist.version>3.27.0-GA</javassist.version>
         <jaxb.version>2.3.1</jaxb.version>
         <log4jdbc.version>2.0.0</log4jdbc.version>
-        <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
         <maven.compiler.version>3.8.1</maven.compiler.version>
         <maven.version>3.8.1</maven.version>
         <mysql.version>8.0.19</mysql.version>
