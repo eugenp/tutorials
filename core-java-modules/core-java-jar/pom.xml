@@ -275,7 +275,6 @@
         <!-- maven plugins -->
         <javamoney.moneta.version>1.1</javamoney.moneta.version>
         <maven-javadoc-plugin.version>3.0.0-M1</maven-javadoc-plugin.version>
-        <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
         <onejar-maven-plugin.version>1.4.4</onejar-maven-plugin.version>
         <maven-shade-plugin.version>3.1.1</maven-shade-plugin.version>
         <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>

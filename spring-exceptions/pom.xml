@@ -181,7 +181,6 @@
         <!-- maven plugins -->
         <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
-        <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
     </properties>
 
 </project>
