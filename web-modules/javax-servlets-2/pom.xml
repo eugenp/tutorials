@@ -22,6 +22,11 @@
             <artifactId>commons-fileupload</artifactId>
             <version>${commons-fileupload.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
+            <version>${commons-text.version}</version>
+        </dependency>
         <!-- Servlet -->
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -76,6 +81,16 @@
                     </argLine>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>${jetty-maven-plugin.version}</version>
+                <configuration>
+                    <webApp>
+                        <contextPath>/</contextPath>
+                    </webApp>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
@@ -84,6 +99,8 @@
         <jmockit.version>1.49</jmockit.version>
         <spring-test.version>5.3.20</spring-test.version>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+        <jetty-maven-plugin.version>10.0.4</jetty-maven-plugin.version>
+        <commons-text.version>1.10.0</commons-text.version>
     </properties>
 
 </project>

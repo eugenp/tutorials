@@ -69,7 +69,6 @@
 
     <properties>
         <!-- testing -->
-        <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
         <maven.compiler.source>12</maven.compiler.source>
         <maven.compiler.target>12</maven.compiler.target>
         <vavr.version>0.10.2</vavr.version>
