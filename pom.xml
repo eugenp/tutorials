@@ -1297,7 +1297,7 @@
         <custom-pmd.version>0.0.1</custom-pmd.version>
         <gitflow-incremental-builder.version>3.12.2</gitflow-incremental-builder.version>
         <maven-jxr-plugin.version>3.3.0</maven-jxr-plugin.version>
-        <maven-pmd-plugin.version>3.19.0</maven-pmd-plugin.version>
+        <maven-pmd-plugin.version>3.21.0</maven-pmd-plugin.version>
         <lombok.version>1.18.28</lombok.version>
         <h2.version>2.1.214</h2.version>
         <guava.version>32.1.2-jre</guava.version>
