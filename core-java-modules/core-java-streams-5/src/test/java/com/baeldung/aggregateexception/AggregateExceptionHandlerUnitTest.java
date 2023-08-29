@@ -57,12 +57,12 @@ public class AggregateExceptionHandlerUnitTest {
     @Test
     public void givenProcessMethod_whenStreamResultHasExAndOutput_thenHandleExceptionListAndOutputList() {
         List<String> strings = List.of("1", "2", "3", "a", "b", "c");
-        Map<Boolean, List<Object>> map = strings.stream()
+        Map map = strings.stream()
                 .map(s -> processReturnsExAndOutput(s))
                 .collect(Collectors.partitioningBy(o -> o instanceof RuntimeException, Collectors.toList()));
 
-        List<Object> exceptions = map.getOrDefault(Boolean.TRUE, List.of());
-        List<Object> results = map.getOrDefault(Boolean.FALSE, List.of());
+        List<RuntimeException> exceptions = (List<RuntimeException>)map.getOrDefault(Boolean.TRUE, List.of());
+        List<Integer> results = (List<Integer>)map.getOrDefault(Boolean.FALSE, List.of());
         handleExceptionsAndOutputs(exceptions, results);
     }
 
@@ -119,7 +119,7 @@ public class AggregateExceptionHandlerUnitTest {
         logger.error("Process Exception" + throwable.getMessage());
     }
 
-    private static void handleExceptionsAndOutputs(List<Object> exs, List<Object> output) {
+    private static void handleExceptionsAndOutputs(List<RuntimeException> exs, List<Integer> output) {
         logger.info("number of exceptions " + exs.size() + " number of outputs " + output.size());
     }
 
