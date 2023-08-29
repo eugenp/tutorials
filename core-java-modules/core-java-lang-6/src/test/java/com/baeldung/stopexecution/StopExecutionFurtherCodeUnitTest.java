@@ -16,8 +16,7 @@ import org.junit.runners.MethodSorters;
 public class StopExecutionFurtherCodeUnitTest {
 
 
-    // I've commented this test case's because the Program will exit JVM whenever System.exit(statusCode) is used.
-    // So the JUnit test program will exit JVM when System.exit(statusCode) executed and other test cases will be discarded.
+    // The next two test cases have been commented because, otherwise, the program will exit since System.exit(statusCode) is being used.
     /*@Test
     void givenFlagIsFalse_whenStopExecutionCalled_thenTaskNotPerformed() {
         StopExecutionFurtherCode stopExecution = new StopExecutionFurtherCode();
