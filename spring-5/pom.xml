@@ -144,6 +144,8 @@
         <asciidoctor-plugin.version>1.5.6</asciidoctor-plugin.version>
         <snippetsDirectory>${project.build.directory}/generated-snippets</snippetsDirectory>
         <hikaricp.version>4.0.3</hikaricp.version>
+        <org.slf4j.version>1.7.32</org.slf4j.version>
+        <logback.version>1.2.7</logback.version>
     </properties>
 
 </project>

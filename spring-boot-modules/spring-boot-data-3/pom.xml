@@ -62,6 +62,8 @@
     <properties>
         <aws.secrets.manager.config>2.4.4</aws.secrets.manager.config>
         <aws.secrets.manager.jdbc>1.0.11</aws.secrets.manager.jdbc>
+        <org.slf4j.version>1.7.32</org.slf4j.version>
+        <logback.version>1.2.7</logback.version>
     </properties>
 
 </project>

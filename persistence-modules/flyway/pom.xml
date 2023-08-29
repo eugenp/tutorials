@@ -64,6 +64,8 @@
 
     <properties>
         <flyway-maven-plugin.version>8.5.13</flyway-maven-plugin.version>
+        <org.slf4j.version>1.7.32</org.slf4j.version>
+        <logback.version>1.2.7</logback.version>
     </properties>
 
 </project>

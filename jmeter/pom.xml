@@ -165,6 +165,8 @@
 
     <properties>
         <jmeter-maven-plugin.version>3.7.0</jmeter-maven-plugin.version>
+        <org.slf4j.version>1.7.32</org.slf4j.version>
+        <logback.version>1.2.7</logback.version>
     </properties>
 
 </project>
