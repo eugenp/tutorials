@@ -1,4 +1,4 @@
-package com.baeldung.aggregateEx.entity;
+package com.baeldung.aggregateexception.entity;
 
 import java.util.Optional;
 
