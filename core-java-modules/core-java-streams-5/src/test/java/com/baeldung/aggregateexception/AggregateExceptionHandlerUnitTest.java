@@ -1,7 +1,6 @@
-package com.baeldung.aggregateEx;
+package com.baeldung.aggregateexception;
 
-import com.baeldung.aggregateEx.entity.ExceptionAggregator;
-import com.baeldung.aggregateEx.entity.Result;
+import com.baeldung.aggregateexception.entity.Result;
 import io.vavr.control.Either;
 import io.vavr.control.Try;
 import org.junit.Test;
@@ -18,12 +17,12 @@ import static org.junit.Assert.assertEquals;
 
 
 public class AggregateExceptionHandlerUnitTest {
-    static Logger logger = LoggerFactory.getLogger(AggregateExceptionHandlerUnitTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(AggregateExceptionHandlerUnitTest.class);
 
     @Test
     public void givenExtractedMethod_whenFoundEx_thenSuppressExIntoRuntimeEx() {
         String[] strings = {"1", "2", "3", "a", "b", "c"};
-        Throwable runEx = Arrays.stream(strings)
+        RuntimeException runEx = Arrays.stream(strings)
                 .map(str -> callProcessThrowsExAndNoOutput(str))
                 .filter(Objects::nonNull)
                 .reduce(new RuntimeException("Errors Occurred"), (o1, o2) -> {
@@ -58,11 +57,13 @@ public class AggregateExceptionHandlerUnitTest {
     @Test
     public void givenProcessMethod_whenStreamResultHasExAndOutput_thenHandleExceptionListAndOutputList() {
         List<String> strings = List.of("1", "2", "3", "a", "b", "c");
-        Map map = strings.stream()
+        Map<Boolean, List<Object>> map = strings.stream()
                 .map(s -> processReturnsExAndOutput(s))
                 .collect(Collectors.partitioningBy(o -> o instanceof RuntimeException, Collectors.toList()));
-        assert(map.containsKey(Boolean.TRUE) && map.containsKey(Boolean.FALSE));
-        handleExceptionsAndOutputs((List<RuntimeException>) map.get(Boolean.TRUE), (List<Integer>)map.get(Boolean.FALSE));
+
+        List<Object> exceptions = map.getOrDefault(Boolean.TRUE, List.of());
+        List<Object> results = map.getOrDefault(Boolean.FALSE, List.of());
+        handleExceptionsAndOutputs(exceptions, results);
     }
 
     @Test
@@ -70,17 +71,15 @@ public class AggregateExceptionHandlerUnitTest {
         List<String> strings = List.of("1", "2", "3", "a", "b", "c");
         strings.stream()
                 .map(CustomMapper.mapper(Integer::parseInt))
-                .collect(Collectors.collectingAndThen(Collectors.toList(), list -> handleErrorsAndOutPutForResult(list)));
+                .collect(Collectors.collectingAndThen(Collectors.toList(), list -> handleErrorsAndOutputForResult(list)));
     }
 
     @Test
     public void givenCustomCollector_whenStreamResultHasExAndSuccess_thenHandleAggrExceptionAndResults() {
         String[] strings = {"1", "2", "3", "a", "b", "c"};
         Arrays.stream(strings)
-                .collect(Collectors.collectingAndThen(CustomCollector.of(Integer::parseInt), col -> {
-                    handleExAndResults(col.getExceptionAggregator(), col.getResults());
-                    return col;
-                }));
+                .collect(Collectors.collectingAndThen(CustomCollector.of(Integer::parseInt),
+                        col -> handleExAndResults(col.getExceptions(), col.getResults())));
     }
 
     @Test
@@ -88,19 +87,17 @@ public class AggregateExceptionHandlerUnitTest {
         List<String> strings = List.of("1", "2", "3", "a", "b", "c");
         strings.stream()
                 .map(str -> Try.of(() -> Integer.parseInt(str)).toEither())
-                .collect(Collectors.collectingAndThen(Collectors.partitioningBy(Either::isLeft, Collectors.toList()), map -> {
-                    handleErrorsAndOutPutForEither(map);
-                    return map;
-                }));
+                .collect(Collectors.collectingAndThen(Collectors.partitioningBy(Either::isLeft, Collectors.toList())
+                        , map -> handleErrorsAndOutputForEither(map)));
     }
 
     private static void processThrowsExAndNoOutput(String input) {
-        //return exception when input is "a", "b", "c"
+        //throw exception when input is "a", "b", "c"
         if (input.matches("[a-c]")) {
             throw new RuntimeException("Downstream method throws exception for " + input);
         }
     }
-    private static Throwable callProcessThrowsExAndNoOutput(String input) {
+    private static RuntimeException callProcessThrowsExAndNoOutput(String input) {
         try {
             processThrowsExAndNoOutput(input);
             return null;
@@ -122,22 +119,24 @@ public class AggregateExceptionHandlerUnitTest {
         logger.error("Process Exception" + throwable.getMessage());
     }
 
-    private static void handleExceptionsAndOutputs(List<RuntimeException> exs, List output) {
-        logger.info("handle exceptions and output");
+    private static void handleExceptionsAndOutputs(List<Object> exs, List<Object> output) {
+        logger.info("number of exceptions " + exs.size() + " number of outputs " + output.size());
     }
 
-    private static void handleExAndResults(ExceptionAggregator exAgg, List<Integer> results ) {
-        logger.info("handle aggregated exceptions and results" + exAgg.getExceptions().size() + " " + results.size());
+    private static String handleExAndResults(List<Throwable> ex, List<Integer> results ) {
+        logger.info("handle aggregated exceptions and results" + ex.size() + " " + results.size());
+        return "Exceptions and Results Handled";
     }
 
-    private static void handleErrorsAndOutPutForEither(Map<Boolean, List<Either<Throwable, Integer>>> map) {
+    private static String handleErrorsAndOutputForEither(Map<Boolean, List<Either<Throwable, Integer>>> map) {
         logger.info("handle errors and output");
-        map.get(Boolean.TRUE).forEach(either -> logger.error("Process Exception " + either.getLeft()));
+        map.getOrDefault(Boolean.TRUE, List.of()).forEach(either -> logger.error("Process Exception " + either.getLeft()));
 
-        map.get(Boolean.FALSE).forEach(either -> logger.info("Process Result " + either.get()));
+        map.getOrDefault(Boolean.FALSE, List.of()).forEach(either -> logger.info("Process Result " + either.get()));
+        return "Errors and Output Handled";
     }
 
-    private static String handleErrorsAndOutPutForResult(List<Result<Integer, Throwable>> successAndErrors) {
+    private static String handleErrorsAndOutputForResult(List<Result<Integer, Throwable>> successAndErrors) {
         logger.info("handle errors and output");
         successAndErrors.forEach(result -> {
             if (result.getException().isPresent()) {

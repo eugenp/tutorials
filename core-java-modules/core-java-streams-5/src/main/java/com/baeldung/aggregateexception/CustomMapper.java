@@ -1,6 +1,6 @@
-package com.baeldung.aggregateEx;
+package com.baeldung.aggregateexception;
 
-import com.baeldung.aggregateEx.entity.Result;
+import com.baeldung.aggregateexception.entity.Result;
 
 import java.util.function.Function;
 
