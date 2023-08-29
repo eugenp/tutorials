@@ -12,7 +12,7 @@ class EmployeeTest {
     class CloneTest {
 
         @Test
-        void whenCloningThis_thenExpectThisNotSameAsClone() {
+        void whenCloningThis_thenExpectThisNotSameAsCloneUnitTest() {
 
             Role role = new Role("Software Engineer" );
             Employee employee = new Employee(6, role );
@@ -29,7 +29,7 @@ class EmployeeTest {
         }
 
         @Test
-        void whenCloningThis_thenExpectThisClassSameAsCloneClass() {
+        void whenCloningThis_thenExpectThisClassSameAsCloneClassUnitTest() {
 
             Role role = new Role("Software Engineer" );
             Employee employee = new Employee(6, role );
