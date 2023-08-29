@@ -24,12 +24,10 @@ public class Main {
             e.printStackTrace();
         }
 
+        assert cEmployee != null;
         cEmployee.role.title = "Java Coder";
         cEmployee.id = 3;
-        //System.out.println( "Role title: " + employee.role.title + "\n" + "Role ID: " + employee.id );
 
-        logger.debug( "Role title: " + employee.role.title + "\n" + "Role ID: " + employee.id );
-        //logger.info( "Role title: " + employee.role.title + "\n" + "Role ID: " + employee.id );
-        //logger.error( "Role title: " + employee.role.title + "\n" + "Role ID: " + employee.id );
+        logger.info( "\n" + "Role title: " + employee.role.title + "\n" + "Role ID: " + employee.id );
     }
 }
