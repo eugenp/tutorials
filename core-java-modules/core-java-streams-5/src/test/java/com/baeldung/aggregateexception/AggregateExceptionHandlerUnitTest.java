@@ -87,8 +87,8 @@ public class AggregateExceptionHandlerUnitTest {
         List<String> strings = List.of("1", "2", "3", "a", "b", "c");
         strings.stream()
                 .map(str -> Try.of(() -> Integer.parseInt(str)).toEither())
-                .collect(Collectors.collectingAndThen(Collectors.partitioningBy(Either::isLeft, Collectors.toList())
-                        , map -> handleErrorsAndOutputForEither(map)));
+                .collect(Collectors.collectingAndThen(Collectors.partitioningBy(Either::isLeft, Collectors.toList()),
+                        map -> handleErrorsAndOutputForEither(map)));
     }
 
     private static void processThrowsExAndNoOutput(String input) {
@@ -142,7 +142,7 @@ public class AggregateExceptionHandlerUnitTest {
             if (result.getException().isPresent()) {
                 logger.error("Process Exception " + result.getException().get());
             } else {
-                logger.info("Process Result" + result.getResult());
+                logger.info("Process Result" + result.getResult().get());
             }
         });
         return "Errors and Output Handled";
