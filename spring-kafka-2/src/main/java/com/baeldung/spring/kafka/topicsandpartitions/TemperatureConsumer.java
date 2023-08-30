@@ -8,12 +8,9 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CountDownLatch;
 
 @Service
 public class TemperatureConsumer {
-
-    private CountDownLatch latch = new CountDownLatch(1);
 
     Map<String, Set<String>> consumedRecords = new ConcurrentHashMap<>();
 
@@ -30,7 +27,4 @@ public class TemperatureConsumer {
         });
     }
 
-    public CountDownLatch getLatch() {
-        return latch;
-    }
 }
