@@ -4,8 +4,8 @@ import java.util.logging.Logger;
 
 public class Consumer implements Runnable {
     private static final Logger log = Logger.getLogger(Consumer.class.getCanonicalName());
+    private boolean running = false;
     private final DataQueue dataQueue;
-    private boolean runFlag = false;
 
     public Consumer(DataQueue dataQueue) {
         this.dataQueue = dataQueue;
@@ -13,29 +13,36 @@ public class Consumer implements Runnable {
 
     @Override
     public void run() {
-        runFlag = true;
+        running = true;
         consume();
     }
 
+    public void stop() {
+        running = false;
+    }
+
     public void consume() {
-        while (runFlag) {
-            while (dataQueue.isEmpty() && runFlag) {
+        while (running) {
+
+            if (dataQueue.isEmpty()) {
                 try {
-                    dataQueue.waitOnEmpty();
+                    dataQueue.waitIsNotEmpty();
                 } catch (InterruptedException e) {
                     log.severe("Error while waiting to Consume messages.");
                     break;
                 }
             }
-            if (!runFlag) {
+
+            // avoid spurious wake-up
+            if (!running) {
                 break;
             }
-            Message message = dataQueue.remove();
-            dataQueue.notifyAllForFull();
+
+            Message message = dataQueue.poll();
             useMessage(message);
 
             //Sleeping on random time to make it realistic
-            ThreadUtil.sleep((long) (message.getData() * 100));
+            ThreadUtil.sleep((long) (Math.random() * 100));
         }
         log.info("Consumer Stopped");
     }
@@ -47,8 +54,4 @@ public class Consumer implements Runnable {
         }
     }
 
-    public void stop() {
-        runFlag = false;
-        dataQueue.notifyAllForEmpty();
-    }
 }

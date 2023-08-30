@@ -1,15 +1,13 @@
 package com.baeldung.producerconsumer;
 
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.locks.ReentrantLock;
 import java.util.logging.Logger;
 
 public class Producer implements Runnable {
     private static final Logger log = Logger.getLogger(Producer.class.getCanonicalName());
-    private final DataQueue dataQueue;
     private static final AtomicInteger idSequence = new AtomicInteger(0);
-    private boolean runFlag = false;
-    final ReentrantLock lock = new ReentrantLock();
+    private boolean running = false;
+    private final DataQueue dataQueue;
 
     public Producer(DataQueue dataQueue) {
         this.dataQueue = dataQueue;
@@ -17,41 +15,38 @@ public class Producer implements Runnable {
 
     @Override
     public void run() {
-        runFlag = true;
+        running = true;
         produce();
     }
 
+    public void stop() {
+        running = false;
+    }
+
     public void produce() {
-        while (runFlag) {
 
-            try {
-                lock.lock();
-                while (dataQueue.isFull() && runFlag) {
-                    try {
-                        dataQueue.waitOnFull();
-                    } catch (InterruptedException e) {
-                        log.severe("Error while waiting to Produce messages.");
-                        break;
-                    }
-                }
+        while (running) {
 
-                if (!runFlag) {
+            if (dataQueue.isFull()) {
+                try {
+                    dataQueue.waitIsNotFull();
+                } catch (InterruptedException e) {
+                    log.severe("Error while waiting to Produce messages.");
                     break;
                 }
-
-                Message message = generateMessage();
-                dataQueue.add(message);
-                dataQueue.notifyAllForEmpty();
-
-                log.info("Size of the queue is: " + dataQueue.getSize());
-
-                //Sleeping on random time to make it realistic
-                ThreadUtil.sleep((long) (Math.random() * 100));
-
             }
-            finally{
-                lock.unlock();
+
+            // avoid spurious wake-up
+            if (!running) {
+                break;
             }
+
+            dataQueue.add(generateMessage());
+
+            log.info("Size of the queue is: " + dataQueue.getSize());
+
+            //Sleeping on random time to make it realistic
+            ThreadUtil.sleep((long) (Math.random() * 100));
         }
 
         log.info("Producer Stopped");
@@ -65,8 +60,4 @@ public class Producer implements Runnable {
         return message;
     }
 
-    public void stop() {
-        runFlag = false;
-        dataQueue.notifyAllForFull();
-    }
 }
