@@ -7,6 +7,7 @@ public class Producer implements Runnable {
     private static final Logger log = Logger.getLogger(Producer.class.getCanonicalName());
     private final DataQueue dataQueue;
     private static int idSequence = 0;
+    private boolean runFlag = false;
     final ReentrantLock lock = new ReentrantLock();
 
     public Producer(DataQueue dataQueue) {
@@ -15,16 +16,15 @@ public class Producer implements Runnable {
 
     @Override
     public void run() {
+        runFlag = true;
         produce();
     }
 
     public void produce() {
-        while (dataQueue.runFlag) {
-
+        while (runFlag) {
             try {
                 lock.lock();
-
-                while (dataQueue.isFull() && dataQueue.runFlag) {
+                while (dataQueue.isFull() && runFlag) {
                     try {
                         dataQueue.waitOnFull();
                     } catch (InterruptedException e) {
@@ -33,7 +33,7 @@ public class Producer implements Runnable {
                     }
                 }
 
-                if (!dataQueue.runFlag) {
+                if (!runFlag) {
                     break;
                 }
 
@@ -68,7 +68,7 @@ public class Producer implements Runnable {
     }
 
     public void stop() {
-        dataQueue.runFlag = false;
+        runFlag = false;
         dataQueue.notifyAllForFull();
     }
 }

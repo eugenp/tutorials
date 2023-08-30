@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 public class Consumer implements Runnable {
     private static final Logger log = Logger.getLogger(Consumer.class.getCanonicalName());
     private final DataQueue dataQueue;
+    private boolean runFlag = false;
 
     public Consumer(DataQueue dataQueue) {
         this.dataQueue = dataQueue;
@@ -12,12 +13,13 @@ public class Consumer implements Runnable {
 
     @Override
     public void run() {
+        runFlag = true;
         consume();
     }
 
     public void consume() {
-        while (dataQueue.runFlag) {
-            while (dataQueue.isEmpty() && dataQueue.runFlag) {
+        while (runFlag) {
+            while (dataQueue.isEmpty() && runFlag) {
                 try {
                     dataQueue.waitOnEmpty();
                 } catch (InterruptedException e) {
@@ -25,7 +27,7 @@ public class Consumer implements Runnable {
                     break;
                 }
             }
-            if (!dataQueue.runFlag) {
+            if (!runFlag) {
                 break;
             }
             Message message = dataQueue.remove();
@@ -47,7 +49,7 @@ public class Consumer implements Runnable {
     }
 
     public void stop() {
-        dataQueue.runFlag = false;
+        runFlag = false;
         dataQueue.notifyAllForEmpty();
     }
 }
