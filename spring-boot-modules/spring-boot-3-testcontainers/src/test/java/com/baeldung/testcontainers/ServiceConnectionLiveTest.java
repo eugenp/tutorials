@@ -24,7 +24,7 @@ import com.baeldung.testcontainers.support.MiddleEarthCharactersRepository;
 @Testcontainers
 @SpringBootTest(webEnvironment = DEFINED_PORT)
 @DirtiesContext(classMode = AFTER_CLASS)
-class ServiceConnectionIntegrationTest {
+class ServiceConnectionLiveTest {
 
     @Container
     @ServiceConnection
@@ -44,7 +44,7 @@ class ServiceConnectionIntegrationTest {
             new MiddleEarthCharacter("Frodo", "hobbit"),
             new MiddleEarthCharacter("Samwise", "hobbit"),
             new MiddleEarthCharacter("Aragon", "human"),
-            new MiddleEarthCharacter("Gandalf", "wizzard")
+            new MiddleEarthCharacter("Gandalf", "wizard")
         ));
 
         when().get("/characters?race=hobbit")
