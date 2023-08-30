@@ -15,7 +15,7 @@
     <dependencies>
         <dependency>
             <groupId>io.helidon.microprofile.bundles</groupId>
-            <artifactId>helidon-microprofile-1.2</artifactId>
+            <artifactId>helidon-microprofile</artifactId>
             <version>${helidon-microprofile.version}</version>
         </dependency>
         <dependency>
@@ -26,8 +26,8 @@
     </dependencies>
 
     <properties>
-        <helidon-microprofile.version>0.10.4</helidon-microprofile.version>
-        <jersey-media-json-binding.version>2.26</jersey-media-json-binding.version>
+        <helidon-microprofile.version>3.2.2</helidon-microprofile.version>
+        <jersey-media-json-binding.version>3.1.2</jersey-media-json-binding.version>
     </properties>
 
 </project>

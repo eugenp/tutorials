@@ -58,7 +58,6 @@
         <spring-mobile-device.version>1.1.5.RELEASE</spring-mobile-device.version>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-        <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
     </properties>
 
 </project>

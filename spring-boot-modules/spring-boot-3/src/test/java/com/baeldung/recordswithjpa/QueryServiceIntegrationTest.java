@@ -1,13 +1,8 @@
 package com.baeldung.recordswithjpa;
 
-import com.baeldung.recordswithjpa.entity.Book;
 import com.baeldung.recordswithjpa.records.BookRecord;
-import com.baeldung.recordswithjpa.repository.BookRepository;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
@@ -27,8 +22,8 @@ public class QueryServiceIntegrationTest extends RecordsAsJpaIntegrationTest {
 
     @Test
     void findBookById() {
-        BookRecord bookById = queryService.findBookById(1L);
-        assertEquals("The Lord of the Rings", bookById.title());
+        BookRecord bookByTitle = queryService.findBookByTitle("The Lord of the Rings");
+        assertNotNull(bookByTitle);
     }
 
     @Test

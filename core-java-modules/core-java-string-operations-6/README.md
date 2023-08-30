@@ -8,3 +8,5 @@
 - [Compact Strings in Java 9](https://www.baeldung.com/java-9-compact-string)
 - [Split a String Into Digit and Non-Digit Substrings](https://www.baeldung.com/java-split-string-digits-letters)
 - [Check if a String Contains Non-Alphanumeric Characters](https://www.baeldung.com/java-string-test-special-characters)
+- [Check if a String Has All Unique Characters in Java](https://www.baeldung.com/java-check-string-all-unique-chars)
+- [Performance Comparison Between Different Java String Concatenation Methods](https://www.baeldung.com/java-string-concatenation-methods)

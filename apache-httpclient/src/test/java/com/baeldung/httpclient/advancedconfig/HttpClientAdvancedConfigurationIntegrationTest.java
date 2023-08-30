@@ -1,29 +1,5 @@
 package com.baeldung.httpclient.advancedconfig;
 
-
-import com.github.tomakehurst.wiremock.junit.WireMockRule;
-import org.apache.http.HttpHeaders;
-import org.apache.http.HttpHost;
-import org.apache.http.HttpResponse;
-import org.apache.http.auth.AuthScope;
-import org.apache.http.auth.UsernamePasswordCredentials;
-import org.apache.http.client.AuthCache;
-import org.apache.http.client.CredentialsProvider;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.protocol.HttpClientContext;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.auth.BasicScheme;
-import org.apache.http.impl.client.BasicAuthCache;
-import org.apache.http.impl.client.BasicCredentialsProvider;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.impl.conn.DefaultProxyRoutePlanner;
-import org.junit.Rule;
-import org.junit.Test;
-
-import java.io.IOException;
-
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static com.github.tomakehurst.wiremock.client.WireMock.containing;
 import static com.github.tomakehurst.wiremock.client.WireMock.equalTo;
@@ -33,6 +9,30 @@ import static com.github.tomakehurst.wiremock.client.WireMock.post;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlMatching;
 import static org.junit.Assert.assertEquals;
+
+import java.io.IOException;
+
+import org.apache.hc.client5.http.auth.AuthCache;
+import org.apache.hc.client5.http.auth.AuthScope;
+import org.apache.hc.client5.http.auth.CredentialsProvider;
+import org.apache.hc.client5.http.auth.StandardAuthScheme;
+import org.apache.hc.client5.http.classic.HttpClient;
+import org.apache.hc.client5.http.classic.methods.HttpGet;
+import org.apache.hc.client5.http.classic.methods.HttpPost;
+import org.apache.hc.client5.http.impl.auth.BasicAuthCache;
+import org.apache.hc.client5.http.impl.auth.BasicScheme;
+import org.apache.hc.client5.http.impl.auth.CredentialsProviderBuilder;
+import org.apache.hc.client5.http.impl.classic.HttpClients;
+import org.apache.hc.client5.http.impl.routing.DefaultProxyRoutePlanner;
+import org.apache.hc.client5.http.protocol.HttpClientContext;
+import org.apache.hc.core5.http.HttpHeaders;
+import org.apache.hc.core5.http.HttpHost;
+import org.apache.hc.core5.http.HttpResponse;
+import org.apache.hc.core5.http.io.entity.StringEntity;
+import org.junit.Rule;
+import org.junit.Test;
+
+import com.github.tomakehurst.wiremock.junit.WireMockRule;
 
 public class HttpClientAdvancedConfigurationIntegrationTest {
 
@@ -59,7 +59,7 @@ public class HttpClientAdvancedConfigurationIntegrationTest {
         HttpResponse response = httpClient.execute(httpGet);
 
         //then
-        assertEquals(response.getStatusLine().getStatusCode(), 200);
+        assertEquals(response.getCode(), 200);
     }
 
     @Test
@@ -82,7 +82,7 @@ public class HttpClientAdvancedConfigurationIntegrationTest {
         HttpResponse response = httpClient.execute(httpPost);
 
         //then
-        assertEquals(response.getStatusLine().getStatusCode(), 200);
+        assertEquals(response.getCode(), 200);
 
     }
 
@@ -107,7 +107,7 @@ public class HttpClientAdvancedConfigurationIntegrationTest {
         HttpResponse response = httpclient.execute(httpGet);
 
         //then
-        assertEquals(response.getStatusLine().getStatusCode(), 200);
+        assertEquals(response.getCode(), 200);
         proxyMock.verify(getRequestedFor(urlEqualTo("/private")));
         serviceMock.verify(getRequestedFor(urlEqualTo("/private")));
     }
@@ -125,14 +125,12 @@ public class HttpClientAdvancedConfigurationIntegrationTest {
         DefaultProxyRoutePlanner routePlanner = new DefaultProxyRoutePlanner(proxy);
 
         // Client credentials
-        CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
-        credentialsProvider.setCredentials(new AuthScope(proxy),
-          new UsernamePasswordCredentials("username_admin", "secret_password"));
-
+        CredentialsProvider credentialsProvider = CredentialsProviderBuilder.create()
+            .add(new AuthScope(proxy), "username_admin", "secret_password".toCharArray())
+            .build();
 
         // Create AuthCache instance
         AuthCache authCache = new BasicAuthCache();
-
         // Generate BASIC scheme object and add it to the local auth cache
         BasicScheme basicAuth = new BasicScheme();
         authCache.put(proxy, basicAuth);
@@ -149,10 +147,11 @@ public class HttpClientAdvancedConfigurationIntegrationTest {
 
         //when
         final HttpGet httpGet = new HttpGet("http://localhost:8089/private");
+        httpGet.setHeader("Authorization", StandardAuthScheme.BASIC);
         HttpResponse response = httpclient.execute(httpGet, context);
 
         //then
-        assertEquals(response.getStatusLine().getStatusCode(), 200);
+        assertEquals(response.getCode(), 200);
         proxyMock.verify(getRequestedFor(urlEqualTo("/private")).withHeader("Authorization", containing("Basic")));
         serviceMock.verify(getRequestedFor(urlEqualTo("/private")));
     }

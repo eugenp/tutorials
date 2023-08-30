@@ -88,7 +88,6 @@
         <eclipselink.version>2.7.4</eclipselink.version>
         <mysql.version>8.0.21</mysql.version>
         <javax.persistence-api.version>2.2</javax.persistence-api.version>
-        <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
         <maven-processor-plugin.version>3.3.3</maven-processor-plugin.version>
         <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
         <h2.version>2.1.214</h2.version>

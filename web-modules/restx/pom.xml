@@ -132,16 +132,6 @@
                         </goals>
                     </execution>
                 </executions>
-                <configuration>
-                    <source>${maven.compiler.source}</source>
-                    <doclet>restx.apidocs.doclet.ApidocsDoclet</doclet>
-                    <docletArtifact>
-                        <groupId>io.restx</groupId>
-                        <artifactId>restx-apidocs-doclet</artifactId>
-                        <version>${restx.version}</version>
-                    </docletArtifact>
-                    <additionalparam>-restx-target-dir ${project.basedir}/target/classes</additionalparam>
-                </configuration>
             </plugin>
         </plugins>
     </build>

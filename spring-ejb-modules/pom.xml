@@ -17,6 +17,7 @@
     </parent>
 
     <modules>
+        <!--<module>ejb-beans</module> JAVA-22440 need to upgrade to java 17 -->
         <module>spring-ejb-remote</module>
         <module>spring-ejb-client</module>
         <module>wildfly</module>
