@@ -29,11 +29,17 @@
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <json.version>20211205</json.version>
         <gson.version>2.10.1</gson.version>
+        <guava.version>32.1.2-jre</guava.version>
     </properties>
 
 </project>
