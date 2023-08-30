@@ -15,8 +15,18 @@ public class ClampFunctionUnitTest {
     }
 
     @Test
-    public void givenFloatValueWithinRange_whenClamp_thenReturnValue() {
-        assertEquals(16.2f, clampValue.clamp(16.2f, 15f, 35.3f));
+    public void givenValueWithinRange_whenClamp_thenReturnValue() {
+        assertEquals(20, clampValue.clamp(20, 15, 35));
+    }
+
+    @Test
+    public void givenValueOutsideRange_whenClamp_thenReturnMaximumValue() {
+        assertEquals(35, clampValue.clamp(50, 15, 35));
+    }
+
+    @Test
+    public void givenDoubleValueOutsideRange_whenClamp_thenReturnMaximumValue() {
+        assertEquals(60.5, clampValue.clamp(75.6, 25.5, 60.5));
     }
 
     /*
