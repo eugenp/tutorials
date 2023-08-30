@@ -181,9 +181,6 @@
         <!-- maven plugins -->
         <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
-        <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
-        <logback.version>1.2.7</logback.version>
-        <org.slf4j.version>1.7.32</org.slf4j.version>
     </properties>
 
 </project>
