@@ -20,7 +20,6 @@
 <!--                <configuration>-->
 <!--                    <source>{maven.compiler.source.version}</source>-->
 <!--                    <target>{maven.compiler.target.version}</target>-->
-<!--                    <compilerArgs>&#45;&#45;enable-preview</compilerArgs>-->
 <!--                </configuration>-->
 <!--            </plugin>-->
 <!--        </plugins>-->
