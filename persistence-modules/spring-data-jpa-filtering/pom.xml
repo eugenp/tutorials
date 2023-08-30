@@ -67,6 +67,8 @@
         <start-class>com.baeldung.boot.Application</start-class>
         <testcontainers.postgresql.version>1.10.6</testcontainers.postgresql.version>
         <postgresql.version>42.2.5</postgresql.version>
+        <org.slf4j.version>1.7.32</org.slf4j.version>
+        <logback.version>1.2.7</logback.version>
     </properties>
 
 </project>

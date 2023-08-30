@@ -239,6 +239,8 @@
         <htmlunit.version>2.32</htmlunit.version>
         <json-path.version>2.4.0</json-path.version>
         <start-class>com.baeldung.SpringMVCApplication</start-class>
+        <org.slf4j.version>1.7.32</org.slf4j.version>
+        <logback.version>1.2.7</logback.version>
     </properties>
 
 </project>

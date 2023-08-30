@@ -132,6 +132,8 @@
         <jpa.version>2.2</jpa.version>
         <subethasmtp.version>3.1.7</subethasmtp.version>
         <httpclient.version>4.5.8</httpclient.version>
+        <org.slf4j.version>1.7.32</org.slf4j.version>
+        <logback.version>1.2.7</logback.version>
     </properties>
 
 </project>

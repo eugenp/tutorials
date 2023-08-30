@@ -63,6 +63,8 @@
     <properties>
         <mongodb-crypt.version>1.7.3</mongodb-crypt.version>
         <mongodb-driver.version>4.9.1</mongodb-driver.version>
+        <org.slf4j.version>1.7.32</org.slf4j.version>
+        <logback.version>1.2.7</logback.version>
     </properties>
 
 </project>

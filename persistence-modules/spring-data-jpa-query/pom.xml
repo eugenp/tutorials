@@ -39,6 +39,8 @@
 
     <properties>
         <datasource-proxy.version>1.4.1</datasource-proxy.version>
+        <org.slf4j.version>1.7.32</org.slf4j.version>
+        <logback.version>1.2.7</logback.version>
     </properties>
 
 </project>

@@ -62,6 +62,8 @@
 
     <properties>
         <jaxb-runtime.version>2.3.5</jaxb-runtime.version>
+        <org.slf4j.version>1.7.32</org.slf4j.version>
+        <logback.version>1.2.7</logback.version>
     </properties>
 
 </project>
