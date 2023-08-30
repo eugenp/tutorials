@@ -23,7 +23,7 @@ public class Consumer implements Runnable {
                 try {
                     dataQueue.waitOnEmpty();
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    log.severe("Error while waiting to Consume messages.");
                     break;
                 }
             }
@@ -34,6 +34,8 @@ public class Consumer implements Runnable {
             dataQueue.notifyAllForFull();
             useMessage(message);
 
+            //Sleeping on random time to make it realistic
+            ThreadUtil.sleep((long) (message.getData() * 100));
         }
         log.info("Consumer Stopped");
     }
@@ -42,9 +44,6 @@ public class Consumer implements Runnable {
         if (message != null) {
             log.info(String.format("[%s] Consuming Message. Id: %d, Data: %f%n",
                     Thread.currentThread().getName(), message.getId(), message.getData()));
-
-            //Sleeping on random time to make it realistic
-            ThreadUtil.sleep((long) (message.getData() * 100));
         }
     }
 

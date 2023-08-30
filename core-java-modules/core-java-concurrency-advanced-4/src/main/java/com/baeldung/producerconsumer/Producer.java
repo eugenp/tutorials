@@ -1,12 +1,13 @@
 package com.baeldung.producerconsumer;
 
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.logging.Logger;
 
 public class Producer implements Runnable {
     private static final Logger log = Logger.getLogger(Producer.class.getCanonicalName());
     private final DataQueue dataQueue;
-    private static int idSequence = 0;
+    private static final AtomicInteger idSequence = new AtomicInteger(0);
     private boolean runFlag = false;
     final ReentrantLock lock = new ReentrantLock();
 
@@ -22,13 +23,14 @@ public class Producer implements Runnable {
 
     public void produce() {
         while (runFlag) {
+
             try {
                 lock.lock();
                 while (dataQueue.isFull() && runFlag) {
                     try {
                         dataQueue.waitOnFull();
                     } catch (InterruptedException e) {
-                        e.printStackTrace();
+                        log.severe("Error while waiting to Produce messages.");
                         break;
                     }
                 }
@@ -43,28 +45,24 @@ public class Producer implements Runnable {
 
                 log.info("Size of the queue is: " + dataQueue.getSize());
 
+                //Sleeping on random time to make it realistic
+                ThreadUtil.sleep((long) (Math.random() * 100));
+
             }
             finally{
                 lock.unlock();
             }
-
-            //Sleeping on random time to make it realistic
-            ThreadUtil.sleep((long) (Math.random() * 100));
         }
 
         log.info("Producer Stopped");
     }
 
     private Message generateMessage() {
-        Message message = new Message(incrementAndGetId(), Math.random());
+        Message message = new Message(idSequence.incrementAndGet(), Math.random());
         log.info(String.format("[%s] Generated Message. Id: %d, Data: %f%n",
                 Thread.currentThread().getName(), message.getId(), message.getData()));
 
         return message;
-    }
-
-    private static int incrementAndGetId() {
-        return ++idSequence;
     }
 
     public void stop() {
