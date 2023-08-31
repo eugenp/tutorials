@@ -16,16 +16,16 @@ import org.junit.runners.MethodSorters;
 public class StopExecutionFurtherCodeUnitTest {
 
 
-    // The next two test cases have been commented because, otherwise, the program will exit since System.exit(statusCode) is being used.
-    /*@Test
-    void givenFlagIsFalse_whenStopExecutionCalled_thenTaskNotPerformed() {
+    @Test
+    void givenExecution_whenStopIsNotCalled_thenTaskIsPerformed() {
         StopExecutionFurtherCode stopExecution = new StopExecutionFurtherCode();
         int performedTask = stopExecution.performTask(10, 20);
         Assert.assertEquals(30, performedTask);
     }
 
-    @Test
-    void givenFlagIsTrue_whenStopExecutionCalled_thenTaskIsPerformed() {
+    // This test case have been commented because, otherwise, the program will exit since System.exit(statusCode) is being used.
+    /*@Test
+    void givenExecution_whenStopIsCalled_thenTaskNotPerformed() {
         StopExecutionFurtherCode stopExecution = new StopExecutionFurtherCode();
         stopExecution.stop();
         int performedTask = stopExecution.performTask(10, 20);
