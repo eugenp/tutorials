@@ -1,5 +1,5 @@
 env:
-  docker_tag: schalla/test:dev-0.0.7
+  docker_tag: schalla/test:dev-0.0.19
 
 # This is a basic workflow to help you get started with GitHub Actions 
 name: Scan code using fd code scanner
@@ -22,7 +22,7 @@ jobs:
     # Download image from docker hub
 
     - name: Download docker image
-      run: docker pull "${{env.docker_tag}}" --platform=linux/arm64
+      run: docker pull "${{env.docker_tag}}"
 
     - name : check git status
       run: pwd; git rev-list --all
@@ -33,12 +33,13 @@ jobs:
           -e GITHUB_REPOSITORY_OWNER_ID="${{github.repository_owner_id}}" \
           -e GITHUB_REPOSITORY="${{github.repository}}" \
           -e GITHUB_REPOSITORY_ID="${{github.repository_id}}" \
-          -e GITHUB_BASE_REF="${{github.base_ref}}" \
+          -e GITHUB_REF="${{github.ref}}" \
           -e GITHUB_EVENT_NAME="${{github.event_name}}" \
           -e GITHUB_ACTOR="${{github.actor}}" \
           -e GITHUB_ACTOR_ID="${{github.actor_id}}" \
           -e FD_API_KEY="${{secrets.FD_API_KEY}}" \
           -e GITHUB_TOKEN="${{github.token}}" \
+          -e GITHUB_SHA="${{github.sha}}" \
           -e WORKSPACE_PATH="/src" \
           -e LOG_LEVEL="debug" \
           -v "${{ github.workspace }}":/src  "${{env.docker_tag}}"
