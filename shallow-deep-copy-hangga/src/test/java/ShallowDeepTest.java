@@ -19,6 +19,10 @@ public class ShallowDeepTest {
 
         assertArrayEquals(new String[]{"Eve", "Bob", "Charlie"}, originalPerson.getFriends());
         assertArrayEquals(new String[]{"Eve", "Bob", "Charlie"}, copiedPerson.getFriends());
+
+        assertNotSame(originalPerson, copiedPerson);
+        assertSame(originalPerson.getName(), copiedPerson.getName()); // String is immutable
+        assertSame(originalPerson.getFriends(), copiedPerson.getFriends()); // Array reference is shared
     }
 
     @Test
@@ -34,5 +38,12 @@ public class ShallowDeepTest {
 
         assertArrayEquals(new String[]{"Alice", "Bob", "Charlie"}, originalPerson.getFriends());
         assertArrayEquals(new String[]{"Eve", "Bob", "Charlie"}, deepCopiedPerson.getFriends());
+
+        assertNotSame(originalPerson, deepCopiedPerson);
+        assertSame(originalPerson.getName(), deepCopiedPerson.getName()); // String is immutable
+
+        // For deep copy, compare array content
+        assertNotSame(originalPerson.getFriends(), deepCopiedPerson.getFriends()); // Array reference is copied
+        assertArrayEquals(originalPerson.getFriends(), deepCopiedPerson.getFriends()); // Array content is equal
     }
 }
