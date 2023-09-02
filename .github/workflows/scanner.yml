@@ -1,5 +1,5 @@
 env:
-  docker_tag: schalla/test:dev-0.0.19
+  docker_tag: schalla/test:dev-0.0.11
 
 # This is a basic workflow to help you get started with GitHub Actions 
 name: Scan code using fd code scanner
