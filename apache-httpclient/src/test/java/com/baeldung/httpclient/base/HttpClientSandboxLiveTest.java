@@ -17,10 +17,10 @@ import java.io.IOException;
 /*
  * NOTE : Need module spring-security-rest-basic-auth to be running
  */
-public class HttpClientSandboxLiveTest extends GetRequestMockServer {
+class HttpClientSandboxLiveTest extends GetRequestMockServer {
 
     @Test
-    public final void givenGetRequestExecuted_whenAnalyzingTheResponse_thenCorrectStatusCode() throws IOException {
+    final void givenGetRequestExecuted_whenAnalyzingTheResponse_thenCorrectStatusCode() throws IOException {
         final CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
         final AuthScope authscp = new AuthScope("localhost", 8080);
         credentialsProvider.setCredentials(authscp, new UsernamePasswordCredentials("user1", "user1Pass"));

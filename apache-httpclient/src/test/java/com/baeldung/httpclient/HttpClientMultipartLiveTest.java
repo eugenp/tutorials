@@ -30,9 +30,6 @@ import java.net.URL;
 
 class HttpClientMultipartLiveTest extends GetRequestMockServer {
 
-    // No longer available
-    // private static final String SERVER = "http://echo.200please.com";
-
     private static final String SERVER = "http://localhost:8080/spring-mvc-java/stub/multipart";
     private static final String TEXTFILENAME = "temp.txt";
     private static final String IMAGEFILENAME = "image.jpg";

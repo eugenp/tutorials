@@ -9,11 +9,11 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-public class HttpClientCancelRequestV4LiveTest {
+class HttpClientCancelRequestV4LiveTest {
 
     private static final String SAMPLE_URL = "http://www.github.com";
 
@@ -21,18 +21,18 @@ public class HttpClientCancelRequestV4LiveTest {
 
     private CloseableHttpResponse response;
 
-    @Before
+    @BeforeEach
     public final void before() {
         instance = HttpClientBuilder.create().build();
     }
 
-    @After
+    @AfterEach
     public final void after() throws IllegalStateException, IOException {
         ResponseUtil.closeResponse(response);
     }
 
     @Test
-    public final void whenRequestIsCanceled_thenCorrect() throws IOException {
+    final void whenRequestIsCanceled_thenCorrect() throws IOException {
         instance = HttpClients.custom().build();
         final HttpGet request = new HttpGet(SAMPLE_URL);
         response = instance.execute(request);
