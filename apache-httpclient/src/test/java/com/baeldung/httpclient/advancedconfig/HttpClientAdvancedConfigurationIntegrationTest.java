@@ -48,6 +48,7 @@ class HttpClientAdvancedConfigurationIntegrationTest {
         proxyMock = new WireMockServer(8090);
         proxyMock.start();
     }
+
     @AfterEach
     public void after () {
         serviceMock.stop();

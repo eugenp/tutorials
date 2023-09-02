@@ -48,11 +48,13 @@ class HttpClientAdvancedConfigurationIntegrationTest {
         proxyMock = new WireMockServer(8090);
         proxyMock.start();
     }
+
     @AfterEach
     public void after () {
         serviceMock.stop();
         proxyMock.stop();
     }
+
     @Test
     void givenClientWithCustomUserAgentHeader_whenExecuteRequest_shouldReturn200() throws IOException {
         //given
