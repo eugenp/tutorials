@@ -1,20 +1,20 @@
-package com.baeldung;
+package com.baeldung.selfinvocation;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.context.annotation.AdviceMode;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
 
 @SpringBootApplication
+@EnableCaching(mode = AdviceMode.ASPECTJ)
 @ComponentScan(basePackages = { "com.baeldung" }, excludeFilters = {
         @ComponentScan.Filter(type = FilterType.ANNOTATION,
                 value = { SpringBootApplication.class})
 })
-@EnableCaching
-public class Application {
-
+public class CompileTimeWeavingApplication {
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(CompileTimeWeavingApplication.class, args);
     }
 }
