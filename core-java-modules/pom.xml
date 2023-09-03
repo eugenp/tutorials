@@ -145,7 +145,7 @@
         <module>core-java-uuid</module>
         <module>core-java-collections-maps-6</module>
         <module>core-java-records</module>
-        <!--<module>core-java-9-jigsaw</module> -->
+        <module>core-java-9-jigsaw</module>
         <module>core-java-concurrency-simple</module>
         <module>core-java-datetime-string</module>
         <module>core-java-networking-3</module>
