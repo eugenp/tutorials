@@ -19,9 +19,13 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
 
+
+/**
+ * This Manual test requires: Docker service running.
+ */
 @Testcontainers
 @SpringBootTest
-class OrderServiceIntegrationTest {
+class OrderServiceManualTest {
 
     @Container
     static MySQLContainer<?> mySQLContainer1 = new MySQLContainer<>("mysql:8.0.23")
