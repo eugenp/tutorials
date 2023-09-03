@@ -24,10 +24,8 @@ public class TestStaticMain {
 
             ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
 
-            //execute
             StaticMain.main(arguments);
 
-            //verify
             mockedStatic.verify(() -> StaticMain.calculateSum(stringArgumentCaptor.capture()));
 
             System.setIn(original);

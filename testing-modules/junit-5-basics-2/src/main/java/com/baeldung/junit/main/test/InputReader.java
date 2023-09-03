@@ -21,9 +21,7 @@ public class InputReader {
 
     private String readFromConsole() {
         System.out.println("Enter values for calculation: \n");
-        String str = new Scanner(System.in).nextLine();
-
-        return str;
+        return new Scanner(System.in).nextLine();
     }
 
     private String readFromFile(String fileName) {
