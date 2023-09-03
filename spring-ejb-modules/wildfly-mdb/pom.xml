@@ -7,9 +7,9 @@
     <name>wildfly-mdb</name>
 
     <parent>
-        <groupId>com.baeldung.wildfly</groupId>
-        <artifactId>wildfly</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <groupId>com.baeldung.spring.ejb</groupId>
+        <artifactId>spring-ejb-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <dependencies>
