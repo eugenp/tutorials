@@ -12,7 +12,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 import org.junit.Test;
 
-public class LanguageServletIntegrationTest {
+public class LanguageServletLiveTest {
 
     @Test
     public void whenGetRequestUsingHttpClient_thenResponseBodyContainsDefaultLanguage() throws Exception {

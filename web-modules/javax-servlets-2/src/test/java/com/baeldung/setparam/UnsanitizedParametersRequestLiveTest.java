@@ -14,7 +14,7 @@ import org.apache.http.util.EntityUtils;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class UnsanitizedParametersRequestIntegrationTest {
+public class UnsanitizedParametersRequestLiveTest {
 
     private static final String TAG_SCRIPT = "<script>alert('Hello');</script>";
 
