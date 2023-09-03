@@ -44,13 +44,13 @@
                     <artifactId>slf4j-simple</artifactId>
                 </exclusion>
             </exclusions>
-            <version>0.7.3</version>
+            <version>${embedded-redis.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webflux</artifactId>
-            <version>6.0.3</version>
+            <version>${spring-webflux.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -74,6 +74,8 @@
 
     <properties>
         <java.version>15</java.version>
+        <spring-webflux.version>6.0.3</spring-webflux.version>
+        <embedded-redis.version>0.7.3</embedded-redis.version>
     </properties>
 
 </project>
