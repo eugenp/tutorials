@@ -29,7 +29,7 @@ class ProductRepositoryIntegrationTest {
 
     @Container
     private static final CassandraContainer cassandra = (CassandraContainer) new CassandraContainer("cassandra:3.11.2")
-            .withExposedPorts(9042);
+        .withExposedPorts(9042);
 
     @BeforeAll
     static void setupCassandraConnectionProperties() {
@@ -61,40 +61,55 @@ class ProductRepositoryIntegrationTest {
         private ProductRepository productRepository;
 
         @Test
-        void givenValidProductsIsSaved_whenSavingIt_thenRecordIsSaved() {
-            UUID productId1 = UUIDs.timeBased();
-            Product product1 = new Product(productId1, "Apple v1",
-                    "Apple NZ", 12.5);
-
-            UUID productId2 = UUIDs.timeBased();
-            Product product2 = new Product(productId2, "Apple v2",
-                    "Apple NZ", 12.5);
-
-            productRepository.saveAll(List.of(product1, product2));
-
-            List<Product> savedProducts = productRepository.findByProductIds(List.of(productId1, productId2));
-            assertTrue(savedProducts.contains(product1));
-            assertTrue(savedProducts.contains(product2));
-        }
-
-        @Test
-        void givenExistingProducts_whenUpdatingIt_thenProductIsUpdated() {
+        void givenValidProductsIsFetched_whenFindByProductIdsIsCalled_thenProductIsReturned() {
             UUID productId1 = UUIDs.timeBased();
             UUID productId2 = UUIDs.timeBased();
-            Product product1 = new Product(productId1, "Apple v1",
-                    "Apple NZ", 12.5);
-            Product product2 = new Product(productId1, "Apple v2",
-                    "Apple NZ", 15.5);
-            Product product3 = new Product(productId2, "Banana",
-                    "Banana Small", 5.5);
-            Product product4 = new Product(productId2, "Apple v2",
-                    "Banana Large", 15.5);
+            UUID productId3 = UUIDs.timeBased();
+            Product product1 = new Product(productId1, "Apple", "Apple v1", 12.5);
+            Product product2 = new Product(productId2, "Apple v2", "Apple v2", 15.5);
+            Product product3 = new Product(productId3, "Banana", "Banana v1", 5.5);
+            Product product4 = new Product(productId3, "Banana v2", "Banana v2", 15.5);
 
             productRepository.saveAll(List.of(product1, product2, product3, product4));
 
-            List<Product> existingProducts = productRepository.findByProductIdAndNames(productId1, List.of(product1.getProductName(), product2.getProductName()));
+            List<Product> existingProducts = productRepository.findByProductIds(List.of(productId1, productId2));
+            assertEquals(2, existingProducts.size());
             assertTrue(existingProducts.contains(product1));
             assertTrue(existingProducts.contains(product2));
+        }
+
+        @Test
+        void givenExistingProducts_whenFindByIdAndNamesIsCalled_thenProductIsReturned() {
+            UUID productId1 = UUIDs.timeBased();
+            UUID productId2 = UUIDs.timeBased();
+            Product product1 = new Product(productId1, "Apple", "Apple v1", 12.5);
+            Product product2 = new Product(productId1, "Apple v2", "Apple v2", 15.5);
+            Product product3 = new Product(productId2, "Banana", "Banana v1", 5.5);
+            Product product4 = new Product(productId2, "Banana v2", "Banana v2", 15.5);
+
+            productRepository.saveAll(List.of(product1, product2, product3, product4));
+
+            List<Product> existingProducts = productRepository.findByProductIdAndNames(productId1,
+                List.of(product1.getProductName(), product2.getProductName()));
+            assertEquals(2, existingProducts.size());
+            assertTrue(existingProducts.contains(product1));
+            assertTrue(existingProducts.contains(product2));
+        }
+
+        @Test
+        void givenNonExistingProductName_whenFindByIdAndNamesIsCalled_thenProductIsReturned() {
+            UUID productId1 = UUIDs.timeBased();
+            UUID productId2 = UUIDs.timeBased();
+            Product product1 = new Product(productId1, "Apple", "Apple v1", 12.5);
+            Product product2 = new Product(productId1, "Apple v2", "Apple v2", 15.5);
+            Product product3 = new Product(productId2, "Banana", "Banana v1", 5.5);
+            Product product4 = new Product(productId2, "Banana v2", "Banana v2", 15.5);
+
+            productRepository.saveAll(List.of(product1, product2, product4));
+
+            List<Product> existingProducts = productRepository.findByProductIdAndNames(productId1,
+                    List.of(product3.getProductName()));
+            assertEquals(0, existingProducts.size());
         }
     }
 }
