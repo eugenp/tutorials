@@ -8,7 +8,12 @@ public class Quote {
     private BigDecimal ask;
     private BigDecimal bid;
     private LocalDate date;
-    //...
+
+    public Quote(String currency, BigDecimal ask, BigDecimal bid) {
+        this.currency = currency;
+        this.ask = ask;
+        this.bid = bid;
+    }
 
     public String getCurrency() {
         return currency;
