@@ -48,7 +48,7 @@
             <dependency>
                 <groupId>io.swagger.core.v3</groupId>
                 <artifactId>swagger-core-jakarta</artifactId>
-                <version>${swagger-core.version}</version>
+                <version>${swagger-core-jakarta.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.github.springwolf</groupId>
@@ -92,7 +92,7 @@
     </build>
 
     <properties>
-        <swagger-core.version>2.2.11</swagger-core.version>
+        <swagger-core-jakarta.version>2.2.11</swagger-core-jakarta.version>
         <springwolf-kafka.version>0.12.1</springwolf-kafka.version>
         <springwolf-ui.version>0.8.0</springwolf-ui.version>
         <testcontainers-kafka.version>1.18.3</testcontainers-kafka.version>

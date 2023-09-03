@@ -78,7 +78,6 @@
 
     <properties>
         <ehcache.version>3.5.2</ehcache.version>
-        <lombok.version>1.18.26</lombok.version>
     </properties>
 
 </project>
