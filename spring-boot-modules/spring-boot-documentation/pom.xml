@@ -92,7 +92,6 @@
     </build>
 
     <properties>
-        <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
         <swagger-core.version>2.2.11</swagger-core.version>
         <springwolf-kafka.version>0.12.1</springwolf-kafka.version>
         <springwolf-ui.version>0.8.0</springwolf-ui.version>
