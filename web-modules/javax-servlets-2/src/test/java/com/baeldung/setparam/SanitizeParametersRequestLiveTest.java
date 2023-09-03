@@ -14,7 +14,7 @@ import org.apache.http.util.EntityUtils;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class SanitizeParametersRequestIntegrationTest {
+public class SanitizeParametersRequestLiveTest {
 
     private static String PARAM_INPUT;
 
