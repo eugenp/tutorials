@@ -18,6 +18,8 @@ import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -72,6 +74,19 @@ public class ExtractCommonNameUnitTest {
     @Test
     void whenExtractCommonNameUsingCryptacular_thenIsOK() {
         String commonName = CertUtil.subjectCN(certificate);
+        assertEquals(EXPECTED_CN, commonName);
+    }
+
+    @Test
+    void whenExtractCommonNameUsingRegex_thenIsOK() {
+        X500Principal principal = certificate.getSubjectX500Principal();
+        String commonName = null;
+        Pattern pattern = Pattern.compile("CN=([^,]+)");
+        Matcher matcher = pattern.matcher(principal.getName());
+        if (matcher.find()) {
+            commonName = matcher.group(1);
+        }
+
         assertEquals(EXPECTED_CN, commonName);
     }
 }
