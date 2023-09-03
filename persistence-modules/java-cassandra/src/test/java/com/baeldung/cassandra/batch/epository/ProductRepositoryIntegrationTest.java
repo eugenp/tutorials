@@ -1,24 +1,5 @@
 package com.baeldung.cassandra.batch.epository;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import org.apache.cassandra.exceptions.ConfigurationException;
-import org.apache.thrift.transport.TTransportException;
-import org.cassandraunit.utils.EmbeddedCassandraServerHelper;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.FixMethodOrder;
-import org.junit.Test;
-import org.junit.runners.MethodSorters;
-
-import com.baeldung.cassandra.batch.CassandraConnector;
 import com.baeldung.cassandra.batch.domain.Product;
 import com.baeldung.cassandra.batch.repository.KeyspaceRepository;
 import com.baeldung.cassandra.batch.repository.ProductRepository;
@@ -26,10 +7,25 @@ import com.datastax.oss.driver.api.core.CqlIdentifier;
 import com.datastax.oss.driver.api.core.CqlSession;
 import com.datastax.oss.driver.api.core.cql.ColumnDefinition;
 import com.datastax.oss.driver.api.core.cql.ResultSet;
+import org.junit.Before;
+import org.junit.FixMethodOrder;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.runners.MethodSorters;
+import org.testcontainers.containers.CassandraContainer;
+
+import java.net.InetSocketAddress;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ProductRepositoryIntegrationTest {
-
+    @Rule
+    public CassandraContainer<?> cassandra = new CassandraContainer<>("cassandra:3.11.2");
     private KeyspaceRepository schemaRepository;
 
     private ProductRepository productRepository;
@@ -39,21 +35,20 @@ public class ProductRepositoryIntegrationTest {
     private final String KEYSPACE_NAME = "testBaeldungKeyspace";
     private final String PRODUCT = "product";
 
-    @BeforeClass
-    public static void init() throws ConfigurationException, TTransportException, IOException, InterruptedException {
-        // Start an embedded Cassandra Server
-        EmbeddedCassandraServerHelper.startEmbeddedCassandra(20000L);
-    }
-
     @Before
     public void connect() {
-        CassandraConnector client = new CassandraConnector();
-        client.connect("127.0.0.1", 9142,"datacenter1");
-        session = client.getSession();
-        schemaRepository = new KeyspaceRepository(client.getSession());
+        cassandra.start();
+
+        this.session =  CqlSession
+                .builder()
+                .addContactPoint(new InetSocketAddress(cassandra.getHost(),cassandra.getFirstMappedPort()))
+                .withLocalDatacenter("datacenter1")
+                .build();
+
+        schemaRepository = new KeyspaceRepository(this.session);
         schemaRepository.createKeyspace(KEYSPACE_NAME, 1);
         schemaRepository.useKeyspace(KEYSPACE_NAME);
-        productRepository = new ProductRepository(client.getSession());
+        productRepository = new ProductRepository(this.session);
     }
     
     @Test
@@ -114,14 +109,7 @@ public class ProductRepositoryIntegrationTest {
         assertEquals(productList.get(0).getPrice(), 12f,0f);
         assertEquals(productList.get(1).getPrice(), 12f,0f);
     }
-    
 
-
-    @AfterClass
-    public static void cleanup() {
-        EmbeddedCassandraServerHelper.cleanEmbeddedCassandra();
-    }
-    
     private Product getTestProduct() {
         Product product = new Product();
         product.setProductName("Banana");
