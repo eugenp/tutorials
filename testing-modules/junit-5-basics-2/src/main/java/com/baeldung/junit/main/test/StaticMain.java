@@ -17,7 +17,6 @@ import org.apache.commons.cli.ParseException;
 public class StaticMain {
 
     public static void main(String[] args) {
-
         System.out.println("Received input parameters: " + Arrays.asList(args));
 
         processRequest(args);
@@ -54,7 +53,6 @@ public class StaticMain {
     }
 
     public static Options getOptions() {
-
         Option inputTypeOption = Option.builder("i")
             .longOpt("input")
             .required(true)
@@ -70,7 +68,6 @@ public class StaticMain {
             .build();
 
         Options options = new Options();
-
         options.addOption(inputTypeOption);
         options.addOption(fileNameOption);
         return options;

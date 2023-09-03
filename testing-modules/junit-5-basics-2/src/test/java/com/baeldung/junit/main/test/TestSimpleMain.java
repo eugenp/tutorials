@@ -40,10 +40,8 @@ public class TestSimpleMain {
         System.setIn(fips);
         System.setOut(out);
 
-        //execute
         SimpleMain.main(arguments);
 
-        //verify
         String consoleOutput = byteArrayOutputStream.toString(Charset.defaultCharset());
         assertTrue(consoleOutput.contains("Calculated sum: 6"));
 
@@ -63,10 +61,8 @@ public class TestSimpleMain {
         System.setIn(fips);
         System.setOut(out);
 
-        //execute
         SimpleMain.main(arguments);
 
-        //verify
         String consoleOutput = byteArrayOutputStream.toString(Charset.defaultCharset());
         assertTrue(consoleOutput.contains("Calculated sum: 10"));
 

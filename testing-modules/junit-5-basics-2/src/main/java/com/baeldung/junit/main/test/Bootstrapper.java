@@ -55,7 +55,6 @@ public class Bootstrapper {
             .build();
 
         Options options = new Options();
-
         options.addOption(inputTypeOption);
         options.addOption(fileNameOption);
         return options;
