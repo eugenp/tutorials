@@ -17,10 +17,4 @@ public interface ProductRepository extends CassandraRepository<Product, UUID> {
 
     @Query("select * from product where product_id = :productId and product_name in :productNames")
     List<Product> findByProductIdAndNames(@Param("productId") UUID productId, @Param("productNames") List<String> productNames);
-
-    @Query("select * from product where product_id in :productIds")
-    List<Product> findByProductIds(@Param("productIds") UUID[] productIds);
-
-    @Query("select * from product where product_id = :productId and product_name in :productNames")
-    List<Product> findByProductIdAndNames(@Param("productId") UUID productId, @Param("productNames") String[] productNames);
 }

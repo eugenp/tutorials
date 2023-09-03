@@ -3,7 +3,6 @@ package org.baeldung.inquery;
 import com.datastax.driver.core.Cluster;
 import com.datastax.driver.core.Session;
 import com.datastax.driver.core.utils.UUIDs;
-import com.datastax.oss.driver.api.core.type.codec.CodecNotFoundException;
 import org.baeldung.inquery.model.Product;
 import org.baeldung.inquery.repository.ProductRepository;
 import org.junit.jupiter.api.BeforeAll;
@@ -19,8 +18,7 @@ import java.util.List;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 @Testcontainers
@@ -77,41 +75,6 @@ class ProductRepositoryIntegrationTest {
             List<Product> savedProducts = productRepository.findByProductIds(List.of(productId1, productId2));
             assertTrue(savedProducts.contains(product1));
             assertTrue(savedProducts.contains(product2));
-        }
-
-        @Test
-        void givenValidProductsIsSaved_whenGettingIt2_thenRecordIsSaved() {
-            UUID productId1 = UUIDs.timeBased();
-            Product product1 = new Product(productId1, "Apple v1",
-                    "Apple NZ", 12.5);
-
-            UUID productId2 = UUIDs.timeBased();
-            Product product2 = new Product(productId2, "Apple v2",
-                    "Apple NZ", 12.5);
-
-            productRepository.saveAll(List.of(product1, product2));
-
-            assertThrows(CodecNotFoundException.class, () -> productRepository.findByProductIds(new UUID[] {productId1, productId2}));
-        }
-
-        @Test
-        void givenExistingProducts_whenFindByProductIdAndNames_thenProductsIsFetched() {
-            UUID productId1 = UUIDs.timeBased();
-            UUID productId2 = UUIDs.timeBased();
-            Product product1 = new Product(productId1, "Apple v1",
-                    "Apple NZ", 12.5);
-            Product product2 = new Product(productId1, "Apple v2",
-                    "Apple NZ", 15.5);
-            Product product3 = new Product(productId2, "Banana",
-                    "Banana Small", 5.5);
-            Product product4 = new Product(productId2, "Apple v2",
-                    "Banana Large", 15.5);
-
-            productRepository.saveAll(List.of(product1, product2, product3, product4));
-
-            String[] productNames = {"Apple v1", "Apple v2"};
-
-            assertThrows(CodecNotFoundException.class, () -> productRepository.findByProductIdAndNames(productId1, productNames));
         }
 
         @Test
