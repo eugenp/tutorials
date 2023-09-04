@@ -22,14 +22,14 @@ public class BigDecimalUnitTest {
 
     @Test
     public void givenTwoBigDecimals_whenAdd_thenCorrect() {
-        expected = new BigDecimal("1112222211.222222221");
+        expected = new BigDecimal("1112222211.2222222211");
         actual = bd1.add(bd2);
         assertEquals(expected, actual);
     }
 
     @Test
     public void givenTwoBigDecimals_whenMultiply_thenCorrect() {
-        expected = new BigDecimal("1098765432110987654321.975308641");
+        expected = new BigDecimal("123030014929277547.5030955772112635269");
         actual = bd1.multiply(bd2);
         assertEquals(expected, actual);
     }
