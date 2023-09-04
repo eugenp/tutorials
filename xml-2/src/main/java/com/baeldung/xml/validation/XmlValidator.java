@@ -44,7 +44,7 @@ public class XmlValidator {
         try {
             validator.validate(new StreamSource(getFile(xmlPath)));
         } catch (SAXParseException e) {}
-        xsdErrorHandler.getExceptions().forEach(e -> LOGGER.info(e.getMessage()));
+        xsdErrorHandler.getExceptions().forEach(e -> LOGGER.info(String.format("Line number: %s, Column number: %s. %s", e.getLineNumber(), e.getColumnNumber(), e.getMessage())));
         return xsdErrorHandler.getExceptions();
     }
 
