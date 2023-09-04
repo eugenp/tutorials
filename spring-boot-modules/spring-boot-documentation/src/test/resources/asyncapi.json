@@ -8,7 +8,7 @@
   "defaultContentType": "application/json",
   "servers": {
     "kafka": {
-      "url": "localhost:9092",
+      "url": "localhost:29092",
       "protocol": "kafka"
     }
   },
