@@ -4,6 +4,7 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
+import java.util.UUID;
 
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
@@ -20,6 +21,7 @@ public interface LicenseMapper {
     @Mapping(target = "endDate", ignore = true)
     @Mapping(target = "active", constant = "true")
     @Mapping(target = "renewalRequired", conditionExpression = "java(isEndDateInTwoWeeks(licenseDto))", source = ".")
+    @Mapping(target = "id", expression = "java(setId())")
     License toLicense(LicenseDto licenseDto);
 
     @AfterMapping
@@ -38,6 +40,10 @@ public interface LicenseMapper {
     default boolean isEndDateInTwoWeeks(LicenseDto licenseDto) {
         return licenseDto.getEndDate() != null && Duration.between(licenseDto.getEndDate(), LocalDateTime.now())
             .toDays() <= 14;
+    }
+
+    default UUID setId() {
+        return UUID.randomUUID();
     }
 
 }
