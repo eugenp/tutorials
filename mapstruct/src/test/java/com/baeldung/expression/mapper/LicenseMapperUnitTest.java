@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
@@ -21,7 +22,6 @@ class LicenseMapperUnitTest {
         licenseDto.setStartDate(LocalDateTime.now());
         License license = licenseMapper.toLicense(licenseDto);
         assertThat(license).isNotNull();
-        assertThat(license.getId()).isNotNull();
         assertThat(license.getEndDate()
             .toLocalDate()).isEqualTo(LocalDate.now()
             .plusYears(1));
@@ -34,7 +34,6 @@ class LicenseMapperUnitTest {
             .plusYears(2));
         License license = licenseMapper.toLicense(licenseDto);
         assertThat(license).isNotNull();
-        assertThat(license.getId()).isNotNull();
         assertThat(license.getStartDate()
             .toLocalDate()).isEqualTo(LocalDate.now());
     }
@@ -44,7 +43,6 @@ class LicenseMapperUnitTest {
         LicenseDto licenseDto = new LicenseDto();
         License license = licenseMapper.toLicense(licenseDto);
         assertThat(license).isNotNull();
-        assertThat(license.getId()).isNotNull();
         assertThat(license.getStartDate()
             .toLocalDate()).isEqualTo(LocalDate.now());
         assertThat(license.getEndDate()
@@ -61,8 +59,17 @@ class LicenseMapperUnitTest {
             .plusDays(10));
         License license = licenseMapper.toLicense(licenseDto);
         assertThat(license).isNotNull();
-        assertThat(license.getId()).isNotNull();
         assertThat(license.isRenewalRequired()).isTrue();
+    }
+
+    @Test
+    void givenLicenseDtoWithValidDetails_WhenMapperMethodIsInvoked_ThenLicenseShouldBePopulatedWithValidId() {
+        LicenseDto licenseDto = new LicenseDto();
+        licenseDto.setEndDate(LocalDateTime.now()
+            .plusDays(10));
+        License license = licenseMapper.toLicense(licenseDto);
+        assertThat(license).isNotNull();
+        assertThat(license.getId()).isNotNull();
     }
 
 }
