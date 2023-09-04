@@ -15,6 +15,10 @@ public class LicenseDto {
         return id;
     }
 
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
     public LocalDateTime getStartDate() {
         return startDate;
     }
