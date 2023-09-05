@@ -63,13 +63,15 @@ class LicenseMapperUnitTest {
     }
 
     @Test
-    void givenLicenseDtoWithValidDetails_WhenMapperMethodIsInvoked_ThenLicenseShouldBePopulatedWithValidId() {
+    void givenLicenseDtoWithoutId_WhenMapperMethodIsInvoked_ThenLicenseShouldBePopulatedWithValidId() {
         LicenseDto licenseDto = new LicenseDto();
+        UUID id = UUID.randomUUID();
+        licenseDto.setId(id);
         licenseDto.setEndDate(LocalDateTime.now()
             .plusDays(10));
         License license = licenseMapper.toLicense(licenseDto);
         assertThat(license).isNotNull();
-        assertThat(license.getId()).isNotNull();
+        assertThat(license.getId()).isSameAs(id);
     }
 
 }
