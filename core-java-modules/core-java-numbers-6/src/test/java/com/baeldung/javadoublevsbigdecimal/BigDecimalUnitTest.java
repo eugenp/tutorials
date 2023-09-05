@@ -9,42 +9,41 @@ import java.math.RoundingMode;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BigDecimalUnitTest {
-    private BigDecimal bd1;
-    private BigDecimal bd2;
-    private BigDecimal expected;
-    private BigDecimal actual;
+    private BigDecimal bigDecimal1;
+    private BigDecimal bigDecimal2;
+
 
     @BeforeEach
     public void setup() {
-        bd1 = new BigDecimal("124567890.0987654321");
-        bd2 = new BigDecimal("987654321.123456789");
+        bigDecimal1 = new BigDecimal("124567890.0987654321");
+        bigDecimal2 = new BigDecimal("987654321.123456789");
     }
 
     @Test
     public void givenTwoBigDecimals_whenAdd_thenCorrect() {
-        expected = new BigDecimal("1112222211.2222222211");
-        actual = bd1.add(bd2);
+        BigDecimal expected = new BigDecimal("1112222211.2222222211");
+        BigDecimal actual = bigDecimal1.add(bigDecimal2);
         assertEquals(expected, actual);
     }
 
     @Test
     public void givenTwoBigDecimals_whenMultiply_thenCorrect() {
-        expected = new BigDecimal("123030014929277547.5030955772112635269");
-        actual = bd1.multiply(bd2);
+        BigDecimal expected = new BigDecimal("123030014929277547.5030955772112635269");
+        BigDecimal actual = bigDecimal1.multiply(bigDecimal2);
         assertEquals(expected, actual);
     }
 
     @Test
     public void givenTwoBigDecimals_whenSubtract_thenCorrect() {
-        expected = new BigDecimal("-863086431.0246913569");
-        actual = bd1.subtract(bd2);
+        BigDecimal expected = new BigDecimal("-863086431.0246913569");
+        BigDecimal actual = bigDecimal1.subtract(bigDecimal2);
         assertEquals(expected, actual);
     }
 
     @Test
     public void givenTwoBigDecimals_whenDivide_thenCorrect() {
-        expected = new BigDecimal("0.13");
-        actual = bd1.divide(bd2, 2, RoundingMode.HALF_UP);
+        BigDecimal expected = new BigDecimal("0.13");
+        BigDecimal actual = bigDecimal1.divide(bigDecimal2, 2, RoundingMode.HALF_UP);
         assertEquals(expected, actual);
     }
 }
