@@ -12,18 +12,18 @@ import java.util.Set;
 
 import org.apache.tika.mime.MimeType;
 import org.apache.tika.mime.MimeTypeException;
-import org.apache.tika.mime.MimeTypes;
+
 import org.junit.Test;
 
 import com.j256.simplemagic.ContentInfo;
 
 public class ExtensionFromMimeTypeUnitTest {
-    public static final String JPEG_EXT = "image/jpeg";
+    private static final String IMG_MIME_TYPE = "image/jpeg";
     @Test
     public void whenUsingTika_thenGetFileExtension() throws MimeTypeException {
         List<String> SUPPORTED_EXTENSIONS = Arrays.asList(".jpg", ".jpeg", ".jpe", ".jif", ".jfif", ".jfi");
-        MimeTypes allTypes = MimeTypes.getDefaultMimeTypes();
-        MimeType type = allTypes.forName(JPEG_EXT);
+        org.apache.tika.mime.MimeTypes allTypes = org.apache.tika.mime.MimeTypes.getDefaultMimeTypes();
+        MimeType type = allTypes.forName(IMG_MIME_TYPE);
         String extension = type.getExtension();
         assertEquals(".jpg", extension);
         List<String> supportedExtensions = type.getExtensions();
@@ -33,14 +33,14 @@ public class ExtensionFromMimeTypeUnitTest {
     @Test
     public void  whenUsingJodd_thenGetFileExtension() {
         String[] supportedExtensions = {"jpeg","jpg","jpe"};
-        String[] extensionsByMimeTypes = jodd.net.MimeTypes.findExtensionsByMimeTypes(JPEG_EXT, false);
+        String[] extensionsByMimeTypes = jodd.net.MimeTypes.findExtensionsByMimeTypes(IMG_MIME_TYPE, false);
         assertArrayEquals(supportedExtensions, extensionsByMimeTypes);
     }
 
     @Test
     public void whenUsingMimetypesFileTypeMap_thenGetFileExtension() {
         String[] supportedExtensions = {"jpeg","jpg","jpe"};
-        ContentInfo contentInfo = new ContentInfo("", JPEG_EXT, "", true);
+        ContentInfo contentInfo = new ContentInfo("", IMG_MIME_TYPE, "", true);
         String[] fileExtensions = contentInfo.getFileExtensions();
         assertArrayEquals(supportedExtensions, fileExtensions);
     }
