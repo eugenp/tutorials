@@ -22,9 +22,9 @@ public class ServerDebuggingApplication {
     
     @Bean
     public SecurityWebFilterChain debuggingServerSpringSecurityFilterChain(ServerHttpSecurity http) {
-        http.authorizeExchange()
-            .anyExchange()
-            .permitAll();
+        http.authorizeExchange(exchanges  -> exchanges
+          .anyExchange()
+          .permitAll());
         return http.build();
     }
 }
