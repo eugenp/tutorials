@@ -16,9 +16,8 @@ public class WebClientApplication {
 
     @Bean
     public SecurityWebFilterChain filterChain(ServerHttpSecurity http) {
-        http.csrf().disable()
-          .authorizeExchange()
-          .anyExchange().permitAll();
+        http.csrf(csrf -> csrf.disable())
+          .authorizeExchange(exchanges  -> exchanges.anyExchange().permitAll());
         return http.build();
     }
 }
