@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.tika.mime.MimeType;
 import org.apache.tika.mime.MimeTypeException;
 
 import org.junit.Test;
@@ -23,7 +22,7 @@ public class ExtensionFromMimeTypeUnitTest {
     public void whenUsingTika_thenGetFileExtension() throws MimeTypeException {
         List<String> SUPPORTED_EXTENSIONS = Arrays.asList(".jpg", ".jpeg", ".jpe", ".jif", ".jfif", ".jfi");
         org.apache.tika.mime.MimeTypes allTypes = org.apache.tika.mime.MimeTypes.getDefaultMimeTypes();
-        MimeType type = allTypes.forName(IMG_MIME_TYPE);
+        org.apache.tika.mime.MimeType type = allTypes.forName(IMG_MIME_TYPE);
         String extension = type.getExtension();
         assertEquals(".jpg", extension);
         List<String> supportedExtensions = type.getExtensions();
