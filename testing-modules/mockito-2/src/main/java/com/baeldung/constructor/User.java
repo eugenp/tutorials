@@ -2,7 +2,7 @@ package com.baeldung.constructor;
 
 public class User {
 
-    private UserService userService;
+    private final UserService userService;
 
     public User() {
         this.userService = new UserService();

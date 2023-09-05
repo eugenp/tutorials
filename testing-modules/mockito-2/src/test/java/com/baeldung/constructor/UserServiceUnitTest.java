@@ -11,9 +11,7 @@ class UserServiceUnitTest {
 
     @Test
     void whenConstructorInvokedWithInitializer_ThenMockObjectShouldBeCreated(){
-        try(MockedConstruction<UserService> mockUserService = Mockito.mockConstruction(UserService.class,(mock,context)->{
-            when(mock.getUserName()).thenReturn("John Doe");
-        })){
+        try(MockedConstruction<UserService> mockUserService = Mockito.mockConstruction(UserService.class,(mock,context)-> when(mock.getUserName()).thenReturn("John Doe"))){
             User user = new User();
             Assertions.assertEquals(1,mockUserService.constructed().size());
             Assertions.assertEquals("John Doe",user.getUserName());
@@ -31,9 +29,7 @@ class UserServiceUnitTest {
 
     @Test
     void whenConstructorInvokedWithParameters_ThenMockObjectShouldBeCreated(){
-        try(MockedConstruction<UserService> mockUserService = Mockito.mockConstruction(UserService.class,(mock, context) -> {
-            when(mock.getUserName()).thenReturn("John Doe");
-        })){
+        try(MockedConstruction<UserService> mockUserService = Mockito.mockConstruction(UserService.class,(mock, context) -> when(mock.getUserName()).thenReturn("John Doe"))){
             User user = new User("Mike");
             Assertions.assertEquals(1,mockUserService.constructed().size());
             Assertions.assertEquals("John Doe",user.getUserName());
