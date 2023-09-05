@@ -1,8 +1,14 @@
 package com.baeldung.extension;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.tika.mime.MimeType;
 import org.apache.tika.mime.MimeTypeException;
@@ -12,36 +18,47 @@ import org.junit.Test;
 import com.j256.simplemagic.ContentInfo;
 
 public class ExtensionFromMimeTypeUnitTest {
-    public static final String PNG_EXT = "image/png";
+    public static final String JPEG_EXT = "image/jpeg";
     @Test
     public void whenUsingTika_thenGetFileExtension() throws MimeTypeException {
+        List<String> SUPPORTED_EXTENSIONS = Arrays.asList(".jpg", ".jpeg", ".jpe", ".jif", ".jfif", ".jfi");
         MimeTypes allTypes = MimeTypes.getDefaultMimeTypes();
-        MimeType type = allTypes.forName(PNG_EXT);
+        MimeType type = allTypes.forName(JPEG_EXT);
         String extension = type.getExtension();
-        assertEquals(".png", extension);
+        assertEquals(".jpg", extension);
+        List<String> supportedExtensions = type.getExtensions();
+        assertEquals(SUPPORTED_EXTENSIONS, supportedExtensions);
     }
 
     @Test
     public void  whenUsingJodd_thenGetFileExtension() {
-        String fileExtension = jodd.net.MimeTypes.findExtensionsByMimeTypes(PNG_EXT,false)[0];
-        assertEquals("png", fileExtension);
+        String[] supportedExtensions = {"jpeg","jpg","jpe"};
+        String[] extensionsByMimeTypes = jodd.net.MimeTypes.findExtensionsByMimeTypes(JPEG_EXT, false);
+        assertArrayEquals(supportedExtensions, extensionsByMimeTypes);
     }
 
     @Test
     public void whenUsingMimetypesFileTypeMap_thenGetFileExtension() {
-        ContentInfo contentInfo = new ContentInfo("", PNG_EXT, "", true);
+        String[] supportedExtensions = {"jpeg","jpg","jpe"};
+        ContentInfo contentInfo = new ContentInfo("", JPEG_EXT, "", true);
         String[] fileExtensions = contentInfo.getFileExtensions();
-        assertEquals("png", fileExtensions[0]);
+        assertArrayEquals(supportedExtensions, fileExtensions);
     }
 
     @Test
     public void whenUsingCustomLogic_thenGetFileExtension() {
-        Map<String, String> mimeToExtensionMap = new HashMap<>();
-        mimeToExtensionMap.put("application/pdf", "pdf");
-        mimeToExtensionMap.put("image/jpeg", "jpg");
-        mimeToExtensionMap.put("image/png", "png");
-        String fileExtension = mimeToExtensionMap.get(PNG_EXT);
-        if (fileExtension!= null)
-            assertEquals("png", fileExtension);
+        Map<String, Set<String>> mimeExtensionsMap = new HashMap<>();
+        Set<String> supportedExtensions = new HashSet<>(Arrays.asList(".jpeg",".jpg",".jpe"));
+        addMimeExtensions(mimeExtensionsMap, "image/jpeg", ".jpeg");
+        addMimeExtensions(mimeExtensionsMap, "image/jpeg", ".jpg");
+        addMimeExtensions(mimeExtensionsMap, "image/jpeg", ".jpe");
+
+        String mimeTypeToLookup = "image/jpeg";
+        Set<String> extensions = mimeExtensionsMap.get(mimeTypeToLookup);
+        assertEquals(supportedExtensions, extensions);
+    }
+
+    private void addMimeExtensions(Map<String, Set<String>> map, String mimeType, String extension) {
+        map.computeIfAbsent(mimeType, k -> new HashSet<>()).add(extension);
     }
 }
