@@ -43,7 +43,6 @@
 
     <properties>
         <spring-cloud-dependencies.version>2021.0.7</spring-cloud-dependencies.version>
-        <logback.version>1.2.7</logback.version>
     </properties>
 
 </project>

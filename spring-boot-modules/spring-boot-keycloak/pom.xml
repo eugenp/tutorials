@@ -55,7 +55,7 @@
         <dependency>
             <groupId>wsdl4j</groupId>
             <artifactId>wsdl4j</artifactId>
-            <version>1.6.3</version>
+            <version>${wsdl4j.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -105,6 +105,7 @@
     <properties>
         <start-class>com.baeldung.keycloak.SpringBoot</start-class>
         <jaxb-runtime.version>4.0.0</jaxb-runtime.version>
+        <wsdl4j.version>1.6.3</wsdl4j.version>
         <jaxb2-maven-plugin.version>2.5.0</jaxb2-maven-plugin.version>
     </properties>
 

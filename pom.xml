@@ -474,7 +474,6 @@
                 <module>apache-spark</module>
 
                 <module>jenkins-modules</module>
-                <module>jhipster-6</module>
                 <module>jhipster-modules</module>
             </modules>
         </profile>
@@ -633,7 +632,6 @@
                 <module>apache-spark</module>
 
                 <module>jenkins-modules</module>
-                <module>jhipster-6</module>
                 <module>jhipster-modules</module>
             </modules>
 
@@ -788,6 +786,7 @@
                 <module>guava-modules</module>
                 <module>kubernetes-modules</module>
                 <module>libraries-concurrency</module>
+                <module>jhipster-6</module>
                 <module>libraries-testing</module>
                 <module>maven-modules</module>
                 <module>optaplanner</module>
@@ -1059,6 +1058,7 @@
                 <module>guava-modules</module>
                 <module>kubernetes-modules</module>
                 <module>libraries-concurrency</module>
+                <module>jhipster-6</module>
                 <module>libraries-testing</module>
                 <module>maven-modules</module>
                 <module>optaplanner</module>
@@ -1265,8 +1265,8 @@
 
         <!-- logging -->
         <!-- overwriting in the slf4j and logback in the hibernate-jpa, spring-data-eclipselink. When updated to the latest version remove the version from that module-->
-        <org.slf4j.version>2.0.7</org.slf4j.version>
-        <logback.version>1.4.11</logback.version>
+        <org.slf4j.version>1.7.32</org.slf4j.version>
+        <logback.version>1.2.7</logback.version>
 
         <!-- plugins -->
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
