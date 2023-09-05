@@ -66,7 +66,7 @@ public class ExtractCommonNameUnitTest {
             }
         }
 
-        for (String commonName: names) {
+        for (String commonName : names) {
             assertEquals(EXPECTED_CN, commonName);
         }
     }
@@ -80,13 +80,15 @@ public class ExtractCommonNameUnitTest {
     @Test
     void whenExtractCommonNameUsingRegex_thenIsOK() {
         X500Principal principal = certificate.getSubjectX500Principal();
-        String commonName = null;
+        List<String> names = new ArrayList<>();
         Pattern pattern = Pattern.compile("CN=([^,]+)");
         Matcher matcher = pattern.matcher(principal.getName());
-        if (matcher.find()) {
-            commonName = matcher.group(1);
+        while (matcher.find()) {
+            names.add(matcher.group(1));
         }
 
-        assertEquals(EXPECTED_CN, commonName);
+        for (String commonName : names) {
+            assertEquals(EXPECTED_CN, commonName);
+        }
     }
 }
