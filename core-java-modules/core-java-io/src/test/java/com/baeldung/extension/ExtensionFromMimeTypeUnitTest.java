@@ -1,5 +1,6 @@
 package com.baeldung.extension;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -17,44 +18,44 @@ import org.junit.Test;
 import com.j256.simplemagic.ContentInfo;
 
 public class ExtensionFromMimeTypeUnitTest {
-    private static final String IMG_MIME_TYPE = "image/jpeg";
+    private static final String IMAGE_JPEG_MIME_TYPE = "image/jpeg";
     @Test
     public void whenUsingTika_thenGetFileExtension() throws MimeTypeException {
-        List<String> SUPPORTED_EXTENSIONS = Arrays.asList(".jpg", ".jpeg", ".jpe", ".jif", ".jfif", ".jfi");
+        List<String> expectedExtensions = Arrays.asList(".jpg", ".jpeg", ".jpe", ".jif", ".jfif", ".jfi");
         org.apache.tika.mime.MimeTypes allTypes = org.apache.tika.mime.MimeTypes.getDefaultMimeTypes();
-        org.apache.tika.mime.MimeType type = allTypes.forName(IMG_MIME_TYPE);
-        String extension = type.getExtension();
-        assertEquals(".jpg", extension);
-        List<String> supportedExtensions = type.getExtensions();
-        assertEquals(SUPPORTED_EXTENSIONS, supportedExtensions);
+        org.apache.tika.mime.MimeType type = allTypes.forName(IMAGE_JPEG_MIME_TYPE);
+        String primaryExtension = type.getExtension();
+        assertEquals(".jpg", primaryExtension);
+        List<String> detectedExtensions = type.getExtensions();
+        assertThat(detectedExtensions).containsExactlyElementsOf(expectedExtensions);
     }
 
     @Test
     public void  whenUsingJodd_thenGetFileExtension() {
-        String[] supportedExtensions = {"jpeg","jpg","jpe"};
-        String[] extensionsByMimeTypes = jodd.net.MimeTypes.findExtensionsByMimeTypes(IMG_MIME_TYPE, false);
-        assertArrayEquals(supportedExtensions, extensionsByMimeTypes);
+        String[] expectedExtensions = {"jpeg","jpg","jpe"};
+        String[] detectedExtensions = jodd.net.MimeTypes.findExtensionsByMimeTypes(IMAGE_JPEG_MIME_TYPE, false);
+        assertThat(detectedExtensions).containsExactly(expectedExtensions);
     }
 
     @Test
     public void whenUsingMimetypesFileTypeMap_thenGetFileExtension() {
-        String[] supportedExtensions = {"jpeg","jpg","jpe"};
-        ContentInfo contentInfo = new ContentInfo("", IMG_MIME_TYPE, "", true);
-        String[] fileExtensions = contentInfo.getFileExtensions();
-        assertArrayEquals(supportedExtensions, fileExtensions);
+        String[] expectedExtensions = {"jpeg","jpg","jpe"};
+        ContentInfo contentInfo = new ContentInfo("", IMAGE_JPEG_MIME_TYPE, "", true);
+        String[] detectedExtensions = contentInfo.getFileExtensions();
+        assertThat(detectedExtensions).containsExactly(expectedExtensions);
     }
 
     @Test
     public void whenUsingCustomLogic_thenGetFileExtension() {
         Map<String, Set<String>> mimeExtensionsMap = new HashMap<>();
-        Set<String> supportedExtensions = new HashSet<>(Arrays.asList(".jpeg",".jpg",".jpe"));
+        Set<String> expectedExtensions = new HashSet<>(Arrays.asList(".jpeg",".jpg",".jpe"));
         addMimeExtensions(mimeExtensionsMap, "image/jpeg", ".jpeg");
         addMimeExtensions(mimeExtensionsMap, "image/jpeg", ".jpg");
         addMimeExtensions(mimeExtensionsMap, "image/jpeg", ".jpe");
 
         String mimeTypeToLookup = "image/jpeg";
-        Set<String> extensions = mimeExtensionsMap.get(mimeTypeToLookup);
-        assertEquals(supportedExtensions, extensions);
+        Set<String> detectedExtensions = mimeExtensionsMap.get(mimeTypeToLookup);
+        assertThat(detectedExtensions).containsExactlyElementsOf(expectedExtensions);
     }
 
     private void addMimeExtensions(Map<String, Set<String>> map, String mimeType, String extension) {
