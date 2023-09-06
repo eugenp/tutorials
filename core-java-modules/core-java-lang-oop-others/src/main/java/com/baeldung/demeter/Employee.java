@@ -1,23 +1,18 @@
 package com.baeldung.demeter;
 
 public class Employee {
-    private Department department = new Department();
-    private Manager manager;
+    private Department department;
 
-    public Employee() {
-
+    public Employee(Department department) {
+        this.department = department;
     }
 
-    Employee(Manager manager) {
-        this.manager = manager;
+    public void submitExpense(Expenses expenses) {
+        department.approveExpense(expenses);
     }
 
     public Department getDepartment() {
         return department;
-    }
-
-    public void submitExpense(Expenses expenses) {
-        manager.approveExpense(expenses);
     }
 
 }

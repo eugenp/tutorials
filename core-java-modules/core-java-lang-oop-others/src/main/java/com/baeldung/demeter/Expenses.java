@@ -10,7 +10,15 @@ public class Expenses {
         this.tax = tax;
     }
 
-    public double total() {
+    public double getTotal() {
+        return total;
+    }
+
+    public double getTax() {
+        return tax;
+    }
+
+    public double calculateTotalWithTax() {
         return total + tax;
     }
 }
