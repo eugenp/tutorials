@@ -370,6 +370,7 @@
                 <module>persistence-modules/spring-data-cassandra-reactive</module> <!--JAVA-21844-->
                 <module>java-nashorn</module>
                 <module>jeromq</module>
+                <module>spring-ejb-modules/ejb-beans</module>
             </modules>
 
         </profile>
@@ -544,6 +545,7 @@
                 <module>persistence-modules/java-cassandra</module> <!-- JAVA-21464 cassandra-unit library doesn't support to run with jdk9 and above -->
                 <module>persistence-modules/spring-data-cassandra-reactive</module> <!--JAVA-21844-->
                 <module>java-nashorn</module>
+                <module>spring-ejb-modules/ejb-beans</module>
             </modules>
 
         </profile>
