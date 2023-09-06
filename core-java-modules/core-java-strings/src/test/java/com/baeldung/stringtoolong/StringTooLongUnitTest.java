@@ -19,7 +19,7 @@ public class StringTooLongUnitTest {
     
     @Test
     public void whenStoringInFileTooLongString_thenNoCompilationError() throws IOException {
-        FileInputStream fis = new FileInputStream("src/main/resources/stephenking.txt");
+        FileInputStream fis = new FileInputStream("src/test/resources/stringtoolong.txt");
         String stringTooLong = IOUtils.toString(fis, "UTF-8");
         assertThat(stringTooLong).isNotEmpty();
     }
@@ -27,7 +27,7 @@ public class StringTooLongUnitTest {
     @Test
     public void whenStoringInPropertiesString_thenNoCompilationError() throws IOException {
         String sValue = null;
-        try (InputStream input = new FileInputStream("src/main/resources/config.properties")) {
+        try (InputStream input = new FileInputStream("src/test/resources/config.properties")) {
             Properties prop = new Properties();
             prop.load(input);
             sValue = prop.getProperty("string.too.long");
