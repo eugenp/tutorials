@@ -146,6 +146,7 @@
         <module>core-java-uuid</module>
         <module>core-java-collections-maps-6</module>
         <module>core-java-records</module>
+        <module>core-java-hashmap-hashtable</module>
     </modules>
 
     <dependencyManagement>
