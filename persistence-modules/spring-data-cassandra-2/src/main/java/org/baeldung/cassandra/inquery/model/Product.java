@@ -1,4 +1,4 @@
-package org.baeldung.inquery.model;
+package org.baeldung.cassandra.inquery.model;
 
 import org.springframework.data.cassandra.core.cql.PrimaryKeyType;
 import org.springframework.data.cassandra.core.mapping.Column;

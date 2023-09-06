@@ -1,10 +1,10 @@
-package org.baeldung.inquery;
+package org.baeldung.cassandra.inquery;
 
 import com.datastax.driver.core.Cluster;
 import com.datastax.driver.core.Session;
 import com.datastax.driver.core.utils.UUIDs;
-import org.baeldung.inquery.model.Product;
-import org.baeldung.inquery.repository.ProductRepository;
+import org.baeldung.cassandra.inquery.model.Product;
+import org.baeldung.cassandra.inquery.repository.ProductRepository;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;

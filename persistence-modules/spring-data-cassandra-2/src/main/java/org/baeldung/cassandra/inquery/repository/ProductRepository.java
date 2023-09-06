@@ -1,6 +1,6 @@
-package org.baeldung.inquery.repository;
+package org.baeldung.cassandra.inquery.repository;
 
-import org.baeldung.inquery.model.Product;
+import org.baeldung.cassandra.inquery.model.Product;
 import org.springframework.data.cassandra.repository.CassandraRepository;
 import org.springframework.data.cassandra.repository.Query;
 import org.springframework.data.repository.query.Param;
