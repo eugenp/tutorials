@@ -33,7 +33,7 @@ public class ClampFunctionUnitTest {
      * This method uses the clamp() method introduced in Java 21
     @Test
     public void givenValueWithinRange_whenClamp_thenReturnValue() {
-        assertEquals(20, Math.clamp(20, 67,98));
+        assertEquals(20, Math.clamp(20, 17, 98));
     }
     */
 
