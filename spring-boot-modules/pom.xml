@@ -98,6 +98,10 @@
         <module>spring-boot-properties-3</module>
         <module>spring-boot-properties-4</module>
         <module>spring-boot-properties-migrator-demo</module>
+        <module>spring-boot-aws</module>
+        <module>spring-boot-keycloak-adapters</module>
+        <module>spring-boot-mvc-legacy</module>
+        <module>spring-boot-springdoc-2</module>
         <module>spring-boot-documentation</module>
     </modules>
 

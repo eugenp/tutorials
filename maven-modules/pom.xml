@@ -47,6 +47,9 @@
         <module>version-collision</module>
         <module>version-overriding-plugins</module>
         <module>versions-maven-plugin</module>
+        <module>maven-pom-types</module>
+        <module>multimodulemavenproject</module>
+        <module>resume-from</module>
     </modules>
 
     <dependencyManagement>
