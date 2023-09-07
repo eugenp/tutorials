@@ -8,6 +8,9 @@
     <artifactId>parent-modules</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <name>parent-modules</name>
+    <modules>
+        <module>apache-poi-3</module>
+    </modules>
     <packaging>pom</packaging>
 
     <dependencies>
