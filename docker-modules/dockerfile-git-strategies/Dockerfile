@@ -1,4 +1,4 @@
-ADD . /project/
+ADD git-strategies /project/
 ADD /build/ /project/
 ADD /output/project.jar /project/
 
