@@ -22,6 +22,7 @@ public class KafkaTopicsAndPartitionsIntegrationTest {
     @Test
     public void givenTopic_andConsumerGroup_whenConsumersListenToEvents_thenConsumeItCorrectly() throws Exception {
         service.measureCelsiusAndPublish(10000);
+        Thread.sleep(1000);
         System.out.println(consumer.consumedRecords);
     }
 }
