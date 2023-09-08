@@ -10,6 +10,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Location {
+
     private String name;
     private List<Double> location;
 }
