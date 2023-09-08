@@ -113,6 +113,7 @@
         <module>java-mongodb</module>
         <module>questdb</module>
         <module>neo4j</module>
+        <module>spring-data-jpa-repo-3</module>
     </modules>
 
     <properties>
