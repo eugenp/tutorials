@@ -1,4 +1,4 @@
-package com.baeldung.convert.exceldatatolist.jexcelapi;
+package com.baeldung.convert.exceldatatolist.jxl;
 
 import java.io.File;
 import java.io.IOException;
