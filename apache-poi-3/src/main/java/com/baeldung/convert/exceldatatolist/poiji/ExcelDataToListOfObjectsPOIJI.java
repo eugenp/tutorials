@@ -8,7 +8,6 @@ import com.poiji.bind.Poiji;
 
 public class ExcelDataToListOfObjectsPOIJI {
     public static List<FoodInfo> excelDataToListOfObjets_withPOIJI(String fileLocation){
-        List<FoodInfo> foodData = Poiji.fromExcel(new File(fileLocation), FoodInfo.class);
-        return foodData;
+        return Poiji.fromExcel(new File(fileLocation), FoodInfo.class);
     }
 }
