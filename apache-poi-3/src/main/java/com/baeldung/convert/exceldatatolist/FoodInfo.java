@@ -2,35 +2,23 @@ package com.baeldung.convert.exceldatatolist;
 
 import com.poiji.annotation.ExcelCellName;
 
-import io.github.millij.poi.ss.model.annotations.Sheet;
-import io.github.millij.poi.ss.model.annotations.SheetColumn;
-
-@Sheet
 public class FoodInfo {
 
     @ExcelCellName("Category")
-    @SheetColumn("Category")
     private String category; //food category
     @ExcelCellName("Name")
-    @SheetColumn("Name")
     private String name; // food name
     @ExcelCellName("Measure")
-    @SheetColumn("Measure")
     private String measure;
     @ExcelCellName("Calories")
-    @SheetColumn("Calories")
     private double calories; //amount of calories in kcal/measure
     @ExcelCellName("Protein")
-    @SheetColumn("Protein")
     private double protein; //amount of protein in grams/measure
     @ExcelCellName("Fat")
-    @SheetColumn("Fat")
     private double fat; //amount of fat in grams/measure
     @ExcelCellName("Carbs")
-    @SheetColumn("Carbs")
     private double carbs; //amount of carbs in grams/measure
     @ExcelCellName("Fiber")
-    @SheetColumn("Fiber")
     private double fiber; //amount of dietary fiber in grams/measure
 
     @Override
