@@ -43,6 +43,17 @@
             <version>${angus-activation.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.jodd</groupId>
+            <artifactId>jodd-util</artifactId>
+            <version>6.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.j256.simplemagic</groupId>
+            <artifactId>simplemagic</artifactId>
+            <version>1.17</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -54,6 +65,13 @@
             </resource>
         </resources>
         <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
