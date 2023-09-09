@@ -11,4 +11,5 @@
 - [Java Program to Calculate the Standard Deviation](https://www.baeldung.com/java-calculate-standard-deviation)
 - [Java Program to Print Pascal’s Triangle](https://www.baeldung.com/java-pascal-triangle)
 - [Java Money and the Currency API](http://www.baeldung.com/java-money-and-currency)
+- [Clamp Function in Java](https://www.baeldung.com/java-clamp-function)
 - More articles: [[<-- Prev]](/core-java-modules/core-java-lang-math-2)
