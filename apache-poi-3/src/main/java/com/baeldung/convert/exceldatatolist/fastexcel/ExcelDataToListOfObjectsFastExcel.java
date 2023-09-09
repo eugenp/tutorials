@@ -29,7 +29,7 @@ public class ExcelDataToListOfObjectsFastExcel {
                 FoodInfo food = new FoodInfo();
                 food.setCategory(row.getCellText(0));
                 food.setName(row.getCellText(1));
-                food.setMeasure(row.getCellAsString(2).toString());
+                food.setMeasure(row.getCellText(2));
                 food.setCalories(Double.parseDouble(row.getCellText(3)));
                 food.setProtein(Double.parseDouble(row.getCellText(4)));
                 food.setFat(Double.parseDouble(row.getCellText(5)));
