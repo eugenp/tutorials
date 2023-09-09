@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 import static org.junit.Assert.*;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class KeyspaceRepositoryIntegrationTest {
+public class KeyspaceRepositoryLiveTest {
     @Rule
     public CassandraContainer<?> cassandra = new CassandraContainer<>("cassandra:3.11.2");
     private KeyspaceRepository schemaRepository;

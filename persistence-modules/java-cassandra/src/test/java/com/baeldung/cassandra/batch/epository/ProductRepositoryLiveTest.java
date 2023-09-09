@@ -23,7 +23,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class ProductRepositoryIntegrationTest {
+public class ProductRepositoryLiveTest {
     @Rule
     public CassandraContainer<?> cassandra = new CassandraContainer<>("cassandra:3.11.2");
     private KeyspaceRepository schemaRepository;

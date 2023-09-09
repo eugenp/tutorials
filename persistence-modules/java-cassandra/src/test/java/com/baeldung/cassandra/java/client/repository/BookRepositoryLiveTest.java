@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 
 import static org.junit.Assert.*;
 
-public class BookRepositoryIntegrationTest {
+public class BookRepositoryLiveTest {
     @Rule
     public CassandraContainer<?> cassandra = new CassandraContainer<>("cassandra:3.11.2");
 
