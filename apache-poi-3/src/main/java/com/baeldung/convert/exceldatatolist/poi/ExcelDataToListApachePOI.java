@@ -20,7 +20,7 @@ public class ExcelDataToListApachePOI {
         Workbook workbook = new XSSFWorkbook(file);
         Sheet sheet = workbook.getSheetAt(0);
         List<FoodInfo> foodData = new ArrayList<FoodInfo>();
-        DataFormatter datFormatter = new DataFormatter();
+        DataFormatter dataFormatter = new DataFormatter();
         for (int n = 1; n < sheet.getPhysicalNumberOfRows(); n++) {
             Row row = sheet.getRow(n);
             FoodInfo foodInfo = new FoodInfo();
@@ -29,8 +29,8 @@ public class ExcelDataToListApachePOI {
             foodInfo.setCategory(row.getCell(i)
                 .getRichStringCellValue()
                 .getString());
-            foodInfo.setName(datFormatter.formatCellValue(row.getCell(++i)));
-            foodInfo.setMeasure(datFormatter.formatCellValue(row.getCell(++i)));
+            foodInfo.setName(dataFormatter.formatCellValue(row.getCell(++i)));
+            foodInfo.setMeasure(dataFormatter.formatCellValue(row.getCell(++i)));
             foodInfo.setCalories(row.getCell(++i).getNumericCellValue());
             foodInfo.setProtein(row.getCell(++i).getNumericCellValue());
             foodInfo.setFat(row.getCell(++i).getNumericCellValue());
