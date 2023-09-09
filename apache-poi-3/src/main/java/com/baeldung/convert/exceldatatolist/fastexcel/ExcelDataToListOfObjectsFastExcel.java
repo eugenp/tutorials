@@ -20,22 +20,21 @@ public class ExcelDataToListOfObjectsFastExcel {
         try (FileInputStream file = new FileInputStream(fileLocation);
             ReadableWorkbook wb = new ReadableWorkbook(file)) {
             Sheet sheet = wb.getFirstSheet();
-            Stream<Row> rowsStream = sheet.openStream();
-            Iterator<Row> rows = rowsStream.iterator();
-            while (rows.hasNext()) {
-                Row currentRow  = rows.next();
-                FoodInfo food = new FoodInfo();
-                if(currentRow.getRowNum() == 1) {
+            for (Row r:
+                sheet.read()
+            ) {
+                if(r.getRowNum() == 1) {
                     continue;
                 }
-                food.setCategory(currentRow.getCellText(0));
-                food.setName(currentRow.getCellText(1));
-                food.setMeasure(currentRow.getCellAsString(2).toString());
-                food.setCalories(Double.parseDouble(currentRow.getCellText(3)));
-                food.setProtein(Double.parseDouble(currentRow.getCellText(4)));
-                food.setFat(Double.parseDouble(currentRow.getCellText(5)));
-                food.setCarbs(Double.parseDouble(currentRow.getCellText(6)));
-                food.setFiber(Double.parseDouble(currentRow.getCellText(7)));
+                FoodInfo food = new FoodInfo();
+                food.setCategory(r.getCellText(0));
+                food.setName(r.getCellText(1));
+                food.setMeasure(r.getCellAsString(2).toString());
+                food.setCalories(Double.parseDouble(r.getCellText(3)));
+                food.setProtein(Double.parseDouble(r.getCellText(4)));
+                food.setFat(Double.parseDouble(r.getCellText(5)));
+                food.setCarbs(Double.parseDouble(r.getCellText(6)));
+                food.setFiber(Double.parseDouble(r.getCellText(7)));
 
                 foodData.add(food);
 
