@@ -4,6 +4,10 @@ public class PaymentProcessor {
 
     private final PaymentService paymentService;
 
+    public PaymentProcessor(PaymentService paymentService) {
+        this.paymentService = paymentService;
+    }
+
     public PaymentProcessor() {
         this.paymentService = new PaymentService();
     }

@@ -11,7 +11,9 @@ class PaymentServiceUnitTest {
 
     @Test
     void whenConstructorInvokedWithInitializer_ThenMockObjectShouldBeCreated(){
-        try(MockedConstruction<PaymentService> mockPaymentService = Mockito.mockConstruction(PaymentService.class,(mock,context)-> when(mock.processPayment()).thenReturn("Credit"))){
+        try(MockedConstruction<PaymentService> mockPaymentService = Mockito.mockConstruction(PaymentService.class,(mock,context)-> {
+            when(mock.processPayment()).thenReturn("Credit");
+        })){
             PaymentProcessor paymentProcessor = new PaymentProcessor();
             Assertions.assertEquals(1,mockPaymentService.constructed().size());
             Assertions.assertEquals("Credit", paymentProcessor.processPayment());
@@ -29,7 +31,9 @@ class PaymentServiceUnitTest {
 
     @Test
     void whenConstructorInvokedWithParameters_ThenMockObjectShouldBeCreated(){
-        try(MockedConstruction<PaymentService> mockPaymentService = Mockito.mockConstruction(PaymentService.class,(mock, context) -> when(mock.processPayment()).thenReturn("Credit"))){
+        try(MockedConstruction<PaymentService> mockPaymentService = Mockito.mockConstruction(PaymentService.class,(mock, context) -> {
+            when(mock.processPayment()).thenReturn("Credit");
+        })){
             PaymentProcessor paymentProcessor = new PaymentProcessor("Debit");
             Assertions.assertEquals(1,mockPaymentService.constructed().size());
             Assertions.assertEquals("Credit", paymentProcessor.processPayment());
@@ -51,5 +55,13 @@ class PaymentServiceUnitTest {
             Assertions.assertEquals("Online Banking", secondPaymentProcessor.processPayment());
             Assertions.assertNull(thirdPaymentProcessor.processPayment());
         }
+    }
+
+    @Test
+    void whenDependencyInjectionIsUsed_ThenMockObjectShouldBeCreated(){
+        PaymentService mockPaymentService = Mockito.mock(PaymentService.class);
+        PaymentProcessor paymentProcessor = new PaymentProcessor(mockPaymentService);
+        when(mockPaymentService.processPayment()).thenReturn("Online Banking");
+        Assertions.assertEquals("Online Banking", paymentProcessor.processPayment());
     }
 }
