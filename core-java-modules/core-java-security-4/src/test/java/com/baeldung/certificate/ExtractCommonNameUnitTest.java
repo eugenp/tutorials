@@ -39,7 +39,7 @@ public class ExtractCommonNameUnitTest {
     }
 
     @Test
-    void whenExtractCommonNameUsingBouncyCastle_thenIsOK() {
+    void whenUsingBouncyCastle_thenExtractCommonName() {
         X500Principal principal = certificate.getSubjectX500Principal();
         X500Name x500Name = new X500Name(principal.getName());
         RDN[] rdns = x500Name.getRDNs(BCStyle.CN);
@@ -55,7 +55,7 @@ public class ExtractCommonNameUnitTest {
     }
 
     @Test
-    void whenExtractCommonNameUsingLDAPAPI_thenIsOK() throws Exception {
+    void whenUsingLDAPAPI_thenExtractCommonName() throws Exception {
         X500Principal principal = certificate.getSubjectX500Principal();
         LdapName ldapDN = new LdapName(principal.getName());
         List<String> names = new ArrayList<>();
@@ -72,13 +72,13 @@ public class ExtractCommonNameUnitTest {
     }
 
     @Test
-    void whenExtractCommonNameUsingCryptacular_thenIsOK() {
+    void whenUsingCryptacular_thenExtractCommonName() {
         String commonName = CertUtil.subjectCN(certificate);
         assertEquals(EXPECTED_CN, commonName);
     }
 
     @Test
-    void whenExtractCommonNameUsingRegex_thenIsOK() {
+    void whenUsingRegex_thenExtractCommonName() {
         X500Principal principal = certificate.getSubjectX500Principal();
         List<String> names = new ArrayList<>();
         Pattern pattern = Pattern.compile("CN=([^,]+)");
