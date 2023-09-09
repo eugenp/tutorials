@@ -46,12 +46,12 @@
         <dependency>
             <groupId>org.jodd</groupId>
             <artifactId>jodd-util</artifactId>
-            <version>6.2.1</version>
+            <version>${jodd-util.version}</version>
         </dependency>
         <dependency>
             <groupId>com.j256.simplemagic</groupId>
             <artifactId>simplemagic</artifactId>
-            <version>1.17</version>
+            <version>${simplemagic.version}</version>
         </dependency>
 
     </dependencies>
@@ -153,6 +153,8 @@
         <fscontext.version>4.4.2</fscontext.version>
         <jakarta-activation-api.version>2.1.2</jakarta-activation-api.version>
         <angus-activation.version>2.0.1</angus-activation.version>
+        <jodd-util.version>6.2.1</jodd-util.version>
+        <simplemagic.version>1.17</simplemagic.version>
     </properties>
 
 </project>
