@@ -20,21 +20,21 @@ public class ExcelDataToListOfObjectsFastExcel {
         try (FileInputStream file = new FileInputStream(fileLocation);
             ReadableWorkbook wb = new ReadableWorkbook(file)) {
             Sheet sheet = wb.getFirstSheet();
-            for (Row r:
+            for (Row row:
                 sheet.read()
             ) {
-                if(r.getRowNum() == 1) {
+                if(row.getRowNum() == 1) {
                     continue;
                 }
                 FoodInfo food = new FoodInfo();
-                food.setCategory(r.getCellText(0));
-                food.setName(r.getCellText(1));
-                food.setMeasure(r.getCellAsString(2).toString());
-                food.setCalories(Double.parseDouble(r.getCellText(3)));
-                food.setProtein(Double.parseDouble(r.getCellText(4)));
-                food.setFat(Double.parseDouble(r.getCellText(5)));
-                food.setCarbs(Double.parseDouble(r.getCellText(6)));
-                food.setFiber(Double.parseDouble(r.getCellText(7)));
+                food.setCategory(row.getCellText(0));
+                food.setName(row.getCellText(1));
+                food.setMeasure(row.getCellAsString(2).toString());
+                food.setCalories(Double.parseDouble(row.getCellText(3)));
+                food.setProtein(Double.parseDouble(row.getCellText(4)));
+                food.setFat(Double.parseDouble(row.getCellText(5)));
+                food.setCarbs(Double.parseDouble(row.getCellText(6)));
+                food.setFiber(Double.parseDouble(row.getCellText(7)));
 
                 foodData.add(food);
 
