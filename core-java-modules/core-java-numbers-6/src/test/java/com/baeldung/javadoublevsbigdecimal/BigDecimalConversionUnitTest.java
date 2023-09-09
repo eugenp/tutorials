@@ -1,13 +1,12 @@
 package com.baeldung.javadoublevsbigdecimal;
 
-import org.junit.jupiter.api.Test;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-
+import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BigDecimalConversionUnitTest {
+    
     @Test
     void whenConvertingDoubleToBigDecimal_thenConversionIsCorrect() {
         double doubleValue = 123.456;
