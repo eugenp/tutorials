@@ -26,7 +26,6 @@ public class EOFDetectionUnitTest {
             assertEquals(LOREM_IPSUM, eofDetection.readWithFIleInputStream(pathToFile));
         } catch (IOException e) {
             fail(e.getMessage());
-            //throw new RuntimeException(e);
         }
     }
 
@@ -37,7 +36,6 @@ public class EOFDetectionUnitTest {
             assertEquals(LOREM_IPSUM, eofDetection.readWithBufferedReader(pathToFile));
         } catch (IOException e) {
             fail(e.getMessage());
-            //throw new RuntimeException(e);
         }
     }
 
@@ -48,7 +46,6 @@ public class EOFDetectionUnitTest {
             assertEquals(LOREM_IPSUM, eofDetection.readWithScanner(pathToFile));
         } catch (IOException e) {
             fail(e.getMessage());
-            //throw new RuntimeException(e);
         }
     }
 
@@ -59,7 +56,6 @@ public class EOFDetectionUnitTest {
             assertEquals(LOREM_IPSUM, eofDetection.readFileWithFileChannelAndByteBuffer(pathToFile));
         } catch (IOException e) {
             fail(e.getMessage());
-            //throw new RuntimeException(e);
         }
     }
 
