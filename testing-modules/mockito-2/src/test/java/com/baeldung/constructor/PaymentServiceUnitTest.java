@@ -11,9 +11,7 @@ class PaymentServiceUnitTest {
 
     @Test
     void whenConstructorInvokedWithInitializer_ThenMockObjectShouldBeCreated(){
-        try(MockedConstruction<PaymentService> mockPaymentService = Mockito.mockConstruction(PaymentService.class,(mock,context)-> {
-            when(mock.processPayment()).thenReturn("Credit");
-        })){
+        try(MockedConstruction<PaymentService> mockPaymentService = Mockito.mockConstruction(PaymentService.class,(mock,context)-> when(mock.processPayment()).thenReturn("Credit"))){
             PaymentProcessor paymentProcessor = new PaymentProcessor();
             Assertions.assertEquals(1,mockPaymentService.constructed().size());
             Assertions.assertEquals("Credit", paymentProcessor.processPayment());
@@ -31,9 +29,7 @@ class PaymentServiceUnitTest {
 
     @Test
     void whenConstructorInvokedWithParameters_ThenMockObjectShouldBeCreated(){
-        try(MockedConstruction<PaymentService> mockPaymentService = Mockito.mockConstruction(PaymentService.class,(mock, context) -> {
-            when(mock.processPayment()).thenReturn("Credit");
-        })){
+        try(MockedConstruction<PaymentService> mockPaymentService = Mockito.mockConstruction(PaymentService.class,(mock, context) -> when(mock.processPayment()).thenReturn("Credit"))){
             PaymentProcessor paymentProcessor = new PaymentProcessor("Debit");
             Assertions.assertEquals(1,mockPaymentService.constructed().size());
             Assertions.assertEquals("Credit", paymentProcessor.processPayment());
