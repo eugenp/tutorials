@@ -49,7 +49,7 @@
         <module>core-java-methods</module>
         <module>core-java-networking-3</module>
         <module>core-java-os</module>
-        <!--<module>core-java-perf-2</module> Need to fix JAVA-24545 -->
+        <module>core-java-perf-2</module> <!--Need to fix JAVA-24545-->
         <module>core-java-streams-4</module>
         <module>core-java-streams-5</module>
         <module>core-java-streams-collect</module>
