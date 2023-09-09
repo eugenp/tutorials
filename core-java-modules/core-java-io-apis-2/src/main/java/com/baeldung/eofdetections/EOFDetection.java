@@ -15,6 +15,8 @@ public class EOFDetection {
         while ((data = fis.read()) != -1) {
             baos.write(data);
         }
+        fis.close();
+        baos.close();
         return baos.toString();
     }
 
@@ -27,7 +29,9 @@ public class EOFDetection {
         while ((line = reader.readLine()) != null) {
             actualContent.append(line);
         }
-
+        fis.close();
+        isr.close();
+        reader.close();
         return actualContent.toString();
     }
 
@@ -39,7 +43,7 @@ public class EOFDetection {
             String line = scanner.nextLine();
             actualContent.append(line);
         }
-
+        scanner.close();
         return actualContent.toString();
     }
 
@@ -52,6 +56,7 @@ public class EOFDetection {
             buffer.clear();
         }
         fis.close();
+        channel.close();
         return StandardCharsets.UTF_8.decode(buffer).toString();
     }
 }
