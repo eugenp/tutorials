@@ -1,4 +1,4 @@
-package com.baeldung.concurrenthashmap;
+package com.baeldung.hashtableandconcurrenthashmap;
 
 import org.junit.Test;
 import java.util.ConcurrentModificationException;
@@ -7,7 +7,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-public class ConcurrentHashMapConcurrencyUnitTest {
+public class ConcurrentHashMapUnitTest {
     @Test
     public void givenEmptyConcurrentHashMap_whenValuesAreAdded_thenValuesCanBeRetrieved() {
         ConcurrentHashMap<String, String> concurrentHashMap = new ConcurrentHashMap<>();

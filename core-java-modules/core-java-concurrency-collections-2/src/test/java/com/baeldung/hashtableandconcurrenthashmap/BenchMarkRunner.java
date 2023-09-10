@@ -1,5 +1,6 @@
-package com.baeldung.jmh;
+package com.baeldung.hashtableandconcurrenthashmap;
 import org.openjdk.jmh.annotations.*;
+import org.openjdk.jmh.infra.Blackhole;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
@@ -15,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 @Warmup(iterations = 3)
 @Measurement(iterations = 5)
 @Threads(10) // 10 threads for the test
-public class HashTableAndConcurrentHashMap {
+public class BenchMarkRunner {
     private Hashtable<String, Integer> hashTable;
     private ConcurrentHashMap<String, Integer> concurrentHashMap;
 
@@ -35,9 +36,10 @@ public class HashTableAndConcurrentHashMap {
 
     @Benchmark
     @Group("hashtable")
-    public void benchmarkHashtableGet() {
+    public void benchmarkHashtableGet(Blackhole blackhole) {
         for (int i = 0; i < 10000; i++) {
-            hashTable.get(String.valueOf(i));
+            Integer value = hashTable.get(String.valueOf(i));
+            blackhole.consume(value);
         }
     }
 
@@ -51,15 +53,16 @@ public class HashTableAndConcurrentHashMap {
 
     @Benchmark
     @Group("concurrentHashMap")
-    public void benchmarkConcurrentHashMapGet() {
+    public void benchmarkConcurrentHashMapGet(Blackhole blackhole) {
         for (int i = 0; i < 10000; i++) {
-            concurrentHashMap.get(String.valueOf(i));
+            Integer value = concurrentHashMap.get(String.valueOf(i));
+            blackhole.consume(value);
         }
     }
 
     public static void main(String[] args) throws Exception {
         Options options = new OptionsBuilder()
-                .include(HashTableAndConcurrentHashMap.class.getSimpleName())
+                .include(BenchMarkRunner.class.getSimpleName())
                 .shouldFailOnError(true)
                 .shouldDoGC(true)
                 .jvmArgs("-server")

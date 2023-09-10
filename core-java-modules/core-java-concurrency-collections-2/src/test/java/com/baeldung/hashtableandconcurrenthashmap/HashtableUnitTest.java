@@ -1,4 +1,4 @@
-package com.baeldung.hashtable;
+package com.baeldung.hashtableandconcurrenthashmap;
 
 import org.junit.Test;
 import java.util.ConcurrentModificationException;
