@@ -12,7 +12,7 @@ public class ShallowCopyUnitTest {
 		original.addIngredient("Yoghurt");
 		original.addIngredient("Milk");
 		original.addIngredient("Banana");
-		Recipe copy = Recipe.shallowCopy(original);
+		Recipe copy = Recipe.shallow(original);
 		copy.addIngredient("Strawberries");
 		original.addIngredient("Peanut Butter");
 		
