@@ -13,4 +13,22 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcpkix-jdk15on</artifactId>
+            <version>${bouncycastle.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.cryptacular</groupId>
+            <artifactId>cryptacular</artifactId>
+            <version>${cryptacular.version}</version>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <bouncycastle.version>1.70</bouncycastle.version>
+        <cryptacular.version>1.2.6</cryptacular.version>
+    </properties>
+
 </project>
