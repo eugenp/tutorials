@@ -7,8 +7,7 @@ public class ThreadDump {
 
     private static void longRunningTask() {
         for (int i = 0; i < Integer.MAX_VALUE; i++) {
-            if (Thread.currentThread()
-                .isInterrupted()) {
+            if (Thread.currentThread().isInterrupted()) {
                 System.out.println("Interrupted!");
                 break;
             }
