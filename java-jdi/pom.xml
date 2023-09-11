@@ -14,10 +14,6 @@
         <relativePath>../parent-java</relativePath>
     </parent>
 
-    <dependencies>
-
-    </dependencies>
-
     <build>
         <finalName>java-jdi</finalName>
         <resources>
@@ -33,9 +29,6 @@
                 <configuration>
                     <source>${maven.compiler.source.version}</source>
                     <target>${maven.compiler.target.version}</target>
-                    <compilerArgs>
-                        <arg>--add-exports=jdk.jdi/com.sun.jdi=ALL-UNNAMED</arg>
-                    </compilerArgs>
                 </configuration>
             </plugin>
         </plugins>
