@@ -14,7 +14,7 @@ import com.baeldung.convert.exceldatatolist.poiji.ExcelDataToListOfObjectsPOIJI;
 
 import jxl.read.biff.BiffException;
 
-public class ExcelDataToListOfObjectsUnistTest {
+public class ExcelDataToListOfObjectsUnitTest {
 
     @Test
     public void whenParsingExcelFileWithPOIJI_thenConvertsToList() throws IOException {

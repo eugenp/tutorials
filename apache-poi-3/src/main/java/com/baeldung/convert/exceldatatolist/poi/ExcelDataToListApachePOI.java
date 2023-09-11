@@ -26,7 +26,7 @@ public class ExcelDataToListApachePOI {
             FoodInfo foodInfo = new FoodInfo();
             int i = row.getFirstCellNum();
 
-            foodInfo.setCategory(datFormatter.formatCellValue(row.getCell(i)));
+            foodInfo.setCategory(dataFormatter.formatCellValue(row.getCell(i)));
             foodInfo.setName(dataFormatter.formatCellValue(row.getCell(++i)));
             foodInfo.setMeasure(dataFormatter.formatCellValue(row.getCell(++i)));
             foodInfo.setCalories(row.getCell(++i).getNumericCellValue());
