@@ -1,45 +1,38 @@
 package com.baeldung.cassandra.java.client.repository;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertEquals;
+import com.datastax.driver.core.Cluster;
+import com.datastax.driver.core.ResultSet;
+import com.datastax.driver.core.Session;
+import org.junit.Before;
+import org.junit.FixMethodOrder;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.runners.MethodSorters;
+import org.testcontainers.containers.CassandraContainer;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.apache.cassandra.exceptions.ConfigurationException;
-import org.apache.thrift.transport.TTransportException;
-import org.cassandraunit.utils.EmbeddedCassandraServerHelper;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.FixMethodOrder;
-import org.junit.Test;
-import org.junit.runners.MethodSorters;
-
-import com.baeldung.cassandra.java.client.CassandraConnector;
-import com.datastax.driver.core.ResultSet;
-import com.datastax.driver.core.Session;
+import static org.junit.Assert.*;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class KeyspaceRepositoryIntegrationTest {
-
+public class KeyspaceRepositoryLiveTest {
+    @Rule
+    public CassandraContainer<?> cassandra = new CassandraContainer<>("cassandra:3.11.2");
     private KeyspaceRepository schemaRepository;
-
     private Session session;
-
-    @BeforeClass
-    public static void init() throws ConfigurationException, TTransportException, IOException, InterruptedException {
-        // Start an embedded Cassandra Server
-        EmbeddedCassandraServerHelper.startEmbeddedCassandra(20000L);
-    }
 
     @Before
     public void connect() {
-        CassandraConnector client = new CassandraConnector();
-        client.connect("127.0.0.1", 9142);
-        this.session = client.getSession();
+        cassandra.start();
+
+        this.session = Cluster
+                .builder()
+                .addContactPoint(cassandra.getHost())
+                .withPort(cassandra.getMappedPort(CassandraContainer.CQL_PORT))
+                .build()
+                .newSession();
+
         schemaRepository = new KeyspaceRepository(session);
     }
 
@@ -62,16 +55,11 @@ public class KeyspaceRepositoryIntegrationTest {
     public void whenDeletingAKeyspace_thenDoesNotExist() {
         String keyspaceName = "testBaeldungKeyspace";
 
-        // schemaRepository.createKeyspace(keyspaceName, "SimpleStrategy", 1);
+        schemaRepository.createKeyspace(keyspaceName, "SimpleStrategy", 1);
         schemaRepository.deleteKeyspace(keyspaceName);
 
         ResultSet result = session.execute("SELECT * FROM system_schema.keyspaces;");
         boolean isKeyspaceCreated = result.all().stream().anyMatch(r -> r.getString(0).equals(keyspaceName.toLowerCase()));
         assertFalse(isKeyspaceCreated);
-    }
-
-    @AfterClass
-    public static void cleanup() {
-        EmbeddedCassandraServerHelper.cleanEmbeddedCassandra();
     }
 }
