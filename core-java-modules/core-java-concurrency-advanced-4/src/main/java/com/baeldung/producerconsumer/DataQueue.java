@@ -6,10 +6,8 @@ import java.util.Queue;
 public class DataQueue {
     private final Queue<Message> queue = new LinkedList<>();
     private final int maxSize;
-    private final Object FULL_QUEUE = new Object();
-    private final Object EMPTY_QUEUE = new Object();
-
-    public boolean runFlag = true;
+    private final Object IS_NOT_FULL = new Object();
+    private final Object IS_NOT_EMPTY = new Object();
 
     DataQueue(int maxSize) {
         this.maxSize = maxSize;
@@ -23,39 +21,42 @@ public class DataQueue {
         return queue.isEmpty();
     }
 
-    public void waitOnFull() throws InterruptedException {
-        synchronized (FULL_QUEUE) {
-            FULL_QUEUE.wait();
+    public void waitIsNotFull() throws InterruptedException {
+        synchronized (IS_NOT_FULL) {
+            IS_NOT_FULL.wait();
         }
     }
 
-    public void waitOnEmpty() throws InterruptedException {
-        synchronized (EMPTY_QUEUE) {
-            EMPTY_QUEUE.wait();
-        }
-    }
-
-    public void notifyAllForFull() {
-        synchronized (FULL_QUEUE) {
-            FULL_QUEUE.notifyAll();
-        }
-    }
-
-    public void notifyAllForEmpty() {
-        synchronized (EMPTY_QUEUE) {
-            EMPTY_QUEUE.notifyAll();
+    public void waitIsNotEmpty() throws InterruptedException {
+        synchronized (IS_NOT_EMPTY) {
+            IS_NOT_EMPTY.wait();
         }
     }
 
     public void add(Message message) {
-        synchronized (queue) {
-            queue.add(message);
+        queue.add(message);
+        notifyIsNotEmpty();
+    }
+
+    public Message poll() {
+        Message mess = queue.poll();
+        notifyIsNotFull();
+        return mess;
+    }
+
+    public Integer getSize() {
+        return queue.size();
+    }
+
+    private void notifyIsNotFull() {
+        synchronized (IS_NOT_FULL) {
+            IS_NOT_FULL.notify();
         }
     }
 
-    public Message remove() {
-        synchronized (queue) {
-            return queue.poll();
+    private void notifyIsNotEmpty() {
+        synchronized (IS_NOT_EMPTY) {
+            IS_NOT_EMPTY.notify();
         }
     }
 }

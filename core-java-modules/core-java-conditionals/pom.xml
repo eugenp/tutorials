@@ -37,20 +37,19 @@
                     <compilerArgs>--enable-preview</compilerArgs>
                 </configuration>
             </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>${surefire.plugin.version}</version>
-                    <configuration>
-                        <argLine>--enable-preview</argLine>
-                    </configuration>
-                </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${surefire.plugin.version}</version>
+                <configuration>
+                    <argLine>--enable-preview</argLine>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
     <properties>
         <maven.compiler.source.version>14</maven.compiler.source.version>
-        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <maven.compiler.target.version>14</maven.compiler.target.version>
         <surefire.plugin.version>3.0.0-M3</surefire.plugin.version>
     </properties>

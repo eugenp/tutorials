@@ -98,6 +98,10 @@
         <module>spring-boot-properties-3</module>
         <module>spring-boot-properties-4</module>
         <module>spring-boot-properties-migrator-demo</module>
+        <module>spring-boot-aws</module>
+        <module>spring-boot-keycloak-adapters</module>
+        <module>spring-boot-mvc-legacy</module>
+        <module>spring-boot-springdoc-2</module>
         <module>spring-boot-documentation</module>
         <module>spring-boot-3-url-matching</module>
     </modules>
@@ -120,9 +124,5 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <properties>
-        <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
-    </properties>
 
 </project>
