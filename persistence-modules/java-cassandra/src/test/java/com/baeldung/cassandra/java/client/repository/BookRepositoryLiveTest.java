@@ -1,31 +1,24 @@
 package com.baeldung.cassandra.java.client.repository;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertEquals;
-
-import java.io.IOException;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import org.apache.cassandra.exceptions.ConfigurationException;
-import org.apache.thrift.transport.TTransportException;
-import org.cassandraunit.utils.EmbeddedCassandraServerHelper;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
-import com.baeldung.cassandra.java.client.CassandraConnector;
 import com.baeldung.cassandra.java.client.domain.Book;
+import com.datastax.driver.core.Cluster;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Session;
 import com.datastax.driver.core.exceptions.InvalidQueryException;
 import com.datastax.driver.core.utils.UUIDs;
+import org.junit.Before;
+import org.junit.Rule;
+import org.junit.Test;
+import org.testcontainers.containers.CassandraContainer;
 
-public class BookRepositoryIntegrationTest {
+import java.util.List;
+import java.util.stream.Collectors;
 
-    private KeyspaceRepository schemaRepository;
+import static org.junit.Assert.*;
+
+public class BookRepositoryLiveTest {
+    @Rule
+    public CassandraContainer<?> cassandra = new CassandraContainer<>("cassandra:3.11.2");
 
     private BookRepository bookRepository;
 
@@ -35,18 +28,18 @@ public class BookRepositoryIntegrationTest {
     final String BOOKS = "books";
     final String BOOKS_BY_TITLE = "booksByTitle";
 
-    @BeforeClass
-    public static void init() throws ConfigurationException, TTransportException, IOException, InterruptedException {
-        // Start an embedded Cassandra Server
-        EmbeddedCassandraServerHelper.startEmbeddedCassandra(20000L);
-    }
-
     @Before
     public void connect() {
-        CassandraConnector client = new CassandraConnector();
-        client.connect("127.0.0.1", 9142);
-        this.session = client.getSession();
-        schemaRepository = new KeyspaceRepository(session);
+        cassandra.start();
+
+        this.session = Cluster
+                .builder()
+                .addContactPoint(cassandra.getHost())
+                .withPort(cassandra.getMappedPort(CassandraContainer.CQL_PORT))
+                .build()
+                .newSession();
+
+        KeyspaceRepository schemaRepository = new KeyspaceRepository(session);
         schemaRepository.createKeyspace(KEYSPACE_NAME, "SimpleStrategy", 1);
         schemaRepository.useKeyspace(KEYSPACE_NAME);
         bookRepository = new BookRepository(session);
@@ -165,10 +158,5 @@ public class BookRepositoryIntegrationTest {
         bookRepository.deleteTable(BOOKS);
 
         session.execute("SELECT * FROM " + KEYSPACE_NAME + "." + BOOKS + ";");
-    }
-
-    @AfterClass
-    public static void cleanup() {
-        EmbeddedCassandraServerHelper.cleanEmbeddedCassandra();
     }
 }

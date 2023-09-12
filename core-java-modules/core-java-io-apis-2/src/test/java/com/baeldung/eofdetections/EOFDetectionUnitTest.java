@@ -18,12 +18,12 @@ public class EOFDetectionUnitTest {
     static final String LOREM_IPSUM = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum";
     String pathToFile = "sample.txt"; // init sample file path
     EOFDetection eofDetection = new EOFDetection();
-
     @Test
     @Order(1)
-    public void testWithFileInputStream() {
+    public void givenDummyText_whenReadWithFileInputStream_returnText() {
         try {
-            assertEquals(LOREM_IPSUM, eofDetection.readWithFIleInputStream(pathToFile));
+            String actualText = eofDetection.readWithFIleInputStream(pathToFile);
+            assertEquals(LOREM_IPSUM, actualText);
         } catch (IOException e) {
             fail(e.getMessage());
         }
@@ -31,9 +31,10 @@ public class EOFDetectionUnitTest {
 
     @Test
     @Order(2)
-    public void testReadFileWithBufferedReader() {
+    public void givenDummyText_whenReadFileWithBufferedReader_returnText() {
         try {
-            assertEquals(LOREM_IPSUM, eofDetection.readWithBufferedReader(pathToFile));
+            String actualText = eofDetection.readWithBufferedReader(pathToFile);
+            assertEquals(LOREM_IPSUM, actualText);
         } catch (IOException e) {
             fail(e.getMessage());
         }
@@ -41,9 +42,10 @@ public class EOFDetectionUnitTest {
 
     @Test
     @Order(3)
-    public void testReadFileWithScanner() {
+    public void givenDummyText_whenReadFileWithScanner_returnText() {
         try {
-            assertEquals(LOREM_IPSUM, eofDetection.readWithScanner(pathToFile));
+            String actualText = eofDetection.readWithScanner(pathToFile);
+            assertEquals(LOREM_IPSUM, actualText);
         } catch (IOException e) {
             fail(e.getMessage());
         }
@@ -51,14 +53,14 @@ public class EOFDetectionUnitTest {
 
     @Test
     @Order(4)
-    public void testReadFileWithFileChannelAndByteBuffer() {
+    public void givenDummyText_whenReadFileWithFileChannelAndByteBuffer_returnText() {
         try {
-            assertEquals(LOREM_IPSUM, eofDetection.readFileWithFileChannelAndByteBuffer(pathToFile));
+            String actualText = eofDetection.readFileWithFileChannelAndByteBuffer(pathToFile);
+            assertEquals(LOREM_IPSUM, actualText);
         } catch (IOException e) {
             fail(e.getMessage());
         }
     }
-
     @Test
     @Order(0)
     public void prepareFileForTest() {
