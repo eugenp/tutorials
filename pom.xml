@@ -813,7 +813,6 @@
                 <!-- Modules from default-first -->
 
                 <module>akka-modules</module>
-                <module>annotations</module>
                 <module>httpclient-simple</module>
                 <module>antlr</module>
                 <module>apache-kafka</module>
@@ -1088,7 +1087,6 @@
                 <!-- Modules from default-first -->
 
                 <module>akka-modules</module>
-                <module>annotations</module>
                 <module>antlr</module>
                 <module>apache-kafka</module>
                 <module>apache-kafka-2</module>
