@@ -93,6 +93,26 @@ class HttpClientTimeoutV4LiveTest extends GetRequestMockServer {
     }
 
     @Test
+    final void givenLowTimeout_whenExecutingRequestWithTimeout_thenException() {
+        final RequestConfig requestConfig = RequestConfig.custom()
+            .setConnectionRequestTimeout(5)
+            .setConnectTimeout(5)
+            .setSocketTimeout(2)
+            .build();
+
+        final CloseableHttpClient client = HttpClientBuilder.create()
+            .setDefaultRequestConfig(requestConfig)
+            .build();
+
+        final HttpGet request = new HttpGet("http://www.github.com");
+
+        assertThrows(ConnectTimeoutException.class, () -> {
+            response = client.execute(request);
+        });
+    }
+
+
+    @Test
     void whenSecuredRestApiIsConsumed_then200OK() throws IOException {
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();
 
