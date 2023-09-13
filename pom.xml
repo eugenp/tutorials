@@ -543,6 +543,7 @@
                 <module>persistence-modules/hibernate-ogm</module> <!-- hibernate-ogm wasn't updated because it doesn't support jakarta API -->
                 <module>persistence-modules/spring-data-cassandra-reactive</module> <!--JAVA-21844-->
                 <module>java-nashorn</module>
+                <module>jeromq</module>
                 <module>spring-ejb-modules/ejb-beans</module>
             </modules>
 
@@ -939,6 +940,7 @@
                 <module>gradle-modules/gradle/maven-to-gradle</module>
                 <module>persistence-modules/spring-data-neo4j</module>
                 <module>parent-boot-3</module>
+                <!--<module>java-panama</module> Java-19 module-->
             </modules>
 
             <properties>
@@ -1213,6 +1215,9 @@
                 <module>language-interop</module>
                 <module>gradle-modules/gradle/maven-to-gradle</module>
                 <module>persistence-modules/spring-data-neo4j</module>
+                <module>spring-actuator</module>
+                <module>spring-cloud-modules/spring-cloud-azure</module>
+                <module>spring-cloud-modules/spring-cloud-contract</module>
             </modules>
 
             <properties>
