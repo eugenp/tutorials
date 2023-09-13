@@ -2,7 +2,6 @@ package com.baeldung.httpclient.httpclient.conn;
 
 import java.io.IOException;
 
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;

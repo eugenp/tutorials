@@ -16,7 +16,7 @@ public class ApacheHttpClient5UnitTest {
     public static final String DUMMY_URL = "https://postman-echo.com/get";
 
     @Test
-    public void whenUseApacheHttpClient_thenCorrect() throws IOException {
+    void whenUseApacheHttpClient_thenCorrect() throws IOException {
         HttpGet request = new HttpGet(DUMMY_URL);
 
         try (CloseableHttpClient client = HttpClients.createDefault()) {
