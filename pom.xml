@@ -8,6 +8,7 @@
     <artifactId>parent-modules</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <name>parent-modules</name>
+
     <packaging>pom</packaging>
 
     <dependencies>
@@ -818,6 +819,7 @@
                 <module>apache-poi-2</module>
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
+                <module>apache-poi-3</module>
 
                 <module>asm</module>
                 <module>atomikos</module>
