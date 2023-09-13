@@ -117,7 +117,7 @@
         <module>rethinkdb</module>
         <module>scylladb</module>
         <module>spring-data-cassandra-2</module>
-        <!--<module>spring-data-jpa-repo-3</module>--> <!--Fix in JAVA-24547-->
+        <module>spring-data-jpa-repo-3</module>
     </modules>
 
     <properties>
