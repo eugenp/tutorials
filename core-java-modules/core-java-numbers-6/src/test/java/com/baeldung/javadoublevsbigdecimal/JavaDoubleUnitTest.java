@@ -1,10 +1,11 @@
 package com.baeldung.javadoublevsbigdecimal;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 
 public class JavaDoubleUnitTest {
-    
+
     @Test
     public void givenDoubleLiteral_whenAssigningToDoubleVariable_thenValueIsNotExactlyEqual() {
         double doubleValue = 0.1;

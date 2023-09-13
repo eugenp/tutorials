@@ -1,12 +1,14 @@
 package com.baeldung.javadoublevsbigdecimal;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import org.junit.jupiter.api.Test;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+import org.junit.jupiter.api.Test;
+
 public class BigDecimalUnitTest {
-    
+
     private BigDecimal bigDecimal1 = new BigDecimal("124567890.0987654321");
     private BigDecimal bigDecimal2 = new BigDecimal("987654321.123456789");
 
