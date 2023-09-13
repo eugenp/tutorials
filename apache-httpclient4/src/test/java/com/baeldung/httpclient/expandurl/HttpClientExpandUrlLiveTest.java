@@ -12,34 +12,35 @@ import org.apache.http.client.methods.HttpHead;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.assertThat;
 
-public class HttpClientExpandUrlLiveTest {
+
+class HttpClientExpandUrlLiveTest {
 
     private CloseableHttpClient client;
 
-    @Before
-    public final void before() {
+    @BeforeEach
+    public final void beforeEach() {
         client = HttpClientBuilder.create().disableRedirectHandling().build();
     }
 
     @Test
-    public final void givenShortenedOnce_whenUrlIsExpanded_thenCorrectResult() throws IOException {
+    final void givenShortenedOnce_whenUrlIsExpanded_thenCorrectResult() throws IOException {
         final String expectedResult = "https://www.baeldung.com/rest-versioning";
         final String actualResult = expandSingleLevel("http://bit.ly/3LScTri");
         assertThat(actualResult, equalTo(expectedResult));
     }
 
     @Test
-    public final void givenShortenedMultiple_whenUrlIsExpanded_thenCorrectResult() throws IOException {
+    final void givenShortenedMultiple_whenUrlIsExpanded_thenCorrectResult() throws IOException {
         final String expectedResult = "https://www.baeldung.com/rest-versioning";
         final String actualResult = expand("http://t.co/e4rDDbnzmk");
         assertThat(actualResult, equalTo(expectedResult));
