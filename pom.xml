@@ -342,8 +342,6 @@
                 <module>core-java-modules/core-java-8-datetime-2</module>
                 <module>core-java-modules/core-java-sun</module>
                 <module>core-java-modules/core-java-security</module>
-                <module>core-java-modules/core-java-nio-2</module>
-                <module>core-java-modules/core-java-serialization</module>
                 <module>core-java-modules/core-java-lang</module>
                 <module>core-java-modules/core-java-lang-math-3</module>
              
@@ -519,8 +517,6 @@
                 <module>core-java-modules/core-java-8-datetime-2</module>
                 <module>core-java-modules/core-java-sun</module>
                 <module>core-java-modules/core-java-security</module>
-                <module>core-java-modules/core-java-nio-2</module>
-                <module>core-java-modules/core-java-serialization</module>
                 <module>core-java-modules/core-java-lang</module>
                 <module>core-java-modules/core-java-lang-math-3</module>
                
