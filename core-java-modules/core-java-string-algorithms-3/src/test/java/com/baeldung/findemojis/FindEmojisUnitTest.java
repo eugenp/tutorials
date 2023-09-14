@@ -7,8 +7,6 @@ import org.junit.Test;
 
 import com.vdurmont.emoji.EmojiManager;
 
-import emoji4j.EmojiUtils;
-
 public class FindEmojisUnitTest {
 
     @Test
