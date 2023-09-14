@@ -35,6 +35,7 @@
         <module>hibernate-queries</module>
         <module>hibernate-enterprise</module>
         <module>influxdb</module>
+	    <module>java-cassandra</module>
         <module>java-cockroachdb</module>
         <module>java-jdbi</module>
         <module>java-jpa</module> <!-- long running -->
@@ -85,7 +86,7 @@
         <module>spring-data-jpa-query-3</module>
         <module>spring-data-jpa-repo</module>
         <module>spring-data-jpa-repo-2</module>
-		<module>spring-data-jpa-repo-4</module>
+        <module>spring-data-jpa-repo-4</module>
         <module>spring-data-jdbc</module>
         <module>spring-data-keyvalue</module>
         <module>spring-data-mongodb</module>
@@ -113,6 +114,10 @@
         <module>java-mongodb</module>
         <module>questdb</module>
         <module>neo4j</module>
+        <module>rethinkdb</module>
+        <module>scylladb</module>
+        <module>spring-data-cassandra-2</module>
+        <module>spring-data-jpa-repo-3</module>
     </modules>
 
     <properties>

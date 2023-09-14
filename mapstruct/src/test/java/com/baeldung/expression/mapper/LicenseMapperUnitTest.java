@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
@@ -17,9 +18,9 @@ class LicenseMapperUnitTest {
 
     @Test
     void givenLicenseDtoWithStartDateAndWithoutEndDate_WhenMapperMethodIsInvoked_ThenLicenseShouldBePopulatedWithDefaultEndDate() {
-        License license = licenseMapper.toLicense(LicenseDto.builder()
-            .startDate(LocalDateTime.now())
-            .build());
+        LicenseDto licenseDto = new LicenseDto();
+        licenseDto.setStartDate(LocalDateTime.now());
+        License license = licenseMapper.toLicense(licenseDto);
         assertThat(license).isNotNull();
         assertThat(license.getEndDate()
             .toLocalDate()).isEqualTo(LocalDate.now()
@@ -28,10 +29,10 @@ class LicenseMapperUnitTest {
 
     @Test
     void givenLicenseDtoWithEndDateAndWithoutStartDate_WhenMapperMethodIsInvoked_ThenLicenseShouldBePopulatedWithDefaultStartDate() {
-        License license = licenseMapper.toLicense(LicenseDto.builder()
-            .endDate(LocalDateTime.now()
-                .plusYears(2))
-            .build());
+        LicenseDto licenseDto = new LicenseDto();
+        licenseDto.setEndDate(LocalDateTime.now()
+            .plusYears(2));
+        License license = licenseMapper.toLicense(licenseDto);
         assertThat(license).isNotNull();
         assertThat(license.getStartDate()
             .toLocalDate()).isEqualTo(LocalDate.now());
@@ -39,8 +40,8 @@ class LicenseMapperUnitTest {
 
     @Test
     void givenLicenseDtoWithoutStartDateAndEndDate_WhenMapperMethodIsInvoked_ThenLicenseShouldBePopulatedWithDefaultDetails() {
-        License license = licenseMapper.toLicense(LicenseDto.builder()
-            .build());
+        LicenseDto licenseDto = new LicenseDto();
+        License license = licenseMapper.toLicense(licenseDto);
         assertThat(license).isNotNull();
         assertThat(license.getStartDate()
             .toLocalDate()).isEqualTo(LocalDate.now());
@@ -53,12 +54,24 @@ class LicenseMapperUnitTest {
 
     @Test
     void givenLicenseDtoWithEndDateInTwoWeeks_WhenMapperMethodIsInvoked_ThenLicenseShouldBePopulatedWithRenewalRequiredSetToTrue() {
-        License license = licenseMapper.toLicense(LicenseDto.builder()
-            .endDate(LocalDateTime.now()
-                .plusDays(10))
-            .build());
+        LicenseDto licenseDto = new LicenseDto();
+        licenseDto.setEndDate(LocalDateTime.now()
+            .plusDays(10));
+        License license = licenseMapper.toLicense(licenseDto);
         assertThat(license).isNotNull();
         assertThat(license.isRenewalRequired()).isTrue();
+    }
+
+    @Test
+    void givenLicenseDtoWithoutId_WhenMapperMethodIsInvoked_ThenLicenseShouldBePopulatedWithValidId() {
+        LicenseDto licenseDto = new LicenseDto();
+        UUID id = UUID.randomUUID();
+        licenseDto.setId(id);
+        licenseDto.setEndDate(LocalDateTime.now()
+            .plusDays(10));
+        License license = licenseMapper.toLicense(licenseDto);
+        assertThat(license).isNotNull();
+        assertThat(license.getId()).isSameAs(id);
     }
 
 }
