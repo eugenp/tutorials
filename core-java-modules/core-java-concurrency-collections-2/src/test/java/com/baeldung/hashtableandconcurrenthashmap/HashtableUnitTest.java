@@ -22,7 +22,7 @@ public class HashtableUnitTest {
         assertEquals("3", hashtable.get("Key3"));
     }
     @Test
-    public void should_throw_ConcurrentModificationException_when_hashtable_is_modified_during_iteration() throws InterruptedException {
+    public void givenPopulatedHashtable_whenModifiedDuringIteration_thenShouldThrowConcurrentModificationException() throws InterruptedException {
         Hashtable<String, Integer> hashtable = new Hashtable<>();
         hashtable.put("Key1", 1);
         hashtable.put("Key2", 2);

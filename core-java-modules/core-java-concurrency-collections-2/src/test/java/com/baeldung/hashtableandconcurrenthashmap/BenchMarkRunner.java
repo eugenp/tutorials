@@ -1,4 +1,5 @@
 package com.baeldung.hashtableandconcurrenthashmap;
+
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.infra.Blackhole;
 import org.openjdk.jmh.runner.Runner;
@@ -62,11 +63,11 @@ public class BenchMarkRunner {
 
     public static void main(String[] args) throws Exception {
         Options options = new OptionsBuilder()
-                .include(BenchMarkRunner.class.getSimpleName())
-                .shouldFailOnError(true)
-                .shouldDoGC(true)
-                .jvmArgs("-server")
-                .build();
+          .include(BenchMarkRunner.class.getSimpleName())
+          .shouldFailOnError(true)
+          .shouldDoGC(true)
+          .jvmArgs("-server")
+          .build();
         new Runner(options).run();
     }
 }

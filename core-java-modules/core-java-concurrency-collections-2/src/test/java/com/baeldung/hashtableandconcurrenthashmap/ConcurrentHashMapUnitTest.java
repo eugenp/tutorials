@@ -21,7 +21,7 @@ public class ConcurrentHashMapUnitTest {
         assertEquals("3", concurrentHashMap.get("Key3"));
     }
     @Test
-    public void should_not_throw_ConcurrentModificationException_when_ConcurrentHashMap_is_modified_during_iteration() throws InterruptedException {
+    public void givenPopulatedConcurrentHashMap_whenModifiedDuringIteration_thenShouldNotThrowConcurrentModificationException() throws InterruptedException {
         ConcurrentHashMap<String, Integer> concurrentHashMap = new ConcurrentHashMap<>();
         concurrentHashMap.put("Key1", 1);
         concurrentHashMap.put("Key2", 2);
