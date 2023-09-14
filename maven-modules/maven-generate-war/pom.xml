@@ -72,8 +72,6 @@
     <properties>
         <java.version>11</java.version>
         <log4j2.version>2.17.1</log4j2.version>
-        <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
-        <maven-war-plugin.version>3.4.0</maven-war-plugin.version>
         <maven.compiler.source.version>11</maven.compiler.source.version>
         <maven.compiler.target.version>11</maven.compiler.target.version>
     </properties>
