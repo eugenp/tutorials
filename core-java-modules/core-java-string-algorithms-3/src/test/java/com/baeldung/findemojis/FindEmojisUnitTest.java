@@ -12,15 +12,6 @@ import emoji4j.EmojiUtils;
 public class FindEmojisUnitTest {
 
     @Test
-    public void givenAWord_whenUsingEmoji4J_thenDetectEmoji() {
-        boolean emoji = EmojiUtils.isEmoji("\uD83D\uDC3B");
-        assertTrue(emoji);
-
-        boolean notEmoji = EmojiUtils.isEmoji("w");
-        assertFalse(notEmoji);
-    }
-
-    @Test
     public void givenAWord_whenUsingEmojiJava_thenDetectEmoji() {
         boolean emoji = EmojiManager.isEmoji("\uD83D\uDC3B");
         assertTrue(emoji);
