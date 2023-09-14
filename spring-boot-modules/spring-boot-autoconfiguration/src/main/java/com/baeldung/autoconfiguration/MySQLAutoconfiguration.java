@@ -3,10 +3,10 @@ package com.baeldung.autoconfiguration;
 import java.util.Arrays;
 import java.util.Properties;
 
-import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.boot.autoconfigure.condition.ConditionMessage;
 import org.springframework.boot.autoconfigure.condition.ConditionMessage.Style;
@@ -31,7 +31,13 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.util.ClassUtils;
 
-@Configuration
+import jakarta.persistence.EntityManagerFactory;
+
+/*@Configuration
+@ConditionalOnClass(DataSource.class)
+@AutoConfigureOrder(Ordered.HIGHEST_PRECEDENCE)
+@PropertySource("classpath:mysql.properties")*/
+@AutoConfiguration
 @ConditionalOnClass(DataSource.class)
 @AutoConfigureOrder(Ordered.HIGHEST_PRECEDENCE)
 @PropertySource("classpath:mysql.properties")
