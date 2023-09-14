@@ -1,7 +1,7 @@
-package com.baeldung.httpclient.base;
+package com.baeldung.client;
 
-import com.baeldung.httpclient.GetRequestMockServer;
-import com.baeldung.httpclient.ResponseUtil;
+import java.io.IOException;
+
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.client.CredentialsProvider;
@@ -12,15 +12,16 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
+import com.baeldung.GetRequestMockServer;
+import com.baeldung.httpclient.ResponseUtil;
 
 /*
  * NOTE : Need module spring-security-rest-basic-auth to be running
  */
-public class HttpClientSandboxLiveTest extends GetRequestMockServer {
+class HttpClientSandboxLiveTest extends GetRequestMockServer {
 
     @Test
-    public final void givenGetRequestExecuted_whenAnalyzingTheResponse_thenCorrectStatusCode() throws IOException {
+    final void givenGetRequestExecuted_whenAnalyzingTheResponse_thenCorrectStatusCode() throws IOException {
         final CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
         final AuthScope authscp = new AuthScope("localhost", 8080);
         credentialsProvider.setCredentials(authscp, new UsernamePasswordCredentials("user1", "user1Pass"));
