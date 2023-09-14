@@ -32,5 +32,8 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+    <properties>
+        <start-class>com.baeldung.spring.data.jpa.naturalid.Application</start-class>
+    </properties>
 
 </project>

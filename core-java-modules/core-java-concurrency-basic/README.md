@@ -11,4 +11,5 @@ This module contains articles about basic Java concurrency
 - [Runnable vs. Callable in Java](https://www.baeldung.com/java-runnable-callable)
 - [What Is Thread-Safety and How to Achieve It?](https://www.baeldung.com/java-thread-safety)
 - [How to Get Notified When a Task Completes in Java Executors](https://www.baeldung.com/java-executors-task-completed-notification)
+- [Difference Between Future, CompletableFuture, and Rxjava’s Observable](https://www.baeldung.com/java-future-completablefuture-rxjavas-observable)
 - [[Next -->]](/core-java-modules/core-java-concurrency-basic-2)

@@ -17,10 +17,10 @@
     </parent>
 
     <modules>
-        <!--<module>ejb-beans</module> JAVA-22440 need to upgrade to java 17 -->
+        <!--<module>ejb-beans</module> cannot upgrade to java 17 -->
         <module>spring-ejb-remote</module>
         <module>spring-ejb-client</module>
-        <module>wildfly</module>
+        <module>wildfly-mdb</module>
     </modules>
 
     <dependencyManagement>
@@ -76,6 +76,7 @@
         <wildfly-ejb.version>12.0.0.Final</wildfly-ejb.version>
         <maven-ejb-plugin.version>2.4</maven-ejb-plugin.version>
         <ejb.version>3.2</ejb.version>
+        <javaee-api.version>7.0</javaee-api.version>
     </properties>
 
 </project>

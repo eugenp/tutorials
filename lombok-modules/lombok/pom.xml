@@ -43,7 +43,6 @@
     </build>
 
     <properties>
-        <lombok.version>edge-SNAPSHOT</lombok.version>
         <hibernate-jpa-2.1-api.version>1.0.0.Final</hibernate-jpa-2.1-api.version>
         <delombok-maven-plugin.version>1.18.20.0</delombok-maven-plugin.version>
         <annotations.version>23.0.0</annotations.version>
