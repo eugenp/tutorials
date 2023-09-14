@@ -39,11 +39,6 @@
             <artifactId>emoji-java</artifactId>
             <version>${emoji-java.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.kcthota</groupId>
-            <artifactId>emoji4j</artifactId>
-            <version>6.0</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -57,8 +52,6 @@
     </build>
 
     <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
         <ahocorasick.version>0.4.0</ahocorasick.version>
         <emoji-java.version>4.0.0</emoji-java.version>
     </properties>
