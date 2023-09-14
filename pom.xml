@@ -998,6 +998,7 @@
                 <module>spring-boot-rest</module>
                 <module>spring-drools</module>
                 <module>spring-cloud-modules/spring-cloud-azure</module>
+                <module>spring-cloud-modules/spring-cloud-contract</module>
                 <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
                 <module>spring-exceptions</module>
                 <module>spring-jenkins-pipeline</module>
@@ -1210,8 +1211,6 @@
                 <module>gradle-modules/gradle/maven-to-gradle</module>
                 <module>persistence-modules/spring-data-neo4j</module>
                 <module>spring-actuator</module>
-                <module>spring-cloud-modules/spring-cloud-azure</module>
-                <module>spring-cloud-modules/spring-cloud-contract</module>
             </modules>
 
             <properties>
