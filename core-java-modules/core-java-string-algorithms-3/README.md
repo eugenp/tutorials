@@ -11,3 +11,4 @@ This module contains articles about string-related algorithms.
 - [Find the First Non Repeating Character in a String in Java](https://www.baeldung.com/java-find-the-first-non-repeating-character)
 - [Find the First Embedded Occurrence of an Integer in a Java String](https://www.baeldung.com/java-string-find-embedded-integer)
 - [Find the Most Frequent Characters in a String](https://www.baeldung.com/java-string-find-most-frequent-characters)
+- [Checking If a String Is a Repeated Substring](https://www.baeldung.com/java-repeated-substring)
