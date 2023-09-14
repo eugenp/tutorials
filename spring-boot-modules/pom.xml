@@ -103,6 +103,7 @@
         <module>spring-boot-mvc-legacy</module>
         <module>spring-boot-springdoc-2</module>
         <module>spring-boot-documentation</module>
+        <module>spring-boot-3-url-matching</module>
     </modules>
 
     <dependencyManagement>

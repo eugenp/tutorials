@@ -342,8 +342,6 @@
                 <module>core-java-modules/core-java-8-datetime-2</module>
                 <module>core-java-modules/core-java-sun</module>
                 <module>core-java-modules/core-java-security</module>
-                <module>core-java-modules/core-java-nio-2</module>
-                <module>core-java-modules/core-java-serialization</module>
                 <module>core-java-modules/core-java-lang</module>
                 <module>core-java-modules/core-java-lang-math-3</module>
              
@@ -519,8 +517,6 @@
                 <module>core-java-modules/core-java-8-datetime-2</module>
                 <module>core-java-modules/core-java-sun</module>
                 <module>core-java-modules/core-java-security</module>
-                <module>core-java-modules/core-java-nio-2</module>
-                <module>core-java-modules/core-java-serialization</module>
                 <module>core-java-modules/core-java-lang</module>
                 <module>core-java-modules/core-java-lang-math-3</module>
                
@@ -543,6 +539,7 @@
                 <module>persistence-modules/hibernate-ogm</module> <!-- hibernate-ogm wasn't updated because it doesn't support jakarta API -->
                 <module>persistence-modules/spring-data-cassandra-reactive</module> <!--JAVA-21844-->
                 <module>java-nashorn</module>
+                <module>jeromq</module>
                 <module>spring-ejb-modules/ejb-beans</module>
             </modules>
 
@@ -812,7 +809,6 @@
                 <!-- Modules from default-first -->
 
                 <module>akka-modules</module>
-                <module>annotations</module>
                 <module>httpclient-simple</module>
                 <module>antlr</module>
                 <module>apache-kafka</module>
@@ -939,6 +935,7 @@
                 <module>gradle-modules/gradle/maven-to-gradle</module>
                 <module>persistence-modules/spring-data-neo4j</module>
                 <module>parent-boot-3</module>
+                <!--<module>java-panama</module> Java-19 module-->
             </modules>
 
             <properties>
@@ -1086,7 +1083,6 @@
                 <!-- Modules from default-first -->
 
                 <module>akka-modules</module>
-                <module>annotations</module>
                 <module>antlr</module>
                 <module>apache-kafka</module>
                 <module>apache-kafka-2</module>
@@ -1213,6 +1209,9 @@
                 <module>language-interop</module>
                 <module>gradle-modules/gradle/maven-to-gradle</module>
                 <module>persistence-modules/spring-data-neo4j</module>
+                <module>spring-actuator</module>
+                <module>spring-cloud-modules/spring-cloud-azure</module>
+                <module>spring-cloud-modules/spring-cloud-contract</module>
             </modules>
 
             <properties>
