@@ -28,10 +28,6 @@ public class ExcelDataToListOfObjectsJxl {
             foodInfo.setName(sheet.getCell(1, i).getContents());
             foodInfo.setMeasure(sheet.getCell(2, i).getContents());
             foodInfo.setCalories(Double.parseDouble(sheet.getCell(3, i).getContents()));
-            foodInfo.setProtein(Double.parseDouble(sheet.getCell(4, i).getContents()));
-            foodInfo.setFat(Double.parseDouble(sheet.getCell(5, i).getContents()));
-            foodInfo.setCarbs(Double.parseDouble(sheet.getCell(6, i).getContents()));
-            foodInfo.setFiber(Double.parseDouble(sheet.getCell(7, i).getContents()));
 
             foodData.add(foodInfo);
 
