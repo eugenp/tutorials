@@ -30,10 +30,6 @@ public class ExcelDataToListApachePOI {
             foodInfo.setName(dataFormatter.formatCellValue(row.getCell(++i)));
             foodInfo.setMeasure(dataFormatter.formatCellValue(row.getCell(++i)));
             foodInfo.setCalories(row.getCell(++i).getNumericCellValue());
-            foodInfo.setProtein(row.getCell(++i).getNumericCellValue());
-            foodInfo.setFat(row.getCell(++i).getNumericCellValue());
-            foodInfo.setCarbs(row.getCell(++i).getNumericCellValue());
-            foodInfo.setFiber(row.getCell(++i).getNumericCellValue());
 
             foodData.add(foodInfo);
 
