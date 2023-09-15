@@ -19,12 +19,12 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-profiler-plugin</artifactId>
-                <version>${profiler.version}</version>
+                <version>${maven-profiler-plugin.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>${failsafe.version}</version>
+                <version>${maven-failsafe-plugin.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -55,8 +55,8 @@
     </profiles>
 
     <properties>
-        <failsafe.version>3.1.2</failsafe.version>
-        <profiler.version>1.7</profiler.version>
+        <maven-failsafe-plugin.version>3.1.2</maven-failsafe-plugin.version>
+        <maven-profiler-plugin.version>1.7</maven-profiler-plugin.version>
     </properties>
 
 </project>
