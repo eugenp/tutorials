@@ -7,8 +7,9 @@ import java.util.List;
 public class MultipleObjectTypeArrayList {
 
     public static void main(String[] args) {
-
-        List<Object> multiTypeList = new ArrayList<>();
+        
+        ArrayList<Object> multiTypeList = new ArrayList<>();
+        
         multiTypeList.add(Integer.valueOf(10));
         multiTypeList.add(Double.valueOf(11.5));
         multiTypeList.add("String Data");
