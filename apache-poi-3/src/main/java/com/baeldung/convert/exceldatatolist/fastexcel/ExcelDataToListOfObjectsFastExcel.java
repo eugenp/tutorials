@@ -31,10 +31,6 @@ public class ExcelDataToListOfObjectsFastExcel {
                 food.setName(row.getCellText(1));
                 food.setMeasure(row.getCellText(2));
                 food.setCalories(Double.parseDouble(row.getCellText(3)));
-                food.setProtein(Double.parseDouble(row.getCellText(4)));
-                food.setFat(Double.parseDouble(row.getCellText(5)));
-                food.setCarbs(Double.parseDouble(row.getCellText(6)));
-                food.setFiber(Double.parseDouble(row.getCellText(7)));
 
                 foodData.add(food);
 
