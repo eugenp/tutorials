@@ -7,11 +7,13 @@ public class DemeterApplication {
         Department department = new Department(manager);
         Employee employee = new Employee(department);
         Expenses expenses = new Expenses(100, 10);
+        department.approveExpense(expenses);
         employee.submitExpense(expenses);
 
         employee.getDepartment()
           .getManager()
           .approveExpense(expenses);
+        employee.submitExpense(expenses);
     }
 
 }
