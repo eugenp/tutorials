@@ -17,15 +17,15 @@ public class MultipleObjectTypeArrayList {
 
         for (Object dataObj : multiTypeList) {
             if (dataObj instanceof Integer intData)
-                System.out.println(intData);
+                System.out.println("Integer Data : " + intData);
             if (dataObj instanceof Double doubleData)
-                System.out.println(doubleData);
+                System.out.println("Double Data : " + doubleData);
             if (dataObj instanceof String stringData)
-                System.out.println(stringData);
+                System.out.println("String Data : " + stringData);
             if (dataObj instanceof List<?> intList)
-                System.out.println(intList);
+                System.out.println("List Data : " + intList);
             if (dataObj instanceof CustomObject customObj)
-                System.out.println(customObj.getClassData());
+                System.out.println("CustomObject Data : " + customObj.getClassData());
         }
     }
 
