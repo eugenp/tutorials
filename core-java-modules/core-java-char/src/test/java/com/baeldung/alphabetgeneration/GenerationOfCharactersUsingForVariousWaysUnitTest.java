@@ -17,7 +17,7 @@ class GenerationOfCharactersUsingForVariousWaysUnitTest {
         for (char character = 'A'; character <= 'Z'; character++) {
             characters.add(character);
         }
-        Assertions.assertEquals(characters, allCapitalAlphabets);
+        Assertions.assertEquals(characters, allCapitalCharacters);
     }
 
     @Test
