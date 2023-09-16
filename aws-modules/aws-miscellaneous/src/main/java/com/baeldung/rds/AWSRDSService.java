@@ -1,13 +1,5 @@
 package com.baeldung.rds;
 
-import com.amazonaws.auth.AWSCredentialsProvider;
-import com.amazonaws.auth.AWSStaticCredentialsProvider;
-import com.amazonaws.auth.BasicAWSCredentials;
-import com.amazonaws.regions.Regions;
-import com.amazonaws.services.rds.AmazonRDS;
-import com.amazonaws.services.rds.AmazonRDSClientBuilder;
-import com.amazonaws.services.rds.model.*;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
@@ -16,12 +8,22 @@ import java.util.Properties;
 import java.util.UUID;
 import java.util.logging.Logger;
 
+import software.amazon.awssdk.auth.credentials.ProfileCredentialsProvider;
+import software.amazon.awssdk.regions.Region;
+import software.amazon.awssdk.services.rds.RdsClient;
+import software.amazon.awssdk.services.rds.model.CreateDbInstanceRequest;
+import software.amazon.awssdk.services.rds.model.CreateDbInstanceResponse;
+import software.amazon.awssdk.services.rds.model.DBInstance;
+import software.amazon.awssdk.services.rds.model.DeleteDbInstanceRequest;
+import software.amazon.awssdk.services.rds.model.DeleteDbInstanceResponse;
+import software.amazon.awssdk.services.rds.model.DescribeDbInstancesResponse;
+import software.amazon.awssdk.services.rds.model.Endpoint;
+
 public class AWSRDSService {
 
 
     final static Logger logger = Logger.getLogger(AWSRDSService.class.getName());
-    private AWSCredentialsProvider credentials;
-    private AmazonRDS amazonRDS;
+    private RdsClient rdsClient;
     private String db_username;
     private String db_password;
     private String db_database;
@@ -34,22 +36,17 @@ public class AWSRDSService {
     * **/
     public AWSRDSService() throws IOException {
         //Init RDS client with credentials and region.
-        credentials = new
-                AWSStaticCredentialsProvider(new
-                BasicAWSCredentials("<ACCESS_KEY>",
-                "<SECRET_KEY>"));
-        amazonRDS = AmazonRDSClientBuilder.standard().withCredentials(credentials)
-                .withRegion(Regions.AP_SOUTHEAST_2).build();
         Properties prop = new Properties();
         InputStream input = AWSRDSService.class.getClassLoader().getResourceAsStream("db.properties");
         prop.load(input);
         db_username = prop.getProperty("db_username");
         db_password = prop.getProperty("db_password");
         db_database = prop.getProperty("db_database");
-    }
 
-    public AWSRDSService(AmazonRDS amazonRDS){
-        this.amazonRDS = amazonRDS;
+        rdsClient = RdsClient.builder()
+            .region(Region.AP_SOUTHEAST_2)
+            .credentialsProvider(ProfileCredentialsProvider.create("default"))
+            .build();
     }
 
     /**
@@ -60,29 +57,29 @@ public class AWSRDSService {
     public String launchInstance() {
 
         String identifier = "";
-        CreateDBInstanceRequest request = new CreateDBInstanceRequest();
-        // RDS instance name
-        request.setDBInstanceIdentifier("Sydney");
-        request.setEngine("postgres");
-        request.setMultiAZ(false);
-        request.setMasterUsername(db_username);
-        request.setMasterUserPassword(db_password);
-        request.setDBName(db_database);
-        request.setStorageType("gp2");
-        request.setAllocatedStorage(10);
+        CreateDbInstanceRequest instanceRequest = CreateDbInstanceRequest.builder()
+            .dbInstanceIdentifier("Sydney")
+            .engine("postgres")
+            .multiAZ(false)
+            .masterUsername(db_username)
+            .masterUserPassword(db_password)
+            .dbName(db_database)
+            .storageType("gp2")
+            .allocatedStorage(10)
+            .build();
 
-        DBInstance instance = amazonRDS.createDBInstance(request);
+        CreateDbInstanceResponse createDbInstanceResponse = rdsClient.createDBInstance(instanceRequest);
 
         // Information about the new RDS instance
-        identifier = instance.getDBInstanceIdentifier();
-        String status = instance.getDBInstanceStatus();
-        Endpoint endpoint = instance.getEndpoint();
-        String endpoint_url = "Endpoint URL not available yet.";
+        identifier = createDbInstanceResponse.dbInstance().dbInstanceIdentifier();
+        String status = createDbInstanceResponse.dbInstance().dbInstanceStatus();
+        Endpoint endpoint = createDbInstanceResponse.dbInstance().endpoint();
+        String endpointUrl = "Endpoint URL not available yet.";
         if (endpoint != null) {
-            endpoint_url = endpoint.toString();
+            endpointUrl = endpoint.toString();
         }
         logger.info(identifier + "\t" + status);
-        logger.info(endpoint_url);
+        logger.info(endpointUrl);
 
         return identifier;
 
@@ -90,20 +87,20 @@ public class AWSRDSService {
 
     // Describe DB instances
     public void listInstances() {
-        DescribeDBInstancesResult result = amazonRDS.describeDBInstances();
-        List<DBInstance> instances = result.getDBInstances();
+        DescribeDbInstancesResponse response = rdsClient.describeDBInstances();
+        List<DBInstance> instances = response.dbInstances();
         for (DBInstance instance : instances) {
             // Information about each RDS instance
-            String identifier = instance.getDBInstanceIdentifier();
-            String engine = instance.getEngine();
-            String status = instance.getDBInstanceStatus();
-            Endpoint endpoint = instance.getEndpoint();
-            String endpoint_url = "Endpoint URL not available yet.";
+            String identifier = instance.dbInstanceIdentifier();
+            String engine = instance.engine();
+            String status = instance.dbInstanceStatus();
+            Endpoint endpoint = instance.endpoint();
+            String endpointUrl = "Endpoint URL not available yet.";
             if (endpoint != null) {
-                endpoint_url = endpoint.toString();
+                endpointUrl = endpoint.toString();
             }
             logger.info(identifier + "\t" + engine + "\t" + status);
-            logger.info("\t" + endpoint_url);
+            logger.info("\t" + endpointUrl);
         }
 
     }
@@ -111,16 +108,17 @@ public class AWSRDSService {
     //Delete RDS instance
     public void terminateInstance(String identifier) {
 
-        DeleteDBInstanceRequest request = new DeleteDBInstanceRequest();
-        request.setDBInstanceIdentifier(identifier);
-        request.setSkipFinalSnapshot(true);
+        DeleteDbInstanceRequest request = DeleteDbInstanceRequest.builder()
+            .dbInstanceIdentifier(identifier)
+            .skipFinalSnapshot(true)
+            .build();
 
         // Delete the RDS instance
-        DBInstance instance = amazonRDS.deleteDBInstance(request);
+        DeleteDbInstanceResponse response = rdsClient.deleteDBInstance(request);
 
         // Information about the RDS instance being deleted
-        String status = instance.getDBInstanceStatus();
-        Endpoint endpoint = instance.getEndpoint();
+        String status = response.dbInstance().dbInstanceStatus();
+        Endpoint endpoint = response.dbInstance().endpoint();
         String endpoint_url = "Endpoint URL not available yet.";
         if (endpoint != null) {
             endpoint_url = endpoint.toString();
