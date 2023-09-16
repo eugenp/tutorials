@@ -57,12 +57,14 @@
             <groupId>de.flapdoodle.embed</groupId>
             <artifactId>de.flapdoodle.embed.mongo</artifactId>
             <scope>test</scope>
+            <version>${de.flapdoodle.embed.mongo.version}</version>
         </dependency>
     </dependencies>
 
     <properties>
-        <mongodb-crypt.version>1.7.3</mongodb-crypt.version>
-        <mongodb-driver.version>4.9.1</mongodb-driver.version>
+        <mongodb-crypt.version>1.8.0</mongodb-crypt.version>
+        <mongodb-driver.version>4.10.2</mongodb-driver.version>
+        <de.flapdoodle.embed.mongo.version>4.9.2</de.flapdoodle.embed.mongo.version>
     </properties>
 
 </project>
