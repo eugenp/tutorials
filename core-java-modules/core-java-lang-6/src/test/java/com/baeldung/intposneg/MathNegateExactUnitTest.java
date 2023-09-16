@@ -1,6 +1,8 @@
 package com.baeldung.intposneg;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
 import org.junit.jupiter.api.Test;
 
 public class MathNegateExactUnitTest {
@@ -8,11 +10,11 @@ public class MathNegateExactUnitTest {
     void whenMathNegateExactUsed_thenChangeSign() {
         int x = 10;
         x = Math.negateExact(x);
-        assertEquals( x, -10 );
+        assertEquals(x, -10);
         x = Math.negateExact(x);
-        assertEquals( x, 10 );
+        assertEquals(x, 10);
         x = Math.negateExact(x);
-        assertEquals( x, -10 );
+        assertEquals(x, -10);
     }
 
     @Test
@@ -21,9 +23,9 @@ public class MathNegateExactUnitTest {
         try {
             int x = Integer.MIN_VALUE;
             x = Math.negateExact(x);
-        } catch( ArithmeticException e ) {
+        } catch (ArithmeticException e) {
             exception = e.getMessage();
         }
-        assertFalse( exception.isEmpty() );
+        assertFalse(exception.isEmpty());
     }
 }

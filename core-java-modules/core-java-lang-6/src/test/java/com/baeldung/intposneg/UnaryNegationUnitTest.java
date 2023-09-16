@@ -1,6 +1,8 @@
 package com.baeldung.intposneg;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Test;
 
 public class UnaryNegationUnitTest {
@@ -8,11 +10,11 @@ public class UnaryNegationUnitTest {
     void whenUnaryOperatorUsed_thenChangeSign() {
         int x = 10;
         x = -x;
-        assertEquals( x, -10 );
+        assertEquals(x, -10);
         x = -x;
-        assertEquals( x, 10 );
+        assertEquals(x, 10);
         x = -x;
-        assertEquals( x, -10 );
+        assertEquals(x, -10);
     }
 
     @Test
@@ -21,26 +23,27 @@ public class UnaryNegationUnitTest {
         try {
             int x = Integer.MIN_VALUE;
             x = -x;
-        } catch( ArithmeticException e ) {
+        } catch (ArithmeticException e) {
             exception = e.getMessage();
         }
-        assertTrue( exception.isEmpty() );
+
+        assertTrue(exception.isEmpty());
     }
 
     @Test
     void whenIntegerOverflow_thenNoExceptionThrown() {
+
         int x = Integer.MIN_VALUE;
         x = -x;
-        assertEquals( x, Integer.MIN_VALUE );
-        assertEquals( -x, Integer.MIN_VALUE );
-        assertEquals( x, -x );
-
+        assertEquals(x, Integer.MIN_VALUE);
+        assertEquals(-x, Integer.MIN_VALUE);
+        assertEquals(x, -x);
     }
 
     @Test
     void whenThereIsATemporaryVariable_thenChangeSign() {
         int x = 10;
         int y = -x;
-        assertEquals( -y, x );
+        assertEquals(-y, x);
     }
 }
