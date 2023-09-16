@@ -17,10 +17,6 @@
         <relativePath>../../parent-boot-2</relativePath>
     </parent>
 
-    <properties>
-        <keycloak.version>21.0.1</keycloak.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -87,5 +83,9 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <keycloak.version>21.0.1</keycloak.version>
+    </properties>
 
 </project>

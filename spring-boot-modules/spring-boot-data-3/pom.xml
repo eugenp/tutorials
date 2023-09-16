@@ -27,7 +27,7 @@
         <dependency>
             <groupId>com.amazonaws.secretsmanager</groupId>
             <artifactId>aws-secretsmanager-jdbc</artifactId>
-            <version>${aws.secrets.manager.jdbc}</version>
+            <version>${aws-secretsmanager-jdbc.version}</version>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
@@ -46,7 +46,7 @@
         <dependency>
             <groupId>io.awspring.cloud</groupId>
             <artifactId>spring-cloud-starter-aws-secrets-manager-config</artifactId>
-            <version>${aws.secrets.manager.config}</version>
+            <version>${spring-cloud-starter-aws-secrets-manager-config.version}</version>
         </dependency>
     </dependencies>
 
@@ -60,8 +60,8 @@
     </build>
 
     <properties>
-        <aws.secrets.manager.config>2.4.4</aws.secrets.manager.config>
-        <aws.secrets.manager.jdbc>1.0.11</aws.secrets.manager.jdbc>
+        <spring-cloud-starter-aws-secrets-manager-config.version>2.4.4</spring-cloud-starter-aws-secrets-manager-config.version>
+        <aws-secretsmanager-jdbc.version>1.0.11</aws-secretsmanager-jdbc.version>
     </properties>
 
 </project>

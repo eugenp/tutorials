@@ -46,10 +46,6 @@
         </plugins>
     </build>
 
-    <properties>
-        <jasypt.version>2.0.0</jasypt.version>
-    </properties>
-
     <repositories>
         <repository>
             <id>spring-milestone</id>
@@ -57,4 +53,8 @@
             <url>https://repo.spring.io/milestone</url>
         </repository>
     </repositories>
+
+    <properties>
+        <jasypt.version>2.0.0</jasypt.version>
+    </properties>
 </project>

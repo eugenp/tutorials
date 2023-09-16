@@ -24,10 +24,10 @@ public class ConsumerDebuggingApplication {
 
     @Bean
     public SecurityWebFilterChain debuggingConsumerSpringSecurityFilterChain(ServerHttpSecurity http) {
-        http.authorizeExchange()
-            .anyExchange()
-            .permitAll();
-        http.csrf().disable();
+        http.authorizeExchange(exchanges  -> exchanges
+          .anyExchange()
+          .permitAll());
+        http.csrf(csrf -> csrf.disable());
         return http.build();
     }
 }

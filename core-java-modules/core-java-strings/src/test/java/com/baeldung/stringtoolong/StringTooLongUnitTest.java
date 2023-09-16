@@ -27,7 +27,7 @@ public class StringTooLongUnitTest {
     @Test
     public void whenStoringInPropertiesString_thenNoCompilationError() throws IOException {
         String sValue = null;
-        try (InputStream input = new FileInputStream("src/main/resources/config.properties")) {
+        try (InputStream input = new FileInputStream("src/test/resources/config.properties")) {
             Properties prop = new Properties();
             prop.load(input);
             sValue = prop.getProperty("string.too.long");

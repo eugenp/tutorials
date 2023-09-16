@@ -43,6 +43,17 @@
             <version>${angus-activation.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.jodd</groupId>
+            <artifactId>jodd-util</artifactId>
+            <version>${jodd-util.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.j256.simplemagic</groupId>
+            <artifactId>simplemagic</artifactId>
+            <version>${simplemagic.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -54,6 +65,13 @@
             </resource>
         </resources>
         <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
@@ -132,10 +150,11 @@
         <!-- Mime Type Libraries -->
         <tika.version>2.8.0</tika.version>
         <jmime-magic.version>0.1.5</jmime-magic.version>
-        <maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
         <fscontext.version>4.4.2</fscontext.version>
         <jakarta-activation-api.version>2.1.2</jakarta-activation-api.version>
         <angus-activation.version>2.0.1</angus-activation.version>
+        <jodd-util.version>6.2.1</jodd-util.version>
+        <simplemagic.version>1.17</simplemagic.version>
     </properties>
 
 </project>

@@ -43,7 +43,7 @@
         <dependency>
             <groupId>org.springframework.ws</groupId>
             <artifactId>spring-ws-test</artifactId>
-            <version>3.1.3</version>
+            <version>${spring-ws-test.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -75,7 +75,7 @@
         <dependency>
             <groupId>com.redis.testcontainers</groupId>
             <artifactId>testcontainers-redis-junit-jupiter</artifactId>
-            <version>1.4.6</version>
+            <version>${testcontainers-redis-junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -85,7 +85,7 @@
             <plugin>
                 <groupId>org.jvnet.jaxb2.maven2</groupId>
                 <artifactId>maven-jaxb2-plugin</artifactId>
-                <version>0.15.1</version>
+                <version>${maven-jaxb2-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>xjc</id>
@@ -107,8 +107,11 @@
 
     <properties>
         <start-class>com.baeldung.boot.Application</start-class>
+        <spring-ws-test.version>3.1.3</spring-ws-test.version>
         <testcontainers.version>1.17.2</testcontainers.version>
         <testcontainers-keycloak.version>1.10.0</testcontainers-keycloak.version>
+        <testcontainers-redis-junit-jupiter.version>1.4.6</testcontainers-redis-junit-jupiter.version>
+        <maven-jaxb2-plugin.version>0.15.1</maven-jaxb2-plugin.version>
     </properties>
 
 </project>
