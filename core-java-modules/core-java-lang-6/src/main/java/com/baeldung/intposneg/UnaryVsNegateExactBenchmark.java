@@ -3,7 +3,7 @@ package com.baeldung.intposneg;
 import org.openjdk.jmh.annotations.Benchmark;
 
 public class UnaryVsNegateExactBenchmark {
-    public static void main( String[] args ) throws Exception {
+    public static void main(String[] args) throws Exception {
         org.openjdk.jmh.Main.main(args);
     }
 
