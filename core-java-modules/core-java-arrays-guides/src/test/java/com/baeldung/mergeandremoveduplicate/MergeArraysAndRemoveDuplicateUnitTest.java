@@ -20,7 +20,7 @@ public class MergeArraysAndRemoveDuplicateUnitTest {
     }
 
     @Test
-    public void givenNoLibrary_whenArr1andArr2_thenMergeAndRemoveDuplicates() {
+    public void givenNoLibraryAndUnSortedArrays_whenArr1andArr2_thenMergeAndRemoveDuplicates() {
         int[] arr1 = {3, 2, 1, 4, 5, 6, 8, 7, 9};
         int[] arr2 = {8, 9, 10, 11, 12, 13, 15, 14, 15, 14, 16, 17};
         int[] expectedArr = {3, 2, 1, 4, 5, 6, 8, 7, 9, 10, 11, 12, 13, 15, 14, 16, 17};
@@ -34,7 +34,7 @@ public class MergeArraysAndRemoveDuplicateUnitTest {
     }
 
     @Test
-    public void givenNoLibrary_whenArr1andArr2_thenMergeSortAndRemoveDuplicates() {
+    public void givenNoLibraryAndSortedArrays_whenArr1andArr2_thenMergeAndRemoveDuplicates() {
         int[] arr1 = {1, 2, 3, 4, 5, 5, 6, 7, 7, 8};
         int[] arr2 = {8, 9, 10, 11, 12, 13, 14, 15, 15, 16, 17};
         int[] expectedArr = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17};
