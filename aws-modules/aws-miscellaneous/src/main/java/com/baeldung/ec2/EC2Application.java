@@ -2,136 +2,150 @@ package com.baeldung.ec2;
 
 import java.util.Arrays;
 
-import com.amazonaws.auth.AWSCredentials;
-import com.amazonaws.auth.AWSStaticCredentialsProvider;
-import com.amazonaws.auth.BasicAWSCredentials;
-import com.amazonaws.regions.Regions;
-import com.amazonaws.services.ec2.AmazonEC2;
-import com.amazonaws.services.ec2.AmazonEC2ClientBuilder;
-import com.amazonaws.services.ec2.model.AuthorizeSecurityGroupIngressRequest;
-import com.amazonaws.services.ec2.model.CreateKeyPairRequest;
-import com.amazonaws.services.ec2.model.CreateKeyPairResult;
-import com.amazonaws.services.ec2.model.CreateSecurityGroupRequest;
-import com.amazonaws.services.ec2.model.DescribeInstancesRequest;
-import com.amazonaws.services.ec2.model.DescribeInstancesResult;
-import com.amazonaws.services.ec2.model.DescribeKeyPairsRequest;
-import com.amazonaws.services.ec2.model.DescribeKeyPairsResult;
-import com.amazonaws.services.ec2.model.IpPermission;
-import com.amazonaws.services.ec2.model.IpRange;
-import com.amazonaws.services.ec2.model.MonitorInstancesRequest;
-import com.amazonaws.services.ec2.model.RebootInstancesRequest;
-import com.amazonaws.services.ec2.model.RunInstancesRequest;
-import com.amazonaws.services.ec2.model.StartInstancesRequest;
-import com.amazonaws.services.ec2.model.StopInstancesRequest;
-import com.amazonaws.services.ec2.model.UnmonitorInstancesRequest;
+import software.amazon.awssdk.auth.credentials.ProfileCredentialsProvider;
+import software.amazon.awssdk.regions.Region;
+import software.amazon.awssdk.services.ec2.Ec2Client;
+import software.amazon.awssdk.services.ec2.model.AuthorizeSecurityGroupIngressRequest;
+import software.amazon.awssdk.services.ec2.model.CreateKeyPairRequest;
+import software.amazon.awssdk.services.ec2.model.CreateKeyPairResponse;
+import software.amazon.awssdk.services.ec2.model.CreateSecurityGroupRequest;
+import software.amazon.awssdk.services.ec2.model.DescribeInstancesRequest;
+import software.amazon.awssdk.services.ec2.model.DescribeInstancesResponse;
+import software.amazon.awssdk.services.ec2.model.DescribeKeyPairsRequest;
+import software.amazon.awssdk.services.ec2.model.DescribeKeyPairsResponse;
+import software.amazon.awssdk.services.ec2.model.IpPermission;
+import software.amazon.awssdk.services.ec2.model.IpRange;
+import software.amazon.awssdk.services.ec2.model.MonitorInstancesRequest;
+import software.amazon.awssdk.services.ec2.model.RebootInstancesRequest;
+import software.amazon.awssdk.services.ec2.model.RunInstancesRequest;
+import software.amazon.awssdk.services.ec2.model.RunInstancesResponse;
+import software.amazon.awssdk.services.ec2.model.StartInstancesRequest;
+import software.amazon.awssdk.services.ec2.model.StartInstancesResponse;
+import software.amazon.awssdk.services.ec2.model.StopInstancesRequest;
+import software.amazon.awssdk.services.ec2.model.UnmonitorInstancesRequest;
 
 public class EC2Application {
-
-    private static final AWSCredentials credentials;
-
-    static {
-        // put your accesskey and secretkey here
-        credentials = new BasicAWSCredentials(
-            "<AWS accesskey>", 
-            "<AWS secretkey>"
-        );
-    }
 
     public static void main(String[] args) {
        
         // Set up the client
-        AmazonEC2 ec2Client = AmazonEC2ClientBuilder.standard()
-            .withCredentials(new AWSStaticCredentialsProvider(credentials))
-            .withRegion(Regions.US_EAST_1)
+        Ec2Client ec2Client = Ec2Client.builder()
+            .credentialsProvider(ProfileCredentialsProvider.create("default"))
+            .region(Region.US_EAST_1)
             .build();
 
         // Create a security group
-        CreateSecurityGroupRequest createSecurityGroupRequest = new CreateSecurityGroupRequest().withGroupName("BaeldungSecurityGroup")
-            .withDescription("Baeldung Security Group");
+        CreateSecurityGroupRequest createSecurityGroupRequest = CreateSecurityGroupRequest.builder()
+            .groupName("BaeldungSecurityGroup")
+            .description("Baeldung Security Group")
+            .build();
+
         ec2Client.createSecurityGroup(createSecurityGroupRequest);
 
         // Allow HTTP and SSH traffic
-        IpRange ipRange1 = new IpRange().withCidrIp("0.0.0.0/0");
+        IpRange ipRange1 = IpRange.builder()
+            .cidrIp("0.0.0.0/0")
+            .build();
 
-        IpPermission ipPermission1 = new IpPermission().withIpv4Ranges(Arrays.asList(new IpRange[] { ipRange1 }))
-            .withIpProtocol("tcp")
-            .withFromPort(80)
-            .withToPort(80);
 
-        IpPermission ipPermission2 = new IpPermission().withIpv4Ranges(Arrays.asList(new IpRange[] { ipRange1 }))
-            .withIpProtocol("tcp")
-            .withFromPort(22)
-            .withToPort(22);
+        IpPermission ipPermission1 = IpPermission.builder()
+            .ipRanges(Arrays.asList(ipRange1))
+            .ipProtocol("tcp")
+            .fromPort(80)
+            .toPort(80)
+            .build();
 
-        AuthorizeSecurityGroupIngressRequest authorizeSecurityGroupIngressRequest = new AuthorizeSecurityGroupIngressRequest()
-            .withGroupName("BaeldungSecurityGroup")
-            .withIpPermissions(ipPermission1, ipPermission2);
+        IpPermission ipPermission2 = IpPermission.builder()
+            .ipRanges(Arrays.asList(ipRange1))
+            .ipProtocol("tcp")
+            .fromPort(22)
+            .toPort(22)
+            .build();
+
+        AuthorizeSecurityGroupIngressRequest authorizeSecurityGroupIngressRequest = AuthorizeSecurityGroupIngressRequest
+            .builder()
+            .groupName("BaeldungSecurityGroup")
+            .ipPermissions(ipPermission1, ipPermission2)
+            .build();
 
         ec2Client.authorizeSecurityGroupIngress(authorizeSecurityGroupIngressRequest);
 
         // Create KeyPair
-        CreateKeyPairRequest createKeyPairRequest = new CreateKeyPairRequest()
-            .withKeyName("baeldung-key-pair");
-        CreateKeyPairResult createKeyPairResult = ec2Client.createKeyPair(createKeyPairRequest);
-        String privateKey = createKeyPairResult
-            .getKeyPair()
-            .getKeyMaterial(); // make sure you keep it, the private key, Amazon doesn't store the private key
+        CreateKeyPairRequest createKeyPairRequest = CreateKeyPairRequest.builder()
+            .keyName("baeldung-key-pair")
+            .build();
+
+        CreateKeyPairResponse createKeyPairResponse = ec2Client.createKeyPair(createKeyPairRequest);
+        String privateKey = createKeyPairResponse.keyMaterial();
+        // make sure you keep it, the private key, Amazon doesn't store the private key
 
         // See what key-pairs you've got
-        DescribeKeyPairsRequest describeKeyPairsRequest = new DescribeKeyPairsRequest();
-        DescribeKeyPairsResult describeKeyPairsResult = ec2Client.describeKeyPairs(describeKeyPairsRequest);
+        DescribeKeyPairsRequest describeKeyPairsRequest = DescribeKeyPairsRequest.builder()
+            .build();
+        DescribeKeyPairsResponse describeKeyPairsResponse = ec2Client.describeKeyPairs(describeKeyPairsRequest);
 
         // Launch an Amazon Instance
-        RunInstancesRequest runInstancesRequest = new RunInstancesRequest().withImageId("ami-97785bed") // https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html | https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/usingsharedamis-finding.html
-            .withInstanceType("t2.micro") // https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html
-            .withMinCount(1)
-            .withMaxCount(1)
-            .withKeyName("baeldung-key-pair") // optional - if not present, can't connect to instance
-            .withSecurityGroups("BaeldungSecurityGroup");
+        RunInstancesRequest runInstancesRequest = RunInstancesRequest.builder()
+            .instanceType("t2.micro") // https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html
+            .minCount(1)
+            .maxCount(1)
+            .keyName("baeldung-key-pair") // optional - if not present, can't connect to instance
+            .securityGroups("BaeldungSecurityGroup")
+            .build();
 
-        String yourInstanceId = ec2Client.runInstances(runInstancesRequest).getReservation().getInstances().get(0).getInstanceId();
+        RunInstancesResponse runInstancesResponse = ec2Client.runInstances(runInstancesRequest);
+        String yourInstanceId = runInstancesResponse.instances().get(0).instanceId();
 
         // Start an Instance
-        StartInstancesRequest startInstancesRequest = new StartInstancesRequest()
-            .withInstanceIds(yourInstanceId);
+        StartInstancesRequest startInstancesRequest = StartInstancesRequest.builder()
+            .instanceIds(yourInstanceId)
+            .build();
 
-        ec2Client.startInstances(startInstancesRequest);
+        StartInstancesResponse startInstancesResponse = ec2Client.startInstances(startInstancesRequest);
+
 
         // Monitor Instances
-        MonitorInstancesRequest monitorInstancesRequest = new MonitorInstancesRequest()
-            .withInstanceIds(yourInstanceId);
+        MonitorInstancesRequest monitorInstancesRequest = MonitorInstancesRequest.builder()
+            .instanceIds(yourInstanceId)
+            .build();
+
 
         ec2Client.monitorInstances(monitorInstancesRequest);
 
-        UnmonitorInstancesRequest unmonitorInstancesRequest = new UnmonitorInstancesRequest()
-            .withInstanceIds(yourInstanceId);
+        UnmonitorInstancesRequest unmonitorInstancesRequest = UnmonitorInstancesRequest.builder()
+            .instanceIds(yourInstanceId)
+            .build();
 
         ec2Client.unmonitorInstances(unmonitorInstancesRequest);
 
         // Reboot an Instance
 
-        RebootInstancesRequest rebootInstancesRequest = new RebootInstancesRequest()
-            .withInstanceIds(yourInstanceId);
+        RebootInstancesRequest rebootInstancesRequest = RebootInstancesRequest.builder()
+            .instanceIds(yourInstanceId)
+            .build();
+
 
         ec2Client.rebootInstances(rebootInstancesRequest);
 
         // Stop an Instance
-        StopInstancesRequest stopInstancesRequest = new StopInstancesRequest()
-            .withInstanceIds(yourInstanceId);
+        StopInstancesRequest stopInstancesRequest = StopInstancesRequest.builder()
+            .instanceIds(yourInstanceId)
+            .build();
+
 
         ec2Client.stopInstances(stopInstancesRequest)
-            .getStoppingInstances()
+            .stoppingInstances()
             .get(0)
-            .getPreviousState()
-            .getName();
+            .previousState()
+            .name();
 
         // Describe an Instance
-        DescribeInstancesRequest describeInstancesRequest = new DescribeInstancesRequest();
-        DescribeInstancesResult response = ec2Client.describeInstances(describeInstancesRequest);
-        System.out.println(response.getReservations()
+        DescribeInstancesRequest describeInstancesRequest = DescribeInstancesRequest.builder().build();
+        DescribeInstancesResponse response = ec2Client.describeInstances(describeInstancesRequest);
+        System.out.println(response.reservations()
             .get(0)
-            .getInstances()
+            .instances()
             .get(0)
-            .getKernelId());
+            .kernelId());
     }
 }

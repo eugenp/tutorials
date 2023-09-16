@@ -5,140 +5,191 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.amazonaws.auth.AWSCredentials;
-import com.amazonaws.auth.AWSStaticCredentialsProvider;
-import com.amazonaws.auth.BasicAWSCredentials;
-import com.amazonaws.regions.Regions;
-import com.amazonaws.services.sqs.AmazonSQSClientBuilder;
-import com.amazonaws.services.sqs.model.CreateQueueRequest;
-import com.amazonaws.services.sqs.model.DeleteMessageRequest;
-import com.amazonaws.services.sqs.model.GetQueueAttributesRequest;
-import com.amazonaws.services.sqs.model.GetQueueAttributesResult;
-import com.amazonaws.services.sqs.model.MessageAttributeValue;
-import com.amazonaws.services.sqs.model.ReceiveMessageRequest;
-import com.amazonaws.services.sqs.model.SendMessageBatchRequest;
-import com.amazonaws.services.sqs.model.SendMessageRequest;
-import com.amazonaws.services.sqs.model.SetQueueAttributesRequest;
-import com.amazonaws.services.sqs.model.SendMessageBatchRequestEntry;
-import com.amazonaws.services.sqs.model.Message;
-import com.amazonaws.services.sqs.AmazonSQS;
+import software.amazon.awssdk.auth.credentials.ProfileCredentialsProvider;
+import software.amazon.awssdk.regions.Region;
+import software.amazon.awssdk.services.sqs.SqsClient;
+import software.amazon.awssdk.services.sqs.model.CreateQueueRequest;
+import software.amazon.awssdk.services.sqs.model.DeleteMessageRequest;
+import software.amazon.awssdk.services.sqs.model.GetQueueAttributesRequest;
+import software.amazon.awssdk.services.sqs.model.GetQueueAttributesResponse;
+import software.amazon.awssdk.services.sqs.model.GetQueueUrlRequest;
+import software.amazon.awssdk.services.sqs.model.GetQueueUrlResponse;
+import software.amazon.awssdk.services.sqs.model.Message;
+import software.amazon.awssdk.services.sqs.model.MessageAttributeValue;
+import software.amazon.awssdk.services.sqs.model.QueueAttributeName;
+import software.amazon.awssdk.services.sqs.model.ReceiveMessageRequest;
+import software.amazon.awssdk.services.sqs.model.SendMessageBatchRequest;
+import software.amazon.awssdk.services.sqs.model.SendMessageBatchRequestEntry;
+import software.amazon.awssdk.services.sqs.model.SendMessageRequest;
+import software.amazon.awssdk.services.sqs.model.SetQueueAttributesRequest;
 
 public class SQSApplication {
 
-    private static final AWSCredentials credentials;
+    private static final String STANDARD_QUEUE_NAME = "baeldung-queue";
+    private static final String FIFO_QUEUE_NAME = "baeldung-queue.fifo";
+    private static final String DEAD_LETTER_QUEUE_NAME = "baeldung-dead-letter-queue";
 
-    static {
-        // put your accesskey and secretkey here
-        credentials = new BasicAWSCredentials(
-            "<AWS accesskey>", 
-            "<AWS secretkey>"
-        );
-    }
 
     public static void main(String[] args) {
 
         // Set up the client
-        AmazonSQS sqs = AmazonSQSClientBuilder.standard()
-            .withCredentials(new AWSStaticCredentialsProvider(credentials))
-            .withRegion(Regions.US_EAST_1)
+        SqsClient sqsClient = SqsClient.builder()
+            .region(Region.US_EAST_1)
+            .credentialsProvider(ProfileCredentialsProvider.create())
             .build();
 
         // Create a standard queue
+        CreateQueueRequest createStandardQueueRequest = CreateQueueRequest.builder()
+            .queueName(STANDARD_QUEUE_NAME)
+            .build();
 
-        CreateQueueRequest createStandardQueueRequest = new CreateQueueRequest("baeldung-queue");
-        String standardQueueUrl = sqs.createQueue(createStandardQueueRequest)
-            .getQueueUrl();
+        sqsClient.createQueue(createStandardQueueRequest);
+
+        System.out.println("\nGet queue url");
+
+        GetQueueUrlResponse getQueueUrlResponse = sqsClient.getQueueUrl(GetQueueUrlRequest
+            .builder()
+            .queueName(STANDARD_QUEUE_NAME)
+            .build()
+        );
+        String standardQueueUrl =  getQueueUrlResponse.queueUrl();
 
         System.out.println(standardQueueUrl);
 
         // Create a fifo queue
+        Map<QueueAttributeName, String> queueAttributes = new HashMap<>();
+        queueAttributes.put(QueueAttributeName.FIFO_QUEUE, "true");
+        queueAttributes.put(QueueAttributeName.CONTENT_BASED_DEDUPLICATION, "true");
 
-        Map<String, String> queueAttributes = new HashMap<String, String>();
-        queueAttributes.put("FifoQueue", "true");
-        queueAttributes.put("ContentBasedDeduplication", "true");
+        CreateQueueRequest createFifoQueueRequest = CreateQueueRequest.builder()
+            .queueName(FIFO_QUEUE_NAME)
+            .attributes(queueAttributes)
+            .build();
 
-        CreateQueueRequest createFifoQueueRequest = new CreateQueueRequest("baeldung-queue.fifo").withAttributes(queueAttributes);
-        String fifoQueueUrl = sqs.createQueue(createFifoQueueRequest)
-            .getQueueUrl();
+        sqsClient.createQueue(createFifoQueueRequest);
+
+        GetQueueUrlResponse getFifoQueueUrlResponse = sqsClient.getQueueUrl(GetQueueUrlRequest
+            .builder()
+            .queueName(FIFO_QUEUE_NAME)
+            .build());
+
+        String fifoQueueUrl =  getFifoQueueUrlResponse.queueUrl();
 
         System.out.println(fifoQueueUrl);
 
         // Set up a dead letter queue
+        CreateQueueRequest createDeadLetterQueueRequest = CreateQueueRequest.builder()
+            .queueName(DEAD_LETTER_QUEUE_NAME)
+            .build();
 
-        String deadLetterQueueUrl = sqs.createQueue("baeldung-dead-letter-queue")
-            .getQueueUrl();
+        String deadLetterQueueUrl = sqsClient.createQueue(createDeadLetterQueueRequest).queueUrl();
 
-        GetQueueAttributesResult deadLetterQueueAttributes = sqs.getQueueAttributes(new GetQueueAttributesRequest(deadLetterQueueUrl).withAttributeNames("QueueArn"));
+        GetQueueAttributesRequest getQueueAttributesRequest = GetQueueAttributesRequest.builder()
+            .queueUrl(deadLetterQueueUrl)
+            .attributeNames(QueueAttributeName.QUEUE_ARN)
+            .build();
 
-        String deadLetterQueueARN = deadLetterQueueAttributes.getAttributes()
+        GetQueueAttributesResponse deadLetterQueueAttributes = sqsClient.getQueueAttributes(getQueueAttributesRequest);
+
+        String deadLetterQueueARN = deadLetterQueueAttributes.attributes()
             .get("QueueArn");
 
-        SetQueueAttributesRequest queueAttributesRequest = new SetQueueAttributesRequest().withQueueUrl(standardQueueUrl)
-            .addAttributesEntry("RedrivePolicy", "{\"maxReceiveCount\":\"2\", " + "\"deadLetterTargetArn\":\"" + deadLetterQueueARN + "\"}");
+        SetQueueAttributesRequest queueAttributesRequest = SetQueueAttributesRequest.builder()
+            .queueUrl(standardQueueUrl)
+            .attributes(null)
+            .build();
+//            .addAttributesEntry("RedrivePolicy", "{\"maxReceiveCount\":\"2\", " + "\"deadLetterTargetArn\":\"" + deadLetterQueueARN + "\"}");
 
-        sqs.setQueueAttributes(queueAttributesRequest);
+        sqsClient.setQueueAttributes(queueAttributesRequest);
 
         // Send a message to a standard queue
 
         Map<String, MessageAttributeValue> messageAttributes = new HashMap<>();
+        MessageAttributeValue messageAttributeValue = MessageAttributeValue.builder()
+            .stringValue("This is an attribute")
+            .dataType("String")
+            .build();
 
-        messageAttributes.put("AttributeOne", new MessageAttributeValue().withStringValue("This is an attribute")
-            .withDataType("String"));
+        messageAttributes.put("AttributeOne", messageAttributeValue);
 
-        SendMessageRequest sendMessageStandardQueue = new SendMessageRequest().withQueueUrl(standardQueueUrl)
-            .withMessageBody("A simple message.")
-            .withDelaySeconds(30) // Message will arrive in the queue after 30 seconds. We can use this only in standard queues
-            .withMessageAttributes(messageAttributes);
+        SendMessageRequest sendMessageStandardQueue = SendMessageRequest.builder()
+            .queueUrl(standardQueueUrl)
+            .messageBody("A simple message.")
+            .delaySeconds(30) // Message will arrive in the queue after 30 seconds. We can use this only in standard queues
+            .messageAttributes(messageAttributes)
+            .build();
 
-        sqs.sendMessage(sendMessageStandardQueue);
+        sqsClient.sendMessage(sendMessageStandardQueue);
 
         // Send a message to a fifo queue
 
-        SendMessageRequest sendMessageFifoQueue = new SendMessageRequest().withQueueUrl(fifoQueueUrl)
-            .withMessageBody("FIFO Queue")
-            .withMessageGroupId("baeldung-group-1")
-            .withMessageAttributes(messageAttributes);
+        SendMessageRequest sendMessageFifoQueue = SendMessageRequest.builder()
+            .queueUrl(fifoQueueUrl)
+            .messageBody("FIFO Queue")
+            .messageGroupId("baeldung-group-1")
+            .messageAttributes(messageAttributes)
+            .build();
 
-        sqs.sendMessage(sendMessageFifoQueue);
+        sqsClient.sendMessage(sendMessageFifoQueue);
 
         // Send multiple messages
 
         List<SendMessageBatchRequestEntry> messageEntries = new ArrayList<>();
-        messageEntries.add(new SendMessageBatchRequestEntry().withId("id-1")
-            .withMessageBody("batch-1")
-            .withMessageGroupId("baeldung-group-1"));
-        messageEntries.add(new SendMessageBatchRequestEntry().withId("id-2")
-            .withMessageBody("batch-2")
-            .withMessageGroupId("baeldung-group-1"));
+        SendMessageBatchRequestEntry messageBatchRequestEntry1 = SendMessageBatchRequestEntry.builder()
+            .id("id-1")
+            .messageBody("batch-1")
+            .messageGroupId("baeldung-group-1")
+            .build();
 
-        SendMessageBatchRequest sendMessageBatchRequest = new SendMessageBatchRequest(fifoQueueUrl, messageEntries);
-        sqs.sendMessageBatch(sendMessageBatchRequest);
+        SendMessageBatchRequestEntry messageBatchRequestEntry2 = SendMessageBatchRequestEntry.builder()
+            .id("id-2")
+            .messageBody("batch-2")
+            .messageGroupId("baeldung-group-1")
+            .build();
+
+        messageEntries.add(messageBatchRequestEntry1);
+        messageEntries.add(messageBatchRequestEntry2);
+
+        SendMessageBatchRequest sendMessageBatchRequest = SendMessageBatchRequest.builder()
+            .queueUrl(fifoQueueUrl)
+            .entries(messageEntries)
+            .build();
+
+        sqsClient.sendMessageBatch(sendMessageBatchRequest);
 
         // Read a message from a queue
 
-        ReceiveMessageRequest receiveMessageRequest = new ReceiveMessageRequest(fifoQueueUrl).withWaitTimeSeconds(10) // Long polling;
-            .withMaxNumberOfMessages(1); // Max is 10
+        ReceiveMessageRequest receiveMessageRequest = ReceiveMessageRequest.builder()
+            .waitTimeSeconds(10)
+            .maxNumberOfMessages(1)
+            .build();
 
-        List<Message> sqsMessages = sqs.receiveMessage(receiveMessageRequest)
-            .getMessages();
 
-        sqsMessages.get(0)
-            .getAttributes();
-        sqsMessages.get(0)
-            .getBody();
+        List<Message> sqsMessages = sqsClient.receiveMessage(receiveMessageRequest)
+            .messages();
+
+
+        sqsMessages.get(0).attributes();
+        sqsMessages.get(0).body();
 
         // Delete a message from a queue
+        DeleteMessageRequest deleteMessageRequest = DeleteMessageRequest.builder()
+            .queueUrl(fifoQueueUrl)
+            .receiptHandle(sqsMessages.get(0).receiptHandle())
+            .build();
 
-        sqs.deleteMessage(new DeleteMessageRequest().withQueueUrl(fifoQueueUrl)
-            .withReceiptHandle(sqsMessages.get(0)
-                .getReceiptHandle()));
+        sqsClient.deleteMessage(deleteMessageRequest);
 
         // Monitoring
-        GetQueueAttributesRequest getQueueAttributesRequest = new GetQueueAttributesRequest(standardQueueUrl).withAttributeNames("All");
-        GetQueueAttributesResult getQueueAttributesResult = sqs.getQueueAttributes(getQueueAttributesRequest);
-        System.out.println(String.format("The number of messages on the queue: %s", getQueueAttributesResult.getAttributes()
+        GetQueueAttributesRequest getQueueAttributesRequestForMonitoring = GetQueueAttributesRequest.builder()
+            .queueUrl(standardQueueUrl)
+            .build();
+
+
+        GetQueueAttributesResponse attributesResponse = sqsClient.getQueueAttributes(getQueueAttributesRequestForMonitoring);
+        System.out.println(String.format("The number of messages on the queue: %s", attributesResponse.attributes()
             .get("ApproximateNumberOfMessages")));
-        System.out.println(String.format("The number of messages in flight: %s", getQueueAttributesResult.getAttributes()
+        System.out.println(String.format("The number of messages in flight: %s", attributesResponse.attributes()
             .get("ApproximateNumberOfMessagesNotVisible")));
 
     }
