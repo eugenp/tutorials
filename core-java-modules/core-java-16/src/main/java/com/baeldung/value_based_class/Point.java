@@ -1,6 +1,7 @@
 package com.baeldung.value_based_class;
 
 import java.util.Objects;
+
 import jdk.internal.ValueBased;
 
 /**
