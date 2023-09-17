@@ -13,26 +13,11 @@
     </parent>
 
     <dependencies>
-        <!-- Cassandra -->
         <dependency>
             <groupId>com.datastax.cassandra</groupId>
             <artifactId>cassandra-driver-core</artifactId>
             <version>${cassandra-driver-core.version}</version>
-            <optional>true</optional>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.google.guava</groupId>
-                    <artifactId>guava</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.cassandraunit/cassandra-unit -->
-        <dependency>
-            <groupId>org.cassandraunit</groupId>
-            <artifactId>cassandra-unit</artifactId>
-            <version>${cassandra-unit.version}</version>
-        </dependency>
-        <!-- DataStax Cassandra -->
         <dependency>
             <groupId>com.datastax.oss</groupId>
             <artifactId>java-driver-core</artifactId>
@@ -48,32 +33,28 @@
             <artifactId>netty-transport</artifactId>
             <version>${netty-transport-version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>cassandra</artifactId>
+            <version>${cassandra-testcontainer.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
-    <profiles>
-        <profile>
-            <id>integration-lite-first</id>
-
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <configuration>
-                            <forkCount>1</forkCount>
-                            <reuseForks>true</reuseForks>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
     <properties>
         <!-- Cassandra -->
         <cassandra-driver-core.version>3.1.2</cassandra-driver-core.version>
-        <cassandra-unit.version>3.1.1.0</cassandra-unit.version>
         <datastax-cassandra.version>4.1.0</datastax-cassandra.version>
+        <cassandra-testcontainer.version>1.15.3</cassandra-testcontainer.version>
         <netty-transport-version>4.1.71.Final</netty-transport-version>
     </properties>
 

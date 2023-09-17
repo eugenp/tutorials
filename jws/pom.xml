@@ -61,8 +61,4 @@
         </plugins>
     </build>
 
-    <properties>
-        <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
-    </properties>
-
 </project>

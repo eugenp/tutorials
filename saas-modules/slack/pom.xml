@@ -55,7 +55,6 @@
 
     <properties>
         <slack.version>1.4</slack.version>
-        <maven-jar-plugin.version>2.4</maven-jar-plugin.version>
     </properties>
 
 </project>

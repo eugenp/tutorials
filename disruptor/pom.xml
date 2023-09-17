@@ -119,7 +119,6 @@
         <disruptor.version>3.3.6</disruptor.version>
         <!-- testing -->
         <maven-shade-plugin.version>2.4.3</maven-shade-plugin.version>
-        <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
         <onejar-maven-plugin.version>1.4.4</onejar-maven-plugin.version>
     </properties>
 

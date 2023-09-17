@@ -12,8 +12,6 @@ import java.util.Date;
 public class Person {
 
     private int age;
-
     private String fullName;
-
     private Date dateOfBirth;
 }

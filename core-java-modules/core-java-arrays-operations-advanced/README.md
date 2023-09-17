@@ -13,3 +13,5 @@ This module contains articles about advanced operations on arrays in Java. They 
 - [Performance of System.arraycopy() vs. Arrays.copyOf()](https://www.baeldung.com/java-system-arraycopy-arrays-copyof-performance)
 - [Slicing Arrays in Java](https://www.baeldung.com/java-slicing-arrays)
 - [Combining Two or More Byte Arrays](https://www.baeldung.com/java-concatenate-byte-arrays)
+- [Calculating the Sum of Two Arrays in Java](https://www.baeldung.com/java-sum-arrays-element-wise)
+- [Find the Middle Element of an Array in Java](https://www.baeldung.com/java-array-middle-item)

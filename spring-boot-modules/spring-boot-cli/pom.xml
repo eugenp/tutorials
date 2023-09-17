@@ -6,7 +6,6 @@
     <artifactId>spring-boot-cli</artifactId>
     <name>spring-boot-cli</name>
     <packaging>jar</packaging>
-    <description></description>
 
     <parent>
         <groupId>com.baeldung.spring-boot-modules</groupId>
