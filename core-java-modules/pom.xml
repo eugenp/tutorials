@@ -24,12 +24,40 @@
         <!--<module>core-java-collections-conversions-2</module> -->
         <!--<module>core-java-lang</module> -->
         <!--<module>core-java-lang-math-3</module> -->
-        <!--<module>core-java-nio-2</module> -->
         <!--<module>core-java-security</module> -->
-        <!--<module>core-java-serialization</module> -->
         <!--<module>core-java-streams-2</module> -->
         <!--<module>core-java-sun</module> -->
-
+        <module>core-java-9-improvements</module>
+        <module>core-java-collections-array-list</module>
+        <module>core-java-9-streams</module>
+        <module>core-java-9</module>
+        <module>core-java-10</module>
+        <module>core-java-11</module>
+        <module>core-java-11-2</module>
+        <module>core-java-11-3</module>
+        <module>core-java-collections-list-4</module>
+        <module>core-java-collections-list-5</module>
+        <module>core-java-collections-maps-4</module>
+        <module>core-java-collections-maps-5</module>
+        <module>core-java-concurrency-simple</module>
+        <module>core-java-datetime-string</module>
+        <module>core-java-io-conversions-2</module>
+        <module>core-java-jpms</module>
+        <module>core-java-lang-oop-constructors-2</module>
+        <module>core-java-methods</module>
+        <module>core-java-networking-3</module>
+        <module>core-java-os</module>
+        <module>core-java-perf-2</module>
+        <module>core-java-streams-4</module>
+        <module>core-java-streams-5</module>
+        <module>core-java-streams-collect</module>
+        <module>core-java-streams-maps</module>
+        <module>core-java-string-algorithms-3</module>
+        <module>core-java-string-operations-3</module>
+        <module>core-java-string-operations-4</module>
+        <module>core-java-string-operations-5</module>
+        <!--<module>core-java-strings</module> Failing test cases JAVA-24414-->
+        <module>core-java-time-measurements</module>
         <module>core-java-annotations</module>
         <module>core-java-arrays-sorting</module>
         <module>core-java-arrays-guides</module>
@@ -113,6 +141,7 @@
         <module>core-java-networking-2</module>
         <module>core-java-networking-4</module>
         <module>core-java-nio</module>
+        <module>core-java-nio-2</module>
         <module>core-java-numbers</module>
         <module>core-java-numbers-2</module>
         <module>core-java-numbers-3</module>
@@ -127,7 +156,9 @@
         <module>core-java-scanner</module>
         <module>core-java-security-2</module>
         <module>core-java-security-3</module>
+        <module>core-java-security-4</module>
         <module>core-java-security-algorithms</module>
+        <module>core-java-serialization</module>
         <module>core-java-streams</module>
         <module>core-java-streams-3</module>
         <module>core-java-string-algorithms</module>
@@ -145,6 +176,7 @@
         <module>core-java-uuid</module>
         <module>core-java-collections-maps-6</module>
         <module>core-java-records</module>
+        <module>core-java-9-jigsaw</module>
     </modules>
 
     <dependencyManagement>

@@ -9,3 +9,4 @@
 - [Invoke a Static Method Using Java Reflection API](https://www.baeldung.com/java-invoke-static-method-reflection)
 - [What Is the JDK com.sun.proxy.$Proxy Class?](https://www.baeldung.com/jdk-com-sun-proxy)
 - [Unit Test Private Methods in Java](https://www.baeldung.com/java-unit-test-private-methods)
+- [Constructing Java Objects From Only the Class Name](https://www.baeldung.com/java-objects-make-using-class-name)

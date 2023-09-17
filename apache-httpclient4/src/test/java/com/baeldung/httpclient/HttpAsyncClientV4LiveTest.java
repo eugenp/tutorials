@@ -1,4 +1,5 @@
 package com.baeldung.httpclient;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 

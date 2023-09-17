@@ -14,6 +14,7 @@ import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
 import org.apache.hc.client5.http.impl.cookie.BasicClientCookie;
 import org.apache.hc.client5.http.protocol.HttpClientContext;
 
+import org.apache.http.cookie.ClientCookie;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -51,8 +52,8 @@ class HttpClientGettingCookieValueUnitTest {
     private BasicCookieStore createCustomCookieStore() {
         BasicCookieStore cookieStore = new BasicCookieStore();
         BasicClientCookie cookie = new BasicClientCookie("custom_cookie", "test_value");
-        cookie.setDomain("baeldung.com");
-        cookie.setAttribute("domain", "true");
+        cookie.setDomain("github.com");
+        cookie.setAttribute(ClientCookie.DOMAIN_ATTR, "github.com");
         cookie.setPath("/");
         cookieStore.addCookie(cookie);
         return cookieStore;
