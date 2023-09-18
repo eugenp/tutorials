@@ -15,6 +15,8 @@ public final class Point {
     private final int y;
     private final int z;
 
+    private static Point ORIGIN = new Point(0, 0, 0);
+
     private Point(int x, int y, int z) {
         this.x = x;
         this.y = y;
@@ -22,7 +24,9 @@ public final class Point {
     }
 
     public static Point valueOfPoint(int x, int y, int z) {
-        // returns an instance. This can be a new instance or a cached one.
+        // returns a cached instance if it is origin, or a new instance
+        if (isOrigin(x, y, z))
+            return ORIGIN;
         return new Point(x, y, z);
     }
 
@@ -37,5 +41,9 @@ public final class Point {
     @Override
     public int hashCode() {
         return Objects.hash(x, y, z);
+    }
+
+    private static boolean isOrigin(int x, int y, int z) {
+        return x == 0 && y == 0 && z == 0;
     }
 }

@@ -26,4 +26,16 @@ public class ValueBasedClassUnitTest {
 
         Assert.assertEquals(p1, p2);
     }
+
+    @Test
+    public void givenValueBasedPoint_whenOrigin_thenReturnCachedInstance() {
+        Point p1 = Point.valueOfPoint(0, 0, 0);
+        Point p2 = Point.valueOfPoint(0, 0, 0);
+        Point p3 = Point.valueOfPoint(1, 2, 3);
+
+        // the following should not be assumed for value-based classes
+
+        Assert.assertTrue(p1 == p2);
+        Assert.assertFalse(p1 == p3);
+    }
 }
