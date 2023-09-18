@@ -23,6 +23,11 @@
             <artifactId>commons-lang3</artifactId>
             <version>${apache-commons-lang3.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.vdurmont</groupId>
+            <artifactId>emoji-java</artifactId>
+            <version>${emoji-java.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -52,6 +57,7 @@
         <maven.compiler.target>11</maven.compiler.target>
         <validator.version>1.7</validator.version>
         <apache-commons-lang3.version>3.12.0</apache-commons-lang3.version>
+        <emoji-java.version>5.1.1</emoji-java.version>
     </properties>
 
 </project>
