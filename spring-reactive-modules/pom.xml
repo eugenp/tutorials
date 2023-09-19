@@ -17,8 +17,8 @@
     </parent>
 
     <modules>
-        <module>spring-data-reactive</module>
-        <module>spring-data-reactive-2</module>
+        <module>spring-reactive-data</module>
+        <module>spring-reactive-data-2</module>
         <module>spring-5-reactive</module>
         <module>spring-5-reactive-2</module>
         <module>spring-5-reactive-3</module>
