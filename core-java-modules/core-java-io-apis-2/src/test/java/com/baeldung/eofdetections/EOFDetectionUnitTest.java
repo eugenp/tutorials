@@ -22,7 +22,7 @@ public class EOFDetectionUnitTest {
     @Order(1)
     public void givenDummyText_whenReadWithFileInputStream_returnText() {
         try {
-            String actualText = eofDetection.readWithFIleInputStream(pathToFile);
+            String actualText = eofDetection.readWithFileInputStream(pathToFile);
             assertEquals(LOREM_IPSUM, actualText);
         } catch (IOException e) {
             fail(e.getMessage());
