@@ -20,7 +20,6 @@ import org.springframework.boot.autoconfigure.condition.SpringBootCondition;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ConditionContext;
 import org.springframework.context.annotation.Conditional;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.Ordered;
 import org.springframework.core.env.Environment;
@@ -33,10 +32,6 @@ import org.springframework.util.ClassUtils;
 
 import jakarta.persistence.EntityManagerFactory;
 
-/*@Configuration
-@ConditionalOnClass(DataSource.class)
-@AutoConfigureOrder(Ordered.HIGHEST_PRECEDENCE)
-@PropertySource("classpath:mysql.properties")*/
 @AutoConfiguration
 @ConditionalOnClass(DataSource.class)
 @AutoConfigureOrder(Ordered.HIGHEST_PRECEDENCE)
