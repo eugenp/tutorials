@@ -8,31 +8,28 @@ import java.util.*;
 
 public class EOFDetection {
 
-    public String readWithFIleInputStream(String pathFile) throws IOException {
-        FileInputStream fis = new FileInputStream(pathFile);
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        int data;
-        while ((data = fis.read()) != -1) {
-            baos.write(data);
+    public String readWithFileInputStream(String pathFile) throws IOException {
+        try (FileInputStream fis = new FileInputStream(pathFile);
+             ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
+            int data;
+            while ((data = fis.read()) != -1) {
+                baos.write(data);
+            }
+            return baos.toString();
         }
-        fis.close();
-        baos.close();
-        return baos.toString();
     }
 
     public String readWithBufferedReader(String pathFile) throws IOException {
-        FileInputStream fis = new FileInputStream(pathFile);
-        InputStreamReader isr = new InputStreamReader(fis);
-        BufferedReader reader = new BufferedReader(isr);
-        StringBuilder actualContent = new StringBuilder();
-        String line;
-        while ((line = reader.readLine()) != null) {
-            actualContent.append(line);
+        try (FileInputStream fis = new FileInputStream(pathFile);
+             InputStreamReader isr = new InputStreamReader(fis);
+             BufferedReader reader = new BufferedReader(isr)) {
+            StringBuilder actualContent = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                actualContent.append(line);
+            }
+            return actualContent.toString();
         }
-        fis.close();
-        isr.close();
-        reader.close();
-        return actualContent.toString();
     }
 
     public String readWithScanner(String pathFile) throws IOException {
@@ -48,16 +45,16 @@ public class EOFDetection {
     }
 
     public String readFileWithFileChannelAndByteBuffer(String pathFile) throws IOException {
-        FileInputStream fis = new FileInputStream(pathFile);
-        FileChannel channel = fis.getChannel();
-        ByteBuffer buffer = ByteBuffer.allocate((int) channel.size());
-        while (channel.read(buffer) != -1) {
-            buffer.flip();
-            buffer.clear();
+        try (FileInputStream fis = new FileInputStream(pathFile);
+             FileChannel channel = fis.getChannel()) {
+
+            ByteBuffer buffer = ByteBuffer.allocate((int) channel.size());
+            while (channel.read(buffer) != -1) {
+                buffer.flip();
+                buffer.clear();
+            }
+            return StandardCharsets.UTF_8.decode(buffer).toString();
         }
-        fis.close();
-        channel.close();
-        return StandardCharsets.UTF_8.decode(buffer).toString();
     }
 }
 
