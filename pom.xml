@@ -935,6 +935,7 @@
                 <module>gradle-modules/gradle/maven-to-gradle</module>
                 <module>persistence-modules/spring-data-neo4j</module>
                 <module>parent-boot-3</module>
+                <module>spring-6-rsocket</module>
                 <!--<module>java-panama</module> Java-19 module-->
             </modules>
 
