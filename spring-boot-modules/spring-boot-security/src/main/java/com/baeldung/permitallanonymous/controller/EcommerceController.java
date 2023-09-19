@@ -24,4 +24,6 @@ public class EcommerceController {
     public @ResponseBody String registerUser() {
         return "Register User";
     }
+
 }
+
