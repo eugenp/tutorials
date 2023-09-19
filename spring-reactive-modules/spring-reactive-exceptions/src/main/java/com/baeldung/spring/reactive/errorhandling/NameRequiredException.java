@@ -1,4 +1,4 @@
-package com.baeldung.reactive.errorhandling;
+package com.baeldung.spring.reactive.errorhandling;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
