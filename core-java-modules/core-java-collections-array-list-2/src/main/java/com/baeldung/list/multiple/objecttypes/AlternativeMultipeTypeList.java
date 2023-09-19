@@ -11,22 +11,24 @@ import java.util.function.Predicate;
 public class AlternativeMultipeTypeList {
 
     public static void main(String[] args) {
-        // List of Numbers
+        // List of Parent Class
         ArrayList<Number> myList = new ArrayList<>();
         myList.add(1.2);
         myList.add(2);
         myList.add(-3.5);
 
-        // List of Map
+        // List of Interface type
         ArrayList<Map> diffMapList = new ArrayList<>();
         diffMapList.add(new HashMap<>());
         diffMapList.add(new TreeMap<>());
         diffMapList.add(new LinkedHashMap<>());
 
+        // List of Custom Object
         ArrayList<CustomObject> objList = new ArrayList<>();
         objList.add(new CustomObject("obj1", 1));
         objList.add(new CustomObject("obj2", 2));
 
+        // List via Functional Interface
         List<Object> dataList = new ArrayList<>();
 
         Predicate<Object> myPricate = inputData -> (inputData instanceof String || inputData instanceof Integer);
