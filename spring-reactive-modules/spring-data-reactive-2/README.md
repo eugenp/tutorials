@@ -1,6 +1,6 @@
 ## Spring Data Reactive Project
 
-This module contains articles about reactive Spring 5 Data
+This module contains articles about reactive Spring Boot Data
 
 ### The Course
 

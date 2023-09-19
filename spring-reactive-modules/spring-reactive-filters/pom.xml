@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-reactive-filters</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-5-reactive-filters</name>
+    <name>spring-reactive-filters</name>
     <packaging>jar</packaging>
-    <description>spring 5 sample project about new features</description>
+    <description>spring boot sample project about new features</description>
 
     <parent>
         <groupId>com.baeldung.spring.reactive</groupId>

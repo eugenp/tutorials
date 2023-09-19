@@ -4,9 +4,9 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-reactive-client-2</artifactId>
-    <name>spring-5-reactive-client-2</name>
+    <name>spring-reactive-client-2</name>
     <packaging>jar</packaging>
-    <description>spring 5 sample project about new features</description>
+    <description>spring boot sample project about new features</description>
 
     <parent>
         <groupId>com.baeldung.spring.reactive</groupId>
