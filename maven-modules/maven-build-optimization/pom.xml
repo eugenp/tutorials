@@ -7,8 +7,8 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>maven-build-optimization</name>
     <packaging>pom</packaging>
-	
-	<parent>
+
+    <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>maven-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
@@ -19,12 +19,12 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-profiler-plugin</artifactId>
-                <version>${profiler.version}</version>
+                <version>${maven-profiler-plugin.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>${failsafe.version}</version>
+                <version>${maven-failsafe-plugin.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -53,10 +53,10 @@
             </build>
         </profile>
     </profiles>
-	
+
     <properties>
-        <failsafe.version>3.1.2</failsafe.version>
-        <profiler.version>1.7</profiler.version>	
-    </properties>	
+        <maven-failsafe-plugin.version>3.1.2</maven-failsafe-plugin.version>
+        <maven-profiler-plugin.version>1.7</maven-profiler-plugin.version>
+    </properties>
 
 </project>

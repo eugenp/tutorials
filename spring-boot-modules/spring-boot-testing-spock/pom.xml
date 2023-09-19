@@ -96,7 +96,6 @@
         <start-class>com.baeldung.boot.Application</start-class>
         <spock.version>2.4-M1-groovy-4.0</spock.version>
         <gmavenplus-plugin.version>3.0.0</gmavenplus-plugin.version>
-        <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
         <log4j2.version>2.17.1</log4j2.version>
     </properties>
 

@@ -47,7 +47,7 @@
         <dependency>
             <groupId>commons-configuration</groupId>
             <artifactId>commons-configuration</artifactId>
-            <version>1.10</version>
+            <version>${commons-configuration.version}</version>
         </dependency>
     </dependencies>
 
@@ -68,6 +68,7 @@
         <spring.fox.version>3.0.0</spring.fox.version>
         <start-class>com.baeldung.springboot.swagger.ArticleApplication</start-class>
         <spring-cloud.version>2021.0.5</spring-cloud.version>
+        <commons-configuration.version>1.10</commons-configuration.version>
     </properties>
 
 </project>

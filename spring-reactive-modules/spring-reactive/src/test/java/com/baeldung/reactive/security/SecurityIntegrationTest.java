@@ -8,7 +8,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
-@SpringBootTest(classes = SpringSecurity5Application.class)
+@SpringBootTest(classes = SpringSecurity6Application.class)
 class SecurityIntegrationTest {
 
     @Autowired
