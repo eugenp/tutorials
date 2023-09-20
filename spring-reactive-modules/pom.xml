@@ -27,7 +27,7 @@
         <module>spring-reactive-filters</module>
         <module>spring-reactive-oauth</module>
         <module>spring-reactive-security</module>
-        <module>spring-reactive</module>
+        <module>spring-reactive-webflux</module>
         <module>spring-reactive-exceptions</module>
         <module>spring-reactor</module>
         <module>spring-webflux-amqp</module>
