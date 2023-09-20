@@ -1,16 +1,14 @@
 package com.apache.camel.file.processor;
 
-import java.io.File;
-
+import com.baeldung.camel.apache.file.FileProcessor;
 import org.apache.camel.CamelContext;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.impl.DefaultCamelContext;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.baeldung.camel.apache.file.FileProcessor;
+import java.io.File;
 
 
 public class FileProcessorIntegrationTest {
@@ -67,9 +65,10 @@ public class FileProcessorIntegrationTest {
 
     @Test
     public void moveFolderContentSpringDSLTest() throws InterruptedException {
-        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("camel-context-test.xml");
+//        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("camel-context-test.xml");
+//        ApplicationContext applicationContext = ContextLoader.getCurrentWebApplicationContext();
         Thread.sleep(DURATION_MILIS);
-        applicationContext.close();
+        //applicationContext.close();
 
     }
 }
