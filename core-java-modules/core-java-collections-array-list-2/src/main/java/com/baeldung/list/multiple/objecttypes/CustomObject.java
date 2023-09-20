@@ -8,8 +8,7 @@ public class CustomObject {
         this.classData = classData;
     }
 
-    CustomObject(String classData, Integer intData) {
-        this.classData = classData;
+    CustomObject(Integer intData) {
         this.intData = intData;
     }
 

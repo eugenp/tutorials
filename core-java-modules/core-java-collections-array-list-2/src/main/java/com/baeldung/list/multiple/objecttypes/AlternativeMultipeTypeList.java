@@ -25,8 +25,8 @@ public class AlternativeMultipeTypeList {
 
         // List of Custom Object
         ArrayList<CustomObject> objList = new ArrayList<>();
-        objList.add(new CustomObject("obj1", 1));
-        objList.add(new CustomObject("obj2", 2));
+        objList.add(new CustomObject("String"));
+        objList.add(new CustomObject(2));
 
         // List via Functional Interface
         List<Object> dataList = new ArrayList<>();
@@ -36,6 +36,9 @@ public class AlternativeMultipeTypeList {
         UserFunctionalInterface myInterface = (listObj, data) -> {
             if (myPricate.test(data))
                 listObj.add(data);
+            else
+                System.out.println("Skipping input as data not allowed for class: " + data.getClass()
+                    .getSimpleName());
             return listObj;
         };
 
