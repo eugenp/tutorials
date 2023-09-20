@@ -2,6 +2,7 @@
 
 # setup
 set -ex
+docker rm couchbase_container -f
 
 # main
 docker build -t couchbase_image .
