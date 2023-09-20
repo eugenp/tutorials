@@ -5,7 +5,9 @@ import java.util.Date;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
+import org.springframework.stereotype.Component;
 
+@Component
 public class FileProcessor implements Processor {
 
     public void process(Exchange exchange) throws Exception {
