@@ -19,9 +19,9 @@
     <modules>
         <module>spring-reactive-data</module>
         <module>spring-reactive-data-2</module>
-        <module>spring-5-reactive</module>
-        <module>spring-5-reactive-2</module>
-        <module>spring-5-reactive-3</module>
+        <module>spring-reactive</module>
+        <module>spring-reactive-2</module>
+        <module>spring-reactive-3</module>
         <module>spring-reactive-client</module>
         <module>spring-reactive-client-2</module>
         <module>spring-reactive-filters</module>
