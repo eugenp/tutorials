@@ -8,3 +8,4 @@ The "REST With Spring" Classes: https://bit.ly/restwithspring
 ### Relevant Articles
 
 - [Spring WebFlux Filters](https://www.baeldung.com/spring-webflux-filters)
+- [Spring WebClient Filters](https://www.baeldung.com/spring-webclient-filters)

@@ -1,6 +1,6 @@
 ## Spring 5 Reactive Project
 
-This module contains articles about reactive Spring 5.
+This module contains articles about reactive Spring Boot.
 
 - [Validation for Functional Endpoints in Spring 5](https://www.baeldung.com/spring-functional-endpoints-validation)
 - [Testing Reactive Streams Using StepVerifier and TestPublisher](https://www.baeldung.com/reactive-streams-step-verifier-test-publisher)

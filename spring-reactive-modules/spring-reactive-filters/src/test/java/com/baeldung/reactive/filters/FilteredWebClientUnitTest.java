@@ -1,8 +1,8 @@
-package com.baeldung.webclient.filter;
+package com.baeldung.reactive.filters;
 
-import static com.baeldung.webclient.filter.WebClientFilters.countingFilter;
-import static com.baeldung.webclient.filter.WebClientFilters.loggingFilter;
-import static com.baeldung.webclient.filter.WebClientFilters.urlModifyingFilter;
+import static com.baeldung.reactive.filters.WebClientFilters.countingFilter;
+import static com.baeldung.reactive.filters.WebClientFilters.loggingFilter;
+import static com.baeldung.reactive.filters.WebClientFilters.urlModifyingFilter;
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static com.github.tomakehurst.wiremock.client.WireMock.containing;
 import static com.github.tomakehurst.wiremock.client.WireMock.get;

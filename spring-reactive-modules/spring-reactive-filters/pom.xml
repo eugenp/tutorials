@@ -49,6 +49,12 @@
             <artifactId>netty-all</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.github.tomakehurst</groupId>
+            <artifactId>wiremock-standalone</artifactId>
+            <version>${wiremock-standalone.version}</version>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
 
@@ -64,5 +70,9 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <wiremock-standalone.version>2.26.0</wiremock-standalone.version>
+    </properties>
 
 </project>
