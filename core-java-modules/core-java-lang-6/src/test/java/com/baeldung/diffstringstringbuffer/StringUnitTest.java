@@ -23,12 +23,9 @@ public class StringUnitTest {
         String s1 = "TopCat";
         StringBuffer stringBuffer = new StringBuffer("DownTown");
         stringBuffer.append(s1);
-        System.out.println(stringBuffer);
         stringBuffer.reverse();
-        System.out.println(stringBuffer + "\n" + s1);
         assertNotEquals(s1, "taCpoT");
         stringBuffer.delete(0, 3);
-        System.out.println(stringBuffer);
         assertEquals(s1, "TopCat");
     }
 
