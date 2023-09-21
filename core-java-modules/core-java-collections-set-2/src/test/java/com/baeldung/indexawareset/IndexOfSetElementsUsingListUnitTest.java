@@ -21,9 +21,10 @@ public class IndexOfSetElementsUsingListUnitTest {
         set.add(300);
 
         IndexOfElementsInSet<Integer> integerIndexOfElementsInSet = new IndexOfElementsInSet<>();
-        int index100 = integerIndexOfElementsInSet.getIndexOf(set, 100);
-        Assert.assertEquals(index100, integerIndexOfElementsInSet.getIndexOf(set, 100));
-        Assert.assertEquals(-1, integerIndexOfElementsInSet.getIndexOf(set, 12));
+        int index100 = integerIndexOfElementsInSet.getIndexUsingIterator(set, 100);
+        Assert.assertEquals(index100, integerIndexOfElementsInSet.getIndexUsingIterator(set, 100));
+
+        Assert.assertEquals(-1, integerIndexOfElementsInSet.getIndexUsingIterator(set, 12));
     }
 
     @Test
@@ -37,7 +38,7 @@ public class IndexOfSetElementsUsingListUnitTest {
         set.add(300);
 
         IndexOfElementsInSet<Integer> integerIndexOfElementsInSet = new IndexOfElementsInSet<>();
-        Assert.assertEquals(0, integerIndexOfElementsInSet.getIndexOf(set, 100));
+        Assert.assertEquals(0, integerIndexOfElementsInSet.getIndexUsingIterator(set, 100));
     }
 
     @Test
@@ -51,8 +52,8 @@ public class IndexOfSetElementsUsingListUnitTest {
         set.add(300);
 
         IndexOfElementsInSet<Integer> integerIndexOfElementsInSet = new IndexOfElementsInSet<>();
-        Assert.assertEquals(0, integerIndexOfElementsInSet.getIndexOf(set, -1));
-        Assert.assertEquals(3, integerIndexOfElementsInSet.getIndexOf(set, 100));
+        Assert.assertEquals(0, integerIndexOfElementsInSet.getIndexUsingIterator(set, -1));
+        Assert.assertEquals(3, integerIndexOfElementsInSet.getIndexUsingIterator(set, 100));
     }
 
     @Test
@@ -89,5 +90,19 @@ public class IndexOfSetElementsUsingListUnitTest {
         Assert.assertEquals(0, set.indexOf(12));
         Assert.assertEquals(2, set.indexOf(-1));
         Assert.assertEquals(-1, set.indexOf(100));
+    }
+
+    @Test
+    public void givenLinkedHashSet_whenIndexUsingUtilityMethod_thenReturnsIndex() {
+        Set<Integer> set = new LinkedHashSet<>();
+        set.add(100);
+        set.add(20);
+        set.add(300);
+        set.add(0);
+        set.add(-1);
+        set.add(300);
+
+        IndexOfElementsInSet<Integer> integerIndexOfElementsInSet = new IndexOfElementsInSet<>();
+        Assert.assertEquals(-1, integerIndexOfElementsInSet.getIndexUsingForEach(set, 150));
     }
 }

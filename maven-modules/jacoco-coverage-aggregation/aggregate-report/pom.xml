@@ -32,7 +32,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.8</version>
+                <version>${jacoco-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <phase>verify</phase>
@@ -52,5 +52,9 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
+    </properties>
 
 </project>
