@@ -1,6 +1,7 @@
 package com.baeldung.r2dbc;
 
 
+import com.baeldung.r2dbc.configuration.R2DBCConfiguration;
 import com.baeldung.r2dbc.model.Player;
 import com.baeldung.r2dbc.repository.PlayerRepository;
 import io.r2dbc.h2.H2ConnectionFactory;
@@ -9,7 +10,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.r2dbc.core.DatabaseClient;
+import org.springframework.r2dbc.core.DatabaseClient;
 import org.springframework.test.context.junit4.SpringRunner;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Hooks;
@@ -20,7 +21,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes = R2DBCConfiguration.class)
 public class R2dbcApplicationIntegrationTest {
 
 
@@ -43,7 +44,7 @@ public class R2dbcApplicationIntegrationTest {
                 "DROP TABLE IF EXISTS player;",
                 "CREATE table player (id INT AUTO_INCREMENT NOT NULL, name VARCHAR2, age INT NOT NULL);");
 
-        statements.forEach(it -> client.execute(it) //
+        statements.forEach(it -> client.sql(it) //
                 .fetch() //
                 .rowsUpdated() //
                 .as(StepVerifier::create) //
