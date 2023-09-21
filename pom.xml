@@ -935,6 +935,9 @@
                 <module>gradle-modules/gradle/maven-to-gradle</module>
                 <module>persistence-modules/spring-data-neo4j</module>
                 <module>parent-boot-3</module>
+                <module>gcp-firebase</module>
+                <!--<module>spring-di-4</module>--> <!--JAVA-25375-->
+                <!--<module>spring-kafka-2</module>--> <!--JAVA-25374-->
                 <!--<module>java-panama</module> Java-19 module-->
             </modules>
 
