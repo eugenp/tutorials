@@ -1,4 +1,4 @@
-package com.baeldung.convertfloattobigdecimal;
+package com.baeldung.floattobigdecimal;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 
 import org.junit.jupiter.api.Test;
 
-class ConvertFloatToBigDecimalUnitTest {
+class FloatToBigDecimalUnitTest {
 
     @Test
     public void whenFloatComparedWithDifferentValues_thenCouldMatch() {
@@ -16,12 +16,16 @@ class ConvertFloatToBigDecimalUnitTest {
     }
 
     @Test
-    public void whenCreatedFromFloat_thenCouldNotMatch() {
+    public void whenCreatedFromCertainFloatValues_thenMatches() {
         float floatToConvert = 0.5f;
         BigDecimal bdFromFloat = new BigDecimal(floatToConvert);
         assertEquals("0.5", bdFromFloat.toString());
-        floatToConvert = 1.1f;
-        bdFromFloat = new BigDecimal(floatToConvert);
+    }
+
+    @Test
+    public void whenCreatedFromCertainFloatValues_thenDoesNotMatch() {
+        float floatToConvert = 1.1f;
+        BigDecimal bdFromFloat = new BigDecimal(floatToConvert);
         assertNotEquals("1.1", bdFromFloat.toString());
     }
 
@@ -40,9 +44,17 @@ class ConvertFloatToBigDecimalUnitTest {
     }
 
     @Test
+    public void whenFloatCastToDouble_thenGotADifferentNumber() {
+        float floatToConvert = 1.1f;
+        double doubleCast = floatToConvert;
+        assertEquals("1.100000023841858", Double.toString(doubleCast));
+    }
+
+    @Test
     public void whenCreatedByValueOfAndIsDouble_thenMatches() {
         double doubleToConvert = 1.1d;
         BigDecimal bdByValueOf = BigDecimal.valueOf(doubleToConvert);
         assertEquals("1.1", bdByValueOf.toString());
     }
+
 }
