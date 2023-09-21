@@ -1,7 +1,6 @@
 package com.baeldung.prevent.commandline.application.runner.execution;
 
 import org.junit.jupiter.api.Test;
-import org.mockito.Spy;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.SpyBean;
 
