@@ -53,7 +53,7 @@ public class IdentityHashMapDemonstrator {
         }
     }
 
-    private static class Book {
+    static class Book {
         String title;
         int year;
 
