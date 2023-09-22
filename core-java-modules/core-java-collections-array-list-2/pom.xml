@@ -8,31 +8,4 @@
 		<artifactId>core-java-modules</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>${maven-compiler-plugin.source}</source>
-					<target>${maven-compiler-plugin.target}</target>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>${surefire.plugin.version}</version>
-				<configuration>
-					<argLine>
-                        --add-opens java.base/java.util=ALL-UNNAMED
-                    </argLine>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
-	<properties>
-		<maven-compiler-plugin.source>16</maven-compiler-plugin.source>
-		<maven-compiler-plugin.target>16</maven-compiler-plugin.target>
-		<surefire.plugin.version>3.0.0-M3</surefire.plugin.version>
-	</properties>
 </project>
