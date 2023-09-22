@@ -6,9 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.messaging.rsocket.RSocketRequester;
 import org.springframework.messaging.rsocket.service.RSocketServiceProxyFactory;
-
 import com.bealdung.rsocket.requester.MessageClient;
-
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
