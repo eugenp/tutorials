@@ -4,31 +4,38 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 public class ShallowDeepCopyExampleTest {
+	
+    @Test 
+    public void whenPerformShallowCopy_thenObjectsNotSame() { 
+        School school = new School("Baeldung School");
+        Student originalStudent = new Student("John", 20, school); 
+        Student shallowCopy = new Student(originalStudent.getName(), originalStudent.getAge(), originalStudent.getSchool());
+        assertNotSame(shallowCopy, originalStudent); 
+    }
+
+    @Test public void whenModifyingActualObject_thenCopyAlsoChange() { 
+        School school = new School("Baeldung School"); 
+        Student originalStudent = new Student("John", 20, school); 
+        Student shallowCopy = new Student(originalStudent.getName(), originalStudent.getAge(), originalStudent.getSchool()); 
+        school.setSchoolName("New Baeldung School"); 
+        assertEquals(shallowCopy.getSchool().getSchoolName(), originalStudent.getSchool().getSchoolName());
+    }
 
 	@Test
-	void testShallowCopy() {
-		Student originalStudent = new Student("John", 20);
-		Student shallowCopy = originalStudent;
+    public void whenModifyingActualObject_thenCloneCopyNotChange() { 
+        School school = new School("New School");
+        Student originalStudent = new Student("Alice", 10, school); 
+        Student deepCopy = (Student) originalStudent.clone(); 
+        school.setSchoolName("New Baeldung School"); 
+        assertNotEquals(deepCopy.getSchool().getSchoolName(), originalStudent.getSchool().getSchoolName()); 
+    }
 
-		shallowCopy.setName("Baeldung");
-		shallowCopy.setRollno(10);
-
-		assertEquals("Baeldung", originalStudent.getName());
-		assertEquals(10, originalStudent.getRollno());
-	}
-
-    @Test
-    void testDeepCopy() {
-        Student originalStudent = new Student("John", 20);
-        Student deepCopy = new Student(originalStudent.getName(), originalStudent.getRollno());
-
-        deepCopy.setName("Baeldung");
-        deepCopy.setRollno(10);
-
-        assertEquals("John", originalStudent.getName());
-        assertEquals(20, originalStudent.getRollno());
-
-        assertEquals("Baeldung", deepCopy.getName());
-        assertEquals(10, deepCopy.getRollno());
+    @Test 
+    public void whenModifyingActualObject_thenCopyNotChange() {
+        School school = new School("Baeldung School");
+        Student originalStudent = new Student("Alice", 30, school); 
+        Student deepCopy = new Student(originalStudent); 
+        school.setSchoolName("New Baeldung School"); 
+        assertNotEquals( originalStudent.getSchool().getSchoolName(), deepCopy.getSchool().getSchoolName()); 
     }
 }
