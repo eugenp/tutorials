@@ -8,4 +8,20 @@
 		<artifactId>core-java-modules</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${maven-compiler-plugin.source}</source>
+					<target>${maven-compiler-plugin.target}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<properties>
+		<maven-compiler-plugin.source>17</maven-compiler-plugin.source>
+		<maven-compiler-plugin.target>17</maven-compiler-plugin.target>
+	</properties>
 </project>
