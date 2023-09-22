@@ -5,7 +5,8 @@ import static org.junit.Assert.assertEquals;
 import java.io.IOException;
 import java.util.List;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import com.baeldung.convert.exceldatatolist.fastexcel.ExcelDataToListOfObjectsFastExcel;
 import com.baeldung.convert.exceldatatolist.jexcelapi.ExcelDataToListOfObjectsJxl;
@@ -42,11 +43,10 @@ public class ExcelDataToListOfObjectsUnitTest {
 
     @Test
     public void whenParsingExcelFileWithJxl_thenConvertsToList() throws IOException, BiffException {
-        List<FoodInfo> foodInfoList = ExcelDataToListOfObjectsJxl.excelDataToListOfObjets_withJxl("src\\main\\resources/food_info.xls"); //only takes xls files
+        List<FoodInfo> foodInfoList = ExcelDataToListOfObjectsJxl.excelDataToListOfObjets_withJxl("src\\main\\resources/food_info.xls");
 
         assertEquals("Beverages", foodInfoList.get(0).getCategory());
         assertEquals("Dairy", foodInfoList.get(3).getCategory());
     }
-
 
 }
