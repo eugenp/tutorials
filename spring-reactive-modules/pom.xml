@@ -27,6 +27,7 @@
         <module>spring-5-reactive-filters</module>
         <module>spring-5-reactive-oauth</module>
         <module>spring-5-reactive-security</module>
+        <module>spring-data-couchbase</module>
         <module>spring-reactive</module>
         <module>spring-reactive-exceptions</module>
         <module>spring-reactor</module>

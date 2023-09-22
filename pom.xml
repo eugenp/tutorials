@@ -816,6 +816,7 @@
                 <module>apache-olingo</module>
 
                 <module>apache-poi-2</module>
+                <module>apache-poi-3</module>
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
 
@@ -1211,7 +1212,6 @@
                 <module>gradle-modules/gradle/maven-to-gradle</module>
                 <module>persistence-modules/spring-data-neo4j</module>
                 <module>spring-actuator</module>
-                <module>spring-cloud-modules/spring-cloud-azure</module>
                 <module>spring-cloud-modules/spring-cloud-contract</module>
             </modules>
 

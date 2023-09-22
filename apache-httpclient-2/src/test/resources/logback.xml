@@ -4,6 +4,7 @@
             <pattern>%date [%level] %logger - %msg %n</pattern>
         </encoder>
     </appender>
+    <logger name="com.baeldung.httpclient.cookies" level="info"/>
 
     <logger name="com.baeldung.httpclient.readresponsebodystring" level="debug"/>
     <logger name="org.apache.http" level="debug"/>
