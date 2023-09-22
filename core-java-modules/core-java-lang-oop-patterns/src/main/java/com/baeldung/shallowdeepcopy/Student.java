@@ -1,27 +1,16 @@
 package com.baeldung.shallowdeepcopy;
 
-class Student {
-	private String name;
-	private int rollno;
-
-	public Student(String name, int rollno) {
-		this.name = name;
+class Student { 
+	private String name; 
+	private int age; 
+	private School school; 
+	public Student(String name, int age, School school) { 
+		this.name = name; 
 		this.rollno = rollno;
-	}
-
-	public String getName() {
-		return name;
-	}
-	public int getRollno() {
-		return rollno;
-	}
-
-	public void setRollno(int rollno) {
-		this.rollno = rollno;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
+		this.school = school; 
+	} 
+	public Student(Student st) { 
+		this(st.getName(), st.getAge(), st.getSchool()); 
+	} // standard getters and setters 
 }
 
