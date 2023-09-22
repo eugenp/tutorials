@@ -16,7 +16,7 @@ public class FoodInfo {
 
     @Override
     public String toString() {
-        return "FoodInfo{" + "category='" + category + '\'' + ", name='" + name + '\'' + ", measure='" + measure + '\'' + ", calories=" + calories + ", protein=" + protein + ", fat=" + fat + ", carbs=" + carbs + ", fiber=" + fiber + "} \n";
+        return "FoodInfo{" + "category='" + category + '\'' + ", name='" + name + '\'' + ", measure='" + measure + '\'' + ", calories=" + calories + "} \n";
     }
 
 
