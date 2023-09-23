@@ -84,7 +84,22 @@ class ValidationControllerUnitTest {
             .getResponse()
             .getContentAsString();
 
-        assertEquals("Boolean value must come as Capital TRUE or FALSE", output);
+        assertEquals("Only values accepted as Boolean are TRUE, FALSE, +, -, 1 , 0", output);
+    }
+
+    @Test
+    void testInvalidBooleanFromJson() throws Exception {
+
+        String postBody = "{\"boolField\":true,\"trueField\":true,\"falseField\":false,\"boolStringVar\":\"6\"}";
+
+        String output = mockMvc.perform(post("/validateBoolean").contentType("application/json")
+            .content(postBody))
+            .andReturn()
+            .getResponse()
+            .getContentAsString();
+
+        assertEquals("Only values accepted as Boolean are TRUE, FALSE, +, -, 1 , 0", output);
+
     }
 
     @Test
