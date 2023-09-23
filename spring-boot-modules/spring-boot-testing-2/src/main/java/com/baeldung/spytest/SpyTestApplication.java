@@ -2,6 +2,7 @@ package com.baeldung.spytest;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 @SpringBootApplication
 public class SpyTestApplication {
 

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class OrderRepository {
 
-    public static final HashMap<UUID, Order> orders=new HashMap<>();
+    public static final HashMap<UUID, Order> orders = new HashMap<>();
 
     public Order save(Order order) {
         UUID orderId = UUID.randomUUID();

@@ -4,8 +4,15 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class NotificationService {
-    public void notify(Order order){
+
+    private ExternalAlertService externalAlertService;
+
+    public void notify(Order order) {
         System.out.println(order);
+    }
+
+    public boolean raiseAlert(Order order) {
+        return externalAlertService.alert(order);
     }
 
 }

@@ -30,6 +30,8 @@ class OrderServiceUnitTest {
         Order orderInput = new Order(orderId, "Test", 1.0, "17 St Andrews Croft, Leeds ,LS17 7TP");
         doReturn(orderInput).when(orderRepository)
             .save(any());
+        doReturn(true).when(notificationService)
+            .raiseAlert(any(Order.class));
         Order order = orderService.save(orderInput);
         Assertions.assertNotNull(order);
         Assertions.assertEquals(orderId, order.getId());
