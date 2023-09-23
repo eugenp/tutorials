@@ -105,7 +105,7 @@ class ValidationControllerUnitTest {
     @Test
     void testValidBean() throws Exception {
 
-        String postBody = "{\"boolField\":true,\"trueField\":true,\"falseField\":false,\"boolStringVar\":\"TRUE\"}";
+        String postBody = "{\"boolField\":true,\"trueField\":true,\"falseField\":false,\"boolStringVar\":\"+\"}";
 
         String output = mockMvc.perform(post("/validateBoolean").contentType("application/json")
             .content(postBody))
