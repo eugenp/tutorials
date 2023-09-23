@@ -53,6 +53,30 @@
             <version>${system-stubs.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>uk.org.webcompere</groupId>
+            <artifactId>system-stubs-testng</artifactId>
+            <version>${system-stubs.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit-pioneer</groupId>
+            <artifactId>junit-pioneer</artifactId>
+            <version>${junit.pioneer.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -127,6 +151,9 @@
                         --add-opens java.base/java.util=ALL-UNNAMED
                         --add-opens java.base/java.lang=ALL-UNNAMED
                     </argLine>
+                    <environmentVariables>
+                        <SET_BY_SUREFIRE>YES</SET_BY_SUREFIRE>
+                    </environmentVariables>
                 </configuration>
             </plugin>
         </plugins>
@@ -142,7 +169,10 @@
         <jacoco.version>0.8.6</jacoco.version>
         <system-rules.version>1.19.0</system-rules.version>
         <system-lambda.version>1.0.0</system-lambda.version>
-        <system-stubs.version>1.1.0</system-stubs.version>
+        <system-stubs.version>2.1.2</system-stubs.version>
+        <testng.version>7.8.0</testng.version>
+        <assertj.version>3.24.2</assertj.version>
+        <junit.pioneer.version>2.1.0</junit.pioneer.version>
     </properties>
 
 </project>
