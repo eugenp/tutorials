@@ -26,7 +26,7 @@ class FloatToBigDecimalUnitTest {
     public void whenCreatedFromCertainFloatValues_thenDoesNotMatch() {
         float floatToConvert = 1.1f;
         BigDecimal bdFromFloat = new BigDecimal(floatToConvert);
-        assertNotEquals("1.1", bdFromFloat.toString());
+        assertEquals("1.10000002384185791015625", bdFromFloat.toString());
     }
 
     @Test
@@ -40,7 +40,7 @@ class FloatToBigDecimalUnitTest {
     public void whenCreatedByValueOfAndIsFloat_thenDoesNotMatch() {
         float floatToConvert = 1.1f;
         BigDecimal bdByValueOf = BigDecimal.valueOf(floatToConvert);
-        assertNotEquals("1.1", bdByValueOf.toString());
+        assertEquals("1.100000023841858", bdByValueOf.toString());
     }
 
     @Test
