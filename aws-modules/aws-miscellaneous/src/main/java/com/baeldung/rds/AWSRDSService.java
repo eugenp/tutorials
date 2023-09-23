@@ -102,7 +102,6 @@ public class AWSRDSService {
             logger.info(identifier + "\t" + engine + "\t" + status);
             logger.info("\t" + endpointUrl);
         }
-
     }
 
     //Delete RDS instance
@@ -119,13 +118,13 @@ public class AWSRDSService {
         // Information about the RDS instance being deleted
         String status = response.dbInstance().dbInstanceStatus();
         Endpoint endpoint = response.dbInstance().endpoint();
-        String endpoint_url = "Endpoint URL not available yet.";
+        String endpointUrl = "Endpoint URL not available yet.";
         if (endpoint != null) {
-            endpoint_url = endpoint.toString();
+            endpointUrl = endpoint.toString();
         }
 
         logger.info(identifier + "\t" + status);
-        logger.info(endpoint_url);
+        logger.info(endpointUrl);
 
     }
 

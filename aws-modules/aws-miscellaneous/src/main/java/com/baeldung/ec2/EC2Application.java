@@ -47,7 +47,6 @@ public class EC2Application {
             .cidrIp("0.0.0.0/0")
             .build();
 
-
         IpPermission ipPermission1 = IpPermission.builder()
             .ipRanges(Arrays.asList(ipRange1))
             .ipProtocol("tcp")
@@ -86,6 +85,7 @@ public class EC2Application {
 
         // Launch an Amazon Instance
         RunInstancesRequest runInstancesRequest = RunInstancesRequest.builder()
+            .imageId("ami-97785bed")
             .instanceType("t2.micro") // https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html
             .minCount(1)
             .maxCount(1)
@@ -119,11 +119,9 @@ public class EC2Application {
         ec2Client.unmonitorInstances(unmonitorInstancesRequest);
 
         // Reboot an Instance
-
         RebootInstancesRequest rebootInstancesRequest = RebootInstancesRequest.builder()
             .instanceIds(yourInstanceId)
             .build();
-
 
         ec2Client.rebootInstances(rebootInstancesRequest);
 

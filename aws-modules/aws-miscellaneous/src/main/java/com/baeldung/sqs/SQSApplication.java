@@ -29,7 +29,6 @@ public class SQSApplication {
     private static final String FIFO_QUEUE_NAME = "baeldung-queue.fifo";
     private static final String DEAD_LETTER_QUEUE_NAME = "baeldung-dead-letter-queue";
 
-
     public static void main(String[] args) {
 
         // Set up the client
@@ -47,12 +46,10 @@ public class SQSApplication {
 
         System.out.println("\nGet queue url");
 
-        GetQueueUrlResponse getQueueUrlResponse = sqsClient.getQueueUrl(GetQueueUrlRequest
-            .builder()
+        GetQueueUrlResponse getQueueUrlResponse = sqsClient.getQueueUrl(GetQueueUrlRequest.builder()
             .queueName(STANDARD_QUEUE_NAME)
-            .build()
-        );
-        String standardQueueUrl =  getQueueUrlResponse.queueUrl();
+            .build());
+        String standardQueueUrl = getQueueUrlResponse.queueUrl();
 
         System.out.println(standardQueueUrl);
 
@@ -68,12 +65,11 @@ public class SQSApplication {
 
         sqsClient.createQueue(createFifoQueueRequest);
 
-        GetQueueUrlResponse getFifoQueueUrlResponse = sqsClient.getQueueUrl(GetQueueUrlRequest
-            .builder()
+        GetQueueUrlResponse getFifoQueueUrlResponse = sqsClient.getQueueUrl(GetQueueUrlRequest.builder()
             .queueName(FIFO_QUEUE_NAME)
             .build());
 
-        String fifoQueueUrl =  getFifoQueueUrlResponse.queueUrl();
+        String fifoQueueUrl = getFifoQueueUrlResponse.queueUrl();
 
         System.out.println(fifoQueueUrl);
 
@@ -82,7 +78,8 @@ public class SQSApplication {
             .queueName(DEAD_LETTER_QUEUE_NAME)
             .build();
 
-        String deadLetterQueueUrl = sqsClient.createQueue(createDeadLetterQueueRequest).queueUrl();
+        String deadLetterQueueUrl = sqsClient.createQueue(createDeadLetterQueueRequest)
+            .queueUrl();
 
         GetQueueAttributesRequest getQueueAttributesRequest = GetQueueAttributesRequest.builder()
             .queueUrl(deadLetterQueueUrl)
@@ -94,11 +91,13 @@ public class SQSApplication {
         String deadLetterQueueARN = deadLetterQueueAttributes.attributes()
             .get("QueueArn");
 
+        Map<QueueAttributeName, String> attributes = new HashMap<>();
+        attributes.put(QueueAttributeName.REDRIVE_POLICY, "{\"maxReceiveCount\":\"5\", \"deadLetterTargetArn\":\"" + deadLetterQueueARN + "\"}");
+
         SetQueueAttributesRequest queueAttributesRequest = SetQueueAttributesRequest.builder()
             .queueUrl(standardQueueUrl)
-            .attributes(null)
+            .attributes(attributes)
             .build();
-//            .addAttributesEntry("RedrivePolicy", "{\"maxReceiveCount\":\"2\", " + "\"deadLetterTargetArn\":\"" + deadLetterQueueARN + "\"}");
 
         sqsClient.setQueueAttributes(queueAttributesRequest);
 
@@ -161,21 +160,22 @@ public class SQSApplication {
 
         ReceiveMessageRequest receiveMessageRequest = ReceiveMessageRequest.builder()
             .waitTimeSeconds(10)
-            .maxNumberOfMessages(1)
+            .maxNumberOfMessages(10)
             .build();
-
 
         List<Message> sqsMessages = sqsClient.receiveMessage(receiveMessageRequest)
             .messages();
 
-
-        sqsMessages.get(0).attributes();
-        sqsMessages.get(0).body();
+        sqsMessages.get(0)
+            .attributes();
+        sqsMessages.get(0)
+            .body();
 
         // Delete a message from a queue
         DeleteMessageRequest deleteMessageRequest = DeleteMessageRequest.builder()
             .queueUrl(fifoQueueUrl)
-            .receiptHandle(sqsMessages.get(0).receiptHandle())
+            .receiptHandle(sqsMessages.get(0)
+                .receiptHandle())
             .build();
 
         sqsClient.deleteMessage(deleteMessageRequest);
@@ -184,7 +184,6 @@ public class SQSApplication {
         GetQueueAttributesRequest getQueueAttributesRequestForMonitoring = GetQueueAttributesRequest.builder()
             .queueUrl(standardQueueUrl)
             .build();
-
 
         GetQueueAttributesResponse attributesResponse = sqsClient.getQueueAttributes(getQueueAttributesRequestForMonitoring);
         System.out.println(String.format("The number of messages on the queue: %s", attributesResponse.attributes()
