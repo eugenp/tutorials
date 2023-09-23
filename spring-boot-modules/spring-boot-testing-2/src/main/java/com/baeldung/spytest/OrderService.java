@@ -13,9 +13,13 @@ public class OrderService {
         this.orderRepository = orderRepository;
         this.notificationService = notificationService;
     }
+
     public Order save(Order order) {
         order = orderRepository.save(order);
         notificationService.notify(order);
+        if (!notificationService.raiseAlert(order)) {
+            throw new RuntimeException("Alert not raised");
+        }
         return order;
     }
 }

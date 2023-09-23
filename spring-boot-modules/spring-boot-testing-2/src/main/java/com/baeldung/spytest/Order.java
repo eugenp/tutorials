@@ -8,6 +8,8 @@ public class Order {
 
     private String name;
 
+    private OrderType orderType;
+
     private double orderQuantity;
 
     private String address;
@@ -17,6 +19,10 @@ public class Order {
         this.name = name;
         this.orderQuantity = orderQuantity;
         this.address = address;
+    }
+
+    public enum OrderType {
+        INDIVIDUAL, BULK;
     }
 
     public UUID getId() {
@@ -39,3 +45,5 @@ public class Order {
         return address;
     }
 }
+
+
