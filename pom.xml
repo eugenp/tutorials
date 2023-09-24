@@ -817,6 +817,7 @@
                 <module>apache-olingo</module>
 
                 <module>apache-poi-2</module>
+                <module>apache-poi-3</module>
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
 
@@ -1092,6 +1093,7 @@
                 <module>apache-olingo</module>
 
                 <module>apache-poi-2</module>
+                <module>apache-poi-3</module>
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
 
