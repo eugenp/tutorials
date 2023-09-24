@@ -2,48 +2,52 @@ package com.baeldung.spliterator;
 
 import java.util.List;
 import java.util.Spliterator;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
 
 public class RelatedAuthorSpliterator implements Spliterator<Author> {
-	private final List<Author> list;
-	AtomicInteger current = new AtomicInteger();
+    private final List<Author> authors;
+    private int currentIndex;
+    private final int relatedArticleId;
 
-	public RelatedAuthorSpliterator(List<Author> list) {
-		this.list = list;
-	}
+    public RelatedAuthorSpliterator(List<Author> authors, int relatedArticleId) {
+        this.authors = authors;
+        this.currentIndex = 0;
+        this.relatedArticleId = relatedArticleId;
+    }
 
-	@Override
-	public boolean tryAdvance(Consumer<? super Author> action) {
+    @Override
+    public boolean tryAdvance(Consumer<? super Author> action) {
+        while (currentIndex < authors.size()) {
+            Author author = authors.get(currentIndex);
+            currentIndex++;
+            if (author.getRelatedArticleId() == relatedArticleId) {
+                action.accept(author);
+                return true;
+            }
+        }
+        return false;
+    }
 
-		action.accept(list.get(current.getAndIncrement()));
-		return current.get() < list.size();
-	}
+    @Override
+    public Spliterator<Author> trySplit() {
+        int currentSize = authors.size() - currentIndex;
+        if (currentSize < 2) {
+            return null;
+        }
 
-	@Override
-	public Spliterator<Author> trySplit() {
-		int currentSize = list.size() - current.get();
-		if (currentSize < 10) {
-			return null;
-		}
-		for (int splitPos = currentSize / 2 + current.intValue(); splitPos < list.size(); splitPos++) {
-			if (list.get(splitPos).getRelatedArticleId() == 0) {
-				Spliterator<Author> spliterator = new RelatedAuthorSpliterator(list.subList(current.get(), splitPos));
-				current.set(splitPos);
-				return spliterator;
-			}
-		}
-		return null;
-	}
+        int splitIndex = currentIndex + currentSize / 2;
+        RelatedAuthorSpliterator newSpliterator = new RelatedAuthorSpliterator(authors.subList(currentIndex, splitIndex), relatedArticleId);
+        currentIndex = splitIndex;
+        return newSpliterator;
+    }
 
-	@Override
-	public long estimateSize() {
-		return list.size() - current.get();
-	}
+    @Override
+    public long estimateSize() {
+        return authors.size() - currentIndex;
+    }
 
-	@Override
-	public int characteristics() {
-		return CONCURRENT;
-	}
-
+    @Override
+    public int characteristics() {
+        return ORDERED | SIZED | SUBSIZED | NONNULL;
+    }
 }

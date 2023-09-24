@@ -17,35 +17,36 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class ExecutorUnitTest {
-    Article article;
-    Stream<Author> stream;
-    Spliterator<Author> spliterator;
+    private Article article;
 
     @Before
     public void init() {
-        article = new Article(Arrays.asList(new Author("Ahmad", 0), new Author("Eugen", 0), new Author("Alice", 1), new Author("Alice", 1), new Author("Mike", 0), new Author("Alice", 1), new Author("Mike", 0), new Author("Alice", 1), new Author("Mike", 0),
-            new Author("Alice", 1), new Author("Mike", 0), new Author("Mike", 0), new Author("Alice", 1), new Author("Mike", 0), new Author("Alice", 1), new Author("Mike", 0), new Author("Alice", 1), new Author("Mike", 0), new Author("Alice", 1),
-            new Author("Mike", 0), new Author("Michał", 0), new Author("Loredana", 1)), 0);
-
-        spliterator = new RelatedAuthorSpliterator(article.getListOfAuthors());
+        article = new Article(Arrays.asList(new Author("Ahmad", 0), new Author("Eugen", 0),
+                new Author("Alice", 1), new Author("Alice", 1), new Author("Mike", 0),
+                new Author("Alice", 2), new Author("Mike", 0), new Author("Alice", 1),
+                new Author("Mike", 0), new Author("Alice", 1), new Author("Mike", 0),
+                new Author("Mike", 0), new Author("Alice", 1), new Author("Mike", 0),
+                new Author("Alice", 1), new Author("Mike", 0), new Author("Alice", 1),
+                new Author("Mike", 0), new Author("Alice", 1), new Author("Mike", 0),
+                new Author("Michał", 0), new Author("Loredana", 1)));
     }
 
     @Test
-    public void givenAstreamOfAuthors_whenProcessedInParallelWithCustomSpliterator_coubtProducessRightOutput() {
-        Stream<Author> stream2 = StreamSupport.stream(spliterator, true);
-        assertThat(Executor.countAutors(stream2.parallel())).isEqualTo(9);
+    public void givenAStreamOfAuthors_whenProcessedInParallelWithCustomSpliterator_countProducesRightOutput() {
+        Spliterator<Author> spliterator = new RelatedAuthorSpliterator(article.getListOfAuthors(), 0);
+        final Stream<Author> stream = StreamSupport.stream(spliterator, true);
+
+        assertThat(Executor.countAuthors(stream, 0)).isEqualTo(12);
     }
 
     @Test
-    public void givenAStreamOfArticles_whenProcessedSequentiallyWithSpliterator_ProducessRightOutput() {
+    public void givenAStreamOfArticles_whenProcessedSequentiallyWithSpliterator_ProducesRightOutput() {
         List<Article> articles = Stream.generate(() -> new Article("Java"))
             .limit(35000)
             .collect(Collectors.toList());
 
         Spliterator<Article> spliterator = articles.spliterator();
-        while (spliterator.tryAdvance(article -> article.setName(article.getName()
-            .concat("- published by Baeldung"))))
-            ;
+        while (spliterator.tryAdvance(article -> article.setName(article.getName().concat("- published by Baeldung"))));
 
         articles.forEach(article -> assertThat(article.getName()).isEqualTo("Java- published by Baeldung"));
     }

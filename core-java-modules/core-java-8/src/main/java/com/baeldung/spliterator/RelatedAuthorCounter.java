@@ -2,23 +2,19 @@ package com.baeldung.spliterator;
 
 public class RelatedAuthorCounter {
     private final int counter;
-    private final boolean isRelated;
+    private final int relatedArticleId;
 
-    public RelatedAuthorCounter(int counter, boolean isRelated) {
+    public RelatedAuthorCounter(int counter, int relatedArticleId) {
         this.counter = counter;
-        this.isRelated = isRelated;
+        this.relatedArticleId = relatedArticleId;
     }
 
     public RelatedAuthorCounter accumulate(Author author) {
-        if (author.getRelatedArticleId() == 0) {
-            return isRelated ? this : new RelatedAuthorCounter(counter, true);
-        } else {
-            return isRelated ? new RelatedAuthorCounter(counter + 1, false) : this;
-        }
+        return new RelatedAuthorCounter(counter + 1, author.getRelatedArticleId());
     }
 
-    public RelatedAuthorCounter combine(RelatedAuthorCounter RelatedAuthorCounter) {
-        return new RelatedAuthorCounter(counter + RelatedAuthorCounter.counter, RelatedAuthorCounter.isRelated);
+    public RelatedAuthorCounter combine(RelatedAuthorCounter relatedAuthorCounter) {
+        return new RelatedAuthorCounter(counter + relatedAuthorCounter.counter, relatedAuthorCounter.relatedArticleId);
     }
 
     public int getCounter() {
