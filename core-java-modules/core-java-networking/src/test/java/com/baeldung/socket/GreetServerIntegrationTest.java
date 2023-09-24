@@ -27,7 +27,7 @@ public class GreetServerIntegrationTest {
         
         Executors.newSingleThreadExecutor()
             .submit(() -> new GreetServer().start(port));
-        Thread.sleep(500);
+        Thread.sleep(2000);
     }
 
     @Before
