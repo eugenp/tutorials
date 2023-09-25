@@ -11,7 +11,7 @@ import java.util.stream.IntStream;
 
 class GenerationOfCharactersUsingForVariousWaysUnitTest {
     @Test
-    void givenAForLoop_whenGeneratingCharacters_thenAssertTrue(){
+    void whenUsingForLoop_thenGenerateCharacters(){
         final List<Character> allCapitalCharacters = Arrays.asList('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');
         List<Character> characters = new ArrayList<>();
         for (char character = 'A'; character <= 'Z'; character++) {
@@ -21,7 +21,7 @@ class GenerationOfCharactersUsingForVariousWaysUnitTest {
     }
 
     @Test
-    void givenStreams_whenGeneratingCharacters_thenAssertTrue() {
+    void whenUsingStreams_thenGenerateCharacters() {
         final List<Character> allCapitalCharacters = Arrays.asList('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');
         final List<Character> characters = IntStream.rangeClosed('A', 'Z').mapToObj(c -> (char) c).collect(Collectors.toList());
         Assertions.assertEquals(characters, allCapitalCharacters);
