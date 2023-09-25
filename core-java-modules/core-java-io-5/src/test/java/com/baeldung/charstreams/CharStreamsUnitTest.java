@@ -15,8 +15,8 @@ import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.*;
 
 public class CharStreamsUnitTest {
-    public String todoListPwFile = "src\\main\\resources\\pw_todos.txt";
-    public String todoListFwFile = "src\\main\\resources\\fr_todos.txt";
+    public String todoListPwFile = "src/main/resources/pw_todos.txt";
+    public String todoListFwFile = "src/main/resources/fr_todos.txt";
 
     DailyTodo todo = new DailyTodo("Code", LocalDateTime.now(), true);
     DailyTodo todo1 = new DailyTodo("Sleep", LocalDateTime.now(), false);
