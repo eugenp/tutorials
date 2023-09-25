@@ -2,7 +2,7 @@ package restx.demo;
 
 import com.google.common.base.Optional;
 import restx.server.WebServer;
-import restx.server.Jetty8WebServer;
+import restx.server.Jetty11WebServer;
 
 /**
  * This class can be used to run the app.
@@ -12,12 +12,12 @@ import restx.server.Jetty8WebServer;
  * Reading the port from system env PORT makes it compatible with heroku.
  */
 public class AppServer {
-    public static final String WEB_INF_LOCATION = "src/main/webapp/WEB-INF/web.xml";
-    public static final String WEB_APP_LOCATION = "src/main/webapp";
+    public static final String WEB_INF_LOCATION = "web-modules/restx/src/main/webapp/WEB-INF/web.xml";
+    public static final String WEB_APP_LOCATION = "web-modules/restx/src/main/webapp";
 
     public static void main(String[] args) throws Exception {
         int port = Integer.valueOf(Optional.fromNullable(System.getenv("PORT")).or("8080"));
-        WebServer server = new Jetty8WebServer(WEB_INF_LOCATION, WEB_APP_LOCATION, port, "0.0.0.0");
+        WebServer server = new Jetty11WebServer(WEB_INF_LOCATION, WEB_APP_LOCATION, port, "0.0.0.0");
 
         /*
          * load mode from system property if defined, or default to dev
