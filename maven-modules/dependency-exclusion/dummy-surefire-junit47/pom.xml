@@ -4,7 +4,7 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.apache.maven.surefire</groupId>
-    <artifactId>surefire-junit47</artifactId>
+    <artifactId>dummy-surefire-junit47</artifactId>
     <version>dummy</version>
 
     <parent>

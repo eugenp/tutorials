@@ -16,44 +16,44 @@
         <dependency>
             <groupId>io.dropwizard.metrics</groupId>
             <artifactId>metrics-core</artifactId>
-            <version>${dep.ver.metrics}</version>
+            <version>${dropwizard.metrics.version}</version>
         </dependency>
         <dependency>
             <groupId>io.dropwizard.metrics</groupId>
             <artifactId>metrics-healthchecks</artifactId>
-            <version>${dep.ver.metrics}</version>
+            <version>${dropwizard.metrics.version}</version>
         </dependency>
         <dependency>
             <groupId>io.dropwizard.metrics</groupId>
             <artifactId>metrics-servlets</artifactId>
-            <version>${dep.ver.metrics}</version>
+            <version>${dropwizard.metrics.version}</version>
         </dependency>
         <dependency>
             <groupId>io.dropwizard.metrics</groupId>
             <artifactId>metrics-servlet</artifactId>
-            <version>${dep.ver.metrics}</version>
+            <version>${dropwizard.metrics.version}</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>${dep.ver.servlet}</version>
+            <version>${javax.servlet-api.version}</version>
         </dependency>
         <dependency>
             <groupId>com.netflix.servo</groupId>
             <artifactId>servo-core</artifactId>
-            <version>${netflix.servo.ver}</version>
+            <version>${netflix.servo.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.netflix.servo</groupId>
             <artifactId>servo-atlas</artifactId>
-            <version>${netflix.servo.ver}</version>
+            <version>${netflix.servo.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-registry-atlas</artifactId>
-            <version>${micrometer.ver}</version>
+            <version>${micrometer-registry-atlas.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -73,7 +73,7 @@
         <dependency>
             <groupId>io.astefanutti.metrics.aspectj</groupId>
             <artifactId>metrics-aspectj-deps</artifactId>
-            <version>${metrics-aspectj.version}</version>
+            <version>${metrics-aspectj-deps.version}</version>
         </dependency>
         <dependency>
             <groupId>com.netflix.spectator</groupId>
@@ -83,14 +83,12 @@
     </dependencies>
 
     <properties>
-        <dep.ver.metrics>3.1.2</dep.ver.metrics>
-        <dep.ver.servlet>3.1.0</dep.ver.servlet>
-        <netflix.servo.ver>0.12.17</netflix.servo.ver>
-        <micrometer.ver>1.7.1</micrometer.ver>
-        <!-- <fasterxml.jackson.version>2.9.1</fasterxml.jackson.version> -->
-        <spring-boot-starter-web.version>2.0.7.RELEASE</spring-boot-starter-web.version>
-        <metrics-aspectj.version>1.1.0</metrics-aspectj.version>
-        <spectator-api.version>1.0.11</spectator-api.version>
+        <dropwizard.metrics.version>4.2.17</dropwizard.metrics.version>
+        <netflix.servo.version>0.13.2</netflix.servo.version>
+        <micrometer-registry-atlas.version>1.11.0</micrometer-registry-atlas.version>
+        <spring-boot-starter-web.version>3.1.0</spring-boot-starter-web.version>
+        <metrics-aspectj-deps.version>1.2.0</metrics-aspectj-deps.version>
+        <spectator-api.version>1.5.4</spectator-api.version>
     </properties>
 
 </project>

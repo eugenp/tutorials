@@ -1,6 +1,6 @@
 package com.baeldung.namedformatting;
 
-import org.apache.commons.text.StrSubstitutor;
+import org.apache.commons.text.StringSubstitutor;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
@@ -12,20 +12,20 @@ class NamedFormatterUnitTest {
     private static final String TEMPLATE = "Text: [${text}] Number: [${number}] Text again: [${text}]";
 
     @Test
-    void givenTemplateWithNamedParam_whenCallingCommonsTextStrSubstitutor_shouldGetExpectedResult() {
+    void givenTemplateWithNamedParam_whenCallingCommonsTextStringSubstitutor_shouldGetExpectedResult() {
         Map<String, Object> params = new HashMap<>();
         params.put("text", "It's awesome!");
         params.put("number", 42);
-        String result = StrSubstitutor.replace(TEMPLATE, params, "${", "}");
+        String result = StringSubstitutor.replace(TEMPLATE, params, "${", "}");
         assertThat(result).isEqualTo("Text: [It's awesome!] Number: [42] Text again: [It's awesome!]");
     }
 
     @Test
-    void givenTemplateWithNamedParam_whenCallingCommonsTextStrSubstitutorWithParameterNames_shouldNotWorkAsExpected() {
+    void givenTemplateWithNamedParam_whenCallingCommonsTextStringSubstitutorWithParameterNames_shouldNotWorkAsExpected() {
         Map<String, Object> params = new HashMap<>();
         params.put("text", "'${number}' is a placeholder.");
         params.put("number", 42);
-        String result = StrSubstitutor.replace(TEMPLATE, params, "${", "}");
+        String result = StringSubstitutor.replace(TEMPLATE, params, "${", "}");
 
         assertThat(result).isNotEqualTo("Text: ['${number}' is a placeholder.] Number: [42] Text again: ['${number}' is a placeholder.]");
 

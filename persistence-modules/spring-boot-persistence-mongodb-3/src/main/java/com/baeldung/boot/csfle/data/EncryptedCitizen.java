@@ -10,13 +10,6 @@ public class EncryptedCitizen {
     private Binary email;
     private Binary birthYear;
 
-    public EncryptedCitizen() {
-    }
-
-    public EncryptedCitizen(Citizen citizen) {
-        this.name = citizen.getName();
-    }
-
     public String getName() {
         return name;
     }

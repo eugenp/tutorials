@@ -14,3 +14,4 @@ This module contains articles about Apache Commons libraries.
 - [Histograms with Apache Commons Frequency](https://www.baeldung.com/apache-commons-frequency)
 - [An Introduction to Apache Commons Lang 3](https://www.baeldung.com/java-commons-lang-3)
 - [Differences Between the Java WatchService API and the Apache Commons IO Monitor Library](https://www.baeldung.com/java-watchservice-vs-apache-commons-io-monitor-library)
+More articles: [[next-->]](../libraries-apache-commons-2)

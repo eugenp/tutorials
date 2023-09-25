@@ -23,9 +23,11 @@
         <module>groovy-spock</module>
         <module>hamcrest</module>
         <module>instancio</module>
+        <module>jqwik</module>
         <module>junit-4</module>
         <module>junit-5-advanced</module>
         <module>junit-5-basics</module>
+        <module>junit-5-basics-2</module>
         <module>junit-5</module>
         <module>junit5-annotations</module>
         <module>junit5-migration</module>
@@ -39,8 +41,9 @@
         <module>powermock</module>
         <module>rest-assured</module>
         <module>rest-testing</module>
-        <module>selenium-junit-testng</module>
-        <module>selenium-webdriver</module>
+        <module>selenide</module>
+        <module>selenium</module>
+        <module>selenium-2</module>
         <module>spring-mockito</module>
         <module>spring-testing-2</module>
         <module>spring-testing</module>

@@ -76,21 +76,21 @@
             <version>${hibernate-validator.version}</version>
         </dependency>
         <dependency>
-            <groupId>javax.el</groupId>
-            <artifactId>javax.el-api</artifactId>
-            <version>${javax.el-api.version}</version>
+            <groupId>org.glassfish.expressly</groupId>
+            <artifactId>expressly</artifactId>
+            <version>${expressly-language.version}</version>
         </dependency>
         <!-- web -->
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
-            <version>${jstl.version}</version>
+            <groupId>jakarta.servlet.jsp.jstl</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+            <version>${jakarta-servlet-jpa-jstl-api.version}</version>
         </dependency>
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>${jakarta.servlet-api.version}</version>
             <scope>provided</scope>
-            <version>${javax.servlet.servlet-api.version}</version>
         </dependency>
         <!-- utils -->
         <dependency>
@@ -115,17 +115,18 @@
 
     <properties>
         <!-- Spring -->
-        <org.springframework.version>5.1.5.RELEASE</org.springframework.version>
-        <javassist.version>3.21.0-GA</javassist.version>
-        <mysql-connector-java.version>6.0.6</mysql-connector-java.version>
-        <spring-data-jpa.version>2.1.5.RELEASE</spring-data-jpa.version>
+        <org.springframework.version>6.0.6</org.springframework.version>
+        <javassist.version>3.29.2-GA</javassist.version>
+        <mysql-connector-java.version>8.0.33</mysql-connector-java.version>
+        <spring-data-jpa.version>3.1.0</spring-data-jpa.version>
         <!-- web -->
-        <javax.servlet.servlet-api.version>2.5</javax.servlet.servlet-api.version>
+        <jakarta.servlet-api.version>6.0.0</jakarta.servlet-api.version>
         <!-- various -->
-        <hibernate-validator.version>6.0.15.Final</hibernate-validator.version>
-        <xml-apis.version>1.4.01</xml-apis.version>
-        <javax.el-api.version>2.2.5</javax.el-api.version>
+        <hibernate-validator.version>8.0.0.Final</hibernate-validator.version>
+        <xml-apis.version>2.0.2</xml-apis.version>
         <h2.version>2.1.214</h2.version>
+        <expressly-language.version>5.0.0</expressly-language.version>
+        <jakarta-servlet-jpa-jstl-api.version>3.0.0</jakarta-servlet-jpa-jstl-api.version>
     </properties>
 
 </project>

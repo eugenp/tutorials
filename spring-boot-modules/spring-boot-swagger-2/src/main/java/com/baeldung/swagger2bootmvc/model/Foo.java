@@ -2,14 +2,13 @@ package com.baeldung.swagger2bootmvc.model;
 
 import java.util.List;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
-@ApiModel
+@Schema
 public class Foo {
     private long id;
 
-    @ApiModelProperty(name = "name", dataType = "List", example = "[\"str1\", \"str2\", \"str3\"]")
+    @Schema(name = "name", type = "array", example = "[\"str1\", \"str2\", \"str3\"]")
     private List<String> name;
 
     public Foo() {

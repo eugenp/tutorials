@@ -1,41 +1,37 @@
 package com.baeldung.jmockit;
 
-import static org.junit.Assert.assertEquals;
+import mockit.*;
+import org.junit.Test;
 
-import java.util.ArrayList;
+import java.io.Serializable;
+import java.util.Comparator;
 import java.util.List;
 
-import com.baeldung.jmockit.AdvancedCollaborator;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
-import mockit.Deencapsulation;
-import mockit.Expectations;
-import mockit.Invocation;
-import mockit.Mock;
-import mockit.MockUp;
-import mockit.Mocked;
-import mockit.Tested;
-import mockit.integration.junit4.JMockit;
+public class AdvancedCollaboratorIntegrationTest {
 
-@RunWith(JMockit.class)
-public class AdvancedCollaboratorIntegrationTest<MultiMock extends List<String> & Comparable<List<String>>> {
+    interface IList<T> extends List<T> {}
+    interface IComparator extends Comparator<Integer>, Serializable {}
+    static class MultiMock {
+        IList<?> get() { return null; }
+        IComparator compareTo() { return null; }
+    }
 
     @Tested
     private AdvancedCollaborator mock;
     
-    @Mocked
-    private MultiMock multiMock;
 
     @Test
     public void testToMockUpPrivateMethod() {
         new MockUp<AdvancedCollaborator>() {
             @Mock
-            private String privateMethod() {
+            protected String protectedMethod() {
                 return "mocked: ";
             }
         };
-        String res = mock.methodThatCallsPrivateMethod(1);
+        String res = mock.methodThatCallsProtectedMethod(1);
         assertEquals("mocked: 1", res);
     }
 
@@ -52,40 +48,26 @@ public class AdvancedCollaboratorIntegrationTest<MultiMock extends List<String> 
     }
 
     @Test
-    public void testToSetPrivateFieldDirectly() {
-        Deencapsulation.setField(mock, "privateField", 10);
-        assertEquals(10, mock.methodThatReturnsThePrivateField());
+    public void testToSetPrivateFieldDirectly(@Injectable("10") int privateField) {
+        assertEquals(10, privateField);
     }
 
     @Test
     public void testToGetPrivateFieldDirectly() {
-        int value = Deencapsulation.getField(mock, "privateField");
-        assertEquals(5, value);
+        assertEquals(5, mock.methodThatReturnsThePrivateField());
     }
 
     @Test
     @SuppressWarnings("unchecked")
-    public void testMultipleInterfacesWholeTest() {
+    public void testMultipleInterfacesWholeTest(@Mocked MultiMock multiMock) {
         new Expectations() {
             {
-                multiMock.get(5); result = "foo";
-                multiMock.compareTo((List<String>) any); result = 0;
+                multiMock.get(); result = null;
+                multiMock.compareTo(); result = null;
             }
         };
-        assertEquals("foo", multiMock.get(5));
-        assertEquals(0, multiMock.compareTo(new ArrayList<>()));
+        assertNull(multiMock.get());
+        assertNull(multiMock.compareTo());
     }
 
-    @Test
-    @SuppressWarnings("unchecked")
-    public <M extends List<String> & Comparable<List<String>>> void testMultipleInterfacesOneMethod(@Mocked M mock) {
-        new Expectations() {
-            {
-                mock.get(5); result = "foo";
-                mock.compareTo((List<String>) any);
-                result = 0; }
-        };
-        assertEquals("foo", mock.get(5));
-        assertEquals(0, mock.compareTo(new ArrayList<>()));
-    }
 }

@@ -4,6 +4,7 @@ import java.util.logging.Logger;
 
 public class Consumer implements Runnable {
     private static final Logger log = Logger.getLogger(Consumer.class.getCanonicalName());
+    private boolean running = false;
     private final DataQueue dataQueue;
 
     public Consumer(DataQueue dataQueue) {
@@ -12,27 +13,36 @@ public class Consumer implements Runnable {
 
     @Override
     public void run() {
+        running = true;
         consume();
     }
 
+    public void stop() {
+        running = false;
+    }
+
     public void consume() {
-        while (dataQueue.runFlag) {
-            synchronized (dataQueue) {
-                while (dataQueue.isEmpty() && dataQueue.runFlag) {
-                    try {
-                        dataQueue.waitOnEmpty();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                        break;
-                    }
-                }
-                if (!dataQueue.runFlag) {
+        while (running) {
+
+            if (dataQueue.isEmpty()) {
+                try {
+                    dataQueue.waitIsNotEmpty();
+                } catch (InterruptedException e) {
+                    log.severe("Error while waiting to Consume messages.");
                     break;
                 }
-                Message message = dataQueue.remove();
-                dataQueue.notifyAllForFull();
-                useMessage(message);
             }
+
+            // avoid spurious wake-up
+            if (!running) {
+                break;
+            }
+
+            Message message = dataQueue.poll();
+            useMessage(message);
+
+            //Sleeping on random time to make it realistic
+            ThreadUtil.sleep((long) (Math.random() * 100));
         }
         log.info("Consumer Stopped");
     }
@@ -40,15 +50,8 @@ public class Consumer implements Runnable {
     private void useMessage(Message message) {
         if (message != null) {
             log.info(String.format("[%s] Consuming Message. Id: %d, Data: %f%n",
-                Thread.currentThread().getName(), message.getId(), message.getData()));
-
-            //Sleeping on random time to make it realistic
-            ThreadUtil.sleep((long) (message.getData() * 100));
+                    Thread.currentThread().getName(), message.getId(), message.getData()));
         }
     }
 
-    public void stop() {
-        dataQueue.runFlag = false;
-        dataQueue.notifyAllForEmpty();
-    }
 }

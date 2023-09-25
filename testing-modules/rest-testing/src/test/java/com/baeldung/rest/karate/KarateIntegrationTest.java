@@ -3,16 +3,15 @@ package com.baeldung.rest.karate;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.core.WireMockConfiguration;
 import com.intuit.karate.junit4.Karate;
-import cucumber.api.CucumberOptions;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
+
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 
 @RunWith(Karate.class)
-@CucumberOptions(features = "classpath:karate")
 public class KarateIntegrationTest {
 
     private static final int PORT_NUMBER = 8097;
@@ -20,7 +19,7 @@ public class KarateIntegrationTest {
     private static final WireMockServer wireMockServer = new WireMockServer(WireMockConfiguration.options().port(PORT_NUMBER));
 
     @BeforeClass
-    public static void setUp() throws Exception {
+    public static void setUp() {
         wireMockServer.start();
 
         configureFor("localhost", PORT_NUMBER);
@@ -30,7 +29,7 @@ public class KarateIntegrationTest {
                         .withHeader("Content-Type", "application/json")
                         .withBody("{ \"id\": \"1234\", name: \"John Smith\" }")));
         stubFor(post(urlEqualTo("/user/create"))
-                .withHeader("content-type", equalTo("application/json"))
+                .withHeader("content-type", equalTo("application/json; charset=UTF-8"))
                 .withRequestBody(containing("id"))
                 .willReturn(aResponse()
                         .withStatus(200)
@@ -40,7 +39,7 @@ public class KarateIntegrationTest {
     }
 
     @AfterClass
-    public static void tearDown() throws Exception {
+    public static void tearDown() {
         wireMockServer.stop();
     }
 

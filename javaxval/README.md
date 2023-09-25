@@ -3,7 +3,7 @@
 This module contains articles about Bean Validation.
 
 ### Relevant Articles: 
-- [Java Bean Validation Basics](https://www.baeldung.com/javax-validation)
+- [Java Bean Validation Basics](https://www.baeldung.com/java-validation)
 - [Validating Container Elements with Jakarta Bean Validation 3.0](https://www.baeldung.com/bean-validation-container-elements)
 - [Validations for Enum Types](https://www.baeldung.com/javax-validations-enums)
 - [Javax BigDecimal Validation](https://www.baeldung.com/javax-bigdecimal-validation)

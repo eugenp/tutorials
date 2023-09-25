@@ -255,7 +255,6 @@
         <testcontainers-bom.version>1.17.2</testcontainers-bom.version>
         <java.version>11</java.version>
         <spring-native.version>0.12.1</spring-native.version>
-        <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
         <maven.compiler.source.version>11</maven.compiler.source.version>
         <maven.compiler.target.version>11</maven.compiler.target.version>
         <maven-surefire-plugin.version>3.1.0</maven-surefire-plugin.version>

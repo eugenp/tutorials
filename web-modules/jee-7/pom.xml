@@ -258,6 +258,17 @@
                         <sourceDestDir>src/main/java</sourceDestDir>
                     </configuration>
                 </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <configuration>
+                        <argLine>
+                            --add-opens java.base/java.lang=ALL-UNNAMED
+                            --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
+                            --add-opens java.base/java.io=ALL-UNNAMED
+                        </argLine>
+                    </configuration>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
@@ -523,7 +534,7 @@
         <jboss-batch-api.version>1.0.0.Final</jboss-batch-api.version>
         <jberet.version>1.0.2.Final</jberet.version>
         <jboss-transaction-api.version>1.0.0.Final</jboss-transaction-api.version>
-        <jboss-marshalling.version>1.4.2.Final</jboss-marshalling.version>
+        <jboss-marshalling.version>2.1.1.Final</jboss-marshalling.version>
         <weld.version>2.1.1.Final</weld.version>
         <jersey-container-jetty-servlet.version>2.22.1</jersey-container-jetty-servlet.version>
     </properties>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baelding</groupId>
@@ -43,13 +44,13 @@
                     <artifactId>slf4j-simple</artifactId>
                 </exclusion>
             </exclusions>
-            <version>0.7.3</version>
+            <version>${embedded-redis.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webflux</artifactId>
-            <version>6.0.3</version>
+            <version>${spring-webflux.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -73,6 +74,8 @@
 
     <properties>
         <java.version>15</java.version>
+        <spring-webflux.version>6.0.3</spring-webflux.version>
+        <embedded-redis.version>0.7.3</embedded-redis.version>
     </properties>
 
 </project>

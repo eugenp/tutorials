@@ -21,6 +21,7 @@
                     <source>19</source>
                     <target>19</target>
                     <compilerArgs>--enable-preview</compilerArgs>
+                    <compilerArgs>--add-modules=jdk.incubator.vector</compilerArgs>
                 </configuration>
             </plugin>
         </plugins>

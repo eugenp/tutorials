@@ -1,0 +1,2542 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Maven Profiler Report </title>
+    <style>
+        body {
+            padding: 30px 50px;
+        }
+        h1 {
+            font-size: 160%;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 120%;
+        }
+        table {
+            min-width: 350px;
+            border-collapse: collapse;
+        }
+        th, table {
+            border-bottom: solid #d0d0d0 1px;
+        }
+        th {
+            text-align: left;
+            white-space: nowrap;
+            padding-left: 6em;
+        }
+        th:first-child {
+            padding-left: 0;
+        }
+        td {
+            white-space: nowrap;
+            padding-left: 6em;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+        td:first-child {
+            padding-left: 0;
+        }
+        td.time, th.time {
+            text-align: right;
+        }
+        footer {
+            margin-top: 100px;
+            font-size: 80%;
+            white-space: nowrap;
+        }
+        footer, footer a {
+            color: #a0a0a0;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <h1>maven-build-optimization (21,91 s)</h1>
+        <p>Run <b>clean install</b> on 2023/08/05 19:34:46 with parameters: {}</p>
+
+        
+        <article>
+            <h2>maven-build-optimization (18,81 s)</h2>
+            <table>
+                <thead>
+                <th>Plugin execution</th>
+                <th class="time">Duration</th>
+                </thead>
+                <tbody>
+                
+                <tr>
+                    <td>org.apache.maven.plugins:maven-pmd-plugin:3.19.0:pmd {execution: pmd}</td>
+                    <td class="time">10,45 s</td>
+                </tr>
+                
+                <tr>
+                    <td>org.commonjava.maven.plugins:directory-maven-plugin:0.3.1:directory-of {execution: directories}</td>
+                    <td class="time">2,108 s</td>
+                </tr>
+                
+                <tr>
+                    <td>org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file {execution: install-jar-lib}</td>
+                    <td class="time">1,982 s</td>
+                </tr>
+                
+                <tr>
+                    <td>org.apache.maven.plugins:maven-clean-plugin:3.2.0:clean {execution: default-clean}</td>
+                    <td class="time">541,7 ms</td>
+                </tr>
+                
+                <tr>
+                    <td>org.apache.maven.plugins:maven-install-plugin:2.5.2:install {execution: default-install}</td>
+                    <td class="time">22,76 ms</td>
+                </tr>
+                
+                <tr>
+                    <td>org.apache.maven.plugins:maven-pmd-plugin:3.19.0:check {execution: default}</td>
+                    <td class="time">9,651 ms</td>
+                </tr>
+                
+                </tbody>
+            </table>
+        </article>
+        
+
+        
+        <article>
+            <h2>Artifact Downloading (168,3 s)</h2>
+            <table>
+                <thead>
+                <th>Artifact</th>
+                <th class="time">Duration</th>
+                </thead>
+                <tbody>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-utils:jar:3.3.0</td>
+                        <td class="time">1,649 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>javax.inject:javax.inject:jar:1</td>
+                        <td class="time">1,646 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-resources:jar:1.2.0</td>
+                        <td class="time">1,643 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.doxia:doxia-integration-tools:jar:1.11.1</td>
+                        <td class="time">1,640 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.eclipse.sisu:org.eclipse.sisu.inject:jar:0.3.5</td>
+                        <td class="time">1,636 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>javax.enterprise:cdi-api:jar:1.2</td>
+                        <td class="time">1,634 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>javax.annotation:javax.annotation-api:jar:1.2</td>
+                        <td class="time">1,632 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.eclipse.sisu:org.eclipse.sisu.plexus:jar:0.3.5</td>
+                        <td class="time">1,630 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-plugin-api:jar:3.1.0</td>
+                        <td class="time">1,627 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.reporting:maven-reporting-impl:jar:3.2.0</td>
+                        <td class="time">1,623 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.reporting:maven-reporting-api:jar:3.1.1</td>
+                        <td class="time">1,620 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>commons-collections:commons-collections:jar:3.2.2</td>
+                        <td class="time">1,618 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>oro:oro:jar:2.0.8</td>
+                        <td class="time">1,616 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>dom4j:dom4j:jar:1.1</td>
+                        <td class="time">1,613 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>commons-logging:commons-logging:jar:1.1</td>
+                        <td class="time">1,611 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>commons-chain:commons-chain:jar:1.1</td>
+                        <td class="time">1,607 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>commons-digester:commons-digester:jar:1.8</td>
+                        <td class="time">1,604 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>commons-beanutils:commons-beanutils:jar:1.7.0</td>
+                        <td class="time">1,602 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.velocity:velocity-tools:jar:2.0</td>
+                        <td class="time">1,600 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>commons-lang:commons-lang:jar:2.4</td>
+                        <td class="time">1,597 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.velocity:velocity:jar:1.7</td>
+                        <td class="time">1,595 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-velocity:jar:1.2</td>
+                        <td class="time">1,592 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-30</td>
+                        <td class="time">1,589 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-i18n:jar:1.0-beta-10</td>
+                        <td class="time">1,586 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.doxia:doxia-module-xhtml5:jar:1.11.1</td>
+                        <td class="time">1,583 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.doxia:doxia-module-xhtml:jar:1.11.1</td>
+                        <td class="time">1,578 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.doxia:doxia-skin-model:jar:1.11.1</td>
+                        <td class="time">1,572 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.httpcomponents:httpcore:jar:4.4.14</td>
+                        <td class="time">1,569 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.commons:commons-text:jar:1.3</td>
+                        <td class="time">1,566 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.doxia:doxia-core:jar:1.11.1</td>
+                        <td class="time">1,563 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.doxia:doxia-site-renderer:jar:1.11.1</td>
+                        <td class="time">1,560 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.doxia:doxia-decoration-model:jar:1.11.1</td>
+                        <td class="time">1,556 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.doxia:doxia-logging-api:jar:1.11.1</td>
+                        <td class="time">1,553 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.doxia:doxia-sink-api:jar:1.11.1</td>
+                        <td class="time">1,551 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.slf4j:jul-to-slf4j:jar:1.7.36</td>
+                        <td class="time">1,549 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.slf4j:slf4j-api:jar:1.7.36</td>
+                        <td class="time">1,546 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>net.sourceforge.pmd:pmd-jsp:jar:6.49.0</td>
+                        <td class="time">1,543 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.mozilla:rhino:jar:1.7.14</td>
+                        <td class="time">1,540 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>net.sourceforge.pmd:pmd-javascript:jar:6.49.0</td>
+                        <td class="time">1,537 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>net.sourceforge.pmd:pmd-java:jar:6.49.0</td>
+                        <td class="time">1,535 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>net.sourceforge.saxon:saxon:jar:dom:9.1.0.8</td>
+                        <td class="time">1,533 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>com.google.code.gson:gson:jar:2.8.9</td>
+                        <td class="time">1,530 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.ow2.asm:asm:jar:9.3</td>
+                        <td class="time">1,528 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>net.sourceforge.saxon:saxon:jar:9.1.0.8</td>
+                        <td class="time">1,524 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>com.beust:jcommander:jar:1.48</td>
+                        <td class="time">1,521 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.antlr:antlr4-runtime:jar:4.7.2</td>
+                        <td class="time">1,519 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>net.sourceforge.pmd:pmd-core:jar:6.49.0</td>
+                        <td class="time">1,516 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.commons:commons-lang3:jar:3.12.0</td>
+                        <td class="time">1,513 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>commons-io:commons-io:jar:2.11.0</td>
+                        <td class="time">1,511 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.shared:maven-common-artifact-filters:jar:3.3.1</td>
+                        <td class="time">1,508 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-component-annotations:jar:2.1.1</td>
+                        <td class="time">1,504 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-artifact:jar:3.0</td>
+                        <td class="time">1,501 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-classworlds:jar:2.2.3</td>
+                        <td class="time">1,498 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.sisu:sisu-guice:jar:noaop:2.1.7</td>
+                        <td class="time">1,495 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.sisu:sisu-inject-bean:jar:1.4.2</td>
+                        <td class="time">1,481 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.sisu:sisu-inject-plexus:jar:1.4.2</td>
+                        <td class="time">1,472 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.aether:aether-util:jar:1.7</td>
+                        <td class="time">1,468 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.aether:aether-api:jar:1.7</td>
+                        <td class="time">1,465 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.aether:aether-spi:jar:1.7</td>
+                        <td class="time">1,462 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.aether:aether-impl:jar:1.7</td>
+                        <td class="time">1,459 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-aether-provider:jar:3.0</td>
+                        <td class="time">1,455 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-model-builder:jar:3.0</td>
+                        <td class="time">1,453 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-repository-metadata:jar:3.0</td>
+                        <td class="time">1,450 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-settings-builder:jar:3.0</td>
+                        <td class="time">1,447 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-settings:jar:3.0</td>
+                        <td class="time">1,444 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-model:jar:3.0</td>
+                        <td class="time">1,441 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-core:jar:3.0</td>
+                        <td class="time">1,437 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.shared:maven-artifact-transfer:jar:0.13.1</td>
+                        <td class="time">1,434 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.surefire:surefire-logger-api:jar:2.22.2</td>
+                        <td class="time">1,110 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.objenesis:objenesis:jar:3.2</td>
+                        <td class="time">1,107 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>net.bytebuddy:byte-buddy-agent:jar:1.12.8</td>
+                        <td class="time">1,104 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>net.bytebuddy:byte-buddy:jar:1.12.8</td>
+                        <td class="time">1,102 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.mockito:mockito-core:jar:4.4.0</td>
+                        <td class="time">1,097 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.hamcrest:hamcrest-all:jar:1.3</td>
+                        <td class="time">1,094 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.hamcrest:hamcrest:jar:2.2</td>
+                        <td class="time">1,092 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.assertj:assertj-core:jar:3.21.0</td>
+                        <td class="time">1,090 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.hamcrest:hamcrest-core:jar:1.3</td>
+                        <td class="time">1,087 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>junit:junit:jar:4.13.2</td>
+                        <td class="time">1,081 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.junit.vintage:junit-vintage-engine:jar:5.9.2</td>
+                        <td class="time">1,072 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.junit.platform:junit-platform-commons:jar:1.9.2</td>
+                        <td class="time">1,053 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.opentest4j:opentest4j:jar:1.2.0</td>
+                        <td class="time">1,046 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.junit.jupiter:junit-jupiter-api:jar:5.9.2</td>
+                        <td class="time">1,043 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.junit.jupiter:junit-jupiter-params:jar:5.9.2</td>
+                        <td class="time">1,041 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apiguardian:apiguardian-api:jar:1.1.2</td>
+                        <td class="time">1,037 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.junit.platform:junit-platform-engine:jar:1.9.2</td>
+                        <td class="time">1,034 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.junit.jupiter:junit-jupiter-engine:jar:5.9.2</td>
+                        <td class="time">1,030 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.slf4j:jcl-over-slf4j:jar:1.7.32</td>
+                        <td class="time">1,027 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>ch.qos.logback:logback-core:jar:1.2.7</td>
+                        <td class="time">1,025 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>ch.qos.logback:logback-classic:jar:1.2.7</td>
+                        <td class="time">1,021 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.slf4j:slf4j-api:jar:1.7.32</td>
+                        <td class="time">1,018 s</td>
+                    </tr>
+                
+                    <tr>
+                        <td>com.vackosar.gitflowincrementalbuilder:gitflow-incremental-builder:pom:3.12.2</td>
+                        <td class="time">912,3 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>com.jcraft:jsch.agentproxy.sshagent:jar:0.0.9</td>
+                        <td class="time">714,0 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>net.java.dev.jna:jna-platform:jar:4.1.0</td>
+                        <td class="time">709,2 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>net.java.dev.jna:jna:jar:4.1.0</td>
+                        <td class="time">700,3 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>com.jcraft:jsch.agentproxy.pageant:jar:0.0.9</td>
+                        <td class="time">696,9 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>com.jcraft:jsch.agentproxy.jsch:jar:0.0.9</td>
+                        <td class="time">691,3 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>com.jcraft:jsch.agentproxy.usocket-nc:jar:0.0.9</td>
+                        <td class="time">687,5 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>com.jcraft:jsch.agentproxy.usocket-jna:jar:0.0.9</td>
+                        <td class="time">681,7 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>com.jcraft:jsch.agentproxy.core:jar:0.0.9</td>
+                        <td class="time">677,3 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>com.jcraft:jsch.agentproxy.connector-factory:jar:0.0.9</td>
+                        <td class="time">673,1 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>com.jcraft:jzlib:jar:1.1.1</td>
+                        <td class="time">669,0 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>com.jcraft:jsch:jar:0.1.55</td>
+                        <td class="time">665,4 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.eclipse.jgit:org.eclipse.jgit.ssh.jsch:jar:5.10.0.202012080955-r</td>
+                        <td class="time">662,5 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>com.googlecode.javaewah:JavaEWAH:jar:1.1.7</td>
+                        <td class="time">659,3 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.eclipse.jgit:org.eclipse.jgit:jar:5.10.0.202012080955-r</td>
+                        <td class="time">656,1 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>com.vackosar.gitflowincrementalbuilder:gitflow-incremental-builder:jar:3.12.2</td>
+                        <td class="time">653,0 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-model:jar:3.0.3</td>
+                        <td class="time">435,3 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-plugin-api:jar:3.0.3</td>
+                        <td class="time">430,5 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.plexus:plexus-cipher:jar:1.4</td>
+                        <td class="time">427,8 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.plexus:plexus-sec-dispatcher:jar:1.3</td>
+                        <td class="time">424,9 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-component-annotations:jar:1.5.5</td>
+                        <td class="time">421,3 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-classworlds:jar:2.4</td>
+                        <td class="time">418,1 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-utils:jar:2.0.6</td>
+                        <td class="time">414,4 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-interpolation:jar:1.14</td>
+                        <td class="time">411,1 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.sisu:sisu-guice:jar:no_aop:2.9.4</td>
+                        <td class="time">403,0 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.sisu:sisu-inject-bean:jar:2.1.1</td>
+                        <td class="time">396,1 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.sisu:sisu-inject-plexus:jar:2.1.1</td>
+                        <td class="time">392,9 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.aether:aether-util:jar:1.11</td>
+                        <td class="time">388,1 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.aether:aether-api:jar:1.11</td>
+                        <td class="time">385,0 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.aether:aether-impl:jar:1.11</td>
+                        <td class="time">381,0 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.aether:aether-spi:jar:1.11</td>
+                        <td class="time">377,5 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-aether-provider:jar:3.0.3</td>
+                        <td class="time">374,7 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-model-builder:jar:3.0.3</td>
+                        <td class="time">371,9 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-artifact:jar:3.0.3</td>
+                        <td class="time">369,1 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-repository-metadata:jar:3.0.3</td>
+                        <td class="time">365,9 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-settings-builder:jar:3.0.3</td>
+                        <td class="time">361,7 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-settings:jar:3.0.3</td>
+                        <td class="time">358,7 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-core:jar:3.0.3</td>
+                        <td class="time">355,7 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-utils:jar:3.0.15</td>
+                        <td class="time">320,8 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>com.google.code.findbugs:jsr305:jar:2.0.1</td>
+                        <td class="time">312,4 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.shared:maven-shared-utils:jar:0.4</td>
+                        <td class="time">309,8 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>commons-codec:commons-codec:jar:1.6</td>
+                        <td class="time">307,2 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-artifact:jar:2.2.1</td>
+                        <td class="time">304,6 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>backport-util-concurrent:backport-util-concurrent:jar:3.1</td>
+                        <td class="time">302,0 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-repository-metadata:jar:2.2.1</td>
+                        <td class="time">298,3 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-artifact-manager:jar:2.2.1</td>
+                        <td class="time">294,0 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-model:jar:2.2.1</td>
+                        <td class="time">291,5 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>classworlds:classworlds:jar:1.1-alpha-2</td>
+                        <td class="time">288,9 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>junit:junit:jar:3.8.1</td>
+                        <td class="time">286,4 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-container-default:jar:1.0-alpha-9-stable-1</td>
+                        <td class="time">282,9 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-interpolation:jar:1.11</td>
+                        <td class="time">278,9 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-plugin-registry:jar:2.2.1</td>
+                        <td class="time">276,5 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-profile:jar:2.2.1</td>
+                        <td class="time">273,8 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-settings:jar:2.2.1</td>
+                        <td class="time">271,4 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-project:jar:2.2.1</td>
+                        <td class="time">268,8 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-plugin-api:jar:2.2.1</td>
+                        <td class="time">265,4 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>commons-io:commons-io:jar:2.6</td>
+                        <td class="time">111,6 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.shared:maven-shared-utils:jar:3.3.4</td>
+                        <td class="time">109,0 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.velocity:velocity:pom:1.6.2</td>
+                        <td class="time">97,59 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>commons-collections:commons-collections:pom:3.2.2</td>
+                        <td class="time">84,54 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache:apache:pom:5</td>
+                        <td class="time">76,39 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.eclipse.aether:aether-impl:pom:0.9.0.M2</td>
+                        <td class="time">77,00 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.eclipse.sisu:org.eclipse.sisu.inject:pom:0.3.5</td>
+                        <td class="time">72,70 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.eclipse.aether:aether-util:pom:0.9.0.M2</td>
+                        <td class="time">71,60 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-container-default:pom:1.0-alpha-30</td>
+                        <td class="time">70,94 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-utils:pom:2.0.6</td>
+                        <td class="time">69,83 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.mozilla:rhino:pom:1.7.14</td>
+                        <td class="time">68,12 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.eclipse.jgit:org.eclipse.jgit-parent:pom:5.10.0.202012080955-r</td>
+                        <td class="time">67,22 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus:pom:2.0.7</td>
+                        <td class="time">67,22 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>oro:oro:pom:2.0.8</td>
+                        <td class="time">66,76 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.slf4j:slf4j-api:pom:1.7.32</td>
+                        <td class="time">62,58 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>commons-collections:commons-collections:pom:2.0</td>
+                        <td class="time">62,45 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.eclipse.jgit:org.eclipse.jgit.ssh.jsch:pom:5.10.0.202012080955-r</td>
+                        <td class="time">61,11 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.aether:aether-impl:pom:1.11</td>
+                        <td class="time">61,37 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-container-default:pom:1.0-alpha-9-stable-1</td>
+                        <td class="time">61,22 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>com.google.code.findbugs:jsr305:pom:2.0.1</td>
+                        <td class="time">60,24 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>com.jcraft:jsch:pom:0.1.49</td>
+                        <td class="time">59,02 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-classworlds:pom:1.2-alpha-9</td>
+                        <td class="time">58,04 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>ch.qos.logback:logback-classic:pom:1.2.7</td>
+                        <td class="time">57,91 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.sisu:sisu-guice:pom:2.1.7</td>
+                        <td class="time">57,63 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>commons-io:commons-io:pom:2.5</td>
+                        <td class="time">57,02 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>commons-beanutils:commons-beanutils:pom:1.6</td>
+                        <td class="time">57,12 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>javax.inject:javax.inject:pom:1</td>
+                        <td class="time">57,82 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>com.jcraft:jzlib:pom:1.1.1</td>
+                        <td class="time">56,09 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.jboss.weld:weld-parent:pom:26</td>
+                        <td class="time">56,42 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven:pom:2.2.1</td>
+                        <td class="time">55,59 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-project:pom:2.2.1</td>
+                        <td class="time">55,15 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.slf4j:slf4j-parent:pom:1.7.32</td>
+                        <td class="time">55,55 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>ch.qos.logback:logback-core:pom:1.2.7</td>
+                        <td class="time">55,62 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.junit.jupiter:junit-jupiter-params:pom:5.9.2</td>
+                        <td class="time">55,39 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-plugin-api:pom:3.0</td>
+                        <td class="time">55,91 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.oss:oss-parent:pom:3</td>
+                        <td class="time">55,16 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven:pom:3.1.0</td>
+                        <td class="time">55,12 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache:apache:pom:14</td>
+                        <td class="time">53,84 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.assertj:assertj-core:pom:3.21.0</td>
+                        <td class="time">53,16 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.doxia:doxia-logging-api:pom:1.11.1</td>
+                        <td class="time">53,83 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>commons-codec:commons-codec:pom:1.6</td>
+                        <td class="time">52,94 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache:apache:pom:13</td>
+                        <td class="time">52,42 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>ch.qos.logback:logback-parent:pom:1.2.7</td>
+                        <td class="time">52,44 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>net.sourceforge.pmd:pmd-javascript:pom:6.49.0</td>
+                        <td class="time">52,50 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-model:pom:3.1.0</td>
+                        <td class="time">52,30 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-settings:pom:3.1.0</td>
+                        <td class="time">52,33 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>com.jcraft:jsch.agentproxy.core:pom:0.0.9</td>
+                        <td class="time">51,97 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-parent:pom:35</td>
+                        <td class="time">51,64 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache:apache:pom:6</td>
+                        <td class="time">51,83 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-utils:pom:3.3.0</td>
+                        <td class="time">51,78 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.aether:aether-api:pom:1.7</td>
+                        <td class="time">51,32 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.velocity:velocity:pom:1.7</td>
+                        <td class="time">51,33 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.shared:maven-artifact-transfer:pom:0.13.1</td>
+                        <td class="time">50,31 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.junit:junit-bom:pom:5.7.1</td>
+                        <td class="time">50,17 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.httpcomponents:httpcore:pom:4.4.14</td>
+                        <td class="time">50,00 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>xml-apis:xml-apis:pom:1.0.b2</td>
+                        <td class="time">50,17 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.reporting:maven-reporting-impl:pom:3.2.0</td>
+                        <td class="time">50,00 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-core:pom:3.1.0</td>
+                        <td class="time">50,88 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-core:pom:3.0.3</td>
+                        <td class="time">48,45 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-parent:pom:36</td>
+                        <td class="time">48,84 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.commons:commons-parent:pom:47</td>
+                        <td class="time">48,48 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>net.sourceforge.pmd:pmd-java:pom:6.49.0</td>
+                        <td class="time">48,23 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.doxia:doxia-core:pom:1.11.1</td>
+                        <td class="time">48,46 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>commons-chain:commons-chain:pom:1.1</td>
+                        <td class="time">48,33 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.eclipse.jgit:org.eclipse.jgit:pom:5.10.0.202012080955-r</td>
+                        <td class="time">47,77 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>com.googlecode.javaewah:JavaEWAH:pom:1.1.7</td>
+                        <td class="time">47,41 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>com.jcraft:jsch:pom:0.1.55</td>
+                        <td class="time">47,14 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.plugins:maven-clean-plugin:pom:3.2.0</td>
+                        <td class="time">47,30 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache:apache:pom:25</td>
+                        <td class="time">47,29 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-profile:pom:2.2.1</td>
+                        <td class="time">47,30 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-artifact:pom:3.0</td>
+                        <td class="time">47,23 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.commonjava.maven.plugins:directory-maven-plugin:pom:0.3.1</td>
+                        <td class="time">46,74 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.plugins:maven-pmd-plugin:jar:3.19.0</td>
+                        <td class="time">46,85 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.sisu:sisu-parent:pom:2.1.1</td>
+                        <td class="time">46,14 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.doxia:doxia-site-renderer:pom:1.11.1</td>
+                        <td class="time">46,37 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.httpcomponents:httpcomponents-parent:pom:11</td>
+                        <td class="time">46,78 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>log4j:log4j:pom:1.2.12</td>
+                        <td class="time">46,66 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>commons-digester:commons-digester:pom:1.6</td>
+                        <td class="time">46,89 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.oss:oss-parent:pom:6</td>
+                        <td class="time">45,87 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-parent:pom:15</td>
+                        <td class="time">45,51 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.plugins:maven-install-plugin:pom:2.5.2</td>
+                        <td class="time">45,87 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-settings-builder:pom:3.0.3</td>
+                        <td class="time">45,01 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.sisu:sisu-inject-bean:pom:2.1.1</td>
+                        <td class="time">45,81 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.hamcrest:hamcrest-core:pom:1.3</td>
+                        <td class="time">45,43 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.hamcrest:hamcrest:pom:2.2</td>
+                        <td class="time">45,94 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>net.bytebuddy:byte-buddy-agent:pom:1.12.8</td>
+                        <td class="time">45,38 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-classworlds:pom:2.2.3</td>
+                        <td class="time">45,57 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>net.sourceforge.pmd:pmd:pom:6.49.0</td>
+                        <td class="time">45,12 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.oss:oss-parent:pom:9</td>
+                        <td class="time">45,17 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>com.beust:jcommander:pom:1.48</td>
+                        <td class="time">45,36 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.doxia:doxia-skin-model:pom:1.11.1</td>
+                        <td class="time">45,26 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>avalon-framework:avalon-framework:pom:4.1.3</td>
+                        <td class="time">45,37 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.commons:commons-parent:pom:42</td>
+                        <td class="time">44,20 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-settings:pom:3.0.3</td>
+                        <td class="time">44,16 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-model:pom:2.2.1</td>
+                        <td class="time">44,03 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus:pom:6.5</td>
+                        <td class="time">44,63 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.commons:commons-parent:pom:39</td>
+                        <td class="time">44,23 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.slf4j:slf4j-parent:pom:1.7.36</td>
+                        <td class="time">44,75 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.ow2.asm:asm:pom:9.3</td>
+                        <td class="time">44,39 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>logkit:logkit:pom:1.0.1</td>
+                        <td class="time">44,09 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.reporting:maven-reporting-api:pom:3.1.1</td>
+                        <td class="time">44,16 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.shared:maven-shared-components:pom:15</td>
+                        <td class="time">44,84 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>com.jcraft:jsch.agentproxy:pom:0.0.9</td>
+                        <td class="time">43,31 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>net.java.dev.jna:jna-platform:pom:4.1.0</td>
+                        <td class="time">43,11 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.commonjava.maven.plugins:directory-maven-plugin:jar:0.3.1</td>
+                        <td class="time">43,95 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.plugins:maven-install-plugin:jar:2.5.2</td>
+                        <td class="time">43,19 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.shared:maven-shared-components:pom:34</td>
+                        <td class="time">43,48 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.forge:forge-parent:pom:7</td>
+                        <td class="time">43,50 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-model-builder:pom:3.0.3</td>
+                        <td class="time">43,32 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-containers:pom:1.0.3</td>
+                        <td class="time">43,70 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.junit.jupiter:junit-jupiter-engine:pom:5.9.2</td>
+                        <td class="time">43,63 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>net.bytebuddy:byte-buddy-parent:pom:1.12.8</td>
+                        <td class="time">43,82 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache:apache:pom:21</td>
+                        <td class="time">43,91 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.httpcomponents:httpcomponents-core:pom:4.4.14</td>
+                        <td class="time">43,69 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.doxia:doxia-modules:pom:1.11.1</td>
+                        <td class="time">43,31 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-components:pom:1.1.12</td>
+                        <td class="time">43,70 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>commons-collections:commons-collections:pom:3.1</td>
+                        <td class="time">43,62 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.velocity:velocity-tools:pom:2.0</td>
+                        <td class="time">43,88 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>commons-collections:commons-collections:pom:3.2</td>
+                        <td class="time">43,92 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.eclipse.sisu:sisu-inject:pom:0.3.5</td>
+                        <td class="time">43,24 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-model-builder:pom:3.1.0</td>
+                        <td class="time">43,18 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.httpcomponents:httpclient:pom:4.5.13</td>
+                        <td class="time">43,56 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.doxia:doxia-integration-tools:pom:1.11.1</td>
+                        <td class="time">43,28 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.oss:oss-parent:pom:5</td>
+                        <td class="time">42,01 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.plugins:maven-plugins:pom:35</td>
+                        <td class="time">42,47 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.plugins:maven-clean-plugin:jar:3.2.0</td>
+                        <td class="time">42,26 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.plugins:maven-plugins:pom:37</td>
+                        <td class="time">42,31 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>commons-io:commons-io:pom:2.6</td>
+                        <td class="time">42,61 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.sisu.inject:guice-plexus:pom:2.1.1</td>
+                        <td class="time">42,22 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.aether:aether-util:pom:1.11</td>
+                        <td class="time">42,96 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus:pom:2.0.2</td>
+                        <td class="time">42,03 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-parent:pom:23</td>
+                        <td class="time">42,40 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.junit:junit-bom:pom:5.8.0</td>
+                        <td class="time">42,55 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.objenesis:objenesis-parent:pom:3.2</td>
+                        <td class="time">42,08 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.sisu:sisu-inject-bean:pom:1.4.2</td>
+                        <td class="time">42,36 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-model-builder:pom:3.0</td>
+                        <td class="time">42,71 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-container-default:pom:2.1.0</td>
+                        <td class="time">42,77 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.commons:commons-text:pom:1.3</td>
+                        <td class="time">42,56 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.commons:commons-parent:pom:45</td>
+                        <td class="time">42,72 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-interpolation:pom:1.16</td>
+                        <td class="time">42,98 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus:pom:3.3</td>
+                        <td class="time">42,67 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>com.jcraft:jsch.agentproxy.pageant:pom:0.0.9</td>
+                        <td class="time">41,70 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.plugins:maven-plugins:pom:25</td>
+                        <td class="time">41,58 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.shared:maven-shared-utils:pom:3.3.4</td>
+                        <td class="time">41,60 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-model:pom:3.0.3</td>
+                        <td class="time">41,28 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.plexus:plexus-sec-dispatcher:pom:1.3</td>
+                        <td class="time">41,49 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.forge:forge-parent:pom:4</td>
+                        <td class="time">41,12 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus:pom:3.3.1</td>
+                        <td class="time">41,32 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.junit:junit-bom:pom:5.9.2</td>
+                        <td class="time">41,89 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.hamcrest:hamcrest-all:pom:1.3</td>
+                        <td class="time">41,23 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-repository-metadata:pom:3.0</td>
+                        <td class="time">41,58 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.ow2:ow2:pom:1.5</td>
+                        <td class="time">41,73 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.geronimo.genesis:genesis-default-flava:pom:2.0</td>
+                        <td class="time">41,83 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-i18n:pom:1.0-beta-10</td>
+                        <td class="time">41,30 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.commons:commons-parent:pom:9</td>
+                        <td class="time">41,92 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>commons-logging:commons-logging:pom:1.0</td>
+                        <td class="time">41,40 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>dom4j:dom4j:pom:1.1</td>
+                        <td class="time">41,17 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>javax.annotation:javax.annotation-api:pom:1.2</td>
+                        <td class="time">41,69 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus:pom:3.0.1</td>
+                        <td class="time">41,86 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>com.jcraft:jsch.agentproxy.connector-factory:pom:0.0.9</td>
+                        <td class="time">40,94 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>com.jcraft:jsch.agentproxy.jsch:pom:0.0.9</td>
+                        <td class="time">40,90 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.sisu:sisu-inject-plexus:pom:2.1.1</td>
+                        <td class="time">40,48 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.aether:aether-parent:pom:1.11</td>
+                        <td class="time">40,15 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>classworlds:classworlds:pom:1.1-alpha-2</td>
+                        <td class="time">40,71 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-aether-provider:pom:3.0</td>
+                        <td class="time">40,45 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.aether:aether-spi:pom:1.7</td>
+                        <td class="time">40,35 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache:apache:pom:16</td>
+                        <td class="time">40,00 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.junit:junit-bom:pom:5.7.2</td>
+                        <td class="time">40,99 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.antlr:antlr4-master:pom:4.7.2</td>
+                        <td class="time">40,97 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.commons:commons-lang3:pom:3.8.1</td>
+                        <td class="time">40,64 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>com.google.code.gson:gson-parent:pom:2.8.9</td>
+                        <td class="time">40,24 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.xbean:xbean-reflect:pom:3.7</td>
+                        <td class="time">40,35 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.geronimo.genesis:genesis-java5-flava:pom:2.0</td>
+                        <td class="time">40,09 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.doxia:doxia-module-xhtml5:pom:1.11.1</td>
+                        <td class="time">40,48 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>com.jcraft:jsch.agentproxy.sshagent:pom:0.0.9</td>
+                        <td class="time">39,63 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-parent:pom:24</td>
+                        <td class="time">39,98 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.plugins:maven-pmd-plugin:pom:3.19.0</td>
+                        <td class="time">39,32 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-parent:pom:37</td>
+                        <td class="time">39,06 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache:apache:pom:23</td>
+                        <td class="time">39,62 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-interpolation:pom:1.14</td>
+                        <td class="time">39,03 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.sisu.inject:guice-bean:pom:2.1.1</td>
+                        <td class="time">39,53 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.sisu:sisu-inject:pom:2.1.1</td>
+                        <td class="time">39,26 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.sisu:sisu-guice:pom:2.9.4</td>
+                        <td class="time">39,61 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-settings:pom:2.2.1</td>
+                        <td class="time">39,79 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.junit.platform:junit-platform-commons:pom:1.9.2</td>
+                        <td class="time">39,25 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven:pom:3.0</td>
+                        <td class="time">39,95 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.sisu:sisu-parent:pom:1.4.2</td>
+                        <td class="time">39,06 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.slf4j:slf4j-api:pom:1.7.36</td>
+                        <td class="time">39,61 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>commons-collections:commons-collections:pom:3.2.1</td>
+                        <td class="time">39,98 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-plugin-api:pom:3.1.0</td>
+                        <td class="time">39,75 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.eclipse.sisu:org.eclipse.sisu.plexus:pom:0.3.5</td>
+                        <td class="time">39,14 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.httpcomponents:httpcore:pom:4.4.13</td>
+                        <td class="time">39,01 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.reporting:maven-reporting-api:pom:3.0</td>
+                        <td class="time">39,80 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.doxia:doxia:pom:1.0</td>
+                        <td class="time">39,41 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-resources:pom:1.2.0</td>
+                        <td class="time">39,79 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>net.java.dev.jna:jna:pom:4.1.0</td>
+                        <td class="time">38,09 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven:pom:3.0.3</td>
+                        <td class="time">38,51 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache:apache:pom:27</td>
+                        <td class="time">38,99 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.plexus:plexus-cipher:pom:1.4</td>
+                        <td class="time">38,91 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-artifact:pom:3.0.3</td>
+                        <td class="time">38,26 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache:apache:pom:9</td>
+                        <td class="time">38,99 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.junit.jupiter:junit-jupiter-api:pom:5.9.2</td>
+                        <td class="time">38,90 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>junit:junit:pom:4.13.2</td>
+                        <td class="time">38,54 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.assertj:assertj-parent-pom:pom:2.2.13</td>
+                        <td class="time">38,07 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-parent:pom:33</td>
+                        <td class="time">38,50 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-model:pom:3.0</td>
+                        <td class="time">38,40 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-containers:pom:2.1.1</td>
+                        <td class="time">38,59 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus:pom:2.0.6</td>
+                        <td class="time">38,25 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.shared:maven-common-artifact-filters:pom:3.1.0</td>
+                        <td class="time">38,98 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-parent:pom:30</td>
+                        <td class="time">38,45 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.commons:commons-parent:pom:52</td>
+                        <td class="time">38,74 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.geronimo.genesis:genesis:pom:2.0</td>
+                        <td class="time">38,35 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus:pom:1.0.10</td>
+                        <td class="time">38,11 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>commons-logging:commons-logging:pom:1.1</td>
+                        <td class="time">38,41 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>javax.enterprise:cdi-api:pom:1.2</td>
+                        <td class="time">38,86 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.eclipse.aether:aether-spi:pom:0.9.0.M2</td>
+                        <td class="time">38,01 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.httpcomponents:httpcomponents-client:pom:4.5.13</td>
+                        <td class="time">38,87 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.commons:commons-parent:pom:34</td>
+                        <td class="time">38,24 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-parent:pom:10</td>
+                        <td class="time">38,57 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>com.jcraft:jsch.agentproxy.usocket-jna:pom:0.0.9</td>
+                        <td class="time">37,73 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>com.jcraft:jsch.agentproxy.usocket-nc:pom:0.0.9</td>
+                        <td class="time">37,70 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-parent:pom:34</td>
+                        <td class="time">37,84 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-aether-provider:pom:3.0.3</td>
+                        <td class="time">37,14 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-utils:pom:1.5.15</td>
+                        <td class="time">37,16 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-repository-metadata:pom:2.2.1</td>
+                        <td class="time">37,94 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-plugin-registry:pom:2.2.1</td>
+                        <td class="time">37,76 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.hamcrest:hamcrest-parent:pom:1.3</td>
+                        <td class="time">37,16 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.surefire:surefire:pom:2.22.2</td>
+                        <td class="time">37,51 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus:pom:5.1</td>
+                        <td class="time">37,75 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-component-annotations:pom:2.1.1</td>
+                        <td class="time">37,62 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.slf4j:slf4j-api:pom:1.7.5</td>
+                        <td class="time">37,15 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>net.sourceforge.pmd:pmd-core:pom:6.49.0</td>
+                        <td class="time">37,11 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>com.google.code.gson:gson:pom:2.8.9</td>
+                        <td class="time">37,75 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.doxia:doxia-sink-api:pom:1.11.1</td>
+                        <td class="time">37,14 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-containers:pom:2.1.0</td>
+                        <td class="time">37,25 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.xbean:xbean:pom:3.7</td>
+                        <td class="time">37,25 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>com.google:google:pom:1</td>
+                        <td class="time">37,52 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.doxia:doxia-module-xhtml:pom:1.11.1</td>
+                        <td class="time">37,70 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-containers:pom:1.0-alpha-30</td>
+                        <td class="time">37,07 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-components:pom:4.0</td>
+                        <td class="time">37,10 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.eclipse.aether:aether:pom:0.9.0.M2</td>
+                        <td class="time">37,23 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache:apache:pom:18</td>
+                        <td class="time">36,22 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-components:pom:1.1.18</td>
+                        <td class="time">36,26 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-component-annotations:pom:1.5.5</td>
+                        <td class="time">36,67 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-repository-metadata:pom:3.0.3</td>
+                        <td class="time">36,72 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-classworlds:pom:2.4</td>
+                        <td class="time">36,29 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.sisu.inject:guice-parent:pom:2.9.4</td>
+                        <td class="time">36,18 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.aether:aether-api:pom:1.11</td>
+                        <td class="time">36,69 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.aether:aether-spi:pom:1.11</td>
+                        <td class="time">36,84 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-plugin-api:pom:2.2.1</td>
+                        <td class="time">36,35 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-artifact-manager:pom:2.2.1</td>
+                        <td class="time">36,45 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.commons:commons-parent:pom:22</td>
+                        <td class="time">36,60 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-utils:pom:3.0.15</td>
+                        <td class="time">36,29 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.junit.platform:junit-platform-engine:pom:1.9.2</td>
+                        <td class="time">36,04 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.mockito:mockito-core:pom:4.4.0</td>
+                        <td class="time">36,15 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.objenesis:objenesis:pom:3.2</td>
+                        <td class="time">36,89 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-settings:pom:3.0</td>
+                        <td class="time">36,73 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.sisu.inject:guice-plexus:pom:1.4.2</td>
+                        <td class="time">36,89 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.shared:maven-shared-utils:pom:3.1.0</td>
+                        <td class="time">36,08 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.shared:maven-common-artifact-filters:pom:3.3.1</td>
+                        <td class="time">36,16 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>net.sourceforge.pmd:pmd-jsp:pom:6.49.0</td>
+                        <td class="time">36,48 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.doxia:doxia:pom:1.11.1</td>
+                        <td class="time">36,98 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>com.google.collections:google-collections:pom:1.0</td>
+                        <td class="time">36,84 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-repository-metadata:pom:3.1.0</td>
+                        <td class="time">36,82 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.eclipse.sisu:sisu-plexus:pom:0.3.5</td>
+                        <td class="time">36,74 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>net.java:jvnet-parent:pom:3</td>
+                        <td class="time">36,83 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-classworlds:pom:2.4.2</td>
+                        <td class="time">36,24 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.httpcomponents:httpcomponents-core:pom:4.4.13</td>
+                        <td class="time">36,86 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache:apache:pom:7</td>
+                        <td class="time">36,60 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-container-default:pom:1.0-alpha-9</td>
+                        <td class="time">36,51 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.forge:forge-parent:pom:6</td>
+                        <td class="time">35,58 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-parent:pom:11</td>
+                        <td class="time">35,64 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus:pom:1.0.4</td>
+                        <td class="time">35,29 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-utils:pom:1.0.4</td>
+                        <td class="time">35,69 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>backport-util-concurrent:backport-util-concurrent:pom:3.1</td>
+                        <td class="time">35,38 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.shared:maven-shared-utils:pom:0.4</td>
+                        <td class="time">35,84 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.slf4j:jcl-over-slf4j:pom:1.7.32</td>
+                        <td class="time">35,15 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.opentest4j:opentest4j:pom:1.2.0</td>
+                        <td class="time">35,58 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>net.bytebuddy:byte-buddy:pom:1.12.8</td>
+                        <td class="time">35,52 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.sisu:sisu-inject-plexus:pom:1.4.2</td>
+                        <td class="time">35,46 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.sisu:sisu-inject:pom:1.4.2</td>
+                        <td class="time">35,22 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.shared:maven-shared-components:pom:36</td>
+                        <td class="time">35,28 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache:apache:pom:26</td>
+                        <td class="time">35,25 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.commons:commons-lang3:pom:3.12.0</td>
+                        <td class="time">35,54 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.antlr:antlr4-runtime:pom:4.7.2</td>
+                        <td class="time">35,18 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>net.sourceforge.saxon:saxon:pom:9.1.0.8</td>
+                        <td class="time">35,76 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache:apache:pom:19</td>
+                        <td class="time">35,50 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-classworlds:pom:2.6.0</td>
+                        <td class="time">35,71 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.doxia:doxia-sitetools:pom:1.11.1</td>
+                        <td class="time">35,39 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>commons-digester:commons-digester:pom:1.8</td>
+                        <td class="time">35,20 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>commons-logging:commons-logging:pom:1.2</td>
+                        <td class="time">35,75 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>commons-codec:commons-codec:pom:1.11</td>
+                        <td class="time">35,24 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-parent:pom:16</td>
+                        <td class="time">35,28 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.oss:oss-parent:pom:7</td>
+                        <td class="time">34,14 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-containers:pom:1.5.5</td>
+                        <td class="time">34,23 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-components:pom:1.1.14</td>
+                        <td class="time">34,12 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>junit:junit:pom:3.8.1</td>
+                        <td class="time">34,09 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.shared:maven-shared-components:pom:19</td>
+                        <td class="time">34,01 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.forge:forge-parent:pom:10</td>
+                        <td class="time">34,20 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apiguardian:apiguardian-api:pom:1.1.2</td>
+                        <td class="time">34,54 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.junit.vintage:junit-vintage-engine:pom:5.9.2</td>
+                        <td class="time">34,23 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.surefire:surefire-logger-api:pom:2.22.2</td>
+                        <td class="time">34,84 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-core:pom:3.0</td>
+                        <td class="time">34,67 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.aether:aether-parent:pom:1.7</td>
+                        <td class="time">34,08 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.aether:aether-util:pom:1.7</td>
+                        <td class="time">34,82 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.aether:aether-impl:pom:1.7</td>
+                        <td class="time">34,32 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.slf4j:slf4j-parent:pom:1.7.5</td>
+                        <td class="time">34,23 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>commons-io:commons-io:pom:2.11.0</td>
+                        <td class="time">34,39 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.slf4j:jul-to-slf4j:pom:1.7.36</td>
+                        <td class="time">34,66 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.doxia:doxia-decoration-model:pom:1.11.1</td>
+                        <td class="time">34,92 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus:pom:1.0.11</td>
+                        <td class="time">34,91 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-velocity:pom:1.2</td>
+                        <td class="time">34,82 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus:pom:4.0</td>
+                        <td class="time">34,51 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache:apache:pom:4</td>
+                        <td class="time">34,13 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>commons-beanutils:commons-beanutils:pom:1.7.0</td>
+                        <td class="time">34,92 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-settings-builder:pom:3.1.0</td>
+                        <td class="time">34,20 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-artifact:pom:3.1.0</td>
+                        <td class="time">34,42 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-classworlds:pom:2.5.2</td>
+                        <td class="time">34,87 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.eclipse.aether:aether-api:pom:0.9.0.M2</td>
+                        <td class="time">34,42 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-components:pom:6.6</td>
+                        <td class="time">34,12 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus:pom:8</td>
+                        <td class="time">34,82 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.spice:spice-parent:pom:12</td>
+                        <td class="time">33,99 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-plugin-api:pom:3.0.3</td>
+                        <td class="time">33,53 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-interpolation:pom:1.11</td>
+                        <td class="time">33,07 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-artifact:pom:2.2.1</td>
+                        <td class="time">33,82 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-settings-builder:pom:3.0</td>
+                        <td class="time">33,79 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.shared:maven-shared-components:pom:33</td>
+                        <td class="time">33,07 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.shared:maven-shared-components:pom:30</td>
+                        <td class="time">33,90 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.commons:commons-lang3:pom:3.7</td>
+                        <td class="time">33,77 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>commons-lang:commons-lang:pom:2.4</td>
+                        <td class="time">33,27 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>commons-logging:commons-logging:pom:1.0.3</td>
+                        <td class="time">33,41 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>commons-collections:commons-collections:pom:2.1</td>
+                        <td class="time">33,89 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven:maven-aether-provider:pom:3.1.0</td>
+                        <td class="time">33,63 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.spice:spice-parent:pom:17</td>
+                        <td class="time">32,83 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.sonatype.sisu.inject:guice-bean:pom:1.4.2</td>
+                        <td class="time">32,52 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-components:pom:1.3</td>
+                        <td class="time">32,73 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.apache.maven.doxia:doxia-sink-api:pom:1.0</td>
+                        <td class="time">32,06 ms</td>
+                    </tr>
+                
+                    <tr>
+                        <td>org.codehaus.plexus:plexus-interpolation:pom:1.26</td>
+                        <td class="time">32,64 ms</td>
+                    </tr>
+                
+                </tbody>
+            </table>
+        </article>
+        
+    </section>
+
+    <footer>Generated by <a href="https://github.com/jcgay/maven-profiler">maven-profiler</a>.</footer>
+</body>
+</html>

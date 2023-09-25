@@ -187,7 +187,6 @@
         <vaadin.widgetset.mode>local</vaadin.widgetset.mode>
         <vaadin.theme>mytheme</vaadin.theme>
         <maven-clean-plugin.version>3.0.0</maven-clean-plugin.version>
-        <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
     </properties>
 
 </project>

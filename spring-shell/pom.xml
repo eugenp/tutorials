@@ -39,7 +39,6 @@
 
     <properties>
         <spring-shell.version>1.2.0.RELEASE</spring-shell.version>
-        <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
     </properties>
 
 </project>

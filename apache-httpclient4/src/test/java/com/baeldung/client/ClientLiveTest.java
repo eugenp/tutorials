@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.security.GeneralSecurityException;
 
 import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLPeerUnverifiedException;
+import javax.net.ssl.SSLHandshakeException;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -31,10 +31,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
+import com.baeldung.GetRequestMockServer;
 
-class ClientLiveTest {
+class ClientLiveTest extends GetRequestMockServer {
 
-    final String urlOverHttps = "http://localhost:8082/httpclient-simple/api/bars/1";
 
     @Test
     void givenAcceptingAllCertificates_whenHttpsUrlIsConsumed_thenOk_2() throws GeneralSecurityException {
@@ -54,13 +54,13 @@ class ClientLiveTest {
             .build();
 
         final HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory(httpClient);
-        final ResponseEntity<String> response = new RestTemplate(requestFactory).exchange(urlOverHttps, HttpMethod.GET, null, String.class);
+        final ResponseEntity<String> response = new RestTemplate(requestFactory).exchange(simplePathUrl, HttpMethod.GET, null, String.class);
         assertThat(response.getStatusCode().value(), equalTo(200));
     }
 
     @Test
     void givenAcceptingAllCertificates_whenHttpsUrlIsConsumed_thenCorrect() throws IOException {
-        final HttpGet getMethod = new HttpGet(urlOverHttps);
+        final HttpGet getMethod = new HttpGet(simplePathUrl);
 
         try (final CloseableHttpClient httpClient = HttpClients.custom()
             .setSSLHostnameVerifier(new NoopHostnameVerifier())
@@ -80,20 +80,22 @@ class ClientLiveTest {
         final HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory();
         requestFactory.setHttpClient(httpClient);
 
-        final ResponseEntity<String> response = new RestTemplate(requestFactory).exchange(urlOverHttps, HttpMethod.GET, null, String.class);
+        final ResponseEntity<String> response = new RestTemplate(requestFactory).exchange(simplePathUrl, HttpMethod.GET, null, String.class);
         assertThat(response.getStatusCode().value(), equalTo(200));
     }
 
     @Test
     void whenHttpsUrlIsConsumed_thenException() {
-        String urlOverHttps = "https://localhost:8082/httpclient-simple";
+        String urlOverHttps = "https://localhost:"+serverPort+"/httpclient-simple/api/bars/1";
         HttpGet getMethod = new HttpGet(urlOverHttps);
 
-        assertThrows(SSLPeerUnverifiedException.class, () -> {
+        assertThrows(SSLHandshakeException.class, () -> {
             CloseableHttpClient httpClient = HttpClients.createDefault();
             HttpResponse response = httpClient.execute(getMethod);
             assertThat(response.getStatusLine()
                 .getStatusCode(), equalTo(200));
         });
     }
+
+
 }

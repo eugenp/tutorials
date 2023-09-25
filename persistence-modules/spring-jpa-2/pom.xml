@@ -71,7 +71,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.4.0</version>
+            <version>${postgresql.version}</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
@@ -97,15 +97,26 @@
             <version>${org.springframework.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jakson-databind.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jakson-core.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <!-- Spring -->
-        <org.springframework.version>5.2.0.RELEASE</org.springframework.version>
-        <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
+        <org.springframework.version>6.0.9</org.springframework.version>
+        <spring-boot.version>3.1.0</spring-boot.version>
         <!-- persistence -->
-        <tomcat-dbcp.version>9.0.0.M26</tomcat-dbcp.version>
-        <h2.version>2.1.214</h2.version>
+        <tomcat-dbcp.version>10.1.9</tomcat-dbcp.version>
+        <jakson-databind.version>2.15.1</jakson-databind.version>
+        <jakson-core.version>2.14.2</jakson-core.version>
     </properties>
 
 </project>

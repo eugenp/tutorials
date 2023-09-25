@@ -5,6 +5,7 @@ import java.io.File;
 import org.apache.camel.CamelContext;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.impl.DefaultCamelContext;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -33,12 +34,18 @@ public class FileProcessorIntegrationTest {
         file2.createNewFile();
     }
 
+    @After
+    public void tearDown() {
+        cleanFolder(new File(SOURCE_FOLDER));
+        cleanFolder(new File(DESTINATION_FOLDER));
+    }
+
     private void cleanFolder(File folder) {
         File[] files = folder.listFiles();
         if (files != null) {
             for (File file : files) {
                 if (file.isFile()) {
-                    file.delete();
+                    file.deleteOnExit();
                 }
             }
         }

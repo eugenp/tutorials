@@ -1,23 +1,21 @@
 package com.baeldung;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
 import com.baeldung.model.Post;
 import com.baeldung.repository.PostRepository;
 import com.baeldung.repository.PostViewRepository;
 import com.baeldung.view.PostView;
 import com.baeldung.view.PostWithAuthorView;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-@ContextConfiguration(classes = TestContextConfig.class)
-@ExtendWith(SpringExtension.class)
+@SpringBootTest
 public class PostUnitTest {
 
     @Autowired
@@ -36,8 +34,7 @@ public class PostUnitTest {
 
     @Test
     public void givenPostIdAndAuthorName_whenFind_thenReturnCorrectResult() {
-        final Iterable<PostWithAuthorView> listIterable =
-                postRepository.findBy("Spring", "Peter");
+        final Iterable<PostWithAuthorView> listIterable = postRepository.findBy("Spring", "Peter");
         final List<PostView> list = new ArrayList<>();
         listIterable.forEach(list::add);
         assertEquals(4, list.size());
@@ -50,5 +47,4 @@ public class PostUnitTest {
         listIterable.forEach(list::add);
         assertEquals(7, list.size());
     }
-
 }

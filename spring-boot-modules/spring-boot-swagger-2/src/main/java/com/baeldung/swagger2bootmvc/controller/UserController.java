@@ -10,27 +10,26 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.baeldung.swagger2bootmvc.model.User;
 
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 
 @Controller
 public class UserController {
 
     public UserController() {
         super();
-    } //@formatter:off
+    }
 
     @RequestMapping(method = RequestMethod.POST, value = "/createUser", produces = "application/json; charset=UTF-8")
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
-    @ApiOperation(value = "Create user",
-            notes = "This method creates a new user")
-    public User createUser(@ApiParam(
+    @Operation(summary  = "Create user",
+        description = "This method creates a new user")
+    public User createUser(@Parameter(
                     name =  "firstName",
-                    type = "String",
-                    value = "First Name of the user",
+                    description  = "First Name of the user",
                     example = "Vatsal",
-                    required = true) @RequestParam String firstName) { //@formatter:on
+        required = true) @RequestParam String firstName) {
         User user = new User(firstName);
         return user;
     }

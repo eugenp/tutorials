@@ -3,6 +3,7 @@ package com.baeldung.jackson.objectmapper;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.ZoneId;
+import java.util.Locale;
 import java.util.TimeZone;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -19,7 +20,7 @@ public class ObjectMapperBuilder {
     }
 
     public ObjectMapperBuilder dateFormat() {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm a z");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm a z", Locale.ENGLISH);
         simpleDateFormat.setTimeZone(TimeZone.getTimeZone(ZoneId.of("Asia/Kolkata")));
         this.dateFormat = simpleDateFormat;
         return this;

@@ -30,6 +30,11 @@
             <version>${apache-commons-lang3.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
+            <version>${apache-commons-text.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>${assertj.version}</version>
@@ -56,6 +61,7 @@
         <opencsv.version>4.1</opencsv.version>
         <spring-core.version>5.3.13</spring-core.version>
         <apache-commons-lang3.version>3.12.0</apache-commons-lang3.version>
+        <apache-commons-text.version>1.10.0</apache-commons-text.version>
     </properties>
 
 </project>

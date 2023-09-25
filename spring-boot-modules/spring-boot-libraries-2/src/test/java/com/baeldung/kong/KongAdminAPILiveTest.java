@@ -53,17 +53,17 @@ public class KongAdminAPILiveTest {
 
     @Test
     public void givenKongAdminAPI_whenAddAPI_thenAPIAccessibleViaKong() throws Exception {
-        restTemplate.delete("http://localhost:8001/apis/stock-api");
+        restTemplate.delete("http://localhost:8001/stock-api");
 
         APIObject stockAPI = new APIObject("stock-api", "stock.api", "http://localhost:9090", "/");
         HttpEntity<APIObject> apiEntity = new HttpEntity<>(stockAPI);
-        ResponseEntity<String> addAPIResp = restTemplate.postForEntity("http://localhost:8001/apis", apiEntity, String.class);
+        ResponseEntity<String> addAPIResp = restTemplate.postForEntity("http://localhost:8001", apiEntity, String.class);
 
         assertEquals(HttpStatus.CREATED, addAPIResp.getStatusCode());
 
-        addAPIResp = restTemplate.postForEntity("http://localhost:8001/apis", apiEntity, String.class);
+        addAPIResp = restTemplate.postForEntity("http://localhost:8001", apiEntity, String.class);
         assertEquals(HttpStatus.CONFLICT, addAPIResp.getStatusCode());
-        String apiListResp = restTemplate.getForObject("http://localhost:8001/apis/", String.class);
+        String apiListResp = restTemplate.getForObject("http://localhost:8001/", String.class);
 
         assertTrue(apiListResp.contains("stock-api"));
 
@@ -94,17 +94,17 @@ public class KongAdminAPILiveTest {
 
     @Test
     public void givenAPI_whenEnableAuth_thenAnonymousDenied() throws Exception {
-        String apiListResp = restTemplate.getForObject("http://localhost:8001/apis/", String.class);
+        String apiListResp = restTemplate.getForObject("http://localhost:8001/", String.class);
         if (!apiListResp.contains("stock-api")) {
             givenKongAdminAPI_whenAddAPI_thenAPIAccessibleViaKong();
         }
 
         PluginObject authPlugin = new PluginObject("key-auth");
-        ResponseEntity<String> enableAuthResp = restTemplate.postForEntity("http://localhost:8001/apis/stock-api/plugins", new HttpEntity<>(authPlugin), String.class);
+        ResponseEntity<String> enableAuthResp = restTemplate.postForEntity("http://localhost:8001/stock-api/plugins", new HttpEntity<>(authPlugin), String.class);
 
         assertTrue(HttpStatus.CREATED == enableAuthResp.getStatusCode() || HttpStatus.CONFLICT == enableAuthResp.getStatusCode());
 
-        String pluginsResp = restTemplate.getForObject("http://localhost:8001/apis/stock-api/plugins", String.class);
+        String pluginsResp = restTemplate.getForObject("http://localhost:8001/stock-api/plugins", String.class);
         assertTrue(pluginsResp.contains("key-auth"));
 
         HttpHeaders headers = new HttpHeaders();
@@ -116,7 +116,7 @@ public class KongAdminAPILiveTest {
 
     @Test
     public void givenAPIAuthEnabled_whenAddKey_thenAccessAllowed() throws Exception {
-        String apiListResp = restTemplate.getForObject("http://localhost:8001/apis/", String.class);
+        String apiListResp = restTemplate.getForObject("http://localhost:8001/", String.class);
         if (!apiListResp.contains("stock-api")) {
             givenKongAdminAPI_whenAddAPI_thenAPIAccessibleViaKong();
         }
@@ -127,7 +127,7 @@ public class KongAdminAPILiveTest {
         }
 
         PluginObject authPlugin = new PluginObject("key-auth");
-        ResponseEntity<String> enableAuthResp = restTemplate.postForEntity("http://localhost:8001/apis/stock-api/plugins", new HttpEntity<>(authPlugin), String.class);
+        ResponseEntity<String> enableAuthResp = restTemplate.postForEntity("http://localhost:8001/stock-api/plugins", new HttpEntity<>(authPlugin), String.class);
         assertTrue(HttpStatus.CREATED == enableAuthResp.getStatusCode() || HttpStatus.CONFLICT == enableAuthResp.getStatusCode());
 
         final String consumerKey = "eugenp.pass";
@@ -154,14 +154,14 @@ public class KongAdminAPILiveTest {
     public void givenAdminAPIProxy_whenAddAPIViaProxy_thenAPIAdded() throws Exception {
         APIObject adminAPI = new APIObject("admin-api", "admin.api", "http://localhost:8001", "/admin-api");
         HttpEntity<APIObject> apiEntity = new HttpEntity<>(adminAPI);
-        ResponseEntity<String> addAPIResp = restTemplate.postForEntity("http://localhost:8001/apis", apiEntity, String.class);
+        ResponseEntity<String> addAPIResp = restTemplate.postForEntity("http://localhost:8001", apiEntity, String.class);
 
         assertTrue(HttpStatus.CREATED == addAPIResp.getStatusCode() || HttpStatus.CONFLICT == addAPIResp.getStatusCode());
 
         HttpHeaders headers = new HttpHeaders();
         headers.set("Host", "admin.api");
         APIObject baeldungAPI = new APIObject("baeldung-api", "baeldung.com", "http://ww.baeldung.com", "/");
-        RequestEntity<APIObject> requestEntity = new RequestEntity<>(baeldungAPI, headers, HttpMethod.POST, new URI("http://localhost:8000/admin-api/apis"));
+        RequestEntity<APIObject> requestEntity = new RequestEntity<>(baeldungAPI, headers, HttpMethod.POST, new URI("http://localhost:8000/admin-api"));
         addAPIResp = restTemplate.exchange(requestEntity, String.class);
 
         assertTrue(HttpStatus.CREATED == addAPIResp.getStatusCode() || HttpStatus.CONFLICT == addAPIResp.getStatusCode());

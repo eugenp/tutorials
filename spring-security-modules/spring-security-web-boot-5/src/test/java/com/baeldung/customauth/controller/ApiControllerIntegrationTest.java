@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.*;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
@@ -14,20 +15,23 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 @SpringBootTest(classes = SpringSecurityApplication.class,
-        webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
+        webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ExtendWith(SpringExtension.class)
 class ApiControllerIntegrationTest {
 
     private final TestRestTemplate restTemplate = new TestRestTemplate();
 
-    private static final String API_ENDPOINT = "http://localhost:8080/app/api/hello";
+    private static final String API_ENDPOINT = "http://localhost:%s/app/api/hello";
+
+    @LocalServerPort
+    private int serverPort;
 
     @Test
     void givenAuthHeaderSecretIsValid_whenApiControllerCalled_thenReturnOk() throws Exception {
         HttpHeaders headers = new HttpHeaders();
         headers.add("x-auth-secret-key", "test-secret");
 
-        ResponseEntity<String> response = restTemplate.exchange(new URI(API_ENDPOINT), HttpMethod.GET,
+        ResponseEntity<String> response = restTemplate.exchange(new URI(String.format(API_ENDPOINT, serverPort)), HttpMethod.GET,
           new HttpEntity<>(headers), String.class);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
@@ -39,7 +43,7 @@ class ApiControllerIntegrationTest {
         HttpHeaders headers = new HttpHeaders();
         headers.add("x-auth-secret-key", "invalid");
 
-        ResponseEntity<String> response = restTemplate.exchange(new URI(API_ENDPOINT), HttpMethod.GET,
+        ResponseEntity<String> response = restTemplate.exchange(new URI(String.format(API_ENDPOINT, serverPort)), HttpMethod.GET,
           new HttpEntity<>(headers), String.class);
 
         assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
@@ -50,7 +54,7 @@ class ApiControllerIntegrationTest {
         HttpHeaders headers = new HttpHeaders();
         headers.add("x-auth-secret", "test-secret");
 
-        ResponseEntity<String> response = restTemplate.exchange(new URI(API_ENDPOINT), HttpMethod.GET,
+        ResponseEntity<String> response = restTemplate.exchange(new URI(String.format(API_ENDPOINT, serverPort)), HttpMethod.GET,
           new HttpEntity<>(headers), String.class);
 
         assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
@@ -60,7 +64,7 @@ class ApiControllerIntegrationTest {
     void givenAuthHeaderIsMissing_whenApiControllerCalled_thenReturnUnAuthorised() throws Exception {
         HttpHeaders headers = new HttpHeaders();
 
-        ResponseEntity<String> response = restTemplate.exchange(new URI(API_ENDPOINT), HttpMethod.GET,
+        ResponseEntity<String> response = restTemplate.exchange(new URI(String.format(API_ENDPOINT, serverPort)), HttpMethod.GET,
           new HttpEntity<>(headers), String.class);
 
         assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());

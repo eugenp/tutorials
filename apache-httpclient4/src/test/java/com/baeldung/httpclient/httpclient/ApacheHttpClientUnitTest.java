@@ -13,13 +13,14 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 import org.junit.jupiter.api.Test;
 
-class ApacheHttpClientUnitTest extends GetRequestMockServer {
+import com.baeldung.GetRequestMockServer;
 
+class ApacheHttpClientUnitTest extends GetRequestMockServer {
 
     @Test
     void givenDeveloperUsedCloseableHttpResponse_whenExecutingGetRequest_thenStatusIsOk() throws IOException {
         try (CloseableHttpClient httpClient = HttpClientBuilder.create().build()) {
-            HttpGet httpGet = new HttpGet(serviceOneUrl);
+            HttpGet httpGet = new HttpGet(simplePathUrl);
             try (CloseableHttpResponse response = httpClient.execute(httpGet)) {
                 HttpEntity entity = response.getEntity();
                 EntityUtils.consume(entity);
