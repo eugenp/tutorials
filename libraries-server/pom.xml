@@ -88,7 +88,7 @@
             <version>${nanohttpd.version}</version>
         </dependency>
     </dependencies>
-
+    
     <properties>
         <httpclient.version>4.5.3</httpclient.version>
         <jetty.version>9.4.27.v20200227</jetty.version>
@@ -97,6 +97,7 @@
         <smack.version>4.3.1</smack.version>
         <eclipse.paho.client.mqttv3.version>1.2.0</eclipse.paho.client.mqttv3.version>
         <nanohttpd.version>2.3.1</nanohttpd.version>
+        <logback.configurationFileName>logbackConfig.xml</logback.configurationFileName>
     </properties>
 
 </project>
