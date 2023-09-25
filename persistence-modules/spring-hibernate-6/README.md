@@ -1,4 +1,4 @@
-## Hibernate 5 with Spring
+## Hibernate 6 with Spring
 
 This module contains articles about Hibernate 6 with Spring.
 
