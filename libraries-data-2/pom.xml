@@ -86,13 +86,11 @@
             <artifactId>spring-web</artifactId>
             <version>${spring.version}</version>
         </dependency>
-        <!-- fixing in JAVA-24004
         <dependency>
-            <groupId>com.numericalmethod</groupId>
-            <artifactId>suanshu</artifactId>
-            <version>${suanshu.version}</version>
+            <groupId>io.deephaven</groupId>
+            <artifactId>SuanShu</artifactId>
+            <version>${SuanShu.version}</version>
         </dependency>
-        -->
         <dependency>
             <groupId>org.derive4j</groupId>
             <artifactId>derive4j</artifactId>
@@ -163,17 +161,6 @@
         </plugins>
     </build>
 
-    <!-- JAVA-24004 
-    <repositories>
-        <repository>
-            <id>nm-repo</id>
-            <name>Numerical Method's Maven Repository</name>
-            <url>http://repo.numericalmethod.com/maven/</url>
-            <layout>default</layout>
-        </repository>
-    </repositories>
-    -->
-
     <properties>
         <flink.version>1.16.1</flink.version>
         <hll.version>1.6.0</hll.version>
@@ -181,7 +168,7 @@
         <unit-ri.version>1.0.3</unit-ri.version>
         <infinispan.version>14.0.6.Final</infinispan.version>
         <spring.version>5.3.25</spring.version>
-        <suanshu.version>4.0.0</suanshu.version>
+        <SuanShu.version>0.1.0</SuanShu.version>
         <derive4j.version>1.1.0</derive4j.version>
         <awaitility.version>3.0.0</awaitility.version>
         <univocity.version>2.8.4</univocity.version>
