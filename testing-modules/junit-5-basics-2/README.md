@@ -1,2 +1,2 @@
 ### Relevant Articles:
-- [Test Main Method with JUnit](http://www.baeldung.com/junit-5)
+- [Test Main Method with JUnit](https://www.baeldung.com/junit-test-main-method)
