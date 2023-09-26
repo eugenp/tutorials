@@ -17,17 +17,18 @@
     </parent>
 
     <modules>
-        <module>spring-5-data-reactive</module>
-        <module>spring-5-data-reactive-2</module>
-        <module>spring-5-reactive</module>
-        <module>spring-5-reactive-2</module>
-        <module>spring-5-reactive-3</module>
-        <module>spring-5-reactive-client</module>
-        <module>spring-5-reactive-client-2</module>
-        <module>spring-5-reactive-filters</module>
-        <module>spring-5-reactive-oauth</module>
-        <module>spring-5-reactive-security</module>
+        <module>spring-reactive-data</module>
+        <module>spring-reactive-data-2</module>
         <module>spring-reactive</module>
+        <module>spring-reactive-2</module>
+        <module>spring-reactive-3</module>
+        <module>spring-reactive-client</module>
+        <module>spring-reactive-client-2</module>
+        <module>spring-reactive-filters</module>
+        <module>spring-reactive-oauth</module>
+        <module>spring-reactive-security</module>
+        <module>spring-data-couchbase</module>
+        <module>spring-reactive-webflux</module>
         <module>spring-reactive-exceptions</module>
         <module>spring-reactor</module>
         <module>spring-webflux-amqp</module>
