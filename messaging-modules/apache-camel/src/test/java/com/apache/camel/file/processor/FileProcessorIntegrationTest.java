@@ -75,7 +75,6 @@ public class FileProcessorIntegrationTest {
         ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("camel-context-test.xml");
         verifyFolderContent();
         applicationContext.close();
-
     }
 
     private void verifyFolderContent() {
