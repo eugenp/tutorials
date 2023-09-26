@@ -1,7 +1,7 @@
 package com.baeldung.scope;
 
 import com.baeldung.scope.prototype.PrototypeBean;
-import com.baeldung.scope.singletone.SingletonBean;
+import com.baeldung.scope.singleton.SingletonBean;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.util.Assert;
 

@@ -1,4 +1,4 @@
-package com.baeldung.scope.singletone;
+package com.baeldung.scope.singleton;
 
 import com.baeldung.scope.prototype.PrototypeBean;
 import org.springframework.beans.factory.annotation.Autowired;
