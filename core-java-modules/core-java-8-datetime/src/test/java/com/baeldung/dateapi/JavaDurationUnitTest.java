@@ -3,9 +3,11 @@ package com.baeldung.dateapi;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 
@@ -19,7 +21,7 @@ public class JavaDurationUnitTest {
         LocalTime finalTime = initialTime.plus(Duration.ofSeconds(30));
 
         long seconds = Duration.between(initialTime, finalTime)
-            .getSeconds();
+          .getSeconds();
 
         assertThat(seconds).isEqualTo(30);
     }
@@ -32,6 +34,22 @@ public class JavaDurationUnitTest {
         long seconds = ChronoUnit.SECONDS.between(initialTime, finalTime);
 
         assertThat(seconds).isEqualTo(30);
+    }
+
+    @Test
+    public void givenADuration_whenCallingisZeroAndisNegative_thenGetExpectedResult() {
+        LocalDateTime start = LocalDateTime.parse("2020-01-01T08:00:00");
+        LocalDateTime end = LocalDateTime.parse("2020-01-01T12:00:00");
+        assertFalse(Duration.between(start, end)
+          .isNegative());
+        assertTrue(Duration.between(end, start)
+          .isNegative());
+
+        LocalDateTime theTime = LocalDateTime.parse("2023-09-09T08:00:00");
+        assertTrue(Duration.between(theTime, theTime)
+          .isZero());
+        assertFalse(Duration.between(theTime, theTime)
+          .isNegative());
     }
 
     @Test
@@ -53,14 +71,14 @@ public class JavaDurationUnitTest {
         assertEquals(1, fromMinutes.toHours());
 
         assertEquals(120, duration.plusSeconds(60)
-            .getSeconds());
+          .getSeconds());
         assertEquals(30, duration.minusSeconds(30)
-            .getSeconds());
+          .getSeconds());
 
         assertEquals(120, duration.plus(60, ChronoUnit.SECONDS)
-            .getSeconds());
+          .getSeconds());
         assertEquals(30, duration.minus(30, ChronoUnit.SECONDS)
-            .getSeconds());
+          .getSeconds());
 
         Duration fromChar1 = Duration.parse("P1DT1H10M10.5S");
         Duration fromChar2 = Duration.parse("PT10M");
