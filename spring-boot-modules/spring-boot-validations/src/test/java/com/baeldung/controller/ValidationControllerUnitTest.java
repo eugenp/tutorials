@@ -84,13 +84,13 @@ class ValidationControllerUnitTest {
             .getResponse()
             .getContentAsString();
 
-        assertEquals("Only values accepted as Boolean are TRUE, FALSE, +, -, 1 , 0", output);
+        assertEquals("Only values accepted as Boolean are + and -", output);
     }
 
     @Test
     void testInvalidBooleanFromJson() throws Exception {
 
-        String postBody = "{\"boolField\":true,\"trueField\":true,\"falseField\":false,\"boolStringVar\":\"6\"}";
+        String postBody = "{\"boolField\":true,\"trueField\":true,\"falseField\":false,\"boolStringVar\":\"plus\"}";
 
         String output = mockMvc.perform(post("/validateBoolean").contentType("application/json")
             .content(postBody))
@@ -98,7 +98,7 @@ class ValidationControllerUnitTest {
             .getResponse()
             .getContentAsString();
 
-        assertEquals("Only values accepted as Boolean are TRUE, FALSE, +, -, 1 , 0", output);
+        assertEquals("Only values accepted as Boolean are + and -", output);
 
     }
 

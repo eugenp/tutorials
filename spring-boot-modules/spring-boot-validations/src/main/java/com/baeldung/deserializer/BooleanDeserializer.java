@@ -10,12 +10,12 @@ public class BooleanDeserializer extends JsonDeserializer<Boolean> {
     @Override
     public Boolean deserialize(JsonParser parser, DeserializationContext context) throws IOException {
         String value = parser.getText();
-        if (value != null && (value.equals("TRUE") || value.equals("1") || value.equals("+"))) {
+        if (value != null && value.equals("+")) {
             return Boolean.TRUE;
-        } else if (value != null && (value.equals("FALSE") || value.equals("0") || value.equals("-"))) {
+        } else if (value != null && value.equals("-")) {
             return Boolean.FALSE;
         } else {
-            throw new IllegalArgumentException("Only values accepted as Boolean are TRUE, FALSE, +, -, 1 , 0");
+            throw new IllegalArgumentException("Only values accepted as Boolean are + and -");
         }
     }
 }
