@@ -24,7 +24,7 @@ public class EchoIntegrationTest {
 
         Executors.newSingleThreadExecutor()
             .submit(() -> new EchoServer().start(port));
-        Thread.sleep(500);
+        Thread.sleep(2000);
     }
 
     private EchoClient client = new EchoClient();
