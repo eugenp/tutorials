@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 /**
  * Some tests demonstrating querying data.
  */
-public class QueryIntegrationTest extends TestBase {
+public class QueryIntegrationLiveTest extends TestBase {
     /**
      * Create a table for the tests.
      */

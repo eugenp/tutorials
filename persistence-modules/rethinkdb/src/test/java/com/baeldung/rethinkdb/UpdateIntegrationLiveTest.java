@@ -8,7 +8,7 @@ import static com.rethinkdb.RethinkDB.r;
 /**
  * Some tests demonstrating updating data.
  */
-public class UpdateIntegrationTest extends TestBase {
+public class UpdateIntegrationLiveTest extends TestBase {
     /**
      * Create a table for the tests.
      */

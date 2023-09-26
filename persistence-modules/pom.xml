@@ -115,7 +115,7 @@
         <module>java-mongodb</module>
         <module>questdb</module>
         <module>neo4j</module>
-        <!--<module>rethinkdb</module>--> <!-- JAVA-25297 -->
+        <module>rethinkdb</module>
         <module>scylladb</module>
         <module>spring-data-cassandra-2</module>
         <module>spring-data-jpa-repo-3</module>
