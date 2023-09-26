@@ -152,11 +152,8 @@
                         <executions>
                             <execution>
                                 <goals>
-                                    <goal>native-image</goal>
+                                    <goal>image-build</goal>
                                 </goals>
-                                <configuration>
-                                    <enableHttpUrlHandler>true</enableHttpUrlHandler>
-                                </configuration>
                             </execution>
                         </executions>
                     </plugin>

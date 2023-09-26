@@ -1,16 +1,18 @@
 package com.baeldung.couchbase.domain.repository;
 
+import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.util.Collections;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
+import org.springframework.boot.test.context.TestConfiguration;
+
 import com.baeldung.couchbase.configuration.CouchbaseProperties;
 import com.couchbase.mock.Bucket;
 import com.couchbase.mock.BucketConfiguration;
 import com.couchbase.mock.CouchbaseMock;
-import org.springframework.boot.test.context.TestConfiguration;
-
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
-import java.io.IOException;
-import java.io.UncheckedIOException;
-import java.util.Collections;
 
 @TestConfiguration
 public class CouchbaseMockConfiguration {

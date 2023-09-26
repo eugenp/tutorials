@@ -37,7 +37,6 @@
     </dependencies>
 
     <properties>
-        <spring-cloud-sleuth.version>2.0.2.RELEASE</spring-cloud-sleuth.version>
         <reactor.version>2.0.8.RELEASE</reactor.version>
     </properties>
 

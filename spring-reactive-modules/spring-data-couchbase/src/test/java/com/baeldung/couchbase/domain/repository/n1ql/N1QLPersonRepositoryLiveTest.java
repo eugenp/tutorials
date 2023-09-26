@@ -1,15 +1,18 @@
 package com.baeldung.couchbase.domain.repository.n1ql;
 
-import com.baeldung.couchbase.domain.Person;
+import java.util.UUID;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import com.baeldung.couchbase.domain.Person;
+import com.baeldung.couchbase.domain.repository.n1ql.N1QLPersonRepository;
+
 import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
-
-import java.util.UUID;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(properties = {"spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.mongo.embedded.EmbeddedMongoAutoConfiguration"})
