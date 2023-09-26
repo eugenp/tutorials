@@ -19,6 +19,7 @@ import org.springframework.context.annotation.Bean;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
@@ -76,7 +77,7 @@ public class FruitListJacksonUnmarshalUnitTest {
 
     private String readJsonFromFile(String path) throws URISyntaxException, IOException {
         URL resource = FruitListJacksonUnmarshalUnitTest.class.getResource(path);
-        return new String(Files.readAllBytes(Paths.get(resource.toURI())));
+        return new String(Files.readAllBytes(Paths.get(resource.toURI())), StandardCharsets.UTF_8);
     }
 
 }
