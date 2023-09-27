@@ -19,8 +19,6 @@ public class ShallowCopyUnitTest {
         books.add(journey);
         var shelfOne = new ShallowCopy.Bookshelf(5, books);
         var shelfTwo = new ShallowCopy.Bookshelf(shelfOne);
-        System.out.println("Shelf One: " + shelfOne);
-        System.out.println("Shelf Two: " + shelfTwo);
 
         // When a new book is added it to the second bookshelf
         var wuthering = new ShallowCopy.Book("Wuthering Heights", "Charlotte Bronte");
@@ -28,8 +26,6 @@ public class ShallowCopyUnitTest {
             .add(wuthering);
 
         // Then the first list is updated since the second list of books is a shallow copy
-        System.out.println("Shelf One: " + shelfOne);
-        System.out.println("Shelf Two: " + shelfTwo);
         assertThat(shelfOne.getBooks()).isEqualTo(shelfTwo.getBooks());
     }
 
@@ -40,8 +36,6 @@ public class ShallowCopyUnitTest {
         var journey = new ShallowCopy.Book("Journey to the Center of the Earth", "Jules Verne");
         var shelfOne = new ShallowCopy.Bookshelf(5, List.of(alice, journey));
         var shelfTwo = new ShallowCopy.Bookshelf(shelfOne);
-        System.out.println("Shelf One: " + shelfOne);
-        System.out.println("Shelf Two: " + shelfTwo);
 
         // When a book in second bookshelf is renamed
         shelfTwo.getBooks()
@@ -49,8 +43,6 @@ public class ShallowCopyUnitTest {
             .setTitle("Alicia in Wonderland");
 
         // Then the first list's book is updated since the second list of books is a shallow copy
-        System.out.println("Shelf One: " + shelfOne);
-        System.out.println("Shelf Two: " + shelfTwo);
         assertThat(shelfOne.getBooks()).isEqualTo(shelfTwo.getBooks());
     }
 }
