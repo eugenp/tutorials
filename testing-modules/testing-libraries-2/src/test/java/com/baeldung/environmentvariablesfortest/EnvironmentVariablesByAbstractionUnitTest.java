@@ -32,7 +32,6 @@ class EnvironmentVariablesByAbstractionUnitTest {
         fakeEnv.put("OS", "MacDowsNix");
 
         ReadsEnvironment reader = new ReadsEnvironment(fakeEnv::get);
-        assertThat(reader.whatOs())
-          .isEqualTo("MacDowsNix");
+        assertThat(reader.whatOs()).isEqualTo("MacDowsNix");
     }
 }

@@ -20,8 +20,7 @@ public class EnvironmentVariablesSystemStubsTestNGUnitTest {
 
     @Test
     public void givenEnvironmentVariableWasSet_thenItCanBeRead() {
-        assertThat(System.getenv("testng"))
-          .isEqualTo("has environment variables");
+        assertThat(System.getenv("testng")).isEqualTo("has environment variables");
     }
 
 }

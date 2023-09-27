@@ -2,12 +2,14 @@ package com.baeldung.environmentvariablesfortest;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.EnabledForJreRange;
+import org.junit.jupiter.api.condition.JRE;
 
 import java.lang.reflect.Field;
 import java.util.Map;
 import static org.assertj.core.api.Assertions.assertThat;
 
-// This test can only work well in Java 15 and below
+@EnabledForJreRange(min = JRE.JAVA_8, max = JRE.JAVA_16)
 class EnvironmentVariablesSetDirectlyUnitTest {
     @BeforeAll
     static void beforeAll() throws Exception {
