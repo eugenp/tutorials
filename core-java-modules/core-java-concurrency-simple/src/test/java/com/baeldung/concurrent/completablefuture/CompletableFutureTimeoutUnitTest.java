@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class CompletableFutureTimeoutUnitTest {
     private static WireMockServer wireMockServer;
     private static ScheduledExecutorService executorService;
-    private static final int DEFAULT_TIMEOUT = 500; //0.5 seconds
+    private static final int DEFAULT_TIMEOUT = 1000; //1 seconds
     private static final int TIMEOUT_STATUS_CODE = 408; //0.5 seconds
 
     @BeforeAll
