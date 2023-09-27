@@ -1,22 +1,22 @@
 package com.baeldung.interfaces.unittest;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
 class CircleUnitTest {
 
     @Test
-    void givenCircleInstance_thenAreaIsCalculated() {
+    void whenAreaIsCalculated_thenSuccessful() {
         Shape circle = new Circle(2);
         double area = circle.area();
-        assertEquals(12.56,area);
+        assertEquals(12.56, area);
     }
 
     @Test
-    void givenCircleInstance_thenCircumferenceIsCalculated(){
+    void whenCircumferenceIsCalculated_thenSuccessful() {
         Circle circle = new Circle(2);
         double circumference = circle.circumference();
-        assertEquals(12.56,circumference);
+        assertEquals(12.56, circumference);
     }
 }

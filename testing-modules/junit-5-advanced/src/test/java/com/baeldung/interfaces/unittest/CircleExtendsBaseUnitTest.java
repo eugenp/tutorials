@@ -11,16 +11,16 @@ class CircleExtendsBaseUnitTest extends ShapeUnitTest {
 
     @Override
     public Map<String, Object> instantiateShapeWithExpectedArea() {
-        Map<String,Object> shapeAreaMap = new HashMap<>();
-        shapeAreaMap.put("shape",new Circle(2));
-        shapeAreaMap.put("area",12.56);
+        Map<String, Object> shapeAreaMap = new HashMap<>();
+        shapeAreaMap.put("shape", new Circle(2));
+        shapeAreaMap.put("area", 12.56);
         return shapeAreaMap;
     }
 
     @Test
-    void givenCircleInstance_thenCircumferenceIsCalculated(){
+    void whenCircumferenceIsCalculated_thenSuccessful() {
         Circle circle = new Circle(2);
         double circumference = circle.circumference();
-        assertEquals(12.56,circumference);
+        assertEquals(12.56, circumference);
     }
 }

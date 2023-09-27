@@ -11,16 +11,16 @@ class RectangleExtendsBaseUnitTest extends ShapeUnitTest {
 
     @Override
     public Map<String, Object> instantiateShapeWithExpectedArea() {
-        Map<String,Object> shapeAreaMap = new HashMap<>();
-        shapeAreaMap.put("shape",new Rectangle(5,4));
-        shapeAreaMap.put("area",20.0);
+        Map<String, Object> shapeAreaMap = new HashMap<>();
+        shapeAreaMap.put("shape", new Rectangle(5, 4));
+        shapeAreaMap.put("area", 20.0);
         return shapeAreaMap;
     }
 
     @Test
-    void givenRectangleInstance_thenPerimeterIsCalculated() {
-        Rectangle rectangle = new Rectangle(5,4);
+    void whenPerimeterIsCalculated_thenSuccessful() {
+        Rectangle rectangle = new Rectangle(5, 4);
         double perimeter = rectangle.perimeter();
-        assertEquals(18,perimeter);
+        assertEquals(18, perimeter);
     }
 }
