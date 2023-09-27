@@ -1,4 +1,4 @@
-package com.baeldung.list.multiple.objecttypes;
+package com.baeldung.list.multipleobjecttypes;
 
 public class CustomObject {
     String classData;
