@@ -17,11 +17,11 @@ public class BigDecimalConversionUnitTest {
         assertEquals(expected, bigDecimalValue.setScale(3, RoundingMode.HALF_UP));
     }
 
-    @Test
-    void whenConvertingBigDecimalToDouble_thenConversionIsCorrect() {
-        BigDecimal bigDecimalValue = new BigDecimal("789.123456789").setScale(9, RoundingMode.HALF_UP);
-        double doubleValue = bigDecimalValue.doubleValue();
-        double expected = new BigDecimal("789.123456789").setScale(9, RoundingMode.HALF_UP).doubleValue();
-        assertEquals(expected, doubleValue);
+    @Test 
+    void whenConvertingBigDecimalToDouble_thenConversionIsCorrect() { 
+        BigDecimal bigDecimalValue = new BigDecimal("789.123456789").setScale(9, RoundingMode.HALF_UP); 
+        double doubleValue = bigDecimalValue.doubleValue(); 
+        BigDecimal convertedBackToBigDecimal = BigDecimal.valueOf(doubleValue).setScale(9, RoundingMode.HALF_UP); 
+        assertNotEquals(bigDecimalValue, convertedBackToBigDecimal); 
     }
 }
