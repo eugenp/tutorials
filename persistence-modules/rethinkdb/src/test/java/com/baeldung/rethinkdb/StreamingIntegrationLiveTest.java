@@ -13,7 +13,7 @@ import static com.rethinkdb.RethinkDB.r;
 /**
  * Some tests demonstrating streaming live changes to data.
  */
-public class StreamingIntegrationTest extends TestBase {
+public class StreamingIntegrationLiveTest extends TestBase {
     @Test
     public void getLiveInserts() throws InterruptedException {
         ExecutorService executorService = Executors.newCachedThreadPool();

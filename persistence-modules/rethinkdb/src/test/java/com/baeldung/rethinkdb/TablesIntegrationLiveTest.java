@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 /**
  * Some tests demonstrating working with tables.
  */
-public class TablesIntegrationTest extends TestBase {
+public class TablesIntegrationLiveTest extends TestBase {
 
     @Test
     public void createTable() {

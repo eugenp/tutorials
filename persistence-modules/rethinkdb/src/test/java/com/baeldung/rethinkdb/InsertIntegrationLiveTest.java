@@ -10,7 +10,7 @@ import static com.rethinkdb.RethinkDB.r;
 /**
  * Some tests demonstrating inserting data.
  */
-public class InsertIntegrationTest extends TestBase {
+public class InsertIntegrationLiveTest extends TestBase {
     /**
      * Create a table for the tests.
      */
