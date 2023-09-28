@@ -31,10 +31,10 @@ public class AlternativeMultipeTypeList {
         // List via Functional Interface
         List<Object> dataList = new ArrayList<>();
 
-        Predicate<Object> myPricate = inputData -> (inputData instanceof String || inputData instanceof Integer);
+        Predicate<Object> myPredicate = inputData -> (inputData instanceof String || inputData instanceof Integer);
 
         UserFunctionalInterface myInterface = (listObj, data) -> {
-            if (myPricate.test(data))
+            if (myPredicate.test(data))
                 listObj.add(data);
             else
                 System.out.println("Skipping input as data not allowed for class: " + data.getClass()
