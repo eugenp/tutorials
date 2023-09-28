@@ -22,12 +22,23 @@ public class CharStreamsUnitTest {
 
     @BeforeEach
     public void createFile() throws IOException {
-
-        pwFile = new File("src/main/resources/pw_todos.txt");
+        pwFile = new File(TODO_LIST_PW_FILE);
         pwFile.createNewFile();
-
-        fwFile = new File("src/main/resources/fw_todos.txt");
+        fwFile = new File(TODO_LIST_FW_FILE);
         fwFile.createNewFile();
+
+        /*try{
+            pwFile = new File(TODO_LIST_PW_FILE);
+            pwFile.createNewFile();
+        } catch(FileNotFoundException e) {
+
+        }
+        try {
+            fwFile = new File(TODO_LIST_FW_FILE);
+            fwFile.createNewFile();
+        } catch (FileNotFoundException c) {
+
+        }*/
     }
 
     @Test
