@@ -6,7 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.messaging.rsocket.RSocketRequester;
 import org.springframework.messaging.rsocket.service.RSocketServiceProxyFactory;
+
 import com.bealdung.rsocket.requester.MessageClient;
+
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -31,9 +33,9 @@ public class RSocketApplication {
     @Bean
     public ApplicationRunner runRequestResponseModel(MessageClient client) {
         return args -> {
-            client.sendMessage(Mono.just("request response test!"))
+            client.sendMessage(Mono.just("Request-Response test "))
                 .doOnNext(message -> {
-                    System.out.println("message is :" + message);
+                    System.out.println("Response is :" + message);
                 })
                 .subscribe();
         };

@@ -2,6 +2,7 @@ package com.bealdung.rsocket.responder;
 
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.stereotype.Controller;
+
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -10,7 +11,8 @@ public class MessageController {
 
     @MessageMapping("MyDestination")
     public Mono<String> message(Mono<String> input) {
-        return input.doOnNext(msg -> System.out.println(msg));
+        return input.doOnNext(msg -> System.out.println("Request is:" + msg + ",Request!"))
+            .map(msg -> msg + ",Response!");
     }
 
     @MessageMapping("Counter")
