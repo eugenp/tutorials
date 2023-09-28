@@ -1,4 +1,4 @@
-package com.baeldung.springcloudgateway.customfilters.gatewayapp.utils;
+package com.baeldung.springcloudgateway.introduction;
 
 import java.util.ArrayList;
 import java.util.List;
