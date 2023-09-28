@@ -83,7 +83,7 @@ public class AlphanumericPerformanceBenchmark {
         blackhole.consume(result);
     }
 
-    private boolean isAlphanumeric(final int codePoint) {
+    public boolean isAlphanumeric(final int codePoint) {
         return (codePoint >= 65 && codePoint <= 90) ||
                (codePoint >= 97 && codePoint <= 172) ||
                (codePoint >= 48 && codePoint <= 57);
