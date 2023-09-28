@@ -1,13 +1,14 @@
 package com.baeldung.charstreams;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
+
 public class CharStreams {
 
     public static File writingStringToFilePrintWriter(String fileName, String content) throws FileNotFoundException{
         File fileObj = new File(fileName);
         PrintWriter printWriter = new PrintWriter(fileName);
         printWriter.print(content);
-        printWriter.flush();
         printWriter.close();
         return fileObj;
     }
@@ -16,17 +17,15 @@ public class CharStreams {
         File fileObj = new File(fileName);
         FileWriter fileWriter = new FileWriter(fileObj);
         fileWriter.write(content);
-        fileWriter.flush();
         fileWriter.close();
         return fileObj;
 
     }
 
-    public static File writingNonStringToFilePrintWriter(String fileName, DailyTodo dailyTodo) throws FileNotFoundException, UnsupportedEncodingException {
+    public static File writingNonStringToFilePrintWriter(String fileName, DailyTodo dailyTodo) throws IOException {
         File fileObj = new File(fileName);
-        PrintWriter printWriter = new PrintWriter(fileObj, "utf-8");
+        PrintWriter printWriter = new PrintWriter(fileObj, StandardCharsets.UTF_8);
         printWriter.print(dailyTodo);
-        printWriter.flush();
         printWriter.close();
         return fileObj;
 
@@ -36,16 +35,14 @@ public class CharStreams {
         File fileObj = new File(fileName);
         FileWriter fileWriter = new FileWriter(fileObj);
         fileWriter.write(dailyTodo.toString());
-        fileWriter.flush();
         fileWriter.close();
         return fileObj;
     }
 
-    public static File appendingToFilePrintWriter(String fileName, DailyTodo content) throws FileNotFoundException, UnsupportedEncodingException {
+    public static File appendingToFilePrintWriter(String fileName, DailyTodo content) throws IOException {
         File fileObj = new File(fileName);
-        PrintWriter printWriter = new PrintWriter(fileObj, "utf-8");
+        PrintWriter printWriter = new PrintWriter(fileObj, StandardCharsets.UTF_8);
         printWriter.append(content.toString());
-        printWriter.flush();
         printWriter.close();
         return fileObj;
     }
@@ -54,7 +51,6 @@ public class CharStreams {
         File fileObj = new File(fileName);
         FileWriter fileWriter = new FileWriter(fileObj, true);
         fileWriter.write(content.toString());
-        fileWriter.flush();
         fileWriter.close();
         return fileObj;
 
