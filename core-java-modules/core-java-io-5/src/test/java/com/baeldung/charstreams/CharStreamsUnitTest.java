@@ -24,11 +24,9 @@ public class CharStreamsUnitTest {
     public void createFile() throws IOException {
 
         pwFile = new File("src/main/resources/pw_todos.txt");
-        pwFile.mkdirs();
         pwFile.createNewFile();
 
         fwFile = new File("src/main/resources/fw_todos.txt");
-        fwFile.mkdirs();
         fwFile.createNewFile();
     }
 
