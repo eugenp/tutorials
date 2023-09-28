@@ -7,138 +7,71 @@ import java.nio.file.*;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 
-
-import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.*;
 
 public class CharStreamsUnitTest {
-    public String todoListPwFile = "src/main/resources/pw_todos.txt";
-    public String todoListFwFile = "src/main/resources/fw_todos.txt";
 
-    DailyTodo todo = new DailyTodo("Code", LocalDateTime.now(), true);
-    DailyTodo todo1 = new DailyTodo("Sleep", LocalDateTime.now(), false);
-    DailyTodo todo2 = new DailyTodo("Read", LocalDateTime.now(), false);
+    private static final DailyTodo TODO = new DailyTodo("Code", LocalDateTime.now(), true);
+    private static final DailyTodo TODO_1 = new DailyTodo("Sleep", LocalDateTime.now(), false);
+    private static final DailyTodo TODO_2 = new DailyTodo("Read", LocalDateTime.now(), false);
+    public String TODO_LIST_PW_FILE = "src/main/resources/pw_todos.txt";
+    public String TODO_LIST_FW_FILE = "src/main/resources/fw_todos.txt";
+    private static File pwFile;
+    private static File fwFile;
 
+    @BeforeEach
+    public void createFile() throws IOException {
+
+        pwFile = new File("src/main/resources/pw_todos.txt");
+        pwFile.mkdirs();
+        pwFile.createNewFile();
+
+        fwFile = new File("src/main/resources/fw_todos.txt");
+        fwFile.mkdirs();
+        fwFile.createNewFile();
+    }
 
     @Test
-    public void whenUsingCharStreams_thenWriteToFile() throws IOException {
-        //PrintWriter
-        File pw_file = new File(todoListPwFile);
-        try {
-            pw_file.mkdirs();
-            pw_file.createNewFile();
-        } catch (IOException e1) {
-            e1.printStackTrace();
-        }
-        try {
-            pw_file = CharStreams.writingStringToFilePrintWriter(todoListPwFile , todo.toString());
-            assertTrue(pw_file.exists());
-            assertEquals(todo.toString(), FileUtils.readFileToString(pw_file, "utf-8"));
+    public void whenUsingTextData_thenPrintWriterWritesToFile() throws IOException {
+        pwFile = CharStreams.writingStringToFilePrintWriter(TODO_LIST_PW_FILE , TODO.toString());
+        assertThat(pwFile).hasContent(TODO.toString());
+    }
 
-            Files.deleteIfExists(Paths.get(todoListPwFile));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        //FileWriter
-        File fw_file = new File(todoListFwFile);
-        try {
-            fw_file.mkdirs();
-            fw_file.createNewFile();
-        } catch (IOException e1) {
-            e1.printStackTrace();
-        }
-        try {
-            fw_file = CharStreams.writingStringToFileFileWriter(todoListFwFile, todo.toString());
-            assertTrue(fw_file.exists());
-            assertEquals(todo.toString(), FileUtils.readFileToString(fw_file, "utf-8"));
-
-            Files.deleteIfExists(Paths.get(todoListFwFile));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
+    @Test
+    public void whenUsingTextData_thenFileWriterWritesToFile() throws IOException {
+        fwFile = CharStreams.writingStringToFileFileWriter(TODO_LIST_FW_FILE, TODO.toString());
+        assertThat(fwFile).hasContent(TODO.toString());
     }
 
     @Test
     public void whenUsingFormattedData_thenPrintWriterWritesToFile() throws IOException {
-        File pw = new File(todoListPwFile);
-        try {
-            pw.mkdirs();
-            pw.createNewFile();
-        } catch (IOException e1) {
-            e1.printStackTrace();
-        }
-        try {
-            pw = CharStreams.writingNonStringToFilePrintWriter(todoListPwFile, todo1);
-            assertTrue(pw.exists());
-            assertEquals(todo1.toString(), FileUtils.readFileToString(pw, "utf-8"));
-
-            Files.deleteIfExists(Paths.get(todoListPwFile));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-
+        pwFile = CharStreams.writingNonStringToFilePrintWriter(TODO_LIST_PW_FILE, TODO_1);
+        assertThat(pwFile).hasContent(TODO_1.toString());
     }
+
     @Test
     public void whenUsingFormattedData_thenFileWriterWritesToFile() throws IOException {
-        File fw = new File(todoListFwFile);
-        try {
-            fw.mkdirs();
-            fw.createNewFile();
-        } catch (IOException e1) {
-            e1.printStackTrace();
-        }
-        try {
-            CharStreams.writingNonStringToFileFileWriter(todoListFwFile, todo1);
-            assertTrue(fw.exists());
-            assertEquals(todo1.toString(), FileUtils.readFileToString(fw, "utf-8"));
+        fwFile = CharStreams.writingNonStringToFileFileWriter(TODO_LIST_FW_FILE, TODO_1);
+        assertThat(fwFile).hasContent(TODO_1.toString());
+    }
 
-            Files.deleteIfExists(Paths.get(todoListFwFile));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+    @Test
+    public void whenWritingToExixtingFile_thenPrintWriterAppendsToFile() throws IOException {
+        pwFile = CharStreams.appendingToFilePrintWriter(TODO_LIST_PW_FILE, TODO_2);
+        assertThat(pwFile).hasContent(TODO_2.toString());
 
     }
 
     @Test
-    public void whenUsingCharStreams_thenAppendsToFile() throws IOException {
-        //PrintWriter
-        File pw_append = new File(todoListPwFile);
-        try {
-            pw_append.mkdirs();
-            pw_append.createNewFile();
-        } catch (IOException e1) {
-            e1.printStackTrace();
-        }
-        try {
-            pw_append = CharStreams.appendingToFilePrintWriter(todoListPwFile, todo2);
-            assertTrue(pw_append.exists());
-            assertEquals(todo2.toString(), FileUtils.readFileToString(pw_append, "utf-8"));
+    public void whenWritingToExixtingFile_thenFileWriterAppendsToFile() throws IOException {
+        fwFile = CharStreams.appendingToFileFileWriter(TODO_LIST_FW_FILE, TODO_2);
+        assertThat(fwFile).hasContent(TODO_2.toString());
+    }
 
-            Files.deleteIfExists(Paths.get(todoListPwFile));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        //FileWriter
-        File fw_append = new File(todoListFwFile);
-        try {
-            fw_append.mkdirs();
-            fw_append.createNewFile();
-        } catch (IOException e1) {
-            e1.printStackTrace();
-        }
-        try {
-            fw_append = CharStreams.appendingToFileFileWriter(todoListFwFile, todo2);
-            assertTrue(fw_append.exists());
-            assertEquals(todo2.toString(), FileUtils.readFileToString(fw_append, "utf-8"));
-
-            Files.deleteIfExists(Paths.get(todoListFwFile));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
+    @AfterEach
+    public void clean() throws IOException {
+        Files.deleteIfExists(Paths.get(TODO_LIST_PW_FILE));
+        Files.deleteIfExists(Paths.get(TODO_LIST_FW_FILE));
     }
 
 }
