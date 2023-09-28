@@ -14,7 +14,7 @@ import org.openjdk.jmh.infra.Blackhole;
 @Warmup(iterations = 1)
 @Measurement(iterations = 1, time = 1, timeUnit = TimeUnit.MINUTES)
 @Fork(1)
-public class AlphanumericPerformanceTest {
+public class AlphanumericPerformanceBenchmark {
 
     private static final String TEST_STRING = "ABC123abc123";
     private static final String REGEX = "[^[a-zA-Z0-9]*$]";
