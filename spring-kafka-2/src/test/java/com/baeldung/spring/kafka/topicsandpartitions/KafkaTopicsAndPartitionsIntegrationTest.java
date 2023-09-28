@@ -10,11 +10,10 @@ import org.springframework.kafka.test.context.EmbeddedKafka;
 import java.util.concurrent.TimeUnit;
 
 @SpringBootTest(classes = ThermostatApplicationKafkaApp.class)
-@EmbeddedKafka(partitions = 2, brokerProperties = {"listeners=PLAINTEXT://localhost:9092", "port=9092"})
+@EmbeddedKafka(partitions = 2, controlledShutdown = true,ports = 9094,brokerProperties = {"listeners=PLAINTEXT://localhost:9094"})
 public class KafkaTopicsAndPartitionsIntegrationTest {
     @ClassRule
     public static EmbeddedKafkaBroker embeddedKafka = new EmbeddedKafkaBroker(1, true, "multitype");
-
     @Autowired
     private ThermostatService service;
 

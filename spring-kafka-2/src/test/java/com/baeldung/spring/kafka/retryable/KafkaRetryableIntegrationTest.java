@@ -22,11 +22,10 @@ import com.baeldung.spring.kafka.retryable.RetryableApplicationKafkaApp;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @SpringBootTest(classes = RetryableApplicationKafkaApp.class)
-@EmbeddedKafka(partitions = 1, brokerProperties = { "listeners=PLAINTEXT://localhost:9092", "port=9092" })
+@EmbeddedKafka(partitions = 1, controlledShutdown = true, ports = 9093, brokerProperties = { "listeners=PLAINTEXT://localhost:9093"})
 public class KafkaRetryableIntegrationTest {
     @ClassRule
     public static EmbeddedKafkaBroker embeddedKafka = new EmbeddedKafkaBroker(1, true, "multitype");
-
     @Autowired
     private KafkaListenerEndpointRegistry registry;
 
@@ -39,10 +38,10 @@ public class KafkaRetryableIntegrationTest {
 
     private static final String TOPIC = "topic";
 
-    @Before
+    /*@Before
     public void setup() {
         System.setProperty("spring.kafka.bootstrap-servers", embeddedKafka.getBrokersAsString());
-    }
+    }*/
 
     @Test
     public void givenEmbeddedKafkaBroker_whenSendingAWellFormedMessage_thenMessageIsConsumed() throws Exception {

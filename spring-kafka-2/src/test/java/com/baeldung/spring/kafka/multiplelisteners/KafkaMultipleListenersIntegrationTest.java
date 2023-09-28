@@ -19,7 +19,7 @@ import org.springframework.kafka.listener.ConcurrentMessageListenerContainer;
 import org.springframework.kafka.test.context.EmbeddedKafka;
 
 @SpringBootTest(classes = MultipleListenersApplicationKafkaApp.class)
-@EmbeddedKafka(partitions = 1, brokerProperties = { "listeners=PLAINTEXT://localhost:9092", "port=9092" })
+@EmbeddedKafka(partitions = 1,controlledShutdown = true, ports = 9092, brokerProperties = { "listeners=PLAINTEXT://localhost:9092"})
 class KafkaMultipleListenersIntegrationTest {
 
     @Autowired
@@ -43,6 +43,7 @@ class KafkaMultipleListenersIntegrationTest {
             listener.stop();
             listener.getContainerProperties()
               .setMessageListener((AcknowledgingConsumerAwareMessageListener<String, BookEvent>) (data, acknowledgment, consumer) -> {
+                  System.out.println(bookEvent);
                   assertThat(data.value()).isEqualTo(bookEvent);
                   latch.countDown();
               });
