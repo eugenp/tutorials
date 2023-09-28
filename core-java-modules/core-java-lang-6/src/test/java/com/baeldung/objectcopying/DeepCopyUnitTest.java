@@ -11,7 +11,7 @@ public class DeepCopyUnitTest {
 
     @Test
     public void givenDeepCopy_whenInsertingIntoOriginalList_thenNewListIsNotMutated() {
-        // Given a bookshelf and a shallow copy of the bookshelf
+        // Given a bookshelf and a deep copy of the bookshelf
         var alice = new DeepCopy.Book("Alice in Wonderland", "Lewis Carroll");
         var journey = new DeepCopy.Book("Journey to the Center of the Earth", "Jules Verne");
         var books = new ArrayList<DeepCopy.Book>();
@@ -25,7 +25,7 @@ public class DeepCopyUnitTest {
         shelfOne.getBooks()
             .add(wuthering);
 
-        // Then the first list is updated since the second list of books is a shallow copy
+        // Then the second list is not updated since the second list of books is a deep copy
         assertThat(shelfOne.getBooks()
             .size()).isEqualTo(3);
         assertThat(shelfTwo.getBooks()
@@ -34,7 +34,7 @@ public class DeepCopyUnitTest {
 
     @Test
     public void givenDeepCopy_whenMutatingListItem_thenOriginalListItemIsNotMutated() {
-        // Given a bookshelf and a shallow copy of the bookshelf
+        // Given a bookshelf and a deep copy of the bookshelf
         var alice = new DeepCopy.Book("Alice in Wonderland", "Lewis Carroll");
         var journey = new DeepCopy.Book("Journey to the Center of the Earth", "Jules Verne");
         var shelfOne = new DeepCopy.Bookshelf(5, List.of(alice, journey));
@@ -45,7 +45,7 @@ public class DeepCopyUnitTest {
             .get(0)
             .setTitle("Alicia in Wonderland");
 
-        // Then the first list's book is updated since the second list of books is a shallow copy
+        // Then the first list's book is not updated since the second list of books is a deep copy
         assertThat(shelfOne.getBooks()
             .get(0)
             .getTitle()).isEqualTo("Alice in Wonderland");
