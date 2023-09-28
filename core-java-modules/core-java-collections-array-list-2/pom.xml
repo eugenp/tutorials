@@ -22,6 +22,7 @@
 			</plugin>
 		</plugins>
 	</build>
+    
 	<properties>
 		<maven-compiler-plugin.source>17</maven-compiler-plugin.source>
 		<maven-compiler-plugin.target>17</maven-compiler-plugin.target>
