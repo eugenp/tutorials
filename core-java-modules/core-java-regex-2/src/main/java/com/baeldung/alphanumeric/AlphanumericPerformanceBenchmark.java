@@ -41,7 +41,7 @@ public class AlphanumericPerformanceBenchmark {
         boolean result = true;
         for (int i = 0; i < TEST_STRING.length(); ++i) {
             final int codePoint = TEST_STRING.codePointAt(i);
-            if (isAlphanumeric(codePoint)) {
+            if (!isAlphanumeric(codePoint)) {
                 result = false;
                 break;
             }
@@ -55,7 +55,7 @@ public class AlphanumericPerformanceBenchmark {
         boolean result = true;
         for (int i = 0; i < TEST_STRING.length(); ++i) {
             final int codePoint = TEST_STRING.codePointAt(i);
-            if (!Character.isAlphabetic(codePoint) || Character.isDigit(codePoint)) {
+            if (!Character.isAlphabetic(codePoint) || !Character.isDigit(codePoint)) {
                 result = false;
                 break;
             }
@@ -68,7 +68,7 @@ public class AlphanumericPerformanceBenchmark {
     public void alphanumericIterationWithCopy(Blackhole blackhole) {
         boolean result = true;
         for (final char c : TEST_STRING.toCharArray()) {
-            if (isAlphanumeric(c)) {
+            if (!isAlphanumeric(c)) {
                 result = false;
                 break;
             }
