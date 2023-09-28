@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class FileProcessor implements Processor {
 
+    @Override
     public void process(Exchange exchange) throws Exception {
         String originalFileName = (String) exchange.getIn().getHeader(Exchange.FILE_NAME, String.class);
 
