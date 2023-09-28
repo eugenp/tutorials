@@ -40,7 +40,7 @@ import reactor.test.StepVerifier;
 @EnableConfigurationProperties
 @ExtendWith(SpringExtension.class)
 @ActiveProfiles("test")
-@ContextConfiguration(classes = { RibbonTestConfig.class })
+@ContextConfiguration(classes = { TestConfig.class })
 class LoadBalancerIntegrationTest {
 
     @Autowired

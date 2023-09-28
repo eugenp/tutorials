@@ -37,11 +37,11 @@ import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
 @SpringBootTest
-@ActiveProfiles("ribbon-test")
+@ActiveProfiles("test")
 @EnableConfigurationProperties
 @EnableFeignClients
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = { RibbonTestConfig.class })
+@ContextConfiguration(classes = { TestConfig.class })
 class LoadBalancerBooksClientIntegrationTest {
 
     @Autowired

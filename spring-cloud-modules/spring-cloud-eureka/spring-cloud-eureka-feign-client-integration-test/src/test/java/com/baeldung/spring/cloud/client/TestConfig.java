@@ -9,8 +9,8 @@ import org.springframework.test.context.ActiveProfiles;
 import com.github.tomakehurst.wiremock.WireMockServer;
 
 @TestConfiguration
-@ActiveProfiles("ribbon-test")
-public class RibbonTestConfig {
+@ActiveProfiles("test")
+public class TestConfig {
 
     @Bean(initMethod = "start", destroyMethod = "stop")
     public WireMockServer mockBooksService() {
