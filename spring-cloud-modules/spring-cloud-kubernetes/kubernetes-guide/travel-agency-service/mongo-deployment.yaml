@@ -14,22 +14,24 @@ spec:
   selector:
     service: mongo
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mongo
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      name: mongodb-service
   template:
     metadata:
       labels:
         service: mongo
-      name: mongodb-service
+        name: mongodb-service
     spec:
       containers:
       - args:
         - mongod
-        - --smallfiles
         image: mongo:latest
         name: mongo
         env:
