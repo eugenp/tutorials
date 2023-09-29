@@ -1,4 +1,4 @@
-package com.baeldung.alphabetgeneration;
+package com.baeldung.incrementchar;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-class GenerationOfCharactersUsingForVariousWaysUnitTest {
+class IncrementCharUnitTest {
     @Test
     void whenUsingForLoop_thenGenerateCharacters(){
         final List<Character> allCapitalCharacters = Arrays.asList('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z');
