@@ -6,8 +6,6 @@ import org.slf4j.LoggerFactory;
 import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
 
 @ServerEndpoint("/event-emitter")
 public class WebSocketController {
