@@ -8,7 +8,7 @@ import java.util.Collection;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
-public class ParametrizedUnitTest {
+public class ParameterizedUnitTest {
 
     @ParameterizedTest
     @MethodSource("data")
