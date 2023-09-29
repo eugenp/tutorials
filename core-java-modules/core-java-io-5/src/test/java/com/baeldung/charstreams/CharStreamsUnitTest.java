@@ -15,8 +15,8 @@ public class CharStreamsUnitTest {
     private static final DailyTodo TODO = new DailyTodo("Code", LocalDateTime.now(), true);
     private static final DailyTodo TODO_1 = new DailyTodo("Sleep", LocalDateTime.now(), false);
     private static final DailyTodo TODO_2 = new DailyTodo("Read", LocalDateTime.now(), false);
-    public String TODO_LIST_PW_FILE = "src/main/resources/pw_todos.txt";
-    public String TODO_LIST_FW_FILE = "src/main/resources/fw_todos.txt";
+    public static final String TODO_LIST_PW_FILE = "src/main/resources/pw_todos.txt";
+    public static final String TODO_LIST_FW_FILE = "src/main/resources/fw_todos.txt";
     private static File pwFile;
     private static File fwFile;
 
@@ -26,16 +26,13 @@ public class CharStreamsUnitTest {
             pwFile = new File(TODO_LIST_PW_FILE);
             pwFile.mkdirs()
             pwFile.createNewFile();
-        } catch(FileNotFoundException e) {
-
-        }
-        try {
             fwFile = new File(TODO_LIST_FW_FILE);
             fwFile.mkdirs()
             fwFile.createNewFile();
-        } catch (FileNotFoundException c) {
+        } catch(FileNotFoundException e) {
 
         }
+        
     }
 
     @Test
