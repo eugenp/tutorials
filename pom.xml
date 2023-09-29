@@ -694,6 +694,7 @@
             </build>
 
             <modules>
+                <module>core-java-modules/core-java-12</module>
                 <module>lombok-modules</module>
                 <module>osgi</module>
                 <module>spring-katharsis</module>
@@ -765,7 +766,7 @@
 
                 <module>core-java-modules</module>
                 <!-- <module>core-java-modules/core-java-9-new-features</module> --> <!-- uses preview features, to be decided how to handle -->
-                 <module>core-java-modules/core-java-12</module>
+
                 <!-- <module>core-java-modules/core-java-13</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-14</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-15</module> --> <!-- uses preview features, to be decided how to handle -->
