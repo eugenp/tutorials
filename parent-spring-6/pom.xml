@@ -32,20 +32,10 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-dependencies</artifactId>
-            <version>${spring-boot.version}</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
-
     </dependencies>
 
     <properties>
-        <spring.version>6.0.0</spring.version>
-        <spring-boot.version>3.1.3</spring-boot.version>
+        <spring.version>6.0.10</spring.version>
     </properties>
 
 </project>
