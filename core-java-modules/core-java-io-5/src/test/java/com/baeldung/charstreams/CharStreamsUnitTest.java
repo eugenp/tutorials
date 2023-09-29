@@ -12,11 +12,11 @@ import org.junit.jupiter.api.*;
 
 public class CharStreamsUnitTest {
 
-    private static final DailyTodo TODO = new DailyTodo("Code", LocalDateTime.now(), true);
-    private static final DailyTodo TODO_1 = new DailyTodo("Sleep", LocalDateTime.now(), false);
-    private static final DailyTodo TODO_2 = new DailyTodo("Read", LocalDateTime.now(), false);
-    public static final String TODO_LIST_PW_FILE = "src/main/resources/pw_todos.txt";
-    public static final String TODO_LIST_FW_FILE = "src/main/resources/fw_todos.txt";
+    private static DailyTodo TODO = new DailyTodo("Code", LocalDateTime.now(), true);
+    private static DailyTodo TODO_1 = new DailyTodo("Sleep", LocalDateTime.now(), false);
+    private static DailyTodo TODO_2 = new DailyTodo("Read", LocalDateTime.now(), false);
+    public static String TODO_LIST_PW_FILE = "src/main/resources/pw_todos.txt";
+    public static String TODO_LIST_FW_FILE = "src/main/resources/fw_todos.txt";
     private static File pwFile;
     private static File fwFile;
 
