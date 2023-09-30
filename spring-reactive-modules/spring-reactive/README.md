@@ -1,4 +1,3 @@
-### Spring Reactive Articles that are also part of the e-book
 
 This module contains articles about Spring Reactive that are also part of an Ebook.
 
@@ -15,7 +14,6 @@ This module contains articles describing reactive processing in Spring.
 - [Spring 5 WebClient](https://www.baeldung.com/spring-5-webclient)
 - [Spring WebClient vs. RestTemplate](https://www.baeldung.com/spring-webclient-resttemplate)
 - [Spring WebClient Requests with Parameters](https://www.baeldung.com/webflux-webclient-parameters)
-- [Handling Errors in Spring WebFlux](https://www.baeldung.com/spring-webflux-errors)
 - [Spring Security 5 for Reactive Applications](https://www.baeldung.com/spring-security-5-reactive)
 - [Concurrency in Spring WebFlux](https://www.baeldung.com/spring-webflux-concurrency)
 
