@@ -32,7 +32,7 @@ import static org.springframework.test.util.AssertionErrors.assertNotNull;
 public class FruitListJacksonUnmarshalUnitTest {
 
     @Autowired
-    ProducerTemplate template;
+    private ProducerTemplate template;
 
     @EndpointInject("mock:marshalledObject")
     private MockEndpoint mock;
@@ -44,8 +44,8 @@ public class FruitListJacksonUnmarshalUnitTest {
             return new RouteBuilder() {
                 @Override
                 public void configure() throws Exception {
-                from("direct:jsonInput").unmarshal(new JacksonDataFormat(FruitList.class))
-                  .to("mock:marshalledObject");
+                    from("direct:jsonInput").unmarshal(new JacksonDataFormat(FruitList.class))
+                      .to("mock:marshalledObject");
                 }
             };
         }
