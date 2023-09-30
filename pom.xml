@@ -723,9 +723,12 @@
                 <module>spring-boot-rest</module>
                 <module>spring-drools</module>
                 <module>spring-cloud-modules/spring-cloud-azure</module>
+                <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
                 <module>spring-cloud-modules/spring-cloud-contract</module>
                 <module>spring-cloud-modules/spring-cloud-data-flow</module>
-                <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
+                <module>spring-cloud-modules/spring-cloud-netflix-feign</module>
+                <module>spring-cloud-modules/spring-cloud-stream-starters</module>
+                <module>spring-cloud-modules/spring-cloud-zuul-eureka-integration</module>
                 <module>spring-exceptions</module>
                 <module>spring-jenkins-pipeline</module>
                 <module>spring-core</module>
@@ -1001,6 +1004,10 @@
                 <module>spring-drools</module>
                 <module>spring-cloud-modules/spring-cloud-azure</module>
                 <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
+                <module>spring-cloud-modules/spring-cloud-contract</module>
+                <module>spring-cloud-modules/spring-cloud-netflix-feign</module>
+                <module>spring-cloud-modules/spring-cloud-stream-starters</module>
+                <module>spring-cloud-modules/spring-cloud-zuul-eureka-integration</module>
                 <module>spring-exceptions</module>
                 <module>spring-jenkins-pipeline</module>
                 <module>spring-core</module>
@@ -1213,7 +1220,6 @@
                 <module>gradle-modules/gradle/maven-to-gradle</module>
                 <module>persistence-modules/spring-data-neo4j</module>
                 <module>spring-actuator</module>
-                <module>spring-cloud-modules/spring-cloud-contract</module>
             </modules>
 
             <properties>
