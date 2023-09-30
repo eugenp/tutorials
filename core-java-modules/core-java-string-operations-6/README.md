@@ -10,3 +10,5 @@
 - [Check if a String Contains Non-Alphanumeric Characters](https://www.baeldung.com/java-string-test-special-characters)
 - [Check if a String Has All Unique Characters in Java](https://www.baeldung.com/java-check-string-all-unique-chars)
 - [Performance Comparison Between Different Java String Concatenation Methods](https://www.baeldung.com/java-string-concatenation-methods)
+- [Replacing Single Quote with \’ in Java String](https://www.baeldung.com/java-replacing-single-quote-string)
+
