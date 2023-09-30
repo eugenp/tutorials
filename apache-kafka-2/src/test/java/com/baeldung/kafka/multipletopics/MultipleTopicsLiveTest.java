@@ -47,6 +47,11 @@ public class MultipleTopicsLiveTest {
         consumer = new KafkaConsumer<>(getConsumerProperties());
     }
 
+    @AfterAll
+    static void destroy() {
+        KAFKA_CONTAINER.stop();
+    }
+
     private static Properties getProducerProperties() {
         Properties producerProperties = new Properties();
         producerProperties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, KAFKA_CONTAINER.getBootstrapServers());
@@ -65,29 +70,6 @@ public class MultipleTopicsLiveTest {
         return consumerProperties;
     }
 
-    private static void publishMessages() throws ExecutionException, InterruptedException {
-        ProducerRecord<String, String> cardPayment = new ProducerRecord<>(CARD_PAYMENTS_TOPIC, createCardPayment());
-        producer.send(cardPayment)
-            .get();
-
-        ProducerRecord<String, String> bankTransfer = new ProducerRecord<>(BANK_TRANSFERS_TOPIC, createBankTransfer());
-        producer.send(bankTransfer)
-            .get();
-    }
-
-    private static String createCardPayment() {
-        return "{\"paymentReference\":\"A184028KM0013790\", \"type\":\"card\", \"amount\":\"275\", \"currency\":\"GBP\"}";
-    }
-
-    private static String createBankTransfer() {
-        return "{\"paymentReference\":\"19ae2-18mk73-009\", \"type\":\"bank\", \"amount\":\"150\", \"currency\":\"EUR\"}";
-    }
-
-    @AfterAll
-    static void destroy() {
-        KAFKA_CONTAINER.stop();
-    }
-
     @Test
     void whenSendingMessagesOnTwoTopics_thenConsumerReceivesMessages() throws Exception {
         publishMessages();
@@ -101,5 +83,21 @@ public class MultipleTopicsLiveTest {
         }
 
         assertThat(eventsProcessed).isEqualTo(2);
+    }
+
+    private void publishMessages() throws ExecutionException, InterruptedException {
+        ProducerRecord<String, String> cardPayment = new ProducerRecord<>(CARD_PAYMENTS_TOPIC, createCardPayment());
+        producer.send(cardPayment).get();
+
+        ProducerRecord<String, String> bankTransfer = new ProducerRecord<>(BANK_TRANSFERS_TOPIC, createBankTransfer());
+        producer.send(bankTransfer).get();
+    }
+
+    private String createCardPayment() {
+        return "{\"paymentReference\":\"A184028KM0013790\", \"type\":\"card\", \"amount\":\"275\", \"currency\":\"GBP\"}";
+    }
+
+    private String createBankTransfer() {
+        return "{\"paymentReference\":\"19ae2-18mk73-009\", \"type\":\"bank\", \"amount\":\"150\", \"currency\":\"EUR\"}";
     }
 }
