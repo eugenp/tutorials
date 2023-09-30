@@ -12,7 +12,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class PartitionStreamsUnitTest {
@@ -24,11 +23,11 @@ public class PartitionStreamsUnitTest {
         Stream<List<Integer>> result = partitionList(source, 3);
 
         assertThat(result)
-            .containsExactlyInAnyOrder(
-              List.of(1, 2, 3),
-              List.of(4, 5, 6),
-              List.of(7, 8)
-            );
+          .containsExactlyInAnyOrder(
+            List.of(1, 2, 3),
+            List.of(4, 5, 6),
+            List.of(7, 8)
+          );
     }
 
     @Test
@@ -41,8 +40,8 @@ public class PartitionStreamsUnitTest {
     @Test
     void whenPartitionListWithNegativeBatchSize_thenThrowException() {
         assertThatThrownBy(() -> partitionList(List.of(1,2,3), -1))
-            .isInstanceOf(IllegalArgumentException.class)
-            .hasMessage("Expected the batchSize to be greater than ZERO, actual value was: -1");
+          .isInstanceOf(IllegalArgumentException.class)
+          .hasMessage("Expected the batchSize to be greater than ZERO, actual value was: -1");
     }
 
     @Test
@@ -52,10 +51,10 @@ public class PartitionStreamsUnitTest {
         List<List<Integer>> result = partitionStream(source, 3);
 
         assertThat(result)
-            .hasSize(3)
-            .satisfies(batch -> assertThat(batch).hasSize(3), atIndex(0))
-            .satisfies(batch -> assertThat(batch).hasSize(3), atIndex(1))
-            .satisfies(batch -> assertThat(batch).hasSize(2), atIndex(2));
+          .hasSize(3)
+          .satisfies(batch -> assertThat(batch).hasSize(3), atIndex(0))
+          .satisfies(batch -> assertThat(batch).hasSize(3), atIndex(1))
+          .satisfies(batch -> assertThat(batch).hasSize(2), atIndex(2));
     }
 
     @Test
@@ -74,10 +73,10 @@ public class PartitionStreamsUnitTest {
         Iterable<List<Integer>> result = partitionUsingGuava(source, 3);
 
         assertThat(result)
-            .map(ArrayList::new)
-            .hasSize(3)
-            .satisfies(batch -> assertThat(batch).asList().hasSize(3), atIndex(0))
-            .satisfies(batch -> assertThat(batch).asList().hasSize(3), atIndex(1))
-            .satisfies(batch -> assertThat(batch).asList().hasSize(2), atIndex(2));
+          .map(ArrayList::new)
+          .hasSize(3)
+          .satisfies(batch -> assertThat(batch).asList().hasSize(3), atIndex(0))
+          .satisfies(batch -> assertThat(batch).asList().hasSize(3), atIndex(1))
+          .satisfies(batch -> assertThat(batch).asList().hasSize(2), atIndex(2));
     }
 }

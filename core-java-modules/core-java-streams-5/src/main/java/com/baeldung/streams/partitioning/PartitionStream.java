@@ -24,11 +24,11 @@ public class PartitionStream {
         }
         int nrOfFullBatches = (source.size() - 1) / batchSize;
         return IntStream.rangeClosed(0, nrOfFullBatches)
-            .mapToObj(batch -> {
-                int startIndex = batch * batchSize;
-                int endIndex = (batch == nrOfFullBatches) ? source.size() : (batch + 1) * batchSize;
-                return source.subList(startIndex, endIndex);
-            });
+          .mapToObj(batch -> {
+              int startIndex = batch * batchSize;
+              int endIndex = (batch == nrOfFullBatches) ? source.size() : (batch + 1) * batchSize;
+              return source.subList(startIndex, endIndex);
+          });
     }
 
     public static <T> Iterable<List<T>> partitionUsingGuava(Stream<T> source, int batchSize) {
