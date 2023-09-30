@@ -50,7 +50,7 @@ public class KafkaMultipleTopicsIntegrationTest {
             countDownLatch.countDown();
             return null;
         }).when(paymentsConsumer)
-            .handlePaymentEvents(any(), any());
+          .handlePaymentEvents(any(), any());
 
         kafkaProducer.send(CARD_PAYMENTS_TOPIC, createCardPayment());
         kafkaProducer.send(BANK_TRANSFERS_TOPIC, createBankTransfer());
@@ -58,7 +58,7 @@ public class KafkaMultipleTopicsIntegrationTest {
         assertThat(countDownLatch.await(5, TimeUnit.SECONDS)).isTrue();
     }
 
-    private static PaymentData createCardPayment() {
+    private PaymentData createCardPayment() {
         PaymentData cardPayment = new PaymentData();
         cardPayment.setAmount(BigDecimal.valueOf(275));
         cardPayment.setPaymentReference("A184028KM0013790");
@@ -67,7 +67,7 @@ public class KafkaMultipleTopicsIntegrationTest {
         return cardPayment;
     }
 
-    private static PaymentData createBankTransfer() {
+    private PaymentData createBankTransfer() {
         PaymentData bankTransfer = new PaymentData();
         bankTransfer.setAmount(BigDecimal.valueOf(150));
         bankTransfer.setPaymentReference("19ae2-18mk73-009");

@@ -44,10 +44,11 @@ public class PaymentData {
 
     @Override
     public String toString() {
-        return new StringJoiner(", ", PaymentData.class.getSimpleName() + "[", "]").add("paymentReference='" + paymentReference + "'")
-            .add("type='" + type + "'")
-            .add("amount=" + amount)
-            .add("currency=" + currency)
-            .toString();
+        return new StringJoiner(", ", PaymentData.class.getSimpleName() + "[", "]")
+          .add("paymentReference='" + paymentReference + "'")
+          .add("type='" + type + "'")
+          .add("amount=" + amount)
+          .add("currency=" + currency)
+          .toString();
     }
 }
