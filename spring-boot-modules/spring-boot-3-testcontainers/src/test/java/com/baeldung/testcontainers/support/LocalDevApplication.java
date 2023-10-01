@@ -7,6 +7,7 @@ import org.springframework.boot.testcontainers.service.connection.ServiceConnect
 import org.springframework.context.annotation.Bean;
 import org.testcontainers.containers.MongoDBContainer;
 import org.testcontainers.utility.DockerImageName;
+import com.baeldung.testcontainers.Application;
 
 
 // Testcontainers require a valid docker installation.
