@@ -16,45 +16,44 @@ class FloatToBigDecimalUnitTest {
     }
 
     @Test
-    public void whenCreatedFromCertainFloatValues_thenMatches() {
-        float floatToConvert = 0.5f;
-        BigDecimal bdFromFloat = new BigDecimal(floatToConvert);
-        assertEquals("0.5", bdFromFloat.toString());
-    }
-
-    @Test
-    public void whenCreatedFromCertainFloatValues_thenDoesNotMatch() {
+    public void whenCreatedFromFloat_thenMatchesInternallyStoredValue() {
         float floatToConvert = 1.1f;
         BigDecimal bdFromFloat = new BigDecimal(floatToConvert);
         assertEquals("1.10000002384185791015625", bdFromFloat.toString());
     }
 
     @Test
-    public void whenCreatedFromString_thenMatches() {
-        String floatValue = Float.toString(1.1f);
-        BigDecimal bdFromString = new BigDecimal(floatValue);
+    public void whenCreatedFromString_thenPreservesTheOriginal() {
+        BigDecimal bdFromString = new BigDecimal("1.1");
         assertEquals("1.1", bdFromString.toString());
     }
 
     @Test
-    public void whenCreatedByValueOfAndIsFloat_thenDoesNotMatch() {
-        float floatToConvert = 1.1f;
-        BigDecimal bdByValueOf = BigDecimal.valueOf(floatToConvert);
-        assertEquals("1.100000023841858", bdByValueOf.toString());
+    public void whenCreatedFromFloatConvertedToString_thenFloatInternalValueGetsTruncated() {
+        String floatValue = Float.toString(1.1f);
+        BigDecimal bdFromString = new BigDecimal(floatValue);
+        assertEquals("1.1", floatValue);
+        assertEquals("1.1", bdFromString.toString());
     }
 
     @Test
-    public void whenFloatCastToDouble_thenGotADifferentNumber() {
-        float floatToConvert = 1.1f;
-        double doubleCast = floatToConvert;
-        assertEquals("1.100000023841858", Double.toString(doubleCast));
+    public void whenFloatConvertedToString_thenGetsTruncated() {
+        String floatValue = Float.toString(1.10000002384185791015625f);
+        assertEquals("1.1", floatValue);
     }
 
     @Test
-    public void whenCreatedByValueOfAndIsDouble_thenMatches() {
-        double doubleToConvert = 1.1d;
-        BigDecimal bdByValueOf = BigDecimal.valueOf(doubleToConvert);
-        assertEquals("1.1", bdByValueOf.toString());
+    public void whenCreatedByValueOf_thenFloatValueGetsTruncated() {
+        assertEquals("1.100000023841858", BigDecimal.valueOf(1.1f)
+            .toString());
+        assertEquals("1.100000023841858", BigDecimal.valueOf(1.10000002384185791015625f)
+            .toString());
+    }
+
+    @Test
+    public void whenDoubleConvertsFloatToString_thenFloatValueGetsTruncated() {
+        assertEquals("1.100000023841858", Double.toString(1.1f));
+        assertEquals("1.100000023841858", Double.toString(1.10000002384185791015625f));
     }
 
 }
