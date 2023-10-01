@@ -12,8 +12,8 @@ class CircleExtendsBaseUnitTest extends ShapeUnitTest {
     @Override
     public Map<String, Object> instantiateShapeWithExpectedArea() {
         Map<String, Object> shapeAreaMap = new HashMap<>();
-        shapeAreaMap.put("shape", new Circle(2));
-        shapeAreaMap.put("area", 12.56);
+        shapeAreaMap.put("shape", new Circle(5));
+        shapeAreaMap.put("area", 78.5);
         return shapeAreaMap;
     }
 

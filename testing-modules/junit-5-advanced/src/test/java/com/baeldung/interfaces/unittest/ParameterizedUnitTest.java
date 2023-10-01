@@ -20,7 +20,7 @@ public class ParameterizedUnitTest {
 
     private static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] {
-          { new Circle(2), 12.56 },
+          { new Circle(5), 78.5 },
           { new Rectangle(4, 5), 20 }
         });
     }

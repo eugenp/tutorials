@@ -8,9 +8,9 @@ class CircleUnitTest {
 
     @Test
     void whenAreaIsCalculated_thenSuccessful() {
-        Shape circle = new Circle(2);
+        Shape circle = new Circle(5);
         double area = circle.area();
-        assertEquals(12.56, area);
+        assertEquals(78.5, area);
     }
 
     @Test
