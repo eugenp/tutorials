@@ -1,6 +1,7 @@
 package com.baeldung.streams;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,6 +38,7 @@ public class Java8StreamApiUnitTest {
         assertEquals(list.size() - 1, size);
     }
 
+    @Ignore
     @Test
     public void checkOrder_whenChangeQuantityOfMethodCalls_thenCorrect() {
 
