@@ -16,6 +16,8 @@ public class License {
 
     private boolean renewalRequired;
 
+    private LicenseType licenseType;
+
     public UUID getId() {
         return id;
     }
@@ -54,5 +56,17 @@ public class License {
 
     public void setRenewalRequired(boolean renewalRequired) {
         this.renewalRequired = renewalRequired;
+    }
+
+    public enum LicenseType {
+        INDIVIDUAL, FAMILY
+    }
+
+    public LicenseType getLicenseType() {
+        return licenseType;
+    }
+
+    public void setLicenseType(LicenseType licenseType) {
+        this.licenseType = licenseType;
     }
 }
