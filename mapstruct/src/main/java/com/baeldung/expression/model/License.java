@@ -3,7 +3,6 @@ package com.baeldung.expression.model;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
-
 public class License {
 
     private UUID id;
