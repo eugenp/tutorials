@@ -9,3 +9,4 @@ This module contains complete guides about arrays in Java
 - [Guide to ArrayStoreException](https://www.baeldung.com/java-arraystoreexception)
 - [Creating a Generic Array in Java](https://www.baeldung.com/java-generic-array)
 - [Maximum Size of Java Arrays](https://www.baeldung.com/java-arrays-max-size)
+- [Merge Two Arrays and Remove Duplicates in Java](https://www.baeldung.com/java-merge-two-arrays-delete-duplicates)

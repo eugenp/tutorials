@@ -110,7 +110,7 @@ public class ExploreSpring5URLPatternUsingRouterFunctionsIntegrationTest {
     @Test
     public void givenRouter_whenAccess_thenGot() throws Exception {
         client.get()
-            .uri("/resources/test/test.txt")
+            .uri("//test/test.txt")
             .exchange()
             .expectStatus()
             .isOk()
