@@ -19,7 +19,7 @@ spring:
     compose:
       enabled: false
   autoconfigure:
-    exclude: org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration
+    exclude: org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration, org.springframework.boot.autoconfigure.data.redis.RedisRepositoriesAutoConfiguration, org.springframework.boot.autoconfigure.data.r2dbc.R2dbcDataAutoConfiguration, org.springframework.boot.autoconfigure.data.r2dbc.R2dbcRepositoriesAutoConfiguration, org.springframework.boot.autoconfigure.r2dbc.R2dbcAutoConfiguration, org.springframework.boot.autoconfigure.data.elasticsearch.ElasticsearchDataAutoConfiguration, org.springframework.boot.autoconfigure.data.elasticsearch.ElasticsearchRepositoriesAutoConfiguration, org.springframework.boot.autoconfigure.cassandra.CassandraAutoConfiguration, org.springframework.boot.autoconfigure.data.cassandra.CassandraDataAutoConfiguration, org.springframework.boot.autoconfigure.data.cassandra.CassandraRepositoriesAutoConfiguration, org.springframework.boot.autoconfigure.data.neo4j.Neo4jDataAutoConfiguration, org.springframework.boot.autoconfigure.data.neo4j.Neo4jRepositoriesAutoConfiguration, org.springframework.boot.autoconfigure.neo4j.Neo4jAutoConfiguration
 
 cors:
   allow:
