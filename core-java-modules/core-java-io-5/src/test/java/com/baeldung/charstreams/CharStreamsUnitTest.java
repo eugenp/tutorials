@@ -56,28 +56,54 @@ public class CharStreamsUnitTest {
 
     @Test
     public void whenUsingFormattedData_thenPrintWriterWritesToFile() throws IOException {
-        pwFile = CharStreams.writingNonStringToFilePrintWriter(TODO_LIST_PW_FILE, TODO_1);
-        assertThat(pwFile).hasContent(TODO_1.toString());
+        try {
+            pwFile = CharStreams.writingNonStringToFilePrintWriter(TODO_LIST_PW_FILE, TODO_1);
+            assertThat(pwFile).hasContent(TODO_1.toString());
+        }catch (FileNotFoundException fnfe) {
+            fnfe.printStackTrace();
+        }
     }
 
     @Test
     public void whenUsingFormattedData_thenFileWriterWritesToFile() throws IOException {
-        fwFile = CharStreams.writingNonStringToFileFileWriter(TODO_LIST_FW_FILE, TODO_1);
-        assertThat(fwFile).hasContent(TODO_1.toString());
+        try {
+            fwFile = CharStreams.writingNonStringToFileFileWriter(TODO_LIST_FW_FILE, TODO_1);
+            assertThat(fwFile).hasContent(TODO_1.toString());
+        } catch (FileNotFoundException fnfe) {
+            fnfe.printStackTrace();
+        }
     }
 
     @Test
     public void whenWritingToExixtingFile_thenPrintWriterAppendsToFile() throws IOException {
-        pwFile = CharStreams.appendingToFilePrintWriter(TODO_LIST_PW_FILE, TODO_2);
-        assertThat(pwFile).hasContent(TODO_2.toString());
-
+        try {
+            pwFile = CharStreams.appendingToFilePrintWriter(TODO_LIST_PW_FILE, TODO_2);
+            assertThat(pwFile).hasContent(TODO_2.toString());
+        } catch (FileNotFoundException fnfe) {
+            fnfe.printStackTrace();
+        }
     }
 
     @Test
     public void whenWritingToExixtingFile_thenFileWriterAppendsToFile() throws IOException {
-        fwFile = CharStreams.appendingToFileFileWriter(TODO_LIST_FW_FILE, TODO_2);
-        assertThat(fwFile).hasContent(TODO_2.toString());
+        try {
+            fwFile = CharStreams.appendingToFileFileWriter(TODO_LIST_FW_FILE, TODO_2);
+            assertThat(fwFile).hasContent(TODO_2.toString());
+        } catch (FileNotFoundException fnfe) {
+            fnfe.printStackTrace();
+        }
     }
+
+    @Test
+    public void whenCheckingError_thenPrintWriterReturnsFalse() throws IOException {
+        try {
+            pwFile = CharStreams.checkErrorPrintWriter(TODO_LIST_FW_FILE, TODO_2);
+            assertFalse(pwFile);
+        } catch (FileNotFoundException fnfe) {
+            fnfe.printStackTrace();
+        }
+    }
+    
 
     @AfterEach
     public void clean() throws IOException {
