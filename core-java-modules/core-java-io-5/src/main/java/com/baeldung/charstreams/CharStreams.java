@@ -9,7 +9,6 @@ public class CharStreams {
         File fileObj = new File(fileName);
         PrintWriter printWriter = new PrintWriter(fileName);
         printWriter.print(content);
-        printWriter.flush();
         printWriter.close();
         return fileObj;
     }
@@ -18,7 +17,6 @@ public class CharStreams {
         File fileObj = new File(fileName);
         FileWriter fileWriter = new FileWriter(fileObj);
         fileWriter.write(content);
-        fileWriter.flush();
         fileWriter.close();
         return fileObj;
 
@@ -28,7 +26,6 @@ public class CharStreams {
         File fileObj = new File(fileName);
         PrintWriter printWriter = new PrintWriter(fileObj, StandardCharsets.UTF_8);
         printWriter.print(dailyTodo);
-        printWriter.flush();
         printWriter.close();
         return fileObj;
 
@@ -38,7 +35,6 @@ public class CharStreams {
         File fileObj = new File(fileName);
         FileWriter fileWriter = new FileWriter(fileObj);
         fileWriter.write(dailyTodo.toString());
-        fileWriter.flush();
         fileWriter.close();
         return fileObj;
     }
@@ -47,7 +43,6 @@ public class CharStreams {
         File fileObj = new File(fileName);
         PrintWriter printWriter = new PrintWriter(fileObj, StandardCharsets.UTF_8);
         printWriter.append(content.toString());
-        printWriter.flush();
         printWriter.close();
         return fileObj;
     }
@@ -56,7 +51,6 @@ public class CharStreams {
         File fileObj = new File(fileName);
         FileWriter fileWriter = new FileWriter(fileObj, true);
         fileWriter.write(content.toString());
-        fileWriter.flush();
         fileWriter.close();
         return fileObj;
 
@@ -65,7 +59,6 @@ public class CharStreams {
     public static void autoFlushPrintWriter(String fileName, DailyTodo content) throws FileNotFoundException {
         PrintWriter printWriter = new PrintWriter(new FileOutputStream(fileName), true);
         printWriter.println(content);
-        printWriter.flush();
         printWriter.close();
     }
 
@@ -74,7 +67,6 @@ public class CharStreams {
         PrintWriter printWriter = new PrintWriter(fileObj, StandardCharsets.UTF_8);
         printWriter.print(content);
         boolean result = printWriter.checkError();
-        printWriter.flush();
         printWriter.close();
         return result;
     }
