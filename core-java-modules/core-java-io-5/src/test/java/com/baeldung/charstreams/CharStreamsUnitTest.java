@@ -26,44 +26,67 @@ public class CharStreamsUnitTest {
 
     @Test
     public void whenUsingTextData_thenPrintWriterWritesToFile() throws IOException {
-        CharStreams.writingStringToFilePrintWriter(TODO_LIST_PW_FILE , TODO.toString());
+        PrintWriter printWriter = new PrintWriter(new File(TODO_LIST_PW_FILE), );
+        printWriter.print(TODO.toString());
+        printWriter.close();
         assertThat(new File(TODO_LIST_PW_FILE)).hasContent(TODO.toString());
     }
 
     @Test
     public void whenUsingTextData_thenFileWriterWritesToFile() throws IOException {
-        CharStreams.writingStringToFileFileWriter(TODO_LIST_FW_FILE, TODO.toString());
+        FileWriter fileWriter = new FileWriter(new File(TODO_LIST_FW_FILE));
+        fileWriter.write(TODO);
+        fileWriter.close();
         assertThat(new File(TODO_LIST_FW_FILE)).hasContent(TODO.toString());
         
     }
 
     @Test
     public void whenUsingFormattedData_thenPrintWriterWritesToFile() throws IOException {
-       CharStreams.writingNonStringToFilePrintWriter(TODO_LIST_PW_FILE, TODO);
+        PrintWriter printWriter = new PrintWriter(new File(TODO_LIST_PW_FILE), StandardCharsets.UTF_8);
+        printWriter.print(TODO);
+        printWriter.close();
        assertThat(new File(TODO_LIST_PW_FILE)).hasContent(TODO.toString());
     }
 
     @Test
     public void whenUsingFormattedData_thenFileWriterWritesToFile() throws IOException {
-        CharStreams.writingNonStringToFileFileWriter(TODO_LIST_FW_FILE, TODO);
+        FileWriter fileWriter = new FileWriter(new File(TODO_LIST_FW_FILE));
+        fileWriter.write(TODO.toString());
+        fileWriter.close();
         assertThat(new File(TODO_LIST_FW_FILE)).hasContent(TODO.toString());
     }
 
     @Test
     public void whenWritingToExistingFile_thenPrintWriterAppendsToFile() throws IOException {
-        CharStreams.appendingToFilePrintWriter(TODO_LIST_PW_FILE, TODO);
-        assertThat(new File(TODO_LIST_PW_FILE)).hasContent(TODO.toString());
+        String existingText = "existing text";
+        Files.write(Paths.get(TODO_LIST_PW_FILE), existingText.getBytes(StandardCharsets.UTF_8), StandardOpenOption.CREATE_NEW);
+
+        try (PrintWriter printWriter = new PrintWriter(new File(TODO_LIST_PW_FILE), StandardCharsets.UTF_8)) {
+            printWriter.append(TODO.toString());
+        }
+
+        assertThat(new File(TODO_LIST_PW_FILE)).hasContent(existingText + TODO.toString());
     }
 
     @Test
     public void whenWritingToExistingFile_thenFileWriterAppendsToFile() throws IOException {
-        CharStreams.appendingToFileFileWriter(TODO_LIST_FW_FILE, TODO);
-        assertThat(new File(TODO_LIST_FW_FILE)).hasContent(TODO.toString());
+        String existingText = "existing text";
+        Files.write(Paths.get(TODO_LIST_FW_FILE), existingText.getBytes(StandardCharsets.UTF_8), StandardOpenOption.CREATE_NEW);
+
+        try (FileWriter fileWriter = new FileWriter(new File(TODO_LIST_FW_FILE), StandardCharsets.UTF_8, true)) {
+            fileWriter.append(TODO.toString());
+        }
+
+        assertThat(new File(TODO_LIST_FW_FILE)).hasContent(existingText + TODO.toString());
     }
 
     @Test
     public void whenCheckingError_thenPrintWriterReturnsFalse() throws IOException {
-        boolean result = CharStreams.printWriterErrorFlag(TODO_LIST_PW_FILE, TODO);
+        PrintWriter printWriter = new PrintWriter(new File(TODO_LIST_PW_FILE), StandardCharsets.UTF_8);
+        printWriter.print(TODO);
+        boolean result = printWriter.checkError();
+        printWriter.close();
         assertFalse(result);
     }
 
@@ -75,6 +98,14 @@ public class CharStreamsUnitTest {
             fail("error not expected", e);
         }
         assertThat(new File(TODO_LIST_FW_FILE)).hasContent(TODO.toString());
+    }
+
+    @Test
+    public static void whenAutoFlushEqualTrue_thenPrintWriterFlushesAutomatically() throws FileNotFoundException {
+        PrintWriter printWriter = new PrintWriter(new FileOutputStream(TODO_LIST_PW_FILE), true);
+        printWriter.println(TODO);
+        printWriter.close();
+        assertTrue(printWriter == null);
     }
     
     @AfterEach
