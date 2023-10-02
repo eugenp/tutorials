@@ -62,12 +62,13 @@ public class CharStreams {
         printWriter.close();
     }
 
-    // public static boolean checkErrorPrintWriter(String fileName, DailyTodo content) throws IOException {
-    //     File fileObj = new File(fileName);
-    //     PrintWriter printWriter = new PrintWriter(fileObj, StandardCharsets.UTF_8);
-    //     printWriter.print(content);
-    //     printWriter.close();
-    //     return printWriter.checkError();
-    // }
+    public static boolean printWriterErrorFlag(String fileName, DailyTodo content) throws IOException {
+        File fileObj = new File(fileName);
+        PrintWriter printWriter = new PrintWriter(fileObj, StandardCharsets.UTF_8);
+        printWriter.print(content);
+        boolean result = printWriter.checkError();
+        printWriter.close();
+        return result;
+    }
 
 }
