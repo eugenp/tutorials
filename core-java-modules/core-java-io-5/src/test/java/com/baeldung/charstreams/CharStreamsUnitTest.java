@@ -24,10 +24,8 @@ public class CharStreamsUnitTest {
     public void createFile() throws IOException {
         try{
             pwFile = new File(TODO_LIST_PW_FILE);
-            pwFile.mkdirs();
             pwFile.createNewFile();
             fwFile = new File(TODO_LIST_FW_FILE);
-            fwFile.mkdirs();
             fwFile.createNewFile();
         } catch(FileNotFoundException e) {
             e.printStackTrace();
