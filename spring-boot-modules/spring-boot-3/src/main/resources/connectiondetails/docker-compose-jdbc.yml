@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  database:
+    image: 'postgres:13.1-alpine'
+    ports:
+      - '15432:5432'
+    environment:
+      - 'POSTGRES_USER=postgres'
+      - 'POSTGRES_DB=postgresdb'
+      - 'POSTGRES_PASSWORD=postgres'

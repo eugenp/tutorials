@@ -1,0 +1,39 @@
+version: '3.8'
+services:
+  database:
+    profiles:
+      - 'jdbc'
+    image: 'postgres:13.1-alpine'
+    ports:
+      - '15432:5432'
+    environment:
+      - 'POSTGRES_USER=postgres'
+      - 'POSTGRES_DB=postgresdb'
+      - 'POSTGRES_PASSWORD=postgres'
+  rabbitmq:
+    profiles:
+      - 'rabbitmq'
+    image: 'rabbitmq:latest'
+    environment:
+      - 'RABBITMQ_DEFAULT_PASS=rabbitmq'
+      - 'RABBITMQ_DEFAULT_USER=rabbitmquser'
+    ports:
+      - '5672:5672'
+  redis:
+    profiles:
+      - 'redis'
+    image: 'redis:latest'
+    ports:
+      - '6379:6379'
+    environment:
+      - 'REDIS_REQUIREPASS=redis'
+#  mongodb:
+#    profiles:
+#      - 'mongo-test'
+#    image: 'mongo:latest'
+#    environment:
+#      - 'MONGO_INITDB_DATABASE=demodb'
+#      - 'MONGO_INITDB_ROOT_PASSWORD=mongo'
+#      - 'MONGO_INITDB_ROOT_USERNAME=mongouser'
+#    ports:
+#      - '27017:27017'
