@@ -17,15 +17,15 @@ public class CharStreamsUnitTest {
     private static DailyTodo TODO_2 = new DailyTodo("Read", LocalDateTime.now(), false);
     public static String TODO_LIST_PW_FILE = "src/main/resources/pw_todos.txt";
     public static String TODO_LIST_FW_FILE = "src/main/resources/fw_todos.txt";
-    private static File pwFile;
-    private static File fwFile;
+    private static File pwFile = new File(TODO_LIST_PW_FILE); 
+    private static File fwFile =  new File(TODO_LIST_FW_FILE);
 
     @BeforeEach
     public void createFile() throws IOException {
         try{
-            pwFile = new File(TODO_LIST_PW_FILE);
+            pwFile.mkdirs();
             pwFile.createNewFile();
-            fwFile = new File(TODO_LIST_FW_FILE);
+            fwFile.mkdirs();
             fwFile.createNewFile();
         } catch(FileNotFoundException e) {
             e.printStackTrace();
@@ -35,14 +35,18 @@ public class CharStreamsUnitTest {
 
     @Test
     public void whenUsingTextData_thenPrintWriterWritesToFile() throws IOException {
-        pwFile = CharStreams.writingStringToFilePrintWriter(TODO_LIST_PW_FILE , TODO.toString());
-        assertThat(pwFile).hasContent(TODO.toString());
+        try (pwFile = CharStreams.writingStringToFilePrintWriter(TODO_LIST_PW_FILE , TODO.toString());){
+            assertThat(pwFile).hasContent(TODO.toString());
+        }
+        
     }
 
     @Test
     public void whenUsingTextData_thenFileWriterWritesToFile() throws IOException {
-        fwFile = CharStreams.writingStringToFileFileWriter(TODO_LIST_FW_FILE, TODO.toString());
-        assertThat(fwFile).hasContent(TODO.toString());
+        try (fwFile = CharStreams.writingStringToFileFileWriter(TODO_LIST_FW_FILE, TODO.toString());){
+            assertThat(fwFile).hasContent(TODO.toString());
+        }
+        
     }
 
     @Test
