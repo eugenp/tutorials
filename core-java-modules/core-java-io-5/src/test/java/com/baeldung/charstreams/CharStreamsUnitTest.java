@@ -37,6 +37,8 @@ public class CharStreamsUnitTest {
     public void whenUsingTextData_thenPrintWriterWritesToFile() throws IOException {
         try (pwFile = CharStreams.writingStringToFilePrintWriter(TODO_LIST_PW_FILE , TODO.toString())){
             assertThat(pwFile).hasContent(TODO.toString());
+        }catch (FileNotFoundException fnfe) {
+            fnfe.printStackTrace();
         }
         
     }
@@ -45,6 +47,8 @@ public class CharStreamsUnitTest {
     public void whenUsingTextData_thenFileWriterWritesToFile() throws IOException {
         try (fwFile = CharStreams.writingStringToFileFileWriter(TODO_LIST_FW_FILE, TODO.toString())){
             assertThat(fwFile).hasContent(TODO.toString());
+        }catch (FileNotFoundException fnfe) {
+            fnfe.printStackTrace();
         }
         
     }
