@@ -35,17 +35,18 @@ public class CharStreamsUnitTest {
 
     @Test
     public void whenUsingTextData_thenPrintWriterWritesToFile() throws IOException {
-        try (pwFile = CharStreams.writingStringToFilePrintWriter(TODO_LIST_PW_FILE , TODO.toString())){
+        try {
+            pwFile = CharStreams.writingStringToFilePrintWriter(TODO_LIST_PW_FILE , TODO.toString());
             assertThat(pwFile).hasContent(TODO.toString());
         }catch (FileNotFoundException fnfe) {
             fnfe.printStackTrace();
         }
-        
     }
 
     @Test
     public void whenUsingTextData_thenFileWriterWritesToFile() throws IOException {
-        try (fwFile = CharStreams.writingStringToFileFileWriter(TODO_LIST_FW_FILE, TODO.toString())){
+        try {
+            fwFile = CharStreams.writingStringToFileFileWriter(TODO_LIST_FW_FILE, TODO.toString());
             assertThat(fwFile).hasContent(TODO.toString());
         }catch (FileNotFoundException fnfe) {
             fnfe.printStackTrace();
