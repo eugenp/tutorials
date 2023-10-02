@@ -28,13 +28,14 @@
         <!--<module>core-java-streams-2</module> -->
         <!--<module>core-java-sun</module> -->
         <module>core-java-9-improvements</module>
-        <module>core-java-collections-array-list</module>
         <module>core-java-9-streams</module>
         <module>core-java-9</module>
         <module>core-java-10</module>
         <module>core-java-11</module>
         <module>core-java-11-2</module>
         <module>core-java-11-3</module>
+        <module>core-java-collections-array-list</module>
+        <module>core-java-collections-array-list-2</module>
         <module>core-java-collections-list-4</module>
         <module>core-java-collections-list-5</module>
         <module>core-java-collections-maps-4</module>
