@@ -27,7 +27,7 @@ public class CharStreamsUnitTest {
             pwFile.createNewFile();
             fwFile.mkdirs();
             fwFile.createNewFile();
-        } catch(FileNotFoundException e) {
+        } catch(IOException e) {
             e.printStackTrace();
         }
         
