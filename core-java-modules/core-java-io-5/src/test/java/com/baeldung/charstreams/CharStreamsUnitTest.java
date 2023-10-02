@@ -67,8 +67,6 @@ public class CharStreamsUnitTest {
 
     @Test
     public void whenWritingToExistingFile_thenPrintWriterAppendsToFile() throws IOException {
-        String existingText = "existing text";
-        Files.write(Paths.get(TODO_LIST_PW_FILE), existingText.getBytes(StandardCharsets.UTF_8), StandardOpenOption.CREATE_NEW);
         try {
             CharStreams.appendingToFilePrintWriter(TODO_LIST_PW_FILE, TODO);
             assertThat(new File(TODO_LIST_PW_FILE)).hasContent(TODO.toString());
@@ -79,8 +77,6 @@ public class CharStreamsUnitTest {
 
     @Test
     public void whenWritingToExistingFile_thenFileWriterAppendsToFile() throws IOException {
-        String existingText = "some text";
-        Files.write(Paths.get(TODO_LIST_FW_FILE), existingText.getBytes(StandardCharsets.UTF_8), StandardOpenOption.CREATE_NEW);
         try {
             CharStreams.appendingToFileFileWriter(TODO_LIST_FW_FILE, TODO);
             assertThat(new File(TODO_LIST_FW_FILE)).hasContent(TODO.toString());
