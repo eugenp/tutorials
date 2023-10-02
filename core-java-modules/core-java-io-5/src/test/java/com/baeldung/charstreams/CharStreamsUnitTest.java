@@ -15,22 +15,30 @@ public class CharStreamsUnitTest {
     private static DailyTodo TODO = new DailyTodo("Code", LocalDateTime.now(), true);
     private static DailyTodo TODO_1 = new DailyTodo("Sleep", LocalDateTime.now(), false);
     private static DailyTodo TODO_2 = new DailyTodo("Read", LocalDateTime.now(), false);
-    public static String TODO_LIST_PW_FILE = "src/main/resources/pw_todos.txt";
-    public static String TODO_LIST_FW_FILE = "src/main/resources/fw_todos.txt";
-    private static File pwFile = new File(TODO_LIST_PW_FILE); 
-    private static File fwFile =  new File(TODO_LIST_FW_FILE);
+    public static String TODO_LIST_PW_FILE = "pw_todos.txt";
+    public static String TODO_LIST_FW_FILE = "fw_todos.txt";
+    private static File pwFile; 
+    private static File fwFile;
+    
+    @BeforeAll
+    public void createDirectory() throws IOException {
+        File resourcesDir
+ = new File("src/test/resources");
+        if (!resourcesDir.exists()){
+            resourcesDir.mkdirs();
+        }
+    }
 
     @BeforeEach
-    public void createFile() throws IOException {
+    public void createFiles() throws IOException {
         try{
-            pwFile.mkdirs();
+            pwFile = new File(resourcesDir.getAbsolutePath(), '/'+TODO_LIST_PW_FILE)
             pwFile.createNewFile();
-            fwFile.mkdirs();
+            fwFile = new File(resourcesDir.getAbsolutePath(), '/'+TODO_LIST_FW_FILE);
             fwFile.createNewFile();
         } catch(IOException e) {
             e.printStackTrace();
-        }
-        
+        } 
     }
 
     @Test
