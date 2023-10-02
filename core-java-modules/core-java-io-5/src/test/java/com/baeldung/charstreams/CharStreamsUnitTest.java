@@ -30,7 +30,7 @@ public class CharStreamsUnitTest {
             fwFile.mkdirs();
             fwFile.createNewFile();
         } catch(FileNotFoundException e) {
-            e.printStackTrace()
+            e.printStackTrace();
         }
         
     }
