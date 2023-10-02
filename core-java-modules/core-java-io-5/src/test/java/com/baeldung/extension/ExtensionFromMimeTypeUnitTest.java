@@ -11,10 +11,8 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.tika.mime.MimeTypeException;
-
-import org.junit.Test;
-
 import com.j256.simplemagic.ContentType;
+import org.junit.Test;
 
 public class ExtensionFromMimeTypeUnitTest {
     private static final String IMAGE_JPEG_MIME_TYPE = "image/jpeg";
@@ -37,14 +35,14 @@ public class ExtensionFromMimeTypeUnitTest {
     }
 
     @Test
-    public void whenUsingMimetypesFileTypeMap_thenGetFileExtension() {
+    public void whenUsingSimpleMagic_thenGetFileExtension() {
         List<String> expectedExtensions = Arrays.asList("jpeg", "jpg", "jpe");
         String[] detectedExtensions = ContentType.fromMimeType(IMAGE_JPEG_MIME_TYPE).getFileExtensions();
         assertThat(detectedExtensions).containsExactlyElementsOf(expectedExtensions);
     }
 
     @Test
-    public void whenUsingCustomLogic_thenGetFileExtension() {
+    public void whenUsingCustomMap_thenGetFileExtension() {
         Map<String, Set<String>> mimeExtensionsMap = new HashMap<>();
         List<String> expectedExtensions = Arrays.asList(".jpg", ".jpe", ".jpeg");
         addMimeExtensions(mimeExtensionsMap, "image/jpeg", ".jpg");
