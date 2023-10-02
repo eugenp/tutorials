@@ -25,7 +25,6 @@ public class CharStreams {
         PrintWriter printWriter = new PrintWriter(fileObj, StandardCharsets.UTF_8);
         printWriter.print(dailyTodo);
         printWriter.close();
-
     }
 
     public static void writingNonStringToFileFileWriter(String fileName, DailyTodo dailyTodo) throws IOException {
@@ -36,18 +35,19 @@ public class CharStreams {
     }
 
     public static void appendingToFilePrintWriter(String fileName, DailyTodo content) throws IOException {
-        File fileObj = new File(fileName);
-        PrintWriter printWriter = new PrintWriter(fileObj, StandardCharsets.UTF_8);
+        String existingText = "existing text";
+        Files.write(Paths.get(fileName), existingText.getBytes(StandardCharsets.UTF_8), StandardOpenOption.CREATE_NEW);
+        PrintWriter printWriter = new PrintWriter(new File(fileName), StandardCharsets.UTF_8);
         printWriter.append(content.toString());
         printWriter.close();
     }
 
     public static void appendingToFileFileWriter(String fileName, DailyTodo content) throws IOException {
-        File fileObj = new File(fileName);
-        FileWriter fileWriter = new FileWriter(fileObj, true);
+        String existingText = "some text";
+        Files.write(Paths.get(fileName), existingText.getBytes(StandardCharsets.UTF_8), StandardOpenOption.CREATE_NEW);
+        FileWriter fileWriter = new FileWriter(new File(fileName), true);
         fileWriter.write(content.toString());
         fileWriter.close();
-
     }
 
     public static void autoFlushPrintWriter(String fileName, DailyTodo content) throws FileNotFoundException {
