@@ -27,7 +27,7 @@ public class CharStreamsUnitTest {
     @Test
     public void whenUsingTextData_thenPrintWriterWritesToFile() throws IOException {
         try {
-            pwFile = CharStreams.writingStringToFilePrintWriter(TODO_LIST_PW_FILE , TODO.toString());
+            CharStreams.writingStringToFilePrintWriter(TODO_LIST_PW_FILE , TODO.toString());
             assertThat(new File(TODO_LIST_PW_FILE)).hasContent(TODO.toString());
         }catch (FileNotFoundException fnfe) {
             fnfe.printStackTrace();
@@ -66,7 +66,7 @@ public class CharStreamsUnitTest {
     }
 
     @Test
-    public void whenWritingToExixtingFile_thenPrintWriterAppendsToFile() throws IOException {
+    public void whenWritingToExistingFile_thenPrintWriterAppendsToFile() throws IOException {
         try {
             CharStreams.appendingToFilePrintWriter(TODO_LIST_PW_FILE, TODO);
             assertThat(new File(TODO_LIST_PW_FILE)).hasContent(TODO.toString());
@@ -76,7 +76,7 @@ public class CharStreamsUnitTest {
     }
 
     @Test
-    public void whenWritingToExixtingFile_thenFileWriterAppendsToFile() throws IOException {
+    public void whenWritingToExistingFile_thenFileWriterAppendsToFile() throws IOException {
         try {
             CharStreams.appendingToFileFileWriter(TODO_LIST_FW_FILE, TODO);
             assertThat(new File(TODO_LIST_FW_FILE)).hasContent(TODO.toString());
@@ -102,7 +102,7 @@ public class CharStreamsUnitTest {
         } catch (IOException e) {
             fail("error not expected", e);
         }
-        assertThat(new File(TODO_LIST_PW_FILE)).hasContent(TODO.toString());
+        assertThat(new File(TODO_LIST_FW_FILE)).hasContent(TODO.toString());
     }
     
     @AfterEach
