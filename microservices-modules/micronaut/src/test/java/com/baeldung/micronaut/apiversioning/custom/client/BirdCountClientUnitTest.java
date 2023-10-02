@@ -19,13 +19,13 @@ class BirdCountClientUnitTest {
     private BirdCountClient client;
 
     @Test
-    void countV1() {
+    void givenTheCountApi_whenUsingV1ViaCustomStrategy_shouldRouteToProperHandler() {
        Assertions.assertEquals(10, client.countV1(null).blockingSingle().split(",").length);
        Assertions.assertEquals(4, client.countV1(4).blockingSingle().split(",").length);
     }
 
     @Test
-    void countV2() {
+    void givenTheCountApi_whenUsingV2ViaCustomStrategy_shouldRouteToProperHandler() {
         Assertions.assertThrows(HttpClientResponseException.class,
                 () -> client.countV2(null).count().blockingGet());
 
@@ -33,7 +33,7 @@ class BirdCountClientUnitTest {
     }
 
     @Test
-    void countDefault() {
+    void givenTheCountApi_whenUsingDefaultVersionViaCustomStrategy_shouldRouteToProperHandler() {
         Assertions.assertThrows(HttpClientResponseException.class,
                 () -> client.countDefault(null).count().blockingGet());
 

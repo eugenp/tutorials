@@ -17,13 +17,13 @@ class DogCountClientUnitTest {
     private DogCountClient dogCountClient;
 
     @Test
-    void countV1() {
+    void givenTheCountApi_whenUsingV1ViaHeaderStrategy_shouldRouteToProperHandler() {
        Assertions.assertEquals(10, dogCountClient.countV1(null).blockingSingle().split(",").length);
        Assertions.assertEquals(4, dogCountClient.countV1(4).blockingSingle().split(",").length);
     }
 
     @Test
-    void countV2() {
+    void givenTheCountApi_whenUsingV2ViaHeaderStrategy_shouldRouteToProperHandler() {
         Assertions.assertThrows(HttpClientResponseException.class,
                 () -> dogCountClient.countV2(null).count().blockingGet());
 
@@ -31,7 +31,7 @@ class DogCountClientUnitTest {
     }
 
     @Test
-    void countDefault() {
+    void givenTheCountApi_whenUsingDefaultVersionViaHeaderStrategy_shouldRouteToProperHandler() {
         Assertions.assertThrows(HttpClientResponseException.class,
                 () -> dogCountClient.countDefault(null).count().blockingGet());
 

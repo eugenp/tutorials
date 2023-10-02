@@ -23,7 +23,6 @@ public class DogCountController {
         );
     }
 
-
     @Get(value = "/count", produces = {"application/json"})
     @Version("2")
     public Flowable<String> countV2(@QueryValue("max") @NonNull Integer max) {

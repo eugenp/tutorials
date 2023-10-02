@@ -17,13 +17,13 @@ class CatCountClientUnitTest {
     private CatCountClient client;
 
     @Test
-    void countV1() {
+    void givenTheCountApi_whenUsingV1ViaParameterStrategy_shouldRouteToProperHandler() {
        Assertions.assertEquals(10, client.count(null, 1).blockingSingle().split(",").length);
        Assertions.assertEquals(5, client.count(5, 1).blockingSingle().split(",").length);
     }
 
     @Test
-    void countV2() {
+    void givenTheCountApi_whenUsingV2ViaParameterStrategy_shouldRouteToProperHandler() {
         Assertions.assertThrows(HttpClientResponseException.class,
                 () -> client.count(null, 2).count().blockingGet());
 
@@ -31,7 +31,7 @@ class CatCountClientUnitTest {
     }
 
     @Test
-    void countDefault() {
+    void givenTheCountApi_whenUsingDefaultVersionViaParameterStrategy_shouldRouteToProperHandler() {
         Assertions.assertEquals(10, client.count(null, null).blockingSingle().split(",").length);
         Assertions.assertEquals(6, client.count(6, null).blockingSingle().split(",").length);
     }

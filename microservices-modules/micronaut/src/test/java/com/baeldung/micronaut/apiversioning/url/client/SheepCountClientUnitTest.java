@@ -19,13 +19,13 @@ class SheepCountClientUnitTest {
     private SheepCountClient client;
 
     @Test
-    void countV1() {
+    void givenTheCountApi_whenUsingV1ViaUrlStrategy_shouldRouteToProperHandler() {
         Assertions.assertEquals(10, client.countV1(null).blockingSingle().split(",").length);
         Assertions.assertEquals(4, client.countV1(4).blockingSingle().split(",").length);
     }
 
     @Test
-    void countV2() {
+    void givenTheCountApi_whenUsingV2ViaUrlStrategy_shouldRouteToProperHandler() {
         Assertions.assertThrows(HttpClientResponseException.class,
                 () -> client.countV2(null).count().blockingGet());
 
@@ -34,7 +34,7 @@ class SheepCountClientUnitTest {
     }
 
     @Test
-    void countDefault() {
+    void givenTheCountApi_whenUsingDefaultVersionViaUrlStrategy_shouldRouteToProperHandler() {
         Assertions.assertThrows(HttpClientResponseException.class,
                 () -> client.countDefault(null).count().blockingGet());
 
