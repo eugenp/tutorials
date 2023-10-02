@@ -12,40 +12,24 @@ import org.junit.jupiter.api.*;
 
 public class CharStreamsUnitTest {
 
-    private static DailyTodo TODO = new DailyTodo("Code", LocalDateTime.now(), true);
-    private static DailyTodo TODO_1 = new DailyTodo("Sleep", LocalDateTime.now(), false);
-    private static DailyTodo TODO_2 = new DailyTodo("Read", LocalDateTime.now(), false);
-    public static String TODO_LIST_PW_FILE = "pw_todos.txt";
-    public static String TODO_LIST_FW_FILE = "fw_todos.txt";
-    private static File pwFile; 
-    private static File fwFile;
+    private static final DailyTodo TODO = new DailyTodo("Code", LocalDateTime.now(), true);
+    private static final DailyTodo TODO_1 = new DailyTodo("Sleep", LocalDateTime.now(), false);
+    private static final DailyTodo TODO_2 = new DailyTodo("Read", LocalDateTime.now(), false);
+    public static String TODO_LIST_PW_FILE = "src/test/resources/pw_todos.txt";
+    public static String TODO_LIST_FW_FILE = "src/test/resources/fw_todos.txt";
     
-    @BeforeAll
-    public void createDirectory() throws IOException {
-        File resourcesDir
- = new File("src/test/resources");
-        if (!resourcesDir.exists()){
-            resourcesDir.mkdirs();
-        }
-    }
 
     @BeforeEach
     public void createFiles() throws IOException {
-        try{
-            pwFile = new File(resourcesDir.getAbsolutePath(), '/'+TODO_LIST_PW_FILE)
-            pwFile.createNewFile();
-            fwFile = new File(resourcesDir.getAbsolutePath(), '/'+TODO_LIST_FW_FILE);
-            fwFile.createNewFile();
-        } catch(IOException e) {
-            e.printStackTrace();
-        } 
+        Files.createDirectories(Paths.get(TODO_LIST_PW_FILE).getParent());
+        Files.createDirectories(Paths.get(TODO_LIST_FW_FILE).getParent());
     }
 
     @Test
     public void whenUsingTextData_thenPrintWriterWritesToFile() throws IOException {
         try {
             pwFile = CharStreams.writingStringToFilePrintWriter(TODO_LIST_PW_FILE , TODO.toString());
-            assertThat(pwFile).hasContent(TODO.toString());
+            assertThat(new File(TODO_LIST_PW_FILE)).hasContent(TODO.toString());
         }catch (FileNotFoundException fnfe) {
             fnfe.printStackTrace();
         }
@@ -54,9 +38,9 @@ public class CharStreamsUnitTest {
     @Test
     public void whenUsingTextData_thenFileWriterWritesToFile() throws IOException {
         try {
-            fwFile = CharStreams.writingStringToFileFileWriter(TODO_LIST_FW_FILE, TODO.toString());
-            assertThat(fwFile).hasContent(TODO.toString());
-        }catch (FileNotFoundException fnfe) {
+            CharStreams.writingStringToFileFileWriter(TODO_LIST_FW_FILE, TODO.toString());
+            assertThat(new File(TODO_LIST_FW_FILE)).hasContent(TODO.toString());
+        } catch (FileNotFoundException fnfe) {
             fnfe.printStackTrace();
         }
         
@@ -65,9 +49,9 @@ public class CharStreamsUnitTest {
     @Test
     public void whenUsingFormattedData_thenPrintWriterWritesToFile() throws IOException {
         try {
-            pwFile = CharStreams.writingNonStringToFilePrintWriter(TODO_LIST_PW_FILE, TODO_1);
-            assertThat(pwFile).hasContent(TODO_1.toString());
-        }catch (FileNotFoundException fnfe) {
+            CharStreams.writingNonStringToFilePrintWriter(TODO_LIST_PW_FILE, TODO_1);
+            assertThat(new File(TODO_LIST_PW_FILE)).hasContent(TODO_1.toString());
+        } catch (FileNotFoundException fnfe) {
             fnfe.printStackTrace();
         }
     }
@@ -75,8 +59,8 @@ public class CharStreamsUnitTest {
     @Test
     public void whenUsingFormattedData_thenFileWriterWritesToFile() throws IOException {
         try {
-            fwFile = CharStreams.writingNonStringToFileFileWriter(TODO_LIST_FW_FILE, TODO_1);
-            assertThat(fwFile).hasContent(TODO_1.toString());
+            CharStreams.writingNonStringToFileFileWriter(TODO_LIST_FW_FILE, TODO_1);
+            assertThat(new File(TODO_LIST_FW_FILE)).hasContent(TODO_1.toString());
         } catch (FileNotFoundException fnfe) {
             fnfe.printStackTrace();
         }
@@ -85,8 +69,8 @@ public class CharStreamsUnitTest {
     @Test
     public void whenWritingToExixtingFile_thenPrintWriterAppendsToFile() throws IOException {
         try {
-            pwFile = CharStreams.appendingToFilePrintWriter(TODO_LIST_PW_FILE, TODO_2);
-            assertThat(pwFile).hasContent(TODO_2.toString());
+            CharStreams.appendingToFilePrintWriter(TODO_LIST_PW_FILE, TODO_2);
+            assertThat(new File(TODO_LIST_PW_FILE)).hasContent(TODO_2.toString());
         } catch (FileNotFoundException fnfe) {
             fnfe.printStackTrace();
         }
@@ -95,8 +79,8 @@ public class CharStreamsUnitTest {
     @Test
     public void whenWritingToExixtingFile_thenFileWriterAppendsToFile() throws IOException {
         try {
-            fwFile = CharStreams.appendingToFileFileWriter(TODO_LIST_FW_FILE, TODO_2);
-            assertThat(fwFile).hasContent(TODO_2.toString());
+            CharStreams.appendingToFileFileWriter(TODO_LIST_FW_FILE, TODO_2);
+            assertThat(new File(TODO_LIST_FW_FILE)).hasContent(TODO_2.toString());
         } catch (FileNotFoundException fnfe) {
             fnfe.printStackTrace();
         }
@@ -105,11 +89,21 @@ public class CharStreamsUnitTest {
     @Test
     public void whenCheckingError_thenPrintWriterReturnsFalse() throws IOException {
         try {
-            boolean result = CharStreams.printWriterErrorFlag(TODO_LIST_FW_FILE, TODO_2);
+            boolean result = CharStreams.printWriterErrorFlag(TODO_LIST_PW_FILE, TODO_2);
             assertFalse(result);
         } catch (FileNotFoundException fnfe) {
             fnfe.printStackTrace();
         }
+    }
+
+    @Test
+    public void whenHandlingError_thenFileWriterHandlesError() {
+        try (FileWriter fileWriter = new FileWriter(TODO_LIST_FW_FILE, true)) {
+        fileWriter.write(TODO_2.toString());
+        } catch (IOException e) {
+            fail("error not expected", e);
+        }
+        assertThat(new File(TODO_LIST_PW_FILE)).hasContent(TODO_2.toString());
     }
     
 
