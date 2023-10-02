@@ -97,8 +97,8 @@ public class CharStreamsUnitTest {
     @Test
     public void whenCheckingError_thenPrintWriterReturnsFalse() throws IOException {
         try {
-            pwFile = CharStreams.printWriterErrorFlag(TODO_LIST_FW_FILE, TODO_2);
-            assertFalse(pwFile);
+            boolean result = CharStreams.printWriterErrorFlag(TODO_LIST_FW_FILE, TODO_2);
+            assertFalse(result);
         } catch (FileNotFoundException fnfe) {
             fnfe.printStackTrace();
         }
