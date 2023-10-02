@@ -26,73 +26,45 @@ public class CharStreamsUnitTest {
 
     @Test
     public void whenUsingTextData_thenPrintWriterWritesToFile() throws IOException {
-        try {
-            CharStreams.writingStringToFilePrintWriter(TODO_LIST_PW_FILE , TODO.toString());
-            assertThat(new File(TODO_LIST_PW_FILE)).hasContent(TODO.toString());
-        }catch (FileNotFoundException fnfe) {
-            fnfe.printStackTrace();
-        }
+        CharStreams.writingStringToFilePrintWriter(TODO_LIST_PW_FILE , TODO.toString());
+        assertThat(new File(TODO_LIST_PW_FILE)).hasContent(TODO.toString());
     }
 
     @Test
     public void whenUsingTextData_thenFileWriterWritesToFile() throws IOException {
-        try {
-            CharStreams.writingStringToFileFileWriter(TODO_LIST_FW_FILE, TODO.toString());
-            assertThat(new File(TODO_LIST_FW_FILE)).hasContent(TODO.toString());
-        } catch (FileNotFoundException fnfe) {
-            fnfe.printStackTrace();
-        }
+        CharStreams.writingStringToFileFileWriter(TODO_LIST_FW_FILE, TODO.toString());
+        assertThat(new File(TODO_LIST_FW_FILE)).hasContent(TODO.toString());
         
     }
 
     @Test
     public void whenUsingFormattedData_thenPrintWriterWritesToFile() throws IOException {
-        try {
-            CharStreams.writingNonStringToFilePrintWriter(TODO_LIST_PW_FILE, TODO);
-            assertThat(new File(TODO_LIST_PW_FILE)).hasContent(TODO.toString());
-        } catch (FileNotFoundException fnfe) {
-            fnfe.printStackTrace();
-        }
+       CharStreams.writingNonStringToFilePrintWriter(TODO_LIST_PW_FILE, TODO);
+       assertThat(new File(TODO_LIST_PW_FILE)).hasContent(TODO.toString());
     }
 
     @Test
     public void whenUsingFormattedData_thenFileWriterWritesToFile() throws IOException {
-        try {
-            CharStreams.writingNonStringToFileFileWriter(TODO_LIST_FW_FILE, TODO);
-            assertThat(new File(TODO_LIST_FW_FILE)).hasContent(TODO.toString());
-        } catch (FileNotFoundException fnfe) {
-            fnfe.printStackTrace();
-        }
+        CharStreams.writingNonStringToFileFileWriter(TODO_LIST_FW_FILE, TODO);
+        assertThat(new File(TODO_LIST_FW_FILE)).hasContent(TODO.toString());
     }
 
     @Test
     public void whenWritingToExistingFile_thenPrintWriterAppendsToFile() throws IOException {
-        try {
-            CharStreams.appendingToFilePrintWriter(TODO_LIST_PW_FILE, TODO);
-            assertThat(new File(TODO_LIST_PW_FILE)).hasContent(TODO.toString());
-        } catch (FileNotFoundException fnfe) {
-            fnfe.printStackTrace();
-        }
+        CharStreams.appendingToFilePrintWriter(TODO_LIST_PW_FILE, TODO);
+        assertThat(new File(TODO_LIST_PW_FILE)).hasContent(TODO.toString());
     }
 
     @Test
     public void whenWritingToExistingFile_thenFileWriterAppendsToFile() throws IOException {
-        try {
-            CharStreams.appendingToFileFileWriter(TODO_LIST_FW_FILE, TODO);
-            assertThat(new File(TODO_LIST_FW_FILE)).hasContent(TODO.toString());
-        } catch (FileNotFoundException fnfe) {
-            fnfe.printStackTrace();
-        }
+        CharStreams.appendingToFileFileWriter(TODO_LIST_FW_FILE, TODO);
+        assertThat(new File(TODO_LIST_FW_FILE)).hasContent(TODO.toString());
     }
 
     @Test
     public void whenCheckingError_thenPrintWriterReturnsFalse() throws IOException {
-        try {
-            boolean result = CharStreams.printWriterErrorFlag(TODO_LIST_PW_FILE, TODO);
-            assertFalse(result);
-        } catch (FileNotFoundException fnfe) {
-            fnfe.printStackTrace();
-        }
+        boolean result = CharStreams.printWriterErrorFlag(TODO_LIST_PW_FILE, TODO);
+        assertFalse(result);
     }
 
     @Test
