@@ -31,11 +31,6 @@
             <version>${guava.version}</version>
         </dependency>
     </dependencies>
-    <profiles>
-        <profile>
-            <id>*-jdk9-and-above</id>
-        </profile>
-    </profiles>
     <build>
         <finalName>core-java-numbers-6</finalName>
         <resources>
