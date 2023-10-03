@@ -16,7 +16,7 @@ public class CharStreamsUnitTest {
     
     public static String TODO_LIST_PW_FILE = "src/test/resources/pw_todos.txt";
     public static String TODO_LIST_FW_FILE = "src/test/resources/fw_todos.txt";
-    //public static final String STRING_TEXT = TODO.toString();
+    public static final String STRING_TEXT = TODO.toString();
     
 
     @BeforeEach
@@ -29,27 +29,22 @@ public class CharStreamsUnitTest {
 
    @Test
     public void whenUsingTextData_thenPrintWriterWritesToFile() throws IOException {
-        String existingText = "existing text";
         try (PrintWriter printWriter = new PrintWriter(new File(TODO_LIST_PW_FILE), StandardCharsets.UTF_8)) {
-            printWriter.print(existingText);
+            printWriter.print(STRING_TEXT);
             printWriter.flush();
             printWriter.close();
-            assertThat(new File(TODO_LIST_PW_FILE)).hasContent(existingText);
+            assertThat(new File(TODO_LIST_PW_FILE)).hasContent(STRING_TEXT);
         }
-
     }
 
     @Test
     public void whenUsingTextData_thenFileWriterWritesToFile() throws IOException {
-        String existingText = "existing text";
         try (FileWriter fileWriter = new FileWriter(new File(TODO_LIST_FW_FILE))) {
-            fileWriter.write(existingText);
+            fileWriter.write(STRING_TEXT);
             fileWriter.flush();
             fileWriter.close();
-            assertThat(new File(TODO_LIST_FW_FILE)).hasContent(existingText);
+            assertThat(new File(TODO_LIST_FW_FILE)).hasContent(STRING_TEXT);
         }
-
-
     }
 
     @Test
@@ -81,6 +76,7 @@ public class CharStreamsUnitTest {
 
         try (PrintWriter printWriter = new PrintWriter(new FileOutputStream(TODO_LIST_PW_FILE, true), false, StandardCharsets.UTF_8)) {
             printWriter.append(TODO.toString());
+            printWriter.flush();
         }
 
         assertThat(new File(TODO_LIST_PW_FILE)).hasContent(existingText + TODO.toString());
@@ -93,6 +89,7 @@ public class CharStreamsUnitTest {
 
         try (FileWriter fileWriter = new FileWriter(new File(TODO_LIST_FW_FILE), StandardCharsets.UTF_8, true)) {
             fileWriter.append(TODO.toString());
+            fileWriter.flush();
         }
 
         assertThat(new File(TODO_LIST_FW_FILE)).hasContent(existingText + TODO.toString());
@@ -107,7 +104,6 @@ public class CharStreamsUnitTest {
             printWriter.close();
             assertFalse(result);
         }
-
     }
 
     @Test
