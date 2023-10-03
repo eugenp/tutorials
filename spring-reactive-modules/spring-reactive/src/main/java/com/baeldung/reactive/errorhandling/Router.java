@@ -1,4 +1,4 @@
-package com.baeldung.spring.reactive.errorhandling;
+package com.baeldung.reactive.errorhandling;
 
 import static org.springframework.http.MediaType.TEXT_PLAIN;
 import static org.springframework.web.reactive.function.server.RequestPredicates.GET;

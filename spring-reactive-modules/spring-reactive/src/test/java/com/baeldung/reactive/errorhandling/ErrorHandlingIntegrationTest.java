@@ -1,4 +1,4 @@
-package com.baeldung.spring.reactive.errorhandling;
+package com.baeldung.reactive.errorhandling;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
