@@ -22,9 +22,9 @@ public class PathPatternController {
         return "/spring5/*id";
     }
 
-    @GetMapping("//**")
+    @GetMapping("/resources/**")
     public String wildcardTakingZeroOrMorePathSegments() {
-        return "//**";
+        return "/resources/**";
     }
 
     @GetMapping("/{baeldung:[a-z]+}")

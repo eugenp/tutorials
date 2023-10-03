@@ -72,12 +72,12 @@ public class PathPatternsUsingHandlerMethodIntegrationTest {
     public void givenHandlerMethod_whenURLWithWildcardTakingZeroOrMorePathSegments_then200() {
 
         client.get()
-            .uri("//baeldung")
+            .uri("/resources/baeldung")
             .exchange()
             .expectStatus()
             .is2xxSuccessful()
             .expectBody()
-            .equals("//**");
+            .equals("/resources/**");
     }
 
     @Test
