@@ -44,10 +44,8 @@ class FloatToBigDecimalUnitTest {
 
     @Test
     public void whenCreatedByValueOf_thenFloatValueGetsTruncated() {
-        assertEquals("1.100000023841858", BigDecimal.valueOf(1.1f)
-            .toString());
-        assertEquals("1.100000023841858", BigDecimal.valueOf(1.10000002384185791015625f)
-            .toString());
+        assertEquals("1.100000023841858", BigDecimal.valueOf(1.1f).toString());
+        assertEquals("1.100000023841858", BigDecimal.valueOf(1.10000002384185791015625f).toString());
     }
 
     @Test
