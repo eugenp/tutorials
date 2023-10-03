@@ -16,6 +16,7 @@ public class CharStreamsUnitTest {
     
     public static String TODO_LIST_PW_FILE = "src/test/resources/pw_todos.txt";
     public static String TODO_LIST_FW_FILE = "src/test/resources/fw_todos.txt";
+    public static final String STRING_TEXT = TODO.toString();
     
 
     @BeforeEach
@@ -26,40 +27,49 @@ public class CharStreamsUnitTest {
         Files.deleteIfExists(Paths.get(TODO_LIST_FW_FILE));
     }
 
-    @Test
+   @Test
     public void whenUsingTextData_thenPrintWriterWritesToFile() throws IOException {
         try (PrintWriter printWriter = new PrintWriter(new File(TODO_LIST_PW_FILE), StandardCharsets.UTF_8)) {
-            printWriter.print(TODO.toString());
+            printWriter.print(STRING_TEXT);
+            printWriter.flush();
             printWriter.close();
-            assertThat(new File(TODO_LIST_PW_FILE)).hasContent(TODO.toString());
+            assertThat(new File(TODO_LIST_PW_FILE)).hasContent(STRING_TEXT);
         }
+
     }
 
     @Test
     public void whenUsingTextData_thenFileWriterWritesToFile() throws IOException {
         try (FileWriter fileWriter = new FileWriter(new File(TODO_LIST_FW_FILE))) {
-            fileWriter.write(TODO.toString());
+            fileWriter.write(STRING_TEXT);
+            fileWriter.flush();
             fileWriter.close();
-            assertThat(new File(TODO_LIST_FW_FILE)).hasContent(TODO.toString());
+            assertThat(new File(TODO_LIST_FW_FILE)).hasContent(STRING_TEXT);
         }
+
+
     }
 
     @Test
     public void whenUsingFormattedData_thenPrintWriterWritesToFile() throws IOException {
         try (PrintWriter printWriter = new PrintWriter(new File(TODO_LIST_PW_FILE), StandardCharsets.UTF_8)) {
             printWriter.print(TODO);
+            printWriter.flush();
             printWriter.close();
             assertThat(new File(TODO_LIST_PW_FILE)).hasContent(TODO.toString());
         }
+
     }
 
     @Test
     public void whenUsingFormattedData_thenFileWriterWritesToFile() throws IOException {
         try (FileWriter fileWriter = new FileWriter(new File(TODO_LIST_FW_FILE))){
             fileWriter.write(TODO.toString());
+            fileWriter.flush();
             fileWriter.close();
             assertThat(new File(TODO_LIST_FW_FILE)).hasContent(TODO.toString());
         }
+
     }
 
     @Test
@@ -70,6 +80,7 @@ public class CharStreamsUnitTest {
         try (PrintWriter printWriter = new PrintWriter(new FileOutputStream(TODO_LIST_PW_FILE, true), false, StandardCharsets.UTF_8)) {
             printWriter.append(TODO.toString());
         }
+
         assertThat(new File(TODO_LIST_PW_FILE)).hasContent(existingText + TODO.toString());
     }
 
@@ -81,6 +92,7 @@ public class CharStreamsUnitTest {
         try (FileWriter fileWriter = new FileWriter(new File(TODO_LIST_FW_FILE), StandardCharsets.UTF_8, true)) {
             fileWriter.append(TODO.toString());
         }
+
         assertThat(new File(TODO_LIST_FW_FILE)).hasContent(existingText + TODO.toString());
     }
 
@@ -89,15 +101,18 @@ public class CharStreamsUnitTest {
         try (PrintWriter printWriter = new PrintWriter(new File(TODO_LIST_PW_FILE), StandardCharsets.UTF_8)) {
             printWriter.print(TODO);
             boolean result = printWriter.checkError();
+            printWriter.flush();
             printWriter.close();
             assertFalse(result);
         }
+
     }
 
     @Test
     public void whenHandlingError_thenFileWriterHandlesError() {
         try (FileWriter fileWriter = new FileWriter(TODO_LIST_FW_FILE, true)) {
             fileWriter.write(TODO.toString());
+            fileWriter.flush();
         } catch (IOException e) {
             fail("error not expected", e);
         }
@@ -105,7 +120,7 @@ public class CharStreamsUnitTest {
     }
 
     @Test
-    public static void whenAutoFlushEqualTrue_thenPrintWriterFlushesAutomatically() throws FileNotFoundException {
+    public void whenAutoFlushEqualTrue_thenPrintWriterFlushesAutomatically() throws FileNotFoundException {
         try (PrintWriter printWriter = new PrintWriter(new FileOutputStream(TODO_LIST_PW_FILE), true)) {
             printWriter.println(TODO);
             assertThat(new File(TODO_LIST_PW_FILE)).hasContent(TODO.toString() + System.lineSeparator());
