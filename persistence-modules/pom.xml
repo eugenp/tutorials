@@ -101,6 +101,7 @@
         <module>spring-data-shardingsphere</module>
         <!-- <module>spring-hibernate-3</module> FAILED -->
         <!-- <module>spring-hibernate-5</module> FAILED --> <!-- long running -->
+        <module>spring-hibernate-6</module>
         <module>spring-jpa</module>
         <module>spring-jpa-2</module>
         <module>spring-jdbc</module>
@@ -114,7 +115,7 @@
         <module>java-mongodb</module>
         <module>questdb</module>
         <module>neo4j</module>
-        <!--<module>rethinkdb</module>--> <!-- JAVA-25297 -->
+        <module>rethinkdb</module>
         <module>scylladb</module>
         <module>spring-data-cassandra-2</module>
         <module>spring-data-jpa-repo-3</module>
