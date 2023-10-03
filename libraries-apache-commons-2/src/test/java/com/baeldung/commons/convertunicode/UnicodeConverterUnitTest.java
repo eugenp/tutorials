@@ -22,9 +22,9 @@ public class UnicodeConverterUnitTest {
     }
 
     @Test
-    public void whenInputHaveUnicodeSequencesAtEnd_ThenDecode() {
-        String encodedString = "This is a test \\u0046\\u0072\\u006F\\u006D the end.";
-        String expectedDecodedString = "This is a test From the end.";
+    public void whenInputHaveUnicodeSequencesInMiddle_ThenDecode() {
+        String encodedString = "This is a test \\u0069\\u006E the middle.";
+        String expectedDecodedString = "This is a test in the middle.";
         assertEquals(expectedDecodedString, UnicodeConverterUtil.decodeWithApacheCommons(encodedString));
         assertEquals(expectedDecodedString, UnicodeConverterUtil.decodeWithPlainJava(encodedString));
     }
