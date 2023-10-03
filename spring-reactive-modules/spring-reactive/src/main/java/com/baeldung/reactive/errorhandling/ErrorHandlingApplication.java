@@ -1,4 +1,4 @@
-package com.baeldung.spring.reactive.errorhandling;
+package com.baeldung.reactive.errorhandling;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
