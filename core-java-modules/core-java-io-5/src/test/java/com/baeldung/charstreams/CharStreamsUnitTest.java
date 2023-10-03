@@ -16,7 +16,7 @@ public class CharStreamsUnitTest {
     
     public static String TODO_LIST_PW_FILE = "src/test/resources/pw_todos.txt";
     public static String TODO_LIST_FW_FILE = "src/test/resources/fw_todos.txt";
-    public static final String STRING_TEXT = TODO.toString();
+    //public static final String STRING_TEXT = TODO.toString();
     
 
     @BeforeEach
@@ -29,22 +29,24 @@ public class CharStreamsUnitTest {
 
    @Test
     public void whenUsingTextData_thenPrintWriterWritesToFile() throws IOException {
+        String existingText = "existing text";
         try (PrintWriter printWriter = new PrintWriter(new File(TODO_LIST_PW_FILE), StandardCharsets.UTF_8)) {
-            printWriter.print(STRING_TEXT);
+            printWriter.print(existingText);
             printWriter.flush();
             printWriter.close();
-            assertThat(new File(TODO_LIST_PW_FILE)).hasContent(STRING_TEXT);
+            assertThat(new File(TODO_LIST_PW_FILE)).hasContent(existingText);
         }
 
     }
 
     @Test
     public void whenUsingTextData_thenFileWriterWritesToFile() throws IOException {
+        String existingText = "existing text";
         try (FileWriter fileWriter = new FileWriter(new File(TODO_LIST_FW_FILE))) {
-            fileWriter.write(STRING_TEXT);
+            fileWriter.write(existingText);
             fileWriter.flush();
             fileWriter.close();
-            assertThat(new File(TODO_LIST_FW_FILE)).hasContent(STRING_TEXT);
+            assertThat(new File(TODO_LIST_FW_FILE)).hasContent(existingText);
         }
 
 
