@@ -23,7 +23,6 @@ class BigIntegerSquareRootUnitTest {
         BigIntegerHolder.VERY_BIG_NUMBER,
         BigIntegerHolder.VERY_BIG_NUMBER
     })
-    @EnabledForJreRange(min = JRE.JAVA_9)
     void squareRootTest(String number) {
         final BigInteger bigInteger = new BigInteger(number);
         final BigInteger javaRoot = bigInteger.sqrt();
