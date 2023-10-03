@@ -2,7 +2,7 @@ package com.baeldung.micronaut.helloworld.server.service;
 
 import io.micronaut.context.annotation.Primary;
 
-import javax.inject.Singleton;
+import jakarta.inject.Singleton;
 
 @Primary
 @Singleton
