@@ -93,8 +93,8 @@
 
     <properties>
         <swagger-core-jakarta.version>2.2.11</swagger-core-jakarta.version>
-        <springwolf-kafka.version>0.12.1</springwolf-kafka.version>
-        <springwolf-ui.version>0.8.0</springwolf-ui.version>
+        <springwolf-kafka.version>0.14.0</springwolf-kafka.version>
+        <springwolf-ui.version>0.14.0</springwolf-ui.version>
         <testcontainers-kafka.version>1.18.3</testcontainers-kafka.version>
     </properties>
 
