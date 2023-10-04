@@ -38,6 +38,7 @@
         <dependency>
             <groupId>com.baeldung.spring.cloud</groupId>
             <artifactId>spring-cloud-contract-producer</artifactId>
+            <version>${project.parent.version}</version>
             <scope>test</scope>
         </dependency>
 
