@@ -13,7 +13,6 @@ public class Person implements Cloneable {
 
     @Override
     public Object clone() throws CloneNotSupportedException {
-        // Shallow copy
         Person clonedPerson = (Person) super.clone();
         // Since Address also implements Cloneable, we can clone it as well
         clonedPerson.address = (Address) address.clone();
