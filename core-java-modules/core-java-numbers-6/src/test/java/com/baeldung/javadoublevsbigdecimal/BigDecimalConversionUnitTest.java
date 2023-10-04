@@ -19,7 +19,7 @@ public class BigDecimalConversionUnitTest {
     }
 
     @Test
-    void whenConvertingBigDecimalToDouble_GivenDecimalPlacesGreaterThan15_thenPrecisionisLost() {
+    void givenDecimalPlacesGreaterThan15_whenConvertingBigDecimalToDouble_thenPrecisionisLost() {
         BigDecimal bigDecimalValue = new BigDecimal("789.1234567890123456");
         double doubleValue = bigDecimalValue.doubleValue();
         BigDecimal convertedBackToBigDecimal = BigDecimal.valueOf(doubleValue);
