@@ -1,6 +1,7 @@
 package com.baeldung.javadoublevsbigdecimal;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -18,15 +19,10 @@ public class BigDecimalConversionUnitTest {
     }
 
     @Test
-    void whenConvertingBigDecimalToDouble_thenConversionIsCorrect() {
-        BigDecimal bigDecimalValue = new BigDecimal("789.123456789");
+    void whenConvertingBigDecimalToDouble_GivenDecimalPlacesGreaterThan15_thenPrecisionisLost() {
+        BigDecimal bigDecimalValue = new BigDecimal("789.1234567890123456");
         double doubleValue = bigDecimalValue.doubleValue();
         BigDecimal convertedBackToBigDecimal = BigDecimal.valueOf(doubleValue);
-
-        if (!bigDecimalValue.equals(convertedBackToBigDecimal)) {
-            throw new AssertionError("Potential data loss during conversion!");
-        }
-
-        assertEquals(bigDecimalValue, convertedBackToBigDecimal);
+        assertNotEquals(bigDecimalValue, convertedBackToBigDecimal);
     }
 }
