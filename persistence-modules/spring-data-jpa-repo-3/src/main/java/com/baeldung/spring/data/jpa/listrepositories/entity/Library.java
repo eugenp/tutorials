@@ -18,7 +18,7 @@ public class Library {
     @Column(name = "addresses", nullable = false)
     private List<String> addresses = new ArrayList<>();
 
-    @ElementCollection(targetClass = String.class, fetch = FetchType.LAZY)
+    @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "librarybook", joinColumns = @JoinColumn(name = "library_id"))
     @Column(name = "book", nullable = false)
     private List<String> books = new ArrayList<>();
