@@ -1,47 +1,41 @@
 package core;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertSame;
-
+import static org.testng.Assert.assertNotEquals;
 import org.testng.annotations.Test;
 
 import core.Person;
+import core.Address;
 
 public class ShallowDeepCloneUnitTest {
 
     // Unit test for the shallowCopy() method
     @Test
     public void validateShallowCopy() {
-        Person person1 = new Person("John", 28);
+        Address address = new Address("Paris");
+        Person originalPerson = new Person("Taylor", address);
         // Create a shallow copy by assignment
-        Person person2 = person1;
-        // Updated the shallow copy
-        person2.name = "Sarah";
-        person2.age = 25;
-        // person1 is also modified since it is a shallow copy
-        assertEquals("Sarah", person1.name);
-        assertEquals(25, person1.age);
-        // Shallow copy references the same objects as the original
-        assertSame(person1, person2);
+        Person copiedPerson = originalPerson.shallowCopy();
+        copiedPerson.setName("Selena");
+        copiedPerson.getAddress().setCity("LA");
+
+        // Verify the primitive values of the shallowCopy object
+        assertNotEquals(originalPerson.getName(), copiedPerson.getName());
+        // Check if the original person's address is also modified (shallow copy)
+        assertEquals(originalPerson.getAddress(), copiedPerson.getAddress());
     }
 
     @Test
     void validateDeepCopy() throws CloneNotSupportedException {
-        Person person1 = new Person("John", 28);
+        Address address = new Address("Paris");
+        Person originalPerson = new Person("Taylor", address);
 
-        // Create a deep copy using clone()
-        Person person2 = (Person) person1.clone();
+        Person clonedPerson = (Person) originalPerson.clone();
 
-        // Update the cloned person and age
-        person2.name = "Sarah";
-        person2.age = 25;
-
-        // Original person remains unchanged
-        assertEquals("John", person1.name);
-        assertEquals(28, person1.age);
-
-        // Cloned person and age are different
-        assertEquals("Sarah", person2.name);
-        assertEquals(25, person2.age);
+        // Verify the primitive values of the deepCopy object
+        assertEquals(originalPerson.getName(), clonedPerson.getName());
+        assertEquals(originalPerson.getAddress().getCity(), clonedPerson.getAddress().getCity());
+        // Check if the original person's address is also modified (deep copy)
+        assertNotEquals(originalPerson.getAddress(), clonedPerson.getAddress());
     }
 }
