@@ -1,14 +1,23 @@
-## Spring 5 Reactive Project
 
-This module contains articles about reactive Spring 5
+This module contains articles about Spring Reactive that **are also part of an Ebook.**
 
-### The Course
-The "REST With Spring" Classes: https://bit.ly/restwithspring
+## Spring Reactive
 
-### Relevant Articles
+This module contains articles describing reactive processing in Spring.
 
-- [Exploring the Spring 5 WebFlux URL Matching](https://www.baeldung.com/spring-5-mvc-url-matching)
-- [Reactive WebSockets with Spring 5](https://www.baeldung.com/spring-5-reactive-websockets)
-- [How to Set a Header on a Response with Spring 5](https://www.baeldung.com/spring-response-header)
-- [A Guide to Spring Session Reactive Support: WebSession](https://www.baeldung.com/spring-session-reactive)
-- More articles: [[next -->]](../spring-5-reactive-2)
+## Relevant articles:
+
+- [Intro To Reactor Core](https://www.baeldung.com/reactor-core)
+- [Debugging Reactive Streams in Java](https://www.baeldung.com/spring-debugging-reactive-streams)
+- [Guide to Spring 5 WebFlux](https://www.baeldung.com/spring-webflux)
+- [Introduction to the Functional Web Framework in Spring 5](https://www.baeldung.com/spring-5-functional-web)
+- [Spring 5 WebClient](https://www.baeldung.com/spring-5-webclient)
+- [Spring WebClient vs. RestTemplate](https://www.baeldung.com/spring-webclient-resttemplate)
+- [Spring WebClient Requests with Parameters](https://www.baeldung.com/webflux-webclient-parameters)
+- [Handling Errors in Spring WebFlux](https://www.baeldung.com/spring-webflux-errors)
+- [Spring Security 5 for Reactive Applications](https://www.baeldung.com/spring-security-5-reactive)
+- [Concurrency in Spring WebFlux](https://www.baeldung.com/spring-webflux-concurrency)
+
+### NOTE:
+
+## Since this is a module tied to an e-book, it should **not** be moved or used to store the code for any further article.
