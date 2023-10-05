@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 class BooleanUnitTest {
 
     @Test
-    void testBooleanFromString() {
+    void givenInputAsString_whenStringToBoolean_thenValidBooleanConversion() {
         Boolean trueVar = Boolean.valueOf("TRUE");
         Boolean falseVar = Boolean.valueOf("false");
         Boolean parsedVar = Boolean.parseBoolean("True");
@@ -18,7 +18,7 @@ class BooleanUnitTest {
     }
 
     @Test
-    void testBoolean() {
+    void givenInputAsboolean_whenbooleanToBoolean_thenValidBooleanConversion() {
         Boolean trueVar = Boolean.valueOf(true);
         Boolean falseVar = Boolean.valueOf(false);
 
