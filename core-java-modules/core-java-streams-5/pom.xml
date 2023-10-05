@@ -43,6 +43,12 @@
             <artifactId>vavr</artifactId>
             <version>${vavr.version}</version>
         </dependency>
+		<dependency>
+			<groupId>com.codepoetics</groupId>
+			<artifactId>protonpack</artifactId>
+			<version>1.16</version>
+		</dependency>
+
     </dependencies>
 
     <build>
