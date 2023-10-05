@@ -35,7 +35,7 @@ class ValidationControllerUnitTest {
     ValidationService service;
 
     @Test
-    void whenNullInputForBooleanField__thenHttpBadRequestAsHttpResponse() throws Exception {
+    void whenNullInputForBooleanField_thenHttpBadRequestAsHttpResponse() throws Exception {
 
         String postBody = "{\"boolField\":null,\"trueField\":true,\"falseField\":false,\"boolStringVar\":\"+\"}";
 
@@ -46,7 +46,7 @@ class ValidationControllerUnitTest {
     }
 
     @Test
-    void whenInvalidInputForTrueBooleanField__thenErrorResponse() throws Exception {
+    void whenInvalidInputForTrueBooleanField_thenErrorResponse() throws Exception {
 
         String postBody = "{\"boolField\":true,\"trueField\":false,\"falseField\":false,\"boolStringVar\":\"+\"}";
 
@@ -60,7 +60,7 @@ class ValidationControllerUnitTest {
     }
 
     @Test
-    void whenInvalidInputForFalseBooleanField__thenErrorResponse() throws Exception {
+    void whenInvalidInputForFalseBooleanField_thenErrorResponse() throws Exception {
 
         String postBody = "{\"boolField\":true,\"trueField\":true,\"falseField\":true,\"boolStringVar\":\"+\"}";
 
