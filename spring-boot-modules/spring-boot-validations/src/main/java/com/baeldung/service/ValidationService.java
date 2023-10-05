@@ -11,7 +11,7 @@ import com.baeldung.dto.BooleanObject;
 @Validated
 public class ValidationService {
 
-    public void validateBoolean(@Valid BooleanObject booleanObj) {
+    public void processBoolean(@Valid BooleanObject booleanObj) {
         // further processing
     }
 }

@@ -8,27 +8,36 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.baeldung.dto.BooleanObject;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.baeldung.service.ValidationService;
 
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(controllers = ValidationController.class)
 class ValidationControllerUnitTest {
 
     @Autowired
-    private ObjectMapper objectMapper;
-
-    @Autowired
     private MockMvc mockMvc;
 
+    @TestConfiguration
+    static class EmployeeServiceImplTestContextConfiguration {
+        @Bean
+        public ValidationService validationService() {
+            return new ValidationService() {
+            };
+        }
+    }
+
+    @Autowired
+    ValidationService service;
+
     @Test
-    void testNullBoolean() throws Exception {
-        BooleanObject boolObj = new BooleanObject();
-        boolObj.setBoolField(null);
-        String postBody = objectMapper.writeValueAsString(boolObj);
+    void whenNullInputForBooleanField__thenHttpBadRequestAsHttpResponse() throws Exception {
+
+        String postBody = "{\"boolField\":null,\"trueField\":true,\"falseField\":false,\"boolStringVar\":\"+\"}";
 
         mockMvc.perform(post("/validateBoolean").contentType("application/json")
             .content(postBody))
@@ -37,11 +46,9 @@ class ValidationControllerUnitTest {
     }
 
     @Test
-    void testTrueBoolean() throws Exception {
-        BooleanObject boolObj = new BooleanObject();
-        boolObj.setBoolField(Boolean.TRUE);
-        boolObj.setTrueField(Boolean.FALSE);
-        String postBody = objectMapper.writeValueAsString(boolObj);
+    void whenInvalidInputForTrueBooleanField__thenErrorResponse() throws Exception {
+
+        String postBody = "{\"boolField\":true,\"trueField\":false,\"falseField\":false,\"boolStringVar\":\"+\"}";
 
         String output = mockMvc.perform(post("/validateBoolean").contentType("application/json")
             .content(postBody))
@@ -53,12 +60,9 @@ class ValidationControllerUnitTest {
     }
 
     @Test
-    void testFalseBoolean() throws Exception {
-        BooleanObject boolObj = new BooleanObject();
-        boolObj.setBoolField(Boolean.TRUE);
-        boolObj.setTrueField(Boolean.TRUE);
-        boolObj.setFalseField(Boolean.TRUE);
-        String postBody = objectMapper.writeValueAsString(boolObj);
+    void whenInvalidInputForFalseBooleanField__thenErrorResponse() throws Exception {
+
+        String postBody = "{\"boolField\":true,\"trueField\":true,\"falseField\":true,\"boolStringVar\":\"+\"}";
 
         String output = mockMvc.perform(post("/validateBoolean").contentType("application/json")
             .content(postBody))
@@ -70,25 +74,7 @@ class ValidationControllerUnitTest {
     }
 
     @Test
-    void testBooleanFromString() throws Exception {
-        BooleanObject boolObj = new BooleanObject();
-        boolObj.setBoolField(Boolean.TRUE);
-        boolObj.setTrueField(Boolean.TRUE);
-        boolObj.setFalseField(Boolean.FALSE);
-        boolObj.setBoolStringVar(true);
-        String postBody = objectMapper.writeValueAsString(boolObj);
-
-        String output = mockMvc.perform(post("/validateBoolean").contentType("application/json")
-            .content(postBody))
-            .andReturn()
-            .getResponse()
-            .getContentAsString();
-
-        assertEquals("Only values accepted as Boolean are + and -", output);
-    }
-
-    @Test
-    void testInvalidBooleanFromJson() throws Exception {
+    void whenInvalidBooleanFromJson_thenErrorResponse() throws Exception {
 
         String postBody = "{\"boolField\":true,\"trueField\":true,\"falseField\":false,\"boolStringVar\":\"plus\"}";
 
@@ -103,7 +89,7 @@ class ValidationControllerUnitTest {
     }
 
     @Test
-    void testValidBean() throws Exception {
+    void whenAllBooleanFieldsValid_thenCorrectResponse() throws Exception {
 
         String postBody = "{\"boolField\":true,\"trueField\":true,\"falseField\":false,\"boolStringVar\":\"+\"}";
 
@@ -115,5 +101,12 @@ class ValidationControllerUnitTest {
 
         assertEquals("BooleanObject is valid", output);
 
+    }
+
+    @Test
+    void givenAllBooleanFieldsValid_whenServiceValidationFails_thenErrorResponse() throws Exception {
+
+        mockMvc.perform(post("/validateBooleanAtService").contentType("application/json"))
+            .andExpect(status().isInternalServerError());
     }
 }
