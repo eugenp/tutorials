@@ -43,21 +43,21 @@
             <artifactId>vavr</artifactId>
             <version>${vavr.version}</version>
         </dependency>
-		<dependency>
-			<groupId>com.codepoetics</groupId>
-			<artifactId>protonpack</artifactId>
-			<version>1.16</version>
-		</dependency>
-		<dependency>
-		  <groupId>org.apache.commons</groupId>
-		  <artifactId>commons-collections4</artifactId>
-		  <version>4.4</version>
-		</dependency>
-		<dependency>
-			<groupId>one.util</groupId>
-			<artifactId>streamex</artifactId>
-			<version>0.8.1</version>
-		</dependency>
+        <dependency>
+            <groupId>com.codepoetics</groupId>
+            <artifactId>protonpack</artifactId>
+            <version>1.16</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>4.4</version>
+        </dependency>
+        <dependency>
+            <groupId>one.util</groupId>
+            <artifactId>streamex</artifactId>
+            <version>0.8.1</version>
+        </dependency>
     </dependencies>
 
     <build>
