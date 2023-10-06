@@ -24,8 +24,8 @@ class FloatToBigDecimalUnitTest {
 
     @Test
     public void whenCreatedFromString_thenPreservesTheOriginal() {
-        BigDecimal bdFromString = new BigDecimal("1.10000002384185791015625");
-        assertEquals("1.10000002384185791015625", bdFromString.toString());
+        BigDecimal bdFromString = new BigDecimal("1.1");
+        assertEquals("1.1", bdFromString.toString());
     }
 
     @Test
