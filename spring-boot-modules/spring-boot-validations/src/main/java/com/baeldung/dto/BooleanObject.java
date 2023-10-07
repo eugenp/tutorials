@@ -15,6 +15,7 @@ public class BooleanObject {
     @AssertTrue(message = "trueField must have true value")
     Boolean trueField;
 
+    @NotNull(message = "falseField cannot be null")
     @AssertFalse(message = "falseField must have false value")
     Boolean falseField;
 
