@@ -1,0 +1,15 @@
+
+description = "Introduction to Gradle Lint Plugin"
+
+ext {
+    awsVersion = '2.20.83'
+}
+
+
+dependencies {
+    implementation platform("software.amazon.awssdk:bom:$awsVersion")
+    testImplementation('junit:junit:4.13.1')
+    gradleLint.ignore('unused-dependency', 'dependency-parentheses') {
+        implementation('software.amazon.awssdk:sts')
+    }
+}

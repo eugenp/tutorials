@@ -28,13 +28,14 @@
         <!--<module>core-java-streams-2</module> -->
         <!--<module>core-java-sun</module> -->
         <module>core-java-9-improvements</module>
-        <module>core-java-collections-array-list</module>
         <module>core-java-9-streams</module>
         <module>core-java-9</module>
         <module>core-java-10</module>
         <module>core-java-11</module>
         <module>core-java-11-2</module>
         <module>core-java-11-3</module>
+        <module>core-java-collections-array-list</module>
+        <module>core-java-collections-array-list-2</module>
         <module>core-java-collections-list-4</module>
         <module>core-java-collections-list-5</module>
         <module>core-java-collections-maps-4</module>
@@ -47,7 +48,7 @@
         <module>core-java-methods</module>
         <module>core-java-networking-3</module>
         <module>core-java-os</module>
-        <!--<module>core-java-perf-2</module> Need to fix JAVA-24545 -->
+        <module>core-java-perf-2</module>
         <module>core-java-streams-4</module>
         <module>core-java-streams-5</module>
         <module>core-java-streams-collect</module>
@@ -65,6 +66,7 @@
         <module>core-java-arrays-convert</module>
         <module>core-java-arrays-operations-basic</module>
         <module>core-java-arrays-operations-advanced</module>
+        <module>core-java-arrays-operations-advanced-2</module>
         <module>core-java-booleans</module>
         <module>core-java-char</module>
         <module>core-java-collections</module>
@@ -77,6 +79,7 @@
         <module>core-java-collections-list</module>
         <module>core-java-collections-list-2</module>
         <module>core-java-collections-list-3</module>
+        <module>core-java-collections-list-6</module>
         <module>core-java-collections-maps</module>
         <module>core-java-collections-maps-2</module>
         <module>core-java-collections-maps-3</module>
@@ -107,6 +110,7 @@
         <module>core-java-io-2</module>
         <module>core-java-io-3</module>
         <module>core-java-io-4</module>
+        <module>core-java-io-5</module>
         <module>core-java-io-apis</module>
         <module>core-java-io-apis-2</module>
         <module>core-java-io-conversions</module>
