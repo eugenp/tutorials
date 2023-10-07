@@ -14,14 +14,15 @@ import java.util.concurrent.*;
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-public class CompletableFutureTimeoutUnitTest {
+
+class CompletableFutureTimeoutUnitTest {
     private static WireMockServer wireMockServer;
     private static ScheduledExecutorService executorService;
     private static final int DEFAULT_TIMEOUT = 1000; //1 seconds
     private static final int TIMEOUT_STATUS_CODE = 408; //0.5 seconds
 
     @BeforeAll
-    public static void setUp() {
+    static void setUp() {
         wireMockServer = new WireMockServer(8080);
         wireMockServer.start();
         WireMock.configureFor("localhost", 8080);
@@ -36,7 +37,7 @@ public class CompletableFutureTimeoutUnitTest {
 
 
     @AfterAll
-    public static void tearDown() {
+    static void tearDown() {
         executorService.shutdown();
         wireMockServer.stop();
     }
@@ -58,14 +59,14 @@ public class CompletableFutureTimeoutUnitTest {
     }
 
     @Test
-    public void whenorTimeout_thenGetThrow() {
+    void whenorTimeout_thenGetThrow() {
         CompletableFuture<Integer> completableFuture = createDummyRequest()
                 .orTimeout(DEFAULT_TIMEOUT, TimeUnit.MILLISECONDS);
         assertThrows(ExecutionException.class, completableFuture::get);
     }
 
     @Test
-    public void whencompleteOnTimeout_thenReturnValue() throws ExecutionException, InterruptedException {
+    void whencompleteOnTimeout_thenReturnValue() throws ExecutionException, InterruptedException {
         CompletableFuture<Integer> completableFuture = createDummyRequest()
                 .completeOnTimeout(TIMEOUT_STATUS_CODE, DEFAULT_TIMEOUT,
                         TimeUnit.MILLISECONDS);
@@ -73,7 +74,7 @@ public class CompletableFutureTimeoutUnitTest {
     }
 
     @Test
-    public void whencompleteExceptionally_thenGetThrow() {
+    void whencompleteExceptionally_thenGetThrow() {
         CompletableFuture<Integer> completableFuture = createDummyRequest();
         executorService.schedule(() -> completableFuture
                 .completeExceptionally(new TimeoutException("Timeout occurred")), DEFAULT_TIMEOUT, TimeUnit.MILLISECONDS);
