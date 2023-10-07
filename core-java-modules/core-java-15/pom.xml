@@ -8,10 +8,9 @@
     <packaging>jar</packaging>
 
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../../pom.xml</relativePath>
+        <groupId>com.baeldung.core-java-modules</groupId>
+        <artifactId>core-java-modules</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
     </parent>
 
     <dependencies>
@@ -34,25 +33,25 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <release>${maven.compiler.release}</release>
-                    <compilerArgs>--enable-preview</compilerArgs>
-                    <source>14</source>
-                    <target>14</target>
+                    <source>${maven.compiler.source.version}</source>
+                    <target>${maven.compiler.target.version}</target>
+                    <compilerArgs>
+                        <arg>--add-modules=jdk.incubator.vector</arg>
+                        <arg>--add-modules=jdk.incubator.foreign</arg>
+                    </compilerArgs>
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${surefire.plugin.version}</version>
-                <configuration>
-                    <argLine>--enable-preview</argLine>
-                </configuration>
             </plugin>
         </plugins>
     </build>
 
     <properties>
-        <maven.compiler.release>15</maven.compiler.release>
+        <java.version>17</java.version>
+        <maven.compiler.source.version>17</maven.compiler.source.version>
+        <maven.compiler.target.version>17</maven.compiler.target.version>
         <surefire.plugin.version>3.0.0-M3</surefire.plugin.version>
     </properties>
 
