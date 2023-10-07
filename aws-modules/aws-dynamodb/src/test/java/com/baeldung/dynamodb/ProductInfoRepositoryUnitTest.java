@@ -49,10 +49,10 @@ public class ProductInfoRepositoryUnitTest {
     @BeforeClass
     public static void setupClass() {
         Properties testProperties = loadFromFileInClasspath("test.properties")
-                .filter(properties -> !isEmpty(properties.getProperty(AWS_ACCESSKEY)))
-                .filter(properties -> !isEmpty(properties.getProperty(AWS_SECRETKEY)))
-                .filter(properties -> !isEmpty(properties.getProperty(DYNAMODB_ENDPOINT)))
-                .orElseThrow(() -> new RuntimeException("Unable to get all of the required test property values"));
+            .filter(properties -> !isEmpty(properties.getProperty(AWS_ACCESSKEY)))
+            .filter(properties -> !isEmpty(properties.getProperty(AWS_SECRETKEY)))
+            .filter(properties -> !isEmpty(properties.getProperty(DYNAMODB_ENDPOINT)))
+            .orElseThrow(() -> new RuntimeException("Unable to get all of the required test property values"));
 
         String amazonAWSAccessKey = testProperties.getProperty(AWS_ACCESSKEY);
         String amazonAWSSecretKey = testProperties.getProperty(AWS_SECRETKEY);
