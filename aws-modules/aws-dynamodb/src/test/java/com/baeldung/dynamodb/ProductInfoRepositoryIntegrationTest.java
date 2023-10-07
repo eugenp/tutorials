@@ -29,7 +29,7 @@ import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertThat;
 
-public class ProductInfoRepositoryUnitTest {
+public class ProductInfoRepositoryIntegrationTest {
 
     @ClassRule
     public static LocalDbCreationRule dynamoDB = new LocalDbCreationRule();
