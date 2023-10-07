@@ -76,7 +76,7 @@ class LicenseMapperUnitTest {
     }
 
     @Test
-    void givenLicenseDtoWithoutLicenseTypeString_WhenMapperMethodIsInvoked_ThenLicenseShouldBePopulatedWithoutLicenseType() {
+    void givenLicenseDtoWithoutLicenseTypeString_whenMapperMethodIsInvoked_thenLicenseShouldBePopulatedWithoutLicenseType() {
         LicenseDto licenseDto = new LicenseDto();
         License license = licenseMapper.toLicense(licenseDto);
         assertThat(license).isNotNull();
@@ -84,7 +84,7 @@ class LicenseMapperUnitTest {
     }
 
     @Test
-    void givenLicenseDtoWithInvalidLicenseTypeString_WhenMapperMethodIsInvoked_ThenLicenseShouldBePopulatedWithoutLicenseType() {
+    void givenLicenseDtoWithInvalidLicenseTypeString_whenMapperMethodIsInvoked_thenLicenseShouldBePopulatedWithoutLicenseType() {
         LicenseDto licenseDto = new LicenseDto();
         licenseDto.setLicenseType("invalid_license_type");
         License license = licenseMapper.toLicense(licenseDto);
@@ -93,7 +93,7 @@ class LicenseMapperUnitTest {
     }
 
     @Test
-    void givenLicenseDtoWithValidLicenseTypeString_WhenMapperMethodIsInvoked_ThenLicenseShouldBePopulatedWithMatchingLicenseType() {
+    void givenLicenseDtoWithValidLicenseTypeString_whenMapperMethodIsInvoked_thenLicenseShouldBePopulatedWithMatchingLicenseType() {
         LicenseDto licenseDto = new LicenseDto();
         licenseDto.setLicenseType("INDIVIDUAL");
         License license = licenseMapper.toLicense(licenseDto);
