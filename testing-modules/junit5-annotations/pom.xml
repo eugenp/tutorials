@@ -45,6 +45,8 @@
     </dependencies>
 
     <properties>
+        <junit-platform.version>1.10.0</junit-platform.version>
+        <junit-jupiter.version>5.10.0</junit-jupiter.version>
         <log4j2.version>2.19.0</log4j2.version>
     </properties>
 
