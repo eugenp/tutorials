@@ -87,7 +87,6 @@ public class FirstMatchingElementUnitTest {
 
     @Test
     public void whenCalled_thenFindIndexUsingApacheCommons() {
-        List<Object> dataList = Lists.newArrayList("String", Boolean.TRUE, Integer.valueOf(10), Boolean.FALSE, Double.valueOf(20.0));
         int index = IterableUtils.indexOf(dataList, data -> data instanceof Boolean);
         assertEquals(1, index);
     }
