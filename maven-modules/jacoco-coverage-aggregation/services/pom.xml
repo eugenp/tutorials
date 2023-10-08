@@ -34,7 +34,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.1.2</version>
+                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <includes>
                         <include>**/*Test.java</include>
@@ -45,8 +45,9 @@
     </build>
 	
     <properties>
-        <junit-jupiter-engine.version>5.9.2</junit-jupiter-engine.version>
+        <junit-jupiter-engine.version>5.10.0</junit-jupiter-engine.version>
         <spring-context.version>6.0.11</spring-context.version>
+        <maven-surefire-plugin.version>3.1.2</maven-surefire-plugin.version>
     </properties>
 
 </project>
