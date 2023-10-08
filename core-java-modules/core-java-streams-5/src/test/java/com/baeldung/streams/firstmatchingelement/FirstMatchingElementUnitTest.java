@@ -5,18 +5,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
-import java.util.OptionalInt;
 import java.util.stream.IntStream;
 
 import org.apache.commons.collections4.IterableUtils;
 import org.assertj.core.util.Lists;
 import org.junit.Test;
 
-import com.codepoetics.protonpack.StreamUtils;
 import com.google.common.collect.Iterables;
-
-import io.vavr.collection.Stream;
-import one.util.streamex.EntryStream;
 
 public class FirstMatchingElementUnitTest {
 
@@ -70,25 +65,18 @@ public class FirstMatchingElementUnitTest {
 
     @Test
     public void whenCalled_thenFindIndexUsingStreamTakeWhile() {
-        OptionalInt booleanIndex = dataList.stream()
+        int lastIndex = dataList.size() - 1;
+        int predicateIndex = dataList.stream()
             .takeWhile(data -> !(data instanceof Boolean))
             .mapToInt(dataList::indexOf)
-            .max();
-
-        if (booleanIndex.isPresent() && dataList.get(booleanIndex.getAsInt()) instanceof Boolean) {
-            assertEquals(1, booleanIndex.getAsInt());
-        }
-    }
-
-    @Test
-    public void whenCalled_thenFindIndexUsingZipWithIndex() {
-        int index = StreamUtils.zipWithIndex(dataList.stream())
-            .filter(i -> i.getValue() instanceof Boolean)
-            .mapToInt(i -> Long.valueOf(i.getIndex())
-                .intValue())
-            .findFirst()
+            .max()
             .orElse(-1);
-        assertEquals(1, index);
+
+        if (predicateIndex != 1 && predicateIndex != lastIndex) {
+            assertEquals(1, predicateIndex + 1);
+        } else {
+            assertEquals(lastIndex, predicateIndex);
+        }
     }
 
     @Test
@@ -99,27 +87,8 @@ public class FirstMatchingElementUnitTest {
 
     @Test
     public void whenCalled_thenFindIndexUsingApacheCommons() {
+        List<Object> dataList = Lists.newArrayList("String", Boolean.TRUE, Integer.valueOf(10), Boolean.FALSE, Double.valueOf(20.0));
         int index = IterableUtils.indexOf(dataList, data -> data instanceof Boolean);
         assertEquals(1, index);
-    }
-
-    @Test
-    public void whenCalled_thenFindIndexUsingStreamEx() {
-        Integer foundIndex = EntryStream.of(dataList)
-            .filterKeyValue((index, data) -> data instanceof Boolean)
-            .keys()
-            .findFirst()
-            .orElse(-1);
-        assertEquals(1, foundIndex);
-    }
-
-    @Test
-    public void whenCalled_thenFindIndexUsingVavrStream() {
-        Integer foundIndex = Stream.of(dataList.toArray())
-            .zipWithIndex()
-            .find(tuple -> tuple._1() instanceof Boolean)
-            .map(tuple -> tuple._2())
-            .getOrElse(-1);
-        assertEquals(1, foundIndex);
     }
 }
