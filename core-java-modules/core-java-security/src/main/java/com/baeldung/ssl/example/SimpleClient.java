@@ -15,10 +15,8 @@ public class SimpleClient {
         SocketFactory factory = SSLSocketFactory.getDefault();
 
         try (Socket connection = factory.createSocket(host, port)) {
-            ((SSLSocket) connection).setEnabledCipherSuites(
-              new String[] { "TLS_DHE_DSS_WITH_AES_256_CBC_SHA256"});
-            ((SSLSocket) connection).setEnabledProtocols(
-              new String[] { "TLSv1.2"});
+            ((SSLSocket) connection).setEnabledCipherSuites(new String[] { "TLS_DHE_DSS_WITH_AES_256_CBC_SHA256" });
+            ((SSLSocket) connection).setEnabledProtocols(new String[] { "TLSv1.2" });
             SSLParameters sslParams = new SSLParameters();
             sslParams.setEndpointIdentificationAlgorithm("HTTPS");
             ((SSLSocket) connection).setSSLParameters(sslParams);
@@ -28,6 +26,7 @@ public class SimpleClient {
     }
 
     public static void main(String[] args) throws IOException {
+        System.setProperty("javax.net.debug", "ssl:handshake");
         System.out.println(startClient("localhost", 8443));
     }
 }
