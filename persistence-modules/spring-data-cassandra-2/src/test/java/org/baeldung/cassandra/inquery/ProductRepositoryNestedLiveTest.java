@@ -23,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @Testcontainers
 @SpringBootTest
-class ProductRepositoryIntegrationTest {
+class ProductRepositoryNestedLiveTest {
 
     private static final String KEYSPACE_NAME = "mynamespace";
 
