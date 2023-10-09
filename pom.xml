@@ -342,8 +342,6 @@
                 <module>core-java-modules/core-java-8-datetime-2</module>
                 <module>core-java-modules/core-java-sun</module>
                 <module>core-java-modules/core-java-security</module>
-                <module>core-java-modules/core-java-nio-2</module>
-                <module>core-java-modules/core-java-serialization</module>
                 <module>core-java-modules/core-java-lang</module>
                 <module>core-java-modules/core-java-lang-math-3</module>
              
@@ -366,10 +364,10 @@
                 <module>web-modules/restx</module>
                 <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't support yet the jakarta API-->
                 <module>persistence-modules/hibernate-ogm</module> <!-- hibernate-ogm wasn't updated because it doesn't support jakarta API -->
-                <module>persistence-modules/java-cassandra</module> <!-- JAVA-21464 cassandra-unit library doesn't support to run with jdk9 and above -->
                 <module>persistence-modules/spring-data-cassandra-reactive</module> <!--JAVA-21844-->
                 <module>java-nashorn</module>
                 <module>jeromq</module>
+                <module>spring-ejb-modules/ejb-beans</module>
             </modules>
 
         </profile>
@@ -519,8 +517,6 @@
                 <module>core-java-modules/core-java-8-datetime-2</module>
                 <module>core-java-modules/core-java-sun</module>
                 <module>core-java-modules/core-java-security</module>
-                <module>core-java-modules/core-java-nio-2</module>
-                <module>core-java-modules/core-java-serialization</module>
                 <module>core-java-modules/core-java-lang</module>
                 <module>core-java-modules/core-java-lang-math-3</module>
                
@@ -541,9 +537,10 @@
                 <module>web-modules/restx</module>
                 <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't support yet the jakarta API-->
                 <module>persistence-modules/hibernate-ogm</module> <!-- hibernate-ogm wasn't updated because it doesn't support jakarta API -->
-                <module>persistence-modules/java-cassandra</module> <!-- JAVA-21464 cassandra-unit library doesn't support to run with jdk9 and above -->
                 <module>persistence-modules/spring-data-cassandra-reactive</module> <!--JAVA-21844-->
                 <module>java-nashorn</module>
+                <module>jeromq</module>
+                <module>spring-ejb-modules/ejb-beans</module>
             </modules>
 
         </profile>
@@ -726,9 +723,12 @@
                 <module>spring-boot-rest</module>
                 <module>spring-drools</module>
                 <module>spring-cloud-modules/spring-cloud-azure</module>
+                <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
                 <module>spring-cloud-modules/spring-cloud-contract</module>
                 <module>spring-cloud-modules/spring-cloud-data-flow</module>
-                <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
+                <module>spring-cloud-modules/spring-cloud-netflix-feign</module>
+                <module>spring-cloud-modules/spring-cloud-stream-starters</module>
+                <module>spring-cloud-modules/spring-cloud-zuul-eureka-integration</module>
                 <module>spring-exceptions</module>
                 <module>spring-jenkins-pipeline</module>
                 <module>spring-core</module>
@@ -812,7 +812,6 @@
                 <!-- Modules from default-first -->
 
                 <module>akka-modules</module>
-                <module>annotations</module>
                 <module>httpclient-simple</module>
                 <module>antlr</module>
                 <module>apache-kafka</module>
@@ -820,6 +819,7 @@
                 <module>apache-olingo</module>
 
                 <module>apache-poi-2</module>
+                <module>apache-poi-3</module>
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
 
@@ -895,6 +895,7 @@
                 <module>spring-5</module>
                 <module>spring-5-webflux</module>
                 <module>spring-5-webflux-2</module>
+                <module>spring-6-rsocket</module>
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
                 <module>spring-core-2</module>
@@ -938,6 +939,8 @@
                 <module>language-interop</module>
                 <module>gradle-modules/gradle/maven-to-gradle</module>
                 <module>persistence-modules/spring-data-neo4j</module>
+                <module>parent-boot-3</module>
+                <!--<module>java-panama</module> Java-19 module-->
             </modules>
 
             <properties>
@@ -1001,6 +1004,10 @@
                 <module>spring-drools</module>
                 <module>spring-cloud-modules/spring-cloud-azure</module>
                 <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
+                <module>spring-cloud-modules/spring-cloud-contract</module>
+                <module>spring-cloud-modules/spring-cloud-netflix-feign</module>
+                <module>spring-cloud-modules/spring-cloud-stream-starters</module>
+                <module>spring-cloud-modules/spring-cloud-zuul-eureka-integration</module>
                 <module>spring-exceptions</module>
                 <module>spring-jenkins-pipeline</module>
                 <module>spring-core</module>
@@ -1036,6 +1043,7 @@
                 <module>core-groovy-modules</module>
 
                 <module>core-java-modules</module>
+                <module>gcp-firebase</module>
                 <!-- <module>core-java-modules/core-java-9-new-features</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-12</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-13</module> --> <!-- uses preview features, to be decided how to handle -->
@@ -1084,13 +1092,13 @@
                 <!-- Modules from default-first -->
 
                 <module>akka-modules</module>
-                <module>annotations</module>
                 <module>antlr</module>
                 <module>apache-kafka</module>
                 <module>apache-kafka-2</module>
                 <module>apache-olingo</module>
 
                 <module>apache-poi-2</module>
+                <module>apache-poi-3</module>
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
 
@@ -1211,6 +1219,7 @@
                 <module>language-interop</module>
                 <module>gradle-modules/gradle/maven-to-gradle</module>
                 <module>persistence-modules/spring-data-neo4j</module>
+                <module>spring-actuator</module>
             </modules>
 
             <properties>
@@ -1226,6 +1235,7 @@
             <modules>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
+                <module>parent-boot-3</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>

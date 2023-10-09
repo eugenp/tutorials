@@ -40,6 +40,7 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-archaius</artifactId>
+            <version>${spring-cloud-starter-netflix-archaius.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -54,7 +55,8 @@
     </dependencies>
 
     <properties>
-        <spring-cloud-dependencies.version>2.0.3.RELEASE</spring-cloud-dependencies.version>
+        <spring-cloud-dependencies.version>2.2.10.RELEASE</spring-cloud-dependencies.version>
+        <spring-cloud-starter-netflix-archaius.version>2.2.10.RELEASE</spring-cloud-starter-netflix-archaius.version>
     </properties>
 
 </project>
