@@ -11,6 +11,8 @@ public class LicenseDto {
 
     private LocalDateTime endDate;
 
+    private String licenseType;
+
     public UUID getId() {
         return id;
     }
@@ -33,6 +35,14 @@ public class LicenseDto {
 
     public void setEndDate(LocalDateTime endDate) {
         this.endDate = endDate;
+    }
+
+    public String getLicenseType() {
+        return licenseType;
+    }
+
+    public void setLicenseType(String licenseType) {
+        this.licenseType = licenseType;
     }
 
 }
