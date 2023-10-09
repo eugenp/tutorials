@@ -5,6 +5,7 @@ import com.github.tomakehurst.wiremock.client.WireMock;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -15,14 +16,15 @@ import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class CompletableFutureTimeoutUnitTest {
-    private static WireMockServer wireMockServer;
-    private static ScheduledExecutorService executorService;
+    private WireMockServer wireMockServer;
+    private ScheduledExecutorService executorService;
     private static final int DEFAULT_TIMEOUT = 1000; //1 seconds
     private static final int TIMEOUT_STATUS_CODE = 408; //0.5 seconds
 
     @BeforeAll
-    static void setUp() {
+    void setUp() {
         wireMockServer = new WireMockServer(8080);
         wireMockServer.start();
         WireMock.configureFor("localhost", 8080);
@@ -37,7 +39,7 @@ class CompletableFutureTimeoutUnitTest {
 
 
     @AfterAll
-    static void tearDown() {
+    void tearDown() {
         executorService.shutdown();
         wireMockServer.stop();
     }
@@ -52,7 +54,7 @@ class CompletableFutureTimeoutUnitTest {
                 } finally {
                     connection.disconnect();
                 }
-            } catch (IOException e) {
+            } catch (Exception e) {
                 return TIMEOUT_STATUS_CODE;
             }
         });
@@ -60,16 +62,15 @@ class CompletableFutureTimeoutUnitTest {
 
     @Test
     void whenorTimeout_thenGetThrow() {
-        CompletableFuture<Integer> completableFuture = createDummyRequest()
-                .orTimeout(DEFAULT_TIMEOUT, TimeUnit.MILLISECONDS);
+        CompletableFuture<Integer> completableFuture = createDummyRequest();
+        completableFuture.orTimeout(DEFAULT_TIMEOUT, TimeUnit.MILLISECONDS);
         assertThrows(ExecutionException.class, completableFuture::get);
     }
 
     @Test
     void whencompleteOnTimeout_thenReturnValue() throws ExecutionException, InterruptedException {
-        CompletableFuture<Integer> completableFuture = createDummyRequest()
-                .completeOnTimeout(TIMEOUT_STATUS_CODE, DEFAULT_TIMEOUT,
-                        TimeUnit.MILLISECONDS);
+        CompletableFuture<Integer> completableFuture = createDummyRequest();
+        completableFuture.completeOnTimeout(TIMEOUT_STATUS_CODE, DEFAULT_TIMEOUT,TimeUnit.MILLISECONDS);
         assertEquals(TIMEOUT_STATUS_CODE, completableFuture.get());
     }
 
