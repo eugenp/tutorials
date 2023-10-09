@@ -92,7 +92,7 @@ class LoadBalancerBooksClientIntegrationTest {
     }
 
     @Test
-    void roundRobbinLoadbalancerWorks() throws IOException {
+    void loadbalancerWorks() throws IOException {
 
         setupMockBooksResponse(mockBooksService);
         setupMockBooksResponse(secondMockBooksService);
