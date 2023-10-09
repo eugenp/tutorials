@@ -14,11 +14,10 @@ public class SimpleServer {
         ServerSocketFactory factory = SSLServerSocketFactory.getDefault();
 
         try (ServerSocket listener = factory.createServerSocket(port)) {
+            System.setProperty("javax.net.debug", "ssl:handshake");
             ((SSLServerSocket) listener).setNeedClientAuth(true);
-            ((SSLServerSocket) listener).setEnabledCipherSuites(
-              new String[] { "TLS_DHE_DSS_WITH_AES_256_CBC_SHA256"});
-            ((SSLServerSocket) listener).setEnabledProtocols(
-              new String[] { "TLSv1.2"});
+            ((SSLServerSocket) listener).setEnabledCipherSuites(new String[] { "TLS_DHE_DSS_WITH_AES_256_CBC_SHA256" });
+            ((SSLServerSocket) listener).setEnabledProtocols(new String[] { "TLSv1.2" });
             while (true) {
                 try (Socket socket = listener.accept()) {
                     PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
@@ -29,6 +28,7 @@ public class SimpleServer {
     }
 
     public static void main(String[] args) throws IOException {
+        System.setProperty("javax.net.debug", "ssl:handshake");
         startServer(8443);
     }
 }
