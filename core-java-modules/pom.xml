@@ -83,6 +83,7 @@
         <module>core-java-collections-maps</module>
         <module>core-java-collections-maps-2</module>
         <module>core-java-collections-maps-3</module>
+        <module>core-java-collections-maps-7</module>
         <module>core-java-compiler</module>
         <module>core-java-concurrency-2</module>
         <module>core-java-concurrency-advanced</module>
