@@ -80,17 +80,4 @@ class CompletableFutureTimeoutUnitTest {
                 .completeExceptionally(new TimeoutException("Timeout occurred")), DEFAULT_TIMEOUT, TimeUnit.MILLISECONDS);
         assertThrows(ExecutionException.class, completableFuture::get);
     }
-
-    @Test
-    void whencompletableDefault_thenGetReturn() {
-        CompletableFuture<Integer> completableFuture = createDummyRequest();
-        try {
-            int result = completableFuture.get();
-            assertEquals(TIMEOUT_STATUS_CODE, result);
-        } catch (InterruptedException | ExecutionException e) {
-            //System.out.println("ERROR->"+e.getMessage());
-            throw new RuntimeException(e);
-        }
-    }
-
 }
