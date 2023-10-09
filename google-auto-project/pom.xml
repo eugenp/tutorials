@@ -6,12 +6,19 @@
     <artifactId>google-auto-project</artifactId>
     <version>1.0</version>
     <name>google-auto-project</name>
+    <packaging>pom</packaging>
+
 
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
+
+    <modules>
+        <module>annotation-processing</module>
+        <module>annotation-user</module>
+    </modules>
 
     <dependencies>
         <dependency>

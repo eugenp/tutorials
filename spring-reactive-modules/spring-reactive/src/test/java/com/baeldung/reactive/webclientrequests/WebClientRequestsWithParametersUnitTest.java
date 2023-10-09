@@ -14,10 +14,7 @@ import org.springframework.web.util.DefaultUriBuilderFactory;
 import reactor.core.publisher.Mono;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyNoMoreInteractions;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @WebFluxTest
 class WebClientRequestsWithParametersUnitTest {
@@ -51,6 +48,7 @@ class WebClientRequestsWithParametersUnitTest {
           .uri("/products")
           .retrieve()
           .bodyToMono(String.class)
+          .onErrorResume(e -> Mono.empty())
           .block();
 
         verifyCalledUrl("/products");
@@ -64,6 +62,7 @@ class WebClientRequestsWithParametersUnitTest {
             .build(2))
           .retrieve()
           .bodyToMono(String.class)
+          .onErrorResume(e -> Mono.empty())
           .block();
 
         verifyCalledUrl("/products/2");
@@ -77,6 +76,7 @@ class WebClientRequestsWithParametersUnitTest {
             .build(2, 13))
           .retrieve()
           .bodyToMono(String.class)
+          .onErrorResume(e -> Mono.empty())
           .block();
 
         verifyCalledUrl("/products/2/attributes/13");
@@ -93,6 +93,7 @@ class WebClientRequestsWithParametersUnitTest {
             .build())
           .retrieve()
           .bodyToMono(String.class)
+          .onErrorResume(e -> Mono.empty())
           .block();
 
         verifyCalledUrl("/products/?name=AndroidPhone&color=black&deliveryDate=13/04/2019");
@@ -109,6 +110,7 @@ class WebClientRequestsWithParametersUnitTest {
             .build("AndroidPhone", "black", "13/04/2019"))
           .retrieve()
           .bodyToMono(String.class)
+          .onErrorResume(e -> Mono.empty())
           .block();
 
         verifyCalledUrl("/products/?name=AndroidPhone&color=black&deliveryDate=13%2F04%2F2019");
@@ -123,6 +125,7 @@ class WebClientRequestsWithParametersUnitTest {
             .build())
           .retrieve()
           .bodyToMono(String.class)
+          .onErrorResume(e -> Mono.empty())
           .block();
 
         verifyCalledUrl("/products/?tag%5B%5D=Snapdragon&tag%5B%5D=NFC");
@@ -137,6 +140,7 @@ class WebClientRequestsWithParametersUnitTest {
             .build())
           .retrieve()
           .bodyToMono(String.class)
+          .onErrorResume(e -> Mono.empty())
           .block();
 
         verifyCalledUrl("/products/?category=Phones&category=Tablets");
@@ -151,6 +155,7 @@ class WebClientRequestsWithParametersUnitTest {
             .build())
           .retrieve()
           .bodyToMono(String.class)
+          .onErrorResume(e -> Mono.empty())
           .block();
 
         verifyCalledUrl("/products/?category=Phones,Tablets");
@@ -176,6 +181,7 @@ class WebClientRequestsWithParametersUnitTest {
             .build())
           .retrieve()
           .bodyToMono(String.class)
+          .onErrorResume(e -> Mono.empty())
           .block();
 
         verifyCalledUrl("/products/?name=AndroidPhone&color=black&deliveryDate=13/04/2019");

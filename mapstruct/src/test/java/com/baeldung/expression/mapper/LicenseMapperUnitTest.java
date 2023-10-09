@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
@@ -59,6 +60,18 @@ class LicenseMapperUnitTest {
         License license = licenseMapper.toLicense(licenseDto);
         assertThat(license).isNotNull();
         assertThat(license.isRenewalRequired()).isTrue();
+    }
+
+    @Test
+    void givenLicenseDtoWithoutId_WhenMapperMethodIsInvoked_ThenLicenseShouldBePopulatedWithValidId() {
+        LicenseDto licenseDto = new LicenseDto();
+        UUID id = UUID.randomUUID();
+        licenseDto.setId(id);
+        licenseDto.setEndDate(LocalDateTime.now()
+            .plusDays(10));
+        License license = licenseMapper.toLicense(licenseDto);
+        assertThat(license).isNotNull();
+        assertThat(license.getId()).isSameAs(id);
     }
 
 }

@@ -17,7 +17,6 @@ import com.baeldung.GetRequestMockServer;
 
 class ApacheHttpClientUnitTest extends GetRequestMockServer {
 
-
     @Test
     void givenDeveloperUsedCloseableHttpResponse_whenExecutingGetRequest_thenStatusIsOk() throws IOException {
         try (CloseableHttpClient httpClient = HttpClientBuilder.create().build()) {
