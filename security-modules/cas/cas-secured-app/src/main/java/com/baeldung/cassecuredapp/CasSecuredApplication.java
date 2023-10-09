@@ -6,6 +6,7 @@ import org.jasig.cas.client.validation.Cas30ServiceTicketValidator;
 import org.jasig.cas.client.validation.TicketValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -34,6 +35,7 @@ public class CasSecuredApplication {
         SpringApplication.run(CasSecuredApplication.class, args);
     }
 
+
     @Bean
     public CasAuthenticationFilter casAuthenticationFilter(
       AuthenticationManager authenticationManager,
@@ -59,15 +61,20 @@ public class CasSecuredApplication {
     }
 
     @Bean
+    public MyUserDetailsService getUser(){
+        return new MyUserDetailsService();
+    }
+    @Bean
     public CasAuthenticationProvider casAuthenticationProvider(
       TicketValidator ticketValidator,
       ServiceProperties serviceProperties) {
         CasAuthenticationProvider provider = new CasAuthenticationProvider();
         provider.setServiceProperties(serviceProperties);
         provider.setTicketValidator(ticketValidator);
-        provider.setUserDetailsService(
+       /* provider.setUserDetailsService(
           s -> new User("casuser", "Mellon", true, true, true, true,
-          AuthorityUtils.createAuthorityList("ROLE_ADMIN")));
+          AuthorityUtils.createAuthorityList("ROLE_ADMIN")));*/
+        provider.setUserDetailsService(getUser());
         provider.setKey("CAS_PROVIDER_LOCALHOST_8900");
         return provider;
     }
