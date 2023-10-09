@@ -20,10 +20,10 @@ public class FirstMatchingElementUnitTest {
     @Test
     public void whenCalled_thenFindIndexUsingStream() {
         int index = dataList.stream()
-            .filter(data -> data instanceof Boolean)
-            .mapToInt(data -> dataList.indexOf(data))
-            .findFirst()
-            .orElse(-1);
+          .filter(data -> data instanceof Boolean)
+          .mapToInt(data -> dataList.indexOf(data))
+          .findFirst()
+          .orElse(-1);
         assertEquals(1, index);
     }
 
@@ -57,9 +57,9 @@ public class FirstMatchingElementUnitTest {
     @Test
     public void whenCalled_thenFindIndexUsingIntStream() {
         int index = IntStream.range(0, dataList.size() - 1)
-            .filter(streamIndex -> dataList.get(streamIndex) instanceof Boolean)
-            .findFirst()
-            .orElse(-1);
+          .filter(streamIndex -> dataList.get(streamIndex) instanceof Boolean)
+          .findFirst()
+          .orElse(-1);
         assertEquals(1, index);
     }
 
@@ -67,10 +67,10 @@ public class FirstMatchingElementUnitTest {
     public void whenCalled_thenFindIndexUsingStreamTakeWhile() {
         int lastIndex = dataList.size() - 1;
         int predicateIndex = dataList.stream()
-            .takeWhile(data -> !(data instanceof Boolean))
-            .mapToInt(dataList::indexOf)
-            .max()
-            .orElse(-1);
+          .takeWhile(data -> !(data instanceof Boolean))
+          .mapToInt(dataList::indexOf)
+          .max()
+          .orElse(-1);
 
         if (predicateIndex != 1 && predicateIndex != lastIndex) {
             assertEquals(1, predicateIndex + 1);
