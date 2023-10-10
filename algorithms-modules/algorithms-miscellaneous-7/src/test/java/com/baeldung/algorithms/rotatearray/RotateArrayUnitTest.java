@@ -18,7 +18,7 @@ class RotateArrayUnitTest {
     private final int[] gtArrayLengthRotation = { 5, 6, 1, 2, 3, 4 };
 
     @Test
-    void givenInputArray_WhenNoRotationOrEmptyArray_thenThrowIllegalArgumentException() {
+    void givenInputArray_whenNoRotationOrEmptyArray_thenThrowIllegalArgumentException() {
         final int noRotation = 0;
         final int someRotation = arr.length - 1;
 
@@ -34,21 +34,21 @@ class RotateArrayUnitTest {
     }
 
     @Test
-    void givenInputArray_WhenUseBruteForceRotationLtArrayLength_thenRotateArrayOk() {
+    void givenInputArray_whenUseBruteForceRotationLtArrayLength_thenRotateArrayOk() {
 
         bruteForce(arr, rotationLtArrayLength);
         assertArrayEquals(ltArrayLengthRotation, arr);
     }
 
     @Test
-    void givenInputArray_WhenUseBruteForceRotationGtArrayLength_thenRotateArrayOk() {
+    void givenInputArray_whenUseBruteForceRotationGtArrayLength_thenRotateArrayOk() {
 
         bruteForce(arr, rotationGtArrayLength);
         assertArrayEquals(gtArrayLengthRotation, arr);
     }
 
     @Test
-    void givenInputArray_WhenUseBruteForceRotationEqArrayLength_thenDoNothing() {
+    void givenInputArray_whenUseBruteForceRotationEqArrayLength_thenDoNothing() {
         int[] expected = arr.clone();
 
         bruteForce(arr, arr.length);
@@ -56,21 +56,21 @@ class RotateArrayUnitTest {
     }
 
     @Test
-    void givenInputArray_WhenUseExtraArrayRotationLtArrayLength_thenRotateArrayOk() {
+    void givenInputArray_whenUseExtraArrayRotationLtArrayLength_thenRotateArrayOk() {
 
         withExtraArray(arr, rotationLtArrayLength);
         assertArrayEquals(ltArrayLengthRotation, arr);
     }
 
     @Test
-    void givenInputArray_WhenUseExtraArrayRotationGtArrayLength_thenRotateArrayOk() {
+    void givenInputArray_whenUseExtraArrayRotationGtArrayLength_thenRotateArrayOk() {
 
         withExtraArray(arr, rotationGtArrayLength);
         assertArrayEquals(gtArrayLengthRotation, arr);
     }
 
     @Test
-    void givenInputArray_WhenUseExtraArrayWithRotationEqArrayLength_thenDoNothing() {
+    void givenInputArray_whenUseExtraArrayWithRotationEqArrayLength_thenDoNothing() {
         int[] clone = arr.clone();
 
         withExtraArray(arr, arr.length);
@@ -78,21 +78,21 @@ class RotateArrayUnitTest {
     }
 
     @Test
-    void givenInputArray_WhenUseCyclicReplacementRotationLtArrayLength_thenRotateArrayOk() {
+    void givenInputArray_whenUseCyclicReplacementRotationLtArrayLength_thenRotateArrayOk() {
 
         cyclicReplacement(arr, rotationLtArrayLength);
         assertArrayEquals(ltArrayLengthRotation, arr);
     }
 
     @Test
-    void givenInputArray_WhenUseCyclicReplacementRotationGtArrayLength_thenRotateArrayOk() {
+    void givenInputArray_whenUseCyclicReplacementRotationGtArrayLength_thenRotateArrayOk() {
 
         cyclicReplacement(arr, rotationGtArrayLength);
         assertArrayEquals(gtArrayLengthRotation, arr);
     }
 
     @Test
-    void givenInputArray_WhenUseCyclicReplacementRotationEqArrayLength_thenDoNothing() {
+    void givenInputArray_whenUseCyclicReplacementRotationEqArrayLength_thenDoNothing() {
         int[] clone = arr.clone();
 
         cyclicReplacement(arr, arr.length);
@@ -100,21 +100,21 @@ class RotateArrayUnitTest {
     }
 
     @Test
-    void givenInputArray_WhenUseReverseRotationLtArrayLength_thenRotateArrayOk() {
+    void givenInputArray_whenUseReverseRotationLtArrayLength_thenRotateArrayOk() {
 
         reverse(arr, rotationLtArrayLength);
         assertArrayEquals(ltArrayLengthRotation, arr);
     }
 
     @Test
-    void givenInputArray_WhenUseReverseRotationGtArrayLength_thenRotateArrayOk() {
+    void givenInputArray_whenUseReverseRotationGtArrayLength_thenRotateArrayOk() {
 
         reverse(arr, rotationGtArrayLength);
         assertArrayEquals(gtArrayLengthRotation, arr);
     }
 
     @Test
-    void givenInputArray_WhenUseReverseRotationEqArrayLength_thenDoNothing() {
+    void givenInputArray_whenUseReverseRotationEqArrayLength_thenDoNothing() {
 
         int[] clone = arr.clone();
 
