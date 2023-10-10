@@ -30,7 +30,7 @@ public class BookInformationHiding {
     }
 
     public String getBookDetails() {
-        return "author id: " + id + "author name: " + author + "ISBN: " + isbn;
+        return "author id: " + id + " author name: " + author + " ISBN: " + isbn;
     }
 
 }

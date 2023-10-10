@@ -14,7 +14,7 @@ public class EncapsulationAndInformationHidingUnitTest {
         myBook.isbn = 67890;
         BookDetails details = new BookDetails();
         String result = details.bookDetails(myBook);
-        assertEquals("author name: " + myBook.author + "ISBN: " + myBook.isbn, result);
+        assertEquals("author name: " + myBook.author + " ISBN: " + myBook.isbn, result);
 
     }
 
@@ -22,14 +22,14 @@ public class EncapsulationAndInformationHidingUnitTest {
     public void givenEncapsulatedClass_whenDataIsNotHidden_thenReturnResult() {
         BookEncapsulation myBook = new BookEncapsulation("J.K Rowlings", 67890);
         String result = myBook.getBookDetails();
-        assertEquals("author id: " + 1 + "author name: " + myBook.author + "ISBN: " + myBook.isbn, result);
+        assertEquals("author id: " + 1 + " author name: " + myBook.author + " ISBN: " + myBook.isbn, result);
     }
 
     @Test
     public void givenEncapsulatedClass_whenDataIsHidden_thenReturnResult() {
         BookInformationHiding myBook = new BookInformationHiding("J.K Rowlings", 67890);
         String result = myBook.getBookDetails();
-        assertEquals("author id: " + 1 + "author name: " + myBook.getAuthor() + "ISBN: " + myBook.getIsbn(), result);
+        assertEquals("author id: " + 1 + " author name: " + myBook.getAuthor() + " ISBN: " + myBook.getIsbn(), result);
     }
 
 }
