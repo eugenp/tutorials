@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
 import com.baeldung.scope.prototype.PrototypeBean;
-import com.baeldung.scope.singletone.SingletonFunctionBean;
+import com.baeldung.scope.singleton.SingletonFunctionBean;
 
 @Configuration
 public class AppConfigFunctionBean {

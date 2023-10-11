@@ -14,5 +14,6 @@ This module contains articles about working with the operating system (OS) in Ja
 - [How to Run a Shell Command in Java](http://www.baeldung.com/run-shell-command-in-java)
 - [Taking Screenshots Using Java](https://www.baeldung.com/java-taking-screenshots)
 - [Java Sound API – Capturing Microphone](https://www.baeldung.com/java-sound-api-capture-mic)
+- [How to Detect the Username Using Java](https://www.baeldung.com/java-get-username)
 
 This module uses Java 9, so make sure to have the JDK 9 installed to run it.

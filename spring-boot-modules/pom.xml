@@ -104,6 +104,7 @@
         <module>spring-boot-springdoc-2</module>
         <module>spring-boot-documentation</module>
         <module>spring-boot-3-url-matching</module>
+        <module>spring-boot-graalvm-docker</module>
     </modules>
 
     <dependencyManagement>
