@@ -13,7 +13,7 @@ public class EcommerceController {
         return "Show Cart";
     }
 
-    //can we accessed by both anonymous and authenticated users
+    //can be accessed by both anonymous and authenticated users
     @GetMapping("/public/showProducts")
     public @ResponseBody String listProducts() {
         return "List Products";
