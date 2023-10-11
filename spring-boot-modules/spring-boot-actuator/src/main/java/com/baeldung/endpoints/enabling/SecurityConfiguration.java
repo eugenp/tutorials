@@ -1,36 +1,56 @@
 package com.baeldung.endpoints.enabling;
 
 import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher;
+import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 
-@Configuration
 @EnableWebSecurity
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+@Configuration
+public class SecurityConfiguration {
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-        auth.inMemoryAuthentication()
-          .withUser("user")
-          .password(encoder.encode("password"))
-          .roles("USER")
-          .and()
-          .withUser("admin")
-          .password(encoder.encode("admin"))
-          .roles("USER", "ADMIN");
+    @Bean
+    MvcRequestMatcher.Builder mvc(HandlerMappingIntrospector introspector) {
+        return new MvcRequestMatcher.Builder(introspector);
     }
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.requestMatcher(EndpointRequest.toAnyEndpoint())
-          .authorizeRequests((requests) -> requests.anyRequest()
-            .hasRole("ADMIN"));
-        http.httpBasic();
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http, MvcRequestMatcher.Builder mvc) throws Exception {
+        http.httpBasic(Customizer.withDefaults());
+        http.securityMatcher(EndpointRequest.toAnyEndpoint());
+        http.authorizeHttpRequests(authz -> {
+                authz.requestMatchers(mvc.pattern("/actuator/**"))
+                    .hasRole("ADMIN")
+                    .anyRequest()
+                    .authenticated();
+            });
+
+        return http.build();
+    }
+
+
+
+    @Bean
+    public InMemoryUserDetailsManager userDetailsService() {
+        UserDetails user =  User.withDefaultPasswordEncoder()
+            .username("user")
+            .password("password")
+            .roles("USER")
+            .build();
+        UserDetails admin =  User.withDefaultPasswordEncoder()
+            .username("admin")
+            .password("password")
+            .roles("USER", "ADMIN")
+            .build();
+        return new InMemoryUserDetailsManager(user, admin);
     }
 }

@@ -11,7 +11,7 @@ This module contains articles about Spring Boot Security
 - [Disable Security for a Profile in Spring Boot](https://www.baeldung.com/spring-security-disable-profile)
 - [Spring @EnableWebSecurity vs. @EnableGlobalMethodSecurity](https://www.baeldung.com/spring-enablewebsecurity-vs-enableglobalmethodsecurity)
 - [Spring Security – Configuring Different URLs](https://www.baeldung.com/spring-security-configuring-urls)
-
+- [Difference Between permitAll() and anonymous() in Spring Security](https://www.baeldung.com/spring-security-permitall-vs-anonymous)
 
 ### Spring Boot Security Auto-Configuration
 

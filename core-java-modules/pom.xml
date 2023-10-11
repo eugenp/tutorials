@@ -28,13 +28,14 @@
         <!--<module>core-java-streams-2</module> -->
         <!--<module>core-java-sun</module> -->
         <module>core-java-9-improvements</module>
-        <module>core-java-collections-array-list</module>
         <module>core-java-9-streams</module>
         <module>core-java-9</module>
         <module>core-java-10</module>
         <module>core-java-11</module>
         <module>core-java-11-2</module>
         <module>core-java-11-3</module>
+        <module>core-java-collections-array-list</module>
+        <module>core-java-collections-array-list-2</module>
         <module>core-java-collections-list-4</module>
         <module>core-java-collections-list-5</module>
         <module>core-java-collections-maps-4</module>
@@ -82,6 +83,7 @@
         <module>core-java-collections-maps</module>
         <module>core-java-collections-maps-2</module>
         <module>core-java-collections-maps-3</module>
+        <module>core-java-collections-maps-7</module>
         <module>core-java-compiler</module>
         <module>core-java-concurrency-2</module>
         <module>core-java-concurrency-advanced</module>
@@ -109,6 +111,7 @@
         <module>core-java-io-2</module>
         <module>core-java-io-3</module>
         <module>core-java-io-4</module>
+        <module>core-java-io-5</module>
         <module>core-java-io-apis</module>
         <module>core-java-io-apis-2</module>
         <module>core-java-io-conversions</module>
