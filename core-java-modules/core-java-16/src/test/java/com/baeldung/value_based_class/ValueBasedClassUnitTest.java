@@ -1,14 +1,17 @@
 package com.baeldung.value_based_class;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Test;
 
 public class ValueBasedClassUnitTest {
     @Test
     public void givenAutoboxedAndPrimitive_whenCompared_thenReturnEquals() {
-        int primitive_a = 125;
-        Integer obj_a = 125; // this is autoboxed
-        Assert.assertSame(primitive_a, obj_a);
+        List<Integer> list = new ArrayList<>();
+        list.add(1); // this is autoboxed
+        Assert.assertEquals(list.get(0), Integer.valueOf(1));
     }
 
     @Test

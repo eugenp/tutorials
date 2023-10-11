@@ -13,3 +13,4 @@ You can build the project from the command line using: *mvn clean install*, or i
 - [Read Data From the Beginning Using Kafka Consumer API](https://www.baeldung.com/java-kafka-consumer-api-read)
 - [Get Partition Count for a Topic in Kafka](https://www.baeldung.com/java-kafka-partition-count-topic)
 - [bootstrap-server in Kafka Configuration](https://www.baeldung.com/java-kafka-bootstrap-server)
+- [Introduction to Apache Kafka](https://www.baeldung.com/apache-kafka)

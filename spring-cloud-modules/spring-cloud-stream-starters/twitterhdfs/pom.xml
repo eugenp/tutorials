@@ -61,16 +61,21 @@
             <groupId>org.junit.vintage</groupId>
             <artifactId>junit-vintage-engine</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy</artifactId>
+            <version>${groovy.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
+        <finalName>twitterhdfs</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
-        <finalName>twitterhdfs</finalName>
     </build>
 
     <properties>
@@ -83,6 +88,7 @@
         <junit.version>4.13.2</junit.version>
         <junit-jupiter.version>5.8.1</junit-jupiter.version>
         <log4j2.version>2.17.1</log4j2.version>
+        <groovy.version>3.0.8</groovy.version>
     </properties>
 
 </project>
