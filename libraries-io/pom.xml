@@ -5,6 +5,18 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>libraries-io</artifactId>
     <name>libraries-io</name>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>17</source>
+                    <target>17</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -34,6 +46,11 @@
             <artifactId>zip4j</artifactId>
             <version>${zip4j.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>${opencsv.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -42,6 +59,10 @@
         <sshj.version>0.27.0</sshj.version>
         <vfs.version>2.4</vfs.version>
         <zip4j.version>2.9.0</zip4j.version>
+        <opencsv.version>5.7.1</opencsv.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
 </project>

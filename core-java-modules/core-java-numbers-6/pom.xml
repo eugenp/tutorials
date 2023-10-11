@@ -25,8 +25,12 @@
             <version>${commons-codec}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
     </dependencies>
-
     <build>
         <finalName>core-java-numbers-6</finalName>
         <resources>
@@ -39,5 +43,6 @@
 
     <properties>
         <commons-codec>1.15</commons-codec>
+        <guava.version>32.1.2-jre</guava.version>
     </properties>
 </project>

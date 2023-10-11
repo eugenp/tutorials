@@ -18,7 +18,9 @@
         "operationId": "incoming-topic_publish",
         "description": "More details for the incoming topic",
         "bindings": {
-          "kafka": { }
+          "kafka": {
+            "bindingVersion": "0.4.0"
+          }
         },
         "message": {
           "schemaFormat": "application/vnd.oai.openapi+json;version=3.0.0",
@@ -32,7 +34,9 @@
             "$ref": "#/components/schemas/SpringKafkaDefaultHeadersIncomingPayloadDto"
           },
           "bindings": {
-            "kafka": { }
+            "kafka": {
+              "bindingVersion": "0.4.0"
+            }
           }
         }
       }
@@ -42,7 +46,9 @@
         "operationId": "outgoing-topic_subscribe",
         "description": "More details for the outgoing topic",
         "bindings": {
-          "kafka": { }
+          "kafka": {
+            "bindingVersion": "0.4.0"
+          }
         },
         "message": {
           "schemaFormat": "application/vnd.oai.openapi+json;version=3.0.0",
@@ -56,7 +62,9 @@
             "$ref": "#/components/schemas/SpringKafkaDefaultHeadersOutgoingPayloadDto"
           },
           "bindings": {
-            "kafka": { }
+            "kafka": {
+              "bindingVersion": "0.4.0"
+            }
           }
         }
       }

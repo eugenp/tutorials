@@ -27,6 +27,15 @@
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
     </dependencies>
+
+    <properties>
+        <lombok.version>1.18.26</lombok.version>
+    </properties>
 
 </project>

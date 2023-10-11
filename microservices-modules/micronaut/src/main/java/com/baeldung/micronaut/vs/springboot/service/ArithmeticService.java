@@ -1,6 +1,6 @@
 package com.baeldung.micronaut.vs.springboot.service;
 
-import javax.inject.Singleton;
+import jakarta.inject.Singleton;
 
 @Singleton
 public class ArithmeticService {

@@ -1,7 +1,9 @@
 package com.baeldung.camel.apache.file;
 
 import org.apache.camel.builder.RouteBuilder;
+import org.springframework.stereotype.Component;
 
+@Component
 public class FileRouter extends RouteBuilder {
 
     private static final String SOURCE_FOLDER = "src/test/source-folder";
