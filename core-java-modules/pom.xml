@@ -158,6 +158,7 @@
         <module>core-java-properties</module>
         <module>core-java-reflection</module>
         <module>core-java-reflection-2</module>
+        <module>core-java-reflection-3</module>
         <module>core-java-scanner</module>
         <module>core-java-security-2</module>
         <module>core-java-security-3</module>
