@@ -8,6 +8,9 @@ import org.springframework.context.annotation.Bean;
 import org.testcontainers.containers.MongoDBContainer;
 import org.testcontainers.utility.DockerImageName;
 
+
+// Testcontainers require a valid docker installation.
+// When running the app locally, ensure you have a valid Docker environment
 class LocalDevApplication {
 
     public static void main(String[] args) {
