@@ -15,26 +15,27 @@ import com.google.common.collect.Iterables;
 
 public class FirstMatchingElementUnitTest {
 
-    private final List<Object> dataList = Lists.newArrayList("String", Boolean.TRUE, Integer.valueOf(10), Boolean.FALSE, Double.valueOf(20.0));
+    private List<User> userList = Lists.newArrayList(new User(1, "David"), new User(2, "John"), new User(3, "Roger"), new User(4, "John"));
+    private String searchName = "John";
 
     @Test
-    public void whenCalled_thenFindIndexUsingStream() {
-        int index = dataList.stream()
-          .filter(data -> data instanceof Boolean)
-          .mapToInt(data -> dataList.indexOf(data))
+    public void whenUsingIndexOf_thenFindFirstMatchingUserIndex() {
+        int index = userList.stream()
+          .filter(user -> searchName.equals(user.getUserName()))
+          .mapToInt(user -> userList.indexOf(user))
           .findFirst()
           .orElse(-1);
         assertEquals(1, index);
     }
 
     @Test
-    public void whenCalled_thenFindIndexUsingStreamIterator() {
+    public void whenUsingIterator_thenFindFirstMatchingUserIndex() {
         int index = -1;
-        Iterator<Object> iterator = dataList.iterator();
+        Iterator<User> iterator = userList.iterator();
         while (iterator.hasNext()) {
-            Object data = iterator.next();
-            if (data instanceof Boolean) {
-                index = dataList.indexOf(data);
+            User user = iterator.next();
+            if (searchName.equals(user.getUserName())) {
+                index = userList.indexOf(user);
                 break;
             }
         }
@@ -42,11 +43,12 @@ public class FirstMatchingElementUnitTest {
     }
 
     @Test
-    public void whenCalled_thenFindIndexUsingStreamListIterator() {
+    public void whenUsingListIterator_thenFindFirstMatchingUserIndex() {
         int index = -1;
-        ListIterator<Object> listIterator = dataList.listIterator();
+        ListIterator<User> listIterator = userList.listIterator();
         while (listIterator.hasNext()) {
-            if (listIterator.next() instanceof Boolean) {
+            if (searchName.equals(listIterator.next()
+                .getUserName())) {
                 index = listIterator.previousIndex();
                 break;
             }
@@ -55,20 +57,20 @@ public class FirstMatchingElementUnitTest {
     }
 
     @Test
-    public void whenCalled_thenFindIndexUsingIntStream() {
-        int index = IntStream.range(0, dataList.size() - 1)
-          .filter(streamIndex -> dataList.get(streamIndex) instanceof Boolean)
+    public void whenUsingIntStream_thenFindFirstMatchingUserIndex() {
+        int index = IntStream.range(0, userList.size() - 1)
+          .filter(streamIndex -> searchName.equals(userList.get(streamIndex).getUserName()))
           .findFirst()
           .orElse(-1);
         assertEquals(1, index);
     }
 
     @Test
-    public void whenCalled_thenFindIndexUsingStreamTakeWhile() {
-        int lastIndex = dataList.size() - 1;
-        int predicateIndex = dataList.stream()
-          .takeWhile(data -> !(data instanceof Boolean))
-          .mapToInt(dataList::indexOf)
+    public void whenUsingTakeWhile_thenFindFirstMatchingUserIndex() {
+        int lastIndex = userList.size() - 1;
+        int predicateIndex = userList.stream()
+          .takeWhile(user -> !(searchName.equals(user.getUserName())))
+          .mapToInt(userList::indexOf)
           .max()
           .orElse(-1);
 
@@ -80,14 +82,14 @@ public class FirstMatchingElementUnitTest {
     }
 
     @Test
-    public void whenCalled_thenFindIndexUsingGoogleGuava() {
-        int index = Iterables.indexOf(dataList, data -> data instanceof Boolean);
+    public void whenUsingGoogleGuava_thenFindFirstMatchingUserIndex() {
+        int index = Iterables.indexOf(userList, user -> searchName.equals(user.getUserName()));
         assertEquals(1, index);
     }
 
     @Test
-    public void whenCalled_thenFindIndexUsingApacheCommons() {
-        int index = IterableUtils.indexOf(dataList, data -> data instanceof Boolean);
+    public void whenUsingApacheCommons_thenFindFirstMatchingUserIndex() {
+        int index = IterableUtils.indexOf(userList, user -> searchName.equals(user.getUserName()));
         assertEquals(1, index);
     }
 }
