@@ -1,4 +1,4 @@
-package com.baeldung.scope.singletone;
+package com.baeldung.scope.singleton;
 
 import java.util.function.Function;
 

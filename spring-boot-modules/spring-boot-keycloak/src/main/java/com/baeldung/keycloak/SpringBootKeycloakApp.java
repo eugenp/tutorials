@@ -6,11 +6,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
-
-public class SpringBoot {
+public class SpringBootKeycloakApp {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringBoot.class, args);
+        SpringApplication.run(SpringBootKeycloakApp.class, args);
     }
 
     @Bean

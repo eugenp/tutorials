@@ -24,6 +24,8 @@ import com.baeldung.testcontainers.support.MiddleEarthCharactersRepository;
 @Testcontainers
 @SpringBootTest(webEnvironment = DEFINED_PORT)
 @DirtiesContext(classMode = AFTER_CLASS)
+// Testcontainers require a valid docker installation.
+// When running the tests, ensure you have a valid Docker environment
 class ServiceConnectionLiveTest {
 
     @Container
