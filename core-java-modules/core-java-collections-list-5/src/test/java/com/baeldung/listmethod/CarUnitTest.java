@@ -28,6 +28,7 @@ class CarUnitTest {
         assertEquals("BMW", names.get(1));
         assertEquals("Toyota", names.get(2));
     }
+
     @Test
     void whenCarList_thenUseForEachLoop() {
         List<Car> cars = new ArrayList<>();
@@ -69,10 +70,9 @@ class CarUnitTest {
         cars.add(new Car("BMW"));
         cars.add(new Car("Toyota"));
 
-        List<String> names = cars
-                .stream()
-                .map(Car::getName)
-                .collect(Collectors.toList());
+        List<String> names = cars.stream()
+            .map(Car::getName)
+            .collect(Collectors.toList());
 
         assertEquals("Ford", names.get(0));
         assertEquals("BMW", names.get(1));
