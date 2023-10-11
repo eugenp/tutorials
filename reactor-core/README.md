@@ -13,3 +13,5 @@ This module contains articles about Reactor Core.
 - [Handling Exceptions in Project Reactor](https://www.baeldung.com/reactor-exceptions)
 - [Difference Between Flux.create and Flux.generate](https://www.baeldung.com/java-flux-create-generate)
 - [Difference Between Flux and Mono](https://www.baeldung.com/java-reactor-flux-vs-mono)
+- [Working with MathFlux](https://www.baeldung.com)
+
