@@ -61,9 +61,13 @@ public class TruncateDoubleUnitTest {
 
     @Test
     public void givenADouble_whenUsingStringFormat_truncateToTwoDecimalPlaces() {
-        double value = 1.55555555;
-        String truncated = String.format("%.2f", value);
+        double positive = 1.55555555;
+        String truncated = String.format("%.2f", positive);
         assertEquals("1.56", truncated);
+
+        double negative = -1.55555555;
+        String negativeTruncated = String.format("%.2f", negative);
+        assertEquals("-1.56", negativeTruncated);
     }
 
 }
