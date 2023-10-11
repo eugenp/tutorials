@@ -42,101 +42,101 @@ import reactor.core.publisher.Mono;
 @SpringBootApplication
 public class ReactiveResourceServerApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ReactiveResourceServerApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(ReactiveResourceServerApplication.class, args);
+    }
 
-	@Configuration
-	@EnableWebFluxSecurity
-	@EnableReactiveMethodSecurity
-	static class SecurityConfig {
-		@Bean
-		SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
-			http.oauth2ResourceServer(resourceServer -> resourceServer.jwt(withDefaults()));
-			http.securityContextRepository(NoOpServerSecurityContextRepository.getInstance());
-			http.csrf(csrf -> csrf.disable());
-			http.exceptionHandling(eh -> eh
-					.accessDeniedHandler((var exchange, var ex) -> exchange.getPrincipal().flatMap(principal -> {
-						final var response = exchange.getResponse();
-						response.setStatusCode(
-								principal instanceof AnonymousAuthenticationToken ? HttpStatus.UNAUTHORIZED
-										: HttpStatus.FORBIDDEN);
-						response.getHeaders().setContentType(MediaType.TEXT_PLAIN);
-						final var dataBufferFactory = response.bufferFactory();
-						final var buffer = dataBufferFactory.wrap(ex.getMessage().getBytes(Charset.defaultCharset()));
-						return response.writeWith(Mono.just(buffer))
-								.doOnError(error -> DataBufferUtils.release(buffer));
-					})));
+    @Configuration
+    @EnableWebFluxSecurity
+    @EnableReactiveMethodSecurity
+    static class SecurityConfig {
+        @Bean
+        SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
+            http.oauth2ResourceServer(resourceServer -> resourceServer.jwt(withDefaults()));
+            http.securityContextRepository(NoOpServerSecurityContextRepository.getInstance());
+            http.csrf(csrf -> csrf.disable());
+            http.exceptionHandling(eh -> eh
+                    .accessDeniedHandler((var exchange, var ex) -> exchange.getPrincipal().flatMap(principal -> {
+                        final var response = exchange.getResponse();
+                        response.setStatusCode(
+                                principal instanceof AnonymousAuthenticationToken ? HttpStatus.UNAUTHORIZED
+                                        : HttpStatus.FORBIDDEN);
+                        response.getHeaders().setContentType(MediaType.TEXT_PLAIN);
+                        final var dataBufferFactory = response.bufferFactory();
+                        final var buffer = dataBufferFactory.wrap(ex.getMessage().getBytes(Charset.defaultCharset()));
+                        return response.writeWith(Mono.just(buffer))
+                                .doOnError(error -> DataBufferUtils.release(buffer));
+                    })));
 
-			// @formatter:off
+            // @formatter:off
             http.authorizeExchange(req -> req
                     .pathMatchers("/secured-route").hasRole("AUTHORIZED_PERSONNEL").anyExchange()
                     .authenticated()); 
             // @formatter:on
 
-			return http.build();
-		}
+            return http.build();
+        }
 
-		static interface ReactiveJwtAuthoritiesConverter extends Converter<Jwt, Flux<GrantedAuthority>> {
-		}
+        static interface ReactiveJwtAuthoritiesConverter extends Converter<Jwt, Flux<GrantedAuthority>> {
+        }
 
-		@Bean
-		ReactiveJwtAuthoritiesConverter realmRoles2AuthoritiesConverter() {
-			return (Jwt jwt) -> {
-				final var realmRoles = Optional.of(jwt.getClaimAsMap("realm_access")).orElse(Map.of());
-				@SuppressWarnings("unchecked")
-				final var roles = (List<String>) realmRoles.getOrDefault("roles", List.of());
-				return Flux.fromStream(roles.stream()).map(SimpleGrantedAuthority::new)
-						.map(GrantedAuthority.class::cast);
-			};
-		}
+        @Bean
+        ReactiveJwtAuthoritiesConverter realmRoles2AuthoritiesConverter() {
+            return (Jwt jwt) -> {
+                final var realmRoles = Optional.of(jwt.getClaimAsMap("realm_access")).orElse(Map.of());
+                @SuppressWarnings("unchecked")
+                final var roles = (List<String>) realmRoles.getOrDefault("roles", List.of());
+                return Flux.fromStream(roles.stream()).map(SimpleGrantedAuthority::new)
+                        .map(GrantedAuthority.class::cast);
+            };
+        }
 
-		@Bean
-		ReactiveJwtAuthenticationConverter authenticationConverter(
-				Converter<Jwt, Flux<GrantedAuthority>> authoritiesConverter) {
-			final var authenticationConverter = new ReactiveJwtAuthenticationConverter();
-			authenticationConverter.setPrincipalClaimName(StandardClaimNames.PREFERRED_USERNAME);
-			authenticationConverter.setJwtGrantedAuthoritiesConverter(authoritiesConverter);
-			return authenticationConverter;
-		}
-	}
+        @Bean
+        ReactiveJwtAuthenticationConverter authenticationConverter(
+                Converter<Jwt, Flux<GrantedAuthority>> authoritiesConverter) {
+            final var authenticationConverter = new ReactiveJwtAuthenticationConverter();
+            authenticationConverter.setPrincipalClaimName(StandardClaimNames.PREFERRED_USERNAME);
+            authenticationConverter.setJwtGrantedAuthoritiesConverter(authoritiesConverter);
+            return authenticationConverter;
+        }
+    }
 
-	@Service
-	public static class MessageService {
+    @Service
+    public static class MessageService {
 
-		public Mono<String> greet() {
-			return ReactiveSecurityContextHolder.getContext().map(ctx -> {
-				final var who = (JwtAuthenticationToken) ctx.getAuthentication();
-				return "Hello %s! You are granted with %s.".formatted(who.getName(), who.getAuthorities());
-			}).switchIfEmpty(Mono.error(new AuthenticationCredentialsNotFoundException("Security context is empty")));
-		}
+        public Mono<String> greet() {
+            return ReactiveSecurityContextHolder.getContext().map(ctx -> {
+                final var who = (JwtAuthenticationToken) ctx.getAuthentication();
+                return "Hello %s! You are granted with %s.".formatted(who.getName(), who.getAuthorities());
+            }).switchIfEmpty(Mono.error(new AuthenticationCredentialsNotFoundException("Security context is empty")));
+        }
 
-		@PreAuthorize("hasRole('AUTHORIZED_PERSONNEL')")
-		public Mono<String> getSecret() {
-			return Mono.just("Only authorized personnel can read that");
-		}
-	}
+        @PreAuthorize("hasRole('AUTHORIZED_PERSONNEL')")
+        public Mono<String> getSecret() {
+            return Mono.just("Only authorized personnel can read that");
+        }
+    }
 
-	@RestController
-	@RequiredArgsConstructor
-	public static class GreetingController {
-		private final MessageService messageService;
+    @RestController
+    @RequiredArgsConstructor
+    public static class GreetingController {
+        private final MessageService messageService;
 
-		@GetMapping("/greet")
-		public Mono<ResponseEntity<String>> greet() {
-			return messageService.greet().map(ResponseEntity::ok);
-		}
+        @GetMapping("/greet")
+        public Mono<ResponseEntity<String>> greet() {
+            return messageService.greet().map(ResponseEntity::ok);
+        }
 
-		@GetMapping("/secured-route")
-		public Mono<ResponseEntity<String>> securedRoute() {
-			return messageService.getSecret().map(ResponseEntity::ok);
-		}
+        @GetMapping("/secured-route")
+        public Mono<ResponseEntity<String>> securedRoute() {
+            return messageService.getSecret().map(ResponseEntity::ok);
+        }
 
-		@GetMapping("/secured-method")
-		@PreAuthorize("hasRole('AUTHORIZED_PERSONNEL')")
-		public Mono<ResponseEntity<String>> securedMethod() {
-			return messageService.getSecret().map(ResponseEntity::ok);
-		}
-	}
+        @GetMapping("/secured-method")
+        @PreAuthorize("hasRole('AUTHORIZED_PERSONNEL')")
+        public Mono<ResponseEntity<String>> securedMethod() {
+            return messageService.getSecret().map(ResponseEntity::ok);
+        }
+    }
 
 }
