@@ -9,25 +9,21 @@ public class FloatDoubleConversionsTest {
     public void whenDoubleType_thenFloatTypeSuccess(){
         double interestRatesYearly = 13.333333333333334;
         float interest = (float) interestRatesYearly;
-        System.out.println(interest);  //13.333333
-        Assert.assertTrue(Float.class.isInstance(interest));//true
+        Assert.assertEquals(13.333333f, interest, 0.000004f);
 
         Double monthlyRates = 2.111111111111112;
         float rates = monthlyRates.floatValue();
-        System.out.println(rates);  //2.1111112
-        Assert.assertTrue(Float.class.isInstance(rates));//true
+        Assert.assertEquals(2.1111112f, rates, 0.00000013);
     }
     @Test
     public void whenFloatType_thenDoubleTypeSuccess(){
         float gradeAverage =2.05f;
         double average = gradeAverage;
-        System.out.println(average);  //2.049999952316284
-        Assert.assertTrue(Double.class.isInstance(average));//true
+        Assert.assertEquals(2.05, average, 0.06);
 
         Float monthlyRates = 2.1111112f;
         Double rates = monthlyRates.doubleValue();
-        System.out.println(rates);  //2.1111112
-        Assert.assertTrue(Double.class.isInstance(rates));//true
+        Assert.assertEquals(2.11111112, rates, 0.0000002);//true
     }
 
 }

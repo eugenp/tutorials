@@ -45,8 +45,8 @@ public class FruitArrayJacksonUnmarshalUnitTest {
             return new RouteBuilder() {
                 @Override
                 public void configure() throws Exception {
-                from("direct:jsonInput").unmarshal(new ListJacksonDataFormat(Fruit.class))
-                  .to("mock:marshalledObject");
+                    from("direct:jsonInput").unmarshal(new ListJacksonDataFormat(Fruit.class))
+                      .to("mock:marshalledObject");
                 }
             };
         }

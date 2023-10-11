@@ -31,6 +31,11 @@ public final class Point {
     }
 
     @Override
+    public String toString() {
+        return "Point{" + "x=" + x + ", y=" + y + ", z=" + z + '}';
+    }
+
+    @Override
     public boolean equals(Object other) {
         if (other == null || getClass() != other.getClass())
             return false;
