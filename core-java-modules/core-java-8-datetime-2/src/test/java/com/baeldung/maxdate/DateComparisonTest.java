@@ -10,6 +10,6 @@ public class DateComparisonTest {
         DateComparison comparator = new DateComparison();
         int result = comparator.compareTodayWithMaxDate();
 
-        assertTrue(comparisonResult < 0);
+        assertTrue(result < 0);
     }
 }
