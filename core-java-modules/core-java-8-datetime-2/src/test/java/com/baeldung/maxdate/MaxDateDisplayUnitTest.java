@@ -3,7 +3,7 @@ package com.baeldung.maxdate;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class MaxDateDisplayTest {
+public class MaxDateDisplayUnitTest {
 
     @Test
     public void whenGetMaxDate_thenCorrectResult() {
