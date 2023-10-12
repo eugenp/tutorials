@@ -13,8 +13,7 @@
         <artifactId>jacoco-coverage-aggregation</artifactId>
         <version>1.0</version>
     </parent>
-    
-    
+
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -28,7 +27,7 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-    	
+
     <build>
         <plugins>
             <plugin>
@@ -43,7 +42,7 @@
             </plugin>
         </plugins>
     </build>
-	
+
     <properties>
         <junit-jupiter-engine.version>5.9.2</junit-jupiter-engine.version>
         <spring-context.version>6.0.11</spring-context.version>

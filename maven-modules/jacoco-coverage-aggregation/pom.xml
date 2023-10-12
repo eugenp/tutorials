@@ -21,7 +21,7 @@
         <module>controllers</module>
         <module>aggregate-report</module>
     </modules>
-    
+
     <build>
         <plugins>
             <plugin>
