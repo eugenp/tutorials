@@ -27,7 +27,7 @@
         </dependency>
         <dependency>
             <groupId>com.github.ulisesbocchio</groupId>
-                <artifactId>jasypt-spring-boot-starter</artifactId>
+            <artifactId>jasypt-spring-boot-starter</artifactId>
             <version>${jasypt.version}</version>
         </dependency>
         <dependency>
