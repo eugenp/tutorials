@@ -9,4 +9,5 @@
 - [Regular Expression: \z vs \Z Anchors in Java](https://www.baeldung.com/java-regular-expression-z-vs-z-anchors)
 - [Extract Text Between Square Brackets](https://www.baeldung.com/java-get-content-between-square-brackets)
 - [Get the Indexes of Regex Pattern Matches in Java](https://www.baeldung.com/java-indexes-regex-pattern-matches)
+- [Check if a String is Strictly Alphanumeric With Java](https://www.baeldung.com/java-check-string-contains-only-letters-numbers)
 - More articles: [[<-- prev]](/core-java-modules/core-java-regex)
