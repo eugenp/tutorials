@@ -70,35 +70,35 @@ class SkippingElementsUnitTest {
 
     @ParameterizedTest
     @MethodSource("testSource")
-    void skipNthElementInListWithFilterTest(List<String> input, List<String> expected, int n) {
+    void givenListSkipNthElementInListWithFilterTestShouldFilterNthElement(List<String> input, List<String> expected, int n) {
         final List<String> actual = SkippingElements.skipNthElementInListWithFilter(input, n);
         assertEquals(expected, actual);
     }
 
     @ParameterizedTest
     @MethodSource("testSource")
-    void skipNthElementInListWithIterateTest(List<String> input, List<String> expected, int n) {
+    void givenListSkipNthElementInListWithIterateTestShouldFilterNthElement(List<String> input, List<String> expected, int n) {
         final List<String> actual = SkippingElements.skipNthElementInListWithIterate(input, n);
         assertEquals(expected, actual);
     }
 
     @ParameterizedTest
     @MethodSource("testSource")
-    void skipNthElementInListWithSublistTest(List<String> input, List<String> expected, int n) {
+    void givenListSkipNthElementInListWithSublistTestShouldFilterNthElement(List<String> input, List<String> expected, int n) {
         final List<String> actual = SkippingElements.skipNthElementInListWithSublist(input, n);
         assertEquals(expected, actual);
     }
 
     @ParameterizedTest
     @MethodSource("testSource")
-    void skipNthElementInListWithForTest(List<String> input, List<String> expected, int n) {
+    void givenListSkipNthElementInListWithForTestShouldFilterNthElement(List<String> input, List<String> expected, int n) {
         final List<String> actual = SkippingElements.skipNthElementInListWithFor(input, n);
         assertEquals(expected, actual);
     }
 
     @ParameterizedTest
     @MethodSource("testSource")
-    void skipNthElementInStreamWithIteratorTest(List<String> input, List<String> expected, int n) {
+    void givenListSkipNthElementInStreamWithIteratorTestShouldFilterNthElement(List<String> input, List<String> expected, int n) {
         final Stream<String> inputStream = input.stream();
         final List<String> actual = SkippingElements.skipNthElementInListWithIterator(inputStream, n);
         assertEquals(expected, actual);
@@ -106,7 +106,7 @@ class SkippingElementsUnitTest {
 
     @ParameterizedTest
     @MethodSource("testSource")
-    void skipNthElementInStreamWithCollector(List<String> input, List<String> expected, int n) {
+    void givenListSkipNthElementInStreamWithCollectorShouldFilterNthElement(List<String> input, List<String> expected, int n) {
         final Stream<String> inputStream = input.stream();
         final List<String> actual = SkippingElements.skipNthElementInStreamWithCollector(inputStream, n);
         assertEquals(expected, actual);
