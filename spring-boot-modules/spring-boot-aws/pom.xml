@@ -10,7 +10,7 @@
     <description>spring-boot-aws</description>
 
     <!-- "sam build" needs all the dependencies including its parent project. Hence, we cannot use parent-boot in this case -->
-    <parent>f
+    <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.7.11</version>
