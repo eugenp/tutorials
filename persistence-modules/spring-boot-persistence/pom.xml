@@ -9,9 +9,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-2</relativePath>
+        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -49,10 +49,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
+            <version>${mysql-connector-java.version}</version>
         </dependency>
         <dependency>
             <groupId>org.xerial</groupId>
@@ -66,11 +63,17 @@
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
         </dependency>
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+        </dependency>
     </dependencies>
 
     <properties>
         <mockito.version>2.23.0</mockito.version>
         <validation-api.version>2.0.1.Final</validation-api.version>
+        <mysql-connector-java.version>8.0.31</mysql-connector-java.version>
+        <start-class>com.baeldung.boot.Application</start-class>
     </properties>
 
 </project>
