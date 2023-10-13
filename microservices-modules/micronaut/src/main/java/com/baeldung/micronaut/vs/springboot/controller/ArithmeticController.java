@@ -3,7 +3,7 @@ package com.baeldung.micronaut.vs.springboot.controller;
 import java.lang.management.ManagementFactory;
 import java.lang.management.MemoryMXBean;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 import com.baeldung.micronaut.vs.springboot.service.ArithmeticService;
 
