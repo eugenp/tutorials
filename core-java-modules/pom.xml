@@ -166,6 +166,7 @@
         <module>core-java-security-algorithms</module>
         <module>core-java-serialization</module>
         <module>core-java-streams</module>
+        <module>core-java-streams-simple</module>
         <module>core-java-streams-3</module>
         <module>core-java-string-algorithms</module>
         <module>core-java-string-algorithms-2</module>
