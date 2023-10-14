@@ -5,14 +5,14 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.StoredProcedureQuery;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.StoredProcedureQuery;
 
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.exception.SQLGrammarException;
+import org.hibernate.query.Query;
 import org.junit.After;
 import org.junit.Assume;
 import org.junit.Before;
@@ -59,22 +59,22 @@ public class FooStoredProceduresLiveTest {
 
     private boolean getFoosByNameExists() {
         try {
-            Query sqlQuery = session.createSQLQuery("CALL GetAllFoos()").addEntity(Foo.class);
+            Query<Foo> sqlQuery = session.createNativeQuery("CALL GetFoosByName()",Foo.class);
             sqlQuery.list();
             return true;
         } catch (SQLGrammarException e) {
-            LOGGER.error("WARNING : GetFoosByName() Procedure is may be missing ", e);
+            LOGGER.error("WARNING : GetFoosByName() Procedure may be missing ", e);
             return false;
         }
     }
 
     private boolean getAllFoosExists() {
         try {
-            Query sqlQuery = session.createSQLQuery("CALL GetAllFoos()").addEntity(Foo.class);
+            Query<Foo> sqlQuery = session.createNativeQuery("CALL GetAllFoos()",Foo.class);
             sqlQuery.list();
             return true;
         } catch (SQLGrammarException e) {
-            LOGGER.error("WARNING : GetAllFoos() Procedure is may be missing ", e);
+            LOGGER.error("WARNING : GetAllFoos() Procedure may be missing ", e);
             return false;
         }
     }
@@ -90,8 +90,8 @@ public class FooStoredProceduresLiveTest {
 
         fooService.create(new Foo(randomAlphabetic(6)));
 
-        // Stored procedure getAllFoos using createSQLQuery
-        Query sqlQuery = session.createSQLQuery("CALL GetAllFoos()").addEntity(Foo.class);
+        // Stored procedure getAllFoos using createQuery
+        Query<Foo> sqlQuery = session.createNativeQuery("CALL GetAllFoos()", Foo.class);
         @SuppressWarnings("unchecked")
         List<Foo> allFoos = sqlQuery.list();
         for (Foo foo : allFoos) {
@@ -124,7 +124,7 @@ public class FooStoredProceduresLiveTest {
         fooService.create(new Foo("NewFooName"));
 
         // Stored procedure getFoosByName using createSQLQuery()
-        Query sqlQuery = session.createSQLQuery("CALL GetFoosByName(:fooName)").addEntity(Foo.class).setParameter("fooName", "NewFooName");
+        Query<Foo> sqlQuery = session.createNativeQuery("CALL GetFoosByName(:fooName)", Foo.class).setParameter("fooName", "NewFooName");
         @SuppressWarnings("unchecked")
         List<Foo> allFoosByName = sqlQuery.list();
         for (Foo foo : allFoosByName) {
@@ -132,7 +132,7 @@ public class FooStoredProceduresLiveTest {
         }
 
         // Stored procedure getFoosByName using getNamedQuery()
-        Query namedQuery = session.getNamedQuery("callGetFoosByName").setParameter("fooName", "NewFooName");
+        Query<Foo> namedQuery = session.createQuery("callGetFoosByName").setParameter("fooName", "NewFooName");
         @SuppressWarnings("unchecked")
         List<Foo> allFoosByName2 = namedQuery.list();
         for (Foo foo : allFoosByName2) {
