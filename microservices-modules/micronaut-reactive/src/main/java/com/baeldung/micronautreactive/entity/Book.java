@@ -5,6 +5,9 @@ import io.micronaut.core.annotation.Nullable;
 import io.micronaut.data.annotation.Id;
 import io.micronaut.data.annotation.MappedEntity;
 import io.micronaut.serde.annotation.Serdeable;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import org.bson.types.ObjectId;
 
 @Serdeable
@@ -13,8 +16,10 @@ public class Book {
     @Id
     @Generated
     private @Nullable ObjectId id;
+    @NotBlank
     private String title;
 
+    @NotNull
     private Author author;
     private int year;
 
