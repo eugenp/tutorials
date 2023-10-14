@@ -2,10 +2,15 @@ package com.baeldung.networking.url;
 
 import static java.util.stream.Collectors.toList;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Map;
 
 import org.apache.http.client.utils.URIBuilder;
@@ -147,6 +152,26 @@ public class UrlUnitTest {
           .toURL();
 
         assertEquals("http://baeldung.com:9090/articles?topic=java&version=8", url.toString());
+    }
+
+    @Test
+    public void givenURI_whenConvertingToURL_thenCorrect() throws IOException, URISyntaxException {
+        String aURIString = "http://courses.baeldung.com";
+        URI uri = new URI(aURIString);
+        URL url = uri.toURL();
+        assertNotNull(url);
+        assertEquals(aURIString, url.toString());
+    }
+
+    @Test
+    public void givenPath_whenConvertingToURIAndThenURL_thenCorrect() throws IOException, URISyntaxException {
+        String finalPath = "file:/D:/baeldung/java-url";
+        Path path = Paths.get("/baeldung/java-url");
+        URI uri = path.toUri();
+        URL url = uri.toURL();
+        assertNotNull(url);
+        // Adapt the finalPath value to match your own path
+        // assertEquals(finalPath, url.toString());
     }
 
 }
