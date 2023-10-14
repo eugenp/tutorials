@@ -1,7 +1,5 @@
 package com.baeldung.magicsquare;
 
-import org.junit.platform.commons.util.StringUtils;
-
 import java.util.stream.IntStream;
 
 public class MagicSquare {
