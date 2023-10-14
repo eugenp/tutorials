@@ -20,8 +20,7 @@ import java.util.concurrent.TimeUnit;
 @Warmup(iterations = 3, time = 10, timeUnit = TimeUnit.NANOSECONDS)
 @Measurement(iterations = 3, time = 10, timeUnit = TimeUnit.NANOSECONDS)
 public class FileSizeBenchmark {
-
-
+    
     public static void main(String[] args) throws Exception {
         org.openjdk.jmh.Main.main(args);
     }
