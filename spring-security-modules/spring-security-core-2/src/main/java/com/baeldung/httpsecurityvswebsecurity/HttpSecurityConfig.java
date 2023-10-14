@@ -13,18 +13,17 @@ public class HttpSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         // Given: HttpSecurity configured
 
-        http
-            .authorizeRequests()
-                .antMatchers("/public/**").permitAll()
-                .antMatchers("/admin/**").hasRole("ADMIN")
-                .anyRequest().authenticated()
+        http.authorizeRequests()
+            .antMatchers("/public/**").permitAll()
+            .antMatchers("/admin/**").hasRole("ADMIN")
+            .anyRequest().authenticated()
             .and()
             .formLogin()
-                .loginPage("/login")
-                .permitAll()
+            .loginPage("/login")
+            .permitAll()
             .and()
             .logout()
-                .permitAll();
+            .permitAll();
 
         // When: Accessing specific URLs
         // Then: Access is granted based on defined rules
