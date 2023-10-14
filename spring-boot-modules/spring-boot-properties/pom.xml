@@ -142,7 +142,7 @@
     </profiles>
 
     <properties>
-        <spring-cloud.version>2022.0.1</spring-cloud.version>
+        <spring-cloud.version>2022.0.4</spring-cloud.version>
         <commons-configuration.version>1.10</commons-configuration.version>
         <resource.delimiter>@</resource.delimiter>
         <!-- <start-class>com.baeldung.buildproperties.Application</start-class> -->

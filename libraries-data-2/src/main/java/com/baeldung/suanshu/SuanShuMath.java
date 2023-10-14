@@ -1,14 +1,15 @@
 package com.baeldung.suanshu;
 
-import com.numericalmethod.suanshu.algebra.linear.matrix.doubles.Matrix;
-import com.numericalmethod.suanshu.algebra.linear.matrix.doubles.matrixtype.dense.DenseMatrix;
-import com.numericalmethod.suanshu.algebra.linear.matrix.doubles.operation.Inverse;
-import com.numericalmethod.suanshu.algebra.linear.vector.doubles.Vector;
-import com.numericalmethod.suanshu.algebra.linear.vector.doubles.dense.DenseVector;
+import com.numericalmethod.suanshu.matrix.doubles.Matrix;
+import com.numericalmethod.suanshu.matrix.doubles.matrixtype.dense.DenseMatrix;
+import com.numericalmethod.suanshu.matrix.doubles.operation.Inverse;
+import com.numericalmethod.suanshu.vector.doubles.Vector;
+import com.numericalmethod.suanshu.vector.doubles.dense.DenseVector;
 import com.numericalmethod.suanshu.analysis.function.polynomial.Polynomial;
 import com.numericalmethod.suanshu.analysis.function.polynomial.root.PolyRoot;
 import com.numericalmethod.suanshu.analysis.function.polynomial.root.PolyRootSolver;
 import com.numericalmethod.suanshu.number.complex.Complex;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

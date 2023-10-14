@@ -31,7 +31,7 @@ public class AdvancedCollaboratorIntegrationTest {
                 return "mocked: ";
             }
         };
-        String res = mock.methodThatCallsPrivateMethod(1);
+        String res = mock.methodThatCallsProtectedMethod(1);
         assertEquals("mocked: 1", res);
     }
 

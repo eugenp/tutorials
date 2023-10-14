@@ -1,4 +1,4 @@
-package core;
+package com.baeldung.jsonprettyprinter;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

@@ -38,6 +38,16 @@
             <version>3.12.0</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>io.vavr</groupId>
+            <artifactId>vavr</artifactId>
+            <version>${vavr.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -64,9 +74,10 @@
 
     <properties>
         <!-- testing -->
-        <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
         <maven.compiler.source>12</maven.compiler.source>
         <maven.compiler.target>12</maven.compiler.target>
+        <vavr.version>0.10.2</vavr.version>
+        <guava.version>32.1.2-jre</guava.version>
     </properties>
 
 </project>

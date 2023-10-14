@@ -4,9 +4,9 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.apache.hc.core5.http.ParseException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 
 import org.apache.hc.client5.http.classic.methods.HttpPost;
 import org.apache.hc.client5.http.entity.mime.FileBody;
@@ -19,6 +19,7 @@ import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
 import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.HttpEntity;
 import org.apache.hc.core5.http.HttpStatus;
+import org.apache.hc.core5.http.ParseException;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -29,9 +30,6 @@ import java.io.InputStreamReader;
 import java.net.URL;
 
 class HttpClientMultipartLiveTest extends GetRequestMockServer {
-
-    // No longer available
-    // private static final String SERVER = "http://echo.200please.com";
 
     private static final String SERVER = "http://localhost:8080/spring-mvc-java/stub/multipart";
     private static final String TEXTFILENAME = "temp.txt";

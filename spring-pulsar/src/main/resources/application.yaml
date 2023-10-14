@@ -1,0 +1,12 @@
+server:
+  port: 8085
+
+spring:
+  pulsar:
+    client:
+      service-url: pulsar://localhost:6650
+    defaults:
+      type-mappings:
+        - message-type: com.baeldung.springpulsar.User
+          schema-info:
+            schema-type: JSON

@@ -92,12 +92,6 @@
             <version>7.1.0</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>7.5</version>
-            <scope>compile</scope>
-        </dependency>
     </dependencies>
     <build>
         <finalName>core-java-io-apis-2</finalName>

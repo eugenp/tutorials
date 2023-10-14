@@ -25,7 +25,7 @@
         <dependency>
             <groupId>jakarta.xml.bind</groupId>
             <artifactId>jakarta.xml.bind-api</artifactId>
-            <version>4.0.0</version>
+            <version>${jakarta.xml.bind-api}</version>
         </dependency>
         <dependency>
             <groupId>org.glassfish.jaxb</groupId>
@@ -75,6 +75,7 @@
     <properties>
         <spring.version>6.0.6</spring.version>
         <opencsv.version>5.7.1</opencsv.version>
+        <jakarta.xml.bind-api>4.0.0</jakarta.xml.bind-api>
         <jaxb.version>4.0.2</jaxb.version>
         <jackson-datatype.version>2.14.2</jackson-datatype.version>
         <http-client.version>4.5.14</http-client.version>

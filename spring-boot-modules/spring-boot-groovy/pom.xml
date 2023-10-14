@@ -50,7 +50,7 @@
             <plugin>
                 <groupId>org.codehaus.gmavenplus</groupId>
                 <artifactId>gmavenplus-plugin</artifactId>
-                <version>1.9.0</version>
+                <version>${gmavenplus-plugin.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -72,6 +72,7 @@
     <properties>
         <start-class>com.baeldung.springwithgroovy.SpringBootGroovyApplication</start-class>
         <groovy.version>3.0.13</groovy.version>
+        <gmavenplus-plugin.version>1.9.0</gmavenplus-plugin.version>
     </properties>
 
 </project>
