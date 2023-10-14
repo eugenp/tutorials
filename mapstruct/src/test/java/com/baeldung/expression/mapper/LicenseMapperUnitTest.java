@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
 
@@ -72,6 +73,33 @@ class LicenseMapperUnitTest {
         License license = licenseMapper.toLicense(licenseDto);
         assertThat(license).isNotNull();
         assertThat(license.getId()).isSameAs(id);
+    }
+
+    @Test
+    void givenLicenseDtoWithoutLicenseTypeString_whenMapperMethodIsInvoked_thenLicenseShouldBePopulatedWithoutLicenseType() {
+        LicenseDto licenseDto = new LicenseDto();
+        License license = licenseMapper.toLicense(licenseDto);
+        assertThat(license).isNotNull();
+        Assertions.assertNull(license.getLicenseType());
+    }
+
+    @Test
+    void givenLicenseDtoWithInvalidLicenseTypeString_whenMapperMethodIsInvoked_thenLicenseShouldBePopulatedWithoutLicenseType() {
+        LicenseDto licenseDto = new LicenseDto();
+        licenseDto.setLicenseType("invalid_license_type");
+        License license = licenseMapper.toLicense(licenseDto);
+        assertThat(license).isNotNull();
+        Assertions.assertNull(license.getLicenseType());
+    }
+
+    @Test
+    void givenLicenseDtoWithValidLicenseTypeString_whenMapperMethodIsInvoked_thenLicenseShouldBePopulatedWithMatchingLicenseType() {
+        LicenseDto licenseDto = new LicenseDto();
+        licenseDto.setLicenseType("INDIVIDUAL");
+        License license = licenseMapper.toLicense(licenseDto);
+        assertThat(license).isNotNull();
+        Assertions.assertNotNull(license.getLicenseType());
+        assertThat(license.getLicenseType()).isEqualTo(License.LicenseType.INDIVIDUAL);
     }
 
 }

@@ -123,6 +123,7 @@ public class HttpClientPost {
 
         HttpRequest request = HttpRequest.newBuilder()
           .uri(URI.create(serviceUrl))
+          .header("Content-Type", "application/x-www-form-urlencoded")
           .POST(HttpRequest.BodyPublishers.ofString(getFormDataAsString(formData)))
           .build();
 

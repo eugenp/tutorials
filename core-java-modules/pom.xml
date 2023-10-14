@@ -83,6 +83,7 @@
         <module>core-java-collections-maps</module>
         <module>core-java-collections-maps-2</module>
         <module>core-java-collections-maps-3</module>
+        <module>core-java-collections-maps-7</module>
         <module>core-java-compiler</module>
         <module>core-java-concurrency-2</module>
         <module>core-java-concurrency-advanced</module>
@@ -157,6 +158,7 @@
         <module>core-java-properties</module>
         <module>core-java-reflection</module>
         <module>core-java-reflection-2</module>
+        <module>core-java-reflection-3</module>
         <module>core-java-scanner</module>
         <module>core-java-security-2</module>
         <module>core-java-security-3</module>
@@ -164,6 +166,7 @@
         <module>core-java-security-algorithms</module>
         <module>core-java-serialization</module>
         <module>core-java-streams</module>
+        <module>core-java-streams-simple</module>
         <module>core-java-streams-3</module>
         <module>core-java-string-algorithms</module>
         <module>core-java-string-algorithms-2</module>
