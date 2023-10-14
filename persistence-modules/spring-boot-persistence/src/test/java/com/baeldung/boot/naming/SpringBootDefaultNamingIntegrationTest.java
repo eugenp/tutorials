@@ -16,10 +16,6 @@ import com.baeldung.boot.naming.entity.Account;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-@TestPropertySource(properties = {
-  "spring.jpa.hibernate.naming.physical-strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy",
-  "spring.jpa.hibernate.naming.implicit-strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy"
-})
 @Import(Config.class)
 public class SpringBootDefaultNamingIntegrationTest extends NamingConfig {
 

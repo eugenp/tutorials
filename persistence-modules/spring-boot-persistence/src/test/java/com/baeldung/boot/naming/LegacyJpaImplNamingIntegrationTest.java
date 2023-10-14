@@ -35,13 +35,13 @@ public class LegacyJpaImplNamingIntegrationTest extends NamingConfig {
 
         String tableNameCreated = table.getName();
         boolean columnNameIsQuoted = table
-          .getColumn(3)
+          .getColumn(2)
           .isQuoted();
         String physicalNameCreated = table
-          .getColumn(3)
+          .getColumn(2)
           .getName();
         String implicitNameCreated = table
-          .getColumn(2)
+          .getColumn(3)
           .getName();
 
         SoftAssertions.assertSoftly(softly -> {
