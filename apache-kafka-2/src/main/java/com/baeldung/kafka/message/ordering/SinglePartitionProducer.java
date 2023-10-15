@@ -12,7 +12,7 @@ public class SinglePartitionProducer {
         Properties props = new Properties();
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092")
         props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
-        props.put("value.serializer", "com.baeldung.kafka.message.ordering.serialization.JacksonSerializer");
+        props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, "com.baeldung.kafka.message.ordering.serialization.JacksonSerializer");
 
         KafkaProducer<String, Message> producer = new KafkaProducer<>(props);
         for (long insertPosition = 1; insertPosition <= 10 ; insertPosition++) {
