@@ -90,7 +90,7 @@ public class MultiplePartitionTest {
         for (long insertPosition = 1; insertPosition <= 10 ; insertPosition++) {
             long messageId = Message.getRandomMessageId();
             String key = "Key-" + insertPosition;
-            Message message = new Message(insertPosition, messageId);
+            Message message = new Message(key, messageId);
             Future<RecordMetadata> future = producer.send(new ProducerRecord<>(TOPIC, key, message));
             sentMessageList.add(message);
             RecordMetadata metadata = future.get();

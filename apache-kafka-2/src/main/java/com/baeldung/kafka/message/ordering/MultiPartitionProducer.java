@@ -20,9 +20,9 @@ public class MultiPartitionProducer {
         for (long insertPosition = 1; insertPosition <= 10 ; insertPosition++) {
             long messageId = Message.getRandomMessageId();
             String key = "Key-" + insertPosition;
-            Message message = new Message(insertPosition, messageId);
+            Message message = new Message(key, messageId);
             producer.send(new ProducerRecord<>("multi_partition_topic", key, message));
-            System.out.println("Insert Position: " + message.getInsertPosition() + ", Message Id: " + message.getMessageId());
+            System.out.println("Insert Position: " + message.getPartitionKey() + ", Message Id: " + message.getMessageId());
         }
         producer.close();
         System.out.println("SinglePartitionProducer Completed.");

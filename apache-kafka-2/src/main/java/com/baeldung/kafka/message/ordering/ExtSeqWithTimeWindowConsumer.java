@@ -42,7 +42,7 @@ public class ExtSeqWithTimeWindowConsumer {
     private static void processBuffer(List<Message> buffer) {
         Collections.sort(buffer);
         buffer.forEach(message -> {
-            System.out.println("Processing message with Insert Position: " + message.getInsertPosition() + ", Message Id: " + message.getMessageId());
+            System.out.println("Processing message with Insert Position: " + message.getPartitionKey() + ", Message Id: " + message.getMessageId());
         });
         buffer.clear();
     }
