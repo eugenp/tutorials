@@ -1,6 +1,8 @@
 package com.baeldung.kafka.message.ordering;
 
 import com.baeldung.kafka.message.ordering.payload.Message;
+import com.baeldung.kafka.message.ordering.serialization.JacksonDeserializer;
+import com.baeldung.kafka.message.ordering.serialization.JacksonSerializer;
 import lombok.var;
 import org.apache.kafka.clients.admin.*;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
@@ -12,6 +14,8 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
 import org.apache.kafka.common.KafkaFuture;
 import org.apache.kafka.common.PartitionInfo;
+import org.apache.kafka.common.serialization.StringDeserializer;
+import org.apache.kafka.common.serialization.StringSerializer;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -47,15 +51,15 @@ public class MultiplePartitionTest {
 
         Properties producerProperties = new Properties();
         producerProperties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, KAFKA_CONTAINER.getBootstrapServers());
-        producerProperties.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
-        producerProperties.put("value.serializer", "com.baeldung.kafka.message.ordering.serialization.JacksonSerializer");
+        producerProperties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+        producerProperties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JacksonSerializer.class.getName());
 
         Properties consumerProperties = new Properties();
         consumerProperties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, KAFKA_CONTAINER.getBootstrapServers());
-        consumerProperties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringDeserializer");
-        consumerProperties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, "com.baeldung.kafka.message.ordering.serialization.JacksonDeserializer");
+        consumerProperties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
+        consumerProperties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JacksonDeserializer.class.getName());
         consumerProperties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
-        consumerProperties.put("value.deserializer.serializedClass", Message.class);
+        consumerProperties.put(Config.CONSUMER_VALUE_DESERIALIZER_SERIALIZED_CLASS, Message.class);
         consumerProperties.put(ConsumerConfig.GROUP_ID_CONFIG, "test-group");
         admin = Admin.create(adminProperties);
         producer = new KafkaProducer<>(producerProperties);
