@@ -2,6 +2,7 @@ package com.baeldung.kafka.message.ordering.payload;
 
 import javax.swing.*;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Message implements Comparable<Message> {
     private long insertPosition;
@@ -44,7 +45,7 @@ public class Message implements Comparable<Message> {
 
     public static long getRandomMessageId() {
         Random rand = new Random();
-        return rand.nextInt(1000);
+        return ThreadLocalRandom.current().nextInt(1000);
     }
 }
 
