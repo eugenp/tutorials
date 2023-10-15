@@ -6,10 +6,10 @@ import java.util.Map;
 
 public class JacksonDeserializer<T> implements Deserializer<T> {
     private final ObjectMapper objectMapper = new ObjectMapper();
-    private Class<T> tClass;
+    private Class<T> type;
 
-    public JacksonDeserializer(Class<T> tClass) {
-        this.tClass = tClass;
+    public JacksonDeserializer(Class<T> type) {
+        this.type = type;
     }
 
     public JacksonDeserializer() {
@@ -18,7 +18,7 @@ public class JacksonDeserializer<T> implements Deserializer<T> {
 
     @Override
     public void configure(Map<String, ?> configs, boolean isKey) {
-        this.tClass = (Class<T>) configs.get("value.deserializer.serializedClass");
+        this.type = (Class<T>) configs.get("value.deserializer.serializedClass");
     }
 
     @Override
@@ -27,7 +27,7 @@ public class JacksonDeserializer<T> implements Deserializer<T> {
             return null;
         }
         try {
-            return objectMapper.readValue(bytes, tClass);
+            return objectMapper.readValue(bytes, type);
         } catch (Exception e) {
             throw new RuntimeException("Error deserializing value", e);
         }
