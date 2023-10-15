@@ -18,7 +18,7 @@ public class ConsumerConfigurations {
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringDeserializer");
         props.put("max.poll.records", "500");
         props.put("fetch.min.bytes", "1");
-        props.put("fetch.max.wait.ms", "500");
+        props.put(ConsumerConfig.FETCH_MAX_WAIT_MS_CONFIG, "500");
         Consumer<String, String> consumer = new KafkaConsumer<>(props);
         consumer.subscribe(Collections.singletonList("multi_partition_topic"));
 
