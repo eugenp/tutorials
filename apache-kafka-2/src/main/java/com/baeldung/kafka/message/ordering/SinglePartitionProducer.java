@@ -8,7 +8,6 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringSerializer;
 
 import java.util.Properties;
-import java.util.Random;
 
 public class SinglePartitionProducer {
     public static void main(String[] args) {
@@ -21,9 +20,9 @@ public class SinglePartitionProducer {
         for (long insertPosition = 1; insertPosition <= 10 ; insertPosition++) {
             long messageId = Message.getRandomMessageId();
             String key = "Key-" + insertPosition;
-            Message message = new Message(insertPosition, messageId);
+            Message message = new Message(key, messageId);
             producer.send(new ProducerRecord<>("single_partition_topic", key, message));
-            System.out.println("Insert Position: " + message.getInsertPosition() + ", Message Id: " + message.getMessageId());
+            System.out.println("Insert Position: " + message.getPartitionKey() + ", Message Id: " + message.getMessageId());
         }
         producer.close();
         System.out.println("SinglePartitionProducer Completed.");

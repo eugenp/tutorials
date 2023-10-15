@@ -29,7 +29,7 @@ public class MultiPartitionConsumer {
             records.forEach(record -> {
                 Message message = record.value();
                 if (message != null) {
-                    System.out.println("Process message with Insert Position: " + message.getInsertPosition() + ", Message Id: " + message.getMessageId());
+                    System.out.println("Process message with Insert Position: " + message.getPartitionKey() + ", Message Id: " + message.getMessageId());
                 }
             });
         }

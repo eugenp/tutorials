@@ -92,7 +92,7 @@ public class SinglePartitionTest {
         for (long insertPosition = 1; insertPosition <= 10 ; insertPosition++) {
             long messageId = Message.getRandomMessageId();
             String key = "Key-" + insertPosition;
-            Message message = new Message(insertPosition, messageId);
+            Message message = new Message(key, messageId);
             ProducerRecord<String, Message> producerRecord = new ProducerRecord<>(TOPIC, key, message);
             Future<RecordMetadata> future = producer.send(producerRecord);
             sentMessageList.add(message);
