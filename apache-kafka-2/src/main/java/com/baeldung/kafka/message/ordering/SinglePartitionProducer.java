@@ -10,7 +10,7 @@ import java.util.Random;
 public class SinglePartitionProducer {
     public static void main(String[] args) {
         Properties props = new Properties();
-        props.put("bootstrap.servers", "localhost:9092");
+        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092")
         props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
         props.put("value.serializer", "com.baeldung.kafka.message.ordering.serialization.JacksonSerializer");
 
