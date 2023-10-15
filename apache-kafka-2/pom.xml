@@ -60,7 +60,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.15.2</version>
+            <version>${jackson.databind.version} </version>
         </dependency>
     </dependencies>
 
@@ -69,6 +69,7 @@
         <kafka.version>2.8.0</kafka.version>
         <testcontainers-kafka.version>1.15.3</testcontainers-kafka.version>
         <testcontainers-jupiter.version>1.15.3</testcontainers-jupiter.version>
+        <jackson.databind.version>2.15.2</jackson.databind.version>
     </properties>
 
 </project>
