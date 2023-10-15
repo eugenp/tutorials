@@ -31,7 +31,7 @@ import java.util.concurrent.Future;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Testcontainers
-public class SinglePartitionTest {
+public class SinglePartitionIntegrationTest {
     private static String TOPIC = "single_partition_topic";
     private static int PARTITIONS = 1;
     private static short REPLICATION_FACTOR = 1;

@@ -29,7 +29,7 @@ import java.util.concurrent.Future;
 import static org.junit.jupiter.api.Assertions.*;
 
 @Testcontainers
-public class MultiplePartitionTest {
+public class MultiplePartitionIntegrationTest {
     private static String TOPIC = "multi_partition_topic";
     private static int PARTITIONS = 5;
     private static short REPLICATION_FACTOR = 1;
