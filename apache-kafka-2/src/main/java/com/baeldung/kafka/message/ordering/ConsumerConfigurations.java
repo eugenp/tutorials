@@ -16,7 +16,7 @@ public class ConsumerConfigurations {
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "test-group");
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringDeserializer");
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringDeserializer");
-        props.put("max.poll.records", "500");
+        props.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, "500");
         props.put(ConsumerConfig.FETCH_MIN_BYTES_CONFIG, "1");
         props.put(ConsumerConfig.FETCH_MAX_WAIT_MS_CONFIG, "500");
         Consumer<String, String> consumer = new KafkaConsumer<>(props);
