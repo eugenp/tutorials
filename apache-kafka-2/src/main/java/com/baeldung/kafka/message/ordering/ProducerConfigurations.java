@@ -13,7 +13,7 @@ public class ProducerConfigurations {
         props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
         props.put("max.in.flight.requests.per.connection", "1");
         props.put("batch.size", "16384");
-        props.put("linger.ms", "5");
+        props.put(ProducerConfig.LINGER_MS_CONFIG, "5");
         KafkaProducer<String, String> producer = new KafkaProducer<>(props);
 
         for (int i = 0; i < 10; i++) {
