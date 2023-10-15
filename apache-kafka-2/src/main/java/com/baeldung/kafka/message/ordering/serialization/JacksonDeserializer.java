@@ -1,4 +1,5 @@
 package com.baeldung.kafka.message.ordering.serialization;
+import com.baeldung.kafka.message.ordering.Config;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.kafka.common.serialization.Deserializer;
 
@@ -22,7 +23,7 @@ public class JacksonDeserializer<T> implements Deserializer<T> {
 
     @Override
     public void configure(Map<String, ?> configs, boolean isKey) {
-        this.type = (Class<T>) configs.get("value.deserializer.serializedClass");
+        this.type = (Class<T>) configs.get(Config.CONSUMER_VALUE_DESERIALIZER_SERIALIZED_CLASS);
     }
 
     @Override
@@ -33,8 +34,9 @@ public class JacksonDeserializer<T> implements Deserializer<T> {
         try {
             return objectMapper.readValue(bytes, type);
         } catch (Exception e) {
-            throw new RuntimeException("Error deserializing value", e);
+            //throw new RuntimeException("Error deserializing value", e);
         }
+        return null;
     }
 }
 
