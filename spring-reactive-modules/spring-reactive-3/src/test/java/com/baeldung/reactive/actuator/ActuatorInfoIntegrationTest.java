@@ -9,8 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.io.IOException;
-
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
@@ -21,13 +19,13 @@ public class ActuatorInfoIntegrationTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void whenGetInfo_thenReturns200() throws IOException {
+    public void whenGetInfo_thenReturns200() {
         final ResponseEntity<String> responseEntity = this.restTemplate.getForEntity("/actuator/info", String.class);
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
     }
 
     @Test
-    public void whenFeatures_thenReturns200() throws IOException {
+    public void whenFeatures_thenReturns200() {
         final ResponseEntity<String> responseEntity = this.restTemplate.getForEntity("/actuator/features", String.class);
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
     }
