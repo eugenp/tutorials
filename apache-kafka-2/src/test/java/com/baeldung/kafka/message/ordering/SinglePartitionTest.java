@@ -15,8 +15,8 @@ import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
 import org.apache.kafka.common.KafkaFuture;
-import org.apache.kafka.common.serialization.StringDeserializer;
-import org.apache.kafka.common.serialization.StringSerializer;
+import org.apache.kafka.common.serialization.LongDeserializer;
+import org.apache.kafka.common.serialization.LongSerializer;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -36,8 +36,8 @@ public class SinglePartitionTest {
     private static int PARTITIONS = 1;
     private static short REPLICATION_FACTOR = 1;
     private static Admin admin;
-    private static KafkaProducer<String, Message> producer;
-    private static KafkaConsumer<String, Message> consumer;
+    private static KafkaProducer<Long, Message> producer;
+    private static KafkaConsumer<Long, Message> consumer;
 
     private static final Duration TIMEOUT_WAIT_FOR_MESSAGES = Duration.ofMillis(5000);
 
@@ -53,12 +53,12 @@ public class SinglePartitionTest {
 
         Properties producerProperties = new Properties();
         producerProperties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, KAFKA_CONTAINER.getBootstrapServers());
-        producerProperties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+        producerProperties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, LongSerializer.class.getName());
         producerProperties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JacksonSerializer.class.getName());
 
         Properties consumerProperties = new Properties();
         consumerProperties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, KAFKA_CONTAINER.getBootstrapServers());
-        consumerProperties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
+        consumerProperties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, LongDeserializer.class.getName());
         consumerProperties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JacksonDeserializer.class.getName());
         consumerProperties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
         consumerProperties.put(Config.CONSUMER_VALUE_DESERIALIZER_SERIALIZED_CLASS, Message.class);
@@ -89,11 +89,10 @@ public class SinglePartitionTest {
     void givenASinglePartition_whenPublishedToKafkaAndConsumed_thenCheckForMessageOrder() throws ExecutionException, InterruptedException {
         List<Message> sentMessageList = new ArrayList<>();
         List<Message> receivedMessageList = new ArrayList<>();
-        for (long insertPosition = 1; insertPosition <= 10 ; insertPosition++) {
-            long messageId = Message.getRandomMessageId();
-            String key = "Key-" + insertPosition;
-            Message message = new Message(key, messageId);
-            ProducerRecord<String, Message> producerRecord = new ProducerRecord<>(TOPIC, key, message);
+        for (long partitionKey = 1; partitionKey <= 10 ; partitionKey++) {
+            long applicationIdentifier = Message.getRandomApplicationIdentifier();
+            Message message = new Message(partitionKey, applicationIdentifier);
+            ProducerRecord<Long, Message> producerRecord = new ProducerRecord<>(TOPIC, partitionKey, message);
             Future<RecordMetadata> future = producer.send(producerRecord);
             sentMessageList.add(message);
             RecordMetadata metadata = future.get();
@@ -101,7 +100,7 @@ public class SinglePartitionTest {
         }
 
         consumer.subscribe(Collections.singletonList(TOPIC));
-        ConsumerRecords<String, Message> records = consumer.poll(TIMEOUT_WAIT_FOR_MESSAGES);
+        ConsumerRecords<Long, Message> records = consumer.poll(TIMEOUT_WAIT_FOR_MESSAGES);
         records.forEach(record -> {
             Message message = record.value();
             receivedMessageList.add(message);

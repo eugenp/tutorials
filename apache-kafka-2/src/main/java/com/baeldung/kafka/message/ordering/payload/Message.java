@@ -5,30 +5,30 @@ import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Message implements Comparable<Message> {
-    private String partitionKey;
-    private long messageId;
+    private long partitionKey;
+    private long applicationIdentifier;
 
     public Message(){
 
     }
 
     //Required for Kafka Serialization and Deserialization
-    public Message(String partitionKey, long messageId) {
+    public Message(long partitionKey, long applicationIdentifier) {
         this.partitionKey = partitionKey;
-        this.messageId = messageId;
+        this.applicationIdentifier = applicationIdentifier;
     }
 
-    public String getPartitionKey() {
+    public long getPartitionKey() {
         return partitionKey;
     }
 
-    public long getMessageId() {
-        return messageId;
+    public long getApplicationIdentifier() {
+        return applicationIdentifier;
     }
 
     @Override
     public int compareTo(Message other) {
-        return Long.compare(this.messageId, other.messageId);
+        return Long.compare(this.partitionKey, other.partitionKey);
     }
 
     @Override
@@ -40,10 +40,10 @@ public class Message implements Comparable<Message> {
             return false;
         }
         Message message = (Message) obj;
-        return this.messageId == message.getMessageId() && Objects.equals(this.partitionKey, message.getPartitionKey());
+        return this.applicationIdentifier == message.getApplicationIdentifier() && Objects.equals(this.partitionKey, message.getPartitionKey());
     }
 
-    public static long getRandomMessageId() {
+    public static long getRandomApplicationIdentifier() {
         Random rand = new Random();
         return ThreadLocalRandom.current().nextInt(1000);
     }
