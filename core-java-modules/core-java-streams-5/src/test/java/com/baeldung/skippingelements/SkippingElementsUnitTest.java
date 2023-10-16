@@ -18,7 +18,8 @@ class SkippingElementsUnitTest {
                     "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen", "Twenty", "Twenty One", "Twenty Two",
                     "Twenty Three", "Twenty Four", "Twenty Five", "Twenty Six", "Twenty Seven", "Twenty Eight", "Twenty Nine", "Thirty",
                     "Thirty One", "Thirty Two", "Thirty Three"),
-                List.of("Three", "Six", "Nine", "Twelve", "Fifteen", "Eighteen", "Twenty One", "Twenty Four", "Twenty Seven", "Thirty", "Thirty Three"),
+                List.of("Three", "Six", "Nine", "Twelve", "Fifteen", "Eighteen", "Twenty One", "Twenty Four", "Twenty Seven", "Thirty",
+                    "Thirty Three"),
                 3),
             Arguments.of(
                 List.of("One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen",
