@@ -65,7 +65,7 @@
 
     <properties>
         <testcontainers-kafka.version>1.16.2</testcontainers-kafka.version>
-        <testcontainers-junit-jupiter>1.16.2</testcontainers-junit-jupiter>
+        <testcontainers-junit-jupiter.version>1.16.2</testcontainers-junit-jupiter.version>
     </properties>
 
 </project>
