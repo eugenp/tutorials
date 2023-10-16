@@ -13,7 +13,6 @@ import org.junit.Test;
 public class SwitchExpressionsUnitTest {
 
   @Test
-  @SuppressWarnings ("preview")
   public void whenSwitchingOverMonthJune_thenWillReturn3() {
 
     var month = JUNE;
@@ -29,7 +28,6 @@ public class SwitchExpressionsUnitTest {
   }
 
   @Test
-  @SuppressWarnings ("preview")
   public void whenSwitchingOverMonthAugust_thenWillReturn24() {
     var month = AUGUST;
 
@@ -47,7 +45,6 @@ public class SwitchExpressionsUnitTest {
   }
 
   @Test
-  @SuppressWarnings ("preview")
   public void whenSwitchingOverMonthJanuary_thenWillReturn3() {
 
     Function<Month, Integer> func = (month) -> {
@@ -61,7 +58,6 @@ public class SwitchExpressionsUnitTest {
   }
 
   @Test
-  @SuppressWarnings ("preview")
   public void whenSwitchingOverMonthAugust_thenWillReturn2() {
     var month = AUGUST;
 
