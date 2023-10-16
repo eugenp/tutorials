@@ -34,6 +34,9 @@
         <module>core-java-11</module>
         <module>core-java-11-2</module>
         <module>core-java-11-3</module>
+        <module>core-java-12</module>
+        <module>core-java-13</module>
+        <module>core-java-15</module>
         <module>core-java-collections-array-list</module>
         <module>core-java-collections-array-list-2</module>
         <module>core-java-collections-list-4</module>
