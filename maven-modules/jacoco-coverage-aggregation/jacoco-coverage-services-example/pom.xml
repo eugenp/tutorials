@@ -4,8 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.jacoco-coverage-aggregation</groupId>
-    <artifactId>services</artifactId>
-    <name>services</name>
+    <artifactId>jacoco-coverage-services-example</artifactId>
+    <name>jacoco-coverage-services-example</name>
     <packaging>jar</packaging>
 
     <parent>
