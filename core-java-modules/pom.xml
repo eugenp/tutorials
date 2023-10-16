@@ -27,6 +27,11 @@
         <!--<module>core-java-security</module> -->
         <!--<module>core-java-streams-2</module> -->
         <!--<module>core-java-sun</module> -->
+        <!-- <module>core-java-modules/core-java-9-new-features</module> --> <!-- JAVA-26056 -->
+        <!-- <module>core-java-modules/core-java-14</module> --> <!-- JAVA-26056 -->
+        <!-- <module>core-java-modules/core-java-16</module> --> <!-- JAVA-26056 -->
+        <!-- <module>core-java-modules/core-java-17</module> --> <!-- JAVA-26056 -->
+        <!-- <module>core-java-modules/core-java-19</module> --> <!-- JAVA-26056 -->
         <module>core-java-9-improvements</module>
         <module>core-java-9-streams</module>
         <module>core-java-9</module>
