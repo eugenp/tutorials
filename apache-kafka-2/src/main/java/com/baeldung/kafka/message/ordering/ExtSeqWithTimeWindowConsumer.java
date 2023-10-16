@@ -24,12 +24,12 @@ public class ExtSeqWithTimeWindowConsumer {
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JacksonDeserializer.class.getName());
         props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
         props.put(Config.CONSUMER_VALUE_DESERIALIZER_SERIALIZED_CLASS, Message.class);
-        Consumer<String, Message> consumer = new KafkaConsumer<>(props);
+        Consumer<Long, Message> consumer = new KafkaConsumer<>(props);
         consumer.subscribe(Collections.singletonList("multi_partition_topic"));
         List<Message> buffer = new ArrayList<>();
         long lastProcessedTime = System.nanoTime();
         while (true) {
-            ConsumerRecords<String, Message> records = consumer.poll(TIMEOUT_WAIT_FOR_MESSAGES);
+            ConsumerRecords<Long, Message> records = consumer.poll(TIMEOUT_WAIT_FOR_MESSAGES);
             records.forEach(record -> {
                 buffer.add(record.value());
             });
@@ -43,7 +43,7 @@ public class ExtSeqWithTimeWindowConsumer {
     private static void processBuffer(List<Message> buffer) {
         Collections.sort(buffer);
         buffer.forEach(message -> {
-            System.out.println("Processing message with Partition key: " + message.getPartitionKey() + ", Application Identifier: " + message.getApplicationIdentifier());
+            System.out.println("Processing message with Global Sequence number: " + message.getPartitionKey() + ", Application Identifier: " + message.getApplicationIdentifier());
         });
         buffer.clear();
     }
