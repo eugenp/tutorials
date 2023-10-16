@@ -31,7 +31,7 @@ class CompletableFutureTimeoutUnitTest {
         wireMockServer = new WireMockServer(8080);
         wireMockServer.start();
         WireMock.configureFor("localhost", 8080);
-        System.out.println("stubing");
+
         stubFor(get(urlEqualTo("/api/dummy"))
                 .willReturn(aResponse()
                         .withFixedDelay(5000) // must be > DEFAULT_TIMEOUT for a timeout to occur.
@@ -61,6 +61,7 @@ class CompletableFutureTimeoutUnitTest {
                         response.append(inputLine);
                     }
                     in.close();
+
                     return response.toString();
                 } finally {
                     connection.disconnect();
