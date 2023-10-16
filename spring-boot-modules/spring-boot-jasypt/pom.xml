@@ -49,4 +49,5 @@
     <properties>
         <jasypt.version>3.0.5</jasypt.version>
     </properties>
+
 </project>
