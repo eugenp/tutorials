@@ -5,8 +5,11 @@ import com.github.tomakehurst.wiremock.client.WireMock;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.concurrent.*;
@@ -15,67 +18,76 @@ import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class CompletableFutureTimeoutUnitTest {
-    private static WireMockServer wireMockServer;
-    private static ScheduledExecutorService executorService;
+    private WireMockServer wireMockServer;
+    private ScheduledExecutorService executorService;
     private static final int DEFAULT_TIMEOUT = 1000; //1 seconds
-    private static final int TIMEOUT_STATUS_CODE = 408; //0.5 seconds
+    private static final String DEFAULT_PRODUCT = "default_product";
+    private static final String PRODUCT_OFFERS = "product_offers";
 
     @BeforeAll
-    static void setUp() {
+    void setUp() {
         wireMockServer = new WireMockServer(8080);
         wireMockServer.start();
         WireMock.configureFor("localhost", 8080);
-
+        System.out.println("stubing");
         stubFor(get(urlEqualTo("/api/dummy"))
                 .willReturn(aResponse()
                         .withFixedDelay(5000) // must be > DEFAULT_TIMEOUT for a timeout to occur.
-                        .withStatus(408)));
+                        .withBody(PRODUCT_OFFERS)));
 
         executorService = Executors.newScheduledThreadPool(1);
     }
 
 
     @AfterAll
-    static void tearDown() {
+    void tearDown() {
         executorService.shutdown();
         wireMockServer.stop();
     }
 
-    private CompletableFuture<Integer> createDummyRequest() {
+    private CompletableFuture<String> fetchProductData() {
         return CompletableFuture.supplyAsync(() -> {
             try {
                 URL url = new URL("http://localhost:8080/api/dummy");
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 try {
-                    return connection.getResponseCode();
+                    BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                    String inputLine;
+                    StringBuffer response = new StringBuffer();
+
+                    while ((inputLine = in.readLine()) != null) {
+                        response.append(inputLine);
+                    }
+                    in.close();
+                    return response.toString();
                 } finally {
                     connection.disconnect();
                 }
             } catch (IOException e) {
-                return TIMEOUT_STATUS_CODE;
+                return "";
             }
         });
     }
 
     @Test
     void whenorTimeout_thenGetThrow() {
-        CompletableFuture<Integer> completableFuture = createDummyRequest()
-                .orTimeout(DEFAULT_TIMEOUT, TimeUnit.MILLISECONDS);
+        CompletableFuture<String> completableFuture = fetchProductData();
+        completableFuture.orTimeout(DEFAULT_TIMEOUT, TimeUnit.MILLISECONDS);
         assertThrows(ExecutionException.class, completableFuture::get);
     }
 
     @Test
     void whencompleteOnTimeout_thenReturnValue() throws ExecutionException, InterruptedException {
-        CompletableFuture<Integer> completableFuture = createDummyRequest()
-                .completeOnTimeout(TIMEOUT_STATUS_CODE, DEFAULT_TIMEOUT,
-                        TimeUnit.MILLISECONDS);
-        assertEquals(TIMEOUT_STATUS_CODE, completableFuture.get());
+        CompletableFuture<String> completableFuture = fetchProductData();
+        completableFuture.completeOnTimeout(DEFAULT_PRODUCT, DEFAULT_TIMEOUT, TimeUnit.MILLISECONDS);
+        assertEquals(DEFAULT_PRODUCT, completableFuture.get());
     }
 
     @Test
     void whencompleteExceptionally_thenGetThrow() {
-        CompletableFuture<Integer> completableFuture = createDummyRequest();
+        CompletableFuture<String> completableFuture = fetchProductData();
         executorService.schedule(() -> completableFuture
                 .completeExceptionally(new TimeoutException("Timeout occurred")), DEFAULT_TIMEOUT, TimeUnit.MILLISECONDS);
         assertThrows(ExecutionException.class, completableFuture::get);
