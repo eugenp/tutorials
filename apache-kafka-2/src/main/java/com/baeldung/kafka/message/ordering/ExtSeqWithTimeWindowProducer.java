@@ -19,6 +19,7 @@ public class ExtSeqWithTimeWindowProducer {
         for (long partitionKey = 1; partitionKey <= 10 ; partitionKey++) {
             long applicationIdentifier = Message.getRandomApplicationIdentifier();
             Message message = new Message(partitionKey, applicationIdentifier);
+            message.setGlobalSequenceNumber(partitionKey);
             producer.send(new ProducerRecord<>("multi_partition_topic", partitionKey, message));
             System.out.println("Partition key: " + message.getPartitionKey() + ", Application Identifier: " + message.getApplicationIdentifier());
         }

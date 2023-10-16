@@ -8,6 +8,8 @@ public class Message implements Comparable<Message> {
     private long partitionKey;
     private long applicationIdentifier;
 
+    private long globalSequenceNumber;
+
     public Message(){
 
     }
@@ -26,9 +28,17 @@ public class Message implements Comparable<Message> {
         return applicationIdentifier;
     }
 
+    public long getGlobalSequenceNumber() {
+        return globalSequenceNumber;
+    }
+
+    public void setGlobalSequenceNumber(long globalSequenceNumber) {
+        this.globalSequenceNumber = globalSequenceNumber;
+    }
+
     @Override
     public int compareTo(Message other) {
-        return Long.compare(this.partitionKey, other.partitionKey);
+        return Long.compare(this.globalSequenceNumber, other.globalSequenceNumber);
     }
 
     @Override
