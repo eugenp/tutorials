@@ -27,8 +27,8 @@ public class Person {
 
     public String toCustomString() {
         return new ToStringBuilder(this, ToStringStyle.JSON_STYLE)
-            .append("name", name)
-            .append("age", age)
-            .toString();
+          .append("name", name)
+          .append("age", age)
+          .toString();
     }
 }
