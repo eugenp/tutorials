@@ -11,6 +11,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
+import java.io.File;
+import java.nio.file.Path;
 import java.util.Collections;
 
 import software.amazon.awssdk.services.s3.S3Client;
@@ -23,6 +25,7 @@ import software.amazon.awssdk.services.s3.model.HeadBucketRequest;
 import software.amazon.awssdk.services.s3.model.ListBucketsResponse;
 import software.amazon.awssdk.services.s3.model.ListObjectsV2Request;
 import software.amazon.awssdk.services.s3.model.ListObjectsV2Response;
+import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 
 class S3ServiceIntegrationTest {
 
@@ -37,6 +40,8 @@ class S3ServiceIntegrationTest {
     private S3Service s3Service;
 
     private final String AWS_BUCKET = "baeldung-tutorial-s3";
+
+    private File file = new File("/Users/user/Document/hello2.txt");
 
     @BeforeEach
     public void setup() {
@@ -73,6 +78,17 @@ class S3ServiceIntegrationTest {
 
         s3Service.createBucket(BUCKET_NAME);
         verify(s3Client).createBucket(bucketRequest);
+    }
+
+    @Test
+    void whenVerifyingUploadOfS3Object_thenCorrect() {
+        PutObjectRequest request = PutObjectRequest.builder()
+            .bucket(BUCKET_NAME)
+            .key(KEY_NAME)
+            .build();
+
+        s3Service.putObject(BUCKET_NAME, KEY_NAME, file);
+        verify(s3Client).putObject(request, Path.of(file.toURI()) );
     }
 
     @Test
