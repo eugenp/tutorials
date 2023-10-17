@@ -32,7 +32,7 @@ public class ExploreSpring5URLPatternUsingRouterFunctions {
             .and(RouterFunctions.resources("/resources/**", new ClassPathResource("resources/")));
     }
 
-    WebServer start() throws Exception {
+    WebServer start() {
         WebHandler webHandler = (WebHandler) toHttpHandler(routingFunction());
         HttpHandler httpHandler = WebHttpHandlerBuilder.webHandler(webHandler)
             .filter(new IndexRewriteFilter())
