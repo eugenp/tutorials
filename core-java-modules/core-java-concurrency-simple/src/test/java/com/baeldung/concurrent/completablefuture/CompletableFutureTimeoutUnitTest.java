@@ -138,15 +138,14 @@ class CompletableFutureTimeoutUnitTest {
             try {
                 URL url = new URL("http://localhost:8080/api/dummy");
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                try {
-                    BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+
+                try (BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
                     String inputLine;
                     StringBuffer response = new StringBuffer();
 
                     while ((inputLine = in.readLine()) != null) {
                         response.append(inputLine);
                     }
-                    in.close();
 
                     return response.toString();
                 } finally {
@@ -157,6 +156,7 @@ class CompletableFutureTimeoutUnitTest {
             }
         });
     }
+
 
     @Test
     void whenorTimeout_thenGetThrow() {
