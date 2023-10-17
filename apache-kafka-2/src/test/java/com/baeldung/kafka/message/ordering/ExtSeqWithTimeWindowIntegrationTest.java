@@ -1,6 +1,6 @@
 package com.baeldung.kafka.message.ordering;
 
-import com.baeldung.kafka.message.ordering.payload.Message;
+import com.baeldung.kafka.message.ordering.payload.UserEvent;
 import com.baeldung.kafka.message.ordering.serialization.JacksonDeserializer;
 import com.baeldung.kafka.message.ordering.serialization.JacksonSerializer;
 import org.apache.kafka.clients.admin.*;
@@ -34,8 +34,8 @@ public class ExtSeqWithTimeWindowIntegrationTest {
     private static int PARTITIONS = 5;
     private static short REPLICATION_FACTOR = 1;
     private static Admin admin;
-    private static KafkaProducer<Long, Message> producer;
-    private static KafkaConsumer<Long, Message> consumer;
+    private static KafkaProducer<Long, UserEvent> producer;
+    private static KafkaConsumer<Long, UserEvent> consumer;
     private static final Duration TIMEOUT_WAIT_FOR_MESSAGES = Duration.ofMillis(5000);
 
     private static final long BUFFER_PERIOD_NS = 5000L * 1000000; // 5000 milliseconds converted to nanoseconds
@@ -59,7 +59,7 @@ public class ExtSeqWithTimeWindowIntegrationTest {
         consumerProperties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, LongDeserializer.class.getName());
         consumerProperties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JacksonDeserializer.class.getName());
         consumerProperties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
-        consumerProperties.put(Config.CONSUMER_VALUE_DESERIALIZER_SERIALIZED_CLASS, Message.class);
+        consumerProperties.put(Config.CONSUMER_VALUE_DESERIALIZER_SERIALIZED_CLASS, UserEvent.class);
         consumerProperties.put(ConsumerConfig.GROUP_ID_CONFIG, "test-group");
         admin = Admin.create(adminProperties);
         producer = new KafkaProducer<>(producerProperties);
@@ -85,29 +85,29 @@ public class ExtSeqWithTimeWindowIntegrationTest {
 
     @Test
     void givenMultiplePartitions_whenPublishedToKafkaAndConsumedWithExtSeqNumberAndTimeWindow_thenCheckForMessageOrder() throws ExecutionException, InterruptedException {
-        List<Message> sentMessageList = new ArrayList<>();
-        List<Message> receivedMessageList = new ArrayList<>();
-        for (long partitionKey = 1; partitionKey <= 10 ; partitionKey++) {
-            long applicationIdentifier = Message.getRandomApplicationIdentifier();
-            Message message = new Message(partitionKey, applicationIdentifier);
-            message.setGlobalSequenceNumber(partitionKey);
-            Future<RecordMetadata> future = producer.send(new ProducerRecord<>(TOPIC, partitionKey, message));
-            sentMessageList.add(message);
+        List<UserEvent> sentUserEventList = new ArrayList<>();
+        List<UserEvent> receivedUserEventList = new ArrayList<>();
+        for (long sequenceNumber = 1; sequenceNumber <= 10 ; sequenceNumber++) {
+            UserEvent userEvent = new UserEvent(UUID.randomUUID().toString());
+            userEvent.setEventNanoTime(System.nanoTime());
+            userEvent.setGlobalSequenceNumber(sequenceNumber);
+            Future<RecordMetadata> future = producer.send(new ProducerRecord<>(TOPIC, sequenceNumber, userEvent));
+            sentUserEventList.add(userEvent);
             RecordMetadata metadata = future.get();
             System.out.println("Partition : " + metadata.partition());
         }
 
         boolean isOrderMaintained = true;
         consumer.subscribe(Collections.singletonList(TOPIC));
-        List<Message> buffer = new ArrayList<>();
+        List<UserEvent> buffer = new ArrayList<>();
         long lastProcessedTime = System.nanoTime();
-        ConsumerRecords<Long, Message> records = consumer.poll(TIMEOUT_WAIT_FOR_MESSAGES);
+        ConsumerRecords<Long, UserEvent> records = consumer.poll(TIMEOUT_WAIT_FOR_MESSAGES);
         records.forEach(record -> {
             buffer.add(record.value());
         });
         while (buffer.size() > 0) {
             if (System.nanoTime() - lastProcessedTime > BUFFER_PERIOD_NS) {
-                processBuffer(buffer, receivedMessageList);
+                processBuffer(buffer, receivedUserEventList);
                 lastProcessedTime = System.nanoTime();
             }
             records = consumer.poll(TIMEOUT_WAIT_FOR_MESSAGES);
@@ -115,11 +115,11 @@ public class ExtSeqWithTimeWindowIntegrationTest {
                 buffer.add(record.value());
             });
         }
-        for (int insertPosition = 0; insertPosition <= receivedMessageList.size() - 1; insertPosition++) {
+        for (int insertPosition = 0; insertPosition <= receivedUserEventList.size() - 1; insertPosition++) {
             if (isOrderMaintained){
-                Message sentMessage = sentMessageList.get(insertPosition);
-                Message receivedMessage = receivedMessageList.get(insertPosition);
-                if (!sentMessage.equals(receivedMessage)) {
+                UserEvent sentUserEvent = sentUserEventList.get(insertPosition);
+                UserEvent receivedUserEvent = receivedUserEventList.get(insertPosition);
+                if (!sentUserEvent.equals(receivedUserEvent)) {
                     isOrderMaintained = false;
                 }
             }
@@ -127,11 +127,11 @@ public class ExtSeqWithTimeWindowIntegrationTest {
         assertTrue(isOrderMaintained);
     }
 
-    private static void processBuffer(List<Message> buffer, List<Message> receivedMessageList) {
+    private static void processBuffer(List<UserEvent> buffer, List<UserEvent> receivedUserEventList) {
         Collections.sort(buffer);
-        buffer.forEach(message -> {
-            receivedMessageList.add(message);
-            System.out.println("Processing message with Global Sequence number: " + message.getGlobalSequenceNumber() + ", Application Identifier: " + message.getApplicationIdentifier());
+        buffer.forEach(userEvent -> {
+            receivedUserEventList.add(userEvent);
+            System.out.println("Process message with Event ID: " + userEvent.getUserEventId());
         });
         buffer.clear();
     }

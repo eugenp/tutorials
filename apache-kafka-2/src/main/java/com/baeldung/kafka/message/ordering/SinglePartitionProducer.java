@@ -1,13 +1,15 @@
 package com.baeldung.kafka.message.ordering;
 
-import com.baeldung.kafka.message.ordering.payload.Message;
+import com.baeldung.kafka.message.ordering.payload.UserEvent;
 import com.baeldung.kafka.message.ordering.serialization.JacksonSerializer;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.LongSerializer;
 
+import java.time.Instant;
 import java.util.Properties;
+import java.util.UUID;
 
 public class SinglePartitionProducer {
     public static void main(String[] args) {
@@ -15,12 +17,12 @@ public class SinglePartitionProducer {
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, LongSerializer.class.getName());
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JacksonSerializer.class.getName());
-        KafkaProducer<Long, Message> producer = new KafkaProducer<>(props);
-        for (long partitionKey = 1; partitionKey <= 10 ; partitionKey++) {
-            long applicationIdentifier = Message.getRandomApplicationIdentifier();
-            Message message = new Message(partitionKey, applicationIdentifier);
-            producer.send(new ProducerRecord<>("single_partition_topic", partitionKey, message));
-            System.out.println("Partition key: " + message.getPartitionKey() + ", Application Identifier: " + message.getApplicationIdentifier());
+        KafkaProducer<Long, UserEvent> producer = new KafkaProducer<>(props);
+        for (long count = 1; count <= 10 ; count++) {
+            UserEvent userEvent = new UserEvent(UUID.randomUUID().toString());
+            userEvent.setEventNanoTime(System.nanoTime());
+            producer.send(new ProducerRecord<>("single_partition_topic", count, userEvent));
+            System.out.println("Process message with Event ID: " + userEvent.getUserEventId());
         }
         producer.close();
         System.out.println("SinglePartitionProducer Completed.");
