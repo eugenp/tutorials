@@ -160,23 +160,23 @@ class CompletableFutureTimeoutUnitTest {
 
     @Test
     void whenorTimeout_thenGetThrow() {
-        CompletableFuture<String> completableFuture = fetchProductData();
-        completableFuture.orTimeout(DEFAULT_TIMEOUT, TimeUnit.MILLISECONDS);
-        assertThrows(ExecutionException.class, completableFuture::get);
+        CompletableFuture<String> productDataFuture = fetchProductData();
+        productDataFuture.orTimeout(DEFAULT_TIMEOUT, TimeUnit.MILLISECONDS);
+        assertThrows(ExecutionException.class, productDataFuture::get);
     }
 
     @Test
     void whencompleteOnTimeout_thenReturnValue() throws ExecutionException, InterruptedException {
-        CompletableFuture<String> completableFuture = fetchProductData();
-        completableFuture.completeOnTimeout(DEFAULT_PRODUCT, DEFAULT_TIMEOUT, TimeUnit.MILLISECONDS);
-        assertEquals(DEFAULT_PRODUCT, completableFuture.get());
+        CompletableFuture<String> productDataFuture = fetchProductData();
+        productDataFuture.completeOnTimeout(DEFAULT_PRODUCT, DEFAULT_TIMEOUT, TimeUnit.MILLISECONDS);
+        assertEquals(DEFAULT_PRODUCT, productDataFuture.get());
     }
 
     @Test
     void whencompleteExceptionally_thenGetThrow() {
-        CompletableFuture<String> completableFuture = fetchProductData();
-        executorService.schedule(() -> completableFuture
+        CompletableFuture<String> productDataFuture = fetchProductData();
+        executorService.schedule(() -> productDataFuture
                 .completeExceptionally(new TimeoutException("Timeout occurred")), DEFAULT_TIMEOUT, TimeUnit.MILLISECONDS);
-        assertThrows(ExecutionException.class, completableFuture::get);
+        assertThrows(ExecutionException.class, productDataFuture::get);
     }
 }
