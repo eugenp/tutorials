@@ -1,13 +1,12 @@
 package com.baeldung.kafka.message.ordering;
 
-import com.baeldung.kafka.message.ordering.payload.Message;
+import com.baeldung.kafka.message.ordering.payload.UserEvent;
 import com.baeldung.kafka.message.ordering.serialization.JacksonDeserializer;
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.serialization.LongDeserializer;
-import org.apache.kafka.common.serialization.StringDeserializer;
 
 import java.time.Duration;
 import java.util.Collections;
@@ -23,14 +22,14 @@ public class SinglePartitionConsumer {
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, LongDeserializer.class.getName());
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JacksonDeserializer.class.getName());
         props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
-        props.put(Config.CONSUMER_VALUE_DESERIALIZER_SERIALIZED_CLASS, Message.class);
-        Consumer<Long, Message> consumer = new KafkaConsumer<>(props);
+        props.put(Config.CONSUMER_VALUE_DESERIALIZER_SERIALIZED_CLASS, UserEvent.class);
+        Consumer<Long, UserEvent> consumer = new KafkaConsumer<>(props);
         consumer.subscribe(Collections.singletonList("single_partition_topic"));
         while (true) {
-            ConsumerRecords<Long, Message> records = consumer.poll(TIMEOUT_WAIT_FOR_MESSAGES);
+            ConsumerRecords<Long, UserEvent> records = consumer.poll(TIMEOUT_WAIT_FOR_MESSAGES);
             records.forEach(record -> {
-                Message message = record.value();
-                System.out.println("Process message with Partition Key: " + message.getPartitionKey() + ", Application Identifier: " + message.getApplicationIdentifier());
+                UserEvent userEvent = record.value();
+                System.out.println("Process message with event nano time : " + userEvent.getEventNanoTime()  + ", Event ID: " + userEvent.getUserEventId());
             });
         }
     }
