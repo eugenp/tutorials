@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: demo-backend
+spec:
+  selector:
+    app: demo-backend
+  ports:
+  - protocol: TCP
+    port: 8080
+  type: ClusterIP

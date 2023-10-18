@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: demo-frontend
+spec:
+  selector:
+    app: demo-frontend
+  ports:
+  - protocol: TCP
+    port: 8081
+    nodePort: 30001
+  type: NodePort

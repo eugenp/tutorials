@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-frontend
+spec:
+  selector:
+      matchLabels:
+        app: demo-frontend
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: demo-frontend
+    spec:
+      containers:
+        - name: demo-frontend
+          image: demo-frontend:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8081
