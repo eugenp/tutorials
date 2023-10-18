@@ -14,7 +14,7 @@ class SkippingElementsUnitTest {
     private static Stream<Arguments> testSource() {
         return Stream.of(
             Arguments.of(
-                List.of("One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen",
+                Stream.of("One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen",
                     "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen", "Twenty", "Twenty One", "Twenty Two",
                     "Twenty Three", "Twenty Four", "Twenty Five", "Twenty Six", "Twenty Seven", "Twenty Eight", "Twenty Nine", "Thirty",
                     "Thirty One", "Thirty Two", "Thirty Three"),
@@ -22,14 +22,14 @@ class SkippingElementsUnitTest {
                     "Thirty Three"),
                 3),
             Arguments.of(
-                List.of("One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen",
+                Stream.of("One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen",
                     "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen", "Twenty", "Twenty One", "Twenty Two",
                     "Twenty Three", "Twenty Four", "Twenty Five", "Twenty Six", "Twenty Seven", "Twenty Eight", "Twenty Nine", "Thirty",
                     "Thirty One", "Thirty Two", "Thirty Three"),
                 List.of("Five", "Ten", "Fifteen", "Twenty", "Twenty Five", "Thirty"),
                 5),
             Arguments.of(
-                List.of("One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen",
+                Stream.of("One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen",
                     "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen", "Twenty", "Twenty One", "Twenty Two",
                     "Twenty Three", "Twenty Four", "Twenty Five", "Twenty Six", "Twenty Seven", "Twenty Eight", "Twenty Nine", "Thirty",
                     "Thirty One", "Thirty Two", "Thirty Three"),
@@ -39,29 +39,29 @@ class SkippingElementsUnitTest {
                     "Thirty One", "Thirty Two", "Thirty Three"),
                 1),
             Arguments.of(
-                List.of("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"),
+                Stream.of("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"),
                 List.of("Wednesday", "Saturday"),
                 3),
             Arguments.of(
-                List.of("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"),
+                Stream.of("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"),
                 List.of("Friday"),
                 5),
             Arguments.of(
-                List.of("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"),
+                Stream.of("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"),
                 List.of("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"),
                 1),
             Arguments.of(
-                List.of("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November",
+                Stream.of("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November",
                     "December"),
                 List.of("March", "June", "September", "December"),
                 3),
             Arguments.of(
-                List.of("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November",
+                Stream.of("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November",
                     "December"),
                 List.of("May", "October"),
                 5),
             Arguments.of(
-                List.of("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November",
+                Stream.of("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November",
                     "December"),
                 List.of("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November",
                     "December"),
@@ -71,45 +71,43 @@ class SkippingElementsUnitTest {
 
     @ParameterizedTest
     @MethodSource("testSource")
-    void givenListSkipNthElementInListWithFilterTestShouldFilterNthElement(List<String> input, List<String> expected, int n) {
+    void givenListSkipNthElementInListWithFilterTestShouldFilterNthElement(Stream<String> input, List<String> expected, int n) {
         final List<String> actual = SkippingElements.skipNthElementInListWithFilter(input, n);
         assertEquals(expected, actual);
     }
 
     @ParameterizedTest
     @MethodSource("testSource")
-    void givenListSkipNthElementInListWithIterateTestShouldFilterNthElement(List<String> input, List<String> expected, int n) {
+    void givenListSkipNthElementInListWithIterateTestShouldFilterNthElement(Stream<String> input, List<String> expected, int n) {
         final List<String> actual = SkippingElements.skipNthElementInListWithIterate(input, n);
         assertEquals(expected, actual);
     }
 
     @ParameterizedTest
     @MethodSource("testSource")
-    void givenListSkipNthElementInListWithSublistTestShouldFilterNthElement(List<String> input, List<String> expected, int n) {
+    void givenListSkipNthElementInListWithSublistTestShouldFilterNthElement(Stream<String> input, List<String> expected, int n) {
         final List<String> actual = SkippingElements.skipNthElementInListWithSublist(input, n);
         assertEquals(expected, actual);
     }
 
     @ParameterizedTest
     @MethodSource("testSource")
-    void givenListSkipNthElementInListWithForTestShouldFilterNthElement(List<String> input, List<String> expected, int n) {
+    void givenListSkipNthElementInListWithForTestShouldFilterNthElement(Stream<String> input, List<String> expected, int n) {
         final List<String> actual = SkippingElements.skipNthElementInListWithFor(input, n);
         assertEquals(expected, actual);
     }
 
     @ParameterizedTest
     @MethodSource("testSource")
-    void givenListSkipNthElementInStreamWithIteratorTestShouldFilterNthElement(List<String> input, List<String> expected, int n) {
-        final Stream<String> inputStream = input.stream();
-        final List<String> actual = SkippingElements.skipNthElementInListWithIterator(inputStream, n);
+    void givenListSkipNthElementInStreamWithIteratorTestShouldFilterNthElement(Stream<String> input, List<String> expected, int n) {
+        final List<String> actual = SkippingElements.skipNthElementInListWithIterator(input, n);
         assertEquals(expected, actual);
     }
 
     @ParameterizedTest
     @MethodSource("testSource")
-    void givenListSkipNthElementInStreamWithCollectorShouldFilterNthElement(List<String> input, List<String> expected, int n) {
-        final Stream<String> inputStream = input.stream();
-        final List<String> actual = SkippingElements.skipNthElementInStreamWithCollector(inputStream, n);
+    void givenListSkipNthElementInStreamWithCollectorShouldFilterNthElement(Stream<String> input, List<String> expected, int n) {
+        final List<String> actual = SkippingElements.skipNthElementInStreamWithCollector(input, n);
         assertEquals(expected, actual);
     }
 }

@@ -12,14 +12,16 @@ public class SkippingElements {
     private SkippingElements() {
     }
 
-    public static List<String> skipNthElementInListWithFilter(List<String> sourceList, int n) {
+    public static List<String> skipNthElementInListWithFilter(Stream<String> sourceStream, int n) {
+        final List<String> sourceList = sourceStream.collect(Collectors.toList());
         return IntStream.range(0, sourceList.size())
             .filter(s -> (s + 1) % n == 0)
             .mapToObj(sourceList::get)
             .collect(Collectors.toList());
     }
 
-    public static List<String> skipNthElementInListWithIterate(List<String> sourceList, int n) {
+    public static List<String> skipNthElementInListWithIterate(Stream<String> sourceStream, int n) {
+        final List<String> sourceList = sourceStream.collect(Collectors.toList());
         int limit = sourceList.size() / n;
         return IntStream.iterate(n - 1, i -> (i + n))
             .limit(limit)
@@ -27,7 +29,8 @@ public class SkippingElements {
             .collect(Collectors.toList());
     }
 
-    public static List<String> skipNthElementInListWithSublist(List<String> sourceList, int n) {
+    public static List<String> skipNthElementInListWithSublist(Stream<String> sourceStream, int n) {
+        final List<String> sourceList = sourceStream.collect(Collectors.toList());
         int limit = sourceList.size() / n;
         return Stream.iterate(sourceList, s -> s.subList(n, s.size()))
             .limit(limit)
@@ -35,7 +38,8 @@ public class SkippingElements {
             .collect(Collectors.toList());
     }
 
-    public static List<String> skipNthElementInListWithFor(List<String> sourceList, int n) {
+    public static List<String> skipNthElementInListWithFor(Stream<String> sourceStream, int n) {
+        final List<String> sourceList = sourceStream.collect(Collectors.toList());
         List<String> result = new ArrayList<>();
         for (int i = n - 1; i < sourceList.size(); i += n) {
             result.add(sourceList.get(i));
