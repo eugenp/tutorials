@@ -1,11 +1,11 @@
-package com.baeldung.cassecuredapp;
+package com.baeldung.cassecuredapp.user;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Users {
+public class User {
     @Id
     private Long id;
 

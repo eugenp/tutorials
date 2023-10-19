@@ -1,30 +1,21 @@
 package com.baeldung.cassecuredapp;
 
 import org.jasig.cas.client.session.SingleSignOutFilter;
-import org.jasig.cas.client.session.SingleSignOutHttpSessionListener;
 import org.jasig.cas.client.validation.Cas30ServiceTicketValidator;
 import org.jasig.cas.client.validation.TicketValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Primary;
-import org.springframework.context.event.EventListener;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.cas.ServiceProperties;
 import org.springframework.security.cas.authentication.CasAuthenticationProvider;
-import org.springframework.security.cas.web.CasAuthenticationEntryPoint;
 import org.springframework.security.cas.web.CasAuthenticationFilter;
-import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.web.AuthenticationEntryPoint;
-import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.logout.LogoutFilter;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 
-import javax.servlet.http.HttpSessionEvent;
+import com.baeldung.cassecuredapp.service.CasUserDetailsService;
 
 @SpringBootApplication
 public class CasSecuredApplication {
@@ -61,8 +52,8 @@ public class CasSecuredApplication {
     }
 
     @Bean
-    public MyUserDetailsService getUser(){
-        return new MyUserDetailsService();
+    public CasUserDetailsService getUser(){
+        return new CasUserDetailsService();
     }
     @Bean
     public CasAuthenticationProvider casAuthenticationProvider(
