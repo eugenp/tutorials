@@ -1218,7 +1218,6 @@
                 <module>gradle-modules/gradle/maven-to-gradle</module>
                 <module>persistence-modules/spring-data-neo4j</module>
                 <module>spring-actuator</module>
-                <module>spring-cloud-modules/spring-cloud-contract</module>
                 <module>spring-kafka-2</module>
                 <!--<module>java-panama</module> Java-19 module-->
             </modules>
