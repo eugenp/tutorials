@@ -21,13 +21,13 @@ public class BookPagingAndSortingRepositoryIntegrationTest {
 
     @Test
     public void givenDbContainsBooks_whenfindBooksByAuthor_thenReturnBooksByAuthor() {
-        Book book1 = new Book("Spring Data", "John Doe", "1234567890");
-        Book book2 = new Book("Spring Data 2", "John Doe", "1234567891");
-        Book book3 = new Book("Spring Data 3", "John Doe", "1234567892");
+        Book book1 = new Book("Spring Data", "John Miller", "1234567890");
+        Book book2 = new Book("Spring Data 2", "John Miller", "1234567891");
+        Book book3 = new Book("Spring Data 3", "John Miller", "1234567892");
         bookPagingAndSortingRepository.saveAll(Arrays.asList(book1, book2, book3));
 
         Pageable pageable = PageRequest.of(0, 2, Sort.by("title").descending());
-        List<Book> books = bookPagingAndSortingRepository.findBooksByAuthor("John Doe", pageable);
+        List<Book> books = bookPagingAndSortingRepository.findBooksByAuthor("John Miller", pageable);
         Assertions.assertEquals(2, books.size());
         Assertions.assertEquals(book3.getId(), books.get(0).getId());
         Assertions.assertEquals(book2.getId(), books.get(1).getId());

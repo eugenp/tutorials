@@ -3,14 +3,15 @@ package com.baeldung.boot.daos;
 import com.baeldung.boot.Application;
 import com.baeldung.boot.domain.User;
 import com.baeldung.util.BaeldungPostgresqlContainer;
-import org.junit.ClassRule;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
 
 import java.time.LocalDate;
 
@@ -19,12 +20,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * Created by adam.
  */
-@RunWith(SpringRunner.class)
+@Testcontainers
 @SpringBootTest(classes = Application.class)
 @ActiveProfiles({"tc", "tc-auto"})
 public class UserRepositoryTCAutoLiveTest extends UserRepositoryCommon {
 
-    @ClassRule
+    @Container
     public static PostgreSQLContainer<BaeldungPostgresqlContainer> postgreSQLContainer = BaeldungPostgresqlContainer.getInstance();
 
     @Test

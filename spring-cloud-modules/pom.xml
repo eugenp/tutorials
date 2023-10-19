@@ -19,7 +19,8 @@
     <modules>
         <module>spring-cloud-loadbalancer</module>
         <module>spring-cloud-config</module>
-        <module>spring-cloud-eureka</module>
+        <!--Please uncomment when spring-cloud-modules is moved to JDK9+ profile-->
+        <!--<module>spring-cloud-eureka</module>-->
         <module>spring-cloud-hystrix</module>
         <module>spring-cloud-bootstrap</module>
         <module>spring-cloud-ribbon-client</module>
