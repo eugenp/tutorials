@@ -7,4 +7,6 @@ This module contains articles about reactive Spring Boot.
 - [Static Content in Spring WebFlux](https://www.baeldung.com/spring-webflux-static-content)
 - [Server-Sent Events in Spring](https://www.baeldung.com/spring-server-sent-events)
 - [Backpressure Mechanism in Spring WebFlux](https://www.baeldung.com/spring-webflux-backpressure)
+- [Exploring the Spring 5 WebFlux URL Matching](https://www.baeldung.com/spring-5-mvc-url-matching)
+- [How to Set a Header on a Response with Spring 5](https://www.baeldung.com/spring-response-header)
 - More articles: [[<-- prev]](../spring-5-reactive) [[next -->]](../spring-5-reactive-3)
