@@ -29,11 +29,6 @@
             <artifactId>streamex</artifactId>
             <version>${streamex.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.pivovarit</groupId>
-            <artifactId>throwing-function</artifactId>
-            <version>${throwing-function.version}</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -62,8 +57,6 @@
         <vavr.version>0.10.4</vavr.version>
         <protonpack.version>1.16</protonpack.version>
         <streamex.version>0.8.1</streamex.version>
-        <throwing-function.version>1.5.1</throwing-function.version>
-
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
     </properties>

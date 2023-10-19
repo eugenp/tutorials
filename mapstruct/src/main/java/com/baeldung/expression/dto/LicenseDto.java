@@ -3,13 +3,6 @@ package com.baeldung.expression.dto;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-
-@AllArgsConstructor
-@Data
-@Builder
 public class LicenseDto {
 
     private UUID id;
@@ -17,5 +10,39 @@ public class LicenseDto {
     private LocalDateTime startDate;
 
     private LocalDateTime endDate;
+
+    private String licenseType;
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public LocalDateTime getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(LocalDateTime startDate) {
+        this.startDate = startDate;
+    }
+
+    public LocalDateTime getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(LocalDateTime endDate) {
+        this.endDate = endDate;
+    }
+
+    public String getLicenseType() {
+        return licenseType;
+    }
+
+    public void setLicenseType(String licenseType) {
+        this.licenseType = licenseType;
+    }
 
 }

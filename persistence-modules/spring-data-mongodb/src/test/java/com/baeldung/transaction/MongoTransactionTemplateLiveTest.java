@@ -28,6 +28,7 @@ import com.baeldung.model.User;
  * 
  * This test requires:
  * * mongodb instance running on the environment
+ *   Run the src/live-test/resources/live-test-setup.sh
  *
  */
 @RunWith(SpringJUnit4ClassRunner.class)

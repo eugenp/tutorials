@@ -65,7 +65,7 @@
 
     <properties>
         <commons-validator.version>1.6</commons-validator.version>
-        <joda-time.version>2.10.10</joda-time.version>
+        <joda-time.version>2.12.5</joda-time.version>
         <hirondelle-date4j.version>RELEASE</hirondelle-date4j.version>
         <maven.compiler.source>1.9</maven.compiler.source>
         <maven.compiler.target>1.9</maven.compiler.target>

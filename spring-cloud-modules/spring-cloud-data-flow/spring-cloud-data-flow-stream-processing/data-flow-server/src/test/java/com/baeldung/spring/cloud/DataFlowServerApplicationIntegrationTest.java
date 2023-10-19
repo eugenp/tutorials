@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.serializer.RedisSerializer;
+import org.springframework.session.data.redis.config.ConfigureRedisAction;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -38,6 +39,11 @@ public class DataFlowServerApplicationIntegrationTest {
             Mockito.when(factory.getConnection()).thenReturn(connection);
 
             return factory;
+        }
+
+        @Bean
+        public static ConfigureRedisAction configureRedisAction() {
+            return ConfigureRedisAction.NO_OP;
         }
     }
 }

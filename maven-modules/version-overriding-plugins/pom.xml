@@ -51,7 +51,7 @@
     </build>
 
     <properties>
-        <maven.compiler.plugin>3.8.0</maven.compiler.plugin>
+        <maven.compiler.plugin>3.11.0</maven.compiler.plugin>
     </properties>
 
 </project>

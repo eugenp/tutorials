@@ -134,7 +134,7 @@
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
-            <version>3.3.0</version>
+            <version>${rest-assured.version}</version>
             <scope>provided</scope>
             <exclusions>
                 <exclusion>
@@ -163,6 +163,7 @@
         <start-class>com.baeldung.SpringBootRestApplication</start-class>
         <xstream.version>1.4.11.1</xstream.version>
         <modelmapper.version>3.1.0</modelmapper.version>
+        <rest-assured.version>3.3.0</rest-assured.version>
         <jaxb-runtime.version>2.3.7</jaxb-runtime.version>
     </properties>
 </project>

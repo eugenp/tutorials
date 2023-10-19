@@ -2,7 +2,7 @@ package com.baeldung.common.error;
 
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 
-import javax.servlet.Servlet;
+import jakarta.servlet.Servlet;
 
 public class SpringHelloServletRegistrationBean extends ServletRegistrationBean {
 
