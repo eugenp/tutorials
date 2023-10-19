@@ -767,11 +767,6 @@
                 <module>core-groovy-modules</module>
 
                 <module>core-java-modules</module>
-                <!-- <module>core-java-modules/core-java-9-new-features</module> --> <!-- uses preview features, to be decided how to handle -->
-                <!-- <module>core-java-modules/core-java-14</module> --> <!-- uses preview features, to be decided how to handle -->
-                <!-- <module>core-java-modules/core-java-16</module> --> <!-- uses preview features, to be decided how to handle -->
-                <!-- <module>core-java-modules/core-java-17</module> --> <!-- uses preview features, to be decided how to handle -->
-                <!-- <module>core-java-modules/core-java-19</module> --> <!-- uses preview features, to be decided how to handle -->
                 <module>custom-pmd</module>
                 <module>data-structures</module>
                 <module>ddd-contexts</module>
@@ -1045,11 +1040,6 @@
 
                 <module>core-java-modules</module>
                 <module>gcp-firebase</module>
-                <!-- <module>core-java-modules/core-java-9-new-features</module> --> <!-- uses preview features, to be decided how to handle -->
-                <!-- <module>core-java-modules/core-java-14</module> --> <!-- uses preview features, to be decided how to handle -->
-                <!-- <module>core-java-modules/core-java-16</module> --> <!-- uses preview features, to be decided how to handle -->
-                <!-- <module>core-java-modules/core-java-17</module> --> <!-- uses preview features, to be decided how to handle -->
-                <!-- <module>core-java-modules/core-java-19</module> --> <!-- uses preview features, to be decided how to handle -->
                 <module>spring-aop</module>
                 <module>spring-aop-2</module>
                 <module>custom-pmd</module>
