@@ -19,7 +19,6 @@
     <modules>
         <module>spring-reactive-data</module>
         <module>spring-reactive-data-2</module>
-        <module>spring-reactive</module>
         <module>spring-reactive-2</module>
         <module>spring-reactive-3</module>
         <module>spring-reactive-client</module>
@@ -27,8 +26,8 @@
         <module>spring-reactive-filters</module>
         <module>spring-reactive-oauth</module>
         <module>spring-reactive-security</module>
-        <module>spring-data-couchbase</module>
-        <module>spring-reactive-webflux</module>
+        <module>spring-reactive-data-couchbase</module>
+        <module>spring-reactive</module>
         <module>spring-reactive-exceptions</module>
         <module>spring-reactor</module>
         <module>spring-webflux-amqp</module>
@@ -63,8 +62,5 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <properties>
-    </properties>
 
 </project>
