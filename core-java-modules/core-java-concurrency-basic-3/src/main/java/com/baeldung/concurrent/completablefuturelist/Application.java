@@ -19,11 +19,11 @@ public class Application {
     CompletableFuture<String> asyncOperation(String operationId) {
         CompletableFuture<String> cf = new CompletableFuture<>();
         asyncOperationEmulation.submit(() -> {
-            // Comment in to introduce an exception for one of the operations
-            //            if (operationId.endsWith("567")) {
-            //                cf.completeExceptionally(new Exception("Error on operation " + operationId));
-            //                return;
-            //            }
+            // The following lines simulate an exception happening on the 567th operation
+            //  if (operationId.endsWith("567")) {
+            //      cf.completeExceptionally(new Exception("Error on operation " + operationId));
+            //      return;
+            //  }
             try {
                 Thread.sleep(100);
                 cf.complete(operationId);
@@ -92,7 +92,8 @@ public class Application {
 
     public static void main(String[] args) {
         new Application().initialize()
-          //      .startNaive();
+        // Switch between .startNaive() and .start() to test both implementations
+        //  .startNaive();
           .start();
     }
 
