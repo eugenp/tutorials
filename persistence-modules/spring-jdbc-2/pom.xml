@@ -44,9 +44,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <compilerArgs>--enable-preview</compilerArgs>
-                </configuration>
             </plugin>
         </plugins>
     </build>
@@ -88,7 +85,6 @@
     </pluginRepositories>
 
     <properties>
-        <java.version>17</java.version>
         <spring-boot.version>3.2.0-SNAPSHOT</spring-boot.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
