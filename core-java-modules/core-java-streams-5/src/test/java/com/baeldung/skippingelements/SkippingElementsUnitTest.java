@@ -3,7 +3,11 @@ package com.baeldung.skippingelements;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -72,42 +76,72 @@ class SkippingElementsUnitTest {
     @ParameterizedTest
     @MethodSource("testSource")
     void givenListSkipNthElementInListWithFilterTestShouldFilterNthElement(Stream<String> input, List<String> expected, int n) {
-        final List<String> actual = SkippingElements.skipNthElementInListWithFilter(input, n);
+        final List<String> sourceList = input.collect(Collectors.toList());
+        final List<String> actual = IntStream.range(0, sourceList.size())
+            .filter(s -> (s + 1) % n == 0)
+            .mapToObj(sourceList::get)
+            .collect(Collectors.toList());
         assertEquals(expected, actual);
     }
 
     @ParameterizedTest
     @MethodSource("testSource")
     void givenListSkipNthElementInListWithIterateTestShouldFilterNthElement(Stream<String> input, List<String> expected, int n) {
-        final List<String> actual = SkippingElements.skipNthElementInListWithIterate(input, n);
+        final List<String> sourceList = input.collect(Collectors.toList());
+        int limit = sourceList.size() / n;
+        final List<String> actual = IntStream.iterate(n - 1, i -> (i + n))
+            .limit(limit)
+            .mapToObj(sourceList::get)
+            .collect(Collectors.toList());
         assertEquals(expected, actual);
     }
 
     @ParameterizedTest
     @MethodSource("testSource")
     void givenListSkipNthElementInListWithSublistTestShouldFilterNthElement(Stream<String> input, List<String> expected, int n) {
-        final List<String> actual = SkippingElements.skipNthElementInListWithSublist(input, n);
+        final List<String> sourceList = input.collect(Collectors.toList());
+        int limit = sourceList.size() / n;
+        final List<String> actual = Stream.iterate(sourceList, s -> s.subList(n, s.size()))
+            .limit(limit)
+            .map(s -> s.get(n - 1))
+            .collect(Collectors.toList());
         assertEquals(expected, actual);
     }
 
     @ParameterizedTest
     @MethodSource("testSource")
     void givenListSkipNthElementInListWithForTestShouldFilterNthElement(Stream<String> input, List<String> expected, int n) {
-        final List<String> actual = SkippingElements.skipNthElementInListWithFor(input, n);
+        final List<String> sourceList = input.collect(Collectors.toList());
+        List<String> result = new ArrayList<>();
+        for (int i = n - 1; i < sourceList.size(); i += n) {
+            result.add(sourceList.get(i));
+        }
+        final List<String> actual = result;
         assertEquals(expected, actual);
     }
 
     @ParameterizedTest
     @MethodSource("testSource")
     void givenListSkipNthElementInStreamWithIteratorTestShouldFilterNthElement(Stream<String> input, List<String> expected, int n) {
-        final List<String> actual = SkippingElements.skipNthElementInListWithIterator(input, n);
+        List<String> result = new ArrayList<>();
+        final Iterator<String> iterator = input.iterator();
+        int count = 0;
+        while (iterator.hasNext()) {
+            if (count % n == n - 1) {
+                result.add(iterator.next());
+            } else {
+                iterator.next();
+            }
+            ++count;
+        }
+        final List<String> actual = result;
         assertEquals(expected, actual);
     }
 
     @ParameterizedTest
     @MethodSource("testSource")
     void givenListSkipNthElementInStreamWithCollectorShouldFilterNthElement(Stream<String> input, List<String> expected, int n) {
-        final List<String> actual = SkippingElements.skipNthElementInStreamWithCollector(input, n);
+        final List<String> actual = input.collect(SkippingCollector.collector(n));
         assertEquals(expected, actual);
     }
 }
