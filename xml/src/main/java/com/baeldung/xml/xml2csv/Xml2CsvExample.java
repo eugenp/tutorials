@@ -51,7 +51,6 @@ public class Xml2CsvExample {
 
         try (InputStream in = Files.newInputStream(Paths.get(xmlFilePath)); BufferedWriter writer = new BufferedWriter(new FileWriter(csvFilePath))) {
 
-            // Write header to CSV
             writer.write("bookstore_id,book_id,category,title,author_id,author_name,price\n");
 
             XMLStreamReader reader = inputFactory.createXMLStreamReader(in);
@@ -67,7 +66,7 @@ public class Xml2CsvExample {
                 case XMLStreamConstants.START_ELEMENT:
                     currentElement = reader.getLocalName();
                     if ("Bookstore".equals(currentElement)) {
-                        bookstoreInfo.setLength(0); // clear previous bookstore info
+                        bookstoreInfo.setLength(0);
                         bookstoreInfo.append(reader.getAttributeValue(null, "id"))
                             .append(",");
                     }
@@ -94,12 +93,10 @@ public class Xml2CsvExample {
 
                 case XMLStreamConstants.END_ELEMENT:
                     if ("Book".equals(reader.getLocalName())) {
-                        // remove the last comma and add a newline
                         csvRow.setLength(csvRow.length() - 1);
                         csvRow.append("\n");
                         writer.write(csvRow.toString());
 
-                        // Reset the StringBuilder for the next row
                         csvRow.setLength(0);
                     }
                     break;
