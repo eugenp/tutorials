@@ -15,13 +15,13 @@ public class MessageConsumerService {
     Map<String, Set<Integer>> consumedRecords = new ConcurrentHashMap<>();
 
     @KafkaListener(topics = "topic-1", groupId = "group-1")
-    public void consumer1(ConsumerRecord<?, ?> consumerRecord) {
-        trackConsumedRecords("consumer-1", consumerRecord);
+    public void consumer0(ConsumerRecord<?, ?> consumerRecord) {
+        trackConsumedRecords("consumer-0", consumerRecord);
     }
 
     @KafkaListener(topics = "topic-1", groupId = "group-1")
-    public void consumer2(ConsumerRecord<?, ?> consumerRecord) {
-        trackConsumedRecords("consumer-2", consumerRecord);
+    public void consumer1(ConsumerRecord<?, ?> consumerRecord) {
+        trackConsumedRecords("consumer-1", consumerRecord);
     }
 
     private void trackConsumedRecords(String key, ConsumerRecord<?, ?> record) {

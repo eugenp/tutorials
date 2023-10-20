@@ -27,10 +27,6 @@ public class KafkaConsumerConfiguration {
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, DoubleDeserializer.class);
-//        props.put(ConsumerConfig.PARTITION_ASSIGNMENT_STRATEGY_CONFIG, "TBD");
-//        props.put(ConsumerConfig.SESSION_TIMEOUT_MS_CONFIG, "TBD");
-//        props.put(ConsumerConfig.HEARTBEAT_INTERVAL_MS_CONFIG, "TBD");
-//        props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "TBD");
         return new DefaultKafkaConsumerFactory<>(props);
     }
 
