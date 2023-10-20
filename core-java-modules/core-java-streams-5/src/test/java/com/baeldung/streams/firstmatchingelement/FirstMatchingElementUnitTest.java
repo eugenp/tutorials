@@ -2,9 +2,7 @@ package com.baeldung.streams.firstmatchingelement;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.stream.IntStream;
 
 import org.apache.commons.collections4.IterableUtils;
@@ -25,34 +23,6 @@ public class FirstMatchingElementUnitTest {
           .mapToInt(user -> userList.indexOf(user))
           .findFirst()
           .orElse(-1);
-        assertEquals(1, index);
-    }
-
-    @Test
-    public void whenUsingIterator_thenFindFirstMatchingUserIndex() {
-        int index = -1;
-        Iterator<User> iterator = userList.iterator();
-        while (iterator.hasNext()) {
-            User user = iterator.next();
-            if (searchName.equals(user.getUserName())) {
-                index = userList.indexOf(user);
-                break;
-            }
-        }
-        assertEquals(1, index);
-    }
-
-    @Test
-    public void whenUsingListIterator_thenFindFirstMatchingUserIndex() {
-        int index = -1;
-        ListIterator<User> listIterator = userList.listIterator();
-        while (listIterator.hasNext()) {
-            if (searchName.equals(listIterator.next()
-                .getUserName())) {
-                index = listIterator.previousIndex();
-                break;
-            }
-        }
         assertEquals(1, index);
     }
 
