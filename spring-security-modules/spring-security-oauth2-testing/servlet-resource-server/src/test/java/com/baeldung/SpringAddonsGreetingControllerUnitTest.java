@@ -8,16 +8,19 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.test.context.support.WithAnonymousUser;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.baeldung.ServletResourceServerApplication.GreetingController;
 import com.baeldung.ServletResourceServerApplication.MessageService;
-import com.c4_soft.springaddons.security.oauth2.test.annotations.OpenIdClaims;
-import com.c4_soft.springaddons.security.oauth2.test.annotations.WithMockJwtAuth;
+import com.c4_soft.springaddons.security.oauth2.test.annotations.WithMockAuthentication;
+import com.c4_soft.springaddons.security.oauth2.test.annotations.parameterized.AuthenticationSource;
+import com.c4_soft.springaddons.security.oauth2.test.annotations.parameterized.ParameterizedAuthentication;
 
 @WebMvcTest(controllers = GreetingController.class, properties = { "server.ssl.enabled=false" })
 class SpringAddonsGreetingControllerUnitTest {
@@ -40,9 +43,11 @@ class SpringAddonsGreetingControllerUnitTest {
             .andExpect(status().isUnauthorized());
     }
 
-    @Test
-    @WithMockJwtAuth(authorities = { "admin", "ROLE_AUTHORIZED_PERSONNEL" }, claims = @OpenIdClaims(preferredUsername = "ch4mpy"))
-    void givenUserIsAuthenticated_whenGetGreet_thenOk() throws Exception {
+    @ParameterizedTest
+    @AuthenticationSource({
+            @WithMockAuthentication(authorities = { "admin", "ROLE_AUTHORIZED_PERSONNEL" }, name = "ch4mpy"),
+            @WithMockAuthentication(authorities = { "uncle", "PIRATE" }, name = "tonton-pirate") })
+    void givenUserIsAuthenticated_whenGetGreet_thenOk(@ParameterizedAuthentication Authentication auth) throws Exception {
         final var greeting = "Whatever the service returns";
         when(messageService.greet()).thenReturn(greeting);
 
@@ -66,7 +71,7 @@ class SpringAddonsGreetingControllerUnitTest {
     }
 
     @Test
-    @WithMockJwtAuth({ "admin", "ROLE_AUTHORIZED_PERSONNEL" })
+    @WithMockAuthentication({ "admin", "ROLE_AUTHORIZED_PERSONNEL" })
     void givenUserIsGrantedWithRoleAuthorizedPersonnel_whenGetSecuredRoute_thenOk() throws Exception {
         final var secret = "Secret!";
         when(messageService.getSecret()).thenReturn(secret);
@@ -77,7 +82,7 @@ class SpringAddonsGreetingControllerUnitTest {
     }
 
     @Test
-    @WithMockJwtAuth({ "admin" })
+    @WithMockAuthentication({ "admin" })
     void givenUserIsNotGrantedWithRoleAuthorizedPersonnel_whenGetSecuredRoute_thenForbidden() throws Exception {
         api.perform(get("/secured-route"))
             .andExpect(status().isForbidden());
@@ -96,7 +101,7 @@ class SpringAddonsGreetingControllerUnitTest {
     }
 
     @Test
-    @WithMockJwtAuth({ "admin", "ROLE_AUTHORIZED_PERSONNEL" })
+    @WithMockAuthentication({ "admin", "ROLE_AUTHORIZED_PERSONNEL" })
     void givenUserIsGrantedWithRoleAuthorizedPersonnel_whenGetSecuredMethod_thenOk() throws Exception {
         final var secret = "Secret!";
         when(messageService.getSecret()).thenReturn(secret);
@@ -107,7 +112,7 @@ class SpringAddonsGreetingControllerUnitTest {
     }
 
     @Test
-    @WithMockJwtAuth(authorities = { "admin" })
+    @WithMockAuthentication({ "admin" })
     void givenUserIsNotGrantedWithRoleAuthorizedPersonnel_whenGetSecuredMethod_thenForbidden() throws Exception {
         api.perform(get("/secured-method"))
             .andExpect(status().isForbidden());
