@@ -2,7 +2,7 @@ package com.baeldung.base64encodinganddecoding;
 
 import org.junit.Test;
 
-import javax.xml.bind.DatatypeConverter;
+import jakarta.xml.bind.DatatypeConverter;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;

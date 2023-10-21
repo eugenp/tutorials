@@ -172,7 +172,6 @@
 
     <properties>
         <!-- Maven plugins -->
-        <maven-war-plugin.version>3.2.2</maven-war-plugin.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
         <javax.annotation-api.version>1.3.2</javax.annotation-api.version>
     </properties>

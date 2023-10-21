@@ -12,6 +12,7 @@
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>plugin</artifactId>
         <version>2.33</version>
+        <relativePath/>
     </parent>
 
     <dependencies>

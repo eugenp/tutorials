@@ -11,12 +11,16 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-2</relativePath>
+        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -40,12 +44,19 @@
             <artifactId>db-util</artifactId>
             <version>${db-util.version}</version>
         </dependency>
+        <!-- fixes https://hibernate.atlassian.net/browse/HHH-16593-->
+        <!-- and https://discourse.hibernate.org/t/bootstrap-failed-with-hibernate-6-3-0-final/8200 -->
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>6.3.1.Final</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <!-- The main class to start by executing java -jar -->
         <start-class>com.baeldung.h2db.demo.server.SpringBootApp</start-class>
-        <db-util.version>1.0.4</db-util.version>
+        <db-util.version>1.0.7</db-util.version>
     </properties>
 
 </project>

@@ -1,200 +1,198 @@
 package com.baeldung.elasticsearch;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import co.elastic.clients.elasticsearch.ElasticsearchClient;
+import co.elastic.clients.elasticsearch._types.GeoShapeRelation;
+import co.elastic.clients.elasticsearch.core.IndexResponse;
+import co.elastic.clients.elasticsearch.core.SearchRequest;
+import co.elastic.clients.elasticsearch.core.SearchResponse;
+import co.elastic.clients.elasticsearch.core.search.Hit;
+import co.elastic.clients.json.JsonData;
+import co.elastic.clients.json.jackson.JacksonJsonpMapper;
+import co.elastic.clients.transport.ElasticsearchTransport;
+import co.elastic.clients.transport.rest_client.RestClientTransport;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.io.StringReader;
 import java.util.List;
-import java.util.stream.Collectors;
 
-import com.baeldung.spring.data.es.config.Config;
+import lombok.extern.slf4j.Slf4j;
 
-import org.elasticsearch.action.admin.indices.delete.DeleteIndexRequest;
-import org.elasticsearch.action.admin.indices.refresh.RefreshRequest;
-import org.elasticsearch.action.index.IndexRequest;
-import org.elasticsearch.action.index.IndexResponse;
-import org.elasticsearch.action.search.SearchRequest;
-import org.elasticsearch.action.search.SearchResponse;
-import org.elasticsearch.client.RequestOptions;
-import org.elasticsearch.client.RestHighLevelClient;
-import org.elasticsearch.client.indices.CreateIndexRequest;
-import org.elasticsearch.common.geo.GeoPoint;
-import org.elasticsearch.common.geo.ShapeRelation;
-import org.elasticsearch.common.geo.builders.EnvelopeBuilder;
-import org.elasticsearch.common.unit.DistanceUnit;
-import org.elasticsearch.common.xcontent.XContentType;
-import org.elasticsearch.index.query.GeoShapeQueryBuilder;
-import org.elasticsearch.index.query.QueryBuilder;
-import org.elasticsearch.index.query.QueryBuilders;
-import org.elasticsearch.search.SearchHit;
-import org.elasticsearch.search.builder.SearchSourceBuilder;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.locationtech.jts.geom.Coordinate;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.apache.http.HttpHost;
+import org.elasticsearch.client.RestClient;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * This Manual test requires: Elasticsearch instance running on localhost:9200.
- * 
- * The following docker command can be used: docker run -d --name es762 -p
- * 9200:9200 -e "discovery.type=single-node" elasticsearch:7.6.2
+ * <p>
+ * The following docker command can be used: docker run -d --name elastic-test -p 9200:9200 -e
+ * "discovery.type=single-node" -e "xpack.security.enabled=false"
+ * docker.elastic.co/elasticsearch/elasticsearch:8.9.0
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = Config.class)
-public class GeoQueriesManualTest {
+
+@Slf4j
+class GeoQueriesManualTest {
 
     private static final String WONDERS_OF_WORLD = "wonders-of-world";
 
-    @Autowired
-    private RestHighLevelClient client;
+    private ElasticsearchClient client;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
-        String jsonObject = "{\"properties\":{\"name\":{\"type\":\"text\",\"index\":false},\"region\":{\"type\":\"geo_shape\"},\"location\":{\"type\":\"geo_point\"}}}";
-
-        CreateIndexRequest req = new CreateIndexRequest(WONDERS_OF_WORLD);
-        req.mapping(jsonObject, XContentType.JSON);
-
+        RestClient restClient = RestClient.builder(HttpHost.create("http://localhost:9200"))
+            .build();
+        ElasticsearchTransport transport = new RestClientTransport(restClient, new JacksonJsonpMapper());
+        client = new ElasticsearchClient(transport);
+        log.info("Creating index: {}", WONDERS_OF_WORLD);
         client.indices()
-            .create(req, RequestOptions.DEFAULT);
+            .create(builder -> builder.index(WONDERS_OF_WORLD)
+                .mappings(typeMapping -> typeMapping.properties("region", region -> region.geoShape(gs -> gs))
+                    .properties("location", location -> location.geoPoint(gp -> gp))));
     }
 
     @Test
-    public void givenGeoShapeData_whenExecutedGeoShapeQuery_thenResultNonEmpty() throws IOException {
-        String jsonObject = "{\"name\":\"Agra\",\"region\":{\"type\":\"envelope\",\"coordinates\":[[75,30.2],[80.1, 25]]}}";
-        IndexRequest indexRequest = new IndexRequest(WONDERS_OF_WORLD);
-        indexRequest.source(jsonObject, XContentType.JSON);
-        IndexResponse response = client.index(indexRequest, RequestOptions.DEFAULT);
+    void givenGeoShapeData_whenExecutedGeoShapeQuery_thenResultNonEmpty() throws IOException {
+        String jsonObject = """
+            {
+                "name":"Agra",
+                "region":{
+                    "type":"envelope",
+                    "coordinates":[[75,30.2],[80.1,25]]
+                }
+            }
+            """;
+        IndexResponse response = client.index(idx -> idx.index(WONDERS_OF_WORLD)
+            .withJson(new StringReader(jsonObject)));
 
-        String tajMahalId = response.getId();
-
-        RefreshRequest refreshRequest = new RefreshRequest(WONDERS_OF_WORLD);
+        String tajMahalId = response.id();
         client.indices()
-            .refresh(refreshRequest, RequestOptions.DEFAULT);
+            .refresh();
 
-        Coordinate topLeft = new Coordinate(74, 31.2);
-        Coordinate bottomRight = new Coordinate(81.1, 24);
+        StringReader jsonData = new StringReader("""
+            {
+                 "type":"envelope",
+                 "coordinates": [[74.0, 31.2], [81.1, 24.0 ] ]
+            }
+            """);
 
-        GeoShapeQueryBuilder qb = QueryBuilders.geoShapeQuery("region", new EnvelopeBuilder(topLeft, bottomRight).buildGeometry());
-        qb.relation(ShapeRelation.INTERSECTS);
-
-        SearchSourceBuilder source = new SearchSourceBuilder().query(qb);
-        SearchRequest searchRequest = new SearchRequest(WONDERS_OF_WORLD);
-        searchRequest.source(source);
-
-        SearchResponse searchResponse = client.search(searchRequest, RequestOptions.DEFAULT);
-
-        List<String> ids = Arrays.stream(searchResponse.getHits()
-            .getHits())
-            .map(SearchHit::getId)
-            .collect(Collectors.toList());
-
-        assertTrue(ids.contains(tajMahalId));
+        SearchRequest searchRequest = new SearchRequest.Builder().query(query -> query.bool(boolQuery -> boolQuery.filter(query1 -> query1.geoShape(geoShapeQuery -> geoShapeQuery.field("region")
+                .shape(geoShapeFieldQuery -> geoShapeFieldQuery.relation(GeoShapeRelation.Within)
+                    .shape(JsonData.from(jsonData)))))))
+            .build();
+        log.info("Search request: {}", searchRequest);
+        SearchResponse<Object> search = client.search(searchRequest, Object.class);
+        log.info("Search response: {}", search);
+        List<String> searchResults = search.hits()
+            .hits()
+            .stream()
+            .map(Hit::id)
+            .toList();
+        assertTrue(searchResults.contains(tajMahalId));
     }
 
     @Test
-    public void givenGeoPointData_whenExecutedGeoBoundingBoxQuery_thenResultNonEmpty() throws Exception {
-        String jsonObject = "{\"name\":\"Pyramids of Giza\",\"location\":[31.131302,29.976480]}";
+    void givenGeoPointData_whenExecutedGeoBoundingBoxQuery_thenResultNonEmpty() throws Exception {
+        Location pyramidsOfGiza = new Location("Pyramids of Giza", List.of(31.1328, 29.9761));
+        IndexResponse response = client.index(builder -> builder.index(WONDERS_OF_WORLD)
+            .document(pyramidsOfGiza));
 
-        IndexRequest indexRequest = new IndexRequest(WONDERS_OF_WORLD);
-        indexRequest.source(jsonObject, XContentType.JSON);
-        IndexResponse response = client.index(indexRequest, RequestOptions.DEFAULT);
+        String pyramidsOfGizaId = response.id();
 
-        String pyramidsOfGizaId = response.getId();
-
-        RefreshRequest refreshRequest = new RefreshRequest(WONDERS_OF_WORLD);
+        log.info("Indexed pyramid of Giza: {}", pyramidsOfGizaId);
         client.indices()
-            .refresh(refreshRequest, RequestOptions.DEFAULT);
+            .refresh();
 
-        QueryBuilder qb = QueryBuilders.geoBoundingBoxQuery("location")
-            .setCorners(31, 30, 28, 32);
-
-        SearchSourceBuilder source = new SearchSourceBuilder().query(qb);
-        SearchRequest searchRequest = new SearchRequest(WONDERS_OF_WORLD);
-        searchRequest.source(source);
-
-        SearchResponse searchResponse = client.search(searchRequest, RequestOptions.DEFAULT);
-
-        List<String> ids = Arrays.stream(searchResponse.getHits()
-            .getHits())
-            .map(SearchHit::getId)
-            .collect(Collectors.toList());
-        assertTrue(ids.contains(pyramidsOfGizaId));
+        SearchRequest.Builder builder = new SearchRequest.Builder().index(WONDERS_OF_WORLD);
+        builder.query(query -> query.geoBoundingBox(geoBoundingBoxQuery -> geoBoundingBoxQuery.field("location")
+            .boundingBox(geoBounds -> geoBounds.tlbr(bl4 -> bl4.topLeft(geoLocation -> geoLocation.coords(List.of(30.0, 31.0)))
+                .bottomRight(geoLocation -> geoLocation.coords(List.of(32.0, 28.0)))))));
+        SearchRequest build = builder.build();
+        log.info("Search request: {}", build);
+        SearchResponse<Location> searchResponse = client.search(build, Location.class);
+        log.info("Search response: {}", searchResponse);
+        List<Location> returnedLocations = searchResponse.hits()
+            .hits()
+            .stream()
+            .map(Hit::source)
+            .toList();
+        assertEquals(pyramidsOfGiza, returnedLocations.get(0));
     }
 
     @Test
-    public void givenGeoPointData_whenExecutedGeoDistanceQuery_thenResultNonEmpty() throws Exception {
-        String jsonObject = "{\"name\":\"Lighthouse of alexandria\",\"location\":[31.131302,29.976480]}";
+    void givenGeoPointData_whenExecutedGeoDistanceQuery_thenResultNonEmpty() throws Exception {
+        String jsonObject = """
+            {
+                "name":"Lighthouse of alexandria",
+                "location":{ "lat": 31.2139, "lon": 29.8856 }
+            }
+            """;
+        IndexResponse response = client.index(idx -> idx.index(WONDERS_OF_WORLD)
+            .withJson(new StringReader(jsonObject)));
 
-        IndexRequest indexRequest = new IndexRequest(WONDERS_OF_WORLD);
-        indexRequest.source(jsonObject, XContentType.JSON);
-        IndexResponse response = client.index(indexRequest, RequestOptions.DEFAULT);
-
-        String lighthouseOfAlexandriaId = response.getId();
-
-        RefreshRequest refreshRequest = new RefreshRequest(WONDERS_OF_WORLD);
+        String lightHouseOfAlexandriaId = response.id();
         client.indices()
-            .refresh(refreshRequest, RequestOptions.DEFAULT);
-
-        QueryBuilder qb = QueryBuilders.geoDistanceQuery("location")
-            .point(29.976, 31.131)
-            .distance(10, DistanceUnit.MILES);
-
-        SearchSourceBuilder source = new SearchSourceBuilder().query(qb);
-        SearchRequest searchRequest = new SearchRequest(WONDERS_OF_WORLD);
-        searchRequest.source(source);
-
-        SearchResponse searchResponse = client.search(searchRequest, RequestOptions.DEFAULT);
-
-        List<String> ids = Arrays.stream(searchResponse.getHits()
-            .getHits())
-            .map(SearchHit::getId)
-            .collect(Collectors.toList());
-        assertTrue(ids.contains(lighthouseOfAlexandriaId));
+            .refresh();
+        SearchRequest searchRequest = new SearchRequest.Builder().index(WONDERS_OF_WORLD)
+            .query(query -> query.geoDistance(geoDistanceQuery -> geoDistanceQuery.field("location")
+                .distance("10 miles")
+                .location(geoLocation -> geoLocation.latlon(latLonGeoLocation -> latLonGeoLocation.lon(29.88)
+                    .lat(31.21)))))
+            .build();
+        log.info("Search request: {}", searchRequest);
+        SearchResponse<Object> search = client.search(searchRequest, Object.class);
+        log.info("Search response: {}", search);
+        List<String> ids = search.hits()
+            .hits()
+            .stream()
+            .map(Hit::id)
+            .toList();
+        assertTrue(ids.contains(lightHouseOfAlexandriaId));
     }
 
     @Test
-    public void givenGeoPointData_whenExecutedGeoPolygonQuery_thenResultNonEmpty() throws Exception {
-        String jsonObject = "{\"name\":\"The Great Rann of Kutch\",\"location\":[69.859741,23.733732]}";
-
-        IndexRequest indexRequest = new IndexRequest(WONDERS_OF_WORLD);
-        indexRequest.source(jsonObject, XContentType.JSON);
-        IndexResponse response = client.index(indexRequest, RequestOptions.DEFAULT);
-
-        String greatRannOfKutchid = response.getId();
-
-        RefreshRequest refreshRequest = new RefreshRequest(WONDERS_OF_WORLD);
+    void givenGeoPointData_whenExecutedGeoPolygonQuery_thenResultNonEmpty() throws Exception {
+        String jsonObject = """
+            {
+                "name":"The Great Rann polygonPoints Kutch",
+                "location":{"lon": 69.859741, "lat": 23.733732}
+            }
+            """;
+        IndexResponse response = client.index(idx -> idx.index(WONDERS_OF_WORLD)
+            .withJson(new StringReader(jsonObject)));
+        String greatRannOfKutchid = response.id();
         client.indices()
-            .refresh(refreshRequest, RequestOptions.DEFAULT);
+            .refresh();
+        log.info("Indexed greatRannOfKutchid: {}", greatRannOfKutchid);
 
-        List<GeoPoint> allPoints = new ArrayList<GeoPoint>();
-        allPoints.add(new GeoPoint(22.733, 68.859));
-        allPoints.add(new GeoPoint(24.733, 68.859));
-        allPoints.add(new GeoPoint(23, 70.859));
-        QueryBuilder qb = QueryBuilders.geoPolygonQuery("location", allPoints);
+        JsonData jsonData = JsonData.fromJson("""
+            {
+                "type":"polygon",
+                "coordinates":[[[68.859,22.733],[68.859,24.733],[70.859,23]]]
+            }
+            """);
 
-        SearchSourceBuilder source = new SearchSourceBuilder().query(qb);
-        SearchRequest searchRequest = new SearchRequest(WONDERS_OF_WORLD);
-        searchRequest.source(source);
-
-        SearchResponse searchResponse = client.search(searchRequest, RequestOptions.DEFAULT);
-
-        List<String> ids = Arrays.stream(searchResponse.getHits()
-            .getHits())
-            .map(SearchHit::getId)
-            .collect(Collectors.toList());
-        assertTrue(ids.contains(greatRannOfKutchid));
+        SearchRequest build = new SearchRequest.Builder().query(query -> query.bool(boolQuery -> boolQuery.filter(query1 -> query1.geoShape(geoShapeQuery -> geoShapeQuery.field("location")
+                .shape(geoShapeFieldQuery -> geoShapeFieldQuery.relation(GeoShapeRelation.Within)
+                    .shape(jsonData))))))
+            .build();
+        log.info("Search request: {}", build);
+        SearchResponse<Object> search = client.search(build, Object.class);
+        log.info("Search response: {}", search);
+        List<String> searchResults = search.hits()
+            .hits()
+            .stream()
+            .map(Hit::id)
+            .toList();
+        assertTrue(searchResults.contains(greatRannOfKutchid));
     }
 
-    @After
+    @AfterEach
     public void destroy() throws Exception {
-        DeleteIndexRequest deleteIndex = new DeleteIndexRequest(WONDERS_OF_WORLD);
         client.indices()
-            .delete(deleteIndex, RequestOptions.DEFAULT);
+            .delete(builder -> builder.index(WONDERS_OF_WORLD));
     }
 }

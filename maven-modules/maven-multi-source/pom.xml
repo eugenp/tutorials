@@ -18,7 +18,7 @@
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven.compiler.version}</version>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
@@ -30,7 +30,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
-                <version>${maven.build.helper.version}</version>
+                <version>${build-helper-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <phase>generate-sources</phase>
@@ -80,11 +80,9 @@
 
     <properties>
         <maven.resources.version>3.0.2</maven.resources.version>
-        <maven.compiler.version>3.8.0</maven.compiler.version>
-        <maven.failsafe.version>2.22.0</maven.failsafe.version>
         <maven.verifier.version>1.1</maven.verifier.version>
         <maven.clean.version>3.0.0</maven.clean.version>
-        <maven.build.helper.version>3.0.0</maven.build.helper.version>
+        <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
         <jetty.version>9.4.11.v20180605</jetty.version>
         <jersey.version>2.27</jersey.version>
     </properties>
