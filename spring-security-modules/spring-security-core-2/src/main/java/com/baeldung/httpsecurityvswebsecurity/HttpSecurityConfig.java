@@ -14,16 +14,16 @@ public class HttpSecurityConfig extends WebSecurityConfigurerAdapter {
         // Given: HttpSecurity configured
 
         http.authorizeRequests()
-            .antMatchers("/public/**").permitAll()
-            .antMatchers("/admin/**").hasRole("ADMIN")
-            .anyRequest().authenticated()
-            .and()
-            .formLogin()
-            .loginPage("/login")
-            .permitAll()
-            .and()
-            .logout()
-            .permitAll();
+          .antMatchers("/public/**").permitAll()
+          .antMatchers("/admin/**").hasRole("ADMIN")
+          .anyRequest().authenticated()
+          .and()
+          .formLogin()
+          .loginPage("/login")
+          .permitAll()
+          .and()
+          .logout()
+          .permitAll();
 
         // When: Accessing specific URLs
         // Then: Access is granted based on defined rules
