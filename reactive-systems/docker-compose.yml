@@ -1,0 +1,18 @@
+version: '3'
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "80:80"
+  order-service:
+    build: ./order-service
+    ports:
+      - "8080:8080"
+  inventory-service:
+    build: ./inventory-service
+    ports:
+      - "8081:8081"
+  shipping-service:
+    build: ./shipping-service
+    ports:
+      - "8082:8082"
