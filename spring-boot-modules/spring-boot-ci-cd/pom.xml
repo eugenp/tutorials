@@ -34,7 +34,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.5</version>
+                <version>${jacoco-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>default-prepare-agent</id>
@@ -65,7 +65,7 @@
                     <plugin>
                         <groupId>com.heroku.sdk</groupId>
                         <artifactId>heroku-maven-plugin</artifactId>
-                        <version>3.0.2</version>
+                        <version>${heroku-maven-plugin.version}</version>
                         <configuration>
                             <appName>spring-boot-ci-cd</appName>
                             <processTypes>
@@ -88,7 +88,7 @@
                     <plugin>
                         <groupId>com.google.cloud.tools</groupId>
                         <artifactId>jib-maven-plugin</artifactId>
-                        <version>2.2.0</version>
+                        <version>${jib-maven-plugin.version}</version>
                         <configuration>
                             <to>
                                 <image>registry.hub.docker.com/baeldungjib/baeldung-ci-cd-process</image>
@@ -103,5 +103,11 @@
             </build>
         </profile>
     </profiles>
+
+    <properties>
+        <jacoco-maven-plugin.version>0.8.5</jacoco-maven-plugin.version>
+        <heroku-maven-plugin.version>3.0.2</heroku-maven-plugin.version>
+        <jib-maven-plugin.version>2.2.0</jib-maven-plugin.version>
+    </properties>
 
 </project>

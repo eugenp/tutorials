@@ -26,12 +26,12 @@
         <module>jee-7</module>
         <module>jooby</module>
         <module>linkrest</module>
-        <!-- <module>ninja</module> --> <!-- JAVA-22066 -->
+        <!-- <module>ninja</module> --> <!-- Fixing in JAVA-24584 -->
         <!-- <module>play-modules</module> --> <!-- Not a maven project -->
         <!-- <module>raml-modules</module> --> <!-- Not a maven project -->
         <module>ratpack</module>
         <module>resteasy</module>
-        <!--<module>restx</module> Not upgradable to java-17 adding in default-second and  integration-lite-second profile that uses JDK 8 -->
+        <module>restx</module>
         <module>spark-java</module>
         <module>struts-2</module>
         <module>vraptor</module>

@@ -342,11 +342,9 @@
                 <module>core-java-modules/core-java-8-datetime-2</module>
                 <module>core-java-modules/core-java-sun</module>
                 <module>core-java-modules/core-java-security</module>
-                <module>core-java-modules/core-java-nio-2</module>
-                <module>core-java-modules/core-java-serialization</module>
                 <module>core-java-modules/core-java-lang</module>
                 <module>core-java-modules/core-java-lang-math-3</module>
-                <module>core-java-modules/core-java-collections-conversions-2</module>
+             
                 <module>core-java-modules/core-java-streams-2</module>
 
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
@@ -355,6 +353,7 @@
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
+                <!-- <module>pants</module> --> <!-- Not a maven project -->
 
                 <module>libraries-jdk8</module>
 
@@ -362,14 +361,12 @@
 
                 <module>muleesb</module>
                 <module>web-modules/java-lite</module>
-                <module>web-modules/restx</module>
                 <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't support yet the jakarta API-->
                 <module>persistence-modules/hibernate-ogm</module> <!-- hibernate-ogm wasn't updated because it doesn't support jakarta API -->
-                <module>persistence-modules/java-cassandra</module> <!-- JAVA-21464 cassandra-unit library doesn't support to run with jdk9 and above -->
                 <module>persistence-modules/spring-data-cassandra-reactive</module> <!--JAVA-21844-->
-                <module>persistence-modules/spring-data-neo4j</module>
                 <module>java-nashorn</module>
                 <module>jeromq</module>
+                <module>spring-ejb-modules/ejb-beans</module>
             </modules>
 
         </profile>
@@ -427,7 +424,6 @@
                 <!-- <module>spring-roo</module> --> <!-- Not supported JAVA-17327 -->
 
                 <module>spring-security-modules/spring-security-ldap</module>
-                <module>spring-soap</module>
                 <module>spring-swagger-codegen</module>
                 <module>video-tutorials</module>
             </modules>
@@ -520,11 +516,9 @@
                 <module>core-java-modules/core-java-8-datetime-2</module>
                 <module>core-java-modules/core-java-sun</module>
                 <module>core-java-modules/core-java-security</module>
-                <module>core-java-modules/core-java-nio-2</module>
-                <module>core-java-modules/core-java-serialization</module>
                 <module>core-java-modules/core-java-lang</module>
                 <module>core-java-modules/core-java-lang-math-3</module>
-                <module>core-java-modules/core-java-collections-conversions-2</module>
+               
                 <module>core-java-modules/core-java-streams-2</module>
 
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
@@ -539,13 +533,12 @@
                 <module>lombok-modules/lombok-custom</module>
                 <module>muleesb</module>
                 <module>web-modules/java-lite</module>
-                <module>web-modules/restx</module>
                 <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't support yet the jakarta API-->
                 <module>persistence-modules/hibernate-ogm</module> <!-- hibernate-ogm wasn't updated because it doesn't support jakarta API -->
-                <module>persistence-modules/java-cassandra</module> <!-- JAVA-21464 cassandra-unit library doesn't support to run with jdk9 and above -->
                 <module>persistence-modules/spring-data-cassandra-reactive</module> <!--JAVA-21844-->
-                <module>persistence-modules/spring-data-neo4j</module>
                 <module>java-nashorn</module>
+                <module>jeromq</module>
+                <module>spring-ejb-modules/ejb-beans</module>
             </modules>
 
         </profile>
@@ -595,7 +588,6 @@
                 <!-- <module>spring-roo</module> --> <!-- Not supported JAVA-17327 -->
 
                 <module>spring-security-modules/spring-security-ldap</module>
-                <module>spring-soap</module>
                 <module>spring-swagger-codegen</module>
                 <module>video-tutorials</module>
             </modules>
@@ -704,7 +696,6 @@
                 <module>osgi</module>
                 <module>spring-katharsis</module>
                 <module>logging-modules</module>
-                <module>spring-boot-documentation</module>
                 <module>spring-boot-modules</module>
                 <module>apache-httpclient</module>
                 <module>apache-httpclient4</module>
@@ -730,9 +721,14 @@
                 <module>spring-boot-rest</module>
                 <module>spring-drools</module>
                 <module>spring-cloud-modules/spring-cloud-azure</module>
+                <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
                 <module>spring-cloud-modules/spring-cloud-contract</module>
                 <module>spring-cloud-modules/spring-cloud-data-flow</module>
-                <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
+                <module>spring-cloud-modules/spring-cloud-eureka</module>
+                <module>spring-cloud-modules/spring-cloud-netflix-feign</module>
+                <module>spring-cloud-modules/spring-cloud-stream-starters</module>
+                <module>spring-cloud-modules/spring-cloud-zuul-eureka-integration</module>
+
                 <module>spring-exceptions</module>
                 <module>spring-jenkins-pipeline</module>
                 <module>spring-core</module>
@@ -759,6 +755,7 @@
 
                 <module>algorithms-modules</module>
                 <module>apache-libraries</module>
+                <module>apache-libraries-2</module>
                 <module>apache-poi</module>
                 <module>apache-velocity</module>
                 <module>di-modules</module>
@@ -770,14 +767,6 @@
                 <module>core-groovy-modules</module>
 
                 <module>core-java-modules</module>
-                <!-- <module>core-java-modules/core-java-9-new-features</module> --> <!-- uses preview features, to be decided how to handle -->
-                <!-- <module>core-java-modules/core-java-12</module> --> <!-- uses preview features, to be decided how to handle -->
-                <!-- <module>core-java-modules/core-java-13</module> --> <!-- uses preview features, to be decided how to handle -->
-                <!-- <module>core-java-modules/core-java-14</module> --> <!-- uses preview features, to be decided how to handle -->
-                <!-- <module>core-java-modules/core-java-15</module> --> <!-- uses preview features, to be decided how to handle -->
-                <!-- <module>core-java-modules/core-java-16</module> --> <!-- uses preview features, to be decided how to handle -->
-                <!-- <module>core-java-modules/core-java-17</module> --> <!-- uses preview features, to be decided how to handle -->
-                <!-- <module>core-java-modules/core-java-19</module> --> <!-- uses preview features, to be decided how to handle -->
                 <module>custom-pmd</module>
                 <module>data-structures</module>
                 <module>ddd-contexts</module>
@@ -815,7 +804,6 @@
                 <!-- Modules from default-first -->
 
                 <module>akka-modules</module>
-                <module>annotations</module>
                 <module>httpclient-simple</module>
                 <module>antlr</module>
                 <module>apache-kafka</module>
@@ -823,6 +811,7 @@
                 <module>apache-olingo</module>
 
                 <module>apache-poi-2</module>
+                <module>apache-poi-3</module>
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
 
@@ -871,7 +860,7 @@
                 <module>libraries-apache-commons-2</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
-                <module>libraries-data-2</module>
+                <module>libraries-data-2</module> <!-- Fixing in JAVA-24007 -->
                 <module>libraries-data-io</module>
                 <module>libraries-files</module>
                 <module>libraries-http</module>
@@ -898,6 +887,7 @@
                 <module>spring-5</module>
                 <module>spring-5-webflux</module>
                 <module>spring-5-webflux-2</module>
+                <module>spring-6-rsocket</module>
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
                 <module>spring-core-2</module>
@@ -909,6 +899,7 @@
                 <module>spring-kafka</module>
 
                 <module>spring-native</module>
+                <module>spring-soap</module>
                 <module>spring-security-modules</module>
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>
@@ -939,6 +930,10 @@
                 <module>image-processing</module>
                 <module>language-interop</module>
                 <module>gradle-modules/gradle/maven-to-gradle</module>
+                <module>persistence-modules/spring-data-neo4j</module>
+                <module>parent-boot-3</module>
+                <module>spring-kafka-2</module>
+                <!--<module>java-panama</module> Java-19 module-->
             </modules>
 
             <properties>
@@ -976,7 +971,6 @@
                 <module>osgi</module>
                 <module>spring-katharsis</module>
                 <module>logging-modules</module>
-                <module>spring-boot-documentation</module>
                 <module>spring-boot-modules</module>
                 <module>apache-httpclient</module>
                 <module>apache-httpclient4</module>
@@ -1003,6 +997,13 @@
                 <module>spring-drools</module>
                 <module>spring-cloud-modules/spring-cloud-azure</module>
                 <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
+                <module>spring-cloud-modules/spring-cloud-eureka</module>
+                <module>spring-cloud-modules/spring-cloud-contract</module>
+                <module>spring-cloud-modules/spring-cloud-data-flow</module>
+                <module>spring-cloud-modules/spring-cloud-netflix-feign</module>
+                <module>spring-cloud-modules/spring-cloud-stream-starters</module>
+                <module>spring-cloud-modules/spring-cloud-zuul-eureka-integration</module>
+
                 <module>spring-exceptions</module>
                 <module>spring-jenkins-pipeline</module>
                 <module>spring-core</module>
@@ -1025,6 +1026,7 @@
 
                 <module>algorithms-modules</module>
                 <module>apache-libraries</module>
+                <module>apache-libraries-2</module>
                 <module>apache-poi</module>
                 <module>apache-velocity</module>
                 <module>di-modules</module>
@@ -1037,14 +1039,7 @@
                 <module>core-groovy-modules</module>
 
                 <module>core-java-modules</module>
-                <!-- <module>core-java-modules/core-java-9-new-features</module> --> <!-- uses preview features, to be decided how to handle -->
-                <!-- <module>core-java-modules/core-java-12</module> --> <!-- uses preview features, to be decided how to handle -->
-                <!-- <module>core-java-modules/core-java-13</module> --> <!-- uses preview features, to be decided how to handle -->
-                <!-- <module>core-java-modules/core-java-14</module> --> <!-- uses preview features, to be decided how to handle -->
-                <!-- <module>core-java-modules/core-java-15</module> --> <!-- uses preview features, to be decided how to handle -->
-                <!-- <module>core-java-modules/core-java-16</module> --> <!-- uses preview features, to be decided how to handle -->
-                <!-- <module>core-java-modules/core-java-17</module> --> <!-- uses preview features, to be decided how to handle -->
-                <!-- <module>core-java-modules/core-java-19</module> --> <!-- uses preview features, to be decided how to handle -->
+                <module>gcp-firebase</module>
                 <module>spring-aop</module>
                 <module>spring-aop-2</module>
                 <module>custom-pmd</module>
@@ -1085,13 +1080,13 @@
                 <!-- Modules from default-first -->
 
                 <module>akka-modules</module>
-                <module>annotations</module>
                 <module>antlr</module>
                 <module>apache-kafka</module>
                 <module>apache-kafka-2</module>
                 <module>apache-olingo</module>
 
                 <module>apache-poi-2</module>
+                <module>apache-poi-3</module>
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
 
@@ -1141,7 +1136,7 @@
                 <module>libraries-apache-commons-2</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
-                <module>libraries-data-2</module>
+                <module>libraries-data-2</module> <!-- Fixing in JAVA-24007 -->
                 <module>libraries-data-io</module>
                 <module>libraries-files</module>
                 <module>libraries-http</module>
@@ -1180,6 +1175,7 @@
                 <module>spring-kafka</module>
 
                 <module>spring-native</module>
+                <module>spring-soap</module>
                 <module>spring-security-modules</module>
                 <module>spring-protobuf</module>
                 <module>spring-quartz</module>
@@ -1210,6 +1206,10 @@
                 <module>image-processing</module>
                 <module>language-interop</module>
                 <module>gradle-modules/gradle/maven-to-gradle</module>
+                <module>persistence-modules/spring-data-neo4j</module>
+                <module>spring-actuator</module>
+                <module>spring-kafka-2</module>
+                <!--<module>java-panama</module> Java-19 module-->
             </modules>
 
             <properties>
@@ -1225,6 +1225,7 @@
             <modules>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
+                <module>parent-boot-3</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
@@ -1260,7 +1261,7 @@
         <hamcrest.version>2.2</hamcrest.version>
         <hamcrest-all.version>1.3</hamcrest-all.version>
         <mockito.version>4.4.0</mockito.version>
-        <byte-buddy.version>1.12.13</byte-buddy.version>
+        <byte-buddy.version>1.14.6</byte-buddy.version>
 
         <!-- logging -->
         <!-- overwriting in the slf4j and logback in the hibernate-jpa, spring-data-eclipselink. When updated to the latest version remove the version from that module-->
@@ -1269,38 +1270,38 @@
 
         <!-- plugins -->
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
-        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-        <exec-maven-plugin.version>3.0.0</exec-maven-plugin.version>
+        <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
+        <exec-maven-plugin.version>3.1.0</exec-maven-plugin.version>
         <java.version>1.8</java.version>
         <log4j.version>1.2.17</log4j.version>
         <jmh-core.version>1.36</jmh-core.version>
         <jmh-generator.version>1.36</jmh-generator.version>
-        <maven-failsafe-plugin.version>2.21.0</maven-failsafe-plugin.version>
+        <maven-failsafe-plugin.version>3.1.2</maven-failsafe-plugin.version>
         <commons-collections4.version>4.4</commons-collections4.version>
-        <commons-io.version>2.11.0</commons-io.version>
+        <commons-io.version>2.13.0</commons-io.version>
         <commons-lang.version>2.6</commons-lang.version>
-        <commons-lang3.version>3.12.0</commons-lang3.version>
+        <commons-lang3.version>3.13.0</commons-lang3.version>
         <commons-cli.version>1.5.0</commons-cli.version>
-        <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
+        <maven-war-plugin.version>3.4.0</maven-war-plugin.version>
         <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
         <jstl-api.version>1.2</jstl-api.version>
         <javax.servlet.jsp-api.version>2.3.3</javax.servlet.jsp-api.version>
         <jstl.version>1.2</jstl.version>
-        <jackson.version>2.13.3</jackson.version>
-        <commons-fileupload.version>1.4</commons-fileupload.version>
+        <jackson.version>2.15.2</jackson.version>
+        <commons-fileupload.version>1.5</commons-fileupload.version>
         <junit-platform.version>1.9.2</junit-platform.version>
         <junit-jupiter.version>5.9.2</junit-jupiter.version>
         <junit-platform-surefire-provider.version>1.3.2</junit-platform-surefire-provider.version>
-        <directory-maven-plugin.version>0.3.1</directory-maven-plugin.version>
-        <maven-install-plugin.version>2.5.2</maven-install-plugin.version>
+        <directory-maven-plugin.version>1.0</directory-maven-plugin.version>
+        <maven-install-plugin.version>3.1.1</maven-install-plugin.version>
         <custom-pmd.version>0.0.1</custom-pmd.version>
         <gitflow-incremental-builder.version>3.12.2</gitflow-incremental-builder.version>
-        <maven-jxr-plugin.version>3.0.0</maven-jxr-plugin.version>
-        <maven-pmd-plugin.version>3.19.0</maven-pmd-plugin.version>
+        <maven-jxr-plugin.version>3.3.0</maven-jxr-plugin.version>
+        <maven-pmd-plugin.version>3.21.0</maven-pmd-plugin.version>
         <lombok.version>1.18.28</lombok.version>
         <h2.version>2.1.214</h2.version>
-        <guava.version>31.1-jre</guava.version>
-        <maven-jar-plugin.version>3.2.2</maven-jar-plugin.version>
+        <guava.version>32.1.2-jre</guava.version>
+        <maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
     </properties>
 
 </project>

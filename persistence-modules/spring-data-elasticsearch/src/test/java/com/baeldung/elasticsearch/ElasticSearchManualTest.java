@@ -1,173 +1,176 @@
 package com.baeldung.elasticsearch;
 
-import static org.junit.Assert.assertEquals;
+import co.elastic.clients.elasticsearch.ElasticsearchClient;
+import co.elastic.clients.elasticsearch._types.Result;
+import co.elastic.clients.elasticsearch._types.query_dsl.MatchQuery;
+import co.elastic.clients.elasticsearch._types.query_dsl.Query;
+import co.elastic.clients.elasticsearch._types.query_dsl.RangeQuery;
+import co.elastic.clients.elasticsearch._types.query_dsl.SimpleQueryStringQuery;
+import co.elastic.clients.elasticsearch.core.DeleteResponse;
+import co.elastic.clients.elasticsearch.core.GetResponse;
+import co.elastic.clients.elasticsearch.core.IndexResponse;
+import co.elastic.clients.elasticsearch.core.SearchResponse;
+import co.elastic.clients.elasticsearch.core.search.Hit;
+import co.elastic.clients.json.jackson.JacksonJsonpMapper;
+import co.elastic.clients.transport.ElasticsearchTransport;
+import co.elastic.clients.transport.rest_client.RestClientTransport;
+import lombok.extern.slf4j.Slf4j;
+
+import org.apache.http.HttpHost;
+import org.elasticsearch.client.RestClient;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.io.StringReader;
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-import com.alibaba.fastjson.JSON;
-
-import org.elasticsearch.action.DocWriteResponse.Result;
-import org.elasticsearch.action.delete.DeleteRequest;
-import org.elasticsearch.action.delete.DeleteResponse;
-import org.elasticsearch.action.get.GetRequest;
-import org.elasticsearch.action.get.GetResponse;
-import org.elasticsearch.action.index.IndexRequest;
-import org.elasticsearch.action.index.IndexResponse;
-import org.elasticsearch.action.search.SearchRequest;
-import org.elasticsearch.action.search.SearchResponse;
-import org.elasticsearch.action.search.SearchType;
-import org.elasticsearch.client.RequestOptions;
-import org.elasticsearch.client.RestHighLevelClient;
-import org.elasticsearch.common.xcontent.XContentBuilder;
-import org.elasticsearch.common.xcontent.XContentFactory;
-import org.elasticsearch.common.xcontent.XContentType;
-import org.elasticsearch.index.query.QueryBuilders;
-import org.elasticsearch.search.SearchHit;
-import org.elasticsearch.search.builder.SearchSourceBuilder;
-import org.junit.Before;
-import org.junit.Test;
-import org.springframework.data.elasticsearch.client.ClientConfiguration;
-import org.springframework.data.elasticsearch.client.RestClients;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * This Manual test requires: Elasticsearch instance running on localhost:9200.
- * 
- * The following docker command can be used: docker run -d --name es762 -p
- * 9200:9200 -e "discovery.type=single-node" elasticsearch:7.6.2
+ * <p>
+ * The following docker command can be used:
+ * docker run -d --name elastic-test -p 9200:9200 -e "discovery.type=single-node" -e "xpack.security.enabled=false" docker.elastic.co/elasticsearch/elasticsearch:8.9.0
  */
+@Slf4j
 public class ElasticSearchManualTest {
-    private List<Person> listOfPersons = new ArrayList<>();
-    private RestHighLevelClient client = null;
+    private ElasticsearchClient client = null;
 
-    @Before
-    public void setUp() throws UnknownHostException {
+    @BeforeEach
+    public void setUp() throws IOException {
+        RestClient restClient = RestClient.builder(HttpHost.create("http://localhost:9200"))
+            .build();
+        ElasticsearchTransport transport = new RestClientTransport(restClient, new JacksonJsonpMapper());
+        client = new ElasticsearchClient(transport);
         Person person1 = new Person(10, "John Doe", new Date());
         Person person2 = new Person(25, "Janette Doe", new Date());
-        listOfPersons.add(person1);
-        listOfPersons.add(person2);
+        Person person3 = new Person(8, "Mark Doe", new Date());
+        client.index(builder -> builder.index("person")
+            .id(person1.getFullName())
+            .document(person1));
+        client.index(builder -> builder.index("person")
+            .id(person2.getFullName())
+            .document(person2));
+        client.index(builder -> builder.index("person")
+            .id(person3.getFullName())
+            .document(person3));
+    }
 
-        ClientConfiguration clientConfiguration = ClientConfiguration.builder()
-            .connectedTo("localhost:9200")
-            .build();
-        client = RestClients.create(clientConfiguration)
-            .rest();
+    @Test
+    public void givenJsonDocument_whenJavaObject_thenIndexDocument() throws Exception {
+        Person person = new Person(20, "Mark Doe", new Date(1471466076564L));
+        IndexResponse response = client.index(i -> i.index("person")
+            .id(person.getFullName())
+            .document(person));
+
+        log.info("Indexed with version: {}", response.version());
+        assertEquals(Result.Created, response.result());
+        assertEquals("person", response.index());
+        assertEquals("Mark Doe", response.id());
     }
 
     @Test
     public void givenJsonString_whenJavaObject_thenIndexDocument() throws Exception {
-        String jsonObject = "{\"age\":20,\"dateOfBirth\":1471466076564,\"fullName\":\"John Doe\"}";
-        IndexRequest request = new IndexRequest("people");
-        request.source(jsonObject, XContentType.JSON);
-
-        IndexResponse response = client.index(request, RequestOptions.DEFAULT);
-        String index = response.getIndex();
-        long version = response.getVersion();
-
-        assertEquals(Result.CREATED, response.getResult());
-        assertEquals(1, version);
-        assertEquals("people", index);
+        String jsonString = "{\"age\":10,\"dateOfBirth\":1471466076564,\"fullName\":\"John Doe\"}";
+        StringReader stringReader = new StringReader(jsonString);
+        IndexResponse response = client.index(i -> i.index("person")
+            .id("John Doe")
+            .withJson(stringReader));
+        log.info("Indexed with version: {}", response.version());
+        assertEquals("person", response.index());
+        assertEquals("John Doe", response.id());
     }
 
     @Test
     public void givenDocumentId_whenJavaObject_thenDeleteDocument() throws Exception {
-        String jsonObject = "{\"age\":10,\"dateOfBirth\":1471455886564,\"fullName\":\"Johan Doe\"}";
-        IndexRequest indexRequest = new IndexRequest("people");
-        indexRequest.source(jsonObject, XContentType.JSON);
-
-        IndexResponse response = client.index(indexRequest, RequestOptions.DEFAULT);
-        String id = response.getId();
-
-        GetRequest getRequest = new GetRequest("people");
-        getRequest.id(id);
-
-        GetResponse getResponse = client.get(getRequest, RequestOptions.DEFAULT);
-        System.out.println(getResponse.getSourceAsString());
-
-        DeleteRequest deleteRequest = new DeleteRequest("people");
-        deleteRequest.id(id);
-
-        DeleteResponse deleteResponse = client.delete(deleteRequest, RequestOptions.DEFAULT);
-
-        assertEquals(Result.DELETED, deleteResponse.getResult());
+        String documentId = "Mark Doe";
+        DeleteResponse response = client.delete(i -> i.index("person")
+            .id(documentId));
+        assertEquals(Result.Deleted, response.result());
+        assertEquals("Mark Doe", response.id());
     }
 
     @Test
-    public void givenSearchRequest_whenMatchAll_thenReturnAllResults() throws Exception {
-        SearchRequest searchRequest = new SearchRequest();
-        SearchResponse response = client.search(searchRequest, RequestOptions.DEFAULT);
-        SearchHit[] searchHits = response.getHits()
-            .getHits();
-        List<Person> results = Arrays.stream(searchHits)
-            .map(hit -> JSON.parseObject(hit.getSourceAsString(), Person.class))
-            .collect(Collectors.toList());
+    public void givenSearchRequest_whenMatch_thenReturnAllResults() throws Exception {
+        String searchText = "John";
+        SearchResponse<Person> searchResponse = client.search(s -> s.index("person")
+            .query(q -> q.match(t -> t.field("fullName")
+                .query(searchText))), Person.class);
 
-        results.forEach(System.out::println);
+        List<Hit<Person>> hits = searchResponse.hits()
+            .hits();
+        assertEquals(1, hits.size());
+        assertEquals("John Doe", hits.get(0)
+            .source()
+            .getFullName());
     }
 
     @Test
-    public void givenSearchParameters_thenReturnResults() throws Exception {
-        SearchSourceBuilder builder = new SearchSourceBuilder().postFilter(QueryBuilders.rangeQuery("age")
-            .from(5)
-            .to(15));
-
-        SearchRequest searchRequest = new SearchRequest();
-        searchRequest.searchType(SearchType.DFS_QUERY_THEN_FETCH);
-        searchRequest.source(builder);
-
-        SearchResponse response = client.search(searchRequest, RequestOptions.DEFAULT);
-
-        builder = new SearchSourceBuilder().postFilter(QueryBuilders.simpleQueryStringQuery("+John -Doe OR Janette"));
-
-        searchRequest = new SearchRequest();
-        searchRequest.searchType(SearchType.DFS_QUERY_THEN_FETCH);
-        searchRequest.source(builder);
-
-        SearchResponse response2 = client.search(searchRequest, RequestOptions.DEFAULT);
-
-        builder = new SearchSourceBuilder().postFilter(QueryBuilders.matchQuery("John", "Name*"));
-        searchRequest = new SearchRequest();
-        searchRequest.searchType(SearchType.DFS_QUERY_THEN_FETCH);
-        searchRequest.source(builder);
-
-        SearchResponse response3 = client.search(searchRequest, RequestOptions.DEFAULT);
-
-        response2.getHits();
-        response3.getHits();
-
-        final List<Person> results = Stream.of(response.getHits()
-            .getHits(),
-            response2.getHits()
-                .getHits(),
-            response3.getHits()
-                .getHits())
-            .flatMap(Arrays::stream)
-            .map(hit -> JSON.parseObject(hit.getSourceAsString(), Person.class))
-            .collect(Collectors.toList());
-
-        results.forEach(System.out::println);
+    public void givenGetRequest_whenMatch_thenReturnAllResults() throws IOException {
+        String documentId = "John Doe";
+        GetResponse<Person> getResponse = client.get(s -> s.index("person")
+            .id(documentId), Person.class);
+        Person source = getResponse.source();
+        assertEquals("John Doe", source.getFullName());
     }
 
     @Test
-    public void givenContentBuilder_whenHelpers_thanIndexJson() throws IOException {
-        XContentBuilder builder = XContentFactory.jsonBuilder()
-            .startObject()
-            .field("fullName", "Test")
-            .field("salary", "11500")
-            .field("age", "10")
-            .endObject();
+    public void givenSearchRequest_whenMatchAndRange_thenReturnAllResults() throws Exception {
+        String searchText = "John";
+        SearchResponse<Person> searchResponse = client.search(s -> s.index("person")
+            .query(q -> q.match(t -> t.field("fullName")
+                .query(searchText)))
+            .query(q -> q.range(range -> range.field("age")
+                .from("1")
+                .to("10"))), Person.class);
 
-        IndexRequest indexRequest = new IndexRequest("people");
-        indexRequest.source(builder);
+        List<Hit<Person>> hits = searchResponse.hits()
+            .hits();
+        assertEquals(1, hits.size());
+        assertEquals("John Doe", hits.get(0)
+            .source()
+            .getFullName());
+    }
 
-        IndexResponse response = client.index(indexRequest, RequestOptions.DEFAULT);
+    @Test
+    public void givenMultipleQueries_thenReturnResults() throws Exception {
+        Query ageQuery = RangeQuery.of(r -> r.field("age")
+                .from("5")
+                .to("15"))
+            ._toQuery();
+        SearchResponse<Person> response1 = client.search(s -> s.query(q -> q.bool(b -> b.must(ageQuery))), Person.class);
+        response1.hits()
+            .hits()
+            .forEach(hit -> log.info("Response 1: {}", hit.source()));
 
-        assertEquals(Result.CREATED, response.getResult());
+        Query fullNameQuery = MatchQuery.of(m -> m.field("fullName")
+                .query("John"))
+            ._toQuery();
+        SearchResponse<Person> response2 = client.search(s -> s.query(q -> q.bool(b -> b.must(fullNameQuery))), Person.class);
+        response2.hits()
+            .hits()
+            .forEach(hit -> log.info("Response 2: {}", hit.source()));
+        Query doeContainsQuery = SimpleQueryStringQuery.of(q -> q.query("*Doe"))
+            ._toQuery();
+        SearchResponse<Person> response3 = client.search(s -> s.query(q -> q.bool(b -> b.must(doeContainsQuery))), Person.class);
+        response3.hits()
+            .hits()
+            .forEach(hit -> log.info("Response 3: {}", hit.source()));
+
+        Query simpleStringQuery = SimpleQueryStringQuery.of(q -> q.query("+John -Doe OR Janette"))
+            ._toQuery();
+        SearchResponse<Person> response4 = client.search(s -> s.query(q -> q.bool(b -> b.must(simpleStringQuery))), Person.class);
+        response4.hits()
+            .hits()
+            .forEach(hit -> log.info("Response 4: {}", hit.source()));
+
+        SearchResponse<Person> response5 = client.search(s -> s.query(q -> q.bool(b -> b.must(ageQuery)
+            .must(fullNameQuery)
+            .must(simpleStringQuery))), Person.class);
+        response5.hits()
+            .hits()
+            .forEach(hit -> log.info("Response 5: {}", hit.source()));
     }
 }

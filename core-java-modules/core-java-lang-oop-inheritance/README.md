@@ -12,3 +12,4 @@ This module contains articles about inheritance in Java
 - [Guide to Inheritance in Java](https://www.baeldung.com/java-inheritance)
 - [Object Type Casting in Java](https://www.baeldung.com/java-type-casting)
 - [Variable and Method Hiding in Java](https://www.baeldung.com/java-variable-method-hiding)
+- [Inner Classes vs. Subclasses in Java](https://www.baeldung.com/java-inner-classes-vs-subclasses)

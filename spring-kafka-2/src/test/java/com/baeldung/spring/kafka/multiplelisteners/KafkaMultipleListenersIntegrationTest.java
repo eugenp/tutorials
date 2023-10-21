@@ -19,7 +19,7 @@ import org.springframework.kafka.listener.ConcurrentMessageListenerContainer;
 import org.springframework.kafka.test.context.EmbeddedKafka;
 
 @SpringBootTest(classes = MultipleListenersApplicationKafkaApp.class)
-@EmbeddedKafka(partitions = 1, brokerProperties = { "listeners=PLAINTEXT://localhost:9092", "port=9092" })
+@EmbeddedKafka(partitions = 1, controlledShutdown = true, brokerProperties = { "listeners=PLAINTEXT://localhost:9092", "port=9092" })
 class KafkaMultipleListenersIntegrationTest {
 
     @Autowired

@@ -49,7 +49,6 @@
 
     <properties>
         <asm.version>5.2</asm.version>
-        <maven-jar-plugin.version>2.4</maven-jar-plugin.version>
     </properties>
 
 </project>

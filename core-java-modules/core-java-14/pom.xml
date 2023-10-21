@@ -48,7 +48,6 @@
 
     <properties>
         <maven.compiler.release>14</maven.compiler.release>
-        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <surefire.plugin.version>3.0.0-M3</surefire.plugin.version>
     </properties>
 

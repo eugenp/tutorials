@@ -8,8 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.security.test.context.support.WithAnonymousUser;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
-import com.c4_soft.springaddons.security.oauth2.test.annotations.OpenIdClaims;
-import com.c4_soft.springaddons.security.oauth2.test.annotations.WithMockJwtAuth;
+import com.c4_soft.springaddons.security.oauth2.test.annotations.WithJwt;
+import com.c4_soft.springaddons.security.oauth2.test.annotations.WithMockAuthentication;
 
 @SpringBootTest(webEnvironment = WebEnvironment.MOCK)
 @AutoConfigureWebTestClient
@@ -33,7 +33,7 @@ class ReactiveResourceServerApplicationIntegrationTest {
     }
 
     @Test
-    @WithMockJwtAuth(authorities = { "admin", "ROLE_AUTHORIZED_PERSONNEL" }, claims = @OpenIdClaims(preferredUsername = "ch4mpy"))
+    @WithJwt("ch4mpy.json")
     void givenUserIsAuthenticated_whenGetGreet_thenOk() throws Exception {
         api.get()
             .uri("/greet")
@@ -60,7 +60,7 @@ class ReactiveResourceServerApplicationIntegrationTest {
     }
 
     @Test
-    @WithMockJwtAuth("ROLE_AUTHORIZED_PERSONNEL")
+    @WithMockAuthentication("ROLE_AUTHORIZED_PERSONNEL")
     void givenUserIsGrantedWithRoleAuthorizedPersonnel_whenGetSecuredRoute_thenOk() throws Exception {
         api.get()
             .uri("/secured-route")
@@ -72,7 +72,7 @@ class ReactiveResourceServerApplicationIntegrationTest {
     }
 
     @Test
-    @WithMockJwtAuth("admin")
+    @WithMockAuthentication("admin")
     void givenUserIsNotGrantedWithRoleAuthorizedPersonnel_whenGetSecuredRoute_thenForbidden() throws Exception {
         api.get()
             .uri("/secured-route")
@@ -97,7 +97,7 @@ class ReactiveResourceServerApplicationIntegrationTest {
     }
 
     @Test
-    @WithMockJwtAuth("ROLE_AUTHORIZED_PERSONNEL")
+    @WithMockAuthentication("ROLE_AUTHORIZED_PERSONNEL")
     void givenUserIsGrantedWithRoleAuthorizedPersonnel_whenGetSecuredMethod_thenOk() throws Exception {
         api.get()
             .uri("/secured-method")
@@ -109,7 +109,7 @@ class ReactiveResourceServerApplicationIntegrationTest {
     }
 
     @Test
-    @WithMockJwtAuth("admin")
+    @WithMockAuthentication("admin")
     void givenUserIsNotGrantedWithRoleAuthorizedPersonnel_whenGetSecuredMethod_thenForbidden() throws Exception {
         api.get()
             .uri("/secured-method")

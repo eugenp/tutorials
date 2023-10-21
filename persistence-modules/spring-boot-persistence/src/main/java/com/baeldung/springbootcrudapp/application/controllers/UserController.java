@@ -2,7 +2,7 @@ package com.baeldung.springbootcrudapp.application.controllers;
 
 import com.baeldung.springbootcrudapp.application.repositories.UserRepository;
 import com.baeldung.springbootcrudapp.application.entities.User;
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

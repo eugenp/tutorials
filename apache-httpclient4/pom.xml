@@ -241,8 +241,6 @@
         <httpcore.version>4.4.16</httpcore.version>
         <httpclient.version>4.5.14</httpclient.version>
         <mockserver.version>5.11.2</mockserver.version>
-        <!-- maven plugins -->
-        <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
     </properties>
 
 </project>
