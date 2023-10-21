@@ -1,12 +1,11 @@
 package com.baeldung.persistence.hibernate;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.lessThan;
-import static org.junit.Assert.assertThat;
 
 import java.util.List;
-
 
 import org.hibernate.ScrollMode;
 import org.hibernate.ScrollableResults;
@@ -43,8 +42,6 @@ public class FooPaginationPersistenceIntegrationTest {
 
     private Session session;
 
-    // tests
-
     @Before
     public final void before() {
         final int minimalNumberOfEntities = 25;
@@ -62,20 +59,17 @@ public class FooPaginationPersistenceIntegrationTest {
         session.close();
     }
 
-    // tests
-
     @Test
     public final void whenContextIsBootstrapped_thenNoExceptions() {
         //
     }
 
-    @SuppressWarnings("unchecked")
     @Test
     public final void whenRetrievingPaginatedEntities_thenCorrectSize() {
         final int pageNumber = 1;
         final int pageSize = 10;
 
-        final Query query = session.createQuery("From Foo");
+        final Query<Foo> query = session.createQuery("From Foo",Foo.class);
         query.setFirstResult((pageNumber - 1) * pageSize);
         query.setMaxResults(pageSize);
         final List<Foo> fooList = query.list();
@@ -83,19 +77,18 @@ public class FooPaginationPersistenceIntegrationTest {
         assertThat(fooList, hasSize(pageSize));
     }
 
-    @SuppressWarnings("unchecked")
     @Test
     public final void whenRetrievingAllPages_thenCorrect() {
         int pageNumber = 1;
         final int pageSize = 10;
 
         final String countQ = "Select count (f.id) from Foo f";
-        final Query countQuery = session.createQuery(countQ);
+        final Query<Long> countQuery = session.createQuery(countQ, Long.class);
         final Long countResult = (Long) countQuery.uniqueResult();
 
         final List<Foo> fooList = Lists.newArrayList();
         int totalEntities = 0;
-        final Query query = session.createQuery("From Foo");
+        final Query<Foo> query = session.createQuery("From Foo", Foo.class);
         while (totalEntities < countResult) {
             query.setFirstResult((pageNumber - 1) * pageSize);
             query.setMaxResults(pageSize);
@@ -105,17 +98,16 @@ public class FooPaginationPersistenceIntegrationTest {
         }
     }
 
-    @SuppressWarnings("unchecked")
     @Test
     public final void whenRetrievingLastPage_thenCorrectSize() {
         final int pageSize = 10;
 
         final String countQ = "Select count (f.id) from Foo f";
-        final Query countQuery = session.createQuery(countQ);
-        final Long countResults = (Long) countQuery.uniqueResult();
+        final Query<Long> countQuery = session.createQuery(countQ, Long.class);
+        final Long countResults = countQuery.uniqueResult();
         final int lastPageNumber = (int) (Math.ceil(countResults / pageSize));
 
-        final Query selectQuery = session.createQuery("From Foo");
+        final Query<Foo> selectQuery = session.createQuery("From Foo",Foo.class);
         selectQuery.setFirstResult((lastPageNumber - 1) * pageSize);
         selectQuery.setMaxResults(pageSize);
         final List<Foo> lastPage = selectQuery.list();
@@ -129,9 +121,9 @@ public class FooPaginationPersistenceIntegrationTest {
     public final void givenUsingTheScrollableApi_whenRetrievingPaginatedData_thenCorrect() {
         final int pageSize = 10;
         final String hql = "FROM Foo f order by f.name";
-        final Query query = session.createQuery(hql);
+        final Query<Foo> query = session.createQuery(hql,Foo.class);
 
-        final ScrollableResults resultScroll = query.scroll(ScrollMode.FORWARD_ONLY);
+        final ScrollableResults<Foo> resultScroll = query.scroll(ScrollMode.FORWARD_ONLY);
 
         // resultScroll.last();
         // final int totalResults = resultScroll.getRowNumber() + 1;
@@ -150,7 +142,6 @@ public class FooPaginationPersistenceIntegrationTest {
         assertThat(fooPage, hasSize(lessThan(10 + 1)));
     }
 
-    @SuppressWarnings("unchecked")
     @Test
     public final void givenUsingTheCriteriaApi_whenRetrievingFirstPage_thenCorrect() {
         final int pageSize = 10;
@@ -166,7 +157,6 @@ public class FooPaginationPersistenceIntegrationTest {
         assertThat(firstPage, hasSize(pageSize));
     }
 
-    @SuppressWarnings("unchecked")
     @Test
     public final void givenUsingTheCriteriaApi_whenRetrievingPaginatedData_thenCorrect() {
 

@@ -30,15 +30,15 @@ import com.baeldung.spring.config.PersistenceTestConfig;
 @ContextConfiguration(classes = { PersistenceTestConfig.class }, loader = AnnotationConfigContextLoader.class)
 public class JPABarAuditIntegrationTest {
 
-    private static Logger logger = LoggerFactory.getLogger(JPABarAuditIntegrationTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(JPABarAuditIntegrationTest.class);
 
     @BeforeClass
-    public static void setUpBeforeClass() throws Exception {
+    public static void setUpBeforeClass() {
         logger.info("setUpBeforeClass()");
     }
 
     @AfterClass
-    public static void tearDownAfterClass() throws Exception {
+    public static void tearDownAfterClass(){
         logger.info("tearDownAfterClass()");
     }
 
