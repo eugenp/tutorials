@@ -14,7 +14,7 @@ public class BuilderWithDefaultValueUnitTest {
     }
 
     @Test
-    public void givenBuilderWithDefaultValue_NoArgsWorksAlso() {
+    public void givenBuilderWithDefaultValue_ThanNoArgsWorksAlso() {
         Pojo build = new Pojo().toBuilder()
             .build();
         Pojo pojo = new Pojo();
