@@ -10,9 +10,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-2</relativePath>
+        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -30,8 +30,14 @@
             <artifactId>tomcat-embed-jasper</artifactId>
         </dependency>
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
+            <groupId>jakarta.servlet.jsp.jstl</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+            <version>${jakarta.servlet.jsp.jstl}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.web</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+            <version>${jakarta.servlet.jsp.jstl}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -53,6 +59,11 @@
             <artifactId>jaxb-runtime</artifactId>
             <version>${jaxb-runtime.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>${io.rest-assured.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -73,6 +84,8 @@
         <commons-io.version>1.3.2</commons-io.version>
         <json-path.version>2.7.0</json-path.version>
         <jaxb-runtime.version>2.3.5</jaxb-runtime.version>
+        <jakarta.servlet.jsp.jstl>2.0.0</jakarta.servlet.jsp.jstl>
+        <io.rest-assured.version>3.0.0</io.rest-assured.version>
     </properties>
 
 </project>

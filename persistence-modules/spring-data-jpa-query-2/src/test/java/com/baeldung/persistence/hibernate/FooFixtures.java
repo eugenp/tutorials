@@ -17,7 +17,7 @@ public class FooFixtures {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(FooFixtures.class);
 
-    private SessionFactory sessionFactory;
+    private final SessionFactory sessionFactory;
 
     public FooFixtures(final SessionFactory sessionFactory) {
         super();
@@ -28,8 +28,8 @@ public class FooFixtures {
     // API
 
     public void createBars() {
-        Session session = null;
-        Transaction tx = null;
+        Session session;
+        Transaction tx;
         session = sessionFactory.openSession();
         tx = session.getTransaction();
         try {
@@ -39,13 +39,13 @@ public class FooFixtures {
                 bar.setName("Bar_" + i);
                 final Foo foo = new Foo("Foo_" + (i + 120));
                 foo.setBar(bar);
-                session.save(foo);
+                session.persist(foo);
                 final Foo foo2 = new Foo(null);
                 if (i % 2 == 0) {
                     foo2.setName("LuckyFoo" + (i + 120));
                 }
                 foo2.setBar(bar);
-                session.save(foo2);
+                session.persist(foo2);
                 bar.getFooSet().add(foo);
                 bar.getFooSet().add(foo2);
                 session.merge(bar);
@@ -53,16 +53,12 @@ public class FooFixtures {
             tx.commit();
             session.flush();
         } catch (final HibernateException he) {
-            if (tx != null) {
-                tx.rollback();
-            }
+            tx.rollback();
             LOGGER.error("Not able to open session", he);
         } catch (final Exception e) {
             LOGGER.error(e.getLocalizedMessage(), e);
         } finally {
-            if (session != null) {
-                session.close();
-            }
+            session.close();
         }
 
     }
@@ -86,23 +82,18 @@ public class FooFixtures {
         try {
             tx.begin();
             for (final Foo foo : fooList) {
-
-                session.save(foo.getBar());
-                session.save(foo);
+                session.persist(foo.getBar());
+                session.persist(foo);
             }
             tx.commit();
             session.flush();
         } catch (final HibernateException he) {
-            if (tx != null) {
-                tx.rollback();
-            }
+            tx.rollback();
             LOGGER.error("Not able to open session", he);
         } catch (final Exception e) {
             LOGGER.error(e.getLocalizedMessage(), e);
         } finally {
-            if (session != null) {
-                session.close();
-            }
+            session.close();
         }
     }
 
