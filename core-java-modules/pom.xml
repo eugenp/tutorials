@@ -178,6 +178,7 @@
         <module>core-java-collections-maps-6</module>
         <module>core-java-records</module>
         <module>core-java-9-jigsaw</module>
+        <module>core-java-collections-maps-7</module>
     </modules>
 
     <dependencyManagement>

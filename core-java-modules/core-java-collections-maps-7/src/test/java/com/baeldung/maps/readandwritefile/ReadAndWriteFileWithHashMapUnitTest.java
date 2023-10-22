@@ -1,0 +1,122 @@
+package com.baeldung.maps.readandwritefile;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.nio.file.Files;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
+import java.util.stream.Collectors;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import org.junit.After;
+import org.junit.Test;
+import org.junit.Before;
+
+public class ReadAndWriteFileWithHashMapUnitTest {
+
+    private static final Map<Integer, Student> STUDENT_DATA = new HashMap<>();
+    static {
+        STUDENT_DATA.put(1234, new Student("Henry", "Winter"));
+        STUDENT_DATA.put(5678, new Student("Richard", "Papen"));
+    }
+
+    private static File file;
+
+    @Before
+    public void createFile() throws IOException {
+        file = File.createTempFile("student", ".data");
+    }
+
+    @After
+    public void deleteFile() {
+        file.delete();
+    }
+
+    @Test
+    public void givenHashMap_whenWrittenAsPropertiesFile_thenReloadedMapIsIdentical() throws IOException {
+        // Given a map containing student data
+        Map<String, String> studentData = new HashMap<>();
+        studentData.put("student.firstName", "Henry");
+        studentData.put("student.lastName", "Winter");
+
+        // When converting to a Properties object and writing to a file
+        Properties props = new Properties();
+        props.putAll(studentData);
+        try (FileWriter writer = new FileWriter(file)) {
+            props.store(writer, "");
+        }
+
+        // Then the map resulting from loading the Properties file is identical
+        Properties propsFromFile = new Properties();
+        try (InputStream stream = Files.newInputStream(file.toPath())) {
+            propsFromFile.load(stream);
+        }
+        // Clean up temp file
+        Map<String, String> studentDataFromProps = propsFromFile.stringPropertyNames()
+            .stream()
+            .collect(
+                Collectors.toMap(key -> key, props::getProperty)
+            );
+        assertThat(studentDataFromProps).isEqualTo(studentData);
+    }
+
+    @Test
+    public void givenHashMap_whenSerializedToFile_thenDeserializedMapIsIdentical()
+      throws IOException, ClassNotFoundException {
+        // Given a map containing student data
+
+        // When serializing the map to a file
+        try (FileOutputStream fileOutput = new FileOutputStream(file);
+             ObjectOutputStream objectStream = new ObjectOutputStream(fileOutput)) {
+            objectStream.writeObject(STUDENT_DATA);
+        }
+
+        // Then read the file back into a map and check the contents
+        Map<Integer, Student> studentsFromFile;
+        try (FileInputStream fileReader = new FileInputStream(file);
+             ObjectInputStream objectStream = new ObjectInputStream(fileReader)) {
+            studentsFromFile = (HashMap<Integer, Student>)objectStream.readObject();
+        }
+        assertThat(studentsFromFile).isEqualTo(STUDENT_DATA);
+    }
+
+    @Test
+    public void givenHashMap_whenSerializedToFileWithJackson_thenDeserializedMapIsIdentical() throws IOException {
+        // Given a map containing student data
+
+        // When converting to JSON with Jackson and writing to a file
+        ObjectMapper mapper = new ObjectMapper();
+        try (FileOutputStream fileOutput = new FileOutputStream(file)) {
+            mapper.writeValue(fileOutput, STUDENT_DATA);
+        }
+
+        // Then deserialize the file back into a map and check that it's identical
+        Map<Integer, Student> mapFromFile;
+        try (FileInputStream fileInput = new FileInputStream(file)) {
+            // Create a TypeReference so we can deserialize the parameterized type
+            TypeReference<HashMap<Integer, Student>> mapType = new TypeReference<HashMap<Integer, Student>>() {};
+            mapFromFile = mapper.readValue(fileInput, mapType);
+        }
+        assertThat(mapFromFile).isEqualTo(STUDENT_DATA);
+    }
+
+    @Test
+    public void givenHashMap_whenSerializedToFileWithGson_thenDeserializedMapIsIdentical() {
+        // Given a map containing student data
+
+        // When converting to JSON using Gson and writing to a file
+
+        // Then deserialize the file back into a map and check that it's identical
+    }
+}
