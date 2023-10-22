@@ -1,6 +1,6 @@
 package com.baeldung.hibernate.fetching.model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
