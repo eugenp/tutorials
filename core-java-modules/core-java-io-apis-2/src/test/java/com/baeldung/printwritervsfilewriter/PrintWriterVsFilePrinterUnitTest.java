@@ -14,47 +14,51 @@ public class PrintWriterVsFilePrinterUnitTest {
 
     @Test
     public void givenTextFile_whenWritingToAFileWithFileWriter_thenTextMatches() throws IOException {
-        String result = "Harry Potter and Chambers of Secret";
+        String result = "Harry Potter and the Chamber of Secrets";
 
-        File fwp = new File("potter.txt");
-        try (FileWriter fw = new FileWriter(fwp);) {
-            fw.write("Harry Potter and Chambers of Secret");
-            assertTrue(fwp.exists());
-        }
-
-        try (BufferedReader reader = new BufferedReader(new FileReader(fwp));) {
-            String actualData = reader.readLine();
-            assertEquals(result, actualData);
-        }
-    }
-
-    @Test
-    public void givenTextFile_whenWritingToAFileUsingPrintfFromPrintWriter_thenTextMatches() throws IOException {
-        String result = "The Dream My Father Told Me by Barack Obama";
-        File fpw = new File("dream.txt");
-        try (PrintWriter pw = new PrintWriter(fpw);) {
-            String author = "Barack Obama";
-            pw.printf("The Dream My Father Told Me by %s", author);
-            pw.checkError();
-        }
-
-        try (BufferedReader reader = new BufferedReader(new FileReader(fpw));) {
-            String actualData = reader.readLine();
-            assertEquals(result, actualData);
-        }
-    }
-
-    @Test
-    public void givenTextFile_whenWritingToAFileUsingPrintlnFromPrintWriter_thenTextMatches() throws IOException {
-        String result = "I'm going to Alabama";
-        File file = new File("alabama.txt");
-        try (PrintWriter pw = new PrintWriter(file);) {
-            pw.println("I'm going to Alabama");
+        File file = new File("potter.txt");
+        try (FileWriter fw = new FileWriter(file);) {
+            fw.write("Harry Potter and the Chamber of Secrets");
         }
 
         try (BufferedReader reader = new BufferedReader(new FileReader(file));) {
             String actualData = reader.readLine();
             assertEquals(result, actualData);
+        }
+    }
+
+    @Test
+    public void givenTextFile_whenWritingToAFileUsingPrintfPrintWriter_thenTextMatches() throws IOException {
+        String result = "Dreams from My Father by Barack Obama";
+        File file = new File("dream.txt");
+        try (PrintWriter pw = new PrintWriter(file);) {
+            String author = "Barack Obama";
+            pw.printf("Dreams from My Father by %s", author);
+            assertTrue(!pw.checkError());
+        }
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(file));) {
+            String actualData = reader.readLine();
+            assertEquals(result, actualData);
+        }
+    }
+
+    @Test
+    public void givenTextFile_whenWritingToAFileUsingPrintlnPrintWriter_thenTextMatches() throws IOException {
+        String result = "I'm going to Alabama\nAlabama is a state in the US\n";
+        File file = new File("alabama.txt");
+        try (PrintWriter pw = new PrintWriter(file);) {
+            pw.println("I'm going to Alabama");
+            pw.println("Alabama is a state in the US");
+        }
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(file));) {
+            StringBuilder actualData = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                actualData.append(line).append("\n");
+            }
+            assertEquals(result, actualData.toString());
         }
     }
 
