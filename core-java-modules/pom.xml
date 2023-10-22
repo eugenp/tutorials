@@ -193,6 +193,11 @@
         <module>core-java-collections-maps-6</module>
         <module>core-java-records</module>
         <module>core-java-9-jigsaw</module>
+        <!--<module>core-java-20</module>--> <!--JAVA-25373-->
+        <module>core-java-collections-set</module>
+        <module>core-java-date-operations-1</module>
+        <!--<module>core-java-datetime-conversion</module>--> <!--JAVA-25433-->
+        <module>core-java-httpclient</module>
     </modules>
 
     <dependencyManagement>
