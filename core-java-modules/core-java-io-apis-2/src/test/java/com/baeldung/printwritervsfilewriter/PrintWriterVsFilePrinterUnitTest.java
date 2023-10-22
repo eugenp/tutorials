@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 public class PrintWriterVsFilePrinterUnitTest {
 
     @Test
-    public void givenTextFile_whenWritingToAFileWithFileWriter_thenTextMatches() throws IOException {
+    public void whenWritingToTextFileUsingFileWriter_thenTextMatches() throws IOException {
         String result = "Harry Potter and the Chamber of Secrets";
 
         File file = new File("potter.txt");
@@ -28,7 +28,7 @@ public class PrintWriterVsFilePrinterUnitTest {
     }
 
     @Test
-    public void givenTextFile_whenWritingToAFileUsingPrintfPrintWriter_thenTextMatches() throws IOException {
+    public void whenWritingToTextFileUsingPrintWriterPrintf_thenTextMatches() throws IOException {
         String result = "Dreams from My Father by Barack Obama";
         File file = new File("dream.txt");
         try (PrintWriter pw = new PrintWriter(file);) {
@@ -44,7 +44,7 @@ public class PrintWriterVsFilePrinterUnitTest {
     }
 
     @Test
-    public void givenTextFile_whenWritingToAFileUsingPrintlnPrintWriter_thenTextMatches() throws IOException {
+    public void whenWritingToTextFileUsingPrintWriterPrintln_thenTextMatches() throws IOException {
         String result = "I'm going to Alabama\nAlabama is a state in the US\n";
         File file = new File("alabama.txt");
         try (PrintWriter pw = new PrintWriter(file);) {
