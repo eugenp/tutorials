@@ -727,6 +727,7 @@
                 <module>spring-cloud-modules/spring-cloud-data-flow</module>
                 <module>spring-cloud-modules/spring-cloud-eureka</module>
                 <module>spring-cloud-modules/spring-cloud-netflix-feign</module>
+                <module>spring-cloud-modules/spring-cloud-security</module>
                 <module>spring-cloud-modules/spring-cloud-stream-starters</module>
                 <module>spring-cloud-modules/spring-cloud-zuul-eureka-integration</module>
 
@@ -1005,6 +1006,7 @@
                 <module>spring-cloud-modules/spring-cloud-data-flow</module>
                 <module>spring-cloud-modules/spring-cloud-netflix-feign</module>
                 <module>spring-cloud-modules/spring-cloud-stream-starters</module>
+                <module>spring-cloud-modules/spring-cloud-security</module>
                 <module>spring-cloud-modules/spring-cloud-zuul-eureka-integration</module>
 
                 <module>spring-exceptions</module>
