@@ -41,7 +41,8 @@ class RetryCompletableFutureUnitTest {
 
         CompletableFuture<Integer> result = retryTask(codeToRun, 3);
 
-        assertThatThrownBy(result::join).isInstanceOf(CompletionException.class)
+        assertThatThrownBy(result::join)
+          .isInstanceOf(CompletionException.class)
           .hasMessageContaining("IllegalStateException: Task failed after 3 attempts");
     }
 
