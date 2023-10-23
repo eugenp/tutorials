@@ -936,6 +936,7 @@
                 <module>spring-di-4</module>
                 <module>spring-kafka-2</module>
                 <!--<module>java-panama</module> Java-19 module-->
+				<module>libraries-llms</module>
             </modules>
 
             <properties>
@@ -1223,6 +1224,7 @@
                 <module>spring-di-4</module>
                 <module>spring-kafka-2</module>
                 <!--<module>java-panama</module> Java-19 module-->
+				<module>libraries-llms</module>
             </modules>
 
             <properties>
