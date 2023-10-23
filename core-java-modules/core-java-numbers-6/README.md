@@ -6,4 +6,5 @@
 - [How to Split an Integer Number Into Digits in Java](https://www.baeldung.com/java-integer-individual-digits)
 - [Java Double vs. BigDecimal](https://www.baeldung.com/java-double-vs-bigdecimal)
 - [Finding the Square Root of a BigInteger in Java](https://www.baeldung.com/java-find-square-root-biginteger)
+- [Truncate a Double to Two Decimal Places in Java](https://www.baeldung.com/java-double-round-two-decimal-places)
 - More articles: [[<-- prev]](../core-java-numbers-5)
