@@ -63,6 +63,6 @@ class XmlToHashmapUnitTest {
     }
 
     private String getXml() throws IOException {
-        return new String(Files.readAllBytes(Paths.get(XmlToHashmapUnitTest.TEST_XML_PATH)));
+        return new String(Files.readAllBytes(Paths.get(TEST_XML_PATH)));
     }
 }
