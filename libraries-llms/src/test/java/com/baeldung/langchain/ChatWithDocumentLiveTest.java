@@ -27,7 +27,7 @@ import dev.langchain4j.store.embedding.EmbeddingStore;
 import dev.langchain4j.store.embedding.EmbeddingStoreIngestor;
 import dev.langchain4j.store.embedding.inmemory.InMemoryEmbeddingStore;
 
-public class ChatWithDocumentLiveTests {
+public class ChatWithDocumentLiveTest {
 
     @Test
     public void givenDocument_whenPrompted_thenValidResponse() {

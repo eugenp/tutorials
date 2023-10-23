@@ -15,7 +15,7 @@ import dev.langchain4j.model.openai.OpenAiChatModel;
 
 import org.junit.Assert;
 
-public class PromptTemplatesLiveTests {
+public class PromptTemplatesLiveTest {
 
     @Test
     public void givenPromptTemplate_whenSuppliedInput_thenValidResponse() {
