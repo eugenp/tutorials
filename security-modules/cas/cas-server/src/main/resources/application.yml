@@ -8,19 +8,19 @@ server:
 spring:
     main:
         allow-bean-definition-overriding: true
-cas:
-    authn:
-        accept:
-            users:
-        jdbc:
-            query[0]:
-                sql: SELECT * FROM users WHERE email = ?
-                url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-                dialect: org.hibernate.dialect.MySQLDialect
-                user: root
-                password: root1234
-                ddlAuto: none
-                driverClass: com.mysql.cj.jdbc.Driver
-                fieldPassword: password
-                passwordEncoder:
-                    type: NONE
+#cas:
+#    authn:
+#        accept:
+#            users:
+#        jdbc:
+#            query[0]:
+#                sql: SELECT * FROM users WHERE email = ?
+#                url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+#                dialect: org.hibernate.dialect.MySQLDialect
+#                user: root
+#                password: root
+#                ddlAuto: none
+#                driverClass: com.mysql.cj.jdbc.Driver
+#                fieldPassword: password
+#                passwordEncoder:
+#                   type: NONE
