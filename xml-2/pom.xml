@@ -80,6 +80,11 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <dependency>
+            <groupId>org.apache.xmlbeans</groupId>
+            <artifactId>xmlbeans</artifactId>
+            <version>5.0.2</version> <!-- Use the appropriate version -->
+        </dependency>
     </dependencies>
 
     <build>
