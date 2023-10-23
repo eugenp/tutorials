@@ -12,6 +12,8 @@ interface PassengerRepository extends JpaRepository<Passenger, Long>, CustomPass
     Passenger findTopByOrderBySeatNumberAsc();
 
     List<Passenger> findByOrderBySeatNumberAsc();
+    
+    List<Passenger> findByOrderBySeatNumberAsc(Limit limit);
 
     List<Passenger> findByFirstNameIgnoreCase(String firstName);
 
