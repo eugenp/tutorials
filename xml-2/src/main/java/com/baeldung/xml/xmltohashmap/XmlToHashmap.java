@@ -63,10 +63,12 @@ public class XmlToHashmap {
         return employeeMap;
     }
 
-    public Employees xmlToHashmapUsingJAXB(String xmlData) throws JAXBException {
+    public Map<String, Employee> xmlToHashmapUsingJAXB(String xmlData) throws JAXBException {
         JAXBContext context = JAXBContext.newInstance(Employees.class);
         Unmarshaller unmarshaller = context.createUnmarshaller();
-        return (Employees) unmarshaller.unmarshal(new StringReader(xmlData));
+        Employees employees = (Employees) unmarshaller.unmarshal(new StringReader(xmlData));
+        return employees.getEmployeeList().stream()
+            .collect(Collectors.toMap(Employee::getId, Function.identity()));
     }
 
     public Map<String,Employee> xmlToHashmapUsingDOMParserXpath(String xmlData) throws ParserConfigurationException, IOException, SAXException, XPathExpressionException {

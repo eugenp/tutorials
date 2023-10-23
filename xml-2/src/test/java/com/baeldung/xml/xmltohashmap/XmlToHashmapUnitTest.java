@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import javax.xml.bind.JAXBException;
@@ -25,35 +24,36 @@ class XmlToHashmapUnitTest {
 
     @Test
     void whenUsingXstream_thenHashmapShouldBeCreated() throws IOException {
-        Map<String, Employee> map = xmlToHashmap.xmlToHashmapUsingXstream(getXml());
-        verify(new ArrayList<>(map.values()));
+        Map<String, Employee> employeeMap = xmlToHashmap.xmlToHashmapUsingXstream(getXml());
+        verify(employeeMap);
     }
     @Test
     void
     whenUsingUnderscore_thenHashmapShouldBeCreated() throws IOException {
-        Map<String, Employee> map = xmlToHashmap.xmlToHashmapUsingUnderscore(getXml());
-        verify(new ArrayList<>(map.values()));
+        Map<String, Employee> employeeMap = xmlToHashmap.xmlToHashmapUsingUnderscore(getXml());
+        verify(employeeMap);
     }
 
     @Test
     void whenUsingJackson_thenHashmapShouldBeCreated() throws IOException {
-        Map<String, Employee> map = xmlToHashmap.xmlToHashmapUsingJackson(getXml());
-        verify(new ArrayList<>(map.values()));
+        Map<String, Employee> employeeMap = xmlToHashmap.xmlToHashmapUsingJackson(getXml());
+        verify(employeeMap);
     }
 
     @Test
     void whenUsingJAXB_thenHashmapShouldBeCreated() throws IOException, JAXBException {
-        Employees employees = xmlToHashmap.xmlToHashmapUsingJAXB(getXml());
-        verify(employees.getEmployeeList());
+        Map<String, Employee> employeeMap = xmlToHashmap.xmlToHashmapUsingJAXB(getXml());
+        verify(employeeMap);
     }
 
     @Test
     void whenUsingDOMXpath_thenHashmapShouldBeCreated() throws Exception {
         Map<String, Employee> employeeMap = xmlToHashmap.xmlToHashmapUsingDOMParserXpath(getXml());
-        verify(new ArrayList<>(employeeMap.values()));
+        verify(employeeMap);
     }
 
-    private void verify(List<Employee> employees){
+    private void verify(Map<String,Employee> employeeMap){
+        ArrayList<Employee> employees = new ArrayList<>(employeeMap.values());
         Assertions.assertEquals("654", employees.get(0).getId());
         Assertions.assertEquals("John", employees.get(0).getFirstName());
         Assertions.assertEquals("Doe", employees.get(0).getLastName());
