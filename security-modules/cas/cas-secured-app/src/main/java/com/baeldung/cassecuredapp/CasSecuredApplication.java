@@ -12,6 +12,8 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.cas.ServiceProperties;
 import org.springframework.security.cas.authentication.CasAuthenticationProvider;
 import org.springframework.security.cas.web.CasAuthenticationFilter;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.logout.LogoutFilter;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 
@@ -62,10 +64,11 @@ public class CasSecuredApplication {
         CasAuthenticationProvider provider = new CasAuthenticationProvider();
         provider.setServiceProperties(serviceProperties);
         provider.setTicketValidator(ticketValidator);
-       /* provider.setUserDetailsService(
+        provider.setUserDetailsService(
           s -> new User("casuser", "Mellon", true, true, true, true,
-          AuthorityUtils.createAuthorityList("ROLE_ADMIN")));*/
-        provider.setUserDetailsService(getUser());
+          AuthorityUtils.createAuthorityList("ROLE_ADMIN")));
+        //For Authentication with a Database-backed UserDetailsService
+        //provider.setUserDetailsService(getUser());
         provider.setKey("CAS_PROVIDER_LOCALHOST_8900");
         return provider;
     }
