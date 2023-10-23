@@ -60,7 +60,6 @@ class XmlToHashmapUnitTest {
         Assertions.assertEquals("776", employees.get(1).getId());
         Assertions.assertEquals("Steve", employees.get(1).getFirstName());
         Assertions.assertEquals("Smith", employees.get(1).getLastName());
-
     }
 
     private String getXml() throws IOException {

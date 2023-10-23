@@ -37,7 +37,7 @@ import com.thoughtworks.xstream.security.AnyTypePermission;
 public class XmlToHashmap {
 
     public Map<String,Employee> xmlToHashmapUsingXstream(String xml){
-        XStream xStream=new XStream(new DomDriver());
+        XStream xStream=new XStream();
         xStream.alias("employees", List.class);
         xStream.alias("employee", Employee.class);
         xStream.addPermission(AnyTypePermission.ANY);
