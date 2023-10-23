@@ -71,7 +71,7 @@ public class XmlToHashmap {
     }
 
     public Map<String,Employee> xmlToHashmapUsingDOMParserXpath(String xmlData) throws ParserConfigurationException, IOException, SAXException, XPathExpressionException {
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newDefaultInstance();
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
         Document doc = builder.parse(new InputSource(new StringReader(xmlData)));
 
