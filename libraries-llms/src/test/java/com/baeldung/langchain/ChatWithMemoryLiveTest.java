@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class ChatWithMemoryLiveTests {
+public class ChatWithMemoryLiveTest {
 
     @Test
     public void givenMemory_whenPrompted_thenValidResponse() {

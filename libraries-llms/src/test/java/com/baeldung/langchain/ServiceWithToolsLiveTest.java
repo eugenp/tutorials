@@ -10,7 +10,7 @@ import dev.langchain4j.memory.chat.MessageWindowChatMemory;
 import dev.langchain4j.model.openai.OpenAiChatModel;
 import dev.langchain4j.service.AiServices;
 
-public class ServiceWithToolsLiveTests {
+public class ServiceWithToolsLiveTest {
 
     static class Calculator {
 

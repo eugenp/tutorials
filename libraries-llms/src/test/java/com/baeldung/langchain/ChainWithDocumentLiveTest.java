@@ -36,7 +36,7 @@ import dev.langchain4j.store.embedding.EmbeddingMatch;
 import dev.langchain4j.store.embedding.EmbeddingStore;
 import dev.langchain4j.store.embedding.inmemory.InMemoryEmbeddingStore;
 
-public class ChainWithDocumentLiveTests {
+public class ChainWithDocumentLiveTest {
 
     @Test
     public void givenChainWithDocument_whenPrompted_thenValidResponse() {
