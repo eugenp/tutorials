@@ -38,7 +38,6 @@ public class XmlToHashmap {
 
     public Map<String,Employee> xmlToHashmapUsingXstream(String xml){
         XStream xStream=new XStream(new DomDriver());
-        xStream.autodetectAnnotations(true);
         xStream.alias("employees", List.class);
         xStream.alias("employee", Employee.class);
         xStream.addPermission(AnyTypePermission.ANY);
