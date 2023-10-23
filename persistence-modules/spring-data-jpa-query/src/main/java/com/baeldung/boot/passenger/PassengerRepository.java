@@ -13,7 +13,8 @@ interface PassengerRepository extends JpaRepository<Passenger, Long>, CustomPass
 
     List<Passenger> findByOrderBySeatNumberAsc();
     
-    List<Passenger> findByOrderBySeatNumberAsc(Limit limit);
+    //The Limit type is a new feature in Spring Data JPA version 3.2
+    //List<Passenger> findByOrderBySeatNumberAsc(Limit limit);
 
     List<Passenger> findByFirstNameIgnoreCase(String firstName);
 
