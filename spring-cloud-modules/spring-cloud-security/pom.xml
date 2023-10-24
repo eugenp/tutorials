@@ -34,6 +34,9 @@
 
     <properties>
         <spring-cloud-dependencies.version>2021.0.3</spring-cloud-dependencies.version>
+        <jaxb-core.version>2.3.0.1</jaxb-core.version>
+        <jaxb-api.version>2.3.1</jaxb-api.version>
+        <jaxb-impl.version>2.3.1</jaxb-impl.version>
     </properties>
 
 </project>

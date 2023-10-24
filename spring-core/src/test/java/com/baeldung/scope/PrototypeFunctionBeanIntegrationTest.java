@@ -11,7 +11,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 import com.baeldung.config.scope.AppConfigFunctionBean;
 import com.baeldung.scope.prototype.PrototypeBean;
-import com.baeldung.scope.singletone.SingletonFunctionBean;
+import com.baeldung.scope.singleton.SingletonFunctionBean;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = AppConfigFunctionBean.class)

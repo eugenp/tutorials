@@ -92,6 +92,7 @@
         <module>spring-boot-3-observation</module>
         <module>spring-boot-3-test-pitfalls</module>
         <module>spring-boot-3-testcontainers</module>
+        <module>spring-boot-3-2</module>
         <module>spring-boot-resilience4j</module>
         <module>spring-boot-properties</module>
         <module>spring-boot-properties-2</module>
@@ -105,6 +106,7 @@
         <module>spring-boot-documentation</module>
         <module>spring-boot-3-url-matching</module>
         <module>spring-boot-graalvm-docker</module>
+        <module>spring-boot-validations</module>
     </modules>
 
     <dependencyManagement>

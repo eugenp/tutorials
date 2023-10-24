@@ -12,8 +12,8 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.security.test.context.support.WithAnonymousUser;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.c4_soft.springaddons.security.oauth2.test.annotations.OpenIdClaims;
-import com.c4_soft.springaddons.security.oauth2.test.annotations.WithMockJwtAuth;
+import com.c4_soft.springaddons.security.oauth2.test.annotations.WithJwt;
+import com.c4_soft.springaddons.security.oauth2.test.annotations.WithMockAuthentication;
 
 @SpringBootTest(webEnvironment = WebEnvironment.MOCK)
 @AutoConfigureMockMvc
@@ -34,7 +34,7 @@ class ServletResourceServerApplicationIntegrationTest {
     }
 
     @Test
-    @WithMockJwtAuth(authorities = { "admin", "ROLE_AUTHORIZED_PERSONNEL" }, claims = @OpenIdClaims(preferredUsername = "ch4mpy"))
+    @WithJwt("ch4mpy.json")
     void givenUserIsAuthenticated_whenGetGreet_thenOk() throws Exception {
         api.perform(get("/greet"))
             .andExpect(status().isOk())
@@ -54,7 +54,7 @@ class ServletResourceServerApplicationIntegrationTest {
     }
 
     @Test
-    @WithMockJwtAuth("ROLE_AUTHORIZED_PERSONNEL")
+    @WithMockAuthentication("ROLE_AUTHORIZED_PERSONNEL")
     void givenUserIsGrantedWithRoleAuthorizedPersonnel_whenGetSecuredRoute_thenOk() throws Exception {
         api.perform(get("/secured-route"))
             .andExpect(status().isOk())
@@ -62,7 +62,7 @@ class ServletResourceServerApplicationIntegrationTest {
     }
 
     @Test
-    @WithMockJwtAuth("admin")
+    @WithMockAuthentication("admin")
     void givenUserIsNotGrantedWithRoleAuthorizedPersonnel_whenGetSecuredRoute_thenForbidden() throws Exception {
         api.perform(get("/secured-route"))
             .andExpect(status().isForbidden());
@@ -81,7 +81,7 @@ class ServletResourceServerApplicationIntegrationTest {
     }
 
     @Test
-    @WithMockJwtAuth("ROLE_AUTHORIZED_PERSONNEL")
+    @WithMockAuthentication("ROLE_AUTHORIZED_PERSONNEL")
     void givenUserIsGrantedWithRoleAuthorizedPersonnel_whenGetSecuredMethod_thenOk() throws Exception {
         api.perform(get("/secured-method"))
             .andExpect(status().isOk())
@@ -89,7 +89,7 @@ class ServletResourceServerApplicationIntegrationTest {
     }
 
     @Test
-    @WithMockJwtAuth("admin")
+    @WithMockAuthentication("admin")
     void givenUserIsNotGrantedWithRoleAuthorizedPersonnel_whenGetSecuredMethod_thenForbidden() throws Exception {
         api.perform(get("/secured-method"))
             .andExpect(status().isForbidden());

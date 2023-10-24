@@ -1,33 +1,29 @@
 package com.baeldung.boot.daos;
 
-import com.baeldung.boot.Application;
-import com.baeldung.boot.domain.User;
-import org.junit.ClassRule;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.util.TestPropertyValues;
-import org.springframework.context.ApplicationContextInitializer;
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.transaction.annotation.Transactional;
-import org.testcontainers.containers.PostgreSQLContainer;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.time.LocalDate;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
+import org.springframework.transaction.annotation.Transactional;
+import org.testcontainers.containers.PostgreSQLContainer;
+import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = Application.class)
+import com.baeldung.boot.domain.User;
+
+@Testcontainers
+@SpringBootTest
 @ActiveProfiles("tc")
-@ContextConfiguration(initializers = {UserRepositoryTCLiveTest.Initializer.class})
 public class UserRepositoryTCLiveTest extends UserRepositoryCommon {
 
-    @ClassRule
+    @Container
     public static PostgreSQLContainer postgreSQLContainer = new PostgreSQLContainer("postgres:11.1")
-      .withDatabaseName("integration-tests-db")
+	  .withDatabaseName("integration-tests-db")
       .withUsername("sa")
       .withPassword("sa");
 
@@ -45,14 +41,10 @@ public class UserRepositoryTCLiveTest extends UserRepositoryCommon {
         assertThat(updatedUsersSize).isEqualTo(2);
     }
 
-    static class Initializer
-      implements ApplicationContextInitializer<ConfigurableApplicationContext> {
-        public void initialize(ConfigurableApplicationContext configurableApplicationContext) {
-            TestPropertyValues.of(
-              "spring.datasource.url=" + postgreSQLContainer.getJdbcUrl(),
-              "spring.datasource.username=" + postgreSQLContainer.getUsername(),
-              "spring.datasource.password=" + postgreSQLContainer.getPassword()
-            ).applyTo(configurableApplicationContext.getEnvironment());
-        }
+    @DynamicPropertySource
+    static void registerPgProperties(DynamicPropertyRegistry registry) {
+        registry.add("spring.datasource.url", postgreSQLContainer::getJdbcUrl);
+        registry.add("spring.datasource.username", postgreSQLContainer::getUsername);
+        registry.add("spring.datasource.password", postgreSQLContainer::getPassword);
     }
 }
