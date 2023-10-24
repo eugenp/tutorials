@@ -19,6 +19,7 @@
         <module>coupling</module>
         <module>cqrs-es</module>
         <module>ddd</module>
+        <module>ddd-contexts</module>
         <module>design-patterns-architectural</module>
         <module>design-patterns-behavioral</module>
         <module>design-patterns-behavioral-2</module>
