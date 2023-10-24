@@ -1,4 +1,4 @@
-package com.baeldung.xml.xmltohashmap;
+package com.baeldung.xml.tohashmap;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -35,7 +35,7 @@ import com.thoughtworks.xstream.security.AnyTypePermission;
 
 public class XmlToHashmap {
 
-    public Map<String,Employee> xmlToHashmapUsingXstream(String xml){
+    public Map<String,Employee> xmlToHashMapUsingXstream(String xml){
         XStream xStream=new XStream();
         xStream.alias("employees", List.class);
         xStream.alias("employee", Employee.class);
@@ -45,7 +45,7 @@ public class XmlToHashmap {
             .collect(Collectors.toMap(Employee::getId, Function.identity()));
     }
 
-    public Map<String, Employee> xmlToHashmapUsingUnderscore(String xml){
+    public Map<String, Employee> xmlToHashMapUsingUnderscore(String xml){
         Map<String,Employee> employeeMap = new HashMap<>();
         Map<String, Object> employeeList = (Map<String, Object>)U.fromXmlMap(xml).get("employees");
         List<LinkedHashMap<String,String>> list=(List<LinkedHashMap<String,String>>)employeeList.get("employee");
@@ -53,7 +53,7 @@ public class XmlToHashmap {
         return employeeMap;
     }
 
-    public Map<String,Employee> xmlToHashmapUsingJackson(String xml) throws JsonProcessingException {
+    public Map<String,Employee> xmlToHashMapUsingJackson(String xml) throws JsonProcessingException {
         XmlMapper xmlMapper = new XmlMapper();
         Map<String,Employee> employeeMap = new HashMap<>();
         Map<String,Object> map= xmlMapper.readValue(xml, Map.class);
@@ -62,7 +62,7 @@ public class XmlToHashmap {
         return employeeMap;
     }
 
-    public Map<String, Employee> xmlToHashmapUsingJAXB(String xmlData) throws JAXBException {
+    public Map<String, Employee> xmlToHashMapUsingJAXB(String xmlData) throws JAXBException {
         JAXBContext context = JAXBContext.newInstance(Employees.class);
         Unmarshaller unmarshaller = context.createUnmarshaller();
         Employees employees = (Employees) unmarshaller.unmarshal(new StringReader(xmlData));
@@ -70,7 +70,7 @@ public class XmlToHashmap {
             .collect(Collectors.toMap(Employee::getId, Function.identity()));
     }
 
-    public Map<String,Employee> xmlToHashmapUsingDOMParserXpath(String xmlData) throws ParserConfigurationException, IOException, SAXException, XPathExpressionException {
+    public Map<String,Employee> xmlToHashMapUsingDOMParserXpath(String xmlData) throws ParserConfigurationException, IOException, SAXException, XPathExpressionException {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
         Document doc = builder.parse(new InputSource(new StringReader(xmlData)));

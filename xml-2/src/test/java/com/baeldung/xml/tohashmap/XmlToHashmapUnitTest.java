@@ -1,4 +1,4 @@
-package com.baeldung.xml.xmltohashmap;
+package com.baeldung.xml.tohashmap;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -14,41 +14,40 @@ import org.junit.jupiter.api.Test;
 
 class XmlToHashmapUnitTest {
 
-    private XmlToHashmap xmlToHashmap;
+    private XmlToHashmap xmlToHashMap;
     private static final String TEST_XML_PATH = "src/main/resources/xml/xmltohashmap/test.xml";
 
     @BeforeEach
     void setUp(){
-        xmlToHashmap = new XmlToHashmap();
+        xmlToHashMap = new XmlToHashmap();
     }
 
     @Test
-    void whenUsingXstream_thenHashmapShouldBeCreated() throws IOException {
-        Map<String, Employee> employeeMap = xmlToHashmap.xmlToHashmapUsingXstream(getXml());
+    void whenUsingXstream_thenHashMapShouldBeCreated() throws IOException {
+        Map<String, Employee> employeeMap = xmlToHashMap.xmlToHashMapUsingXstream(getXml());
         verify(employeeMap);
     }
     @Test
-    void
-    whenUsingUnderscore_thenHashmapShouldBeCreated() throws IOException {
-        Map<String, Employee> employeeMap = xmlToHashmap.xmlToHashmapUsingUnderscore(getXml());
-        verify(employeeMap);
-    }
-
-    @Test
-    void whenUsingJackson_thenHashmapShouldBeCreated() throws IOException {
-        Map<String, Employee> employeeMap = xmlToHashmap.xmlToHashmapUsingJackson(getXml());
+    void whenUsingUnderscore_thenHashMapShouldBeCreated() throws IOException {
+        Map<String, Employee> employeeMap = xmlToHashMap.xmlToHashMapUsingUnderscore(getXml());
         verify(employeeMap);
     }
 
     @Test
-    void whenUsingJAXB_thenHashmapShouldBeCreated() throws IOException, JAXBException {
-        Map<String, Employee> employeeMap = xmlToHashmap.xmlToHashmapUsingJAXB(getXml());
+    void whenUsingJackson_thenHashMapShouldBeCreated() throws IOException {
+        Map<String, Employee> employeeMap = xmlToHashMap.xmlToHashMapUsingJackson(getXml());
         verify(employeeMap);
     }
 
     @Test
-    void whenUsingDOMXpath_thenHashmapShouldBeCreated() throws Exception {
-        Map<String, Employee> employeeMap = xmlToHashmap.xmlToHashmapUsingDOMParserXpath(getXml());
+    void whenUsingJAXB_thenHashMapShouldBeCreated() throws IOException, JAXBException {
+        Map<String, Employee> employeeMap = xmlToHashMap.xmlToHashMapUsingJAXB(getXml());
+        verify(employeeMap);
+    }
+
+    @Test
+    void whenUsingDOMXpath_thenHashMapShouldBeCreated() throws Exception {
+        Map<String, Employee> employeeMap = xmlToHashMap.xmlToHashMapUsingDOMParserXpath(getXml());
         verify(employeeMap);
     }
 

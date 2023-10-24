@@ -1,4 +1,4 @@
-package com.baeldung.xml.xmltohashmap;
+package com.baeldung.xml.tohashmap;
 
 public class Employee {
     private String id;

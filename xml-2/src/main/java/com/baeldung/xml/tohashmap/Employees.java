@@ -1,4 +1,4 @@
-package com.baeldung.xml.xmltohashmap;
+package com.baeldung.xml.tohashmap;
 
 import java.util.List;
 
