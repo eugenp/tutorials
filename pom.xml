@@ -821,11 +821,8 @@
                 <module>atomikos</module>
                 <module>atomix</module>
 
-                <module>axon</module>
-
                 <module>bazel</module>
                 <module>google-auto-project</module>
-                <module>ddd</module>
                 <module>disruptor</module>
                 <module>dozer</module>
                 <module>dubbo</module>
@@ -1107,11 +1104,8 @@
                 <module>atomikos</module>
                 <module>atomix</module>
 
-                <module>axon</module>
-
                 <module>bazel</module>
                 <module>google-auto-project</module>
-                <module>ddd</module>
                 <module>disruptor</module>
                 <module>dozer</module>
 
