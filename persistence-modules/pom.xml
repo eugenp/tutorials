@@ -21,6 +21,7 @@
         <module>blaze-persistence</module>
         <module>core-java-persistence</module>
         <module>core-java-persistence-2</module>
+        <module>couchbase</module>
         <module>elasticsearch</module>
         <module>flyway</module>
         <module>flyway-repair</module>
