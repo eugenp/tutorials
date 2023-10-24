@@ -6,6 +6,7 @@ import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 
 import org.mapstruct.AfterMapping;
+import org.mapstruct.Condition;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
@@ -38,6 +39,15 @@ public interface LicenseMapper {
     default boolean isEndDateInTwoWeeks(LicenseDto licenseDto) {
         return licenseDto.getEndDate() != null && Duration.between(licenseDto.getEndDate(), LocalDateTime.now())
             .toDays() <= 14;
+    }
+
+    @Condition
+    default boolean mapsToExpectedLicenseType(String licenseType) {
+        try {
+            return licenseType != null && License.LicenseType.valueOf(licenseType) != null;
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
     }
 
 }
