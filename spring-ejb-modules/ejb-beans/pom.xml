@@ -66,12 +66,12 @@
         <dependency>
             <groupId>org.apache.activemq</groupId>
             <artifactId>activemq-broker</artifactId>
-            <version>${activemq.broker.version}</version>
+            <version>${activemq-broker.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.activemq.tooling</groupId>
             <artifactId>activemq-junit</artifactId>
-            <version>${activemq.junit.version}</version>
+            <version>${activemq-junit.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -187,8 +187,8 @@
         <wildfly.version>8.2.1.Final</wildfly.version>
         <javax.ejb-api.version>3.2</javax.ejb-api.version>
         <springframework.version>5.2.3.RELEASE</springframework.version>
-        <activemq.broker.version>5.16.3</activemq.broker.version>
-        <activemq.junit.version>5.16.3</activemq.junit.version>
+        <activemq-broker.version>5.16.3</activemq-broker.version>
+        <activemq-junit.version>5.16.3</activemq-junit.version>
         <mockito.version>2.21.0</mockito.version>
         <maven-dependency-plugin.version>2.8</maven-dependency-plugin.version>
         <wildfly-ejb.version>8.2.1.Final</wildfly-ejb.version>
