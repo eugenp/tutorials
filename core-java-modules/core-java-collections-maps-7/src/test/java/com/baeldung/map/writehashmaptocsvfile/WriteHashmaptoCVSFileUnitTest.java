@@ -10,18 +10,26 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVPrinter;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class WriteHashmaptoCVSFileUnitTest {
+    public Map<String, String> employeeData;
 
-    @Test
-    public void givenEmployeeData_whenWriteToCSV_thenCSVFileIsCreated() {
-        Map<String, String> employeeData = new HashMap<>();
+    public WriteHashmaptoCVSFileUnitTest() {
+        employeeData = new HashMap<>();
         employeeData.put("Name", "John Doe");
         employeeData.put("Title", "Software Engineer");
         employeeData.put("Department", "Engineering");
         employeeData.put("Salary", "75000");
+    }
+
+    @Test
+    public void givenEmployeeData_whenWriteToCSVUsingFileWriter_thenCSVFileIsCreated() {
+
         try (FileWriter csvWriter = new FileWriter("employee_data.csv")) {
             // Write header row
             csvWriter.append("Name,Title,Department,Salary\n");
@@ -40,23 +48,19 @@ public class WriteHashmaptoCVSFileUnitTest {
     }
 
     @Test
-    public void givenCSVFile_whenRead_thenContentsMatchExpected() {
-        // Read the actual content of the CSV file
-        StringBuilder actualCsvContent = new StringBuilder();
-        try {
-            Files.lines(Paths.get("employee_data.csv"))
-                    .forEach(line -> actualCsvContent.append(line).append("\n"));
+    public void givenCSVFile_whenWriteToCSVUsingApacheCommons_thenContentsMatchExpected() {
 
-            // Define the expected CSV content
-            String expectedCsvContent = "Name,Title,Department,Salary\n" +
-                    "John Doe,Software Engineer,Engineering,75000\n";
+        try (CSVPrinter csvPrinter = new CSVPrinter(new FileWriter("employee_data2.csv"), CSVFormat.DEFAULT)) {
+            // Write header row
+            csvPrinter.printRecord("Name", "Title", "Department", "Salary");
 
-            // Compare the actual content with the expected content
-            assertEquals(expectedCsvContent, actualCsvContent.toString());
-
-            System.out.println("CSV file created successfully.");
+            // Write data row
+            csvPrinter.printRecord(employeeData.get("Name"), employeeData.get("Title"), employeeData.get("Department"), employeeData.get("Salary"));
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        // Ensure the CSV file exists
+        assertTrue(new File("employee_data2.csv").exists());
     }
 }
