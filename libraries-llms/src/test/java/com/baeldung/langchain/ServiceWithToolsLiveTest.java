@@ -1,9 +1,11 @@
 package com.baeldung.langchain;
 
-import java.util.logging.Logger;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import dev.langchain4j.agent.tool.Tool;
 import dev.langchain4j.memory.chat.MessageWindowChatMemory;
@@ -11,6 +13,8 @@ import dev.langchain4j.model.openai.OpenAiChatModel;
 import dev.langchain4j.service.AiServices;
 
 public class ServiceWithToolsLiveTest {
+    
+    Logger logger = LoggerFactory.getLogger(ServiceWithToolsLiveTest.class);
 
     static class Calculator {
 
@@ -35,7 +39,7 @@ public class ServiceWithToolsLiveTest {
     public void givenServiceWithTools_whenPrompted_thenValidResponse() {
 
         Assistant assistant = AiServices.builder(Assistant.class)
-            .chatLanguageModel(OpenAiChatModel.withApiKey(Constants.OPEN_API_KEY))
+            .chatLanguageModel(OpenAiChatModel.withApiKey(Constants.OPEN_AI_KEY))
             .tools(new Calculator())
             .chatMemory(MessageWindowChatMemory.withMaxMessages(10))
             .build();
@@ -43,9 +47,8 @@ public class ServiceWithToolsLiveTest {
         String question = "What is the sum of the numbers of letters in the words \"language\" and \"model\"?";
         String answer = assistant.chat(question);
 
-        Logger.getGlobal()
-            .info(answer);
-        Assert.assertNotNull(answer);
+        logger.info(answer);
+        assertThat(answer).contains("13");
 
     }
 

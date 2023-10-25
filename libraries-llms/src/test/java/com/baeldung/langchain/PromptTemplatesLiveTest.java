@@ -4,9 +4,10 @@ import static dev.langchain4j.model.openai.OpenAiModelName.GPT_3_5_TURBO;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Logger;
 
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import dev.langchain4j.model.chat.ChatLanguageModel;
 import dev.langchain4j.model.input.Prompt;
@@ -16,6 +17,8 @@ import dev.langchain4j.model.openai.OpenAiChatModel;
 import org.junit.Assert;
 
 public class PromptTemplatesLiveTest {
+    
+    Logger logger = LoggerFactory.getLogger(PromptTemplatesLiveTest.class);
 
     @Test
     public void givenPromptTemplate_whenSuppliedInput_thenValidResponse() {
@@ -27,14 +30,13 @@ public class PromptTemplatesLiveTest {
         Prompt prompt = promptTemplate.apply(variables);
 
         ChatLanguageModel model = OpenAiChatModel.builder()
-            .apiKey(Constants.OPEN_API_KEY)
+            .apiKey(Constants.OPEN_AI_KEY)
             .modelName(GPT_3_5_TURBO)
             .temperature(0.3)
             .build();
 
         String response = model.generate(prompt.text());
-        Logger.getGlobal()
-            .info(response);
+        logger.info(response);
         Assert.assertNotNull(response);
 
     }

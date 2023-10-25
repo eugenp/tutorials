@@ -9,35 +9,35 @@ import dev.langchain4j.model.openai.OpenAiTokenizer;
 
 import static dev.langchain4j.data.message.UserMessage.userMessage;
 import static dev.langchain4j.model.openai.OpenAiModelName.GPT_3_5_TURBO;
-
-import java.util.logging.Logger;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ChatWithMemoryLiveTest {
+    
+    Logger logger = LoggerFactory.getLogger(ChatWithMemoryLiveTest.class);
 
     @Test
     public void givenMemory_whenPrompted_thenValidResponse() {
 
-        ChatLanguageModel model = OpenAiChatModel.withApiKey(Constants.OPEN_API_KEY);
+        ChatLanguageModel model = OpenAiChatModel.withApiKey(Constants.OPEN_AI_KEY);
         ChatMemory chatMemory = TokenWindowChatMemory.withMaxTokens(300, new OpenAiTokenizer(GPT_3_5_TURBO));
 
         chatMemory.add(userMessage("Hello, my name is Kumar"));
         AiMessage answer = model.generate(chatMemory.messages())
             .content();
-        Logger.getGlobal()
-            .info(answer.text());
+        logger.info(answer.text());
         Assert.assertNotNull(answer.text());
         chatMemory.add(answer);
 
         chatMemory.add(userMessage("What is my name?"));
         AiMessage answerWithName = model.generate(chatMemory.messages())
             .content();
-        Logger.getGlobal()
-            .info(answerWithName.text());
-        Assert.assertTrue(answerWithName.text()
-            .contains("Kumar"));
+        logger.info(answerWithName.text());
+        assertThat(answerWithName.text().contains("Kumar"));
         chatMemory.add(answerWithName);
 
     }
