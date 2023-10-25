@@ -29,10 +29,8 @@ class RetryCompletableFutureUnitTest {
 
         CompletableFuture<Integer> result = retryTask(codeToRun, 10);
 
-        assertThat(result.join())
-	      .isEqualTo(100);
-        assertThat(retriesCounter)
-	      .hasValue(4);
+        assertThat(result.join()).isEqualTo(100);
+        assertThat(retriesCounter).hasValue(4);
     }
 
     @Test
@@ -52,10 +50,8 @@ class RetryCompletableFutureUnitTest {
 
         CompletableFuture<Integer> result = retryUnsafe(codeToRun, 10);
 
-        assertThat(result.join())
-	      .isEqualTo(100);
-        assertThat(retriesCounter)
-	      .hasValue(4);
+        assertThat(result.join()).isEqualTo(100);
+        assertThat(retriesCounter).hasValue(4);
     }
 
     @Test
@@ -65,8 +61,8 @@ class RetryCompletableFutureUnitTest {
         CompletableFuture<Integer> result = retryUnsafe(codeToRun, 3);
 
         assertThatThrownBy(result::join)
-	      .isInstanceOf(CompletionException.class)
-	      .hasMessageContaining("RuntimeException: task failed for 3 time(s)");
+          .isInstanceOf(CompletionException.class)
+          .hasMessageContaining("RuntimeException: task failed for 3 time(s)");
     }
 
     @Test
@@ -75,10 +71,8 @@ class RetryCompletableFutureUnitTest {
 
         CompletableFuture<Integer> result = retryExceptionallyAsync(codeToRun, 10);
 
-        assertThat(result.join())
-	      .isEqualTo(100);
-        assertThat(retriesCounter)
-	      .hasValue(4);
+        assertThat(result.join()).isEqualTo(100);
+        assertThat(retriesCounter).hasValue(4);
     }
 
     @Test
@@ -88,7 +82,7 @@ class RetryCompletableFutureUnitTest {
         CompletableFuture<Integer> result = retryExceptionallyAsync(codeToRun, 3);
 
         assertThatThrownBy(result::join)
-	      .isInstanceOf(CompletionException.class)
+          .isInstanceOf(CompletionException.class)
           .hasMessageContaining("RuntimeException: task failed for 3 time(s)");
     }
 
@@ -98,10 +92,8 @@ class RetryCompletableFutureUnitTest {
 
         CompletableFuture<Integer> result = retryNesting(codeToRun, 10);
 
-        assertThat(result.join())
-	      .isEqualTo(100);
-        assertThat(retriesCounter)
-	      .hasValue(4);
+        assertThat(result.join()).isEqualTo(100);
+        assertThat(retriesCounter).hasValue(4);
     }
 
     @Test
@@ -111,7 +103,7 @@ class RetryCompletableFutureUnitTest {
         CompletableFuture<Integer> result = retryNesting(codeToRun, 3);
 
         assertThatThrownBy(result::join)
-	      .isInstanceOf(CompletionException.class)
+          .isInstanceOf(CompletionException.class)
           .hasMessageContaining("RuntimeException: task failed for 3 time(s)");
     }
 
