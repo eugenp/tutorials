@@ -12,10 +12,10 @@ public class EpochTimeToLocalDateTimeConverterUnitTest {
     @Test
     public void testConvertEpochTimeToLocalDateTime() {
         long epochTimeMillis = 1624962431000L; // Example epoch time in milliseconds
-        LocalDateTime expectedDateTime = LocalDateTime.of(2021, 6, 29, 12, 13, 51);
+        LocalDateTime expectedDateTime = LocalDateTime.of(2021, 6, 29, 10, 27, 11);
 
         Instant instant = Instant.ofEpochMilli(epochTimeMillis);
-        ZoneId zoneId = ZoneId.systemDefault();
+        ZoneId zoneId = ZoneId.of("UTC");
         LocalDateTime actualDateTime = instant.atZone(zoneId).toLocalDateTime();
 
         assertEquals(expectedDateTime, actualDateTime);

@@ -36,7 +36,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <scope>provided</scope>
+            <version>${lombok.version}</version>
         </dependency>
     </dependencies>
 
@@ -44,6 +44,7 @@
         <aws.sdk.dynamo.version>1.11.407</aws.sdk.dynamo.version>
         <spring.dynamo.version>5.0.3</spring.dynamo.version>
         <archaius.version>0.7.6</archaius.version>
+        <lombok.version>1.18.26</lombok.version>
     </properties>
 
 </project>

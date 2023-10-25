@@ -1,10 +1,10 @@
 package com.baeldung.scope;
 
 import com.baeldung.scope.prototype.PrototypeBean;
-import com.baeldung.scope.singletone.SingletonAppContextBean;
-import com.baeldung.scope.singletone.SingletonBean;
-import com.baeldung.scope.singletone.SingletonObjectFactoryBean;
-import com.baeldung.scope.singletone.SingletonProviderBean;
+import com.baeldung.scope.singleton.SingletonAppContextBean;
+import com.baeldung.scope.singleton.SingletonBean;
+import com.baeldung.scope.singleton.SingletonObjectFactoryBean;
+import com.baeldung.scope.singleton.SingletonProviderBean;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
