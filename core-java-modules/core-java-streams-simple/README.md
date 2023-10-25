@@ -2,6 +2,10 @@
 
 This module contains articles about Streams that are part of the Java Streams Ebook.
 
+### NOTE: 
+
+Since this is a module tied to an e-book, it should **not** be moved or used to store the code for any further article.
+
 ### Relevant Articles
 
 - [Introduction to Java 8 Streams](https://www.baeldung.com/java-8-streams-introduction)

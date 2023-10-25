@@ -18,7 +18,6 @@
 
     <modules>
         <module>spring-reactive-data</module>
-        <module>spring-reactive-data-2</module>
         <module>spring-reactive-2</module>
         <module>spring-reactive-3</module>
         <module>spring-reactive-client</module>
