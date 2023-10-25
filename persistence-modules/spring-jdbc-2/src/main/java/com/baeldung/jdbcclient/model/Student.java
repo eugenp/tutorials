@@ -1,4 +1,4 @@
-package com.baeldung.jdbcClient.model;
+package com.baeldung.jdbcclient.model;
 
 public class Student {
     private Integer studentId;
