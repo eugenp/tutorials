@@ -5,11 +5,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,6 +20,8 @@ import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.junit.After;
 import org.junit.Test;
@@ -112,11 +116,21 @@ public class ReadAndWriteFileWithHashMapUnitTest {
     }
 
     @Test
-    public void givenHashMap_whenSerializedToFileWithGson_thenDeserializedMapIsIdentical() {
+    public void givenHashMap_whenSerializedToFileWithGson_thenDeserializedMapIsIdentical() throws IOException {
         // Given a map containing student data
 
         // When converting to JSON using Gson and writing to a file
+        Gson gson = new Gson();
+        try (FileWriter writer = new FileWriter(file)) {
+            gson.toJson(STUDENT_DATA, writer);
+        }
 
         // Then deserialize the file back into a map and check that it's identical
+        Map<Integer, Student> studentsFromFile;
+        try (FileReader reader = new FileReader(file)) {
+            Type mapType = new TypeToken<HashMap<Integer, Student>>(){}.getType();
+            studentsFromFile = gson.fromJson(reader, mapType);
+        }
+        assertThat(studentsFromFile).isEqualTo(STUDENT_DATA);
     }
 }
