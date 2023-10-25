@@ -1,8 +1,8 @@
-package com.baeldung.jdbcClient.dao;
+package com.baeldung.jdbcclient.dao;
 
-import com.baeldung.jdbcClient.model.Student;
-import com.baeldung.jdbcClient.model.StudentResultExtractor;
-import com.baeldung.jdbcClient.model.StudentRowMapper;
+import com.baeldung.jdbcclient.model.Student;
+import com.baeldung.jdbcclient.model.StudentResultExtractor;
+import com.baeldung.jdbcclient.model.StudentRowMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

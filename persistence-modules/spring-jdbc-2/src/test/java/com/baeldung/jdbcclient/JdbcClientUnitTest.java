@@ -1,7 +1,7 @@
-package com.baeldung.jdbcClient;
+package com.baeldung.jdbcclient;
 
-import com.baeldung.jdbcClient.dao.StudentDao;
-import com.baeldung.jdbcClient.model.Student;
+import com.baeldung.jdbcclient.dao.StudentDao;
+import com.baeldung.jdbcclient.model.Student;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -20,10 +20,10 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 
 @RunWith(SpringRunner.class)
-@Sql(value = "/com.baeldung.jdbcClient/student.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
-@Sql(value = "/com.baeldung.jdbcClient/drop_student.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
+@Sql(value = "/jdbcclient/student.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+@Sql(value = "/jdbcclient/drop_student.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
 @SpringBootTest(classes = JdbcClientDemoApplication.class)
-@TestPropertySource(locations = {"classpath:com.baeldung.jdbcClient/application.properties"})
+@TestPropertySource(locations = {"classpath:jdbcclient/application.properties"})
 public class JdbcClientUnitTest {
     private static final Logger logger = LoggerFactory.getLogger(JdbcClientUnitTest.class);
 

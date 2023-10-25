@@ -1,11 +1,11 @@
-package com.baeldung.jdbcClient;
+package com.baeldung.jdbcclient;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = "com.baeldung.jdbcClient")
+@ComponentScan(basePackages = "jdbcclient")
 public class JdbcClientDemoApplication {
 
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package com.baeldung.jdbcClient.model;
+package com.baeldung.jdbcclient.model;
 
 import org.springframework.jdbc.core.ResultSetExtractor;
 
