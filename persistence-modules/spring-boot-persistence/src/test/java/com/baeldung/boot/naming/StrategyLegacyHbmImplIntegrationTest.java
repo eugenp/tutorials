@@ -1,6 +1,5 @@
 package com.baeldung.boot.naming;
 
-import com.baeldung.boot.naming.MetadataExtractorIntegrator;
 import com.baeldung.boot.naming.NamingConfig.Config;
 import com.baeldung.boot.naming.entity.Preference;
 
@@ -47,7 +46,7 @@ public class StrategyLegacyHbmImplIntegrationTest extends NamingConfig {
         String implicitNameExpected = "account";
 
         String implicitNameCreated = preferenceTable
-          .getColumn(3)
+          .getColumn(1)
           .getName();
         String tableNameCreated = accountPreferencesTable.getName();
 

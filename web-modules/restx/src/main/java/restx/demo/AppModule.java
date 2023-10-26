@@ -3,13 +3,13 @@ package restx.demo;
 import restx.config.ConfigLoader;
 import restx.config.ConfigSupplier;
 import restx.factory.Provides;
+import restx.security.*;
+import restx.factory.Module;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Charsets;
 import com.google.common.collect.ImmutableSet;
-import restx.security.*;
-import restx.factory.Module;
-import restx.factory.Provides;
+
 import javax.inject.Named;
 
 import java.nio.file.Paths;
@@ -30,7 +30,7 @@ public class AppModule {
     @Provides
     public ConfigSupplier appConfigSupplier(ConfigLoader configLoader) {
         // Load settings.properties in restx.demo package as a set of config entries
-        return configLoader.fromResource("restx/demo/settings");
+        return configLoader.fromResource("web-modules/restx/demo/settings");
     }
 
     @Provides

@@ -1,0 +1,15 @@
+{
+  "iss": "https://localhost:8443/realms/master",
+  "sub": "281c4558-550c-413b-9972-2d2e5bde6b9b",
+  "iat": 1695992542,
+  "exp": 1695992642,
+  "preferred_username": "ch4mpy",
+  "realm_access": {
+    "roles": [
+      "admin",
+      "ROLE_AUTHORIZED_PERSONNEL"
+    ]
+  },
+  "email": "ch4mp@c4-soft.com",
+  "scope": "openid email"
+}

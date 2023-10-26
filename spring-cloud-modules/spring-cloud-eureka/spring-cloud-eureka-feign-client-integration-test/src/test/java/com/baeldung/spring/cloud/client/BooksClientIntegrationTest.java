@@ -8,6 +8,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -21,6 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 @ActiveProfiles("test")
+@EnableFeignClients
 @EnableConfigurationProperties
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = { WireMockConfig.class })
@@ -30,11 +32,15 @@ class BooksClientIntegrationTest {
     private WireMockServer mockBooksService;
 
     @Autowired
+    private WireMockServer mockBooksService2;
+
+    @Autowired
     private BooksClient booksClient;
 
     @BeforeEach
     void setUp() throws IOException {
         setupMockBooksResponse(mockBooksService);
+        setupMockBooksResponse(mockBooksService2);
     }
 
     @Test

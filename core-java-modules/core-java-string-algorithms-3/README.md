@@ -12,3 +12,4 @@ This module contains articles about string-related algorithms.
 - [Find the First Embedded Occurrence of an Integer in a Java String](https://www.baeldung.com/java-string-find-embedded-integer)
 - [Find the Most Frequent Characters in a String](https://www.baeldung.com/java-string-find-most-frequent-characters)
 - [Checking If a String Is a Repeated Substring](https://www.baeldung.com/java-repeated-substring)
+- [Check if Letter Is Emoji With Java](https://www.baeldung.com/java-check-letter-emoji)

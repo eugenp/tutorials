@@ -1,8 +1,9 @@
 package com.baeldung.boot.daos;
 
-import org.junit.After;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -25,6 +26,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.Assert.*;
 
+@SpringBootTest
 public class UserRepositoryCommon {
 
     final String USER_EMAIL = "email@example.com";
@@ -274,7 +276,7 @@ public class UserRepositoryCommon {
           .getName()).isEqualTo(USER_NAME_ADAM);
     }
 
-    @Test(expected = PropertyReferenceException.class)
+    @Test
     public void givenUsersInDB_WhenFindAllSortWithFunction_ThenThrowException() {
         userRepository.save(new User(USER_NAME_ADAM, LocalDate.now(), USER_EMAIL, ACTIVE_STATUS));
         userRepository.save(new User(USER_NAME_PETER, LocalDate.now(), USER_EMAIL2, ACTIVE_STATUS));
@@ -282,10 +284,7 @@ public class UserRepositoryCommon {
 
         userRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
 
-        List<User> usersSortByNameLength = userRepository.findAll(Sort.by("LENGTH(name)"));
-
-        assertThat(usersSortByNameLength.get(0)
-          .getName()).isEqualTo(USER_NAME_ADAM);
+        assertThrows(PropertyReferenceException.class, () -> userRepository.findAll(Sort.by("LENGTH(name)")));
     }
 
     @Test
@@ -556,7 +555,7 @@ public class UserRepositoryCommon {
         assertEquals(0, nativeQuery.getResultList().get(0));
     }
 
-    @After
+    @AfterEach
     public void cleanUp() {
         userRepository.deleteAll();
     }

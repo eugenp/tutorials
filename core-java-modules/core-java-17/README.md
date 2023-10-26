@@ -8,3 +8,4 @@
 - [Sealed Classes and Interfaces in Java](https://www.baeldung.com/java-sealed-classes-interfaces)
 - [Migrate From Java 8 to Java 17](https://www.baeldung.com/java-migrate-8-to-17)
 - [Format Multiple ‘or’ Conditions in an If Statement in Java](https://www.baeldung.com/java-multiple-or-conditions-if-statement)
+- [Get All Record Fields and Its Values via Reflection](https://www.baeldung.com/java-reflection-record-fields-values)
