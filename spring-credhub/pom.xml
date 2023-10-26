@@ -27,7 +27,7 @@
         <dependency>
             <groupId>org.springframework.credhub</groupId>
             <artifactId>spring-credhub-starter</artifactId>
-            <version>2.2.0</version>
+            <version>${spring-credhub-starter.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
@@ -36,8 +36,7 @@
     </dependencies>
 
     <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
+        <spring-credhub-starter.version>2.2.0</spring-credhub-starter.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 

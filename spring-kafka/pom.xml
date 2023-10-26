@@ -26,12 +26,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
-            <version>3.0.5</version>
+            <version>${spring-boot-starter-actuator.version}</version>
         </dependency>
         <dependency>
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-registry-prometheus</artifactId>
-            <version>1.10.5</version>
+            <version>${micrometer-registry-prometheus.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.kafka</groupId>
@@ -90,6 +90,8 @@
     </build>
 
     <properties>
+        <spring-boot-starter-actuator.version>3.0.5</spring-boot-starter-actuator.version>
+        <micrometer-registry-prometheus.version>1.10.5</micrometer-registry-prometheus.version>
         <testcontainers-kafka.version>1.16.2</testcontainers-kafka.version>
     </properties>
 

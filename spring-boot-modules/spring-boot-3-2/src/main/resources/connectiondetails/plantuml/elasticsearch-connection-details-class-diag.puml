@@ -1,0 +1,25 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface ElasticsearchConnectionDetails {
+   +getUsername():String
+   +getPassword():String
+   +getNodes():List<Node>
+}
+class CustomElasticsearchConnectionDetails {
+   +getUsername():String
+   +getPassword():String
+   +getNodes():List<Node>
+}
+class VaultAdapter {
+   +getSecret(String secretKey):String
+}
+class CustomElasticsearchConnectionDetailsConfiguration {
+    +getCustomElasticConnectionDetails():ElasticsearchConnectionDetails
+}
+CustomElasticsearchConnectionDetails -left-> VaultAdapter:uses
+CustomElasticsearchConnectionDetails -right-|> ElasticsearchConnectionDetails : implements
+CustomElasticsearchConnectionDetailsConfiguration -up-> CustomElasticsearchConnectionDetails:uses
+
+
+@enduml
