@@ -19,7 +19,7 @@ public class Library {
     private List<String> addresses = new ArrayList<>();
 
     @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
-    @CollectionTable(name = "book", joinColumns = @JoinColumn(name = "library_id"))
+    @CollectionTable(name = "books", joinColumns = @JoinColumn(name = "library_id"))
     @Column(name = "book", nullable = false)
     private List<String> books = new ArrayList<>();
 

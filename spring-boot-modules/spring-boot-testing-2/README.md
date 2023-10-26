@@ -13,4 +13,5 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Spring Web Service Integration Tests with @WebServiceServerTest](https://www.baeldung.com/spring-webserviceservertest)
 - [Spring Boot – Testing Redis With Testcontainers](https://www.baeldung.com/spring-boot-redis-testcontainers)
 - [Spring Boot – Keycloak Integration Testing with Testcontainers](https://www.baeldung.com/spring-boot-keycloak-integration-testing)
+- [Difference Between @Spy and @SpyBean](https://www.baeldung.com/spring-spy-vs-spybean)
 - More articles: [[<-- prev]](../spring-boot-testing)
