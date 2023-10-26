@@ -2,15 +2,10 @@ package com.baeldung.langchain;
 
 import static dev.langchain4j.data.document.FileSystemDocumentLoader.loadDocument;
 import static java.time.Duration.ofSeconds;
+import static org.junit.Assert.assertNotNull;
 
-import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,11 +26,11 @@ import dev.langchain4j.store.embedding.EmbeddingStoreIngestor;
 import dev.langchain4j.store.embedding.inmemory.InMemoryEmbeddingStore;
 
 public class ChainWithDocumentLiveTest {
-    
-    Logger logger = LoggerFactory.getLogger(ChainWithDocumentLiveTest.class);
+
+    private static final Logger logger = LoggerFactory.getLogger(ChainWithDocumentLiveTest.class);
 
     @Test
-    public void givenDocument_whenPrompted_thenValidResponse() {
+    public void givenChainWithDocument_whenPrompted_thenValidResponse() {
 
         EmbeddingModel embeddingModel = new AllMiniLmL6V2EmbeddingModel();
 
@@ -47,7 +42,7 @@ public class ChainWithDocumentLiveTest {
             .embeddingStore(embeddingStore)
             .build();
 
-        Document document = loadDocument(toPath("src/test/resources/example-files/simpson's_adventures.txt"));
+        Document document = loadDocument(Paths.get("src/test/resources/example-files/simpson's_adventures.txt"));
         ingestor.ingest(document);
 
         ChatLanguageModel chatModel = OpenAiChatModel.builder()
@@ -59,27 +54,14 @@ public class ChainWithDocumentLiveTest {
             .chatLanguageModel(chatModel)
             .retriever(EmbeddingStoreRetriever.from(embeddingStore, embeddingModel))
             .chatMemory(MessageWindowChatMemory.withMaxMessages(10))
-            .promptTemplate(PromptTemplate
-                .from("Answer the following question to the best of your ability: {{question}}\n\nBase your answer on the following information:\n{{information}}"))
+            .promptTemplate(PromptTemplate.from("Answer the following question to the best of your ability: {{question}}\n\nBase your answer on the following information:\n{{information}}"))
             .build();
 
         String answer = chain.execute("Who is Simpson?");
 
         logger.info(answer);
-        Assert.assertNotNull(answer);
+        assertNotNull(answer);
 
-    }
-
-    private static Path toPath(String fileName) {
-        try {
-            URL fileUrl = new File(fileName).toURI()
-                .toURL();
-            System.out.println(new File(fileName).toURI()
-                .toURL());
-            return Paths.get(fileUrl.toURI());
-        } catch (URISyntaxException | MalformedURLException e) {
-            throw new RuntimeException(e);
-        }
     }
 
 }

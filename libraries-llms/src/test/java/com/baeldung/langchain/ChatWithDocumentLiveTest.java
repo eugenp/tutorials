@@ -4,18 +4,13 @@ import static dev.langchain4j.data.document.FileSystemDocumentLoader.loadDocumen
 import static dev.langchain4j.model.openai.OpenAiModelName.GPT_3_5_TURBO;
 import static java.time.Duration.ofSeconds;
 import static java.util.stream.Collectors.joining;
+import static org.junit.Assert.assertNotNull;
 
-import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,13 +33,13 @@ import dev.langchain4j.store.embedding.EmbeddingStore;
 import dev.langchain4j.store.embedding.inmemory.InMemoryEmbeddingStore;
 
 public class ChatWithDocumentLiveTest {
-    
-    Logger logger = LoggerFactory.getLogger(ChatWithDocumentLiveTest.class);
+
+    private static final Logger logger = LoggerFactory.getLogger(ChatWithDocumentLiveTest.class);
 
     @Test
-    public void givenChainWithDocument_whenPrompted_thenValidResponse() {
+    public void givenDocument_whenPrompted_thenValidResponse() {
 
-        Document document = loadDocument(toPath("src/test/resources/example-files/simpson's_adventures.txt"));
+        Document document = loadDocument(Paths.get("src/test/resources/example-files/simpson's_adventures.txt"));
         DocumentSplitter splitter = DocumentSplitters.recursive(100, 0, new OpenAiTokenizer(GPT_3_5_TURBO));
         List<TextSegment> segments = splitter.split(document);
 
@@ -81,20 +76,8 @@ public class ChatWithDocumentLiveTest {
             .content();
 
         logger.info(aiMessage.text());
-        Assert.assertNotNull(aiMessage.text());
+        assertNotNull(aiMessage.text());
 
-    }
-
-    private static Path toPath(String fileName) {
-        try {
-            URL fileUrl = new File(fileName).toURI()
-                .toURL();
-            System.out.println(new File(fileName).toURI()
-                .toURL());
-            return Paths.get(fileUrl.toURI());
-        } catch (URISyntaxException | MalformedURLException e) {
-            throw new RuntimeException(e);
-        }
     }
 
 }
