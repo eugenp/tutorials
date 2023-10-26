@@ -1,6 +1,7 @@
 package com.baeldung.langchain;
 
 import static dev.langchain4j.model.openai.OpenAiModelName.GPT_3_5_TURBO;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,11 +15,9 @@ import dev.langchain4j.model.input.Prompt;
 import dev.langchain4j.model.input.PromptTemplate;
 import dev.langchain4j.model.openai.OpenAiChatModel;
 
-import org.junit.Assert;
-
 public class PromptTemplatesLiveTest {
     
-    Logger logger = LoggerFactory.getLogger(PromptTemplatesLiveTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(PromptTemplatesLiveTest.class);
 
     @Test
     public void givenPromptTemplate_whenSuppliedInput_thenValidResponse() {
@@ -37,7 +36,7 @@ public class PromptTemplatesLiveTest {
 
         String response = model.generate(prompt.text());
         logger.info(response);
-        Assert.assertNotNull(response);
+        assertNotNull(response);
 
     }
 

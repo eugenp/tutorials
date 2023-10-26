@@ -2,7 +2,6 @@ package com.baeldung.langchain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,7 +13,7 @@ import dev.langchain4j.service.AiServices;
 
 public class ServiceWithToolsLiveTest {
     
-    Logger logger = LoggerFactory.getLogger(ServiceWithToolsLiveTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(ServiceWithToolsLiveTest.class);
 
     static class Calculator {
 
