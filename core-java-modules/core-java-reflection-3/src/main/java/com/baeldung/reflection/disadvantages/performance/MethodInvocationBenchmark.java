@@ -1,6 +1,7 @@
 package com.baeldung.reflection.disadvantages.performance;
 
 import org.openjdk.jmh.annotations.*;
+import org.openjdk.jmh.infra.Blackhole;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -12,37 +13,30 @@ public class MethodInvocationBenchmark {
     @Fork(value = 1, warmups = 1)
     @OutputTimeUnit(TimeUnit.NANOSECONDS)
     @BenchmarkMode(Mode.AverageTime)
-    public void directCall() {
+    public void directCall(Blackhole blackhole) {
 
-        directCall(new Person("John", "Doe", 50));
+        Person person = new Person("John", "Doe", 50);
+
+        blackhole.consume(person.getFirstName());
+        blackhole.consume(person.getLastName());
+        blackhole.consume(person.getAge());
     }
 
     @Benchmark
     @Fork(value = 1, warmups = 1)
     @OutputTimeUnit(TimeUnit.NANOSECONDS)
     @BenchmarkMode(Mode.AverageTime)
-    public void reflectiveCall() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+    public void reflectiveCall(Blackhole blackhole) throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
 
-        reflectiveCall(new Person("John", "Doe", 50));
-    }
-
-
-    private void directCall(Person person) {
-
-        person.getFirstName();
-        person.getLastName();
-        person.getAge();
-    }
-
-    private void reflectiveCall(Person person) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        Person person = new Person("John", "Doe", 50);
 
         Method getFirstNameMethod = Person.class.getMethod("getFirstName");
-        getFirstNameMethod.invoke(person);
+        blackhole.consume(getFirstNameMethod.invoke(person));
 
         Method getLastNameMethod = Person.class.getMethod("getLastName");
-        getLastNameMethod.invoke(person);
+        blackhole.consume(getLastNameMethod.invoke(person));
 
         Method getAgeMethod = Person.class.getMethod("getAge");
-        getAgeMethod.invoke(person);
+        blackhole.consume(getAgeMethod.invoke(person));
     }
 }
