@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class StringIteratorTest {
   
     @Test
-    public void testJavaCharArray() {
+    public void whenUseCharArrayMethod_thenIterate() {
         String input = "Hello, Baeldung!";
         String expectedOutput = "Hello, Baeldung!";
         String result = StringIterator.javaCharArray(input);
@@ -14,7 +14,7 @@ public class StringIteratorTest {
     }
   
     @Test
-    public void testJavaForLoop() {
+    public void whenUseJavaForLoop_thenIterate() {
         String input = "Hello, Baeldung!";
         String expectedOutput = "Hello, Baeldung!";
         String result = StringIterator.javaForLoop(input);
@@ -22,7 +22,7 @@ public class StringIteratorTest {
     }
   
     @Test
-    public void testJava8ForEach() {
+    public void whenUseForEachMethod_thenIterate() {
         String input = "Hello, Baeldung!";
         String expectedOutput = "Hello, Baeldung!";
         String result = StringIterator.java8ForEach(input);
@@ -30,7 +30,7 @@ public class StringIteratorTest {
     }
   
     @Test
-    public void testJavaRegExp() {
+    public void whenUseRegexSplit_thenIterate() {
         String input = "Hello, Baeldung!";
         String expectedOutput = "Hello, Baeldung!";
         String result = StringIterator.javaRegExp(input);
@@ -38,7 +38,7 @@ public class StringIteratorTest {
     }
   
     @Test
-    public void testJavaCharacterIterator() {
+    public void whenUseCharacterIterator_thenIterate() {
         String input = "Hello, Baeldung!";
         String expectedOutput = "Hello, Baeldung!";
         String result = StringIterator.javaCharacterIterator(input);
