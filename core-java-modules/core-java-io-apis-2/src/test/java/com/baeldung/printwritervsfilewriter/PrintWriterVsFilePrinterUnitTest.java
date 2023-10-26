@@ -8,6 +8,12 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 public class PrintWriterVsFilePrinterUnitTest {
@@ -46,20 +52,13 @@ public class PrintWriterVsFilePrinterUnitTest {
     @Test
     public void whenWritingToTextFileUsingPrintWriterPrintln_thenTextMatches() throws IOException {
         String result = "I'm going to Alabama\nAlabama is a state in the US\n";
-        File file = new File("alabama.txt");
-        try (PrintWriter pw = new PrintWriter(file);) {
+        try (PrintWriter pw = new PrintWriter("alabama.txt");) {
             pw.println("I'm going to Alabama");
             pw.println("Alabama is a state in the US");
         }
-
-        try (BufferedReader reader = new BufferedReader(new FileReader(file));) {
-            StringBuilder actualData = new StringBuilder();
-            String line;
-            while ((line = reader.readLine()) != null) {
-                actualData.append(line).append("\n");
-            }
-            assertEquals(result, actualData.toString());
-        }
+        Path path = Paths.get("alabama.txt");
+        String actualData = new String(Files.readAllBytes(path));
+        assertEquals(result, actualData);
     }
 
 }
