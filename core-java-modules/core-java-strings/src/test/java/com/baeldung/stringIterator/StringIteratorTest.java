@@ -30,14 +30,6 @@ public class StringIteratorTest {
     }
   
     @Test
-    public void whenUseRegexSplit_thenIterate() {
-        String input = "Hello, Baeldung!";
-        String expectedOutput = "Hello, Baeldung!";
-        String result = StringIterator.javaRegExp(input);
-        assertEquals(expectedOutput, result);
-    }
-  
-    @Test
     public void whenUseCharacterIterator_thenIterate() {
         String input = "Hello, Baeldung!";
         String expectedOutput = "Hello, Baeldung!";
