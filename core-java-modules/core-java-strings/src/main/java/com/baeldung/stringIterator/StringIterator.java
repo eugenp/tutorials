@@ -4,14 +4,6 @@ import java.text.*;
 import java.util.*;
 
 public class StringIterator {
-    public static void main(String[] args) {
-        String str = "Hello, Baeldung!";
-        System.out.println(javaforLoop(str));
-        System.out.println(java8forEach(str));
-        System.out.println(javaCharArray(str));
-        System.out.println(javaRegexExp(str));
-        System.out.println(javaCharacterIterator(str));
-    }
 
     public static String javaCharArray(String str){
         StringBuilder result = new StringBuilder();
@@ -37,15 +29,6 @@ public class StringIterator {
         });
         return result.toString();
     }
-
-    public static String javaRegexExp(String str){
-        StringBuilder result = new StringBuilder();
-        String[] characters = str.split(""); 
-        for (String c : characters) { 
-            result.append(c); 
-        }
-        return result.toString();
-     }
 
     public static String javaCharacterIterator(String str){
         StringBuilder result = new StringBuilder();
