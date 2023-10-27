@@ -765,7 +765,6 @@
                 <module>aws-modules</module>
 
                 <module>checker-framework</module>
-                <module>couchbase</module>
                 <module>core-groovy-modules</module>
 
                 <module>core-java-modules</module>
@@ -1035,8 +1034,7 @@
                 <module>aws-modules</module>
 
                 <module>checker-framework</module>
-                <module>couchbase</module>
-
+                
                 <module>core-groovy-modules</module>
 
                 <module>core-java-modules</module>
