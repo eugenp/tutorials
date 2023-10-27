@@ -30,23 +30,27 @@ class PassStringUnitTest {
     }
 
     @Test
-    void givenAString_whenUseStringBuilder_thenMethodReturnNewString() {
-        assertEquals("hello world", concatWithStringBuilder(new StringBuilder("hello")));
+    void givenAString_whenPassStringBuilderToVoidMethod_thenConcatNewStringOk() {
+        StringBuilder builder = new StringBuilder("hello");
+        concatWithStringBuilder(builder);
+
+        assertEquals("hello world", builder.toString());
     }
 
-    String concatWithStringBuilder(StringBuilder input) {
-        return input.append(" world")
-          .toString();
+    void concatWithStringBuilder(StringBuilder input) {
+        input.append(" world");
     }
 
     @Test
-    void givenAString_whenUseStringBuffer_thenMethodReturnNewString() {
-        assertEquals("hello world", concatWithStringBuffer(new StringBuffer("hello")));
+    void givenAString_whenPassStringBufferToVoidMethod_thenConcatNewStringOk() {
+        StringBuffer builder = new StringBuffer("hello");
+        concatWithStringBuffer(builder);
+
+        assertEquals("hello world", builder.toString());
     }
 
-    String concatWithStringBuffer(StringBuffer input) {
-        return input.append(" world")
-          .toString();
+    void concatWithStringBuffer(StringBuffer input) {
+        input.append(" world");
     }
 
     @Test
