@@ -31,12 +31,9 @@ import com.mongodb.BasicDBObject;
  * - Open embedded.properties and include:
  * - spring.data.mongodb.uri=<your local mongodb URI>
  * - spring.data.mongodb.database=sample_mflix
- * - com.baeldung.atlas-search.index.query=idx-queries
- * - com.baeldung.atlas-search.index.facet=idx-facets
  * 
  * Pre-requisites:
- * - Following the steps to import the sample_mflix database from section 2.2
- * - Following the steps to create idx-queries (section 2.3) and idx-facets (section 6.1)
+ * - Following the steps to import the sample_mflix database
  */
 @DirtiesContext
 @RunWith(SpringRunner.class)
