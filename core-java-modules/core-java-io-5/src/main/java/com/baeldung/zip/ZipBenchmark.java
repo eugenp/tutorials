@@ -102,10 +102,10 @@ public class ZipBenchmark {
 
     public static void main(String[] args) throws Exception {
         Options options = new OptionsBuilder()
-            .include(ZipBenchmark.class.getSimpleName()).threads(1)
-            .shouldFailOnError(true)
-            .shouldDoGC(true)
-            .jvmArgs("-server").build();
+          .include(ZipBenchmark.class.getSimpleName()).threads(1)
+          .shouldFailOnError(true)
+          .shouldDoGC(true)
+          .jvmArgs("-server").build();
         new Runner(options).run();
     }
 
