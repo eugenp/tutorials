@@ -8,6 +8,7 @@
     <packaging>jar</packaging>
     <properties>
         <gson.version>2.10.1</gson.version>
+        <csv.version>1.5</csv.version>
     </properties>
 
     <parent>
@@ -27,6 +28,10 @@
             <artifactId>gson</artifactId>
             <version>${gson.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-csv</artifactId>
+            <version>${csv.version}</version>
+        </dependency>
     </dependencies>
-
 </project>

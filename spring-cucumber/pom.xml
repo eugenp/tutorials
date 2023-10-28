@@ -45,6 +45,12 @@
             <version>${cucumber.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <version>${junit-vintage-engine.version}</version>
+            <scope>test</scope>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-io -->
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -54,8 +60,9 @@
     </dependencies>
 
     <properties>
-        <cucumber.version>6.8.0</cucumber.version>
+        <cucumber.version>7.14.0</cucumber.version>
         <commons-io.version>1.3.2</commons-io.version>
+        <junit-vintage-engine.version>5.10.0</junit-vintage-engine.version>
     </properties>
 
 </project>

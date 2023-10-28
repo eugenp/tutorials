@@ -149,7 +149,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>${maven.version}</version>
+                <version>${maven-war-plugin.version}</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
@@ -166,7 +166,7 @@
         <easymock.version>3.6</easymock.version>
         <shedlock.version>2.1.0</shedlock.version>
         <javassist.version>3.22.0-GA</javassist.version>
-        <maven.version>3.2.2</maven.version>
+        <maven-war-plugin.version.version>3.2.2</maven-war-plugin.version.version>
     </properties>
 
 </project>

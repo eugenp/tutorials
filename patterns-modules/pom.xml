@@ -14,6 +14,12 @@
     </parent>
 
     <modules>
+        <module>axon</module>
+        <module>clean-architecture</module>
+        <module>coupling</module>
+        <module>cqrs-es</module>
+        <module>ddd</module>
+        <module>ddd-contexts</module>
         <module>design-patterns-architectural</module>
         <module>design-patterns-behavioral</module>
         <module>design-patterns-behavioral-2</module>
@@ -24,14 +30,11 @@
         <module>design-patterns-singleton</module>
         <module>design-patterns-structural</module>
         <module>dip</module>
-        <module>cqrs-es</module>
+        <module>enterprise-patterns</module>
         <module>front-controller</module>
+        <module>idd</module>
         <module>intercepting-filter</module>
         <module>solid</module>
-        <module>clean-architecture</module>
-        <module>enterprise-patterns</module>
-        <module>coupling</module>
-        <module>idd</module>
     </modules>
 
 </project>
