@@ -765,13 +765,11 @@
                 <module>aws-modules</module>
 
                 <module>checker-framework</module>
-                <module>couchbase</module>
                 <module>core-groovy-modules</module>
 
                 <module>core-java-modules</module>
                 <module>custom-pmd</module>
                 <module>data-structures</module>
-                <module>ddd-contexts</module>
                 <module>jackson-modules</module>
                 <module>jmh</module>
                 <module>deeplearning4j</module>
@@ -821,11 +819,8 @@
                 <module>atomikos</module>
                 <module>atomix</module>
 
-                <module>axon</module>
-
                 <module>bazel</module>
                 <module>google-auto-project</module>
-                <module>ddd</module>
                 <module>disruptor</module>
                 <module>dozer</module>
                 <module>dubbo</module>
@@ -1039,8 +1034,7 @@
                 <module>aws-modules</module>
 
                 <module>checker-framework</module>
-                <module>couchbase</module>
-
+                
                 <module>core-groovy-modules</module>
 
                 <module>core-java-modules</module>
@@ -1057,7 +1051,6 @@
                 <module>spring-aop-2</module>
                 <module>custom-pmd</module>
                 <module>data-structures</module>
-                <module>ddd-contexts</module>
                 <module>jackson-modules</module>
                 <module>jmh</module>
                 <module>deeplearning4j</module>
@@ -1107,11 +1100,8 @@
                 <module>atomikos</module>
                 <module>atomix</module>
 
-                <module>axon</module>
-
                 <module>bazel</module>
                 <module>google-auto-project</module>
-                <module>ddd</module>
                 <module>disruptor</module>
                 <module>dozer</module>
 
