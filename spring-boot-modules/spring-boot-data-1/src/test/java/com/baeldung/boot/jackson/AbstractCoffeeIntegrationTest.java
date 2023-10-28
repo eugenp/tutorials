@@ -1,5 +1,6 @@
-package com.baeldung.boot.jackson.app;
+package com.baeldung.boot.jackson;
 
+import com.baeldung.boot.jackson.app.Application;
 import com.baeldung.boot.jackson.config.CoffeeConstants;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

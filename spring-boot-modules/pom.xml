@@ -38,6 +38,9 @@
         <module>spring-boot-custom-starter</module>
         <module>spring-boot-crud</module>
         <module>spring-boot-data</module>
+        <module>spring-boot-data-1</module>
+        <module>spring-boot-data-2</module>
+        <module>spring-boot-data-3</module>
         <module>spring-boot-environment</module>
         <module>spring-boot-exceptions</module>
         <module>spring-boot-flowable</module>
@@ -79,9 +82,7 @@
         <module>spring-boot-testing-spock</module>
         <module>spring-boot-vue</module>
         <module>spring-boot-actuator</module>
-        <module>spring-boot-data-2</module>
         <module>spring-boot-validation</module>
-        <module>spring-boot-data-3</module>
         <module>spring-caching</module>
         <module>spring-caching-2</module>
         <module>spring-boot-redis</module>
@@ -107,6 +108,7 @@
         <module>spring-boot-3-url-matching</module>
         <module>spring-boot-graalvm-docker</module>
         <module>spring-boot-validations</module>
+
     </modules>
 
     <dependencyManagement>

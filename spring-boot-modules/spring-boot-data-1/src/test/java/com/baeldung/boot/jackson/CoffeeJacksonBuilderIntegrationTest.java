@@ -1,4 +1,4 @@
-package com.baeldung.boot.jackson.app;
+package com.baeldung.boot.jackson;
 
 import com.baeldung.boot.jackson.config.CoffeeJacksonBuilderConfig;
 import org.springframework.context.annotation.Import;
