@@ -10,4 +10,5 @@ This module contains articles about basic Java concurrency.
 - [Returning a Value After Finishing Thread’s Job in Java](https://www.baeldung.com/java-return-value-after-thread-finish)
 - [CompletableFuture and ThreadPool in Java](https://www.baeldung.com/java-completablefuture-threadpool)
 - [CompletableFuture allOf().join() vs. CompletableFuture.join()](https://www.baeldung.com/java-completablefuture-allof-join)
+- [Retry Logic with CompletableFuture](https://www.baeldung.com/java-completablefuture-retry-logic)
 - [[<-- Prev]](../core-java-concurrency-basic-2)
