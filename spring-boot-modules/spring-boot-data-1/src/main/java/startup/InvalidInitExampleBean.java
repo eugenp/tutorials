@@ -1,4 +1,4 @@
-package com.baeldung.startup;
+package startup;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;

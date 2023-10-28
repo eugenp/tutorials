@@ -1,4 +1,4 @@
-package com.baeldung.startup;
+package startup;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
