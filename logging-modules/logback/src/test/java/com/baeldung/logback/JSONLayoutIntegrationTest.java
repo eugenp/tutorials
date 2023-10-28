@@ -16,6 +16,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class JSONLayoutIntegrationTest {
 
     private static Logger logger;
+    private static Logger jsonlogger;
     private ByteArrayOutputStream consoleOutput = new ByteArrayOutputStream();
     private PrintStream ps = new PrintStream(consoleOutput);
 
@@ -23,12 +24,20 @@ public class JSONLayoutIntegrationTest {
     public void setUp() {
         // Redirect console output to our stream
         System.setOut(ps);
-        logger = LoggerFactory.getLogger("jsonLogger");
     }
 
     @Test
-    public void whenLogLayoutInJSON_thenOutputIsCorrectJSON() {
+    public void givenJsonLayout_whenLogInJSON_thenOutputIsCorrectJSON() {
+        logger = LoggerFactory.getLogger("jsonLogger");
         logger.debug("Debug message");
+        String currentLog = consoleOutput.toString();
+        assertTrue(!currentLog.isEmpty() && isValidJSON(currentLog));
+    }
+
+    @Test
+    public void givenJsonEncoder_whenLogInJSON_thenOutputIsCorrectJSON() {
+        jsonlogger = LoggerFactory.getLogger("jsonEncoderLogger");
+        jsonlogger.debug("Debug message");
         String currentLog = consoleOutput.toString();
         assertTrue(!currentLog.isEmpty() && isValidJSON(currentLog));
     }

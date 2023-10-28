@@ -1,10 +1,10 @@
 package com.baeldung.charsequence;
 
-import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
+
+import org.junit.Test;
 
 public class CharSequenceVsStringUnitTest {
 
@@ -44,4 +44,43 @@ public class CharSequenceVsStringUnitTest {
 
         assertEquals(firstAddressOfTest, secondAddressOfTest);
     }
+
+    @Test
+    public void givenCharSequenceAsString_whenConvertingUsingCasting_thenCorrect() {
+        String expected = "baeldung";
+        CharSequence charSequence = "baeldung";
+        String explicitCastedString = (String) charSequence;
+
+        assertEquals(expected, charSequence);
+        assertEquals(expected, explicitCastedString);
+    }
+
+    @Test(expected = ClassCastException.class)
+    public void givenCharSequenceAsStringBuiler_whenConvertingUsingCasting_thenThrowException() {
+        CharSequence charSequence = new StringBuilder("baeldung");
+        String castedString = (String) charSequence;
+    }
+
+    @Test
+    public void givenCharSequence_whenConvertingUsingToString_thenCorrect() {
+        String expected = "baeldung";
+        CharSequence charSequence1 = "baeldung";
+        CharSequence charSequence2 = new StringBuilder("baeldung");
+
+        assertEquals(expected, charSequence1.toString());
+        assertEquals(expected, charSequence2.toString());
+    }
+
+    @Test
+    public void givenCharSequence_whenConvertingUsingValueOf_thenCorrect() {
+        String expected = "baeldung";
+        CharSequence charSequence1 = "baeldung";
+        CharSequence charSequence2 = new StringBuilder("baeldung");
+        CharSequence charSequence3 = null;
+
+        assertEquals(expected, String.valueOf(charSequence1));
+        assertEquals(expected, String.valueOf(charSequence2));
+        assertEquals("null", String.valueOf(charSequence3));
+    }
+
 }

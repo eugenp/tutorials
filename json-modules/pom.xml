@@ -34,4 +34,8 @@
         </pluginManagement>
     </build>
 
+    <properties>
+        <json.version>20230618</json.version>
+    </properties>
+
 </project>

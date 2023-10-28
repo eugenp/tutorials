@@ -1,13 +1,14 @@
 package com.baeldung.h2db.lazy_load_no_trans.entity;
 
+import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Immutable;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 @Entity
 @Getter
@@ -22,5 +23,6 @@ public class Document {
 
     private String title;
 
+    @Column(name="user_id")
     private Long userId;
 }

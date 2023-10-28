@@ -77,7 +77,7 @@
         </dependency>
         <dependency>
             <groupId>io.restx</groupId>
-            <artifactId>restx-server-jetty8</artifactId>
+            <artifactId>restx-server-jetty11</artifactId>
             <version>${restx.version}</version>
             <optional>true</optional>
         </dependency>
@@ -137,8 +137,7 @@
     </build>
 
     <properties>
-        <restx.version>0.35-rc4</restx.version>
-        <assertj.version>1.6.0</assertj.version> <!-- restx requires such an old version -->
+        <restx.version>1.0.0-rc3</restx.version>
     </properties>
 
 </project>
