@@ -1,4 +1,4 @@
-package com.baeldung.jsondateformat;
+package jsondateformat;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;

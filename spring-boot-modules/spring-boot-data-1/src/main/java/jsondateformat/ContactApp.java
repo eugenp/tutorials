@@ -1,4 +1,4 @@
-package com.baeldung.jsondateformat;
+package jsondateformat;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

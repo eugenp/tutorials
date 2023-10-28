@@ -1,20 +1,21 @@
-package com.baeldung.jsondateformat;
+package jsondateformat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
-public class PlainContactWithJavaUtilDate {
+public class Contact {
 
     private String name;
     private String address;
     private String phone;
 
     @JsonFormat(pattern="yyyy-MM-dd")
-    private Date birthday;
+    private LocalDate birthday;
 
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
-    private Date lastUpdate;
+    private LocalDateTime lastUpdate;
 
     public String getName() {
         return name;
@@ -40,26 +41,26 @@ public class PlainContactWithJavaUtilDate {
         this.phone = phone;
     }
 
-    public Date getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
     }
 
-    public Date getLastUpdate() {
+    public LocalDateTime getLastUpdate() {
         return lastUpdate;
     }
 
-    public void setLastUpdate(Date lastUpdate) {
+    public void setLastUpdate(LocalDateTime lastUpdate) {
         this.lastUpdate = lastUpdate;
     }
 
-    public PlainContactWithJavaUtilDate() {
+    public Contact() {
     }
 
-    public PlainContactWithJavaUtilDate(String name, String address, String phone, Date birthday, Date lastUpdate) {
+    public Contact(String name, String address, String phone, LocalDate birthday, LocalDateTime lastUpdate) {
         this.name = name;
         this.address = address;
         this.phone = phone;
