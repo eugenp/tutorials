@@ -1,10 +1,10 @@
-package jsondateformat;
+package com.baeldung.jsondateformat;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
 
-public class PlainContactWithJavaUtilDate {
+public class ContactWithJavaUtilDate {
 
     private String name;
     private String address;
@@ -56,10 +56,10 @@ public class PlainContactWithJavaUtilDate {
         this.lastUpdate = lastUpdate;
     }
 
-    public PlainContactWithJavaUtilDate() {
+    public ContactWithJavaUtilDate() {
     }
 
-    public PlainContactWithJavaUtilDate(String name, String address, String phone, Date birthday, Date lastUpdate) {
+    public ContactWithJavaUtilDate(String name, String address, String phone, Date birthday, Date lastUpdate) {
         this.name = name;
         this.address = address;
         this.phone = phone;

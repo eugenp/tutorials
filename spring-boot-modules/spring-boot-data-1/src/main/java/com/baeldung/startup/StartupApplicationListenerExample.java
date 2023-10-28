@@ -1,4 +1,4 @@
-package startup;
+package com.baeldung.startup;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

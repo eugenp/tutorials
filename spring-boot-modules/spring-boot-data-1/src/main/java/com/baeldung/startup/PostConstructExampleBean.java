@@ -1,6 +1,8 @@
-package startup;
+package com.baeldung.startup;
 
 import java.util.Arrays;
+
+import javax.annotation.PostConstruct;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,12 +13,15 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Scope(value = "prototype")
-public class LogicInConstructorExampleBean {
+public class PostConstructExampleBean {
 
-    private static final Logger LOG = LoggerFactory.getLogger(LogicInConstructorExampleBean.class);
+    private static final Logger LOG = LoggerFactory.getLogger(PostConstructExampleBean.class);
 
     @Autowired
-    public LogicInConstructorExampleBean(Environment environment) {
+    private Environment environment;
+
+    @PostConstruct
+    public void init() {
         LOG.info("Env Default Profiles", Arrays.asList(environment.getDefaultProfiles()));
     }
 }

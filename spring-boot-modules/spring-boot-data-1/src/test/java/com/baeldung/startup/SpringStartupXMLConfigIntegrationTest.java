@@ -1,4 +1,4 @@
-package startup;
+package com.baeldung.startup;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

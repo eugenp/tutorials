@@ -1,4 +1,4 @@
-package startup;
+package com.baeldung.startup;
 
 import org.assertj.core.api.Assertions;
 import org.junit.Test;

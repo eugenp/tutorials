@@ -1,4 +1,4 @@
-package startup;
+package com.baeldung.startup;
 
 import javax.annotation.PostConstruct;
 

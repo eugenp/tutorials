@@ -1,4 +1,4 @@
-package jsondateformat;
+package com.baeldung.jsondateformat;
 
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
