@@ -25,18 +25,20 @@ public class JerseyListDemoUnitTest  extends JerseyTest {
 
     @Test
     public void givenList_whenUsingQueryParam_thenPassParamsAsList() {
-        Response response = target("/").queryParam("items", "item1", "item2")
-            .request()
-            .get();
+        Response response = target("/")
+          .queryParam("items", "item1", "item2")
+          .request()
+          .get();
         assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
         assertEquals("Received items: [item1, item2]", response.readEntity(String.class));
     }
 
     @Test
     public void givenList_whenUsingCommaSeparatedString_thenPassParamsAsList() {
-        Response response = target("/").queryParam("items", "item1,item2")
-            .request()
-            .get();
+        Response response = target("/")
+          .queryParam("items", "item1,item2")
+          .request()
+          .get();
         assertEquals(Response.Status.OK.getStatusCode(), response.getStatus());
         assertEquals("Received items: [item1,item2]", response.readEntity(String.class));
     }
