@@ -3,6 +3,7 @@ package com.baeldung.map.linkedhashmapfirstandlastentry;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Field;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map.Entry;
 
@@ -26,9 +27,11 @@ public class GetFirstAndLastEntryFromLinkedHashMapUnitTest {
         assertEquals("a1 b1 c1", firstEntry.getValue());
 
         Entry<String, String> lastEntry = null;
-        for (Entry<String, String> entry : THE_MAP.entrySet()) {
-            lastEntry = entry;
+        Iterator<Entry<String, String>> it = THE_MAP.entrySet().iterator();
+        while (it.hasNext()) {
+            lastEntry = it.next();
         }
+
         assertNotNull(lastEntry);
         assertEquals("key four", lastEntry.getKey());
         assertEquals("a4 b4 c4", lastEntry.getValue());
@@ -50,6 +53,18 @@ public class GetFirstAndLastEntryFromLinkedHashMapUnitTest {
         assertEquals("a4 b4 c4", lastEntry.getValue());
     }
 
+    @Test
+    void whenUsingStreamAPI_thenGetExpectedResult() {
+        Entry<String, String> firstEntry = THE_MAP.entrySet().stream().findFirst().get();
+        assertEquals("key one", firstEntry.getKey());
+        assertEquals("a1 b1 c1", firstEntry.getValue());
+
+        Entry<String, String> lastEntry = THE_MAP.entrySet().stream().skip(THE_MAP.size() - 1).findFirst().get();
+
+        assertNotNull(lastEntry);
+        assertEquals("key four", lastEntry.getKey());
+        assertEquals("a4 b4 c4", lastEntry.getValue());
+    }
 
     @Test
     void whenUsingReflection_thenGetExpectedResult() throws NoSuchFieldException, IllegalAccessException {
@@ -65,4 +80,6 @@ public class GetFirstAndLastEntryFromLinkedHashMapUnitTest {
         assertEquals("key four", lastEntry.getKey());
         assertEquals("a4 b4 c4", lastEntry.getValue());
     }
+
+
 }
