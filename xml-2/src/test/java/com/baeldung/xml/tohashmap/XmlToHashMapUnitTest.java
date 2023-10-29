@@ -12,14 +12,14 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class XmlToHashmapUnitTest {
+class XmlToHashMapUnitTest {
 
-    private XmlToHashmap xmlToHashMap;
+    private XmlToHashMap xmlToHashMap;
     private static final String TEST_XML_PATH = "src/main/resources/xml/xmltohashmap/test.xml";
 
     @BeforeEach
     void setUp(){
-        xmlToHashMap = new XmlToHashmap();
+        xmlToHashMap = new XmlToHashMap();
     }
 
     @Test

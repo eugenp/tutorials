@@ -33,7 +33,7 @@ import com.github.underscore.U;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.security.AnyTypePermission;
 
-public class XmlToHashmap {
+public class XmlToHashMap {
 
     public Map<String,Employee> xmlToHashMapUsingXstream(String xml){
         XStream xStream=new XStream();
@@ -41,8 +41,7 @@ public class XmlToHashmap {
         xStream.alias("employee", Employee.class);
         xStream.addPermission(AnyTypePermission.ANY);
         List<Employee> employees = (List<Employee>) xStream.fromXML(xml);
-        return employees.stream()
-            .collect(Collectors.toMap(Employee::getId, Function.identity()));
+        return employees.stream().collect(Collectors.toMap(Employee::getId, Function.identity()));
     }
 
     public Map<String, Employee> xmlToHashMapUsingUnderscore(String xml){
@@ -66,8 +65,7 @@ public class XmlToHashmap {
         JAXBContext context = JAXBContext.newInstance(Employees.class);
         Unmarshaller unmarshaller = context.createUnmarshaller();
         Employees employees = (Employees) unmarshaller.unmarshal(new StringReader(xmlData));
-        return employees.getEmployeeList().stream()
-            .collect(Collectors.toMap(Employee::getId, Function.identity()));
+        return employees.getEmployeeList().stream().collect(Collectors.toMap(Employee::getId, Function.identity()));
     }
 
     public Map<String,Employee> xmlToHashMapUsingDOMParserXpath(String xmlData) throws ParserConfigurationException, IOException, SAXException, XPathExpressionException {
