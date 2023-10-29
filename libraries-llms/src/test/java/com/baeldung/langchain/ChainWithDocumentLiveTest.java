@@ -31,7 +31,6 @@ public class ChainWithDocumentLiveTest {
 
     @Test
     public void givenChainWithDocument_whenPrompted_thenValidResponse() {
-
         EmbeddingModel embeddingModel = new AllMiniLmL6V2EmbeddingModel();
 
         EmbeddingStore<TextSegment> embeddingStore = new InMemoryEmbeddingStore<>();
@@ -61,7 +60,6 @@ public class ChainWithDocumentLiveTest {
 
         logger.info(answer);
         assertNotNull(answer);
-
     }
 
 }

@@ -21,7 +21,6 @@ public class PromptTemplatesLiveTest {
 
     @Test
     public void givenPromptTemplate_whenSuppliedInput_thenValidResponse() {
-
         PromptTemplate promptTemplate = PromptTemplate.from("Tell me a {{adjective}} joke about {{content}}..");
         Map<String, Object> variables = new HashMap<>();
         variables.put("adjective", "funny");
@@ -37,7 +36,6 @@ public class PromptTemplatesLiveTest {
         String response = model.generate(prompt.text());
         logger.info(response);
         assertNotNull(response);
-
     }
 
 }

@@ -22,7 +22,6 @@ public class ChatWithMemoryLiveTest {
 
     @Test
     public void givenMemory_whenPrompted_thenValidResponse() {
-
         ChatLanguageModel model = OpenAiChatModel.withApiKey(Constants.OPEN_AI_KEY);
         ChatMemory chatMemory = TokenWindowChatMemory.withMaxTokens(300, new OpenAiTokenizer(GPT_3_5_TURBO));
 
@@ -38,9 +37,7 @@ public class ChatWithMemoryLiveTest {
             .content();
         logger.info(answerWithName.text());
         chatMemory.add(answerWithName);
-        assertThat(answerWithName.text()
-            .contains("Kumar"));
-
+        assertThat(answerWithName.text()).contains("Kumar");
     }
 
 }

@@ -38,7 +38,6 @@ public class ChatWithDocumentLiveTest {
 
     @Test
     public void givenDocument_whenPrompted_thenValidResponse() {
-
         Document document = loadDocument(Paths.get("src/test/resources/example-files/simpson's_adventures.txt"));
         DocumentSplitter splitter = DocumentSplitters.recursive(100, 0, new OpenAiTokenizer(GPT_3_5_TURBO));
         List<TextSegment> segments = splitter.split(document);
@@ -77,7 +76,6 @@ public class ChatWithDocumentLiveTest {
 
         logger.info(aiMessage.text());
         assertNotNull(aiMessage.text());
-
     }
 
 }
