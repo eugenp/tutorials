@@ -1,15 +1,16 @@
 package com.baeldung.boot.jackson.app;
 
-import com.baeldung.boot.jackson.config.CoffeeConstants;
+import static com.baeldung.boot.jackson.config.CoffeeConstants.FIXED_DATE;
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.time.format.DateTimeFormatter;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 
-import java.time.format.DateTimeFormatter;
-
-import static com.baeldung.boot.jackson.config.CoffeeConstants.FIXED_DATE;
-import static org.assertj.core.api.Assertions.assertThat;
+import com.baeldung.boot.jackson.config.CoffeeConstants;
 
 @SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public abstract class AbstractCoffeeIntegrationTest {

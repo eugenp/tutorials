@@ -1,11 +1,12 @@
 package com.baeldung.boot.jackson.controller;
 
-import com.baeldung.boot.jackson.model.Coffee;
+import static com.baeldung.boot.jackson.config.CoffeeConstants.FIXED_DATE;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import static com.baeldung.boot.jackson.config.CoffeeConstants.FIXED_DATE;
+import com.baeldung.boot.jackson.model.Coffee;
 
 @RestController
 public class CoffeeController {
