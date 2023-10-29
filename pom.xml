@@ -709,7 +709,6 @@
                 <module>spring-jinq</module>
                 <module>vavr-modules</module>
                 <module>java-websocket</module>
-                <module>azure</module>
                 <module>netflix-modules</module>
                 <module>spf4j</module>
                 <module>spring-jersey</module>
@@ -817,19 +816,17 @@
 
                 <module>asm</module>
                 <module>atomikos</module>
-                <module>atomix</module>
-
+                
                 <module>bazel</module>
                 <module>google-auto-project</module>
                 <module>disruptor</module>
                 <module>dozer</module>
                 <module>dubbo</module>
                 <!-- <module>feign</module> --> <!-- JAVA-20337 -->
-                <module>google-cloud</module>
+                <module>cloud-modules</module>
                 <module>graphql-modules</module>
                 <module>grpc</module>
                 <module>hazelcast</module>
-                <module>hystrix</module>
                 <module>jackson-simple</module>
                 <module>java-blockchain</module>
                 <module>java-jdi</module>
@@ -928,7 +925,6 @@
                 <module>language-interop</module>
                 <module>gradle-modules/gradle/maven-to-gradle</module>
                 <module>persistence-modules/spring-data-neo4j</module>
-                <module>gcp-firebase</module>
                 <module>spring-di-4</module>
                 <module>spring-kafka-2</module>
                 <!--<module>java-panama</module> Java-19 module-->
@@ -982,7 +978,6 @@
                 <module>spring-jinq</module>
                 <module>vavr-modules</module>
                 <module>java-websocket</module>
-                <module>azure</module>
                 <module>netflix-modules</module>
                 <module>spf4j</module>
                 <module>spring-jersey</module>
@@ -1038,7 +1033,6 @@
                 <module>core-groovy-modules</module>
 
                 <module>core-java-modules</module>
-                <module>gcp-firebase</module>
                 <!-- <module>core-java-modules/core-java-9-new-features</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-12</module> --> <!-- uses preview features, to be decided how to handle -->
                 <!-- <module>core-java-modules/core-java-13</module> --> <!-- uses preview features, to be decided how to handle -->
@@ -1098,8 +1092,7 @@
 
                 <module>asm</module>
                 <module>atomikos</module>
-                <module>atomix</module>
-
+                
                 <module>bazel</module>
                 <module>google-auto-project</module>
                 <module>disruptor</module>
@@ -1107,12 +1100,11 @@
 
                 <module>dubbo</module>
                 <!-- <module>feign</module> --> <!-- JAVA-20337 -->
-                <module>google-cloud</module>
+                <module>cloud-modules</module>
                 <module>graphql-modules</module>
                 <module>grpc</module>
                 <module>hazelcast</module>
                 <module>httpclient-simple</module>
-                <module>hystrix</module>
                 <module>jackson-simple</module>
                 <module>java-blockchain</module>
                 <module>java-jdi</module>
