@@ -14,6 +14,6 @@ spring:
         simple:
           instances:
             books-service[0]:
-              uri: http://localhost:80
+              uri: http://localhost:1030
             books-service[1]:
-              uri: http://localhost:81
+              uri: http://localhost:1031
