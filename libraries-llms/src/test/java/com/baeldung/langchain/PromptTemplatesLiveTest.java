@@ -28,7 +28,7 @@ public class PromptTemplatesLiveTest {
         Prompt prompt = promptTemplate.apply(variables);
 
         ChatLanguageModel model = OpenAiChatModel.builder()
-            .apiKey(Constants.OPEN_AI_KEY)
+            .apiKey(Constants.OPENAI_API_KEY)
             .modelName(GPT_3_5_TURBO)
             .temperature(0.3)
             .build();

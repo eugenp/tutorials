@@ -7,6 +7,6 @@ public class Constants {
      * registering for free at (https://platform.openai.com/signup) and then by navigating
      * to "Create new secret key" page at (https://platform.openai.com/account/api-keys).
      */
-    public static String OPEN_AI_KEY = "demo"; //"<OPEN_AI_KEY>";
+    public static String OPENAI_API_KEY = "<OPENAI_API_KEY>";
 
 }

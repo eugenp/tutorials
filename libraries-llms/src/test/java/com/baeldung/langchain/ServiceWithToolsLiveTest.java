@@ -34,7 +34,7 @@ public class ServiceWithToolsLiveTest {
     @Test
     public void givenServiceWithTools_whenPrompted_thenValidResponse() {
         Assistant assistant = AiServices.builder(Assistant.class)
-            .chatLanguageModel(OpenAiChatModel.withApiKey(Constants.OPEN_AI_KEY))
+            .chatLanguageModel(OpenAiChatModel.withApiKey(Constants.OPENAI_API_KEY))
             .tools(new Calculator())
             .chatMemory(MessageWindowChatMemory.withMaxMessages(10))
             .build();

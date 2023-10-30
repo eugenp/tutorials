@@ -45,7 +45,7 @@ public class ChainWithDocumentLiveTest {
         ingestor.ingest(document);
 
         ChatLanguageModel chatModel = OpenAiChatModel.builder()
-            .apiKey(Constants.OPEN_AI_KEY)
+            .apiKey(Constants.OPENAI_API_KEY)
             .timeout(ofSeconds(60))
             .build();
 

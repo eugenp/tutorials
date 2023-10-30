@@ -68,7 +68,7 @@ public class ChatWithDocumentLiveTest {
 
         Prompt prompt = promptTemplate.apply(variables);
         ChatLanguageModel chatModel = OpenAiChatModel.builder()
-            .apiKey(Constants.OPEN_AI_KEY)
+            .apiKey(Constants.OPENAI_API_KEY)
             .timeout(ofSeconds(60))
             .build();
         AiMessage aiMessage = chatModel.generate(prompt.toUserMessage())
