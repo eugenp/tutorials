@@ -1,7 +1,12 @@
 package com.baeldung.spring.data.persistence.like;
 
-import com.baeldung.spring.data.persistence.like.model.Movie;
-import com.baeldung.spring.data.persistence.like.repository.MovieRepository;
+import static org.junit.Assert.assertEquals;
+import static org.springframework.test.context.jdbc.Sql.ExecutionPhase.AFTER_TEST_METHOD;
+
+import java.util.List;
+
+import javax.sql.DataSource;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,11 +14,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.sql.DataSource;
-import java.util.List;
-
-import static org.junit.Assert.assertEquals;
-import static org.springframework.test.context.jdbc.Sql.ExecutionPhase.AFTER_TEST_METHOD;
+import com.baeldung.spring.data.persistence.like.model.Movie;
+import com.baeldung.spring.data.persistence.like.repository.MovieRepository;
 
 @RunWith(SpringRunner.class)
 @Sql(scripts = { "/test-movie-data.sql" })
