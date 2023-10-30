@@ -14,7 +14,7 @@
         <relativePath>../../parent-boot-3</relativePath>
     </parent>
     <properties>
-        <spring-addons.version>6.1.0</spring-addons.version>
+        <spring-addons.version>7.1.10</spring-addons.version>
     </properties>
     <dependencyManagement>
         <dependencies>

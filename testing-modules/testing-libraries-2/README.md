@@ -7,3 +7,4 @@
 - [Gray Box Testing Using the OAT Technique](https://www.baeldung.com/java-gray-box-orthogonal-array-testing)
 - [Unit Testing of System.in With JUnit](https://www.baeldung.com/java-junit-testing-system-in)
 - [Fail Maven Build if JUnit Coverage Falls Below Certain Threshold](https://www.baeldung.com/maven-junit-fail-build-coverage-threshold)
+- [How to Mock Environment Variables in Unit Tests](https://www.baeldung.com/java-unit-testing-environment-variables)

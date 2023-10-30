@@ -19,18 +19,18 @@
             <artifactId>spring-data-elasticsearch</artifactId>
             <version>${spring-data-elasticsearch.version}</version>
         </dependency>
-            <!--These two dependencies are inherited from spring-data-elasticsearch. Overriding to the newer version
-                will break tests. -->
-<!--            <dependency>-->
-<!--                <groupId>co.elastic.clients</groupId>-->
-<!--                <artifactId>elasticsearch-java</artifactId>-->
-<!--                <version>${elasticsearch.version}</version>-->
-<!--            </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>com.fasterxml.jackson.core</groupId>-->
-<!--            <artifactId>jackson-databind</artifactId>-->
-<!--            <version>${jackson.version}</version>-->
-<!--        </dependency>-->
+        <!--These two dependencies are inherited from spring-data-elasticsearch. Overriding to the newer version
+            will break tests. -->
+        <!--            <dependency>-->
+        <!--                <groupId>co.elastic.clients</groupId>-->
+        <!--                <artifactId>elasticsearch-java</artifactId>-->
+        <!--                <version>${elasticsearch.version}</version>-->
+        <!--            </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.fasterxml.jackson.core</groupId>-->
+        <!--            <artifactId>jackson-databind</artifactId>-->
+        <!--            <version>${jackson.version}</version>-->
+        <!--        </dependency>-->
         <!-- Here for backward compatibility-->
         <dependency>
             <groupId>org.elasticsearch.client</groupId>
@@ -47,6 +47,7 @@
             <artifactId>spring-boot-autoconfigure</artifactId>
         </dependency>
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -55,6 +56,7 @@
             </plugin>
         </plugins>
     </build>
+
     <properties>
         <spring-data-elasticsearch.version>5.1.2</spring-data-elasticsearch.version>
         <elasticsearch.version>8.9.0</elasticsearch.version>
