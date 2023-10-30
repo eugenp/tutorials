@@ -22,7 +22,7 @@ public class ChatWithMemoryLiveTest {
 
     @Test
     public void givenMemory_whenPrompted_thenValidResponse() {
-        ChatLanguageModel model = OpenAiChatModel.withApiKey(Constants.OPEN_AI_KEY);
+        ChatLanguageModel model = OpenAiChatModel.withApiKey(Constants.OPENAI_API_KEY);
         ChatMemory chatMemory = TokenWindowChatMemory.withMaxTokens(300, new OpenAiTokenizer(GPT_3_5_TURBO));
 
         chatMemory.add(userMessage("Hello, my name is Kumar"));
