@@ -13,15 +13,18 @@ public class UnicodeLetterChecker {
         }
         return true;
     }
+    
     public boolean regexCheck(String input) {
         Pattern pattern = Pattern.compile("^\\p{L}+$");
         Matcher matcher = pattern.matcher(input);
         return matcher.matches();
     }
+    
     public boolean isAlphaCheck(String input) {
         return StringUtils.isAlpha(input);
     }
-    public boolean StreamsCheck(String input){
+    
+    public boolean StreamsCheck(String input) {
         return input.codePoints().allMatch(Character::isLetter);
     }
 }
