@@ -9,6 +9,6 @@ public class MaxDateDisplayUnitTest {
     public void whenGetMaxDate_thenCorrectResult() {
         MaxDateDisplay display = new MaxDateDisplay();
         String result = display.getMaxDateValue();
-        assertTrue(result.startsWith("The maximum date value in Java is: 292278994-08-17"));
+        assertEquals(result, "The maximum date value in Java is: 292278994-08-17");
     }
 }
