@@ -27,7 +27,7 @@
         <dependency>
             <groupId>org.springframework.pulsar</groupId>
             <artifactId>spring-pulsar-spring-boot-starter</artifactId>
-            <version>0.2.0</version>
+            <version>${spring-pulsar-spring-boot-starter.version}</version>
         </dependency>
 
         <dependency>
@@ -45,5 +45,9 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <spring-pulsar-spring-boot-starter.version>0.2.0</spring-pulsar-spring-boot-starter.version>
+    </properties>
 
 </project>
