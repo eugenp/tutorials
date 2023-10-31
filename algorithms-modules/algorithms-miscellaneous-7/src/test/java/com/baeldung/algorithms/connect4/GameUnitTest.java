@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class GameLiveTest {
+public class GameUnitTest {
     @Test
     public void blankGame() {
         GameBoard gameBoard = new GameBoard(8, 6);
