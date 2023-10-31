@@ -51,8 +51,8 @@ public class ReturnFirstNonNullLazyEvaluateUnitTest {
     }
 
     @Test
-    public void givenTwoObjects_whenUsingApacheCommonsLang3_thenReturnFirstNonNull() {
-        Object object1 = methodA();
+    public void givenNullableObjectAndFallbackMethod_whenUsingApacheCommonsLang3_thenReturnFirstNonNull() {
+        Object object1 = null;
         Object object = ObjectUtils.getIfNull(object1, this::methodB);
 
         assertTrue(object != null);
