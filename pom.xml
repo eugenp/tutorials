@@ -794,9 +794,8 @@
 
                 <module>lightrun</module>
                 <module>tablesaw</module>
-                <module>image-compressing</module>
-                <module>geotools</module>
-
+                <module>libraries-modules</module>
+                
                 <module>jws</module>
 
                 <!-- Modules from default-first -->
@@ -813,12 +812,9 @@
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
 
-                <module>asm</module>
-                <module>atomikos</module>
                 <module>atomix</module>
 
                 <module>bazel</module>
-                <module>google-auto-project</module>
                 <module>disruptor</module>
                 <module>dozer</module>
                 <module>dubbo</module>
@@ -830,7 +826,6 @@
                 <module>hystrix</module>
                 <module>jackson-simple</module>
                 <module>java-blockchain</module>
-                <module>java-jdi</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>javax-sound</module>
@@ -922,14 +917,12 @@
                 <module>web-modules</module>
                 <module>xml</module>
                 <module>xml-2</module>
-                <module>image-processing</module>
                 <module>language-interop</module>
                 <module>gradle-modules/gradle/maven-to-gradle</module>
                 <module>persistence-modules/spring-data-neo4j</module>
                 <module>gcp-firebase</module>
                 <module>spring-di-4</module>
                 <module>spring-kafka-2</module>
-                <!--<module>java-panama</module> Java-19 module-->
                 <module>libraries-llms</module>
             </modules>
 
@@ -1077,9 +1070,8 @@
 
                 <module>lightrun</module>
                 <module>tablesaw</module>
-                <module>image-compressing</module>
-                <module>geotools</module>
-
+                <module>libraries-modules</module>
+                
                 <module>jws</module>
 
                 <!-- Modules from default-first -->
@@ -1095,12 +1087,9 @@
                 <module>apache-thrift</module>
                 <module>apache-tika</module>
 
-                <module>asm</module>
-                <module>atomikos</module>
                 <module>atomix</module>
 
                 <module>bazel</module>
-                <module>google-auto-project</module>
                 <module>disruptor</module>
                 <module>dozer</module>
 
@@ -1114,7 +1103,6 @@
                 <module>hystrix</module>
                 <module>jackson-simple</module>
                 <module>java-blockchain</module>
-                <module>java-jdi</module>
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>javax-sound</module>
@@ -1205,14 +1193,12 @@
                 <module>web-modules</module>
                 <module>xml</module>
                 <module>xml-2</module>
-                <module>image-processing</module>
                 <module>language-interop</module>
                 <module>gradle-modules/gradle/maven-to-gradle</module>
                 <module>persistence-modules/spring-data-neo4j</module>
                 <module>spring-actuator</module>
                 <module>spring-di-4</module>
                 <module>spring-kafka-2</module>
-                <!--<module>java-panama</module> Java-19 module-->
                 <module>libraries-llms</module>
             </modules>
 
