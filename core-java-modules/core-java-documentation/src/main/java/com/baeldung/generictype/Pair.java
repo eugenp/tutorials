@@ -1,8 +1,8 @@
 package com.baeldung.generictype;
 
 /**
- * @param <T> The type of the first value in the pair{@code Pair<T,S>}.
- * @param <S> The type of the second value in the pair{@code Pair<T,S>}.
+ * @param <T> The type of the first value in the {@code Pair<T,S>}.
+ * @param <S> The type of the second value in the {@code Pair<T,S>}.
  */
 
 public class Pair<T, S> {
