@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
-public class SmurfsArchUnitTest {
+public class SmurfsArchManualTest {
     
     @Test
     public void givenPresentationLayerClasses_thenWrongCheckFails() {        
