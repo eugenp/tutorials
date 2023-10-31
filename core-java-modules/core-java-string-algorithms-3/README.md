@@ -13,3 +13,4 @@ This module contains articles about string-related algorithms.
 - [Find the Most Frequent Characters in a String](https://www.baeldung.com/java-string-find-most-frequent-characters)
 - [Checking If a String Is a Repeated Substring](https://www.baeldung.com/java-repeated-substring)
 - [Check if Letter Is Emoji With Java](https://www.baeldung.com/java-check-letter-emoji)
+- [Wrapping a String After a Number of Characters Word-Wise](https://www.baeldung.com/java-wrap-string-number-characters-word-wise)

@@ -1,5 +1,10 @@
 package com.baeldung.spring.cloud.springcloudcontractconsumer.controller;
 
+import com.github.tomakehurst.wiremock.WireMockServer;
+import com.github.tomakehurst.wiremock.core.WireMockConfiguration;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +18,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -26,6 +32,36 @@ public class BasicMathControllerIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;
+    private static WireMockServer wireMockServer;
+
+
+    @BeforeClass
+    public static void setupClass() {
+        WireMockConfiguration wireMockConfiguration = WireMockConfiguration.options().port(8090); // Use the same port as in your code
+
+        wireMockServer = new WireMockServer(wireMockConfiguration);
+        wireMockServer.start();
+    }
+
+    @AfterClass
+    public static void teardownClass() {
+        wireMockServer.stop();
+    }
+
+    @Before
+    public void setup() {
+        wireMockServer.stubFor(get(urlEqualTo("/validate/prime-number?number=1"))
+                .willReturn(aResponse()
+                        .withStatus(200)
+                        .withHeader("Content-Type", "application/json")
+                        .withBody("Odd")));
+
+        wireMockServer.stubFor(get(urlEqualTo("/validate/prime-number?number=2"))
+                .willReturn(aResponse()
+                        .withStatus(200)
+                        .withHeader("Content-Type", "application/json")
+                        .withBody("Even")));
+    }
 
     @Test
     public void given_WhenPassEvenNumberInQueryParam_ThenReturnEven() throws Exception {
