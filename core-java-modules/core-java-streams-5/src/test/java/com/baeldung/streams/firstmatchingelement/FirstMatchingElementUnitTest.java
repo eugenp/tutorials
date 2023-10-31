@@ -3,6 +3,7 @@ package com.baeldung.streams.firstmatchingelement;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
 
 import org.apache.commons.collections4.IterableUtils;
@@ -17,12 +18,17 @@ public class FirstMatchingElementUnitTest {
     private String searchName = "John";
 
     @Test
-    public void whenUsingIndexOf_thenFindFirstMatchingUserIndex() {
+    public void whenUsingStream_thenFindFirstMatchingUserIndex() {
+        AtomicInteger counter = new AtomicInteger(-1);
         int index = userList.stream()
-          .filter(user -> searchName.equals(user.getUserName()))
-          .mapToInt(user -> userList.indexOf(user))
+          .filter(user -> {
+              counter.getAndIncrement();
+              return searchName.equals(user.getUserName());
+          })
+          .map(user -> counter.get())
           .findFirst()
           .orElse(-1);
+
         assertEquals(1, index);
     }
 
