@@ -9,7 +9,7 @@ spring:
                 - private-key-location: classpath:local.key
                   certificate-location: classpath:local.crt
             singlelogout:
-              url: https://dev-92830632.okta.com/app/dev-92830632_baeldungspringsecuritysaml2app_1/exkd0u28geAHN4ViI5d7/slo/saml
+              url: https://dev-56617222.okta.com/app/dev-56617222_springbootsaml_1/exk8b5jr6vYQqVXp45d7/slo/saml
               binding: POST
               response-url: "{baseUrl}/logout/saml2/slo"
             assertingparty:
