@@ -1,4 +1,4 @@
-package com.baeldung.kafkasplitting;
+package com.baeldung.spring.kafka.kafkasplitting;
 
 import org.apache.kafka.common.serialization.Serde;
 import org.apache.kafka.common.serialization.Serdes;
@@ -33,7 +33,7 @@ class KafkaStreamsConfig {
         KStream<String, IotSensorData> stream = streamsBuilder.stream(iotTopicName, Consumed.with(Serdes.String(), iotSerde()));
         stream.split()
                 .branch((key, value) -> value.getSensorType() != null,
-                        Branched.withConsumer(ks -> ks.to((key, value, recordContext) -> "%s_%s".formatted(iotTopicName, value.getSensorType()))))
+                        Branched.withConsumer(ks -> ks.to((key, value, recordContext) -> String.format("%s_%s", iotTopicName, value.getSensorType()))))
                 .noDefaultBranch();
         return stream;
     }
@@ -46,7 +46,7 @@ class KafkaStreamsConfig {
                 .branch((key, value) -> "temp".equals(value.getSensorType()), (ks) -> ks.to(iotTopicName + "_temp"))
                 .branch((key, value) -> "move".equals(value.getSensorType()), (ks) -> ks.to(iotTopicName + "_move"))
                 .branch((key, value) -> "hum".equals(value.getSensorType()), (ks) -> ks.to(iotTopicName + "_hum"))
-                .defaultBranch(ks -> ks.to("%s_unknown".formatted(iotTopicName)))
+                .defaultBranch(ks -> ks.to(String.format("%s_unknown", iotTopicName)))
                 .onTopOf(stream);
 
         return stream;
@@ -55,7 +55,7 @@ class KafkaStreamsConfig {
     @Bean
     public KStream<String, IotSensorData> iotTopicExtractor(StreamsBuilder streamsBuilder) {
         KStream<String, IotSensorData> stream = streamsBuilder.stream(iotTopicName, Consumed.with(Serdes.String(), iotSerde()));
-        TopicNameExtractor<String, IotSensorData> sensorTopicExtractor = (key, value, recordContext) -> "%s_%s".formatted(iotTopicName, value.getSensorType());
+        TopicNameExtractor<String, IotSensorData> sensorTopicExtractor = (key, value, recordContext) -> String.format("%s_%s", iotTopicName, value.getSensorType());
         stream.to(sensorTopicExtractor);
         return stream;
     }

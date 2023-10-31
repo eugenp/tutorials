@@ -1,4 +1,4 @@
-package com.baeldung.kafkasplitting;
+package com.baeldung.spring.kafka.kafkasplitting;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;

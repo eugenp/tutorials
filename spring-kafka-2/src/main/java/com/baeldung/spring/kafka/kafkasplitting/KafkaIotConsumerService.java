@@ -1,4 +1,4 @@
-package com.baeldung.kafkasplitting;
+package com.baeldung.spring.kafka.kafkasplitting;
 
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;

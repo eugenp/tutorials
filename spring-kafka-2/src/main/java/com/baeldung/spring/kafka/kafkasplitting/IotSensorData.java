@@ -1,4 +1,4 @@
-package com.baeldung.kafkasplitting;
+package com.baeldung.spring.kafka.kafkasplitting;
 
 public class IotSensorData {
     private String sensorType;

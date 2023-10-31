@@ -34,14 +34,12 @@
             <version>1.10.5</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka-streams</artifactId>
-            <version>${kafka-streams-version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
-            <version>${kafka-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-streams</artifactId>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -93,8 +91,6 @@
 
     <properties>
         <testcontainers-kafka.version>1.16.2</testcontainers-kafka.version>
-        <kafka-version>3.0.12</kafka-version>
-        <kafka-streams-version>3.6.0</kafka-streams-version>
     </properties>
 
 </project>
