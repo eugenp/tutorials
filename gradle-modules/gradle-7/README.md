@@ -6,4 +6,3 @@
 - [Different Dependency Version Declarations in Gradle](https://www.baeldung.com/gradle-different-dependency-version-declarations)
 - [Generating Javadoc With Gradle](https://www.baeldung.com/java-gradle-javadoc)
 - [Generating WSDL Stubs With Gradle](https://www.baeldung.com/java-gradle-create-wsdl-stubs)
-- [Configuring Protobuf Compilation with Custom Source Directories](https://www.baeldung.com/java-configure-protobuf-compilation-custom-source-directories)
