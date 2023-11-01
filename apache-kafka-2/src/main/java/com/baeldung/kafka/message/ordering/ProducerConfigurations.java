@@ -16,14 +16,15 @@ public class ProducerConfigurations {
         props.put(ProducerConfig.MAX_IN_FLIGHT_REQUESTS_PER_CONNECTION, "1");
         props.put(ProducerConfig.BATCH_SIZE_CONFIG, "16384");
         props.put(ProducerConfig.LINGER_MS_CONFIG, "5");
+        props.put(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, "true");
         KafkaProducer<String, String> producer = new KafkaProducer<>(props);
 
         for (int i = 0; i < 10; i++) {
-            String key = "Key-" + (i % 3);  // Assuming 3 partitions
-            producer.send(new ProducerRecord<>("multi_partition_topic", key, "Message-" + i));
+            String key = "Key-" + (i % 5);  // Assuming 5 partitions
+            producer.send(new ProducerRecord<>(Config.MULTI_PARTITION_TOPIC, key, "Message-" + i));
         }
 
         producer.close();
-        System.out.println("MultiPartitionProducer Completed.");
+        System.out.println("Producer Configurations Completed.");
     }
 }
