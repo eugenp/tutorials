@@ -2,8 +2,7 @@ package com.baeldung.math;
 
 import org.junit.Test;
 
-import com.baeldung.reactor.math.MathFluxOperations;
-
+import reactor.math.MathFlux;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
@@ -13,8 +12,7 @@ public class MathFluxOperationsUnitTest {
     @Test
     public void givenFluxOfNumbers_whenCalculatingSum_thenExpectCorrectResult() {
         Flux<Integer> numbers = Flux.just(1, 2, 3, 4, 5);
-        MathFluxOperations mathFluxOperations = new MathFluxOperations();
-        Mono<Integer> sumMono = mathFluxOperations.calculateSum(numbers);
+        Mono<Integer> sumMono = MathFlux.sumInt(numbers);
         StepVerifier.create(sumMono)
             .expectNext(15)
             .verifyComplete();
@@ -23,8 +21,7 @@ public class MathFluxOperationsUnitTest {
     @Test
     public void givenFluxOfNumbers_whenCalculatingAverage_thenExpectCorrectResult() {
         Flux<Integer> numbers = Flux.just(1, 2, 3, 4, 5);
-        MathFluxOperations mathFluxOperations = new MathFluxOperations();
-        Mono<Double> averageMono = mathFluxOperations.calculateAverage(numbers);
+        Mono<Double> averageMono = MathFlux.averageDouble(numbers);
         StepVerifier.create(averageMono)
             .expectNext(3.0)
             .verifyComplete();
@@ -33,8 +30,7 @@ public class MathFluxOperationsUnitTest {
     @Test
     public void givenFluxOfNumbers_whenFindingMinElement_thenExpectCorrectResult() {
         Flux<Integer> numbers = Flux.just(3, 1, 5, 2, 4);
-        MathFluxOperations mathFluxOperations = new MathFluxOperations();
-        Mono<Integer> minMono = mathFluxOperations.findMinElement(numbers);
+        Mono<Integer> minMono = MathFlux.min(numbers);
         StepVerifier.create(minMono)
             .expectNext(1)
             .verifyComplete();
@@ -43,8 +39,7 @@ public class MathFluxOperationsUnitTest {
     @Test
     public void givenFluxOfNumbers_whenFindingMaxElement_thenExpectCorrectResult() {
         Flux<Integer> numbers = Flux.just(3, 1, 5, 2, 4);
-        MathFluxOperations mathFluxOperations = new MathFluxOperations();
-        Mono<Integer> maxMono = mathFluxOperations.findMaxElement(numbers);
+        Mono<Integer> maxMono = MathFlux.max(numbers);
         StepVerifier.create(maxMono)
             .expectNext(5)
             .verifyComplete();
