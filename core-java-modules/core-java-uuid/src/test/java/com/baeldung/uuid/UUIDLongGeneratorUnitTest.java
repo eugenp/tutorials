@@ -37,20 +37,16 @@ public class UUIDLongGeneratorUnitTest {
 
     private void collisionAndNegativeCheck(Method method) {
         Set<Long> uniqueValues = new HashSet<>();
-        AtomicInteger collisions = new AtomicInteger(0);
-        AtomicInteger negative = new AtomicInteger(0);
+        int collisions = 0;
+        int negative = 0;
 
-        IntStream.range(0, n).forEach(i -> {
-            try {
-                long uniqueValue = (long) method.invoke(uuidLongGenerator);
-                if (!uniqueValues.add(uniqueValue)) {
-                    collisions.incrementAndGet();
-                }
-                if (uniqueValue < 0) {
-                    negative.incrementAndGet();
-                }
-            } catch (IllegalAccessException | InvocationTargetException e) {
-                throw new RuntimeException(e);
+        for (int i = 0; i < n; i++) {
+            long uniqueValue = (long) method.invoke(uuidLongGenerator);
+            if (!uniqueValues.add(uniqueValue)) {
+                collisions++;
+            }
+            if (uniqueValue < 0) {
+                negative++;
             }
         });
 
