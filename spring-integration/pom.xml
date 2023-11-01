@@ -132,6 +132,8 @@
         <maven-eclipse-plugin.version>2.10</maven-eclipse-plugin.version>
         <jaxb-api.version>2.3.0</jaxb-api.version>
         <postgresql.version>42.3.8</postgresql.version>
+        <logback.version>1.2.7</logback.version>
+        <org.slf4j.version>1.7.32</org.slf4j.version>
     </properties>
 
 </project>

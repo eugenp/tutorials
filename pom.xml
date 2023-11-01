@@ -869,7 +869,7 @@
                 <module>libraries-apache-commons-2</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
-                <!--<module>libraries-data-2</module>--> <!-- Fixing in JAVA-24007 -->
+                <module>libraries-data-2</module> <!-- Fixing in JAVA-24007 -->
                 <module>libraries-data-io</module>
                 <module>libraries-files</module>
                 <module>libraries-http</module>
@@ -1140,7 +1140,7 @@
                 <module>libraries-apache-commons-2</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
-                <!--<module>libraries-data-2</module>--> <!-- Fixing in JAVA-24007 -->
+                <module>libraries-data-2</module> <!-- Fixing in JAVA-24007 -->
                 <module>libraries-data-io</module>
                 <module>libraries-files</module>
                 <module>libraries-http</module>
@@ -1265,8 +1265,8 @@
 
         <!-- logging -->
         <!-- overwriting in the slf4j and logback in the hibernate-jpa, spring-data-eclipselink. When updated to the latest version remove the version from that module-->
-        <org.slf4j.version>1.7.32</org.slf4j.version>
-        <logback.version>1.2.7</logback.version>
+        <org.slf4j.version>2.0.7</org.slf4j.version>
+        <logback.version>1.4.11</logback.version>
 
         <!-- plugins -->
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>

@@ -236,7 +236,7 @@
         <java.version>17</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <logback.version>1.4.4</logback.version>
+        <logback.version>1.4.11</logback.version>
         <slf4j.version>2.0.3</slf4j.version>
     </properties>
 
