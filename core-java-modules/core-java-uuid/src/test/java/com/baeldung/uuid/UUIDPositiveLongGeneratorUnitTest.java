@@ -14,6 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class UUIDPositiveLongGeneratorUnitTest {
     private final static int n = 1000000;
+    private final static double COLLISION_THRESHOLD = 0.001;
     private final UUIDPositiveLongGenerator uuidLongGenerator = new UUIDPositiveLongGenerator();
     private final Logger logger = LoggerFactory.getLogger(UUIDPositiveLongGeneratorUnitTest.class);
 
@@ -34,8 +35,7 @@ public class UUIDPositiveLongGeneratorUnitTest {
 
     private void printOutput(String method, int collisionsCount, int negativeCount, double collisionsProbability, double negativeProbability) {
         DecimalFormat decimalFormat = new DecimalFormat("#.#####");
-        //logger.info(String.format("%-30s %-15s %-15s %-15s %-15s", method, collisionsCount, negativeCount, decimalFormat.format(collisionsProbability), decimalFormat.format(negativeProbability)));
-        logger.info("%-30s{} %-15s{} %-15s{} %-15s{} %-15s{}", method, collisionsCount, negativeCount, decimalFormat.format(collisionsProbability), decimalFormat.format(negativeProbability));
+        logger.info(String.format("%-30s %-15s %-15s %-15s %-15s", method, collisionsCount, negativeCount, decimalFormat.format(collisionsProbability), decimalFormat.format(negativeProbability)));
     }
 
 
@@ -55,6 +55,6 @@ public class UUIDPositiveLongGeneratorUnitTest {
         double collisionsProbability = (double) collisions / n;
         double negativeProbability = (double) negative / n;
         printOutput(method.getName(), collisions, negative, collisionsProbability, negativeProbability);
-        assertThat(collisionsProbability).isLessThan(0.001);
+        assertThat(collisionsProbability).isLessThan(COLLISION_THRESHOLD);
     }
 }
