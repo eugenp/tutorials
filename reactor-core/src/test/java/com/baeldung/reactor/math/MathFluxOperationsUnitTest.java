@@ -14,8 +14,8 @@ public class MathFluxOperationsUnitTest {
         Flux<Integer> numbers = Flux.just(1, 2, 3, 4, 5);
         Mono<Integer> sumMono = MathFlux.sumInt(numbers);
         StepVerifier.create(sumMono)
-            .expectNext(15)
-            .verifyComplete();
+          .expectNext(15)
+          .verifyComplete();
     }
 
     @Test
@@ -23,8 +23,8 @@ public class MathFluxOperationsUnitTest {
         Flux<Integer> numbers = Flux.just(1, 2, 3, 4, 5);
         Mono<Double> averageMono = MathFlux.averageDouble(numbers);
         StepVerifier.create(averageMono)
-            .expectNext(3.0)
-            .verifyComplete();
+          .expectNext(3.0)
+          .verifyComplete();
     }
 
     @Test
@@ -32,8 +32,8 @@ public class MathFluxOperationsUnitTest {
         Flux<Integer> numbers = Flux.just(3, 1, 5, 2, 4);
         Mono<Integer> minMono = MathFlux.min(numbers);
         StepVerifier.create(minMono)
-            .expectNext(1)
-            .verifyComplete();
+          .expectNext(1)
+          .verifyComplete();
     }
 
     @Test
@@ -41,8 +41,8 @@ public class MathFluxOperationsUnitTest {
         Flux<Integer> numbers = Flux.just(3, 1, 5, 2, 4);
         Mono<Integer> maxMono = MathFlux.max(numbers);
         StepVerifier.create(maxMono)
-            .expectNext(5)
-            .verifyComplete();
+          .expectNext(5)
+          .verifyComplete();
     }
 
 }
