@@ -22,7 +22,7 @@ public class UUIDPositiveLongGenerator {
 
     public long combineByteBuffer(){
         UUID uuid = UUID.randomUUID();
-        ByteBuffer bb = ByteBuffer.wrap(new byte[64]);
+        ByteBuffer bb = ByteBuffer.wrap(new byte[16]);
         bb.putLong(uuid.getMostSignificantBits());
         bb.putLong(uuid.getLeastSignificantBits());
         bb.rewind();
