@@ -14,7 +14,7 @@ import java.util.function.Function;
 
 import org.junit.jupiter.api.Test;
 
-class GenericNumbersComparatorTest {
+class GenericNumbersComparatorUnitTest {
 
     public int compareDouble(Number num1, Number num2) {
         return Double.compare(num1.doubleValue(), num2.doubleValue());
