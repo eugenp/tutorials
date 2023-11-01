@@ -22,7 +22,7 @@ public class UUIDPositiveLongGeneratorUnitTest {
     void whenForeachGenerateLongValue_thenCollisionsCheck() throws InvocationTargetException, IllegalAccessException {
         printTableHeader();
         for (Method method : uuidLongGenerator.getClass().getDeclaredMethods()) {
-            collisionAndNegativeCheck(method);
+            collisionCheck(method);
         }
     }
 
@@ -39,7 +39,7 @@ public class UUIDPositiveLongGeneratorUnitTest {
     }
 
 
-    private void collisionAndNegativeCheck(Method method) throws InvocationTargetException, IllegalAccessException {
+    private void collisionCheck(Method method) throws InvocationTargetException, IllegalAccessException {
         Set<Long> uniqueValues = new HashSet<>();
         int collisions = 0;
         int negative = 0;
