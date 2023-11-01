@@ -1,7 +1,7 @@
 package com.baeldung.httpclient.advancedconfig;
 
+import com.github.tomakehurst.wiremock.WireMockServer;
 
-import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import org.apache.http.HttpHeaders;
 import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;
@@ -19,8 +19,10 @@ import org.apache.http.impl.client.BasicAuthCache;
 import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.DefaultProxyRoutePlanner;
-import org.junit.Rule;
-import org.junit.Test;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
@@ -32,18 +34,29 @@ import static com.github.tomakehurst.wiremock.client.WireMock.getRequestedFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.post;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlMatching;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class HttpClientAdvancedConfigurationIntegrationTest {
+class HttpClientAdvancedConfigurationIntegrationTest {
 
-    @Rule
-    public WireMockRule serviceMock = new WireMockRule(8089);
+    public WireMockServer serviceMock;
+    public WireMockServer proxyMock;
 
-    @Rule
-    public WireMockRule proxyMock = new WireMockRule(8090);
+    @BeforeEach
+    public void before () {
+        serviceMock = new WireMockServer(8089);
+        serviceMock.start();
+        proxyMock = new WireMockServer(8090);
+        proxyMock.start();
+    }
+
+    @AfterEach
+    public void after () {
+        serviceMock.stop();
+        proxyMock.stop();
+    }
 
     @Test
-    public void givenClientWithCustomUserAgentHeader_whenExecuteRequest_shouldReturn200() throws IOException {
+    void givenClientWithCustomUserAgentHeader_whenExecuteRequest_shouldReturn200() throws IOException {
         //given
         String userAgent = "BaeldungAgent/1.0";
         serviceMock.stubFor(get(urlEqualTo("/detail"))
@@ -59,11 +72,11 @@ public class HttpClientAdvancedConfigurationIntegrationTest {
         HttpResponse response = httpClient.execute(httpGet);
 
         //then
-        assertEquals(response.getStatusLine().getStatusCode(), 200);
+        assertEquals(200, response.getStatusLine().getStatusCode());
     }
 
     @Test
-    public void givenClientThatSendDataInBody_whenSendXmlInBody_shouldReturn200() throws IOException {
+    void givenClientThatSendDataInBody_whenSendXmlInBody_shouldReturn200() throws IOException {
         //given
         String xmlBody = "<xml><id>1</id></xml>";
         serviceMock.stubFor(post(urlEqualTo("/person"))
@@ -82,12 +95,11 @@ public class HttpClientAdvancedConfigurationIntegrationTest {
         HttpResponse response = httpClient.execute(httpPost);
 
         //then
-        assertEquals(response.getStatusLine().getStatusCode(), 200);
-
+        assertEquals(200, response.getStatusLine().getStatusCode());
     }
 
     @Test
-    public void givenServerThatIsBehindProxy_whenClientIsConfiguredToSendRequestViaProxy_shouldReturn200() throws IOException {
+    void givenServerThatIsBehindProxy_whenClientIsConfiguredToSendRequestViaProxy_shouldReturn200() throws IOException {
         //given
         proxyMock.stubFor(get(urlMatching(".*"))
           .willReturn(aResponse().proxiedFrom("http://localhost:8089/")));
@@ -107,13 +119,13 @@ public class HttpClientAdvancedConfigurationIntegrationTest {
         HttpResponse response = httpclient.execute(httpGet);
 
         //then
-        assertEquals(response.getStatusLine().getStatusCode(), 200);
+        assertEquals(200, response.getStatusLine().getStatusCode());
         proxyMock.verify(getRequestedFor(urlEqualTo("/private")));
         serviceMock.verify(getRequestedFor(urlEqualTo("/private")));
     }
 
     @Test
-    public void givenServerThatIsBehindAuthorizationProxy_whenClientSendRequest_shouldAuthorizeProperly() throws IOException {
+    void givenServerThatIsBehindAuthorizationProxy_whenClientSendRequest_shouldAuthorizeProperly() throws IOException {
         //given
         proxyMock.stubFor(get(urlMatching("/private"))
           .willReturn(aResponse().proxiedFrom("http://localhost:8089/")));
@@ -152,7 +164,7 @@ public class HttpClientAdvancedConfigurationIntegrationTest {
         HttpResponse response = httpclient.execute(httpGet, context);
 
         //then
-        assertEquals(response.getStatusLine().getStatusCode(), 200);
+        assertEquals(200, response.getStatusLine().getStatusCode());
         proxyMock.verify(getRequestedFor(urlEqualTo("/private")).withHeader("Authorization", containing("Basic")));
         serviceMock.verify(getRequestedFor(urlEqualTo("/private")));
     }

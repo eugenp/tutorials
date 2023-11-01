@@ -12,7 +12,6 @@ This module contains articles about Spring Boot Security
 - [Spring @EnableWebSecurity vs. @EnableGlobalMethodSecurity](https://www.baeldung.com/spring-enablewebsecurity-vs-enableglobalmethodsecurity)
 - [Spring Security – Configuring Different URLs](https://www.baeldung.com/spring-security-configuring-urls)
 
-
 ### Spring Boot Security Auto-Configuration
 
 - mvn clean install 

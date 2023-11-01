@@ -17,6 +17,7 @@
         <module>k8s-intro</module>
         <module>k8s-admission-controller</module>
         <module>kubernetes-spring</module>
+        <module>k8s-java-heap-dump</module>
     </modules>
 
 </project>

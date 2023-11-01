@@ -17,6 +17,8 @@
     
     <logger name="org.springframework.aop.interceptor.PerformanceMonitorInterceptor" level="TRACE" />
 
+    <logger name="org.aspectj.weaver" level="WARN" />
+
     <root level="TRACE">
         <appender-ref ref="STDOUT" />
     </root>

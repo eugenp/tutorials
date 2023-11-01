@@ -49,7 +49,7 @@ public class SessionTimerInterceptorIntegrationTest {
             .andReturn()
             .getRequest()
             .getSession();
-        Thread.sleep(51000);
+        Thread.sleep(5000);
         mockMvc.perform(get("/auth/foos").session((MockHttpSession) session))
             .andExpect(status().is2xxSuccessful());
     }

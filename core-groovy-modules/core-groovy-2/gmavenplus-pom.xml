@@ -168,6 +168,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <commons-lang3.version>3.9</commons-lang3.version>
         <java.version>1.8</java.version>
+        <logback.version>1.2.3</logback.version>
     </properties>
 </project>
 

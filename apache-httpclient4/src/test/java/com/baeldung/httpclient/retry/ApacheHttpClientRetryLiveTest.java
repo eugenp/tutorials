@@ -24,7 +24,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class ApacheHttpClientRetryLiveTest {
+class ApacheHttpClientRetryLiveTest {
 
     private Integer requestCounter;
     private CloseableHttpClient httpClient;
@@ -93,14 +93,14 @@ public class ApacheHttpClientRetryLiveTest {
     }
 
     @Test
-    public void givenDefaultConfiguration_whenReceivedIOException_thenRetriesPerformed() {
+    void givenDefaultConfiguration_whenReceivedIOException_thenRetriesPerformed() {
         createFailingHttpClient();
         assertThrows(IOException.class, () -> httpClient.execute(new HttpGet("https://httpstat.us/200")));
         assertThat(requestCounter).isEqualTo(4);
     }
 
     @Test
-    public void givenDefaultConfiguration_whenDomainNameNotResolved_thenNoRetryApplied() {
+    void givenDefaultConfiguration_whenDomainNameNotResolved_thenNoRetryApplied() {
         createDefaultApacheHttpClient();
         HttpGet request = new HttpGet(URI.create("http://domain.that.does.not.exist:80/api/v1"));
 
@@ -109,7 +109,7 @@ public class ApacheHttpClientRetryLiveTest {
     }
 
     @Test
-    public void givenDefaultConfiguration_whenGotInternalServerError_thenNoRetryLogicApplied() throws IOException {
+    void givenDefaultConfiguration_whenGotInternalServerError_thenNoRetryLogicApplied() throws IOException {
         createDefaultApacheHttpClient();
         HttpGet request = new HttpGet(URI.create("https://httpstat.us/500"));
 
@@ -120,7 +120,7 @@ public class ApacheHttpClientRetryLiveTest {
     }
 
     @Test
-    public void givenDefaultConfiguration_whenHttpPatchRequest_thenRetryIsNotApplied() {
+    void givenDefaultConfiguration_whenHttpPatchRequest_thenRetryIsNotApplied() {
         createFailingHttpClient();
         HttpPatch request = new HttpPatch(URI.create("https://httpstat.us/500"));
 
@@ -129,7 +129,7 @@ public class ApacheHttpClientRetryLiveTest {
     }
 
     @Test
-    public void givenDefaultConfiguration_whenHttpPutRequest_thenRetryIsNotApplied() {
+    void givenDefaultConfiguration_whenHttpPutRequest_thenRetryIsNotApplied() {
         createFailingHttpClient();
         HttpPut request = new HttpPut(URI.create("https://httpstat.us/500"));
 
@@ -138,7 +138,7 @@ public class ApacheHttpClientRetryLiveTest {
     }
 
     @Test
-    public void givenConfiguredRetryHandler_whenHttpPostRequest_thenRetriesPerformed() {
+    void givenConfiguredRetryHandler_whenHttpPostRequest_thenRetriesPerformed() {
         createHttpClientWithRetryHandler();
 
         HttpPost request = new HttpPost(URI.create("https://httpstat.us/200"));
@@ -148,7 +148,7 @@ public class ApacheHttpClientRetryLiveTest {
     }
 
     @Test
-    public void givenCustomRetryHandler_whenUnknownHostException_thenRetryAnyway() {
+    void givenCustomRetryHandler_whenUnknownHostException_thenRetryAnyway() {
         createHttpClientWithCustomRetryHandler();
 
         HttpGet request = new HttpGet(URI.create("https://domain.that.does.not.exist/200"));
@@ -158,7 +158,7 @@ public class ApacheHttpClientRetryLiveTest {
     }
 
     @Test
-    public void givenDisabledRetries_whenExecutedHttpRequestEndUpWithIOException_thenRetryIsNotApplied() {
+    void givenDisabledRetries_whenExecutedHttpRequestEndUpWithIOException_thenRetryIsNotApplied() {
         createHttpClientWithRetriesDisabled();
         HttpGet request = new HttpGet(URI.create("https://httpstat.us/200"));
 

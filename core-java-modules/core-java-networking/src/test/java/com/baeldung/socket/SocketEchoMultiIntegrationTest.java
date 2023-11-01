@@ -23,7 +23,7 @@ public class SocketEchoMultiIntegrationTest {
         s.close();
 
         Executors.newSingleThreadExecutor().submit(() -> new EchoMultiServer().start(port));
-        Thread.sleep(500);
+        Thread.sleep(2000);
     }
 
     @Test

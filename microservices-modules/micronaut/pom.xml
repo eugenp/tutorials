@@ -7,6 +7,7 @@
     <artifactId>micronaut</artifactId>
     <version>0.1</version>
     <name>micronaut</name>
+    <packaging>${packaging}</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -18,7 +19,7 @@
         <dependencies>
             <dependency>
                 <groupId>io.micronaut</groupId>
-                <artifactId>bom</artifactId>
+                <artifactId>micronaut-bom</artifactId>
                 <version>${micronaut.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
@@ -29,120 +30,136 @@
     <dependencies>
         <dependency>
             <groupId>io.micronaut</groupId>
-            <artifactId>http-client</artifactId>
+            <artifactId>micronaut-runtime</artifactId>
+            <scope>compile</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>io.micronaut</groupId>
+                    <artifactId>micronaut-jackson-databind</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>io.micronaut</groupId>
+            <artifactId>micronaut-http-client</artifactId>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>io.micronaut</groupId>
-            <artifactId>http-server-netty</artifactId>
+            <artifactId>micronaut-http-server-netty</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>io.micronaut</groupId>
-            <artifactId>inject</artifactId>
+            <artifactId>micronaut-inject</artifactId>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>io.micronaut</groupId>
-            <artifactId>runtime</artifactId>
+            <artifactId>micronaut-validation</artifactId>
             <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>javax.annotation</groupId>
-            <artifactId>javax.annotation-api</artifactId>
-            <version>${annotation.api.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.micronaut</groupId>
-            <artifactId>inject-java</artifactId>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>${logback.version}</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
-            <groupId>io.projectreactor</groupId>
-            <artifactId>reactor-core</artifactId>
-            <version>${reactor.version}</version>
+            <groupId>io.micronaut.rxjava3</groupId>
+            <artifactId>micronaut-rxjava3</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.micronaut.rxjava3</groupId>
+            <artifactId>micronaut-rxjava3-http-client</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.micronaut.serde</groupId>
+            <artifactId>micronaut-serde-jackson</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.micronaut.test</groupId>
+            <artifactId>micronaut-test-junit5</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
     <build>
         <plugins>
             <plugin>
+                <groupId>io.micronaut.build</groupId>
+                <artifactId>micronaut-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                    <compilerArgs>
+                        <arg>-parameters</arg>
+                    </compilerArgs>
+                    <!-- Uncomment to enable incremental compilation -->
+                    <!-- <useIncrementalCompilation>false</useIncrementalCompilation> -->
+
+                    <annotationProcessorPaths combine.self="append">
+
+                        <path>
+                            <groupId>io.micronaut</groupId>
+                            <artifactId>micronaut-inject-java</artifactId>
+                            <version>${micronaut.version}</version>
+                        </path>
+
+                        <path>
+                            <groupId>io.micronaut</groupId>
+                            <artifactId>micronaut-http-validation</artifactId>
+                            <version>${micronaut.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
                 <version>${shade.plugin.version}</version>
                 <executions>
                     <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                        <configuration>
-                            <transformers>
-                                <transformer
-                                    implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>${exec.mainClass}</mainClass>
-                                </transformer>
-                                <transformer
-                                    implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
-                            </transformers>
-                        </configuration>
+                        <id>default-shade</id>
+                        <phase>none</phase>
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <configuration>
-                    <executable>java</executable>
-                    <arguments>
-                        <argument>-classpath</argument>
-                        <classpath/>
-                        <argument>${exec.mainClass}</argument>
-                    </arguments>
-                </configuration>
-            </plugin>
         </plugins>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>${compiler.plugin.version}</version>
-                    <configuration>
-                        <source>${jdk.version}</source>
-                        <target>${jdk.version}</target>
-                        <compilerArgs>
-                            <arg>-parameters</arg>
-                        </compilerArgs>
-                        <annotationProcessorPaths>
-                            <path>
-                                <groupId>io.micronaut</groupId>
-                                <artifactId>inject-java</artifactId>
-                                <version>${micronaut.version}</version>
-                            </path>
-                        </annotationProcessorPaths>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
     </build>
 
     <properties>
         <!-- <exec.mainClass>com.baeldung.micronaut.helloworld.server.ServerApplication</exec.mainClass> -->
         <exec.mainClass>com.baeldung.micronaut.vs.springboot.CompareApplication</exec.mainClass>
-        <micronaut.version>1.0.0.RC2</micronaut.version>
+        <micronaut.version>3.10.1</micronaut.version>
         <jdk.version>17</jdk.version>
-        <annotation.api.version>1.3.2</annotation.api.version>
-        <reactor.version>3.1.6.RELEASE</reactor.version>
+        <release.version>17</release.version>
+        <packaging>jar</packaging>
         <compiler.plugin.version>3.7.0</compiler.plugin.version>
-        <shade.plugin.version>3.1.0</shade.plugin.version>
+        <micronaut.runtime>netty</micronaut.runtime>
+        <shade.plugin.version>3.2.0</shade.plugin.version>
     </properties>
 
 </project>

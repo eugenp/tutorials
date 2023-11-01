@@ -1,8 +1,8 @@
 package com.baeldung.setparam;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.mockito.Mockito.when;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,7 +18,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 @RunWith(MockitoJUnitRunner.class)
 public class SanitizeParametersRequestWrapperUnitTest {
 
-    private String NEW_VALUE = "NEW VALUE";
+    private static final String NEW_VALUE = "NEW VALUE";
 
     private Map<String, String[]> parameterMap;
 
@@ -37,7 +37,7 @@ public class SanitizeParametersRequestWrapperUnitTest {
         SanitizeParametersRequestWrapper wrapper = new SanitizeParametersRequestWrapper(request);
         String actualValue = wrapper.getParameter("input");
 
-        assertEquals(actualValue, "&lt;script&gt;alert('Hello');&lt;/script&gt;");
+        assertEquals("&lt;script&gt;alert('Hello');&lt;/script&gt;", actualValue);
     }
 
     @Test(expected = UnsupportedOperationException.class)
@@ -54,7 +54,7 @@ public class SanitizeParametersRequestWrapperUnitTest {
 
         firstCallValues[0] = NEW_VALUE;
         String[] secondCallValues = wrapper.getParameterValues("input");
-        assertNotEquals(firstCallValues, secondCallValues);
+        assertThat(secondCallValues).doesNotContain(NEW_VALUE);
     }
 
 }
