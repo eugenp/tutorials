@@ -3,17 +3,21 @@ package com.baeldung.uuid;
 import java.nio.ByteBuffer;
 import java.util.UUID;
 
-public class UUIDLongGenerator {
+/**
+ * Methods are called by reflection in the unit test
+ */
+@SuppressWarnings("unused")
+public class UUIDPositiveLongGenerator {
     public long getLeastSignificantBits(){
-        return UUID.randomUUID().getLeastSignificantBits();
+        return Math.abs(UUID.randomUUID().getLeastSignificantBits());
     }
 
     public long getMostSignificantBits(){
-        return UUID.randomUUID().getMostSignificantBits();
+        return Math.abs(UUID.randomUUID().getMostSignificantBits());
     }
 
     public long gethashCode(){
-        return UUID.randomUUID().toString().hashCode();
+        return Math.abs(UUID.randomUUID().toString().hashCode());
     }
 
     public long combineByteBuffer(){
@@ -21,21 +25,21 @@ public class UUIDLongGenerator {
         ByteBuffer bb = ByteBuffer.wrap(new byte[16]);
         bb.putLong(uuid.getMostSignificantBits());
         bb.putLong(uuid.getLeastSignificantBits());
-        bb.rewind(); // Kembalikan posisi buffer ke awal
-        return bb.getLong();
+        bb.rewind();
+        return Math.abs(bb.getLong());
     }
 
     public long combineBitwise(){
         UUID uniqueUUID;
         uniqueUUID = UUID.randomUUID();
-        return (uniqueUUID.getMostSignificantBits() << 32) | (uniqueUUID.getLeastSignificantBits() & 0xFFFFFFFFL);
+        return Math.abs((uniqueUUID.getMostSignificantBits() << 32) | (uniqueUUID.getLeastSignificantBits() & 0xFFFFFFFFL));
     }
 
     public long combineDirect(){
         UUID uniqueUUID = UUID.randomUUID();
         long mostSignificantBits = uniqueUUID.getMostSignificantBits();
         long leastSignificantBits = uniqueUUID.getLeastSignificantBits();
-        return mostSignificantBits ^ (leastSignificantBits >> 1);
+        return Math.abs(mostSignificantBits ^ (leastSignificantBits >> 1));
     }
 
     public long combinePermutation(){
@@ -53,6 +57,6 @@ public class UUIDLongGenerator {
         for (byte b : uuidBytes) {
             result = (result << 8) | (b & 0xFF);
         }
-        return result;
+        return Math.abs(result);
     }
 }
