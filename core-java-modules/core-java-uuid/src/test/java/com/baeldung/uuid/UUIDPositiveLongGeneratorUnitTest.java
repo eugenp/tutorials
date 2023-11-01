@@ -28,33 +28,27 @@ public class UUIDPositiveLongGeneratorUnitTest {
 
 
     private void printTableHeader() {
-        logger.info(String.format("%-30s %-15s %-15s %-15s %-15s", "Approach", "collisions", "negatives", "collision", "negative"));
-        logger.info(String.format("%-30s %-15s %-15s %-15s %-15s", "(method name)", "count", "count", "probability", "probability"));
-        logger.info("--------------------------------------------------------------------------------------------");
+        logger.info(String.format("%-30s %-15s %-15s", "Approach(method name)", "collisions", "probability"));
+        logger.info("-----------------------------------------------------------------------");
     }
 
-    private void printOutput(String method, int collisionsCount, int negativeCount, double collisionsProbability, double negativeProbability) {
+    private void printOutput(String method, int collisionsCount, double collisionsProbability) {
         DecimalFormat decimalFormat = new DecimalFormat("#.#####");
-        logger.info(String.format("%-30s %-15s %-15s %-15s %-15s", method, collisionsCount, negativeCount, decimalFormat.format(collisionsProbability), decimalFormat.format(negativeProbability)));
+        logger.info(String.format("%-30s %-15s %-15s", method, collisionsCount, decimalFormat.format(collisionsProbability)));
     }
 
 
     private void collisionCheck(Method method) throws InvocationTargetException, IllegalAccessException {
         Set<Long> uniqueValues = new HashSet<>();
         int collisions = 0;
-        int negative = 0;
         for (int i = 0; i < n; i++) {
             long uniqueValue = (long) method.invoke(uuidLongGenerator);
             if (!uniqueValues.add(uniqueValue)) {
                 collisions++;
             }
-            if (uniqueValue < 0) {
-                negative++;
-            }
         }
         double collisionsProbability = (double) collisions / n;
-        double negativeProbability = (double) negative / n;
-        printOutput(method.getName(), collisions, negative, collisionsProbability, negativeProbability);
+        printOutput(method.getName(), collisions, collisionsProbability);
         assertThat(collisionsProbability).isLessThan(COLLISION_THRESHOLD);
     }
 }
