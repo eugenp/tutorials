@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
 
-public class OptionalAsRecordParameterTest {
+public class OptionalAsRecordParameterUnitTest {
 
     @Test
     public void givenRecordCreationWithOptional_thenCreateItProperly() {
