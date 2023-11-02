@@ -43,6 +43,7 @@ public class UUIDPositiveLongGeneratorUnitTest {
         int collisions = 0;
         for (int i = 0; i < n; i++) {
             long uniqueValue = (long) method.invoke(uuidLongGenerator);
+            assertThat(uniqueValue).isPositive();
             if (!uniqueValues.add(uniqueValue)) {
                 collisions++;
             }
