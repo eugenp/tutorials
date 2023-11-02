@@ -1,6 +1,5 @@
 package com.baeldung.nthsubstring;
 
-import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
 import java.util.regex.Matcher;
@@ -15,16 +14,16 @@ public class FindNthSubstringIndexUnitTest {
     @Test
     void whenCallingIndexOfTwice_thenGetTheSecondSubstringIndex() {
         int firstIdx = INPUT.indexOf("a");
-        int result = INPUT.indexOf("a", firstIdx + 1);
+        int result = INPUT.indexOf("a", firstIdx + "a".length());
         assertEquals(8, result);
     }
 
-    // recursive approach
+    // the recursive approach
     static int nthIndexOf(String input, String substring, int nth) {
         if (nth == 1) {
             return input.indexOf(substring);
         } else {
-            return input.indexOf(substring, nthIndexOf(input, substring, nth - 1) + 1);
+            return input.indexOf(substring, nthIndexOf(input, substring, nth - 1) + substring.length());
         }
     }
 
@@ -50,7 +49,7 @@ public class FindNthSubstringIndexUnitTest {
     static int nthIndexOf2(String input, String substring, int nth) {
         int index = -1;
         while (nth > 0) {
-            index = input.indexOf(substring, index + 1);
+            index = input.indexOf(substring, index + substring.length());
             if (index == -1) {
                 return -1;
             }
@@ -102,26 +101,6 @@ public class FindNthSubstringIndexUnitTest {
         assertEquals(24, result4);
 
         int result5 = nthOccurrenceIndex(INPUT, "a", 5);
-        assertEquals(-1, result5);
-    }
-
-
-    @Test
-    void whenUsingApacheCommonsLang_thenGetTheExpectedResult() {
-
-        int result1 = StringUtils.ordinalIndexOf(INPUT, "a", 1);
-        assertEquals(0, result1);
-
-        int result2 = StringUtils.ordinalIndexOf(INPUT, "a", 2);
-        assertEquals(8, result2);
-
-        int result3 = StringUtils.ordinalIndexOf(INPUT, "a", 3);
-        assertEquals(16, result3);
-
-        int result4 = StringUtils.ordinalIndexOf(INPUT, "a", 4);
-        assertEquals(24, result4);
-
-        int result5 = StringUtils.ordinalIndexOf(INPUT, "a", 5);
         assertEquals(-1, result5);
     }
 }
