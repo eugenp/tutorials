@@ -38,7 +38,7 @@ public class ExtSeqWithTimeWindowIntegrationTest {
 
     private static final long BUFFER_PERIOD_NS = 5000L * 1000000; // 5000 milliseconds converted to nanoseconds
     @Container
-    private static final KafkaContainer KAFKA_CONTAINER = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:latest"));
+    private static final long BUFFER_PERIOD_NS = Duration.ofSeconds(5).toNanos();
 
     @BeforeAll
     static void setup() throws ExecutionException, InterruptedException {
