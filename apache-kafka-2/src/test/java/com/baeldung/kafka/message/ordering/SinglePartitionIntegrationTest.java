@@ -37,7 +37,7 @@ public class SinglePartitionIntegrationTest {
     private static KafkaProducer<Long, UserEvent> producer;
     private static KafkaConsumer<Long, UserEvent> consumer;
 
-    private static final Duration TIMEOUT_WAIT_FOR_MESSAGES = Duration.ofMillis(5000);
+    private static final Duration TIMEOUT_WAIT_FOR_MESSAGES = Duration.ofSeconds(5);
 
     @Container
     private static final KafkaContainer KAFKA_CONTAINER = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:latest"));
