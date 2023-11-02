@@ -19,7 +19,7 @@ public class UUIDPositiveLongGeneratorUnitTest {
     private final Logger logger = LoggerFactory.getLogger(UUIDPositiveLongGeneratorUnitTest.class);
 
     @Test
-    void whenForeachGenerateLongValue_thenCollisionsCheck() throws InvocationTargetException, IllegalAccessException {
+    void whenForeachGenerateLongValue_thenCollisionsCheck() throws Exception {
         printTableHeader();
         for (Method method : uuidLongGenerator.getClass().getDeclaredMethods()) {
             collisionCheck(method);
