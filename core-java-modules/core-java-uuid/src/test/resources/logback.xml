@@ -12,7 +12,6 @@
 
     <!-- in order to debug some marshalling issues, this needs to be TRACE -->
     <logger name="org.springframework.web.servlet.mvc" level="WARN" />
-    <logger name="c.b.u.UUIDPositiveLongGeneratorUnitTest" level="INFO"/>
 
     <root level="INFO">
         <appender-ref ref="STDOUT" />
