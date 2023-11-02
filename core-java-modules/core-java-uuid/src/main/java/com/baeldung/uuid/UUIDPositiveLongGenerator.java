@@ -8,7 +8,7 @@ import java.util.UUID;
  */
 @SuppressWarnings("unused")
 public class UUIDPositiveLongGenerator {
-    public long getLeastSignificantBits(){
+    public long getLeastSignificantBits() {
         return Math.abs(UUID.randomUUID().getLeastSignificantBits());
     }
 
