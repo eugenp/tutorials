@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ModifyStreamUnitTest {
     Logger logger = LoggerFactory.getLogger(ModifyStreamUnitTest.class);
-    List<Person> personLst = new ArrayList<Person>();
+    List<Person> personList = new ArrayList<Person>();
     List<ImmutablePerson> immutablePersonList = new ArrayList<ImmutablePerson>();
 
     @BeforeEach
@@ -28,10 +28,10 @@ public class ModifyStreamUnitTest {
         Person person3 = new Person("Mary", "mary@gmail.com");
         Person person4 = new Person("William", "william@gmail.com");
 
-        personLst.add(person1);
-        personLst.add(person2);
-        personLst.add(person3);
-        personLst.add(person4);
+        personList.add(person1);
+        personList.add(person2);
+        personList.add(person3);
+        personList.add(person4);
     }
 
     @BeforeEach
@@ -48,32 +48,32 @@ public class ModifyStreamUnitTest {
     }
 
     @Test
-    void givenPersonLst_whenRemoveWhileIterating_thenThrowException() {
+    void givenPersonList_whenRemoveWhileIterating_thenThrowException() {
         assertThrows(NullPointerException.class, () -> {
-            personLst.stream().forEach(e -> {
+            personList.stream().forEach(e -> {
                 if(e.getName().equals("John")) {
-                    personLst.remove(e);
+                    personList.remove(e);
                 }
             });
         });
     }
 
     @Test
-    void givenPersonLst_whenRemoveWhileIteratingWithForEach_thenThrowException() {
+    void givenPersonList_whenRemoveWhileIteratingWithForEach_thenThrowException() {
         assertThrows(ConcurrentModificationException.class, () -> {
-            personLst.forEach(e -> {
+            personList.forEach(e -> {
                 if(e.getName().equals("John")) {
-                    personLst.remove(e);
+                    personList.remove(e);
                 }
             });
         });
     }
 
     @Test
-    void givenPersonLst_whenRemoveWhileIterating_thenPersonRemoved() {
-        assertEquals(4, personLst.size());
+    void givenPersonList_whenRemoveWhileIterating_thenPersonRemoved() {
+        assertEquals(4, personList.size());
 
-        CopyOnWriteArrayList<Person> cps = new CopyOnWriteArrayList<>(personLst);
+        CopyOnWriteArrayList<Person> cps = new CopyOnWriteArrayList<>(personList);
         cps.stream().forEach(e -> {
             if(e.getName().equals("John")) {
                 cps.remove(e);
@@ -85,56 +85,56 @@ public class ModifyStreamUnitTest {
 
 
     @Test
-    void givenPersonLst_whenRemovePersonWithFilter_thenPersonRemoved() {
-        assertEquals(4, personLst.size());
+    void givenPersonList_whenRemovePersonWithFilter_thenPersonRemoved() {
+        assertEquals(4, personList.size());
 
-        List<Person> newPersonLst = personLst.stream()
+        List<Person> newPersonList = personList.stream()
           .filter(e -> !e.getName().equals("John"))
           .collect(Collectors.toList());
 
-        assertEquals(3, newPersonLst.size());
+        assertEquals(3, newPersonList.size());
     }
 
     @Test
-    void givenPersonLst_whenRemovePersonWithRemoveIf_thenPersonRemoved() {
-        assertEquals(4, personLst.size());
+    void givenPersonList_whenRemovePersonWithRemoveIf_thenPersonRemoved() {
+        assertEquals(4, personList.size());
 
-        personLst.removeIf(e -> e.getName().equals("John"));
+        personList.removeIf(e -> e.getName().equals("John"));
 
-        assertEquals(3, personLst.size());
+        assertEquals(3, personList.size());
     }
 
     @Test
-    void givenPersonLst_whenUpdatePersonEmailByInterferingWithForEach_thenPersonEmailUpdated() {
-        personLst.stream().forEach(e -> e.setEmail(e.getEmail().toUpperCase()));
+    void givenPersonList_whenUpdatePersonEmailByInterferingWithForEach_thenPersonEmailUpdated() {
+        personList.stream().forEach(e -> e.setEmail(e.getEmail().toUpperCase()));
 
-        personLst.forEach(e -> assertEquals(e.getEmail(), e.getEmail().toUpperCase()));
+        personList.forEach(e -> assertEquals(e.getEmail(), e.getEmail().toUpperCase()));
     }
 
     @Test
-    void givenPersonLst_whenUpdatePersonEmailWithMapMethod_thenPersonEmailUpdated() {
-        List<Person> newPersonLst = personLst.stream()
+    void givenPersonList_whenUpdatePersonEmailWithMapMethod_thenPersonEmailUpdated() {
+        List<Person> newPersonList = personList.stream()
           .map(e -> new Person(e.getName(), e.getEmail().toUpperCase()))
           .collect(Collectors.toList());
 
-        newPersonLst.forEach(e -> assertEquals(e.getEmail(), e.getEmail().toUpperCase()));
+        newPersonList.forEach(e -> assertEquals(e.getEmail(), e.getEmail().toUpperCase()));
     }
 
     @Test
-    void givenPersonLst_whenUpdateImmutablePersonEmailWithMapMethod_thenPersonEmailUpdated() {
-        List<ImmutablePerson> newImmutablePersonLst = immutablePersonList.stream()
+    void givenPersonList_whenUpdateImmutablePersonEmailWithMapMethod_thenPersonEmailUpdated() {
+        List<ImmutablePerson> newImmutablePersonList = immutablePersonList.stream()
           .map(e -> e.withEmail(e.getEmail().toUpperCase()))
           .collect(Collectors.toList());
 
-        newImmutablePersonLst.forEach(e -> assertEquals(e.getEmail(), e.getEmail().toUpperCase()));
+        newImmutablePersonList.forEach(e -> assertEquals(e.getEmail(), e.getEmail().toUpperCase()));
     }
     @Test
-    void givenPersonLst_whenUpdatePersonEmailByInterferingWithPeek_thenPersonEmailUpdated() {
-        personLst.stream()
+    void givenPersonList_whenUpdatePersonEmailByInterferingWithPeek_thenPersonEmailUpdated() {
+        personList.stream()
                 .peek(e -> e.setEmail(e.getEmail().toUpperCase()))
                 .collect(Collectors.toList());
 
-        personLst.forEach(e -> assertEquals(e.getEmail(), e.getEmail().toUpperCase()));
+        personList.forEach(e -> assertEquals(e.getEmail(), e.getEmail().toUpperCase()));
     }
 
 }
