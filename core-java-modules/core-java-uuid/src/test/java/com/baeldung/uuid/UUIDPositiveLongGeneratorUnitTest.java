@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.text.DecimalFormat;
 import java.util.HashSet;
@@ -13,7 +12,7 @@ import java.util.Set;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class UUIDPositiveLongGeneratorUnitTest {
-    private final static int n = 1000000;
+    private final static int N = 1000000;
     private final static double COLLISION_THRESHOLD = 0.001;
     private final UUIDPositiveLongGenerator uuidLongGenerator = new UUIDPositiveLongGenerator();
     private final Logger logger = LoggerFactory.getLogger(UUIDPositiveLongGeneratorUnitTest.class);
@@ -41,14 +40,14 @@ public class UUIDPositiveLongGeneratorUnitTest {
     private void collisionCheck(Method method) throws Exception {
         Set<Long> uniqueValues = new HashSet<>();
         int collisions = 0;
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < N; i++) {
             long uniqueValue = (long) method.invoke(uuidLongGenerator);
             assertThat(uniqueValue).isPositive();
             if (!uniqueValues.add(uniqueValue)) {
                 collisions++;
             }
         }
-        double collisionsProbability = (double) collisions / n;
+        double collisionsProbability = (double) collisions / N;
         printOutput(method.getName(), collisions, collisionsProbability);
         assertThat(collisionsProbability).isLessThan(COLLISION_THRESHOLD);
     }

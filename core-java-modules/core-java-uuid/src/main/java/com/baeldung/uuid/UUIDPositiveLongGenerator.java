@@ -12,15 +12,15 @@ public class UUIDPositiveLongGenerator {
         return Math.abs(UUID.randomUUID().getLeastSignificantBits());
     }
 
-    public long getMostSignificantBits(){
+    public long getMostSignificantBits() {
         return Math.abs(UUID.randomUUID().getMostSignificantBits());
     }
 
-    public long gethashCode(){
+    public long gethashCode() {
         return Math.abs(UUID.randomUUID().toString().hashCode());
     }
 
-    public long combineByteBuffer(){
+    public long combineByteBuffer() {
         UUID uuid = UUID.randomUUID();
         ByteBuffer bb = ByteBuffer.wrap(new byte[16]);
         bb.putLong(uuid.getMostSignificantBits());
@@ -29,20 +29,20 @@ public class UUIDPositiveLongGenerator {
         return Math.abs(bb.getLong());
     }
 
-    public long combineBitwise(){
+    public long combineBitwise() {
         UUID uniqueUUID;
         uniqueUUID = UUID.randomUUID();
         return Math.abs((uniqueUUID.getMostSignificantBits() << 32) | (uniqueUUID.getLeastSignificantBits() & 0xFFFFFFFFL));
     }
 
-    public long combineDirect(){
+    public long combineDirect() {
         UUID uniqueUUID = UUID.randomUUID();
         long mostSignificantBits = uniqueUUID.getMostSignificantBits();
         long leastSignificantBits = uniqueUUID.getLeastSignificantBits();
         return Math.abs(mostSignificantBits ^ (leastSignificantBits >> 1));
     }
 
-    public long combinePermutation(){
+    public long combinePermutation() {
         UUID uuid = UUID.randomUUID();
         long mostSigBits = uuid.getMostSignificantBits();
         long leastSigBits = uuid.getLeastSignificantBits();
