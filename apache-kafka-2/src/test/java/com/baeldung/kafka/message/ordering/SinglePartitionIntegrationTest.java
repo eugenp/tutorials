@@ -32,9 +32,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Testcontainers
 public class SinglePartitionIntegrationTest {
-    private static String TOPIC = "single_partition_topic";
-    private static int PARTITIONS = 1;
-    private static short REPLICATION_FACTOR = 1;
+
     private static Admin admin;
     private static KafkaProducer<Long, UserEvent> producer;
     private static KafkaConsumer<Long, UserEvent> consumer;
@@ -67,10 +65,10 @@ public class SinglePartitionIntegrationTest {
         producer = new KafkaProducer<>(producerProperties);
         consumer = new KafkaConsumer<>(consumerProperties);
         List<NewTopic> topicList = new ArrayList<>();
-        NewTopic newTopic = new NewTopic(TOPIC, PARTITIONS, REPLICATION_FACTOR);
+        NewTopic newTopic = new NewTopic(Config.SINGLE_PARTITION_TOPIC, Config.SINGLE_PARTITION, Config.REPLICATION_FACTOR);
         topicList.add(newTopic);
         CreateTopicsResult result = admin.createTopics(topicList);
-        KafkaFuture<Void> future = result.values().get(TOPIC);
+        KafkaFuture<Void> future = result.values().get(Config.SINGLE_PARTITION_TOPIC);
         future.whenComplete((voidResult, exception) -> {
             if (exception != null) {
                 System.err.println("Error creating the topic: " + exception.getMessage());
@@ -92,18 +90,19 @@ public class SinglePartitionIntegrationTest {
         for (long count = 1; count <= 10 ; count++) {
             UserEvent userEvent = new UserEvent(UUID.randomUUID().toString());
             userEvent.setEventNanoTime(System.nanoTime());
-            ProducerRecord<Long, UserEvent> producerRecord = new ProducerRecord<>(TOPIC, userEvent);
+            ProducerRecord<Long, UserEvent> producerRecord = new ProducerRecord<>(Config.SINGLE_PARTITION_TOPIC, userEvent);
             Future<RecordMetadata> future = producer.send(producerRecord);
             sentUserEventList.add(userEvent);
             RecordMetadata metadata = future.get();
-            System.out.println("Partition : " + metadata.partition());
+            System.out.println("User Event ID: " + userEvent.getUserEventId() + ", Partition : " + metadata.partition());
         }
 
-        consumer.subscribe(Collections.singletonList(TOPIC));
+        consumer.subscribe(Collections.singletonList(Config.SINGLE_PARTITION_TOPIC));
         ConsumerRecords<Long, UserEvent> records = consumer.poll(TIMEOUT_WAIT_FOR_MESSAGES);
         records.forEach(record -> {
             UserEvent userEvent = record.value();
             receivedUserEventList.add(userEvent);
+            System.out.println("User Event ID: " + userEvent.getUserEventId());
         });
         boolean result = true;
         for (int count = 0; count <= 9 ; count++) {

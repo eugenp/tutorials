@@ -30,9 +30,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @Testcontainers
 public class ExtSeqWithTimeWindowIntegrationTest {
-    private static String TOPIC = "multi_partition_topic";
-    private static int PARTITIONS = 5;
-    private static short REPLICATION_FACTOR = 1;
+
     private static Admin admin;
     private static KafkaProducer<Long, UserEvent> producer;
     private static KafkaConsumer<Long, UserEvent> consumer;
@@ -65,10 +63,10 @@ public class ExtSeqWithTimeWindowIntegrationTest {
         producer = new KafkaProducer<>(producerProperties);
         consumer = new KafkaConsumer<>(consumerProperties);
         List<NewTopic> topicList = new ArrayList<>();
-        NewTopic newTopic = new NewTopic(TOPIC, PARTITIONS, REPLICATION_FACTOR);
+        NewTopic newTopic = new NewTopic(Config.MULTI_PARTITION_TOPIC, Config.MULTIPLE_PARTITIONS, Config.REPLICATION_FACTOR);
         topicList.add(newTopic);
         CreateTopicsResult result = admin.createTopics(topicList);
-        KafkaFuture<Void> future = result.values().get(TOPIC);
+        KafkaFuture<Void> future = result.values().get(Config.MULTI_PARTITION_TOPIC);
         future.whenComplete((voidResult, exception) -> {
             if (exception != null) {
                 System.err.println("Error creating the topic: " + exception.getMessage());
@@ -91,14 +89,14 @@ public class ExtSeqWithTimeWindowIntegrationTest {
             UserEvent userEvent = new UserEvent(UUID.randomUUID().toString());
             userEvent.setEventNanoTime(System.nanoTime());
             userEvent.setGlobalSequenceNumber(sequenceNumber);
-            Future<RecordMetadata> future = producer.send(new ProducerRecord<>(TOPIC, sequenceNumber, userEvent));
+            Future<RecordMetadata> future = producer.send(new ProducerRecord<>(Config.MULTI_PARTITION_TOPIC, sequenceNumber, userEvent));
             sentUserEventList.add(userEvent);
             RecordMetadata metadata = future.get();
-            System.out.println("Partition : " + metadata.partition());
+            System.out.println("User Event ID: " + userEvent.getUserEventId() + ", Partition : " + metadata.partition());
         }
 
         boolean isOrderMaintained = true;
-        consumer.subscribe(Collections.singletonList(TOPIC));
+        consumer.subscribe(Collections.singletonList(Config.MULTI_PARTITION_TOPIC));
         List<UserEvent> buffer = new ArrayList<>();
         long lastProcessedTime = System.nanoTime();
         ConsumerRecords<Long, UserEvent> records = consumer.poll(TIMEOUT_WAIT_FOR_MESSAGES);
@@ -131,7 +129,7 @@ public class ExtSeqWithTimeWindowIntegrationTest {
         Collections.sort(buffer);
         buffer.forEach(userEvent -> {
             receivedUserEventList.add(userEvent);
-            System.out.println("Process message with Event ID: " + userEvent.getUserEventId());
+            System.out.println("Processing message with Global Sequence number: " + userEvent.getGlobalSequenceNumber() + ", User Event Id: " + userEvent.getUserEventId());
         });
         buffer.clear();
     }
