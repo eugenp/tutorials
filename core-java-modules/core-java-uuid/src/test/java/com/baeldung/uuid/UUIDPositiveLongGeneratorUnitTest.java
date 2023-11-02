@@ -38,7 +38,7 @@ public class UUIDPositiveLongGeneratorUnitTest {
     }
 
 
-    private void collisionCheck(Method method) throws InvocationTargetException, IllegalAccessException {
+    private void collisionCheck(Method method) throws Exception {
         Set<Long> uniqueValues = new HashSet<>();
         int collisions = 0;
         for (int i = 0; i < n; i++) {
