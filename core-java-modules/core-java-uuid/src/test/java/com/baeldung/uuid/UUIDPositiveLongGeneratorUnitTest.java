@@ -25,7 +25,6 @@ public class UUIDPositiveLongGeneratorUnitTest {
         }
     }
 
-
     private void printTableHeader() {
         logger.info(String.format("%-30s %-15s %-15s", "Approach(method name)", "collisions", "probability"));
         logger.info("-----------------------------------------------------------------------");
@@ -35,7 +34,6 @@ public class UUIDPositiveLongGeneratorUnitTest {
         DecimalFormat decimalFormat = new DecimalFormat("#.#####");
         logger.info(String.format("%-30s %-15s %-15s", method, collisionsCount, decimalFormat.format(collisionsProbability)));
     }
-
 
     private void collisionCheck(Method method) throws Exception {
         Set<Long> uniqueValues = new HashSet<>();
