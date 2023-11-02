@@ -34,7 +34,7 @@ public class ExtSeqWithTimeWindowIntegrationTest {
     private static Admin admin;
     private static KafkaProducer<Long, UserEvent> producer;
     private static KafkaConsumer<Long, UserEvent> consumer;
-    private static final Duration TIMEOUT_WAIT_FOR_MESSAGES = Duration.ofMillis(5000);
+    private static final Duration TIMEOUT_WAIT_FOR_MESSAGES = Duration.ofSeconds(5);
 
     private static final long BUFFER_PERIOD_NS = 5000L * 1000000; // 5000 milliseconds converted to nanoseconds
     @Container
