@@ -12,7 +12,7 @@ import java.util.Set;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class UUIDPositiveLongGeneratorUnitTest {
-    private final static int N = 1000000;
+    private final static int NUMBER_OF_CHECKS = 1000000;
     private final static double COLLISION_THRESHOLD = 0.001;
     private final UUIDPositiveLongGenerator uuidLongGenerator = new UUIDPositiveLongGenerator();
     private final Logger logger = LoggerFactory.getLogger(UUIDPositiveLongGeneratorUnitTest.class);
@@ -40,14 +40,14 @@ public class UUIDPositiveLongGeneratorUnitTest {
     private void collisionCheck(Method method) throws Exception {
         Set<Long> uniqueValues = new HashSet<>();
         int collisions = 0;
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < NUMBER_OF_CHECKS; i++) {
             long uniqueValue = (long) method.invoke(uuidLongGenerator);
             assertThat(uniqueValue).isPositive();
             if (!uniqueValues.add(uniqueValue)) {
                 collisions++;
             }
         }
-        double collisionsProbability = (double) collisions / N;
+        double collisionsProbability = (double) collisions / NUMBER_OF_CHECKS;
         printOutput(method.getName(), collisions, collisionsProbability);
         assertThat(collisionsProbability).isLessThan(COLLISION_THRESHOLD);
     }
