@@ -2,6 +2,8 @@ package com.baeldung.vectors;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Vector;
 
 import org.junit.Test;
@@ -48,7 +50,7 @@ public class VectorOperationsUnitTest {
         vector.remove(2);
         assertEquals("day!", vector.get(2));
         assertEquals(3, vector.size());
-        
+
         assertEquals(false, vector.remove("SomethingThatDoesn'tExist"));
     }
 
@@ -71,5 +73,15 @@ public class VectorOperationsUnitTest {
         Vector<String> vector = getVector();
         assertEquals(5, vector.size());
         vector.get(10);
+    }
+
+    @Test
+    public void givenAVector_whenAddElementFromACollection_thenAllElementsGetAdeddToTheVector() {
+        Vector<String> vector = getVector();
+        assertEquals(5, vector.size());
+        ArrayList<String> words = new ArrayList<>(Arrays.asList("Baeldung", "is", "cool!"));
+        vector.addAll(words);
+        assertEquals(8, vector.size());
+        assertEquals("cool!", vector.get(7));
     }
 }
