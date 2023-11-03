@@ -46,9 +46,23 @@ public class SychronizeStaticDataUnitTest
     }
 
     @Test
+    public void whenSynchronizedClass_thenDataInOrder() {
+
+        System.out.println("Synchronization with synchronized block on class");
+
+        for(int i = 0; i < numberToTest; i++) {
+            int finalI = i;
+            pool.execute(() ->
+                         {
+                             new com.baeldung.concurrent.synchronizestatic.synchronizedclass.Employee(finalI, "John", "Smith");
+                         });
+        }
+    }
+
+    @Test
     public void whenSynchronizedBlock_thenDataInOrder() {
 
-        System.out.println("Synchronization with synchronized block");
+        System.out.println("Synchronization with synchronized block on a private object");
 
         for(int i = 0; i < numberToTest; i++) {
             int finalI = i;
