@@ -23,7 +23,6 @@ public class Employee {
 
     private static void incrementCount() {
         count.incrementAndGet();
-        System.out.println("Count = " + count.get());
     }
 
     public static int getCount() {

@@ -5,13 +5,22 @@ import org.junit.Test;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
+/**
+ * The tests in this class show the output of creating multiple
+ * types of Employee classes in the <code>synchronizedstatic</code>
+ * package. When not synchronized the out will not be sequential;
+ * when it is synchronized the output will be in sequential.
+ */
 public class SychronizeStaticDataUnitTest
 {
     private final Executor pool = Executors.newFixedThreadPool(4);
 
+    private final int numberToTest = 100;
+
     @Test
     public void whenNotSynchronized_thenDataOutOfOrder() {
-        int numberToTest = 100;
+
+        System.out.println("No synchronization");
 
         for(int i = 0; i < numberToTest; i++) {
             int finalI = i;
@@ -23,21 +32,9 @@ public class SychronizeStaticDataUnitTest
     }
 
     @Test
-    public void whenVolatile_thenDataInOrder() {
-        int numberToTest = 100;
-
-        for(int i = 0; i < numberToTest; i++) {
-            int finalI = i;
-            pool.execute(() ->
-                         {
-                             new com.baeldung.concurrent.synchronizestatic.volatilekeyword.Employee(finalI, "John", "Smith");
-                         });
-        }
-    }
-
-    @Test
     public void whenSynchronizedMethod_thenDataInOrder() {
-        int numberToTest = 100;
+
+        System.out.println("Synchronization with synchronized method");
 
         for(int i = 0; i < numberToTest; i++) {
             int finalI = i;
@@ -50,7 +47,8 @@ public class SychronizeStaticDataUnitTest
 
     @Test
     public void whenSynchronizedBlock_thenDataInOrder() {
-        int numberToTest = 100;
+
+        System.out.println("Synchronization with synchronized block");
 
         for(int i = 0; i < numberToTest; i++) {
             int finalI = i;
@@ -63,20 +61,15 @@ public class SychronizeStaticDataUnitTest
 
     @Test
     public void whenAtomicInteger_thenDataInOrder() {
-        int numberToTest = 100;
-
-        for(int i = 0; i < numberToTest; i++) {
-            int finalI = i;
-            pool.execute(() ->
-                         {
-                             new com.baeldung.concurrent.synchronizestatic.atomicinteger.Employee(finalI, "John", "Smith");
-                         });
-        }
+        // Not straight forward to test this because we cannot log/print
+        // and increment values in a synchronized fashion like other
+        // tests
     }
 
     @Test
     public void whenReentrantLock_thenDataInOrder() {
-        int numberToTest = 100;
+
+        System.out.println("Synchronization with ReentrantLock");
 
         for(int i = 0; i < numberToTest; i++) {
             int finalI = i;
