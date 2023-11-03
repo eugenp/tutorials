@@ -48,7 +48,7 @@ public class RetryCompletableFuture {
         CompletableFuture<T> cf = CompletableFuture.supplyAsync(supplier);
         sleep(100);
         for (int i = 0; i < maxRetries; i++) {
-            //cf = cf.exceptionallyAsync(__ -> supplier.get());
+            cf = cf.exceptionallyAsync(__ -> supplier.get());
         }
         return cf;
     }
