@@ -13,4 +13,5 @@ This module contains articles about Project Lombok.
 - [@StandardException Annotation in Lombok](https://www.baeldung.com/lombok-standardexception-annotation)
 - [Lombok EqualsAndHashCode Annotation](https://www.baeldung.com/java-lombok-equalsandhashcode)
 - [Lombok’s @RequiredArgsConstructor Annotation](https://www.baeldung.com/java-lombok-constructor-annotation)
+- [Generate Models Using OpenAPI With Lombok Annotations](https://www.baeldung.com/java-openapi-lombok-create-models)
 - More articles: [[<-- prev]](../lombok)

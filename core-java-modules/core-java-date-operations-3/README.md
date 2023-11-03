@@ -10,4 +10,5 @@ This module contains articles about date operations in Java.
 - [How to Get Last Day of a Month in Java](https://www.baeldung.com/java-last-day-month)
 - [Getting Yesterday’s Date in Java](https://www.baeldung.com/java-find-yesterdays-date)
 - [How to Get the Start and End Dates of a Year Using Java](https://www.baeldung.com/java-date-year-start-end)
+- [Convert Between Java LocalDate and Epoch](https://www.baeldung.com/java-localdate-epoch)
 - [[<-- Prev]](/core-java-modules/core-java-date-operations-2)

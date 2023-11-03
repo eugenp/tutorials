@@ -1,6 +1,6 @@
 ## Spring Boot REST
 
-This module contains articles about Spring Boot RESTful APIs.
+### ! This module contains articles about Spring Boot RESTful APIs. It should not be moved or used to store the code for any further article. 
 
 ### Relevant Articles
 

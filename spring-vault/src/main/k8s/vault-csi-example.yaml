@@ -1,0 +1,51 @@
+---
+apiVersion: secrets-store.csi.x-k8s.io/v1
+kind: SecretProviderClass
+metadata:
+  name: baeldung-csi-secrets
+  namespace: baeldung
+spec:
+  # Vault CSI Provider
+  provider: vault
+  parameters:
+    # Vault role name to use during login
+    roleName: 'baeldung-test-role'
+    objects: |
+      - objectName: 'baeldung.properties'
+        secretPath: "secrets/data/baeldung-test"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-csi
+  namespace: baeldung
+spec:
+  selector:
+    matchLabels:
+      app: nginx-csi
+  replicas: 1 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: nginx-csi
+    spec:
+      serviceAccountName: vault-test-sa
+      automountServiceAccountToken: true
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: vault-secrets
+          mountPath: /vault/secrets
+          readOnly: true
+      volumes:
+      - name: vault-secrets
+        csi:
+          driver: 'secrets-store.csi.k8s.io'
+          readOnly: true
+          volumeAttributes:
+            secretProviderClass: baeldung-csi-secrets
+
+

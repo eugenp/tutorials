@@ -1,5 +1,6 @@
 package com.baeldung.datastax.cassandra;
 
+import com.baeldung.cassandra.batch.repository.ProductRepository;
 import com.baeldung.datastax.cassandra.domain.Video;
 import com.baeldung.datastax.cassandra.repository.KeyspaceRepository;
 import com.baeldung.datastax.cassandra.repository.VideoRepository;
@@ -30,9 +31,11 @@ public class Application {
         keyspaceRepository.useKeyspace("testKeyspace");
 
         VideoRepository videoRepository = new VideoRepository(session);
+        ProductRepository productRepository = new ProductRepository(session);
 
         videoRepository.createTable();
 
+        productRepository.createProductTableByName("testKeyspace");
         videoRepository.insertVideo(new Video("Video Title 1", Instant.now()));
         videoRepository.insertVideo(new Video("Video Title 2",
             Instant.now().minus(1, ChronoUnit.DAYS)));

@@ -9,7 +9,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 import com.baeldung.wiring.configuration.ApplicationContextTestResourceQualifier;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 import java.io.File;
 
 import static org.junit.Assert.assertEquals;

@@ -1,7 +1,9 @@
 package com.baeldung.reactive.webflux.annotation;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.core.userdetails.MapReactiveUserDetailsService;
@@ -12,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 
 @EnableWebFluxSecurity
+@Configuration
 public class EmployeeWebSecurityConfig {
 
     @Bean
@@ -27,12 +30,11 @@ public class EmployeeWebSecurityConfig {
     @Bean
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
         http
-          .csrf().disable()
-          .authorizeExchange()
+          .csrf(csrf -> csrf.disable())
+          .authorizeExchange(exchanges -> exchanges
             .pathMatchers(HttpMethod.POST, "/employees/update").hasRole("ADMIN")
-            .pathMatchers("/**").permitAll()
-          .and()
-          .httpBasic();
+            .pathMatchers("/**").permitAll())
+          .httpBasic(Customizer.withDefaults());
         return http.build();
     }
 
