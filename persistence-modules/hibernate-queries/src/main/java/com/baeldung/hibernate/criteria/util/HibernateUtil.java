@@ -9,8 +9,7 @@ public class HibernateUtil {
     @SuppressWarnings("deprecation")
     public static Session getHibernateSession() {
 
-        final SessionFactory sf = new Configuration().configure("criteria.cfg.xml")
-            .buildSessionFactory();
+        final SessionFactory sf = new Configuration().configure("criteria.cfg.xml").buildSessionFactory();
 
         // factory = new Configuration().configure().buildSessionFactory();
         final Session session = sf.openSession();
@@ -19,8 +18,7 @@ public class HibernateUtil {
 
     public static SessionFactory getHibernateSessionFactory() {
 
-        final SessionFactory sessionFactory = new Configuration().configure("criteria.cfg.xml")
-            .buildSessionFactory();
+        final SessionFactory sessionFactory = new Configuration().configure("criteria.cfg.xml").buildSessionFactory();
 
         return sessionFactory;
     }
