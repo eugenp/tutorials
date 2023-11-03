@@ -20,9 +20,9 @@ public class CustomCompletableFuture<T> extends CompletableFuture<T> {
         return future;
     }
 
-//    @Override
-//    public Executor defaultExecutor() {
-//        return executor;
-//    }
+    @Override
+    public Executor defaultExecutor() {
+        return executor;
+    }
 
 }
