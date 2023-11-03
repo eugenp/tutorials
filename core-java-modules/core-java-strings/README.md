@@ -14,3 +14,4 @@ Listed here there are only those articles that does not fit into other core-java
 - [Java String Interview Questions and Answers](https://www.baeldung.com/java-string-interview-questions)
 - [Java Multi-line String](https://www.baeldung.com/java-multiline-string)
 - [Reuse StringBuilder for Efficiency](https://www.baeldung.com/java-reuse-stringbuilder-for-efficiency)
+- [How to Iterate Over the String Characters in Java](https://www.baeldung.com/java-iterate-string-characters)
