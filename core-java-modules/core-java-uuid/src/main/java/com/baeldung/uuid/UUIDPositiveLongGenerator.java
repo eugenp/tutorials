@@ -16,7 +16,7 @@ public class UUIDPositiveLongGenerator {
         return Math.abs(UUID.randomUUID().getMostSignificantBits());
     }
 
-    public long gethashCode() {
+    public long getHashCode() {
         return Math.abs(UUID.randomUUID().toString().hashCode());
     }
 
