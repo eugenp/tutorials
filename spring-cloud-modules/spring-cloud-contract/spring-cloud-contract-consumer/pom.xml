@@ -16,10 +16,12 @@
     </parent>
 
     <dependencies>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-rest</artifactId>
@@ -30,16 +32,25 @@
             <artifactId>spring-cloud-contract-wiremock</artifactId>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-contract-stub-runner</artifactId>
             <scope>test</scope>
         </dependency>
+
         <dependency>
             <groupId>com.baeldung.spring.cloud</groupId>
             <artifactId>spring-cloud-contract-producer</artifactId>
             <version>${project.parent.version}</version>
+            <classifier>stubs</classifier>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>*</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
