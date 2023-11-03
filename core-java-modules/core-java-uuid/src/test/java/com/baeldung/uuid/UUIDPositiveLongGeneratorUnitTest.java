@@ -6,8 +6,7 @@ import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Method;
 import java.text.DecimalFormat;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -17,8 +16,11 @@ public class UUIDPositiveLongGeneratorUnitTest {
     private final UUIDPositiveLongGenerator uuidLongGenerator = new UUIDPositiveLongGenerator();
     private final Logger logger = LoggerFactory.getLogger(UUIDPositiveLongGeneratorUnitTest.class);
 
+    List<Long> times = new ArrayList<>();
+
     @Test
     void whenForeachGenerateLongValue_thenCollisionsCheck() throws Exception {
+        times.clear();
         printTableHeader();
         for (Method method : uuidLongGenerator.getClass().getDeclaredMethods()) {
             collisionCheck(method);
@@ -26,16 +28,17 @@ public class UUIDPositiveLongGeneratorUnitTest {
     }
 
     private void printTableHeader() {
-        logger.info(String.format("%-30s %-15s %-15s", "Approach(method name)", "collisions", "probability"));
-        logger.info("-----------------------------------------------------------------------");
+        logger.info(String.format("%-30s %15s %15s %15s", "Approach(method name)", "collisions", "probability","Time"));
+        logger.info("--------------------------------------------------------------------------------");
     }
 
-    private void printOutput(String method, int collisionsCount, double collisionsProbability) {
+    private void printOutput(String method, int collisionsCount, double collisionsProbability, String time) {
         DecimalFormat decimalFormat = new DecimalFormat("#.#####");
-        logger.info(String.format("%-30s %-15s %-15s", method, collisionsCount, decimalFormat.format(collisionsProbability)));
+        logger.info(String.format("%-30s %15s %15s %15s", method, collisionsCount, decimalFormat.format(collisionsProbability),time));
     }
 
     private void collisionCheck(Method method) throws Exception {
+        long start = System.currentTimeMillis();
         Set<Long> uniqueValues = new HashSet<>();
         int collisions = 0;
         for (int i = 0; i < NUMBER_OF_CHECKS; i++) {
@@ -46,7 +49,34 @@ public class UUIDPositiveLongGeneratorUnitTest {
             }
         }
         double collisionsProbability = (double) collisions / NUMBER_OF_CHECKS;
-        printOutput(method.getName(), collisions, collisionsProbability);
+        long end = System.currentTimeMillis();
+        String time = convertMillisToTime(end - start);
+        printOutput(method.getName(), collisions, collisionsProbability, time);
         assertThat(collisionsProbability).isLessThan(COLLISION_THRESHOLD);
+
+    }
+
+    private String convertMillisToTime(long currentTimeMillis) {
+
+        long totalMilliseconds = currentTimeMillis % 1000;
+        times.add(totalMilliseconds);
+        long totalSeconds = (currentTimeMillis / 1000) % 60;
+        long totalMinutes = (currentTimeMillis / 60000) % 60;
+        long hours = (currentTimeMillis / 3600000);
+        StringJoiner stringBuffer = new StringJoiner("");
+
+        if (hours > 0){
+            stringBuffer.add(hours+"h ");
+        }
+        if (totalMinutes > 0){
+            stringBuffer.add(totalMinutes+" m ");
+        }
+        if (totalSeconds > 0){
+            stringBuffer.add(totalSeconds+" s ");
+        }
+        if (totalMilliseconds > 0){
+            stringBuffer.add(totalMilliseconds+" ms");
+        }
+        return stringBuffer.toString();
     }
 }
