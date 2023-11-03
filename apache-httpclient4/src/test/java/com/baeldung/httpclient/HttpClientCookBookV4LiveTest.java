@@ -1,5 +1,9 @@
 package com.baeldung.httpclient;
 
+import org.apache.http.auth.AuthenticationException;
+import org.apache.http.auth.UsernamePasswordCredentials;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.auth.BasicScheme;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -179,6 +183,22 @@ class HttpClientCookBookV4LiveTest {
                 assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
             }
         }
+    }
+
+    @Test
+    final void whenExecutingPostRequestWithBody_thenNoExceptions() throws IOException {
+        final HttpPost request = new HttpPost(SAMPLE_POST_URL);
+        request.setEntity(new StringEntity("in the body of the POST"));
+        client.execute(request);
+    }
+
+    @Test
+    final void givenAuth_whenExecutingPostRequestWithBody_thenNoExceptions() throws IOException, AuthenticationException {
+        final HttpPost request = new HttpPost(SAMPLE_POST_URL);
+        request.setEntity(new StringEntity("in the body of the POST"));
+        final UsernamePasswordCredentials creds = new UsernamePasswordCredentials("username", "password");
+        request.addHeader(new BasicScheme().authenticate(creds, request, null));
+        client.execute(request);
     }
 
 }

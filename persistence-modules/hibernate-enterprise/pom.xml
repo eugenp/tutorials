@@ -82,7 +82,6 @@
         <mysql.version>8.0.32</mysql.version>
         <mariaDB4j.version>2.6.0</mariaDB4j.version>
         <geodb.version>0.9</geodb.version>
-        <byte-buddy.version>1.14.2</byte-buddy.version>
     </properties>
 
 </project>

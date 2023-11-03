@@ -16,6 +16,7 @@
     <modules>
         <module>json</module>
         <module>json-2</module>
+        <module>json-arrays</module>
         <module>json-conversion</module>
         <module>json-path</module>
         <module>gson</module>
@@ -32,5 +33,9 @@
             </plugins>
         </pluginManagement>
     </build>
+
+    <properties>
+        <json.version>20230618</json.version>
+    </properties>
 
 </project>

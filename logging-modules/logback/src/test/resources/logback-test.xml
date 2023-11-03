@@ -19,8 +19,16 @@
         </layout>
     </appender>
 
+    <appender name="jsonEncoder" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.JsonEncoder"/>
+    </appender>
+
     <logger name="jsonLogger" level="TRACE">
         <appender-ref ref="json" />
+    </logger>
+
+    <logger name="jsonEncoderLogger" level="TRACE">
+        <appender-ref ref="jsonEncoder" />
     </logger>
 
     <root level="debug">
