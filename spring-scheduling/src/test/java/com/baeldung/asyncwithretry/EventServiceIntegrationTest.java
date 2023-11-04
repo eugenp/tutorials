@@ -19,7 +19,7 @@ import static org.mockito.Mockito.*;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = {AsyncConfig.class}, loader = AnnotationConfigContextLoader.class)
-class EventServiceUnitTest {
+class EventServiceIntegrationTest {
 
     @Autowired
     private EventService asyncEventService;
