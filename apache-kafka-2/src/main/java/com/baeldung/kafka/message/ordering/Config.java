@@ -7,5 +7,5 @@ public class Config {
 
     public static final int MULTIPLE_PARTITIONS = 5;
     public static final int SINGLE_PARTITION = 1;
-    public static short REPLICATION_FACTOR = 1;
+    public static final short REPLICATION_FACTOR = 1;
 }

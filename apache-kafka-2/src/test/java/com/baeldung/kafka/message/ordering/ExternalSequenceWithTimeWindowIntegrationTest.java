@@ -11,7 +11,6 @@ import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
-import org.apache.kafka.common.KafkaFuture;
 import org.apache.kafka.common.serialization.LongDeserializer;
 import org.apache.kafka.common.serialization.LongSerializer;
 import org.junit.jupiter.api.AfterAll;
@@ -25,8 +24,8 @@ import java.time.Duration;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
-
-import static org.junit.jupiter.api.Assertions.*;
+import com.google.common.collect.ImmutableList;
+import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 @Testcontainers
 public class ExternalSequenceWithTimeWindowIntegrationTest {
@@ -84,7 +83,6 @@ public class ExternalSequenceWithTimeWindowIntegrationTest {
             System.out.println("User Event ID: " + userEvent.getUserEventId() + ", Partition : " + metadata.partition());
         }
 
-        boolean isOrderMaintained = true;
         consumer.subscribe(Collections.singletonList(Config.MULTI_PARTITION_TOPIC));
         List<UserEvent> buffer = new ArrayList<>();
         long lastProcessedTime = System.nanoTime();
@@ -102,9 +100,9 @@ public class ExternalSequenceWithTimeWindowIntegrationTest {
                 buffer.add(record.value());
             });
         }
-    assertThat(receivedUserEventList)
-            .isEqualTo(sentUserEventList)
-            .containsExactlyElementsOf(sentUserEventList);
+        assertThat(receivedUserEventList)
+                .isEqualTo(sentUserEventList)
+                .containsExactlyElementsOf(sentUserEventList);
     }
 
     private static void processBuffer(List<UserEvent> buffer, List<UserEvent> receivedUserEventList) {

@@ -11,7 +11,6 @@ import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
-import org.apache.kafka.common.KafkaFuture;
 import org.apache.kafka.common.serialization.LongDeserializer;
 import org.apache.kafka.common.serialization.LongSerializer;
 import org.junit.jupiter.api.AfterAll;
@@ -25,8 +24,8 @@ import java.time.Duration;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
-
-import static org.junit.jupiter.api.Assertions.*;
+import com.google.common.collect.ImmutableList;
+import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 @Testcontainers
 public class MultiplePartitionIntegrationTest {
@@ -89,7 +88,7 @@ public class MultiplePartitionIntegrationTest {
             receivedUserEventList.add(userEvent);
             System.out.println("User Event ID: " + userEvent.getUserEventId());
         });
-     assertThat(receivedUserEventList)
+        assertThat(receivedUserEventList)
             .isNotEqualTo(sentUserEventList)
             .containsExactlyInAnyOrderElementsOf(sentUserEventList);
     }
