@@ -29,7 +29,7 @@ import java.util.concurrent.Future;
 import static org.junit.jupiter.api.Assertions.*;
 
 @Testcontainers
-public class ExtSeqWithTimeWindowIntegrationTest {
+public class ExternalSequenceWithTimeWindowIntegrationTest {
 
     private static Admin admin;
     private static KafkaProducer<Long, UserEvent> producer;
