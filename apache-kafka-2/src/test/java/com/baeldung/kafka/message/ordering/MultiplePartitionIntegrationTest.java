@@ -71,16 +71,16 @@ public class MultiplePartitionIntegrationTest {
     void givenMultiplePartitions_whenPublishedToKafkaAndConsumed_thenCheckForMessageOrder() throws ExecutionException, InterruptedException {
         List<UserEvent> sentUserEventList = new ArrayList<>();
         List<UserEvent> receivedUserEventList = new ArrayList<>();
-        for (long count = 1; count <= 10 ; count++) {
+        for (long sequenceNumber = 1; sequenceNumber <= 10; sequenceNumber++) {
             UserEvent userEvent = new UserEvent(UUID.randomUUID().toString());
+            userEvent.setGlobalSequenceNumber(sequenceNumber);
             userEvent.setEventNanoTime(System.nanoTime());
-            Future<RecordMetadata> future = producer.send(new ProducerRecord<>(Config.MULTI_PARTITION_TOPIC, count, userEvent));
+            Future<RecordMetadata> future = producer.send(new ProducerRecord<>(Config.MULTI_PARTITION_TOPIC, sequenceNumber, userEvent));
             sentUserEventList.add(userEvent);
             RecordMetadata metadata = future.get();
             System.out.println("User Event ID: " + userEvent.getUserEventId() + ", Partition : " + metadata.partition());
         }
 
-        boolean isOrderMaintained = true;
         consumer.subscribe(Collections.singletonList(Config.MULTI_PARTITION_TOPIC));
         ConsumerRecords<Long, UserEvent> records = consumer.poll(TIMEOUT_WAIT_FOR_MESSAGES);
         records.forEach(record -> {

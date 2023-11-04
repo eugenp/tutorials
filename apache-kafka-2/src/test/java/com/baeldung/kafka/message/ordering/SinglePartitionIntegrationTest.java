@@ -78,8 +78,9 @@ public class SinglePartitionIntegrationTest {
     void givenASinglePartition_whenPublishedToKafkaAndConsumed_thenCheckForMessageOrder() throws ExecutionException, InterruptedException {
         List<UserEvent> sentUserEventList = new ArrayList<>();
         List<UserEvent> receivedUserEventList = new ArrayList<>();
-        for (long count = 1; count <= 10; count++) {
+        for (long sequenceNumber = 1; sequenceNumber <= 10; sequenceNumber++) {
             UserEvent userEvent = new UserEvent(UUID.randomUUID().toString());
+            userEvent.setGlobalSequenceNumber(sequenceNumber);
             userEvent.setEventNanoTime(System.nanoTime());
             ProducerRecord<Long, UserEvent> producerRecord = new ProducerRecord<>(Config.SINGLE_PARTITION_TOPIC, userEvent);
             Future<RecordMetadata> future = producer.send(producerRecord);

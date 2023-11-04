@@ -42,15 +42,19 @@ public class UserEvent implements Comparable<UserEvent> {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj == this) {
+        if (this == obj) {
             return true;
         }
         if (!(obj instanceof UserEvent)) {
             return false;
         }
         UserEvent userEvent = (UserEvent) obj;
-        return Objects.equals(this.userEventId, userEvent.getUserEventId())
-                && userEvent.getEventNanoTime() == this.eventNanoTime;
+        return this.globalSequenceNumber == userEvent.globalSequenceNumber;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(globalSequenceNumber);
     }
 }
 
