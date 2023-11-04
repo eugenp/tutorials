@@ -6,7 +6,6 @@ import org.apache.kafka.common.serialization.Serializer;
 /**
  * Configured via {@link org.apache.kafka.clients.producer.ProducerConfig#VALUE_SERIALIZER_CLASS_CONFIG}
  */
-@SuppressWarnings("unused")
 public class JacksonSerializer<T> implements Serializer<T> {
     private final ObjectMapper objectMapper = new ObjectMapper();
 
