@@ -92,7 +92,7 @@ public class ExternalSequenceWithTimeWindowIntegrationTest {
         records.forEach(record -> {
             buffer.add(record.value());
         });
-        while (buffer.size() > 0) {
+        while (!buffer.isEmpty()) {
             if (System.nanoTime() - lastProcessedTime > BUFFER_PERIOD_NS) {
                 processBuffer(buffer, receivedUserEventList);
                 lastProcessedTime = System.nanoTime();
