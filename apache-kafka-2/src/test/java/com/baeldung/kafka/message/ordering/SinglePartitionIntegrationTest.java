@@ -68,18 +68,7 @@ public class SinglePartitionIntegrationTest {
         admin = Admin.create(adminProperties);
 
 
-        List<NewTopic> topicList = new ArrayList<>();
-        NewTopic newTopic = new NewTopic(Config.SINGLE_PARTITION_TOPIC, Config.SINGLE_PARTITION, Config.REPLICATION_FACTOR);
-        topicList.add(newTopic);
-        CreateTopicsResult result = admin.createTopics(topicList);
-        KafkaFuture<Void> future = result.values().get(Config.SINGLE_PARTITION_TOPIC);
-        future.whenComplete((voidResult, exception) -> {
-            if (exception != null) {
-                System.err.println("Error creating the topic: " + exception.getMessage());
-            } else {
-                System.out.println("Topic created successfully!");
-            }
-        }).get();
+        admin.createTopics(ImmutableList.of(new NewTopic(Config.SINGLE_PARTITION_TOPIC, Config.SINGLE_PARTITION, Config.REPLICATION_FACTOR))).all().get();
     }
 
     @AfterAll
