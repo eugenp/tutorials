@@ -101,7 +101,7 @@
         <snakeyaml.version>1.21</snakeyaml.version>
         <kryo.version>4.0.1</kryo.version>
         <smooks.version>1.7.0</smooks.version>
-        <opencsv.version>4.1</opencsv.version>
+        <opencsv.version>5.8</opencsv.version>
         <google-api.version>1.23.0</google-api.version>
         <google-sheets.version>v4-rev493-1.21.0</google-sheets.version>
         <docx4j.version>6.1.2</docx4j.version>
