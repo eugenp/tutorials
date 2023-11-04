@@ -33,9 +33,8 @@ public class JacksonDeserializer<T> implements Deserializer<T> {
         try {
             return objectMapper.readValue(bytes, type);
         } catch (Exception e) {
-            //throw new RuntimeException("Error deserializing value", e);
+            throw new RuntimeException("Error deserializing value", e);
         }
-        return null;
     }
 }
 
