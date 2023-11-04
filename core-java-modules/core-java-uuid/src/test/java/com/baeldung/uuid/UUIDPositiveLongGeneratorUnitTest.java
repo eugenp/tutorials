@@ -28,13 +28,13 @@ public class UUIDPositiveLongGeneratorUnitTest {
     }
 
     private void printTableHeader() {
-        logger.info(String.format("%-30s %15s %15s %15s", "Approach(method name)", "collisions", "probability","Time"));
+        logger.info(String.format("%-25s %15s %15s %15s", "Approach(method name)", "collisions", "probability","Testing Time"));
         logger.info("--------------------------------------------------------------------------------");
     }
 
     private void printOutput(String method, int collisionsCount, double collisionsProbability, String time) {
         DecimalFormat decimalFormat = new DecimalFormat("#.#####");
-        logger.info(String.format("%-30s %15s %15s %15s", method, collisionsCount, decimalFormat.format(collisionsProbability),time));
+        logger.info(String.format("%-25s %15s %15s %15s", method, collisionsCount, decimalFormat.format(collisionsProbability),time));
     }
 
     private void collisionCheck(Method method) throws Exception {
