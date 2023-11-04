@@ -114,7 +114,7 @@
         <jta.version>1.1</jta.version>
         <geronimo.version>1.0</geronimo.version>
         <validation-api.version>2.0.1.Final</validation-api.version>
-        <hibernate-validator.version>6.1.2.Final</hibernate-validator.version>
+        <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
         <javax.el-api.version>3.0.0</javax.el-api.version>
         <javax.el.version>2.2.4</javax.el.version>
     </properties>
