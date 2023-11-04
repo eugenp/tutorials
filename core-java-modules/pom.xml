@@ -199,6 +199,7 @@
         <module>core-java-date-operations-1</module>
         <!--<module>core-java-datetime-conversion</module>--> <!--JAVA-25433-->
         <module>core-java-httpclient</module>
+        <module>java-native</module>
     </modules>
 
     <dependencyManagement>
