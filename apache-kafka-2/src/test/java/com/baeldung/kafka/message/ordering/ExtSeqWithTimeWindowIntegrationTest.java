@@ -102,16 +102,9 @@ public class ExternalSequenceWithTimeWindowIntegrationTest {
                 buffer.add(record.value());
             });
         }
-        for (int insertPosition = 0; insertPosition <= receivedUserEventList.size() - 1; insertPosition++) {
-            if (isOrderMaintained){
-                UserEvent sentUserEvent = sentUserEventList.get(insertPosition);
-                UserEvent receivedUserEvent = receivedUserEventList.get(insertPosition);
-                if (!sentUserEvent.equals(receivedUserEvent)) {
-                    isOrderMaintained = false;
-                }
-            }
-        }
-        assertTrue(isOrderMaintained);
+    assertThat(receivedUserEventList)
+            .isEqualTo(sentUserEventList)
+            .containsExactlyElementsOf(sentUserEventList);
     }
 
     private static void processBuffer(List<UserEvent> buffer, List<UserEvent> receivedUserEventList) {
