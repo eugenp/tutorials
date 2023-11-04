@@ -6,11 +6,11 @@ public class UserEvent implements Comparable<UserEvent> {
     private long eventNanoTime;
     private long globalSequenceNumber;
 
+    @SuppressWarnings("unused")
     public UserEvent(){
-
+        // Required for Jackson Serialization and Deserialization
     }
 
-    //Required for Kafka Serialization and Deserialization
     public UserEvent(String userEventId) {
         this.userEventId = userEventId;
     }
