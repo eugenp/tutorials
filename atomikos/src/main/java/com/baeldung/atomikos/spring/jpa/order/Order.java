@@ -3,7 +3,7 @@ package com.baeldung.atomikos.spring.jpa.order;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Max;
+import jakarta.validation.constraints.Max;
 
 @Entity
 @Table(name = "ORDERS")
