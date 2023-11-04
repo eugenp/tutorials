@@ -60,18 +60,7 @@ public class MultiplePartitionIntegrationTest {
         admin = Admin.create(adminProperties);
         producer = new KafkaProducer<>(producerProperties);
         consumer = new KafkaConsumer<>(consumerProperties);
-        List<NewTopic> topicList = new ArrayList<>();
-        NewTopic newTopic = new NewTopic(Config.MULTI_PARTITION_TOPIC, Config.MULTIPLE_PARTITIONS, Config.REPLICATION_FACTOR);
-        topicList.add(newTopic);
-        CreateTopicsResult result = admin.createTopics(topicList);
-        KafkaFuture<Void> future = result.values().get(Config.MULTI_PARTITION_TOPIC);
-        future.whenComplete((voidResult, exception) -> {
-            if (exception != null) {
-                System.err.println("Error creating the topic: " + exception.getMessage());
-            } else {
-                System.out.println("Topic created successfully!");
-            }
-        }).get();
+        admin.createTopics(ImmutableList.of(new NewTopic(Config.MULTI_PARTITION_TOPIC, Config.MULTIPLE_PARTITIONS, Config.REPLICATION_FACTOR))).all().get();
     }
 
     @AfterAll
