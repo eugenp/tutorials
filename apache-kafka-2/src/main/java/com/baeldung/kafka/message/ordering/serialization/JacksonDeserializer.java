@@ -8,7 +8,6 @@ import java.util.Map;
 /**
  * Configured via {@link org.apache.kafka.clients.consumer.ConsumerConfig#VALUE_DESERIALIZER_CLASS_CONFIG}
  */
-@SuppressWarnings("unused")
 public class JacksonDeserializer<T> implements Deserializer<T> {
     private final ObjectMapper objectMapper = new ObjectMapper();
     private Class<T> type;
