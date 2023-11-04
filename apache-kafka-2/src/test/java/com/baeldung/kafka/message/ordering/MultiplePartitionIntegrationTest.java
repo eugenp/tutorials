@@ -16,6 +16,8 @@ import org.apache.kafka.common.serialization.LongSerializer;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testcontainers.containers.KafkaContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
@@ -34,6 +36,8 @@ public class MultiplePartitionIntegrationTest {
     private static KafkaProducer<Long, UserEvent> producer;
     private static KafkaConsumer<Long, UserEvent> consumer;
     private static final Duration TIMEOUT_WAIT_FOR_MESSAGES = Duration.ofSeconds(5);
+
+    private static Logger logger = LoggerFactory.getLogger(MultiplePartitionIntegrationTest.class);
     @Container
     private static final KafkaContainer KAFKA_CONTAINER = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:latest"));
 
@@ -78,7 +82,7 @@ public class MultiplePartitionIntegrationTest {
             Future<RecordMetadata> future = producer.send(new ProducerRecord<>(Config.MULTI_PARTITION_TOPIC, sequenceNumber, userEvent));
             sentUserEventList.add(userEvent);
             RecordMetadata metadata = future.get();
-            System.out.println("User Event ID: " + userEvent.getUserEventId() + ", Partition : " + metadata.partition());
+            logger.info("User Event ID: " + userEvent.getUserEventId() + ", Partition : " + metadata.partition());
         }
 
         consumer.subscribe(Collections.singletonList(Config.MULTI_PARTITION_TOPIC));
@@ -86,7 +90,7 @@ public class MultiplePartitionIntegrationTest {
         records.forEach(record -> {
             UserEvent userEvent = record.value();
             receivedUserEventList.add(userEvent);
-            System.out.println("User Event ID: " + userEvent.getUserEventId());
+            logger.info("User Event ID: " + userEvent.getUserEventId());
         });
         assertThat(receivedUserEventList)
             .isNotEqualTo(sentUserEventList)
