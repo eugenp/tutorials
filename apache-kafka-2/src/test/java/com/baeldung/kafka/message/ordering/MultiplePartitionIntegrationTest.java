@@ -89,15 +89,8 @@ public class MultiplePartitionIntegrationTest {
             receivedUserEventList.add(userEvent);
             System.out.println("User Event ID: " + userEvent.getUserEventId());
         });
-        for (int insertPosition = 0; insertPosition <= receivedUserEventList.size() - 1; insertPosition++) {
-            if (isOrderMaintained){
-                UserEvent sentUserEvent = sentUserEventList.get(insertPosition);
-                UserEvent receivedUserEvent = receivedUserEventList.get(insertPosition);
-                if (!sentUserEvent.equals(receivedUserEvent)) {
-                    isOrderMaintained = false;
-                }
-            }
-        }
-        assertFalse(isOrderMaintained);
+     assertThat(receivedUserEventList)
+            .isNotEqualTo(sentUserEventList)
+            .containsExactlyInAnyOrderElementsOf(sentUserEventList);
     }
 }
