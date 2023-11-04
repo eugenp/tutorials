@@ -3,7 +3,7 @@ package com.baeldung.h2db.demo.server;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
-import javax.annotation.PostConstruct;
+import jakarta.annotation.PostConstruct;
 import org.h2.tools.Server;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;

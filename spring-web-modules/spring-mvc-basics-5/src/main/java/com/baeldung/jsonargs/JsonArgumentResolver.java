@@ -3,7 +3,7 @@ package com.baeldung.jsonargs;
 import java.io.IOException;
 import java.util.Objects;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.IOUtils;
 import org.springframework.core.MethodParameter;

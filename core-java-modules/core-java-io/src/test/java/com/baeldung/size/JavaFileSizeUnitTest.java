@@ -3,7 +3,10 @@ package com.baeldung.size;
 import static org.junit.Assert.assertEquals;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.nio.channels.FileChannel;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -61,5 +64,25 @@ public class JavaFileSizeUnitTest {
     private long getFileSize(final File file) {
         final long length = file.length();
         return length;
+    }
+
+    @Test
+    public void whenGetFileSizeUsingFileInputStream_thenCorrect() throws IOException {
+
+        try (FileInputStream fis = new FileInputStream(filePath)) {
+            long result = fis.getChannel().size();
+            assertEquals(EXPECTED_FILE_SIZE_IN_BYTES, result);
+        }
+    }
+
+    @Test
+    public void whenGetFileSizeUsingUrlAndInputStream_thenCorrect() throws IOException {
+
+        File file = new File(filePath);
+        URL url = file.toURI().toURL();
+
+        try (InputStream stream = url.openStream()) {
+            assertEquals(EXPECTED_FILE_SIZE_IN_BYTES, stream.available());
+        }
     }
 }

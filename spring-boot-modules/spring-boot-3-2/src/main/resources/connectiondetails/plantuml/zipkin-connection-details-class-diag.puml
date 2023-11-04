@@ -1,0 +1,21 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface ZipkinConnectionDetails {
+   +getSpanEndpoint():String
+}
+class CustomZipkinConnectionDetails {
+   +getSpanEndpoint():String
+}
+class VaultAdapter {
+   +getSecret(String secretKey):String
+}
+class CustomZipkinConnectionDetailsConfiguration {
+    +getZipkinConnectionDetails():ZipkinConnectionDetails
+}
+CustomZipkinConnectionDetails -left-> VaultAdapter:uses
+CustomZipkinConnectionDetails -right-|> ZipkinConnectionDetails:implements
+CustomZipkinConnectionDetailsConfiguration -up-> CustomZipkinConnectionDetails:uses
+
+
+@enduml

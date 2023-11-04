@@ -20,8 +20,9 @@ public class Main {
             System.out.println("General exception");
         }
 
-        checkedException();
+        checkedExceptionWithTryCatch();
         checkedExceptionWithThrows();
+        divideByZero();
     }
 
     private static void checkedExceptionWithThrows() throws FileNotFoundException {
@@ -29,13 +30,19 @@ public class Main {
         FileInputStream stream = new FileInputStream(file);
     }
 
-    private static void checkedException() {
+    private static void checkedExceptionWithTryCatch() {
         File file = new File("not_existing_file.txt");
         try {
             FileInputStream stream = new FileInputStream(file);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+    }
+    
+    private static void divideByZero() {
+        int numerator = 1;
+        int denominator = 0;
+        int result = numerator / denominator;
     }
 
 }
