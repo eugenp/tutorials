@@ -97,14 +97,8 @@ public class SinglePartitionIntegrationTest {
             receivedUserEventList.add(userEvent);
             System.out.println("User Event ID: " + userEvent.getUserEventId());
         });
-        boolean result = true;
-        for (int count = 0; count <= 9; count++) {
-            UserEvent sentUserEvent = sentUserEventList.get(count);
-            UserEvent receivedUserEvent = receivedUserEventList.get(count);
-            if (!sentUserEvent.equals(receivedUserEvent) && result) {
-                result = false;
-            }
-        }
-        assertTrue(result);
+        assertThat(receivedUserEventList)
+            .isEqualTo(sentUserEventList)
+            .containsExactlyElementsOf(sentUserEventList);
     }
 }
