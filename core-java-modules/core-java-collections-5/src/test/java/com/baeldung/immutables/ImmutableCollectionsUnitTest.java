@@ -2,20 +2,17 @@ package com.baeldung.immutables;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
-
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-public class ImmutableCollectionsExampleTest {
+public class ImmutableCollectionsUnitTest {
 
     @Test
-    public void givenUnmodifiableMap_whenPutNewEntry_thenThrowsUnsupportedOperationException() {
+    public void givenUnmodifiableMapWhenPutNewEntryThenThrowsUnsupportedOperationException() {
         Map<String, String> modifiableMap = new HashMap<>();
         modifiableMap.put("name1", "Michael");
         modifiableMap.put("name2", "Harry");
@@ -26,7 +23,7 @@ public class ImmutableCollectionsExampleTest {
     }
 
     @Test
-    public void givenUnmodifiableMap_whenPutNewEntryUsingOriginalReference_thenSuccessful() {
+    public void givenUnmodifiableMapWhenPutNewEntryUsingOriginalReferenceThenSuccessful() {
         Map<String, String> modifiableMap = new HashMap<>();
         modifiableMap.put("name1", "Michael");
         modifiableMap.put("name2", "Harry");
@@ -39,14 +36,14 @@ public class ImmutableCollectionsExampleTest {
     }
 
     @Test
-    public void givenImmutableMap_whenPutNewEntry_thenThrowsUnsupportedOperationException() {
+    public void givenImmutableMapWhenPutNewEntryThenThrowsUnsupportedOperationException() {
         Map<String, String> immutableMap = Map.of("name1", "Michael", "name2", "Harry");
 
         assertThrows(UnsupportedOperationException.class, () -> immutableMap.put("name3", "Micky"));
     }
 
     @Test
-    public void givenImmutableMap_whenUseCopyOf_thenPutOnCopyAlsoThrowsUnsupportedOperationException() {
+    public void givenImmutableMapWhenUsecopyOfThenExceptionOnPut() {
         Map<String, String> immutableMap = Map.of("name1", "Michael", "name2", "Harry");
         Map<String, String> copyOfImmutableMap = Map.copyOf(immutableMap);
 
