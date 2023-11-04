@@ -27,7 +27,7 @@ class AsyncEventServiceUnitTest {
     private DownstreamService downstreamService;
 
     @Test
-    void givenAsyncMethodHasErrors_whenCalledAsyncMethod_thenReturnSuccess_With_NoRetry() throws InterruptedException, ExecutionException {
+    void givenAsyncMethodHasErrors_whenAsyncMethodIscalled_thenReturnSuccess_WithoutAnyRetry() throws InterruptedException, ExecutionException {
         when(downstreamService.publishEvents(anyList())).thenReturn(true);
         Future<String> resultFuture = asyncEventService.processEvents(List.of("test1"));
 
@@ -41,7 +41,7 @@ class AsyncEventServiceUnitTest {
     }
 
     @Test
-    void givenAsyncMethodHasErrors_whenCalledAsyncMethod_thenReturnFailed_With_MultipleRetries() {
+    void givenAsyncMethodHasError_whenCalledAsyncMethod_thenReturnFailed_With_MultipleRetries() {
         when(downstreamService.publishEvents(anyList())).thenThrow(RuntimeException.class);
         Future<String> resultFuture = asyncEventService.processEvents(List.of("test1"));
 

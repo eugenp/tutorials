@@ -12,8 +12,8 @@ import java.util.concurrent.Executor;
 
 @Configuration
 @EnableAsync
-@ComponentScan("com.baeldung.asyncwithretry")
 @EnableRetry
+@ComponentScan("com.baeldung.asyncwithretry")
 public class AsyncConfig implements AsyncConfigurer {
 
     @Bean(name = "threadPoolTaskExecutor")
