@@ -19,10 +19,10 @@ import static org.mockito.Mockito.*;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = {AsyncConfig.class}, loader = AnnotationConfigContextLoader.class)
-class AsyncEventServiceUnitTest {
+class EventServiceUnitTest {
 
     @Autowired
-    private AsyncEventService asyncEventService;
+    private EventService asyncEventService;
 
     @MockBean
     private DownstreamService downstreamService;
@@ -44,28 +44,28 @@ class AsyncEventServiceUnitTest {
     @Test
     void givenAsyncMethodHasRuntimeException_whenCalledAsyncMethod_thenReturnFailed_With_MultipleRetries() {
         when(downstreamService.publishEvents(anyList())).thenThrow(RuntimeException.class);
-        Future<String> resultFuture = asyncEventService.processEvents(List.of("test1"));
+        Future<String> futureResult = asyncEventService.processEvents(List.of("test1"));
 
-        while (!resultFuture.isDone() && !resultFuture.isCancelled()) {
+        while (!futureResult.isDone() && !futureResult.isCancelled()) {
             System.out.println("Wait for future completion");
         }
 
-        assertTrue(resultFuture.isDone());
-        assertThrows(ExecutionException.class, resultFuture::get);
+        assertTrue(futureResult.isDone());
+        assertThrows(ExecutionException.class, futureResult::get);
         verify(downstreamService, times(2)).publishEvents(anyList());
     }
 
     @Test
     void givenAsyncMethodHasServiceUnavailableException_whenCalledAsyncMethod_thenReturnFailed_With_MultipleRetries() {
         when(downstreamService.publishEvents(anyList())).thenThrow(HttpServerErrorException.ServiceUnavailable.class);
-        Future<String> resultFuture = asyncEventService.processEvents(List.of("test1"));
+        Future<String> futureResult = asyncEventService.processEvents(List.of("test1"));
 
-        while (!resultFuture.isDone() && !resultFuture.isCancelled()) {
+        while (!futureResult.isDone() && !futureResult.isCancelled()) {
             System.out.println("Wait for future completion");
         }
 
-        assertTrue(resultFuture.isDone());
-        assertThrows(ExecutionException.class, resultFuture::get);
+        assertTrue(futureResult.isDone());
+        assertThrows(ExecutionException.class, futureResult::get);
         verify(downstreamService, times(2)).publishEvents(anyList());
     }
 }

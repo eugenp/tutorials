@@ -13,14 +13,14 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
 
 @Service
-public class AsyncEventService {
+public class EventService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(AsyncEventService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(EventService.class);
 
     private final DownstreamService downstreamService;
 
     @Autowired
-    public AsyncEventService(DownstreamService downstreamService) {
+    public EventService(DownstreamService downstreamService) {
         this.downstreamService = downstreamService;
     }
 
