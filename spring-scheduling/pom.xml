@@ -42,10 +42,17 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <properties>
         <spring-retry.version>2.0.3</spring-retry.version>
+        <junit.jupiter.version>5.9.3</junit.jupiter.version>
     </properties>
 
 </project>
