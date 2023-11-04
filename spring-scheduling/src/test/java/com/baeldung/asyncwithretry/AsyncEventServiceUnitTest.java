@@ -7,6 +7,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
+import org.springframework.web.client.HttpServerErrorException;
 
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -41,8 +42,22 @@ class AsyncEventServiceUnitTest {
     }
 
     @Test
-    void givenAsyncMethodHasError_whenCalledAsyncMethod_thenReturnFailed_With_MultipleRetries() {
+    void givenAsyncMethodHasRuntimeException_whenCalledAsyncMethod_thenReturnFailed_With_MultipleRetries() {
         when(downstreamService.publishEvents(anyList())).thenThrow(RuntimeException.class);
+        Future<String> resultFuture = asyncEventService.processEvents(List.of("test1"));
+
+        while (!resultFuture.isDone() && !resultFuture.isCancelled()) {
+            System.out.println("Wait for future completion");
+        }
+
+        assertTrue(resultFuture.isDone());
+        assertThrows(ExecutionException.class, resultFuture::get);
+        verify(downstreamService, times(2)).publishEvents(anyList());
+    }
+
+    @Test
+    void givenAsyncMethodHasServiceUnavailableException_whenCalledAsyncMethod_thenReturnFailed_With_MultipleRetries() {
+        when(downstreamService.publishEvents(anyList())).thenThrow(HttpServerErrorException.ServiceUnavailable.class);
         Future<String> resultFuture = asyncEventService.processEvents(List.of("test1"));
 
         while (!resultFuture.isDone() && !resultFuture.isCancelled()) {
