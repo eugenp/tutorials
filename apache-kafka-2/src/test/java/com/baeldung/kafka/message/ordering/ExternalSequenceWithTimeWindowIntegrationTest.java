@@ -1,5 +1,6 @@
 package com.baeldung.kafka.message.ordering;
 
+import com.baeldung.kafka.headers.KafkaMessageHeaders;
 import com.baeldung.kafka.message.ordering.payload.UserEvent;
 import com.baeldung.kafka.message.ordering.serialization.JacksonDeserializer;
 import com.baeldung.kafka.message.ordering.serialization.JacksonSerializer;
@@ -16,6 +17,8 @@ import org.apache.kafka.common.serialization.LongSerializer;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testcontainers.containers.KafkaContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
@@ -35,6 +38,8 @@ public class ExternalSequenceWithTimeWindowIntegrationTest {
     private static KafkaConsumer<Long, UserEvent> consumer;
     private static final Duration TIMEOUT_WAIT_FOR_MESSAGES = Duration.ofSeconds(5);
     private static final long BUFFER_PERIOD_NS = Duration.ofSeconds(5).toNanos();
+
+    private static Logger logger = LoggerFactory.getLogger(ExternalSequenceWithTimeWindowIntegrationTest.class);
 
     @Container
     private static final KafkaContainer KAFKA_CONTAINER = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:latest"));
@@ -80,7 +85,7 @@ public class ExternalSequenceWithTimeWindowIntegrationTest {
             Future<RecordMetadata> future = producer.send(new ProducerRecord<>(Config.MULTI_PARTITION_TOPIC, sequenceNumber, userEvent));
             sentUserEventList.add(userEvent);
             RecordMetadata metadata = future.get();
-            System.out.println("User Event ID: " + userEvent.getUserEventId() + ", Partition : " + metadata.partition());
+            logger.info("User Event ID: " + userEvent.getUserEventId() + ", Partition : " + metadata.partition());
         }
 
         consumer.subscribe(Collections.singletonList(Config.MULTI_PARTITION_TOPIC));
@@ -109,7 +114,7 @@ public class ExternalSequenceWithTimeWindowIntegrationTest {
         Collections.sort(buffer);
         buffer.forEach(userEvent -> {
             receivedUserEventList.add(userEvent);
-            System.out.println("Processing message with Global Sequence number: " + userEvent.getGlobalSequenceNumber() + ", User Event Id: " + userEvent.getUserEventId());
+            logger.info("Processing message with Global Sequence number: " + userEvent.getGlobalSequenceNumber() + ", User Event Id: " + userEvent.getUserEventId());
         });
         buffer.clear();
     }
