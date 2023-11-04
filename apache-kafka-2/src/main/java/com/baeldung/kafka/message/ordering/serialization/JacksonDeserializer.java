@@ -12,13 +12,6 @@ public class JacksonDeserializer<T> implements Deserializer<T> {
     private final ObjectMapper objectMapper = new ObjectMapper();
     private Class<T> type;
 
-    public JacksonDeserializer(Class<T> type) {
-        this.type = type;
-    }
-
-    public JacksonDeserializer() {
-
-    }
 
     @Override
     public void configure(Map<String, ?> configs, boolean isKey) {
