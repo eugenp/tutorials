@@ -20,14 +20,14 @@ public class CriteriaDefinitionApplicationView {
         final Session session = HibernateUtil.getHibernateSession();
         final SessionFactory sessionFactory = HibernateUtil.getHibernateSessionFactory();
 
-        CriteriaDefinition<Item> querys = new CriteriaDefinition<>(sessionFactory, Item.class) {
+        CriteriaDefinition<Item> query = new CriteriaDefinition<>(sessionFactory, Item.class) {
             {
                 JpaRoot<Item> message = from(Item.class);
                 where(gt(message.get("itemPrice"), 1000));
             }
         };
 
-        List<Item> items = session.createSelectionQuery(querys).list();
+        List<Item> items = session.createSelectionQuery(query).list();
 
         final String greaterThanItems[] = new String[items.size()];
         for (int i = 0; i < items.size(); i++) {
@@ -43,14 +43,14 @@ public class CriteriaDefinitionApplicationView {
         final Session session = HibernateUtil.getHibernateSession();
         final SessionFactory sessionFactory = HibernateUtil.getHibernateSessionFactory();
 
-        CriteriaDefinition<Item> querys = new CriteriaDefinition<>(sessionFactory, Item.class) {
+        CriteriaDefinition<Item> query = new CriteriaDefinition<>(sessionFactory, Item.class) {
             {
                 JpaRoot<Item> message = from(Item.class);
                 where(lt(message.get("itemPrice"), 1000));
             }
         };
 
-        List<Item> items = session.createSelectionQuery(querys).list();
+        List<Item> items = session.createSelectionQuery(query).list();
         final String lessThanItems[] = new String[items.size()];
         for (int i = 0; i < items.size(); i++) {
             lessThanItems[i] = items.get(i).getItemName();
@@ -65,14 +65,14 @@ public class CriteriaDefinitionApplicationView {
         final Session session = HibernateUtil.getHibernateSession();
         final SessionFactory sessionFactory = HibernateUtil.getHibernateSessionFactory();
 
-        CriteriaDefinition<Item> querys = new CriteriaDefinition<>(sessionFactory, Item.class) {
+        CriteriaDefinition<Item> query = new CriteriaDefinition<>(sessionFactory, Item.class) {
             {
                 JpaRoot<Item> item = from(Item.class);
                 where(like(item.get("itemName"), "%chair%"));
             }
         };
 
-        List<Item> items = session.createSelectionQuery(querys).list();
+        List<Item> items = session.createSelectionQuery(query).list();
 
         final String likeItems[] = new String[items.size()];
         for (int i = 0; i < items.size(); i++) {
@@ -86,14 +86,14 @@ public class CriteriaDefinitionApplicationView {
         final Session session = HibernateUtil.getHibernateSession();
         final SessionFactory sessionFactory = HibernateUtil.getHibernateSessionFactory();
 
-        CriteriaDefinition<Item> querys = new CriteriaDefinition<>(sessionFactory, Item.class) {
+        CriteriaDefinition<Item> query = new CriteriaDefinition<>(sessionFactory, Item.class) {
             {
                 JpaRoot<Item> item = from(Item.class);
                 where(like(lower(item.get("itemName")), "%chair%"));
             }
         };
 
-        List<Item> items = session.createSelectionQuery(querys).list();
+        List<Item> items = session.createSelectionQuery(query).list();
 
         final String likeItems[] = new String[items.size()];
         for (int i = 0; i < items.size(); i++) {
@@ -107,14 +107,14 @@ public class CriteriaDefinitionApplicationView {
         final Session session = HibernateUtil.getHibernateSession();
         final SessionFactory sessionFactory = HibernateUtil.getHibernateSessionFactory();
 
-        CriteriaDefinition<Item> querys = new CriteriaDefinition<>(sessionFactory, Item.class) {
+        CriteriaDefinition<Item> query = new CriteriaDefinition<>(sessionFactory, Item.class) {
             {
                 JpaRoot<Item> item = from(Item.class);
                 where(between(item.get("itemPrice"), 100, 200));
             }
         };
 
-        List<Item> items = session.createSelectionQuery(querys).list();
+        List<Item> items = session.createSelectionQuery(query).list();
 
         final String betweenItems[] = new String[items.size()];
         for (int i = 0; i < items.size(); i++) {
