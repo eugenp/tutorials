@@ -72,7 +72,9 @@ public class ReturnFirstNonNullUnitTest {
 
     @Test
     public void givenTwoObjects_whenUsingGoogleGuavaMoreObjects_thenReturnFirstNonNull() {
-        String object = MoreObjects.firstNonNull(null, "first non null");
+        String nullObject = null;
+        String nonNullObject = "first non null";
+        String object = MoreObjects.firstNonNull(nullObject, nonNullObject);
 
         assertEquals("first non null", object);
     }
