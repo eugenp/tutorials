@@ -25,12 +25,13 @@ public class EventService {
     }
 
     @Async
-    @Retryable(retryFor = RuntimeException.class, maxAttempts = 2, backoff = @Backoff(delay = 100))
+    @Retryable(retryFor = RuntimeException.class, maxAttempts = 4, backoff = @Backoff(delay = 100))
     public Future<String> processEvents(List<String> events) {
-        LOGGER.info("Processing asynchronously events with Thread {}", Thread.currentThread().getName());
+        LOGGER.info("Processing asynchronously with Thread {}", Thread.currentThread().getName());
         downstreamService.publishEvents(events);
         CompletableFuture<String> future = new CompletableFuture<>();
         future.complete("Completed");
+        LOGGER.info("Completed async method with Thread {}", Thread.currentThread().getName());
         return future;
     }
 }
