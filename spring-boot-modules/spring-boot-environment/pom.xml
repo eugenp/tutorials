@@ -92,6 +92,15 @@
                 </excludes>
             </resource>
         </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.baeldung.environmentpostprocessor.PriceCalculationApplication</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 
     <profiles>
@@ -147,7 +156,6 @@
     </profiles>
 
     <properties>
-        <start-class>com.baeldung.environmentpostprocessor.PriceCalculationApplication</start-class>
         <subethasmtp.version>3.1.7</subethasmtp.version>
         <httpclient.version>4.5.8</httpclient.version>
         <spring.cloud-version>2021.0.0</spring.cloud-version>
