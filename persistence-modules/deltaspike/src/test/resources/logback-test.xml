@@ -7,7 +7,7 @@
         </encoder>
     </appender>
 
-    <logger name="org.jboss" level="WARN"/>
+    <logger name="org.jboss" level="ERROR"/>
 
     <logger name="org.apache.deltaspike" level="WARN"/>
 
