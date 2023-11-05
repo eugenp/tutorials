@@ -89,8 +89,8 @@
         <cactoos.version>0.43</cactoos.version>
         <ea-async.version>1.2.3</ea-async.version>
         <jcabi-maven-plugin.version>0.14.1</jcabi-maven-plugin.version>
-        <aspectjtools.version>1.9.1</aspectjtools.version>
-        <aspectjweaver.version>1.9.1</aspectjweaver.version>
+        <aspectjtools.version>1.9.20.1</aspectjtools.version>
+        <aspectjweaver.version>1.9.20.1</aspectjweaver.version>
     </properties>
 
 </project>
