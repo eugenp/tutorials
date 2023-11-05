@@ -15,7 +15,7 @@ public class ReturnFirstNonEmptyOptionalUnitTest {
 
     @BeforeEach
     public void init() {
-        optionals = Arrays.asList(Optional.<String> empty(), Optional.of("first non null"), Optional.of("second non null"));
+        optionals = Arrays.asList(Optional.<String> empty(), Optional.of("first non empty"), Optional.of("second non empty"));
     }
 
     @Test
@@ -25,6 +25,6 @@ public class ReturnFirstNonEmptyOptionalUnitTest {
             .map(Optional::get)
             .findFirst();
 
-        assertThat(object).contains("first non null");
+        assertThat(object).contains("first non empty");
     }
 }
