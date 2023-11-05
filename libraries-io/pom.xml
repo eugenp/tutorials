@@ -59,7 +59,7 @@
         <sshj.version>0.27.0</sshj.version>
         <vfs.version>2.4</vfs.version>
         <zip4j.version>2.9.0</zip4j.version>
-        <opencsv.version>5.7.1</opencsv.version>
+        <opencsv.version>5.8</opencsv.version>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
