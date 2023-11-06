@@ -4,9 +4,7 @@ public class InterruptThread extends Thread {
     @Override
     public void run() {
         while (!isInterrupted()) {
-            if (isInterrupted()) {
-                break;
-            }
+            break;
             // business logic
         }
     }
