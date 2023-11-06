@@ -4,9 +4,7 @@ import com.baeldung.kafka.message.ordering.payload.UserEvent;
 import com.baeldung.kafka.message.ordering.serialization.JacksonDeserializer;
 import com.baeldung.kafka.message.ordering.serialization.JacksonSerializer;
 
-import org.apache.kafka.clients.admin.Admin;
-import org.apache.kafka.clients.admin.AdminClientConfig;
-import org.apache.kafka.clients.admin.NewTopic;
+import org.apache.kafka.clients.admin.*;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
@@ -36,15 +34,14 @@ import com.google.common.collect.ImmutableList;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 @Testcontainers
-public class SinglePartitionIntegrationTest {
+public class MultiplePartitionLiveTest {
 
     private static Admin admin;
     private static KafkaProducer<Long, UserEvent> producer;
     private static KafkaConsumer<Long, UserEvent> consumer;
-
     private static final Duration TIMEOUT_WAIT_FOR_MESSAGES = Duration.ofSeconds(5);
 
-    private static Logger logger = LoggerFactory.getLogger(SinglePartitionIntegrationTest.class);
+    private static Logger logger = LoggerFactory.getLogger(MultiplePartitionLiveTest.class);
     @Container
     private static final KafkaContainer KAFKA_CONTAINER = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:latest"));
 
@@ -70,7 +67,7 @@ public class SinglePartitionIntegrationTest {
         admin = Admin.create(adminProperties);
         producer = new KafkaProducer<>(producerProperties);
         consumer = new KafkaConsumer<>(consumerProperties);
-        admin.createTopics(ImmutableList.of(new NewTopic(Config.SINGLE_PARTITION_TOPIC, Config.SINGLE_PARTITION, Config.REPLICATION_FACTOR)))
+        admin.createTopics(ImmutableList.of(new NewTopic(Config.MULTI_PARTITION_TOPIC, Config.MULTIPLE_PARTITIONS, Config.REPLICATION_FACTOR)))
             .all()
             .get();
     }
@@ -81,7 +78,7 @@ public class SinglePartitionIntegrationTest {
     }
 
     @Test
-    void givenASinglePartition_whenPublishedToKafkaAndConsumed_thenCheckForMessageOrder() throws ExecutionException, InterruptedException {
+    void givenMultiplePartitions_whenPublishedToKafkaAndConsumed_thenCheckForMessageOrder() throws ExecutionException, InterruptedException {
         List<UserEvent> sentUserEventList = new ArrayList<>();
         List<UserEvent> receivedUserEventList = new ArrayList<>();
         for (long sequenceNumber = 1; sequenceNumber <= 10; sequenceNumber++) {
@@ -89,21 +86,20 @@ public class SinglePartitionIntegrationTest {
                 .toString());
             userEvent.setGlobalSequenceNumber(sequenceNumber);
             userEvent.setEventNanoTime(System.nanoTime());
-            ProducerRecord<Long, UserEvent> producerRecord = new ProducerRecord<>(Config.SINGLE_PARTITION_TOPIC, userEvent);
-            Future<RecordMetadata> future = producer.send(producerRecord);
+            Future<RecordMetadata> future = producer.send(new ProducerRecord<>(Config.MULTI_PARTITION_TOPIC, sequenceNumber, userEvent));
             sentUserEventList.add(userEvent);
             RecordMetadata metadata = future.get();
             logger.info("User Event ID: " + userEvent.getUserEventId() + ", Partition : " + metadata.partition());
         }
 
-        consumer.subscribe(Collections.singletonList(Config.SINGLE_PARTITION_TOPIC));
+        consumer.subscribe(Collections.singletonList(Config.MULTI_PARTITION_TOPIC));
         ConsumerRecords<Long, UserEvent> records = consumer.poll(TIMEOUT_WAIT_FOR_MESSAGES);
         records.forEach(record -> {
             UserEvent userEvent = record.value();
             receivedUserEventList.add(userEvent);
             logger.info("User Event ID: " + userEvent.getUserEventId());
         });
-        assertThat(receivedUserEventList).isEqualTo(sentUserEventList)
-            .containsExactlyElementsOf(sentUserEventList);
+        assertThat(receivedUserEventList).isNotEqualTo(sentUserEventList)
+            .containsExactlyInAnyOrderElementsOf(sentUserEventList);
     }
 }

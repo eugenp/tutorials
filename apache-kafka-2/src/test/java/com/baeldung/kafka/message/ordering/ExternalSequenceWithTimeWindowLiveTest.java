@@ -1,6 +1,5 @@
 package com.baeldung.kafka.message.ordering;
 
-import com.baeldung.kafka.headers.KafkaMessageHeaders;
 import com.baeldung.kafka.message.ordering.payload.UserEvent;
 import com.baeldung.kafka.message.ordering.serialization.JacksonDeserializer;
 import com.baeldung.kafka.message.ordering.serialization.JacksonSerializer;
@@ -35,7 +34,7 @@ import com.google.common.collect.ImmutableList;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 @Testcontainers
-public class ExternalSequenceWithTimeWindowIntegrationTest {
+public class ExternalSequenceWithTimeWindowLiveTest {
 
     private static Admin admin;
     private static KafkaProducer<Long, UserEvent> producer;
@@ -43,7 +42,7 @@ public class ExternalSequenceWithTimeWindowIntegrationTest {
     private static final Duration TIMEOUT_WAIT_FOR_MESSAGES = Duration.ofSeconds(5);
     private static final long BUFFER_PERIOD_NS = Duration.ofSeconds(5)
         .toNanos();
-    private static Logger logger = LoggerFactory.getLogger(ExternalSequenceWithTimeWindowIntegrationTest.class);
+    private static Logger logger = LoggerFactory.getLogger(ExternalSequenceWithTimeWindowLiveTest.class);
 
     @Container
     private static final KafkaContainer KAFKA_CONTAINER = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:latest"));
