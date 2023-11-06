@@ -13,15 +13,13 @@ import java.util.stream.Stream;
 import org.apache.commons.lang3.ObjectUtils;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import org.mockito.Spy;
 
 public class ReturnFirstNonNullLazyEvaluateUnitTest {
 
-    @Spy
     private final LazyEvaluate spy = Mockito.spy(new LazyEvaluate());
 
     @Test
-    public void givenChainOfMethods_thenLazilyEvaluateMethodsUntilFirstNonNull() {
+    void givenChainOfMethods_thenLazilyEvaluateMethodsUntilFirstNonNull() {
         String object = spy.methodA();
         if (object == null) {
             object = spy.methodB();
@@ -38,7 +36,7 @@ public class ReturnFirstNonNullLazyEvaluateUnitTest {
     }
 
     @Test
-    public void givenChainOfMethods_whenUsingApacheCommonsLang3_thenReturnFirstNonNull() {
+    void givenChainOfMethods_whenUsingApacheCommonsLang3_thenReturnFirstNonNull() {
         String object = ObjectUtils.getFirstNonNull(spy::methodA, spy::methodB, spy::methodC);
 
         assertEquals("first non null", object);
@@ -48,7 +46,7 @@ public class ReturnFirstNonNullLazyEvaluateUnitTest {
     }
 
     @Test
-    public void givenChainOfMethods_whenUsingSupplierInterface_thenLazilyEvaluateMethodsUntilFirstNonNull() {
+    void givenChainOfMethods_whenUsingSupplierInterface_thenLazilyEvaluateMethodsUntilFirstNonNull() {
         Optional<String> object = Stream.<Supplier<String>> of(spy::methodA, spy::methodB, spy::methodC)
             .map(Supplier::get)
             .filter(Objects::nonNull)
@@ -61,7 +59,7 @@ public class ReturnFirstNonNullLazyEvaluateUnitTest {
     }
 
     @Test
-    public void givenNonNullObjectAndFallbackMethod_whenUsingApacheCommonsLang3_thenReturnFirstNonNull() {
+    void givenNonNullObjectAndFallbackMethod_whenUsingApacheCommonsLang3_thenReturnFirstNonNull() {
         String nonNullObject = spy.methodB();
         String object = ObjectUtils.getIfNull(nonNullObject, spy::methodC);
 
@@ -70,7 +68,7 @@ public class ReturnFirstNonNullLazyEvaluateUnitTest {
     }
 
     @Test
-    public void givenNullObjectAndFallbackMethod_whenUsingApacheCommonsLang3_thenReturnFirstNonNull() {
+    void givenNullObjectAndFallbackMethod_whenUsingApacheCommonsLang3_thenReturnFirstNonNull() {
         String nullObject = null;
         String object = ObjectUtils.getIfNull(nullObject, spy::methodB);
 
