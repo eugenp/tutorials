@@ -1,6 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.baeldung.environmentpostprocessor.autoconfig.PriceCalculationAutoConfig
-
-org.springframework.boot.env.EnvironmentPostProcessor=\
-com.baeldung.environmentpostprocessor.PriceCalculationEnvironmentPostProcessor
-
