@@ -4,6 +4,7 @@ import com.baeldung.kafka.headers.KafkaMessageHeaders;
 import com.baeldung.kafka.message.ordering.payload.UserEvent;
 import com.baeldung.kafka.message.ordering.serialization.JacksonDeserializer;
 import com.baeldung.kafka.message.ordering.serialization.JacksonSerializer;
+
 import org.apache.kafka.clients.admin.*;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
@@ -23,11 +24,14 @@ import org.testcontainers.containers.KafkaContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
+
 import java.time.Duration;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
+
 import com.google.common.collect.ImmutableList;
+
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 @Testcontainers
@@ -37,8 +41,8 @@ public class ExternalSequenceWithTimeWindowIntegrationTest {
     private static KafkaProducer<Long, UserEvent> producer;
     private static KafkaConsumer<Long, UserEvent> consumer;
     private static final Duration TIMEOUT_WAIT_FOR_MESSAGES = Duration.ofSeconds(5);
-    private static final long BUFFER_PERIOD_NS = Duration.ofSeconds(5).toNanos();
-
+    private static final long BUFFER_PERIOD_NS = Duration.ofSeconds(5)
+        .toNanos();
     private static Logger logger = LoggerFactory.getLogger(ExternalSequenceWithTimeWindowIntegrationTest.class);
 
     @Container
@@ -66,7 +70,9 @@ public class ExternalSequenceWithTimeWindowIntegrationTest {
         admin = Admin.create(adminProperties);
         producer = new KafkaProducer<>(producerProperties);
         consumer = new KafkaConsumer<>(consumerProperties);
-        admin.createTopics(ImmutableList.of(new NewTopic(Config.MULTI_PARTITION_TOPIC, Config.MULTIPLE_PARTITIONS, Config.REPLICATION_FACTOR))).all().get();
+        admin.createTopics(ImmutableList.of(new NewTopic(Config.MULTI_PARTITION_TOPIC, Config.MULTIPLE_PARTITIONS, Config.REPLICATION_FACTOR)))
+            .all()
+            .get();
     }
 
     @AfterAll
@@ -78,8 +84,9 @@ public class ExternalSequenceWithTimeWindowIntegrationTest {
     void givenMultiplePartitions_whenPublishedToKafkaAndConsumedWithExtSeqNumberAndTimeWindow_thenCheckForMessageOrder() throws ExecutionException, InterruptedException {
         List<UserEvent> sentUserEventList = new ArrayList<>();
         List<UserEvent> receivedUserEventList = new ArrayList<>();
-        for (long sequenceNumber = 1; sequenceNumber <= 10 ; sequenceNumber++) {
-            UserEvent userEvent = new UserEvent(UUID.randomUUID().toString());
+        for (long sequenceNumber = 1; sequenceNumber <= 10; sequenceNumber++) {
+            UserEvent userEvent = new UserEvent(UUID.randomUUID()
+                .toString());
             userEvent.setEventNanoTime(System.nanoTime());
             userEvent.setGlobalSequenceNumber(sequenceNumber);
             Future<RecordMetadata> future = producer.send(new ProducerRecord<>(Config.MULTI_PARTITION_TOPIC, sequenceNumber, userEvent));
@@ -105,9 +112,8 @@ public class ExternalSequenceWithTimeWindowIntegrationTest {
                 buffer.add(record.value());
             });
         }
-        assertThat(receivedUserEventList)
-                .isEqualTo(sentUserEventList)
-                .containsExactlyElementsOf(sentUserEventList);
+        assertThat(receivedUserEventList).isEqualTo(sentUserEventList)
+            .containsExactlyElementsOf(sentUserEventList);
     }
 
     private static void processBuffer(List<UserEvent> buffer, List<UserEvent> receivedUserEventList) {

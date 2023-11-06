@@ -1,6 +1,7 @@
 package com.baeldung.kafka.message.ordering.serialization;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.apache.kafka.common.serialization.Serializer;
 
 /**

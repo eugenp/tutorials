@@ -3,6 +3,7 @@ package com.baeldung.kafka.message.ordering;
 import com.baeldung.kafka.message.ordering.payload.UserEvent;
 import com.baeldung.kafka.message.ordering.serialization.JacksonDeserializer;
 import com.baeldung.kafka.message.ordering.serialization.JacksonSerializer;
+
 import org.apache.kafka.clients.admin.*;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
@@ -22,11 +23,14 @@ import org.testcontainers.containers.KafkaContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
+
 import java.time.Duration;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
+
 import com.google.common.collect.ImmutableList;
+
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 @Testcontainers
@@ -63,7 +67,9 @@ public class MultiplePartitionIntegrationTest {
         admin = Admin.create(adminProperties);
         producer = new KafkaProducer<>(producerProperties);
         consumer = new KafkaConsumer<>(consumerProperties);
-        admin.createTopics(ImmutableList.of(new NewTopic(Config.MULTI_PARTITION_TOPIC, Config.MULTIPLE_PARTITIONS, Config.REPLICATION_FACTOR))).all().get();
+        admin.createTopics(ImmutableList.of(new NewTopic(Config.MULTI_PARTITION_TOPIC, Config.MULTIPLE_PARTITIONS, Config.REPLICATION_FACTOR)))
+            .all()
+            .get();
     }
 
     @AfterAll
@@ -76,7 +82,8 @@ public class MultiplePartitionIntegrationTest {
         List<UserEvent> sentUserEventList = new ArrayList<>();
         List<UserEvent> receivedUserEventList = new ArrayList<>();
         for (long sequenceNumber = 1; sequenceNumber <= 10; sequenceNumber++) {
-            UserEvent userEvent = new UserEvent(UUID.randomUUID().toString());
+            UserEvent userEvent = new UserEvent(UUID.randomUUID()
+                .toString());
             userEvent.setGlobalSequenceNumber(sequenceNumber);
             userEvent.setEventNanoTime(System.nanoTime());
             Future<RecordMetadata> future = producer.send(new ProducerRecord<>(Config.MULTI_PARTITION_TOPIC, sequenceNumber, userEvent));
@@ -92,8 +99,7 @@ public class MultiplePartitionIntegrationTest {
             receivedUserEventList.add(userEvent);
             logger.info("User Event ID: " + userEvent.getUserEventId());
         });
-        assertThat(receivedUserEventList)
-            .isNotEqualTo(sentUserEventList)
+        assertThat(receivedUserEventList).isNotEqualTo(sentUserEventList)
             .containsExactlyInAnyOrderElementsOf(sentUserEventList);
     }
 }

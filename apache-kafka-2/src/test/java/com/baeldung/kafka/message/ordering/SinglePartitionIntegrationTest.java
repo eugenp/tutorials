@@ -3,6 +3,7 @@ package com.baeldung.kafka.message.ordering;
 import com.baeldung.kafka.message.ordering.payload.UserEvent;
 import com.baeldung.kafka.message.ordering.serialization.JacksonDeserializer;
 import com.baeldung.kafka.message.ordering.serialization.JacksonSerializer;
+
 import org.apache.kafka.clients.admin.Admin;
 import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.admin.NewTopic;
@@ -29,7 +30,9 @@ import java.time.Duration;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
+
 import com.google.common.collect.ImmutableList;
+
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 @Testcontainers
@@ -56,7 +59,6 @@ public class SinglePartitionIntegrationTest {
         producerProperties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, KAFKA_CONTAINER.getBootstrapServers());
         producerProperties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, LongSerializer.class.getName());
         producerProperties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JacksonSerializer.class.getName());
-        producer = new KafkaProducer<>(producerProperties);
 
         Properties consumerProperties = new Properties();
         consumerProperties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, KAFKA_CONTAINER.getBootstrapServers());
@@ -65,11 +67,12 @@ public class SinglePartitionIntegrationTest {
         consumerProperties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
         consumerProperties.put(Config.CONSUMER_VALUE_DESERIALIZER_SERIALIZED_CLASS, UserEvent.class);
         consumerProperties.put(ConsumerConfig.GROUP_ID_CONFIG, "test-group");
-        consumer = new KafkaConsumer<>(consumerProperties);
         admin = Admin.create(adminProperties);
-
-
-        admin.createTopics(ImmutableList.of(new NewTopic(Config.SINGLE_PARTITION_TOPIC, Config.SINGLE_PARTITION, Config.REPLICATION_FACTOR))).all().get();
+        producer = new KafkaProducer<>(producerProperties);
+        consumer = new KafkaConsumer<>(consumerProperties);
+        admin.createTopics(ImmutableList.of(new NewTopic(Config.SINGLE_PARTITION_TOPIC, Config.SINGLE_PARTITION, Config.REPLICATION_FACTOR)))
+            .all()
+            .get();
     }
 
     @AfterAll
@@ -82,7 +85,8 @@ public class SinglePartitionIntegrationTest {
         List<UserEvent> sentUserEventList = new ArrayList<>();
         List<UserEvent> receivedUserEventList = new ArrayList<>();
         for (long sequenceNumber = 1; sequenceNumber <= 10; sequenceNumber++) {
-            UserEvent userEvent = new UserEvent(UUID.randomUUID().toString());
+            UserEvent userEvent = new UserEvent(UUID.randomUUID()
+                .toString());
             userEvent.setGlobalSequenceNumber(sequenceNumber);
             userEvent.setEventNanoTime(System.nanoTime());
             ProducerRecord<Long, UserEvent> producerRecord = new ProducerRecord<>(Config.SINGLE_PARTITION_TOPIC, userEvent);
@@ -99,8 +103,7 @@ public class SinglePartitionIntegrationTest {
             receivedUserEventList.add(userEvent);
             logger.info("User Event ID: " + userEvent.getUserEventId());
         });
-        assertThat(receivedUserEventList)
-            .isEqualTo(sentUserEventList)
+        assertThat(receivedUserEventList).isEqualTo(sentUserEventList)
             .containsExactlyElementsOf(sentUserEventList);
     }
 }

@@ -1,13 +1,14 @@
 package com.baeldung.kafka.message.ordering.payload;
 
 import java.util.Objects;
+
 public class UserEvent implements Comparable<UserEvent> {
     private String userEventId;
     private long eventNanoTime;
     private long globalSequenceNumber;
 
     @SuppressWarnings("unused")
-    public UserEvent(){
+    public UserEvent() {
         // Required for Jackson Serialization and Deserialization
     }
 
