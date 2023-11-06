@@ -14,7 +14,7 @@ public class HibernateCriteriaDefinitionIntegrationTest {
     final private CriteriaDefinitionApplicationView criteriaDefinition = new CriteriaDefinitionApplicationView();
 
     @Test
-    public void testLikeCriteriaQuery() {
+    public void givenHibernateSession_whenExecutingLikeCriteriaQuery_thenExpectMatchingItems() {
         final Session session = HibernateUtil.getHibernateSession();
         final List<Item> expectedLikeList = session.createQuery("From Item where itemName like '%chair%'").list();
         final String expectedLikeItems[] = new String[expectedLikeList.size()];
@@ -26,7 +26,7 @@ public class HibernateCriteriaDefinitionIntegrationTest {
     }
 
     @Test
-    public void testILikeCriteriaQuery() {
+    public void givenHibernateSession_whenExecutingCaseSensitiveLikeCriteriaQuery_thenExpectMatchingItems() {
         final Session session = HibernateUtil.getHibernateSession();
         final List<Item> expectedChairCaseList = session.createQuery("From Item where itemName like '%Chair%'").list();
         final String expectedChairCaseItems[] = new String[expectedChairCaseList.size()];
@@ -38,7 +38,7 @@ public class HibernateCriteriaDefinitionIntegrationTest {
     }
 
     @Test
-    public void testGreaterThanCriteriaQuery() {
+    public void givenHibernateSession_whenExecutingGreaterThanCriteriaQuery_thenExpectMatchingItems() {
         final Session session = HibernateUtil.getHibernateSession();
         final List<Item> expectedGreaterThanList = session.createQuery("From Item where itemPrice>1000").list();
         final String expectedGreaterThanItems[] = new String[expectedGreaterThanList.size()];
@@ -50,7 +50,7 @@ public class HibernateCriteriaDefinitionIntegrationTest {
     }
 
     @Test
-    public void testLessThanCriteriaQuery() {
+    public void givenHibernateSession_whenExecutingLessThanCriteriaQuery_thenExpectMatchingItems() {
         final Session session = HibernateUtil.getHibernateSession();
         final List<Item> expectedLessList = session.createQuery("From Item where itemPrice<1000").list();
         final String expectedLessThanItems[] = new String[expectedLessList.size()];
@@ -62,7 +62,7 @@ public class HibernateCriteriaDefinitionIntegrationTest {
     }
 
     @Test
-    public void betweenCriteriaQuery() {
+    public void givenHibernateSession_whenExecutingBetweenCriteriaQuery_thenExpectMatchingItems() {
         final Session session = HibernateUtil.getHibernateSession();
         final List<Item> expectedBetweenList = session.createQuery("From Item where itemPrice between 100 and 200").list();
         final String expectedPriceBetweenItems[] = new String[expectedBetweenList.size()];
