@@ -51,7 +51,7 @@
     </dependencies>
 
     <properties>
-        <spring-retry.version>2.0.3</spring-retry.version>
+        <spring-retry.version>2.0.4</spring-retry.version>
         <junit.jupiter.version>5.9.3</junit.jupiter.version>
     </properties>
 
