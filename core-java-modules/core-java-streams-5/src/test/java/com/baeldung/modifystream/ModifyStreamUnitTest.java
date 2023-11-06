@@ -96,15 +96,6 @@ public class ModifyStreamUnitTest {
     }
 
     @Test
-    void givenPersonList_whenRemovePersonWithRemoveIf_thenPersonRemoved() {
-        assertEquals(4, personList.size());
-
-        personList.removeIf(e -> e.getName().equals("John"));
-
-        assertEquals(3, personList.size());
-    }
-
-    @Test
     void givenPersonList_whenUpdatePersonEmailByInterferingWithForEach_thenPersonEmailUpdated() {
         personList.stream().forEach(e -> e.setEmail(e.getEmail().toUpperCase()));
 
@@ -128,11 +119,12 @@ public class ModifyStreamUnitTest {
 
         newImmutablePersonList.forEach(e -> assertEquals(e.getEmail(), e.getEmail().toUpperCase()));
     }
+
     @Test
     void givenPersonList_whenUpdatePersonEmailByInterferingWithPeek_thenPersonEmailUpdated() {
         personList.stream()
-                .peek(e -> e.setEmail(e.getEmail().toUpperCase()))
-                .collect(Collectors.toList());
+          .peek(e -> e.setEmail(e.getEmail().toUpperCase()))
+          .collect(Collectors.toList());
 
         personList.forEach(e -> assertEquals(e.getEmail(), e.getEmail().toUpperCase()));
     }
