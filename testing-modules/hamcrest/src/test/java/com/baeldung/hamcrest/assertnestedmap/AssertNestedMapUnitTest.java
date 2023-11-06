@@ -11,7 +11,6 @@ import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AssertNestedMapUnitTest {
-
     @Test
     void givenNestedMap_whenUseJupiterAssertTrueWithoutCasting_thenTest() {
         Map<String, Object> innerMap = Map.of("city", "Chicago");
@@ -26,8 +25,8 @@ public class AssertNestedMapUnitTest {
         Map<String, Map<String, Object>> outerMap = Map.of("address", innerMap);
 
         assertAll(
-                () -> assertTrue(outerMap.containsKey("address")),
-                () -> assertEquals(outerMap.get("address").get("city"), "Chicago")
+          () -> assertTrue(outerMap.containsKey("address")),
+          () -> assertEquals(outerMap.get("address").get("city"), "Chicago")
         );
     }
 
@@ -45,8 +44,8 @@ public class AssertNestedMapUnitTest {
         Map<String, Object> innerMap = Map.of("city", "Chicago");
         Map<String, Map<String, Object>> outerMap = Map.of("address", innerMap);
         assertAll(
-                () -> assertThat(outerMap, hasKey("address")),
-                () -> assertThat(outerMap.get("address"), hasEntry("city", "Chicago"))
+          () -> assertThat(outerMap, hasKey("address")),
+          () -> assertThat(outerMap.get("address"), hasEntry("city", "Chicago"))
         );
     }
 
@@ -81,7 +80,6 @@ public class AssertNestedMapUnitTest {
 
         assertThat(outerMap, hasNestedMapEntry("address", innerMap));
     }
-
 
     @Test
     void givenNestedMap_whenUseHamcrestAssertThatWithCasting_thenTest() {
