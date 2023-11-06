@@ -26,7 +26,7 @@ public class ReturnFirstNonNullUnitTest {
     }
 
     @Test
-    public void givenListOfObjects_whenFilterIsLambdaNullCheck_thenReturnFirstNonNull() {
+    void givenListOfObjects_whenFilterIsLambdaNullCheck_thenReturnFirstNonNull() {
         Optional<String> object = objects.stream()
             .filter(o -> o != null)
             .findFirst();
@@ -35,7 +35,7 @@ public class ReturnFirstNonNullUnitTest {
     }
 
     @Test
-    public void givenListOfObjects_whenFilterIsMethodRefNullCheck_thenReturnFirstNonNull() {
+    void givenListOfObjects_whenFilterIsMethodRefNullCheck_thenReturnFirstNonNull() {
         Optional<String> object = objects.stream()
             .filter(Objects::nonNull)
             .findFirst();
@@ -44,7 +44,7 @@ public class ReturnFirstNonNullUnitTest {
     }
 
     @Test
-    public void givenListOfObjects_whenIteratingWithForLoop_thenReturnFirstNonNull() {
+    void givenListOfObjects_whenIteratingWithForLoop_thenReturnFirstNonNull() {
         String object = null;
         for (int i = 0; i < objects.size(); i++) {
             if (objects.get(i) != null) {
@@ -57,21 +57,21 @@ public class ReturnFirstNonNullUnitTest {
     }
 
     @Test
-    public void givenListOfObjects_whenUsingApacheCommonsLang3_thenReturnFirstNonNull() {
+    void givenListOfObjects_whenUsingApacheCommonsLang3_thenReturnFirstNonNull() {
         String object = ObjectUtils.firstNonNull(objects.toArray(new String[0]));
 
         assertEquals("first non null", object);
     }
 
     @Test
-    public void givenListOfObjects_whenUsingGoogleGuavaIterables_thenReturnFirstNonNull() {
+    void givenListOfObjects_whenUsingGoogleGuavaIterables_thenReturnFirstNonNull() {
         String object = Iterables.find(objects, Predicates.notNull());
 
         assertEquals("first non null", object);
     }
 
     @Test
-    public void givenTwoObjects_whenUsingGoogleGuavaMoreObjects_thenReturnFirstNonNull() {
+    void givenTwoObjects_whenUsingGoogleGuavaMoreObjects_thenReturnFirstNonNull() {
         String nullObject = null;
         String nonNullObject = "first non null";
         String object = MoreObjects.firstNonNull(nullObject, nonNullObject);
