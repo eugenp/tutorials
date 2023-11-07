@@ -12,21 +12,21 @@ import java.util.concurrent.ConcurrentHashMap;
 @Service
 public class MessageConsumerService {
 
-    Map<String, Set<Integer>> consumedRecords = new ConcurrentHashMap<>();
+    Map<String, Set<Integer>> consumedPartitions = new ConcurrentHashMap<>();
 
     @KafkaListener(topics = "topic-1", groupId = "group-1")
     public void consumer0(ConsumerRecord<?, ?> consumerRecord) {
-        trackConsumedRecords("consumer-0", consumerRecord);
+        trackConsumedPartitions("consumer-0", consumerRecord);
     }
 
     @KafkaListener(topics = "topic-1", groupId = "group-1")
     public void consumer1(ConsumerRecord<?, ?> consumerRecord) {
-        trackConsumedRecords("consumer-1", consumerRecord);
+        trackConsumedPartitions("consumer-1", consumerRecord);
     }
 
-    private void trackConsumedRecords(String key, ConsumerRecord<?, ?> record) {
-        consumedRecords.computeIfAbsent(key, k -> new HashSet<>());
-        consumedRecords.computeIfPresent(key, (k, v) -> {
+    private void trackConsumedPartitions(String key, ConsumerRecord<?, ?> record) {
+        consumedPartitions.computeIfAbsent(key, k -> new HashSet<>());
+        consumedPartitions.computeIfPresent(key, (k, v) -> {
             v.add(record.partition());
             return v;
         });

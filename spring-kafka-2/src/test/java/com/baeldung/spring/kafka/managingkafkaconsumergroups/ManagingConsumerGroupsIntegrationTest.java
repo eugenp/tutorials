@@ -9,6 +9,8 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.listener.MessageListenerContainer;
 import org.springframework.kafka.test.context.EmbeddedKafka;
 
+import java.util.Objects;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(classes = ManagingConsumerGroupsApplicationKafkaApp.class)
@@ -26,6 +28,7 @@ public class ManagingConsumerGroupsIntegrationTest {
     @Test
     public void givenContinuousMessageFlow_whenAConsumerLeavesTheGroup_thenKafkaTriggersPartitionRebalance() throws InterruptedException {
         int messageCount = 0;
+        final String consumer1Identifier = "org.springframework.kafka.KafkaListenerEndpointContainer#1";
         do {
             kafkaTemplate.send("topic-1", RandomUtils.nextDouble(10.0, 20.0));
             messageCount++;
@@ -33,17 +36,17 @@ public class ManagingConsumerGroupsIntegrationTest {
             if (messageCount == 10000) {
                 String containerId = kafkaListenerEndpointRegistry.getListenerContainerIds()
                         .stream()
-                        .filter(a -> a.endsWith("1"))
+                        .filter(a -> a.equals(consumer1Identifier))
                         .findFirst()
                         .orElse("");
                 MessageListenerContainer container = kafkaListenerEndpointRegistry.getListenerContainer(containerId);
                 Thread.sleep(2000);
-                container.stop();
+                Objects.requireNonNull(container).stop();
                 kafkaListenerEndpointRegistry.unregisterListenerContainer(containerId);
             }
         } while (messageCount != 50000);
         Thread.sleep(2000);
-        assertEquals(1, consumerService.consumedRecords.get("consumer-1").size());
-        assertEquals(2, consumerService.consumedRecords.get("consumer-0").size());
+        assertEquals(1, consumerService.consumedPartitions.get("consumer-1").size());
+        assertEquals(2, consumerService.consumedPartitions.get("consumer-0").size());
     }
 }
