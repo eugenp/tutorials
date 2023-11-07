@@ -11,13 +11,12 @@ import static com.mongodb.client.model.Projections.excludeId;
 import static com.mongodb.client.model.Projections.fields;
 import static com.mongodb.client.model.Projections.include;
 import static com.mongodb.client.model.Projections.metaSearchScore;
+import static com.mongodb.client.model.search.SearchCollector.facet;
 import static com.mongodb.client.model.search.SearchCount.total;
-import static com.mongodb.client.model.search.SearchFacet.combineToBson;
 import static com.mongodb.client.model.search.SearchFacet.numberFacet;
 import static com.mongodb.client.model.search.SearchFacet.stringFacet;
 import static com.mongodb.client.model.search.SearchOperator.compound;
 import static com.mongodb.client.model.search.SearchOperator.numberRange;
-import static com.mongodb.client.model.search.SearchOperator.of;
 import static com.mongodb.client.model.search.SearchOperator.text;
 import static com.mongodb.client.model.search.SearchOptions.searchOptions;
 import static com.mongodb.client.model.search.SearchPath.fieldPath;
@@ -67,7 +66,7 @@ public class MovieAtlasSearchService {
         builder.append("]");
 
         LogManager.getLogger(MovieAtlasSearchService.class)
-            .debug(builder.toString());
+          .debug(builder.toString());
     }
 
     public Document late90sMovies(int skip, int limit, String keywords, SearchScore modifier) {
@@ -130,7 +129,7 @@ public class MovieAtlasSearchService {
 
         debug(pipeline);
         return collection.aggregate(pipeline)
-            .first();
+          .first();
     }
     
     public Collection<Document> moviesByKeywords(String keywords) {
@@ -150,34 +149,33 @@ public class MovieAtlasSearchService {
 
         debug(pipeline);
         return collection.aggregate(pipeline)
-            .into(new ArrayList<Document>());
+          .into(new ArrayList<>());
     }
 
     public Document genresThroughTheDecades(String genre) {
         List<Bson> pipeline = asList(
-            searchMeta(of(
-              new Document("facet",
-                new Document("operator",
-                  text(
-                    fieldPath("genres"), genre
-                  )
-                ).append("facets", combineToBson(asList(
-                  stringFacet("genresFacet",
-                    fieldPath("genres")
-                  ).numBuckets(5),
-                  numberFacet("yearFacet",
-                    fieldPath("year"),
-                    asList(1900, 1930, 1960, 1990, 2020)
-                  )
-                )))
-              )),
-              searchOptions()
-                .index(config.getFacetIndex())
+          searchMeta(
+            facet(
+              text(
+                fieldPath("genres"), genre
+              ),
+              asList(
+                stringFacet("genresFacet",
+                  fieldPath("genres")
+                ).numBuckets(5),
+                numberFacet("yearFacet",
+                  fieldPath("year"),
+                  asList(1900, 1930, 1960, 1990, 2020)
+                )
+              )
+            ),
+            searchOptions()
+              .index(config.getFacetIndex())
           )
         );
-        
+
         debug(pipeline);
         return collection.aggregate(pipeline)
-            .first();
+          .first();
     }
 }

@@ -840,7 +840,6 @@
                 <module>jgit</module>
                 <module>jib</module>
 
-                <module>java-native</module>
                 <module>jsoup</module>
                 <module>ksqldb</module>
                 <module>jsf</module>
@@ -861,6 +860,7 @@
                 <module>libraries-http</module>
                 <module>libraries-http-2</module>
                 <module>libraries-io</module>
+                <module>libraries-ai</module>
                 <module>libraries-primitive</module>
                 <module>libraries-rpc</module>
                 <module>libraries-server</module>
@@ -930,6 +930,8 @@
                 <module>spring-di-4</module>
                 <module>spring-kafka-2</module>
                 <!--<module>java-panama</module> Java-19 module-->
+                <module>libraries-llms</module>
+                <module>spring-pulsar</module>
             </modules>
 
             <properties>
@@ -1123,7 +1125,6 @@
                 <module>jgit</module>
                 <module>jib</module>
 
-                <module>java-native</module>
                 <module>jsoup</module>
                 <module>jsf</module>
                 <module>ksqldb</module>
@@ -1212,6 +1213,8 @@
                 <module>spring-di-4</module>
                 <module>spring-kafka-2</module>
                 <!--<module>java-panama</module> Java-19 module-->
+                <module>libraries-llms</module>
+                <module>spring-pulsar</module>
             </modules>
 
             <properties>

@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<Bookstores>
+    <Bookstore id="S001">
+        <Books>
+            <Book id="B001" category="Fiction">
+                <Title>Death and the Penguin</Title>
+                <Author id="A001">Andrey Kurkov</Author>
+                <Price>10.99</Price>
+            </Book>
+            <Book id="B002" category="Poetry">
+                <Title>Kobzar</Title>
+                <Author id="A002">Taras Shevchenko</Author>
+                <Price>8.50</Price>
+            </Book>
+        </Books>
+    </Bookstore>
+    <Bookstore id="S002">
+        <Books>
+            <Book id="B003" category="Novel">
+                <Title>Voroshilovgrad</Title>
+                <Author id="A003">Serhiy Zhadan</Author>
+                <Price>12.99</Price>
+            </Book>
+        </Books>
+    </Bookstore>
+</Bookstores>
