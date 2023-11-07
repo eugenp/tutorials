@@ -3,7 +3,7 @@ package com.baeldung.floatdoubleconversions;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class FloatDoubleConversionsTest {
+public class FloatDoubleConversionsUnitTest {
 
     @Test
     public void whenDoubleType_thenFloatTypeSuccess(){
