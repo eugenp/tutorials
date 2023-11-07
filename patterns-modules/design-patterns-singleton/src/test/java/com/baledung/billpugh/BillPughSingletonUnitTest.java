@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class BillPughSingletonUnitTest {
     Logger logger = LoggerFactory.getLogger(BillPughSingletonUnitTest.class);
     @Test
-    void giveSynchronizedLazyLoadedImpl_whenCallgetInstance_thenReturnSingleton() {
+    void givenSynchronizedLazyLoadedImpl_whenCallgetInstance_thenReturnSingleton() {
         Set<BillPughSingleton> setHoldingSingletonObj = new HashSet<>();
         List<Future<BillPughSingleton>> futures = new ArrayList<>();
 
