@@ -32,6 +32,7 @@
         <!-- <module>core-java-modules/core-java-16</module> --> <!-- JAVA-26056 -->
         <!-- <module>core-java-modules/core-java-17</module> --> <!-- JAVA-26056 -->
         <!-- <module>core-java-modules/core-java-19</module> --> <!-- JAVA-26056 -->
+        <module>core-java-numbers-conversions</module>
         <module>core-java-9-improvements</module>
         <module>core-java-9-streams</module>
         <module>core-java-9</module>
@@ -195,9 +196,10 @@
         <module>core-java-records</module>
         <module>core-java-9-jigsaw</module>
         <!--<module>core-java-20</module>--> <!--JAVA-25373-->
+        <!--<module>core-java-conditionals</module>--> <!--JAVA-25373-->
         <module>core-java-collections-set</module>
         <module>core-java-date-operations-1</module>
-        <!--<module>core-java-datetime-conversion</module>--> <!--JAVA-25433-->
+        <module>core-java-datetime-conversion</module>
         <module>core-java-httpclient</module>
         <module>java-native</module>
     </modules>
