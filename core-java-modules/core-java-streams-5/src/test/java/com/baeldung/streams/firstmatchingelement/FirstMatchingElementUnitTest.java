@@ -46,10 +46,10 @@ public class FirstMatchingElementUnitTest {
         int lastIndex = userList.size() - 1;
         AtomicInteger counter = new AtomicInteger(-1);
         int predicateIndex = userList.stream()
-            .takeWhile(user -> {
-                counter.getAndIncrement();
-                return !(searchName.equals(user.getUserName()));
-            })
+          .takeWhile(user -> {
+              counter.getAndIncrement();
+              return !(searchName.equals(user.getUserName()));
+          })
           .mapToInt(user -> counter.get())
           .max()
           .orElse(-1);
