@@ -45,7 +45,8 @@ public class ResultSetToMapUnitTest {
 
     @Test
     public void whenUsingContainsKey_thenConvertResultSetToMap() throws SQLException {
-        ResultSet resultSet = connection.prepareStatement("SELECT * FROM employee").executeQuery();
+        ResultSet resultSet = connection.prepareStatement("SELECT * FROM employee")
+            .executeQuery();
         Map<String, List<String>> valueMap = new HashMap<>();
 
         while (resultSet.next()) {
@@ -54,22 +55,27 @@ public class ResultSetToMapUnitTest {
             if (!valueMap.containsKey(empCity)) {
                 valueMap.put(empCity, new ArrayList<>());
             }
-            valueMap.get(empCity).add(empName);
+            valueMap.get(empCity)
+                .add(empName);
         }
-        assertEquals(3, valueMap.get("London").size());
+        assertEquals(3, valueMap.get("London")
+            .size());
     }
 
     @Test
     public void whenUsingComputeIfAbsent_thenConvertResultSetToMap() throws SQLException {
-        ResultSet resultSet = connection.prepareStatement("SELECT * FROM employee").executeQuery();
+        ResultSet resultSet = connection.prepareStatement("SELECT * FROM employee")
+            .executeQuery();
         Map<String, List<String>> valueMap = new HashMap<>();
 
         while (resultSet.next()) {
             String empCity = resultSet.getString("empCity");
             String empName = resultSet.getString("empName");
-            valueMap.computeIfAbsent(empCity, data -> new ArrayList<>()).add(empName);
+            valueMap.computeIfAbsent(empCity, data -> new ArrayList<>())
+                .add(empName);
         }
-        assertEquals(3, valueMap.get("London").size());
+        assertEquals(3, valueMap.get("London")
+            .size());
     }
 
     @Test
@@ -81,15 +87,17 @@ public class ResultSetToMapUnitTest {
                 while (resultSet.next()) {
                     String empCity = resultSet.getString("empCity");
                     String empName = resultSet.getString("empName");
-                    result.computeIfAbsent(empCity, data -> new ArrayList<>()).add(empName);
+                    result.computeIfAbsent(empCity, data -> new ArrayList<>())
+                        .add(empName);
                 }
                 return result;
             }
         };
-        
+
         QueryRunner run = new QueryRunner();
         Map<String, List<String>> valueMap = run.query(connection, "SELECT * FROM employee", handler);
-        assertEquals(3, valueMap.get("London").size());
+        assertEquals(3, valueMap.get("London")
+            .size());
     }
 
     @After
