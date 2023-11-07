@@ -21,7 +21,9 @@
         <!--<module>core-java-8-2</module> -->
         <!--<module>core-java-8-datetime</module> -->
         <!--<module>core-java-8-datetime-2</module> -->
-        <!--<module>core-java-collections-conversions-2</module> -->
+        <module>core-java-collections-conversions-2</module>
+        <module>core-java-collections-conversions-3</module>
+        <module>core-java-concurrency-advanced-5</module>
         <!--<module>core-java-lang</module> -->
         <!--<module>core-java-lang-math-3</module> -->
         <!--<module>core-java-security</module> -->
