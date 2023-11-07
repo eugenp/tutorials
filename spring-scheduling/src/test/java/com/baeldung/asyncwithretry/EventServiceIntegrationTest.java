@@ -14,6 +14,7 @@ import org.springframework.web.client.HttpServerErrorException;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyList;
@@ -32,12 +33,13 @@ class EventServiceIntegrationTest {
     private DownstreamService downstreamService;
 
     @Test
-    void givenAsyncMethodHasNoException_whenAsyncMethodIscalled_thenReturnSuccess_WithoutAnyRetry() throws InterruptedException, ExecutionException {
+    void givenAsyncMethodHasNoException_whenAsyncMethodIscalled_thenReturnSuccess_WithoutAnyRetry() throws Exception {
         LOGGER.info("Testing for async with retry execution with thread " + Thread.currentThread().getName());
         when(downstreamService.publishEvents(anyList())).thenReturn(true);
         Future<String> resultFuture = asyncEventService.processEvents(List.of("test1"));
 
         while (!resultFuture.isDone() && !resultFuture.isCancelled()) {
+            TimeUnit.SECONDS.sleep(5);
         }
 
         assertTrue(resultFuture.isDone());
@@ -46,12 +48,13 @@ class EventServiceIntegrationTest {
     }
 
     @Test
-    void givenAsyncMethodHasRuntimeException_whenCalledAsyncMethod_thenReturnFailed_With_MultipleRetries() {
+    void givenAsyncMethodHasRuntimeException_whenCalledAsyncMethod_thenReturnFailed_With_MultipleRetries() throws InterruptedException {
         LOGGER.info("Testing for async with retry execution with thread " + Thread.currentThread().getName());
         when(downstreamService.publishEvents(anyList())).thenThrow(RuntimeException.class);
         Future<String> futureResult = asyncEventService.processEvents(List.of("test1"));
 
         while (!futureResult.isDone() && !futureResult.isCancelled()) {
+            TimeUnit.SECONDS.sleep(5);
         }
 
         assertTrue(futureResult.isDone());
@@ -60,13 +63,13 @@ class EventServiceIntegrationTest {
     }
 
     @Test
-    void givenAsyncMethodHasServiceUnavailableException_whenCalledAsyncMethod_thenReturnFailed_With_MultipleRetries() {
+    void givenAsyncMethodHasServiceUnavailableException_whenCalledAsyncMethod_thenReturnFailed_With_MultipleRetries() throws InterruptedException {
         LOGGER.info("Testing for async with retry execution with thread " + Thread.currentThread().getName());
         when(downstreamService.publishEvents(anyList())).thenThrow(HttpServerErrorException.ServiceUnavailable.class);
         Future<String> futureResult = asyncEventService.processEvents(List.of("test1"));
 
         while (!futureResult.isDone() && !futureResult.isCancelled()) {
-            //waiting
+            TimeUnit.SECONDS.sleep(5);
         }
 
         assertTrue(futureResult.isDone());
@@ -75,12 +78,13 @@ class EventServiceIntegrationTest {
     }
 
     @Test
-    void givenAsyncMethodHasRuntimeExceptionOnce_whenCalledAsyncMethod_thenReturnFailed_With_MultipleRetries() throws ExecutionException, InterruptedException {
+    void givenAsyncMethodHasRuntimeExceptionOnce_whenCalledAsyncMethod_thenReturnFailed_With_MultipleRetries() throws Exception {
         LOGGER.info("Testing for async with retry execution with thread " + Thread.currentThread().getName());
         when(downstreamService.publishEvents(anyList())).thenThrow(RuntimeException.class).thenReturn(true);
         Future<String> futureResult = asyncEventService.processEvents(List.of("test1"));
 
         while (!futureResult.isDone() && !futureResult.isCancelled()) {
+            TimeUnit.SECONDS.sleep(5);
         }
 
         assertTrue(futureResult.isDone());
