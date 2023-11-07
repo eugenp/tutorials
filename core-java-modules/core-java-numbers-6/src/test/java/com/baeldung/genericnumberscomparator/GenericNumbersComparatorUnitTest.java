@@ -1,13 +1,12 @@
 package com.baeldung.genericnumberscomparator;
 
+import static org.assertj.core.api.Assertions.entry;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 import java.util.function.BiFunction;
 import java.util.function.BiPredicate;
 import java.util.function.Function;
@@ -25,6 +24,7 @@ class GenericNumbersComparatorUnitTest {
         assertEquals(0, compareDouble(5, 5.0));
     }
 
+    // we create a method that compares Integer, but this could also be done for other types e.g. Double, BigInteger
     public int compareTo(Integer int1, Integer int2) {
         return int1.compareTo(int2);
     }
@@ -34,11 +34,10 @@ class GenericNumbersComparatorUnitTest {
         assertEquals(-1, compareTo(5, 7));
     }
 
-    Map<Class<? extends Number>, BiFunction<Number, Number, Integer>> comparisonMap = new HashMap<>();
+    // for this example, we create a function that compares Integer, but this could also be done for other types e.g. Double, BigInteger
+    Map<Class<? extends Number>, BiFunction<Number, Number, Integer>> comparisonMap = Map.ofEntries(entry(Integer.class, (num1, num2) -> ((Integer) num1).compareTo((Integer) num2)));
 
     public int compareUsingMap(Number num1, Number num2) {
-        comparisonMap.put(Integer.class, (a, b) -> ((Integer) num1).compareTo((Integer) num2));
-
         return comparisonMap.get(num1.getClass())
             .apply(num1, num2);
     }
@@ -70,24 +69,6 @@ class GenericNumbersComparatorUnitTest {
         assertEquals(-1, compareUsingReflection(5, 7));
     }
 
-    interface NumberComparatorFactory {
-        Comparator<Number> getComparator();
-    }
-
-    class IntegerComparatorFactory implements NumberComparatorFactory {
-        @Override
-        public Comparator<Number> getComparator() {
-            return (num1, num2) -> ((Integer) num1).compareTo((Integer) num2);
-        }
-    }
-
-    @Test
-    void givenNumbers_whenUseComparatorFactory_thenWillExecuteComparison() {
-        NumberComparatorFactory factory = new IntegerComparatorFactory();
-        Comparator<Number> comparator = factory.getComparator();
-        assertEquals(-1, comparator.compare(5, 7));
-    }
-
     Function<Number, Double> toDouble = Number::doubleValue;
     BiPredicate<Number, Number> isEqual = (num1, num2) -> toDouble.apply(num1)
         .equals(toDouble.apply(num2));
@@ -95,19 +76,6 @@ class GenericNumbersComparatorUnitTest {
     @Test
     void givenNumbers_whenUseIsEqual_thenWillExecuteComparison() {
         assertEquals(true, isEqual.test(5, 5.0));
-    }
-
-    private Number someNumber = 5;
-    private Number anotherNumber = 5.0;
-
-    Optional<Number> optNum1 = Optional.ofNullable(someNumber);
-    Optional<Number> optNum2 = Optional.ofNullable(anotherNumber);
-    int comparisonResult = optNum1.flatMap(n1 -> optNum2.map(n2 -> Double.compare(n1.doubleValue(), n2.doubleValue())))
-        .orElse(0);
-
-    @Test
-    void givenNumbers_whenUseComparisonResult_thenWillExecuteComparison() {
-        assertEquals(0, comparisonResult);
     }
 
     private boolean someCondition = true;
