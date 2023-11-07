@@ -44,9 +44,13 @@ public class FirstMatchingElementUnitTest {
     @Test
     public void whenUsingTakeWhile_thenFindFirstMatchingUserIndex() {
         int lastIndex = userList.size() - 1;
+        AtomicInteger counter = new AtomicInteger(-1);
         int predicateIndex = userList.stream()
-          .takeWhile(user -> !(searchName.equals(user.getUserName())))
-          .mapToInt(userList::indexOf)
+            .takeWhile(user -> {
+                counter.getAndIncrement();
+                return !(searchName.equals(user.getUserName()));
+            })
+          .mapToInt(user -> counter.get())
           .max()
           .orElse(-1);
 
