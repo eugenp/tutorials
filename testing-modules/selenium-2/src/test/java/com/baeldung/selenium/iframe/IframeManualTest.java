@@ -1,6 +1,7 @@
 package com.baeldung.selenium.iframe;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,8 +11,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static java.time.Duration.ofSeconds;
-import static org.openqa.selenium.By.cssSelector;
+import java.time.Duration;
 
 
 public class IframeManualTest {
@@ -28,9 +28,9 @@ public class IframeManualTest {
     @Test
     public void whenSwitchToFrameUsingWebElement_thenSwitched() {
         openDemoPage();
-        WebElement iframeElement = driver.findElement(cssSelector("#myFrame2"));
+        WebElement iframeElement = driver.findElement(By.cssSelector("#myFrame2"));
 
-        new WebDriverWait(driver, ofSeconds(10))
+        new WebDriverWait(driver, Duration.ofSeconds(10))
           .until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(iframeElement));
         waitForTextInFrame();
     }
@@ -38,7 +38,7 @@ public class IframeManualTest {
     @Test
     public void whenSwitchToFrameUsingName_thenSwitched() {
         openDemoPage();
-        new WebDriverWait(driver, ofSeconds(10))
+        new WebDriverWait(driver, Duration.ofSeconds(10))
           .until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("frameName2"));
         waitForTextInFrame();
     }
@@ -46,7 +46,7 @@ public class IframeManualTest {
     @Test
     public void whenSwitchToFrameUsingId_thenSwitched() {
         openDemoPage();
-        new WebDriverWait(driver, ofSeconds(10))
+        new WebDriverWait(driver, Duration.ofSeconds(10))
           .until(ExpectedConditions.frameToBeAvailableAndSwitchToIt("myFrame2"));
         waitForTextInFrame();
     }
@@ -82,39 +82,39 @@ public class IframeManualTest {
 
     private void openDemoPage() {
         driver.get("https://seleniumbase.io/demo_page");
-        new WebDriverWait(driver, ofSeconds(10))
-          .until(ExpectedConditions.visibilityOfElementLocated(cssSelector("#myForm")));
+        new WebDriverWait(driver, Duration.ofSeconds(10))
+          .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#myForm")));
     }
 
     private void openPageWithNestedFrames() {
         driver.get("https://seleniumbase.io/w3schools/iframes");
-        new WebDriverWait(driver, ofSeconds(10))
-          .until(ExpectedConditions.visibilityOfElementLocated(cssSelector("#runbtn")));
+        new WebDriverWait(driver, Duration.ofSeconds(10))
+          .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#runbtn")));
     }
 
     private void switchToNestedFrame() {
         driver.switchTo().frame("iframeResult");
-        WebElement innerFrame = driver.findElement(cssSelector("[src='./demo_iframe.htm']"));
+        WebElement innerFrame = driver.findElement(By.cssSelector("[src='./demo_iframe.htm']"));
         driver.switchTo().frame(innerFrame);
     }
 
     private void waitForTextInFrame() {
-        new WebDriverWait(driver, ofSeconds(TIMEOUT))
-          .until(ExpectedConditions.textToBePresentInElementLocated(cssSelector("h4"), "iFrame Text"));
+        new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT))
+          .until(ExpectedConditions.textToBePresentInElementLocated(By.cssSelector("h4"), "iFrame Text"));
     }
 
     private void waitForLinkInNestedFrame() {
-        new WebDriverWait(driver, ofSeconds(TIMEOUT))
-          .until(ExpectedConditions.presenceOfElementLocated(cssSelector("[href='https://seleniumbase.io/w3schools/iframes.html']")));
+        new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT))
+          .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("[href='https://seleniumbase.io/w3schools/iframes.html']")));
     }
 
     private void waitForTextInParentFrame() {
-        new WebDriverWait(driver, ofSeconds(TIMEOUT))
-          .until(ExpectedConditions.textToBePresentInElementLocated(cssSelector("h2"), "HTML Iframes (nested iframes)"));
+        new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT))
+          .until(ExpectedConditions.textToBePresentInElementLocated(By.cssSelector("h2"), "HTML Iframes (nested iframes)"));
     }
 
     private void waitForElementInDefaultContent() {
-        new WebDriverWait(driver, ofSeconds(TIMEOUT))
-          .until(ExpectedConditions.visibilityOfElementLocated(cssSelector("#runbtn")));
+        new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT))
+          .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#runbtn")));
     }
 }
