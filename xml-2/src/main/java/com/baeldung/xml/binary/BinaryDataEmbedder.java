@@ -9,21 +9,16 @@ public class BinaryDataEmbedder {
         // Encode the binary data into Base64
         String encodedData = Base64.getEncoder().encodeToString(binaryData);
 
-        String xmlContent = "<image>\n" +
-            "    <metadata>\n" +
-            "        <format>JPEG</format>\n" +
-            "        <width>800</width>\n" +
-            "        <height>600</height>\n" +
-            "    </metadata>\n" +
-            "    <data>\n" +
-            "        <encoding>base64</encoding>\n" +
-            "        <content>\n" +
-            encodedData + // Insert the encoded data here
-            "        </content>\n" +
-            "    </data>\n" +
-            "</image>";
-
-        // Print or use the 'xmlContent' as needed
-        System.out.println(xmlContent);
+        <image> 
+            <metadata> 
+                <format>JPEG</format> 
+                <width>800</width> 
+                <height>600</height> 
+            </metadata> 
+            <data> 
+                <encoding>base64</encoding> 
+                <content> encodedData</content> 
+            </data> 
+        </image>
     }
 }
