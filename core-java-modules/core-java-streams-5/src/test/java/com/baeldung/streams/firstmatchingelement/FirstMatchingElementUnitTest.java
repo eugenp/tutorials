@@ -25,7 +25,7 @@ public class FirstMatchingElementUnitTest {
               counter.getAndIncrement();
               return searchName.equals(user.getUserName());
           })
-          .map(user -> counter.get())
+          .mapToInt(user -> counter.get())
           .findFirst()
           .orElse(-1);
 
