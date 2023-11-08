@@ -21,6 +21,7 @@
         <module>blaze-persistence</module>
         <module>core-java-persistence</module>
         <module>core-java-persistence-2</module>
+        <module>couchbase</module>
         <module>elasticsearch</module>
         <module>flyway</module>
         <module>flyway-repair</module>
@@ -35,7 +36,7 @@
         <module>hibernate-queries</module>
         <module>hibernate-enterprise</module>
         <module>influxdb</module>
-	    <module>java-cassandra</module>
+        <module>java-cassandra</module>
         <module>java-cockroachdb</module>
         <module>java-jdbi</module>
         <module>java-jpa</module> <!-- long running -->
@@ -105,11 +106,11 @@
         <module>spring-jpa</module>
         <module>spring-jpa-2</module>
         <module>spring-jdbc</module>
+	<module>spring-jdbc-2</module>
         <module>spring-jooq</module>
         <module>spring-mybatis</module>
         <module>spring-persistence-simple</module>
         <module>spring-data-yugabytedb</module>
-
         <module>fauna</module>
         <module>spring-data-rest</module>
         <module>java-mongodb</module>

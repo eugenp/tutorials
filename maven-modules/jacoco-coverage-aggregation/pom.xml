@@ -17,9 +17,9 @@
     </parent>
 
     <modules>
-        <module>services</module>
-        <module>controllers</module>
-        <module>aggregate-report</module>
+        <module>jacoco-coverage-services-example</module>
+        <module>jacoco-coverage-controllers-example</module>
+        <module>jacoco-coverage-aggregate-report</module>
     </modules>
     
     <build>

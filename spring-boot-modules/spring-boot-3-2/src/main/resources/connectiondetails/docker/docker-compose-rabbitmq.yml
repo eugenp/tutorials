@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+  rabbitmq:
+    image: 'rabbitmq:latest'
+    environment:
+      - 'RABBITMQ_DEFAULT_PASS=rabbitmq'
+      - 'RABBITMQ_DEFAULT_USER=rabbitmquser'
+    ports:
+      - '5672:5672'
