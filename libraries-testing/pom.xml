@@ -213,7 +213,7 @@
         <serenity.version>1.9.9</serenity.version>
         <serenity.jbehave.version>1.46.0</serenity.jbehave.version>
         <serenity.jira.version>1.9.0</serenity.jira.version>
-        <serenity.plugin.version>3.6.12</serenity.plugin.version>
+        <serenity.plugin.version>4.0.18</serenity.plugin.version>
         <jsonassert.version>1.5.0</jsonassert.version>
         <awaitility.version>3.0.0</awaitility.version>
         <hoverfly-java.version>0.8.1</hoverfly-java.version>
