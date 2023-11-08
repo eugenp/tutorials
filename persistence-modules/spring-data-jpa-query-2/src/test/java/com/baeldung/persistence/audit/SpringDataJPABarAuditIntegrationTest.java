@@ -3,8 +3,8 @@ package com.baeldung.persistence.audit;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -29,7 +29,7 @@ import com.baeldung.spring.config.PersistenceTestConfig;
 @ContextConfiguration(classes = { PersistenceTestConfig.class }, loader = AnnotationConfigContextLoader.class)
 public class SpringDataJPABarAuditIntegrationTest {
 
-    private static Logger logger = LoggerFactory.getLogger(SpringDataJPABarAuditIntegrationTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(SpringDataJPABarAuditIntegrationTest.class);
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
@@ -37,7 +37,7 @@ public class SpringDataJPABarAuditIntegrationTest {
     }
 
     @AfterClass
-    public static void tearDownAfterClass() throws Exception {
+    public static void tearDownAfterClass(){
         logger.info("tearDownAfterClass()");
     }
 

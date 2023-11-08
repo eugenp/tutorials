@@ -45,6 +45,13 @@ public class S3Application {
             new File("/Users/user/Document/hello.txt")
         );
 
+        s3Service.updateObject(
+            AWS_BUCKET,
+            "Document/hello2.txt",
+            new File("/Users/user/Document/hello2.txt")
+        );
+
+
         //listing objects
         s3Service.listObjects(AWS_BUCKET);
 
