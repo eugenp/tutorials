@@ -22,7 +22,7 @@ public class ClientInformationTest {
     private AccountsLogic accountsLogic;
 
     @Test
-    void shouldGetMockHttpServletRequestWithHeadersAndReturnUserAgentInfo() {
+    void givenMockHttpServletRequestWithHeaders_whenGetClientInfo_thenReturnsUserAGentInfo(){
         HttpServletRequest request = Mockito.mock(HttpServletRequest.class);
 
         // return sample user agent string when user-agent header accessed
