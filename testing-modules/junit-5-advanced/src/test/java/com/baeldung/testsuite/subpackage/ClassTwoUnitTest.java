@@ -8,4 +8,9 @@ public class ClassTwoUnitTest {
     public void whenTrue_thenTrue() {
         Assertions.assertTrue(true);
     }
+
+    @Test
+    public void whenFalse_thenFalse() {
+        Assertions.assertFalse(false);
+    }
 }
