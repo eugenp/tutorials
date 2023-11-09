@@ -8,7 +8,9 @@
 
     <logger name="org.springframework.boot.test.context" level="WARN"/>
 
-    <logger name="com.netflix.discovery" level="WARN"/>
+    <logger name="org.springframework.cloud.netflix" level="ERROR"/>
+
+    <logger name="com.netflix.discovery" level="ERROR"/>
 
     <logger name="com.netflix.config.sources" level="WARN"/>
 
