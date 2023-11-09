@@ -99,7 +99,7 @@
         <mysql.version>8.0.32</mysql.version>
         <mariaDB4j.version>2.6.0</mariaDB4j.version>
         <h2.version>2.1.214</h2.version>
-        <hibernate.version>6.1.7.Final</hibernate.version>
+        <hibernate.version>6.3.1.Final</hibernate.version>
         <testcontainers.mysql.version>1.17.6</testcontainers.mysql.version>
     </properties>
 

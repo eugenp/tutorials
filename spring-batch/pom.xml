@@ -74,7 +74,7 @@
 
     <properties>
         <spring.version>6.0.6</spring.version>
-        <opencsv.version>5.7.1</opencsv.version>
+        <opencsv.version>5.8</opencsv.version>
         <jakarta.xml.bind-api>4.0.0</jakarta.xml.bind-api>
         <jaxb.version>4.0.2</jaxb.version>
         <jackson-datatype.version>2.14.2</jackson-datatype.version>

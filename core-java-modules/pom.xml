@@ -21,7 +21,9 @@
         <!--<module>core-java-8-2</module> -->
         <!--<module>core-java-8-datetime</module> -->
         <!--<module>core-java-8-datetime-2</module> -->
-        <!--<module>core-java-collections-conversions-2</module> -->
+        <module>core-java-collections-conversions-2</module>
+        <module>core-java-collections-conversions-3</module>
+        <module>core-java-concurrency-advanced-5</module>
         <!--<module>core-java-lang</module> -->
         <!--<module>core-java-lang-math-3</module> -->
         <!--<module>core-java-security</module> -->
@@ -32,6 +34,7 @@
         <!-- <module>core-java-modules/core-java-16</module> --> <!-- JAVA-26056 -->
         <!-- <module>core-java-modules/core-java-17</module> --> <!-- JAVA-26056 -->
         <!-- <module>core-java-modules/core-java-19</module> --> <!-- JAVA-26056 -->
+        <module>core-java-numbers-conversions</module>
         <module>core-java-9-improvements</module>
         <module>core-java-9-streams</module>
         <module>core-java-9</module>
@@ -73,6 +76,7 @@
         <module>core-java-arrays-multidimensional</module>
         <module>core-java-arrays-convert</module>
         <module>core-java-arrays-operations-basic</module>
+        <module>core-java-arrays-operations-basic-2</module>
         <module>core-java-arrays-operations-advanced</module>
         <module>core-java-arrays-operations-advanced-2</module>
         <module>core-java-booleans</module>
@@ -193,6 +197,13 @@
         <module>core-java-collections-maps-6</module>
         <module>core-java-records</module>
         <module>core-java-9-jigsaw</module>
+        <!--<module>core-java-20</module>--> <!--JAVA-25373-->
+        <!--<module>core-java-conditionals</module>--> <!--JAVA-25373-->
+        <module>core-java-collections-set</module>
+        <module>core-java-date-operations-1</module>
+        <module>core-java-datetime-conversion</module>
+        <module>core-java-httpclient</module>
+        <module>java-native</module>
     </modules>
 
     <dependencyManagement>

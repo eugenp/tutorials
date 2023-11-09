@@ -1,6 +1,6 @@
 package com.baeldung.spring.data.jpa.query;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;

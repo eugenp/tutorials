@@ -9,3 +9,4 @@ This module contains articles about Object Oriented Programming (OOP) in Java
 - [Check If All the Variables of an Object Are Null](https://www.baeldung.com/java-check-all-variables-object-null)
 - [Law of Demeter in Java](https://www.baeldung.com/java-demeter-law)
 - [Java Interface Naming Conventions](https://www.baeldung.com/java-interface-naming-conventions)
+- [Difference Between Information Hiding and Encapsulation](https://www.baeldung.com/java-information-hiding-vs-encapsulation)
