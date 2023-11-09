@@ -40,7 +40,7 @@
         </dependency>
         <!-- Hibernate JSR-303 Bean Validation -->
         <dependency>
-            <groupId>org.hibernate</groupId>
+            <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>${hibernate-validator.version}</version>
         </dependency>
@@ -71,7 +71,7 @@
     <properties>
         <spring-framework.version>6.0.6</spring-framework.version>
         <spring-data-couchbase.version>5.0.3</spring-data-couchbase.version>
-        <hibernate-validator.version>8.0.0.Final</hibernate-validator.version>
+        <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
         <joda-time.version>2.12.2</joda-time.version>
     </properties>
 

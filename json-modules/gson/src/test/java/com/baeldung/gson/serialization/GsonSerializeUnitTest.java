@@ -41,8 +41,7 @@ public class GsonSerializeUnitTest {
           .serializeNulls()
           .disableHtmlEscaping()
           .create()
-          .toJson(new JsonParser()
-            .parse("{\"imdbId\":null,\"actors\":[{\"<strong>IMDB Code</strong>\":\"nm2199632\",\"<strong>Date Of Birth</strong>\":\"21-09-1982\",\"<strong>N° Film:</strong> \":3,\"filmography\":\"Apocalypto-Beatdown-Wind Walkers\"}]}"));
+          .toJson(JsonParser.parseString("{\"imdbId\":null,\"actors\":[{\"<strong>IMDB Code</strong>\":\"nm2199632\",\"<strong>Date Of Birth</strong>\":\"21-09-1982\",\"<strong>N° Film:</strong> \":3,\"filmography\":\"Apocalypto-Beatdown-Wind Walkers\"}]}"));
         Assert.assertEquals(gson.toJson(movieWithNullValue), expectedOutput);
     }
 }

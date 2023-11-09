@@ -6,9 +6,8 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>spring-security-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-2</relativePath>
     </parent>
     <artifactId>spring-security-azuread</artifactId>
 

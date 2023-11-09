@@ -3,16 +3,18 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <name>spring-boot-ssl-bundles</name>
+    <artifactId>spring-boot-ssl-bundles</artifactId>
+    <description>Module for showing usage of SSL Bundles</description>
+    <packaging>jar</packaging>
+
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../../parent-boot-3</relativePath>
     </parent>
-    <artifactId>springbootsslbundles</artifactId>
-    <name>spring-boot-ssl-bundles</name>
-    <packaging>jar</packaging>
-    <description>Module for showing usage of SSL Bundles</description>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
