@@ -1,10 +1,10 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: demo-backend
+  name: minikube-demo-backend
 spec:
   selector:
-    app: demo-backend
+    app: minikube-demo-backend
     tier: backend
   ports:
   - protocol: TCP
@@ -14,22 +14,22 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: demo-backend
+  name: dminikube-demo-backend
 spec:
   selector:
       matchLabels:
-        app: demo-backend
+        app: minikube-demo-backend
         tier: backend
   replicas: 3
   template:
     metadata:
       labels:
-        app: demo-backend
+        app: minikube-demo-backend
         tier: backend
     spec:
       containers:
-        - name: demo-backend
-          image: demo-backend:latest
+        - name: minikube-demo-backend
+          image: minikube-demo-backend:latest
           imagePullPolicy: Never
           ports:
             - containerPort: 8080
