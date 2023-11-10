@@ -344,12 +344,11 @@
                 <module>core-java-modules/core-java-security</module>
                 <module>core-java-modules/core-java-lang</module>
                 <module>core-java-modules/core-java-lang-math-3</module>
-             
+
                 <module>core-java-modules/core-java-streams-2</module>
 
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
-                <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
@@ -362,8 +361,8 @@
                 <module>muleesb</module>
                 <module>web-modules/java-lite</module>
                 <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't support yet the jakarta API-->
-                <module>persistence-modules/hibernate-ogm</module> <!-- hibernate-ogm wasn't updated because it doesn't support jakarta API -->
-                <module>persistence-modules/spring-data-cassandra-reactive</module> <!--JAVA-21844-->
+                <module>persistence-modules/hibernate-ogm</module> <!-- hibernate-ogm wasn't updated because a workaround for jakarta namespace wasn't found JAVA-20557 -->
+                <module>persistence-modules/spring-data-cassandra-reactive</module>
                 <module>java-nashorn</module>
                 <module>jeromq</module>
                 <module>spring-ejb-modules/ejb-beans</module>
@@ -518,12 +517,11 @@
                 <module>core-java-modules/core-java-security</module>
                 <module>core-java-modules/core-java-lang</module>
                 <module>core-java-modules/core-java-lang-math-3</module>
-               
+
                 <module>core-java-modules/core-java-streams-2</module>
 
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
-                <!-- <module>grails</module> --> <!-- Not a maven project -->
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
@@ -534,8 +532,8 @@
                 <module>muleesb</module>
                 <module>web-modules/java-lite</module>
                 <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't support yet the jakarta API-->
-                <module>persistence-modules/hibernate-ogm</module> <!-- hibernate-ogm wasn't updated because it doesn't support jakarta API -->
-                <module>persistence-modules/spring-data-cassandra-reactive</module> <!--JAVA-21844-->
+                <module>persistence-modules/hibernate-ogm</module> <!-- hibernate-ogm wasn't updated because a workaround for jakarta namespace wasn't found JAVA-20557 -->
+                <module>persistence-modules/spring-data-cassandra-reactive</module>
                 <module>java-nashorn</module>
                 <module>jeromq</module>
                 <module>spring-ejb-modules/ejb-beans</module>
@@ -765,13 +763,11 @@
                 <module>aws-modules</module>
 
                 <module>checker-framework</module>
-                <module>couchbase</module>
                 <module>core-groovy-modules</module>
 
                 <module>core-java-modules</module>
                 <module>custom-pmd</module>
                 <module>data-structures</module>
-                <module>ddd-contexts</module>
                 <module>jackson-modules</module>
                 <module>jmh</module>
                 <module>deeplearning4j</module>
@@ -821,11 +817,8 @@
                 <module>atomikos</module>
                 <module>atomix</module>
 
-                <module>axon</module>
-
                 <module>bazel</module>
                 <module>google-auto-project</module>
-                <module>ddd</module>
                 <module>disruptor</module>
                 <module>dozer</module>
                 <module>dubbo</module>
@@ -847,7 +840,6 @@
                 <module>jgit</module>
                 <module>jib</module>
 
-                <module>java-native</module>
                 <module>jsoup</module>
                 <module>ksqldb</module>
                 <module>jsf</module>
@@ -862,12 +854,13 @@
                 <module>libraries-apache-commons-2</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
-                <module>libraries-data-2</module> <!-- Fixing in JAVA-24007 -->
+                <module>libraries-data-2</module>
                 <module>libraries-data-io</module>
                 <module>libraries-files</module>
                 <module>libraries-http</module>
                 <module>libraries-http-2</module>
                 <module>libraries-io</module>
+                <module>libraries-ai</module>
                 <module>libraries-primitive</module>
                 <module>libraries-rpc</module>
                 <module>libraries-server</module>
@@ -936,7 +929,9 @@
                 <module>gcp-firebase</module>
                 <module>spring-di-4</module>
                 <module>spring-kafka-2</module>
-                <!--<module>java-panama</module> Java-19 module-->
+                <!--<module>java-panama</module>--> <!--JAVA-27339-->
+                <module>libraries-llms</module>
+                <module>spring-pulsar</module>
             </modules>
 
             <properties>
@@ -1039,25 +1034,15 @@
                 <module>aws-modules</module>
 
                 <module>checker-framework</module>
-                <module>couchbase</module>
-
+                
                 <module>core-groovy-modules</module>
 
                 <module>core-java-modules</module>
                 <module>gcp-firebase</module>
-                <!-- <module>core-java-modules/core-java-9-new-features</module> --> <!-- uses preview features, to be decided how to handle -->
-                <!-- <module>core-java-modules/core-java-12</module> --> <!-- uses preview features, to be decided how to handle -->
-                <!-- <module>core-java-modules/core-java-13</module> --> <!-- uses preview features, to be decided how to handle -->
-                <!-- <module>core-java-modules/core-java-14</module> --> <!-- uses preview features, to be decided how to handle -->
-                <!-- <module>core-java-modules/core-java-15</module> --> <!-- uses preview features, to be decided how to handle -->
-                <!-- <module>core-java-modules/core-java-16</module> --> <!-- uses preview features, to be decided how to handle -->
-                <!-- <module>core-java-modules/core-java-17</module> --> <!-- uses preview features, to be decided how to handle -->
-                <!-- <module>core-java-modules/core-java-19</module> --> <!-- uses preview features, to be decided how to handle -->
                 <module>spring-aop</module>
                 <module>spring-aop-2</module>
                 <module>custom-pmd</module>
                 <module>data-structures</module>
-                <module>ddd-contexts</module>
                 <module>jackson-modules</module>
                 <module>jmh</module>
                 <module>deeplearning4j</module>
@@ -1107,11 +1092,8 @@
                 <module>atomikos</module>
                 <module>atomix</module>
 
-                <module>axon</module>
-
                 <module>bazel</module>
                 <module>google-auto-project</module>
-                <module>ddd</module>
                 <module>disruptor</module>
                 <module>dozer</module>
 
@@ -1135,7 +1117,6 @@
                 <module>jgit</module>
                 <module>jib</module>
 
-                <module>java-native</module>
                 <module>jsoup</module>
                 <module>jsf</module>
                 <module>ksqldb</module>
@@ -1149,7 +1130,7 @@
                 <module>libraries-apache-commons-2</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
-                <module>libraries-data-2</module> <!-- Fixing in JAVA-24007 -->
+                <module>libraries-data-2</module>
                 <module>libraries-data-io</module>
                 <module>libraries-files</module>
                 <module>libraries-http</module>
@@ -1221,10 +1202,11 @@
                 <module>gradle-modules/gradle/maven-to-gradle</module>
                 <module>persistence-modules/spring-data-neo4j</module>
                 <module>spring-actuator</module>
-                <module>gcp-firebase</module>
                 <module>spring-di-4</module>
                 <module>spring-kafka-2</module>
-                <!--<module>java-panama</module> Java-19 module-->
+                <!--<module>java-panama</module>--> <!--JAVA-27339-->
+                <module>libraries-llms</module>
+                <module>spring-pulsar</module>
             </modules>
 
             <properties>
