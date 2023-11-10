@@ -25,15 +25,18 @@ public class ManagingConsumerGroupsIntegrationTest {
 
     @Autowired
     MessageConsumerService consumerService;
+
     @Test
     public void givenContinuousMessageFlow_whenAConsumerLeavesTheGroup_thenKafkaTriggersPartitionRebalance() throws InterruptedException {
-        int messageCount = 0;
+        int currentMessage = 0;
         final String consumer1Identifier = "org.springframework.kafka.KafkaListenerEndpointContainer#1";
+        final int totalProducedMessages = 50000;
+        final int messageWhereConsumer1LeavesGroup = 10000;
         do {
             kafkaTemplate.send("topic-1", RandomUtils.nextDouble(10.0, 20.0));
-            messageCount++;
+            currentMessage++;
 
-            if (messageCount == 10000) {
+            if (currentMessage == messageWhereConsumer1LeavesGroup) {
                 String containerId = kafkaListenerEndpointRegistry.getListenerContainerIds()
                         .stream()
                         .filter(a -> a.equals(consumer1Identifier))
@@ -44,7 +47,7 @@ public class ManagingConsumerGroupsIntegrationTest {
                 Objects.requireNonNull(container).stop();
                 kafkaListenerEndpointRegistry.unregisterListenerContainer(containerId);
             }
-        } while (messageCount != 50000);
+        } while (currentMessage != totalProducedMessages);
         Thread.sleep(2000);
         assertEquals(1, consumerService.consumedPartitions.get("consumer-1").size());
         assertEquals(2, consumerService.consumedPartitions.get("consumer-0").size());
