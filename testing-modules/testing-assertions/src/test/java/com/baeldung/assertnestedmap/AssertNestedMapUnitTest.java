@@ -1,11 +1,11 @@
-package com.baeldung.hamcrest.assertnestedmap;
+package com.baeldung.assertnestedmap;
 
 
 import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 
-import static com.baeldung.hamcrest.assertnestedmap.matchers.NestedMapMatcher.hasNestedMapEntry;
+import static com.baeldung.assertnestedmap.matchers.NestedMapMatcher.hasNestedMapEntry;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.*;

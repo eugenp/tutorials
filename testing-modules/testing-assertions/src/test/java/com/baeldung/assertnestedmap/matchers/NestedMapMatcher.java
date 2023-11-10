@@ -1,4 +1,4 @@
-package com.baeldung.hamcrest.assertnestedmap.matchers;
+package com.baeldung.assertnestedmap.matchers;
 
 
 import org.hamcrest.Description;
