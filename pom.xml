@@ -727,6 +727,7 @@
                 <module>dozer</module>
                 <module>drools</module>
                 <module>dubbo</module>
+                <!-- <module>feign</module> --> <!-- JAVA-20337 -->
                 <module>gcp-firebase</module>
                 <module>geotools</module>
                 <module>google-auto-project</module>
@@ -744,6 +745,7 @@
                 <module>jackson-simple</module>
                 <module>java-blockchain</module>
                 <module>java-jdi</module>
+                <!--<module>java-panama</module>--> <!--JAVA-27339-->
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>java-websocket</module>
@@ -900,8 +902,6 @@
                 <module>xml-2</module>
                 <module>xml</module>
                 <module>xstream</module>
-                <!--<module>java-panama</module>--> <!--JAVA-27339-->
-                <!-- <module>feign</module> --> <!-- JAVA-20337 -->
             </modules>
 
             <properties>
@@ -972,6 +972,7 @@
                 <module>dozer</module>
                 <module>drools</module>
                 <module>dubbo</module>
+                <!-- <module>feign</module> --> <!-- JAVA-20337 -->
                 <module>gcp-firebase</module>
                 <module>geotools</module>
                 <module>google-auto-project</module>
@@ -989,6 +990,7 @@
                 <module>jackson-simple</module>
                 <module>java-blockchain</module>
                 <module>java-jdi</module>
+                <!--<module>java-panama</module>--> <!--JAVA-27339-->
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>java-websocket</module>
@@ -1145,8 +1147,6 @@
                 <module>xml-2</module>
                 <module>xml</module>
                 <module>xstream</module>
-                <!--<module>java-panama</module>--> <!--JAVA-27339-->
-                <!-- <module>feign</module> --> <!-- JAVA-20337 -->
             </modules>
 
             <properties>
