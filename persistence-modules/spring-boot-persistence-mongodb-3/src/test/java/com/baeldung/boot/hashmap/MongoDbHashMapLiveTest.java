@@ -13,21 +13,35 @@ import java.util.Map;
 import java.util.Set;
 
 import org.bson.Document;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import com.mongodb.BasicDBObject;
 
-@SpringBootTest
+/**
+ * Steps to run locally:
+ * - Open embedded.properties and include:
+ * - spring.data.mongodb.uri=<your local mongodb URI>
+ * - spring.data.mongodb.database=sample_mflix
+ * 
+ * Pre-requisites:
+ * - Following the steps to import the sample_mflix database
+ */
 @DirtiesContext
+@RunWith(SpringRunner.class)
 @TestPropertySource("/embedded.properties")
-class MongoDbHashMapIntegrationTest {
+@SpringBootTest(classes = SpringBootHashMapApplication.class)
+class MongoDbHashMapLiveTest {
 
+	private static final String COLLECTION_NAME = "hashmap-test-collection";
     private static final Map<String, Object> MAP = new HashMap<>();
     private static final Set<Map<String, Object>> MAP_SET = new HashSet<>();
 
@@ -52,17 +66,22 @@ class MongoDbHashMapIntegrationTest {
         MAP_SET.add(MAP);
         MAP_SET.add(otherMap);
     }
+    
+    @AfterEach
+    void destroy() {
+		mongo.dropCollection(COLLECTION_NAME);
+    }
 
     @Test
     void whenUsingMap_thenInsertSucceeds() {
-        Map<String, Object> saved = mongo.insert(MAP, "map-collection");
+        Map<String, Object> saved = mongo.insert(MAP, COLLECTION_NAME);
 
         assertHasMongoId(saved);
     }
 
     @Test
     void whenMapSet_thenInsertSucceeds() {
-        Collection<Map<String, Object>> saved = mongo.insert(MAP_SET, "map-set");
+        Collection<Map<String, Object>> saved = mongo.insert(MAP_SET, COLLECTION_NAME);
 
         saved.forEach(this::assertHasMongoId);
         assertEquals(2, saved.size());
@@ -72,7 +91,7 @@ class MongoDbHashMapIntegrationTest {
     void givenMap_whenDocumentConstructed_thenInsertSucceeds() {
         Document document = new Document(MAP);
 
-        Document saved = mongo.insert(document, "doc-collection");
+        Document saved = mongo.insert(document, COLLECTION_NAME);
 
         assertHasMongoId(saved);
     }
@@ -81,7 +100,7 @@ class MongoDbHashMapIntegrationTest {
     void givenMap_whenBasicDbObjectConstructed_thenInsertSucceeds() {
         BasicDBObject dbObject = new BasicDBObject(MAP);
 
-        BasicDBObject saved = mongo.insert(dbObject, "db-collection");
+        BasicDBObject saved = mongo.insert(dbObject, COLLECTION_NAME);
 
         assertHasMongoId(saved);
     }
@@ -114,7 +133,7 @@ class MongoDbHashMapIntegrationTest {
                 set.add(document);
             }, Set::addAll);
 
-        Collection<Document> saved = mongo.insert(docs, "custom-set");
+        Collection<Document> saved = mongo.insert(docs, COLLECTION_NAME);
         saved.forEach(this::assertHasMongoId);
     }
 }
