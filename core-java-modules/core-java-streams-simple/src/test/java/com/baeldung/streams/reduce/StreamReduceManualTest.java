@@ -1,14 +1,17 @@
-package com.baeldung.streamreduce.tests;
+package com.baeldung.streams.reduce;
 
-import com.baeldung.streamreduce.entities.Rating;
-import com.baeldung.streamreduce.entities.Review;
-import com.baeldung.streamreduce.entities.User;
-import com.baeldung.streamreduce.utilities.NumberUtils;
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.Test;
+
+import com.baeldung.streams.reduce.entities.Rating;
+import com.baeldung.streams.reduce.entities.Review;
+import com.baeldung.streams.reduce.entities.User;
+import com.baeldung.streams.reduce.utilities.NumberUtils;
 
 public class StreamReduceManualTest {
 
