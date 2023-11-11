@@ -72,7 +72,7 @@
         <spring-framework.version>6.0.6</spring-framework.version>
         <spring-data-couchbase.version>5.0.3</spring-data-couchbase.version>
         <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
-        <joda-time.version>2.12.2</joda-time.version>
+        <joda-time.version>2.12.5</joda-time.version>
     </properties>
 
 </project>
