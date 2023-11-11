@@ -48,9 +48,9 @@ public class ReturnFirstNonNullLazyEvaluateUnitTest {
     @Test
     void givenChainOfMethods_whenUsingSupplierInterface_thenLazilyEvaluateMethodsUntilFirstNonNull() {
         Optional<String> object = Stream.<Supplier<String>> of(spy::methodA, spy::methodB, spy::methodC)
-            .map(Supplier::get)
-            .filter(Objects::nonNull)
-            .findFirst();
+          .map(Supplier::get)
+          .filter(Objects::nonNull)
+          .findFirst();
 
         assertThat(object).contains("first non null");
         verify(spy, times(1)).methodA();
