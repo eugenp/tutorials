@@ -12,4 +12,5 @@ This module contains articles about date operations in Java.
 - [How to Get the Start and End Dates of a Year Using Java](https://www.baeldung.com/java-date-year-start-end)
 - [Convert Between Java LocalDate and Epoch](https://www.baeldung.com/java-localdate-epoch)
 - [Get First Date of Current Month in Java](https://www.baeldung.com/java-current-month-start-date)
+- [Time Conversions Using TimeUnit](https://www.baeldung.com/java-timeunit-conversion)
 - [[<-- Prev]](/core-java-modules/core-java-date-operations-2)
