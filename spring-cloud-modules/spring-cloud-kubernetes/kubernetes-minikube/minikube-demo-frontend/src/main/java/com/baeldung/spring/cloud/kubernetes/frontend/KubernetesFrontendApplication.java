@@ -22,7 +22,7 @@ public class KubernetesFrontendApplication {
 
 		RestTemplate restTemplate = new RestTemplate();
 		String resourceUrl
-				= "http://demo-backend:8080";
+				= "http://minikube-demo-backend:8080";
 		ResponseEntity<String> response
 				= restTemplate.getForEntity(resourceUrl, String.class);
 		return "Message from backend is: " + response.getBody();
