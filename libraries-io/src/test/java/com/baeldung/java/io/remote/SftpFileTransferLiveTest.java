@@ -20,14 +20,14 @@ import net.schmizz.sshj.transport.verification.PromiscuousVerifier;
 
 public class SftpFileTransferLiveTest {
 
-    private String remoteHost = "HOST_NAME_HERE";
-    private String username = "USERNAME_HERE";
-    private String password = "PASSWORD_HERE";
-    private String localFile = "src/main/resources/input.txt";
-    private String remoteFile = "welcome.txt";
-    private String localDir = "src/main/resources/";
-    private String remoteDir = "remote_sftp_test/";
-    private String knownHostsFileLoc = "/Users/USERNAME/known_hosts_sample";
+    private final String remoteHost = "HOST_NAME_HERE";
+    private final String username = "USERNAME_HERE";
+    private final String password = "PASSWORD_HERE";
+    private final String localFile = "src/main/resources/input.txt";
+    private final String remoteFile = "welcome.txt";
+    private final String localDir = "src/main/resources/";
+    private final String remoteDir = "remote_sftp_test/";
+    private final String knownHostsFileLoc = "/Users/USERNAME/known_hosts_sample";
 
     @Test
     public void whenUploadFileUsingJsch_thenSuccess() throws JSchException, SftpException {
@@ -100,6 +100,7 @@ public class SftpFileTransferLiveTest {
         client.addHostKeyVerifier(new PromiscuousVerifier());
         client.connect(remoteHost);
         client.authPassword(username, password);
+        client.useCompression();
         return client;
     }
 
