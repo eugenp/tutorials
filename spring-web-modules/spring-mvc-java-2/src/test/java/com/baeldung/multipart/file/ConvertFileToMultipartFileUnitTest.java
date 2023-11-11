@@ -1,6 +1,6 @@
 package com.baeldung.multipart.file;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertEquals;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -27,7 +27,6 @@ public class ConvertFileToMultipartFileUnitTest {
         String fileContent = new String(multipartFile.getBytes());
         assertEquals("Hello World", fileContent);
         assertEquals("targetFile.tmp", multipartFile.getOriginalFilename());
-
     }
 
     @Test
@@ -41,7 +40,6 @@ public class ConvertFileToMultipartFileUnitTest {
         String fileContent = new String(multipartFile.getBytes());
         assertEquals("Hello World", fileContent);
         assertEquals("targetFile.tmp", multipartFile.getOriginalFilename());
-
     }
 
 }
