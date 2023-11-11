@@ -21,9 +21,9 @@ public class ReturnFirstNonEmptyOptionalUnitTest {
     @Test
     void givenListOfOptionals_whenStreaming_thenReturnFirstNonEmpty() {
         Optional<String> object = optionals.stream()
-            .filter(Optional::isPresent)
-            .map(Optional::get)
-            .findFirst();
+          .filter(Optional::isPresent)
+          .map(Optional::get)
+          .findFirst();
 
         assertThat(object).contains("first non empty");
     }
