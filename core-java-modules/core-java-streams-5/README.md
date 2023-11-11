@@ -5,3 +5,4 @@
 - [Streams vs. Loops in Java](https://www.baeldung.com/java-streams-vs-loops)
 - [Partition a Stream in Java](https://www.baeldung.com/java-partition-stream)
 - [Taking Every N-th Element from Finite and Infinite Streams in Java](https://www.baeldung.com/java-nth-element-finite-infinite-streams)
+- [Modifying Objects Within Stream While Iterating](https://www.baeldung.com/java-stream-modify-objects-during-iteration)
