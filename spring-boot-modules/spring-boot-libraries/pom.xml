@@ -219,7 +219,7 @@
         <graphql-spring-boot-starter.version>5.0.2</graphql-spring-boot-starter.version>
         <graphql-java-tools.version>5.2.4</graphql-java-tools.version>
         <git-commit-id-plugin.version>2.2.4</git-commit-id-plugin.version>
-        <modelmapper.version>2.3.2</modelmapper.version>
+        <modelmapper.version>3.2.0</modelmapper.version>
         <problem-spring-web.version>0.23.0</problem-spring-web.version>
         <shedlock.version>2.1.0</shedlock.version>
         <barbecue.version>1.5-beta1</barbecue.version>
