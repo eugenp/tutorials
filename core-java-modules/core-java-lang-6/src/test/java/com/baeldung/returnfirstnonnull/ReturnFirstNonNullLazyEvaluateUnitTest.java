@@ -19,7 +19,7 @@ public class ReturnFirstNonNullLazyEvaluateUnitTest {
     private final LazyEvaluate spy = Mockito.spy(new LazyEvaluate());
 
     @Test
-    void givenChainOfMethods_thenLazilyEvaluateMethodsUntilFirstNonNull() {
+    void givenChainOfMethods_whenUsingIfStatements_thenLazilyEvaluateMethodsUntilFirstNonNull() {
         String object = spy.methodA();
         if (object == null) {
             object = spy.methodB();
