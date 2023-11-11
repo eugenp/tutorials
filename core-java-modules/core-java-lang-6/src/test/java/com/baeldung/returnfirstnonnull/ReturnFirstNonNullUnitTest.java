@@ -26,7 +26,7 @@ public class ReturnFirstNonNullUnitTest {
     }
 
     @Test
-    void givenListOfObjects_whenFilterIsLambdaNullCheck_thenReturnFirstNonNull() {
+    void givenListOfObjects_whenFilterIsLambdaNullCheckInStream_thenReturnFirstNonNull() {
         Optional<String> object = objects.stream()
           .filter(o -> o != null)
           .findFirst();
@@ -35,7 +35,7 @@ public class ReturnFirstNonNullUnitTest {
     }
 
     @Test
-    void givenListOfObjects_whenFilterIsMethodRefNullCheck_thenReturnFirstNonNull() {
+    void givenListOfObjects_whenFilterIsMethodRefNullCheckInStream_thenReturnFirstNonNull() {
         Optional<String> object = objects.stream()
           .filter(Objects::nonNull)
           .findFirst();
