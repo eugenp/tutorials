@@ -19,7 +19,7 @@ public class ReturnFirstNonEmptyOptionalUnitTest {
     }
 
     @Test
-    void givenListOfOptionals_thenReturnFirstNonEmpty() {
+    void givenListOfOptionals_whenStreaming_thenReturnFirstNonEmpty() {
         Optional<String> object = optionals.stream()
             .filter(Optional::isPresent)
             .map(Optional::get)
