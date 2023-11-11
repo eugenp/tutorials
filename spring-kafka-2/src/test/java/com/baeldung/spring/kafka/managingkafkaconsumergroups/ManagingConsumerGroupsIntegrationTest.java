@@ -17,6 +17,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @EmbeddedKafka(partitions = 2, brokerProperties = {"listeners=PLAINTEXT://localhost:9092", "port=9092"})
 public class ManagingConsumerGroupsIntegrationTest {
 
+    private static final String consumer1Identifier = "org.springframework.kafka.KafkaListenerEndpointContainer#1";
+    private static final int totalProducedMessages = 50000;
+    private static final int messageWhereConsumer1LeavesGroup = 10000;
+
     @Autowired
     KafkaTemplate<String, Double> kafkaTemplate;
 
@@ -29,9 +33,7 @@ public class ManagingConsumerGroupsIntegrationTest {
     @Test
     public void givenContinuousMessageFlow_whenAConsumerLeavesTheGroup_thenKafkaTriggersPartitionRebalance() throws InterruptedException {
         int currentMessage = 0;
-        final String consumer1Identifier = "org.springframework.kafka.KafkaListenerEndpointContainer#1";
-        final int totalProducedMessages = 50000;
-        final int messageWhereConsumer1LeavesGroup = 10000;
+
         do {
             kafkaTemplate.send("topic-1", RandomUtils.nextDouble(10.0, 20.0));
             currentMessage++;
