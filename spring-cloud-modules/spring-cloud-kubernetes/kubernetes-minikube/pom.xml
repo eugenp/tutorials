@@ -14,8 +14,8 @@
     </parent>
 
     <modules>
-        <module>demo-backend</module>
-        <module>demo-frontend</module>
+        <module>minikube-demo-backend</module>
+        <module>minikube-demo-frontend</module>
     </modules>
 
 </project>
