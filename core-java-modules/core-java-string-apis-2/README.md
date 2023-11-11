@@ -8,3 +8,4 @@ This module contains articles about string APIs.
 - [Guide to Java String Pool](https://www.baeldung.com/java-string-pool)
 - [Java Localization – Formatting Messages](https://www.baeldung.com/java-localization-messages-formatting)
 - [Compare StringBuilder Objects in Java](https://www.baeldung.com/java-stringbuilder-objects-comparison)
+- [Finding the N-th Occurrence of a Substring in a String in Java](https://www.baeldung.com/java-locate-nth-match-substring)
