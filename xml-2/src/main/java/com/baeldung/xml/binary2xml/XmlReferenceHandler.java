@@ -1,3 +1,5 @@
+package com.baeldung.xml.binary2xml
+
 import java.util.HashMap;
 import java.util.Map;
 
