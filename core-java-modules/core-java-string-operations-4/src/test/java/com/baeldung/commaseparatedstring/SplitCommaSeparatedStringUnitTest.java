@@ -14,6 +14,8 @@ import java.util.List;
 
 import org.junit.Test;
 
+import com.opencsv.exceptions.CsvException;
+
 public class SplitCommaSeparatedStringUnitTest {
     
     @Test
@@ -27,7 +29,7 @@ public class SplitCommaSeparatedStringUnitTest {
     }
     
     @Test
-    public void givenMultiLineInput_whenParsing_shouldIgnoreCommasInsideDoubleQuotes() throws IOException {
+    public void givenMultiLineInput_whenParsing_shouldIgnoreCommasInsideDoubleQuotes() throws IOException, CsvException {
         String input = "baeldung,tutorial,splitting,text,\"ignoring this comma,\"" + System.lineSeparator()
         + "splitting,a,regular,line,no double quotes";
 

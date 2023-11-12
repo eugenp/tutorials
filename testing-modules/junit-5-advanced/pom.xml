@@ -45,7 +45,18 @@
             <version>${junit-platform.version}</version>
             <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-launcher</artifactId>
+            <version>${junit-platform.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-commons</artifactId>
+            <version>${junit-platform.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -70,7 +81,7 @@
     <properties>
         <jmockit.version>1.49</jmockit.version>
         <assertj.version>3.24.2</assertj.version>
-        <junit-platform.version>1.9.2</junit-platform.version>
+        <junit-platform.version>1.10.1</junit-platform.version>
         <maven-surefire-plugin.version>3.0.0</maven-surefire-plugin.version>
     </properties>
 
