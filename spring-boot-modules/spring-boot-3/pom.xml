@@ -206,7 +206,7 @@
     </build>
 
     <properties>
-        <java.version>17</java.version>
+        <java.version>19</java.version>
         <mapstruct.version>1.6.0.Beta1</mapstruct.version>
         <springdoc.version>2.2.0</springdoc.version>
         <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
