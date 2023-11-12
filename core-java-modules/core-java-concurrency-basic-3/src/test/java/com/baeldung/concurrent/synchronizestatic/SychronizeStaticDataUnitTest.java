@@ -11,8 +11,7 @@ import java.util.concurrent.Executors;
  * package. When not synchronized the out will not be sequential;
  * when it is synchronized the output will be in sequential.
  */
-public class SychronizeStaticDataUnitTest
-{
+public class SychronizeStaticDataUnitTest {
     private final Executor pool = Executors.newFixedThreadPool(4);
 
     private final int numberToTest = 100;
@@ -24,10 +23,9 @@ public class SychronizeStaticDataUnitTest
 
         for(int i = 0; i < numberToTest; i++) {
             int finalI = i;
-            pool.execute(() ->
-                         {
-                             new com.baeldung.concurrent.synchronizestatic.none.Employee(finalI, "John", "Smith");
-                         });
+            pool.execute(() -> {
+                new com.baeldung.concurrent.synchronizestatic.none.Employee(finalI, "John", "Smith");
+            });
         }
     }
 
@@ -38,10 +36,9 @@ public class SychronizeStaticDataUnitTest
 
         for(int i = 0; i < numberToTest; i++) {
             int finalI = i;
-            pool.execute(() ->
-                         {
-                             new com.baeldung.concurrent.synchronizestatic.synchronizedmethod.Employee(finalI, "John", "Smith");
-                         });
+            pool.execute(() -> {
+                new com.baeldung.concurrent.synchronizestatic.synchronizedmethod.Employee(finalI, "John", "Smith");
+            });
         }
     }
 
@@ -52,10 +49,9 @@ public class SychronizeStaticDataUnitTest
 
         for(int i = 0; i < numberToTest; i++) {
             int finalI = i;
-            pool.execute(() ->
-                         {
-                             new com.baeldung.concurrent.synchronizestatic.synchronizedclass.Employee(finalI, "John", "Smith");
-                         });
+            pool.execute(() -> {
+                new com.baeldung.concurrent.synchronizestatic.synchronizedclass.Employee(finalI, "John", "Smith");
+            });
         }
     }
 
@@ -66,10 +62,9 @@ public class SychronizeStaticDataUnitTest
 
         for(int i = 0; i < numberToTest; i++) {
             int finalI = i;
-            pool.execute(() ->
-                         {
-                             new com.baeldung.concurrent.synchronizestatic.synchronizedblock.Employee(finalI, "John", "Smith");
-                         });
+            pool.execute(() -> {
+               new com.baeldung.concurrent.synchronizestatic.synchronizedblock.Employee(finalI, "John", "Smith");
+            });
         }
     }
 
@@ -87,10 +82,9 @@ public class SychronizeStaticDataUnitTest
 
         for(int i = 0; i < numberToTest; i++) {
             int finalI = i;
-            pool.execute(() ->
-                         {
-                             new com.baeldung.concurrent.synchronizestatic.reentrantlock.Employee(finalI, "John", "Smith");
-                         });
+            pool.execute(() -> {
+                new com.baeldung.concurrent.synchronizestatic.reentrantlock.Employee(finalI, "John", "Smith");
+            });
         }
     }
 }
