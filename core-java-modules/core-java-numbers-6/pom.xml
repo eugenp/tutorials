@@ -43,6 +43,5 @@
 
     <properties>
         <commons-codec>1.16.0</commons-codec>
-        <guava.version>32.1.2-jre</guava.version>
     </properties>
 </project>
