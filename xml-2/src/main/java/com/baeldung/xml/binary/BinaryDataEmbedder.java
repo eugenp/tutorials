@@ -1,4 +1,4 @@
-package com.baeldung.xml.binary
+package com.baeldung.xml.binary;
 
 import java.util.Base64;
 
