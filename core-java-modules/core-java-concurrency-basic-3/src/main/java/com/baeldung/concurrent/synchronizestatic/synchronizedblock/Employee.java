@@ -12,8 +12,7 @@ public class Employee {
     String name;
     String title;
 
-    public Employee(int id, String name, String title)
-    {
+    public Employee(int id, String name, String title) {
         incrementCount();
         this.id = id;
         this.name = name;
