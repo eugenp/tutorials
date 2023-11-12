@@ -78,7 +78,7 @@ class GenericNumbersComparatorUnitTest {
         assertEquals(true, isEqual.test(5, 5.0));
     }
 
-    private boolean someCondition = true;
+    private boolean someCondition;
     Function<Number, ?> dynamicFunction = someCondition ? Number::doubleValue : Number::intValue;
     Comparator<Number> dynamicComparator = (num1, num2) -> ((Comparable) dynamicFunction.apply(num1)).compareTo(dynamicFunction.apply(num2));
 

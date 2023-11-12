@@ -162,7 +162,7 @@
     <properties>
         <start-class>com.baeldung.SpringBootRestApplication</start-class>
         <xstream.version>1.4.11.1</xstream.version>
-        <modelmapper.version>3.1.0</modelmapper.version>
+        <modelmapper.version>3.2.0</modelmapper.version>
         <rest-assured.version>3.3.0</rest-assured.version>
         <jaxb-runtime.version>2.3.7</jaxb-runtime.version>
     </properties>
