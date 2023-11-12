@@ -70,7 +70,6 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <spring-core.version>5.3.9</spring-core.version>
-        <apache-commons-lang3.version>3.12.0</apache-commons-lang3.version>
         <maven-artifact.version>3.6.3</maven-artifact.version>
         <gradle-core.version>6.1.1</gradle-core.version>
         <jackson-core.version>2.11.1</jackson-core.version>
