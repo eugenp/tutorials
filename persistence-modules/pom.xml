@@ -79,15 +79,8 @@
         <module>spring-data-geode</module>
         <module>spring-data-jpa-annotations</module>
         <module>spring-data-jpa-crud</module>
-        <module>spring-data-jpa-crud-2</module>
-        <module>spring-data-jpa-enterprise</module>
-        <module>spring-data-jpa-enterprise-2</module>
-        <module>spring-data-jpa-filtering</module>
         <module>spring-data-jpa-query</module>
-        <module>spring-data-jpa-query-2</module>
         <module>spring-data-jpa-query-3</module>
-        <module>spring-data-jpa-repo</module>
-        <module>spring-data-jpa-repo-2</module>
         <module>spring-data-jpa-repo-4</module>
         <module>spring-data-jdbc</module>
         <module>spring-data-keyvalue</module>
@@ -120,8 +113,8 @@
         <module>rethinkdb</module>
         <module>scylladb</module>
         <module>spring-data-cassandra-2</module>
-        <module>spring-data-jpa-repo-3</module>
         <module>spring-boot-persistence-4</module>
+        <module>spring-data-jpa-simple</module>
     </modules>
 
     <properties>
