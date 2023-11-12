@@ -1,7 +1,9 @@
 package com.baeldung.xml.binary;
 
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.util.Base64;
+import org.junit.jupiter.api.Test;
+
 
 public class BinaryDataEmbeddingUnitTest {
 
