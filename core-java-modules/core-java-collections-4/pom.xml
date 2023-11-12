@@ -34,7 +34,6 @@
 
     <properties>
         <commons-lang.version>2.2</commons-lang.version>
-        <commons-lang3.version>3.12.0</commons-lang3.version>
     </properties>
 
 </project>
