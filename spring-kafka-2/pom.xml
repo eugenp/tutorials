@@ -65,6 +65,8 @@
 
     <properties>
         <testcontainers-kafka.version>1.16.2</testcontainers-kafka.version>
+        <kafka-version>3.0.12</kafka-version>
+        <kafka-streams-version>3.6.0</kafka-streams-version>
         <testcontainers-junit-jupiter.version>1.16.2</testcontainers-junit-jupiter.version>
     </properties>
 
