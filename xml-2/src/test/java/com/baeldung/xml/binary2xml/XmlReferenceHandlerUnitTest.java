@@ -1,4 +1,4 @@
-package com.baeldung.xml.binary2xml
+package com.baeldung.xml.binary2xml;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
