@@ -1159,7 +1159,7 @@
         <spring.version>5.1.5.RELEASE</spring.version>
         <validation-api.version>2.0.1.Final</validation-api.version>
         <jaxb-runtime.version>2.3.2</jaxb-runtime.version>
-        <mapstruct.version>1.3.0.Final</mapstruct.version>
+        <mapstruct.version>1.6.0.Beta1</mapstruct.version>
 
         <!-- Plugin versions -->
         <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
