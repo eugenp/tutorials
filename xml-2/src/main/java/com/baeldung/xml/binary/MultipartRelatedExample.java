@@ -15,21 +15,18 @@ public class MultipartRelatedExample {
         String encodedData = Base64.getEncoder().encodeToString(binaryData);
 
         // Create an XML document with inline references using Multipart/Related
-        String xmlContent = """
-                <multipart_related>
-                    <metadata>
-                        <format>JPEG</format>
-                        <width>800</width>
-                        <height>600</height>
-                    </metadata>
-                    <data>
-                        <encoding>multipart/related</encoding>
-                        <content_id>cid:binary_part</content_id>
-                        <xml_reference>...inline reference to binary part...</xml_reference>
-                    </data>
-                </multipart_related>
-                """;
-
-        // Your application logic here
+        String xmlContent =
+            "<multipart_related>" +
+                "<metadata>" +
+                    "<format>JPEG</format>" +
+                    "<width>800</width>" +
+                    "<height>600</height>" +
+                "</metadata>" +
+                "<data>" +
+                    "<encoding>multipart/related</encoding>" +
+                    "<content_id>cid:binary_part</content_id>" +
+                    "<xml_reference>...inline reference to binary part...</xml_reference>" +
+                "</data>" +
+            "</multipart_related>";
     }
 }
