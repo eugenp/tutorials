@@ -21,7 +21,7 @@
         </dependency>
         <dependency>
             <groupId>org.bouncycastle</groupId>
-            <artifactId>bcprov-jdk15on</artifactId>
+            <artifactId>bcprov-jdk18on</artifactId>
             <version>${bouncycastle.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
@@ -43,7 +43,7 @@
     </dependencies>
 
     <properties>
-        <bouncycastle.version>1.70</bouncycastle.version>
+        <bouncycastle.version>1.76</bouncycastle.version>
         <commons-codec.version>1.16.0</commons-codec.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>
         <spring-security-crypto.version>6.0.3</spring-security-crypto.version>
