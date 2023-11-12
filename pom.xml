@@ -840,7 +840,6 @@
                 <module>jgit</module>
                 <module>jib</module>
 
-                <module>java-native</module>
                 <module>jsoup</module>
                 <module>ksqldb</module>
                 <module>jsf</module>
@@ -1124,7 +1123,6 @@
                 <module>jgit</module>
                 <module>jib</module>
 
-                <module>java-native</module>
                 <module>jsoup</module>
                 <module>jsf</module>
                 <module>ksqldb</module>
