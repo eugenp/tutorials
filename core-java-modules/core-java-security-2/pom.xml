@@ -34,7 +34,7 @@
 
     <properties>
         <bouncycastle.version>1.60</bouncycastle.version>
-        <commons-codec.version>1.11</commons-codec.version>
+        <commons-codec.version>1.16.0</commons-codec.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>
     </properties>
 

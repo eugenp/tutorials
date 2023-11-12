@@ -62,7 +62,7 @@
 
     <properties>
         <aws.java.sdk.version>2.20.52</aws.java.sdk.version>
-        <commons-codec-version>1.10.L001</commons-codec-version>
+        <commons-codec-version>1.16.0</commons-codec-version>
         <jets3t-version>0.9.4.0006L</jets3t-version>
     </properties>
 
