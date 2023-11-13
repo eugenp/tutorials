@@ -8,6 +8,12 @@
 
     <logger name="org.springframework.boot.test.context" level="WARN"/>
 
+    <logger name="org.springframework.boot.autoconfigure" level="WARN"/>
+
+    <logger name="de.flapdoodle.embed.mongo" level="WARN"/>
+
+    <logger name="org.mongodb.driver.client" level="WARN"/>
+
     <root level="INFO">
         <appender-ref ref="STDOUT" />
     </root>

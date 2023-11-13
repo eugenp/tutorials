@@ -21,7 +21,7 @@
         <module>jacoco-coverage-controllers-example</module>
         <module>jacoco-coverage-aggregate-report</module>
     </modules>
-    
+
     <build>
         <plugins>
             <plugin>
