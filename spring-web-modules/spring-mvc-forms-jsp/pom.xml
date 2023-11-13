@@ -48,7 +48,7 @@
             <version>${mysql-connector-java.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.hibernate</groupId>
+            <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>${hibernate-validator.version}</version>
         </dependency>
@@ -102,7 +102,7 @@
     </profiles>
 
     <properties>
-        <hibernate-validator.version>6.0.10.Final</hibernate-validator.version>
+        <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
         <hibernate.version>5.2.5.Final</hibernate.version>
         <mysql-connector-java.version>6.0.6</mysql-connector-java.version>
         <javax.annotation-api.version>1.3.2</javax.annotation-api.version>
