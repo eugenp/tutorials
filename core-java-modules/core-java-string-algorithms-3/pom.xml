@@ -21,7 +21,6 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>${apache-commons-lang3.version}</version>
         </dependency>
         <dependency>
             <groupId>com.vdurmont</groupId>
