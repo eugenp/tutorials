@@ -47,7 +47,7 @@
     </dependencies>
 
     <properties>
-        <joda-time.version>2.10</joda-time.version>
+        <joda-time.version>2.12.5</joda-time.version>
         <hirondelle-date4j.version>1.5.1</hirondelle-date4j.version>
         <prettytime.version>3.2.7.Final</prettytime.version>
         <time4j-base.version>5.9</time4j-base.version>
