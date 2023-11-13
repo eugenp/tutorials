@@ -280,7 +280,7 @@
     </build>
 
     <properties>
-        <mapstruct.version>1.5.2.Final</mapstruct.version>
+        <mapstruct.version>1.6.0.Beta1</mapstruct.version>
         <springdoc.version>2.0.0</springdoc.version>
         <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
         <mockserver.version>5.14.0</mockserver.version>
