@@ -15,7 +15,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import com.baeldung.overridebean.Endpoint;
 import com.baeldung.overridebean.Service;
-import com.baeldung.overridebean.basic.Application;
+import com.baeldung.overridebean.boot.Application;
 
 @SpringBootTest(classes = { Application.class, Endpoint.class })
 @AutoConfigureMockMvc
