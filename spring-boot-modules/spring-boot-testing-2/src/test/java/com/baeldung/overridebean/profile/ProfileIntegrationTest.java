@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.baeldung.overridebean.Endpoint;
+import com.baeldung.overridebean.boot.Application;
 
 @SpringBootTest(classes = { Application.class, ProfileConfig.class, Endpoint.class, ProfileTestConfig.class })
 @AutoConfigureMockMvc
