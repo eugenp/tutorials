@@ -101,7 +101,6 @@
         <dependency>
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
-            <version>${hibernate-validator.version}</version>
         </dependency>
         <dependency>
             <groupId>org.glassfish</groupId>
@@ -217,8 +216,6 @@
         <!-- persistence -->
         <hibernate.version>6.0.10.Final</hibernate.version>
         <mysql-connector-java.version>5.1.40</mysql-connector-java.version>
-        <!-- various -->
-        <hibernate-validator.version>6.0.10.Final</hibernate-validator.version>
         <!-- util -->
         <jsonpath.version>2.2.0</jsonpath.version>
         <!-- testing -->
