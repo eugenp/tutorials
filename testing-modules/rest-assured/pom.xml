@@ -94,11 +94,6 @@
             <version>${javax.mail.version}</version>
         </dependency>
         <dependency>
-            <groupId>joda-time</groupId>
-            <artifactId>joda-time</artifactId>
-            <version>${joda-time.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
         </dependency>
@@ -184,7 +179,6 @@
         <httpclient.version>4.5.2</httpclient.version>
         <uri-template.version>0.9</uri-template.version>
         <libphonenumber.version>8.0.0</libphonenumber.version>
-        <joda-time.version>2.9.6</joda-time.version>
         <msg-simple.version>1.1</msg-simple.version>
         <btf.version>1.2</btf.version>
         <wiremock.version>2.27.2</wiremock.version>
