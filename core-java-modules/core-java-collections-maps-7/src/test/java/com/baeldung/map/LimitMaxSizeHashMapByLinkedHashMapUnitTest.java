@@ -1,7 +1,9 @@
 package com.baeldung.map;
 
-import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,27 +11,33 @@ import org.junit.jupiter.api.Test;
 class LimitMaxSizeHashMapByLinkedHashMapUnitTest {
 
     private final int MAX_SIZE = 4;
-    private HashMapWithMaxSizeLimit<Integer, String> hashMapWithMaxSizeLimit;
+    private LinkedHashMap<Integer, String> linkedHashMap;
 
     @BeforeEach
     void setUp() {
-        hashMapWithMaxSizeLimit = new HashMapWithMaxSizeLimit<Integer, String>(MAX_SIZE);
+        linkedHashMap = new LinkedHashMap<Integer, String>() {
+            private static final long serialVersionUID = 1L;
+
+            protected boolean removeEldestEntry(Map.Entry<Integer, String> eldest) {
+                return size() > MAX_SIZE;
+            }
+        };
+        linkedHashMap.put(1, "One");
+        linkedHashMap.put(2, "Two");
+        linkedHashMap.put(3, "Three");
+        linkedHashMap.put(4, "Four");
     }
 
     @Test
-    void givenCustomHashMapObject_whenAddingNewEntryAndLimitExceeded_thenThrowsException() {
-        Exception exception = assertThrows(Exception.class, () -> {
-            hashMapWithMaxSizeLimit.putWithLimit(1, "One");
-            hashMapWithMaxSizeLimit.putWithLimit(2, "Two");
-            hashMapWithMaxSizeLimit.putWithLimit(3, "Three");
-            hashMapWithMaxSizeLimit.putWithLimit(4, "Four");
-            hashMapWithMaxSizeLimit.putWithLimit(5, "Five");
-        });
-
-        String messageThrownWhenSizeExceedsLimit = "Max size exceeded!";
-        String actualMessage = exception.getMessage();
-
-        assertTrue(actualMessage.equals(messageThrownWhenSizeExceedsLimit));
+    void givenLinkedHashMapObject_whenAddingNewEntry_thenEldestEntryIsRemoved() {
+        linkedHashMap.put(5, "Five");
+        String[] expectedArrayAfterFive = { "Two", "Three", "Four", "Five" };
+        assertArrayEquals(expectedArrayAfterFive, linkedHashMap.values()
+            .toArray());
+        linkedHashMap.put(6, "Six");
+        String[] expectedArrayAfterSix = { "Three", "Four", "Five", "Six" };
+        assertArrayEquals(expectedArrayAfterSix, linkedHashMap.values()
+            .toArray());
     }
 
 }
