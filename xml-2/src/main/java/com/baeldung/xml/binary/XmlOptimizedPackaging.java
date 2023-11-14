@@ -16,7 +16,7 @@ public class XmlOptimizedPackaging {
     @XmlElementRef(type = byte[].class)
     private JAXBElement<byte[]> binaryData;
 
-    public XopExample(byte[] binaryData) {
+    public XmlOptimizedPackaging(byte[] binaryData) {
         this.binaryData = new JAXBElement<>(new QName("binaryData"), byte[].class, binaryData);
     }
 
@@ -24,8 +24,8 @@ public class XmlOptimizedPackaging {
         // Read binary data from a file
         byte[] binaryData = // Read your binary data here
 
-        // Create an instance of XopExample
-        XopExample xopExample = new XopExample(binaryData);
+        // Create an instance of XmlOptimizedPackaging
+        XmlOptimizedPackaging XmlOptimizedPackaging = new XmlOptimizedPackaging(binaryData);
 
         // Marshal to XML
         String xmlContent = marshalToXml(xopExample);
