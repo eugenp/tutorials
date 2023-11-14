@@ -28,7 +28,7 @@ public class XmlOptimizedPackaging {
         XmlOptimizedPackaging XmlOptimizedPackaging = new XmlOptimizedPackaging(binaryData);
 
         // Marshal to XML
-        String xmlContent = marshalToXml(xopExample);
+        String xmlContent = marshalToXml(XmlOptimizedPackaging);
 
         // Your application logic here
     }
