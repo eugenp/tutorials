@@ -55,7 +55,7 @@ class Player {
 }
 
 public class LinkedHashMapSortByValueUnitTest {
-    private static LinkedHashMap<String, Integer> MY_MAP = new LinkedHashMap();
+    private static LinkedHashMap<String, Integer> MY_MAP = new LinkedHashMap<>();
 
     static {
         MY_MAP.put("key a", 4);
@@ -65,7 +65,7 @@ public class LinkedHashMapSortByValueUnitTest {
         MY_MAP.put("key e", 5);
     }
 
-    private static LinkedHashMap<String, Integer> EXPECTED_MY_MAP = new LinkedHashMap();
+    private static LinkedHashMap<String, Integer> EXPECTED_MY_MAP = new LinkedHashMap<>();
 
     static {
         EXPECTED_MY_MAP.put("key b", 1);
@@ -75,8 +75,7 @@ public class LinkedHashMapSortByValueUnitTest {
         EXPECTED_MY_MAP.put("key e", 5);
     }
 
-    private static final LinkedHashMap<String, Player> PLAYERS = new LinkedHashMap();
-
+    private static final LinkedHashMap<String, Player> PLAYERS = new LinkedHashMap<>();
     static {
         PLAYERS.put("player a", new Player("Eric", 9));
         PLAYERS.put("player b", new Player("Kai", 7));
@@ -84,7 +83,7 @@ public class LinkedHashMapSortByValueUnitTest {
         PLAYERS.put("player d", new Player("Kevin", 4));
     }
 
-    private static final LinkedHashMap<String, Player> EXPECTED_PLAYERS = new LinkedHashMap();
+    private static final LinkedHashMap<String, Player> EXPECTED_PLAYERS = new LinkedHashMap<>();
 
     static {
         EXPECTED_PLAYERS.put("player d", new Player("Kevin", 4));
