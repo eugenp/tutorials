@@ -63,7 +63,7 @@
 
     <properties>
         <maven-javadoc-plugin.version>3.0.0-M1</maven-javadoc-plugin.version>
-        <wiremock.version>2.26.3</wiremock.version>
+        <wiremock.version>3.0.1</wiremock.version>
     </properties>
 
 </project>

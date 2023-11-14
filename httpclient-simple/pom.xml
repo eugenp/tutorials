@@ -207,7 +207,7 @@
         <!-- util -->
         <commons-codec.version>1.10</commons-codec.version>
         <!-- testing -->
-        <wiremock.version>2.5.1</wiremock.version>
+        <wiremock.version>3.0.1</wiremock.version>
         <!-- http client & core 5 -->
         <httpcore5.version>5.2</httpcore5.version>
         <httpclient5.version>5.2</httpclient5.version>
