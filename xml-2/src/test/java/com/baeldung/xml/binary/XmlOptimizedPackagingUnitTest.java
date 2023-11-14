@@ -2,30 +2,23 @@ package com.baeldung.xml.binary;
 
 import org.junit.jupiter.api.Test;
 
-import javax.xml.bind.JAXBException;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class XmlOptimizedPackgingUnitTest {
+public class XmlOptimizedPackagingUnitTest {
 
     @Test
     public void testMarshalToXml() {
         // Arrange
         byte[] binaryData = "TestBinaryData".getBytes();
-        XopExample xopExample = new XopExample(binaryData);
+        XmlOptimizedPackaging xmlOptimizedPackaging = new XmlOptimizedPackaging(binaryData);
 
-        try {
-            // Act
-            String xmlContent = xopExample.marshalToXml(xopExample);
+        // Act
+        String xmlContent = xmlOptimizedPackaging.marshalToXml();
 
-            // Assert
-            assertNotNull(xmlContent);
-            // Add more specific assertions based on your XML structure
-        } catch (JAXBException e) {
-            // Handle JAXBException
-            e.printStackTrace();
-        }
+        // Assert
+        assertNotNull(xmlContent);
+        assertEquals("<XmlOptimizedPackaging><BinaryData>TestBinaryData</BinaryData></XmlOptimizedPackaging>", xmlContent.trim());
     }
 
     // Add more tests as needed
