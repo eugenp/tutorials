@@ -53,11 +53,10 @@ public class EmployeeFunctionalConfig {
 
     @Bean
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
-        http.csrf()
-            .disable()
-            .authorizeExchange()
-            .anyExchange()
-            .permitAll();
+        http.csrf(csrf -> csrf.disable())
+            .authorizeExchange(
+                exchanges -> exchanges.anyExchange().permitAll()
+            );
         return http.build();
     }
 }
