@@ -9,8 +9,8 @@ import com.baeldung.overridebean.Service;
 @TestConfiguration
 public class ConditionalTestConfig {
 
-    @ConditionalOnProperty(name = "service.stub", havingValue = "true")
     @Bean
+    @ConditionalOnProperty(name = "service.stub", havingValue = "true")
     public Service helloWorld() {
         return new ConditionalStub();
     }
