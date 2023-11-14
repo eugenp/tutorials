@@ -1,3 +1,5 @@
+package com.baeldung.xml.binary;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
@@ -9,7 +11,7 @@ import javax.xml.transform.stream.StreamResult;
 import java.io.StringWriter;
 
 @XmlRootElement
-public class XopExample {
+public class XmlOptimizedPackaging {
 
     @XmlElementRef(type = byte[].class)
     private JAXBElement<byte[]> binaryData;
