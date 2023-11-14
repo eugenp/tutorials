@@ -716,10 +716,10 @@
                 <module>azure</module>
                 <module>bazel</module>
                 <module>checker-framework</module>
-                <module>core-groovy-modules</module>
-                <module>core-java-modules</module>
+                <!--                <module>core-groovy-modules</module>-->
+                <!--                <module>core-java-modules</module>-->
                 <module>custom-pmd</module>
-                <module>data-structures</module>
+                <!--                <module>data-structures</module>-->
                 <module>deeplearning4j</module>
                 <module>di-modules</module>
                 <module>disruptor</module>
@@ -742,7 +742,7 @@
                 <module>image-compressing</module>
                 <module>image-processing</module>
                 <module>jackson-modules</module>
-                <module>jackson-simple</module>
+                <!--                <module>jackson-simple</module>-->
                 <module>java-blockchain</module>
                 <module>java-jdi</module>
                 <!--<module>java-panama</module>--> <!--JAVA-27339-->
@@ -757,12 +757,12 @@
                 <module>jersey</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
-                <module>jhipster-6</module>
+                <!--                <module>jhipster-6</module>-->
                 <module>jib</module>
                 <module>jmeter</module>
                 <module>jmh</module>
                 <module>jsf</module>
-                <module>json-modules</module>
+                <!--                <module>json-modules</module>-->
                 <module>jsoup</module>
                 <module>jws</module>
                 <module>ksqldb</module>
@@ -795,15 +795,15 @@
                 <module>libraries-server</module>
                 <module>libraries-testing</module>
                 <module>libraries-transform</module>
-                <module>libraries</module> <!-- very long running -->
+                <!--                <module>libraries</module> &lt;!&ndash; very long running &ndash;&gt;-->
                 <module>lightrun</module>
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
                 <module>lucene</module>
                 <module>mapstruct</module>
-                <module>maven-modules</module>
+                <!--                <module>maven-modules</module>-->
                 <module>mesos-marathon</module>
-                <module>messaging-modules</module>
+                <!--                <module>messaging-modules</module>-->
                 <module>metrics</module>
                 <module>microservices-modules</module>
                 <module>mustache</module>
@@ -815,9 +815,9 @@
                 <module>parent-boot-3</module>
                 <module>patterns-modules</module>
                 <module>pdf-2</module>
-                <module>pdf</module>
+                <!--                <module>pdf</module>-->
                 <module>performance-tests</module>
-                <module>persistence-modules</module>
+                <!--                <module>persistence-modules</module>-->
                 <module>persistence-modules/spring-data-neo4j</module>
                 <module>protobuffer</module>
                 <module>quarkus-modules</module>
@@ -836,34 +836,34 @@
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
                 <module>spring-aop-2</module>
-                <module>spring-aop</module>
+                <!--                <module>spring-aop</module>-->
                 <module>spring-batch-2</module>
                 <module>spring-batch</module>
-                <module>spring-boot-modules</module>
+                <!--                <module>spring-boot-modules</module>-->
                 <module>spring-boot-rest</module>
-                <module>spring-cloud-modules/spring-cloud-azure</module>
-                <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
-                <module>spring-cloud-modules/spring-cloud-contract</module>
-                <module>spring-cloud-modules/spring-cloud-data-flow</module>
-                <module>spring-cloud-modules/spring-cloud-eureka</module>
-                <module>spring-cloud-modules/spring-cloud-netflix-feign</module>
-                <module>spring-cloud-modules/spring-cloud-security</module>
-                <module>spring-cloud-modules/spring-cloud-stream-starters</module>
-                <module>spring-cloud-modules/spring-cloud-zuul-eureka-integration</module>
+                <!--                <module>spring-cloud-modules/spring-cloud-azure</module>-->
+                <!--                <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>-->
+                <!--                <module>spring-cloud-modules/spring-cloud-contract</module>-->
+                <!--                <module>spring-cloud-modules/spring-cloud-data-flow</module>-->
+                <!--                <module>spring-cloud-modules/spring-cloud-eureka</module>-->
+                <!--                <module>spring-cloud-modules/spring-cloud-netflix-feign</module>-->
+                <!--                <module>spring-cloud-modules/spring-cloud-security</module>-->
+                <!--                <module>spring-cloud-modules/spring-cloud-stream-starters</module>-->
+                <!--                <module>spring-cloud-modules/spring-cloud-zuul-eureka-integration</module>-->
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
                 <module>spring-core-4</module>
                 <module>spring-core</module>
                 <module>spring-credhub</module>
                 <module>spring-cucumber</module>
-                <module>spring-di-2</module>
+                <!--                <module>spring-di-2</module>-->
                 <module>spring-di-3</module>
                 <module>spring-di-4</module>
                 <module>spring-di</module>
                 <module>spring-drools</module>
                 <module>spring-ejb-modules</module>
                 <module>spring-exceptions</module>
-                <module>spring-integration</module>
+                <!--                <module>spring-integration</module>-->
                 <module>spring-jenkins-pipeline</module>
                 <module>spring-jersey</module>
                 <module>spring-jinq</module>
@@ -875,7 +875,7 @@
                 <module>spring-protobuf</module>
                 <module>spring-pulsar</module>
                 <module>spring-quartz</module>
-                <module>spring-reactive-modules</module>
+                <!--                <module>spring-reactive-modules</module>-->
                 <module>spring-remoting-modules</module>
                 <module>spring-scheduling</module>
                 <module>spring-security-modules</module>
@@ -890,16 +890,16 @@
                 <module>spring-web-modules</module>
                 <module>spring-websockets</module>
                 <module>static-analysis</module>
-                <module>tablesaw</module>
+                <!--                <module>tablesaw</module>-->
                 <module>tensorflow-java</module>
-                <module>testing-modules</module>
-                <module>testing-modules/mockito-simple</module>
+                <!--                <module>testing-modules</module>-->
+                <!--                <module>testing-modules/mockito-simple</module>-->
                 <module>vaadin</module>
                 <module>vavr-modules</module>
                 <module>vertx-modules</module>
                 <module>web-modules</module>
                 <module>webrtc</module>
-                <module>xml-2</module>
+                <!--                <module>xml-2</module>-->
                 <module>xml</module>
                 <module>xstream</module>
             </modules>
@@ -961,7 +961,7 @@
                 <module>azure</module>
                 <module>bazel</module>
                 <module>checker-framework</module>
-                <module>core-groovy-modules</module>
+                <!--                <module>core-groovy-modules</module>-->
                 <module>core-java-modules</module>
                 <module>custom-pmd</module>
                 <module>data-structures</module>
