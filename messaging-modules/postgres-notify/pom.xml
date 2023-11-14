@@ -42,12 +42,8 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-
     </dependencies>
 
-    <properties>
-        <java.version>1.8</java.version>
-    </properties>
     <build>
         <plugins>
             <plugin>
