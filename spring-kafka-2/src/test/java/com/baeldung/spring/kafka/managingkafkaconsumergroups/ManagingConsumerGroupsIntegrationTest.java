@@ -17,9 +17,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @EmbeddedKafka(partitions = 2, brokerProperties = {"listeners=PLAINTEXT://localhost:9092", "port=9092"})
 public class ManagingConsumerGroupsIntegrationTest {
 
-    private static final String consumer1Identifier = "org.springframework.kafka.KafkaListenerEndpointContainer#1";
-    private static final int totalProducedMessages = 50000;
-    private static final int messageWhereConsumer1LeavesGroup = 10000;
+    private static final String CONSUMER_1_IDENTIFIER = "org.springframework.kafka.KafkaListenerEndpointContainer#1";
+    private static final int TOTAL_PRODUCED_MESSAGES = 50000;
+    private static final int MESSAGE_WHERE_CONSUMER_1_LEAVES_GROUP = 10000;
 
     @Autowired
     KafkaTemplate<String, Double> kafkaTemplate;
@@ -38,10 +38,10 @@ public class ManagingConsumerGroupsIntegrationTest {
             kafkaTemplate.send("topic-1", RandomUtils.nextDouble(10.0, 20.0));
             currentMessage++;
 
-            if (currentMessage == messageWhereConsumer1LeavesGroup) {
+            if (currentMessage == MESSAGE_WHERE_CONSUMER_1_LEAVES_GROUP) {
                 String containerId = kafkaListenerEndpointRegistry.getListenerContainerIds()
                         .stream()
-                        .filter(a -> a.equals(consumer1Identifier))
+                        .filter(a -> a.equals(CONSUMER_1_IDENTIFIER))
                         .findFirst()
                         .orElse("");
                 MessageListenerContainer container = kafkaListenerEndpointRegistry.getListenerContainer(containerId);
@@ -49,7 +49,7 @@ public class ManagingConsumerGroupsIntegrationTest {
                 Objects.requireNonNull(container).stop();
                 kafkaListenerEndpointRegistry.unregisterListenerContainer(containerId);
             }
-        } while (currentMessage != totalProducedMessages);
+        } while (currentMessage != TOTAL_PRODUCED_MESSAGES);
         Thread.sleep(2000);
         assertEquals(1, consumerService.consumedPartitions.get("consumer-1").size());
         assertEquals(2, consumerService.consumedPartitions.get("consumer-0").size());
