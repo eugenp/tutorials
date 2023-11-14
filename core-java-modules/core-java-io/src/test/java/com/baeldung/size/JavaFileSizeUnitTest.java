@@ -106,5 +106,4 @@ public class JavaFileSizeUnitTest {
             fail("File not found.");
         }
     }
-
 }
