@@ -1,6 +1,7 @@
 package com.baeldung.maxdate;
 
 import java.util.Date;
+
 public class DateComparison {
     public int compareTodayWithMaxDate() {
         Date today = new Date();
