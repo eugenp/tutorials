@@ -6,17 +6,45 @@ public class StudentV2 extends StudentV1 {
 
     private String firstName;
     private String lastName;
-    private String studentNumber;
+    private String major;
+
+    @Override
+    public String getFirstName() {
+        return firstName;
+    }
+
+    @Override
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    @Override
+    public String getLastName() {
+        return lastName;
+    }
+
+    @Override
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getMajor() {
+        return major;
+    }
+
+    public void setMajor(String major) {
+        this.major = major;
+    }
 
     // Default constructor for Gson
     public StudentV2() {
 
     }
 
-    public StudentV2(String firstName, String lastName, String studentNumber) {
+    public StudentV2(String firstName, String lastName, String major) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.studentNumber = studentNumber;
+        this.major = major;
     }
 
     @Override
@@ -26,11 +54,11 @@ public class StudentV2 extends StudentV1 {
         if (!(o instanceof StudentV2))
             return false;
         StudentV2 studentV2 = (StudentV2) o;
-        return Objects.equals(firstName, studentV2.firstName) && Objects.equals(lastName, studentV2.lastName) && Objects.equals(studentNumber, studentV2.studentNumber);
+        return Objects.equals(firstName, studentV2.firstName) && Objects.equals(lastName, studentV2.lastName) && Objects.equals(major, studentV2.major);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName, studentNumber);
+        return Objects.hash(firstName, lastName, major);
     }
 }

@@ -3,7 +3,7 @@ package com.baeldung.gson.multiplefields;
 import com.google.gson.ExclusionStrategy;
 import com.google.gson.FieldAttributes;
 
-public class LegacyStudentExclusionStrategy implements ExclusionStrategy {
+public class StudentExclusionStrategy implements ExclusionStrategy {
 
     @Override
     public boolean shouldSkipField(FieldAttributes field) {

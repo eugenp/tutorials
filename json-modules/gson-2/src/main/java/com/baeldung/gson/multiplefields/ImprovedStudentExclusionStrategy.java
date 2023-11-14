@@ -7,8 +7,11 @@ public class ImprovedStudentExclusionStrategy implements ExclusionStrategy {
 
     @Override
     public boolean shouldSkipField(FieldAttributes field) {
-        return field.getDeclaringClass() == StudentV1.class
-            || field.getDeclaringClass() == StudentV2.class;
+        if (field.getDeclaringClass() == StudentV2.class) {
+            return !field.getName()
+                .equals("major");
+        }
+        return field.getDeclaringClass() == StudentV1.class;
     }
 
     @Override
