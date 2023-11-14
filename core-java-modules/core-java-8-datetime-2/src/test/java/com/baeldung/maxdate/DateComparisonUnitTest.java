@@ -1,15 +1,16 @@
 package com.baeldung.maxdate;
 
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class DateComparisonUnitTest {
+import org.junit.jupiter.api.Test;
 
-    @Test
-    public void whenCompareTodayWithMaxDate_thenCorrectResult() {
-        DateComparison comparator = new DateComparison();
-        int result = comparator.compareTodayWithMaxDate();
+class DateComparisonUnitTest {
 
-        assertTrue(result < 0);
-    }
+  @Test
+  void whenCompareTodayWithMaxDate_thenCorrectResult() {
+    DateComparison comparator = new DateComparison();
+    int result = comparator.compareTodayWithMaxDate();
+
+    assertTrue(result < 0);
+  }
 }
