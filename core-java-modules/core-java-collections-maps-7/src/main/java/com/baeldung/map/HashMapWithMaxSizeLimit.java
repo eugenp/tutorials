@@ -11,17 +11,14 @@ public class HashMapWithMaxSizeLimit<K, V> extends HashMap<K, V> {
     public HashMapWithMaxSizeLimit(int maxSize) {
         super();
         this.maxSize = maxSize;
-    }
+    }        
 
     @Override
     public V put(K key, V value) {
-        V res = null;
-        if (this.maxSize == -1 || this.size() < this.maxSize) {
-            res = super.put(key, value);
-        } else if (this.maxSize != -1) {
-            throw new RuntimeException("Max size exceeded!");
-        }
-        return res;
+        if (this.maxSize == -1 || this.containsKey(key) || this.size() < this.maxSize) {
+            return super.put(key, value);
+        }      
+        throw new RuntimeException("Max size exceeded!");
     }
 
 }
