@@ -1,50 +1,60 @@
 package com.baeldung.xml.binary;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBElement;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.annotation.XmlElementRef;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.namespace.QName;
-import javax.xml.transform.stream.StreamResult;
-import java.io.StringWriter;
-import java.util.Random;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
-@XmlRootElement
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.StringWriter;
+
 public class XmlOptimizedPackaging {
 
-    @XmlElementRef(type = byte[].class)
-    private JAXBElement<byte[]> binaryData;
+    private byte[] binaryData;
 
-    public XmlOptimizedPackaging() {
-        int dataSize = 10; // specify the size you want
-        byte[] sampleData = generateSampleBinaryData(dataSize);
-
-        this.binaryData = new JAXBElement<>(new QName("binaryData"), byte[].class, sampleData);
+    public XmlOptimizedPackaging(byte[] binaryData) {
+        this.binaryData = binaryData;
     }
 
-    public static void main(String[] args) throws JAXBException {
+    public String marshalToXml() {
+        try {
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = factory.newDocumentBuilder();
+            Document document = builder.newDocument();
+
+            // Root element
+            Element rootElement = document.createElement("XmlOptimizedPackaging");
+            document.appendChild(rootElement);
+
+            // Binary data element
+            Element binaryDataElement = document.createElement("BinaryData");
+            binaryDataElement.setTextContent(new String(binaryData, "UTF-8")); // Just for illustration
+            rootElement.appendChild(binaryDataElement);
+
+            // Convert the DOM document to a string
+            StringWriter writer = new StringWriter();
+            StreamResult result = new StreamResult(writer);
+            TransformerFactory tf = TransformerFactory.newInstance();
+            Transformer transformer = tf.newTransformer();
+            transformer.transform(new DOMSource(document), result);
+
+            return writer.toString();
+        } catch (ParserConfigurationException | TransformerException | UnsupportedEncodingException e) {
+            e.printStackTrace(); // Handle exceptions appropriately in a real application
+            return null;
+        }
+    }
+
+    public static void main(String[] args) {
+        // Read binary data from a file (for illustration purposes)
+        byte[] binaryData = "TestBinaryData".getBytes();
+
         // Create an instance of XmlOptimizedPackaging
-        XmlOptimizedPackaging XmlOptimizedPackaging = new XmlOptimizedPackaging(binaryData);
+        XmlOptimizedPackaging xmlOptimizedPackaging = new XmlOptimizedPackaging(binaryData);
 
         // Marshal to XML
-        String xmlContent = marshalToXml(XmlOptimizedPackaging);
+        String xmlContent = xmlOptimizedPackaging.marshalToXml();
 
         // Your application logic here
-    }
-
-    private static String marshalToXml(Object obj) throws JAXBException {
-        JAXBContext context = JAXBContext.newInstance(obj.getClass());
-        Marshaller marshaller = context.createMarshaller();
-        StringWriter writer = new StringWriter();
-        marshaller.marshal(obj, new StreamResult(writer));
-        return writer.toString();
-    }
-
-        private static byte[] generateSampleBinaryData(int size) {
-        byte[] binaryData = new byte[size];
-        new Random().nextBytes(binaryData);
-        return binaryData;
     }
 }
