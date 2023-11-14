@@ -20,6 +20,10 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
         <dependency>
@@ -95,7 +99,7 @@
         </dependency>
         <!-- Bucket4j -->
         <dependency>
-            <groupId>com.github.vladimir-bukhtoyarov</groupId>
+            <groupId>com.bucket4j</groupId>
             <artifactId>bucket4j-core</artifactId>
             <version>${bucket4j.version}</version>
         </dependency>
@@ -226,8 +230,8 @@
         <barcode4j.version>2.1</barcode4j.version>
         <qrgen.version>2.6.0</qrgen.version>
         <zxing.version>3.3.0</zxing.version>
-        <bucket4j.version>7.6.0</bucket4j.version>
-        <bucket4j-spring-boot-starter.version>0.7.0</bucket4j-spring-boot-starter.version>
+        <bucket4j.version>8.1.0</bucket4j.version>
+        <bucket4j-spring-boot-starter.version>0.8.1</bucket4j-spring-boot-starter.version>
         <caffeine.version>3.1.8</caffeine.version>
     </properties>
 
