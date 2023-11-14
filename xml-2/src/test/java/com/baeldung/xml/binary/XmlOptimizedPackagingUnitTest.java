@@ -18,7 +18,7 @@ public class XmlOptimizedPackagingUnitTest {
 
         // Assert
         assertNotNull(xmlContent);
-        assertEquals("<XmlOptimizedPackaging><BinaryData>TestBinaryData</BinaryData></XmlOptimizedPackaging>", xmlContent.trim());
+        assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?><XmlOptimizedPackaging><BinaryData>TestBinaryData</BinaryData></XmlOptimizedPackaging>", xmlContent.trim());
     }
 
     // Add more tests as needed
