@@ -9,6 +9,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.namespace.QName;
 import javax.xml.transform.stream.StreamResult;
 import java.io.StringWriter;
+import java.util.Random;
 
 @XmlRootElement
 public class XmlOptimizedPackaging {
@@ -16,14 +17,14 @@ public class XmlOptimizedPackaging {
     @XmlElementRef(type = byte[].class)
     private JAXBElement<byte[]> binaryData;
 
-    public XmlOptimizedPackaging(byte[] binaryData) {
-        this.binaryData = new JAXBElement<>(new QName("binaryData"), byte[].class, binaryData);
+    public XmlOptimizedPackaging() {
+        int dataSize = 10; // specify the size you want
+        byte[] sampleData = generateSampleBinaryData(dataSize);
+
+        this.binaryData = new JAXBElement<>(new QName("binaryData"), byte[].class, sampleData);
     }
 
     public static void main(String[] args) throws JAXBException {
-        // Read binary data from a file
-        byte[] binaryData = // Read your binary data here
-
         // Create an instance of XmlOptimizedPackaging
         XmlOptimizedPackaging XmlOptimizedPackaging = new XmlOptimizedPackaging(binaryData);
 
@@ -39,5 +40,11 @@ public class XmlOptimizedPackaging {
         StringWriter writer = new StringWriter();
         marshaller.marshal(obj, new StreamResult(writer));
         return writer.toString();
+    }
+
+        private static byte[] generateSampleBinaryData(int size) {
+        byte[] binaryData = new byte[size];
+        new Random().nextBytes(binaryData);
+        return binaryData;
     }
 }
