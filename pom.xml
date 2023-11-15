@@ -716,7 +716,7 @@
                 <module>azure</module>
                 <module>bazel</module>
                 <module>checker-framework</module>
-                <!--                <module>core-groovy-modules</module>-->
+                <!--<module>core-groovy-modules</module>-->
                 <module>core-java-modules</module>
                 <module>custom-pmd</module>
                 <module>data-structures</module>
@@ -841,15 +841,15 @@
                 <module>spring-batch</module>
                 <module>spring-boot-modules</module>
                 <module>spring-boot-rest</module>
-                <!--                <module>spring-cloud-modules/spring-cloud-azure</module>-->
-                <!--                <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>-->
-                <!--                <module>spring-cloud-modules/spring-cloud-contract</module>-->
-                <!--                <module>spring-cloud-modules/spring-cloud-data-flow</module>-->
-                <!--                <module>spring-cloud-modules/spring-cloud-eureka</module>-->
-                <!--                <module>spring-cloud-modules/spring-cloud-netflix-feign</module>-->
-                <!--                <module>spring-cloud-modules/spring-cloud-security</module>-->
-                <!--                <module>spring-cloud-modules/spring-cloud-stream-starters</module>-->
-                <!--                <module>spring-cloud-modules/spring-cloud-zuul-eureka-integration</module>-->
+                <module>spring-cloud-modules/spring-cloud-azure</module>
+                <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
+                <!--<module>spring-cloud-modules/spring-cloud-contract</module>--><!-- failing after upgrading to jdk17-->
+                <!--<module>spring-cloud-modules/spring-cloud-data-flow</module>--><!-- failing after upgrading to jdk17-->
+                <module>spring-cloud-modules/spring-cloud-eureka</module>
+                <module>spring-cloud-modules/spring-cloud-netflix-feign</module>
+                <module>spring-cloud-modules/spring-cloud-security</module>
+                <!--<module>spring-cloud-modules/spring-cloud-stream-starters</module>--><!-- failing after upgrading to jdk17-->
+                <module>spring-cloud-modules/spring-cloud-zuul-eureka-integration</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
                 <module>spring-core-4</module>
@@ -961,7 +961,7 @@
                 <module>azure</module>
                 <module>bazel</module>
                 <module>checker-framework</module>
-                <!--                <module>core-groovy-modules</module>-->
+                <!--<module>core-groovy-modules</module>-->
                 <module>core-java-modules</module>
                 <module>custom-pmd</module>
                 <module>data-structures</module>
@@ -1086,15 +1086,15 @@
                 <module>spring-batch</module>
                 <module>spring-boot-modules</module>
                 <module>spring-boot-rest</module>
-                <!--                <module>spring-cloud-modules/spring-cloud-azure</module>-->
-                <!--                <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>-->
-                <!--                <module>spring-cloud-modules/spring-cloud-contract</module>-->
-                <!--                <module>spring-cloud-modules/spring-cloud-data-flow</module>-->
-                <!--                <module>spring-cloud-modules/spring-cloud-eureka</module>-->
-                <!--                <module>spring-cloud-modules/spring-cloud-netflix-feign</module>-->
-                <!--                <module>spring-cloud-modules/spring-cloud-security</module>-->
-                <!--                <module>spring-cloud-modules/spring-cloud-stream-starters</module>-->
-                <!--                <module>spring-cloud-modules/spring-cloud-zuul-eureka-integration</module>-->
+                <module>spring-cloud-modules/spring-cloud-azure</module>
+                <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
+                <!--<module>spring-cloud-modules/spring-cloud-contract</module>--><!-- failing after upgrading to jdk17-->
+                <!--<module>spring-cloud-modules/spring-cloud-data-flow</module>--><!-- failing after upgrading to jdk17-->
+                <module>spring-cloud-modules/spring-cloud-eureka</module>
+                <module>spring-cloud-modules/spring-cloud-netflix-feign</module>
+                <module>spring-cloud-modules/spring-cloud-security</module>
+                <!--<module>spring-cloud-modules/spring-cloud-stream-starters</module>--><!-- failing after upgrading to jdk17-->
+                <module>spring-cloud-modules/spring-cloud-zuul-eureka-integration</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
                 <module>spring-core-4</module>
