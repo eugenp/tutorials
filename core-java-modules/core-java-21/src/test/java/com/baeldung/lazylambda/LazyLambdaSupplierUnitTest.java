@@ -10,14 +10,17 @@ public class LazyLambdaSupplierUnitTest {
     @Test
     public void whenCalledMultipleTimes_thenShouldBeCalledOnlyOnce() {
         @SuppressWarnings("unchecked") Supplier<String> mockedExpensiveFunction = Mockito.mock(Supplier.class);
-        Mockito.when(mockedExpensiveFunction.get()).thenReturn("expensive call");
+        Mockito.when(mockedExpensiveFunction.get())
+            .thenReturn("expensive call");
         LazyLambdaSupplier<String> testee = new LazyLambdaSupplier<>(mockedExpensiveFunction);
-        Mockito.verify(mockedExpensiveFunction, Mockito.never()).get();
+        Mockito.verify(mockedExpensiveFunction, Mockito.never())
+            .get();
         testee.getData();
         testee.getData();
         testee.getData();
         testee.getData();
-        Mockito.verify(mockedExpensiveFunction, Mockito.times(1)).get();
+        Mockito.verify(mockedExpensiveFunction, Mockito.times(1))
+            .get();
     }
 
 }
