@@ -80,13 +80,13 @@ class LoadBalancerIntegrationTest {
     void staticConfigurationWorks() {
         String serviceId = "test-book-service";
         RoundRobinLoadBalancer loadBalancer = new RoundRobinLoadBalancer(ServiceInstanceListSuppliers
-          .toProvider(serviceId, instance(serviceId, "bookservice1", false), instance(serviceId, "bookservice2", false)),
+          .toProvider(serviceId, instance(serviceId, "bookservice1", 1030, false), instance(serviceId, "bookservice2", 1031, false)),
           serviceId, -1);
         assertLoadBalancer(loadBalancer, Arrays.asList("bookservice1", "bookservice2"));
     }
 
-    private static DefaultServiceInstance instance(String serviceId, String host, boolean secure) {
-        return new DefaultServiceInstance(serviceId, serviceId, host, 80, secure);
+    private static DefaultServiceInstance instance(String serviceId, String host, int port, boolean secure) {
+        return new DefaultServiceInstance(serviceId, serviceId, host, port, secure);
     }
 
     @EnableAutoConfiguration

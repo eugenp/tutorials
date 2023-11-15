@@ -58,7 +58,7 @@
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-        <opencsv.version>4.1</opencsv.version>
+        <opencsv.version>5.8</opencsv.version>
         <spring-core.version>5.3.13</spring-core.version>
         <apache-commons-lang3.version>3.12.0</apache-commons-lang3.version>
         <apache-commons-text.version>1.10.0</apache-commons-text.version>

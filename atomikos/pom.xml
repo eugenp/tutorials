@@ -83,24 +83,9 @@
             <version>${geronimo.version}</version>
         </dependency>
         <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-            <version>${validation-api.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>${hibernate-validator.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.el</groupId>
-            <artifactId>javax.el-api</artifactId>
-            <version>${javax.el-api.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.web</groupId>
-            <artifactId>javax.el</artifactId>
-            <version>${javax.el.version}</version>
         </dependency>
     </dependencies>
 
@@ -113,10 +98,7 @@
         <derby.version>10.8.1.2</derby.version>
         <jta.version>1.1</jta.version>
         <geronimo.version>1.0</geronimo.version>
-        <validation-api.version>2.0.1.Final</validation-api.version>
-        <hibernate-validator.version>6.1.2.Final</hibernate-validator.version>
-        <javax.el-api.version>3.0.0</javax.el-api.version>
-        <javax.el.version>2.2.4</javax.el.version>
+        <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
     </properties>
 
 </project>

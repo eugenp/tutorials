@@ -43,8 +43,8 @@ public class PrimitiveValuesUnitTest {
         gson.toJson(model);
     }
 
-    @Test(expected = IllegalArgumentException.class) public void
-        whenSerializingNaN_thenShouldRaiseAnException() {
+    @Test(expected = IllegalArgumentException.class)
+    public void whenSerializingNaN_thenShouldRaiseAnException() {
         FloatExample model = new FloatExample();
         model.value = Float.NaN;
 
@@ -52,7 +52,8 @@ public class PrimitiveValuesUnitTest {
         gson.toJson(model);
     }
 
-    @Test public void whenDeserializingFromJSON_thenShouldParseTheValueInTheString() {
+    @Test
+    public void whenDeserializingFromJSON_thenShouldParseTheValueInTheString() {
         String json = "{\"byteValue\": 17, \"shortValue\": 3, \"intValue\": 3, "
             + "\"longValue\": 3, \"floatValue\": 3.5" + ", \"doubleValue\": 3.5"
             + ", \"booleanValue\": true, \"charValue\": \"a\"}";
@@ -72,14 +73,16 @@ public class PrimitiveValuesUnitTest {
         // @formatter:on
     }
 
-    @Test public void whenDeserializingHighPrecissionNumberIntoFloat_thenShouldPerformRounding() {
+    @Test
+    public void whenDeserializingHighPrecissionNumberIntoFloat_thenShouldPerformRounding() {
         String json = "{\"value\": 12.123425589123456}";
         Gson gson = new Gson();
         FloatExample model = gson.fromJson(json, FloatExample.class);
         assertEquals(12.123426f, model.value, 0.000001);
     }
 
-    @Test public void whenDeserializingHighPrecissiongNumberIntoDouble_thenShouldPerformRounding() {
+    @Test
+    public void whenDeserializingHighPrecissiongNumberIntoDouble_thenShouldPerformRounding() {
         String json = "{\"value\": 12.123425589123556}";
         Gson gson = new Gson();
         DoubleExample model = gson.fromJson(json, DoubleExample.class);
@@ -87,12 +90,12 @@ public class PrimitiveValuesUnitTest {
     }
 
 
-    @Test public void whenDeserializingValueThatOverflows_thenShouldOverflowSilently() {
+    @Test(expected = JsonSyntaxException.class)
+    public void whenDeserializingValueThatOverflows_thenShouldRaiseAnException() {
         Gson gson = new Gson();
         String json = "{\"value\": \"300\"}";
         ByteExample model = gson.fromJson(json, ByteExample.class);
 
-        assertEquals(44, model.value);
     }
 
     @Test public void whenDeserializingRealIntoByte_thenShouldRaiseAnException() {

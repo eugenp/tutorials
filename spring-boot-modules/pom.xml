@@ -68,6 +68,9 @@
         <module>spring-boot-runtime</module>
         <module>spring-boot-runtime-2</module>
         <module>spring-boot-security</module>
+        <module>spring-boot-security-2</module>
+        <module>spring-boot-ssl-bundles</module>
+        <module>spring-boot-telegram</module>
         <module>spring-boot-springdoc</module>
         <module>spring-boot-swagger</module>
         <module>spring-boot-swagger-2</module>
