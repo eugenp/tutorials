@@ -90,7 +90,7 @@ public class JavaFileSizeUnitTest {
 
     @Test
     public void whenGetFileSizeInDifferentUnits_thenCorrect(){
-        filePath = String.join(File.separator, new String[] { "src", "test", "resources", "size", "sample_file_3.in" });
+        filePath = String.join(File.separator, new String[] { "src", "test", "resources", "size", "sample_file_1.in" });
         File file = new File(filePath);
         if (file.exists()) {
             long expectedBytes = file.length();
