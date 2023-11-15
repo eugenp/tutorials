@@ -39,7 +39,7 @@ class EventServiceIntegrationTest {
         Future<String> resultFuture = asyncEventService.processEvents(List.of("test1"));
 
         while (!resultFuture.isDone() && !resultFuture.isCancelled()) {
-            TimeUnit.SECONDS.sleep(5);
+            TimeUnit.MILLISECONDS.sleep(5);
         }
 
         assertTrue(resultFuture.isDone());
@@ -54,7 +54,7 @@ class EventServiceIntegrationTest {
         Future<String> futureResult = asyncEventService.processEvents(List.of("test1"));
 
         while (!futureResult.isDone() && !futureResult.isCancelled()) {
-            TimeUnit.SECONDS.sleep(5);
+            TimeUnit.MILLISECONDS.sleep(5);
         }
 
         assertTrue(futureResult.isDone());
@@ -69,7 +69,7 @@ class EventServiceIntegrationTest {
         Future<String> futureResult = asyncEventService.processEvents(List.of("test1"));
 
         while (!futureResult.isDone() && !futureResult.isCancelled()) {
-            TimeUnit.SECONDS.sleep(5);
+            TimeUnit.MILLISECONDS.sleep(5);
         }
 
         assertTrue(futureResult.isDone());
@@ -84,7 +84,7 @@ class EventServiceIntegrationTest {
         Future<String> futureResult = asyncEventService.processEvents(List.of("test1"));
 
         while (!futureResult.isDone() && !futureResult.isCancelled()) {
-            TimeUnit.SECONDS.sleep(5);
+            TimeUnit.MILLISECONDS.sleep(5);
         }
 
         assertTrue(futureResult.isDone());
