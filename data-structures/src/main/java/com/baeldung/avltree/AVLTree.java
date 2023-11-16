@@ -42,17 +42,17 @@ public class AVLTree {
         return root == null ? -1 : root.height;
     }
 
-    private Node insert(Node node, int key) {
-        if (node == null) {
+    private Node insert(Node root, int key) {
+        if (root == null) {
             return new Node(key);
-        } else if (node.key > key) {
-            node.left = insert(node.left, key);
-        } else if (node.key < key) {
-            node.right = insert(node.right, key);
+        } else if (root.key > key) {
+            root.left = insert(root.left, key);
+        } else if (root.key < key) {
+            root.right = insert(root.right, key);
         } else {
             throw new RuntimeException("duplicate Key!");
         }
-        return rebalance(node);
+        return rebalance(root);
     }
 
     private Node delete(Node node, int key) {
