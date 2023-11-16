@@ -18,32 +18,27 @@ public class User {
     private String lastName;
     private String address;
 
-    @OneToMany
+    @OneToMany(cascade=CascadeType.ALL)
     private List<Book> books;
-
-    private Instant createdAt;
-
-    @PrePersist
-    private void prePersist() {
-
-        this.createdAt = Instant.now();
-    }
-
-    public String getNameOfMostOwnedBook() {
-
-        Map<String, Long> bookOwnershipCount = books.stream().collect(Collectors.groupingBy(Book::getName, Collectors.counting()));
-        return bookOwnershipCount.entrySet().stream().max(Map.Entry.comparingByValue()).map(Map.Entry::getKey).orElse(null);
-    }
 
     public User() {
     }
 
-    public User(Long id, String firstName, String lastName, String address, List<Book> books) {
-        this.id = id;
+    public User(String firstName, String lastName, String address, List<Book> books) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
         this.books = books;
+    }
+
+    public String getNameOfMostOwnedBook() {
+
+        Map<String, Long> bookOwnershipCount = books.stream()
+                .collect(Collectors.groupingBy(Book::getName, Collectors.counting()));
+        return bookOwnershipCount.entrySet().stream()
+                .max(Map.Entry.comparingByValue())
+                .map(Map.Entry::getKey)
+                .orElse(null);
     }
 
     public Long getId() {
@@ -84,46 +79,5 @@ public class User {
 
     public void setBooks(List<Book> books) {
         this.books = books;
-    }
-
-    public Instant getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Instant createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    @Entity
-    @Table(name = "books")
-    public static class Book {
-
-        @Id
-        private String name;
-        private String author;
-
-        public Book() {
-        }
-
-        public Book(String name, String author) {
-            this.name = name;
-            this.author = author;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getAuthor() {
-            return author;
-        }
-
-        public void setAuthor(String author) {
-            this.author = author;
-        }
     }
 }

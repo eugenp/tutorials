@@ -5,30 +5,37 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
-public class UserDto {
-
-    @JsonProperty("ID")
-    private final Long id;
+public class UserCreationDto {
 
     @NotNull
     @JsonProperty("FIRST_NAME")
     private final String firstName;
+
     @NotNull
     @JsonProperty("LAST_NAME")
     private final String lastName;
+
+    @NotNull
+    @JsonProperty("ADDRESS")
+    private final String address;
+
     @NotNull
     @JsonProperty("BOOKS")
     private final List<BookDto> books;
 
-    public UserDto(Long id, String firstName, String lastName, List<BookDto> books) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.books = books;
+    // Default constructor for Jackson deserialization
+    public UserCreationDto() {
+        this.firstName = null;
+        this.lastName = null;
+        this.address = null;
+        this.books = null;
     }
 
-    public Long getId() {
-        return id;
+    public UserCreationDto(String firstName, String lastName, String address, List<BookDto> books) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.books = books;
     }
 
     public String getFirstName() {
@@ -39,31 +46,9 @@ public class UserDto {
         return lastName;
     }
 
+    public String getAddress() { return address; }
+
     public List<BookDto> getBooks() {
         return books;
-    }
-
-    public static class BookDto {
-
-        @NotNull
-        @JsonProperty("NAME")
-        private final String name;
-
-        @NotNull
-        @JsonProperty("AUTHOR")
-        private final String author;
-
-        public BookDto(String name, String author) {
-            this.name = name;
-            this.author = author;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public String getAuthor() {
-            return author;
-        }
     }
 }
