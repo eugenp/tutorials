@@ -42,7 +42,7 @@
             <version>${jstl.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.hibernate</groupId>
+            <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>${hibernate-validator.version}</version>
         </dependency>
@@ -148,7 +148,7 @@
     </build>
 
     <properties>
-        <hibernate-validator.version>6.0.10.Final</hibernate-validator.version>
+        <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
         <deploy-path>enter-location-of-server</deploy-path>
         <org.thymeleaf-version>3.0.11.RELEASE</org.thymeleaf-version>
         <groovy.version>2.4.12</groovy.version>

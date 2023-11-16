@@ -21,4 +21,4 @@ This module contains articles about bootstrapping Spring Cloud applications that
     - git commit -m "First commit"
   - start the config server
   - start the discovery server
-  - start all the other servers in any order (gateway, svc-book, svc-rating, zipkin)
+  - start all the other servers in any order (gateway, zipkin-log-svc-book, zipkin-log-svc-rating, zipkin)

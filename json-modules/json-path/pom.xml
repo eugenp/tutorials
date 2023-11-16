@@ -13,7 +13,6 @@
     </parent>
 
     <dependencies>
-        <!-- json-path -->
         <dependency>
             <groupId>com.jayway.jsonpath</groupId>
             <artifactId>json-path</artifactId>
@@ -22,8 +21,7 @@
     </dependencies>
 
     <properties>
-        <!-- json-path -->
-        <json-path.version>2.4.0</json-path.version>
+        <json-path.version>2.8.0</json-path.version>
     </properties>
 
 </project>
