@@ -43,7 +43,6 @@ public class FirstMatchingElementUnitTest {
 
     @Test
     public void whenUsingTakeWhile_thenFindFirstMatchingUserIndex() {
-        int lastIndex = userList.size() - 1;
         AtomicInteger counter = new AtomicInteger(-1);
         int predicateIndex = userList.stream()
           .takeWhile(user -> {
@@ -54,11 +53,7 @@ public class FirstMatchingElementUnitTest {
           .max()
           .orElse(-1);
 
-        if (predicateIndex != 1 && predicateIndex != lastIndex) {
-            assertEquals(1, predicateIndex + 1);
-        } else {
-            assertEquals(lastIndex, predicateIndex);
-        }
+        assertEquals(1, predicateIndex + 1);
     }
 
     @Test
