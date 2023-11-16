@@ -8,4 +8,5 @@
 - [Difference Between Arrays.sort() and Collections.sort()](https://www.baeldung.com/java-arrays-collections-sort-methods)
 - [Skipping the First Iteration in Java](https://www.baeldung.com/java-skip-first-iteration)
 - [Remove Elements From a Queue Using Loop](https://www.baeldung.com/java-remove-elements-queue)
+- [Intro to Vector Class in Java](https://www.baeldung.com/java-vector-guide)
 - More articles: [[<-- prev]](/core-java-modules/core-java-collections-4)

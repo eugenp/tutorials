@@ -51,6 +51,7 @@
         <dependency>
             <groupId>com.github.ben-manes.caffeine</groupId>
             <artifactId>caffeine</artifactId>
+            <version>${caffeine.version}</version>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
@@ -78,6 +79,7 @@
 
     <properties>
         <ehcache.version>3.5.2</ehcache.version>
+        <caffeine.version>3.1.8</caffeine.version>
     </properties>
 
 </project>

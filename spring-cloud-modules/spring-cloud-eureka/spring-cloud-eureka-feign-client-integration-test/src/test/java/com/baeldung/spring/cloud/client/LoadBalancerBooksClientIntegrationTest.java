@@ -63,12 +63,12 @@ class LoadBalancerBooksClientIntegrationTest {
 
         String serviceId = "books-service";
         RoundRobinLoadBalancer loadBalancer = new RoundRobinLoadBalancer(ServiceInstanceListSuppliers
-          .toProvider(serviceId, instance(serviceId, "localhost", false), instance(serviceId, "localhost", true)),
+          .toProvider(serviceId, instance(serviceId, "localhost", 1030, false), instance(serviceId, "localhost", 1031, true)),
           serviceId, -1);
     }
 
-    private static DefaultServiceInstance instance(String serviceId, String host, boolean secure) {
-        return new DefaultServiceInstance(serviceId, serviceId, host, 80, secure);
+    private static DefaultServiceInstance instance(String serviceId, String host, int port, boolean secure) {
+        return new DefaultServiceInstance(serviceId, serviceId, host, port, secure);
     }
 
     @Test
