@@ -21,7 +21,7 @@ import org.springframework.kafka.test.context.EmbeddedKafka;
 import org.springframework.kafka.test.utils.ContainerTestUtils;
 
 @SpringBootTest(classes = KafkaMultipleTopicsApplication.class)
-@EmbeddedKafka(partitions = 1, brokerProperties = { "listeners=PLAINTEXT://localhost:9092", "port=9092" })
+@EmbeddedKafka(partitions = 1, brokerProperties = { "listeners=PLAINTEXT://localhost:9099", "port=9099" })
 public class KafkaMultipleTopicsIntegrationTest {
     private static final String CARD_PAYMENTS_TOPIC = "card-payments";
     private static final String BANK_TRANSFERS_TOPIC = "bank-transfers";
