@@ -1,32 +1,31 @@
 package com.baeldung.timestamptolong;
 
-import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class TimestampToLong {
-    public void usingSimpleDateFormat() throws ParseException {
+
+    public long usingSimpleDateFormat(String timestampString) throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String currentDateString = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
-        long actualTimestamp = sdf.parse(currentDateString).getTime();
+        Date date = sdf.parse(timestampString);
+        String currentDateString = sdf.format(date);
+        return sdf.parse(currentDateString).getTime();
     }
 
-    public void usingInstantClass() {
-        Instant instant = Instant.now();
-        long actualTimestamp = instant.toEpochMilli();
+    public long usingInstantClass(String timestampString) {
+        Instant instant = LocalDateTime.parse(timestampString, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
+                .atZone(ZoneId.systemDefault())
+                .toInstant();
+        return instant.toEpochMilli();
     }
 
-    public void usingTimestamp() {
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        long actualTimestamp = timestamp.getTime();
-    }
-
-    public void usingJava8DateTime() {
-        LocalDateTime localDateTime = LocalDateTime.now();
-        long actualTimestamp = localDateTime.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
+    public long usingJava8DateTime(String timestampString) {
+        LocalDateTime localDateTime = LocalDateTime.parse(timestampString.replace(" ", "T"));
+        return localDateTime.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
     }
 }
