@@ -25,4 +25,14 @@ public class LocalDateToISOUnitTest {
         String actual = localDateToISO.formatUsingSimpleDateFormat(localDate);
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void givenLocalDate_whenUsingJodaTimeThenISOFormat() {
+        LocalDateToISO localDateToISO = new LocalDateToISO();
+        org.joda.time.LocalDate localDate = new org.joda.time.LocalDate(2023, 11, 6);
+
+        String expected = "2023-11-06T00:00:00Z";
+        String actual = localDateToISO.formatUsingJodaTime(localDate);
+        assertEquals(expected, actual);
+    }
 }
