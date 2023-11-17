@@ -20,7 +20,7 @@ import com.baeldung.overridebean.boot.Application;
 @SpringBootTest(classes = { Application.class, ProfileConfig.class, Endpoint.class, ProfileTestConfig.class })
 @AutoConfigureMockMvc
 @ActiveProfiles("mock")
-class ProfileIntegrationMockTest {
+class ProfileMockIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;
