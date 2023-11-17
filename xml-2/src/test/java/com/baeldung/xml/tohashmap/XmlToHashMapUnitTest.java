@@ -18,7 +18,7 @@ class XmlToHashMapUnitTest {
     private static final String TEST_XML_PATH = "src/main/resources/xml/xmltohashmap/test.xml";
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
         xmlToHashMap = new XmlToHashMap();
     }
 
@@ -27,6 +27,7 @@ class XmlToHashMapUnitTest {
         Map<String, Employee> employeeMap = xmlToHashMap.xmlToHashMapUsingXstream(getXml());
         verify(employeeMap);
     }
+
     @Test
     void whenUsingUnderscore_thenHashMapShouldBeCreated() throws IOException {
         Map<String, Employee> employeeMap = xmlToHashMap.xmlToHashMapUsingUnderscore(getXml());
@@ -51,14 +52,20 @@ class XmlToHashMapUnitTest {
         verify(employeeMap);
     }
 
-    private void verify(Map<String,Employee> employeeMap){
+    private void verify(Map<String, Employee> employeeMap) {
         ArrayList<Employee> employees = new ArrayList<>(employeeMap.values());
-        Assertions.assertEquals("654", employees.get(0).getId());
-        Assertions.assertEquals("John", employees.get(0).getFirstName());
-        Assertions.assertEquals("Doe", employees.get(0).getLastName());
-        Assertions.assertEquals("776", employees.get(1).getId());
-        Assertions.assertEquals("Steve", employees.get(1).getFirstName());
-        Assertions.assertEquals("Smith", employees.get(1).getLastName());
+        Assertions.assertEquals("654", employees.get(0)
+            .getId());
+        Assertions.assertEquals("John", employees.get(0)
+            .getFirstName());
+        Assertions.assertEquals("Doe", employees.get(0)
+            .getLastName());
+        Assertions.assertEquals("776", employees.get(1)
+            .getId());
+        Assertions.assertEquals("Steve", employees.get(1)
+            .getFirstName());
+        Assertions.assertEquals("Smith", employees.get(1)
+            .getLastName());
     }
 
     private String getXml() throws IOException {

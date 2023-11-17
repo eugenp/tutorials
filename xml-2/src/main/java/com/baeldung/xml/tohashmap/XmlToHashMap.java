@@ -35,28 +35,30 @@ import com.thoughtworks.xstream.security.AnyTypePermission;
 
 public class XmlToHashMap {
 
-    public Map<String,Employee> xmlToHashMapUsingXstream(String xml){
-        XStream xStream=new XStream();
+    public Map<String, Employee> xmlToHashMapUsingXstream(String xml) {
+        XStream xStream = new XStream();
         xStream.alias("employees", List.class);
         xStream.alias("employee", Employee.class);
         xStream.addPermission(AnyTypePermission.ANY);
         List<Employee> employees = (List<Employee>) xStream.fromXML(xml);
-        return employees.stream().collect(Collectors.toMap(Employee::getId, Function.identity()));
+        return employees.stream()
+            .collect(Collectors.toMap(Employee::getId, Function.identity()));
     }
 
-    public Map<String, Employee> xmlToHashMapUsingUnderscore(String xml){
-        Map<String,Employee> employeeMap = new HashMap<>();
-        Map<String, Object> employeeList = (Map<String, Object>)U.fromXmlMap(xml).get("employees");
-        List<LinkedHashMap<String,String>> list=(List<LinkedHashMap<String,String>>)employeeList.get("employee");
+    public Map<String, Employee> xmlToHashMapUsingUnderscore(String xml) {
+        Map<String, Employee> employeeMap = new HashMap<>();
+        Map<String, Object> employeeList = (Map<String, Object>) U.fromXmlMap(xml)
+            .get("employees");
+        List<LinkedHashMap<String, String>> list = (List<LinkedHashMap<String, String>>) employeeList.get("employee");
         parseXmlToMap(employeeMap, list);
         return employeeMap;
     }
 
-    public Map<String,Employee> xmlToHashMapUsingJackson(String xml) throws JsonProcessingException {
+    public Map<String, Employee> xmlToHashMapUsingJackson(String xml) throws JsonProcessingException {
         XmlMapper xmlMapper = new XmlMapper();
-        Map<String,Employee> employeeMap = new HashMap<>();
-        Map<String,Object> map= xmlMapper.readValue(xml, Map.class);
-        List<LinkedHashMap<String,String>> list= (List<LinkedHashMap<String, String>>) map.get("employee");
+        Map<String, Employee> employeeMap = new HashMap<>();
+        Map<String, Object> map = xmlMapper.readValue(xml, Map.class);
+        List<LinkedHashMap<String, String>> list = (List<LinkedHashMap<String, String>>) map.get("employee");
         parseXmlToMap(employeeMap, list);
         return employeeMap;
     }
@@ -65,10 +67,12 @@ public class XmlToHashMap {
         JAXBContext context = JAXBContext.newInstance(Employees.class);
         Unmarshaller unmarshaller = context.createUnmarshaller();
         Employees employees = (Employees) unmarshaller.unmarshal(new StringReader(xmlData));
-        return employees.getEmployeeList().stream().collect(Collectors.toMap(Employee::getId, Function.identity()));
+        return employees.getEmployeeList()
+            .stream()
+            .collect(Collectors.toMap(Employee::getId, Function.identity()));
     }
 
-    public Map<String,Employee> xmlToHashMapUsingDOMParserXpath(String xmlData) throws ParserConfigurationException, IOException, SAXException, XPathExpressionException {
+    public Map<String, Employee> xmlToHashMapUsingDOMParserXpath(String xmlData) throws ParserConfigurationException, IOException, SAXException, XPathExpressionException {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
         Document doc = builder.parse(new InputSource(new StringReader(xmlData)));
@@ -82,10 +86,16 @@ public class XmlToHashMap {
         for (int i = 0; i < nodes.getLength(); i++) {
             Element node = (Element) nodes.item(i);
             Employee employee = new Employee();
-            employee.setId(node.getElementsByTagName("id").item(0).getTextContent());
-            employee.setFirstName(node.getElementsByTagName("firstName").item(0).getTextContent());
-            employee.setLastName(node.getElementsByTagName("lastName").item(0).getTextContent());
-            map.put(employee.getId(),employee);
+            employee.setId(node.getElementsByTagName("id")
+                .item(0)
+                .getTextContent());
+            employee.setFirstName(node.getElementsByTagName("firstName")
+                .item(0)
+                .getTextContent());
+            employee.setLastName(node.getElementsByTagName("lastName")
+                .item(0)
+                .getTextContent());
+            map.put(employee.getId(), employee);
         }
         return map;
     }
@@ -108,7 +118,7 @@ public class XmlToHashMap {
                     break;
                 }
             }
-            employeeMap.put(employee.getId(),employee);
+            employeeMap.put(employee.getId(), employee);
         });
     }
 }
