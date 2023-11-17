@@ -126,7 +126,7 @@
             <artifactId>httpclient</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.github.tomakehurst</groupId>
+            <groupId>org.wiremock</groupId>
             <artifactId>wiremock</artifactId>
             <version>${wiremock.version}</version>
         </dependency>
@@ -172,6 +172,12 @@
             <version>${scribejava.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>6.0.0</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -187,7 +193,7 @@
         <joda-time.version>2.9.6</joda-time.version>
         <msg-simple.version>1.1</msg-simple.version>
         <btf.version>1.2</btf.version>
-        <wiremock.version>3.0.1</wiremock.version>
+        <wiremock.version>3.3.1</wiremock.version>
         <scribejava.version>2.5.3</scribejava.version>
         <rest-assured.version>5.3.0</rest-assured.version>
     </properties>
