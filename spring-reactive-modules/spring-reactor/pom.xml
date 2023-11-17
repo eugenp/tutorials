@@ -27,17 +27,16 @@
         <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-bus</artifactId>
-            <version>${reactor.version}</version>
+            <version>${reactor-bus.version}</version>
         </dependency>
         <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-core</artifactId>
-            <version>${reactor.version}</version>
         </dependency>
     </dependencies>
 
     <properties>
-        <reactor.version>2.0.8.RELEASE</reactor.version>
+        <reactor-bus.version>2.0.8.RELEASE</reactor-bus.version>
     </properties>
 
 </project>
