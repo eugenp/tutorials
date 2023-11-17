@@ -40,7 +40,7 @@
     </dependencies>
 
     <properties>
-        <reactor.version>3.5.1</reactor.version>
+        <reactor.version>3.6.0</reactor.version>
     </properties>
 
 </project>
