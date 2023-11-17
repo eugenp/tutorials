@@ -7,7 +7,7 @@ import java.util.List;
 
 public class SimpleParseDate {
 
-    public Date parseDate(String dateString, List<String> formatStrings) {
+    public static Date parseDate(String dateString, List<String> formatStrings) {
         for (String formatString : formatStrings) {
             try {
                 return new SimpleDateFormat(formatString).parse(dateString);

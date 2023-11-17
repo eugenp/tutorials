@@ -72,7 +72,7 @@
         </dependency>
         <!-- validation -->
         <dependency>
-            <groupId>org.hibernate</groupId>
+            <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>${hibernate-validator.version}</version>
         </dependency>
@@ -107,11 +107,6 @@
             <artifactId>spring-test</artifactId>
             <version>${org.springframework.version}</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>javax.el</groupId>
-            <artifactId>el-api</artifactId>
-            <version>${javax.el.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.derby</groupId>
@@ -171,8 +166,7 @@
         <tomcat-dbcp.version>7.0.73</tomcat-dbcp.version>
         <derby.version>10.13.1.1</derby.version>
         <!-- various -->
-        <hibernate-validator.version>5.3.3.Final</hibernate-validator.version>
-        <javax.el.version>2.2</javax.el.version>
+        <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
         <jaxb-api.version>2.3.0</jaxb-api.version>
         <!-- util -->
         <httpcore.version>4.4.5</httpcore.version>

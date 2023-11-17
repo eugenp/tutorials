@@ -45,7 +45,7 @@
         </dependency>
         <dependency>
             <groupId>org.mapstruct</groupId>
-            <artifactId>mapstruct-jdk8</artifactId>
+            <artifactId>mapstruct</artifactId>
             <version>${mapstruct.version}</version>
             <scope>provided</scope>
         </dependency>
@@ -97,7 +97,7 @@
     </build>
 
     <properties>
-        <mapstruct.version>1.3.1.Final</mapstruct.version>
+        <mapstruct.version>1.6.0.Beta1</mapstruct.version>
         <testcontainers.version>1.19.1</testcontainers.version>
     </properties>
 

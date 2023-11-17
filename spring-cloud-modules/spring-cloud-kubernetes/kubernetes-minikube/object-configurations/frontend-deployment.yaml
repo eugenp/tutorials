@@ -1,10 +1,10 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: demo-frontend
+  name: minikube-demo-frontend
 spec:
   selector:
-    app: demo-frontend
+    app: minikube-demo-frontend
   ports:
   - protocol: TCP
     port: 8081
@@ -14,20 +14,20 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: demo-frontend
+  name: minikube-demo-frontend
 spec:
   selector:
       matchLabels:
-        app: demo-frontend
+        app: minikube-demo-frontend
   replicas: 3
   template:
     metadata:
       labels:
-        app: demo-frontend
+        app: minikube-demo-frontend
     spec:
       containers:
-        - name: demo-frontend
-          image: demo-frontend:latest
+        - name: minikube-demo-frontend
+          image: minikube-demo-frontend:latest
           imagePullPolicy: Never
           ports:
             - containerPort: 8081
