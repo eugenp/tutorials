@@ -5,21 +5,19 @@ import java.util.function.Supplier;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-public class LazyLambdaSupplierUnitTest {
+public class LambdaSupplierUnitTest {
 
     @Test
-    public void whenCalledMultipleTimes_thenShouldBeCalledOnlyOnce() {
+    public void whenCalledMultipleTimes_thenShouldBeCalledMultipleTimes() {
         @SuppressWarnings("unchecked") Supplier<String> mockedExpensiveFunction = Mockito.mock(Supplier.class);
         Mockito.when(mockedExpensiveFunction.get())
             .thenReturn("expensive call");
-        LazyLambdaSupplier<String> testee = new LazyLambdaSupplier<>(mockedExpensiveFunction);
+        LambdaSupplier<String> testee = new LambdaSupplier<>(mockedExpensiveFunction);
         Mockito.verify(mockedExpensiveFunction, Mockito.never())
             .get();
         testee.getData();
         testee.getData();
-        testee.getData();
-        testee.getData();
-        Mockito.verify(mockedExpensiveFunction, Mockito.times(1))
+        Mockito.verify(mockedExpensiveFunction, Mockito.times(2))
             .get();
     }
 

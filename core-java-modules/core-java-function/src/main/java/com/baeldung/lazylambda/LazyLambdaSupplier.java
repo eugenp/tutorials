@@ -2,16 +2,15 @@ package com.baeldung.lazylambda;
 
 import java.util.function.Supplier;
 
-public class LazyLambdaSupplier<T> {
-
-    private final Supplier<T> expensiveData;
+public class LazyLambdaSupplier<T> extends LambdaSupplier<T> {
 
     private T data;
 
     public LazyLambdaSupplier(Supplier<T> expensiveData) {
-        this.expensiveData = expensiveData;
+        super(expensiveData);
     }
 
+    @Override
     public T getData() {
         if (data != null) {
             return data;

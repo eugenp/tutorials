@@ -3,14 +3,12 @@ package com.baeldung.lazylambda;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Supplier;
 
-public class LazyLambdaThreadSafeSupplier<T> {
-
-    private final Supplier<T> expensiveData;
+public class LazyLambdaThreadSafeSupplier<T> extends LambdaSupplier<T> {
 
     private final AtomicReference<T> data;
 
     public LazyLambdaThreadSafeSupplier(Supplier<T> expensiveData) {
-        this.expensiveData = expensiveData;
+        super(expensiveData);
         data = new AtomicReference<>();
     }
 
@@ -22,7 +20,6 @@ public class LazyLambdaThreadSafeSupplier<T> {
                 }
             }
         }
-
         return data.get();
     }
 
