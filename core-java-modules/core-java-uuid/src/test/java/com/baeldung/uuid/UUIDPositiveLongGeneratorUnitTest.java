@@ -56,6 +56,13 @@ public class UUIDPositiveLongGeneratorUnitTest {
 
     }
 
+    private boolean isUnique(long value) {
+        // Implementasikan logika pengecekan keunikan, misalnya, dengan memeriksa dalam database
+        // Mengembalikan true jika nilai unik, false jika ada tumbukan
+        return true; // Implementasikan sesuai kebutuhan aplikasi Anda
+    }
+
+
     private String convertMillisToTime(long currentTimeMillis) {
 
         long totalMilliseconds = currentTimeMillis % 1000;
