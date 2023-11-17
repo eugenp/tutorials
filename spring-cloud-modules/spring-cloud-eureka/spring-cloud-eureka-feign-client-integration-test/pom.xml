@@ -66,9 +66,9 @@
             <version>2.6.8</version>
         </dependency>
         <dependency>
-            <groupId>com.github.tomakehurst</groupId>
+            <groupId>org.wiremock</groupId>
             <artifactId>wiremock</artifactId>
-            <version>2.27.2</version>
+            <version>3.3.1</version>
             <scope>test</scope>
         </dependency>
         <dependency>
