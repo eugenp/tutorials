@@ -87,7 +87,7 @@
     <properties>
         <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
         <expressly.version>5.0.0</expressly.version>
-        <commons-codec.version>1.14</commons-codec.version>
+        <commons-codec.version>1.16.0</commons-codec.version>
         <spring-core.version>5.3.0</spring-core.version>
     </properties>
 
