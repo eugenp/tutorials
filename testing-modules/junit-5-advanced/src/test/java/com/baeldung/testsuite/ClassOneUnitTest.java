@@ -10,4 +10,8 @@ public class ClassOneUnitTest {
         Assertions.assertTrue(true);
     }
 
+    @Test
+    public void whenFalse_thenFalse() {
+        Assertions.assertFalse(false);
+    }
 }

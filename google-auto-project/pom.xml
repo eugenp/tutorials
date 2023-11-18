@@ -8,7 +8,6 @@
     <name>google-auto-project</name>
     <packaging>pom</packaging>
 
-
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>

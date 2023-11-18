@@ -5,7 +5,7 @@ This module contains articles about querying data using Spring Data JPA
 ### Relevant Articles: 
 - [The Exists Query in Spring Data](https://www.baeldung.com/spring-data-exists-query)
 - [Customizing the Result of JPA Queries with Aggregation Functions](https://www.baeldung.com/jpa-queries-custom-result-with-aggregation-functions)
-- [Limiting Query Results with JPA and Spring Data JPA](https://www.baeldung.com/jpa-limit-query-results)
+- [Limiting Query Results With JPA and Spring Data JPA](https://www.baeldung.com/jpa-limit-query-results)
 - [Sorting Query Results with Spring Data](https://www.baeldung.com/spring-data-sorting)
 - [Spring Data JPA Query by Example](https://www.baeldung.com/spring-data-query-by-example)
 - [JPA Join Types](https://www.baeldung.com/jpa-join-types)
