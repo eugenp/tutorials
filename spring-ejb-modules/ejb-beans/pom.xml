@@ -192,7 +192,7 @@
         <mockito.version>2.21.0</mockito.version>
         <maven-dependency-plugin.version>2.8</maven-dependency-plugin.version>
         <wildfly-ejb.version>8.2.1.Final</wildfly-ejb.version>
-        <joda-time.version>2.10.12</joda-time.version>
+        <joda-time.version>2.12.5</joda-time.version>
     </properties>
 
 </project>

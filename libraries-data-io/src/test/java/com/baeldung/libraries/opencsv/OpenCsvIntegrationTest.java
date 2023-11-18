@@ -74,7 +74,7 @@ public class OpenCsvIntegrationTest {
 
         assertThat(contents.split(NEW_LINE))
           .containsExactly(
-          "'colA','colB','colC'",
+          "'COLA','COLB','COLC'",
           "'Test1','sample','data'",
           "'Test2','ipso','facto'"
         );
