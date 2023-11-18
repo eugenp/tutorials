@@ -28,7 +28,7 @@ public class SecurityConfiguration {
             .formLogin()
             .loginPage("/login")
             .permitAll()
-            .successForwardUrl("/index")
+            .defaultSuccessUrl("/index")
             .and()
             .logout()
             .permitAll()

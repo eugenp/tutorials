@@ -40,12 +40,14 @@
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
+            <version>${jedis.version}</version>
             <type>jar</type>
         </dependency>
     </dependencies>
 
     <properties>
         <embedded-redis.version>0.6</embedded-redis.version>
+        <jedis.version>5.0.2</jedis.version>
     </properties>
 
 </project>
