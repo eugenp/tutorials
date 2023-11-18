@@ -6,3 +6,4 @@ This module contains articles about the sun package
 
 - [Creating a Java Compiler Plugin](http://www.baeldung.com/java-build-compiler-plugin)
 - [Guide to sun.misc.Unsafe](http://www.baeldung.com/java-unsafe)
+- [Why Is sun.misc.Unsafe.park Actually Unsafe?](https://www.baeldung.com/java-sun-misc-unsafe-park-reason)
