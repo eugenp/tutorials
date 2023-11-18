@@ -1,13 +1,13 @@
 package com.baeldung.immutables;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThrows;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Assert;
-import org.junit.Test;
 
 public class ImmutableCollectionsUnitTest {
 
@@ -16,23 +16,23 @@ public class ImmutableCollectionsUnitTest {
         Map<String, String> modifiableMap = new HashMap<>();
         modifiableMap.put("name1", "Michael");
         modifiableMap.put("name2", "Harry");
-        
+
         Map<String, String> unmodifiableMap = Collections.unmodifiableMap(modifiableMap);
 
         assertThrows(UnsupportedOperationException.class, () -> unmodifiableMap.put("name3", "Micky"));
     }
 
     @Test
-    public void givenUnmodifiableMap_WhenPutNewEntryUsingOriginalReference_ThenSuccessful() {
+    public void givenUnmodifiableMap_WhenPutNewEntryUsingOriginalReference_ThenSuccess() {
         Map<String, String> modifiableMap = new HashMap<>();
         modifiableMap.put("name1", "Michael");
         modifiableMap.put("name2", "Harry");
-        
+
         Map<String, String> unmodifiableMap = Collections.unmodifiableMap(modifiableMap);
         modifiableMap.put("name3", "Micky");
-        
+
         assertEquals(modifiableMap, unmodifiableMap);
-        Assert.assertTrue(unmodifiableMap.containsKey("name3"));
+        assertTrue(unmodifiableMap.containsKey("name3"));
     }
 
     @Test
