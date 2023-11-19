@@ -2,10 +2,17 @@ package com.baeldung.gson.multiplefields;
 
 import java.util.Objects;
 
+import com.google.gson.annotations.Expose;
+
 public class StudentV2 extends StudentV1 {
 
+    @Expose
     private String firstName;
+
+    @Expose
     private String lastName;
+
+    @Expose
     private String major;
 
     @Override
