@@ -4,8 +4,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import com.baeldung.nullablebean.nonrequired.NonRequiredConfiguration;
 import com.baeldung.nullablebean.nonrequired.NonRequiredMainComponent;
-import com.baeldung.nullablebean.nullable.NullableConfiguration;
-import com.baeldung.nullablebean.nullable.NullableSupplierConfiguration;
+import com.baeldung.nullablebean.nullablejava.NullableJavaConfiguration;
+import com.baeldung.nullablebean.nullablejava.NullableMainComponent;
+import com.baeldung.nullablebean.nullablespring.NullableConfiguration;
+import com.baeldung.nullablebean.nullablespring.NullableSupplierConfiguration;
 import com.baeldung.nullablebean.optionable.OptionableConfiguration;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.UnsatisfiedDependencyException;
@@ -15,12 +17,18 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 class NullableXMLComponentUnitTest {
 
     @Test
+    void givenContextWhenCreatingNullableMainComponentThenSubComponentIsNull() {
+        final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(
+            NullableJavaConfiguration.class);
+        final NullableMainComponent bean = context.getBean(NullableMainComponent.class);
+        assertNull(bean.getSubComponent());
+    }
+    @Test
     void givenNonRequiredContextWhenCreatingMainComponentThenSubComponentIsNull() {
         final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(
             NonRequiredConfiguration.class);
         final NonRequiredMainComponent bean = context.getBean(NonRequiredMainComponent.class);
         assertNull(bean.getSubComponent());
-        ;
     }
 
     @Test
@@ -29,7 +37,6 @@ class NullableXMLComponentUnitTest {
             OptionableConfiguration.class);
         final MainComponent bean = context.getBean(MainComponent.class);
         assertNull(bean.getSubComponent());
-        ;
     }
 
     @Test
@@ -38,7 +45,6 @@ class NullableXMLComponentUnitTest {
             NullableSupplierConfiguration.class);
         final MainComponent bean = context.getBean(MainComponent.class);
         assertNull(bean.getSubComponent());
-        ;
     }
 
     @Test

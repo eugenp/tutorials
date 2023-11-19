@@ -1,4 +1,4 @@
-package com.baeldung.nullablebean.nullable;
+package com.baeldung.nullablebean.nullablespring;
 
 import com.baeldung.nullablebean.MainComponent;
 import com.baeldung.nullablebean.SubComponent;
