@@ -15,6 +15,18 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+            <version>${webflux.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+            <version>${mongo.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.awaitility</groupId>
             <artifactId>awaitility</artifactId>
             <version>${awaitility.version}</version>
@@ -33,7 +45,10 @@
     </build>
 
     <properties>
+        <java.version>19</java.version>
         <awaitility.version>4.2.0</awaitility.version>
+        <webflux.version>3.1.5</webflux.version>
+        <mongo.version>3.1.5</mongo.version>
     </properties>
 
 </project>
