@@ -41,13 +41,13 @@ public class ByteArrayToStringUnitTest {
         assertEquals(content, newContent);
     }
 
-@Test
-public void convertStringToByteBuffer_thenOk() {
-    byte[] expectedBytes = content.getBytes(Charset.forName(charset.toString()));
-    ByteBuffer byteBuffer = ByteBuffer.wrap(expectedBytes);
+    @Test
+    public void convertStringToByteBuffer_thenOk() {
+        byte[] expectedBytes = content.getBytes(Charset.forName(charset.toString()));
+        ByteBuffer byteBuffer = ByteBuffer.wrap(expectedBytes);
 
-    // Test the conversion from string to ByteBuffer
-    assertEquals(expectedBytes, byteBuffer.array());
-}
+        // Test the conversion from string to ByteBuffer
+        assertEquals(expectedBytes, byteBuffer.array());
+    }
 
 }
