@@ -7,4 +7,5 @@
 - [Difference Between Instant and LocalDateTime](https://www.baeldung.com/java-instant-vs-localdatetime)
 - [Add Minutes to a Time String in Java](https://www.baeldung.com/java-string-time-add-mins)
 - [Round the Date in Java](https://www.baeldung.com/java-round-the-date)
+- [Representing Furthest Possible Date in Java](https://www.baeldung.com/java-date-represent-max)
 - [[<-- Prev]](/core-java-modules/core-java-datetime-java8-1)
