@@ -1,4 +1,4 @@
-package com.baeldung.hashcodecompare;
+package com.baeldung.stringbuffer;
 import com.baeldung.stringbuffer.HashCode;
 
 import org.junit.Test;

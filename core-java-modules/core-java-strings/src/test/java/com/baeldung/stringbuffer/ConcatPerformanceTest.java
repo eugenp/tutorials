@@ -1,4 +1,4 @@
-package com.baeldung.concatperformance;
+package com.baeldung.stringbuffer;
 import com.baeldung.stringbuffer.ConcatPerformance;
 
 import org.junit.Test;
