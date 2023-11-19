@@ -14,5 +14,4 @@ public class ConcatPerformanceTest {
 
         assertThat(cp.getStringConcatenationTime()).isGreaterThan(cp.getStringBufferConcatenationTime());
     }
-
 }

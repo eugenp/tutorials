@@ -21,6 +21,5 @@ public class HashCodeTest {
 
         assertThat(initialStringHashCode).isNotEqualTo(hc.getHashCodeString(str));
         assertThat(initialSBufHashCode).isEqualTo(hc.getHashCodeSBuffer(sBuf));
-
     }
 }

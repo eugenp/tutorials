@@ -39,7 +39,6 @@ public class StringPerformance {
         result += baeldung;
         return result;
     }
-
     @Benchmark
     public StringBuilder  benchmarkStringBuilder() {
         StringBuilder stringBuilder = new StringBuilder(result);
@@ -124,7 +123,7 @@ public class StringPerformance {
         while ((end = longString.indexOf(' ', pos)) >= 0) {
             stringSplit.add(longString.substring(pos, end));
             pos = end + 1;
-        }   
+        }
         //Add last token of string
         stringSplit.add(longString.substring(pos));
         return stringSplit;
@@ -139,7 +138,6 @@ public class StringPerformance {
     public String benchmarkStringValueOf() {
         return String.valueOf(sampleNumber);
     }
-
 
     @Benchmark
     public String benchmarkStringConvertPlus() {
