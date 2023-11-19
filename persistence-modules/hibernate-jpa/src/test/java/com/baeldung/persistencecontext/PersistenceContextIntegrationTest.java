@@ -4,8 +4,8 @@ import com.baeldung.persistencecontext.entity.User;
 import com.baeldung.persistencecontext.service.ExtendedPersistenceContextUserService;
 import com.baeldung.persistencecontext.service.TransctionPersistenceContextUserService;
 
-import javax.persistence.EntityExistsException;
-import javax.persistence.TransactionRequiredException;
+import jakarta.persistence.EntityExistsException;
+import jakarta.persistence.TransactionRequiredException;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.ethereum</groupId>
     <artifactId>ethereum</artifactId>
@@ -113,7 +113,8 @@
             <scope>test</scope>
             <version>${spring.boot.version}</version>
             <exclusions>
-                <!-- junit4 dependency is excluded as it should to be resolved from junit-vintage-engine included in parent-modules. -->
+                <!-- junit4 dependency is excluded as it should to be resolved from junit-vintage-engine 
+                    included in parent-modules. -->
                 <exclusion>
                     <groupId>junit</groupId>
                     <artifactId>junit</artifactId>
@@ -191,8 +192,9 @@
         <ethereumj-core.version>1.5.0-RELEASE</ethereumj-core.version>
         <web3j.core.version>3.3.1</web3j.core.version>
         <spring.boot.version>1.5.6.RELEASE</spring.boot.version>
-        <jsonpath.version>2.4.0</jsonpath.version>
+        <jsonpath.version>2.8.0</jsonpath.version>
         <spring-boot-maven-plugin.version>2.0.4.RELEASE</spring-boot-maven-plugin.version>
         <compiler.plugin.version>3.1</compiler.plugin.version>
     </properties>
+
 </project>

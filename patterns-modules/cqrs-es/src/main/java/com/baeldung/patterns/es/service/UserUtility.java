@@ -23,8 +23,7 @@ public class UserUtility {
         for (Event event : events) {
             if (event instanceof UserCreatedEvent) {
                 UserCreatedEvent e = (UserCreatedEvent) event;
-                user = new User(UUID.randomUUID()
-                    .toString(), e.getFirstName(), e.getLastName());
+                user = new User(e.getUserId(), e.getFirstName(), e.getLastName());
             }
             if (event instanceof UserAddressAddedEvent) {
                 UserAddressAddedEvent e = (UserAddressAddedEvent) event;

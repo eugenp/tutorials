@@ -1,6 +1,6 @@
 package com.baeldung.hibernate.entitynotfoundexception;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;

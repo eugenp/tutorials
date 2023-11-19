@@ -5,9 +5,9 @@ import static org.junit.Assert.assertNull;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
 
 import com.baeldung.config.PersistenceJPAConfig;
 import com.baeldung.persistence.model.Foo;

@@ -23,6 +23,27 @@
             <artifactId>spring-security-oauth2</artifactId>
             <version>${oauth.version}</version>
         </dependency>
+        <dependency>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
+            <version>${jakarta.annotation-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>${jakarta.xml.bind-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>${jaxb-runtime.version}</version>
+        </dependency>
     </dependencies>
+
+    <properties>
+        <jakarta.annotation-api.version>1.3.5</jakarta.annotation-api.version>
+        <jakarta.xml.bind-api.version>2.3.3</jakarta.xml.bind-api.version>
+        <jaxb-runtime.version>2.3.5</jaxb-runtime.version>
+    </properties>
 
 </project>

@@ -2,17 +2,17 @@ package com.baeldung.algorithms.boruvka;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.google.common.graph.MutableValueGraph;
 import com.google.common.graph.ValueGraphBuilder;
 
-public class BoruvkaUnitTest {
+class BoruvkaUnitTest {
 
     private MutableValueGraph<Integer, Integer> graph;
 
-    @Before
+    @BeforeEach
     public void setup() {
         graph = ValueGraphBuilder.undirected()
             .build();
@@ -26,7 +26,7 @@ public class BoruvkaUnitTest {
     }
 
     @Test
-    public void givenInputGraph_whenBoruvkaPerformed_thenMinimumSpanningTree() {
+    void givenInputGraph_whenBoruvkaPerformed_thenMinimumSpanningTree() {
         BoruvkaMST boruvkaMST = new BoruvkaMST(graph);
         MutableValueGraph<Integer, Integer> mst = boruvkaMST.getMST();
 

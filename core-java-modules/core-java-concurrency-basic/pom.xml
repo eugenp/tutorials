@@ -4,7 +4,6 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-concurrency-basic</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
     <name>core-java-concurrency-basic</name>
     <packaging>jar</packaging>
 
@@ -25,6 +24,11 @@
             <artifactId>awaitility</artifactId>
             <version>${avaitility.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.reactivex.rxjava3</groupId>
+            <artifactId>rxjava</artifactId>
+            <version>3.1.6</version>
         </dependency>
     </dependencies>
 

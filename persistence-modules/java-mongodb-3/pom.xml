@@ -22,7 +22,7 @@
     </dependencies>
 
     <properties>
-        <mongo.version>3.12.1</mongo.version>
+        <mongo.version>3.12.11</mongo.version>
     </properties>
 
 </project>

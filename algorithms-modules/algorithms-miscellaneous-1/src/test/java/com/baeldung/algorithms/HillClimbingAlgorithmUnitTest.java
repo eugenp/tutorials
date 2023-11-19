@@ -1,23 +1,25 @@
 package com.baeldung.algorithms;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import com.baeldung.algorithms.hillclimbing.HillClimbing;
 import com.baeldung.algorithms.hillclimbing.State;
-import org.junit.Before;
-import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 
-public class HillClimbingAlgorithmUnitTest {
+class HillClimbingAlgorithmUnitTest {
     private Stack<String> initStack;
     private Stack<String> goalStack;
 
-    @Before
+    @BeforeEach
     public void initStacks() {
         String blockArr[] = { "B", "C", "D", "A" };
         String goalBlockArr[] = { "A", "B", "C", "D" };
@@ -30,7 +32,7 @@ public class HillClimbingAlgorithmUnitTest {
     }
 
     @Test
-    public void givenInitAndGoalState_whenGetPathWithHillClimbing_thenPathFound() {
+    void givenInitAndGoalState_whenGetPathWithHillClimbing_thenPathFound() {
         HillClimbing hillClimbing = new HillClimbing();
 
         List<State> path;
@@ -46,7 +48,7 @@ public class HillClimbingAlgorithmUnitTest {
     }
 
     @Test
-    public void givenCurrentState_whenFindNextState_thenBetterHeuristics() {
+    void givenCurrentState_whenFindNextState_thenBetterHeuristics() {
         HillClimbing hillClimbing = new HillClimbing();
         List<Stack<String>> initList = new ArrayList<>();
         initList.add(initStack);

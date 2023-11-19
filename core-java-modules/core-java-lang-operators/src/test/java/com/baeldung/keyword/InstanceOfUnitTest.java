@@ -1,55 +1,67 @@
 package com.baeldung.keyword;
 
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
-import com.baeldung.keyword.Circle;
-import com.baeldung.keyword.Ring;
-import com.baeldung.keyword.Round;
-import com.baeldung.keyword.Shape;
-import com.baeldung.keyword.Triangle;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class InstanceOfUnitTest {
 
     @Test
-    public void giveWhenInstanceIsCorrect_thenReturnTrue() {
+    void giveWhenInstanceIsCorrect_thenReturnTrue() {
         Ring ring = new Ring();
-        Assert.assertTrue("ring is instance of Round ", ring instanceof Round);
+        assertTrue(ring instanceof Round);
     }
 
     @Test
-    public void giveWhenObjectIsInstanceOfType_thenReturnTrue() {
+    void giveWhenObjectIsInstanceOfType_thenReturnTrue() {
         Circle circle = new Circle();
-        Assert.assertTrue("circle is instance of Circle ", circle instanceof Circle);
+        assertTrue(circle instanceof Circle);
     }
 
-  
+
     @Test
-    public void giveWhenInstanceIsOfSubtype_thenReturnTrue() {
+    void giveWhenInstanceIsOfSubtype_thenReturnTrue() {
         Circle circle = new Circle();
-        Assert.assertTrue("circle is instance of Round", circle instanceof Round);
+        assertTrue(circle instanceof Round);
     }
 
     @Test
-    public void giveWhenTypeIsInterface_thenReturnTrue() {
+    void giveWhenTypeIsInterface_thenReturnTrue() {
         Circle circle = new Circle();
-        Assert.assertTrue("circle is instance of Shape", circle instanceof Shape);
+        assertTrue(circle instanceof Shape);
     }
-    
+
     @Test
-    public void giveWhenTypeIsOfObjectType_thenReturnTrue() {
+    void giveWhenTypeIsOfObjectType_thenReturnTrue() {
         Thread thread = new Thread();
-        Assert.assertTrue("thread is instance of Object", thread instanceof Object);
+        assertTrue(thread instanceof Object);
     }
 
     @Test
-    public void giveWhenInstanceValueIsNull_thenReturnFalse() {
+    void giveWhenInstanceValueIsNull_thenReturnFalse() {
         Circle circle = null;
-        Assert.assertFalse("circle is instance of Round", circle instanceof Round);
+        assertFalse(circle instanceof Round);
     }
 
     @Test
-    public void giveWhenComparingClassInDiffHierarchy_thenCompilationError() {
-        // Assert.assertFalse("circle is instance of Triangle", circle instanceof Triangle);
+    void giveWhenComparingClassInDiffHierarchy_thenCompilationError() {
+        //assertFalse( circle instanceof Triangle);
+    }
+
+    @Test
+    void giveWhenStream_whenCastWithoutInstanceOfChk_thenGetException() {
+        Stream<Round> roundStream = Stream.of(new Ring(), new Ring(), new Circle());
+        assertThrows(ClassCastException.class, () -> roundStream.map(it -> (Ring) it).collect(Collectors.toList()));
+    }
+
+    @Test
+    void giveWhenStream_whenCastAfterInstanceOfChk_thenGetExpectedResult() {
+        Stream<Round> roundStream = Stream.of(new Ring(), new Ring(), new Circle());
+        List<Ring> ringList = roundStream.filter(it -> it instanceof Ring).map(it -> (Ring) it).collect(Collectors.toList());
+        assertEquals(2, ringList.size());
     }
 }

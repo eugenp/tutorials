@@ -1,15 +1,15 @@
 package com.baeldung.libraries.ebean.app;
 
-import io.ebean.EbeanServer;
-import io.ebean.EbeanServerFactory;
-import io.ebean.config.ServerConfig;
-
 import java.util.Properties;
+
+import io.ebean.Database;
+import io.ebean.DatabaseFactory;
+import io.ebean.config.DatabaseConfig;
 
 public class App2 {
 
     public static void main(String[] args) {
-        ServerConfig cfg = new ServerConfig();
+        DatabaseConfig cfg = new DatabaseConfig();
         cfg.setDefaultServer(true);
         Properties properties = new Properties();
         properties.put("ebean.db.ddl.generate", "true");
@@ -19,8 +19,6 @@ public class App2 {
         properties.put("datasource.db.databaseUrl", "jdbc:h2:mem:app2");
         properties.put("datasource.db.databaseDriver", "org.h2.Driver");
         cfg.loadFromProperties(properties);
-        EbeanServer server = EbeanServerFactory.create(cfg);
-
+        Database server = DatabaseFactory.create(cfg);
     }
-
 }

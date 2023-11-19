@@ -29,9 +29,8 @@ public class DatasourceConfig {
         if ( !StringUtil.isNullOrEmpty(properties.getPassword())) {
             ob = ob.option(PASSWORD, properties.getPassword());
         }
-        
-        ConnectionFactory cf = ConnectionFactories.get(ob.build());
-        return cf;
+
+        return ConnectionFactories.get(ob.build());
     }
     
 

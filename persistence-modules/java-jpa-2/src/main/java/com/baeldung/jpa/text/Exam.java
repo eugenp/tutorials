@@ -1,6 +1,6 @@
 package com.baeldung.jpa.text;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 public class Exam {

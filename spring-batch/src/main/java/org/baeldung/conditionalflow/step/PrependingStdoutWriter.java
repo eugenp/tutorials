@@ -1,7 +1,6 @@
 package org.baeldung.conditionalflow.step;
 
-import java.util.List;
-
+import org.springframework.batch.item.Chunk;
 import org.springframework.batch.item.ItemWriter;
 
 public class PrependingStdoutWriter<T> implements ItemWriter<T> {
@@ -12,8 +11,8 @@ public class PrependingStdoutWriter<T> implements ItemWriter<T> {
     }
 
     @Override
-    public void write(List<? extends T> list) {
-        for (T listItem : list) {
+    public void write(Chunk<? extends T> chunk) {
+        for (T listItem : chunk) {
             System.out.println(prependText + " " + listItem.toString());
         }
     }

@@ -323,13 +323,13 @@ public class VavrUnitTest {
         if (input == 0) {
             output = "zero";
         }
-        if (input == 1) {
+        else if (input == 1) {
             output = "one";
         }
-        if (input == 2) {
+        else if (input == 2) {
             output = "two";
         }
-        if (input == 3) {
+        else if (input == 3) {
             output = "three";
         } else {
             output = "unknown";

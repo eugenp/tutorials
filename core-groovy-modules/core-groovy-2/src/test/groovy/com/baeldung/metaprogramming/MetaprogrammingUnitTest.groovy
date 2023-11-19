@@ -1,123 +1,163 @@
 package com.baeldung.metaprogramming
 
+import spock.lang.Specification
 
-import java.time.LocalDate
-import java.time.Period
 import java.time.Year
 
-class MetaprogrammingUnitTest extends GroovyTestCase {
+class MetaprogrammingUnitTest extends Specification {
 
-    Employee emp = new Employee(firstName: "Norman", lastName: "Lewis")
+    Employee emp
 
-    void testPropertyMissing() {
-        assert emp.address == "property 'address' is not available"
+    void setup() {
+        emp = new Employee(firstName: "Norman", lastName: "Lewis")
     }
 
-    void testMethodMissing() {
+    def "testPropertyMissing"() {
+        expect:
+        emp.address == "property 'address' is not available"
+    }
+
+    def "testMethodMissing"() {
+        given:
         Employee emp = new Employee()
-        try {
-            emp.getFullName()
-        } catch(MissingMethodException e) {
-            println "method is not defined"
-        }
-        assert emp.getFullName() == "method 'getFullName' is not defined"
+
+        expect:
+        emp.getFullName() == "method 'getFullName' is not defined"
     }
 
-    void testMetaClassProperty() {
+    def "testMetaClassProperty"() {
+        when:
         Employee.metaClass.address = ""
-        emp = new Employee(firstName: "Norman", lastName: "Lewis", address: "US")
-        assert emp.address == "US"
+
+        and:
+        emp = new Employee(firstName: "Norman",
+                           lastName: "Lewis",
+                           address: "US")
+
+        then:
+        emp.address == "US"
     }
 
-    void testMetaClassMethod() {
+    def "testMetaClassMethod"() {
+        when:
         emp.metaClass.getFullName = {
             "$lastName, $firstName"
         }
-        assert emp.getFullName() == "Lewis, Norman"
+
+        then:
+        emp.getFullName() == "Lewis, Norman"
     }
 
-    void testMetaClassConstructor() {
-        try {
-            Employee emp = new Employee("Norman")
-        } catch(GroovyRuntimeException e) {
-            assert e.message == "Could not find matching constructor for: com.baeldung.metaprogramming.Employee(String)"
-        }
+    def "testOnlyNameConstructor"() {
+        when:
+        new Employee("Norman")
 
+        then:
+        thrown(GroovyRuntimeException)
+    }
+
+    def "testMetaClassConstructor"() {
+        when:
         Employee.metaClass.constructor = { String firstName ->
             new Employee(firstName: firstName)
         }
 
+        and:
         Employee norman = new Employee("Norman")
-        assert norman.firstName == "Norman"
-        assert norman.lastName == null
+
+        then:
+        norman.firstName == "Norman"
+        norman.lastName == null
     }
 
-    void testJavaMetaClass() {
+    def "testJavaMetaClass"() {
+        when:
         String.metaClass.capitalize = { String str ->
             str.substring(0, 1).toUpperCase() + str.substring(1)
         }
-        assert "norman".capitalize() == "Norman"
+
+        and:
+        String.metaClass.static.joinWith = { String delimiter, String... args ->
+            String.join(delimiter, args)
+        }
+
+        then:
+        "norman".capitalize() == "Norman"
+        String.joinWith(" -> ", "a", "b", "c") == "a -> b -> c"
     }
 
-    void testEmployeeExtension() {
+    def "testEmployeeExtension"() {
+        given:
         def age = 28
         def expectedYearOfBirth = Year.now() - age
         Employee emp = new Employee(age: age)
-        assert emp.getYearOfBirth() == expectedYearOfBirth.value
+
+        expect:
+        emp.getYearOfBirth() == expectedYearOfBirth.value
     }
 
-    void testJavaClassesExtensions() {
+    def "testJavaClassesExtensions"() {
+        when:
         5.printCounter()
 
-        assert 40l.square() == 1600l
-
-        assert (2.98).cube() == 26.463592
+        then:
+        40L.square() == 1600L
+        (2.98).cube() == 26.463592
     }
 
-    void testStaticEmployeeExtension() {
+    def "testStaticEmployeeExtension"() {
         assert Employee.getDefaultObj().firstName == "firstName"
         assert Employee.getDefaultObj().lastName == "lastName"
         assert Employee.getDefaultObj().age == 20
     }
 
-    void testToStringAnnotation() {
-        Employee employee = new Employee()
-        employee.id = 1
-        employee.firstName = "norman"
-        employee.lastName = "lewis"
-        employee.age = 28
+    def "testToStringAnnotation"() {
+        when:
+        Employee employee = new Employee().tap {
+            id = 1
+            firstName = "norman"
+            lastName = "lewis"
+            age = 28
+        }
 
-        assert employee.toString() == "Employee(norman, lewis, 28)"
+        then:
+        employee.toString() == "Employee(norman, lewis, 28)"
     }
 
-    void testTupleConstructorAnnotation() {
+    def "testTupleConstructorAnnotation"() {
+        when:
         Employee norman = new Employee(1, "norman", "lewis", 28)
-        assert norman.toString() == "Employee(norman, lewis, 28)"
-
         Employee snape = new Employee(2, "snape")
-        assert snape.toString() == "Employee(snape, null, 0)"
 
+        then:
+        norman.toString() == "Employee(norman, lewis, 28)"
+        snape.toString() == "Employee(snape, null, 0)"
     }
-    
-    void testEqualsAndHashCodeAnnotation() {
+
+    def "testEqualsAndHashCodeAnnotation"() {
+        when:
         Employee norman = new Employee(1, "norman", "lewis", 28)
         Employee normanCopy = new Employee(1, "norman", "lewis", 28)
-        assert norman.equals(normanCopy)
-        assert norman.hashCode() == normanCopy.hashCode()
-    }
-    
-    void testAutoCloneAnnotation() {
-        try {
-            Employee norman = new Employee(1, "norman", "lewis", 28)
-            def normanCopy = norman.clone()
-            assert norman == normanCopy
-        } catch(CloneNotSupportedException e) {
-            e.printStackTrace()
-        }
+
+        then:
+        norman == normanCopy
+        norman.hashCode() == normanCopy.hashCode()
     }
 
-    void testLoggingAnnotation() {
+    def "testAutoCloneAnnotation"() {
+        given:
+        Employee norman = new Employee(1, "norman", "lewis", 28)
+
+        when:
+        def normanCopy = norman.clone()
+
+        then:
+        norman == normanCopy
+    }
+
+    def "testLoggingAnnotation"() {
+        given:
         Employee employee = new Employee(1, "Norman", "Lewis", 28)
-        employee.logEmp()
+        employee.logEmp() // INFO: Employee: Lewis, Norman is of 28 years age
     }
 }

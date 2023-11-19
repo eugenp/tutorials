@@ -1,6 +1,5 @@
 package com.baeldung.morphia.domain;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -25,7 +24,7 @@ public class Book {
     @Property
     private String title;
     private String author;
-    @Embedded
+
     private Publisher publisher;
     @Property("price")
     private double cost;

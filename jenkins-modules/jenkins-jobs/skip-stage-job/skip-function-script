@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+    parameters {
+        booleanParam(name: 'skip_test', defaultValue: false, description: 'Set to true to skip the test stage')
+    }
+    stages {
+        stage('Build') {
+            steps {
+                sh 'echo "Building the application"'
+            }
+        }
+        stage('Test') {
+            steps {
+                execute_stage('Test', params.skip_test)
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'echo "Deploying the application"'
+            }
+        }
+    }
+}
+
+def execute_stage(stage_name, skip) {
+    stage(stage_name) {
+        if(skip) {
+            echo "Skipping ${stage_name} stage"
+            return
+        }
+        // Add steps to test the application
+    }

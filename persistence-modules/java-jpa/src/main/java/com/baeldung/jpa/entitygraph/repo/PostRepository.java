@@ -2,10 +2,10 @@ package com.baeldung.jpa.entitygraph.repo;
 
 import com.baeldung.jpa.entitygraph.model.Post;
 
-import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
+import jakarta.persistence.*;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,7 +34,7 @@ public class PostRepository {
 
         EntityGraph entityGraph = entityManager.getEntityGraph("post-entity-graph");
         Map<String, Object> properties = new HashMap<>();
-        properties.put("javax.persistence.fetchgraph", entityGraph);
+        properties.put("jakarta.persistence.fetchgraph", entityGraph);
         Post post = entityManager.find(Post.class, id, properties);
 
         entityManager.close();
@@ -51,7 +51,7 @@ public class PostRepository {
                 .addAttributeNodes("user");
 
         Map<String, Object> properties = new HashMap<>();
-        properties.put("javax.persistence.fetchgraph", entityGraph);
+        properties.put("jakarta.persistence.fetchgraph", entityGraph);
         Post post = entityManager.find(Post.class, id, properties);
 
         entityManager.close();
@@ -64,7 +64,7 @@ public class PostRepository {
         EntityGraph entityGraph = entityManager.getEntityGraph("post-entity-graph-with-comment-users");
         Post post = entityManager.createQuery("Select p from Post p where p.id=:id", Post.class)
                 .setParameter("id", id)
-                .setHint("javax.persistence.fetchgraph", entityGraph)
+                .setHint("jakarta.persistence.fetchgraph", entityGraph)
                 .getSingleResult();
 
         entityManager.close();
@@ -80,7 +80,7 @@ public class PostRepository {
         Root<Post> root = criteriaQuery.from(Post.class);
         criteriaQuery.where(criteriaBuilder.equal(root.<Long>get("id"), id));
         TypedQuery<Post> typedQuery = entityManager.createQuery(criteriaQuery);
-        typedQuery.setHint("javax.persistence.loadgraph", entityGraph);
+        typedQuery.setHint("jakarta.persistence.loadgraph", entityGraph);
         Post post = typedQuery.getSingleResult();
 
         entityManager.close();

@@ -1,10 +1,11 @@
 package com.baeldung.helidon.se.security;
 
-import io.helidon.security.provider.httpauth.UserStore;
+import io.helidon.security.providers.httpauth.SecureUserStore;
 
+import java.util.Arrays;
 import java.util.Collection;
 
-public class MyUser implements UserStore.User {
+public class MyUser implements SecureUserStore.User {
 
     private String login;
     private char[] password;
@@ -17,17 +18,17 @@ public class MyUser implements UserStore.User {
     }
 
     @Override
-    public String getLogin() {
+    public String login() {
         return login;
     }
 
     @Override
-    public char[] getPassword() {
-        return password;
+    public boolean isPasswordValid(char[] chars) {
+        return Arrays.equals(chars, password);
     }
 
     @Override
-    public Collection<String> getRoles() {
+    public Collection<String> roles() {
         return roles;
     }
 }

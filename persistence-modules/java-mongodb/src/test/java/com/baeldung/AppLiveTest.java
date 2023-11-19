@@ -2,71 +2,50 @@ package com.baeldung;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.After;
-import org.junit.Before;
+import org.bson.Document;
 import org.junit.Test;
 
-import com.mongodb.BasicDBObject;
-import com.mongodb.DB;
-import com.mongodb.DBCollection;
-import com.mongodb.DBCursor;
-import com.mongodb.Mongo;
+import com.mongodb.client.FindIterable;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
+import com.mongodb.client.MongoDatabase;
 
-import de.flapdoodle.embedmongo.MongoDBRuntime;
-import de.flapdoodle.embedmongo.MongodExecutable;
-import de.flapdoodle.embedmongo.MongodProcess;
-import de.flapdoodle.embedmongo.config.MongodConfig;
-import de.flapdoodle.embedmongo.distribution.Version;
-import de.flapdoodle.embedmongo.runtime.Network;
+import de.flapdoodle.embed.mongo.distribution.Version;
+import de.flapdoodle.embed.mongo.transitions.Mongod;
+import de.flapdoodle.embed.mongo.transitions.RunningMongodProcess;
+import de.flapdoodle.reverse.TransitionWalker;
 
 public class AppLiveTest {
 
     private static final String DB_NAME = "myMongoDb";
-    private MongodExecutable mongodExe;
-    private MongodProcess mongod;
-    private Mongo mongo;
-    private DB db;
-    private DBCollection collection;
-
-    @Before
-    public void setup() throws Exception {
-        // Creating Mongodbruntime instance
-        MongoDBRuntime runtime = MongoDBRuntime.getDefaultInstance();
-
-        // Creating MongodbExecutable
-        mongodExe = runtime.prepare(new MongodConfig(Version.V2_0_1, 12345, Network.localhostIsIPv6()));
-
-        // Starting Mongodb
-        mongod = mongodExe.start();
-        mongo = new Mongo("localhost", 12345);
-
-        // Creating DB
-        db = mongo.getDB(DB_NAME);
-
-        // Creating collection Object and adding values
-        collection = db.getCollection("customers");
-    }
-
-    @After
-    public void teardown() throws Exception {
-        mongod.stop();
-        mongodExe.cleanup();
-    }
 
     @Test
     public void testAddressPersistance() {
-        BasicDBObject contact = new BasicDBObject();
-        contact.put("name", "John");
-        contact.put("company", "Baeldung");
+        try (TransitionWalker.ReachedState<RunningMongodProcess> running = Mongod.instance().start(Version.V6_0_3)) {
+            try (MongoClient mongo = MongoClients.create("mongodb://" + running.current().getServerAddress().getHost() + ":" + running.current().getServerAddress().getPort())) {
+                // Creating DB
+                MongoDatabase db = mongo.getDatabase(DB_NAME);
 
-        // Inserting document
-        collection.insert(contact);
-        DBCursor cursorDoc = collection.find();
-        BasicDBObject contact1 = new BasicDBObject();
-        while (cursorDoc.hasNext()) {
-            contact1 = (BasicDBObject) cursorDoc.next();
-            System.out.println(contact1);
+                // Creating collection Object and adding values
+                MongoCollection<Document> collection = db.getCollection("customers");
+
+                Document contact = new Document();
+                contact.put("name", "John");
+                contact.put("company", "Baeldung");
+
+                // Inserting document
+                collection.insertOne(contact);
+                FindIterable<Document> cursorDoc = collection.find();
+                Document contact1 = new Document();
+                final MongoCursor<Document> cursor = cursorDoc.cursor();
+                while (cursor.hasNext()) {
+                    contact1 = cursor.next();
+                    System.out.println(contact1);
+                }
+                assertEquals(contact1.get("name"), "John");
+            }
         }
-        assertEquals(contact1.get("name"), "John");
     }
 }

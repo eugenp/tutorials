@@ -15,10 +15,10 @@ import com.baeldung.hibernate.criteria.model.Item;
 import com.baeldung.hibernate.criteria.util.HibernateUtil;
 import com.baeldung.hibernate.criteria.view.ApplicationView;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaDelete;
-import javax.persistence.criteria.CriteriaUpdate;
-import javax.persistence.criteria.Root;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaDelete;
+import jakarta.persistence.criteria.CriteriaUpdate;
+import jakarta.persistence.criteria.Root;
 
 public class HibernateCriteriaIntegrationTest {
 

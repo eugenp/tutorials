@@ -2,6 +2,8 @@ package com.baeldung.derivedquery.repository;
 
 import com.baeldung.derivedquery.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.time.ZonedDateTime;
 import java.util.Collection;
@@ -49,12 +51,16 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     List<User> findByAgeIn(Collection<Integer> ages);
 
-    List<User> findByNameOrBirthDate(String name, ZonedDateTime birthDate);
+    List<User> findByNameOrAge(String name, Integer age);
 
-    List<User> findByNameOrBirthDateAndActive(String name, ZonedDateTime birthDate, Boolean active);
+    List<User> findByNameOrAgeAndActive(String name, Integer age, Boolean active);
 
     List<User> findByNameOrderByName(String name);
 
     List<User> findByNameOrderByNameDesc(String name);
+    
+    List<User> findByNameIsNotNull();
+    
+    List<User> findByNameOrderByNameAsc(String name);
 
 }

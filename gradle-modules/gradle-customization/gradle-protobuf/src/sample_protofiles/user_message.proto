@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package com.baeldung.protobuf;
+
+option java_multiple_files = true;
+option java_package = "com.baeldung.protobuf.service";
+
+message User {
+  string firstName = 1;
+  optional string middleName = 2;
+  string lastName = 3;
+  optional uint32 age = 4;
+}

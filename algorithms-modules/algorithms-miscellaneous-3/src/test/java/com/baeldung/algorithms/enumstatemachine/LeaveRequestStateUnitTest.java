@@ -1,37 +1,37 @@
 package com.baeldung.algorithms.enumstatemachine;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class LeaveRequestStateUnitTest {
+class LeaveRequestStateUnitTest {
 
     @Test
-    public void givenLeaveRequest_whenStateEscalated_thenResponsibleIsTeamLeader() {
+    void givenLeaveRequest_whenStateEscalated_thenResponsibleIsTeamLeader() {
         LeaveRequestState state = LeaveRequestState.Escalated;
 
-        assertEquals(state.responsiblePerson(), "Team Leader");
+        assertEquals( "Team Leader", state.responsiblePerson());
     }
 
 
     @Test
-    public void givenLeaveRequest_whenStateApproved_thenResponsibleIsDepartmentManager() {
+    void givenLeaveRequest_whenStateApproved_thenResponsibleIsDepartmentManager() {
         LeaveRequestState state = LeaveRequestState.Approved;
 
-        assertEquals(state.responsiblePerson(), "Department Manager");
+        assertEquals( "Department Manager" , state.responsiblePerson());
     }
 
     @Test
-    public void givenLeaveRequest_whenNextStateIsCalled_thenStateIsChanged() {
+    void givenLeaveRequest_whenNextStateIsCalled_thenStateIsChanged() {
         LeaveRequestState state = LeaveRequestState.Submitted;
 
         state = state.nextState();
-        assertEquals(state, LeaveRequestState.Escalated);
+        assertEquals(LeaveRequestState.Escalated, state);
 
         state = state.nextState();
-        assertEquals(state, LeaveRequestState.Approved);
+        assertEquals(LeaveRequestState.Approved, state);
 
         state = state.nextState();
-        assertEquals(state, LeaveRequestState.Approved);
+        assertEquals(LeaveRequestState.Approved, state);
     }
 }

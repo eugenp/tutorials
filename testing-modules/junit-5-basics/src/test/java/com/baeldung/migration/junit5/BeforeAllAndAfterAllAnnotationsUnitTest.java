@@ -6,27 +6,27 @@ import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class BeforeAllAndAfterAllAnnotationsUnitTest {
+class BeforeAllAndAfterAllAnnotationsUnitTest {
 
     private static final Logger LOG = LoggerFactory.getLogger(BeforeAllAndAfterAllAnnotationsUnitTest.class);
-    
+
     @BeforeAll
-    public static void setup() {
+    static void setup() {
         LOG.debug("startup - creating DB connection");
     }
 
     @AfterAll
-    public static void tearDown() {
+    static void tearDown() {
         LOG.debug("closing DB connection");
     }
 
     @Test
-    public void simpleTest() {
+    void simpleTest() {
         LOG.debug("simple test");
     }
 
     @Test
-    public void anotherSimpleTest() {
+    void anotherSimpleTest() {
         LOG.debug("another simple test");
     }
 }

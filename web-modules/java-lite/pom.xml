@@ -56,7 +56,6 @@
                     <systemProperties>
                         <systemProperty>
                             <name>activejdbc.log</name>
-                            <value></value>
                         </systemProperty>
                         <systemProperty>
                             <name>active_reload</name>

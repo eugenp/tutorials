@@ -2,22 +2,23 @@ package com.baeldung.authresolver;
 
 import java.util.Collections;
 import javax.servlet.http.HttpServletRequest;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationManagerResolver;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationConverter;
 import org.springframework.security.web.authentication.AuthenticationFilter;
 import org.springframework.security.web.authentication.www.BasicAuthenticationConverter;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 @Configuration
-public class CustomWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
+public class CustomWebSecurityConfigurer {
 
     public AuthenticationConverter authenticationConverter() {
         return new BasicAuthenticationConverter();
@@ -85,12 +86,10 @@ public class CustomWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
         };
     }
 
-    @Override
-    protected void configure(HttpSecurity http) {
-        http.addFilterBefore(
-          authenticationFilter(),
-          BasicAuthenticationFilter.class
-        );
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.addFilterBefore(authenticationFilter(), BasicAuthenticationFilter.class);
+        return http.build();
     }
 
 }

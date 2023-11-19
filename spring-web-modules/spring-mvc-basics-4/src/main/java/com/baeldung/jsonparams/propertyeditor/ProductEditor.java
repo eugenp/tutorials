@@ -18,7 +18,7 @@ public class ProductEditor extends PropertyEditorSupport {
 
     @Override
     public void setAsText(String text) throws IllegalArgumentException {
-        if (StringUtils.isEmpty(text)) {
+        if (!StringUtils.hasText(text)) {
             setValue(null);
         } else {
             Product prod = new Product();

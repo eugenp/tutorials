@@ -4,10 +4,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-public class TreeReverserUnitTest {
+class TreeReverserUnitTest {
 
     @Test
-    public void givenTreeWhenReversingRecursivelyThenReversed() {
+    void givenTreeWhenReversingRecursivelyThenReversed() {
         TreeReverser reverser = new TreeReverser();
 
         TreeNode treeNode = createBinaryTree();
@@ -19,7 +19,7 @@ public class TreeReverserUnitTest {
     }
 
     @Test
-    public void givenTreeWhenReversingIterativelyThenReversed() {
+    void givenTreeWhenReversingIterativelyThenReversed() {
         TreeReverser reverser = new TreeReverser();
 
         TreeNode treeNode = createBinaryTree();

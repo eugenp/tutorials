@@ -1,9 +1,9 @@
 package com.baeldung.eclipselink.springdata.pessimisticlocking;
 
-import javax.persistence.CollectionTable;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import java.util.List;
 
 @Entity

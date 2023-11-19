@@ -1,0 +1,21 @@
+spring:
+  cloud:
+    azure:
+      compatibility-verifier:
+        enabled: false
+      keyvault:
+        secret:
+          endpoint: https://spring-cloud-azure.vault.azure.net/
+          property-source-enabled: true
+          property-sources:
+            name: key-vault-property-source-1
+            endpoint: https://spring-cloud-azure.vault.azure.net/
+azure:
+  keyvault:
+    vaultUrl: {$myVaultUrl}
+    tenantId: {$myTenantId}
+    clientId: {$myClientId}
+    clientSecret: {$myClientSecret}
+database:
+  secret:
+    value: my-database-secret

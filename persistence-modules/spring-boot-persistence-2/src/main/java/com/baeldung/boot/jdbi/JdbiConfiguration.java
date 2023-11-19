@@ -31,11 +31,11 @@ public class JdbiConfiguration {
         
         // Register all available plugins
         log.info("[I27] Installing plugins... ({} found)", jdbiPlugins.size());
-        jdbiPlugins.forEach(plugin -> jdbi.installPlugin(plugin));
+        jdbiPlugins.forEach(jdbi::installPlugin);
         
         // Register all available rowMappers
         log.info("[I31] Installing rowMappers... ({} found)", rowMappers.size());
-        rowMappers.forEach(mapper -> jdbi.registerRowMapper(mapper));
+        rowMappers.forEach(jdbi::registerRowMapper);
         
         return jdbi;
     }

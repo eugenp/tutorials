@@ -1,8 +1,8 @@
 package com.baeldung.microprofile.repo;
 
 import com.baeldung.microprofile.model.Book;
+import jakarta.enterprise.context.ApplicationScoped;
 
-import javax.enterprise.context.ApplicationScoped;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;

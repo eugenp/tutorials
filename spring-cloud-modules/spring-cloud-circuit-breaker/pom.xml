@@ -18,7 +18,7 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>2.2.4.RELEASE</version>
+                <version>${spring-boot-dependencies.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -38,7 +38,8 @@
     </dependencies>
 
     <properties>
-        <circuitbreaker-resilience4j.version>1.0.2.RELEASE</circuitbreaker-resilience4j.version>
+        <spring-boot-dependencies.version>3.0.1</spring-boot-dependencies.version>
+        <circuitbreaker-resilience4j.version>3.0.2</circuitbreaker-resilience4j.version>
     </properties>
 
 </project>

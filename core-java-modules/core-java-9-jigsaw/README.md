@@ -8,5 +8,5 @@ This module contains articles about Project Jigsaw and the Java Platform Module 
 - [A Guide to Java 9 Modularity](https://www.baeldung.com/java-9-modularity)
 - [Java 9 java.lang.Module API](https://www.baeldung.com/java-9-module-api)
 - [Java 9 Illegal Reflective Access Warning](https://www.baeldung.com/java-illegal-reflective-access)
-
+- [Java Modularity and Unit Testing](https://www.baeldung.com/java-modularity-unit-testing)
 

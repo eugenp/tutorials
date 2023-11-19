@@ -3,7 +3,7 @@ package com.baeldung.hibernate.immutable.entities;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Immutable;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Immutable

@@ -25,15 +25,9 @@
 
     <build>
         <finalName>testng</finalName>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
         <testResources>
             <testResource>
-                <directory>src/main/resources</directory>
+                <directory>src/test/resources</directory>
                 <filtering>true</filtering>
             </testResource>
         </testResources>
@@ -79,7 +73,7 @@
     </profiles>
 
     <properties>
-        <testng.version>7.1.0</testng.version>
+        <testng.version>7.8.0</testng.version>
     </properties>
 
 </project>

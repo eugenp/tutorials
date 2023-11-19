@@ -63,9 +63,12 @@ public class IdentifiersIntegrationTest {
 
     @Test
     public void whenSaveCompositeIdEntity_thenOk() {
+        User user = new User();
+
         OrderEntryPK entryPK = new OrderEntryPK();
         entryPK.setOrderId(1L);
         entryPK.setProductId(30L);
+        entryPK.setUser(user);
 
         OrderEntry entry = new OrderEntry();
         entry.setEntryId(entryPK);
@@ -77,9 +80,12 @@ public class IdentifiersIntegrationTest {
 
     @Test
     public void whenSaveIdClassEntity_thenOk() {
+        User user = new User();
+
         OrderEntryIdClass entry = new OrderEntryIdClass();
         entry.setOrderId(1L);
         entry.setProductId(30L);
+        entry.setUser(user);
         session.save(entry);
 
         assertThat(entry.getOrderId()).isEqualTo(1L);

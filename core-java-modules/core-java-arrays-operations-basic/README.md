@@ -10,3 +10,6 @@ This module contains articles about Java array fundamentals. They assume no prev
 - [Removing an Element from an Array in Java](https://www.baeldung.com/java-array-remove-element)
 - [Removing the First Element of an Array](https://www.baeldung.com/java-array-remove-first-element)
 - [Extending an Array’s Length](https://www.baeldung.com/java-array-add-element-at-the-end)
+- [Initializing a Boolean Array in Java](https://www.baeldung.com/java-initializing-boolean-array)
+- [Find the Index of an Element in a Java Array](https://www.baeldung.com/java-array-find-index)
+- [Comparing Two Byte Arrays in Java](https://www.baeldung.com/java-comparing-byte-arrays)

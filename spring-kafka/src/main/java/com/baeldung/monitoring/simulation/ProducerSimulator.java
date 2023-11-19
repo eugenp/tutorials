@@ -23,10 +23,9 @@ public class ProducerSimulator {
     private final boolean enabled;
 
     @Autowired
-    public ProducerSimulator(
-            KafkaTemplate<String, String> kafkaTemplate,
-            @Value(value = "${monitor.topic.name}") String topicName,
-            @Value(value = "${monitor.producer.simulate}") String enabled) {
+    public ProducerSimulator(KafkaTemplate<String, String> kafkaTemplate,
+      @Value(value = "${monitor.topic.name}") String topicName,
+      @Value(value = "${monitor.producer.simulate}") String enabled) {
         this.kafkaTemplate = kafkaTemplate;
         this.topicName = topicName;
         this.enabled = BooleanUtils.toBoolean(enabled);
@@ -37,7 +36,9 @@ public class ProducerSimulator {
         if (enabled) {
             if (endTime.after(new Date())) {
                 String message = "msg-" + time();
-                SendResult<String, String> result = kafkaTemplate.send(topicName, message).get();
+                SendResult<String, String> result = kafkaTemplate
+                  .send(topicName, message)
+                  .get();
             }
         }
     }

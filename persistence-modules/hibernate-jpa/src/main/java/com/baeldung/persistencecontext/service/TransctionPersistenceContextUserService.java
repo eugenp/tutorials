@@ -1,20 +1,20 @@
 package com.baeldung.persistencecontext.service;
 
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.baeldung.persistencecontext.entity.User;
 
-@Component
+@Service
 public class TransctionPersistenceContextUserService {
 
     @PersistenceContext
     private EntityManager entityManager;
-    
+
     @Transactional
     public User insertWithTransaction(User user) {
         entityManager.persist(user);

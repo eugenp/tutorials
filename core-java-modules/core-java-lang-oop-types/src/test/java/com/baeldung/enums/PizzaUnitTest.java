@@ -70,7 +70,7 @@ public class PizzaUnitTest {
     }
 
     @Test
-    public void whenDelivered_thenPizzaGetsDeliveredAndStatusChanges() {
+    public void givenPizaOrder_whenDelivered_thenPizzaGetsDeliveredAndStatusChanges() {
         Pizza pz = new Pizza();
         pz.setStatus(Pizza.PizzaStatusEnum.READY);
         pz.deliver();

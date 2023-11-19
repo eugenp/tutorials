@@ -13,8 +13,8 @@
     </parent>
 
     <modules>
-        <module>gateway</module>
-        <module>greeting</module>
+        <module>spring-cloud-dapr-gateway</module>
+        <module>spring-cloud-dapr-greeting</module>
     </modules>
 
 </project>

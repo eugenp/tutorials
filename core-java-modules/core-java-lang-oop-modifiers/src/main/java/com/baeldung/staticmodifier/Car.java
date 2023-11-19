@@ -42,6 +42,10 @@ public class Car {
         this.engine = engine;
     }
 
+    public static String getCarsInformation(Car car) {
+        return car.getName() + "-" + car.getEngine();
+    }
+
     public static void setNumberOfCars(int numberOfCars) {
         Car.numberOfCars = numberOfCars;
     }

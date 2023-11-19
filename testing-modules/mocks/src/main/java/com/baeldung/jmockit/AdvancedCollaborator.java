@@ -7,13 +7,13 @@ public class AdvancedCollaborator {
     public AdvancedCollaborator(String string) throws Exception{
         i = string.length();
     }
-    public String methodThatCallsPrivateMethod(int i){
-        return privateMethod() + i;
+    public String methodThatCallsProtectedMethod(int i){
+        return protectedMethod() + i;
     }
     public int methodThatReturnsThePrivateField(){
         return privateField;
     }
-    private String privateMethod(){
+    protected String protectedMethod(){
         return "default:";
     }
     class InnerAdvancedCollaborator{}

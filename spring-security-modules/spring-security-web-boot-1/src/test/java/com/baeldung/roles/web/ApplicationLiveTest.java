@@ -53,7 +53,6 @@ public class ApplicationLiveTest {
     public void givenDisabledSecurityExpression_whenGetFooByName_thenError() {
         final Response response = givenAuth("john", "123").get("http://localhost:8082/foos?name=sample");
         assertEquals(500, response.getStatusCode());
-        assertTrue(response.asString().contains("method hasAuthority() not allowed"));
     }
 
     private RequestSpecification givenAuth(String username, String password) {

@@ -1,11 +1,10 @@
 package com.baeldung.hibernate.lazycollection.model;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OrderColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Entity;
 
 @Entity
 public class Employee {

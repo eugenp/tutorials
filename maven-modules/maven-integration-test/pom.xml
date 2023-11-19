@@ -76,7 +76,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven.compiler.version}</version>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
@@ -103,7 +103,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>${maven.failsafe.version}</version>
+                <version>${maven-failsafe-plugin.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -267,9 +267,10 @@
     </profiles>
 
     <properties>
+        <maven-war-plugin.version>3.4.0</maven-war-plugin.version>
         <maven.resources.version>3.0.2</maven.resources.version>
-        <maven.compiler.version>3.8.0</maven.compiler.version>
-        <maven.failsafe.version>2.22.0</maven.failsafe.version>
+        <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
+        <maven-failsafe-plugin.version>3.1.2</maven-failsafe-plugin.version>
         <maven.verifier.version>1.1</maven.verifier.version>
         <maven.clean.version>3.0.0</maven.clean.version>
         <maven.build.helper.version>3.0.0</maven.build.helper.version>

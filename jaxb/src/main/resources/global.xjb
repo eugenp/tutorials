@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<jaxb:bindings version="2.0" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+<jaxb:bindings version="3.0" xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb"
     xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" xmlns:xs="http://www.w3.org/2001/XMLSchema"
     jaxb:extensionBindingPrefixes="xjc">
 
@@ -7,7 +7,7 @@
         <xjc:simple />
         <xjc:serializable uid="-1" />
         <jaxb:javaType name="java.util.Calendar" xmlType="xs:dateTime"
-            parseMethod="javax.xml.bind.DatatypeConverter.parseDateTime"
-            printMethod="javax.xml.bind.DatatypeConverter.printDateTime" />
+            parseMethod="jakarta.xml.bind.DatatypeConverter.parseDateTime"
+            printMethod="jakarta.xml.bind.DatatypeConverter.printDateTime" />
     </jaxb:globalBindings>
 </jaxb:bindings>

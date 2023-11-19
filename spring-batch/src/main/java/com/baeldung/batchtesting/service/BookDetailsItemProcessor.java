@@ -11,7 +11,7 @@ public class BookDetailsItemProcessor implements ItemProcessor<BookRecord, BookD
     private static Logger LOGGER = LoggerFactory.getLogger(BookDetailsItemProcessor.class);
 
     @Override
-    public BookDetails process(BookRecord item) throws Exception {
+    public BookDetails process(BookRecord item) {
         BookDetails bookDetails = new BookDetails();
         bookDetails.setBookFormat(item.getBookFormat());
         bookDetails.setBookISBN(item.getBookISBN());

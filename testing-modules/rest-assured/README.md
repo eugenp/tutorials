@@ -7,4 +7,4 @@
 - [REST-assured with Groovy](http://www.baeldung.com/rest-assured-groovy)
 - [Headers, Cookies and Parameters with REST-assured](http://www.baeldung.com/rest-assured-header-cookie-parameter)
 - [JSON Schema Validation with REST-assured](http://www.baeldung.com/rest-assured-json-schema)
-
+- [Send MultipartFile Request With RestAssured](https://www.baeldung.com/restassured-send-multipartfile-request)

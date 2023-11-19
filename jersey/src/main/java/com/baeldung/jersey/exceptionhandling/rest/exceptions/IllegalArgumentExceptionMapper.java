@@ -1,8 +1,8 @@
 package com.baeldung.jersey.exceptionhandling.rest.exceptions;
 
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.ext.ExceptionMapper;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.ext.ExceptionMapper;
 
 public class IllegalArgumentExceptionMapper implements ExceptionMapper<IllegalArgumentException> {
     public static final String DEFAULT_MESSAGE = "an illegal argument was provided";

@@ -35,9 +35,10 @@
                         <Bundle-Version>${project.version}</Bundle-Version>
                         <!-- Qualified name of the class that exposes the activator iface. -->
                         <Bundle-Activator>com.baeldung.osgi.sample.activator.HelloWorld</Bundle-Activator>
-                        <!-- One important thing to note: since you are not exporting the package "com.baeldung.osgi.sample.activator", 
-                            you should at least add it to the Private-Package instruction. Otherwise, the classes inside the package 
-                            will not be copied to your bundle, as the default value of this instruction is empty. -->
+                        <!-- One important thing to note: since you are not exporting the package "com.baeldung.osgi.sample.activator", -->
+                        <!-- you should at least add it to the Private-Package instruction. Otherwise, -->
+                        <!-- the classes inside the package will not be copied to your bundle, -->
+                        <!-- as the default value of this instruction is empty. -->
                         <Private-Package>com.baeldung.osgi.sample.activator</Private-Package>
                     </instructions>
                 </configuration>

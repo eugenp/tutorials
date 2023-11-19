@@ -101,7 +101,6 @@
         <dependency>
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
-            <version>${hibernate-validator.version}</version>
         </dependency>
         <dependency>
             <groupId>org.glassfish</groupId>
@@ -126,7 +125,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>${maven-war-plugin.version}</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
@@ -218,8 +216,6 @@
         <!-- persistence -->
         <hibernate.version>6.0.10.Final</hibernate.version>
         <mysql-connector-java.version>5.1.40</mysql-connector-java.version>
-        <!-- various -->
-        <hibernate-validator.version>6.0.10.Final</hibernate-validator.version>
         <!-- util -->
         <jsonpath.version>2.2.0</jsonpath.version>
         <!-- testing -->
@@ -227,7 +223,6 @@
         <httpclient.version>4.5.2</httpclient.version>
         <net.sourceforge.htmlunit>2.23</net.sourceforge.htmlunit>
         <!-- maven plugins -->
-        <maven-war-plugin.version>3.2.2</maven-war-plugin.version>
         <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
         <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
@@ -239,7 +234,7 @@
         <javax.version>4.0.1</javax.version>
         <javax-servlet-api.version>2.3.3</javax-servlet-api.version>
         <htmlunit.version>2.32</htmlunit.version>
-        <json-path.version>2.4.0</json-path.version>
+        <json-path.version>2.8.0</json-path.version>
         <start-class>com.baeldung.SpringMVCApplication</start-class>
     </properties>
 

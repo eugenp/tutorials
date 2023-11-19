@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -105,7 +105,7 @@ class KeycloakSoapLiveTest {
     void givenAccessToken_whenDeleteProduct_thenReturnSuccess() {
         HttpHeaders headers = new HttpHeaders();
         headers.set("content-type", "text/xml");
-        headers.set("Authorization", "Bearer " + generateToken("jhondoe", "password"));
+        headers.set("Authorization", "Bearer " + generateToken("johndoe", "password"));
         HttpEntity<String> request = new HttpEntity<>(Utility.getDeleteProductsRequest(), headers);
         ResponseEntity<String> responseEntity = restTemplate.postForEntity("http://localhost:" + port + "/ws/api/v1/", request, String.class);
 

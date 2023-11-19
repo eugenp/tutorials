@@ -4,7 +4,7 @@ This module contains articles about Google Cloud
 
 ### Relevant Article:
 
-- [Intro to Google Cloud Storage With Java](https://www.baeldung.com/java-google-cloud-storage)
+- [Intro to Google Cloud Storage with Java](https://www.baeldung.com/java-google-cloud-storage)
 
 ### Overview
 

@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head> 
+    <title>Dino World</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h2 th:text="#{welcome.message}"></h2>
+	<h1>Form</h1>
+  <form action="#" th:action="@{/dino}" th:object="${dinos}" method="post">
+    	<p>Id: <input type="text" th:field="*{id}" /></p>
+        <p>Name: <input type="text" th:field="*{name}" /></p>
+        <p>Color: <input type="text" th:field="*{color}" /></p>
+        <p>Weight: <input type="text" th:field="*{weight}" /></p>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+
+</body>
+<div th:replace="~{index :: footer}"></div>
+</html>

@@ -15,7 +15,7 @@ public class RetreiveMessageErrorDecoder implements ErrorDecoder {
 
     @Override
     public Exception decode(String methodKey, Response response) {
-        ExceptionMessage message = null;
+        ExceptionMessage message;
         try (InputStream bodyIs = response.body()
             .asInputStream()) {
             ObjectMapper mapper = new ObjectMapper();

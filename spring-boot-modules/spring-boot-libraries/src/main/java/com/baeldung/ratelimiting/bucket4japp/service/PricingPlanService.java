@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import io.github.bucket4j.Bandwidth;
 import io.github.bucket4j.Bucket;
-import io.github.bucket4j.Bucket4j;
 
 @Service
 public class PricingPlanService {
@@ -24,7 +23,7 @@ public class PricingPlanService {
     }
 
     private Bucket bucket(Bandwidth limit) {
-        return Bucket4j.builder()
+        return Bucket.builder()
             .addLimit(limit)
             .build();
     }

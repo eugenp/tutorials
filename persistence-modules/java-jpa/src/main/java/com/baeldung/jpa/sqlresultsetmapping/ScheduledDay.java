@@ -1,6 +1,6 @@
 package com.baeldung.jpa.sqlresultsetmapping;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @SqlResultSetMappings(value = {
     @SqlResultSetMapping(name = "ScheduleResult",

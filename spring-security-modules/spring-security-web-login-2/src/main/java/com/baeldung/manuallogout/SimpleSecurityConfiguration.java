@@ -10,11 +10,12 @@ import javax.servlet.http.Cookie;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.logout.HeaderWriterLogoutHandler;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.security.web.header.writers.ClearSiteDataHeaderWriter;
@@ -27,9 +28,10 @@ public class SimpleSecurityConfiguration {
 
     @Order(4)
     @Configuration
-    public static class LogoutOnRequestConfiguration extends WebSecurityConfigurerAdapter {
-        @Override
-        protected void configure(HttpSecurity http) throws Exception {
+    public static class LogoutOnRequestConfiguration {
+
+        @Bean
+        public SecurityFilterChain filterChainLogoutOnRequest(HttpSecurity http) throws Exception {
             http.antMatcher("/request/**")
                 .authorizeRequests(authz -> authz.anyRequest()
                     .permitAll())
@@ -41,26 +43,30 @@ public class SimpleSecurityConfiguration {
                             logger.error(e.getMessage());
                         }
                     }));
+            return http.build();
         }
     }
 
     @Order(3)
     @Configuration
-    public static class DefaultLogoutConfiguration extends WebSecurityConfigurerAdapter {
-        @Override
-        protected void configure(HttpSecurity http) throws Exception {
+    public static class DefaultLogoutConfiguration {
+        
+        @Bean
+        public SecurityFilterChain filterChainDefaultLogout(HttpSecurity http) throws Exception {
             http.antMatcher("/basic/**")
-                .authorizeRequests(authz -> authz.anyRequest()
-                    .permitAll())
-                .logout(logout -> logout.logoutUrl("/basic/basiclogout"));
+            .authorizeRequests(authz -> authz.anyRequest()
+                .permitAll())
+            .logout(logout -> logout.logoutUrl("/basic/basiclogout"));
+            return http.build();
         }
     }
 
     @Order(2)
     @Configuration
-    public static class AllCookieClearingLogoutConfiguration extends WebSecurityConfigurerAdapter {
-        @Override
-        protected void configure(HttpSecurity http) throws Exception {
+    public static class AllCookieClearingLogoutConfiguration {
+
+        @Bean
+        public SecurityFilterChain filterChainAllCookieClearing(HttpSecurity http) throws Exception {
             http.antMatcher("/cookies/**")
                 .authorizeRequests(authz -> authz.anyRequest()
                     .permitAll())
@@ -74,22 +80,24 @@ public class SimpleSecurityConfiguration {
                             response.addCookie(cookieToDelete);
                         }
                     }));
+            return http.build();
         }
     }
 
     @Order(1)
     @Configuration
-    public static class ClearSiteDataHeaderLogoutConfiguration extends WebSecurityConfigurerAdapter {
+    public static class ClearSiteDataHeaderLogoutConfiguration {
 
         private static final ClearSiteDataHeaderWriter.Directive[] SOURCE = { CACHE, COOKIES, STORAGE, EXECUTION_CONTEXTS };
 
-        @Override
-        protected void configure(HttpSecurity http) throws Exception {
+        @Bean
+        public SecurityFilterChain filterChainClearSiteDataHeader(HttpSecurity http) throws Exception {
             http.antMatcher("/csd/**")
                 .authorizeRequests(authz -> authz.anyRequest()
                     .permitAll())
                 .logout(logout -> logout.logoutUrl("/csd/csdlogout")
                     .addLogoutHandler(new HeaderWriterLogoutHandler(new ClearSiteDataHeaderWriter(SOURCE))));
+            return http.build();
         }
     }
 }

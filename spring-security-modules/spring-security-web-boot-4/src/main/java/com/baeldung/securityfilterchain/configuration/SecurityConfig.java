@@ -29,7 +29,7 @@ public class SecurityConfig {
           .antMatchers("/user/**")
           .hasAnyRole("USER", "ADMIN")
           .antMatchers("/login/**")
-          .anonymous()
+          .permitAll()
           .anyRequest()
           .authenticated()
           .and()

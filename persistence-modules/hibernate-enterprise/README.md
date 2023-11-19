@@ -5,7 +5,7 @@ This module contains articles about enterprise concerns such as Multitenancy, Er
 ### Relevant articles:
 
 - [Introduction to Hibernate Spatial](https://www.baeldung.com/hibernate-spatial)
-- [A Guide to Multitenancy in Hibernate 5](https://www.baeldung.com/hibernate-5-multitenancy)
+- [A Guide to Multitenancy in Hibernate 6](https://www.baeldung.com/hibernate-6-multitenancy)
 - [Hibernate Aggregate Functions](https://www.baeldung.com/hibernate-aggregate-functions)
 - [Common Hibernate Exceptions](https://www.baeldung.com/hibernate-exceptions)
 - [Hibernate Error “Not all named parameters have been set”](https://www.baeldung.com/hibernate-error-named-parameters-not-set)

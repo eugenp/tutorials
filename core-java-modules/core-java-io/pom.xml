@@ -4,7 +4,6 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-io</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
     <name>core-java-io</name>
     <packaging>jar</packaging>
 
@@ -38,6 +37,12 @@
             <artifactId>fscontext</artifactId>
             <version>${fscontext.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.eclipse.angus</groupId>
+            <artifactId>angus-activation</artifactId>
+            <version>${angus-activation.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -50,6 +55,13 @@
         </resources>
         <plugins>
             <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <configuration>
@@ -59,7 +71,7 @@
                         <argument>-Xmx300m</argument>
                         <argument>-XX:+UseParallelGC</argument>
                         <argument>-classpath</argument>
-                        <classpath />
+                        <classpath/>
                         <argument>com.baeldung.outofmemoryerror.OutOfMemoryGCLimitExceed</argument>
                     </arguments>
                 </configuration>
@@ -68,10 +80,6 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>${maven-javadoc-plugin.version}</version>
-                <configuration>
-                    <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.target}</target>
-                </configuration>
             </plugin>
             <plugin>
                 <!-- Build an executable JAR -->
@@ -111,7 +119,7 @@
                                     <executable>java</executable>
                                     <arguments>
                                         <argument>-classpath</argument>
-                                        <classpath />
+                                        <classpath/>
                                         <argument>org.openjdk.jmh.Main</argument>
                                         <argument>.*</argument>
                                     </arguments>
@@ -126,13 +134,14 @@
 
     <properties>
         <!-- maven plugins -->
-        <maven-javadoc-plugin.version>3.0.0-M1</maven-javadoc-plugin.version>
-        <hsqldb.version>2.4.0</hsqldb.version>
+        <maven-javadoc-plugin.version>3.5.0</maven-javadoc-plugin.version>
+        <hsqldb.version>2.7.1</hsqldb.version>
         <!-- Mime Type Libraries -->
-        <tika.version>1.18</tika.version>
+        <tika.version>2.8.0</tika.version>
         <jmime-magic.version>0.1.5</jmime-magic.version>
-        <maven-jar-plugin.version>3.1.0</maven-jar-plugin.version>
         <fscontext.version>4.4.2</fscontext.version>
+        <jakarta-activation-api.version>2.1.2</jakarta-activation-api.version>
+        <angus-activation.version>2.0.1</angus-activation.version>
     </properties>
 
 </project>

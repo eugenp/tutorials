@@ -6,7 +6,6 @@
     <artifactId>core-java-14</artifactId>
     <name>core-java-14</name>
     <packaging>jar</packaging>
-    <url>http://maven.apache.org</url>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -49,7 +48,6 @@
 
     <properties>
         <maven.compiler.release>14</maven.compiler.release>
-        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <surefire.plugin.version>3.0.0-M3</surefire.plugin.version>
     </properties>
 

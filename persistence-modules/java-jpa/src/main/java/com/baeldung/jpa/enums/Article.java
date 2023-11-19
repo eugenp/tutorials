@@ -1,6 +1,6 @@
 package com.baeldung.jpa.enums;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 public class Article {

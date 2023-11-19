@@ -184,6 +184,6 @@ public class FutureUnitTest {
 
         assertThat(
           errorMessage.get().getMessage())
-          .isEqualTo("String index out of range: -1");
+          .isEqualTo("begin -1, end 5, length 5");
     }
 }

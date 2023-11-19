@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -24,7 +25,10 @@ public class NaiveApproachIntegrationTest {
         port = s.getLocalPort();
         s.close();
 
-        redisServer = new RedisServer(port);
+        redisServer = RedisServer.builder()
+                .port(port)
+                .setting("maxmemory 128M")
+                .build();
     }
 
     @AfterClass
@@ -50,7 +54,7 @@ public class NaiveApproachIntegrationTest {
 
     @Test
     public void testKeys() {
-        HashMap<String, String> keyValues = new HashMap<String, String>();
+        HashMap<String, String> keyValues = new HashMap<>();
         keyValues.put("balls:cricket", "160");
         keyValues.put("balls:football", "450");
         keyValues.put("balls:volleyball", "270");
@@ -62,7 +66,7 @@ public class NaiveApproachIntegrationTest {
 
     @Test
     public void testSmembers() {
-        HashSet<String> setMembers = new HashSet<String>();
+        HashSet<String> setMembers = new HashSet<>();
         setMembers.add("cricket_160");
         setMembers.add("football_450");
         setMembers.add("volleyball_270");
@@ -73,7 +77,7 @@ public class NaiveApproachIntegrationTest {
 
     @Test
     public void testHgetAll() {
-        HashMap<String, String> keyValues = new HashMap<String, String>();
+        HashMap<String, String> keyValues = new HashMap<>();
         keyValues.put("balls:cricket", "160");
         keyValues.put("balls:football", "450");
         keyValues.put("balls:volleyball", "270");
@@ -84,12 +88,12 @@ public class NaiveApproachIntegrationTest {
 
     @Test
     public void testZRange() {
-        HashMap<String, Double> scoreMembers = new HashMap<String, Double>();
+        HashMap<String, Double> scoreMembers = new HashMap<>();
         scoreMembers.put("cricket", (double) 160);
         scoreMembers.put("football", (double) 450);
         scoreMembers.put("volleyball", (double) 270);
         redisClient.zadd("balls", scoreMembers);
-        Set<String> readSetMembers = redisClient.zrange("balls", 0, -1);
+        List<String> readSetMembers = redisClient.zrange("balls", 0, -1);
 
         Assert.assertEquals(readSetMembers.size(), scoreMembers.size());
     }

@@ -73,3 +73,5 @@ To configure CI for your project, run the ci-cd sub-generator (`yo jhipster:ci-c
 [Setting up Continuous Integration]: https://jhipster.github.io/documentation-archive/v4.0.8/setting-up-ci/
 
 
+## Relevant Articles:
+- [Use Liquibase to Safely Evolve Your Database Schema](https://www.baeldung.com/liquibase-refactor-schema-of-java-app)

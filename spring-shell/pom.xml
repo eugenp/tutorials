@@ -19,12 +19,25 @@
         <dependency>
             <groupId>org.springframework.shell</groupId>
             <artifactId>spring-shell</artifactId>
-            <version>${org.springframework.shell.version}</version>
+            <version>${spring-shell.version}</version>
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <warSourceDirectory>src/main/webapp</warSourceDirectory>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
-        <org.springframework.shell.version>1.2.0.RELEASE</org.springframework.shell.version>
+        <spring-shell.version>1.2.0.RELEASE</spring-shell.version>
     </properties>
 
 </project>

@@ -9,7 +9,7 @@ The "REST With Spring" Classes: http://github.learnspringsecurity.com
 ### Relevant Articles: 
 
 - [Spring Security Remember Me](https://www.baeldung.com/spring-security-remember-me)
-- [Redirect to different pages after Login with Spring Security](https://www.baeldung.com/spring_redirect_after_login)
+- [Redirect to Different Pages After Login With Spring Security](https://www.baeldung.com/spring-redirect-after-login)
 - [Changing Spring Model Parameters with Handler Interceptor](https://www.baeldung.com/spring-model-parameters-with-handler-interceptor)
 - [Introduction to Spring MVC HandlerInterceptor](https://www.baeldung.com/spring-mvc-handlerinterceptor)
 - [Using a Custom Spring MVC’s Handler Interceptor to Manage Sessions](https://www.baeldung.com/spring-mvc-custom-handler-interceptor)

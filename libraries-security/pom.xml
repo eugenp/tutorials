@@ -96,7 +96,25 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+        </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <argLine>
+                        --add-opens java.base/java.lang=ALL-UNNAMED
+                    </argLine>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <properties>
         <scribejava.version>5.6.0</scribejava.version>
@@ -104,7 +122,7 @@
         <tink.version>1.2.2</tink.version>
         <cryptacular.version>1.2.2</cryptacular.version>
         <jasypt.version>1.9.2</jasypt.version>
-        <bouncycastle.version>1.58</bouncycastle.version>
+        <bouncycastle.version>1.68</bouncycastle.version>
         <jsch.version>0.1.55</jsch.version>
         <apache-mina.version>2.5.1</apache-mina.version>
         <spring-security-oauth2.version>2.4.0.RELEASE</spring-security-oauth2.version>

@@ -1,70 +1,74 @@
 package com.baeldung.removeprefix
 
-import org.junit.Assert
-import org.junit.Test
+import spock.lang.Specification
 
-class RemovePrefixTest {
+class RemovePrefixTest extends Specification {
 
-
-    @Test
-    public void whenCasePrefixIsRemoved_thenReturnTrue() {
+    def "whenCasePrefixIsRemoved_thenReturnTrue"() {
+        given:
         def trimPrefix = {
             it.startsWith('Groovy-') ? it.minus('Groovy-') : it
         }
-        
+
+        when:
         def actual = trimPrefix("Groovy-Tutorials at Baeldung")
         def expected = "Tutorials at Baeldung"
 
-        Assert.assertEquals(expected, actual)
+        then:
+        expected == actual
     }
 
-    @Test
-    public void whenPrefixIsRemoved_thenReturnTrue() {
-
+    def "whenPrefixIsRemoved_thenReturnTrue"() {
+        given:
         String prefix = "groovy-"
         String trimPrefix = "Groovy-Tutorials at Baeldung"
-        def actual;
-        if(trimPrefix.startsWithIgnoreCase(prefix)) {
+
+        when:
+        def actual
+        if (trimPrefix.startsWithIgnoreCase(prefix)) {
             actual = trimPrefix.substring(prefix.length())
         }
-        
         def expected = "Tutorials at Baeldung"
 
-        Assert.assertEquals(expected, actual)
+        then:
+        expected == actual
     }
 
-    @Test
-    public void whenPrefixIsRemovedUsingRegex_thenReturnTrue() {
-
+    def "whenPrefixIsRemovedUsingRegex_thenReturnTrue"() {
+        given:
         def regex = ~"^([Gg])roovy-"
         String trimPrefix = "Groovy-Tutorials at Baeldung"
+
+        when:
         String actual = trimPrefix - regex
-        
         def expected = "Tutorials at Baeldung"
 
-        Assert.assertEquals(expected, actual)
+        then:
+        expected == actual
     }
 
-    @Test 
-    public void whenPrefixIsRemovedUsingReplaceFirst_thenReturnTrue() {
-        def regex = ~"^groovy" 
-        String trimPrefix = "groovyTutorials at Baeldung's groovy page" 
+    def "whenPrefixIsRemovedUsingReplaceFirst_thenReturnTrue"() {
+        given:
+        def regex = ~"^groovy"
+        String trimPrefix = "groovyTutorials at Baeldung's groovy page"
+
+        when:
         String actual = trimPrefix.replaceFirst(regex, "")
-        
         def expected = "Tutorials at Baeldung's groovy page"
-        
-        Assert.assertEquals(expected, actual)
+
+        then:
+        expected == actual
     }
 
-    @Test
-    public void whenPrefixIsRemovedUsingReplaceAll_thenReturnTrue() {
-
+    def "whenPrefixIsRemovedUsingReplaceAll_thenReturnTrue"() {
+        given:
         String trimPrefix = "groovyTutorials at Baeldung groovy"
+
+        when:
         String actual = trimPrefix.replaceAll(/^groovy/, "")
-        
         def expected = "Tutorials at Baeldung groovy"
 
-        Assert.assertEquals(expected, actual)
+        then:
+        expected == actual
     }
-
 }

@@ -1,6 +1,6 @@
 package com.baeldung.jpa.stringcast;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @SqlResultSetMapping(name = "textQueryMapping", classes = {
   @ConstructorResult(targetClass = Message.class, columns = {

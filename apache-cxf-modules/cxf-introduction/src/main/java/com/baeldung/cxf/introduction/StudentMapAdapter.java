@@ -3,7 +3,7 @@ package com.baeldung.cxf.introduction;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import javax.xml.bind.annotation.adapters.XmlAdapter;
+import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 
 public class StudentMapAdapter extends XmlAdapter<StudentMap, Map<Integer, Student>> {
     public StudentMap marshal(Map<Integer, Student> boundMap) throws Exception {

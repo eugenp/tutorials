@@ -15,7 +15,7 @@ import static org.junit.Assert.assertEquals;
 public class EntryProcessorIntegrationTest {
 
     private static final String CACHE_NAME = "MyCache";
-    private static final String CACHE_PROVIDER_NAME = "com.hazelcast.cache.HazelcastCachingProvider";
+    private static final String CACHE_PROVIDER_NAME = "com.hazelcast.cache.HazelcastMemberCachingProvider";
 
     private Cache<String, String> cache;
 

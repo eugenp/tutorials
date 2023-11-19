@@ -1,24 +1,17 @@
 package com.baeldung.algorithms.linkedlist;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
-@RunWith(value = Parameterized.class)
-public class CycleRemovalByCountingLoopNodesUnitTest extends CycleDetectionTestBase {
-    boolean cycleExists;
-    Node<Integer> head;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
-    public CycleRemovalByCountingLoopNodesUnitTest(Node<Integer> head, boolean cycleExists) {
-        super();
-        this.cycleExists = cycleExists;
-        this.head = head;
-    }
+class CycleRemovalByCountingLoopNodesUnitTest extends CycleDetectionTestBase {
 
-    @Test
-    public void givenList_ifLoopExists_thenDetectAndRemoveLoop() {
-        Assert.assertEquals(cycleExists, CycleRemovalByCountingLoopNodes.detectAndRemoveCycle(head));
-        Assert.assertFalse(CycleDetectionByFastAndSlowIterators.detectCycle(head).cycleExists);
+    @ParameterizedTest
+    @MethodSource("getLists")
+    void givenList_ifLoopExists_thenDetectAndRemoveLoop(Node<Integer> head, boolean cycleExists) {
+        assertEquals(cycleExists, CycleRemovalByCountingLoopNodes.detectAndRemoveCycle(head));
+        assertFalse(CycleDetectionByFastAndSlowIterators.detectCycle(head).cycleExists);
     }
 }

@@ -1,7 +1,6 @@
 package com.baeldung.kafka.embedded;
 
 import static org.hamcrest.CoreMatchers.containsString;
-import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -15,6 +14,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.test.context.EmbeddedKafka;
 import org.springframework.test.annotation.DirtiesContext;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @SpringBootTest
 @DirtiesContext
@@ -33,6 +34,8 @@ class EmbeddedKafkaIntegrationTest {
     @Value("${test.topic}")
     private String topic;
 
+    private ObjectMapper objectMapper = new ObjectMapper();
+
     @BeforeEach
     void setup() {
         consumer.resetLatch();
@@ -44,7 +47,8 @@ class EmbeddedKafkaIntegrationTest {
 
         template.send(topic, data);
 
-        boolean messageConsumed = consumer.getLatch().await(10, TimeUnit.SECONDS);
+        boolean messageConsumed = consumer.getLatch()
+          .await(10, TimeUnit.SECONDS);
         assertTrue(messageConsumed);
         assertThat(consumer.getPayload(), containsString(data));
     }
@@ -55,7 +59,8 @@ class EmbeddedKafkaIntegrationTest {
 
         producer.send(topic, data);
 
-        boolean messageConsumed = consumer.getLatch().await(10, TimeUnit.SECONDS);
+        boolean messageConsumed = consumer.getLatch()
+          .await(10, TimeUnit.SECONDS);
         assertTrue(messageConsumed);
         assertThat(consumer.getPayload(), containsString(data));
     }

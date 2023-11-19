@@ -10,6 +10,6 @@ This module contains articles about date operations in Java.
 - [Handling Daylight Savings Time in Java](http://www.baeldung.com/java-daylight-savings)
 - [Calculate Age in Java](http://www.baeldung.com/java-get-age)
 - [Increment Date in Java](http://www.baeldung.com/java-increment-date)
-- [Add Hours To a Date In Java](http://www.baeldung.com/java-add-hours-date)
+- [Add Hours to a Date in Java](https://www.baeldung.com/java-add-hours-date)
 - [Introduction to Joda-Time](http://www.baeldung.com/joda-time)
 - [[Next -->]](/core-java-modules/core-java-date-operations-2)

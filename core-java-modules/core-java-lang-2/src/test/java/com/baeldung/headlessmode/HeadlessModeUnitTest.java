@@ -3,13 +3,12 @@ package com.baeldung.headlessmode;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-import java.awt.Canvas;
-import java.awt.Font;
-import java.awt.FontMetrics;
-import java.awt.Frame;
-import java.awt.GraphicsEnvironment;
-import java.awt.HeadlessException;
+import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.awt.image.ColorModel;
+import java.awt.image.ComponentColorModel;
+import java.awt.image.DataBuffer;
+import java.awt.image.WritableRaster;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -58,7 +57,7 @@ public class HeadlessModeUnitTest {
         boolean result = false;
         try (InputStream inStream = HeadlessModeUnitTest.class.getResourceAsStream(IN_FILE); FileOutputStream outStream = new FileOutputStream(OUT_FILE)) {
             BufferedImage inputImage = ImageIO.read(inStream);
-            result = ImageIO.write(inputImage, FORMAT, outStream);
+            result = ImageIO.write(removeAlphaChannel(inputImage), FORMAT, outStream);
         }
 
         assertThat(result).isTrue();
@@ -84,4 +83,10 @@ public class HeadlessModeUnitTest {
         assertThat(FlexibleApp.iAmFlexible()).isEqualTo(FlexibleApp.HEADED);
     }
 
+    private BufferedImage removeAlphaChannel(BufferedImage inputImage) {
+        final WritableRaster raster = inputImage.getRaster();
+        final WritableRaster newRaster = raster.createWritableChild(0, 0, inputImage.getWidth(), inputImage.getHeight(), 0, 0, new int[]{0, 1, 2});
+        ColorModel newCM = new ComponentColorModel(inputImage.getColorModel().getColorSpace(), false, false, Transparency.OPAQUE, DataBuffer.TYPE_BYTE);
+        return new BufferedImage(newCM, newRaster, false, null);
+    }
 }

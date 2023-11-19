@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Philosopher's Stone",
+    "year": 1997,
+    "author": {
+      "firstName": "Joanne",
+      "lastName": "Rowling"
+    }
+  },
+  {
+    "title": "Goblet of Fire",
+    "year": 2000,
+    "author": {
+      "firstName": "Joanne",
+      "lastName": "Rowling"
+    }
+  },
+  {
+    "title": "Deathly Hallows",
+    "year": 2007,
+    "author": {
+      "firstName": "Joanne",
+      "lastName": "Rowling"
+    }
+  }
+]

@@ -1,14 +1,11 @@
 package com.baeldung.batchtesting;
 
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Collection;
 
-import com.baeldung.batchtesting.SpringBatchConfiguration;
-import org.junit.After;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.batch.core.ExitStatus;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobInstance;
@@ -22,20 +19,11 @@ import org.springframework.batch.test.context.SpringBatchTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.core.io.FileSystemResource;
-import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestExecutionListeners;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
-import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
 
-@RunWith(SpringRunner.class)
 @SpringBatchTest
 @EnableAutoConfiguration
 @ContextConfiguration(classes = { SpringBatchConfiguration.class })
-@TestExecutionListeners({ DependencyInjectionTestExecutionListener.class, DirtiesContextTestExecutionListener.class })
-@DirtiesContext(classMode = ClassMode.AFTER_CLASS)
 public class SpringBatchIntegrationTest {
 
     private static final String TEST_OUTPUT = "src/test/resources/output/actual-output.json";
@@ -50,7 +38,7 @@ public class SpringBatchIntegrationTest {
     @Autowired
     private JobRepositoryTestUtils jobRepositoryTestUtils;
 
-    @After
+    @AfterEach
     public void cleanUp() {
         jobRepositoryTestUtils.removeJobExecutions();
     }
@@ -74,8 +62,8 @@ public class SpringBatchIntegrationTest {
         ExitStatus actualJobExitStatus = jobExecution.getExitStatus();
 
         // then
-        assertThat(actualJobInstance.getJobName(), is("transformBooksRecords"));
-        assertThat(actualJobExitStatus.getExitCode(), is("COMPLETED"));
+        assertEquals("transformBooksRecords", actualJobInstance.getJobName());
+        assertEquals("COMPLETED", actualJobExitStatus.getExitCode());
         AssertFile.assertFileEquals(expectedResult, actualResult);
     }
 
@@ -92,8 +80,8 @@ public class SpringBatchIntegrationTest {
         ExitStatus actualJobExitStatus = jobExecution.getExitStatus();
 
         // then
-        assertThat(actualStepExecutions.size(), is(1));
-        assertThat(actualJobExitStatus.getExitCode(), is("COMPLETED"));
+        assertEquals(1, actualStepExecutions.size());
+        assertEquals("COMPLETED", actualJobExitStatus.getExitCode());
         AssertFile.assertFileEquals(expectedResult, actualResult);
     }
 
@@ -106,10 +94,10 @@ public class SpringBatchIntegrationTest {
         ExitStatus actualExitStatus = jobExecution.getExitStatus();
 
         // then
-        assertThat(actualStepExecutions.size(), is(1));
-        assertThat(actualExitStatus.getExitCode(), is("COMPLETED"));
+        assertEquals(1, actualStepExecutions.size());
+        assertEquals("COMPLETED", actualExitStatus.getExitCode());
         actualStepExecutions.forEach(stepExecution -> {
-            assertThat(stepExecution.getWriteCount(), is(8));
+            assertEquals(8L, stepExecution.getWriteCount());
         });
     }
 

@@ -1,56 +1,68 @@
 package com.baeldung.determinedatatype
 
-import org.junit.Assert
-import org.junit.Test
-import com.baeldung.determinedatatype.Person
+import spock.lang.Specification
 
-public class PersonTest {
-    
-    @Test
-    public void givenWhenParameterTypeIsInteger_thenReturnTrue() {
+class PersonTest extends Specification {
+
+    def "givenWhenParameterTypeIsIntegerThenReturnTrue"() {
+        given:
         Person personObj = new Person(10)
-        Assert.assertTrue(personObj.ageAsInt instanceof Integer)
-    }
-    
-    @Test
-    public void givenWhenParameterTypeIsDouble_thenReturnTrue() {
-        Person personObj = new Person(10.0)
-        Assert.assertTrue((personObj.ageAsDouble).getClass() == Double)
-    }
-    
-    @Test
-    public void givenWhenParameterTypeIsString_thenReturnTrue() {
-        Person personObj = new Person("10 years")
-        Assert.assertTrue(personObj.ageAsString.class == String)
-    }
-    
-    @Test
-    public void givenClassName_WhenParameterIsInteger_thenReturnTrue() {
-        Assert.assertTrue(Person.class.getDeclaredField('ageAsInt').type == int.class)
-    }
-    
-    @Test
-    public void givenWhenObjectIsInstanceOfType_thenReturnTrue() {
-        Person personObj = new Person()
-        Assert.assertTrue(personObj instanceof Person)
+
+        expect:
+        personObj.ageAsInt.class == Integer
     }
 
-    @Test
-    public void givenWhenInstanceIsOfSubtype_thenReturnTrue() {
+    def "givenWhenParameterTypeIsDouble_thenReturnTrue"() {
+        given:
+        Person personObj = new Person(10.0)
+
+        expect:
+        personObj.ageAsDouble.class == Double
+    }
+
+    def "givenWhenParameterTypeIsString_thenReturnTrue"() {
+        given:
+        Person personObj = new Person("10 years")
+
+        expect:
+        personObj.ageAsString.class == String
+    }
+
+    def "givenClassName_WhenParameterIsInteger_thenReturnTrue"() {
+        expect:
+        Person.class.getDeclaredField('ageAsInt').type == int.class
+    }
+
+    def "givenWhenObjectIsInstanceOfType_thenReturnTrue"() {
+        given:
+        Person personObj = new Person()
+
+        expect:
+        personObj.class == Person
+    }
+
+    def "givenWhenInstanceIsOfSubtype_thenReturnTrue"() {
+        given:
         Student studentObj = new Student()
-        Assert.assertTrue(studentObj in Person)
+
+        expect:
+        studentObj.class.superclass == Person
     }
-    
-    @Test
-    public void givenGroovyList_WhenFindClassName_thenReturnTrue() {
-      def ageList = ['ageAsString','ageAsDouble', 10]   
-      Assert.assertTrue(ageList.class == ArrayList)     
-      Assert.assertTrue(ageList.getClass() == ArrayList)
+
+    def "givenGroovyList_WhenFindClassName_thenReturnTrue"() {
+        given:
+        def ageList = ['ageAsString', 'ageAsDouble', 10]
+
+        expect:
+        ageList.class == ArrayList
+        ageList.getClass() == ArrayList
     }
-    
-    @Test
-    public void givenGrooyMap_WhenFindClassName_thenReturnTrue() {
-      def ageMap = [ageAsString: '10 years', ageAsDouble: 10.0]
-      Assert.assertFalse(ageMap.class == LinkedHashMap)
+
+    def "givenGroovyMap_WhenFindClassName_thenReturnTrue"() {
+        given:
+        def ageMap = [ageAsString: '10 years', ageAsDouble: 10.0]
+
+        expect:
+        ageMap.getClass() == LinkedHashMap
     }
 }

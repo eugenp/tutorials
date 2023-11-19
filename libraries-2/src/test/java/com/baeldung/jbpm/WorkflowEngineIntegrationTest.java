@@ -1,5 +1,8 @@
 package com.baeldung.jbpm;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 import org.jbpm.test.JbpmJUnitBaseTestCase;
 import org.junit.After;
 import org.junit.Before;
@@ -47,6 +50,6 @@ public class WorkflowEngineIntegrationTest extends JbpmJUnitBaseTestCase {
     @Test
     public void givenProcessInstance_whenExecutionCompleted_thenVerifyProcessInstanceStatus() {
         assertProcessInstanceCompleted(processInstance.getId(), ksession);
-        assertTrue("ProcessInstance completed with status 2", processInstance.getState() == 2);
+        assertEquals("ProcessInstance completed with status 2", 2, processInstance.getState());
     }
 }

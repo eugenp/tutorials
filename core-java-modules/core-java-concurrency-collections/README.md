@@ -7,7 +7,7 @@ This module contains articles about concurrent Java collections
 - [A Guide to ConcurrentMap](http://www.baeldung.com/java-concurrent-map)
 - [Guide to PriorityBlockingQueue in Java](http://www.baeldung.com/java-priority-blocking-queue)
 - [Avoiding the ConcurrentModificationException in Java](http://www.baeldung.com/java-concurrentmodificationexception)
-- [Custom Thread Pools In Java 8 Parallel Streams](http://www.baeldung.com/java-8-parallel-streams-custom-threadpool)
+- [Custom Thread Pools in Java 8 Parallel Streams](https://www.baeldung.com/java-8-parallel-streams-custom-threadpool)
 - [Guide to DelayQueue](http://www.baeldung.com/java-delay-queue)
 - [A Guide to Java SynchronousQueue](http://www.baeldung.com/java-synchronous-queue)
 - [Guide to the ConcurrentSkipListMap](http://www.baeldung.com/java-concurrent-skip-list-map)

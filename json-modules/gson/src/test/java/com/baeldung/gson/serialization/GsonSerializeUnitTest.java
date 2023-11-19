@@ -23,8 +23,8 @@ public class GsonSerializeUnitTest {
         ActorGson rudyYoungblood = new ActorGson("nm2199632", sdf.parse("21-09-1982"), Arrays.asList("Apocalypto", "Beatdown", "Wind Walkers"));
         Movie movie = new Movie("tt0472043", "Mel Gibson", Arrays.asList(rudyYoungblood));
 
-        String expectedOutput = "{\"imdbId\":\"tt0472043\",\"director\":\"Mel Gibson\",\"actors\":[{\"imdbId\":\"nm2199632\",\"dateOfBirth\":\"Sep 21, 1982 12:00:00 AM\",\"filmography\":[\"Apocalypto\",\"Beatdown\",\"Wind Walkers\"]}]}";
-        Assert.assertEquals(new Gson().toJson(movie), expectedOutput);
+        String expectedOutput = "{\"imdbId\":\"tt0472043\",\"director\":\"Mel Gibson\",\"actors\":[{\"imdbId\":\"nm2199632\",\"dateOfBirth\":\"Sep 21, 1982, 12:00:00 AM\",\"filmography\":[\"Apocalypto\",\"Beatdown\",\"Wind Walkers\"]}]}";
+        Assert.assertEquals(expectedOutput, new Gson().toJson(movie));
     }
 
     @Test
@@ -41,8 +41,7 @@ public class GsonSerializeUnitTest {
           .serializeNulls()
           .disableHtmlEscaping()
           .create()
-          .toJson(new JsonParser()
-            .parse("{\"imdbId\":null,\"actors\":[{\"<strong>IMDB Code</strong>\":\"nm2199632\",\"<strong>Date Of Birth</strong>\":\"21-09-1982\",\"<strong>N° Film:</strong> \":3,\"filmography\":\"Apocalypto-Beatdown-Wind Walkers\"}]}"));
+          .toJson(JsonParser.parseString("{\"imdbId\":null,\"actors\":[{\"<strong>IMDB Code</strong>\":\"nm2199632\",\"<strong>Date Of Birth</strong>\":\"21-09-1982\",\"<strong>N° Film:</strong> \":3,\"filmography\":\"Apocalypto-Beatdown-Wind Walkers\"}]}"));
         Assert.assertEquals(gson.toJson(movieWithNullValue), expectedOutput);
     }
 }

@@ -1,0 +1,32 @@
+openapi: 3.0.0
+info:
+  title: User APIs
+  version: '1.0'
+servers:
+  - description: Json Place Holder Service
+paths:
+  /users/{id}:
+    parameters:
+      - schema:
+          type: integer
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Fetch user by ID
+      tags:
+        - User
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+      operationId: get-users-user_id
+      description: Retrieve a specific user by ID

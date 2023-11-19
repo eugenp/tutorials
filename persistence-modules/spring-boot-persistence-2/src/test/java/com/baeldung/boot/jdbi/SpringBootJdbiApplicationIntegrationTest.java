@@ -76,7 +76,7 @@ public class SpringBootJdbiApplicationIntegrationTest {
     @Test
     public void givenExistingCarMaker_whenFindById_thenReturnExistingCarMaker() {
     
-        CarMaker maker = carMakerDao.findById(1l);
+        CarMaker maker = carMakerDao.findById(1L);
         assertThat(maker).isNotNull();
         assertThat(maker.getId()).isEqualTo(1);
         
@@ -85,12 +85,12 @@ public class SpringBootJdbiApplicationIntegrationTest {
     @Test
     public void givenExistingCarMaker_whenBulkInsertFails_thenRollback() {
         
-        CarMaker maker = carMakerDao.findById(1l);
+        CarMaker maker = carMakerDao.findById(1L);
         CarModel m1 = CarModel.builder()
           .makerId(maker.getId())
           .name("Model X1")
           .sku("1-M1")
-          .year(2019)
+          .yearDate(2019)
           .build();
         maker.getModels().add(m1);
 
@@ -98,7 +98,7 @@ public class SpringBootJdbiApplicationIntegrationTest {
             .makerId(maker.getId())
             .name("Model X1")
             .sku("1-M1")
-            .year(2019)
+            .yearDate(2019)
             .build();
         maker.getModels().add(m2);
         

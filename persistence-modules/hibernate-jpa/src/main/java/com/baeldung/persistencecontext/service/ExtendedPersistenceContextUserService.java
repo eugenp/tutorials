@@ -1,15 +1,15 @@
 package com.baeldung.persistencecontext.service;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceContextType;
-import javax.transaction.Transactional;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.PersistenceContextType;
+import jakarta.transaction.Transactional;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.baeldung.persistencecontext.entity.User;
 
-@Component
+@Service
 public class ExtendedPersistenceContextUserService {
 
     @PersistenceContext(type = PersistenceContextType.EXTENDED)

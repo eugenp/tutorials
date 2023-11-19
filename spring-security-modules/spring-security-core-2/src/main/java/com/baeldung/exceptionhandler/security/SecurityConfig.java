@@ -1,21 +1,20 @@
 package com.baeldung.exceptionhandler.security;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig {
 
     @Bean
     public UserDetailsService userDetailsService() {
@@ -40,20 +39,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return userDetailsManager;
     }
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-            .withUser("user")
-            .password("{noop}password")
-            .roles("USER")
-            .and()
-            .withUser("admin")
-            .password("{noop}password")
-            .roles("ADMIN");
-    }
-
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf()
             .disable()
             .httpBasic()
@@ -78,6 +65,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .accessDeniedHandler(accessDeniedHandler())
             .and()
             .logout();
+        return http.build();
     }
 
     @Bean

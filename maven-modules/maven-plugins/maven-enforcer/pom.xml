@@ -33,7 +33,7 @@
                         </goals>
                         <configuration>
                             <rules>
-                                <banDuplicatePomDependencyVersions />
+                                <banDuplicatePomDependencyVersions/>
                                 <requireMavenVersion>
                                     <version>3.0</version>
                                     <message>Invalid Maven version. It should, at least, be 3.0</message>

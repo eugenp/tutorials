@@ -4,7 +4,6 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-jpms</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <name>core-java-jpms</name>
     <packaging>pom</packaging>
 
@@ -15,8 +14,8 @@
     </parent>
 
     <modules>
-        <module>decoupling-pattern1</module>
-        <module>decoupling-pattern2</module>
+        <module>service-provider-factory-pattern</module>
+        <module>service-loader-api-pattern</module>
     </modules>
 
     <build>

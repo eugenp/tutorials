@@ -29,7 +29,7 @@ public class NumberInfoClassifier extends ItemListenerSupport<NumberInfo, Intege
     }
 
     @Override
-    public Integer process(NumberInfo numberInfo) throws Exception {
-        return Integer.valueOf(numberInfo.getNumber());
+    public Integer process(NumberInfo numberInfo) {
+        return numberInfo.getNumber();
     }
 }

@@ -1,6 +1,6 @@
 package com.baeldung.jpa.datetime;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;

@@ -1,6 +1,6 @@
 package com.baeldung.swaggerui.disable.controllers;
 
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,7 +14,7 @@ public class VersionController {
         this.environment = environment;
     }
 
-    @ApiOperation(value = "Get the currently deployed API version and active Spring profiles")
+    @Operation(summary = "Get the currently deployed API version and active Spring profiles")
     @GetMapping("/api/version")
     public Version getVersion() {
         return new Version("1.0", environment.getActiveProfiles());

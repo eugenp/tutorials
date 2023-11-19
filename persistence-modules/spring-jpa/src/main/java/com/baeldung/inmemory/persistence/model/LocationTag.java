@@ -1,6 +1,6 @@
 package com.baeldung.inmemory.persistence.model;
 
-import javax.persistence.Embeddable;
+import jakarta.persistence.Embeddable;
 
 @Embeddable
 public class LocationTag {

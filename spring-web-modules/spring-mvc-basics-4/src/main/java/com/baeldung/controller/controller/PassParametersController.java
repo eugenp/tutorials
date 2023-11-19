@@ -18,19 +18,19 @@ public class PassParametersController {
     @GetMapping("/showViewPage")
     public String passParametersWithModel(Model model) {
         model.addAttribute("message", "Baeldung");
-        return "viewPage";
+        return "view/viewPage";
     }
 
     @GetMapping("/printViewPage")
     public String passParametersWithModelMap(ModelMap map) {
         map.addAttribute("welcomeMessage", "welcome");
         map.addAttribute("message", "Baeldung");
-        return "viewPage";
+        return "view/viewPage";
     }
 
     @GetMapping("/goToViewPage")
     public ModelAndView passParametersWithModelAndView() {
-        ModelAndView modelAndView = new ModelAndView("viewPage");
+        ModelAndView modelAndView = new ModelAndView("view/viewPage");
         modelAndView.addObject("message", "Baeldung");
         return modelAndView;
     }

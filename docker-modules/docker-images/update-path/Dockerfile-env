@@ -1,0 +1,4 @@
+FROM ubuntu:latest
+RUN echo $PATH
+ENV PATH="$PATH:/etc/profile"
+RUN echo $PATH

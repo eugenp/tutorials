@@ -31,8 +31,8 @@
                             <fork>true</fork>
                         </configuration>
                     </execution>
-                    <!-- For example purpose not building as it requires both JDK 8 and 11 executables 
-                        on the build machine -->
+                    <!-- For example purpose not building as it requires both JDK 8 and 11 executables -->
+                    <!-- on the build machine -->
                     <!-- <execution> -->
                     <!-- <id>JDK 11</id> -->
                     <!-- <phase>compile</phase> -->
@@ -69,8 +69,8 @@
                             <goal>test-jar</goal>
                         </goals>
                     </execution>
-                    <!-- For example purpose not building as it requires both JDK 8 and 11 executables 
-                        on the build machine -->
+                    <!-- For example purpose not building as it requires both JDK 8 and 11 executables -->
+                    <!-- on the build machine -->
                     <!-- <execution> -->
                     <!-- <id>default-package-jdk11</id> -->
                     <!-- <phase>package</phase> -->

@@ -13,9 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
-import com.baeldung.manytomany.PersistenceConfig;
-import com.baeldung.manytomany.model.Employee;
-import com.baeldung.manytomany.model.Project;
+
+import com.baeldung.hibernate.manytomany.model.Employee;
+import com.baeldung.hibernate.manytomany.model.Project;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { PersistenceConfig.class }, loader = AnnotationConfigContextLoader.class)

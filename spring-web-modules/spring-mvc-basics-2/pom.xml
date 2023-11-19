@@ -42,7 +42,7 @@
             <version>${jstl.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.hibernate</groupId>
+            <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>${hibernate-validator.version}</version>
         </dependency>
@@ -136,7 +136,6 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
-                    <version>${maven-war-plugin.version}</version>
                     <configuration>
                         <warSourceDirectory>src/main/webapp</warSourceDirectory>
                         <warName>springMvcSimple</warName>
@@ -149,9 +148,7 @@
     </build>
 
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <hibernate-validator.version>6.0.10.Final</hibernate-validator.version>
+        <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
         <deploy-path>enter-location-of-server</deploy-path>
         <org.thymeleaf-version>3.0.11.RELEASE</org.thymeleaf-version>
         <groovy.version>2.4.12</groovy.version>

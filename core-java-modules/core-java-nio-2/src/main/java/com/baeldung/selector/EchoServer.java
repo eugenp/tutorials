@@ -45,8 +45,9 @@ public class EchoServer {
 
     private static void answerWithEcho(ByteBuffer buffer, SelectionKey key) throws IOException {
         SocketChannel client = (SocketChannel) key.channel();
-        client.read(buffer);
-        if (new String(buffer.array()).trim().equals(POISON_PILL)) {
+        int r = client.read(buffer);
+        if (r == -1 || new String(buffer.array()).trim()
+            .equals(POISON_PILL)) {
             client.close();
             System.out.println("Not accepting client messages anymore");
         } else {

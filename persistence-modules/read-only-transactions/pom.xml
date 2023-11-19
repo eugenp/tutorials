@@ -73,7 +73,7 @@
         <spring-boot.version>2.6.1</spring-boot.version>
         <spring-test.version>5.3.13</spring-test.version>
         <junit-jupiter.version>5.8.2</junit-jupiter.version>
-        <h2.version>1.4.200</h2.version>
+        <h2.version>2.1.214</h2.version>
     </properties>
 
 </project>

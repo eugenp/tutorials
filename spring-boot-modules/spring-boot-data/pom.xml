@@ -45,6 +45,16 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -89,10 +99,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>${source.version}</source>
-                    <target>${target.version}</target>
-                </configuration>
             </plugin>
         </plugins>
     </build>
@@ -113,10 +119,6 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-compiler-plugin</artifactId>
-                        <configuration>
-                            <source>${source.version}</source>
-                            <target>${target.version}</target>
-                        </configuration>
                     </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
@@ -148,10 +150,6 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-compiler-plugin</artifactId>
-                        <configuration>
-                            <source>${source.version}</source>
-                            <target>${target.version}</target>
-                        </configuration>
                     </plugin>
                 </plugins>
             </build>
@@ -160,8 +158,7 @@
 
     <properties>
         <git-commit-id-plugin.version>2.2.4</git-commit-id-plugin.version>
-        <source.version>1.8</source.version>
-        <target.version>1.8</target.version>
+        <javafx.version>19</javafx.version>
     </properties>
 
 </project>

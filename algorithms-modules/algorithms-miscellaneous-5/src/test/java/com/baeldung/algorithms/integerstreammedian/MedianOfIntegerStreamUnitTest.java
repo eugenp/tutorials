@@ -1,16 +1,18 @@
 package com.baeldung.algorithms.integerstreammedian;
 
-import org.junit.Test;
+
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.Test;
 
-public class MedianOfIntegerStreamUnitTest {
+class MedianOfIntegerStreamUnitTest {
 
     @Test
-    public void givenStreamOfIntegers_whenAnElementIsRead_thenMedianChangesWithApproach1() {
+    void givenStreamOfIntegers_whenAnElementIsRead_thenMedianChangesWithApproach1() {
         MedianOfIntegerStream mis = new MedianOfIntegerStream();
         for (Map.Entry<Integer, Double> e : testcaseFixture().entrySet()) {
             mis.add(e.getKey());
@@ -19,7 +21,7 @@ public class MedianOfIntegerStreamUnitTest {
     }
 
     @Test
-    public void givenStreamOfIntegers_whenAnElementIsRead_thenMedianChangesWithApproach2() {
+    void givenStreamOfIntegers_whenAnElementIsRead_thenMedianChangesWithApproach2() {
         MedianOfIntegerStream2 mis = new MedianOfIntegerStream2();
         for (Map.Entry<Integer, Double> e : testcaseFixture().entrySet()) {
             mis.add(e.getKey());

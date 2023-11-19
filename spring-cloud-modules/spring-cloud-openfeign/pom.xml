@@ -64,13 +64,20 @@
         <dependency>
             <groupId>com.github.tomakehurst</groupId>
             <artifactId>wiremock-jre8</artifactId>
-            <version>2.33.2</version>
+            <version>${wire.mock.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
     <properties>
         <spring-cloud.version>2021.0.3</spring-cloud.version>
+        <wire.mock.version>2.33.2</wire.mock.version>
     </properties>
 
 </project>

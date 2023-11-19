@@ -7,7 +7,7 @@
         </layout>
     </appender>
     <appender name="graylog" class="org.graylog2.log.GelfAppender">
-        <param name="graylogHost" value="18.217.253.212"/>
+        <param name="graylogHost" value="127.0.0.1"/>
         <param name="originHost" value="localhost"/>
         <param name="graylogPort" value="12201"/>
         <param name="extractStacktrace" value="true"/>

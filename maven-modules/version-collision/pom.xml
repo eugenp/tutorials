@@ -13,8 +13,8 @@
     </parent>
 
     <modules>
-        <module>project-a</module>
-        <module>project-b</module>
+        <module>version-collision-project-a</module>
+        <module>version-collision-project-b</module>
         <module>project-collision</module>
     </modules>
 

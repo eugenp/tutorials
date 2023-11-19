@@ -1,13 +1,14 @@
 package com.baeldung.swaggerkeycloak;
 
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
 import org.springframework.http.MediaType;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
 import javax.annotation.PostConstruct;
 import java.time.LocalDate;
@@ -28,13 +29,10 @@ public class TodosController {
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    @ApiOperation("Read all todos")
-    @ApiResponses({
-      @ApiResponse(code = 200, message = "The todos were found and returned.")
-    })
+    @Operation(description = "Read all todos")
+    @ApiResponses({ @ApiResponse(responseCode = "200", description = "The todos were found and returned.") })
     @PreAuthorize("hasAuthority('SCOPE_read_access')")
     public Collection<Todo> readAll() {
         return todos.values();
     }
-
 }

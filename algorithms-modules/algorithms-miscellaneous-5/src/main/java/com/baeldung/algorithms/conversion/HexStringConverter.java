@@ -2,12 +2,14 @@ package com.baeldung.algorithms.conversion;
 
 import java.math.BigInteger;
 
-import javax.xml.bind.DatatypeConverter;
+
 
 import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.binary.Hex;
 
 import com.google.common.io.BaseEncoding;
+
+import jakarta.xml.bind.DatatypeConverter;
 
 public class HexStringConverter {
 
@@ -90,7 +92,7 @@ public class HexStringConverter {
         return DatatypeConverter.parseHexBinary(hexString);
     }
 
-    public String encodeUsingApacheCommons(byte[] bytes) throws DecoderException {
+    public String encodeUsingApacheCommons(byte[] bytes) {
         return Hex.encodeHexString(bytes);
     }
 

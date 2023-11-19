@@ -1,14 +1,20 @@
 package com.baeldung.hibernate.customtypes;
 
-import org.hibernate.type.LocalDateType;
-import org.hibernate.type.descriptor.WrapperOptions;
-import org.hibernate.type.descriptor.java.AbstractTypeDescriptor;
-import org.hibernate.type.descriptor.java.ImmutableMutabilityPlan;
-import org.hibernate.type.descriptor.java.MutabilityPlan;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
-public class LocalDateStringJavaDescriptor extends AbstractTypeDescriptor<LocalDate> {
+import org.hibernate.dialect.Dialect;
+import org.hibernate.tool.schema.extract.spi.ColumnTypeInformation;
+import org.hibernate.type.BasicType;
+import org.hibernate.type.descriptor.WrapperOptions;
+import org.hibernate.type.descriptor.java.ImmutableMutabilityPlan;
+import org.hibernate.type.descriptor.jdbc.JdbcTypeIndicators;
+import org.hibernate.type.spi.TypeConfiguration;
+
+import io.hypersistence.utils.hibernate.type.array.internal.AbstractArrayTypeDescriptor;
+
+public class LocalDateStringJavaDescriptor extends AbstractArrayTypeDescriptor<LocalDate> {
 
     public static final LocalDateStringJavaDescriptor INSTANCE = new LocalDateStringJavaDescriptor();
 
@@ -18,12 +24,12 @@ public class LocalDateStringJavaDescriptor extends AbstractTypeDescriptor<LocalD
 
     @Override
     public String toString(LocalDate value) {
-        return LocalDateType.FORMATTER.format(value);
+        return DateTimeFormatter.ISO_LOCAL_DATE.format(value);
     }
 
     @Override
-    public LocalDate fromString(String string) {
-        return LocalDate.from(LocalDateType.FORMATTER.parse(string));
+    public LocalDate fromString(CharSequence string) {
+        return LocalDate.from( DateTimeFormatter.ISO_LOCAL_DATE.parse(string));
     }
 
     @Override
@@ -33,7 +39,7 @@ public class LocalDateStringJavaDescriptor extends AbstractTypeDescriptor<LocalD
             return null;
 
         if (String.class.isAssignableFrom(type))
-            return (X) LocalDateType.FORMATTER.format(value);
+            return (X) DateTimeFormatter.ISO_LOCAL_DATE.format(value);
 
         throw unknownUnwrap(type);
     }
@@ -43,9 +49,15 @@ public class LocalDateStringJavaDescriptor extends AbstractTypeDescriptor<LocalD
         if (value == null)
             return null;
 
-        if(String.class.isInstance(value))
-            return LocalDate.from(LocalDateType.FORMATTER.parse((CharSequence) value));
+        if(value instanceof String)
+            return LocalDate.from( DateTimeFormatter.ISO_LOCAL_DATE.parse((CharSequence) value));
 
         throw unknownWrap(value.getClass());
+    }
+
+    @Override
+    public BasicType resolveType(TypeConfiguration typeConfiguration, Dialect dialect, BasicType elementType, ColumnTypeInformation columnTypeInformation, JdbcTypeIndicators stdIndicators) {
+        // TODO Auto-generated method stub
+        return null;
     }
 }

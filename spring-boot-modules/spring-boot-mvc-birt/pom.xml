@@ -9,13 +9,10 @@
     <packaging>jar</packaging>
     <description>Module For Spring Boot Integration with BIRT</description>
 
-    <!-- this module should use the Boot parent directly to avoid inherit the logback dependency from 
-        our other parents -->
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.1.RELEASE</version>
-        <relativePath /> <!-- lookup parent from repository -->
+        <groupId>com.baeldung.spring-boot-modules</groupId>
+        <artifactId>spring-boot-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <dependencies>

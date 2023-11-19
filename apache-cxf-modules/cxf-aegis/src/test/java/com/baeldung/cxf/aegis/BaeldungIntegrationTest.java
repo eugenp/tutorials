@@ -80,16 +80,20 @@ public class BaeldungIntegrationTest {
     private void marshalCourseRepo(CourseRepo courseRepo) throws Exception {
         AegisWriter<XMLStreamWriter> writer = context.createXMLStreamWriter();
         AegisType aegisType = context.getTypeMapping().getType(CourseRepo.class);
-        XMLStreamWriter xmlWriter = XMLOutputFactory.newInstance().createXMLStreamWriter(new FileOutputStream(fileName));
+        final FileOutputStream stream = new FileOutputStream(fileName);
+        XMLStreamWriter xmlWriter = XMLOutputFactory.newInstance().createXMLStreamWriter(stream);
         writer.write(courseRepo, new QName("http://aegis.cxf.baeldung.com", "baeldung"), false, xmlWriter, aegisType);
         xmlWriter.close();
+        stream.close();
     }
 
     private CourseRepo unmarshalCourseRepo() throws Exception {       
         AegisReader<XMLStreamReader> reader = context.createXMLStreamReader();
-        XMLStreamReader xmlReader = XMLInputFactory.newInstance().createXMLStreamReader(new FileInputStream(fileName));
+        final FileInputStream stream = new FileInputStream(fileName);
+        XMLStreamReader xmlReader = XMLInputFactory.newInstance().createXMLStreamReader(stream);
         CourseRepo courseRepo = (CourseRepo) reader.read(xmlReader, context.getTypeMapping().getType(CourseRepo.class));
         xmlReader.close();
+        stream.close();
         return courseRepo;
     }
 
@@ -97,7 +101,7 @@ public class BaeldungIntegrationTest {
     public void cleanup(){
         File testFile = new File(fileName);
         if (testFile.exists()) {
-           testFile.delete();     
+           testFile.deleteOnExit();
         }
     }
 }

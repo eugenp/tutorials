@@ -3,12 +3,12 @@ package com.baeldung.hibernate.lazycollection.model;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OrderColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OrderColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Entity;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -3,6 +3,10 @@ package com.baeldung.uuid;
 import org.junit.jupiter.api.Test;
 
 import java.io.UnsupportedEncodingException;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -13,17 +17,23 @@ class UUIDGeneratorUnitTest {
     private static final String NAMESPACE_DNS = "6ba7b810-9dad-11d1-80b4-00c04fd430c8";
 
     @Test
-    public void version_1_UUID_is_generated_with_correct_length_version_and_variant() {
-
+    void shouldGenerateType1UUIDWithCorrectVersionAndVariant() {
         UUID uuid = UUIDGenerator.generateType1UUID();
-
         assertEquals(36, uuid.toString().length());
         assertEquals(1, uuid.version());
         assertEquals(2, uuid.variant());
     }
 
     @Test
-    public void version_3_UUID_is_correctly_generated_for_domain_baeldung_com() throws UnsupportedEncodingException {
+    void shouldGenerateType1UUIDWithTheCurrentDate() {
+        UUID uuid = UUIDGenerator.generateType1UUID();
+        long time = uuid.timestamp();
+        LocalDateTime dateTime = LocalDateTime.ofInstant(Instant.ofEpochMilli(time), ZoneId.systemDefault());
+        assertEquals(LocalDate.now(), dateTime.toLocalDate());
+    }
+
+    @Test
+    void version_3_UUID_is_correctly_generated_for_domain_baeldung_com() {
 
         UUID uuid = UUIDGenerator.generateType3UUID(NAMESPACE_DNS, "baeldung.com");
 
@@ -33,7 +43,7 @@ class UUIDGeneratorUnitTest {
     }
 
     @Test
-    public void version_3_UUID_is_correctly_generated_for_domain_d() throws UnsupportedEncodingException {
+    void version_3_UUID_is_correctly_generated_for_domain_d() {
 
         UUID uuid = UUIDGenerator.generateType3UUID(NAMESPACE_DNS, "d");
 

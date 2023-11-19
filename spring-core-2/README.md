@@ -4,11 +4,11 @@ This module contains articles about core Spring functionality
 
 ## Relevant Articles:
 
-- [Guide to Spring @Autowired](http://www.baeldung.com/spring-autowire)
-- [Spring Profiles](http://www.baeldung.com/spring-profiles)
 - [Quick Guide to Spring Bean Scopes](http://www.baeldung.com/spring-bean-scopes)
-- [@Order in Spring](http://www.baeldung.com/spring-order)
-- [Spring @Primary Annotation](http://www.baeldung.com/spring-primary)
 - [Spring Events](https://www.baeldung.com/spring-events)
-- [Spring Null-Safety Annotations](https://www.baeldung.com/spring-null-safety-annotations)
+- [Solving Spring’s “not eligible for auto-proxying” Warning](https://www.baeldung.com/spring-not-eligible-for-auto-proxying)
+- [Finding the Spring Version](https://www.baeldung.com/spring-find-version)
+- [How Does the Spring Singleton Bean Serve Concurrent Requests?](https://www.baeldung.com/spring-singleton-concurrent-requests)
+- [Reinitialize Singleton Bean in Spring Context](https://www.baeldung.com/spring-reinitialize-singleton-bean)
+- [Getting the Current ApplicationContext in Spring](https://www.baeldung.com/spring-get-current-applicationcontext)
 - More articles: [[<-- prev]](/spring-core)[[next -->]](/spring-core-3)

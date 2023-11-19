@@ -5,9 +5,7 @@ import java.util.List;
 import com.baeldung.spring.data.couchbase.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.couchbase.core.CouchbaseTemplate;
-
-import com.couchbase.client.java.view.Stale;
-import com.couchbase.client.java.view.ViewQuery;
+import org.springframework.data.couchbase.core.query.QueryCriteria;
 
 public class CustomStudentRepositoryImpl implements CustomStudentRepository {
 
@@ -17,6 +15,6 @@ public class CustomStudentRepositoryImpl implements CustomStudentRepository {
     private CouchbaseTemplate template;
 
     public List<Student> findByFirstNameStartsWith(String s) {
-        return template.findByView(ViewQuery.from(DESIGN_DOC, "byFirstName").startKey(s).stale(Stale.FALSE), Student.class);
+        return template.findByQuery(Student.class).matching(QueryCriteria.where("firstName").startingWith(s)).all();
     }
 }

@@ -8,7 +8,9 @@ import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Profile;
 
+@Profile("spring")
 public class App {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
@@ -16,20 +18,19 @@ public class App {
     public static void main(final String[] args) {
         // Spring Java config
         final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
-        context.register(SpringConfig.class);
+        context.getEnvironment().addActiveProfile("spring");
         context.register(SpringBatchConfig.class);
         context.register(SpringBatchRetryConfig.class);
 
         context.refresh();
 
         // Spring xml config
-        // ApplicationContext context = new ClassPathXmlApplicationContext("spring-batch.xml");
+        // ApplicationContext context = new ClassPathXmlApplicationContext("spring-batch-intro.xml");
 
         runJob(context, "firstBatchJob");
         runJob(context, "skippingBatchJob");
         runJob(context, "skipPolicyBatchJob");
         runJob(context, "retryBatchJob");
-
     }
 
     private static void runJob(AnnotationConfigApplicationContext context, String batchJobName) {

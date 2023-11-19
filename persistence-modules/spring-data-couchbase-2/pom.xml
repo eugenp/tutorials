@@ -40,7 +40,7 @@
         </dependency>
         <!-- Hibernate JSR-303 Bean Validation -->
         <dependency>
-            <groupId>org.hibernate</groupId>
+            <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>${hibernate-validator.version}</version>
         </dependency>
@@ -57,23 +57,22 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>javax.el</groupId>
-            <artifactId>javax.el-api</artifactId>
-            <version>${javax.el.version}</version>
+            <groupId>org.glassfish.expressly</groupId>
+            <artifactId>expressly</artifactId>
+            <version>5.0.0</version>
         </dependency>
         <dependency>
-            <groupId>org.glassfish</groupId>
-            <artifactId>javax.el</artifactId>
-            <version>${javax.el.version}</version>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
+            <version>2.1.1</version>
         </dependency>
     </dependencies>
 
     <properties>
-        <spring-framework.version>4.3.4.RELEASE</spring-framework.version>
-        <spring-data-couchbase.version>2.1.5.RELEASE</spring-data-couchbase.version>
-        <hibernate-validator.version>5.3.3.Final</hibernate-validator.version>
-        <joda-time.version>2.9.6</joda-time.version>
-        <javax.el.version>3.0.0</javax.el.version>
+        <spring-framework.version>6.0.6</spring-framework.version>
+        <spring-data-couchbase.version>5.0.3</spring-data-couchbase.version>
+        <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
+        <joda-time.version>2.12.5</joda-time.version>
     </properties>
 
 </project>

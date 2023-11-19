@@ -5,7 +5,6 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.docker</groupId>
     <artifactId>docker-containers</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <description>Demo project for Spring Boot</description>
 
     <parent>

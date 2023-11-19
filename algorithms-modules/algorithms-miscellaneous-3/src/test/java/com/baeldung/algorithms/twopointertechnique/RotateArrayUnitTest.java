@@ -1,10 +1,10 @@
 package com.baeldung.algorithms.twopointertechnique;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class RotateArrayUnitTest {
+class RotateArrayUnitTest {
 
     private RotateArray rotateArray = new RotateArray();
 
@@ -13,7 +13,7 @@ public class RotateArrayUnitTest {
     private int step;
 
     @Test
-    public void givenAnArrayOfIntegers_whenRotateKsteps_thenCorrect() {
+    void givenAnArrayOfIntegers_whenRotateKsteps_thenCorrect() {
 
         inputArray = new int[] { 1, 2, 3, 4, 5, 6, 7 };
         step = 4;

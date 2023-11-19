@@ -4,7 +4,6 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-collections-maps-5</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
     <name>core-java-collections-maps-5</name>
     <packaging>jar</packaging>
 
@@ -33,6 +32,19 @@
             <version>${commons-collections4.version}</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>9</source>
+                    <target>9</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <properties>
         <spring.version>5.2.5.RELEASE</spring.version>

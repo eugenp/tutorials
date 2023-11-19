@@ -1,17 +1,15 @@
-package com.baeldung.category;
-
-import groovy.lang.Category
+package com.baeldung.category
 
 @Category(Number)
 class NumberCategory {
 
-    public Number cube() {
-        return this*this*this
+    Number cube() {
+        return this**3
     }
 
-    public int divideWithRoundUp(BigDecimal divisor, boolean isRoundUp) {
+    int divideWithRoundUp(BigDecimal divisor, boolean isRoundUp) {
         def mathRound = isRoundUp ? BigDecimal.ROUND_UP : BigDecimal.ROUND_DOWN
-        return (int)new BigDecimal(this).divide(divisor, 0, mathRound)
+        
+        return (int) new BigDecimal(this).divide(divisor, 0, mathRound)
     }
-
 }

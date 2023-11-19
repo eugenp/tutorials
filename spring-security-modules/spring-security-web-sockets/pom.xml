@@ -149,6 +149,12 @@
             <version>${spring-boot-starter-test.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>${jaxb-api.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -168,10 +174,20 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>3.0.0</version>
+                <version>${maven-war-plugin.version}</version>
                 <configuration>
                     <warSourceDirectory>src/main/webapp</warSourceDirectory>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <argLine>
+                        --add-opens java.base/java.lang=ALL-UNNAMED
+                        --add-opens java.base/java.lang.invoke=ALL-UNNAMED
+                    </argLine>
                 </configuration>
             </plugin>
         </plugins>
@@ -182,6 +198,7 @@
         <spring-data-jpa.version>1.11.3.RELEASE</spring-data-jpa.version>
         <spring-boot-starter-test.version>1.5.10.RELEASE</spring-boot-starter-test.version>
         <cargo-maven2-plugin.version>1.7.6</cargo-maven2-plugin.version>
+        <jaxb-api.version>2.3.1</jaxb-api.version>
     </properties>
 
 </project>

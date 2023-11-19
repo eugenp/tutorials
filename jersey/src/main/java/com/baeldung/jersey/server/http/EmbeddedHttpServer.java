@@ -19,10 +19,7 @@ public class EmbeddedHttpServer {
         try {
             final HttpServer server = GrizzlyHttpServerFactory.createHttpServer(BASE_URI, new ViewApplicationConfig(), false);
 
-            Runtime.getRuntime()
-                .addShutdownHook(new Thread(() -> {
-                    server.shutdownNow();
-                }));
+            Runtime.getRuntime().addShutdownHook(new Thread(server::shutdownNow));
 
             server.start();
 
@@ -34,8 +31,8 @@ public class EmbeddedHttpServer {
 
     }
 
-    public static HttpServer startServer() {
+    public static HttpServer startServer(URI url) {
         final ResourceConfig rc = new ResourceConfig().packages("com.baeldung.jersey.server");
-        return GrizzlyHttpServerFactory.createHttpServer(URI.create(BASE_URI.toString()), rc);
+        return GrizzlyHttpServerFactory.createHttpServer(URI.create(url.toString()), rc);
     }
 }

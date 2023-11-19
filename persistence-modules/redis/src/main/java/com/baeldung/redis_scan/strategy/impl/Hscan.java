@@ -2,8 +2,8 @@ package com.baeldung.redis_scan.strategy.impl;
 
 import com.baeldung.redis_scan.strategy.ScanStrategy;
 import redis.clients.jedis.Jedis;
-import redis.clients.jedis.ScanParams;
-import redis.clients.jedis.ScanResult;
+import redis.clients.jedis.params.ScanParams;
+import redis.clients.jedis.resps.ScanResult;
 
 import java.util.Map;
 import java.util.Map.Entry;

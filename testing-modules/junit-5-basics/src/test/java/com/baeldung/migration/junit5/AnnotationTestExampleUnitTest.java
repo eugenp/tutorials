@@ -9,9 +9,10 @@ import org.junit.jupiter.api.Test;
 
 @Tag("annotations")
 @Tag("junit5")
-public class AnnotationTestExampleUnitTest {
+class AnnotationTestExampleUnitTest {
+
     @Test
-    public void shouldRaiseAnException() throws Exception {
+    void shouldRaiseAnException() {
         Assertions.assertThrows(Exception.class, () -> {
             throw new Exception("This is my expected exception");
         });
@@ -19,7 +20,7 @@ public class AnnotationTestExampleUnitTest {
 
     @Test
     @Disabled
-    public void shouldFailBecauseTimeout() throws InterruptedException {
+    void shouldFailBecauseTimeout() {
         Assertions.assertTimeout(Duration.ofMillis(1), () -> Thread.sleep(10));
     }
 }

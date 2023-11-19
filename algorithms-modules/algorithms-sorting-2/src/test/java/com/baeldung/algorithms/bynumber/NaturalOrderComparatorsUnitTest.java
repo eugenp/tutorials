@@ -1,17 +1,19 @@
 package com.baeldung.algorithms.bynumber;
 
-import org.junit.Test;
+
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
 
-public class NaturalOrderComparatorsUnitTest {
+class NaturalOrderComparatorsUnitTest {
 
     @Test
-    public void givenSimpleStringsContainingIntsAndDoubles_whenSortedByRegex_checkSortingCorrect() {
+    void givenSimpleStringsContainingIntsAndDoubles_whenSortedByRegex_checkSortingCorrect() {
 
         List<String> testStrings = Arrays.asList("a1", "b3", "c4", "d2.2", "d2.4", "d2.3d");
 
@@ -25,7 +27,7 @@ public class NaturalOrderComparatorsUnitTest {
     }
 
     @Test
-    public void givenSimpleStringsContainingIntsAndDoublesWithAnInvalidNumber_whenSortedByRegex_checkSortingCorrect() {
+    void givenSimpleStringsContainingIntsAndDoublesWithAnInvalidNumber_whenSortedByRegex_checkSortingCorrect() {
 
         List<String> testStrings = Arrays.asList("a1", "b3", "c4", "d2.2", "d2.4", "d2.3.3d");
 
@@ -39,7 +41,7 @@ public class NaturalOrderComparatorsUnitTest {
     }
 
     @Test
-    public void givenAllForseenProblems_whenSortedByRegex_checkSortingCorrect() {
+    void givenAllForseenProblems_whenSortedByRegex_checkSortingCorrect() {
 
         List<String> testStrings = Arrays.asList("a1", "b3", "c4", "d2.2", "d2.f4", "d2.3.3d");
 
@@ -53,7 +55,7 @@ public class NaturalOrderComparatorsUnitTest {
     }
 
     @Test
-    public void givenComplexStringsContainingSeparatedNumbers_whenSortedByRegex_checkNumbersCondensedAndSorted() {
+    void givenComplexStringsContainingSeparatedNumbers_whenSortedByRegex_checkNumbersCondensedAndSorted() {
 
         List<String> testStrings = Arrays.asList("a1b2c5", "b3ght3.2", "something65.thensomething5"); //125, 33.2, 65.5
 
@@ -66,7 +68,7 @@ public class NaturalOrderComparatorsUnitTest {
     }
 
     @Test
-    public void givenStringsNotContainingNumbers_whenSortedByRegex_checkOrderNotChanged() {
+    void givenStringsNotContainingNumbers_whenSortedByRegex_checkOrderNotChanged() {
 
         List<String> testStrings = Arrays.asList("a", "c", "d", "e");
         List<String> expected = new ArrayList<>(testStrings);

@@ -4,7 +4,6 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-httpclient</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
     <name>core-java-httpclient</name>
     <packaging>jar</packaging>
 
@@ -32,6 +31,12 @@
             <version>${assertj.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.github.tomakehurst</groupId>
+            <artifactId>wiremock</artifactId>
+            <version>${wiremock.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -53,6 +58,7 @@
         <maven.compiler.target.version>11</maven.compiler.target.version>
         <assertj.version>3.22.0</assertj.version>
         <mockserver.version>5.11.2</mockserver.version>
+        <wiremock.version>2.27.2</wiremock.version>
     </properties>
 
 </project>

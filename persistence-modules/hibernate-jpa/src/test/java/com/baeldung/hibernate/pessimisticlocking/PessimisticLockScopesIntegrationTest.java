@@ -6,9 +6,9 @@ import org.hibernate.SessionFactory;
 import org.junit.AfterClass;
 import org.junit.Test;
 
-import javax.persistence.EntityManager;
-import javax.persistence.LockModeType;
-import javax.persistence.PessimisticLockScope;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.LockModeType;
+import jakarta.persistence.PessimisticLockScope;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.Arrays;
@@ -36,7 +36,7 @@ public class PessimisticLockScopesIntegrationTest {
 
         // EXTENDED SCOPE
         Map<String, Object> map = new HashMap<>();
-        map.put("javax.persistence.lock.scope", PessimisticLockScope.EXTENDED);
+        map.put("jakarta.persistence", PessimisticLockScope.EXTENDED);
 
         EntityManager em3 = getEntityManagerWithOpenTransaction();
         foundEmployee = em3.find(PessimisticLockingEmployee.class, 1L, LockModeType.PESSIMISTIC_WRITE, map);
@@ -65,7 +65,7 @@ public class PessimisticLockScopesIntegrationTest {
 
         // EXTENDED SCOPE
         Map<String, Object> map = new HashMap<>();
-        map.put("javax.persistence.lock.scope", PessimisticLockScope.EXTENDED);
+        map.put("jakarta.persistence", PessimisticLockScope.EXTENDED);
 
         EntityManager em3 = getEntityManagerWithOpenTransaction();
         foundCustomer = em3.find(Customer.class, 1L, LockModeType.PESSIMISTIC_WRITE, map);
@@ -96,7 +96,7 @@ public class PessimisticLockScopesIntegrationTest {
 
         // EXTENDED SCOPE
         Map<String, Object> map = new HashMap<>();
-        map.put("javax.persistence.lock.scope", PessimisticLockScope.EXTENDED);
+        map.put("jakarta.persistence", PessimisticLockScope.EXTENDED);
 
         EntityManager em3 = getEntityManagerWithOpenTransaction();
         foundCourse = em3.find(PessimisticLockingCourse.class, 1L, LockModeType.PESSIMISTIC_WRITE, map);

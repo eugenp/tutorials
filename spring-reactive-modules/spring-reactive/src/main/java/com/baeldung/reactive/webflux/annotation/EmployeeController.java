@@ -22,17 +22,17 @@ public class EmployeeController {
     }
 
     @GetMapping("/{id}")
-    private Mono<Employee> getEmployeeById(@PathVariable String id) {
+    public Mono<Employee> getEmployeeById(@PathVariable String id) {
         return employeeRepository.findEmployeeById(id);
     }
 
     @GetMapping
-    private Flux<Employee> getAllEmployees() {
+    public Flux<Employee> getAllEmployees() {
         return employeeRepository.findAllEmployees();
     }
 
     @PostMapping("/update")
-    private Mono<Employee> updateEmployee(@RequestBody Employee employee) {
+    public Mono<Employee> updateEmployee(@RequestBody Employee employee) {
         return employeeRepository.updateEmployee(employee);
     }
 

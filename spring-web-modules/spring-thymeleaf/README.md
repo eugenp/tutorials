@@ -10,7 +10,7 @@ This module contains articles about Spring with Thymeleaf
 - [How to Work with Dates in Thymeleaf](https://www.baeldung.com/dates-in-thymeleaf)
 - [Working with Fragments in Thymeleaf](https://www.baeldung.com/spring-thymeleaf-fragments)
 - [JavaScript Function Call with Thymeleaf](https://www.baeldung.com/thymeleaf-js-function-call)
-- [[next -->]](/spring-thymeleaf-2)
+- [[next -->]](../spring-thymeleaf-2)
 
 ### Build the Project
 
@@ -23,3 +23,20 @@ mvn cargo:run
 
 ### Security
 The user/password required is: user1/user1Pass
+
+### Endpoints
+
+All endpoints start with `http://localhost:8082/spring-thymeleaf`:
+
+- `/dates`
+- `/saveStudent`
+- `/objects`
+- `/fragments`
+- `/markup`
+- `/params`
+- `/other`
+- `/function-call`
+- `/html`
+- `/js`
+- `/plain`
+- `/layout`

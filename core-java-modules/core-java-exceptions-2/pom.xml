@@ -5,8 +5,6 @@
     <artifactId>core-java-exceptions-2</artifactId>
     <name>core-java-exceptions-2</name>
     <packaging>jar</packaging>
-    <description> </description>
-    <url>http://maven.apache.org</url>
 
     <parent>
         <groupId>com.baeldung.core-java-modules</groupId>

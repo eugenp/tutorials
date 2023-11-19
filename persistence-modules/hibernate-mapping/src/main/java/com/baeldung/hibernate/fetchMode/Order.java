@@ -1,6 +1,6 @@
 package com.baeldung.hibernate.fetchMode;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 public class Order {

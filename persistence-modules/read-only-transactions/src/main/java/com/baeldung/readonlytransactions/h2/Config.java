@@ -20,7 +20,7 @@ public class Config {
     @Bean("h2DataSource")
     public DataSource dataSource() {
         HikariConfig config = new HikariConfig();
-        config.setJdbcUrl("jdbc:h2:mem:mydb");
+        config.setJdbcUrl("jdbc:h2:mem:mydb;MODE=LEGACY");
         config.setUsername("sa");
         config.setPassword("");
         config.setDriverClassName("org.h2.Driver");

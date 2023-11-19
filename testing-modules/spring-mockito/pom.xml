@@ -26,6 +26,10 @@
             <artifactId>mockito-core</artifactId>
             <version>${mockito.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

@@ -17,6 +17,7 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
+            <version>${javax.servlet-api.version}</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -30,6 +31,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
+                <version>${maven-war-plugin.version}</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
@@ -45,5 +47,9 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
+    </properties>
 
 </project>

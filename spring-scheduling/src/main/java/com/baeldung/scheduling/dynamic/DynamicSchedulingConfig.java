@@ -37,7 +37,7 @@ public class DynamicSchedulingConfig implements SchedulingConfigurer {
               Instant nextExecutionTime =
                 lastCompletionTime.orElseGet(Date::new).toInstant()
                   .plusMillis(tickService.getDelay());
-              return Date.from(nextExecutionTime);
+              return Date.from(nextExecutionTime).toInstant();
           }
         );
     }

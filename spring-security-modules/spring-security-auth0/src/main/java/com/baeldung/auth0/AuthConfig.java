@@ -7,10 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 
 import com.auth0.AuthenticationController;
@@ -20,7 +19,7 @@ import com.auth0.jwk.JwkProviderBuilder;
 
 @Configuration
 @EnableWebSecurity
-public class AuthConfig extends WebSecurityConfigurerAdapter {
+public class AuthConfig {
 
     @Value(value = "${com.auth0.domain}")
     private String domain;
@@ -53,18 +52,23 @@ public class AuthConfig extends WebSecurityConfigurerAdapter {
             .build();
     }
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable();
-        http
-        .authorizeRequests()
-        .antMatchers("/callback", "/login", "/").permitAll()
-        .anyRequest().authenticated()
-        .and()
-        .formLogin()
-        .loginPage("/login")
-        .and()
-        .logout().logoutSuccessHandler(logoutSuccessHandler()).permitAll();
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.csrf()
+            .disable()
+            .authorizeRequests()
+            .antMatchers("/callback", "/login", "/")
+            .permitAll()
+            .anyRequest()
+            .authenticated()
+            .and()
+            .formLogin()
+            .loginPage("/login")
+            .and()
+            .logout()
+            .logoutSuccessHandler(logoutSuccessHandler())
+            .permitAll();
+        return http.build();
     }
 
     public String getDomain() {

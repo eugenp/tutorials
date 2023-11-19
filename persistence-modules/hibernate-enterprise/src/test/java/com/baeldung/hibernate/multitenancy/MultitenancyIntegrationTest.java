@@ -79,9 +79,9 @@ public abstract class MultitenancyIntegrationTest {
     private void createCarTable() {
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
-        session.createSQLQuery("drop table Car if exists")
+        session.createNativeQuery("drop table Car if exists")
             .executeUpdate();
-        session.createSQLQuery("create table Car (brand varchar(255) primary key)")
+        session.createNativeQuery("create table Car (brand varchar(255) primary key)")
             .executeUpdate();
         tx.commit();
     }

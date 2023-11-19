@@ -1,21 +1,37 @@
 package com.baeldung.hibernate.customtypes;
 
 import org.hibernate.HibernateException;
-import org.hibernate.engine.spi.SharedSessionContractImplementor;
-import org.hibernate.usertype.UserType;
+import org.hibernate.engine.spi.SessionFactoryImplementor;
+import org.hibernate.metamodel.spi.ValueAccess;
+import org.hibernate.usertype.CompositeUserType;
 
 import java.io.Serializable;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Types;
 import java.util.Objects;
 
+public class PhoneNumberType implements CompositeUserType<PhoneNumber> {
 
-public class PhoneNumberType implements UserType {
     @Override
-    public int[] sqlTypes() {
-        return new int[]{Types.INTEGER, Types.INTEGER, Types.INTEGER};
+    public Object getPropertyValue(PhoneNumber component, int property) throws HibernateException {
+        switch (property) {
+            case 0:
+                return component.getCountryCode();
+            case 1:
+                return component.getCityCode();
+            case 2:
+                return component.getNumber();
+            default:
+                throw new IllegalArgumentException(property + " is an invalid property index for class type " + component.getClass().getName());
+        }
+    }
+
+    @Override
+    public PhoneNumber instantiate(ValueAccess values, SessionFactoryImplementor sessionFactory) {
+        return new PhoneNumber(values.getValue(0, Integer.class), values.getValue(1, Integer.class), values.getValue(2,Integer.class));
+    }
+
+    @Override
+    public Class<?> embeddable() {
+        return PhoneNumber.class;
     }
 
     @Override
@@ -24,7 +40,7 @@ public class PhoneNumberType implements UserType {
     }
 
     @Override
-    public boolean equals(Object x, Object y) throws HibernateException {
+    public boolean equals(PhoneNumber x, PhoneNumber y) {
         if (x == y)
             return true;
         if (Objects.isNull(x) || Objects.isNull(y))
@@ -34,48 +50,16 @@ public class PhoneNumberType implements UserType {
     }
 
     @Override
-    public int hashCode(Object x) throws HibernateException {
+    public int hashCode(PhoneNumber x) {
         return x.hashCode();
     }
 
     @Override
-    public Object nullSafeGet(ResultSet rs, String[] names, SharedSessionContractImplementor session, Object owner) throws HibernateException, SQLException {
-        int countryCode = rs.getInt(names[0]);
-
-        if (rs.wasNull())
-            return null;
-
-        int cityCode = rs.getInt(names[1]);
-        int number = rs.getInt(names[2]);
-        PhoneNumber employeeNumber = new PhoneNumber(countryCode, cityCode, number);
-
-        return employeeNumber;
-    }
-
-    @Override
-    public void nullSafeSet(PreparedStatement st, Object value, int index, SharedSessionContractImplementor session) throws HibernateException, SQLException {
-
-        if (Objects.isNull(value)) {
-            st.setNull(index, Types.INTEGER);
-            st.setNull(index+1, Types.INTEGER);
-            st.setNull(index+2, Types.INTEGER);
-        } else {
-            PhoneNumber employeeNumber = (PhoneNumber) value;
-            st.setInt(index,employeeNumber.getCountryCode());
-            st.setInt(index+1,employeeNumber.getCityCode());
-            st.setInt(index+2,employeeNumber.getNumber());
-        }
-    }
-
-    @Override
-    public Object deepCopy(Object value) throws HibernateException {
+    public PhoneNumber deepCopy(PhoneNumber value) {
         if (Objects.isNull(value))
             return null;
 
-        PhoneNumber empNumber = (PhoneNumber) value;
-        PhoneNumber newEmpNumber = new PhoneNumber(empNumber.getCountryCode(),empNumber.getCityCode(),empNumber.getNumber());
-
-        return newEmpNumber;
+        return new PhoneNumber(value.getCountryCode(), value.getCityCode(), value.getNumber());
     }
 
     @Override
@@ -84,17 +68,17 @@ public class PhoneNumberType implements UserType {
     }
 
     @Override
-    public Serializable disassemble(Object value) throws HibernateException {
+    public Serializable disassemble(PhoneNumber value) {
         return (Serializable) value;
     }
 
     @Override
-    public Object assemble(Serializable cached, Object owner) throws HibernateException {
-        return cached;
+    public PhoneNumber assemble(Serializable cached, Object owner) {
+        return (PhoneNumber) cached;
     }
 
     @Override
-    public Object replace(Object original, Object target, Object owner) throws HibernateException {
-        return original;
+    public PhoneNumber replace(PhoneNumber detached, PhoneNumber managed, Object owner) {
+        return detached;
     }
 }

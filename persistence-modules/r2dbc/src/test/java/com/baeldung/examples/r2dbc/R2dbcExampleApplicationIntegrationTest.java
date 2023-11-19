@@ -55,9 +55,7 @@ public class R2dbcExampleApplicationIntegrationTest {
           .expectStatus()
             .isOk()
           .expectBody(Account.class)
-            .value((acc) -> {
-                assertThat(acc.getId(),is(1l));
-            });
+            .value((acc) -> assertThat(acc.getId(),is(1L)));
     }
     
     @Test
@@ -71,9 +69,7 @@ public class R2dbcExampleApplicationIntegrationTest {
           .expectStatus()
             .isOk()
           .expectBody(List.class)
-            .value((accounts) -> {
-                assertThat(accounts.size(),not(is(0)));
-            });
+            .value((accounts) -> assertThat(accounts.size(),not(is(0))));
     }
     
     
@@ -89,9 +85,7 @@ public class R2dbcExampleApplicationIntegrationTest {
         .expectStatus()
           .is2xxSuccessful()
         .expectBody(Account.class)
-          .value((acc) -> {
-              assertThat(acc.getId(),is(notNullValue()));
-          });
+          .value((acc) -> assertThat(acc.getId(),is(notNullValue())));
         
     }
 

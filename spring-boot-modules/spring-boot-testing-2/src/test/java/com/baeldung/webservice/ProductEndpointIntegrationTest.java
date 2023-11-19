@@ -1,6 +1,16 @@
 package com.baeldung.webservice;
 
-import com.baeldung.webservice.generated.Product;
+import static org.mockito.Mockito.when;
+import static org.springframework.ws.test.server.RequestCreators.withPayload;
+import static org.springframework.ws.test.server.ResponseMatchers.noFault;
+import static org.springframework.ws.test.server.ResponseMatchers.payload;
+import static org.springframework.ws.test.server.ResponseMatchers.validPayload;
+import static org.springframework.ws.test.server.ResponseMatchers.xpath;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.webservices.server.WebServiceServerTest;
@@ -9,16 +19,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.ws.test.server.MockWebServiceClient;
 import org.springframework.xml.transform.StringSource;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-
-import static org.mockito.Mockito.when;
-import static org.springframework.ws.test.server.RequestCreators.withPayload;
-import static org.springframework.ws.test.server.ResponseMatchers.noFault;
-import static org.springframework.ws.test.server.ResponseMatchers.payload;
-import static org.springframework.ws.test.server.ResponseMatchers.validPayload;
-import static org.springframework.ws.test.server.ResponseMatchers.xpath;
+import com.baeldung.webservice.generated.Product;
 
 @WebServiceServerTest
 class ProductEndpointIntegrationTest {

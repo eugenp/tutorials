@@ -21,14 +21,11 @@
         <module>jackson-core</module>
         <module>jackson-custom-conversions</module>
         <module>jackson-exceptions</module>
+        <module>jackson-jr</module>
+        <module>jackson-polymorphic-deserialization</module>
     </modules>
 
     <dependencies>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
         <!--jackson for xml -->
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>

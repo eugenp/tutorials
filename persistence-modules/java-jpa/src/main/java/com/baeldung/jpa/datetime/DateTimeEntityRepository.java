@@ -1,8 +1,8 @@
 package com.baeldung.jpa.datetime;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;

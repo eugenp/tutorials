@@ -7,15 +7,16 @@ import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.Step;
-import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
-import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
-import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
+import org.springframework.batch.core.job.builder.JobBuilder;
 import org.springframework.batch.core.launch.JobLauncher;
+import org.springframework.batch.core.repository.JobRepository;
+import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.builder.FlatFileItemReaderBuilder;
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
@@ -24,17 +25,16 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.springframework.scheduling.support.ScheduledMethodRunnable;
+import org.springframework.transaction.PlatformTransactionManager;
 
 import java.util.Date;
 import java.util.IdentityHashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Configuration
-@EnableBatchProcessing
 @EnableScheduling
 public class SpringBatchScheduler {
 
@@ -47,20 +47,20 @@ public class SpringBatchScheduler {
     private final Map<Object, ScheduledFuture<?>> scheduledTasks = new IdentityHashMap<>();
 
     @Autowired
-    private JobBuilderFactory jobBuilderFactory;
-
-    @Autowired
-    private StepBuilderFactory stepBuilderFactory;
-
-    @Autowired
     private JobLauncher jobLauncher;
+
+    @Autowired
+    private JobRepository jobRepository;
+
+    @Autowired
+    private PlatformTransactionManager transactionManager;
 
     @Scheduled(fixedRate = 2000)
     public void launchJob() throws Exception {
         Date date = new Date();
         logger.debug("scheduler starts at " + date);
         if (enabled.get()) {
-            JobExecution jobExecution = jobLauncher.run(job(), new JobParametersBuilder().addDate("launchDate", date)
+            JobExecution jobExecution = jobLauncher.run(job(jobRepository, transactionManager), new JobParametersBuilder().addDate("launchDate", date)
                     .toJobParameters());
             batchRunCounter.incrementAndGet();
             logger.debug("Batch job ends with status as " + jobExecution.getStatus());
@@ -106,17 +106,16 @@ public class SpringBatchScheduler {
     }
 
     @Bean
-    public Job job() {
-        return jobBuilderFactory
-                .get("job")
-                .start(readBooks())
+    public Job job(JobRepository jobRepository, PlatformTransactionManager transactionManager) {
+        return new JobBuilder("job", jobRepository)
+                .start(readBooks(jobRepository, transactionManager))
                 .build();
     }
 
     @Bean
-    protected Step readBooks() {
-        return stepBuilderFactory.get("readBooks")
-                .<Book, Book> chunk(2)
+    protected Step readBooks(JobRepository jobRepository, PlatformTransactionManager transactionManager) {
+        return new StepBuilder("readBooks", jobRepository)
+                .<Book, Book> chunk(2, transactionManager)
                 .reader(reader())
                 .writer(writer())
                 .build();
@@ -128,7 +127,7 @@ public class SpringBatchScheduler {
                 .resource(new ClassPathResource("books.csv"))
                 .delimited()
                 .names(new String[] { "id", "name" })
-                .fieldSetMapper(new BeanWrapperFieldSetMapper<Book>() {
+                .fieldSetMapper(new BeanWrapperFieldSetMapper<>() {
                     {
                         setTargetType(Book.class);
                     }
@@ -138,15 +137,10 @@ public class SpringBatchScheduler {
 
     @Bean
     public ItemWriter<Book> writer() {
-        return new ItemWriter<Book>() {
-
-            @Override
-            public void write(List<? extends Book> items) throws Exception {
-                logger.debug("writer..." + items.size());
-                for (Book item : items) {
-                    logger.debug(item.toString());
-                }
-
+        return items -> {
+            logger.debug("writer..." + items.size());
+            for (Book item : items) {
+                logger.debug(item.toString());
             }
         };
     }

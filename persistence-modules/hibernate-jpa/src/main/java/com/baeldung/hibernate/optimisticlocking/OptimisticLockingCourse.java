@@ -1,6 +1,6 @@
 package com.baeldung.hibernate.optimisticlocking;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 public class OptimisticLockingCourse {

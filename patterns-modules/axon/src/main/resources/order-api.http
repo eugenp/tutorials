@@ -1,0 +1,53 @@
+### Create Order, Add Product, Confirm and Ship Order
+
+POST http://localhost:8080/ship-order
+
+### Create Order, Add Product and Ship Order
+
+POST http://localhost:8080/ship-unconfirmed-order
+
+### Retrieve all existing Orders
+
+GET http://localhost:8080/all-orders
+
+### Receive all existing orders using a stream
+
+GET http://localhost:8080/all-orders-streaming
+
+### Create Order with id 666a1661-474d-4046-8b12-8b5896312768
+
+POST http://localhost:8080/order/666a1661-474d-4046-8b12-8b5896312768
+
+### Add Product a6aa01eb-4e38-4dfb-b53b-b5b82961fbf3 to Order 666a1661-474d-4046-8b12-8b5896312768
+
+POST http://localhost:8080/order/666a1661-474d-4046-8b12-8b5896312768/product/a6aa01eb-4e38-4dfb-b53b-b5b82961fbf3
+
+### Increment Product a6aa01eb-4e38-4dfb-b53b-b5b82961fbf3 to Order 666a1661-474d-4046-8b12-8b5896312768
+
+POST http://localhost:8080/order/666a1661-474d-4046-8b12-8b5896312768/product/a6aa01eb-4e38-4dfb-b53b-b5b82961fbf3/increment
+
+### Decrement Product a6aa01eb-4e38-4dfb-b53b-b5b82961fbf3 to Order 666a1661-474d-4046-8b12-8b5896312768
+
+POST http://localhost:8080/order/666a1661-474d-4046-8b12-8b5896312768/product/a6aa01eb-4e38-4dfb-b53b-b5b82961fbf3/decrement
+
+### Confirm Order 666a1661-474d-4046-8b12-8b5896312768
+
+POST http://localhost:8080/order/666a1661-474d-4046-8b12-8b5896312768/confirm
+
+### Ship Order 666a1661-474d-4046-8b12-8b5896312768
+
+POST http://localhost:8080/order/666a1661-474d-4046-8b12-8b5896312768/ship
+
+### Retrieve shipped Deluxe Chairs
+
+GET http://localhost:8080/total-shipped/Deluxe Chair
+
+### Retrieve shipped a6aa01eb-4e38-4dfb-b53b-b5b82961fbf3
+
+GET http://localhost:8080/total-shipped/a6aa01eb-4e38-4dfb-b53b-b5b82961fbf3
+
+### Receive updates for 666a1661-474d-4046-8b12-8b5896312768
+
+GET http://localhost:8080/order-updates/666a1661-474d-4046-8b12-8b5896312768
+
+###

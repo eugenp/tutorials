@@ -1,14 +1,16 @@
 package com.baeldung.hibernate.exception;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "PRODUCT")
 public class Product {
 
     private int id;
-    
+
     private String name;
     private String description;
 
@@ -20,8 +22,8 @@ public class Product {
     public void setId(int id) {
         this.id = id;
     }
-    
-    @Column(nullable=false)
+
+    @Column(nullable = false)
     public String getName() {
         return name;
     }

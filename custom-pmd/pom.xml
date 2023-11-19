@@ -8,7 +8,6 @@
     <version>0.0.1</version>
     <name>custom-pmd</name>
     <packaging>jar</packaging>
-    <url>http://maven.apache.org</url>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -44,10 +43,10 @@
     </build>
 
     <properties>
-        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
-        <pmdVersion>6.0.1</pmdVersion>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven-compiler-plugin.version>3.10.0</maven-compiler-plugin.version>
+        <pmdVersion>6.53.0</pmdVersion>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
     </properties>
 
 </project>

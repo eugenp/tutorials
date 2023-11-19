@@ -1,40 +1,41 @@
 package com.baeldung.config.parent;
 
-import com.baeldung.security.CustomAuthenticationProvider;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.SecurityFilterChain;
+
+import com.baeldung.security.CustomAuthenticationProvider;
 
 @Configuration
 //@ImportResource({ "classpath:webSecurityConfig.xml" })
 @EnableWebSecurity
 @ComponentScan("com.baeldung.security")
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig {
 
     @Autowired
     private CustomAuthenticationProvider authProvider;
 
-    public SecurityConfig() {
-        super();
+    @Bean
+    public AuthenticationManager authManager(HttpSecurity http) throws Exception {
+        AuthenticationManagerBuilder authenticationManagerBuilder = http.getSharedObject(AuthenticationManagerBuilder.class);
+        authenticationManagerBuilder.authenticationProvider(authProvider);
+        return authenticationManagerBuilder.build();
     }
 
-    @Override
-    protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(authProvider);
-    }
-
-    @Override
-    protected void configure(final HttpSecurity http) throws Exception {
-        // @formatter:off
-        http
-        .authorizeRequests().anyRequest().authenticated()
-        .and()
-        .httpBasic();
-        // @formatter:on
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.authorizeRequests()
+            .anyRequest()
+            .authenticated()
+            .and()
+            .httpBasic();
+        return http.build();
     }
 
 }

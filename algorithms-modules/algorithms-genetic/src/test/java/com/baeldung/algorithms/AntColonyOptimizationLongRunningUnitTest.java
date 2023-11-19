@@ -1,22 +1,24 @@
 package com.baeldung.algorithms;
 
-import org.junit.Assert;
-import org.junit.Test;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import org.junit.jupiter.api.Test;
 
 import com.baeldung.algorithms.ga.ant_colony.AntColonyOptimization;
 
-public class AntColonyOptimizationLongRunningUnitTest {
+class AntColonyOptimizationLongRunningUnitTest {
 
     @Test
-    public void testGenerateRandomMatrix() {
+    void testGenerateRandomMatrix() {
         AntColonyOptimization antTSP = new AntColonyOptimization(5);
-        Assert.assertNotNull(antTSP.generateRandomMatrix(5));
+        assertNotNull(antTSP.generateRandomMatrix(5));
     }
 
     @Test
-    public void testStartAntOptimization() {
+    void testStartAntOptimization() {
         AntColonyOptimization antTSP = new AntColonyOptimization(5);
-        Assert.assertNotNull(antTSP.solve());
+        assertNotNull(antTSP.solve());
     }
 
 }

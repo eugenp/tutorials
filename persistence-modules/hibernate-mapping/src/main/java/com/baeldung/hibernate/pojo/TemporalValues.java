@@ -1,7 +1,6 @@
 package com.baeldung.hibernate.pojo;
 
-import javax.persistence.*;
-import java.io.Serializable;
+import jakarta.persistence.*;
 import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
@@ -9,7 +8,7 @@ import java.time.*;
 import java.util.Calendar;
 
 @Entity
-public class TemporalValues implements Serializable {
+public class TemporalValues {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,7 +47,7 @@ public class TemporalValues implements Serializable {
     private java.time.LocalDate localDate;
 
     @Basic
-    private java.time.LocalTime localTime;
+    private java.time.LocalTime localTimeField;
 
     @Basic
     private java.time.OffsetTime offsetTime;
@@ -146,11 +145,11 @@ public class TemporalValues implements Serializable {
     }
 
     public LocalTime getLocalTime() {
-        return localTime;
+        return localTimeField;
     }
 
     public void setLocalTime(LocalTime localTime) {
-        this.localTime = localTime;
+        this.localTimeField = localTime;
     }
 
     public OffsetTime getOffsetTime() {

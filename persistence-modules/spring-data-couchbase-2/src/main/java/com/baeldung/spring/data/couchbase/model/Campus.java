@@ -1,12 +1,11 @@
 package com.baeldung.spring.data.couchbase.model;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.couchbase.core.mapping.Document;
+import org.springframework.data.couchbase.core.mapping.Field;
 import org.springframework.data.geo.Point;
-
-import com.couchbase.client.java.repository.annotation.Field;
 
 @Document
 public class Campus {

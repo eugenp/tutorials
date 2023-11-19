@@ -21,13 +21,12 @@ public class OptaPlannerUnitTest {
             unsolvedCourseSchedule.getLectureList().add(new Lecture());
         }
 
-        unsolvedCourseSchedule.getPeriodList().addAll(Arrays.asList(new Integer[] { 1, 2, 3 }));
-        unsolvedCourseSchedule.getRoomList().addAll(Arrays.asList(new Integer[] { 1, 2 }));
+        unsolvedCourseSchedule.getPeriodList().addAll(Arrays.asList(1, 2, 3));
+        unsolvedCourseSchedule.getRoomList().addAll(Arrays.asList(1, 2));
     }
 
     @Test
     public void test_whenCustomJavaSolver() {
-
         SolverFactory<CourseSchedule> solverFactory = SolverFactory.createFromXmlResource("courseScheduleSolverConfiguration.xml");
         Solver<CourseSchedule> solver = solverFactory.buildSolver();
         CourseSchedule solvedCourseSchedule = solver.solve(unsolvedCourseSchedule);
@@ -38,7 +37,6 @@ public class OptaPlannerUnitTest {
 
     @Test
     public void test_whenDroolsSolver() {
-
         SolverFactory<CourseSchedule> solverFactory = SolverFactory.createFromXmlResource("courseScheduleSolverConfigDrools.xml");
         Solver<CourseSchedule> solver = solverFactory.buildSolver();
         CourseSchedule solvedCourseSchedule = solver.solve(unsolvedCourseSchedule);

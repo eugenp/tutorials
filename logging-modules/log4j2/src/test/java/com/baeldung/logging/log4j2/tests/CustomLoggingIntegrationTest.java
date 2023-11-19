@@ -21,7 +21,7 @@ import com.baeldung.logging.log4j2.tests.jdbc.ConnectionFactory;
 
 @RunWith(JUnit4.class)
 public class CustomLoggingIntegrationTest {
-    
+
     private static String logFilePath = System.getProperty("logging.folder.path");
     
     @BeforeClass
@@ -34,7 +34,7 @@ public class CustomLoggingIntegrationTest {
     }
 
     @Test
-    public void givenLoggerWithDefaultConfig_whenLogToConsole_thanOK() throws Exception {
+    public void givenLoggerWithDefaultConfig_whenLogToConsole_thenOK() throws Exception {
         Logger logger = LogManager.getLogger(getClass());
         Exception e = new RuntimeException("This is only a test!");
 
@@ -43,7 +43,7 @@ public class CustomLoggingIntegrationTest {
     }
 
     @Test
-    public void givenLoggerWithConsoleConfig_whenLogToConsoleInColors_thanOK() throws Exception {
+    public void givenLoggerWithConsoleConfig_whenLogToConsoleInColors_thenOK() throws Exception {
         Logger logger = LogManager.getLogger("CONSOLE_PATTERN_APPENDER_MARKER");
         Exception e = new RuntimeException("This is only a test!");
 
@@ -56,7 +56,7 @@ public class CustomLoggingIntegrationTest {
     }
 
     @Test
-    public void givenLoggerWithConsoleConfig_whenFilterByMarker_thanOK() throws Exception {
+    public void givenLoggerWithConsoleConfig_whenFilterByMarker_thenOK() throws Exception {
         Logger logger = LogManager.getLogger("CONSOLE_PATTERN_APPENDER_MARKER");
         Marker appError = MarkerManager.getMarker("APP_ERROR");
         Marker connectionTrace = MarkerManager.getMarker("CONN_TRACE");
@@ -66,7 +66,7 @@ public class CustomLoggingIntegrationTest {
     }
 
     @Test
-    public void givenLoggerWithConsoleConfig_whenFilterByThreadContext_thanOK() throws Exception {
+    public void givenLoggerWithConsoleConfig_whenFilterByThreadContext_thenOK() throws Exception {
         Logger logger = LogManager.getLogger("CONSOLE_PATTERN_APPENDER_THREAD_CONTEXT");
         ThreadContext.put("userId", "1000");
         logger.info("This is a log-visible user login. Maybe from an admin account?");
@@ -75,7 +75,7 @@ public class CustomLoggingIntegrationTest {
     }
 
     @Test
-    public void givenLoggerWithAsyncConfig_whenLogToJsonFile_thanOK() throws Exception {
+    public void givenLoggerWithAsyncConfig_whenLogToJsonFile_thenOK() throws Exception {
         Logger logger = LogManager.getLogger("ASYNC_JSON_FILE_APPENDER");
 
         final int count = 88;
@@ -90,7 +90,7 @@ public class CustomLoggingIntegrationTest {
     }
 
     @Test
-    public void givenLoggerWithFailoverConfig_whenLog_thanOK() throws Exception {
+    public void givenLoggerWithFailoverConfig_whenLog_thenOK() throws Exception {
         Logger logger = LogManager.getLogger("FAIL_OVER_SYSLOG_APPENDER");
         Exception e = new RuntimeException("This is only a test!");
 
@@ -103,7 +103,7 @@ public class CustomLoggingIntegrationTest {
     }
 
     @Test
-    public void givenLoggerWithJdbcConfig_whenLogToDataSource_thanOK() throws Exception {
+    public void givenLoggerWithJdbcConfig_whenLogToDataSource_thenOK() throws Exception {
         Logger logger = LogManager.getLogger("JDBC_APPENDER");
 
         final int count = 88;
@@ -122,7 +122,7 @@ public class CustomLoggingIntegrationTest {
     }
 
     @Test
-    public void givenLoggerWithRollingFileConfig_whenLogToXMLFile_thanOK() throws Exception {
+    public void givenLoggerWithRollingFileConfig_whenLogToXMLFile_thenOK() throws Exception {
         Logger logger = LogManager.getLogger("XML_ROLLING_FILE_APPENDER");
 
         final int count = 88;

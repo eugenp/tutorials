@@ -17,7 +17,7 @@ public class ClassWithSuppressWarningsNames implements Serializable {
         list.add(Integer.valueOf(value));
     }
 
-    @SuppressWarnings("deprecated")
+    @SuppressWarnings("deprecation")
     void suppressDeprecatedWarning() {
         ClassWithSuppressWarningsNames cls = new ClassWithSuppressWarningsNames();
         cls.deprecatedMethod(); // no warning here

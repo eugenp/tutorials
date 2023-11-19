@@ -2,18 +2,16 @@ package com.baeldung.hibernate.customtypes;
 
 import org.hibernate.dialect.Dialect;
 import org.hibernate.type.AbstractSingleColumnStandardBasicType;
-import org.hibernate.type.DiscriminatorType;
-import org.hibernate.type.descriptor.java.LocalDateJavaDescriptor;
-import org.hibernate.type.descriptor.sql.VarcharTypeDescriptor;
+import org.hibernate.type.descriptor.jdbc.VarcharJdbcType;
 
 import java.time.LocalDate;
 
-public class LocalDateStringType extends AbstractSingleColumnStandardBasicType<LocalDate> implements DiscriminatorType<LocalDate> {
+public class LocalDateStringType extends AbstractSingleColumnStandardBasicType<LocalDate> {
 
     public static final LocalDateStringType INSTANCE = new LocalDateStringType();
 
     public LocalDateStringType() {
-        super(VarcharTypeDescriptor.INSTANCE, LocalDateStringJavaDescriptor.INSTANCE);
+        super(VarcharJdbcType.INSTANCE, LocalDateStringJavaDescriptor.INSTANCE);
     }
 
     @Override
@@ -21,14 +19,12 @@ public class LocalDateStringType extends AbstractSingleColumnStandardBasicType<L
         return "LocalDateString";
     }
 
-    @Override
-    public LocalDate stringToObject(String xml) throws Exception {
+    public LocalDate stringToObject(String xml) {
         return fromString(xml);
     }
 
-    @Override
-    public String objectToSQLString(LocalDate value, Dialect dialect) throws Exception {
-        return '\'' + toString(value) + '\'';
+    public String objectToSQLString(LocalDate value, Dialect dialect) {
+        return '\'' + LocalDateStringJavaDescriptor.INSTANCE.toString(value) + '\'';
     }
 
 }

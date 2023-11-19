@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>spring-security-oauth2-testing</artifactId>
+    <name>spring-security-oauth2-testing</name>
+    <packaging>pom</packaging>
+    <description>spring-security 6 oauth testing sample project</description>
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-3</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-boot-3</relativePath>
+    </parent>
+    <properties>
+        <spring-addons.version>7.1.10</spring-addons.version>
+    </properties>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.c4-soft.springaddons</groupId>
+                <artifactId>spring-addons-oauth2-test</artifactId>
+                <version>${spring-addons.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <modules>
+        <module>reactive-resource-server</module>
+        <module>servlet-resource-server</module>
+    </modules>
+</project>

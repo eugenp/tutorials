@@ -16,7 +16,7 @@ class Voucher {
             return true;
         if (!(o instanceof Voucher))
             return false;
-        Voucher other = (Voucher)o;
+        Voucher other = (Voucher) o;
         boolean valueEquals = (this.value == null && other.value == null)
           || (this.value != null && this.value.equals(other.value));
         boolean storeEquals = (this.store == null && other.store == null)

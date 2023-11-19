@@ -1,5 +1,6 @@
 package com.baeldung.bsontojson;
 
+import static dev.morphia.query.experimental.filters.Filters.eq;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -14,10 +15,12 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.mongodb.MongoClient;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
 
 import dev.morphia.Datastore;
+import dev.morphia.DeleteOptions;
 import dev.morphia.Morphia;
 
 public class BsonToJsonLiveTest {
@@ -27,9 +30,8 @@ public class BsonToJsonLiveTest {
 
     @BeforeClass
     public static void setUp() {
-        Morphia morphia = new Morphia();
-        morphia.mapPackage("com.baeldung.bsontojson");
-        datastore = morphia.createDatastore(new MongoClient(), DB_NAME);
+        datastore = Morphia.createDatastore(MongoClients.create(), DB_NAME);
+        datastore.getMapper().mapPackage("com.baeldung.bsontojson");
         datastore.ensureIndexes();
 
         datastore.save(new Book()
@@ -44,25 +46,33 @@ public class BsonToJsonLiveTest {
 
     @AfterClass
     public static void tearDown() {
-        datastore.delete(datastore.createQuery(Book.class));
+        datastore.find(Book.class)
+                .filter(eq("isbn", "isbn"))
+                .filter(eq("title", "title"))
+                .filter(eq("author", "author"))
+                .filter(eq("cost", "3.95"))
+                .delete(new DeleteOptions().multi(true));
     }
 
     @Test
     public void givenBsonDocument_whenUsingStandardJsonTransformation_thenJsonDateIsObjectEpochTime() {
 
         String json;
-        try (MongoClient mongoClient = new MongoClient()) {
+        try (MongoClient mongoClient = MongoClients.create()) {
             MongoDatabase mongoDatabase = mongoClient.getDatabase(DB_NAME);
             Document bson = mongoDatabase.getCollection("Books").find().first();
-            json = bson.toJson();
+            json = bson.toJson(JsonWriterSettings
+                    .builder()
+                    .dateTimeConverter(new JSONDateFormatEpochTimeConverter())
+                    .build());
         }
 
         String expectedJson = "{\"_id\": \"isbn\", " +
-            "\"className\": \"com.baeldung.bsontojson.Book\", " +
+            "\"_t\": \"Book\", " +
             "\"title\": \"title\", " +
             "\"author\": \"author\", " +
             "\"publisher\": {\"_id\": {\"$oid\": \"fffffffffffffffffffffffa\"}, " +
-            "\"name\": \"publisher\"}, " +
+            "\"_t\": \"Publisher\", \"name\": \"publisher\"}, " +
             "\"price\": 3.95, " +
             "\"publishDate\": {\"$date\": 1577898812000}}";
 
@@ -71,12 +81,11 @@ public class BsonToJsonLiveTest {
         assertEquals(expectedJson, json);
     }
 
-
     @Test
     public void givenBsonDocument_whenUsingRelaxedJsonTransformation_thenJsonDateIsObjectIsoDate() {
 
         String json;
-        try (MongoClient mongoClient = new MongoClient()) {
+        try (MongoClient mongoClient = MongoClients.create()) {
             MongoDatabase mongoDatabase = mongoClient.getDatabase(DB_NAME);
             Document bson = mongoDatabase.getCollection("Books").find().first();
             json = bson.toJson(JsonWriterSettings
@@ -86,11 +95,11 @@ public class BsonToJsonLiveTest {
         }
 
         String expectedJson = "{\"_id\": \"isbn\", " +
-            "\"className\": \"com.baeldung.bsontojson.Book\", " +
+            "\"_t\": \"Book\", " +
             "\"title\": \"title\", " +
             "\"author\": \"author\", " +
             "\"publisher\": {\"_id\": {\"$oid\": \"fffffffffffffffffffffffa\"}, " +
-            "\"name\": \"publisher\"}, " +
+            "\"_t\": \"Publisher\", \"name\": \"publisher\"}, " +
             "\"price\": 3.95, " +
             "\"publishDate\": {\"$date\": \"2020-01-01T17:13:32Z\"}}";
 
@@ -103,7 +112,7 @@ public class BsonToJsonLiveTest {
     public void givenBsonDocument_whenUsingCustomJsonTransformation_thenJsonDateIsStringField() {
 
         String json;
-        try (MongoClient mongoClient = new MongoClient()) {
+        try (MongoClient mongoClient = MongoClients.create()) {
             MongoDatabase mongoDatabase = mongoClient.getDatabase(DB_NAME);
             Document bson = mongoDatabase.getCollection("Books").find().first();
             json = bson.toJson(JsonWriterSettings
@@ -113,11 +122,11 @@ public class BsonToJsonLiveTest {
         }
 
         String expectedJson = "{\"_id\": \"isbn\", " +
-            "\"className\": \"com.baeldung.bsontojson.Book\", " +
+            "\"_t\": \"Book\", " +
             "\"title\": \"title\", " +
             "\"author\": \"author\", " +
             "\"publisher\": {\"_id\": {\"$oid\": \"fffffffffffffffffffffffa\"}, " +
-            "\"name\": \"publisher\"}, " +
+            "\"_t\": \"Publisher\", \"name\": \"publisher\"}, " +
             "\"price\": 3.95, " +
             "\"publishDate\": \"2020-01-01T17:13:32Z\"}";
 

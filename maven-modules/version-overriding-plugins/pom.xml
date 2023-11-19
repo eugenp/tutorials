@@ -13,8 +13,8 @@
     </parent>
 
     <modules>
-        <module>child-a</module>
-        <module>child-b</module>
+        <module>version-overriding-child-a</module>
+        <module>version-overriding-child-b</module>
     </modules>
 
     <build>
@@ -51,7 +51,7 @@
     </build>
 
     <properties>
-        <maven.compiler.plugin>3.8.0</maven.compiler.plugin>
+        <maven.compiler.plugin>3.11.0</maven.compiler.plugin>
     </properties>
 
 </project>

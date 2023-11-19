@@ -39,11 +39,11 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
+import org.springframework.data.elasticsearch.client.erhlc.NativeSearchQuery;
+import org.springframework.data.elasticsearch.client.erhlc.NativeSearchQueryBuilder;
+import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
 import org.springframework.data.elasticsearch.core.SearchHits;
 import org.springframework.data.elasticsearch.core.mapping.IndexCoordinates;
-import org.springframework.data.elasticsearch.core.query.NativeSearchQuery;
-import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -58,7 +58,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class ElasticSearchQueryManualTest {
 
     @Autowired
-    private ElasticsearchRestTemplate elasticsearchTemplate;
+    private ElasticsearchOperations elasticsearchOperations;
 
     @Autowired
     private ArticleRepository articleRepository;
@@ -101,7 +101,7 @@ public class ElasticSearchQueryManualTest {
     public void givenFullTitle_whenRunMatchQuery_thenDocIsFound() {
         final NativeSearchQuery searchQuery = new NativeSearchQueryBuilder().withQuery(matchQuery("title", "Search engines").operator(Operator.AND))
             .build();
-        final SearchHits<Article> articles = elasticsearchTemplate.search(searchQuery, Article.class, IndexCoordinates.of("blog"));
+        final SearchHits<Article> articles = elasticsearchOperations.search(searchQuery, Article.class, IndexCoordinates.of("blog"));
         assertEquals(1, articles.getTotalHits());
     }
 
@@ -110,7 +110,7 @@ public class ElasticSearchQueryManualTest {
         final NativeSearchQuery searchQuery = new NativeSearchQueryBuilder().withQuery(matchQuery("title", "Engines Solutions"))
             .build();
 
-        final SearchHits<Article> articles = elasticsearchTemplate.search(searchQuery, Article.class, IndexCoordinates.of("blog"));
+        final SearchHits<Article> articles = elasticsearchOperations.search(searchQuery, Article.class, IndexCoordinates.of("blog"));
 
         assertEquals(1, articles.getTotalHits());
         assertEquals("Search engines", articles.getSearchHit(0)
@@ -123,7 +123,7 @@ public class ElasticSearchQueryManualTest {
         final NativeSearchQuery searchQuery = new NativeSearchQueryBuilder().withQuery(matchQuery("title", "elasticsearch data"))
             .build();
 
-        final SearchHits<Article> articles = elasticsearchTemplate.search(searchQuery, Article.class, IndexCoordinates.of("blog"));
+        final SearchHits<Article> articles = elasticsearchOperations.search(searchQuery, Article.class, IndexCoordinates.of("blog"));
 
         assertEquals(3, articles.getTotalHits());
     }
@@ -133,14 +133,14 @@ public class ElasticSearchQueryManualTest {
         NativeSearchQuery searchQuery = new NativeSearchQueryBuilder().withQuery(matchQuery("title.verbatim", "Second Article About Elasticsearch"))
             .build();
 
-        SearchHits<Article> articles = elasticsearchTemplate.search(searchQuery, Article.class, IndexCoordinates.of("blog"));
+        SearchHits<Article> articles = elasticsearchOperations.search(searchQuery, Article.class, IndexCoordinates.of("blog"));
 
         assertEquals(1, articles.getTotalHits());
 
         searchQuery = new NativeSearchQueryBuilder().withQuery(matchQuery("title.verbatim", "Second Article About"))
             .build();
 
-        articles = elasticsearchTemplate.search(searchQuery, Article.class, IndexCoordinates.of("blog"));
+        articles = elasticsearchOperations.search(searchQuery, Article.class, IndexCoordinates.of("blog"));
         assertEquals(0, articles.getTotalHits());
     }
 
@@ -150,7 +150,7 @@ public class ElasticSearchQueryManualTest {
 
         final NativeSearchQuery searchQuery = new NativeSearchQueryBuilder().withQuery(builder)
             .build();
-        final SearchHits<Article> articles = elasticsearchTemplate.search(searchQuery, Article.class, IndexCoordinates.of("blog"));
+        final SearchHits<Article> articles = elasticsearchOperations.search(searchQuery, Article.class, IndexCoordinates.of("blog"));
 
         assertEquals(2, articles.getTotalHits());
     }
@@ -205,7 +205,7 @@ public class ElasticSearchQueryManualTest {
         final NativeSearchQuery searchQuery = new NativeSearchQueryBuilder().withQuery(matchPhraseQuery("title", "spring elasticsearch").slop(1))
             .build();
 
-        final SearchHits<Article> articles = elasticsearchTemplate.search(searchQuery, Article.class, IndexCoordinates.of("blog"));
+        final SearchHits<Article> articles = elasticsearchOperations.search(searchQuery, Article.class, IndexCoordinates.of("blog"));
 
         assertEquals(1, articles.getTotalHits());
     }
@@ -217,7 +217,7 @@ public class ElasticSearchQueryManualTest {
             .prefixLength(3))
             .build();
 
-        final SearchHits<Article> articles = elasticsearchTemplate.search(searchQuery, Article.class, IndexCoordinates.of("blog"));
+        final SearchHits<Article> articles = elasticsearchOperations.search(searchQuery, Article.class, IndexCoordinates.of("blog"));
 
         assertEquals(1, articles.getTotalHits());
     }
@@ -229,7 +229,7 @@ public class ElasticSearchQueryManualTest {
             .type(MultiMatchQueryBuilder.Type.BEST_FIELDS))
             .build();
 
-        final SearchHits<Article> articles = elasticsearchTemplate.search(searchQuery, Article.class, IndexCoordinates.of("blog"));
+        final SearchHits<Article> articles = elasticsearchOperations.search(searchQuery, Article.class, IndexCoordinates.of("blog"));
 
         assertEquals(2, articles.getTotalHits());
     }
@@ -241,7 +241,7 @@ public class ElasticSearchQueryManualTest {
 
         final NativeSearchQuery searchQuery = new NativeSearchQueryBuilder().withQuery(builder)
             .build();
-        final SearchHits<Article> articles = elasticsearchTemplate.search(searchQuery, Article.class, IndexCoordinates.of("blog"));
+        final SearchHits<Article> articles = elasticsearchOperations.search(searchQuery, Article.class, IndexCoordinates.of("blog"));
 
         assertEquals(2, articles.getTotalHits());
     }

@@ -1,6 +1,6 @@
 package com.baeldung.properties.value.defaults;
 
-import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang.ArrayUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -8,9 +8,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.util.Assert;
 
-import javax.annotation.PostConstruct;
 import java.util.Arrays;
 import java.util.List;
+
+import jakarta.annotation.PostConstruct;
 
 /**
  * Demonstrates setting defaults for @Value annotation.  Note that there are no properties 
@@ -60,10 +61,10 @@ public class ValuesWithDefaultsApp {
     	
     	// arrays
         List<String> stringListValues = Arrays.asList("one", "two", "three");
-    	Assert.isTrue(Arrays.asList(stringArrayWithDefaults).containsAll(stringListValues), "unexpected value for stringArrayWithDefaults");
+        Assert.isTrue(Arrays.asList(stringArrayWithDefaults).containsAll(stringListValues), "unexpected value for stringArrayWithDefaults");
 
         List<Integer> intListValues = Arrays.asList(1, 2, 3);
-    	Assert.isTrue(Arrays.asList(ArrayUtils.toObject(intArrayWithDefaults)).containsAll(intListValues), "unexpected value for intArrayWithDefaults");
+        Assert.isTrue(Arrays.asList(ArrayUtils.toObject(intArrayWithDefaults)).containsAll(intListValues), "unexpected value for intArrayWithDefaults");
 
     	// SpEL
     	Assert.isTrue(spelWithDefaultValue.equals("my default system property value"), "unexpected value for spelWithDefaultValue");

@@ -1,21 +1,13 @@
 package com.baeldung.hibernate.arraymapping;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 import org.hibernate.annotations.Type;
 
 import com.vladmihalcea.hibernate.type.array.StringArrayType;
 
-import org.hibernate.annotations.*;
-
-@TypeDefs({
-    @TypeDef(
-        name = "string-array",
-        typeClass = StringArrayType.class
-        )
-})
 @Entity
 public class User {
 
@@ -25,14 +17,14 @@ public class User {
     private String name;
 
     @Column(columnDefinition = "text[]")
-    @Type(type = "com.baeldung.hibernate.arraymapping.CustomStringArrayType")
+    @Type(value = com.baeldung.hibernate.arraymapping.CustomStringArrayType.class)
     private String[] roles;
 
     @Column(columnDefinition = "int[]")
-    @Type(type = "com.baeldung.hibernate.arraymapping.CustomIntegerArrayType")
+    @Type(value = com.baeldung.hibernate.arraymapping.CustomIntegerArrayType.class)
     private Integer[] locations;
 
-    @Type(type = "string-array")
+    @Type(StringArrayType.class)
     @Column(
         name = "phone_numbers",
         columnDefinition = "text[]"

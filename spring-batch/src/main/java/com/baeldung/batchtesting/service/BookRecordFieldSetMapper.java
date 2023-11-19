@@ -9,7 +9,7 @@ import org.springframework.validation.BindException;
 public class BookRecordFieldSetMapper implements FieldSetMapper<BookRecord> {
 
     @Override
-    public BookRecord mapFieldSet(FieldSet fieldSet) throws BindException {
+    public BookRecord mapFieldSet(FieldSet fieldSet) {
         BookRecord bookRecord = new BookRecord();
         bookRecord.setBookName(fieldSet.readString("bookname"));
         bookRecord.setBookAuthor(fieldSet.readString("bookauthor"));

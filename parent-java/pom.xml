@@ -13,7 +13,6 @@
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../</relativePath>
     </parent>
 
     <dependencies>
@@ -41,7 +40,7 @@
     </dependencies>
 
     <properties>
-        <modelmapper.version>2.3.7</modelmapper.version>
+        <modelmapper.version>3.2.0</modelmapper.version>
     </properties>
 
 </project>

@@ -11,9 +11,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-2</relativePath>
+        <relativePath>../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -22,25 +22,15 @@
             <artifactId>jackson-datatype-jsr310</artifactId>
             <version>${jackson-datatype.version}</version>
         </dependency>
-        <!-- JAXB APIs & runtime no longer provided in JDK 11 -->
-        <!-- see http://openjdk.java.net/jeps/320 -->
         <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-            <version>${jaxb.version}</version>
-            <scope>runtime</scope>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>${jakarta.xml.bind-api}</version>
         </dependency>
         <dependency>
             <groupId>org.glassfish.jaxb</groupId>
             <artifactId>jaxb-runtime</artifactId>
             <version>${jaxb.version}</version>
-            <scope>runtime</scope>
-        </dependency>
-        <!-- SQLite database driver -->
-        <dependency>
-            <groupId>org.xerial</groupId>
-            <artifactId>sqlite-jdbc</artifactId>
-            <version>${sqlite.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -54,19 +44,8 @@
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-jdbc</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.batch</groupId>
-            <artifactId>spring-batch-core</artifactId>
-            <version>${spring.batch.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.batch</groupId>
             <artifactId>spring-batch-test</artifactId>
-            <version>${spring.batch.version}</version>
         </dependency>
         <dependency>
             <groupId>com.opencsv</groupId>
@@ -78,19 +57,30 @@
             <artifactId>spring-boot-starter-batch</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.hsqldb</groupId>
-            <artifactId>hsqldb</artifactId>
-            <scope>runtime</scope>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>${http-client.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.jettison</groupId>
+            <artifactId>jettison</artifactId>
+            <version>${jettison.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
         </dependency>
     </dependencies>
 
     <properties>
-        <spring.version>5.3.0</spring.version>
-        <spring.batch.version>4.3.0</spring.batch.version>
-        <sqlite.version>3.15.1</sqlite.version>
-        <opencsv.version>4.1</opencsv.version>
-        <jaxb.version>2.3.1</jaxb.version>
-        <jackson-datatype.version>2.12.3</jackson-datatype.version>
+        <spring.version>6.0.6</spring.version>
+        <opencsv.version>5.8</opencsv.version>
+        <jakarta.xml.bind-api>4.0.0</jakarta.xml.bind-api>
+        <jaxb.version>4.0.2</jaxb.version>
+        <jackson-datatype.version>2.14.2</jackson-datatype.version>
+        <http-client.version>4.5.14</http-client.version>
+        <jettison.version>1.5.3</jettison.version>
+        <start-class>com.baeldung.batchtesting.SpringBatchApplication</start-class>
     </properties>
 
 </project>

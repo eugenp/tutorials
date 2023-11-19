@@ -15,9 +15,12 @@ public class KafkaProducer {
 
     public void sendMessage(String message) {
         kafkaTemplate.send("input-topic", message)
-          .addCallback(
-            result -> log.info("Message sent to topic: {}", message),
-            ex -> log.error("Failed to send message", ex)
-          );
+            .whenComplete((result, ex) -> {
+                if (ex == null) {
+                    log.info("Message sent to topic: {}", message);
+                } else {
+                    log.error("Failed to send message", ex);
+                }
+            });
     }
 }

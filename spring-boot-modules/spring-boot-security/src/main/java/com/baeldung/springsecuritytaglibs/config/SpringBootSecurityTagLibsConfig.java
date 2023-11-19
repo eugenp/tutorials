@@ -2,37 +2,43 @@ package com.baeldung.springsecuritytaglibs.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-public class SpringBootSecurityTagLibsConfig extends WebSecurityConfigurerAdapter {
+public class SpringBootSecurityTagLibsConfig {
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        BCryptPasswordEncoder encoder = passwordEncoder();
-        auth.inMemoryAuthentication()
-            .passwordEncoder(encoder)
-            .withUser("testUser")
-            .password(encoder.encode("password"))
-            .roles("ADMIN");
+    @Bean
+    public InMemoryUserDetailsManager userDetailsService(PasswordEncoder passwordEncoder) {
+        UserDetails user = User.withUsername("testUser")
+            .password(passwordEncoder.encode("password"))
+            .roles("ADMIN")
+            .build();
+
+        return new InMemoryUserDetailsManager(user);
     }
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        // @formatter:off
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf()
-                .and()
+            .and()
             .authorizeRequests()
-                .antMatchers("/userManagement").hasRole("ADMIN")
-                .anyRequest().permitAll().and().httpBasic();
-        // @formatter:on
+            .antMatchers("/userManagement")
+            .hasRole("ADMIN")
+            .anyRequest()
+            .permitAll()
+            .and()
+            .httpBasic();
+        return http.build();
     }
-    
+
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();

@@ -23,7 +23,7 @@
     </dependencies>
 
     <properties>
-        <h2.version>1.4.197</h2.version> <!-- needs to be specified as it fails with parent's 1.4.200 -->
+        <h2.version>2.1.214</h2.version>
     </properties>
 
 </project>

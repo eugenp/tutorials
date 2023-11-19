@@ -29,8 +29,7 @@ public class CustomerControllerIntegrationTest {
 
     @Before
     public void setUpJsonMediaType() {
-        MEDIA_TYPE_JSON = new MediaType(MediaType.APPLICATION_JSON.getType(), MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"));
-
+        MEDIA_TYPE_JSON = new MediaType(MediaType.APPLICATION_JSON.getType(), MediaType.APPLICATION_JSON.getSubtype());
     }
 
     @Test

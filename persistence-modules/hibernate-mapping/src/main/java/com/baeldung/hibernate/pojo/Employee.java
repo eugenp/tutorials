@@ -2,15 +2,15 @@ package com.baeldung.hibernate.pojo;
 
 import org.hibernate.annotations.*;
 
-import javax.persistence.Entity;
-import javax.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Where(clause = "deleted = false")
-@FilterDef(name = "incomeLevelFilter", parameters = @ParamDef(name = "incomeLimit", type = "int"))
+@FilterDef(name = "incomeLevelFilter", parameters = @ParamDef(name = "incomeLimit", type = Integer.class))
 @Filter(name = "incomeLevelFilter", condition = "grossIncome > :incomeLimit")
 public class Employee implements Serializable {
 

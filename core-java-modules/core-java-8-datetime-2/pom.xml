@@ -4,7 +4,6 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-8-datetime-2</artifactId>
-    <version>${project.parent.version}</version>
     <name>core-java-8-datetime-2</name>
     <packaging>jar</packaging>
 
@@ -56,7 +55,7 @@
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <joda-time.version>2.10</joda-time.version>
+        <joda-time.version>2.12.5</joda-time.version>
     </properties>
 
 </project>

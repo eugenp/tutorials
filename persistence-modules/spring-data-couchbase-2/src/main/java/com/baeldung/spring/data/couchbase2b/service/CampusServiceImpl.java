@@ -2,6 +2,7 @@ package com.baeldung.spring.data.couchbase2b.service;
 
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Optional;
 import java.util.Set;
 
 import com.baeldung.spring.data.couchbase2b.repos.CampusRepository;
@@ -22,8 +23,8 @@ public class CampusServiceImpl implements CampusService {
     }
 
     @Override
-    public Campus find(String id) {
-        return repo.findOne(id);
+    public Optional<Campus> find(String id) {
+        return repo.findById(id);
     }
 
     @Override

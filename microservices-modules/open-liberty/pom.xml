@@ -95,14 +95,11 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>${version.maven-war-plugin}</version>
             </plugin>
         </plugins>
     </build>
 
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <failOnMissingWebXml>false</failOnMissingWebXml>
@@ -111,7 +108,6 @@
         <version.microprofile>3.2</version.microprofile>
         <version.derby>10.14.2.0</version.derby>
         <version.liberty-maven-plugin>3.3-M3</version.liberty-maven-plugin>
-        <version.maven-war-plugin>3.2.3</version.maven-war-plugin>
         <version.yasson>1.0.5</version.yasson>
         <version.cxf-rt-rs-client>3.2.6</version.cxf-rt-rs-client>
         <version.javax.json>1.0.4</version.javax.json>
@@ -121,7 +117,6 @@
         <liberty.var.default.http.port>9080</liberty.var.default.http.port>
         <liberty.var.default.https.port>9443</liberty.var.default.https.port>
         <testServerHttpPort>7070</testServerHttpPort>
-        <junit-jupiter.version>5.8.1</junit-jupiter.version>
     </properties>
 
 </project>

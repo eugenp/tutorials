@@ -16,7 +16,7 @@ public class ConnectionFactory {
     private ConnectionFactory() {
         dataSource = new BasicDataSource();
         dataSource.setDriver(new Driver());
-        dataSource.setUrl("jdbc:h2:mem:db;DB_CLOSE_DELAY=-1");
+        dataSource.setUrl("jdbc:h2:mem:db;DB_CLOSE_DELAY=-1;NON_KEYWORDS=WHEN");
     }
 
     public static Connection getConnection() throws SQLException {

@@ -1,7 +1,16 @@
 spring:
   application:
     name: r2dbc-test
-    
+
+  r2dbc:
+    username: local
+    password: local
+    url: r2dbc:postgresql://localhost:8082/flyway-test-db
+  flyway:
+    url: jdbc:postgresql://localhost:8082/flyway-test-db
+    locations: classpath:db/postgres/migration
+  main:
+    allow-bean-definition-overriding: true
 # R2DBC URL
 r2dbc:
   url: r2dbc:h2:mem://./testdb

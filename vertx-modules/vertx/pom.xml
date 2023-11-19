@@ -55,7 +55,7 @@
                                     </manifestEntries>
                                 </transformer>
                             </transformers>
-                            <artifactSet />
+                            <artifactSet/>
                             <outputFile>${project.build.directory}/${project.artifactId}-${project.version}-app.jar</outputFile>
                         </configuration>
                     </execution>
@@ -65,7 +65,7 @@
     </build>
 
     <properties>
-        <vertx.version>3.8.1</vertx.version>
+        <vertx.version>3.9.15</vertx.version>
         <maven-shade-plugin.version>3.2.1</maven-shade-plugin.version>
     </properties>
 

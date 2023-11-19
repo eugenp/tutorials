@@ -1,0 +1,29 @@
+services:
+  alpine-app-1:
+    container_name: alpine-app-1
+    extra_hosts: # for linux hosts since version 20.10
+      - host.docker.internal:host-gateway
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    image: alpine-app-1
+    tty: true
+    networks:
+      - first-network
+
+  node-app:
+    container_name: node-app
+    build:
+      context: ..
+      dockerfile: Dockerfile.node
+    image: node-app
+    ports:
+      - 8080:8080
+    networks:
+      - second-network
+
+networks:
+  first-network:
+    driver: bridge
+  second-network:
+    driver: bridge

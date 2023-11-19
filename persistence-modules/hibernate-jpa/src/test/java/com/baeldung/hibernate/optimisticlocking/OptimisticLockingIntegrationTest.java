@@ -3,9 +3,9 @@ package com.baeldung.hibernate.optimisticlocking;
 import java.io.IOException;
 import java.util.Arrays;
 
-import javax.persistence.EntityManager;
-import javax.persistence.LockModeType;
-import javax.persistence.OptimisticLockException;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.LockModeType;
+import jakarta.persistence.OptimisticLockException;
 
 import org.hibernate.SessionFactory;
 import org.junit.After;

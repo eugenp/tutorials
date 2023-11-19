@@ -60,14 +60,50 @@
             <version>${system.stubs.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.datastax.oss</groupId>
+            <artifactId>java-driver-mapper-runtime</artifactId>
+            <version>4.15.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>com.datastax.oss</groupId>
+                            <artifactId>java-driver-mapper-processor</artifactId>
+                            <version>4.15.0</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <properties>
         <java.version>11</java.version>
-        <org.springframework.data.version>3.1.11</org.springframework.data.version>
-        <testcontainers.version>1.15.3</testcontainers.version>
+        <org.springframework.data.version>3.4.15</org.springframework.data.version>
+        <testcontainers.version>1.19.0</testcontainers.version>
         <system.stubs.version>1.1.0</system.stubs.version>
-        <junit.jupiter.version>5.6.2</junit.jupiter.version>
+        <junit.jupiter.version>5.9.3</junit.jupiter.version>
     </properties>
 
 </project>

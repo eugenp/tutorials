@@ -215,4 +215,18 @@ class TodosControllerApiIntegrationTest {
           .andExpect(status().isNotFound());
     }
 
+    @Test
+    void whenThereIsNoSlashMatching_ThenHttpStatusIs404() throws Exception {
+        mvc
+          .perform(get(BASEURL + "/name/").contentType(DEFAULT_MEDIA_TYPE))
+          .andExpect(status().isNotFound());
+    }
+
+    @Test
+    void whenThereIsNoSlashMatching_ThenHttpStatusIs200() throws Exception {
+        mvc
+          .perform(get(BASEURL + "/name").contentType(DEFAULT_MEDIA_TYPE))
+          .andExpect(status().isOk());
+    }
+
 }

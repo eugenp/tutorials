@@ -3,13 +3,12 @@ package com.baeldung.hibernate.exception.detachedentity;
 import com.baeldung.hibernate.exception.detachedentity.entity.Comment;
 import com.baeldung.hibernate.exception.detachedentity.entity.Post;
 
-import org.assertj.core.api.Assertions;
 import org.hibernate.Session;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import javax.persistence.PersistenceException;
+import jakarta.persistence.PersistenceException;
 
 import java.util.List;
 
@@ -43,7 +42,7 @@ public class DetachedEntityUnitTest {
 
         assertThatThrownBy(() -> session.persist(detachedPost))
             .isInstanceOf(PersistenceException.class)
-            .hasMessageContaining("org.hibernate.PersistentObjectException: detached entity passed to persist");
+            .hasMessageContaining("detached entity passed to persist: com.baeldung.hibernate.exception.detachedentity.entity.Post");
     }
 
     @Test
@@ -72,13 +71,13 @@ public class DetachedEntityUnitTest {
 
         assertThatThrownBy(() -> session.persist(detachedPost))
             .isInstanceOf(PersistenceException.class)
-            .hasMessageContaining("org.hibernate.PersistentObjectException: detached entity passed to persist");
+            .hasMessageContaining("detached entity passed to persist: com.baeldung.hibernate.exception.detachedentity.entity.Post");
     }
 
     @Test
     public void givenDetachedPost_whenMergeAndPersistComment_thenNoExceptionIsThrown() {
         Comment comment = new Comment("nice article!");
-        Post mergedPost = (Post) session.merge(detachedPost);
+        Post mergedPost = session.merge(detachedPost);
         comment.setPost(mergedPost);
 
         session.persist(comment);

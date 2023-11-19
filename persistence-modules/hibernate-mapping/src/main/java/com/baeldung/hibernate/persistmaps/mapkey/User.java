@@ -1,16 +1,15 @@
 package com.baeldung.hibernate.persistmaps.mapkey;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.validation.constraints.Size;
-import javax.money.MonetaryAmount;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.CreditCardNumber;
-import org.hibernate.validator.constraints.Currency;
 
 @Entity
+@Table(name="users2")
 public class User {
     @Id
     @Column(length = 3)

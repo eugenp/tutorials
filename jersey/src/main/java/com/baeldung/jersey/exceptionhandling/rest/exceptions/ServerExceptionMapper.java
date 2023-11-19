@@ -1,19 +1,18 @@
 package com.baeldung.jersey.exceptionhandling.rest.exceptions;
 
-import javax.ws.rs.WebApplicationException;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
-import javax.ws.rs.ext.ExceptionMapper;
+import jakarta.ws.rs.WebApplicationException;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.ext.ExceptionMapper;
 
 public class ServerExceptionMapper implements ExceptionMapper<WebApplicationException> {
     public static final String HTTP_405_MESSAGE = "use one of";
 
     @Override
     public Response toResponse(final WebApplicationException exception) {
-        String message = exception.getMessage();
+        String message;
         Response response = exception.getResponse();
-        Status status = response.getStatusInfo()
+        Response.Status status = response.getStatusInfo()
             .toEnum();
 
         switch (status) {

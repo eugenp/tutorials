@@ -1,11 +1,9 @@
 package com.baeldung.bsontojson;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
-import dev.morphia.annotations.Embedded;
 import dev.morphia.annotations.Entity;
 import dev.morphia.annotations.Field;
 import dev.morphia.annotations.Id;
@@ -25,7 +23,7 @@ public class Book {
     @Property
     private String title;
     private String author;
-    @Embedded
+
     private Publisher publisher;
     @Property("price")
     private double cost;

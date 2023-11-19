@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {SpringOraclePoolingApplication.class})
 @ActiveProfiles({"oracle-pooling-basic"})
-@TestPropertySource(properties = "spring.datasource.type=oracle.ucp.jdbc.UCPDataSource")
+@TestPropertySource(properties = "spring.datasource.type=oracle.ucp.jdbc.PoolDataSource")
 public class SpringOraclePoolingApplicationOracleUCPLiveTest {
     
     @Autowired
@@ -23,8 +23,7 @@ public class SpringOraclePoolingApplicationOracleUCPLiveTest {
     
     @Test    
     public void givenOracleUCPConfiguration_thenBuildsOraclePoolDataSource() {
-        assertTrue(dataSource instanceof oracle.ucp.jdbc.UCPDataSource);
+        assertTrue(dataSource instanceof oracle.ucp.jdbc.PoolDataSource);
     }
 
-    
 }

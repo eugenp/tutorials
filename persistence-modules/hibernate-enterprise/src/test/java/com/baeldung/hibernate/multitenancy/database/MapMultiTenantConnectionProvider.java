@@ -34,8 +34,13 @@ public class MapMultiTenantConnectionProvider extends AbstractMultiTenantConnect
     private void initConnectionProviderForTenant(String tenantId) throws IOException {
         Properties properties = new Properties();
         properties.load(getClass().getResourceAsStream(String.format("/hibernate-database-%s.properties", tenantId)));
+        Map<String, Object> configProperties = new HashMap<>();
+        for (String key : properties.stringPropertyNames()) {
+            String value = properties.getProperty(key);
+            configProperties.put(key, value);
+        }
         DriverManagerConnectionProviderImpl connectionProvider = new DriverManagerConnectionProviderImpl();
-        connectionProvider.configure(properties);
+        connectionProvider.configure(configProperties);
         this.connectionProviderMap.put(tenantId, connectionProvider);
     }
 

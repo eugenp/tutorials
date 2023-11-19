@@ -1,8 +1,8 @@
 package com.baeldung.cxf.jaxrs.implementation;
 
-import javax.ws.rs.*;
-import javax.ws.rs.core.Response;
-import javax.xml.bind.annotation.XmlRootElement;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.Response;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 import java.util.ArrayList;
 import java.util.List;

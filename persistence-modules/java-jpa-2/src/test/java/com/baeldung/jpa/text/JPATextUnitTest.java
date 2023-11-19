@@ -2,7 +2,7 @@ package com.baeldung.jpa.text;
 
 import static org.junit.Assert.assertEquals;
 
-import javax.persistence.PersistenceException;
+import jakarta.persistence.PersistenceException;
 
 import org.junit.BeforeClass;
 import org.junit.Test;

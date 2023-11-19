@@ -4,7 +4,6 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-security-algorithms</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
     <name>core-java-security-algorithms</name>
     <packaging>jar</packaging>
 
@@ -13,30 +12,5 @@
         <artifactId>core-java-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-
-    <dependencies>
-        <dependency>
-            <groupId>commons-codec</groupId>
-            <artifactId>commons-codec</artifactId>
-            <version>${commons-codec.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.bouncycastle</groupId>
-            <artifactId>bcprov-jdk15on</artifactId>
-            <version>${bouncycastle.version}</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
-        <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-            <version>${jaxb-api.version}</version>
-        </dependency>
-    </dependencies>
-
-    <properties>
-        <bouncycastle.version>1.60</bouncycastle.version>
-        <commons-codec.version>1.11</commons-codec.version>
-        <jaxb-api.version>2.3.1</jaxb-api.version>
-    </properties>
 
 </project>

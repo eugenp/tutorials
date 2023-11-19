@@ -7,11 +7,12 @@ import java.io.InputStreamReader;
 import java.util.Map;
 
 /**
- * 
+ *
  * This is a test class to initialize Vault.
  */
 public class VaultInitializer implements Closeable {
 
+    public static final String API_VERSION = "v1";
     private static final String UNSEAL_KEY = "Unseal Key:";
     private static final String ROOT_TOKEN = "Root Token:";
 
@@ -27,7 +28,7 @@ public class VaultInitializer implements Closeable {
         return unSealKey;
     }
 
-    public static final VaultInitializer initializeValut() {
+    public static final VaultInitializer initializeVault() {
         VaultInitializer vaultProcess = new VaultInitializer();
         vaultProcess.start();
         // Secrets is by default enabled.
@@ -37,8 +38,9 @@ public class VaultInitializer implements Closeable {
 
     @SuppressWarnings("unused")
     private void enableSecrets() {
-        System.out.println("Enabling Secrets at path credentials/myapp...");
-        ProcessBuilder pb = new ProcessBuilder("vault", "secrets", "enable", "-path=credentials/myapp", "kv");
+        System.out.println("Enabling Secrets at path secret/...");
+        ProcessBuilder pb = new ProcessBuilder("vault", "secrets", "enable", "-path=credentials/myapp/", String.format("kv-%s", API_VERSION)); ;
+
         Map<String, String> map = pb.environment();
         map.put("VAULT_ADDR", "http://127.0.0.1:8200");
         try {
@@ -106,8 +108,7 @@ public class VaultInitializer implements Closeable {
 
     @Override
     public void close() throws IOException {
-
-        System.out.println("stoping vault");
+        System.out.println("stopping vault");
         vaultProcess.destroy();
     }
 }

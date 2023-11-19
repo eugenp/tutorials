@@ -1,21 +1,16 @@
 package com.baeldung.springboot.swagger.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonView;
-import io.swagger.annotations.ApiModelProperty;
-import io.swagger.annotations.ApiParam;
-
+import io.swagger.v3.oas.annotations.Hidden;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.media.Schema.AccessMode;
 public class Article {
 
-    //@JsonIgnore
-    //@JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    //@ApiModelProperty(hidden = true)
-    //@ApiParam(hidden = true)
-    //@ApiModelProperty(readOnly = true)
-    @ApiParam(hidden = true)
+    // @JsonIgnore
+    // @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    // @Schema(accessMode = AccessMode.READ_ONLY)
+    @Hidden
     private int id;
     private String title;
     private int numOfWords;

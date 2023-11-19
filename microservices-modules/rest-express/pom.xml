@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>microservices-modules</artifactId>
+        <groupId>com.baeldung</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <name>rest-express</name>
+    <!--
+		To run the project: mvn clean package exec:java
+			* mongod must be running.
+
+		To create a project deployable assembly (zip file):
+			mvn clean package
+			mvn assembly:single
+	 -->
+    <description>A Basic, MongoDB-backed Service Suite</description>
+    <url>https://github.com/RestExpress/RestExpress-Scaffold</url>
+    <version>1.0.0-SNAPSHOT</version>
+    <artifactId>rest-express</artifactId>
+    <packaging>jar</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.strategicgains</groupId>
+            <artifactId>RestExpress</artifactId>
+            <version>${RestExpress.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.strategicgains</groupId>
+            <artifactId>Syntaxe</artifactId>
+            <version>${Syntaxe.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.strategicgains.repoexpress</groupId>
+            <artifactId>repoexpress-mongodb</artifactId>
+            <version>${repoexpress-mongodb.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.strategicgains.plugin-express</groupId>
+            <artifactId>CacheControlPlugin</artifactId>
+            <version>${RestExpress.plugin.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.strategicgains</groupId>
+            <artifactId>HyperExpressPlugin</artifactId>
+            <version>${HyperExpressPlugin.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.strategicgains.plugin-express</groupId>
+            <artifactId>MetricsPlugin</artifactId>
+            <version>${RestExpress.plugin.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.strategicgains.plugin-express</groupId>
+            <artifactId>SwaggerPlugin</artifactId>
+            <version>${RestExpress.plugin.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.strategicgains.plugin-express</groupId>
+            <artifactId>CORSPlugin</artifactId>
+            <version>${RestExpress.plugin.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.dropwizard.metrics</groupId>
+            <artifactId>metrics-graphite</artifactId>
+            <version>${metrics-graphite.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit4.version}</version>
+            <type>jar</type>
+            <scope>test</scope>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>${exec-maven-plugin.version}</version>
+                <configuration>
+                    <mainClass>com.baeldung.restexpress.Main</mainClass>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>${maven-shade-plugin.version}</version>
+                <configuration>
+                    <createDependencyReducedPom>false</createDependencyReducedPom>
+                    <filters>
+                        <filter>
+                            <artifact>*:*</artifact>
+                        </filter>
+                    </filters>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <transformers>
+                                <transformer
+                                    implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>com.baeldung.restexpress.Main</mainClass>
+                                </transformer>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>${versions-maven-plugin.version}</version>
+            </plugin>
+        </plugins>
+    </reporting>
+
+    <properties>
+        <RestExpress.plugin.version>0.3.3</RestExpress.plugin.version>
+        <metrics-graphite.version>3.1.2</metrics-graphite.version>
+        <HyperExpressPlugin.version>2.6</HyperExpressPlugin.version>
+        <RestExpress.version>0.11.3</RestExpress.version>
+        <Syntaxe.version>1.0</Syntaxe.version>
+        <repoexpress-mongodb.version>0.4.8</repoexpress-mongodb.version>
+        <junit4.version>4.11</junit4.version>
+        <maven-shade-plugin.version>2.4.1</maven-shade-plugin.version>
+        <versions-maven-plugin.version>2.0</versions-maven-plugin.version>
+    </properties>
+
+</project>

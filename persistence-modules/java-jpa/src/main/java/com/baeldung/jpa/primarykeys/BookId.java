@@ -2,7 +2,7 @@ package com.baeldung.jpa.primarykeys;
 
 import java.io.Serializable;
 
-import javax.persistence.Embeddable;
+import jakarta.persistence.Embeddable;
 
 @Embeddable
 public class BookId implements Serializable {

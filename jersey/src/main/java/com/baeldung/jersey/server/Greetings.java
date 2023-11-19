@@ -1,12 +1,11 @@
 package com.baeldung.jersey.server;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
-
 import com.baeldung.jersey.server.config.HelloBinding;
+
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.core.Response;
 
 @Path("/greetings")
 public class Greetings {
@@ -26,7 +25,7 @@ public class Greetings {
     @POST
     @Path("/custom")
     public Response getCustomGreeting(String name) {
-        return Response.status(Status.OK.getStatusCode())
+        return Response.status(Response.Status.OK.getStatusCode())
             .build();
     }
 }

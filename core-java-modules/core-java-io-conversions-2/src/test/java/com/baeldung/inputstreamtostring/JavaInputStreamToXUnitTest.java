@@ -49,7 +49,7 @@ public class JavaInputStreamToXUnitTest {
         final InputStream inputStream = new ByteArrayInputStream(originalString.getBytes());
 
         final StringBuilder textBuilder = new StringBuilder();
-        try (Reader reader = new BufferedReader(new InputStreamReader(inputStream, Charset.forName(StandardCharsets.UTF_8.name())))) {
+        try (Reader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
             int c;
             while ((c = reader.read()) != -1) {
                 textBuilder.append((char) c);
@@ -63,7 +63,7 @@ public class JavaInputStreamToXUnitTest {
         final String originalString = randomAlphabetic(DEFAULT_SIZE);
         final InputStream inputStream = new ByteArrayInputStream(originalString.getBytes());
 
-        final String text = new BufferedReader(new InputStreamReader(inputStream, Charset.forName(StandardCharsets.UTF_8.name())))
+        final String text = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))
           .lines()
           .collect(Collectors.joining("\n"));
 

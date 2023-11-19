@@ -10,9 +10,8 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>spring-security-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-2</relativePath>
     </parent>
 
     <modules>
@@ -68,10 +67,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <!-- Need 2.7.x to bring spring-security 5.7.x -->
-        <spring-boot.version>2.7.2</spring-boot.version>
-    </properties>
 
 </project>

@@ -10,9 +10,10 @@
     <description>This is simple boot application demonstrating a custom auto-configuration</description>
 
     <parent>
-        <groupId>com.baeldung.spring-boot-modules</groupId>
-        <artifactId>spring-boot-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-3</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -38,8 +39,8 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -65,6 +66,13 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.baeldung.autoconfiguration.example.AutoconfigurationApplication</mainClass>
+                </configuration>
             </plugin>
         </plugins>
     </build>

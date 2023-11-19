@@ -2,8 +2,8 @@ package com.baeldung.javaxval.bigdecimal;
 
 import java.math.BigDecimal;
 
-import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.Digits;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.Digits;
 
 public class Invoice {
 

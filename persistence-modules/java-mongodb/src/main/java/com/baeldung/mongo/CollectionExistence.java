@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 import org.bson.Document;
 
-import com.mongodb.DB;
-import com.mongodb.MongoClient;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
@@ -18,7 +18,7 @@ public class CollectionExistence {
 
     public static void setUp() {
         if (mongoClient == null) {
-            mongoClient = new MongoClient("localhost", 27017);
+            mongoClient = MongoClients.create("mongodb://localhost:27017");
         }
         databaseName = "baeldung";
         testCollectionName = "student";
@@ -26,9 +26,9 @@ public class CollectionExistence {
 
     public static void collectionExistsSolution() {
 
-        DB db = mongoClient.getDB(databaseName);
+        MongoDatabase db = mongoClient.getDatabase(databaseName);
 
-        System.out.println("collectionName " + testCollectionName + db.collectionExists(testCollectionName));
+        System.out.println("collectionName " + testCollectionName + db.listCollectionNames().into(new ArrayList<>()).contains(testCollectionName));
 
     }
 
@@ -62,7 +62,7 @@ public class CollectionExistence {
 
         MongoCollection<Document> collection = database.getCollection(testCollectionName);
 
-        System.out.println(collection.count());
+        System.out.println(collection.countDocuments());
 
     }
 

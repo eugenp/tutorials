@@ -4,8 +4,8 @@ import java.io.FilterOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.entity.HttpEntityWrapper;
+import org.apache.hc.core5.http.HttpEntity;
+import org.apache.hc.core5.http.io.entity.HttpEntityWrapper;
 
 public class ProgressEntityWrapper extends HttpEntityWrapper {
     private final ProgressListener listener;

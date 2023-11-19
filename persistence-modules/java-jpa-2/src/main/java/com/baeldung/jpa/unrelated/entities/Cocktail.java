@@ -1,11 +1,9 @@
 package com.baeldung.jpa.unrelated.entities;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
@@ -27,18 +25,17 @@ public class Cocktail {
     @JoinColumn(name = "cocktail_name",
         referencedColumnName = "cocktail", 
         insertable = false, updatable = false, 
-        foreignKey = @javax.persistence
+        foreignKey = @jakarta.persistence
           .ForeignKey(value = ConstraintMode.NO_CONSTRAINT))
     private Recipe recipe;
 
     @OneToMany(fetch = FetchType.LAZY)
-    @NotFound(action = NotFoundAction.IGNORE)
     @JoinColumn(
         name = "cocktail", 
         referencedColumnName = "cocktail_name", 
         insertable = false, 
         updatable = false, 
-        foreignKey = @javax.persistence
+        foreignKey = @jakarta.persistence
           .ForeignKey(value = ConstraintMode.NO_CONSTRAINT))
     private List<MultipleRecipe> recipeList;
 

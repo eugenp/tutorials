@@ -1,13 +1,13 @@
 package com.baeldung.hibernate.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @org.hibernate.annotations.NamedQueries({ @org.hibernate.annotations.NamedQuery(name = "DeptEmployee_FindByEmployeeNumber", query = "from DeptEmployee where employeeNumber = :employeeNo"),
-        @org.hibernate.annotations.NamedQuery(name = "DeptEmployee_FindAllByDesgination", query = "from DeptEmployee where designation = :designation"),
+        @org.hibernate.annotations.NamedQuery(name = "DeptEmployee_FindAllByDesgination", query = "from DeptEmployee where employeeNumber = :designation"),
         @org.hibernate.annotations.NamedQuery(name = "DeptEmployee_UpdateEmployeeDepartment", query = "Update DeptEmployee set department = :newDepartment where employeeNumber = :employeeNo"),
         @org.hibernate.annotations.NamedQuery(name = "DeptEmployee_FindAllByDepartment", query = "from DeptEmployee where department = :department", timeout = 1, fetchSize = 10) })
 @org.hibernate.annotations.NamedNativeQueries({ @org.hibernate.annotations.NamedNativeQuery(name = "DeptEmployee_FindByEmployeeName", query = "select * from deptemployee emp where name=:name", resultClass = DeptEmployee.class),

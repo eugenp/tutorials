@@ -55,7 +55,7 @@ public class KongLoadBalanceLiveTest {
 
         APIObject stockAPI = new APIObject("balanced-stock-api", "balanced.stock.api", "http://stock.api.service", "/");
         HttpEntity<APIObject> apiEntity = new HttpEntity<>(stockAPI);
-        ResponseEntity<String> addAPIResp = restTemplate.postForEntity("http://localhost:8001/apis", apiEntity, String.class);
+        ResponseEntity<String> addAPIResp = restTemplate.postForEntity("http://localhost:8001", apiEntity, String.class);
         assertTrue(HttpStatus.CREATED == addAPIResp.getStatusCode() || HttpStatus.CONFLICT == addAPIResp.getStatusCode());
 
         HttpHeaders headers = new HttpHeaders();

@@ -1,23 +1,24 @@
 package com.baeldung.deserialization;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.databind.module.SimpleModule;
-import org.junit.Test;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.not;
+import static org.hamcrest.Matchers.notNullValue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 import java.io.IOException;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.not;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.notNullValue;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThat;
+import org.junit.Test;
+
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 
 public class CustomDeserializationUnitTest {
 
@@ -76,6 +77,25 @@ public class CustomDeserializationUnitTest {
         // restore an instance of ZonedDateTime from String
         ZonedDateTime restored = objectMapper.readValue(converted, ZonedDateTime.class);
         assertThat(restored, is(now));
+    }
+
+    @Test
+    public void whenDeserialisingItemWithWrappedUser_ThenWrappedUserIsCorrectlyParsed() throws JsonProcessingException {
+        final String json = "{\"id\":1,\"itemName\":\"theItem\",\"owner\":{\"id\":2,\"name\":\"theUser\"}}";
+
+        SimpleModule module = new SimpleModule().addDeserializer(Wrapper.class, new WrapperDeserializer());
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(module);
+
+        final ItemWithWrappedUser readValue = objectMapper.readValue(json, ItemWithWrappedUser.class);
+
+        assertEquals(2, readValue.getOwner()
+            .getValue()
+            .getId());
+        assertEquals("theUser", readValue.getOwner()
+            .getValue()
+            .getName());
     }
 
 }

@@ -1,22 +1,24 @@
 package com.baeldung.jersey.client;
 
 import com.baeldung.jersey.client.filter.AddHeaderOnRequestFilter;
+import org.glassfish.jersey.apache.connector.ApacheConnectorProvider;
+import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.client.authentication.HttpAuthenticationFeature;
 import org.glassfish.jersey.client.oauth1.AccessToken;
 import org.glassfish.jersey.client.oauth1.ConsumerCredentials;
 import org.glassfish.jersey.client.oauth1.OAuth1ClientSupport;
 import org.glassfish.jersey.client.oauth2.OAuth2ClientSupport;
 
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.Invocation;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.Feature;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.sse.InboundSseEvent;
-import javax.ws.rs.sse.SseEventSource;
-
 import static org.glassfish.jersey.client.authentication.HttpAuthenticationFeature.*;
+
+import jakarta.ws.rs.client.Client;
+import jakarta.ws.rs.client.ClientBuilder;
+import jakarta.ws.rs.client.Invocation;
+import jakarta.ws.rs.client.WebTarget;
+import jakarta.ws.rs.core.Feature;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.sse.InboundSseEvent;
+import jakarta.ws.rs.sse.SseEventSource;
 
 public class JerseyClientHeaders {
 
@@ -155,7 +157,8 @@ public class JerseyClientHeaders {
     }
 
     public static Response sendRestrictedHeaderThroughDefaultTransportConnector(String headerKey, String headerValue) {
-        Client client = ClientBuilder.newClient();
+        ClientConfig clientConfig = new ClientConfig().connectorProvider(new ApacheConnectorProvider());
+        Client client = ClientBuilder.newClient(clientConfig);
         System.setProperty("sun.net.http.allowRestrictedHeaders", "true");
 
         return client.target(TARGET)

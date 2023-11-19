@@ -18,11 +18,6 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-stream-binder-kinesis</artifactId>
-            <version>${spring-cloud-stream-kinesis-binder.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-java-sdk-kinesis</artifactId>
             <version>${aws-sdk.version}</version>
@@ -33,12 +28,27 @@
             <version>${spring-cloud-stream-test.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>amazon-kinesis-producer</artifactId>
+            <version>0.13.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>amazon-kinesis-client</artifactId>
+            <version>1.14.9</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-stream-binder-kinesis</artifactId>
+            <version>${spring-cloud-stream-kinesis-binder.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
-        <aws-sdk.version>1.11.632</aws-sdk.version>
-        <spring-cloud-stream-kinesis-binder.version>2.0.2.RELEASE</spring-cloud-stream-kinesis-binder.version>
-        <spring-cloud-stream-test.version>2.2.1.RELEASE</spring-cloud-stream-test.version>
+        <aws-sdk.version>1.12.380</aws-sdk.version>
+        <spring-cloud-stream-kinesis-binder.version>2.2.0</spring-cloud-stream-kinesis-binder.version>
+        <spring-cloud-stream-test.version>4.0.0</spring-cloud-stream-test.version>
     </properties>
 
 </project>

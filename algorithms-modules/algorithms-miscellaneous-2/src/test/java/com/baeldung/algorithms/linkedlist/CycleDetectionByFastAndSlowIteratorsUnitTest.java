@@ -1,23 +1,16 @@
 package com.baeldung.algorithms.linkedlist;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
 
-@RunWith(value = Parameterized.class)
-public class CycleDetectionByFastAndSlowIteratorsUnitTest extends CycleDetectionTestBase {
-    boolean cycleExists;
-    Node<Integer> head;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-    public CycleDetectionByFastAndSlowIteratorsUnitTest(Node<Integer> head, boolean cycleExists) {
-        super();
-        this.cycleExists = cycleExists;
-        this.head = head;
-    }
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
-    @Test
-    public void givenList_detectLoop() {
-        Assert.assertEquals(cycleExists, CycleDetectionByFastAndSlowIterators.detectCycle(head).cycleExists);
+class CycleDetectionByFastAndSlowIteratorsUnitTest extends CycleDetectionTestBase {
+
+    @ParameterizedTest
+    @MethodSource("getLists")
+    void givenList_detectLoop(Node<Integer> head, boolean cycleExists) {
+        assertEquals(cycleExists, CycleDetectionByFastAndSlowIterators.detectCycle(head).cycleExists);
     }
 }

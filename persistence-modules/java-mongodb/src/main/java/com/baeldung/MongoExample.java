@@ -1,53 +1,64 @@
 package com.baeldung;
 
-import com.mongodb.BasicDBObject;
-import com.mongodb.DB;
-import com.mongodb.DBCollection;
-import com.mongodb.DBCursor;
-import com.mongodb.MongoClient;
+import java.util.ArrayList;
+
+import org.bson.Document;
+
+import com.mongodb.client.FindIterable;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
+import com.mongodb.client.MongoDatabase;
 
 public class MongoExample {
     public static void main(String[] args) {
+        try (MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017")) {
 
-        MongoClient mongoClient = new MongoClient("localhost", 27017);
+            MongoDatabase database = mongoClient.getDatabase("myMongoDb");
 
-        DB database = mongoClient.getDB("myMongoDb");
+            // print existing databases
+            mongoClient.listDatabaseNames().forEach(System.out::println);
 
-        // print existing databases
-        mongoClient.getDatabaseNames().forEach(System.out::println);
+            boolean collectionExists = mongoClient.getDatabase("myMongoDb").listCollectionNames()
+                    .into(new ArrayList<>()).contains("customers");
+            if (!collectionExists) {
+                database.createCollection("customers");
+            }
 
-        database.createCollection("customers", null);
+            // print all collections in customers database
+            database.listCollectionNames().forEach(System.out::println);
 
-        // print all collections in customers database
-        database.getCollectionNames().forEach(System.out::println);
+            // create data
+            MongoCollection<Document> collection = database.getCollection("customers");
+            Document document = new Document();
+            document.put("name", "Shubham");
+            document.put("company", "Baeldung");
+            collection.insertOne(document);
 
-        // create data
-        DBCollection collection = database.getCollection("customers");
-        BasicDBObject document = new BasicDBObject();
-        document.put("name", "Shubham");
-        document.put("company", "Baeldung");
-        collection.insert(document);
+            // update data
+            Document query = new Document();
+            query.put("name", "Shubham");
+            Document newDocument = new Document();
+            newDocument.put("name", "John");
+            Document updateObject = new Document();
+            updateObject.put("$set", newDocument);
+            collection.updateOne(query, updateObject);
 
-        // update data
-        BasicDBObject query = new BasicDBObject();
-        query.put("name", "Shubham");
-        BasicDBObject newDocument = new BasicDBObject();
-        newDocument.put("name", "John");
-        BasicDBObject updateObject = new BasicDBObject();
-        updateObject.put("$set", newDocument);
-        collection.update(query, updateObject);
+            // read data
+            Document searchQuery = new Document();
+            searchQuery.put("name", "John");
+            FindIterable<Document> cursor = collection.find(searchQuery);
+            try (final MongoCursor<Document> cursorIterator = cursor.cursor()) {
+                while (cursorIterator.hasNext()) {
+                    System.out.println(cursorIterator.next());
+                }
+            }
 
-        // read data
-        BasicDBObject searchQuery = new BasicDBObject();
-        searchQuery.put("name", "John");
-        DBCursor cursor = collection.find(searchQuery);
-        while (cursor.hasNext()) {
-            System.out.println(cursor.next());
+            // delete data
+            Document deleteQuery = new Document();
+            deleteQuery.put("name", "John");
+            collection.deleteOne(deleteQuery);
         }
-
-        // delete data
-        BasicDBObject deleteQuery = new BasicDBObject();
-        deleteQuery.put("name", "John");
-        collection.remove(deleteQuery);
     }
 }

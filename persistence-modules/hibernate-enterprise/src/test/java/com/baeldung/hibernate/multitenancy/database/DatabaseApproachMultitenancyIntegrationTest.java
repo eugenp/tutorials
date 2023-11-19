@@ -1,7 +1,5 @@
 package com.baeldung.hibernate.multitenancy.database;
 
-import java.io.IOException;
-
 import org.junit.Test;
 
 import com.baeldung.hibernate.multitenancy.MultitenancyIntegrationTest;
@@ -14,7 +12,7 @@ public class DatabaseApproachMultitenancyIntegrationTest extends MultitenancyInt
     }
 
     @Test
-    public void givenDatabaseApproach_whenAddingEntries_thenOnlyAddedToConcreteDatabase() throws IOException {
+    public void givenDatabaseApproach_whenAddingEntries_thenOnlyAddedToConcreteDatabase() {
         whenCurrentTenantIs(TenantIdNames.MYDB1);
         whenAddCar("myCar");
         thenCarFound("myCar");

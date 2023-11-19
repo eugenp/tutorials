@@ -1,14 +1,14 @@
 package com.baeldung.algorithms.graphcycledetection;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.baeldung.algorithms.graphcycledetection.domain.Graph;
 import com.baeldung.algorithms.graphcycledetection.domain.Vertex;
 
-public class GraphCycleDetectionUnitTest {
+class GraphCycleDetectionUnitTest {
 
     @Test
     public void givenGraph_whenCycleExists_thenReturnTrue() {
@@ -33,7 +33,7 @@ public class GraphCycleDetectionUnitTest {
     }
 
     @Test
-    public void givenGraph_whenNoCycleExists_thenReturnFalse() {
+    void givenGraph_whenNoCycleExists_thenReturnFalse() {
 
         Vertex vertexA = new Vertex("A");
         Vertex vertexB = new Vertex("B");

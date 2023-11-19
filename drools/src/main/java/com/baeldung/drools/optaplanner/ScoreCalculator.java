@@ -2,14 +2,13 @@ package com.baeldung.drools.optaplanner;
 
 import java.util.HashSet;
 
-import org.optaplanner.core.api.score.Score;
 import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
-import org.optaplanner.core.impl.score.director.easy.EasyScoreCalculator;
+import org.optaplanner.core.api.score.calculator.EasyScoreCalculator;
 
-public class ScoreCalculator implements EasyScoreCalculator<CourseSchedule> {
+public class ScoreCalculator implements EasyScoreCalculator<CourseSchedule, HardSoftScore> {
 
     @Override
-    public Score calculateScore(CourseSchedule courseSchedule) {
+    public HardSoftScore calculateScore(CourseSchedule courseSchedule) {
         int hardScore = 0;
         int softScore = 0;
 
@@ -27,6 +26,6 @@ public class ScoreCalculator implements EasyScoreCalculator<CourseSchedule> {
             }
         }
 
-        return HardSoftScore.valueOf(hardScore, softScore);
+        return HardSoftScore.of(hardScore, softScore);
     }
 }

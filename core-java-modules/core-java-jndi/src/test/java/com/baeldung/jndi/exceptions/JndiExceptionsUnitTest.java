@@ -6,6 +6,7 @@ import javax.naming.InitialContext;
 import javax.naming.NameNotFoundException;
 import javax.naming.NoInitialContextException;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -25,7 +26,7 @@ public class JndiExceptionsUnitTest {
             JndiTemplate jndiTemplate = new JndiTemplate();
             ctx = (InitialContext) jndiTemplate.getContext();
             ctx.lookup("java:comp/env/jdbc/datasource");
-            ctx.close();
+            ctx.close();            
         }).printStackTrace();
     }
 

@@ -3,6 +3,7 @@ package com.baeldung.spring.data.couchbase.service;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 import com.baeldung.spring.data.couchbase.model.Person;
 import com.baeldung.spring.data.couchbase.repos.PersonRepository;
@@ -22,12 +23,12 @@ public class PersonRepositoryService implements PersonService {
         this.repo = repo;
     }
 
-    public Person findOne(String id) {
-        return repo.findOne(id);
+    public Optional<Person> findOne(String id) {
+        return repo.findById(id);
     }
 
     public List<Person> findAll() {
-        List<Person> people = new ArrayList<Person>();
+        List<Person> people = new ArrayList<>();
         Iterator<Person> it = repo.findAll().iterator();
         while (it.hasNext()) {
             people.add(it.next());

@@ -22,10 +22,10 @@
                         <phase>generate-sources</phase>
                         <configuration>
                             <target>
-                                <mkdir dir="${basedir}/target/destination-folder" />
+                                <mkdir dir="${basedir}/target/destination-folder"/>
                                 <copy todir="${basedir}/target/destination-folder">
                                     <fileset dir="${basedir}/source-files"
-                                        includes="foo.txt" />
+                                        includes="foo.txt"/>
                                 </copy>
                             </target>
                         </configuration>

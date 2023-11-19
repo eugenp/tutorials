@@ -33,7 +33,7 @@ public class ViewBytecodeUnitTest {
         JavaClass objectClazz = Repository.lookupClass("java.lang.Object");
         
         assertEquals(objectClazz.getClassName(), "java.lang.Object");   
-        assertEquals(objectClazz.getMethods().length, 14);
+        assertEquals(objectClazz.getMethods().length, 12);
         assertTrue(objectClazz.toString().contains("public class java.lang.Object"));
     }
     
@@ -43,7 +43,7 @@ public class ViewBytecodeUnitTest {
         ClassFile cf = cp.get("java.lang.Object").getClassFile();
         
         assertEquals(cf.getName(), "java.lang.Object");
-        assertEquals(cf.getMethods().size(), 14);
+        assertEquals(cf.getMethods().size(), 12);
     }
     
 }

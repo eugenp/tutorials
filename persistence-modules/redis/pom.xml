@@ -56,9 +56,9 @@
 
     <properties>
         <embedded-redis.version>0.6</embedded-redis.version>
-        <redisson.version>3.13.1</redisson.version>
-        <jedis.version>3.3.0</jedis.version>
-        <epoll.version>4.1.50.Final</epoll.version>
+        <redisson.version>3.20.0</redisson.version>
+        <jedis.version>5.0.2</jedis.version>
+        <epoll.version>4.1.90.Final</epoll.version>
     </properties>
 
 </project>

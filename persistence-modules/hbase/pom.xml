@@ -33,7 +33,7 @@
     </dependencies>
 
     <properties>
-        <hbase.version>1.3.1</hbase.version>
+        <hbase.version>2.5.3</hbase.version>
     </properties>
 
 </project>

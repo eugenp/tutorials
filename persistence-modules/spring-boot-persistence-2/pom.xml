@@ -18,13 +18,6 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>org.junit</groupId>
-                <artifactId>junit-bom</artifactId>
-                <version>${junit-jupiter.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
                 <version>${spring.boot.dependencies}</version>
@@ -33,7 +26,7 @@
             </dependency>
             <dependency>
                 <groupId>org.jdbi</groupId>
-                <artifactId>jdbi3-spring4</artifactId>
+                <artifactId>jdbi3-spring5</artifactId>
                 <version>${jdbi.version}</version>
             </dependency>
             <dependency>
@@ -55,7 +48,7 @@
         </dependency>
         <dependency>
             <groupId>org.jdbi</groupId>
-            <artifactId>jdbi3-spring4</artifactId>
+            <artifactId>jdbi3-spring5</artifactId>
         </dependency>
         <dependency>
             <groupId>org.jdbi</groupId>
@@ -103,6 +96,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-connector-java.version}</version>
         </dependency>
         <dependency>
             <groupId>org.xerial</groupId>
@@ -117,19 +111,10 @@
             <artifactId>hsqldb</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.oracle.database.jdbc</groupId>
-            <artifactId>ojdbc8</artifactId>
-            <version>${oracle-database.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.oracle.database.ha</groupId>
-            <artifactId>ons</artifactId>
-            <version>${oracle-database.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.oracle.database.jdbc</groupId>
-            <artifactId>ucp</artifactId>
-            <version>${oracle-database.version}</version>
+            <groupId>com.oracle.database.spring</groupId>
+            <artifactId>oracle-spring-boot-starter-ucp</artifactId>
+            <version>3.1.0</version>   <!-- or 2.7.7 for Spring Boot 2.x -->
+            <type>pom</type>
         </dependency>
     </dependencies>
 
@@ -143,10 +128,14 @@
     </build>
 
     <properties>
-        <jdbi.version>3.9.1</jdbi.version>
-        <spring.boot.dependencies>2.1.8.RELEASE</spring.boot.dependencies>
-        <c3p0.version>0.9.5.2</c3p0.version>
-        <oracle-database.version>21.1.0.0</oracle-database.version>
+        <jdbi.version>3.38.0</jdbi.version>
+        <spring.boot.dependencies>3.0.5</spring.boot.dependencies>
+        <c3p0.version>0.9.5.5</c3p0.version>
+        <oracle-database.version>21.9.0.0</oracle-database.version>
+        <!--add note in the root pom.xml-->
+        <org.slf4j.version>2.0.7</org.slf4j.version>
+        <logback.version>1.4.6</logback.version>
+        <mysql-connector-java.version>8.0.33</mysql-connector-java.version>
     </properties>
 
 </project>

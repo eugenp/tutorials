@@ -11,6 +11,6 @@ This module contains articles about string conversions from/to another type.
 - [Image to Base64 String Conversion](https://www.baeldung.com/java-base64-image-string)
 - [Convert a Comma Separated String to a List in Java](https://www.baeldung.com/java-string-with-separator-to-list)
 - [Convert String to Double in Java](https://www.baeldung.com/java-string-to-double)
-- [Convert Char to String in Java](https://www.baeldung.com/java-convert-char-to-string)
+- [Convert char to String in Java](https://www.baeldung.com/java-convert-char-to-string)
 - [Convert String to int or Integer in Java](https://www.baeldung.com/java-convert-string-to-int-or-integer)
 - More articles: [[next -->]](/core-java-modules/core-java-string-conversions-2)

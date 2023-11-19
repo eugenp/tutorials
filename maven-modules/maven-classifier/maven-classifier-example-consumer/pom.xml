@@ -23,8 +23,8 @@
             <version>0.0.1-SNAPSHOT</version>
             <classifier>arbitrary</classifier>
         </dependency>
-        <!-- For example purpose not building as it requires both JDK 8 and 11 executables on the build 
-            machine -->
+        <!-- For example purpose not building as it requires both JDK 8 and 11 executables -->
+        <!-- on the build machine -->
         <!-- <dependency> -->
         <!-- <groupId>com.baeldung</groupId> -->
         <!-- <artifactId>maven-classifier-example-provider</artifactId> -->

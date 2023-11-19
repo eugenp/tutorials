@@ -3,7 +3,6 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-string-algorithms-3</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
     <name>core-java-string-algorithms-3</name>
     <packaging>jar</packaging>
 
@@ -22,7 +21,17 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>${apache-commons-lang3.version}</version>
+            <version>${commons-lang3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.vdurmont</groupId>
+            <artifactId>emoji-java</artifactId>
+            <version>${emoji-java.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
+            <version>${apache-commons-text.version}</version>
         </dependency>
     </dependencies>
 
@@ -40,8 +49,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
                     <compilerArgument>-parameters</compilerArgument>
                 </configuration>
             </plugin>
@@ -52,7 +61,8 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <validator.version>1.7</validator.version>
-        <apache-commons-lang3.version>3.12.0</apache-commons-lang3.version>
+        <emoji-java.version>5.1.1</emoji-java.version>
+        <apache-commons-text.version>1.10.0</apache-commons-text.version>
     </properties>
 
 </project>

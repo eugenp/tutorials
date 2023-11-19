@@ -21,14 +21,14 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-boot-starter</artifactId>
-            <version>${springfox.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.github.kongchen</groupId>
             <artifactId>swagger-maven-plugin</artifactId>
             <version>${swagger-maven-plugin.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>${springdoc.version}</version>
         </dependency>
     </dependencies>
 
@@ -80,8 +80,8 @@
     </build>
 
     <properties>
-        <springfox.version>3.0.0</springfox.version>
         <swagger-maven-plugin.version>3.1.1</swagger-maven-plugin.version>
+        <springdoc.version>1.7.0</springdoc.version>
     </properties>
 
 </project>

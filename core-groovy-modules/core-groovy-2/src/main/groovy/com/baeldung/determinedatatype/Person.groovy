@@ -1,14 +1,19 @@
 package com.baeldung.determinedatatype
 
 class Person {
-    
-    private int ageAsInt
-    private Double ageAsDouble
-    private String ageAsString
-    
+
+    int ageAsInt
+    Double ageAsDouble
+    String ageAsString
+
     Person() {}
-    Person(int ageAsInt) { this.ageAsInt =  ageAsInt}
-    Person(Double ageAsDouble) { this.ageAsDouble =  ageAsDouble}
-    Person(String ageAsString) { this.ageAsString =  ageAsString}    
+
+    Person(int ageAsInt) { this.ageAsInt = ageAsInt }
+
+    Person(Double ageAsDouble) { this.ageAsDouble = ageAsDouble }
+
+    Person(String ageAsString) { this.ageAsString = ageAsString }
 }
-class Student extends Person {}
+
+class Student extends Person {
+}

@@ -4,7 +4,6 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-string-operations</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
     <name>core-java-string-operations</name>
     <packaging>jar</packaging>
 
@@ -16,24 +15,19 @@
 
     <dependencies>
         <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>${jakarta.xml.bind-api.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.openjdk.jmh</groupId>
-            <artifactId>jmh-core</artifactId>
-            <version>${jmh-core.version}</version>
-        </dependency>
-        <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>${log4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.openjdk.jmh</groupId>
-            <artifactId>jmh-generator-annprocess</artifactId>
-            <version>${jmh-generator.version}</version>
         </dependency>
         <dependency>
             <groupId>commons-codec</groupId>
@@ -53,7 +47,8 @@
     </build>
 
     <properties>
-        <commons-codec.version>1.15</commons-codec.version>
+        <commons-codec.version>1.16.0</commons-codec.version>
+        <jakarta.xml.bind-api.version>4.0.0</jakarta.xml.bind-api.version>
     </properties>
 
 </project>

@@ -1,8 +1,5 @@
 package com.baeldung.jpa.defaultvalues;
 
-import com.baeldung.jpa.defaultvalues.User;
-import com.baeldung.jpa.defaultvalues.UserRepository;
-
 import org.junit.Test;
 import org.junit.Ignore;
 import org.junit.AfterClass;

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -674,21 +676,21 @@
                         <groupId>pl.project13.maven</groupId>
                         <artifactId>git-commit-id-plugin</artifactId>
                         <version>${git-commit-id-plugin.version}</version>
-                            <executions>
-                                <execution>
-                                    <goals>
-                                        <goal>revision</goal>
-                                    </goals>
-                                </execution>
-                            </executions>
-                            <configuration>
-                                <failOnNoGitDirectory>false</failOnNoGitDirectory>
-                                <generateGitPropertiesFile>true</generateGitPropertiesFile>
-                                <includeOnlyProperties>
-                                    <includeOnlyProperty>^git.commit.id.abbrev$</includeOnlyProperty>
-                                    <includeOnlyProperty>^git.commit.id.describe$</includeOnlyProperty>
-                                    <includeOnlyProperty>^git.branch$</includeOnlyProperty>
-                                </includeOnlyProperties>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>revision</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <failOnNoGitDirectory>false</failOnNoGitDirectory>
+                            <generateGitPropertiesFile>true</generateGitPropertiesFile>
+                            <includeOnlyProperties>
+                                <includeOnlyProperty>^git.commit.id.abbrev$</includeOnlyProperty>
+                                <includeOnlyProperty>^git.commit.id.describe$</includeOnlyProperty>
+                                <includeOnlyProperty>^git.branch$</includeOnlyProperty>
+                            </includeOnlyProperties>
                         </configuration>
                     </plugin>
                 </plugins>
@@ -846,9 +848,9 @@
         <m2e.apt.activation>jdt_apt</m2e.apt.activation>
         <run.addResources>false</run.addResources>
         <!-- These remain empty unless the corresponding profile is active -->
-        <profile.no-liquibase />
-        <profile.swagger />
-        <profile.tls />
+        <profile.no-liquibase/>
+        <profile.swagger/>
+        <profile.tls/>
 
         <!-- Dependency versions -->
         <jhipster-dependencies.version>2.0.25</jhipster-dependencies.version>

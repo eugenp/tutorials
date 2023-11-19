@@ -40,6 +40,6 @@ public class CharacterEncodingExamples {
         charsetDecoder.onMalformedInput(codingErrorAction);
         return new BufferedReader(
           new InputStreamReader(
-            new ByteArrayInputStream(input.getBytes()), charsetDecoder)).readLine();
+            new ByteArrayInputStream(input.getBytes(charset)), charsetDecoder)).readLine();
     }
 }

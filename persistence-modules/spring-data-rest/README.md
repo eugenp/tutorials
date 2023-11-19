@@ -9,7 +9,7 @@ This module contains articles about Spring Data REST
 - [Projections and Excerpts in Spring Data REST](https://www.baeldung.com/spring-data-rest-projections-excerpts)
 - [Spring Data REST Events with @RepositoryEventHandler](https://www.baeldung.com/spring-data-rest-events)
 - [Customizing HTTP Endpoints in Spring Data REST](https://www.baeldung.com/spring-data-rest-customize-http-endpoints)
-- [Spring Boot with SQLite](https://www.baeldung.com/spring-boot-sqlite)
+- [Spring Boot With SQLite](https://www.baeldung.com/spring-boot-sqlite)
 
 ### The Course
 The "REST With Spring" Classes: http://bit.ly/restwithspring

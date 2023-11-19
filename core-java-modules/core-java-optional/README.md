@@ -10,3 +10,4 @@ This module contains articles about Java Optional.
 - [Java 9 Optional API Additions](https://www.baeldung.com/java-9-optional)
 - [Throw Exception in Optional in Java 8](https://www.baeldung.com/java-optional-throw-exception)
 - [Optional orElse Optional](https://www.baeldung.com/java-optional-or-else-optional)
+- [Uses for Optional in Java](https://www.baeldung.com/java-optional-uses)

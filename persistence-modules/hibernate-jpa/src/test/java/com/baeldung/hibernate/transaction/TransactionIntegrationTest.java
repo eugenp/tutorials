@@ -2,7 +2,6 @@ package com.baeldung.hibernate.transaction;
 
 import com.baeldung.hibernate.HibernateUtil;
 import com.baeldung.hibernate.pojo.Post;
-import com.baeldung.hibernate.transaction.PostService;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.junit.BeforeClass;
@@ -10,7 +9,6 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 

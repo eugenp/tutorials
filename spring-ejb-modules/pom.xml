@@ -17,9 +17,10 @@
     </parent>
 
     <modules>
+        <!--<module>ejb-beans</module> cannot upgrade to java 17 -->
         <module>spring-ejb-remote</module>
         <module>spring-ejb-client</module>
-        <module>wildfly</module>
+        <module>wildfly-mdb</module>
     </modules>
 
     <dependencyManagement>
@@ -55,23 +56,6 @@
         </dependencies>
     </dependencyManagement>
 
-    <repositories>
-        <repository>
-            <id>jboss-public-repository-group</id>
-            <name>JBoss Public Maven Repository Group</name>
-            <url>http://repository.jboss.org/nexus/content/groups/public/</url>
-            <layout>default</layout>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>never</updatePolicy>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>never</updatePolicy>
-            </snapshots>
-        </repository>
-    </repositories>
-
     <build>
         <pluginManagement>
             <plugins>
@@ -92,6 +76,7 @@
         <wildfly-ejb.version>12.0.0.Final</wildfly-ejb.version>
         <maven-ejb-plugin.version>2.4</maven-ejb-plugin.version>
         <ejb.version>3.2</ejb.version>
+        <javaee-api.version>7.0</javaee-api.version>
     </properties>
 
 </project>

@@ -43,11 +43,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-runner</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>cglib</groupId>
             <artifactId>cglib-nodep</artifactId>
             <version>${cglib.version}</version>
@@ -55,6 +50,7 @@
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
+            <version>${jedis.version}</version>
             <type>jar</type>
         </dependency>
         <dependency>
@@ -88,6 +84,7 @@
         <cglib.version>3.2.4</cglib.version>
         <nosqlunit.version>0.10.0</nosqlunit.version>
         <embedded-redis.version>0.6</embedded-redis.version>
+        <jedis.version>5.0.2</jedis.version>
     </properties>
 
 </project>

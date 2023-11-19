@@ -1,9 +1,9 @@
 package com.baeldung.eclipselink.springdata.pessimisticlocking;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToOne;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Course {

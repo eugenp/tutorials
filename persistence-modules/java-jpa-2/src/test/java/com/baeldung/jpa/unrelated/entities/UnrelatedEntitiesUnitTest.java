@@ -1,14 +1,15 @@
 package com.baeldung.jpa.unrelated.entities;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
-import com.querydsl.jpa.impl.JPAQuery;
 import org.junit.jupiter.api.*;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 import java.util.function.Consumer;
 
-import static org.junit.jupiter.api.Assertions.*;
+import com.querydsl.jpa.impl.JPAQuery;
 
 public class UnrelatedEntitiesUnitTest {
     private static EntityManagerFactory entityManagerFactory;

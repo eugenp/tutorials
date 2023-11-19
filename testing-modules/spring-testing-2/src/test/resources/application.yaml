@@ -1,0 +1,6 @@
+spring:
+  profiles:
+    active: dev
+profile:
+  property:
+    value: This the the application.yaml file

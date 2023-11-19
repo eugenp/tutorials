@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                sh 'echo "Building the application"'
+                // Add steps to build the application
+            }
+        }
+        stage('Test') {
+            steps {
+                input message: 'Do you want to skip the test stage?', ok: 'Yes', parameters: [booleanParam(name: 'skip_test', defaultValue: false)], timeout: time(minutes: 5))
+                script {
+                    if(params.skip_test) {
+                        sh 'echo "Testing the application"'
+                        return
+                    }
+                }
+                // Add steps to test the application
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'echo "Deploying the application"'
+                // Add steps to deploy the application
+            }
+        }
+    }
+}

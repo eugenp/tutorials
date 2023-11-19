@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.persistence.EntityManager;
+import jakarta.persistence.EntityManager;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -81,13 +81,10 @@ public class EmployeeSearchServiceIntegrationTest {
 
     @Test
     public final void givenCriteriaQuery_whenSearchedUsingCriteriaBuilderWithListofAuthors_thenResultIsFilteredByAuthorNames() {
-        List<String> titles = new ArrayList<String>() {
-            {
-                add("Manager");
-                add("Senior Manager");
-                add("Director");
-            }
-        };
+        List<String> titles = new ArrayList<>();
+        titles.add("Manager");
+        titles.add("Senior Manager");
+        titles.add("Director");
         List<DeptEmployee> result = searchService.filterbyTitleUsingCriteriaBuilder(titles);
         assertEquals("Number of Employees does not match with expected.", 6, result.size());
         assertThat(result.stream()

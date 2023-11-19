@@ -39,8 +39,8 @@ public class HibernateScalarExample {
           .list();
     }
 
-    public Integer fetchAvgAgeWithScalar() {
-        return (Integer) session.createNativeQuery("SELECT AVG(age) as avgAge FROM Student student")
+    public Double fetchAvgAgeWithScalar() {
+        return (Double) session.createNativeQuery("SELECT AVG(age) as avgAge FROM Student student")
           .addScalar("avgAge")
           .uniqueResult();
     }

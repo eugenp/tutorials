@@ -10,7 +10,6 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.http.converter.FormHttpMessageConverter;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.oauth2.client.CommonOAuth2Provider;
 import org.springframework.security.oauth2.client.endpoint.DefaultAuthorizationCodeTokenResponseClient;
 import org.springframework.security.oauth2.client.endpoint.OAuth2AccessTokenResponseClient;
@@ -23,6 +22,7 @@ import org.springframework.security.oauth2.client.web.AuthorizationRequestReposi
 import org.springframework.security.oauth2.client.web.HttpSessionOAuth2AuthorizationRequestRepository;
 import org.springframework.security.oauth2.core.endpoint.OAuth2AuthorizationRequest;
 import org.springframework.security.oauth2.core.http.converter.OAuth2AccessTokenResponseHttpMessageConverter;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.client.RestTemplate;
 
 import com.baeldung.oauth2request.CustomAuthorizationRequestResolver;
@@ -31,10 +31,10 @@ import com.baeldung.oauth2request.CustomTokenResponseConverter;
 
 //@Configuration
 @PropertySource("application-oauth2.properties")
-public class CustomRequestSecurityConfig extends WebSecurityConfigurerAdapter {
+public class CustomRequestSecurityConfig {
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests()
             .antMatchers("/oauth_login", "/loginFailure", "/")
             .permitAll()
@@ -44,8 +44,7 @@ public class CustomRequestSecurityConfig extends WebSecurityConfigurerAdapter {
             .oauth2Login()
             .loginPage("/oauth_login")
             .authorizationEndpoint()
-                        .authorizationRequestResolver( new CustomAuthorizationRequestResolver(clientRegistrationRepository(),"/oauth2/authorize-client"))
-
+            .authorizationRequestResolver(new CustomAuthorizationRequestResolver(clientRegistrationRepository(), "/oauth2/authorize-client"))
             .baseUri("/oauth2/authorize-client")
             .authorizationRequestRepository(authorizationRequestRepository())
             .and()
@@ -54,6 +53,7 @@ public class CustomRequestSecurityConfig extends WebSecurityConfigurerAdapter {
             .and()
             .defaultSuccessUrl("/loginSuccess")
             .failureUrl("/loginFailure");
+        return http.build();
     }
 
     @Bean

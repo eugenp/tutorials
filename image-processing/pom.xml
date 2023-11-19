@@ -4,7 +4,6 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>image-processing</artifactId>
-    <version>1.0-SNAPSHOT</version>
     <name>image-processing</name>
 
     <parent>
@@ -92,10 +91,15 @@
             <artifactId>webcam-capture</artifactId>
             <version>${webcam-capture.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-graphics</artifactId>
+            <version>${javafx-graphics.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
-        <core-image.version>1.3.5</core-image.version>
+        <core-image.version>1.3.10</core-image.version>
         <ij.version>1.51h</ij.version>
         <imageio.version>3.3.2</imageio.version>
         <tess4j.version>4.5.1</tess4j.version>
@@ -106,6 +110,7 @@
         <imgscalr-version>4.2</imgscalr-version>
         <thumbnailator-version>0.4.11</thumbnailator-version>
         <marvin-version>1.5.5</marvin-version>
+        <javafx-graphics.version>11</javafx-graphics.version>
     </properties>
 
 </project>

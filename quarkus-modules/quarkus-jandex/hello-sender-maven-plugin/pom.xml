@@ -29,7 +29,7 @@
                 <!-- https://github.com/wildfly/jandex-maven-plugin -->
                 <groupId>org.jboss.jandex</groupId>
                 <artifactId>jandex-maven-plugin</artifactId>
-                <version>1.2.1</version>
+                <version>${jandex-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>make-index</id>
@@ -42,5 +42,9 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <jandex-maven-plugin.version>1.2.1</jandex-maven-plugin.version>
+    </properties>
 
 </project>

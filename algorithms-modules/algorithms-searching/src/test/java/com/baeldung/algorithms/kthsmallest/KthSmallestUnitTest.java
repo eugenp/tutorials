@@ -9,13 +9,13 @@ import java.util.*;
 import static com.baeldung.algorithms.kthsmallest.KthSmallest.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class KthSmallestUnitTest {
+class KthSmallestUnitTest {
 
     @Nested
     class Exceptions {
 
         @Test
-        public void when_at_least_one_list_is_null_then_an_exception_is_thrown() {
+        void when_at_least_one_list_is_null_then_an_exception_is_thrown() {
 
             Executable executable1 = () -> findKthSmallestElement(1, null, null);
             Executable executable2 = () -> findKthSmallestElement(1, new int[]{2}, null);
@@ -27,7 +27,7 @@ public class KthSmallestUnitTest {
         }
 
         @Test
-        public void when_at_least_one_list_is_empty_then_an_exception_is_thrown() {
+        void when_at_least_one_list_is_empty_then_an_exception_is_thrown() {
 
             Executable executable1 = () -> findKthSmallestElement(1, new int[]{}, new int[]{2});
             Executable executable2 = () -> findKthSmallestElement(1, new int[]{2}, new int[]{});
@@ -39,19 +39,19 @@ public class KthSmallestUnitTest {
         }
 
         @Test
-        public void when_k_is_smaller_than_0_then_an_exception_is_thrown() {
+        void when_k_is_smaller_than_0_then_an_exception_is_thrown() {
             Executable executable1 = () -> findKthSmallestElement(-1, new int[]{2}, new int[]{2});
             assertThrows(IllegalArgumentException.class, executable1);
         }
 
         @Test
-        public void when_k_is_smaller_than_1_then_an_exception_is_thrown() {
+        void when_k_is_smaller_than_1_then_an_exception_is_thrown() {
             Executable executable1 = () -> findKthSmallestElement(0, new int[]{2}, new int[]{2});
             assertThrows(IllegalArgumentException.class, executable1);
         }
 
         @Test
-        public void when_k_bigger_then_the_two_lists_then_an_exception_is_thrown() {
+        void when_k_bigger_then_the_two_lists_then_an_exception_is_thrown() {
             Executable executable1 = () -> findKthSmallestElement(6, new int[]{1, 5, 6}, new int[]{2, 5});
             assertThrows(NoSuchElementException.class, executable1);
         }

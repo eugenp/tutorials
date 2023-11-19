@@ -19,4 +19,9 @@
         <module>spf4j-aspects-app</module>
     </modules>
 
+    <properties>
+        <avro.version>1.10.2</avro.version>
+        <spf4j.version>8.9.0</spf4j.version>
+        <dependency.plugin.version>3.1.1</dependency.plugin.version>
+    </properties>
 </project>

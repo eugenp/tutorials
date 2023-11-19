@@ -1,87 +1,54 @@
 package com.baeldung.hibernate.customtypes;
 
 import org.hibernate.HibernateException;
-import org.hibernate.engine.spi.SharedSessionContractImplementor;
-import org.hibernate.type.IntegerType;
-import org.hibernate.type.StringType;
-import org.hibernate.type.Type;
+import org.hibernate.engine.spi.SessionFactoryImplementor;
+import org.hibernate.metamodel.spi.ValueAccess;
 import org.hibernate.usertype.CompositeUserType;
 
 import java.io.Serializable;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Types;
 import java.util.Objects;
 
-public class AddressType implements CompositeUserType {
+public class AddressType implements CompositeUserType<Address> {
 
     @Override
-    public String[] getPropertyNames() {
-        return new String[]{"addressLine1", "addressLine2",
-                "city", "country", "zipcode"};
-    }
-
-    @Override
-    public Type[] getPropertyTypes() {
-        return new Type[]{StringType.INSTANCE, StringType.INSTANCE,
-                StringType.INSTANCE, StringType.INSTANCE, IntegerType.INSTANCE};
-    }
-
-    @Override
-    public Object getPropertyValue(Object component, int property) throws HibernateException {
-
-        Address empAdd = (Address) component;
+    public Object getPropertyValue(Address component, int property) throws HibernateException {
 
         switch (property) {
             case 0:
-                return empAdd.getAddressLine1();
+                return component.getAddressLine1();
             case 1:
-                return empAdd.getAddressLine2();
+                return component.getAddressLine2();
             case 2:
-                return empAdd.getCity();
+                return component.getCity();
             case 3:
-                return empAdd.getCountry();
+                return component.getCountry();
             case 4:
-                return Integer.valueOf(empAdd.getZipCode());
+                return component.getZipCode();
+            default:
+                throw new IllegalArgumentException(property +
+                        " is an invalid property index for class type " +
+                        component.getClass().getName());
         }
-
-        throw new IllegalArgumentException(property +
-                " is an invalid property index for class type " +
-                component.getClass().getName());
     }
 
     @Override
-    public void setPropertyValue(Object component, int property, Object value) throws HibernateException {
-
-        Address empAdd = (Address) component;
-
-        switch (property) {
-            case 0:
-                empAdd.setAddressLine1((String) value);
-            case 1:
-                empAdd.setAddressLine2((String) value);
-            case 2:
-                empAdd.setCity((String) value);
-            case 3:
-                empAdd.setCountry((String) value);
-            case 4:
-                empAdd.setZipCode((Integer) value);
-        }
-
-        throw new IllegalArgumentException(property +
-                " is an invalid property index for class type " +
-                component.getClass().getName());
-
+    public Address instantiate(ValueAccess values, SessionFactoryImplementor sessionFactory) {
+        return new Address(values.getValue(0, String.class), values.getValue(1,String.class), values.getValue(2, String.class),
+                values.getValue(3, String.class), values.getValue(4,Integer.class));
     }
 
     @Override
-    public Class returnedClass() {
+    public Class<?> embeddable() {
         return Address.class;
     }
 
     @Override
-    public boolean equals(Object x, Object y) throws HibernateException {
+    public Class<Address> returnedClass() {
+        return Address.class;
+    }
+
+    @Override
+    public boolean equals(Address x, Address y) {
         if (x == y)
             return true;
 
@@ -92,57 +59,22 @@ public class AddressType implements CompositeUserType {
     }
 
     @Override
-    public int hashCode(Object x) throws HibernateException {
+    public int hashCode(Address x) {
         return x.hashCode();
     }
 
     @Override
-    public Object nullSafeGet(ResultSet rs, String[] names, SharedSessionContractImplementor session, Object owner) throws HibernateException, SQLException {
-
-        Address empAdd = new Address();
-        empAdd.setAddressLine1(rs.getString(names[0]));
-
-        if (rs.wasNull())
-            return null;
-
-        empAdd.setAddressLine2(rs.getString(names[1]));
-        empAdd.setCity(rs.getString(names[2]));
-        empAdd.setCountry(rs.getString(names[3]));
-        empAdd.setZipCode(rs.getInt(names[4]));
-
-        return empAdd;
-    }
-
-    @Override
-    public void nullSafeSet(PreparedStatement st, Object value, int index, SharedSessionContractImplementor session) throws HibernateException, SQLException {
-
-        if (Objects.isNull(value))
-            st.setNull(index, Types.VARCHAR);
-        else {
-
-            Address empAdd = (Address) value;
-            st.setString(index, empAdd.getAddressLine1());
-            st.setString(index + 1, empAdd.getAddressLine2());
-            st.setString(index + 2, empAdd.getCity());
-            st.setString(index + 3, empAdd.getCountry());
-            st.setInt(index + 4, empAdd.getZipCode());
-        }
-    }
-
-    @Override
-    public Object deepCopy(Object value) throws HibernateException {
-
+    public Address deepCopy(Address value) {
         if (Objects.isNull(value))
             return null;
 
-        Address oldEmpAdd = (Address) value;
         Address newEmpAdd = new Address();
 
-        newEmpAdd.setAddressLine1(oldEmpAdd.getAddressLine1());
-        newEmpAdd.setAddressLine2(oldEmpAdd.getAddressLine2());
-        newEmpAdd.setCity(oldEmpAdd.getCity());
-        newEmpAdd.setCountry(oldEmpAdd.getCountry());
-        newEmpAdd.setZipCode(oldEmpAdd.getZipCode());
+        newEmpAdd.setAddressLine1(value.getAddressLine1());
+        newEmpAdd.setAddressLine2(value.getAddressLine2());
+        newEmpAdd.setCity(value.getCity());
+        newEmpAdd.setCountry(value.getCountry());
+        newEmpAdd.setZipCode(value.getZipCode());
 
         return newEmpAdd;
     }
@@ -153,17 +85,27 @@ public class AddressType implements CompositeUserType {
     }
 
     @Override
-    public Serializable disassemble(Object value, SharedSessionContractImplementor session) throws HibernateException {
+    public Serializable disassemble(Address value) {
         return (Serializable) deepCopy(value);
     }
 
     @Override
-    public Object assemble(Serializable cached, SharedSessionContractImplementor session, Object owner) throws HibernateException {
-        return deepCopy(cached);
+    public Address assemble(Serializable cached, Object owner) {
+        return deepCopy((Address) cached);
     }
 
     @Override
-    public Object replace(Object original, Object target, SharedSessionContractImplementor session, Object owner) throws HibernateException {
-        return original;
+    public Address replace(Address detached, Address managed, Object owner) {
+        return detached;
+    }
+
+    @Override
+    public boolean isInstance(Object object, SessionFactoryImplementor sessionFactory) {
+        return CompositeUserType.super.isInstance(object, sessionFactory);
+    }
+
+    @Override
+    public boolean isSameClass(Object object, SessionFactoryImplementor sessionFactory) {
+        return CompositeUserType.super.isSameClass(object, sessionFactory);
     }
 }

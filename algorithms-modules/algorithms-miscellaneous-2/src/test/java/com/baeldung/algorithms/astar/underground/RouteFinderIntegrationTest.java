@@ -1,5 +1,6 @@
 package com.baeldung.algorithms.astar.underground;
 
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.HashMap;
@@ -10,22 +11,22 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import com.baeldung.algorithms.astar.Graph;
 import com.baeldung.algorithms.astar.RouteFinder;
 
 import lombok.extern.slf4j.Slf4j;
 
-import org.junit.Before;
-import org.junit.Test;
-
 @Slf4j
-public class RouteFinderIntegrationTest {
+class RouteFinderIntegrationTest {
 
     private Graph<Station> underground;
 
     private RouteFinder<Station> routeFinder;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         Set<Station> stations = new HashSet<>();
         Map<String, Set<String>> connections = new HashMap<>();
@@ -641,7 +642,7 @@ public class RouteFinderIntegrationTest {
     }
 
     @Test
-    public void findRoute() {
+    void findRoute() {
         List<Station> route = routeFinder.findRoute(underground.getNode("74"), underground.getNode("7"));
         assertThat(route).size().isPositive();
 

@@ -1,0 +1,14 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+
+    <session-factory>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="connection.url">jdbc:tc:mysql:5.7.41:///restaurant?TC_INITSCRIPT=keywords/init.sql</property>
+        <property name="hibernate.connection.driver_class">org.testcontainers.jdbc.ContainerDatabaseDriver</property>
+        <property name="hibernate.hbm2ddl.auto">validate</property>
+        <property name="show_sql">true</property>
+    </session-factory>
+
+</hibernate-configuration>

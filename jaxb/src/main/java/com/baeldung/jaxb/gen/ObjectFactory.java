@@ -1,7 +1,7 @@
 
 package com.baeldung.jaxb.gen;
 
-import javax.xml.bind.annotation.XmlRegistry;
+import jakarta.xml.bind.annotation.XmlRegistry;
 
 
 /**

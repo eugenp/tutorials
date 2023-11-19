@@ -58,7 +58,7 @@
                         <argument>-javaagent:${co.paralleluniverse:quasar-core:jar}</argument>
                         <!-- Classpath -->
                         <argument>-classpath</argument>
-                        <classpath />
+                        <classpath/>
                         <!-- Main class -->
                         <argument>com.baeldung.quasar.App</argument>
                     </arguments>

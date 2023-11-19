@@ -4,7 +4,6 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-security-3</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
     <name>core-java-security-3</name>
     <packaging>jar</packaging>
 
@@ -22,7 +21,7 @@
         </dependency>
         <dependency>
             <groupId>org.bouncycastle</groupId>
-            <artifactId>bcprov-jdk15on</artifactId>
+            <artifactId>bcprov-jdk18on</artifactId>
             <version>${bouncycastle.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
@@ -31,12 +30,23 @@
             <artifactId>jaxb-api</artifactId>
             <version>${jaxb-api.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-crypto</artifactId>
+            <version>${spring-security-crypto.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
-        <bouncycastle.version>1.60</bouncycastle.version>
-        <commons-codec.version>1.11</commons-codec.version>
+        <bouncycastle.version>1.76</bouncycastle.version>
+        <commons-codec.version>1.16.0</commons-codec.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>
+        <spring-security-crypto.version>6.0.3</spring-security-crypto.version>
     </properties>
 
 </project>

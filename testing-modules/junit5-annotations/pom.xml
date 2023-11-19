@@ -16,6 +16,12 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-engine</artifactId>
             <version>${junit-platform.version}</version>
@@ -39,7 +45,9 @@
     </dependencies>
 
     <properties>
-        <log4j2.version>2.17.1</log4j2.version>
+        <junit-platform.version>1.10.0</junit-platform.version>
+        <junit-jupiter.version>5.10.0</junit-jupiter.version>
+        <log4j2.version>2.19.0</log4j2.version>
     </properties>
 
 </project>

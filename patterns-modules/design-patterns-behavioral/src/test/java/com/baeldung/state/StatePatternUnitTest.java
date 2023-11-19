@@ -1,11 +1,9 @@
 package com.baeldung.state;
 
 import com.baeldung.state.Package;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import static org.junit.Assert.assertThat;
-import static org.hamcrest.CoreMatchers.instanceOf;
-
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class StatePatternUnitTest {
 
@@ -13,13 +11,13 @@ public class StatePatternUnitTest {
     public void givenNewPackage_whenPackageReceived_thenStateReceived() {
         Package pkg = new Package();
 
-        assertThat(pkg.getState(), instanceOf(OrderedState.class));
+        assertTrue(pkg.getState() instanceof OrderedState);
         pkg.nextState();
 
-        assertThat(pkg.getState(), instanceOf(DeliveredState.class));
+        assertTrue(pkg.getState() instanceof DeliveredState);
         pkg.nextState();
 
-        assertThat(pkg.getState(), instanceOf(ReceivedState.class));
+        assertTrue(pkg.getState() instanceof ReceivedState);
     }
 
     @Test
@@ -28,6 +26,6 @@ public class StatePatternUnitTest {
         pkg.setState(new DeliveredState());
         pkg.previousState();
 
-        assertThat(pkg.getState(), instanceOf(OrderedState.class));
+        assertTrue(pkg.getState() instanceof OrderedState);
     }
 }

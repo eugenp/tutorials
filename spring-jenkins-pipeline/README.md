@@ -25,5 +25,3 @@ $ mvn spring-boot:run -Dserver.port=8989
 ```
 
 Now with default configurations it will be available at: [http://localhost:8080](http://localhost:8080)
-
-Enjoy it :)

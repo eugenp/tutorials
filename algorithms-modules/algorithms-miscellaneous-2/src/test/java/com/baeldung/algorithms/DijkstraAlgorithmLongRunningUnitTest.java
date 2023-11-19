@@ -1,6 +1,6 @@
 package com.baeldung.algorithms;
 
-import org.junit.Test;
+
 
 import com.baeldung.algorithms.ga.dijkstra.Dijkstra;
 import com.baeldung.algorithms.ga.dijkstra.Graph;
@@ -11,7 +11,9 @@ import java.util.List;
 
 import static org.junit.Assert.assertTrue;
 
-public class DijkstraAlgorithmLongRunningUnitTest {
+import org.junit.jupiter.api.Test;
+
+class DijkstraAlgorithmLongRunningUnitTest {
 
     @Test
     public void whenSPPSolved_thenCorrect() {

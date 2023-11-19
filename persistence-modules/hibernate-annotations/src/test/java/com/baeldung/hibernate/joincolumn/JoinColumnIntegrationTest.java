@@ -78,8 +78,8 @@ public class JoinColumnIntegrationTest {
         return metadata.buildSessionFactory();
     }
 
-    private static Map<String, String> getProperties() {
-        Map<String, String> dbSettings = new HashMap<>();
+    private static Map<String, Object> getProperties() {
+        Map<String, Object> dbSettings = new HashMap<>();
         dbSettings.put(Environment.URL, "jdbc:h2:mem:mydbJoinColumn;DB_CLOSE_DELAY=-1");
         dbSettings.put(Environment.USER, "sa");
         dbSettings.put(Environment.PASS, "");

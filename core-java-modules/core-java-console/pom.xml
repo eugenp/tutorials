@@ -4,7 +4,6 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-console</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
     <name>core-java-console</name>
     <packaging>jar</packaging>
 
@@ -13,6 +12,29 @@
         <artifactId>core-java-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.fusesource.jansi</groupId>
+            <artifactId>jansi</artifactId>
+            <version>2.4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>de.vandermeer</groupId>
+            <artifactId>asciitable</artifactId>
+            <version>${ascii.version}</version>
+        </dependency>
+    </dependencies>
 
     <build>
         <finalName>core-java-console</finalName>
@@ -49,7 +71,7 @@
                         <argument>-Xmx300m</argument>
                         <argument>-XX:+UseParallelGC</argument>
                         <argument>-classpath</argument>
-                        <classpath />
+                        <classpath/>
                         <argument>com.baeldung.outofmemoryerror.OutOfMemoryGCLimitExceed</argument>
                     </arguments>
                 </configuration>
@@ -61,6 +83,16 @@
                 <configuration>
                     <source>${source.version}</source>
                     <target>${target.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.1.2</version>
+                <configuration>
+                    <excludeJUnit5Engines>
+                        <engine>junit-vintage-engine</engine>
+                    </excludeJUnit5Engines>
                 </configuration>
             </plugin>
         </plugins>
@@ -113,7 +145,7 @@
                                     <executable>java</executable>
                                     <arguments>
                                         <argument>-classpath</argument>
-                                        <classpath />
+                                        <classpath/>
                                         <argument>org.openjdk.jmh.Main</argument>
                                         <argument>.*</argument>
                                     </arguments>
@@ -130,6 +162,7 @@
         <maven-javadoc-plugin.version>3.0.0-M1</maven-javadoc-plugin.version>
         <source.version>1.8</source.version>
         <target.version>1.8</target.version>
+        <ascii.version>0.3.2</ascii.version>
     </properties>
 
 </project>

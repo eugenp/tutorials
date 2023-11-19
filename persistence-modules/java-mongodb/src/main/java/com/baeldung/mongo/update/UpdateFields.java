@@ -2,7 +2,8 @@ package com.baeldung.mongo.update;
 
 import org.bson.Document;
 
-import com.mongodb.MongoClient;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
@@ -83,10 +84,9 @@ public class UpdateFields {
 
     public static void setup() {
         if (mongoClient == null) {
-            mongoClient = new MongoClient("localhost", 27017);
+            mongoClient = MongoClients.create("mongodb://localhost:27017");
             database = mongoClient.getDatabase("baeldung");
             collection = database.getCollection("student");
-
         }
     }
 

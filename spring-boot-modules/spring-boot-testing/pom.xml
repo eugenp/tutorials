@@ -9,9 +9,10 @@
     <description>This is simple boot application for demonstrating testing features.</description>
 
     <parent>
-        <groupId>com.baeldung.spring-boot-modules</groupId>
-        <artifactId>spring-boot-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-3</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencyManagement>
@@ -64,20 +65,12 @@
         <dependency>
             <groupId>it.ozimov</groupId>
             <artifactId>embedded-redis</artifactId>
-            <version>${redis.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <!-- Spock & Spring -->
-        <dependency>
-            <groupId>org.spockframework</groupId>
-            <artifactId>spock-core</artifactId>
-            <version>${spock.version}</version>
+            <version>${embedded-redis.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.spockframework</groupId>
-            <artifactId>spock-spring</artifactId>
-            <version>${spock.version}</version>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -121,16 +114,9 @@
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>org.codehaus.gmavenplus</groupId>
-                <artifactId>gmavenplus-plugin</artifactId>
-                <version>${gmavenplus-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>compileTests</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
             </plugin>
         </plugins>
     </build>
@@ -139,10 +125,9 @@
         <!-- The main class to start by executing java -jar -->
         <start-class>com.baeldung.boot.Application</start-class>
         <git-commit-id-plugin.version>2.2.4</git-commit-id-plugin.version>
-        <spock.version>1.2-groovy-2.4</spock.version>
-        <gmavenplus-plugin.version>1.6</gmavenplus-plugin.version>
-        <redis.version>0.7.2</redis.version>
-        <spring-boot.version>2.5.0</spring-boot.version>
+        <spock.version>2.4-M1-groovy-4.0</spock.version>
+        <gmavenplus-plugin.version>3.0.0</gmavenplus-plugin.version>
+        <embedded-redis.version>0.7.2</embedded-redis.version>
         <log4j2.version>2.17.1</log4j2.version>
     </properties>
 

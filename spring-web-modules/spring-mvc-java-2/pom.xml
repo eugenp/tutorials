@@ -36,6 +36,16 @@
             <artifactId>commons-io</artifactId>
             <version>${commons-io.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>${jaxb-runtime.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>${commons-fileupload.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -51,6 +61,8 @@
     <properties>
         <javax.version>4.0.1</javax.version>
         <spring.mvc.version>5.2.2.RELEASE</spring.mvc.version>
+        <jaxb-runtime.version>2.3.5</jaxb-runtime.version>
+        <commons-fileupload.version>1.5</commons-fileupload.version>
     </properties>
 
 </project>

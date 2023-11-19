@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Entity
@@ -74,7 +75,7 @@ public class Customer {
     }
 
     public void deserializeCustomerAttributes() throws IOException {
-        this.customerAttributes = objectMapper.readValue(customerAttributeJSON, Map.class);
+        this.customerAttributes = objectMapper.readValue(customerAttributeJSON,  new TypeReference<Map<String, Object>>() {});
     }
 
 }

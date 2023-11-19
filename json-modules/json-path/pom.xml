@@ -4,7 +4,6 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>json-path</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <name>json-path</name>
 
     <parent>
@@ -14,7 +13,6 @@
     </parent>
 
     <dependencies>
-        <!-- json-path -->
         <dependency>
             <groupId>com.jayway.jsonpath</groupId>
             <artifactId>json-path</artifactId>
@@ -23,8 +21,7 @@
     </dependencies>
 
     <properties>
-        <!-- json-path -->
-        <json-path.version>2.4.0</json-path.version>
+        <json-path.version>2.8.0</json-path.version>
     </properties>
 
 </project>

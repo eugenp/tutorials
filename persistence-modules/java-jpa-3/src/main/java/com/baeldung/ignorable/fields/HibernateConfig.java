@@ -18,7 +18,7 @@ public class HibernateConfig {
 
             Properties settings = new Properties();
             settings.put(Environment.DRIVER, "org.h2.Driver");
-            settings.put(Environment.URL, "jdbc:h2:mem:test");
+            settings.put(Environment.URL, "jdbc:h2:mem:test;MODE=LEGACY");
             settings.put(Environment.USER, "sa");
             settings.put(Environment.PASS, "");
             settings.put(Environment.DIALECT, "org.hibernate.dialect.H2Dialect");

@@ -4,10 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>jmh</artifactId>
-    <version>1.0-SNAPSHOT</version>
     <name>jmh</name>
     <packaging>jar</packaging>
-    <url>http://maven.apache.org</url>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -36,6 +34,15 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <compilerArgs>
+                        <arg>--add-exports=java.base/jdk.internal.vm.annotation=ALL-UNNAMED</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -76,9 +83,8 @@
     </build>
 
     <properties>
-        <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
-        <jol-core.version>0.10</jol-core.version>
-        <maven-assembly-plugin.version>3.2.0</maven-assembly-plugin.version>
+        <jol-core.version>0.17</jol-core.version>
+        <maven-assembly-plugin.version>3.5.0</maven-assembly-plugin.version>
     </properties>
 
 </project>

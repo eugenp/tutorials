@@ -37,7 +37,7 @@ public class NumberOfLineFinder {
         int lines = 0;
         try (LineNumberReader reader = new LineNumberReader(new FileReader(fileName))) {
             reader.skip(Integer.MAX_VALUE);
-            lines = reader.getLineNumber() + 1;
+            lines = reader.getLineNumber();
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }

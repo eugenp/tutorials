@@ -1,6 +1,8 @@
 package com.baeldung.jgrapht;
 
-import static org.junit.Assert.assertTrue;
+
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
@@ -12,18 +14,18 @@ import javax.imageio.ImageIO;
 import org.jgrapht.ext.JGraphXAdapter;
 import org.jgrapht.graph.DefaultDirectedGraph;
 import org.jgrapht.graph.DefaultEdge;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.mxgraph.layout.mxCircleLayout;
 import com.mxgraph.layout.mxIGraphLayout;
 import com.mxgraph.util.mxCellRenderer;
 
-public class GraphImageGenerationUnitTest {
+class GraphImageGenerationUnitTest {
     static DefaultDirectedGraph<String, DefaultEdge> g;
 
-    @Before
+    @BeforeEach
     public void createGraph() throws IOException {
         File imgFile = new File("src/test/resources/graph1.png");
         imgFile.createNewFile();
@@ -39,14 +41,14 @@ public class GraphImageGenerationUnitTest {
         g.addEdge(x3, x1);
     }
 
-    @After
+    @AfterEach
     public void cleanup() {
         File imgFile = new File("src/test/resources/graph1.png");
         imgFile.deleteOnExit();
     }
 
     @Test
-    public void givenAdaptedGraph_whenWriteBufferedImage_ThenFileShouldExist() throws IOException {
+    void givenAdaptedGraph_whenWriteBufferedImage_ThenFileShouldExist() throws IOException {
         JGraphXAdapter<String, DefaultEdge> graphAdapter = new JGraphXAdapter<String, DefaultEdge>(g);
         mxIGraphLayout layout = new mxCircleLayout(graphAdapter);
         layout.execute(graphAdapter.getDefaultParent());

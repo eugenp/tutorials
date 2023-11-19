@@ -12,3 +12,4 @@ This module contains articles about use of Queries in Hibernate.
 - [Hibernate’s addScalar() Method](https://www.baeldung.com/hibernate-addscalar)
 - [Distinct Queries in HQL](https://www.baeldung.com/java-hql-distinct)
 - [JPA and Hibernate – Criteria vs. JPQL vs. HQL Query](https://www.baeldung.com/jpql-hql-criteria-query)
+- [Database Keywords as Columns in Hibernate Entities](https://www.baeldung.com/java-hibernate-db-keywords-as-columns)

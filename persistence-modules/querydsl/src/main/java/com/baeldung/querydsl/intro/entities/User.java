@@ -5,7 +5,7 @@ package com.baeldung.querydsl.intro.entities;
 
 import java.util.HashSet;
 import java.util.Set;
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 public class User {

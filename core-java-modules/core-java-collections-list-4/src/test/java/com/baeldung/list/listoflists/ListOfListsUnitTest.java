@@ -71,4 +71,15 @@ public class ListOfListsUnitTest {
         assertThat(listOfLists.get(2)).containsExactly("Slack", "Zoom", "Microsoft Teams", "Telegram");
         printListOfLists(listOfLists);
     }
+
+    @Test
+    void givenListOfLists_whenGettingSizeOfSubListsAndSizeOfElements_thenGetExpectedResults() throws URISyntaxException, IOException {
+        List<List<String>> listOfLists = getListOfListsFromCsv();
+        // size of inner lists
+        assertThat(listOfLists).hasSize(3);
+
+        // size of all elements in subLists
+        int totalElements = listOfLists.stream().mapToInt(List::size).sum();
+        assertThat(totalElements).isEqualTo(12);
+    }
 }

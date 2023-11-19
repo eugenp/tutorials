@@ -1,8 +1,9 @@
 package com.baeldung.jersey.client.filter;
 
-import javax.ws.rs.client.ClientRequestContext;
-import javax.ws.rs.client.ClientRequestFilter;
 import java.io.IOException;
+
+import jakarta.ws.rs.client.ClientRequestContext;
+import jakarta.ws.rs.client.ClientRequestFilter;
 
 public class AddHeaderOnRequestFilter implements ClientRequestFilter {
 

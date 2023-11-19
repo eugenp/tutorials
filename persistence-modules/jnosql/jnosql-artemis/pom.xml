@@ -41,6 +41,16 @@
         <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>${maven.war-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler-plugin.version}</version>
+            </plugin>
+            <plugin>
                 <groupId>net.wasdev.wlp.maven.plugins</groupId>
                 <artifactId>liberty-maven-plugin</artifactId>
                 <version>${liberty-maven-plugin.version}</version>
@@ -80,7 +90,9 @@
     <properties>
         <liberty-maven-plugin.version>2.4.2</liberty-maven-plugin.version>
         <failOnMissingWebXml>false</failOnMissingWebXml>
-        <javaee-web-api.version>8.0</javaee-web-api.version>
+        <javaee-web-api.version>8.0.1</javaee-web-api.version>
+        <maven.war-plugin.version>3.3.1</maven.war-plugin.version>
+        <maven.compiler-plugin.version>3.8.1</maven.compiler-plugin.version>
     </properties>
 
 </project>

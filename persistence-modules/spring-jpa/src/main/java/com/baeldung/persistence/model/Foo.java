@@ -2,7 +2,7 @@ package com.baeldung.persistence.model;
 
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.io.Serializable;
 
 @Entity
