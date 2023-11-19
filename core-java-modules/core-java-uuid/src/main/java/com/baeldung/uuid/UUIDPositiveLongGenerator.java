@@ -1,6 +1,7 @@
 package com.baeldung.uuid;
 
 import java.nio.ByteBuffer;
+import java.security.SecureRandom;
 import java.util.UUID;
 
 /**
@@ -16,10 +17,6 @@ public class UUIDPositiveLongGenerator {
         return Math.abs(UUID.randomUUID().getMostSignificantBits());
     }
 
-    public long getHashCode() {
-        return Math.abs(UUID.randomUUID().toString().hashCode());
-    }
-
     public long combineByteBuffer() {
         UUID uuid = UUID.randomUUID();
         ByteBuffer bb = ByteBuffer.wrap(new byte[16]);
@@ -30,9 +27,10 @@ public class UUIDPositiveLongGenerator {
     }
 
     public long combineBitwise() {
-        UUID uniqueUUID;
-        uniqueUUID = UUID.randomUUID();
-        return Math.abs((uniqueUUID.getMostSignificantBits() << 32) | (uniqueUUID.getLeastSignificantBits() & 0xFFFFFFFFL));
+        UUID uniqueUUID = UUID.randomUUID();
+        long mostSignificantBits = uniqueUUID.getMostSignificantBits();
+        long leastSignificantBits = uniqueUUID.getLeastSignificantBits();
+        return Math.abs((mostSignificantBits << 32) | (leastSignificantBits & 0xFFFFFFFFL));
     }
 
     public long combineDirect() {
@@ -59,4 +57,27 @@ public class UUIDPositiveLongGenerator {
         }
         return Math.abs(result);
     }
+
+    public long combineWithSecureRandom() {
+        UUID uniqueUUID = UUID.randomUUID();
+        SecureRandom secureRandom = new SecureRandom();
+        long randomBits = secureRandom.nextLong();
+
+        long mostSignificantBits = uniqueUUID.getMostSignificantBits() ^ randomBits;
+        long leastSignificantBits = uniqueUUID.getLeastSignificantBits();
+
+        return Math.abs((mostSignificantBits << 32) | (leastSignificantBits & 0xFFFFFFFFL));
+    }
+
+    public long combineWithNanoTime() {
+        UUID uniqueUUID = UUID.randomUUID();
+        long nanoTime = System.nanoTime();
+
+        long mostSignificantBits = uniqueUUID.getMostSignificantBits() ^ nanoTime;
+        long leastSignificantBits = uniqueUUID.getLeastSignificantBits();
+
+        return Math.abs((mostSignificantBits << 32) | (leastSignificantBits & 0xFFFFFFFFL));
+    }
+
+
 }
