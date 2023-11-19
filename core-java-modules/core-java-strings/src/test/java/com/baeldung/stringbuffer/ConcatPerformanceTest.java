@@ -1,5 +1,4 @@
 package com.baeldung.stringbuffer;
-import com.baeldung.stringbuffer.ConcatPerformance;
 
 import org.junit.Test;
 import static org.assertj.core.api.Assertions.assertThat;
