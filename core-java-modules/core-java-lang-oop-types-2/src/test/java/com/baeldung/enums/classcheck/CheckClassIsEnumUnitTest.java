@@ -70,7 +70,6 @@ public class CheckClassIsEnumUnitTest {
         assertTrue(sunday instanceof Enum);
         assertTrue(Enum.class.isInstance(sunday));
         assertTrue(Enum.class.isAssignableFrom(sunday.getClass()));
-        assertFalse(sunday.getClass().isEnum()); // isEnum() failed with Enum values with body
-
+        assertFalse(sunday.getClass().isEnum()); // <-- isEnum() check failed when Enum values with body
     }
 }
