@@ -53,18 +53,15 @@ class XmlToHashMapUnitTest {
     }
 
     private void verify(Map<String, Employee> employeeMap) {
-        ArrayList<Employee> employees = new ArrayList<>(employeeMap.values());
-        Assertions.assertEquals("654", employees.get(0)
-            .getId());
-        Assertions.assertEquals("John", employees.get(0)
+        Employee employee1 = employeeMap.get("654");
+        Employee employee2 = employeeMap.get("776");
+        Assertions.assertEquals("John", employee1
             .getFirstName());
-        Assertions.assertEquals("Doe", employees.get(0)
+        Assertions.assertEquals("Doe", employee1
             .getLastName());
-        Assertions.assertEquals("776", employees.get(1)
-            .getId());
-        Assertions.assertEquals("Steve", employees.get(1)
+        Assertions.assertEquals("Steve", employee2
             .getFirstName());
-        Assertions.assertEquals("Smith", employees.get(1)
+        Assertions.assertEquals("Smith", employee2
             .getLastName());
     }
 
