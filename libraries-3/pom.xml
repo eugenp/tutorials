@@ -219,10 +219,10 @@
         <airline.version>2.7.2</airline.version>
         <cache2k.version>1.2.3.Final</cache2k.version>
         <jcabi-aspects.version>0.22.6</jcabi-aspects.version>
-        <aspectjrt.version>1.9.2</aspectjrt.version>
+        <aspectjrt.version>1.9.20.1</aspectjrt.version>
         <jcabi-maven-plugin.version>0.14.1</jcabi-maven-plugin.version>
-        <aspectjtools.version>1.9.2</aspectjtools.version>
-        <aspectjweaver.version>1.9.2</aspectjweaver.version>
+        <aspectjtools.version>1.9.20.1</aspectjtools.version>
+        <aspectjweaver.version>1.9.20.1</aspectjweaver.version>
         <takes.version>1.19</takes.version>
         <httpcore.version>4.4.13</httpcore.version>
         <httpclient.version>4.5.12</httpclient.version>
