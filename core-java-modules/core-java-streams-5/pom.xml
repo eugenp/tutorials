@@ -77,7 +77,6 @@
         <maven.compiler.source>12</maven.compiler.source>
         <maven.compiler.target>12</maven.compiler.target>
         <vavr.version>0.10.2</vavr.version>
-        <guava.version>32.1.2-jre</guava.version>
     </properties>
 
 </project>

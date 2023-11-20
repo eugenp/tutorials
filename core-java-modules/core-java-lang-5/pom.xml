@@ -24,7 +24,6 @@
     </build>
 
     <properties>
-        <commons-lang3.version>3.12.0</commons-lang3.version>
         <reflections.version>0.10.2</reflections.version>
     </properties>
 
