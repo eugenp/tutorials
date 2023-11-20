@@ -56,7 +56,7 @@
         <async-http-client.version>2.4.5</async-http-client.version>
         <jakarta.bind.version>2.3.3</jakarta.bind.version>
         <greenmail.version>2.0.0-alpha-3</greenmail.version>
-        <commons-codec.version>1.15</commons-codec.version>
+        <commons-codec.version>1.16.0</commons-codec.version>
     </properties>
 
 </project>
