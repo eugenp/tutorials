@@ -29,21 +29,21 @@ public class KeystoreCertificateNameAliasUnitTest {
         assertThat(ownerName.contains("my-cn.localhost")).isTrue();
     }
 
-@Test
-void whenCheckingAliasAndName_thenNameIsNotFound() throws Exception {
-    KeyStore keystore = readKeyStore();
+    @Test
+    void whenCheckingAliasAndName_thenNameIsNotFound() throws Exception {
+        KeyStore keystore = readKeyStore();
 
-    assertThat(keystore.containsAlias(KEYSTORE_ALIAS)).isTrue();
+        assertThat(keystore.containsAlias(KEYSTORE_ALIAS)).isTrue();
 
-    X509Certificate x509Certificate = (X509Certificate) keystore.getCertificate(KEYSTORE_ALIAS);
-    String ownerName = x509Certificate.getSubjectX500Principal().getName();
-    assertThat(ownerName.contains("commonName1")).isFalse();
-}
+        X509Certificate x509Certificate = (X509Certificate) keystore.getCertificate(KEYSTORE_ALIAS);
+        String ownerName = x509Certificate.getSubjectX500Principal().getName();
+        assertThat(ownerName.contains("commonName1")).isFalse();
+    }
 
-@Test
-void whenCheckingAliasAndName_thenAliasIsNotFound() throws Exception {
-    KeyStore keystore = readKeyStore();
+    @Test
+    void whenCheckingAliasAndName_thenAliasIsNotFound() throws Exception {
+        KeyStore keystore = readKeyStore();
 
-    assertThat(keystore.containsAlias("alias1")).isFalse();
-}
+        assertThat(keystore.containsAlias("alias1")).isFalse();
+    }
 }
