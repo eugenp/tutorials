@@ -29,6 +29,11 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <dependency>
+            <groupId>de.vandermeer</groupId>
+            <artifactId>asciitable</artifactId>
+            <version>${ascii.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -157,6 +162,7 @@
         <maven-javadoc-plugin.version>3.0.0-M1</maven-javadoc-plugin.version>
         <source.version>1.8</source.version>
         <target.version>1.8</target.version>
+        <ascii.version>0.3.2</ascii.version>
     </properties>
 
 </project>

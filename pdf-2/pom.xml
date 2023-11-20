@@ -51,7 +51,7 @@
         <itextpdf.version>5.5.13.3</itextpdf.version>
         <itextpdf.core.version>7.2.3</itextpdf.core.version>
         <itextpdf.cleanup.version>3.0.1</itextpdf.cleanup.version>
-        <pdfbox.version>3.0.0-RC1</pdfbox.version>
+        <pdfbox.version>3.0.0</pdfbox.version>
     </properties>
 
 </project>
