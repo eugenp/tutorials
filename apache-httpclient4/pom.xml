@@ -234,7 +234,7 @@
 
     <properties>
         <!-- util -->
-        <commons-codec.version>1.10</commons-codec.version>
+        <commons-codec.version>1.16.0</commons-codec.version>
         <httpasyncclient.version>4.1.5</httpasyncclient.version>
         <!-- testing -->
         <wiremock.version>2.5.1</wiremock.version>
