@@ -166,7 +166,7 @@
         <spring-modulith-bom.version>0.5.1</spring-modulith-bom.version>
         <jobrunr-spring-boot-starter.version>3.1.1</jobrunr-spring-boot-starter.version>
         <awaitility.version>4.0.3</awaitility.version>
-        <openapi-generator.version>5.3.0</openapi-generator.version>
+        <openapi-generator.version>7.1.0</openapi-generator.version>
         <spring.data.version>2.4.5</spring.data.version>
         <jackson-databind-nullable.version>0.2.1</jackson-databind-nullable.version>
         <reflections.version>0.10.2</reflections.version>

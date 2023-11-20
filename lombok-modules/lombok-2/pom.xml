@@ -44,6 +44,21 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <dependency>
+            <groupId>io.swagger.core.v3</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>${swagger-annotations.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openapitools</groupId>
+            <artifactId>jackson-databind-nullable</artifactId>
+            <version>${jackson-databind-nullable.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>${validation-api.version}</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -58,7 +73,7 @@
                         </goals>
                         <configuration>
                             <inputSpec>${project.basedir}/src/main/resources/bookapi.yml</inputSpec>
-                            <generatorName>java</generatorName>
+                            <generatorName>spring</generatorName>
                             <modelPackage>com.baeldung.openapi.model</modelPackage>
                             <configOptions>
                                 <additionalModelTypeAnnotations>@lombok.Data @lombok.NoArgsConstructor @lombok.AllArgsConstructor</additionalModelTypeAnnotations>
@@ -73,10 +88,13 @@
         </plugins>
     </build>
     <properties>
-        <openapi.version>4.2.3</openapi.version>
+        <openapi.version>7.1.0</openapi.version>
         <gson.version>2.10.1</gson.version>
         <javax.annotation>1.3.2</javax.annotation>
         <swagger.annotation>1.6.2</swagger.annotation>
+        <swagger-annotations.version>2.2.19</swagger-annotations.version>
+        <jackson-databind-nullable.version>0.2.6</jackson-databind-nullable.version>
+        <validation-api.version>2.0.1.Final</validation-api.version>
     </properties>
 
 </project>
