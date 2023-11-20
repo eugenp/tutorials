@@ -36,8 +36,7 @@ public class KeystoreCertificateNameAliasUnitTest {
         assertThat(keystore.containsAlias(KEYSTORE_ALIAS)).isTrue();
 
         X509Certificate x509Certificate = (X509Certificate) keystore.getCertificate(KEYSTORE_ALIAS);
-        String owner = x509Certificate.getSubjectX500Principal()
-            .getName();
+        String owner = x509Certificate.getSubjectX500Principal().getName();
         assertThat(owner.contains("commonName1")).isFalse();
     }
 
