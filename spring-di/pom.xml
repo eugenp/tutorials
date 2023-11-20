@@ -134,7 +134,7 @@
         <start-class>org.baeldung.org.baeldung.sample.App</start-class>
         <!-- Spring -->
         <spring-boot.version>3.1.2</spring-boot.version>
-        <aspectjweaver.version>1.9.5</aspectjweaver.version>
+        <aspectjweaver.version>1.9.20.1</aspectjweaver.version>
     </properties>
 
 </project>
