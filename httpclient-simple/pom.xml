@@ -99,7 +99,7 @@
             <version>${commons-codec.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.github.tomakehurst</groupId>
+            <groupId>org.wiremock</groupId>
             <artifactId>wiremock</artifactId>
             <version>${wiremock.version}</version>
             <scope>test</scope>
@@ -207,7 +207,7 @@
         <!-- util -->
         <commons-codec.version>1.16.0</commons-codec.version>
         <!-- testing -->
-        <wiremock.version>2.5.1</wiremock.version>
+        <wiremock.version>3.3.1</wiremock.version>
         <!-- http client & core 5 -->
         <httpcore5.version>5.2</httpcore5.version>
         <httpclient5.version>5.2</httpclient5.version>

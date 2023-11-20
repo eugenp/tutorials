@@ -158,7 +158,7 @@
             <version>${mockserver.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.github.tomakehurst</groupId>
+            <groupId>org.wiremock</groupId>
             <artifactId>wiremock</artifactId>
             <version>${wiremock.version}</version>
             <scope>test</scope>
@@ -237,7 +237,7 @@
         <commons-codec.version>1.16.0</commons-codec.version>
         <httpasyncclient.version>4.1.5</httpasyncclient.version>
         <!-- testing -->
-        <wiremock.version>2.5.1</wiremock.version>
+        <wiremock.version>3.3.1</wiremock.version>
         <httpcore.version>4.4.16</httpcore.version>
         <httpclient.version>4.5.14</httpclient.version>
         <mockserver.version>5.11.2</mockserver.version>
