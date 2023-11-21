@@ -20,4 +20,17 @@ public class Print2DArray{
     public static void print2DDeepToString(int[][] myArray){ 
         System.out.println(Arrays.deepToString(myArray));
     }
+
+    public static void printArrayAsList(int[][] myArray) {
+        for (int[] row : myArray) {
+            List<Integer> rowList = Arrays.asList(Arrays.stream(row).boxed().toArray(Integer[]::new));
+            System.out.println(rowList);
+        }
+    }
+    
+    public static void printArrayString(int[][] myArray) {
+        for (int[] row : myArray) {
+            System.out.println(Arrays.toString(row));
+        }
+     }
 }
