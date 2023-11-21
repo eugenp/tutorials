@@ -198,7 +198,8 @@
         <module>core-java-records</module>
         <module>core-java-9-jigsaw</module>
         <!--<module>core-java-20</module>--> <!--JAVA-25373-->
-        <!--<module>core-java-conditionals</module>--> <!--JAVA-25373-->
+        <!--<module>core-java-21</module>--> <!--JAVA-25373-->
+        <!--<module>core-java-conditionals</module>--> <!--JAVA-20931-->
         <module>core-java-collections-set</module>
         <module>core-java-date-operations-1</module>
         <module>core-java-datetime-conversion</module>
