@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>hibernate-libraries</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -63,8 +63,8 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
             <version>${mysql.version}</version>
             <scope>runtime</scope>
         </dependency>
@@ -168,7 +168,7 @@
         <log4jdbc.version>2.0.0</log4jdbc.version>
         <maven.compiler.version>3.8.1</maven.compiler.version>
         <maven.version>3.8.1</maven.version>
-        <mysql.version>8.0.19</mysql.version>
+        <mysql.version>8.2.0</mysql.version>
         <spring-boot.version>2.1.3.RELEASE</spring-boot.version>
     </properties>
 
