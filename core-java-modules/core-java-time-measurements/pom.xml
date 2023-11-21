@@ -33,7 +33,7 @@
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjrt</artifactId>
-            <version>${asspectj.version}</version>
+            <version>${aspectj.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
@@ -74,7 +74,7 @@
     <properties>
         <commons-math3.version>3.6.1</commons-math3.version>
         <joda.version>2.10</joda.version>
-        <asspectj.version>1.8.9</asspectj.version>
+        <aspectj.version>1.9.20.1</aspectj.version>
         <jmockit.version>1.44</jmockit.version>
         <mockito-inline.version>4.1.0</mockito-inline.version>
     </properties>

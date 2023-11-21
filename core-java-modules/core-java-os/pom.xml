@@ -75,7 +75,6 @@
 
     <properties>
         <collections-generic.version>4.01</collections-generic.version>
-        <asspectj.version>1.8.9</asspectj.version>
         <maven.compiler.source>1.9</maven.compiler.source>
         <maven.compiler.target>1.9</maven.compiler.target>
         <unix4j.version>0.4</unix4j.version>

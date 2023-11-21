@@ -37,7 +37,7 @@
     <!--</plugin> </plugins> </build> -->
 
     <properties>
-        <hibernate-validator.ap.version>6.2.0.Final</hibernate-validator.ap.version>
+        <hibernate-validator.ap.version>8.0.1.Final</hibernate-validator.ap.version>
         <spring.boot.version>3.0.4</spring.boot.version>
     </properties>
 

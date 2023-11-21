@@ -49,7 +49,7 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.hibernate</groupId>
+            <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator-cdi</artifactId>
             <version>${hibernate-validator.version}</version>
         </dependency>
@@ -115,7 +115,7 @@
         <vraptor.version>4.2.0.Final</vraptor.version>
         <weld.version>2.1.2.Final</weld.version>
         <el.version>2.2</el.version>
-        <hibernate-validator.version>5.1.1.Final</hibernate-validator.version>
+        <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
         <vraptor-freemarker.version>4.1.0-RC3</vraptor-freemarker.version>
         <vraptor-hibernate.version>4.0.4</vraptor-hibernate.version>
         <mysql-connector.version>8.0.8-dmr</mysql-connector.version>
