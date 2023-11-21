@@ -100,7 +100,7 @@
 
     <properties>
         <reactor.version>3.4.5</reactor.version>
-        <caffeine.version>2.9.2</caffeine.version>
+        <caffeine.version>3.1.8</caffeine.version>
         <testcontainers-mongodb.version>1.16.2</testcontainers-mongodb.version>
     </properties>
 

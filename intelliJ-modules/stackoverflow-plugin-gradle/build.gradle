@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'org.jetbrains.intellij' version '0.4.21'
+    id 'org.jetbrains.intellij' version '1.16.0'
 }
 
 group 'com.baeldung'
@@ -11,15 +11,17 @@ repositories {
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testImplementation('junit:junit:4.12')
 }
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
-    version '2020.1.1'
+    version = "2022.2.5"
+    type = "IC"
 }
+
 patchPluginXml {
-    changeNotes """
+    changeNotes = """
       Add change notes here.<br>
       <em>most HTML tags may be used</em>"""
 }

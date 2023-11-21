@@ -9,7 +9,7 @@
     
     <logger name="org.springframework" level="ERROR"/>
 
-    <logger name="org.springframework.integration.config" level="INFO"/>
+    <logger name="org.springframework.integration.config" level="WARN"/>
 
     <root level="INFO">
         <appender-ref ref="stdout" />
