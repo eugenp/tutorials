@@ -20,7 +20,7 @@ public class SplitLargeFileUnitTest {
     }
 
     private Path largeFilePath() throws Exception {
-        return Paths.get(this.getClass().getClassLoader().getResource("largeFile.txt").toURI());
+        return Paths.get(this.getClass().getClassLoader().getResource("large-file.txt").toURI());
     }
 
 
