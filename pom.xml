@@ -933,7 +933,7 @@
                 <module>persistence-modules/spring-data-neo4j</module>
                 <module>parent-boot-3</module>
                 <module>spring-kafka-2</module>
-                <!--<module>java-panama</module>--> <!--JAVA-25373-->
+                <!--<module>java-panama</module>--> <!--JAVA-26078-->
             </modules>
 
             <properties>
@@ -1209,7 +1209,7 @@
                 <module>persistence-modules/spring-data-neo4j</module>
                 <module>spring-actuator</module>
                 <module>spring-kafka-2</module>
-                <!--<module>java-panama</module>--> <!--JAVA-25373-->
+                <!--<module>java-panama</module>--> <!--JAVA-26078-->
             </modules>
 
             <properties>
