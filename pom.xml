@@ -902,12 +902,6 @@
                 <module>xml-2</module>
                 <module>xml</module>
                 <module>xstream</module>
-                <module>image-processing</module>
-                <module>language-interop</module>
-                <module>gradle-modules/gradle/maven-to-gradle</module>
-                <module>persistence-modules/spring-data-neo4j</module>
-                <module>parent-boot-3</module>
-                <module>spring-kafka-2</module>
                 <!--<module>java-panama</module>--> <!--JAVA-26078-->
             </modules>
 
@@ -1154,12 +1148,6 @@
                 <module>xml-2</module>
                 <module>xml</module>
                 <module>xstream</module>
-                <module>image-processing</module>
-                <module>language-interop</module>
-                <module>gradle-modules/gradle/maven-to-gradle</module>
-                <module>persistence-modules/spring-data-neo4j</module>
-                <module>spring-actuator</module>
-                <module>spring-kafka-2</module>
                 <!--<module>java-panama</module>--> <!--JAVA-26078-->
             </modules>
 
