@@ -1,16 +1,17 @@
 package com.baeldung.resttemplate.lists.client;
 
-import com.baeldung.resttemplate.lists.dto.Employee;
-import com.baeldung.resttemplate.lists.dto.EmployeeList;
+import static java.util.Arrays.asList;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static java.util.Arrays.asList;
+import com.baeldung.resttemplate.lists.dto.Employee;
+import com.baeldung.resttemplate.lists.dto.EmployeeList;
 
 /**
  * Application that shows how to use Lists with RestTemplate.
