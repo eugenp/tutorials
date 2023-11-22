@@ -18,19 +18,19 @@ public class VehicleUnitTest {
     }
 
     @Test
-    public void givenCar_whenUsingReflectionAPI_thenInterfaceIsSealed() {
+    public void givenCar_whenUsingReflectionAPI_thenInterfaceIsSealed() throws ClassNotFoundException {
         Assertions.assertThat(car.getClass().isSealed()).isEqualTo(false);
         Assertions.assertThat(car.getClass().getInterfaces()[0].isSealed()).isEqualTo(true);
-        Assertions.assertThat(car.getClass().getInterfaces()[0].permittedSubclasses())
-                .contains(ClassDesc.of(car.getClass().getCanonicalName()));
+        Assertions.assertThat(car.getClass().getInterfaces()[0].getPermittedSubclasses())
+                .contains(Class.forName(car.getClass().getCanonicalName()));
     }
 
     @Test
-    public void givenTruck_whenUsingReflectionAPI_thenInterfaceIsSealed() {
+    public void givenTruck_whenUsingReflectionAPI_thenInterfaceIsSealed() throws ClassNotFoundException {
         Assertions.assertThat(truck.getClass().isSealed()).isEqualTo(false);
         Assertions.assertThat(truck.getClass().getInterfaces()[0].isSealed()).isEqualTo(true);
-        Assertions.assertThat(truck.getClass().getInterfaces()[0].permittedSubclasses())
-                .contains(ClassDesc.of(truck.getClass().getCanonicalName()));
+        Assertions.assertThat(truck.getClass().getInterfaces()[0].getPermittedSubclasses())
+                .contains(Class.forName(truck.getClass().getCanonicalName()));
     }
 
     @Test

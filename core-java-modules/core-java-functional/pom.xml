@@ -35,7 +35,6 @@
     <properties>
         <mockito-inline.version>3.8.0</mockito-inline.version>
         <assertj.version>3.22.0</assertj.version>
-        <commons-lang3.version>3.12.0</commons-lang3.version>
         <vavr.version>0.10.4</vavr.version>
     </properties>
 

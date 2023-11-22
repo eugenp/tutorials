@@ -65,7 +65,7 @@
 
     <properties>
         <exchange-rate-api.version>1.0.0-SNAPSHOT</exchange-rate-api.version>
-        <okhttp.version>3.10.0</okhttp.version>
+        <okhttp.version>4.12.0</okhttp.version>
         <javax.json.bind-api.version>1.0</javax.json.bind-api.version>
         <yasson.version>1.0.1</yasson.version>
         <javax.json.version>1.1.2</javax.json.version>
