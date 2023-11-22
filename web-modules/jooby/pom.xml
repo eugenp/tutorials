@@ -77,7 +77,7 @@
         <application.class>com.baeldung.jooby.App</application.class>
         <maven-shade-plugin.version>3.2.4</maven-shade-plugin.version>
         <maven-compiler.version>3.8.1</maven-compiler.version>
-        <squareup.okhttp.version>4.9.1</squareup.okhttp.version>
+        <squareup.okhttp.version>4.12.0</squareup.okhttp.version>
     </properties>
 
 </project>
