@@ -3,9 +3,6 @@ package com.baeldung.map;
 import java.util.HashMap;
 
 public class HashMapWithMaxSizeLimit<K, V> extends HashMap<K, V> {
-
-    private static final long serialVersionUID = 1L;
-
     private int maxSize = -1;
     
     public HashMapWithMaxSizeLimit() {
