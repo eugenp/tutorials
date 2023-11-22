@@ -1,11 +1,11 @@
 package com.baeldung.resttemplate.lists.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.baeldung.resttemplate.lists.dto.Employee;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service("EmployeeListService")
 public class EmployeeService
