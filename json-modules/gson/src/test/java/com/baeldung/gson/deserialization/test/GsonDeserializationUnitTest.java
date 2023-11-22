@@ -3,8 +3,9 @@ package com.baeldung.gson.deserialization.test;
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.not;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
+
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -68,7 +69,7 @@ public class GsonDeserializationUnitTest {
 
         final GenericFoo<Integer> targetObject = new Gson().fromJson(json, typeToken);
 
-        assertEquals(targetObject.theValue, new Integer(1));
+        assertEquals(targetObject.theValue, Integer.valueOf(1));
     }
 
     // tests - multiple elements
@@ -98,8 +99,7 @@ public class GsonDeserializationUnitTest {
     @Test
     public void whenDeserializingJsonIntoElements_thenCorrect() {
         final String jsonSourceObject = "{\"valueInt\":7,\"valueString\":\"seven\"}";
-        final JsonParser jParser = new JsonParser();
-        final JsonElement jElement = jParser.parse(jsonSourceObject);
+        final JsonElement jElement = JsonParser.parseString(jsonSourceObject);
         final JsonObject jObject = jElement.getAsJsonObject();
         final int intValue = jObject.get("valueInt").getAsInt();
         final String stringValue = jObject.get("valueString").getAsString();

@@ -11,3 +11,4 @@ This module contains articles about Simple Storage Service (S3) on AWS
 - [Listing All AWS S3 Objects in a Bucket Using Java](https://www.baeldung.com/java-aws-s3-list-bucket-objects)
 - [Update an Existing Amazon S3 Object Using Java](https://www.baeldung.com/java-update-amazon-s3-object)
 - [How To Rename Files and Folders in Amazon S3](https://www.baeldung.com/java-amazon-s3-rename-files-folders)
+- [Update an Existing Amazon S3 Object Using Java](https://www.baeldung.com/java-update-amazon-s3-object)

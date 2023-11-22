@@ -40,7 +40,7 @@
     </dependencies>
 
     <properties>
-        <modelmapper.version>2.3.7</modelmapper.version>
+        <modelmapper.version>3.2.0</modelmapper.version>
     </properties>
 
 </project>
