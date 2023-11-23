@@ -1,17 +1,14 @@
-package com.baeldung.restclient;
+package com.baeldung.logic;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import org.springframework.stereotype.Service;
+import javax.servlet.http.HttpServletRequest;
 
-import jakarta.servlet.http.HttpServletRequest;
 import ua_parser.Client;
 import ua_parser.Parser;
 
-@Service
-public class AccountsLogic {
-
+public class AccountLogic {
     public Map<String, String> getClientInfo(HttpServletRequest request) {
         String userAgent = request.getHeader("user-agent");
 

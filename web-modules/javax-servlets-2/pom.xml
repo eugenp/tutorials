@@ -68,6 +68,17 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.ua-parser</groupId>
+            <artifactId>uap-java</artifactId>
+            <version>${uap.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -101,6 +112,8 @@
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
         <jetty-maven-plugin.version>10.0.4</jetty-maven-plugin.version>
         <commons-text.version>1.10.0</commons-text.version>
+        <mockito.version>5.6.0</mockito.version>
+        <uap.version>1.5.4</uap.version>
     </properties>
 
 </project>
