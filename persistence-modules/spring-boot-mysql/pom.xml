@@ -56,7 +56,7 @@
     </build>
 
     <properties>
-        <mysql-connector-java.version>8.0.23</mysql-connector-java.version>
+        <mysql-connector-j.version>8.2.0</mysql-connector-j.version>
     </properties>
 
 </project>
