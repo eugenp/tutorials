@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-jpa</artifactId>
     <version>0.1-SNAPSHOT</version>
@@ -54,8 +54,8 @@
             <version>${javassist.version}</version>
         </dependency>
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
             <version>${mysql-connector-java.version}</version>
             <scope>runtime</scope>
         </dependency>
@@ -117,7 +117,7 @@
         <!-- Spring -->
         <org.springframework.version>6.0.6</org.springframework.version>
         <javassist.version>3.29.2-GA</javassist.version>
-        <mysql-connector-java.version>8.0.33</mysql-connector-java.version>
+        <mysql-connector-java.version>8.2.0</mysql-connector-java.version>
         <spring-data-jpa.version>3.1.0</spring-data-jpa.version>
         <!-- web -->
         <jakarta.servlet-api.version>6.0.0</jakarta.servlet-api.version>
