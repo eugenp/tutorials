@@ -1,20 +1,20 @@
 package com.baeldung.streams.firstmatchingelement;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.IntStream;
 
 import org.apache.commons.collections4.IterableUtils;
-import org.assertj.core.util.Lists;
 import org.junit.Test;
 
 import com.google.common.collect.Iterables;
 
 public class FirstMatchingElementUnitTest {
 
-    private List<User> userList = Lists.newArrayList(new User(1, "David"), new User(2, "John"), new User(3, "Roger"), new User(4, "John"));
+    private List<User> userList = List.of(new User(1, "David"), new User(2, "John"), new User(3, "Roger"), new User(4, "John"));
     private String searchName = "John";
 
     @Test
@@ -43,17 +43,11 @@ public class FirstMatchingElementUnitTest {
 
     @Test
     public void whenUsingTakeWhile_thenFindFirstMatchingUserIndex() {
-        AtomicInteger counter = new AtomicInteger(-1);
-        int predicateIndex = userList.stream()
-          .takeWhile(user -> {
-              counter.getAndIncrement();
-              return !(searchName.equals(user.getUserName()));
-          })
-          .mapToInt(user -> counter.get())
-          .max()
-          .orElse(-1);
-
-        assertEquals(1, predicateIndex + 1);
+        long predicateIndex = userList.stream()
+          .takeWhile(user -> !user.getUserName()
+              .equals(searchName))
+          .count();
+        assertEquals(1, predicateIndex);
     }
 
     @Test
