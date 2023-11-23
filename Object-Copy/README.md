@@ -1,7 +1,7 @@
 # Object Copy Techniques in Java
 
 ## Overview
-This  module explores the concepts of creating deep and shallow copies of objects in Java. Understanding the difference between deep and shallow copies is crucial for proper data management and manipulation in Java applications.
+This module explores the concepts of creating deep and shallow copies of objects in Java. Understanding the difference between deep and shallow copies is crucial for proper data management and manipulation in Java applications.
 
 ## Table of Contents
 1. [Introduction](#introduction)
