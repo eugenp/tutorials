@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.core-java-persistence</groupId>
     <artifactId>core-java-persistence</artifactId>
@@ -53,8 +53,8 @@
             <version>${springframework.boot.spring-boot-starter.version}</version>
         </dependency>
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
             <version>${mysql-connector.version}</version>
             <scope>runtime</scope>
         </dependency>
@@ -66,7 +66,7 @@
         <c3p0.version>0.9.5.5</c3p0.version>
         <springframework.boot.spring-boot-starter.version>3.0.4</springframework.boot.spring-boot-starter.version>
         <springframework.spring-web.version>6.0.6</springframework.spring-web.version>
-        <mysql-connector.version>8.0.32</mysql-connector.version>
+        <mysql-connector.version>8.2.0</mysql-connector.version>
     </properties>
 
 </project>
