@@ -889,7 +889,7 @@
                 <module>spring-vault</module>
                 <module>spring-web-modules</module>
                 <module>spring-websockets</module>
-                <module>static-analysis</module>
+<!--            <module>static-analysis</module> - requires additional configuration to be compiled due to the JVM strong encapsulation -->
                 <module>tablesaw</module>
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>
@@ -1134,7 +1134,7 @@
                 <module>spring-vault</module>
                 <module>spring-web-modules</module>
                 <module>spring-websockets</module>
-                <module>static-analysis</module>
+<!--            <module>static-analysis</module> - requires additional configuration to be compiled due to the JVM strong encapsulation -->
                 <module>tablesaw</module>
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>
