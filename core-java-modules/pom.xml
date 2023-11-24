@@ -54,6 +54,7 @@
         <module>core-java-concurrency-simple</module>
         <module>core-java-datetime-string</module>
         <module>core-java-io-conversions-2</module>
+        <module>core-java-ipc</module>
         <module>core-java-jpms</module>
         <module>core-java-lang-oop-constructors-2</module>
         <module>core-java-methods</module>
