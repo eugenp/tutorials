@@ -28,10 +28,6 @@ public class ShiftSchedule {
         this.shifts = shifts;
     }
 
-    // ************************************************************************
-    // Getters and setters
-    // ************************************************************************
-
     public List<Employee> getEmployees() {
         return employees;
     }
