@@ -47,11 +47,10 @@ public class YAMLToJavaDeserialisationUnitTest {
         TagInspector taginspector = tag -> tag.getClassName()
             .equals(Customer.class.getName());
         loaderoptions.setTagInspector(taginspector);
-
+        Yaml yaml = new Yaml(new Constructor(Customer.class, loaderoptions));
         InputStream inputStream = this.getClass()
             .getClassLoader()
             .getResourceAsStream("yaml/customer_with_type.yaml");
-        Yaml yaml = new Yaml(new Constructor(Customer.class, loaderoptions));
         Customer customer = yaml.load(inputStream);
         assertEquals("John", customer.getFirstName());
         assertEquals("Doe", customer.getLastName());
