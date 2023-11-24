@@ -3,7 +3,8 @@ package com.baeldung.cucumberoptions;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-import org.springframework.http.HttpStatus;
+
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
@@ -32,7 +33,7 @@ public class HealthCheckStepDefsIntegrationTest extends SpringIntegrationTest {
 
     @Then("^the client receives (\\d+) status code$")
     public void verifyStatusCode(int statusCode) throws Throwable {
-        final HttpStatus currentStatusCode = statusResponse.getStatusCode();
+        final HttpStatusCode currentStatusCode = statusResponse.getStatusCode();
         assertThat(currentStatusCode.value(), is(statusCode));
     }
 }
