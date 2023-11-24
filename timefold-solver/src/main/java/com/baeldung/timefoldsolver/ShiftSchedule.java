@@ -17,7 +17,7 @@ public class ShiftSchedule {
     private List<Shift> shifts;
 
     @PlanningScore
-    private HardSoftScore score = null;
+    private HardSoftScore score;
 
     // A no-arg constructor is required for @PlanningSolution annotated classes
     public ShiftSchedule() {
