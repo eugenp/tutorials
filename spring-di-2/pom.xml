@@ -55,9 +55,9 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
+                <groupId>dev.aspectj</groupId>
                 <artifactId>aspectj-maven-plugin</artifactId>
-                <version>${aspectj-plugin.version}</version>
+                <version>${aspectj-maven-plugin.version}</version>
                 <configuration>
                     <complianceLevel>${java.version}</complianceLevel>
                     <aspectLibraries>
