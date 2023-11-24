@@ -34,10 +34,6 @@ public class Shift {
         return start + " - " + end;
     }
 
-    // ************************************************************************
-    // Getters and setters
-    // ************************************************************************
-
     public LocalDateTime getStart() {
         return start;
     }
