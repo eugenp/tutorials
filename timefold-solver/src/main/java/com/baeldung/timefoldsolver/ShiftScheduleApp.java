@@ -8,8 +8,12 @@ import java.util.Set;
 import ai.timefold.solver.core.api.solver.Solver;
 import ai.timefold.solver.core.api.solver.SolverFactory;
 import ai.timefold.solver.core.config.solver.SolverConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ShiftScheduleApp {
+
+    private static final Logger logger = LoggerFactory.getLogger(ShiftScheduleApp.class);
 
     public static void main(String[] args) {
         SolverFactory<ShiftSchedule> solverFactory = SolverFactory.create(new SolverConfig()
@@ -43,9 +47,9 @@ public class ShiftScheduleApp {
     }
 
     private static void printSolution(ShiftSchedule solution) {
-        System.out.println("Shift assignments");
+        logger.info("Shift assignments");
         for (Shift shift : solution.getShifts()) {
-            System.out.println("  " + shift.getStart().toLocalDate()
+            logger.info("  " + shift.getStart().toLocalDate()
                     + " " + shift.getStart().toLocalTime() + " - " + shift.getEnd().toLocalTime()
                     + ": " + shift.getEmployee().getName());
         }
