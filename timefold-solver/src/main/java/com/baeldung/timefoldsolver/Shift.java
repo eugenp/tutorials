@@ -16,7 +16,8 @@ public class Shift {
     private Employee employee;
 
     // A no-arg constructor is required for @PlanningEntity annotated classes
-    public Shift() {}
+    public Shift() {
+    }
 
     public Shift(LocalDateTime start, LocalDateTime end, String requiredSkill) {
         this(start, end, requiredSkill, null);
