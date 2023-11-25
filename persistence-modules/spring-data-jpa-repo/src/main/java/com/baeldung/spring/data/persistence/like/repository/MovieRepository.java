@@ -1,11 +1,12 @@
 package com.baeldung.spring.data.persistence.like.repository;
 
-import com.baeldung.spring.data.persistence.like.model.Movie;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
-import java.util.List;
+import com.baeldung.spring.data.persistence.like.model.Movie;
 
 public interface MovieRepository extends CrudRepository<Movie, Long> {
 

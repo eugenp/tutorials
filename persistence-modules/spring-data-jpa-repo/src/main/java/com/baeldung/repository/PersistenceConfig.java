@@ -1,6 +1,9 @@
-package com.baeldung.spring.data.persistence.repository;
+package com.baeldung.repository;
 
-import com.google.common.base.Preconditions;
+import java.util.Properties;
+
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -16,15 +19,14 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import javax.sql.DataSource;
-import java.util.Properties;
+import com.google.common.base.Preconditions;
 
 @Configuration
 @PropertySource("classpath:persistence.properties")
-@ComponentScan("com.baeldung.spring.data.persistence.repository")
+@ComponentScan("com.baeldung.repository")
 //@ImportResource("classpath*:*springDataConfig.xml")
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = "com.baeldung.spring.data.persistence.repository")
+@EnableJpaRepositories(basePackages = "com.baeldung.repository")
 public class PersistenceConfig {
 
     @Autowired

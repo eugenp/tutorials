@@ -1,7 +1,12 @@
-package com.baeldung.spring.data.persistence.repository;
+package com.baeldung.repository;
 
-import javax.persistence.*;
 import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Foo implements Serializable {

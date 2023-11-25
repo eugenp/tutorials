@@ -1,4 +1,4 @@
-package com.baeldung.spring.data.persistence.repository;
+package com.baeldung.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
