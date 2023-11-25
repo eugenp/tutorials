@@ -26,13 +26,25 @@ public class Rectangle {
         this.topRight = topRight;
     }
 
-    public boolean isOverlapping(Rectangle other) {
-        // one rectangle is to the top of the other
-        if (this.topRight.getY() < other.bottomLeft.getY() || this.bottomLeft.getY() > other.topRight.getY()) {
+    public boolean isOverlapping(Rectangle comparedRectangle) {
+        // one rectangle is to the top of the comparedRectangle
+        if (this.topRight.getY() < comparedRectangle.bottomLeft.getY() || this.bottomLeft.getY() > comparedRectangle.topRight.getY()) {
             return false;
         }
-        // one rectangle is to the left of the other
-        if (this.topRight.getX() < other.bottomLeft.getX() || this.bottomLeft.getX() > other.topRight.getX()) {
+        // one rectangle is to the left of the comparedRectangle
+        if (this.topRight.getX() < comparedRectangle.bottomLeft.getX() || this.bottomLeft.getX() > comparedRectangle.topRight.getX()) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean isOverlappingWithoutBorders(Rectangle comparedRectangle) {
+        // one rectangle is to the top of the comparedRectangle
+        if (this.topRight.getY() <= comparedRectangle.bottomLeft.getY() || this.bottomLeft.getY() >= comparedRectangle.topRight.getY()) {
+            return false;
+        }
+        // one rectangle is to the left of the comparedRectangle
+        if (this.topRight.getX() <= comparedRectangle.bottomLeft.getX() || this.bottomLeft.getX() >= comparedRectangle.topRight.getX()) {
             return false;
         }
         return true;
