@@ -5,18 +5,21 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import ai.timefold.solver.core.api.solver.Solver;
 import ai.timefold.solver.core.api.solver.SolverFactory;
 import ai.timefold.solver.core.config.solver.SolverConfig;
+import ai.timefold.solver.core.config.solver.termination.TerminationConfig;
 
-public class ShiftScheduleApp {
+public class ShiftScheduleSolverUnitTest {
 
-    private static final Logger logger = LoggerFactory.getLogger(ShiftScheduleApp.class);
+    private static final Logger logger = LoggerFactory.getLogger(ShiftScheduleSolverUnitTest.class);
 
-    public static void main(String[] args) {
+    @Test
+    public void solve() {
         SolverFactory<ShiftSchedule> solverFactory = SolverFactory.create(new SolverConfig().withSolutionClass(ShiftSchedule.class)
             .withEntityClasses(Shift.class)
             .withConstraintProviderClass(ShiftScheduleConstraintProvider.class)
@@ -30,7 +33,7 @@ public class ShiftScheduleApp {
         printSolution(solution);
     }
 
-    private static ShiftSchedule loadProblem() {
+    private ShiftSchedule loadProblem() {
         LocalDate monday = LocalDate.of(2030, 4, 1);
         LocalDate tuesday = LocalDate.of(2030, 4, 2);
         return new ShiftSchedule(
@@ -40,7 +43,7 @@ public class ShiftScheduleApp {
                 new Shift(tuesday.atTime(14, 0), tuesday.atTime(22, 0), "Bartender")));
     }
 
-    private static void printSolution(ShiftSchedule solution) {
+    private void printSolution(ShiftSchedule solution) {
         logger.info("Shift assignments");
         for (Shift shift : solution.getShifts()) {
             logger.info("  " + shift.getStart()

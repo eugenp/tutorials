@@ -24,6 +24,7 @@ class ShiftScheduleConstraintProviderUnitTest {
             // To avoid that, use forEachUniquePair() in the constraint instead.
             .penalizesBy(2);
     }
+
     @Test
     void whenTwoShiftsOnDifferentDays_thenDoNotPenalize() {
         Employee ann = new Employee("Ann", null);
