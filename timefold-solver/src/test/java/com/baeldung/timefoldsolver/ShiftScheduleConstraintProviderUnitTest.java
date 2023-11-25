@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import ai.timefold.solver.test.api.score.stream.ConstraintVerifier;
 
-class ShiftScheduleConstraintProviderTest {
+class ShiftScheduleConstraintProviderUnitTest {
 
     private static final LocalDate MONDAY = LocalDate.of(2030, 4, 1);
     private static final LocalDate TUESDAY = LocalDate.of(2030, 4, 2);
