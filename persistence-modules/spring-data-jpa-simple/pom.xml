@@ -6,35 +6,19 @@
     <artifactId>spring-data-jpa-simple</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>spring-data-jpa-simple</name>
-    <description>EBook modules which use spring-boot 2</description>
+    <description>EBook modules</description>
+    <packaging>pom</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-2</relativePath>
+        <artifactId>persistence-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-jpa</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-        </dependency>
-    </dependencies>
+    <modules>
+        <module>spring-boot-2</module>
+        <module>spring-boot-3</module>
+    </modules>
 
 </project>
