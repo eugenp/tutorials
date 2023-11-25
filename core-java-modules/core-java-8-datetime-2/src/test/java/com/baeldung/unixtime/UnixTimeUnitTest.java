@@ -1,50 +1,42 @@
 package com.baeldung.unixtime;
 
-
 import static org.junit.Assert.assertEquals;
-
 import java.time.Instant;
+import java.time.LocalDate;
+
+import java.time.Month;
+import java.time.ZoneId;
 import java.util.Date;
 
 import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
+
 import org.junit.jupiter.api.Test;
 
 public class UnixTimeUnitTest {
 
     @Test
-    public void givenCurrentTimeUsingDateApi_whenConvertedToUnixTime_thenConsistent() {
-        long marginOfError = 1L;
-        Date date = new Date();
-        long longTime = date.getTime() / 1000L;
-
-        for (int i = 0; i < 10; i++) {
-            long unixTime = System.currentTimeMillis() / 1000L;
-            assertEquals(longTime, unixTime, marginOfError);
-        }
+    public void givenTimeUsingDateApi_whenConvertedToUnixTime_thenMatch() {
+        Date date = new Date(2023 - 1900, 1, 15, 0, 0, 0);
+        long expected = 1676419200;
+        long actual = date.getTime() / 1000L;
+        assertEquals(expected, actual);
     }
 
     @Test
-    public void givenCurrentTimeUsingInstantNow_whenConvertedToUnixTime_thenConsistent() {
-        long marginOfError = 1L;
-        long longTime = Instant.now().getEpochSecond();
-
-        for (int i = 0; i < 10; i++) {
-            long unixTime = System.currentTimeMillis() / 1000L;
-            assertEquals(longTime, unixTime, marginOfError);
-        }
+    public void givenTimeUsingJodaTime_whenConvertedToUnixTime_thenMatch() {
+        DateTime dateTime = new DateTime(2023, 2, 15, 00, 00, 00, 0);
+        long expected = 1676419200;
+        long actual = dateTime.getMillis() / 1000L;
+        assertEquals(expected, actual);
     }
 
     @Test
-    public void givenCurrentTimeUsingJodaTime_whenConvertedToUnixTime_thenConsistent() {
-        long marginOfError = 1L;
-        DateTime dateTime = DateTime.now(DateTimeZone.UTC);
-        long longTime = dateTime.getMillis() / 1000L;
-
-        for (int i = 0; i < 10; i++) {
-            long unixTime = System.currentTimeMillis() / 1000L;
-            assertEquals(longTime, unixTime, marginOfError);
-        }
+    public void givenTimeUsingLocalDate_whenConvertedToUnixTime_thenMatch() {
+        LocalDate date = LocalDate.of(2023, Month.FEBRUARY, 15);
+        Instant instant = date.atStartOfDay().atZone(ZoneId.of("UTC")).toInstant();
+        long expected = 1676419200;
+        long actual = instant.getEpochSecond();
+        assertEquals(expected, actual);
     }
 
 }
