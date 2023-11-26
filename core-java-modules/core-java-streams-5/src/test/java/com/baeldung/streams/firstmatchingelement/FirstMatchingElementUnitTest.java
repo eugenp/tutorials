@@ -44,12 +44,20 @@ public class FirstMatchingElementUnitTest {
     @Test
     public void whenUsingTakeWhile_thenFindFirstMatchingUserIndex() {
         long predicateIndex = userList.stream()
-          .takeWhile(user -> !user.getUserName()
-              .equals(searchName))
+          .takeWhile(user -> !user.getUserName().equals(searchName))
           .count();
         assertEquals(1, predicateIndex);
     }
-
+    
+    @Test
+    public void whenUsingTakeWhile_thenFindIndexFromNoMatchingElement() {
+        List<User> userList = List.of(new User(1, "David"), new User(2, "Vick"), new User(3, "Roger"), new User(4, "James"));
+        long predicateIndex = userList.stream()
+          .takeWhile(user -> !user.getUserName().equals(searchName))
+          .count();
+        assertEquals(4, predicateIndex);
+    }
+    
     @Test
     public void whenUsingGoogleGuava_thenFindFirstMatchingUserIndex() {
         int index = Iterables.indexOf(userList, user -> searchName.equals(user.getUserName()));
