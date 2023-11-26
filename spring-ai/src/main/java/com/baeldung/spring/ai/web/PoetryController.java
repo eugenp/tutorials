@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("ai")
 public class PoetryController {
 
-    public static final String WRITE_ME_HAIKU_ABOUT_CAT = "Write me Haiku about cat";
+    public static final String WRITE_ME_HAIKU_ABOUT_CAT = "Write me Haiku about cat, haiku should contain word cat";
     private final AiClient aiClient;
 
     @Autowired
