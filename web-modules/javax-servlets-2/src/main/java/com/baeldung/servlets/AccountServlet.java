@@ -9,7 +9,7 @@ import javax.servlet.http.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.baeldung.logic.AccountLogic;
+import com.baeldung.servlets.clientinfo.AccountLogic;
 
 @WebServlet(name = "AccountServlet", urlPatterns = "/account")
 public class AccountServlet extends HttpServlet {

@@ -1,4 +1,4 @@
-package com.baeldung.logic;
+package com.baeldung.servlets.clientinfo;
 
 import java.util.HashMap;
 import java.util.Map;

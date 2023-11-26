@@ -1,4 +1,4 @@
-package com.baeldung.logic;
+package com.baeldung.servlets.clientinfo;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.Mockito.when;
