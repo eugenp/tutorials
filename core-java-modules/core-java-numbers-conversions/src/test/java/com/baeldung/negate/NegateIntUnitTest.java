@@ -7,7 +7,8 @@ import org.slf4j.LoggerFactory;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class NegateIntUnitTest {
-    private static Logger LOG = LoggerFactory.getLogger(NegateIntUnitTest.class);
+
+    private static final Logger LOG = LoggerFactory.getLogger(NegateIntUnitTest.class);
 
     @Test
     void whenUsingUnaryMinusOperator_thenGetExpectedResult() {
