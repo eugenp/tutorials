@@ -11,13 +11,11 @@ public class HashCode {
     }
 
     public static void main(String[] args) {
-        //String
         String str = "Spring";
         System.out.println("String HashCode pre concatenation :" + getHashCodeString(str));
         str += "Framework";
         System.out.println("String HashCode post concatenation :" + getHashCodeString(str));
 
-        //StringBuffer
         StringBuffer sBuf = new StringBuffer("Spring");
         System.out.println("StringBuffer HashCode pre concatenation :" + getHashCodeSBuffer(sBuf));
         sBuf.append("Framework");
