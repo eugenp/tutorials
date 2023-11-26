@@ -1,10 +1,14 @@
 package com.baeldung.negate;
 
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class NegateIntUnitTest {
+    private static Logger LOG = LoggerFactory.getLogger(NegateIntUnitTest.class);
+
     @Test
     void whenUsingUnaryMinusOperator_thenGetExpectedResult() {
         int x = 42;
@@ -30,18 +34,20 @@ public class NegateIntUnitTest {
     }
 
     @Test
-    void whenUsingUnaryMinusOperatorWithMinInt_thenCannotGetExpectedResult() {
+    void givenIntMinValue_whenUsingUnaryMinusOperator_thenCannotGetExpectedResult() {
         int min = Integer.MIN_VALUE;
-        System.out.println("The value of '-min' is: " + -min);
-        assertFalse((-min) > 0);
+        LOG.info("The value of '-min' is: " + -min);
+
+        assertTrue((-min) < 0);
     }
 
     @Test
-    void whenUsingBitwiseComplementOperatorWithMinInt_thenCannotGetExpectedResult() {
+    void givenIntMinValue_whenUsingBitwiseComplementOperator_thenCannotGetExpectedResult() {
         int min = Integer.MIN_VALUE;
         int result = ~min + 1;
-        System.out.println("The value of '~min + 1' is: " + result);
-        assertFalse(result > 0);
+        LOG.info("The value of '~min + 1' is: " + result);
+
+        assertTrue(result < 0);
     }
 
 
