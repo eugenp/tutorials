@@ -1,5 +1,7 @@
 package com.baeldung.resttemplate.lists.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,8 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.baeldung.resttemplate.lists.dto.Employee;
 import com.baeldung.resttemplate.lists.dto.EmployeeList;
 import com.baeldung.resttemplate.lists.service.EmployeeService;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/employees")

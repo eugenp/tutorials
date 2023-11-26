@@ -1,6 +1,9 @@
 package com.baeldung.multipledb;
 
-import com.google.common.base.Preconditions;
+import java.util.HashMap;
+
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,8 +17,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 
-import javax.sql.DataSource;
-import java.util.HashMap;
+import com.google.common.base.Preconditions;
 
 @Configuration
 @PropertySource({"classpath:persistence-multiple-db.properties"})
