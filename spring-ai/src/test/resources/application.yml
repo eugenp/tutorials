@@ -1,0 +1,3 @@
+spring:
+  ai:
+    openai.api-key: ${OPEN_AI_KEY}
