@@ -11,9 +11,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.Matchers.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @AutoConfigureMockMvc
 @RunWith(SpringRunner.class)
@@ -30,9 +29,21 @@ public class PoetryControllerIntegrationTest {
     private AiClient aiClient;
 
     @Test
-    public void getCatHaikuTest() throws Exception {
+    public void givenGetCatHaiku_whenCallingAiClient_thenCorrect() throws Exception {
         mockMvc.perform(get("/ai/cathaiku"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsStringIgnoringCase("cat")));
+    }
+
+    @Test
+    public void givenGetPoetryWithGenreAndTheme_whenCallingAiClient_thenCorrect() throws Exception {
+        String genre = "lyric";
+        String theme = "coffee";
+        mockMvc.perform(get("/ai/poetry?genre={genre}&theme={theme}", genre, theme))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.genre").value(containsStringIgnoringCase(genre)))
+                .andExpect(jsonPath("$.theme").value(containsStringIgnoringCase(theme)))
+                .andExpect(jsonPath("$.poetry").isNotEmpty())
+                .andExpect(jsonPath("$.title").exists());
     }
 }
