@@ -10,9 +10,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-2</relativePath>
+        <relativePath>../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -34,6 +34,11 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate-core.version}</version>
         </dependency>
         <!-- Testing -->
         <dependency>
@@ -58,7 +63,8 @@
     </build>
 
     <properties>
-        <jinq.version>1.8.29</jinq.version>
+        <jinq.version>2.0.1</jinq.version>
+        <hibernate-core.version>6.4.0.Final</hibernate-core.version>
     </properties>
 
 </project>

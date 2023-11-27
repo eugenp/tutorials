@@ -1,4 +1,4 @@
-package com.baeldung.map;
+package com.baeldung.map.incrementmapkey;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -8,6 +8,8 @@ import java.util.stream.Stream;
 
 import org.junit.Assert;
 import org.junit.Test;
+
+import com.baeldung.map.incrementmapkey.IncrementMapValueWays;
 
 public class IncrementMapValueUnitTest {
 
