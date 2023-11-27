@@ -1,6 +1,7 @@
 package com.baledung.harperdb;
 
 import cdata.jdbc.harperdb.HarperDBConnectionPoolDataSource;
+
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -16,6 +17,7 @@ import java.util.Properties;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class HarperDBLiveTest {
+
     private static final Logger logger = LoggerFactory.getLogger(HarperDBLiveTest.class);
 
     private static String host;
@@ -61,40 +63,27 @@ public class HarperDBLiveTest {
     }
 
     private static void insertSubjectRecords() throws IOException {
-        String records = "["
-                + "{\"id\":1, \"name\":\"English\"},"
-                + "{\"id\":2, \"name\":\"Maths\"},"
-                + "{\"id\":3, \"name\":\"Science\"}"
-                + "]";
+        String records = "[" + "{\"id\":1, \"name\":\"English\"}," + "{\"id\":2, \"name\":\"Maths\"}," + "{\"id\":3, \"name\":\"Science\"}" + "]";
 
         harperDbApiService.insertRecords("Demo", "Subject", records);
     }
 
-    private static  void insertTeacherRecords() throws IOException {
-        String records = "[" +
-                "{\"id\":1, \"name\":\"Parthiv Pradhan\", \"joining_date\":\"04-05-2000\"},"
-                + "{\"id\":2, \"name\":\"David Martinez\", \"joining_date\":\"20-10-2005\"},"
-                + "{\"id\":3, \"name\":\"Liam Williams\", \"joining_date\":\"04-06-1997\"},"
-                + "{\"id\":4, \"name\":\"Robin Williams\", \"joining_date\":\"01-01-2020\"},"
-                + "{\"id\":5, \"name\":\"Eric Martin\", \"joining_date\":\"04-05-2022\"},"
-                + "{\"id\":6, \"name\":\"Sajjan Nagendra\", \"joining_date\":\"02-02-1999\"}"
-                + "]";
+    private static void insertTeacherRecords() throws IOException {
+        String records = "[" + "{\"id\":1, \"name\":\"Parthiv Pradhan\", \"joining_date\":\"04-05-2000\"}," +
+            "{\"id\":2, \"name\":\"David Martinez\", \"joining_date\":\"20-10-2005\"}," +
+            "{\"id\":3, \"name\":\"Liam Williams\", \"joining_date\":\"04-06-1997\"}," +
+            "{\"id\":4, \"name\":\"Robin Williams\", \"joining_date\":\"01-01-2020\"}," +
+            "{\"id\":5, \"name\":\"Eric Martin\", \"joining_date\":\"04-05-2022\"}," +
+            "{\"id\":6, \"name\":\"Sajjan Nagendra\", \"joining_date\":\"02-02-1999\"}" + "]";
         harperDbApiService.insertRecords("Demo", "Teacher", records);
     }
 
     private static void insertTeacherDetailsRecords() throws IOException {
-        String records = "["
-                + "{\"id\":1, \"teacher_id\":1, \"subject_id\":1},"
-                + "{\"id\":2, \"teacher_id\":1, \"subject_id\":2},"
-                + "{\"id\":3, \"teacher_id\":2, \"subject_id\":3 },"
-                + "{\"id\":4, \"teacher_id\":3, \"subject_id\":1},"
-                + "{\"id\":5, \"teacher_id\":3, \"subject_id\":3},"
-                + "{\"id\":6, \"teacher_id\":4, \"subject_id\":2},"
-                + "{\"id\":7, \"teacher_id\":5, \"subject_id\":3},"
-                + "{\"id\":8, \"teacher_id\":6, \"subject_id\":1},"
-                + "{\"id\":9, \"teacher_id\":6, \"subject_id\":2},"
-                + "{\"id\":15, \"teacher_id\":6, \"subject_id\":3}"
-                + "]";
+        String records = "[" + "{\"id\":1, \"teacher_id\":1, \"subject_id\":1}," + "{\"id\":2, \"teacher_id\":1, \"subject_id\":2}," +
+            "{\"id\":3, \"teacher_id\":2, \"subject_id\":3 }," + "{\"id\":4, \"teacher_id\":3, \"subject_id\":1}," +
+            "{\"id\":5, \"teacher_id\":3, \"subject_id\":3}," + "{\"id\":6, \"teacher_id\":4, \"subject_id\":2}," +
+            "{\"id\":7, \"teacher_id\":5, \"subject_id\":3}," + "{\"id\":8, \"teacher_id\":6, \"subject_id\":1}," +
+            "{\"id\":9, \"teacher_id\":6, \"subject_id\":2}," + "{\"id\":15, \"teacher_id\":6, \"subject_id\":3}" + "]";
 
         harperDbApiService.insertRecords("Demo", "Teacher_Details", records);
     }
@@ -110,7 +99,8 @@ public class HarperDBLiveTest {
             final String JDBC_URL = "jdbc:harperdb:Server=127.0.0.1:" + port + ";User=admin;Password=password;";
 
             try (Connection connection = DriverManager.getConnection(JDBC_URL)) {
-                connection.createStatement().executeQuery("select 1");
+                connection.createStatement()
+                    .executeQuery("select 1");
                 logger.info("Connection Successful");
             }
         });
@@ -125,7 +115,8 @@ public class HarperDBLiveTest {
             prop.setProperty("Password", "password");
 
             try (Connection connection = DriverManager.getConnection("jdbc:harperdb:", prop)) {
-                connection.createStatement().executeQuery("select 1");
+                connection.createStatement()
+                    .executeQuery("select 1");
                 logger.info("Connection Successful");
             }
         });
@@ -135,12 +126,13 @@ public class HarperDBLiveTest {
     void whenConnectionPooling_thenConnectSuccess() throws SQLException {
         assertDoesNotThrow(() -> {
             HarperDBConnectionPoolDataSource harperdbPoolDataSource = new HarperDBConnectionPoolDataSource();
-            final String JDBC_URL = "jdbc:harperdb:UseConnectionPooling=true;PoolMaxSize=2;Server=127.0.0.1:" + port
-					+ ";User=admin;Password=password;";
+            final String JDBC_URL = "jdbc:harperdb:UseConnectionPooling=true;PoolMaxSize=2;Server=127.0.0.1:" + port + ";User=admin;Password=password;";
             harperdbPoolDataSource.setURL(JDBC_URL);
 
-            try(Connection connection = harperdbPoolDataSource.getPooledConnection().getConnection()) {
-                connection.createStatement().executeQuery("select 1");
+            try (Connection connection = harperdbPoolDataSource.getPooledConnection()
+                .getConnection()) {
+                connection.createStatement()
+                    .executeQuery("select 1");
                 logger.info("Connection Pool Successful");
             }
         });
@@ -155,7 +147,7 @@ public class HarperDBLiveTest {
     void givenStatement_whenFetchRecord_thenSuccess() throws SQLException {
         final String SQL_QUERY = "select id, name, grade from Demo.student";
 
-        try(Connection connection = getConnection()) {
+        try (Connection connection = getConnection()) {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(SQL_QUERY);
             while (resultSet.next()) {
@@ -172,7 +164,7 @@ public class HarperDBLiveTest {
     void givenStatement_whenInsertRecord_thenSuccess() throws SQLException {
         final String INSERT_SQL = "insert into Demo.student(id, name, grade) values (10, 'Barak', 3)";
 
-        try(Connection connection = getConnection()) {
+        try (Connection connection = getConnection()) {
             Statement statement = connection.createStatement();
             assertDoesNotThrow(() -> statement.execute(INSERT_SQL));
         }
@@ -180,11 +172,11 @@ public class HarperDBLiveTest {
 
     @Test
     void givenStatement_whenInsertRecordInTableWithoutAttributes_thenSuccess() throws SQLException {
-        final String INSERT_SQL = "insert into Demo.teacher(id, name, joining_date) "
-				+ "values (7, 'David Sirocco', '04-05-2004'), (8, 'Ali Azmat', '04-10-2000')";
+        final String INSERT_SQL =
+            "insert into Demo.teacher(id, name, joining_date) " + "values (7, 'David Sirocco', '04-05-2004'), (8, 'Ali Azmat', '04-10-2000')";
         final String QUERY_SQL = "select name, joining_date from Demo.teacher where name = ?";
 
-        try(Connection connection = getConnection()) {
+        try (Connection connection = getConnection()) {
             Statement statement = connection.createStatement();
             assertDoesNotThrow(() -> statement.execute(INSERT_SQL));
             PreparedStatement preparedStatement = connection.prepareStatement(QUERY_SQL);
@@ -204,7 +196,7 @@ public class HarperDBLiveTest {
     void givenStatement_whenUpdateRecord_thenSuccess() throws SQLException {
         final String UPDATE_SQL = "update Demo.student set grade = 4 where id = 5";
 
-        try(Connection connection = getConnection()) {
+        try (Connection connection = getConnection()) {
             Statement statement = connection.createStatement();
             assertDoesNotThrow(() -> statement.execute(UPDATE_SQL));
             assertEquals(1, statement.getUpdateCount());
@@ -215,7 +207,7 @@ public class HarperDBLiveTest {
     void givenStatement_whenDeleteRecord_thenSuccess() throws SQLException {
         final String DELETE_SQL = "delete from Demo.student where id = 3";
 
-        try(Connection connection = getConnection()) {
+        try (Connection connection = getConnection()) {
             Statement statement = connection.createStatement();
             assertDoesNotThrow(() -> statement.execute(DELETE_SQL));
             assertEquals(1, statement.getUpdateCount());
@@ -226,27 +218,27 @@ public class HarperDBLiveTest {
     void givenPreparedStatement_whenFetchRecord_thenSuccess() throws SQLException {
         final String SQL_QUERY = "select id, name, grade from Demo.student where name = ? and grade = ?";
 
-        try(Connection connection = getConnection()) {
-			PreparedStatement preparedStatement = connection.prepareStatement(SQL_QUERY);
-			preparedStatement.setString(1, "Robin");
-			preparedStatement.setInt(2, 4);
-			ResultSet resultSet = preparedStatement.executeQuery();
-			while (resultSet.next()) {
-				int id = resultSet.getInt("id");
-				String name = resultSet.getString("name");
-				int grade = resultSet.getInt("grade");
-				assertNotNull(Integer.valueOf(id));
-				assertEquals("Robin", name);
-				logger.info("Student id:" + id + " Student Name:" + name + " grade:" + grade);
-			}
-		}
+        try (Connection connection = getConnection()) {
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL_QUERY);
+            preparedStatement.setString(1, "Robin");
+            preparedStatement.setInt(2, 4);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                int grade = resultSet.getInt("grade");
+                assertNotNull(Integer.valueOf(id));
+                assertEquals("Robin", name);
+                logger.info("Student id:" + id + " Student Name:" + name + " grade:" + grade);
+            }
+        }
     }
 
     @Test
     void givenPreparedStatement_whenDeleteRecord_thenSuccess() throws SQLException {
         final String DELETE_SQL = "delete from Demo.student where name = ?";
 
-        try(Connection connection = getConnection()) {
+        try (Connection connection = getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_SQL);
             preparedStatement.setString(1, "James");
             assertDoesNotThrow(() -> preparedStatement.execute());
@@ -258,7 +250,7 @@ public class HarperDBLiveTest {
     void givenPreparedStatement_whenUpdateRecord_thenSuccess() throws SQLException {
         final String UPDATE_SQL = "update Demo.student set grade = ? where id = ? and name = ?";
 
-        try(Connection connection = getConnection()) {
+        try (Connection connection = getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_SQL);
             preparedStatement.setInt(1, 5);
             preparedStatement.setInt(2, 1);
@@ -270,10 +262,9 @@ public class HarperDBLiveTest {
 
     //@Test
     void whenAddtoBatch_thenExecuteBatchIsSuccess() throws SQLException {
-        final String INSERT_SQL = "insert into Demo.teacher(id, name, joining_date, subject_id)"
-                + "values(?, ?, ?, ?)";
+        final String INSERT_SQL = "insert into Demo.teacher(id, name, joining_date, subject_id)" + "values(?, ?, ?, ?)";
 
-        try(Connection connection = getConnection()) {
+        try (Connection connection = getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_SQL);
             preparedStatement.setInt(1, 9);
             preparedStatement.setString(2, "Bret Lee");
@@ -292,22 +283,18 @@ public class HarperDBLiveTest {
         }
     }
 
-
     @Test
     void whenExecuteJoinQuery_thenResultSuccess() throws SQLException {
-        final String JOIN_QUERY = "SELECT t.name as teacher_name, s.name as subject_name " +
-                "from Demo.teacher AS t INNER JOIN Demo.subject AS s ON t.subject_id = s.id";
+        final String JOIN_QUERY =
+            "SELECT t.name as teacher_name, s.name as subject_name " + "from Demo.teacher AS t INNER JOIN Demo.subject AS s ON t.subject_id = s.id";
 
-        try(Connection connection = getConnection()) {
+        try (Connection connection = getConnection()) {
             Statement statement = connection.createStatement();
-
 
             ResultSet resultSet = statement.executeQuery(JOIN_QUERY);
             while (resultSet.next()) {
-                logger.info("Teacher Name:" + resultSet.getString("teacher_name") + " Subject Name:"
-                        + resultSet.getString("subject_name"));
+                logger.info("Teacher Name:" + resultSet.getString("teacher_name") + " Subject Name:" + resultSet.getString("subject_name"));
             }
-
 
         }
 
@@ -316,7 +303,7 @@ public class HarperDBLiveTest {
     @Test
     void whenExecuteStoredToCreateTable_thenSuccess() throws SQLException {
         final String CREATE_TABLE_SQL = "CreateTable";
-        try(Connection connection = getConnection()) {
+        try (Connection connection = getConnection()) {
             CallableStatement callableStatement = connection.prepareCall(CREATE_TABLE_SQL);
 
             callableStatement.setString("SchemaName", "prod"); //schema gets created too
@@ -326,7 +313,7 @@ public class HarperDBLiveTest {
 
             ResultSet resultSet = callableStatement.getResultSet();
 
-            while(resultSet.next()) {
+            while (resultSet.next()) {
                 String tableCreated = resultSet.getString("Success");
                 assertEquals("true", tableCreated);
                 logger.info("result of the callable execute:" + tableCreated);
