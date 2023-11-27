@@ -44,9 +44,11 @@ public class EscapeHtmlAspectIntegrationTest {
         ObjectMapper objectMapper = new ObjectMapper();
 
         mockMvc.perform(MockMvcRequestBuilders.post(URI.create("/save"))
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(requestBody)))
-                .andExpect(MockMvcResultMatchers.status().isCreated())
-                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(expectedResponseBody)));
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(requestBody)))
+            .andExpect(MockMvcResultMatchers.status()
+                .isCreated())
+            .andExpect(MockMvcResultMatchers.content()
+                .json(objectMapper.writeValueAsString(expectedResponseBody)));
     }
 }
