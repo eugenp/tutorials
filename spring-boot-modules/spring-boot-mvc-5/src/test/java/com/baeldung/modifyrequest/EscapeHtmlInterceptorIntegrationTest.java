@@ -39,9 +39,8 @@ public class EscapeHtmlInterceptorIntegrationTest {
 
         ObjectMapper objectMapper = new ObjectMapper();
         mockMvc.perform(MockMvcRequestBuilders.post(URI.create("/save"))
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(requestBody)))
-            .andExpect(MockMvcResultMatchers.status()
-                .is4xxClientError());
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(objectMapper.writeValueAsString(requestBody))).andExpect(MockMvcResultMatchers.status()
+            .is4xxClientError());
     }
 }
