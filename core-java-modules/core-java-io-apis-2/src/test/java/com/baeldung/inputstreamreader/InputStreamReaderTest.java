@@ -34,8 +34,7 @@ public class InputStreamReaderTest {
                 = new BufferedReader(new InputStreamReader(fis, StandardCharsets.UTF_8));){
                 String ln;
                 while((ln = br.readLine())!= null){
-                    System.out.println(ln);
-                    if(lines.contains(sampleTxt)){
+                    if(ln.contains(sampleTxt)){
                         isMatched = true;
                         break;
                     }
