@@ -40,26 +40,6 @@ public class InputStreamTest {
         }
     }
 
-
-    private static String readString(InputStream inputStream){
-        String strRet = "";
-        try {
-            int c;
-            final StringBuilder sb = new StringBuilder();
-            while(true) {
-
-                    if (!((c = inputStream.read()) != -1))
-                        break;
-
-                    sb.append((char) c);
-                }
-                strRet = sb.toString();
-            } catch (IOException e) {
-                Assert.fail("failed in readString() " + e.getMessage());
-            }
-        return  strRet;
-    }
-
     @Test
     public void givenAString_whenWrittenToByteArrayInputStream_thenShouldMatchWhenRead() throws IOException {
         String sample = "In this example, we use btye array input stream";
@@ -93,6 +73,26 @@ public class InputStreamTest {
                 Assert.assertEquals(kv.get("apiKey"), inputKv.get("apiKey"));
             }
         }
+    }
+
+
+    private static String readString(InputStream inputStream){
+        String strRet = "";
+        try {
+            int c;
+            final StringBuilder sb = new StringBuilder();
+            while(true) {
+
+                if (!((c = inputStream.read()) != -1))
+                    break;
+
+                sb.append((char) c);
+            }
+            strRet = sb.toString();
+        } catch (IOException e) {
+            Assert.fail("failed in readString() " + e.getMessage());
+        }
+        return  strRet;
     }
 
 
