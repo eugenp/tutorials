@@ -710,7 +710,6 @@
                 <module>apache-velocity</module>
                 <module>asciidoctor</module>
                 <module>asm</module>
-                <module>atomikos</module>
                 <module>atomix</module>
                 <module>aws-modules</module>
                 <module>azure</module>
@@ -955,7 +954,6 @@
                 <module>apache-velocity</module>
                 <module>asciidoctor</module>
                 <module>asm</module>
-                <module>atomikos</module>
                 <module>atomix</module>
                 <module>aws-modules</module>
                 <module>azure</module>
