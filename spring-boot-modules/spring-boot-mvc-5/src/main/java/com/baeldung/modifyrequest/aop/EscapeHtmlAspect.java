@@ -17,6 +17,7 @@ import java.nio.charset.StandardCharsets;
 @RestControllerAdvice
 @Profile("aspectExample")
 public class EscapeHtmlAspect implements RequestBodyAdvice {
+
     private static final Logger logger = LoggerFactory.getLogger(EscapeHtmlAspect.class);
 
     @Override
@@ -26,7 +27,8 @@ public class EscapeHtmlAspect implements RequestBodyAdvice {
     }
 
     @Override
-    public HttpInputMessage beforeBodyRead(HttpInputMessage inputMessage, MethodParameter parameter, Type targetType, Class<? extends HttpMessageConverter<?>> converterType) throws IOException {
+    public HttpInputMessage beforeBodyRead(HttpInputMessage inputMessage, MethodParameter parameter, Type targetType,
+        Class<? extends HttpMessageConverter<?>> converterType) throws IOException {
         logger.info("beforeBodyRead called");
         InputStream inputStream = inputMessage.getBody();
         return new HttpInputMessage() {
@@ -43,13 +45,15 @@ public class EscapeHtmlAspect implements RequestBodyAdvice {
     }
 
     @Override
-    public Object afterBodyRead(Object body, HttpInputMessage inputMessage, MethodParameter parameter, Type targetType, Class<? extends HttpMessageConverter<?>> converterType) {
+    public Object afterBodyRead(Object body, HttpInputMessage inputMessage, MethodParameter parameter, Type targetType,
+        Class<? extends HttpMessageConverter<?>> converterType) {
         // Return the modified object after reading the body
         return body;
     }
 
     @Override
-    public Object handleEmptyBody(Object body, HttpInputMessage inputMessage, MethodParameter parameter, Type targetType, Class<? extends HttpMessageConverter<?>> converterType) {
+    public Object handleEmptyBody(Object body, HttpInputMessage inputMessage, MethodParameter parameter, Type targetType,
+        Class<? extends HttpMessageConverter<?>> converterType) {
         //return the original body
         return body;
     }
@@ -68,7 +72,7 @@ public class EscapeHtmlAspect implements RequestBodyAdvice {
         String input = stringBuilder.toString();
         // Escape HTML characters
         return input.replaceAll("&", "&amp;")
-                .replaceAll("<", "&lt;")
-                .replaceAll(">", "&gt;");
+            .replaceAll("<", "&lt;")
+            .replaceAll(">", "&gt;");
     }
 }

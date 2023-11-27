@@ -31,21 +31,23 @@ public class EscapeHtmlFilterIntegrationTest {
     @Test
     void givenFilter_whenEscapeHtmlFilter_thenEscapeHtml() throws Exception {
         Map<String, String> requestBody = Map.of(
-                "name", "James Cameron",
-                "email", "<script>alert()</script>james@gmail.com"
+            "name", "James Cameron",
+            "email", "<script>alert()</script>james@gmail.com"
         );
 
         Map<String, String> expectedResponseBody = Map.of(
-                "name", "James Cameron",
-                "email", "&lt;script&gt;alert()&lt;/script&gt;james@gmail.com"
+            "name", "James Cameron",
+            "email", "&lt;script&gt;alert()&lt;/script&gt;james@gmail.com"
         );
 
         ObjectMapper objectMapper = new ObjectMapper();
 
         mockMvc.perform(MockMvcRequestBuilders.post(URI.create("/save"))
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(requestBody)))
-                .andExpect(MockMvcResultMatchers.status().isCreated())
-                .andExpect(MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(expectedResponseBody)));
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(requestBody)))
+            .andExpect(MockMvcResultMatchers.status()
+                .isCreated())
+            .andExpect(MockMvcResultMatchers.content()
+                .json(objectMapper.writeValueAsString(expectedResponseBody)));
     }
 }

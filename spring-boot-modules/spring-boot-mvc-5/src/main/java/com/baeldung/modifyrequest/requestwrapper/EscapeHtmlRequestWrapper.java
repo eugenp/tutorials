@@ -27,10 +27,9 @@ public class EscapeHtmlRequestWrapper extends HttpServletRequestWrapper {
         String input = stringBuilder.toString();
         // Escape HTML characters
         return input.replaceAll("&", "&amp;")
-                .replaceAll("<", "&lt;")
-                .replaceAll(">", "&gt;")
-                //.replaceAll("\"", "&quot;")
-                .replaceAll("'", "&#39;");
+            .replaceAll("<", "&lt;")
+            .replaceAll(">", "&gt;")
+            .replaceAll("'", "&#39;");
     }
 
     @Override

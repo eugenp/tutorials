@@ -33,14 +33,15 @@ public class EscapeHtmlInterceptorIntegrationTest {
     @Test
     void givenInterceptor_whenEscapeHtmlInterceptor_thenEscapeHtml() throws Exception {
         Map<String, String> requestBody = Map.of(
-                "name", "James Cameron",
-                "email", "<script>alert()</script>james@gmail.com"
+            "name", "James Cameron",
+            "email", "<script>alert()</script>james@gmail.com"
         );
 
         ObjectMapper objectMapper = new ObjectMapper();
         mockMvc.perform(MockMvcRequestBuilders.post(URI.create("/save"))
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(requestBody)))
-                .andExpect(MockMvcResultMatchers.status().is4xxClientError());
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(requestBody)))
+            .andExpect(MockMvcResultMatchers.status()
+                .is4xxClientError());
     }
 }

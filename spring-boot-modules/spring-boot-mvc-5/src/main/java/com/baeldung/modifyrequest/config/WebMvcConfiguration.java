@@ -1,6 +1,7 @@
 package com.baeldung.modifyrequest.config;
 
 import com.baeldung.modifyrequest.interceptor.EscapeHtmlRequestInterceptor;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +18,7 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         logger.info("addInterceptors() called");
         registry.addInterceptor(new EscapeHtmlRequestInterceptor())
-                .addPathPatterns("/save");
+            .addPathPatterns("/save");
 
         WebMvcConfigurer.super.addInterceptors(registry);
     }
