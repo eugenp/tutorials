@@ -1,5 +1,7 @@
 package com.baeldung.timefoldsolver;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+
 import java.time.Duration;
 import java.time.LocalDate;
 import java.util.List;
@@ -23,13 +25,17 @@ public class ShiftScheduleSolverUnitTest {
         SolverFactory<ShiftSchedule> solverFactory = SolverFactory.create(new SolverConfig().withSolutionClass(ShiftSchedule.class)
             .withEntityClasses(Shift.class)
             .withConstraintProviderClass(ShiftScheduleConstraintProvider.class)
-            // The solver runs only for 2 seconds on this tiny dataset.
-            // It's recommended to run for at least 5 minutes ("5m") on large datasets.
-            .withTerminationSpentLimit(Duration.ofSeconds(2)));
+            // For this dataset, we know the optimal score in advance (which is normally not the case).
+            // So we can use .withBestScoreLimit() instead of .withTerminationSpentLimit().
+            .withTerminationConfig(new TerminationConfig().withBestScoreLimit("0hard/0soft")));
         Solver<ShiftSchedule> solver = solverFactory.buildSolver();
 
         ShiftSchedule problem = loadProblem();
         ShiftSchedule solution = solver.solve(problem);
+        assertThat(solution.getShifts().size()).isNotZero();
+        for (Shift shift : solution.getShifts()) {
+            assertThat(shift.getEmployee()).isNotNull();
+        }
         printSolution(solution);
     }
 
