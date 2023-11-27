@@ -1,4 +1,4 @@
-package com.baeldung.map;
+package com.baeldung.map.incrementmapkey;
 
 import java.util.HashMap;
 import java.util.Map;
