@@ -37,7 +37,7 @@
 
     <properties>
         <mysql-connector-java.version>5.1.6</mysql-connector-java.version>
-        <liquibase-maven-plugin.version>3.4.2</liquibase-maven-plugin.version>
+        <liquibase-maven-plugin.version>4.25.0</liquibase-maven-plugin.version>
     </properties>
 
 </project>
