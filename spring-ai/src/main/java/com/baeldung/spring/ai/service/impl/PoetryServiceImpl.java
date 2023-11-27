@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Service
 public class PoetryServiceImpl implements PoetryService {
 
-    public static final String WRITE_ME_HAIKU_ABOUT_CAT = "Write me Haiku about cat, haiku should contain word cat";
+    public static final String WRITE_ME_HAIKU_ABOUT_CAT = """
+           Write me Haiku about cat,
+           haiku should start with the word cat obligatory""";
     private final AiClient aiClient;
 
     @Autowired
