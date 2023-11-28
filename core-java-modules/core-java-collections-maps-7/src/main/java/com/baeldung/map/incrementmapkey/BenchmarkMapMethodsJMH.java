@@ -1,57 +1,55 @@
-package com.baeldung.map;
+package com.baeldung.map.incrementmapkey;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
-public class BenchmarkMapMethods {
-    public static void main(String[] args) {
-        BenchmarkMapMethods bmm = new BenchmarkMapMethods();
-        Map<String, Long> map = new HashMap<>();
-        map.put("Guava", bmm.benchMarkGuavaMap());
-        map.put("ContainsKey", bmm.benchContainsKeyMap());
-        map.put("MergeMethod", bmm.benchMarkMergeMethod());
-        map.put("ComputeMethod", bmm.benchMarComputeMethod());
-        map.put("GetOrDefault", bmm.benchMarkGetOrDefaultMethod());
-    }
+import org.openjdk.jmh.annotations.Benchmark;
+import org.openjdk.jmh.annotations.BenchmarkMode;
+import org.openjdk.jmh.annotations.Fork;
+import org.openjdk.jmh.annotations.Mode;
+import org.openjdk.jmh.annotations.OutputTimeUnit;
+import org.openjdk.jmh.annotations.Scope;
+import org.openjdk.jmh.annotations.State;
 
-    private long benchMarkGuavaMap() {
-        long startTime = System.nanoTime();
+@State(Scope.Benchmark)
+public class BenchmarkMapMethodsJMH {
+    @Benchmark
+    @BenchmarkMode(Mode.AverageTime)
+    @OutputTimeUnit(TimeUnit.NANOSECONDS)
+    @Fork(value = 1, warmups = 1)
+    public void benchMarkGuavaMap() {
         IncrementMapValueWays im = new IncrementMapValueWays();
         im.charFrequencyUsingAtomicMap(getString());
-        long endTime = System.nanoTime();
-        return endTime - startTime;
     }
 
-    private long benchContainsKeyMap() {
-        long startTime = System.nanoTime();
+    @Benchmark
+    @BenchmarkMode(Mode.AverageTime)
+    @OutputTimeUnit(TimeUnit.NANOSECONDS)
+    @Fork(value = 1, warmups = 1)
+    public void benchContainsKeyMap() {
         IncrementMapValueWays im = new IncrementMapValueWays();
         im.charFrequencyUsingContainsKey(getString());
-        long endTime = System.nanoTime();
-        return endTime - startTime;
     }
 
-    private long benchMarComputeMethod() {
-        long startTime = System.nanoTime();
+    @Benchmark
+    @BenchmarkMode(Mode.AverageTime)
+    @OutputTimeUnit(TimeUnit.NANOSECONDS)
+    @Fork(value = 1, warmups = 1)
+    public void benchMarkComputeMethod() {
         IncrementMapValueWays im = new IncrementMapValueWays();
         im.charFrequencyUsingCompute(getString());
-        long endTime = System.nanoTime();
-        return endTime - startTime;
     }
 
-    private long benchMarkMergeMethod() {
-        long startTime = System.nanoTime();
+    @Benchmark
+    @BenchmarkMode(Mode.AverageTime)
+    @OutputTimeUnit(TimeUnit.NANOSECONDS)
+    @Fork(value = 1, warmups = 1)
+    public void benchMarkMergeMethod() {
         IncrementMapValueWays im = new IncrementMapValueWays();
         im.charFrequencyUsingMerge(getString());
-        long endTime = System.nanoTime();
-        return endTime - startTime;
     }
 
-    private long benchMarkGetOrDefaultMethod() {
-        long startTime = System.nanoTime();
-        IncrementMapValueWays im = new IncrementMapValueWays();
-        im.charFrequencyUsingGetOrDefault(getString());
-        long endTime = System.nanoTime();
-        return endTime - startTime;
+    public static void main(String[] args) throws Exception {
+        org.openjdk.jmh.Main.main(args);
     }
 
     private String getString() {
