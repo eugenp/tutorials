@@ -14,6 +14,8 @@ import org.joda.time.DateTimeZone;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.ISODateTimeFormat;
 
+import org.apache.commons.lang3.time.FastDateFormat;
+
 public class LocalDateToISO {
     public String formatUsingDateTimeFormatter(LocalDate localDate) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSX");
@@ -31,5 +33,12 @@ public class LocalDateToISO {
     public String formatUsingJodaTime(org.joda.time.LocalDate localDate) {
         org.joda.time.format.DateTimeFormatter formatter = ISODateTimeFormat.dateTime();
         return formatter.print(localDate.toDateTimeAtStartOfDay(DateTimeZone.UTC));
+    }
+
+     public String formatUsingApacheCommonsLang(LocalDate localDate) {
+        Date date = Date.from(localDate.atStartOfDay().toInstant(ZoneOffset.UTC));
+        String formattedDate = FastDateFormat.getInstance("yyyy-MM-dd'T'HH:mm:ss.sss'Z'", TimeZone.getTimeZone("UTC"))
+            .format(date);
+        return formattedDate;
     }
 }
