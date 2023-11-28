@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 
 import org.junit.Test;
 
-public class CompletableFutureTest {
+public class CompletableFutureUnitTest {
 
     @Test
     public void givenAsyncTask_whenProcessingAsyncSucceed_thenReturnSuccess() throws ExecutionException, InterruptedException {
