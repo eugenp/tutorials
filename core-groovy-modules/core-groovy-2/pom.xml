@@ -13,6 +13,13 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
+    <pluginRepositories>
+        <pluginRepository>
+            <id>groovy-plugins-release</id>
+            <url>https://groovy.jfrog.io/artifactory/plugins-release</url>
+        </pluginRepository>
+    </pluginRepositories>
+
     <dependencies>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -25,10 +32,9 @@
             <version>${logback.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.codehaus.groovy</groupId>
-            <artifactId>groovy-all</artifactId>
-            <version>${groovy.version}</version>
-            <type>pom</type>
+            <groupId>org.apache.groovy</groupId>
+            <artifactId>groovy</artifactId>
+            <version>4.0.15</version>
         </dependency>
         <dependency>
             <groupId>org.junit.platform</groupId>
@@ -62,28 +68,29 @@
             <plugin>
                 <groupId>org.codehaus.groovy</groupId>
                 <artifactId>groovy-eclipse-compiler</artifactId>
-                <version>${groovy.compiler.version}</version>
+                <version>3.9.0</version>
                 <extensions>true</extensions>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${compiler.plugin.version}</version>
+                <version>3.11.0</version>
                 <configuration>
                     <compilerId>groovy-eclipse-compiler</compilerId>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                 </configuration>
                 <dependencies>
-                    <dependency>
-                        <groupId>org.codehaus.groovy</groupId>
-                        <artifactId>groovy-eclipse-compiler</artifactId>
-                        <version>${groovy.compiler.version}</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.codehaus.groovy</groupId>
-                        <artifactId>groovy-eclipse-batch</artifactId>
-                        <version>${groovy-eclipse-batch.version}</version>
-                    </dependency>
+                <dependency>
+                    <groupId>org.codehaus.groovy</groupId>
+                    <artifactId>groovy-eclipse-compiler</artifactId>
+                    <version>3.9.0</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.codehaus.groovy</groupId>
+                    <artifactId>groovy-eclipse-batch</artifactId>
+                    <version>4.0.15-03</version>
+                </dependency>
                 </dependencies>
             </plugin>
             <plugin>
@@ -153,6 +160,7 @@
     </build>
 
     <properties>
+        <java.version>17</java.version>
         <groovy-wslite.version>1.1.3</groovy-wslite.version>
         <assembly.plugin.version>3.4.2</assembly.plugin.version>
         <compiler.plugin.version>3.8.1</compiler.plugin.version>
