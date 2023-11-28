@@ -24,4 +24,4 @@ To build this application execute:
 
 To run this application you can either run our main class App from your IDE or you can execute following maven command:
 
-`mvn exec:java -Dexec.mainClass="com.baeldung.camel.main.App"`
+`mvn exec:java -Dexec.mainClass="com.baeldung.camel.apache.Application"`
