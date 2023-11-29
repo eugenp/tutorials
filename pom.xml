@@ -726,7 +726,7 @@
                 <module>dozer</module>
                 <module>drools</module>
                 <module>dubbo</module>
-                <!-- <module>feign</module> --> <!-- JAVA-20337 -->
+                <module>feign</module>
                 <module>gcp-firebase</module>
                 <module>geotools</module>
                 <module>google-auto-project</module>
@@ -970,7 +970,7 @@
                 <module>dozer</module>
                 <module>drools</module>
                 <module>dubbo</module>
-                <!-- <module>feign</module> --> <!-- JAVA-20337 -->
+                <module>feign</module>
                 <module>gcp-firebase</module>
                 <module>geotools</module>
                 <module>google-auto-project</module>
