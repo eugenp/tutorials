@@ -819,6 +819,7 @@
                 <module>performance-tests</module>
                 <module>persistence-modules</module>
                 <module>persistence-modules/spring-data-neo4j</module>
+                <module>persistence-modules/java-harperdb</module>     
                 <module>protobuffer</module>
                 <module>quarkus-modules</module>
                 <module>reactive-systems</module>
