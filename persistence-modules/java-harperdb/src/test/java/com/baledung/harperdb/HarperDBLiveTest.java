@@ -11,8 +11,10 @@ import org.testcontainers.containers.GenericContainer;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.sql.*;
 import java.util.Arrays;
+import java.util.Map;
 import java.util.Properties;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -21,11 +23,10 @@ public class HarperDBLiveTest {
 
     private static final Logger logger = LoggerFactory.getLogger(HarperDBLiveTest.class);
 
-    private static String host;
-
     private static Integer port;
 
     private static HarperDBContainer harperDBContainer;
+
     private static HarperDBApiService harperDbApiService;
 
     @BeforeAll
@@ -40,7 +41,6 @@ public class HarperDBLiveTest {
 
         GenericContainer genericContainer = harperDBContainer.installHarperDB();
 
-        host = genericContainer.getHost();
         genericContainer.start();
 
         port = genericContainer.getFirstMappedPort();
@@ -51,7 +51,7 @@ public class HarperDBLiveTest {
         harperDbApiService = new HarperDBApiService(url, "admin", "password");
     }
 
-    private static void setupDB() throws URISyntaxException, IOException {
+    private static void setupDB() throws IOException {
         harperDbApiService.createSchema("Demo");
 
         harperDbApiService.createTable("Demo", "Subject", "name");
@@ -99,7 +99,7 @@ public class HarperDBLiveTest {
     }
 
     @Test
-    void whenConnectionInfoInURL_thenConnectSuccess() throws SQLException {
+    void whenConnectionInfoInURL_thenConnectSuccess() {
         assertDoesNotThrow(() -> {
             final String JDBC_URL = "jdbc:harperdb:Server=127.0.0.1:" + port + ";User=admin;Password=password;";
 
@@ -112,7 +112,7 @@ public class HarperDBLiveTest {
     }
 
     @Test
-    void whenConnectionInfoInProperties_thenConnectSuccess() throws SQLException {
+    void whenConnectionInfoInProperties_thenConnectSuccess() {
         assertDoesNotThrow(() -> {
             Properties prop = new Properties();
             prop.setProperty("Server", "127.0.0.1:" + port);
@@ -128,7 +128,7 @@ public class HarperDBLiveTest {
     }
 
     @Test
-    void whenConnectionPooling_thenConnectSuccess() throws SQLException {
+    void whenConnectionPooling_thenConnectSuccess() {
         assertDoesNotThrow(() -> {
             HarperDBConnectionPoolDataSource harperdbPoolDataSource = new HarperDBConnectionPoolDataSource();
             final String JDBC_URL = "jdbc:harperdb:UseConnectionPooling=true;PoolMaxSize=2;Server=127.0.0.1:" + port + ";User=admin;Password=password;";
@@ -176,6 +176,7 @@ public class HarperDBLiveTest {
             assertEquals(2, statement.getUpdateCount());
         }
     }
+
     @Test
     void givenPrepareStatement_whenAddToBatch_thenSuccess() throws SQLException {
         final String INSERT_SQL = "insert into Demo.Teacher(id, name, joining_date) values"
@@ -199,10 +200,21 @@ public class HarperDBLiveTest {
         }
     }
 
-
     private static Connection getConnection() throws SQLException {
         String URL = "jdbc:harperdb:Server=127.0.0.1:" + port + ";User=admin;Password=password;";
         return DriverManager.getConnection(URL);
+    }
+
+    private static Connection getConnection(Map<String, String> properties) throws SQLException {
+        Properties prop = new Properties();
+        prop.setProperty("Server", "127.0.0.1:" + port);
+        prop.setProperty("User", "admin");
+        prop.setProperty("Password", "password");
+        for (Map.Entry<String, String> entry : properties.entrySet()) {
+            prop.setProperty(entry.getKey(), entry.getValue());
+        }
+
+        return DriverManager.getConnection("jdbc:harperdb:", prop);
     }
 
     @Test
@@ -213,9 +225,9 @@ public class HarperDBLiveTest {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(SQL_QUERY);
             while (resultSet.next()) {
-                int id = resultSet.getInt("id");
+                Integer id = resultSet.getInt("id");
                 String name = resultSet.getString("name");
-                assertNotNull(Integer.valueOf(id));
+                assertNotNull(id);
                 assertEquals("Maths", name);
                 logger.info("Subject id:" + id + " Subject Name:" + name);
             }
@@ -245,25 +257,6 @@ public class HarperDBLiveTest {
             }
         }
     }
-    @Test
-    void givenPreparedStatement_whenFetchRecord_thenSuccess() throws SQLException {
-        final String SQL_QUERY = "select id, name from Demo.Subject where name = ?";
-
-        try (Connection connection = getConnection()) {
-            PreparedStatement preparedStatement = connection.prepareStatement(SQL_QUERY);
-            preparedStatement.setString(1, "Maths");
-
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                int id = resultSet.getInt("id");
-                String name = resultSet.getString("name");
-                assertNotNull(Integer.valueOf(id));
-                assertEquals("Maths", name);
-                logger.info("Subject id:" + id + " Subject Name:" + name);
-            }
-        }
-    }
-
 
     @Test
     void givenStatement_whenUpdateRecord_thenSuccess() throws SQLException {
@@ -323,6 +316,64 @@ public class HarperDBLiveTest {
             preparedStatement.setInt(2, 2);
             assertDoesNotThrow(() -> preparedStatement.execute());
             assertEquals(1, preparedStatement.getUpdateCount());
+        }
+    }
+
+    @Test
+    void givenTempTable_whenInsertIntoSelectTempTable_thenSuccess() throws SQLException {
+        try (Connection connection = getConnection()) {
+            Statement statement = connection.createStatement();
+            assertDoesNotThrow(() -> {
+                statement.execute("insert into Teacher#TEMP(id, name, joining_date) "
+                    + "values('12', 'David Flinch', '04-04-2014')");
+                statement.execute("insert into Teacher#TEMP(id, name, joining_date) "
+                    + "values('13', 'Stephen Hawkins', '04-07-2017')");
+                statement.execute("insert into Teacher#TEMP(id, name, joining_date) "
+                    + "values('14', 'Albert Einstein', '12-08-2020')");
+                statement.execute("insert into Teacher#TEMP(id, name, joining_date) "
+                    + "values('15', 'Leo Tolstoy', '20-08-2022')");
+            });
+            assertDoesNotThrow(() -> statement.execute("insert into Demo.Teacher(id, name, joining_date) "
+                + "select id, name, joining_date from Teacher#TEMP"));
+            ResultSet resultSet = statement.executeQuery("select count(id) as rows from Demo.Teacher where id in"
+                + " (12, 13, 14, 15)");
+            resultSet.next();
+            int totalRows = resultSet.getInt("rows");
+            logger.info("total number of rows fetched:" + totalRows);
+            assertEquals(4, totalRows);
+        }
+    }
+
+    @Test
+    void givenUserDefinedView_whenQueryView_thenSuccess() throws SQLException {
+        URL url = ClassLoader.getSystemClassLoader().getResource("UserDefinedViews.json");
+
+        String folderPath = url.getPath().substring(0, url.getPath().lastIndexOf('/'));
+
+        try(Connection connection = getConnection(Map.of("Location", folderPath))) {
+            PreparedStatement preparedStatement = connection.prepareStatement("select teacher_name,subject_name"
+                + " from UserViews.View_Teacher_Details where subject_name = ?");
+            preparedStatement.setString(1, "Science");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()) {
+                assertEquals("Science", resultSet.getString("subject_name"));
+                logger.info("Science Teacher Name:" + resultSet.getString("teacher_name"));
+            }
+        }
+    }
+
+    @Test
+    void givenAutoCache_whenQuery_thenSuccess() throws SQLException {
+        URL url = ClassLoader.getSystemClassLoader().getResource("test.db");
+        String folderPath = url.getPath().substring(0, url.getPath().lastIndexOf('/'));
+        logger.info("Cache Location:" + folderPath);
+        try(Connection connection = getConnection(Map.of("AutoCache", "true", "CacheLocation", folderPath))) {
+            PreparedStatement preparedStatement = connection.prepareStatement("select id, name from Demo.Subject");
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()) {
+                logger.info("Subject Name:" + resultSet.getString("name"));
+            }
         }
     }
 }
