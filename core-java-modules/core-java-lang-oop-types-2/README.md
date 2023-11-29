@@ -10,3 +10,4 @@ This module contains articles about types in Java
 - [Filling a List With All Enum Values in Java](https://www.baeldung.com/java-enum-values-to-list)
 - [Comparing a String to an Enum Value in Java](https://www.baeldung.com/java-comparing-string-to-enum)
 - [Implementing toString() on enums in Java](https://www.baeldung.com/java-enums-tostring)
+- [Checking if an Object’s Type Is Enum](https://www.baeldung.com/java-check-object-enum)

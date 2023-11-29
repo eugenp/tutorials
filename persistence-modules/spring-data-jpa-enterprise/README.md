@@ -11,6 +11,8 @@ This module contains articles about Spring Data JPA used in enterprise applicati
 - [Custom Naming Convention with Spring Data JPA](https://www.baeldung.com/spring-data-jpa-custom-naming)
 - [Partial Data Update With Spring Data](https://www.baeldung.com/spring-data-partial-update)
 - [Spring Data JPA @Modifying Annotation](https://www.baeldung.com/spring-data-jpa-modifying-annotation)
+- [Spring JPA – Multiple Databases](https://www.baeldung.com/spring-data-jpa-multiple-databases)
+- [Pagination and Sorting using Spring Data JPA](https://www.baeldung.com/spring-data-jpa-pagination-sorting)
 
 ### Eclipse Config 
 After importing the project into Eclipse, you may see the following error:  

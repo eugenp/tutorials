@@ -74,6 +74,7 @@
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>mockwebserver</artifactId>
+            <version>4.12.0</version> <!-- this can be removed when we migrate spring-boot-dependencies to the latest version -->
         </dependency>
     </dependencies>
 
