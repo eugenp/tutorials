@@ -91,7 +91,7 @@ public class Xml2CsvExampleUnitTest {
         Xml2CsvExample.convertXml2CsvXslt(STYLE_XSL, DATA_XML, TEMP_OUTPUT_CSV);
 
         File csvFile = new File(TEMP_OUTPUT_CSV);
-        try(BufferedReader reader = new BufferedReader(new FileReader(csvFile))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(csvFile))) {
             String line;
             boolean isFirstLine = true;
             while ((line = reader.readLine()) != null) {
@@ -113,7 +113,7 @@ public class Xml2CsvExampleUnitTest {
         Xml2CsvExample.convertXml2CsvStax(DATA_XML, TEMP_OUTPUT_CSV);
 
         File csvFile = new File(TEMP_OUTPUT_CSV);
-        try(BufferedReader reader = new BufferedReader(new FileReader(csvFile))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(csvFile))) {
             String line;
             boolean isFirstLine = true;
             while ((line = reader.readLine()) != null) {
