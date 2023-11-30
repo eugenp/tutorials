@@ -55,9 +55,9 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
+                <groupId>dev.aspectj</groupId>
                 <artifactId>aspectj-maven-plugin</artifactId>
-                <version>${aspectj-plugin.version}</version>
+                <version>${aspectj-maven-plugin.version}</version>
                 <configuration>
                     <complianceLevel>${java.version}</complianceLevel>
                     <aspectLibraries>
@@ -80,7 +80,7 @@
 
     <properties>
         <spring-boot.version>3.1.2</spring-boot.version>
-        <aspectj-plugin.version>1.14.0</aspectj-plugin.version>
+        <aspectj-maven-plugin.version>1.13.1</aspectj-maven-plugin.version>
         <log4j2.version>2.17.1</log4j2.version>
     </properties>
 
