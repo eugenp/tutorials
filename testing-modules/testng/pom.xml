@@ -35,7 +35,7 @@
 
     <profiles>
         <profile>
-            <id>default-second</id>
+            <id>default</id>
             <build>
                 <plugins>
                     <plugin>
@@ -53,7 +53,7 @@
             </build>
         </profile>
         <profile>
-            <id>integration-lite-second</id>
+            <id>integration</id>
             <build>
                 <plugins>
                     <plugin>

@@ -295,7 +295,7 @@
     <profiles>
 
         <profile>
-            <id>default-first</id>
+            <id>default-jdk8</id>
             <build>
                 <plugins>
                     <plugin>
@@ -322,7 +322,6 @@
                             </systemPropertyVariables>
                         </configuration>
                     </plugin>
-
                 </plugins>
             </build>
 
@@ -334,8 +333,8 @@
                 <module>parent-spring-6</module>
                 <module>parent-java</module>
 
+                <module>apache-spark</module>
                 <!-- <module>clojure-modules</module> --> <!-- Not a maven project -->
-
                 <module>core-java-modules/core-java-8</module>
                 <module>core-java-modules/core-java-8-2</module>
                 <module>core-java-modules/core-java-8-datetime</module>
@@ -344,139 +343,40 @@
                 <module>core-java-modules/core-java-security</module>
                 <module>core-java-modules/core-java-lang</module>
                 <module>core-java-modules/core-java-lang-math-3</module>
-
                 <module>core-java-modules/core-java-streams-2</module>
-
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
-
+                <module>java-nashorn</module>
+                <module>jenkins-modules</module>
+                <module>jeromq</module>
+                <module>jhipster-modules</module>
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
+                <module>libraries-jdk8</module>
+                <module>lombok-modules/lombok-custom</module>
+                <module>muleesb</module>
                 <!-- <module>pants</module> --> <!-- Not a maven project -->
-
-                <module>libraries-jdk8</module>
-
-                <module>lombok-modules/lombok-custom</module>
-
-                <module>muleesb</module>
-                <module>web-modules/java-lite</module>
                 <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't support yet the jakarta API-->
                 <module>persistence-modules/hibernate-ogm</module> <!-- hibernate-ogm wasn't updated because a workaround for jakarta namespace wasn't found JAVA-20557 -->
                 <module>persistence-modules/spring-data-cassandra-reactive</module>
-                <module>java-nashorn</module>
-                <module>jeromq</module>
-                <module>spring-ejb-modules/ejb-beans</module>
-            </modules>
-
-        </profile>
-
-        <profile>
-            <id>default-second</id>
-            <build>
-                <plugins>
-
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>${maven-surefire-plugin.version}</version>
-                        <configuration>
-                            <forkCount>3</forkCount>
-                            <reuseForks>true</reuseForks>
-                            <includes>
-                                <include>SpringContextTest</include>
-                                <include>**/*UnitTest</include>
-                            </includes>
-                            <excludes>
-                                <exclude>**/*IntegrationTest.java</exclude>
-                                <exclude>**/*IntTest.java</exclude>
-                                <exclude>**/*LongRunningUnitTest.java</exclude>
-                                <exclude>**/*ManualTest.java</exclude>
-                                <exclude>**/*JdbcTest.java</exclude>
-                                <exclude>**/*LiveTest.java</exclude>
-                            </excludes>
-                            <systemPropertyVariables>
-                                <logback.configurationFile>${tutorialsproject.basedir}/logback-config.xml</logback.configurationFile>
-                            </systemPropertyVariables>
-                        </configuration>
-                    </plugin>
-
-                </plugins>
-            </build>
-
-            <modules>
-                <module>parent-boot-1</module>
-                <module>parent-boot-2</module>
-                <module>parent-spring-4</module>
-                <module>parent-spring-5</module>
-                <module>parent-spring-6</module>
-                <module>parent-java</module>
-
                 <module>spring-4</module>
-
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
-
+                <module>spring-ejb-modules/ejb-beans</module>
                 <module>spring-exceptions</module>
                 <module>spring-integration</module>
                 <module>spring-jenkins-pipeline</module>
-
                 <!-- <module>spring-roo</module> --> <!-- Not supported JAVA-17327 -->
-
                 <module>spring-security-modules/spring-security-ldap</module>
                 <module>spring-swagger-codegen</module>
                 <module>video-tutorials</module>
-            </modules>
-
-        </profile>
-
-        <profile>
-            <id>default-heavy</id>
-            <build>
-                <plugins>
-
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>${maven-surefire-plugin.version}</version>
-                        <configuration>
-                            <forkCount>3</forkCount>
-                            <reuseForks>true</reuseForks>
-                            <includes>
-                                <include>SpringContextTest</include>
-                                <include>**/*UnitTest</include>
-                            </includes>
-                            <excludes>
-                                <exclude>**/*IntegrationTest.java</exclude>
-                                <exclude>**/*IntTest.java</exclude>
-                                <exclude>**/*LongRunningUnitTest.java</exclude>
-                                <exclude>**/*ManualTest.java</exclude>
-                                <exclude>**/*JdbcTest.java</exclude>
-                                <exclude>**/*LiveTest.java</exclude>
-                            </excludes>
-                        </configuration>
-                    </plugin>
-
-                </plugins>
-            </build>
-
-            <modules>
-                <module>parent-boot-1</module>
-                <module>parent-boot-2</module>
-                <module>parent-spring-4</module>
-                <module>parent-spring-5</module>
-                <module>parent-spring-6</module>
-                <module>parent-java</module>
-
-                <module>apache-spark</module>
-
-                <module>jenkins-modules</module>
-                <module>jhipster-modules</module>
+                <module>web-modules/java-lite</module>
             </modules>
         </profile>
 
-        <profile>
-            <id>integration-lite-first</id>
 
+        <profile>
+            <id>integration-jdk8</id>
             <build>
                 <plugins>
                     <plugin>
@@ -507,8 +407,8 @@
                 <module>parent-spring-6</module>
                 <module>parent-java</module>
 
+                <module>apache-spark</module>
                 <!-- <module>clojure-modules</module> --> <!-- Not a maven project -->
-
                 <module>core-java-modules/core-java-8</module>
                 <module>core-java-modules/core-java-8-2</module>
                 <module>core-java-modules/core-java-8-datetime</module>
@@ -517,122 +417,40 @@
                 <module>core-java-modules/core-java-security</module>
                 <module>core-java-modules/core-java-lang</module>
                 <module>core-java-modules/core-java-lang-math-3</module>
-
                 <module>core-java-modules/core-java-streams-2</module>
-
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
-
+                <module>java-nashorn</module>
+                <module>jenkins-modules</module>
+                <module>jeromq</module>
+                <module>jhipster-modules</module>
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
-
                 <module>libraries-jdk8</module>
-
                 <module>lombok-modules/lombok-custom</module>
                 <module>muleesb</module>
-                <module>web-modules/java-lite</module>
+                <!-- <module>pants</module> --> <!-- Not a maven project -->
                 <module>persistence-modules/deltaspike</module> <!-- delta spike it doesn't support yet the jakarta API-->
                 <module>persistence-modules/hibernate-ogm</module> <!-- hibernate-ogm wasn't updated because a workaround for jakarta namespace wasn't found JAVA-20557 -->
                 <module>persistence-modules/spring-data-cassandra-reactive</module>
-                <module>java-nashorn</module>
-                <module>jeromq</module>
-                <module>spring-ejb-modules/ejb-beans</module>
-            </modules>
-
-        </profile>
-
-        <profile>
-            <id>integration-lite-second</id>
-
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <configuration>
-                            <excludes>
-                                <exclude>**/*ManualTest.java</exclude>
-                                <exclude>**/*LiveTest.java</exclude>
-                            </excludes>
-                            <includes>
-                                <include>**/*IntegrationTest.java</include>
-                                <include>**/*IntTest.java</include>
-                            </includes>
-                            <systemPropertyVariables>
-                                <logback.configurationFile>${tutorialsproject.basedir}/logback-config.xml</logback.configurationFile>
-                            </systemPropertyVariables>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-
-            <modules>
-                <module>parent-boot-1</module>
-                <module>parent-boot-2</module>
-                <module>parent-spring-4</module>
-                <module>parent-spring-5</module>
-                <module>parent-spring-6</module>
-                <module>parent-java</module>
-
                 <module>spring-4</module>
-
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
-
+                <module>spring-ejb-modules/ejb-beans</module>
                 <module>spring-exceptions</module>
                 <module>spring-integration</module>
                 <module>spring-jenkins-pipeline</module>
-
                 <!-- <module>spring-roo</module> --> <!-- Not supported JAVA-17327 -->
-
                 <module>spring-security-modules/spring-security-ldap</module>
                 <module>spring-swagger-codegen</module>
                 <module>video-tutorials</module>
-            </modules>
-
-        </profile>
-
-        <profile>
-            <id>integration-heavy</id>
-
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <configuration>
-                            <excludes>
-                                <exclude>**/*ManualTest.java</exclude>
-                                <exclude>**/*LiveTest.java</exclude>
-                            </excludes>
-                            <includes>
-                                <include>**/*IntegrationTest.java</include>
-                                <include>**/*IntTest.java</include>
-                            </includes>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-
-            <modules>
-                <module>parent-boot-1</module>
-                <module>parent-boot-2</module>
-                <module>parent-spring-4</module>
-                <module>parent-spring-5</module>
-                <module>parent-spring-6</module>
-                <module>parent-java</module>
-
-                <module>apache-spark</module>
-
-                <module>jenkins-modules</module>
-                <module>jhipster-modules</module>
+                <module>web-modules/java-lite</module>
             </modules>
 
         </profile>
 
         <profile>
             <id>live-all</id>
-
             <build>
                 <plugins>
                     <plugin>
@@ -653,18 +471,15 @@
                             </includes>
                         </configuration>
                     </plugin>
-
                 </plugins>
             </build>
 
         </profile>
 
         <profile>
-            <id>default-jdk9-and-above</id>
-
+            <id>default</id>
             <build>
                 <plugins>
-
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
@@ -685,7 +500,6 @@
                             </excludes>
                         </configuration>
                     </plugin>
-
                 </plugins>
             </build>
 
@@ -905,15 +719,14 @@
 
             <properties>
                 <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-                <java.version>11</java.version>
-                <maven.compiler.source>11</maven.compiler.source>
-                <maven.compiler.target>11</maven.compiler.target>
+                <java.version>${java.version}</java.version>
+                <maven.compiler.source>${java.version}</maven.compiler.source>
+                <maven.compiler.target>${java.version}</maven.compiler.target>
             </properties>
         </profile>
 
         <profile>
-            <id>integration-jdk9-and-above</id>
-
+            <id>integration</id>
             <build>
                 <plugins>
                     <plugin>
@@ -1149,9 +962,9 @@
 
             <properties>
                 <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-                <java.version>11</java.version>
-                <maven.compiler.source>11</maven.compiler.source>
-                <maven.compiler.target>11</maven.compiler.target>
+                <java.version>${java.version}</java.version>
+                <maven.compiler.source>${java.version}</maven.compiler.source>
+                <maven.compiler.target>${java.version}</maven.compiler.target>
             </properties>
         </profile>
 
@@ -1165,7 +978,6 @@
                 <module>parent-spring-6</module>
                 <module>parent-java</module>
             </modules>
-
         </profile>
     </profiles>
 
@@ -1206,7 +1018,7 @@
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
         <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
         <exec-maven-plugin.version>3.1.0</exec-maven-plugin.version>
-        <java.version>1.8</java.version>
+        <java.version>11</java.version>
         <log4j.version>1.2.17</log4j.version>
         <jmh-core.version>1.36</jmh-core.version>
         <jmh-generator.version>1.36</jmh-generator.version>
