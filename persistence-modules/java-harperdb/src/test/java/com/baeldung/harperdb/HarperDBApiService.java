@@ -1,4 +1,4 @@
-package com.baledung.harperdb;
+package com.baeldung.harperdb;
 
 import com.github.dockerjava.zerodep.shaded.org.apache.hc.client5.http.classic.methods.HttpPost;
 import com.github.dockerjava.zerodep.shaded.org.apache.hc.client5.http.impl.classic.CloseableHttpClient;

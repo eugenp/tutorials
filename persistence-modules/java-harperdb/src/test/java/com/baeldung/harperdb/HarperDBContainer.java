@@ -1,4 +1,4 @@
-package com.baledung.harperdb;
+package com.baeldung.harperdb;
 
 import java.util.Map;
 
