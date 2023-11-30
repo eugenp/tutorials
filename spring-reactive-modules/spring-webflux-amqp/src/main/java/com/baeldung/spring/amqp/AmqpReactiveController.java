@@ -1,4 +1,4 @@
-package com.baeldung.spring.reactive.performance;
+package com.baeldung.spring.amqp;
 
 import java.time.Duration;
 
