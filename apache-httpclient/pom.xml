@@ -63,11 +63,6 @@
             <version>${wiremock.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>${httpclient.version}</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -84,10 +79,9 @@
         <mockserver.version>5.6.1</mockserver.version>
         <wiremock.version>3.3.1</wiremock.version>
         <!-- http client & core 5 -->
-        <httpcore5.version>5.2</httpcore5.version>
-        <httpclient5.version>5.2</httpclient5.version>
-        <httpclient5-fluent.version>5.2</httpclient5-fluent.version>
-        <httpclient.version>4.5.14</httpclient.version>
+        <httpcore5.version>5.2.2</httpcore5.version>
+        <httpclient5.version>5.2.2</httpclient5.version>
+        <httpclient5-fluent.version>5.2.2</httpclient5-fluent.version>
     </properties>
 
 </project>
