@@ -38,6 +38,8 @@
 
     <properties>
         <gson.version>2.10.1</gson.version>
+        <maven.compiler.source>20</maven.compiler.source>
+        <maven.compiler.target>20</maven.compiler.target>
     </properties>
 
 </project>
