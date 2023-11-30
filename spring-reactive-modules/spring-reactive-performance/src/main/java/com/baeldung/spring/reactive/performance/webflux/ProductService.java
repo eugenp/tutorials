@@ -22,17 +22,16 @@ class ProductService {
 
     public void addProductToCart(String productId, String cartId) {
         repository.findById(productId)
-            .switchIfEmpty(Mono.error(() -> new IllegalArgumentException("not found!")))
-            .flatMap(this::computePrice)
-            .map(price -> new ProductAddedToCartEvent(productId, price.value(), price.currency(), cartId))
-            .subscribe(event -> kafkaTemplate.send(PRODUCT_ADDED_TO_CART_TOPIC, cartId, event));
+          .switchIfEmpty(Mono.error(() -> new IllegalArgumentException("not found!")))
+          .flatMap(this::computePrice)
+          .map(price -> new ProductAddedToCartEvent(productId, price.value(), price.currency(), cartId))
+          .subscribe(event -> kafkaTemplate.send(PRODUCT_ADDED_TO_CART_TOPIC, cartId, event));
     }
 
     private Mono<Price> computePrice(Product product) {
-        if (product.category()
-            .isEligibleForDiscount()) {
+        if (product.category().isEligibleForDiscount()) {
             return discountService.discountForProduct(product.id())
-                .map(product.basePrice()::applyDiscount);
+              .map(product.basePrice()::applyDiscount);
         }
         return Mono.just(product.basePrice());
     }

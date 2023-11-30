@@ -26,7 +26,7 @@ class ProductService {
 
     private void computePriceAndPublishMessage(String productId, String cartId) {
         Product product = repository.findById(productId)
-            .orElseThrow(() -> new IllegalArgumentException("not found!"));
+          .orElseThrow(() -> new IllegalArgumentException("not found!"));
 
         Price price = computePrice(productId, product);
 
@@ -35,11 +35,9 @@ class ProductService {
     }
 
     private Price computePrice(String productId, Product product) {
-        if (product.category()
-            .isEligibleForDiscount()) {
+        if (product.category().isEligibleForDiscount()) {
             BigDecimal discount = discountService.discountForProduct(productId);
-            return product.basePrice()
-                .applyDiscount(discount);
+            return product.basePrice().applyDiscount(discount);
         }
         return product.basePrice();
     }
