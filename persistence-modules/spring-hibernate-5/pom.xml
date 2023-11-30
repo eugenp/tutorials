@@ -131,7 +131,7 @@
         <org.springframework.data.version>1.10.6.RELEASE</org.springframework.data.version>
         <org.springframework.security.version>4.2.1.RELEASE</org.springframework.security.version>
         <!-- persistence -->
-        <hibernate.version>5.2.10.Final</hibernate.version>
+        <hibernate.version>5.6.15.Final</hibernate.version>
         <hibernatesearch.version>5.8.2.Final</hibernatesearch.version>
         <mysql-connector-java.version>8.0.7-dmr</mysql-connector-java.version>
         <tomcat-dbcp.version>9.0.0.M26</tomcat-dbcp.version>

@@ -701,7 +701,7 @@
                 <module>apache-kafka</module>
                 <module>apache-libraries-2</module>
                 <module>apache-libraries</module>
-                <module>apache-olingo</module>
+                <module>apache-olingo</module><!-- apache-olingo wasn't updated to boot-3 because a workaround for jakarta namespace wasn't found JAVA-27818 -->
                 <module>apache-poi-2</module>
                 <module>apache-poi-3</module>
                 <module>apache-poi</module>
@@ -710,7 +710,6 @@
                 <module>apache-velocity</module>
                 <module>asciidoctor</module>
                 <module>asm</module>
-                <module>atomikos</module>
                 <module>atomix</module>
                 <module>aws-modules</module>
                 <module>azure</module>
@@ -727,7 +726,7 @@
                 <module>dozer</module>
                 <module>drools</module>
                 <module>dubbo</module>
-                <!-- <module>feign</module> --> <!-- JAVA-20337 -->
+                <module>feign</module>
                 <module>gcp-firebase</module>
                 <module>geotools</module>
                 <module>google-auto-project</module>
@@ -947,7 +946,7 @@
                 <module>apache-kafka</module>
                 <module>apache-libraries-2</module>
                 <module>apache-libraries</module>
-                <module>apache-olingo</module>
+                <module>apache-olingo</module><!-- apache-olingo wasn't updated to boot-3 because a workaround for jakarta namespace wasn't found JAVA-27818 -->
                 <module>apache-poi-2</module>
                 <module>apache-poi-3</module>
                 <module>apache-poi</module>
@@ -956,7 +955,6 @@
                 <module>apache-velocity</module>
                 <module>asciidoctor</module>
                 <module>asm</module>
-                <module>atomikos</module>
                 <module>atomix</module>
                 <module>aws-modules</module>
                 <module>azure</module>
@@ -973,7 +971,7 @@
                 <module>dozer</module>
                 <module>drools</module>
                 <module>dubbo</module>
-                <!-- <module>feign</module> --> <!-- JAVA-20337 -->
+                <module>feign</module>
                 <module>gcp-firebase</module>
                 <module>geotools</module>
                 <module>google-auto-project</module>
