@@ -67,7 +67,7 @@
         <jmh.version>1.21</jmh.version>
         <commons-lang.version>2.2</commons-lang.version>
         <gson.version>2.10.1</gson.version>
-        <jackson.version>2.15.2</jackson.version>
+        <jackson.version>2.16.0</jackson.version>
         <org.json.version>20230618</org.json.version>
     </properties>
 </project>
