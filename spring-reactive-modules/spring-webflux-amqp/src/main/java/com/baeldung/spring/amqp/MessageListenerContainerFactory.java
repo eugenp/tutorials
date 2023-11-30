@@ -1,4 +1,4 @@
-package com.baeldung.spring.reactive.performance;
+package com.baeldung.spring.amqp;
 
 import org.springframework.amqp.core.AcknowledgeMode;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
