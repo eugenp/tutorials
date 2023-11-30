@@ -7,6 +7,17 @@
     <artifactId>versions-maven-plugin</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>versions-maven-plugin</name>
+    <packaging>pom</packaging>
+
+    <parent>
+        <artifactId>maven-modules</artifactId>
+        <groupId>com.baeldung</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <modules>
+        <module>original</module>
+    </modules>
 
     <dependencies>
         <dependency>

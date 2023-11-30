@@ -1,5 +1,7 @@
 package com.baeldung.boot.atlassearch.web;
 
+import static com.mongodb.client.model.search.SearchPath.fieldPath;
+
 import java.util.Collection;
 
 import org.bson.Document;
@@ -33,7 +35,7 @@ public class MovieAtlasSearchController {
 
     @GetMapping("90s/{skip}/{limit}/with/{keywords}")
     Document getMoviesUsingScoreBoost(@PathVariable int skip, @PathVariable int limit, @PathVariable String keywords) {
-        return service.late90sMovies(skip, limit, keywords, SearchScore.boost(2));
+        return service.late90sMovies(skip, limit, keywords, SearchScore.boost(fieldPath("imdb.votes")));
     }
 
     @PostMapping("90s/{skip}/{limit}/with/{keywords}")

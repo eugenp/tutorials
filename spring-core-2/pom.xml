@@ -88,9 +88,8 @@
         </dependency>
         <!-- validation -->
         <dependency>
-            <groupId>org.hibernate</groupId>
+            <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
-            <version>${hibernate.version}</version>
         </dependency>
         <!-- web -->
         <dependency>
@@ -160,8 +159,6 @@
     <properties>
         <start-class>com.baeldung.sample.App</start-class>
         <annotation-api.version>1.3.2</annotation-api.version>
-        <!-- persistence -->
-        <hibernate.version>5.2.5.Final</hibernate.version>
         <!-- util -->
         <easymock.version>3.6</easymock.version>
         <shedlock.version>2.1.0</shedlock.version>

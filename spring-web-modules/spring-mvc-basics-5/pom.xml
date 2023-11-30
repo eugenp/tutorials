@@ -82,7 +82,7 @@
 
     <properties>
         <commons-io.version>1.3.2</commons-io.version>
-        <json-path.version>2.7.0</json-path.version>
+        <json-path.version>2.8.0</json-path.version>
         <jaxb-runtime.version>2.3.5</jaxb-runtime.version>
         <jakarta.servlet.jsp.jstl>2.0.0</jakarta.servlet.jsp.jstl>
         <io.rest-assured.version>3.0.0</io.rest-assured.version>

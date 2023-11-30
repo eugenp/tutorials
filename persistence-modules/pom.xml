@@ -18,9 +18,11 @@
         <module>apache-bookkeeper</module>
         <module>apache-cayenne</module>
         <module>apache-derby</module>
+        <module>atomikos</module>
         <module>blaze-persistence</module>
         <module>core-java-persistence</module>
         <module>core-java-persistence-2</module>
+        <module>core-java-persistence-3</module>
         <module>couchbase</module>
         <module>elasticsearch</module>
         <module>flyway</module>
@@ -120,6 +122,7 @@
         <module>scylladb</module>
         <module>spring-data-cassandra-2</module>
         <module>spring-data-jpa-repo-3</module>
+        <module>spring-boot-persistence-4</module>
     </modules>
 
     <properties>
