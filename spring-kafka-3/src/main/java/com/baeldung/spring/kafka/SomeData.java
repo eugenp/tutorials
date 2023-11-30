@@ -1,5 +1,7 @@
 package com.baeldung.spring.kafka;
 
+import java.time.Instant;
+
 public class SomeData {
 
     private String id;

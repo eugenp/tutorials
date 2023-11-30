@@ -12,7 +12,7 @@ import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
 
 @Configuration
-public class ListenerConfig {
+public class ListenerConfiguration {
 
     @Bean("messageListenerContainer")
     public ConcurrentKafkaListenerContainerFactory<String, SomeData> messageListenerContainer() {
@@ -23,7 +23,7 @@ public class ListenerConfig {
 
     @Bean
     public ConsumerFactory<String, SomeData> someDataConsumerFactory() {
-        JsonDeserializer<KafkaConfiguration.SomeData> payloadJsonDeserializer = new JsonDeserializer<>();
+        JsonDeserializer<SomeData> payloadJsonDeserializer = new JsonDeserializer<>();
         payloadJsonDeserializer.trustedPackages("com.baeldung.spring.kafka");
         return new DefaultKafkaConsumerFactory<>(
           consumerConfigs(),
