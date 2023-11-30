@@ -28,6 +28,7 @@
         <module>spring-reactive-data-couchbase</module>
         <module>spring-reactive</module>
         <module>spring-reactive-exceptions</module>
+<!--        <module>spring-reactive-performance</module>-->
         <module>spring-reactor</module>
         <module>spring-webflux-amqp</module>
     </modules>
