@@ -53,6 +53,9 @@
                 <configuration>
                     <source>16</source>
                     <target>16</target>
+                    <excludes>
+                        <exclude>**/*ManualTest.java</exclude>
+                    </excludes>
                 </configuration>
             </plugin>
         </plugins>
