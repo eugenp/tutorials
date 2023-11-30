@@ -92,7 +92,7 @@
     <properties>
         <spring-boot-starter-actuator.version>3.0.5</spring-boot-starter-actuator.version>
         <micrometer-registry-prometheus.version>1.10.5</micrometer-registry-prometheus.version>
-        <testcontainers-kafka.version>1.16.2</testcontainers-kafka.version>
+        <testcontainers-kafka.version>1.19.3</testcontainers-kafka.version>
     </properties>
 
 </project>
