@@ -35,13 +35,13 @@ We also have a parents profile to build only parent modules.
 
 Therefore, we have a total of 5 profiles:
 
-| Profile                    | Includes                | Type of test enabled |
-|----------------------------|-------------------------| -------------------- |
-| default                    | JDK9 and above projects | *UnitTest            |
-| integration                | JDK9 and above projects | *IntegrationTest     |
-| default-jdk8               | JDK8 projects           | *UnitTest            |
-| integration-jdk8           | JDK8 projects           | *IntegrationTest     |
-| parents                    | Set of parent modules   | None                 |
+| Profile               | Includes                | Type of test enabled |
+|-----------------------|-------------------------| -------------------- |
+| default               | JDK9 and above projects | *UnitTest            |
+| integration           | JDK9 and above projects | *IntegrationTest     |
+| default-jdk8          | JDK8 projects           | *UnitTest            |
+| integration-lite-jdk8 | JDK8 projects           | *IntegrationTest     |
+| parents               | Set of parent modules   | None                 |
 
 Building the project
 ====================
@@ -62,7 +62,7 @@ Analogously, for the JDK8 projects the commands are:
 
 and
 
-`mvn clean install -Pintegration-jdk8`
+`mvn clean install -Pintegration-lite-jdk8`
 
 Building a single module
 ====================
@@ -100,6 +100,6 @@ To run the integration tests, use the command:
 
 `mvn clean install -Pintegration` or 
 
-`mvn clean install -Pintegration-jdk8`
+`mvn clean install -Pintegration-lite-jdk8`
 
 depending on the list where our module exists

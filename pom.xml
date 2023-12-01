@@ -376,7 +376,7 @@
 
 
         <profile>
-            <id>integration-jdk8</id>
+            <id>integration-lite-jdk8</id>
             <build>
                 <plugins>
                     <plugin>
