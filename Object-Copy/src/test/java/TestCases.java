@@ -75,18 +75,16 @@ public class TestCases {
     }
 
     @Test
-    public void testIntegerWithShallowCopy(){
-       int original = 9;
-       int duplicate = original;
+    public void testIntegerWithShallowCopy() {
+        int original = 9;
+        int duplicate = original;
 
-       duplicate = 12;
+        duplicate = 12;
 
         System.out.println(original);
         System.out.println(duplicate);
 
-        Assert.assertNotEquals(duplicate,original);
+        Assert.assertNotEquals(duplicate, original);
 
     }
-
-
 }
