@@ -1,12 +1,14 @@
 package io.jsonwebtoken.jjwtfun.util;
 
+import io.jsonwebtoken.Jwt;
+import io.jsonwebtoken.JwtParser;
+import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.impl.crypto.DefaultJwtSignatureValidator;
 
 import javax.crypto.spec.SecretKeySpec;
+
 import java.util.Base64;
 
-import static io.jsonwebtoken.SignatureAlgorithm.HS256;
 
 public class JWTDecoderUtil {
 
@@ -22,25 +24,18 @@ public class JWTDecoderUtil {
     }
 
     public static String decodeJWTToken(String token, String secretKey) throws Exception {
-        Base64.Decoder decoder = Base64.getUrlDecoder();
+        SecretKeySpec secretKeySpec = new SecretKeySpec(secretKey.getBytes(), SignatureAlgorithm.HS256.getJcaName());
+        JwtParser jwtParser = Jwts.parser()
+            .verifyWith(secretKeySpec)
+            .build();
 
-        String[] chunks = token.split("\\.");
-
-        String header = new String(decoder.decode(chunks[0]));
-        String payload = new String(decoder.decode(chunks[1]));
-
-        String tokenWithoutSignature = chunks[0] + "." + chunks[1];
-        String signature = chunks[2];
-
-        SignatureAlgorithm sa = HS256;
-        SecretKeySpec secretKeySpec = new SecretKeySpec(secretKey.getBytes(), sa.getJcaName());
-
-        DefaultJwtSignatureValidator validator = new DefaultJwtSignatureValidator(sa, secretKeySpec);
-
-        if (!validator.isValid(tokenWithoutSignature, signature)) {
-            throw new Exception("Could not verify JWT token integrity!");
+        Jwt<?, ?> parsedToken;
+        try {
+            parsedToken = jwtParser.parse(token);
+        } catch (Exception e) {
+            throw new Exception("Could not verify JWT token integrity!", e);
         }
 
-        return header + " " + payload;
+        return parsedToken.getHeader() + " " + parsedToken.getPayload();
     }
 }
