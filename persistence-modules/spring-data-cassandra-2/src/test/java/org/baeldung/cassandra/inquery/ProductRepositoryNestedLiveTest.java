@@ -20,10 +20,12 @@ import java.util.UUID;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
-
+/**
+ * This live test requires a running Docker instance so that a Cassandra container can be created
+ */
 @Testcontainers
 @SpringBootTest
-class ProductRepositoryIntegrationTest {
+class ProductRepositoryNestedLiveTest {
 
     private static final String KEYSPACE_NAME = "mynamespace";
 

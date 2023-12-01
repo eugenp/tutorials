@@ -6,6 +6,7 @@
     <artifactId>static-analysis</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>static-analysis</name>
+    <packaging>pom</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -28,5 +29,16 @@
             </plugin>
         </plugins>
     </reporting>
+
+    <modules>
+        <module>pmd</module>
+        <module>my-bugchecker-plugin</module>
+        <module>error-prone-project</module>
+    </modules>
+
+    <properties>
+        <error-prone.version>2.23.0</error-prone.version>
+        <google-auto-service.version>1.0.1</google-auto-service.version>
+    </properties>
 
 </project>

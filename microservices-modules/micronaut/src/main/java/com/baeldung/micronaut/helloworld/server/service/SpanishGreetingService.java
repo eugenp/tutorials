@@ -1,6 +1,6 @@
 package com.baeldung.micronaut.helloworld.server.service;
 
-import javax.inject.Singleton;
+import jakarta.inject.Singleton;
 
 @Singleton
 public class SpanishGreetingService implements GreetingService {

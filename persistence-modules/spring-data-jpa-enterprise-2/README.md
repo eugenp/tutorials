@@ -4,8 +4,7 @@ This module contains articles about Spring Data JPA used in enterprise applicati
 
 ### Relevant Articles: 
 
-- [Spring JPA – Multiple Databases](https://www.baeldung.com/spring-data-jpa-multiple-databases)
-- [Pagination and Sorting using Spring Data JPA](https://www.baeldung.com/spring-data-jpa-pagination-sorting)
+
 
 ### Eclipse Config 
 After importing the project into Eclipse, you may see the following error:  

@@ -15,11 +15,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-            <version>${validation-api.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
@@ -30,14 +25,9 @@
             <version>${hibernate-validator.version}</version>
         </dependency>
         <dependency>
-            <groupId>javax.el</groupId>
-            <artifactId>javax.el-api</artifactId>
-            <version>${javax.el-api.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.web</groupId>
-            <artifactId>javax.el</artifactId>
-            <version>${javax.el.version}</version>
+            <groupId>org.glassfish.expressly</groupId>
+            <artifactId>expressly</artifactId>
+            <version>${expressly.version}</version>
         </dependency>
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
@@ -53,6 +43,11 @@
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
             <version>${commons-codec.version}</version>
+        </dependency>
+        <dependency> 
+            <groupId>org.springframework</groupId> 
+            <artifactId>spring-core</artifactId> 
+            <version>${spring-core.version}</version> 
         </dependency>
     </dependencies>
 
@@ -90,11 +85,10 @@
     </build>
 
     <properties>
-        <validation-api.version>2.0.0.Final</validation-api.version>
-        <hibernate-validator.version>6.0.2.Final</hibernate-validator.version>
-        <javax.el-api.version>3.0.0</javax.el-api.version>
-        <javax.el.version>2.2.6</javax.el.version>
-        <commons-codec.version>1.14</commons-codec.version>
+        <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
+        <expressly.version>5.0.0</expressly.version>
+        <commons-codec.version>1.16.0</commons-codec.version>
+        <spring-core.version>5.3.0</spring-core.version>
     </properties>
 
 </project>

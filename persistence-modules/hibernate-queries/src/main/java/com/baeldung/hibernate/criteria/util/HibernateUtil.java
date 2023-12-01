@@ -16,4 +16,11 @@ public class HibernateUtil {
         return session;
     }
 
+    public static SessionFactory getHibernateSessionFactory() {
+
+        final SessionFactory sessionFactory = new Configuration().configure("criteria.cfg.xml").buildSessionFactory();
+
+        return sessionFactory;
+    }
+
 }
