@@ -867,6 +867,7 @@
                 <module>spring-jersey</module>
                 <module>spring-jinq</module>
                 <module>spring-kafka-2</module>
+                <module>spring-kafka-3</module>
                 <module>spring-kafka</module>
                 <module>spring-katharsis</module>
                 <module>spring-mobile</module>
