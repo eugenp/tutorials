@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import ai.timefold.solver.core.api.score.buildin.hardsoft.HardSoftScore;
 import ai.timefold.solver.core.api.solver.Solver;
 import ai.timefold.solver.core.api.solver.SolverFactory;
 import ai.timefold.solver.core.config.solver.SolverConfig;
@@ -21,7 +22,7 @@ public class ShiftScheduleSolverUnitTest {
     private static final Logger logger = LoggerFactory.getLogger(ShiftScheduleSolverUnitTest.class);
 
     @Test
-    public void solve() {
+    public void whenSolve_thenScoreIsOptimalAndAllShiftsAssigned() {
         SolverFactory<ShiftSchedule> solverFactory = SolverFactory.create(new SolverConfig().withSolutionClass(ShiftSchedule.class)
             .withEntityClasses(Shift.class)
             .withConstraintProviderClass(ShiftScheduleConstraintProvider.class)
@@ -32,6 +33,7 @@ public class ShiftScheduleSolverUnitTest {
 
         ShiftSchedule problem = loadProblem();
         ShiftSchedule solution = solver.solve(problem);
+        assertThat(solution.getScore()).isEqualTo(HardSoftScore.ZERO);
         assertThat(solution.getShifts().size()).isNotZero();
         for (Shift shift : solution.getShifts()) {
             assertThat(shift.getEmployee()).isNotNull();
