@@ -13,7 +13,7 @@ public class TestCases {
 
        entity1.setItem(23);
 
-       Assert.assertNotEquals(entity1.getItem(),entity2.getItem());
+       Assert.assertNotEquals("Deep copy should have distinct values",entity1.getItem(),entity2.getItem());
    }
 
    @Test
@@ -24,7 +24,7 @@ public class TestCases {
        int hashCode1 = System.identityHashCode(entity1);
        int hashCode2 = System.identityHashCode(entity2);
 
-       Assert.assertNotEquals(hashCode1, hashCode2);
+       Assert.assertNotEquals("Distinct objects should have different identity hash codes",hashCode1, hashCode2);
    }
 
    @Test
@@ -34,7 +34,7 @@ public class TestCases {
 
        entity2.setItem(800);
 
-       Assert.assertEquals(entity1.getItem(),entity2.getItem());
+       Assert.assertEquals("Shallow copy should not affect the original values",entity1.getItem(),entity2.getItem());
    }
 
     @Test public void testStringObjectWithShallowCopy(){
@@ -52,7 +52,7 @@ public class TestCases {
 
         duplicate = "Hello Everyone";
 
-       Assert.assertNotEquals(duplicate.hashCode(),original.hashCode());
+       Assert.assertNotEquals("Updating the shallow copy should change the hash code",duplicate.hashCode(),original.hashCode());
     }
 
 
@@ -64,6 +64,6 @@ public class TestCases {
 
         duplicate = 12;
 
-        Assert.assertNotEquals(duplicate, original);
+        Assert.assertNotEquals("Updating the shallow copy should change the value",duplicate, original);
     }
 }
