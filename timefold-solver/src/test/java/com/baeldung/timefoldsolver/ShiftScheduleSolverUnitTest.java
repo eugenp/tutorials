@@ -22,7 +22,7 @@ public class ShiftScheduleSolverUnitTest {
     private static final Logger logger = LoggerFactory.getLogger(ShiftScheduleSolverUnitTest.class);
 
     @Test
-    public void whenSolve_thenScoreIsOptimalAndAllShiftsAssigned() {
+    public void given3Employees5Shifts_whenSolve_thenScoreIsOptimalAndAllShiftsAssigned() {
         SolverFactory<ShiftSchedule> solverFactory = SolverFactory.create(new SolverConfig().withSolutionClass(ShiftSchedule.class)
             .withEntityClasses(Shift.class)
             .withConstraintProviderClass(ShiftScheduleConstraintProvider.class)

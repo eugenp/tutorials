@@ -16,7 +16,7 @@ class ShiftScheduleConstraintProviderUnitTest {
         ShiftSchedule.class, Shift.class);
 
     @Test
-    void whenTwoShiftsOnOneDay_thenPenalize() {
+    void givenTwoShiftsOnOneDay_whenApplyingAtMostOneShiftPerDayConstraint_thenPenalize() {
         Employee ann = new Employee("Ann", null);
         constraintVerifier.verifyThat(ShiftScheduleConstraintProvider::atMostOneShiftPerDay)
             .given(ann, new Shift(MONDAY.atTime(6, 0), MONDAY.atTime(14, 0), null, ann), new Shift(MONDAY.atTime(14, 0), MONDAY.atTime(22, 0), null, ann))
@@ -26,7 +26,7 @@ class ShiftScheduleConstraintProviderUnitTest {
     }
 
     @Test
-    void whenTwoShiftsOnDifferentDays_thenDoNotPenalize() {
+    void givenTwoShiftsOnDifferentDays_whenApplyingAtMostOneShiftPerDayConstraint_thenDoNotPenalize() {
         Employee ann = new Employee("Ann", null);
         constraintVerifier.verifyThat(ShiftScheduleConstraintProvider::atMostOneShiftPerDay)
             .given(ann, new Shift(MONDAY.atTime(6, 0), MONDAY.atTime(14, 0), null, ann), new Shift(TUESDAY.atTime(14, 0), TUESDAY.atTime(22, 0), null, ann))
@@ -34,7 +34,7 @@ class ShiftScheduleConstraintProviderUnitTest {
     }
 
     @Test
-    void whenEmployeeLacksRequiredSkill_thenPenalize() {
+    void givenEmployeeLacksRequiredSkill_whenApplyingRequiredSkillConstraint_thenPenalize() {
         Employee ann = new Employee("Ann", Set.of("Waiter"));
         constraintVerifier.verifyThat(ShiftScheduleConstraintProvider::requiredSkill)
             .given(ann, new Shift(MONDAY.atTime(6, 0), MONDAY.atTime(14, 0), "Cook", ann))
@@ -42,7 +42,7 @@ class ShiftScheduleConstraintProviderUnitTest {
     }
 
     @Test
-    void whenEmployeeHasRequiredSkill_thenDoNotPenalize() {
+    void givenEmployeeHasRequiredSkill_whenApplyingRequiredSkillConstraint_thenDoNotPenalize() {
         Employee ann = new Employee("Ann", Set.of("Waiter"));
         constraintVerifier.verifyThat(ShiftScheduleConstraintProvider::requiredSkill)
             .given(ann, new Shift(MONDAY.atTime(6, 0), MONDAY.atTime(14, 0), "Waiter", ann))
