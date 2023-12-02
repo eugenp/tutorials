@@ -29,7 +29,7 @@
         <dependency>
             <groupId>com.baeldung</groupId>
             <artifactId>java-harperdb</artifactId>
-            <version>4.2</version>
+            <version>${haperdb-driver.version}</version>
             <scope>system</scope>
             <systemPath>${project.basedir}/lib/cdata.jdbc.harperdb.jar</systemPath>
         </dependency>
@@ -56,5 +56,9 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <properties>
+        <haperdb-driver.version>4.2</haperdb-driver.version>
+    </properties>
 
 </project>
