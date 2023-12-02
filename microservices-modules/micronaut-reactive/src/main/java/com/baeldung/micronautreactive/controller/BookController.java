@@ -70,8 +70,8 @@ public class BookController {
     @Error(exception = ConstraintViolationException.class)
     public MutableHttpResponse<String> onSavedFailed(ConstraintViolationException ex) {
         return HttpResponse.badRequest(ex.getConstraintViolations().stream()
-                .map(cv -> cv.getPropertyPath() + " " + cv.getMessage())
-                .toList().toString());
+          .map(cv -> cv.getPropertyPath() + " " + cv.getMessage())
+          .toList().toString());
     }
 
     @Error(exception = BookNotFoundException.class)

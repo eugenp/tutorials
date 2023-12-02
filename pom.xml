@@ -885,6 +885,7 @@
                 <module>mapstruct</module>
                 <module>mesos-marathon</module>
                 <module>metrics</module>
+                <module>microservices-modules/micronaut-reactive</module>
                 <module>mustache</module>
                 <module>mybatis</module>
                 <module>pdf</module>
