@@ -37,42 +37,25 @@ public class TestCases {
        Assert.assertEquals(entity1.getItem(),entity2.getItem());
    }
 
-    @Test
-    public void testSameObject(){
-        Entity entity1 = new Entity();
-        Entity entity2 = entity1;
-
-        int hashCode1 = System.identityHashCode(entity1);
-        int hashCode2 = System.identityHashCode(entity2);
-
-        Assert.assertEquals(hashCode1, hashCode2);
-    }
-
-    @Test
-    public void testStringObject_WithShallowCopy(){
-       String original = new String("Hello Baeldung");
+    @Test public void testStringObjectWithShallowCopy(){
+       String original = "Hello Baeldung";
 
        String duplicate = original;
 
-        System.out.println(original.hashCode());
-        System.out.println(duplicate.hashCode());
-
-       Assert.assertEquals(duplicate.hashCode(),original.hashCode());
-    }
+       Assert.assertEquals(duplicate.hashCode(),original.hashCode()); }
 
     @Test
-    public void testStringObject_WithDeepCopy(){
-        String original = new String("Hello Baeldung");
+    public void testStringObjectUpdateWithShallowCopy(){
+       String original = "Hello Baeldung";
 
-        String duplicate = new String();
+       String duplicate = original;
 
-        duplicate = original;
+        duplicate = "Hello Everyone";
 
-        System.out.println(original.hashCode());
-        System.out.println(duplicate.hashCode());
-
-        Assert.assertEquals(duplicate.hashCode(),original.hashCode());
+       Assert.assertNotEquals(duplicate.hashCode(),original.hashCode());
     }
+
+
 
     @Test
     public void testIntegerWithShallowCopy() {
@@ -81,10 +64,6 @@ public class TestCases {
 
         duplicate = 12;
 
-        System.out.println(original);
-        System.out.println(duplicate);
-
         Assert.assertNotEquals(duplicate, original);
-
     }
 }
