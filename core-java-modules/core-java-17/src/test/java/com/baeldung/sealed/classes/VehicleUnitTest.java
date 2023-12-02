@@ -18,19 +18,19 @@ public class VehicleUnitTest {
     }
 
     @Test
-    public void givenCar_whenUsingReflectionAPI_thenSuperClassIsSealed() {
+    public void givenCar_whenUsingReflectionAPI_thenSuperClassIsSealed() throws ClassNotFoundException {
         Assertions.assertThat(car.getClass().isSealed()).isEqualTo(false);
         Assertions.assertThat(car.getClass().getSuperclass().isSealed()).isEqualTo(true);
         Assertions.assertThat(car.getClass().getSuperclass().getPermittedSubclasses())
-                .contains(ClassDesc.of(car.getClass().getCanonicalName()));
+                .contains(Class.forName(car.getClass().getCanonicalName()));
     }
 
     @Test
-    public void givenTruck_whenUsingReflectionAPI_thenSuperClassIsSealed() {
+    public void givenTruck_whenUsingReflectionAPI_thenSuperClassIsSealed() throws ClassNotFoundException {
         Assertions.assertThat(truck.getClass().isSealed()).isEqualTo(false);
         Assertions.assertThat(truck.getClass().getSuperclass().isSealed()).isEqualTo(true);
         Assertions.assertThat(truck.getClass().getSuperclass().getPermittedSubclasses())
-                .contains(ClassDesc.of(truck.getClass().getCanonicalName()));
+                .contains(Class.forName(truck.getClass().getCanonicalName()));
     }
 
     @Test

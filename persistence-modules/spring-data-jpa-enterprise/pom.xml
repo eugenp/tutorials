@@ -45,7 +45,7 @@
         </dependency>
         <dependency>
             <groupId>org.mapstruct</groupId>
-            <artifactId>mapstruct-jdk8</artifactId>
+            <artifactId>mapstruct</artifactId>
             <version>${mapstruct.version}</version>
             <scope>provided</scope>
         </dependency>
@@ -54,10 +54,21 @@
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
+        </dependency>
         <!-- Test containers only dependencies -->
         <dependency>
             <groupId>org.testcontainers</groupId>
             <artifactId>postgresql</artifactId>
+            <version>${testcontainers.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>junit-jupiter</artifactId>
             <version>${testcontainers.version}</version>
             <scope>test</scope>
         </dependency>
@@ -86,8 +97,8 @@
     </build>
 
     <properties>
-        <mapstruct.version>1.3.1.Final</mapstruct.version>
-        <testcontainers.version>1.17.3</testcontainers.version>
+        <mapstruct.version>1.6.0.Beta1</mapstruct.version>
+        <testcontainers.version>1.19.1</testcontainers.version>
     </properties>
 
 </project>

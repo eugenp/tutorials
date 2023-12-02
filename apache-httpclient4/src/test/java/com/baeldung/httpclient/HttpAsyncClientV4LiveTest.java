@@ -1,4 +1,5 @@
 package com.baeldung.httpclient;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
@@ -31,6 +32,7 @@ import org.apache.http.protocol.HttpContext;
 import org.apache.http.ssl.SSLContexts;
 import org.junit.jupiter.api.Test;
 
+import com.baeldung.GetRequestMockServer;
 
 class HttpAsyncClientV4LiveTest extends GetRequestMockServer {
 

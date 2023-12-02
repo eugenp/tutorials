@@ -1,0 +1,58 @@
+---
+##
+## Vault Connection
+##
+apiVersion: secrets.hashicorp.com/v1beta1
+kind: VaultConnection
+metadata:
+  namespace: baeldung
+  name: vault-local
+spec:
+  # required configuration
+  # address to the Vault server.
+  address: http://vault.vault.svc.cluster.local:8200
+---
+##
+## Vault Auth
+##
+apiVersion: secrets.hashicorp.com/v1beta1
+kind: VaultAuth
+metadata:
+  namespace: baeldung
+  name: baeldung-test
+spec:
+  # required configuration
+  # VaultConnectionRef of the corresponding VaultConnection CustomResource.
+  # If no value is specified the Operator will default to the `default` VaultConnection,
+  # configured in its own Kubernetes namespace.
+  vaultConnectionRef: vault-local
+  # Method to use when authenticating to Vault.
+  method: kubernetes
+  # Mount to use when authenticating to auth method.
+  mount: kubernetes
+  # Kubernetes specific auth configuration, requires that the Method be set to kubernetes.
+  kubernetes:
+    # role to use when authenticating to Vault
+    role: baeldung-test-role
+    # ServiceAccount to use when authenticating to Vault
+    # it is recommended to always provide a unique serviceAccount per Pod/application
+    serviceAccount: vault-test-sa
+---
+##
+## Vault-backed secret
+##
+apiVersion: secrets.hashicorp.com/v1beta1
+kind: VaultStaticSecret
+metadata:
+  namespace: baeldung
+  name: baeldung-test
+spec:
+  vaultAuthRef: baeldung-test
+  mount: secrets
+  type: kv-v2
+  path: baeldung-test
+  refreshAfter: 60s
+  hmacSecretData: true
+  destination:
+    create: true
+    name: baeldung-test

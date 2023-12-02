@@ -31,32 +31,31 @@
     </dependencies>
 
     <build>
+        <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.2</version>
+            </plugin>
+            <plugin>
+                <groupId>io.openliberty.tools</groupId>
+                <artifactId>liberty-maven-plugin</artifactId>
+                <version>3.8.2</version>
                 <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                    <packagingExcludes>pom.xml</packagingExcludes>
+                    <serverName>guideServer</serverName>
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>net.wasdev.wlp.maven.plugins</groupId>
-                <artifactId>liberty-maven-plugin</artifactId>
-                <version>${liberty-maven-plugin.version}</version>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>3.1.2</version>
                 <configuration>
-                    <install>
-                        <runtimeUrl>
-                            https://public.dhe.ibm.com/ibmdl/export/pub/software/openliberty/runtime/release/2018-09-05_2337/openliberty-18.0.0.3.zip
-                        </runtimeUrl>
-                    </install>
-                    <looseApplication>true</looseApplication>
-                    <installAppPackages>project</installAppPackages>
-                    <configFile>src/main/liberty/config/server.xml</configFile>
-                    <stripVersion>true</stripVersion>
-                    <bootstrapProperties>
+                    <systemPropertyVariables>
                         <default.http.port>${defaultHttpPort}</default.http.port>
-                        <default.https.port>${defaultHttpsPort}</default.https.port>
-                    </bootstrapProperties>
+                        <http.port>${defaultHttpPort}</http.port>
+                        <war.name>${liberty.var.app.context.root}</war.name>
+                    </systemPropertyVariables>
                 </configuration>
             </plugin>
         </plugins>
@@ -65,9 +64,10 @@
     <properties>
         <defaultHttpPort>9080</defaultHttpPort>
         <defaultHttpsPort>9443</defaultHttpsPort>
-        <javaee-version>8.0</javaee-version>
+        <javaee-version>8.0.1</javaee-version>
         <liberty-maven-plugin.version>2.3</liberty-maven-plugin.version>
         <openliberty-runtime.version>18.0.0.1</openliberty-runtime.version>
+        <liberty.var.app.context.root>${project.artifactId}</liberty.var.app.context.root>
     </properties>
 
 </project>

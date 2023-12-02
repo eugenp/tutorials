@@ -16,9 +16,7 @@ public final class ExchangeRate {
     public static List<ExchangeRateProvider> providers() {
         List<ExchangeRateProvider> services = new ArrayList<>();
         ServiceLoader<ExchangeRateProvider> loader = ServiceLoader.load(ExchangeRateProvider.class);
-        loader.forEach(exchangeRateProvider -> {
-            services.add(exchangeRateProvider);
-        });
+        loader.forEach(services::add);
         return services;
     }
 

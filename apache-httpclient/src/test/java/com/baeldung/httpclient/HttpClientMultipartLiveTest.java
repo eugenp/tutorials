@@ -7,18 +7,19 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+
 import org.apache.hc.client5.http.classic.methods.HttpPost;
 import org.apache.hc.client5.http.entity.mime.FileBody;
 import org.apache.hc.client5.http.entity.mime.HttpMultipartMode;
 import org.apache.hc.client5.http.entity.mime.MultipartEntityBuilder;
 import org.apache.hc.client5.http.entity.mime.StringBody;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
-import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
 import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
 
 import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.HttpEntity;
 import org.apache.hc.core5.http.HttpStatus;
+import org.apache.hc.core5.http.ParseException;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -28,12 +29,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 
-import com.baeldung.httpclient.handler.CustomHttpClientResponseHandler;
-
-class HttpClientMultipartLiveTest {
-
-    // No longer available
-    // private static final String SERVER = "http://echo.200please.com";
+class HttpClientMultipartLiveTest extends GetRequestMockServer {
 
     private static final String SERVER = "http://localhost:8080/spring-mvc-java/stub/multipart";
     private static final String TEXTFILENAME = "temp.txt";
@@ -45,13 +41,15 @@ class HttpClientMultipartLiveTest {
     @BeforeEach
     public void before() {
         post = new HttpPost(SERVER);
+        String URL = "http://localhost:" + serverPort + "/spring-mvc-java/stub/multipart";
+        post = new HttpPost(URL);
     }
 
     @Test
     void givenFileandMultipleTextParts_whenUploadwithAddPart_thenNoExceptions() throws IOException {
         final URL url = Thread.currentThread()
-          .getContextClassLoader()
-          .getResource("uploads/" + TEXTFILENAME);
+            .getContextClassLoader()
+            .getResource("uploads/" + TEXTFILENAME);
 
         final File file = new File(url.getPath());
         final FileBody fileBody = new FileBody(file, ContentType.DEFAULT_BINARY);
@@ -66,27 +64,28 @@ class HttpClientMultipartLiveTest {
         final HttpEntity entity = builder.build();
 
         post.setEntity(entity);
-        try(CloseableHttpClient client = HttpClientBuilder.create()
-            .build();
+        try (CloseableHttpClient client = HttpClientBuilder.create()
+            .build()) {
 
-            CloseableHttpResponse response = (CloseableHttpResponse) client
-                .execute(post, new CustomHttpClientResponseHandler())){
-            final int statusCode = response.getCode();
-            final String responseString = getContent(response.getEntity());
-            final String contentTypeInHeader = getContentTypeHeader();
+            client.execute(post, response -> {
+                final int statusCode = response.getCode();
+                final String responseString = getContent(response.getEntity());
+                final String contentTypeInHeader = getContentTypeHeader();
 
-            assertThat(statusCode, equalTo(HttpStatus.SC_OK));
-            assertTrue(contentTypeInHeader.contains("Content-Type: multipart/form-data;"));
-            System.out.println(responseString);
-            System.out.println("POST Content Type: " + contentTypeInHeader);
+                assertThat(statusCode, equalTo(HttpStatus.SC_OK));
+                assertTrue(contentTypeInHeader.contains("multipart/form-data"));
+                System.out.println(responseString);
+                System.out.println("POST Content Type: " + contentTypeInHeader);
+                return response;
+            });
         }
     }
 
     @Test
     void givenFileandTextPart_whenUploadwithAddBinaryBodyandAddTextBody_ThenNoExeption() throws IOException {
         final URL url = Thread.currentThread()
-          .getContextClassLoader()
-          .getResource("uploads/" + TEXTFILENAME);
+            .getContextClassLoader()
+            .getResource("uploads/" + TEXTFILENAME);
         final File file = new File(url.getPath());
         final String message = "This is a multipart post";
         final MultipartEntityBuilder builder = MultipartEntityBuilder.create();
@@ -96,30 +95,31 @@ class HttpClientMultipartLiveTest {
         final HttpEntity entity = builder.build();
         post.setEntity(entity);
 
-        try(CloseableHttpClient client = HttpClientBuilder.create()
-            .build();
+        try (CloseableHttpClient client = HttpClientBuilder.create()
+            .build()) {
 
-            CloseableHttpResponse response = (CloseableHttpResponse) client
-                .execute(post, new CustomHttpClientResponseHandler())){
+            client.execute(post, response -> {
 
-            final int statusCode = response.getCode();
-            final String responseString = getContent(response.getEntity());
-            final String contentTypeInHeader = getContentTypeHeader();
-            assertThat(statusCode, equalTo(HttpStatus.SC_OK));
-            assertTrue(contentTypeInHeader.contains("Content-Type: multipart/form-data;"));
-            System.out.println(responseString);
-            System.out.println("POST Content Type: " + contentTypeInHeader);
+                final int statusCode = response.getCode();
+                final String responseString = getContent(response.getEntity());
+                final String contentTypeInHeader = getContentTypeHeader();
+                assertThat(statusCode, equalTo(HttpStatus.SC_OK));
+                assertTrue(contentTypeInHeader.contains("multipart/form-data"));
+                System.out.println(responseString);
+                System.out.println("POST Content Type: " + contentTypeInHeader);
+                return response;
+            });
         }
     }
 
     @Test
     void givenFileAndInputStreamandText_whenUploadwithAddBinaryBodyandAddTextBody_ThenNoException() throws IOException {
         final URL url = Thread.currentThread()
-          .getContextClassLoader()
-          .getResource("uploads/" + ZIPFILENAME);
+            .getContextClassLoader()
+            .getResource("uploads/" + ZIPFILENAME);
         final URL url2 = Thread.currentThread()
-          .getContextClassLoader()
-          .getResource("uploads/" + IMAGEFILENAME);
+            .getContextClassLoader()
+            .getResource("uploads/" + IMAGEFILENAME);
         final InputStream inputStream = new FileInputStream(url.getPath());
         final File file = new File(url2.getPath());
         final String message = "This is a multipart post";
@@ -131,25 +131,25 @@ class HttpClientMultipartLiveTest {
         final HttpEntity entity = builder.build();
         post.setEntity(entity);
 
-        try(CloseableHttpClient client = HttpClientBuilder.create()
-            .build();
+        try (CloseableHttpClient client = HttpClientBuilder.create()
+            .build()) {
 
-            CloseableHttpResponse response = (CloseableHttpResponse) client
-                .execute(post, new CustomHttpClientResponseHandler())){
-
-            final int statusCode = response.getCode();
-            final String responseString = getContent(response.getEntity());
-            final String contentTypeInHeader = getContentTypeHeader();
-            assertThat(statusCode, equalTo(HttpStatus.SC_OK));
-            assertTrue(contentTypeInHeader.contains("Content-Type: multipart/form-data;"));
-            System.out.println(responseString);
-            System.out.println("POST Content Type: " + contentTypeInHeader);
-            inputStream.close();
+            client.execute(post, response -> {
+                final int statusCode = response.getCode();
+                final String responseString = getContent(response.getEntity());
+                final String contentTypeInHeader = getContentTypeHeader();
+                assertThat(statusCode, equalTo(HttpStatus.SC_OK));
+                assertTrue(contentTypeInHeader.contains("multipart/form-data;"));
+                System.out.println(responseString);
+                System.out.println("POST Content Type: " + contentTypeInHeader);
+                inputStream.close();
+                return response;
+            });
         }
     }
 
     @Test
-    void givenCharArrayandText_whenUploadwithAddBinaryBodyandAddTextBody_ThenNoException() throws IOException {
+    void givenCharArrayandText_whenUploadwithAddBinaryBodyandAddTextBody_ThenNoException() throws IOException, ParseException {
         final String message = "This is a multipart post";
         final byte[] bytes = "binary code".getBytes();
         final MultipartEntityBuilder builder = MultipartEntityBuilder.create();
@@ -159,21 +159,20 @@ class HttpClientMultipartLiveTest {
         final HttpEntity entity = builder.build();
         post.setEntity(entity);
 
-        try(CloseableHttpClient client = HttpClientBuilder.create()
-            .build();
+        try (CloseableHttpClient httpClient = HttpClientBuilder.create()
+            .build()) {
 
-            CloseableHttpResponse response = (CloseableHttpResponse) client
-                .execute(post, new CustomHttpClientResponseHandler())){
-
-            final int statusCode = response.getCode();
-            final String responseString = getContent(response.getEntity());
-            final String contentTypeInHeader = getContentTypeHeader();
-            assertThat(statusCode, equalTo(HttpStatus.SC_OK));
-            assertTrue(contentTypeInHeader.contains("Content-Type: multipart/form-data;"));
-            System.out.println(responseString);
-            System.out.println("POST Content Type: " + contentTypeInHeader);
+            httpClient.execute(post, response -> {
+                final int statusCode = response.getCode();
+                final String responseString = getContent(response.getEntity());
+                final String contentTypeInHeader = getContentTypeHeader();
+                assertThat(statusCode, equalTo(HttpStatus.SC_OK));
+                assertTrue(contentTypeInHeader.contains("multipart/form-data;"));
+                System.out.println(responseString);
+                System.out.println("POST Content Type: " + contentTypeInHeader);
+                return response;
+            });
         }
-
     }
 
     // UTIL

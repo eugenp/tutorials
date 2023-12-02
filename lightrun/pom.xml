@@ -18,9 +18,9 @@
     </parent>
 
     <modules>
-        <module>tasks-service</module>
-        <module>users-service</module>
-        <module>api-service</module>
+        <module>lightrun-tasks-service</module>
+        <module>lightrun-users-service</module>
+        <module>lightrun-api-service</module>
     </modules>
 
 </project>

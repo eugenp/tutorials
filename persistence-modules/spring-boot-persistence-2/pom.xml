@@ -94,8 +94,8 @@
             <artifactId>tomcat-jdbc</artifactId>
         </dependency>
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
             <version>${mysql-connector-java.version}</version>
         </dependency>
         <dependency>
@@ -135,7 +135,7 @@
         <!--add note in the root pom.xml-->
         <org.slf4j.version>2.0.7</org.slf4j.version>
         <logback.version>1.4.6</logback.version>
-        <mysql-connector-java.version>8.0.33</mysql-connector-java.version>
+        <mysql-connector-java.version>8.2.0</mysql-connector-java.version>
     </properties>
 
 </project>

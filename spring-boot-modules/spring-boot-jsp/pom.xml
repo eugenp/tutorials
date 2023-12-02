@@ -47,10 +47,20 @@
             <version>${jstl.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
+            <version>${commons-text.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
             <!--uncomment below if deploying in web container -->
             <!--<scope>provided</scope> -->
+        </dependency>
+        <!-- devtools enables code hotswap in embedded server -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -100,6 +110,7 @@
         <jstl.version>1.2</jstl.version>
         <spring-boot.version>2.4.4</spring-boot.version>
         <log4j2.version>2.17.1</log4j2.version>
+        <commons-text.version>1.10.0</commons-text.version>
     </properties>
 
 </project>

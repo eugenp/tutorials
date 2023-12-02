@@ -175,7 +175,7 @@
         <spring.version>4.3.4.RELEASE</spring.version>
         <httpclient.version>4.5.2</httpclient.version>
         <spring-data-dynamodb.version>5.1.0</spring-data-dynamodb.version>
-        <aws-java-sdk-dynamodb.version>1.11.64</aws-java-sdk-dynamodb.version>
+        <aws-java-sdk-dynamodb.version>1.12.331</aws-java-sdk-dynamodb.version>
         <bootstrap.version>3.3.7-1</bootstrap.version>
         <sqlite4java.version>1.0.392</sqlite4java.version>
         <dynamodblocal.version>1.21.1</dynamodblocal.version>

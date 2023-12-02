@@ -47,7 +47,11 @@
         <dependency>
             <groupId>commons-configuration</groupId>
             <artifactId>commons-configuration</artifactId>
-            <version>1.10</version>
+            <version>${commons-configuration.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
     </dependencies>
 
@@ -61,6 +65,14 @@
                     <layout>JAR</layout>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>9</source>
+                    <target>9</target>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
@@ -68,6 +80,7 @@
         <spring.fox.version>3.0.0</spring.fox.version>
         <start-class>com.baeldung.springboot.swagger.ArticleApplication</start-class>
         <spring-cloud.version>2021.0.5</spring-cloud.version>
+        <commons-configuration.version>1.10</commons-configuration.version>
     </properties>
 
 </project>

@@ -21,6 +21,8 @@
         <module>jackson-core</module>
         <module>jackson-custom-conversions</module>
         <module>jackson-exceptions</module>
+        <module>jackson-jr</module>
+        <module>jackson-polymorphic-deserialization</module>
     </modules>
 
     <dependencies>

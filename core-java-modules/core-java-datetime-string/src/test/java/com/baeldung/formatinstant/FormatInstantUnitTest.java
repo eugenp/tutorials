@@ -6,6 +6,7 @@ import java.time.Instant;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.UnsupportedTemporalTypeException;
+import java.util.TimeZone;
 
 import org.joda.time.format.DateTimeFormat;
 import org.junit.Test;
@@ -17,7 +18,7 @@ public class FormatInstantUnitTest {
     @Test
     public void givenInstant_whenUsingDateTimeFormatter_thenFormat() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(PATTERN_FORMAT)
-            .withZone(ZoneId.systemDefault());
+            .withZone(TimeZone.getTimeZone("UTC").toZoneId());
 
         Instant instant = Instant.parse("2022-02-15T18:35:24.00Z");
         String formattedInstant = formatter.format(instant);

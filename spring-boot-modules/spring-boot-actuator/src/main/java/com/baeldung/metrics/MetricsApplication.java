@@ -15,7 +15,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.context.request.RequestContextListener;
 
-import javax.servlet.ServletContext;
+import jakarta.servlet.ServletContext;
 
 @EnableScheduling
 @ComponentScan("com.baeldung.metrics")

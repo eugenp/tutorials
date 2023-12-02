@@ -37,8 +37,8 @@
             <version>${javassist.version}</version>
         </dependency>
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
             <version>${mysql-connector-java.version}</version>
             <scope>runtime</scope>
         </dependency>
@@ -79,7 +79,7 @@
         <javassist.version>3.21.0-GA</javassist.version>
         <!-- persistence -->
         <hibernate.version>3.6.10.Final</hibernate.version>
-        <mysql-connector-java.version>5.1.40</mysql-connector-java.version>
+        <mysql-connector-java.version>8.2.0</mysql-connector-java.version>
         <tomcat-dbcp.version>8.5.8</tomcat-dbcp.version>
     </properties>
 

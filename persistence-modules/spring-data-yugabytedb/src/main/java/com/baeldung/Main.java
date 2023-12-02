@@ -8,25 +8,25 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Main implements CommandLineRunner {
 
-	@Autowired
-	private UserRepository userRepository;
+    @Autowired
+    private UserRepository userRepository;
 
-	public static void main(String[] args) {
-		SpringApplication.run(Main.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(Main.class, args);
+    }
 
-	@Override
-	public void run(String... args) throws InterruptedException {
+    @Override
+    public void run(String... args) throws InterruptedException {
 
-		int iterationCount = 1_000;
-		int elementsPerIteration = 100;
+        int iterationCount = 1_000;
+        int elementsPerIteration = 100;
 
-		for (int i = 0; i < iterationCount; i++) {
-			for (long j = 0; j < elementsPerIteration; j++) {
-				User user = new User();
-				userRepository.save(user);
-			}
-			Thread.sleep(1000);
-		}
-	}
+        for (int i = 0; i < iterationCount; i++) {
+            for (long j = 0; j < elementsPerIteration; j++) {
+                User user = new User();
+                userRepository.save(user);
+            }
+            Thread.sleep(1000);
+        }
+    }
 }
