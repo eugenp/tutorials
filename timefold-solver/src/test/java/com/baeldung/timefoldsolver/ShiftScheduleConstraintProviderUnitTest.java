@@ -21,7 +21,7 @@ class ShiftScheduleConstraintProviderUnitTest {
         constraintVerifier.verifyThat(ShiftScheduleConstraintProvider::atMostOneShiftPerDay)
             .given(ann, new Shift(MONDAY.atTime(6, 0), MONDAY.atTime(14, 0), null, ann), new Shift(MONDAY.atTime(14, 0), MONDAY.atTime(22, 0), null, ann))
             // Penalizes by 2 because both {shiftA, shiftB} and {shiftB, shiftA} match.
-            // To avoid that, use forEachUniquePair() in the constraint instead of forEach().join() in the implementation.
+            // To avoid that, use forEachUniquePair(Shift) instead of forEach(Shift).join(Shift) in ShiftScheduleConstraintProvider.atMostOneShiftPerDay().
             .penalizesBy(2);
     }
 
