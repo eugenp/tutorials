@@ -6,4 +6,5 @@
 - [How to Write and Read a File with a Java HashMap](https://www.baeldung.com/java-hashmap-write-read-file)
 - [Limiting the Max Size of a HashMap in Java](https://www.baeldung.com/java-hashmap-size-bound)
 - [How to Sort LinkedHashMap By Values in Java](https://www.baeldung.com/java-sort-linkedhashmap-using-values)
+- [How to Increment a Map Value in Java](https://www.baeldung.com/java-increment-map-value)
 - More articles: [[<-- prev]](/core-java-modules/core-java-collections-maps-6)
