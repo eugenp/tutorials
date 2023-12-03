@@ -87,7 +87,7 @@ public class VersionComparisonUnitTest {
         assertTrue(version1_1_maven.compareTo(version1_1_gradle) < 0);
         
         Version version1_1_snapshot = new Version(1, 1, 0, "snapshot", null, null);
-        assertEquals(0, version1_1.compareTo(version1_1_snapshot));
+        assertEquals(1, version1_1.compareTo(version1_1_snapshot));
         
         assertTrue(version1_1_snapshot.isSnapshot());
     }
