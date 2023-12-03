@@ -69,6 +69,9 @@
         <easymock.version>3.5.1</easymock.version>
         <jmockit.version>1.49</jmockit.version>
         <jimf.version>1.1</jimf.version>
+        <java.version>17</java.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
 </project>
