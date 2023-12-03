@@ -5,6 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-lang-math</artifactId>
     <name>core-java-lang-math</name>
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.24</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
     <packaging>jar</packaging>
 
     <parent>
