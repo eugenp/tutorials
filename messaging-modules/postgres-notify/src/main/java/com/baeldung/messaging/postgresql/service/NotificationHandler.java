@@ -23,7 +23,7 @@ public class NotificationHandler implements Consumer<PGNotification>{
     public void accept(PGNotification t) {
         log.info("Notification received: pid={}, name={}, param={}",t.getPID(),t.getName(),t.getParameter());
         Optional<Order> order = orders.findById(Long.valueOf(t.getParameter()));
-        if ( !order.isEmpty()) {
+        if ( order.isPresent()) {
             log.info("order details: {}", order.get());
         }
     }
