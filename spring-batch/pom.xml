@@ -77,7 +77,7 @@
         <opencsv.version>5.8</opencsv.version>
         <jakarta.xml.bind-api>4.0.0</jakarta.xml.bind-api>
         <jaxb.version>4.0.2</jaxb.version>
-        <jackson-datatype.version>2.14.2</jackson-datatype.version>
+        <jackson-datatype.version>2.16.0</jackson-datatype.version>
         <http-client.version>4.5.14</http-client.version>
         <jettison.version>1.5.3</jettison.version>
         <start-class>com.baeldung.batchtesting.SpringBatchApplication</start-class>
