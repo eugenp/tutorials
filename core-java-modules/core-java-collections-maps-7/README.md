@@ -5,4 +5,5 @@
 - [How to Get First or Last Entry From a LinkedHashMap in Java](https://www.baeldung.com/java-linkedhashmap-first-last-key-value-pair)
 - [How to Write and Read a File with a Java HashMap](https://www.baeldung.com/java-hashmap-write-read-file)
 - [Limiting the Max Size of a HashMap in Java](https://www.baeldung.com/java-hashmap-size-bound)
+- [How to Sort LinkedHashMap By Values in Java](https://www.baeldung.com/java-sort-linkedhashmap-using-values)
 - More articles: [[<-- prev]](/core-java-modules/core-java-collections-maps-6)
