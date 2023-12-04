@@ -47,6 +47,16 @@
             <version>${underscore.version}</version>
         </dependency>
         <dependency>
+            <groupId>com.thoughtworks.xstream</groupId>
+            <artifactId>xstream</artifactId>
+            <version>${xstream.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>${jaxb.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.apache.xmlbeans</groupId>
             <artifactId>xmlbeans</artifactId>
             <version>5.0.2</version>
@@ -82,6 +92,8 @@
         <dom4j.version>2.1.3</dom4j.version>
         <json.version>20230227</json.version>
         <underscore.version>1.89</underscore.version>
+        <xstream.version>1.4.18</xstream.version>
+        <jaxb.version>2.3.3</jaxb.version>
     </properties>
 
 </project>

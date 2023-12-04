@@ -17,7 +17,7 @@ public class StringIteratorTest {
     public void whenUseJavaForLoop_thenIterate() {
         String input = "Hello, Baeldung!";
         String expectedOutput = "Hello, Baeldung!";
-        String result = StringIterator.javaForLoop(input);
+        String result = StringIterator.javaforLoop(input);
         assertEquals(expectedOutput, result);
     }
   
@@ -25,7 +25,7 @@ public class StringIteratorTest {
     public void whenUseForEachMethod_thenIterate() {
         String input = "Hello, Baeldung!";
         String expectedOutput = "Hello, Baeldung!";
-        String result = StringIterator.java8ForEach(input);
+        String result = StringIterator.java8forEach(input);
         assertEquals(expectedOutput, result);
     }
   

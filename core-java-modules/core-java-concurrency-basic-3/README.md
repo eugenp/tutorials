@@ -12,4 +12,5 @@ This module contains articles about basic Java concurrency.
 - [CompletableFuture allOf().join() vs. CompletableFuture.join()](https://www.baeldung.com/java-completablefuture-allof-join)
 - [Retry Logic with CompletableFuture](https://www.baeldung.com/java-completablefuture-retry-logic)
 - [Convert From List of CompletableFuture to CompletableFuture List](https://www.baeldung.com/java-completablefuture-list-convert)
+- [Synchronize a Static Variable Among Different Threads](https://www.baeldung.com/java-synchronize-static-variable-different-threads)
 - [[<-- Prev]](../core-java-concurrency-basic-2)

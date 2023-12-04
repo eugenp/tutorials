@@ -2,7 +2,7 @@ package com.baeldung.jsoup;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.safety.Whitelist;
+import org.jsoup.safety.Safelist;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
@@ -13,7 +13,7 @@ public class PreservingLineBreaksUnitTest {
         String strHTML = "<html><body>Hello\nworld</body></html>";
         Document.OutputSettings outputSettings = new Document.OutputSettings();
         outputSettings.prettyPrint(false);
-        String strWithNewLines = Jsoup.clean(strHTML, "", Whitelist.none(), outputSettings);
+        String strWithNewLines = Jsoup.clean(strHTML, "", Safelist.none(), outputSettings);
         assertEquals("Hello\nworld", strWithNewLines);
     }
 
@@ -33,7 +33,7 @@ public class PreservingLineBreaksUnitTest {
         jsoupDoc.select("p").before("\\n");
         String str = jsoupDoc.html().replaceAll("\\\\n", "\n");
         String strWithNewLines =
-                Jsoup.clean(str, "", Whitelist.none(), outputSettings);
+                Jsoup.clean(str, "", Safelist.none(), outputSettings);
         assertEquals("Hello\nWorld\nParagraph", strWithNewLines);
     }
 }

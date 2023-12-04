@@ -54,6 +54,7 @@
         <module>core-java-concurrency-simple</module>
         <module>core-java-datetime-string</module>
         <module>core-java-io-conversions-2</module>
+        <module>core-java-ipc</module>
         <module>core-java-jpms</module>
         <module>core-java-lang-oop-constructors-2</module>
         <module>core-java-methods</module>
@@ -165,6 +166,7 @@
         <module>core-java-numbers-4</module>
         <module>core-java-numbers-5</module>
         <module>core-java-numbers-6</module>
+        <module>core-java-numbers-7</module>
         <module>core-java-optional</module>
         <module>core-java-perf</module>
         <module>core-java-properties</module>
@@ -184,6 +186,7 @@
         <module>core-java-string-algorithms-2</module>
         <module>core-java-string-apis</module>
         <!--<module>core-java-string-apis-2</module>--> <!-- failing after upgrading to jdk17 -->
+        <module>core-java-swing</module>
         <module>core-java-string-conversions</module>
         <module>core-java-string-conversions-2</module>
         <module>core-java-string-conversions-3</module>
@@ -198,7 +201,8 @@
         <module>core-java-records</module>
         <module>core-java-9-jigsaw</module>
         <!--<module>core-java-20</module>--> <!--JAVA-25373-->
-        <!--<module>core-java-conditionals</module>--> <!--JAVA-25373-->
+        <!--<module>core-java-21</module>--> <!--JAVA-25373-->
+        <!--<module>core-java-conditionals</module>--> <!--JAVA-20931-->
         <module>core-java-collections-set</module>
         <module>core-java-date-operations-1</module>
         <module>core-java-datetime-conversion</module>
@@ -222,5 +226,4 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
 </project>
