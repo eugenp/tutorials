@@ -25,4 +25,9 @@ class BikeUnitTest {
         assertEquals(5, Bike.PART.get("seat"));
     }
 
+    @Test
+    void givenMathClass_whenAccessingPiConstant_thenVerifyPiValueIsCorrect() {
+        assertEquals(3.141592653589793, Math.PI);
+    }
+
 }
