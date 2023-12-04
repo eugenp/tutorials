@@ -1,6 +1,7 @@
 package compareany;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
 import java.util.Set;
@@ -16,8 +17,8 @@ public class CompareAnyUnitTest {
         String presentString = "Apple";
         String notPresentString = "Avocado";
 
-        assertTrue(matchAnyWithIf(presentString, "Mango", "Papaya", "PineApple", "Apple"));
-        assertFalse(matchAnyWithIf(notPresentString, "Mango", "Papaya", "PineApple", "Apple"));
+        assertTrue(matchAnyWithIf(presentString, "Mango", "Papaya", "Pineapple", "Apple"));
+        assertFalse(matchAnyWithIf(notPresentString, "Mango", "Papaya", "Pineapple", "Apple"));
     }
 
     @Test
@@ -25,8 +26,8 @@ public class CompareAnyUnitTest {
         String presentString = "Apple";
         String notPresentString = "Avocado";
 
-        assertTrue(compareWithAnyUsingArrayUtils(presentString, "Mango", "Papaya", "PineApple", "Apple"));
-        assertFalse(compareWithAnyUsingArrayUtils(notPresentString, "Mango", "Papaya", "PineApple", "Apple"));
+        assertTrue(compareWithAnyUsingArrayUtils(presentString, "Mango", "Papaya", "Pineapple", "Apple"));
+        assertFalse(compareWithAnyUsingArrayUtils(notPresentString, "Mango", "Papaya", "Pineapple", "Apple"));
     }
 
     @Test
@@ -34,17 +35,34 @@ public class CompareAnyUnitTest {
         String presentString = "Apple";
         String notPresentString = "Avocado";
 
-        assertTrue(compareWithAnyUsingStringUtils(presentString, "Mango", "Papaya", "PineApple", "Apple"));
-        assertFalse(compareWithAnyUsingStringUtils(notPresentString, "Mango", "Papaya", "PineApple", "Apple"));
+        assertTrue(compareWithAnyUsingStringUtils(presentString, "Mango", "Papaya", "Pineapple", "Apple"));
+        assertFalse(compareWithAnyUsingStringUtils(notPresentString, "Mango", "Papaya", "Pineapple", "Apple"));
     }
 
+    @Test
+    void givenStrings_whenCompareCaseInsensitiveUsingStringUtils_thenSuccess() {
+        String presentString = "APPLE";
+        String notPresentString = "AVOCADO";
+
+        assertTrue(compareWithAnyCaseInsensitiveUsingStringUtils(presentString, "Mango", "Papaya", "Pineapple", "Apple"));
+        assertFalse(compareWithAnyCaseInsensitiveUsingStringUtils(notPresentString, "Mango", "Papaya", "Pineapple", "Apple"));
+    }
     @Test
     void givenStrings_whenCompareUsingStream_thenSuccess() {
         String presentString = "Apple";
         String notPresentString = "Avocado";
 
-        assertTrue(compareWithAnyUsingStream(presentString, "Mango", "Papaya", "PineApple", "Apple"));
-        assertFalse(compareWithAnyUsingStream(notPresentString, "Mango", "Papaya", "PineApple", "Apple"));
+        assertTrue(compareWithAnyUsingStream(presentString, "Mango", "Papaya", "Pineapple", "Apple"));
+        assertFalse(compareWithAnyUsingStream(notPresentString, "Mango", "Papaya", "Pineapple", "Apple"));
+    }
+
+    @Test
+    void givenStrings_whenCompareCaseInsensitiveUsingStream_thenSuccess() {
+        String presentString = "APPLE";
+        String notPresentString = "AVOCADO";
+
+        assertTrue(compareWithAnyCaseInsensitiveUsingStream(presentString, "Mango", "Papaya", "Pineapple", "Apple"));
+        assertFalse(compareWithAnyCaseInsensitiveUsingStream(notPresentString, "Mango", "Papaya", "Pineapple", "Apple"));
     }
 
     @Test
@@ -52,8 +70,8 @@ public class CompareAnyUnitTest {
         String presentString = "Apple";
         String notPresentString = "Avocado";
 
-        assertTrue(compareWithAnyUsingSet(presentString, "Mango", "Papaya", "PineApple", "Apple"));
-        assertFalse(compareWithAnyUsingSet(notPresentString, "Mango", "Papaya", "PineApple", "Apple"));
+        assertTrue(compareWithAnyUsingSet(presentString, "Mango", "Papaya", "Pineapple", "Apple"));
+        assertFalse(compareWithAnyUsingSet(notPresentString, "Mango", "Papaya", "Pineapple", "Apple"));
     }
 
     @Test
@@ -61,8 +79,17 @@ public class CompareAnyUnitTest {
         String presentString = "Apple";
         String notPresentString = "Avocado";
 
-        assertTrue(compareWithAnyUsingRegularExpression(presentString, "Mango", "Papaya", "PineApple", "Apple"));
-        assertFalse(compareWithAnyUsingRegularExpression(notPresentString, "Mango", "Papaya", "PineApple", "Apple"));
+        assertTrue(compareWithAnyUsingRegularExpression(presentString, "Mango", "Papaya", "Pineapple", "Apple"));
+        assertFalse(compareWithAnyUsingRegularExpression(notPresentString, "Mango", "Papaya", "Pineapple", "Apple"));
+    }
+
+    @Test
+    void givenStrings_whenCompareCaseInsensitiveUsingRegularExpression_thenSuccess() {
+        String presentString = "APPLE";
+        String notPresentString = "AVOCADO";
+
+        assertTrue(compareWithAnyCaseInsensitiveUsingRegularExpression(presentString, "Mango", "Papaya", "Pineapple", "Apple"));
+        assertFalse(compareWithAnyCaseInsensitiveUsingRegularExpression(notPresentString, "Mango", "Papaya", "Pineapple", "Apple"));
     }
 
     private boolean matchAnyWithIf(String str, String ... strs) {
@@ -78,20 +105,29 @@ public class CompareAnyUnitTest {
         return StringUtils.containsAny(str, strs);
     }
 
+    private boolean compareWithAnyCaseInsensitiveUsingStringUtils(String str, String ... strs) {
+        return StringUtils.containsAnyIgnoreCase(str, strs);
+    }
+
     private boolean compareWithAnyUsingSet(String str, String ... strs) {
         return Set.of(strs).contains(str);
     }
 
-    private static boolean compareWithAnyUsingRegularExpression(String str, String ... strs) {
+    private boolean compareWithAnyUsingRegularExpression(String str, String ... strs) {
         return str.matches(String.join("|", strs));
     }
 
-    private static boolean compareWithAnyUsingStream(String str, String ... strs) {
+    private boolean compareWithAnyCaseInsensitiveUsingRegularExpression(String str, String ... strs) {
+        return str.matches("(?i)" + String.join("|", strs));
+    }
+
+    private boolean compareWithAnyUsingStream(String str, String ... strs) {
         return Arrays.stream(strs).anyMatch(str::equals);
     }
-
-    private static boolean compareWithAnyUsingArrayUtils(String str, String ... strs) {
+    private boolean compareWithAnyCaseInsensitiveUsingStream(String str, String ... strs) {
+        return Arrays.stream(strs).anyMatch(str::equalsIgnoreCase);
+    }
+    private boolean compareWithAnyUsingArrayUtils(String str, String ... strs) {
         return ArrayUtils.contains(strs, str);
     }
-
 }
