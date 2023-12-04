@@ -1,4 +1,4 @@
-package com.baeldung.localDateToISO;
+package com.baeldung.localdatetoiso;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
