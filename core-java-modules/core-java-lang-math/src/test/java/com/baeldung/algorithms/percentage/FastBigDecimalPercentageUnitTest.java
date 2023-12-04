@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import java.math.BigDecimal;
 
-public class FastBigDecimalPercentageTest {
+public class FastBigDecimalPercentageUnitTest {
     private FastBigDecimalPercentage pc = new FastBigDecimalPercentage();
 
 
