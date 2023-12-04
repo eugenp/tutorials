@@ -88,7 +88,7 @@
         <log4j2.version>2.17.1</log4j2.version>
         <springdoc.version>1.7.0</springdoc.version>
         <openapi-generator.version>3.3.4</openapi-generator.version>
-        <jackson-databind.version>2.10.0.pr3</jackson-databind.version>
+        <jackson-databind.version>2.16.0</jackson-databind.version>
         <openapi-generator-maven-plugin.version>5.1.0</openapi-generator-maven-plugin.version>
     </properties>
 
