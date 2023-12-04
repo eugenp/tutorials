@@ -7,15 +7,14 @@
     <name>spring-security-oauth2-testing</name>
     <packaging>pom</packaging>
     <description>spring-security 6 oauth testing sample project</description>
+
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../../parent-boot-3</relativePath>
     </parent>
-    <properties>
-        <spring-addons.version>7.1.10</spring-addons.version>
-    </properties>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -25,8 +24,14 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
     <modules>
         <module>reactive-resource-server</module>
         <module>servlet-resource-server</module>
     </modules>
+
+    <properties>
+        <spring-addons.version>7.1.10</spring-addons.version>
+    </properties>
+
 </project>
