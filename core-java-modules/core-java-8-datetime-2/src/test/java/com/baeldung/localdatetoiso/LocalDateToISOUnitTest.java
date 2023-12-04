@@ -1,4 +1,4 @@
-package com.baeldung.localDateToISO;
+package com.baeldung.localdatetoiso;
 
 import static org.junit.Assert.assertEquals;
 
