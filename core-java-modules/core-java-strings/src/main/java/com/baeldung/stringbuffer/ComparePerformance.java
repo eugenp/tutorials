@@ -28,6 +28,7 @@ public class ComparePerformance {
 
     @Benchmark
     public String benchmarkStringConcatenation() {
+        strFinal = "";
         strFinal += strInitial;
         return strFinal;
     }
