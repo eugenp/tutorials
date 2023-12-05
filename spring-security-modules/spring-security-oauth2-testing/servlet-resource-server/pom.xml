@@ -12,9 +12,7 @@
     <artifactId>servlet-resource-server</artifactId>
     <name>servlet-resource-server</name>
     <description>Demo project for Spring Boot servlet resource-server</description>
-    <properties>
-        <java.version>17</java.version>
-    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>

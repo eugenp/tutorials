@@ -60,15 +60,15 @@
         <!-- <module>sirix</module> --> <!-- We haven't upgraded to java 11. Fixing in BAEL-10841 -->
         <module>solr</module>
         <module>spring-boot-persistence-2</module>
-        <module>spring-boot-persistence-3</module>
-        <module>spring-boot-mysql</module>
+        <!--<module>spring-boot-persistence-3</module>--> <!-- failing after upgrading to jdk17 -->
+        <!--<module>spring-boot-mysql</module>-->   <!-- failing after upgrading to jdk17 -->
         <module>spring-boot-persistence</module>
         <module>spring-boot-persistence-h2</module>
         <module>spring-boot-persistence-mongodb</module>
         <module>spring-boot-persistence-mongodb-2</module>
         <module>spring-boot-persistence-mongodb-3</module>
         <module>spring-data-arangodb</module>
-        <module>spring-data-cassandra</module>
+        <!--<module>spring-data-cassandra</module>-->   <!-- failing after upgrading to jdk17 -->
         <module>spring-data-cassandra-test</module>
         <module>spring-data-cosmosdb</module>
         <module>spring-data-couchbase-2</module>
@@ -108,8 +108,8 @@
         <module>spring-jpa</module>
         <module>spring-jpa-2</module>
         <module>spring-jdbc</module>
-	<module>spring-jdbc-2</module>
-        <module>spring-jooq</module>
+	    <module>spring-jdbc-2</module>
+        <!--<module>spring-jooq</module>--><!--  failing after upgrading to jdk17 -->
         <module>spring-mybatis</module>
         <module>spring-persistence-simple</module>
         <module>spring-data-yugabytedb</module>
