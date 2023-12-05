@@ -1,4 +1,4 @@
-package compareany;
+package com.baeldung.compareany;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -17,8 +17,8 @@ public class CompareAnyUnitTest {
         String presentString = "Apple";
         String notPresentString = "Avocado";
 
-        assertTrue(matchAnyWithIf(presentString, "Mango", "Papaya", "Pineapple", "Apple"));
-        assertFalse(matchAnyWithIf(notPresentString, "Mango", "Papaya", "Pineapple", "Apple"));
+        assertTrue(compareWithAnyWithIf(presentString, "Mango", "Papaya", "Pineapple", "Apple"));
+        assertFalse(compareWithAnyWithIf(notPresentString, "Mango", "Papaya", "Pineapple", "Apple"));
     }
 
     @Test
@@ -92,7 +92,7 @@ public class CompareAnyUnitTest {
         assertFalse(compareWithAnyCaseInsensitiveUsingRegularExpression(notPresentString, "Mango", "Papaya", "Pineapple", "Apple"));
     }
 
-    private boolean matchAnyWithIf(String str, String ... strs) {
+    private boolean compareWithAnyWithIf(String str, String ... strs) {
         for(String s : strs) {
             if (str.equals(s)) {
                 return true;
