@@ -1125,7 +1125,6 @@
     <properties>
         <!-- Build properties -->
         <maven.version>3.0.0</maven.version>
-        <java.version>11</java.version>
         <scala.version>2.12.6</scala.version>
         <node.version>v10.15.0</node.version>
         <npm.version>6.4.1</npm.version>
