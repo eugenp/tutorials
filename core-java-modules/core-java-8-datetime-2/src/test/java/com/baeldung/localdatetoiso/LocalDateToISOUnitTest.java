@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 public class LocalDateToISOUnitTest {
     @Test
-    public void givenLocalDate_whenUsingDateTimeFormatter_thenISOFormat(){
+    void givenLocalDate_whenUsingDateTimeFormatter_thenISOFormat(){
         LocalDateToISO localDateToISO = new LocalDateToISO();
         LocalDate localDate = LocalDate.of(2023, 11, 6);
 
@@ -17,7 +17,7 @@ public class LocalDateToISOUnitTest {
     }
 
     @Test
-    public void givenLocalDate_whenUsingSimpleDateFormat_thenISOFormat(){
+    void givenLocalDate_whenUsingSimpleDateFormat_thenISOFormat(){
         LocalDateToISO localDateToISO = new LocalDateToISO();
         LocalDate localDate = LocalDate.of(2023, 11, 6);
 
@@ -27,7 +27,7 @@ public class LocalDateToISOUnitTest {
     }
 
     @Test
-    public void givenLocalDate_whenUsingJodaTime_thenISOFormat() {
+    void givenLocalDate_whenUsingJodaTime_thenISOFormat() {
         LocalDateToISO localDateToISO = new LocalDateToISO();
         org.joda.time.LocalDate localDate = new org.joda.time.LocalDate(2023, 11, 6);
 
@@ -37,7 +37,7 @@ public class LocalDateToISOUnitTest {
     }
 
     @Test
-    public void givenLocalDate_whenUsingApacheCommonsLang_thenISOFormat() {
+    void givenLocalDate_whenUsingApacheCommonsLang_thenISOFormat() {
         LocalDateToISO localDateToISO = new LocalDateToISO();
         LocalDate localDate = LocalDate.of(2023, 11, 6);
 
