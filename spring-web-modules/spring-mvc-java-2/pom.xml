@@ -46,6 +46,21 @@
             <artifactId>commons-fileupload</artifactId>
             <version>${commons-fileupload.version}</version>
         </dependency>
+        <dependency>
+            <groupId>net.sourceforge.htmlunit</groupId>
+            <artifactId>htmlunit</artifactId>
+            <version>${htmlunit.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+                <exclusion>
+                    <groupId>commons-io</groupId>
+                    <artifactId>commons-io</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
     </dependencies>
 
     <build>
@@ -63,6 +78,7 @@
         <spring.mvc.version>5.2.2.RELEASE</spring.mvc.version>
         <jaxb-runtime.version>2.3.5</jaxb-runtime.version>
         <commons-fileupload.version>1.5</commons-fileupload.version>
+        <htmlunit.version>2.32</htmlunit.version>
     </properties>
 
 </project>

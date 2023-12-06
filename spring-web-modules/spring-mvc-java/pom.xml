@@ -44,21 +44,7 @@
             <scope>provided</scope>
         </dependency>
         <!-- common -->
-        <dependency>
-            <groupId>net.sourceforge.htmlunit</groupId>
-            <artifactId>htmlunit</artifactId>
-            <version>${htmlunit.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-                <exclusion>
-                    <groupId>commons-io</groupId>
-                    <artifactId>commons-io</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
+
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
@@ -221,7 +207,6 @@
         <!-- testing -->
         <httpcore.version>4.4.5</httpcore.version>
         <httpclient.version>4.5.2</httpclient.version>
-        <net.sourceforge.htmlunit>2.23</net.sourceforge.htmlunit>
         <!-- maven plugins -->
         <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
@@ -233,7 +218,6 @@
         <javax.el.version>3.0.1-b09</javax.el.version>
         <javax.version>4.0.1</javax.version>
         <javax-servlet-api.version>2.3.3</javax-servlet-api.version>
-        <htmlunit.version>2.32</htmlunit.version>
         <json-path.version>2.8.0</json-path.version>
         <start-class>com.baeldung.SpringMVCApplication</start-class>
     </properties>
