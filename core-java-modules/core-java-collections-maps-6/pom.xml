@@ -13,9 +13,6 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <spring.version>5.2.5.RELEASE</spring.version>
-    </properties>
     <dependencies>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -50,5 +47,9 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <properties>
+        <spring.version>5.2.5.RELEASE</spring.version>
+    </properties>
 
 </project>
