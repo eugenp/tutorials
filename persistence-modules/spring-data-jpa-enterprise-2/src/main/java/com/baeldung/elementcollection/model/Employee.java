@@ -1,8 +1,13 @@
 package com.baeldung.elementcollection.model;
 
-import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
+
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 
 @Entity
 public class Employee {

@@ -4,6 +4,7 @@ This module contains articles about Spring Data JPA used in enterprise applicati
 
 ### Relevant Articles: 
 - [Custom Naming Convention with Spring Data JPA](https://www.baeldung.com/spring-data-jpa-custom-naming)
+- [Working with Lazy Element Collections in JPA](https://www.baeldung.com/java-jpa-lazy-collections)
 
 
 ### Eclipse Config 

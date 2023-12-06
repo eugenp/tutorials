@@ -1,14 +1,16 @@
 package com.baeldung.elementcollection.repository;
 
-import com.baeldung.elementcollection.model.Employee;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.persistence.EntityGraph;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.HashMap;
-import java.util.Map;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.baeldung.elementcollection.model.Employee;
 
 @Repository
 public class EmployeeRepository {
