@@ -1,3 +1,8 @@
+/**
+ * These test cases have dependency with docker because they pull the docker images from docker hub
+ * and run the container. So, please make sure to install docker before running the tests.
+ * For the image details please look into the docker-compose files under resources/connectiondetails/docker
+ **/
 package com.baeldung.connectiondetails;
 
 import com.baeldung.connectiondetails.configuration.RabbitMQConnectionDetailsConfiguration;
@@ -25,9 +30,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @Import(RabbitMQConnectionDetailsConfiguration.class)
 @TestPropertySource(locations = {"classpath:connectiondetails/application-rabbitmq.properties"})
 @ActiveProfiles("rabbitmq")
-public class RabbitmqConnectionDetailsIntegrationTest {
+public class RabbitmqConnectionDetailsLiveTest {
 
-    private static final Logger logger = LoggerFactory.getLogger(RabbitmqConnectionDetailsIntegrationTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(RabbitmqConnectionDetailsLiveTest.class);
 
     @Autowired
     private RabbitTemplate rabbitTemplate;
