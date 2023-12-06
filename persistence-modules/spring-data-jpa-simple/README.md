@@ -1,0 +1,1 @@
+This module contains sample e-book code. Therefore, it should not be used to add code for any new article.
