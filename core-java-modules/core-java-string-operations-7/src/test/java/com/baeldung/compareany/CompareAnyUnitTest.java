@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 
 import org.apache.commons.lang3.ArrayUtils;
@@ -75,6 +76,15 @@ public class CompareAnyUnitTest {
     }
 
     @Test
+    void givenStrings_whenCompareUsingList_thenSuccess() {
+        String presentString = "Apple";
+        String notPresentString = "Avocado";
+
+        assertTrue(compareWithAnyUsingList(presentString, "Mango", "Papaya", "Pineapple", "Apple"));
+        assertFalse(compareWithAnyUsingList(notPresentString, "Mango", "Papaya", "Pineapple", "Apple"));
+    }
+
+    @Test
     void givenStrings_whenCompareUsingRegularExpression_thenSuccess() {
         String presentString = "Apple";
         String notPresentString = "Avocado";
@@ -102,15 +112,19 @@ public class CompareAnyUnitTest {
     }
 
     private boolean compareWithAnyUsingStringUtils(String str, String ... strs) {
-        return StringUtils.containsAny(str, strs);
+        return StringUtils.equalsAny(str, strs);
     }
 
     private boolean compareWithAnyCaseInsensitiveUsingStringUtils(String str, String ... strs) {
-        return StringUtils.containsAnyIgnoreCase(str, strs);
+        return StringUtils.equalsAnyIgnoreCase(str, strs);
     }
 
     private boolean compareWithAnyUsingSet(String str, String ... strs) {
         return Set.of(strs).contains(str);
+    }
+
+    private boolean compareWithAnyUsingList(String str, String ... strs) {
+        return List.of(strs).contains(str);
     }
 
     private boolean compareWithAnyUsingRegularExpression(String str, String ... strs) {
