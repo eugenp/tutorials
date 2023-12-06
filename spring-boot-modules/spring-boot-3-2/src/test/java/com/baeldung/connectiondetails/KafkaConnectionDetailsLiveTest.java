@@ -1,3 +1,8 @@
+/**
+ * These test cases have dependency with docker because they pull the docker images from docker hub
+ * and run the container. So, please make sure to install docker before running the tests.
+ * For the image details please look into the docker-compose files under resources/connectiondetails/docker
+ **/
 package com.baeldung.connectiondetails;
 
 import com.baeldung.connectiondetails.configuration.CustomKafkaConnectionDetailsConfiguration;
@@ -21,7 +26,7 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 @ComponentScan(basePackages = "com.baeldung.connectiondetails")
 @TestPropertySource(locations = {"classpath:connectiondetails/application-kafka.properties"})
 @ActiveProfiles("kafka")
-public class KafkaConnectionDetailsIntegrationTest {
+public class KafkaConnectionDetailsLiveTest {
     @Autowired
     private KafkaTemplate<String, String> kafkaTemplate;
 

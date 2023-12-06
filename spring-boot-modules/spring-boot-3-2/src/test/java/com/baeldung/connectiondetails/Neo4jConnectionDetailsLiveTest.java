@@ -1,3 +1,8 @@
+/**
+ * These test cases have dependency with docker because they pull the docker images from docker hub
+ * and run the container. So, please make sure to install docker before running the tests.
+ * For the image details please look into the docker-compose files under resources/connectiondetails/docker
+ **/
 package com.baeldung.connectiondetails;
 
 import com.baeldung.connectiondetails.configuration.CustomNeo4jConnectionDetailsConfiguration;
@@ -22,7 +27,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @ComponentScan(basePackages = "com.baeldung.connectiondetails")
 @TestPropertySource(locations = {"classpath:connectiondetails/application-neo4j.properties"})
 @ActiveProfiles("neo4j")
-public class Neo4jConnectionDetailsIntegrationTest {
+public class Neo4jConnectionDetailsLiveTest {
     @Autowired
     private Neo4jTemplate neo4jTemplate;
 
