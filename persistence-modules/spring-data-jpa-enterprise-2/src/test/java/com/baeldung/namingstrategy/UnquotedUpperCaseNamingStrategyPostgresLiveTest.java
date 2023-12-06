@@ -1,5 +1,17 @@
 package com.baeldung.namingstrategy;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.math.BigInteger;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+
 import org.hibernate.exception.SQLGrammarException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,20 +22,9 @@ import org.springframework.boot.test.autoconfigure.jdbc.TestDatabaseAutoConfigur
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.TestPropertySource;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import java.math.BigInteger;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 @DataJpaTest(excludeAutoConfiguration = TestDatabaseAutoConfiguration.class)
-@TestPropertySource("quoted-lower-case-naming-strategy-on-postgres.properties")
-class QuotedLowerCaseNamingStrategyPostgresLiveTest {
+@TestPropertySource("unquoted-upper-case-naming-strategy-on-postgres.properties")
+class UnquotedUpperCaseNamingStrategyPostgresLiveTest {
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -42,7 +43,7 @@ class QuotedLowerCaseNamingStrategyPostgresLiveTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"person", "PERSON", "Person"})
-    void givenPeopleAndLowerCaseNamingStrategy_whenQueryPersonUnquoted_thenResult(String tableName) {
+    void givenPeopleAndUpperCaseNamingStrategy_whenQueryPersonUnquoted_thenResult(String tableName) {
         Query query = entityManager.createNativeQuery("select * from " + tableName);
 
         // Expected result
@@ -54,18 +55,18 @@ class QuotedLowerCaseNamingStrategyPostgresLiveTest {
     }
 
     @Test
-    void givenPeopleAndLowerCaseNamingStrategy_whenQueryPersonQuotedUpperCase_thenException() {
+    void givenPeopleAndUpperCaseNamingStrategy_whenQueryPersonQuotedUpperCase_thenException() {
         Query query = entityManager.createNativeQuery("select * from \"PERSON\"");
 
-        // Expected result
+        // Unexpected result
         assertThrows(SQLGrammarException.class, query::getResultStream);
     }
 
     @Test
-    void givenPeopleAndLowerCaseNamingStrategy_whenQueryPersonQuotedLowerCase_thenResult() {
+    void givenPeopleAndUpperCaseNamingStrategy_whenQueryPersonQuotedLowerCase_thenResult() {
         Query query = entityManager.createNativeQuery("select * from \"person\"");
 
-        // Expected result
+        // Unexpected result
         List<Person> result = (List<Person>) query.getResultStream()
           .map(this::fromDatabase)
           .collect(Collectors.toList());
