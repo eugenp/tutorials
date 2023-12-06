@@ -1,3 +1,8 @@
+/**
+ * These test cases have dependency with docker because they pull the docker images from docker hub
+ * and run the container. So, please make sure to install docker before running the tests.
+ * For the image details please look into the docker-compose files under resources/connectiondetails/docker
+ **/
 package com.baeldung.connectiondetails;
 
 import com.baeldung.connectiondetails.configuration.JdbcConnectionDetailsConfiguration;
@@ -25,8 +30,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @ComponentScan(basePackages = "com.baeldung.connectiondetails")
 @TestPropertySource(locations = {"classpath:connectiondetails/application-jdbc.properties"})
 @ActiveProfiles("jdbc")
-public class JdbcConnectionDetailsIntegrationTest {
-    private static final Logger logger = LoggerFactory.getLogger(JdbcConnectionDetailsIntegrationTest.class);
+public class JdbcConnectionDetailsLiveTest {
+    private static final Logger logger = LoggerFactory.getLogger(JdbcConnectionDetailsLiveTest.class);
     @Autowired
     private JdbcTemplate jdbcTemplate;
     @Test

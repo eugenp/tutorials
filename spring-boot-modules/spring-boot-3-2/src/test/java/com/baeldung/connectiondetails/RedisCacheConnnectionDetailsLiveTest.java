@@ -1,3 +1,8 @@
+/**
+ * These test cases have dependency with docker because they pull the docker images from docker hub
+ * and run the container. So, please make sure to install docker before running the tests.
+ * For the image details please look into the docker-compose files under resources/connectiondetails/docker
+ **/
 package com.baeldung.connectiondetails;
 
 import com.baeldung.connectiondetails.configuration.RedisConnectionDetailsConfiguration;
@@ -20,8 +25,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @Import(RedisConnectionDetailsConfiguration.class)
 @TestPropertySource(locations = {"classpath:connectiondetails/application-redis.properties"})
 @ActiveProfiles("redis")
-public class RedisCacheConnnectionDetailsIntegrationTest {
-    private static final Logger logger = LoggerFactory.getLogger(RedisCacheConnnectionDetailsIntegrationTest.class);
+public class RedisCacheConnnectionDetailsLiveTest {
+    private static final Logger logger = LoggerFactory.getLogger(RedisCacheConnnectionDetailsLiveTest.class);
 
     @Autowired
     RedisTemplate<String, String> redisTemplate;
