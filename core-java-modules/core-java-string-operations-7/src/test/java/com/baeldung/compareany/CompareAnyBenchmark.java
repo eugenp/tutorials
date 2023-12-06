@@ -1,6 +1,7 @@
 package com.baeldung.compareany;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -31,17 +32,22 @@ public class CompareAnyBenchmark {
 
     @Benchmark
     public boolean compareWithAnyUsingStringUtils() {
-        return StringUtils.containsAny(fruit, groupOfFruits);
+        return StringUtils.equalsAny(fruit, groupOfFruits);
     }
 
     @Benchmark
     public boolean compareWithAnyCaseInsensitiveUsingStringUtils() {
-        return StringUtils.containsAnyIgnoreCase(fruit, groupOfFruits);
+        return StringUtils.equalsAnyIgnoreCase(fruit, groupOfFruits);
     }
 
     @Benchmark
     public boolean compareWithAnyUsingSet() {
         return Set.of(groupOfFruits).contains(fruit);
+    }
+
+    @Benchmark
+    public boolean compareWithAnyUsingList() {
+        return List.of(groupOfFruits).contains(fruit);
     }
 
     @Benchmark
