@@ -715,7 +715,7 @@
                 <module>azure</module>
                 <module>bazel</module>
                 <module>checker-framework</module>
-                <!--<module>core-groovy-modules</module>-->
+                <module>core-groovy-modules</module>
                 <module>core-java-modules</module>
                 <module>custom-pmd</module>
                 <module>data-structures</module>
@@ -961,7 +961,7 @@
                 <module>azure</module>
                 <module>bazel</module>
                 <module>checker-framework</module>
-                <!--<module>core-groovy-modules</module>-->
+                <module>core-groovy-modules</module>
                 <module>core-java-modules</module>
                 <module>custom-pmd</module>
                 <module>data-structures</module>
