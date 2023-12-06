@@ -77,12 +77,7 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <!-- excel -->
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi-ooxml</artifactId>
-            <version>${poi.version}</version>
-        </dependency>
+
         <!-- Validation -->
         <dependency>
             <groupId>org.hibernate.validator</groupId>
@@ -213,8 +208,6 @@
         <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
         <!-- AspectJ -->
         <aspectj.version>1.9.1</aspectj.version>
-        <!-- excel -->
-        <poi.version>3.16-beta1</poi.version>
         <javax.el.version>3.0.1-b09</javax.el.version>
         <javax.version>4.0.1</javax.version>
         <javax-servlet-api.version>2.3.3</javax-servlet-api.version>

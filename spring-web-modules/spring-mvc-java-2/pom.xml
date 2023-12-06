@@ -61,6 +61,26 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!-- excel -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>${poi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.el</artifactId>
+            <version>${javax.el.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>javax.servlet.jsp-api</artifactId>
+            <version>${javax-servlet-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -79,6 +99,9 @@
         <jaxb-runtime.version>2.3.5</jaxb-runtime.version>
         <commons-fileupload.version>1.5</commons-fileupload.version>
         <htmlunit.version>2.32</htmlunit.version>
+        <poi.version>3.16-beta1</poi.version>
+        <javax.el.version>3.0.1-b09</javax.el.version>
+        <javax-servlet-api.version>2.3.3</javax-servlet-api.version>
     </properties>
 
 </project>
