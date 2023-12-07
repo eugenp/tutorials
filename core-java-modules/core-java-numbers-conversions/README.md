@@ -5,3 +5,4 @@
 - [How To Convert Double To Float In Java](https://www.baeldung.com/java-convert-double-float)
 - [Converting from float to BigDecimal in Java](https://www.baeldung.com/java-convert-float-bigdecimal)
 - [Convert Positive Integer to Negative and Vice Versa in Java](https://www.baeldung.com/java-negating-integer)
+- [Rounding Up a Number to Nearest Multiple of 5 in Java](https://www.baeldung.com/java-round-nearest-multiple-five)
