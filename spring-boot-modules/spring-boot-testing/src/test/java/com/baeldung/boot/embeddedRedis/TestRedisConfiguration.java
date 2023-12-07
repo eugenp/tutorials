@@ -4,8 +4,8 @@ import com.baeldung.boot.embeddedRedis.configuration.RedisProperties;
 import org.springframework.boot.test.context.TestConfiguration;
 import redis.embedded.RedisServer;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 
 @TestConfiguration
 public class TestRedisConfiguration {

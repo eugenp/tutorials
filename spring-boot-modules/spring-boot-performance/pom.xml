@@ -25,7 +25,7 @@
         <dependency>
             <groupId>de.codecentric</groupId>
             <artifactId>chaos-monkey-spring-boot</artifactId>
-            <version>${chaos.monkey.version}</version>
+            <version>${chaos-monkey-spring-boot.version}</version>
         </dependency>
     </dependencies>
 
@@ -48,7 +48,7 @@
     <properties>
         <!-- The main class to start by executing java -jar -->
         <start-class>com.baeldung.lazyinitialization.Application</start-class>
-        <chaos.monkey.version>2.0.0</chaos.monkey.version>
+        <chaos-monkey-spring-boot.version>2.0.0</chaos-monkey-spring-boot.version>
     </properties>
 
 </project>

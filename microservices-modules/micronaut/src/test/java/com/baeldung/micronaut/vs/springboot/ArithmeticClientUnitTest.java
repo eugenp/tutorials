@@ -1,33 +1,20 @@
 package com.baeldung.micronaut.vs.springboot;
 
-import static org.junit.Assert.assertEquals;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
-
-import io.micronaut.context.ApplicationContext;
-import io.micronaut.runtime.server.EmbeddedServer;
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
 import com.baeldung.micronaut.vs.springboot.client.ArithmeticClientImpl;
+import io.micronaut.runtime.EmbeddedApplication;
+import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
+import jakarta.inject.Inject;
+import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+@MicronautTest
 public class ArithmeticClientUnitTest {
-    private EmbeddedServer server;
+    @Inject
+    private EmbeddedApplication<?> server;
+    @Inject
     private ArithmeticClientImpl client;
-
-    @Before
-    public void setup() {
-        server = ApplicationContext.run(EmbeddedServer.class);
-        client = server.getApplicationContext()
-            .getBean(ArithmeticClientImpl.class);
-    }
-
-    @After
-    public void cleanup() {
-        server.stop();
-    }
 
     @Test
     public void givenTwoNumbers_whenAdd_thenCorrectAnswerReturned() {
@@ -56,6 +43,6 @@ public class ArithmeticClientUnitTest {
     @Test
     public void whenMemory_thenCorrectAnswerReturned() {
         String expected = "Initial:";
-        assertThat(client.memory(), containsString(expected));
+        assertThat(client.memory()).contains(expected);
     }
 }

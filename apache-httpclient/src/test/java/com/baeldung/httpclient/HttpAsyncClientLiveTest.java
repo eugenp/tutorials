@@ -38,8 +38,6 @@ import org.junit.jupiter.api.Test;
 
 
 class HttpAsyncClientLiveTest extends GetRequestMockServer {
-
-    private static final String HOST = "http://www.google.com";
     private static final String HOST_WITH_SSL = "https://mms.nw.ru/";
     private static final String HOST_WITH_PROXY = "http://httpbin.org/";
     private static final String URL_SECURED_BY_BASIC_AUTHENTICATION = "http://browserspy.dk/password-ok.php";// "http://localhost:8080/spring-security-rest-basic-auth/api/foos/1";
@@ -136,7 +134,7 @@ class HttpAsyncClientLiveTest extends GetRequestMockServer {
 
         client.start();
 
-        final SimpleHttpRequest request = new SimpleHttpRequest("GET",HOST_WITH_SSL);
+        final SimpleHttpRequest request = new SimpleHttpRequest("GET", HOST_WITH_SSL);
         final Future<SimpleHttpResponse> future = client.execute(request, null);
 
         final HttpResponse response = future.get();
@@ -201,7 +199,7 @@ class HttpAsyncClientLiveTest extends GetRequestMockServer {
         @Override
         public void run() {
             try {
-                final Future<SimpleHttpResponse> future = client.execute(SimpleHttpRequest.copy(request), context, null);
+                final Future<SimpleHttpResponse> future = client.execute(SimpleRequestBuilder.copy(request).build(), context, null);
                 final HttpResponse response = future.get();
                 assertThat(response.getCode(), equalTo(200));
             } catch (final Exception ex) {

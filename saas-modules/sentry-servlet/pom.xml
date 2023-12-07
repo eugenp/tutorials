@@ -46,6 +46,5 @@
     <properties>
         <sentry.version>6.11.0</sentry.version>
         <cargo-maven3-plugin.version>1.10.4</cargo-maven3-plugin.version>
-        <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
     </properties>
 </project>

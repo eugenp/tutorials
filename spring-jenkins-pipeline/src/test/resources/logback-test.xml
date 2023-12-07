@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="15 seconds" debug="false">
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%d{ISO8601}]-[%thread] %-5level %logger - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.springframework.boot.test.context" level="WARN"/>
+
+    <logger name="org.springframework.boot.autoconfigure" level="WARN"/>
+
+    <logger name="de.flapdoodle.embed.mongo" level="WARN"/>
+
+    <logger name="org.mongodb.driver.client" level="WARN"/>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>

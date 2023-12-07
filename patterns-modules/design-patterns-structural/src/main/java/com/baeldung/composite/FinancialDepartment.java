@@ -1,5 +1,7 @@
 package com.baeldung.composite;
 
+import static com.baeldung.util.LoggerUtil.LOG;
+
 /**
  * Created by Gebruiker on 5/1/2018.
  */
@@ -14,7 +16,7 @@ public class FinancialDepartment implements Department {
     }
 
     public void printDepartmentName() {
-        System.out.println(getClass().getSimpleName());
+        LOG.info(getClass().getSimpleName());
     }
 
     public Integer getId() {

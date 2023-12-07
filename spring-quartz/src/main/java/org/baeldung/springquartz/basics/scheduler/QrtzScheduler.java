@@ -6,7 +6,7 @@ import static org.quartz.TriggerBuilder.newTrigger;
 
 import java.io.IOException;
 
-import javax.annotation.PostConstruct;
+import jakarta.annotation.PostConstruct;
 
 import org.baeldung.springquartz.config.AutoWiringSpringBeanJobFactory;
 import org.quartz.*;

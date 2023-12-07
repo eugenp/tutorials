@@ -156,7 +156,6 @@
     <properties>
         <eclipselink.version>4.0.1</eclipselink.version>
         <javax.persistence-api.version>2.2</javax.persistence-api.version>
-        <maven-compiler-plugin.version>3.5.1</maven-compiler-plugin.version>
         <maven-processor-plugin.version>3.3.3</maven-processor-plugin.version>
         <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
         <querydsl.version>5.0.0</querydsl.version>

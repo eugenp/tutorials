@@ -50,9 +50,7 @@ public class BookResource implements Service {
 
     private JsonArray from(List<Book> books) {
         JsonArrayBuilder jsonArrayBuilder = Json.createArrayBuilder();
-        books.forEach(book -> {
-            jsonArrayBuilder.add(from(book));
-        });
+        books.forEach(book -> jsonArrayBuilder.add(from(book)));
         return jsonArrayBuilder.build();
     }
 }

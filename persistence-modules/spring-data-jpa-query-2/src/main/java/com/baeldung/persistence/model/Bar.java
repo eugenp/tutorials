@@ -3,29 +3,29 @@ package com.baeldung.persistence.model;
 import com.google.common.collect.Sets;
 import org.hibernate.annotations.OrderBy;
 import org.hibernate.envers.Audited;
-import org.jboss.logging.Logger;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.PrePersist;
-import javax.persistence.PreRemove;
-import javax.persistence.PreUpdate;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreRemove;
+import jakarta.persistence.PreUpdate;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
+import java.util.logging.Logger;
 
 @Entity
 @NamedQuery(name = "Bar.findAll", query = "SELECT b FROM Bar b")
@@ -33,7 +33,7 @@ import java.util.Set;
 @EntityListeners(AuditingEntityListener.class)
 public class Bar implements Serializable {
 
-    private static final Logger LOGGER = Logger.getLogger(Bar.class);
+    private static final Logger LOGGER = Logger.getLogger(Bar.class.toString());
 
     public enum OPERATION {
         INSERT, UPDATE, DELETE;

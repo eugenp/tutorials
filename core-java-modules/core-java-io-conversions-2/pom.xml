@@ -56,7 +56,7 @@
         <source.version>11</source.version>
         <target.version>11</target.version>
         <json.version>20200518</json.version>
-        <opencsv.version>4.1</opencsv.version>
+        <opencsv.version>5.8</opencsv.version>
     </properties>
 
 </project>

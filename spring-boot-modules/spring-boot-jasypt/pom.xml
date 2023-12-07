@@ -47,7 +47,7 @@
     </build>
 
     <properties>
-        <jasypt.version>2.0.0</jasypt.version>
+        <jasypt.version>3.0.5</jasypt.version>
     </properties>
 
 </project>

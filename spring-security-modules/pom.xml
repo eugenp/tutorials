@@ -10,8 +10,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <artifactId>parent-boot-2</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../parent-boot-2</relativePath>
     </parent>
 
     <modules>
@@ -51,6 +52,8 @@
         <module>spring-security-opa</module>
         <module>spring-security-pkce</module>
         <module>spring-security-azuread</module>
+        <module>spring-security-oauth2-testing</module>
+        <module>spring-security-saml2</module>
     </modules>
 
 </project>

@@ -1,6 +1,5 @@
 package com.baeldung.client;
 
-import static org.apache.http.conn.ssl.SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
@@ -36,7 +35,7 @@ import org.springframework.web.client.RestTemplate;
  * This test requires a localhost server over HTTPS <br>
  * It should only be manually run, not part of the automated build
  * */
-public class RestClientV4LiveManualTest {
+class RestClientV4LiveManualTest {
 
     final String urlOverHttps = "http://localhost:8082/httpclient-simple/api/bars/1";
 
@@ -82,11 +81,12 @@ public class RestClientV4LiveManualTest {
     }
 
     @Test
-    public void whenHttpsUrlIsConsumed_thenException() throws ClientProtocolException, IOException {
+    void whenHttpsUrlIsConsumed_thenException() throws ClientProtocolException, IOException {
         CloseableHttpClient httpClient = HttpClients.createDefault();
         String urlOverHttps = "https://localhost:8082/httpclient-simple";
         HttpGet getMethod = new HttpGet(urlOverHttps);
         HttpResponse response = httpClient.execute(getMethod);
         assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
     }
+
 }

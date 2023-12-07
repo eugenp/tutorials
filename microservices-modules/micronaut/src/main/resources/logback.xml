@@ -8,6 +8,12 @@
         </encoder>
     </appender>
 
+    <!-- Uncomment these lines to see the request logs  -->
+    <!--
+    <logger name="io.micronaut.http.client" level="TRACE" />
+    <logger name="io.micronaut.http.server" level="DEBUG" />
+    -->
+
     <root level="info">
         <appender-ref ref="STDOUT" />
     </root>
