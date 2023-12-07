@@ -4,3 +4,4 @@
 - [Convert int to Long in Java](https://www.baeldung.com/java-convert-int-long)
 - [How To Convert Double To Float In Java](https://www.baeldung.com/java-convert-double-float)
 - [Converting from float to BigDecimal in Java](https://www.baeldung.com/java-convert-float-bigdecimal)
+- [Convert Positive Integer to Negative and Vice Versa in Java](https://www.baeldung.com/java-negating-integer)
