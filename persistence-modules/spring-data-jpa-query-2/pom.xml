@@ -36,9 +36,9 @@
             <version>${jta.version}</version>
         </dependency>
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>3.1.12</version>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>${mysql.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
@@ -85,6 +85,7 @@
     <properties>
         <tomcat-dbcp.version>9.0.0.M26</tomcat-dbcp.version>
         <jta.version>1.1</jta.version>
+        <mysql.version>8.2.0</mysql.version>
     </properties>
 
 </project>
