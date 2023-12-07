@@ -23,7 +23,7 @@ public class StaticContentConfig {
                 GET("/"),
                 request -> ok()
                         .contentType(MediaType.TEXT_HTML)
-                        .syncBody(html)
+                        .bodyValue(html)
         );
     }
 
