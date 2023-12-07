@@ -1,7 +1,6 @@
-## OptaPlanner
+## Timefold Solver
 
-This module contains articles about OptaPlanner.
+This module contains articles about (Timefold Solver)[https://timefold.ai].
 
 ### Relevant articles
 
-- [A Guide to OptaPlanner](https://www.baeldung.com/opta-planner)
