@@ -66,9 +66,6 @@
     </build>
 
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <encoding>UTF-8</encoding>
         <scala.version>2.12.12</scala.version>
         <gatling.version>3.4.0</gatling.version>
         <scala-maven-plugin.version>4.4.0</scala-maven-plugin.version>
