@@ -116,6 +116,7 @@
         <jsonb-api.version>1.0</jsonb-api.version>
         <geronimo-json_1.1_spec.version>1.0</geronimo-json_1.1_spec.version>
         <reactor-test.version>3.1.6.RELEASE</reactor-test.version>
+        <reactor.version>3.4.29</reactor.version>
     </properties>
 
 </project>
