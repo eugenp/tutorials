@@ -143,7 +143,7 @@
         <geronimo-json_1.1_spec.version>1.0</geronimo-json_1.1_spec.version>
         <asciidoctor-plugin.version>1.5.6</asciidoctor-plugin.version>
         <snippetsDirectory>${project.build.directory}/generated-snippets</snippetsDirectory>
-        <hikaricp.version>4.0.3</hikaricp.version>
+        <hikaricp.version>5.1.0</hikaricp.version>
     </properties>
 
 </project>
