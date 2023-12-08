@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class JsonNodeToJsonObjectUnitTest {
+public class JsonNodeToJsonObjectNodeUnitTest {
     
     public static String jsonString = "{\"name\": \"John\", \"gender\": \"male\", \"company\": \"Baeldung\", \"isEmployee\": true, \"age\": 30}";
 
@@ -18,7 +18,7 @@ public class JsonNodeToJsonObjectUnitTest {
 
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode jsonNode = objectMapper.readTree(jsonString);
-        ObjectNode objectNode = objectMapper.createObjectNode().setAll((ObjectNode) jsonNode);
+        ObjectNode objectNode = (ObjectNode) jsonNode;
 
         assertEquals("John", objectNode.get("name").asText());
         assertEquals("male", objectNode.get("gender").asText());
