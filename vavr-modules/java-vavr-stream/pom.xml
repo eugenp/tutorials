@@ -19,12 +19,8 @@
         <dependency>
             <groupId>io.vavr</groupId>
             <artifactId>vavr</artifactId>
-            <version>${io.vavr.version}</version>
+            <version>${vavr.version}</version>
         </dependency>
     </dependencies>
-
-    <properties>
-        <io.vavr.version>0.9.2</io.vavr.version>
-    </properties>
 
 </project>
