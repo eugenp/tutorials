@@ -30,4 +30,8 @@
         </pluginManagement>
     </build>
 
+    <properties>
+        <vavr.version>0.9.2</vavr.version>
+    </properties>
+
 </project>

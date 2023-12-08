@@ -26,7 +26,7 @@
         <frontend-maven-plugin.version>1.3</frontend-maven-plugin.version>
         <hazelcast-hibernate52.version>1.2</hazelcast-hibernate52.version>
         <hibernate.version>5.2.8.Final</hibernate.version>
-        <hikaricp.version>2.6.0</hikaricp.version>
+        <hikaricp.version>5.1.0</hikaricp.version>
         <jacoco-maven-plugin.version>0.7.9</jacoco-maven-plugin.version>
         <javassist.version>3.21.0-GA</javassist.version>
         <jcache.version>1.0.0</jcache.version>
