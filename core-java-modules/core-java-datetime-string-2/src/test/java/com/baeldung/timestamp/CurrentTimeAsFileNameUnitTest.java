@@ -49,6 +49,17 @@ public class CurrentTimeAsFileNameUnitTest {
         String fileName = getFileName(currentTime);
         assertTrue(verifyFileName(fileName));
     }
+    
+    @Test
+    public void whenUsingInstant_thenGetCurrentTime() {
+        String currentTime = Instant
+          .now()
+          .truncatedTo(ChronoUnit.SECONDS)
+          .toString()
+          .replaceAll("[:TZ-]", "");
+        String fileName = getFileName(currentTime);
+        assertTrue(verifyFileName(fileName));
+    }
 
     @Test
     public void whenUsingLocalDateTime_thenGetCurrentTime() {
@@ -69,28 +80,7 @@ public class CurrentTimeAsFileNameUnitTest {
     @Test
     public void whenUsingOffsetDateTime_thenGetCurrentTime() {
         String currentTime = OffsetDateTime
-          .of(LocalDateTime.now(), ZoneOffset.of("+02:00"))
-          .format(DATETIME_FORMATTER);
-        String fileName = getFileName(currentTime);
-        assertTrue(verifyFileName(fileName));
-    }
-
-    @Test
-    public void whenUsingInstant_thenGetCurrentTime() {
-        String currentTime = Instant
-          .ofEpochMilli(System.currentTimeMillis())
-          .truncatedTo(ChronoUnit.SECONDS)
-          .toString()
-          .replaceAll("[:TZ-]", "");
-        String fileName = getFileName(currentTime);
-        assertTrue(verifyFileName(fileName));
-    }
-
-    @Test
-    public void whenUsingInstantWithZone_thenGetCurrentTime() {
-        String currentTime = Instant
-          .now()
-          .atZone(ZoneId.of("Europe/Paris"))
+          .of(LocalDateTime.now(), ZoneOffset.of("+01:00"))
           .format(DATETIME_FORMATTER);
         String fileName = getFileName(currentTime);
         assertTrue(verifyFileName(fileName));
