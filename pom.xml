@@ -895,6 +895,7 @@
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>
                 <module>testing-modules/mockito-simple</module>
+                <module>timefold-solver</module>
                 <module>vaadin</module>
                 <module>vavr-modules</module>
                 <module>vertx-modules</module>
@@ -1139,6 +1140,7 @@
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>
                 <module>testing-modules/mockito-simple</module>
+                <module>timefold-solver</module>
                 <module>vaadin</module>
                 <module>vavr-modules</module>
                 <module>vertx-modules</module>
