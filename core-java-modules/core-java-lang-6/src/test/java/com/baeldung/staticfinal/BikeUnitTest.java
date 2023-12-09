@@ -1,4 +1,4 @@
-package com.baeldung.finalstatic;
+package com.baeldung.staticfinal;
 
 import org.junit.jupiter.api.Test;
 
