@@ -20,7 +20,7 @@ public class TestConfig implements WebMvcConfigurer {
 
     @Autowired
     private ServletContext ctx;
-    
+
     @Bean
     public ViewResolver thymeleafViewResolver() {
         final ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
