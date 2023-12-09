@@ -28,6 +28,15 @@
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter</artifactId>
+            <version>${springcloud.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -64,4 +73,7 @@
         </plugins>
     </build>
 
+    <properties>
+        <springcloud.version>3.1.3</springcloud.version>
+    </properties>
 </project>
