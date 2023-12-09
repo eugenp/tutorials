@@ -19,7 +19,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @SpringBootTest
 @DirtiesContext
-@EmbeddedKafka(partitions = 1, brokerProperties = { "listeners=PLAINTEXT://localhost:9092", "port=9092" })
+@EmbeddedKafka(partitions = 1)
 class EmbeddedKafkaIntegrationTest {
 
     @Autowired
@@ -33,8 +33,6 @@ class EmbeddedKafkaIntegrationTest {
 
     @Value("${test.topic}")
     private String topic;
-
-    private ObjectMapper objectMapper = new ObjectMapper();
 
     @BeforeEach
     void setup() {

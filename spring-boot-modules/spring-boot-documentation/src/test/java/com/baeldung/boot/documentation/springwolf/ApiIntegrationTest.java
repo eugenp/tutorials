@@ -16,11 +16,7 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 
 @SpringBootTest(classes = {SpringwolfApplication.class}, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@EmbeddedKafka(
-        partitions = 1, brokerProperties = {
-        "listeners=PLAINTEXT://localhost:9092",
-        "port=9092",
-})
+@EmbeddedKafka(partitions = 1)
 @DirtiesContext
 public class ApiIntegrationTest {
 

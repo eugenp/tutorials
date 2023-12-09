@@ -28,7 +28,7 @@ import java.util.concurrent.ExecutionException;
 
 @RunWith(SpringRunner.class)
 @DirtiesContext
-@EmbeddedKafka(partitions = 1, brokerProperties = {"listeners=PLAINTEXT://localhost:9085", "port=9085"})
+@EmbeddedKafka(partitions = 1)
 @EnableKafka
 public class LiveLagAnalyzerServiceLiveTest {
 
@@ -46,7 +46,7 @@ public class LiveLagAnalyzerServiceLiveTest {
     private static final long POLL_DURATION = 1000L;
 
     @Before
-    public void setup() throws Exception {
+    public void setup() {
         initProducer();
         initConsumer();
         lagAnalyzerService = new LagAnalyzerService(BOOTSTRAP_SERVER_CONFIG);
@@ -57,7 +57,7 @@ public class LiveLagAnalyzerServiceLiveTest {
     public void givenEmbeddedKafkaBroker_whenAllProducedMessagesAreConsumed_thenLagBecomesZero()
             throws ExecutionException, InterruptedException {
         produce();
-        long consumeLag = 0L;
+        long consumeLag;
         consume();
         Map<TopicPartition, Long> lag = lagAnalyzerService.analyzeLag(GROUP_ID);
         Assert.assertNotNull(lag);
@@ -123,7 +123,7 @@ public class LiveLagAnalyzerServiceLiveTest {
 
     private static void consume() {
         try {
-            ConsumerRecords<String, String> record = consumer.poll(Duration.ofMillis(POLL_DURATION));
+            ConsumerRecords<String, String> consumerRecords = consumer.poll(Duration.ofMillis(POLL_DURATION));
             consumer.commitSync();
             Thread.sleep(POLL_DURATION);
         } catch (Exception ex) {
@@ -136,7 +136,7 @@ public class LiveLagAnalyzerServiceLiveTest {
             int count = BATCH_SIZE;
             while (count > 0) {
                 String messageKey = UUID.randomUUID().toString();
-                String messageValue = UUID.randomUUID().toString() + "_" + count;
+                String messageValue = UUID.randomUUID() + "_" + count;
                 ProducerRecord<String, String> producerRecord = new ProducerRecord<>(TOPIC, messageKey, messageValue);
                 RecordMetadata recordMetadata = producer.send(producerRecord).get();
                 LOGGER.info("Message with key = {}, value = {} sent to partition = {}, offset = {}, topic = {}",
@@ -159,7 +159,7 @@ public class LiveLagAnalyzerServiceLiveTest {
         props.setProperty(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         props.setProperty(ConsumerConfig.GROUP_ID_CONFIG, GROUP_ID);
         consumer = new KafkaConsumer<>(props);
-        consumer.assign(Arrays.asList(TOPIC_PARTITION));
+        consumer.assign(Collections.singletonList(TOPIC_PARTITION));
         consumer.poll(Duration.ofMillis(1L));
         consumer.commitSync();
     }

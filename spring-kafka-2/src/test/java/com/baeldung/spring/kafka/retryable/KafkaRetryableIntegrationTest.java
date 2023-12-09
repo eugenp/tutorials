@@ -22,7 +22,7 @@ import com.baeldung.spring.kafka.retryable.RetryableApplicationKafkaApp;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @SpringBootTest(classes = RetryableApplicationKafkaApp.class)
-@EmbeddedKafka(partitions = 1, controlledShutdown = true, brokerProperties = { "listeners=PLAINTEXT://localhost:9093", "port=9093" })
+@EmbeddedKafka(partitions = 1, controlledShutdown = true)
 public class KafkaRetryableIntegrationTest {
     @ClassRule
     public static EmbeddedKafkaBroker embeddedKafka = new EmbeddedKafkaBroker(1, true, "multitype");
