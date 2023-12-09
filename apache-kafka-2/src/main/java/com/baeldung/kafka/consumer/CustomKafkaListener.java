@@ -12,7 +12,7 @@ import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.serialization.StringDeserializer;
 
-public class CustomKafkaListener implements Runnable, Closeable {
+public class CustomKafkaListener implements Runnable, AutoCloseable {
 
     private static final Logger log = Logger.getLogger(CustomKafkaListener.class.getName());
 
@@ -43,7 +43,7 @@ public class CustomKafkaListener implements Runnable, Closeable {
         return new KafkaConsumer<>(props);
     }
 
-    public CustomKafkaListener doForEach(Consumer<String> newConsumer) {
+    public CustomKafkaListener onEach(Consumer<String> newConsumer) {
         recordConsumer = recordConsumer.andThen(newConsumer);
         return this;
     }
@@ -52,10 +52,9 @@ public class CustomKafkaListener implements Runnable, Closeable {
     public void run() {
         running.set(true);
         consumer.subscribe(Arrays.asList(topic));
-
         while (running.get()) {
             consumer.poll(Duration.ofMillis(100))
-                .forEach(record -> recordConsumer.accept(record.value()));
+              .forEach(record -> recordConsumer.accept(record.value()));
         }
     }
 

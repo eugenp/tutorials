@@ -7,6 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.testcontainers.shaded.org.awaitility.Awaitility.await;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.CompletableFuture;
@@ -23,7 +24,7 @@ import org.testcontainers.shaded.org.awaitility.Awaitility;
 import org.testcontainers.utility.DockerImageName;
 
 @Testcontainers
-class KafkaListenerWithoutSpringLiveTest {
+class CustomKafkaListenerLiveTest {
 
     @Container
     private static final KafkaContainer KAFKA_CONTAINER = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:latest"));
@@ -34,30 +35,28 @@ class KafkaListenerWithoutSpringLiveTest {
     }
 
     @Test
-    void test() {
+    void givenANewCustomKafkaListener_thenConsumesAllMessages() {
         // given
         String topic = "baeldung.articles.published";
         String bootstrapServers = KAFKA_CONTAINER.getBootstrapServers();
         List<String> consumedMessages = new ArrayList<>();
 
         // when
-        try (CustomKafkaListener listener = new CustomKafkaListener(topic, bootstrapServers)) {
-            CompletableFuture.runAsync(() ->
-                listener.doForEach(consumedMessages::add).run()
-            );
+        try (CustomKafkaListener listener = new CustomKafkaListener(topic, bootstrapServers).onEach(consumedMessages::add)) {
+            CompletableFuture.runAsync(listener);
         }
         // and
-        publishArticles(topic, asList(
+        publishArticles(topic,
             "Introduction to Kafka",
             "Kotlin for Java Developers",
             "Reactive Spring Boot",
             "Deploying Spring Boot Applications",
             "Spring Security"
-        ));
+        );
 
         // then
-        await().untilAsserted(() -> assertThat(consumedMessages)
-            .containsExactlyInAnyOrder(
+        await().untilAsserted(() ->
+            assertThat(consumedMessages).containsExactlyInAnyOrder(
                 "Introduction to Kafka",
                 "Kotlin for Java Developers",
                 "Reactive Spring Boot",
@@ -66,9 +65,9 @@ class KafkaListenerWithoutSpringLiveTest {
             ));
     }
 
-    private void publishArticles(String topic, List<String> articles) {
+    private void publishArticles(String topic, String... articles) {
         try (KafkaProducer<String, String> producer = testKafkaProducer()) {
-            articles.stream()
+            Arrays.stream(articles)
                 .map(article -> new ProducerRecord<String,String>(topic, article))
                 .forEach(producer::send);
         }
