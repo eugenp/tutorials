@@ -14,7 +14,7 @@ import org.springframework.security.oauth2.core.endpoint.OAuth2AccessTokenRespon
 import org.springframework.security.oauth2.core.endpoint.OAuth2ParameterNames;
 import org.springframework.util.StringUtils;
 
-public class CustomTokenResponseConverter implements Converter<Map<String, String>, OAuth2AccessTokenResponse> {
+public class CustomTokenResponseConverter implements Converter<Map<String, Object>, OAuth2AccessTokenResponse> {
     private static final Set<String> TOKEN_RESPONSE_PARAMETER_NAMES = Stream.of(
         OAuth2ParameterNames.ACCESS_TOKEN, 
         OAuth2ParameterNames.TOKEN_TYPE, 
@@ -23,31 +23,31 @@ public class CustomTokenResponseConverter implements Converter<Map<String, Strin
         OAuth2ParameterNames.SCOPE) .collect(Collectors.toSet());
 
     @Override
-    public OAuth2AccessTokenResponse convert(Map<String, String> tokenResponseParameters) {
-        String accessToken = tokenResponseParameters.get(OAuth2ParameterNames.ACCESS_TOKEN);
+    public OAuth2AccessTokenResponse convert(Map<String, Object> tokenResponseParameters) {
+        Object accessToken = tokenResponseParameters.get(OAuth2ParameterNames.ACCESS_TOKEN);
 
         OAuth2AccessToken.TokenType accessTokenType = null;
         if (OAuth2AccessToken.TokenType.BEARER.getValue()
-            .equalsIgnoreCase(tokenResponseParameters.get(OAuth2ParameterNames.TOKEN_TYPE))) {
+            .equalsIgnoreCase(tokenResponseParameters.get(OAuth2ParameterNames.TOKEN_TYPE).toString())) {
             accessTokenType = OAuth2AccessToken.TokenType.BEARER;
         }
 
         long expiresIn = 0;
         if (tokenResponseParameters.containsKey(OAuth2ParameterNames.EXPIRES_IN)) {
             try {
-                expiresIn = Long.valueOf(tokenResponseParameters.get(OAuth2ParameterNames.EXPIRES_IN));
+                expiresIn = Long.parseLong(tokenResponseParameters.get(OAuth2ParameterNames.EXPIRES_IN).toString());
             } catch (NumberFormatException ex) {
             }
         }
 
         Set<String> scopes = Collections.emptySet();
         if (tokenResponseParameters.containsKey(OAuth2ParameterNames.SCOPE)) {
-            String scope = tokenResponseParameters.get(OAuth2ParameterNames.SCOPE);
-            scopes = Arrays.stream(StringUtils.delimitedListToStringArray(scope, " "))
+            Object scope = tokenResponseParameters.get(OAuth2ParameterNames.SCOPE);
+            scopes = Arrays.stream(StringUtils.delimitedListToStringArray(scope.toString(), " "))
                 .collect(Collectors.toSet());
         }
 
-        String refreshToken = tokenResponseParameters.get(OAuth2ParameterNames.REFRESH_TOKEN);
+        Object refreshToken = tokenResponseParameters.get(OAuth2ParameterNames.REFRESH_TOKEN);
 
         Map<String, Object> additionalParameters = new LinkedHashMap<>();
         tokenResponseParameters.entrySet()
@@ -55,11 +55,11 @@ public class CustomTokenResponseConverter implements Converter<Map<String, Strin
             .filter(e -> !TOKEN_RESPONSE_PARAMETER_NAMES.contains(e.getKey()))
             .forEach(e -> additionalParameters.put(e.getKey(), e.getValue()));
 
-        return OAuth2AccessTokenResponse.withToken(accessToken)
+        return OAuth2AccessTokenResponse.withToken(accessToken.toString())
             .tokenType(accessTokenType)
             .expiresIn(expiresIn)
             .scopes(scopes)
-            .refreshToken(refreshToken)
+            .refreshToken(refreshToken.toString())
             .additionalParameters(additionalParameters)
             .build();
     }

@@ -2,6 +2,7 @@ package com.baeldung.oauth2;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,33 +68,32 @@ public class CustomRequestSecurityConfig {
         accessTokenResponseClient.setRequestEntityConverter(new CustomRequestEntityConverter());
         
         OAuth2AccessTokenResponseHttpMessageConverter tokenResponseHttpMessageConverter = new OAuth2AccessTokenResponseHttpMessageConverter();
-        tokenResponseHttpMessageConverter.setTokenResponseConverter(new CustomTokenResponseConverter());
+        tokenResponseHttpMessageConverter.setAccessTokenResponseConverter(new CustomTokenResponseConverter());
         RestTemplate restTemplate = new RestTemplate(Arrays.asList(new FormHttpMessageConverter(), tokenResponseHttpMessageConverter));
         restTemplate.setErrorHandler(new OAuth2ErrorResponseErrorHandler());
         accessTokenResponseClient.setRestOperations(restTemplate);
         return accessTokenResponseClient;
     }
 
-    
+
     // additional configuration for non-Spring Boot projects
-    private static List<String> clients = Arrays.asList("google", "facebook");
+    private static final List<String> clients = Arrays.asList("google", "facebook");
 
     //@Bean
     public ClientRegistrationRepository clientRegistrationRepository() {
         List<ClientRegistration> registrations = clients.stream()
-            .map(c -> getRegistration(c))
-            .filter(registration -> registration != null)
+            .map(this::getRegistration)
+            .filter(Objects::nonNull)
             .collect(Collectors.toList());
 
         return new InMemoryClientRegistrationRepository(registrations);
     }
 
-    private static String CLIENT_PROPERTY_KEY = "spring.security.oauth2.client.registration.";
-
     @Autowired
     private Environment env;
 
     private ClientRegistration getRegistration(String client) {
+        String CLIENT_PROPERTY_KEY = "spring.security.oauth2.client.registration.";
         String clientId = env.getProperty(CLIENT_PROPERTY_KEY + client + ".client-id");
 
         if (clientId == null) {
