@@ -1,5 +1,17 @@
 package com.baeldung.namingstrategy;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.math.BigInteger;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+
 import org.hibernate.exception.SQLGrammarException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,20 +22,9 @@ import org.springframework.boot.test.autoconfigure.jdbc.TestDatabaseAutoConfigur
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.TestPropertySource;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import java.math.BigInteger;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 @DataJpaTest(excludeAutoConfiguration = TestDatabaseAutoConfiguration.class)
-@TestPropertySource("unquoted-upper-case-naming-strategy.properties")
-class UnquotedUpperCaseNamingStrategyH2IntegrationTest {
+@TestPropertySource("quoted-lower-case-naming-strategy.properties")
+class QuotedLowerCaseNamingStrategyH2IntegrationTest {
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -42,35 +43,31 @@ class UnquotedUpperCaseNamingStrategyH2IntegrationTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"person", "PERSON", "Person"})
-    void givenPeopleAndUpperCaseNamingStrategy_whenQueryPersonUnquoted_thenResult(String tableName) {
+    void givenPeopleAndLowerCaseNamingStrategy_whenQueryPersonUnquoted_thenException(String tableName) {
         Query query = entityManager.createNativeQuery("select * from " + tableName);
 
-        // Expected result
-        List<Person> result = (List<Person>) query.getResultStream()
-          .map(this::fromDatabase)
-          .collect(Collectors.toList());
-
-        assertThat(result).isNotEmpty();
+        // Unexpected result
+        assertThrows(SQLGrammarException.class, query::getResultStream);
     }
 
     @Test
-    void givenPeopleAndUpperCaseNamingStrategy_whenQueryPersonQuotedUpperCase_thenResult() {
+    void givenPeopleAndLowerCaseNamingStrategy_whenQueryPersonQuotedUpperCase_thenException() {
         Query query = entityManager.createNativeQuery("select * from \"PERSON\"");
 
         // Expected result
+        assertThrows(SQLGrammarException.class, query::getResultStream);
+    }
+
+    @Test
+    void givenPeopleAndLowerCaseNamingStrategy_whenQueryPersonQuotedLowerCase_thenResult() {
+        Query query = entityManager.createNativeQuery("select * from \"person\"");
+
+        // Expected result
         List<Person> result = (List<Person>) query.getResultStream()
           .map(this::fromDatabase)
           .collect(Collectors.toList());
 
         assertThat(result).isNotEmpty();
-    }
-
-    @Test
-    void givenPeopleAndUpperCaseNamingStrategy_whenQueryPersonQuotedLowerCase_thenException() {
-        Query query = entityManager.createNativeQuery("select * from \"person\"");
-
-        // Expected result
-        assertThrows(SQLGrammarException.class, query::getResultStream);
     }
 
     public Person fromDatabase(Object databaseRow) {

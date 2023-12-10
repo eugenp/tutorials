@@ -1,8 +1,10 @@
 package com.baeldung.elementcollection;
 
-import com.baeldung.elementcollection.model.Employee;
-import com.baeldung.elementcollection.model.Phone;
-import com.baeldung.elementcollection.repository.EmployeeRepository;
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
+
+import java.util.Arrays;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,10 +14,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Arrays;
-
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
+import com.baeldung.elementcollection.model.Employee;
+import com.baeldung.elementcollection.model.Phone;
+import com.baeldung.elementcollection.repository.EmployeeRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = ElementCollectionApplication.class)
