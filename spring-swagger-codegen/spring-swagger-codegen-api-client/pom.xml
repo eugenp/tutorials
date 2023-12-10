@@ -33,7 +33,6 @@
         <groupId>com.baeldung</groupId>
         <artifactId>spring-swagger-codegen</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../spring-swagger-codegen</relativePath>
     </parent>
 
     <dependencies>
@@ -196,7 +195,7 @@
         <maven-jar-plugin.version>2.2</maven-jar-plugin.version>
         <maven-gpg-plugin.version>1.5</maven-gpg-plugin.version>
         <maven-source-plugin.version>2.2.1</maven-source-plugin.version>
-        <maven-javadoc-plugin.version>2.10.4</maven-javadoc-plugin.version>
+        <maven-javadoc-plugin.version>3.6.2</maven-javadoc-plugin.version>
         <build-helper-maven-plugin.version>1.10</build-helper-maven-plugin.version>
     </properties>
 

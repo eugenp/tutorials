@@ -1,19 +1,23 @@
 package com.baeldung.spring.jinq.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+
+
 
 @Entity(name = "CAR")
 public class Car {
+    @Id
     private String model;
     private String description;
     private int year;
     private String engine;
+    @ManyToOne
+    @JoinColumn(name = "name")
     private Manufacturer manufacturer;
 
-    @Id
     public String getModel() {
         return model;
     }
@@ -46,8 +50,6 @@ public class Car {
         this.engine = engine;
     }
 
-    @OneToOne
-    @JoinColumn(name = "name")
     public Manufacturer getManufacturer() {
         return manufacturer;
     }

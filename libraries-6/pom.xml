@@ -197,7 +197,7 @@
         <javapoet.version>1.10.0</javapoet.version>
         <mockftpserver.version>2.7.1</mockftpserver.version>
         <functionaljava.version>4.8.1</functionaljava.version>
-        <resilience4j.version>0.12.1</resilience4j.version>
+        <resilience4j.version>2.1.0</resilience4j.version>
         <protonpack.version>1.15</protonpack.version>
         <commons-net.version>3.6</commons-net.version>
         <renjin.version>3.5-beta72</renjin.version>

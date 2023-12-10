@@ -182,7 +182,7 @@
 
     <properties>
         <kafka.version>3.4.0</kafka.version>
-        <testcontainers-kafka.version>1.15.3</testcontainers-kafka.version>
+        <testcontainers-kafka.version>1.19.3</testcontainers-kafka.version>
         <testcontainers-jupiter.version>1.15.3</testcontainers-jupiter.version>
         <flink.version>1.16.1</flink.version>
         <awaitility.version>3.0.0</awaitility.version>

@@ -6,4 +6,4 @@
 - [Using JaVers for Data Model Auditing in Spring Data](https://www.baeldung.com/spring-data-javers-audit)
 - [BootstrapMode for JPA Repositories](https://www.baeldung.com/jpa-bootstrap-mode)
 - [Dynamic DTO Validation Config Retrieved from the Database](https://www.baeldung.com/spring-dynamic-dto-validation)
-
+- [Spring Custom Property Editor](https://www.baeldung.com/spring-mvc-custom-property-editor)

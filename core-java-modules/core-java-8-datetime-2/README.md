@@ -8,4 +8,5 @@
 - [Add Minutes to a Time String in Java](https://www.baeldung.com/java-string-time-add-mins)
 - [Round the Date in Java](https://www.baeldung.com/java-round-the-date)
 - [Representing Furthest Possible Date in Java](https://www.baeldung.com/java-date-represent-max)
+- [Retrieving Unix Time in Java](https://www.baeldung.com/java-retrieve-unix-time)
 - [[<-- Prev]](/core-java-modules/core-java-datetime-java8-1)

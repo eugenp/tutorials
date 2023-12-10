@@ -1,6 +1,6 @@
 package com.baeldung.centertext;
 
-import liquibase.repackaged.org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 

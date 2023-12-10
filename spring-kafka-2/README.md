@@ -9,3 +9,4 @@ This module contains articles about Spring with Kafka
 - [Understanding Kafka Topics and Partitions](https://www.baeldung.com/kafka-topics-partitions)
 - [How to Subscribe a Kafka Consumer to Multiple Topics](https://www.baeldung.com/kafka-subscribe-consumer-multiple-topics)
 - [Splitting Streams in Kafka](https://www.baeldung.com/kafka-splitting-streams)
+- [Manage Kafka Consumer Groups](https://www.baeldung.com/kafka-manage-consumer-groups)
