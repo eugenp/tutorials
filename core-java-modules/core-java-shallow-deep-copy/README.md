@@ -8,6 +8,7 @@ When copying or cloning objects in Java it is important to understand the differ
 * a **deep copy** of an object copies not only the primitive attributes but also copies all the other objects that are referenced by the original instance.
 
 The image below exemplifies the difference:
+![Shallow vs Deep Copy](core-java-shallow-deep-copy.png)
 
 ## 2. Code Example
 
