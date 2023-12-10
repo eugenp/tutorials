@@ -66,7 +66,7 @@ public class WebSecurityConfig {
                 // CsrfFilter already made sure the token matched. Here, we'll make sure it's not expired
                 try {
                     Jwts.parser()
-                        .setSigningKeyResolver(secretService.getSigningKeyResolver())
+                        .setSigningKeyResolver(secretService.getSigningKeyResolver()).build()
                         .parseClaimsJws(token.getToken());
                 } catch (JwtException e) {
                     // most likely an ExpiredJwtException, but this will handle any
