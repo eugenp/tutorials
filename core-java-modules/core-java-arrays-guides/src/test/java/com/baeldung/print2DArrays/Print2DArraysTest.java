@@ -3,6 +3,9 @@ package com.baeldung.print2DArrays;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import uk.org.webcompere.systemstubs.SystemOut;
+import uk.org.webcompere.systemstubs.annotations.SystemStub;
+
 public class ArrayPrinterTest {
     
     @SystemStub
