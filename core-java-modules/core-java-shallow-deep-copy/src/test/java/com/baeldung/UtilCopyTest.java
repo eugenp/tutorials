@@ -1,10 +1,6 @@
 package com.baeldung;
 
-import com.baeldung.Address;
-import com.baeldung.Person;
-import com.baeldung.UtilCopy;
 import org.junit.Test;
-
 import static org.junit.Assert.*;
 
 public class UtilCopyTest  {
