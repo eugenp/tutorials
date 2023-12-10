@@ -23,19 +23,19 @@ public class JWTDecoderUtil {
         return header + " " + payload;
     }
 
-    public static String decodeJWTToken(String token, String secretKey) throws Exception {
+    public static boolean isTokenValid(String token, String secretKey) throws Exception {
         SecretKeySpec secretKeySpec = new SecretKeySpec(secretKey.getBytes(), SignatureAlgorithm.HS256.getJcaName());
+
         JwtParser jwtParser = Jwts.parser()
             .verifyWith(secretKeySpec)
             .build();
 
-        Jwt<?, ?> parsedToken;
         try {
-            parsedToken = jwtParser.parse(token);
+            jwtParser.parse(token);
         } catch (Exception e) {
             throw new Exception("Could not verify JWT token integrity!", e);
         }
 
-        return parsedToken.getHeader() + " " + parsedToken.getPayload();
+        return true;
     }
 }
