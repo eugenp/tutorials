@@ -17,7 +17,7 @@
         <repository>
             <id>confluent</id>
             <name>confluent-repo</name>
-            <url>http://packages.confluent.io/maven/</url>
+            <url>https://packages.confluent.io/maven/</url>
         </repository>
     </repositories>
 

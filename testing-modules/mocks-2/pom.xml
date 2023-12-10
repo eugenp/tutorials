@@ -33,7 +33,7 @@
 
     <properties>
         <datafaker.version>1.6.0</datafaker.version>
-        <jackson.version>2.13.4</jackson.version>
+        <jackson.version>2.16.0</jackson.version>
         <spring-test.version>5.3.25</spring-test.version>
     </properties>
 

@@ -26,7 +26,7 @@
         <dependency>
             <groupId>com.github.javafaker</groupId>
             <artifactId>javafaker</artifactId>
-            <version>1.0.2</version>
+            <version>${javafaker.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
@@ -43,5 +43,9 @@
             </resource>
         </resources>
     </build>
+
+    <properties>
+        <javafaker.version>1.0.2</javafaker.version>
+    </properties>
 
 </project>
