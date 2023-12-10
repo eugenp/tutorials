@@ -25,9 +25,9 @@
             <version>${jmh-generator.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.github.stefanbirkner</groupId>
-            <artifactId>system-stubs</artifactId>
-            <version>1.1.1</version> <!-- Use the latest version -->
+            <groupId>uk.org.webcompere</groupId>
+            <artifactId>system-stubs-jupiter</artifactId>
+            <version>1.1.0</version>
             <scope>test</scope>
         </dependency>
 
