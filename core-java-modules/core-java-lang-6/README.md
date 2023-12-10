@@ -9,3 +9,4 @@ This module contains articles about core features in the Java language
 - [Get a Random Element From a Set in Java](https://www.baeldung.com/java-set-draw-sample)
 - [Stop Executing Further Code in Java](https://www.baeldung.com/java-stop-running-code)
 - [Using the Apache Commons Lang 3 for Comparing Objects in Java](https://www.baeldung.com/java-apache-commons-lang-3-compare-objects)
+- [Static Final Variables in Java](https://www.baeldung.com/java-static-final-variables)
