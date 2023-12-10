@@ -1,5 +1,17 @@
 package com.baeldung.namingstrategy;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.math.BigInteger;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+
 import org.hibernate.exception.SQLGrammarException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,20 +22,9 @@ import org.springframework.boot.test.autoconfigure.jdbc.TestDatabaseAutoConfigur
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.TestPropertySource;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import java.math.BigInteger;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 @DataJpaTest(excludeAutoConfiguration = TestDatabaseAutoConfiguration.class)
-@TestPropertySource("quoted-lower-case-naming-strategy.properties")
-class QuotedLowerCaseNamingStrategyH2IntegrationTest {
+@TestPropertySource("quoted-lower-case-naming-strategy-on-postgres.properties")
+class QuotedLowerCaseNamingStrategyPostgresLiveTest {
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -42,11 +43,15 @@ class QuotedLowerCaseNamingStrategyH2IntegrationTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"person", "PERSON", "Person"})
-    void givenPeopleAndLowerCaseNamingStrategy_whenQueryPersonUnquoted_thenException(String tableName) {
+    void givenPeopleAndLowerCaseNamingStrategy_whenQueryPersonUnquoted_thenResult(String tableName) {
         Query query = entityManager.createNativeQuery("select * from " + tableName);
 
-        // Unexpected result
-        assertThrows(SQLGrammarException.class, query::getResultStream);
+        // Expected result
+        List<Person> result = (List<Person>) query.getResultStream()
+          .map(this::fromDatabase)
+          .collect(Collectors.toList());
+
+        assertThat(result).isNotEmpty();
     }
 
     @Test

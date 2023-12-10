@@ -1,5 +1,17 @@
 package com.baeldung.namingstrategy;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.math.BigInteger;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+
 import org.hibernate.exception.SQLGrammarException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,20 +22,9 @@ import org.springframework.boot.test.autoconfigure.jdbc.TestDatabaseAutoConfigur
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.TestPropertySource;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import java.math.BigInteger;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 @DataJpaTest(excludeAutoConfiguration = TestDatabaseAutoConfiguration.class)
-@TestPropertySource("spring-physical-naming-strategy.properties")
-class SpringPhysicalNamingStrategyH2IntegrationTest {
+@TestPropertySource("quoted-upper-case-naming-strategy.properties")
+class QuotedUpperCaseNamingStrategyH2IntegrationTest {
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -42,7 +43,7 @@ class SpringPhysicalNamingStrategyH2IntegrationTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"person", "PERSON", "Person"})
-    void givenPeopleAndSpringNamingStrategy_whenQueryPersonUnquoted_thenResult(String tableName) {
+    void givenPeopleAndUpperCaseNamingStrategy_whenQueryPersonUnquoted_thenException(String tableName) {
         Query query = entityManager.createNativeQuery("select * from " + tableName);
 
         // Expected result
@@ -54,10 +55,10 @@ class SpringPhysicalNamingStrategyH2IntegrationTest {
     }
 
     @Test
-    void givenPeopleAndSpringNamingStrategy_whenQueryPersonQuotedUpperCase_thenResult() {
+    void givenPeopleAndUpperCaseNamingStrategy_whenQueryPersonQuotedUpperCase_thenResult() {
         Query query = entityManager.createNativeQuery("select * from \"PERSON\"");
 
-        // Unexpected result
+        // Expected result
         List<Person> result = (List<Person>) query.getResultStream()
           .map(this::fromDatabase)
           .collect(Collectors.toList());
@@ -66,10 +67,10 @@ class SpringPhysicalNamingStrategyH2IntegrationTest {
     }
 
     @Test
-    void givenPeopleAndSpringNamingStrategy_whenQueryPersonQuotedLowerCase_thenException() {
+    void givenPeopleAndUpperCaseNamingStrategy_whenQueryPersonQuotedLowerCase_thenException() {
         Query query = entityManager.createNativeQuery("select * from \"person\"");
 
-        // Unexpected result
+        // Expected result
         assertThrows(SQLGrammarException.class, query::getResultStream);
     }
 

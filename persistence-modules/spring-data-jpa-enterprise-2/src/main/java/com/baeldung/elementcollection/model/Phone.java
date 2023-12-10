@@ -1,7 +1,8 @@
 package com.baeldung.elementcollection.model;
 
-import javax.persistence.Embeddable;
 import java.util.Objects;
+
+import javax.persistence.Embeddable;
 
 @Embeddable
 public class Phone {
