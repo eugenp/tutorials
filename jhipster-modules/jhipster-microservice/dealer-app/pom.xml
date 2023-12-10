@@ -28,7 +28,7 @@
         <javassist.version>3.21.0-GA</javassist.version>
         <jcache.version>1.0.0</jcache.version>
         <jhipster.server.version>1.1.0</jhipster.server.version>
-        <jjwt.version>0.7.0</jjwt.version>
+        <jjwt.version>0.12.3</jjwt.version>
         <lifecycle.mapping.version>1.0.0</lifecycle.mapping.version>
         <liquibase-hibernate5.version>3.6</liquibase-hibernate5.version>
         <liquibase-slf4j.version>2.0.0</liquibase-slf4j.version>
@@ -215,7 +215,7 @@
         </dependency>
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt</artifactId>
+            <artifactId>jjwt-api</artifactId>
             <version>${jjwt.version}</version>
         </dependency>
         <dependency>
