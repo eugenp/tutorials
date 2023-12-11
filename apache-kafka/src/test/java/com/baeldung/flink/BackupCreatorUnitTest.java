@@ -29,7 +29,7 @@ import java.util.List;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
-public class BackupCreatorIntegrationTest {
+public class BackupCreatorUnitTest {
     public static ObjectMapper mapper;
 
     @Before
