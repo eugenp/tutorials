@@ -1,21 +1,16 @@
 package com.baeldung.junit5.failurethreshold;
 
 import org.junit.jupiter.api.RepeatedTest;
-
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class FailureThresholdUnitTest {
+    Random random = new Random();
 
-    @RepeatedTest(value = 5, failureThreshold = 1)
-    void givenTextFile_whenItIsReadAndContainsSpecifiedWordRepeatedly_thenMatchingLinesFound() throws IOException {
-        String filePath = "test_file.txt";
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-            String line = reader.readLine();
-            assertTrue(line.contains("The"));
-        }
+    @RepeatedTest(value = 10, failureThreshold = 2)
+    void givenRandomNumberGenerator_whenGeneratingRandomNumber_thenNumberShouldBeWithinRange() {
+        int number = random.nextInt(10);
+        assertTrue(number <= 9);
     }
 }
