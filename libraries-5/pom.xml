@@ -49,16 +49,6 @@
             <version>${typesafe-akka.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>net.bytebuddy</groupId>
-            <artifactId>byte-buddy</artifactId>
-            <version>${byte-buddy.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>net.bytebuddy</groupId>
-            <artifactId>byte-buddy-agent</artifactId>
-            <version>${byte-buddy.version}</version>
-        </dependency>
         <!--Java Docker API Client -->
         <dependency>
             <groupId>com.github.docker-java</groupId>

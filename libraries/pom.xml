@@ -41,11 +41,6 @@
             <version>${javatuples.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.javassist</groupId>
-            <artifactId>javassist</artifactId>
-            <version>${javaassist.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.javers</groupId>
             <artifactId>javers-core</artifactId>
             <version>${javers.version}</version>
@@ -284,7 +279,6 @@
         <spring.version>4.3.8.RELEASE</spring.version>
         <spring-mock-mvc.version>3.0.3</spring-mock-mvc.version>
         <quartz.version>2.3.0</quartz.version>
-        <javaassist.version>3.29.2-GA</javaassist.version>
         <commons-net.version>3.6</commons-net.version>
         <commonsio.version>2.6</commonsio.version>
     </properties>
