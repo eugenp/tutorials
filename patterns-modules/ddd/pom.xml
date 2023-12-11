@@ -8,13 +8,6 @@
     <packaging>jar</packaging>
     <description>DDD series examples</description>
 
-<!--    <parent>-->
-<!--        <groupId>com.baeldung</groupId>-->
-<!--        <artifactId>parent-boot-2</artifactId>-->
-<!--        <version>0.0.1-SNAPSHOT</version>-->
-<!--        <relativePath>../../parent-boot-2</relativePath>-->
-<!--    </parent>-->
-
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-boot-3</artifactId>
