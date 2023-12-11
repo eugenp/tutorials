@@ -9,7 +9,6 @@ Remember, for advanced libraries like [Jackson](/jackson) and [JUnit](/testing-m
 
 ### Relevant articles
 - [Introduction to Caffeine](https://www.baeldung.com/java-caching-caffeine)
-- [Introduction to StreamEx](https://www.baeldung.com/streamex)
 - [A Docker Guide for Java](https://www.baeldung.com/docker-java-api)
 - [Introduction to Akka Actors in Java](https://www.baeldung.com/akka-actors-java)
 - [A Guide to Byte Buddy](https://www.baeldung.com/byte-buddy)

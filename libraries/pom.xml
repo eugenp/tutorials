@@ -121,11 +121,6 @@
             <version>${quartz.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.jooq</groupId>
-            <artifactId>jool</artifactId>
-            <version>${jool.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-core</artifactId>
             <version>${jmh-core.version}</version>
@@ -290,7 +285,6 @@
         <spring-mock-mvc.version>3.0.3</spring-mock-mvc.version>
         <quartz.version>2.3.0</quartz.version>
         <javaassist.version>3.29.2-GA</javaassist.version>
-        <jool.version>0.9.12</jool.version>
         <commons-net.version>3.6</commons-net.version>
         <commonsio.version>2.6</commonsio.version>
     </properties>

@@ -1,11 +1,9 @@
 package com.baeldung.protonpack;
 
-import com.codepoetics.protonpack.Indexed;
-import com.codepoetics.protonpack.StreamUtils;
-import com.codepoetics.protonpack.collectors.CollectorUtils;
-import com.codepoetics.protonpack.collectors.NonUniqueValueException;
-import com.codepoetics.protonpack.selectors.Selectors;
-import org.junit.Test;
+import static java.util.Arrays.asList;
+import static java.util.Arrays.stream;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,10 +11,13 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static java.util.Arrays.asList;
-import static java.util.Arrays.stream;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import org.junit.Test;
+
+import com.codepoetics.protonpack.Indexed;
+import com.codepoetics.protonpack.StreamUtils;
+import com.codepoetics.protonpack.collectors.CollectorUtils;
+import com.codepoetics.protonpack.collectors.NonUniqueValueException;
+import com.codepoetics.protonpack.selectors.Selectors;
 
 public class ProtonpackUnitTest {
     @Test

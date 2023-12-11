@@ -18,11 +18,6 @@
             <version>${functionaljava.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.codepoetics</groupId>
-            <artifactId>protonpack</artifactId>
-            <version>${protonpack.version}</version>
-        </dependency>
-        <dependency>
             <groupId>io.github.resilience4j</groupId>
             <artifactId>resilience4j-circuitbreaker</artifactId>
             <version>${resilience4j.version}</version>
@@ -198,7 +193,6 @@
         <mockftpserver.version>2.7.1</mockftpserver.version>
         <functionaljava.version>4.8.1</functionaljava.version>
         <resilience4j.version>2.1.0</resilience4j.version>
-        <protonpack.version>1.15</protonpack.version>
         <commons-net.version>3.6</commons-net.version>
         <renjin.version>3.5-beta72</renjin.version>
         <rcaller.version>3.0</rcaller.version>

@@ -11,7 +11,6 @@ Remember, for advanced libraries like [Jackson](/jackson) and [JUnit](/testing-m
 - [Quick Guide to RSS with Rome](https://www.baeldung.com/rome-rss)
 - [Introduction to PCollections](https://www.baeldung.com/java-pcollections)
 - [Introduction to Eclipse Collections](https://www.baeldung.com/eclipse-collections)
-- [DistinctBy in the Java Stream API](https://www.baeldung.com/java-streams-distinct-by)
 - [Introduction to NoException](https://www.baeldung.com/no-exception)
 - [Spring Yarg Integration](https://www.baeldung.com/spring-yarg)
 - [Delete a Directory Recursively in Java](https://www.baeldung.com/java-delete-directory)

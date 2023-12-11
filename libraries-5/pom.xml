@@ -50,11 +50,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>one.util</groupId>
-            <artifactId>streamex</artifactId>
-            <version>${streamex.version}</version>
-        </dependency>
-        <dependency>
             <groupId>net.bytebuddy</groupId>
             <artifactId>byte-buddy</artifactId>
             <version>${byte-buddy.version}</version>
@@ -139,7 +134,6 @@
         <spring.version>4.3.8.RELEASE</spring.version>
         <scala.version>2.12</scala.version>
         <typesafe-akka.version>2.5.11</typesafe-akka.version>
-        <streamex.version>0.8.1</streamex.version>
         <docker.version>3.0.14</docker.version>
         <caffeine.version>3.1.8</caffeine.version>
         <findbugs.version>3.0.2</findbugs.version>
