@@ -79,17 +79,6 @@
             <version>${mesos.library.version}</version>
         </dependency>
         <dependency>
-            <groupId>net.sf.jasperreports</groupId>
-            <artifactId>jasperreports</artifactId>
-            <version>${jasperreports.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
             <version>${hsqldb.version}</version>
@@ -134,7 +123,6 @@
         <spring-boot-starter.version>2.7.8</spring-boot-starter.version>
         <mesos.library.version>1.11.0</mesos.library.version>
         <handlebars.version>4.3.1</handlebars.version>
-        <jasperreports.version>6.20.0</jasperreports.version>
         <spring.version>5.3.25</spring.version>
         <hsqldb.version>2.7.1</hsqldb.version>
     </properties>

@@ -788,6 +788,7 @@
                 <module>libraries-io</module>
                 <module>libraries-llms</module>
                 <module>libraries-primitive</module>
+                <module>libraries-reporting</module>
                 <module>libraries-rpc</module>
                 <module>libraries-security</module>
                 <module>libraries-server-2</module>
@@ -1036,6 +1037,7 @@
                 <module>libraries-io</module>
                 <module>libraries-llms</module>
                 <module>libraries-primitive</module>
+                <module>libraries-reporting</module>
                 <module>libraries-rpc</module>
                 <module>libraries-security</module>
                 <module>libraries-server-2</module>
