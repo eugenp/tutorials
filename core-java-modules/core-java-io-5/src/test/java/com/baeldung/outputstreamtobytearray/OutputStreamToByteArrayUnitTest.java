@@ -22,7 +22,7 @@ public class OutputStreamToByteArrayUnitTest {
             outputStream.write(data.getBytes(StandardCharsets.UTF_8));
         }
 
-        byte[] writtenData = FileUtils.readFileToByteArray(new File(filePath.toUri()));
+        byte[] writtenData = FileUtils.readFileToByteArray(filePath.toFile());
         String result = new String(writtenData, StandardCharsets.UTF_8);
         assertEquals(data, result);
     }
@@ -34,14 +34,18 @@ public class OutputStreamToByteArrayUnitTest {
         String fileName = "file.txt";
         Path filePath = tempDir.resolve(fileName);
 
-        try (DrainableOutputStream drainableOutputStream = new DrainableOutputStream(new FileOutputStream(filePath.toFile()))) {
+        DrainableOutputStream drainableOutputStream = new DrainableOutputStream(new FileOutputStream(filePath.toFile()));
+
+        try {
             drainableOutputStream.write(data.getBytes(StandardCharsets.UTF_8));
-            byte[] writtenData = drainableOutputStream.toByteArray();
-            assertEquals(data, new String(writtenData, StandardCharsets.UTF_8));
-        } catch (IOException e) {
-            e.printStackTrace();
+        } finally {
+            drainableOutputStream.close();
         }
+
+        byte[] writtenData = drainableOutputStream.toByteArray();
+        assertEquals(data, new String(writtenData, StandardCharsets.UTF_8));
     }
+
 
     public class DrainableOutputStream extends FilterOutputStream {
         private final ByteArrayOutputStream buffer;
