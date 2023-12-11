@@ -27,7 +27,7 @@
         <dependency>
             <groupId>uk.org.webcompere</groupId>
             <artifactId>system-stubs-jupiter</artifactId>
-            <version>1.1.0</version>
+            <version>2.1.5</version>
             <scope>test</scope>
         </dependency>
 
