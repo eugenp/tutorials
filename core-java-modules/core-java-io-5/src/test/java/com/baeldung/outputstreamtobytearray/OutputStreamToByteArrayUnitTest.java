@@ -35,11 +35,8 @@ public class OutputStreamToByteArrayUnitTest {
         Path filePath = tempDir.resolve(fileName);
 
         DrainableOutputStream drainableOutputStream = new DrainableOutputStream(new FileOutputStream(filePath.toFile()));
-
-        try {
+        try (drainableOutputStream) {
             drainableOutputStream.write(data.getBytes(StandardCharsets.UTF_8));
-        } finally {
-            drainableOutputStream.close();
         }
 
         byte[] writtenData = drainableOutputStream.toByteArray();
