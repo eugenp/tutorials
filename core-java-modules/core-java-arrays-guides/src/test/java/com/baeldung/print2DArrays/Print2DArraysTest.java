@@ -1,7 +1,5 @@
 package com.baeldung.print2DArrays;
 
-package com.st.tram.common;
-
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
