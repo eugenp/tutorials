@@ -1,16 +1,16 @@
 package com.baeldung.outputstreamtobytearray;
 
+import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 import java.io.*;
-import java.nio.file.Files;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 
 import static org.junit.Assert.assertEquals;
 
-public class OutputStreamtoByteArrayUnitTest {
+public class OutputStreamToByteArrayUnitTest {
 
     @Test
     public void givenFileOutputStream_whenUsingFileUtilsToReadTheFile_thenReturnByteArray(@TempDir Path tempDir) throws IOException {
@@ -18,35 +18,29 @@ public class OutputStreamtoByteArrayUnitTest {
         String fileName = "file.txt";
         Path filePath = tempDir.resolve(fileName);
 
-        try (DrainableOutputStream drainableOutputStream = new DrainableOutputStream(new FileOutputStream(filePath.toFile()))) {
-            drainableOutputStream.write(data.getBytes());
+        try (FileOutputStream outputStream = new FileOutputStream(filePath.toFile())) {
+            outputStream.write(data.getBytes(StandardCharsets.UTF_8));
         }
 
-        byte[] intercepted = Files.readAllBytes(filePath);
-        String result = new String(intercepted);
+        byte[] writtenData = FileUtils.readFileToByteArray(new File(filePath.toUri()));
+        String result = new String(writtenData, StandardCharsets.UTF_8);
         assertEquals(data, result);
     }
 
 
     @Test
-    public void givenFileOutputStream_whenUsingDrainableOutputStream_thenReturnByteArray() throws IOException {
+    public void givenFileOutputStream_whenUsingDrainableOutputStream_thenReturnByteArray(@TempDir Path tempDir) throws IOException {
         String data = "Welcome to Baeldung!";
-        String filePath = "file.txt";
+        String fileName = "file.txt";
+        Path filePath = tempDir.resolve(fileName);
 
-        DrainableOutputStream drainableOutputStream = null;
-
-        try {
-            drainableOutputStream = new DrainableOutputStream(new FileOutputStream(filePath));
-            drainableOutputStream.write(data.getBytes());
-        } finally {
-            if (drainableOutputStream != null) {
-                drainableOutputStream.close();
-            }
+        try (DrainableOutputStream drainableOutputStream = new DrainableOutputStream(new FileOutputStream(filePath.toFile()))) {
+            drainableOutputStream.write(data.getBytes(StandardCharsets.UTF_8));
+            byte[] writtenData = drainableOutputStream.toByteArray();
+            assertEquals(data, new String(writtenData, StandardCharsets.UTF_8));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
-        byte[] intercepted = Files.readAllBytes(Paths.get(filePath));
-        String result = new String(intercepted);
-        assertEquals(data, result);
     }
 
     public class DrainableOutputStream extends FilterOutputStream {
