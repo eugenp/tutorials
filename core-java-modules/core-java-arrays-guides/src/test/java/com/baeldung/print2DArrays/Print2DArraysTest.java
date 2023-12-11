@@ -8,7 +8,7 @@ import java.util.Arrays;
 import uk.org.webcompere.systemstubs.SystemOut;
 import uk.org.webcompere.systemstubs.annotations.SystemStub;
 
-public class Print2DArrayTest {
+public class Print2DArrayUnitTest {
     @SystemStub
     private SystemOut systemOut;
     
