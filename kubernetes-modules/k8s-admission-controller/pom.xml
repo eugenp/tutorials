@@ -33,6 +33,7 @@
         <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-test</artifactId>
+            <version>${reactor.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -78,5 +79,10 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <reactor.version>3.6.0</reactor.version>
+    </properties>
+
 
 </project>

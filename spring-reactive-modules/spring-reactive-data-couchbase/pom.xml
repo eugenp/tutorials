@@ -29,7 +29,6 @@
         <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-core</artifactId>
-            <version>${reactor-core.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -136,7 +135,6 @@
         <spring-tx.version>5.2.2.RELEASE</spring-tx.version>
         <httpclient.version>4.5.2</httpclient.version>
         <couchbaseMock.version>1.5.23</couchbaseMock.version>
-        <reactor-core.version>3.3.1.RELEASE</reactor-core.version>
         <!-- This spring-boot.version is set manually, For upgrading this please refer http://team.baeldung.com/browse/JAVA-2802 -->
         <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
         <log4j2.version>2.17.1</log4j2.version>

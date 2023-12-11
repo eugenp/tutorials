@@ -63,6 +63,7 @@
         <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-test</artifactId>
+            <version>${reactor.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -93,6 +94,8 @@
     <properties>
         <spring.version>2.2.1.RELEASE</spring.version>
         <awssdk.version>2.17.283</awssdk.version>
+        <lombok.version>1.18.20</lombok.version>
+        <reactor.version>3.6.0</reactor.version>
     </properties>
 
 </project>

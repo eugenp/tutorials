@@ -22,6 +22,7 @@
         <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-core</artifactId>
+            <version>${reactor-core.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.javafaker</groupId>
@@ -45,6 +46,7 @@
     </build>
 
     <properties>
+        <reactor-core.version>3.6.0</reactor-core.version>
         <javafaker.version>1.0.2</javafaker.version>
     </properties>
 
