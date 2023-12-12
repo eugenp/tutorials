@@ -18,7 +18,7 @@ public class JsonNodeToJsonObjectUnitTest {
 
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode jsonNode = objectMapper.readTree(jsonString);
-        ObjectNode objectNode = objectMapper.createObjectNode().setAll((ObjectNode) jsonNode);
+        ObjectNode objectNode = (ObjectNode) jsonNode;
 
         assertEquals("John", objectNode.get("name").asText());
         assertEquals("male", objectNode.get("gender").asText());
