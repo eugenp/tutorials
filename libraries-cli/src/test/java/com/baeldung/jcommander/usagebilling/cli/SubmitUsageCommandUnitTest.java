@@ -1,5 +1,7 @@
 package com.baeldung.jcommander.usagebilling.cli;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.Test;
 
 import com.beust.jcommander.JCommander;

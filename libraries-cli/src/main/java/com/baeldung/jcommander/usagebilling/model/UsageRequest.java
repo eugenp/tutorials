@@ -3,6 +3,12 @@ package com.baeldung.jcommander.usagebilling.model;
 import java.math.BigDecimal;
 import java.time.Instant;
 
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
 @Builder

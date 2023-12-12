@@ -1,5 +1,6 @@
 package com.baeldung.jcommander.usagebilling.service;
 
+import static java.lang.String.format;
 import static java.util.Arrays.asList;
 import static java.util.Arrays.fill;
 import static java.util.Collections.emptyList;
