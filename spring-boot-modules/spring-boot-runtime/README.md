@@ -10,3 +10,5 @@ This module contains articles about administering a Spring Boot runtime
  - [Spring – Log Incoming Requests](https://www.baeldung.com/spring-http-logging)
  - [How to Configure Spring Boot Tomcat](https://www.baeldung.com/spring-boot-configure-tomcat)
  - [CORS with Spring](https://www.baeldung.com/spring-cors)
+
+ - More articles: [[more -->]](../spring-boot-runtime-2)
