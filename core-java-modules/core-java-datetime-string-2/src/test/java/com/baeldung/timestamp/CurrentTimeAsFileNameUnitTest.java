@@ -21,32 +21,24 @@ import org.joda.time.format.DateTimeFormat;
 import org.junit.Test;
 
 public class CurrentTimeAsFileNameUnitTest {
+    
     private static final String TIMESTAMP_FORMAT = "yyyyMMddHHmmss";
     private static final DateTimeFormatter DATETIME_FORMATTER = DateTimeFormatter.ofPattern(TIMESTAMP_FORMAT);
-    private static final SimpleDateFormat SIMPLEDATE_FORMATTER = new SimpleDateFormat(TIMESTAMP_FORMAT);
-
-    private String getFileName(String currentTime) {
-        return MessageFormat.format("{0}.txt", currentTime);
-    }
-
-    private boolean verifyFileName(String fileName) {
-        return Pattern
-          .compile("[0-9]{14}+\\.txt", Pattern.CASE_INSENSITIVE)
-          .matcher(fileName)
-          .matches();
-    }
+    private static final SimpleDateFormat SIMPLEDATE_FORMAT = new SimpleDateFormat(TIMESTAMP_FORMAT);
 
     @Test
-    public void whenUsingCalender_thenGetCurrentTime() {
-        String currentTime = SIMPLEDATE_FORMATTER.format(Calendar.getInstance().getTime());
+    public void whenUsingCalendar_thenGetCurrentTime() {
+        String currentTime = SIMPLEDATE_FORMAT.format(Calendar.getInstance().getTime());
         String fileName = getFileName(currentTime);
+        
         assertTrue(verifyFileName(fileName));
     }
 
     @Test
     public void whenUsingDate_thenGetCurrentTime() {
-        String currentTime = SIMPLEDATE_FORMATTER.format(new Date());
+        String currentTime = SIMPLEDATE_FORMAT.format(new Date());
         String fileName = getFileName(currentTime);
+        
         assertTrue(verifyFileName(fileName));
     }
     
@@ -58,6 +50,7 @@ public class CurrentTimeAsFileNameUnitTest {
           .toString()
           .replaceAll("[:TZ-]", "");
         String fileName = getFileName(currentTime);
+        
         assertTrue(verifyFileName(fileName));
     }
 
@@ -65,6 +58,7 @@ public class CurrentTimeAsFileNameUnitTest {
     public void whenUsingLocalDateTime_thenGetCurrentTime() {
         String currentTime = LocalDateTime.now().format(DATETIME_FORMATTER);
         String fileName = getFileName(currentTime);
+        
         assertTrue(verifyFileName(fileName));
     }
 
@@ -74,6 +68,7 @@ public class CurrentTimeAsFileNameUnitTest {
           .now(ZoneId.of("Europe/Paris"))
           .format(DATETIME_FORMATTER);
         String fileName = getFileName(currentTime);
+        
         assertTrue(verifyFileName(fileName));
     }
 
@@ -83,22 +78,36 @@ public class CurrentTimeAsFileNameUnitTest {
           .of(LocalDateTime.now(), ZoneOffset.of("+01:00"))
           .format(DATETIME_FORMATTER);
         String fileName = getFileName(currentTime);
+        
         assertTrue(verifyFileName(fileName));
     }
 
     @Test
-    public void whenUsingJodaTime_thenGetCurrentTime() {
+    public void whenUsingJodaDateTime_thenGetCurrentTime() {
         String currentTime = DateTime.now().toString(TIMESTAMP_FORMAT);
         String fileName = getFileName(currentTime);
+        
         assertTrue(verifyFileName(fileName));
     }
 
     @Test
-    public void whenUsingJodaTimeInstant_thenGetCurrentTime() {
+    public void whenUsingJodaInstant_thenGetCurrentTime() {
         String currentTime = DateTimeFormat
           .forPattern(TIMESTAMP_FORMAT)
           .print(org.joda.time.Instant.now().toDateTime());
         String fileName = getFileName(currentTime);
+        
         assertTrue(verifyFileName(fileName));
+    }
+    
+    private String getFileName(String currentTime) {
+        return MessageFormat.format("{0}.txt", currentTime);
+    }
+
+    private boolean verifyFileName(String fileName) {
+        return Pattern
+          .compile("[0-9]{14}+\\.txt", Pattern.CASE_INSENSITIVE)
+          .matcher(fileName)
+          .matches();
     }
 }
