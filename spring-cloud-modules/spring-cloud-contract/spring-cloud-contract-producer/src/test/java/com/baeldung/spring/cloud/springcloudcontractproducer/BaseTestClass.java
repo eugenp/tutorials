@@ -3,6 +3,7 @@ package com.baeldung.spring.cloud.springcloudcontractproducer;
 import com.baeldung.spring.cloud.springcloudcontractproducer.controller.EvenOddController;
 import io.restassured.module.mockmvc.RestAssuredMockMvc;
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,7 +14,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
+@SpringBootTest(classes = SpringCloudContractProducerApplication.class, webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 @DirtiesContext
 @AutoConfigureMessageVerifier
 public class BaseTestClass {
@@ -25,5 +26,9 @@ public class BaseTestClass {
     public void setup() {
         StandaloneMockMvcBuilder standaloneMockMvcBuilder = MockMvcBuilders.standaloneSetup(evenOddController);
         RestAssuredMockMvc.standaloneSetup(standaloneMockMvcBuilder);
+    }
+
+    @Test
+    public void whenSpringContextIsBootstrapped_thenNoExceptions() {
     }
 }
