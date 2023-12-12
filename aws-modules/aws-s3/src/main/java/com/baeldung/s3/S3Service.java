@@ -24,6 +24,7 @@ import software.amazon.awssdk.services.s3.model.GetObjectRequest;
 import software.amazon.awssdk.services.s3.model.GetObjectResponse;
 import software.amazon.awssdk.services.s3.model.HeadBucketRequest;
 import software.amazon.awssdk.services.s3.model.HeadObjectRequest;
+import software.amazon.awssdk.services.s3.model.HeadObjectResponse;
 import software.amazon.awssdk.services.s3.model.ListBucketsResponse;
 import software.amazon.awssdk.services.s3.model.ListObjectsV2Request;
 import software.amazon.awssdk.services.s3.model.ListObjectsV2Response;
@@ -99,7 +100,13 @@ class S3Service {
             .key(key)
             .build();
 
-        return s3Client.putObject(request, Path.of(file.toURI()) );
+
+        return s3Client.putObject(request, Path.of(file.toURI()));
+    }
+
+    //updating object
+    public PutObjectResponse updateObject(String bucketName, String key, java.io.File file) {
+        return this.putObject(bucketName, key, file);
     }
 
     //listing objects
@@ -110,6 +117,7 @@ class S3Service {
         ListObjectsV2Response listObjectsV2Response = s3Client.listObjectsV2(listObjectsV2Request);
 
         for(S3Object os : listObjectsV2Response.contents()) {
+
             System.out.println(os.key());
         }
     }

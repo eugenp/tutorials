@@ -1,9 +1,9 @@
 package com.baeldung.httpclient;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.client.methods.CloseableHttpResponse;
-
 import java.io.IOException;
+
+import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
+import org.apache.hc.core5.http.HttpEntity;
 
 public final class ResponseUtil {
     private ResponseUtil() {

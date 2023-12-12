@@ -88,9 +88,8 @@
         </dependency>
         <!-- validation -->
         <dependency>
-            <groupId>org.hibernate</groupId>
+            <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
-            <version>${hibernate.version}</version>
         </dependency>
         <!-- web -->
         <dependency>
@@ -120,20 +119,10 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <!-- ShedLock -->
-        <dependency>
-            <groupId>net.javacrumbs.shedlock</groupId>
-            <artifactId>shedlock-spring</artifactId>
-            <version>${shedlock.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>net.javacrumbs.shedlock</groupId>
-            <artifactId>shedlock-provider-jdbc-template</artifactId>
-            <version>${shedlock.version}</version>
-        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
         </dependency>
     </dependencies>
 
@@ -149,7 +138,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>${maven.version}</version>
+                <version>${maven-war-plugin.version}</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
@@ -160,13 +149,10 @@
     <properties>
         <start-class>com.baeldung.sample.App</start-class>
         <annotation-api.version>1.3.2</annotation-api.version>
-        <!-- persistence -->
-        <hibernate.version>5.2.5.Final</hibernate.version>
         <!-- util -->
         <easymock.version>3.6</easymock.version>
-        <shedlock.version>2.1.0</shedlock.version>
         <javassist.version>3.22.0-GA</javassist.version>
-        <maven.version>3.2.2</maven.version>
+        <maven-war-plugin.version.version>3.2.2</maven-war-plugin.version.version>
     </properties>
 
 </project>

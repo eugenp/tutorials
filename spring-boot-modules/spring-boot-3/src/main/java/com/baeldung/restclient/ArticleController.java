@@ -1,5 +1,6 @@
 package com.baeldung.restclient;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -13,13 +14,21 @@ public class ArticleController {
     Map<Integer, Article> database = new HashMap<>();
 
     @GetMapping
-    public Collection<Article> getArticles() {
-        return database.values();
+    public ResponseEntity<Collection<Article>> getArticles() {
+        Collection<Article> values = database.values();
+        if (values.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(values);
     }
 
     @GetMapping("/{id}")
-    public Article getArticle(@PathVariable Integer id) {
-        return database.get(id);
+    public ResponseEntity<Article> getArticle(@PathVariable("id") Integer id) {
+        Article article = database.get(id);
+        if (article == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(article);
     }
 
     @PostMapping
@@ -28,7 +37,7 @@ public class ArticleController {
     }
 
     @PutMapping("/{id}")
-    public void updateArticle(@PathVariable Integer id, @RequestBody Article article) {
+    public void updateArticle(@PathVariable("id") Integer id, @RequestBody Article article) {
         assert Objects.equals(id, article.getId());
         database.remove(id);
         database.put(id, article);

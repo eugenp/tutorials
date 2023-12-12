@@ -151,8 +151,8 @@
     <properties>
         <orika.version>1.5.4</orika.version>
         <dozer.version>6.5.2</dozer.version>
-        <mapstruct.version>1.5.2.Final</mapstruct.version>
-        <modelmapper.version>3.1.0</modelmapper.version>
+        <mapstruct.version>1.6.0.Beta1</mapstruct.version>
+        <modelmapper.version>3.2.0</modelmapper.version>
         <jmapper.version>1.6.1.CR2</jmapper.version>
         <!-- Java source/target to use for compilation. -->
         <javac.target>1.8</javac.target>
@@ -164,7 +164,7 @@
         <shade.plugin.version>3.2.4</shade.plugin.version>
         <install.version>3.0.0-M1</install.version>
         <jar.plugin.version>3.2.0</jar.plugin.version>
-        <javadoc.plugin.version>3.2.0</javadoc.plugin.version>
+        <javadoc.plugin.version>3.6.2</javadoc.plugin.version>
         <resources.plugin.version>3.1.0</resources.plugin.version>
         <site.plugin.version>3.9.1</site.plugin.version>
         <source.plugin.version>3.2.1</source.plugin.version>

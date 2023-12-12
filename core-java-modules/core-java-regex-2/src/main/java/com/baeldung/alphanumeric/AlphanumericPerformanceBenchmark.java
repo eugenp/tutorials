@@ -85,7 +85,7 @@ public class AlphanumericPerformanceBenchmark {
 
     public boolean isAlphanumeric(final int codePoint) {
         return (codePoint >= 65 && codePoint <= 90) ||
-               (codePoint >= 97 && codePoint <= 172) ||
+               (codePoint >= 97 && codePoint <= 122) ||
                (codePoint >= 48 && codePoint <= 57);
     }
 }

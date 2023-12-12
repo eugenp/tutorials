@@ -18,6 +18,7 @@
         <module>dagger</module>
         <module>flyway-cdi-extension</module>
         <module>guice</module>
+        <module>avaje</module>
     </modules>
 
 </project>

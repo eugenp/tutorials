@@ -60,8 +60,8 @@
             <version>${javassist.version}</version>
         </dependency>
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
             <version>${mysql-connector-java.version}</version>
             <scope>runtime</scope>
         </dependency>
@@ -72,7 +72,7 @@
         </dependency>
         <!-- validation -->
         <dependency>
-            <groupId>org.hibernate</groupId>
+            <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>${hibernate-validator.version}</version>
         </dependency>
@@ -107,11 +107,6 @@
             <artifactId>spring-test</artifactId>
             <version>${org.springframework.version}</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>javax.el</groupId>
-            <artifactId>el-api</artifactId>
-            <version>${javax.el.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.derby</groupId>
@@ -167,12 +162,11 @@
         <javassist.version>3.21.0-GA</javassist.version>
         <!-- persistence -->
         <hibernate.version>5.2.5.Final</hibernate.version>
-        <mysql-connector-java.version>5.1.40</mysql-connector-java.version>
+        <mysql-connector-java.version>8.2.0</mysql-connector-java.version>
         <tomcat-dbcp.version>7.0.73</tomcat-dbcp.version>
         <derby.version>10.13.1.1</derby.version>
         <!-- various -->
-        <hibernate-validator.version>5.3.3.Final</hibernate-validator.version>
-        <javax.el.version>2.2</javax.el.version>
+        <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
         <jaxb-api.version>2.3.0</jaxb-api.version>
         <!-- util -->
         <httpcore.version>4.4.5</httpcore.version>
