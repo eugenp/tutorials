@@ -35,6 +35,21 @@
             <artifactId>pdfbox</artifactId>
             <version>${pdfbox.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>${poi-ooxml.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j-core.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -52,6 +67,9 @@
         <itextpdf.core.version>7.2.3</itextpdf.core.version>
         <itextpdf.cleanup.version>3.0.1</itextpdf.cleanup.version>
         <pdfbox.version>3.0.0-RC1</pdfbox.version>
+        <poi-ooxml.version>5.2.5</poi-ooxml.version>
+        <log4j-api.version>2.20.0</log4j-api.version>
+        <log4j-core.version>2.20.0</log4j-core.version>
     </properties>
 
 </project>
