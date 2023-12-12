@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class JsonNodeToJsonObjectUnitTest {
+public class JsonNodeToObjectNodeUnitTest {
     
     public static String jsonString = "{\"name\": \"John\", \"gender\": \"male\", \"company\": \"Baeldung\", \"isEmployee\": true, \"age\": 30}";
 
