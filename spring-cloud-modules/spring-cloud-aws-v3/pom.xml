@@ -15,7 +15,7 @@
             <dependency>
                 <groupId>io.awspring.cloud</groupId>
                 <artifactId>spring-cloud-aws</artifactId>
-                <version>3.1.0</version>
+                <version>${spring-cloud-aws.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -54,6 +54,7 @@
 
     <properties>
         <start-class>com.baeldung.spring.cloud.aws.SpringCloudAwsApplication</start-class>
+        <spring-cloud-aws.version>3.1.0</spring-cloud-aws.version>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
     </properties>

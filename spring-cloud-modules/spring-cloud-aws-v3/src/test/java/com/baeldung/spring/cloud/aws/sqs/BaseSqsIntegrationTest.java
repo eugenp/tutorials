@@ -7,6 +7,7 @@ import org.testcontainers.containers.localstack.LocalStackContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
+
 import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
 import software.amazon.awssdk.auth.credentials.AwsCredentialsProvider;
 import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
@@ -28,15 +29,15 @@ public class BaseSqsIntegrationTest {
         @Bean
         SqsAsyncClient sqsAsyncClient(AwsCredentialsProvider credentialsProvider) {
             return SqsAsyncClient.builder()
-                    .region(Region.of(localstack.getRegion()))
-                    .credentialsProvider(credentialsProvider)
-                    .endpointOverride(localstack.getEndpoint()).build();
+                .region(Region.of(localstack.getRegion()))
+                .credentialsProvider(credentialsProvider)
+                .endpointOverride(localstack.getEndpoint())
+                .build();
         }
 
         @Bean
         AwsCredentialsProvider credentialsProvider() {
-            return StaticCredentialsProvider
-                    .create(AwsBasicCredentials.create(localstack.getAccessKey(), localstack.getSecretKey()));
+            return StaticCredentialsProvider.create(AwsBasicCredentials.create(localstack.getAccessKey(), localstack.getSecretKey()));
         }
     }
 
