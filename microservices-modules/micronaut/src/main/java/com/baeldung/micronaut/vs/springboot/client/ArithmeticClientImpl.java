@@ -1,46 +1,46 @@
 package com.baeldung.micronaut.vs.springboot.client;
 
-import javax.inject.Singleton;
-
 import io.micronaut.http.HttpRequest;
-import io.micronaut.http.client.RxHttpClient;
+import io.micronaut.http.client.HttpClient;
 import io.micronaut.http.client.annotation.Client;
+import io.reactivex.rxjava3.core.Single;
+import jakarta.inject.Singleton;
 
 @Singleton
 public class ArithmeticClientImpl {
-    private RxHttpClient httpClient;
+    private HttpClient httpClient;
 
-    public ArithmeticClientImpl(@Client("/") RxHttpClient httpClient) {
+    public ArithmeticClientImpl(@Client("/") HttpClient httpClient) {
         this.httpClient = httpClient;
     }
 
     public String sum(float number1, float number2) {
         HttpRequest<String> req = HttpRequest.GET("/math/sum/" + number1 + "/" + number2);
-        return httpClient.retrieve(req)
-            .blockingFirst();
+        return Single.fromPublisher(httpClient.retrieve(req))
+            .blockingGet();
     }
 
     public String subtract(float number1, float number2) {
         HttpRequest<String> req = HttpRequest.GET("/math/subtract/" + number1 + "/" + number2);
-        return httpClient.retrieve(req)
-            .blockingFirst();
+        return Single.fromPublisher(httpClient.retrieve(req))
+            .blockingGet();
     }
 
     public String multiply(float number1, float number2) {
         HttpRequest<String> req = HttpRequest.GET("/math/multiply/" + number1 + "/" + number2);
-        return httpClient.retrieve(req)
-            .blockingFirst();
+        return Single.fromPublisher(httpClient.retrieve(req))
+                .blockingGet();
     }
 
     public String divide(float number1, float number2) {
         HttpRequest<String> req = HttpRequest.GET("/math/divide/" + number1 + "/" + number2);
-        return httpClient.retrieve(req)
-            .blockingFirst();
+        return Single.fromPublisher(httpClient.retrieve(req))
+                .blockingGet();
     }
 
     public String memory() {
         HttpRequest<String> req = HttpRequest.GET("/math/memory");
-        return httpClient.retrieve(req)
-            .blockingFirst();
+        return Single.fromPublisher(httpClient.retrieve(req))
+                .blockingGet();
     }
 }

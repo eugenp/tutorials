@@ -22,6 +22,7 @@ public class EditorUnitTest {
         loadAndVerifyTestData(entityManagerFactory, editor);
     }
     */
+
     @Test
     public void givenNeo4j_WhenEntitiesCreated_thenCanBeRetrieved() throws Exception {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ogm-neo4j");

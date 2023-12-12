@@ -41,13 +41,11 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
+            <version>${lombok.version}</version>
         </dependency>
 
     </dependencies>
 
-    <properties>
-        <java.version>1.8</java.version>
-    </properties>
     <build>
         <plugins>
             <plugin>

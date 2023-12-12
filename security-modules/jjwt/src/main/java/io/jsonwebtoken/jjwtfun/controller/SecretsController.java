@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.Map;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -23,7 +24,7 @@ public class SecretsController extends BaseController {
     }
 
     @RequestMapping(value = "/refresh-secrets", method = GET)
-    public Map<String, String> refreshSecrets() {
+    public Map<String, String> refreshSecrets() throws NoSuchAlgorithmException {
         return secretService.refreshSecrets();
     }
 

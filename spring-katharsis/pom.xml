@@ -33,7 +33,7 @@
         <dependency>
             <groupId>io.katharsis</groupId>
             <artifactId>katharsis-spring</artifactId>
-            <version>${katharsis.version}</version>
+            <version>${katharsis-spring.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.apache.commons</groupId>
@@ -132,7 +132,7 @@
     </profiles>
 
     <properties>
-        <katharsis.version>3.0.2</katharsis.version>
+        <katharsis-spring.version>3.0.2</katharsis-spring.version>
         <reflections.version>0.9.10</reflections.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
     </properties>

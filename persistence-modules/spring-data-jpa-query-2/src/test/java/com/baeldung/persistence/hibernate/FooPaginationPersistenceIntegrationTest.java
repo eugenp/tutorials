@@ -1,19 +1,19 @@
 package com.baeldung.persistence.hibernate;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.lessThan;
-import static org.junit.Assert.assertThat;
 
 import java.util.List;
 
-import org.hibernate.Criteria;
-import org.hibernate.Query;
 import org.hibernate.ScrollMode;
 import org.hibernate.ScrollableResults;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Projections;
+import org.hibernate.query.Query;
+import org.hibernate.query.SelectionQuery;
+import org.hibernate.query.criteria.HibernateCriteriaBuilder;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -28,6 +28,8 @@ import com.baeldung.persistence.service.IFooService;
 import com.baeldung.spring.config.PersistenceTestConfig;
 import com.google.common.collect.Lists;
 
+import jakarta.persistence.criteria.CriteriaQuery;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { PersistenceTestConfig.class }, loader = AnnotationConfigContextLoader.class)
 public class FooPaginationPersistenceIntegrationTest {
@@ -39,8 +41,6 @@ public class FooPaginationPersistenceIntegrationTest {
     private SessionFactory sessionFactory;
 
     private Session session;
-
-    // tests
 
     @Before
     public final void before() {
@@ -59,20 +59,17 @@ public class FooPaginationPersistenceIntegrationTest {
         session.close();
     }
 
-    // tests
-
     @Test
     public final void whenContextIsBootstrapped_thenNoExceptions() {
         //
     }
 
-    @SuppressWarnings("unchecked")
     @Test
     public final void whenRetrievingPaginatedEntities_thenCorrectSize() {
         final int pageNumber = 1;
         final int pageSize = 10;
 
-        final Query query = session.createQuery("From Foo");
+        final Query<Foo> query = session.createQuery("From Foo",Foo.class);
         query.setFirstResult((pageNumber - 1) * pageSize);
         query.setMaxResults(pageSize);
         final List<Foo> fooList = query.list();
@@ -80,19 +77,18 @@ public class FooPaginationPersistenceIntegrationTest {
         assertThat(fooList, hasSize(pageSize));
     }
 
-    @SuppressWarnings("unchecked")
     @Test
     public final void whenRetrievingAllPages_thenCorrect() {
         int pageNumber = 1;
         final int pageSize = 10;
 
         final String countQ = "Select count (f.id) from Foo f";
-        final Query countQuery = session.createQuery(countQ);
+        final Query<Long> countQuery = session.createQuery(countQ, Long.class);
         final Long countResult = (Long) countQuery.uniqueResult();
 
         final List<Foo> fooList = Lists.newArrayList();
         int totalEntities = 0;
-        final Query query = session.createQuery("From Foo");
+        final Query<Foo> query = session.createQuery("From Foo", Foo.class);
         while (totalEntities < countResult) {
             query.setFirstResult((pageNumber - 1) * pageSize);
             query.setMaxResults(pageSize);
@@ -102,17 +98,16 @@ public class FooPaginationPersistenceIntegrationTest {
         }
     }
 
-    @SuppressWarnings("unchecked")
     @Test
     public final void whenRetrievingLastPage_thenCorrectSize() {
         final int pageSize = 10;
 
         final String countQ = "Select count (f.id) from Foo f";
-        final Query countQuery = session.createQuery(countQ);
-        final Long countResults = (Long) countQuery.uniqueResult();
+        final Query<Long> countQuery = session.createQuery(countQ, Long.class);
+        final Long countResults = countQuery.uniqueResult();
         final int lastPageNumber = (int) (Math.ceil(countResults / pageSize));
 
-        final Query selectQuery = session.createQuery("From Foo");
+        final Query<Foo> selectQuery = session.createQuery("From Foo",Foo.class);
         selectQuery.setFirstResult((lastPageNumber - 1) * pageSize);
         selectQuery.setMaxResults(pageSize);
         final List<Foo> lastPage = selectQuery.list();
@@ -126,9 +121,9 @@ public class FooPaginationPersistenceIntegrationTest {
     public final void givenUsingTheScrollableApi_whenRetrievingPaginatedData_thenCorrect() {
         final int pageSize = 10;
         final String hql = "FROM Foo f order by f.name";
-        final Query query = session.createQuery(hql);
+        final Query<Foo> query = session.createQuery(hql,Foo.class);
 
-        final ScrollableResults resultScroll = query.scroll(ScrollMode.FORWARD_ONLY);
+        final ScrollableResults<Foo> resultScroll = query.scroll(ScrollMode.FORWARD_ONLY);
 
         // resultScroll.last();
         // final int totalResults = resultScroll.getRowNumber() + 1;
@@ -138,7 +133,7 @@ public class FooPaginationPersistenceIntegrationTest {
         final List<Foo> fooPage = Lists.newArrayList();
         int i = 0;
         while (pageSize > i++) {
-            fooPage.add((Foo) resultScroll.get(0));
+            fooPage.add((Foo) resultScroll.get());
             if (!resultScroll.next()) {
                 break;
             }
@@ -147,36 +142,42 @@ public class FooPaginationPersistenceIntegrationTest {
         assertThat(fooPage, hasSize(lessThan(10 + 1)));
     }
 
-    @SuppressWarnings("unchecked")
     @Test
     public final void givenUsingTheCriteriaApi_whenRetrievingFirstPage_thenCorrect() {
         final int pageSize = 10;
 
-        final Criteria criteria = session.createCriteria(Foo.class);
-        criteria.setFirstResult(0);
-        criteria.setMaxResults(pageSize);
-        final List<Foo> firstPage = criteria.list();
+        CriteriaQuery<Foo> selectQuery = session.getCriteriaBuilder().createQuery(Foo.class);
+        selectQuery.from(Foo.class);
+
+        SelectionQuery<Foo> query = session.createQuery(selectQuery);
+        query.setFirstResult(0);
+        query.setMaxResults(pageSize);
+        final List<Foo> firstPage = query.list();
 
         assertThat(firstPage, hasSize(pageSize));
     }
 
-    @SuppressWarnings("unchecked")
     @Test
     public final void givenUsingTheCriteriaApi_whenRetrievingPaginatedData_thenCorrect() {
-        final Criteria criteriaCount = session.createCriteria(Foo.class);
-        criteriaCount.setProjection(Projections.rowCount());
-        final Long count = (Long) criteriaCount.uniqueResult();
+
+        HibernateCriteriaBuilder qb = session.getCriteriaBuilder();
+        CriteriaQuery<Long> cq = qb.createQuery(Long.class);
+        cq.select(qb.count(cq.from(Foo.class)));
+        final Long count = session.createQuery(cq).getSingleResult();
 
         int pageNumber = 1;
         final int pageSize = 10;
         final List<Foo> fooList = Lists.newArrayList();
 
-        final Criteria criteria = session.createCriteria(Foo.class);
+        CriteriaQuery<Foo> selectQuery = session.getCriteriaBuilder().createQuery(Foo.class);
+        selectQuery.from(Foo.class);
+        SelectionQuery<Foo> query = session.createQuery(selectQuery);
+
         int totalEntities = 0;
         while (totalEntities < count.intValue()) {
-            criteria.setFirstResult((pageNumber - 1) * pageSize);
-            criteria.setMaxResults(pageSize);
-            fooList.addAll(criteria.list());
+            query.setFirstResult((pageNumber - 1) * pageSize);
+            query.setMaxResults(pageSize);
+            fooList.addAll(query.list());
             totalEntities = fooList.size();
             pageNumber++;
         }

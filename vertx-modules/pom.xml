@@ -30,4 +30,8 @@
         </pluginManagement>
     </build>
 
+    <properties>
+        <vertx.version>3.9.15</vertx.version>
+    </properties>
+
 </project>
