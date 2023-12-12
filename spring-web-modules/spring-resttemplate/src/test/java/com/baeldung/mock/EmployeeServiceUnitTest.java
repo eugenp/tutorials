@@ -1,14 +1,13 @@
 package com.baeldung.mock;
 
-import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
@@ -17,8 +16,6 @@ import com.baeldung.resttemplate.web.model.Employee;
 
 @ExtendWith(MockitoExtension.class) 
 public class EmployeeServiceUnitTest {
-
-    private static final Logger logger = LoggerFactory.getLogger(EmployeeServiceUnitTest.class);
 
     @Mock
     private RestTemplate restTemplate;
@@ -34,7 +31,7 @@ public class EmployeeServiceUnitTest {
 
         Employee employee = empService.getEmployee("E001");
 
-        Assertions.assertEquals(emp, employee);
+        assertEquals(emp, employee);
     }
 
 }
