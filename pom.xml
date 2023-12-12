@@ -843,12 +843,12 @@
                 <module>spring-boot-rest</module>
                 <module>spring-cloud-modules/spring-cloud-azure</module>
                 <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
-                <!--<module>spring-cloud-modules/spring-cloud-contract</module>--><!-- failing after upgrading to jdk17-->
-                <!--<module>spring-cloud-modules/spring-cloud-data-flow</module>--><!-- failing after upgrading to jdk17-->
+<!--                <module>spring-cloud-modules/spring-cloud-contract</module>-->
+                <module>spring-cloud-modules/spring-cloud-data-flow</module>
                 <module>spring-cloud-modules/spring-cloud-eureka</module>
                 <module>spring-cloud-modules/spring-cloud-netflix-feign</module>
                 <module>spring-cloud-modules/spring-cloud-security</module>
-                <!--<module>spring-cloud-modules/spring-cloud-stream-starters</module>--><!-- failing after upgrading to jdk17-->
+                <module>spring-cloud-modules/spring-cloud-stream-starters</module>
                 <module>spring-cloud-modules/spring-cloud-zuul-eureka-integration</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
@@ -1089,12 +1089,12 @@
                 <module>spring-boot-rest</module>
                 <module>spring-cloud-modules/spring-cloud-azure</module>
                 <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
-                <!--<module>spring-cloud-modules/spring-cloud-contract</module>--><!-- failing after upgrading to jdk17-->
-                <!--<module>spring-cloud-modules/spring-cloud-data-flow</module>--><!-- failing after upgrading to jdk17-->
+<!--                <module>spring-cloud-modules/spring-cloud-contract</module>-->
+                <module>spring-cloud-modules/spring-cloud-data-flow</module>
                 <module>spring-cloud-modules/spring-cloud-eureka</module>
                 <module>spring-cloud-modules/spring-cloud-netflix-feign</module>
                 <module>spring-cloud-modules/spring-cloud-security</module>
-                <!--<module>spring-cloud-modules/spring-cloud-stream-starters</module>--><!-- failing after upgrading to jdk17-->
+                <module>spring-cloud-modules/spring-cloud-stream-starters</module>
                 <module>spring-cloud-modules/spring-cloud-zuul-eureka-integration</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
