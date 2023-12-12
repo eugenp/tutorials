@@ -103,6 +103,21 @@
             <artifactId>jackson-annotations</artifactId>
             <version>${jackson-annotations.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.vavr</groupId>
+            <artifactId>vavr</artifactId>
+            <version>${vavr.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -124,6 +139,7 @@
         <javafx.version>19</javafx.version>
         <spoon-core.version>10.3.0</spoon-core.version>
         <eclipse-collections.version>8.2.0</eclipse-collections.version>
+        <vavr.version>0.9.0</vavr.version>
     </properties>
 
 </project>

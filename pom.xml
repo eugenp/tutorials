@@ -777,6 +777,7 @@
                 <module>libraries-apache-commons-io</module>
                 <module>libraries-apache-commons</module>
                 <module>libraries-bytecode</module>
+                <module>libraries-cli</module>
                 <module>libraries-concurrency</module>
                 <module>libraries-data-2</module>
                 <module>libraries-data-db</module>
@@ -1026,6 +1027,7 @@
                 <module>libraries-apache-commons-io</module>
                 <module>libraries-apache-commons</module>
                 <module>libraries-bytecode</module>
+                <module>libraries-cli</module>
                 <module>libraries-concurrency</module>
                 <module>libraries-data-2</module>
                 <module>libraries-data-db</module>
