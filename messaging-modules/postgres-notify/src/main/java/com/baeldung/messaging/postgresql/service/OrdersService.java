@@ -43,14 +43,14 @@ public class OrdersService {
     @Transactional(readOnly = true)
     public Optional<Order> findById(Long id) {
         Optional<Order> o = Optional.ofNullable(ordersCache.get(id, Order.class));
-        if ( !o.isEmpty() ) {
+        if ( o.isPresent() ) {
             log.info("findById: cache hit, id={}",id);
             return o;
         }
         
         log.info("findById: cache miss, id={}",id);
         o = repo.findById(id);
-        if ( o.isEmpty()) {
+        if ( !o.isPresent()) {
             return o;
         }
         

@@ -10,3 +10,4 @@ This module contains articles about Java operators
 - [Check if at Least Two Out of Three Booleans Are True in Java](https://www.baeldung.com/java-check-two-of-three-booleans)
 - [Alternatives for instanceof Operator in Java](https://www.baeldung.com/java-instanceof-alternatives)
 - [What Does “––>” Mean in Java?](https://www.baeldung.com/java-minus-minus-greaterthan)
+- [All the Ways Java Uses the Colon Character](https://www.baeldung.com/java-colon)
