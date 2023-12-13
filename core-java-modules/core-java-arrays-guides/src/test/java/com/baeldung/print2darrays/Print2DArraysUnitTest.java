@@ -1,4 +1,4 @@
-package com.baeldung.print2Drrays;
+package com.baeldung.print2darrays;
 
 import org.junit.jupiter.api.Test;
 
