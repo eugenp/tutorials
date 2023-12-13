@@ -1,4 +1,11 @@
-package com.baeldung.ftp;
+package com.baeldung.commons.ftp;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.util.Collection;
 
 import org.junit.After;
 import org.junit.Before;
@@ -9,13 +16,6 @@ import org.mockftpserver.fake.filesystem.DirectoryEntry;
 import org.mockftpserver.fake.filesystem.FileEntry;
 import org.mockftpserver.fake.filesystem.FileSystem;
 import org.mockftpserver.fake.filesystem.UnixFakeFileSystem;
-
-import java.io.File;
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.util.Collection;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class FtpClientIntegrationTest {
 

@@ -1,14 +1,18 @@
-package com.baeldung.ftp;
+package com.baeldung.commons.ftp;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.stream.Collectors;
 
 import org.apache.commons.net.PrintCommandListener;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
 import org.apache.commons.net.ftp.FTPReply;
-
-import java.io.*;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.stream.Collectors;
 
 class FtpClient {
 
