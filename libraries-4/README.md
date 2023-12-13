@@ -12,7 +12,6 @@ Remember, for advanced libraries like [Jackson](/jackson) and [JUnit](/testing-m
 - [Introduction to PCollections](https://www.baeldung.com/java-pcollections)
 - [Introduction to Eclipse Collections](https://www.baeldung.com/eclipse-collections)
 - [Introduction to NoException](https://www.baeldung.com/no-exception)
-- [Delete a Directory Recursively in Java](https://www.baeldung.com/java-delete-directory)
 - [Guide to JDeferred](https://www.baeldung.com/jdeferred)
 - [Introduction to MBassador](https://www.baeldung.com/mbassador)
 - [Using Pairs in Java](https://www.baeldung.com/java-pairs)
