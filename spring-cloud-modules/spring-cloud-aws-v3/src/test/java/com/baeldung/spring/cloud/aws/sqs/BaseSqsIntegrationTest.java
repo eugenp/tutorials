@@ -1,5 +1,7 @@
 package com.baeldung.spring.cloud.aws.sqs;
 
+import java.util.Map;
+
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,6 +15,7 @@ import software.amazon.awssdk.auth.credentials.AwsCredentialsProvider;
 import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.sqs.SqsAsyncClient;
+import software.amazon.awssdk.services.sqs.model.QueueAttributeName;
 
 @SpringBootTest
 @Testcontainers
@@ -24,21 +27,29 @@ public class BaseSqsIntegrationTest {
     static LocalStackContainer localstack = new LocalStackContainer(DockerImageName.parse(LOCAL_STACK_VERSION));
 
     @Configuration
-    public static class SqsLiveTestConfiguration {
+    static class SqsLiveTestConfiguration {
 
         @Bean
         SqsAsyncClient sqsAsyncClient(AwsCredentialsProvider credentialsProvider) {
-            return SqsAsyncClient.builder()
+            return createQueue(SqsAsyncClient.builder()
                 .region(Region.of(localstack.getRegion()))
                 .credentialsProvider(credentialsProvider)
                 .endpointOverride(localstack.getEndpoint())
-                .build();
+                .build());
         }
 
         @Bean
         AwsCredentialsProvider credentialsProvider() {
             return StaticCredentialsProvider.create(AwsBasicCredentials.create(localstack.getAccessKey(), localstack.getSecretKey()));
         }
+
+        // Framework doesn't support automatically creating FIFO queues at this moment.
+        private static SqsAsyncClient createQueue(SqsAsyncClient client) {
+            client.createQueue(req -> req.queueName("user_created_queue.fifo")
+                .attributes(Map.of(QueueAttributeName.FIFO_QUEUE, "true"))).join();
+            return client;
+        }
+
     }
 
 }

@@ -51,7 +51,7 @@ public class SpringCloudAwsSQSLiveTest extends BaseSqsIntegrationTest {
         var payload = new UserCreatedEvent(userId, "John", "john@baeldung.com");
 
         // when
-        sqsTemplate.send(to -> to.queue(eventQueuesProperties.getUserCreatedQueue())
+        sqsTemplate.send(to -> to.queue(eventQueuesProperties.getUserCreatedFifoQueue())
             .payload(payload));
 
         // then

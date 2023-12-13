@@ -31,7 +31,7 @@ public class UserEventListeners {
             .toString(), username, null));
     }
 
-    @SqsListener("${events.queues.user-created-queue}")
+    @SqsListener("${events.queues.user-created-fifo-queue}")
     public void receiveRecordMessage(UserCreatedEvent event) {
         logger.info("Received message: {}", event);
         userRepository.save(new User(event.id(), event.username(), event.email()));
