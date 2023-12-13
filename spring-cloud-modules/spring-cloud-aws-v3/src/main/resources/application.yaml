@@ -1,0 +1,5 @@
+events:
+  queues:
+    user-created-by-name-queue: user_created_by_name_queue
+    user-created-queue: user_created_queue
+    user-created-event-type-queue: user_created_event_type_queue

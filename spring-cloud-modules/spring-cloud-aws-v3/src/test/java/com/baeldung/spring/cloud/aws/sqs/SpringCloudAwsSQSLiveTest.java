@@ -1,13 +1,11 @@
 package com.baeldung.spring.cloud.aws.sqs;
 
-import static com.baeldung.spring.cloud.aws.sqs.BaeldungListeners.CUSTOM_HEADERS_PAYLOAD_QUEUE_NAME;
-import static com.baeldung.spring.cloud.aws.sqs.BaeldungListeners.CUSTOM_HEADER_NAME;
-import static com.baeldung.spring.cloud.aws.sqs.BaeldungListeners.RECORD_PAYLOAD_QUEUE_NAME;
-import static com.baeldung.spring.cloud.aws.sqs.BaeldungListeners.STRING_PAYLOAD_QUEUE_NAME;
-import static org.assertj.core.api.Assertions.assertThat;
+import static com.baeldung.spring.cloud.aws.sqs.UserEventListeners.EVENT_TYPE_CUSTOM_HEADER;
+import static org.awaitility.Awaitility.await;
 
+import java.time.Duration;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
+import java.util.UUID;
 
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -21,34 +19,66 @@ public class SpringCloudAwsSQSLiveTest extends BaseSqsIntegrationTest {
     private static final Logger logger = LoggerFactory.getLogger(SpringCloudAwsSQSLiveTest.class);
 
     @Autowired
-    SqsTemplate sqsTemplate;
+    private SqsTemplate sqsTemplate;
 
     @Autowired
-    CountDownLatchContainer latchContainer;
+    private UserRepository userRepository;
+
+    @Autowired
+    private EventQueuesProperties eventQueuesProperties;
 
     @Test
-    void givenAStringPayload_whenSend_shouldReceive() throws Exception {
-        sqsTemplate.send(to -> to.queue(STRING_PAYLOAD_QUEUE_NAME)
-            .payload("My String"));
-        logger.info("Sent message");
-        assertThat(latchContainer.stringPayloadLatch.await(3, TimeUnit.SECONDS)).isTrue();
+    void givenAStringPayload_whenSend_shouldReceive() {
+        // given
+        var userName = "Albert";
+
+        // when
+        sqsTemplate.send(to -> to.queue(eventQueuesProperties.getUserCreatedByNameQueue())
+            .payload(userName));
+        logger.info("Message sent with payload {}", userName);
+
+        // then
+        await().atMost(Duration.ofSeconds(3))
+            .until(() -> userRepository.findByName(userName)
+                .isPresent());
     }
 
     @Test
-    void givenARecordPayload_whenSend_shouldReceive() throws Exception {
-        sqsTemplate.send(to -> to.queue(RECORD_PAYLOAD_QUEUE_NAME)
-            .payload(new BaeldungRecord(1, "My Record")));
-        logger.info("Sent message");
-        assertThat(latchContainer.recordPayloadLatch.await(3, TimeUnit.SECONDS)).isTrue();
+    void givenARecordPayload_whenSend_shouldReceive() {
+        // given
+        String userId = UUID.randomUUID()
+            .toString();
+        var payload = new UserCreatedEvent(userId, "John", "john@baeldung.com");
+
+        // when
+        sqsTemplate.send(to -> to.queue(eventQueuesProperties.getUserCreatedQueue())
+            .payload(payload));
+
+        // then
+        logger.info("Message sent with payload: {}", payload);
+        await().atMost(Duration.ofSeconds(3))
+            .until(() -> userRepository.findById(userId)
+                .isPresent());
     }
 
     @Test
-    void givenCustomHeaders_whenSend_shouldReceive() throws Exception {
-        sqsTemplate.send(to -> to.queue(CUSTOM_HEADERS_PAYLOAD_QUEUE_NAME)
-            .payload(new BaeldungRecord(1, "My Record"))
-            .headers(Map.of(CUSTOM_HEADER_NAME, "my-header-value")));
-        logger.info("Sent message");
-        assertThat(latchContainer.customHeadersPayloadLatch.await(3, TimeUnit.SECONDS)).isTrue();
+    void givenCustomHeaders_whenSend_shouldReceive() {
+        // given
+        String userId = UUID.randomUUID()
+            .toString();
+        var payload = new UserCreatedEvent(userId, "John", "john@baeldung.com");
+        var headers = Map.<String, Object> of(EVENT_TYPE_CUSTOM_HEADER, "UserCreatedEvent");
+
+        // when
+        sqsTemplate.send(to -> to.queue(eventQueuesProperties.getUserCreatedEventTypeQueue())
+            .payload(payload)
+            .headers(headers));
+
+        // then
+        logger.info("Sent message with payload {} and custom headers: {}", payload, headers);
+        await().atMost(Duration.ofSeconds(3))
+            .until(() -> userRepository.findById(userId)
+                .isPresent());
     }
 
 }
