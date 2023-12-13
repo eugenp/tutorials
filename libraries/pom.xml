@@ -110,11 +110,6 @@
             <version>${quartz.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.openjdk.jmh</groupId>
-            <artifactId>jmh-core</artifactId>
-            <version>${jmh-core.version}</version>
-        </dependency>
-        <dependency>
             <groupId>info.debatty</groupId>
             <artifactId>java-lsh</artifactId>
             <version>${java-lsh.version}</version>
