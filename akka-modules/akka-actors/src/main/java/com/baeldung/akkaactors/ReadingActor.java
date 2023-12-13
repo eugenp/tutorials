@@ -1,4 +1,4 @@
-package com.baeldung.akka;
+package com.baeldung.akkaactors;
 
 import akka.actor.AbstractActor;
 import akka.actor.ActorRef;

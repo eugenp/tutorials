@@ -14,6 +14,7 @@
     </parent>
 
     <modules>
+        <module>akka-actors</module>
         <module>akka-http</module>
         <module>akka-streams</module>
         <module>spring-akka</module>
