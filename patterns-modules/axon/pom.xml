@@ -51,6 +51,7 @@
         <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-core</artifactId>
+            <version>${reactor.version}</version>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
@@ -70,6 +71,7 @@
         <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-test</artifactId>
+            <version>${reactor.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -114,6 +116,7 @@
     <properties>
         <axon-bom.version>4.6.3</axon-bom.version>
         <de.flapdoodle.embed.mongo.version>3.4.8</de.flapdoodle.embed.mongo.version>
+        <reactor.version>3.6.0</reactor.version>
     </properties>
 
 </project>

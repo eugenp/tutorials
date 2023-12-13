@@ -98,7 +98,7 @@
     </dependencies>
 
     <properties>
-        <snakeyaml.version>1.21</snakeyaml.version>
+        <snakeyaml.version>2.2</snakeyaml.version>
         <kryo.version>4.0.1</kryo.version>
         <smooks.version>1.7.0</smooks.version>
         <opencsv.version>5.8</opencsv.version>
