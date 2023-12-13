@@ -1,20 +1,19 @@
 package com.baeldung.jctools;
 
-import org.assertj.core.api.Assertions;
-import org.jctools.queues.SpscArrayQueue;
-import org.jctools.queues.SpscChunkedArrayQueue;
-import org.junit.Test;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.fail;
 
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.IntConsumer;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.fail;
+import org.assertj.core.api.Assertions;
+import org.jctools.queues.SpscArrayQueue;
+import org.jctools.queues.SpscChunkedArrayQueue;
+import org.junit.Test;
 
 public class JCToolsUnitTest {
 

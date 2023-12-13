@@ -92,16 +92,6 @@
             <artifactId>jnats</artifactId>
             <version>${jnats.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.jctools</groupId>
-            <artifactId>jctools-core</artifactId>
-            <version>${jctools.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.openjdk.jmh</groupId>
-            <artifactId>jmh-core</artifactId>
-            <version>${jmh-core.version}</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -129,7 +119,6 @@
         <findbugs.version>3.0.2</findbugs.version>
         <fugue.version>4.5.1</fugue.version>
         <jnats.version>1.0</jnats.version>
-        <jctools.version>2.1.2</jctools.version>
     </properties>
 
 </project>

@@ -15,5 +15,4 @@ Remember, for advanced libraries like [Jackson](/jackson) and [JUnit](/testing-m
 - [Consumer Driven Contracts with Pact](https://www.baeldung.com/pact-junit-consumer-driven-contracts)
 - [Introduction to Atlassian Fugue](https://www.baeldung.com/java-fugue)
 - [Publish and Receive Messages with Nats Java Client](https://www.baeldung.com/nats-java-client)
-- [Java Concurrency Utility with JCTools](https://www.baeldung.com/java-concurrency-jc-tools)
 - More articles [[<-- prev]](/libraries-4) [[next -->]](/libraries-6)
