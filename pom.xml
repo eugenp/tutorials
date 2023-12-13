@@ -709,7 +709,6 @@
                 <module>apache-tika</module>
                 <module>apache-velocity</module>
                 <module>asciidoctor</module>
-                <module>asm</module>
                 <module>atomix</module>
                 <module>aws-modules</module>
                 <module>azure</module>
@@ -777,6 +776,8 @@
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
                 <module>libraries-apache-commons</module>
+                <module>libraries-bytecode</module>
+                <module>libraries-cli</module>
                 <module>libraries-concurrency</module>
                 <module>libraries-data-2</module>
                 <module>libraries-data-db</module>
@@ -788,10 +789,12 @@
                 <module>libraries-io</module>
                 <module>libraries-llms</module>
                 <module>libraries-primitive</module>
+                <module>libraries-reporting</module>
                 <module>libraries-rpc</module>
                 <module>libraries-security</module>
                 <module>libraries-server-2</module>
                 <module>libraries-server</module>
+                <module>libraries-stream</module>
                 <module>libraries-testing</module>
                 <module>libraries-transform</module>
                 <module>libraries</module> <!-- very long running -->
@@ -956,7 +959,6 @@
                 <module>apache-tika</module>
                 <module>apache-velocity</module>
                 <module>asciidoctor</module>
-                <module>asm</module>
                 <module>atomix</module>
                 <module>aws-modules</module>
                 <module>azure</module>
@@ -1024,6 +1026,8 @@
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
                 <module>libraries-apache-commons</module>
+                <module>libraries-bytecode</module>
+                <module>libraries-cli</module>
                 <module>libraries-concurrency</module>
                 <module>libraries-data-2</module>
                 <module>libraries-data-db</module>
@@ -1035,10 +1039,12 @@
                 <module>libraries-io</module>
                 <module>libraries-llms</module>
                 <module>libraries-primitive</module>
+                <module>libraries-reporting</module>
                 <module>libraries-rpc</module>
                 <module>libraries-security</module>
                 <module>libraries-server-2</module>
                 <module>libraries-server</module>
+                <module>libraries-stream</module>
                 <module>libraries-testing</module>
                 <module>libraries-transform</module>
                 <module>libraries</module> <!-- very long running -->
