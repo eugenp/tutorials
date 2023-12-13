@@ -74,11 +74,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <source>${maven.compiler.source.version}</source>
-                    <target>${maven.compiler.target.version}</target>
-                </configuration>
             </plugin>
         </plugins>
     </build>
@@ -87,8 +82,6 @@
         <assertj.version>3.22.0</assertj.version>
         <mockserver.version>5.11.2</mockserver.version>
         <httpclient5.version>5.2.1</httpclient5.version>
-        <maven.compiler.source.version>11</maven.compiler.source.version>
-        <maven.compiler.target.version>11</maven.compiler.target.version>
         <spring-boot.version>2.1.7.RELEASE</spring-boot.version>
     </properties>
 
