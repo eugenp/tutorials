@@ -88,29 +88,29 @@ public class ExcelToPDFConverter {
         Row headerRow = worksheet.getRow(0);
         for (int i = 0; i < headerRow.getPhysicalNumberOfCells(); i++) {
             Cell cell = headerRow.getCell(i);
-
-            String headerText;
-            switch (cell.getCellType()) {
-            case STRING:
-                headerText = cell.getStringCellValue();
-                break;
-            case NUMERIC:
-                headerText = String.valueOf(BigDecimal.valueOf(cell.getNumericCellValue()));
-                break;
-            case BLANK:
-                headerText = ""; // or null
-                break;
-            default:
-                logger.warn("Unsupported cell type: {}", cell.getCellType());
-                headerText = ""; // or throw an exception
-                break;
-            }
-
+            String headerText = getCellText(cell);
             PdfPCell headerCell = new PdfPCell(new Phrase(headerText, getCellStyle(cell)));
             setBackgroundColor(cell, headerCell);
             setCellAlignment(cell, headerCell);
             table.addCell(headerCell);
         }
+    }
+
+    public static String getCellText(Cell cell) {
+        String cellValue;
+        switch (cell.getCellType()) {
+        case STRING:
+            cellValue = cell.getStringCellValue();
+            break;
+        case NUMERIC:
+            cellValue = String.valueOf(BigDecimal.valueOf(cell.getNumericCellValue()));
+            break;
+        case BLANK:
+        default:
+            cellValue = "";
+            break;
+        }
+        return cellValue;
     }
 
     private static void addTableData(XSSFSheet worksheet, PdfPTable table) throws DocumentException, IOException {
@@ -122,14 +122,7 @@ public class ExcelToPDFConverter {
             }
             for (int i = 0; i < row.getPhysicalNumberOfCells(); i++) {
                 Cell cell = row.getCell(i);
-                String cellValue;
-                if (cell.getCellType() == CellType.STRING) {
-                    cellValue = cell.getStringCellValue();
-                } else if (cell.getCellType() == CellType.NUMERIC) {
-                    cellValue = String.valueOf(cell.getNumericCellValue());
-                } else {
-                    cellValue = "";
-                }
+                String cellValue = getCellText(cell);
                 PdfPCell cellPdf = new PdfPCell(new Phrase(cellValue, getCellStyle(cell)));
                 setBackgroundColor(cell, cellPdf);
                 setCellAlignment(cell, cellPdf);
