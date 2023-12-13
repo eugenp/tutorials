@@ -1,19 +1,23 @@
-package com.baeldung.print2DArrays;
+package com.baeldung.print2Drrays;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
 
-import uk.org.webcompere.systemstubs.SystemOut;
-import uk.org.webcompere.systemstubs.annotations.SystemStub;
+import uk.org.webcompere.systemstubs.jupiter.SystemStub;
+import uk.org.webcompere.systemstubs.stream.SystemOut;
+import uk.org.webcompere.systemstubs.jupiter.SystemStubsExtension;
 
-public class Print2DArrayUnitTest {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
+
+@ExtendWith(SystemStubsExtension.class)
+public class Print2DArraysUnitTest {
     @SystemStub
     private SystemOut systemOut;
     
     @Test
-    void whenPrint2D_thenUseNested() {
+    void whenPrint2dArrayUsingNestedLoop_thenLinesAreWrittenToSystemOut() {
         int[][] myArray = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
         for (int i = 0; i < myArray.length; i++) {
             for (int j = 0; j < myArray[i].length; j++) { 
@@ -26,7 +30,7 @@ public class Print2DArrayUnitTest {
     }
 
     @Test
-    public void whenPrint2D_thenUseStream() {
+    public void whenPrint2dArrayUsingStreams_thenLinesAreWrittenToSystemOut() {
         int[][] myArray = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
         Arrays.stream(myArray) .flatMapToInt(Arrays::stream) .forEach(num -> System.out.print(num + " "));
         String expectedOutput = "1 2 3 4 5 6 7 8 9";
@@ -34,7 +38,7 @@ public class Print2DArrayUnitTest {
     }
 
     @Test
-    public void whenPrint2D_thenUseDeepToString() {
+    public void whenPrint2dArrayUsingDeepToString_thenLinesAreWrittenToSystemOut() {
         int[][] myArray = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
         System.out.println(Arrays.deepToString(myArray));
         String expectedOutput = "[[1, 2, 3], [4, 5, 6], [7, 8, 9]]";
@@ -42,7 +46,7 @@ public class Print2DArrayUnitTest {
     }
 
     @Test
-    public void whenPrint2D_thenUseArrayToString() {
+    public void whenPrint2dArrayUsingArrayToString_thenLinesAreWrittenToSystemOut() {
         int[][] myArray = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
         for (int[] row : myArray) {
             System.out.println(Arrays.toString(row));
