@@ -29,12 +29,10 @@ public class OutputStreamToByteArrayUnitTest {
 
 
     @Test
-    public void givenByteArrayOutputStream_whenUsingDrainableOutputStream_thenReturnByteArray() throws IOException {
-        String data = "Welcome to Baeldung!";
+    public void givenSystemOut_whenUsingDrainableOutputStream_thenReturnByteArray() throws IOException {
+        String data = "Welcome to Baeldung!\n";
 
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        DrainableOutputStream drainableOutputStream = new DrainableOutputStream(byteArrayOutputStream);
-
+        DrainableOutputStream drainableOutputStream = new DrainableOutputStream(System.out);
         try (drainableOutputStream) {
             drainableOutputStream.write(data.getBytes(StandardCharsets.UTF_8));
         }
@@ -42,7 +40,6 @@ public class OutputStreamToByteArrayUnitTest {
         byte[] writtenData = drainableOutputStream.toByteArray();
         assertEquals(data, new String(writtenData, StandardCharsets.UTF_8));
     }
-
 
     public class DrainableOutputStream extends FilterOutputStream {
         private final ByteArrayOutputStream buffer;
