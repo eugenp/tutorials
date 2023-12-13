@@ -1,13 +1,13 @@
-package com.baeldung.mapdb;
+package com.baeldung.libraries.mapdb;
+
+import static junit.framework.Assert.assertEquals;
+
+import java.util.NavigableSet;
 
 import org.junit.Test;
 import org.mapdb.DB;
 import org.mapdb.DBMaker;
 import org.mapdb.Serializer;
-
-import java.util.NavigableSet;
-
-import static junit.framework.Assert.assertEquals;
 
 public class CollectionsUnitTest {
 

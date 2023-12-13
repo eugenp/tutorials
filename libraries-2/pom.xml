@@ -14,11 +14,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.mapdb</groupId>
-            <artifactId>mapdb</artifactId>
-            <version>${mapdb.version}</version>
-        </dependency>
-        <dependency>
             <groupId>io.github.classgraph</groupId>
             <artifactId>classgraph</artifactId>
             <version>${classgraph.version}</version>
@@ -109,7 +104,6 @@
     </build>
 
     <properties>
-        <mapdb.version>3.0.8</mapdb.version>
         <classgraph.version>4.8.153</classgraph.version>
         <jbpm.version>7.20.0.Final</jbpm.version>
         <chronicle.map.version>3.24ea1</chronicle.map.version>

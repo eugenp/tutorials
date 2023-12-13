@@ -159,6 +159,11 @@
             <artifactId>ebean-api</artifactId>
             <version>${ebean.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.mapdb</groupId>
+            <artifactId>mapdb</artifactId>
+            <version>${mapdb.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -305,6 +310,7 @@
         <debezium.version>2.1.3.Final</debezium.version>
         <flexy-pool.version>2.2.3</flexy-pool.version>
         <testcontainers-version>1.17.6</testcontainers-version>
+        <mapdb.version>3.0.8</mapdb.version>
     </properties>
 
 </project>

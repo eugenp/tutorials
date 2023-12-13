@@ -1,12 +1,13 @@
-package com.baeldung.mapdb;
+package com.baeldung.libraries.mapdb;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.jetbrains.annotations.NotNull;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.mapdb.*;
 
 import java.io.IOException;
 
-import static junit.framework.Assert.assertEquals;
 
 public class HTreeMapUnitTest {
 

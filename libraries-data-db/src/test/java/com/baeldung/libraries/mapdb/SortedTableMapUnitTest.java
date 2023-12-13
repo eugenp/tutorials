@@ -1,12 +1,13 @@
-package com.baeldung.mapdb;
+package com.baeldung.libraries.mapdb;
 
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
+
 import org.mapdb.Serializer;
 import org.mapdb.SortedTableMap;
 import org.mapdb.volume.MappedFileVol;
 import org.mapdb.volume.Volume;
-
-import static junit.framework.Assert.assertEquals;
 
 public class SortedTableMapUnitTest {
 
