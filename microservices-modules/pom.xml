@@ -16,6 +16,7 @@
     <modules>
         <module>helidon</module>
         <module>micronaut</module>
+        <module>micronaut-reactive</module>
         <module>microprofile</module>
         <module>msf4j</module>
         <module>open-liberty</module>
