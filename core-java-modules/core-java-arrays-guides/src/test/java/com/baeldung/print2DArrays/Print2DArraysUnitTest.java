@@ -5,10 +5,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
 
-import uk.org.webcompere.systemstubs.SystemOut;
-import uk.org.webcompere.systemstubs.annotations.SystemStub;
+import uk.org.webcompere.systemstubs.jupiter.SystemStub;
+import uk.org.webcompere.systemstubs.stream.SystemOut;
+import uk.org.webcompere.systemstubs.jupiter.SystemStubsExtension;
 
-public class Print2DArrayUnitTest {
+@ExtendWith(SystemStubsExtension.class)
+public class Print2DArraysUnitTest {
     @SystemStub
     private SystemOut systemOut;
     
