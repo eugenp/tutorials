@@ -1,7 +1,7 @@
 package com.baeldung.ddd.order.jpa;
 
-import javax.persistence.Embeddable;
-import javax.persistence.Embedded;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.Embedded;
 
 @Embeddable
 class JpaOrderLine {
