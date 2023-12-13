@@ -29,12 +29,12 @@ public class OutputStreamToByteArrayUnitTest {
 
 
     @Test
-    public void givenFileOutputStream_whenUsingDrainableOutputStream_thenReturnByteArray(@TempDir Path tempDir) throws IOException {
+    public void givenByteArrayOutputStream_whenUsingDrainableOutputStream_thenReturnByteArray() throws IOException {
         String data = "Welcome to Baeldung!";
-        String fileName = "file.txt";
-        Path filePath = tempDir.resolve(fileName);
 
-        DrainableOutputStream drainableOutputStream = new DrainableOutputStream(new FileOutputStream(filePath.toFile()));
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        DrainableOutputStream drainableOutputStream = new DrainableOutputStream(byteArrayOutputStream);
+
         try (drainableOutputStream) {
             drainableOutputStream.write(data.getBytes(StandardCharsets.UTF_8));
         }
