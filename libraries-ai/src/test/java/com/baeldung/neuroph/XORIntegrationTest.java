@@ -1,11 +1,13 @@
 package com.baeldung.neuroph;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.neuroph.core.NeuralNetwork;
 
-import static org.junit.Assert.*;
+import neuroph.NeurophXOR;
 
 public class XORIntegrationTest {
     private NeuralNetwork ann = null;

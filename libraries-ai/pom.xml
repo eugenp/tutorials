@@ -23,11 +23,17 @@
             <artifactId>opennlp-tools</artifactId>
             <version>${opennlp-tools.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.beykery</groupId>
+            <artifactId>neuroph</artifactId>
+            <version>${neuroph.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <stanford-corenlp.version>4.5.3</stanford-corenlp.version>
         <opennlp-tools.version>2.1.1</opennlp-tools.version>
+        <neuroph.version>2.92</neuroph.version>
     </properties>
 
 </project>
