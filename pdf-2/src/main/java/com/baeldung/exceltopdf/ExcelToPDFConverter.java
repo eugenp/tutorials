@@ -3,10 +3,13 @@ package com.baeldung.exceltopdf;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.Iterator;
 
 import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.ss.usermodel.IndexedColors;
+import org.apache.poi.ss.usermodel.VerticalAlignment;
 import org.apache.poi.xssf.usermodel.XSSFColor;
 import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -14,18 +17,25 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Cell;
+
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
+import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class ExcelToPDFConverter {
+
+    private static final Logger logger = LogManager.getLogger(ExcelToPDFConverter.class);
 
     public static XSSFWorkbook readExcelFile(String excelFilePath) throws IOException {
         FileInputStream inputStream = new FileInputStream(excelFilePath);
@@ -33,12 +43,14 @@ public class ExcelToPDFConverter {
         inputStream.close();
         return workbook;
     }
+
     private static Document createPDFDocument(String pdfFilePath) throws IOException, DocumentException {
         Document document = new Document();
         PdfWriter.getInstance(document, new FileOutputStream(pdfFilePath));
         document.open();
         return document;
     }
+
     public static void convertExcelToPDF(String excelFilePath, String pdfFilePath) throws IOException, DocumentException {
         XSSFWorkbook workbook = readExcelFile(excelFilePath);
         Document document = createPDFDocument(pdfFilePath);
@@ -48,6 +60,7 @@ public class ExcelToPDFConverter {
 
             // Add header with sheet name as title
             Paragraph title = new Paragraph(worksheet.getSheetName(), new Font(Font.FontFamily.HELVETICA, 18, Font.BOLD));
+            title.setSpacingAfter(20f);
             title.setAlignment(Element.ALIGN_CENTER);
             document.add(title);
 
@@ -63,7 +76,8 @@ public class ExcelToPDFConverter {
     }
 
     private static void createAndAddTable(XSSFSheet worksheet, Document document) throws DocumentException, IOException {
-        PdfPTable table = new PdfPTable(worksheet.getRow(0).getPhysicalNumberOfCells());
+        PdfPTable table = new PdfPTable(worksheet.getRow(0)
+            .getPhysicalNumberOfCells());
         table.setWidthPercentage(100);
         addTableHeader(worksheet, table);
         addTableData(worksheet, table);
@@ -74,9 +88,27 @@ public class ExcelToPDFConverter {
         Row headerRow = worksheet.getRow(0);
         for (int i = 0; i < headerRow.getPhysicalNumberOfCells(); i++) {
             Cell cell = headerRow.getCell(i);
-            String headerText = cell.getCellType() == CellType.STRING ? cell.getStringCellValue() : String.valueOf(cell.getNumericCellValue());
+
+            String headerText;
+            switch (cell.getCellType()) {
+            case STRING:
+                headerText = cell.getStringCellValue();
+                break;
+            case NUMERIC:
+                headerText = String.valueOf(BigDecimal.valueOf(cell.getNumericCellValue()));
+                break;
+            case BLANK:
+                headerText = ""; // or null
+                break;
+            default:
+                logger.warn("Unsupported cell type: {}", cell.getCellType());
+                headerText = ""; // or throw an exception
+                break;
+            }
+
             PdfPCell headerCell = new PdfPCell(new Phrase(headerText, getCellStyle(cell)));
-            headerCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            setBackgroundColor(cell, headerCell);
+            setCellAlignment(cell, headerCell);
             table.addCell(headerCell);
         }
     }
@@ -91,42 +123,81 @@ public class ExcelToPDFConverter {
             for (int i = 0; i < row.getPhysicalNumberOfCells(); i++) {
                 Cell cell = row.getCell(i);
                 String cellValue;
-                if (cell != null) {
-                    if (cell.getCellType() == CellType.STRING) {
-                        cellValue = cell.getStringCellValue();
-                    } else if (cell.getCellType() == CellType.NUMERIC) {
-                        cellValue = String.valueOf(cell.getNumericCellValue());
-                    } else {
-                        cellValue = "";
-                    }
+                if (cell.getCellType() == CellType.STRING) {
+                    cellValue = cell.getStringCellValue();
+                } else if (cell.getCellType() == CellType.NUMERIC) {
+                    cellValue = String.valueOf(cell.getNumericCellValue());
                 } else {
                     cellValue = "";
                 }
                 PdfPCell cellPdf = new PdfPCell(new Phrase(cellValue, getCellStyle(cell)));
-                // Set background color
-                short bgColorIndex = cell.getCellStyle()
-                    .getFillForegroundColor();
-                if (bgColorIndex != IndexedColors.AUTOMATIC.getIndex()) {
-                    XSSFColor bgColor = (XSSFColor) cell.getCellStyle()
-                        .getFillForegroundColorColor();
-                    if (bgColor != null) {
-                        byte[] rgb = bgColor.getRGB();
-                        if (rgb != null && rgb.length == 3) {
-                            cellPdf.setBackgroundColor(new BaseColor(rgb[0] & 0xFF, rgb[1] & 0xFF, rgb[2] & 0xFF));
-                        }
-                    }
-                }
-
-                cellPdf.setHorizontalAlignment(Element.ALIGN_CENTER);
+                setBackgroundColor(cell, cellPdf);
+                setCellAlignment(cell, cellPdf);
                 table.addCell(cellPdf);
             }
         }
     }
 
-    private static Font getCellStyle(Cell cell) throws DocumentException, IOException {
-        Font font = new Font(Font.FontFamily.HELVETICA, 12);
+    private static void setBackgroundColor(Cell cell, PdfPCell cellPdf) {
+        // Set background color
+        short bgColorIndex = cell.getCellStyle()
+            .getFillForegroundColor();
+        if (bgColorIndex != IndexedColors.AUTOMATIC.getIndex()) {
+            XSSFColor bgColor = (XSSFColor) cell.getCellStyle()
+                .getFillForegroundColorColor();
+            if (bgColor != null) {
+                byte[] rgb = bgColor.getRGB();
+                if (rgb != null && rgb.length == 3) {
+                    cellPdf.setBackgroundColor(new BaseColor(rgb[0] & 0xFF, rgb[1] & 0xFF, rgb[2] & 0xFF));
+                }
+            }
+        }
+    }
+
+    private static void setCellAlignment(Cell cell, PdfPCell cellPdf) {
         CellStyle cellStyle = cell.getCellStyle();
-        org.apache.poi.ss.usermodel.Font cellFont = cell.getSheet().getWorkbook().getFontAt(cellStyle.getFontIndexAsInt());
+
+        HorizontalAlignment horizontalAlignment = cellStyle.getAlignment();
+        VerticalAlignment verticalAlignment = cellStyle.getVerticalAlignment();
+
+        switch (horizontalAlignment) {
+        case LEFT:
+            cellPdf.setHorizontalAlignment(Element.ALIGN_LEFT);
+            break;
+        case CENTER:
+            cellPdf.setHorizontalAlignment(Element.ALIGN_CENTER);
+            break;
+        case JUSTIFY:
+        case FILL:
+            cellPdf.setVerticalAlignment(Element.ALIGN_JUSTIFIED);
+            break;
+        case RIGHT:
+            cellPdf.setHorizontalAlignment(Element.ALIGN_RIGHT);
+            break;
+        }
+
+        switch (verticalAlignment) {
+        case TOP:
+            cellPdf.setVerticalAlignment(Element.ALIGN_TOP);
+            break;
+        case CENTER:
+            cellPdf.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            break;
+        case JUSTIFY:
+            cellPdf.setVerticalAlignment(Element.ALIGN_JUSTIFIED);
+            break;
+        case BOTTOM:
+            cellPdf.setVerticalAlignment(Element.ALIGN_BOTTOM);
+            break;
+        }
+    }
+
+    private static Font getCellStyle(Cell cell) throws DocumentException, IOException {
+        Font font = new Font();
+        CellStyle cellStyle = cell.getCellStyle();
+        org.apache.poi.ss.usermodel.Font cellFont = cell.getSheet()
+            .getWorkbook()
+            .getFontAt(cellStyle.getFontIndexAsInt());
 
         short fontColorIndex = cellFont.getColor();
         if (fontColorIndex != IndexedColors.AUTOMATIC.getIndex() && cellFont instanceof XSSFFont) {
@@ -138,6 +209,7 @@ public class ExcelToPDFConverter {
                 }
             }
         }
+
         if (cellFont.getItalic()) {
             font.setStyle(Font.ITALIC);
         }
@@ -156,6 +228,16 @@ public class ExcelToPDFConverter {
         if (cellFont.getBold()) {
             font.setStyle(Font.BOLD);
         }
+
+        String fontName = cellFont.getFontName();
+        if (FontFactory.isRegistered(fontName)) {
+            font.setFamily(fontName); // Use extracted font family if supported by iText
+        } else {
+            logger.warn("Unsupported font type: {}", fontName);
+            // - Use a fallback font (e.g., Helvetica)
+            font.setFamily("Helvetica");
+        }
+
         return font;
     }
 
