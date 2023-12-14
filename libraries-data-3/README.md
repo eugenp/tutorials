@@ -7,4 +7,5 @@ This module contains articles about libraries for data processing in Java.
 - [Software Transactional Memory in Java Using Multiverse](https://www.baeldung.com/java-multiverse-stm)
 - [Key Value Store with Chronicle Map](https://www.baeldung.com/java-chronicle-map)
 - [Guide to the Cactoos Library](https://www.baeldung.com/java-cactoos)
+- [Introduction to cache2k](https://www.baeldung.com/java-cache2k)
 - More articles: [[<-- prev]](/../libraries-data-2)
