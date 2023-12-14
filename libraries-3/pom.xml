@@ -41,21 +41,6 @@
             <scope>runtime</scope>
         </dependency>
         <dependency>
-            <groupId>org.takes</groupId>
-            <artifactId>takes</artifactId>
-            <version>${takes.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpcore</artifactId>
-            <version>${httpcore.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>${httpclient.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.apache.velocity</groupId>
             <artifactId>velocity-engine-core</artifactId>
             <version>${velocity-engine-core.version}</version>
@@ -159,45 +144,6 @@
         </resources>
     </build>
 
-    <profiles>
-        <profile>
-            <id>reload</id>
-            <build>
-                <resources>
-                    <resource>
-                        <directory>src/main/resources</directory>
-                        <filtering>true</filtering>
-                    </resource>
-                    <resource>
-                        <directory>src/main/webapp</directory>
-                        <filtering>true</filtering>
-                    </resource>
-                </resources>
-                <plugins>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>exec-maven-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>start-server</id>
-                                <phase>pre-integration-test</phase>
-                                <goals>
-                                    <goal>java</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <mainClass>com.baeldung.takes.TakesApp</mainClass>
-                            <cleanupDaemonThreads>false</cleanupDaemonThreads>
-                            <arguments>
-                                <argument>--port=${port}</argument>
-                            </arguments>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 
     <properties>
         <cactoos.version>0.43</cactoos.version>
@@ -207,9 +153,6 @@
         <jcabi-maven-plugin.version>0.14.1</jcabi-maven-plugin.version>
         <aspectjtools.version>1.9.20.1</aspectjtools.version>
         <aspectjweaver.version>1.9.20.1</aspectjweaver.version>
-        <takes.version>1.19</takes.version>
-        <httpcore.version>4.4.13</httpcore.version>
-        <httpclient.version>4.5.12</httpclient.version>
         <velocity-engine-core.version>2.2</velocity-engine-core.version>
         <nullaway.version>0.3.0</nullaway.version>
         <plexus-compiler.version>2.8</plexus-compiler.version>
