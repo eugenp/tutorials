@@ -32,7 +32,7 @@ public class MessageRepositoryJDBCTemplate {
     final String SELECT_BY_ID = "select message from sys_message where id = ?";
 
     public String getMessageById(long id) {
-        return this.jdbcTemplate.queryForObject(SELECT_BY_ID, String.class, new Object[] { id });
+        return this.jdbcTemplate.queryForObject(SELECT_BY_ID, String.class, id);
     }
 
 }

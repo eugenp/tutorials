@@ -57,7 +57,7 @@ public class EmployeeDAO {
     }
 
     public int addEmplyeeUsingSimpelJdbcInsert(final Employee emp) {
-        final Map<String, Object> parameters = new HashMap<String, Object>();
+        final Map<String, Object> parameters = new HashMap<>();
         parameters.put("ID", emp.getId());
         parameters.put("FIRST_NAME", emp.getFirstName());
         parameters.put("LAST_NAME", emp.getLastName());
@@ -68,7 +68,7 @@ public class EmployeeDAO {
 
     public Employee getEmployee(final int id) {
         final String query = "SELECT * FROM EMPLOYEE WHERE ID = ?";
-        return jdbcTemplate.queryForObject(query, new Object[] { id }, new EmployeeRowMapper());
+        return jdbcTemplate.queryForObject(query,  new EmployeeRowMapper(), id);
     }
 
     public void addEmplyeeUsingExecuteMethod() {
