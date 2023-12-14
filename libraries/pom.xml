@@ -30,11 +30,6 @@
             <version>${commons-net.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.javatuples</groupId>
-            <artifactId>javatuples</artifactId>
-            <version>${javatuples.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.javers</groupId>
             <artifactId>javers-core</artifactId>
             <version>${javers.version}</version>
@@ -245,7 +240,6 @@
         <shade.plugin.version>2.2</shade.plugin.version>
         <multiverse.version>0.7.0</multiverse.version>
         <cglib.version>3.2.7</cglib.version>
-        <javatuples.version>1.2</javatuples.version>
         <javers.version>3.1.0</javers.version>
         <serenity.version>1.9.26</serenity.version>
         <serenity.jbehave.version>1.41.0</serenity.jbehave.version>
