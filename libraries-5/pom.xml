@@ -57,18 +57,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!--Java Docker API Client -->
-        <dependency>
-            <groupId>com.github.ben-manes.caffeine</groupId>
-            <artifactId>caffeine</artifactId>
-            <version>${caffeine.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.code.findbugs</groupId>
-            <artifactId>jsr305</artifactId>
-            <version>${findbugs.version}</version>
-            <scope>test</scope>
-        </dependency>
         <!-- Atlassian Fugue -->
         <dependency>
             <groupId>io.atlassian.fugue</groupId>
@@ -102,8 +90,6 @@
         <spring.version>4.3.8.RELEASE</spring.version>
         <scala.version>2.12</scala.version>
         <docker.version>3.0.14</docker.version>
-        <caffeine.version>3.1.8</caffeine.version>
-        <findbugs.version>3.0.2</findbugs.version>
         <fugue.version>4.5.1</fugue.version>
         <jnats.version>1.0</jnats.version>
     </properties>

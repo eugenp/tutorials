@@ -8,7 +8,6 @@ The code examples related to different libraries are each in their own module.
 Remember, for advanced libraries like [Jackson](/jackson) and [JUnit](/testing-modules) we already have separate modules. Please make sure to have a look at the existing modules in such cases.
 
 ### Relevant articles
-- [Introduction to Caffeine](https://www.baeldung.com/java-caching-caffeine)
 - [A Docker Guide for Java](https://www.baeldung.com/docker-java-api)
 - [Introduction to jOOL](https://www.baeldung.com/jool)
 - [Consumer Driven Contracts with Pact](https://www.baeldung.com/pact-junit-consumer-driven-contracts)

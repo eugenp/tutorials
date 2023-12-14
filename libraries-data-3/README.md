@@ -10,4 +10,5 @@ This module contains articles about libraries for data processing in Java.
 - [Introduction to cache2k](https://www.baeldung.com/java-cache2k)
 - [Introduction to PCollections](https://www.baeldung.com/java-pcollections)
 - [Introduction to Eclipse Collections](https://www.baeldung.com/eclipse-collections)
+- [Introduction to Caffeine](https://www.baeldung.com/java-caching-caffeine)
 - More articles: [[<-- prev]](/../libraries-data-2)

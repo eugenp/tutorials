@@ -55,6 +55,17 @@
             <artifactId>eclipse-collections</artifactId>
             <version>${eclipse-collections.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+            <artifactId>caffeine</artifactId>
+            <version>${caffeine.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <version>${findbugs.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -77,6 +88,8 @@
         <cache2k.version>1.2.3.Final</cache2k.version>
         <pcollections.version>2.1.2</pcollections.version>
         <eclipse-collections.version>8.2.0</eclipse-collections.version>
+        <caffeine.version>3.1.8</caffeine.version>
+        <findbugs.version>3.0.2</findbugs.version>
     </properties>
 
 </project>
