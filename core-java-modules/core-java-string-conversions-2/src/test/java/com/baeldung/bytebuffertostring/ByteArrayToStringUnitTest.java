@@ -1,12 +1,12 @@
 package com.baeldung.bytebuffertostring;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.Test;
 
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ByteArrayToStringUnitTest {
     private static Charset charset = StandardCharsets.UTF_8;
@@ -37,8 +37,17 @@ public class ByteArrayToStringUnitTest {
         // Allocate a ByteBuffer
         ByteBuffer byteBuffer = ByteBuffer.wrap(content.getBytes());
         String newContent = charset.decode(byteBuffer)
-            .toString();
+                .toString();
         assertEquals(content, newContent);
+    }
+
+    @Test
+    public void convertStringToByteBuffer_thenOk() {
+        byte[] expectedBytes = content.getBytes(Charset.forName(charset.toString()));
+        ByteBuffer byteBuffer = ByteBuffer.wrap(expectedBytes);
+
+        // Test the conversion from string to ByteBuffer
+        assertEquals(expectedBytes, byteBuffer.array());
     }
 
 }

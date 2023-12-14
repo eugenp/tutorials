@@ -43,7 +43,7 @@ public class Resilience4jUnitTest {
                                                           // Percentage of failures to start short-circuit
                                                           .failureRateThreshold(20)
                                                           // Min number of call attempts
-                                                          .ringBufferSizeInClosedState(5)
+                                                          .slidingWindowSize(5)
                                                           .build();
         CircuitBreakerRegistry registry = CircuitBreakerRegistry.of(config);
         CircuitBreaker circuitBreaker = registry.circuitBreaker("my");
@@ -70,7 +70,7 @@ public class Resilience4jUnitTest {
 
         Future<?> taskInProgress = callAndBlock(decorated);
         try {
-            assertThat(bulkhead.isCallPermitted()).isFalse();
+            assertThat(bulkhead.tryAcquirePermission()).isFalse();
         } finally {
             taskInProgress.cancel(true);
         }

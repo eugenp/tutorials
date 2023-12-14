@@ -163,10 +163,10 @@ public class DefaultParser {
 
     private void clean(Node node) {
 
-        NodeList childs = node.getChildNodes();
+        NodeList childNodes = node.getChildNodes();
 
-        for (int n = childs.getLength() - 1; n >= 0; n--) {
-            Node child = childs.item(n);
+        for (int n = childNodes.getLength() - 1; n >= 0; n--) {
+            Node child = childNodes.item(n);
             short nodeType = child.getNodeType();
 
             if (nodeType == Node.ELEMENT_NODE)

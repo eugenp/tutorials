@@ -1,13 +1,13 @@
 package com.baeldung.spring.cloud.springcloudcontractconsumer.controller;
 
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.json.AutoConfigureJsonTesters;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.cloud.contract.stubrunner.spring.AutoConfigureStubRunner;
-import org.springframework.cloud.contract.stubrunner.spring.StubRunnerProperties;
+import org.springframework.cloud.contract.stubrunner.junit.StubRunnerRule;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -20,9 +20,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 @AutoConfigureMockMvc
 @AutoConfigureJsonTesters
-@AutoConfigureStubRunner(stubsMode = StubRunnerProperties.StubsMode.LOCAL,
-        ids = "com.baeldung.spring.cloud:spring-cloud-contract-producer:+:stubs:8090")
 public class BasicMathControllerIntegrationTest {
+
+    @Rule
+    public StubRunnerRule rule = new StubRunnerRule().downloadStub(
+            "com.baeldung.spring.cloud",
+            "spring-cloud-contract-producer")
+        .withPort(8090).failOnNoStubs(true);
 
     @Autowired
     private MockMvc mockMvc;

@@ -11,9 +11,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-2</relativePath>
+        <relativePath>../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -45,17 +45,25 @@
             <version>${cucumber.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <version>${junit-vintage-engine.version}</version>
+            <scope>test</scope>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-io -->
         <dependency>
-            <groupId>org.apache.commons</groupId>
+            <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>${commons-io.version}</version>
         </dependency>
     </dependencies>
 
     <properties>
-        <cucumber.version>6.8.0</cucumber.version>
-        <commons-io.version>1.3.2</commons-io.version>
+        <!-- The main class to start by executing java -jar -->
+        <start-class>com.baeldung.SpringDemoApplication</start-class>
+        <cucumber.version>7.14.0</cucumber.version>
+        <junit-vintage-engine.version>5.10.1</junit-vintage-engine.version>
     </properties>
 
 </project>

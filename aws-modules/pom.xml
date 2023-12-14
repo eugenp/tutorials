@@ -5,6 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>aws-modules</artifactId>
     <name>aws-modules</name>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
     <dependencies>
         <dependency>
             <groupId>com.amazonaws</groupId>
@@ -15,12 +22,6 @@
     </dependencies>
     <packaging>pom</packaging>
 
-    <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-    </parent>
-
     <modules>
         <module>aws-app-sync</module>
         <module>aws-dynamodb</module>
@@ -28,7 +29,6 @@
         <module>aws-miscellaneous</module>
         <module>aws-reactive</module>
         <module>aws-s3</module>
-        <module>aws-s3-update-object</module>
     </modules>
 
     <properties>

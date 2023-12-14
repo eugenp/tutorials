@@ -1,0 +1,4 @@
+rootProject.name = 'multiple-repositories-demo'
+
+include 'multiple-repositories'
+include 'publish-package'

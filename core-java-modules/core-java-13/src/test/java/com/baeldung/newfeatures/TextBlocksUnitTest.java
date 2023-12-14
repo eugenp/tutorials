@@ -8,7 +8,6 @@ public class TextBlocksUnitTest {
 
     private static final String JSON_STRING = "{\r\n" + "\"name\" : \"Baeldung\",\r\n" + "\"website\" : \"https://www.%s.com/\"\r\n" + "}";
 
-    @SuppressWarnings("preview")
     private static final String TEXT_BLOCK_JSON = """
             {
             "name" : "Baeldung",
@@ -25,7 +24,6 @@ public class TextBlocksUnitTest {
 
     }
 
-    @SuppressWarnings("removal")
     @Test
     public void whenTextBlocks_thenFormattedWorksAsFormat() {
         assertThat(TEXT_BLOCK_JSON.formatted("baeldung")

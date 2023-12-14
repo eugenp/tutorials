@@ -22,7 +22,7 @@
     </dependencies>
 
     <properties>
-        <jsoup.version>1.10.2</jsoup.version>
+        <jsoup.version>1.16.2</jsoup.version>
     </properties>
 
 </project>

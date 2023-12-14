@@ -47,14 +47,14 @@
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>json-path</artifactId>
-            <version>${rest-assured.version}</version>
+            <version>${json-path.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
 
     <properties>
         <hibernate.core.version>5.4.0.Final</hibernate.core.version>
-        <rest-assured.version>3.1.1</rest-assured.version>
+        <json-path.version>5.3.2</json-path.version>
     </properties>
 
 </project>
