@@ -34,10 +34,12 @@
         <module>ratpack</module>
         <module>resteasy</module>
         <module>restx</module>
+        <module>rome</module>
         <module>spark-java</module>
         <module>struts-2</module>
         <module>vraptor</module>
         <module>wicket</module>
+
     </modules>
 
     <build>
