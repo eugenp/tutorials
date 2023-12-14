@@ -1,7 +1,8 @@
 package com.baeldung.modelmapper.dto;
 
-import com.baeldung.modelmapper.domain.GameMode;
 import java.util.List;
+
+import com.baeldung.modelmapper.domain.GameMode;
 
 public class GameDTO {
 

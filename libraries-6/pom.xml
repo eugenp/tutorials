@@ -85,11 +85,6 @@
             <version>${libphonenumber.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.modelmapper</groupId>
-            <artifactId>modelmapper</artifactId>
-            <version>${org.modelmapper.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.agrona</groupId>
             <artifactId>agrona</artifactId>
             <version>${agrona.version}</version>
@@ -185,7 +180,6 @@
         <rcaller.version>3.0</rcaller.version>
         <rserve.version>1.8.1</rserve.version>
         <libphonenumber.version>8.12.9</libphonenumber.version>
-        <org.modelmapper.version>3.2.0</org.modelmapper.version>
         <agrona.version>1.17.1</agrona.version>
         <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
         <sbe-tool.version>1.27.0</sbe-tool.version>

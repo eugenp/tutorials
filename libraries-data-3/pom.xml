@@ -66,6 +66,11 @@
             <version>${findbugs.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>${org.modelmapper.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -90,6 +95,7 @@
         <eclipse-collections.version>8.2.0</eclipse-collections.version>
         <caffeine.version>3.1.8</caffeine.version>
         <findbugs.version>3.0.2</findbugs.version>
+        <org.modelmapper.version>3.2.0</org.modelmapper.version>
     </properties>
 
 </project>

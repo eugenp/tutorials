@@ -1,8 +1,9 @@
 package com.baeldung.modelmapper.repository;
 
-import com.baeldung.modelmapper.domain.Game;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.baeldung.modelmapper.domain.Game;
 
 /**
  * Sample in-memory Game Repository

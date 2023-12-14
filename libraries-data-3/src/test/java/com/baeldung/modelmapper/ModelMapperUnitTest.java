@@ -5,15 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-import com.baeldung.modelmapper.domain.Game;
-import com.baeldung.modelmapper.domain.GameMode;
-import com.baeldung.modelmapper.domain.GameSettings;
-import com.baeldung.modelmapper.domain.Player;
-import com.baeldung.modelmapper.dto.GameDTO;
-import com.baeldung.modelmapper.dto.PlayerDTO;
-import com.baeldung.modelmapper.repository.GameRepository;
 import java.time.Instant;
 import java.util.Collection;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.modelmapper.Condition;
@@ -23,6 +17,14 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.Provider;
 import org.modelmapper.TypeMap;
 import org.modelmapper.convention.MatchingStrategies;
+
+import com.baeldung.modelmapper.domain.Game;
+import com.baeldung.modelmapper.domain.GameMode;
+import com.baeldung.modelmapper.domain.GameSettings;
+import com.baeldung.modelmapper.domain.Player;
+import com.baeldung.modelmapper.dto.GameDTO;
+import com.baeldung.modelmapper.dto.PlayerDTO;
+import com.baeldung.modelmapper.repository.GameRepository;
 
 public class ModelMapperUnitTest {
 
