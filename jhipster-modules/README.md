@@ -1,7 +1,5 @@
 ## JHipster
 
-This module contains articles about JHipster.
+This module contains articles about JHipster. 
 
-### Relevant articles:
-
-
+Relevant articles are listed in the nested module folders.

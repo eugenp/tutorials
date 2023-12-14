@@ -7,7 +7,6 @@ import org.junit.Test;
 public class SwitchExpressionsWithYieldUnitTest {
 
     @Test
-    @SuppressWarnings("preview")
     public void whenSwitchingOnOperationSquareMe_thenWillReturnSquare() {
         var me = 4;
         var operation = "squareMe";

@@ -33,8 +33,7 @@
     </build>
 
     <properties>
-        <jackson.version>2.14.2</jackson.version>
-        <java.version>17</java.version>
+        <jackson.version>2.16.0</jackson.version>
     </properties>
 
 </project>

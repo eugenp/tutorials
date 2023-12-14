@@ -78,17 +78,13 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${compiler.plugin.version}</version>
                 <configuration>
-                    <source>${source.version}</source>
-                    <target>${target.version}</target>
                     <optimize>true</optimize>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>${compiler.surefire.version}</version>
                 <configuration>
                     <systemPropertyVariables>
                         <tapestry.execution-mode>Qa</tapestry.execution-mode>
@@ -118,7 +114,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>3.3.1</version>
                 <configuration>
                     <archive>
                         <manifest>
@@ -140,9 +135,6 @@
     <properties>
         <compiler.jetty.version>6.1.16</compiler.jetty.version>
         <compiler.surefire.version>3.0.0-M5</compiler.surefire.version>
-        <compiler.plugin.version>3.8.1</compiler.plugin.version>
-        <source.version>11</source.version>
-        <target.version>11</target.version>
         <tapestry.version>5.8.2</tapestry.version>
         <servlet-api-release-version>2.5</servlet-api-release-version>
         <testng-release-version>6.8.21</testng-release-version>

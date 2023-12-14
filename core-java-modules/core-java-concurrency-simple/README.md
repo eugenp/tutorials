@@ -12,6 +12,7 @@ This module contains articles about Java Concurrency that are also part of an Eb
 - [Guide to the Volatile Keyword in Java](https://www.baeldung.com/java-volatile)
 - [A Guide to the Java ExecutorService](https://www.baeldung.com/java-executor-service-tutorial)
 - [Guide To CompletableFuture](https://www.baeldung.com/java-completablefuture)
+- [How To Manage Timeout for CompletableFuture](https://www.baeldung.com/java-completablefuture-timeout)
 
 ### NOTE:
 

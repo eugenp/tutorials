@@ -3,8 +3,8 @@
     "packaging": "war",
 
     "properties": {
-        "java.version": "1.8",
-        "restx.version": "0.35-rc4"
+        "java.version": "17",
+        "restx.version": "1.0.0-rc3"
     },
     "fragments": {
         "maven": [
@@ -24,7 +24,7 @@
             "io.restx:restx-i18n-admin:${restx.version}",
             "io.restx:restx-stats-admin:${restx.version}",
             "io.restx:restx-servlet:${restx.version}",
-            "io.restx:restx-server-jetty8:${restx.version}!optional",
+            "io.restx:restx-server-jetty11:${restx.version}!optional",
             "io.restx:restx-apidocs:${restx.version}",
             "io.restx:restx-specs-admin:${restx.version}",
             "io.restx:restx-admin:${restx.version}",
