@@ -1,7 +1,5 @@
 package com.baeldung.eclipsecollections;
 
-import static org.junit.Assert.assertEquals;
-
 import org.eclipse.collections.api.tuple.Pair;
 import org.eclipse.collections.impl.map.mutable.UnifiedMap;
 import org.eclipse.collections.impl.tuple.Tuples;

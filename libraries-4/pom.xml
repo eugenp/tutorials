@@ -18,11 +18,6 @@
             <version>${jdeferred.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.eclipse.collections</groupId>
-            <artifactId>eclipse-collections</artifactId>
-            <version>${eclipse-collections.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.olap4j</groupId>
             <artifactId>olap4j</artifactId>
             <version>${olap4j.version}</version>
@@ -121,7 +116,6 @@
         <olap4j.version>1.2.0</olap4j.version>
         <javafx.version>19</javafx.version>
         <spoon-core.version>10.3.0</spoon-core.version>
-        <eclipse-collections.version>8.2.0</eclipse-collections.version>
         <vavr.version>0.9.0</vavr.version>
     </properties>
 

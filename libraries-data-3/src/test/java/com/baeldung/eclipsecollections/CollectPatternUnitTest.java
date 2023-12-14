@@ -1,9 +1,8 @@
 package com.baeldung.eclipsecollections;
 
+import org.assertj.core.api.Assertions;
 import org.eclipse.collections.api.list.MutableList;
 import org.eclipse.collections.impl.list.mutable.FastList;
-
-import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
 public class CollectPatternUnitTest {

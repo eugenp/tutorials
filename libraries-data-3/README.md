@@ -9,4 +9,5 @@ This module contains articles about libraries for data processing in Java.
 - [Guide to the Cactoos Library](https://www.baeldung.com/java-cactoos)
 - [Introduction to cache2k](https://www.baeldung.com/java-cache2k)
 - [Introduction to PCollections](https://www.baeldung.com/java-pcollections)
+- [Introduction to Eclipse Collections](https://www.baeldung.com/eclipse-collections)
 - More articles: [[<-- prev]](/../libraries-data-2)

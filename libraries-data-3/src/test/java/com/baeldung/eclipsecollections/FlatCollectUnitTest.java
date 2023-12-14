@@ -1,12 +1,11 @@
 package com.baeldung.eclipsecollections;
 
-import org.assertj.core.api.Assertions;
-import org.eclipse.collections.api.list.MutableList;
-import org.eclipse.collections.impl.list.mutable.FastList;
-
 import java.util.ArrayList;
 import java.util.List;
 
+import org.assertj.core.api.Assertions;
+import org.eclipse.collections.api.list.MutableList;
+import org.eclipse.collections.impl.list.mutable.FastList;
 import org.junit.Before;
 import org.junit.Test;
 
