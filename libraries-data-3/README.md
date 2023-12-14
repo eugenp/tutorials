@@ -6,4 +6,5 @@ This module contains articles about libraries for data processing in Java.
 - [Introduction to Javatuples](https://www.baeldung.com/java-tuples)
 - [Software Transactional Memory in Java Using Multiverse](https://www.baeldung.com/java-multiverse-stm)
 - [Key Value Store with Chronicle Map](https://www.baeldung.com/java-chronicle-map)
+- [Guide to the Cactoos Library](https://www.baeldung.com/java-cactoos)
 - More articles: [[<-- prev]](/../libraries-data-2)

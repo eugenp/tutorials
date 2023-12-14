@@ -34,6 +34,11 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <dependency>
+            <groupId>org.cactoos</groupId>
+            <artifactId>cactoos</artifactId>
+            <version>${cactoos.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -52,6 +57,7 @@
         <javatuples.version>1.2</javatuples.version>
         <multiverse.version>0.7.0</multiverse.version>
         <chronicle.map.version>3.24ea1</chronicle.map.version>
+        <cactoos.version>0.43</cactoos.version>
     </properties>
 
 </project>

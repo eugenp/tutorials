@@ -8,7 +8,6 @@ The code examples related to different libraries are each in their own module.
 Remember, for advanced libraries like [Jackson](/jackson) and [JUnit](/testing-modules) we already have separate modules. Please make sure to have a look at the existing modules in such cases.
 
 ### Relevant Articles:
-- [Guide to the Cactoos Library](https://www.baeldung.com/java-cactoos)
 - [Introduction to cache2k](https://www.baeldung.com/java-cache2k)
 - [Introduction to the jcabi-aspects AOP Annotations Library](https://www.baeldung.com/java-jcabi-aspects)
 - [Using NullAway to Avoid NullPointerExceptions](https://www.baeldung.com/java-nullaway)

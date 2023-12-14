@@ -3,8 +3,8 @@ package com.baeldung.cactoos;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Test;
 
