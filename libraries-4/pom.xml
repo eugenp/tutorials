@@ -53,11 +53,6 @@
             <version>${javax.servlet.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.pcollections</groupId>
-            <artifactId>pcollections</artifactId>
-            <version>${pcollections.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.awaitility</groupId>
             <artifactId>awaitility</artifactId>
             <version>${awaitility.version}</version>
@@ -119,7 +114,6 @@
         <spring.version>4.3.8.RELEASE</spring.version>
         <javax.servlet.version>2.5</javax.servlet.version>
         <javax.jdo.version>3.2.0-m7</javax.jdo.version>
-        <pcollections.version>2.1.2</pcollections.version>
         <awaitility.version>3.0.0</awaitility.version>
         <streamex.version>0.6.5</streamex.version>
         <javax.el.version>3.0.0</javax.el.version>

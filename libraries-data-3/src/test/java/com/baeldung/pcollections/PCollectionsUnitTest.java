@@ -1,5 +1,12 @@
 package com.baeldung.pcollections;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.Test;
 import org.pcollections.HashPMap;
 import org.pcollections.HashTreePMap;
@@ -7,14 +14,6 @@ import org.pcollections.HashTreePSet;
 import org.pcollections.MapPSet;
 import org.pcollections.PVector;
 import org.pcollections.TreePVector;
-
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 public class PCollectionsUnitTest {
 

@@ -45,6 +45,11 @@
             <version>${cache2k.version}</version>
             <type>pom</type>
         </dependency>
+        <dependency>
+            <groupId>org.pcollections</groupId>
+            <artifactId>pcollections</artifactId>
+            <version>${pcollections.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -65,6 +70,7 @@
         <chronicle.map.version>3.24ea1</chronicle.map.version>
         <cactoos.version>0.43</cactoos.version>
         <cache2k.version>1.2.3.Final</cache2k.version>
+        <pcollections.version>2.1.2</pcollections.version>
     </properties>
 
 </project>
