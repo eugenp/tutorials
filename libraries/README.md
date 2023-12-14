@@ -10,6 +10,5 @@ Remember, for advanced libraries like [Jackson](/jackson) and [JUnit](/testing-m
 ### Relevant articles
 - [Intro to JaVers](https://www.baeldung.com/javers)
 - [Introduction to Quartz](https://www.baeldung.com/quartz)
-- [Software Transactional Memory in Java Using Multiverse](https://www.baeldung.com/java-multiverse-stm)
 - [Locality-Sensitive Hashing in Java Using Java-LSH](https://www.baeldung.com/locality-sensitive-hashing)
 - More articles [[next -->]](/libraries-2)

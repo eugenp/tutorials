@@ -89,11 +89,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.multiverse</groupId>
-            <artifactId>multiverse-core</artifactId>
-            <version>${multiverse.version}</version>
-        </dependency>
-        <dependency>
             <groupId>pl.pragmatists</groupId>
             <artifactId>JUnitParams</artifactId>
             <version>${jUnitParams.version}</version>
@@ -238,7 +233,6 @@
 
     <properties>
         <shade.plugin.version>2.2</shade.plugin.version>
-        <multiverse.version>0.7.0</multiverse.version>
         <cglib.version>3.2.7</cglib.version>
         <javers.version>3.1.0</javers.version>
         <serenity.version>1.9.26</serenity.version>

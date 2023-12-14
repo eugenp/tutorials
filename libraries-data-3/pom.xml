@@ -18,6 +18,11 @@
             <artifactId>javatuples</artifactId>
             <version>${javatuples.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.multiverse</groupId>
+            <artifactId>multiverse-core</artifactId>
+            <version>${multiverse.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -31,6 +36,7 @@
 
     <properties>
         <javatuples.version>1.2</javatuples.version>
+        <multiverse.version>0.7.0</multiverse.version>
     </properties>
 
 </project>
