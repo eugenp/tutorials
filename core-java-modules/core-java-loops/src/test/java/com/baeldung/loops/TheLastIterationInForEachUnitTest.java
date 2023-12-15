@@ -1,4 +1,4 @@
-package com.baeldung.lists;
+package com.baeldung.loops;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
