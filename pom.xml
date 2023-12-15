@@ -781,7 +781,7 @@
                 <module>libraries-concurrency</module>
                 <module>libraries-data-2</module>
                 <module>libraries-data-3</module>
-                <module>libraries-data-db</module>
+<!--                <module>libraries-data-db</module>-->
                 <module>libraries-data-io</module>
                 <module>libraries-data</module>
                 <module>libraries-files</module>
@@ -1033,7 +1033,7 @@
                 <module>libraries-concurrency</module>
                 <module>libraries-data-2</module>
                 <module>libraries-data-3</module>
-                <module>libraries-data-db</module>
+<!--                <module>libraries-data-db</module>-->
                 <module>libraries-data-io</module>
                 <module>libraries-data</module>
                 <module>libraries-files</module>
