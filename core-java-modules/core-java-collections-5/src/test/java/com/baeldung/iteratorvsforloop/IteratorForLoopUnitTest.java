@@ -116,7 +116,7 @@ public class IteratorForLoopUnitTest {
     }
 
     @Test
-    public void givenCollectionWithElements_whenModifyingElementToLowerCaseDuringForLoopIteration_thenElementsIsModifiedToLowerCase() {
+    public void givenCollectionWithElements_whenModifyingElementToLowerCaseDuringForLoopIteration_thenElementsAreModifiedToLowerCase() {
         List<String> names = new ArrayList<>(List.of("Alice", "Bob", "Charlie"));
 
         for (int i = 0; i < names.size(); i++) {
