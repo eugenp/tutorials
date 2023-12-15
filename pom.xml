@@ -797,6 +797,7 @@
                 <module>libraries-server</module>
                 <module>libraries-stream</module>
                 <module>libraries-testing</module>
+                <module>libraries-testing-2</module>
                 <module>libraries-transform</module>
                 <module>libraries</module> <!-- very long running -->
                 <module>lightrun</module>
@@ -1048,6 +1049,7 @@
                 <module>libraries-server</module>
                 <module>libraries-stream</module>
                 <module>libraries-testing</module>
+                <module>libraries-testing-2</module>
                 <module>libraries-transform</module>
                 <module>libraries</module> <!-- very long running -->
                 <module>lightrun</module>
