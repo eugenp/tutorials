@@ -469,7 +469,6 @@
 
                 <module>apache-spark</module>
 
-                <module>jenkins-modules</module>
                 <module>jhipster-modules</module>
             </modules>
         </profile>
@@ -624,7 +623,6 @@
 
                 <module>apache-spark</module>
 
-                <module>jenkins-modules</module>
                 <module>jhipster-modules</module>
             </modules>
 
@@ -907,6 +905,7 @@
                 <!--<module>xml-2</module>--><!-- failing after upgrading to jdk17-->
                 <module>xml</module>
                 <module>xstream</module>
+				<module>jenkins-modules</module>
             </modules>
 
             <properties>
@@ -1155,6 +1154,7 @@
                 <!--<module>xml-2</module>--><!-- failing after upgrading to jdk17-->
                 <module>xml</module>
                 <module>xstream</module>
+				<module>jenkins-modules</module>
             </modules>
 
             <properties>
