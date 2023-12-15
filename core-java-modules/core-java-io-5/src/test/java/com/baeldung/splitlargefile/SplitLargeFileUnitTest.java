@@ -25,14 +25,14 @@ public class SplitLargeFileUnitTest {
 
 
     @org.junit.Test
-    public void givenLargeFileThenSplitBySize() throws Exception {
+    public void givenLargeFile_whenSplitLargeFile_thenSplitBySize() throws Exception {
         File input = largeFilePath().toFile();
         SplitLargeFile slf = new SplitLargeFile();
         slf.splitByFileSize(input, 1024_000, splitedFileDirPath());
     }
 
     @org.junit.Test
-    public void givenLargeFileThenSplitByNumberOfFiles() throws Exception {
+    public void givenLargeFile_whenSplitLargeFile_thenSplitByNumberOfFiles() throws Exception {
         File input = largeFilePath().toFile();
         SplitLargeFile slf = new SplitLargeFile();
         slf.splitByNumberOfFiles(input, 3, splitedFileDirPath());
