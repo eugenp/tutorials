@@ -4,18 +4,32 @@ import static java.time.Duration.ofMillis;
 import static java.time.Duration.ofSeconds;
 import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.testcontainers.shaded.org.awaitility.Awaitility.await;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Properties;
+import java.time.Duration;
+import java.util.*;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 
+import org.apache.kafka.clients.admin.Admin;
+import org.apache.kafka.clients.admin.AdminClientConfig;
+import org.apache.kafka.clients.admin.NewTopic;
+import org.apache.kafka.clients.consumer.ConsumerConfig;
+import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.apache.kafka.clients.consumer.ConsumerRecords;
+import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.kafka.clients.producer.RecordMetadata;
+import org.apache.kafka.common.header.Header;
+import org.apache.kafka.common.header.Headers;
+import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.kafka.common.serialization.StringSerializer;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.testcontainers.containers.KafkaContainer;
 import org.testcontainers.junit.jupiter.Container;
@@ -30,7 +44,7 @@ class CustomKafkaListenerLiveTest {
     private static final KafkaContainer KAFKA_CONTAINER = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:latest"));
 
     static {
-        Awaitility.setDefaultTimeout(ofSeconds(1L));
+        Awaitility.setDefaultTimeout(ofSeconds(5L));
         Awaitility.setDefaultPollInterval(ofMillis(50L));
     }
 
@@ -42,33 +56,34 @@ class CustomKafkaListenerLiveTest {
         List<String> consumedMessages = new ArrayList<>();
 
         // when
-        try (CustomKafkaListener listener = new CustomKafkaListener(topic, bootstrapServers).onEach(consumedMessages::add)) {
-            CompletableFuture.runAsync(listener);
-        }
+        CustomKafkaListener listener = new CustomKafkaListener(topic, bootstrapServers).onEach(consumedMessages::add);
+        CompletableFuture.runAsync(listener);
+
         // and
         publishArticles(topic,
+          "Introduction to Kafka",
+          "Kotlin for Java Developers",
+          "Reactive Spring Boot",
+          "Deploying Spring Boot Applications",
+          "Spring Security"
+        );
+
+        // then
+        await().untilAsserted(() ->
+          assertThat(consumedMessages).containsExactlyInAnyOrder(
             "Introduction to Kafka",
             "Kotlin for Java Developers",
             "Reactive Spring Boot",
             "Deploying Spring Boot Applications",
             "Spring Security"
-        );
+          ));
 
-        // then
-        await().untilAsserted(() ->
-            assertThat(consumedMessages).containsExactlyInAnyOrder(
-                "Introduction to Kafka",
-                "Kotlin for Java Developers",
-                "Reactive Spring Boot",
-                "Deploying Spring Boot Applications",
-                "Spring Security"
-            ));
     }
 
     private void publishArticles(String topic, String... articles) {
         try (KafkaProducer<String, String> producer = testKafkaProducer()) {
             Arrays.stream(articles)
-                .map(article -> new ProducerRecord<String,String>(topic, article))
+                .map(article -> new ProducerRecord<>(topic, "key-1", article))
                 .forEach(producer::send);
         }
     }

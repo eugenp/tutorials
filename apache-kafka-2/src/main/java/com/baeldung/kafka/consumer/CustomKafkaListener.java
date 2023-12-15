@@ -12,14 +12,10 @@ import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.serialization.StringDeserializer;
 
-public class CustomKafkaListener implements Runnable, AutoCloseable {
-
+public class CustomKafkaListener implements Runnable {
     private static final Logger log = Logger.getLogger(CustomKafkaListener.class.getName());
-
     private final String topic;
     private final KafkaConsumer<String, String> consumer;
-
-    private final AtomicBoolean running = new AtomicBoolean(false);
     private Consumer<String> recordConsumer;
 
 
@@ -50,18 +46,11 @@ public class CustomKafkaListener implements Runnable, AutoCloseable {
 
     @Override
     public void run() {
-        running.set(true);
         consumer.subscribe(Arrays.asList(topic));
-        while (running.get()) {
+        while (true) {
             consumer.poll(Duration.ofMillis(100))
               .forEach(record -> recordConsumer.accept(record.value()));
         }
-    }
-
-    @Override
-    public void close() {
-        running.set(false);
-        consumer.close();
     }
 
 }
