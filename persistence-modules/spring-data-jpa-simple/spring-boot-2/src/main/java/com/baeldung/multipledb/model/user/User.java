@@ -1,8 +1,14 @@
 package com.baeldung.multipledb.model.user;
 
-import javax.persistence.*;
-
 import java.util.List;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "users")
@@ -16,10 +22,10 @@ public class User {
     @Column(unique = true, nullable = false)
     private String email;
     private Integer status;
-    
+
     @OneToMany
     List<Possession> possessionList;
-  
+
     public User() {
         super();
     }
@@ -81,7 +87,11 @@ public class User {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append("User [name=").append(name).append(", id=").append(id).append("]");
+        builder.append("User [name=")
+            .append(name)
+            .append(", id=")
+            .append(id)
+            .append("]");
         return builder.toString();
     }
 

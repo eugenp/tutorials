@@ -10,9 +10,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../../parent-boot-2/pom.xml</relativePath>
+        <relativePath>../../../parent-boot-3/pom.xml</relativePath>
     </parent>
 
     <dependencies>
@@ -37,6 +37,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-envers</artifactId>
+            <version>6.4.0.Final</version>
         </dependency>
 
         <dependency>
@@ -57,9 +58,21 @@
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.jboss.logging</groupId>
+            <artifactId>jboss-logging</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-tools</artifactId>
+            <version>5.6.15.Final</version>
+        </dependency>
+
     </dependencies>
 
     <properties>
         <testcontainers.version>1.19.1</testcontainers.version>
+        <start-class>com.baeldung.boot.Application</start-class>
     </properties>
+
 </project>

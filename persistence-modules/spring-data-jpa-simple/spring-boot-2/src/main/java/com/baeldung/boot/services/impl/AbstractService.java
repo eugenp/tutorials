@@ -1,14 +1,16 @@
 package com.baeldung.boot.services.impl;
 
-import com.baeldung.boot.services.IOperations;
-import com.google.common.collect.Lists;
+import java.io.Serializable;
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.Serializable;
-import java.util.List;
+import com.baeldung.boot.services.IOperations;
+import com.google.common.collect.Lists;
 
 @Transactional
 public abstract class AbstractService<T extends Serializable> implements IOperations<T> {
@@ -18,7 +20,8 @@ public abstract class AbstractService<T extends Serializable> implements IOperat
     @Override
     @Transactional(readOnly = true)
     public T findOne(final long id) {
-        return getDao().findById(id).orElse(null);
+        return getCrud().findById(id)
+            .orElse(null);
     }
 
     // read - all
@@ -26,7 +29,7 @@ public abstract class AbstractService<T extends Serializable> implements IOperat
     @Override
     @Transactional(readOnly = true)
     public List<T> findAll() {
-        return Lists.newArrayList(getDao().findAll());
+        return Lists.newArrayList(getCrud().findAll());
     }
 
     @Override
@@ -38,24 +41,26 @@ public abstract class AbstractService<T extends Serializable> implements IOperat
 
     @Override
     public T create(final T entity) {
-        return getDao().save(entity);
+        return getCrud().save(entity);
     }
 
     @Override
     public T update(final T entity) {
-        return getDao().save(entity);
+        return getCrud().save(entity);
     }
 
     @Override
     public void delete(final T entity) {
-        getDao().delete(entity);
+        getCrud().delete(entity);
     }
 
     @Override
     public void deleteById(final long entityId) {
-        getDao().deleteById(entityId);
+        getCrud().deleteById(entityId);
     }
 
     protected abstract PagingAndSortingRepository<T, Long> getDao();
+
+    protected abstract CrudRepository<T, Long> getCrud();
 
 }

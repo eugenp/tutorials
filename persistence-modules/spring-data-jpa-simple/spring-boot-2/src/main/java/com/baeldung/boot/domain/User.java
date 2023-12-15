@@ -1,9 +1,16 @@
 package com.baeldung.boot.domain;
 
-import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "users")
@@ -27,7 +34,7 @@ public class User {
         super();
     }
 
-    public User(String name,  LocalDate creationDate,String email, Integer status) {
+    public User(String name, LocalDate creationDate, String email, Integer status) {
         this.name = name;
         this.creationDate = creationDate;
         this.email = email;
@@ -74,7 +81,7 @@ public class User {
     public void setAge(final int age) {
         this.age = age;
     }
-    
+
     public LocalDate getCreationDate() {
         return creationDate;
     }
@@ -90,21 +97,22 @@ public class User {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append("User [name=").append(name).append(", id=").append(id).append("]");
+        builder.append("User [name=")
+            .append(name)
+            .append(", id=")
+            .append(id)
+            .append("]");
         return builder.toString();
     }
-    
+
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         User user = (User) o;
-        return id == user.id &&
-          age == user.age &&
-          Objects.equals(name, user.name) &&
-          Objects.equals(creationDate, user.creationDate) &&
-          Objects.equals(email, user.email) &&
-          Objects.equals(status, user.status);
+        return id == user.id && age == user.age && Objects.equals(name, user.name) && Objects.equals(creationDate, user.creationDate) && Objects.equals(email, user.email) && Objects.equals(status, user.status);
     }
 
     @Override

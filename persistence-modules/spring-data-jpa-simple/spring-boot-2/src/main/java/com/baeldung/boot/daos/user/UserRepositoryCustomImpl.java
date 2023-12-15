@@ -1,16 +1,21 @@
 package com.baeldung.boot.daos.user;
 
-import com.baeldung.boot.domain.User;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.criteria.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import com.baeldung.boot.domain.User;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Path;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 
 public class UserRepositoryCustomImpl implements UserRepositoryCustom {
 
@@ -37,10 +42,11 @@ public class UserRepositoryCustomImpl implements UserRepositoryCustom {
         return entityManager.createQuery(query)
             .getResultList();
     }
-    
+
     @Override
     public List<User> findAllUsersByPredicates(Collection<java.util.function.Predicate<User>> predicates) {
-        List<User> allUsers = entityManager.createQuery("select u from User u", User.class).getResultList();
+        List<User> allUsers = entityManager.createQuery("select u from User u", User.class)
+            .getResultList();
         Stream<User> allUsersStream = allUsers.stream();
         for (java.util.function.Predicate<User> predicate : predicates) {
             allUsersStream = allUsersStream.filter(predicate);

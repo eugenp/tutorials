@@ -1,6 +1,10 @@
 package com.baeldung.boot.domain;
 
-import javax.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
 @Table
@@ -75,7 +79,11 @@ public class Possession {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append("Possesion [id=").append(id).append(", name=").append(name).append("]");
+        builder.append("Possesion [id=")
+            .append(id)
+            .append(", name=")
+            .append(name)
+            .append("]");
         return builder.toString();
     }
 

@@ -1,7 +1,9 @@
 package com.baeldung.schemageneration;
 
-import com.baeldung.schemageneration.model.Account;
-import com.baeldung.schemageneration.model.AccountSetting;
+import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
@@ -10,9 +12,8 @@ import org.hibernate.cfg.Environment;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
 import org.hibernate.tool.schema.TargetType;
 
-import java.util.EnumSet;
-import java.util.HashMap;
-import java.util.Map;
+import com.baeldung.schemageneration.model.Account;
+import com.baeldung.schemageneration.model.AccountSetting;
 
 public class HibernateUtil {
 
@@ -21,10 +22,11 @@ public class HibernateUtil {
      * Creation commands are exported into the create.sql file.
      */
     public static void generateSchema() {
-        Map<String, String> settings = new HashMap<>();
+        Map<String, Object> settings = new HashMap<>();
         settings.put(Environment.URL, "jdbc:h2:mem:schema");
 
-        StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(settings).build();
+        StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(settings)
+            .build();
 
         MetadataSources metadataSources = new MetadataSources(serviceRegistry);
         metadataSources.addAnnotatedClass(Account.class);
