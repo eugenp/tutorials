@@ -10,9 +10,7 @@ Remember, for advanced libraries like [Jackson](/jackson) and [JUnit](/testing-m
 ### Relevant articles
 
 - [Introduction to Javatuples](https://www.baeldung.com/java-tuples)
-- [Introduction to Javassist](https://www.baeldung.com/javassist)
 - [Intro to JaVers](https://www.baeldung.com/javers)
-- [Merging Streams in Java](https://www.baeldung.com/java-merge-streams)
 - [Introduction to Quartz](https://www.baeldung.com/quartz)
 - [How to Warm Up the JVM](https://www.baeldung.com/java-jvm-warmup)
 - [Software Transactional Memory in Java Using Multiverse](https://www.baeldung.com/java-multiverse-stm)

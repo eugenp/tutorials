@@ -1,15 +1,19 @@
 package com.baeldung.libraries.snakeyaml;
 
-import org.junit.Test;
-import org.yaml.snakeyaml.TypeDescription;
-import org.yaml.snakeyaml.Yaml;
-import org.yaml.snakeyaml.constructor.Constructor;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.io.InputStream;
 import java.util.Date;
 import java.util.Map;
 
-import static org.junit.Assert.*;
+import org.junit.Test;
+import org.yaml.snakeyaml.LoaderOptions;
+import org.yaml.snakeyaml.TypeDescription;
+import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.Constructor;
+import org.yaml.snakeyaml.inspector.TagInspector;
 
 public class YAMLToJavaDeserialisationUnitTest {
 
@@ -27,7 +31,7 @@ public class YAMLToJavaDeserialisationUnitTest {
 
     @Test
     public void whenLoadYAMLDocumentWithTopLevelClass_thenLoadCorrectJavaObject() {
-        Yaml yaml = new Yaml(new Constructor(Customer.class));
+        Yaml yaml = new Yaml(new Constructor(Customer.class,new LoaderOptions()));
         InputStream inputStream = this.getClass()
             .getClassLoader()
             .getResourceAsStream("yaml/customer.yaml");
@@ -39,7 +43,11 @@ public class YAMLToJavaDeserialisationUnitTest {
 
     @Test
     public void whenLoadYAMLDocumentWithAssumedClass_thenLoadCorrectJavaObject() {
-        Yaml yaml = new Yaml();
+        LoaderOptions loaderoptions = new LoaderOptions();
+        TagInspector taginspector = tag -> tag.getClassName()
+            .equals(Customer.class.getName());
+        loaderoptions.setTagInspector(taginspector);
+        Yaml yaml = new Yaml(new Constructor(Customer.class, loaderoptions));
         InputStream inputStream = this.getClass()
             .getClassLoader()
             .getResourceAsStream("yaml/customer_with_type.yaml");
@@ -61,7 +69,7 @@ public class YAMLToJavaDeserialisationUnitTest {
 
     @Test
     public void whenLoadYAMLDocumentWithTopLevelClass_thenLoadCorrectJavaObjectWithNestedObjects() {
-        Yaml yaml = new Yaml(new Constructor(Customer.class));
+        Yaml yaml = new Yaml(new Constructor(Customer.class, new LoaderOptions()));
         InputStream inputStream = this.getClass()
             .getClassLoader()
             .getResourceAsStream("yaml/customer_with_contact_details_and_address.yaml");
@@ -91,7 +99,7 @@ public class YAMLToJavaDeserialisationUnitTest {
 
     @Test
     public void whenLoadYAMLDocumentWithTypeDescription_thenLoadCorrectJavaObjectWithCorrectGenericType() {
-        Constructor constructor = new Constructor(Customer.class);
+        Constructor constructor = new Constructor(Customer.class, new LoaderOptions());
         TypeDescription customTypeDescription = new TypeDescription(Customer.class);
         customTypeDescription.addPropertyParameters("contactDetails", Contact.class);
         constructor.addTypeDescription(customTypeDescription);
@@ -116,7 +124,7 @@ public class YAMLToJavaDeserialisationUnitTest {
 
     @Test
     public void whenLoadMultipleYAMLDocuments_thenLoadCorrectJavaObjects() {
-        Yaml yaml = new Yaml(new Constructor(Customer.class));
+        Yaml yaml = new Yaml(new Constructor(Customer.class, new LoaderOptions()));
         InputStream inputStream = this.getClass()
             .getClassLoader()
             .getResourceAsStream("yaml/customers.yaml");
