@@ -54,7 +54,6 @@
     </build>
 
     <properties>
-        <spring-boot.version>3.1.2</spring-boot.version>
         <aspectj-maven-plugin.version>1.13.1</aspectj-maven-plugin.version>
         <log4j2.version>2.17.1</log4j2.version>
     </properties>
