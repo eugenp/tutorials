@@ -25,6 +25,7 @@ import org.apache.hc.client5.http.impl.nio.PoolingAsyncClientConnectionManagerBu
 import org.apache.hc.client5.http.impl.routing.DefaultProxyRoutePlanner;
 import org.apache.hc.client5.http.protocol.HttpClientContext;
 import org.apache.hc.client5.http.ssl.ClientTlsStrategyBuilder;
+import org.apache.hc.client5.http.ssl.NoopHostnameVerifier;
 import org.apache.hc.core5.http.HttpHost;
 import org.apache.hc.core5.http.HttpResponse;
 import org.apache.hc.core5.http.nio.ssl.TlsStrategy;
@@ -33,7 +34,6 @@ import org.apache.hc.core5.http.protocol.HttpContext;
 import org.apache.hc.core5.reactor.IOReactorConfig;
 import org.apache.hc.core5.ssl.SSLContexts;
 import org.apache.hc.core5.ssl.TrustStrategy;
-import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.junit.jupiter.api.Test;
 
 
@@ -120,7 +120,7 @@ class HttpAsyncClientLiveTest extends GetRequestMockServer {
             .build();
 
         final TlsStrategy tlsStrategy = ClientTlsStrategyBuilder.create()
-            .setHostnameVerifier(SSLConnectionSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER)
+            .setHostnameVerifier(NoopHostnameVerifier.INSTANCE)
             .setSslContext(sslContext)
             .build();
 
