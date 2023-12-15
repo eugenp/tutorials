@@ -14,96 +14,97 @@ import org.junit.jupiter.api.Test;
 public class CompareAnyUnitTest {
 
     @Test
-    void givenStrings_whenCompareUsingIf_thenSuccess() {
+    void givenStrings_whenCompareWithMultipleStringsUsingIf_thenSuccess() {
         String presentString = "Apple";
         String notPresentString = "Avocado";
 
-        assertTrue(compareWithAnyWithIf(presentString, "Mango", "Papaya", "Pineapple", "Apple"));
-        assertFalse(compareWithAnyWithIf(notPresentString, "Mango", "Papaya", "Pineapple", "Apple"));
+        assertTrue(compareWithMultipleStringsUsingIf(presentString, "Mango", "Papaya", "Pineapple", "Apple"));
+        assertFalse(compareWithMultipleStringsUsingIf(notPresentString, "Mango", "Papaya", "Pineapple", "Apple"));
     }
 
     @Test
-    void givenStrings_whenCompareUsingArrayUtils_thenSuccess() {
+    void givenStrings_whenCompareWithMultipleStringsUsingArrayUtils_thenSuccess() {
         String presentString = "Apple";
         String notPresentString = "Avocado";
 
-        assertTrue(compareWithAnyUsingArrayUtils(presentString, "Mango", "Papaya", "Pineapple", "Apple"));
-        assertFalse(compareWithAnyUsingArrayUtils(notPresentString, "Mango", "Papaya", "Pineapple", "Apple"));
+        assertTrue(compareWithMultipleStringsUsingArrayUtils(presentString, "Mango", "Papaya", "Pineapple", "Apple"));
+        assertFalse(compareWithMultipleStringsUsingArrayUtils(notPresentString, "Mango", "Papaya", "Pineapple", "Apple"));
     }
 
     @Test
-    void givenStrings_whenCompareUsingStringUtils_thenSuccess() {
+    void givenStrings_whenCompareWithMultipleStringsUsingStringUtils_thenSuccess() {
         String presentString = "Apple";
         String notPresentString = "Avocado";
 
-        assertTrue(compareWithAnyUsingStringUtils(presentString, "Mango", "Papaya", "Pineapple", "Apple"));
-        assertFalse(compareWithAnyUsingStringUtils(notPresentString, "Mango", "Papaya", "Pineapple", "Apple"));
+        assertTrue(compareWithMultipleStringsUsingStringUtils(presentString, "Mango", "Papaya", "Pineapple", "Apple"));
+        assertFalse(compareWithMultipleStringsUsingStringUtils(notPresentString, "Mango", "Papaya", "Pineapple", "Apple"));
     }
 
     @Test
-    void givenStrings_whenCompareCaseInsensitiveUsingStringUtils_thenSuccess() {
+    void givenStrings_whenCompareCaseInsensitiveWithMultipleStringsUsingStringUtils_thenSuccess() {
         String presentString = "APPLE";
         String notPresentString = "AVOCADO";
 
-        assertTrue(compareWithAnyCaseInsensitiveUsingStringUtils(presentString, "Mango", "Papaya", "Pineapple", "Apple"));
-        assertFalse(compareWithAnyCaseInsensitiveUsingStringUtils(notPresentString, "Mango", "Papaya", "Pineapple", "Apple"));
+        assertTrue(compareCaseInsensitiveWithMultipleStringsUsingStringUtils(presentString, "Mango", "Papaya", "Pineapple", "Apple"));
+        assertFalse(compareCaseInsensitiveWithMultipleStringsUsingStringUtils(notPresentString, "Mango", "Papaya", "Pineapple", "Apple"));
     }
+
     @Test
-    void givenStrings_whenCompareUsingStream_thenSuccess() {
+    void givenStrings_whenCompareWithMultipleStringsUsingStream_thenSuccess() {
         String presentString = "Apple";
         String notPresentString = "Avocado";
 
-        assertTrue(compareWithAnyUsingStream(presentString, "Mango", "Papaya", "Pineapple", "Apple"));
-        assertFalse(compareWithAnyUsingStream(notPresentString, "Mango", "Papaya", "Pineapple", "Apple"));
+        assertTrue(compareWithMultipleStringsUsingStream(presentString, "Mango", "Papaya", "Pineapple", "Apple"));
+        assertFalse(compareWithMultipleStringsUsingStream(notPresentString, "Mango", "Papaya", "Pineapple", "Apple"));
     }
 
     @Test
-    void givenStrings_whenCompareCaseInsensitiveUsingStream_thenSuccess() {
+    void givenStrings_whenCompareCaseInsensitiveWithMultipleStringsUsingStream_thenSuccess() {
         String presentString = "APPLE";
         String notPresentString = "AVOCADO";
 
-        assertTrue(compareWithAnyCaseInsensitiveUsingStream(presentString, "Mango", "Papaya", "Pineapple", "Apple"));
-        assertFalse(compareWithAnyCaseInsensitiveUsingStream(notPresentString, "Mango", "Papaya", "Pineapple", "Apple"));
+        assertTrue(compareCaseInsensitiveWithMultipleStringsUsingStream(presentString, "Mango", "Papaya", "Pineapple", "Apple"));
+        assertFalse(compareCaseInsensitiveWithMultipleStringsUsingStream(notPresentString, "Mango", "Papaya", "Pineapple", "Apple"));
     }
 
     @Test
-    void givenStrings_whenCompareUsingSet_thenSuccess() {
+    void givenStrings_whenCompareWithMultipleStringsUsingSet_thenSuccess() {
         String presentString = "Apple";
         String notPresentString = "Avocado";
 
-        assertTrue(compareWithAnyUsingSet(presentString, "Mango", "Papaya", "Pineapple", "Apple"));
-        assertFalse(compareWithAnyUsingSet(notPresentString, "Mango", "Papaya", "Pineapple", "Apple"));
+        assertTrue(compareWithMultipleStringUsingSet(presentString, "Mango", "Papaya", "Pineapple", "Apple"));
+        assertFalse(compareWithMultipleStringUsingSet(notPresentString, "Mango", "Papaya", "Pineapple", "Apple"));
     }
 
     @Test
-    void givenStrings_whenCompareUsingList_thenSuccess() {
+    void givenStrings_whenCompareWithMultipleStringsUsingList_thenSuccess() {
         String presentString = "Apple";
         String notPresentString = "Avocado";
 
-        assertTrue(compareWithAnyUsingList(presentString, "Mango", "Papaya", "Pineapple", "Apple"));
-        assertFalse(compareWithAnyUsingList(notPresentString, "Mango", "Papaya", "Pineapple", "Apple"));
+        assertTrue(compareWithMultipleStringsUsingList(presentString, "Mango", "Papaya", "Pineapple", "Apple"));
+        assertFalse(compareWithMultipleStringsUsingList(notPresentString, "Mango", "Papaya", "Pineapple", "Apple"));
     }
 
     @Test
-    void givenStrings_whenCompareUsingRegularExpression_thenSuccess() {
+    void givenStrings_whenCompareWithMultipleStringsUsingRegularExpression_thenSuccess() {
         String presentString = "Apple";
         String notPresentString = "Avocado";
 
-        assertTrue(compareWithAnyUsingRegularExpression(presentString, "Mango", "Papaya", "Pineapple", "Apple"));
-        assertFalse(compareWithAnyUsingRegularExpression(notPresentString, "Mango", "Papaya", "Pineapple", "Apple"));
+        assertTrue(compareWithMultipleStringsUsingRegularExpression(presentString, "Mango", "Papaya", "Pineapple", "Apple"));
+        assertFalse(compareWithMultipleStringsUsingRegularExpression(notPresentString, "Mango", "Papaya", "Pineapple", "Apple"));
     }
 
     @Test
-    void givenStrings_whenCompareCaseInsensitiveUsingRegularExpression_thenSuccess() {
+    void givenStrings_whenCompareCaseInsensitiveWithMultipleStringsUsingRegularExpression_thenSuccess() {
         String presentString = "APPLE";
         String notPresentString = "AVOCADO";
 
-        assertTrue(compareWithAnyCaseInsensitiveUsingRegularExpression(presentString, "Mango", "Papaya", "Pineapple", "Apple"));
-        assertFalse(compareWithAnyCaseInsensitiveUsingRegularExpression(notPresentString, "Mango", "Papaya", "Pineapple", "Apple"));
+        assertTrue(compareCaseInsensitiveWithMultipleStringsUsingRegularExpression(presentString, "Mango", "Papaya", "Pineapple", "Apple"));
+        assertFalse(compareCaseInsensitiveWithMultipleStringsUsingRegularExpression(notPresentString, "Mango", "Papaya", "Pineapple", "Apple"));
     }
 
-    private boolean compareWithAnyWithIf(String str, String ... strs) {
-        for(String s : strs) {
+    private boolean compareWithMultipleStringsUsingIf(String str, String... strs) {
+        for (String s : strs) {
             if (str.equals(s)) {
                 return true;
             }
@@ -111,37 +112,39 @@ public class CompareAnyUnitTest {
         return false;
     }
 
-    private boolean compareWithAnyUsingStringUtils(String str, String ... strs) {
+    private boolean compareWithMultipleStringsUsingStringUtils(String str, String... strs) {
         return StringUtils.equalsAny(str, strs);
     }
 
-    private boolean compareWithAnyCaseInsensitiveUsingStringUtils(String str, String ... strs) {
+    private boolean compareCaseInsensitiveWithMultipleStringsUsingStringUtils(String str, String... strs) {
         return StringUtils.equalsAnyIgnoreCase(str, strs);
     }
 
-    private boolean compareWithAnyUsingSet(String str, String ... strs) {
+    private boolean compareWithMultipleStringUsingSet(String str, String... strs) {
         return Set.of(strs).contains(str);
     }
 
-    private boolean compareWithAnyUsingList(String str, String ... strs) {
+    private boolean compareWithMultipleStringsUsingList(String str, String... strs) {
         return List.of(strs).contains(str);
     }
 
-    private boolean compareWithAnyUsingRegularExpression(String str, String ... strs) {
+    private boolean compareWithMultipleStringsUsingRegularExpression(String str, String... strs) {
         return str.matches(String.join("|", strs));
     }
 
-    private boolean compareWithAnyCaseInsensitiveUsingRegularExpression(String str, String ... strs) {
+    private boolean compareCaseInsensitiveWithMultipleStringsUsingRegularExpression(String str, String... strs) {
         return str.matches("(?i)" + String.join("|", strs));
     }
 
-    private boolean compareWithAnyUsingStream(String str, String ... strs) {
+    private boolean compareWithMultipleStringsUsingStream(String str, String... strs) {
         return Arrays.stream(strs).anyMatch(str::equals);
     }
-    private boolean compareWithAnyCaseInsensitiveUsingStream(String str, String ... strs) {
+
+    private boolean compareCaseInsensitiveWithMultipleStringsUsingStream(String str, String... strs) {
         return Arrays.stream(strs).anyMatch(str::equalsIgnoreCase);
     }
-    private boolean compareWithAnyUsingArrayUtils(String str, String ... strs) {
+
+    private boolean compareWithMultipleStringsUsingArrayUtils(String str, String... strs) {
         return ArrayUtils.contains(strs, str);
     }
 }

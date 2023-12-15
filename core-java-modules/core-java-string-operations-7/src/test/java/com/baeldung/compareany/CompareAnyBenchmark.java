@@ -31,52 +31,52 @@ public class CompareAnyBenchmark {
     private final String fruit = "Apple";
 
     @Benchmark
-    public boolean compareWithAnyUsingStringUtils() {
+    public boolean compareWithMultipleStringsUsingStringUtils() {
         return StringUtils.equalsAny(fruit, groupOfFruits);
     }
 
     @Benchmark
-    public boolean compareWithAnyCaseInsensitiveUsingStringUtils() {
+    public boolean compareCaseInsensitiveWithMultipleStringsUsingStringUtils() {
         return StringUtils.equalsAnyIgnoreCase(fruit, groupOfFruits);
     }
 
     @Benchmark
-    public boolean compareWithAnyUsingSet() {
+    public boolean compareWithMultipleStringsUsingSet() {
         return Set.of(groupOfFruits).contains(fruit);
     }
 
     @Benchmark
-    public boolean compareWithAnyUsingList() {
+    public boolean compareWithMultipleStringsUsingList() {
         return List.of(groupOfFruits).contains(fruit);
     }
 
     @Benchmark
-    public boolean compareWithAnyUsingRegularExpression() {
+    public boolean compareWithMultipleStringsUsingRegularExpression() {
         return fruit.matches(String.join("|", groupOfFruits));
     }
 
     @Benchmark
-    public boolean compareWithAnyCaseInsensitiveUsingRegularExpression() {
+    public boolean compareCaseInsensitiveWithMultipleStringsUsingRegularExpression() {
         return fruit.matches("(?i)" + String.join("|", groupOfFruits));
     }
 
     @Benchmark
-    public boolean compareWithAnyUsingStream() {
+    public boolean compareWithMultipleStringsUsingStream() {
         return Arrays.stream(groupOfFruits).anyMatch(fruit::equals);
     }
 
     @Benchmark
-    public boolean compareWithAnyCaseInsensitiveUsingStream() {
+    public boolean compareCaseInsensitiveWithMultipleStringsUsingStream() {
         return Arrays.stream(groupOfFruits).anyMatch(fruit::equalsIgnoreCase);
     }
 
     @Benchmark
-    public boolean compareWithAnyUsingArrayUtils() {
+    public boolean compareWithMultipleStringsUsingArrayUtils() {
         return ArrayUtils.contains(groupOfFruits, fruit);
     }
 
     @Benchmark
-    public boolean compareWithAnyWithIf() {
+    public boolean compareWithMultipleStringsUsingIf() {
         for(String s : groupOfFruits) {
             if (fruit.equals(s)) {
                 return true;
