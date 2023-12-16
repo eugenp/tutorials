@@ -1,5 +1,11 @@
 package com.baeldung.enablessldebug;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URL;
+
+import javax.net.ssl.HttpsURLConnection;
+
 public class SSLDebugLogger {
     public static void enableSSLDebugUsingSystemProperties() {
         System.setProperty("javax.net.debug", "ssl");
