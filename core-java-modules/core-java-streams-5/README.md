@@ -8,3 +8,4 @@
 - [Modifying Objects Within Stream While Iterating](https://www.baeldung.com/java-stream-modify-objects-during-iteration)
 - [Convert a Stream into a Map or Multimap in Java](https://www.baeldung.com/java-convert-stream-map-multimap)
 - [How to Avoid NoSuchElementException in Stream API](https://www.baeldung.com/java-streams-api-avoid-nosuchelementexception)
+- [Get Index of First Element Matching Boolean Using Java Streams](https://www.baeldung.com/java-streams-find-first-match-index)
