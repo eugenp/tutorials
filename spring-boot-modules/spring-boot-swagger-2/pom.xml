@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-boot-swagger-2</artifactId>
     <version>0.1.0-SNAPSHOT</version>
@@ -30,62 +30,53 @@
             <version>${springdoc.version}</version>
         </dependency>
         <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-oas</artifactId>
-            <version>${springfox.version}</version>
-        </dependency>
-        <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>${springfox.version}</version>
+            <groupId>javax.ws.rs</groupId>
+            <artifactId>javax.ws.rs-api</artifactId>
+            <version>${javax-ws.rs-api.version}</version>
         </dependency>
     </dependencies>
 
     <build>
         <plugins>
             <plugin>
-                <groupId>io.swagger.codegen.v3</groupId>
-                <artifactId>swagger-codegen-maven-plugin</artifactId>
-                <version>${swagger-codegen-maven-plugin.version}</version>
+                <groupId>io.swagger.core.v3</groupId>
+                <artifactId>swagger-maven-plugin</artifactId>
+                <version>${swagger-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>two-responses</id>
                         <goals>
-                            <goal>generate</goal>
+                            <goal>resolve</goal>
                         </goals>
                         <configuration>
-                            <inputSpec>${project.basedir}/src/main/resources/static/api_3.yaml</inputSpec>
-                            <language>spring</language>
-                            <configOptions>
-                                <java8>true</java8>
-                                <interfaceOnly>true</interfaceOnly>
-                            </configOptions>
+                            <outputFileName>openapi</outputFileName>
+                            <outputPath>${project.build.directory}/generatedtest</outputPath>
+                            <outputFormat>JSONANDYAML</outputFormat>
+                            <resourcePackages>
+                                <package>test.petstore</package>
+                            </resourcePackages>
+                            <configurationFilePath>${project.basedir}/src/main/resources/static/api_3.yaml</configurationFilePath>
+                            <prettyPrint>true</prettyPrint>
                         </configuration>
                     </execution>
                     <execution>
                         <id>dates</id>
                         <goals>
-                            <goal>generate</goal>
+                            <goal>resolve</goal>
                         </goals>
                         <configuration>
-                            <inputSpec>${project.basedir}/src/main/resources/static/event.yaml</inputSpec>
-                            <language>spring</language>
-                            <configOptions>
-                                <java8>true</java8>
-                                <dateLibrary>custom</dateLibrary>
-                            </configOptions>
-                            <typeMappings>
-                                <typeMapping>DateTime=Instant</typeMapping>
-                                <typeMapping>Date=Date</typeMapping>
-                            </typeMappings>
-                            <importMappings>
-                                <importMapping>Instant=java.time.Instant</importMapping>
-                                <importMapping>Date=java.util.Date</importMapping>
-                            </importMappings>
+                            <outputFileName>openapi</outputFileName>
+                            <outputPath>${project.build.directory}/generatedtest</outputPath>
+                            <outputFormat>JSONANDYAML</outputFormat>
+                            <resourcePackages>
+                                <package>test.petstore</package>
+                            </resourcePackages>
+                            <configurationFilePath>${project.basedir}/src/main/resources/static/event.yaml</configurationFilePath>
+                            <prettyPrint>true</prettyPrint>
                         </configuration>
                     </execution>
                 </executions>
@@ -134,11 +125,10 @@
 
     <properties>
         <openapi-generator.version>6.2.1</openapi-generator.version>
-        <springfox.version>3.0.0</springfox.version>
-        <swagger-codegen-maven-plugin.version>3.0.34</swagger-codegen-maven-plugin.version>
         <springdoc.version>1.6.10</springdoc.version>
-        <swagger-maven-plugin.version>3.1.1</swagger-maven-plugin.version>
+        <swagger-maven-plugin.version>2.2.19</swagger-maven-plugin.version>
         <start-class>com.baeldung.tworesponses.Application</start-class>
+        <javax-ws.rs-api.version>2.1.1</javax-ws.rs-api.version>
     </properties>
 
 </project>
