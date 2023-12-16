@@ -1,4 +1,4 @@
-package org.example;
+package com.baeldung.withoutscientificnotation;
 
 import java.io.ByteArrayOutputStream;
 import org.junit.jupiter.api.AfterEach;
