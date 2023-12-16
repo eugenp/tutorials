@@ -18,7 +18,7 @@ import org.junit.Test;
 public class SSLDebugLoggerUnitTest {
     
     @Test
-    public void givenSSLDebuggingEnabled_whenUsingSystemProperties_thenEnableSSL() {
+    public void givenSSLDebuggingEnabled_whenUsingSystemProperties_thenEnableSSL() throws Exception {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setErr(new PrintStream(outContent));
         
