@@ -1,7 +1,12 @@
 package com.baeldung.springdata.repository;
 
-import javax.persistence.*;
 import java.io.Serializable;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
 public class Foo implements Serializable {
@@ -66,7 +71,9 @@ public class Foo implements Serializable {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append("Foo [name=").append(name).append("]");
+        builder.append("Foo [name=")
+            .append(name)
+            .append("]");
         return builder.toString();
     }
 }
