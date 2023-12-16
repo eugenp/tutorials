@@ -15,9 +15,21 @@ public class SSLDebugLoggerUnitTest {
     
     @Test
     public void givenSSLDebuggingEnabled_whenUsingSystemProperties_thenEnableSSL() {
-        SSLDebugLogger.enableSSLDebugUsingSystemProperties();
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setErr(new PrintStream(outContent));
         
-        assertEquals("ssl:debug", System.getProperty("javax.net.debug"));
+        SSLDebugLogger.enableSSLDebugUsingSystemProperties();
+        assertEquals("ssl", System.getProperty("javax.net.debug"));
+        
+        SSLDebugLogger.makeHttpsRequest();
+        assertTrue(outContent.toString().contains("javax.net.ssl|DEBUG|"));
+        outContent.reset();
+
+        System.clearProperty("javax.net.debug");
+        assertNull(System.getProperty("javax.net.debug"));
+        
+        SSLDebugLogger.makeHttpsRequest();
+        assertEquals(outContent.toString(),"");
     }
 
     @Test
