@@ -10,7 +10,7 @@
     <description>Sample ScyllaDB Project</description>
     <properties>
         <testcontainers.version>1.17.6</testcontainers.version>
-        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
+        <start-class>com.baeldung.scylladb.ScylladbApplication</start-class>
     </properties>
     <parent>
         <groupId>com.baeldung</groupId>
