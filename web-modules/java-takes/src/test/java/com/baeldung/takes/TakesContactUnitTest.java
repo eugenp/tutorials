@@ -1,4 +1,4 @@
-package com.baeldung.rome;
+package com.baeldung.takes;
 
 import static org.junit.Assert.assertEquals;
 

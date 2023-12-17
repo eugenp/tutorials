@@ -1,4 +1,4 @@
-package com.baeldung.rome;
+package com.baeldung.takes;
 
 import java.io.IOException;
 import java.sql.SQLException;
