@@ -41,15 +41,15 @@ public class JsonToXmlUnitTest {
         xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
         xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_1_1, true);
         String xmlString = xmlMapper.writer().withRootName("root").withDefaultPrettyPrinter().writeValueAsString(jsonNode);
-        Assertions.assertEquals("<?xml version='1.1' encoding='UTF-8'?>\n" +
-                "<root>\n" +
-                "  <name>John</name>\n" +
-                "  <age>20</age>\n" +
-                "  <address>\n" +
-                "    <street>Wall Street</street>\n" +
-                "    <city>New York</city>\n" +
-                "  </address>\n" +
-                "</root>\n", xmlString);
+        Assertions.assertEquals("<?xml version='1.1' encoding='UTF-8'?>" + System.lineSeparator() +
+                "<root>" + System.lineSeparator() +
+                "  <name>John</name>" + System.lineSeparator() +
+                "  <age>20</age>" + System.lineSeparator() +
+                "  <address>" + System.lineSeparator() +
+                "    <street>Wall Street</street>" + System.lineSeparator() +
+                "    <city>New York</city>" + System.lineSeparator() +
+                "  </address>" + System.lineSeparator() +
+                "</root>" + System.lineSeparator(), xmlString);
     }
 
     @Test
