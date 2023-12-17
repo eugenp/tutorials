@@ -1,11 +1,11 @@
 package com.baeldung.numberofdigits;
 
-import org.apache.log4j.Logger;
+import java.util.logging.Logger;
 
 public class NumberOfDigitsDriver {
     private static NumberOfDigits numberOfDigits;
 
-    private static Logger LOG = Logger.getLogger(NumberOfDigitsDriver.class);
+    private static Logger LOG = Logger.getLogger(NumberOfDigitsDriver.class.getName());
 
     static {
         numberOfDigits = new NumberOfDigits();

@@ -11,11 +11,11 @@ import org.apache.log4j.PropertyConfigurator;
 public class LoggerUtil {
 
     public final static Logger LOG = Logger.getLogger("GLOBAL");
-    
+
     static {
     	configuration();
     }
-    
+
     private static void configuration() {
     	Properties props = new Properties();
     	try {

@@ -1,19 +1,17 @@
 package com.baeldung.scanner;
 
-import lombok.extern.log4j.Log4j;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.PropertyConfigurator;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Properties;
 import java.util.Scanner;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
 
-@Log4j
 public class HasNextVsHasNextLineDemo {
     private static final String LINE = "----------------------------";
     private static final String END_LINE = "--------OUTPUT--END---------\n";
 
+    private static Logger log = Logger.getLogger(HasNextVsHasNextLineDemo.class.getName());
 
     private static final String INPUT = new StringBuilder()
         .append("magic\tproject\n")
@@ -88,9 +86,7 @@ public class HasNextVsHasNextLineDemo {
     //overwrite the logger config
     private static void setLogger() throws IOException {
         InputStream is = HasNextVsHasNextLineDemo.class.getResourceAsStream("/scanner/log4j.properties");
-        Properties props = new Properties();
-        props.load(is);
-        LogManager.resetConfiguration();
-        PropertyConfigurator.configure(props);
+        LogManager.getLogManager().reset();
+        LogManager.getLogManager().readConfiguration(is);
     }
 }

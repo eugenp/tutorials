@@ -1,9 +1,9 @@
 package com.baeldung.isnumeric;
 
-import org.apache.log4j.Logger;
+import java.util.logging.Logger;
 
 public class IsNumericDriver {
-    private static Logger LOG = Logger.getLogger(IsNumericDriver.class);
+    private static Logger LOG = Logger.getLogger(IsNumericDriver.class.getName());
 
     private static IsNumeric isNumeric = new IsNumeric();
 

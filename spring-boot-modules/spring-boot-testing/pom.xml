@@ -15,18 +15,6 @@
         <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-bom</artifactId>
-                <version>${log4j2.version}</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -128,7 +116,6 @@
         <spock.version>2.4-M1-groovy-4.0</spock.version>
         <gmavenplus-plugin.version>3.0.0</gmavenplus-plugin.version>
         <embedded-redis.version>0.7.2</embedded-redis.version>
-        <log4j2.version>2.17.1</log4j2.version>
     </properties>
 
 </project>

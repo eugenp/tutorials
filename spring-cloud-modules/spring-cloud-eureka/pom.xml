@@ -23,18 +23,6 @@
         <module>spring-cloud-eureka-server</module>
     </modules>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-bom</artifactId>
-                <version>${log4j2.version}</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -43,9 +31,5 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <properties>
-        <log4j2.version>2.17.1</log4j2.version>
-    </properties>
 
 </project>

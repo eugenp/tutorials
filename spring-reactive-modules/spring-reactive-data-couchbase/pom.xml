@@ -13,18 +13,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-bom</artifactId>
-                <version>${log4j2.version}</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <dependencies>
         <dependency>
             <groupId>io.projectreactor</groupId>
@@ -137,7 +125,6 @@
         <couchbaseMock.version>1.5.23</couchbaseMock.version>
         <!-- This spring-boot.version is set manually, For upgrading this please refer http://team.baeldung.com/browse/JAVA-2802 -->
         <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
-        <log4j2.version>2.17.1</log4j2.version>
     </properties>
 
 </project>

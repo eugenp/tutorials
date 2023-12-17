@@ -24,13 +24,6 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-bom</artifactId>
-                <version>${log4j2.version}</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -181,7 +174,6 @@
         <dynamodblocal.version>1.21.1</dynamodblocal.version>
         <maven-dependency-plugin.version>3.1.1</maven-dependency-plugin.version>
         <spring-boot.version>2.4.7</spring-boot.version>
-        <log4j2.version>2.17.1</log4j2.version>
     </properties>
 
 </project>
