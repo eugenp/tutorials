@@ -41,7 +41,6 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -60,7 +59,7 @@
     </build>
 
     <properties>
-        <spring.boot.dependencies>2.1.8.RELEASE</spring.boot.dependencies>
+        <spring.boot.dependencies>3.2.0</spring.boot.dependencies>
     </properties>
 
 </project>
