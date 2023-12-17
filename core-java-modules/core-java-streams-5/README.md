@@ -9,3 +9,4 @@
 - [Convert a Stream into a Map or Multimap in Java](https://www.baeldung.com/java-convert-stream-map-multimap)
 - [How to Avoid NoSuchElementException in Stream API](https://www.baeldung.com/java-streams-api-avoid-nosuchelementexception)
 - [Get Index of First Element Matching Boolean Using Java Streams](https://www.baeldung.com/java-streams-find-first-match-index)
+- [Handling NullPointerException in findFirst() When the First Element Is Null](https://www.baeldung.com/java-handle-nullpointerexception-findfirst-first-null)
