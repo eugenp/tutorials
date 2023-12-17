@@ -1,4 +1,4 @@
-package com.baeldung.entity;
+package com.baeldung.jpa.domain;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
