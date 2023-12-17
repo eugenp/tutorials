@@ -1,5 +1,6 @@
 package com.baeldung.spring.data.jpa.paging;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -27,6 +28,13 @@ public class CustomerService {
 
         List<Customer> pageContent = allCustomers.subList(start, end);
         return new PageImpl<>(pageContent, pageRequest, allCustomers.size());
+    }
+
+    public List<Customer> getCustomerListFromPage(int page, int size) {
+        Pageable pageRequest = createPageRequestUsing(page, size);
+        Page<Customer> allCustomers = customerRepository.findAll(pageRequest);
+
+        return allCustomers.hasContent() ? allCustomers.getContent() : Collections.emptyList();
     }
 
     private Pageable createPageRequestUsing(int page, int size) {
