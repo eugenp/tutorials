@@ -37,7 +37,6 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>${h2.version}</version>
         </dependency>
         <!-- Spring -->
         <dependency>
@@ -195,7 +194,6 @@
         <lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
         <sql-maven-plugin.version>1.5</sql-maven-plugin.version>
         <properties-maven-plugin.version>1.0.0</properties-maven-plugin.version>
-        <!--        <h2.version>2.1.214</h2.version>-->
     </properties>
 
 </project>
