@@ -21,7 +21,7 @@ public class StudentDaoWithDeprecatedJdbcTemplateMethods {
 
     public List<Student> getStudentsOfAgeAndGender(Integer age, String gender) {
         String sql = "select student_id, student_name, age, gender, grade, state from student where age= ? and gender = ?";
-        return jdbcTemplate.query(sql, new StudentRowMapper(),age, gender);
+        return jdbcTemplate.query(sql, new StudentRowMapper(), age, gender);
     }
 
     public List<Student> getStudentsOfAgeGenderAndGrade(Integer age, String gender, Integer grade) {

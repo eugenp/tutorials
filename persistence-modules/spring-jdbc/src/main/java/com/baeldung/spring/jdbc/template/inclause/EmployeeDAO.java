@@ -35,7 +35,7 @@ public class EmployeeDAO {
         String inSql = String.join(",", Collections.nCopies(ids.size(), "?"));
         List<Employee> employees = jdbcTemplate.query(
           String.format("SELECT * FROM EMPLOYEE WHERE id IN (%s)", inSql),
-          (rs, rowNum) -> new Employee(rs.getInt("id"), rs.getString("first_name"), rs.getString("last_name")),ids.toArray());
+          (rs, rowNum) -> new Employee(rs.getInt("id"), rs.getString("first_name"), rs.getString("last_name")), ids.toArray());
 
         return employees;
     }
