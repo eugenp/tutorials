@@ -1,6 +1,7 @@
 spring:
-  profiles:
-    active: "dev2"
+  config:
+    activate:
+      on-profile: "dev2"
   main:
     banner-mode: "off"
   jpa:
@@ -11,25 +12,30 @@ spring:
         dialect: org.hibernate.dialect.MySQL8Dialect
         jdbc:
           time_zone: UTC
+
 ---
 
 spring:
-  profiles: "dev1"
+  config:
+    activate:
+      on-profile: "dev1"
   datasource:
-    url: jdbc:mysql://localhost:3306/test?
+    url: jdbc:mysql://localhost:3306/test
     username: root
     password:
 
 ---
 
 spring:
-  profiles: "dev2"
+  config:
+    activate:
+      on-profile: "dev2"
   datasource:
     url: >-
-         jdbc:mysql://localhost:3306/test_db?sslMode=VERIFY_CA&
-         trustCertificateKeyStoreUrl=file:/Users/saikatchakraborty/tutorials/persistence-modules/spring-boot-mysql/mysql-server/certs/truststore.jks&
-         trustCertificateKeyStorePassword=mypassword&
-         clientCertificateKeyStoreUrl=file:/Users/saikatchakraborty/tutorials/persistence-modules/spring-boot-mysql/mysql-server/certs/client-cert.jks&
-         clientCertificateKeyStorePassword=mypassword
+      jdbc:mysql://localhost:3306/test_db?sslMode=VERIFY_CA&
+      trustCertificateKeyStoreUrl=file:/Users/saikatchakraborty/tutorials/persistence-modules/spring-boot-mysql/mysql-server/certs/truststore.jks&
+      trustCertificateKeyStorePassword=mypassword&
+      clientCertificateKeyStoreUrl=file:/Users/saikatchakraborty/tutorials/persistence-modules/spring-boot-mysql/mysql-server/certs/client-cert.jks&
+      clientCertificateKeyStorePassword=mypassword
     username: test_user
     password: Password2022
