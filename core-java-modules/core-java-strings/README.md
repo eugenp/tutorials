@@ -16,3 +16,4 @@ Listed here there are only those articles that does not fit into other core-java
 - [Reuse StringBuilder for Efficiency](https://www.baeldung.com/java-reuse-stringbuilder-for-efficiency)
 - [How to Iterate Over the String Characters in Java](https://www.baeldung.com/java-iterate-string-characters)
 - [Passing Strings by Reference in Java](https://www.baeldung.com/java-method-pass-string-reference)
+- [String vs StringBuffer Comparison in Java](https://www.baeldung.com/java-string-vs-stringbuffer)

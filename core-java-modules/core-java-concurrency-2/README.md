@@ -7,3 +7,4 @@
 - [Testing Multi-Threaded Code in Java](https://www.baeldung.com/java-testing-multithreaded)
 - [How to Check if All Runnables Are Done](https://www.baeldung.com/java-runnables-check-status)
 - [Parallelize for Loop in Java](https://www.baeldung.com/java-for-loop-parallel)
+- [How to Effectively Unit Test CompletableFuture](https://www.baeldung.com/java-completablefuture-unit-test)
