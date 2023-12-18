@@ -1,4 +1,4 @@
-package com.baeldung.repository;
+package com.baeldung.jpa;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
@@ -8,18 +8,22 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.baeldung.entity.Passenger;
+import com.baeldung.jpa.domain.Passenger;
+import com.baeldung.jpa.repository.PassengerRepository;
 
-@DataJpaTest(showSql = false)
 @RunWith(SpringRunner.class)
+@ContextConfiguration(classes = { JpaApplication.class})
+@DirtiesContext
 public class PassengerRepositoryIntegrationTest {
 
     @PersistenceContext
@@ -28,6 +32,7 @@ public class PassengerRepositoryIntegrationTest {
     private PassengerRepository repository;
 
     @Before
+    @Transactional
     public void before() {
         entityManager.persist(Passenger.from("Jill", "Smith"));
         entityManager.persist(Passenger.from("Eve", "Jackson"));
@@ -36,6 +41,7 @@ public class PassengerRepositoryIntegrationTest {
         entityManager.persist(Passenger.from("Siya", "Kolisi"));
     }
 
+    @Transactional
     @Test
     public void givenPassengers_whenMatchingIgnoreCase_thenExpectedReturned() {
         Passenger jill = Passenger.from("Jill", "Smith");

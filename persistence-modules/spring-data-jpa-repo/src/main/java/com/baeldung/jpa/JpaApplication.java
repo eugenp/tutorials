@@ -1,17 +1,17 @@
-package com.baeldung;
+package com.baeldung.jpa;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-import com.baeldung.boot.daos.impl.ExtendedRepositoryImpl;
-
 @SpringBootApplication
-@EnableJpaRepositories(repositoryBaseClass = ExtendedRepositoryImpl.class)
-public class Application {
+@ComponentScan("com.baeldung.jpa")
+@EnableJpaRepositories("com.baeldung.jpa.repository")
+public class JpaApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(JpaApplication.class, args);
     }
 
 }

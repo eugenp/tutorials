@@ -1,4 +1,4 @@
-package com.baeldung.repository;
+package com.baeldung.jpa;
 
 import static org.junit.Assert.assertEquals;
 
@@ -7,17 +7,19 @@ import java.util.List;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.baeldung.entity.Song;
-import com.baeldung.repository.SongRepository;
+import com.baeldung.jpa.domain.Song;
+import com.baeldung.jpa.repository.SongRepository;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@ContextConfiguration(classes = { JpaApplication.class })
 @Sql(scripts = { "/test-song-data.sql" })
+@DirtiesContext
 public class SongRepositoryIntegrationTest {
 
     @Autowired private SongRepository songRepository;
