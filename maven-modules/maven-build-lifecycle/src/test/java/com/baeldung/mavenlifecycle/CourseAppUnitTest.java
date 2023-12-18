@@ -17,6 +17,7 @@ class CourseAppUnitTest {
     @Test
     void whenGetCourse_ThenCourseShouldBePresent() {
         when(courseApp.getCourse()).thenReturn("Baeldung Spring Masterclass");
+
         assertEquals("Baeldung Spring Masterclass", courseApp.getCourse());
     }
 }

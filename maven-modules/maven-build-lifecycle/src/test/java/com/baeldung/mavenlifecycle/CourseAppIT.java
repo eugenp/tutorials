@@ -9,6 +9,7 @@ class CourseAppIT {
     @Test
     void givenIntegrationTest_whenGetCourse_ThenCourseShouldBePresent() {
         CourseApp courseApp = new CourseApp();
+
         assertEquals("Baeldung Spring Masterclass", courseApp.getCourse());
     }
 }
