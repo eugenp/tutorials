@@ -1,4 +1,4 @@
-package com.baeldung.repository;
+package com.baeldung.jpa.domain;
 
 import java.io.Serializable;
 

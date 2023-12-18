@@ -1,4 +1,4 @@
-package com.baeldung.repository;
+package com.baeldung.jpa;
 
 import javax.sql.DataSource;
 
@@ -6,11 +6,16 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.baeldung.jpa.domain.Foo;
+import com.baeldung.jpa.service.IFooService;
+
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = PersistenceConfig.class)
+@ContextConfiguration(classes = { JpaApplication.class})
+@DirtiesContext
 public class FooServiceIntegrationTest {
 
     @Autowired

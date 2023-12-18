@@ -1,11 +1,11 @@
-package com.baeldung.repository;
+package com.baeldung.jpa.repository;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.baeldung.entity.Song;
+import com.baeldung.jpa.domain.Song;
 
 @Repository
 public interface SongRepository extends JpaRepository<Song, Long> {
