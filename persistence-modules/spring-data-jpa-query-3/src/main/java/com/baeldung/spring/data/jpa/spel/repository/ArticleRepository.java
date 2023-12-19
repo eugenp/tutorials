@@ -16,7 +16,7 @@ public interface ArticleRepository extends BaseNewsApplicationRepository<Article
     @Query(value = "INSERT INTO articles (id, title, content, language) "
                    + "VALUES (?1, ?2, ?3, ?4)",
         nativeQuery = true)
-    void saveWithPositionalArguments(Long id, String title, String content, String isoCode);
+    void saveWithPositionalArguments(Long id, String title, String content, String language);
 
 
     @Modifying
@@ -24,22 +24,22 @@ public interface ArticleRepository extends BaseNewsApplicationRepository<Article
     @Query(value = "INSERT INTO articles (id, title, content, language) "
                    + "VALUES (?#{[0]}, ?#{[1]}, ?#{[2]}, ?#{[3]})",
         nativeQuery = true)
-    void saveWithPositionalSpELArguments(long id, String title, String content, String isoCode);
+    void saveWithPositionalSpELArguments(long id, String title, String content, String language);
 
     @Modifying
     @Transactional
     @Query(value = "INSERT INTO articles (id, title, content, language) "
                    + "VALUES (?#{[0]}, ?#{[1]}, ?#{[2] ?: 'Empty Article'}, ?#{[3]})",
         nativeQuery = true)
-    void saveWithPositionalSpELArgumentsWithEmptyCheck(long id, String title, String content, String isoCode);
+    void saveWithPositionalSpELArgumentsWithEmptyCheck(long id, String title, String content, String language);
 
     @Modifying
     @Transactional
     @Query(value = "INSERT INTO articles (id, title, content, language) "
-                   + "VALUES (:id, :title, :content, :isoCode)",
+                   + "VALUES (:id, :title, :content, :language)",
         nativeQuery = true)
     void saveWithNamedArguments(@Param("id") long id, @Param("title") String title,
-        @Param("content") String content, @Param("isoCode") String isoCode);
+        @Param("content") String content, @Param("language") String language);
 
     @Modifying
     @Transactional
