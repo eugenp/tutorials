@@ -6,3 +6,4 @@
 - [Create a Mutable String in Java](https://www.baeldung.com/java-mutable-string)
 - [Check if a String Contains a Number Value in Java](https://www.baeldung.com/java-string-number-presence)
 - [Difference Between String isEmpty() and isBlank()](https://www.baeldung.com/java-string-isempty-vs-isblank)
+- [String’s Maximum Length in Java](https://www.baeldung.com/java-strings-maximum-length)

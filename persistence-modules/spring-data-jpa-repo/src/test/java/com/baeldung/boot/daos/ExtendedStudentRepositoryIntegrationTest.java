@@ -13,11 +13,11 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.baeldung.Application;
+import com.baeldung.boot.BootApplication;
 import com.baeldung.boot.domain.Student;
 
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = {Application.class})
+@ContextConfiguration(classes = { BootApplication.class})
 @DirtiesContext
 public class ExtendedStudentRepositoryIntegrationTest {
     @Resource

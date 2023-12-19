@@ -23,6 +23,23 @@ public class CompressByteArrayUtil {
         return outputStream.toByteArray();
     }
 
+    public static byte[] compressWithCustomLevel(byte[] input, int level) {
+        Deflater deflater = new Deflater();
+        deflater.setInput(input);
+        deflater.setLevel(level);
+        deflater.finish();
+
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        byte[] buffer = new byte[1024];
+
+        while (!deflater.finished()) {
+            int compressedSize = deflater.deflate(buffer);
+            outputStream.write(buffer, 0, compressedSize);
+        }
+
+        return outputStream.toByteArray();
+    }
+
     public static byte[] decompress(byte[] input) throws DataFormatException {
         Inflater inflater = new Inflater();
         inflater.setInput(input);
