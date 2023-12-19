@@ -88,7 +88,7 @@
     </dependencies>
 
     <properties>
-        <poi.version>5.2.3</poi.version>
+        <poi.version>5.2.5</poi.version>
         <poiji.version>4.1.1</poiji.version>
         <fastexcel.version>0.15.7</fastexcel.version>
         <jxl.version>2.6.12</jxl.version>
