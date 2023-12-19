@@ -15,11 +15,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.baeldung.Application;
+import com.baeldung.boot.BootApplication;
 import com.baeldung.boot.domain.MerchandiseEntity;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = Application.class)
+@SpringBootTest(classes = BootApplication.class)
 public class InventoryRepositoryIntegrationTest {
 
     private static final String ORIGINAL_TITLE = "Pair of Pants";
