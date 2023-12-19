@@ -1,4 +1,4 @@
-package com.baeldung.spring.kafka;
+package com.baeldung.spring.kafka.trusted.packages;
 
 import java.time.Instant;
 import java.util.concurrent.CountDownLatch;
@@ -43,7 +43,7 @@ public class TrustedPackagesLiveTest {
         SomeData someData = new SomeData("1", "active", "sent", Instant.now());
         kafkaTemplate.send(new ProducerRecord<>("sourceTopic", null, someData));
 
-        Assertions.assertTrue(latch.await(20L, TimeUnit.SECONDS));
+        Assertions.assertTrue(latch.await(10, TimeUnit.SECONDS));
     }
 
     @Component

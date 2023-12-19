@@ -1,4 +1,4 @@
-package com.baeldung.spring.kafka;
+package com.baeldung.spring.kafka.trusted.packages;
 
 import java.time.Instant;
 
