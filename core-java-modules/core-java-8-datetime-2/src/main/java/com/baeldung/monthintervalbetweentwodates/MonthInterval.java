@@ -9,12 +9,15 @@ public class MonthInterval {
         if (startDate == null || endDate == null) {
             throw new IllegalArgumentException("Both startDate and endDate must be provided");
         }
+        
         Calendar startCalendar = Calendar.getInstance();
         startCalendar.setTime(startDate);
         int startDateTotalMonths = 12 * startCalendar.get(Calendar.YEAR) + startCalendar.get(Calendar.MONTH);
+        
         Calendar endCalendar = Calendar.getInstance();
         endCalendar.setTime(endDate);
         int endDateTotalMonths = 12 * endCalendar.get(Calendar.YEAR) + endCalendar.get(Calendar.MONTH);
+        
         return endDateTotalMonths - startDateTotalMonths;
     }
 
@@ -22,16 +25,20 @@ public class MonthInterval {
         if (startDate == null || endDate == null) {
             throw new IllegalArgumentException("Both startDate and endDate must be provided");
         }
+        
         Calendar startCalendar = Calendar.getInstance();
         startCalendar.setTime(startDate);
-        int startDayOfMonth = startCalendar.get(Calendar.DAY_OF_MONTH);
+        
+        int startDateDayOfMonth = startCalendar.get(Calendar.DAY_OF_MONTH);
         int startDateTotalMonths = 12 * startCalendar.get(Calendar.YEAR) + startCalendar.get(Calendar.MONTH);
+        
         Calendar endCalendar = Calendar.getInstance();
         endCalendar.setTime(endDate);
-        int endDayOfMonth = endCalendar.get(Calendar.DAY_OF_MONTH);
+        
+        int endDateDayOfMonth = endCalendar.get(Calendar.DAY_OF_MONTH);
         int endDateTotalMonths = 12 * endCalendar.get(Calendar.YEAR) + endCalendar.get(Calendar.MONTH);
 
-        return (startDayOfMonth > endDayOfMonth) ? (endDateTotalMonths - startDateTotalMonths) - 1 : (endDateTotalMonths - startDateTotalMonths);
+        return (startDateDayOfMonth > endDateDayOfMonth) ? (endDateTotalMonths - startDateTotalMonths) - 1 : (endDateTotalMonths - startDateTotalMonths);
     }
 
 }
