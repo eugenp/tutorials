@@ -72,8 +72,8 @@ public class CompareAnyUnitTest {
         String presentString = "Apple";
         String notPresentString = "Avocado";
 
-        assertTrue(compareWithMultipleStringUsingSet(presentString, "Mango", "Papaya", "Pineapple", "Apple"));
-        assertFalse(compareWithMultipleStringUsingSet(notPresentString, "Mango", "Papaya", "Pineapple", "Apple"));
+        assertTrue(compareWithMultipleStringsUsingSet(presentString, "Mango", "Papaya", "Pineapple", "Apple"));
+        assertFalse(compareWithMultipleStringsUsingSet(notPresentString, "Mango", "Papaya", "Pineapple", "Apple"));
     }
 
     @Test
@@ -120,7 +120,7 @@ public class CompareAnyUnitTest {
         return StringUtils.equalsAnyIgnoreCase(str, strs);
     }
 
-    private boolean compareWithMultipleStringUsingSet(String str, String... strs) {
+    private boolean compareWithMultipleStringsUsingSet(String str, String... strs) {
         return Set.of(strs).contains(str);
     }
 
