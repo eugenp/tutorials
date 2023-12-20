@@ -77,6 +77,11 @@
             <artifactId>je</artifactId>
             <version>18.3.12</version>
         </dependency>
+        <dependency>
+            <groupId>org.mapdb</groupId>
+            <artifactId>mapdb</artifactId>
+            <version>${mapdb.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -89,6 +94,7 @@
     </build>
 
     <properties>
+        <mapdb.version>3.0.8</mapdb.version>
         <classgraph.version>4.8.153</classgraph.version>
         <jbpm.version>7.20.0.Final</jbpm.version>
         <crawler4j.version>4.4.0</crawler4j.version>

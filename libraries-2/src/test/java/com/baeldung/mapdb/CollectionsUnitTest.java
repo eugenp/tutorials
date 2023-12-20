@@ -1,4 +1,4 @@
-package com.baeldung.libraries.mapdb;
+package com.baeldung.mapdb;
 
 import static junit.framework.Assert.assertEquals;
 

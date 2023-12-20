@@ -1,4 +1,4 @@
-package com.baeldung.libraries.mapdb;
+package com.baeldung.mapdb;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
