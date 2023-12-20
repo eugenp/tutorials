@@ -1,6 +1,7 @@
 spring:
-  profiles:
-    active: "dev2"
+  config:
+    activate:
+      on-profile: "dev2"
   main:
     banner-mode: "off"
   jpa:
@@ -14,7 +15,9 @@ spring:
 ---
 
 spring:
-  profiles: "dev1"
+  config:
+    activate:
+      on-profile: "dev1"
   datasource:
     url: jdbc:mysql://localhost:3306/test?
     username: root
@@ -23,7 +26,9 @@ spring:
 ---
 
 spring:
-  profiles: "dev2"
+  config:
+    activate:
+      on-profile: "dev2"
   datasource:
     url: >-
          jdbc:mysql://localhost:3306/test_db?sslMode=VERIFY_CA&
