@@ -6,7 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class EventQueuesProperties {
 
     private String userCreatedByNameQueue;
-    private String userCreatedFifoQueue;
+    private String userCreatedRecordQueue;
     private String userCreatedEventTypeQueue;
 
     public String getUserCreatedByNameQueue() {
@@ -17,12 +17,12 @@ public class EventQueuesProperties {
         this.userCreatedByNameQueue = userCreatedByNameQueue;
     }
 
-    public String getUserCreatedFifoQueue() {
-        return userCreatedFifoQueue;
+    public String getUserCreatedRecordQueue() {
+        return userCreatedRecordQueue;
     }
 
-    public void setUserCreatedFifoQueue(String userCreatedFifoQueue) {
-        this.userCreatedFifoQueue = userCreatedFifoQueue;
+    public void setUserCreatedRecordQueue(String userCreatedRecordQueue) {
+        this.userCreatedRecordQueue = userCreatedRecordQueue;
     }
 
     public String getUserCreatedEventTypeQueue() {

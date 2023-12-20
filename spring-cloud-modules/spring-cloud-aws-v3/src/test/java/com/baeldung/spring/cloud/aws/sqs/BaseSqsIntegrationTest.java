@@ -1,21 +1,14 @@
 package com.baeldung.spring.cloud.aws.sqs;
 
-import java.util.Map;
+import static org.testcontainers.containers.localstack.LocalStackContainer.Service.SQS;
 
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.localstack.LocalStackContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
-
-import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
-import software.amazon.awssdk.auth.credentials.AwsCredentialsProvider;
-import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
-import software.amazon.awssdk.regions.Region;
-import software.amazon.awssdk.services.sqs.SqsAsyncClient;
-import software.amazon.awssdk.services.sqs.model.QueueAttributeName;
 
 @SpringBootTest
 @Testcontainers
@@ -24,32 +17,16 @@ public class BaseSqsIntegrationTest {
     private static final String LOCAL_STACK_VERSION = "localstack/localstack:2.3.2";
 
     @Container
-    static LocalStackContainer localstack = new LocalStackContainer(DockerImageName.parse(LOCAL_STACK_VERSION));
+    static LocalStackContainer localStack = new LocalStackContainer(DockerImageName.parse(LOCAL_STACK_VERSION));
 
-    @Configuration
-    static class SqsLiveTestConfiguration {
-
-        @Bean
-        SqsAsyncClient sqsAsyncClient(AwsCredentialsProvider credentialsProvider) {
-            return createQueue(SqsAsyncClient.builder()
-                .region(Region.of(localstack.getRegion()))
-                .credentialsProvider(credentialsProvider)
-                .endpointOverride(localstack.getEndpoint())
-                .build());
-        }
-
-        @Bean
-        AwsCredentialsProvider credentialsProvider() {
-            return StaticCredentialsProvider.create(AwsBasicCredentials.create(localstack.getAccessKey(), localstack.getSecretKey()));
-        }
-
-        // Framework doesn't support automatically creating FIFO queues at this moment.
-        private static SqsAsyncClient createQueue(SqsAsyncClient client) {
-            client.createQueue(req -> req.queueName("user_created_queue.fifo")
-                .attributes(Map.of(QueueAttributeName.FIFO_QUEUE, "true"))).join();
-            return client;
-        }
-
+    @DynamicPropertySource
+    static void overrideProperties(DynamicPropertyRegistry registry) {
+        registry.add("spring.cloud.aws.region.static", () -> localStack.getRegion());
+        registry.add("spring.cloud.aws.credentials.access-key", () -> localStack.getAccessKey());
+        registry.add("spring.cloud.aws.credentials.secret-key", () -> localStack.getSecretKey());
+        registry.add("spring.cloud.aws.sqs.endpoint", () -> localStack.getEndpointOverride(SQS)
+            .toString());
+        // ...other AWS services endpoints can be added here
     }
 
 }

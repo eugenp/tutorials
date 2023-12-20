@@ -13,4 +13,5 @@ public class SpringCloudAwsApplication {
     public static void main(String[] args) {
         SpringApplication.run(SpringCloudAwsApplication.class, args);
     }
+
 }
