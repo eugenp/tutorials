@@ -24,7 +24,9 @@ class ArticleRepositoryIntegrationTest {
     private ArticleRepository articleRepository;
 
     private static final String ENGLISH = "eng";
-    private static final Article SPORTS_ARTICLE = new Article(1L, "Sports Update", "The local team won their game last night...", ENGLISH);
+    private static final Article SPORTS_ARTICLE
+        = new Article(1L, "Sports Update",
+        "The local team won their game last night...", ENGLISH);
 
     @Autowired
     private LocaleContextHolderExtension localeContextHolderExtension;
@@ -47,7 +49,8 @@ class ArticleRepositoryIntegrationTest {
 
     @Test
     void givenArticleWhenCreateWithPositionalArgumentsPlaceholdersShouldBePersisted() {
-        articleRepository.saveWithPositionalArguments(1L, SPORTS_ARTICLE.getTitle(), SPORTS_ARTICLE.getContent(),
+        articleRepository.saveWithPositionalArguments(1L, SPORTS_ARTICLE.getTitle(),
+            SPORTS_ARTICLE.getContent(),
             SPORTS_ARTICLE.getLanguage());
         final List<Article> articles = articleRepository.findAll();
         assertEquals(1, articles.size());
@@ -55,7 +58,8 @@ class ArticleRepositoryIntegrationTest {
 
     @Test
     void givenArticleWhenCreateWithPositionalSpELArgumentsPlaceholdersShouldBePersisted() {
-        articleRepository.saveWithPositionalSpELArguments(1L, SPORTS_ARTICLE.getTitle(), SPORTS_ARTICLE.getContent(),
+        articleRepository.saveWithPositionalSpELArguments(1L, SPORTS_ARTICLE.getTitle(),
+            SPORTS_ARTICLE.getContent(),
             SPORTS_ARTICLE.getLanguage());
         final List<Article> articles = articleRepository.findAll();
         assertEquals(1, articles.size());
@@ -63,7 +67,8 @@ class ArticleRepositoryIntegrationTest {
 
     @Test
     void givenArticleWhenCreateWithPositionalSpELArgumentsPlaceholdersWithEmptyCheckShouldStoreDefaultValue() {
-        articleRepository.saveWithPositionalSpELArgumentsWithEmptyCheck(1L, SPORTS_ARTICLE.getTitle(), null, SPORTS_ARTICLE.getLanguage());
+        articleRepository.saveWithPositionalSpELArgumentsWithEmptyCheck(1L,
+            SPORTS_ARTICLE.getTitle(), null, SPORTS_ARTICLE.getLanguage());
         final List<Article> articles = articleRepository.findAll();
         assertEquals(1, articles.size());
         assertEquals("Empty Article", articles.get(0).getContent());
@@ -71,8 +76,8 @@ class ArticleRepositoryIntegrationTest {
 
     @Test
     void givenArticleWhenCreateWithPositionalSpELArgumentsPlaceholdersWithEmptyCheckShouldStoreTheOriginalContent() {
-        articleRepository.saveWithPositionalSpELArgumentsWithEmptyCheck(1L, SPORTS_ARTICLE.getTitle(), SPORTS_ARTICLE.getContent(),
-            SPORTS_ARTICLE.getLanguage());
+        articleRepository.saveWithPositionalSpELArgumentsWithEmptyCheck(1L,
+            SPORTS_ARTICLE.getTitle(), SPORTS_ARTICLE.getContent(), SPORTS_ARTICLE.getLanguage());
         final List<Article> articles = articleRepository.findAll();
         assertEquals(1, articles.size());
         assertEquals(SPORTS_ARTICLE, articles.get(0));
@@ -80,24 +85,25 @@ class ArticleRepositoryIntegrationTest {
 
     @Test
     void givenArticleWhenCreateWithNamedArgumentsPlaceholdersShouldBePersisted() {
-        articleRepository.saveWithNamedArguments(1L, SPORTS_ARTICLE.getTitle(), SPORTS_ARTICLE.getContent(), SPORTS_ARTICLE.getLanguage());
+        articleRepository.saveWithNamedArguments(1L, SPORTS_ARTICLE.getTitle(),
+            SPORTS_ARTICLE.getContent(), SPORTS_ARTICLE.getLanguage());
         final List<Article> articles = articleRepository.findAll();
         assertEquals(1, articles.size());
     }
 
     @Test
     void givenArticleWhenCreateWithNamedSpELArgumentsPlaceholdersShouldBePersisted() {
-        articleRepository.saveWithNamedSpELArguments(1L, SPORTS_ARTICLE.getTitle(), SPORTS_ARTICLE.getContent(),
-            SPORTS_ARTICLE.getLanguage());
+        articleRepository.saveWithNamedSpELArguments(1L, SPORTS_ARTICLE.getTitle(),
+            SPORTS_ARTICLE.getContent(), SPORTS_ARTICLE.getLanguage());
         final List<Article> articles = articleRepository.findAll();
         assertEquals(1, articles.size());
     }
 
-    //saveWithNamedSpELArgumentsAndLowerCaseLanguage
     @Test
     void givenArticleWhenCreateWithNamedSpELArgumentsAndLowerCaseLanguagePlaceholdersConvertLanguageToLowerCase() {
         final String language = "ENG";
-        articleRepository.saveWithNamedSpELArgumentsAndLowerCaseLanguage(1L, SPORTS_ARTICLE.getTitle(), SPORTS_ARTICLE.getContent(),
+        articleRepository.saveWithNamedSpELArgumentsAndLowerCaseLanguage(1L,
+            SPORTS_ARTICLE.getTitle(), SPORTS_ARTICLE.getContent(),
             language);
         final List<Article> articles = articleRepository.findAll();
         assertEquals(1, articles.size());
@@ -117,7 +123,6 @@ class ArticleRepositoryIntegrationTest {
         final List<Article> articles = articleRepository.findAll();
         assertEquals(1, articles.size());
     }
-
 
     @Test
     void givenInheritedQueryWhenSearchForArticlesWillReturnThem() {
