@@ -905,7 +905,7 @@
                 <module>vertx-modules</module>
                 <module>web-modules</module>
                 <module>webrtc</module>
-                <!--<module>xml-2</module>--><!-- failing after upgrading to jdk17-->
+                <module>xml-2</module>
                 <module>xml</module>
                 <module>xstream</module>
             </modules>
@@ -1154,7 +1154,7 @@
                 <module>vertx-modules</module>
                 <module>web-modules</module>
                 <module>webrtc</module>
-                <!--<module>xml-2</module>--><!-- failing after upgrading to jdk17-->
+                <module>xml-2</module>
                 <module>xml</module>
                 <module>xstream</module>
             </modules>
