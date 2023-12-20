@@ -2,10 +2,9 @@ package com.baeldung.validation.listvalidation.constraint;
 
 import java.util.List;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
-
 import com.baeldung.validation.listvalidation.model.Movie;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
 public class MaxSizeConstraintValidator implements ConstraintValidator<MaxSizeConstraint, List<Movie>> {
 
