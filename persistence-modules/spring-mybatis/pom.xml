@@ -19,10 +19,12 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
+            <version>${org.springframework.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
+            <version>${org.springframework.version}</version>
         </dependency>
         <!-- SpringBoot -->
         <dependency>
@@ -39,6 +41,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
+            <version>${org.springframework.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mybatis</groupId>
@@ -58,6 +61,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
+            <version>${org.springframework.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -73,6 +77,8 @@
     </build>
 
     <properties>
+        <!-- Spring -->
+        <org.springframework.version>6.0.13</org.springframework.version>
         <!-- persistence -->
         <spring-mybatis.version>3.0.3</spring-mybatis.version>
         <mybatis.version>3.5.2</mybatis.version>
