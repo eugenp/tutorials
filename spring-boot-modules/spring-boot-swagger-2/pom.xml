@@ -53,14 +53,9 @@
                             <goal>resolve</goal>
                         </goals>
                         <configuration>
-                            <outputFileName>openapi</outputFileName>
                             <outputPath>${project.build.directory}/generatedtest</outputPath>
                             <outputFormat>JSONANDYAML</outputFormat>
-                            <resourcePackages>
-                                <package>test.petstore</package>
-                            </resourcePackages>
                             <configurationFilePath>${project.basedir}/src/main/resources/static/api_3.yaml</configurationFilePath>
-                            <prettyPrint>true</prettyPrint>
                         </configuration>
                     </execution>
                     <execution>
@@ -69,14 +64,9 @@
                             <goal>resolve</goal>
                         </goals>
                         <configuration>
-                            <outputFileName>openapi</outputFileName>
                             <outputPath>${project.build.directory}/generatedtest</outputPath>
                             <outputFormat>JSONANDYAML</outputFormat>
-                            <resourcePackages>
-                                <package>test.petstore</package>
-                            </resourcePackages>
                             <configurationFilePath>${project.basedir}/src/main/resources/static/event.yaml</configurationFilePath>
-                            <prettyPrint>true</prettyPrint>
                         </configuration>
                     </execution>
                 </executions>
