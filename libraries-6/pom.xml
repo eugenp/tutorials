@@ -43,12 +43,6 @@
             <version>${javapoet.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.mockftpserver</groupId>
-            <artifactId>MockFtpServer</artifactId>
-            <version>${mockftpserver.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
@@ -62,11 +56,6 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-net</groupId>
-            <artifactId>commons-net</artifactId>
-            <version>${commons-net.version}</version>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>
@@ -94,11 +83,6 @@
             <groupId>com.googlecode.libphonenumber</groupId>
             <artifactId>libphonenumber</artifactId>
             <version>${libphonenumber.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.modelmapper</groupId>
-            <artifactId>modelmapper</artifactId>
-            <version>${org.modelmapper.version}</version>
         </dependency>
         <dependency>
             <groupId>org.agrona</groupId>
@@ -190,15 +174,12 @@
 
     <properties>
         <javapoet.version>1.10.0</javapoet.version>
-        <mockftpserver.version>2.7.1</mockftpserver.version>
         <functionaljava.version>4.8.1</functionaljava.version>
         <resilience4j.version>2.1.0</resilience4j.version>
-        <commons-net.version>3.6</commons-net.version>
         <renjin.version>3.5-beta72</renjin.version>
         <rcaller.version>3.0</rcaller.version>
         <rserve.version>1.8.1</rserve.version>
         <libphonenumber.version>8.12.9</libphonenumber.version>
-        <org.modelmapper.version>3.2.0</org.modelmapper.version>
         <agrona.version>1.17.1</agrona.version>
         <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
         <sbe-tool.version>1.27.0</sbe-tool.version>
