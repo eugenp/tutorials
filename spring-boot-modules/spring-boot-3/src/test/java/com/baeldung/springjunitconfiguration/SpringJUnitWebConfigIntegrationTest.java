@@ -10,7 +10,7 @@ import static org.junit.Assert.assertNotNull;
 
 /**
  * @SpringJUnitWebConfig(SpringJUnitWebConfigTest.Config.class) is equivalent to:
- * 
+ *
  * @ExtendWith(SpringExtension.class)
  * @WebAppConfiguration
  * @ContextConfiguration(classes = SpringJUnitWebConfigTest.Config.class )
@@ -19,16 +19,16 @@ import static org.junit.Assert.assertNotNull;
 @SpringJUnitWebConfig(SpringJUnitWebConfigIntegrationTest.Config.class)
 public class SpringJUnitWebConfigIntegrationTest {
 
-    @Configuration
-    static class Config {
-    }
-
     @Autowired
     private WebApplicationContext webAppContext;
 
     @Test
     void givenWebAppContext_WhenInjected_ThenItShouldNotBeNull() {
         assertNotNull(webAppContext);
+    }
+
+    @Configuration
+    static class Config {
     }
 
 }
