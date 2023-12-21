@@ -22,9 +22,10 @@ public class ConsumerSSEApplication {
     
     @Bean
     public SecurityWebFilterChain sseConsumerSpringSecurityFilterChain(ServerHttpSecurity http) {
-        http.authorizeExchange()
-            .anyExchange()
-            .permitAll();
+        http.authorizeExchange(auth -> auth
+                .anyExchange().permitAll()
+            )
+            .csrf(ServerHttpSecurity.CsrfSpec::disable);
         return http.build();
     }
 

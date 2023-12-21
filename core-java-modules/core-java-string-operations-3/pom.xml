@@ -72,7 +72,7 @@
         <spring-core.version>5.3.9</spring-core.version>
         <maven-artifact.version>3.6.3</maven-artifact.version>
         <gradle-core.version>6.1.1</gradle-core.version>
-        <jackson-core.version>2.11.1</jackson-core.version>
+        <jackson-core.version>2.16.0</jackson-core.version>
         <semver4j.version>3.1.0</semver4j.version>
     </properties>
 

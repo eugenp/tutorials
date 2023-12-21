@@ -118,7 +118,7 @@
         <retrofit.version>2.3.0</retrofit.version>
         <spring.webflux.version>5.1.9.RELEASE</spring.webflux.version>
         <reactive.stream.version>1.0.3</reactive.stream.version>
-        <reactor.version>3.2.12.RELEASE</reactor.version>
+        <reactor.version>3.6.0</reactor.version>
         <jmockit.version>1.49</jmockit.version>
     </properties>
 

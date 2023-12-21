@@ -2,13 +2,15 @@ package com.baeldung.mappingexception;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.notNullValue;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertThrows;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
 
+import com.baeldung.exceptions.EmptyObject;
+import com.baeldung.exceptions.Person;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import org.junit.Test;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
@@ -71,6 +73,20 @@ public class JacksonMappingExceptionUnitTest {
 
         assertEquals("Netherlands", country.getName());
         assertEquals(Arrays.asList("Amsterdam", "Tamassint"), country.getCities());
+    }
+
+    @Test
+    public void givenEmptyBean_whenSerializing_thenCorrect() throws JsonProcessingException {
+        // Create an ObjectMapper
+        ObjectMapper objectMapper = new ObjectMapper();
+        // Disable fail_on_empty_beans during serialization
+        objectMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
+        // Create an empty object
+        EmptyObject emptyObject = new EmptyObject();
+        // Serialize the empty object
+        String json = objectMapper.writeValueAsString(emptyObject);
+        // Verify that serialization is successful
+        assertEquals("{}", json);
     }
 
 }

@@ -42,7 +42,7 @@ public class StaticJWTController extends BaseController {
     public JwtResponse parser(@RequestParam String jwt) throws UnsupportedEncodingException {
 
         Jws<Claims> jws = Jwts.parser()
-            .setSigningKeyResolver(secretService.getSigningKeyResolver())
+            .setSigningKeyResolver(secretService.getSigningKeyResolver()).build()
             .parseClaimsJws(jwt);
 
         return new JwtResponse(jws);
@@ -53,7 +53,7 @@ public class StaticJWTController extends BaseController {
         Jws<Claims> jws = Jwts.parser()
             .requireIssuer("Stormpath")
             .require("hasMotorcycle", true)
-            .setSigningKeyResolver(secretService.getSigningKeyResolver())
+            .setSigningKeyResolver(secretService.getSigningKeyResolver()).build()
             .parseClaimsJws(jwt);
 
         return new JwtResponse(jws);

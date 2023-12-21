@@ -30,7 +30,7 @@ public class AuthenticationService {
         if (token != null) {
             String user = Jwts.parser()
               .setSigningKey(SIGNINGKEY)
-              .parseClaimsJws(token.replace(PREFIX, ""))
+              .build().parseClaimsJws(token.replace(PREFIX, ""))
               .getBody()
               .getSubject();
             if (user != null) {
@@ -48,9 +48,11 @@ public class AuthenticationService {
         }
         String tenant = Jwts.parser()
           .setSigningKey(SIGNINGKEY)
-          .parseClaimsJws(token.replace(PREFIX, ""))
+          .build().parseClaimsJws(token.replace(PREFIX, ""))
           .getBody()
-          .getAudience();
+          .getAudience()
+            .iterator()
+            .next();
         return tenant;
     }
 }
