@@ -10,7 +10,7 @@ import static org.junit.Assert.assertNotNull;
 
 /**
  * @SpringJUnitConfig(SpringJUnitConfigTest.Config.class) is equivalent to:
- * 
+ *
  * @ExtendWith(SpringExtension.class)
  * @ContextConfiguration(classes = SpringJUnitConfigTest.Config.class )
  *
@@ -18,16 +18,16 @@ import static org.junit.Assert.assertNotNull;
 @SpringJUnitConfig(SpringJUnitConfigIntegrationTest.Config.class)
 public class SpringJUnitConfigIntegrationTest {
 
-    @Configuration
-    static class Config {
-    }
-
     @Autowired
     private ApplicationContext applicationContext;
 
     @Test
     void givenAppContext_WhenInjected_ThenItShouldNotBeNull() {
         assertNotNull(applicationContext);
+    }
+
+    @Configuration
+    static class Config {
     }
 
 }
