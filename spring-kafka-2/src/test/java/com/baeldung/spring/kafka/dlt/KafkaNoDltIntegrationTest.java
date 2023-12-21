@@ -82,5 +82,6 @@ public class KafkaNoDltIntegrationTest {
 
         assertThat(mainTopicCountDownLatch.await(5, TimeUnit.SECONDS)).isTrue();
         assertThat(dlTTopicCountDownLatch.await(5, TimeUnit.SECONDS)).isFalse();
+        assertThat(dlTTopicCountDownLatch.getCount()).isEqualTo(1);
     }
 }
