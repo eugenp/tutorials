@@ -83,5 +83,6 @@ public class KafkaDltRetryOnErrorIntegrationTest {
 
         assertThat(mainTopicCountDownLatch.await(5, TimeUnit.SECONDS)).isTrue();
         assertThat(dlTTopicCountDownLatch.await(5, TimeUnit.SECONDS)).isTrue();
+        assertThat(dlTTopicCountDownLatch.getCount()).isEqualTo(0);
     }
 }
