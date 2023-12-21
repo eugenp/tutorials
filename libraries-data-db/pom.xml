@@ -305,6 +305,7 @@
         <debezium.version>2.1.3.Final</debezium.version>
         <flexy-pool.version>2.2.3</flexy-pool.version>
         <testcontainers-version>1.17.6</testcontainers-version>
+        <mapdb.version>3.0.8</mapdb.version>
     </properties>
 
 </project>

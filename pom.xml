@@ -781,6 +781,7 @@
                 <module>libraries-cli</module>
                 <module>libraries-concurrency</module>
                 <module>libraries-data-2</module>
+                <module>libraries-data-3</module>
                 <module>libraries-data-db</module>
                 <module>libraries-data-io</module>
                 <module>libraries-data</module>
@@ -797,6 +798,7 @@
                 <module>libraries-server</module>
                 <module>libraries-stream</module>
                 <module>libraries-testing</module>
+                <module>libraries-testing-2</module>
                 <module>libraries-transform</module>
                 <module>libraries</module> <!-- very long running -->
                 <module>lightrun</module>
@@ -1032,6 +1034,7 @@
                 <module>libraries-cli</module>
                 <module>libraries-concurrency</module>
                 <module>libraries-data-2</module>
+                <module>libraries-data-3</module>
                 <module>libraries-data-db</module>
                 <module>libraries-data-io</module>
                 <module>libraries-data</module>
@@ -1048,6 +1051,7 @@
                 <module>libraries-server</module>
                 <module>libraries-stream</module>
                 <module>libraries-testing</module>
+                <module>libraries-testing-2</module>
                 <module>libraries-transform</module>
                 <module>libraries</module> <!-- very long running -->
                 <module>lightrun</module>

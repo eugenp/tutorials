@@ -18,11 +18,6 @@
             <version>${jdeferred.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.eclipse.collections</groupId>
-            <artifactId>eclipse-collections</artifactId>
-            <version>${eclipse-collections.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.olap4j</groupId>
             <artifactId>olap4j</artifactId>
             <version>${olap4j.version}</version>
@@ -38,11 +33,6 @@
             <version>${noexception.version}</version>
         </dependency>
         <dependency>
-            <groupId>rome</groupId>
-            <artifactId>rome</artifactId>
-            <version>${rome.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
             <version>${spring.version}</version>
@@ -56,11 +46,6 @@
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
             <version>${javax.servlet.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.pcollections</groupId>
-            <artifactId>pcollections</artifactId>
-            <version>${pcollections.version}</version>
         </dependency>
         <dependency>
             <groupId>org.awaitility</groupId>
@@ -113,11 +98,6 @@
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
         </dependency>
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>${commons-io.version}</version>
-        </dependency>
     </dependencies>
 
     <properties>
@@ -126,11 +106,9 @@
         <jdeferred.version>1.2.6</jdeferred.version>
         <noexception.version>1.1.0</noexception.version>
         <mbassador.version>1.3.1</mbassador.version>
-        <rome.version>1.0</rome.version>
         <spring.version>4.3.8.RELEASE</spring.version>
         <javax.servlet.version>2.5</javax.servlet.version>
         <javax.jdo.version>3.2.0-m7</javax.jdo.version>
-        <pcollections.version>2.1.2</pcollections.version>
         <awaitility.version>3.0.0</awaitility.version>
         <streamex.version>0.6.5</streamex.version>
         <javax.el.version>3.0.0</javax.el.version>
@@ -138,7 +116,6 @@
         <olap4j.version>1.2.0</olap4j.version>
         <javafx.version>19</javafx.version>
         <spoon-core.version>10.3.0</spoon-core.version>
-        <eclipse-collections.version>8.2.0</eclipse-collections.version>
         <vavr.version>0.9.0</vavr.version>
     </properties>
 

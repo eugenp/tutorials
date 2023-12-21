@@ -19,17 +19,6 @@
             <version>${lombok.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.cactoos</groupId>
-            <artifactId>cactoos</artifactId>
-            <version>${cactoos.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.cache2k</groupId>
-            <artifactId>cache2k-base-bom</artifactId>
-            <version>${cache2k.version}</version>
-            <type>pom</type>
-        </dependency>
-        <dependency>
             <groupId>com.jcabi</groupId>
             <artifactId>jcabi-aspects</artifactId>
             <version>${jcabi-aspects.version}</version>
@@ -39,21 +28,6 @@
             <artifactId>aspectjrt</artifactId>
             <version>${aspectjrt.version}</version>
             <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.takes</groupId>
-            <artifactId>takes</artifactId>
-            <version>${takes.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpcore</artifactId>
-            <version>${httpcore.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>${httpclient.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.velocity</groupId>
@@ -159,57 +133,13 @@
         </resources>
     </build>
 
-    <profiles>
-        <profile>
-            <id>reload</id>
-            <build>
-                <resources>
-                    <resource>
-                        <directory>src/main/resources</directory>
-                        <filtering>true</filtering>
-                    </resource>
-                    <resource>
-                        <directory>src/main/webapp</directory>
-                        <filtering>true</filtering>
-                    </resource>
-                </resources>
-                <plugins>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>exec-maven-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>start-server</id>
-                                <phase>pre-integration-test</phase>
-                                <goals>
-                                    <goal>java</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <mainClass>com.baeldung.takes.TakesApp</mainClass>
-                            <cleanupDaemonThreads>false</cleanupDaemonThreads>
-                            <arguments>
-                                <argument>--port=${port}</argument>
-                            </arguments>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 
     <properties>
-        <cactoos.version>0.43</cactoos.version>
-        <cache2k.version>1.2.3.Final</cache2k.version>
         <jcabi-aspects.version>0.22.6</jcabi-aspects.version>
         <aspectjrt.version>1.9.20.1</aspectjrt.version>
         <jcabi-maven-plugin.version>0.14.1</jcabi-maven-plugin.version>
         <aspectjtools.version>1.9.20.1</aspectjtools.version>
         <aspectjweaver.version>1.9.20.1</aspectjweaver.version>
-        <takes.version>1.19</takes.version>
-        <httpcore.version>4.4.13</httpcore.version>
-        <httpclient.version>4.5.12</httpclient.version>
         <velocity-engine-core.version>2.2</velocity-engine-core.version>
         <nullaway.version>0.3.0</nullaway.version>
         <plexus-compiler.version>2.8</plexus-compiler.version>
