@@ -905,7 +905,7 @@
                 <!--<module>xml-2</module>--><!-- failing after upgrading to jdk17-->
                 <module>xml</module>
                 <module>xstream</module>
-				<module>jenkins-modules</module>
+                <module>jenkins-modules</module>
             </modules>
 
             <properties>
@@ -1154,7 +1154,7 @@
                 <!--<module>xml-2</module>--><!-- failing after upgrading to jdk17-->
                 <module>xml</module>
                 <module>xstream</module>
-				<module>jenkins-modules</module>
+                <module>jenkins-modules</module>
             </modules>
 
             <properties>
