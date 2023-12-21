@@ -159,7 +159,7 @@
     </profiles>
 
     <properties>
-        <maven-javadoc-plugin.version>3.0.0-M1</maven-javadoc-plugin.version>
+        <maven-javadoc-plugin.version>3.6.2</maven-javadoc-plugin.version>
         <source.version>1.8</source.version>
         <target.version>1.8</target.version>
         <ascii.version>0.3.2</ascii.version>

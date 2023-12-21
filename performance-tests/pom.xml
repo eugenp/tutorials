@@ -164,7 +164,7 @@
         <shade.plugin.version>3.2.4</shade.plugin.version>
         <install.version>3.0.0-M1</install.version>
         <jar.plugin.version>3.2.0</jar.plugin.version>
-        <javadoc.plugin.version>3.2.0</javadoc.plugin.version>
+        <javadoc.plugin.version>3.6.2</javadoc.plugin.version>
         <resources.plugin.version>3.1.0</resources.plugin.version>
         <site.plugin.version>3.9.1</site.plugin.version>
         <source.plugin.version>3.2.1</source.plugin.version>

@@ -2,7 +2,7 @@ package com.baeldung.wait_synchronization;
 
 public class ConditionChecker {
 
-    private volatile Boolean jobIsDone;
+    private volatile boolean jobIsDone;
     private final Object lock = new Object();
 
     public void ensureCondition() {

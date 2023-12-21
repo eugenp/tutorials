@@ -17,7 +17,7 @@
 
     <properties>
         <shardingsphere.version>5.3.2</shardingsphere.version>
-        <mysql.version>8.0.33</mysql.version>
+        <mysql.version>8.2.0</mysql.version>
     </properties>
 
     <dependencyManagement>
@@ -43,8 +43,8 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
             <version>${mysql.version}</version>
         </dependency>
         <dependency>

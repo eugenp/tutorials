@@ -8,11 +8,11 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
-import com.baeldung.reactive.Spring5ReactiveApplication;
+import com.baeldung.reactive.Spring6ReactiveApplication;
 import com.baeldung.reactive.controller.PathPatternController;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = Spring5ReactiveApplication.class)
+@SpringBootTest(classes = Spring6ReactiveApplication.class)
 @WithMockUser
 public class PathPatternsUsingHandlerMethodIntegrationTest {
 

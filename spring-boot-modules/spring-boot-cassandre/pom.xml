@@ -40,7 +40,6 @@
     </dependencies>
 
     <properties>
-        <java.version>11</java.version>
         <cassandre.trading.bot.version>4.2.1</cassandre.trading.bot.version>
         <xchange-kucoin.version>5.0.7</xchange-kucoin.version>
         <hsqldb.version>2.5.1</hsqldb.version>

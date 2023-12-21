@@ -40,7 +40,7 @@ public class Xml2CsvExample {
     protected static void convertXml2CsvXslt(String xslPath, String xmlPath, String csvPath) throws IOException, TransformerException {
         StreamSource styleSource = new StreamSource(new File(xslPath));
         Transformer transformer = TransformerFactory.newInstance()
-            .newTransformer(styleSource);
+          .newTransformer(styleSource);
         Source source = new StreamSource(new File(xmlPath));
         Result outputTarget = new StreamResult(new File(csvPath));
         transformer.transform(source, outputTarget);
@@ -68,26 +68,26 @@ public class Xml2CsvExample {
                     if ("Bookstore".equals(currentElement)) {
                         bookstoreInfo.setLength(0);
                         bookstoreInfo.append(reader.getAttributeValue(null, "id"))
-                            .append(",");
+                          .append(",");
                     }
                     if ("Book".equals(currentElement)) {
                         csvRow.append(bookstoreInfo)
-                            .append(reader.getAttributeValue(null, "id"))
-                            .append(",")
-                            .append(reader.getAttributeValue(null, "category"))
-                            .append(",");
+                          .append(reader.getAttributeValue(null, "id"))
+                          .append(",")
+                          .append(reader.getAttributeValue(null, "category"))
+                          .append(",");
                     }
                     if ("Author".equals(currentElement)) {
                         csvRow.append(reader.getAttributeValue(null, "id"))
-                            .append(",");
+                          .append(",");
                     }
                     break;
 
                 case XMLStreamConstants.CHARACTERS:
                     if (!reader.isWhiteSpace()) {
                         csvRow.append(reader.getText()
-                                .trim())
-                            .append(",");
+                            .trim())
+                          .append(",");
                     }
                     break;
 

@@ -43,7 +43,6 @@
     </build>
 
     <properties>
-        <java.version>17</java.version>
         <spring-pulsar-spring-boot-starter.version>0.2.0</spring-pulsar-spring-boot-starter.version>
     </properties>
 

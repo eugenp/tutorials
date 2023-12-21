@@ -73,7 +73,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>${junit4.version}</version>
+            <version>${junit.version}</version>
             <type>jar</type>
             <scope>test</scope>
             <optional>true</optional>
@@ -143,7 +143,6 @@
         <RestExpress.version>0.11.3</RestExpress.version>
         <Syntaxe.version>1.0</Syntaxe.version>
         <repoexpress-mongodb.version>0.4.8</repoexpress-mongodb.version>
-        <junit4.version>4.11</junit4.version>
         <maven-shade-plugin.version>2.4.1</maven-shade-plugin.version>
         <versions-maven-plugin.version>2.0</versions-maven-plugin.version>
     </properties>

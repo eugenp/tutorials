@@ -2,18 +2,19 @@ package com.baeldung.spring.jinq.entities;
 
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity(name = "MANUFACTURER")
 public class Manufacturer {
 
+    @Id
     private String name;
     private String city;
+    @OneToMany(mappedBy = "model")
     private List<Car> cars;
 
-    @Id
     public String getName() {
         return name;
     }
@@ -30,7 +31,6 @@ public class Manufacturer {
         this.city = city;
     }
 
-    @OneToMany(mappedBy = "model")
     public List<Car> getCars() {
         return cars;
     }
@@ -38,5 +38,4 @@ public class Manufacturer {
     public void setCars(List<Car> cars) {
         this.cars = cars;
     }
-
 }

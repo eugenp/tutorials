@@ -9,9 +9,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-2</relativePath>
+        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -33,8 +33,8 @@
             <optional>true</optional>
         </dependency>
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
         </dependency>
     </dependencies>
 
@@ -43,7 +43,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>2.1.5.RELEASE</version>
                 <executions>
                     <execution>
                         <goals>
@@ -56,7 +55,7 @@
     </build>
 
     <properties>
-        <mysql-connector-java.version>8.0.23</mysql-connector-java.version>
+        <mysql-connector-j.version>8.2.0</mysql-connector-j.version>
     </properties>
 
 </project>

@@ -33,6 +33,17 @@
             <artifactId>commons-text</artifactId>
             <version>${apache-commons-text.version}</version>
         </dependency>
+        <dependency>
+            <groupId>commons-net</groupId>
+            <artifactId>commons-net</artifactId>
+            <version>${commons-net.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mockftpserver</groupId>
+            <artifactId>MockFtpServer</artifactId>
+            <version>${mockftpserver.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -40,6 +51,8 @@
         <ant.version>1.10.13</ant.version>
         <commons-vfs2.version>2.9.0</commons-vfs2.version>
         <apache-commons-text.version>1.10.0</apache-commons-text.version>
+        <commons-net.version>3.6</commons-net.version>
+        <mockftpserver.version>2.7.1</mockftpserver.version>
     </properties>
 
 </project>
