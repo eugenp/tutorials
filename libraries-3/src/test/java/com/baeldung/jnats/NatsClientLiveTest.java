@@ -1,15 +1,16 @@
 package com.baeldung.jnats;
 
-import io.nats.client.Message;
-import io.nats.client.SyncSubscription;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import org.junit.Test;
+
+import io.nats.client.Message;
+import io.nats.client.SyncSubscription;
 
 public class NatsClientLiveTest {
 

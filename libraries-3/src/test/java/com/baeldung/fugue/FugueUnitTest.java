@@ -1,14 +1,23 @@
 package com.baeldung.fugue;
 
-import io.atlassian.fugue.*;
-import org.junit.Assert;
-import org.junit.Test;
+import static io.atlassian.fugue.Unit.Unit;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
-import java.util.*;
+import io.atlassian.fugue.*;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 import java.util.function.Function;
 
-import static org.junit.Assert.*;
-import static io.atlassian.fugue.Unit.Unit;
+import org.junit.Assert;
+import org.junit.Test;
 
 public class FugueUnitTest {
 
@@ -41,7 +50,8 @@ public class FugueUnitTest {
 
     @Test
     public void whenNullOption_thenSome() {
-        Option<String> some = Option.some("value") .map(String::toUpperCase);
+        Option<String> some = Option.some("value")
+            .map(String::toUpperCase);
 
         assertEquals("VALUE", some.get());
 
@@ -49,26 +59,31 @@ public class FugueUnitTest {
 
         assertNull(some.get());
         some.forEach(Assert::assertNull);
-        for(Object value : some) {
+        for (Object value : some) {
             assertNull(value);
         }
-        assertEquals(1, some.toStream().count());
+        assertEquals(1, some.toStream()
+            .count());
 
-        Option<Object> none = Option.some("value").flatMap(x -> Option.none());
+        Option<Object> none = Option.some("value")
+            .flatMap(x -> Option.none());
 
         assertFalse(none.isDefined());
 
-        none = Option.some("value").flatMap(Options.nullSafe(x -> null));
+        none = Option.some("value")
+            .flatMap(Options.nullSafe(x -> null));
 
         assertFalse(none.isDefined());
     }
 
     @Test
     public void whenNone_thenEmptyOptional() {
-        Optional<Object> optional = Option.none().toOptional();
+        Optional<Object> optional = Option.none()
+            .toOptional();
 
         assertFalse(optional.isPresent());
-        assertTrue(Option.fromOptional(optional).isEmpty());
+        assertTrue(Option.fromOptional(optional)
+            .isEmpty());
     }
 
     @Test
@@ -83,8 +98,12 @@ public class FugueUnitTest {
 
     @Test
     public void whenOption_thenStream() {
-        assertEquals(0, Option.none().toStream().count());
-        assertEquals(1, Option.some("value").toStream().count());
+        assertEquals(0, Option.none()
+            .toStream()
+            .count());
+        assertEquals(1, Option.some("value")
+            .toStream()
+            .count());
     }
 
     @Test
@@ -92,9 +111,12 @@ public class FugueUnitTest {
         Function<Integer, Integer> f = (Integer x) -> x > 0 ? x + 1 : null;
         Function<Option<Integer>, Option<Integer>> lifted = Options.lift(f);
 
-        assertEquals(2, (long) lifted.apply(Option.some(1)).get());
-        assertTrue(lifted.apply(Option.none()).isEmpty());
-        assertEquals(null, lifted.apply(Option.some(0)).get());
+        assertEquals(2, (long) lifted.apply(Option.some(1))
+            .get());
+        assertTrue(lifted.apply(Option.none())
+            .isEmpty());
+        assertEquals(null, lifted.apply(Option.some(0))
+            .get());
     }
 
     @Test
@@ -102,23 +124,27 @@ public class FugueUnitTest {
     public void whenLeft_thenEither() {
         Either<Integer, String> right = Either.right("value");
         Either<Integer, String> left = Either.left(-1);
-        if(right.isLeft()) {
+        if (right.isLeft()) {
             fail();
         }
-        if(left.isRight()) {
+        if (left.isRight()) {
             fail();
         }
 
-        String s = right.map(String::toUpperCase).getOrNull();
+        String s = right.map(String::toUpperCase)
+            .getOrNull();
 
         assertEquals("VALUE", s);
 
-        Either<String, String> either = right.left().map(x -> decodeSQLErrorCode(x));
+        Either<String, String> either = right.left()
+            .map(x -> decodeSQLErrorCode(x));
 
         assertTrue(either.isRight());
-        assertEquals("value", either.right().get());
+        assertEquals("value", either.right()
+            .get());
 
-        either.right().forEach(x -> assertEquals("value", x));
+        either.right()
+            .forEach(x -> assertEquals("value", x));
     }
 
     private static String decodeSQLErrorCode(Integer x) {
@@ -127,22 +153,26 @@ public class FugueUnitTest {
 
     @Test
     public void whenTryIsFailure_thenIsFailureReturnsTrue() {
-        assertTrue(Try.failure(new Exception("Fail!")).isFailure());
+        assertTrue(Try.failure(new Exception("Fail!"))
+            .isFailure());
     }
 
     @Test
     public void whenTryIsSuccess_thenIsSuccessReturnsTrue() {
-        assertTrue(Try.successful("OK").isSuccess());
+        assertTrue(Try.successful("OK")
+            .isSuccess());
     }
 
     @Test
     public void givenFunctionReturning_whenCheckedOf_thenSuccess() {
-        assertTrue(Checked.of(() -> "ok").isSuccess());
+        assertTrue(Checked.of(() -> "ok")
+            .isSuccess());
     }
 
     @Test
     public void givenFunctionThrowing_whenCheckedOf_thenFailure() {
-        assertTrue(Checked.of(() -> { throw new Exception("ko"); }).isFailure());
+        assertTrue(Checked.of(() -> {throw new Exception("ko");})
+            .isFailure());
     }
 
     @Test
@@ -151,34 +181,36 @@ public class FugueUnitTest {
             throw new Exception(x);
         };
 
-        assertTrue(Checked.lift(throwException).apply("ko").isFailure());
+        assertTrue(Checked.lift(throwException)
+            .apply("ko")
+            .isFailure());
     }
 
     @Test
     public void whenRecover_thenSuccessfulTry() {
-        Try<Object> recover = Try.
-                failure(new Exception("boo!")).
-                recover((Exception e) -> e.getMessage() + " recovered.");
+        Try<Object> recover = Try.failure(new Exception("boo!"))
+            .recover((Exception e) -> e.getMessage() + " recovered.");
 
         assertTrue(recover.isSuccess());
         assertEquals("boo! recovered.", recover.getOrElse(() -> null));
 
-        recover = Try.
-                failure(new Exception("boo!")).
-                recoverWith((Exception e) -> Try.successful("recovered again!"));
+        recover = Try.failure(new Exception("boo!"))
+            .recoverWith((Exception e) -> Try.successful("recovered again!"));
 
         assertTrue(recover.isSuccess());
         assertEquals("recovered again!", recover.getOrElse(() -> null));
     }
 
-
     @Test
     public void whenFailure_thenMapNotCalled() {
-        Try<Object> recover = Try.failure(new Exception("boo!")).map(x -> {
-            fail("Oh, no!");
-            return null;
-        }).recover(Function.identity());
-        Exception exception = (Exception) recover.toOption().get();
+        Try<Object> recover = Try.failure(new Exception("boo!"))
+            .map(x -> {
+                fail("Oh, no!");
+                return null;
+            })
+            .recover(Function.identity());
+        Exception exception = (Exception) recover.toOption()
+            .get();
 
         assertTrue(recover.isSuccess());
         assertEquals("boo!", exception.getMessage());
@@ -208,9 +240,10 @@ public class FugueUnitTest {
 
     @Test
     public void whenRecoverThrows_thenFailure() {
-        Try<Object> failure = Try.failure(new Exception("boo!")).recover(x -> {
-            throw new RuntimeException(x);
-        });
+        Try<Object> failure = Try.failure(new Exception("boo!"))
+            .recover(x -> {
+                throw new RuntimeException(x);
+            });
 
         assertTrue(failure.isFailure());
     }
