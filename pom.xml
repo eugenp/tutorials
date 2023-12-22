@@ -739,7 +739,7 @@
                 <module>jaxb</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
-                <!--<module>jhipster-6</module>--> <!-- failing after upgrading to jdk17-->
+                <module>jhipster-6</module>
                 <module>jmh</module>
                 <module>json-modules</module>
                 <module>jsoup</module>
@@ -979,7 +979,7 @@
                 <module>jaxb</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
-                <!--<module>jhipster-6</module>--> <!-- failing after upgrading to jdk17-->
+                <module>jhipster-6</module>
                 <module>jmh</module>
                 <module>json-modules</module>
                 <module>jsoup</module>

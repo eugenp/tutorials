@@ -12,8 +12,6 @@ import org.mapstruct.*;
 @Mapper(componentModel = "spring", uses = {})
 public interface BookMapper extends EntityMapper<BookDTO, Book> {
 
-
-
     default Book fromId(Long id) {
         if (id == null) {
             return null;
