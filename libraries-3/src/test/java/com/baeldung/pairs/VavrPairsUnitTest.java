@@ -1,8 +1,9 @@
 package com.baeldung.pairs;
 
-import io.vavr.Tuple2;
 import org.junit.Assert;
 import org.junit.Test;
+
+import io.vavr.Tuple2;
 
 public class VavrPairsUnitTest {
     @Test

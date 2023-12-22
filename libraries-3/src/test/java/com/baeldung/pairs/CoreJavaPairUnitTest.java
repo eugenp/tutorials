@@ -1,8 +1,9 @@
 package com.baeldung.pairs;
 
-import javafx.util.Pair;
 import org.junit.Assert;
 import org.junit.Test;
+
+import javafx.util.Pair;
 
 public class CoreJavaPairUnitTest {
     @Test

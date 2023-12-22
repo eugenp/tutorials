@@ -17,4 +17,5 @@ Remember, for advanced libraries like [Jackson](/jackson) and [JUnit](/testing-m
 - [Introduction to jOOL](https://www.baeldung.com/jool)
 - [Introduction to Atlassian Fugue](https://www.baeldung.com/java-fugue)
 - [Publish and Receive Messages with Nats Java Client](https://www.baeldung.com/nats-java-client)
+- [Using Pairs in Java](https://www.baeldung.com/java-pairs)
 - More articles [[<-- prev]](../libraries-2) [[next -->]](../libraries-4)
