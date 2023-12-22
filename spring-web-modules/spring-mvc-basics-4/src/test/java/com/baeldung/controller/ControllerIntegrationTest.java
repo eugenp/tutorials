@@ -40,7 +40,7 @@ public class ControllerIntegrationTest {
     @Test
     public void testTestController() throws Exception {
 
-        ModelAndView mv = this.mockMvc.perform(MockMvcRequestBuilders.get("/test/")).andReturn().getModelAndView();
+        ModelAndView mv = this.mockMvc.perform(MockMvcRequestBuilders.get("/test")).andReturn().getModelAndView();
 
         // validate modal data
         Assert.assertSame(mv.getModelMap().get("data").toString(), "Welcome home man");
