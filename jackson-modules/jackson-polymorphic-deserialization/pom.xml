@@ -16,7 +16,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
-            <version>${jackson-core.version}</version>
+            <version>${jackson.version}</version>
         </dependency>
         <dependency>
             <groupId>org.reflections</groupId>
@@ -36,7 +36,7 @@
     </build>
 
     <properties>
-        <jackson-core.version>2.15.2</jackson-core.version>
+        <jackson.version>2.16.0</jackson.version>
         <reflections.version>0.9.11</reflections.version>
     </properties>
 

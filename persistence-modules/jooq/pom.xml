@@ -44,7 +44,7 @@
     </dependencies>
 
     <properties>
-        <jooq.version>3.13.4</jooq.version>
+        <jooq.version>3.18.7</jooq.version>
     </properties>
 
 </project>

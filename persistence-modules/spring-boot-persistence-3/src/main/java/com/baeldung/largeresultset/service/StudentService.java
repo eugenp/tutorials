@@ -3,8 +3,6 @@ package com.baeldung.largeresultset.service;
 import java.util.List;
 import java.util.stream.Stream;
 
-import javax.persistence.EntityManager;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Slice;
@@ -13,6 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.baeldung.largeresultset.Student;
 import com.baeldung.largeresultset.StudentRepository;
+
+import jakarta.persistence.EntityManager;
 
 @Service
 public class StudentService {

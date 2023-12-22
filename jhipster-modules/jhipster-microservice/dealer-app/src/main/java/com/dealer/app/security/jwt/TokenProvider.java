@@ -70,7 +70,7 @@ public class TokenProvider {
 
     public Authentication getAuthentication(String token) {
         Claims claims = Jwts.parser()
-            .setSigningKey(secretKey)
+            .setSigningKey(secretKey).build()
             .parseClaimsJws(token)
             .getBody();
 
@@ -86,7 +86,7 @@ public class TokenProvider {
 
     public boolean validateToken(String authToken) {
         try {
-            Jwts.parser().setSigningKey(secretKey).parseClaimsJws(authToken);
+            Jwts.parser().setSigningKey(secretKey).build().parseClaimsJws(authToken);
             return true;
         } catch (SignatureException e) {
             log.info("Invalid JWT signature.");

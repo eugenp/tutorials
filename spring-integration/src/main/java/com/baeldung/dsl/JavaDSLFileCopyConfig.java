@@ -1,6 +1,7 @@
 package com.baeldung.dsl;
 
 import java.io.File;
+import java.time.Duration;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
@@ -14,7 +15,6 @@ import org.springframework.integration.config.EnableIntegration;
 import org.springframework.integration.core.GenericSelector;
 import org.springframework.integration.core.MessageSource;
 import org.springframework.integration.dsl.IntegrationFlow;
-import org.springframework.integration.dsl.IntegrationFlows;
 import org.springframework.integration.dsl.Pollers;
 import org.springframework.integration.dsl.MessageChannels;
 import org.springframework.integration.file.FileReadingMessageSource;
@@ -69,7 +69,7 @@ public class JavaDSLFileCopyConfig {
     
     @Bean
     public IntegrationFlow fileMover() {
-        return IntegrationFlows.from(sourceDirectory(), configurer -> configurer.poller(Pollers.fixedDelay(10000)))
+        return IntegrationFlow.from(sourceDirectory(), configurer -> configurer.poller(Pollers.fixedDelay(10000)))
             .filter(onlyJpgs())
             .handle(targetDirectory())
             .get();
@@ -77,7 +77,7 @@ public class JavaDSLFileCopyConfig {
 
     // @Bean
     public IntegrationFlow fileMoverWithLambda() {
-        return IntegrationFlows.from(sourceDirectory(), configurer -> configurer.poller(Pollers.fixedDelay(10000)))
+        return IntegrationFlow.from(sourceDirectory(), configurer -> configurer.poller(Pollers.fixedDelay(10000)))
             .filter(message -> ((File) message).getName()
                 .endsWith(".jpg"))
             .handle(targetDirectory())
@@ -92,7 +92,7 @@ public class JavaDSLFileCopyConfig {
 
     // @Bean
     public IntegrationFlow fileMoverWithPriorityChannel() {
-        return IntegrationFlows.from(sourceDirectory())
+        return IntegrationFlow.from(sourceDirectory())
             .filter(onlyJpgs())
             .channel("alphabetically")
             .handle(targetDirectory())
@@ -113,7 +113,7 @@ public class JavaDSLFileCopyConfig {
     
     // @Bean
     public IntegrationFlow fileReader() {
-        return IntegrationFlows.from(sourceDirectory(), configurer -> configurer.poller(Pollers.fixedDelay(10)))
+        return IntegrationFlow.from(sourceDirectory(), configurer -> configurer.poller(Pollers.fixedDelay(10)))
             .filter(onlyJpgs())
             .channel("holdingTank")
             .get();
@@ -121,16 +121,16 @@ public class JavaDSLFileCopyConfig {
 
     // @Bean
     public IntegrationFlow fileWriter() {
-        return IntegrationFlows.from("holdingTank")
-            .bridge(e -> e.poller(Pollers.fixedRate(1, TimeUnit.SECONDS, 20)))
+        return IntegrationFlow.from("holdingTank")
+            .bridge(e -> e.poller(Pollers.fixedRate(Duration.of(1, TimeUnit.SECONDS.toChronoUnit()), Duration.of(20, TimeUnit.SECONDS.toChronoUnit()))))
             .handle(targetDirectory())
             .get();
     }
 
     // @Bean
     public IntegrationFlow anotherFileWriter() {
-        return IntegrationFlows.from("holdingTank")
-            .bridge(e -> e.poller(Pollers.fixedRate(2, TimeUnit.SECONDS, 10)))
+        return IntegrationFlow.from("holdingTank")
+            .bridge(e -> e.poller(Pollers.fixedRate(Duration.of(2, TimeUnit.SECONDS.toChronoUnit()), Duration.of(10, TimeUnit.SECONDS.toChronoUnit()))))
             .handle(anotherTargetDirectory())
             .get();
     }
