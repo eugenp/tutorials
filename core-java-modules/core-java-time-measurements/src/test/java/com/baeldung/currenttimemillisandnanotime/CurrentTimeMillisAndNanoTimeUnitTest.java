@@ -2,9 +2,15 @@ package com.baeldung.currenttimemillisandnanotime;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.logging.Logger;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CurrentTimeMillisAndNanoTimeUnitTest {
+    Logger logger
+            = Logger.getLogger(
+            CurrentTimeMillisAndNanoTimeUnitTest.class.getName());
+
     private static void performShortTask() {
         try {
             Thread.sleep(100);
@@ -30,6 +36,7 @@ public class CurrentTimeMillisAndNanoTimeUnitTest {
         long endTime = System.currentTimeMillis();
         long duration = endTime - startTime;
 
+        logger.info("Task duration: " + duration + " milliseconds");
         assertTrue(duration >= 0);
     }
 
@@ -42,6 +49,7 @@ public class CurrentTimeMillisAndNanoTimeUnitTest {
         long endNanoTime = System.nanoTime();
         long duration = endNanoTime - startNanoTime;
 
+        logger.info("Short task duration: " + duration + " nanoseconds");
         assertTrue(duration >= 0);
     }
 }
