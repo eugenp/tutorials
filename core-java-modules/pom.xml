@@ -65,7 +65,6 @@
         <module>core-java-streams-5</module>
         <module>core-java-streams-collect</module>
         <module>core-java-streams-maps</module>
-        <module>core-java-string-algorithms-3</module>
         <!--<module>core-java-string-operations-3</module>--> <!-- failing after upgrading to jdk17 -->
         <module>core-java-string-operations-4</module>
         <!--<module>core-java-string-operations-5</module>--> <!-- failing after upgrading to jdk17 -->
@@ -185,6 +184,8 @@
         <module>core-java-streams-3</module>
         <module>core-java-string-algorithms</module>
         <module>core-java-string-algorithms-2</module>
+        <module>core-java-string-algorithms-3</module>
+        <module>core-java-string-algorithms-4</module>
         <module>core-java-string-apis</module>
         <!--<module>core-java-string-apis-2</module>--> <!-- failing after upgrading to jdk17 -->
         <module>core-java-swing</module>

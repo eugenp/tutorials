@@ -13,12 +13,6 @@
     </parent>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.beykery/neuroph/2.92 -->
-        <dependency>
-            <groupId>org.beykery</groupId>
-            <artifactId>neuroph</artifactId>
-            <version>${neuroph.version}</version>
-        </dependency>
         <!-- https://mvnrepository.com/artifact/cglib/cglib -->
         <dependency>
             <groupId>cglib</groupId>
@@ -34,11 +28,6 @@
             <groupId>commons-net</groupId>
             <artifactId>commons-net</artifactId>
             <version>${commons-net.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.javatuples</groupId>
-            <artifactId>javatuples</artifactId>
-            <version>${javatuples.version}</version>
         </dependency>
         <dependency>
             <groupId>org.javers</groupId>
@@ -100,11 +89,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.multiverse</groupId>
-            <artifactId>multiverse-core</artifactId>
-            <version>${multiverse.version}</version>
-        </dependency>
-        <dependency>
             <groupId>pl.pragmatists</groupId>
             <artifactId>JUnitParams</artifactId>
             <version>${jUnitParams.version}</version>
@@ -114,11 +98,6 @@
             <groupId>org.quartz-scheduler</groupId>
             <artifactId>quartz</artifactId>
             <version>${quartz.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.openjdk.jmh</groupId>
-            <artifactId>jmh-core</artifactId>
-            <version>${jmh-core.version}</version>
         </dependency>
         <dependency>
             <groupId>info.debatty</groupId>
@@ -254,11 +233,8 @@
 
     <properties>
         <shade.plugin.version>2.2</shade.plugin.version>
-        <multiverse.version>0.7.0</multiverse.version>
         <cglib.version>3.2.7</cglib.version>
-        <javatuples.version>1.2</javatuples.version>
         <javers.version>3.1.0</javers.version>
-        <neuroph.version>2.92</neuroph.version>
         <serenity.version>1.9.26</serenity.version>
         <serenity.jbehave.version>1.41.0</serenity.jbehave.version>
         <serenity.jira.version>1.9.0</serenity.jira.version>

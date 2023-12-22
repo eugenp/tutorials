@@ -1,13 +1,13 @@
 package com.baeldung.mapdb;
 
-import org.junit.Test;
-import org.mapdb.DB;
-import org.mapdb.DBMaker;
-import org.mapdb.Serializer;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.NavigableSet;
 
-import static junit.framework.Assert.assertEquals;
+import org.junit.jupiter.api.Test;
+import org.mapdb.DB;
+import org.mapdb.DBMaker;
+import org.mapdb.Serializer;
 
 public class TransactionsUnitTest {
 
