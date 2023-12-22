@@ -36,18 +36,11 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>11</source>
-                    <target>11</target>
-                </configuration>
             </plugin>
         </plugins>
     </build>
 
     <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <commons-cli.version>1.5.0</commons-cli.version>
         <junit-jupiter-api.version>5.10.0</junit-jupiter-api.version>
         <mockito-core.version>5.5.0</mockito-core.version>

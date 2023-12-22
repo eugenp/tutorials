@@ -38,8 +38,8 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
             <version>${mysql.version}</version>
         </dependency>
         <dependency>
@@ -67,7 +67,7 @@
     </dependencies>
 
     <properties>
-        <mysql.version>8.0.21</mysql.version>
+        <mysql.version>8.2.0</mysql.version>
         <hikari.version>4.0.3</hikari.version>
         <hibernate.version>5.6.1.Final</hibernate.version>
         <spring-boot.version>2.6.1</spring-boot.version>

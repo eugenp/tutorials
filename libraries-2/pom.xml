@@ -14,16 +14,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.mapdb</groupId>
-            <artifactId>mapdb</artifactId>
-            <version>${mapdb.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.pivovarit</groupId>
-            <artifactId>parallel-collectors</artifactId>
-            <version>${parallel-collectors.version}</version>
-        </dependency>
-        <dependency>
             <groupId>io.github.classgraph</groupId>
             <artifactId>classgraph</artifactId>
             <version>${classgraph.version}</version>
@@ -42,25 +32,9 @@
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>info.picocli</groupId>
-            <artifactId>picocli</artifactId>
-            <version>${picocli.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
             <version>${spring-boot-starter.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>net.openhft</groupId>
-            <artifactId>chronicle-map</artifactId>
-            <version>${chronicle.map.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.sun.java</groupId>
-                    <artifactId>tools</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>edu.uci.ics</groupId>
@@ -84,17 +58,6 @@
             <version>${mesos.library.version}</version>
         </dependency>
         <dependency>
-            <groupId>net.sf.jasperreports</groupId>
-            <artifactId>jasperreports</artifactId>
-            <version>${jasperreports.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
             <version>${hsqldb.version}</version>
@@ -114,6 +77,11 @@
             <artifactId>je</artifactId>
             <version>18.3.12</version>
         </dependency>
+        <dependency>
+            <groupId>org.mapdb</groupId>
+            <artifactId>mapdb</artifactId>
+            <version>${mapdb.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -121,10 +89,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
-                <configuration>
-                    <argLine>--add-exports=java.base/jdk.internal.ref=ALL-UNNAMED --add-exports=java.base/sun.nio.ch=ALL-UNNAMED --add-exports=jdk.unsupported/sun.misc=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED</argLine>
-                </configuration>
             </plugin>
         </plugins>
     </build>
@@ -133,14 +97,10 @@
         <mapdb.version>3.0.8</mapdb.version>
         <classgraph.version>4.8.153</classgraph.version>
         <jbpm.version>7.20.0.Final</jbpm.version>
-        <picocli.version>4.7.0</picocli.version>
-        <chronicle.map.version>3.24ea1</chronicle.map.version>
         <crawler4j.version>4.4.0</crawler4j.version>
         <spring-boot-starter.version>2.7.8</spring-boot-starter.version>
         <mesos.library.version>1.11.0</mesos.library.version>
-        <parallel-collectors.version>1.1.0</parallel-collectors.version>
         <handlebars.version>4.3.1</handlebars.version>
-        <jasperreports.version>6.20.0</jasperreports.version>
         <spring.version>5.3.25</spring.version>
         <hsqldb.version>2.7.1</hsqldb.version>
     </properties>

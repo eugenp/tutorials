@@ -71,7 +71,7 @@
         <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-core</artifactId>
-            <version>${io.reactor3.version}</version>
+            <version>${reactor-core.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -121,7 +121,7 @@
         <rx.java2.version>2.2.2</rx.java2.version>
         <rx.java3.version>3.1.5</rx.java3.version>
         <io.varv.version>1.0.0-alpha-4</io.varv.version>
-        <io.reactor3.version>3.5.1</io.reactor3.version>
+        <reactor-core.version>3.6.0</reactor-core.version>
         <apache.commons.collection4.version>4.4</apache.commons.collection4.version>
         <cyclops.version>10.4.1</cyclops.version>
     </properties>

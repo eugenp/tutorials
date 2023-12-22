@@ -1,11 +1,16 @@
 package com.baeldung.countrows.entity;
 
-import javax.persistence.*;
-
-import java.security.PrivateKey;
 import java.sql.Timestamp;
-import java.time.Instant;
-import java.util.Date;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "ACCOUNTS")

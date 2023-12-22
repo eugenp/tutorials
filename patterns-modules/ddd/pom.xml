@@ -10,29 +10,11 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-2</relativePath>
+        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.junit</groupId>
-                <artifactId>junit-bom</artifactId>
-                <version>${junit-jupiter.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring-boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <dependencies>
         <dependency>
@@ -88,12 +70,15 @@
         <dependency>
             <groupId>de.flapdoodle.embed</groupId>
             <artifactId>de.flapdoodle.embed.mongo</artifactId>
+            <version>${de.flapdoodle.embed.mongo.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
 
     <properties>
+        <start-class>com.baeldung.ddd.PersistingDddAggregatesApplication</start-class>
         <joda-money.version>1.0.1</joda-money.version>
+        <de.flapdoodle.embed.mongo.version>4.11.1</de.flapdoodle.embed.mongo.version>
     </properties>
 
 </project>
