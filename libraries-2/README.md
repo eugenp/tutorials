@@ -14,5 +14,8 @@ Remember, for advanced libraries like [Jackson](/jackson) and [JUnit](/testing-m
 - [A Guide to Crawler4j](https://www.baeldung.com/crawler4j)
 - [A Guide to Apache Mesos](https://www.baeldung.com/apache-mesos)
 - [Guide to MapDB](https://www.baeldung.com/mapdb)
+- [Introduction to NoException](https://www.baeldung.com/no-exception)
+- [Introduction to MBassador](https://www.baeldung.com/mbassador)
+- [Guide to JDeferred](https://www.baeldung.com/jdeferred)
 - More articles [[<-- prev]](/libraries) [[next -->]](/libraries-3)
 

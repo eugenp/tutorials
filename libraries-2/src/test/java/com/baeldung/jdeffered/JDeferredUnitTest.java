@@ -1,9 +1,10 @@
 package com.baeldung.jdeffered;
 
-import com.baeldung.jdeffered.PipeDemo.Result;
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import com.baeldung.jdeffered.PipeDemo.Result;
 
 public class JDeferredUnitTest {
 

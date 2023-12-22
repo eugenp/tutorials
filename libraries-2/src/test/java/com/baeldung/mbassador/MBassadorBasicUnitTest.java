@@ -1,15 +1,16 @@
 package com.baeldung.mbassador;
 
-import net.engio.mbassy.bus.MBassador;
-import net.engio.mbassy.bus.common.DeadMessage;
-import net.engio.mbassy.listener.Handler;
+import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+
 import org.junit.Before;
 import org.junit.Test;
 
-import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import net.engio.mbassy.bus.MBassador;
+import net.engio.mbassy.bus.common.DeadMessage;
+import net.engio.mbassy.listener.Handler;
 
 public class MBassadorBasicUnitTest {
 

@@ -8,7 +8,5 @@ The code examples related to different libraries are each in their own module.
 Remember, for advanced libraries like [Jackson](/jackson) and [JUnit](/testing-modules) we already have separate modules. Please make sure to have a look at the existing modules in such cases.
 
 ### Relevant articles
-- [Introduction to NoException](https://www.baeldung.com/no-exception)
-- [Guide to JDeferred](https://www.baeldung.com/jdeferred)
-- [Introduction to MBassador](https://www.baeldung.com/mbassador)
+
 - More articles [[<-- prev]](/libraries-3) [[next -->]](/libraries-5)
