@@ -1,7 +1,7 @@
 package com.baeldung.contexts.services;
 
-import javax.annotation.Resource;
 
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.baeldung.contexts.Greeting;
