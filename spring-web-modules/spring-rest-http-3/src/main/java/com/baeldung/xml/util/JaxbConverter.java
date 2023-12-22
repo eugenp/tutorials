@@ -22,7 +22,7 @@ public class JaxbConverter<T> {
         }
     }
 
-    public  <T> T convertFromXml(final String xml)  {
+    public T convertFromXml(final String xml)  {
         StringReader reader = new StringReader(xml);
         try {
             return (T) unmarshaller.unmarshal(reader);
