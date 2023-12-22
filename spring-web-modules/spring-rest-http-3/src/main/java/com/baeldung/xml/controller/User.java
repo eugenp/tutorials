@@ -1,8 +1,8 @@
 package com.baeldung.xml.controller;
 
+import jakarta.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.Objects;
-import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class User implements Serializable {
