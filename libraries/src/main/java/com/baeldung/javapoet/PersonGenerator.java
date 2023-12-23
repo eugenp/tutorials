@@ -1,16 +1,5 @@
 package com.baeldung.javapoet;
 
-import com.squareup.javapoet.ClassName;
-import com.squareup.javapoet.CodeBlock;
-import com.squareup.javapoet.FieldSpec;
-import com.squareup.javapoet.JavaFile;
-import com.squareup.javapoet.MethodSpec;
-import com.squareup.javapoet.ParameterSpec;
-import com.squareup.javapoet.ParameterizedTypeName;
-import com.squareup.javapoet.TypeName;
-import com.squareup.javapoet.TypeSpec;
-
-import javax.lang.model.element.Modifier;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
@@ -20,6 +9,18 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.IntStream;
+
+import javax.lang.model.element.Modifier;
+
+import com.squareup.javapoet.ClassName;
+import com.squareup.javapoet.CodeBlock;
+import com.squareup.javapoet.FieldSpec;
+import com.squareup.javapoet.JavaFile;
+import com.squareup.javapoet.MethodSpec;
+import com.squareup.javapoet.ParameterSpec;
+import com.squareup.javapoet.ParameterizedTypeName;
+import com.squareup.javapoet.TypeName;
+import com.squareup.javapoet.TypeSpec;
 
 public class PersonGenerator {
 
