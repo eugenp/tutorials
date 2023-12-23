@@ -37,7 +37,7 @@
     </dependencies>
 
     <properties>
-        <start-class>com.baeldung.springdatajdbcintro.Application</start-class>
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
     </properties>
 
 </project>
