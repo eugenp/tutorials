@@ -46,7 +46,7 @@ public class PasswordStorageWebSecurityConfigurer {
         PasswordEncoder defaultEncoder = new StandardPasswordEncoder();
         Map<String, PasswordEncoder> encoders = new HashMap<>();
         encoders.put("bcrypt", new BCryptPasswordEncoder());
-        encoders.put("scrypt", new SCryptPasswordEncoder());
+        encoders.put("scrypt", new SCryptPasswordEncoder(1, 1, 1, 1, 10));
         encoders.put("noop", NoOpPasswordEncoder.getInstance());
 
         DelegatingPasswordEncoder passwordEncoder = new DelegatingPasswordEncoder("bcrypt", encoders);
