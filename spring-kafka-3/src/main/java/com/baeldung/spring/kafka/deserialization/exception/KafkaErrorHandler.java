@@ -22,14 +22,13 @@ class KafkaErrorHandler implements CommonErrorHandler {
         handle(exception, consumer);
     }
 
-    private void handle(Exception ex, Consumer<?, ?> consumer) {
-        log.error("Exception thrown", ex);
-        if (ex instanceof RecordDeserializationException) {
-            RecordDeserializationException rde = (RecordDeserializationException) ex;
-            consumer.seek(rde.topicPartition(), rde.offset() + 1L);
+    private void handle(Exception exception, Consumer<?, ?> consumer) {
+        log.error("Exception thrown", exception);
+        if (exception instanceof RecordDeserializationException ex) {
+            consumer.seek(ex.topicPartition(), ex.offset() + 1L);
             consumer.commitSync();
         } else {
-            log.error("Exception not handled");
+            log.error("Exception not handled", exception);
         }
     }
 }
