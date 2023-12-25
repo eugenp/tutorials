@@ -18,6 +18,7 @@ public class KafkaMessageConsumer {
     @KafkaListener(topics = { "order-topic", "default-topic" }, groupId = "test-group")
     public void listen(@Payload String message, @Header(KafkaHeaders.RECEIVED_PARTITION) int partition, @Header(KafkaHeaders.RECEIVED_KEY) @Nullable String key) {
         ReceivedMessage receivedMessage = new ReceivedMessage(key, message, partition);
+        System.out.println("Received message: " + receivedMessage);
         receivedMessages.add(receivedMessage);
     }
 
