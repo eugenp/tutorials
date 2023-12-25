@@ -1,17 +1,12 @@
 package com.baeldung.xml.controller;
 
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
-import java.io.Serializable;
 import java.util.Objects;
 
-@JacksonXmlRootElement
-public class User implements Serializable {
+public class User {
 
     private Long id;
     private String firstName;
-
     private String secondName;
-
     public User() {
     }
 

@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserEchoController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public User createUserFromJson(@RequestBody User user) {
+    public User echoJsonUser(@RequestBody User user) {
         return user;
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = MediaType.APPLICATION_XML_VALUE, produces = MediaType.APPLICATION_XML_VALUE)
-    public User createUserFromXml(@RequestBody User user) {
+    public User echoXmlUser(@RequestBody User user) {
         return user;
     }
 }
