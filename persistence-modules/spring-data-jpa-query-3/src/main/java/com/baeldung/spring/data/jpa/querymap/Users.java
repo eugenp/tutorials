@@ -15,6 +15,11 @@ public class Users implements Streamable<User> {
         this.userStreamable = userStreamable;
     }
 
+    @Override
+    public Iterator<User> iterator() {
+        return userStreamable.iterator();
+    }
+
     public Map<Long, User> getUserIdToUserMap() {
         return stream().collect(Collectors.toMap(User::getId, Function.identity()));
     }
@@ -26,15 +31,10 @@ public class Users implements Streamable<User> {
     }
 
     public Map<Character, List<User>> groupUsersAlphabetically() {
-        return stream().collect(Collectors.groupingBy(s->getFristCharacter(s.getFirstName())));
+        return stream().collect(Collectors.groupingBy(s -> getFristCharacter(s.getFirstName())));
     }
 
     private Character getFristCharacter(final String string) {
         return string.substring(0, 1).toUpperCase().charAt(0);
-    }
-
-    @Override
-    public Iterator<User> iterator() {
-        return userStreamable.iterator();
     }
 }

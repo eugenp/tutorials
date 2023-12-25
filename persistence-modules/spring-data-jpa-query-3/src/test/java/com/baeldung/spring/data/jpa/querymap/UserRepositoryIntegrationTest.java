@@ -68,15 +68,15 @@ class UserRepositoryIntegrationTest {
             final Users streamableWrapper = repository.findAllUsers();
             final Map<Long, User> users = streamableWrapper.getUserIdToUserMap();
             validateUserIdToUserMap(users);
-
         }
 
         @Test
-        @DisplayName("fetch all users in a Map with Streamable wrapper with a filter all of them are present")
+        @DisplayName("fetch all users in a Map with Streamable wrapper "
+                     + "with a filter, all of them are present")
         void fetchUsersInMapUsingStreamableWrapperWithFilterThenAllOfThemPresent() {
-            final Users streamableWrapper = repository.findAllUsers();
+            final Users users = repository.findAllUsers();
             final int maxNameLength = 4;
-            final List<User> actual = streamableWrapper.getAllUsersWithShortNames(maxNameLength);
+            final List<User> actual = users.getAllUsersWithShortNames(maxNameLength);
             User[] expected = {
                 new User(9L, "Moe", "Oddy"),
                 new User(25L, "Lane", "Endricci"),
@@ -88,10 +88,11 @@ class UserRepositoryIntegrationTest {
         }
 
         @Test
-        @DisplayName("fetch all users in a Map with Streamable wrapper and grouping all of them are present")
+        @DisplayName("fetch all users in a Map with Streamable wrapper "
+                     + "and grouping all of them are present")
         void fetchUsersInMapUsingStreamableWrapperAndGroupingThenAllOfThemPresent() {
-            final Users streamableWrapper = repository.findAllUsers();
-            final Map<Character, List<User>> alphabeticalGrouping = streamableWrapper.groupUsersAlphabetically();
+            final Users users = repository.findAllUsers();
+            final Map<Character, List<User>> alphabeticalGrouping = users.groupUsersAlphabetically();
             final List<User> actual = alphabeticalGrouping.get('A');
             User[] expected = {
                 new User(2L, "Auroora", "Oats"),
@@ -102,6 +103,7 @@ class UserRepositoryIntegrationTest {
         }
 
     }
+
     private static void validateUserIdToUserMap(final Map<Long, User> users) {
         assertThat(users.values()).hasSize(NUMBER_OF_USERS);
         users.forEach((id, user) -> {
