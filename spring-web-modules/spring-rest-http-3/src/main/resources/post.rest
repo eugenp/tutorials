@@ -1,0 +1,19 @@
+POST http://localhost:8080/users
+Content-Type: application/json
+
+{
+  "id": 1,
+  "firstName": "John",
+  "secondName": "Doe"
+}
+
+####
+POST http://localhost:8080/users
+Content-Type: application/xml
+Accept: application/xml
+
+<User>
+  <firstName>John</firstName>
+  <id>1</id>
+  <secondName>Doe</secondName>
+</User>

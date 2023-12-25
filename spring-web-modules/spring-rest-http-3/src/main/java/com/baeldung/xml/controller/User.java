@@ -1,10 +1,10 @@
 package com.baeldung.xml.controller;
 
-import jakarta.xml.bind.annotation.XmlRootElement;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import java.io.Serializable;
 import java.util.Objects;
 
-@XmlRootElement
+@JacksonXmlRootElement
 public class User implements Serializable {
 
     private Long id;
