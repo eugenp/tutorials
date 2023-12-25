@@ -15,8 +15,8 @@ public class ArticlesPublishedListener {
     }
 
     @KafkaListener(topics = "baeldung.articles.published")
-    public void onArticlePublished(Article article) {
-        log.info("Received article published event: " + article);
-        emailService.sendNewsletter(article);
+    public void onArticlePublished(ArticlePublishedEvent event) {
+        log.info("Received event published event: " + event);
+        emailService.sendNewsletter(event.getArticle());
     }
 }

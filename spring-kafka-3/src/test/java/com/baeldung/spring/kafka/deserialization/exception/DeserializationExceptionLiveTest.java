@@ -2,16 +2,14 @@ package com.baeldung.spring.kafka.deserialization.exception;
 
 import static java.time.Duration.ofMillis;
 import static java.time.Duration.ofSeconds;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.awaitility.Awaitility.await;
-import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
-import java.time.Duration;
 import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.Properties;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -19,7 +17,9 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.awaitility.Awaitility;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.DynamicPropertyRegistry;
@@ -27,7 +27,6 @@ import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.KafkaContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
-import org.testcontainers.shaded.org.checkerframework.checker.units.qual.A;
 import org.testcontainers.utility.DockerImageName;
 
 @Testcontainers
@@ -61,36 +60,19 @@ class DeserializationExceptionLiveTest {
 
 
     @Test
-    void test() throws Exception {
+    void givenValidPublishedArticleEvent_thenProcessWithoutErrors() throws Exception {
+        publishArticle("{ \"article\": \"Introduction to Kafka\" }");
+        publishArticle(" !! Invalid JSON !! ");
+        publishArticle("{ \"article\": \"Kafka Streams Tutorial\" }");
 
-        LocalDate date = LocalDate.of(2021, 1, 1);
-        String dateStr = "2021-01-01";
+        ArgumentCaptor<String> captor = ArgumentCaptor.forClass(String.class);
+        when(emailService.sendNewsletter(captor.capture())).thenReturn(true);
 
-        publishArticle("""
-            { 
-                "article": "Introduction to Kafka",
-                "author": "John Doe",
-            }
-            """);
-
-        await().untilAsserted(() ->
-            verify(emailService).sendNewsletter(
-                new Article("Introduction to Java", "John Doe")));
+        await().untilAsserted(() -> assertThat(captor.getAllValues())
+            .hasSize(2)
+            .containsExactly("Introduction to Kafka", "Kafka Streams Tutorial"));
     }
 
-
-    @Test
-    void test2() throws Exception {
-        publishArticle("""
-            { 
-                "Invalid JSON",
-            }
-            """);
-
-        await().untilAsserted(() ->
-            verify(emailService).sendNewsletter(
-                new Article("Introduction to Kafka", "John Doe")));
-    }
 
     static void publishArticle(String body) throws ExecutionException, InterruptedException {
         ProducerRecord<String, String> record = new ProducerRecord<>("baeldung.articles.published", body);

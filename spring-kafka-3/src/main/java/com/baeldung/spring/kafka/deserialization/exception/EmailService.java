@@ -8,7 +8,8 @@ import org.springframework.stereotype.Service;
 public class EmailService {
     private final static Logger log = Logger.getLogger(EmailService.class.getName());
 
-    public void sendNewsletter(Article article) {
+    public boolean sendNewsletter(String article) {
         log.info("Sending newsletter for article: " + article);
+        return true;
     }
 }
