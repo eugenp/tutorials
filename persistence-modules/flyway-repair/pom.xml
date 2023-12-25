@@ -10,9 +10,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-2</relativePath>
+        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -74,7 +74,10 @@
 
     <properties>
         <flyway.configFiles>src/main/resources/application-${spring-boot.run.profiles}.properties</flyway.configFiles>
-        <flyway-maven-plugin.version>10.2.0</flyway-maven-plugin.version>
+        <flyway-maven-plugin.version>10.4.0</flyway-maven-plugin.version>
+        <java.version>17</java.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
 </project>
