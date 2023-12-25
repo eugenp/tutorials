@@ -692,7 +692,6 @@
             <modules>
                 <module>akka-modules</module>
                 <module>algorithms-modules</module>
-                <module>antlr</module>
                 <module>apache-cxf-modules</module>
                 <module>apache-httpclient-2</module>
                 <module>apache-httpclient4</module>
@@ -706,9 +705,7 @@
                 <module>apache-poi-3</module>
                 <module>apache-poi</module>
                 <module>apache-thrift</module>
-                <module>apache-tika</module>
                 <module>apache-velocity</module>
-                <module>asciidoctor</module>
                 <module>atomix</module>
                 <module>aws-modules</module>
                 <module>azure</module>
@@ -819,8 +816,6 @@
                 <module>osgi</module>
                 <module>parent-boot-3</module>
                 <module>patterns-modules</module>
-                <module>pdf-2</module>
-                <module>pdf</module>
                 <module>performance-tests</module>
                 <module>persistence-modules</module>
                 <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->
@@ -901,6 +896,7 @@
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>
                 <module>testing-modules/mockito-simple</module>
+                <module>text-processing-libraries-modules</module>
                 <module>timefold-solver</module>
                 <module>vaadin</module>
                 <module>vavr-modules</module>
@@ -945,7 +941,6 @@
             <modules>
                 <module>akka-modules</module>
                 <module>algorithms-modules</module>
-                <module>antlr</module>
                 <module>apache-cxf-modules</module>
                 <module>apache-httpclient-2</module>
                 <module>apache-httpclient4</module>
@@ -959,9 +954,7 @@
                 <module>apache-poi-3</module>
                 <module>apache-poi</module>
                 <module>apache-thrift</module>
-                <module>apache-tika</module>
                 <module>apache-velocity</module>
-                <module>asciidoctor</module>
                 <module>atomix</module>
                 <module>aws-modules</module>
                 <module>azure</module>
@@ -1072,8 +1065,6 @@
                 <module>osgi</module>
                 <module>parent-boot-3</module>
                 <module>patterns-modules</module>
-                <module>pdf-2</module>
-                <module>pdf</module>
                 <module>performance-tests</module>
                 <module>persistence-modules</module>
                 <module>persistence-modules/spring-data-neo4j</module>
@@ -1152,6 +1143,7 @@
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>
                 <module>testing-modules/mockito-simple</module>
+                <module>text-processing-libraries-modules</module>
                 <module>timefold-solver</module>
                 <module>vaadin</module>
                 <module>vavr-modules</module>
