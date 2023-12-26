@@ -5,9 +5,6 @@ package com.baeldung.springcloudgateway.rewrite;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.cloud.gateway.filter.GatewayFilter;
-
-import reactor.core.publisher.Mono;
 
 /**
  * @author Baeldung

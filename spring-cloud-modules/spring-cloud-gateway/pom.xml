@@ -18,19 +18,31 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway</artifactId>
-            <version>4.1.0</version>
+            <version>${spring-cloud-starter-gateway.version}</version>
         </dependency>
         <!-- Circuit Breaker -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-circuitbreaker-reactor-resilience4j</artifactId>
-            <version>3.1.0</version>
+            <version>${spring-cloud-circuitbraker.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!-- Redis -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
-            <version>3.2.1</version>
+            <version>${spring-boot.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!-- Embedded Redis -->
         <dependency>
@@ -38,6 +50,12 @@
             <artifactId>embedded-redis</artifactId>
             <version>${redis.version}</version>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-simple</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.hibernate.validator</groupId>
@@ -47,7 +65,7 @@
         <dependency>
             <groupId>jakarta.validation</groupId>
             <artifactId>jakarta.validation-api</artifactId>
-            <version>3.1.0-M1</version>
+            <version>${jakarta-validation-api.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -57,6 +75,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -78,7 +102,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
@@ -162,8 +186,12 @@
     </profiles>
 
     <properties>
+        <spring-cloud-starter-gateway.version>3.1.9</spring-cloud-starter-gateway.version>
+        <spring-cloud-circuitbraker.version>2.1.8</spring-cloud-circuitbraker.version>
+        <jakarta-validation-api.version>3.1.0-M1</jakarta-validation-api.version>
         <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
         <redis.version>0.7.3</redis.version>
+        <start-class>com.baeldung.springcloudgateway.customfilters.service.ServiceApplication</start-class>
     </properties>
 
 </project>
