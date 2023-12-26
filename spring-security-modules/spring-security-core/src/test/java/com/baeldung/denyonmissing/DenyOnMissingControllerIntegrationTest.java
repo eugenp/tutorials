@@ -5,9 +5,11 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import jakarta.servlet.ServletException;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,13 +20,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.util.NestedServletException;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = DenyApplication.class)
 public class DenyOnMissingControllerIntegrationTest {
-    @Rule
-    public ExpectedException expectedException = ExpectedException.none();
-
     @Autowired
     private WebApplicationContext context;
     private MockMvc mockMvc;
@@ -46,8 +46,11 @@ public class DenyOnMissingControllerIntegrationTest {
     @Test
     @WithMockUser(username = "user")
     public void givenANormalUser_whenCallingBye_thenAccessDenied() throws Exception {
-        expectedException.expectCause(isA(AccessDeniedException.class));
+        ServletException exception = Assertions.assertThrows(ServletException.class, () -> {
+            mockMvc.perform(get("/bye"));
+        });
 
-        mockMvc.perform(get("/bye"));
+        Assertions.assertNotNull(exception);
+        Assertions.assertEquals(exception.getCause().getClass(), AccessDeniedException.class);
     }
 }

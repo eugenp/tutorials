@@ -1,11 +1,13 @@
 package com.baeldung.filterresponse;
 
 import com.baeldung.filterresponse.config.AppConfig;
+import jakarta.servlet.ServletException;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.util.NestedServletException;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -33,7 +37,7 @@ public class SpringSecurityJsonViewIntegrationTest {
     private MockMvc mvc;
 
     @Rule
-    public ExpectedException expectedException = ExpectedException.none();
+    public ExpectedException expectedException = null;
 
     @Before
     public void setup() {
@@ -65,21 +69,14 @@ public class SpringSecurityJsonViewIntegrationTest {
     @Test
     @WithMockUser(username = "user", password = "userPass", roles = {"ADMIN", "USER"})
     public void whenMultipleRoles_thenExceptionIsThrown() throws Exception {
-        expectedException.expect(new BaseMatcher<NestedServletException>() {
-            @Override
-            public boolean matches(Object o) {
-                NestedServletException exception = (NestedServletException) o;
-                return exception.getCause() instanceof IllegalArgumentException && exception.getCause().getMessage().equals("Ambiguous @JsonView declaration for roles ROLE_ADMIN,ROLE_USER");
-            }
-
-            @Override
-            public void describeTo(Description description) {
-
-            }
+        ServletException exception = Assertions.assertThrows(ServletException.class, () -> {
+            mvc.perform(get("/items"))
+                    .andExpect(status().isOk());
         });
 
-        mvc.perform(get("/items"))
-                .andExpect(status().isOk());
+        Assertions.assertEquals(exception.getCause().getClass(), IllegalArgumentException.class);
+        assertTrue(exception.getCause().getMessage().equals("Ambiguous @JsonView declaration for roles ROLE_ADMIN,ROLE_USER"));
+
 
     }
 }

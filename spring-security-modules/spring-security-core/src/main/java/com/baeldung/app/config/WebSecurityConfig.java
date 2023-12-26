@@ -19,17 +19,14 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-            .antMatchers("/css/**", "/js/**", "/loggedout")
-            .permitAll()
-            .anyRequest()
-            .authenticated()
-            .and()
-            .httpBasic()
-            .and()
-            .logout()
-            .disable()
-            .csrf()
-            .disable();
+                .requestMatchers("/css/**", "/js/**", "/loggedout")
+                .permitAll()
+                .anyRequest()
+                .authenticated()
+                .and()
+                .httpBasic(basic -> basic.disable())
+                .logout(logout -> logout.disable())
+                .csrf(csrf -> csrf.disable());
         return http.build();
     }
 
