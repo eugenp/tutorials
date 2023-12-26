@@ -1,4 +1,4 @@
-package com.baeldung.batch_reader_properties;
+package com.baeldung.batchreaderproperties;
 
 import java.time.ZonedDateTime;
 import java.util.Map;
@@ -16,10 +16,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.transaction.PlatformTransactionManager;
 
-import com.baeldung.batch_reader_properties.job.ExpiresSoonMedicineReader;
-import com.baeldung.batch_reader_properties.job.MedicineProcessor;
-import com.baeldung.batch_reader_properties.job.MedicineWriter;
-import com.baeldung.batch_reader_properties.model.Medicine;
+import com.baeldung.batchreaderproperties.job.ExpiresSoonMedicineReader;
+import com.baeldung.batchreaderproperties.job.MedicineProcessor;
+import com.baeldung.batchreaderproperties.job.MedicineWriter;
+import com.baeldung.batchreaderproperties.model.Medicine;
 
 @Configuration
 public class BatchConfiguration {

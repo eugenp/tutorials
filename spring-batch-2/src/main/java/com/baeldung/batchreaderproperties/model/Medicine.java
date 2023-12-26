@@ -1,4 +1,4 @@
-package com.baeldung.batch_reader_properties.model;
+package com.baeldung.batchreaderproperties.model;
 
 import java.sql.Timestamp;
 import java.util.UUID;

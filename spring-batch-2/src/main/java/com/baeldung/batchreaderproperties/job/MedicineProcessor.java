@@ -1,4 +1,4 @@
-package com.baeldung.batch_reader_properties.job;
+package com.baeldung.batchreaderproperties.job;
 
 import java.sql.Timestamp;
 import java.time.Duration;
@@ -8,8 +8,8 @@ import java.time.ZonedDateTime;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.beans.factory.annotation.Value;
 
-import com.baeldung.batch_reader_properties.ContainsJobParameters;
-import com.baeldung.batch_reader_properties.model.Medicine;
+import com.baeldung.batchreaderproperties.ContainsJobParameters;
+import com.baeldung.batchreaderproperties.model.Medicine;
 
 import lombok.Getter;
 import lombok.Setter;

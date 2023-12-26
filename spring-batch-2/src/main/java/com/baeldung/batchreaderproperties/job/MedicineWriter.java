@@ -1,12 +1,12 @@
-package com.baeldung.batch_reader_properties.job;
+package com.baeldung.batchreaderproperties.job;
 
 import java.time.ZonedDateTime;
 
 import org.springframework.batch.item.Chunk;
 import org.springframework.batch.item.ItemWriter;
 
-import com.baeldung.batch_reader_properties.ContainsJobParameters;
-import com.baeldung.batch_reader_properties.model.Medicine;
+import com.baeldung.batchreaderproperties.ContainsJobParameters;
+import com.baeldung.batchreaderproperties.model.Medicine;
 
 import lombok.Getter;
 import lombok.Setter;

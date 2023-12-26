@@ -1,4 +1,4 @@
-package com.baeldung.batch_reader_properties;
+package com.baeldung.batchreaderproperties;
 
 import lombok.experimental.UtilityClass;
 
