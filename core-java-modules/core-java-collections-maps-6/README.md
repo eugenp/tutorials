@@ -7,6 +7,7 @@
 - [Converting JsonNode Object to Map](https://www.baeldung.com/jackson-jsonnode-map)
 - [How to Modify a Key in a HashMap?](https://www.baeldung.com/java-hashmap-modify-key)
 - [Converting String or String Array to Map in Java](https://www.baeldung.com/java-convert-string-to-map)
-- [Remove Duplicate Values From HashMap in Java](https://www.baeldung.com/java-hashmap-delete-duplicates)
 - [Sorting Java Map in Descending Order](https://www.baeldung.com/java-sort-map-descending)
 - [Convert HashMap.toString() to HashMap in Java](https://www.baeldung.com/hashmap-from-tostring)
+- More articles: [[<-- prev]](/core-java-modules/core-java-collections-maps-5)[[next -->]](/core-java-modules/core-java-collections-maps-7)
+
