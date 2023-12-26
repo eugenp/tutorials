@@ -24,7 +24,7 @@ import com.baeldung.exceptionhandler.security.SecurityConfig;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(SecurityConfig.class)
-@ImportAutoConfiguration(classes = SecurityConfig.class)
+@Import(SecurityConfig.class)
 class SecurityConfigUnitTest {
     @Autowired
     private MockMvc mvc;
