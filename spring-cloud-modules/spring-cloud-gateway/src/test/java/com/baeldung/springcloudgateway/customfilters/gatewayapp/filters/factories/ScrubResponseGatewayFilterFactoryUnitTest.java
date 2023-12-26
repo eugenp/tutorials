@@ -23,7 +23,6 @@ class ScrubResponseGatewayFilterFactoryUnitTest {
         + "        \"account\" : \"9999888877770000\"\r\n"
         + "}";
 
-    
     @Test
     void givenJsonWithFieldsToScrub_whenApply_thenScrubFields() throws Exception{
         

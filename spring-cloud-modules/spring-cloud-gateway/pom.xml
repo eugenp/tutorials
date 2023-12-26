@@ -8,51 +8,29 @@
     <packaging>jar</packaging>
 
     <parent>
-        <groupId>com.baeldung.spring.cloud</groupId>
-        <artifactId>spring-cloud-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-3</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-boot-3</relativePath>
     </parent>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.junit</groupId>
-                <artifactId>junit-bom</artifactId>
-                <version>${junit-jupiter.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud-dependencies.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring-boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway</artifactId>
+            <version>4.1.0</version>
         </dependency>
         <!-- Circuit Breaker -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-circuitbreaker-reactor-resilience4j</artifactId>
+            <version>3.1.0</version>
         </dependency>
         <!-- Redis -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
+            <version>3.2.1</version>
         </dependency>
         <!-- Embedded Redis -->
         <dependency>
@@ -67,8 +45,9 @@
             <version>${hibernate-validator.version}</version>
         </dependency>
         <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <version>3.1.0-M1</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -183,12 +162,8 @@
     </profiles>
 
     <properties>
-        <!-- <spring-cloud-dependencies.version>Hoxton.SR3</spring-cloud-dependencies.version> -->
-        <!-- <spring-boot.version>2.2.6.RELEASE</spring-boot.version> -->
         <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
-        <redis.version>0.7.2</redis.version>
-        <oauth2-oidc-sdk.version>9.19</oauth2-oidc-sdk.version>
-        <!-- <junit-bom.version>5.5.2</junit-bom.version> -->
+        <redis.version>0.7.3</redis.version>
     </properties>
 
 </project>
