@@ -41,7 +41,7 @@ public class SecurityConfiguration {
 
     @Bean
     public WebSecurityCustomizer ignoringCustomizer() {
-        return (web) -> web.ignoring().antMatchers("/resources/**", "/static/**");
+        return (web) -> web.ignoring().requestMatchers("/resources/**", "/static/**");
     }
 
     @Bean
@@ -65,7 +65,7 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests((authorize) -> authorize.antMatchers("/admin/**")
+        http.authorizeHttpRequests((authorize) -> authorize.requestMatchers("/admin/**")
           .hasRole("ADMIN")
           .anyRequest()
           .permitAll())

@@ -1,6 +1,7 @@
 package com.baeldung.exceptionhandler.security;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
@@ -41,30 +42,24 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.csrf()
-            .disable()
-            .httpBasic()
-            .disable()
+        http.csrf(csrf -> csrf.disable())
+            .httpBasic(basic -> basic.disable())
             .authorizeRequests()
-            .antMatchers("/login")
+            .requestMatchers("/login")
             .permitAll()
-            .antMatchers("/customError")
+            .requestMatchers("/customError")
             .permitAll()
-            .antMatchers("/access-denied")
+            .requestMatchers("/access-denied")
             .permitAll()
-            .antMatchers("/secured")
+            .requestMatchers("/secured")
             .hasRole("ADMIN")
             .anyRequest()
             .authenticated()
             .and()
-            .formLogin()
-            .failureHandler(authenticationFailureHandler())
-            .successHandler(authenticationSuccessHandler())
-            .and()
-            .exceptionHandling()
-            .accessDeniedHandler(accessDeniedHandler())
-            .and()
-            .logout();
+            .formLogin(form -> form.failureHandler(authenticationFailureHandler()).
+                    successHandler(authenticationSuccessHandler())).
+                    exceptionHandling(ex -> ex.accessDeniedHandler(accessDeniedHandler()))
+            .logout(Customizer.withDefaults());
         return http.build();
     }
 
