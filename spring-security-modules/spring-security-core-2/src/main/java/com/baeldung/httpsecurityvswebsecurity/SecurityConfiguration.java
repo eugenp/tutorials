@@ -26,7 +26,7 @@ public class SecurityConfiguration {
 
     @Bean
     public HttpFirewall allowHttpMethod() {
-        List<String> allowedMethods = new ArrayList<String>();
+        List<String> allowedMethods = new ArrayList<>();
         allowedMethods.add("GET");
         allowedMethods.add("POST");
         StrictHttpFirewall firewall = new StrictHttpFirewall();

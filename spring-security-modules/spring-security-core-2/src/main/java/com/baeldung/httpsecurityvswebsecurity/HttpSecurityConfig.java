@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -19,7 +20,7 @@ public class HttpSecurityConfig {
           .requestMatchers("/admin/**").hasRole("ADMIN")
           .anyRequest().authenticated())
           .formLogin(form -> form.loginPage("/login").permitAll())
-                .logout(s-> s.permitAll());
+          .logout(LogoutConfigurer::permitAll);
 
         // When: Accessing specific URLs
         // Then: Access is granted based on defined rules

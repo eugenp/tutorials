@@ -39,7 +39,7 @@ public class WebSecurityConfig {
 			.formLogin(Customizer.withDefaults())
 			.sessionManagement((session) -> session
 					.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-			);;
+			);
 
 		return http.build();
 	}
