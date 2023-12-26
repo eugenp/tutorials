@@ -2,13 +2,9 @@ package com.baeldung.filterresponse;
 
 import com.baeldung.filterresponse.config.AppConfig;
 import jakarta.servlet.ServletException;
-import org.hamcrest.BaseMatcher;
-import org.hamcrest.Description;
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.test.context.support.WithMockUser;
@@ -18,9 +14,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.util.NestedServletException;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -35,9 +29,6 @@ public class SpringSecurityJsonViewIntegrationTest {
     private WebApplicationContext context;
 
     private MockMvc mvc;
-
-    @Rule
-    public ExpectedException expectedException = null;
 
     @Before
     public void setup() {
@@ -76,7 +67,5 @@ public class SpringSecurityJsonViewIntegrationTest {
 
         Assertions.assertEquals(exception.getCause().getClass(), IllegalArgumentException.class);
         assertTrue(exception.getCause().getMessage().equals("Ambiguous @JsonView declaration for roles ROLE_ADMIN,ROLE_USER"));
-
-
     }
 }
