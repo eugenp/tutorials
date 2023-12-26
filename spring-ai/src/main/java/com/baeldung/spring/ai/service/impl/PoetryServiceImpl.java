@@ -32,12 +32,12 @@ public class PoetryServiceImpl implements PoetryService {
     public PoetryDto getPoetryByGenreAndTheme(String genre, String theme) {
         BeanOutputParser<PoetryDto> poetryDtoBeanOutputParser = new BeanOutputParser<>(PoetryDto.class);
 
-        String promtString = """
+        String promptString = """
                 Write me {genre} poetry about {theme}
                 {format}
                 """;
 
-        PromptTemplate promptTemplate = new PromptTemplate(promtString);
+        PromptTemplate promptTemplate = new PromptTemplate(promptString);
         promptTemplate.add("genre", genre);
         promptTemplate.add("theme", theme);
         promptTemplate.add("format", poetryDtoBeanOutputParser.getFormat());
