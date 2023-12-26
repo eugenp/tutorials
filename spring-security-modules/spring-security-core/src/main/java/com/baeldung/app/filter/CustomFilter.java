@@ -19,7 +19,7 @@ public class CustomFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response,
-                         FilterChain chain) throws IOException, ServletException {
+            FilterChain chain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
         LOGGER.info("Request Info : " + req);
         chain.doFilter(request, response);

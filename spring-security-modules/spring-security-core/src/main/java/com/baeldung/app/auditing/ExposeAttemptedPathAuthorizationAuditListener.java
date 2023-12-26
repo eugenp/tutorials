@@ -36,7 +36,7 @@ public class ExposeAttemptedPathAuthorizationAuditListener extends AbstractAutho
 
     private String getName(Supplier<Authentication> authentication) {
         try {
-            return ((Authentication)authentication.get()).getName();
+            return authentication.get().getName();
         } catch (Exception var3) {
             return "<unknown>";
         }
