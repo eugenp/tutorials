@@ -35,13 +35,13 @@ public class CustomSecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+        http.authorizeHttpRequests(auth -> auth
                 .requestMatchers("/login")
                 .authenticated()
                 .anyRequest()
-                .hasRole("ADMIN")
-                .and()
-                .httpBasic(basic -> basic.authenticationEntryPoint(authEntryPoint));
+                .hasRole("ADMIN"))
+                .httpBasic(basic -> basic.authenticationEntryPoint(authEntryPoint))
+                .exceptionHandling(Customizer.withDefaults());
         return http.build();
     }
 

@@ -14,15 +14,12 @@ public class HttpSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         // Given: HttpSecurity configured
-
-        http.authorizeRequests()
+        http.authorizeHttpRequests(auth -> auth
           .requestMatchers("/public/**").permitAll()
           .requestMatchers("/admin/**").hasRole("ADMIN")
-          .anyRequest().authenticated()
-          .and()
+          .anyRequest().authenticated())
           .formLogin(form -> form.loginPage("/login").permitAll())
                 .logout(s-> s.permitAll());
-
 
         // When: Accessing specific URLs
         // Then: Access is granted based on defined rules

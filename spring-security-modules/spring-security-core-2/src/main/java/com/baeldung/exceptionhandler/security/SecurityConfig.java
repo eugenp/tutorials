@@ -44,7 +44,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
             .httpBasic(basic -> basic.disable())
-            .authorizeRequests()
+            .authorizeHttpRequests(auth -> auth
             .requestMatchers("/login")
             .permitAll()
             .requestMatchers("/customError")
@@ -54,11 +54,10 @@ public class SecurityConfig {
             .requestMatchers("/secured")
             .hasRole("ADMIN")
             .anyRequest()
-            .authenticated()
-            .and()
-            .formLogin(form -> form.failureHandler(authenticationFailureHandler()).
-                    successHandler(authenticationSuccessHandler())).
-                    exceptionHandling(ex -> ex.accessDeniedHandler(accessDeniedHandler()))
+            .authenticated())
+            .formLogin(form -> form.failureHandler(authenticationFailureHandler())
+                    .successHandler(authenticationSuccessHandler()))
+                    .exceptionHandling(ex -> ex.accessDeniedHandler(accessDeniedHandler()))
             .logout(Customizer.withDefaults());
         return http.build();
     }

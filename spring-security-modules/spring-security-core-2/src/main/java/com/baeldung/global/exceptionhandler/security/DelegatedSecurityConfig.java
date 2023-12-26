@@ -25,11 +25,11 @@ public class DelegatedSecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-            .requestMatchers("/login-handler")
-            .hasRole("ADMIN")
-            .and()
-            .httpBasic(basic -> basic.authenticationEntryPoint(authEntryPoint));
+        http.authorizeHttpRequests(auth -> auth
+                .requestMatchers("/login-handler")
+                .hasRole("ADMIN"))
+                .httpBasic(basic -> basic.authenticationEntryPoint(authEntryPoint))
+                .exceptionHandling(Customizer.withDefaults());
         return http.build();
     }
 

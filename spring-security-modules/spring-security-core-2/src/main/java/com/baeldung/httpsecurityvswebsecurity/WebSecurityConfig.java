@@ -15,34 +15,36 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class WebSecurityConfig {
 
-    @Autowired
-    private UserDetailsService userDetailsService;
+	@Autowired
+	private UserDetailsService userDetailsService;
 
-    @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+	@Bean
+	public BCryptPasswordEncoder bCryptPasswordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
 
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+	@Bean
+	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-        AuthenticationManagerBuilder authenticationManagerBuilder = http.getSharedObject(AuthenticationManagerBuilder.class);
-        authenticationManagerBuilder.userDetailsService(userDetailsService);
-        AuthenticationManager authenticationManager = authenticationManagerBuilder.build();
-        http.setSharedObject(AuthenticationManager.class, authenticationManager);
+		AuthenticationManagerBuilder authenticationManagerBuilder = http.getSharedObject(AuthenticationManagerBuilder.class);
+		authenticationManagerBuilder.userDetailsService(userDetailsService);
+		AuthenticationManager authenticationManager = authenticationManagerBuilder.build();
+		http.setSharedObject(AuthenticationManager.class, authenticationManager);
 
-        http.authorizeRequests()
-            .requestMatchers("/")
-            .permitAll()
-            .anyRequest()
-            .authenticated()
-            .and()
-            .formLogin(Customizer.withDefaults());
+		http.authorizeHttpRequests(auth -> auth
+			.requestMatchers("/")
+			.permitAll()
+			.anyRequest()
+			.authenticated())
+			.formLogin(Customizer.withDefaults())
+			.sessionManagement((session) -> session
+					.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+			);;
 
-        return http.build();
-    }
+		return http.build();
+	}
 
-    protected void configure(HttpSecurity http) throws Exception {
+	protected void configure(HttpSecurity http) throws Exception {
 
-    }
+	}
 }
