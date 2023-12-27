@@ -210,6 +210,9 @@
         <module>core-java-datetime-conversion</module>
         <module>core-java-httpclient</module>
         <module>java-native</module>
+        <module>java-rmi</module>
+        <module>java-spi</module>
+        <module>java-websocket</module>
     </modules>
 
     <dependencyManagement>
