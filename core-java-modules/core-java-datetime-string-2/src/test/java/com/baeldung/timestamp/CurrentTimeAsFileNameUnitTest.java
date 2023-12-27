@@ -27,7 +27,7 @@ public class CurrentTimeAsFileNameUnitTest {
     private static final SimpleDateFormat SIMPLEDATE_FORMAT = new SimpleDateFormat(TIMESTAMP_FORMAT);
 
     @Test
-    public void whenUsingCalendar_thenGetCurrentTime() {
+    public void whenUsingCalendar_thenCurrentTimeAsFileName() {
         String currentTime = SIMPLEDATE_FORMAT.format(Calendar.getInstance().getTime());
         String fileName = getFileName(currentTime);
         
@@ -35,7 +35,7 @@ public class CurrentTimeAsFileNameUnitTest {
     }
 
     @Test
-    public void whenUsingDate_thenGetCurrentTime() {
+    public void whenUsingDate_thenCurrentTimeAsFileName() {
         String currentTime = SIMPLEDATE_FORMAT.format(new Date());
         String fileName = getFileName(currentTime);
         
@@ -43,7 +43,7 @@ public class CurrentTimeAsFileNameUnitTest {
     }
     
     @Test
-    public void whenUsingInstant_thenGetCurrentTime() {
+    public void whenUsingInstant_thenCurrentTimeAsFileName() {
         String currentTime = Instant
           .now()
           .truncatedTo(ChronoUnit.SECONDS)
@@ -55,7 +55,7 @@ public class CurrentTimeAsFileNameUnitTest {
     }
 
     @Test
-    public void whenUsingLocalDateTime_thenGetCurrentTime() {
+    public void whenUsingLocalDateTime_thenCurrentTimeAsFileName() {
         String currentTime = LocalDateTime.now().format(DATETIME_FORMATTER);
         String fileName = getFileName(currentTime);
         
@@ -63,7 +63,7 @@ public class CurrentTimeAsFileNameUnitTest {
     }
 
     @Test
-    public void whenUsingZonedDateTime_thenGetCurrentTime() {
+    public void whenUsingZonedDateTime_thenCurrentTimeAsFileName() {
         String currentTime = ZonedDateTime
           .now(ZoneId.of("Europe/Paris"))
           .format(DATETIME_FORMATTER);
@@ -73,7 +73,7 @@ public class CurrentTimeAsFileNameUnitTest {
     }
 
     @Test
-    public void whenUsingOffsetDateTime_thenGetCurrentTime() {
+    public void whenUsingOffsetDateTime_thenCurrentTimeAsFileName() {
         String currentTime = OffsetDateTime
           .of(LocalDateTime.now(), ZoneOffset.of("+01:00"))
           .format(DATETIME_FORMATTER);
@@ -83,7 +83,7 @@ public class CurrentTimeAsFileNameUnitTest {
     }
 
     @Test
-    public void whenUsingJodaDateTime_thenGetCurrentTime() {
+    public void whenUsingJodaDateTime_thenCurrentTimeAsFileName() {
         String currentTime = DateTime.now().toString(TIMESTAMP_FORMAT);
         String fileName = getFileName(currentTime);
         
@@ -91,7 +91,7 @@ public class CurrentTimeAsFileNameUnitTest {
     }
 
     @Test
-    public void whenUsingJodaInstant_thenGetCurrentTime() {
+    public void whenUsingJodaInstant_thenCurrentTimeAsFileName() {
         String currentTime = DateTimeFormat
           .forPattern(TIMESTAMP_FORMAT)
           .print(org.joda.time.Instant.now().toDateTime());
