@@ -31,6 +31,7 @@
             <artifactId>java-harperdb</artifactId>
             <version>${haperdb-driver.version}</version>
             <scope>system</scope>
+            <!-- download the JDBC lib from https://www.cdata.com/drivers/harperdb/download/ !-->
             <systemPath>${project.basedir}/lib/cdata.jdbc.harperdb.jar</systemPath>
         </dependency>
         <dependency>

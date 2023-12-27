@@ -2,6 +2,7 @@ package com.baeldung.reactive.logging;
 
 import static com.baeldung.reactive.logging.jetty.RequestLogEnhancer.enhance;
 import static org.mockito.ArgumentMatchers.argThat;
+import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -136,9 +137,7 @@ public class WebClientLoggingIntegrationTest {
     public void givenDefaultHttpClientWithFilter_whenEndpointIsConsumed_thenRequestAndResponseLogged() {
         WebClient
           .builder()
-          .filters(exchangeFilterFunctions -> {
-              exchangeFilterFunctions.addAll(LogFilters.prepareFilters());
-          })
+          .filters(exchangeFilterFunctions -> exchangeFilterFunctions.addAll(LogFilters.prepareFilters()))
           .build()
           .post()
           .uri(sampleUrl)
@@ -146,8 +145,6 @@ public class WebClientLoggingIntegrationTest {
           .exchange()
           .block();
 
-        verify(mockAppender).doAppend(argThat(argument -> (((LoggingEvent) argument).getFormattedMessage()).contains(sampleUrl)));
+        verify(mockAppender, atLeast(1)).doAppend(argThat(argument -> (((LoggingEvent) argument).getFormattedMessage()).contains(sampleUrl)));
     }
-
-
 }

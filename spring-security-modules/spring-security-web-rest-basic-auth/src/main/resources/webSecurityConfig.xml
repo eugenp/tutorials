@@ -11,6 +11,7 @@
 
         <http-basic entry-point-ref="myBasicAuthenticationEntryPoint"/>
 
+        <intercept-url pattern="/**" access="permitAll" />
     </http>
 
     <authentication-manager>
@@ -22,7 +23,7 @@
     </authentication-manager>
 
     <global-method-security pre-post-annotations="enabled"/>
-        
+
     <beans:bean id="myBasicAuthenticationEntryPoint" class="com.baeldung.basic.MyBasicAuthenticationEntryPoint" />
 
 </beans:beans>

@@ -709,7 +709,6 @@
                 <module>apache-tika</module>
                 <module>apache-velocity</module>
                 <module>asciidoctor</module>
-                <module>asm</module>
                 <module>atomix</module>
                 <module>aws-modules</module>
                 <module>azure</module>
@@ -772,13 +771,17 @@
                 <module>libraries-4</module>
                 <module>libraries-5</module>
                 <module>libraries-6</module>
+                <module>libraries-7</module>
                 <module>libraries-ai</module>
                 <module>libraries-apache-commons-2</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
                 <module>libraries-apache-commons</module>
+                <module>libraries-bytecode</module>
+                <module>libraries-cli</module>
                 <module>libraries-concurrency</module>
                 <module>libraries-data-2</module>
+                <module>libraries-data-3</module>
                 <module>libraries-data-db</module>
                 <module>libraries-data-io</module>
                 <module>libraries-data</module>
@@ -788,11 +791,14 @@
                 <module>libraries-io</module>
                 <module>libraries-llms</module>
                 <module>libraries-primitive</module>
+                <module>libraries-reporting</module>
                 <module>libraries-rpc</module>
                 <module>libraries-security</module>
                 <module>libraries-server-2</module>
                 <module>libraries-server</module>
+                <module>libraries-stream</module>
                 <module>libraries-testing</module>
+                <module>libraries-testing-2</module>
                 <module>libraries-transform</module>
                 <module>libraries</module> <!-- very long running -->
                 <module>lightrun</module>
@@ -817,7 +823,7 @@
                 <module>pdf</module>
                 <module>performance-tests</module>
                 <module>persistence-modules</module>
-                <module>persistence-modules/java-harperdb</module>
+                <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->
                 <module>persistence-modules/spring-data-neo4j</module>
                 <module>protobuffer</module>
                 <module>quarkus-modules</module>
@@ -895,12 +901,13 @@
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>
                 <module>testing-modules/mockito-simple</module>
+                <module>timefold-solver</module>
                 <module>vaadin</module>
                 <module>vavr-modules</module>
                 <module>vertx-modules</module>
                 <module>web-modules</module>
                 <module>webrtc</module>
-                <!--<module>xml-2</module>--><!-- failing after upgrading to jdk17-->
+                <module>xml-2</module>
                 <module>xml</module>
                 <module>xstream</module>
             </modules>
@@ -955,7 +962,6 @@
                 <module>apache-tika</module>
                 <module>apache-velocity</module>
                 <module>asciidoctor</module>
-                <module>asm</module>
                 <module>atomix</module>
                 <module>aws-modules</module>
                 <module>azure</module>
@@ -1018,13 +1024,17 @@
                 <module>libraries-4</module>
                 <module>libraries-5</module>
                 <module>libraries-6</module>
+                <module>libraries-7</module>
                 <module>libraries-ai</module>
                 <module>libraries-apache-commons-2</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
                 <module>libraries-apache-commons</module>
+                <module>libraries-bytecode</module>
+                <module>libraries-cli</module>
                 <module>libraries-concurrency</module>
                 <module>libraries-data-2</module>
+                <module>libraries-data-3</module>
                 <module>libraries-data-db</module>
                 <module>libraries-data-io</module>
                 <module>libraries-data</module>
@@ -1034,11 +1044,14 @@
                 <module>libraries-io</module>
                 <module>libraries-llms</module>
                 <module>libraries-primitive</module>
+                <module>libraries-reporting</module>
                 <module>libraries-rpc</module>
                 <module>libraries-security</module>
                 <module>libraries-server-2</module>
                 <module>libraries-server</module>
+                <module>libraries-stream</module>
                 <module>libraries-testing</module>
+                <module>libraries-testing-2</module>
                 <module>libraries-transform</module>
                 <module>libraries</module> <!-- very long running -->
                 <module>lightrun</module>
@@ -1139,12 +1152,13 @@
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>
                 <module>testing-modules/mockito-simple</module>
+                <module>timefold-solver</module>
                 <module>vaadin</module>
                 <module>vavr-modules</module>
                 <module>vertx-modules</module>
                 <module>web-modules</module>
                 <module>webrtc</module>
-                <!--<module>xml-2</module>--><!-- failing after upgrading to jdk17-->
+                <module>xml-2</module>
                 <module>xml</module>
                 <module>xstream</module>
             </modules>

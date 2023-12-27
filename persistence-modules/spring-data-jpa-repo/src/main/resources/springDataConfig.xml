@@ -7,5 +7,5 @@
     http://www.springframework.org/schema/data/jpa
     http://www.springframework.org/schema/data/jpa/spring-jpa.xsd"
 >
-    <jpa:repositories base-package="com.baeldung.repository"/>
+    <jpa:repositories base-package="com.baeldung.jpa.repository"/>
 </beans>

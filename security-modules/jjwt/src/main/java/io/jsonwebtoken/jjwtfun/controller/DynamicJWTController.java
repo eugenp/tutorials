@@ -4,7 +4,7 @@ import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.impl.compression.CompressionCodecs;
+import io.jsonwebtoken.impl.compression.DeflateCompressionAlgorithm;
 import io.jsonwebtoken.jjwtfun.model.JwtResponse;
 import io.jsonwebtoken.jjwtfun.service.SecretService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +38,7 @@ public class DynamicJWTController extends BaseController {
     public JwtResponse dynamicBuildercompress(@RequestBody Map<String, Object> claims) throws UnsupportedEncodingException {
         String jws = Jwts.builder()
             .setClaims(claims)
-            .compressWith(CompressionCodecs.DEFLATE)
+            .compressWith(new DeflateCompressionAlgorithm())
             .signWith(SignatureAlgorithm.HS256, secretService.getHS256SecretBytes())
             .compact();
         return new JwtResponse(jws);
