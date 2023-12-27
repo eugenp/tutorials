@@ -1,4 +1,4 @@
-package com.baeldung.map.removeuplicate;
+package com.baeldung.map.removeduplicate;
 
 import static java.util.stream.Collectors.toMap;
 import static org.assertj.core.api.Assertions.assertThat;

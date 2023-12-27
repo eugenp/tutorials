@@ -11,9 +11,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-spring-5</artifactId>
+        <artifactId>parent-spring-6</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-spring-5</relativePath>
+        <relativePath>../../parent-spring-6</relativePath>
     </parent>
 
     <dependencies>
@@ -74,6 +74,16 @@
             <version>${hibernate-core.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate-validator.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.expressly</groupId>
+            <artifactId>expressly</artifactId>
+            <version>${expressly.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>${h2.version}</version>
@@ -92,7 +102,7 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-messaging</artifactId>
-            <version>${spring-security.version}</version>
+            <version>${spring-security-messaging.version}</version>
         </dependency>
         <!-- Logging -->
         <dependency>
@@ -107,24 +117,9 @@
         </dependency>
         <!-- Servlet -->
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>${javax.servlet-api.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet.jsp.jstl</groupId>
-            <artifactId>jstl-api</artifactId>
-            <version>${jstl-api.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet.jsp</groupId>
-            <artifactId>javax.servlet.jsp-api</artifactId>
-            <version>${javax.servlet.jsp-api.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
-            <version>${jstl.version}</version>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-api</artifactId>
+            <version>${jakartaee-api.version}</version>
         </dependency>
         <!-- Jackson Dependencies -->
         <dependency>
@@ -144,16 +139,10 @@
         </dependency>
         <!-- Test -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <version>${spring-boot-starter-test.version}</version>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
             <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-            <version>${jaxb-api.version}</version>
         </dependency>
     </dependencies>
 
@@ -194,11 +183,15 @@
     </build>
 
     <properties>
-        <hibernate-core.version>5.2.10.Final</hibernate-core.version>
-        <spring-data-jpa.version>1.11.3.RELEASE</spring-data-jpa.version>
-        <spring-boot-starter-test.version>1.5.10.RELEASE</spring-boot-starter-test.version>
+        <spring-security.version>6.1.5</spring-security.version>
+        <spring-security-messaging.version>6.0.2</spring-security-messaging.version>
+        <hibernate-core.version>6.1.7.Final</hibernate-core.version>
+        <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
+        <expressly.version>5.0.0</expressly.version>
+        <spring-data-jpa.version>3.1.0</spring-data-jpa.version>
+        <spring-boot-starter-test.version>3.1.0</spring-boot-starter-test.version>
+        <jakartaee-api.version>10.0.0</jakartaee-api.version>
         <cargo-maven2-plugin.version>1.7.6</cargo-maven2-plugin.version>
-        <jaxb-api.version>2.3.1</jaxb-api.version>
     </properties>
 
 </project>
