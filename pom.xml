@@ -768,7 +768,7 @@
                 <module>language-interop</module>
                 <module>libraries-2</module>
                 <module>libraries-3</module>
-                <module>libraries-7</module>
+                <module>libraries-4</module>
                 <module>libraries-ai</module>
                 <module>libraries-apache-commons-2</module>
                 <module>libraries-apache-commons-collections</module>
@@ -1018,7 +1018,7 @@
                 <module>language-interop</module>
                 <module>libraries-2</module>
                 <module>libraries-3</module>
-                <module>libraries-7</module>
+                <module>libraries-4</module>
                 <module>libraries-ai</module>
                 <module>libraries-apache-commons-2</module>
                 <module>libraries-apache-commons-collections</module>

@@ -14,7 +14,6 @@ Remember, for advanced libraries like [Jackson](/jackson) and [JUnit](/testing-m
 - [Introduction to JavaPoet](https://www.baeldung.com/java-poet)
 - [Introduction to Functional Java](https://www.baeldung.com/java-functional-library)
 - [Using libphonenumber to Validate Phone Numbers](https://www.baeldung.com/java-libphonenumber)
-- [Apache Commons Collections vs Google Guava](https://www.baeldung.com/apache-commons-collections-vs-guava)
 - [Guide to Simple Binary Encoding](https://www.baeldung.com/java-sbe)
 - [Guide to Resilience4j](https://www.baeldung.com/resilience4j)
 - [Java-R Integration](https://www.baeldung.com/java-r-integration)
