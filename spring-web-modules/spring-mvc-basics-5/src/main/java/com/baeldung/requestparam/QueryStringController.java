@@ -1,64 +1,65 @@
 package com.baeldung.requestparam;
 
-import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import jakarta.servlet.http.HttpServletRequest;
+
 @RestController
 public class QueryStringController {
 
-    @GetMapping("/api/user0")
+    @GetMapping("/api/byGetQueryString")
     public String byGetQueryString(HttpServletRequest request) {
         return request.getQueryString();
     }
 
-    @GetMapping("/api/user1")
+    @GetMapping("/api/byGetParameter")
     public String byGetParameter(HttpServletRequest request) {
         String username = request.getParameter("username");
         return "username:" + username;
     }
 
-    @GetMapping("/api/user2")
+    @GetMapping("/api/byGetParameterValues")
     public String byGetParameterValues(HttpServletRequest request) {
         String[] roles = request.getParameterValues("roles");
         return "roles:" + Arrays.toString(roles);
     }
 
-    @GetMapping("/api/user3")
-    public UserDTO byGetParameterMap(HttpServletRequest request) {
+    @GetMapping("/api/byGetParameterMap")
+    public UserDto byGetParameterMap(HttpServletRequest request) {
         Map<String, String[]> parameterMap = request.getParameterMap();
         String[] usernames = parameterMap.get("username");
         String[] roles = parameterMap.get("roles");
-        UserDTO userDTO = new UserDTO();
-        userDTO.setUsername(usernames[0]);
-        userDTO.setRoles(Arrays.asList(roles));
-        return userDTO;
+        UserDto userDto = new UserDto();
+        userDto.setUsername(usernames[0]);
+        userDto.setRoles(Arrays.asList(roles));
+        return userDto;
     }
 
-    @GetMapping("/api/user4")
-    public UserDTO byParameterName(String username, String[] roles) {
-        UserDTO userDTO = new UserDTO();
-        userDTO.setUsername(username);
-        userDTO.setRoles(Arrays.asList(roles));
-        return userDTO;
+    @GetMapping("/api/byParameterName")
+    public UserDto byParameterName(String username, String[] roles) {
+        UserDto userDto = new UserDto();
+        userDto.setUsername(username);
+        userDto.setRoles(Arrays.asList(roles));
+        return userDto;
     }
 
-    @GetMapping("/api/user5")
-    public UserDTO byRequestParamAnnotation(@RequestParam("username") String var1, @RequestParam("roles") List<String> var2) {
-        UserDTO userDTO = new UserDTO();
-        userDTO.setUsername(var1);
-        userDTO.setRoles(var2);
-        return userDTO;
+    @GetMapping("/api/byAnnoRequestParam")
+    public UserDto byAnnoRequestParam(@RequestParam("username") String var1, @RequestParam("roles") List<String> var2) {
+        UserDto userDto = new UserDto();
+        userDto.setUsername(var1);
+        userDto.setRoles(var2);
+        return userDto;
     }
 
-    @GetMapping("/api/user6")
-    public UserDTO byPojo(UserDTO userDTO) {
-        return userDTO;
+    @GetMapping("/api/byPojo")
+    public UserDto byPojo(UserDto userDto) {
+        return userDto;
     }
 
 }
