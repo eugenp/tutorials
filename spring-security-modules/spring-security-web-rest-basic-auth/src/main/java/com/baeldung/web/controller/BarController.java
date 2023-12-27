@@ -2,8 +2,9 @@ package com.baeldung.web.controller;
 
 import java.nio.charset.Charset;
 
-import org.apache.commons.codec.binary.Base64;
 import com.baeldung.web.dto.Bar;
+
+import org.apache.hc.client5.http.utils.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpHeaders;
@@ -35,7 +36,7 @@ public class BarController {
     public HttpHeaders createHeaders(String username, String password){
         return new HttpHeaders() {{
               String auth = username + ":" + password;
-              byte[] encodedAuth = Base64.encodeBase64( 
+              byte[] encodedAuth = Base64.encodeBase64(
                  auth.getBytes(Charset.forName("US-ASCII")) );
               String authHeader = "Basic " + new String( encodedAuth );
               set( "Authorization", authHeader );

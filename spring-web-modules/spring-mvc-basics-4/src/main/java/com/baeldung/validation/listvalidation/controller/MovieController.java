@@ -1,10 +1,10 @@
 package com.baeldung.validation.listvalidation.controller;
 
-import java.util.List;
-
-import javax.validation.Valid;
-import javax.validation.constraints.NotEmpty;
-
+import com.baeldung.validation.listvalidation.constraint.MaxSizeConstraint;
+import com.baeldung.validation.listvalidation.model.Movie;
+import com.baeldung.validation.listvalidation.service.MovieService;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotEmpty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,9 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.baeldung.validation.listvalidation.constraint.MaxSizeConstraint;
-import com.baeldung.validation.listvalidation.model.Movie;
-import com.baeldung.validation.listvalidation.service.MovieService;
+import java.util.List;
 
 @Validated
 @RestController

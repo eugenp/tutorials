@@ -3,13 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <artifactId>error-prone-project</artifactId>
+
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>static-analysis</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-
-    <artifactId>error-prone-project</artifactId>
 
     <build>
         <plugins>
@@ -19,7 +19,6 @@
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <release>17</release>
-                    <encoding>UTF-8</encoding>
                     <fork>true</fork>
                     <compilerArgs>
                         <arg>-XDcompilePolicy=simple</arg>
@@ -44,7 +43,7 @@
                         <path>
                             <groupId>com.baeldung</groupId>
                             <artifactId>my-bugchecker-plugin</artifactId>
-                            <version>1.0-SNAPSHOT</version>
+                            <version>${my-bugchecker-plugin.version}</version>
                         </path>
                     </annotationProcessorPaths>
                 </configuration>
@@ -53,9 +52,7 @@
     </build>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <my-bugchecker-plugin.version>1.0-SNAPSHOT</my-bugchecker-plugin.version>
     </properties>
 
 </project>

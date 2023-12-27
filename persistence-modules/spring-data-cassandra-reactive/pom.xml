@@ -23,6 +23,7 @@
         <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-core</artifactId>
+            <version>${reactor.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -45,6 +46,7 @@
         <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-test</artifactId>
+            <version>${reactor.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -57,6 +59,7 @@
 
     <properties>
         <cassandra-unit-spring.version>4.3.1.0</cassandra-unit-spring.version>
+        <reactor.version>3.6.0</reactor.version>
     </properties>
 
 </project>

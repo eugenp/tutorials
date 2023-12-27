@@ -13,7 +13,7 @@ public class OpenCsvIntegrationTest {
 
     @Test
     public void givenSampleData_whenReadUsingPosition_thenContentsRead() throws Exception {
-        List<CsvBean> values = Application.simpleSyncPositionBeanExample();
+        List<CsvBean> values = Application.simplePositionBeanExample();
 
         assertThat(values)
           .extracting(Object::toString)
@@ -28,7 +28,7 @@ public class OpenCsvIntegrationTest {
 
     @Test
     public void givenSampleData_whenReadUsingNamedColumn_thenContentsRead() throws Exception {
-        List<CsvBean> values = Application.namedSyncColumnBeanExample();
+        List<CsvBean> values = Application.namedColumnBeanExample();
 
         assertThat(values)
           .extracting(Object::toString)
@@ -41,7 +41,7 @@ public class OpenCsvIntegrationTest {
 
     @Test
     public void givenSampleData_whenReadLineByLine_thenContentsRead() throws Exception {
-        List<String[]> lineByLineContents = Application.readLineByLineSyncExample();
+        List<String[]> lineByLineContents = Application.readLineByLineExample();
 
         assertThat(lineByLineContents)
           .containsExactly(
@@ -56,7 +56,7 @@ public class OpenCsvIntegrationTest {
     @Test
     public void givenSampleData_whenReadAllLines_thenContentsRead() throws Exception {
 
-        List<String[]> contents = Application.readAllLinesSyncExample();
+        List<String[]> contents = Application.readAllLinesExample();
 
         assertThat(contents)
           .containsExactly(
@@ -70,7 +70,7 @@ public class OpenCsvIntegrationTest {
 
     @Test
     public void givenSampleData_whenWriteCsvUsingBean_thenContentsWritten() throws Exception {
-        String contents = Application.writeSyncCsvFromBeanExample();
+        String contents = Application.writeCsvFromBeanExample();
 
         assertThat(contents.split(NEW_LINE))
           .containsExactly(
@@ -82,7 +82,7 @@ public class OpenCsvIntegrationTest {
 
     @Test
     public void givenSampleData_whenWriteCsvLineByLine_thenContentsWritten() throws Exception {
-        String contents = Application.writeLineByLineSyncExample();
+        String contents = Application.writeLineByLineExample();
 
         assertThat(contents.split(NEW_LINE))
           .containsExactly(
@@ -94,7 +94,7 @@ public class OpenCsvIntegrationTest {
 
     @Test
     public void givenSampleData_whenWriteCsvAllLines_thenContentsWritten() throws Exception {
-        String contents = Application.writeAllLinesSyncExample();
+        String contents = Application.writeAllLinesExample();
 
         assertThat(contents.split(NEW_LINE))
           .containsExactly(
