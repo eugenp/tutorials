@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.jndi.JndiTemplate;
-import org.springframework.mock.jndi.SimpleNamingContextBuilder;
+import org.springframework.mock.jndi.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class JndiExceptionsUnitTest {
