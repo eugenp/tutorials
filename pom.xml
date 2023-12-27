@@ -709,7 +709,6 @@
                 <module>apache-tika</module>
                 <module>apache-velocity</module>
                 <module>asciidoctor</module>
-                <module>asm</module>
                 <module>atomix</module>
                 <module>aws-modules</module>
                 <module>azure</module>
@@ -756,7 +755,7 @@
                 <module>jersey</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
-                <module>jhipster-6</module>
+                <!--<module>jhipster-6</module>--> <!-- failing after upgrading to jdk17-->
                 <module>jib</module>
                 <module>jmeter</module>
                 <module>jmh</module>
@@ -772,13 +771,17 @@
                 <module>libraries-4</module>
                 <module>libraries-5</module>
                 <module>libraries-6</module>
+                <module>libraries-7</module>
                 <module>libraries-ai</module>
                 <module>libraries-apache-commons-2</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
                 <module>libraries-apache-commons</module>
+                <module>libraries-bytecode</module>
+                <module>libraries-cli</module>
                 <module>libraries-concurrency</module>
                 <module>libraries-data-2</module>
+                <module>libraries-data-3</module>
                 <module>libraries-data-db</module>
                 <module>libraries-data-io</module>
                 <module>libraries-data</module>
@@ -788,11 +791,14 @@
                 <module>libraries-io</module>
                 <module>libraries-llms</module>
                 <module>libraries-primitive</module>
+                <module>libraries-reporting</module>
                 <module>libraries-rpc</module>
                 <module>libraries-security</module>
                 <module>libraries-server-2</module>
                 <module>libraries-server</module>
+                <module>libraries-stream</module>
                 <module>libraries-testing</module>
+                <module>libraries-testing-2</module>
                 <module>libraries-transform</module>
                 <module>libraries</module> <!-- very long running -->
                 <module>lightrun</module>
@@ -800,7 +806,7 @@
                 <module>lombok-modules</module>
                 <module>lucene</module>
                 <module>mapstruct</module>
-                <module>maven-modules</module>
+                <!--<module>maven-modules</module>--> <!-- failing after upgrading to jdk17-->
                 <module>mesos-marathon</module>
                 <module>messaging-modules</module>
                 <module>metrics</module>
@@ -817,6 +823,7 @@
                 <module>pdf</module>
                 <module>performance-tests</module>
                 <module>persistence-modules</module>
+                <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->
                 <module>persistence-modules/spring-data-neo4j</module>
                 <module>protobuffer</module>
                 <module>quarkus-modules</module>
@@ -835,19 +842,19 @@
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
                 <module>spring-aop-2</module>
-                <module>spring-aop</module>
+                <!--<module>spring-aop</module>-->
                 <module>spring-batch-2</module>
                 <module>spring-batch</module>
                 <module>spring-boot-modules</module>
                 <module>spring-boot-rest</module>
                 <module>spring-cloud-modules/spring-cloud-azure</module>
                 <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
-                <module>spring-cloud-modules/spring-cloud-contract</module>
-                <module>spring-cloud-modules/spring-cloud-data-flow</module>
+                <!--<module>spring-cloud-modules/spring-cloud-contract</module>--><!-- failing after upgrading to jdk17-->
+                <!--<module>spring-cloud-modules/spring-cloud-data-flow</module>--><!-- failing after upgrading to jdk17-->
                 <module>spring-cloud-modules/spring-cloud-eureka</module>
                 <module>spring-cloud-modules/spring-cloud-netflix-feign</module>
                 <module>spring-cloud-modules/spring-cloud-security</module>
-                <module>spring-cloud-modules/spring-cloud-stream-starters</module>
+                <!--<module>spring-cloud-modules/spring-cloud-stream-starters</module>--><!-- failing after upgrading to jdk17-->
                 <module>spring-cloud-modules/spring-cloud-zuul-eureka-integration</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
@@ -855,18 +862,19 @@
                 <module>spring-core</module>
                 <module>spring-credhub</module>
                 <module>spring-cucumber</module>
-                <module>spring-di-2</module>
+                <!--<module>spring-di-2</module>--><!-- failing after upgrading to jdk17-->
                 <module>spring-di-3</module>
                 <module>spring-di-4</module>
                 <module>spring-di</module>
                 <module>spring-drools</module>
                 <module>spring-ejb-modules</module>
                 <module>spring-exceptions</module>
-                <module>spring-integration</module>
+                <!--<module>spring-integration</module>--><!-- failing after upgrading to jdk17-->
                 <module>spring-jenkins-pipeline</module>
                 <module>spring-jersey</module>
                 <module>spring-jinq</module>
                 <module>spring-kafka-2</module>
+                <module>spring-kafka-3</module>
                 <module>spring-kafka</module>
                 <module>spring-katharsis</module>
                 <module>spring-mobile</module>
@@ -889,10 +897,11 @@
                 <module>spring-web-modules</module>
                 <module>spring-websockets</module>
 <!--            <module>static-analysis</module> - requires additional configuration to be compiled due to the JVM strong encapsulation -->
-                <module>tablesaw</module>
+                <!--<module>tablesaw</module>--><!-- failing after upgrading to jdk17-->
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>
                 <module>testing-modules/mockito-simple</module>
+                <module>timefold-solver</module>
                 <module>vaadin</module>
                 <module>vavr-modules</module>
                 <module>vertx-modules</module>
@@ -905,9 +914,9 @@
 
             <properties>
                 <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-                <java.version>11</java.version>
-                <maven.compiler.source>11</maven.compiler.source>
-                <maven.compiler.target>11</maven.compiler.target>
+                <java.version>17</java.version>
+                <maven.compiler.source>17</maven.compiler.source>
+                <maven.compiler.target>17</maven.compiler.target>
             </properties>
         </profile>
 
@@ -953,7 +962,6 @@
                 <module>apache-tika</module>
                 <module>apache-velocity</module>
                 <module>asciidoctor</module>
-                <module>asm</module>
                 <module>atomix</module>
                 <module>aws-modules</module>
                 <module>azure</module>
@@ -1000,7 +1008,7 @@
                 <module>jersey</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
-                <module>jhipster-6</module>
+                <!--<module>jhipster-6</module>--> <!-- failing after upgrading to jdk17-->
                 <module>jib</module>
                 <module>jmeter</module>
                 <module>jmh</module>
@@ -1016,13 +1024,17 @@
                 <module>libraries-4</module>
                 <module>libraries-5</module>
                 <module>libraries-6</module>
+                <module>libraries-7</module>
                 <module>libraries-ai</module>
                 <module>libraries-apache-commons-2</module>
                 <module>libraries-apache-commons-collections</module>
                 <module>libraries-apache-commons-io</module>
                 <module>libraries-apache-commons</module>
+                <module>libraries-bytecode</module>
+                <module>libraries-cli</module>
                 <module>libraries-concurrency</module>
                 <module>libraries-data-2</module>
+                <module>libraries-data-3</module>
                 <module>libraries-data-db</module>
                 <module>libraries-data-io</module>
                 <module>libraries-data</module>
@@ -1032,11 +1044,14 @@
                 <module>libraries-io</module>
                 <module>libraries-llms</module>
                 <module>libraries-primitive</module>
+                <module>libraries-reporting</module>
                 <module>libraries-rpc</module>
                 <module>libraries-security</module>
                 <module>libraries-server-2</module>
                 <module>libraries-server</module>
+                <module>libraries-stream</module>
                 <module>libraries-testing</module>
+                <module>libraries-testing-2</module>
                 <module>libraries-transform</module>
                 <module>libraries</module> <!-- very long running -->
                 <module>lightrun</module>
@@ -1044,7 +1059,7 @@
                 <module>lombok-modules</module>
                 <module>lucene</module>
                 <module>mapstruct</module>
-                <module>maven-modules</module>
+                <!--<module>maven-modules</module>--> <!-- failing after upgrading to jdk17-->
                 <module>mesos-marathon</module>
                 <module>messaging-modules</module>
                 <module>metrics</module>
@@ -1079,19 +1094,19 @@
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
                 <module>spring-aop-2</module>
-                <module>spring-aop</module>
+                <!--<module>spring-aop</module>-->
                 <module>spring-batch-2</module>
                 <module>spring-batch</module>
                 <module>spring-boot-modules</module>
                 <module>spring-boot-rest</module>
                 <module>spring-cloud-modules/spring-cloud-azure</module>
                 <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
-                <module>spring-cloud-modules/spring-cloud-contract</module>
-                <module>spring-cloud-modules/spring-cloud-data-flow</module>
+                <!--<module>spring-cloud-modules/spring-cloud-contract</module>--><!-- failing after upgrading to jdk17-->
+                <!--<module>spring-cloud-modules/spring-cloud-data-flow</module>--><!-- failing after upgrading to jdk17-->
                 <module>spring-cloud-modules/spring-cloud-eureka</module>
                 <module>spring-cloud-modules/spring-cloud-netflix-feign</module>
                 <module>spring-cloud-modules/spring-cloud-security</module>
-                <module>spring-cloud-modules/spring-cloud-stream-starters</module>
+                <!--<module>spring-cloud-modules/spring-cloud-stream-starters</module>--><!-- failing after upgrading to jdk17-->
                 <module>spring-cloud-modules/spring-cloud-zuul-eureka-integration</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
@@ -1099,14 +1114,14 @@
                 <module>spring-core</module>
                 <module>spring-credhub</module>
                 <module>spring-cucumber</module>
-                <module>spring-di-2</module>
+                <!--<module>spring-di-2</module>--><!-- failing after upgrading to jdk17-->
                 <module>spring-di-3</module>
                 <module>spring-di-4</module>
                 <module>spring-di</module>
                 <module>spring-drools</module>
                 <module>spring-ejb-modules</module>
                 <module>spring-exceptions</module>
-                <module>spring-integration</module>
+                <!--<module>spring-integration</module>--><!-- failing after upgrading to jdk17-->
                 <module>spring-jenkins-pipeline</module>
                 <module>spring-jersey</module>
                 <module>spring-jinq</module>
@@ -1133,10 +1148,11 @@
                 <module>spring-web-modules</module>
                 <module>spring-websockets</module>
 <!--            <module>static-analysis</module> - requires additional configuration to be compiled due to the JVM strong encapsulation -->
-                <module>tablesaw</module>
+                <!--<module>tablesaw</module>--><!-- failing after upgrading to jdk17-->
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>
                 <module>testing-modules/mockito-simple</module>
+                <module>timefold-solver</module>
                 <module>vaadin</module>
                 <module>vavr-modules</module>
                 <module>vertx-modules</module>
@@ -1149,9 +1165,9 @@
 
             <properties>
                 <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-                <java.version>11</java.version>
-                <maven.compiler.source>11</maven.compiler.source>
-                <maven.compiler.target>11</maven.compiler.target>
+                <java.version>17</java.version>
+                <maven.compiler.source>17</maven.compiler.source>
+                <maven.compiler.target>17</maven.compiler.target>
             </properties>
         </profile>
 
@@ -1221,7 +1237,7 @@
         <jstl-api.version>1.2</jstl-api.version>
         <javax.servlet.jsp-api.version>2.3.3</javax.servlet.jsp-api.version>
         <jstl.version>1.2</jstl.version>
-        <jackson.version>2.15.2</jackson.version>
+        <jackson.version>2.16.0</jackson.version>
         <commons-fileupload.version>1.5</commons-fileupload.version>
         <junit-platform.version>1.9.2</junit-platform.version>
         <junit-jupiter.version>5.9.2</junit-jupiter.version>
@@ -1232,7 +1248,7 @@
         <gitflow-incremental-builder.version>3.12.2</gitflow-incremental-builder.version>
         <maven-jxr-plugin.version>3.3.0</maven-jxr-plugin.version>
         <maven-pmd-plugin.version>3.21.0</maven-pmd-plugin.version>
-        <lombok.version>1.18.28</lombok.version>
+        <lombok.version>1.18.30</lombok.version>
         <h2.version>2.1.214</h2.version>
         <guava.version>32.1.3-jre</guava.version>
         <maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>

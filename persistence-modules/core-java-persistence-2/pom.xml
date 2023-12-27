@@ -28,8 +28,8 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
             <version>${mysql.driver.version}</version>
         </dependency>
         <!-- This jar is not in maven central repo due to some license issues. -->
@@ -85,7 +85,7 @@
     <properties>
         <mssql.driver.version>8.4.1.jre11</mssql.driver.version>
         <oracle.driver.version>10.2.0.4.0</oracle.driver.version>
-        <mysql.driver.version>8.0.22</mysql.driver.version>
+        <mysql.driver.version>8.2.0</mysql.driver.version>
         <jooq.version>3.11.11</jooq.version>
         <json.version>20220320</json.version>
         <microstream.storage.version>07.00.00-MS-GA</microstream.storage.version>

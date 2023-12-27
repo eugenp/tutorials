@@ -21,8 +21,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 public class KafkaStreamsLiveTest {
-    private String bootstrapServers = "localhost:9092";
-    private Path stateDirectory;
+    private final String bootstrapServers = "localhost:9092";
 
     @Test
     @Ignore("it needs to have kafka broker running on local")
@@ -44,8 +43,8 @@ public class KafkaStreamsLiveTest {
         
         // Use a temporary directory for storing state, which will be automatically removed after the test.
         try {
-            this.stateDirectory = Files.createTempDirectory("kafka-streams");
-            streamsConfiguration.put(StreamsConfig.STATE_DIR_CONFIG, this.stateDirectory.toAbsolutePath()
+            Path stateDirectory = Files.createTempDirectory("kafka-streams");
+            streamsConfiguration.put(StreamsConfig.STATE_DIR_CONFIG, stateDirectory.toAbsolutePath()
                 .toString());
         } catch (final IOException e) {
             throw new UncheckedIOException("Cannot create temporary directory", e);

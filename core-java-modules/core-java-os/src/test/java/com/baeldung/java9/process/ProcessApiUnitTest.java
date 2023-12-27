@@ -69,7 +69,7 @@ public class ProcessApiUnitTest {
             });
         });
 
-        Thread.sleep(10000);
+        Thread.sleep(5000);
 
         childProc = ProcessHandle.current().children();
         childProc.forEach(procHandle -> {
@@ -100,7 +100,7 @@ public class ProcessApiUnitTest {
     private void waistCPU() throws NoSuchAlgorithmException {
         ArrayList<Integer> randArr = new ArrayList<Integer>(4096);
         SecureRandom sr = SecureRandom.getInstanceStrong();
-        Duration somecpu = Duration.ofMillis(4200L);
+        Duration somecpu = Duration.ofMillis(2000L);
         Instant end = Instant.now().plus(somecpu);
         while (Instant.now().isBefore(end)) {
             // System.out.println(sr.nextInt());

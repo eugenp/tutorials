@@ -43,8 +43,8 @@
             <version>${jstl.version}</version>
         </dependency>
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
             <version>${mysql-connector-java.version}</version>
         </dependency>
         <dependency>
@@ -104,7 +104,7 @@
     <properties>
         <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
         <hibernate.version>5.2.5.Final</hibernate.version>
-        <mysql-connector-java.version>6.0.6</mysql-connector-java.version>
+        <mysql-connector-java.version>8.2.0</mysql-connector-java.version>
         <javax.annotation-api.version>1.3.2</javax.annotation-api.version>
     </properties>
 

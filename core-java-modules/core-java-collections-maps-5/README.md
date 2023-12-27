@@ -10,4 +10,5 @@
 - [How to Invert a Map in Java](https://www.baeldung.com/java-invert-map)
 - [Implementing a Map with Multiple Keys in Java](https://www.baeldung.com/java-multiple-keys-map)
 - [Difference Between Map.ofEntries() and Map.of()](https://www.baeldung.com/map-ofentries-and-map-of)
-- More articles: [[<-- prev]](../core-java-collections-maps-4)
+- More articles: [[<-- prev]](/core-java-modules/core-java-collections-maps-4)[[next -->]](/core-java-modules/core-java-collections-maps-6)
+

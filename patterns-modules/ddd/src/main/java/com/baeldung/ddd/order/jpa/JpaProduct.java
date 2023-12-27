@@ -2,7 +2,7 @@ package com.baeldung.ddd.order.jpa;
 
 import java.math.BigDecimal;
 
-import javax.persistence.Embeddable;
+import jakarta.persistence.Embeddable;
 
 @Embeddable
 class JpaProduct {

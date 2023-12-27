@@ -73,7 +73,6 @@
     </build>
 
     <properties>
-        <java.version>15</java.version>
         <spring-webflux.version>6.0.3</spring-webflux.version>
         <embedded-redis.version>0.7.3</embedded-redis.version>
     </properties>

@@ -28,6 +28,16 @@
             <artifactId>quasar-reactive-streams</artifactId>
             <version>${quasar.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.jctools</groupId>
+            <artifactId>jctools-core</artifactId>
+            <version>${jctools.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-core</artifactId>
+            <version>${jmh-core.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -77,6 +87,7 @@
 
     <properties>
         <quasar.version>0.8.0</quasar.version>
+        <jctools.version>2.1.2</jctools.version>
     </properties>
 
 </project>

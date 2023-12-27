@@ -53,7 +53,7 @@
     <properties>
         <wiremock-jre8.version>2.35.0</wiremock-jre8.version>
         <resilience4j-spring-boot2.version>2.0.2</resilience4j-spring-boot2.version>
-        <jackson-datatype-jsr310.version>2.15.2</jackson-datatype-jsr310.version>
+        <jackson-datatype-jsr310.version>2.16.0</jackson-datatype-jsr310.version>
     </properties>
 
 </project>

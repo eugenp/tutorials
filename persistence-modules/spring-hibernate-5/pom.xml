@@ -99,8 +99,8 @@
             <version>${hsqldb.version}</version>
         </dependency>
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
             <version>${mysql-connector-java.version}</version>
         </dependency>
         <dependency>
@@ -133,7 +133,7 @@
         <!-- persistence -->
         <hibernate.version>5.6.15.Final</hibernate.version>
         <hibernatesearch.version>5.8.2.Final</hibernatesearch.version>
-        <mysql-connector-java.version>8.0.7-dmr</mysql-connector-java.version>
+        <mysql-connector-java.version>8.2.0</mysql-connector-java.version>
         <tomcat-dbcp.version>9.0.0.M26</tomcat-dbcp.version>
         <jta.version>1.1</jta.version>
         <com.sun.xml.version>2.3.0.1</com.sun.xml.version>

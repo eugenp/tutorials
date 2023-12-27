@@ -96,8 +96,8 @@
     <properties>
         <spring-test.version>6.0.6</spring-test.version>
         <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
-        <reactor-core.version>3.5.4</reactor-core.version>
-        <reactor-test.version>3.5.4></reactor-test.version>
+        <reactor-core.version>3.6.0</reactor-core.version>
+        <reactor-test.version>3.6.0></reactor-test.version>
         <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
     </properties>
 
