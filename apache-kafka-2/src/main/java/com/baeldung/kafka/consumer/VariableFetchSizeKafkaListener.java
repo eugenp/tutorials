@@ -16,18 +16,19 @@ public class VariableFetchSizeKafkaListener implements Runnable {
     private final String topic;
     private final KafkaConsumer<String, String> consumer;
 
-    public VariableFetchSizeKafkaListener(String topic, Properties consumerProperties) {
+    public VariableFetchSizeKafkaListener(String topic, KafkaConsumer<String, String> consumer) {
         this.topic = topic;
-        this.consumer = new KafkaConsumer<>(consumerProperties);
+        this.consumer = consumer;
     }
 
     @Override
     public void run() {
         consumer.subscribe(Collections.singletonList(topic));
         int pollCount = 1;
+
         while (true) {
             List<ConsumerRecord<String, String>> records = new ArrayList<>();
-            for (ConsumerRecord<String, String> record : consumer.poll(Duration.ofMillis(1_000))) {
+            for (ConsumerRecord<String, String> record : consumer.poll(Duration.ofMillis(500))) {
                 records.add(record);
             }
             if(!records.isEmpty()) {
