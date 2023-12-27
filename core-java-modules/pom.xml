@@ -59,15 +59,15 @@
         <module>core-java-lang-oop-constructors-2</module>
         <module>core-java-methods</module>
         <module>core-java-networking-3</module>
-        <!--<module>core-java-os</module>--> <!-- failing after upgrading to jdk17 -->
+        <module>core-java-os</module>
         <module>core-java-perf-2</module>
         <module>core-java-streams-4</module>
         <module>core-java-streams-5</module>
         <module>core-java-streams-collect</module>
         <module>core-java-streams-maps</module>
-        <!--<module>core-java-string-operations-3</module>--> <!-- failing after upgrading to jdk17 -->
+        <module>core-java-string-operations-3</module>
         <module>core-java-string-operations-4</module>
-        <!--<module>core-java-string-operations-5</module>--> <!-- failing after upgrading to jdk17 -->
+        <module>core-java-string-operations-5</module>
         <!--<module>core-java-strings</module> Failing test cases JAVA-24414-->
         <module>core-java-time-measurements</module>
         <module>core-java-annotations</module>
