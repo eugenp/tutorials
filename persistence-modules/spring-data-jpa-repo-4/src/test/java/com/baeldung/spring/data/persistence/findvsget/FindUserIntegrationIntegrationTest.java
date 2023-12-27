@@ -11,7 +11,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @DisplayName("findBy test:")
-class FindUserIntegrationTest extends DatabaseConfigurationBaseTest {
+class FindUserIntegrationIntegrationTest extends DatabaseConfigurationBaseIntegrationTest {
 
 
     @Autowired

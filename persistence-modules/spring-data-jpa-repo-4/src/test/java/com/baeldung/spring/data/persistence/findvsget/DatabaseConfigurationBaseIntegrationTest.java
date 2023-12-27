@@ -17,7 +17,7 @@ import org.springframework.boot.test.context.SpringBootTest;
     "spring.jpa.generate-ddl=true",
     "spring.jpa.show-sql=false"
 })
-abstract class DatabaseConfigurationBaseTest {
+abstract class DatabaseConfigurationBaseIntegrationTest {
 
     private static final int NUMBER_OF_USERS = 10;
 

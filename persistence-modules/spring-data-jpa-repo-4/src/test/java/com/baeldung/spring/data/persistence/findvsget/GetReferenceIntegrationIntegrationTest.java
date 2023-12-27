@@ -19,7 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 
 @DisplayName("getReferenceBy test:")
-class GetReferenceIntegrationTest extends DatabaseConfigurationBaseTest {
+class GetReferenceIntegrationIntegrationTest extends DatabaseConfigurationBaseTest {
 
     private static final long EXISTING_ID = 1L;
 
