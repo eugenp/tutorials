@@ -2,7 +2,7 @@ package com.baeldung.requestparam;
 
 import java.util.List;
 
-public class UserDTO {
+public class UserDto {
     private String username;
     private List<String> roles;
 
