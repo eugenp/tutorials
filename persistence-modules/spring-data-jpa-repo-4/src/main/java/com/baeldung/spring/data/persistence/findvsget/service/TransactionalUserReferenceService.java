@@ -8,11 +8,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@Transactional
 public class TransactionalUserReferenceService {
 
     private static final Logger log = LoggerFactory.getLogger(TransactionalUserReferenceService.class);
     private JpaRepository<User, Long> repository;
+
+    @Transactional
     public User findUserReference(final long id) {
         log.info("Before requesting a user");
         final User user = repository.getReferenceById(id);
@@ -20,16 +21,13 @@ public class TransactionalUserReferenceService {
         return user;
     }
 
+    @Transactional
     public User findAndUseUserReference(final long id) {
         final User user = repository.getReferenceById(id);
         log.info("Before accessing a username");
         final String firstName = user.getFirstName();
         log.info("After accessing a username: {}", firstName);
         return user;
-    }
-
-    public JpaRepository<User, Long> getRepository() {
-        return repository;
     }
 
     public void setRepository(final JpaRepository<User, Long> repository) {

@@ -14,6 +14,6 @@ public interface NewTransactionUserRepository extends JpaRepository<User, Long> 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     User getReferenceById(Long id);
 
-@Override
-Optional<User> findById(Long id);
+    @Override
+    Optional<User> findById(Long id);
 }

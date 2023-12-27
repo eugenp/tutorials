@@ -28,55 +28,55 @@ class GetReferenceIntegrationTest extends DatabaseConfigurationBaseTest {
     class GivenNonTransactionalService {
 
         @Autowired
-        private NonTransactionalUserReferenceService service;
+        private NonTransactionalUserReferenceService nonTransactionalService;
 
         @BeforeEach
         void configureService(@Autowired SimpleUserRepository repository) {
-            service.setRepository(repository);
+            nonTransactionalService.setRepository(repository);
         }
 
         @Test
         void whenFindUserReferenceUsingOutsideServiceThenThrowsException() {
-            final User user = service.findUserReference(EXISTING_ID);
+            final User user = nonTransactionalService.findUserReference(EXISTING_ID);
             assertThatExceptionOfType(LazyInitializationException.class)
                 .isThrownBy(user::getFirstName);
         }
 
         @Test
         void whenFindUserReferenceNotUsingOutsideServiceThenDontThrowException() {
-            final User user = service.findUserReference(EXISTING_ID);
+            final User user = nonTransactionalService.findUserReference(EXISTING_ID);
             assertThat(user).isNotNull();
         }
 
         @Test
         void whenFindUserReferenceUsingInsideServiceThenThrowsException() {
             assertThatExceptionOfType(LazyInitializationException.class)
-                .isThrownBy(() -> service.findAndUseUserReference(EXISTING_ID));
+                .isThrownBy(() -> nonTransactionalService.findAndUseUserReference(EXISTING_ID));
         }
     }
 
     @Nested
-    @DisplayName("given non-transactional service, even if user exists")
+    @DisplayName("given transactional service with simple repository, even if user exists")
     class GivenTransactionalService {
 
         @Autowired
-        private TransactionalUserReferenceService service;
+        private TransactionalUserReferenceService transactionalService;
 
         @BeforeEach
         void configureService(@Autowired SimpleUserRepository repository) {
-            service.setRepository(repository);
+            transactionalService.setRepository(repository);
         }
 
         @Test
         void whenFindUserReferenceUsingOutsideServiceThenThrowsException() {
-            final User user = service.findUserReference(EXISTING_ID);
+            final User user = transactionalService.findUserReference(EXISTING_ID);
             assertThatExceptionOfType(LazyInitializationException.class)
                 .isThrownBy(user::getFirstName);
         }
 
         @Test
         void whenFindUserReferenceNotUsingOutsideServiceThenDontThrowException() {
-            final User user = service.findUserReference(EXISTING_ID);
+            final User user = transactionalService.findUserReference(EXISTING_ID);
             assertThat(user).isNotNull();
         }
 
@@ -84,41 +84,42 @@ class GetReferenceIntegrationTest extends DatabaseConfigurationBaseTest {
         @ArgumentsSource(UserProvider.class)
         void whenFindUserReferenceUsingInsideServiceThenReturnsUser(Long id, String firstName, String lastName) {
             final User expected = new User(id, firstName, lastName);
-            final User actual = service.findAndUseUserReference(id);
+            final User actual = transactionalService.findAndUseUserReference(id);
             assertThat(actual).isEqualTo(expected);
         }
     }
 
     @Nested
-    @DisplayName("given non-transactional service with new transaction repository, even if user exists")
+    @DisplayName("given transactional service with new transaction repository, even if user exists")
     class GivenTransactionalServiceWithNewTransactionRepository {
 
         @Autowired
-        private TransactionalUserReferenceService service;
+        private TransactionalUserReferenceService transactionalServiceWithNewTransactionRepository;
 
         @BeforeEach
         void configureService(@Autowired NewTransactionUserRepository repository) {
-            service.setRepository(repository);
+            transactionalServiceWithNewTransactionRepository.setRepository(repository);
         }
 
         @Test
         void whenFindUserReferenceUsingOutsideServiceThenThrowsException() {
-            final User user = service.findUserReference(EXISTING_ID);
+            final User user = transactionalServiceWithNewTransactionRepository
+                .findUserReference(EXISTING_ID);
             assertThatExceptionOfType(LazyInitializationException.class)
                 .isThrownBy(user::getFirstName);
         }
 
         @Test
         void whenFindUserReferenceNotUsingOutsideServiceThenDontThrowException() {
-            final User user = service.findUserReference(EXISTING_ID);
+            final User user = transactionalServiceWithNewTransactionRepository.findUserReference(EXISTING_ID);
             assertThat(user).isNotNull();
         }
 
         @Test
         void whenFindUserReferenceUsingInsideServiceThenThrowsExceptionDueToSeparateTransactions() {
-            final User user = service.findUserReference(EXISTING_ID);
             assertThatExceptionOfType(LazyInitializationException.class)
-                .isThrownBy(user::getFirstName);
+                .isThrownBy(() -> transactionalServiceWithNewTransactionRepository
+                    .findAndUseUserReference(EXISTING_ID));
         }
     }
 }
