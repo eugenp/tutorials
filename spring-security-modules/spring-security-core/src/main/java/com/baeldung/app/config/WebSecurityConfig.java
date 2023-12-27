@@ -18,12 +18,11 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+        http.authorizeHttpRequests(auth -> auth
                 .requestMatchers("/css/**", "/js/**", "/loggedout")
                 .permitAll()
                 .anyRequest()
-                .authenticated()
-                .and()
+                .authenticated())
                 .httpBasic(basic -> basic.disable())
                 .logout(logout -> logout.disable())
                 .csrf(csrf -> csrf.disable());
