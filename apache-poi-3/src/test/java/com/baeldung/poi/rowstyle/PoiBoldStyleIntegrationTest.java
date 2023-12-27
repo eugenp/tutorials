@@ -4,8 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -24,7 +22,7 @@ import org.junit.jupiter.api.Test;
 
 public class PoiBoldStyleIntegrationTest {
 
-    private void writeSampleSheet(Path destination, Workbook workbook) throws FileNotFoundException, IOException {
+    private void writeSampleSheet(Path destination, Workbook workbook) throws IOException {
         Sheet sheet = workbook.createSheet();
         CellStyle boldStyle = PoiUtils.boldFontStyle(workbook);
 
@@ -90,7 +88,7 @@ public class PoiBoldStyleIntegrationTest {
             writeSampleSheet(sheetFile, workbook);
         }
 
-        try (Workbook workbook = new HSSFWorkbook(new FileInputStream(sheetFile.toFile()))) {
+        try (Workbook workbook = new HSSFWorkbook(Files.newInputStream(sheetFile))) {
             Sheet sheet = workbook.getSheetAt(0);
             Row row0 = sheet.getRow(0);
 

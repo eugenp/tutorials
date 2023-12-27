@@ -1,6 +1,5 @@
 package com.baeldung.poi.rowstyle;
 
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Path;
@@ -46,7 +45,7 @@ public class PoiUtils {
         return boldStyle;
     }
 
-    public static void write(Workbook workbook, Path path) throws FileNotFoundException, IOException {
+    public static void write(Workbook workbook, Path path) throws IOException {
         try (FileOutputStream fileOut = new FileOutputStream(path.toFile())) {
             workbook.write(fileOut);
         }
