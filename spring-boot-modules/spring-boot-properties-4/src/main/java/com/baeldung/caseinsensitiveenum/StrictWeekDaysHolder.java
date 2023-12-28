@@ -1,28 +1,30 @@
 package com.baeldung.caseinsensitiveenum;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
-public class LenientWeekDaysHolder implements WeekDaysHolder {
+@Component
+public class StrictWeekDaysHolder implements WeekDaysHolder {
 
-    @Value("${lenient.monday}")
+    @Value("${strict.monday}")
     private WeekDays monday;
 
-    @Value("${lenient.tuesday}")
+    @Value("${strict.tuesday}")
     private WeekDays tuesday;
 
-    @Value("${lenient.wednesday}")
+    @Value("${strict.wednesday}")
     private WeekDays wednesday;
 
-    @Value("${lenient.thursday}")
+    @Value("${strict.thursday}")
     private WeekDays thursday;
 
-    @Value("${lenient.friday}")
+    @Value("${strict.friday}")
     private WeekDays friday;
 
-    @Value("${lenient.saturday}")
+    @Value("${strict.saturday}")
     private WeekDays saturday;
 
-    @Value("${lenient.sunday}")
+    @Value("${strict.sunday}")
     private WeekDays sunday;
 
     @Override
