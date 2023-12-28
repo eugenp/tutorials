@@ -1,15 +1,15 @@
 package com.baeldung.caseinsensitiveenum;
 
 
-import static com.baeldung.caseinsensitiveenum.week.SimpleWeekDays.FRIDAY;
-import static com.baeldung.caseinsensitiveenum.week.SimpleWeekDays.MONDAY;
-import static com.baeldung.caseinsensitiveenum.week.SimpleWeekDays.SATURDAY;
-import static com.baeldung.caseinsensitiveenum.week.SimpleWeekDays.SUNDAY;
-import static com.baeldung.caseinsensitiveenum.week.SimpleWeekDays.THURSDAY;
-import static com.baeldung.caseinsensitiveenum.week.SimpleWeekDays.TUESDAY;
-import static com.baeldung.caseinsensitiveenum.week.SimpleWeekDays.WEDNESDAY;
+import static com.baeldung.caseinsensitiveenum.week.WeekDays.FRIDAY;
+import static com.baeldung.caseinsensitiveenum.week.WeekDays.MONDAY;
+import static com.baeldung.caseinsensitiveenum.week.WeekDays.SATURDAY;
+import static com.baeldung.caseinsensitiveenum.week.WeekDays.SUNDAY;
+import static com.baeldung.caseinsensitiveenum.week.WeekDays.THURSDAY;
+import static com.baeldung.caseinsensitiveenum.week.WeekDays.TUESDAY;
+import static com.baeldung.caseinsensitiveenum.week.WeekDays.WEDNESDAY;
 
-import com.baeldung.caseinsensitiveenum.week.SimpleWeekDays;
+import com.baeldung.caseinsensitiveenum.week.WeekDays;
 import com.baeldung.caseinsensitiveenum.week.WeekDaysHolder;
 import java.util.function.Function;
 import java.util.stream.Stream;
@@ -22,13 +22,13 @@ public class WeekDayHolderArgumentsProvider implements ArgumentsProvider {
     @Override
     public Stream<? extends Arguments> provideArguments(final ExtensionContext extensionContext) {
         return Stream.of(
-            Arguments.of(((Function<WeekDaysHolder, SimpleWeekDays>) WeekDaysHolder::getMonday), MONDAY),
-            Arguments.of(((Function<WeekDaysHolder, SimpleWeekDays>) WeekDaysHolder::getTuesday), TUESDAY),
-            Arguments.of(((Function<WeekDaysHolder, SimpleWeekDays>) WeekDaysHolder::getWednesday), WEDNESDAY),
-            Arguments.of(((Function<WeekDaysHolder, SimpleWeekDays>) WeekDaysHolder::getThursday), THURSDAY),
-            Arguments.of(((Function<WeekDaysHolder, SimpleWeekDays>) WeekDaysHolder::getFriday), FRIDAY),
-            Arguments.of(((Function<WeekDaysHolder, SimpleWeekDays>) WeekDaysHolder::getSaturday), SATURDAY),
-            Arguments.of(((Function<WeekDaysHolder, SimpleWeekDays>) WeekDaysHolder::getSunday), SUNDAY)
+            Arguments.of(((Function<WeekDaysHolder, WeekDays>) WeekDaysHolder::getMonday), MONDAY),
+            Arguments.of(((Function<WeekDaysHolder, WeekDays>) WeekDaysHolder::getTuesday), TUESDAY),
+            Arguments.of(((Function<WeekDaysHolder, WeekDays>) WeekDaysHolder::getWednesday), WEDNESDAY),
+            Arguments.of(((Function<WeekDaysHolder, WeekDays>) WeekDaysHolder::getThursday), THURSDAY),
+            Arguments.of(((Function<WeekDaysHolder, WeekDays>) WeekDaysHolder::getFriday), FRIDAY),
+            Arguments.of(((Function<WeekDaysHolder, WeekDays>) WeekDaysHolder::getSaturday), SATURDAY),
+            Arguments.of(((Function<WeekDaysHolder, WeekDays>) WeekDaysHolder::getSunday), SUNDAY)
         );
     }
 }

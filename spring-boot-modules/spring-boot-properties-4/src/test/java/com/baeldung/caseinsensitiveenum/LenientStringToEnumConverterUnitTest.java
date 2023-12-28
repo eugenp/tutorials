@@ -2,7 +2,7 @@ package com.baeldung.caseinsensitiveenum;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.baeldung.caseinsensitiveenum.week.SimpleWeekDays;
+import com.baeldung.caseinsensitiveenum.week.WeekDays;
 import com.baeldung.caseinsensitiveenum.week.WeekDaysHolder;
 import java.util.function.Function;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -27,8 +27,8 @@ class LenientStringToEnumConverterUnitTest {
     @ParameterizedTest
     @ArgumentsSource(WeekDayHolderArgumentsProvider.class)
     void givenPropertiesWhenInjectEnumThenValueIsPresent(
-        Function<WeekDaysHolder, SimpleWeekDays> methodReference, SimpleWeekDays expected) {
-        SimpleWeekDays actual = methodReference.apply(propertyHolder);
+        Function<WeekDaysHolder, WeekDays> methodReference, WeekDays expected) {
+        WeekDays actual = methodReference.apply(propertyHolder);
         assertThat(actual).isEqualTo(expected);
     }
 }

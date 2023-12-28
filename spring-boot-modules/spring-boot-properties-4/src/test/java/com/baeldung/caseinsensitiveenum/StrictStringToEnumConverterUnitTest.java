@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.baeldung.caseinsensitiveenum.StrictStringToEnumConverterUnitTest.WeekDayConverterConfiguration;
 import com.baeldung.caseinsensitiveenum.converter.StrictNullableWeekDayConverter;
-import com.baeldung.caseinsensitiveenum.week.SimpleWeekDays;
+import com.baeldung.caseinsensitiveenum.week.WeekDays;
 import com.baeldung.caseinsensitiveenum.week.WeekDaysHolder;
 import java.util.function.Function;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -41,8 +41,8 @@ class StrictStringToEnumConverterUnitTest {
     @ParameterizedTest
     @ArgumentsSource(WeekDayHolderArgumentsProvider.class)
     void givenPropertiesWhenInjectEnumThenValueIsNull(
-        Function<WeekDaysHolder, SimpleWeekDays> methodReference, SimpleWeekDays ignored) {
-        SimpleWeekDays actual = methodReference.apply(lenientHolder);
+        Function<WeekDaysHolder, WeekDays> methodReference, WeekDays ignored) {
+        WeekDays actual = methodReference.apply(lenientHolder);
         assertThat(actual).isNull();
     }
 }

@@ -1,16 +1,16 @@
 package com.baeldung.caseinsensitiveenum.converter;
 
-import com.baeldung.caseinsensitiveenum.week.SimpleWeekDays;
+import com.baeldung.caseinsensitiveenum.week.WeekDays;
 import org.springframework.core.convert.converter.Converter;
 
-public class CaseInsensitiveWeekDayConverter implements Converter<String, SimpleWeekDays> {
+public class CaseInsensitiveWeekDayConverter implements Converter<String, WeekDays> {
 
     @Override
-    public SimpleWeekDays convert(final String source) {
+    public WeekDays convert(final String source) {
         try {
-            return SimpleWeekDays.valueOf(source.trim());
+            return WeekDays.valueOf(source.trim());
         } catch (IllegalArgumentException exception) {
-            return SimpleWeekDays.valueOf(source.trim().toUpperCase());
+            return WeekDays.valueOf(source.trim().toUpperCase());
         }
     }
 }

@@ -7,79 +7,79 @@ import org.springframework.stereotype.Component;
 public class WeekDaysHolder {
 
     @Value("${monday}")
-    private SimpleWeekDays monday;
+    private WeekDays monday;
 
     @Value("${tuesday}")
-    private SimpleWeekDays tuesday;
+    private WeekDays tuesday;
 
     @Value("${wednesday}")
-    private SimpleWeekDays wednesday;
+    private WeekDays wednesday;
 
     @Value("${thursday}")
-    private SimpleWeekDays thursday;
+    private WeekDays thursday;
 
     @Value("${friday}")
-    private SimpleWeekDays friday;
+    private WeekDays friday;
 
     @Value("${saturday}")
-    private SimpleWeekDays saturday;
+    private WeekDays saturday;
 
     @Value("${sunday}")
-    private SimpleWeekDays sunday;
+    private WeekDays sunday;
 
-    public SimpleWeekDays getMonday() {
+    public WeekDays getMonday() {
         return monday;
     }
 
-    public void setMonday(final SimpleWeekDays monday) {
+    public void setMonday(final WeekDays monday) {
         this.monday = monday;
     }
 
-    public SimpleWeekDays getTuesday() {
+    public WeekDays getTuesday() {
         return tuesday;
     }
 
-    public void setTuesday(final SimpleWeekDays tuesday) {
+    public void setTuesday(final WeekDays tuesday) {
         this.tuesday = tuesday;
     }
 
-    public SimpleWeekDays getWednesday() {
+    public WeekDays getWednesday() {
         return wednesday;
     }
 
-    public void setWednesday(final SimpleWeekDays wednesday) {
+    public void setWednesday(final WeekDays wednesday) {
         this.wednesday = wednesday;
     }
 
-    public SimpleWeekDays getThursday() {
+    public WeekDays getThursday() {
         return thursday;
     }
 
-    public void setThursday(final SimpleWeekDays thursday) {
+    public void setThursday(final WeekDays thursday) {
         this.thursday = thursday;
     }
 
-    public SimpleWeekDays getFriday() {
+    public WeekDays getFriday() {
         return friday;
     }
 
-    public void setFriday(final SimpleWeekDays friday) {
+    public void setFriday(final WeekDays friday) {
         this.friday = friday;
     }
 
-    public SimpleWeekDays getSaturday() {
+    public WeekDays getSaturday() {
         return saturday;
     }
 
-    public void setSaturday(final SimpleWeekDays saturday) {
+    public void setSaturday(final WeekDays saturday) {
         this.saturday = saturday;
     }
 
-    public SimpleWeekDays getSunday() {
+    public WeekDays getSunday() {
         return sunday;
     }
 
-    public void setSunday(final SimpleWeekDays sunday) {
+    public void setSunday(final WeekDays sunday) {
         this.sunday = sunday;
     }
 }
