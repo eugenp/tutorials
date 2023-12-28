@@ -4,25 +4,25 @@ import org.springframework.beans.factory.annotation.Value;
 
 public class LenientWeekDaysHolder implements WeekDaysHolder {
 
-    @Value("${lenient.monday}")
+    @Value("${monday}")
     private SimpleWeekDays monday;
 
-    @Value("${lenient.tuesday}")
+    @Value("${tuesday}")
     private SimpleWeekDays tuesday;
 
-    @Value("${lenient.wednesday}")
+    @Value("${wednesday}")
     private SimpleWeekDays wednesday;
 
-    @Value("${lenient.thursday}")
+    @Value("${thursday}")
     private SimpleWeekDays thursday;
 
-    @Value("${lenient.friday}")
+    @Value("${friday}")
     private SimpleWeekDays friday;
 
-    @Value("${lenient.saturday}")
+    @Value("${saturday}")
     private SimpleWeekDays saturday;
 
-    @Value("${lenient.sunday}")
+    @Value("${sunday}")
     private SimpleWeekDays sunday;
 
     @Override

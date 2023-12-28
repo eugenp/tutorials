@@ -9,13 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest(properties = {
-    "lenient.monday=Mon-Day!",
-    "lenient.tuesday=TuesDAY#",
-    "lenient.wednesday=Wednes@day",
-    "lenient.thursday=THURSday^",
-    "lenient.friday=Fri:Day_%",
-    "lenient.saturday=Satur_DAY*",
-    "lenient.sunday=Sun+Day",
+    "monday=Mon-Day!",
+    "tuesday=TuesDAY#",
+    "wednesday=Wednes@day",
+    "thursday=THURSday^",
+    "friday=Fri:Day_%",
+    "saturday=Satur_DAY*",
+    "sunday=Sun+Day",
 }, classes = LenientWeekDaysHolder.class)
 class LenientConverterStringToEnumUnitTest {
 
