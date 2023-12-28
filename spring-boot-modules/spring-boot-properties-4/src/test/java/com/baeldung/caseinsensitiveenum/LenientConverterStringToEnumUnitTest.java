@@ -13,6 +13,7 @@ import java.util.function.Function;
 import java.util.stream.Stream;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -32,22 +33,10 @@ class LenientConverterStringToEnumUnitTest {
     private LenientWeekDaysHolder propertyHolder;
 
     @ParameterizedTest
-    @MethodSource
+    @ArgumentsSource(WeekDayHolderArgumentsProvider.class)
     void givenPropertiesWhenInjectEnumThenValueIsPresent(
-        Function<LenientWeekDaysHolder, WeekDays> methodReference, WeekDays expected) {
+        Function<WeekDaysHolder, WeekDays> methodReference, WeekDays expected) {
         WeekDays actual = methodReference.apply(propertyHolder);
         assertThat(actual).isEqualTo(expected);
-    }
-
-    static Stream<Arguments> givenPropertiesWhenInjectEnumThenValueIsPresent() {
-        return Stream.of(
-          Arguments.of(((Function<LenientWeekDaysHolder, WeekDays>) LenientWeekDaysHolder::getMonday), MONDAY),
-          Arguments.of(((Function<LenientWeekDaysHolder, WeekDays>) LenientWeekDaysHolder::getTuesday), TUESDAY),
-          Arguments.of(((Function<LenientWeekDaysHolder, WeekDays>) LenientWeekDaysHolder::getWednesday), WEDNESDAY),
-          Arguments.of(((Function<LenientWeekDaysHolder, WeekDays>) LenientWeekDaysHolder::getThursday), THURSDAY),
-          Arguments.of(((Function<LenientWeekDaysHolder, WeekDays>) LenientWeekDaysHolder::getFriday), FRIDAY),
-          Arguments.of(((Function<LenientWeekDaysHolder, WeekDays>) LenientWeekDaysHolder::getSaturday), SATURDAY),
-          Arguments.of(((Function<LenientWeekDaysHolder, WeekDays>) LenientWeekDaysHolder::getSunday), SUNDAY)
-        );
     }
 }
