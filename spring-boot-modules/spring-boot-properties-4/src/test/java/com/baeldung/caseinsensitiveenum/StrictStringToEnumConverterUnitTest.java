@@ -2,7 +2,7 @@ package com.baeldung.caseinsensitiveenum;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.baeldung.caseinsensitiveenum.StrictConverterStringToEnumUnitTest.WeekDayConverterConfiguration;
+import com.baeldung.caseinsensitiveenum.StrictStringToEnumConverterUnitTest.WeekDayConverterConfiguration;
 import com.baeldung.caseinsensitiveenum.converter.StrictNullableWeekDayConverter;
 import com.baeldung.caseinsensitiveenum.week.SimpleWeekDays;
 import com.baeldung.caseinsensitiveenum.week.WeekDaysHolder;
@@ -24,7 +24,7 @@ import org.springframework.core.convert.support.DefaultConversionService;
     "saturday=saturday",
     "sunday=sunday",
 }, classes = {WeekDaysHolder.class, WeekDayConverterConfiguration.class})
-class StrictConverterStringToEnumUnitTest {
+class StrictStringToEnumConverterUnitTest {
 
     public static class WeekDayConverterConfiguration {
         @Bean

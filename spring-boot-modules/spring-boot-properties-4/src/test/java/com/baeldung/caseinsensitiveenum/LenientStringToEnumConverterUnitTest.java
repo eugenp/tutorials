@@ -19,7 +19,7 @@ import org.springframework.boot.test.context.SpringBootTest;
     "saturday=Satur_DAY*",
     "sunday=Sun+Day",
 }, classes = WeekDaysHolder.class)
-class LenientConverterStringToEnumUnitTest {
+class LenientStringToEnumConverterUnitTest {
 
     @Autowired
     private WeekDaysHolder propertyHolder;
