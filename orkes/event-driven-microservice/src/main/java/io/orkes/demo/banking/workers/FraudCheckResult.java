@@ -6,7 +6,8 @@ import lombok.Data;
 public class FraudCheckResult {
 
     public enum Result {
-        PASS, FAIL;
+        PASS,
+        FAIL;
     }
 
     private Result result;

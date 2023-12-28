@@ -1,13 +1,16 @@
 package io.orkes.demo.banking.workers;
 
-import com.netflix.conductor.sdk.workflow.task.*;
-import io.orkes.demo.banking.pojos.*;
-import io.orkes.demo.banking.service.*;
-import lombok.*;
-import lombok.extern.slf4j.*;
-import org.springframework.stereotype.*;
+import java.math.BigDecimal;
 
-import java.math.*;
+import org.springframework.stereotype.Component;
+
+import com.netflix.conductor.sdk.workflow.task.InputParam;
+import com.netflix.conductor.sdk.workflow.task.WorkerTask;
+
+import io.orkes.demo.banking.pojos.DepositDetail;
+import io.orkes.demo.banking.service.FraudCheckService;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @AllArgsConstructor
 @Component
@@ -15,7 +18,6 @@ import java.math.*;
 public class ConductorWorkers {
 
     private final FraudCheckService fraudCheckService;
-
 
     /**
      *
@@ -28,9 +30,5 @@ public class ConductorWorkers {
         dd.setAmount(amount);
         return fraudCheckService.checkForFraud(dd);
     }
-
-
-
-
 
 }

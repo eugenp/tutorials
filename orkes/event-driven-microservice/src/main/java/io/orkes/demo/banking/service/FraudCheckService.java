@@ -1,20 +1,22 @@
 package io.orkes.demo.banking.service;
 
-import io.orkes.demo.banking.pojos.DepositDetail;
-import io.orkes.demo.banking.workers.FraudCheckResult;
-import org.springframework.stereotype.Service;
+import static io.orkes.demo.banking.workers.FraudCheckResult.Result.FAIL;
+import static io.orkes.demo.banking.workers.FraudCheckResult.Result.PASS;
 
 import java.math.BigDecimal;
 
-import static io.orkes.demo.banking.workers.FraudCheckResult.Result.FAIL;
-import static io.orkes.demo.banking.workers.FraudCheckResult.Result.PASS;
+import org.springframework.stereotype.Service;
+
+import io.orkes.demo.banking.pojos.DepositDetail;
+import io.orkes.demo.banking.workers.FraudCheckResult;
 
 @Service
 public class FraudCheckService {
 
     public FraudCheckResult checkForFraud(DepositDetail depositDetail) {
         FraudCheckResult fcr = new FraudCheckResult();
-        if(depositDetail.getAmount().compareTo(BigDecimal.valueOf(100000)) > 0) {
+        if (depositDetail.getAmount()
+            .compareTo(BigDecimal.valueOf(100000)) > 0) {
             fcr.setResult(FAIL);
             fcr.setReason("Amount too large");
         } else {

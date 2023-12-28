@@ -1,16 +1,22 @@
 package io.orkes.demo.banking.service;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
+
+import org.springframework.stereotype.Service;
+
 import com.netflix.conductor.common.metadata.workflow.StartWorkflowRequest;
+
 import io.orkes.conductor.client.WorkflowClient;
-import io.orkes.conductor.common.model.*;
+import io.orkes.conductor.common.model.WorkflowRun;
 import io.orkes.demo.banking.pojos.DepositDetail;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
-
-import java.time.*;
-import java.util.*;
-import java.util.concurrent.*;
 
 @Slf4j
 @AllArgsConstructor
@@ -54,10 +60,12 @@ public class WorkflowService {
         inputData.put("accountId", depositDetail.getAccountId());
         request.setInput(inputData);
 
-        CompletableFuture<WorkflowRun> workflowRun = workflowClient.executeWorkflow(request, UUID.randomUUID().toString(), 10);
+        CompletableFuture<WorkflowRun> workflowRun = workflowClient.executeWorkflow(request, UUID.randomUUID()
+            .toString(), 10);
         log.info("Workflow id: {}", workflowRun);
 
-        return workflowRun.get(10, TimeUnit.SECONDS).getOutput();
+        return workflowRun.get(10, TimeUnit.SECONDS)
+            .getOutput();
     }
 
 }
