@@ -11,7 +11,7 @@ import java.util.Arrays;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(SystemStubsExtension.class)
-public class Print2DArrayTest {
+public class Print2DArraysUnitTest {
     @SystemStub
     private SystemOut systemOut;
 
