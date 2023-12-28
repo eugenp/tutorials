@@ -1,4 +1,4 @@
-package com.baeldung.caseinsensitiveenum;
+package com.baeldung.caseinsensitiveenum.week;
 
 public interface WeekDaysHolder {
 

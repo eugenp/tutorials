@@ -2,14 +2,16 @@ package com.baeldung.caseinsensitiveenum;
 
 
 
-import static com.baeldung.caseinsensitiveenum.NonConventionalWeekDays.Fri$Day$_$;
-import static com.baeldung.caseinsensitiveenum.NonConventionalWeekDays.Mon$Day;
-import static com.baeldung.caseinsensitiveenum.NonConventionalWeekDays.Satur$DAY_;
-import static com.baeldung.caseinsensitiveenum.NonConventionalWeekDays.Sun$Day;
-import static com.baeldung.caseinsensitiveenum.NonConventionalWeekDays.THURS$day_;
-import static com.baeldung.caseinsensitiveenum.NonConventionalWeekDays.Tues$DAY_;
-import static com.baeldung.caseinsensitiveenum.NonConventionalWeekDays.Wednes$day;
+import static com.baeldung.caseinsensitiveenum.nonconventionalweek.NonConventionalWeekDays.Fri$Day$_$;
+import static com.baeldung.caseinsensitiveenum.nonconventionalweek.NonConventionalWeekDays.Mon$Day;
+import static com.baeldung.caseinsensitiveenum.nonconventionalweek.NonConventionalWeekDays.Satur$DAY_;
+import static com.baeldung.caseinsensitiveenum.nonconventionalweek.NonConventionalWeekDays.Sun$Day;
+import static com.baeldung.caseinsensitiveenum.nonconventionalweek.NonConventionalWeekDays.THURS$day_;
+import static com.baeldung.caseinsensitiveenum.nonconventionalweek.NonConventionalWeekDays.Tues$DAY_;
+import static com.baeldung.caseinsensitiveenum.nonconventionalweek.NonConventionalWeekDays.Wednes$day;
 
+import com.baeldung.caseinsensitiveenum.nonconventionalweek.NonConventionalWeekDays;
+import com.baeldung.caseinsensitiveenum.nonconventionalweek.NonConventionalWeekDaysHolder;
 import java.util.function.Function;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.extension.ExtensionContext;

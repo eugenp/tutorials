@@ -1,4 +1,4 @@
-package com.baeldung.caseinsensitiveenum;
+package com.baeldung.caseinsensitiveenum.week;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

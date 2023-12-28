@@ -1,14 +1,16 @@
 package com.baeldung.caseinsensitiveenum;
 
 
-import static com.baeldung.caseinsensitiveenum.SimpleWeekDays.FRIDAY;
-import static com.baeldung.caseinsensitiveenum.SimpleWeekDays.MONDAY;
-import static com.baeldung.caseinsensitiveenum.SimpleWeekDays.SATURDAY;
-import static com.baeldung.caseinsensitiveenum.SimpleWeekDays.SUNDAY;
-import static com.baeldung.caseinsensitiveenum.SimpleWeekDays.THURSDAY;
-import static com.baeldung.caseinsensitiveenum.SimpleWeekDays.TUESDAY;
-import static com.baeldung.caseinsensitiveenum.SimpleWeekDays.WEDNESDAY;
+import static com.baeldung.caseinsensitiveenum.week.SimpleWeekDays.FRIDAY;
+import static com.baeldung.caseinsensitiveenum.week.SimpleWeekDays.MONDAY;
+import static com.baeldung.caseinsensitiveenum.week.SimpleWeekDays.SATURDAY;
+import static com.baeldung.caseinsensitiveenum.week.SimpleWeekDays.SUNDAY;
+import static com.baeldung.caseinsensitiveenum.week.SimpleWeekDays.THURSDAY;
+import static com.baeldung.caseinsensitiveenum.week.SimpleWeekDays.TUESDAY;
+import static com.baeldung.caseinsensitiveenum.week.SimpleWeekDays.WEDNESDAY;
 
+import com.baeldung.caseinsensitiveenum.week.SimpleWeekDays;
+import com.baeldung.caseinsensitiveenum.week.WeekDaysHolder;
 import java.util.function.Function;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.extension.ExtensionContext;

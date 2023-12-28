@@ -1,5 +1,6 @@
-package com.baeldung.caseinsensitiveenum;
+package com.baeldung.caseinsensitiveenum.converter;
 
+import com.baeldung.caseinsensitiveenum.week.SimpleWeekDays;
 import org.springframework.core.convert.converter.Converter;
 
 public class StrictNullableWeekDayConverter implements Converter<String, SimpleWeekDays> {
