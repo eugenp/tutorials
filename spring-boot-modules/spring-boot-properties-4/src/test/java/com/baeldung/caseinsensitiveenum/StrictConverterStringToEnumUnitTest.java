@@ -27,7 +27,7 @@ class StrictConverterStringToEnumUnitTest {
         @Bean
         public ConversionService conversionService() {
             final DefaultConversionService defaultConversionService = new DefaultConversionService();
-            defaultConversionService.addConverter(new StrictWeekDayConverter());
+            defaultConversionService.addConverter(new StrictNullableWeekDayConverter());
             return defaultConversionService;
         }
     }
