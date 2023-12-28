@@ -2,7 +2,7 @@ package com.baeldung.caseinsensitiveenum;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.baeldung.caseinsensitiveenum.StrictConverterStringToEnumUnitTest.WeekDayConverterConfiguration;
+import com.baeldung.caseinsensitiveenum.CaseInsensitiveConverterStringToEnumUnitTest.WeekDayConverterConfiguration;
 import java.util.function.Function;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ArgumentsSource;
@@ -21,13 +21,13 @@ import org.springframework.core.convert.support.DefaultConversionService;
     "strict.saturday=saturday",
     "strict.sunday=sunday",
 }, classes = {StrictWeekDaysHolder.class, WeekDayConverterConfiguration.class})
-class StrictConverterStringToEnumUnitTest {
+class CaseInsensitiveConverterStringToEnumUnitTest {
 
     public static class WeekDayConverterConfiguration {
         @Bean
         public ConversionService conversionService() {
             final DefaultConversionService defaultConversionService = new DefaultConversionService();
-            defaultConversionService.addConverter(new StrictNullableWeekDayConverter());
+            defaultConversionService.addConverter(new CaseInsensitiveWeekDayConverter());
             return defaultConversionService;
         }
     }
@@ -38,8 +38,8 @@ class StrictConverterStringToEnumUnitTest {
     @ParameterizedTest
     @ArgumentsSource(WeekDayHolderArgumentsProvider.class)
     void givenPropertiesWhenInjectEnumThenValueIsNull(
-        Function<WeekDaysHolder, SimpleWeekDays> methodReference, SimpleWeekDays ignored) {
+        Function<WeekDaysHolder, SimpleWeekDays> methodReference, SimpleWeekDays expected) {
         SimpleWeekDays actual = methodReference.apply(lenientHolder);
-        assertThat(actual).isNull();
+        assertThat(actual).isEqualTo(expected);
     }
 }
