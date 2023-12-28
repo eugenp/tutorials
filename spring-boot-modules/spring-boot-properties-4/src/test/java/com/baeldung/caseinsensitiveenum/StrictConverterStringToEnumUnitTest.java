@@ -38,8 +38,8 @@ class StrictConverterStringToEnumUnitTest {
     @ParameterizedTest
     @ArgumentsSource(WeekDayHolderArgumentsProvider.class)
     void givenPropertiesWhenInjectEnumThenValueIsNull(
-        Function<WeekDaysHolder, WeekDays> methodReference, WeekDays ignored) {
-        WeekDays actual = methodReference.apply(lenientHolder);
+        Function<WeekDaysHolder, SimpleWeekDays> methodReference, SimpleWeekDays ignored) {
+        SimpleWeekDays actual = methodReference.apply(lenientHolder);
         assertThat(actual).isNull();
     }
 }

@@ -25,8 +25,8 @@ class LenientConverterStringToEnumUnitTest {
     @ParameterizedTest
     @ArgumentsSource(WeekDayHolderArgumentsProvider.class)
     void givenPropertiesWhenInjectEnumThenValueIsPresent(
-        Function<WeekDaysHolder, WeekDays> methodReference, WeekDays expected) {
-        WeekDays actual = methodReference.apply(propertyHolder);
+        Function<WeekDaysHolder, SimpleWeekDays> methodReference, SimpleWeekDays expected) {
+        SimpleWeekDays actual = methodReference.apply(propertyHolder);
         assertThat(actual).isEqualTo(expected);
     }
 }

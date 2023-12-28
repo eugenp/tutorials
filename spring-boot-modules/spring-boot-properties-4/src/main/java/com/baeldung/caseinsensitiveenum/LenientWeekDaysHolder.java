@@ -5,93 +5,93 @@ import org.springframework.beans.factory.annotation.Value;
 public class LenientWeekDaysHolder implements WeekDaysHolder {
 
     @Value("${lenient.monday}")
-    private WeekDays monday;
+    private SimpleWeekDays monday;
 
     @Value("${lenient.tuesday}")
-    private WeekDays tuesday;
+    private SimpleWeekDays tuesday;
 
     @Value("${lenient.wednesday}")
-    private WeekDays wednesday;
+    private SimpleWeekDays wednesday;
 
     @Value("${lenient.thursday}")
-    private WeekDays thursday;
+    private SimpleWeekDays thursday;
 
     @Value("${lenient.friday}")
-    private WeekDays friday;
+    private SimpleWeekDays friday;
 
     @Value("${lenient.saturday}")
-    private WeekDays saturday;
+    private SimpleWeekDays saturday;
 
     @Value("${lenient.sunday}")
-    private WeekDays sunday;
+    private SimpleWeekDays sunday;
 
     @Override
-    public WeekDays getMonday() {
+    public SimpleWeekDays getMonday() {
         return monday;
     }
 
     @Override
-    public void setMonday(final WeekDays monday) {
+    public void setMonday(final SimpleWeekDays monday) {
         this.monday = monday;
     }
 
     @Override
-    public WeekDays getTuesday() {
+    public SimpleWeekDays getTuesday() {
         return tuesday;
     }
 
     @Override
-    public void setTuesday(final WeekDays tuesday) {
+    public void setTuesday(final SimpleWeekDays tuesday) {
         this.tuesday = tuesday;
     }
 
     @Override
-    public WeekDays getWednesday() {
+    public SimpleWeekDays getWednesday() {
         return wednesday;
     }
 
     @Override
-    public void setWednesday(final WeekDays wednesday) {
+    public void setWednesday(final SimpleWeekDays wednesday) {
         this.wednesday = wednesday;
     }
 
     @Override
-    public WeekDays getThursday() {
+    public SimpleWeekDays getThursday() {
         return thursday;
     }
 
     @Override
-    public void setThursday(final WeekDays thursday) {
+    public void setThursday(final SimpleWeekDays thursday) {
         this.thursday = thursday;
     }
 
     @Override
-    public WeekDays getFriday() {
+    public SimpleWeekDays getFriday() {
         return friday;
     }
 
     @Override
-    public void setFriday(final WeekDays friday) {
+    public void setFriday(final SimpleWeekDays friday) {
         this.friday = friday;
     }
 
     @Override
-    public WeekDays getSaturday() {
+    public SimpleWeekDays getSaturday() {
         return saturday;
     }
 
     @Override
-    public void setSaturday(final WeekDays saturday) {
+    public void setSaturday(final SimpleWeekDays saturday) {
         this.saturday = saturday;
     }
 
     @Override
-    public WeekDays getSunday() {
+    public SimpleWeekDays getSunday() {
         return sunday;
     }
 
     @Override
-    public void setSunday(final WeekDays sunday) {
+    public void setSunday(final SimpleWeekDays sunday) {
         this.sunday = sunday;
     }
 }

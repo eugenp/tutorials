@@ -2,31 +2,31 @@ package com.baeldung.caseinsensitiveenum;
 
 public interface WeekDaysHolder {
 
-    WeekDays getMonday();
+    SimpleWeekDays getMonday();
 
-    void setMonday(WeekDays monday);
+    void setMonday(SimpleWeekDays monday);
 
-    WeekDays getTuesday();
+    SimpleWeekDays getTuesday();
 
-    void setTuesday(WeekDays tuesday);
+    void setTuesday(SimpleWeekDays tuesday);
 
-    WeekDays getWednesday();
+    SimpleWeekDays getWednesday();
 
-    void setWednesday(WeekDays wednesday);
+    void setWednesday(SimpleWeekDays wednesday);
 
-    WeekDays getThursday();
+    SimpleWeekDays getThursday();
 
-    void setThursday(WeekDays thursday);
+    void setThursday(SimpleWeekDays thursday);
 
-    WeekDays getFriday();
+    SimpleWeekDays getFriday();
 
-    void setFriday(WeekDays friday);
+    void setFriday(SimpleWeekDays friday);
 
-    WeekDays getSaturday();
+    SimpleWeekDays getSaturday();
 
-    void setSaturday(WeekDays saturday);
+    void setSaturday(SimpleWeekDays saturday);
 
-    WeekDays getSunday();
+    SimpleWeekDays getSunday();
 
-    void setSunday(WeekDays sunday);
+    void setSunday(SimpleWeekDays sunday);
 }
