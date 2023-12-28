@@ -332,8 +332,7 @@
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
-                <module>parent-java</module>
-
+                
                 <!-- <module>clojure-modules</module> --> <!-- Not a maven project -->
 
                 <module>core-java-modules/core-java-8</module>
@@ -409,8 +408,7 @@
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
-                <module>parent-java</module>
-
+                
                 <module>spring-4</module>
 
                 <module>spring-cloud-modules</module>
@@ -465,8 +463,7 @@
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
-                <module>parent-java</module>
-
+                
                 <module>apache-spark</module>
 
                 <module>jenkins-modules</module>
@@ -505,8 +502,7 @@
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
-                <module>parent-java</module>
-
+                
                 <!-- <module>clojure-modules</module> --> <!-- Not a maven project -->
 
                 <module>core-java-modules/core-java-8</module>
@@ -572,8 +568,7 @@
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
-                <module>parent-java</module>
-
+                
                 <module>spring-4</module>
 
                 <module>spring-cloud-modules</module>
@@ -620,8 +615,7 @@
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
-                <module>parent-java</module>
-
+                
                 <module>apache-spark</module>
 
                 <module>jenkins-modules</module>
@@ -1181,7 +1175,6 @@
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
-                <module>parent-java</module>
             </modules>
 
         </profile>
@@ -1222,7 +1215,7 @@
 
         <!-- plugins -->
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
-        <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.12.1</maven-compiler-plugin.version>
         <exec-maven-plugin.version>3.1.0</exec-maven-plugin.version>
         <java.version>1.8</java.version>
         <log4j.version>1.2.17</log4j.version>
