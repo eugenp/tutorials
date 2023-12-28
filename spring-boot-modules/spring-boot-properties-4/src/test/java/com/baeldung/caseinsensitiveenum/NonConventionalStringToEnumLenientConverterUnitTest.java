@@ -23,13 +23,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 class NonConventionalStringToEnumLenientConverterUnitTest {
 
     @Autowired
-    private NonConventionalWeekDaysHolder propertyHolder;
+    private NonConventionalWeekDaysHolder holder;
 
     @ParameterizedTest
     @ArgumentsSource(NonConventionalWeekDayHolderArgumentsProvider.class)
     void givenPropertiesWhenInjectEnumThenValueIsPresent(
         Function<NonConventionalWeekDaysHolder, NonConventionalWeekDays> methodReference, NonConventionalWeekDays expected) {
-        NonConventionalWeekDays actual = methodReference.apply(propertyHolder);
+        NonConventionalWeekDays actual = methodReference.apply(holder);
         assertThat(actual).isEqualTo(expected);
     }
 }

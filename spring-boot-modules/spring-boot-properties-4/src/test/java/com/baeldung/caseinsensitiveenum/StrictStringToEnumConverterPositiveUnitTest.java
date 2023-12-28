@@ -37,13 +37,13 @@ class StrictStringToEnumConverterPositiveUnitTest {
     }
 
     @Autowired
-    private WeekDaysHolder lenientHolder;
+    private WeekDaysHolder holder;
 
     @ParameterizedTest
     @ArgumentsSource(WeekDayHolderArgumentsProvider.class)
     void givenPropertiesWhenInjectEnumThenValueIsNull(
         Function<WeekDaysHolder, WeekDays> methodReference, WeekDays expected) {
-        WeekDays actual = methodReference.apply(lenientHolder);
+        WeekDays actual = methodReference.apply(holder);
         assertThat(actual).isEqualTo(expected);
     }
 }

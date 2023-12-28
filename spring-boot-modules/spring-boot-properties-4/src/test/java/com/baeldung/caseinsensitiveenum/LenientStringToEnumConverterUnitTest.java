@@ -23,13 +23,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 class LenientStringToEnumConverterUnitTest {
 
     @Autowired
-    private WeekDaysHolder propertyHolder;
+    private WeekDaysHolder holder;
 
     @ParameterizedTest
     @ArgumentsSource(WeekDayHolderArgumentsProvider.class)
     void givenPropertiesWhenInjectEnumThenValueIsPresent(
         Function<WeekDaysHolder, WeekDays> methodReference, WeekDays expected) {
-        WeekDays actual = methodReference.apply(propertyHolder);
+        WeekDays actual = methodReference.apply(holder);
         assertThat(actual).isEqualTo(expected);
     }
 }
