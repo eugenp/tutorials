@@ -59,7 +59,7 @@ class DeserializationExceptionLiveTest {
     }
 
     @Test
-    void givenInvalidPublishedArticleEvent_thenHandleExceptionAndContinueProcessing() throws Exception {
+    void whenPublishingInvalidArticleEvent_thenHandleExceptionAndContinueProcessing() throws Exception {
         publishArticle("{ \"article\": \"Introduction to Kafka\" }");
         publishArticle(" !! Invalid JSON !! ");
         publishArticle("{ \"article\": \"Kafka Streams Tutorial\" }");
@@ -72,7 +72,7 @@ class DeserializationExceptionLiveTest {
     }
 
     @Test
-    void givenValidPublishedArticleEvent_thenProcessWithoutErrors() throws Exception {
+    void whenPublishingValidArticleEvent_thenProcessWithoutErrors() throws Exception {
         publishArticle("{ \"article\": \"Kotlin for Java Developers\" }");
         publishArticle("{ \"article\": \"The S.O.L.I.D. Principles\" }");
 
