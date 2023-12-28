@@ -13,14 +13,14 @@ import org.springframework.core.convert.ConversionService;
 import org.springframework.core.convert.support.DefaultConversionService;
 
 @SpringBootTest(properties = {
-    "strict.monday=monday",
-    "strict.tuesday=tuesday",
-    "strict.wednesday=wednesday",
-    "strict.thursday=thursday",
-    "strict.friday=friday",
-    "strict.saturday=saturday",
-    "strict.sunday=sunday",
-}, classes = {StrictWeekDaysHolder.class, WeekDayConverterConfiguration.class})
+    "monday=monday",
+    "tuesday=tuesday",
+    "wednesday=wednesday",
+    "thursday=thursday",
+    "friday=friday",
+    "saturday=saturday",
+    "sunday=sunday",
+}, classes = {SimpleWeekDaysHolder.class, WeekDayConverterConfiguration.class})
 class StrictConverterStringToEnumUnitTest {
 
     public static class WeekDayConverterConfiguration {
@@ -33,7 +33,7 @@ class StrictConverterStringToEnumUnitTest {
     }
 
     @Autowired
-    private StrictWeekDaysHolder lenientHolder;
+    private SimpleWeekDaysHolder lenientHolder;
 
     @ParameterizedTest
     @ArgumentsSource(WeekDayHolderArgumentsProvider.class)

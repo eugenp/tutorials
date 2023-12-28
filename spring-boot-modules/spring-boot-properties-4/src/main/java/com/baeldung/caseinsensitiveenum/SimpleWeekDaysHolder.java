@@ -4,27 +4,27 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
-public class StrictWeekDaysHolder implements WeekDaysHolder {
+public class SimpleWeekDaysHolder implements WeekDaysHolder {
 
-    @Value("${strict.monday}")
+    @Value("${monday}")
     private SimpleWeekDays monday;
 
-    @Value("${strict.tuesday}")
+    @Value("${tuesday}")
     private SimpleWeekDays tuesday;
 
-    @Value("${strict.wednesday}")
+    @Value("${wednesday}")
     private SimpleWeekDays wednesday;
 
-    @Value("${strict.thursday}")
+    @Value("${thursday}")
     private SimpleWeekDays thursday;
 
-    @Value("${strict.friday}")
+    @Value("${friday}")
     private SimpleWeekDays friday;
 
-    @Value("${strict.saturday}")
+    @Value("${saturday}")
     private SimpleWeekDays saturday;
 
-    @Value("${strict.sunday}")
+    @Value("${sunday}")
     private SimpleWeekDays sunday;
 
     @Override

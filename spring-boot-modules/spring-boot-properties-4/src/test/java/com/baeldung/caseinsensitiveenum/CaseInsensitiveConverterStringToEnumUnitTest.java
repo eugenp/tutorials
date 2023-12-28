@@ -20,7 +20,7 @@ import org.springframework.core.convert.support.DefaultConversionService;
     "strict.friday=friday",
     "strict.saturday=saturday",
     "strict.sunday=sunday",
-}, classes = {StrictWeekDaysHolder.class, WeekDayConverterConfiguration.class})
+}, classes = {SimpleWeekDaysHolder.class, WeekDayConverterConfiguration.class})
 class CaseInsensitiveConverterStringToEnumUnitTest {
 
     public static class WeekDayConverterConfiguration {
@@ -33,7 +33,7 @@ class CaseInsensitiveConverterStringToEnumUnitTest {
     }
 
     @Autowired
-    private StrictWeekDaysHolder lenientHolder;
+    private SimpleWeekDaysHolder lenientHolder;
 
     @ParameterizedTest
     @ArgumentsSource(WeekDayHolderArgumentsProvider.class)
