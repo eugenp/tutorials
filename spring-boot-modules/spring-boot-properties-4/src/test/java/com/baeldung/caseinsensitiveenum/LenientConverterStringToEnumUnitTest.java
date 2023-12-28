@@ -16,11 +16,11 @@ import org.springframework.boot.test.context.SpringBootTest;
     "friday=Fri:Day_%",
     "saturday=Satur_DAY*",
     "sunday=Sun+Day",
-}, classes = LenientWeekDaysHolder.class)
+}, classes = SimpleWeekDaysHolder.class)
 class LenientConverterStringToEnumUnitTest {
 
     @Autowired
-    private LenientWeekDaysHolder propertyHolder;
+    private SimpleWeekDaysHolder propertyHolder;
 
     @ParameterizedTest
     @ArgumentsSource(WeekDayHolderArgumentsProvider.class)
