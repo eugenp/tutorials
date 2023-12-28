@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import com.baeldung.caseinsensitiveenum.StrictConverterStringToEnumUnitTest.WeekDayConverterConfiguration;
 import com.baeldung.caseinsensitiveenum.converter.StrictNullableWeekDayConverter;
 import com.baeldung.caseinsensitiveenum.week.SimpleWeekDays;
-import com.baeldung.caseinsensitiveenum.week.SimpleWeekDaysHolder;
 import com.baeldung.caseinsensitiveenum.week.WeekDaysHolder;
 import java.util.function.Function;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -24,7 +23,7 @@ import org.springframework.core.convert.support.DefaultConversionService;
     "friday=friday",
     "saturday=saturday",
     "sunday=sunday",
-}, classes = {SimpleWeekDaysHolder.class, WeekDayConverterConfiguration.class})
+}, classes = {WeekDaysHolder.class, WeekDayConverterConfiguration.class})
 class StrictConverterStringToEnumUnitTest {
 
     public static class WeekDayConverterConfiguration {
@@ -37,7 +36,7 @@ class StrictConverterStringToEnumUnitTest {
     }
 
     @Autowired
-    private SimpleWeekDaysHolder lenientHolder;
+    private WeekDaysHolder lenientHolder;
 
     @ParameterizedTest
     @ArgumentsSource(WeekDayHolderArgumentsProvider.class)
