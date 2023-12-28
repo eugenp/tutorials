@@ -6,25 +6,25 @@ import org.springframework.stereotype.Component;
 @Component
 public class NonConventionalWeekDaysHolder {
 
-    @Value("${non_conventional.monday}")
+    @Value("${monday}")
     private NonConventionalWeekDays monday;
 
-    @Value("${non_conventional.tuesday}")
+    @Value("${tuesday}")
     private NonConventionalWeekDays tuesday;
 
-    @Value("${non_conventional.wednesday}")
+    @Value("${wednesday}")
     private NonConventionalWeekDays wednesday;
 
-    @Value("${non_conventional.thursday}")
+    @Value("${thursday}")
     private NonConventionalWeekDays thursday;
 
-    @Value("${non_conventional.friday}")
+    @Value("${friday}")
     private NonConventionalWeekDays friday;
 
-    @Value("${non_conventional.saturday}")
+    @Value("${saturday}")
     private NonConventionalWeekDays saturday;
 
-    @Value("${non_conventional.sunday}")
+    @Value("${sunday}")
     private NonConventionalWeekDays sunday;
 
     public NonConventionalWeekDays getMonday() {

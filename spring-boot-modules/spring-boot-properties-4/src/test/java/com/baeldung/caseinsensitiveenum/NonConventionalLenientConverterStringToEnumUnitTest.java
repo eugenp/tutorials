@@ -9,13 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest(properties = {
-    "non_conventional.monday=Mon-Day!",
-    "non_conventional.tuesday=TuesDAY#",
-    "non_conventional.wednesday=Wednes@day",
-    "non_conventional.thursday=THURSday^",
-    "non_conventional.friday=Fri:Day_%",
-    "non_conventional.saturday=Satur_DAY*",
-    "non_conventional.sunday=Sun+Day",
+    "monday=Mon-Day!",
+    "tuesday=TuesDAY#",
+    "wednesday=Wednes@day",
+    "thursday=THURSday^",
+    "friday=Fri:Day_%",
+    "saturday=Satur_DAY*",
+    "sunday=Sun+Day",
 }, classes = NonConventionalWeekDaysHolder.class)
 class NonConventionalLenientConverterStringToEnumUnitTest {
 
