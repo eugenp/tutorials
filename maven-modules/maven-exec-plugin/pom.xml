@@ -45,7 +45,7 @@
 
     <properties>
         <logback.version>1.2.6</logback.version>
-        <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.12.1</maven-compiler-plugin.version>
         <exec-maven-plugin.version>3.1.0</exec-maven-plugin.version>
     </properties>
 
