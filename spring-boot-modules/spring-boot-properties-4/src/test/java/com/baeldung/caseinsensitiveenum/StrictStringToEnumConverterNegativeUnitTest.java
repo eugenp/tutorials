@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.baeldung.caseinsensitiveenum.StrictStringToEnumConverterNegativeUnitTest.WeekDayConverterConfiguration;
 import com.baeldung.caseinsensitiveenum.converter.StrictNullableWeekDayConverter;
+import com.baeldung.caseinsensitiveenum.providers.WeekDayHolderArgumentsProvider;
 import com.baeldung.caseinsensitiveenum.week.WeekDays;
 import com.baeldung.caseinsensitiveenum.week.WeekDaysHolder;
 import java.util.function.Function;
