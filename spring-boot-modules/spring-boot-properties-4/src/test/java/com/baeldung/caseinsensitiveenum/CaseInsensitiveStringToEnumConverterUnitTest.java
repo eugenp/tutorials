@@ -19,10 +19,10 @@ import org.springframework.core.convert.support.DefaultConversionService;
     "monday=monday",
     "tuesday=tuesday",
     "wednesday=wednesday",
-    "thursday=thursday",
-    "friday=friday",
-    "saturday=saturday",
-    "sunday=sunday",
+    "thursday=THURSDAY",
+    "friday=Friday",
+    "saturday=saturDAY",
+    "sunday=sUndAy",
 }, classes = {WeekDaysHolder.class, WeekDayConverterConfiguration.class})
 class CaseInsensitiveStringToEnumConverterUnitTest {
 
