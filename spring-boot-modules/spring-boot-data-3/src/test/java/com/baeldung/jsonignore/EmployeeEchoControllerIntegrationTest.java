@@ -1,11 +1,12 @@
-package com.baeldung.nullfileds;
+package com.baeldung.jsonignore;
 
-import static com.baeldung.nullfileds.UserEchoController.USERS;
+import static com.baeldung.jsonignore.EmployeeEchoController.USERS;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import com.baeldung.jsonignore.nullfields.Employee;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.lang.reflect.Field;
@@ -22,8 +23,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
-@WebMvcTest(UserEchoController.class)
-class UserEchoControllerIntegrationTest {
+@WebMvcTest(EmployeeEchoController.class)
+class EmployeeEchoControllerIntegrationTest {
 
     private static final ObjectMapper JSON_MAPPER = new ObjectMapper();
 
@@ -37,9 +38,9 @@ class UserEchoControllerIntegrationTest {
         "1,John,",
         "1,,"
     })
-    void giveEndpointWhenSendUserThanReceiveThatUserBackIgnoringNullValues(
+    void giveEndpointWhenSendEmployeeThanReceiveThatUserBackIgnoringNullValues(
         final long id, final String firstName, final String secondName) throws Exception {
-        final User expected = new User(id, firstName, secondName);
+        final Employee expected = new Employee(id, firstName, secondName);
         List<String> nullFields = getNullFields(expected);
         List<String> nonNullFields = getNonNullFields(expected);
         final String payload = JSON_MAPPER.writeValueAsString(expected);

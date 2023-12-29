@@ -1,20 +1,20 @@
-package com.baeldung.nullfileds;
+package com.baeldung.jsonignore.nullfields;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import java.util.Objects;
 
 @JsonInclude(Include.NON_NULL)
-public class User {
+public class Employee {
 
     private String lastName;
     private String firstName;
     private long id;
 
-    public User() {
+    public Employee() {
     }
 
-    public User(final long id, final String firstName, final String lastName) {
+    public Employee(final long id, final String firstName, final String lastName) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -53,15 +53,15 @@ public class User {
             return false;
         }
 
-        final User user = (User) o;
+        final Employee employee = (Employee) o;
 
-        if (id != user.id) {
+        if (id != employee.id) {
             return false;
         }
-        if (!Objects.equals(lastName, user.lastName)) {
+        if (!Objects.equals(lastName, employee.lastName)) {
             return false;
         }
-        return Objects.equals(firstName, user.firstName);
+        return Objects.equals(firstName, employee.firstName);
     }
 
     @Override

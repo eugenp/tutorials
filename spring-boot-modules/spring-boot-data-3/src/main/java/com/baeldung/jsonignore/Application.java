@@ -1,4 +1,4 @@
-package com.baeldung.nullfileds;
+package com.baeldung.jsonignore;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
