@@ -59,12 +59,12 @@
         <dependency>
             <groupId>org.apache.xmlbeans</groupId>
             <artifactId>xmlbeans</artifactId>
-            <version>5.0.2</version>
+            <version>${xmlbeans.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
-            <version>2.12.4</version>
+            <version>${log4j-core.version}</version>
         </dependency>
     </dependencies>
 
@@ -78,8 +78,8 @@
         </resources>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -94,6 +94,8 @@
         <underscore.version>1.89</underscore.version>
         <xstream.version>1.4.18</xstream.version>
         <jaxb.version>2.3.3</jaxb.version>
+        <xmlbeans.version>5.0.2</xmlbeans.version>
+        <log4j-core.version>2.12.4</log4j-core.version>
     </properties>
 
 </project>

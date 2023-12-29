@@ -10,7 +10,7 @@ import java.util.List;
 public class StudentResultExtractor implements ResultSetExtractor<List<Student>> {
     @Override
     public List<Student> extractData(ResultSet rs) throws SQLException {
-        List<Student> students = new ArrayList<Student>();
+        List<Student> students = new ArrayList<>();
         while(rs.next()) {
             Student student = new Student();
             student.setStudentId(rs.getInt("student_id"));
