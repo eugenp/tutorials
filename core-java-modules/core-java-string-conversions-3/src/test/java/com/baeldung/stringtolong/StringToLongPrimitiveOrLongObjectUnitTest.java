@@ -12,8 +12,8 @@ public class StringToLongPrimitiveOrLongObjectUnitTest {
 
     @Test
     public void givenString_whenUsingLongConstructor_thenObtainLongObject() {
-        Long l = new Long("1234567");
-        assertThat(l).isEqualTo(1234567L);
+        Long l = new Long("2147483648");
+        assertThat(l).isEqualTo(2147483648L);
     }
 
     @Test
@@ -23,8 +23,8 @@ public class StringToLongPrimitiveOrLongObjectUnitTest {
 
     @Test
     public void givenString_whenUsingLongValueOf_thenObtainLongObject() {
-        Long l = Long.valueOf("1234567");
-        assertThat(l).isEqualTo(1234567L);
+        Long l = Long.valueOf("2147483648");
+        assertThat(l).isEqualTo(2147483648L);
     }
 
     @Test
@@ -34,8 +34,8 @@ public class StringToLongPrimitiveOrLongObjectUnitTest {
 
     @Test
     public void givenString_whenUsingParseLong_thenObtainLongPrimitive() {
-        long l = Long.parseLong("1234567");
-        assertThat(l).isEqualTo(1234567L);
+        long l = Long.parseLong("2147483648");
+        assertThat(l).isEqualTo(2147483648L);
     }
 
     @Test
@@ -45,8 +45,8 @@ public class StringToLongPrimitiveOrLongObjectUnitTest {
 
     @Test
     public void givenHexadecimalString_whenUsingLongDecode_thenObtainLongObject() {
-        Long l = Long.decode("0x12d687");
-        assertThat(l).isEqualTo(1234567L);
+        Long l = Long.decode("0x80000000");
+        assertThat(l).isEqualTo(2147483648L);
     }
 
     @Test
@@ -56,8 +56,8 @@ public class StringToLongPrimitiveOrLongObjectUnitTest {
 
     @Test
     public void givenHexadecimalString_whenUsingApacheCommons_thenObtainLongObject() {
-        Long l = NumberUtils.createLong("0x12d687");
-        assertThat(l).isEqualTo(1234567L);
+        Long l = NumberUtils.createLong("0x80000000");
+        assertThat(l).isEqualTo(2147483648L);
     }
 
     @Test
@@ -67,8 +67,8 @@ public class StringToLongPrimitiveOrLongObjectUnitTest {
 
     @Test
     public void givenString_whenUsingGuava_thenObtainLongObject() {
-        Long l = Longs.tryParse("1234567");
-        assertThat(l).isEqualTo(1234567L);
+        Long l = Longs.tryParse("2147483648");
+        assertThat(l).isEqualTo(2147483648L);
     }
 
     @Test
