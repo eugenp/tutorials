@@ -1,7 +1,6 @@
 package com.baeldung.jsonignore;
 
 import static com.baeldung.jsonignore.controller.EmptyEmployeeEchoController.USERS;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 import com.baeldung.jsonignore.emptyfields.Employee;
 import com.baeldung.jsonignore.emptyfields.PhoneNumber;
@@ -38,7 +37,7 @@ class NonEmptyEmployeeFieldsEchoControllerIntegrationTest extends AbstractEmploy
         final Predicate<Field> emptyField = s -> isFieldEmpty(expected, s);
         List<String> nullOrAbsentOrEmptyFields = filterFieldsAndGetNames(expected, nullField.or(absentField).or(emptyField));
         List<String> nonNullAndNonAbsentAndNonEmptyFields = filterFieldsAndGetNames(expected,
-            nullField.negate().and(absentField.negate().and(emptyField.negate())));
+          nullField.negate().and(absentField.negate().and(emptyField.negate())));
         nullFieldsShouldBeMissing(nullOrAbsentOrEmptyFields, jsonNode);
         nonNullFieldsShouldNonBeMissing(nonNullAndNonAbsentAndNonEmptyFields, jsonNode);
     }
@@ -47,14 +46,14 @@ class NonEmptyEmployeeFieldsEchoControllerIntegrationTest extends AbstractEmploy
         final Salary baseSalary = new Salary(BigDecimal.TEN);
         final List<PhoneNumber> phones = Arrays.asList(new PhoneNumber("123-456"), new PhoneNumber("789-012"));
         return Stream.of(
-            Arguments.of(new Employee(1L, "John", "Doe", Optional.empty(), "ʤɒn dəʊ", new ArrayList<>())),
-            Arguments.of(new Employee(1L, null, "Doe", Optional.of(baseSalary), "dəʊ", new ArrayList<>())),
-            Arguments.of(new Employee(1L, "John", null, Optional.empty(), "ʤɒn", new ArrayList<>())),
-            Arguments.of(new Employee(1L, null, null, Optional.of(baseSalary), null, new ArrayList<>())),
-            Arguments.of(new Employee(1L, "John", "Doe", Optional.empty(), "ʤɒn dəʊ", phones)),
-            Arguments.of(new Employee(1L, null, "Doe", Optional.of(baseSalary), "dəʊ", phones)),
-            Arguments.of(new Employee(1L, "John", null, Optional.empty(), "ʤɒn", phones)),
-            Arguments.of(new Employee(1L, null, null, Optional.of(baseSalary), null, phones))
+          Arguments.of(new Employee(1L, "John", "Doe", Optional.empty(), "ʤɒn dəʊ", new ArrayList<>())),
+          Arguments.of(new Employee(1L, null, "Doe", Optional.of(baseSalary), "dəʊ", new ArrayList<>())),
+          Arguments.of(new Employee(1L, "John", null, Optional.empty(), "ʤɒn", new ArrayList<>())),
+          Arguments.of(new Employee(1L, null, null, Optional.of(baseSalary), null, new ArrayList<>())),
+          Arguments.of(new Employee(1L, "John", "Doe", Optional.empty(), "ʤɒn dəʊ", phones)),
+          Arguments.of(new Employee(1L, null, "Doe", Optional.of(baseSalary), "dəʊ", phones)),
+          Arguments.of(new Employee(1L, "John", null, Optional.empty(), "ʤɒn", phones)),
+          Arguments.of(new Employee(1L, null, null, Optional.of(baseSalary), null, phones))
         );
     }
 

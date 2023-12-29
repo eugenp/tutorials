@@ -22,7 +22,7 @@ public class Employee {
     }
 
     public Employee(final long id, final String lastName, final String firstName,
-        final Optional<Salary> salary, final String phoneticName, final List<PhoneNumber> phoneNumbers) {
+      final Optional<Salary> salary, final String phoneticName, final List<PhoneNumber> phoneNumbers) {
         this.id = id;
         this.lastName = lastName;
         this.firstName = firstName;

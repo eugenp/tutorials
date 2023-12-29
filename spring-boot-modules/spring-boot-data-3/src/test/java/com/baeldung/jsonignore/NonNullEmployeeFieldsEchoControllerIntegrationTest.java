@@ -1,7 +1,6 @@
 package com.baeldung.jsonignore;
 
 import static com.baeldung.jsonignore.controller.EmployeeEchoController.USERS;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 import com.baeldung.jsonignore.nullfields.Employee;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -36,10 +35,10 @@ class NonNullEmployeeFieldsEchoControllerIntegrationTest extends AbstractEmploye
 
     static Stream<Arguments> giveEndpointWhenSendEmployeeThanReceiveThatUserBackIgnoringNullValues() {
         return Stream.of(
-            Arguments.of(new Employee(1L,"John","Doe")),
-            Arguments.of(new Employee(1L,null,"Doe")),
-            Arguments.of(new Employee(1L,"John",null)),
-            Arguments.of(new Employee(1L,null,null))
+          Arguments.of(new Employee(1L, "John", "Doe")),
+          Arguments.of(new Employee(1L, null, "Doe")),
+          Arguments.of(new Employee(1L, "John", null)),
+          Arguments.of(new Employee(1L, null, null))
         );
     }
 

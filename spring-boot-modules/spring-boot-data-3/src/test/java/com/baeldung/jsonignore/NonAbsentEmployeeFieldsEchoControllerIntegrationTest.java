@@ -1,7 +1,6 @@
 package com.baeldung.jsonignore;
 
 import static com.baeldung.jsonignore.controller.AbsentEmployeeEchoController.USERS;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 import com.baeldung.jsonignore.absentfields.Employee;
 import com.baeldung.jsonignore.absentfields.Salary;
@@ -41,10 +40,10 @@ class NonAbsentEmployeeFieldsEchoControllerIntegrationTest extends AbstractEmplo
     static Stream<Arguments> giveEndpointWhenSendEmployeeThanReceiveThatUserBackIgnoringAbsentValues() {
         final Salary baseSalary = new Salary(BigDecimal.TEN);
         return Stream.of(
-            Arguments.of(new Employee(1L,"John","Doe", Optional.empty())),
-            Arguments.of(new Employee(1L,null,"Doe", Optional.of(baseSalary))),
-            Arguments.of(new Employee(1L,"John",null, Optional.empty())),
-            Arguments.of(new Employee(1L,null,null, Optional.of(baseSalary)))
+          Arguments.of(new Employee(1L, "John", "Doe", Optional.empty())),
+          Arguments.of(new Employee(1L, null, "Doe", Optional.of(baseSalary))),
+          Arguments.of(new Employee(1L, "John", null, Optional.empty())),
+          Arguments.of(new Employee(1L, null, null, Optional.of(baseSalary)))
         );
     }
 

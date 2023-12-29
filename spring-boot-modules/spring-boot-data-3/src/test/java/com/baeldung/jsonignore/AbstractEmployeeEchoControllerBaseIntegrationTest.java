@@ -25,7 +25,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
 @WebMvcTest(controllers = {EmployeeEchoController.class, AbsentEmployeeEchoController.class,
-    EmptyEmployeeEchoController.class})
+  EmptyEmployeeEchoController.class})
 abstract class AbstractEmployeeEchoControllerBaseIntegrationTest {
 
     @Autowired
@@ -37,12 +37,12 @@ abstract class AbstractEmployeeEchoControllerBaseIntegrationTest {
     protected <T> MvcResult sendRequestAndGetResult(final T expected, final String endpoint) throws Exception {
         final String payload = mapper.writeValueAsString(expected);
         return mockMvc.perform(post(endpoint)
-                .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON)
-                .content(payload))
-            .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-            .andReturn();
+            .contentType(MediaType.APPLICATION_JSON)
+            .accept(MediaType.APPLICATION_JSON)
+            .content(payload))
+          .andExpect(status().isOk())
+          .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+          .andReturn();
     }
 
     protected static void nonNullFieldsShouldNonBeMissing(final List<String> nonNullFields, final JsonNode jsonNode) {
@@ -61,7 +61,7 @@ abstract class AbstractEmployeeEchoControllerBaseIntegrationTest {
 
     protected static <T> List<String> filterFieldsAndGetNames(final T object, final Predicate<Field> predicate) {
         return ReflectionUtils.findFields(object.getClass(), predicate, HierarchyTraversalMode.BOTTOM_UP)
-            .stream().map(Field::getName).collect(Collectors.toList());
+          .stream().map(Field::getName).collect(Collectors.toList());
     }
 
     protected static <T> boolean isFieldNull(final T object, final Field s) {
