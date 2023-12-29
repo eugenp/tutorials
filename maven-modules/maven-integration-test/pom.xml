@@ -9,10 +9,9 @@
     <packaging>war</packaging>
 
     <parent>
+        <artifactId>maven-modules</artifactId>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../..</relativePath>
+        <version>0.0.1-SNAPSHOT</version>
     </parent>
 
     <dependencies>
@@ -273,8 +272,11 @@
         <maven.verifier.version>1.1</maven.verifier.version>
         <maven.clean.version>3.0.0</maven.clean.version>
         <maven.build.helper.version>3.0.0</maven.build.helper.version>
-        <jetty.version>9.4.11.v20180605</jetty.version>
-        <jersey.version>2.27</jersey.version>
+        <jetty.version>11.0.19</jetty.version>
+        <jersey.version>3.1.5</jersey.version>
+        <java.version>17</java.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
 </project>
