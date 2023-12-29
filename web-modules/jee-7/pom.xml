@@ -188,6 +188,12 @@
             <artifactId>jersey-container-jetty-servlet</artifactId>
             <version>${jersey-container-jetty-servlet.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.sun.xml.messaging.saaj</groupId>
+            <artifactId>saaj-impl</artifactId>
+            <version>${saaj-impl.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -537,6 +543,7 @@
         <jboss-marshalling.version>2.1.1.Final</jboss-marshalling.version>
         <weld.version>2.1.1.Final</weld.version>
         <jersey-container-jetty-servlet.version>2.22.1</jersey-container-jetty-servlet.version>
+        <saaj-impl.version>1.5.1</saaj-impl.version>
     </properties>
 
 </project>
