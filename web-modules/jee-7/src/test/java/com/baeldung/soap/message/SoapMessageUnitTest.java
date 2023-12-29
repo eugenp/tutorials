@@ -64,7 +64,7 @@ class SoapMessageUnitTest {
     }
 
     @Test
-    void whenGetElementUsingIterator_thenSuccess() throws Exception {
+    void whenGetElementUsingIterator_thenReturnCorrectBodyElement() throws Exception {
         SOAPEnvelope soapEnvelope = getSoapEnvelope();
         SOAPBody soapBody = soapEnvelope.getBody();
         NodeList childNodes = soapBody.getChildNodes();
