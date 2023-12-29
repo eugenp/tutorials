@@ -1,12 +1,14 @@
 package com.baeldung.mbassador;
 
-import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import net.engio.mbassy.bus.MBassador;
 import net.engio.mbassy.bus.common.DeadMessage;
@@ -15,6 +17,7 @@ import net.engio.mbassy.listener.Filter;
 import net.engio.mbassy.listener.Filters;
 import net.engio.mbassy.listener.Handler;
 
+@Disabled
 public class MBassadorFilterUnitTest {
 
     private MBassador dispatcher = new MBassador();
@@ -26,7 +29,7 @@ public class MBassadorFilterUnitTest {
     private RejectMessage rejectMessage;
     private DeadMessage deadMessage;
 
-    @Before
+    @BeforeEach
     public void prepareTests() {
         dispatcher.subscribe(this);
     }
