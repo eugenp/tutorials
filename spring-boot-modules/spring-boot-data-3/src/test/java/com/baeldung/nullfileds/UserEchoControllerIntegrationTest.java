@@ -38,26 +38,8 @@ class UserEchoControllerIntegrationTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"1, John, Doe"})
-    void giveEndpointWhenSendUserThanReceiveThatUserBack(
-        final long id, final String firstName, final String secondName) throws Exception {
-        final User expected = new User(id, firstName, secondName);
-        final String payload = JSON_MAPPER.writeValueAsString(expected);
-        final MvcResult result = mockMvc.perform(post(USERS)
-                .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON)
-                .content(payload))
-            .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-            .andReturn();
-
-        final String response = result.getResponse().getContentAsString();
-        final User actual = JSON_MAPPER.readValue(response, User.class);
-        assertThat(actual).isEqualTo(expected);
-    }
-
-    @ParameterizedTest
     @CsvSource(value = {
+        "1,John,Doe",
         "1,,Doe",
         "1,John,",
         "1,,"
@@ -66,6 +48,7 @@ class UserEchoControllerIntegrationTest {
         final long id, final String firstName, final String secondName) throws Exception {
         final User expected = new User(id, firstName, secondName);
         List<String> nullFields = getNullFields(expected);
+        List<String> nonNullFields = getNonNullFields(expected);
         final String payload = JSON_MAPPER.writeValueAsString(expected);
         final MvcResult result = mockMvc.perform(post(USERS)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -78,6 +61,18 @@ class UserEchoControllerIntegrationTest {
         final String response = result.getResponse().getContentAsString();
         final JsonNode jsonNode = JSON_MAPPER.readTree(response);
 
+        nullFieldsShouldBeMissing(nullFields, jsonNode);
+        nonNullFielsShouldNonBeMissing(nonNullFields, jsonNode);
+    }
+
+    private static void nonNullFielsShouldNonBeMissing(final List<String> nonNullFields, final JsonNode jsonNode) {
+        nonNullFields.forEach(nullField -> {
+            final JsonNode nameNode = jsonNode.path(nullField);
+            assertThat(nameNode.isMissingNode()).isFalse();
+        });
+    }
+
+    private static void nullFieldsShouldBeMissing(final List<String> nullFields, final JsonNode jsonNode) {
         nullFields.forEach(nullField -> {
             final JsonNode nameNode = jsonNode.path(nullField);
             assertThat(nameNode.isMissingNode()).isTrue();
@@ -86,6 +81,11 @@ class UserEchoControllerIntegrationTest {
 
     private static <T> List<String> getNullFields(final T object) {
         Predicate<Field> predicate = s -> isFieldNull(object, s);
+        return ReflectionUtils.findFields(object.getClass(), predicate, HierarchyTraversalMode.BOTTOM_UP)
+            .stream().map(Field::getName).collect(Collectors.toList());
+    }
+    private static <T> List<String> getNonNullFields(final T object) {
+        Predicate<Field> predicate = s -> !isFieldNull(object, s);
         return ReflectionUtils.findFields(object.getClass(), predicate, HierarchyTraversalMode.BOTTOM_UP)
             .stream().map(Field::getName).collect(Collectors.toList());
     }
