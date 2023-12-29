@@ -11,9 +11,8 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../../</relativePath>
+        <artifactId>maven-modules</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
     </parent>
 
     <modules>
@@ -29,20 +28,9 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>${compiler.plugin.version}</version>
-                    <configuration>
-                        <source>${source.version}</source>
-                        <target>${target.version}</target>
-                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
     </build>
-
-    <properties>
-        <compiler.plugin.version>3.8.0</compiler.plugin.version>
-        <source.version>1.9</source.version>
-        <target.version>1.9</target.version>
-    </properties>
 
 </project>
