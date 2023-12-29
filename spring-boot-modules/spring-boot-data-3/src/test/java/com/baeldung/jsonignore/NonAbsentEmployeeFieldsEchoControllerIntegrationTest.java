@@ -24,7 +24,7 @@ class NonAbsentEmployeeFieldsEchoControllerIntegrationTest extends AbstractEmplo
 
     @ParameterizedTest
     @MethodSource
-    void giveEndpointWhenSendEmployeeThanReceiveThatUserBackIgnoringNullValues(final Employee expected) throws Exception {
+    void giveEndpointWhenSendEmployeeThanReceiveThatUserBackIgnoringAbsentValues(final Employee expected) throws Exception {
         final Predicate<Field> nullField = s -> isFieldNull(expected, s);
         final Predicate<Field> absentField = s -> isFieldAbsent(expected, s);
         List<String> nullOrAbsentFields = filterFieldsAndGetNames(expected, nullField.or(absentField));
@@ -45,7 +45,7 @@ class NonAbsentEmployeeFieldsEchoControllerIntegrationTest extends AbstractEmplo
         nonNullFieldsShouldNonBeMissing(nonNullAndNonAbsentFields, jsonNode);
     }
 
-    static Stream<Arguments> giveEndpointWhenSendEmployeeThanReceiveThatUserBackIgnoringNullValues() {
+    static Stream<Arguments> giveEndpointWhenSendEmployeeThanReceiveThatUserBackIgnoringAbsentValues() {
         final Salary baseSalary = new Salary(BigDecimal.TEN);
         return Stream.of(
             Arguments.of(new Employee(1L,"John","Doe", Optional.empty())),
