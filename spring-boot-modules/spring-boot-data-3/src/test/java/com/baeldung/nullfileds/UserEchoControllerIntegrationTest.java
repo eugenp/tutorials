@@ -1,6 +1,7 @@
 package com.baeldung.nullfileds;
 
 import static com.baeldung.nullfileds.UserEchoController.USERS;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assumptions.assumeThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -45,6 +46,6 @@ class UserEchoControllerIntegrationTest {
 
         final String response = result.getResponse().getContentAsString();
         final User actual = OBJECT_MAPPER.readValue(response, User.class);
-        assumeThat(actual).isEqualTo(expected);
+        assertThat(actual).isEqualTo(expected);
     }
 }
