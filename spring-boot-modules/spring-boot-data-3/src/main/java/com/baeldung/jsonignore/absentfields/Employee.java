@@ -10,8 +10,9 @@ public class Employee {
     private String lastName;
     private String firstName;
     private long id;
-
     private Optional<Salary> salary;
+
+
 
     public Employee() {
     }
