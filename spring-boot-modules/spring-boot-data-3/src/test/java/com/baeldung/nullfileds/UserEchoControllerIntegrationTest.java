@@ -26,7 +26,7 @@ class UserEchoControllerIntegrationTest {
 
     @Test
     void smokeTest() {
-        assumeThat(mockMvc).isNull();
+        assumeThat(mockMvc).isNotNull();
     }
 
     @ParameterizedTest
