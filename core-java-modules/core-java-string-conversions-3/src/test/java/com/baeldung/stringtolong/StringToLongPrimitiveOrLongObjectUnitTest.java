@@ -55,25 +55,14 @@ public class StringToLongPrimitiveOrLongObjectUnitTest {
     }
 
     @Test
-    public void givenHexadecimalString_whenUsingApacheCommons_thenObtainLongObject() {
+    public void givenHexadecimalString_whenUsingApacheCommonsNumberUtils_thenObtainLongObject() {
         Long l = NumberUtils.createLong("0x80000000");
         assertThat(l).isEqualTo(2147483648L);
     }
 
     @Test
-    public void givenInvalidString_whenUsingApacheCommons_thenNumberFormatExceptionThrown() {
+    public void givenInvalidString_whenUsingApacheCommonsNumberUtils_thenNumberFormatExceptionThrown() {
         Assertions.assertThrows(NumberFormatException.class, () -> NumberUtils.createLong("Invalid String"));
-    }
-
-    @Test
-    public void givenString_whenUsingGuava_thenObtainLongObject() {
-        Long l = Longs.tryParse("2147483648");
-        assertThat(l).isEqualTo(2147483648L);
-    }
-
-    @Test
-    public void givenInvalidString_whenUsingGuava_thenObtainNull() {
-        assertThat(Longs.tryParse("Invalid String")).isNull();
     }
 
     @Test
@@ -85,5 +74,16 @@ public class StringToLongPrimitiveOrLongObjectUnitTest {
     @Test
     public void givenInvalidString_whenUsingParseUnsignedLong_thenNumberFormatExceptionThrown() {
         Assertions.assertThrows(NumberFormatException.class, () -> Long.parseUnsignedLong("Invalid String"));
+    }
+
+    @Test
+    public void givenString_whenUsingGuavaLongs_thenObtainLongObject() {
+        Long l = Longs.tryParse("2147483648");
+        assertThat(l).isEqualTo(2147483648L);
+    }
+
+    @Test
+    public void givenInvalidString_whenUsingGuavaLongs_thenObtainNull() {
+        assertThat(Longs.tryParse("Invalid String")).isNull();
     }
 }
