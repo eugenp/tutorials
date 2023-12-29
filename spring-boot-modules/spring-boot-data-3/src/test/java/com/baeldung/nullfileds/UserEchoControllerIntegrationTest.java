@@ -32,10 +32,6 @@ class UserEchoControllerIntegrationTest {
     @Autowired
     private MockMvc mockMvc;
 
-    @Test
-    void smokeTest() {
-        assumeThat(mockMvc).isNotNull();
-    }
 
     @ParameterizedTest
     @CsvSource(value = {
@@ -62,10 +58,10 @@ class UserEchoControllerIntegrationTest {
         final JsonNode jsonNode = JSON_MAPPER.readTree(response);
 
         nullFieldsShouldBeMissing(nullFields, jsonNode);
-        nonNullFielsShouldNonBeMissing(nonNullFields, jsonNode);
+        nonNullFieldsShouldNonBeMissing(nonNullFields, jsonNode);
     }
 
-    private static void nonNullFielsShouldNonBeMissing(final List<String> nonNullFields, final JsonNode jsonNode) {
+    private static void nonNullFieldsShouldNonBeMissing(final List<String> nonNullFields, final JsonNode jsonNode) {
         nonNullFields.forEach(nullField -> {
             final JsonNode nameNode = jsonNode.path(nullField);
             assertThat(nameNode.isMissingNode()).isFalse();
