@@ -1,16 +1,16 @@
-package com.baeldung.jsonignore;
+package com.baeldung.jsonignore.controller;
 
-import com.baeldung.jsonignore.emptyfields.Employee;
+import com.baeldung.jsonignore.nullfields.Employee;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(EmptyEmployeeEchoController.USERS)
-public class EmptyEmployeeEchoController {
+@RequestMapping(EmployeeEchoController.USERS)
+public class EmployeeEchoController {
 
-    static final String USERS = "/empty_employees";
+    public static final String USERS = "/employees";
 
     @PostMapping
     public Employee echoUser(@RequestBody Employee employee) {

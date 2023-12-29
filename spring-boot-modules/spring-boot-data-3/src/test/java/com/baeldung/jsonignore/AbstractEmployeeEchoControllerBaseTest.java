@@ -2,6 +2,9 @@ package com.baeldung.jsonignore;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.baeldung.jsonignore.controller.AbsentEmployeeEchoController;
+import com.baeldung.jsonignore.controller.EmployeeEchoController;
+import com.baeldung.jsonignore.controller.EmptyEmployeeEchoController;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.lang.reflect.Field;

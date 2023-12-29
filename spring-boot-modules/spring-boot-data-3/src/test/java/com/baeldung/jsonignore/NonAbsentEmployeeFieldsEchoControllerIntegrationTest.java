@@ -1,6 +1,6 @@
 package com.baeldung.jsonignore;
 
-import static com.baeldung.jsonignore.AbsentEmployeeEchoController.USERS;
+import static com.baeldung.jsonignore.controller.AbsentEmployeeEchoController.USERS;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;

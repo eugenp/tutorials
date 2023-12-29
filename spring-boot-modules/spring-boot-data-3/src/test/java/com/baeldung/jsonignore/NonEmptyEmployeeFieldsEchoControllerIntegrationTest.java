@@ -1,6 +1,6 @@
 package com.baeldung.jsonignore;
 
-import static com.baeldung.jsonignore.EmptyEmployeeEchoController.USERS;
+import static com.baeldung.jsonignore.controller.EmptyEmployeeEchoController.USERS;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -50,7 +50,7 @@ class NonEmptyEmployeeFieldsEchoControllerIntegrationTest extends AbstractEmploy
         nonNullFieldsShouldNonBeMissing(nonNullAndNonAbsentAndNonEmptyFields, jsonNode);
     }
 
-    static Stream<Arguments> giveEndpointWhenSendEmployeeThanReceiveThatUserBackIgnoringNullValues() {
+    static Stream<Arguments> giveEndpointWhenSendEmployeeThanReceiveThatUserBackIgnoringEmptyValues() {
         final Salary baseSalary = new Salary(BigDecimal.TEN);
         final List<PhoneNumber> phones = Arrays.asList(new PhoneNumber("123-456"), new PhoneNumber("789-012"));
         return Stream.of(

@@ -1,6 +1,6 @@
 package com.baeldung.jsonignore;
 
-import static com.baeldung.jsonignore.EmployeeEchoController.USERS;
+import static com.baeldung.jsonignore.controller.EmployeeEchoController.USERS;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
