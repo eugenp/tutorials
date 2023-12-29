@@ -2,8 +2,6 @@ package com.baeldung.jsonignore;
 
 import static com.baeldung.jsonignore.controller.EmptyEmployeeEchoController.USERS;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.baeldung.jsonignore.emptyfields.Employee;
 import com.baeldung.jsonignore.emptyfields.PhoneNumber;
@@ -21,10 +19,9 @@ import java.util.stream.Stream;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
 
-class NonEmptyEmployeeFieldsEchoControllerIntegrationTest extends AbstractEmployeeEchoControllerBaseTest {
+class NonEmptyEmployeeFieldsEchoControllerIntegrationTest extends AbstractEmployeeEchoControllerBaseIntegrationTest {
 
     @ParameterizedTest
     @MethodSource

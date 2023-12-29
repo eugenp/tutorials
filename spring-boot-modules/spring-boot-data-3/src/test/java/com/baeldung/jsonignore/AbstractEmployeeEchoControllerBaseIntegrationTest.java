@@ -8,7 +8,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.baeldung.jsonignore.controller.AbsentEmployeeEchoController;
 import com.baeldung.jsonignore.controller.EmployeeEchoController;
 import com.baeldung.jsonignore.controller.EmptyEmployeeEchoController;
-import com.baeldung.jsonignore.nullfields.Employee;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.lang.reflect.Field;
@@ -27,7 +26,7 @@ import org.springframework.test.web.servlet.MvcResult;
 
 @WebMvcTest(controllers = {EmployeeEchoController.class, AbsentEmployeeEchoController.class,
     EmptyEmployeeEchoController.class})
-abstract class AbstractEmployeeEchoControllerBaseTest {
+abstract class AbstractEmployeeEchoControllerBaseIntegrationTest {
 
     @Autowired
     protected ObjectMapper mapper = new ObjectMapper();
