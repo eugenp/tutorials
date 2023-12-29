@@ -1,7 +1,10 @@
 package com.baeldung.nullfileds;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import java.util.Objects;
 
+@JsonInclude(Include.NON_NULL)
 public class User {
 
     private String lastName;
