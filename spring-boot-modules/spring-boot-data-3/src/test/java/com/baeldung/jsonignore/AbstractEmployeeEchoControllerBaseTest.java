@@ -1,32 +1,26 @@
 package com.baeldung.jsonignore;
 
-import static com.baeldung.jsonignore.EmployeeEchoController.USERS;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.baeldung.jsonignore.nullfields.Employee;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.lang.reflect.Field;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.platform.commons.util.ReflectionUtils;
 import org.junit.platform.commons.util.ReflectionUtils.HierarchyTraversalMode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
 
-@WebMvcTest(EmployeeEchoController.class)
+@WebMvcTest(controllers = {EmployeeEchoController.class, AbsentEmployeeEchoController.class})
 abstract class AbstractEmployeeEchoControllerBaseTest {
 
-    protected static final ObjectMapper JSON_MAPPER = new ObjectMapper();
+    @Autowired
+    protected ObjectMapper mapper = new ObjectMapper();
 
     @Autowired
     protected MockMvc mockMvc;
@@ -46,14 +40,7 @@ abstract class AbstractEmployeeEchoControllerBaseTest {
         });
     }
 
-    protected static <T> List<String> getNullFields(final T object) {
-        Predicate<Field> predicate = s -> isFieldNull(object, s);
-        return ReflectionUtils.findFields(object.getClass(), predicate, HierarchyTraversalMode.BOTTOM_UP)
-            .stream().map(Field::getName).collect(Collectors.toList());
-    }
-
-    protected static <T> List<String> getNonNullFields(final T object) {
-        Predicate<Field> predicate = s -> !isFieldNull(object, s);
+    protected static <T> List<String> filterFieldsAndGetNames(final T object, final Predicate<Field> predicate) {
         return ReflectionUtils.findFields(object.getClass(), predicate, HierarchyTraversalMode.BOTTOM_UP)
             .stream().map(Field::getName).collect(Collectors.toList());
     }
@@ -63,6 +50,23 @@ abstract class AbstractEmployeeEchoControllerBaseTest {
             if (Object.class.isAssignableFrom(s.getType())) {
                 s.setAccessible(true);
                 return s.get(object) == null;
+            } else {
+                return false;
+            }
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    protected static <T> boolean isFieldAbsent(final T object, final Field s) {
+        try {
+            if (Optional.class.isAssignableFrom(s.getType())) {
+                s.setAccessible(true);
+                final Optional<?> optional = ((Optional<?>) s.get(object));
+                if (optional != null) {
+                    return !optional.isPresent();
+                } else {
+                    return false;
+                }
             } else {
                 return false;
             }

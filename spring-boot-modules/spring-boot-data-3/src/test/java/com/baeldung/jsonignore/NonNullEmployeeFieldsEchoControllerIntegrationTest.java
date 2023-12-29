@@ -8,7 +8,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.baeldung.jsonignore.nullfields.Employee;
 import com.fasterxml.jackson.databind.JsonNode;
+import java.lang.reflect.Field;
 import java.util.List;
+import java.util.function.Predicate;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.springframework.http.MediaType;
@@ -26,9 +28,10 @@ class NonNullEmployeeFieldsEchoControllerIntegrationTest extends AbstractEmploye
     void giveEndpointWhenSendEmployeeThanReceiveThatUserBackIgnoringNullValues(
         final long id, final String firstName, final String secondName) throws Exception {
         final Employee expected = new Employee(id, firstName, secondName);
-        List<String> nullFields = getNullFields(expected);
-        List<String> nonNullFields = getNonNullFields(expected);
-        final String payload = JSON_MAPPER.writeValueAsString(expected);
+        final Predicate<Field> nullField = s -> isFieldNull(expected, s);
+        List<String> nullFields = filterFieldsAndGetNames(expected, nullField);
+        List<String> nonNullFields = filterFieldsAndGetNames(expected, nullField.negate());
+        final String payload = mapper.writeValueAsString(expected);
         final MvcResult result = mockMvc.perform(post(USERS)
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
@@ -38,7 +41,7 @@ class NonNullEmployeeFieldsEchoControllerIntegrationTest extends AbstractEmploye
             .andReturn();
 
         final String response = result.getResponse().getContentAsString();
-        final JsonNode jsonNode = JSON_MAPPER.readTree(response);
+        final JsonNode jsonNode = mapper.readTree(response);
 
         nullFieldsShouldBeMissing(nullFields, jsonNode);
         nonNullFieldsShouldNonBeMissing(nonNullFields, jsonNode);
