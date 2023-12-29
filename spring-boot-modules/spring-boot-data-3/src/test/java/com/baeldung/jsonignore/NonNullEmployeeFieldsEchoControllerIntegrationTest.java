@@ -2,48 +2,45 @@ package com.baeldung.jsonignore;
 
 import static com.baeldung.jsonignore.controller.EmployeeEchoController.USERS;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.baeldung.jsonignore.nullfields.Employee;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.function.Predicate;
+import java.util.stream.Stream;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-import org.springframework.http.MediaType;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.test.web.servlet.MvcResult;
 
 class NonNullEmployeeFieldsEchoControllerIntegrationTest extends AbstractEmployeeEchoControllerBaseTest {
 
     @ParameterizedTest
-    @CsvSource(value = {
-        "1,John,Doe",
-        "1,,Doe",
-        "1,John,",
-        "1,,"
-    })
-    void giveEndpointWhenSendEmployeeThanReceiveThatUserBackIgnoringNullValues(
-        final long id, final String firstName, final String secondName) throws Exception {
-        final Employee expected = new Employee(id, firstName, secondName);
+    @MethodSource
+    void giveEndpointWhenSendEmployeeThanReceiveThatUserBackIgnoringNullValues(final Employee expected) throws Exception {
+        final MvcResult result = sendRequestAndGetResult(expected, USERS);
+        final String response = result.getResponse().getContentAsString();
+        validateJsonFields(expected, response);
+    }
+
+    private void validateJsonFields(final Employee expected, final String response) throws JsonProcessingException {
+        final JsonNode jsonNode = mapper.readTree(response);
         final Predicate<Field> nullField = s -> isFieldNull(expected, s);
         List<String> nullFields = filterFieldsAndGetNames(expected, nullField);
         List<String> nonNullFields = filterFieldsAndGetNames(expected, nullField.negate());
-        final String payload = mapper.writeValueAsString(expected);
-        final MvcResult result = mockMvc.perform(post(USERS)
-                .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON)
-                .content(payload))
-            .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-            .andReturn();
-
-        final String response = result.getResponse().getContentAsString();
-        final JsonNode jsonNode = mapper.readTree(response);
-
         nullFieldsShouldBeMissing(nullFields, jsonNode);
         nonNullFieldsShouldNonBeMissing(nonNullFields, jsonNode);
+    }
+
+    static Stream<Arguments> giveEndpointWhenSendEmployeeThanReceiveThatUserBackIgnoringNullValues() {
+        return Stream.of(
+            Arguments.of(new Employee(1L,"John","Doe")),
+            Arguments.of(new Employee(1L,null,"Doe")),
+            Arguments.of(new Employee(1L,"John",null)),
+            Arguments.of(new Employee(1L,null,null))
+        );
     }
 
 }

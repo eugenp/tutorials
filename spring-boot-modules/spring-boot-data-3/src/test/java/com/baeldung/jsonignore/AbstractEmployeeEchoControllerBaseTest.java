@@ -1,10 +1,14 @@
 package com.baeldung.jsonignore;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.baeldung.jsonignore.controller.AbsentEmployeeEchoController;
 import com.baeldung.jsonignore.controller.EmployeeEchoController;
 import com.baeldung.jsonignore.controller.EmptyEmployeeEchoController;
+import com.baeldung.jsonignore.nullfields.Employee;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.lang.reflect.Field;
@@ -17,7 +21,9 @@ import org.junit.platform.commons.util.ReflectionUtils;
 import org.junit.platform.commons.util.ReflectionUtils.HierarchyTraversalMode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 
 @WebMvcTest(controllers = {EmployeeEchoController.class, AbsentEmployeeEchoController.class,
     EmptyEmployeeEchoController.class})
@@ -29,6 +35,16 @@ abstract class AbstractEmployeeEchoControllerBaseTest {
     @Autowired
     protected MockMvc mockMvc;
 
+    protected MvcResult sendRequestAndGetResult(final Employee expected, final String endpoint) throws Exception {
+        final String payload = mapper.writeValueAsString(expected);
+        return mockMvc.perform(post(endpoint)
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON)
+                .content(payload))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+            .andReturn();
+    }
 
     protected static void nonNullFieldsShouldNonBeMissing(final List<String> nonNullFields, final JsonNode jsonNode) {
         nonNullFields.forEach(nullField -> {
