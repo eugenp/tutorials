@@ -99,7 +99,6 @@
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
-            <version>${rest-assured.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -224,7 +223,6 @@
         <taglibs-standard.version>1.1.2</taglibs-standard.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
         <ehcache-core.version>2.6.11</ehcache-core.version>
-        <rest-assured.version>5.4.0</rest-assured.version>
     </properties>
 
 </project>
