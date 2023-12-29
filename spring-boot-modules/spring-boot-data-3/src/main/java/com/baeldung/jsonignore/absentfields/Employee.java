@@ -13,7 +13,6 @@ public class Employee {
     private Optional<Salary> salary;
 
 
-
     public Employee() {
     }
 
