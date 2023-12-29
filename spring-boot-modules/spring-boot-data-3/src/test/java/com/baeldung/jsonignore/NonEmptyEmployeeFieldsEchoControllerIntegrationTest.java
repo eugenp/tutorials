@@ -8,6 +8,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.baeldung.jsonignore.emptyfields.Employee;
 import com.baeldung.jsonignore.emptyfields.PhoneNumber;
 import com.baeldung.jsonignore.emptyfields.Salary;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
@@ -28,24 +29,19 @@ class NonEmptyEmployeeFieldsEchoControllerIntegrationTest extends AbstractEmploy
     @ParameterizedTest
     @MethodSource
     void giveEndpointWhenSendEmployeeThanReceiveThatUserBackIgnoringEmptyValues(final Employee expected) throws Exception {
+        final MvcResult result = sendRequestAndGetResult(expected, USERS);
+        final String response = result.getResponse().getContentAsString();
+        validateJsonFields(expected, response);
+    }
+
+    private void validateJsonFields(final Employee expected, final String response) throws JsonProcessingException {
+        final JsonNode jsonNode = mapper.readTree(response);
         final Predicate<Field> nullField = s -> isFieldNull(expected, s);
         final Predicate<Field> absentField = s -> isFieldAbsent(expected, s);
         final Predicate<Field> emptyField = s -> isFieldEmpty(expected, s);
         List<String> nullOrAbsentOrEmptyFields = filterFieldsAndGetNames(expected, nullField.or(absentField).or(emptyField));
         List<String> nonNullAndNonAbsentAndNonEmptyFields = filterFieldsAndGetNames(expected,
             nullField.negate().and(absentField.negate().and(emptyField.negate())));
-        final String payload = mapper.writeValueAsString(expected);
-        final MvcResult result = mockMvc.perform(post(USERS)
-                .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON)
-                .content(payload))
-            .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-            .andReturn();
-
-        final String response = result.getResponse().getContentAsString();
-        final JsonNode jsonNode = mapper.readTree(response);
-
         nullFieldsShouldBeMissing(nullOrAbsentOrEmptyFields, jsonNode);
         nonNullFieldsShouldNonBeMissing(nonNullAndNonAbsentAndNonEmptyFields, jsonNode);
     }

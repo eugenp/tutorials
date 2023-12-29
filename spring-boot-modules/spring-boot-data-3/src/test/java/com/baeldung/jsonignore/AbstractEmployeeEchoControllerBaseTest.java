@@ -35,7 +35,7 @@ abstract class AbstractEmployeeEchoControllerBaseTest {
     @Autowired
     protected MockMvc mockMvc;
 
-    protected MvcResult sendRequestAndGetResult(final Employee expected, final String endpoint) throws Exception {
+    protected <T> MvcResult sendRequestAndGetResult(final T expected, final String endpoint) throws Exception {
         final String payload = mapper.writeValueAsString(expected);
         return mockMvc.perform(post(endpoint)
                 .contentType(MediaType.APPLICATION_JSON)
