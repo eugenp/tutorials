@@ -2,7 +2,6 @@ package com.baeldung.nullfileds;
 
 import static com.baeldung.nullfileds.UserEchoController.USERS;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assumptions.assumeThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -13,7 +12,6 @@ import java.lang.reflect.Field;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.platform.commons.util.ReflectionUtils;
@@ -31,7 +29,6 @@ class UserEchoControllerIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;
-
 
     @ParameterizedTest
     @CsvSource(value = {
@@ -80,6 +77,7 @@ class UserEchoControllerIntegrationTest {
         return ReflectionUtils.findFields(object.getClass(), predicate, HierarchyTraversalMode.BOTTOM_UP)
             .stream().map(Field::getName).collect(Collectors.toList());
     }
+
     private static <T> List<String> getNonNullFields(final T object) {
         Predicate<Field> predicate = s -> !isFieldNull(object, s);
         return ReflectionUtils.findFields(object.getClass(), predicate, HierarchyTraversalMode.BOTTOM_UP)
