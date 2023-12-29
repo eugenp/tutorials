@@ -1,4 +1,4 @@
-package com.baeldung.jsonignore.absentfields.nullfields;
+package com.baeldung.jsonignore.absentfields;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
