@@ -81,7 +81,7 @@
 
     <properties>
         <spring.version>5.3.25</spring.version>
-        <camel.version>3.21.0</camel.version>
+        <camel.version>4.3.0</camel.version>
     </properties>
 
     <profiles>
