@@ -11,9 +11,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.expression.spel.SpelEvaluationException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -25,7 +25,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.jdbc.JdbcTestUtils;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 
-import javax.servlet.ServletContext;
+import jakarta.servlet.ServletContext;
 import java.util.Date;
 import java.util.List;
 
@@ -83,7 +83,7 @@ public class SpringDataWithSecurityIntegrationTest {
         userRepository.updateLastLogin(new Date());
     }
 
-    @Test(expected = InvalidDataAccessApiUsageException.class)
+    @Test(expected = SpelEvaluationException.class)
     public void givenNoAppUserInSecurityContext_whenUpdateLastLoginAttempted_shouldFail() {
         userRepository.updateLastLogin(new Date());
     }
@@ -104,7 +104,7 @@ public class SpringDataWithSecurityIntegrationTest {
         } while (page.hasNext());
     }
 
-    @Test(expected = InvalidDataAccessApiUsageException.class)
+    @Test(expected = SpelEvaluationException.class)
     public void givenNoAppUser_whenPaginatedResultsRetrievalAttempted_shouldFail() {
         Page<Tweet> page = null;
         do {

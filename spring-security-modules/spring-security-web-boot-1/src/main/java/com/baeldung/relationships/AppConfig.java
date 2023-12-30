@@ -15,14 +15,14 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
 @PropertySource({"classpath:persistence-h2.properties", "classpath:application-defaults.properties"})
 @EnableJpaRepositories(basePackages = {"com.baeldung.relationships.repositories"})
 @EnableWebMvc
 @Import(SpringSecurityConfig.class)
-public class AppConfig extends WebMvcConfigurerAdapter {
+public class AppConfig implements WebMvcConfigurer {
 
     @Autowired
     private Environment env;
@@ -41,7 +41,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan(new String[] { "com.baeldung.relationships.models" });
+        em.setPackagesToScan("com.baeldung.relationships.models");
         em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         em.setJpaProperties(additionalProperties());
         return em;

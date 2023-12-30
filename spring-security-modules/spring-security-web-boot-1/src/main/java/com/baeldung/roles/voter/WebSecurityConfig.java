@@ -1,23 +1,19 @@
 package com.baeldung.roles.voter;
 
-import java.util.Arrays;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.access.AccessDecisionManager;
-import org.springframework.security.access.AccessDecisionVoter;
-import org.springframework.security.access.vote.AuthenticatedVoter;
-import org.springframework.security.access.vote.RoleVoter;
-import org.springframework.security.access.vote.UnanimousBased;
+import org.springframework.security.authorization.AuthorizationManager;
+import org.springframework.security.authorization.AuthorizationManagers;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractAuthenticationFilterConfigurer;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.access.expression.WebExpressionVoter;
+import org.springframework.security.web.access.intercept.RequestAuthorizationContext;
 
 @Configuration
 @EnableWebSecurity
@@ -38,32 +34,20 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.csrf()
-            .disable()
-            .authorizeRequests()
-            .anyRequest()
-            .authenticated()
-            .accessDecisionManager(accessDecisionManager())
-            .and()
-            .formLogin()
-            .permitAll()
-            .and()
-            .logout()
-            .permitAll()
-            .deleteCookies("JSESSIONID")
-            .logoutSuccessUrl("/login");
+        http.csrf(AbstractHttpConfigurer::disable)
+            .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry ->
+                    authorizationManagerRequestMatcherRegistry.anyRequest().authenticated()
+                            .anyRequest().access(accessDecisionManager()))
+            .formLogin(AbstractAuthenticationFilterConfigurer::permitAll)
+            .logout(httpSecurityLogoutConfigurer ->
+                    httpSecurityLogoutConfigurer.permitAll().deleteCookies("JSESSIONID")
+                            .logoutSuccessUrl("/login"));
         return http.build();
     }
 
     @Bean
-    public AccessDecisionManager accessDecisionManager() {
-        List<AccessDecisionVoter<?>> decisionVoters = Arrays.asList(
-                new WebExpressionVoter(),
-                new RoleVoter(),
-                new AuthenticatedVoter(),
-                new MinuteBasedVoter());
-
-        return new UnanimousBased(decisionVoters);
+    public AuthorizationManager<RequestAuthorizationContext> accessDecisionManager() {
+        return AuthorizationManagers.allOf(new MinuteBasedVoter());
     }
     
     @Bean
