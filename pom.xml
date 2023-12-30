@@ -1248,5 +1248,4 @@
         <guava.version>32.1.3-jre</guava.version>
         <maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
     </properties>
-
 </project>
