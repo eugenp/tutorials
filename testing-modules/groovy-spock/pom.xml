@@ -15,6 +15,12 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
+    <properties>
+        <spock-core.version>2.4-M1-groovy-4.0</spock-core.version>
+        <groovy-all.version>4.0.16</groovy-all.version>
+        <gmavenplus-plugin.version>3.0.2</gmavenplus-plugin.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.spockframework</groupId>
@@ -23,9 +29,10 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.codehaus.groovy</groupId>
+            <groupId>org.apache.groovy</groupId>
             <artifactId>groovy-all</artifactId>
             <version>${groovy-all.version}</version>
+            <type>pom</type>
         </dependency>
     </dependencies>
 
@@ -39,18 +46,34 @@
                     <execution>
                         <goals>
                             <goal>compile</goal>
-                            <goal>testCompile</goal>
+                            <goal>compileTests</goal>
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <testSources>
+                        <testSource>
+                            <directory>${project.basedir}/src/test/groovy</directory>
+                            <includes>
+                                <include>**/*.groovy</include>
+                            </includes>
+                        </testSource>
+                    </testSources>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.2</version>
+                <configuration>
+                    <testSourceDirectory>src/test/groovy</testSourceDirectory>
+                    <includes>
+                        <include>**/*Specification.groovy</include>
+                        <include>**/*Test.groovy</include>
+                    </includes>
+                </configuration>
             </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <spock-core.version>1.3-groovy-2.4</spock-core.version>
-        <groovy-all.version>2.4.7</groovy-all.version>
-        <gmavenplus-plugin.version>1.5</gmavenplus-plugin.version>
-    </properties>
 
 </project>
