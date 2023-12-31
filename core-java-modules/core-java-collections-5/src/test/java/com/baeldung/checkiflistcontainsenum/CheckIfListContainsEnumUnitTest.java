@@ -1,76 +1,58 @@
 package com.baeldung.checkiflistcontainsenum;
 
-import java.util.*;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Assert;
-import org.junit.Test;
+import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 
-public class CheckIfListContainsEnumUnitTest {
-    private final List<Map<String, Object>> data = new ArrayList<>();
-    public boolean containsDeveloper = false;
-    List<Position> list = Arrays.asList(Position.values());
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-    public CheckIfListContainsEnumUnitTest() {
-        Map<String, Object> map = new HashMap<>();
-        map.put("Name", "John");
-        map.put("Age", 25);
-        map.put("Position", Position.DEVELOPER);
+public class ByteArrayToJsonAndViceVersaUnitTest {
 
-        data.add(map);
-    }
-
+    byte[] byteArray = {34, 123, 92, 34, 110, 97, 109, 101, 92, 34, 58, 92, 34, 65, 108,
+            105, 99, 101, 92, 34, 44, 92, 34, 97, 103, 101, 92, 34, 58, 50, 53, 44, 92,
+            34, 105, 115, 83, 116, 117, 100, 101, 110, 116, 92, 34, 58, 116, 114, 117,
+            101, 44, 92, 34, 104, 111, 98, 98, 105, 101, 115, 92, 34, 58, 91, 92, 34,
+            114, 101, 97, 100, 105, 110, 103, 92, 34, 44, 92, 34, 112, 97, 105, 110,
+            116, 105, 110, 103, 92, 34, 93, 44, 92, 34, 97, 100, 100, 114, 101, 115,
+            115, 92, 34, 58, 123, 92, 34, 99, 105, 116, 121, 92, 34, 58, 92, 34, 83,
+            109, 97, 108, 108, 118, 105, 108, 108, 101, 92, 34, 44, 92, 34, 122, 105,
+            112, 99, 111, 100, 101, 92, 34, 58, 92, 34, 49, 50, 51, 52, 53, 92, 34, 125, 125, 34};
+String jsonString = "{\"name\":\"Alice\",\"age\":25,\"isStudent\":true,\"hobbies\":[\"reading\",\"painting\"],\"address\":{\"city\":\"Smallville\",\"zipcode\":\"12345\"}}";
 
     @Test
-    public void givenDataList_whenUsingLoop_thenCheckIfListContainsEnum() {
-        for (Map<String, Object> entry : data) {
-            Object positionValue = entry.get("Position");
+    void givenByteArray_whenConvertingToJsonUsingJackson_thenJsonString() throws Exception {
+        ObjectMapper objectMapper = new ObjectMapper();
+        String actualJsonString = objectMapper.readValue(byteArray, String.class);
 
-            for (Position position : Position.values()) {
-                if (positionValue.equals(position)) {
-                    containsDeveloper = true;
-                    break;
-                }
-            }
-
-            if (containsDeveloper) {
-                break;
-            }
-        }
-
-        Assert.assertTrue(containsDeveloper);
+        assertEquals(jsonString, actualJsonString);
     }
 
     @Test
-    public void givenDataList_whenUsingStream_thenCheckIfListContainsEnum() {
-        containsDeveloper = data.stream()
-                .map(entry -> entry.get("Position"))
-                .anyMatch(position -> Arrays.asList(Position.values()).contains(position));
+    void givenByteArray_whenConvertingToJsonUsingGson_thenJsonString() {
+        Gson gson = new Gson();
+        String jsonStringFromByteArray = new String(byteArray, StandardCharsets.UTF_8);
+        String actualJsonString = gson.fromJson(jsonStringFromByteArray, String.class);
 
-        Assert.assertTrue(containsDeveloper);
+        assertEquals(jsonString, actualJsonString);
     }
 
     @Test
-    public void givenDataList_whenUsingDisjointMethod_thenCheckIfListContainsEnum() {
-        List<Position> positionValues = data.stream()
-                .map(entry -> (Position) entry.get("Position"))
-                .toList();
+    void givenJsonString_whenConvertingToByteArrayUsingJackson_thenByteArray() throws JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        byte[] actualByteArray = objectMapper.writeValueAsBytes(jsonString);
 
-        boolean containsDeveloper = !Collections.disjoint(list, positionValues);
-        Assert.assertTrue(containsDeveloper);
+        assertEquals(Arrays.toString(byteArray), Arrays.toString(actualByteArray));
     }
 
+    @Test
+    void givenJsonString_whenConvertingToByteArrayUsingGson_thenByteArray() {
+        Gson gson = new Gson();
+        byte[] actualByteArray = gson.toJson(jsonString).getBytes();
 
-    public enum Position {
-        DEVELOPER("Dev"), MANAGER("Mgr"), ANALYST("Analyst");
-
-        private final String value;
-
-        Position(String value) {
-            this.value = value;
-        }
-
-        public String getValue() {
-            return value;
-        }
+        assertEquals(Arrays.toString(byteArray), Arrays.toString(actualByteArray));
     }
 }
