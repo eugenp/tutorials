@@ -1,9 +1,10 @@
 package com.baeldung.lists;
 
-import java.util.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
+import java.util.*;
 
 public class CheckIfListContainsEnumUnitTest {
     private final List<Map<String, Object>> data = new ArrayList<>();
@@ -37,7 +38,7 @@ public class CheckIfListContainsEnumUnitTest {
             }
         }
 
-        Assert.assertTrue(containsDeveloper);
+        assertTrue(containsDeveloper);
     }
 
     @Test
@@ -46,7 +47,7 @@ public class CheckIfListContainsEnumUnitTest {
                 .map(entry -> entry.get("Position"))
                 .anyMatch(position -> Arrays.asList(Position.values()).contains(position));
 
-        Assert.assertTrue(containsDeveloper);
+        assertTrue(containsDeveloper);
     }
 
     @Test
@@ -56,7 +57,7 @@ public class CheckIfListContainsEnumUnitTest {
                 .toList();
 
         boolean containsDeveloper = !Collections.disjoint(list, positionValues);
-        Assert.assertTrue(containsDeveloper);
+        assertTrue(containsDeveloper);
     }
 
 
