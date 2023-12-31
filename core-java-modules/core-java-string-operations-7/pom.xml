@@ -80,5 +80,4 @@
         <icu4j.version>74.1</icu4j.version>
         <liquibase.core.version>4.25.0</liquibase.core.version>
     </properties>
-
 </project>
