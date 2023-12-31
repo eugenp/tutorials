@@ -21,6 +21,7 @@
         <micronaut.aot.packageName>com.baeldung.aot.generated</micronaut.aot.packageName>
         <micronaut.test.resources.enabled>true</micronaut.test.resources.enabled>
         <exec.mainClass>com.baeldung.micronautreactive.Application</exec.mainClass>
+        <micronaut-test-resources-testcontainers.version>2.1.0</micronaut-test-resources-testcontainers.version>
     </properties>
 
     <repositories>
@@ -90,7 +91,7 @@
         <dependency>
             <groupId>io.micronaut.testresources</groupId>
             <artifactId>micronaut-test-resources-testcontainers</artifactId>
-            <version>2.1.0</version>
+            <version>${micronaut-test-resources-testcontainers.version}</version>
         </dependency>
 
         <dependency>
