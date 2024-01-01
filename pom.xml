@@ -350,7 +350,6 @@
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
 
-                <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <!-- <module>pants</module> --> <!-- Not a maven project -->
 
                 <module>libraries-jdk8</module>
@@ -519,8 +518,6 @@
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
-
-                <!-- <module>lagom</module> --> <!-- Not a maven project -->
 
                 <module>libraries-jdk8</module>
 
@@ -735,22 +732,15 @@
                 <module>java-blockchain</module>
                 <module>java-jdi</module>
                 <!--<module>java-panama</module>--> <!--JAVA-27339-->
-                <module>java-rmi</module>
-                <module>java-spi</module>
-                <module>java-websocket</module>
                 <module>javafx</module>
                 <module>javax-sound</module>
                 <module>javaxval-2</module>
                 <module>javaxval</module>
                 <module>jaxb</module>
-                <module>jersey</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
                 <!--<module>jhipster-6</module>--> <!-- failing after upgrading to jdk17-->
-                <module>jib</module>
-                <module>jmeter</module>
                 <module>jmh</module>
-                <module>jsf</module>
                 <module>json-modules</module>
                 <module>jsoup</module>
                 <module>jws</module>
@@ -985,22 +975,15 @@
                 <module>java-blockchain</module>
                 <module>java-jdi</module>
                 <!--<module>java-panama</module>--> <!--JAVA-27339-->
-                <module>java-rmi</module>
-                <module>java-spi</module>
-                <module>java-websocket</module>
                 <module>javafx</module>
                 <module>javax-sound</module>
                 <module>javaxval-2</module>
                 <module>javaxval</module>
                 <module>jaxb</module>
-                <module>jersey</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
                 <!--<module>jhipster-6</module>--> <!-- failing after upgrading to jdk17-->
-                <module>jib</module>
-                <module>jmeter</module>
                 <module>jmh</module>
-                <module>jsf</module>
                 <module>json-modules</module>
                 <module>jsoup</module>
                 <module>jws</module>
