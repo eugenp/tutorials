@@ -26,7 +26,9 @@
         <module>javax-servlets</module>
         <module>javax-servlets-2</module>
         <module>jee-7</module>
+        <module>jersey</module>
         <module>jooby</module>
+        <module>jsf</module>
         <module>linkrest</module>
         <!-- <module>ninja</module> --> <!-- Fixing in JAVA-24584 -->
         <!-- <module>play-modules</module> --> <!-- Not a maven project -->
