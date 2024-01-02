@@ -1,13 +1,14 @@
 package com.baeldung.dockerapi;
 
-import com.github.dockerjava.api.DockerClient;
-import com.github.dockerjava.core.DefaultDockerClientConfig;
-import com.github.dockerjava.core.DockerClientBuilder;
-import org.junit.Test;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.Properties;
 
-import static org.junit.Assert.assertNotNull;
+import org.junit.Test;
+
+import com.github.dockerjava.api.DockerClient;
+import com.github.dockerjava.core.DefaultDockerClientConfig;
+import com.github.dockerjava.core.DockerClientBuilder;
 
 public class DockerClientLiveTest {
 

@@ -1,14 +1,23 @@
 package com.baeldung.fugue;
 
-import io.atlassian.fugue.*;
+import static io.atlassian.fugue.Unit.Unit;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
+import java.util.function.Function;
+
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.*;
-import java.util.function.Function;
-
-import static org.junit.Assert.*;
-import static io.atlassian.fugue.Unit.Unit;
+import io.atlassian.fugue.*;
 
 public class FugueUnitTest {
 

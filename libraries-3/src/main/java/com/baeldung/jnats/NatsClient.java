@@ -1,5 +1,12 @@
 package com.baeldung.jnats;
 
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import io.nats.client.AsyncSubscription;
 import io.nats.client.Connection;
 import io.nats.client.Message;
@@ -7,12 +14,6 @@ import io.nats.client.Nats;
 import io.nats.client.Options;
 import io.nats.client.Subscription;
 import io.nats.client.SyncSubscription;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 public final class NatsClient {
 

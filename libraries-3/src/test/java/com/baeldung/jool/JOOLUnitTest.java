@@ -1,13 +1,8 @@
 package com.baeldung.jool;
 
-import org.jooq.lambda.Seq;
-import org.jooq.lambda.Unchecked;
-import org.jooq.lambda.function.Function1;
-import org.jooq.lambda.function.Function2;
-import org.jooq.lambda.tuple.Tuple2;
-import org.jooq.lambda.tuple.Tuple3;
-import org.jooq.lambda.tuple.Tuple4;
-import org.junit.Test;
+import static junit.framework.Assert.assertTrue;
+import static junit.framework.TestCase.assertEquals;
+import static org.jooq.lambda.tuple.Tuple.tuple;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -17,9 +12,14 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static junit.framework.Assert.assertTrue;
-import static junit.framework.TestCase.assertEquals;
-import static org.jooq.lambda.tuple.Tuple.tuple;
+import org.jooq.lambda.Seq;
+import org.jooq.lambda.Unchecked;
+import org.jooq.lambda.function.Function1;
+import org.jooq.lambda.function.Function2;
+import org.jooq.lambda.tuple.Tuple2;
+import org.jooq.lambda.tuple.Tuple3;
+import org.jooq.lambda.tuple.Tuple4;
+import org.junit.Test;
 
 public class JOOLUnitTest {
     @Test
