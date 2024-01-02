@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -42,33 +43,22 @@ public class SecurityConfig {
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring()
-            .antMatchers("/resources/**");
+        return (web) -> web.ignoring().requestMatchers("/resources/**");
     }
     
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.csrf()
-            .disable()
-            .authorizeRequests()
-            .antMatchers("/login*", "/logout*", "/protectedbynothing*", "/home*")
-            .permitAll()
-            .antMatchers("/protectedbyrole")
-            .hasRole("USER")
-            .antMatchers("/protectedbyauthority")
-            .hasAuthority("READ_PRIVILEGE")
-            .and()
-            .formLogin()
-            .loginPage("/login")
-            .failureUrl("/login?error=true")
-            .permitAll()
-            .and()
-            .logout()
-            .logoutSuccessHandler(myLogoutSuccessHandler)
-            .invalidateHttpSession(false)
-            .logoutSuccessUrl("/logout.html?logSucc=true")
-            .deleteCookies("JSESSIONID")
-            .permitAll();
+        http.csrf(AbstractHttpConfigurer::disable)
+            .authorizeHttpRequests(
+                    authorizationManagerRequestMatcherRegistry ->
+                            authorizationManagerRequestMatcherRegistry.requestMatchers("/login*", "/logout*", "/protectedbynothing*", "/home*").permitAll()
+                                    .requestMatchers("/protectedbyrole").hasRole("USER")
+                                    .requestMatchers("/protectedbyauthority").hasAuthority("READ_PRIVILEGE"))
+            .formLogin(httpSecurityFormLoginConfigurer ->
+                    httpSecurityFormLoginConfigurer.loginPage("/login").failureUrl("/login?error=true").permitAll())
+            .logout(httpSecurityLogoutConfigurer ->
+                    httpSecurityLogoutConfigurer.logoutSuccessHandler(myLogoutSuccessHandler).invalidateHttpSession(false)
+                            .logoutSuccessUrl("/logout.html?logSucc=true").deleteCookies("JSESSIONID").permitAll());
         return http.build();
     }
 

@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class ArticleMapperCommonUnitTest {
+abstract class ArticleMapperCommonUnitTest {
 
     @Autowired
     ArticleMapper articleMapper;

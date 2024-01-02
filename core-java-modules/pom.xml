@@ -10,9 +10,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-java</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-java</relativePath>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>..</relativePath>
     </parent>
 
     <modules>
@@ -65,7 +65,6 @@
         <module>core-java-streams-5</module>
         <module>core-java-streams-collect</module>
         <module>core-java-streams-maps</module>
-        <module>core-java-string-algorithms-3</module>
         <!--<module>core-java-string-operations-3</module>--> <!-- failing after upgrading to jdk17 -->
         <module>core-java-string-operations-4</module>
         <!--<module>core-java-string-operations-5</module>--> <!-- failing after upgrading to jdk17 -->
@@ -155,6 +154,7 @@
         <module>core-java-lang-syntax</module>
         <module>core-java-lang-syntax-2</module>
         <module>core-java-locale</module>
+        <module>core-java-loops</module>
         <module>core-java-networking</module>
         <module>core-java-networking-2</module>
         <module>core-java-networking-4</module>
@@ -184,6 +184,8 @@
         <module>core-java-streams-3</module>
         <module>core-java-string-algorithms</module>
         <module>core-java-string-algorithms-2</module>
+        <module>core-java-string-algorithms-3</module>
+        <module>core-java-string-algorithms-4</module>
         <module>core-java-string-apis</module>
         <!--<module>core-java-string-apis-2</module>--> <!-- failing after upgrading to jdk17 -->
         <module>core-java-swing</module>
@@ -208,6 +210,9 @@
         <module>core-java-datetime-conversion</module>
         <module>core-java-httpclient</module>
         <module>java-native</module>
+        <module>java-rmi</module>
+        <module>java-spi</module>
+        <module>java-websocket</module>
     </modules>
 
     <dependencyManagement>

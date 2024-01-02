@@ -29,7 +29,7 @@
         <dependency>
             <groupId>io.projectreactor.addons</groupId>
             <artifactId>reactor-extra</artifactId>
-            <version>${reactor.version}</version>
+            <version>${reactor-extra.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -40,7 +40,8 @@
     </dependencies>
 
     <properties>
-        <reactor.version>3.5.1</reactor.version>
+        <reactor.version>3.6.0</reactor.version>
+        <reactor-extra.version>3.5.1</reactor-extra.version>
     </properties>
 
 </project>

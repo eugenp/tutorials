@@ -81,7 +81,7 @@ public class EmployeeDAOIntegrationTest {
 
     @Test
     public void testBatchUpdateUsingJDBCTemplate() {
-        final List<Employee> employees = new ArrayList<Employee>();
+        final List<Employee> employees = new ArrayList<>();
         final Employee emp1 = new Employee();
         emp1.setId(10);
         emp1.setFirstName("firstName1");
@@ -113,7 +113,7 @@ public class EmployeeDAOIntegrationTest {
 
     @Test
     public void testBatchUpdateUsingNamedParameterJDBCTemplate() {
-        final List<Employee> employees = new ArrayList<Employee>();
+        final List<Employee> employees = new ArrayList<>();
         final Employee emp1 = new Employee();
         emp1.setId(40);
         emp1.setFirstName("firstName4");

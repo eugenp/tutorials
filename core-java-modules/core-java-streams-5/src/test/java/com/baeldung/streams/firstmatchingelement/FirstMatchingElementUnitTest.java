@@ -34,7 +34,7 @@ public class FirstMatchingElementUnitTest {
 
     @Test
     public void whenUsingIntStream_thenFindFirstMatchingUserIndex() {
-        int index = IntStream.range(0, userList.size() - 1)
+        int index = IntStream.range(0, userList.size())
           .filter(streamIndex -> searchName.equals(userList.get(streamIndex).getUserName()))
           .findFirst()
           .orElse(-1);

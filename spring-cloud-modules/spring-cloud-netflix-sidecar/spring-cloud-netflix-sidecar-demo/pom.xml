@@ -26,6 +26,7 @@
         <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-core</artifactId>
+            <version>${reactor-core.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -53,4 +54,7 @@
         </plugins>
     </build>
 
+    <properties>
+        <reactor-core.version>3.6.0</reactor-core.version>
+    </properties>
 </project>
