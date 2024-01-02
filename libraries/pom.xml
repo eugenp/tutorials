@@ -126,6 +126,21 @@
             <artifactId>google-oauth-client-jetty</artifactId>
             <version>${google-api.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.squareup</groupId>
+            <artifactId>javapoet</artifactId>
+            <version>${javapoet.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.libphonenumber</groupId>
+            <artifactId>libphonenumber</artifactId>
+            <version>${libphonenumber.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.functionaljava</groupId>
+            <artifactId>functionaljava-java8</artifactId>
+            <version>${functionaljava.version}</version>
+        </dependency>
     </dependencies>
 
     <repositories>
@@ -257,6 +272,9 @@
         <quartz.version>2.3.0</quartz.version>
         <commons-net.version>3.6</commons-net.version>
         <commonsio.version>2.6</commonsio.version>
+        <javapoet.version>1.10.0</javapoet.version>
+        <libphonenumber.version>8.12.9</libphonenumber.version>
+        <functionaljava.version>4.8.1</functionaljava.version>
     </properties>
 
 </project>

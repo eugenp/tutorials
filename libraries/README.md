@@ -11,4 +11,7 @@ Remember, for advanced libraries like [Jackson](/jackson) and [JUnit](/testing-m
 - [Intro to JaVers](https://www.baeldung.com/javers)
 - [Introduction to Quartz](https://www.baeldung.com/quartz)
 - [Locality-Sensitive Hashing in Java Using Java-LSH](https://www.baeldung.com/locality-sensitive-hashing)
+- [Introduction to JavaPoet](https://www.baeldung.com/java-poet)
+- [Using libphonenumber to Validate Phone Numbers](https://www.baeldung.com/java-libphonenumber)
+- [Introduction to Functional Java](https://www.baeldung.com/java-functional-library)
 - More articles [[next -->]](/libraries-2)

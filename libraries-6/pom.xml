@@ -13,11 +13,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.functionaljava</groupId>
-            <artifactId>functionaljava-java8</artifactId>
-            <version>${functionaljava.version}</version>
-        </dependency>
-        <dependency>
             <groupId>io.github.resilience4j</groupId>
             <artifactId>resilience4j-circuitbreaker</artifactId>
             <version>${resilience4j.version}</version>
@@ -37,11 +32,7 @@
             <artifactId>resilience4j-timelimiter</artifactId>
             <version>${resilience4j.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.squareup</groupId>
-            <artifactId>javapoet</artifactId>
-            <version>${javapoet.version}</version>
-        </dependency>
+
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
@@ -79,11 +70,7 @@
             <version>${renjin.version}</version>
         </dependency>
         <!-- libphonenumber -->
-        <dependency>
-            <groupId>com.googlecode.libphonenumber</groupId>
-            <artifactId>libphonenumber</artifactId>
-            <version>${libphonenumber.version}</version>
-        </dependency>
+
         <dependency>
             <groupId>org.agrona</groupId>
             <artifactId>agrona</artifactId>
@@ -173,13 +160,13 @@
     </build>
 
     <properties>
-        <javapoet.version>1.10.0</javapoet.version>
-        <functionaljava.version>4.8.1</functionaljava.version>
+
+
         <resilience4j.version>2.1.0</resilience4j.version>
         <renjin.version>3.5-beta72</renjin.version>
         <rcaller.version>3.0</rcaller.version>
         <rserve.version>1.8.1</rserve.version>
-        <libphonenumber.version>8.12.9</libphonenumber.version>
+
         <agrona.version>1.17.1</agrona.version>
         <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
         <sbe-tool.version>1.27.0</sbe-tool.version>
