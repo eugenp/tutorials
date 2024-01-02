@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.fasterxml.jackson.core.exc.StreamConstraintsException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -115,7 +116,7 @@ public class CallingDefaultSerializerUnitTest {
 
     }
 
-    @Test(expected = StackOverflowError.class)
+    @Test(expected = StreamConstraintsException.class)
     public void givenFolder_whenSerializedWithCallingOwnSerializer_exceptionOccured() throws IOException {
 
         SimpleModule module = new SimpleModule();
