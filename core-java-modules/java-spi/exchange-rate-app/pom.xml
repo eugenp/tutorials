@@ -10,7 +10,7 @@
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>java-spi</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>0.0.1-SNAPSHOT</version>
     </parent>
 
     <dependencies>
@@ -22,7 +22,7 @@
     </dependencies>
 
     <properties>
-        <exchange-rate-api.version>1.0.0-SNAPSHOT</exchange-rate-api.version>
+        <exchange-rate-api.version>0.0.1-SNAPSHOT</exchange-rate-api.version>
     </properties>
 
 </project>
