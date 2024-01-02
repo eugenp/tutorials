@@ -181,6 +181,7 @@
     </build>
 
     <properties>
+        <jackson.version>2.13.4</jackson.version>
         <kafka.version>3.4.0</kafka.version>
         <testcontainers-kafka.version>1.19.3</testcontainers-kafka.version>
         <testcontainers-jupiter.version>1.15.3</testcontainers-jupiter.version>

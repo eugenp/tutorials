@@ -20,7 +20,7 @@ public class MessageRepositorySimpleJDBCInsert {
     }
 
     public long insert(String message) {
-        Map<String, Object> parameters = new HashMap<String, Object>(1);
+        Map<String, Object> parameters = new HashMap<>(1);
         parameters.put("message", message);
         Number newId = messageInsert.executeAndReturnKey(parameters);
         return (long) newId;
