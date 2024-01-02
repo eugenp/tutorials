@@ -14,5 +14,6 @@ Remember, for advanced libraries like [Jackson](/jackson) and [JUnit](/testing-m
 - [A Guide to Crawler4j](https://www.baeldung.com/crawler4j)
 - [A Guide to Apache Mesos](https://www.baeldung.com/apache-mesos)
 - [Guide to MapDB](https://www.baeldung.com/mapdb)
+- [Find Files by Extension in Specified Directory in Java](https://www.baeldung.com/java-recursive-search-directory-extension-match)
 - More articles [[<-- prev]](/libraries) [[next -->]](/libraries-3)
 
