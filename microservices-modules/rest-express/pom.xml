@@ -2,14 +2,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>microservices-modules</artifactId>
-        <groupId>com.baeldung</groupId>
-        <version>1.0.0-SNAPSHOT</version>
-    </parent>
     <modelVersion>4.0.0</modelVersion>
-
+    <artifactId>rest-express</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
     <name>rest-express</name>
+    <packaging>jar</packaging>
+    <description>A Basic, MongoDB-backed Service Suite</description>
+    <url>https://github.com/RestExpress/RestExpress-Scaffold</url>
     <!--
 		To run the project: mvn clean package exec:java
 			* mongod must be running.
@@ -18,11 +17,12 @@
 			mvn clean package
 			mvn assembly:single
 	 -->
-    <description>A Basic, MongoDB-backed Service Suite</description>
-    <url>https://github.com/RestExpress/RestExpress-Scaffold</url>
-    <version>1.0.0-SNAPSHOT</version>
-    <artifactId>rest-express</artifactId>
-    <packaging>jar</packaging>
+
+    <parent>
+        <artifactId>microservices-modules</artifactId>
+        <groupId>com.baeldung</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
 
     <dependencies>
         <dependency>

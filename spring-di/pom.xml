@@ -10,44 +10,12 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-spring-6</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-spring-6</relativePath>
+        <relativePath>../parent-boot-3</relativePath>
     </parent>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-framework-bom</artifactId>
-                <version>${spring.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-core</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <dependencies>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-beans</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
@@ -64,12 +32,6 @@
             <version>${spring-boot.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-test</artifactId>
-            <version>${spring-boot.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>${commons-io.version}</version>
@@ -79,17 +41,6 @@
             <artifactId>aspectjweaver</artifactId>
             <version>${aspectjweaver.version}</version>
         </dependency>
-        <!-- Spring -->
-        <!-- <dependency> -->
-        <!-- <groupId>org.springframework</groupId> -->
-        <!-- <artifactId>spring-context</artifactId> -->
-        <!-- </dependency> -->
-        <!-- &lt;!&ndash; test scoped &ndash;&gt; -->
-        <!-- <dependency> -->
-        <!-- <groupId>org.springframework</groupId> -->
-        <!-- <artifactId>spring-test</artifactId> -->
-        <!-- <scope>test</scope> -->
-        <!-- </dependency> -->
     </dependencies>
 
     <build>
@@ -132,8 +83,6 @@
 
     <properties>
         <start-class>org.baeldung.org.baeldung.sample.App</start-class>
-        <!-- Spring -->
-        <spring-boot.version>3.1.2</spring-boot.version>
         <aspectjweaver.version>1.9.20.1</aspectjweaver.version>
     </properties>
 

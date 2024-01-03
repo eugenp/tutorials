@@ -10,4 +10,5 @@ This module contains articles about Map data structures in Java.
 - [Java HashMap Load Factor](https://www.baeldung.com/java-hashmap-load-factor)
 - [Converting Java Properties to HashMap](https://www.baeldung.com/java-convert-properties-to-hashmap)
 - [Get Values and Keys as ArrayList From a HashMap](https://www.baeldung.com/java-values-keys-arraylists-hashmap)
-- More articles: [[<-- prev]](/core-java-modules/core-java-collections-maps-2)
+- [Remove Duplicate Values From HashMap in Java](https://www.baeldung.com/java-hashmap-delete-duplicates)
+- More articles: [[<-- prev]](/core-java-modules/core-java-collections-maps-2)[[next -->]](/core-java-modules/core-java-collections-maps-4)
