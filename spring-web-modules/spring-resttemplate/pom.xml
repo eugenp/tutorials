@@ -100,12 +100,6 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <!-- <scope>runtime</scope> -->
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jcl-over-slf4j</artifactId>
-            <!-- <scope>runtime</scope> --> <!-- some spring dependencies need to compile against jcl -->
         </dependency>
         <!-- okhttp -->
         <dependency>
@@ -121,7 +115,7 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-junit-jupiter</artifactId>
-            <version>5.8.0</version>
+            <version>${mockito-junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -271,6 +265,7 @@
         <!-- okhttp -->
         <com.squareup.okhttp3.version>4.12.0</com.squareup.okhttp3.version>
         <pact.version>3.6.3</pact.version>
+        <mockito-junit-jupiter.version>5.8.0</mockito-junit-jupiter.version>
     </properties>
 
 </project>
