@@ -20,11 +20,6 @@
             <version>1.36</version>
         </dependency>
         <dependency>
-            <groupId>commons-lang</groupId>
-            <artifactId>commons-lang</artifactId>
-            <version>${commons-lang.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
@@ -65,7 +60,6 @@
 
     <properties>
         <jmh.version>1.21</jmh.version>
-        <commons-lang.version>2.2</commons-lang.version>
         <gson.version>2.10.1</gson.version>
         <jackson.version>2.16.0</jackson.version>
         <org.json.version>20230618</org.json.version>
