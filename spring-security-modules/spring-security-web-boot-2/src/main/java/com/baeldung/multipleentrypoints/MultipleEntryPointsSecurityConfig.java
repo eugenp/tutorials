@@ -45,7 +45,7 @@ public class MultipleEntryPointsSecurityConfig {
             MvcRequestMatcher.Builder mvcMatcherBuilder = new MvcRequestMatcher.Builder(introspector);
             http.securityMatcher("/admin/**")
                     .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry ->
-                    authorizationManagerRequestMatcherRegistry.requestMatchers(mvcMatcherBuilder.pattern("/admin/**")).hasRole("ADMIN"))
+                            authorizationManagerRequestMatcherRegistry.requestMatchers(mvcMatcherBuilder.pattern("/admin/**")).hasRole("ADMIN"))
                     .httpBasic(httpSecurityHttpBasicConfigurer -> httpSecurityHttpBasicConfigurer.authenticationEntryPoint(authenticationEntryPoint()))
                     .exceptionHandling(httpSecurityExceptionHandlingConfigurer ->
                             httpSecurityExceptionHandlingConfigurer.accessDeniedPage("/403"));
@@ -105,8 +105,7 @@ public class MultipleEntryPointsSecurityConfig {
         public SecurityFilterChain filterChainApp3(HttpSecurity http, HandlerMappingIntrospector introspector) throws Exception {
             MvcRequestMatcher.Builder mvcMatcherBuilder = new MvcRequestMatcher.Builder(introspector);
             http.securityMatcher("/guest/**")
-                    .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry ->
-                            authorizationManagerRequestMatcherRegistry.requestMatchers(mvcMatcherBuilder.pattern("/guest/**")).permitAll());
+                    .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry -> authorizationManagerRequestMatcherRegistry.requestMatchers(mvcMatcherBuilder.pattern("/guest/**")).permitAll());
             return http.build();
         }
     }
