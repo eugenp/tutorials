@@ -19,6 +19,7 @@ import org.slf4j.LoggerFactory;
 public class CalciteUnitTest {
 
     Logger logger = LoggerFactory.getLogger(CalciteUnitTest.class);
+
     @Test
     void whenCsvSchema_thenQuerySuccess() throws SQLException {
         Properties info = new Properties();
@@ -43,6 +44,4 @@ public class CalciteUnitTest {
         logger.info("path fetched :" + url.getPath());
         return url.getPath();
     }
-
-
 }
