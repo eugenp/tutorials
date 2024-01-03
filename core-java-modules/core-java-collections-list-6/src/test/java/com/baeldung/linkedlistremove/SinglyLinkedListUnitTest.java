@@ -79,6 +79,7 @@ class SinglyLinkedListUnitTest {
                 linkedList.removeLast();
             }
             assertThat(linkedList.size()).isEqualTo(expectedSize);
+            SOURCE.subList(0, expectedSize).forEach(s -> assertThat(linkedList.contains(s)).isTrue());
         }
     }
 
