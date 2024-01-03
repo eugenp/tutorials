@@ -2,8 +2,8 @@ package com.baeldung.roles.ip.web;
 
 import java.util.List;
 
-import javax.servlet.Filter;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.Filter;
+import jakarta.servlet.http.HttpServletRequest;
 
 import com.baeldung.roles.custom.persistence.model.Foo;
 import org.springframework.beans.factory.annotation.Autowired;
