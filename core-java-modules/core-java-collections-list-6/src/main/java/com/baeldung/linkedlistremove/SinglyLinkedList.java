@@ -1,7 +1,5 @@
 package com.baeldung.linkedlistremove;
 
-import com.baeldung.linkedlistremove.node.Node;
-import com.baeldung.linkedlistremove.node.SimpleNode;
 import java.util.Objects;
 
 public class SinglyLinkedList<S> {
@@ -19,12 +17,12 @@ public class SinglyLinkedList<S> {
     }
 
     public void add(S element) {
-        Node<S> newTail = new SimpleNode<>(element);
+        Node<S> newTail = new Node<>(element);
         if (head == null) {
             tail = newTail;
             head = tail;
         } else {
-            tail.setNext(newTail);
+            tail.next = newTail;
             tail = newTail;
         }
         ++size;
@@ -37,20 +35,21 @@ public class SinglyLinkedList<S> {
         Node<S> previous = null;
         Node<S> current = head;
         while (current != null) {
-            if (Objects.equals(element, current.getElement())) {
-                Node<S> next = current.getNext();
+            if (Objects.equals(element, current.element)) {
+                Node<S> next = current.next;
                 if (isFistNode(current)) {
                     head = next;
                 } else if (isLastNode(current)) {
-                    previous.setNext(null);
+                    previous.next = null;
                 } else {
-                    previous.setNext(current.getNext());
+                    Node<S> next1 = current.next;
+                    previous.next = next1;
                 }
                 --size;
                 break;
             }
             previous = current;
-            current = current.getNext();
+            current = current.next;
         }
     }
 
@@ -64,11 +63,11 @@ public class SinglyLinkedList<S> {
         } else {
             Node<S> secondToLast = null;
             Node<S> last = head;
-            while (last.hasNext()) {
+            while (last.next != null) {
                 secondToLast = last;
-                last = last.getNext();
+                last = last.next;
             }
-            secondToLast.setNext(null);
+            secondToLast.next = null;
         }
         --size;
     }
@@ -79,9 +78,9 @@ public class SinglyLinkedList<S> {
 
         Node<S> current = head;
         while (current != null) {
-            if (Objects.equals(element, current.getElement()))
+            if (Objects.equals(element, current.element))
                 return true;
-            current = current.getNext();
+            current = current.next;
         }
         return false;
     }
@@ -92,6 +91,16 @@ public class SinglyLinkedList<S> {
 
     private boolean isFistNode(Node<S> node) {
         return head == node;
+    }
+
+
+    public static class Node<T>  {
+        private T element;
+        private Node<T> next;
+
+        public Node(T element) {
+            this.element = element;
+        }
     }
 
 }
