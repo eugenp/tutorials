@@ -1,22 +1,25 @@
 package com.baeldung.linkedlistremove;
 
+import com.baeldung.linkedlistremove.node.Node;
+import com.baeldung.linkedlistremove.node.SimpleNode;
+
 public class WrappedNodeSinglyLinkedList<S> {
 
     private int size;
-    private WrappedNode<S> head = null;
-    private WrappedNode<S> tail = null;
+    private Node<S> head = null;
+    private Node<S> tail = null;
 
     public boolean isEmpty() {
         return head == null;
     }
 
     public void add(S element) {
-        WrappedNode<S> newTail = new WrappedNode<>(element);
+        Node<S> newTail = new SimpleNode<>(element);
         if (head == null) {
             tail = newTail;
             head = tail;
         } else {
-            tail.next = newTail;
+            tail.setNext(newTail);
             tail = newTail;
         }
         ++size;
@@ -33,32 +36,32 @@ public class WrappedNodeSinglyLinkedList<S> {
         if (element == null)
             return;
 
-        WrappedNode<S> previous = null;
-        WrappedNode<S> current = head;
+        Node<S> previous = null;
+        Node<S> current = head;
         while (current != null) {
-            if (element.equals(current.element)) {
-                WrappedNode<S> next = current.next;
+            if (element.equals(current.getElement())) {
+                Node<S> next = current.getNext();
                 if (isFistNode(current)) {
                     head = next;
                 } else if (isLastNode(current)) {
-                    previous.next = null;
+                    previous.setNext(null);
                 } else {
-                    previous.next = current.next;
+                    previous.setNext(current.getNext());
                 }
                 --size;
                 break;
             }
             previous = current;
-            current = current.next;
+            current = current.getNext();
         }
     }
 
-    private boolean isLastNode(WrappedNode<S> wrappedNode) {
-        return tail == wrappedNode;
+    private boolean isLastNode(Node<S> node) {
+        return tail == node;
     }
 
-    private boolean isFistNode(WrappedNode<S> wrappedNode) {
-        return head == wrappedNode;
+    private boolean isFistNode(Node<S> node) {
+        return head == node;
     }
 
     public boolean contains(S element) {
@@ -68,11 +71,11 @@ public class WrappedNodeSinglyLinkedList<S> {
         if (element == null)
             return false;
 
-        WrappedNode<S> current = head;
+        Node<S> current = head;
         while (current != null) {
-            if (element.equals(current.element))
+            if (element.equals(current.getElement()))
                 return true;
-            current = current.next;
+            current = current.getNext();
         }
         return false;
     }
@@ -85,29 +88,15 @@ public class WrappedNodeSinglyLinkedList<S> {
             head = null;
 
         } else {
-            WrappedNode<S> secondToLast = null;
-            WrappedNode<S> last = head;
+            Node<S> secondToLast = null;
+            Node<S> last = head;
             while (last.hasNext()) {
                 secondToLast = last;
-                last = last.next;
+                last = last.getNext();
             }
-            secondToLast.next = null;
+            secondToLast.setNext(null);
         }
         --size;
     }
 
-
-    private static class WrappedNode<S> {
-
-        private S element;
-        private WrappedNode<S> next;
-
-        public WrappedNode(S element) {
-            this.element = element;
-        }
-
-        public boolean hasNext() {
-            return next != null;
-        }
-    }
 }
