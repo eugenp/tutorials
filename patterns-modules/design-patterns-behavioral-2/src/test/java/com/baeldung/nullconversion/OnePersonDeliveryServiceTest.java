@@ -27,6 +27,7 @@ class OnePersonDeliveryServiceTest {
         Delivery actual = deliveryService.calculateDeliveryForPerson(1L);
         assertThat(actual).isEqualTo(expected);
     }
+
     @ParameterizedTest
     @ArgumentsSource(NullReturningPersonChainProvider.class)
     void givenMockDeliverServiceWhenNullValuesThenGuavaOptionalServiceThrowsException(Person person) {

@@ -13,14 +13,14 @@ public class OnePersonGuavaOptionalDeliveryService extends MockOnePersonDelivery
         super(person);
     }
 
-@Override
-public Delivery calculateDeliveryForPerson(Long id) {
-    return Optional.fromNullable(getPersonById(id))
-      .transform(Person::getAddress)
-      .transform(Address::getZipCode)
-      .transform(ZipCode::getCode)
-      .transform(this::calculateDeliveryForZipCode)
-      .orNull();
-}
+    @Override
+    public Delivery calculateDeliveryForPerson(Long id) {
+        return Optional.fromNullable(getPersonById(id))
+          .transform(Person::getAddress)
+          .transform(Address::getZipCode)
+          .transform(ZipCode::getCode)
+          .transform(this::calculateDeliveryForZipCode)
+          .orNull();
+    }
 
 }

@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public abstract class MockOnePersonDeliveryServiceBase implements DeliveryService {
 
-    private Person person;
+    private final Person person;
 
     public MockOnePersonDeliveryServiceBase(Person person) {
         this.person = person;

@@ -14,13 +14,13 @@ public class OnePersonOptionalDeliveryService extends MockOnePersonDeliveryServi
     }
 
     @Override
-public Delivery calculateDeliveryForPerson(Long id) {
-    return Optional.ofNullable(getPersonById(id))
-      .map(Person::getAddress)
-      .map(Address::getZipCode)
-      .map(ZipCode::getCode)
-      .map(this::calculateDeliveryForZipCode)
-      .orElse(null);
-}
+    public Delivery calculateDeliveryForPerson(Long id) {
+        return Optional.ofNullable(getPersonById(id))
+          .map(Person::getAddress)
+          .map(Address::getZipCode)
+          .map(ZipCode::getCode)
+          .map(this::calculateDeliveryForZipCode)
+          .orElse(null);
+    }
 
 }
