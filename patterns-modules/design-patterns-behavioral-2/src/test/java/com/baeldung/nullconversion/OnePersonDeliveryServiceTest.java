@@ -14,7 +14,7 @@ class OnePersonDeliveryServiceTest {
 
     @ParameterizedTest
     @ArgumentsSource(PersonProvider.class)
-    void calculateDeliveryForPerson(Person person, Delivery expected) {
+    void givenMockDeliverServiceWhenNullValuesThenExplicitServiceHandleThem(Person person, Delivery expected) {
         DeliveryService deliveryService = new OnePersonExplicitDeliveryService(person);
         Delivery actual = deliveryService.calculateDeliveryForPerson(1L);
         assertThat(actual).isEqualTo(expected);
@@ -22,14 +22,14 @@ class OnePersonDeliveryServiceTest {
 
     @ParameterizedTest
     @ArgumentsSource(PersonProvider.class)
-    void calculateDeliveryForPersonWithOptional(Person person, Delivery expected) {
+    void givenMockDeliverServiceWhenNullValuesThenOptionalServiceHandleThem(Person person, Delivery expected) {
         DeliveryService deliveryService = new OnePersonOptionalDeliveryService(person);
         Delivery actual = deliveryService.calculateDeliveryForPerson(1L);
         assertThat(actual).isEqualTo(expected);
     }
     @ParameterizedTest
     @ArgumentsSource(NullReturningPersonChainProvider.class)
-    void calculateDeliveryForPersonWithGuavaOptional(Person person) {
+    void givenMockDeliverServiceWhenNullValuesThenGuavaOptionalServiceThrowsException(Person person) {
         DeliveryService deliveryService = new OnePersonGuavaOptionalDeliveryService(person);
         assertThatExceptionOfType(NullPointerException.class)
           .isThrownBy(() -> deliveryService.calculateDeliveryForPerson(1L));
