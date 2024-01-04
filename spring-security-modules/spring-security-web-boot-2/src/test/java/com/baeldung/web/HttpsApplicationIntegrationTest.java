@@ -1,8 +1,10 @@
 package com.baeldung.web;
 
-import org.apache.http.client.HttpClient;
-import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
-import org.apache.http.impl.client.HttpClients;
+import org.apache.hc.client5.http.classic.HttpClient;
+import org.apache.hc.client5.http.impl.classic.HttpClients;
+import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManagerBuilder;
+import org.apache.hc.client5.http.io.HttpClientConnectionManager;
+import org.apache.hc.client5.http.ssl.SSLConnectionSocketFactory;
 import org.apache.http.ssl.SSLContextBuilder;
 import com.baeldung.ssl.HttpsEnabledApplication;
 import org.junit.Test;
@@ -47,8 +49,9 @@ public class HttpsApplicationIntegrationTest {
         SSLContext sslContext = new SSLContextBuilder().loadTrustMaterial(trustStore.getURL(), trustStorePassword.toCharArray())
             .build();
         SSLConnectionSocketFactory socketFactory = new SSLConnectionSocketFactory(sslContext);
+        HttpClientConnectionManager connectionManager = PoolingHttpClientConnectionManagerBuilder.create().setSSLSocketFactory(socketFactory).build();
         HttpClient httpClient = HttpClients.custom()
-            .setSSLSocketFactory(socketFactory)
+            .setConnectionManager(connectionManager)
             .build();
         HttpComponentsClientHttpRequestFactory factory = new HttpComponentsClientHttpRequestFactory(httpClient);
         return new RestTemplate(factory);
