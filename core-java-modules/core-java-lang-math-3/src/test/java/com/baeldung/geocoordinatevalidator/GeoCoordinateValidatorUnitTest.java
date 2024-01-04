@@ -10,7 +10,7 @@ public class GeoCoordinateValidatorUnitTest {
     @Test
     public void givenValidDDCoordinates_whenValidatingWithRegex_thenReturnsTrue() {
         GeoCoordinateValidator validator = new GeoCoordinateValidator();
-        assertTrue(validator.isValidDDFormatWithRegex("34.0522, -118.2437"));
+        assertTrue(validator.isValidDDFormatWithRegex("34.0522  ,   -118.2437"));
         assertTrue(validator.isValidDDFormatWithRegex("-34.0522, 118.2437"));
         assertTrue(validator.isValidDDFormatWithRegex("-90.0, 180.0"));
         assertTrue(validator.isValidDDFormatWithRegex("90.0, -180.0"));
@@ -82,20 +82,20 @@ public class GeoCoordinateValidatorUnitTest {
     @Test
     public void givenValidDMSCoordinates_whenValidatingWithCustom_thenReturnsTrue() {
         GeoCoordinateValidator validator = new GeoCoordinateValidator();
-        assertTrue(validator.isValidDMSFormatWithCustom("34°12'34\"N, 118°14'37\"W"));
-        assertTrue(validator.isValidDMSFormatWithCustom("34°12'34\"s, 118°14'37\"e"));
-        assertTrue(validator.isValidDMSFormatWithCustom("45°30'N, 123°45'23.2\"W"));
-        assertTrue(validator.isValidDMSFormatWithCustom("45°30'23.2\"N, 123°45'W"));
-        assertTrue(validator.isValidDMSFormatWithCustom("45°30'N, 123°45'W"));
+        assertTrue(validator.isValidDMSFormatWithCustomValidation("34°12'34\"N, 118°14'37\"W"));
+        assertTrue(validator.isValidDMSFormatWithCustomValidation("34°12'34\"s, 118°14'37\"e"));
+        assertTrue(validator.isValidDMSFormatWithCustomValidation("45°30'N, 123°45'23.2\"W"));
+        assertTrue(validator.isValidDMSFormatWithCustomValidation("45°30'23.2\"N, 123°45'W"));
+        assertTrue(validator.isValidDMSFormatWithCustomValidation("45°30'N, 123°45'W"));
     }
 
     @Test
     public void givenInvalidDMSCoordinates_whenValidatingWithCustom_thenReturnsFalse() {
         GeoCoordinateValidator validator = new GeoCoordinateValidator();
-        assertFalse(validator.isValidDMSFormatWithCustom("invalid"));
-        assertFalse(validator.isValidDMSFormatWithCustom("91°12'34\"N, 118°14'37\"W"));
-        assertFalse(validator.isValidDMSFormatWithCustom("34°60'34\"N, 118°14'37\"W"));
-        assertFalse(validator.isValidDMSFormatWithCustom("34°12'60\"N, 118°14'37\"W"));
-        assertFalse(validator.isValidDMSFormatWithCustom("34°12'34\"N, 181°14'37\"W"));
+        assertFalse(validator.isValidDMSFormatWithCustomValidation("invalid"));
+        assertFalse(validator.isValidDMSFormatWithCustomValidation("91°12'34\"N, 118°14'37\"W"));
+        assertFalse(validator.isValidDMSFormatWithCustomValidation("34°60'34\"N, 118°14'37\"W"));
+        assertFalse(validator.isValidDMSFormatWithCustomValidation("34°12'60\"N, 118°14'37\"W"));
+        assertFalse(validator.isValidDMSFormatWithCustomValidation("34°12'34\"N, 181°14'37\"W"));
     }
 }
