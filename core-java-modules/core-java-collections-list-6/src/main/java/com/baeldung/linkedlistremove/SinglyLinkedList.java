@@ -29,8 +29,9 @@ public class SinglyLinkedList<S> {
     }
 
     public void remove(S element) {
-        if (isEmpty())
+        if (isEmpty()) {
             return;
+        }
 
         Node<S> previous = null;
         Node<S> current = head;
@@ -54,10 +55,9 @@ public class SinglyLinkedList<S> {
     }
 
     public void removeLast() {
-        if (isEmpty())
+        if (isEmpty()) {
             return;
-
-        if (size() == 1) {
+        } else if (size() == 1) {
             tail = null;
             head = null;
         } else {
@@ -73,8 +73,9 @@ public class SinglyLinkedList<S> {
     }
 
     public boolean contains(S element) {
-        if (isEmpty())
+        if (isEmpty()) {
             return false;
+        }
 
         Node<S> current = head;
         while (current != null) {
