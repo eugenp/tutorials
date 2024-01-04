@@ -6,7 +6,6 @@
     <artifactId>design-patterns-behavioral-2</artifactId>
     <version>1.0</version>
     <name>design-patterns-behavioral-2</name>
-
     <packaging>jar</packaging>
 
     <parent>
