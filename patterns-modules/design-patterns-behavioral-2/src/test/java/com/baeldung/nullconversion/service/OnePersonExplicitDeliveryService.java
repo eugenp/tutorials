@@ -11,14 +11,14 @@ public class OnePersonExplicitDeliveryService extends MockOnePersonDeliveryServi
         super(person);
     }
 
-    @Override
-    public Delivery calculateDeliveryForPerson(Long id) {
-        Person person = getPersonById(id);
-        if (person != null && person.getAddress() != null && person.getAddress().getZipCode() != null) {
-            ZipCode zipCode = person.getAddress().getZipCode();
-            String code = zipCode.getCode();
-            return calculateDeliveryForZipCode(code);
-        }
-        return null;
+@Override
+public Delivery calculateDeliveryForPerson(Long id) {
+    Person person = getPersonById(id);
+    if (person != null && person.getAddress() != null && person.getAddress().getZipCode() != null) {
+        ZipCode zipCode = person.getAddress().getZipCode();
+        String code = zipCode.getCode();
+        return calculateDeliveryForZipCode(code);
     }
+    return null;
+}
 }
