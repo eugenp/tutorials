@@ -9,9 +9,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-2</relativePath>
+        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -59,6 +59,8 @@
 
     <properties>
         <faunadb.version>4.2.0</faunadb.version>
+        <maven.compiler.release>17</maven.compiler.release>
+        <start-class>com.baeldung.faunablog.FaunaBlogApplication</start-class>
     </properties>
 
 </project>

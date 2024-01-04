@@ -2,7 +2,7 @@ package com.baeldung.orderservice;
 
 import com.baeldung.orderservice.client.OrderDTO;
 import com.baeldung.orderservice.client.OrderResponse;
-import org.apache.commons.lang.time.DateFormatUtils;
+import org.apache.commons.lang3.time.DateFormatUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

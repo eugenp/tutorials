@@ -1,5 +1,6 @@
 package com.baeldung.hibernate;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
@@ -74,5 +75,13 @@ public class CustomClassIntegrationTest {
         assertEquals("Sales", result.getDepartmentName());   
     }
 
+    @Test
+    public void whenCastResultQueryToList_ThenListOfResultIsReturned() {
+        Query<Result> query = session.createQuery("select new com.baeldung.hibernate.pojo.Result(m.name, m.department.name) "
+                + "from DeptEmployee m");
+        List<Result> results = query.list();
+        assertNotNull(results);
+        assertEquals(1, results.size());
+    }
 
 }

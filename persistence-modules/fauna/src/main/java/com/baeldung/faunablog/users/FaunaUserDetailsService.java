@@ -6,6 +6,8 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.concurrent.ExecutionException;
 
@@ -30,8 +32,9 @@ public class FaunaUserDetailsService implements UserDetailsService {
             if (userData == null) {
                 throw new UsernameNotFoundException("User not found");
             }
+            PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 
-            return User.withDefaultPasswordEncoder()
+            return User.builder().passwordEncoder(encoder::encode)
                     .username(userData.at("data", "username").to(String.class).orNull())
                     .password(userData.at("data", "password").to(String.class).orNull())
                     .roles("USER")

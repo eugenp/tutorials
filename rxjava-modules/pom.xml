@@ -6,6 +6,7 @@
     <groupId>com.baeldung.rxjava-modules</groupId>
     <artifactId>rxjava-modules</artifactId>
     <name>rxjava-modules</name>
+    <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <parent>
@@ -47,6 +48,11 @@
             <groupId>com.jayway.awaitility</groupId>
             <artifactId>awaitility</artifactId>
             <version>${awaitility.version}</version>
+        </dependency>
+         <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
         </dependency>
     </dependencies>
 
