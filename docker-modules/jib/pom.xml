@@ -8,9 +8,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-2</relativePath>
+        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -41,6 +41,7 @@
 
     <properties>
         <jib-maven-plugin.version>2.5.0</jib-maven-plugin.version>
+        <start-class>com.baeldung.Application</start-class>
     </properties>
 
 </project>
