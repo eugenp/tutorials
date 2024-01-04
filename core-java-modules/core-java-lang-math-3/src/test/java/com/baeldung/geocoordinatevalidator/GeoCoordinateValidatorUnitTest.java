@@ -62,7 +62,7 @@ public class GeoCoordinateValidatorUnitTest {
     }
 
     @Test
-    public void givenValidDDCoordinates_whenValidatingWithCustom_thenReturnsTrue() {
+    public void givenValidDDCoordinates_whenValidatingWithCustomValidation_thenReturnsTrue() {
         GeoCoordinateValidator validator = new GeoCoordinateValidator();
         assertTrue(validator.isValidDDFormatWithCustom("34.0522, -118.2437"));
         assertTrue(validator.isValidDDFormatWithCustom("-34.0522, 118.2437"));
@@ -71,7 +71,7 @@ public class GeoCoordinateValidatorUnitTest {
     }
 
     @Test
-    public void givenInvalidDDCoordinates_whenValidatingWithCustom_thenReturnsFalse() {
+    public void givenInvalidDDCoordinates_whenValidatingWithCustomValidation_thenReturnsFalse() {
         GeoCoordinateValidator validator = new GeoCoordinateValidator();
         assertFalse(validator.isValidDDFormatWithCustom("90degrees, 180degrees"));
         assertFalse(validator.isValidDDFormatWithCustom("invalid"));
@@ -80,7 +80,7 @@ public class GeoCoordinateValidatorUnitTest {
     }
 
     @Test
-    public void givenValidDMSCoordinates_whenValidatingWithCustom_thenReturnsTrue() {
+    public void givenValidDMSCoordinates_whenValidatingWithCustomValidation_thenReturnsTrue() {
         GeoCoordinateValidator validator = new GeoCoordinateValidator();
         assertTrue(validator.isValidDMSFormatWithCustomValidation("34°12'34\"N, 118°14'37\"W"));
         assertTrue(validator.isValidDMSFormatWithCustomValidation("34°12'34\"s, 118°14'37\"e"));
@@ -90,7 +90,7 @@ public class GeoCoordinateValidatorUnitTest {
     }
 
     @Test
-    public void givenInvalidDMSCoordinates_whenValidatingWithCustom_thenReturnsFalse() {
+    public void givenInvalidDMSCoordinates_whenValidatingWithCustomValidation_thenReturnsFalse() {
         GeoCoordinateValidator validator = new GeoCoordinateValidator();
         assertFalse(validator.isValidDMSFormatWithCustomValidation("invalid"));
         assertFalse(validator.isValidDMSFormatWithCustomValidation("91°12'34\"N, 118°14'37\"W"));
