@@ -31,6 +31,16 @@
             <version>${krazo.version}</version>
         </dependency>
         <dependency>
+            <groupId>jakarta.xml.soap</groupId>
+            <artifactId>jakarta.xml.soap-api</artifactId>
+            <version>${jakarta.xml.soap-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.messaging.saaj</groupId>
+            <artifactId>saaj-impl</artifactId>
+            <version>${saaj-impl.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <version>${junit.jupiter.version}</version>
@@ -99,6 +109,8 @@
             ${local.glassfish.home}\\domains\\${local.glassfish.domain}\\config\\domain-passwords
         </local.glassfish.passfile>
         <maven-glassfish-plugin.version>2.1</maven-glassfish-plugin.version>
+        <jakarta.xml.soap-api.version>3.0.1</jakarta.xml.soap-api.version>
+        <saaj-impl.version>3.0.3</saaj-impl.version>
     </properties>
 
 </project>
