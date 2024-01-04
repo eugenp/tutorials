@@ -10,7 +10,7 @@ import com.baeldung.nullconversion.service.OnePersonOptionalDeliveryService;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 
-class OnePersonDeliveryServiceTest {
+class OnePersonDeliveryServiceUnitTest {
 
     @ParameterizedTest
     @ArgumentsSource(PersonProvider.class)
