@@ -27,7 +27,6 @@ import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templateresolver.ITemplateResolver;
 
-import com.baeldung.excel.ExcelPOIHelper;
 
 @EnableWebMvc
 @Configuration
@@ -118,11 +117,6 @@ public class WebConfig implements WebMvcConfigurer {
         configurer.setUrlPathHelper(urlPathHelper);
     }
 
-    @Bean
-    public ExcelPOIHelper excelPOIHelper() {
-        return new ExcelPOIHelper();
-    }
-    
     @Bean(name = "multipartResolver")
     public CommonsMultipartResolver multipartResolver() {
         CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();

@@ -56,8 +56,8 @@
             <version>${hibernate.version}</version>
         </dependency>
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
             <version>${mysql.version}</version>
         </dependency>
         <dependency>
@@ -83,7 +83,7 @@
     </dependencies>
 
     <properties>
-        <mysql.version>8.0.32</mysql.version>
+        <mysql.version>8.2.0</mysql.version>
         <mariaDB4j.version>2.6.0</mariaDB4j.version>
         <spring-boot.version>3.0.4</spring-boot.version>
         <h2.version>2.1.214</h2.version>

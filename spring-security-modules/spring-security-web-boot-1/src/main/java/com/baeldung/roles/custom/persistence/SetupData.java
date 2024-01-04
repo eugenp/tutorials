@@ -3,7 +3,7 @@ package com.baeldung.roles.custom.persistence;
 import java.util.Arrays;
 import java.util.HashSet;
 
-import javax.annotation.PostConstruct;
+import jakarta.annotation.PostConstruct;
 
 import com.baeldung.roles.custom.persistence.dao.OrganizationRepository;
 import com.baeldung.roles.custom.persistence.dao.PrivilegeRepository;

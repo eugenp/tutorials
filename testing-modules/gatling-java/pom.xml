@@ -33,7 +33,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.24</version>
+            <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -72,9 +72,6 @@
     </build>
 
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <encoding>UTF-8</encoding>
         <gatling.version>3.9.5</gatling.version>
         <gatling-maven-plugin.version>4.3.0</gatling-maven-plugin.version>
         <faker.version>1.0.2</faker.version>

@@ -30,14 +30,10 @@ public class CustomWebSecurityConfigurerAdapter {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-            .antMatchers("/securityNone")
-            .permitAll()
-            .anyRequest()
-            .authenticated()
-            .and()
-            .httpBasic()
-            .authenticationEntryPoint(authenticationEntryPoint);
+        http.authorizeHttpRequests(expressionInterceptUrlRegistry ->
+                        expressionInterceptUrlRegistry.requestMatchers("/securityNone").permitAll()
+                                .anyRequest().authenticated())
+            .httpBasic(httpSecurityHttpBasicConfigurer -> httpSecurityHttpBasicConfigurer.authenticationEntryPoint(authenticationEntryPoint));
         http.addFilterAfter(new CustomFilter(), BasicAuthenticationFilter.class);
         return http.build();
     }

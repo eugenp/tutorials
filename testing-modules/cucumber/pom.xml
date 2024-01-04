@@ -42,6 +42,7 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
+            <version>${lombok.version}</version>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
@@ -120,8 +121,6 @@
     </profiles>
 
     <properties>
-        <maven.compiler.source>14</maven.compiler.source>
-        <maven.compiler.target>14</maven.compiler.target>
         <cucumber.version>6.10.3</cucumber.version>
         <cucumber-reporting.version>5.4.0</cucumber-reporting.version>
         <selenium.version>3.141.59</selenium.version>
