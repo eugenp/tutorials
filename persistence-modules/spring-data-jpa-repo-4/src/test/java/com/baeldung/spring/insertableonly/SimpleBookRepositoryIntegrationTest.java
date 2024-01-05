@@ -6,7 +6,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.baeldung.spring.insertableonly.simple.SimpleBook;
+import com.baeldung.spring.insertableonly.simple.SimpleBook;
 import com.baeldung.spring.insertableonly.simple.SimpleBookRepository;
+import com.baeldung.spring.insertableonly.simple.SimpleBookService;
 import java.util.Optional;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,6 +21,8 @@ class SimpleBookRepositoryIntegrationTest {
 
     @Autowired
     private SimpleBookRepository repository;
+    @Autowired
+    private SimpleBookService service;
 
     @BeforeEach
     void setup() {
@@ -48,6 +52,20 @@ class SimpleBookRepositoryIntegrationTest {
         assertThat(actualBook.get().getId()).isEqualTo(id);
         assertThat(actualBook.get().getTitle()).isEqualTo(NEW_TITLE);
     }
+
+    @Test
+    void givenDatasourceWhenUpdateBookThenUpdatedIsIgnored() {
+        SimpleBook book = new SimpleBook(TITLE);
+        SimpleBook persistedBook = service.save(book);
+        Long id = persistedBook.getId();
+        persistedBook.setTitle(NEW_TITLE);
+        service.save(persistedBook);
+        Optional<SimpleBook> actualBook = service.findById(id);
+        assertTrue(actualBook.isPresent());
+        assertThat(actualBook.get().getId()).isEqualTo(id);
+        assertThat(actualBook.get().getTitle()).isEqualTo(TITLE);
+    }
+
 
     private SimpleBook getBookById(long id) {
         Optional<SimpleBook> book = repository.findById(id);
