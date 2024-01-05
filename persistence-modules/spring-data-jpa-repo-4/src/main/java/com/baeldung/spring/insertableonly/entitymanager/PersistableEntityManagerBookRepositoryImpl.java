@@ -10,7 +10,7 @@ public class PersistableEntityManagerBookRepositoryImpl implements PersistableEn
 
     @Override
     @Transactional
-    public <S extends EntityManagerBook> S persistBook(S entity) {
+    public <S extends EntityManagerBook> S persist(S entity) {
         entityManager.persist(entity);
         return entity;
     }
