@@ -5,7 +5,6 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 public class PersistableEntityManagerBookRepositoryImpl implements PersistableEntityManagerBookRepository {
-
     @PersistenceContext
     private EntityManager entityManager;
 
