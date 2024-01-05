@@ -2,6 +2,7 @@ package com.baeldung.app.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -18,18 +19,14 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-            .antMatchers("/css/**", "/js/**", "/loggedout")
-            .permitAll()
-            .anyRequest()
-            .authenticated()
-            .and()
-            .httpBasic()
-            .and()
-            .logout()
-            .disable()
-            .csrf()
-            .disable();
+        http.authorizeHttpRequests(auth -> auth
+                .requestMatchers("/css/**", "/js/**", "/loggedout")
+                .permitAll()
+                .anyRequest()
+                .authenticated())
+                .httpBasic(Customizer.withDefaults())
+                .logout(logout -> logout.disable())
+                .csrf(csrf -> csrf.disable());
         return http.build();
     }
 
