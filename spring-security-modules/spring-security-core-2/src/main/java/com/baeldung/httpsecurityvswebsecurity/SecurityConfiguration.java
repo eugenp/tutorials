@@ -65,13 +65,14 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests((authorize) -> authorize.requestMatchers("/admin/**")
-          .hasRole("ADMIN")
-          .anyRequest()
-          .permitAll())
-          .httpBasic(withDefaults())
-          .formLogin(withDefaults())
-          .csrf(AbstractHttpConfigurer::disable);
+        http.authorizeHttpRequests((authorize) ->
+                authorize.requestMatchers("/admin/**")
+                    .hasRole("ADMIN")
+                    .anyRequest()
+                    .permitAll())
+            .httpBasic(withDefaults())
+            .formLogin(withDefaults())
+            .csrf(AbstractHttpConfigurer::disable);
         return http.build();
     }
 

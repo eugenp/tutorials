@@ -28,8 +28,8 @@ public class DelegatedSecurityConfig {
         http.authorizeHttpRequests(auth -> auth
                 .requestMatchers("/login-handler")
                 .hasRole("ADMIN"))
-                .httpBasic(basic -> basic.authenticationEntryPoint(authEntryPoint))
-                .exceptionHandling(Customizer.withDefaults());
+            .httpBasic(basic -> basic.authenticationEntryPoint(authEntryPoint))
+            .exceptionHandling(Customizer.withDefaults());
         return http.build();
     }
 
