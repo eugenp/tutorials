@@ -14,11 +14,14 @@ public class UnapdatableBook {
     @Column(updatable = false)
     private String title;
 
+    private String author;
+
     public UnapdatableBook() {
     }
 
-    public UnapdatableBook(String title) {
+    public UnapdatableBook(String title, String author) {
         this.title = title;
+        this.author = author;
     }
 
     public void setId(Long id) {
@@ -35,5 +38,13 @@ public class UnapdatableBook {
 
     public String getTitle() {
         return title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 }
