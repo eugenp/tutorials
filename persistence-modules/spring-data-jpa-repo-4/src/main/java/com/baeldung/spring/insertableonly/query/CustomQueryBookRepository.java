@@ -13,5 +13,4 @@ public interface CustomQueryBookRepository extends JpaRepository<CustomQueryBook
     @Query(value = "INSERT INTO custom_query_book (id, title) VALUES (:#{#book.id}, :#{#book.title})", nativeQuery = true)
     void persist(@Param("book") CustomQueryBook book);
 
-    CustomQueryBook findByTitle(String title);
 }

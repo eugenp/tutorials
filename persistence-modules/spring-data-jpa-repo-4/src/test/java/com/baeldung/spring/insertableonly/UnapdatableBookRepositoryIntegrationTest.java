@@ -39,20 +39,20 @@ class UnapdatableBookRepositoryIntegrationTest {
         assertThat(actualBook.getAuthor()).isEqualTo(AUTHOR);
     }
 
-    @Test
-    void givenDatasourceWhenUpdateBookTheBookUpdatedIgnored() {
-        UnapdatableBook book = new UnapdatableBook(TITLE, AUTHOR);
-        UnapdatableBook persistedBook = repository.save(book);
-        Long id = persistedBook.getId();
-        persistedBook.setTitle(NEW_TITLE);
-        persistedBook.setAuthor(NEW_AUTHOR);
-        repository.save(persistedBook);
-        Optional<UnapdatableBook> actualBook = repository.findById(id);
-        assertTrue(actualBook.isPresent());
-        assertThat(actualBook.get().getId()).isEqualTo(id);
-        assertThat(actualBook.get().getTitle()).isEqualTo(TITLE);
-        assertThat(actualBook.get().getAuthor()).isEqualTo(NEW_AUTHOR);
-    }
+@Test
+void givenDatasourceWhenUpdateBookTheBookUpdatedIgnored() {
+    UnapdatableBook book = new UnapdatableBook(TITLE, AUTHOR);
+    UnapdatableBook persistedBook = repository.save(book);
+    Long id = persistedBook.getId();
+    persistedBook.setTitle(NEW_TITLE);
+    persistedBook.setAuthor(NEW_AUTHOR);
+    repository.save(persistedBook);
+    Optional<UnapdatableBook> actualBook = repository.findById(id);
+    assertTrue(actualBook.isPresent());
+    assertThat(actualBook.get().getId()).isEqualTo(id);
+    assertThat(actualBook.get().getTitle()).isEqualTo(TITLE);
+    assertThat(actualBook.get().getAuthor()).isEqualTo(NEW_AUTHOR);
+}
 
     private UnapdatableBook getBookById(long id) {
         Optional<UnapdatableBook> book = repository.findById(id);
