@@ -12,24 +12,18 @@ public class GeoCoordinateValidator {
     public static final String MGRS_COORDINATE_REGEX = "^\\d{1,2}[^IO]{3}(\\d{10}|\\d{8}|\\d{6}|\\d{4}|\\d{2})$";
 
     public boolean isValidDDFormatWithRegex(String coordinateString) {
-        Pattern pattern = Pattern.compile(DD_COORDINATE_REGEX);
-        Matcher matcher = pattern.matcher(coordinateString);
-        return matcher.matches();
+        return Pattern.compile(DD_COORDINATE_REGEX).matcher(coordinateString).matches();
     }
 
     public boolean isValidDMSFormatWithRegex(String coordinateString) {
-        Pattern pattern = Pattern.compile(DMS_COORDINATE_REGEX);
-        Matcher matcher = pattern.matcher(coordinateString);
-        return matcher.matches();
+        return Pattern.compile(DMS_COORDINATE_REGEX).matcher(coordinateString).matches();
     }
 
     public boolean isValidMGRSFormatWithRegex(String coordinateString) {
-        Pattern pattern = Pattern.compile(MGRS_COORDINATE_REGEX);
-        Matcher matcher = pattern.matcher(coordinateString);
-        return matcher.matches();
+        return Pattern.compile(MGRS_COORDINATE_REGEX).matcher(coordinateString).matches();
     }
 
-    public boolean isValidDDFormatWithCustom(String coordinateString) {
+    public boolean isValidDDFormatWithCustomValidation(String coordinateString) {
         try {
             String[] parts = coordinateString.split(",");
             if (parts.length != 2) {
