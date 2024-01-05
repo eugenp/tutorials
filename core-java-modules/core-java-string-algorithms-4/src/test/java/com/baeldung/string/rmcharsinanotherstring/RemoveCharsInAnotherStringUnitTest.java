@@ -1,4 +1,4 @@
-package com.baeldung.string.rmcharactersinanotherstring;
+package com.baeldung.string.rmcharsinanotherstring;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
