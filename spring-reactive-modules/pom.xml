@@ -30,6 +30,9 @@
         <module>spring-reactive-exceptions</module>
         <module>spring-reactor</module>
         <module>spring-webflux-amqp</module>
+
+        <!--    the following submodules are commented out as a workaround in order to use java 19+ and SB 3.2.x -->
+        <!--    <module>spring-reactive-performance</module>-->
     </modules>
 
     <build>
@@ -59,7 +62,22 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>io.projectreactor</groupId>
+                <artifactId>reactor-core</artifactId>
+                <version>${reactor.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.projectreactor</groupId>
+                <artifactId>reactor-test</artifactId>
+                <version>${reactor.version}</version>
+                <scope>test</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <properties>
+        <reactor.version>3.6.0</reactor.version>
+    </properties>
 
 </project>

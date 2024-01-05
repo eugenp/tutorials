@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -15,6 +16,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 class LoginRedirectSecurityConfig {
+
+    private static final String LOGIN_USER = "/loginUser";
 
     @Bean
     public InMemoryUserDetailsManager userDetailsService() {
@@ -28,26 +31,20 @@ class LoginRedirectSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.addFilterAfter(new LoginPageFilter(), UsernamePasswordAuthenticationFilter.class)
-            .authorizeRequests()
-            .antMatchers("/loginUser")
-            .permitAll()
-            .antMatchers("/user*")
-            .hasRole("USER")
-            .and()
-            .formLogin()
-            .loginPage("/loginUser")
-            .loginProcessingUrl("/user_login")
-            .failureUrl("/loginUser?error=loginError")
-            .defaultSuccessUrl("/userMainPage")
-            .permitAll()
-            .and()
-            .logout()
-            .logoutUrl("/user_logout")
-            .logoutSuccessUrl("/loginUser")
-            .deleteCookies("JSESSIONID")
-            .and()
-            .csrf()
-            .disable();
+            .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry ->
+                    authorizationManagerRequestMatcherRegistry.requestMatchers(LOGIN_USER).permitAll()
+                            .requestMatchers("/user*").hasRole("USER"))
+            .formLogin(httpSecurityFormLoginConfigurer ->
+                    httpSecurityFormLoginConfigurer.loginPage(LOGIN_USER)
+                            .loginProcessingUrl("/user_login")
+                            .failureUrl("/loginUser?error=loginError")
+                            .defaultSuccessUrl("/userMainPage").permitAll())
+            .logout(httpSecurityLogoutConfigurer ->
+                    httpSecurityLogoutConfigurer
+                            .logoutUrl("/user_logout")
+                            .logoutSuccessUrl(LOGIN_USER)
+                            .deleteCookies("JSESSIONID"))
+            .csrf(AbstractHttpConfigurer::disable);
         return http.build();
     }
 

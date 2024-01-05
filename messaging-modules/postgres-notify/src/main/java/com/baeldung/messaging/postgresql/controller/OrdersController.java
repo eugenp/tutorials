@@ -42,7 +42,7 @@ public class OrdersController {
     public ResponseEntity<Order> getOrderById(@PathVariable Long id) {
         
         Optional<Order> o = orders.findById(id);
-        if (o.isEmpty()) {
+        if (!o.isPresent()) {
             return ResponseEntity.notFound().build();
         }
         

@@ -24,7 +24,7 @@ public class MultipleAuthProvidersApplicationIntegrationTest {
     public void givenMemUsers_whenGetPingWithValidUser_thenOk() {
         ResponseEntity<String> result = makeRestCallToGetPing("memuser", "pass");
 
-        assertThat(result.getStatusCodeValue()).isEqualTo(200);
+        assertThat(result.getStatusCode().value()).isEqualTo(200);
         assertThat(result.getBody()).isEqualTo("OK");
     }
 
@@ -32,7 +32,7 @@ public class MultipleAuthProvidersApplicationIntegrationTest {
     public void givenExternalUsers_whenGetPingWithValidUser_thenOK() {
         ResponseEntity<String> result = makeRestCallToGetPing("externaluser", "pass");
 
-        assertThat(result.getStatusCodeValue()).isEqualTo(200);
+        assertThat(result.getStatusCode().value()).isEqualTo(200);
         assertThat(result.getBody()).isEqualTo("OK");
     }
 
@@ -40,14 +40,14 @@ public class MultipleAuthProvidersApplicationIntegrationTest {
     public void givenAuthProviders_whenGetPingWithNoCred_then401() {
         ResponseEntity<String> result = makeRestCallToGetPing();
 
-        assertThat(result.getStatusCodeValue()).isEqualTo(401);
+        assertThat(result.getStatusCode().value()).isEqualTo(401);
     }
 
     @Test
     public void givenAuthProviders_whenGetPingWithBadCred_then401() {
         ResponseEntity<String> result = makeRestCallToGetPing("user", "bad_password");
 
-        assertThat(result.getStatusCodeValue()).isEqualTo(401);
+        assertThat(result.getStatusCode().value()).isEqualTo(401);
     }
 
     private ResponseEntity<String> makeRestCallToGetPing(String username, String password) {

@@ -74,6 +74,17 @@
             <version>${wire.mock.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>4.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>4.0.0</version>
+            <scope>runtime</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -85,7 +96,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>jaxb2-maven-plugin</artifactId>
-                <version>2.5.0</version>
+                <version>3.1.0</version>
                 <executions>
                     <execution>
                         <id>xjc</id>
@@ -131,6 +142,7 @@
         <feign.form.spring.version>3.8.0</feign.form.spring.version>
         <spring.cloud.openfeign.version>3.1.2</spring.cloud.openfeign.version>
         <wire.mock.version>2.33.2</wire.mock.version>
+        <jakarta.xml.bind.version>4.0.0</jakarta.xml.bind.version>
     </properties>
 
 </project>

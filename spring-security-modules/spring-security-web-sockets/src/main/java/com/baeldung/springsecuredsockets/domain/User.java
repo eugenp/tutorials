@@ -1,12 +1,12 @@
 package com.baeldung.springsecuredsockets.domain;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.Set;
 
 //Custom User Model
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User {
 
     @Id

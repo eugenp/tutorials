@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option java_package = "com.baeldung.helloworld.stubs";
+option java_multiple_files = true;
+
+message HelloWorldRequest {
+  // a name to greet, default is "World"
+  optional string name = 1;
+}
+
+message HelloWorldResponse {
+  string greeting = 1;
+}
+
+service HelloWorldService {
+
+  rpc SayHello(stream HelloWorldRequest) returns (stream HelloWorldResponse);
+
+}
