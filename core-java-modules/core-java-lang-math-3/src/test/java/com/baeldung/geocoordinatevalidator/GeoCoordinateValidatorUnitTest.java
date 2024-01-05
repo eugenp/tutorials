@@ -21,7 +21,7 @@ public class GeoCoordinateValidatorUnitTest {
         GeoCoordinateValidator validator = new GeoCoordinateValidator();
         assertFalse(validator.isValidDDFormatWithRegex("invalid"));
         assertFalse(validator.isValidDDFormatWithRegex("90degrees, 180degrees"));
-        assertFalse(validator.isValidDDFormatWithCustom("90.000001, 0"));
+        assertFalse(validator.isValidDDFormatWithRegex("90.000001, 0"));
     }
 
     @Test
@@ -64,19 +64,19 @@ public class GeoCoordinateValidatorUnitTest {
     @Test
     public void givenValidDDCoordinates_whenValidatingWithCustomValidation_thenReturnsTrue() {
         GeoCoordinateValidator validator = new GeoCoordinateValidator();
-        assertTrue(validator.isValidDDFormatWithCustom("34.0522, -118.2437"));
-        assertTrue(validator.isValidDDFormatWithCustom("-34.0522, 118.2437"));
-        assertTrue(validator.isValidDDFormatWithCustom("-90.0, 180.0"));
-        assertTrue(validator.isValidDDFormatWithCustom("90.0, -180.0"));
+        assertTrue(validator.isValidDDFormatWithCustomValidation("34.0522, -118.2437"));
+        assertTrue(validator.isValidDDFormatWithCustomValidation("-34.0522, 118.2437"));
+        assertTrue(validator.isValidDDFormatWithCustomValidation("-90.0, 180.0"));
+        assertTrue(validator.isValidDDFormatWithCustomValidation("90.0, -180.0"));
     }
 
     @Test
     public void givenInvalidDDCoordinates_whenValidatingWithCustomValidation_thenReturnsFalse() {
         GeoCoordinateValidator validator = new GeoCoordinateValidator();
-        assertFalse(validator.isValidDDFormatWithCustom("90degrees, 180degrees"));
-        assertFalse(validator.isValidDDFormatWithCustom("invalid"));
-        assertFalse(validator.isValidDDFormatWithCustom("91.0, -118.2437"));
-        assertFalse(validator.isValidDDFormatWithCustom("34.0522, -181.0"));
+        assertFalse(validator.isValidDDFormatWithCustomValidation("90degrees, 180degrees"));
+        assertFalse(validator.isValidDDFormatWithCustomValidation("invalid"));
+        assertFalse(validator.isValidDDFormatWithCustomValidation("91.0, -118.2437"));
+        assertFalse(validator.isValidDDFormatWithCustomValidation("34.0522, -181.0"));
     }
 
     @Test
