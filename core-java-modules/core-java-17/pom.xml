@@ -21,10 +21,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <release>${maven.compiler.release}</release>
                     <compilerArgs>--enable-preview</compilerArgs>
-                    <source>${maven.compiler.source.version}</source>
-                    <target>${maven.compiler.target.version}</target>
                     <annotationProcessorPaths>
                         <path>
                             <groupId>org.openjdk.jmh</groupId>
@@ -69,9 +66,6 @@
     </dependencies>
 
     <properties>
-        <maven.compiler.source.version>17</maven.compiler.source.version>
-        <maven.compiler.target.version>17</maven.compiler.target.version>
-        <maven.compiler.release>17</maven.compiler.release>
         <surefire.plugin.version>3.0.0-M5</surefire.plugin.version>
     </properties>
 

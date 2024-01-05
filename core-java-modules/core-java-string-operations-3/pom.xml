@@ -51,10 +51,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.target}</target>
-                </configuration>
             </plugin>
         </plugins>
     </build>
@@ -67,9 +63,7 @@
     </repositories>
 
     <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-        <spring-core.version>5.3.9</spring-core.version>
+        <spring-core.version>6.1.2</spring-core.version>
         <maven-artifact.version>3.6.3</maven-artifact.version>
         <gradle-core.version>6.1.1</gradle-core.version>
         <jackson-core.version>2.16.0</jackson-core.version>

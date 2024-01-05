@@ -71,7 +71,6 @@ public class TodoMustacheServiceUnitTest {
 
         Map<String, Object> context = new HashMap<>();
         assertThat(executeTemplate(m, context)).isEmpty();
-        ;
     }
 
     @Test

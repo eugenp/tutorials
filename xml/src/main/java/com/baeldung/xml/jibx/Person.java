@@ -6,7 +6,7 @@
  */
 package com.baeldung.xml.jibx;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class Person extends Identity {
 	private String name;

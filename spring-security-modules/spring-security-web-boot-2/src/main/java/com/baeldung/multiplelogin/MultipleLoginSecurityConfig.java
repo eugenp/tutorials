@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -12,13 +13,15 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher;
+import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 
 @Configuration
 @EnableWebSecurity
 public class MultipleLoginSecurityConfig {
 
     @Bean
-    public UserDetailsService userDetailsService() throws Exception {
+    public UserDetailsService userDetailsService() {
         InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
         manager.createUser(User.withUsername("user").password(encoder().encode("userPass")).roles("USER").build());
         manager.createUser(User.withUsername("admin").password(encoder().encode("adminPass")).roles("ADMIN").build());
@@ -44,30 +47,24 @@ public class MultipleLoginSecurityConfig {
         }
 
         @Bean
-        public SecurityFilterChain filterChainApp1(HttpSecurity http) throws Exception {
-            http.antMatcher("/admin*")
-                .authorizeRequests()
-                .anyRequest()
-                .hasRole("ADMIN")
+        public SecurityFilterChain filterChainApp1(HttpSecurity http, HandlerMappingIntrospector introspector) throws Exception {
+            MvcRequestMatcher.Builder mvcMatcherBuilder = new MvcRequestMatcher.Builder(introspector);
+            http.securityMatcher("/admin*")
+                .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry -> authorizationManagerRequestMatcherRegistry.requestMatchers(mvcMatcherBuilder.pattern("/admin*")).hasRole("ADMIN"))
                 // log in
-                .and()
-                .formLogin()
-                .loginPage("/loginAdmin")
-                .loginProcessingUrl("/admin_login")
-                .failureUrl("/loginAdmin?error=loginError")
-                .defaultSuccessUrl("/adminPage")
+                .formLogin(httpSecurityFormLoginConfigurer ->
+                        httpSecurityFormLoginConfigurer.loginPage("/loginAdmin")
+                                .loginProcessingUrl("/admin_login")
+                                .failureUrl("/loginAdmin?error=loginError")
+                                .defaultSuccessUrl("/adminPage"))
                 // logout
-                .and()
-                .logout()
-                .logoutUrl("/admin_logout")
-                .logoutSuccessUrl("/protectedLinks")
-                .deleteCookies("JSESSIONID")
-                .and()
-                .exceptionHandling()
-                .accessDeniedPage("/403")
-                .and()
-                .csrf()
-                .disable();
+                .logout(httpSecurityLogoutConfigurer ->
+                        httpSecurityLogoutConfigurer.logoutUrl("/admin_logout")
+                                .logoutSuccessUrl("/protectedLinks")
+                                .deleteCookies("JSESSIONID"))
+                .exceptionHandling(httpSecurityExceptionHandlingConfigurer ->
+                        httpSecurityExceptionHandlingConfigurer.accessDeniedPage("/403"))
+                .csrf(AbstractHttpConfigurer::disable);
 
             return http.build();
         }
@@ -87,30 +84,24 @@ public class MultipleLoginSecurityConfig {
         }
 
         @Bean
-        public SecurityFilterChain filterChainApp2(HttpSecurity http) throws Exception {
-            http.antMatcher("/user*")
-                .authorizeRequests()
-                .anyRequest()
-                .hasRole("USER")
+        public SecurityFilterChain filterChainApp2(HttpSecurity http, HandlerMappingIntrospector introspector) throws Exception {
+            MvcRequestMatcher.Builder mvcMatcherBuilder = new MvcRequestMatcher.Builder(introspector);
+            http.securityMatcher("/user*")
+                .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry -> authorizationManagerRequestMatcherRegistry.requestMatchers(mvcMatcherBuilder.pattern("/user*")).hasRole("USER"))
                 // log in
-                .and()
-                .formLogin()
-                .loginPage("/loginUser")
-                .loginProcessingUrl("/user_login")
-                .failureUrl("/loginUser?error=loginError")
-                .defaultSuccessUrl("/userPage")
+                .formLogin(httpSecurityFormLoginConfigurer ->
+                        httpSecurityFormLoginConfigurer.loginPage("/loginUser")
+                                .loginProcessingUrl("/user_login")
+                                .failureUrl("/loginUser?error=loginError")
+                                .defaultSuccessUrl("/userPage"))
                 // logout
-                .and()
-                .logout()
-                .logoutUrl("/user_logout")
-                .logoutSuccessUrl("/protectedLinks")
-                .deleteCookies("JSESSIONID")
-                .and()
-                .exceptionHandling()
-                .accessDeniedPage("/403")
-                .and()
-                .csrf()
-                .disable();
+                .logout(httpSecurityLogoutConfigurer ->
+                        httpSecurityLogoutConfigurer.logoutUrl("/user_logout")
+                                .logoutSuccessUrl("/protectedLinks")
+                                .deleteCookies("JSESSIONID"))
+                .exceptionHandling(httpSecurityExceptionHandlingConfigurer ->
+                        httpSecurityExceptionHandlingConfigurer.accessDeniedPage("/403"))
+                .csrf(AbstractHttpConfigurer::disable);
             return http.build();
         }
     }

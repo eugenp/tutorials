@@ -23,7 +23,7 @@ public class SpringMustacheApplicationIntegrationTest {
 
         ResponseEntity<String> entity = this.restTemplate.getForEntity("/article", String.class);
 
-        Assert.assertTrue(entity.getStatusCode().equals(HttpStatus.OK));
+        Assert.assertEquals(entity.getStatusCode(), HttpStatus.OK);
         Assert.assertTrue(entity.getBody().contains("Article Title 0"));
     }
 

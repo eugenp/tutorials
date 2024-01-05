@@ -102,10 +102,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.target}</target>
                     <compilerArgument>-parameters</compilerArgument>
                 </configuration>
             </plugin>
@@ -115,8 +112,6 @@
     <properties>
         <!-- testing -->
         <assertj.version>3.23.1</assertj.version>
-        <maven.compiler.source>12</maven.compiler.source>
-        <maven.compiler.target>12</maven.compiler.target>
         <rx.java.version>1.2.5</rx.java.version>
         <rx.java2.version>2.2.2</rx.java2.version>
         <rx.java3.version>3.1.5</rx.java3.version>
