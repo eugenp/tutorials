@@ -66,8 +66,7 @@
     </build>
 
     <properties>
-        <liquibase-core.version>3.8.1</liquibase-core.version>
-        <liquibase.version>3.8.1</liquibase.version>
+        <liquibase-core.version>4.25.0</liquibase-core.version>
     </properties>
 
 </project>

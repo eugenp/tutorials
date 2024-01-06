@@ -9,3 +9,4 @@ This module contains articles about Mockito
 - [Mock Same Method with Different Parameters](https://www.baeldung.com/java-mock-same-method-other-parameters)
 - [How to Mock Constructors for Unit Testing using Mockito](https://www.baeldung.com/java-mockito-constructors-unit-testing)
 - [Overview of Mockito MockedConstruction](https://www.baeldung.com/java-mockito-mockedconstruction)
+- [Verify That Lambda Expression Was Called Using Mockito](https://www.baeldung.com/java-mockito-verify-lambda-expression)

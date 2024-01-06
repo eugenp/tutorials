@@ -11,3 +11,4 @@ This module contains articles about arrays conversion in Java
 - [Converting an int[] to HashSet in Java](https://www.baeldung.com/java-converting-int-array-to-hashset)
 - [Convert an ArrayList of String to a String Array in Java](https://www.baeldung.com/java-convert-string-arraylist-array)
 - [Convert Char Array to Int Array in Java](https://www.baeldung.com/java-convert-char-int-array)
+- [How to Convert Byte Array to Char Array](https://www.baeldung.com/java-convert-byte-array-char)

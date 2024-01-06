@@ -15,10 +15,11 @@ public class FunctionalValidationsApplication {
     
     @Bean
     public SecurityWebFilterChain functionalValidationsSpringSecurityFilterChain(ServerHttpSecurity http) {
-        http.authorizeExchange()
-            .anyExchange()
-            .permitAll();
-        http.csrf().disable();
+        http.authorizeExchange(auth -> auth
+                .anyExchange().permitAll()
+            )
+            .csrf(ServerHttpSecurity.CsrfSpec::disable);
+
         return http.build();
     }
 }

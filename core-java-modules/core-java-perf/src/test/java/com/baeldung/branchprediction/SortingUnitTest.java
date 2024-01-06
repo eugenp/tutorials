@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 
 public class SortingUnitTest {
     private static final Logger LOG = LoggerFactory.getLogger(SortingUnitTest.class);
-    public static final int BIG = 10000000;
+    public static final int BIG = 1000000;
     public static final int SMALL = 100000;
 
     @Test

@@ -23,7 +23,7 @@ public class AppUnitTest {
         soundRecorder.build(af);
         try {
             soundRecorder.start();
-            Thread.sleep(20000);
+            Thread.sleep(5000);
             soundRecorder.stop();
         } catch (InterruptedException ex) {
             fail("Exception: " + ex);

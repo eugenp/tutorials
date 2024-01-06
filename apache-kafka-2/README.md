@@ -14,3 +14,4 @@ You can build the project from the command line using: *mvn clean install*, or i
 - [Get Partition Count for a Topic in Kafka](https://www.baeldung.com/java-kafka-partition-count-topic)
 - [bootstrap-server in Kafka Configuration](https://www.baeldung.com/java-kafka-bootstrap-server)
 - [Introduction to Apache Kafka](https://www.baeldung.com/apache-kafka)
+- [Ensuring Message Ordering in Kafka: Strategies and Configurations](https://www.baeldung.com/kafka-message-ordering)

@@ -18,7 +18,7 @@
         <dependency>
             <groupId>com.github.stefanbirkner</groupId>
             <artifactId>system-lambda</artifactId>
-            <version>1.2.1</version>
+            <version>${system-lambda.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -79,6 +79,7 @@
     </build>
 
     <properties>
+        <system-lambda.version>1.2.1</system-lambda.version>
         <jmockit.version>1.49</jmockit.version>
         <assertj.version>3.24.2</assertj.version>
         <junit-platform.version>1.10.1</junit-platform.version>

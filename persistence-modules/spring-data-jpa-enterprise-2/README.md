@@ -3,9 +3,9 @@
 This module contains articles about Spring Data JPA used in enterprise applications such as transactions, sessions, naming conventions and more 
 
 ### Relevant Articles: 
+- [Custom Naming Convention with Spring Data JPA](https://www.baeldung.com/spring-data-jpa-custom-naming)
+- [Working with Lazy Element Collections in JPA](https://www.baeldung.com/java-jpa-lazy-collections)
 
-- [Spring JPA – Multiple Databases](https://www.baeldung.com/spring-data-jpa-multiple-databases)
-- [Pagination and Sorting using Spring Data JPA](https://www.baeldung.com/spring-data-jpa-pagination-sorting)
 
 ### Eclipse Config 
 After importing the project into Eclipse, you may see the following error:  

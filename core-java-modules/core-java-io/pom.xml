@@ -134,7 +134,7 @@
 
     <properties>
         <!-- maven plugins -->
-        <maven-javadoc-plugin.version>3.5.0</maven-javadoc-plugin.version>
+        <maven-javadoc-plugin.version>3.6.2</maven-javadoc-plugin.version>
         <hsqldb.version>2.7.1</hsqldb.version>
         <!-- Mime Type Libraries -->
         <tika.version>2.8.0</tika.version>

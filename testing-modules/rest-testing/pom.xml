@@ -9,9 +9,8 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-java</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-java</relativePath>
+        <artifactId>testing-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <dependencies>
@@ -34,7 +33,7 @@
         </dependency>
         <!-- test scoped -->
         <dependency>
-            <groupId>com.github.tomakehurst</groupId>
+            <groupId>org.wiremock</groupId>
             <artifactId>wiremock</artifactId>
             <version>${wiremock.version}</version>
             <scope>test</scope>
@@ -135,7 +134,7 @@
         <!-- testing -->
         <rest-assured.version>2.9.0</rest-assured.version>
         <cucumber.version>6.8.0</cucumber.version>
-        <wiremock.version>2.21.0</wiremock.version>
+        <wiremock.version>3.3.1</wiremock.version>
         <karate.version>1.3.1</karate.version>
         <jbehave.version>4.1</jbehave.version>
     </properties>

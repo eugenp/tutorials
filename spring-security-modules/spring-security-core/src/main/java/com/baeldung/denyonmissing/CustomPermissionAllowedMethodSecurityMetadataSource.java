@@ -9,6 +9,8 @@ import java.util.Collection;
 import java.util.List;
 
 import org.springframework.core.annotation.AnnotationUtils;
+import org.springframework.core.annotation.MergedAnnotation;
+import org.springframework.core.annotation.MergedAnnotations;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.access.method.AbstractFallbackMethodSecurityMetadataSource;
 import org.springframework.security.access.prepost.PostAuthorize;
@@ -23,22 +25,20 @@ public class CustomPermissionAllowedMethodSecurityMetadataSource extends Abstrac
 
     @Override
     protected Collection<ConfigAttribute> findAttributes(Method method, Class<?> targetClass) {
-        Annotation[] annotations = AnnotationUtils.getAnnotations(method);
+        MergedAnnotations annotations = MergedAnnotations.from(method,
+                MergedAnnotations.SearchStrategy.DIRECT);
         List<ConfigAttribute> attributes = new ArrayList<>();
 
+        MergedAnnotations classAnnotations = MergedAnnotations.from(targetClass,  MergedAnnotations.SearchStrategy.DIRECT);
         // if the class is annotated as @Controller we should by default deny access to every method
-        if (AnnotationUtils.findAnnotation(targetClass, Controller.class) != null) {
+        if (classAnnotations.get(Controller.class).isPresent()) {
             attributes.add(DENY_ALL_ATTRIBUTE);
         }
 
-        if (annotations != null) {
-            for (Annotation a : annotations) {
-                // but not if the method has at least a PreAuthorize or PostAuthorize annotation
-                if (a instanceof PreAuthorize || a instanceof PostAuthorize) {
-                    return null;
-                }
-            }
+        if (annotations.get(PreAuthorize.class).isPresent() || annotations.get(PostAuthorize.class).isPresent()) {
+            return null;
         }
+
         return attributes;
     }
 

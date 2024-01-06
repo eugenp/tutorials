@@ -8,9 +8,8 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-java</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-java</relativePath>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <dependencies>
@@ -33,8 +32,7 @@
     </build>
 
     <properties>
-        <jackson.version>2.15.2</jackson.version>
-        <java.version>17</java.version>
+        <jackson.version>2.16.0</jackson.version>
     </properties>
 
 </project>

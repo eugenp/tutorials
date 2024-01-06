@@ -84,16 +84,15 @@
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjrt</artifactId>
-            <version>${aspectjweaver.version}</version>
         </dependency>
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
-            <version>${aspectjweaver.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
         </dependency>
     </dependencies>
 
@@ -114,6 +113,7 @@
         <!-- ROME for RSS -->
         <rome.version>1.10.0</rome.version>
         <javax.faces.version>2.3.7</javax.faces.version>
+        <aspectj.version>1.9.20.1</aspectj.version>
         <start-class>com.baeldung.springbootmvc.SpringBootMvcApplication</start-class>
     </properties>
 

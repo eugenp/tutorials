@@ -102,7 +102,7 @@ class HttpClientAdvancedConfigurationIntegrationTest {
     void givenServerThatIsBehindProxy_whenClientIsConfiguredToSendRequestViaProxy_shouldReturn200() throws IOException {
         //given
         proxyMock.stubFor(get(urlMatching(".*"))
-          .willReturn(aResponse().proxiedFrom("http://localhost:8089/")));
+          .willReturn(aResponse().proxiedFrom("http://localhost:8089")));
 
         serviceMock.stubFor(get(urlEqualTo("/private"))
           .willReturn(aResponse().withStatus(200)));
@@ -128,7 +128,7 @@ class HttpClientAdvancedConfigurationIntegrationTest {
     void givenServerThatIsBehindAuthorizationProxy_whenClientSendRequest_shouldAuthorizeProperly() throws IOException {
         //given
         proxyMock.stubFor(get(urlMatching("/private"))
-          .willReturn(aResponse().proxiedFrom("http://localhost:8089/")));
+          .willReturn(aResponse().proxiedFrom("http://localhost:8089")));
         serviceMock.stubFor(get(urlEqualTo("/private"))
           .willReturn(aResponse().withStatus(200)));
 

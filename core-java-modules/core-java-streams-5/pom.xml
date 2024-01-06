@@ -48,6 +48,11 @@
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>${commons-collections4.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -62,10 +67,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.target}</target>
                     <compilerArgument>-parameters</compilerArgument>
                 </configuration>
             </plugin>
@@ -73,9 +75,6 @@
     </build>
 
     <properties>
-        <!-- testing -->
-        <maven.compiler.source>12</maven.compiler.source>
-        <maven.compiler.target>12</maven.compiler.target>
         <vavr.version>0.10.2</vavr.version>
     </properties>
 

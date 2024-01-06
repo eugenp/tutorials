@@ -1,6 +1,6 @@
 package com.baeldung.spring.jinq.config;
 
-import javax.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityManagerFactory;
 
 import org.jinq.jpa.JinqJPAStreamProvider;
 import org.springframework.beans.factory.annotation.Autowired;

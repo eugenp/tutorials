@@ -21,8 +21,4 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <vavr.version>0.9.1</vavr.version>
-    </properties>
-
 </project>

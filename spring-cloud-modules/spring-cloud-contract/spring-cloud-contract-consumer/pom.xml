@@ -16,7 +16,6 @@
     </parent>
 
     <dependencies>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -32,13 +31,11 @@
             <artifactId>spring-cloud-contract-wiremock</artifactId>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-contract-stub-runner</artifactId>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>com.baeldung.spring.cloud</groupId>
             <artifactId>spring-cloud-contract-producer</artifactId>
@@ -52,7 +49,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
@@ -63,12 +59,10 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy</artifactId>
         </dependency>
-
     </dependencies>
 
 </project>

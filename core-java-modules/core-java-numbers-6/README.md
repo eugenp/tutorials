@@ -7,4 +7,5 @@
 - [Java Double vs. BigDecimal](https://www.baeldung.com/java-double-vs-bigdecimal)
 - [Finding the Square Root of a BigInteger in Java](https://www.baeldung.com/java-find-square-root-biginteger)
 - [Truncate a Double to Two Decimal Places in Java](https://www.baeldung.com/java-double-round-two-decimal-places)
+- [Comparing the Values of Two Generic Numbers in Java](https://www.baeldung.com/java-generic-numbers-comparison-methods)
 - More articles: [[<-- prev]](../core-java-numbers-5)

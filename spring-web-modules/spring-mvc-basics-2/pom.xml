@@ -150,7 +150,7 @@
     <properties>
         <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
         <deploy-path>enter-location-of-server</deploy-path>
-        <org.thymeleaf-version>3.0.11.RELEASE</org.thymeleaf-version>
+        <org.thymeleaf-version>3.1.2.RELEASE</org.thymeleaf-version>
         <groovy.version>2.4.12</groovy.version>
         <freemarker.version>2.3.27-incubating</freemarker.version>
         <jade.version>1.2.5</jade.version>

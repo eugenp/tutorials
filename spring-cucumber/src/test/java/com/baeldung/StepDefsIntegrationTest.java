@@ -5,6 +5,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -29,7 +30,7 @@ public class StepDefsIntegrationTest extends SpringIntegrationTest {
 
     @Then("^the client receives status code of (\\d+)$")
     public void the_client_receives_status_code_of(int statusCode) throws Throwable {
-        final HttpStatus currentStatusCode = latestResponse.getTheResponse().getStatusCode();
+        final HttpStatusCode currentStatusCode = latestResponse.getTheResponse().getStatusCode();
         assertThat("status code is incorrect : " + latestResponse.getBody(), currentStatusCode.value(), is(statusCode));
     }
 
