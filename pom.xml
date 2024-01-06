@@ -364,6 +364,7 @@
                 <module>java-nashorn</module>
                 <module>jeromq</module>
                 <module>spring-ejb-modules/ejb-beans</module>
+                <module>jenkins-modules</module> <!-- Not able to upgrade now to jdk17. JAVA-21748 -->
             </modules>
 
         </profile>
@@ -465,7 +466,6 @@
                 
                 <module>apache-spark</module>
 
-                <module>jenkins-modules</module>
                 <module>jhipster-modules</module>
             </modules>
         </profile>
@@ -530,6 +530,7 @@
                 <module>java-nashorn</module>
                 <module>jeromq</module>
                 <module>spring-ejb-modules/ejb-beans</module>
+                <module>jenkins-modules</module> <!-- Not able to upgrade now to jdk17. JAVA-21748 -->
             </modules>
 
         </profile>
@@ -615,7 +616,6 @@
                 
                 <module>apache-spark</module>
 
-                <module>jenkins-modules</module>
                 <module>jhipster-modules</module>
             </modules>
 
