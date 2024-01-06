@@ -1,4 +1,4 @@
-package com.baeldung.javaxval;
+package com.baeldung.javaxval.afterdeserialization;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;

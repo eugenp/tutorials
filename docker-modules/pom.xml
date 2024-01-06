@@ -22,10 +22,8 @@
         <module>docker-spring-boot</module>
         <module>docker-spring-boot-postgres</module>
         <module>docker-java-jar</module>
+        <module>jib</module>
+        <!-- <module>kaniko</module> --> <!-- Not a maven project -->
     </modules>
-
-    <properties>
-        <java.version>11</java.version>
-    </properties>
 
 </project>

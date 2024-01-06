@@ -292,7 +292,7 @@
         <cargo-maven2-plugin.version>1.6.0</cargo-maven2-plugin.version>
         <findbugs-maven-plugin.version>3.0.4</findbugs-maven-plugin.version>
         <!-- okhttp -->
-        <com.squareup.okhttp3.version>3.4.1</com.squareup.okhttp3.version>
+        <com.squareup.okhttp3.version>4.12.0</com.squareup.okhttp3.version>
         <json.path.version>2.2.0</json.path.version>
     </properties>
 

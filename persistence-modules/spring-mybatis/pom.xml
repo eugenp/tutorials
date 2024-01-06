@@ -9,9 +9,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-2</relativePath>
+        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -78,11 +78,12 @@
 
     <properties>
         <!-- Spring -->
-        <org.springframework.version>5.3.15</org.springframework.version>
+        <org.springframework.version>6.0.13</org.springframework.version>
         <!-- persistence -->
-        <spring-mybatis.version>2.0.6</spring-mybatis.version>
+        <spring-mybatis.version>3.0.3</spring-mybatis.version>
         <mybatis.version>3.5.2</mybatis.version>
-        <mybatis-spring-boot-starter.version>2.2.0</mybatis-spring-boot-starter.version>
+        <mybatis-spring-boot-starter.version>3.0.3</mybatis-spring-boot-starter.version>
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
     </properties>
 
 </project>

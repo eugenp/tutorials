@@ -30,8 +30,7 @@ public class SocketController {
     @MessageMapping(SECURED_CHAT)
     @SendTo(SECURED_CHAT_HISTORY)
     public OutputMessage sendAll(Message msg) throws Exception {
-        OutputMessage out = new OutputMessage(msg.getFrom(), msg.getText(), new SimpleDateFormat("HH:mm").format(new Date()));
-        return out;
+        return new OutputMessage(msg.getFrom(), msg.getText(), new SimpleDateFormat("HH:mm").format(new Date()));
     }
 
     /**

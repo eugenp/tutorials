@@ -8,7 +8,7 @@ import static org.mockserver.model.HttpResponse.response;
 import java.io.IOException;
 import java.net.ServerSocket;
 
-import org.apache.http.HttpStatus;
+import org.apache.hc.core5.http.HttpStatus;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.mockserver.client.MockServerClient;

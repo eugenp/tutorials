@@ -30,8 +30,8 @@
             <version>${hibernate.version}</version>
         </dependency>
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
             <version>${mysql.version}</version>
         </dependency>
         <dependency>
@@ -58,7 +58,7 @@
 
     <properties>
         <hibernate.version>5.4.24.Final</hibernate.version>
-        <mysql.version>6.0.6</mysql.version>
+        <mysql.version>8.2.0</mysql.version>
         <mariaDB4j.version>2.2.3</mariaDB4j.version>
         <h2.version>2.1.214</h2.version>
     </properties>

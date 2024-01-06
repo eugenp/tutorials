@@ -1,6 +1,6 @@
 package org.baeldung.springquartz.basics.scheduler;
 
-import javax.annotation.PostConstruct;
+import jakarta.annotation.PostConstruct;
 import javax.sql.DataSource;
 
 import org.baeldung.springquartz.config.AutoWiringSpringBeanJobFactory;
