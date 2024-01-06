@@ -2,6 +2,7 @@ package com.baeldung.dsl;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,14 +16,12 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-            .antMatchers("/admin*")
+        http.authorizeHttpRequests(auth -> auth
+            .requestMatchers("/admin*")
             .hasAnyRole("ADMIN")
             .anyRequest()
-            .authenticated()
-            .and()
-            .formLogin()
-            .and()
+            .authenticated())
+            .formLogin(Customizer.withDefaults())
             .apply(clientErrorLogging());
         return http.build();
     }
