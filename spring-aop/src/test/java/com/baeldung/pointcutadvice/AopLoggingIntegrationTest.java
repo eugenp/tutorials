@@ -69,7 +69,7 @@ public class AopLoggingIntegrationTest {
     @Test
     public void givenLoggingAspect_whenCallLoggableAnnotatedMethod_thenMethodIsLogged() {
         dao.create(42L, "baz");
-        assertThat(messages,  hasItem("Executing method: create"));
+        assertThat(messages, hasItem("Executing method: create"));
     }
 
     @Test
