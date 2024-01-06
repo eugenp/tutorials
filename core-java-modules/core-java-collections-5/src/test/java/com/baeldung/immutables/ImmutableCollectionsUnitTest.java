@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 public class ImmutableCollectionsUnitTest {
 
     @Test
-    public void givenUnmodifiableMap_WhenPutNewEntry_ThenThrowsUnsupportedOperationException() {
+    public void givenUnmodifiableMap_whenPutNewEntry_thenThrowsUnsupportedOperationException() {
         Map<String, String> modifiableMap = new HashMap<>();
         modifiableMap.put("name1", "Michael");
         modifiableMap.put("name2", "Harry");
@@ -23,7 +23,7 @@ public class ImmutableCollectionsUnitTest {
     }
 
     @Test
-    public void givenUnmodifiableMap_WhenPutNewEntryUsingOriginalReference_ThenSuccess() {
+    public void givenUnmodifiableMap_whenPutNewEntryUsingOriginalReference_thenSuccess() {
         Map<String, String> modifiableMap = new HashMap<>();
         modifiableMap.put("name1", "Michael");
         modifiableMap.put("name2", "Harry");
@@ -36,14 +36,14 @@ public class ImmutableCollectionsUnitTest {
     }
 
     @Test
-    public void givenImmutableMap_WhenPutNewEntry_ThenThrowsUnsupportedOperationException() {
+    public void givenImmutableMap_whenPutNewEntry_thenThrowsUnsupportedOperationException() {
         Map<String, String> immutableMap = Map.of("name1", "Michael", "name2", "Harry");
 
         assertThrows(UnsupportedOperationException.class, () -> immutableMap.put("name3", "Micky"));
     }
 
     @Test
-    public void givenImmutableMap_WhenUsecopyOf_ThenExceptionOnPut() {
+    public void givenImmutableMap_whenUsecopyOf_thenExceptionOnPut() {
         Map<String, String> immutableMap = Map.of("name1", "Michael", "name2", "Harry");
         Map<String, String> copyOfImmutableMap = Map.copyOf(immutableMap);
 
