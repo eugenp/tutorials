@@ -25,10 +25,6 @@ components:
   schemas:
     Book:
       type: object
-      required:
-        - id
-        - name
-        - author
       properties:
         id:
           type: integer

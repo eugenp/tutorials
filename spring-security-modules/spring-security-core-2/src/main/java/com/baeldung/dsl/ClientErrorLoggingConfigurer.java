@@ -1,11 +1,11 @@
 package com.baeldung.dsl;
 
-import java.util.List;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
-import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
+import org.springframework.security.web.access.intercept.AuthorizationFilter;
+
+import java.util.List;
 
 public class ClientErrorLoggingConfigurer extends AbstractHttpConfigurer<ClientErrorLoggingConfigurer, HttpSecurity> {
 
@@ -26,7 +26,7 @@ public class ClientErrorLoggingConfigurer extends AbstractHttpConfigurer<ClientE
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
-        http.addFilterAfter(new ClientErrorLoggingFilter(errorCodes), FilterSecurityInterceptor.class);
+        http.addFilterAfter(new ClientErrorLoggingFilter(errorCodes),  AuthorizationFilter.class);
     }
 
 }
