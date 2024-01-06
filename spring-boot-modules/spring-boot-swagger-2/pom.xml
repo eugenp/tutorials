@@ -43,6 +43,11 @@
             <artifactId>springfox-swagger2</artifactId>
             <version>${springfox.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.swagger.core.v3</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>${swagger-annotations.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -133,11 +138,12 @@
     </build>
 
     <properties>
-        <openapi-generator.version>6.2.1</openapi-generator.version>
+        <openapi-generator.version>7.1.0</openapi-generator.version>
         <springfox.version>3.0.0</springfox.version>
         <swagger-codegen-maven-plugin.version>3.0.34</swagger-codegen-maven-plugin.version>
         <springdoc.version>1.6.10</springdoc.version>
         <swagger-maven-plugin.version>3.1.1</swagger-maven-plugin.version>
+        <swagger-annotations.version>2.2.19</swagger-annotations.version>
         <start-class>com.baeldung.tworesponses.Application</start-class>
     </properties>
 
