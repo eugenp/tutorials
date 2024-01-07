@@ -6,7 +6,12 @@ import java.net.URL;
 
 import javax.net.ssl.HttpsURLConnection;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class SSLDebugLogger {
+    private static final Logger logger = LoggerFactory.getLogger(SSLDebugLogger.class);
+
     public static void enableSSLDebugUsingSystemProperties() {
         System.setProperty("javax.net.debug", "ssl");
     }
@@ -18,11 +23,10 @@ public class SSLDebugLogger {
 
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
             String line;
-            System.out.println("Response from " + url + ":");
+            logger.info("Response from " + url + ":");
             while ((line = reader.readLine()) != null) {
-                System.out.println(line);
+                logger.info(line);
             }
-            System.out.println();
         }
     }
 }
