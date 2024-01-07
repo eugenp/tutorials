@@ -24,12 +24,12 @@ import java.util.Map;
 
 @Component
 @Order(Integer.MIN_VALUE)
-class ErrorWebExceptionHandler extends AbstractErrorWebExceptionHandler {
+class CustomGlobalExceptionHandler extends AbstractErrorWebExceptionHandler {
 
-    public ErrorWebExceptionHandler(final ErrorAttributes errorAttributes,
-                                    final WebProperties.Resources resources,
-                                    final ApplicationContext applicationContext,
-                                    final ServerCodecConfigurer configurer) {
+    public CustomGlobalExceptionHandler(final ErrorAttributes errorAttributes,
+                                        final WebProperties.Resources resources,
+                                        final ApplicationContext applicationContext,
+                                        final ServerCodecConfigurer configurer) {
         super(errorAttributes, resources, applicationContext);
         setMessageReaders(configurer.getReaders());
         setMessageWriters(configurer.getWriters());
