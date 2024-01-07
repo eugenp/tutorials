@@ -24,7 +24,7 @@ import org.springframework.kafka.test.utils.ContainerTestUtils;
 import com.baeldung.spring.kafka.dlt.listener.PaymentListenerNoDlt;
 
 @SpringBootTest(classes = KafkaDltApplication.class)
-@EmbeddedKafka(partitions = 1, brokerProperties = { "listeners=PLAINTEXT://localhost:9099", "port=9099" })
+@EmbeddedKafka(partitions = 1, brokerProperties = { "listeners=PLAINTEXT://localhost:9096", "port=9096" })
 public class KafkaNoDltIntegrationTest {
     private static final String TOPIC = "payments-no-dlt";
 
