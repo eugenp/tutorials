@@ -8,9 +8,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-2</relativePath>
+        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencyManagement>
@@ -37,7 +37,6 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>${h2.version}</version>
         </dependency>
         <!-- Spring -->
         <dependency>
@@ -57,10 +56,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jooq</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
         <!-- Testing -->
         <dependency>
@@ -195,11 +190,10 @@
     </build>
 
     <properties>
-        <org.jooq.version>3.16.18</org.jooq.version>
+        <org.jooq.version>3.18.7</org.jooq.version>
         <lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
         <sql-maven-plugin.version>1.5</sql-maven-plugin.version>
         <properties-maven-plugin.version>1.0.0</properties-maven-plugin.version>
-        <h2.version>2.1.214</h2.version>
     </properties>
 
 </project>
