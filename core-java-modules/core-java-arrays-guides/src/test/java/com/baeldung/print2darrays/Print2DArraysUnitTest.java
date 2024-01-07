@@ -24,9 +24,8 @@ public class Print2DArraysUnitTest {
             for (int j = 0; j < myArray[i].length; j++) {
                 System.out.print(myArray[i][j] + " ");
             }
-            System.out.print("\n");
         }
-        String expectedOutput = "1 2 3 \n4 5 6 \n7 8 9 \n";
+        String expectedOutput = "1 2 3 4 5 6 7 8 9 ";
         assertThat(systemOut.getLines()).containsExactly(expectedOutput);
     }
 
@@ -52,9 +51,9 @@ public class Print2DArraysUnitTest {
     public void whenPrint2dArrayUsingArrayToString_thenLinesAreWrittenToSystemOut() {
         int[][] myArray = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
         for (int[] row : myArray) {
-            System.out.print(Arrays.toString(row) + "\n");
+            System.out.print(Arrays.toString(row));
         }
-        String expectedOutput = "[1, 2, 3]\n[4, 5, 6]\n[7, 8, 9]\n";
+        String expectedOutput = "[1, 2, 3][4, 5, 6][7, 8, 9]";
         assertThat(systemOut.getLines()).containsExactly(expectedOutput);
     }
 }
