@@ -31,14 +31,14 @@
             <version>${jstl-version}</version>
         </dependency>
         <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>${jaxb-runtime.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.jaxb</groupId>
-            <artifactId>jaxb-runtime</artifactId>
-            <version>${jaxb-runtime.version}</version>
         </dependency>
         <dependency>
             <groupId>io.rest-assured</groupId>
@@ -64,7 +64,7 @@
     </build>
 
     <properties>
-        <jaxb-runtime.version>2.3.5</jaxb-runtime.version>
+        <jaxb-runtime.version>4.0.1</jaxb-runtime.version>
         <rest-assured-version>5.4.0</rest-assured-version>
         <jstl-version>1.2</jstl-version>
     </properties>
