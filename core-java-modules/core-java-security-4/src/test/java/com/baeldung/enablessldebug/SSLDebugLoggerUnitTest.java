@@ -3,6 +3,8 @@ package com.baeldung.enablessldebug;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
+
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -13,12 +15,10 @@ import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
-import org.junit.Test;
-
 public class SSLDebugLoggerUnitTest {
     
     @Test
-    public void givenSSLDebuggingEnabled_whenUsingSystemProperties_thenEnableSSL() throws Exception {
+    void givenSSLDebuggingEnabled_whenUsingSystemProperties_thenEnableSSL() throws Exception {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setErr(new PrintStream(outContent));
         
@@ -37,7 +37,7 @@ public class SSLDebugLoggerUnitTest {
     }
 
     @Test
-    public void givenSSLDebuggingEnabled_whenUsingConfigurationFile_thenEnableSSL() throws IOException {
+    void givenSSLDebuggingEnabled_whenUsingConfigurationFile_thenEnableSSL() throws IOException {
         InputStream configFile = SSLDebugLoggerUnitTest.class.getClassLoader().getResourceAsStream("logging.properties");
         LogManager.getLogManager().readConfiguration(configFile);
 
