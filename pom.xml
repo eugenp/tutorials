@@ -364,6 +364,7 @@
                 <module>java-nashorn</module>
                 <module>jeromq</module>
                 <module>spring-ejb-modules/ejb-beans</module>
+                <module>jenkins-modules</module> <!-- Not able to upgrade now to jdk17. JAVA-21748 -->
             </modules>
 
         </profile>
@@ -465,7 +466,6 @@
                 
                 <module>apache-spark</module>
 
-                <module>jenkins-modules</module>
                 <module>jhipster-modules</module>
             </modules>
         </profile>
@@ -530,6 +530,7 @@
                 <module>java-nashorn</module>
                 <module>jeromq</module>
                 <module>spring-ejb-modules/ejb-beans</module>
+                <module>jenkins-modules</module> <!-- Not able to upgrade now to jdk17. JAVA-21748 -->
             </modules>
 
         </profile>
@@ -615,7 +616,6 @@
                 
                 <module>apache-spark</module>
 
-                <module>jenkins-modules</module>
                 <module>jhipster-modules</module>
             </modules>
 
@@ -739,7 +739,7 @@
                 <module>jaxb</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
-                <!--<module>jhipster-6</module>--> <!-- failing after upgrading to jdk17-->
+                <module>jhipster-6</module>
                 <module>jmh</module>
                 <module>json-modules</module>
                 <module>jsoup</module>
@@ -750,9 +750,6 @@
                 <module>libraries-2</module>
                 <module>libraries-3</module>
                 <module>libraries-4</module>
-                <module>libraries-5</module>
-                <module>libraries-6</module>
-                <module>libraries-7</module>
                 <module>libraries-ai</module>
                 <module>libraries-apache-commons-2</module>
                 <module>libraries-apache-commons-collections</module>
@@ -982,7 +979,7 @@
                 <module>jaxb</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
-                <!--<module>jhipster-6</module>--> <!-- failing after upgrading to jdk17-->
+                <module>jhipster-6</module>
                 <module>jmh</module>
                 <module>json-modules</module>
                 <module>jsoup</module>
@@ -993,9 +990,6 @@
                 <module>libraries-2</module>
                 <module>libraries-3</module>
                 <module>libraries-4</module>
-                <module>libraries-5</module>
-                <module>libraries-6</module>
-                <module>libraries-7</module>
                 <module>libraries-ai</module>
                 <module>libraries-apache-commons-2</module>
                 <module>libraries-apache-commons-collections</module>
@@ -1199,8 +1193,7 @@
         <maven-failsafe-plugin.version>3.1.2</maven-failsafe-plugin.version>
         <commons-collections4.version>4.4</commons-collections4.version>
         <commons-io.version>2.13.0</commons-io.version>
-        <commons-lang.version>2.6</commons-lang.version>
-        <commons-lang3.version>3.13.0</commons-lang3.version>
+        <commons-lang3.version>3.14.0</commons-lang3.version>
         <commons-cli.version>1.5.0</commons-cli.version>
         <maven-war-plugin.version>3.4.0</maven-war-plugin.version>
         <javax.servlet-api.version>4.0.1</javax.servlet-api.version>

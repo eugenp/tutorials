@@ -17,10 +17,10 @@ public class UserControllerLiveTest {
     private static final String PRINCIPAL_SVC_URL = "http://localhost:8082/principal";
 
     @Test
-    public void givenExisting_whenRequestPrincipal_thenRetrieveData() throws Exception {
+    public void givenExisting_whenRequestPrincipal_thenRetrieveData() {
         SessionFilter filter = new SessionFilter();
         given().auth()
-            .form("user", "pass", new FormAuthConfig("/login", "username", "password").withCsrfFieldName("_csrf"))
+            .form("user", "pass", new FormAuthConfig("/login", "username", "password").withAdditionalField("_csrf"))
             .and()
             .filter(filter)
             .when()

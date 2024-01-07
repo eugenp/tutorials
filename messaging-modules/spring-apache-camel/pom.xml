@@ -55,7 +55,7 @@
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>
             <artifactId>camel-swagger-java-starter</artifactId>
-            <version>${camel.version}</version>
+            <version>${camel-swagger.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>
@@ -81,7 +81,8 @@
 
     <properties>
         <spring.version>5.3.25</spring.version>
-        <camel.version>3.21.0</camel.version>
+        <camel.version>4.3.0</camel.version>
+        <camel-swagger.version>3.22.0</camel-swagger.version>
     </properties>
 
     <profiles>

@@ -21,8 +21,13 @@ public class FirstAndLastDayOfYearUnitTest {
         LocalDate firstDay = today.with(firstDayOfYear());
         LocalDate lastDay = today.with(lastDayOfYear());
 
-        assertEquals("2023-01-01", firstDay.toString());
-        assertEquals("2023-12-31", lastDay.toString());
+        assertEquals(today.getYear(), firstDay.getYear());
+        assertEquals(1, firstDay.getMonthValue());
+        assertEquals(1, firstDay.getDayOfMonth());
+
+        assertEquals(today.getYear(), lastDay.getYear());
+        assertEquals(12, lastDay.getMonthValue());
+        assertEquals(31, lastDay.getDayOfMonth());
     }
 
     @Test

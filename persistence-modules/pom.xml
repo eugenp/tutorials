@@ -102,7 +102,7 @@
         <module>spring-data-rest-querydsl</module>
         <module>spring-data-solr</module>
         <module>spring-data-shardingsphere</module>
-        <!-- <module>spring-hibernate-3</module> FAILED -->
+        <module>spring-hibernate-3</module>
         <!-- <module>spring-hibernate-5</module> FAILED --> <!-- long running -->
         <module>spring-hibernate-6</module>
         <module>spring-jpa</module>

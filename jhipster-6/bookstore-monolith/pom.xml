@@ -1124,14 +1124,11 @@
 
     <properties>
         <!-- Build properties -->
-        <maven.version>3.0.0</maven.version>
         <scala.version>2.12.6</scala.version>
         <node.version>v10.15.0</node.version>
         <npm.version>6.4.1</npm.version>
         <project.testresult.directory>${project.build.directory}/test-results</project.testresult.directory>
         <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
-        <maven.compiler.source>${java.version}</maven.compiler.source>
-        <maven.compiler.target>${java.version}</maven.compiler.target>
         <argLine>-Djava.security.egd=file:/dev/./urandom -Xmx256m</argLine>
         <m2e.apt.activation>jdt_apt</m2e.apt.activation>
         <run.addResources>false</run.addResources>
