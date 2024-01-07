@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 public class SSLDebugLoggerUnitTest {
     
     @Test
-    void givenSSLDebuggingEnabled_whenUsingSystemProperties_thenEnableSSL() throws Exception {
+    void givenSSLDebuggingEnabled_whenUsingSystemProperties_thenEnableSSLDebugLogging() throws Exception {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setErr(new PrintStream(outContent));
         
@@ -37,7 +37,7 @@ public class SSLDebugLoggerUnitTest {
     }
 
     @Test
-    void givenSSLDebuggingEnabled_whenUsingConfigurationFile_thenEnableSSL() throws IOException {
+    void givenSSLDebuggingEnabled_whenUsingConfigurationFile_thenEnableSSLDebugLogging() throws IOException {
         InputStream configFile = SSLDebugLoggerUnitTest.class.getClassLoader().getResourceAsStream("logging.properties");
         LogManager.getLogManager().readConfiguration(configFile);
 
