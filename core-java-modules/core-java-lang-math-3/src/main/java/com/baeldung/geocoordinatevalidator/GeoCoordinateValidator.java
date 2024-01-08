@@ -11,19 +11,19 @@ public class GeoCoordinateValidator {
 
     public static final String MGRS_COORDINATE_REGEX = "^\\d{1,2}[^IO]{3}(\\d{10}|\\d{8}|\\d{6}|\\d{4}|\\d{2})$";
 
-    public boolean isValidDDFormatWithRegex(String coordinateString) {
+    public static boolean isValidDDFormatWithRegex(String coordinateString) {
         return Pattern.compile(DD_COORDINATE_REGEX).matcher(coordinateString).matches();
     }
 
-    public boolean isValidDMSFormatWithRegex(String coordinateString) {
+    public static boolean isValidDMSFormatWithRegex(String coordinateString) {
         return Pattern.compile(DMS_COORDINATE_REGEX).matcher(coordinateString).matches();
     }
 
-    public boolean isValidMGRSFormatWithRegex(String coordinateString) {
+    public static boolean isValidMGRSFormatWithRegex(String coordinateString) {
         return Pattern.compile(MGRS_COORDINATE_REGEX).matcher(coordinateString).matches();
     }
 
-    public boolean isValidDDFormatWithCustomValidation(String coordinateString) {
+    public static boolean isValidDDFormatWithCustomValidation(String coordinateString) {
         try {
             String[] parts = coordinateString.split(",");
             if (parts.length != 2) {
@@ -37,7 +37,7 @@ public class GeoCoordinateValidator {
         }
     }
 
-    public boolean isValidDMSFormatWithCustomValidation(String coordinateString) {
+    public static boolean isValidDMSFormatWithCustomValidation(String coordinateString) {
         try {
             String[] dmsParts = coordinateString.split("[°',]");
             if (dmsParts.length > 6) {
@@ -67,12 +67,12 @@ public class GeoCoordinateValidator {
         }
     }
 
-    private boolean isInvalidLatitude(int degrees, int minutes, double seconds, String hemisphere) {
+    private static boolean isInvalidLatitude(int degrees, int minutes, double seconds, String hemisphere) {
         return degrees < 0 || degrees > 90 || minutes < 0 || minutes >= 60 || seconds < 0 || seconds >= 60 ||
             (!hemisphere.equalsIgnoreCase("N") && !hemisphere.equalsIgnoreCase("S"));
     }
 
-    private boolean isInvalidLongitude(int degrees, int minutes, double seconds, String hemisphere) {
+    private static boolean isInvalidLongitude(int degrees, int minutes, double seconds, String hemisphere) {
         return degrees < 0 || degrees > 180 || minutes < 0 || minutes >= 60 || seconds < 0 || seconds >= 60 ||
             (!hemisphere.equalsIgnoreCase("E") && !hemisphere.equalsIgnoreCase("W"));
     }
