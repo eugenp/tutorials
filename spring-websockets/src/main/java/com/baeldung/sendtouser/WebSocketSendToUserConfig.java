@@ -11,8 +11,9 @@ import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 import org.springframework.web.socket.server.support.DefaultHandshakeHandler;
 
-import javax.servlet.http.HttpSession;
 import java.util.Map;
+
+import jakarta.servlet.http.HttpSession;
 
 @Configuration
 @EnableWebSocketMessageBroker

@@ -9,9 +9,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-2</relativePath>
+        <relativePath>../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -37,6 +37,23 @@
 
     <build>
         <finalName>spring-websockets</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>3.1.5</version>
+                <configuration>
+                    <mainClass>com.baeldung.SpringBootApp</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
