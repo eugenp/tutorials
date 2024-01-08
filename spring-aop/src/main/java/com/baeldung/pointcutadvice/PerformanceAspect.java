@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 @Component
 public class PerformanceAspect {
 
-    private static Logger logger = Logger.getLogger(PerformanceAspect.class.getName());
+    private static final Logger logger = Logger.getLogger(PerformanceAspect.class.getName());
 
     @Pointcut("within(com.baeldung..*) && execution(* com.baeldung.pointcutadvice.dao.FooDao.*(..))")
     public void repositoryClassMethods() {
