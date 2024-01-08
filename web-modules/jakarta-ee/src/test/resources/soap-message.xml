@@ -1,0 +1,13 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:be="http://www.baeldung.com/soap/">
+    <soapenv:Header>
+        <be:Username>baeldung</be:Username>
+    </soapenv:Header>
+    <soapenv:Body>
+        <be:ArticleRequest>
+            <be:Article>
+                <be:Name>Working with JUnit</be:Name>
+            </be:Article>
+        </be:ArticleRequest>
+    </soapenv:Body>
+</soapenv:Envelope>
