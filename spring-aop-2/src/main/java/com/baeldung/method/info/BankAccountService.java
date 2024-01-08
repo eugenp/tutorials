@@ -1,10 +1,13 @@
 package com.baeldung.method.info;
 
-import org.apache.commons.lang3.RandomUtils;
+import org.apache.commons.rng.UniformRandomProvider;
+import org.apache.commons.rng.simple.RandomSource;
 import org.springframework.stereotype.Component;
 
 @Component
 public class BankAccountService {
+
+    private final UniformRandomProvider rng = RandomSource.XO_RO_SHI_RO_128_PP.create();
 
     @AccountOperation(operation = "deposit")
     public void deposit(Account account, Double amount) {
@@ -23,7 +26,7 @@ public class BankAccountService {
     }
 
     public double getBalance() {
-        return RandomUtils.nextDouble();
+        return rng.nextDouble();
     }
 
 }
