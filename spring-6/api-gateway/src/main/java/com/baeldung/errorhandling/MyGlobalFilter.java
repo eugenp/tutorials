@@ -21,7 +21,7 @@ class MyGlobalFilter implements GlobalFilter {
 
     private boolean hasReachedRateLimit(ServerWebExchange exchange) {
         // Simulates the rate limit being reached
-        return exchange.getRequest().getURI().getPath().equals("/test/custom_rate_limit") && (!exchange.getRequest().getHeaders().containsKey("X-RateLimit-Remaining") ||
+        return exchange.getRequest().getURI().getPath().contains("/test/custom_rate_limit") && (!exchange.getRequest().getHeaders().containsKey("X-RateLimit-Remaining") ||
                 Integer.parseInt(exchange.getRequest().getHeaders().getFirst("X-RateLimit-Remaining")) <= 0);
     }
 }
