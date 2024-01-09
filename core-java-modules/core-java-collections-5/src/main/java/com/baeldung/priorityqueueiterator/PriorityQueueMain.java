@@ -50,7 +50,7 @@ public class PriorityQueueMain {
         priorityQueue.add(new Person("Bob", 30));
         priorityQueue.add(new Person("Charlie", 22));
 
-        Iterator<Person> iterator = priorityQueue.iterator();git ad
+        Iterator<Person> iterator = priorityQueue.iterator();
 
         while (iterator.hasNext()) {
             Person person = iterator.next();
