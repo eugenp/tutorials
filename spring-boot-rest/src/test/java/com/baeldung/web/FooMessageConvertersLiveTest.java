@@ -4,7 +4,7 @@ import static com.baeldung.Consts.APPLICATION_PORT;
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import com.baeldung.common.web.AbstractLiveTest;
 import com.baeldung.persistence.model.Foo;
@@ -107,7 +107,7 @@ public class FooMessageConvertersLiveTest extends AbstractLiveTest<Foo> {
 
         final HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
-        final HttpEntity<String> entity = new HttpEntity<String>(headers);
+        final HttpEntity<String> entity = new HttpEntity<>(headers);
 
         final ResponseEntity<Foo> response = restTemplate.exchange(URI, HttpMethod.GET, entity, Foo.class, "1");
         final Foo resource = response.getBody();
