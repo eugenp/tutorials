@@ -8,6 +8,7 @@
     <artifactId>parent-modules</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <name>parent-modules</name>
+
     <packaging>pom</packaging>
 
     <dependencies>
@@ -410,6 +411,7 @@
                 <module>parent-spring-6</module>
                 
                 <module>spring-4</module>
+                <module>spring-6</module>
 
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
