@@ -47,7 +47,7 @@ public class CallAMethodOnEachElementUnitTest {
     private final static List<Player> PLAYERS = List.of(
         new Player(1, "Kai", 42),
         new Player(2, "Eric", 43),
-        new Player(3, "Sajaan", 64),
+        new Player(3, "Saajan", 64),
         new Player(4, "Kevin", 30),
         new Player(5, "John", 5));
     // @formatter:on
@@ -70,7 +70,7 @@ public class CallAMethodOnEachElementUnitTest {
         for (Player p : PLAYERS) {
             names.add(p.getName());
         }
-        assertEquals(Arrays.asList("Kai", "Eric", "Sajaan", "Kevin", "John"), names);
+        assertEquals(Arrays.asList("Kai", "Eric", "Saajan", "Kevin", "John"), names);
     }
 
     @Test
@@ -82,7 +82,7 @@ public class CallAMethodOnEachElementUnitTest {
             }
         });
 
-        assertEquals(Arrays.asList("Kai", "Eric", "Sajaan", "Kevin", "John"), names);
+        assertEquals(Arrays.asList("Kai", "Eric", "Saajan", "Kevin", "John"), names);
     }
 
     @Test
@@ -90,7 +90,7 @@ public class CallAMethodOnEachElementUnitTest {
         List<String> names = PLAYERS.stream()
             .map(player -> player.getName())
             .collect(Collectors.toList());
-        assertEquals(List.of("Kai", "Eric", "Sajaan", "Kevin", "John"), names);
+        assertEquals(List.of("Kai", "Eric", "Saajan", "Kevin", "John"), names);
     }
 
 }
