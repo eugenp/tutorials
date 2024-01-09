@@ -4,9 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.TimeZone;
 
 public class UtilToSqlDateUtilsUnitTest {
 
@@ -54,7 +52,7 @@ public class UtilToSqlDateUtilsUnitTest {
     }
 
     @Test
-    public void givenSqlDateAndTimestamp_whenUsingAsUtilDate_thenGetExpectedResult()throws ParseException {
+    public void givenSqlDateAndTimestamp_whenUsingAsUtilDate_thenGetExpectedResult() throws ParseException {
         java.util.Date date = UtilToSqlDateUtils.createAmericanDate("2010-05-23T00:00:00");
         java.sql.Date sqlDate = new java.sql.Date(date.getTime());
         Assertions.assertEquals(date, sqlDate);
