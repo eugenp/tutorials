@@ -95,17 +95,6 @@
             <artifactId>javax.servlet.jsp-api</artifactId>
             <version>${javax.servlet.jsp-api.version}</version>
         </dependency>
-        <!-- Logging -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jcl-over-slf4j</artifactId>
-            <version>${org.slf4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>${logback.version}</version>
-        </dependency>
         <!-- Spring Testing -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

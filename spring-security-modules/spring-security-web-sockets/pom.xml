@@ -104,17 +104,6 @@
             <artifactId>spring-security-messaging</artifactId>
             <version>${spring-security-messaging.version}</version>
         </dependency>
-        <!-- Logging -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jcl-over-slf4j</artifactId>
-            <version>${org.slf4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>${logback.version}</version>
-        </dependency>
         <!-- Servlet -->
         <dependency>
             <groupId>jakarta.platform</groupId>
@@ -188,7 +177,7 @@
         <hibernate-core.version>6.1.7.Final</hibernate-core.version>
         <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
         <expressly.version>5.0.0</expressly.version>
-        <spring-data-jpa.version>3.1.0</spring-data-jpa.version>
+        <spring-data-jpa.version>3.2.1</spring-data-jpa.version>
         <spring-boot-starter-test.version>3.1.0</spring-boot-starter-test.version>
         <jakartaee-api.version>10.0.0</jakartaee-api.version>
         <cargo-maven2-plugin.version>1.7.6</cargo-maven2-plugin.version>

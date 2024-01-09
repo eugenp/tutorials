@@ -98,21 +98,6 @@
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
         </dependency>
-        <!-- logging -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <!-- <scope>runtime</scope> -->
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jcl-over-slf4j</artifactId>
-            <!-- <scope>runtime</scope> --> <!-- some spring dependencies need to compile against jcl -->
-        </dependency>
         <!-- okhttp -->
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
