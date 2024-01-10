@@ -1,10 +1,12 @@
 package com.baeldung.spring.web.config;
 
+import jakarta.servlet.MultipartConfigElement;
+import org.springframework.boot.web.servlet.MultipartConfigFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.ui.context.support.ResourceBundleThemeSource;
-import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.util.unit.DataSize;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
@@ -19,8 +21,6 @@ import org.springframework.web.servlet.view.BeanNameViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
-import java.io.IOException;
-
 //@EnableWebMvc
 //@ComponentScan(basePackages = { "com.baeldung.web.controller" })
 @Configuration
@@ -32,12 +32,12 @@ public class WebConfig implements WebMvcConfigurer {
             .setViewName("index");
     }
 
-    /** Multipart file uploading configuratioin */
     @Bean
-    public CommonsMultipartResolver multipartResolver() throws IOException {
-        CommonsMultipartResolver resolver = new CommonsMultipartResolver();
-        resolver.setMaxUploadSize(10000000);
-        return resolver;
+    public MultipartConfigElement multipartConfigElement() {
+        MultipartConfigFactory factory = new MultipartConfigFactory();
+        factory.setMaxFileSize(DataSize.ofBytes(10000000L));
+        factory.setMaxRequestSize(DataSize.ofBytes(10000000L));
+        return factory.createMultipartConfig();
     }
 
     @Bean

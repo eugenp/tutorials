@@ -30,7 +30,7 @@ public class HandlerMappingDefaultConfigIntegrationTest {
 
     @Before
     public void setup() {
-        MockitoAnnotations.initMocks(this);
+        MockitoAnnotations.openMocks(this);
         mockMvc = MockMvcBuilders.webAppContextSetup(webAppContext).build();
     }
 
