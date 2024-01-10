@@ -36,8 +36,12 @@ public class PriorityQueueMain {
         Iterator<Integer> iterator = numbers.iterator();
         numbers.add(4);
 
-        while (iterator.hasNext()) {
-            System.out.println(iterator.next());
+        try {
+            while (iterator.hasNext()) {
+                System.out.println(iterator.next());
+            }
+        } catch (java.util.ConcurrentModificationException e) {
+            System.out.println("ConcurrentModificationException occurred during iteration.");
         }
     }
 
