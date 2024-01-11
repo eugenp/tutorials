@@ -10,13 +10,13 @@ public class JodaDateTimeToDateAndViceVersaUnitTest {
     public void givenJodaDateTime_whenConvertingToJavaDate_thenConversionIsCorrect() {
         DateTime jodaDateTime = new DateTime();
         java.util.Date javaDate = jodaDateTime.toDate();
-        assertEquals(jodaDateTime, new DateTime(javaDate));
+        assertEquals(jodaDateTime.getMillis(), javaDate.getTime());
     }
 
     @Test
     public void givenJavaDate_whenConvertingToJodaDateTime_thenConversionIsCorrect() {
         java.util.Date javaDate = new java.util.Date();
         DateTime jodaDateTime = new DateTime(javaDate);
-        assertEquals(javaDate, jodaDateTime.toDate());
+        assertEquals(javaDate.getTime(), jodaDateTime.getMillis());
     }
 }
