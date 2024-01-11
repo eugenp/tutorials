@@ -17,7 +17,7 @@ public class PaymentListenerDltFailOnError {
     private final Logger log = LoggerFactory.getLogger(PaymentListenerDltFailOnError.class);
 
     @RetryableTopic(attempts = "1", kafkaTemplate = "retryableTopicKafkaTemplate", dltStrategy = DltStrategy.FAIL_ON_ERROR)
-    @KafkaListener(topics = { "payments-fail-on-error-dlt" }, groupId = "payments")
+    @KafkaListener(topics = { "payments-fail-on-error-dlt" }, groupId = "payments", containerFactory="containerFactory")
     public void handlePayment(Payment payment, @Header(KafkaHeaders.RECEIVED_TOPIC) String topic) {
         log.info("Event on main topic={}, payload={}", topic, payment);
     }
