@@ -1,0 +1,33 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+  labels:
+    ManagedBy: terraform
+    component: ingress
+  name: deptrack-ingress
+  namespace: deptrack
+spec:
+  defaultBackend:
+    service:
+      name: deptrack-frontend
+      port:
+        name: http
+  rules:
+    - host: example.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: deptrack-api-server
+                port:
+                  name: http
+            path: /api
+            pathType: Prefix
+          - backend:
+              service:
+                name: deptrack-frontend
+                port:
+                  name: http
+            path: /
+            pathType: Prefix
