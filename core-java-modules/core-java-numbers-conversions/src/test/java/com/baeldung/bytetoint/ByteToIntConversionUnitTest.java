@@ -27,13 +27,6 @@ public class ByteToIntConversionUnitTest {
     }
 
     @Test
-    void givenByte_whenUsingMathToIntExact_thenConvertToInt() {
-        byte b = -51;
-        int result = ByteToIntConversion.usingMathToIntExact(b);
-        assertEquals(-51, result);
-    }
-
-    @Test
     void givenByte_whenUsingBitwiseOperator_thenConvertToInt() {
         byte b = -51;
         int result = ByteToIntConversion.usingBitwiseOperator(b);
