@@ -37,7 +37,7 @@ public class ByteToIntConversionUnitTest {
     void givenByte_whenUsingBitwiseOperator_thenConvertToInt() {
         byte b = -51;
         int result = ByteToIntConversion.usingBitwiseOperator(b);
-        assertEquals(-51, result);
+        assertEquals(205, result);
     }
 
     @Test
