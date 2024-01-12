@@ -1,21 +1,13 @@
 package com.baeldung.keycloak;
 
-import com.jayway.jsonpath.JsonPath;
-import com.jayway.jsonpath.PathNotFoundException;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
-import org.springframework.core.convert.converter.Converter;
-import org.springframework.security.authentication.AbstractAuthenticationToken;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.GrantedAuthority;
@@ -24,19 +16,16 @@ import org.springframework.security.core.authority.mapping.GrantedAuthoritiesMap
 import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.oauth2.core.oidc.user.OidcUserAuthority;
 import org.springframework.security.oauth2.core.user.OAuth2UserAuthority;
-import org.springframework.security.oauth2.jwt.Jwt;
-import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.session.RegisterSessionAuthenticationStrategy;
 import org.springframework.security.web.authentication.session.SessionAuthenticationStrategy;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.springframework.stereotype.Component;
 
 @Configuration
 @EnableWebSecurity
 class SecurityConfig {
 
-    private static final String REALM_ACCESS_CLAIM = "realm_access";
+    private static final String REALM_ACCESS_CLAIM = "groups";
     private static final String ROLES_CLAIM = "roles";
 
     private final KeycloakLogoutHandler keycloakLogoutHandler;
@@ -55,7 +44,7 @@ class SecurityConfig {
     public SecurityFilterChain resourceServerFilterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests()
             .requestMatchers(new AntPathRequestMatcher("/customers*"))
-            .hasRole("USERS")
+            .hasRole("user")
             .requestMatchers(new AntPathRequestMatcher("/"))
             .permitAll()
             .anyRequest()
@@ -84,8 +73,8 @@ class SecurityConfig {
                 var userInfo = oidcUserAuthority.getUserInfo();
 
                 if (userInfo.hasClaim(REALM_ACCESS_CLAIM)) {
-                    var realmAccess = userInfo.getClaimAsMap(REALM_ACCESS_CLAIM);
-                    var roles = (Collection<String>) realmAccess.get(ROLES_CLAIM);
+                    var realmAccess = userInfo.getClaim(REALM_ACCESS_CLAIM);
+                    var roles = (Collection<String>) realmAccess;
                     mappedAuthorities.addAll(generateAuthoritiesFromClaim(roles));
                 }
             } else {
