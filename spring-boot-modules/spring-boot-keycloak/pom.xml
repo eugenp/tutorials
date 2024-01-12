@@ -71,11 +71,6 @@
             <artifactId>jaxb-runtime</artifactId>
             <version>${jaxb-runtime.version}</version>
         </dependency>
-        <dependency>
-            <!-- used when converting Keycloak roles to Spring authorities -->
-            <groupId>com.jayway.jsonpath</groupId>
-            <artifactId>json-path</artifactId>
-        </dependency>
     </dependencies>
 
     <build>
