@@ -39,16 +39,10 @@
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>
-        <dependency>
-            <groupId>com.sun.xml.bind</groupId>
-            <artifactId>jaxb-impl</artifactId>
-            <version>${jaxb-runtime.version}</version>
-        </dependency>
     </dependencies>
 
     <properties>
         <javers.version>6.6.5</javers.version>
-        <jaxb-runtime.version>4.0.1</jaxb-runtime.version>
         <start-class> com.baeldung.boot.bootstrapmode.Application</start-class>
     </properties>
 
