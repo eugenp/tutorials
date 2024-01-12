@@ -15,7 +15,7 @@ public class CreditCardEditor extends PropertyEditorSupport {
     
     @Override
     public void setAsText(String text) throws IllegalArgumentException {
-        if (StringUtils.hasLength(text)) {
+        if (!StringUtils.hasLength(text)) {
             setValue(null);
         } else {
             CreditCard creditCard = new CreditCard();
