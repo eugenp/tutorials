@@ -15,10 +15,6 @@ public class ByteToIntConversion {
         return byteObj.intValue();
     }
 
-    static int usingMathToIntExact(byte b){
-        return Math.toIntExact(b);
-    }
-
     static int usingBitwiseOperator(byte b){
         int i = b & 0xFF;
         return i;
