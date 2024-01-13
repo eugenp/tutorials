@@ -12,7 +12,7 @@ public class ProcessUtils {
 
     public static String getClassPath() {
         String cp = System.getProperty("java.class.path");
-        System.out.println("ClassPath is " + cp);
+        // System.out.println("ClassPath is " + cp);
         return cp;
     }
 
