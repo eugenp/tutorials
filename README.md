@@ -1,3 +1,14 @@
+# Cloning the repository
+
+If you are getting an error while cloning the repository, try running:
+git config --global http.postBuffer 5000000
+
+This will increase the size of the buffer from the default 1MiB to 5MiB.
+
+To revert this value to the default, use:
+git config --global http.postBuffer 1000000
+ 
+
 The Courses
 ==============================
 
