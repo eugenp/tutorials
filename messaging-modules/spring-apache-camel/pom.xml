@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.baeldung.apache.camel</groupId>
     <artifactId>spring-apache-camel</artifactId>
@@ -36,11 +36,6 @@
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-stream</artifactId>
             <version>${camel.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>
@@ -80,34 +75,10 @@
     </dependencies>
 
     <properties>
-        <spring.version>5.3.25</spring.version>
         <camel.version>4.3.0</camel.version>
         <camel-swagger.version>3.22.0</camel-swagger.version>
+        <junit-jupiter.version>5.10.1</junit-jupiter.version> <!--Version not compatible with the one inherited from parent-->
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip> <!--Skip repackaging for multiple main classes-->
     </properties>
-
-    <profiles>
-        <profile>
-            <id>spring-boot</id>
-            <build>
-                <defaultGoal>spring-boot:run</defaultGoal>
-                <plugins>
-                    <plugin>
-                        <groupId>org.springframework.boot</groupId>
-                        <artifactId>spring-boot-maven-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>repackage</goal>
-                                </goals>
-                                <configuration>
-                                    <mainClass>com.baeldung.camel.boot.boot.testing.GreetingsFileSpringApplication</mainClass>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 
 </project>

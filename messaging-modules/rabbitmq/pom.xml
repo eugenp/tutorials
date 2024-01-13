@@ -42,6 +42,7 @@
 
     <properties>
         <spring-cloud-dependencies.version>2020.0.3</spring-cloud-dependencies.version>
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip> <!-- to avoid repackaging of the jar -->
     </properties>
 
 </project>
