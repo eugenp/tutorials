@@ -42,21 +42,17 @@ class SecurityConfig {
 
     @Bean
     public SecurityFilterChain resourceServerFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+        http.authorizeHttpRequests(auth -> auth
             .requestMatchers(new AntPathRequestMatcher("/customers*"))
             .hasRole("user")
             .requestMatchers(new AntPathRequestMatcher("/"))
             .permitAll()
             .anyRequest()
-            .authenticated();
+            .authenticated());
         http.oauth2ResourceServer((oauth2) -> oauth2
             .jwt(Customizer.withDefaults()));
-        http.oauth2Login()
-            .and()
-            .logout()
-            .addLogoutHandler(keycloakLogoutHandler)
-            .logoutSuccessUrl("/");
-
+        http.oauth2Login(Customizer.withDefaults())
+            .logout(logout -> logout.addLogoutHandler(keycloakLogoutHandler).logoutSuccessUrl("/"));
         return http.build();
     }
 
@@ -73,8 +69,8 @@ class SecurityConfig {
                 var userInfo = oidcUserAuthority.getUserInfo();
 
                 if (userInfo.hasClaim(REALM_ACCESS_CLAIM)) {
-                    var realmAccess = userInfo.getClaim(REALM_ACCESS_CLAIM);
-                    var roles = (Collection<String>) realmAccess;
+                    Collection<String> roles = (Collection<String>) userInfo.getClaim(
+                        REALM_ACCESS_CLAIM);
                     mappedAuthorities.addAll(generateAuthoritiesFromClaim(roles));
                 }
             } else {
@@ -82,8 +78,9 @@ class SecurityConfig {
                 Map<String, Object> userAttributes = oauth2UserAuthority.getAttributes();
 
                 if (userAttributes.containsKey(REALM_ACCESS_CLAIM)) {
-                    var realmAccess = (Map<String, Object>) userAttributes.get(REALM_ACCESS_CLAIM);
-                    var roles = (Collection<String>) realmAccess.get(ROLES_CLAIM);
+                    Map<String, Object> realmAccess = (Map<String, Object>) userAttributes.get(
+                        REALM_ACCESS_CLAIM);
+                    Collection<String> roles = (Collection<String>) realmAccess.get(ROLES_CLAIM);
                     mappedAuthorities.addAll(generateAuthoritiesFromClaim(roles));
                 }
             }
