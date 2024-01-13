@@ -2,7 +2,7 @@ package com.baeldung.pubsubmq.server;
 
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 
-import jakarta.annotation.PostConstruct;
+import javax.annotation.PostConstruct;
 
 public class Publisher {
 
