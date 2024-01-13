@@ -8,10 +8,10 @@
     <packaging>pom</packaging>
 
     <parent>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <groupId>com.baeldung</groupId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-2</relativePath>
+        <relativePath>../parent-boot-3</relativePath>
     </parent>
 
     <modules>
@@ -20,8 +20,8 @@
         <module>jgroups</module>
         <module>rabbitmq</module>
         <module>spring-amqp</module>
-        <!--<module>spring-apache-camel</module> <!- failing after upgrading to jdk17-->
-        <!--<module>spring-jms</module>  <!- failing after upgrading to jdk17-->
+        <module>spring-apache-camel</module>
+        <module>spring-jms</module>
         <module>postgres-notify</module>
     </modules>
 
