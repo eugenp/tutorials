@@ -2,33 +2,25 @@ package com.baeldung.springcloudgateway.customfilters.gatewayapp.filters.factori
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
-import java.util.Collections;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.context.TestConfiguration;
-import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.cloud.gateway.filter.factory.SetPathGatewayFilterFactory;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Primary;
 import org.springframework.http.MediaType;
-import org.springframework.http.client.reactive.ReactorClientHttpConnector;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 import com.sun.net.httpserver.HttpServer;
-
-import reactor.netty.http.client.HttpClient;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class ScrubResponseGatewayFilterLiveTest {
@@ -49,7 +41,7 @@ public class ScrubResponseGatewayFilterLiveTest {
     
     @LocalServerPort
     String port;
-    
+
     @Autowired
     private WebTestClient client;
     
@@ -103,11 +95,7 @@ public class ScrubResponseGatewayFilterLiveTest {
         public SecurityWebFilterChain testFilterChain(ServerHttpSecurity http ) {
             
             // @formatter:off
-            return http.authorizeExchange()
-              .anyExchange()
-                .permitAll()
-              .and()
-              .build();
+            return http.authorizeExchange(authorizeExchangeSpec -> authorizeExchangeSpec.anyExchange().permitAll()).build();
             // @formatter:on
         }
         

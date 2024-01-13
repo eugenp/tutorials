@@ -1,7 +1,5 @@
 package com.baeldung.springcloudgateway.oauth.backend.web;
 
-import javax.annotation.PostConstruct;
-
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.server.resource.authentication.BearerTokenAuthentication;

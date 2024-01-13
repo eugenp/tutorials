@@ -6,12 +6,11 @@ import org.junit.jupiter.api.RepeatedTest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 
@@ -34,7 +33,7 @@ public class RedisWebFilterFactoriesLiveTest {
         this.redisServer = new RedisServer(6379);
         redisServer.start();    
     }
-    
+
     @LocalServerPort
     String port;
 
@@ -52,7 +51,7 @@ public class RedisWebFilterFactoriesLiveTest {
         // assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 
         LOGGER.info("Received: status->{}, reason->{}, remaining->{}", 
-          r.getStatusCodeValue(), r.getStatusCode().getReasonPhrase(), 
+          r.getStatusCode(), r.getStatusCode(),
           r.getHeaders().get("X-RateLimit-Remaining"));
     }
     

@@ -8,8 +8,6 @@ import com.baeldung.springcloudgateway.customfilters.gatewayapp.filters.factorie
 import com.baeldung.springcloudgateway.customfilters.gatewayapp.filters.factories.ScrubResponseGatewayFilterFactory.Scrubber;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.ObjectCodec;
-import com.fasterxml.jackson.core.TreeNode;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -23,7 +21,6 @@ class ScrubResponseGatewayFilterFactoryUnitTest {
         + "        \"account\" : \"9999888877770000\"\r\n"
         + "}";
 
-    
     @Test
     void givenJsonWithFieldsToScrub_whenApply_thenScrubFields() throws Exception{
         
