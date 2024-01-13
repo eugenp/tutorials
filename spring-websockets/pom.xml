@@ -9,9 +9,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-3</artifactId>
+        <artifactId>parent-boot-2</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-3</relativePath>
+        <relativePath>../parent-boot-2</relativePath>
     </parent>
 
     <dependencies>
@@ -48,7 +48,6 @@
     <properties>
         <reactor-core.version>3.6.0</reactor-core.version>
         <javafaker.version>1.0.2</javafaker.version>
-        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
     </properties>
 
 </project>
