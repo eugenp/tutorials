@@ -20,7 +20,7 @@ import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.junit.jupiter.api.Test;
 
-public class PoiBoldStyleIntegrationTest {
+class PoiBoldStyleIntegrationTest {
 
     private void writeSampleSheet(Path destination, Workbook workbook) throws IOException {
         Sheet sheet = workbook.createSheet();
