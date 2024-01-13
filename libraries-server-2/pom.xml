@@ -30,6 +30,13 @@
             <artifactId>jetty-webapp</artifactId>
             <version>${jetty.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/io.netty/netty-all -->
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>${netty.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -73,6 +80,7 @@
     <properties>
         <jetty.version>9.4.27.v20200227</jetty.version>
         <alpn.version>8.1.11.v20170118</alpn.version>
+        <netty.version>4.1.104.Final</netty.version>
     </properties>
 
 </project>
