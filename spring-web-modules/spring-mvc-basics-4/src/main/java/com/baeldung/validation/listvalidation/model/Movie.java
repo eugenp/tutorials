@@ -1,8 +1,9 @@
 package com.baeldung.validation.listvalidation.model;
 
+import jakarta.validation.constraints.NotEmpty;
+
 import java.util.UUID;
 
-import javax.validation.constraints.NotEmpty;
 
 public class Movie {
 

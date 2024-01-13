@@ -3,7 +3,7 @@ package com.baeldung.springsoap;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.annotation.PostConstruct;
+import jakarta.annotation.PostConstruct;
 
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;

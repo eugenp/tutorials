@@ -37,11 +37,6 @@
             <version>${aws-lambda-java-log4j2.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-slf4j-impl</artifactId>
-            <version>${log4j-slf4j-impl.version}</version>
-        </dependency>
-        <dependency>
             <groupId>io.github.openfeign</groupId>
             <artifactId>feign-core</artifactId>
             <version>${feign-core.version}</version>
@@ -114,7 +109,6 @@
         <aws-lambda-java-events.version>3.6.0</aws-lambda-java-events.version>
         <lightweight-config.version>1.2.1</lightweight-config.version>
         <aws-lambda-java-log4j2.version>1.2.0</aws-lambda-java-log4j2.version>
-        <log4j-slf4j-impl.version>2.13.2</log4j-slf4j-impl.version>
         <feign-core.version>11.2</feign-core.version>
         <guice.version>5.1.0</guice.version>
         <system-stubs-junit4.version>2.0.2</system-stubs-junit4.version>

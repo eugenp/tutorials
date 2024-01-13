@@ -9,31 +9,16 @@
     <description>This is simple boot application for demonstrating spock framework testing features.</description>
 
     <parent>
-        <groupId>com.baeldung.spring-boot-modules</groupId>
-        <artifactId>spring-boot-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-3</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-boot-3</relativePath>
     </parent>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-bom</artifactId>
-                <version>${log4j2.version}</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -95,8 +80,8 @@
         <!-- The main class to start by executing java -jar -->
         <start-class>com.baeldung.boot.Application</start-class>
         <spock.version>2.4-M1-groovy-4.0</spock.version>
-        <gmavenplus-plugin.version>3.0.0</gmavenplus-plugin.version>
-        <log4j2.version>2.17.1</log4j2.version>
+        <gmavenplus-plugin.version>3.0.2</gmavenplus-plugin.version>
+        <spring-boot.version>3.2.1</spring-boot.version>
     </properties>
 
 </project>

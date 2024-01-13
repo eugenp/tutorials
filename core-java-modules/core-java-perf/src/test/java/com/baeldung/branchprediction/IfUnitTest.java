@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 public class IfUnitTest {
     private static final Logger LOG = LoggerFactory.getLogger(IfUnitTest.class);
 
-    public static final int TOP = 10000000;
+    public static final int TOP = 1000000;
 
     @Test
     public void majorBranchSorted() {

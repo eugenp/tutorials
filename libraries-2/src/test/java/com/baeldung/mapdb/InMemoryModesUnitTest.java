@@ -1,12 +1,12 @@
 package com.baeldung.mapdb;
 
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
 import org.mapdb.DB;
 import org.mapdb.DBMaker;
 import org.mapdb.HTreeMap;
 import org.mapdb.Serializer;
-
-import static junit.framework.Assert.assertEquals;
 
 public class InMemoryModesUnitTest {
 

@@ -1,13 +1,10 @@
 package com.baeldung.app;
 
-import javax.servlet.Filter;
 
+import jakarta.servlet.Filter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
@@ -20,7 +17,7 @@ public class App extends SpringBootServletInitializer {
     public static class ApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
         @Override
-        protected javax.servlet.Filter[] getServletFilters() {
+        protected Filter[] getServletFilters() {
             DelegatingFilterProxy delegateFilterProxy = new DelegatingFilterProxy();
             delegateFilterProxy.setTargetBeanName("loggingFilter");
             return new Filter[] { delegateFilterProxy };

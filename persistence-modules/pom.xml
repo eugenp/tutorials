@@ -60,7 +60,7 @@
         <!-- <module>sirix</module> --> <!-- We haven't upgraded to java 11. Fixing in BAEL-10841 -->
         <module>solr</module>
         <module>spring-boot-persistence-2</module>
-        <!--<module>spring-boot-persistence-3</module>--> <!-- failing after upgrading to jdk17 -->
+        <module>spring-boot-persistence-3</module>
         <!--<module>spring-boot-mysql</module>-->   <!-- failing after upgrading to jdk17 -->
         <module>spring-boot-persistence</module>
         <module>spring-boot-persistence-h2</module>
@@ -102,14 +102,14 @@
         <module>spring-data-rest-querydsl</module>
         <module>spring-data-solr</module>
         <module>spring-data-shardingsphere</module>
-        <!-- <module>spring-hibernate-3</module> FAILED -->
+        <module>spring-hibernate-3</module>
         <!-- <module>spring-hibernate-5</module> FAILED --> <!-- long running -->
         <module>spring-hibernate-6</module>
         <module>spring-jpa</module>
         <module>spring-jpa-2</module>
         <module>spring-jdbc</module>
 	    <module>spring-jdbc-2</module>
-        <!--<module>spring-jooq</module>--><!--  failing after upgrading to jdk17 -->
+        <module>spring-jooq</module>
         <module>spring-mybatis</module>
         <module>spring-persistence-simple</module>
         <module>spring-data-yugabytedb</module>

@@ -12,8 +12,9 @@ Remember, for advanced libraries like [Jackson](/jackson) and [JUnit](/testing-m
 - [Guide to Classgraph Library](https://www.baeldung.com/classgraph)
 - [Templating with Handlebars](https://www.baeldung.com/handlebars)
 - [A Guide to Crawler4j](https://www.baeldung.com/crawler4j)
-- [Key Value Store with Chronicle Map](https://www.baeldung.com/java-chronicle-map)
-- [Guide to MapDB](https://www.baeldung.com/mapdb)
 - [A Guide to Apache Mesos](https://www.baeldung.com/apache-mesos)
+- [Guide to MapDB](https://www.baeldung.com/mapdb)
+- [Find Files by Extension in Specified Directory in Java](https://www.baeldung.com/java-recursive-search-directory-extension-match)
+- [Apache Commons Collections vs Google Guava](https://www.baeldung.com/apache-commons-collections-vs-guava)
 - More articles [[<-- prev]](/libraries) [[next -->]](/libraries-3)
 
