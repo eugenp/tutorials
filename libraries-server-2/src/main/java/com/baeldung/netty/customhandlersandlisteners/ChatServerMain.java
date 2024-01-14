@@ -44,6 +44,7 @@ public final class ChatServerMain {
                 .sync();
         } catch (Throwable e) {
             e.printStackTrace();
+            Thread.currentThread().interrupt();
         } finally {
             serverGroup.shutdownGracefully();
             clientGroup.shutdownGracefully();
