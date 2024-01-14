@@ -85,7 +85,7 @@ class UserApiLiveTest {
     void givenCredentials_whenHttpGet_thenReturnAllUsers() throws Exception {
         // @formatter:off
         MvcResult result=mockMvc
-          .perform(get("/api/v1/users/")
+          .perform(get("/api/v1/users")
             .contentType("application/json")).andReturn();
         // @formatter:on
         assertEquals(HttpStatus.OK.value(), result.getResponse().getStatus());
