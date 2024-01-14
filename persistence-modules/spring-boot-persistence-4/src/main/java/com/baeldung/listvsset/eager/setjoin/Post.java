@@ -1,39 +1,35 @@
-package com.baeldung.listvsset.eager.set;
+package com.baeldung.listvsset.eager.setjoin;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
 import java.util.Objects;
 import java.util.Set;
 import lombok.Data;
 
+@Entity
 @Data
-@Entity(name = "simple_user")
-@Table(name = "simple_user")
-public class User {
+public class Post {
 
     @Id
     private Long id;
-    private String username;
-    private String email;
+
+    @Lob
+    private String content;
 
     @JsonManagedReference
-    @OneToOne(cascade = CascadeType.ALL)
-    private Profile profile;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "post", fetch = FetchType.EAGER)
+    private Set<Comment> comments;
 
-    @JsonManagedReference
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "author", fetch = FetchType.EAGER)
-    protected Set<Post> posts;
-
-
-    @ManyToMany(mappedBy = "members", fetch = FetchType.EAGER)
-    private Set<Group> groups;
+    @JsonBackReference
+    @ManyToOne
+    private User author;
 
     @Override
     public boolean equals(Object o) {
@@ -44,9 +40,9 @@ public class User {
             return false;
         }
 
-        User user = (User) o;
+        Post post = (Post) o;
 
-        return Objects.equals(id, user.id);
+        return Objects.equals(id, post.id);
     }
 
     @Override

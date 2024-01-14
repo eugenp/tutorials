@@ -1,4 +1,4 @@
-package com.baeldung.listvsset.eager.list;
+package com.baeldung.listvsset.eager.setjoin;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.CascadeType;
@@ -9,7 +9,8 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 import lombok.Data;
 
 @Data
@@ -28,9 +29,28 @@ public class User {
 
     @JsonManagedReference
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "author", fetch = FetchType.EAGER)
-    protected List<Post> posts;
+    protected Set<Post> posts;
 
 
     @ManyToMany(mappedBy = "members", fetch = FetchType.EAGER)
-    private List<Group> groups;
+    private Set<Group> groups;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        User user = (User) o;
+
+        return Objects.equals(id, user.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
+    }
 }

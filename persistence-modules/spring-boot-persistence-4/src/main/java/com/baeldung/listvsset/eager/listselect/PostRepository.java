@@ -1,4 +1,4 @@
-package com.baeldung.listvsset.eager.list;
+package com.baeldung.listvsset.eager.listselect;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -1,27 +1,26 @@
-package com.baeldung.listvsset.eager.set;
+package com.baeldung.listvsset.eager.setjoin;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Table;
 import java.util.Objects;
+import java.util.Set;
 import lombok.Data;
 
 @Data
-@Entity
-public class Comment {
+@Entity(name = "interest_group")
+@Table(name = "interest_group")
+public class Group {
 
     @Id
     private Long id;
 
-    private String text;
+    private String name;
 
-    @ManyToOne
-    private User author;
-
-    @JsonBackReference
-    @ManyToOne
-    private Post post;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<User> members;
 
     @Override
     public boolean equals(Object o) {
@@ -32,9 +31,9 @@ public class Comment {
             return false;
         }
 
-        Comment comment = (Comment) o;
+        Group group = (Group) o;
 
-        return Objects.equals(id, comment.id);
+        return Objects.equals(id, group.id);
     }
 
     @Override

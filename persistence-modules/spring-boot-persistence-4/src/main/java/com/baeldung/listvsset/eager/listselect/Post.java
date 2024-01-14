@@ -1,4 +1,4 @@
-package com.baeldung.listvsset.eager.list;
+package com.baeldung.listvsset.eager.listselect;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;

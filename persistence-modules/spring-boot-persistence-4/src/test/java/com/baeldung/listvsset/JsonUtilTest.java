@@ -3,12 +3,12 @@ package com.baeldung.listvsset;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import com.baeldung.listvsset.eager.list.Application;
-import com.baeldung.listvsset.eager.list.Comment;
-import com.baeldung.listvsset.eager.list.Group;
-import com.baeldung.listvsset.eager.list.Post;
-import com.baeldung.listvsset.eager.list.Profile;
-import com.baeldung.listvsset.eager.list.User;
+import com.baeldung.listvsset.eager.listselect.Application;
+import com.baeldung.listvsset.eager.listselect.Comment;
+import com.baeldung.listvsset.eager.listselect.Group;
+import com.baeldung.listvsset.eager.listselect.Post;
+import com.baeldung.listvsset.eager.listselect.Profile;
+import com.baeldung.listvsset.eager.listselect.User;
 import com.baeldung.listvsset.util.JsonUtils;
 import com.baeldung.listvsset.util.TestConfig;
 import java.util.List;

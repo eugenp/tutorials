@@ -1,4 +1,4 @@
-package com.baeldung.listvsset.eager.list;
+package com.baeldung.listvsset.eager.listselect;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;

@@ -1,4 +1,4 @@
-package com.baeldung.listvsset.eager.set;
+package com.baeldung.listvsset.eager.listselect;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Entity;
