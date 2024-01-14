@@ -34,7 +34,7 @@ class ChatIntegrationTest {
     }
 
     @Test
-    public void whenClientReceivesMessages_thenMessagesConsumed() {
+    void whenClientReceivesMessages_thenMessagesConsumed() {
         EmbeddedChannel client = new EmbeddedChannel(new ClientEventHandler());
 
         assertTrue(client.writeOutbound(MSG_1));
