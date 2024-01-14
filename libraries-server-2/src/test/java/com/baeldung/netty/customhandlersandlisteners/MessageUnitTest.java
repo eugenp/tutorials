@@ -9,10 +9,10 @@ import org.junit.jupiter.api.Test;
 
 import com.baeldung.netty.customhandlersandlisteners.model.Message;
 
-public class MessageUnitTest {
+class MessageUnitTest {
 
     @Test
-    public void whenBroadcastMessage_thenParsedSuccessfully() {
+    void whenBroadcastMessage_thenParsedSuccessfully() {
         String input = "Bob;Hello, world; go!";
         Message message = Message.parse(input);
 
@@ -22,7 +22,7 @@ public class MessageUnitTest {
     }
 
     @Test
-    public void whenNewMessage_thenExpectedFormat() {
+    void whenNewMessage_thenExpectedFormat() {
         Message message = new Message("Alice", "Testing");
         Instant time = message.getTime();
 
