@@ -47,6 +47,7 @@ public class ChatClientMain {
             channel.close();
         } catch (Throwable e) {
             e.printStackTrace();
+            Thread.currentThread().interrupt();
         } finally {
             group.shutdownGracefully();
         }
