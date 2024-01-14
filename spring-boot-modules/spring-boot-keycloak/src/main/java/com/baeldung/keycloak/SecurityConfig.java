@@ -25,7 +25,8 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 class SecurityConfig {
 
-    private static final String REALM_ACCESS_CLAIM = "groups";
+    private static final String GROUPS = "groups";
+    private static final String REALM_ACCESS_CLAIM = "realm_access";
     private static final String ROLES_CLAIM = "roles";
 
     private final KeycloakLogoutHandler keycloakLogoutHandler;
@@ -68,9 +69,15 @@ class SecurityConfig {
                 var oidcUserAuthority = (OidcUserAuthority) authority;
                 var userInfo = oidcUserAuthority.getUserInfo();
 
+                // Tokens can be configured to return roles under
+                // Groups or REALM ACCESS hence have to check both
                 if (userInfo.hasClaim(REALM_ACCESS_CLAIM)) {
+                    var realmAccess = userInfo.getClaimAsMap(REALM_ACCESS_CLAIM);
+                    var roles = (Collection<String>) realmAccess.get(ROLES_CLAIM);
+                    mappedAuthorities.addAll(generateAuthoritiesFromClaim(roles));
+                } else if (userInfo.hasClaim(GROUPS)) {
                     Collection<String> roles = (Collection<String>) userInfo.getClaim(
-                        REALM_ACCESS_CLAIM);
+                        GROUPS);
                     mappedAuthorities.addAll(generateAuthoritiesFromClaim(roles));
                 }
             } else {
