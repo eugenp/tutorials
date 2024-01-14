@@ -46,8 +46,7 @@ public class ServerEventHandler extends SimpleChannelInboundHandler<String> {
         clients.put(channel.id()
             .asLongText(), channel);
 
-        history.forEach(message -> channel
-            .writeAndFlush(message));
+        history.forEach(channel::writeAndFlush);
 
         handleBroadcast(new OnlineMessage(context.toString()), context);
     }
