@@ -16,7 +16,7 @@ class ChatIntegrationTest {
     private static final String MSG_2 = "Bob;Hi, Alice!";
 
     @Test
-    public void whenMessagesWrittenToServer_thenMessagesConsumed() {
+    void whenMessagesWrittenToServer_thenMessagesConsumed() {
         EmbeddedChannel server = new EmbeddedChannel(new ServerEventHandler());
 
         assertTrue(server.writeOutbound(MSG_1));
