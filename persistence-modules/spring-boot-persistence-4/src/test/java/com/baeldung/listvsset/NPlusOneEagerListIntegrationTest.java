@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.function.ToIntFunction;
 import java.util.stream.Stream;
@@ -31,7 +32,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 class NPlusOneEagerListIntegrationTest extends BaseNPlusOneIntegrationTest<User> {
 
     public static final String POSTS = "posts";
-    public static final String COMMENTS = "comments";
     public static final String USERS = "users";
 
     @ParameterizedTest
@@ -58,25 +58,27 @@ class NPlusOneEagerListIntegrationTest extends BaseNPlusOneIntegrationTest<User>
     @ParameterizedTest
     @ValueSource(longs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
     void givenEagerListBasedUser_WhenFetchingOneUser_ThenIssueNPlusOneRequests(Long id) {
+        int numberOfRequests = getService()
+          .getUserByIdWithFunction(id, this::countNumberOfRequests);
+        assertSelectCount(numberOfRequests);
+    }
+
+    private int countNumberOfRequests(Optional<User> optionalUser) {
         HashMap<String, Set<Long>> visitedMap = new HashMap<>();
         visitedMap.put(POSTS, new HashSet<>());
-        visitedMap.put(COMMENTS, new HashSet<>());
         visitedMap.put(USERS, new HashSet<>());
-        int numberOfRequests = getService()
-          .getUserByIdWithFunction(id, s -> {
-              int result = 1;
-              if (s.isEmpty()) {
-                  return result;
-              } else {
-                  User user = s.get();
-                  visitedMap.get(USERS).add(user.getId());
-                  List<Post> posts = user.getPosts();
-                  result += 1;
-                  result += explorePosts(posts, visitedMap);
-              }
-              return result;
-          });
-        assertSelectCount(numberOfRequests);
+        int result = 1;
+        if (optionalUser.isEmpty()) {
+            return result;
+        } else {
+            User user = optionalUser.get();
+            visitedMap.get(USERS).add(user.getId());
+            List<Post> posts = user.getPosts();
+            result += 1;
+            result += explorePosts(posts, visitedMap);
+        }
+        return result;
+
     }
 
     private int explorePosts(List<Post> posts, HashMap<String, Set<Long>> visitedMap) {
