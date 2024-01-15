@@ -17,12 +17,12 @@
     <dependencies>
         <dependency>
             <groupId>com.baeldung.entitymodule</groupId>
-            <artifactId>entitymodule</artifactId>
+            <artifactId>maven-entitymodule</artifactId>
             <version>${entitymodule.version}</version>
         </dependency>
         <dependency>
             <groupId>com.baeldung.daomodule</groupId>
-            <artifactId>daomodule</artifactId>
+            <artifactId>maven-daomodule</artifactId>
             <version>${daomodule.version}</version>
         </dependency>
     </dependencies>
