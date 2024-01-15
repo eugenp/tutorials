@@ -17,6 +17,9 @@ public class JsonUtils {
     @Value("groups.json")
     private File groupFile;
 
+    @Value("groups_with_members.json")
+    private File groupsWithMembersFile;
+
     private static final ObjectMapper MAPPER = new ObjectMapper();
 
     static {
@@ -29,6 +32,10 @@ public class JsonUtils {
 
     public <T> List<T> getGroups(Class<T> userType) {
         return getObjects(userType, groupFile);
+    }
+
+    public <T> List<T> getGroupsWithMembers(Class<T> groupType) {
+        return getObjects(groupType, groupsWithMembersFile);
     }
 
     private <T> List<T> getObjects(Class<T> userType, File userFile1) {
