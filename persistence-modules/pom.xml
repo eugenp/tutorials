@@ -38,6 +38,7 @@
         <module>hibernate-queries</module>
         <module>hibernate-enterprise</module>
         <module>influxdb</module>
+        <module>java-calcite</module>
         <module>java-cassandra</module>
         <module>java-cockroachdb</module>
         <module>java-jdbi</module>
