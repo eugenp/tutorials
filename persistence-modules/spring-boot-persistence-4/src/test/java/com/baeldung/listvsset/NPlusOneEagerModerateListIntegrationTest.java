@@ -44,7 +44,7 @@ class NPlusOneEagerModerateListIntegrationTest extends BaseNPlusOneIntegrationTe
     }
 
     @Test
-    void givenEagerListBasedGroup_whenFetchingAllGroups_thenIssueRequestsGroupsTimesUsers() {
+    void givenEagerListBasedGroup_whenFetchingAllGroups_thenIssueRequestsGroupsPlusUsers() {
         List<Group> groups = groupService.findAll();
         Set<User> users = groups.stream().map(Group::getMembers).flatMap(List::stream).collect(Collectors.toSet());
         assertSelectCount(groups.size() + users.size() + 1);
