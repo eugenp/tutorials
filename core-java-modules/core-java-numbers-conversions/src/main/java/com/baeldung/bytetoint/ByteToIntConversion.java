@@ -19,11 +19,6 @@ public class ByteToIntConversion {
         return Math.toIntExact(b);
     }
 
-    static int usingBitwiseOperator(byte b){
-        int i = b & 0xFF;
-        return i;
-    }
-
     static int usingByteUnsignedInt(byte b){
         return Byte.toUnsignedInt(b);
     }
