@@ -26,7 +26,7 @@ import org.springframework.boot.test.context.SpringBootTest;
   "logging.level.org.hibernate.SQL=debug",
   "logging.level.org.hibernate.orm.jdbc.bind=trace"
 })
-class NPlusOneEagerModerateSetIntegrationTest extends BaseNPlusOneIntegrationTest<User> {
+class NPlusOneEagerModerateDomainIntegrationTest extends BaseNPlusOneIntegrationTest<User> {
 
     @Autowired
     private GroupService groupService;
@@ -39,13 +39,13 @@ class NPlusOneEagerModerateSetIntegrationTest extends BaseNPlusOneIntegrationTes
 
     @ParameterizedTest
     @ValueSource(longs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
-    void givenEagerSetBasedUser_whenFetchingOneUser_thenIssueNPlusOneRequests(Long id) {
+    void givenEagerSetBasedUser_whenFetchingOneUser_thenIssueOneRequest(Long id) {
         getService().getUserById(id);
         assertSelectCount(1);
     }
 
     @Test
-    void givenEagerSetBasedGroup_whenFetchingAllGroups_thenIssueRequestsForEachGroup() {
+    void givenEagerSetBasedGroup_whenFetchingAllGroups_thenIssueNPlusOneRequests() {
         List<Group> groups = groupService.findAll();
         assertSelectCount(groups.size() + 1);
     }

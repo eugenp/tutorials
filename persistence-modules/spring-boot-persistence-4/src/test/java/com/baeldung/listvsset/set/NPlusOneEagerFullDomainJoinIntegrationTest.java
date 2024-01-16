@@ -26,7 +26,7 @@ import org.springframework.boot.test.context.SpringBootTest;
   "logging.level.org.hibernate.SQL=debug",
   "logging.level.org.hibernate.orm.jdbc.bind=trace"
 })
-class NPlusOneEagerSetJoinIntegrationTest extends BaseNPlusOneIntegrationTest<User> {
+class NPlusOneEagerFullDomainJoinIntegrationTest extends BaseNPlusOneIntegrationTest<User> {
 
     public static final String POSTS = "posts";
     public static final String USERS = "users";
