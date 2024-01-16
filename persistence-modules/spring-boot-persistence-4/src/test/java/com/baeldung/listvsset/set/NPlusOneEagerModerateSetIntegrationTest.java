@@ -1,10 +1,11 @@
-package com.baeldung.listvsset;
+package com.baeldung.listvsset.set;
 
 import static com.vladmihalcea.sql.SQLStatementCountValidator.assertDeleteCount;
 import static com.vladmihalcea.sql.SQLStatementCountValidator.assertSelectCount;
 import static com.vladmihalcea.sql.SQLStatementCountValidator.reset;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.baeldung.listvsset.BaseNPlusOneIntegrationTest;
 import com.baeldung.listvsset.eager.set.moderatedomain.Application;
 import com.baeldung.listvsset.eager.set.moderatedomain.Group;
 import com.baeldung.listvsset.eager.set.moderatedomain.GroupService;

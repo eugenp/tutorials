@@ -20,7 +20,7 @@ import org.springframework.boot.test.context.SpringBootTest;
   "spring.jpa.show-sql=false",
   "spring.datasource.url=jdbc:h2:mem:~/test;DATABASE_TO_UPPER=false"
 })
-abstract class BaseNPlusOneIntegrationTest<T> extends ParametrizationAware<T> {
+abstract public class BaseNPlusOneIntegrationTest<T> extends ParametrizationAware<T> {
 
     @Autowired
     protected List<Service<?>> services;

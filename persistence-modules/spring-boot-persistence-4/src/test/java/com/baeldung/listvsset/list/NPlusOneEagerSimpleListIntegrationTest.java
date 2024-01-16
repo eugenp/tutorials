@@ -1,17 +1,17 @@
-package com.baeldung.listvsset;
+package com.baeldung.listvsset.list;
 
 import static com.vladmihalcea.sql.SQLStatementCountValidator.assertSelectCount;
 import static com.vladmihalcea.sql.SQLStatementCountValidator.assertUpdateCount;
 import static com.vladmihalcea.sql.SQLStatementCountValidator.reset;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.baeldung.listvsset.eager.set.simpledomain.Application;
-import com.baeldung.listvsset.eager.set.simpledomain.Post;
-import com.baeldung.listvsset.eager.set.simpledomain.User;
+import com.baeldung.listvsset.BaseNPlusOneIntegrationTest;
+import com.baeldung.listvsset.eager.list.simpledomain.Application;
+import com.baeldung.listvsset.eager.list.simpledomain.Post;
+import com.baeldung.listvsset.eager.list.simpledomain.User;
 import com.baeldung.listvsset.util.TestConfig;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -22,17 +22,17 @@ import org.springframework.boot.test.context.SpringBootTest;
   "logging.level.org.hibernate.SQL=debug",
   "logging.level.org.hibernate.orm.jdbc.bind=trace"
 })
-class NPlusOneEagerSimpleSetIntegrationTest extends BaseNPlusOneIntegrationTest<User> {
+class NPlusOneEagerSimpleListIntegrationTest extends BaseNPlusOneIntegrationTest<User> {
 
     @Test
-    void givenEagerSetBasedUser_WhenFetchingAllUsers_ThenIssueNPlusOneRequests() {
+    void givenEagerListBasedUser_WhenFetchingAllUsers_ThenIssueNPlusOneRequests() {
         List<User> users = getService().findAll();
         assertSelectCount(users.size() + 1);
     }
 
     @ParameterizedTest
     @ValueSource(longs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
-    void givenEagerSetBasedUser_WhenFetchingOneUser_ThenIssueNPlusOneRequests(Long id) {
+    void givenEagerListBasedUser_WhenFetchingOneUser_ThenIssueNPlusOneRequests(Long id) {
         getService().getUserById(id);
         assertSelectCount(1);
     }
@@ -43,11 +43,11 @@ class NPlusOneEagerSimpleSetIntegrationTest extends BaseNPlusOneIntegrationTest<
         Optional<User> optionalUser = getService().getUserById(id);
         assertSelectCount(1);
         optionalUser.ifPresent(user -> {
-            Set<Post> posts = user.getPosts();
+            List<Post> posts = user.getPosts();
             int originalNumberOfPosts = posts.size();
             reset();
             if (!posts.isEmpty()) {
-                posts.iterator().next().setAuthor(null);
+                posts.get(0).setAuthor(null);
                 getService().save(user);
                 assertSelectCount(1);
                 assertUpdateCount(1);
@@ -58,6 +58,7 @@ class NPlusOneEagerSimpleSetIntegrationTest extends BaseNPlusOneIntegrationTest<
 
         });
     }
+
 
 
     protected void addUsers() {

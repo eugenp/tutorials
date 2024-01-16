@@ -1,12 +1,13 @@
-package com.baeldung.listvsset;
+package com.baeldung.listvsset.list;
 
 import static com.vladmihalcea.sql.SQLStatementCountValidator.assertSelectCount;
 
-import com.baeldung.listvsset.eager.set.fulldomain.Application;
-import com.baeldung.listvsset.eager.set.fulldomain.Comment;
-import com.baeldung.listvsset.eager.set.fulldomain.Group;
-import com.baeldung.listvsset.eager.set.fulldomain.Post;
-import com.baeldung.listvsset.eager.set.fulldomain.User;
+import com.baeldung.listvsset.BaseNPlusOneIntegrationTest;
+import com.baeldung.listvsset.eager.list.fulldomain.Application;
+import com.baeldung.listvsset.eager.list.fulldomain.Comment;
+import com.baeldung.listvsset.eager.list.fulldomain.Group;
+import com.baeldung.listvsset.eager.list.fulldomain.Post;
+import com.baeldung.listvsset.eager.list.fulldomain.User;
 import com.baeldung.listvsset.util.TestConfig;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,9 +15,13 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
-import org.junit.jupiter.api.Test;
+import java.util.function.ToIntFunction;
+import java.util.stream.Stream;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -25,46 +30,66 @@ import org.springframework.boot.test.context.SpringBootTest;
   "logging.level.org.hibernate.SQL=debug",
   "logging.level.org.hibernate.orm.jdbc.bind=trace"
 })
-class NPlusOneEagerSetJoinIntegrationTest extends BaseNPlusOneIntegrationTest<User> {
+class NPlusOneEagerListIntegrationTest extends BaseNPlusOneIntegrationTest<User> {
 
     public static final String POSTS = "posts";
     public static final String USERS = "users";
 
-    @Test
-    void givenEagerSetBasedUser_WhenFetchingAllUsers_ThenIssueNPlusOneRequests() {
-        List<User> users = getService().findAll();
-        assertSelectCount(users.size() + 1);
+    @ParameterizedTest
+    @MethodSource
+    void givenEagerListBasedUser_WhenFetchingAllUsers_ThenIssueNPlusOneRequests(ToIntFunction<List<User>> function) {
+        int numberOfRequests = getService().countNumberOfRequestsWithFunction(function);
+        assertSelectCount(numberOfRequests);
+    }
+
+    static Stream<Arguments> givenEagerListBasedUser_WhenFetchingAllUsers_ThenIssueNPlusOneRequests() {
+        return Stream.of(
+          Arguments.of((ToIntFunction<List<User>>) s -> {
+              int result = 2 * s.size() + 1;
+              List<Post> posts = s.stream().map(User::getPosts)
+                .flatMap(List::stream)
+                .toList();
+
+              result += posts.size();
+              return result;
+          })
+        );
     }
 
     @ParameterizedTest
     @ValueSource(longs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
-    void givenEagerUserWhenFetchingOneUserThenIssueNPlusOneRequests(Long id) {
-        HashMap<String, Set<Long>> visitedMap = new HashMap<>();
-        visitedMap.put(POSTS, new HashSet<>());
-        visitedMap.put(USERS, new HashSet<>());
+    void givenEagerListBasedUser_WhenFetchingOneUser_ThenIssueNPlusOneRequests(Long id) {
         int numberOfRequests = getService()
-          .getUserByIdWithFunction(id, s -> {
-              int result = 1;
-              if (s.isEmpty()) {
-                  return result;
-              } else {
-                  User user = s.get();
-                  visitedMap.get(USERS).add(user.getId());
-                  Set<Post> posts = user.getPosts();
-                  result += explorePosts(posts, visitedMap);
-              }
-              return result;
-          });
+          .getUserByIdWithFunction(id, this::countNumberOfRequests);
         assertSelectCount(numberOfRequests);
     }
 
-    private int explorePosts(Set<Post> posts, HashMap<String, Set<Long>> visitedMap) {
+    private int countNumberOfRequests(Optional<User> optionalUser) {
+        HashMap<String, Set<Long>> visitedMap = new HashMap<>();
+        visitedMap.put(POSTS, new HashSet<>());
+        visitedMap.put(USERS, new HashSet<>());
+        int result = 1;
+        if (optionalUser.isEmpty()) {
+            return result;
+        } else {
+            User user = optionalUser.get();
+            visitedMap.get(USERS).add(user.getId());
+            List<Post> posts = user.getPosts();
+            result += 1;
+            result += explorePosts(posts, visitedMap);
+        }
+        return result;
+
+    }
+
+    private int explorePosts(List<Post> posts, HashMap<String, Set<Long>> visitedMap) {
         int result = 0;
         if (posts == null || posts.isEmpty()) {
             return result;
         }
         for (Post post : posts) {
             if (!visitedMap.get(POSTS).contains(post.getId())) {
+                result++;
                 visitedMap.get(POSTS).add(post.getId());
                 List<User> commenters = post.getComments().stream().map(Comment::getAuthor).toList();
                 result += exploreUsers(commenters, visitedMap);
@@ -83,6 +108,7 @@ class NPlusOneEagerSetJoinIntegrationTest extends BaseNPlusOneIntegrationTest<Us
                 ++result;
                 visitedMap.get(USERS).add(user.getId());
                 result += explorePosts(user.getPosts(), visitedMap);
+                ++result;
             }
         }
         return result;
@@ -99,7 +125,7 @@ class NPlusOneEagerSetJoinIntegrationTest extends BaseNPlusOneIntegrationTest<Us
                     comments.put(post.getId(), new ArrayList<>());
                 }
                 comments.get(post.getId()).addAll(post.getComments());
-                post.setComments(Collections.emptySet());
+                post.setComments(Collections.emptyList());
             }
         }
         databaseUtil.saveAll(users);
