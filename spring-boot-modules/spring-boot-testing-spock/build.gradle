@@ -38,4 +38,8 @@ java {
 
 test {
     useJUnitPlatform()
+
+    testLogging {
+        events "started", "passed", "skipped", "failed"
+    }
 }
