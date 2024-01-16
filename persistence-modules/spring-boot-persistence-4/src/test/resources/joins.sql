@@ -88,3 +88,37 @@ FROM interest_group_members gm
          JOIN simple_user u ON u.id = gm.members_id
          LEFT JOIN post p ON u.id = p.author_id
 WHERE gm.interest_group_id = ?
+
+
+SELECT g.id, g.name,
+       u.id, u.username, u.email,
+       p.id, p.author_id, p.content,
+       m.interest_group_id,
+FROM interest_group g
+         LEFT JOIN (interest_group_members m JOIN simple_user u ON u.id = m.members_id)
+                   ON g.id = m.interest_group_id
+         LEFT JOIN post p ON u.id = p.author_id
+
+DELETE
+FROM interest_group_members
+WHERE interest_group_id = ? AND members_id = ?
+
+
+SELECT u.id, u.email, u.username, g.name,
+       g.id, gm.interest_group_id,
+FROM interest_group g
+         LEFT JOIN (interest_group_members gm JOIN simple_user u ON u.id = gm.members_id)
+                   ON g.id = gm.interest_group_id
+WHERE g.id = ?
+
+SELECT p.author_id, p.id, p.content
+FROM post p
+WHERE p.author_id = ?
+
+DELETE
+FROM interest_group_members
+WHERE interest_group_id = ?
+
+INSERT
+INTO interest_group_members (interest_group_id, members_id)
+VALUES (?, ?)
