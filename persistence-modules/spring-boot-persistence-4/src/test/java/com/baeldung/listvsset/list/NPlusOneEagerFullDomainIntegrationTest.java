@@ -15,7 +15,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
 import java.util.function.ToIntFunction;
 import java.util.stream.Stream;
@@ -30,7 +29,7 @@ import org.springframework.boot.test.context.SpringBootTest;
   "logging.level.org.hibernate.SQL=debug",
   "logging.level.org.hibernate.orm.jdbc.bind=trace"
 })
-class NPlusOneEagerListIntegrationTest extends BaseNPlusOneIntegrationTest<User> {
+class NPlusOneEagerFullDomainIntegrationTest extends BaseNPlusOneIntegrationTest<User> {
 
     public static final String POSTS = "posts";
     public static final String USERS = "users";
@@ -64,20 +63,15 @@ class NPlusOneEagerListIntegrationTest extends BaseNPlusOneIntegrationTest<User>
         assertSelectCount(numberOfRequests);
     }
 
-    private int countNumberOfRequests(Optional<User> optionalUser) {
+    private int countNumberOfRequests(User user) {
         HashMap<String, Set<Long>> visitedMap = new HashMap<>();
         visitedMap.put(POSTS, new HashSet<>());
         visitedMap.put(USERS, new HashSet<>());
         int result = 1;
-        if (optionalUser.isEmpty()) {
-            return result;
-        } else {
-            User user = optionalUser.get();
-            visitedMap.get(USERS).add(user.getId());
-            List<Post> posts = user.getPosts();
-            result += 1;
-            result += explorePosts(posts, visitedMap);
-        }
+        visitedMap.get(USERS).add(user.getId());
+        List<Post> posts = user.getPosts();
+        result += 1;
+        result += explorePosts(posts, visitedMap);
         return result;
 
     }

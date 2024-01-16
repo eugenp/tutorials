@@ -44,16 +44,11 @@ class NPlusOneEagerSetJoinIntegrationTest extends BaseNPlusOneIntegrationTest<Us
         visitedMap.put(POSTS, new HashSet<>());
         visitedMap.put(USERS, new HashSet<>());
         int numberOfRequests = getService()
-          .getUserByIdWithFunction(id, s -> {
+          .getUserByIdWithFunction(id, user -> {
               int result = 1;
-              if (s.isEmpty()) {
-                  return result;
-              } else {
-                  User user = s.get();
-                  visitedMap.get(USERS).add(user.getId());
-                  Set<Post> posts = user.getPosts();
-                  result += explorePosts(posts, visitedMap);
-              }
+              visitedMap.get(USERS).add(user.getId());
+              Set<Post> posts = user.getPosts();
+              result += explorePosts(posts, visitedMap);
               return result;
           });
         assertSelectCount(numberOfRequests);

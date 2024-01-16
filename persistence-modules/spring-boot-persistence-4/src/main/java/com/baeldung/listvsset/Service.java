@@ -43,14 +43,18 @@ public class Service<S> extends ParametrizationAware<S> {
 
     public Optional<S> getUserByIdWithPredicate(long id, Predicate<S> predicate) {
         Optional<S> user = repository.findById(id);
-        if (user.isPresent() && predicate.test(user.get())) {
-            // pass
-        }
+        user.ifPresent(predicate::test);
         return user;
     }
 
-    public int getUserByIdWithFunction(Long id, ToIntFunction<Optional<S>> function) {
-        return function.applyAsInt(repository.findById(id));
+    public int getUserByIdWithFunction(Long id, ToIntFunction<S> function) {
+
+        Optional<S> optionalUser = repository.findById(id);
+        if(optionalUser.isPresent()) {
+            return function.applyAsInt(optionalUser.get());
+        } else {
+            return 0;
+        }
     }
 
     public void save(S entity) {
