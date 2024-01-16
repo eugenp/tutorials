@@ -5,10 +5,10 @@ import static com.vladmihalcea.sql.SQLStatementCountValidator.assertSelectCount;
 import static com.vladmihalcea.sql.SQLStatementCountValidator.reset;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.baeldung.listvsset.eager.moderateset.Application;
-import com.baeldung.listvsset.eager.moderateset.Group;
-import com.baeldung.listvsset.eager.moderateset.GroupService;
-import com.baeldung.listvsset.eager.moderateset.User;
+import com.baeldung.listvsset.eager.set.moderatedomain.Application;
+import com.baeldung.listvsset.eager.set.moderatedomain.Group;
+import com.baeldung.listvsset.eager.set.moderatedomain.GroupService;
+import com.baeldung.listvsset.eager.set.moderatedomain.User;
 import com.baeldung.listvsset.util.TestConfig;
 import java.util.List;
 import java.util.Optional;

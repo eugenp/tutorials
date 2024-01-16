@@ -2,11 +2,11 @@ package com.baeldung.listvsset;
 
 import static com.vladmihalcea.sql.SQLStatementCountValidator.assertSelectCount;
 
-import com.baeldung.listvsset.eager.listselect.Application;
-import com.baeldung.listvsset.eager.listselect.Comment;
-import com.baeldung.listvsset.eager.listselect.Group;
-import com.baeldung.listvsset.eager.listselect.Post;
-import com.baeldung.listvsset.eager.listselect.User;
+import com.baeldung.listvsset.eager.list.fulldomain.Application;
+import com.baeldung.listvsset.eager.list.fulldomain.Comment;
+import com.baeldung.listvsset.eager.list.fulldomain.Group;
+import com.baeldung.listvsset.eager.list.fulldomain.Post;
+import com.baeldung.listvsset.eager.list.fulldomain.User;
 import com.baeldung.listvsset.util.TestConfig;
 import java.util.ArrayList;
 import java.util.Collections;

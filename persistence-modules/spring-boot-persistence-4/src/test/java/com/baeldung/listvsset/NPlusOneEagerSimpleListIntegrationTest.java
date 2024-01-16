@@ -5,9 +5,9 @@ import static com.vladmihalcea.sql.SQLStatementCountValidator.assertUpdateCount;
 import static com.vladmihalcea.sql.SQLStatementCountValidator.reset;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.baeldung.listvsset.eager.simplelist.Application;
-import com.baeldung.listvsset.eager.simplelist.Post;
-import com.baeldung.listvsset.eager.simplelist.User;
+import com.baeldung.listvsset.eager.list.simpledomain.Application;
+import com.baeldung.listvsset.eager.list.simpledomain.Post;
+import com.baeldung.listvsset.eager.list.simpledomain.User;
 import com.baeldung.listvsset.util.TestConfig;
 import java.util.List;
 import java.util.Optional;
