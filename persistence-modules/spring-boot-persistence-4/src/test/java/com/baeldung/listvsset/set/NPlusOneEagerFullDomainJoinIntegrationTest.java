@@ -39,7 +39,7 @@ class NPlusOneEagerFullDomainJoinIntegrationTest extends BaseNPlusOneIntegration
 
     @ParameterizedTest
     @ValueSource(longs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
-    void givenEagerUserWhenFetchingOneUserThenIssueNPlusOneRequests(Long id) {
+    void givenEagerUserWhenFetchingOneUserThenIssueNPlusOneRequestsWithCartesianProduct(Long id) {
         HashMap<String, Set<Long>> visitedMap = new HashMap<>();
         visitedMap.put(POSTS, new HashSet<>());
         visitedMap.put(USERS, new HashSet<>());
