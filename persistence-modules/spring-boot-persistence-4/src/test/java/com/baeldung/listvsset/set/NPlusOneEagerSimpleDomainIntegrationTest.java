@@ -60,7 +60,6 @@ class NPlusOneEagerSimpleDomainIntegrationTest extends BaseNPlusOneIntegrationTe
         });
     }
 
-
     protected void addUsers() {
         List<User> users = jsonUtils.getUsers(User.class);
         databaseUtil.saveAll(users);
