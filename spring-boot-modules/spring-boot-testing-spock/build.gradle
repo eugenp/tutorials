@@ -26,6 +26,8 @@ dependencies {
             'org.spockframework:spock-spring:2.4-M1-groovy-4.0',
             'org.springframework.boot:spring-boot-starter-test',
     )
+    // Test run time only
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 java {
