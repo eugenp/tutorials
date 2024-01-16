@@ -52,4 +52,8 @@ public class Service<S> extends ParametrizationAware<S> {
     public int getUserByIdWithFunction(Long id, ToIntFunction<Optional<S>> function) {
         return function.applyAsInt(repository.findById(id));
     }
+
+    public void save(S entity) {
+        repository.save(entity);
+    }
 }
