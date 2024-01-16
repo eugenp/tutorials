@@ -22,4 +22,8 @@ public class GroupService {
     public List<Group> findAll() {
         return groupRepository.findAll();
     }
+
+    public <S extends Group> S save(S entity) {
+        return groupRepository.save(entity);
+    }
 }

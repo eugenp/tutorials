@@ -49,3 +49,42 @@ FROM simple_user u
 SELECT p.id, p.author_id, p.content
 FROM post p
 WHERE p.author_id = ?
+
+
+
+SELECT g.id, g.name
+FROM interest_group g
+
+SELECT gm.interest_group_id, u.id, u.email, u.username
+FROM interest_group_members gm
+         JOIN simple_user u ON u.id = gm.members_id
+WHERE gm.interest_group_id = ?
+
+SELECT p.author_id, p.id, p.content
+FROM post p
+WHERE p.author_id = ?
+
+SELECT g.id, gm.interest_group_id, u.id, u.email, u.username, g.name
+FROM interest_group g
+         LEFT JOIN (interest_group_members gm JOIN simple_user u ON u.id = gm.members_id)
+                   ON g.id = gm.interest_group_id
+WHERE g.id = ?
+
+SELECT p.author_id, p.id, p.content
+FROM post p
+WHERE p.author_id = ?
+
+SELECT g.id, g.name
+FROM interest_group g
+
+SELECT u.id,
+       u.username,
+       u.email,
+       p.id,
+       p.author_id,
+       p.content,
+       gm.interest_group_id,
+FROM interest_group_members gm
+         JOIN simple_user u ON u.id = gm.members_id
+         LEFT JOIN post p ON u.id = p.author_id
+WHERE gm.interest_group_id = ?

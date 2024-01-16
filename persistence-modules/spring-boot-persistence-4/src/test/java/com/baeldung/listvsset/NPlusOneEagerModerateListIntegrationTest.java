@@ -1,6 +1,9 @@
 package com.baeldung.listvsset;
 
+import static com.vladmihalcea.sql.SQLStatementCountValidator.assertDeleteCount;
+import static com.vladmihalcea.sql.SQLStatementCountValidator.assertInsertCount;
 import static com.vladmihalcea.sql.SQLStatementCountValidator.assertSelectCount;
+import static com.vladmihalcea.sql.SQLStatementCountValidator.reset;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.baeldung.listvsset.eager.moderatelist.Application;
@@ -57,6 +60,26 @@ class NPlusOneEagerModerateListIntegrationTest extends BaseNPlusOneIntegrationTe
         assertThat(group).isPresent();
         assertSelectCount(1 + group.get().getMembers().size());
     }
+    @ParameterizedTest
+    @ValueSource(longs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
+    void givenEagerListBasedGroup_whenRemoveUser_thenIssueRecreateGroup(Long groupId) {
+        Optional<Group> optionalGroup = groupService.findById(groupId);
+        assertThat(optionalGroup).isPresent();
+        Group group = optionalGroup.get();
+        List<User> members = group.getMembers();
+        assertSelectCount(ONE + members.size());
+        if (!members.isEmpty()) {
+            reset();
+            System.out.println("\n\n\n\n\n");
+            members.remove(0);
+            groupService.save(group);
+            assertSelectCount(ONE + members.size() + 1);
+            assertDeleteCount(ONE);
+            assertInsertCount(members.size());
+        }
+    }
+
+
 
     protected void addUsers() {
         List<User> users = jsonUtils.getUsers(User.class);
