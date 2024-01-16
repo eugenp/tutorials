@@ -27,7 +27,7 @@ import org.springframework.boot.test.context.SpringBootTest;
   "logging.level.org.hibernate.SQL=debug",
   "logging.level.org.hibernate.orm.jdbc.bind=trace"
 })
-class NPlusOneEagerModerateListIntegrationTest extends BaseNPlusOneIntegrationTest<User> {
+class NPlusOneEagerModerateDomainIntegrationTest extends BaseNPlusOneIntegrationTest<User> {
 
     @Autowired
     private GroupService groupService;
@@ -40,13 +40,13 @@ class NPlusOneEagerModerateListIntegrationTest extends BaseNPlusOneIntegrationTe
 
     @ParameterizedTest
     @ValueSource(longs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
-    void givenEagerListBasedUser_whenFetchingOneUser_thenIssueNPlusOneRequests(Long id) {
+    void givenEagerListBasedUser_whenFetchingOneUser_thenIssueOneRequest(Long id) {
         getService().getUserById(id);
         assertSelectCount(1);
     }
 
     @Test
-    void givenEagerListBasedGroup_whenFetchingAllGroups_thenIssueRequestsGroupsPlusUsers() {
+    void givenEagerListBasedGroup_whenFetchingAllGroups_thenIssueNPlusMPlusOneRequests() {
         List<Group> groups = groupService.findAll();
         Set<User> users = groups.stream().map(Group::getMembers).flatMap(List::stream).collect(Collectors.toSet());
         assertSelectCount(groups.size() + users.size() + 1);
@@ -54,14 +54,14 @@ class NPlusOneEagerModerateListIntegrationTest extends BaseNPlusOneIntegrationTe
 
     @ParameterizedTest
     @ValueSource(longs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
-    void givenEagerListBasedGroup_whenFetchingAllGroups_thenIssueRequestsForEveryUsers(Long groupId) {
+    void givenEagerListBasedGroup_whenFetchingAllGroups_thenIssueNPlusOneRequests(Long groupId) {
         Optional<Group> group = groupService.findById(groupId);
         assertThat(group).isPresent();
         assertSelectCount(1 + group.get().getMembers().size());
     }
     @ParameterizedTest
     @ValueSource(longs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
-    void givenEagerListBasedGroup_whenRemoveUser_thenIssueRecreateGroup(Long groupId) {
+    void givenEagerListBasedGroup_whenRemoveUser_thenRecreateGroup(Long groupId) {
         Optional<Group> optionalGroup = groupService.findById(groupId);
         assertThat(optionalGroup).isPresent();
         Group group = optionalGroup.get();
@@ -76,8 +76,6 @@ class NPlusOneEagerModerateListIntegrationTest extends BaseNPlusOneIntegrationTe
             assertInsertCount(members.size());
         }
     }
-
-
 
     protected void addUsers() {
         List<User> users = jsonUtils.getUsers(User.class);

@@ -22,7 +22,7 @@ import org.springframework.boot.test.context.SpringBootTest;
   "logging.level.org.hibernate.SQL=debug",
   "logging.level.org.hibernate.orm.jdbc.bind=trace"
 })
-class NPlusOneEagerSimpleListIntegrationTest extends BaseNPlusOneIntegrationTest<User> {
+class NPlusOneEagerSimpleDomainIntegrationTest extends BaseNPlusOneIntegrationTest<User> {
 
     @Test
     void givenEagerListBasedUser_WhenFetchingAllUsers_ThenIssueNPlusOneRequests() {
@@ -32,7 +32,7 @@ class NPlusOneEagerSimpleListIntegrationTest extends BaseNPlusOneIntegrationTest
 
     @ParameterizedTest
     @ValueSource(longs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
-    void givenEagerListBasedUser_WhenFetchingOneUser_ThenIssueNPlusOneRequests(Long id) {
+    void givenEagerListBasedUser_WhenFetchingOneUser_ThenIssueOneRequest(Long id) {
         getService().getUserById(id);
         assertSelectCount(1);
     }
@@ -58,8 +58,6 @@ class NPlusOneEagerSimpleListIntegrationTest extends BaseNPlusOneIntegrationTest
 
         });
     }
-
-
 
     protected void addUsers() {
         List<User> users = jsonUtils.getUsers(User.class);
