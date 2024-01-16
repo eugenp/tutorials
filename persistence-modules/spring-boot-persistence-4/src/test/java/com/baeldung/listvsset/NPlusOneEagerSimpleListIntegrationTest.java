@@ -23,8 +23,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 })
 class NPlusOneEagerSimpleListIntegrationTest extends BaseNPlusOneIntegrationTest<User> {
 
-    private static final int ONE = 1;
-
     @Test
     void givenEagerListBasedUser_WhenFetchingAllUsers_ThenIssueNPlusOneRequests() {
         List<User> users = getService().findAll();
@@ -35,24 +33,23 @@ class NPlusOneEagerSimpleListIntegrationTest extends BaseNPlusOneIntegrationTest
     @ValueSource(longs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
     void givenEagerListBasedUser_WhenFetchingOneUser_ThenIssueNPlusOneRequests(Long id) {
         getService().getUserById(id);
-        assertSelectCount(ONE);
+        assertSelectCount(1);
     }
 
     @ParameterizedTest
     @ValueSource(longs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
     void givenEagerListBasedUser_whenDeletePost_ThenIssueSingleUpdate(Long id) {
         Optional<User> optionalUser = getService().getUserById(id);
-        assertSelectCount(ONE);
+        assertSelectCount(1);
         optionalUser.ifPresent(user -> {
             List<Post> posts = user.getPosts();
             int originalNumberOfPosts = posts.size();
             reset();
             if (!posts.isEmpty()) {
-                System.out.println("\n\n\n\n\n\nRemove:");
                 posts.get(0).setAuthor(null);
                 getService().save(user);
-                assertSelectCount(ONE);
-                assertUpdateCount(ONE);
+                assertSelectCount(1);
+                assertUpdateCount(1);
                 getService().getUserById(id).ifPresent(updatedUser -> {
                     assertThat(updatedUser.getPosts()).hasSize(originalNumberOfPosts - 1);
                 });

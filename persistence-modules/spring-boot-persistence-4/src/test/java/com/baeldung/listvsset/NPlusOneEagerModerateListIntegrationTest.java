@@ -28,8 +28,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 })
 class NPlusOneEagerModerateListIntegrationTest extends BaseNPlusOneIntegrationTest<User> {
 
-    private static final int ONE = 1;
-
     @Autowired
     private GroupService groupService;
 
@@ -43,7 +41,7 @@ class NPlusOneEagerModerateListIntegrationTest extends BaseNPlusOneIntegrationTe
     @ValueSource(longs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
     void givenEagerListBasedUser_whenFetchingOneUser_thenIssueNPlusOneRequests(Long id) {
         getService().getUserById(id);
-        assertSelectCount(ONE);
+        assertSelectCount(1);
     }
 
     @Test
@@ -67,14 +65,13 @@ class NPlusOneEagerModerateListIntegrationTest extends BaseNPlusOneIntegrationTe
         assertThat(optionalGroup).isPresent();
         Group group = optionalGroup.get();
         List<User> members = group.getMembers();
-        assertSelectCount(ONE + members.size());
+        assertSelectCount(1 + members.size());
         if (!members.isEmpty()) {
             reset();
-            System.out.println("\n\n\n\n\n");
             members.remove(0);
             groupService.save(group);
-            assertSelectCount(ONE + members.size() + 1);
-            assertDeleteCount(ONE);
+            assertSelectCount(1 + members.size() + 1);
+            assertDeleteCount(1);
             assertInsertCount(members.size());
         }
     }
