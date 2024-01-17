@@ -5,34 +5,34 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class ByteArrayToPrimitiveByteArrayUnitTest {
-    public static byte[] expectedArrayValues = {65, 66, 67, 68};
-    public static Byte[] byteArray = {65, 66, 67, 68};
+    private static final byte[] EXPECTED_ARRAY_VALUES = {65, 66, 67, 68};
+    private static final Byte[] BYTE_ARRAY = {65, 66, 67, 68};
 
     @Test
     void givenByteArray_whenConvertingUsingByteValue_thenGiveExpectedResult() {
-        byte[] newByteArray = new byte[byteArray.length];
-        for (int i = 0; i < byteArray.length; i++) {
-            newByteArray[i] = byteArray[i].byteValue();
+        byte[] newByteArray = new byte[BYTE_ARRAY.length];
+        for (int i = 0; i < BYTE_ARRAY.length; i++) {
+            newByteArray[i] = BYTE_ARRAY[i].byteValue();
         }
         Assertions.assertThat(newByteArray)
-          .containsExactly(expectedArrayValues);
+          .containsExactly(EXPECTED_ARRAY_VALUES);
     }
 
     @Test
     void givenByteArray_whenConvertingUsingUnboxing_thenGiveExpectedResult() {
-        byte[] newByteArray = new byte[byteArray.length];
-        for (int i = 0; i < byteArray.length; i++) {
-            newByteArray[i] = byteArray[i];
+        byte[] newByteArray = new byte[BYTE_ARRAY.length];
+        for (int i = 0; i < BYTE_ARRAY.length; i++) {
+            newByteArray[i] = BYTE_ARRAY[i];
         }
         Assertions.assertThat(newByteArray)
-          .containsExactly(expectedArrayValues);
+          .containsExactly(EXPECTED_ARRAY_VALUES);
     }
 
     @Test
     void givenByteArray_whenConvertingArrayUtils_thenGiveExpectedResult() {
-        byte[] newByteArray = ArrayUtils.toPrimitive(byteArray);
+        byte[] newByteArray = ArrayUtils.toPrimitive(BYTE_ARRAY);
 
         Assertions.assertThat(newByteArray)
-          .containsExactly(expectedArrayValues);
+          .containsExactly(EXPECTED_ARRAY_VALUES);
     }
 }
