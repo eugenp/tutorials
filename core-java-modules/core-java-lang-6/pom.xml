@@ -33,6 +33,13 @@
             <artifactId>jmh-generator-annprocess</artifactId>
             <version>${jmh.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.junit-pioneer</groupId>
+            <artifactId>junit-pioneer</artifactId>
+            <version>${junit.pioneer.version}</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>
@@ -53,6 +60,8 @@
                             <version>${jmh.version}</version>
                         </path>
                     </annotationProcessorPaths>
+                    <source>14</source>
+                    <target>14</target>
                 </configuration>
             </plugin>
         </plugins>
@@ -61,6 +70,7 @@
     <properties>
         <mapstruct.version>1.6.0.Beta1</mapstruct.version>
         <jmh.version>1.37</jmh.version>
+        <junit.pioneer.version>2.2.0</junit.pioneer.version>
     </properties>
 
 </project>
