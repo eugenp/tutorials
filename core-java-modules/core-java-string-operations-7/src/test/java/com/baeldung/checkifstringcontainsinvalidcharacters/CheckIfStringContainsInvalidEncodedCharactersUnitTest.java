@@ -18,11 +18,7 @@ public class CheckIfStringContainsInvalidEncodedCharactersUnitTest {
         String regexPattern = "[^\\x00-\\x7F]+";
         Pattern pattern = Pattern.compile(regexPattern);
         Matcher matcher = pattern.matcher(input);
-        if (matcher.find()) {
-            assertTrue(true);
-        } else {
-            assertFalse(false);
-        }
+        assertTrue(matcher.find() ? true : false);
     }
 
     @Test
@@ -30,14 +26,8 @@ public class CheckIfStringContainsInvalidEncodedCharactersUnitTest {
         byte[] bytes = input.getBytes(StandardCharsets.UTF_8);
         boolean found = false;
         for (byte b : bytes) {
-            if ((b & 0xFF) > 127) {
-                found = true;
-            }
+            found = (b & 0xFF) > 127 ? true : found;
         }
-        if (found) {
-            assertTrue(true);
-        } else {
-            assertFalse(false);
-        }
+        assertTrue(found ? true : false);
     }
 }
