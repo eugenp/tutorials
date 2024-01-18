@@ -11,15 +11,11 @@ public class ReadWriteThread {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                try {
-                    FileReader fileReader = new FileReader(filePath);
-                    BufferedReader bufferedReader = new BufferedReader(fileReader);
+                try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath))) {
                     String line;
                     while ((line = bufferedReader.readLine()) != null) {
                         System.out.println(line);
                     }
-                    bufferedReader.close();
-                    fileReader.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -32,10 +28,8 @@ public class ReadWriteThread {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                try {
-                    FileWriter fileWriter = new FileWriter(filePath);
-                    fileWriter.write(content);
-                    fileWriter.close();
+                try (FileWriter fileWriter = new FileWriter("file.txt")) {
+                    fileWriter.write("Hello, world!");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

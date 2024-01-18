@@ -65,9 +65,7 @@ class FileConsumer implements Runnable {
 
     @Override
     public void run() {
-        BufferedWriter writer = null;
-        try {
-            writer = new BufferedWriter(new FileWriter(outputFileName));
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputFileName))) {
             String line;
             while ((line = queue.poll()) != null) {
                 writer.write(line);
@@ -75,14 +73,6 @@ class FileConsumer implements Runnable {
             }
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            if (writer != null) {
-                try {
-                    writer.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
         }
     }
 }
