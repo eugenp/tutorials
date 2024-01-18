@@ -62,7 +62,7 @@
         <module>solr</module>
         <module>spring-boot-persistence-2</module>
         <module>spring-boot-persistence-3</module>
-        <!--<module>spring-boot-mysql</module>-->   <!-- failing after upgrading to jdk17 -->
+        <module>spring-boot-mysql</module>
         <module>spring-boot-persistence</module>
         <module>spring-boot-persistence-h2</module>
         <module>spring-boot-persistence-mongodb</module>
