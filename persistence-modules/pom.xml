@@ -69,7 +69,7 @@
         <module>spring-boot-persistence-mongodb-2</module>
         <module>spring-boot-persistence-mongodb-3</module>
         <module>spring-data-arangodb</module>
-        <!--<module>spring-data-cassandra</module>-->   <!-- failing after upgrading to jdk17 -->
+        <!--<module>spring-data-cassandra</module>-->   <!-- failing after upgrading to jdk17. JDK 17 compatibility in progress CASSANDRA-16895 -->
         <module>spring-data-cassandra-test</module>
         <module>spring-data-cosmosdb</module>
         <module>spring-data-couchbase-2</module>
