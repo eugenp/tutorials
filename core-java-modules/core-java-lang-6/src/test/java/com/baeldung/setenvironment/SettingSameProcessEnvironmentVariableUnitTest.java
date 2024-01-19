@@ -11,7 +11,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junitpioneer.jupiter.SetEnvironmentVariable;
 
-class SettingEnvironmentVariableUnitTest {
+class SettingSameProcessEnvironmentVariableUnitTest {
 
     private static final String PROCESS_ENVIRONMENT = "java.lang.ProcessEnvironment";
     private static final String ENVIRONMENT = "theUnmodifiableEnvironment";
