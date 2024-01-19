@@ -2,6 +2,7 @@ package com.baeldung.setenvironment;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.Map;
 import org.junit.jupiter.api.Test;
 import org.junitpioneer.jupiter.SetEnvironmentVariable;
 
@@ -11,6 +12,11 @@ class SettingEnvironmentVariableUnitTest {
     void givenOS_whenGetPath_thenVariableIsPresent() {
         String classPath = System.getenv("PATH");
         assertThat(classPath).isNotNull();
+    }
+    @Test
+    void givenOS_whenGetPath_thenVariablesArePresent() {
+        Map<String, String> environment = System.getenv();
+        assertThat(environment).isNotNull();
     }
 
     @Test
