@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.lang.reflect.Field;
 import java.util.Collections;
 import java.util.Map;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -50,7 +49,7 @@ class SettingEnvironmentVariableUnitTest {
     }
     @Test
     @SetEnvironmentVariable(key = "test", value = "Hello World")
-    void givenVariableSet_whenGetenv_thenGetCorrectValue() {
+    void givenVariableSet_whenGetEnvironmentVariable_thenGetCorrectValue() {
         String expected = "Hello World";
         String actual = System.getenv("test");
         assertThat(actual).isEqualTo(expected);
