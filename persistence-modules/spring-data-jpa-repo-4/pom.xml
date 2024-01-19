@@ -33,7 +33,7 @@
         <dependency>
             <groupId>io.hypersistence</groupId>
             <artifactId>hypersistence-utils-hibernate-55</artifactId>
-            <version>3.7.0</version>
+            <version>${hypersistance-utils-hibernate-55.version}</version>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
@@ -59,7 +59,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.7.1</version>
+            <version>${postgresql.version}</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -126,5 +126,10 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <hypersistance-utils-hibernate-55.version>3.7.0</hypersistance-utils-hibernate-55.version>
+        <postgresql.version>42.7.1</postgresql.version>
+    </properties>
 
 </project>
