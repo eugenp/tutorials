@@ -7,3 +7,4 @@
 - [Convert Positive Integer to Negative and Vice Versa in Java](https://www.baeldung.com/java-negating-integer)
 - [Rounding Up a Number to Nearest Multiple of 5 in Java](https://www.baeldung.com/java-round-nearest-multiple-five)
 - [Convert byte to int Type in Java](https://www.baeldung.com/java-byte-to-int-conversion)
+- [Converting Integer to BigDecimal in Java](https://www.baeldung.com/java-integer-bigdecimal-conversion)
