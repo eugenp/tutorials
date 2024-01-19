@@ -26,7 +26,7 @@ class SettingEnvironmentVariableUnitTest {
     @CsvSource(value = {"test, Hello World"})
     void givenReflexiveAccess_whenGetSourceMap_thenSuccessfullyModifyVariables(String environmentVariable, String value)
       throws ClassNotFoundException, NoSuchFieldException, IllegalAccessException {
-        Map<String, String> modifiableEnvironment = getModifiableVariable();
+        Map<String, String> modifiableEnvironment = getModifiableEnvironment();
         assertThat(modifiableEnvironment).isNotNull();
 
         modifiableEnvironment.put(environmentVariable, value);
@@ -56,7 +56,7 @@ class SettingEnvironmentVariableUnitTest {
     }
 
     @SuppressWarnings("unchecked")
-    private static Map<String, String> getModifiableVariable()
+    private static Map<String, String> getModifiableEnvironment()
       throws ClassNotFoundException, NoSuchFieldException, IllegalAccessException {
         Class<?> environmentClass = Class.forName(PROCESS_ENVIRONMENT);
         Field environmentField = environmentClass.getDeclaredField(ENVIRONMENT);
