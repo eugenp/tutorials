@@ -7,3 +7,4 @@
 - [Check if a String Contains a Number Value in Java](https://www.baeldung.com/java-string-number-presence)
 - [Difference Between String isEmpty() and isBlank()](https://www.baeldung.com/java-string-isempty-vs-isblank)
 - [String’s Maximum Length in Java](https://www.baeldung.com/java-strings-maximum-length)
+- [Java’s String.length() and String.getBytes().length](https://www.baeldung.com/java-string-length-vs-getbytes-length)
