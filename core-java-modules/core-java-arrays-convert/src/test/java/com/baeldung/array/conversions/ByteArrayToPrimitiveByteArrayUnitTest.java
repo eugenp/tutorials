@@ -15,8 +15,7 @@ public class ByteArrayToPrimitiveByteArrayUnitTest {
         for (int i = 0; i < BYTE_ARRAY.length; i++) {
             newByteArray[i] = BYTE_ARRAY[i].byteValue();
         }
-        assertThat(newByteArray)
-          .containsExactly(EXPECTED_ARRAY_VALUES);
+        assertThat(newByteArray).containsExactly(EXPECTED_ARRAY_VALUES);
     }
 
     @Test
@@ -25,15 +24,13 @@ public class ByteArrayToPrimitiveByteArrayUnitTest {
         for (int i = 0; i < BYTE_ARRAY.length; i++) {
             newByteArray[i] = BYTE_ARRAY[i];
         }
-        assertThat(newByteArray)
-          .containsExactly(EXPECTED_ARRAY_VALUES);
+        assertThat(newByteArray).containsExactly(EXPECTED_ARRAY_VALUES);
     }
 
     @Test
     public void givenByteArray_whenConvertingArrayUtils_thenGiveExpectedResult() {
         byte[] newByteArray = ArrayUtils.toPrimitive(BYTE_ARRAY);
 
-        assertThat(newByteArray)
-          .containsExactly(EXPECTED_ARRAY_VALUES);
+        assertThat(newByteArray).containsExactly(EXPECTED_ARRAY_VALUES);
     }
 }
