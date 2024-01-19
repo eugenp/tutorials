@@ -10,4 +10,5 @@ This module contains articles about core features in the Java language
 - [Stop Executing Further Code in Java](https://www.baeldung.com/java-stop-running-code)
 - [Using the Apache Commons Lang 3 for Comparing Objects in Java](https://www.baeldung.com/java-apache-commons-lang-3-compare-objects)
 - [Return First Non-null Value in Java](https://www.baeldung.com/java-first-non-null)
+- [Compress and Uncompress Byte Array Using Deflater/Inflater](https://www.baeldung.com/java-compress-uncompress-byte-array)
 - [Static Final Variables in Java](https://www.baeldung.com/java-static-final-variables)
