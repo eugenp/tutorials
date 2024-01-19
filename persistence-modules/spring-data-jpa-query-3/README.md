@@ -10,6 +10,7 @@ This module contains articles about querying data using Spring Data JPA.
 - [Spring Data Repositories – Collections vs. Stream](https://www.baeldung.com/spring-data-collections-vs-stream)
 - [Return Map Instead of List in Spring Data JPA](https://www.baeldung.com/spring-data-return-map-instead-of-list)
 - [Converting List to Page Using Spring Data JPA](https://www.baeldung.com/spring-data-jpa-convert-list-page)
+- [@Query Definitions With SpEL Support in Spring Data JPA](https://www.baeldung.com/spring-data-query-definitions-spel)
 - More articles: [[<-- prev]](../spring-data-jpa-query-2)
 
 ### Eclipse Config 
