@@ -19,7 +19,8 @@ public class Employee
 
     private static void incrementCount() {
         synchronized(Employee.class) {
-            System.out.println("Count = " + ++count);
+            ++count;
+            // System.out.println("Count = " + ++count);
         }
     }
 
