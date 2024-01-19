@@ -10,3 +10,4 @@ This module contains articles about core Java input/output(IO) APIs.
 - [Detect EOF in Java](https://www.baeldung.com/java-file-detect-end-of-file)
 - [PrintWriter vs. FileWriter in Java](https://www.baeldung.com/java-printwriter-filewriter-difference)
 - [Read Input Character-by-Character in Java](https://www.baeldung.com/java-read-input-character)
+- [Difference Between flush() and close() in Java FileWriter](https://www.baeldung.com/java-filewriter-flush-vs-close)
