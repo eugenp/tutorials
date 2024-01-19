@@ -9,3 +9,4 @@
 - [String’s Maximum Length in Java](https://www.baeldung.com/java-strings-maximum-length)
 - [Java’s String.length() and String.getBytes().length](https://www.baeldung.com/java-string-length-vs-getbytes-length)
 - [Replace Non-Printable Unicode Characters in Java](https://www.baeldung.com/java-replace-non-printable-unicode-characters)
+- [Check If a Java StringBuilder Object Contains a Character](https://www.baeldung.com/java-check-stringbuilder-object-contains-character)
