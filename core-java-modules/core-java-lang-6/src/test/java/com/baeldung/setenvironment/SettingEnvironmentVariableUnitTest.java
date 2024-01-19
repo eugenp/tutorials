@@ -1,7 +1,6 @@
 package com.baeldung.setenvironment;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.lang.reflect.Field;
 import java.util.Collections;
