@@ -25,6 +25,12 @@
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.msarhan</groupId>
+            <artifactId>ummalqura-calendar</artifactId>
+            <version>${ummalqura-calendar.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -45,6 +51,7 @@
 
     <properties>
         <joda-time.version>2.12.5</joda-time.version>
+        <ummalqura-calendar.version>2.0.2</ummalqura-calendar.version>
     </properties>
 
 </project>
