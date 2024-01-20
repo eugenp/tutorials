@@ -41,7 +41,7 @@ class PoiBoldStyleIntegrationTest {
             Sheet sheet = workbook.getSheetAt(0);
             Row row0 = sheet.getRow(0);
 
-            final XSSFCellStyle rowStyle = (XSSFCellStyle) row0.getRowStyle();
+            XSSFCellStyle rowStyle = (XSSFCellStyle) row0.getRowStyle();
             assertTrue(rowStyle.getFont()
                 .getBold());
 
