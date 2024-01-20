@@ -84,7 +84,7 @@ public class DateRangeOverlapCheckerUnitTest {
     }
 
     @Test
-    public void givenConsercutiveRanges_thenReturnsFalse() {
+    public void givenConsecutiveRanges_thenReturnsFalse() {
         Calendar start1 = Calendar.getInstance();
         start1.set(2024, 11, 15);
         Calendar end1 = Calendar.getInstance();
