@@ -14,7 +14,7 @@ class SettingChildProcessEnvironmentVariableUnitTest {
     public static final String ENVIRONMENT_VARIABLE_VALUE = "Hello World";
     public static final String CHILD_PROCESS_CONDITION = "CHILD_PROCESS_TEST";
     public static final String CHILD_PROCESS_VALUE = "true";
-    public static final String CHILD_PROCESS_TAG = "process";
+    public static final String CHILD_PROCESS_TAG = "child_process";
     public static final String TAG = String.format("-Dgroups=%s", CHILD_PROCESS_TAG);
     private final String testClass = String.format("-Dtest=%s", getClass().getName());
     private final String[] arguments = {"mvn", "test", TAG, testClass};
@@ -37,7 +37,7 @@ class SettingChildProcessEnvironmentVariableUnitTest {
     @Test
     @EnabledIfEnvironmentVariable(named = CHILD_PROCESS_CONDITION, matches = CHILD_PROCESS_VALUE)
     @Tag(CHILD_PROCESS_TAG)
-    void anotherTest() {
+    void givenChildProcess_whenGetEnvironmentVariable_thenReturnsCorrectValue() {
         String actual = System.getenv(ENVIRONMENT_VARIABLE_NAME);
         assertThat(actual).isEqualTo(ENVIRONMENT_VARIABLE_VALUE);
     }

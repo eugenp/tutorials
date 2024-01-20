@@ -48,7 +48,7 @@ class SettingSameProcessEnvironmentVariableUnitTest {
     }
     @Test
     @SetEnvironmentVariable(key = "test", value = "Hello World")
-    void givenVariableSet_whenGetEnvironmentVariable_thenGetCorrectValue() {
+    void givenVariableSet_whenGetEnvironmentVariable_thenReturnsCorrectValue() {
         String expected = "Hello World";
         String actual = System.getenv("test");
         assertThat(actual).isEqualTo(expected);
