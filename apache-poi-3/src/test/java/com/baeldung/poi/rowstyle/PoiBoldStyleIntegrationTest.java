@@ -92,7 +92,7 @@ class PoiBoldStyleIntegrationTest {
             Sheet sheet = workbook.getSheetAt(0);
             Row row0 = sheet.getRow(0);
 
-            final HSSFCellStyle rowStyle = (HSSFCellStyle) row0.getRowStyle();
+            HSSFCellStyle rowStyle = (HSSFCellStyle) row0.getRowStyle();
             assertTrue(rowStyle.getFont(workbook)
                 .getBold());
 
