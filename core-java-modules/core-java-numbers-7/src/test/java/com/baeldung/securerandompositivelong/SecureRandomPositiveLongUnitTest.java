@@ -16,7 +16,7 @@ public class SecureRandomPositiveLongUnitTest {
         assertThat(randomPositiveLong).isPositive();
 
         //Double pc = 1.0 / Math.pow(2, 63);
-        Double pc = 1.0 / Long.MAX_VALUE;
+        double pc = 1.0 / Long.MAX_VALUE;
         System.out.printf("%.40f", pc);
 
         assertThat(pc).isLessThan(0.00000000000000001);
