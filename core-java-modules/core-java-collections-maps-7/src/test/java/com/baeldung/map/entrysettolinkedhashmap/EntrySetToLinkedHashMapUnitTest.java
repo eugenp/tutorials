@@ -4,8 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.entry;
 
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -30,13 +30,13 @@ public class EntrySetToLinkedHashMapUnitTest {
 
     @Test
     public void givenMap_whenUsingCollectorGroupingBy_thenCollectToLinkedHashMap() {
-        Map<String, List<String>> countryToCities = Map.of("Paris", "France", "Nice", "France", "Madrid", "Spain")
+        Map<String, Set<String>> countryToCities = Map.of("Paris", "France", "Nice", "France", "Madrid", "Spain")
             .entrySet()
             .stream()
-            .collect(Collectors.groupingBy(Map.Entry::getValue, LinkedHashMap::new, Collectors.mapping(Map.Entry::getKey, Collectors.toList())));
+            .collect(Collectors.groupingBy(Map.Entry::getValue, LinkedHashMap::new, Collectors.mapping(Map.Entry::getKey, Collectors.toSet())));
 
         assertThat(countryToCities).isExactlyInstanceOf(LinkedHashMap.class)
-            .containsOnly(entry("France", List.of("Paris", "Nice")), entry("Spain", List.of("Madrid")));
+            .containsOnly(entry("France", Set.of("Paris", "Nice")), entry("Spain", Set.of("Madrid")));
     }
 
     @Test
