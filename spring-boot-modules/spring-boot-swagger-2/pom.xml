@@ -140,7 +140,7 @@
     <properties>
         <openapi-generator.version>7.1.0</openapi-generator.version>
         <springfox.version>3.0.0</springfox.version>
-        <swagger-codegen-maven-plugin.version>3.0.34</swagger-codegen-maven-plugin.version>
+        <swagger-codegen-maven-plugin.version>3.0.52</swagger-codegen-maven-plugin.version>
         <springdoc.version>1.6.10</springdoc.version>
         <swagger-maven-plugin.version>3.1.1</swagger-maven-plugin.version>
         <swagger-annotations.version>2.2.19</swagger-annotations.version>
