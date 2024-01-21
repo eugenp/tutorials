@@ -23,13 +23,13 @@ public class OrderController {
     }
 
     @GetMapping(value = "v1/order/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Mono<OrderResponse> searchOrderV1(@PathVariable(value = "id") int id) {
+    public final Mono<OrderResponse> searchOrderV1(@PathVariable(value = "id") int id) {
         return externalServiceV1.findById(id)
             .bodyToMono(OrderResponse.class);
     }
 
     @GetMapping(value = "v2/order/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Mono<OrderResponse> searchOrderV2(@PathVariable(value = "id") int id) {
+    public final Mono<OrderResponse> searchOrderV2(@PathVariable(value = "id") int id) {
         return externalServiceV2.findById(id)
             .bodyToMono(OrderResponse.class);
     }
