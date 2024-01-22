@@ -6,7 +6,9 @@ import java.lang.reflect.Field;
 import java.util.Collections;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.DisabledForJreRange;
 import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
+import org.junit.jupiter.api.condition.JRE;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junitpioneer.jupiter.SetEnvironmentVariable;
@@ -20,9 +22,12 @@ class SettingSameProcessEnvironmentVariableUnitTest {
     private static final Class<?> UMODIFIABLE_MAP_CLASS
       = Collections.unmodifiableMap(Collections.emptyMap()).getClass();
     private static final Class<?> MAP_CLASS = Map.class;
+    public static final String ENV_VARIABLE_NAME = "test";
+    public static final String ENB_VARIABLE_VALUE = "Hello World";
 
     @ParameterizedTest
-    @CsvSource(value = {"test, Hello World"})
+    @CsvSource({ENB_VARIABLE_VALUE + "," + ENV_VARIABLE_NAME})
+    @DisabledForJreRange(max = JRE.JAVA_17)
     void givenReflexiveAccess_whenGetSourceMap_thenSuccessfullyModifyVariables(String environmentVariable, String value)
       throws ClassNotFoundException, NoSuchFieldException, IllegalAccessException {
         Map<String, String> modifiableEnvironment = getModifiableEnvironment();
@@ -46,12 +51,13 @@ class SettingSameProcessEnvironmentVariableUnitTest {
         Map<String, String> environment = System.getenv();
         assertThat(environment).isNotNull();
     }
+
     @Test
-    @SetEnvironmentVariable(key = "test", value = "Hello World")
+    @SetEnvironmentVariable(key = ENV_VARIABLE_NAME, value = ENB_VARIABLE_VALUE)
+    @DisabledForJreRange(max = JRE.JAVA_17)
     void givenVariableSet_whenGetEnvironmentVariable_thenReturnsCorrectValue() {
-        String expected = "Hello World";
-        String actual = System.getenv("test");
-        assertThat(actual).isEqualTo(expected);
+        String actual = System.getenv(ENV_VARIABLE_NAME);
+        assertThat(actual).isEqualTo(ENB_VARIABLE_VALUE);
     }
 
     @SuppressWarnings("unchecked")
