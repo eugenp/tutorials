@@ -4,7 +4,7 @@ import static junit.framework.TestCase.assertEquals;
 
 import java.time.LocalDate;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class CalculateWeekdaysUnitTest {
 
@@ -25,56 +25,56 @@ public class CalculateWeekdaysUnitTest {
     LocalDate endThreeWeeksWeekend = LocalDate.of(2023, 12, 9);
 
     @Test
-    public void givenTwoDaysOnSameWeekend_whenUsingStreams_calculateWeekdays(){
+    void givenTwoDaysOnSameWeekend_whenUsingStreams_thenCalculateWeekdays(){
         CalculateWeekdays c = new CalculateWeekdays();
         long result = c.getWorkingDaysWithStream(startTomorrow, endTomorrow);
         assertEquals(0, result);
     }
 
     @Test
-    public void givenTwoDaysOnSameWeekend_whenUsingMaths_calculateWeekdays(){
+    void givenTwoDaysOnSameWeekend_whenUsingMaths_thenCalculateWeekdays(){
         CalculateWeekdays c = new CalculateWeekdays();
         long result = c.getWorkingDaysWithoutStream(startTomorrow, endTomorrow);
         assertEquals(0, result);
     }
 
     @Test
-    public void givenAThreeWeekGapMidweekDates_whenUsingStreams_calculateWeekdays(){
+    void givenAThreeWeekGapMidweekDates_whenUsingStreams_thenCalculateWeekdays(){
         CalculateWeekdays c = new CalculateWeekdays();
         long result = c.getWorkingDaysWithStream(startThreeWeeks, endThreeWeeks);
         assertEquals(17, result);
     }
 
     @Test
-    public void givenAThreeWeekGapMidweekDates_whenUsingMaths_calculateWeekdays(){
+    void givenAThreeWeekGapMidweekDates_whenUsingMaths_thenCalculateWeekdays(){
         CalculateWeekdays c = new CalculateWeekdays();
         long result = c.getWorkingDaysWithoutStream(startThreeWeeks, endThreeWeeks);
         assertEquals(17, result);
     }
 
     @Test
-    public void givenThreeWeekGapMidweekAndWeekendDates_whenUsingStreams_calculateWeekdays(){
+    void givenThreeWeekGapMidweekAndWeekendDates_whenUsingStreams_thenCalculateWeekdays(){
         CalculateWeekdays c = new CalculateWeekdays();
         long result = c.getWorkingDaysWithStream(startThreeWeeksWeekend, endThreeWeeksWeekend);
         assertEquals(5, result);
     }
 
     @Test
-    public void givenThreeWeekGapMidweekAndWeekendDates_whenUsingMaths_calculateWeekdays(){
+    void givenThreeWeekGapMidweekAndWeekendDates_whenUsingMaths_thenCalculateWeekdays(){
         CalculateWeekdays c = new CalculateWeekdays();
         long result = c.getWorkingDaysWithoutStream(startThreeWeeksWeekend, endThreeWeeksWeekend);
         assertEquals(5, result);
     }
 
     @Test
-    public void givenThreeWeekGapWeekendDates_whenUsingStreams_calculateWeekdays(){
+    void givenThreeWeekGapWeekendDates_whenUsingStreams_thenCalculateWeekdays(){
         CalculateWeekdays c = new CalculateWeekdays();
         long result = c.getWorkingDaysWithStream(startThreeWeeks2, endThreeWeeks2);
         assertEquals(40, result);
     }
 
     @Test
-    public void givenThreeWeekGapWeekendDates_whenUsingMaths_calculateWeekdays(){
+    void givenThreeWeekGapWeekendDates_whenUsingMaths_thenCalculateWeekdays(){
         CalculateWeekdays c = new CalculateWeekdays();
         long result = c.getWorkingDaysWithoutStream(startThreeWeeks2, endThreeWeeks2);
         assertEquals(40, result);
