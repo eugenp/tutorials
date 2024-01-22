@@ -45,12 +45,12 @@ class ElectricCarBuilder {
    +batteryType(String batteryType): ElectricCarBuilder
 }
 CarBuilder -left-|> VehicleBuilder: extends
-ElectricCarBuilder <|-left- CarBuilder: extends
+ElectricCarBuilder -left-|> CarBuilder: extends
 VehicleBuilder -down-> Vehicle: builds
 CarBuilder -down-> Car:builds
 ElectricCarBuilder -down-> ElectricCar: builds
 
-Vehicle -right-|> Car: extends
+Vehicle <|-right- Car: extends
 Car <|-right- ElectricCar: extends
 
 @enduml
