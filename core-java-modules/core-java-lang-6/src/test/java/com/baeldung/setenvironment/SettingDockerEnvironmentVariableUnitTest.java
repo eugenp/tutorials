@@ -1,6 +1,6 @@
 package com.baeldung.setenvironment;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
@@ -14,6 +14,6 @@ class SettingDockerEnvironmentVariableUnitTest {
     @EnabledIfEnvironmentVariable(named = ENV_VARIABLE_NAME, matches = ENV_VARIABLE_VALUE)
     void givenDockerEnvironment_whenGetEnvironmentVariable_thenReturnsCorrectValue() {
         String actual = System.getenv(ENV_VARIABLE_NAME);
-        assertThat(actual).isEqualTo(ENV_VARIABLE_VALUE);
+        assertEquals(ENV_VARIABLE_VALUE, actual);
     }
 }
