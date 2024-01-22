@@ -30,8 +30,8 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-dataflow-server-local</artifactId>
-            <version>1.7.4.RELEASE</version>
+            <artifactId>spring-cloud-starter-dataflow-server</artifactId>
+            <version>2.11.0</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -58,12 +58,17 @@
             <groupId>org.springframework.session</groupId>
             <artifactId>spring-session-data-redis</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>2.2.224</version>
+        </dependency>
     </dependencies>
 
     <properties>
-        <spring-cloud-dataflow-dependencies.version>2.0.0.RELEASE</spring-cloud-dataflow-dependencies.version>
+        <spring-cloud-dataflow-dependencies.version>2.11.0</spring-cloud-dataflow-dependencies.version>
         <hibernate.compatible.version>5.6.0.Final</hibernate.compatible.version>
-        <spring-boot.version>2.1.4.RELEASE</spring-boot.version>
+        <spring-boot.version>2.7.11</spring-boot.version>
         <groovy.version>3.0.8</groovy.version>
     </properties>
 
