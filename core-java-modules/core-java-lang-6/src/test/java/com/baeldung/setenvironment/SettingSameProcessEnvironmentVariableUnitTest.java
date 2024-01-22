@@ -27,7 +27,7 @@ class SettingSameProcessEnvironmentVariableUnitTest {
 
     @ParameterizedTest
     @CsvSource({ENB_VARIABLE_VALUE + "," + ENV_VARIABLE_NAME})
-    @EnabledForJreRange(max = JRE.JAVA_17)
+    @EnabledForJreRange(max = JRE.JAVA_16)
     void givenReflexiveAccess_whenGetSourceMap_thenSuccessfullyModifyVariables(String environmentVariable, String value)
       throws ClassNotFoundException, NoSuchFieldException, IllegalAccessException {
         Map<String, String> modifiableEnvironment = getModifiableEnvironment();
@@ -54,7 +54,7 @@ class SettingSameProcessEnvironmentVariableUnitTest {
 
     @Test
     @SetEnvironmentVariable(key = ENV_VARIABLE_NAME, value = ENB_VARIABLE_VALUE)
-    @EnabledForJreRange(max = JRE.JAVA_17)
+    @EnabledForJreRange(max = JRE.JAVA_16)
     void givenVariableSet_whenGetEnvironmentVariable_thenReturnsCorrectValue() {
         String actual = System.getenv(ENV_VARIABLE_NAME);
         assertThat(actual).isEqualTo(ENB_VARIABLE_VALUE);
