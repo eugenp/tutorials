@@ -39,7 +39,7 @@ class OrderControllerIntegrationTest {
     }
 
     @Test
-    void givenMockedExternalResponse_whenSearchByIdV1_ThenOrderResponseShouldFailBecauseOfUnknownPropertyBasedOnGlobalConfig() {
+    void givenMockedExternalResponse_whenSearchByIdV1_ThenOrderResponseShouldFailBecauseOfUnknownProperty() {
 
         mockExternalService.enqueue(new MockResponse().addHeader("Content-Type", "application/json; charset=utf-8")
             .setBody("{\n" + "                      \"orderId\": \"a1b2c3d4-e5f6-4a5b-8c9d-0123456789ab\",\n"
@@ -58,7 +58,7 @@ class OrderControllerIntegrationTest {
     }
 
     @Test
-    void givenMockedExternalResponse_whenSearchByIdV1_ThenOrderResponseShouldBeReceivedSuccessfullyBasedOnGlobalConfig() {
+    void givenMockedExternalResponse_whenSearchByIdV1_ThenOrderResponseShouldBeReceivedSuccessfully() {
 
         mockExternalService.enqueue(new MockResponse().addHeader("Content-Type", "application/json; charset=utf-8")
             .setBody("{\n" + "                  \"orderId\": \"a1b2c3d4-e5f6-4a5b-8c9d-0123456789ab\",\n"
@@ -83,7 +83,7 @@ class OrderControllerIntegrationTest {
     }
 
     @Test
-    void givenMockedExternalResponse_whenSearchByIdV2_ThenOrderResponseShouldFailBecauseOfUnknownPropertyBasedOnSpecificWebClientConfig() {
+    void givenMockedExternalResponse_whenSearchByIdV2_ThenOrderResponseShouldFailBecauseOfUnknownProperty() {
 
         mockExternalService.enqueue(new MockResponse().addHeader("Content-Type", "application/json; charset=utf-8")
             .setBody("{\n" + "                  \"orderId\": \"a1b2c3d4-e5f6-4a5b-8c9d-0123456789ab\",\n"
@@ -104,7 +104,7 @@ class OrderControllerIntegrationTest {
     }
 
     @Test
-    void givenMockedExternalResponse_whenSearchByIdV2_ThenOrderResponseShouldBeReceivedSuccessfullyBasedOnSpecificWebClientConfig() {
+    void givenMockedExternalResponse_whenSearchByIdV2_ThenOrderResponseShouldBeReceivedSuccessfully() {
 
         mockExternalService.enqueue(new MockResponse().addHeader("Content-Type", "application/json; charset=utf-8")
             .setBody("{\n" + "                  \"orderId\": \"a1b2c3d4-e5f6-4a5b-8c9d-0123456789ab\",\n"
