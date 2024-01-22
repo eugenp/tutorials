@@ -1,7 +1,6 @@
 package com.baeldung.setenvironment;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
