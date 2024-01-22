@@ -44,6 +44,9 @@ class SecurityConfig {
     @Bean
     public SecurityFilterChain resourceServerFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(auth -> auth
+            // Allows preflight requests from browser
+            .requestMatchers(new AntPathRequestMatcher("/customers*", HttpMethod.OPTIONS.name()))
+            .permitAll()
             .requestMatchers(new AntPathRequestMatcher("/customers*"))
             .hasRole("user")
             .requestMatchers(new AntPathRequestMatcher("/"))
