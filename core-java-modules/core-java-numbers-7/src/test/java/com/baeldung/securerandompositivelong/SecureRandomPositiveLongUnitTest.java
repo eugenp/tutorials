@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class SecureRandomPositiveLongUnitTest {
 
     @Test
-    void whenGenerateRecureRandom_thenGetExpectedValue() {
+    void whenGenerateRandomPositiveLong_thenGetPositiveValue() {
         SecureRandom secureRandom = new SecureRandom();
         long randomPositiveLong = Math.abs(secureRandom.nextLong());
 
