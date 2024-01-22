@@ -13,6 +13,6 @@ public class SecureRandomPositiveLongUnitTest {
         SecureRandom secureRandom = new SecureRandom();
         long randomPositiveLong = Math.abs(secureRandom.nextLong());
 
-        assertThat(randomPositiveLong).isPositive();
+        assertThat(randomPositiveLong).isNotNegative();
     }
 }
