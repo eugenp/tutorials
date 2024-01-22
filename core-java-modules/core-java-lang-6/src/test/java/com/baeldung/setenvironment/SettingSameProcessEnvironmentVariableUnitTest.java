@@ -6,7 +6,7 @@ import java.lang.reflect.Field;
 import java.util.Collections;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.condition.DisabledForJreRange;
+import org.junit.jupiter.api.condition.EnabledForJreRange;
 import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
 import org.junit.jupiter.api.condition.JRE;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -27,7 +27,7 @@ class SettingSameProcessEnvironmentVariableUnitTest {
 
     @ParameterizedTest
     @CsvSource({ENB_VARIABLE_VALUE + "," + ENV_VARIABLE_NAME})
-    @DisabledForJreRange(max = JRE.JAVA_17)
+    @EnabledForJreRange(max = JRE.JAVA_17)
     void givenReflexiveAccess_whenGetSourceMap_thenSuccessfullyModifyVariables(String environmentVariable, String value)
       throws ClassNotFoundException, NoSuchFieldException, IllegalAccessException {
         Map<String, String> modifiableEnvironment = getModifiableEnvironment();
@@ -54,7 +54,7 @@ class SettingSameProcessEnvironmentVariableUnitTest {
 
     @Test
     @SetEnvironmentVariable(key = ENV_VARIABLE_NAME, value = ENB_VARIABLE_VALUE)
-    @DisabledForJreRange(max = JRE.JAVA_17)
+    @EnabledForJreRange(max = JRE.JAVA_17)
     void givenVariableSet_whenGetEnvironmentVariable_thenReturnsCorrectValue() {
         String actual = System.getenv(ENV_VARIABLE_NAME);
         assertThat(actual).isEqualTo(ENB_VARIABLE_VALUE);
