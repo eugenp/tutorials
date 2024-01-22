@@ -39,7 +39,7 @@ class OrderControllerIntegrationTest {
     }
 
     @Test
-    void givenMockedExternalResponse_whenSearchByIdV1_ThenOrderResponseShouldFailBecauseOfUnknownProperty() {
+    void givenMockedExternalResponse_whenSearchByIdV1_thenOrderResponseShouldFailBecauseOfUnknownProperty() {
 
         mockExternalService.enqueue(new MockResponse().addHeader("Content-Type", "application/json; charset=utf-8")
             .setBody("{\n" + "                      \"orderId\": \"a1b2c3d4-e5f6-4a5b-8c9d-0123456789ab\",\n"
@@ -58,7 +58,7 @@ class OrderControllerIntegrationTest {
     }
 
     @Test
-    void givenMockedExternalResponse_whenSearchByIdV1_ThenOrderResponseShouldBeReceivedSuccessfully() {
+    void givenMockedExternalResponse_whenSearchByIdV1_thenOrderResponseShouldBeReceivedSuccessfully() {
 
         mockExternalService.enqueue(new MockResponse().addHeader("Content-Type", "application/json; charset=utf-8")
             .setBody("{\n" + "                  \"orderId\": \"a1b2c3d4-e5f6-4a5b-8c9d-0123456789ab\",\n"
@@ -83,7 +83,7 @@ class OrderControllerIntegrationTest {
     }
 
     @Test
-    void givenMockedExternalResponse_whenSearchByIdV2_ThenOrderResponseShouldFailBecauseOfUnknownProperty() {
+    void givenMockedExternalResponse_whenSearchByIdV2_thenOrderResponseShouldFailBecauseOfUnknownProperty() {
 
         mockExternalService.enqueue(new MockResponse().addHeader("Content-Type", "application/json; charset=utf-8")
             .setBody("{\n" + "                  \"orderId\": \"a1b2c3d4-e5f6-4a5b-8c9d-0123456789ab\",\n"
@@ -104,7 +104,7 @@ class OrderControllerIntegrationTest {
     }
 
     @Test
-    void givenMockedExternalResponse_whenSearchByIdV2_ThenOrderResponseShouldBeReceivedSuccessfully() {
+    void givenMockedExternalResponse_whenSearchByIdV2_thenOrderResponseShouldBeReceivedSuccessfully() {
 
         mockExternalService.enqueue(new MockResponse().addHeader("Content-Type", "application/json; charset=utf-8")
             .setBody("{\n" + "                  \"orderId\": \"a1b2c3d4-e5f6-4a5b-8c9d-0123456789ab\",\n"
