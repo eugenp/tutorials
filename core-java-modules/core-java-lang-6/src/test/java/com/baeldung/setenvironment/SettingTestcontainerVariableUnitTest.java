@@ -10,8 +10,8 @@ import org.testcontainers.images.builder.ImageFromDockerfile;
 
 class SettingTestcontainerVariableUnitTest {
 
-    public static final String CONTAINER_REPORT_PATH = "/app/target/surefire-reports/TEST-com.baeldung.setenvironment.SettingDockerEnvironmentVariableUnitTest.xml";
-    public static final String HOST_REPORT_PATH = "./container-test-report.xml";
+    public static final String CONTAINER_REPORT_FILE = "/app/target/surefire-reports/TEST-com.baeldung.setenvironment.SettingDockerEnvironmentVariableUnitTest.xml";
+    public static final String HOST_REPORT_FILE = "./container-test-report.xml";
     public static final String DOCKERFILE = "./Dockerfile";
 
     @Test
@@ -24,6 +24,6 @@ class SettingTestcontainerVariableUnitTest {
         while (container.isRunning()) {
             // Busy spin
         }
-        container.copyFileFromContainer(CONTAINER_REPORT_PATH, HOST_REPORT_PATH);
+        container.copyFileFromContainer(CONTAINER_REPORT_FILE, HOST_REPORT_FILE);
     }
 }
