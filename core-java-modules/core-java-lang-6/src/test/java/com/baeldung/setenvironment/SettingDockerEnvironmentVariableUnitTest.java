@@ -7,8 +7,8 @@ import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
 
 class SettingDockerEnvironmentVariableUnitTest {
 
-    public static final String ENV_VARIABLE_NAME = "TRUE";
-    public static final String ENV_VARIABLE_VALUE = "CUSTOM_DOCKER_ENV_VARIABLE";
+    public static final String ENV_VARIABLE_NAME = "CUSTOM_DOCKER_ENV_VARIABLE";
+    public static final String ENV_VARIABLE_VALUE = "TRUE";
 
     @Test
     @EnabledIfEnvironmentVariable(named = ENV_VARIABLE_NAME, matches = ENV_VARIABLE_VALUE)
