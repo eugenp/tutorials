@@ -39,6 +39,18 @@
             <version>${junit.pioneer.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>testcontainers</artifactId>
+            <version>${testcontaienr.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${testcontaienr.version}</version>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
     <build>
@@ -71,6 +83,7 @@
         <mapstruct.version>1.6.0.Beta1</mapstruct.version>
         <jmh.version>1.37</jmh.version>
         <junit.pioneer.version>2.2.0</junit.pioneer.version>
+        <testcontaienr.version>1.19.3</testcontaienr.version>
     </properties>
 
 </project>
