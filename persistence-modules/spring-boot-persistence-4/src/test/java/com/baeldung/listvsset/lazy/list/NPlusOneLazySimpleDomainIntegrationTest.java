@@ -1,4 +1,4 @@
-package com.baeldung.listvsset.list;
+package com.baeldung.listvsset.lazy.list;
 
 import static com.vladmihalcea.sql.SQLStatementCountValidator.assertSelectCount;
 
