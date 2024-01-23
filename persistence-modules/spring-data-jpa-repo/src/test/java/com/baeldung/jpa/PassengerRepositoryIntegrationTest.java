@@ -6,10 +6,6 @@ import static org.hamcrest.core.IsNot.not;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,6 +16,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.baeldung.jpa.domain.Passenger;
 import com.baeldung.jpa.repository.PassengerRepository;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = { JpaApplication.class})
