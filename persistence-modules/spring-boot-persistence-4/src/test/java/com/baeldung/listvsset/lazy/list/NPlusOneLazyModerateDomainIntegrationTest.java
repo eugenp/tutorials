@@ -9,8 +9,10 @@ import com.baeldung.listvsset.lazy.list.moderatedomain.Group;
 import com.baeldung.listvsset.lazy.list.moderatedomain.GroupService;
 import com.baeldung.listvsset.lazy.list.moderatedomain.User;
 import com.baeldung.listvsset.util.TestConfig;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -44,6 +46,17 @@ class NPlusOneLazyModerateDomainIntegrationTest extends BaseNPlusOneIntegrationT
     void givenLazyListBasedGroup_whenFetchingAllGroups_thenIssueOneRequest() {
         groupService.findAll();
         assertSelectCount(1);
+    }
+    @Test
+    void givenLazyListBasedGroup_whenFilteringGroups_thenIssueNPlusOneRequests() {
+        int numberOfRequests = groupService.countNumberOfRequestsWithFunction(groups -> {
+            groups.stream()
+              .map(Group::getMembers)
+              .flatMap(Collection::stream)
+              .collect(Collectors.toSet());
+            return groups.size();
+        });
+        assertSelectCount(numberOfRequests + 1);
     }
 
     @ParameterizedTest
