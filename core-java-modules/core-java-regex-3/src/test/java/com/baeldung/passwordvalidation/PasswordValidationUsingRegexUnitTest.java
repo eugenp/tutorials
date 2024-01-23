@@ -47,10 +47,7 @@ public class PasswordValidationUsingRegexUnitTest {
         Pattern pattern = Pattern.compile(regExpn, Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(password);
 
-        if (matcher.matches())
-            assertTrue(true);
-        else
-            assertFalse(false);
+        assertTrue(matcher.matches());
     }
 
 }
