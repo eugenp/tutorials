@@ -28,7 +28,7 @@ public class ReadWriteThread {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                try (FileWriter fileWriter = new FileWriter("file.txt")) {
+                try (FileWriter fileWriter = new FileWriter(filePath)) {
                     fileWriter.write("Hello, world!");
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -39,16 +39,15 @@ public class ReadWriteThread {
     }
 
     public static void main(String[] args) {
-        String readFile = "src/main/resources/read_file.txt";
-        String writeFile = "src/main/resources/write_file.txt";
+        String file = "src/main/resources/text.txt";
 
-        writeFile(writeFile, "Hello, world!");
+        writeFile(file, "Hello, world!");
 
-        readFile(readFile);
+        readFile(file);
 
         // Sleep for a while to allow the threads to complete
         try {
-            Thread.sleep(2000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

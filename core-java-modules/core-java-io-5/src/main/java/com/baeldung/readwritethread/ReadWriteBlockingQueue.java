@@ -10,23 +10,25 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public class ReadWriteBlockingQueue {
 
-    public static void main(String[] args) {
-        BlockingQueue<String> queue = new LinkedBlockingQueue<>();
-        String inputFileName = "src/main/resources/read_file.txt";
-        String outputFileName = "src/main/resources/write_file.txt";
+    public static void main(String[] args) throws InterruptedException {
 
-        Thread producerThread = new Thread(new FileProducer(queue, inputFileName));
-        Thread consumerThread = new Thread(new FileConsumer(queue, outputFileName));
+        BlockingQueue<String> queue = new LinkedBlockingQueue<>();
+        String readFileName = "src/main/resources/read_file.txt";
+        String writeFileName = "src/main/resources/write_file.txt";
+
+        Thread producerThread = new Thread(new FileProducer(queue, readFileName));
+        Thread consumerThread1 = new Thread(new FileConsumer(queue, writeFileName));
 
         producerThread.start();
-        consumerThread.start();
-
+        Thread.sleep(100); // Give producer a head start
+        consumerThread1.start();
         try {
-            producerThread.join(); // Wait for producer to finish
-            consumerThread.join(); // Wait for consumer to finish
+            producerThread.join();
+            consumerThread1.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
     }
 }
 
@@ -46,6 +48,8 @@ class FileProducer implements Runnable {
             String line;
             while ((line = reader.readLine()) != null) {
                 queue.offer(line);
+                System.out.println("Producer added line: " + line);
+                System.out.println("Queue size: " + queue.size());
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -70,6 +74,9 @@ class FileConsumer implements Runnable {
             while ((line = queue.poll()) != null) {
                 writer.write(line);
                 writer.newLine();
+                System.out.println(Thread.currentThread()
+                    .getId() + " - Consumer processed line: " + line);
+                System.out.println("Queue size: " + queue.size());
             }
         } catch (IOException e) {
             e.printStackTrace();
