@@ -7,6 +7,7 @@
     <groupId>com.baeldung</groupId>
     <artifactId>java-harperdb</artifactId>
     <version>1.0-SNAPSHOT</version>
+
     <build>
         <plugins>
             <plugin>

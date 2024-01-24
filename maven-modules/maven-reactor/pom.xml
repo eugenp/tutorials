@@ -8,11 +8,13 @@
     <name>maven-reactor</name>
     <packaging>pom</packaging>
     <description>Sample multi-module project to explain maven reactor</description>
+
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>maven-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+
     <modules>
         <module>patient-web</module>
         <module>patient-data</module>
