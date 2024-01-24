@@ -59,7 +59,6 @@
         </plugins>
     </build>
 
-
     <properties>
         <spring.boot.dependencies>3.2.0</spring.boot.dependencies>
         <org.slf4j.version>2.0.9</org.slf4j.version>
