@@ -47,7 +47,7 @@ class SettingSameProcessEnvironmentVariableUnitTest {
     }
 
     @Test
-    void givenOS_whenGetPath_thenVariablesArePresent() {
+    void givenOS_whenGetEnv_thenVariablesArePresent() {
         Map<String, String> environment = System.getenv();
         assertThat(environment).isNotNull();
     }
