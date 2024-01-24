@@ -19,8 +19,8 @@ public class URLNormalizationUnitTest {
     public void givenOriginalUrl_whenUsingApacheCommonsValidator_thenValidatedAndMaybeManuallyNormalized() {
         UrlValidator urlValidator = new UrlValidator();
         if (urlValidator.isValid(originalUrl)) {
-            String manuallyNormalizedUrl = originalUrl.split("\\?")[0];
-            assertEquals(expectedNormalizedUrl, manuallyNormalizedUrl);
+            String normalizedUri = originalUrl.split("\\?")[0];
+            assertEquals(expectedNormalizedUrl, normalizedUri);
         } else {
             throw new IllegalArgumentException("Invalid URL: " + originalUrl);
         }
