@@ -10,9 +10,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-2</relativePath>
+        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -25,18 +25,19 @@
             <artifactId>spring-boot-starter-tomcat</artifactId>
         </dependency>
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>${javax.version}</version>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>${jakarta.version}</version>
         </dependency>
         <dependency>
-            <groupId>javax.servlet.jsp</groupId>
-            <artifactId>javax.servlet.jsp-api</artifactId>
-            <version>${javax-servlet-api.version}</version>
+            <groupId>jakarta.servlet.jsp</groupId>
+            <artifactId>jakarta.servlet.jsp-api</artifactId>
+            <version>${jakarta-servlet-api.version}</version>
         </dependency>
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
+            <groupId>jakarta.servlet.jsp.jstl</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+            <version>${jakarta-servlet-jstl-version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
@@ -49,11 +50,6 @@
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>${commons-io.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-fileupload</groupId>
-            <artifactId>commons-fileupload</artifactId>
-            <version>${commons-fileupload.version}</version>
         </dependency>
         <!-- Thymeleaf -->
         <dependency>
@@ -77,6 +73,13 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>${rest.assured.version}</version>
+            <scope>test</scope>
+        </dependency>
+
 
         <!-- Validation -->
         <dependency>
@@ -85,9 +88,10 @@
         </dependency>
         <dependency>
             <groupId>org.glassfish</groupId>
-            <artifactId>javax.el</artifactId>
-            <version>${javax.el.version}</version>
+            <artifactId>jakarta.el</artifactId>
+            <version>${jakarta.el.version}</version>
         </dependency>
+
     </dependencies>
 
     <build>
@@ -115,12 +119,10 @@
                 <artifactId>cargo-maven2-plugin</artifactId>
                 <version>${cargo-maven2-plugin.version}</version>
                 <configuration>
-                    <wait>true</wait>
                     <container>
                         <containerId>jetty8x</containerId>
                         <type>embedded</type>
                         <systemProperties>
-                            <!-- <provPersistenceTarget>cargo</provPersistenceTarget> -->
                         </systemProperties>
                     </container>
                     <configuration>
@@ -167,9 +169,6 @@
                     <plugin>
                         <groupId>org.codehaus.cargo</groupId>
                         <artifactId>cargo-maven2-plugin</artifactId>
-                        <configuration>
-                            <wait>false</wait>
-                        </configuration>
                         <executions>
                             <execution>
                                 <id>start-server</id>
@@ -208,11 +207,13 @@
         <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
         <!-- AspectJ -->
         <aspectj.version>1.9.1</aspectj.version>
-        <javax.el.version>3.0.1-b09</javax.el.version>
-        <javax.version>4.0.1</javax.version>
-        <javax-servlet-api.version>2.3.3</javax-servlet-api.version>
+        <jakarta.el.version>5.0.0-M1</jakarta.el.version>
+        <jakarta.version>6.1.0-M1</jakarta.version>
+        <jakarta-servlet-api.version>4.0.0-M1</jakarta-servlet-api.version>
         <json-path.version>2.8.0</json-path.version>
         <start-class>com.baeldung.SpringMVCApplication</start-class>
+        <jakarta-servlet-jstl-version>3.0.0</jakarta-servlet-jstl-version>
+        <rest.assured.version>5.4.0</rest.assured.version>
     </properties>
 
 </project>

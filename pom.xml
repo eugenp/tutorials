@@ -821,7 +821,7 @@
                 <module>spring-actuator</module>
                 <module>spring-ai</module>
                 <module>spring-aop-2</module>
-                <!--<module>spring-aop</module>-->
+                <!--<module>spring-aop</module>--><!-- JAVA-30541 -->
                 <module>spring-batch-2</module>
                 <module>spring-batch</module>
                 <module>spring-boot-modules</module>
@@ -1060,7 +1060,7 @@
                 <module>spring-actuator</module>
                 <module>spring-ai</module>
                 <module>spring-aop-2</module>
-                <!--<module>spring-aop</module>-->
+                <!--<module>spring-aop</module>--><!-- JAVA-30541 -->
                 <module>spring-batch-2</module>
                 <module>spring-batch</module>
                 <module>spring-boot-modules</module>
@@ -1215,7 +1215,7 @@
         <maven-pmd-plugin.version>3.21.0</maven-pmd-plugin.version>
         <lombok.version>1.18.30</lombok.version>
         <h2.version>2.1.214</h2.version>
-        <guava.version>32.1.3-jre</guava.version>
+        <guava.version>33.0.0-jre</guava.version>
         <maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
     </properties>
 

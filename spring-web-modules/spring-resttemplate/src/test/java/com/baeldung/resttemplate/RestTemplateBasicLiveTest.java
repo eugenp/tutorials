@@ -1,6 +1,6 @@
 package com.baeldung.resttemplate;
 
-import static org.apache.commons.codec.binary.Base64.encodeBase64;
+import java.util.Base64;
 import static com.baeldung.client.Consts.APPLICATION_PORT;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -32,7 +32,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import org.springframework.web.client.RestTemplate;
 import com.google.common.base.Charsets;
 
 // This test needs RestTemplateConfigurationApplication to be up and running
@@ -62,7 +62,7 @@ public class RestTemplateBasicLiveTest {
         final RestTemplate template = new RestTemplate();
         final ResponseEntity<String> response = template.getForEntity(fooResourceUrl + "/1", String.class);
 
-        final ObjectMapper mapper = new XmlMapper();
+        final ObjectMapper mapper = new ObjectMapper();
         final JsonNode root = mapper.readTree(response.getBody());
         final JsonNode name = root.path("name");
         Assertions.assertNotNull(name.asText());
@@ -243,7 +243,7 @@ public class RestTemplateBasicLiveTest {
 
     private String getBase64EncodedLogPass() {
         final String logPass = "user1:user1Pass";
-        final byte[] authHeaderBytes = encodeBase64(logPass.getBytes(Charsets.US_ASCII));
+        final byte[] authHeaderBytes = Base64.getEncoder().encode(logPass.getBytes(Charsets.US_ASCII));
         return new String(authHeaderBytes, Charsets.US_ASCII);
     }
 
