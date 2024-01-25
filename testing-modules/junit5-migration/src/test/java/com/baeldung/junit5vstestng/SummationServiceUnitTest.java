@@ -9,6 +9,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class SummationServiceUnitTest {
@@ -43,7 +44,7 @@ public class SummationServiceUnitTest {
         Assert.assertEquals(6, sum);
     }
 
-    @Ignore
+    @Disabled
     @Test
     public void givenEmptyList_sumEqualsZero_thenCorrect() {
         int sum = numbers.stream()
