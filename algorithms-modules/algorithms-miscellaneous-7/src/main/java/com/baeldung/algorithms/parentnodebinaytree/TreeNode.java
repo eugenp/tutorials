@@ -1,5 +1,10 @@
 package com.baeldung.algorithms.parentnodebinaytree;
 
+import java.util.NoSuchElementException;
+import java.util.Objects;
+
+import static java.lang.String.format;
+
 public class TreeNode {
     int value;
     TreeNode left;
@@ -7,6 +12,19 @@ public class TreeNode {
 
     public TreeNode(int value) {
         this.value = value;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TreeNode treeNode = (TreeNode) o;
+        return value == treeNode.value;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
     }
 
     public void insert(int value) {
@@ -33,22 +51,30 @@ public class TreeNode {
         }
     }
 
-    public TreeNode parent(TreeNode target) {
-        return parent(this, target);
+    public TreeNode parent(int target) throws NoSuchElementException {
+        return parent(this, new TreeNode(target));
     }
 
-    private TreeNode parent(TreeNode root, TreeNode target) {
-        if (root == null) {
-            return null;
+    private TreeNode parent(TreeNode current, TreeNode target) throws NoSuchElementException {
+        final boolean isTopmostRoot = target.equals(current);
+        final boolean isLeafNodeChild = current == null;
+
+        if (isTopmostRoot || isLeafNodeChild) {
+            throw new NoSuchElementException(format("No parent node found for 'target.value=%s' " +
+                            "The target is not in the tree or the target is the topmost root node.",
+                    target.value));
         } else {
-            if (root.left == target || root.right == target) {
-                return root;
+            final boolean isTargetChildOfCurrent = target.equals(current.left)
+                    || target.equals(current.right);
+
+            if (isTargetChildOfCurrent) {
+                return current;
             }
 
-            if (root.value < root.left.value) {
-                return parent(root.left, target);
+            if (target.value < current.value) {
+                return parent(current.left, target);
             } else {
-                return parent(root.right, target);
+                return parent(current.right, target);
             }
         }
     }
