@@ -13,7 +13,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-import javax.servlet.Filter;
+import jakarta.servlet.Filter;
 
 @ExtendWith(SpringExtension.class)
 @WebAppConfiguration

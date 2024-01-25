@@ -21,7 +21,8 @@ public class Employee {
 
     private static void incrementCount() {
         synchronized(lock) {
-            System.out.println("Count = " + ++count);
+            ++count;
+            // System.out.println("Count = " + ++count);
         }
     }
 

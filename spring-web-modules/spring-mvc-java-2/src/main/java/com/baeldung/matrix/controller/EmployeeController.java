@@ -53,7 +53,7 @@ public class EmployeeController {
     @RequestMapping(value = "/employees/{name}", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<List<Employee>> getEmployeeByNameAndBeginContactNumber(@PathVariable final String name, @MatrixVariable final String beginContactNumber) {
-        final List<Employee> employeesList = new ArrayList<Employee>();
+        final List<Employee> employeesList = new ArrayList<>();
         for (final Map.Entry<Long, Employee> employeeEntry : employeeMap.entrySet()) {
             final Employee employee = employeeEntry.getValue();
             if (employee.getName().equalsIgnoreCase(name) && employee.getContactNumber().startsWith(beginContactNumber)) {
@@ -66,7 +66,7 @@ public class EmployeeController {
     @RequestMapping(value = "/employeesContacts/{contactNumber}", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<List<Employee>> getEmployeeByContactNumber(@MatrixVariable(required = true) final String contactNumber) {
-        final List<Employee> employeesList = new ArrayList<Employee>();
+        final List<Employee> employeesList = new ArrayList<>();
         for (final Map.Entry<Long, Employee> employeeEntry : employeeMap.entrySet()) {
             final Employee employee = employeeEntry.getValue();
             if (employee.getContactNumber().equalsIgnoreCase(contactNumber)) {

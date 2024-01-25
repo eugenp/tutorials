@@ -1,6 +1,6 @@
 package com.baeldung.web.hateoas.listener;
 
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletResponse;
 
 import com.baeldung.web.hateoas.event.SingleResourceRetrievedEvent;
 import com.baeldung.web.util.LinkUtil;

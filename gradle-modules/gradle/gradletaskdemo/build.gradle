@@ -13,6 +13,9 @@ plugins {
     id 'java'
 }
 
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
 apply from: 'aplugin.gradle'
 apply plugin: 'org.shipkit.bintray-release'
 

@@ -1,0 +1,4 @@
+tradeid:int,productid:string,qty:int
+232312123,"RFTXC",100
+232312124,"RFUXC",200
+232312125,"RFSXC",1000
