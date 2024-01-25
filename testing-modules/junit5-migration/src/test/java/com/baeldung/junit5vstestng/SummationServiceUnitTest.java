@@ -19,24 +19,24 @@ class SummationServiceUnitTest {
     static void initialize() {
         numbers = new ArrayList<>();
     }
- 
+
     @AfterAll
     static void tearDown() {
         numbers = null;
     }
- 
+
     @BeforeEach
     void runBeforeEachTest() {
         numbers.add(1);
         numbers.add(2);
         numbers.add(3);
     }
- 
+
     @AfterEach
     void runAfterEachTest() {
         numbers.clear();
     }
- 
+
     @Test
     void givenNumbers_sumEquals_thenCorrect() {
         int sum = numbers.stream()
