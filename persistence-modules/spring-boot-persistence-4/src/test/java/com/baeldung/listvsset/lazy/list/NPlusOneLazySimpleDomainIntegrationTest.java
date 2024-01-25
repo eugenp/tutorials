@@ -22,13 +22,13 @@ class NPlusOneLazySimpleDomainIntegrationTest extends BaseNPlusOneIntegrationTes
 
     @Test
     void givenLazyListBasedUser_WhenFetchingAllUsers_ThenIssueOneRequests() {
-        getService().findAll();
+        getUserService().findAll();
         assertSelectCount(1);
     }
 
     @Test
     void givenLazyListBasedUser_WhenFetchingAllUsersCheckingPosts_ThenIssueNPlusOneRequests() {
-        int numberOfRequests = getService().countNumberOfRequestsWithFunction(users -> {
+        int numberOfRequests = getUserService().countNumberOfRequestsWithFunction(users -> {
             List<List<Post>> usersWithPosts
               = users.stream()
               .map(User::getPosts)
@@ -42,7 +42,7 @@ class NPlusOneLazySimpleDomainIntegrationTest extends BaseNPlusOneIntegrationTes
     @ParameterizedTest
     @ValueSource(longs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
     void givenLazyListBasedUser_WhenFetchingOneUser_ThenIssueTwoRequest(Long id) {
-        getService().getUserByIdWithPredicate(id, user -> !user.getPosts().isEmpty());
+        getUserService().getUserByIdWithPredicate(id, user -> !user.getPosts().isEmpty());
         assertSelectCount(2);
     }
 
