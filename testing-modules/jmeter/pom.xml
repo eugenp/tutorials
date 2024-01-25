@@ -156,10 +156,6 @@
                     </plugin>
                 </plugins>
             </build>
-
-            <properties>
-                <jmeter-maven-plugin.version>3.7.0</jmeter-maven-plugin.version>
-            </properties>
         </profile>
     </profiles>
 
