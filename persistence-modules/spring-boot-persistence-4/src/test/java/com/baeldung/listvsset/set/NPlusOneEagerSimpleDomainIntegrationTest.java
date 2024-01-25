@@ -27,21 +27,21 @@ class NPlusOneEagerSimpleDomainIntegrationTest extends BaseNPlusOneIntegrationTe
 
     @Test
     void givenEagerSetBasedUser_WhenFetchingAllUsers_ThenIssueNPlusOneRequests() {
-        List<User> users = getService().findAll();
+        List<User> users = getUserService().findAll();
         assertSelectCount(users.size() + 1);
     }
 
     @ParameterizedTest
     @ValueSource(longs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
     void givenEagerSetBasedUser_WhenFetchingOneUser_ThenIssueOneRequest(Long id) {
-        getService().getUserById(id);
+        getUserService().getUserById(id);
         assertSelectCount(1);
     }
 
     @ParameterizedTest
     @ValueSource(longs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
     void givenEagerListBasedUser_whenDeletePost_ThenIssueSingleUpdate(Long id) {
-        Optional<User> optionalUser = getService().getUserById(id);
+        Optional<User> optionalUser = getUserService().getUserById(id);
         assertSelectCount(1);
         optionalUser.ifPresent(user -> {
             Set<Post> posts = user.getPosts();
@@ -49,10 +49,10 @@ class NPlusOneEagerSimpleDomainIntegrationTest extends BaseNPlusOneIntegrationTe
             reset();
             if (!posts.isEmpty()) {
                 posts.iterator().next().setAuthor(null);
-                getService().save(user);
+                getUserService().save(user);
                 assertSelectCount(1);
                 assertUpdateCount(1);
-                getService().getUserById(id).ifPresent(updatedUser -> {
+                getUserService().getUserById(id).ifPresent(updatedUser -> {
                     assertThat(updatedUser.getPosts()).hasSize(originalNumberOfPosts - 1);
                 });
             }
