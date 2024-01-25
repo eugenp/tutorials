@@ -7,7 +7,7 @@ import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class BinaryTreeParentNodeFinderTest {
+class BinaryTreeParentNodeFinderUnitTest {
 
     private TreeNode target;
     @BeforeEach
