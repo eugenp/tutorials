@@ -63,19 +63,19 @@ public class TreeNode {
             throw new NoSuchElementException(format("No parent node found for 'target.value=%s' " +
                             "The target is not in the tree or the target is the topmost root node.",
                     target.value));
-        } else {
-            final boolean isTargetChildOfCurrent = target.equals(current.left)
-                    || target.equals(current.right);
-
-            if (isTargetChildOfCurrent) {
-                return current;
-            }
-
-            if (target.value < current.value) {
-                return parent(current.left, target);
-            } else {
-                return parent(current.right, target);
-            }
         }
+
+        final boolean isTargetChildOfCurrent = target.equals(current.left)
+                || target.equals(current.right);
+
+        if (isTargetChildOfCurrent) {
+            return current;
+        }
+
+        if (target.value < current.value) {
+            return parent(current.left, target);
+        }
+
+        return parent(current.right, target);
     }
 }
