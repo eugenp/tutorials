@@ -1,4 +1,4 @@
-package com.baeldung.spring.cloud.aws.sqs;
+package com.baeldung.spring.cloud.aws.sqs.introduction;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
