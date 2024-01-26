@@ -5,6 +5,9 @@ ext {
     awsVersion = '2.20.83'
 }
 
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
+
 
 dependencies {
     implementation platform("software.amazon.awssdk:bom:$awsVersion")

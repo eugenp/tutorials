@@ -18,7 +18,8 @@ public class Employee {
     }
 
     private static void incrementCount() {
-        System.out.println("Count = " + ++count);
+        ++count;
+        // System.out.println("Count = " + ++count);
     }
 
     public static Integer getCount() {
