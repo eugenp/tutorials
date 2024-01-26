@@ -1,5 +1,7 @@
 package com.baeldung.mock;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -18,8 +20,6 @@ import com.baeldung.resttemplate.web.model.Employee;
 @ExtendWith(MockitoExtension.class) 
 public class EmployeeServiceUnitTest {
 
-    private static final Logger logger = LoggerFactory.getLogger(EmployeeServiceUnitTest.class);
-
     @Mock
     private RestTemplate restTemplate;
 
@@ -34,7 +34,6 @@ public class EmployeeServiceUnitTest {
 
         Employee employee = empService.getEmployee("E001");
 
-        Assertions.assertEquals(emp, employee);
+        assertEquals(emp, employee);
     }
-
 }
