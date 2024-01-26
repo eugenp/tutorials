@@ -40,6 +40,11 @@
             <version>${icu4j.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>${apache.commons.collection.version}</version>
+        </dependency>        
+        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
             <version>5.8.1</version>
@@ -75,6 +80,7 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <apache.commons.lang3.version>3.13.0</apache.commons.lang3.version>
+        <apache.commons.collection.version>4.4</apache.commons.collection.version>        
         <apache.tika.version>2.9.1</apache.tika.version>
         <commons-text.version>1.10.0</commons-text.version>
         <icu4j.version>74.1</icu4j.version>

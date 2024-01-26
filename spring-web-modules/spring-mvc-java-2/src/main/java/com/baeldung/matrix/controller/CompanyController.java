@@ -49,7 +49,7 @@ public class CompanyController {
     @RequestMapping(value = "/companyData/{company}/employeeData/{employee}", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<Map<String, String>> getCompanyName(@MatrixVariable(value = "name", pathVar = "company") final String name) {
-        final Map<String, String> result = new HashMap<String, String>();
+        final Map<String, String> result = new HashMap<>();
         result.put("name", name);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
