@@ -21,8 +21,11 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.userDetailsService(userDetailsService)
-            .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry -> authorizationManagerRequestMatcherRegistry.anyRequest().authenticated())
-            .formLogin(httpSecurityFormLoginConfigurer -> httpSecurityFormLoginConfigurer.loginPage("/login").permitAll().defaultSuccessUrl("/index"))
+            .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry -> authorizationManagerRequestMatcherRegistry
+                    .anyRequest().authenticated())
+            .formLogin(httpSecurityFormLoginConfigurer -> httpSecurityFormLoginConfigurer
+                    .loginPage("/login").permitAll()
+                    .defaultSuccessUrl("/index"))
             .logout(httpSecurityLogoutConfigurer -> httpSecurityLogoutConfigurer.permitAll()
                     .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                     .logoutSuccessUrl("/login"));
