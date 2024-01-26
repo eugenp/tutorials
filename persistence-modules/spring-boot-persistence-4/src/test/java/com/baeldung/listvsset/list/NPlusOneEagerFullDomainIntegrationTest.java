@@ -37,7 +37,7 @@ class NPlusOneEagerFullDomainIntegrationTest extends BaseNPlusOneIntegrationTest
     @ParameterizedTest
     @MethodSource
     void givenEagerListBasedUser_WhenFetchingAllUsers_ThenIssueNPlusOneRequests(ToIntFunction<List<User>> function) {
-        int numberOfRequests = getService().countNumberOfRequestsWithFunction(function);
+        int numberOfRequests = getUserService().countNumberOfRequestsWithFunction(function);
         assertSelectCount(numberOfRequests);
     }
 
@@ -58,7 +58,7 @@ class NPlusOneEagerFullDomainIntegrationTest extends BaseNPlusOneIntegrationTest
     @ParameterizedTest
     @ValueSource(longs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
     void givenEagerListBasedUser_WhenFetchingOneUser_ThenUseDFS(Long id) {
-        int numberOfRequests = getService().getUserByIdWithFunction(id, this::countNumberOfRequests);
+        int numberOfRequests = getUserService().getUserByIdWithFunction(id, this::countNumberOfRequests);
         assertSelectCount(numberOfRequests);
     }
 

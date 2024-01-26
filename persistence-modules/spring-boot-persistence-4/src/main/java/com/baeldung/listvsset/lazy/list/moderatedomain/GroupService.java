@@ -25,6 +25,7 @@ public class GroupService {
     public List<Group> findAll() {
         return groupRepository.findAll();
     }
+
     public int countNumberOfRequestsWithFunction(ToIntFunction<List<Group>> function) {
         return function.applyAsInt(groupRepository.findAll());
     }
