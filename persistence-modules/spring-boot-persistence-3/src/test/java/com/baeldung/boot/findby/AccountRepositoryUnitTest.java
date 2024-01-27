@@ -41,14 +41,14 @@ public class AccountRepositoryUnitTest {
     }
 
     @Test
-    public void givenAccountInDb_whenPerformFindByEmail_returnsAccount() {
+    public void givenAccountInDb_whenPerformFindByEmail_thenReturnsAccount() {
         String email = "test@test.com";
         Account account = accountRepository.findByEmail(email);
         assertThat(account.getEmail()).isEqualTo(email);
     }
 
     @Test
-    public void givenAccountInDb_whenPerformFindByUsernameAndEmail_returnsAccount() {
+    public void givenAccountInDb_whenPerformFindByUsernameAndEmail_thenReturnsAccount() {
         String email = "test@test.com";
         String username = "user_admin";
         Account account = accountRepository.findByUsernameAndEmail(username, email);
@@ -57,7 +57,7 @@ public class AccountRepositoryUnitTest {
     }
 
     @Test
-    public void givenAccountInDb_whenPerformFindByUsernameOrEmail_returnsAccount() {
+    public void givenAccountInDb_whenPerformFindByUsernameOrEmail_thenReturnsAccount() {
         String email = "test@test.com";
         String username = "user_editor";
         Account account = accountRepository.findByUsernameOrEmail(username, email);
@@ -66,7 +66,7 @@ public class AccountRepositoryUnitTest {
     }
 
     @Test
-    public void givenAccountInDb_whenPerformFindByUsernameInOrEmailIn_returnsAccount() {
+    public void givenAccountInDb_whenPerformFindByUsernameInOrEmailIn_thenReturnsAccounts() {
         List<String> emails = Arrays.asList("test@test.com", "abc@abc.com", "pqr@pqr.com");
         List<String> usernames = Arrays.asList("user_editor", "user_admin");
         List<Account> byUsernameInOrEmailIn = accountRepository.findByUsernameInOrEmailIn(usernames, emails);

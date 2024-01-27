@@ -9,4 +9,5 @@ This module contains articles about libraries for data processing in Java.
 - [A Guide to Apache Crunch](https://www.baeldung.com/apache-crunch)
 - [Intro to Apache Storm](https://www.baeldung.com/apache-storm)
 - [Guide to JMapper](https://www.baeldung.com/jmapper)
-More articles: [[next -->]](/../libraries-data-2)
+- [What Does It Mean to Hydrate an Object?](https://www.baeldung.com/java-object-hydration)
+- More articles: [[next -->]](/../libraries-data-2)

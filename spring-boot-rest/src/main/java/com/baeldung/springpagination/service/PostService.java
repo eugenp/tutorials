@@ -42,6 +42,6 @@ public class PostService implements IPostService {
 
     @Override
     public Post getPostById(Long id) {
-        return postRepository.getOne(id);
+        return postRepository.getReferenceById(id);
     }
 }

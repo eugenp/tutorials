@@ -107,6 +107,7 @@
         <jaxb-runtime.version>4.0.0</jaxb-runtime.version>
         <wsdl4j.version>1.6.3</wsdl4j.version>
         <jaxb2-maven-plugin.version>3.1.0</jaxb2-maven-plugin.version>
+        <maven.compiler.release>17</maven.compiler.release>
     </properties>
 
 </project>
