@@ -3,40 +3,40 @@ package com.baeldung.countdownlatchvssemaphore;
 import java.util.concurrent.Semaphore;
 
 public class SemaphoreDemo {
-    private static final int NUM_PERMITS = 3;
-    private static final int NUM_THREADS = 5;
-    private static Semaphore semaphore = new Semaphore(NUM_PERMITS);
 
     public static void main(String[] args) {
-        // Create and start worker threads
-        for (int i = 1; i <= NUM_THREADS; i++) {
-            Thread workerThread = new Thread(new Worker(i));
-            workerThread.start();
+        // Create a Semaphore with a fixed number of permits
+        int NUM_PERMITS = 3;
+        Semaphore semaphore = new Semaphore(NUM_PERMITS);
+
+        // Simulate resource access by worker threads
+        for (int i = 1; i <= 5; i++) {
+            new Thread(() -> {
+                try {
+                    // Acquire a permit to access the resource
+                    semaphore.acquire();
+                    System.out.println("Thread " + Thread.currentThread().getId() + " accessing resource.");
+
+                    // Simulate resource usage
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } finally {
+                    // Release the permit after resource access is complete
+                    semaphore.release();
+                }
+            }).start();
         }
-    }
 
-    // Worker thread simulating resource access
-    private static class Worker implements Runnable {
+        // Simulate resetting the Semaphore by releasing additional permits after a delay
+        try {
+            Thread.sleep(5000);
 
-        private final int workerId;
-
-        public Worker(int workerId) {
-            this.workerId = workerId;
-        }
-
-        @Override
-        public void run() {
-            try {
-                // Simulate work
-                System.out.println("Worker " + workerId + " is waiting to access a resource.");
-                semaphore.acquire();
-                System.out.println("Worker " + workerId + " has acquired a resource.");
-                Thread.sleep(2000);
-                System.out.println("Worker " + workerId + " has released the resource.");
-                semaphore.release();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            // Resetting the semaphore permits to the initial count
+            semaphore.release(NUM_PERMITS);
+            System.out.println("Semaphore permits reset to initial count.");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 }
