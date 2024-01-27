@@ -10,4 +10,5 @@
 - [Representing Furthest Possible Date in Java](https://www.baeldung.com/java-date-represent-max)
 - [Retrieving Unix Time in Java](https://www.baeldung.com/java-retrieve-unix-time)
 - [Calculate Months Between Two Dates in Java](https://www.baeldung.com/java-months-difference-two-dates)
+- [Format LocalDate to ISO 8601 With T and Z](https://www.baeldung.com/java-format-localdate-iso-8601-t-z)
 - [[<-- Prev]](/core-java-modules/core-java-datetime-java8-1)
