@@ -14,4 +14,5 @@
 - [Clamp Function in Java](https://www.baeldung.com/java-clamp-function)
 - [Creating a Magic Square in Java](https://www.baeldung.com/java-magic-square)
 - [Check if a Point Is Between Two Points Drawn on a Straight Line in Java](https://www.baeldung.com/java-check-point-straight-line)
+- [Validate if a String Is a Valid Geo Coordinate](https://www.baeldung.com/java-geo-coordinates-validation)
 - More articles: [[<-- Prev]](/core-java-modules/core-java-lang-math-2)
