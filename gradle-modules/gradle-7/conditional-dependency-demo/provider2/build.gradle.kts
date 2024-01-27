@@ -4,6 +4,8 @@ plugins {
 
 group = "com.baeldung.gradle"
 version = "0.0.1-SNAPSHOT"
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
 
 repositories {
     mavenCentral()

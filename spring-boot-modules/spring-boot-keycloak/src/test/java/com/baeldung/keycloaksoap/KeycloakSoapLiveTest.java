@@ -73,7 +73,7 @@ class KeycloakSoapLiveTest {
         ResponseEntity<String> responseEntity = restTemplate.postForEntity("http://localhost:" + port + "/ws/api/v1/", request, String.class);
 
         assertThat(responseEntity).isNotNull();
-        assertThat(responseEntity.getStatusCodeValue()).isEqualTo(HttpStatus.OK.value());
+        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK.value());
         assertThat(responseEntity.getBody()).isNotBlank();
         assertThat(responseEntity.getBody()).containsIgnoringCase(":id>1</");
     }
@@ -92,7 +92,7 @@ class KeycloakSoapLiveTest {
         HttpEntity<String> request = new HttpEntity<>(Utility.getGetProductDetailsRequest(), headers);
         ResponseEntity<String> responseEntity = restTemplate.postForEntity("http://localhost:" + port + "/ws/api/v1/", request, String.class);
         assertThat(responseEntity).isNotNull();
-        assertThat(responseEntity.getStatusCodeValue()).isEqualTo(HttpStatus.UNAUTHORIZED.value());
+        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.UNAUTHORIZED.value());
         assertThat(responseEntity.getBody()).isBlank();
     }
 
@@ -110,7 +110,7 @@ class KeycloakSoapLiveTest {
         ResponseEntity<String> responseEntity = restTemplate.postForEntity("http://localhost:" + port + "/ws/api/v1/", request, String.class);
 
         assertThat(responseEntity).isNotNull();
-        assertThat(responseEntity.getStatusCodeValue()).isEqualTo(HttpStatus.OK.value());
+        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK.value());
         assertThat(responseEntity.getBody()).isNotBlank();
         assertThat(responseEntity.getBody()).containsIgnoringCase("Deleted the product with the id");
     }
@@ -130,7 +130,7 @@ class KeycloakSoapLiveTest {
         ResponseEntity<String> responseEntity = restTemplate.postForEntity("http://localhost:" + port + "/ws/api/v1/", request, String.class);
 
         assertThat(responseEntity).isNotNull();
-        assertThat(responseEntity.getStatusCodeValue()).isEqualTo(HttpStatus.INTERNAL_SERVER_ERROR.value());
+        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.INTERNAL_SERVER_ERROR.value());
         assertThat(responseEntity.getBody()).isNotBlank();
         assertThat(responseEntity.getBody()).containsIgnoringCase("Access is denied");
     }

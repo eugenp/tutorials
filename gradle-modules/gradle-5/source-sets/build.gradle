@@ -3,6 +3,9 @@ apply plugin: "eclipse"
 apply plugin: "java"
 
 description = "Source Sets example"
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
+
 
 task printSourceSetInformation(){
     description = "Print source set information"

@@ -7,4 +7,5 @@ The "REST With Spring 3" Classes: http://bit.ly/restwithspring
 
 ### Relevant Articles:
 - [Send Array as Part of x-www-form-urlencoded Using Postman](https://www.baeldung.com/java-postman-send-array)
+- [Using XML in @RequestBody in Spring REST](https://www.baeldung.com/spring-xml-requestbody)
 - More articles: [[<-- prev]](../spring-rest-http)

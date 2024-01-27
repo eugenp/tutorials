@@ -11,7 +11,7 @@ import com.baeldung.spring.servicevalidation.domain.UserAccount;
 @Service
 public class UserAccountDao {
 
-    private Map<String, UserAccount> DB = new HashMap<String, UserAccount>();
+    private Map<String, UserAccount> DB = new HashMap<>();
 
     public String addUserAccount(UserAccount useraccount) {
         DB.put(useraccount.getName(), useraccount);
