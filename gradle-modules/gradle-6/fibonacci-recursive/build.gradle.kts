@@ -2,6 +2,9 @@ plugins {
     `java-library`
 }
 
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
+
 dependencies {
     api(project(":fibonacci-spi"))
     compileOnly("com.google.auto.service:auto-service-annotations:1.0-rc6")

@@ -50,7 +50,7 @@ public class ProcessBuilderUnitTest {
     public void givenProcessBuilder_whenModifyEnvironment_thenSuccess() throws IOException, InterruptedException {
         ProcessBuilder processBuilder = new ProcessBuilder();
         Map<String, String> environment = processBuilder.environment();
-        environment.forEach((key, value) -> System.out.println(key + value));
+        // environment.forEach((key, value) -> System.out.println(key + value));
 
         environment.put("GREETING", "Hola Mundo");
 

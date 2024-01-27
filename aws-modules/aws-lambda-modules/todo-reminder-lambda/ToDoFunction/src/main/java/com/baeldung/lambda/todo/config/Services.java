@@ -10,7 +10,7 @@ import feign.gson.GsonEncoder;
 import feign.slf4j.Slf4jLogger;
 import uk.org.webcompere.lightweightconfig.ConfigLoader;
 
-import static feign.Logger.Level.FULL;
+import static feign.Logger.Level.BASIC;
 
 public class Services extends AbstractModule {
     @Override
@@ -20,14 +20,14 @@ public class Services extends AbstractModule {
         ToDoApi toDoApi = Feign.builder()
           .decoder(new GsonDecoder())
           .logger(new Slf4jLogger())
-          .logLevel(FULL)
+          .logLevel(BASIC)
           .requestInterceptor(new BasicAuthRequestInterceptor(config.getToDoCredentials().getUsername(), config.getToDoCredentials().getPassword()))
           .target(ToDoApi.class, config.getToDoEndpoint());
 
         PostApi postApi = Feign.builder()
           .encoder(new GsonEncoder())
           .logger(new Slf4jLogger())
-          .logLevel(FULL)
+          .logLevel(BASIC)
           .requestInterceptor(new BasicAuthRequestInterceptor(config.getPostCredentials().getUsername(), config.getPostCredentials().getPassword()))
           .target(PostApi.class, config.getPostEndpoint());
 
