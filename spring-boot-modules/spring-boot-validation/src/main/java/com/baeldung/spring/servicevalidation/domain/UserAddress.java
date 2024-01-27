@@ -1,6 +1,6 @@
 package com.baeldung.spring.servicevalidation.domain;
 
-import javax.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotBlank;
 
 public class UserAddress {
 
