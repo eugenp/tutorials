@@ -1,17 +1,20 @@
 package com.baeldung.htmlunit;
 
-import javax.servlet.ServletContext;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.thymeleaf.spring4.SpringTemplateEngine;
-import org.thymeleaf.spring4.view.ThymeleafViewResolver;
-import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
+import org.thymeleaf.spring5.SpringTemplateEngine;
+import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
+import org.thymeleaf.spring5.view.ThymeleafViewResolver;
+import org.thymeleaf.templateresolver.WebApplicationTemplateResolver;
+import org.thymeleaf.web.IWebApplication;
+import org.thymeleaf.web.servlet.IServletWebApplication;
+import org.thymeleaf.web.servlet.JakartaServletWebApplication;
 
 @Configuration
 @EnableWebMvc
@@ -19,7 +22,7 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 public class TestConfig implements WebMvcConfigurer {
 
     @Autowired
-    private ServletContext ctx;
+    private ApplicationContext ctx;
 
     @Bean
     public ViewResolver thymeleafViewResolver() {
@@ -30,8 +33,8 @@ public class TestConfig implements WebMvcConfigurer {
     }
 
     @Bean
-    public ServletContextTemplateResolver templateResolver() {
-        final ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver(ctx);
+    public SpringResourceTemplateResolver templateResolver() {
+        final SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver ();
         templateResolver.setPrefix("/WEB-INF/templates/");
         templateResolver.setSuffix(".html");
         templateResolver.setTemplateMode("HTML5");

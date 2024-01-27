@@ -3,7 +3,7 @@ package com.baeldung.web.controller;
 import java.io.IOException;
 import java.io.InputStream;
 
-import javax.servlet.ServletContext;
+import jakarta.servlet.ServletContext;
 
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;

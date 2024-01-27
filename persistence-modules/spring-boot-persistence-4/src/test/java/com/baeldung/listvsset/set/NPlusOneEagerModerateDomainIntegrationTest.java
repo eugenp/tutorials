@@ -33,14 +33,14 @@ class NPlusOneEagerModerateDomainIntegrationTest extends BaseNPlusOneIntegration
 
     @Test
     void givenEagerSetBasedUser_whenFetchingAllUsers_thenIssueNPlusOneRequests() {
-        List<User> users = getService().findAll();
+        List<User> users = getUserService().findAll();
         assertSelectCount(users.size() + 1);
     }
 
     @ParameterizedTest
     @ValueSource(longs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
     void givenEagerSetBasedUser_whenFetchingOneUser_thenIssueOneRequest(Long id) {
-        getService().getUserById(id);
+        getUserService().getUserById(id);
         assertSelectCount(1);
     }
 

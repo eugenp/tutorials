@@ -21,6 +21,7 @@
         <module>host-maven-repo-example</module>
         <module>jacoco-coverage-aggregation</module>
         <module>maven-archetype</module>
+        <module>maven-build-lifecycle</module>
         <module>maven-build-optimization</module>
         <module>maven-builder-plugin</module>
         <module>maven-classifier</module>
