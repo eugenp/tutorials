@@ -10,4 +10,4 @@ This module contains articles about libraries for data processing in Java.
 - [Intro to Apache Storm](https://www.baeldung.com/apache-storm)
 - [Guide to JMapper](https://www.baeldung.com/jmapper)
 - [What Does It Mean to Hydrate an Object?](https://www.baeldung.com/java-object-hydration)
-More articles: [[next -->]](/../libraries-data-2)
+- More articles: [[next -->]](/../libraries-data-2)
