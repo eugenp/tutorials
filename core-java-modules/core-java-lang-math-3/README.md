@@ -16,4 +16,5 @@
 - [Check if a Point Is Between Two Points Drawn on a Straight Line in Java](https://www.baeldung.com/java-check-point-straight-line)
 - [Validate if a String Is a Valid Geo Coordinate](https://www.baeldung.com/java-geo-coordinates-validation)
 - [Rotate a Vertex Around a Certain Point in Java](https://www.baeldung.com/java-rotate-vertex-around-point)
+- [Calculating the Power of Any Number in Java Without Using Math pow() Method](https://www.baeldung.com/java-calculating-the-power-without-math-pow)
 - More articles: [[<-- Prev]](/core-java-modules/core-java-lang-math-2)
