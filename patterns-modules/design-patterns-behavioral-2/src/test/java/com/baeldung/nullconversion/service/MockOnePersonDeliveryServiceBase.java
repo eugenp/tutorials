@@ -23,7 +23,7 @@ public abstract class MockOnePersonDeliveryServiceBase implements DeliveryServic
             String code = zipCode.getCode();
             return calculateDeliveryForZipCode(code);
         }
-        return null;
+        return Delivery.defaultDelivery();
     }
 
     public Delivery calculateDeliveryForPersonWithOptional(Long id) {
@@ -32,7 +32,7 @@ public abstract class MockOnePersonDeliveryServiceBase implements DeliveryServic
           .map(Address::getZipCode)
           .map(ZipCode::getCode)
           .map(this::calculateDeliveryForZipCode)
-          .orElse(null);
+          .orElse(Delivery.defaultDelivery());
     }
 
     protected Person getPersonById(Long id) {
@@ -41,7 +41,7 @@ public abstract class MockOnePersonDeliveryServiceBase implements DeliveryServic
 
     protected Delivery calculateDeliveryForZipCode(String zipCode) {
         if (zipCode == null || zipCode.isEmpty()) {
-            return null;
+            return Delivery.defaultDelivery();
         } else {
             return Delivery.freeDelivery();
         }

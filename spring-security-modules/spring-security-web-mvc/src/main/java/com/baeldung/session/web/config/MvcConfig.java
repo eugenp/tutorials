@@ -9,13 +9,13 @@ public class MvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addViewControllers(final ViewControllerRegistry registry) {
-        registry.addViewController("/anonymous.html");
+        registry.addViewController("/anonymous").setViewName("view/anonymous");
 
-        registry.addViewController("/login.html");
-        registry.addViewController("/homepage.html");
-        registry.addViewController("/sessionExpired.html");
-        registry.addViewController("/invalidSession.html");
-        registry.addViewController("/console.html");
+        registry.addViewController("/login").setViewName("view/login");
+        registry.addViewController("/homepage").setViewName("view/homepage");
+        registry.addViewController("/sessionExpired").setViewName("view/sessionExpired");
+        registry.addViewController("/invalidSession").setViewName("view/invalidSession");
+        registry.addViewController("/console").setViewName("view/console");
     }
 
 
@@ -27,7 +27,8 @@ public class MvcConfig implements WebMvcConfigurer {
 //        final InternalResourceViewResolver bean = new InternalResourceViewResolver();
 //
 //        bean.setViewClass(JstlView.class);
-//        bean.setPrefix("/WEB-INF/view/");
+//        bean.setPrefix("/templates/view/");
 //        bean.setSuffix(".jsp");
+//        return bean;
 //    }
 }

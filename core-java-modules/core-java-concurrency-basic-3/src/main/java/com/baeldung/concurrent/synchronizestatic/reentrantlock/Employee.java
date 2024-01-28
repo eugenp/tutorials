@@ -24,7 +24,8 @@ public class Employee {
     private static void incrementCount() {
         lock.lock();
         try {
-            System.out.println("Count = " + ++count);
+            ++count;
+            // System.out.println("Count = " + ++count);
         }
         finally {
             lock.unlock();

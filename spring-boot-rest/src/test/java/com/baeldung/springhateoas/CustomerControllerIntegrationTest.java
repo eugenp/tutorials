@@ -86,7 +86,7 @@ public class CustomerControllerIntegrationTest {
         List<Order> orders = Collections.singletonList(order1);
         given(this.orderService.getAllOrdersForCustomer(DEFAULT_CUSTOMER_ID)).willReturn(orders);
 
-        this.mvc.perform(get("/customers/").accept(MediaTypes.HAL_JSON_VALUE))
+        this.mvc.perform(get("/customers").accept(MediaTypes.HAL_JSON_VALUE))
             .andExpect(status().isOk())
             .andExpect(
                 jsonPath("$._embedded.customers[0]._links.self.href", is("http://localhost/customers/customer1")))
