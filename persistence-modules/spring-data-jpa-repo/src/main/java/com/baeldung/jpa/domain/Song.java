@@ -1,14 +1,16 @@
 package com.baeldung.jpa.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import java.time.LocalDateTime;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 @Entity
 public class Song {
 
-    @Id private long id;
+    @Id
+    private long id;
     private String name;
     @Column(name = "length_in_seconds")
     private int lengthInSeconds;

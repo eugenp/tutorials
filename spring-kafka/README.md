@@ -11,6 +11,7 @@ This module contains articles about Spring with Kafka
 - [Configuring Kafka SSL Using Spring Boot](https://www.baeldung.com/spring-boot-kafka-ssl)
 - [Kafka Streams With Spring Boot](https://www.baeldung.com/spring-boot-kafka-streams)
 - [Get the Number of Messages in an Apache Kafka Topic](https://www.baeldung.com/java-kafka-count-topic-messages)
+- [Sending Data to a Specific Partition in Kafka](https://www.baeldung.com/kafka-send-data-partition)
 
 ### Intro
 

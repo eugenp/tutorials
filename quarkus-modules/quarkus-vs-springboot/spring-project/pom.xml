@@ -103,9 +103,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.12.1</version>
                 <configuration>
-                    <source>${maven.compiler.source.version}</source>
-                    <target>${maven.compiler.target.version}</target>
+                    <source>${maven.compiler.release}</source>
+                    <target>${maven.compiler.release}</target>
                 </configuration>
             </plugin>
         </plugins>
@@ -117,15 +118,29 @@
             <name>Spring release</name>
             <url>https://repo.spring.io/release</url>
         </repository>
+        <repository>
+            <id>spring-milestone</id>
+            <name>Spring Milestone</name>
+            <url>https://repo.spring.io/milestone</url>
+        </repository>
+        <repository>
+            <id>spring-snapshot</id>
+            <name>Spring Snapshot</name>
+            <url>https://repo.spring.io/snapshot</url>
+        </repository>
+
     </repositories>
 
     <pluginRepositories>
         <pluginRepository>
-            <id>spring-release</id>
-            <name>Spring release</name>
-            <url>https://repo.spring.io/release</url>
+            <id>spring-milestone</id>
+            <name>Spring milestone</name>
+            <url>https://repo.spring.io/milestone</url>
         </pluginRepository>
     </pluginRepositories>
+
+
+
 
     <profiles>
         <profile>
@@ -158,6 +173,7 @@
                     <plugin>
                         <groupId>org.springframework.experimental</groupId>
                         <artifactId>spring-aot-maven-plugin</artifactId>
+                        <version>${spring-native.version}</version>
                         <executions>
                             <execution>
                                 <id>test-generate</id>
@@ -194,6 +210,7 @@
                     <plugin>
                         <groupId>org.springframework.experimental</groupId>
                         <artifactId>spring-aot-maven-plugin</artifactId>
+                        <version>${spring-native.version}</version>
                         <executions>
                             <execution>
                                 <id>test-generate</id>
@@ -257,6 +274,7 @@
         <maven-surefire-plugin.version>3.1.0</maven-surefire-plugin.version>
         <native-buildtools.version>0.9.11</native-buildtools.version>
         <jasync-r2dbc-mysql.version>2.0.8</jasync-r2dbc-mysql.version>
+        <maven.compiler.release>17</maven.compiler.release>
     </properties>
 
 </project>
