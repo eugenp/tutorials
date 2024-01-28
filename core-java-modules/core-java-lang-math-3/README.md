@@ -13,4 +13,5 @@
 - [Java Money and the Currency API](http://www.baeldung.com/java-money-and-currency)
 - [Clamp Function in Java](https://www.baeldung.com/java-clamp-function)
 - [Creating a Magic Square in Java](https://www.baeldung.com/java-magic-square)
+- [Check if a Point Is Between Two Points Drawn on a Straight Line in Java](https://www.baeldung.com/java-check-point-straight-line)
 - More articles: [[<-- Prev]](/core-java-modules/core-java-lang-math-2)

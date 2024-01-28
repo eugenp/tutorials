@@ -34,7 +34,7 @@ public class UserControllerIntegrationTest {
     private MockMvc mockMvc;
 
     @Test
-    public void whenUserControllerInjected_thenNotNull() throws Exception {
+    public void whenUserControllerInjected_thenNotNull() {
         assertThat(userController).isNotNull();
     }
 
