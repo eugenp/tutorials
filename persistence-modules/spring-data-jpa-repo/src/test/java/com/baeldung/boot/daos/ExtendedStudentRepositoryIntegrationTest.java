@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 
-import javax.annotation.Resource;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -15,6 +14,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.baeldung.boot.BootApplication;
 import com.baeldung.boot.domain.Student;
+
+import jakarta.annotation.Resource;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = { BootApplication.class})

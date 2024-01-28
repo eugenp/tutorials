@@ -10,8 +10,6 @@ public class CustomWebMvcConfigurationSupport extends WebMvcConfigurationSupport
     @Override
     protected PathMatchConfigurer getPathMatchConfigurer() {
         PathMatchConfigurer pathMatchConfigurer = super.getPathMatchConfigurer();
-        pathMatchConfigurer.setUseSuffixPatternMatch(false);
-
         return pathMatchConfigurer;
     }
 }
