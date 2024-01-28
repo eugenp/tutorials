@@ -4,7 +4,7 @@ import static com.baeldung.Consts.APPLICATION_PORT;
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import com.baeldung.common.web.AbstractLiveTest;
 import com.baeldung.persistence.model.Foo;
