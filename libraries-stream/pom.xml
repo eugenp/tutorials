@@ -49,7 +49,7 @@
 
     <properties>
         <jool.version>0.9.12</jool.version>
-        <parallel-collectors.version>2.5.0</parallel-collectors.version>
+        <parallel-collectors.version>2.6.0</parallel-collectors.version>
         <vavr.version>0.9.0</vavr.version>
         <eclipse-collections.version>8.2.0</eclipse-collections.version>
         <streamex.version>0.8.1</streamex.version>
