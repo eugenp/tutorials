@@ -35,6 +35,7 @@
         <module>idd</module>
         <module>intercepting-filter</module>
         <module>solid</module>
+        <module>monkey-patching</module>
     </modules>
 
 </project>

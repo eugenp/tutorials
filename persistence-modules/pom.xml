@@ -38,6 +38,7 @@
         <module>hibernate-queries</module>
         <module>hibernate-enterprise</module>
         <module>influxdb</module>
+        <module>java-calcite</module>
         <module>java-cassandra</module>
         <module>java-cockroachdb</module>
         <module>java-jdbi</module>
@@ -61,14 +62,14 @@
         <module>solr</module>
         <module>spring-boot-persistence-2</module>
         <module>spring-boot-persistence-3</module>
-        <!--<module>spring-boot-mysql</module>-->   <!-- failing after upgrading to jdk17 -->
+        <module>spring-boot-mysql</module>
         <module>spring-boot-persistence</module>
         <module>spring-boot-persistence-h2</module>
         <module>spring-boot-persistence-mongodb</module>
         <module>spring-boot-persistence-mongodb-2</module>
         <module>spring-boot-persistence-mongodb-3</module>
         <module>spring-data-arangodb</module>
-        <!--<module>spring-data-cassandra</module>-->   <!-- failing after upgrading to jdk17 -->
+        <!--<module>spring-data-cassandra</module>-->   <!-- failing after upgrading to jdk17. JDK 17 compatibility in progress CASSANDRA-16895 -->
         <module>spring-data-cassandra-test</module>
         <module>spring-data-cosmosdb</module>
         <module>spring-data-couchbase-2</module>
@@ -96,8 +97,6 @@
         <module>spring-data-mongodb-2</module>
         <module>spring-data-mongodb-reactive</module>
         <module>spring-data-redis</module>
-        <!--        Moved to JDK9+ profiles-->
-        <!--        <module>spring-data-rest</module>-->
         <module>spring-data-rest-2</module>
         <module>spring-data-rest-querydsl</module>
         <module>spring-data-solr</module>

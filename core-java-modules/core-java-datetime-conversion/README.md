@@ -12,3 +12,4 @@ This module contains articles about converting between Java date and time object
 - [Convert Epoch Time to LocalDate and LocalDateTime](https://www.baeldung.com/java-convert-epoch-localdate)
 - [Convert Timestamp String to Long in Java](https://www.baeldung.com/java-convert-timestamp-string-long)
 - [Convert Long Timestamp to LocalDateTime in Java](https://www.baeldung.com/java-convert-long-timestamp-localdatetime)
+- [Convert Joda-Time DateTime to Date and Vice Versa](https://www.baeldung.com/java-convert-joda-time-datetime-to-date)

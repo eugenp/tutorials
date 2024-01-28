@@ -20,7 +20,7 @@ public class OnePersonGuavaOptionalDeliveryService extends MockOnePersonDelivery
           .transform(Address::getZipCode)
           .transform(ZipCode::getCode)
           .transform(this::calculateDeliveryForZipCode)
-          .orNull();
+          .or(Delivery.defaultDelivery());
     }
 
 }

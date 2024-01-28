@@ -18,10 +18,10 @@ public class PersonProvider implements ArgumentsProvider {
 
         return Stream.of(
           Arguments.of(person, Delivery.freeDelivery()),
-          Arguments.of(cloneAndMutate(person, p -> p.getAddress().getZipCode().setCode("")), null),
-          Arguments.of(cloneAndMutate(person, p -> p.getAddress().setZipCode(null)), null),
-          Arguments.of(cloneAndMutate(person, p -> p.setAddress(null)), null),
-          Arguments.of(null, null)
+          Arguments.of(cloneAndMutate(person, p -> p.getAddress().getZipCode().setCode("")), Delivery.defaultDelivery()),
+          Arguments.of(cloneAndMutate(person, p -> p.getAddress().setZipCode(null)), Delivery.defaultDelivery()),
+          Arguments.of(cloneAndMutate(person, p -> p.setAddress(null)), Delivery.defaultDelivery()),
+          Arguments.of(null, Delivery.defaultDelivery())
         );
 
     }
