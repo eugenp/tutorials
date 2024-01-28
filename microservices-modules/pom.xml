@@ -22,6 +22,7 @@
         <module>msf4j</module>
         <module>open-liberty</module>
         <module>rest-express</module>
+        <module>event-driven-microservice</module>
     </modules>
 
 </project>

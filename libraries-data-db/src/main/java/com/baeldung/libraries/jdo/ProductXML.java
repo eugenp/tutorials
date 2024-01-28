@@ -2,7 +2,7 @@ package com.baeldung.libraries.jdo;
 
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.PrimaryKey;
-import javax.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlAttribute;
 
 @PersistenceCapable()
 public class ProductXML {

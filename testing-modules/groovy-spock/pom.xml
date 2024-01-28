@@ -69,6 +69,7 @@
                     <testSourceDirectory>src/test/groovy</testSourceDirectory>
                     <includes>
                         <include>**/*Specification.groovy</include>
+                        <include>**/*Spec.groovy</include>
                         <include>**/*Test.groovy</include>
                     </includes>
                 </configuration>

@@ -12,7 +12,7 @@ import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.ByteArrayHttpMessageConverter;
 import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
@@ -113,14 +113,11 @@ public class WebConfig implements WebMvcConfigurer {
     public void configurePathMatch(final PathMatchConfigurer configurer) {
         final UrlPathHelper urlPathHelper = new UrlPathHelper();
         urlPathHelper.setRemoveSemicolonContent(false);
-
         configurer.setUrlPathHelper(urlPathHelper);
     }
 
     @Bean(name = "multipartResolver")
-    public CommonsMultipartResolver multipartResolver() {
-        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
-        multipartResolver.setMaxUploadSize(100000);
-        return multipartResolver;
+    public StandardServletMultipartResolver multipartResolver() {
+        return new StandardServletMultipartResolver();
     }
 }
