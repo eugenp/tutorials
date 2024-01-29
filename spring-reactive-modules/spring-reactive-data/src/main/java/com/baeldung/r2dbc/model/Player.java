@@ -7,19 +7,12 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Table
 public class Player {
     @Id
     Integer id;
     String name;
     Integer age;
-
-    public Player() {
-    }
-
-    public Player(Integer id, String name, Integer age) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
-    }
 }
