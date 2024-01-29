@@ -24,14 +24,14 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/variable-defined", method = RequestMethod.GET)
-    public String getDefinedVariables(Model model) {
+    public String getVariableIsDefined(Model model) {
         DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, Locale.getDefault());
         model.addAttribute("serverTime", dateFormat.format(new Date()));
         return "checkVariableIsDefined.html";
     }
 
     @RequestMapping(value = "/variable-not-defined", method = RequestMethod.GET)
-    public String getNotDefinedVariables(Model model) {
+    public String getVariableIsNotDefined(Model model) {
         return "checkVariableIsDefined.html";
     }
 }
