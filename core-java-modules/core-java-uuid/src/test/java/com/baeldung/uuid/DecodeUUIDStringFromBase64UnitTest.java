@@ -10,7 +10,7 @@ import java.util.UUID;
 import org.apache.commons.lang3.Conversion;
 import org.junit.jupiter.api.Test;
 
-public class DecodeUUIDStringFromBase64Test {
+public class DecodeUUIDStringFromBase64UnitTest {
     private final UUID originalUUID = UUID.fromString("cc5f93f7-8cf1-4a51-83c6-e740313a0c6c");
 
     @Test
