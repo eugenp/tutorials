@@ -35,11 +35,11 @@ public class SessionConfigurationLiveTest {
         Response resp3 = simpleResponseRequestUsingSessionNotFollowingRedirects(sessionFilter);
 
         assertThat(resp3.getStatusCode()).isEqualTo(HttpStatus.FOUND.value());
-        assertThat(resp3.getHeader("Location")).isEqualTo("http://localhost:8080/invalidSession.html");
+        assertThat(resp3.getHeader("Location")).isEqualTo("http://localhost:8080/invalidSession");
     }
 
     @Test
-    public void givenValidUser_whenLoginMoreThanMaxValidSession_thenRedirectedToExpiredSessionUri() throws Exception {
+    public void givenValidUser_whenLoginMoreThanMaxValidSession_thenRedirectedToExpiredSessionUri() {
         SessionFilter sessionFilter = new SessionFilter();
         simpleSvcRequestLoggingIn(sessionFilter);
         simpleSvcRequestLoggingIn();
@@ -56,7 +56,7 @@ public class SessionConfigurationLiveTest {
             .get(SESSION_SVC_URL);
 
         assertThat(resp4.getStatusCode()).isEqualTo(HttpStatus.FOUND.value());
-        assertThat(resp4.getHeader("Location")).isEqualTo("http://localhost:8080/sessionExpired.html");
+        assertThat(resp4.getHeader("Location")).isEqualTo("http://localhost:8080/sessionExpired");
     }
 
     private static void simpleSvcRequestLoggingIn() {

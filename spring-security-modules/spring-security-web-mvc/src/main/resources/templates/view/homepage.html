@@ -1,0 +1,20 @@
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head></head>
+
+<body>
+	<h1>This is the homepage for the user</h1>
+
+	<div sec:authorize="hasRole('ROLE_USER')">
+		This text is only visible to a user
+		<br />
+	</div>
+
+	<div sec:authorize="hasRole('ROLE_ADMIN')">
+		This text is only visible to an admin
+		<br />
+	</div>
+
+	<a href="/logout" />Logout</a>
+
+</body>
+</html>

@@ -4,18 +4,16 @@ import static org.junit.Assert.assertEquals;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Files;
-
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.disk.DiskFileItem;
 import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.api.Test;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockMultipartFile;
+import org.springframework.web.multipart.MultipartFile;
 
 public class ConvertFileToMultipartFileUnitTest {
 
@@ -32,11 +30,11 @@ public class ConvertFileToMultipartFileUnitTest {
     @Test
     public void givenFile_whenCreateMultipartFileUsingCommonsMultipart_thenContentMatch() throws IOException {
         File file = new File("src/main/resources/targetFile.tmp");
-        FileItem fileItem = new DiskFileItem("file", Files.probeContentType(file.toPath()), false, file.getName(), (int) file.length(), file.getParentFile());
         InputStream input = new FileInputStream(file);
-        OutputStream outputStream = fileItem.getOutputStream();
+        byte [] arr = IOUtils.toByteArray(input);
+        OutputStream outputStream = new FileOutputStream(file);
         IOUtils.copy(input, outputStream);
-        MultipartFile multipartFile = new CommonsMultipartFile(fileItem);
+        MultipartFile multipartFile = new MockMultipartFile("test","targetFile.tmp",  MediaType.TEXT_PLAIN_VALUE, arr);
         String fileContent = new String(multipartFile.getBytes());
         assertEquals("Hello World", fileContent);
         assertEquals("targetFile.tmp", multipartFile.getOriginalFilename());

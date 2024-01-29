@@ -2,7 +2,7 @@ package com.baeldung.web.hateoas.listener;
 
 import java.util.StringJoiner;
 
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
