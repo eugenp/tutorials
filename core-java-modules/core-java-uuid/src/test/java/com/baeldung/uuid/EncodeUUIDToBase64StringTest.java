@@ -15,27 +15,30 @@ public class EncodeUUIDToBase64StringTest {
 
     @Test
     public void shouldEncodeUUIDUsingByteArrayAndBase64Encoder() {
+        String expectedEncodedString = "UUrxjPeTX8xsDDoxQOfGgw";
         byte[] uuidBytes = convertToByteArray(originalUUID);
         String encodedUUID = Base64.getEncoder().withoutPadding()
           .encodeToString(uuidBytes);
-        assertEquals("UUrxjPeTX8xsDDoxQOfGgw", encodedUUID);
+        assertEquals(expectedEncodedString, encodedUUID);
     }
 
     @Test
     public void shouldEncodeUUIDUsingByteBufferAndBase64UrlEncoder() {
+        String expectedEncodedString = "zF-T94zxSlGDxudAMToMbA";
         ByteBuffer byteBuffer = ByteBuffer.wrap(new byte[16]);
         byteBuffer.putLong(originalUUID.getMostSignificantBits());
         byteBuffer.putLong(originalUUID.getLeastSignificantBits());
         String encodedUUID = Base64.getUrlEncoder().withoutPadding()
           .encodeToString(byteBuffer.array());
-        assertEquals("zF-T94zxSlGDxudAMToMbA", encodedUUID);
+        assertEquals(expectedEncodedString, encodedUUID);
     }
 
     @Test
     public void shouldEncodeUUIDUsingApacheUtils() {
+        String expectedEncodedString = "UUrxjPeTX8xsDDoxQOfGgw";
         byte[] bytes = Conversion.uuidToByteArray(originalUUID, new byte[16], 0, 16);
         String encodedUUID = encodeBase64URLSafeString(bytes);
-        assertEquals("UUrxjPeTX8xsDDoxQOfGgw", encodedUUID);
+        assertEquals(expectedEncodedString, encodedUUID);
     }
 
     private byte[] convertToByteArray(UUID uuid) {
