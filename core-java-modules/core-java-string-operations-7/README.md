@@ -12,3 +12,5 @@
 - [Check If a Java StringBuilder Object Contains a Character](https://www.baeldung.com/java-check-stringbuilder-object-contains-character)
 - [Comparing One String With Multiple Values in One Expression in Java](https://www.baeldung.com/java-compare-string-multiple-values-one-expression)
 - [UTF-8 Validation in Java](https://www.baeldung.com/java-utf-8-validation)
+- [Simple Morse Code Translation in Java](https://www.baeldung.com/java-morse-code-english-translate)
+- [How to Determine if a String Contains Invalid Encoded Characters](https://www.baeldung.com/java-check-string-contains-invalid-encoded-characters)
