@@ -1,4 +1,4 @@
-package com.baeldung.spring.kafka.groupId;
+package com.baeldung.apachekafka3.groupId;
 
 import java.util.HashMap;
 import java.util.Map;

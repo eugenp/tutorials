@@ -1,7 +1,6 @@
-package com.baeldung.spring.kafka.groupId;
+package com.baeldung.apachekafka3.groupId;
 
 import org.apache.kafka.clients.consumer.Consumer;
-import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.common.errors.RecordDeserializationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,12 +11,6 @@ import org.springframework.lang.NonNull;
 class KafkaErrorHandler implements CommonErrorHandler {
 
     private static final Logger log = LoggerFactory.getLogger(KafkaErrorHandler.class);
-
-    @Override
-    public void handleRecord(@NonNull Exception exception, @NonNull ConsumerRecord<?, ?> record, @NonNull Consumer<?, ?> consumer,
-        @NonNull MessageListenerContainer container) {
-        handle(exception, consumer);
-    }
 
     @Override
     public void handleOtherException(@NonNull Exception exception, @NonNull Consumer<?, ?> consumer, @NonNull MessageListenerContainer container,
