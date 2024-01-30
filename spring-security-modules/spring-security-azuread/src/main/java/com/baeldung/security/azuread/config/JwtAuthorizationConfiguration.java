@@ -51,14 +51,4 @@ public class JwtAuthorizationConfiguration {
             return oidcUser;
         };
     }
-    
-//    @Bean
-//    GrantedAuthoritiesMapper jwtAuthoritiesMapper(JwtAuthorizationProperties props) {
-//        return new MappingJwtGrantedAuthoritiesMapper(
-//          props.getAuthoritiesPrefix(),
-//          props.getGroupsClaim(), 
-//          props.getGroupToAuthorities());
-//    }
-    
-
 }
