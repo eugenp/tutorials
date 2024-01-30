@@ -2,6 +2,8 @@ package com.baeldung.contexts.secure;
 
 import java.util.Arrays;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
@@ -16,23 +18,25 @@ import com.baeldung.contexts.services.GreeterService;
 @Controller
 public class HelloWorldSecureController {
 
+    private final Logger logger = LoggerFactory.getLogger(HelloWorldSecureController.class);
+
     @Autowired
     WebApplicationContext webApplicationContext;
 
     @Autowired
     private GreeterService greeterService;
-    
+
     @Autowired
     @Qualifier("contextAware")
-    private ApplicationContextUtilService contextUtilService; 
+    private ApplicationContextUtilService contextUtilService;
 
     private void processContext() {
         ApplicationContext context = contextUtilService.getApplicationContext();
-        System.out.println("application context : " + context);
-        System.out.println("application context Beans: " + Arrays.asList(context.getBeanDefinitionNames()));
+        logger.info("application context: {}", context);
+        logger.info("application context Beans: {}", Arrays.asList(context.getBeanDefinitionNames()));
 
-        System.out.println("context : " + webApplicationContext);
-        System.out.println("context Beans: " + Arrays.asList(webApplicationContext.getBeanDefinitionNames()));
+        logger.info("context: {}", webApplicationContext);
+        logger.info("context Beans: {}", Arrays.asList(webApplicationContext.getBeanDefinitionNames()));
     }
 
     @GetMapping(path = "/welcome_secure")
