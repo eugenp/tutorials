@@ -1,9 +1,6 @@
 package com.baeldung.r2dbc;
 
-import com.baeldung.r2dbc.configuration.R2DBCConfiguration;
 import com.baeldung.r2dbc.model.Player;
-import com.baeldung.r2dbc.repository.PlayerRepository;
-import io.r2dbc.h2.H2ConnectionFactory;
 import io.r2dbc.spi.ConnectionFactories;
 import io.r2dbc.spi.ConnectionFactory;
 import org.junit.Before;
@@ -12,12 +9,9 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.r2dbc.core.R2dbcEntityTemplate;
-import org.springframework.data.relational.core.query.Query;
 import org.springframework.r2dbc.core.DatabaseClient;
 import org.springframework.test.context.junit4.SpringRunner;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Hooks;
-import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
 import java.util.Arrays;
@@ -27,17 +21,11 @@ import static org.springframework.data.relational.core.query.Criteria.where;
 import static org.springframework.data.relational.core.query.Query.query;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = R2DBCConfiguration.class)
+@SpringBootTest
 public class R2dbcApplicationRdbcTemplateIntegrationTest {
 
     @Autowired
-    PlayerRepository playerRepository;
-
-    @Autowired
     DatabaseClient client;
-
-    @Autowired
-    H2ConnectionFactory factory;
 
     ConnectionFactory connectionFactory = ConnectionFactories.get("r2dbc:h2:mem:///testdb?options=DB_CLOSE_DELAY=-1;TRACE_LEVEL_FILE=4;USER=sa;PASSWORD=");
 
