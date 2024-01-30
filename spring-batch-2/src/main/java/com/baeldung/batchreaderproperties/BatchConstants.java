@@ -1,8 +1,5 @@
 package com.baeldung.batchreaderproperties;
 
-import lombok.experimental.UtilityClass;
-
-@UtilityClass
 public class BatchConstants {
     public static final String TRIGGERED_DATE_TIME = "TRIGGERED_DATE_TIME";
     public static final String TRACE_ID = "TRACE_ID";
