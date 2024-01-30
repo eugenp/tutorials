@@ -83,7 +83,7 @@ public class HomeControllerIntegrationTest {
     }
 
     @Test
-    public void whenUsingUnlessConditionalAndVariableIsNotDefined_thenVariableIsNotPrinted() throws Exception {
+    public void whenVariableIsDefined_thenUnlessConditionalIsFalse() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/variable-not-defined"))
             .andExpect(status().isOk())
             .andExpect(view().name("checkVariableIsDefined.html"))
