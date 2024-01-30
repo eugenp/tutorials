@@ -25,6 +25,7 @@
             <version>${guava.version}</version>
         </dependency>
     </dependencies>
+
     <build>
         <finalName>core-java-numbers-7</finalName>
         <resources>
@@ -34,4 +35,5 @@
             </resource>
         </resources>
     </build>
+
 </project>
