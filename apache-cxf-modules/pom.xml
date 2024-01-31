@@ -35,7 +35,7 @@
     </build>
 
     <properties>
-        <cxf.version>3.1.8</cxf.version>
+        <cxf.version>4.0.0</cxf.version>
     </properties>
 
 </project>
