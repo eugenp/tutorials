@@ -1,4 +1,4 @@
-package com.baeldung.firstnonrepeating;
+package com.baeldung.algorithms.firstnonrepeating;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 public class FirstNonRepeatingElement {
-
     public static int findFirstNonRepeatingUsingForLoop(List<Integer> list) {
         for (int i = 0; i < list.size(); i++) {
             int current = list.get(i);

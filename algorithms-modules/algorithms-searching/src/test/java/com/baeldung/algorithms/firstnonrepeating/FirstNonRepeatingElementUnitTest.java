@@ -1,4 +1,4 @@
-package com.baeldung.firstnonrepeating;
+package com.baeldung.algorithms.firstnonrepeating;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
