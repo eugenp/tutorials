@@ -7,19 +7,26 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 public class ProductDeepCopyUnitTest {
 
     @Test
-    public void givenProduct_whenDeepCopy_thenNewReference() {
-        Product watch = new Product("Watch", 12.95);
+    public void whenUpdatingOriginalProduct_thenCopyShouldNotChange() {
+        Category electronics = new Category("Electronics", "Electronic Items");
+        Product watch = new Product("Watch", 12.95, electronics);
         Product deepCopy = watch.deepCopy();
 
-        assertNotEquals(watch, deepCopy);
+        electronics.setDescription("Wearable Electronics");
+        assertNotEquals(deepCopy.getCategory()
+            .getDescription(), watch.getCategory()
+            .getDescription());
     }
 
     @Test
-    public void whenUpdatingOriginalProduct_thenCopyShouldNotChange() {
-        Product watch = new Product("Watch", 12.95);
-        Product deepCopy = watch.deepCopy();
+    public void whenUpdatingOriginalProduct_thenCloneCopyShouldNotChange() {
+        Category electronics = new Category("Electronics", "Electronic Items");
+        Product watch = new Product("Watch", 12.95, electronics);
+        Product deepCopy = watch.clone();
 
-        watch.setName("Smart Watch");
-        assertNotEquals(deepCopy.getName(), "Smart Watch");
+        electronics.setDescription("Wearable Electronics");
+        assertNotEquals(deepCopy.getCategory()
+            .getDescription(), watch.getCategory()
+            .getDescription());
     }
 }

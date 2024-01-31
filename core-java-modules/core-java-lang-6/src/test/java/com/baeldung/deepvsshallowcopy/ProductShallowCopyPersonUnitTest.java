@@ -3,23 +3,28 @@ package com.baeldung.deepvsshallowcopy;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class ProductShallowCopyPersonUnitTest {
 
     @Test
-    public void givenProduct_whenShallowCopy_thenSharedReference() {
-        Product watch = new Product("Watch", 12.95);
-        Product shallowCopy = watch;
+    public void givenProduct_whenShallowCopy_thenObjectsShouldNotBeSame() {
+        Category electronics = new Category("Electronics", "Electronic Items");
+        Product watch = new Product("Watch", 12.95, electronics);
+        Product shallowCopy = new Product(watch.getName(), watch.getPrice(), watch.getCategory());
 
-        assertEquals(watch, shallowCopy);
+        assertNotEquals(watch, shallowCopy);
     }
 
     @Test
     public void whenUpdatingOriginalProduct_thenCopyShouldChange() {
-        Product watch = new Product("Watch", 12.95);
-        Product shallowCopy = watch;
+        Category electronics = new Category("Electronics", "Electronic Items");
+        Product watch = new Product("Watch", 12.95, electronics);
+        Product shallowCopy = new Product(watch.getName(), watch.getPrice(), watch.getCategory());
 
-        watch.setName("Smart Watch");
-        assertEquals(shallowCopy.getName(), "Smart Watch");
+        electronics.setDescription("Wearable Electronics");
+        assertEquals(shallowCopy.getCategory()
+            .getDescription(), watch.getCategory()
+            .getDescription());
     }
 }
