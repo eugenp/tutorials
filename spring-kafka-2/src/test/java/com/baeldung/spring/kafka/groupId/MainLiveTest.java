@@ -1,4 +1,4 @@
-package com.baeldung.apachekafka3.groupId;
+package com.baeldung.spring.kafka.groupId;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
@@ -15,7 +15,7 @@ import org.springframework.kafka.test.context.EmbeddedKafka;
 import org.springframework.test.annotation.DirtiesContext;
 
 @SpringBootTest(classes = Main.class)
-@ComponentScan(basePackages = "com.baeldung.apachekafka3.groupId")
+@ComponentScan(basePackages = "com.baeldung.spring.kafka.groupId")
 @DirtiesContext
 @EmbeddedKafka(partitions = 4, topics = { "${kafka.topic.name:test-topic}" }, brokerProperties = { "listeners=PLAINTEXT://localhost:9092", "port=9092" })
 public class MainLiveTest {

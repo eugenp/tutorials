@@ -1,4 +1,4 @@
-package com.baeldung.apachekafka3.groupId;
+package com.baeldung.spring.kafka.groupId;
 
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.common.errors.RecordDeserializationException;
