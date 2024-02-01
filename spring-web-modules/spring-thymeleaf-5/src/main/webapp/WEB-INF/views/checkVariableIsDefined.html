@@ -10,5 +10,10 @@
 <div th:if="${serverTime != null}" th:text="'Server Time Using #th:if Conditional Is: ' + ${serverTime}"/>
 <div th:unless="${serverTime == null}" th:text="'Server Time Using #th:unless Conditional Is: ' + ${serverTime}"/>
 
+<div th:if='${"false"}' th:text='"Evaluating \"false\"'/>
+<div th:if='${"no"}' th:text='"Evaluating \"no\"'/>
+<div th:if='${"off"}' th:text='"Evaluating \"off\"'/>
+<div th:if="${0}" th:text='"Evaluating 0"'/>
+
 </body>
 </html>
