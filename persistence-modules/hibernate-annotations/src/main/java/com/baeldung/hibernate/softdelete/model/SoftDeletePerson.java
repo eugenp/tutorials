@@ -20,12 +20,7 @@ import jakarta.persistence.NamedNativeQuery;
 
 @Entity
 @NamedNativeQueries({
-  @NamedNativeQuery(
-    name = "getDeletedPerson",
-    query = "SELECT id, name FROM SoftDeletePerson sdp where sdp.deleted = true",
-    resultClass=SoftDeletePerson.class
-  )
-})
+    @NamedNativeQuery(name = "getDeletedPerson", query = "SELECT id, name FROM SoftDeletePerson sdp where sdp.deleted = true", resultClass = SoftDeletePerson.class) })
 @SoftDelete
 public class SoftDeletePerson {
 
@@ -38,7 +33,7 @@ public class SoftDeletePerson {
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "Emails", joinColumns = @JoinColumn(name = "id"))
     @Column(name = "emailId")
-    @SoftDelete(strategy = SoftDeleteType.ACTIVE,converter = YesNoConverter.class)
+    @SoftDelete(strategy = SoftDeleteType.ACTIVE, converter = YesNoConverter.class)
     private List<String> emailIds;
 
     public String getName() {

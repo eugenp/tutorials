@@ -27,16 +27,16 @@ public class SoftDeletePersonIntegrationTest {
     @BeforeAll
     public static void beforeTests() {
         Configuration configuration = new Configuration().addAnnotatedClass(SoftDeletePerson.class)
-          .setProperty("hibernate.dialect", H2Dialect.class.getName())
-          .setProperty("hibernate.connection.driver_class", Driver.class.getName())
-          .setProperty("hibernate.connection.url", "jdbc:h2:mem:test")
-          .setProperty("hibernate.connection.username", "sa")
-          .setProperty("hibernate.connection.password", "")
-          .setProperty("hibernate.hbm2ddl.auto", "update")
-          .setProperty("hibernate.show_sql", "true");
+            .setProperty("hibernate.dialect", H2Dialect.class.getName())
+            .setProperty("hibernate.connection.driver_class", Driver.class.getName())
+            .setProperty("hibernate.connection.url", "jdbc:h2:mem:test")
+            .setProperty("hibernate.connection.username", "sa")
+            .setProperty("hibernate.connection.password", "")
+            .setProperty("hibernate.hbm2ddl.auto", "update")
+            .setProperty("hibernate.show_sql", "true");
 
         ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties())
-          .build();
+            .build();
 
         sessionFactory = configuration.buildSessionFactory(serviceRegistry);
     }
@@ -60,7 +60,7 @@ public class SoftDeletePersonIntegrationTest {
         session.save(person1);
         session.save(person2);
         session.getTransaction()
-          .commit();
+            .commit();
 
         assertNotNull(person1.getName());
         assertNotNull(person2.getName());
@@ -73,11 +73,11 @@ public class SoftDeletePersonIntegrationTest {
         person1.setEmailIds(emailIds);
         session.save(person1);
         session.getTransaction()
-          .commit();
+            .commit();
         List<SoftDeletePerson> activeRows = session.createQuery("from SoftDeletePerson")
-          .list();
+            .list();
         List<SoftDeletePerson> deletedRows = session.createNamedQuery("getDeletedPerson", SoftDeletePerson.class)
-          .getResultList();
+            .getResultList();
         session.close();
 
         assertNotNull(person1.getName());
