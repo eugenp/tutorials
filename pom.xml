@@ -733,7 +733,7 @@
                 <module>jackson-simple</module>
                 <module>java-blockchain</module>
                 <module>java-jdi</module>
-                <!--<module>java-panama</module>--> <!--JAVA-27339-->
+                <module>java-panama</module>
                 <module>javafx</module>
                 <module>javax-sound</module>
                 <module>javaxval-2</module>
@@ -973,7 +973,7 @@
                 <module>jackson-simple</module>
                 <module>java-blockchain</module>
                 <module>java-jdi</module>
-                <!--<module>java-panama</module>--> <!--JAVA-27339-->
+                <module>java-panama</module>
                 <module>javafx</module>
                 <module>javax-sound</module>
                 <module>javaxval-2</module>
