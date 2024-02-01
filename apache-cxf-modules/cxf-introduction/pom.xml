@@ -48,7 +48,6 @@
     </build>
 
     <properties>
-        <cxf.version>4.0.0</cxf.version>
         <jakarta-xml.version>4.0.0</jakarta-xml.version>
         <jakarta.jws.version>3.0.0</jakarta.jws.version>
     </properties>

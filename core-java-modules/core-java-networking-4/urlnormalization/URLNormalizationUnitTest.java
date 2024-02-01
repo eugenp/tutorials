@@ -22,7 +22,7 @@ public class URLNormalizationUnitTest {
             String normalizedUri = originalUrl.split("\\?")[0];
             assertEquals(expectedNormalizedUrl, normalizedUri);
         } else {
-            throw new IllegalArgumentException("Invalid URL: " + originalUrl);
+            fail(originalUrl);
         }
     }
 
@@ -35,7 +35,7 @@ public class URLNormalizationUnitTest {
     }
 
     @Test
-    public void givenOriginalUrl_whenUsingRegularExpression_thenNormalizedUrl() throws URISyntaxException, UnsupportedEncodingException {
+    public void givenOriginalUrl_whenUsingRegularExpression_thenNormalizedUrl() {
         String regex = "^(https?://[^/]+/[^?#]+)";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(originalUrl);
@@ -44,7 +44,7 @@ public class URLNormalizationUnitTest {
             String normalizedUrl = matcher.group(1);
             assertEquals(expectedNormalizedUrl, normalizedUrl);
         } else {
-            throw new IllegalArgumentException("Invalid URL: " + originalUrl);
+            fail(originalUrl);
         }
     }
 }
