@@ -52,7 +52,6 @@ public class R2dbcApplicationRdbcTemplateIntegrationTest {
 
         insertPlayers();
 
-
         template.select(Player.class)
             .matching(query(where("name").is("Saka")))
             .one()
