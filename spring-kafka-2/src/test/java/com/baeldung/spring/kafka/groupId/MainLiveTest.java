@@ -17,7 +17,7 @@ import org.springframework.test.annotation.DirtiesContext;
 @SpringBootTest(classes = Main.class)
 @ComponentScan(basePackages = "com.baeldung.spring.kafka.groupId")
 @DirtiesContext
-@EmbeddedKafka(partitions = 4, topics = { "${kafka.topic.name:test-topic}" }, brokerProperties = { "listeners=PLAINTEXT://localhost:9092", "port=9092" })
+@EmbeddedKafka(partitions = 4, topics = { "${kafka.topic.name:test-topic}" }, brokerProperties = { "listeners=PLAINTEXT://localhost:8000", "port=8000" })
 public class MainLiveTest {
 
     @Autowired
