@@ -14,6 +14,7 @@ import org.hibernate.dialect.H2Dialect;
 import org.hibernate.service.ServiceRegistry;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.baeldung.hibernate.softdelete.model.SoftDeletePerson;
@@ -22,7 +23,10 @@ public class SoftDeletePersonIntegrationTest {
 
     private static SessionFactory sessionFactory;
 
-    private Session session;
+    private static Session session;
+
+    SoftDeletePerson person1 = new SoftDeletePerson();
+    SoftDeletePerson person2 = new SoftDeletePerson();
 
     @BeforeAll
     public static void beforeTests() {
@@ -41,8 +45,8 @@ public class SoftDeletePersonIntegrationTest {
         sessionFactory = configuration.buildSessionFactory(serviceRegistry);
     }
 
-    @Test
-    void whenDeletingUsingSoftDelete_ThenEntityAndCollectionAreDeleted() {
+    @BeforeEach
+    public void setup() {
         session = sessionFactory.openSession();
         session.beginTransaction();
         SoftDeletePerson person1 = new SoftDeletePerson();
@@ -66,9 +70,21 @@ public class SoftDeletePersonIntegrationTest {
         assertNotNull(person2.getName());
         System.out.println(person1);
         System.out.println(person2);
+    }
 
+    @Test
+    void whenDeletingUsingSoftDelete_ThenEntityAndCollectionAreDeleted() {
         session.beginTransaction();
+        person1 = session.createQuery("from SoftDeletePerson where name='Person1'", SoftDeletePerson.class)
+            .getSingleResult();
+        person2 = session.createQuery("from SoftDeletePerson where name='Person2'", SoftDeletePerson.class)
+            .getSingleResult();
+
+        assertNotNull(person1);
+        assertNotNull(person2);
+
         session.delete(person2);
+        List<String> emailIds = person1.getEmailIds();
         emailIds.remove(0);
         person1.setEmailIds(emailIds);
         session.save(person1);
