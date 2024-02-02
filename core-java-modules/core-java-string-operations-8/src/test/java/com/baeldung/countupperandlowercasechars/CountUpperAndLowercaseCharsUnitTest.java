@@ -9,34 +9,34 @@ public class CountUpperAndLowercaseCharsUnitTest {
 
     @Test
     void whenIteratingCharArrayCompareAndCount_thenGetExpectedResult() {
-        int upperCnt = 0;
-        int lowerCnt = 0;
+        int upperCount = 0;
+        int lowerCount = 0;
         for (char c : MY_STRING.toCharArray()) {
             if (c >= 'A' && c <= 'Z') {
-                upperCnt++;
+                upperCount++;
             }
             if (c >= 'a' && c <= 'z') {
-                lowerCnt++;
+                lowerCount++;
             }
         }
-        LetterCount result = new LetterCount(upperCnt, lowerCnt);
+        LetterCount result = new LetterCount(upperCount, lowerCount);
         assertEquals(4, result.getUppercaseCount());
         assertEquals(31, result.getLowercaseCount());
     }
 
     @Test
     void whenUsingCharacterIsLowerOrUpperCase_thenGetExpectedResult() {
-        int upperCnt = 0;
-        int lowerCnt = 0;
+        int upperCount = 0;
+        int lowerCount = 0;
         for (char c : MY_STRING.toCharArray()) {
             if (Character.isUpperCase(c)) {
-                upperCnt++;
+                upperCount++;
             }
             if (Character.isLowerCase(c)) {
-                lowerCnt++;
+                lowerCount++;
             }
         }
-        LetterCount result = new LetterCount(upperCnt, lowerCnt);
+        LetterCount result = new LetterCount(upperCount, lowerCount);
         assertEquals(4, result.getUppercaseCount());
         assertEquals(31, result.getLowercaseCount());
     }
