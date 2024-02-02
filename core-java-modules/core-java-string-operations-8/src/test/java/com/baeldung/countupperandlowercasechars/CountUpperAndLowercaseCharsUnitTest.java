@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class CountUpperAndLowercaseCharsUnitTest {
     private static final String MY_STRING = "Hi, Welcome to Baeldung! Let's count letters!";
-    private static final LetterCount EXPECTED = new LetterCount(4, 31);
 
     @Test
     void whenIteratingCharArrayCompareAndCount_thenGetExpectedResult() {
@@ -21,7 +20,8 @@ public class CountUpperAndLowercaseCharsUnitTest {
             }
         }
         LetterCount result = new LetterCount(upperCnt, lowerCnt);
-        assertEquals(EXPECTED, result);
+        assertEquals(4, result.getUppercaseCount());
+        assertEquals(31, result.getLowercaseCount());
     }
 
     @Test
@@ -37,7 +37,8 @@ public class CountUpperAndLowercaseCharsUnitTest {
             }
         }
         LetterCount result = new LetterCount(upperCnt, lowerCnt);
-        assertEquals(EXPECTED, result);
+        assertEquals(4, result.getUppercaseCount());
+        assertEquals(31, result.getLowercaseCount());
     }
 
     @Test
@@ -46,40 +47,25 @@ public class CountUpperAndLowercaseCharsUnitTest {
             (int) MY_STRING.chars().filter(Character::isUpperCase).count(),
             (int) MY_STRING.chars().filter(Character::isLowerCase).count()
         );
-        assertEquals(EXPECTED, result);
+        assertEquals(4, result.getUppercaseCount());
+        assertEquals(31, result.getLowercaseCount());
     }
 }
 
 class LetterCount {
-    private int uppercaseCnt;
-    private int lowercaseCnt;
+    private int uppercaseCount;
+    private int lowercaseCount;
 
-    public LetterCount(int uppercaseCnt, int lowercaseCnt) {
-        this.uppercaseCnt = uppercaseCnt;
-        this.lowercaseCnt = lowercaseCnt;
+    public LetterCount(int uppercaseCount, int lowercaseCount) {
+        this.uppercaseCount = uppercaseCount;
+        this.lowercaseCount = lowercaseCount;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof LetterCount)) {
-            return false;
-        }
-
-        LetterCount that = (LetterCount) o;
-
-        if (uppercaseCnt != that.uppercaseCnt) {
-            return false;
-        }
-        return lowercaseCnt == that.lowercaseCnt;
+    public int getUppercaseCount() {
+        return uppercaseCount;
     }
 
-    @Override
-    public int hashCode() {
-        int result = uppercaseCnt;
-        result = 31 * result + lowercaseCnt;
-        return result;
+    public int getLowercaseCount() {
+        return lowercaseCount;
     }
 }
