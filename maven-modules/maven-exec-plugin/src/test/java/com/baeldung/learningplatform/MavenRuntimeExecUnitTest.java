@@ -13,13 +13,15 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 class MavenRuntimeExecUnitTest {
 
+    private static final String PACKAGE_NAME = "com.baeldung.generatedcode";
+    private static final String USER_NAME = "john_doe";
     @TempDir
     private Path tempDir;
 
     @BeforeEach
     public void setUp() throws IOException {
         ProjectBuilder projectBuilder = new ProjectBuilder();
-        projectBuilder.build("john_doe", tempDir, "com.baeldung.generatedcode");
+        projectBuilder.build(USER_NAME, tempDir, PACKAGE_NAME);
     }
 
     @ParameterizedTest
