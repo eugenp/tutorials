@@ -22,7 +22,6 @@ public class HttpComponentsClientHttpRequestFactoryDigestAuth extends HttpCompon
         this.host = host;
     }
 
-    //
     @Override
     protected HttpContext createHttpContext(final HttpMethod httpMethod, final URI uri) {
         return createHttpContext();
