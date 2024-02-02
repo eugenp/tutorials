@@ -37,7 +37,7 @@ public final class ChatServerMain {
                 .sync();
 
             System.out.println("chat server started. ready to accept clients.");
-            future.addListener(new ChannelInfoListener());
+            future.addListener(new ChannelInfoListener("server online"));
 
             future.channel()
                 .closeFuture()

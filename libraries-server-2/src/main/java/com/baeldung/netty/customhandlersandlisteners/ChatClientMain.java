@@ -38,7 +38,7 @@ public class ChatClientMain {
             ChannelFuture future = bootstrap.connect(ChatServerMain.HOST, ChatServerMain.PORT)
                 .sync();
 
-            future.addListener(new ChannelInfoListener());
+            future.addListener(new ChannelInfoListener("connected to server"));
             Channel channel = future.sync()
                 .channel();
 
@@ -65,12 +65,13 @@ public class ChatClientMain {
 
         System.out.print("> ");
         while (scanner.hasNext()) {
-            System.out.print("> ");
             String message = scanner.nextLine();
             if (message.equals("exit"))
                 break;
 
-            channel.writeAndFlush(user + ";" + message);
+            ChannelFuture sent = channel.writeAndFlush(user + ";" + message);
+            sent.addListener(new ChannelInfoListener("message sent"));
+            sent.addListener(future -> System.out.print("> "));
         }
     }
 }

@@ -8,15 +8,24 @@ import io.netty.util.concurrent.GenericFutureListener;
 
 public class ChannelInfoListener implements GenericFutureListener<ChannelFuture> {
 
+    private final String event;
+
+    public ChannelInfoListener(String event) {
+        this.event = event;
+    }
+
     @Override
     public void operationComplete(ChannelFuture future) throws Exception {
         Channel channel = future.channel();
-        System.out.println(Instant.now() + " - my channel id: " + channel.id()
-            .asLongText());
+        String status = "OK";
 
         if (!future.isSuccess()) {
+            status = "FAILED";
             future.cause()
                 .printStackTrace();
         }
+
+        System.out.println(String.format("%s - channel#%s %s: %s", Instant.now(), channel.id()
+            .asShortText(), status, event));
     }
 }
