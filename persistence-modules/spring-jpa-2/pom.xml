@@ -61,7 +61,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>${hibernate.version}</version>
+            <version>${hibernate-core.version}</version>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
@@ -117,6 +117,7 @@
         <tomcat-dbcp.version>10.1.9</tomcat-dbcp.version>
         <jakson-databind.version>2.15.1</jakson-databind.version>
         <jakson-core.version>2.14.2</jakson-core.version>
+        <hibernate-core.version>6.4.2.Final</hibernate-core.version>
     </properties>
 
 </project>
