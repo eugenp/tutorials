@@ -55,7 +55,7 @@
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-api</artifactId>
-            <version>0.12.3</version>
+            <version>${jjwt.version}</version>
         </dependency>
         <!-- persistence -->
         <dependency>
@@ -107,6 +107,18 @@
             <artifactId>jackson-core</artifactId>
             <version>${jakson-core.version}</version>
         </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>${logback.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -115,8 +127,11 @@
         <spring-boot.version>3.1.0</spring-boot.version>
         <!-- persistence -->
         <tomcat-dbcp.version>10.1.9</tomcat-dbcp.version>
-        <jakson-databind.version>2.15.1</jakson-databind.version>
-        <jakson-core.version>2.14.2</jakson-core.version>
+        <jakson-databind.version>2.16.1</jakson-databind.version>
+        <jakson-core.version>2.16.1</jakson-core.version>
+
+        <jjwt.version>0.12.3</jjwt.version>
+        <logback.version>1.4.14</logback.version>
     </properties>
 
 </project>

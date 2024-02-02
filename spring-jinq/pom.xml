@@ -64,7 +64,7 @@
 
     <properties>
         <jinq.version>2.0.1</jinq.version>
-        <hibernate-core.version>6.4.0.Final</hibernate-core.version>
+        <hibernate-core.version>6.4.2.Final</hibernate-core.version>
     </properties>
 
 </project>

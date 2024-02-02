@@ -125,6 +125,20 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <argLine>
+                        --add-opens java.base/java.lang=ALL-UNNAMED
+                    </argLine>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
         <!-- Spring -->
         <org.springframework.version>5.0.2.RELEASE</org.springframework.version>
@@ -132,7 +146,7 @@
         <org.springframework.security.version>4.2.1.RELEASE</org.springframework.security.version>
         <!-- persistence -->
         <hibernate.version>5.6.15.Final</hibernate.version>
-        <hibernatesearch.version>5.8.2.Final</hibernatesearch.version>
+        <hibernatesearch.version>5.11.12.Final</hibernatesearch.version>
         <mysql-connector-java.version>8.2.0</mysql-connector-java.version>
         <tomcat-dbcp.version>9.0.0.M26</tomcat-dbcp.version>
         <jta.version>1.1</jta.version>

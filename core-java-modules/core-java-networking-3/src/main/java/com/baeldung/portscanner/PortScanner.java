@@ -29,7 +29,7 @@ public class PortScanner {
                     openPorts.add(currentPort);
                     System.out.println(ip + " ,port open: " + currentPort);
                 } catch (IOException e) {
-                    System.err.println(e);
+                    // System.err.println(e);
                 }
             });
         }

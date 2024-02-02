@@ -1,7 +1,5 @@
 package com.baeldung.closures
 
-import spock.lang.Specification
-
 class ClosuresUnitTest extends GroovyTestCase {
 
     Closures closures = new Closures()
@@ -64,9 +62,9 @@ class ClosuresUnitTest extends GroovyTestCase {
     
     void testClosureInLists() {
         def list = [10, 11, 12, 13, 14, true, false, "BUNTHER"]
-        list.each {
+        /*list.each {
             println it
-        }
+        }*/
         
         assert [13, 14] == list.findAll{ it instanceof Integer && it >= 13}
     }
