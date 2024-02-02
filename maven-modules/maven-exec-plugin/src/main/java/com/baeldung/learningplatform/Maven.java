@@ -3,7 +3,7 @@ package com.baeldung.learningplatform;
 import java.nio.file.Path;
 
 public interface Maven {
-    static final String POM_XML = "pom.xml";
+    String POM_XML = "pom.xml";
     String COMPILE_GOAL = "compile";
     String USE_CUSTOM_POM = "-f";
     int OK = 0;
