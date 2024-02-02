@@ -34,17 +34,14 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webflux</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webflux</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -73,4 +70,5 @@
         <java.version>21</java.version>
         <spring-boot.version>3.2.0</spring-boot.version>
     </properties>
+
 </project>
