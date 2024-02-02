@@ -55,8 +55,8 @@ class KafkaMultipleListenersIntegrationTest {
           .toString(), bookEvent);
 
         assertThat(bookListeners.size()).isEqualTo(3);
-        // Uncomment if running individually , might fail as part of test suite
-        //assertThat(latch.await(10, TimeUnit.SECONDS)).isTrue();
+        // Uncomment if running individually , might fail as part of test suite.
+        assertThat(latch.await(10, TimeUnit.SECONDS)).isTrue();
     }
 
     @Test
