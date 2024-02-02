@@ -5,22 +5,6 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-data-jpa-query-3</artifactId>
     <name>spring-data-jpa-query-3</name>
-    <properties>
-        <javafaker.version>0.15</javafaker.version>
-    </properties>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>9</source>
-                    <target>9</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -58,5 +42,22 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>9</source>
+                    <target>9</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <properties>
+        <javafaker.version>0.15</javafaker.version>
+    </properties>
 
 </project>
