@@ -7,7 +7,7 @@
     <artifactId>maven-exec-plugin</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>maven-exec-plugin</name>
-    
+
     <dependencies>
         <dependency>
             <groupId>org.apache.maven.shared</groupId>
@@ -16,22 +16,7 @@
         </dependency>
         <dependency>
             <groupId>org.apache.maven</groupId>
-            <artifactId>maven-model</artifactId>
-            <version>${apache.maven.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.maven</groupId>
-            <artifactId>maven-model-builder</artifactId>
-            <version>${apache.maven.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.maven</groupId>
             <artifactId>maven-embedder</artifactId>
-            <version>${apache.maven.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.maven</groupId>
-            <artifactId>maven-compat</artifactId>
             <version>${apache.maven.version}</version>
         </dependency>
         <dependency>
@@ -51,11 +36,6 @@
             <artifactId>junit-jupiter-api</artifactId>
             <version>${junit.jupiter.version}</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>${slf4j.version}</version>
         </dependency>
     </dependencies>
     <build>
@@ -91,7 +71,6 @@
         <junit.jupiter.version>5.10.0</junit.jupiter.version>
         <apache.maven.version>3.9.6</apache.maven.version>
         <apache.maven.invoker.version>3.2.0</apache.maven.invoker.version>
-        <slf4j.version>2.0.7</slf4j.version>
     </properties>
 
 </project>
