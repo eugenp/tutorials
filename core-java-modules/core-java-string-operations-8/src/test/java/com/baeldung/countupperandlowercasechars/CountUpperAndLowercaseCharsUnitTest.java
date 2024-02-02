@@ -3,6 +3,7 @@ package com.baeldung.countupperandlowercasechars;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CountUpperAndLowercaseCharsUnitTest {
     private static final String MY_STRING = "Hi, Welcome to Baeldung! Let's count letters!";
@@ -49,6 +50,13 @@ public class CountUpperAndLowercaseCharsUnitTest {
         );
         assertEquals(4, result.getUppercaseCount());
         assertEquals(31, result.getLowercaseCount());
+    }
+
+
+    @Test
+    void whenUsingIsUpperCaseAndIsLowerCase_thenUnicodeCharactersCanBeChecked() {
+        assertTrue(Character.isLowerCase('ä'));
+        assertTrue(Character.isUpperCase('Ä'));
     }
 }
 
