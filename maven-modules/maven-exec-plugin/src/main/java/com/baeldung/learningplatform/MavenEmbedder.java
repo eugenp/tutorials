@@ -3,7 +3,7 @@ package com.baeldung.learningplatform;
 import java.nio.file.Path;
 import org.apache.maven.cli.MavenCli;
 
-public class MavenEmbedded implements Maven {
+public class MavenEmbedder implements Maven {
 
     public static final String MVN_HOME = "maven.multiModuleProjectDirectory";
 

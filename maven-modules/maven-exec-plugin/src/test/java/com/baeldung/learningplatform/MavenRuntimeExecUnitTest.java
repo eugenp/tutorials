@@ -1,38 +1,39 @@
 package com.baeldung.learningplatform;
 
-import static com.baeldung.learningplatform.FileUtil.removeDirectoryRecursively;
-import static com.baeldung.learningplatform.ProjectsPaths.PROJECT_DIR;
-import static com.baeldung.learningplatform.ProjectsPaths.PROJECT_TARGET;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.io.TempDir;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
-@Disabled
 class MavenRuntimeExecUnitTest {
+
+    @TempDir
+    private Path tempDir;
 
     @BeforeEach
     public void setUp() throws IOException {
-        removeDirectoryRecursively(PROJECT_TARGET);
+        ProjectBuilder projectBuilder = new ProjectBuilder();
+        projectBuilder.build("john_doe", tempDir, "com.baeldung.generatedcode");
     }
 
     @ParameterizedTest
     @MethodSource
     void givenMavenInterface_whenCompileMavenProject_thenCreateTargetDirectory(Maven maven) {
-        maven.compile(PROJECT_DIR);
-        assertTrue(Files.exists(PROJECT_TARGET));
+        maven.compile(tempDir);
+        assertTrue(Files.exists(tempDir));
     }
 
     static Stream<Maven> givenMavenInterface_whenCompileMavenProject_thenCreateTargetDirectory() {
         return Stream.of(
           new MavenRuntimeExec(),
           new MavenProcessBuilder(),
-          new MavenEmbedded(),
-          new MavenInvoker("/opt/homebrew/bin/mvn"));
+          new MavenEmbedder(),
+          new MavenInvoker());
     }
 }

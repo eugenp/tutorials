@@ -2,6 +2,7 @@ package com.baeldung.learningplatform;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -15,6 +16,12 @@ import org.codehaus.plexus.util.xml.Xpp3Dom;
 
 public class ProjectBuilder {
 
+    private static final String PACKAGE = "package ";
+    private static final String POM_XML = "pom.xml";
+    private static final String SRC_TEST = "src/test/";
+    private static final String SRC_MAIN_JAVA = "src/main/java/";
+    private static final String PACKAGE_DELIMITER = ".";
+    private static final String MAIN_JAVA = "Main.java";
     private final List<Dependency> dependencies = new ArrayList<>();
     private JavaVersion javaVersion = JavaVersion.JAVA_8;
 
@@ -39,12 +46,14 @@ public class ProjectBuilder {
         Build build = configureJavaVersion();
         model.setBuild(build);
         MavenXpp3Writer writer = new MavenXpp3Writer();
-        writer.write(new FileWriter(projectPath.resolve("pom.xml").toFile()), model);
-        generateFolders(projectPath, "src/test/");
+        writer.write(new FileWriter(projectPath.resolve(POM_XML).toFile()), model);
+        generateFolders(projectPath, SRC_TEST);
 
-        Path generatedPackage = generateFolders(projectPath, "src/main/java/" + packageName.replace(".", "/"));
-        String generatedClass = generateMainClass("package " + packageName);
-        Files.writeString(generatedPackage.resolve("Main.java"), generatedClass);
+        Path generatedPackage = generateFolders(projectPath,
+          SRC_MAIN_JAVA +
+          packageName.replace(PACKAGE_DELIMITER, FileSystems.getDefault().getSeparator()));
+        String generatedClass = generateMainClass(PACKAGE + packageName);
+        Files.writeString(generatedPackage.resolve(MAIN_JAVA), generatedClass);
     }
 
     private static void configureModel(String userName, Model model) {

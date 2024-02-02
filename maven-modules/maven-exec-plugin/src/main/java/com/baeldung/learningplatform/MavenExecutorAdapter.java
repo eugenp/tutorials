@@ -3,7 +3,7 @@ package com.baeldung.learningplatform;
 import java.io.IOException;
 import java.nio.file.Path;
 
-public abstract class MavenExecutorAdapter implements Maven{
+public abstract class MavenExecutorAdapter implements Maven {
 
     @Override
     public void compile(Path projectFolder) {
