@@ -19,6 +19,6 @@ public class OnePersonExplicitDeliveryService extends MockOnePersonDeliveryServi
             String code = zipCode.getCode();
             return calculateDeliveryForZipCode(code);
         }
-        return null;
+        return Delivery.defaultDelivery();
     }
 }

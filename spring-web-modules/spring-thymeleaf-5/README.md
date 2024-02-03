@@ -7,4 +7,5 @@ This module contains articles about Spring with Thymeleaf
 - [Conditionals in Thymeleaf](https://www.baeldung.com/spring-thymeleaf-conditionals)
 - [Iteration in Thymeleaf](https://www.baeldung.com/thymeleaf-iteration)
 - [Spring with Thymeleaf Pagination for a List](https://www.baeldung.com/spring-thymeleaf-pagination)
+- [Display Image With Thymeleaf](https://www.baeldung.com/spring-thymeleaf-image)
 - More articles: [[<-- prev]](../spring-thymeleaf-4)

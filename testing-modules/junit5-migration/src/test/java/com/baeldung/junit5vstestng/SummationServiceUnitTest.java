@@ -9,43 +9,44 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-public class SummationServiceUnitTest {
+class SummationServiceUnitTest {
     private static List<Integer> numbers;
 
     @BeforeAll
-    public static void initialize() {
+    static void initialize() {
         numbers = new ArrayList<>();
     }
- 
+
     @AfterAll
-    public static void tearDown() {
+    static void tearDown() {
         numbers = null;
     }
- 
+
     @BeforeEach
-    public void runBeforeEachTest() {
+    void runBeforeEachTest() {
         numbers.add(1);
         numbers.add(2);
         numbers.add(3);
     }
- 
+
     @AfterEach
-    public void runAfterEachTest() {
+    void runAfterEachTest() {
         numbers.clear();
     }
- 
+
     @Test
-    public void givenNumbers_sumEquals_thenCorrect() {
+    void givenNumbers_sumEquals_thenCorrect() {
         int sum = numbers.stream()
             .reduce(0, Integer::sum);
         Assert.assertEquals(6, sum);
     }
 
-    @Ignore
+    @Disabled
     @Test
-    public void givenEmptyList_sumEqualsZero_thenCorrect() {
+    void givenEmptyList_sumEqualsZero_thenCorrect() {
         int sum = numbers.stream()
             .reduce(0, Integer::sum);
         Assert.assertEquals(6, sum);
