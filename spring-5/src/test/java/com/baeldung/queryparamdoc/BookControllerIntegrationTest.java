@@ -16,4 +16,10 @@ class BookControllerIntegrationTest {
     void smokeTest() {
         assertThat(webTestClient).isNotNull();
     }
+
+    @Test
+    void giveEndpoint_whenSendGetRequest_thenSuccessfulResponse() {
+        webTestClient.get().uri("/books")
+          .exchange().expectStatus().isOk();
+    }
 }
