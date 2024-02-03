@@ -1,0 +1,56 @@
+@startuml
+'https://plantuml.com/class-diagram
+'skinparam Handwritten true
+skinparam ClassBorderColor black/#63b175
+skinparam BackgroundColor #fdf8f6
+skinparam class {
+ ArrowColor #63b175
+}
+
+hide empty methods
+hide empty attributes
+
+class Vehicle {
+   +fuelType : String
+   +colour : String
+}
+
+class VehicleBuilder {
+    +fuelType : String
+    +colour : String
+    +build() : Vehicle
+    +fuelType(String fuelType) : VehicleBuilder
+    +colour(String colour) : VehicleBuilder
+}
+class Car {
+   +make : String
+   +model : String
+}
+class CarBuilder {
+   +make : String
+   +model : String
+   +build() : Car
+   +make(String make): CarBuilder
+   +model(String make): CarBuilder
+}
+
+class ElectricCar {
+   +batteryType : String
+
+}
+
+class ElectricCarBuilder {
+   +batteryType : String
+   +build() : ElectricCar
+   +batteryType(String batteryType): ElectricCarBuilder
+}
+CarBuilder -left-|> VehicleBuilder: extends
+ElectricCarBuilder -left-|> CarBuilder: extends
+VehicleBuilder -down-> Vehicle: builds
+CarBuilder -down-> Car:builds
+ElectricCarBuilder -down-> ElectricCar: builds
+
+Vehicle <|-right- Car: extends
+Car <|-right- ElectricCar: extends
+
+@enduml

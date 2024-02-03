@@ -5,6 +5,6 @@ import org.junit.platform.suite.api.Suite;
 
 @Suite
 @SelectClasses({Class1UnitTest.class, Class2UnitTest.class})
-public class SelectClassesSuiteUnitTest {
+class SelectClassesSuiteUnitTest {
 
 }

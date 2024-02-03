@@ -1,5 +1,6 @@
 package com.baeldung.multitenant.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
@@ -17,6 +18,9 @@ import java.util.Properties;
 
 @Configuration
 public class MultitenantConfiguration {
+
+    @Value("${defaultTenant}")
+    private String defaultTenant;
 
     @Bean
     @ConfigurationProperties(prefix = "tenants")
@@ -43,7 +47,7 @@ public class MultitenantConfiguration {
         }
 
         AbstractRoutingDataSource dataSource = new MultitenantDataSource();
-        dataSource.setDefaultTargetDataSource(resolvedDataSources.get("tenant_1"));
+        dataSource.setDefaultTargetDataSource(resolvedDataSources.get(defaultTenant));
         dataSource.setTargetDataSources(resolvedDataSources);
 
         dataSource.afterPropertiesSet();

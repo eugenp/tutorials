@@ -7,13 +7,13 @@ import javax.persistence.*;
 @Entity
 @Table(name = "FOO")
 @Where(clause = "DELETED = 0")
-public class Foo {
+public class Fooo {
 
-    public Foo() {
+    public Fooo() {
         super();
     }
 
-    public Foo(final String name) {
+    public Fooo(final String name) {
         super();
         this.name = name;
     }

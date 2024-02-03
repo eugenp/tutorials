@@ -2,7 +2,7 @@ package com.baeldung.failureanalyzer;
 
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 @Service
 public class MyService {
