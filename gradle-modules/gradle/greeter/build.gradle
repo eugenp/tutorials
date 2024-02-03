@@ -1,6 +1,9 @@
 apply plugin : 'java'
 apply plugin : 'application'
 
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
 dependencies {
     implementation project(':greeting-library')
     implementation project(':greeting-library-java')

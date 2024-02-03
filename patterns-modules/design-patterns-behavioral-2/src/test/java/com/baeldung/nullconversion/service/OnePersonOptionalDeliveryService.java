@@ -20,7 +20,7 @@ public class OnePersonOptionalDeliveryService extends MockOnePersonDeliveryServi
           .map(Address::getZipCode)
           .map(ZipCode::getCode)
           .map(this::calculateDeliveryForZipCode)
-          .orElse(null);
+          .orElse(Delivery.defaultDelivery());
     }
 
 }

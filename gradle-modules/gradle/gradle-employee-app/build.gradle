@@ -6,8 +6,8 @@ plugins {
 apply plugin: 'application'
 mainClassName = 'employee.EmployeeApp'
 
-sourceCompatibility = JavaVersion.VERSION_1_8
-targetCompatibility = JavaVersion.VERSION_1_8
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
 
 println 'This is executed during configuration phase'
 

@@ -8,9 +8,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-2</relativePath>
+        <relativePath>../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -159,6 +159,11 @@
             <artifactId>ebean-api</artifactId>
             <version>${ebean.version}</version>
         </dependency>
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>${jakarta.xml.bind.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -290,22 +295,24 @@
     </build>
 
     <properties>
-        <ebean.plugin.version>11.11.2</ebean.plugin.version>
+        <ebean.plugin.version>13.25.2</ebean.plugin.version>
         <reladomo.version>18.1.0</reladomo.version>
         <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
         <maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
         <ormlite.version>6.1</ormlite.version>
-        <datanucleus.version>6.0.3</datanucleus.version>
+        <datanucleus.version>6.0.6</datanucleus.version>
         <datanucleus-api.version>6.0.1</datanucleus-api.version>
         <datanucleus-maven-plugin.version>6.0.0-release</datanucleus-maven-plugin.version>
         <datanucleus-jdo-query.version>6.0.1</datanucleus-jdo-query.version>
         <javax.jdo.version>3.2.1</javax.jdo.version>
         <HikariCP.version>5.1.0</HikariCP.version>
         <ebean.version>13.15.2</ebean.version>
-        <debezium.version>2.1.3.Final</debezium.version>
+        <debezium.version>2.5.0.Final</debezium.version>
         <flexy-pool.version>2.2.3</flexy-pool.version>
-        <testcontainers-version>1.17.6</testcontainers-version>
+        <testcontainers-version>1.19.3</testcontainers-version>
         <mapdb.version>3.0.8</mapdb.version>
+        <jakarta.xml.bind.version>4.0.1</jakarta.xml.bind.version>
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip> <!-- to avoid repackaging of the jar -->
     </properties>
 
 </project>

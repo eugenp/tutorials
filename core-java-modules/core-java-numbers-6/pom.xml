@@ -31,6 +31,7 @@
             <version>${guava.version}</version>
         </dependency>
     </dependencies>
+
     <build>
         <finalName>core-java-numbers-6</finalName>
         <resources>
@@ -44,4 +45,5 @@
     <properties>
         <commons-codec>1.16.0</commons-codec>
     </properties>
+
 </project>
