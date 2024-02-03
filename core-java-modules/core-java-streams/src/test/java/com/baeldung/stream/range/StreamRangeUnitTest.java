@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class StreamRangeUnitTest {
     @Test
-    public void testLimit() {
+    public void whenRangeStreamUsingLimitSkip_thenRangePrints() {
         List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         List<Integer> expectedRange = Arrays.asList(3, 4, 5, 6, 7);
 
@@ -24,7 +24,7 @@ public class StreamRangeUnitTest {
     }
 
     @Test
-    public void testCollect() {
+    public void whenRangeStreamUsingCollectingAndThen_thenRangePrints() {
         List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         List<Integer> expectedRange = Arrays.asList(3, 4, 5, 6, 7);
 
