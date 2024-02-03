@@ -30,7 +30,7 @@ public class SystemInReadUnitTest {
     }
 
     @Test
-    void givenUserInput_whenUsingReadSingleCharacter_thenReading() {
+    void givenUserInput_whenUsingReadWithParameters_thenRead() {
         System.setIn(new ByteArrayInputStream("ABC".getBytes()));
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
