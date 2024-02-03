@@ -16,7 +16,7 @@ public class EntrySetToLinkedHashMapUnitTest {
     private Map<Integer, String> map;
 
     @Test
-    public void givenMap_thenConvertToLinkedHashMap() {
+    void givenMap_thenConvertToLinkedHashMap() {
         Map<Integer, String> result = new LinkedHashMap<>(map);
 
         assertThat(result).isExactlyInstanceOf(LinkedHashMap.class)
@@ -24,7 +24,7 @@ public class EntrySetToLinkedHashMapUnitTest {
     }
 
     @Test
-    public void givenMap_whenUsingCollectorsGroupingBy_thenCollectToLinkedHashMap() {
+    void givenMap_whenUsingCollectorsGroupingBy_thenCollectToLinkedHashMap() {
         Map<String, Set<String>> countryToCities = Map.of("Paris", "France", "Nice", "France", "Madrid", "Spain")
             .entrySet()
             .stream()
@@ -35,7 +35,7 @@ public class EntrySetToLinkedHashMapUnitTest {
     }
 
     @Test
-    public void givenMap_whenUsingCollectorsToMap_thenCollectAndConvertToLinkedHashMap() {
+    void givenMap_whenUsingCollectorsToMap_thenCollectAndConvertToLinkedHashMap() {
         Map<Integer, String> result = new LinkedHashMap<>(map.entrySet()
             .stream()
             .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
@@ -45,7 +45,7 @@ public class EntrySetToLinkedHashMapUnitTest {
     }
 
     @Test
-    public void givenMap_whenUsingCollectorsToMap_thenCollectToLinkedHashMap() {
+    void givenMap_whenUsingCollectorsToMap_thenCollectToLinkedHashMap() {
         Map<Integer, String> result = map.entrySet()
             .stream()
             .collect(Collectors.toMap(
@@ -60,7 +60,7 @@ public class EntrySetToLinkedHashMapUnitTest {
     }
 
     @Test
-    public void givenMap_whenUsingPutWithForLoop_thenInsertIntoLinkedHashMap() {
+    void givenMap_whenUsingPutWithForLoop_thenInsertIntoLinkedHashMap() {
         Map<Integer, String> result = new LinkedHashMap<>();
 
         for (Map.Entry<Integer, String> entry : map.entrySet()) {
@@ -72,7 +72,7 @@ public class EntrySetToLinkedHashMapUnitTest {
     }
 
     @Test
-    public void givenMap_whenUsingPutWithMapForEach_thenInsertIntoLinkedHashMap() {
+    void givenMap_whenUsingPutWithMapForEach_thenInsertIntoLinkedHashMap() {
         Map<Integer, String> result = new LinkedHashMap<>();
 
         map.forEach((k, v) -> result.put(k, v));
@@ -82,7 +82,7 @@ public class EntrySetToLinkedHashMapUnitTest {
     }
 
     @Test
-    public void givenMap_whenUsingPutWithSetForEach_thenInsertIntoLinkedHashMap() {
+    void givenMap_whenUsingPutWithSetForEach_thenInsertIntoLinkedHashMap() {
         Map<Integer, String> result = new LinkedHashMap<>();
 
         map.entrySet()
@@ -93,7 +93,7 @@ public class EntrySetToLinkedHashMapUnitTest {
     }
 
     @Test
-    public void givenMap_whenUsingPutWithStreamForEach_thenInsertIntoLinkedHashMapp() {
+    void givenMap_whenUsingPutWithStreamForEach_thenInsertIntoLinkedHashMapp() {
         Map<Integer, String> result = new LinkedHashMap<>();
 
         map.entrySet()
@@ -105,7 +105,7 @@ public class EntrySetToLinkedHashMapUnitTest {
     }
 
     @BeforeEach
-    public void init() {
+    void init() {
         map = Map.of(1, "value 1", 2, "value 2");
     }
 }
