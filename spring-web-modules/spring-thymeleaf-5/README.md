@@ -7,4 +7,5 @@ This module contains articles about Spring with Thymeleaf
 - [Conditionals in Thymeleaf](https://www.baeldung.com/spring-thymeleaf-conditionals)
 - [Iteration in Thymeleaf](https://www.baeldung.com/thymeleaf-iteration)
 - [Spring with Thymeleaf Pagination for a List](https://www.baeldung.com/spring-thymeleaf-pagination)
+- [How to Check if a Variable is Defined in Thymeleaf](https://www.baeldung.com/spring-is-thymeleaf-variable-defined)
 - More articles: [[<-- prev]](../spring-thymeleaf-4)
