@@ -5,7 +5,19 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-optional</artifactId>
     <name>core-java-optional</name>
-    <packaging>jar</packaging>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>9</source>
+          <target>9</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  <packaging>jar</packaging>
 
     <parent>
         <groupId>com.baeldung.core-java-modules</groupId>
@@ -15,7 +27,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.hibernate</groupId>
+            <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>${hibernate.core.version}</version>
         </dependency>
@@ -53,7 +65,7 @@
     </dependencies>
 
     <properties>
-        <hibernate.core.version>5.4.0.Final</hibernate.core.version>
+        <hibernate.core.version>6.4.2.Final</hibernate.core.version>
         <json-path.version>5.3.2</json-path.version>
     </properties>
 
