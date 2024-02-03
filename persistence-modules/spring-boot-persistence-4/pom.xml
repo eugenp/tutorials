@@ -69,7 +69,7 @@
     </build>
 
     <properties>
-        <spring.boot.dependencies>3.1.0</spring.boot.dependencies>
+        <spring.boot.dependencies>3.2.2</spring.boot.dependencies>
         <junit-jupiter.version>5.9.3</junit-jupiter.version>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
