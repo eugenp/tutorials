@@ -33,9 +33,7 @@ public class MainLiveTest {
     @Test
     public void givenEmbeddedKafkaBroker_whenSendingWithSimpleProducer_thenMessageReceived() throws Exception {
         String data = "Test 123...";
-
         producer.send(data);
-
         boolean messageConsumed = consumer.getLatch()
             .await(10, TimeUnit.SECONDS);
         assertTrue(messageConsumed);
