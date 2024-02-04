@@ -8,7 +8,7 @@ class EquilibriumIndexFinder {
     List<Integer> findEquilibriumIndexes(int[] array) {
         int[] partialSums = new int[array.length + 1];
         partialSums[0] = 0;
-        for (int i=0; i<array.length; i++) {
+        for (int i = 0; i < array.length; i++) {
             partialSums[i+1] = partialSums[i] + array[i]; 
         }
         
