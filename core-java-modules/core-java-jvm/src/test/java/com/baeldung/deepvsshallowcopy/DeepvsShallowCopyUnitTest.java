@@ -2,97 +2,34 @@ package com.baeldung.deepvsshallowcopy;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class DeepvsShallowCopyUnitTest {
 
     @Test
-    public void whenCreatingShallowCopy_thenSameObject() {
-        List<Wheel> mazdaWheels = new ArrayList<>();
-        mazdaWheels.add(new Wheel("Front-Left", Boolean.TRUE));
-        mazdaWheels.add(new Wheel("Front-Right", Boolean.TRUE));
-        mazdaWheels.add(new Wheel("Back-Left", Boolean.TRUE));
-        mazdaWheels.add(new Wheel("Back-Right", Boolean.TRUE));
+    public void whenCreatingShallowCopy_thenSameChildObjects() {
+        Engine originalEngine = new Engine(8, 6);
+        CarWithShallowCopyConstructor originalCar = new CarWithShallowCopyConstructor(originalEngine);
 
-        Car mazda = new Car(4
-                , new Chasis(123)
-                , new Engine(4, 6)
-                , "Mazda"
-                , mazdaWheels
-        );
+        CarWithShallowCopyConstructor shallowCopyCar = new CarWithShallowCopyConstructor(originalCar);
 
-        Car newMazda = mazda;
-
-        assertEquals(newMazda, mazda);
-        assertEquals(newMazda.wheels, mazda.wheels);
-        assertEquals(newMazda.chasis, mazda.chasis);
-        assertEquals(newMazda.engine, mazda.engine);
+        //Assert originalCar as different from shallowCopyCar
+        assertNotEquals(originalCar, shallowCopyCar);
+        //Assert that engine objects of both the Cars are same (shallow copy)
+        assertEquals(originalCar.engine, shallowCopyCar.engine);
     }
 
     @Test
-    public void whenCreatingWrongDeepCopy_thenSameChildObjects() {
+    public void whenCreatingDeepCopy_thenDifferentChildObjects() {
+        Engine originalEngine = new Engine(8, 6);
+        CarWithDeepCopyConstructor originalCar = new CarWithDeepCopyConstructor(originalEngine);
 
-        List<Wheel> mazdaWheels = new ArrayList<>();
-        mazdaWheels.add(new Wheel("Front-Left", Boolean.TRUE));
-        mazdaWheels.add(new Wheel("Front-Right", Boolean.TRUE));
-        mazdaWheels.add(new Wheel("Back-Left", Boolean.TRUE));
-        mazdaWheels.add(new Wheel("Back-Right", Boolean.TRUE));
+        CarWithDeepCopyConstructor deepCopyCar = new CarWithDeepCopyConstructor(originalCar);
 
-        Car mazda = new Car(4
-                , new Chasis(123)
-                , new Engine(4, 6)
-                , "Mazda"
-                , mazdaWheels
-        );
-
-        //  wrong way to create deep copy
-        Car toyotaCorrollaShallowCopy = new Car(4
-                , mazda.chasis
-                , mazda.engine
-                , "Toyota"
-                , mazda.wheels);
-
-        assertNotEquals(toyotaCorrollaShallowCopy, mazda);
-        assertEquals(toyotaCorrollaShallowCopy.wheels, mazda.wheels);
-        assertEquals(toyotaCorrollaShallowCopy.chasis, mazda.chasis);
-        assertEquals(toyotaCorrollaShallowCopy.engine, mazda.engine);
-    }
-
-    @Test
-    public void whenCreatingDeepCopy_thenDifferentObject() {
-
-        List<Wheel> mazdaWheels = new ArrayList<>();
-        mazdaWheels.add(new Wheel("Front-Left", Boolean.TRUE));
-        mazdaWheels.add(new Wheel("Front-Right", Boolean.TRUE));
-        mazdaWheels.add(new Wheel("Back-Left", Boolean.TRUE));
-        mazdaWheels.add(new Wheel("Back-Right", Boolean.TRUE));
-
-        Car mazda = new Car(4
-                , new Chasis(123)
-                , new Engine(4, 6)
-                , "Mazda"
-                , mazdaWheels
-        );
-
-        //  right way to create deep copy
-        List<Wheel> toyotaWheels = new ArrayList<>();
-        mazda.wheels.forEach(w ->
-                toyotaWheels.add(new Wheel(w.wheelPosition, w.hasRim)));
-        Car toyotaCorrollaDeepCopy = new Car(4
-                , new Chasis(mazda.chasis.chasisNumber)
-                , new Engine(mazda.engine.numberOfValves, mazda.engine.numberOfGears)
-                , "Toyota"
-                , toyotaWheels
-        );
-
-        assertNotEquals(toyotaCorrollaDeepCopy, mazda);
-        assertNotEquals(toyotaCorrollaDeepCopy.wheels, mazda.wheels);
-        assertNotEquals(toyotaCorrollaDeepCopy.engine, mazda.engine);
-        assertNotEquals(toyotaCorrollaDeepCopy.chasis, mazda.chasis);
-        assertNotEquals(toyotaCorrollaDeepCopy.manufacturerName, mazda.manufacturerName);
+        //Assert originalCar as different from shallowCopyCar
+        assertNotEquals(originalCar, deepCopyCar);
+        //Assert that engine objects of both the Cars are same (shallow copy)
+        assertNotEquals(originalCar.engine, deepCopyCar.engine);
     }
 }
