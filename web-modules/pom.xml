@@ -35,7 +35,6 @@
         <!-- <module>raml-modules</module> --> <!-- Not a maven project -->
         <module>ratpack</module>
         <module>resteasy</module>
-        <module>restx</module>
         <module>rome</module>
         <module>spark-java</module>
         <module>struts-2</module>

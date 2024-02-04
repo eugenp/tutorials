@@ -82,6 +82,7 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
     <build>
         <finalName>core-java-io-apis-2</finalName>
         <resources>
@@ -91,6 +92,7 @@
             </resource>
         </resources>
     </build>
+
     <properties>
         <junit-jupiter-version>5.9.3</junit-jupiter-version>
     </properties>

@@ -15,8 +15,8 @@ public class PasswordValidationUsingRegexUnitTest {
         boolean result = false;
         try {
             if (password != null) {
-                String MIN_LENGHT = "8";
-                String MAX_LENGHT = "20";
+                String MIN_LENGTH = "8";
+                String MAX_LENGTH = "20";
                 boolean SPECIAL_CHAR_NEEDED = false;
 
                 String ONE_DIGIT = "(?=.*[0-9])";
@@ -25,7 +25,7 @@ public class PasswordValidationUsingRegexUnitTest {
                 String SPECIAL_CHAR = SPECIAL_CHAR_NEEDED ? "(?=.*[@#$%^&+=])" : "";
                 String NO_SPACE = "(?=\\S+$)";
 
-                String MIN_MAX_CHAR = ".{" + MIN_LENGHT + "," + MAX_LENGHT + "}";
+                String MIN_MAX_CHAR = ".{" + MIN_LENGTH + "," + MAX_LENGTH + "}";
                 String PATTERN = ONE_DIGIT + LOWER_CASE + UPPER_CASE + SPECIAL_CHAR + NO_SPACE + MIN_MAX_CHAR;
 
                 assertTrue(password.matches(PATTERN));

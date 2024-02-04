@@ -33,7 +33,7 @@ class NPlusOneEagerFullDomainJoinIntegrationTest extends BaseNPlusOneIntegration
 
     @Test
     void givenEagerSetBasedUser_WhenFetchingAllUsers_ThenIssueNPlusOneRequests() {
-        List<User> users = getService().findAll();
+        List<User> users = getUserService().findAll();
         assertSelectCount(users.size() + 1);
     }
 
@@ -43,7 +43,7 @@ class NPlusOneEagerFullDomainJoinIntegrationTest extends BaseNPlusOneIntegration
         HashMap<String, Set<Long>> visitedMap = new HashMap<>();
         visitedMap.put(POSTS, new HashSet<>());
         visitedMap.put(USERS, new HashSet<>());
-        int numberOfRequests = getService()
+        int numberOfRequests = getUserService()
           .getUserByIdWithFunction(id, user -> {
               int result = 1;
               visitedMap.get(USERS).add(user.getId());

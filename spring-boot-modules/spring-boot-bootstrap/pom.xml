@@ -330,8 +330,8 @@
 
     <properties>
         <servlet.version>4.0.0</servlet.version>
-        <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
-        <spring-cloud-gcp.version>1.0.0.RELEASE</spring-cloud-gcp.version>
+        <spring-cloud.version>2023.0.0</spring-cloud.version>
+        <spring-cloud-gcp.version>1.2.8.RELEASE</spring-cloud-gcp.version>
         <spring-boot-cloud-connectors.version>2.2.13.RELEASE</spring-boot-cloud-connectors.version>
     </properties>
 

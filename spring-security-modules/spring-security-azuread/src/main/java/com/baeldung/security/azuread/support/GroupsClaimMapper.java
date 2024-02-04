@@ -10,19 +10,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.authority.mapping.GrantedAuthoritiesMapper;
 import org.springframework.security.oauth2.core.ClaimAccessor;
-import org.springframework.security.oauth2.jwt.Jwt;
 
 /**
  * @author Baeldung
  *
  */
 public class GroupsClaimMapper  {
-    
+
     private final String authoritiesPrefix;
     private final String groupsClaim;
     private final Map<String, List<String>> groupToAuthorities;
