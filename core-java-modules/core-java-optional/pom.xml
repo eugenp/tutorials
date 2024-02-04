@@ -5,20 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-optional</artifactId>
     <name>core-java-optional</name>
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.0</version>
-        <configuration>
-          <source>9</source>
-          <target>9</target>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
-  <packaging>jar</packaging>
+    <packaging>jar</packaging>
 
     <parent>
         <groupId>com.baeldung.core-java-modules</groupId>
