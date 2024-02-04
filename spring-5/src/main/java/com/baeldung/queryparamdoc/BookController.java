@@ -13,6 +13,6 @@ public class BookController {
 
     @GetMapping
     public List<Book> getBooks(@RequestParam(name = "page", required = false) Integer page) {
-        return new ArrayList<>(page);
+        return new ArrayList<>();
     }
 }
