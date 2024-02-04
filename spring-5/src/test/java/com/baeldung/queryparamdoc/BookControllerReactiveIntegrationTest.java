@@ -8,7 +8,7 @@ import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 @WebFluxTest(controllers = BookController.class)
-class BookControllerIntegrationTest {
+class BookControllerReactiveIntegrationTest {
 
     @Autowired
     private WebTestClient webTestClient;
