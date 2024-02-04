@@ -13,7 +13,7 @@ class EquilibriumIndexFinder {
         }
         
         List<Integer> equilibriumIndexes = new ArrayList<Integer>();
-        for (int i=0; i<array.length; i++) {
+        for (int i = 0; i < array.length; i++) {
             if (partialSums[i] == (partialSums[array.length] - (partialSums[i+1]))) {
                 equilibriumIndexes.add(i);
             }
