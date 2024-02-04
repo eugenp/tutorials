@@ -60,8 +60,8 @@
                 <version>3.1</version>
                 <configuration>
                     <compilerVersion>${javac.target}</compilerVersion>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
+                    <source>9</source>
+                    <target>9</target>
                 </configuration>
             </plugin>
             <plugin>
