@@ -30,7 +30,7 @@ public class CombiningCompletableFuturesUnitTest {
         assertEquals(123L, resultFuture.get());
     }
 
-    private static Stream<Arguments> givenMicroserviceClient_whenMultipleCreateResource_thenCombineResults() {
+    private static Stream<Arguments> clientData() {
         return Stream.of(
             Arguments.of(List.of("Good Resource"), 1, 0),
             Arguments.of(List.of("Bad Resource"), 0, 1),
@@ -40,7 +40,7 @@ public class CombiningCompletableFuturesUnitTest {
     }
 
     @ParameterizedTest
-    @MethodSource
+    @MethodSource("clientData")
     public void givenMicroserviceClient_whenMultipleCreateResource_thenCombineResults(List<String> inputs, int expectedSuccess, int expectedFailure) throws ExecutionException, InterruptedException {
         MicroserviceClient mockMicroservice = mock(MicroserviceClient.class);
         when(mockMicroservice.createResource("Good Resource")).thenReturn(CompletableFuture.completedFuture(123L));
@@ -50,7 +50,10 @@ public class CombiningCompletableFuturesUnitTest {
         for (String resource : inputs) {
             clientCalls.add(mockMicroservice.createResource(resource));
         }
-        CompletableFuture.allOf(clientCalls.toArray(new CompletableFuture[inputs.size()])).exceptionally(ex -> null).join();
+        CompletableFuture<?>[] clientCallsAsArray = clientCalls.toArray(new CompletableFuture[inputs.size()]);
+        CompletableFuture.allOf(clientCallsAsArray)
+            .exceptionally(ex -> null)
+            .join();
         Map<Boolean, List<CompletableFuture<Long>>> resultsByFailure = clientCalls.stream().collect(Collectors.partitioningBy(CompletableFuture::isCompletedExceptionally));
         assertThat(resultsByFailure.getOrDefault(false, Collections.emptyList()).size()).isEqualTo(expectedSuccess);
         assertThat(resultsByFailure.getOrDefault(true, Collections.emptyList()).size()).isEqualTo(expectedFailure);
