@@ -32,4 +32,7 @@ public class Delivery {
     public static Delivery freeDelivery() {
         return new Delivery("Free delivery");
     }
+    public static Delivery defaultDelivery() {
+        return new Delivery("Default delivery");
+    }
 }

@@ -1,14 +1,13 @@
 package com.baeldung.session.web.config;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
+import jakarta.servlet.ServletContext;
 
 import org.springframework.web.WebApplicationInitializer;
 
 public class MainWebAppInitializer implements WebApplicationInitializer {
 
     @Override
-    public void onStartup(ServletContext sc) throws ServletException {
+    public void onStartup(ServletContext sc) {
         sc.getSessionCookieConfig().setHttpOnly(true);        
         sc.getSessionCookieConfig().setSecure(true);
     }

@@ -16,19 +16,13 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-            .anyRequest()
-            .authenticated()
-            .and()
-            .formLogin()
-            .loginPage("/login")
-            .permitAll()
-            .successForwardUrl("/index")
-            .and()
-            .logout()
-            .permitAll()
-            .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-            .logoutSuccessUrl("/login");
+        http.authorizeHttpRequests(authorizationManagerRequestMatcherRegistry ->
+                        authorizationManagerRequestMatcherRegistry.anyRequest().authenticated())
+            .formLogin(httpSecurityFormLoginConfigurer ->
+                    httpSecurityFormLoginConfigurer.loginPage("/login").permitAll().successForwardUrl("/index"))
+            .logout(httpSecurityLogoutConfigurer -> httpSecurityLogoutConfigurer.permitAll()
+                    .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                    .logoutSuccessUrl("/login"));
         return http.build();
     }
 
