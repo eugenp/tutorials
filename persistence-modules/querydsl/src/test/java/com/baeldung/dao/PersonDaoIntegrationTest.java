@@ -64,7 +64,7 @@ public class PersonDaoIntegrationTest {
         personDao.save(new Person("Kent", "Zivago", 30));
 
         final int maxAge = personDao.findMaxAge();
-        Assert.assertTrue(maxAge == 35);
+        Assert.assertEquals(35, maxAge);
     }
 
     @Test
@@ -74,7 +74,7 @@ public class PersonDaoIntegrationTest {
         personDao.save(new Person("Kent", "Zivago", 30));
 
         final Map<String, Integer> maxAge = personDao.findMaxAgeByName();
-        Assert.assertTrue(maxAge.size() == 2);
+        Assert.assertEquals(2, maxAge.size());
         Assert.assertSame(35, maxAge.get("Ralph"));
         Assert.assertSame(30, maxAge.get("Kent"));
     }
