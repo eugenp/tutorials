@@ -64,7 +64,6 @@
         <spring.boot.dependencies>3.2.2</spring.boot.dependencies>
         <org.slf4j.version>2.0.9</org.slf4j.version>
         <logback.version>1.4.14</logback.version>
-        <hibernate-core.version>6.4.2.Final</hibernate-core.version>
     </properties>
 
 </project>
