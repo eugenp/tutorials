@@ -14,7 +14,7 @@ public class DecodeUUIDStringFromBase64UnitTest {
     private final UUID originalUUID = UUID.fromString("cc5f93f7-8cf1-4a51-83c6-e740313a0c6c");
 
     @Test
-    public void shouldDecodeUUIDUsingByteArrayAndBase64Decoder() {
+    public void givenEncodedString_whenDecodingUsingBase64Decoder_thenGiveExpectedUUID() {
         String expectedEncodedString = "UUrxjPeTX8xsDDoxQOfGgw";
         byte[] decodedBytes = Base64.getDecoder()
           .decode(expectedEncodedString);
@@ -23,7 +23,7 @@ public class DecodeUUIDStringFromBase64UnitTest {
     }
 
     @Test
-    public void shouldDecodeUUIDUsingByteBufferAndBase64UrlDecoder() {
+    public void givenEncodedString_whenDecodingUsingByteBufferAndBase64UrlDecoder_thenGiveExpectedUUID() {
         String expectedEncodedString = "zF-T94zxSlGDxudAMToMbA";
         byte[] decodedBytes = Base64.getUrlDecoder()
           .decode(expectedEncodedString);
@@ -35,7 +35,7 @@ public class DecodeUUIDStringFromBase64UnitTest {
     }
 
     @Test
-    public void shouldDecodeUUIDUsingApacheUtils() {
+    public void givenEncodedString_whenDecodingUsingApacheUtils_thenGiveExpectedUUID() {
         String expectedEncodedString = "UUrxjPeTX8xsDDoxQOfGgw";
         byte[] decodedBytes = decodeBase64(expectedEncodedString);
         UUID uuid = Conversion.byteArrayToUuid(decodedBytes, 0);
