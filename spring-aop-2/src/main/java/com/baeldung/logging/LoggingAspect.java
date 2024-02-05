@@ -38,7 +38,7 @@ public class LoggingAspect {
     }
 
     @AfterThrowing(pointcut = "publicMethodsFromLoggingPackage()", throwing = "exception")
-    public void logException(JoinPoint joinPoint, Exception exception) {
+    public void logException(JoinPoint joinPoint, Throwable exception) {
         String methodName = joinPoint.getSignature().getName();
         logger.error("<< {}() - {}", methodName, exception.getMessage());
     }
