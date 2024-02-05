@@ -2,7 +2,13 @@ package com.baeldung.readinputcharbychar;
 
 import org.junit.jupiter.api.Test;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 import static org.junit.Assert.assertArrayEquals;
@@ -51,7 +57,7 @@ public class ReadInputCharByCharUnitTest {
         System.setIn(inputStream);
 
         try (Scanner scanner = new Scanner(System.in)) {
-            while (scanner.hasNext()) {
+            if (scanner.hasNext()) {
                 char[] result = scanner.next().toCharArray();
                 assertArrayEquals("TestInput".toCharArray(), result);
             }
