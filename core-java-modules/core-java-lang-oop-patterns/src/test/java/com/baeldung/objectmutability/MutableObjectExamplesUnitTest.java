@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class MutableObjectExamplesUnitTest {
 
     @Test
-    public void givenMutableString_whenModify_thenCorrectValue() {
+    public void givenMutableString_whenAppendElement_thenCorrectValue() {
         StringBuilder mutableString = new StringBuilder("Hello");
         mutableString.append(" World");
 
