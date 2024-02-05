@@ -1,0 +1,9 @@
+server:
+  port: 8082
+
+spring:
+  graphql:
+    graphiql:
+      enabled: true
+    schema:
+      locations: classpath:returnnull/
