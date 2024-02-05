@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertNotSame;
 public class ImmutableObjectExamplesUnitTest {
 
     @Test
-    public void givenImmutableString_whenConcat_thenNotSameAndCorrectValues() {
+    public void givenImmutableString_whenConcatString_thenNotSameAndCorrectValues() {
         String originalString = "Hello";
         String modifiedString = originalString.concat(" World");
 
@@ -19,7 +19,7 @@ public class ImmutableObjectExamplesUnitTest {
     }
 
     @Test
-    public void givenImmutableInteger_whenAdd_thenNotSameAndCorrectValue() {
+    public void givenImmutableInteger_whenAddWord_thenNotSameAndCorrectValue() {
         Integer immutableInt = 42;
         Integer modifiedInt = immutableInt + 8;
 
