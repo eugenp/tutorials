@@ -19,7 +19,7 @@ public class ImmutableObjectExamplesUnitTest {
     }
 
     @Test
-    public void givenImmutableInteger_whenAddWord_thenNotSameAndCorrectValue() {
+    public void givenImmutableInteger_whenAddInteger_thenNotSameAndCorrectValue() {
         Integer immutableInt = 42;
         Integer modifiedInt = immutableInt + 8;
 
