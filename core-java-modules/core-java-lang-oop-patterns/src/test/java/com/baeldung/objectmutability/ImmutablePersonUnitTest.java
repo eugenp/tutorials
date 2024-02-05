@@ -6,11 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ImmutablePersonUnitTest {
 
-    @Test
-    public void givenImmutablePerson_whenModifyName_thenCompilationError() {
-        ImmutablePerson person = new ImmutablePerson("John", 30);
-        // person.setName("Jane");
-    }
 
     @Test
     public void givenImmutablePerson_whenAccessFields_thenCorrectValues() {
