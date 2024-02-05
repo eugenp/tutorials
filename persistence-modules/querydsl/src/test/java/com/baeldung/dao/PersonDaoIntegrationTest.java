@@ -11,7 +11,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 
 @ContextConfiguration("/test-context.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -64,7 +64,7 @@ public class PersonDaoIntegrationTest {
         personDao.save(new Person("Kent", "Zivago", 30));
 
         final int maxAge = personDao.findMaxAge();
-        Assert.assertTrue(maxAge == 35);
+        Assert.assertEquals(35, maxAge);
     }
 
     @Test
@@ -74,7 +74,7 @@ public class PersonDaoIntegrationTest {
         personDao.save(new Person("Kent", "Zivago", 30));
 
         final Map<String, Integer> maxAge = personDao.findMaxAgeByName();
-        Assert.assertTrue(maxAge.size() == 2);
+        Assert.assertEquals(2, maxAge.size());
         Assert.assertSame(35, maxAge.get("Ralph"));
         Assert.assertSame(30, maxAge.get("Kent"));
     }
