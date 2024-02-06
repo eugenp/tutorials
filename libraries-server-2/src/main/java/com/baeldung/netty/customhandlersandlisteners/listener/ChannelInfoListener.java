@@ -25,7 +25,7 @@ public class ChannelInfoListener implements GenericFutureListener<ChannelFuture>
                 .printStackTrace();
         }
 
-        System.out.println(String.format("%s - channel#%s %s: %s", Instant.now(), channel.id()
-            .asShortText(), status, event));
+        System.out.printf("%s - channel#%s %s: %s%n", Instant.now(), channel.id()
+            .asShortText(), status, event);
     }
 }
