@@ -1,9 +1,14 @@
 package com.baeldung.concurrent.completablefuture;
 
+import static java.util.function.Predicate.isEqual;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
@@ -16,18 +21,19 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.mockito.Mock;
 
 public class CombiningCompletableFuturesUnitTest {
 
-    @Test
-    public void givenMicroserviceClient_whenCreateResource_thenReturnSuccess() throws ExecutionException, InterruptedException {
-        MicroserviceClient mockMicroserviceA = mock(MicroserviceClient.class);
-        when(mockMicroserviceA.createResource(any())).thenReturn(CompletableFuture.completedFuture(123L));
-        CompletableFuture<Long> resultFuture = mockMicroserviceA.createResource("My Resource");
-        assertEquals(123L, resultFuture.get());
+    @Mock Logger logger;
+
+    @BeforeEach
+    void setup() {
+        logger = mock(Logger.class);
     }
 
     private static Stream<Arguments> clientData() {
@@ -41,25 +47,59 @@ public class CombiningCompletableFuturesUnitTest {
 
     @ParameterizedTest
     @MethodSource("clientData")
-    public void givenMicroserviceClient_whenMultipleCreateResource_thenCombineResults(List<String> inputs, int expectedSuccess, int expectedFailure) throws ExecutionException, InterruptedException {
+    public void givenMicroserviceClient_whenMultipleCreateResource_thenCombineResults(List<String> inputs, int successCount, int errorCount) {
         MicroserviceClient mockMicroservice = mock(MicroserviceClient.class);
-        when(mockMicroservice.createResource("Good Resource")).thenReturn(CompletableFuture.completedFuture(123L));
-        when(mockMicroservice.createResource("Bad Resource")).thenReturn(CompletableFuture.failedFuture(new IllegalArgumentException("Bad Resource")));
+        // Return an identifier of 123 on "Good Resource"
+        when(mockMicroservice.createResource("Good Resource"))
+            .thenReturn(CompletableFuture.completedFuture(123L));
+        // Throw an exception on "Bad Resource"
+        when(mockMicroservice.createResource("Bad Resource"))
+            .thenReturn(CompletableFuture.failedFuture(new IllegalArgumentException("Bad Resource")));
 
+        // Given a list of CompletableFutures from our microservice calls...
         List<CompletableFuture<Long>> clientCalls = new ArrayList<>();
         for (String resource : inputs) {
             clientCalls.add(mockMicroservice.createResource(resource));
         }
-        CompletableFuture<?>[] clientCallsAsArray = clientCalls.toArray(new CompletableFuture[inputs.size()]);
-        CompletableFuture.allOf(clientCallsAsArray)
-            .exceptionally(ex -> null)
+
+        // When all CompletableFutures are completed (exceptionally or otherwise)...
+        Map<Boolean, List<Long>> resultsByValidity = clientCalls.stream()
+            .map(future -> handleFuture(future))
+            .collect(Collectors.partitioningBy(resourceId -> isValidResponse(resourceId)));
+
+        // Then the returned resource identifiers should match what is expected...
+        assertThat(resultsByValidity.getOrDefault(true, List.of()).size()).isEqualTo(successCount);
+        // And the logger mock should be called once for each exception with the expected error message
+        assertThat(resultsByValidity.getOrDefault(false, List.of()).size()).isEqualTo(errorCount);
+        verify(logger, times(errorCount))
+            .error(eq("Encountered error: java.lang.IllegalArgumentException: Bad Resource"));
+    }
+
+    private boolean isValidResponse(long resourceId) {
+        return resourceId != -1L;
+    }
+
+    /**
+     * Completes the given CompletableFuture, handling any exceptions that are thrown.
+     * @param future the CompletableFuture to complete.
+     * @return the resource identifier (-1 if the request failed).
+     */
+    private Long handleFuture(CompletableFuture<Long> future) {
+        return future
+            .exceptionally(ex -> handleError(ex))
             .join();
-        Map<Boolean, List<CompletableFuture<Long>>> resultsByFailure = clientCalls.stream().collect(Collectors.partitioningBy(CompletableFuture::isCompletedExceptionally));
-        assertThat(resultsByFailure.getOrDefault(false, Collections.emptyList()).size()).isEqualTo(expectedSuccess);
-        assertThat(resultsByFailure.getOrDefault(true, Collections.emptyList()).size()).isEqualTo(expectedFailure);
+    }
+
+    private Long handleError(Throwable throwable) {
+        logger.error("Encountered error: " + throwable);
+        return -1L;
     }
 
     interface MicroserviceClient {
         CompletableFuture<Long> createResource(String resourceName);
+    }
+
+    interface Logger {
+        void error(String message);
     }
 }
