@@ -11,7 +11,8 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>spring-security-modules</artifactId>
+        <artifactId>parent-boot-3</artifactId>
+        <relativePath>../../parent-boot-3</relativePath>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
@@ -46,16 +47,6 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
         </dependency>
-        <dependency>
-            <groupId>net.sf.ehcache</groupId>
-            <artifactId>ehcache-core</artifactId>
-            <version>${ehcache-core.version}</version>
-            <type>jar</type>
-        </dependency>
     </dependencies>
-
-    <properties>
-        <ehcache-core.version>2.6.11</ehcache-core.version>
-    </properties>
 
 </project>
