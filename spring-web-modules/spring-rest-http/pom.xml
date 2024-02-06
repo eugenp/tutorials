@@ -75,7 +75,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.baeldung.CustomerSpringBootRestApplication</mainClass>
+                    <skip>true</skip>
                 </configuration>
             </plugin>
         </plugins>
