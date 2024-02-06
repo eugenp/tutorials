@@ -30,25 +30,25 @@ public class AccountRepositoryUnitTest {
     private PermissionRepository permissionRepository;
 
     @BeforeEach
-    public void setup() {
+    void setup() {
         saveAccount();
     }
 
     @AfterEach
-    public void tearDown() {
+    void tearDown() {
         accountRepository.deleteAll();
         permissionRepository.deleteAll();
     }
 
     @Test
-    public void givenAccountInDb_whenPerformFindByEmail_thenReturnsAccount() {
+    void givenAccountInDb_whenPerformFindByEmail_thenReturnsAccount() {
         String email = "test@test.com";
         Account account = accountRepository.findByEmail(email);
         assertThat(account.getEmail()).isEqualTo(email);
     }
 
     @Test
-    public void givenAccountInDb_whenPerformFindByUsernameAndEmail_thenReturnsAccount() {
+    void givenAccountInDb_whenPerformFindByUsernameAndEmail_thenReturnsAccount() {
         String email = "test@test.com";
         String username = "user_admin";
         Account account = accountRepository.findByUsernameAndEmail(username, email);
@@ -57,7 +57,7 @@ public class AccountRepositoryUnitTest {
     }
 
     @Test
-    public void givenAccountInDb_whenPerformFindByUsernameOrEmail_thenReturnsAccount() {
+    void givenAccountInDb_whenPerformFindByUsernameOrEmail_thenReturnsAccount() {
         String email = "test@test.com";
         String username = "user_editor";
         Account account = accountRepository.findByUsernameOrEmail(username, email);
@@ -66,7 +66,7 @@ public class AccountRepositoryUnitTest {
     }
 
     @Test
-    public void givenAccountInDb_whenPerformFindByUsernameInOrEmailIn_thenReturnsAccounts() {
+    void givenAccountInDb_whenPerformFindByUsernameInOrEmailIn_thenReturnsAccounts() {
         List<String> emails = Arrays.asList("test@test.com", "abc@abc.com", "pqr@pqr.com");
         List<String> usernames = Arrays.asList("user_editor", "user_admin");
         List<Account> byUsernameInOrEmailIn = accountRepository.findByUsernameInOrEmailIn(usernames, emails);
@@ -83,19 +83,23 @@ public class AccountRepositoryUnitTest {
     }
 
     private void saveAccount() {
-        Account account = getAccount();
-        accountRepository.save(account);
-    }
+        List<List<String>> sampleRecords = Arrays.asList(
+            Arrays.asList("test@test.com", "user_admin"),
+            Arrays.asList("test1@test.com", "user_admin_1"),
+            Arrays.asList("test2@test.com", "user_admin_2")
+        );
 
-    private Account getAccount() {
-        Account account = new Account();
-        account.setEmail("test@test.com");
-        account.setUsername("user_admin");
-        account.setPermission(getPermissions());
-        account.setPassword(UUID.randomUUID()
-            .toString());
-        account.setCreatedOn(Timestamp.from(Instant.now()));
-        account.setLastLogin(Timestamp.from(Instant.now()));
-        return account;
+        sampleRecords.forEach(sampleRecord -> {
+            Account account = new Account();
+            account.setEmail(sampleRecord.get(0));
+            account.setUsername(sampleRecord.get(1));
+            account.setPermission(getPermissions());
+            account.setPassword(UUID.randomUUID()
+                .toString());
+            account.setCreatedOn(Timestamp.from(Instant.now()));
+            account.setLastLogin(Timestamp.from(Instant.now()));
+            accountRepository.save(account);
+            System.out.println(account.toString());
+        });
     }
 }
