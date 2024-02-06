@@ -41,7 +41,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>${hibernate.version}</version>
+            <version>${hibernate-core.version}</version>
         </dependency>
         <dependency>
             <groupId>xml-apis</groupId>
@@ -127,6 +127,7 @@
         <h2.version>2.1.214</h2.version>
         <expressly-language.version>5.0.0</expressly-language.version>
         <jakarta-servlet-jpa-jstl-api.version>3.0.0</jakarta-servlet-jpa-jstl-api.version>
+        <hibernate-core.version>6.4.2.Final</hibernate-core.version>
     </properties>
 
 </project>
