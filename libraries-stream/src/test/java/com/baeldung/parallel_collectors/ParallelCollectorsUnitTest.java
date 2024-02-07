@@ -37,16 +37,15 @@ public class ParallelCollectorsUnitTest {
     }
 
     @Test
-    public void shouldProcessInParallelWithParallelCollectors() {
+    public void shouldCollectInParallel() {
         ExecutorService executor = Executors.newFixedThreadPool(10);
 
         List<Integer> ids = Arrays.asList(1, 2, 3);
 
-        CompletableFuture<String> results = ids.stream()
-          .collect(parallel(ParallelCollectorsUnitTest::fetchById, executor, 4))
-          .thenApply(s -> s.reduce("", (s1, s2) -> s1 + s2));
+        CompletableFuture<Stream<String>> results = ids.stream()
+          .collect(parallel(ParallelCollectorsUnitTest::fetchById, executor, 4));
 
-        assertThat(results.join()).contains("user-1user-2user-3");
+        assertThat(results.join()).containsExactly("user-1", "user-2", "user-3");
     }
 
     @Test
