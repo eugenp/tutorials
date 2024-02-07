@@ -20,8 +20,8 @@ public class DynamicRouterBean {
             return "mock:directDynamicRouter";
         } else if (body.equalsIgnoreCase("seda") && invoked == 1) {
             return "mock:sedaDynamicRouter";
-        } else if (body.equalsIgnoreCase("book") && invoked == 1) {
-            return "mock:bookDynamicRouter";
+        } else if (body.equalsIgnoreCase("file") && invoked == 1) {
+            return "mock:fileDynamicRouter";
         }
         return null;
     }

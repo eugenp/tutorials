@@ -21,7 +21,6 @@ public class DynamicRouterRouteUnitTest extends CamelTestSupport {
 
         template.send("direct:dynamicRouter", exchange -> exchange.getIn()
             .setBody("mock"));
-        context.start();
         MockEndpoint.assertIsSatisfied(context);
     }
 
@@ -45,18 +44,17 @@ public class DynamicRouterRouteUnitTest extends CamelTestSupport {
 
         template.send("direct:dynamicRouter", exchange -> exchange.getIn()
             .setBody("seda"));
-
         MockEndpoint.assertIsSatisfied(context);
     }
 
     @Test
     void givenDynamicRouter_whenMockEndpointExpectedMessageCountOneAndBookAsMessageBody_thenMessageSentToDynamicRouter() throws InterruptedException {
 
-        MockEndpoint mockDynamicEndpoint = getMockEndpoint("mock:bookDynamicRouter");
+        MockEndpoint mockDynamicEndpoint = getMockEndpoint("mock:fileDynamicRouter");
         mockDynamicEndpoint.expectedMessageCount(1);
 
         template.send("direct:dynamicRouter", exchange -> exchange.getIn()
-            .setBody("book"));
+            .setBody("file"));
         MockEndpoint.assertIsSatisfied(context);
     }
 
