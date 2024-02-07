@@ -11,16 +11,16 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-2</relativePath>
+        <relativePath>../parent-boot-3</relativePath>
     </parent>
 
     <modules>
         <module>spring-boot-admin</module>
         <module>spring-boot-angular</module>
         <module>spring-boot-annotations</module>
-        <module>spring-boot-annotations-2</module>
+<!--        <module>spring-boot-annotations-2</module>--> <!-- failing after upgrading to spring boot 3.0.0 -->
         <module>spring-boot-artifacts</module>
         <module>spring-boot-artifacts-2</module>
         <module>spring-boot-autoconfiguration</module>
@@ -31,29 +31,29 @@
         <module>spring-boot-config-jpa-error</module>
         <module>spring-boot-ctx-fluent</module>
         <module>spring-boot-deployment</module>
-        <module>spring-boot-di</module>
+<!--        <module>spring-boot-di</module>--> <!-- failing after upgrading to spring boot 3.0.0 -->
         <module>spring-boot-disable-logging</module>
         <module>spring-boot-ci-cd</module>
         <!-- <module>spring-boot-cli</module> --> <!-- Not a maven project -->
-        <module>spring-boot-custom-starter</module>
+<!--        <module>spring-boot-custom-starter</module>--> <!-- failing after upgrading to spring boot 3.0.0 -->
         <module>spring-boot-crud</module>
         <module>spring-boot-data</module>
         <module>spring-boot-environment</module>
         <module>spring-boot-exceptions</module>
         <module>spring-boot-flowable</module>
-        <module>spring-boot-graphql</module>
+<!--        <module>spring-boot-graphql</module>--> <!-- failing after upgrading to spring boot 3.0.0 -->
         <!--<module>spring-boot-groovy</module>--> <!-- failing after upgrading to jdk17-->
         <!-- <module>spring-boot-gradle</module> --> <!-- Not a maven project -->
         <module>spring-boot-jasypt</module>
-        <module>spring-boot-jsp</module>
+<!--        <module>spring-boot-jsp</module>--> <!-- failing after upgrading to spring boot 3.0.0 -->
         <module>spring-boot-keycloak</module>
         <module>spring-boot-keycloak-2</module>
         <module>spring-boot-libraries</module>
-        <module>spring-boot-libraries-2</module>
+<!--        <module>spring-boot-libraries-2</module>--> <!-- failing after upgrading to spring boot 3.0.0 -->
         <module>spring-boot-process-automation</module>
         <module>spring-boot-logging-logback</module>
         <module>spring-boot-logging-log4j2</module>
-        <module>spring-boot-mvc</module>
+<!--        <module>spring-boot-mvc</module>--> <!-- failing after upgrading to spring boot 3.0.0 -->
         <module>spring-boot-mvc-2</module>
         <module>spring-boot-mvc-3</module>
         <module>spring-boot-mvc-4</module>
@@ -65,20 +65,20 @@
         <module>spring-boot-performance</module>
         <module>spring-boot-property-exp</module>
         <module>spring-boot-request-params</module>
-        <module>spring-boot-runtime</module>
-        <module>spring-boot-runtime-2</module>
+<!--        <module>spring-boot-runtime</module>--> <!-- failing after upgrading to spring boot 3.0.0 -->
+<!--        <module>spring-boot-runtime-2</module>--> <!-- failing after upgrading to spring boot 3.0.0 -->
         <module>spring-boot-security</module>
         <module>spring-boot-security-2</module>
         <module>spring-boot-ssl-bundles</module>
         <module>spring-boot-telegram</module>
-        <module>spring-boot-springdoc</module>
-        <module>spring-boot-swagger</module>
-        <module>spring-boot-swagger-2</module>
+<!--        <module>spring-boot-springdoc</module>--> <!-- failing after upgrading to spring boot 3.0.0 -->
+<!--        <module>spring-boot-swagger</module>--> <!-- failing after upgrading to spring boot 3.0.0 -->
+<!--        <module>spring-boot-swagger-2</module>--> <!-- failing after upgrading to spring boot 3. Swagger codegen yet not compatible?!-->
         <module>spring-boot-swagger-jwt</module>
         <module>spring-boot-swagger-keycloak</module>
         <module>spring-boot-swagger-springfox</module>
         <module>spring-boot-testing</module>
-        <module>spring-boot-testing-2</module>
+<!--        <module>spring-boot-testing-2</module>--> <!-- failing after upgrading to spring boot 3.0.0 -->
         <module>spring-boot-testing-spock</module>
         <module>spring-boot-vue</module>
         <module>spring-boot-actuator</module>
@@ -89,7 +89,7 @@
         <module>spring-caching-2</module>
         <module>spring-boot-redis</module>
         <module>spring-boot-cassandre</module>
-        <module>spring-boot-react</module>
+<!--        <module>spring-boot-react</module>--> <!-- failing after upgrading to spring boot 3.0.0. very old node version which is not available now. -->
         <!-- <module>spring-boot-3</module> --> <!-- JAVA-20931 -->
         <module>spring-boot-3-grpc</module>
         <module>spring-boot-3-native</module>

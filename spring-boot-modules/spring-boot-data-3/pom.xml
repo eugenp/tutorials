@@ -62,6 +62,7 @@
     <properties>
         <spring-cloud-starter-aws-secrets-manager-config.version>2.4.4</spring-cloud-starter-aws-secrets-manager-config.version>
         <aws-secretsmanager-jdbc.version>1.0.11</aws-secretsmanager-jdbc.version>
+        <start-class>com.baeldung.startwithoutdb.StartWithoutDbApplication</start-class>
     </properties>
 
 </project>

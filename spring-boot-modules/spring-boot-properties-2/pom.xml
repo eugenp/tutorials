@@ -36,7 +36,7 @@
 
     <properties>
         <start-class>com.baeldung.properties.yaml.YamlApplication</start-class>
-        <spring-boot.version>3.1.0</spring-boot.version>
+        <java.version>17</java.version>
     </properties>
 
 </project>

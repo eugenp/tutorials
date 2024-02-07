@@ -100,6 +100,7 @@
         <springdoc.version>2.0.0</springdoc.version>
         <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
         <native.maven.plugin.version>0.9.17</native.maven.plugin.version>
+        <java.version>17</java.version>
     </properties>
 
 </project>

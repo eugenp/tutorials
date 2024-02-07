@@ -1,14 +1,13 @@
-package com.baeldung.toggle;
-
-import jakarta.annotation.security.RolesAllowed;
+package com.baeldung.data.jpa.library;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ToggleApplication {
-    @RolesAllowed("*")
+public class TestApplication {
+
     public static void main(String[] args) {
-        SpringApplication.run(ToggleApplication.class, args);
+        SpringApplication.run(TestApplication.class, args);
     }
+
 }

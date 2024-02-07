@@ -14,8 +14,8 @@ import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import redis.embedded.RedisServer;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;

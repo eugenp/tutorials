@@ -60,6 +60,14 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>16</source>
+                    <target>16</target>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
@@ -113,6 +121,7 @@
     <properties>
         <springdoc.version>2.2.0</springdoc.version>
         <springdoc-openapi-maven-plugin.version>1.4</springdoc-openapi-maven-plugin.version>
+        <java.version>17</java.version>
     </properties>
 
 </project>

@@ -6,7 +6,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.security.RolesAllowed;
+import jakarta.annotation.security.RolesAllowed;
 
 @RestController
 @EnableGlobalMethodSecurity(jsr250Enabled = true, prePostEnabled = true)
