@@ -9,30 +9,64 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BinaryTreeParentNodeFinderUnitTest {
 
-    private TreeNode target;
+    private TreeNode subject;
     @BeforeEach
     void setUp() {
-        target = new TreeNode(8);
-        target.insert(5); target.insert(12);
-        target.insert(3); target.insert(7);
-        target.insert(1); target.insert(4);
-        target.insert(11); target.insert(14);
-        target.insert(13); target.insert(16);
+        subject = new TreeNode(8);
+        subject.insert(5); subject.insert(12);
+        subject.insert(3); subject.insert(7);
+        subject.insert(1); subject.insert(4);
+        subject.insert(11); subject.insert(14);
+        subject.insert(13); subject.insert(16);
     }
 
     @Test
     void givenBinaryTree_andNodeTree_whenFindParentNode_thenReturnCorrectParentNode() {
-        assertEquals(8, target.parent(5).value);
-        assertEquals(5, target.parent(3).value);
-        assertEquals(5, target.parent(7).value);
-        assertEquals(3, target.parent(4).value);
-        assertEquals(3, target.parent(1).value);
-        assertEquals(8, target.parent(12).value);
-        assertEquals(12, target.parent(14).value);
-        assertEquals(12, target.parent(11).value);
-        assertEquals(14, target.parent(16).value);
-        assertEquals(14, target.parent(13).value);
-        assertThrows(NoSuchElementException.class, () -> target.parent(1231));
-        assertThrows(NoSuchElementException.class, () -> target.parent(8));
+        assertEquals(8, subject.parent(5).value);
+        assertEquals(5, subject.parent(3).value);
+        assertEquals(5, subject.parent(7).value);
+        assertEquals(3, subject.parent(4).value);
+        assertEquals(3, subject.parent(1).value);
+        assertEquals(8, subject.parent(12).value);
+        assertEquals(12, subject.parent(14).value);
+        assertEquals(12, subject.parent(11).value);
+        assertEquals(14, subject.parent(16).value);
+        assertEquals(14, subject.parent(13).value);
+        assertThrows(NoSuchElementException.class, () -> subject.parent(1231));
+        assertThrows(NoSuchElementException.class, () -> subject.parent(8));
+    }
+
+    @Test
+    void givenBinaryTree_andNodeTree_whenFindParentNodeIteratively_thenReturnCorrectParentNode() {
+        assertEquals(8, subject.iterativeParent(5).value);
+        assertEquals(5, subject.iterativeParent(3).value);
+        assertEquals(5, subject.iterativeParent(7).value);
+        assertEquals(3, subject.iterativeParent(4).value);
+        assertEquals(3, subject.iterativeParent(1).value);
+        assertEquals(8, subject.iterativeParent(12).value);
+        assertEquals(12, subject.iterativeParent(14).value);
+        assertEquals(12, subject.iterativeParent(11).value);
+        assertEquals(14, subject.iterativeParent(16).value);
+        assertEquals(14, subject.iterativeParent(13).value);
+        assertThrows(NoSuchElementException.class, () -> subject.iterativeParent(1231));
+        assertThrows(NoSuchElementException.class, () -> subject.iterativeParent(8));
+    }
+
+    @Test
+    void givenParentKeeperBinaryTree_andNodeTree_whenGetParent_thenReturnCorrectParent() {
+
+        ParentKeeperTreeNode subject = new ParentKeeperTreeNode(8);
+        subject.insert(5); subject.insert(12);
+        subject.insert(3); subject.insert(7);
+        subject.insert(1); subject.insert(4);
+        subject.insert(11); subject.insert(14);
+        subject.insert(13); subject.insert(16);
+
+        assertNull(subject.parent);
+        assertEquals(8, subject.left.parent.value);
+        assertEquals(8, subject.right.parent.value);
+        assertEquals(5, subject.left.left.parent.value);
+        assertEquals(5, subject.left.right.parent.value);
+
     }
 }
