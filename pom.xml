@@ -817,6 +817,7 @@
                 <module>spring-5-webflux-2</module>
                 <module>spring-5-webflux</module>
                 <module>spring-5</module>
+                <module>spring-6-rsocket</module>
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
                 <module>spring-ai</module>
@@ -1056,6 +1057,7 @@
                 <module>spring-5-webflux-2</module>
                 <module>spring-5-webflux</module>
                 <module>spring-5</module>
+                <module>spring-6-rsocket</module>
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
                 <module>spring-ai</module>
