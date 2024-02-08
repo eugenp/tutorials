@@ -16,14 +16,6 @@ public class EntrySetToLinkedHashMapUnitTest {
     private Map<Integer, String> map;
 
     @Test
-    void givenMap_thenConvertToLinkedHashMap() {
-        Map<Integer, String> result = new LinkedHashMap<>(map);
-
-        assertThat(result).isExactlyInstanceOf(LinkedHashMap.class)
-            .containsOnly(entry(1, "value 1"), entry(2, "value 2"));
-    }
-
-    @Test
     void givenMap_whenUsingCollectorsGroupingBy_thenCollectToLinkedHashMap() {
         Map<String, Set<String>> countryToCities = Map.of("Paris", "France", "Nice", "France", "Madrid", "Spain")
             .entrySet()
@@ -54,6 +46,14 @@ public class EntrySetToLinkedHashMapUnitTest {
                     throw new RuntimeException();
                 }, 
                 LinkedHashMap::new));
+
+        assertThat(result).isExactlyInstanceOf(LinkedHashMap.class)
+            .containsOnly(entry(1, "value 1"), entry(2, "value 2"));
+    }
+
+    @Test
+    void givenMap_whenUsingLinkedHashMapConstructor_thenObtainLinkedHashMap() {
+        Map<Integer, String> result = new LinkedHashMap<>(map);
 
         assertThat(result).isExactlyInstanceOf(LinkedHashMap.class)
             .containsOnly(entry(1, "value 1"), entry(2, "value 2"));
