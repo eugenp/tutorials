@@ -11,12 +11,10 @@ import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
-import org.springframework.kafka.listener.MessageListener;
 
 @SpringBootApplication
 public class Main {
@@ -48,22 +46,7 @@ public class Main {
         return new KafkaConsumer<>(configProps);
     }
 
-
-    public static void viewKafkaHeaders() {
-
-
-    }
     public static void main(String[] args) {
-
-        ConfigurableApplicationContext context = SpringApplication.run(Main.class, args);
-        KafkaTemplate kafkaTemplate = context.getBean(KafkaTemplate.class);
-
-        kafkaTemplate.send("my-topic", "Hello Baeldung!");
-
-        kafkaMessageConsumer.getReceivedHeaders();
-
-        //SpringApplication.run(Main.class, args);
+        SpringApplication.run(Main.class, args);
     }
-
-
 }
