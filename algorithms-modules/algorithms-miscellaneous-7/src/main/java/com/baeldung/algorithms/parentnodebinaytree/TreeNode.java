@@ -96,13 +96,18 @@ public class TreeNode {
 
             current = visitedNodes.pollFirst();
 
-            if (target.equals(current.left) || target.equals(current.right)) {
+            final boolean isTargetChildOfCurrent = target.equals(current.left)
+                    || target.equals(current.right);
+
+            if (isTargetChildOfCurrent) {
                 return current;
             }
 
             current = current.right;
         }
 
-        throw new NoSuchElementException();
+        throw new NoSuchElementException(format("No parent node found for 'target.value=%s' " +
+                        "The target is not in the tree or the target is the topmost root node.",
+                target.value));
     }
 }

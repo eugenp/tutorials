@@ -54,7 +54,6 @@ class BinaryTreeParentNodeFinderUnitTest {
 
     @Test
     void givenParentKeeperBinaryTree_andNodeTree_whenGetParent_thenReturnCorrectParent() {
-
         ParentKeeperTreeNode subject = new ParentKeeperTreeNode(8);
         subject.insert(5); subject.insert(12);
         subject.insert(3); subject.insert(7);
@@ -68,5 +67,6 @@ class BinaryTreeParentNodeFinderUnitTest {
         assertEquals(5, subject.left.left.parent.value);
         assertEquals(5, subject.left.right.parent.value);
 
+         // tests for other nodes
     }
 }
