@@ -1042,6 +1042,7 @@
                 <module>patterns-modules</module>
                 <module>performance-tests</module>
                 <module>persistence-modules</module>
+                <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->                     
                 <module>persistence-modules/spring-data-neo4j</module>
                 <module>protobuffer</module>
                 <module>quarkus-modules</module>
@@ -1094,6 +1095,7 @@
                 <module>spring-jersey</module>
                 <module>spring-jinq</module>
                 <module>spring-kafka-2</module>
+                <module>spring-kafka-3</module>                     
                 <module>spring-kafka</module>
                 <module>spring-katharsis</module>
                 <module>spring-mobile</module>
