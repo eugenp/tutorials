@@ -14,14 +14,12 @@
             <artifactId>avaje-inject</artifactId>
             <version>${avaje.inject.version}</version>
         </dependency>
-
         <dependency>
             <groupId>io.avaje</groupId>
             <artifactId>avaje-inject-test</artifactId>
             <version>${avaje.inject.version}</version>
             <scope>test</scope>
         </dependency>
-
         <!-- Annotation processors -->
         <dependency>
             <groupId>io.avaje</groupId>

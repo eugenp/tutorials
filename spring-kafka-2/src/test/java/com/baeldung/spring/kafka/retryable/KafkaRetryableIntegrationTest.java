@@ -20,9 +20,11 @@ import org.springframework.kafka.test.context.EmbeddedKafka;
 import com.baeldung.spring.kafka.retryable.Greeting;
 import com.baeldung.spring.kafka.retryable.RetryableApplicationKafkaApp;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest(classes = RetryableApplicationKafkaApp.class)
 @EmbeddedKafka(partitions = 1, controlledShutdown = true, brokerProperties = { "listeners=PLAINTEXT://localhost:9093", "port=9093" })
+@ActiveProfiles("retry")
 public class KafkaRetryableIntegrationTest {
     @ClassRule
     public static EmbeddedKafkaBroker embeddedKafka = new EmbeddedKafkaBroker(1, true, "multitype");
