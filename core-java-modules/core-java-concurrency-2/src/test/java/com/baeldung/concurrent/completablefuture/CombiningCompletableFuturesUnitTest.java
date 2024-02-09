@@ -51,7 +51,7 @@ public class CombiningCompletableFuturesUnitTest {
         // When all CompletableFutures are completed (exceptionally or otherwise)...
         Map<Boolean, List<Long>> resultsByValidity = clientCalls.stream()
             .map(this::handleFuture)
-            .collect(Collectors.partitioningBy(this::isValidResponse));
+            .collect(Collectors.partitioningBy(resourceId -> resourceId != -1L));
 
         // Then the returned resource identifiers should match what is expected...
         List<Long> validResults = resultsByValidity.getOrDefault(true, List.of());
@@ -62,10 +62,6 @@ public class CombiningCompletableFuturesUnitTest {
         assertThat(invalidResults.size()).isEqualTo(errorCount);
         verify(logger, times(errorCount))
             .error(eq("Encountered error: java.lang.IllegalArgumentException: Bad Resource"));
-    }
-
-    private boolean isValidResponse(long resourceId) {
-        return resourceId != -1L;
     }
 
     /**
