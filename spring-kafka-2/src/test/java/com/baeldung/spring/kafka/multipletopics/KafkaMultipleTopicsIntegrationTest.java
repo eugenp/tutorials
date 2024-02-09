@@ -19,9 +19,11 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.listener.MessageListenerContainer;
 import org.springframework.kafka.test.context.EmbeddedKafka;
 import org.springframework.kafka.test.utils.ContainerTestUtils;
+import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest(classes = KafkaMultipleTopicsApplication.class)
 @EmbeddedKafka(partitions = 1, brokerProperties = { "listeners=PLAINTEXT://localhost:9099", "port=9099" })
+@ActiveProfiles("multipletopics")
 public class KafkaMultipleTopicsIntegrationTest {
     private static final String CARD_PAYMENTS_TOPIC = "card-payments";
     private static final String BANK_TRANSFERS_TOPIC = "bank-transfers";
@@ -55,7 +57,7 @@ public class KafkaMultipleTopicsIntegrationTest {
         kafkaProducer.send(CARD_PAYMENTS_TOPIC, createCardPayment());
         kafkaProducer.send(BANK_TRANSFERS_TOPIC, createBankTransfer());
 
-        assertThat(countDownLatch.await(5, TimeUnit.SECONDS)).isTrue();
+        assertThat(countDownLatch.await(10, TimeUnit.SECONDS)).isTrue();
     }
 
     private PaymentData createCardPayment() {

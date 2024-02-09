@@ -122,10 +122,10 @@ public class QueryDSLIntegrationTest {
                 .fetch();
 
         assertEquals("Hello World!", userTitleCounts.get(0).get(blogPost.title));
-        assertEquals(new Long(2), userTitleCounts.get(0).get(count));
+        assertEquals(Long.valueOf(2), userTitleCounts.get(0).get(count));
 
         assertEquals("My Second Post", userTitleCounts.get(1).get(blogPost.title));
-        assertEquals(new Long(1), userTitleCounts.get(1).get(count));
+        assertEquals(Long.valueOf(1), userTitleCounts.get(1).get(count));
 
     }
 
