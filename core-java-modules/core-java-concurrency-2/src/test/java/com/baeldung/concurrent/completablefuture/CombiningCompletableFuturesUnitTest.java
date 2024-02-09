@@ -1,10 +1,6 @@
 package com.baeldung.concurrent.completablefuture;
 
-import static java.util.function.Predicate.isEqual;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
@@ -12,29 +8,19 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.mockito.Mock;
 
 public class CombiningCompletableFuturesUnitTest {
 
-    @Mock Logger logger;
-
-    @BeforeEach
-    void setup() {
-        logger = mock(Logger.class);
-    }
+    private final Logger logger = mock(Logger.class);
 
     private static Stream<Arguments> clientData() {
         return Stream.of(
@@ -64,13 +50,16 @@ public class CombiningCompletableFuturesUnitTest {
 
         // When all CompletableFutures are completed (exceptionally or otherwise)...
         Map<Boolean, List<Long>> resultsByValidity = clientCalls.stream()
-            .map(future -> handleFuture(future))
-            .collect(Collectors.partitioningBy(resourceId -> isValidResponse(resourceId)));
+            .map(this::handleFuture)
+            .collect(Collectors.partitioningBy(this::isValidResponse));
 
         // Then the returned resource identifiers should match what is expected...
-        assertThat(resultsByValidity.getOrDefault(true, List.of()).size()).isEqualTo(successCount);
+        List<Long> validResults = resultsByValidity.getOrDefault(true, List.of());
+        assertThat(validResults.size()).isEqualTo(successCount);
+
         // And the logger mock should be called once for each exception with the expected error message
-        assertThat(resultsByValidity.getOrDefault(false, List.of()).size()).isEqualTo(errorCount);
+        List<Long> invalidResults = resultsByValidity.getOrDefault(false, List.of());
+        assertThat(invalidResults.size()).isEqualTo(errorCount);
         verify(logger, times(errorCount))
             .error(eq("Encountered error: java.lang.IllegalArgumentException: Bad Resource"));
     }
@@ -86,7 +75,7 @@ public class CombiningCompletableFuturesUnitTest {
      */
     private Long handleFuture(CompletableFuture<Long> future) {
         return future
-            .exceptionally(ex -> handleError(ex))
+            .exceptionally(this::handleError)
             .join();
     }
 
