@@ -27,7 +27,6 @@ public class SkipSelectBeforeInsertIntegrationTest {
     private TaskWithGeneratedIdRepository taskWithGeneratedIdRepository;
     @Autowired
     private PersistableTaskRepository persistableTaskRepository;
-
     @Autowired
     private TaskJpaRepository taskJpaRepository;
 
