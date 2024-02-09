@@ -6,22 +6,23 @@ import java.util.Map;
 
 public class DynamicRouterBean {
     public String route(String body, @ExchangeProperties Map<String, Object> properties) {
-        int invoked = 0;
-        Integer current = (Integer) properties.get("invoked");
-        if (current != null) {
-            invoked = current;
-        }
-        invoked++;
+        int invoked = (int) properties.getOrDefault("invoked", 0) + 1;
+
         properties.put("invoked", invoked);
 
-        if (body.equalsIgnoreCase("mock") && invoked == 1) {
-            return "mock:dynamicRouter";
-        } else if (body.equalsIgnoreCase("direct") && invoked == 1) {
-            return "mock:directDynamicRouter";
-        } else if (body.equalsIgnoreCase("seda") && invoked == 1) {
-            return "mock:sedaDynamicRouter";
-        } else if (body.equalsIgnoreCase("file") && invoked == 1) {
-            return "mock:fileDynamicRouter";
+        if (invoked == 1) {
+            switch (body.toLowerCase()) {
+                case "mock":
+                    return "mock:dynamicRouter";
+                case "direct":
+                    return "mock:directDynamicRouter";
+                case "seda":
+                    return "mock:sedaDynamicRouter";
+                case "file":
+                    return "mock:fileDynamicRouter";
+                default:
+                    break;
+            }
         }
         return null;
     }
