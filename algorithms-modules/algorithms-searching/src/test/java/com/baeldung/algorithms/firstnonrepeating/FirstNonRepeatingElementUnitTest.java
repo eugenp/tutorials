@@ -13,30 +13,30 @@ public class FirstNonRepeatingElementUnitTest {
     private List<Integer> list;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         list = Arrays.asList(1, 2, 3, 2, 1, 4, 5, 4);
     }
 
     @Test
-    public void whenUsingForLoop_thenReturnFirstNonRepeatingElement() {
+    void whenUsingForLoop_thenReturnFirstNonRepeatingElement() {
         int result = FirstNonRepeatingElement.findFirstNonRepeatingUsingForLoop(list);
         assertEquals(3, result);
     }
 
     @Test
-    public void whenUsingIndexOf_thenReturnFirstNonRepeatingElement() {
+    void whenUsingIndexOf_thenReturnFirstNonRepeatingElement() {
         int result = FirstNonRepeatingElement.findFirstNonRepeatedElementUsingIndex(list);
         assertEquals(3, result);
     }
 
     @Test
-    public void whenUsingHashMap_thenReturnFirstNonRepeatingElement() {
+    void whenUsingHashMap_thenReturnFirstNonRepeatingElement() {
         int result = FirstNonRepeatingElement.findFirstNonRepeatingUsingHashMap(list);
         assertEquals(3, result);
     }
 
     @Test
-    public void whenUsingArray_thenReturnFirstNonRepeatingElement() {
+    void whenUsingArray_thenReturnFirstNonRepeatingElement() {
         int result = FirstNonRepeatingElement.findFirstNonRepeatingUsingArray(list);
         assertEquals(3, result);
     }
