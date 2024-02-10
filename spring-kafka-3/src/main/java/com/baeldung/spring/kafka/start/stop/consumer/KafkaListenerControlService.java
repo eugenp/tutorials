@@ -1,0 +1,29 @@
+package com.baeldung.spring.kafka.start.stop.consumer;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.config.KafkaListenerEndpointRegistry;
+import org.springframework.kafka.listener.MessageListenerContainer;
+import org.springframework.stereotype.Service;
+
+@Service
+public class KafkaListenerControlService {
+
+    @Autowired
+    private KafkaListenerEndpointRegistry registry;
+
+    // Method to start a listener
+    public void startListener(String listenerId) {
+        MessageListenerContainer listenerContainer = registry.getListenerContainer(listenerId);
+        if (listenerContainer != null && !listenerContainer.isRunning()) {
+            listenerContainer.start();
+        }
+    }
+
+    // Method to stop a listener
+    public void stopListener(String listenerId) {
+        MessageListenerContainer listenerContainer = registry.getListenerContainer(listenerId);
+        if (listenerContainer != null && listenerContainer.isRunning()) {
+            listenerContainer.stop();
+        }
+    }
+}
