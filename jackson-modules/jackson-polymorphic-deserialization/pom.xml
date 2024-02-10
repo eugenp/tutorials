@@ -36,7 +36,6 @@
     </build>
 
     <properties>
-        <jackson.version>2.16.0</jackson.version>
         <reflections.version>0.9.11</reflections.version>
     </properties>
 
