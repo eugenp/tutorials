@@ -13,9 +13,7 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
-
 public class InputStreamReaderTest {
-
     @Test
     public void givenAStringWrittenToAFile_whenReadByInputStreamReader_thenShouldMatchWhenRead(@TempDir Path tempDir) throws IOException {
         boolean isMatched = false;
@@ -24,11 +22,10 @@ public class InputStreamReaderTest {
         List<String> lines = Arrays.asList(sampleTxt);
         //create and write file
         Files.write(sampleOut, lines);
-        try(FileInputStream fis = new FileInputStream(String.valueOf(sampleOut.toAbsolutePath()));
-            BufferedReader br = new BufferedReader(new InputStreamReader(fis, StandardCharsets.UTF_8));){
+        try (FileInputStream fis = new FileInputStream(String.valueOf(sampleOut.toAbsolutePath())); BufferedReader br = new BufferedReader(new InputStreamReader(fis, StandardCharsets.UTF_8))) {
             String ln;
-            while((ln = br.readLine())!= null){
-                if(ln.contains(sampleTxt)){
+            while ((ln = br.readLine()) != null) {
+                if (ln.contains(sampleTxt)) {
                     isMatched = true;
                     break;
                 }
@@ -36,5 +33,4 @@ public class InputStreamReaderTest {
             Assert.assertTrue(isMatched);
         }
     }
-
 }
