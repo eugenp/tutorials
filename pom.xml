@@ -733,7 +733,7 @@
                 <module>jackson-simple</module>
                 <module>java-blockchain</module>
                 <module>java-jdi</module>
-                <module>java-panama</module>
+                <!--<module>java-panama</module>--> <!--JAVA-27339-->
                 <module>javafx</module>
                 <module>javax-sound</module>
                 <module>javaxval-2</module>
@@ -817,6 +817,7 @@
                 <module>spring-5-webflux-2</module>
                 <module>spring-5-webflux</module>
                 <module>spring-5</module>
+                <module>spring-6-rsocket</module>
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
                 <module>spring-ai</module>
@@ -973,7 +974,7 @@
                 <module>jackson-simple</module>
                 <module>java-blockchain</module>
                 <module>java-jdi</module>
-                <module>java-panama</module>
+                <!--<module>java-panama</module>--> <!--JAVA-27339-->
                 <module>javafx</module>
                 <module>javax-sound</module>
                 <module>javaxval-2</module>
@@ -1041,6 +1042,7 @@
                 <module>patterns-modules</module>
                 <module>performance-tests</module>
                 <module>persistence-modules</module>
+                <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->                     
                 <module>persistence-modules/spring-data-neo4j</module>
                 <module>protobuffer</module>
                 <module>quarkus-modules</module>
@@ -1056,6 +1058,7 @@
                 <module>spring-5-webflux-2</module>
                 <module>spring-5-webflux</module>
                 <module>spring-5</module>
+                <module>spring-6-rsocket</module>
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
                 <module>spring-ai</module>
@@ -1092,6 +1095,7 @@
                 <module>spring-jersey</module>
                 <module>spring-jinq</module>
                 <module>spring-kafka-2</module>
+                <module>spring-kafka-3</module>                     
                 <module>spring-kafka</module>
                 <module>spring-katharsis</module>
                 <module>spring-mobile</module>
@@ -1190,8 +1194,8 @@
         <exec-maven-plugin.version>3.1.0</exec-maven-plugin.version>
         <java.version>1.8</java.version>
         <log4j.version>1.2.17</log4j.version>
-        <jmh-core.version>1.36</jmh-core.version>
-        <jmh-generator.version>1.36</jmh-generator.version>
+        <jmh-core.version>1.37</jmh-core.version>
+        <jmh-generator.version>1.37</jmh-generator.version>
         <maven-failsafe-plugin.version>3.1.2</maven-failsafe-plugin.version>
         <commons-collections4.version>4.4</commons-collections4.version>
         <commons-io.version>2.13.0</commons-io.version>

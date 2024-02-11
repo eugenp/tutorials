@@ -3,16 +3,16 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <artifactId>spring-6</artifactId>
+    <name>spring-6</name>
+    <packaging>pom</packaging>
+
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-spring-6</artifactId>
         <relativePath>../parent-spring-6</relativePath>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-
-    <artifactId>spring-6</artifactId>
-    <name>spring-6</name>
-    <packaging>pom</packaging>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
