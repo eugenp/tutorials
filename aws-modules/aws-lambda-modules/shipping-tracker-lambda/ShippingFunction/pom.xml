@@ -43,7 +43,7 @@
         <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
-            <version>5.1.0</version>
+            <version>${hikari.cp.version}</version>
         </dependency>
 
         <dependency>
@@ -81,6 +81,7 @@
         <aws-lambda-java-events.version>3.1.0</aws-lambda-java-events.version>
         <jackson-databind.version>2.11.2</jackson-databind.version>
         <postgresql.version>42.2.16</postgresql.version>
+        <hikari.cp.version>5.1.0</hikari.cp.version>
     </properties>
 
 </project>
