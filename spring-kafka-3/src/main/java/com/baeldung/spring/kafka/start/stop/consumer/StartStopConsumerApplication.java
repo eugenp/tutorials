@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class StartStopConsumerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(com.baeldung.spring.kafka.deserialization.exception.Application.class, args);
+        SpringApplication.run(StartStopConsumerApplication.class, args);
     }
 
 }
