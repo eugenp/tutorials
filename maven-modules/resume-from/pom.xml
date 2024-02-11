@@ -8,6 +8,7 @@
     <version>1.0-SNAPSHOT</version>
     <name>resume-from</name>
     <packaging>pom</packaging>
+
     <modules>
         <module>business</module>
         <module>lib</module>

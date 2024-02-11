@@ -57,7 +57,9 @@ public class ManagingConsumerGroupsIntegrationTest {
             }
         } while (currentMessage != TOTAL_PRODUCED_MESSAGES);
         Thread.sleep(2000);
-        if( consumerService.consumedPartitions != null && consumerService.consumedPartitions.get("consumer-1") !=  null) {
+        if (consumerService.consumedPartitions != null
+            && consumerService.consumedPartitions.get("consumer-1") != null
+            && consumerService.consumedPartitions.get("consumer-0") != null) {
             assertTrue(consumerService.consumedPartitions.get("consumer-1").size() >= 1);
             assertTrue( consumerService.consumedPartitions.get("consumer-0").size() >= 1);
         }
