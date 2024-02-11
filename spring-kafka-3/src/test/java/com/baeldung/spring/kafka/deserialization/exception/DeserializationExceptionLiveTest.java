@@ -61,13 +61,13 @@ class DeserializationExceptionLiveTest {
 
     @Test
     void whenPublishingInvalidArticleEvent_thenHandleExceptionAndContinueProcessing() {
-        publishArticle("{ \"article\": \"Introduction to Kafka\" }");
+        publishArticle("{ \"article\": \"Introduction to Kafka 2\" }");
         publishArticle(" !! Invalid JSON !! ");
         publishArticle("{ \"article\": \"Kafka Streams Tutorial\" }");
 
         await().untilAsserted(() -> assertThat(emailService.getArticles())
             .containsExactlyInAnyOrder(
-                "Introduction to Kafka",
+                "Introduction to Kafka 2",
                 "Kafka Streams Tutorial"
             ));
 
@@ -75,12 +75,12 @@ class DeserializationExceptionLiveTest {
 
     @Test
     void whenPublishingValidArticleEvent_thenProcessWithoutErrors() {
-        publishArticle("{ \"article\": \"Kotlin for Java Developers\" }");
+        publishArticle("{ \"article\": \"Kotlin for Java Developers 1\" }");
         publishArticle("{ \"article\": \"The S.O.L.I.D. Principles\" }");
 
         await().untilAsserted(() -> assertThat(emailService.getArticles())
           .containsExactlyInAnyOrder(
-            "Kotlin for Java Developers",
+            "Kotlin for Java Developers 1",
             "The S.O.L.I.D. Principles"
           ));
 
