@@ -76,7 +76,7 @@ public class StartStopConsumerUnitTest {
         this.userEventStore.clearUserEvents();
     }
 
-    /*@Test
+    @Test
     void processMessages_whenListenerIsRestarted_thenCorrectNumberOfMessagesAreConsumed() throws ExecutionException, InterruptedException {
         kafkaListenerControlService.startListener(Constants.LISTENER_ID);
 
@@ -103,5 +103,5 @@ public class StartStopConsumerUnitTest {
         kafkaListenerControlService.startListener(Constants.LISTENER_ID);
         await().untilAsserted(() -> assertEquals(6, this.userEventStore.getUserEvents().size()));
         kafkaListenerControlService.stopListener(Constants.LISTENER_ID);
-    }*/
+    }
 }
