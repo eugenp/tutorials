@@ -70,6 +70,7 @@ class DeserializationExceptionLiveTest {
                 "Introduction to Kafka",
                 "Kafka Streams Tutorial"
             ));
+
     }
 
     @Test
@@ -82,6 +83,7 @@ class DeserializationExceptionLiveTest {
             "Kotlin for Java Developers",
             "The S.O.L.I.D. Principles"
           ));
+
     }
 
 
@@ -92,5 +94,6 @@ class DeserializationExceptionLiveTest {
         } catch (ExecutionException | InterruptedException e) {
             throw new RuntimeException(e);
         }
+
     }
 }
