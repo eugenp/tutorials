@@ -2,7 +2,7 @@ package com.baeldung.spring.data.persistence.springdatajpadifference.springdata.
 
 import java.util.Properties;
 
-import javax.persistence.EntityManager;
+import jakarta.persistence.EntityManager;
 import javax.sql.DataSource;
 
 import org.springframework.boot.jdbc.DataSourceBuilder;
