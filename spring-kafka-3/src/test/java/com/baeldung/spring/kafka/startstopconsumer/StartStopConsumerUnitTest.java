@@ -42,7 +42,7 @@ public class StartStopConsumerUnitTest {
     private static final Logger logger = LoggerFactory.getLogger(StartStopConsumerUnitTest.class);
 
     @Container
-    private static final KafkaContainer KAFKA_CONTAINER = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:latest"));
+    private static KafkaContainer KAFKA_CONTAINER = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:latest"));
 
     @Autowired
     KafkaListenerControlService kafkaListenerControlService;
