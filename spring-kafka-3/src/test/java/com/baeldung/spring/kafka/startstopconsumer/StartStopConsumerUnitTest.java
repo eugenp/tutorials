@@ -31,15 +31,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
 
 @Testcontainers
 @SpringBootTest(classes = StartStopConsumerApplication.class)
-public class StartStopConsumerTest {
+public class StartStopConsumerUnitTest {
 
     private static KafkaProducer<Long, UserEvent> producer;
 
-    private static final Logger logger = LoggerFactory.getLogger(StartStopConsumerTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(StartStopConsumerUnitTest.class);
 
     @Container
     private static final KafkaContainer KAFKA_CONTAINER = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:latest"));
