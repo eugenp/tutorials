@@ -11,12 +11,12 @@ import jakarta.servlet.http.HttpServletResponse;
 public class FilterResponseHeaderController {
 
     @GetMapping("/no-extra-header")
-    public String FilterHeaderResponseWithNoExtraHeader() {
+    public String filterHeaderResponseWithNoExtraHeader() {
         return "Response body with Filter header and no extra header";
     }
 
     @GetMapping("/extra-header")
-    public String FilterHeaderResponseWithExtraHeader(HttpServletResponse response) {
+    public String filterHeaderResponseWithExtraHeader(HttpServletResponse response) {
         response.addHeader("Baeldung-Example-Header", "Value-ExtraHeader");
         return "Response body with Filter header and one extra header";
     }
