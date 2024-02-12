@@ -218,6 +218,7 @@
         <module>java-rmi</module>
         <module>java-spi</module>
         <module>java-websocket</module>
+        <module>core-java-copy</module>
     </modules>
 
     <dependencies>
