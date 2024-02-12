@@ -1,6 +1,6 @@
 package com.baeldung.atomikos.spring.jpa.config;
 
-import javax.transaction.SystemException;
+import jakarta.transaction.SystemException;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
