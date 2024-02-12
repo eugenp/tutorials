@@ -831,6 +831,7 @@
                 <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
                 <module>spring-cloud-modules/spring-cloud-contract</module>
                 <!--<module>spring-cloud-modules/spring-cloud-data-flow</module>--><!-- failing after upgrading to jdk17-->
+                <module>spring-cloud-modules/spring-cloud-docker</module>
                 <module>spring-cloud-modules/spring-cloud-eureka</module>
                 <module>spring-cloud-modules/spring-cloud-netflix-feign</module>
                 <module>spring-cloud-modules/spring-cloud-security</module>
@@ -1072,6 +1073,7 @@
                 <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
                 <module>spring-cloud-modules/spring-cloud-contract</module>
                 <!--<module>spring-cloud-modules/spring-cloud-data-flow</module>--><!-- failing after upgrading to jdk17-->
+                <module>spring-cloud-modules/spring-cloud-docker</module>
                 <module>spring-cloud-modules/spring-cloud-eureka</module>
                 <module>spring-cloud-modules/spring-cloud-netflix-feign</module>
                 <module>spring-cloud-modules/spring-cloud-security</module>
