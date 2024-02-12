@@ -8,5 +8,6 @@ This module contains articles about core Java input and output (IO)
 - [Difference Between ZipFile and ZipInputStream in Java](https://www.baeldung.com/java-zipfile-vs-zipinputstream)
 - [How to Write Strings to OutputStream in Java](https://www.baeldung.com/java-write-string-outputstream)
 - [Read a File and Split It Into Multiple Files in Java](https://www.baeldung.com/java-read-file-split-into-several)
+- [Read and Write Files in Java Using Separate Threads](https://www.baeldung.com/java-read-write-files-different-threads)
 - [[<-- Prev]](/core-java-modules/core-java-io-4)
 

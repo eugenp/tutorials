@@ -2,7 +2,7 @@ package com.baeldung.web.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletResponse;
 
 import com.baeldung.persistence.model.Foo;
 import com.baeldung.persistence.service.IFooService;

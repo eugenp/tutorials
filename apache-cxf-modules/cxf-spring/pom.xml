@@ -115,6 +115,7 @@
     </profiles>
 
     <properties>
+        <cxf.version>3.1.8</cxf.version>
         <spring.version>5.3.25</spring.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
         <jstl.version>1.2</jstl.version>

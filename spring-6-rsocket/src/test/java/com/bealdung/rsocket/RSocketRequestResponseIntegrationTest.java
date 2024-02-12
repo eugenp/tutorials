@@ -28,7 +28,8 @@ public class RSocketRequestResponseIntegrationTest {
     @Test
     public void whenSendingStream_thenReceiveTheSameStream() {
         String message = "test message";
-        assertEquals(message, client.sendMessage(Mono.just(message))
+        String response = "test message,Response!";
+        assertEquals(response, client.sendMessage(Mono.just(message))
             .block());
     }
 

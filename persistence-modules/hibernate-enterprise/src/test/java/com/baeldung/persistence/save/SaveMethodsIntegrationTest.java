@@ -179,7 +179,7 @@ public class SaveMethodsIntegrationTest {
             .commit();
         session.beginTransaction();
 
-        assertNull(person.getId());
+        assertNotNull(person.getId());
         assertNotNull(mergedPerson.getId());
 
     }

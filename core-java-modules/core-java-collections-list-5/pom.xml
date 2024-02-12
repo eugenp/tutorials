@@ -55,7 +55,6 @@
             <version>${org.json.version}</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
     <properties>
