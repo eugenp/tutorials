@@ -219,6 +219,7 @@
         <module>java-rmi</module>
         <module>java-spi</module>
         <module>java-websocket</module>
+		<module>core-java-21-new-features</module>
     </modules>
 
     <dependencies>
