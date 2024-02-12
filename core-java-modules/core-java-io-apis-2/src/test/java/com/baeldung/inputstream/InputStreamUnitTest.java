@@ -21,7 +21,7 @@ import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
-public class InputStreamTest {
+public class InputStreamUnitTest {
     @Test
     public void givenAString_whenWrittenToFileInputStream_thenShouldMatchWhenRead(@TempDir Path tempDir) throws IOException {
         Path sampleOut = tempDir.resolve("sample-out.txt");

@@ -14,7 +14,7 @@ import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
-public class InputStreamReaderTest {
+public class InputStreamReaderUnitTest {
     @Test
     public void givenAStringWrittenToAFile_whenReadByInputStreamReader_thenShouldMatchWhenRead(@TempDir Path tempDir) throws IOException {
         boolean isMatched = false;
