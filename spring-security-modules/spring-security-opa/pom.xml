@@ -1,14 +1,15 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-security-opa</artifactId>
     <description>Spring Security with OPA authorization</description>
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>spring-security-modules</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -28,7 +29,7 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>31.0.1-jre</version>
+            <version>${guava.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
