@@ -11,6 +11,7 @@ import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -47,6 +48,16 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(Main.class, args);
+        ConfigurableApplicationContext context = SpringApplication.run(Main.class, args);
+
+        // Get the KafkaTemplate bean from the application context
+        KafkaTemplate<String, String> kafkaTemplate = context.getBean(KafkaTemplate.class);
+
+        // Send a message to the "my-topic" Kafka topic
+        String message = "Hello Baeldung!";
+        kafkaTemplate.send("my-topic", message);
+
+        // Close the application context
+        context.close();
     }
 }
