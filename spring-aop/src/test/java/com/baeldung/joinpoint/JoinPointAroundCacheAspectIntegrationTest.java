@@ -1,5 +1,6 @@
 package com.baeldung.joinpoint;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,10 @@ public class JoinPointAroundCacheAspectIntegrationTest {
     @Autowired
     private ArticleService articleService;
 
+    @Before
+    public void removeCache() {
+        JoinPointAroundCacheAspect.CACHE.clear();
+    }
     @Test
     public void shouldPopulateCache() {
         assertTrue(JoinPointAroundCacheAspect.CACHE.isEmpty());

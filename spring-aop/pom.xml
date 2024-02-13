@@ -86,6 +86,7 @@
 
     <properties>
         <aspectj-plugin.version>1.14.0</aspectj-plugin.version>
+        <java.version>16</java.version>
     </properties>
 
 </project>
