@@ -33,6 +33,7 @@
         <!-- <module>core-java-modules/core-java-14</module> --> <!-- JAVA-26056 -->
         <!-- <module>core-java-modules/core-java-16</module> --> <!-- JAVA-26056 -->
         <!-- <module>core-java-modules/core-java-17</module> --> <!-- JAVA-26056 -->
+        <!-- <module>core-java-modules/core-java-18</module> --> <!-- JAVA-26056 -->
         <!-- <module>core-java-modules/core-java-19</module> --> <!-- JAVA-26056 -->
         <module>core-java-numbers-conversions</module>
         <module>core-java-9-improvements</module>
