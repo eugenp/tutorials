@@ -1,7 +1,12 @@
 package com.baeldung.hibernate.customtypes;
 
+import org.hibernate.dialect.Dialect;
+import org.hibernate.tool.schema.extract.spi.ColumnTypeInformation;
+import org.hibernate.type.BasicType;
 import org.hibernate.type.descriptor.WrapperOptions;
 import org.hibernate.type.descriptor.java.ImmutableMutabilityPlan;
+import org.hibernate.type.descriptor.jdbc.JdbcTypeIndicators;
+import org.hibernate.type.spi.TypeConfiguration;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -47,5 +52,10 @@ public class LocalDateStringJavaDescriptor extends AbstractArrayTypeDescriptor<L
             return LocalDate.from( DateTimeFormatter.ISO_LOCAL_DATE.parse((CharSequence) value));
 
         throw unknownWrap(value.getClass());
+    }
+
+    @Override
+    public BasicType<?> resolveType(TypeConfiguration typeConfiguration, Dialect dialect, BasicType basicType, ColumnTypeInformation columnTypeInformation, JdbcTypeIndicators jdbcTypeIndicators) {
+        return null;
     }
 }

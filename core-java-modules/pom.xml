@@ -60,6 +60,7 @@
         <module>core-java-methods</module>
         <module>core-java-networking-3</module>
         <module>core-java-os</module>
+        <module>core-java-os-2</module>
         <module>core-java-perf-2</module>
         <module>core-java-streams-4</module>
         <module>core-java-streams-5</module>
@@ -198,6 +199,7 @@
         <module>core-java-string-operations-2</module>
         <module>core-java-string-operations-6</module>
         <module>core-java-string-operations-7</module>
+        <module>core-java-string-operations-8</module>
         <module>core-java-regex</module>
         <module>core-java-regex-2</module>
         <module>core-java-regex-3</module>

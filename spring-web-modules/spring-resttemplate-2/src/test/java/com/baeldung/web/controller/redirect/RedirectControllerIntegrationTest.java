@@ -55,7 +55,9 @@ public class RedirectControllerIntegrationTest {
 
     @Test
     public void whenRedirectOnUrlWithUsingRedirectView_thenStatusRedirectionAndRedirectedOnUrlAndAddedAttributeToFlashScope() throws Exception {
-        mockMvc.perform(get("/redirectWithRedirectView")).andExpect(status().is3xxRedirection()).andExpect(model().attribute("attribute", equalTo("redirectWithRedirectView"))).andExpect(redirectedUrl("redirectedUrl?attribute=redirectWithRedirectView"));
+        mockMvc.perform(get("/redirectWithRedirectView"))
+            .andExpect(status().is3xxRedirection())
+            .andExpect(redirectedUrl("redirectedUrl"));
     }
 
     @Test

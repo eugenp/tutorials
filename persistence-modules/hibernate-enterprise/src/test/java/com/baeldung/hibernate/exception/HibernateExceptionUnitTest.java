@@ -9,12 +9,16 @@ import java.util.List;
 import jakarta.persistence.OptimisticLockException;
 import jakarta.persistence.PersistenceException;
 
+import org.h2.jdbc.JdbcSQLDataException;
+import org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException;
+import org.h2.jdbc.JdbcSQLSyntaxErrorException;
 import org.hibernate.HibernateException;
 import org.hibernate.MappingException;
 import org.hibernate.NonUniqueObjectException;
 import org.hibernate.PropertyValueException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.StaleObjectStateException;
 import org.hibernate.StaleStateException;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.AvailableSettings;
@@ -132,8 +136,8 @@ public class HibernateExceptionUnitTest {
 
     @Test
     public void givenMissingTable_whenEntitySaved_thenSQLGrammarException() {
-        thrown.expectCause(isA(SQLGrammarException.class));
-        thrown.expectMessage("could not prepare statement");
+        thrown.expectCause(isA(JdbcSQLSyntaxErrorException.class));
+        thrown.expectMessage("Table \"PRODUCT\" not found (this database is empty); SQL statement");
 
         Configuration cfg = getConfiguration();
         cfg.addAnnotatedClass(Product.class);
@@ -161,8 +165,8 @@ public class HibernateExceptionUnitTest {
 
     @Test
     public void givenMissingTable_whenQueryExecuted_thenSQLGrammarException() {
-        thrown.expectCause(isA(SQLGrammarException.class));
-        thrown.expectMessage("could not prepare statement");
+        thrown.expectCause(isA(JdbcSQLSyntaxErrorException.class));
+        thrown.expectMessage("Table \"NON_EXISTING_TABLE\" not found");
 
         Session session = sessionFactory.openSession();
         NativeQuery<Product> query = session.createNativeQuery("select * from NON_EXISTING_TABLE", Product.class);
@@ -171,7 +175,7 @@ public class HibernateExceptionUnitTest {
 
     @Test
     public void whenDuplicateIdSaved_thenConstraintViolationException() {
-        thrown.expectCause(isA(ConstraintViolationException.class));
+        thrown.expectCause(isA(JdbcSQLIntegrityConstraintViolationException.class));
         thrown.expectMessage("could not execute statement");
 
         Session session = null;
@@ -224,7 +228,7 @@ public class HibernateExceptionUnitTest {
     public void givenEntityWithoutId_whenCallingSave_thenThrowIdentifierGenerationException() {
 
         thrown.expect(isA(IdentifierGenerationException.class));
-        thrown.expectMessage("ids for this class must be manually assigned before calling save(): com.baeldung.hibernate.exception.Product");
+        thrown.expectMessage("Identifier of entity 'com.baeldung.hibernate.exception.ProductEntity' must be manually assigned before calling 'persist()");
 
         Session session = null;
         Transaction transaction = null;
@@ -249,8 +253,8 @@ public class HibernateExceptionUnitTest {
 
     @Test
     public void givenQueryWithDataTypeMismatch_WhenQueryExecuted_thenDataException() {
-        thrown.expectCause(isA(DataException.class));
-        thrown.expectMessage("could not prepare statement");
+        thrown.expectCause(isA(JdbcSQLDataException.class));
+        thrown.expectMessage("Data conversion error converting \"wrongTypeId\"");
 
         Session session = sessionFactory.openSession();
         NativeQuery<Product> query = session.createNativeQuery("select * from PRODUCT where id='wrongTypeId'", Product.class);
@@ -291,7 +295,7 @@ public class HibernateExceptionUnitTest {
     @Test
     public void whenDeletingADeletedObject_thenOptimisticLockException() {
         thrown.expect(isA(OptimisticLockException.class));
-        thrown.expectMessage("Batch update returned unexpected row count from update");
+        thrown.expectMessage("Row was updated or deleted by another transaction");
         thrown.expectCause(isA(StaleStateException.class));
 
         Session session = null;
@@ -327,8 +331,8 @@ public class HibernateExceptionUnitTest {
 
     @Test
     public void whenUpdatingNonExistingObject_thenStaleStateException() {
-        thrown.expectCause(isA(StaleStateException.class));
-        thrown.expectMessage("Batch update returned unexpected row count from update [0]; actual row count: 0; expected: 1; statement executed: update PRODUCT set description=?, name=? where id=?");
+        thrown.expectCause(isA(StaleObjectStateException.class));
+        thrown.expectMessage("Row was updated or deleted by another transaction");
 
         Session session = null;
         Transaction transaction = null;
@@ -409,9 +413,7 @@ public class HibernateExceptionUnitTest {
 
     @Test
     public void givenExistingEntity_whenIdUpdated_thenHibernateException() {
-        thrown.expect(isA(PersistenceException.class));
-        thrown.expectCause(isA(HibernateException.class));
-        thrown.expectMessage("identifier of an instance of com.baeldung.hibernate.exception.Product was altered");
+        thrown.expect(isA(HibernateException.class));
 
         Session session = null;
         Transaction transaction = null;

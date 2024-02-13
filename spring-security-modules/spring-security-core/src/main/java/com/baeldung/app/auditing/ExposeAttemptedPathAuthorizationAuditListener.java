@@ -19,13 +19,13 @@ public class ExposeAttemptedPathAuthorizationAuditListener extends AbstractAutho
     @Override
     public void onApplicationEvent(AuthorizationEvent event) {
         if (event instanceof AuthorizationDeniedEvent) {
-            onAuthorizationFailureEvent((AuthorizationDeniedEvent) event);
+            onAuthorizationFailureEvent(event);
         }
     }
 
-    private void onAuthorizationFailureEvent(AuthorizationDeniedEvent event) {
+    private void onAuthorizationFailureEvent(AuthorizationEvent event) {
         String name = this.getName(event.getAuthentication());
-        Map<String, Object> data = new LinkedHashMap();
+        Map<String, Object> data = new LinkedHashMap<>();
         Object details = this.getDetails(event.getAuthentication());
         if (details != null) {
             data.put("details", details);

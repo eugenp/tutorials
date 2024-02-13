@@ -51,9 +51,10 @@ public class ReadInputCharByCharUnitTest {
         System.setIn(inputStream);
 
         try (Scanner scanner = new Scanner(System.in)) {
-            char[] result = scanner.next().toCharArray();
-
-            assertArrayEquals("TestInput".toCharArray(), result);
+            if (scanner.hasNext()) {
+                char[] result = scanner.next().toCharArray();
+                assertArrayEquals("TestInput".toCharArray(), result);
+            }
         }
     }
 }

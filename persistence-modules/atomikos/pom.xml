@@ -20,6 +20,12 @@
         </dependency>
         <dependency>
             <groupId>com.atomikos</groupId>
+            <artifactId>transactions-jta</artifactId>
+            <version>${atomikos-version}</version>
+            <classifier>jakarta</classifier>
+        </dependency>
+        <dependency>
+            <groupId>com.atomikos</groupId>
             <artifactId>transactions-jms</artifactId>
             <version>${atomikos-version}</version>
         </dependency>
@@ -90,10 +96,10 @@
     </dependencies>
 
     <properties>
-        <atomikos-version>5.0.6</atomikos-version>
-        <spring-version>5.1.6.RELEASE</spring-version>
-        <hibernate.version>5.4.3.Final</hibernate.version>
-        <spring-data-jpa.version>1.11.23.RELEASE</spring-data-jpa.version>
+        <atomikos-version>6.0.0</atomikos-version>
+        <spring-version>6.1.2</spring-version>
+        <hibernate.version>6.4.2.Final</hibernate.version>
+        <spring-data-jpa.version>3.2.2</spring-data-jpa.version>
         <activemq-core.version>5.7.0</activemq-core.version>
         <derby.version>10.8.1.2</derby.version>
         <jta.version>1.1</jta.version>

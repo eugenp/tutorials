@@ -62,7 +62,4 @@ public class JwtAuthorizationProperties {
     public void setAuthoritiesPrefix(String authoritiesPrefix) {
         this.authoritiesPrefix = authoritiesPrefix;
     }
-    
-    
-
 }

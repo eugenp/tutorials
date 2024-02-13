@@ -6,13 +6,10 @@ import static org.junit.Assert.assertThat;
 
 import java.net.Proxy;
 
-import org.apache.http.HttpException;
-import org.apache.http.HttpHost;
-import org.apache.http.HttpRequest;
-import org.apache.http.client.HttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.impl.conn.DefaultProxyRoutePlanner;
-import org.apache.http.protocol.HttpContext;
+import org.apache.hc.client5.http.classic.HttpClient;
+import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
+import org.apache.hc.client5.http.impl.routing.DefaultProxyRoutePlanner;
+import org.apache.hc.core5.http.HttpHost;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -56,12 +53,7 @@ public class RestTemplateCustomizerLiveTest {
         public void customize(RestTemplate restTemplate) {
             HttpHost proxy = new HttpHost(PROXY_SERVER_HOST, PROXY_SERVER_PORT);
             HttpClient httpClient = HttpClientBuilder.create()
-                .setRoutePlanner(new DefaultProxyRoutePlanner(proxy) {
-                    @Override
-                    public HttpHost determineProxy(HttpHost target, HttpRequest request, HttpContext context) throws HttpException {
-                        return super.determineProxy(target, request, context);
-                    }
-                })
+                .setRoutePlanner(new DefaultProxyRoutePlanner(proxy))
                 .build();
             restTemplate.setRequestFactory(new HttpComponentsClientHttpRequestFactory(httpClient));
         }

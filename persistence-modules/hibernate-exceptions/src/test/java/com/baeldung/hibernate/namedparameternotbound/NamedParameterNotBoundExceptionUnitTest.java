@@ -44,7 +44,7 @@ class NamedParameterNotBoundExceptionUnitTest {
             query.list();
         });
 
-        String expectedMessage = "Named parameter not bound";
+        String expectedMessage = "No argument for named parameter";
         String actualMessage = exception.getMessage();
 
         assertTrue(actualMessage.contains(expectedMessage));
