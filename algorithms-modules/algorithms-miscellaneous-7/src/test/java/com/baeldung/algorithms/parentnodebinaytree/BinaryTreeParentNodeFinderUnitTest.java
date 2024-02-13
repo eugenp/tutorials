@@ -10,14 +10,20 @@ import static org.junit.jupiter.api.Assertions.*;
 class BinaryTreeParentNodeFinderUnitTest {
 
     private TreeNode subject;
+
     @BeforeEach
     void setUp() {
         subject = new TreeNode(8);
-        subject.insert(5); subject.insert(12);
-        subject.insert(3); subject.insert(7);
-        subject.insert(1); subject.insert(4);
-        subject.insert(11); subject.insert(14);
-        subject.insert(13); subject.insert(16);
+        subject.insert(5);
+        subject.insert(12);
+        subject.insert(3);
+        subject.insert(7);
+        subject.insert(1);
+        subject.insert(4);
+        subject.insert(11);
+        subject.insert(14);
+        subject.insert(13);
+        subject.insert(16);
     }
 
     @Test
@@ -55,11 +61,16 @@ class BinaryTreeParentNodeFinderUnitTest {
     @Test
     void givenParentKeeperBinaryTree_andNodeTree_whenGetParent_thenReturnCorrectParent() {
         ParentKeeperTreeNode subject = new ParentKeeperTreeNode(8);
-        subject.insert(5); subject.insert(12);
-        subject.insert(3); subject.insert(7);
-        subject.insert(1); subject.insert(4);
-        subject.insert(11); subject.insert(14);
-        subject.insert(13); subject.insert(16);
+        subject.insert(5);
+        subject.insert(12);
+        subject.insert(3);
+        subject.insert(7);
+        subject.insert(1);
+        subject.insert(4);
+        subject.insert(11);
+        subject.insert(14);
+        subject.insert(13);
+        subject.insert(16);
 
         assertNull(subject.parent);
         assertEquals(8, subject.left.parent.value);
@@ -67,6 +78,6 @@ class BinaryTreeParentNodeFinderUnitTest {
         assertEquals(5, subject.left.left.parent.value);
         assertEquals(5, subject.left.right.parent.value);
 
-         // tests for other nodes
+        // tests for other nodes
     }
 }
