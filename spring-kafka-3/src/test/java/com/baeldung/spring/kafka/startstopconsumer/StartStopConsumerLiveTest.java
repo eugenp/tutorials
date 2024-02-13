@@ -33,13 +33,14 @@ import java.util.*;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
+// This live test needs a Docker Daemon running so that a kafka container can be created
 @Testcontainers
 @SpringBootTest(classes = StartStopConsumerApplication.class)
-public class StartStopConsumerUnitTest {
+public class StartStopConsumerLiveTest {
 
     private static KafkaProducer<Long, UserEvent> producer;
 
-    private static final Logger logger = LoggerFactory.getLogger(StartStopConsumerUnitTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(StartStopConsumerLiveTest.class);
 
     @Container
     private static KafkaContainer KAFKA_CONTAINER = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:latest"));
