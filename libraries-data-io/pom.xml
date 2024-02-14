@@ -99,7 +99,7 @@
         <dependency>
             <groupId>io.etcd</groupId>
             <artifactId>jetcd-core</artifactId>
-            <version>jetcd-version</version>
+            <version>${jetcd-version}</version>
         </dependency>
     </dependencies>
 
