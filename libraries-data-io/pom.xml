@@ -95,6 +95,12 @@
             <artifactId>protobuf-java</artifactId>
             <version>${google-protobuf.version}</version>
         </dependency>
+        <!-- jetcd core api -->
+        <dependency>
+            <groupId>io.etcd</groupId>
+            <artifactId>jetcd-core</artifactId>
+            <version>jetcd-version</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -110,6 +116,7 @@
         <yamlbeans.version>1.15</yamlbeans.version>
         <apache-thrift.version>0.14.2</apache-thrift.version>
         <google-protobuf.version>3.17.3</google-protobuf.version>
+        {jetcd-version}0.7.7{/jetcd-version}
     </properties>
 
 </project>
