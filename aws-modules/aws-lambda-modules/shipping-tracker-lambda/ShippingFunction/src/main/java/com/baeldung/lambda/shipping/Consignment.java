@@ -1,10 +1,10 @@
 package com.baeldung.lambda.shipping;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static javax.persistence.FetchType.EAGER;
+import static jakarta.persistence.FetchType.EAGER;
 
 @Entity(name = "consignment")
 @Table(name = "consignment")

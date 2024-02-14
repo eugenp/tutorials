@@ -83,7 +83,7 @@ private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
     }
 
     private static SessionFactory createSessionFactory() {
-        Map<String, String> settings = new HashMap<>();
+        Map<String, Object> settings = new HashMap<>();
         settings.put(URL, System.getenv("DB_URL"));
         settings.put(DIALECT, "org.hibernate.dialect.PostgreSQLDialect");
         settings.put(DEFAULT_SCHEMA, "shipping");
