@@ -1,9 +1,12 @@
 package com.baeldung.uuid;
 
+import com.fasterxml.uuid.impl.UUIDUtil;
 import org.junit.jupiter.api.Test;
 
+import java.nio.ByteBuffer;
 import java.util.UUID;
 
+import static org.apache.commons.io.IOUtils.byteArray;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class UUIDPositiveLongGeneratorUnitTest {
@@ -20,7 +23,7 @@ public class UUIDPositiveLongGeneratorUnitTest {
         assertThat(randomPositiveLong).isPositive();
     }
 
-    private byte[] toByteArray(UUID uuid) {
+    private byte[] toByteArrayBitwise(UUID uuid) {
         long msb = uuid.getMostSignificantBits();
         long lsb = uuid.getLeastSignificantBits();
         byte[] buffer = new byte[16];
@@ -33,11 +36,49 @@ public class UUIDPositiveLongGeneratorUnitTest {
         return buffer;
     }
 
+//    private byte[] toByteArray(UUID uuid) {
+//        long msb = uuid.getMostSignificantBits();
+//        long lsb = uuid.getLeastSignificantBits();
+//
+//        String binaryString = Long.toBinaryString(msb) + Long.toBinaryString(lsb);
+//
+//        // Memastikan panjang string biner menggunakan StringBuilder
+//        StringBuilder sb = new StringBuilder();
+//        for (int i = 0; i < 128 - binaryString.length(); i++) {
+//            sb.append('0');
+//        }
+//        sb.append(binaryString);
+//        String paddedString = sb.toString();
+//
+//        // Mengubah string biner menjadi array byte
+//        byte[] bytes = new byte[paddedString.length() / 8];
+//        for (int i = 0; i < bytes.length; i++) {
+//            String byteString = paddedString.substring(i * 8, (i + 1) * 8);
+//            bytes[i] = (byte) Integer.parseInt(byteString, 2);
+//        }
+//
+//        return bytes;
+//    }
+
+    private byte[] toByteArray(UUID uuid) {
+        long msb = uuid.getMostSignificantBits();
+        long lsb = uuid.getLeastSignificantBits();
+
+        // Menggabungkan most significant bits dan least significant bits menjadi satu nilai long
+        byte[] uuidBytes = new byte[16];
+        ByteBuffer.wrap(uuidBytes)
+                .putLong(msb)
+                .putLong(lsb);
+
+        return uuidBytes;
+    }
+
     @Test
     public void whenGivenUUID_thenVerified() {
         for (int i = 0; i < 100; i++) {
             UUID uuid = UUID.randomUUID();
             byte[] bytes = toByteArray(uuid);
+//            byte[] bytes = UUIDUtil.asByteArray(uuid);
 
             // assert that byte at index 6 is 0x40 (version 4)
             byte byte6 = bytes[6];
