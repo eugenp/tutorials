@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class UUIDPositiveLongGeneratorUnitTest {
 
     @Test
-    public void whengetMostSignificantBits_thenAssertPositive() {
+    public void whenGetMostSignificantBits_thenAssertPositive() {
         long randomPositiveLong = Math.abs(UUID.randomUUID().getMostSignificantBits());
         assertThat(randomPositiveLong).isPositive();
     }
