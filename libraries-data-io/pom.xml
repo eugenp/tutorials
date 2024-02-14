@@ -101,6 +101,12 @@
             <artifactId>jetcd-core</artifactId>
             <version>${jetcd-version}</version>
         </dependency>
+        <!-- jetcd common api -->
+        <dependency>
+            <groupId>io.etcd</groupId>
+            <artifactId>jetcd-common</artifactId>
+            <version>${jetcd-version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
