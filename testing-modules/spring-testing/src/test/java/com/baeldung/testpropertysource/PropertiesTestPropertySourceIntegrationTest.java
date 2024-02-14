@@ -18,7 +18,7 @@ public class PropertiesTestPropertySourceIntegrationTest {
     ClassUsingProperty classUsingProperty;
 
     @Test
-    public void givenDefaultTestPropertySource_whenVariableOneRetrieved_thenValueInDefaultFileReturned() {
+    public void givenACustomPropertySource_whenVariableOneRetrieved_thenValueInPropertyAnnotationIsReturned() {
         String output = classUsingProperty.retrievePropertyOne();
 
         assertThat(output).isEqualTo("other-properties-value");
