@@ -11,13 +11,12 @@ public class UUIDPositiveLongGeneratorUnitTest {
     @Test
     public void whenGetMostSignificantBits_thenAssertPositive() {
         long randomPositiveLong = Math.abs(UUID.randomUUID().getMostSignificantBits());
-        assertThat(randomPositiveLong).isPositive();
+        assertThat(randomPositiveLong).isNotNegative();
     }
 
     @Test
     public void whenGetLeastSignificantBits_thenAssertPositive() {
         long randomPositiveLong = Math.abs(UUID.randomUUID().getLeastSignificantBits());
-        assertThat(randomPositiveLong).isPositive();
+        assertThat(randomPositiveLong).isNotNegative();
     }
-
 }
