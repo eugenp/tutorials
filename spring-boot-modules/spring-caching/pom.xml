@@ -43,6 +43,7 @@
         <dependency>
             <groupId>org.ehcache</groupId>
             <artifactId>ehcache</artifactId>
+            <classifier>jakarta</classifier>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -76,11 +77,6 @@
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-commons</artifactId>
         </dependency>
-        <!--<dependency>
-            <groupId>org.ehcache</groupId>
-            <artifactId>ehcache</artifactId>
-            <version>${ehcache.version}</version>
-        </dependency>-->
     </dependencies>
 
     <build>
@@ -96,7 +92,6 @@
     </build>
 
     <properties>
-        <ehcache.version>3.5.2</ehcache.version>
         <caffeine.version>3.1.8</caffeine.version>
     </properties>
 
