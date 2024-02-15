@@ -9,7 +9,7 @@ public class House {
      Copy constructor
      */
     public House(House house) {
-        this.setAddress(house.getAddress());
+        this.address = house.getAddress();
     }
 
     private String address;
