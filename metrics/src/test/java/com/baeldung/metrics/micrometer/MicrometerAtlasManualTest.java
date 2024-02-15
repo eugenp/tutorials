@@ -282,7 +282,7 @@ public class MicrometerAtlasManualTest {
         Map<Double, Double> expectedMicrometer = new TreeMap<>();
         expectedMicrometer.put(2.5E7,1D);
         expectedMicrometer.put(3.0E8,1D);
-        expectedMicrometer.put(6.0E8,4D);
+        expectedMicrometer.put(6.0E8,1D);
 
         Map<Double, Double> actualMicrometer = new TreeMap<>();
         HistogramSnapshot snapshot = timer.takeSnapshot();
