@@ -10,24 +10,25 @@ import io.etcd.jetcd.Client;
 public class JetcdExample {
     public static void main(String[] args) {
         String etcdEndpoint = "http://localhost:2379";
-        String key = "/mykey";
-        String value = "Hello, etcd!";
+        // String key = "/mykey";
+        // String value = "Hello, etcd!";
 
         try (Client client = Client.builder().endpoints(etcdEndpoint).build()) {
             KV kvClient = client.getKVClient();
-            ByteSequence keyBytes = ByteSequence.from(key.getBytes());
-            ByteSequence valueBytes = ByteSequence.from(value.getBytes());
+            ByteSequence key = ByteSequence.from("test_key".getBytes());
+            ByteSequence value = ByteSequence.from("test_value".getBytes());
             
-            // Put a key-value pair
-            PutResponse response = kvClient.put(keyBytes, valueBytes).get();
-
-            // Retrieve the value
-            GetResponse getResponse = kvClient.get(keyBytes).get();
-            String retrievedValue = getResponse.getKvs(0).getValue().toStringUtf8();
-            System.out.println(retrievedValue);
-
-            // Delete the key
-            DeleteResponse deleteResponse = kvClient.delete(keyBytes).getDeleted();
+            // put the key-value
+            kvClient.put(key, value).get();
+            
+            // get the CompletableFuture
+            CompletableFuture<GetResponse> getFuture = kvClient.get(key);
+            
+            // get the value from CompletableFuture
+            GetResponse response = getFuture.get();
+            
+            // delete the key
+            kvClient.delete(key).get();
         } catch (Exception e) {
             e.printStackTrace();
         }
