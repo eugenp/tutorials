@@ -1,9 +1,9 @@
 package com.baeldung.etcd;
 
-import io.etcd.jetcd.api.DeleteRangeRequest;
-import io.etcd.jetcd.api.DeleteRangeResponse;
-import io.etcd.jetcd.api.PutResponse;
-import io.etcd.jetcd.api.RangeResponse;
+// import io.etcd.jetcd.kv.DeleteRangeRequest;
+// import io.etcd.jetcd.kv.DeleteRangeResponse;
+import io.etcd.jetcd.kv.PutResponse;
+import io.etcd.jetcd.kv.RangeResponse;
 import io.etcd.jetcd.ByteSequence;
 import io.etcd.jetcd.KV;
 import io.etcd.jetcd.Client;
