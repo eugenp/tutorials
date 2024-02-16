@@ -1,5 +1,7 @@
 package com.baeldung.etcd;
 
+import java.util.concurrent.CompletableFuture;
+
 import io.etcd.jetcd.kv.DeleteResponse;
 import io.etcd.jetcd.kv.GetResponse;
 import io.etcd.jetcd.kv.PutResponse;
