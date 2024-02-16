@@ -1,9 +1,8 @@
 package com.baeldung.etcd;
 
-// import io.etcd.jetcd.kv.DeleteRangeRequest;
-// import io.etcd.jetcd.kv.DeleteRangeResponse;
+import io.etcd.jetcd.kv.DeleteResponse;
+import io.etcd.jetcd.kv.GetResponse;
 import io.etcd.jetcd.kv.PutResponse;
-// import io.etcd.jetcd.kv.RangeResponse;
 import io.etcd.jetcd.ByteSequence;
 import io.etcd.jetcd.KV;
 import io.etcd.jetcd.Client;
@@ -23,12 +22,12 @@ public class JetcdExample {
             PutResponse response = kvClient.put(keyBytes, valueBytes).get();
 
             // Retrieve the value
-            RangeResponse getResponse = kvClient.get(keyBytes).get();
+            GetResponse getResponse = kvClient.get(keyBytes).get();
             String retrievedValue = getResponse.getKvs(0).getValue().toStringUtf8();
+            System.out.println(retrievedValue);
 
             // Delete the key
-            // DeleteRangeResponse deleteResponse = 
-            //     kvClient.delete(DeleteRangeRequest.newBuilder().setKey(key.getBytes()).build()).get();
+            DeleteResponse deleteResponse = kvClient.delete(keyBytes).getDeleted();
         } catch (Exception e) {
             e.printStackTrace();
         }
