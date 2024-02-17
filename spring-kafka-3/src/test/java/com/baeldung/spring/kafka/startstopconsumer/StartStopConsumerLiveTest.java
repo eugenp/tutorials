@@ -83,14 +83,12 @@ public class StartStopConsumerLiveTest {
 
         //Verification that listener has started.
         UserEvent startUserEventTest = new UserEvent(UUID.randomUUID().toString());
-        startUserEventTest.setEventNanoTime(System.nanoTime());
         producer.send(new ProducerRecord<>(Constants.MULTI_PARTITION_TOPIC, startUserEventTest));
         await().untilAsserted(() -> assertEquals(1, this.userEventStore.getUserEvents().size()));
         this.userEventStore.clearUserEvents();
 
         for (long count = 1; count <= 10; count++) {
             UserEvent userEvent = new UserEvent(UUID.randomUUID().toString());
-            userEvent.setEventNanoTime(System.nanoTime());
             Future<RecordMetadata> future = producer.send(new ProducerRecord<>(Constants.MULTI_PARTITION_TOPIC, userEvent));
             RecordMetadata metadata = future.get();
             if (count == 4) {

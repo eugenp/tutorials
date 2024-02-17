@@ -7,17 +7,18 @@ import java.util.List;
 
 @Component
 public class UserEventStore {
+
     private final List<UserEvent> userEvents = new ArrayList<>();
 
-    public void addUserEvent(UserEvent userEvent){
+    public void addUserEvent(UserEvent userEvent) {
         userEvents.add(userEvent);
     }
 
-    public List<UserEvent> getUserEvents(){
+    public List<UserEvent> getUserEvents() {
         return userEvents;
     }
 
-    public void clearUserEvents(){
+    public void clearUserEvents() {
         this.userEvents.clear();
     }
 }

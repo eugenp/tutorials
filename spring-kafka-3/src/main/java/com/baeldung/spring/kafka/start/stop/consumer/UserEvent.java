@@ -1,10 +1,12 @@
 package com.baeldung.spring.kafka.start.stop.consumer;
 
 public class UserEvent {
-    private String userEventId;
-    private long eventNanoTime;
 
-    public UserEvent(){}
+    private String userEventId;
+
+
+    public UserEvent() {
+    }
 
     public UserEvent(String userEventId) {
         this.userEventId = userEventId;
@@ -18,11 +20,4 @@ public class UserEvent {
         this.userEventId = userEventId;
     }
 
-    public long getEventNanoTime() {
-        return eventNanoTime;
-    }
-
-    public void setEventNanoTime(long eventNanoTime) {
-        this.eventNanoTime = eventNanoTime;
-    }
 }

@@ -11,7 +11,6 @@ public class KafkaListenerControlService {
     @Autowired
     private KafkaListenerEndpointRegistry registry;
 
-    // Method to start a listener
     public void startListener(String listenerId) {
         MessageListenerContainer listenerContainer = registry.getListenerContainer(listenerId);
         if (listenerContainer != null && !listenerContainer.isRunning()) {
@@ -19,7 +18,6 @@ public class KafkaListenerControlService {
         }
     }
 
-    // Method to stop a listener
     public void stopListener(String listenerId) {
         MessageListenerContainer listenerContainer = registry.getListenerContainer(listenerId);
         if (listenerContainer != null && listenerContainer.isRunning()) {
