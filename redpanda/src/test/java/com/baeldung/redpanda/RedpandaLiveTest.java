@@ -118,10 +118,12 @@ public class RedpandaLiveTest {
     void whenCreateTopic_thenSuccess() throws ExecutionException, InterruptedException {
         String topic = "test-topic";
         createTopic(topic);
-        assertTrue(createAdminClient().listTopics()
-            .names()
-            .get()
-            .contains(topic));
+        try(AdminClient adminClient = createAdminClient()) {
+            assertTrue(adminClient.listTopics()
+                .names()
+                .get()
+                .contains(topic));
+        }
     }
 
     @Test
@@ -133,7 +135,6 @@ public class RedpandaLiveTest {
 
     @Test
     void givenTopic_whenConsumeMessage_thenSuccess() {
-
         try (KafkaConsumer<String, String> kafkaConsumer = createConsumer()) {
             kafkaConsumer.subscribe(Collections.singletonList(TOPIC_NAME));
 
