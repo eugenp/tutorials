@@ -31,9 +31,9 @@ public class BasicAuthConfiguration {
         http.csrf(AbstractHttpConfigurer::disable)
             .cors(withDefaults())
             .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry -> authorizationManagerRequestMatcherRegistry
-                    .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                    .requestMatchers("/login").permitAll()
-                    .anyRequest().authenticated())
+                .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                .requestMatchers("/login").permitAll()
+                .anyRequest().authenticated())
             .httpBasic(withDefaults());
         return http.build();
     }
