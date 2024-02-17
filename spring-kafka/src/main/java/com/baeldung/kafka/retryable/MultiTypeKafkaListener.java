@@ -1,4 +1,4 @@
-package com.baeldung.spring.kafka.retryable;
+package com.baeldung.kafka.retryable;
 
 import org.springframework.kafka.annotation.KafkaHandler;
 import org.springframework.kafka.annotation.KafkaListener;
