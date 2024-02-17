@@ -42,13 +42,13 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        return http.authorizeHttpRequests(authorizationManagerRequestMatcherRegistry ->
-            authorizationManagerRequestMatcherRegistry
-                .requestMatchers("/", "/home", "/css/**").permitAll()
-                .anyRequest().authenticated())
-            .formLogin(httpSecurityFormLoginConfigurer -> httpSecurityFormLoginConfigurer.loginPage("/login")
-                .loginProcessingUrl("/login")
-               )
-            .logout(Customizer.withDefaults()).build();
+        return http.authorizeHttpRequests(auth -> auth
+                .requestMatchers("/", "/home", "/css/**")
+                .permitAll()
+                .anyRequest()
+                .authenticated())
+            .formLogin(httpSecurityFormLoginConfigurer ->
+                httpSecurityFormLoginConfigurer.loginPage("/login").permitAll())
+            .logout(logout -> logout.logoutSuccessUrl("/")).build();
     }
 }
