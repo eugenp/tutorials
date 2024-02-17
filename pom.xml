@@ -1034,6 +1034,7 @@
                 <module>quarkus-modules</module>
                 <module>reactive-systems</module>
                 <module>reactor-core</module>
+                <module>redpanda</module>
                 <module>rsocket</module>
                 <module>rule-engines-modules</module>
                 <module>rxjava-modules</module>
