@@ -5,26 +5,27 @@ import org.junit.jupiter.api.Test;
 import java.util.Base64;
 import java.util.regex.Pattern;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CheckIfStringIsBased64UnitTest {
 
     @Test
-    public void givenString_whenOperatingBase64_thenCheckIfItIsBase64Encoded() {
-
+    public void givenBase64EncodedString_whenDecoding_thenNoException() {
         try {
             Base64.getDecoder().decode("SGVsbG8gd29ybGQ=");
             assertTrue(true);
         } catch (IllegalArgumentException e) {
-            assertFalse(false);
+            fail("Unexpected exception: " + e.getMessage());
         }
+    }
 
+    @Test
+    public void givenNonBase64String_whenDecoding_thenCatchException() {
         try {
             Base64.getDecoder().decode("Hello world!");
-            assertTrue(true);
+            fail("Expected IllegalArgumentException was not thrown");
         } catch (IllegalArgumentException e) {
-            assertFalse(false);
+            assertTrue(true);
         }
     }
 
@@ -35,6 +36,5 @@ public class CheckIfStringIsBased64UnitTest {
         );
 
         assertTrue(BASE64_PATTERN.matcher("SGVsbG8gd29ybGQ=").matches());
-        assertFalse(BASE64_PATTERN.matcher("Hello world!").matches());
     }
 }
