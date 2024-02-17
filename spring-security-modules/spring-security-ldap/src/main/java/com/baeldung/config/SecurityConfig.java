@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.ldap.core.support.BaseLdapPathContextSource;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.ldap.LdapBindAuthenticationManagerFactory;
 import org.springframework.security.ldap.server.ApacheDSContainer;
@@ -41,18 +42,13 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-            .antMatchers("/", "/home", "/css/**")
-            .permitAll()
-            .anyRequest()
-            .authenticated()
-            .and()
-            .formLogin()
-            .loginPage("/login")
-            .permitAll()
-            .and()
-            .logout()
-            .logoutSuccessUrl("/");
-        return http.build();
+        return http.authorizeHttpRequests(authorizationManagerRequestMatcherRegistry ->
+            authorizationManagerRequestMatcherRegistry
+                .requestMatchers("/", "/home", "/css/**").permitAll()
+                .anyRequest().authenticated())
+            .formLogin(httpSecurityFormLoginConfigurer -> httpSecurityFormLoginConfigurer.loginPage("/login")
+                .loginProcessingUrl("/login")
+               )
+            .logout(Customizer.withDefaults()).build();
     }
 }
