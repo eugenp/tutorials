@@ -1,6 +1,5 @@
 package com.baeldung.iteratorvsforeach;
 
-import com.baeldung.synchronizedcollections.Application;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ConcurrentModificationException;
@@ -10,7 +9,7 @@ import java.util.logging.Logger;
 
 public class IteratorVsForeach {
 
-  private static final Logger LOGGER = Logger.getLogger(Application.class.getName());
+  private static final Logger LOGGER = Logger.getLogger(IteratorVsForeach.class.getName());
   private static List<String> generateSampleList() {
     return new ArrayList<>(Arrays.asList("String1", "String2", "unwanted"));
   }
