@@ -11,13 +11,13 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class LoggingFilterDelegatingFilterProxyTest {
+public class LoggingFilterAutowiringSupportUnitTest {
 
     @Autowired
-    private LoggingFilterDelegatingFilterProxy loggingFilter;
+    private LoggingFilterAutowiringSupport loggingFilter;
 
     @Test
-    public void testLoggingFilter() throws Exception {
+    public void givenFilter_whenAutowired_thenDependencyInjected() throws Exception {
         Assert.assertNotNull(loggingFilter);
         Assert.assertNotNull(getField(loggingFilter,"loggingService"));
     }
