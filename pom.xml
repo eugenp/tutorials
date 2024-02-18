@@ -833,7 +833,7 @@
                 <!--<module>spring-integration</module>--><!-- failing after upgrading to jdk17-->
                 <module>spring-jenkins-pipeline</module>
                 <module>spring-jersey</module>
-                <!--<module>spring-jinq</module>-->
+                <module>spring-jinq</module>
                 <module>spring-kafka-2</module>
                 <module>spring-kafka-3</module>
                 <module>spring-kafka</module>
@@ -1079,7 +1079,7 @@
                 <!--<module>spring-integration</module>--><!-- failing after upgrading to jdk17-->
                 <module>spring-jenkins-pipeline</module>
                 <module>spring-jersey</module>
-                <!--<module>spring-jinq</module>-->
+                <module>spring-jinq</module>
                 <module>spring-kafka-2</module>
                 <module>spring-kafka-3</module>                     
                 <module>spring-kafka</module>
