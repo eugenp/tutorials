@@ -960,6 +960,7 @@
                 <module>jackson-simple</module>
                 <module>java-blockchain</module>
                 <module>java-jdi</module>
+                <module>java-redpanda</module>
                 <!--<module>java-panama</module>--> <!--JAVA-27339-->
                 <module>javafx</module>
                 <module>javax-sound</module>
