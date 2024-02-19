@@ -70,9 +70,9 @@ public class S3CrudServiceIntegrationTest {
         var savedFileContent = s3CrudService.getObject(TEST_BUCKET_NAME, fileToSave.getName());
 
         assertThat(Arrays.equals(fileToSave.getContent()
-          .array(), savedFileContent.orElse(new byte[]{}))).isTrue();
+          .array(), savedFileContent.orElse(new byte[] {}))).isTrue();
 
-        s3CrudService.deleteObject(TEST_BUCKET_NAME,fileToSave.getName());
+        s3CrudService.deleteObject(TEST_BUCKET_NAME, fileToSave.getName());
 
         var deletedFileContent = s3CrudService.getObject(TEST_BUCKET_NAME, fileToSave.getName());
         assertThat(deletedFileContent).isEmpty();
