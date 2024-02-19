@@ -12,7 +12,21 @@ public class CheckStringEqualsMirrorReflectionUnitTest {
 
     private final static Set<Character> SYMMETRIC_LETTERS = Set.of('A', 'H', 'I', 'M', 'O', 'T', 'U', 'V', 'W', 'X', 'Y');
 
-    boolean isReflectionEqual(String input) {
+    @Test
+    void whenCallingIsReflectionEqual_thenGetExpectedResults() {
+        assertFalse(isMirrorImageEqual("LOL"));
+        assertFalse(isMirrorImageEqual("AXY"));
+        assertFalse(isMirrorImageEqual("HUHU"));
+
+        assertTrue(isMirrorImageEqual(""));
+        assertTrue(isMirrorImageEqual("AAA"));
+        assertTrue(isMirrorImageEqual("HUH"));
+        assertTrue(isMirrorImageEqual("HIMMIH"));
+        assertTrue(isMirrorImageEqual("HIMIH"));
+    }
+
+
+    public boolean isMirrorImageEqual(String input) {
         return containsOnlySymmetricLetters(input) && isPalindrome(input);
     }
 
@@ -28,19 +42,6 @@ public class CheckStringEqualsMirrorReflectionUnitTest {
         String reversed = new StringBuilder(input).reverse()
             .toString();
         return input.equals(reversed);
-    }
-
-    @Test
-    void whenCallingIsReflectionEqual_thenGetExpectedResults() {
-        assertFalse(isReflectionEqual("LOL"));
-        assertFalse(isReflectionEqual("AXY"));
-        assertFalse(isReflectionEqual("HUHU"));
-
-        assertTrue(isReflectionEqual(""));
-        assertTrue(isReflectionEqual("AAA"));
-        assertTrue(isReflectionEqual("HUH"));
-        assertTrue(isReflectionEqual("HIMMIH"));
-        assertTrue(isReflectionEqual("HIMIH"));
     }
 
 }
