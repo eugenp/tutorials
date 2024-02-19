@@ -45,7 +45,7 @@ public class ThenApplyAndThenApplyAsyncUnitTest {
             // Accessing the result
             String result = resultFuture.join();
             assertEquals("Result: 5", result);
-        } catch (Exception e) {
+        } catch (CompletionException e) {
             assertEquals("java.lang.ArithmeticException: / by zero", e.getMessage());
             System.err.println("Exception caught: " + e.getMessage());
         }
@@ -70,7 +70,6 @@ public class ThenApplyAndThenApplyAsyncUnitTest {
 
     @Test
     public void givenCompletableFutureWithExecutor_whenUsingThenApplyAsync_thenThreadExecutesAsExpected() {
-        // Create a custom executor
         ExecutorService customExecutor = Executors.newFixedThreadPool(4);
 
         CompletableFuture<Integer> future = CompletableFuture.supplyAsync(() -> {
@@ -82,10 +81,8 @@ public class ThenApplyAndThenApplyAsyncUnitTest {
             return 5;
         }, customExecutor);
 
-        // When
         CompletableFuture<String> resultFuture = future.thenApplyAsync(num -> "Result: " + num, customExecutor);
 
-        // Then
         String result = resultFuture.join();
         assertEquals("Result: 5", result);
 
