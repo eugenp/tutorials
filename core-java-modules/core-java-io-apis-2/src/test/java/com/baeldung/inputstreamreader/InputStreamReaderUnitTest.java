@@ -1,5 +1,7 @@
 package com.baeldung.inputstreamreader;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -10,10 +12,8 @@ import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
-
 public class InputStreamReaderUnitTest {
     @Test
     public void givenAStringWrittenToAFile_whenReadByInputStreamReader_thenShouldMatchWhenRead(@TempDir Path tempDir) throws IOException {
@@ -21,9 +21,9 @@ public class InputStreamReaderUnitTest {
         String sampleTxt = "Good day. This is just a test. Good bye.";
         Path sampleOut = tempDir.resolve("sample-out.txt");
         List<String> lines = Arrays.asList(sampleTxt);
-        //create and write file
         Files.write(sampleOut, lines);
-        try (FileInputStream fis = new FileInputStream(String.valueOf(sampleOut.toAbsolutePath())); BufferedReader br = new BufferedReader(new InputStreamReader(fis, StandardCharsets.UTF_8))) {
+        String absolutePath = String.valueOf(sampleOut.toAbsolutePath());
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(absolutePath), StandardCharsets.UTF_8))) {
             String ln;
             while ((ln = br.readLine()) != null) {
                 if (ln.contains(sampleTxt)) {
@@ -31,7 +31,7 @@ public class InputStreamReaderUnitTest {
                     break;
                 }
             }
-            Assert.assertTrue(isMatched);
+            assertThat(isMatched).isTrue();
         }
     }
 }

@@ -81,6 +81,12 @@
             <version>7.1.0</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.4.1</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     <build>
         <finalName>core-java-io-apis-2</finalName>
@@ -94,4 +100,5 @@
     <properties>
         <junit-jupiter-version>5.9.3</junit-jupiter-version>
     </properties>
+
 </project>
