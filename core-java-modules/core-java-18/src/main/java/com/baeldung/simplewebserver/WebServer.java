@@ -1,4 +1,4 @@
-package com.baeldung.simple_web_server;
+package com.baeldung.simplewebserver;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -20,7 +20,7 @@ public class WebServer {
 
     public static void main(String[] args) {
         WebServer webServer = new WebServer();
-        HttpServer server = webServer.createWithHandler_401Response();
+        HttpServer server = webServer.createWithHandler401Response();
         server.start();
     }
 
@@ -35,7 +35,7 @@ public class WebServer {
         return server;
     }
 
-    private HttpServer createWithHandler_401Response() {
+    private HttpServer createWithHandler401Response() {
         Predicate<Request> findAllowedPath = r -> r.getRequestURI()
           .getPath()
           .equals("/test/allowed");
