@@ -31,6 +31,12 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>redpanda</artifactId>
+            <version>${redpanda.version}</version>
+        </dependency>
+
     </dependencies>
 
     <dependencyManagement>
