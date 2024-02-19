@@ -147,6 +147,7 @@
         <resource.delimiter>@</resource.delimiter>
         <!-- <start-class>com.baeldung.buildproperties.Application</start-class> -->
         <start-class>com.baeldung.yaml.MyApplication</start-class>
+        <spring-boot.version>3.1.5</spring-boot.version>
     </properties>
 
 </project>

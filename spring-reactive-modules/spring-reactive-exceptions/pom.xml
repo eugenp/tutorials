@@ -54,4 +54,8 @@
         </plugins>
     </build>
 
+    <properties>
+        <spring-boot.version>3.1.5</spring-boot.version>
+    </properties>
+
 </project>

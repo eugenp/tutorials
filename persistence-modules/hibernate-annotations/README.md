@@ -12,3 +12,4 @@ This module contains articles about Annotations used in Hibernate.
 - [@Immutable in Hibernate](https://www.baeldung.com/hibernate-immutable)
 - [Hibernate @CreationTimestamp and @UpdateTimestamp](https://www.baeldung.com/hibernate-creationtimestamp-updatetimestamp)
 - [Difference Between @JoinColumn and @PrimaryKeyJoinColumn in JPA](https://www.baeldung.com/java-jpa-join-vs-primarykeyjoin)
+- [A Guide to the @SoftDelete Annotation in Hibernate](https://www.baeldung.com/java-hibernate-softdelete-annotation)

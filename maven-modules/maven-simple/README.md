@@ -10,3 +10,4 @@ Since this is a module tied to an e-book, it should **not** be moved or used to 
 ### Relevant Articles
 
 - [Apache Maven Tutorial](https://www.baeldung.com/maven)
+- [Run Maven From Java Code](https://www.baeldung.com/java-maven-run-program)
