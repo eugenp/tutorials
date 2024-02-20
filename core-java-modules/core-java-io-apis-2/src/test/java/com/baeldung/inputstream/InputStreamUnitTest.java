@@ -21,7 +21,7 @@ import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 public class InputStreamUnitTest {
-    @Test //givenAStringWrittenToAFile_whenReadByX_thenY
+    @Test
     public void givenAStringWrittenToFile_whenReadWithFileInputStream_thenItShouldExitsInTheInputStream(@TempDir Path tempDir) throws IOException {
         Path sampleOut = tempDir.resolve("sample-out.txt");
         List<String> lines = Arrays.asList("Hello. This is just a test. Good bye.");
@@ -60,19 +60,18 @@ public class InputStreamUnitTest {
         }
     }
     @Test
-    public void givenKeyValuePairsWrittenInAFile_whenPassedInOutputStreams_thenThePairsShouldExistsInObjectInputStreams(
-          @TempDir Path tempDir) throws IOException, ClassNotFoundException {
+    public void givenKeyValuePairsWrittenInAFile_whenPassedInOutputStreams_thenThePairsShouldExistsInObjectInputStreams(@TempDir Path tempDir) throws IOException, ClassNotFoundException {
         Path sampleOut = tempDir.resolve("sample-out.txt");
-        File fileText = sampleOut.toFile();
+        File textFile = sampleOut.toFile();
         //Serialize a Hashmap then write it into a file.
         Map<String, String> kv = new HashMap<>();
-        try (ObjectOutputStream objectOutStream = new ObjectOutputStream(new FileOutputStream(fileText))) {
+        try (ObjectOutputStream objectOutStream = new ObjectOutputStream(new FileOutputStream(textFile))) {
                 kv.put("baseURL", "baeldung.com");
                 kv.put("apiKey", "this_is_a_test_key");
                 objectOutStream.writeObject(kv);
         }
         //Deserialize the contents of a file then transform it back into a Hashmap
-        try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(fileText))) {
+        try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(textFile))) {
                 HashMap<String, String> inputKv = (HashMap<String, String>) input.readObject();
                 assertThat(kv.get("baseURL")).isEqualTo( inputKv.get("baseURL"));
                 assertThat(kv.get("apiKey")).isEqualTo( inputKv.get("apiKey"));
