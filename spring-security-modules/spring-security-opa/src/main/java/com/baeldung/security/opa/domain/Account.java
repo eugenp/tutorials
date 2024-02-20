@@ -6,20 +6,17 @@ import lombok.Data;
 
 @Data
 public class Account {
-    
+
     private String id;
     private BigDecimal balance;
     private String currency;
-    
-    
-    public static Account of(String id, BigDecimal balance, String currency) {
-        Account acc = new Account();
-        acc.setId(id);
-        acc.setBalance(balance);
-        acc.setCurrency(currency);
-        
-        return acc;
-    }
 
+    public static Account of(String id, BigDecimal balance, String currency) {
+        Account account = new Account();
+        account.setId(id);
+        account.setBalance(balance);
+        account.setCurrency(currency);
+        return account;
+    }
 
 }

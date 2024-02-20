@@ -84,6 +84,7 @@
         <mybatis.version>3.5.2</mybatis.version>
         <mybatis-spring-boot-starter.version>3.0.3</mybatis-spring-boot-starter.version>
         <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
+        <spring-boot.version>3.1.5</spring-boot.version>
     </properties>
 
 </project>

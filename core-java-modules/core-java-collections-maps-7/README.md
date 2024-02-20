@@ -7,4 +7,5 @@
 - [Limiting the Max Size of a HashMap in Java](https://www.baeldung.com/java-hashmap-size-bound)
 - [How to Sort LinkedHashMap by Values in Java](https://www.baeldung.com/java-sort-linkedhashmap-using-values)
 - [How to Increment a Map Value in Java](https://www.baeldung.com/java-increment-map-value)
+- [Collect Stream of entrySet() to a LinkedHashMap](https://www.baeldung.com/java-linkedhashmap-entryset-stream)
 - More articles: [[<-- prev]](/core-java-modules/core-java-collections-maps-6)
