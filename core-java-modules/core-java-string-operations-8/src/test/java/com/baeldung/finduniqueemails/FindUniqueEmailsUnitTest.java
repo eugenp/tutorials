@@ -20,14 +20,10 @@ public class FindUniqueEmailsUnitTest {
     }
 
     @Test
-    public void givenEmailList_whenUsingBasicStringManipulation_thenFindUniqueEmails() {
+    public void givenEmailList_whenUsingStringManipulation_thenFindUniqueEmails() {
         Set<String> uniqueEmails = new HashSet<>();
-
         for (String email : emailList) {
-            String[] parts = email.split("@");
-            if (parts.length == 2) {
-                uniqueEmails.add(parts[0].toLowerCase() + "@" + parts[1].toLowerCase());
-            }
+            uniqueEmails.add(email.toLowerCase());
         }
 
         assertEquals(expectedUniqueEmails, uniqueEmails);
@@ -35,11 +31,8 @@ public class FindUniqueEmailsUnitTest {
 
     @Test
     public void givenEmailList_whenUsingJavaStreams_thenFindUniqueEmails() {
-
         Set<String> uniqueEmails = Arrays.stream(emailList)
-                .map(email -> email.split("@"))
-                .filter(parts -> parts.length == 2)
-                .map(parts -> parts[0].toLowerCase() + "@" + parts[1])
+                .map(String::toLowerCase)
                 .collect(Collectors.toSet());
 
         assertEquals(expectedUniqueEmails, uniqueEmails);
