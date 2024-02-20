@@ -12,12 +12,6 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 @PropertySource("classpath:foo.properties")
 public class ServiceConfig {
 
-    public ServiceConfig() {
-        super();
-    }
-
-    // beans
-
     @Bean
     public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
         final PropertySourcesPlaceholderConfigurer ppc = new PropertySourcesPlaceholderConfigurer();
