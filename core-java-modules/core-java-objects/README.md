@@ -1,3 +1,3 @@
-## Deep vs shallow copy of an object
+## Deep vs Shallow Copy of an Object
 
-This module contains article about creating a deep vs shallow copy of an object in Java
+This module contains article about creating a deep vs shallow copy of an object in Java.
