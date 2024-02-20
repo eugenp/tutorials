@@ -1,4 +1,4 @@
-package com.baeldung.data.jpa.libarary.model;
+package com.baeldung.data.jpa.library.model;
 
 public class Example {
     private String example;

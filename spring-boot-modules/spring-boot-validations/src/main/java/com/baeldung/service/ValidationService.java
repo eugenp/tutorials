@@ -1,11 +1,11 @@
 package com.baeldung.service;
 
-import javax.validation.Valid;
-
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
 import com.baeldung.dto.BooleanObject;
+
+import jakarta.validation.Valid;
 
 @Service
 @Validated
