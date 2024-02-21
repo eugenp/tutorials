@@ -17,9 +17,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
+
 public class InputStreamUnitTest {
     @Test
     public void givenAStringWrittenToFile_whenReadWithFileInputStream_thenItShouldExitsInTheInputStream(@TempDir Path tempDir) throws IOException {
@@ -41,14 +41,9 @@ public class InputStreamUnitTest {
         String fileAbsolutePath = sampleOut.toFile()
             .getAbsolutePath();
         try (FileInputStream fis = new FileInputStream(fileAbsolutePath)) {
-            int content;
             int availableBytes = fis.available();
-            Assert.assertTrue(availableBytes > 0);
-            StringBuilder actualReadText = new StringBuilder();
-            while ((content = fis.read()) != -1) {
-                actualReadText.append((char) content);
-            }
-            assertThat(actualReadText.toString()).contains(expectedText);
+            assertThat(availableBytes > 0);
+            assertThat(readString(fis)).contains(expectedText);
         }
     }
 
@@ -59,6 +54,7 @@ public class InputStreamUnitTest {
             assertThat(readString(bais)).isEqualTo("hello");
         }
     }
+
     @Test
     public void givenKeyValuePairsWrittenInAFile_whenPassedInOutputStreams_thenThePairsShouldExistsInObjectInputStreams(@TempDir Path tempDir) throws IOException, ClassNotFoundException {
         Path sampleOut = tempDir.resolve("sample-out.txt");
@@ -66,15 +62,15 @@ public class InputStreamUnitTest {
         //Serialize a Hashmap then write it into a file.
         Map<String, String> kv = new HashMap<>();
         try (ObjectOutputStream objectOutStream = new ObjectOutputStream(new FileOutputStream(textFile))) {
-                kv.put("baseURL", "baeldung.com");
-                kv.put("apiKey", "this_is_a_test_key");
-                objectOutStream.writeObject(kv);
+            kv.put("baseURL", "baeldung.com");
+            kv.put("apiKey", "this_is_a_test_key");
+            objectOutStream.writeObject(kv);
         }
         //Deserialize the contents of a file then transform it back into a Hashmap
         try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(textFile))) {
-                HashMap<String, String> inputKv = (HashMap<String, String>) input.readObject();
-                assertThat(kv.get("baseURL")).isEqualTo( inputKv.get("baseURL"));
-                assertThat(kv.get("apiKey")).isEqualTo( inputKv.get("apiKey"));
+            HashMap<String, String> inputKv = (HashMap<String, String>) input.readObject();
+            assertThat(kv.get("baseURL")).isEqualTo(inputKv.get("baseURL"));
+            assertThat(kv.get("apiKey")).isEqualTo(inputKv.get("apiKey"));
         }
     }
 

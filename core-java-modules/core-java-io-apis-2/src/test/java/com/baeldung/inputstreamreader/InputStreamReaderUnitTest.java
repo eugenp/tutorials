@@ -14,10 +14,10 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
+
 public class InputStreamReaderUnitTest {
     @Test
     public void givenAStringWrittenToAFile_whenReadByInputStreamReader_thenShouldMatchWhenRead(@TempDir Path tempDir) throws IOException {
-        boolean isMatched = false;
         String sampleTxt = "Good day. This is just a test. Good bye.";
         Path sampleOut = tempDir.resolve("sample-out.txt");
         List<String> lines = Arrays.asList(sampleTxt);
@@ -25,6 +25,7 @@ public class InputStreamReaderUnitTest {
         String absolutePath = String.valueOf(sampleOut.toAbsolutePath());
         try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(absolutePath), StandardCharsets.UTF_8))) {
             String ln;
+            boolean isMatched = false;
             while ((ln = br.readLine()) != null) {
                 if (ln.contains(sampleTxt)) {
                     isMatched = true;
