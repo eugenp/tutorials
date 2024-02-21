@@ -21,7 +21,8 @@ import org.springframework.kafka.test.context.EmbeddedKafka;
 import org.springframework.kafka.test.utils.ContainerTestUtils;
 import org.springframework.test.context.ActiveProfiles;
 
-@SpringBootTest(classes = KafkaMultipleTopicsApplication.class)
+@SpringBootTest(classes = KafkaMultipleTopicsApplication.class,
+    properties = "spring.kafka.bootstrap-servers=localhost:9099")
 @EmbeddedKafka(partitions = 1, brokerProperties = { "listeners=PLAINTEXT://localhost:9099", "port=9099" })
 @ActiveProfiles("multipletopics")
 public class KafkaMultipleTopicsIntegrationTest {

@@ -10,9 +10,9 @@ public class GreetingServiceWithoutAOP {
     private static final Logger logger = LoggerFactory.getLogger(GreetingServiceWithoutAOP.class);
 
     public String greet(String name) {
-        logger.info(">> greet() - {}", name);
+        logger.debug(">> greet() - {}", name);
         String result = String.format("Hello %s", name);
-        logger.info("<< greet() - {}", result);
+        logger.debug("<< greet() - {}", result);
         return result;
     }
 }

@@ -21,7 +21,7 @@ public class SpringEjbClientApplication {
         Properties jndiProps = new Properties();
         jndiProps.put("java.naming.factory.initial", "org.jboss.naming.remote.client.InitialContextFactory");
         jndiProps.put("jboss.naming.client.ejb.context", true);
-        jndiProps.put("java.naming.provider.url", "http-remoting://localhost:8080");
+        jndiProps.put("java.naming.provider.url", "remote+http://localhost:8080");
         return new InitialContext(jndiProps);
     }
 
@@ -37,7 +37,7 @@ public class SpringEjbClientApplication {
     
     @SuppressWarnings("rawtypes")
     private String getFullName(Class classType) {
-        String moduleName = "spring-ejb-remote/";
+        String moduleName = "ejb:/spring-ejb-remote/";
         String beanName = classType.getSimpleName();
         String viewClassName = classType.getName();
         

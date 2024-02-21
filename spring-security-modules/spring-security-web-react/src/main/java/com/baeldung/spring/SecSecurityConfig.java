@@ -38,28 +38,21 @@ public class SecSecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.csrf()
-            .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-            .and()
-            .authorizeRequests()
-            .antMatchers("/admin/**")
-            .hasRole("ADMIN")
-            .antMatchers("/anonymous*")
-            .anonymous()
-            .antMatchers(HttpMethod.GET, "/index*", "/static/**", "/*.js", "/*.json", "/*.ico", "/rest")
-            .permitAll()
-            .anyRequest()
-            .authenticated()
-            .and()
-            .formLogin()
-            .loginPage("/index.html")
-            .loginProcessingUrl("/perform_login")
-            .defaultSuccessUrl("/homepage.html", true)
-            .failureUrl("/index.html?error=true")
-            .and()
-            .logout()
-            .logoutUrl("/perform_logout")
-            .deleteCookies("JSESSIONID");
-        return http.build();
+        return http.csrf(csrf -> csrf.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
+            .authorizeHttpRequests(request -> request.requestMatchers("/admin/**")
+                .hasRole("ADMIN")
+                .requestMatchers("/anonymous*")
+                .anonymous()
+                .requestMatchers(HttpMethod.GET, "/index*", "/static/**", "/*.js", "/*.json", "/*.ico", "/rest")
+                .permitAll()
+                .anyRequest()
+                .authenticated())
+            .formLogin(form -> form.loginPage("/index.html")
+                .loginProcessingUrl("/perform_login")
+                .defaultSuccessUrl("/homepage.html", true)
+                .failureUrl("/index.html?error=true"))
+            .logout(logout -> logout.logoutUrl("/perform_logout")
+                .deleteCookies("JSESSIONID"))
+            .build();
     }
 }
