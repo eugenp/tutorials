@@ -10,3 +10,9 @@ spring.kafka:
     key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
     value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
     auto-offset-reset: earliest
+
+spring.modulith:
+  events:
+    republish-outstanding-events-on-startup: true
+    jdbc.schema-initialization.enabled: true
+
