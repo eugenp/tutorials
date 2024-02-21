@@ -1,6 +1,7 @@
 package com.baeldung.springbootsslbundles;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -11,7 +12,7 @@ public class SecureServiceRestApi {
     private final RestTemplate restTemplate;
 
     @Autowired
-    public SecureServiceRestApi(RestTemplate restTemplate) {
+    public SecureServiceRestApi(@Qualifier("secureRestTemplate") RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 
