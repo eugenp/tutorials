@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org"
-	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html xmlns:sec="https://www.thymeleaf.org">
 <body>
 	Current user authorities:
 	<span sec:authentication="principal.authorities">user</span>
@@ -9,7 +8,7 @@
 	<a href="#" onclick="tryRunAs()">Generate Report As Super User</a>
 
 	<script
-		src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 	<script type="text/javascript">
 	
 		function tryRunAs(){

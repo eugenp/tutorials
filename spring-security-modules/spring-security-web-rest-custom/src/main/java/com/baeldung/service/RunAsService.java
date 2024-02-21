@@ -10,8 +10,7 @@ public class RunAsService {
 
     @Secured({ "ROLE_RUN_AS_REPORTER" })
     public Authentication getCurrentUser() {
-        Authentication authentication = 
-                SecurityContextHolder.getContext().getAuthentication();
-        return authentication;
+        return SecurityContextHolder.getContext()
+            .getAuthentication();
     }
 }
