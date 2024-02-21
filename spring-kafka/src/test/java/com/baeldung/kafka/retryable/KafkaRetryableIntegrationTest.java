@@ -5,8 +5,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
-import org.junit.Before;
-import org.junit.ClassRule;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,7 +13,6 @@ import org.springframework.kafka.config.KafkaListenerEndpointRegistry;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.listener.AcknowledgingConsumerAwareMessageListener;
 import org.springframework.kafka.listener.ConcurrentMessageListenerContainer;
-import org.springframework.kafka.test.EmbeddedKafkaBroker;
 import org.springframework.kafka.test.context.EmbeddedKafka;
 import org.springframework.test.context.ActiveProfiles;
 
@@ -24,8 +22,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @EmbeddedKafka(partitions = 1, controlledShutdown = true, brokerProperties = { "listeners=PLAINTEXT://localhost:9093", "port=9093" })
 @ActiveProfiles("retry")
 public class KafkaRetryableIntegrationTest {
-    @ClassRule
-    public static EmbeddedKafkaBroker embeddedKafka = new EmbeddedKafkaBroker(1, true, "multitype");
 
     @Autowired
     private KafkaListenerEndpointRegistry registry;
@@ -39,9 +35,9 @@ public class KafkaRetryableIntegrationTest {
 
     private static final String TOPIC = "topic";
 
-    @Before
+    @BeforeEach
     public void setup() {
-        System.setProperty("spring.kafka.bootstrap-servers", embeddedKafka.getBrokersAsString());
+        System.setProperty("spring.kafka.bootstrap-servers", "localhost:9093");
     }
 
     @Test

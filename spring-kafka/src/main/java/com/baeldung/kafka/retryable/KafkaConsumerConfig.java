@@ -129,7 +129,6 @@ public class KafkaConsumerConfig {
     public ConcurrentKafkaListenerContainerFactory<String, Object> greetingKafkaListenerContainerFactory() {
         ConcurrentKafkaListenerContainerFactory<String, Object> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(multiTypeConsumerFactory());
-        factory.setMessageConverter(multiTypeConverter());
         factory.setCommonErrorHandler(errorHandler());
         factory.getContainerProperties()
           .setAckMode(ContainerProperties.AckMode.RECORD);
