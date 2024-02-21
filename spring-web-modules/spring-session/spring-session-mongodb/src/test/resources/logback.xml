@@ -11,5 +11,7 @@
         <appender-ref ref="STDOUT" />
     </root>
 
-    <logger name="org.apache.camel.impl.engine" level="WARN"/>
+    <logger name="org.springframework.boot.test.context" level="WARN"/>
+    <logger name="o.s.b.a.mongo.embedded" level="WARN"/>
+
 </configuration>
