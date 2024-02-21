@@ -9,43 +9,42 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+import static com.baeldung.initials.InitialFinder.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GetInitialsFromNameUnitTest {
 
-    private InitialFinder initialFinder = new InitialFinder();
-
     @ParameterizedTest
     @CsvSource({"John F Kennedy,JFK", ",''", "'',''", "Not Correct   88text,NC", "michael jackson,MJ", "1test 2test, ''"})
     public void getInitialFromName_usingLoop(String input, String expected) {
-        String initial = initialFinder.getInitialUsingLoop(input);
+        String initial = getInitialUsingLoop(input);
         assertEquals(expected, initial);
     }
 
     @ParameterizedTest
     @CsvSource({"John F Kennedy,JFK", ",''", "'',''", "Not Correct   88text,NC", "michael jackson,MJ", "1test 2test, ''"})
     public void getInitialFromName_usingStringTokenizer(String input, String expected) {
-        String initial = initialFinder.getInitialUsingStringTokenizer(input);
+        String initial = getInitialUsingStringTokenizer(input);
         assertEquals(expected, initial);
     }
 
     @ParameterizedTest
     @CsvSource({"John F Kennedy,JFK", ",''", "'',''", "Not Correct   88text,NC", "michael jackson,MJ", "1test 2test, ''"})
     public void getInitialFromName_usingRegex(String input, String expected) {
-        String initial = initialFinder.getInitialUsingRegex(input);
+        String initial = getInitialUsingRegex(input);
         assertEquals(expected, initial);
     }
 
     @ParameterizedTest
     @CsvSource({"John F Kennedy,JFK", ",''", "'',''", "Not Correct   88text,NC", "michael jackson,MJ", "1test 2test, ''"})
     public void getInitialFromName_usingStreamsAPI(String input, String expected) {
-        String initial = initialFinder.getInitialUsingStreamsAPI(input);
+        String initial = getInitialUsingStreamsAPI(input);
         assertEquals(expected, initial);
     }
 }
 
 class InitialFinder {
-    public String getInitialUsingLoop(String name) {
+    public static String getInitialUsingLoop(String name) {
         if (name == null || name.isEmpty()) {
             return "";
         }
@@ -59,7 +58,7 @@ class InitialFinder {
         return initials.toString().toUpperCase();
     }
 
-    public String getInitialUsingStringTokenizer(String name) {
+    public static String getInitialUsingStringTokenizer(String name) {
         if (name == null || name.isEmpty()) {
             return "";
         }
@@ -74,7 +73,7 @@ class InitialFinder {
         return initials.toString().toUpperCase();
     }
 
-    public String getInitialUsingRegex(String name) {
+    public static String getInitialUsingRegex(String name) {
         if (name == null || name.isEmpty()) {
             return "";
         }
@@ -87,7 +86,7 @@ class InitialFinder {
         return initials.toString().toUpperCase();
     }
 
-    public String getInitialUsingStreamsAPI(String name) {
+    public static String getInitialUsingStreamsAPI(String name) {
         if (name == null || name.isEmpty()) {
             return "";
         }
