@@ -7,10 +7,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class UniqueDigitCounterUnitTest {
 
     @Test
-    public void givenPositiveNumber_whenCountUniqueDigits_thenCorrectCount() {
+    public void givenNotNegativeNumber_whenCountUniqueDigits_thenCorrectCount() {
         assertEquals(3, UniqueDigitCounter.countWithSet(122333));
         assertEquals(1, UniqueDigitCounter.countWithSet(0));
         assertEquals(2, UniqueDigitCounter.countWithSet(101));
+
         assertEquals(3, UniqueDigitCounter.countWithBitManipulation(122333));
         assertEquals(1, UniqueDigitCounter.countWithBitManipulation(0));
         assertEquals(2, UniqueDigitCounter.countWithBitManipulation(101));
