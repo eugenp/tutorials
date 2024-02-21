@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 
 @DataMongoTest
-public class MongoOrdersEventHandlerUnitTest extends AbstractOrdersEventHandlerUnitTest {
+public class MongoOrdersEventHandlerManualTest extends AbstractOrdersEventHandlerUnitTest {
 
     @Autowired
     MongoClient mongoClient;
