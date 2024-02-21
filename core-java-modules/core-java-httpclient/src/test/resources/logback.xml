@@ -11,5 +11,6 @@
         <appender-ref ref="STDOUT" />
     </root>
 
-    <logger name="org.apache.camel.impl.engine" level="WARN"/>
+    <logger name="org.eclipse.jetty.server.handler" level="WARN"/>
+    <logger name="org.mockserver.log" level="WARN"/>
 </configuration>
