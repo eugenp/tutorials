@@ -23,9 +23,9 @@ public class SSLDebugLogger {
 
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
             String line;
-            logger.info("Response from " + url + ":");
+            logger.debug("Response from " + url + ":");
             while ((line = reader.readLine()) != null) {
-                logger.info(line);
+                logger.debug(line);
             }
         }
     }

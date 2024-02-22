@@ -2,16 +2,15 @@ package com.baeldung.config;
 
 import java.util.Set;
 
-import javax.servlet.FilterRegistration.Dynamic;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRegistration;
-
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.DispatcherServlet;
+
+import jakarta.servlet.FilterRegistration.Dynamic;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletRegistration;
 
 public class MainWebAppInitializer implements WebApplicationInitializer {
 
@@ -19,19 +18,12 @@ public class MainWebAppInitializer implements WebApplicationInitializer {
         super();
     }
 
-    //
-
-    /**
-     * Register and configure all Servlet container components necessary to power the web application.
-     */
     @Override
-    public void onStartup(final ServletContext sc) throws ServletException {
+    public void onStartup(final ServletContext sc) {
         System.out.println("MyWebAppInitializer.onStartup()");
 
-        // Create the 'root' Spring application context
         final AnnotationConfigWebApplicationContext root = new AnnotationConfigWebApplicationContext();
         root.scan("com.baeldung.config.parent");
-        // root.getEnvironment().setDefaultProfiles("embedded");
 
         // Manages the lifecycle of the root application context
         sc.addListener(new ContextLoaderListener(root));
