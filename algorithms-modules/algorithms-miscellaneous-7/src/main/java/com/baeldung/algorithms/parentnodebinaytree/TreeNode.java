@@ -78,10 +78,12 @@ public class TreeNode {
     private TreeNode iterativeParent(TreeNode current, TreeNode target) {
         Deque<TreeNode> parentCandidates = new LinkedList<>();
 
+        String notFoundMessage = format("No parent node found for 'target.value=%s' " +
+                        "The target is not in the tree or the target is the topmost root node.",
+                target.value);
+
         if (target.equals(current)) {
-            throw new NoSuchElementException(format("No parent node found for 'target.value=%s' " +
-                            "The target is not in the tree or the target is the topmost root node.",
-                    target.value));
+            throw new NoSuchElementException(notFoundMessage);
         }
 
         while (current != null || !parentCandidates.isEmpty()) {
@@ -100,8 +102,6 @@ public class TreeNode {
             current = current.right;
         }
 
-        throw new NoSuchElementException(format("No parent node found for 'target.value=%s' " +
-                        "The target is not in the tree or the target is the topmost root node.",
-                target.value));
+        throw new NoSuchElementException(notFoundMessage);
     }
 }
