@@ -58,17 +58,27 @@ public class TreeNode {
     }
 
     private TreeNode parent(TreeNode current, TreeNode target) throws NoSuchElementException {
-        if (target.equals(current) || current == null) {
+        final boolean isTopmostRoot = target.equals(current);
+        final boolean nodeDoesNotExist = current == null;
+
+        if (isTopmostRoot || nodeDoesNotExist) {
             throw new NoSuchElementException(format("No parent node found for 'target.value=%s' " +
                             "The target is not in the tree or the target is the topmost root node.",
                     target.value));
         }
 
-        if (target.equals(current.left) || target.equals(current.right)) {
+        final boolean isTargetChildOfCurrent = target.equals(current.left)
+                || target.equals(current.right);
+
+        if (isTargetChildOfCurrent) {
             return current;
         }
 
-        return parent(target.value < current.value ? current.left : current.right, target);
+        if (target.value < current.value) {
+            return parent(current.left, target);
+        }
+
+        return parent(current.right, target);
     }
 
     public TreeNode iterativeParent(int target) {
@@ -76,24 +86,21 @@ public class TreeNode {
     }
 
     private TreeNode iterativeParent(TreeNode current, TreeNode target) {
-        Deque<TreeNode> parentCandidates = new LinkedList<>();
+        Deque<TreeNode> visitedNodes = new LinkedList<>();
 
-        if (target.equals(current)) {
-            throw new NoSuchElementException(format("No parent node found for 'target.value=%s' " +
-                            "The target is not in the tree or the target is the topmost root node.",
-                    target.value));
-        }
-
-        while (current != null || !parentCandidates.isEmpty()) {
+        while (current != null || !visitedNodes.isEmpty()) {
 
             while (current != null) {
-                parentCandidates.addFirst(current);
+                visitedNodes.addFirst(current);
                 current = current.left;
             }
 
-            current = parentCandidates.pollFirst();
+            current = visitedNodes.pollFirst();
 
-            if (target.equals(current.left) || target.equals(current.right)) {
+            final boolean isTargetChildOfCurrent = target.equals(current.left)
+                    || target.equals(current.right);
+
+            if (isTargetChildOfCurrent) {
                 return current;
             }
 
