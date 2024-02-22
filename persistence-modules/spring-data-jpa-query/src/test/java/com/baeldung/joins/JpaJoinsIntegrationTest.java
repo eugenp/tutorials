@@ -29,6 +29,7 @@ public class JpaJoinsIntegrationTest {
     public void whenPathExpressionIsUsedForSingleValuedAssociation_thenCreatesImplicitInnerJoin() {
         TypedQuery<Department> query = entityManager.createQuery("SELECT e.department FROM Employee e", Department.class);
 
+
         List<Department> resultList = query.getResultList();
 
         assertThat(resultList).hasSize(2);
