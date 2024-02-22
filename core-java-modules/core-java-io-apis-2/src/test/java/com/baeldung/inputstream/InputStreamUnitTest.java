@@ -42,7 +42,7 @@ public class InputStreamUnitTest {
             .getAbsolutePath();
         try (FileInputStream fis = new FileInputStream(fileAbsolutePath)) {
             int availableBytes = fis.available();
-            assertThat(availableBytes > 0);
+            assertThat(availableBytes).isGreaterThan(0);
             assertThat(readString(fis)).contains(expectedText);
         }
     }
