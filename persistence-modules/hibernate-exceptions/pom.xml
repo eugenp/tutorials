@@ -20,7 +20,7 @@
             <version>${hsqldb.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.hibernate</groupId>
+            <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
@@ -34,6 +34,7 @@
     <properties>
         <hsqldb.version>2.7.1</hsqldb.version>
         <h2.version>2.1.214</h2.version>
+        <hibernate.version>6.4.2.Final</hibernate.version>
     </properties>
 
 </project>

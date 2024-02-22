@@ -41,10 +41,8 @@ public class DenyOnMissingControllerIntegrationTest {
 
     @Test
     @WithMockUser(username = "user")
-    public void givenANormalUser_whenCallingBye_thenAccessDenied() throws Exception {
-        ServletException exception = Assertions.assertThrows(ServletException.class, () -> {
-            mockMvc.perform(get("/bye"));
-        });
+    public void givenANormalUser_whenCallingBye_thenAccessDenied() {
+        ServletException exception = Assertions.assertThrows(ServletException.class, () -> mockMvc.perform(get("/bye")));
 
         Assertions.assertNotNull(exception);
         Assertions.assertEquals(exception.getCause().getClass(), AccessDeniedException.class);

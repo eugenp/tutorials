@@ -1,17 +1,14 @@
 package com.baeldung.atomikos.spring.config;
 
+import com.atomikos.icatch.jta.UserTransactionManager;
+import com.atomikos.jdbc.AtomikosDataSourceBean;
+import com.baeldung.atomikos.spring.Application;
+import jakarta.transaction.SystemException;
 import java.util.Properties;
-
-import javax.transaction.SystemException;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.jta.JtaTransactionManager;
-
-import com.atomikos.icatch.jta.UserTransactionManager;
-import com.atomikos.jdbc.AtomikosDataSourceBean;
-import com.baeldung.atomikos.spring.Application;
 
 @Configuration
 @EnableTransactionManagement
@@ -46,7 +43,7 @@ public class Config {
     }
 
     @Bean(initMethod = "init", destroyMethod = "close")
-    public UserTransactionManager userTransactionManager() throws SystemException {
+    public UserTransactionManager userTransactionManager() throws jakarta.transaction.SystemException {
         UserTransactionManager userTransactionManager = new UserTransactionManager();
         userTransactionManager.setTransactionTimeout(300);
         userTransactionManager.setForceShutdown(true);

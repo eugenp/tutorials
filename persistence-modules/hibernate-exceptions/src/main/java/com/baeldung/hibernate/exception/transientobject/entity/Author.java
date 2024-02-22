@@ -26,9 +26,8 @@ public class Author {
     @Column(name = "name")
     private String name;
 
-    @ManyToMany
     @Cascade({ CascadeType.SAVE_UPDATE, CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "book_id")
+    @ManyToMany(mappedBy = "authors")
     private Set<Book> books = new HashSet<>();
 
     public void addBook(Book book) {
