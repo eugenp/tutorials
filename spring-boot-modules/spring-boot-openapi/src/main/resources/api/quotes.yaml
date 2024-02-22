@@ -1,0 +1,130 @@
+openapi: 3.0.0
+info:
+  title: Quotes API
+  version: 1.0.0
+servers:
+  - description: Test server
+    url: http://localhost:8080
+paths:
+  /quotes/{symbol}:
+    get:
+      tags:
+        - quotes
+      summary: Get current quote for a security
+      operationId: getQuote
+      security:
+        - ApiKey:
+            - Quotes.Read
+      parameters:
+        - name: symbol
+          in: path
+          required: true
+          description: Security's symbol
+          schema:
+            type: string
+            pattern: '[A-Z0-9]+'
+      responses:
+        '200':
+            description: OK
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/QuoteResponse'
+  /orders/{symbol}:
+    post:
+      tags:
+        - orders
+      operationId: createOrder
+      security:
+        - ApiKey:
+            - Orders.Write
+      summary: Places a new order to buy a security
+      parameters:
+        - name: symbol
+          in: path
+          required: true
+          description: Security's symbol
+          schema:
+            type: string
+            pattern: '[A-Z0-9]'
+      requestBody:
+        required: true
+        description: Order info
+        content:
+          'application/json':
+            schema:
+              $ref: '#'#/components/schemas/OrderRequest'
+      responses:
+        '201':
+          description: Order accepted
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/OrderResponse'
+
+components:
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+
+  schemas:
+    OrderType:
+      type: string
+      enum:
+        - BUY
+        - SELL
+    OrderStatus:
+      type: string
+      enum:
+        - PENDING
+        - REJECTED
+        - FULFILLED
+    QuoteResponse:
+      description: Quote response
+      type: object
+      properties:
+        symbol:
+          type: string
+          description: security's symbol
+        price:
+          type: number
+          description: Quote value
+    OrderRequest:
+      description: Buy/Sell order details
+      type: object
+      properties:
+        clientRef:
+          type: string
+        orderType:
+          $ref: '#/components/schemas/OrderType'
+        symbol:
+          type: string
+          description: security's symbol
+        quantity:
+          type: number
+        price:
+          type: number
+    OrderResponse:
+      description: Buy/Sell order response
+      properties:
+        clientRef:
+          type: string
+        orderType:
+          $ref: '#/components/schemas/OrderType'
+        symbol:
+          type: string
+          description: security's symbol
+        quantity:
+          type: number
+        price:
+          type: number
+        orderStatus:
+          $ref: '#/components/schemas/OrderStatus'
+
+
+
+
+
+

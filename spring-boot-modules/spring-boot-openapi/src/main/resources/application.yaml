@@ -1,0 +1,4 @@
+logging:
+  level:
+    root: INFO
+    org.springframework: DEBUG

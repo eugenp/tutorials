@@ -111,6 +111,7 @@
         <module>spring-boot-3-url-matching</module>
         <module>spring-boot-graalvm-docker</module>
         <module>spring-boot-validations</module>
+        <module>spring-boot-openapi</module>
     </modules>
 
     <dependencyManagement>
