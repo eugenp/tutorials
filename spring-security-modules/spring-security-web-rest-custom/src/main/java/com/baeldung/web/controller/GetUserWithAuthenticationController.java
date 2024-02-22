@@ -2,22 +2,17 @@ package com.baeldung.web.controller;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class GetUserWithAuthenticationController {
 
     public GetUserWithAuthenticationController() {
         super();
     }
 
-    // API
-
-    @RequestMapping(value = "/username3", method = RequestMethod.GET)
-    @ResponseBody
+    @GetMapping(value = "/username3")
     public String currentUserNameSimple(final Authentication authentication) {
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         System.out.println("Retrieved user with authorities: " + userDetails.getAuthorities());

@@ -27,7 +27,7 @@ public class SecureRestTemplateConfig {
         this.sslContext = sslBundle.createSslContext();
     }
 
-    @Bean
+    @Bean(name="secureRestTemplate")
     public RestTemplate secureRestTemplate() {
         final SSLConnectionSocketFactory sslSocketFactory = SSLConnectionSocketFactoryBuilder.create().setSslContext(this.sslContext).build();
         final HttpClientConnectionManager cm = PoolingHttpClientConnectionManagerBuilder.create().setSSLSocketFactory(sslSocketFactory).build();
