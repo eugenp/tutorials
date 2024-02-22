@@ -1,4 +1,4 @@
-package com.baeldung.spring.cloud.aws.sqs;
+package com.baeldung.spring.cloud.aws.sqs.introduction;
 
 import java.util.Map;
 import java.util.Optional;
