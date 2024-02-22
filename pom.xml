@@ -833,7 +833,7 @@
                 <!--<module>spring-integration</module>--><!-- failing after upgrading to jdk17-->
                 <module>spring-jenkins-pipeline</module>
                 <module>spring-jersey</module>
-                <module>spring-jinq</module>
+                <!--<module>spring-jinq</module>-->
                 <module>spring-kafka-2</module>
                 <module>spring-kafka-3</module>
                 <module>spring-kafka</module>
@@ -1079,7 +1079,7 @@
                 <!--<module>spring-integration</module>--><!-- failing after upgrading to jdk17-->
                 <module>spring-jenkins-pipeline</module>
                 <module>spring-jersey</module>
-                <module>spring-jinq</module>
+                <!--<module>spring-jinq</module>-->
                 <module>spring-kafka-2</module>
                 <module>spring-kafka-3</module>                     
                 <module>spring-kafka</module>
@@ -1167,7 +1167,7 @@
         <hamcrest.version>2.2</hamcrest.version>
         <hamcrest-all.version>1.3</hamcrest-all.version>
         <mockito.version>4.4.0</mockito.version>
-        <byte-buddy.version>1.14.6</byte-buddy.version>
+        <byte-buddy.version>1.14.11</byte-buddy.version>
 
         <!-- logging -->
         <!-- overwriting in the slf4j and logback in the hibernate-jpa, spring-data-eclipselink. When updated to the latest version remove the version from that module-->

@@ -28,13 +28,13 @@ public class LoggingAspect {
     public void logBefore(JoinPoint joinPoint) {
         Object[] args = joinPoint.getArgs();
         String methodName = joinPoint.getSignature().getName();
-        logger.info(">> {}() - {}", methodName, Arrays.toString(args));
+        logger.debug(">> {}() - {}", methodName, Arrays.toString(args));
     }
 
     @AfterReturning(value = "publicMethodsFromLoggingPackage()", returning = "result")
     public void logAfter(JoinPoint joinPoint, Object result) {
         String methodName = joinPoint.getSignature().getName();
-        logger.info("<< {}() - {}", methodName, result);
+        logger.debug("<< {}() - {}", methodName, result);
     }
 
     @AfterThrowing(pointcut = "publicMethodsFromLoggingPackage()", throwing = "exception")
@@ -47,9 +47,9 @@ public class LoggingAspect {
     public Object logAround(ProceedingJoinPoint joinPoint) throws Throwable {
         Object[] args = joinPoint.getArgs();
         String methodName = joinPoint.getSignature().getName();
-        logger.info(">> {}() - {}", methodName, Arrays.toString(args));
+        logger.debug(">> {}() - {}", methodName, Arrays.toString(args));
         Object result = joinPoint.proceed();
-        logger.info("<< {}() - {}", methodName, result);
+        logger.debug("<< {}() - {}", methodName, result);
         return result;
     }
 }

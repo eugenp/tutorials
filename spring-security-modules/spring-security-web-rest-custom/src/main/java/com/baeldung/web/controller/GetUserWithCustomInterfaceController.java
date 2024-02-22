@@ -1,27 +1,22 @@
 package com.baeldung.web.controller;
 
-import com.baeldung.security.IAuthenticationFacade;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+import com.baeldung.security.IAuthenticationFacade;
+
+@RestController
 public class GetUserWithCustomInterfaceController {
 
-    @Autowired
-    private IAuthenticationFacade authenticationFacade;
+    private final IAuthenticationFacade authenticationFacade;
 
-    public GetUserWithCustomInterfaceController() {
+    public GetUserWithCustomInterfaceController(IAuthenticationFacade authenticationFacade) {
         super();
+        this.authenticationFacade = authenticationFacade;
     }
 
-    // API
-
-    @RequestMapping(value = "/username5", method = RequestMethod.GET)
-    @ResponseBody
+    @GetMapping(value = "/username5")
     public String currentUserNameSimple() {
         final Authentication authentication = authenticationFacade.getAuthentication();
         return authentication.getName();

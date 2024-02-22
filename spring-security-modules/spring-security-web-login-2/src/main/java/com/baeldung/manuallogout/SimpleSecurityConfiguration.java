@@ -5,9 +5,6 @@ import static org.springframework.security.web.header.writers.ClearSiteDataHeade
 import static org.springframework.security.web.header.writers.ClearSiteDataHeaderWriter.Directive.EXECUTION_CONTEXTS;
 import static org.springframework.security.web.header.writers.ClearSiteDataHeaderWriter.Directive.STORAGE;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
@@ -20,11 +17,14 @@ import org.springframework.security.web.authentication.logout.HeaderWriterLogout
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.security.web.header.writers.ClearSiteDataHeaderWriter;
 
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
+
 @Configuration
 @EnableWebSecurity
 public class SimpleSecurityConfiguration {
 
-    private static Logger logger = LoggerFactory.getLogger(SimpleSecurityConfiguration.class);
+    private static final Logger logger = LoggerFactory.getLogger(SimpleSecurityConfiguration.class);
 
     @Order(4)
     @Configuration
@@ -32,8 +32,8 @@ public class SimpleSecurityConfiguration {
 
         @Bean
         public SecurityFilterChain filterChainLogoutOnRequest(HttpSecurity http) throws Exception {
-            http.antMatcher("/request/**")
-                .authorizeRequests(authz -> authz.anyRequest()
+            http.securityMatcher("/request/**")
+                .authorizeHttpRequests(authz -> authz.anyRequest()
                     .permitAll())
                 .logout(logout -> logout.logoutUrl("/request/logout")
                     .addLogoutHandler((request, response, auth) -> {
@@ -53,8 +53,8 @@ public class SimpleSecurityConfiguration {
         
         @Bean
         public SecurityFilterChain filterChainDefaultLogout(HttpSecurity http) throws Exception {
-            http.antMatcher("/basic/**")
-            .authorizeRequests(authz -> authz.anyRequest()
+            http.securityMatcher("/basic/**")
+                .authorizeHttpRequests(authz -> authz.anyRequest()
                 .permitAll())
             .logout(logout -> logout.logoutUrl("/basic/basiclogout"));
             return http.build();
@@ -67,8 +67,8 @@ public class SimpleSecurityConfiguration {
 
         @Bean
         public SecurityFilterChain filterChainAllCookieClearing(HttpSecurity http) throws Exception {
-            http.antMatcher("/cookies/**")
-                .authorizeRequests(authz -> authz.anyRequest()
+            http.securityMatcher("/cookies/**")
+                .authorizeHttpRequests(authz -> authz.anyRequest()
                     .permitAll())
                 .logout(logout -> logout.logoutUrl("/cookies/cookielogout")
                     .addLogoutHandler(new SecurityContextLogoutHandler())
@@ -92,8 +92,8 @@ public class SimpleSecurityConfiguration {
 
         @Bean
         public SecurityFilterChain filterChainClearSiteDataHeader(HttpSecurity http) throws Exception {
-            http.antMatcher("/csd/**")
-                .authorizeRequests(authz -> authz.anyRequest()
+            http.securityMatcher("/csd/**")
+                .authorizeHttpRequests(authz -> authz.anyRequest()
                     .permitAll())
                 .logout(logout -> logout.logoutUrl("/csd/csdlogout")
                     .addLogoutHandler(new HeaderWriterLogoutHandler(new ClearSiteDataHeaderWriter(SOURCE))));
