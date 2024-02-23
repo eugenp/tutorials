@@ -230,7 +230,7 @@
         <barcode4j.version>2.1</barcode4j.version>
         <qrgen.version>2.6.0</qrgen.version>
         <zxing.version>3.3.0</zxing.version>
-        <bucket4j.version>8.1.0</bucket4j.version>
+        <bucket4j.version>8.8.0</bucket4j.version>
         <bucket4j-spring-boot-starter.version>0.8.1</bucket4j-spring-boot-starter.version>
         <caffeine.version>3.1.8</caffeine.version>
     </properties>
