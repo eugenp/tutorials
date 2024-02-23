@@ -78,7 +78,7 @@
     <properties>
         <poi.version>5.2.5</poi.version>
         <poiji.version>4.1.1</poiji.version>
-        <fastexcel.version>0.15.7</fastexcel.version>
+        <fastexcel.version>0.17.0</fastexcel.version>
         <jxl.version>2.6.12</jxl.version>
     </properties>
 
