@@ -11,7 +11,8 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>spring-security-modules</artifactId>
+        <artifactId>parent-boot-3</artifactId>
+        <relativePath>../../parent-boot-3</relativePath>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
@@ -30,7 +31,7 @@
         </dependency>
         <dependency>
             <groupId>org.thymeleaf.extras</groupId>
-            <artifactId>thymeleaf-extras-springsecurity5</artifactId>
+            <artifactId>thymeleaf-extras-springsecurity6</artifactId>
         </dependency>
         <!-- oauth2 -->
         <dependency>

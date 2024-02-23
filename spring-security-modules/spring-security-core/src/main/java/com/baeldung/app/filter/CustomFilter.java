@@ -14,7 +14,7 @@ public class CustomFilter implements Filter {
     private static Logger LOGGER = LoggerFactory.getLogger(CustomFilter.class);
 
     @Override
-    public void init(FilterConfig config) throws ServletException {
+    public void init(FilterConfig config) {
     }
 
     @Override

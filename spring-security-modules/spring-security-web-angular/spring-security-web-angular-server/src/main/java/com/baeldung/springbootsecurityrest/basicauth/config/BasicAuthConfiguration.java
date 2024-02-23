@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
@@ -27,18 +28,13 @@ public class BasicAuthConfiguration {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.csrf()
-            .disable()
+        http.csrf(AbstractHttpConfigurer::disable)
             .cors(withDefaults())
-            .authorizeRequests()
-            .antMatchers(HttpMethod.OPTIONS, "/**")
-            .permitAll()
-            .antMatchers("/login")
-            .permitAll()
-            .anyRequest()
-            .authenticated()
-            .and()
-            .httpBasic();
+            .authorizeHttpRequests(authorizationManagerRequestMatcherRegistry -> authorizationManagerRequestMatcherRegistry
+                .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                .requestMatchers("/login").permitAll()
+                .anyRequest().authenticated())
+            .httpBasic(withDefaults());
         return http.build();
     }
 }

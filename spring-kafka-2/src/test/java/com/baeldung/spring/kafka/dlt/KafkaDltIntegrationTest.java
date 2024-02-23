@@ -26,7 +26,8 @@ import com.baeldung.spring.kafka.dlt.listener.PaymentListenerDltRetryOnError;
 import com.baeldung.spring.kafka.dlt.listener.PaymentListenerNoDlt;
 import org.springframework.test.context.ActiveProfiles;
 
-@SpringBootTest(classes = KafkaDltApplication.class)
+@SpringBootTest(classes = KafkaDltApplication.class,
+    properties = "spring.kafka.bootstrap-servers=localhost:9095")
 @EmbeddedKafka(
     partitions = 1,
     brokerProperties = { "listeners=PLAINTEXT://localhost:9095", "port=9095" },

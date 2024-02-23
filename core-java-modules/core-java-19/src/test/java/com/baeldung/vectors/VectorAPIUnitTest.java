@@ -28,7 +28,7 @@ public class VectorAPIUnitTest {
     public void whenTwoValuesProvided_thenComputeScalarNorm() {
         float[] arr1 = { 1, 2.3f };
         float[] arr2 = { 1.3f, 2.0f };
-        float[] result = { -2.6899998f, -9.29f };
+        float[] result = { 1.6401219f, 3.047950f };
         Assertions.assertArrayEquals(result, vector.scalarNormOfTwoArrays(arr1, arr2));
     }
 
@@ -36,7 +36,7 @@ public class VectorAPIUnitTest {
     public void whenTwoValuesProvided_thenComputeVectorNorm() {
         float[] arr1 = { 1, 2.3f };
         float[] arr2 = { 1.3f, 2.0f };
-        float[] result = { -2.6899998f, -9.29f };
+        float[] result = { 1.6401219f, 3.047950f };
         Assertions.assertArrayEquals(result, vector.vectorNormalForm(arr1, arr2));
     }
 

@@ -14,14 +14,20 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <surefire-version>2.22.2</surefire-version>
-    </properties>
-
     <modules>
         <module>dummy-surefire-junit47</module>
         <module>core-java-exclusions</module>
     </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <pluginManagement>
@@ -54,14 +60,8 @@
         </pluginManagement>
     </build>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>${junit.version}</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+    <properties>
+        <surefire-version>2.22.2</surefire-version>
+    </properties>
 
 </project>

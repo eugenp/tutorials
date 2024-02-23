@@ -13,9 +13,9 @@ import reactor.core.publisher.Mono;
 @RestController
 @RequiredArgsConstructor
 public class AccountController {
-    
+
     private final AccountService accountService;
-    
+
     @GetMapping("/account/{accountId}")
     public Mono<Account> getAccount(@PathVariable("accountId") String accountId) {
         return accountService.findByAccountId(accountId);

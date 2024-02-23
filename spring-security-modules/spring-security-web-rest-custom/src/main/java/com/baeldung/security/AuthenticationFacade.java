@@ -11,8 +11,6 @@ public class AuthenticationFacade implements IAuthenticationFacade {
         super();
     }
 
-    // API
-
     @Override
     public final Authentication getAuthentication() {
         return SecurityContextHolder.getContext().getAuthentication();

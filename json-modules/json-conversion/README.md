@@ -6,3 +6,4 @@ This module contains articles about JSON Conversions
 - [Convert JSON Array to Java List](https://www.baeldung.com/java-convert-json-array-to-list)
 - [Reading JSON Documents as Maps and Comparing Them](https://www.baeldung.com/java-json-maps-comparison)
 - [Convert Byte Array to JSON and Vice Versa in Java](https://www.baeldung.com/java-json-byte-array-conversion)
+- [Preventing Gson from Expressing Integers as Floats](https://www.baeldung.com/java-gson-prevent-expressing-integers-as-floats)
