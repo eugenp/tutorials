@@ -99,10 +99,10 @@
             <version>${commons-lang3.version}</version>
         </dependency>
         <dependency>
-			<groupId>org.jfree</groupId>
-			<artifactId>jfreechart</artifactId>
-			<version>${jfreechart.version}</version>
-		</dependency>
+            <groupId>org.jfree</groupId>
+            <artifactId>jfreechart</artifactId>
+            <version>${jfreechart.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
