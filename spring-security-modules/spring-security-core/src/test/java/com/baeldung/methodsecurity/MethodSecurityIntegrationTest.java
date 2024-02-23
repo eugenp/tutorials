@@ -1,6 +1,7 @@
 package com.baeldung.methodsecurity;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
@@ -50,7 +51,7 @@ public class MethodSecurityIntegrationTest {
     @WithMockUser(username = "john", roles = { "EDITOR" })
     public void givenUsernameJohn_whenCallIsValidUsername_thenReturnTrue() {
         boolean isValid = userRoleService.isValidUsername("john");
-        assertEquals(true, isValid);
+        assertTrue(isValid);
     }
 
     @Test(expected = AccessDeniedException.class)
@@ -60,7 +61,7 @@ public class MethodSecurityIntegrationTest {
     }
 
     @Test(expected = AccessDeniedException.class)
-    @WithMockUser(username = "john", roles = { "USER" })
+    @WithMockUser(username = "john")
     public void givenRoleUser_whenCallGetUsername2_thenReturnAccessDenied() {
         userRoleService.getUsername2();
     }
@@ -76,7 +77,7 @@ public class MethodSecurityIntegrationTest {
     @WithMockUser(username = "john", roles = { "VIEWER" })
     public void givenUsernameJerry_whenCallIsValidUsername2_thenReturnFalse() {
         boolean isValid = userRoleService.isValidUsername2("jerry");
-        assertEquals(false, isValid);
+        assertFalse(isValid);
     }
 
     @Test

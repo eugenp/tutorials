@@ -10,8 +10,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>spring-security-modules</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -26,11 +27,11 @@
         </dependency>
         <dependency>
             <groupId>org.thymeleaf.extras</groupId>
-            <artifactId>thymeleaf-extras-springsecurity5</artifactId>
+            <artifactId>thymeleaf-extras-springsecurity6</artifactId>
         </dependency>
         <dependency>
             <groupId>org.thymeleaf</groupId>
-            <artifactId>thymeleaf-spring5</artifactId>
+            <artifactId>thymeleaf-spring6</artifactId>
         </dependency>
         <!-- Spring -->
         <dependency>
@@ -85,23 +86,24 @@
         </dependency>
         <!-- web -->
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
+            <groupId>jakarta.servlet.jsp.jstl</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
             <scope>runtime</scope>
         </dependency>
+
         <!-- http -->
         <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpcore</artifactId>
+            <groupId>org.apache.httpcomponents.core5</groupId>
+            <artifactId>httpcore5</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
+            <groupId>org.apache.httpcomponents.client5</groupId>
+            <artifactId>httpclient5</artifactId>
         </dependency>
         <!-- util -->
         <dependency>

@@ -8,6 +8,7 @@ import com.netflix.servo.monitor.Monitors;
 import com.netflix.servo.tag.BasicTag;
 import com.netflix.servo.tag.BasicTagList;
 import com.netflix.servo.tag.TagList;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Iterator;
@@ -23,6 +24,12 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 public class MetricAnnotationManualTest extends MetricTestBase {
+
+    static {
+        System.setProperty(
+            "com.netflix.servo.DefaultMonitorRegistry.registryClass",
+            "com.netflix.servo.jmx.JmxMonitorRegistry");
+    }
 
     @Monitor(name = "integerCounter", type = DataSourceType.COUNTER, description = "Total number of update operations.")
     private final AtomicInteger updateCount = new AtomicInteger(0);

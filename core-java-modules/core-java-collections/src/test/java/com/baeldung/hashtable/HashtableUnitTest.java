@@ -60,14 +60,15 @@ public class HashtableUnitTest {
         table.put(new Word("dog"), "another animal");
 
         Iterator<Word> it = table.keySet().iterator();
-        System.out.println("iterator created");
+        // System.out.println("iterator created");
 
         table.remove(new Word("dog"));
-        System.out.println("element removed");
+        // System.out.println("element removed");
 
         while (it.hasNext()) {
             Word key = it.next();
-            System.out.println(table.get(key));
+            // System.out.println(table.get(key));
+            assertNotNull(table.get(key));
         }
     }
 
@@ -85,12 +86,13 @@ public class HashtableUnitTest {
         table.put(new Word("8"), "eight");
 
         Enumeration<Word> enumKey = table.keys();
-        System.out.println("Enumeration created");
+        // System.out.println("Enumeration created");
         table.remove(new Word("1"));
-        System.out.println("element removed");
+        // System.out.println("element removed");
         while (enumKey.hasMoreElements()) {
             Word key = enumKey.nextElement();
-            System.out.println(table.get(key));
+            // System.out.println(table.get(key));
+            assertNotNull(table.get(key));
         }
     }
 
@@ -110,7 +112,8 @@ public class HashtableUnitTest {
         Iterator<Map.Entry<Word, String>> it = table.entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry<Word, String> entry = it.next();
-            System.out.println(entry.getValue());
+            // System.out.println(entry.getValue());
+            assertNotNull(entry.getValue());
         }
     }
 

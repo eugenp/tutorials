@@ -6,4 +6,5 @@
 - [Calculate Distance Between Two Coordinates in Java](https://www.baeldung.com/java-find-distance-between-points)
 - [Rotate Arrays in Java](https://www.baeldung.com/java-rotate-arrays)
 - [Find Missing Number From a Given Array in Java](https://www.baeldung.com/java-array-find-missing-number)
+- [Calculate Weighted Mean in Java](https://www.baeldung.com/java-compute-weighted-average)
 - More articles: [[<-- prev]](/algorithms-miscellaneous-6)

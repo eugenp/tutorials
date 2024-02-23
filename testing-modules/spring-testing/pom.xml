@@ -75,6 +75,16 @@
 
     <build>
         <finalName>spring-testing</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>15</source>
+                    <target>15</target>
+                </configuration>
+            </plugin>
+        </plugins>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -87,7 +97,7 @@
         <!-- testing -->
         <java-hamcrest.version>2.0.0.0</java-hamcrest.version>
         <awaitility.version>3.1.6</awaitility.version>
-        <spring.version>5.3.4</spring.version>
+        <spring.version>6.1.3</spring.version>
         <javax.persistence.version>2.1.1</javax.persistence.version>
     </properties>
 

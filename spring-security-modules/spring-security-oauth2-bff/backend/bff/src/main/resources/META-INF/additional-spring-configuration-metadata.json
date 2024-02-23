@@ -1,0 +1,105 @@
+{"properties": [{
+  "name": "scheme",
+  "type": "java.lang.String",
+  "description": "Scheme to use for backend services"
+},{
+  "name": "hostname",
+  "type": "java.lang.String",
+  "description": "Name of the host on which the backend services run"
+},{
+  "name": "reverse-proxy-port",
+  "type": "java.lang.Integer",
+  "description": "Port used by the reverse proxy"
+},{
+  "name": "reverse-proxy-uri",
+  "type": "java.net.URI",
+  "description": "Public URI for the reverse proxy"
+},{
+  "name": "angular-port",
+  "type": "java.lang.Integer",
+  "description": "Port from which the Angular app is served"
+},{
+  "name": "angular-prefix",
+  "type": "java.lang.String",
+  "description": "Path-prefix used by the reverse proxy to route to whatever serves Angular assets"
+},{
+  "name": "angular-uri",
+  "type": "java.net.URI",
+  "description": "Internal URI to Angular assets"
+},{
+  "name": "vue-port",
+  "type": "java.lang.Integer",
+  "description": "Port from which the Vue app is served"
+},{
+  "name": "vue-prefix",
+  "type": "java.lang.String",
+  "description": "Path-prefix used by the reverse proxy to route to whatever serves Vue assets"
+},{
+  "name": "vue-uri",
+  "type": "java.net.URI",
+  "description": "Internal URI to Vue assets"
+},{
+  "name": "react-port",
+  "type": "java.lang.Integer",
+  "description": "Port from which the React app is served"
+},{
+  "name": "react-prefix",
+  "type": "java.lang.String",
+  "description": "Path-prefix used by the reverse proxy to route to whatever serves React assets"
+},{
+  "name": "react-uri",
+  "type": "java.net.URI",
+  "description": "Internal URI to React assets"
+},{
+  "name": "authorization-server-port",
+  "type": "java.lang.Integer",
+  "description": "Port on which the authorization server listens"
+},{
+  "name": "authorization-server-prefix",
+  "type": "java.lang.String",
+  "description": "Path-prefix used by the reverse proxy to route to the authorization server"
+},{
+  "name": "authorization-server-uri",
+  "type": "java.net.URI",
+  "description": "Internal base URI for the authorization server"
+},{
+  "name": "issuer",
+  "type": "java.net.URI",
+  "description": "Exact value of the issuer claim in tokens"
+},{
+  "name": "client-id",
+  "type": "java.lang.String",
+  "description": "OAuth2 client-id"
+},{
+  "name": "client-secret",
+  "type": "java.lang.String",
+  "description": "OAuth2 client-secret"
+},{
+  "name": "username-claim-json-path",
+  "type": "java.lang.String",
+  "description": "JSON path to the claim to use as user name"
+},{
+  "name": "authorities-json-path",
+  "type": "java.lang.String",
+  "description": "JSON path to the claim to use as Spring authorities source"
+},{
+  "name": "audience",
+  "type": "java.lang.String",
+  "description": "Some OpenID providers (Auth0) require the client to provide the 'audience' he's going to use access token for"
+},{
+  "name": "bff-port",
+  "type": "java.lang.Integer",
+  "description": "Port on which the BFF listens"
+},{
+  "name": "bff-prefix",
+  "type": "java.lang.String",
+  "description": "Path-prefix used by the reverse proxy to route REST requests to the BFF"
+},{
+  "name": "bff-uri",
+  "type": "java.net.URI",
+  "description": "Internal URI to the BFF"
+},{
+  "name": "resource-server-port",
+  "type": "java.lang.Integer",
+  "description": "Port on which the stateless REST API listens"
+}]}

@@ -1,6 +1,6 @@
 package com.baeldung.repositoryvsdaopattern;
 
-import javax.persistence.EntityManager;
+import jakarta.persistence.EntityManager;
 
 public class UserDaoImpl implements UserDao {
 
