@@ -42,7 +42,7 @@ class BookControllerReactiveIntegrationTest {
 
     @Test
     @WithMockUser
-    void giveEndpoint_whenSendGetRequest_thenSuccessfulResponse() {
+    void givenEndpoint_whenSendGetRequest_thenSuccessfulResponse() {
         webTestClient.get().uri("/books?page=2")
           .exchange().expectStatus().isOk().expectBody()
           .consumeWith(document("books",
