@@ -5,9 +5,6 @@ public class House {
     public House() {
     }
 
-    /**
-     Copy constructor
-     */
     public House(House house) {
         this.address = house.getAddress();
     }

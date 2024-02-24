@@ -30,24 +30,13 @@ public class Person implements Cloneable {
         this.house = house;
     }
 
-    /**
-     * Copies all primitives and references
-     * @return
-     * @throws CloneNotSupportedException
-     */
     @Override
     protected Person clone() throws CloneNotSupportedException {
         return (Person) super.clone();
     }
 
-    /**
-     * Uses the clone method to create a shallow copy then replaces
-     * the shared reference with a duplicate object
-     * @return
-     */
     protected Person deepCopy() {
         Person p = null;
-        // Use a copy constructor to create a new house object on the heap
         House h = new House(this.house);
         try {
             p = this.clone();

@@ -24,27 +24,21 @@ class DeepCopyTest {
     void deep_copy() {
         Person a = person;
         Person b = person.deepCopy();
-        //a and b are different objects on the heap.
         assertNotEquals(a, b);
-        //a.house and b.house are different objects on the heap.
         assertNotEquals(a.getHouse(), b.getHouse());
-        assertEquals(a.getHouse()
-            .getAddress(), b.getHouse()
-            .getAddress()); // houses have same addresses
+        assertEquals(a.getHouse().getAddress(),
+          b.getHouse().getAddress());
     }
 
     @Test
     void deep_copy_mutated_inner() {
         Person a = person;
         Person b = person.deepCopy();
-        //A and B refer to the different house object
         assertNotEquals(a.getHouse(), b.getHouse());
-        // mutate one copy
         House h = b.getHouse();
         h.setAddress("New House");
-        // changes in inner objects are isolated.
-        assertNotEquals("New House", a.getHouse()
-            .getAddress());
+        assertNotEquals("New House",
+          a.getHouse().getAddress());
     }
 
 }

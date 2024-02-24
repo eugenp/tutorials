@@ -23,11 +23,9 @@ class ShallowCopyTest {
     void shallow_copy_with_clone() throws CloneNotSupportedException {
         Person a = person;
         Person b = person.clone();
-        //a and b are different objects on the heap.
         assertNotEquals(a, b);
         assertEquals(a.getName(), b.getName());
         assertEquals(a.getAge(), b.getAge());
-        //a and b refer to the same house object
         assertEquals(a.getHouse(), b.getHouse());
     }
 
@@ -37,8 +35,8 @@ class ShallowCopyTest {
         Person b = person.clone();
         House h = b.getHouse();
         h.setAddress("New House");
-        assertEquals("New House", a.getHouse()
-            .getAddress()); // changes in b.house is reflected in a.house
+        assertEquals("New House",
+          a.getHouse().getAddress());
     }
 
 }
