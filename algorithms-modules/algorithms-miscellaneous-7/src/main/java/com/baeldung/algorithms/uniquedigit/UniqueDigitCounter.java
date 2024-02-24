@@ -29,4 +29,8 @@ public class UniqueDigitCounter {
         return Integer.bitCount(mask);
     }
 
+    public static long countWithStreamApi(int number) {
+        return String.valueOf(Math.abs(number)).chars().distinct().count();
+    }
+
 }
