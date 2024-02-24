@@ -21,6 +21,11 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
         <dependency>
@@ -50,8 +55,12 @@
                             <inputSpec>${project.basedir}/src/main/resources/api/quotes.yaml</inputSpec>
                             <generatorName>spring</generatorName>
                             <supportingFilesToGenerate>ApiUtil.java</supportingFilesToGenerate>
+                            <templateResourcePath>src/main/resources/templates/JavaSpring</templateResourcePath>
+                            <globalProperties>
+                                <debugOpenAPI>true</debugOpenAPI>
+                            </globalProperties>
                             <configOptions>
-                                <dateLibrary>custom</dateLibrary>
+                                <dateLibrary>java8</dateLibrary>
                                 <openApiNullable>false</openApiNullable>
                                 <delegatePattern>true</delegatePattern>
                                 <apiPackage>com.baeldung.tutorials.openapi.quotes.api</apiPackage>

@@ -7,23 +7,26 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Random;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
 @Service
 public class BrokerService {
 
-    private Map<String,BigDecimal> securities = new HashMap<>();
+    private final Logger log = LoggerFactory.getLogger(BrokerService.class);
+
+    private final Random rnd = new Random();
+
 
     public BrokerService() {
-        Random rnd = new Random();
-        securities.put("GOOG", BigDecimal.valueOf(rnd.nextDouble() * 1000.00).setScale(4, RoundingMode.DOWN));
-        securities.put("AA", BigDecimal.valueOf(rnd.nextDouble() * 1000.00).setScale(4, RoundingMode.DOWN));
-        securities.put("BAEL", BigDecimal.valueOf(rnd.nextDouble() * 1000.00).setScale(4, RoundingMode.DOWN));
     }
 
 
-    public Optional<BigDecimal> getSecurityPrice(@NonNull String symbol) {
-        return Optional.ofNullable(securities.get(symbol));
+    public BigDecimal getSecurityPrice(@NonNull String symbol) {
+        log.info("getSecurityPrice: {}", symbol);
+        // Just a mock value
+        return BigDecimal.valueOf(100.0 + rnd.nextDouble()*100.0);
     }
 }
