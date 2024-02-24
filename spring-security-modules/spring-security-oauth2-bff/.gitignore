@@ -1,0 +1,10 @@
+**/*.pem
+**/*.crt
+**/.env.*
+**/target/
+**/build/
+**/.metadata
+**/*.project
+**/*.settings
+**/*.classpath
+**/*.factorypath
