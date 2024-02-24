@@ -11,7 +11,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
+import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
 import org.springframework.restdocs.RestDocumentationContextProvider;
 import org.springframework.restdocs.RestDocumentationExtension;
 import org.springframework.security.test.context.support.WithMockUser;
@@ -46,4 +48,14 @@ class BookControllerReactiveIntegrationTest {
           .consumeWith(document("books",
             requestParameters(parameterWithName("page").description("The page to retrieve"))));
     }
+
+    @TestConfiguration
+    public static class TestConfig {
+
+        @Bean
+        BookService bookService() {
+            return new BookService();
+        }
+    }
+
 }

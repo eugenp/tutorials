@@ -25,7 +25,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.context.WebApplicationContext;
 
 @ExtendWith({RestDocumentationExtension.class, SpringExtension.class})
-@WebMvcTest(controllers = BookController.class, excludeAutoConfiguration = SecurityAutoConfiguration.class)
+@WebMvcTest(controllers = {BookController.class, BookService.class},
+  excludeAutoConfiguration = SecurityAutoConfiguration.class)
 class BookControllerMvcIntegrationTest {
 
     @Autowired
