@@ -23,6 +23,6 @@ public class Person implements Cloneable {
 
     @Override
     public Person clone() {
-		return new Person(this);
-	}
+        return new Person(this);
+    }
 }
