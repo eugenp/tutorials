@@ -7,14 +7,14 @@ import lombok.*;
 @AllArgsConstructor
 @EqualsAndHashCode
 @ToString
-public class Person implements Cloneable
-{
-	private String firstName;
-	private String lastName;
-	private Address address;
+public class Person implements Cloneable {
 
-	@Override
-	public Person clone()  {
+    private String firstName;
+    private String lastName;
+    private Address address;
+
+    @Override
+    public Person clone()  {
         try {
             return (Person) super.clone();
         } catch (CloneNotSupportedException cloneException) {

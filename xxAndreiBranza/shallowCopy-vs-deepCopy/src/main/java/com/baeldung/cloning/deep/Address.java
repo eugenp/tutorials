@@ -7,19 +7,9 @@ import lombok.*;
 @AllArgsConstructor
 @EqualsAndHashCode
 @ToString
-public class Address implements Cloneable
-{
-	private String streetName;
-	private String cityName;
+public class Address implements Cloneable {
 
-	@Override
-	public Address clone() {
-		try
-		{
-			return (Address) super.clone();
-		} catch (CloneNotSupportedException cloneException)
-		{
-			throw new RuntimeException(cloneException);
-		}
-	}
+    private String streetName;
+    private String cityName;
+
 }

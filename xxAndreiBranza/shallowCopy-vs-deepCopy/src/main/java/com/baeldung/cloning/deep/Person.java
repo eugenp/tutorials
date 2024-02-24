@@ -7,22 +7,22 @@ import lombok.*;
 @AllArgsConstructor
 @EqualsAndHashCode
 @ToString
-public class Person implements Cloneable
-{
-	private String firstName;
-	private String lastName;
-	private Address address;
+public class Person implements Cloneable {
 
-	public Person(Person personToBeCloned) {
-		Address addressToBeCloned = personToBeCloned.getAddress();
+    private String firstName;
+    private String lastName;
+    private Address address;
 
-		this.firstName = personToBeCloned.getFirstName();
-		this.lastName = personToBeCloned.getLastName();
-		this.address = new Address(addressToBeCloned.getStreetName(), addressToBeCloned.getCityName());
-	}
+    public Person(Person personToBeCloned) {
+        Address addressToBeCloned = personToBeCloned.getAddress();
 
-	@Override
-	public Person clone() {
+        this.firstName = personToBeCloned.getFirstName();
+        this.lastName = personToBeCloned.getLastName();
+        this.address = new Address(addressToBeCloned.getStreetName(), addressToBeCloned.getCityName());
+    }
+
+    @Override
+    public Person clone() {
 		return new Person(this);
 	}
 }
