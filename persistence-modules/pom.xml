@@ -52,6 +52,7 @@
         <module>jooq</module>
         <module>jpa-hibernate-cascade-type</module>
         <module>liquibase</module>
+        <module>liquibase-create-schema</module>
         <module>orientdb</module>
         <module>persistence-libraries</module>
         <module>querydsl</module>
