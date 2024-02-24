@@ -7,17 +7,17 @@ import static org.junit.Assert.assertNotEquals;
 
 public class DeepCloningTest {
 
-	Person alex = new Person("Alex", "Jones", new Address("Main Street", "Main City"));
+    Person alex = new Person("Alex", "Jones", new Address("Main Street", "Main City"));
 
-	@Test
-	public void whenUsingDeepCopy_thenReferencesAreNotTheSame()
-	{
-		Person constructorCopyOfAlex = new Person(alex);
+    @Test
+    public void whenUsingDeepCopy_thenReferencesAreNotTheSame()
+    {
+        Person constructorCopyOfAlex = new Person(alex);
 
-		assertEquals(alex, constructorCopyOfAlex);
+        assertEquals(alex, constructorCopyOfAlex);
 
-		alex.setAddress(new Address("Unknown Street", "Unknown City"));
+        alex.setAddress(new Address("Unknown Street", "Unknown City"));
 
-		assertNotEquals(alex.getAddress(), constructorCopyOfAlex.getAddress());
-	}
+        assertNotEquals(alex.getAddress(), constructorCopyOfAlex.getAddress());
+    }
 }
