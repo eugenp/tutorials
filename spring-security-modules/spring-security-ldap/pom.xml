@@ -65,6 +65,11 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <dependency>
+            <groupId>com.unboundid</groupId>
+            <artifactId>unboundid-ldapsdk</artifactId>
+            <version>${unboundid-ldapsdk.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -80,6 +85,7 @@
     <properties>
         <apacheds.version>1.5.5</apacheds.version>
         <start-class>com.baeldung.SampleLDAPApplication</start-class>
+        <unboundid-ldapsdk.version>4.0.10</unboundid-ldapsdk.version>
     </properties>
 
 </project>
