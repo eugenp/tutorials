@@ -24,7 +24,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.context.WebApplicationContext;
 
-@ExtendWith({ RestDocumentationExtension.class, SpringExtension.class })
+@ExtendWith({RestDocumentationExtension.class, SpringExtension.class})
 @WebMvcTest(controllers = BookController.class, excludeAutoConfiguration = SecurityAutoConfiguration.class)
 class BookControllerMvcIntegrationTest {
 
@@ -38,6 +38,7 @@ class BookControllerMvcIntegrationTest {
           .alwaysDo(document("{method-name}", preprocessRequest(prettyPrint()), preprocessResponse(prettyPrint())))
           .build();
     }
+
     @Test
     void smokeTest() {
         assertThat(mockMvc).isNotNull();
