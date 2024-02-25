@@ -55,7 +55,7 @@
                             <inputSpec>${project.basedir}/src/main/resources/api/quotes.yaml</inputSpec>
                             <generatorName>spring</generatorName>
                             <supportingFilesToGenerate>ApiUtil.java</supportingFilesToGenerate>
-                            <templateResourcePath>src/main/resources/templates/JavaSpring</templateResourcePath>
+                            <templateResourcePath>${project.basedir}/src/main/resources/templates/JavaSpring</templateResourcePath>
                             <globalProperties>
                                 <debugOpenAPI>true</debugOpenAPI>
                             </globalProperties>
