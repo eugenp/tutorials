@@ -16,5 +16,4 @@ public class SpringOidcDiscoveryApplication {
         application.addInitializers(yamlInitializer);
         application.run(args);
     }
-
 }

@@ -10,7 +10,8 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>spring-security-modules</artifactId>
+        <artifactId>parent-boot-3</artifactId>
+        <relativePath>../../parent-boot-3</relativePath>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
@@ -28,5 +29,9 @@
             <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
         </dependency>
     </dependencies>
+
+    <properties>
+        <start-class>com.baeldung.openid.oidc.sessionmanagement.SpringOidcSessionManagementApplication</start-class>
+    </properties>
 
 </project>
