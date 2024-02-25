@@ -93,6 +93,14 @@
         </dependency>
     </dependencies>
 
+    <repositories>
+        <repository>
+            <id>maven-restlet</id>
+            <name>Public online Restlet repository</name>
+            <url>https://maven.restlet.talend.com</url>
+        </repository>
+    </repositories>
+
     <build>
         <plugins>
             <plugin>
@@ -630,6 +638,14 @@
 
         <profile>
             <id>default-jdk9-and-above</id>
+
+            <repositories>
+                <repository>
+                    <id>maven-restlet</id>
+                    <name>Public online Restlet repository</name>
+                    <url>https://maven.restlet.talend.com</url>
+                </repository>
+            </repositories>
 
             <build>
                 <plugins>
