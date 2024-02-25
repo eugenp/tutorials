@@ -55,7 +55,7 @@ class EventsExternalizationLiveTest {
     @BeforeEach
     void beforeEach() {
         listener.reset();
-//        repository.deleteAll();
+        repository.deleteAll();
     }
 
     @Test
