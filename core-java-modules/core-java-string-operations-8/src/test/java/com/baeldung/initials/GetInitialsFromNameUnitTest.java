@@ -15,28 +15,28 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class GetInitialsFromNameUnitTest {
 
     @ParameterizedTest
-    @CsvSource({"John F Kennedy,JFK", ",''", "'',''", "Not Correct   88text,NC", "michael jackson,MJ", "123,''", "123 234A, ''", "1test 2test, ''"})
+    @CsvSource({"John F Kennedy,JFK", ",''", "'',''", "Not Correct   88text,NC", "michael jackson,MJ", "123,''", "123 234A,''", "1test 2test, ''"})
     public void getInitialFromName_usingLoop(String input, String expected) {
         String initial = getInitialUsingLoop(input);
         assertEquals(expected, initial);
     }
 
     @ParameterizedTest
-    @CsvSource({"John F Kennedy,JFK", ",''", "'',''", "Not Correct   88text,NC", "michael jackson,MJ", "123,''", "123 234A, ''", "1test 2test, ''"})
+    @CsvSource({"John F Kennedy,JFK", ",''", "'',''", "Not Correct   88text,NC", "michael jackson,MJ", "123,''", "123 234A,''", "1test 2test, ''"})
     public void getInitialFromName_usingStringTokenizer(String input, String expected) {
         String initial = getInitialUsingStringTokenizer(input);
         assertEquals(expected, initial);
     }
 
     @ParameterizedTest
-    @CsvSource({"John F Kennedy,JFK", ",''", "'',''", "Not Correct   88text,NC", "michael jackson,MJ", "123,''", "123 234A, ''", "1test 2test, ''"})
+    @CsvSource({"John F Kennedy,JFK", ",''", "'',''", "Not Correct   88text,NC", "michael jackson,MJ", "123,''", "123 234A,''", "1test 2test, ''"})
     public void getInitialFromName_usingRegex(String input, String expected) {
         String initial = getInitialUsingRegex(input);
         assertEquals(expected, initial);
     }
 
     @ParameterizedTest
-    @CsvSource({"John F Kennedy,JFK", ",''", "'',''", "Not Correct   88text,NC", "michael jackson,MJ", "123,''", "123 234A, ''", "1test 2test, ''"})
+    @CsvSource({"John F Kennedy,JFK", ",''", "'',''", "Not Correct   88text,NC", "michael jackson,MJ", "123,''", "123 234A,''", "1test 2test, ''"})
     public void getInitialFromName_usingStreamsAPI(String input, String expected) {
         String initial = getInitialUsingStreamsAPI(input);
         assertEquals(expected, initial);
