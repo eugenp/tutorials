@@ -17,7 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest(classes = {Application.class, TestConfig.class})
-class JsonUtilTest {
+class JsonUtilUnitTest {
 
     @Autowired
     private JsonUtils jsonUtils;
