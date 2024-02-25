@@ -61,9 +61,9 @@
 
     <properties>
         <poi.version>5.2.5</poi.version>
-        <jexcel.version>1.0.6</jexcel.version>
+        <jexcel.version>1.0.9</jexcel.version>
         <fastexcel.version>0.17.0</fastexcel.version>
-        <maven.resources.plugin.version>3.2.0</maven.resources.plugin.version>
+        <maven.resources.plugin.version>3.3.1</maven.resources.plugin.version>
     </properties>
 
 </project>
