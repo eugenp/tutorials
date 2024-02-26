@@ -64,9 +64,10 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain customJwtSecurityChain(HttpSecurity http) throws Exception {
         // @formatter:off
-        return http.oauth2ResourceServer(oauth2 -> oauth2.jwt(jwtConfigurer -> jwtConfigurer
+        return http.oauth2ResourceServer(oauth2 -> oauth2
+                        .jwt(jwtConfigurer -> jwtConfigurer
                                 .jwtAuthenticationConverter(customJwtAuthenticationConverter(accountService))))
-        .build();
+                .build();
         // @formatter:on
     }
 }

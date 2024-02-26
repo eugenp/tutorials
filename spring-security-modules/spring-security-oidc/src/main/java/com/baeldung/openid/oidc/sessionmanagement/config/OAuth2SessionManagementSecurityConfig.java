@@ -1,7 +1,5 @@
 package com.baeldung.openid.oidc.sessionmanagement.config;
 
-import java.net.URI;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,15 +21,15 @@ public class OAuth2SessionManagementSecurityConfig {
         http.authorizeHttpRequests(authorizeRequests -> authorizeRequests
                         .requestMatchers("/home").permitAll()
                         .anyRequest().authenticated())
-            .oauth2Login(AbstractAuthenticationFilterConfigurer::permitAll)
-            .logout(logout -> logout.logoutSuccessHandler(oidcLogoutSuccessHandler()));
+                .oauth2Login(AbstractAuthenticationFilterConfigurer::permitAll)
+                .logout(logout -> logout.logoutSuccessHandler(oidcLogoutSuccessHandler()));
         return http.build();
     }
 
     private LogoutSuccessHandler oidcLogoutSuccessHandler() {
         OidcClientInitiatedLogoutSuccessHandler oidcLogoutSuccessHandler = new OidcClientInitiatedLogoutSuccessHandler(this.clientRegistrationRepository);
 
-        oidcLogoutSuccessHandler.setPostLogoutRedirectUri(URI.create("http://localhost:8081/home").toString());
+        oidcLogoutSuccessHandler.setPostLogoutRedirectUri("http://localhost:8081/home");
 
         return oidcLogoutSuccessHandler;
     }
