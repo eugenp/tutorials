@@ -13,7 +13,6 @@
     </parent>
 
     <dependencies>
-        <!-- sftp file transfer -->
         <dependency>
             <groupId>com.github.mwiede</groupId>
             <artifactId>jsch</artifactId>
@@ -27,7 +26,7 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-vfs2</artifactId>
-            <version>${vfs.version}</version>
+            <version>${commons-vfs2.version}</version>
         </dependency>
         <dependency>
             <groupId>net.lingala.zip4j</groupId>
@@ -63,11 +62,11 @@
     <properties>
         <!-- sftp -->
         <jsch.version>0.2.16</jsch.version>
-        <sshj.version>0.37.0</sshj.version>
-        <vfs.version>2.9.0</vfs.version>
-        <zip4j.version>2.9.0</zip4j.version>
-        <opencsv.version>5.8</opencsv.version>
-        <spring.version>4.3.8.RELEASE</spring.version>
+        <sshj.version>0.38.0</sshj.version>
+        <commons-vfs2.version>2.9.0</commons-vfs2.version>
+        <zip4j.version>2.11.5</zip4j.version>
+        <opencsv.version>5.9</opencsv.version>
+        <spring.version>6.1.4</spring.version>
     </properties>
 
 </project>
