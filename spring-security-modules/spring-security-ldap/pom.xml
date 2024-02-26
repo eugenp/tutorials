@@ -10,8 +10,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>spring-security-modules</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -64,6 +65,11 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <dependency>
+            <groupId>com.unboundid</groupId>
+            <artifactId>unboundid-ldapsdk</artifactId>
+            <version>${unboundid-ldapsdk.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -78,6 +84,8 @@
 
     <properties>
         <apacheds.version>1.5.5</apacheds.version>
+        <start-class>com.baeldung.SampleLDAPApplication</start-class>
+        <unboundid-ldapsdk.version>4.0.10</unboundid-ldapsdk.version>
     </properties>
 
 </project>
