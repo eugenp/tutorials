@@ -1,4 +1,4 @@
-package com.baeldung.spring.kafka.retryable;
+package com.baeldung.kafka.retryable;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -129,7 +129,6 @@ public class KafkaConsumerConfig {
     public ConcurrentKafkaListenerContainerFactory<String, Object> greetingKafkaListenerContainerFactory() {
         ConcurrentKafkaListenerContainerFactory<String, Object> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(multiTypeConsumerFactory());
-        factory.setMessageConverter(multiTypeConverter());
         factory.setCommonErrorHandler(errorHandler());
         factory.getContainerProperties()
           .setAckMode(ContainerProperties.AckMode.RECORD);
