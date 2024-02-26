@@ -450,6 +450,7 @@
             <modules>
                 <module>apache-spark</module>
                 <module>jhipster-modules</module>
+                <module>spring-cloud-modules/spring-cloud-azure</module>
                 <module>web-modules/restx</module>
             </modules>
         </profile>
@@ -594,6 +595,7 @@
 
                 <module>apache-spark</module>
                 <module>jhipster-modules</module>
+                <module>spring-cloud-modules/spring-cloud-azure</module>
                 <module>web-modules/restx</module>
             </modules>
 
@@ -808,7 +810,6 @@
                 <module>spring-batch</module>
                 <module>spring-boot-modules</module>
                 <module>spring-boot-rest</module>
-                <module>spring-cloud-modules/spring-cloud-azure</module>
                 <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
                 <module>spring-cloud-modules/spring-cloud-contract</module>
                 <!--<module>spring-cloud-modules/spring-cloud-data-flow</module>--><!-- failing after upgrading to jdk17-->
@@ -1054,7 +1055,6 @@
                 <module>spring-batch</module>
                 <module>spring-boot-modules</module>
                 <module>spring-boot-rest</module>
-                <module>spring-cloud-modules/spring-cloud-azure</module>
                 <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
                 <module>spring-cloud-modules/spring-cloud-contract</module>
                 <!--<module>spring-cloud-modules/spring-cloud-data-flow</module>--><!-- failing after upgrading to jdk17-->
