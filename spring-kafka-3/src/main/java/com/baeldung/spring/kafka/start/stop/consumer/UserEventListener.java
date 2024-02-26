@@ -15,7 +15,7 @@ public class UserEventListener {
     UserEventStore userEventStore;
 
     @KafkaListener(id = Constants.LISTENER_ID, topics = Constants.MULTI_PARTITION_TOPIC, groupId = "test-group",
-            containerFactory = "kafkaListenerContainerFactory", autoStartup = "false")
+      containerFactory = "kafkaListenerContainerFactory", autoStartup = "false")
     public void processUserEvent(UserEvent userEvent) {
         logger.info("Received UserEvent: " + userEvent.getUserEventId());
         userEventStore.addUserEvent(userEvent);
