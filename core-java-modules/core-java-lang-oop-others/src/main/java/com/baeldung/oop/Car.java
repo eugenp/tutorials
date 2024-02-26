@@ -37,7 +37,7 @@ public class Car extends Vehicle {
         }
         return this.speed;
     }
-    
+
     public int decreaseSpeed(int decrement) {
         if (decrement > 0 && decrement <= this.speed) {
             this.speed -= decrement;
