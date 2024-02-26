@@ -1184,9 +1184,9 @@
         <jmh-generator.version>1.37</jmh-generator.version>
         <maven-failsafe-plugin.version>3.1.2</maven-failsafe-plugin.version>
         <commons-collections4.version>4.4</commons-collections4.version>
-        <commons-io.version>2.13.0</commons-io.version>
+        <commons-io.version>2.15.1</commons-io.version>
         <commons-lang3.version>3.14.0</commons-lang3.version>
-        <commons-cli.version>1.5.0</commons-cli.version>
+        <commons-cli.version>1.6.0</commons-cli.version>
         <maven-war-plugin.version>3.4.0</maven-war-plugin.version>
         <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
         <jstl-api.version>1.2</jstl-api.version>
