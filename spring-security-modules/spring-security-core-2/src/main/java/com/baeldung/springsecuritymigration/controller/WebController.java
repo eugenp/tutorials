@@ -1,5 +1,6 @@
-package com.baeldung.springsecuritymigration;
+package com.baeldung.springsecuritymigration.controller;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,6 +17,7 @@ public class WebController {
         return "Welcome User";
     }
 
+    @PreAuthorize("hasRole('USER')")
     @RequestMapping("/user-dashboard")
     public String dashboard() {
         return "My Dashboard";
