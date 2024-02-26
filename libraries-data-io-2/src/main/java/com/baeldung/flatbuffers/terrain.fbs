@@ -1,0 +1,25 @@
+
+namespace MyGame.terrains;
+
+enum Color:byte { Brown = 0, Red = 1, Green = 2, Blue = 3, White = 4 }
+
+struct Vec3 {
+  x:float;
+  y:float;
+  z:float;
+}
+
+table Terrain {
+  pos:Vec3; // Struct.
+  name: string;
+  color:Color = Blue;
+  navigation: string;
+  effects: [Effect];
+}
+
+table Effect {
+  name: string;
+  damage: short;
+}
+
+root_type Terrain;
