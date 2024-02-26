@@ -125,6 +125,11 @@
             <version>${jetty-reactive-httpclient.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-stdlib</artifactId>
+            <version>${kotlin-stdlib.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -183,6 +188,7 @@
         <reactor-test.version>3.5.3</reactor-test.version>
         <wiremock-standalone.version>2.26.0</wiremock-standalone.version>
         <spring-cloud-starter-openfeign.version>3.1.4</spring-cloud-starter-openfeign.version>
+        <kotlin-stdlib.version>2.0.0-Beta4</kotlin-stdlib.version>
     </properties>
 
 </project>
