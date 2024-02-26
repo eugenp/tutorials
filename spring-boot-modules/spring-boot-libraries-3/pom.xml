@@ -38,6 +38,11 @@
             <artifactId>spring-modulith-events-kafka</artifactId>
             <version>${spring-modulith-events-kafka.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.modulith</groupId>
+            <artifactId>spring-modulith-starter-jpa</artifactId>
+            <version>${spring-modulith-events-kafka.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

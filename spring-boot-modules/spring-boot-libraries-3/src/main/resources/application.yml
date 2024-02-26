@@ -18,7 +18,6 @@ logging.level.org.springframework.orm.jpa: TRACE
 
 spring:
   datasource:
-#    url: jdbc:postgresql://localhost:5432/test_db
     username: test_user
     password: test_pass
   jpa:
@@ -26,3 +25,4 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         hbm2ddl.auto: create
+
