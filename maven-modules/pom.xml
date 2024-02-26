@@ -23,11 +23,11 @@
         <module>maven-archetype</module>
         <module>maven-build-lifecycle</module>
         <module>maven-build-optimization</module>
-        <module>maven-builder-plugin</module>
+<!--        <module>maven-builder-plugin</module>-->
         <module>maven-classifier</module>
         <module>maven-copy-files</module>
         <module>maven-custom-plugin</module>
-        <module>maven-exec-plugin</module>
+<!--        <module>maven-exec-plugin</module>-->
         <module>maven-generate-war</module>
 <!--        <module>maven-integration-test</module>-->
         <module>maven-multi-source</module>
