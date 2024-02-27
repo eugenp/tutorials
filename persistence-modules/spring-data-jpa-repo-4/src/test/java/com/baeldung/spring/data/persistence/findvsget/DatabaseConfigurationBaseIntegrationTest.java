@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assumptions.assumeThat;
 import com.baeldung.spring.data.persistence.findvsget.entity.User;
 import com.baeldung.spring.data.persistence.findvsget.repository.GroupRepository;
 import com.baeldung.spring.data.persistence.findvsget.repository.SimpleUserRepository;
+import com.baeldung.spring.data.persistence.util.TestConfig;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.AfterEach;
@@ -14,7 +15,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest(classes = ApplicationConfig.class, properties = {
+@SpringBootTest(classes = {ApplicationConfig.class, TestConfig.class}, properties = {
     "spring.jpa.generate-ddl=true",
     "spring.jpa.show-sql=false"
 })
