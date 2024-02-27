@@ -1,23 +1,22 @@
-package com.baeldung.data.jpa.libarary;
+package com.baeldung.data.jpa.library;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.AutoConfigureDataJpa;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
-import org.springframework.test.context.junit4.SpringRunner;
 
-@RunWith(SpringRunner.class)
 @DataJpaTest
-public class DataJpaUnitTest {
+@AutoConfigureDataJpa
+class DataJpaUnitTest {
 
     @Autowired
     private TestEntityManager entityManager;
 
     @Test
-    public void givenACorrectSetup_thenAnEntityManagerWillBeAvailable() {
+    void givenACorrectSetup_thenAnEntityManagerWillBeAvailable() {
         assertNotNull(entityManager);
     }
 

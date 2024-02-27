@@ -1,6 +1,6 @@
 package com.baeldung.boot.jersey.controllers;
 
-import javax.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 

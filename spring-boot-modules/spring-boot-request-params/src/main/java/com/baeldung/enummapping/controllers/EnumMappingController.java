@@ -20,7 +20,7 @@ public class EnumMappingController {
     }
 
     @GetMapping("/get")
-    public String getByLevel(@RequestParam(required = false) Level level) {
+    public String getByLevel(@RequestParam(name = "level", required = false) Level level) {
         if (level != null) {
             return level.name();
         }
