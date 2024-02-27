@@ -4,6 +4,7 @@ import static com.baeldung.spring.data.persistence.findvsget.UserProvider.userSo
 import static org.assertj.core.api.Assumptions.assumeThat;
 
 import com.baeldung.spring.data.persistence.findvsget.entity.User;
+import com.baeldung.spring.data.persistence.findvsget.repository.GroupRepository;
 import com.baeldung.spring.data.persistence.findvsget.repository.SimpleUserRepository;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,7 +23,10 @@ abstract class DatabaseConfigurationBaseIntegrationTest {
     private static final int NUMBER_OF_USERS = 10;
 
     @Autowired
-    private SimpleUserRepository repository;
+    private SimpleUserRepository userRepository;
+
+    @Autowired
+    private GroupRepository groupRepository;
 
     @BeforeEach
     void populateDatabase() {
@@ -30,13 +34,14 @@ abstract class DatabaseConfigurationBaseIntegrationTest {
             .map(Arguments::get)
             .map(s -> new User(((Long) s[0]), s[1].toString(), s[2].toString()))
             .collect(Collectors.toList());
-        repository.saveAll(users);
-        assumeThat(repository.findAll()).hasSize(NUMBER_OF_USERS);
+        userRepository.saveAll(users);
+        assumeThat(userRepository.findAll()).hasSize(NUMBER_OF_USERS);
     }
 
     @AfterEach
     void clearDatabase() {
-        repository.deleteAll();
+        groupRepository.deleteAll();
+        userRepository.deleteAll();
     }
 
 }
