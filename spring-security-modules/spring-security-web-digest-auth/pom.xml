@@ -82,7 +82,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-oxm</artifactId>
-            <version>${spring.version}</version>
+            <version>${spring-oxm.version}</version>
         </dependency>
         <!-- web -->
         <dependency>
@@ -172,6 +172,7 @@
     <properties>
         <!-- Spring -->
         <org.springframework.security.version>6.1.5</org.springframework.security.version>
+        <spring-oxm.version>6.1.4</spring-oxm.version>
         <!-- util -->
         <httpcore5.version>5.2.4</httpcore5.version>
         <httpclient5.version>5.3</httpclient5.version>

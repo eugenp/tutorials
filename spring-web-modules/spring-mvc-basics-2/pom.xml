@@ -19,7 +19,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-oxm</artifactId>
-            <version>${spring.version}</version>
+            <version>${spring-oxm.version}</version>
         </dependency>
         <dependency>
             <groupId>com.sun.mail</groupId>
@@ -160,6 +160,7 @@
         <json.version>20180130</json.version>
         <javax.mail.version>1.6.1</javax.mail.version>
         <spring-boot.version>2.5.6</spring-boot.version>
+        <spring-oxm.version>6.1.4</spring-oxm.version>
     </properties>
 
 </project>

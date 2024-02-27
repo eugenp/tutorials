@@ -35,7 +35,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-oxm</artifactId>
-            <version>${spring.version}</version>
+            <version>${spring-oxm.version}</version>
             <exclusions>
                 <exclusion>
                     <artifactId>commons-logging</artifactId>
@@ -81,6 +81,7 @@
         <http-client.version>4.5.14</http-client.version>
         <jettison.version>1.5.3</jettison.version>
         <start-class>com.baeldung.batchtesting.SpringBatchApplication</start-class>
+        <spring-oxm.version>6.1.4</spring-oxm.version>
     </properties>
 
 </project>
