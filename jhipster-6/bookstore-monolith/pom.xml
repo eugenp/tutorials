@@ -1150,7 +1150,7 @@
         <javassist.version>3.23.1-GA</javassist.version>
         <!-- The liquibase version should match the one managed by
         https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependencies/${spring-boot.version} -->
-        <liquibase.version>3.6.3</liquibase.version>
+        <liquibase.version>4.9.1</liquibase.version>
         <liquibase-hibernate5.version>3.6</liquibase-hibernate5.version>
         <spring.version>5.1.5.RELEASE</spring.version>
         <validation-api.version>2.0.1.Final</validation-api.version>
