@@ -23,13 +23,13 @@
         <module>maven-archetype</module>
         <module>maven-build-lifecycle</module>
         <module>maven-build-optimization</module>
-<!--        <module>maven-builder-plugin</module>-->
+<!--        <module>maven-builder-plugin</module>--><!-- failing after upgrading to jdk17-->
         <module>maven-classifier</module>
         <module>maven-copy-files</module>
         <module>maven-custom-plugin</module>
-<!--        <module>maven-exec-plugin</module>-->
+<!--        <module>maven-exec-plugin</module>--> <!-- failing after upgrading to jdk17-->
         <module>maven-generate-war</module>
-<!--        <module>maven-integration-test</module>-->
+<!--        <module>maven-integration-test</module>--> <!-- failing after upgrading to jdk17-->
         <module>maven-multi-source</module>
         <module>maven-parent-pom-resolution</module>
         <module>maven-plugins</module>
@@ -49,7 +49,7 @@
         <module>version-overriding-plugins</module>
         <module>versions-maven-plugin</module>
         <module>maven-pom-types</module>
-<!--        <module>multimodulemavenproject</module>-->
+<!--        <module>multimodulemavenproject</module>--><!-- failing after upgrading to jdk17-->
         <module>resume-from</module>
     </modules>
 
