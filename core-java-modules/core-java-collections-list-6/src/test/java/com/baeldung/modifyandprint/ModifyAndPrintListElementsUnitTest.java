@@ -18,14 +18,14 @@ public class ModifyAndPrintListElementsUnitTest {
     @Test
     void whenPrintingInForEach_thenListIsPrinted() {
         List<String> theList = Lists.newArrayList("Kai", "Liam", "Eric", "Kevin");
-        theList.forEach(e -> log.info(e));
+        theList.forEach(element -> log.info(element));
     }
 
     @Test
     void whenUsingModifyAndPrintingSeparately_thenListIsModifiedAndPrinted() {
         List<String> theList = Lists.newArrayList("Kai", "Liam", "Eric", "Kevin");
-        theList.replaceAll(e -> e.toUpperCase());
-        theList.forEach(e -> log.info(e));
+        theList.replaceAll(element -> element.toUpperCase());
+        theList.forEach(element -> log.info(element));
         assertEquals(List.of("KAI", "LIAM", "ERIC", "KEVIN"), theList);
     }
 
@@ -33,24 +33,22 @@ public class ModifyAndPrintListElementsUnitTest {
     void whenPrintingInMap_thenStreamIsModifiedAndPrinted() {
         List<String> theList = List.of("Kai", "Liam", "Eric", "Kevin");
         List<String> newList = theList.stream()
-            .map(e -> {
-                String newElement = e.toUpperCase();
+            .map(element -> {
+                String newElement = element.toUpperCase();
                 log.info(newElement);
                 return newElement;
             })
-            .filter(e -> e.length() == 4)
             .collect(Collectors.toList());
-        assertEquals(List.of("LIAM", "ERIC"), newList);
+        assertEquals(List.of("KAI", "LIAM", "ERIC", "KEVIN"), newList);
     }
 
     @Test
     void whenPrintingInPeek_thenStreamIsModifiedAndPrinted() {
         List<String> theList = List.of("Kai", "Liam", "Eric", "Kevin");
         List<String> newList = theList.stream()
-            .map(e -> e.toUpperCase())
-            .peek(e -> log.info(e))
-            .filter(e -> e.length() == 4)
+            .map(element -> element.toUpperCase())
+            .peek(element-> log.info(element))
             .collect(Collectors.toList());
-        assertEquals(List.of("LIAM", "ERIC"), newList);
+        assertEquals(List.of("KAI", "LIAM", "ERIC", "KEVIN"), newList);
     }
 }
