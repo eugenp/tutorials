@@ -19,6 +19,7 @@
         <dependency>
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
+            <version>${spring-kafka.version}</version>
         </dependency>
 
         <dependency>
@@ -84,6 +85,7 @@
         <spring-modulith-events-kafka.version>1.1.2</spring-modulith-events-kafka.version>
         <testcontainers.version>1.19.3</testcontainers.version>
         <awaitility.version>4.2.0</awaitility.version>
+        <spring-kafka.version>3.0.14</spring-kafka.version>
     </properties>
 
 </project>
