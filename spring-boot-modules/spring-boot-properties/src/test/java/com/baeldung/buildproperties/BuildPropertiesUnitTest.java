@@ -10,14 +10,14 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
-public class BuildPropertiesUnitTest {
+class BuildPropertiesUnitTest {
     @Autowired
     private BuildProperties buildProperties;
 
     @Test
     void givenBuildPropertiesBean_WhenFetchDefaultBuildProperties_ThenGetValidValues() {
         Assertions.assertEquals("spring-boot-properties", buildProperties.getArtifact());
-        Assertions.assertEquals("com.baeldung", buildProperties.getGroup());
+        Assertions.assertEquals("com.baeldung.spring-boot-modules", buildProperties.getGroup());
         Assertions.assertEquals("0.0.1-SNAPSHOT", buildProperties.getVersion());
     }
 

@@ -14,4 +14,4 @@ This module contains articles about networking in Java
 - [Get Domain Name From Given URL in Java](https://www.baeldung.com/java-domain-name-from-url)
 - [Java HttpClient Timeout](https://www.baeldung.com/java-httpclient-timeout)
 - [Port Scanning With Java](https://www.baeldung.com/java-port-scanning)
-- [[<-- Prev]](/core-java-modules/core-java-networking-2)
+- [[<-- Prev]](/core-java-modules/core-java-networking-2) [[Next --> ]](/core-java-modules/core-java-networking-4)

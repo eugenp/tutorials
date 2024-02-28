@@ -17,7 +17,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @ExtendWith(FlowableSpringExtension.class)
 @SpringBootTest
-public class ArticleWorkflowIntegrationTest {
+class ArticleWorkflowIntegrationTest {
     @Autowired
     private RuntimeService runtimeService;
     @Autowired

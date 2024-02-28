@@ -1,14 +1,15 @@
 package com.baeldung.onceperrequestfilter;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.context.request.async.DeferredResult;
 
-import javax.servlet.http.HttpServletResponse;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import jakarta.servlet.http.HttpServletResponse;
 
 @Controller
 public class HelloController implements AutoCloseable {
@@ -18,7 +19,7 @@ public class HelloController implements AutoCloseable {
     private Logger logger = LoggerFactory.getLogger(HelloController.class);
 
     @GetMapping(path = "/greeting")
-    public DeferredResult<String> hello(HttpServletResponse response) throws Exception {
+    public DeferredResult<String> hello(HttpServletResponse response) {
         DeferredResult<String> deferredResult = new DeferredResult<>();
         executorService.submit(() -> perform(deferredResult));
         return deferredResult;
