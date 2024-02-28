@@ -1,5 +1,7 @@
 package com.baeldung.security;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -53,36 +55,17 @@ public class SecurityJavaConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.csrf()
-            .disable()
-            .authorizeRequests()
-            .and()
-            .exceptionHandling()
-            .accessDeniedHandler(accessDeniedHandler)
-            .authenticationEntryPoint(restAuthenticationEntryPoint)
-            .and()
-            .authorizeRequests()
-            .antMatchers("/api/csrfAttacker*")
-            .permitAll()
-            .antMatchers("/api/customer/**")
-            .permitAll()
-            .antMatchers("/api/foos/**")
-            .authenticated()
-            .antMatchers("/api/async/**")
-            .permitAll()
-            .antMatchers("/api/admin/**")
-            .hasRole("ADMIN")
-            .and()
-            .formLogin()
-            .successHandler(mySuccessHandler)
-            .failureHandler(myFailureHandler)
-            .and()
-            .httpBasic()
-            .and()
-            .logout();
+        http.authorizeRequests(authorizeRequests -> authorizeRequests.requestMatchers("/api/csrfAttacker*").permitAll()
+            .requestMatchers("/api/customer/**").permitAll()
+            .requestMatchers("/api/foos/**").authenticated()
+            .requestMatchers("/api/async/**").permitAll()
+            .requestMatchers("/api/admin/**").hasRole("ADMIN"))
+            .formLogin(formLogin -> formLogin.successHandler(mySuccessHandler).failureHandler(myFailureHandler))
+            .httpBasic(withDefaults())
+            .logout(logout -> logout.permitAll());
         return http.build();
     }
-    
+
     @Bean
     public PasswordEncoder encoder() {
         return new BCryptPasswordEncoder();
