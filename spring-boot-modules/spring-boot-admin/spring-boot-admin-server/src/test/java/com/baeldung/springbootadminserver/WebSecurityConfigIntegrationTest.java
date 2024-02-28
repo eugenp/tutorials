@@ -52,7 +52,7 @@ public class WebSecurityConfigIntegrationTest {
           .password("admin"));
 
         mockMvc
-          .perform(get("/applications/"))
+          .perform(get("/applications"))
           .andExpect(status().is2xxSuccessful());
 
     }

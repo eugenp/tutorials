@@ -80,6 +80,7 @@
         <!-- no longer available or maintained. Ref: https://spring.io/projects/spring-data-gemfire#overview -->
         <module>spring-data-geode</module>
         <module>spring-data-jpa-annotations</module>
+        <module>spring-data-jpa-annotations-2</module>
         <module>spring-data-jpa-crud</module>
         <module>spring-data-jpa-crud-2</module>
         <module>spring-data-jpa-enterprise</module>

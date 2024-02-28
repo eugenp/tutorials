@@ -152,7 +152,7 @@
         <jdk.version>17</jdk.version>
         <release.version>17</release.version>
         <packaging>jar</packaging>
-        <compiler.plugin.version>3.7.0</compiler.plugin.version>
+        <compiler.plugin.version>3.12.1</compiler.plugin.version>
         <micronaut.runtime>netty</micronaut.runtime>
         <shade.plugin.version>3.2.0</shade.plugin.version>
     </properties>

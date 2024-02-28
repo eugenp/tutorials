@@ -8,6 +8,6 @@ public class SecuredService {
 
     @PreAuthorize("authenticated")
     public String sayHelloSecured() {
-        return "Hello user.";
+        return "Hello user!";
     }
 }
