@@ -154,8 +154,6 @@
                         <version>${maven-surefire-plugin.version}</version>
                         <configuration>
                             <argLine>
-                                --add-opens java.base/java.lang=ALL-UNNAMED
-                                --add-opens java.base/java.util=ALL-UNNAMED
                                 -javaagent:"${settings.localRepository}"/org/aspectj/aspectjweaver/${aspectjweaver.version}/aspectjweaver-${aspectjweaver.version}.jar
                                 -javaagent:"${settings.localRepository}"/org/springframework/spring-instrument/${spring.version}/spring-instrument-${spring.version}.jar
                             </argLine>
