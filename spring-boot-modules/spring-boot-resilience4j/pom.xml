@@ -43,15 +43,15 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.github.tomakehurst</groupId>
-            <artifactId>wiremock-jre8</artifactId>
-            <version>${wiremock-jre8.version}</version>
+            <groupId>org.wiremock</groupId>
+            <artifactId>wiremock</artifactId>
+            <version>3.4.2</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
 
     <properties>
-        <wiremock-jre8.version>2.35.0</wiremock-jre8.version>
+        <wiremock.version>3.4.2</wiremock.version>
         <resilience4j-spring-boot3.version>2.2.0</resilience4j-spring-boot3.version>
         <jackson-datatype-jsr310.version>2.16.1</jackson-datatype-jsr310.version>
     </properties>
