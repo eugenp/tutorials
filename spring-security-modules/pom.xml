@@ -24,7 +24,7 @@
         <!--        <module>spring-security-ldap</module>-->
         <module>spring-security-legacy-oidc</module>
         <module>spring-security-oauth2</module>
-        <module>spring-security-oauth2-sso</module>
+        <module>spring-security-oauth2-sso</module> <!-- This module wasn't able to update because Spring Security Oauth reach end of life and not compatible with spring boot 3. JAVA-29294 -->
         <module>spring-security-oidc</module>
         <module>spring-security-okta</module>
 <!--        <module>spring-security-saml</module>-->   <!-- This module wasn't able to update to spring boot 3 because Jakarta clashes with javax -->
