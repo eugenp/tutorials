@@ -17,7 +17,6 @@ import redis.embedded.RedisServer;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -111,17 +110,17 @@ class CustomerServiceCachingIntegrationTest {
 
         private final RedisServer redisServer;
 
-        public EmbeddedRedisConfiguration() throws IOException {
+        public EmbeddedRedisConfiguration() {
             this.redisServer = new RedisServer();
         }
 
         @PostConstruct
-        public void startRedis() throws IOException {
+        public void startRedis() {
             redisServer.start();
         }
 
         @PreDestroy
-        public void stopRedis() throws IOException {
+        public void stopRedis() {
             this.redisServer.stop();
         }
     }
