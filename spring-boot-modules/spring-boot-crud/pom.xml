@@ -80,6 +80,7 @@
 
     <properties>
         <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
+        <start-class>com.baeldung.demo.DemoApplication,</start-class>
     </properties>
 
 </project>

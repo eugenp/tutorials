@@ -43,7 +43,6 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>${jackson.version}</version>
         </dependency>
         <dependency>
             <groupId>org.modelmapper</groupId>
@@ -90,7 +89,6 @@
         <maven.compiler.target>17</maven.compiler.target>
         <db.util.version>1.0.7</db.util.version>
         <hypersistence-utils.version>3.7.0</hypersistence-utils.version>
-        <jackson.version>2.16.0</jackson.version>
         <modelmapper.version>3.2.0</modelmapper.version>
         <commons-codec.version>1.16.1</commons-codec.version>
         <lombok.version>1.18.30</lombok.version>

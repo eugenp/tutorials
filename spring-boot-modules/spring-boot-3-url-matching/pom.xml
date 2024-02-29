@@ -9,10 +9,9 @@
     <description>URL Matching in Spring Boot 3</description>
 
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-3</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-3</relativePath>
+        <groupId>com.baeldung.spring-boot-modules</groupId>
+        <artifactId>spring-boot-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <dependencies>
@@ -46,7 +45,6 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>${spring-test.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -94,7 +92,6 @@
     </build>
 
     <properties>
-        <spring-test.version>6.0.6</spring-test.version>
         <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
         <reactor-core.version>3.6.0</reactor-core.version>
         <reactor-test.version>3.6.0></reactor-test.version>

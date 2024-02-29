@@ -41,7 +41,7 @@
         <project.version>1.0</project.version>
         <maven.compiler.source>19</maven.compiler.source>
         <maven.compiler.target>19</maven.compiler.target>
-        <maven.compiler.version>3.10.1</maven.compiler.version>
+        <maven.compiler.version>3.12.1</maven.compiler.version>
         <junit.jupiter.version>5.9.0</junit.jupiter.version>
     </properties>
 
