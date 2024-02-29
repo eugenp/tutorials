@@ -22,6 +22,7 @@ import org.springframework.security.authentication.AuthenticationCredentialsNotF
 import org.springframework.security.config.annotation.method.configuration.EnableReactiveMethodSecurity;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
+import org.springframework.security.config.web.server.ServerHttpSecurity.CsrfSpec;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.ReactiveSecurityContextHolder;
@@ -54,7 +55,7 @@ public class ReactiveResourceServerApplication {
         SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
             http.oauth2ResourceServer(resourceServer -> resourceServer.jwt(withDefaults()));
             http.securityContextRepository(NoOpServerSecurityContextRepository.getInstance());
-            http.csrf(csrf -> csrf.disable());
+            http.csrf(CsrfSpec::disable);
             http.exceptionHandling(eh -> eh
                     .accessDeniedHandler((var exchange, var ex) -> exchange.getPrincipal().flatMap(principal -> {
                         final var response = exchange.getResponse();
