@@ -17,9 +17,9 @@ public class CustomerCacheInterceptor extends CacheInterceptor {
     protected Cache.ValueWrapper doGet(Cache cache, Object key) {
         Cache.ValueWrapper existingCacheValue = super.doGet(cache, key);
 
-        if (cache.getClass() == RedisCache.class) {
+        if (existingCacheValue != null && cache.getClass() == RedisCache.class) {
             Cache caffeineCache = caffeineCacheManager.getCache(cache.getName());
-            if (existingCacheValue != null && caffeineCache != null && caffeineCache.get(key) == null) {
+            if (caffeineCache != null) {
                 caffeineCache.putIfAbsent(key, existingCacheValue.get());
             }
         }
@@ -27,4 +27,3 @@ public class CustomerCacheInterceptor extends CacheInterceptor {
         return existingCacheValue;
     }
 }
-
