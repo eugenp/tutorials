@@ -37,10 +37,6 @@
             <artifactId>spring-webmvc</artifactId>
         </dependency>
         <dependency>
-            <groupId>javax.cache</groupId>
-            <artifactId>cache-api</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.ehcache</groupId>
             <artifactId>ehcache</artifactId>
             <classifier>jakarta</classifier>
@@ -92,7 +88,8 @@
     </build>
 
     <properties>
-        <caffeine.version>3.1.8</caffeine.version>
+        <ehcache.version>3.10.8</ehcache.version>
+        <start-class>com.baeldung.caching.boot.CacheApplication</start-class>
     </properties>
 
 </project>

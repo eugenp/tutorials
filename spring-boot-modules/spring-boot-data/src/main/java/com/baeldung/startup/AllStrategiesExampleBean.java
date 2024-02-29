@@ -6,7 +6,7 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
+import jakarta.annotation.PostConstruct;
 
 @Component
 @Scope(value = "prototype")

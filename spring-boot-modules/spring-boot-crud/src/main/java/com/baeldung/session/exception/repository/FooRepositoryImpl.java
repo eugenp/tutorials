@@ -1,6 +1,6 @@
 package com.baeldung.session.exception.repository;
 
-import javax.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityManagerFactory;
 
 import com.baeldung.demo.model.Foo;
 import org.hibernate.SessionFactory;

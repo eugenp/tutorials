@@ -25,13 +25,13 @@
         <dependency>
             <groupId>de.codecentric</groupId>
             <artifactId>spring-boot-admin-starter-server</artifactId>
-            <version>${spring-boot-admin-server.version}</version>
+            <version>${spring-boot.version}</version>
         </dependency>
         <!--Add login page and logout feature -->
         <dependency>
             <groupId>de.codecentric</groupId>
-            <artifactId>spring-boot-admin-server-ui-login</artifactId>
-            <version>${spring-boot-admin-server-ui-login.version}</version>
+            <artifactId>spring-boot-admin-server-ui</artifactId>
+            <version>${spring-boot.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -45,7 +45,7 @@
         <dependency>
             <groupId>de.codecentric</groupId>
             <artifactId>spring-boot-admin-starter-client</artifactId>
-            <version>${spring-boot-admin-starter-client.version}</version>
+            <version>${spring-boot.version}</version>
         </dependency>
         <!--mail notifications -->
         <dependency>
@@ -69,16 +69,8 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring-boot-maven-plugin.version}</version>
             </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <spring-boot-admin-server.version>2.4.1</spring-boot-admin-server.version>
-        <spring-boot-admin-starter-client.version>2.4.1</spring-boot-admin-starter-client.version>
-        <spring-boot-admin-server-ui-login.version>1.5.7</spring-boot-admin-server-ui-login.version>
-        <spring-boot-maven-plugin.version>2.0.4.RELEASE</spring-boot-maven-plugin.version>
-    </properties>
 
 </project>
