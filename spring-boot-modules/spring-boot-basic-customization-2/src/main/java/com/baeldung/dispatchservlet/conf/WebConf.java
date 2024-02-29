@@ -1,11 +1,12 @@
 package com.baeldung.dispatchservlet.conf;
 
-import com.baeldung.dispatchservlet.listener.CustomListener;
-import com.baeldung.dispatchservlet.servlet.CustomServlet;
 import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import com.baeldung.dispatchservlet.listener.CustomListener;
+import com.baeldung.dispatchservlet.servlet.CustomServlet;
 
 import jakarta.servlet.ServletContextListener;
 

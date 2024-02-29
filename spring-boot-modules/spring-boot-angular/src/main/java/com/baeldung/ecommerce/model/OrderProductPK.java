@@ -1,13 +1,14 @@
 package com.baeldung.ecommerce.model;
 
+import java.io.Serializable;
+
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-import javax.persistence.Embeddable;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import java.io.Serializable;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Embeddable
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "order")

@@ -41,7 +41,6 @@
     </build>
 
     <properties>
-        <commons-cli.version>1.5.0</commons-cli.version>
         <junit-jupiter-api.version>5.10.0</junit-jupiter-api.version>
         <mockito-core.version>5.5.0</mockito-core.version>
     </properties>
