@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpStatus;
 
 import com.baeldung.tutorials.openapi.quotes.api.model.QuoteResponse;
 
@@ -23,6 +24,12 @@ class QuotesApplicationIntegrationTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
+    @Test
+    void whenGetQuote_thenSuccess() {
+        var response = restTemplate.getForEntity("http://localhost:" + port + "/quotes/BAEL", QuoteResponse.class);
+        assertThat(response.getStatusCode())
+          .isEqualTo(HttpStatus.OK);
+    }
 
     @Test
     void whenGetQuoteMultipleTimes_thenResponseCached() {
@@ -34,10 +41,5 @@ class QuotesApplicationIntegrationTest {
           .collect(Collectors.groupingBy((q -> q.hashCode()), Collectors.counting()));
 
         assertThat(quotes.size()).isEqualTo(1);
-
-
-
     }
-
-
 }
