@@ -21,31 +21,29 @@ public class CompareYesterdayUnitTest {
     void givenYesterdayDate_whenCompareWithCalendar_returnTrue() {
         // To simulate yesterday
         Date date = new Date(System.currentTimeMillis() - (1000 * 60 * 60 * 24));
-        Calendar testDate = Calendar.getInstance();
-        testDate.setTime(date);
+        Calendar testCalendar = Calendar.getInstance();
+        testCalendar.setTime(date);
 
         Calendar yesterdayDate = Calendar.getInstance();
-        yesterdayDate.setTime(new Date());
         yesterdayDate.add(Calendar.DATE, -1);
 
         boolean isEqualToYesterday =
-            yesterdayDate.get(Calendar.YEAR) == testDate.get(Calendar.YEAR) && yesterdayDate.get(Calendar.MONTH) == testDate.get(Calendar.MONTH) &&
-                yesterdayDate.get(Calendar.DAY_OF_MONTH) == testDate.get(Calendar.DAY_OF_MONTH);
+            yesterdayDate.get(Calendar.YEAR) == testCalendar.get(Calendar.YEAR) && yesterdayDate.get(Calendar.MONTH) == testCalendar.get(Calendar.MONTH) &&
+                yesterdayDate.get(Calendar.DAY_OF_MONTH) == testCalendar.get(Calendar.DAY_OF_MONTH);
         assert (isEqualToYesterday);
     }
 
     @Test
     void givenTodayDate_whenCompareWithCalendar_returnFalse() {
-        Calendar testDate = Calendar.getInstance();
-        testDate.setTime(new Date());
+        Calendar testCalendar = Calendar.getInstance();
+        testCalendar.setTime(new Date());
 
         Calendar yesterdayDate = Calendar.getInstance();
-        yesterdayDate.setTime(new Date());
         yesterdayDate.add(Calendar.DATE, -1);
 
         boolean isEqualToYesterday =
-            yesterdayDate.get(Calendar.YEAR) == testDate.get(Calendar.YEAR) && yesterdayDate.get(Calendar.MONTH) == testDate.get(Calendar.MONTH) &&
-                yesterdayDate.get(Calendar.DAY_OF_MONTH) == testDate.get(Calendar.DAY_OF_MONTH);
+            yesterdayDate.get(Calendar.YEAR) == testCalendar.get(Calendar.YEAR) && yesterdayDate.get(Calendar.MONTH) == testCalendar.get(Calendar.MONTH) &&
+                yesterdayDate.get(Calendar.DAY_OF_MONTH) == testCalendar.get(Calendar.DAY_OF_MONTH);
         assertFalse(isEqualToYesterday);
     }
 
@@ -77,20 +75,20 @@ public class CompareYesterdayUnitTest {
     void givenYesterdayDate_whenCompareWithLocalDate_returnTrue() {
         // To simulate yesterday
         Date date = new Date(System.currentTimeMillis() - (1000 * 60 * 60 * 24));
-        LocalDate testDate = LocalDate.of(date.getYear() + 1900, date.getMonth() + 1, date.getDate());
+        LocalDate testLocalDate = LocalDate.of(date.getYear() + 1900, date.getMonth() + 1, date.getDate());
 
         LocalDate yesterdayDate = LocalDate.now()
             .minusDays(1);
-        boolean isEqualToYesterday = testDate.equals(yesterdayDate);
+        boolean isEqualToYesterday = testLocalDate.equals(yesterdayDate);
         assertTrue(isEqualToYesterday);
     }
 
     @Test
     void givenTodayDate_whenCompareWithLocalDate_returnFalse() {
-        LocalDate currentDate = LocalDate.now();
-        LocalDate yesterdayDate = currentDate.minusDays(1);
+        LocalDate testLocalDate = LocalDate.now();
+        LocalDate yesterdayDate = testLocalDate.minusDays(1);
 
-        boolean isEqualToYesterday = currentDate.equals(yesterdayDate);
+        boolean isEqualToYesterday = testLocalDate.equals(yesterdayDate);
         assertFalse(isEqualToYesterday);
     }
 
@@ -110,12 +108,12 @@ public class CompareYesterdayUnitTest {
 
     @Test
     void givenTodayDate_whenCompareWithJodaTime_returnFalse() {
-        DateTime currentDateTime = DateTime.now()
+        DateTime testDateTime = DateTime.now()
             .withTimeAtStartOfDay();
-        DateTime yesterdayDateTime = currentDateTime.minusDays(1)
+        DateTime yesterdayDateTime = testDateTime.minusDays(1)
             .withTimeAtStartOfDay();
 
-        boolean isEqualToYesterday = currentDateTime.equals(yesterdayDateTime);
+        boolean isEqualToYesterday = testDateTime.equals(yesterdayDateTime);
         assertFalse(isEqualToYesterday);
     }
 }
