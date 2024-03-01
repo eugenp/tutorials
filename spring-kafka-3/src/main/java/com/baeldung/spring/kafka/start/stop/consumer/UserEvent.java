@@ -1,9 +1,7 @@
 package com.baeldung.spring.kafka.start.stop.consumer;
 
 public class UserEvent {
-
     private String userEventId;
-
 
     public UserEvent() {
     }
@@ -19,5 +17,4 @@ public class UserEvent {
     public void setUserEventId(String userEventId) {
         this.userEventId = userEventId;
     }
-
 }
