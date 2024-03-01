@@ -22,10 +22,11 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http.csrf(AbstractHttpConfigurer::disable)
-            .authorizeHttpRequests(request -> request.requestMatchers(new AntPathRequestMatcher("/"))
+            .authorizeHttpRequests(request -> request.requestMatchers(new AntPathRequestMatcher("/tasks/**"))
                 .permitAll())
             .exceptionHandling(exceptionHandling -> exceptionHandling.authenticationEntryPoint(problemSupport)
                 .accessDeniedHandler(problemSupport))
             .build();
     }
+
 }
