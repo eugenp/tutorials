@@ -1,4 +1,4 @@
-package com.baeldung.caching.multicache;
+package com.baeldung.caching.twolevelcache;
 
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;

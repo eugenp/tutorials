@@ -1,4 +1,4 @@
-package com.baeldung.caching.multicache;
+package com.baeldung.caching.twolevelcache;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;

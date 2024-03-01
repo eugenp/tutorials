@@ -1,4 +1,4 @@
-package com.baeldung.caching.multicache;
+package com.baeldung.caching.twolevelcache;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

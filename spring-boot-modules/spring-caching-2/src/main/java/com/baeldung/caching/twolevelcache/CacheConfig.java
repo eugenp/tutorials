@@ -1,4 +1,4 @@
-package com.baeldung.caching.multicache;
+package com.baeldung.caching.twolevelcache;
 
 import com.github.benmanes.caffeine.cache.Caffeine;
 import org.springframework.cache.CacheManager;
@@ -28,8 +28,7 @@ public class CacheConfig {
     @Primary
     public CacheManager caffeineCacheManager() {
         SimpleCacheManager manager = new SimpleCacheManager();
-        manager.setCaches(Arrays.asList(
-                caffeineCacheConfig()));
+        manager.setCaches(Arrays.asList(caffeineCacheConfig()));
         return manager;
     }
 
