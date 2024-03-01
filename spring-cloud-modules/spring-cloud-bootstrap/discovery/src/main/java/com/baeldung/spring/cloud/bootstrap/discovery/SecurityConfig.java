@@ -34,8 +34,8 @@ public class SecurityConfig  {
         }
 
         protected void configure(HttpSecurity http) throws Exception {
-            http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER).and().httpBasic().disable().authorizeRequests().requestMatchers(HttpMethod.GET, "/").hasRole("ADMIN").requestMatchers("/info", "/health").authenticated().anyRequest().denyAll()
-                    .and().csrf().disable();
+            http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.NEVER)).httpBasic(basic -> basic.disable()).authorizeRequests().requestMatchers(HttpMethod.GET, "/").hasRole("ADMIN").requestMatchers("/info", "/health").authenticated().anyRequest().denyAll()
+                    .and().csrf(csrf -> csrf.disable());
         }
     }
 }
