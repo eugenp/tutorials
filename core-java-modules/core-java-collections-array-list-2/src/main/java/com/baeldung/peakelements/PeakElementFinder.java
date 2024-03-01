@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PeakElementFinder {
-    public List<Integer> findPeakElement(int[] arr) {
+    public List<Integer> findPeakElements(int[] arr) {
         int n = arr.length;
         List<Integer> peaks = new ArrayList<>();
 
@@ -16,6 +16,7 @@ public class PeakElementFinder {
             if (isPeak(arr, i, n)) {
                 peaks.add(i);
             }
+
             while (i < n - 1 && arr[i] == arr[i + 1]) {
                 i++;
             }
@@ -25,14 +26,19 @@ public class PeakElementFinder {
     }
 
     private boolean isPeak(int[] arr, int index, int n) {
-
         if (index == 0) {
             return n > 1 ? arr[index] >= arr[index + 1] : true;
         } else if (index == n - 1) {
             return arr[index] >= arr[index - 1];
-        }
+        } else if (arr[index] == arr[index + 1] && arr[index] > arr[index - 1]) {
+            int i = index;
 
-        return arr[index] >= arr[index - 1] && arr[index] >= arr[index + 1];
+            while (i < n - 1 && arr[i] == arr[i + 1]) {
+                i++;
+            }
+            return i == n - 1 || arr[i] > arr[i + 1];
+        } else {
+            return arr[index] >= arr[index - 1] && arr[index] >= arr[index + 1];
+        }
     }
 }
-
