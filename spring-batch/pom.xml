@@ -35,7 +35,6 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-oxm</artifactId>
-            <version>${spring.version}</version>
             <exclusions>
                 <exclusion>
                     <artifactId>commons-logging</artifactId>
@@ -71,6 +70,19 @@
             <artifactId>h2</artifactId>
         </dependency>
     </dependencies>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>17</source>
+                    <target>17</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <properties>
         <spring.version>6.0.6</spring.version>
@@ -81,6 +93,8 @@
         <http-client.version>4.5.14</http-client.version>
         <jettison.version>1.5.3</jettison.version>
         <start-class>com.baeldung.batchtesting.SpringBatchApplication</start-class>
+        <spring-boot.version>3.2.2</spring-boot.version>
+        <junit-jupiter.version>5.10.2</junit-jupiter.version>
     </properties>
 
 </project>
