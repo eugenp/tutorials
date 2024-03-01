@@ -4,10 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 
 @Configuration
@@ -21,8 +21,8 @@ public class SecurityConfig  {
     }
 
     protected void configure(HttpSecurity http) throws Exception {
-        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.ALWAYS).and().requestMatchers().antMatchers("/eureka/**").and().authorizeRequests().antMatchers("/eureka/**").hasRole("SYSTEM").anyRequest().denyAll().and().httpBasic().and().csrf()
-                .disable();
+        http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.ALWAYS)).authorizeHttpRequests(auth -> auth.requestMatchers("/eureka/**")).authorizeRequests(auth -> auth.requestMatchers("/eureka/**").hasRole("SYSTEM").anyRequest().denyAll()).httpBasic(
+                Customizer.withDefaults()).csrf(csrf -> csrf.disable());
     }
 
     @Configuration
@@ -34,7 +34,7 @@ public class SecurityConfig  {
         }
 
         protected void configure(HttpSecurity http) throws Exception {
-            http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER).and().httpBasic().disable().authorizeRequests().antMatchers(HttpMethod.GET, "/").hasRole("ADMIN").antMatchers("/info", "/health").authenticated().anyRequest().denyAll()
+            http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER).and().httpBasic().disable().authorizeRequests().requestMatchers(HttpMethod.GET, "/").hasRole("ADMIN").requestMatchers("/info", "/health").authenticated().anyRequest().denyAll()
                     .and().csrf().disable();
         }
     }
