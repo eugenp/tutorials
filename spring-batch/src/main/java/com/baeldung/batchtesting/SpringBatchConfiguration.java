@@ -112,7 +112,7 @@ public class SpringBatchConfiguration {
     }
 
     @Bean(name = "transformBooksRecords")
-    public Job transformBookRecords(JobRepository jobRepository,  @Qualifier("step1") Step step1 ,  @Qualifier("step2") Step step2) {
+    public Job transformBookRecords(JobRepository jobRepository, @Qualifier("step1") Step step1, @Qualifier("step2") Step step2) {
         // @formatter:off
         return new JobBuilder("transformBooksRecords", jobRepository)
           .flow(step1)
