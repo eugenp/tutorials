@@ -1,7 +1,6 @@
 package com.baeldung.caching.multicache;
 
 import com.github.benmanes.caffeine.cache.Caffeine;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.AnnotationCacheOperationSource;
 import org.springframework.cache.annotation.EnableCaching;
@@ -37,7 +36,7 @@ public class CacheConfig {
     @Bean
     public CaffeineCache caffeineCacheConfig() {
         return new CaffeineCache("customerCache", Caffeine.newBuilder()
-                .expireAfterWrite(Duration.ofSeconds(3))
+                .expireAfterWrite(Duration.ofSeconds(1))
                 .initialCapacity(1)
                 .maximumSize(2000)
                 .build());

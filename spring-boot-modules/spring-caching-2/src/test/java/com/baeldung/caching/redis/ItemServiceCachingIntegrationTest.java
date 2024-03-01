@@ -16,6 +16,7 @@ import redis.embedded.RedisServer;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import java.io.IOException;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -66,17 +67,17 @@ class ItemServiceCachingIntegrationTest {
 
         private final RedisServer redisServer;
 
-        public EmbeddedRedisConfiguration() {
+        public EmbeddedRedisConfiguration() throws IOException {
             this.redisServer = new RedisServer();
         }
 
         @PostConstruct
-        public void startRedis() {
+        public void startRedis() throws IOException {
             redisServer.start();
         }
 
         @PreDestroy
-        public void stopRedis() {
+        public void stopRedis() throws IOException {
             this.redisServer.stop();
         }
     }

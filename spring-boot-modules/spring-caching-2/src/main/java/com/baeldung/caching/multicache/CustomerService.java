@@ -20,6 +20,7 @@ public class CustomerService {
             @Cacheable(cacheNames = "customerCache", cacheManager = "redisCacheManager")
     })
     public Customer getCustomer(String id) {
-        return customerRepository.getCustomerById(id);
+        return customerRepository.findById(id)
+                .orElseThrow(RuntimeException::new);
     }
 }

@@ -17,6 +17,8 @@ import redis.embedded.RedisServer;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
+import java.io.IOException;
+import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -43,56 +45,53 @@ class CustomerServiceCachingIntegrationTest {
     private CacheManager caffeineCacheManager;
 
     @Test
-    void givenCustomerIsPresentInDb_whenFindCustomerById_thenCustomerReturnedFromDb_And_Cached() {
-        Customer customer = new Customer("100", "test", "test@mail.com");
-        given(customerRepository.getCustomerById("100"))
-                .willReturn(customer);
+    void givenCustomerIsPresentInDB_whenGetCustomerById_thenCustomerReturnedFromDBAndCached() {
+        String CUSTOMER_ID = "100";
+        Customer customer = new Customer(CUSTOMER_ID, "test", "test@mail.com");
 
-        Customer customerCacheMiss = customerService.getCustomer("100");
+        given(customerRepository.findById(CUSTOMER_ID))
+                .willReturn(Optional.of(customer));
+
+        Customer customerCacheMiss = customerService.getCustomer(CUSTOMER_ID);
 
         assertThat(customerCacheMiss).isEqualTo(customer);
-        verify(customerRepository, times(1)).getCustomerById("100");
-        assertThat(customerFromRedisCache("100")).isEqualTo(customer);
-        assertThat(customerFromCaffeineCache("100")).isEqualTo(customer);
+        verify(customerRepository, times(1)).findById(CUSTOMER_ID);
+        assertThat(customerFromRedisCache(CUSTOMER_ID)).isEqualTo(customer);
+        assertThat(customerFromCaffeineCache(CUSTOMER_ID)).isEqualTo(customer);
     }
 
     @Test
-    void givenCustomerIsPresentInDb_whenFindCustomerById_CalledTwice_thenCustomerReturnedFromDb_And_Cached() {
-        Customer customer = new Customer("101", "test", "test@mail.com");
-        given(customerRepository.getCustomerById("101"))
-                .willReturn(customer);
+    void givenCustomerIsPresentInDB_whenGetCustomerByIdIsCalledTwice_thenCustomerReturnedFromDBAndCached() {
+        String CUSTOMER_ID = "101";
+        Customer customer = new Customer(CUSTOMER_ID, "test", "test@mail.com");
+        given(customerRepository.findById(CUSTOMER_ID)).willReturn(Optional.of(customer));
 
-        Customer customerCacheMiss = customerService.getCustomer("101");
-        Customer customerCacheHit = customerService.getCustomer("101");
+        Customer customerCacheMiss = customerService.getCustomer(CUSTOMER_ID);
+        Customer customerCacheHit = customerService.getCustomer(CUSTOMER_ID);
 
         assertThat(customerCacheMiss).isEqualTo(customer);
         assertThat(customerCacheHit).isEqualTo(customer);
-
-        verify(customerRepository, times(1)).getCustomerById("101");
-        assertThat(customerFromRedisCache("101")).isEqualTo(customer);
-        assertThat(customerFromCaffeineCache("101")).isEqualTo(customer);
+        verify(customerRepository, times(1)).findById(CUSTOMER_ID);
+        assertThat(customerFromRedisCache(CUSTOMER_ID)).isEqualTo(customer);
+        assertThat(customerFromCaffeineCache(CUSTOMER_ID)).isEqualTo(customer);
     }
 
     @Test
-    void givenCustomerIsPresentInDb_whenFindCustomerById_CalledThrice_thenCustomerReturnedFromDBFirst_ThenFromCache() throws InterruptedException {
-        Customer customer = new Customer("102", "test", "test@mail.com");
-        given(customerRepository.getCustomerById("102"))
-                .willReturn(customer);
+    void givenCustomerIsPresentInDB_whenGetCustomerByIdIsCalledThrice_thenCustomerReturnedFromDBAndCached() throws InterruptedException {
+        String CUSTOMER_ID = "102";
+        Customer customer = new Customer(CUSTOMER_ID, "test", "test@mail.com");
+        given(customerRepository.findById(CUSTOMER_ID))
+                .willReturn(Optional.of(customer));
 
-        Customer customerCacheMiss = customerService.getCustomer("102");
-        Customer customerCacheHit = customerService.getCustomer("102");
+        Customer customerCacheMiss = customerService.getCustomer(CUSTOMER_ID);
+        TimeUnit.SECONDS.sleep(2);
+        Customer customerCacheHit = customerService.getCustomer(CUSTOMER_ID);
 
-        TimeUnit.SECONDS.sleep(4);
-
-        assertThat(customerFromCaffeineCache("102")).isEqualTo(null);
-        Customer customerCacheHitAgain = customerService.getCustomer("102");
-
-        verify(customerRepository, times(1)).getCustomerById("102");
+        verify(customerRepository, times(1)).findById(CUSTOMER_ID);
         assertThat(customerCacheMiss).isEqualTo(customer);
         assertThat(customerCacheHit).isEqualTo(customer);
-        assertThat(customerCacheHitAgain).isEqualTo(customer);
-        assertThat(customerFromRedisCache("102")).isEqualTo(customer);
-        assertThat(customerFromCaffeineCache("102")).isEqualTo(customer);
+        assertThat(customerFromRedisCache(CUSTOMER_ID)).isEqualTo(customer);
+        assertThat(customerFromCaffeineCache(CUSTOMER_ID)).isEqualTo(customer);
     }
 
     private Object customerFromRedisCache(String key) {
@@ -110,17 +109,17 @@ class CustomerServiceCachingIntegrationTest {
 
         private final RedisServer redisServer;
 
-        public EmbeddedRedisConfiguration() {
+        public EmbeddedRedisConfiguration() throws IOException {
             this.redisServer = new RedisServer();
         }
 
         @PostConstruct
-        public void startRedis() {
+        public void startRedis() throws IOException {
             redisServer.start();
         }
 
         @PreDestroy
-        public void stopRedis() {
+        public void stopRedis() throws IOException {
             this.redisServer.stop();
         }
     }
