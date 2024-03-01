@@ -12,11 +12,11 @@ public class MultiplePeakFinder {
         if (arr == null || arr.length == 0) {
             return peaks;
         }
-        findPeakElement(arr, 0, arr.length - 1, peaks);
+        findPeakElements(arr, 0, arr.length - 1, peaks, arr.length);
         return peaks;
     }
 
-    private static void findPeakElement(int[] arr, int low, int high, List<Integer> peaks) {
+    private static void findPeakElements(int[] arr, int low, int high, List<Integer> peaks, int length) {
 
         if (low > high) {
             return;
@@ -24,17 +24,17 @@ public class MultiplePeakFinder {
 
         int mid = low + (high - low) / 2;
 
-        if ((mid == 0 || arr[mid] >= arr[mid - 1]) && (mid == arr.length - 1 || arr[mid] >= arr[mid + 1])) {
-            peaks.add(arr[mid]);
+        boolean isPeak = (mid == 0 || arr[mid] > arr[mid - 1]) && (mid == length - 1 || arr[mid] > arr[mid + 1]);
+        boolean isFirstInSequence = mid > 0 && arr[mid] == arr[mid - 1] && arr[mid] > arr[mid + 1];
+
+        if (isPeak || isFirstInSequence) {
+
+            if (!peaks.contains(arr[mid])) {
+                peaks.add(arr[mid]);
+            }
         }
 
-        if (mid > 0) {
-            findPeakElement(arr, low, mid - 1, peaks);
-        }
-
-        if (mid < arr.length - 1) {
-            findPeakElement(arr, mid + 1, high, peaks);
-        }
-
+        findPeakElements(arr, low, mid - 1, peaks, length);
+        findPeakElements(arr, mid + 1, high, peaks, length);
     }
 }
