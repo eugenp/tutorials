@@ -10,7 +10,7 @@ import com.baeldung.graphql.error.handling.repository.LocationRepository;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
+import jakarta.transaction.Transactional;
 import java.util.*;
 
 @Service
