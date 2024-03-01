@@ -6,3 +6,4 @@
 - [How to Center Text Output in Java](https://www.baeldung.com/java-center-text-output)
 - [How to Convert an Object to String](https://www.baeldung.com/java-object-string-representation)
 - [Convert String to long or Long in Java](https://www.baeldung.com/java-convert-string-long)
+- [Convert a String to a List of Characters in Java](https://www.baeldung.com/java-convert-string-list-characters)
