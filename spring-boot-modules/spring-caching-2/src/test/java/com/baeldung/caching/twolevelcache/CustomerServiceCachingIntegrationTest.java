@@ -16,13 +16,11 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Import;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import redis.embedded.RedisServer;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
-
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 import java.io.IOException;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
@@ -31,7 +29,6 @@ import java.util.concurrent.TimeUnit;
 @ExtendWith(SpringExtension.class)
 @ImportAutoConfiguration(classes = { CacheAutoConfiguration.class, RedisAutoConfiguration.class })
 @EnableCaching
-@TestPropertySource(properties = {"spring.redis.port=7000"})
 class CustomerServiceCachingIntegrationTest {
 
     @MockBean
@@ -113,7 +110,7 @@ class CustomerServiceCachingIntegrationTest {
         private final RedisServer redisServer;
 
         public EmbeddedRedisConfiguration() throws IOException {
-            this.redisServer = new RedisServer(7000);
+            this.redisServer = new RedisServer();
         }
 
         @PostConstruct
