@@ -6,6 +6,6 @@
 # To run with profiles:
 # docker run -e "SPRING_PROFILES_ACTIVE=test1,test2,test3" docker-with-spring-profile:latest
 
-FROM openjdk:11
+FROM openjdk:17-jdk-alpine
 COPY target/*.jar app.jar
 ENTRYPOINT ["java", "-jar", "/app.jar"]
