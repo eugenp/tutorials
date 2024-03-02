@@ -1,4 +1,4 @@
-package com.baeldung.algorithms.parentnodebinaytree;
+package com.baeldung.algorithms.parentnodebinarytree;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -27,7 +27,7 @@ class BinaryTreeParentNodeFinderUnitTest {
     }
 
     @Test
-    void givenBinaryTree_andNodeTree_whenFindParentNode_thenReturnCorrectParentNode() {
+    void givenBinaryTree_whenFindParentNode_thenReturnCorrectParentNode() {
         assertEquals(8, subject.parent(5).value);
         assertEquals(5, subject.parent(3).value);
         assertEquals(5, subject.parent(7).value);
@@ -43,7 +43,7 @@ class BinaryTreeParentNodeFinderUnitTest {
     }
 
     @Test
-    void givenBinaryTree_andNodeTree_whenFindParentNodeIteratively_thenReturnCorrectParentNode() {
+    void givenBinaryTree_whenFindParentNodeIteratively_thenReturnCorrectParentNode() {
         assertEquals(8, subject.iterativeParent(5).value);
         assertEquals(5, subject.iterativeParent(3).value);
         assertEquals(5, subject.iterativeParent(7).value);
@@ -59,7 +59,7 @@ class BinaryTreeParentNodeFinderUnitTest {
     }
 
     @Test
-    void givenParentKeeperBinaryTree_andNodeTree_whenGetParent_thenReturnCorrectParent() {
+    void givenParentKeeperBinaryTree_whenGetParent_thenReturnCorrectParent() {
         ParentKeeperTreeNode subject = new ParentKeeperTreeNode(8);
         subject.insert(5);
         subject.insert(12);

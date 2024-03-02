@@ -1,4 +1,4 @@
-package com.baeldung.algorithms.parentnodebinaytree;
+package com.baeldung.algorithms.parentnodebinarytree;
 
 import java.util.Deque;
 import java.util.LinkedList;
