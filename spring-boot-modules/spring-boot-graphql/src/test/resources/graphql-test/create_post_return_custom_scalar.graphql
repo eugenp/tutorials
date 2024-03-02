@@ -1,0 +1,3 @@
+mutation createPostReturnCustomScalar($title: String!, $text: String!, $category: String!, $author: String!) {
+    createPostReturnCustomScalar(title: $title, text: $text, category: $category, author: $author)
+}

@@ -4,7 +4,7 @@ import java.util.function.Function;
 
 public class Currying {
 
-    private static Function<Double, Function<Double, Double>> weight = mass -> gravity -> mass * gravity;
+    private static Function<Double, Function<Double, Double>> weight = gravity -> mass -> mass * gravity;
 
     private static Function<Double, Double> weightOnEarth = weight.apply(9.81);
 

@@ -11,7 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 
@@ -51,9 +51,8 @@ public class RedisWebFilterFactoriesLiveTest {
         ResponseEntity<String> r = restTemplate.getForEntity(url, String.class);
         // assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 
-        LOGGER.info("Received: status->{}, reason->{}, remaining->{}", 
-          r.getStatusCodeValue(), r.getStatusCode().getReasonPhrase(), 
-          r.getHeaders().get("X-RateLimit-Remaining"));
+        LOGGER.info("Received: status->{}, remaining->{}",
+          r.getStatusCodeValue(), r.getHeaders().get("X-RateLimit-Remaining"));
     }
     
     @After

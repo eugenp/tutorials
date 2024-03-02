@@ -1,6 +1,6 @@
 package com.baeldung.springvalidation.controller;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

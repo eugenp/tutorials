@@ -63,7 +63,7 @@
     </build>
 
     <properties>
-        <testcontainers.version>1.16.2</testcontainers.version>
+        <testcontainers.version>1.19.6</testcontainers.version>
     </properties>
 
 </project>
