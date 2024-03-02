@@ -8,3 +8,4 @@
 - [Normalize a URL in Java](https://www.baeldung.com/java-url-normalization)
 - [Translating Space Characters in URLEncoder](https://www.baeldung.com/java-urlencoder-translate-space-characters)
 - [Creating a Custom URL Connection](https://www.baeldung.com/java-custom-url-connection)
+- [[<-- Prev]](/core-java-modules/core-java-networking-3)
