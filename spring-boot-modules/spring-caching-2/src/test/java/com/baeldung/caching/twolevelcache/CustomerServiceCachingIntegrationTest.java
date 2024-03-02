@@ -79,7 +79,7 @@ class CustomerServiceCachingIntegrationTest {
     }
 
     @Test
-    void givenCustomerIsPresentInDB_whenGetCustomerByIdIsCalledThrice_thenCustomerReturnedFromDBAndCached() throws InterruptedException {
+    void givenCustomerIsPresentInDB_whenGetCustomerByIdIsCalledTwice_AndFirstCacheExpires_thenCustomerReturnedFromDBAndCached() throws InterruptedException {
         String CUSTOMER_ID = "102";
         Customer customer = new Customer(CUSTOMER_ID, "test", "test@mail.com");
         given(customerRepository.findById(CUSTOMER_ID))
