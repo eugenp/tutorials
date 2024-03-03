@@ -12,7 +12,6 @@ import org.springframework.core.env.Environment;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class ApiClientConfiguration implements BeanDefinitionRegistryPostProcessor {
     private static final String API_CLIENT_BEAN_NAME = "apiClient_";
