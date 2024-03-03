@@ -2,12 +2,12 @@
 #
 # docker build -f src/main/docker/Dockerfile .
 
-FROM adoptopenjdk:11-jre-hotspot as builder
+FROM openjdk:17-jdk-alpine as builder
 ARG JAR_FILE=target/*.jar
 COPY ${JAR_FILE} application.jar
 RUN java -Djarmode=layertools -jar application.jar extract
 
-FROM adoptopenjdk:11-jre-hotspot
+FROM openjdk:17-jdk-alpine
 COPY --from=builder dependencies/ ./
 COPY --from=builder spring-boot-loader/ ./
 COPY --from=builder internal-dependencies/ ./
