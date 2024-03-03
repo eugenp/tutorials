@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 
 @SpringBootTest(classes = RegistryPostProcessorApplication.class)
-public class ApiClientConfigurationTest {
+public class ApiClientConfigurationUnitTest {
     @Autowired
     private ApplicationContext context;
 
