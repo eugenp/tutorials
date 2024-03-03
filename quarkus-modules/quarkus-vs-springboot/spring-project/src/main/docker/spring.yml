@@ -13,17 +13,17 @@ services:
       test: mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
     volumes:
       - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql
-        #app:
-        #    image: docker.io/library/spring-project:0.1-SNAPSHOT
-        #    ports:
-        #      - '8080:8080'
-        #    environment:
-        #      DB_URL: r2dbc:mysql://db:3306/baeldung?useSSL=true&requireSSL=true
-        #      HOST_HOSTNAME: ${EXTERNAL_IP}
-        #    depends_on:
-        #      db:
-        #        condition: service_healthy
-        #    deploy:
-        #      resources:
-        #        limits:
-      #          cpus: '3.00'
+  app:
+      image: docker.io/library/spring-project:0.1-SNAPSHOT
+      ports:
+        - '8080:8080'
+      environment:
+        DB_URL: r2dbc:mysql://db:3306/baeldung?useSSL=true&requireSSL=true
+        HOST_HOSTNAME: ${EXTERNAL_IP}
+      depends_on:
+        db:
+          condition: service_healthy
+      deploy:
+        resources:
+          limits:
+            cpus: '3.00'
