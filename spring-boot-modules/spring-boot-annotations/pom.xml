@@ -39,6 +39,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.core.version}</version>
         </dependency>
         <!--Test -->
         <dependency>
@@ -49,8 +50,15 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-inline</artifactId>
+            <version>${mockito.inline.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <properties>
+        <hibernate.core.version>6.4.2.Final</hibernate.core.version>
+        <mockito.inline.version>5.2.0</mockito.inline.version>
+        <start-class>com.baeldung.annotations.VehicleFactoryApplication</start-class>
+    </properties>
 
 </project>

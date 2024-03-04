@@ -8,4 +8,5 @@ This module contains articles about reactive Spring Boot.
 - [Spring Boot Actuator](https://www.baeldung.com/spring-boot-actuators)
 - [Reactive WebSockets with Spring 5](https://www.baeldung.com/spring-5-reactive-websockets)
 - [A Guide to Spring Session Reactive Support: WebSession](https://www.baeldung.com/spring-session-reactive)
+- [Custom JSON Deserialization Using Spring WebClient](https://www.baeldung.com/spring-webclient-json-custom-deserialization)
 - More articles: [[<-- prev]](../spring-reactive-2)

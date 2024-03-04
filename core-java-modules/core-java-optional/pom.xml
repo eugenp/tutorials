@@ -15,7 +15,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.hibernate</groupId>
+            <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>${hibernate.core.version}</version>
         </dependency>
@@ -53,7 +53,7 @@
     </dependencies>
 
     <properties>
-        <hibernate.core.version>5.4.0.Final</hibernate.core.version>
+        <hibernate.core.version>6.4.2.Final</hibernate.core.version>
         <json-path.version>5.3.2</json-path.version>
     </properties>
 

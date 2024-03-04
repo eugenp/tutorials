@@ -2,11 +2,12 @@ package com.baeldung.client;
 
 import java.io.IOException;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
 import com.baeldung.spring.ClientConfig;
+
+import org.apache.hc.client5.http.classic.methods.HttpGet;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
+import org.apache.hc.core5.http.HttpResponse;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -24,7 +25,7 @@ public class RawClientLiveTest {
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();
         HttpGet getMethod = new HttpGet("http://localhost:8082/spring-security-rest-basic-auth/api/bars/1");
         HttpResponse response = httpClient.execute(getMethod);
-        System.out.println("HTTP Status of response: " + response.getStatusLine().getStatusCode());
+        System.out.println("HTTP Status of response: " + response.getCode());
     }
 
 }

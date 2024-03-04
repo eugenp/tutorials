@@ -1,12 +1,13 @@
 package com.baeldung.ecommerce.controller;
 
-import com.baeldung.ecommerce.model.Product;
-import com.baeldung.ecommerce.service.ProductService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.constraints.NotNull;
+import com.baeldung.ecommerce.model.Product;
+import com.baeldung.ecommerce.service.ProductService;
+
+import jakarta.validation.constraints.NotNull;
 
 @RestController
 @RequestMapping("/api/products")

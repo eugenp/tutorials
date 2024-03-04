@@ -18,7 +18,7 @@
         <dependency>
             <groupId>software.amazon.awssdk</groupId>
             <artifactId>s3</artifactId>
-            <version>${aws.java.sdk.version}</version>
+            <version>${aws-java-sdk-v2.version}</version>
         </dependency>
         <dependency>
             <groupId>software.amazon.awssdk</groupId>
@@ -36,12 +36,12 @@
         <dependency>
             <groupId>org.lucee</groupId>
             <artifactId>jets3t</artifactId>
-            <version>${jets3t-version}</version>
+            <version>${jets3t.version}</version>
         </dependency>
         <dependency>
             <groupId>org.lucee</groupId>
             <artifactId>commons-codec</artifactId>
-            <version>${commons-codec-version}</version>
+            <version>${commons-codec.version}</version>
         </dependency>
         <!-- adobe s3mock -->
         <dependency>
@@ -67,10 +67,10 @@
 
     <properties>
         <aws.java.sdk.version>2.20.52</aws.java.sdk.version>
-        <commons-codec-version>1.10.L001</commons-codec-version>
-        <jets3t-version>0.9.4.0006L</jets3t-version>
         <com.adobe.testing.version>3.3.0</com.adobe.testing.version>
         <org.testcontainers.version>1.19.4</org.testcontainers.version>
+        <commons-codec.version>1.10.L001</commons-codec.version>
+        <jets3t.version>0.9.4.0014L</jets3t.version>
     </properties>
 
 </project>

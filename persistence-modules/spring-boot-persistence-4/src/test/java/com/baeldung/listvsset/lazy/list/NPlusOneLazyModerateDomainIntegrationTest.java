@@ -31,14 +31,14 @@ class NPlusOneLazyModerateDomainIntegrationTest extends BaseNPlusOneIntegrationT
 
     @Test
     void givenLazyListBasedUser_whenFetchingAllUsers_thenIssueOneRequest() {
-        getService().findAll();
+        getUserService().findAll();
         assertSelectCount(1);
     }
 
     @ParameterizedTest
     @ValueSource(longs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10})
     void givenLazyListBasedUser_whenFetchingOneUser_thenIssueOneRequest(Long id) {
-        getService().getUserById(id);
+        getUserService().getUserById(id);
         assertSelectCount(1);
     }
 

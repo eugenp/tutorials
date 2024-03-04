@@ -1,7 +1,6 @@
 package com.baeldung.security.azuread;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.net.URI;
 
@@ -12,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 
@@ -27,9 +27,9 @@ class ApplicationLiveTest {
 
     @Test
     void testWhenAccessRootPath_thenRedirectToAzureAD() {
-                
-        ResponseEntity<String> response = rest.getForEntity("http://localhost:" + port , String.class);               
-        HttpStatus st = response.getStatusCode();
+
+        ResponseEntity<String> response = rest.getForEntity("http://localhost:" + port , String.class);
+        HttpStatusCode st = response.getStatusCode();
         assertThat(st)
            .isEqualTo(HttpStatus.FOUND);
         

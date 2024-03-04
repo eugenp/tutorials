@@ -1,7 +1,5 @@
 package com.baeldung.algorithms;
 
-
-
 import com.baeldung.algorithms.ga.dijkstra.Dijkstra;
 import com.baeldung.algorithms.ga.dijkstra.Graph;
 import com.baeldung.algorithms.ga.dijkstra.Node;

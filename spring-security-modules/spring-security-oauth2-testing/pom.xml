@@ -32,6 +32,7 @@
 
     <properties>
         <spring-addons.version>7.1.10</spring-addons.version>
+        <maven.compiler.release>17</maven.compiler.release>
     </properties>
 
 </project>

@@ -10,10 +10,9 @@
     <description>Spring Boot Properties Module</description>
 
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-3</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-3</relativePath>
+        <groupId>com.baeldung.spring-boot-modules</groupId>
+        <artifactId>spring-boot-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <dependencies>
@@ -36,7 +35,7 @@
 
     <properties>
         <start-class>com.baeldung.properties.yaml.YamlApplication</start-class>
-        <spring-boot.version>3.1.0</spring-boot.version>
+        <java.version>17</java.version>
     </properties>
 
 </project>

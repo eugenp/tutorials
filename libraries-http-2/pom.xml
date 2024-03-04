@@ -109,9 +109,9 @@
     </build>
 
     <properties>
-        <okhttp.version>4.12.0</okhttp.version>
+        <okhttp.version>5.0.0-alpha.12</okhttp.version>
         <gson.version>2.10.1</gson.version>
-        <mockwebserver.version>4.9.1</mockwebserver.version>
+        <mockwebserver.version>5.0.0-alpha.12</mockwebserver.version>
         <jetty.httpclient.version>1.0.3</jetty.httpclient.version>
         <jetty.server.version>9.4.19.v20190610</jetty.server.version>
         <rxjava2.version>2.2.11</rxjava2.version>

@@ -6,7 +6,7 @@ import org.springframework.ldap.core.support.BaseLdapPathContextSource;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.ldap.LdapBindAuthenticationManagerFactory;
-import org.springframework.security.ldap.server.ApacheDSContainer;
+import org.springframework.security.ldap.server.UnboundIdContainer;
 import org.springframework.security.ldap.userdetails.DefaultLdapAuthoritiesPopulator;
 import org.springframework.security.ldap.userdetails.LdapAuthoritiesPopulator;
 import org.springframework.security.web.SecurityFilterChain;
@@ -19,8 +19,8 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     @Bean
-    ApacheDSContainer ldapContainer() throws Exception {
-        return new ApacheDSContainer("dc=baeldung,dc=com", "classpath:users.ldif");
+    UnboundIdContainer  ldapContainer() throws Exception {
+        return new UnboundIdContainer("dc=baeldung,dc=com", "classpath:users.ldif");
     }
 
     @Bean
@@ -41,18 +41,13 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-            .antMatchers("/", "/home", "/css/**")
-            .permitAll()
-            .anyRequest()
-            .authenticated()
-            .and()
-            .formLogin()
-            .loginPage("/login")
-            .permitAll()
-            .and()
-            .logout()
-            .logoutSuccessUrl("/");
-        return http.build();
+        return http.authorizeHttpRequests(auth -> auth
+                .requestMatchers("/", "/home", "/css/**")
+                .permitAll()
+                .anyRequest()
+                .authenticated())
+            .formLogin(httpSecurityFormLoginConfigurer ->
+                httpSecurityFormLoginConfigurer.loginPage("/login").permitAll())
+            .logout(logout -> logout.logoutSuccessUrl("/")).build();
     }
 }

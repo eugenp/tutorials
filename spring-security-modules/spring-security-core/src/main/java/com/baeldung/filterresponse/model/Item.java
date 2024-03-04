@@ -6,11 +6,11 @@ import com.fasterxml.jackson.annotation.JsonView;
 public class Item {
 
     @JsonView(View.User.class)
-    private int id;
+    private final int id;
     @JsonView(View.User.class)
-    private String name;
+    private final String name;
     @JsonView(View.Admin.class)
-    private String ownerName;
+    private final String ownerName;
 
     public Item(int id, String name, String ownerName) {
         this.id = id;

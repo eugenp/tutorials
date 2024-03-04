@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 
-import javax.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotEmpty;
 
 import org.springframework.cloud.gateway.handler.predicate.AbstractRoutePredicateFactory;
 import org.springframework.http.HttpCookie;
@@ -29,12 +29,10 @@ public class GoldenCustomerRoutePredicateFactory extends AbstractRoutePredicateF
         this.goldenCustomerService = goldenCustomerService;
     }
 
-
     @Override
     public List<String> shortcutFieldOrder() {
         return Arrays.asList("isGolden","customerIdCookie");
     }
-
 
     @Override
     public Predicate<ServerWebExchange> apply(Config config) {
@@ -94,9 +92,5 @@ public class GoldenCustomerRoutePredicateFactory extends AbstractRoutePredicateF
         public void setCustomerIdCookie(String customerIdCookie) {
             this.customerIdCookie = customerIdCookie;
         }
-        
-        
-        
     }
-    
 }

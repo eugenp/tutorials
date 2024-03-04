@@ -7,9 +7,7 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import java.util.Objects;
 import java.util.Set;
-import lombok.Data;
 
-@Data
 @Entity(name = "interest_group")
 @Table(name = "interest_group")
 public class Group {
@@ -21,6 +19,33 @@ public class Group {
 
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<User> members;
+
+    public Group() {
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public Set<User> getMembers() {
+        return this.members;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setMembers(Set<User> members) {
+        this.members = members;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -39,5 +64,9 @@ public class Group {
     @Override
     public int hashCode() {
         return id != null ? id.hashCode() : 0;
+    }
+
+    public String toString() {
+        return "Group(id=" + this.getId() + ", name=" + this.getName() + ", members=" + this.getMembers() + ")";
     }
 }

@@ -3,8 +3,8 @@ package com.baeldung.optionalreturntype;
 import java.io.Serializable;
 import java.util.Optional;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 @Entity
 public class UserOptionalField implements Serializable {

@@ -37,7 +37,7 @@
     </build>
 
     <properties>
-        <compiler.plugin.version>3.8.0</compiler.plugin.version>
+        <compiler.plugin.version>3.12.1</compiler.plugin.version>
         <source.version>11</source.version>
         <target.version>11</target.version>
     </properties>

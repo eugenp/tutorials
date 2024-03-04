@@ -5,7 +5,7 @@ import com.baeldung.resttemplate.json.model.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
@@ -64,7 +64,7 @@ public class UserConsumerServiceImpl implements UserConsumerService {
         User[] userArray = responseEntity.getBody();
         //we can get more info if we need :
         MediaType contentType = responseEntity.getHeaders().getContentType();
-        HttpStatus statusCode = responseEntity.getStatusCode();
+        HttpStatusCode statusCode = responseEntity.getStatusCode();
 
         return Arrays.stream(userArray)
           .flatMap(user -> user.getAddressList().stream())

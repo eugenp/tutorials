@@ -12,6 +12,7 @@
     </parent>
 
     <dependencies>
+        <!--Don't Update the version here as it shows the collision when compiling with maven.-->
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
