@@ -54,10 +54,10 @@ public class MappingJwtGrantedAuthoritiesConverter implements Converter<Jwt, Col
         
         if ( this.authoritiesClaimName == null ) {
             scopeClaim = WELL_KNOWN_AUTHORITIES_CLAIM_NAMES.stream()
-              .filter( claim -> jwt.hasClaim(claim))
+              .filter(jwt::hasClaim)
               .findFirst()
               .orElse(null);
-            
+
             if ( scopeClaim == null ) {
                 return Collections.emptyList();
             }
@@ -76,7 +76,7 @@ public class MappingJwtGrantedAuthoritiesConverter implements Converter<Jwt, Col
         }
         else if ( v instanceof Collection ) {
             return ((Collection<?>)v).stream()
-              .map( s -> s.toString())
+              .map(Object::toString)
               .collect(Collectors.toCollection(HashSet::new));
         }        
         return Collections.emptyList();

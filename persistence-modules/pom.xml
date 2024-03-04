@@ -80,6 +80,7 @@
         <!-- no longer available or maintained. Ref: https://spring.io/projects/spring-data-gemfire#overview -->
         <module>spring-data-geode</module>
         <module>spring-data-jpa-annotations</module>
+        <module>spring-data-jpa-annotations-2</module>
         <module>spring-data-jpa-crud</module>
         <module>spring-data-jpa-crud-2</module>
         <module>spring-data-jpa-enterprise</module>
@@ -129,7 +130,7 @@
         <hibernate.version>6.2.0.Final</hibernate.version>
         <postgresql.version>42.5.4</postgresql.version>
         <hsqldb.version>2.7.1</hsqldb.version>
-        <testcontainers.version>1.16.3</testcontainers.version>
+        <testcontainers.version>1.19.6</testcontainers.version>
     </properties>
 
 </project>

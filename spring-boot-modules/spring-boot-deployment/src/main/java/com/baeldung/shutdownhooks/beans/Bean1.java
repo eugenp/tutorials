@@ -1,6 +1,6 @@
 package com.baeldung.shutdownhooks.beans;
 
-import javax.annotation.PreDestroy;
+import jakarta.annotation.PreDestroy;
 
 import org.springframework.stereotype.Component;
 
