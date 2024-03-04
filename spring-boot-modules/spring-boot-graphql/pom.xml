@@ -119,6 +119,7 @@
         <os-maven-plugin.version>1.6.2</os-maven-plugin.version>
         <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
         <os-maven-plugin.version>1.7.0</os-maven-plugin.version>
+        <start-class>com.baeldung.chooseapi.ChooseApiApp</start-class>
     </properties>
 
 </project>
