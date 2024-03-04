@@ -81,11 +81,10 @@
 
     <properties>
         <java.version>17</java.version>
-        <spring-boot.version>3.1.5</spring-boot.version>
         <spring-modulith-events-kafka.version>1.1.2</spring-modulith-events-kafka.version>
         <testcontainers.version>1.19.3</testcontainers.version>
         <awaitility.version>4.2.0</awaitility.version>
-        <spring-kafka.version>3.0.14</spring-kafka.version>
+        <spring-kafka.version>3.1.2</spring-kafka.version>
     </properties>
 
 </project>
