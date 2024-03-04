@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.company.ShallowCopyUnitTest" time="0.002" tests="2" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="19"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="G:\Baeldung\target\test-classes;G:\Baeldung\target\classes;C:\Users\Saad Aslam\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.3.0\junit-jupiter-api-5.3.0.jar;C:\Users\Saad Aslam\.m2\repository\org\apiguardian\apiguardian-api\1.0.0\apiguardian-api-1.0.0.jar;C:\Users\Saad Aslam\.m2\repository\org\opentest4j\opentest4j\1.1.0\opentest4j-1.1.0.jar;C:\Users\Saad Aslam\.m2\repository\org\junit\platform\junit-platform-commons\1.3.0\junit-platform-commons-1.3.0.jar;C:\Users\Saad Aslam\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.3.0\junit-jupiter-params-5.3.0.jar;C:\Users\Saad Aslam\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.3.0\junit-jupiter-engine-5.3.0.jar;C:\Users\Saad Aslam\.m2\repository\org\junit\platform\junit-platform-engine\1.3.0\junit-platform-engine-1.3.0.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="Asia/Karachi"/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="java.vm.specification.version" value="19"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-19\bin"/>
+    <property name="sun.java.command" value="C:\Users\SAADAS~1\AppData\Local\Temp\surefire4535578190409415845\surefirebooter10186387354233892234.jar C:\Users\Saad Aslam\AppData\Local\Temp\surefire4535578190409415845 2024-03-02T10-07-59_923-jvmRun1 surefire2326177351077753882tmp surefire_07489781807416567528tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="G:\Baeldung\target\test-classes;G:\Baeldung\target\classes;C:\Users\Saad Aslam\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.3.0\junit-jupiter-api-5.3.0.jar;C:\Users\Saad Aslam\.m2\repository\org\apiguardian\apiguardian-api\1.0.0\apiguardian-api-1.0.0.jar;C:\Users\Saad Aslam\.m2\repository\org\opentest4j\opentest4j\1.1.0\opentest4j-1.1.0.jar;C:\Users\Saad Aslam\.m2\repository\org\junit\platform\junit-platform-commons\1.3.0\junit-platform-commons-1.3.0.jar;C:\Users\Saad Aslam\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.3.0\junit-jupiter-params-5.3.0.jar;C:\Users\Saad Aslam\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.3.0\junit-jupiter-engine-5.3.0.jar;C:\Users\Saad Aslam\.m2\repository\org\junit\platform\junit-platform-engine\1.3.0\junit-platform-engine-1.3.0.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\Saad Aslam"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2023-01-17"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-19"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="G:\Baeldung"/>
+    <property name="java.vm.compressedOopsMode" value="32-bit"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="C:\Users\SAADAS~1\AppData\Local\Temp\surefire4535578190409415845\surefirebooter10186387354233892234.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="19.0.2+7-44"/>
+    <property name="user.name" value="Saad Aslam"/>
+    <property name="stdout.encoding" value="Cp1252"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="C:\Users\Saad Aslam\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\SAADAS~1\AppData\Local\Temp\"/>
+    <property name="java.version" value="19.0.2"/>
+    <property name="user.dir" value="G:\Baeldung"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-19\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Python311\Scripts\;C:\Python311\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files\Python310\Scripts\;C:\Program Files\Python310\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\CodeBlocks\MinGW\bin;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\Azure Data Studio\bin;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;D:\VSCode-win32-x64-1.69.1\bin;C:\Program Files\Git\cmd;C:\instantclient_21_3;C:\Program Files\PuTTY\;C:\Program Files\Java\jdk-19\bin;C:\ProgramData\chocolatey\bin;NODE_OPTIONS=--openssl-legacy-provider;C:\Program Files\nodejs\ng;C:\Program Files (x86)\Bitvise SSH Client;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\apache-maven-3.9.6-bin\apache-maven-3.9.6\bin;C:\Program Files\nodejs\;C:\Users\Saad Aslam\AppData\Local\Microsoft\WindowsApps;C:\Users\Saad Aslam\AppData\Local\Programs\Git\cmd;C:\Users\Saad Aslam\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Saad Aslam\AppData\Local\JetBrains\CLion 2023.1.5\bin;;C:\Users\Saad Aslam\AppData\Local\GitHubDesktop\bin;C:\Users\Saad Aslam\AppData\Roaming\npm;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="Cp1252"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="19.0.2+7-44"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="63.0"/>
+  </properties>
+  <testcase name="whenModifiyingShallowCopy_thenOriginalShouldChange" classname="com.company.ShallowCopyUnitTest" time="0"/>
+  <testcase name="whenCreatingShallowCopy_thenObjectsShouldNotBeSame" classname="com.company.ShallowCopyUnitTest" time="0"/>
+</testsuite>
