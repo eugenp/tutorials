@@ -21,8 +21,6 @@ import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
-import org.springframework.transaction.ReactiveTransactionManager;
-import org.springframework.transaction.reactive.TransactionalOperator;
 
 @Configuration
 @EnableMongoRepositories(basePackages = "com.baeldung.repository")
@@ -74,5 +72,4 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
     protected boolean autoIndexCreation() {
         return true;
     }
-
 }
