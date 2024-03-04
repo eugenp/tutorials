@@ -69,6 +69,8 @@ public class FindMajorityElement {
             } else {
                 count--;
             }
+
+            System.out.println("Iteration " + i + ": [candidate - " + candidate + ", count - " + count + ", element - " + nums[i] + "]");
         }
 
         count = 0;
@@ -82,7 +84,7 @@ public class FindMajorityElement {
 
     public static void main(String[] args) {
         int[] nums = { 8, 7, 7, 9, 9, 9, 7, 9, 9 };
-        int majorityElement = findMajorityElementUsingForLoop(nums);
+        int majorityElement = findMajorityElementUsingMooreVoting(nums);
 
         if (majorityElement != -1) {
             System.out.println("Majority element with maximum occurrences: " + majorityElement);

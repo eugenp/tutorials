@@ -25,6 +25,11 @@ public class FindMajorityElementUnitTest {
         int[] nums = { 2, 2, 3, 2, 4, 2, 2 };
         int result = FindMajorityElement.findMajorityElementUsingSorting(nums);
         assertEquals(2, result);
+
+        if (result != -1) {
+            int expectedIndex = nums.length % 2 == 0 ? nums.length / 2 : nums.length / 2 + 1;
+            assertEquals(2, nums[expectedIndex]);
+        }
     }
 
     @Test
