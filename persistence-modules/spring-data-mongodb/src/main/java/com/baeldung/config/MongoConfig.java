@@ -75,8 +75,4 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
         return true;
     }
 
-    @Bean
-    public TransactionalOperator transactionalOperator(ReactiveTransactionManager reactiveTransactionManager) {
-        return TransactionalOperator.create(reactiveTransactionManager);
-    }
 }
