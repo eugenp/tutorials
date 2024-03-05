@@ -32,7 +32,18 @@
             <artifactId>spring-modulith-events-kafka</artifactId>
             <version>${spring-modulith-events-kafka.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -66,8 +77,6 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>2.2.224</version>
-            <scope>test</scope>
         </dependency>
 
         <dependency>
@@ -81,8 +90,8 @@
 
     <properties>
         <java.version>17</java.version>
-        <spring-modulith-events-kafka.version>1.1.2</spring-modulith-events-kafka.version>
-        <testcontainers.version>1.19.3</testcontainers.version>
+        <spring-modulith-events-kafka.version>1.1.3</spring-modulith-events-kafka.version>
+        <testcontainers.version>1.19.6</testcontainers.version>
         <awaitility.version>4.2.0</awaitility.version>
         <spring-kafka.version>3.1.2</spring-kafka.version>
     </properties>
