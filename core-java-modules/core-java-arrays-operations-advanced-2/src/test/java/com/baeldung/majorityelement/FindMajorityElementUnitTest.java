@@ -27,7 +27,7 @@ public class FindMajorityElementUnitTest {
         assertEquals(2, result);
 
         if (result != -1) {
-            int expectedIndex = nums.length % 2 == 0 ? nums.length / 2 : nums.length / 2 + 1;
+            int expectedIndex = nums.length % 2;
             assertEquals(2, nums[expectedIndex]);
         }
     }
