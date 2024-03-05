@@ -29,7 +29,7 @@
         <module>maven-custom-plugin</module>
 <!--        <module>maven-exec-plugin</module>--> <!-- failing after upgrading to jdk17-->
         <module>maven-generate-war</module>
-<!--        <module>maven-integration-test</module>--> <!-- failing after upgrading to jdk17-->
+        <module>maven-integration-test</module>
         <module>maven-multi-source</module>
         <module>maven-parent-pom-resolution</module>
         <module>maven-plugins</module>
