@@ -70,6 +70,11 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.batch</groupId>
+            <artifactId>spring-batch-core</artifactId>
+            <version>${spring-batch-core.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -82,6 +87,7 @@
         <jettison.version>1.5.3</jettison.version>
         <start-class>com.baeldung.batchtesting.SpringBatchApplication</start-class>
         <spring-oxm.version>6.1.4</spring-oxm.version>
+        <spring-batch-core.version>5.1.1</spring-batch-core.version>
     </properties>
 
 </project>
