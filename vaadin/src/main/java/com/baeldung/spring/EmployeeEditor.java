@@ -1,5 +1,7 @@
-package com.baeldung;
+package com.baeldung.spring;
 
+import com.baeldung.data.Employee;
+import com.baeldung.data.EmployeeRepository;
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.KeyNotifier;
 import com.vaadin.flow.component.button.Button;
