@@ -36,6 +36,7 @@
         <dependency>
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
+            <version>${spring-kafka.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.kafka</groupId>
@@ -94,6 +95,7 @@
         <spring-boot-starter-actuator.version>3.0.5</spring-boot-starter-actuator.version>
         <micrometer-registry-prometheus.version>1.10.5</micrometer-registry-prometheus.version>
         <testcontainers-kafka.version>1.19.3</testcontainers-kafka.version>
+        <spring-kafka.version>3.1.2</spring-kafka.version>
     </properties>
 
 </project>

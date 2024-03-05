@@ -75,7 +75,12 @@
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>mockwebserver</artifactId>
-            <version>4.12.0</version> <!-- this can be removed when we migrate spring-boot-dependencies to the latest version -->
+            <version>${mockwebserver.version}</version> <!-- this can be removed when we migrate spring-boot-dependencies to the latest version -->
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-stdlib</artifactId>
+            <version>${kotlin-stdlib.version}</version>
         </dependency>
     </dependencies>
 
@@ -87,5 +92,10 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <mockwebserver.version>5.0.0-alpha.12</mockwebserver.version>
+        <kotlin-stdlib.version>2.0.0-Beta4</kotlin-stdlib.version>
+    </properties>
 
 </project>
