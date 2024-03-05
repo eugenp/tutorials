@@ -22,14 +22,14 @@ public class JsonNodeToArrayNodeConverterUnitTest {
         int count = 0;
         String json = "{\"objects\": [\"One\", \"Two\", \"Three\"]}";
         final JsonNode arrayNode = new ObjectMapper().readTree(json).get("objects");
+        assertNotNull(arrayNode, "The 'objects' array should not be null");
+        assertTrue(arrayNode.isArray(), "The 'objects' should be an array");
         if (arrayNode.isArray()) {
             for (final JsonNode objNode : arrayNode) {
                 assertNotNull(objNode, "Array element should not be null");
                 count++;
             }
         }
-        assertNotNull(arrayNode, "The 'objects' array should not be null");
-        assertTrue(arrayNode.isArray(), "The 'objects' should be an array");
         assertEquals(3, count, "The 'objects' array should have 3 elements");
     }
 
