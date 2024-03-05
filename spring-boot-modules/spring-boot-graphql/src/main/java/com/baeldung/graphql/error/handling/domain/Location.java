@@ -20,7 +20,6 @@ import java.util.List;
 public class Location {
     @Id
     private String zipcode;
-
     private String city;
     private String state;
 
