@@ -6,11 +6,14 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.ReactiveMongoOperations;
+import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.baeldung.config.MongoReactiveConfig;
 import com.baeldung.model.User;
+import org.springframework.transaction.reactive.TransactionalOperator;
+import reactor.core.publisher.Mono;
 
 /**
  * 
@@ -24,6 +27,12 @@ public class MongoTransactionReactiveLiveTest {
 
     @Autowired
     private ReactiveMongoOperations reactiveOps;
+
+    @Autowired
+    private TransactionalOperator transactionalOperator;
+
+    @Autowired
+    private ReactiveMongoTemplate mongoTemplate;
 
     @Before
     public void testSetup() {
@@ -45,9 +54,11 @@ public class MongoTransactionReactiveLiveTest {
     public void whenPerformTransaction_thenSuccess() {
         User user1 = new User("Jane", 23);
         User user2 = new User("John", 34);
-        reactiveOps.inTransaction()
-            .execute(action -> action.insert(user1)
-                .then(action.insert(user2)));
+
+        Mono<User> saveEntity1 = mongoTemplate.save(user1);
+        Mono<User> saveEntity2 = mongoTemplate.save(user2);
+
+        saveEntity1.then(saveEntity2).then().as(transactionalOperator::transactional);
     }
     
 }

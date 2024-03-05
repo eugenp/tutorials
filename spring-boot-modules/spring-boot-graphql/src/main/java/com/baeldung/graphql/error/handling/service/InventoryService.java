@@ -1,5 +1,14 @@
 package com.baeldung.graphql.error.handling.service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+
 import com.baeldung.graphql.error.handling.domain.Location;
 import com.baeldung.graphql.error.handling.domain.Vehicle;
 import com.baeldung.graphql.error.handling.exception.InvalidInputException;
@@ -7,11 +16,8 @@ import com.baeldung.graphql.error.handling.exception.VehicleAlreadyPresentExcept
 import com.baeldung.graphql.error.handling.exception.VehicleNotFoundException;
 import com.baeldung.graphql.error.handling.repository.InventoryRepository;
 import com.baeldung.graphql.error.handling.repository.LocationRepository;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
-import java.util.*;
+import jakarta.transaction.Transactional;
 
 @Service
 public class InventoryService {
@@ -49,7 +55,7 @@ public class InventoryService {
     }
 
     public List<Vehicle> searchByLocation(String zipcode) {
-        if (StringUtils.isEmpty(zipcode) || zipcode.length() != 5) {
+        if (StringUtils.hasText(zipcode) || zipcode.length() != 5) {
             throw new InvalidInputException("Invalid zipcode " + zipcode + " provided.");
         }
         return this.locationRepository.findById(zipcode)

@@ -35,9 +35,9 @@ public class VehicleController {
     }
 
     @MutationMapping
-    public Vehicle addVehicle(@Argument String vin, @Argument Integer year,
-      @Argument String make, @Argument String model, @Argument String trim,
-      @Argument Location location) {
+    public Vehicle addVehicle(@Argument("vin") String vin, @Argument("year") Integer year,
+      @Argument("make") String make, @Argument("model") String model, @Argument("trim") String trim,
+      @Argument("location") Location location) {
         return this.inventoryService.addVehicle(vin, year, make, model, trim, location);
     }
 }

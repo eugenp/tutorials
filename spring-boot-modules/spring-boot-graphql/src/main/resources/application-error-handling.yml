@@ -10,8 +10,6 @@ spring:
     driverClassName: "org.h2.Driver"
     username: sa
     password:
-    initialization-mode: always
-    platform: h2
   jpa:
     show-sql: true
     properties:
@@ -19,6 +17,11 @@ spring:
         dialect: org.hibernate.dialect.H2Dialect
         ddl-auto: none
         globally_quoted_identifiers: true
+    defer-datasource-initialization: true
 
   h2:
     console.enabled: true
+  sql:
+    init:
+      platform: h2
+      mode: always

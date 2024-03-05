@@ -19,6 +19,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -50,7 +51,7 @@ public class ServletResourceServerApplication {
         SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
             http.oauth2ResourceServer(resourceServer -> resourceServer.jwt(withDefaults()));
             http.sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
-            http.csrf(csrf -> csrf.disable());
+            http.csrf(AbstractHttpConfigurer::disable);
             http.exceptionHandling(eh -> eh.authenticationEntryPoint((request, response, authException) -> {
                 response.addHeader(HttpHeaders.WWW_AUTHENTICATE, "Bearer realm=\"Restricted Content\"");
                 response.sendError(HttpStatus.UNAUTHORIZED.value(), HttpStatus.UNAUTHORIZED.getReasonPhrase());

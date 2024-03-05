@@ -27,7 +27,6 @@
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
                     <compilerArgs>
-                        <arg>--add-opens=java.base/java.lang.foreign=ALL-UNNAMED</arg>
                         <arg>--enable-preview</arg>
                     </compilerArgs>
                 </configuration>
