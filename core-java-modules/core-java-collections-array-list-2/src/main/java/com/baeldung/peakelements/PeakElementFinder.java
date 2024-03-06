@@ -14,7 +14,7 @@ public class PeakElementFinder {
 
         for (int i = 0; i < n; i++) {
             if (isPeak(arr, i, n)) {
-                peaks.add(i);
+                peaks.add(arr[i]);
             }
 
             while (i < n - 1 && arr[i] == arr[i + 1]) {
