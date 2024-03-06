@@ -14,6 +14,8 @@ public class PeakElementFinderUnitTest {
         int[] array = {5, 8, 7, 6, 12};
         List<Integer> peaks = finder.findPeakElements(array);
         assertEquals(2, peaks.size());
+        assertTrue(peaks.contains(8));
+        assertTrue(peaks.contains(12));
     }
 
     @Test
@@ -22,6 +24,8 @@ public class PeakElementFinderUnitTest {
         int[] array = {5, 2, 1, 3, 4};
         List<Integer> peaks = finder.findPeakElements(array);
         assertEquals(2, peaks.size());
+        assertTrue(peaks.contains(5));
+        assertTrue(peaks.contains(4));
     }
 
     @Test
@@ -30,5 +34,6 @@ public class PeakElementFinderUnitTest {
         int[] array = {1, 2, 2, 2, 3, 4, 5};
         List<Integer> peaks = finder.findPeakElements(array);
         assertEquals(1, peaks.size());
+        assertTrue(peaks.contains(5));
     }
 }
