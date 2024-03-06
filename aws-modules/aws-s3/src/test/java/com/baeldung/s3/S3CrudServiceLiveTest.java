@@ -21,7 +21,7 @@ import software.amazon.awssdk.utils.AttributeMap;
 // This live test needs a running Docker instance so that a S3Mock Container can be started
 
 @Testcontainers
-public class S3CrudServiceIntegrationTest {
+public class S3CrudServiceLiveTest {
 
     private static final String TEST_BUCKET_NAME = "test-bucket";
 
