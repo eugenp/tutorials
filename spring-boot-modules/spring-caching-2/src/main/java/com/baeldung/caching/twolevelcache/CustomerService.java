@@ -16,11 +16,11 @@ public class CustomerService {
     }
 
     @Caching(cacheable = {
-      @Cacheable(cacheNames = "customerCache", cacheManager = "caffeineCacheManager"),
-      @Cacheable(cacheNames = "customerCache", cacheManager = "redisCacheManager")
+        @Cacheable(cacheNames = "customerCache", cacheManager = "caffeineCacheManager"),
+        @Cacheable(cacheNames = "customerCache", cacheManager = "redisCacheManager")
     })
     public Customer getCustomer(String id) {
         return customerRepository.findById(id)
-          .orElseThrow(RuntimeException::new);
+            .orElseThrow(RuntimeException::new);
     }
 }

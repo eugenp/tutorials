@@ -1,6 +1,7 @@
 package com.baeldung.caching.twolevelcache;
 
 import com.github.benmanes.caffeine.cache.Caffeine;
+
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.AnnotationCacheOperationSource;
 import org.springframework.cache.annotation.EnableCaching;
@@ -35,26 +36,25 @@ public class CacheConfig {
     @Bean
     public CaffeineCache caffeineCacheConfig() {
         return new CaffeineCache("customerCache", Caffeine.newBuilder()
-          .expireAfterWrite(Duration.ofSeconds(3))
-          .initialCapacity(1)
-          .maximumSize(2000)
-          .build());
+            .expireAfterWrite(Duration.ofSeconds(3))
+            .initialCapacity(1)
+            .maximumSize(2000)
+            .build());
     }
 
     @Bean
     public CacheManager redisCacheManager(RedisConnectionFactory connectionFactory, RedisCacheConfiguration redisCacheConfiguration) {
-        return RedisCacheManager.RedisCacheManagerBuilder
-          .fromConnectionFactory(connectionFactory)
-          .withCacheConfiguration("customerCache", redisCacheConfiguration)
-          .build();
+        return RedisCacheManager.RedisCacheManagerBuilder.fromConnectionFactory(connectionFactory)
+            .withCacheConfiguration("customerCache", redisCacheConfiguration)
+            .build();
     }
 
     @Bean
     public RedisCacheConfiguration cacheConfiguration() {
         return RedisCacheConfiguration.defaultCacheConfig()
-          .entryTtl(Duration.ofMinutes(5))
-          .disableCachingNullValues()
-          .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(new GenericJackson2JsonRedisSerializer()));
+            .entryTtl(Duration.ofMinutes(5))
+            .disableCachingNullValues()
+            .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(new GenericJackson2JsonRedisSerializer()));
     }
 
     @Bean
