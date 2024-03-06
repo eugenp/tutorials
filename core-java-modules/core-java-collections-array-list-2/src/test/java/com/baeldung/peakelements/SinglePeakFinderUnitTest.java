@@ -21,4 +21,12 @@ public class SinglePeakFinderUnitTest {
         OptionalInt peak = SinglePeakFinder.findSinglePeak(arr);
         assertTrue(peak.isEmpty());
     }
+
+    @Test
+    void findSinglePeak_givenEqualElementArray_thenReturnsCorrectPeak() {
+        int[] arr = {-2, -2, -2, -2, -2};
+        OptionalInt peak = SinglePeakFinder.findSinglePeak(arr);
+        assertTrue(peak.isPresent());
+        assertEquals(-2, peak.getAsInt());
+    }
 }
