@@ -8,9 +8,6 @@
     <artifactId>parent-modules</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <name>parent-modules</name>
-    <modules>
-        <module>libraries-data-io-2</module>
-    </modules>
 
     <packaging>pom</packaging>
 
@@ -402,8 +399,6 @@
 
             <modules>
                 <module>spring-4</module>
-                <module>spring-6</module>
-
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
 
@@ -803,6 +798,7 @@
                 <module>spring-5-webflux-2</module>
                 <module>spring-5-webflux</module>
                 <module>spring-5</module>
+                <module>spring-6</module>
                 <module>spring-6-rsocket</module>
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
@@ -876,6 +872,7 @@
                 <module>xml-2</module>
                 <module>xml</module>
                 <module>xstream</module>
+                <module>libraries-data-io-2</module>
             </modules>
 
             <properties>
@@ -1048,6 +1045,7 @@
                 <module>spring-5-webflux-2</module>
                 <module>spring-5-webflux</module>
                 <module>spring-5</module>
+                <module>spring-6</module>
                 <module>spring-6-rsocket</module>
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
@@ -1121,6 +1119,7 @@
                 <module>xml-2</module>
                 <module>xml</module>
                 <module>xstream</module>
+                <module>libraries-data-io-2</module>
             </modules>
 
             <properties>

@@ -19,6 +19,7 @@
     </modules>
 
     <!--comment section below to provoke version collision in project-collision module -->
+    <!--Don't Update the version here as it shows the collision when compiling with maven.-->
     <dependencyManagement>
         <dependencies>
             <dependency>
