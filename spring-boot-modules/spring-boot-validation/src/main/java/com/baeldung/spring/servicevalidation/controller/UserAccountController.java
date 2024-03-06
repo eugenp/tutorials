@@ -1,6 +1,9 @@
 package com.baeldung.spring.servicevalidation.controller;
 
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,8 +18,12 @@ public class UserAccountController {
     private UserAccountService service;
 
     @PostMapping("/addUserAccount")
-    public Object addUserAccount(@RequestBody UserAccount userAccount) {
-        return service.addUserAccount(userAccount);
+    public ResponseEntity<?> addUserAccount(@RequestBody UserAccount userAccount) {
+        try {
+            return ResponseEntity.ok(service.addUserAccount(userAccount));
+        } catch(ConstraintViolationException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
 }

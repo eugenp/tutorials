@@ -92,7 +92,7 @@
         <failOnMissingWebXml>false</failOnMissingWebXml>
         <javaee-web-api.version>8.0.1</javaee-web-api.version>
         <maven.war-plugin.version>3.3.1</maven.war-plugin.version>
-        <maven.compiler-plugin.version>3.8.1</maven.compiler-plugin.version>
+        <maven.compiler-plugin.version>3.12.1</maven.compiler-plugin.version>
     </properties>
 
 </project>

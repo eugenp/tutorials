@@ -9,10 +9,9 @@
     <description>Testcontainer Improvements in Spring Boot 3</description>
 
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-3</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-3</relativePath>
+        <groupId>com.baeldung.spring-boot-modules</groupId>
+        <artifactId>spring-boot-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <dependencies>
@@ -96,6 +95,7 @@
         <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
         <testcontainers.version>1.18.3</testcontainers.version>
         <rest-assured.version>5.3.1</rest-assured.version>
+        <java.version>17</java.version>
     </properties>
 
 </project>

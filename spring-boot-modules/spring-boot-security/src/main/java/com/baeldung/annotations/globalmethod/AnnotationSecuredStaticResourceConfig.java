@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
-
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -14,6 +14,6 @@ public class AnnotationSecuredStaticResourceConfig {
     public WebSecurityCustomizer ignoreResources() {
         return (webSecurity) -> webSecurity
           .ignoring()
-          .antMatchers("/hello/*");
+          .requestMatchers(new AntPathRequestMatcher("/hello/*"));
     }
 }

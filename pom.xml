@@ -399,8 +399,6 @@
 
             <modules>
                 <module>spring-4</module>
-                <module>spring-6</module>
-
                 <module>spring-cloud-modules</module>
                 <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
 
@@ -452,6 +450,7 @@
                 <module>jhipster-modules</module>
                 <module>spring-cloud-modules/spring-cloud-azure</module>
                 <module>web-modules/restx</module>
+                <module>libraries-testing</module>
             </modules>
         </profile>
 
@@ -760,7 +759,6 @@
                 <module>libraries-server-2</module>
                 <module>libraries-server</module>
                 <module>libraries-stream</module>
-                <module>libraries-testing</module>
                 <module>libraries-testing-2</module>
                 <module>libraries-transform</module>
                 <module>libraries</module> <!-- very long running -->
@@ -800,6 +798,7 @@
                 <module>spring-5-webflux-2</module>
                 <module>spring-5-webflux</module>
                 <module>spring-5</module>
+                <module>spring-6</module>
                 <module>spring-6-rsocket</module>
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
@@ -873,6 +872,7 @@
                 <module>xml-2</module>
                 <module>xml</module>
                 <module>xstream</module>
+                <module>libraries-data-io-2</module>
             </modules>
 
             <properties>
@@ -1045,6 +1045,7 @@
                 <module>spring-5-webflux-2</module>
                 <module>spring-5-webflux</module>
                 <module>spring-5</module>
+                <module>spring-6</module>
                 <module>spring-6-rsocket</module>
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
@@ -1118,6 +1119,7 @@
                 <module>xml-2</module>
                 <module>xml</module>
                 <module>xstream</module>
+                <module>libraries-data-io-2</module>
             </modules>
 
             <properties>
@@ -1184,9 +1186,9 @@
         <jmh-generator.version>1.37</jmh-generator.version>
         <maven-failsafe-plugin.version>3.1.2</maven-failsafe-plugin.version>
         <commons-collections4.version>4.4</commons-collections4.version>
-        <commons-io.version>2.13.0</commons-io.version>
+        <commons-io.version>2.15.1</commons-io.version>
         <commons-lang3.version>3.14.0</commons-lang3.version>
-        <commons-cli.version>1.5.0</commons-cli.version>
+        <commons-cli.version>1.6.0</commons-cli.version>
         <maven-war-plugin.version>3.4.0</maven-war-plugin.version>
         <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
         <jstl-api.version>1.2</jstl-api.version>

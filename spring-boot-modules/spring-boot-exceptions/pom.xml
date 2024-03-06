@@ -32,4 +32,8 @@
         </resources>
     </build>
 
+    <properties>
+        <start-class>com.baeldung.applicationcontextexception.MainEntryPoint</start-class>
+    </properties>
+
 </project>

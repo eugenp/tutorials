@@ -2,7 +2,7 @@ package com.baeldung.annotations.globalmethod;
 
 import org.springframework.stereotype.Component;
 
-import javax.annotation.security.RolesAllowed;
+import jakarta.annotation.security.RolesAllowed;
 
 @Component
 public class DifferentClass {
