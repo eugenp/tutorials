@@ -2,20 +2,15 @@ package com.baeldung.usinggzipInputstream;
 
 import java.io.*;
 import java.util.Objects;
+import java.util.function.Consumer;
 import java.util.stream.Stream;
 import java.util.zip.GZIPInputStream;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         String filePath = Objects.requireNonNull(Main.class.getClassLoader().getResource("myFile.gz")).getFile();
-        try {
-            try (Stream<String> lines = readGZipFile(filePath)) {
-                lines.forEach(System.out::println);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        processGZipFile(filePath, lines -> lines.forEach(System.out::println));
     }
 
     public static Stream<String> readGZipFile(String filePath) throws IOException {
@@ -36,4 +31,9 @@ public class Main {
         return lines;
     }
 
+    public static void processGZipFile(String filePath, Consumer<Stream<String>> lineProcessor) throws IOException {
+        try (Stream<String> lines = readGZipFile(filePath)) {
+            lineProcessor.accept(lines);
+        }
+    }
 }
