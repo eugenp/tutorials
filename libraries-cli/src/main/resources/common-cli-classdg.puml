@@ -51,10 +51,10 @@ OptionGroup -down-> Option:uses
 CommandLineParser -up-> Options:uses
 DefaultParser -up-|> CommandLineParser:implements
 
-ParseException -up-|> AlreadySelectedException:implements
-ParseException -up-|> MissingOptionException:implements
-ParseException -down-|> MissingArgumentException:implements
-ParseException -down-|> UnrecognizedOptionException:implements
+ParseException <|-up- AlreadySelectedException:implements
+ParseException <|-up- MissingOptionException:implements
+ParseException <|-down- MissingArgumentException:implements
+ParseException <|-down- UnrecognizedOptionException:implements
 
 CommandLineParser -left-> ParseException:throws
 CommandLineParser -right-> CommandLine:creates
