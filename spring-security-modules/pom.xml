@@ -23,7 +23,7 @@
         <module>spring-security-core-2</module>
         <!--        <module>spring-security-ldap</module>-->
         <module>spring-security-legacy-oidc</module>
-        <module>spring-security-oauth2</module>
+        <module>spring-security-oauth2</module> <!-- This modules wasn't updated to spring boot 3 because of spring-oauth2 not supporting Jakarta -->
         <module>spring-security-oauth2-sso</module>
         <module>spring-security-oidc</module>
         <module>spring-security-okta</module>
