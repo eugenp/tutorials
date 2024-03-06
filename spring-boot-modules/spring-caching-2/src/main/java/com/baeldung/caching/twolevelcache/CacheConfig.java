@@ -58,9 +58,9 @@ public class CacheConfig {
     }
 
     @Bean
-    public CacheInterceptor cacheInterceptor(CacheManager caffeineCacheManager) {
+    public CacheInterceptor cacheInterceptor(CacheManager caffeineCacheManager, CacheOperationSource cacheOperationSource) {
         CacheInterceptor interceptor = new CustomerCacheInterceptor(caffeineCacheManager);
-        interceptor.setCacheOperationSources(cacheOperationSource());
+        interceptor.setCacheOperationSources(cacheOperationSource);
         return interceptor;
     }
 
