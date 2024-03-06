@@ -26,40 +26,40 @@ public class CacheConfig {
 
     @Bean
     @Primary
-    public CacheManager caffeineCacheManager() {
+    public CacheManager caffeineCacheManager(CaffeineCache caffeineCache) {
         SimpleCacheManager manager = new SimpleCacheManager();
-        manager.setCaches(Arrays.asList(caffeineCacheConfig()));
+        manager.setCaches(Arrays.asList(caffeineCache));
         return manager;
     }
 
     @Bean
     public CaffeineCache caffeineCacheConfig() {
         return new CaffeineCache("customerCache", Caffeine.newBuilder()
-                .expireAfterWrite(Duration.ofSeconds(3))
-                .initialCapacity(1)
-                .maximumSize(2000)
-                .build());
+          .expireAfterWrite(Duration.ofSeconds(3))
+          .initialCapacity(1)
+          .maximumSize(2000)
+          .build());
     }
 
     @Bean
-    public CacheManager redisCacheManager(RedisConnectionFactory connectionFactory) {
+    public CacheManager redisCacheManager(RedisConnectionFactory connectionFactory, RedisCacheConfiguration redisCacheConfiguration) {
         return RedisCacheManager.RedisCacheManagerBuilder
-                .fromConnectionFactory(connectionFactory)
-                .withCacheConfiguration("customerCache", cacheConfiguration())
-                .build();
+          .fromConnectionFactory(connectionFactory)
+          .withCacheConfiguration("customerCache", redisCacheConfiguration)
+          .build();
     }
 
     @Bean
     public RedisCacheConfiguration cacheConfiguration() {
         return RedisCacheConfiguration.defaultCacheConfig()
-                .entryTtl(Duration.ofMinutes(5))
-                .disableCachingNullValues()
-                .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(new GenericJackson2JsonRedisSerializer()));
+          .entryTtl(Duration.ofMinutes(5))
+          .disableCachingNullValues()
+          .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(new GenericJackson2JsonRedisSerializer()));
     }
 
     @Bean
-    public CacheInterceptor cacheInterceptor() {
-        CacheInterceptor interceptor = new CustomerCacheInterceptor(caffeineCacheManager());
+    public CacheInterceptor cacheInterceptor(CacheManager caffeineCacheManager) {
+        CacheInterceptor interceptor = new CustomerCacheInterceptor(caffeineCacheManager);
         interceptor.setCacheOperationSources(cacheOperationSource());
         return interceptor;
     }

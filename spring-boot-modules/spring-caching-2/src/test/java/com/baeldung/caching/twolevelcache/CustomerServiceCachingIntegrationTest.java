@@ -44,23 +44,22 @@ class CustomerServiceCachingIntegrationTest {
     private CacheManager caffeineCacheManager;
 
     @Test
-    void givenCustomerIsPresentInDB_whenGetCustomerById_thenCustomerReturnedFromDBAndCached() {
+    void givenCustomerIsPresent_whenGetCustomerCalled_thenReturnCustomerAndCacheIt() {
         String CUSTOMER_ID = "100";
         Customer customer = new Customer(CUSTOMER_ID, "test", "test@mail.com");
 
-        given(customerRepository.findById(CUSTOMER_ID))
-                .willReturn(Optional.of(customer));
+        given(customerRepository.findById(CUSTOMER_ID)).willReturn(Optional.of(customer));
 
         Customer customerCacheMiss = customerService.getCustomer(CUSTOMER_ID);
 
         assertThat(customerCacheMiss).isEqualTo(customer);
         verify(customerRepository, times(1)).findById(CUSTOMER_ID);
-        assertThat(customerFromRedisCache(CUSTOMER_ID)).isEqualTo(customer);
         assertThat(customerFromCaffeineCache(CUSTOMER_ID)).isEqualTo(customer);
+        assertThat(customerFromRedisCache(CUSTOMER_ID)).isEqualTo(customer);
     }
 
     @Test
-    void givenCustomerIsPresentInDB_whenGetCustomerByIdIsCalledTwice_thenCustomerReturnedFromDBAndCached() {
+    void givenCustomerIsPresent_whenGetCustomerCalledTwice_thenReturnCustomerAndCacheIt() {
         String CUSTOMER_ID = "101";
         Customer customer = new Customer(CUSTOMER_ID, "test", "test@mail.com");
         given(customerRepository.findById(CUSTOMER_ID)).willReturn(Optional.of(customer));
@@ -71,16 +70,15 @@ class CustomerServiceCachingIntegrationTest {
         assertThat(customerCacheMiss).isEqualTo(customer);
         assertThat(customerCacheHit).isEqualTo(customer);
         verify(customerRepository, times(1)).findById(CUSTOMER_ID);
-        assertThat(customerFromRedisCache(CUSTOMER_ID)).isEqualTo(customer);
         assertThat(customerFromCaffeineCache(CUSTOMER_ID)).isEqualTo(customer);
+        assertThat(customerFromRedisCache(CUSTOMER_ID)).isEqualTo(customer);
     }
 
     @Test
-    void givenCustomerIsPresentInDB_whenGetCustomerByIdIsCalledTwice_AndFirstCacheExpires_thenCustomerReturnedFromDBAndCached() throws InterruptedException {
+    void givenCustomerIsPresent_whenGetCustomerCalledTwiceAndFirstCacheExpired_thenReturnCustomerAndCacheIt() throws InterruptedException {
         String CUSTOMER_ID = "102";
         Customer customer = new Customer(CUSTOMER_ID, "test", "test@mail.com");
-        given(customerRepository.findById(CUSTOMER_ID))
-                .willReturn(Optional.of(customer));
+        given(customerRepository.findById(CUSTOMER_ID)).willReturn(Optional.of(customer));
 
         Customer customerCacheMiss = customerService.getCustomer(CUSTOMER_ID);
         TimeUnit.SECONDS.sleep(3);
@@ -90,18 +88,18 @@ class CustomerServiceCachingIntegrationTest {
         verify(customerRepository, times(1)).findById(CUSTOMER_ID);
         assertThat(customerCacheMiss).isEqualTo(customer);
         assertThat(customerCacheHit).isEqualTo(customer);
-        assertThat(customerFromRedisCache(CUSTOMER_ID)).isEqualTo(customer);
         assertThat(customerFromCaffeineCache(CUSTOMER_ID)).isEqualTo(customer);
+        assertThat(customerFromRedisCache(CUSTOMER_ID)).isEqualTo(customer);
     }
 
     private Object customerFromRedisCache(String key) {
         return redisCacheManager.getCache("customerCache").get(key) != null ?
-                redisCacheManager.getCache("customerCache").get(key).get() : null;
+          redisCacheManager.getCache("customerCache").get(key).get() : null;
     }
 
     private Object customerFromCaffeineCache(String key) {
         return caffeineCacheManager.getCache("customerCache").get(key) != null ?
-                caffeineCacheManager.getCache("customerCache").get(key).get() : null;
+          caffeineCacheManager.getCache("customerCache").get(key).get() : null;
     }
 
     @TestConfiguration
