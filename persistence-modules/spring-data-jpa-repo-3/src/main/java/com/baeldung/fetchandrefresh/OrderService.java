@@ -18,14 +18,12 @@ import jakarta.persistence.criteria.Root;
 
 @Service
 public class OrderService {
+
     @Autowired
     private EntityManager entityManager;
 
     @Autowired
     private OrderRepository orderRepository;
-
-    @Autowired
-    private OrderItemRepository orderItemRepository;
 
     public List<Order> findOrdersByCustomerAndDateRangeUsingCriteriaAPI(String customerName, LocalDate startDate, LocalDate endDate) {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
@@ -37,7 +35,8 @@ public class OrderService {
 
         criteriaQuery.where(customerPredicate, dateRangePredicate);
 
-        return entityManager.createQuery(criteriaQuery).getResultList();
+        return entityManager.createQuery(criteriaQuery)
+            .getResultList();
     }
 
     public void updateOrderName(long orderId, String newName) {
