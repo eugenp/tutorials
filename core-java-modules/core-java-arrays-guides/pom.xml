@@ -7,10 +7,6 @@
     <name>core-java-arrays-guides</name>
     <packaging>jar</packaging>
 
-    <properties>
-        <system-stubs.jupiter.version>2.1.5</system-stubs.jupiter.version>
-    </properties>
-
     <parent>
         <artifactId>core-java-modules</artifactId>
         <groupId>com.baeldung.core-java-modules</groupId>
@@ -34,7 +30,10 @@
             <version>${system-stubs.jupiter.version}</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
+
+    <properties>
+        <system-stubs.jupiter.version>2.1.5</system-stubs.jupiter.version>
+    </properties>
 
 </project>

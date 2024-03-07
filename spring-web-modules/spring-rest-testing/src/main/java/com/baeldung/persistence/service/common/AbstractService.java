@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import com.baeldung.persistence.IOperations;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -40,6 +41,6 @@ public abstract class AbstractService<T extends Serializable> implements IOperat
         return getDao().save(entity);
     }
 
-    protected abstract PagingAndSortingRepository<T, Long> getDao();
+    protected abstract JpaRepository<T, Long> getDao();
 
 }

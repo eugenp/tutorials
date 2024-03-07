@@ -17,7 +17,7 @@ spring:
             - openid
             - email
             - profile
-                    
+
 # Group mapping
 baeldung:
   jwt:

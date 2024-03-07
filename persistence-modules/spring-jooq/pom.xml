@@ -194,6 +194,7 @@
         <lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
         <sql-maven-plugin.version>1.5</sql-maven-plugin.version>
         <properties-maven-plugin.version>1.0.0</properties-maven-plugin.version>
+        <h2.version>2.2.224</h2.version>
     </properties>
 
 </project>

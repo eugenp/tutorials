@@ -4,10 +4,10 @@ import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class CalculatorUnitTest {
+class CalculatorUnitTest {
 
     @Test
-    public void whenDividerIsZero_thenDivideByZeroExceptionIsThrown() {
+    void whenDividerIsZero_thenDivideByZeroExceptionIsThrown() {
         Calculator calculator = new Calculator();
 
         assertThrows(DivideByZeroException.class,

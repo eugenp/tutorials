@@ -58,16 +58,16 @@ abstract public class BaseNPlusOneIntegrationTest<T> extends ParametrizationAwar
 
     @Test
     void givenCorrectConfigurationWhenStartContextThenRepositoryIsPresent() {
-        assertThat(getService()).isNotNull();
+        assertThat(getUserService()).isNotNull();
     }
 
     @Test
     void givenCorrectDatabaseWhenStartThenDatabaseIsNotEmpty() {
-        List<?> result = getService().findAll();
+        List<?> result = getUserService().findAll();
         assertThat(result).isNotEmpty();
     }
 
-    protected Service<T> getService() {
+    protected Service<T> getUserService() {
         Class<T> parametrization = getParametrizationClass().get(0);
         return (Service<T>) serviceMap.get(parametrization);
     }

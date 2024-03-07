@@ -2,9 +2,9 @@ package com.baeldung.spring.data.persistence.customrepository.repository;
 
 import com.baeldung.spring.data.persistence.customrepository.model.User;
 
-import javax.annotation.PostConstruct;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import jakarta.annotation.PostConstruct;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import java.util.Objects;
 
 public class CustomUserRepositoryImpl implements CustomUserRepository {

@@ -72,7 +72,7 @@ public class ApplicationUnitTest {
 
     private static long getBalance(InventoryRepository inventoryRepository, String productId) throws Exception {
 
-        return inventoryRepository.findOne(productId)
+        return inventoryRepository.getReferenceById(productId)
             .getBalance();
 
     }

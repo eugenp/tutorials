@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.baeldung.persistence.deletion.config.PersistenceJPAConfigDeletion;
 import com.baeldung.persistence.deletion.model.Bar;
 import com.baeldung.persistence.deletion.model.Baz;
-import com.baeldung.persistence.deletion.model.Foo;
+import com.baeldung.persistence.deletion.model.Fooo;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -41,29 +41,29 @@ public class DeletionIntegrationTest {
     @Test
     @Transactional
     public final void givenEntityIsRemoved_thenItIsNotInDB() {
-        Foo foo = new Foo("foo");
-        entityManager.persist(foo);
+        Fooo fooo = new Fooo("foo");
+        entityManager.persist(fooo);
         flushAndClear();
 
-        foo = entityManager.find(Foo.class, foo.getId());
-        assertThat(foo, notNullValue());
+        fooo = entityManager.find(Fooo.class, fooo.getId());
+        assertThat(fooo, notNullValue());
 
-        entityManager.remove(foo);
+        entityManager.remove(fooo);
         flushAndClear();
 
-        assertThat(entityManager.find(Foo.class, foo.getId()), nullValue());
+        assertThat(entityManager.find(Fooo.class, fooo.getId()), nullValue());
     }
 
     @Test
     @Transactional
     public final void givenEntityIsRemovedAndReferencedByAnotherEntity_thenItIsNotRemoved() {
         Bar bar = new Bar("bar");
-        Foo foo = new Foo("foo");
-        foo.setBar(bar);
-        entityManager.persist(foo);
+        Fooo fooo = new Fooo("foo");
+        fooo.setBar(bar);
+        entityManager.persist(fooo);
         flushAndClear();
 
-        foo = entityManager.find(Foo.class, foo.getId());
+        fooo = entityManager.find(Fooo.class, fooo.getId());
         bar = entityManager.find(Bar.class, bar.getId());
         entityManager.remove(bar);
         flushAndClear();
@@ -71,8 +71,8 @@ public class DeletionIntegrationTest {
         bar = entityManager.find(Bar.class, bar.getId());
         assertThat(bar, notNullValue());
 
-        foo = entityManager.find(Foo.class, foo.getId());
-        foo.setBar(null);
+        fooo = entityManager.find(Fooo.class, fooo.getId());
+        fooo.setBar(null);
         entityManager.remove(bar);
         flushAndClear();
 
@@ -83,16 +83,16 @@ public class DeletionIntegrationTest {
     @Transactional
     public final void givenEntityIsRemoved_thenRemovalIsCascaded() {
         Bar bar = new Bar("bar");
-        Foo foo = new Foo("foo");
-        foo.setBar(bar);
-        entityManager.persist(foo);
+        Fooo fooo = new Fooo("foo");
+        fooo.setBar(bar);
+        entityManager.persist(fooo);
         flushAndClear();
 
-        foo = entityManager.find(Foo.class, foo.getId());
-        entityManager.remove(foo);
+        fooo = entityManager.find(Fooo.class, fooo.getId());
+        entityManager.remove(fooo);
         flushAndClear();
 
-        assertThat(entityManager.find(Foo.class, foo.getId()), nullValue());
+        assertThat(entityManager.find(Fooo.class, fooo.getId()), nullValue());
         assertThat(entityManager.find(Bar.class, bar.getId()), nullValue());
     }
 
@@ -116,39 +116,39 @@ public class DeletionIntegrationTest {
     @Test
     @Transactional
     public final void givenEntityIsDeletedWithJpaBulkDeleteStatement_thenItIsNotInDB() {
-        Foo foo = new Foo("foo");
-        entityManager.persist(foo);
+        Fooo fooo = new Fooo("foo");
+        entityManager.persist(fooo);
         flushAndClear();
 
-        entityManager.createQuery("delete from Foo where id = :id").setParameter("id", foo.getId()).executeUpdate();
+        entityManager.createQuery("delete from Foo where id = :id").setParameter("id", fooo.getId()).executeUpdate();
 
-        assertThat(entityManager.find(Foo.class, foo.getId()), nullValue());
+        assertThat(entityManager.find(Fooo.class, fooo.getId()), nullValue());
     }
 
     @Test
     @Transactional
     public final void givenEntityIsDeletedWithNativeQuery_thenItIsNotInDB() {
-        Foo foo = new Foo("foo");
-        entityManager.persist(foo);
+        Fooo fooo = new Fooo("foo");
+        entityManager.persist(fooo);
         flushAndClear();
 
-        entityManager.createNativeQuery("delete from FOO where ID = :id").setParameter("id", foo.getId()).executeUpdate();
+        entityManager.createNativeQuery("delete from FOO where ID = :id").setParameter("id", fooo.getId()).executeUpdate();
 
-        assertThat(entityManager.find(Foo.class, foo.getId()), nullValue());
+        assertThat(entityManager.find(Fooo.class, fooo.getId()), nullValue());
     }
 
     @Test
     @Transactional
     public final void givenEntityIsSoftDeleted_thenItIsNotReturnedFromQueries() {
-        Foo foo = new Foo("foo");
-        entityManager.persist(foo);
+        Fooo fooo = new Fooo("foo");
+        entityManager.persist(fooo);
         flushAndClear();
 
-        foo = entityManager.find(Foo.class, foo.getId());
-        foo.setDeleted();
+        fooo = entityManager.find(Fooo.class, fooo.getId());
+        fooo.setDeleted();
         flushAndClear();
 
-        assertThat(entityManager.find(Foo.class, foo.getId()), nullValue());
+        assertThat(entityManager.find(Fooo.class, fooo.getId()), nullValue());
     }
 
     private void flushAndClear() {

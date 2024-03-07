@@ -13,3 +13,4 @@ This module contains articles about searching algorithms.
 - [Range Search Algorithm in Java](https://www.baeldung.com/java-range-search)
 - [Fast Pattern Matching of Strings Using Suffix Tree in Java](https://www.baeldung.com/java-pattern-matching-suffix-tree)
 - [Find the Kth Smallest Element in Two Sorted Arrays in Java](https://www.baeldung.com/java-kth-smallest-element-in-sorted-arrays)
+- [Find the First Non-repeating Element of a List](https://www.baeldung.com/java-list-find-first-non-repeating-element)

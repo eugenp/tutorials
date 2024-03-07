@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import com.baeldung.readonlytransactions.mysql.spring.ReaderDS;
 import com.baeldung.readonlytransactions.mysql.spring.entities.BookEntity;
 
-import javax.transaction.Transactional;
+import jakarta.transaction.Transactional;
 
 public interface BookRepository extends JpaRepository<BookEntity, Long> {
 

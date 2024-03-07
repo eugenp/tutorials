@@ -23,10 +23,10 @@ class SettingSameProcessEnvironmentVariableUnitTest {
       = Collections.unmodifiableMap(Collections.emptyMap()).getClass();
     private static final Class<?> MAP_CLASS = Map.class;
     public static final String ENV_VARIABLE_NAME = "test";
-    public static final String ENB_VARIABLE_VALUE = "Hello World";
+    public static final String ENV_VARIABLE_VALUE = "Hello World";
 
     @ParameterizedTest
-    @CsvSource({ENB_VARIABLE_VALUE + "," + ENV_VARIABLE_NAME})
+    @CsvSource({ENV_VARIABLE_VALUE + "," + ENV_VARIABLE_NAME})
     @EnabledForJreRange(max = JRE.JAVA_16)
     void givenReflexiveAccess_whenGetSourceMap_thenSuccessfullyModifyVariables(String environmentVariable, String value)
       throws ClassNotFoundException, NoSuchFieldException, IllegalAccessException {
@@ -47,17 +47,17 @@ class SettingSameProcessEnvironmentVariableUnitTest {
     }
 
     @Test
-    void givenOS_whenGetPath_thenVariablesArePresent() {
+    void givenOS_whenGetEnv_thenVariablesArePresent() {
         Map<String, String> environment = System.getenv();
         assertThat(environment).isNotNull();
     }
 
     @Test
-    @SetEnvironmentVariable(key = ENV_VARIABLE_NAME, value = ENB_VARIABLE_VALUE)
+    @SetEnvironmentVariable(key = ENV_VARIABLE_NAME, value = ENV_VARIABLE_VALUE)
     @EnabledForJreRange(max = JRE.JAVA_16)
     void givenVariableSet_whenGetEnvironmentVariable_thenReturnsCorrectValue() {
         String actual = System.getenv(ENV_VARIABLE_NAME);
-        assertThat(actual).isEqualTo(ENB_VARIABLE_VALUE);
+        assertThat(actual).isEqualTo(ENV_VARIABLE_VALUE);
     }
 
     @SuppressWarnings("unchecked")

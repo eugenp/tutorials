@@ -1,5 +1,7 @@
 package com.baeldung.configuration;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,6 +14,7 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 public class WebSecurityConfiguration {
@@ -30,15 +33,17 @@ public class WebSecurityConfiguration {
     }
 
     @Bean
-    public SecurityFilterChain securityFilter(HttpSecurity http) throws Exception {
-
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-          .authorizeRequests()
-          .antMatchers("/secured/**").authenticated()        
-          .anyRequest().permitAll()
-          .and()
-          .httpBasic();
+            .authorizeHttpRequests(authorizeRequests ->
+                authorizeRequests
+                    .requestMatchers(new AntPathRequestMatcher("/secured/**"))
+                    .authenticated()
+                    .anyRequest().permitAll()
+            )
+            .httpBasic(withDefaults());
 
         return http.build();
+
     }    
 }

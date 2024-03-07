@@ -1,61 +1,71 @@
 package com.baeldung.io
 
-import org.junit.Test
-
 import groovy.io.FileType
 import groovy.io.FileVisitResult
+import org.junit.Test
+
+import static org.junit.Assert.assertTrue
 
 class TraverseFileTreeUnitTest {
     @Test
     void whenUsingEachFile_filesAreListed() {
+        var files = []
         new File('src/main/resources').eachFile { file ->
-            println file.name
+            files.add(file.name)
         }
+        assertTrue(files.size() > 1)
     }
     
     @Test(expected = IllegalArgumentException)
     void whenUsingEachFileOnAFile_anErrorOccurs() {
+        var files = []
         new File('src/main/resources/ioInput.txt').eachFile { file ->
-            println file.name
+            files.add(file.name)
         }
     }
     
     @Test
     void whenUsingEachFileMatch_filesAreListed() {
+        var files = []
         new File('src/main/resources').eachFileMatch(~/io.*\.txt/) { file ->
-            println file.name
+            files.add(file.name)
         }
     }
-    
+
     @Test
     void whenUsingEachFileRecurse_thenFilesInSubfoldersAreListed() {
+        var files = []
         new File('src/main').eachFileRecurse(FileType.FILES) { file ->
-            println "$file.parent $file.name"
+            files.add("$file.parent $file.name")
         }
     }
-    
+
     @Test
     void whenUsingEachFileRecurse_thenDirsInSubfoldersAreListed() {
+        var files = []
         new File('src/main').eachFileRecurse(FileType.DIRECTORIES) { file ->
-            println "$file.parent $file.name"
+            files.add("$file.parent $file.name")
         }
     }
-    
+
     @Test
     void whenUsingEachDirRecurse_thenDirsAndSubDirsAreListed() {
+        var files = []
         new File('src/main').eachDirRecurse { dir ->
-            println "$dir.parent $dir.name"
+            files.add("$dir.parent $dir.name")
         }
     }
-    
+
     @Test
     void whenUsingTraverse_thenDirectoryIsTraversed() {
+        var files = []
         new File('src/main').traverse { file ->
             if (file.directory && file.name == 'groovy') {
                 FileVisitResult.SKIP_SUBTREE
             } else {
-                println "$file.parent - $file.name"
+                files.add("$file.parent - $file.name")
             }
         }
+        assertTrue(files.size() > 1)
     }
 }
