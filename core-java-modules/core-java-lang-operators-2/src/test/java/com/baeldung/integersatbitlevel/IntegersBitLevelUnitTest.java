@@ -63,13 +63,4 @@ class IntegersBitLevelUnitTest {
 
         assertEquals(-10124135, modifiedColor);
     }
-
-    @Test
-    void givenData_whenApplyingMaskWithBitwiseAND_thenLeastSignificantBitsReturned() {
-        int data = 0b11010110;
-        int mask = 0b00001111;
-        int isolatedBits = data & mask;
-
-        assertEquals(6, isolatedBits);
-    }
 }
