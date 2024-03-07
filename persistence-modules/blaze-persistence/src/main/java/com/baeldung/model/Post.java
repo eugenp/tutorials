@@ -1,6 +1,6 @@
 package com.baeldung.model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 public class Post {
