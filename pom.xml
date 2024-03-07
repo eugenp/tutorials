@@ -755,7 +755,7 @@
                 <module>lombok-modules</module>
                 <module>lucene</module>
                 <module>mapstruct</module>
-                <!--<module>maven-modules</module>--> <!-- failing after upgrading to jdk17-->
+                <!--<module>maven-modules</module>--> <!-- JAVA-27739 -->
                 <module>mesos-marathon</module>
                 <module>messaging-modules</module>
                 <module>metrics</module>
@@ -1002,7 +1002,7 @@
                 <module>lombok-modules</module>
                 <module>lucene</module>
                 <module>mapstruct</module>
-                <!--<module>maven-modules</module>--> <!-- failing after upgrading to jdk17-->
+                <!--<module>maven-modules</module>--> <!-- JAVA-27739 -->
                 <module>mesos-marathon</module>
                 <module>messaging-modules</module>
                 <module>metrics</module>
