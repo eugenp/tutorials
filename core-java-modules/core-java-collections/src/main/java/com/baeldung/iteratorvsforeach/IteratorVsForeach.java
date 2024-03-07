@@ -2,14 +2,11 @@ package com.baeldung.iteratorvsforeach;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.List;
-import java.util.logging.Logger;
 
 public class IteratorVsForeach {
 
-  private static final Logger LOGGER = Logger.getLogger(IteratorVsForeach.class.getName());
   private static List<String> generateSampleList() {
     return new ArrayList<>(Arrays.asList("String1", "String2", "unwanted"));
   }
@@ -25,16 +22,13 @@ public class IteratorVsForeach {
     }
 
     list = generateSampleList();
-    try {
-      for (String item : list) {
-        if (item.equals("unwanted")) {
-          // Direct removal will cause an exception
-          list.remove(item);
+    list.forEach(item -> {
+          if (item.equals("unwanted")) {
+            // Direct removal will cause a compilation error
+            // list.remove(item);
+          }
         }
-      }
-    } catch (ConcurrentModificationException e) {
-      LOGGER.info("This is the expected exception");
-    }
+    );
   }
 
 }
