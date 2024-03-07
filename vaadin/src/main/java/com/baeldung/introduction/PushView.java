@@ -1,6 +1,5 @@
 package com.baeldung.introduction;
 
-import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
@@ -16,12 +15,18 @@ public class PushView extends VerticalLayout {
     public PushView() {
         var output = new Span();
 
-        add(new H1("Server Push"), output);
+        // Publish server time once a second
+        var serverTime = Flux.interval(Duration.ofSeconds(1))
+                .map(o -> "Server time: " + Instant.now());
 
-        Flux.interval(Duration.ofSeconds(1))
-                .map(o -> "Server time: " + Instant.now())
-                .subscribe(time -> getUI().ifPresent(ui -> ui.access(() -> {
-                    output.setText(time);
-                })));
+
+        serverTime.subscribe(time ->
+                // ui.access is required to update the UI from a background thread
+                getUI().ifPresent(ui ->
+                        ui.access(() -> output.setText(time))
+                )
+        );
+
+        add(output);
     }
 }
