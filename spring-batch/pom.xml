@@ -75,6 +75,11 @@
             <artifactId>spring-batch-core</artifactId>
             <version>${spring-batch-core.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring-core.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -85,9 +90,10 @@
         <jackson-datatype.version>2.16.0</jackson-datatype.version>
         <http-client.version>4.5.14</http-client.version>
         <jettison.version>1.5.3</jettison.version>
-        <start-class>com.baeldung.batchtesting.SpringBatchApplication</start-class>
         <spring-oxm.version>6.1.4</spring-oxm.version>
         <spring-batch-core.version>5.1.1</spring-batch-core.version>
+        <spring-core.version>6.1.4</spring-core.version>
+        <start-class>com.baeldung.batchtesting.SpringBatchApplication</start-class>
     </properties>
 
 </project>
