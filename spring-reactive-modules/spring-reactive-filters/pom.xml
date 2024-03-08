@@ -10,9 +10,10 @@
     <description>spring boot sample project about new features</description>
 
     <parent>
-        <groupId>com.baeldung.spring.reactive</groupId>
-        <artifactId>spring-reactive-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-3</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -48,7 +49,7 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.github.tomakehurst</groupId>
+            <groupId>org.wiremock</groupId>
             <artifactId>wiremock-standalone</artifactId>
             <version>${wiremock-standalone.version}</version>
             <scope>test</scope>
@@ -69,7 +70,7 @@
     </build>
 
     <properties>
-        <wiremock-standalone.version>2.26.0</wiremock-standalone.version>
+        <wiremock-standalone.version>3.4.2</wiremock-standalone.version>
     </properties>
 
 </project>
