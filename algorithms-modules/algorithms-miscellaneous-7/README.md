@@ -9,4 +9,5 @@
 - [Calculate Weighted Mean in Java](https://www.baeldung.com/java-compute-weighted-average)
 - [Check if Two Strings Are Rotations of Each Other](https://www.baeldung.com/java-string-check-strings-rotations)
 - [Find the Largest Prime Under the Given Number in Java](https://www.baeldung.com/java-largest-prime-lower-threshold)
+- [Count the Number of Unique Digits in an Integer using Java](https://www.baeldung.com/java-int-count-unique-digits)
 - More articles: [[<-- prev]](/algorithms-miscellaneous-6)
