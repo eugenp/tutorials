@@ -146,6 +146,7 @@
         <spring.version>6.1.3</spring.version>
         <javax.persistence.version>2.1.1</javax.persistence.version>
         <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
+        <spring-boot.version>3.2.2</spring-boot.version>
     </properties>
 
 </project>
