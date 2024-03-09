@@ -2,7 +2,7 @@ package com.baeldung.algorithms.perfectnumber;
 
 import java.util.stream.IntStream;
 
-public class PerfectNumber {
+class PerfectNumber {
 
     public static boolean isPerfectBruteForce(int number) {
         int sum = 0;
