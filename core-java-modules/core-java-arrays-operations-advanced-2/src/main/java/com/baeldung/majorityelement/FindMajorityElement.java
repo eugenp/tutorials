@@ -6,9 +6,9 @@ import java.util.Map;
 
 public class FindMajorityElement {
 
-    public static int findMajorityElementUsingForLoop(int[] nums) {
+    public static Integer findMajorityElementUsingForLoop(int[] nums) {
         int majorityThreshold = nums.length / 2;
-        int majorityElement = -1;
+        Integer majorityElement = null;
         for (int i = 0; i < nums.length; i++) {
             int count = 0;
             for (int j = 0; j < nums.length; j++) {
@@ -23,7 +23,7 @@ public class FindMajorityElement {
         return majorityElement;
     }
 
-    public static int findMajorityElementUsingSorting(int[] nums) {
+    public static Integer findMajorityElementUsingSorting(int[] nums) {
         Arrays.sort(nums);
         int majorityThreshold = nums.length / 2;
         int count = 0;
@@ -36,10 +36,10 @@ public class FindMajorityElement {
                 return nums[majorityThreshold];
             }
         }
-        return -1;
+        return null;
     }
 
-    public static int findMajorityElementUsingHashMap(int[] nums) {
+    public static Integer findMajorityElementUsingHashMap(int[] nums) {
         Map<Integer, Integer> frequencyMap = new HashMap<>();
 
         for (int num : nums) {
@@ -52,10 +52,10 @@ public class FindMajorityElement {
                 return entry.getKey();
             }
         }
-        return -1;
+        return null;
     }
 
-    public static int findMajorityElementUsingMooreVoting(int[] nums) {
+    public static Integer findMajorityElementUsingMooreVoting(int[] nums) {
         int majorityThreshold = nums.length / 2;
         int candidate = nums[0];
         int count = 1;
@@ -79,14 +79,14 @@ public class FindMajorityElement {
                 count++;
             }
         }
-        return count > majorityThreshold ? candidate : -1;
+        return count > majorityThreshold ? candidate : null;
     }
 
     public static void main(String[] args) {
-        int[] nums = { 8, 7, 7, 9, 9, 9, 7, 9, 9 };
-        int majorityElement = findMajorityElementUsingMooreVoting(nums);
+        int[] nums = {  2, 3, 2, 4, 2, 5, 2 };
+        Integer majorityElement = findMajorityElementUsingMooreVoting(nums);
 
-        if (majorityElement != -1) {
+        if (majorityElement != null) {
             System.out.println("Majority element with maximum occurrences: " + majorityElement);
         } else {
             System.out.println("No majority element found");
