@@ -7,37 +7,37 @@ import static org.junit.Assert.assertEquals;
 class IntegersBitLevelUnitTest {
 
     @Test
-    void testBitwiseAND() {
+    void givenNumbers_whenBitwiseAND_thenResultIsExpected() {
         int result = 12 & 7;
         assertEquals(4, result);
     }
 
     @Test
-    void testBitwiseOR() {
+    void givenNumbers_whenBitwiseOR_thenResultIsExpected() {
         int result = 12 | 7;
         assertEquals(15, result);
     }
 
     @Test
-    void testBitwiseXOR() {
+    void givenNumbers_whenBitwiseXOR_thenResultIsExpected() {
         int result = 12 ^ 7;
         assertEquals(11, result);
     }
 
     @Test
-    void testBitwiseNOT() {
+    void givenNumber_whenBitwiseNOT_thenResultIsExpected() {
         int result = ~5;
         assertEquals(-6, result);
     }
 
     @Test
-    void testBitwiseLeftShift() {
+    void givenNumber_whenBitwiseLeftShift_thenResultIsExpected() {
         int result = 5 << 2;
         assertEquals(20, result);
     }
 
     @Test
-    void testBitwiseRightShift() {
+    void givenNumber_whenBitwiseRightShift_thenResultIsExpected() {
         int result = 5 >> 1;
         assertEquals(2, result);
     }
