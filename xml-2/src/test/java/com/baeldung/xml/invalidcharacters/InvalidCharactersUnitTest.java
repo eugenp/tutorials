@@ -30,6 +30,18 @@ public class InvalidCharactersUnitTest {
             assertEquals("John & Doe", document.getElementsByTagName("name").item(0).getTextContent());
         });
     }
+    
+    @Test
+    void givenXml_whenUsingCdataForReservedCharacters_thenSuccess() {
+        String validXmlString = "<?xml version=\"1.1\" encoding=\"UTF-8\"?><root><name><![CDATA[John & Doe]]></name></root>";
+
+        assertDoesNotThrow(() -> {
+            Document document = parseXmlString(validXmlString);
+
+            assertNotNull(document);
+            assertEquals("John & Doe", document.getElementsByTagName("name").item(0).getTextContent());
+        });
+    }    
 
     @Test
     void givenXml_whenUnicodeCharacters_thenThrowException() {
