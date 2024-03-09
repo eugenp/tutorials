@@ -9,6 +9,7 @@ This module contains articles about core Spring Security
 - [Guide to the AuthenticationManagerResolver in Spring Security](https://www.baeldung.com/spring-security-authenticationmanagerresolver)
 - [A Custom Spring SecurityConfigurer](https://www.baeldung.com/spring-security-custom-configurer)
 - [HttpSecurity vs. WebSecurity in Spring Security](https://www.baeldung.com/spring-security-httpsecurity-vs-websecurity)
+- [Spring Security AuthorizationManager](https://www.baeldung.com/spring-security-authorizationmanager)
  
 ### Build the Project
 
