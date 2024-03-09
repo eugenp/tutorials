@@ -1,5 +1,7 @@
 package com.baeldung.algorithms.perfectnumber;
 
+import java.util.stream.IntStream;
+
 public class PerfectNumber {
 
     public static boolean isPerfectBruteForce(int number) {
@@ -10,6 +12,13 @@ public class PerfectNumber {
             }
         }
         return sum == number;
+    }
+
+    public static boolean isPerfectStream(int num) {
+        int sum = IntStream.rangeClosed(2, (int) Math.sqrt(num))
+                .filter(test -> num % test == 0)
+                .reduce(1, (s, test) -> s + test + (num / test));
+        return sum == num;
     }
 
     public static boolean isPerfectEuclidEuler(int number) {
@@ -24,4 +33,5 @@ public class PerfectNumber {
         }
         return false;
     }
+
 }
