@@ -96,7 +96,7 @@ public class FilteredWebClientUnitTest {
         stubFor(get(urlPathEqualTo(PATH)).willReturn(aResponse().withStatus(200)
             .withBody("done")));
 
-        try (ByteArrayOutputStream baos = new ByteArrayOutputStream(); PrintStream ps = new PrintStream(baos);) {
+        try (ByteArrayOutputStream baos = new ByteArrayOutputStream(); PrintStream ps = new PrintStream(baos)) {
             WebClient webClient = WebClient.builder()
                 .filter(loggingFilter(ps))
                 .build();
