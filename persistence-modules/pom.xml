@@ -82,7 +82,6 @@
         <module>spring-data-jpa-annotations</module>
         <module>spring-data-jpa-annotations-2</module>
         <module>spring-data-jpa-crud</module>
-        <module>spring-data-jpa-crud-2</module>
         <module>spring-data-jpa-enterprise</module>
         <module>spring-data-jpa-enterprise-2</module>
         <module>spring-data-jpa-filtering</module>
