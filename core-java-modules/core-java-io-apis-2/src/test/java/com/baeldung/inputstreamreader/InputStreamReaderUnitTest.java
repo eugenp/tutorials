@@ -2,7 +2,6 @@ package com.baeldung.inputstreamreader;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -23,11 +22,13 @@ public class InputStreamReaderUnitTest {
         List<String> lines = Arrays.asList(sampleTxt);
         Files.write(sampleOut, lines);
         String absolutePath = String.valueOf(sampleOut.toAbsolutePath());
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(absolutePath), StandardCharsets.UTF_8))) {
-            String ln;
+        try (InputStreamReader reader = new InputStreamReader(new FileInputStream(absolutePath), StandardCharsets.UTF_8)) {
             boolean isMatched = false;
-            while ((ln = br.readLine()) != null) {
-                if (ln.contains(sampleTxt)) {
+            int b;
+            StringBuilder sb = new StringBuilder();
+            while ((b = reader.read()) != -1) {
+                sb.append((char) b);
+                if (sb.toString().contains(sampleTxt)) {
                     isMatched = true;
                     break;
                 }
