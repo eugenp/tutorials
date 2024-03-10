@@ -50,4 +50,19 @@ class PerfectNumberUnitTest {
     void givenNegativeNumber_whenCheckingIsPerfectEuclidEuler_thenReturnFalse() {
         assertFalse(PerfectNumber.isPerfectEuclidEuler(-6));
     }
+
+    @Test
+    void givenPerfectNumber_whenCheckingIsPerfectEuclidEulerUsingShift_thenReturnTrue() {
+        assertTrue(PerfectNumber.isPerfectEuclidEulerUsingShift(28));
+    }
+
+    @Test
+    void givenNonPerfectNumber_whenCheckingIsPerfectEuclidEulerUsingShift_thenReturnFalse() {
+        assertFalse(PerfectNumber.isPerfectEuclidEulerUsingShift(10));
+    }
+
+    @Test
+    void givenNegativeNumber_whenCheckingIsPerfectEuclidEulerUsingShift_thenReturnFalse() {
+        assertFalse(PerfectNumber.isPerfectEuclidEulerUsingShift(-6));
+    }
 }
