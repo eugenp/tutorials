@@ -24,7 +24,7 @@ class HappyNumberDecider {
         }
     }
 
-    public static boolean isHappyNumber2(int n) {
+    public static boolean isHappyNumberFloyd(int n) {
         int slow = n;
         int fast = n;
         do {
@@ -65,17 +65,17 @@ public class HappyNumberUnitTest {
 
     @Test
     void whenUsingIsHappyNumber2_thenGetTheExpectedResult() {
-        assertTrue(HappyNumberDecider.isHappyNumber2(7));
-        assertTrue(HappyNumberDecider.isHappyNumber2(10));
-        assertTrue(HappyNumberDecider.isHappyNumber2(13));
-        assertTrue(HappyNumberDecider.isHappyNumber2(19));
-        assertTrue(HappyNumberDecider.isHappyNumber2(23));
+        assertTrue(HappyNumberDecider.isHappyNumberFloyd(7));
+        assertTrue(HappyNumberDecider.isHappyNumberFloyd(10));
+        assertTrue(HappyNumberDecider.isHappyNumberFloyd(13));
+        assertTrue(HappyNumberDecider.isHappyNumberFloyd(19));
+        assertTrue(HappyNumberDecider.isHappyNumberFloyd(23));
 
-        assertFalse(HappyNumberDecider.isHappyNumber2(4));
-        assertFalse(HappyNumberDecider.isHappyNumber2(6));
-        assertFalse(HappyNumberDecider.isHappyNumber2(11));
-        assertFalse(HappyNumberDecider.isHappyNumber2(15));
-        assertFalse(HappyNumberDecider.isHappyNumber2(20));
+        assertFalse(HappyNumberDecider.isHappyNumberFloyd(4));
+        assertFalse(HappyNumberDecider.isHappyNumberFloyd(6));
+        assertFalse(HappyNumberDecider.isHappyNumberFloyd(11));
+        assertFalse(HappyNumberDecider.isHappyNumberFloyd(15));
+        assertFalse(HappyNumberDecider.isHappyNumberFloyd(20));
 
     }
 
