@@ -4,7 +4,6 @@ public class StringTemplates {
 
     public String getStringTemplate() {
         String name = "Baeldung"; 
-        String welcomeText = STR."Welcome to \{name}"; 
-        return welcomeText;
+        return STR."Welcome to \{name}"; 
     }
 }

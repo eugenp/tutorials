@@ -2,18 +2,19 @@ package com.baeldung.java21;
 
 public class SwitchPattern {
     
-    class Account{
+    static class Account{
         double getBalance() {
             return 0;
         }
     }
     
-    class SavingsAccount extends Account {
+    static class SavingsAccount extends Account {
         double getBalance() {
             return 100;
         } 
     }
-    class TermAccount extends Account {
+    
+    static class TermAccount extends Account {
         double getBalance() {
             return 1000;
         } 
@@ -39,9 +40,9 @@ public class SwitchPattern {
     }
     
     static double getBalanceWithSwitchPattern(Account account) {
-        double result = 0;
+        double result;
         switch (account) {
-            case null -> throw new RuntimeException("Oops, account is null");
+            case null -> throw new IllegalArgumentException("Oops, account is null");
             case SavingsAccount sa -> result = sa.getBalance();
             case TermAccount ta -> result = ta.getBalance();
             case CurrentAccount ca -> result = ca.getBalance();
