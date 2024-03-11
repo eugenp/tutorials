@@ -14,11 +14,10 @@ import static org.junit.Assert.assertEquals;
 
 public class ReadingGZIPUsingGZIPInputStreamUnitTest {
     String testFilePath = Objects.requireNonNull(ReadingGZIPUsingGZIPInputStreamUnitTest.class.getClassLoader().getResource("myFile.gz")).getFile();
+    List<String> expectedFilteredLines = Arrays.asList("Line 1 content", "Line 2 content", "Line 3 content");
 
     @Test
     void givenGZFile_whenUsingGZIPInputStream_thenReadLines() throws IOException {
-        List<String> expectedFilteredLines = Arrays.asList("Line 1 content", "Line 3 content");
-
         try (Stream<String> lines = Main.readGZipFile(testFilePath).stream()) {
             List<String> result = lines
                     .filter(expectedFilteredLines::contains)
@@ -29,21 +28,15 @@ public class ReadingGZIPUsingGZIPInputStreamUnitTest {
     }
 
     @Test
-    void givenGZFile_whenUsingProcessGZipFile_thenProcessLines() throws IOException {
-        List<String> processedLines = new ArrayList<>();
+    void givenGZFile_whenUsingGZipFileWithFilter_thenProcessLines() throws IOException {
+        String testFilePath = Objects.requireNonNull(ReadingGZIPUsingGZIPInputStreamUnitTest.class.getClassLoader().getResource("myFile.gz")).getFile();
 
-        Main.LineProcessor lineProcessor = lines -> lines.forEach(processedLines::add);
+        List<String> expectedFilteredLines = Arrays.asList("Line 1 content", "Line 2 content", "Line 3 content");
 
-        try (InputStream inputStream = ReadingGZIPUsingGZIPInputStreamUnitTest.class.getClassLoader().getResourceAsStream("myFile.gz")) {
-            if (inputStream == null) {
-                throw new IOException("File not found: myFile.gz");
-            }
+        List<String> result = new ArrayList<>();
+        Main.readGZipFileWithFilter(testFilePath, result::addAll);
 
-            Main.processGZipFile(inputStream, lineProcessor);
-        }
-
-        List<String> expectedLines = List.of("Line 1 content", "Line 2 content", "Line 3 content");
-
-        assertEquals(expectedLines, processedLines);
+        assertEquals(expectedFilteredLines, result);
     }
+
 }
