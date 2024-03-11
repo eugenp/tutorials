@@ -18,7 +18,6 @@ public class UserDetailsImpl implements UserDetails {
     @JsonIgnore
     private String password;
 
-
     public UserDetailsImpl(Long id, String username, String password) {
         this.id = id;
         this.username = username;
@@ -28,16 +27,12 @@ public class UserDetailsImpl implements UserDetails {
 
     public static UserDetailsImpl build(User user) {
 
-
         return new UserDetailsImpl(user.getId(), user.getUsername(), user.getPassword());
     }
-
 
     public Long getId() {
         return id;
     }
-
-
 
     public static long getSerialversionuid() {
         return serialVersionUID;
@@ -77,8 +72,6 @@ public class UserDetailsImpl implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-
-
 
     @Override
     public boolean equals(Object o) {

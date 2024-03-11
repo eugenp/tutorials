@@ -1,11 +1,10 @@
-package com.baeldung.jwtsignkey;
+package com.baeldung.jwtsignkey.response;
 
 public class JwtResponse {
     private String token;
     private String type = "Bearer";
 
     private String username;
-
 
     public JwtResponse(String accessToken, String username) {
         this.token = accessToken;
