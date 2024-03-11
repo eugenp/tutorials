@@ -56,6 +56,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-oxm</artifactId>
+            <version>${spring-oxm.version}</version>
         </dependency>
         <dependency>
             <groupId>commons-fileupload</groupId>
@@ -273,6 +274,7 @@
         <protobuf-java.version>3.1.0</protobuf-java.version>
         <xstream.version>1.4.9</xstream.version>
         <jayway-rest-assured.version>2.9.0</jayway-rest-assured.version>
+        <spring-oxm.version>6.1.4</spring-oxm.version>
         <!-- Maven plugins -->
         <cargo-maven2-plugin.version>1.6.0</cargo-maven2-plugin.version>
         <findbugs-maven-plugin.version>3.0.4</findbugs-maven-plugin.version>

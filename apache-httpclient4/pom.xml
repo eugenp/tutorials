@@ -82,7 +82,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-oxm</artifactId>
-            <version>${spring.version}</version>
+            <version>${spring-oxm.version}</version>
         </dependency>
         <!-- marshalling -->
         <dependency>
@@ -233,6 +233,7 @@
     </profiles>
 
     <properties>
+        <spring-oxm.version>6.1.4</spring-oxm.version>
         <!-- util -->
         <commons-codec.version>1.16.0</commons-codec.version>
         <httpasyncclient.version>4.1.5</httpasyncclient.version>

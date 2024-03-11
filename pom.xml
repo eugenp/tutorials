@@ -539,12 +539,6 @@
             </build>
 
             <modules>
-                <module>parent-boot-1</module>
-                <module>parent-boot-2</module>
-                <module>parent-spring-4</module>
-                <module>parent-spring-5</module>
-                <module>parent-spring-6</module>
-                
                 <module>spring-4</module>
 
                 <module>spring-cloud-modules</module>
@@ -586,12 +580,6 @@
             </build>
 
             <modules>
-                <module>parent-boot-1</module>
-                <module>parent-boot-2</module>
-                <module>parent-spring-4</module>
-                <module>parent-spring-5</module>
-                <module>parent-spring-6</module>
-
                 <module>apache-spark</module>
                 <module>jhipster-modules</module>
                 <module>spring-cloud-modules/spring-cloud-azure</module>
@@ -767,7 +755,7 @@
                 <module>lombok-modules</module>
                 <module>lucene</module>
                 <module>mapstruct</module>
-                <!--<module>maven-modules</module>--> <!-- failing after upgrading to jdk17-->
+                <!--<module>maven-modules</module>--> <!-- JAVA-27739 -->
                 <module>mesos-marathon</module>
                 <module>messaging-modules</module>
                 <module>metrics</module>
@@ -1014,7 +1002,7 @@
                 <module>lombok-modules</module>
                 <module>lucene</module>
                 <module>mapstruct</module>
-                <!--<module>maven-modules</module>--> <!-- failing after upgrading to jdk17-->
+                <!--<module>maven-modules</module>--> <!-- JAVA-27739 -->
                 <module>mesos-marathon</module>
                 <module>messaging-modules</module>
                 <module>metrics</module>
@@ -1139,7 +1127,6 @@
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
             </modules>
-
         </profile>
     </profiles>
 

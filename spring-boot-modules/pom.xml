@@ -45,7 +45,7 @@
         <!--<module>spring-boot-groovy</module>--> <!-- failing after upgrading to jdk17-->
         <!-- <module>spring-boot-gradle</module> --> <!-- Not a maven project -->
         <module>spring-boot-jasypt</module>
-<!--        <module>spring-boot-jsp</module>--> <!-- failing after upgrading to spring boot 3.2.x -->
+        <module>spring-boot-jsp</module>
         <module>spring-boot-keycloak</module>
         <module>spring-boot-keycloak-2</module>
         <!--        <module>spring-boot-libraries</module>--> <!-- failing after upgrading to spring boot 3.2.x -->
@@ -112,6 +112,7 @@
         <module>spring-boot-3-url-matching</module>
         <module>spring-boot-graalvm-docker</module>
         <module>spring-boot-validations</module>
+        <module>spring-boot-openapi</module>
     </modules>
 
     <dependencyManagement>
