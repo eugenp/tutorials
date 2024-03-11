@@ -1142,6 +1142,7 @@
         <gib.failOnMissingGitDir>false</gib.failOnMissingGitDir>
         <gib.failOnError>false</gib.failOnError>
         <gib.disable>true</gib.disable>
+        <gib.excludePathsMatching>/gradle-modules</gib.excludePathsMatching>
 
         <!-- used only in dependency management to force this version, not included as a direct dependency -->
         <junit.version>4.13.2</junit.version>
