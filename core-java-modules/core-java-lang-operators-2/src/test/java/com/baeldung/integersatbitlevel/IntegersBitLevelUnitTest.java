@@ -8,38 +8,38 @@ class IntegersBitLevelUnitTest {
 
     @Test
     void givenNumbers_whenBitwiseAND_thenResultIsExpected() {
-        int result = 12 & 7;
-        assertEquals(4, result);
+        int result = 0b1100 & 0b0111;
+        assertEquals(0b0100, result);
     }
 
     @Test
     void givenNumbers_whenBitwiseOR_thenResultIsExpected() {
-        int result = 12 | 7;
-        assertEquals(15, result);
+        int result = 0b1100 | 0b0111;
+        assertEquals(0b1111, result);
     }
 
     @Test
     void givenNumbers_whenBitwiseXOR_thenResultIsExpected() {
-        int result = 12 ^ 7;
-        assertEquals(11, result);
+        int result = 0b1100 ^ 0b0111;
+        assertEquals(0b1011, result);
     }
 
     @Test
     void givenNumber_whenBitwiseNOT_thenResultIsExpected() {
-        int result = ~5;
-        assertEquals(-6, result);
+        int result = ~0b0101;
+        assertEquals(-0b0110, result);
     }
 
     @Test
     void givenNumber_whenBitwiseLeftShift_thenResultIsExpected() {
-        int result = 5 << 2;
-        assertEquals(20, result);
+        int result = 0b0101 << 2;
+        assertEquals(0b10100, result);
     }
 
     @Test
     void givenNumber_whenBitwiseRightShift_thenResultIsExpected() {
-        int result = 5 >> 1;
-        assertEquals(2, result);
+        int result = 0b0101 >> 1;
+        assertEquals(0b10, result);
     }
 
     @Test
