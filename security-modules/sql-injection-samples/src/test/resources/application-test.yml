@@ -11,7 +11,8 @@ spring:
       
   datasource:
     initialization-mode: embedded
-      
+    driver-class-name: org.apache.derby.jdbc.EmbeddedDriver
+
 logging:
   level:
     sql: DEBUG    
