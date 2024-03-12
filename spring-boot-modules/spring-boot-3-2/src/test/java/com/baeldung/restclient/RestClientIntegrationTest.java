@@ -112,7 +112,7 @@ public class RestClientIntegrationTest {
 						.uri(uriBase + "/articles/1234")
 						.retrieve()
 						.onStatus(status -> status.value() == 404, (request, response) -> { throw new ArticleNotFoundException(); })
-						.body(new ParameterizedTypeReference<>() {});
+						.body(new ParameterizedTypeReference<String>() {});
 		}).isInstanceOf(ArticleNotFoundException.class);
 	}
 
