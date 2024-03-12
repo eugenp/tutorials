@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class NotificationRepository {
 
-    private final Collection<Notification> notifications = new ConcurrentLinkedQueue<>();
+    private Collection<Notification> notifications = new ConcurrentLinkedQueue<>();
 
     public Notification findById(UUID notificationId) {
         return notifications.stream()

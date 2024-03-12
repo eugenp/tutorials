@@ -10,8 +10,8 @@ public class NotificationService {
 
     private static final Logger logger = LoggerFactory.getLogger(NotificationService.class);
 
-    private final NotificationRepository notificationRepository;
-    private final Clock clock;
+    private NotificationRepository notificationRepository;
+    private Clock clock;
 
     public NotificationService(NotificationRepository notificationRepository, Clock clock) {
         this.notificationRepository = notificationRepository;

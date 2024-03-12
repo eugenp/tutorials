@@ -6,10 +6,9 @@ import java.util.UUID;
 
 public class Notification {
 
-    private final UUID id = UUID.randomUUID();
-
-    private final ZonedDateTime sendOutTime;
+    private UUID id = UUID.randomUUID();
     private boolean isSentOut = false;
+    private ZonedDateTime sendOutTime;
 
     public Notification(ZonedDateTime sendOutTime) {
         this.sendOutTime = sendOutTime;

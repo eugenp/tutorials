@@ -8,7 +8,7 @@ public class DelayedNotificationScheduler {
 
     private static final Logger logger = LoggerFactory.getLogger(DelayedNotificationScheduler.class);
 
-    private final NotificationService notificationService;
+    private NotificationService notificationService;
 
     public DelayedNotificationScheduler(NotificationService notificationService) {
         this.notificationService = notificationService;
