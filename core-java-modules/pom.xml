@@ -224,6 +224,7 @@
         <module>java-rmi</module>
         <module>java-spi</module>
         <module>java-websocket</module>
+        <module>core-java-calculating-moving-averages</module>
     </modules>
 
     <dependencies>
