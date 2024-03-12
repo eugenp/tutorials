@@ -1,42 +1,58 @@
 package com.baeldung.jnats;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import io.nats.client.Message;
+import io.nats.client.Subscription;
+import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 
-import org.junit.Test;
-
-import io.nats.client.Message;
-import io.nats.client.SyncSubscription;
+import static org.junit.Assert.*;
 
 public class NatsClientLiveTest {
 
+    private NatsClient connectClient() {
+        return new NatsClient();
+    }
+
     @Test
-    public void givenMessageExchange_MessagesReceived() throws Exception {
+    public void messageExchangeViaPublishSubscribe_MessagesReceived() throws Exception {
 
         NatsClient client = connectClient();
 
-        SyncSubscription fooSubscription = client.subscribeSync("foo.bar");
-        SyncSubscription barSubscription = client.subscribeSync("bar.foo");
-        client.publishMessage("foo.bar", "bar.foo", "hello there");
+        Subscription replySideSubscription = client.subscribeSync("requestSubject");
+        Subscription publishSideSubscription = client.subscribeSync("replyToSubject");
+        client.publishMessageWithReply("requestSubject", "replyToSubject", "hello there");
 
-        Message message = fooSubscription.nextMessage(200);
+        Message message = replySideSubscription.nextMessage(200);
         assertNotNull("No message!", message);
         assertEquals("hello there", new String(message.getData()));
+        client.publishMessage(message.getReplyTo(), "hello back");
 
-        client.publishMessage(message.getReplyTo(), message.getSubject(), "hello back");
-
-        message = barSubscription.nextMessage(200);
+        message = publishSideSubscription.nextMessage(200);
         assertNotNull("No message!", message);
         assertEquals("hello back", new String(message.getData()));
     }
 
+    @Test
+    public void messageExchangeViaRequestReply_MessagesReceived() throws Exception {
 
-    private NatsClient connectClient() {
-        return new NatsClient();
+        NatsClient client = connectClient();
+
+        Subscription replySideSubscription = client.subscribeSync("requestSubject");
+
+        CompletableFuture<Message> future = client.makeRequest("requestSubject", "hello there");
+
+        Message message = replySideSubscription.nextMessage(200);
+        assertNotNull("No message!", message);
+        assertEquals("hello there", new String(message.getData()));
+        client.publishMessage(message.getReplyTo(), "hello back");
+
+        message = future.get(200, TimeUnit.MILLISECONDS);
+        assertNotNull("No message!", message);
+        assertEquals("hello back", new String(message.getData()));
     }
 
     @Test
@@ -44,13 +60,20 @@ public class NatsClientLiveTest {
 
         NatsClient client = connectClient();
 
-        SyncSubscription fooSubscription = client.subscribeSync("foo.*");
+        Subscription fooStarSubscription = client.subscribeSync("foo.*");
 
-        client.publishMessage("foo.bar", "bar.foo", "hello there");
+        client.publishMessage("foo.star", "hello foo star");
 
-        Message message = fooSubscription.nextMessage(200);
+        Message message = fooStarSubscription.nextMessage(200);
         assertNotNull("No message!", message);
-        assertEquals("hello there", new String(message.getData()));
+        assertEquals("hello foo star", new String(message.getData()));
+
+        Subscription fooGreaterSubscription = client.subscribeSync("foo.>");
+        client.publishMessage("foo.greater.than", "hello foo greater");
+
+        message = fooGreaterSubscription.nextMessage(200);
+        assertNotNull("No message!", message);
+        assertEquals("hello foo greater", new String(message.getData()));
     }
 
     @Test
@@ -58,36 +81,19 @@ public class NatsClientLiveTest {
 
         NatsClient client = connectClient();
 
-        SyncSubscription fooSubscription = client.subscribeSync("foo.*");
+        Subscription starSubscription = client.subscribeSync("foo.*");
 
-        client.publishMessage("foo.bar.plop", "bar.foo", "hello there");
+        client.publishMessage("foo.bar.plop", "hello there");
 
-        Message message = fooSubscription.nextMessage(200);
+        Message message = starSubscription.nextMessage(200);
         assertNull("Got message!", message);
 
+        Subscription greaterSubscription = client.subscribeSync("foo.>");
+        client.publishMessage("foo.bar.plop", "hello there");
 
-        SyncSubscription barSubscription = client.subscribeSync("foo.>");
-
-        client.publishMessage("foo.bar.plop", "bar.foo", "hello there");
-
-        message = barSubscription.nextMessage(200);
+        message = greaterSubscription.nextMessage(200);
         assertNotNull("No message!", message);
         assertEquals("hello there", new String(message.getData()));
-
-
-    }
-
-
-    @Test
-    public void givenRequest_ReplyReceived() {
-
-        NatsClient client = connectClient();
-        client.installReply("salary.requests", "denied!");
-
-        Message reply = client.makeRequest("salary.requests", "I need a raise.");
-        assertNotNull("No message!", reply);
-        assertEquals("denied!", new String(reply.getData()));
-
     }
 
     @Test
@@ -95,21 +101,23 @@ public class NatsClientLiveTest {
 
         NatsClient client = connectClient();
 
-        SyncSubscription queue1 = client.joinQueueGroup("foo.bar.requests", "queue1");
-        SyncSubscription queue2 = client.joinQueueGroup("foo.bar.requests", "queue1");
+        Subscription qSub1 = client.subscribeSyncInQueueGroup("foo.bar.requests", "myQueue");
+        Subscription qSub2 = client.subscribeSyncInQueueGroup("foo.bar.requests", "myQueue");
 
-        client.publishMessage("foo.bar.requests", "queuerequestor", "foobar");
+        client.publishMessage("foo.bar.requests", "foobar");
 
         List<Message> messages = new ArrayList<>();
 
-        Message message = queue1.nextMessage(200);
+        Message message = qSub1.nextMessage(200);
+        if (message != null) {
+            messages.add(message);
+        }
 
-        if (message != null) messages.add(message);
-        message = queue2.nextMessage(200);
+        message = qSub2.nextMessage(200);
+        if (message != null) {
+            messages.add(message);
+        }
 
-        if (message != null) messages.add(message);
         assertEquals(1, messages.size());
-
     }
-
 }

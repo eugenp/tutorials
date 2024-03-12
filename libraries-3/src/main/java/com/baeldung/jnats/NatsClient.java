@@ -1,123 +1,144 @@
 package com.baeldung.jnats;
 
 import java.io.IOException;
+import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
+import io.nats.client.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import io.nats.client.AsyncSubscription;
-import io.nats.client.Connection;
-import io.nats.client.Message;
-import io.nats.client.Nats;
-import io.nats.client.Options;
-import io.nats.client.Subscription;
-import io.nats.client.SyncSubscription;
 
 public final class NatsClient {
 
     private final String serverURI;
 
-    private final Connection natsConnection;
-
-    private final Map<String, Subscription> subscriptions = new HashMap<>();
+    private final Map<Subscription, Dispatcher> dispatcherBySubscription = new HashMap<>();
 
     private final static Logger log = LoggerFactory.getLogger(NatsClient.class);
 
+    private Connection natsConnection;
+
     NatsClient() {
-        this.serverURI = "jnats://localhost:4222";
-        natsConnection = initConnection(serverURI);
+        this(null);
     }
 
     public NatsClient(String serverURI) {
-        if ((serverURI != null) && (!serverURI.isEmpty())) {
+        if (serverURI == null || serverURI.isEmpty()) {
+            this.serverURI = "nats://localhost:4222";
+        }
+        else {
             this.serverURI = serverURI;
-        } else {
-            this.serverURI = "jnats://localhost:4222";
+        }
+        initConnection();
+    }
+
+    static class CustomErrorListener implements ErrorListener {
+        @Override
+        public void errorOccurred(Connection conn, String error) {
+            log.error("Error Occurred: {}", error);
         }
 
-        natsConnection = initConnection(serverURI);
+        @Override
+        public void exceptionOccurred(Connection conn, Exception exp) {
+            log.error("Exception Occurred: {}", exp.toString());
+        }
+    }
+    private void initConnection() {
+        try {
+            Options options = new Options.Builder()
+                .server(serverURI)
+                .connectionListener((connection, event) -> log.info("Connection Event: {}", event.toString()))
+                .errorListener(new CustomErrorListener())
+                .build();
+            natsConnection = Nats.connect(options);
+        } catch (IOException | InterruptedException e) {
+            log.error("Error connecting to NATs! {}", e.toString());
+        }
     }
 
     public void closeConnection() {
         // Close connection
-        natsConnection.close();
-    }
-
-    private Connection initConnection(String uri) {
         try {
-            Options options = new Options.Builder()
-              .errorCb(ex -> log.error("Connection Exception: ", ex))
-              .disconnectedCb(event -> log.error("Channel disconnected: {}", event.getConnection()))
-              .reconnectedCb(event -> log.error("Reconnected to server: {}", event.getConnection()))
-              .build();
-
-            return Nats.connect(uri, options);
-        } catch (IOException ioe) {
-            log.error("Error connecting to NATs! ", ioe);
-            return null;
+            natsConnection.close();
+        }
+        catch (InterruptedException e) {
+            log.warn("Warning:", e);
         }
     }
 
-    void publishMessage(String topic, String replyTo, String message) {
+    void publishMessage(String subject, String message) {
         try {
-            natsConnection.publish(topic, replyTo, message.getBytes());
-        } catch (IOException ioe) {
-            log.error("Error publishing message: {} to {} ", message, topic, ioe);
+            natsConnection.publish(subject, message.getBytes());
+        } catch (IllegalStateException ise) {
+            log.error("Error publishing message: {} to {} ", message, subject, ise);
         }
     }
 
-    public void subscribeAsync(String topic) {
+    void publishMessageWithReply(String subject, String replyTo, String message) {
+        try {
+            natsConnection.publish(subject, replyTo, message.getBytes());
+        } catch (IllegalStateException ise) {
+            log.error("Error publishing message: {} to {} ", message, subject, ise);
+        }
+    }
 
-        AsyncSubscription subscription = natsConnection.subscribe(
-          topic, msg -> log.info("Received message on {}", msg.getSubject()));
-
+    public Subscription subscribeAsync(String subject) {
+        Dispatcher dispatcher = natsConnection.createDispatcher();
+        Subscription subscription = dispatcher.subscribe(subject, msg -> log.info("Subscription received message on {}", msg));
         if (subscription == null) {
-            log.error("Error subscribing to {}", topic);
-        } else {
-            subscriptions.put(topic, subscription);
-        }
-    }
-
-    SyncSubscription subscribeSync(String topic) {
-        return natsConnection.subscribe(topic);
-    }
-
-    public void unsubscribe(String topic) {
-        try {
-            Subscription subscription = subscriptions.get(topic);
-
-            if (subscription != null) {
-                subscription.unsubscribe();
-            } else {
-                log.error("{} not found. Unable to unsubscribe.", topic);
-            }
-        } catch (IOException ioe) {
-            log.error("Error unsubscribing from {} ", topic, ioe);
-        }
-    }
-
-    Message makeRequest(String topic, String request) {
-        try {
-            return natsConnection.request(topic, request.getBytes(), 100);
-        } catch (IOException | InterruptedException ioe) {
-            log.error("Error making request {} to {} ", topic, request, ioe);
+            log.error("Error subscribing to {}", subject);
             return null;
         }
+        dispatcherBySubscription.put(subscription, dispatcher);
+        return subscription;
     }
 
-    void installReply(String topic, String reply) {
-        natsConnection.subscribe(topic, message -> {
-            try {
-                natsConnection.publish(message.getReplyTo(), reply.getBytes());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
+    public Subscription subscribeAsyncInQueueGroup(String subject, String queueGroup) {
+        Dispatcher dispatcher = natsConnection.createDispatcher();
+        Subscription subscription = dispatcher.subscribe(subject, queueGroup, msg -> log.info("Queue group subscription received message on {}", msg));
+        if (subscription == null) {
+            log.error("Error subscribing to {}", subject);
+            return null;
+        }
+        dispatcherBySubscription.put(subscription, dispatcher);
+        return subscription;
     }
 
-    SyncSubscription joinQueueGroup(String topic, String queue) {
-        return natsConnection.subscribe(topic, queue);
+    public Subscription makeAsyncReplier(String subject, String reply) {
+        Dispatcher dispatcher = natsConnection.createDispatcher();
+        Subscription subscription = dispatcher.subscribe(subject, message -> publishMessage(message.getReplyTo(), reply));
+        if (subscription == null) {
+            log.error("Error making replier to {}", subject);
+            return null;
+        }
+        dispatcherBySubscription.put(subscription, dispatcher);
+        return subscription;
+    }
+
+    public Subscription subscribeSync(String subject) {
+        return natsConnection.subscribe(subject);
+    }
+
+    public Subscription subscribeSyncInQueueGroup(String subject, String queueGroup) {
+        return natsConnection.subscribe(subject, queueGroup);
+    }
+
+    public CompletableFuture<Message> makeRequest(String subject, String request) {
+        return natsConnection.request(subject, request.getBytes());
+    }
+
+    public void unsubscribe(Subscription subscription) {
+        // async subscriptions made with a dispatcher must be unsubscribed through the dispatcher
+        // sync subscriptions can be unsubscribed directly through the subscription
+        Dispatcher dispatcher = dispatcherBySubscription.remove(subscription);
+        if (dispatcher == null) {
+            subscription.unsubscribe();
+        }
+        else {
+            dispatcher.unsubscribe(subscription);
+        }
     }
 }
