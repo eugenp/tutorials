@@ -6,6 +6,7 @@ import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.UnsupportedJwtException;
+import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import io.jsonwebtoken.security.SignatureException;
 import org.slf4j.Logger;
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
+import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
 import java.util.Date;
@@ -28,15 +30,17 @@ public class JwtUtils {
     @Value("${baeldung.app.jwtExpirationMs}")
     private int jwtExpirationMs;
 
+    SecretKey key = Keys.hmacShaKeyFor(Decoders.BASE64.decode(jwtSecret));
+
     public String generateJwtToken(Authentication authentication) {
 
         UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
 
         return Jwts.builder()
-          .subject((userPrincipal.getUsername()))
-          .issuedAt(new Date())
-          .expiration(new Date((new Date()).getTime() + jwtExpirationMs))
-            .signWith(getSigningKey())
+            .subject((userPrincipal.getUsername()))
+            .issuedAt(new Date())
+            .expiration(new Date((new Date()).getTime() + jwtExpirationMs))
+            .signWith(key)
             .compact();
 
     }
@@ -48,10 +52,10 @@ public class JwtUtils {
 
     public String getUserNameFromJwtToken(String token) {
         return Jwts.parser()
-          .setSigningKey(getSigningKey())
-          .build()
-          .parseSignedClaims(token)
-          .getPayload()
+            .verifyWith(key)
+            .build()
+            .parseSignedClaims(token)
+            .getPayload()
             .getSubject();
 
     }
@@ -59,7 +63,7 @@ public class JwtUtils {
     public boolean validateJwtToken(String authToken) {
         try {
             Jwts.parser()
-                .setSigningKey(getSigningKey())
+                . verifyWith(key)
                 .build()
                 .parseSignedClaims(authToken);
             return true;
