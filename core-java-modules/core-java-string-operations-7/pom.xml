@@ -51,12 +51,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.liquibase</groupId>
-            <artifactId>liquibase-core</artifactId>
-            <version>${liquibase.core.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.13.2</version>
@@ -84,7 +78,6 @@
         <apache.tika.version>2.9.1</apache.tika.version>
         <commons-text.version>1.10.0</commons-text.version>
         <icu4j.version>74.1</icu4j.version>
-        <liquibase.core.version>4.25.0</liquibase.core.version>
     </properties>
 
 </project>

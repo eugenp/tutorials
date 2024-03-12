@@ -39,7 +39,7 @@ class SpringSecurityTestGreetingControllerUnitTest {
     /*-----------------------------------------------------------------------------*/
 
     @Test
-    void givenRequestIsAnonymous_whenGetGreet_thenUnauthorized() throws Exception {
+    void givenRequestIsAnonymous_whenGetGreet_thenUnauthorized() {
         api.mutateWith(mockAuthentication(ANONYMOUS_AUTHENTICATION))
             .get()
             .uri("/greet")
@@ -49,7 +49,7 @@ class SpringSecurityTestGreetingControllerUnitTest {
     }
 
     @Test
-    void givenUserIsAuthenticated_whenGetGreet_thenOk() throws Exception {
+    void givenUserIsAuthenticated_whenGetGreet_thenOk() {
         final var greeting = "Whatever the service returns";
         when(messageService.greet()).thenReturn(Mono.just(greeting));
 
@@ -72,7 +72,7 @@ class SpringSecurityTestGreetingControllerUnitTest {
     /*---------------------------------------------------------------------------------------------------------------------*/
 
     @Test
-    void givenRequestIsAnonymous_whenGetSecuredRoute_thenUnauthorized() throws Exception {
+    void givenRequestIsAnonymous_whenGetSecuredRoute_thenUnauthorized() {
         api.mutateWith(mockAuthentication(ANONYMOUS_AUTHENTICATION))
             .get()
             .uri("/secured-route")
@@ -82,7 +82,7 @@ class SpringSecurityTestGreetingControllerUnitTest {
     }
 
     @Test
-    void givenUserIsGrantedWithRoleAuthorizedPersonnel_whenGetSecuredRoute_thenOk() throws Exception {
+    void givenUserIsGrantedWithRoleAuthorizedPersonnel_whenGetSecuredRoute_thenOk() {
         final var secret = "Secret!";
         when(messageService.getSecret()).thenReturn(Mono.just(secret));
 
@@ -97,7 +97,7 @@ class SpringSecurityTestGreetingControllerUnitTest {
     }
 
     @Test
-    void givenUserIsNotGrantedWithRoleAuthorizedPersonnel_whenGetSecuredRoute_thenForbidden() throws Exception {
+    void givenUserIsNotGrantedWithRoleAuthorizedPersonnel_whenGetSecuredRoute_thenForbidden() {
         api.mutateWith(mockJwt().authorities(new SimpleGrantedAuthority("admin")))
             .get()
             .uri("/secured-route")
@@ -112,7 +112,7 @@ class SpringSecurityTestGreetingControllerUnitTest {
     /*---------------------------------------------------------------------------------------------------------*/
 
     @Test
-    void givenRequestIsAnonymous_whenGetSecuredMethod_thenUnauthorized() throws Exception {
+    void givenRequestIsAnonymous_whenGetSecuredMethod_thenUnauthorized() {
         api.mutateWith(mockAuthentication(ANONYMOUS_AUTHENTICATION))
             .get()
             .uri("/secured-method")
@@ -122,7 +122,7 @@ class SpringSecurityTestGreetingControllerUnitTest {
     }
 
     @Test
-    void givenUserIsGrantedWithRoleAuthorizedPersonnel_whenGetSecuredMethod_thenOk() throws Exception {
+    void givenUserIsGrantedWithRoleAuthorizedPersonnel_whenGetSecuredMethod_thenOk() {
         final var secret = "Secret!";
         when(messageService.getSecret()).thenReturn(Mono.just(secret));
 
@@ -137,7 +137,7 @@ class SpringSecurityTestGreetingControllerUnitTest {
     }
 
     @Test
-    void givenUserIsNotGrantedWithRoleAuthorizedPersonnel_whenGetSecuredMethod_thenForbidden() throws Exception {
+    void givenUserIsNotGrantedWithRoleAuthorizedPersonnel_whenGetSecuredMethod_thenForbidden() {
         api.mutateWith(mockJwt().authorities(new SimpleGrantedAuthority("admin")))
             .get()
             .uri("/secured-method")

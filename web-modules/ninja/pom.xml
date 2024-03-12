@@ -214,7 +214,7 @@
         <jetty.version>9.4.18.v20190429</jetty.version>
         <bootstrap.version>3.3.4</bootstrap.version>
         <jquery.version>2.1.3</jquery.version>
-        <compiler.plugin.version>3.2</compiler.plugin.version>
+        <compiler.plugin.version>3.12.1</compiler.plugin.version>
         <source.version>17</source.version>
         <target.version>17</target.version>
         <enforcer.plugin.version>1.3.1</enforcer.plugin.version>

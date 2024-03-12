@@ -1,10 +1,11 @@
 package com.baeldung.ecommerce.service;
 
-import com.baeldung.ecommerce.model.Order;
 import org.springframework.validation.annotation.Validated;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
+import com.baeldung.ecommerce.model.Order;
+
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 @Validated
 public interface OrderService {

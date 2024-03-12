@@ -7,25 +7,13 @@
     <artifactId>spring-boot-persistence-4</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-boot-persistence-4</name>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.junit</groupId>
-                <artifactId>junit-bom</artifactId>
-                <version>${junit-jupiter.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring.boot.dependencies}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+    
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-3</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-boot-3</relativePath>
+    </parent>
 
     <dependencies>
         <dependency>
@@ -55,7 +43,6 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>${jackson.version}</version>
         </dependency>
         <dependency>
             <groupId>org.modelmapper</groupId>
@@ -80,18 +67,20 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.baeldung.customfunc.CustomFunctionApplication</mainClass>
+                </configuration>
             </plugin>
         </plugins>
     </build>
 
     <properties>
         <spring.boot.dependencies>3.2.2</spring.boot.dependencies>
-        <junit-jupiter.version>5.9.3</junit-jupiter.version>
+        <junit-jupiter.version>5.10.2</junit-jupiter.version>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <db.util.version>1.0.7</db.util.version>
         <hypersistence-utils.version>3.7.0</hypersistence-utils.version>
-        <jackson.version>2.16.0</jackson.version>
         <modelmapper.version>3.2.0</modelmapper.version>
         <commons-codec.version>1.16.1</commons-codec.version>
         <lombok.version>1.18.30</lombok.version>

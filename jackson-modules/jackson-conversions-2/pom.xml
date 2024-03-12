@@ -56,7 +56,7 @@
 
     <properties>
         <mockserver-netty.version>5.13.2</mockserver-netty.version>
-        <json.version>20220320</json.version>
+        <json.version>20240303</json.version>
     </properties>
 
 </project>

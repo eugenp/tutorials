@@ -98,7 +98,7 @@
 
     <properties>
         <mapstruct.version>1.6.0.Beta1</mapstruct.version>
-        <testcontainers.version>1.19.1</testcontainers.version>
+        <testcontainers.version>1.19.6</testcontainers.version>
     </properties>
 
 </project>

@@ -49,4 +49,8 @@
         </plugins>
     </build>
 
+    <properties>
+        <start-class>com.baeldung.Application</start-class>
+    </properties>
+
 </project>

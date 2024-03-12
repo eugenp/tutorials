@@ -22,7 +22,7 @@
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
-            <version>${json.version}</version>
+            <version>${org.json.version}</version>
         </dependency>
         <dependency>
             <groupId>com.opencsv</groupId>
@@ -55,7 +55,6 @@
     <properties>
         <source.version>11</source.version>
         <target.version>11</target.version>
-        <json.version>20200518</json.version>
         <opencsv.version>5.8</opencsv.version>
     </properties>
 

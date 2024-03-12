@@ -95,10 +95,10 @@ dependencies {
         [group: 'org.springframework', name: 'spring-core', version: '4.3.5.RELEASE'],
         [group: 'org.springframework', name: 'spring-aop', version: '4.3.5.RELEASE']
     )
-    testImplementation('org.hibernate:hibernate-core:5.2.12.Final') {
+    testImplementation('org.hibernate.orm:hibernate-core:6.4.2.Final') {
         transitive = true
     }
-    runtimeOnly(group: 'org.hibernate', name: 'hibernate-core', version: '5.2.12.Final') {
+    runtimeOnly(group: 'org.hibernate.orm', name: 'hibernate-core', version: '6.4.2.Final') {
         transitive = false
     }
     runtimeOnly "org.codehaus.groovy:groovy-all:2.4.11@jar"
