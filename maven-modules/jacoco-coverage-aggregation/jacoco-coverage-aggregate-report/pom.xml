@@ -17,12 +17,12 @@
     <dependencies>
         <dependency>
             <groupId>com.baeldung.jacoco-coverage-aggregation</groupId>
-            <artifactId>services</artifactId>
+            <artifactId>jacoco-coverage-services-example</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
         <dependency>
             <groupId>com.baeldung.jacoco-coverage-aggregation</groupId>
-            <artifactId>controllers</artifactId>
+            <artifactId>jacoco-coverage-controllers-example</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
     </dependencies>
