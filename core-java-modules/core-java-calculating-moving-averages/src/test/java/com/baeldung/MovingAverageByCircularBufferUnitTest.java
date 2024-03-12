@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class MovingAverageByCircularBufferTest {
+public class MovingAverageByCircularBufferUnitTest {
 
 @Test
 public void when_initial_average_is_calculated_it_should_be_zero() {
