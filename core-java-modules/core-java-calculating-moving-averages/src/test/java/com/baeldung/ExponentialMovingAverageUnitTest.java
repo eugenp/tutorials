@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class ExponentialMovingAverageTest {
+public class ExponentialMovingAverageUnitTest {
     @Test(expected = IllegalArgumentException.class)
     public void when_alpha_is_invalid_should_throw_exception() {
         new ExponentialMovingAverage(0); // Alpha outside valid range
