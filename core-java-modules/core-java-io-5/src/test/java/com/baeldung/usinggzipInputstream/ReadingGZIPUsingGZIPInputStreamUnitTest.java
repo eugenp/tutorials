@@ -3,7 +3,6 @@ package com.baeldung.usinggzipInputstream;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -28,15 +27,33 @@ public class ReadingGZIPUsingGZIPInputStreamUnitTest {
     }
 
     @Test
-    void givenGZFile_whenUsingGZipFileWithFilter_thenProcessLines() throws IOException {
-        String testFilePath = Objects.requireNonNull(ReadingGZIPUsingGZIPInputStreamUnitTest.class.getClassLoader().getResource("myFile.gz")).getFile();
+    public void givenGZFile_whenUsingStreamGZipFile_thenReadLines() throws IOException {
+        try (Stream<String> linesStream = Main.streamGZipFile(testFilePath)) {
+            List<String> resultLines = linesStream
+                    .filter(expectedFilteredLines::contains)
+                    .collect(Collectors.toList());
 
-        List<String> expectedFilteredLines = Arrays.asList("Line 1 content", "Line 2 content", "Line 3 content");
+            assertEquals(expectedFilteredLines, resultLines);
+        }
+    }
 
-        List<String> result = new ArrayList<>();
-        Main.readGZipFileWithFilter(testFilePath, result::addAll);
+    @Test
+    void givenGZFile_whenUsingtestFindInZipFile_thenReadLines() throws IOException {
+        String toFind = "Line 1 content";
+
+        List<String> result = Main.findInZipFile(testFilePath, toFind);
+
+        assertEquals("Line 1 content", result.get(0));
+
+    }
+
+    @Test
+    void givenGZFile_whenUsingContentsOfZipFile_thenReadLines() throws IOException {
+
+        List<String> result = Main.useContentsOfZipFile(testFilePath, lines -> {
+            lines.filter(line -> line.startsWith("prefix")).forEach(System.out::println);
+        });
 
         assertEquals(expectedFilteredLines, result);
     }
-
 }
