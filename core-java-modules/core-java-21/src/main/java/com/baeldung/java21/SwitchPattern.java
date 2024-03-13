@@ -9,17 +9,20 @@ public class SwitchPattern {
     }
     
     static class SavingsAccount extends Account {
+        @Override
         double getBalance() {
             return 100;
         } 
     }
     
     static class TermAccount extends Account {
+        @Override
         double getBalance() {
             return 1000;
         } 
     }
-    class CurrentAccount extends Account {
+    static class CurrentAccount extends Account {
+        @Override
         double getBalance() {
             return 10000;
         } 
@@ -47,7 +50,7 @@ public class SwitchPattern {
             case TermAccount ta -> result = ta.getBalance();
             case CurrentAccount ca -> result = ca.getBalance();
             default -> result = account.getBalance();
-        };
+        }
         return result;
     }
 }
