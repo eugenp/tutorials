@@ -1,6 +1,6 @@
 package com.baeldung.java21;
 
-import org.junit.Assert;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.Test;
 
 public class StringTemplateUnitTest {
@@ -8,6 +8,6 @@ public class StringTemplateUnitTest {
     @Test
     public void whenNoSwitchPattern_thenReturnSavingsAccountBalance() {
         StringTemplates stringTemplates = new StringTemplates();
-        Assert.assertEquals("Welcome to Baeldung", stringTemplates.getStringTemplate());
+        assertEquals("Welcome to Baeldung", stringTemplates.getStringTemplate());
     }
 }

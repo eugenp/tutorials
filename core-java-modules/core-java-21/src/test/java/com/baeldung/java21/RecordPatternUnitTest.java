@@ -1,6 +1,6 @@
 package com.baeldung.java21;
 
-import org.junit.Assert;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.Test;
 
 import com.baeldung.java21.RecordPattern.Color;
@@ -12,18 +12,18 @@ public class RecordPatternUnitTest {
 
     @Test
     public void whenNoRecordPattern_thenReturnOutput() {
-        Assert.assertEquals(5, RecordPattern.beforeRecordPattern(new Point(2, 3)));
+        assertEquals(5, RecordPattern.beforeRecordPattern(new Point(2, 3)));
     }
     
     @Test
     public void whenRecordPattern_thenReturnOutput() {
-        Assert.assertEquals(5, RecordPattern.afterRecordPattern(new Point(2, 3)));
+        assertEquals(5, RecordPattern.afterRecordPattern(new Point(2, 3)));
     }
     
     @Test
     public void whenRecordPattern_thenReturnColorOutput() {
         ColoredPoint coloredPoint = new ColoredPoint(new Point(2, 3), Color.GREEN);
         RandomPoint randomPoint = new RandomPoint(coloredPoint);
-        Assert.assertEquals(Color.GREEN, RecordPattern.getRamdomPointColor(randomPoint));
+        assertEquals(Color.GREEN, RecordPattern.getRamdomPointColor(randomPoint));
     }
 }
