@@ -10,6 +10,7 @@ This module contains articles about core Spring Security
 - [A Custom Spring SecurityConfigurer](https://www.baeldung.com/spring-security-custom-configurer)
 - [HttpSecurity vs. WebSecurity in Spring Security](https://www.baeldung.com/spring-security-httpsecurity-vs-websecurity)
 - [Migrate Application from Spring Security 5 to Spring Security 6/Spring Boot 3](https://www.baeldung.com/spring-security-migrate-5-to-6)
+- [Spring Security AuthorizationManager](https://www.baeldung.com/spring-security-authorizationmanager)
  
 ### Build the Project
 
