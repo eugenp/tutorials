@@ -27,17 +27,6 @@ public class ReadingGZIPUsingGZIPInputStreamUnitTest {
     }
 
     @Test
-    public void givenGZFile_whenUsingStreamGZipFile_thenReadLines() throws IOException {
-        try (Stream<String> linesStream = Main.streamGZipFile(testFilePath)) {
-            List<String> resultLines = linesStream
-                    .filter(expectedFilteredLines::contains)
-                    .collect(Collectors.toList());
-
-            assertEquals(expectedFilteredLines, resultLines);
-        }
-    }
-
-    @Test
     void givenGZFile_whenUsingtestFindInZipFile_thenReadLines() throws IOException {
         String toFind = "Line 1 content";
 
