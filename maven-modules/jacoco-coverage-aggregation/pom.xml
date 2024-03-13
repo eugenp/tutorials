@@ -6,8 +6,8 @@
     <groupId>com.baeldung</groupId>
     <artifactId>jacoco-coverage-aggregation</artifactId>
     <version>1.0</version>
-    <name>jacoco-coverage-aggregation</name>
     <packaging>pom</packaging>
+    <name>jacoco-coverage-aggregation</name>
 
     <parent>
         <groupId>com.baeldung</groupId>

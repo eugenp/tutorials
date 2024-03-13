@@ -6,8 +6,8 @@
     <groupId>com.baeldung</groupId>
     <artifactId>maven-copy-files</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>maven-copy-files</name>
     <packaging>pom</packaging>
+    <name>maven-copy-files</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 

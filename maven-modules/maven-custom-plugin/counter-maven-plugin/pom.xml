@@ -6,8 +6,8 @@
     <groupId>com.baeldung</groupId>
     <artifactId>counter-maven-plugin</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>counter-maven-plugin</name>
     <packaging>maven-plugin</packaging>
+    <name>counter-maven-plugin</name>
     <url>http://maven.apache.org</url>
 
     <organization>
