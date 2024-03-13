@@ -4,8 +4,8 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>helloworld</groupId>
     <artifactId>ToDoFunction</artifactId>
-    <version>1.0</version>
     <name>ToDoFunction</name>
+    <version>1.0</version>
     <packaging>jar</packaging>
 
     <parent>
