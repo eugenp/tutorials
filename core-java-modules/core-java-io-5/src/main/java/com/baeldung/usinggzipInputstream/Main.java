@@ -26,10 +26,6 @@ public class Main {
         System.out.println("Lines containing '" + searchTerm + "' in GZIP file:");
         foundLines.forEach(System.out::println);
 
-        // Test streamGZipFile method
-        System.out.println("Streaming contents of GZIP file:");
-        streamGZipFile(filePath).forEach(System.out::println);
-
         // Test useContentsOfZipFile method
         System.out.println("Using contents of GZIP file with consumer:");
         useContentsOfZipFile(filePath, linesStream -> {
@@ -62,15 +58,6 @@ public class Main {
 
             return bufferedReader.lines().filter(line -> line.contains(toFind)).collect(toList());
         }
-    }
-
-    public static Stream<String> streamGZipFile(String filePath) throws IOException {
-        InputStream inputStream = new FileInputStream(filePath);
-        GZIPInputStream gzipInputStream = new GZIPInputStream(inputStream);
-        InputStreamReader inputStreamReader = new InputStreamReader(gzipInputStream);
-        BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-
-        return bufferedReader.lines();
     }
 
     public static List<String> useContentsOfZipFile(String filePath, Consumer<Stream<String>> consumer) throws IOException {
