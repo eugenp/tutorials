@@ -1,77 +1,50 @@
 package com.baeldung.usinggzipInputstream;
 
+import org.junit.jupiter.api.Test;
+
 import java.io.*;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-import java.util.function.Consumer;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import java.util.zip.GZIPInputStream;
 
-import static java.util.stream.Collectors.toList;
+import static org.junit.Assert.assertEquals;
 
-public class Main {
-    static String filePath = Objects.requireNonNull(Main.class.getClassLoader().getResource("myFile.gz")).getFile();
+public class ReadingGZIPUsingGZIPInputStreamUnitTest {
+    String testFilePath = Objects.requireNonNull(ReadingGZIPUsingGZIPInputStreamUnitTest.class.getClassLoader().getResource("myFile.gz")).getFile();
+    List<String> expectedFilteredLines = Arrays.asList("Line 1 content", "Line 2 content", "Line 3 content");
 
-    public static void main(String[] args) throws IOException {
-        // Test readGZipFile method
-        List<String> fileContents = readGZipFile(filePath);
-        System.out.println("Contents of GZIP file:");
-        fileContents.forEach(System.out::println);
+    @Test
+    void givenGZFile_whenUsingGZIPInputStream_thenReadLines() throws IOException {
+        try (Stream<String> lines = Main.readGZipFile(testFilePath).stream()) {
+            List<String> result = lines
+                    .filter(expectedFilteredLines::contains)
+                    .collect(Collectors.toList());
 
-        // Test findInZipFile method
-        String searchTerm = "Line 1 content";
-        List<String> foundLines = findInZipFile(filePath, searchTerm);
-        System.out.println("Lines containing '" + searchTerm + "' in GZIP file:");
-        foundLines.forEach(System.out::println);
+            assertEquals(expectedFilteredLines, result);
+        }
+    }
 
-        // Test useContentsOfZipFile method
-        System.out.println("Using contents of GZIP file with consumer:");
-        useContentsOfZipFile(filePath, linesStream -> {
-            linesStream.filter(line -> line.length() > 10).forEach(System.out::println);
+    @Test
+    void givenGZFile_whenUsingtestFindInZipFile_thenReadLines() throws IOException {
+        String toFind = "Line 1 content";
+
+        List<String> result = Main.findInZipFile(testFilePath, toFind);
+
+        assertEquals("Line 1 content", result.get(0));
+
+    }
+
+    @Test
+    void givenGZFile_whenUsingContentsOfZipFile_thenReadLines() throws IOException {
+        AtomicInteger count = new AtomicInteger(0);
+
+        Main.useContentsOfZipFile(testFilePath, linesStream -> {
+            linesStream.filter(line -> line.length() > 10).forEach(line -> count.incrementAndGet());
         });
-    }
 
-
-    public static List<String> readGZipFile(String filePath) throws IOException {
-        List<String> lines = new ArrayList<>();
-        try (InputStream inputStream = new FileInputStream(filePath);
-             GZIPInputStream gzipInputStream = new GZIPInputStream(inputStream);
-             InputStreamReader inputStreamReader = new InputStreamReader(gzipInputStream);
-             BufferedReader bufferedReader = new BufferedReader(inputStreamReader)) {
-
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                lines.add(line);
-            }
-        }
-
-        return lines;
-    }
-
-    public static List<String> findInZipFile(String filePath, String toFind) throws IOException {
-        try (InputStream inputStream = new FileInputStream(filePath);
-             GZIPInputStream gzipInputStream = new GZIPInputStream(inputStream);
-             InputStreamReader inputStreamReader = new InputStreamReader(gzipInputStream);
-             BufferedReader bufferedReader = new BufferedReader(inputStreamReader)) {
-
-            return bufferedReader.lines().filter(line -> line.contains(toFind)).collect(toList());
-        }
-    }
-
-    public static List<String> useContentsOfZipFile(String filePath, Consumer<Stream<String>> consumer) throws IOException {
-        List<String> linesList;
-        try (InputStream inputStream = new FileInputStream(filePath);
-             GZIPInputStream gzipInputStream = new GZIPInputStream(inputStream);
-             InputStreamReader inputStreamReader = new InputStreamReader(gzipInputStream);
-             BufferedReader bufferedReader = new BufferedReader(inputStreamReader)) {
-
-            Stream<String> linesStream = bufferedReader.lines();
-            linesList = linesStream.collect(Collectors.toList());
-            consumer.accept(linesList.stream());
-        }
-
-        return linesList;
+        assertEquals(3, count.get());
     }
 }
