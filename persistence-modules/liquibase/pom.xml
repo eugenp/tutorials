@@ -17,7 +17,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>3.2.3</version>
+            <version>${spring-boot.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.slf4j</groupId>
@@ -28,23 +28,23 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-            <version>3.2.3</version>
+            <version>${spring-boot.version}</version>
         </dependency>
         <dependency>
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
-            <version>4.24.0</version>
+            <version>${liquibase.version}</version>
         </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.6.1</version>
+            <version>${postgresql.version}</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>net.lbruun.springboot</groupId>
             <artifactId>preliquibase-spring-boot-starter</artifactId>
-            <version>1.5.0</version>
+            <version>${preliquibase.version}</version>
         </dependency>
     </dependencies>
 
@@ -80,6 +80,10 @@
         <maven.compiler.target.version>17</maven.compiler.target.version>
         <maven.compiler.release>17</maven.compiler.release>
         <java.version>17</java.version>
+        <spring-boot.version>3.2.3</spring-boot.version>
+        <liquibase.version>4.26.0</liquibase.version>
+        <postgresql.version>42.7.2</postgresql.version>
+        <preliquibase.version>1.5.0</preliquibase.version>
     </properties>
 
 </project>
