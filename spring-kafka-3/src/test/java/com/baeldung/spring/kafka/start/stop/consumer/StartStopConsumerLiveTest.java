@@ -1,4 +1,4 @@
-package com.baeldung.spring.kafka.startstopconsumer;
+package com.baeldung.spring.kafka.start.stop.consumer;
 
 import com.baeldung.spring.kafka.start.stop.consumer.*;
 import org.apache.kafka.clients.producer.KafkaProducer;
