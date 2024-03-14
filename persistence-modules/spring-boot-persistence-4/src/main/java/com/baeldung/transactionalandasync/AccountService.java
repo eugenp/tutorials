@@ -29,15 +29,8 @@ public class AccountService {
         depositorAccount.setBalance(depositorAccount.getBalance().subtract(amount));
         favoredAccount.setBalance(favoredAccount.getBalance().add(amount));
 
-        auditTransferAttempt();
-
         accountRepository.save(depositorAccount);
         accountRepository.save(favoredAccount);
-    }
-
-    @Transactional(Transactional.TxType.REQUIRES_NEW)
-    public void auditTransferAttempt() {
-        // logic to save the transfer attempt
     }
 
     public void printReceipt() {
