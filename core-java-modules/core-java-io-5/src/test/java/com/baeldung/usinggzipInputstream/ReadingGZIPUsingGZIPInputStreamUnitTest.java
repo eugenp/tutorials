@@ -6,6 +6,7 @@ import java.io.*;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -38,11 +39,12 @@ public class ReadingGZIPUsingGZIPInputStreamUnitTest {
 
     @Test
     void givenGZFile_whenUsingContentsOfZipFile_thenReadLines() throws IOException {
+        AtomicInteger count = new AtomicInteger(0);
 
-        List<String> result = Main.useContentsOfZipFile(testFilePath, lines -> {
-            lines.filter(line -> line.startsWith("prefix")).forEach(System.out::println);
+        Main.useContentsOfZipFile(testFilePath, linesStream -> {
+            linesStream.filter(line -> line.length() > 10).forEach(line -> count.incrementAndGet());
         });
 
-        assertEquals(expectedFilteredLines, result);
+        assertEquals(3, count.get());
     }
 }
