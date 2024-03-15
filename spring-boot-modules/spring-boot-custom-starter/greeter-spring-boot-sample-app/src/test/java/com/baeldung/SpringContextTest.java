@@ -10,7 +10,6 @@ import com.baeldung.greeter.GreeterSampleApplication;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = GreeterSampleApplication.class)
-@ComponentScan("com.baeldung")
 public class SpringContextTest {
 
     @Test

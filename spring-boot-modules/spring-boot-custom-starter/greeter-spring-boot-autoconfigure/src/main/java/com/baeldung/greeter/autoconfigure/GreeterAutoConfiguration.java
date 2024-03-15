@@ -16,7 +16,6 @@ import com.baeldung.greeter.library.GreetingConfig;
 @Configuration
 @ConditionalOnClass(Greeter.class)
 @EnableConfigurationProperties(GreeterProperties.class)
-@ComponentScan("com.baeldung")
 public class GreeterAutoConfiguration {
 
     @Autowired

@@ -10,7 +10,6 @@ import com.baeldung.greeter.autoconfigure.GreeterAutoConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = GreeterAutoConfiguration.class)
-@ComponentScan("com.baeldung")
 public class SpringContextTest {
 
     @Test
