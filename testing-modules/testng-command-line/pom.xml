@@ -109,7 +109,7 @@
         <com.beust.jcommander.version>1.81</com.beust.jcommander.version>
         <org.webjars.jquery.version>3.5.1</org.webjars.jquery.version>
         <maven.clean.plugin.version>3.1.0</maven.clean.plugin.version>
-        <maven.compiler.plugin.version>3.8.0</maven.compiler.plugin.version>
+        <maven.compiler.plugin.version>3.12.1</maven.compiler.plugin.version>
         <maven.surefire.plugin.version>2.22.1</maven.surefire.plugin.version>
     </properties>
 

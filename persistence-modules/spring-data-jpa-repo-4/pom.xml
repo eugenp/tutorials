@@ -76,6 +76,16 @@
             <artifactId>logback-classic</artifactId>
             <version>${logback.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.hypersistence</groupId>
+            <artifactId>hypersistence-utils-hibernate-62</artifactId>
+            <version>${hypersistence-utils.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.vladmihalcea</groupId>
+            <artifactId>db-util</artifactId>
+            <version>${db.util.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -130,6 +140,8 @@
     <properties>
         <hypersistance-utils-hibernate-55.version>3.7.0</hypersistance-utils-hibernate-55.version>
         <postgresql.version>42.7.1</postgresql.version>
+        <db.util.version>1.0.7</db.util.version>
+        <hypersistence-utils.version>3.7.0</hypersistence-utils.version>
     </properties>
 
 </project>

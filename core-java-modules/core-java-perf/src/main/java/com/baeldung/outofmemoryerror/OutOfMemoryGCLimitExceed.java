@@ -1,19 +1,21 @@
 package com.baeldung.outofmemoryerror;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Random;
 
 public class OutOfMemoryGCLimitExceed {
-    public static void addRandomDataToMap() {
-        Map<Integer, String> dataMap = new HashMap<>();
-        Random r = new Random();
+
+    public static final Random RANDOM = new Random();
+
+    public static void addRandomDataToList() {
+        List<String> dataList = new LinkedList<>();
         while (true) {
-            dataMap.put(r.nextInt(), String.valueOf(r.nextInt()));
+            dataList.add(String.valueOf(RANDOM.nextInt()));
         }
     }
 
     public static void main(String[] args) {
-        OutOfMemoryGCLimitExceed.addRandomDataToMap();
+        OutOfMemoryGCLimitExceed.addRandomDataToList();
     }
 }

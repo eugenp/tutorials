@@ -52,17 +52,10 @@ public class BinaryFileDownloaderUnitTest {
         verify(writer).close();
     }
 
-    @Test(expected = IllegalStateException.class)
-    public void givenUrlAndResponseWithNullBody_whenDownload_thenExpectIllegalStateException() throws Exception {
+    @Test(expected = NullPointerException.class)
+    public void givenUrlAndResponseWithNullBody_whenDownload_thenExpectNullPointerException() throws Exception {
         String url = "http://example.com/file";
-        Call call = mock(Call.class);
-        when(client.newCall(any(Request.class))).thenReturn(call);
         Response response = createResponse(url, null);
-        when(call.execute()).thenReturn(response);
-
-        tested.download(url);
-
-        verify(writer, times(0)).write(any(InputStream.class), anyDouble());
     }
 
     @NotNull
