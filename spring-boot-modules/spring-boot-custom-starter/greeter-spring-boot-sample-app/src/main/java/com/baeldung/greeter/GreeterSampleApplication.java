@@ -6,8 +6,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.baeldung.greeter.library.Greeter;
-import org.springframework.context.annotation.ComponentScan;
-
 @SpringBootApplication
 public class GreeterSampleApplication implements CommandLineRunner {
 
