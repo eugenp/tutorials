@@ -54,13 +54,13 @@
         <dependency>
             <groupId>jakarta.json</groupId>
             <artifactId>jakarta.json-api</artifactId>
-            <version>2.0.1</version>
+            <version>${jakarta.json-api.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.johnzon</groupId>
             <artifactId>johnzon-jsonb</artifactId>
-            <version>2.0.0</version>
+            <version>${johnzon-jsonb.version}</version>
         </dependency>
         <!-- utils -->
         <dependency>
@@ -163,6 +163,8 @@
         <snippetsDirectory>${project.build.directory}/generated-snippets</snippetsDirectory>
         <hikaricp.version>5.1.0</hikaricp.version>
         <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
+        <jakarta.json-api.version>2.0.1</jakarta.json-api.version>
+        <johnzon-jsonb.version>2.0.0</johnzon-jsonb.version>
     </properties>
 
 </project>
