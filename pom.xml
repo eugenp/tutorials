@@ -755,7 +755,7 @@
                 <module>lombok-modules</module>
                 <module>lucene</module>
                 <module>mapstruct</module>
-                <!--<module>maven-modules</module>--> <!-- JAVA-27739 -->
+                <module>maven-modules</module>
                 <module>mesos-marathon</module>
                 <module>messaging-modules</module>
                 <module>metrics</module>
@@ -1003,7 +1003,7 @@
                 <module>lombok-modules</module>
                 <module>lucene</module>
                 <module>mapstruct</module>
-                <!--<module>maven-modules</module>--> <!-- JAVA-27739 -->
+                <module>maven-modules</module>
                 <module>mesos-marathon</module>
                 <module>messaging-modules</module>
                 <module>metrics</module>
