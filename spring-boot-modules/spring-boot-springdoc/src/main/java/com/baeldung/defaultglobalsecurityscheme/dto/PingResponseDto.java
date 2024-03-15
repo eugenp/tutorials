@@ -3,7 +3,7 @@ package com.baeldung.defaultglobalsecurityscheme.dto;
 import java.time.OffsetDateTime;
 import java.util.Objects;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
