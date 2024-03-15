@@ -2,6 +2,7 @@ package com.baeldung;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -9,6 +10,7 @@ import com.baeldung.greeter.autoconfigure.GreeterAutoConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = GreeterAutoConfiguration.class)
+@ComponentScan("com.baeldung")
 public class SpringContextTest {
 
     @Test
