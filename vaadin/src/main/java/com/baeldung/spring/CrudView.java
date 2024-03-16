@@ -1,5 +1,7 @@
-package com.baeldung;
+package com.baeldung.spring;
 
+import com.baeldung.data.Employee;
+import com.baeldung.data.EmployeeRepository;
 import org.springframework.util.StringUtils;
 
 import com.vaadin.flow.component.button.Button;
@@ -11,8 +13,8 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
 import com.vaadin.flow.router.Route;
 
-@Route
-public class MainView extends VerticalLayout {
+@Route("crud")
+public class CrudView extends VerticalLayout {
 
     private final EmployeeRepository employeeRepository;
 
@@ -24,7 +26,7 @@ public class MainView extends VerticalLayout {
 
     private final Button addNewBtn;
 
-    public MainView(EmployeeRepository repo, EmployeeEditor editor) {
+    public CrudView(EmployeeRepository repo, EmployeeEditor editor) {
         this.employeeRepository = repo;
         this.editor = editor;
         this.grid = new Grid<>(Employee.class);
