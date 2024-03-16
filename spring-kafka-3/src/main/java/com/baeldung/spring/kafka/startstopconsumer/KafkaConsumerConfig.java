@@ -1,4 +1,4 @@
-package com.baeldung.spring.kafka.start.stop.consumer;
+package com.baeldung.spring.kafka.startstopconsumer;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;

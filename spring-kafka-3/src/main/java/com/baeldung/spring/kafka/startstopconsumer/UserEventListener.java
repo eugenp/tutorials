@@ -1,4 +1,4 @@
-package com.baeldung.spring.kafka.start.stop.consumer;
+package com.baeldung.spring.kafka.startstopconsumer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

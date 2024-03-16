@@ -1,4 +1,4 @@
-package com.baeldung.spring.kafka.start.stop.consumer;
+package com.baeldung.spring.kafka.startstopconsumer;
 
 public class UserEvent {
     private String userEventId;

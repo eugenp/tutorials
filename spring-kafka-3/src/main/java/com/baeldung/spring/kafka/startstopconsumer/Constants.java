@@ -1,4 +1,4 @@
-package com.baeldung.spring.kafka.start.stop.consumer;
+package com.baeldung.spring.kafka.startstopconsumer;
 
 public class Constants {
     public static final String MULTI_PARTITION_TOPIC = "multi_partition_topic";
