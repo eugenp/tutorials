@@ -1,6 +1,5 @@
 package com.baeldung.spring.boot.management.trace;
 
-import com.google.common.collect.Sets;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 
