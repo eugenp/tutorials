@@ -117,12 +117,7 @@
             <version>${jstl.version}</version>
             <scope>runtime</scope>
         </dependency>
-        <!-- util -->
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-        </dependency>
+
     </dependencies>
 
     <build>
