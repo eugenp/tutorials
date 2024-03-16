@@ -3,16 +3,16 @@ package com.baeldung.java21;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
-public class SwitchPatternUnitTest {
+class SwitchPatternUnitTest {
 
     @Test
-    public void whenNoSwitchPattern_thenReturnSavingsAccountBalance() {
+    void whenNoSwitchPattern_thenReturnSavingsAccountBalance() {
         SwitchPattern.SavingsAccount savingsAccount = new SwitchPattern.SavingsAccount();
         assertEquals(100, SwitchPattern.getBalanceWithOutSwitchPattern(savingsAccount), 0);
     }
     
     @Test
-    public void whenSwitchPattern_thenReturnSavingsAccountBalance() {
+    void whenSwitchPattern_thenReturnSavingsAccountBalance() {
         SwitchPattern.SavingsAccount savingsAccount = new SwitchPattern.SavingsAccount();
         assertEquals(100, SwitchPattern.getBalanceWithSwitchPattern(savingsAccount), 0);
     }

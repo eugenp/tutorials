@@ -8,20 +8,20 @@ import com.baeldung.java21.RecordPattern.ColoredPoint;
 import com.baeldung.java21.RecordPattern.Point;
 import com.baeldung.java21.RecordPattern.RandomPoint;
 
-public class RecordPatternUnitTest {
+class RecordPatternUnitTest {
 
     @Test
-    public void whenNoRecordPattern_thenReturnOutput() {
+    void whenNoRecordPattern_thenReturnOutput() {
         assertEquals(5, RecordPattern.beforeRecordPattern(new Point(2, 3)));
     }
     
     @Test
-    public void whenRecordPattern_thenReturnOutput() {
+    void whenRecordPattern_thenReturnOutput() {
         assertEquals(5, RecordPattern.afterRecordPattern(new Point(2, 3)));
     }
     
     @Test
-    public void whenRecordPattern_thenReturnColorOutput() {
+    void whenRecordPattern_thenReturnColorOutput() {
         ColoredPoint coloredPoint = new ColoredPoint(new Point(2, 3), Color.GREEN);
         RandomPoint randomPoint = new RandomPoint(coloredPoint);
         assertEquals(Color.GREEN, RecordPattern.getRamdomPointColor(randomPoint));

@@ -3,10 +3,10 @@ package com.baeldung.java21;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
-public class StringTemplateUnitTest {
+class StringTemplateUnitTest {
 
     @Test
-    public void whenNoSwitchPattern_thenReturnSavingsAccountBalance() {
+    void whenNoSwitchPattern_thenReturnSavingsAccountBalance() {
         StringTemplates stringTemplates = new StringTemplates();
         assertEquals("Welcome to Baeldung", stringTemplates.getStringTemplate());
     }
