@@ -1,17 +1,18 @@
 package com.baeldung.streams.flatmap.map;
 
+import static java.util.Arrays.asList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static java.util.Arrays.asList;
-
+import org.junit.jupiter.api.Test;
 
 class Java8MapAndFlatMapUnitTest {
 
@@ -48,4 +49,35 @@ class Java8MapAndFlatMapUnitTest {
             .flatMap(s -> Optional.of("STRING")));
     }
 
+    @Test
+    void givenMaps_whenCalledFlatMap_thenMultipleMapsMergedIntoOneMap() {
+
+        Map<String, Integer> playerMap1 = new HashMap<String, Integer>() {{
+            put("Kai", 92);
+            put("Liam", 100);
+        }};
+        Map<String, Integer> playerMap2 = new HashMap<String, Integer>() {{
+            put("Eric", 42);
+            put("Kevin", 77);
+        }};
+        Map<String, Integer> playerMap3 = new HashMap<String, Integer>() {{
+            put("Saajan", 35);
+        }};
+
+        Map<String, Integer> expectedMap = new HashMap<String, Integer>() {{
+            put("Saajan", 35);
+            put("Liam", 100);
+            put("Kai", 92);
+            put("Eric", 42);
+            put("Kevin", 77);
+        }};
+
+        List<Map<String, Integer>> playerMaps = Arrays.asList(playerMap1, playerMap2, playerMap3);
+        Map<String, Integer> mergedMap = playerMaps.stream()
+            .flatMap(map -> map.entrySet()
+                .stream())
+            .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+
+        assertEquals(expectedMap, mergedMap);
+    }
 }
