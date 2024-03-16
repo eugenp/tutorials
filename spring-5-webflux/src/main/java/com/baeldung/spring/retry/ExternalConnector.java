@@ -24,7 +24,7 @@ public class ExternalConnector {
             .uri(PATH_BY_ID, stockId)
             .accept(MediaType.APPLICATION_JSON)
             .retrieve()
-            .onStatus(HttpStatus::is5xxServerError, response -> Mono.error(new ServiceException("Server error", response.rawStatusCode())))
+            .onStatus(httpStatusCode -> httpStatusCode.is5xxServerError(), response -> Mono.error(new ServiceException("Server error", response.rawStatusCode())))
             .bodyToMono(String.class)
             .retryWhen(Retry.backoff(3, Duration.ofSeconds(2))
                 .filter(throwable -> throwable instanceof ServiceException)
