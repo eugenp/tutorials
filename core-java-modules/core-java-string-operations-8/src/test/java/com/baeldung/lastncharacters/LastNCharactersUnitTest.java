@@ -22,12 +22,14 @@ public class LastNCharactersUnitTest {
             .skip(s.length() - n)
             .map(String::valueOf)
             .collect(Collectors.joining());
+
         assertThat(result).isEqualTo("2024");
     }
 
     @Test
     void givenString_whenUsingOneArgSubstringMethod_thenObtainLastNCharacters() {
         int beginIndex = s.length() - n;
+
         assertThat(s.substring(beginIndex)).isEqualTo("2024");
     }
 
@@ -37,6 +39,7 @@ public class LastNCharactersUnitTest {
             .skip(s.length() - n)
             .map(String::valueOf)
             .collect(Collectors.joining());
+
         assertThat(result).isEqualTo("2024");
     }
 
@@ -49,6 +52,7 @@ public class LastNCharactersUnitTest {
     void givenString_whenUsingTwoArgSubstringMethod_thenObtainLastNCharacters() {
         int beginIndex = s.length() - n;
         String result = s.substring(beginIndex, s.length());
+
         assertThat(result).isEqualTo("2024");
     }
 
