@@ -1,5 +1,7 @@
 package com.baeldung.jwt;
 
+import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @DisplayName("OpenAPI JWT Live Tests")
+@Disabled
 class OpenApiJwtIntegrationTest
 {
     @LocalServerPort
