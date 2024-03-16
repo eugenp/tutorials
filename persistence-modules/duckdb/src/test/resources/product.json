@@ -1,0 +1,17 @@
+[
+  {
+    "productId": 1,
+    "productName":"EZ Curl Bar",
+    "category": "Sports Equipment"
+  },
+  {
+    "productId": 2,
+    "productName": "7' Barbell",
+    "category": "Sports Equipment"
+  },
+  {
+    "productId": 3,
+    "productName": "Single Mouthguard - Black",
+    "category": "Sports Equipment"
+  }
+]
