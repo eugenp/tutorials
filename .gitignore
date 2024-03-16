@@ -131,3 +131,4 @@ persistence-modules/neo4j/data/**
 
 #spring-5-webflux-2
 **/testdb.mv.db
+spring-cloud-modules/spring-cloud-bootstrap/gateway/node/

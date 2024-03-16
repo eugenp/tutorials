@@ -1,50 +1,47 @@
-import {Component} from "@angular/core";
-import {Principal} from "./principal";
-import {Response} from "@angular/http";
+import {Component, OnInit} from '@angular/core';
+import {CommonModule} from "@angular/common";
 import {Book} from "./book";
+import {Principal} from "./principal";
 import {HttpService} from "./http.service";
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: "./app.component.html",
+  styles: [],
 })
-export class AppComponent {
-  selectedBook: Book = null;
-  principal: Principal = new Principal(false, []);
+export class AppComponent implements OnInit {
+  title = 'Book App';
+  selectedBook?: Book;
+  principal: Principal = new Principal(false, [], {});
   loginFailed: boolean = false;
 
-  constructor(private httpService: HttpService){}
+  constructor(private httpService: HttpService) {
+  }
 
   ngOnInit(): void {
-    this.httpService.me()
-      .subscribe((response: Response) => {
-        let principalJson = response.json();
-        this.principal = new Principal(principalJson.authenticated, principalJson.authorities);
-      }, (error) => {
-        console.log(error);
-      });
+    this.httpService.me().subscribe({
+      next: (response) => {
+        this.principal = new Principal(response.body?.authenticated || false, response.body?.authorities || [], {})
+      },
+      complete: () => console.log('complete'),
+      error: (error: string) => console.error(error)
+    })
   }
 
   onLogout() {
     this.httpService.logout()
-      .subscribe((response: Response) => {
-        if (response.status === 200) {
-          this.loginFailed = false;
-          this.principal = new Principal(false, []);
-          window.location.replace(response.url);
-        }
-      }, (error) => {
-        console.log(error);
-      });
+      .subscribe({
+        next: (response) => {
+          if (response.status === 200) {
+            this.loginFailed = false;
+            this.principal = new Principal(false, [], {})
+            window.location.replace(response.url || "/login");
+          }
+        },
+        error: error => console.error(error),
+        complete: () => console.log('complete')
+      })
   }
-
-  closeBookDetail() {
-    this.selectedBook = null;
-  }
-
-  selectBook(book: Book) {
-    this.selectedBook = book;
-  }
-
 }
