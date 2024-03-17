@@ -2,6 +2,7 @@ package com.baeldung.streams.flatmap.map;
 
 import static java.util.Arrays.asList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -72,11 +73,49 @@ class Java8MapAndFlatMapUnitTest {
             put("Kevin", 77);
         }};
 
-        List<Map<String, Integer>> playerMaps = Arrays.asList(playerMap1, playerMap2, playerMap3);
-        Map<String, Integer> mergedMap = playerMaps.stream()
+        Map<String, Integer> mergedMap = Stream.of(playerMap1, playerMap2, playerMap3)
             .flatMap(map -> map.entrySet()
                 .stream())
             .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+
+        assertEquals(expectedMap, mergedMap);
+    }
+
+    @Test
+    void givenMapsWithDuplicateKeys_whenCalledFlatMap_thenMultipleMapsMergedIntoOneMap() {
+
+        Map<String, Integer> playerMap1 = new HashMap<String, Integer>() {{
+            put("Kai", 92);
+            put("Liam", 100);
+        }};
+        Map<String, Integer> playerMap2 = new HashMap<String, Integer>() {{
+            put("Eric", 42);
+            put("Kevin", 77);
+        }};
+        Map<String, Integer> playerMap3 = new HashMap<String, Integer>() {{
+            put("Saajan", 35);
+        }};
+        Map<String, Integer> playerMap4 = new HashMap<String, Integer>() {{
+            put("Kai", 76);
+        }};
+
+        Map<String, Integer> expectedMap = new HashMap<String, Integer>() {{
+            put("Saajan", 35);
+            put("Liam", 100);
+            put("Kai", 76);
+            put("Eric", 42);
+            put("Kevin", 77);
+        }};
+
+        assertThrows(IllegalStateException.class, () -> Stream.of(playerMap1, playerMap2, playerMap3, playerMap4)
+            .flatMap(map -> map.entrySet()
+                .stream())
+            .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)), "Duplicate key Kai (attempted merging values 92 and 76)");
+
+        Map<String, Integer> mergedMap = Stream.of(playerMap1, playerMap2, playerMap3, playerMap4)
+            .flatMap(map -> map.entrySet()
+                .stream())
+            .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (existing, newValue) -> newValue));
 
         assertEquals(expectedMap, mergedMap);
     }
