@@ -1,8 +1,7 @@
 package com.baeldung.mapper;
 
 import com.baeldung.dto.WeekDayNumber;
-import com.baeldung.enums.WeekDay;
-import com.baeldung.enums.WorkWeekDay;
+import com.baeldung.enums.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -129,7 +128,8 @@ class WeekDayMapperTest {
     /**
      * Week day to work week day with exception handling.
      *
-     * @param weekDay the week day
+     * @param weekDay             the week day
+     * @param expectedWorkWeekDay the expected work week day
      */
     @ParameterizedTest
     @CsvSource({"Mon,Mon", "Fri,Fri", "Sat,", "Sun,"})
@@ -143,5 +143,109 @@ class WeekDayMapperTest {
             WorkWeekDay targetWorkWeekDay = WeekDayMapper.INSTANCE.weekDayToWorkWeekDayWithExceptionHandling(weekDay);
             assertEquals(expectedWorkWeekDay, targetWorkWeekDay);
         }
+    }
+
+    /**
+     * Apply suffix.
+     *
+     * @param weekDay        the week day
+     * @param expectedResult the expected result
+     */
+    @ParameterizedTest
+    @CsvSource({"Mon,Mon_Value", "Fri,Fri_Value"})
+    void applySuffix(WeekDay weekDay, WeekDaySuffixed expectedResult) {
+        WeekDaySuffixed result = WeekDayMapper.INSTANCE.applySuffix(weekDay);
+        assertEquals(expectedResult, result);
+    }
+
+    /**
+     * Apply prefix.
+     *
+     * @param weekDay        the week day
+     * @param expectedResult the expected result
+     */
+    @ParameterizedTest
+    @CsvSource({"Mon,Value_Mon", "Fri,Value_Fri"})
+    void applyPrefix(WeekDay weekDay, WeekDayPrefixed expectedResult) {
+        WeekDayPrefixed result = WeekDayMapper.INSTANCE.applyPrefix(weekDay);
+        assertEquals(expectedResult, result);
+    }
+
+    /**
+     * Strip suffix.
+     *
+     * @param weekDay        the week day
+     * @param expectedResult the expected result
+     */
+    @ParameterizedTest
+    @CsvSource({"Mon_Value,Mon", "Fri_Value,Fri"})
+    void stripSuffix(WeekDaySuffixed weekDay, WeekDay expectedResult) {
+        WeekDay result = WeekDayMapper.INSTANCE.stripSuffix(weekDay);
+        assertEquals(expectedResult, result);
+    }
+
+    /**
+     * Strip prefix.
+     *
+     * @param weekDay        the week day
+     * @param expectedResult the expected result
+     */
+    @ParameterizedTest
+    @CsvSource({"Value_Mon,Mon", "Value_Fri,Fri"})
+    void stripPrefix(WeekDayPrefixed weekDay, WeekDay expectedResult) {
+        WeekDay result = WeekDayMapper.INSTANCE.stripPrefix(weekDay);
+        assertEquals(expectedResult, result);
+    }
+
+    /**
+     * Apply lowercase.
+     *
+     * @param weekDay        the week day
+     * @param expectedResult the expected result
+     */
+    @ParameterizedTest
+    @CsvSource({"Mon,mon", "Fri,fri"})
+    void applyLowercase(WeekDay weekDay, WeekDayLowercase expectedResult) {
+        WeekDayLowercase result = WeekDayMapper.INSTANCE.applyLowercase(weekDay);
+        assertEquals(expectedResult, result);
+    }
+
+    /**
+     * Apply uppercase.
+     *
+     * @param weekDay        the week day
+     * @param expectedResult the expected result
+     */
+    @ParameterizedTest
+    @CsvSource({"Mon,MON", "Fri,FRI"})
+    void applyUppercase(WeekDay weekDay, WeekDayUppercase expectedResult) {
+        WeekDayUppercase result = WeekDayMapper.INSTANCE.applyUppercase(weekDay);
+        assertEquals(expectedResult, result);
+    }
+
+    /**
+     * Underscore tp capital.
+     *
+     * @param weekDay        the week day
+     * @param expectedResult the expected result
+     */
+    @ParameterizedTest
+    @CsvSource({"MONDAY_VALUE,Monday_Value", "FRIDAY_VALUE,Friday_Value"})
+    void underscoreTpCapital(WeekDayUnderscore weekDay, String expectedResult) {
+        String result = WeekDayMapper.INSTANCE.underscoreToCapital(weekDay);
+        assertEquals(expectedResult, result);
+    }
+
+    /**
+     * Lowercase to capital.
+     *
+     * @param weekDay        the week day
+     * @param expectedResult the expected result
+     */
+    @ParameterizedTest
+    @CsvSource({"mon,Mon", "fri,Fri"})
+    void lowercaseToCapital(WeekDayLowercase weekDay, WeekDay expectedResult) {
+        WeekDay result = WeekDayMapper.INSTANCE.lowercaseToCapital(weekDay);
+        assertEquals(expectedResult, result);
     }
 }

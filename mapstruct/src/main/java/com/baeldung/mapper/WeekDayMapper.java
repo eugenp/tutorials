@@ -1,12 +1,8 @@
 package com.baeldung.mapper;
 
 import com.baeldung.dto.WeekDayNumber;
-import com.baeldung.enums.WeekDay;
-import com.baeldung.enums.WorkWeekDay;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.MappingConstants;
-import org.mapstruct.ValueMapping;
+import com.baeldung.enums.*;
+import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 
 import java.time.DayOfWeek;
@@ -183,5 +179,76 @@ public interface WeekDayMapper {
     @ValueMapping(target = "Fri", source = "Fri")
     @ValueMapping(target = MappingConstants.THROW_EXCEPTION, source = MappingConstants.ANY_UNMAPPED)
     WorkWeekDay weekDayToWorkWeekDayWithExceptionHandling(WeekDay source);
-}
 
+    /**
+     * Apply suffix.
+     *
+     * @param source the source
+     * @return the string
+     */
+    @EnumMapping(nameTransformationStrategy = MappingConstants.SUFFIX_TRANSFORMATION, configuration = "_Value")
+    WeekDaySuffixed applySuffix(WeekDay source);
+
+    /**
+     * Apply prefix.
+     *
+     * @param source the source
+     * @return the string
+     */
+    @EnumMapping(nameTransformationStrategy = MappingConstants.PREFIX_TRANSFORMATION, configuration = "Value_")
+    WeekDayPrefixed applyPrefix(WeekDay source);
+
+    /**
+     * Strip suffix week day.
+     *
+     * @param source the source
+     * @return the week day
+     */
+    @EnumMapping(nameTransformationStrategy = MappingConstants.STRIP_SUFFIX_TRANSFORMATION, configuration = "_Value")
+    WeekDay stripSuffix(WeekDaySuffixed source);
+
+    /**
+     * Strip prefix week day.
+     *
+     * @param source the source
+     * @return the week day
+     */
+    @EnumMapping(nameTransformationStrategy = MappingConstants.STRIP_PREFIX_TRANSFORMATION, configuration = "Value_")
+    WeekDay stripPrefix(WeekDayPrefixed source);
+
+    /**
+     * Apply lowercase week day lowercase.
+     *
+     * @param source the source
+     * @return the week day lowercase
+     */
+    @EnumMapping(nameTransformationStrategy = MappingConstants.CASE_TRANSFORMATION, configuration = "lower")
+    WeekDayLowercase applyLowercase(WeekDay source);
+
+    /**
+     * Apply uppercase week day uppercase.
+     *
+     * @param source the source
+     * @return the week day uppercase
+     */
+    @EnumMapping(nameTransformationStrategy = MappingConstants.CASE_TRANSFORMATION, configuration = "upper")
+    WeekDayUppercase applyUppercase(WeekDay source);
+
+    /**
+     * Underscore tp capital string.
+     *
+     * @param source the source
+     * @return the string
+     */
+    @EnumMapping(nameTransformationStrategy = MappingConstants.CASE_TRANSFORMATION, configuration = "capital")
+    String underscoreToCapital(WeekDayUnderscore source);
+
+    /**
+     * Lowercase to capital week day.
+     *
+     * @param source the source
+     * @return the week day
+     */
+    @EnumMapping(nameTransformationStrategy = MappingConstants.CASE_TRANSFORMATION, configuration = "capital")
+    WeekDay lowercaseToCapital(WeekDayLowercase source);
+}
