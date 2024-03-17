@@ -7,15 +7,15 @@ import org.mockito.Mockito;
 import org.springframework.context.annotation.ConditionContext;
 import org.springframework.core.type.AnnotatedTypeMetadata;
 
-public class Java8ConditionUnitTest {
+public class Java21ConditionUnitTest {
 
     @Test
-    public void whenOnJava8_thenJava8ConditionShouldPass() {
+    public void whenOnJava21_thenJava21ConditionShouldPass() {
         try (MockedStatic<ConditionalUtils> theMock = Mockito.mockStatic(ConditionalUtils.class)) {
-            theMock.when(ConditionalUtils::isJava8)
+            theMock.when(ConditionalUtils::isJava21)
               .thenReturn(true);
             Assertions.assertTrue(
-              new Java8Condition().matches(
+              new Java21Condition().matches(
                 Mockito.mock(ConditionContext.class), Mockito.mock(AnnotatedTypeMetadata.class)
               )
             );
@@ -24,12 +24,12 @@ public class Java8ConditionUnitTest {
     }
 
     @Test
-    public void whenNotOnJava8_thenJava8ConditionShouldNotPass() {
+    public void whenNotOnJava21_thenJava21ConditionShouldNotPass() {
         try (MockedStatic<ConditionalUtils> theMock = Mockito.mockStatic(ConditionalUtils.class)) {
-            theMock.when(ConditionalUtils::isJava8)
+            theMock.when(ConditionalUtils::isJava21)
               .thenReturn(false);
             Assertions.assertFalse(
-              new Java8Condition().matches(
+              new Java21Condition().matches(
                 Mockito.mock(ConditionContext.class), Mockito.mock(AnnotatedTypeMetadata.class)
               )
             );

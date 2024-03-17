@@ -7,15 +7,15 @@ import org.mockito.Mockito;
 import org.springframework.context.annotation.ConditionContext;
 import org.springframework.core.type.AnnotatedTypeMetadata;
 
-public class Java9ConditionUnitTest {
+public class Java17ConditionUnitTest {
 
     @Test
-    public void whenOnJava9_thenJava9ConditionShouldPass() {
+        public void whenOnJava17_thenJava7ConditionShouldPass() {
         try (MockedStatic<ConditionalUtils> theMock = Mockito.mockStatic(ConditionalUtils.class)) {
-            theMock.when(ConditionalUtils::isJava9)
+            theMock.when(ConditionalUtils::isJava17)
               .thenReturn(true);
             Assertions.assertTrue(
-              new Java9Condition().matches(
+              new Java17Condition().matches(
                 Mockito.mock(ConditionContext.class), Mockito.mock(AnnotatedTypeMetadata.class)
               )
             );
@@ -24,12 +24,12 @@ public class Java9ConditionUnitTest {
     }
 
     @Test
-    public void whenNotOnJava9_thenJava9ConditionShouldNotPass() {
+    public void whenNotOnJava17_thenJava17ConditionShouldNotPass() {
         try (MockedStatic<ConditionalUtils> theMock = Mockito.mockStatic(ConditionalUtils.class)) {
-            theMock.when(ConditionalUtils::isJava9)
+            theMock.when(ConditionalUtils::isJava17)
               .thenReturn(false);
             Assertions.assertFalse(
-              new Java9Condition().matches(
+              new Java17Condition().matches(
                 Mockito.mock(ConditionContext.class), Mockito.mock(AnnotatedTypeMetadata.class)
               )
             );
