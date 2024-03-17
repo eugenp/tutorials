@@ -28,7 +28,6 @@ public class CustomWebSecurityConfig {
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
         return http
             .csrf(csrfSpec -> csrfSpec.disable())
-            .logout(logoutSpec -> logoutSpec.disable())
             .authorizeExchange(auth -> auth.pathMatchers(HttpMethod.GET,"/**")
                 .authenticated())
             .httpBasic(httpBasicSpec -> httpBasicSpec.disable())
