@@ -35,7 +35,7 @@
         <module>spring-boot-disable-logging</module>
         <module>spring-boot-ci-cd</module>
         <!-- <module>spring-boot-cli</module> --> <!-- Not a maven project -->
-<!--        <module>spring-boot-custom-starter</module>--> <!-- failing after upgrading to spring boot 3.2.x -->
+        <module>spring-boot-custom-starter</module>
         <module>spring-boot-crud</module>
         <module>spring-boot-data</module>
         <module>spring-boot-environment</module>
