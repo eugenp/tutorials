@@ -10,6 +10,6 @@ public class DemoService {
     private final Logger LOG = LoggerFactory.getLogger(DemoService.class);
 
     public void log() {
-        LOG.info("DemoService.log invoked!!!");
+        LOG.info("DemoService.log invoked");
     }
 }

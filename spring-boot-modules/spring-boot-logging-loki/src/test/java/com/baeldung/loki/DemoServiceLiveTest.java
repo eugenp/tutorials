@@ -37,17 +37,18 @@ public class DemoServiceLiveTest {
         service.log();
         Thread.sleep(2000);
         String baseUrl = "http://localhost:3100/loki/api/v1/query_range";
+
         // Set up query parameters
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        String query = "{level=\"INFO\"} |= `DemoService.log invoked!!!`";
+        String query = "{level=\"INFO\"} |= `DemoService.log invoked`";
+
         // Get current time in UTC
         LocalDateTime currentDateTime = LocalDateTime.now(ZoneOffset.UTC);
         String current_time_est = currentDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'"));
 
         LocalDateTime  tenMinsAgo = currentDateTime.minusMinutes(10);
         String start_time_est = tenMinsAgo.format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'"));
-        System.out.println(start_time_est);
 
         URI uri = UriComponentsBuilder.fromUriString(baseUrl)
             .queryParam("query", query)
@@ -80,7 +81,7 @@ public class DemoServiceLiveTest {
             System.out.println("Error: " + response.getStatusCodeValue());
         }
 
-        String expected = "DemoService.log invoked!!!";
+        String expected = "DemoService.log invoked";
         assertTrue(messages.stream().anyMatch(e -> e.contains(expected)));
     }
 }
