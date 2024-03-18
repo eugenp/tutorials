@@ -18,6 +18,7 @@
         <module>apache-camel</module>
         <module>apache-rocketmq</module>
         <module>jgroups</module>
+        <module>java-redpanda</module>
         <module>rabbitmq</module>
         <module>spring-amqp</module>
         <module>spring-apache-camel</module>

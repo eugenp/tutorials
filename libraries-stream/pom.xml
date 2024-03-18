@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>libraries-stream</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>libraries-stream</name>
     <packaging>jar</packaging>
+    <name>libraries-stream</name>
 
     <parent>
         <groupId>com.baeldung</groupId>

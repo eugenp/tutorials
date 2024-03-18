@@ -9,9 +9,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-2</relativePath>
+        <relativePath>../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -26,10 +26,12 @@
         <dependency>
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
+            <version>${spring-kafka.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka-streams</artifactId>
+            <version>${kafka-streams.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -39,6 +41,10 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.kafka</groupId>
@@ -54,7 +60,6 @@
         <dependency>
             <groupId>org.testcontainers</groupId>
             <artifactId>junit-jupiter</artifactId>
-            <version>${testcontainers-junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -66,9 +71,9 @@
 
     <properties>
         <testcontainers-kafka.version>1.19.3</testcontainers-kafka.version>
-        <kafka-version>3.0.12</kafka-version>
-        <kafka-streams-version>3.6.0</kafka-streams-version>
-        <testcontainers-junit-jupiter.version>1.16.2</testcontainers-junit-jupiter.version>
+        <spring-kafka.version>3.1.2</spring-kafka.version>
+        <kafka-streams.version>3.6.1</kafka-streams.version>
+        <start-class>com.baeldung.spring.kafka.dlt.KafkaDltApplication</start-class>
     </properties>
 
 </project>
