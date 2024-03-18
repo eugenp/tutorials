@@ -1,4 +1,4 @@
-package com.baeldung.disablingscheduledtasks.integration.dontcreatescheduledbean;
+package com.baeldung.disablingscheduledtasks.longinitialdelay;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -13,19 +13,20 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
-import org.springframework.test.context.ActiveProfiles;
 
+import com.baeldung.disablingscheduledtasks.DelayedNotificationScheduler;
 import com.baeldung.disablingscheduledtasks.Notification;
 import com.baeldung.disablingscheduledtasks.NotificationRepository;
-import com.baeldung.disablingscheduledtasks.NotificationService;
-import com.baeldung.disablingscheduledtasks.config.dontcreatescheduledbean.ApplicationConfig;
-import com.baeldung.disablingscheduledtasks.config.dontcreatescheduledbean.ScheduledTasksConfig;
+import com.baeldung.disablingscheduledtasks.config.disablewithprofile.ApplicationConfig;
+import com.baeldung.disablingscheduledtasks.config.disablewithprofile.SchedulingConfig;
 
 @SpringBootTest(
-    classes = { ApplicationConfig.class, ScheduledTasksConfig.class,SchedulerTestConfiguration.class },
-    properties = { "notification.send.out.delay: 10" }
+    classes = { ApplicationConfig.class, SchedulingConfig.class, SchedulerTestConfiguration.class },
+    properties = {
+        "notification.send.out.delay: 10",
+        "notification.send.out.initial.delay: 60000"
+    }
 )
-@ActiveProfiles("integrationTest")
 public class DelayedNotificationSchedulerIntegrationTest {
 
     @Autowired
@@ -35,7 +36,7 @@ public class DelayedNotificationSchedulerIntegrationTest {
     private NotificationRepository repository;
 
     @Autowired
-    private NotificationService service;
+    private DelayedNotificationScheduler scheduler;
 
     @Test
     public void whenTimeIsOverNotificationSendOutTime_thenItShouldBeSent() {
@@ -43,7 +44,7 @@ public class DelayedNotificationSchedulerIntegrationTest {
         Notification notification = new Notification(fiveMinutesAgo);
         repository.save(notification);
 
-        service.sendOutDelayedNotifications();
+        scheduler.attemptSendingOutDelayedNotifications();
 
         Notification processedNotification = repository.findById(notification.getId());
         assertTrue(processedNotification.isSentOut());

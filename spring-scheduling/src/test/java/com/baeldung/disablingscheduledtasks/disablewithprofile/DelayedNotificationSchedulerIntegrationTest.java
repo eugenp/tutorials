@@ -1,4 +1,4 @@
-package com.baeldung.disablingscheduledtasks.integration.disablewithproperty;
+package com.baeldung.disablingscheduledtasks.disablewithprofile;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -13,20 +13,22 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
+import org.springframework.test.context.ActiveProfiles;
 
 import com.baeldung.disablingscheduledtasks.DelayedNotificationScheduler;
 import com.baeldung.disablingscheduledtasks.Notification;
 import com.baeldung.disablingscheduledtasks.NotificationRepository;
-import com.baeldung.disablingscheduledtasks.config.disablewithproperty.ApplicationConfig;
-import com.baeldung.disablingscheduledtasks.config.disablewithproperty.SchedulingConfig;
+import com.baeldung.disablingscheduledtasks.config.disablewithprofile.ApplicationConfig;
+import com.baeldung.disablingscheduledtasks.config.disablewithprofile.SchedulingConfig;
 
 @SpringBootTest(
     classes = { ApplicationConfig.class, SchedulingConfig.class, SchedulerTestConfiguration.class },
     properties = {
         "notification.send.out.delay: 10",
-        "scheduling.enabled: false"
+        "notification.send.out.initial.delay: 0"
     }
 )
+@ActiveProfiles("integrationTest")
 public class DelayedNotificationSchedulerIntegrationTest {
 
     @Autowired

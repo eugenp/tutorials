@@ -1,4 +1,4 @@
-package com.baeldung.disablingscheduledtasks.integration.schedulingon;
+package com.baeldung.disablingscheduledtasks.schedulingon;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -21,7 +21,10 @@ import com.baeldung.disablingscheduledtasks.config.schedulingon.ApplicationConfi
 
 @SpringBootTest(
     classes = { ApplicationConfig.class, SchedulerTestConfiguration.class },
-    properties = { "notification.send.out.delay: 10" }
+    properties = {
+        "notification.send.out.delay: 10",
+        "notification.send.out.initial.delay: 0"
+    }
 )
 public class DelayedNotificationSchedulerIntegrationTest {
 

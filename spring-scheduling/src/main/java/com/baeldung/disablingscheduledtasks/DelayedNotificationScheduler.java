@@ -14,7 +14,7 @@ public class DelayedNotificationScheduler {
         this.notificationService = notificationService;
     }
 
-    @Scheduled(fixedDelayString = "${notification.send.out.delay}")
+    @Scheduled(fixedDelayString = "${notification.send.out.delay}", initialDelayString = "${notification.send.out.initial.delay}")
     public void attemptSendingOutDelayedNotifications() {
         logger.info("Scheduled notifications send out attempt");
         notificationService.sendOutDelayedNotifications();
