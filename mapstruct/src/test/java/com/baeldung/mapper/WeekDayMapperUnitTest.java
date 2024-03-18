@@ -14,7 +14,7 @@ import static org.junit.Assert.assertThrows;
 /**
  * The type Week day mapper test.
  */
-class WeekDayMapperTest {
+class WeekDayMapperUnitTest {
 
     /**
      * To week day.
