@@ -20,7 +20,7 @@ class WeekDayMapperTest {
      * To week day.
      */
     @Test
-    void toWeekDay() {
+    void whenWeekDayIsMapped_thenGetDayOfWeek() {
         DayOfWeek dayOfWeek = DayOfWeek.MONDAY;
         WeekDay targetWeekDay = WeekDayMapper.INSTANCE.toWeekDay(dayOfWeek);
         assertEquals(WeekDay.Mon, targetWeekDay);
@@ -30,7 +30,7 @@ class WeekDayMapperTest {
      * String to week day.
      */
     @Test
-    void stringToWeekDay() {
+    void whenStringIsMapped_thenGetWeekDay() {
         String dayOfWeekStr = DayOfWeek.MONDAY.name();
         WeekDay targetWeekDay = WeekDayMapper.INSTANCE.stringToWeekDay(dayOfWeekStr);
         assertEquals(WeekDay.Mon, targetWeekDay);
@@ -40,7 +40,7 @@ class WeekDayMapperTest {
      * String to unmapped week day.
      */
     @Test
-    void stringToUnmappedWeekDay() {
+    void whenStringIsUnmapped_thenGetException() {
         String dayOfWeekStr = "MON";
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             WeekDayMapper.INSTANCE.stringToWeekDay(dayOfWeekStr);
@@ -52,7 +52,7 @@ class WeekDayMapperTest {
      * Week day to string.
      */
     @Test
-    void weekDayToString() {
+    void whenWeekDayIsMapped_thenGetString() {
         WeekDay weekDay = WeekDay.Mon;
         String targetWeekDayStr = WeekDayMapper.INSTANCE.weekDayToString(weekDay);
         assertEquals("MONDAY", targetWeekDayStr);
@@ -66,7 +66,7 @@ class WeekDayMapperTest {
      */
     @ParameterizedTest
     @CsvSource({"Mon,1", "Fri,5"})
-    void weekDayToInt(WeekDay weekDay, int expectedWeekNumber) {
+    void whenWeekDayIsMapped_thenGetInt(WeekDay weekDay, int expectedWeekNumber) {
         Integer targetWeekDayInt = WeekDayMapper.INSTANCE.convertWeekDayToInteger(weekDay);
         WeekDayNumber targetWeekDayNumber = WeekDayMapper.INSTANCE.weekDayToWeekDayNumber(weekDay);
         assertEquals(expectedWeekNumber, targetWeekDayInt.intValue());
@@ -81,7 +81,7 @@ class WeekDayMapperTest {
      */
     @ParameterizedTest
     @CsvSource({"Mon,Mon", "Fri,Fri", "Sat,Mon"})
-    void weekDayToWorkWeekDay(WeekDay weekDay, WorkWeekDay expectedWorkWeekDay) {
+    void whenWeekDayIsMapped_thenGetWorkWeekDay(WeekDay weekDay, WorkWeekDay expectedWorkWeekDay) {
         WorkWeekDay targetWorkWeekDay = WeekDayMapper.INSTANCE.weekDayToWorkWeekDayWithRemaining(weekDay);
         assertEquals(expectedWorkWeekDay, targetWorkWeekDay);
     }
@@ -94,7 +94,7 @@ class WeekDayMapperTest {
      */
     @ParameterizedTest
     @CsvSource({"Mon,Mon", "Fri,Fri", "Sat,Mon"})
-    void weekDayToWorkWeekDayWithRemaining(WeekDay weekDay, WorkWeekDay expectedWorkWeekDay) {
+    void whenWeekDayIsMappedWithRemaining_thenGetWorkWeekDay(WeekDay weekDay, WorkWeekDay expectedWorkWeekDay) {
         WorkWeekDay targetWorkWeekDay = WeekDayMapper.INSTANCE.weekDayToWorkWeekDayWithRemaining(weekDay);
         assertEquals(expectedWorkWeekDay, targetWorkWeekDay);
     }
@@ -107,7 +107,7 @@ class WeekDayMapperTest {
      */
     @ParameterizedTest
     @CsvSource({"Mon,Mon", "Fri,Fri", "Sat,Mon"})
-    void weekDayToWorkWeekDayWithUnmapped(WeekDay weekDay, WorkWeekDay expectedWorkWeekDay) {
+    void whenWeekDayIsMappedWithUnmapped_thenGetWorkWeekDay(WeekDay weekDay, WorkWeekDay expectedWorkWeekDay) {
         WorkWeekDay targetWorkWeekDay = WeekDayMapper.INSTANCE.weekDayToWorkWeekDayWithUnmapped(weekDay);
         assertEquals(expectedWorkWeekDay, targetWorkWeekDay);
     }
@@ -120,7 +120,7 @@ class WeekDayMapperTest {
      */
     @ParameterizedTest
     @CsvSource({"Mon,Mon", "Tue,", "Sat,", ",Wed"})
-    void weekDayToWorkWeekDayWithNullHandling(WeekDay weekDay, WorkWeekDay expectedWorkWeekDay) {
+    void whenWeekDayIsMappedWithNull_thenGetWorkWeekDay(WeekDay weekDay, WorkWeekDay expectedWorkWeekDay) {
         WorkWeekDay targetWorkWeekDay = WeekDayMapper.INSTANCE.weekDayToWorkWeekDayWithNullHandling(weekDay);
         assertEquals(expectedWorkWeekDay, targetWorkWeekDay);
     }
@@ -133,7 +133,7 @@ class WeekDayMapperTest {
      */
     @ParameterizedTest
     @CsvSource({"Mon,Mon", "Fri,Fri", "Sat,", "Sun,"})
-    void weekDayToWorkWeekDayWithExceptionHandling(WeekDay weekDay, WorkWeekDay expectedWorkWeekDay) {
+    void whenWeekDayIsMappedWithException_thenGetWorkWeekDay(WeekDay weekDay, WorkWeekDay expectedWorkWeekDay) {
         if (weekDay == WeekDay.Sat || weekDay == WeekDay.Sun) {
             Exception exception = assertThrows(IllegalArgumentException.class, () -> {
                 WeekDayMapper.INSTANCE.weekDayToWorkWeekDayWithExceptionHandling(weekDay);
@@ -153,7 +153,7 @@ class WeekDayMapperTest {
      */
     @ParameterizedTest
     @CsvSource({"Mon,Mon_Value", "Fri,Fri_Value"})
-    void applySuffix(WeekDay weekDay, WeekDaySuffixed expectedResult) {
+    void whenWeekDayIsMappedWithSuffix_thenGetWeekDaySuffixed(WeekDay weekDay, WeekDaySuffixed expectedResult) {
         WeekDaySuffixed result = WeekDayMapper.INSTANCE.applySuffix(weekDay);
         assertEquals(expectedResult, result);
     }
@@ -166,7 +166,7 @@ class WeekDayMapperTest {
      */
     @ParameterizedTest
     @CsvSource({"Mon,Value_Mon", "Fri,Value_Fri"})
-    void applyPrefix(WeekDay weekDay, WeekDayPrefixed expectedResult) {
+    void whenWeekDayIsMappedWithPrefix_thenGetWeekDayPrefixed(WeekDay weekDay, WeekDayPrefixed expectedResult) {
         WeekDayPrefixed result = WeekDayMapper.INSTANCE.applyPrefix(weekDay);
         assertEquals(expectedResult, result);
     }
@@ -179,7 +179,7 @@ class WeekDayMapperTest {
      */
     @ParameterizedTest
     @CsvSource({"Mon_Value,Mon", "Fri_Value,Fri"})
-    void stripSuffix(WeekDaySuffixed weekDay, WeekDay expectedResult) {
+    void whenWeekDaySuffixedMappedWithStripped_thenGetWeekDay(WeekDaySuffixed weekDay, WeekDay expectedResult) {
         WeekDay result = WeekDayMapper.INSTANCE.stripSuffix(weekDay);
         assertEquals(expectedResult, result);
     }
@@ -192,7 +192,7 @@ class WeekDayMapperTest {
      */
     @ParameterizedTest
     @CsvSource({"Value_Mon,Mon", "Value_Fri,Fri"})
-    void stripPrefix(WeekDayPrefixed weekDay, WeekDay expectedResult) {
+    void whenWeekDayPrefixedMappedWithStripped_thenGetWeekDay(WeekDayPrefixed weekDay, WeekDay expectedResult) {
         WeekDay result = WeekDayMapper.INSTANCE.stripPrefix(weekDay);
         assertEquals(expectedResult, result);
     }
@@ -205,7 +205,7 @@ class WeekDayMapperTest {
      */
     @ParameterizedTest
     @CsvSource({"Mon,mon", "Fri,fri"})
-    void applyLowercase(WeekDay weekDay, WeekDayLowercase expectedResult) {
+    void whenWeekDayMappedWithLower_thenGetWeekDayLowercase(WeekDay weekDay, WeekDayLowercase expectedResult) {
         WeekDayLowercase result = WeekDayMapper.INSTANCE.applyLowercase(weekDay);
         assertEquals(expectedResult, result);
     }
@@ -218,7 +218,7 @@ class WeekDayMapperTest {
      */
     @ParameterizedTest
     @CsvSource({"Mon,MON", "Fri,FRI"})
-    void applyUppercase(WeekDay weekDay, WeekDayUppercase expectedResult) {
+    void whenWeekDayMappedWithUpper_thenGetWeekDayUppercase(WeekDay weekDay, WeekDayUppercase expectedResult) {
         WeekDayUppercase result = WeekDayMapper.INSTANCE.applyUppercase(weekDay);
         assertEquals(expectedResult, result);
     }
@@ -231,7 +231,7 @@ class WeekDayMapperTest {
      */
     @ParameterizedTest
     @CsvSource({"MONDAY_VALUE,Monday_Value", "FRIDAY_VALUE,Friday_Value"})
-    void underscoreTpCapital(WeekDayUnderscore weekDay, String expectedResult) {
+    void whenWeekDayUnderscoreMappedWithCapital_thenGetStringCapital(WeekDayUnderscore weekDay, String expectedResult) {
         String result = WeekDayMapper.INSTANCE.underscoreToCapital(weekDay);
         assertEquals(expectedResult, result);
     }
@@ -244,7 +244,7 @@ class WeekDayMapperTest {
      */
     @ParameterizedTest
     @CsvSource({"mon,Mon", "fri,Fri"})
-    void lowercaseToCapital(WeekDayLowercase weekDay, WeekDay expectedResult) {
+    void whenWeekDayLowercaseMappedWithCapital_thenGetWeekDay(WeekDayLowercase weekDay, WeekDay expectedResult) {
         WeekDay result = WeekDayMapper.INSTANCE.lowercaseToCapital(weekDay);
         assertEquals(expectedResult, result);
     }
