@@ -21,8 +21,6 @@
     </build>
 
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
         <archetype-packaging.version>3.0.1</archetype-packaging.version>
     </properties>
 

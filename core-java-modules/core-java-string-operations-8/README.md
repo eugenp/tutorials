@@ -5,3 +5,4 @@
 - [Find an Unique Email Address in a List](https://www.baeldung.com/java-find-unique-email-address)
 - [Get First n Characters in a String in Java](https://www.baeldung.com/get-first-n-characters-in-a-string-in-java)
 - [Remove Only Trailing Spaces or Whitespace From a String in Java](https://www.baeldung.com/java-string-remove-only-trailing-whitespace)
+- [Get the Initials of a Name in Java](https://www.baeldung.com/java-shorten-name-initials)

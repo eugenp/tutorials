@@ -5,8 +5,8 @@
     <groupId>com.baeldung.java.panama</groupId>
     <artifactId>java-panama</artifactId>
     <version>1.0</version>
-    <name>java-panama</name>
     <packaging>jar</packaging>
+    <name>java-panama</name>
 
     <dependencies>
         <dependency>

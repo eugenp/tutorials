@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.core-java-modules</groupId>
     <artifactId>core-java-modules</artifactId>
-    <name>core-java-modules</name>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
+    <name>core-java-modules</name>
 
     <parent>
         <groupId>com.baeldung</groupId>

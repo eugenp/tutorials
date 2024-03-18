@@ -6,7 +6,6 @@ This module contains articles about filtering data using Spring Data JPA
 - [An Advanced Tagging Implementation with JPA](https://www.baeldung.com/jpa-tagging-advanced)
 - [A Simple Tagging Implementation with JPA](https://www.baeldung.com/jpa-tagging)
 - [Spring Data JPA and Null Parameters](https://www.baeldung.com/spring-data-jpa-null-parameters)
-- [Spring Data JPA Projections](https://www.baeldung.com/spring-data-jpa-projections)
 
 ### Eclipse Config 
 After importing the project into Eclipse, you may see the following error:  

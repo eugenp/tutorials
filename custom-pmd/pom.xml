@@ -6,8 +6,8 @@
     <groupId>com.baeldung.pmd</groupId>
     <artifactId>custom-pmd</artifactId>
     <version>0.0.1</version>
-    <name>custom-pmd</name>
     <packaging>jar</packaging>
+    <name>custom-pmd</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
