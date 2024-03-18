@@ -23,7 +23,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestPropertySource(locations="classpath:connectiondetails/application-r2dbc.properties")
-public class RestClientIntegrationTest {
+public class RestClientLiveTest {
 
 	@LocalServerPort
 	private int port;
