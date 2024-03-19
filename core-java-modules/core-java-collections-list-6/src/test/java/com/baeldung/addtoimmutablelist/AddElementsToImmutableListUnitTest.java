@@ -16,6 +16,7 @@ public class AddElementsToImmutableListUnitTest {
         return List.copyOf(tmpList);
     }
 
+    @SafeVarargs
     public static <T> List<T> appendElements(List<T> immutableList, T... elements) {
         List<T> tmpList = new ArrayList<>(immutableList);
         tmpList.addAll(Arrays.asList(elements));
