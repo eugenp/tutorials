@@ -75,7 +75,7 @@ public class SqlInjectionSamplesApplicationUnitTest {
     }
     
     @Test(expected = IllegalArgumentException.class)
-    public void givenASafeMethod_whenInvalidOrderBy_thenThroweException() {
+    public void givenASafeMethod_whenInvalidOrderBy_thenThrowException() {
         target.safeFindAccountsByCustomerId("C1", "INVALID");
     }
 
