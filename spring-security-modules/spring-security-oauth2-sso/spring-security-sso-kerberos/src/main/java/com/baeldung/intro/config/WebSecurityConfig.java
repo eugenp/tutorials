@@ -26,17 +26,14 @@ public class WebSecurityConfig extends AbstractHttpConfigurer<WebSecurityConfig,
     }
 
     @Override
-    public void configure(HttpSecurity http) throws Exception {
+    public void configure(HttpSecurity http) {
         AuthenticationManager authenticationManager = http.getSharedObject(AuthenticationManager.class);
         http.addFilterBefore(spnegoAuthenticationProcessingFilter(authenticationManager), BasicAuthenticationFilter.class);
     }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-            .anyRequest()
-            .authenticated()
-            .and()
+        http.authorizeHttpRequests(authorizationManagerRequestMatcherRegistry -> authorizationManagerRequestMatcherRegistry.anyRequest().authenticated())
             .apply(securityConfig());
         return http.build();
     }

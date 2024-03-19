@@ -10,7 +10,8 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>spring-security-modules</artifactId>
+        <artifactId>parent-boot-3</artifactId>
+        <relativePath>../../parent-boot-3</relativePath>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 

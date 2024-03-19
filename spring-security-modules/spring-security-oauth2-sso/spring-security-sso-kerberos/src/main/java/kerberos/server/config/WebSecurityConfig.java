@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
 import org.springframework.security.kerberos.authentication.KerberosAuthenticationProvider;
 import org.springframework.security.kerberos.authentication.KerberosServiceAuthenticationProvider;
 import org.springframework.security.kerberos.authentication.sun.SunJaasKerberosClient;
@@ -41,22 +42,13 @@ class WebSecurityConfig extends AbstractHttpConfigurer<WebSecurityConfig, HttpSe
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.exceptionHandling()
-            .authenticationEntryPoint(spnegoEntryPoint())
-            .and()
-            .authorizeRequests()
-            .antMatchers("/", "/home")
-            .permitAll()
-            .anyRequest()
-            .authenticated()
-            .and()
-            .formLogin()
-            .loginPage("/login")
-            .permitAll()
-            .and()
-            .logout()
-            .permitAll()
-            .and()
+        http.exceptionHandling(httpSecurityExceptionHandlingConfigurer ->
+                        httpSecurityExceptionHandlingConfigurer.authenticationEntryPoint(spnegoEntryPoint()))
+            .authorizeHttpRequests(expressionInterceptUrlRegistry -> expressionInterceptUrlRegistry
+                    .requestMatchers("/", "/home").permitAll()
+                    .anyRequest().authenticated())
+            .formLogin(httpSecurityFormLoginConfigurer -> httpSecurityFormLoginConfigurer.loginPage("/login").permitAll())
+            .logout(LogoutConfigurer::permitAll)
             .apply(securityConfig());
         return http.build();
     }
