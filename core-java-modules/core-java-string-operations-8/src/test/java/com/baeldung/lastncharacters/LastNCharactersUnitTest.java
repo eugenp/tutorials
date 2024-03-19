@@ -15,6 +15,12 @@ public class LastNCharactersUnitTest {
     private String s;
     private int n;
 
+    @BeforeEach
+    void init() {
+        s = "10-03-2024";
+        n = 4;
+    }
+
     @Test
     void givenString_whenUsingIntStreamAsStreamSource_thenObtainLastNCharacters() {
         String result = s.chars()
@@ -54,11 +60,5 @@ public class LastNCharactersUnitTest {
         String result = s.substring(beginIndex, s.length());
 
         assertThat(result).isEqualTo("2024");
-    }
-
-    @BeforeEach
-    void init() {
-        s = "10-03-2024";
-        n = 4;
     }
 }
