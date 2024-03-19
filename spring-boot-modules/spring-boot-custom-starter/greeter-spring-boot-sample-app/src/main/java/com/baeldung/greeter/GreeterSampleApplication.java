@@ -1,4 +1,4 @@
-package com.baeldung.greeter.sample;
+package com.baeldung.greeter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -6,7 +6,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.baeldung.greeter.library.Greeter;
-
 @SpringBootApplication
 public class GreeterSampleApplication implements CommandLineRunner {
 

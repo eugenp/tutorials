@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.dependency-exclusion</groupId>
     <artifactId>dependency-exclusion</artifactId>
-    <name>dependency-exclusion</name>
     <packaging>pom</packaging>
+    <name>dependency-exclusion</name>
 
     <parent>
         <groupId>com.baeldung</groupId>

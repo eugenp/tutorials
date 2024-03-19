@@ -1,4 +1,4 @@
-package com.baeldung.greeter.sample;
+package com.baeldung.greeter;
 
 import static org.junit.Assert.assertEquals;
 
