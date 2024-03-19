@@ -12,3 +12,4 @@ This module contains articles about Object-oriented programming (OOP) patterns i
 - [How to Deep Copy an ArrayList in Java](https://www.baeldung.com/java-arraylist-deep-copy)
 - [Stateless Object in Java](https://www.baeldung.com/java-stateless-object)
 - [Mutable vs. Immutable Objects in Java](https://www.baeldung.com/java-mutable-vs-immutable-objects)
+- [Creating a Deep vs Shallow Copy of an Object in Java](https://drafts.baeldung.com/?p=194057&preview=true)
