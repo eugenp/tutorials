@@ -1,19 +1,19 @@
 package com.baeldung.streams.mapstreamtomap;
 
 import static java.lang.Math.max;
+import static java.util.stream.Collectors.flatMapping;
+import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.mapping;
+import static java.util.stream.Collectors.reducing;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.junit.jupiter.api.Test;
-
-import com.google.common.collect.Lists;
 
 public class MapStreamToMapUnitTest {
 
@@ -36,12 +36,6 @@ public class MapStreamToMapUnitTest {
         put("Jerry", null);
     }};
 
-    static Stream<Map<String, Integer>> getMapStream(Map<String, Integer>... playerMaps) {
-        List<Map<String, Integer>> theList = Lists.newArrayList(playerMaps);
-        Collections.shuffle(theList);
-        return theList.stream();
-    }
-
     @Test
     void givenMapsStream_whenUsingFlatMapAndToMap_thenMultipleMapsMergedIntoOneMap() {
 
@@ -53,7 +47,8 @@ public class MapStreamToMapUnitTest {
             put("Kevin", 77);
         }};
 
-        Map<String, Integer> mergedMap = getMapStream(playerMap1, playerMap2, playerMap3).flatMap(map -> map.entrySet()
+        Map<String, Integer> mergedMap = Stream.of(playerMap1, playerMap2, playerMap3)
+            .flatMap(map -> map.entrySet()
                 .stream())
             .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
@@ -71,11 +66,13 @@ public class MapStreamToMapUnitTest {
             put("Kevin", 77);
         }};
 
-        assertThrows(IllegalStateException.class, () -> getMapStream(playerMap1, playerMap2, playerMap3, playerMap4).flatMap(map -> map.entrySet()
+        assertThrows(IllegalStateException.class, () -> Stream.of(playerMap1, playerMap2, playerMap3, playerMap4)
+            .flatMap(map -> map.entrySet()
                 .stream())
             .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)), "Duplicate key Kai (attempted merging values 92 and 76)");
 
-        Map<String, Integer> mergedMap = getMapStream(playerMap1, playerMap2, playerMap3, playerMap4).flatMap(map -> map.entrySet()
+        Map<String, Integer> mergedMap = Stream.of(playerMap1, playerMap2, playerMap3, playerMap4)
+            .flatMap(map -> map.entrySet()
                 .stream())
             .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, Integer::max));
 
@@ -104,12 +101,14 @@ public class MapStreamToMapUnitTest {
             put("Jerry", null);
         }};
 
-        assertThrows(NullPointerException.class, () -> getMapStream(playerMap1, playerMap2, playerMap3, playerMap4, playerMap5).flatMap(map -> map.entrySet()
+        assertThrows(NullPointerException.class, () -> Stream.of(playerMap1, playerMap2, playerMap3, playerMap4, playerMap5)
+            .flatMap(map -> map.entrySet()
                 .stream())
             .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, Integer::max)));
 
         Map<String, Integer> mergedMap = new HashMap<>();
-        getMapStream(playerMap1, playerMap2, playerMap3, playerMap4, playerMap5).flatMap(map -> map.entrySet()
+        Stream.of(playerMap1, playerMap2, playerMap3, playerMap4, playerMap5)
+            .flatMap(map -> map.entrySet()
                 .stream())
             .forEach(entry -> {
                 String k = entry.getKey();
@@ -135,19 +134,10 @@ public class MapStreamToMapUnitTest {
             put("Kevin", 77);
             put("Jerry", null);
         }};
-        Stream<Map<String, Integer>> mapStream = getMapStream(playerMap1, playerMap2, playerMap3, playerMap4, playerMap5);
-        Map<String, Integer> mergedMap = mapStream.reduce(new HashMap<>(), (resultMap, theMap) -> {
-            theMap.forEach((k, v) -> {
-                if (resultMap.containsKey(k)) {
-                    resultMap.put(k, maxInteger(resultMap.get(k), v));
-                } else {
-                    resultMap.put(k, v);
-                }
-            });
-            return resultMap;
-        });
-
+        Map<String, Integer> mergedMap = Stream.of(playerMap1, playerMap2, playerMap3, playerMap4, playerMap5)
+            .flatMap(x -> x.entrySet()
+                .stream())
+            .collect(groupingBy(Map.Entry::getKey, mapping(Map.Entry::getValue, reducing(null, this::maxInteger))));
         assertEquals(expectedMap, mergedMap);
-
     }
 }
