@@ -79,7 +79,7 @@
                     <execution>
                         <phase>generate-resources</phase>
                         <configuration>
-                            <tasks>
+                            <target>
                                 <exec executable="cmd" osfamily="windows"
                                     dir="${project.basedir}/src/main/angular/ui">
                                     <arg value="/c"/>
@@ -91,7 +91,7 @@
                                     <arg value="-c"/>
                                     <arg value="ng build"/>
                                 </exec>
-                            </tasks>
+                            </target>
                         </configuration>
                         <goals>
                             <goal>run</goal>

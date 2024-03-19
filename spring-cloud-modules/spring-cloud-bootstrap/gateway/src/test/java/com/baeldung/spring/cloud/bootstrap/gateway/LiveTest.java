@@ -1,19 +1,20 @@
 package com.baeldung.spring.cloud.bootstrap.gateway;
 
-import com.baeldung.spring.cloud.bootstrap.gateway.client.book.Book;
-import com.baeldung.spring.cloud.bootstrap.gateway.client.rating.Rating;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import io.restassured.RestAssured;
-import io.restassured.authentication.FormAuthConfig;
-import io.restassured.config.RedirectConfig;
-import io.restassured.http.ContentType;
-import io.restassured.response.Response;
+import static io.restassured.RestAssured.config;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.HttpStatus;
 
-import static io.restassured.RestAssured.config;
+import com.baeldung.spring.cloud.bootstrap.gateway.client.book.Book;
+import com.baeldung.spring.cloud.bootstrap.gateway.client.rating.Rating;
+
+import io.restassured.RestAssured;
+import io.restassured.authentication.FormAuthConfig;
+import io.restassured.config.RedirectConfig;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
 
 public class LiveTest {
 
