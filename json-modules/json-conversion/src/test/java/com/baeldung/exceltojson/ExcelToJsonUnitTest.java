@@ -16,6 +16,7 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 public class ExcelToJsonUnitTest {
+    public static String filePath = Objects.requireNonNull(ExcelToJsonUnitTest.class.getClassLoader().getResource("Book1.xlsx")).getFile();
     public String expectedJson = "[[\"C1\",\"C2\",\"C3\",\"C4\",\"C5\"]," +
             "[\"1.0\",\"2.0\",\"3.0\",\"4.0\",\"5.0\"]," +
             "[\"1.0\",\"2.0\",\"3.0\",\"4.0\",\"5.0\"]," +
@@ -26,7 +27,7 @@ public class ExcelToJsonUnitTest {
     private InputStream inputStream;
 
     public ExcelToJsonUnitTest() throws IOException {
-        inputStream = new FileInputStream("src\\test\\resources\\Book1.xlsx");
+        inputStream = new FileInputStream(filePath);
         workbook = new XSSFWorkbook(inputStream);
         sheet = workbook.getSheetAt(0);
     }
