@@ -90,7 +90,7 @@
 <!--        <module>spring-caching-2</module>--> <!-- failing after upgrading to spring boot 3.2.x -->
         <!--        <module>spring-boot-redis</module>--> <!-- failing after upgrading to spring boot 3.2.x -->
         <module>spring-boot-cassandre</module>
-<!--        <module>spring-boot-react</module>--> <!-- failing after upgrading to spring boot 3.2.x. very old node version which is not available now. -->
+        <module>spring-boot-react</module>
         <!-- <module>spring-boot-3</module> --> <!-- JAVA-20931 -->
         <module>spring-boot-3-grpc</module>
         <!--        <module>spring-boot-3-native</module>--> <!-- failing after upgrading to spring boot 3.2.x -->
