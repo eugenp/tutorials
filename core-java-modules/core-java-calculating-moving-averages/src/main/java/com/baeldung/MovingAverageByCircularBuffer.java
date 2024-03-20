@@ -24,7 +24,7 @@ public class MovingAverageByCircularBuffer {
         }
         double sum = 0;
         for (int i = 0; i < count; i++) {
-            sum += buffer[i]; //buffer[(head + i) % buffer.length];
+            sum += buffer[i];
         }
         return sum / count;
     }

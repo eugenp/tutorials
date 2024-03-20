@@ -15,10 +15,8 @@ public class ExponentialMovingAverage {
 
     public double calculateEMA(double newValue) {
         if (previousEMA == null) {
-            // First data point, EMA is same as the value itself
             previousEMA = newValue;
         } else {
-            // Calculate EMA using the formula: EMA = alpha * newValue + (1 - alpha) * previousEMA
             previousEMA = alpha * newValue + (1 - alpha) * previousEMA;
         }
         return previousEMA;
