@@ -45,6 +45,8 @@ public class VaadinFlowBasics extends VerticalLayout {
         );
         add(nestedLayout);
 
+        add(new RouterLink("Example layout", ExampleLayout.class));
+
         // Use RouterLink to navigate to other views
         var link = new RouterLink("Hello world view", HelloWorldView.class);
         add(link);
