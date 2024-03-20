@@ -7,13 +7,13 @@ import static org.junit.Assert.assertEquals;
 public class MovingAverageWithApacheCommonsMathUnitTest {
 
     @Test
-    public void when_initial_average_is_calculated_it_should_be_NAN() {
+    public void whenInitialAverageIsCalculated_shouldReturnNAN() {
         MovingAverageWithApacheCommonsMath movingAverageCalculator = new MovingAverageWithApacheCommonsMath(5);
         assertEquals(Double.NaN, movingAverageCalculator.getMovingAverage(), 0.001);
     }
 
     @Test
-    public void when_values_are_added_average_should_update_correctly() {
+    public void whenValuesAreAdded_shouldUpdateAverageCorrectly() {
         MovingAverageWithApacheCommonsMath movingAverageCalculator = new MovingAverageWithApacheCommonsMath(3);
         movingAverageCalculator.add(10);
         assertEquals(10.0, movingAverageCalculator.getMovingAverage(), 0.001);
@@ -24,13 +24,13 @@ public class MovingAverageWithApacheCommonsMathUnitTest {
     }
 
     @Test
-    public void when_window_size_is_full_oldest_value_should_be_dropped() {
+    public void whenWindowSizeIsFull_shouldDropTheOldestValue() {
         MovingAverageWithApacheCommonsMath ma = new MovingAverageWithApacheCommonsMath(2);
         ma.add(10);
         ma.add(20);
         assertEquals(15.0, ma.getMovingAverage(), 0.001);
         ma.add(30);
-        assertEquals(25.0, ma.getMovingAverage(), 0.001); // 10 dropped, 20 and 30 remain
+        assertEquals(25.0, ma.getMovingAverage(), 0.001);
     }
 
 }
