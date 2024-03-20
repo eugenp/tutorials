@@ -23,8 +23,10 @@ public class AccountService {
 
     @Transactional
     public void transfer(Long depositorId, Long favoredId, BigDecimal amount) {
-        Account depositorAccount = accountRepository.findById(depositorId).get();
-        Account favoredAccount = accountRepository.findById(favoredId).get();
+        Account depositorAccount = accountRepository.findById(depositorId)
+                .orElseThrow(IllegalArgumentException::new);
+        Account favoredAccount = accountRepository.findById(favoredId)
+                .orElseThrow(IllegalArgumentException::new);
 
         depositorAccount.setBalance(depositorAccount.getBalance().subtract(amount));
         favoredAccount.setBalance(favoredAccount.getBalance().add(amount));
