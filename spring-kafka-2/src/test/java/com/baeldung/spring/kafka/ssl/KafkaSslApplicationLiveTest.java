@@ -1,6 +1,13 @@
-package com.baeldung.kafka.ssl;
+package com.baeldung.spring.kafka.ssl;
 
-import lombok.extern.slf4j.Slf4j;
+import static com.baeldung.spring.kafka.ssl.KafkaConsumer.TOPIC;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.awaitility.Awaitility.await;
+
+import java.io.File;
+import java.time.Duration;
+import java.util.UUID;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,13 +17,7 @@ import org.testcontainers.containers.wait.strategy.Wait;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
-import java.io.File;
-import java.time.Duration;
-import java.util.UUID;
-
-import static com.baeldung.kafka.ssl.KafkaConsumer.TOPIC;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.awaitility.Awaitility.await;
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @ActiveProfiles("ssl")
