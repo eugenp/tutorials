@@ -6,6 +6,7 @@ import io.swagger.v3.oas.annotations.media.Content
 import io.swagger.v3.oas.annotations.media.Schema
 import io.swagger.v3.oas.annotations.responses.ApiResponse
 import io.swagger.v3.oas.annotations.responses.ApiResponses
+import org.hibernate.internal.util.collections.CollectionHelper
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/")
 class FooController() {
-    val fooList: List<Foo> = listOf(Foo(1, "one"), Foo(2, "two"))
+    val fooList: List<Foo> = CollectionHelper.listOf(Foo(1, "one"), Foo(2, "two"))
 
     @Operation(summary = "Get all foos")
     @ApiResponses(value = [

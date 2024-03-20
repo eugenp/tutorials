@@ -2,7 +2,7 @@ package com.baeldung.spring.amqp;
 
 import java.time.Duration;
 
-import javax.annotation.PostConstruct;
+import jakarta.annotation.PostConstruct;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,7 +31,7 @@ import reactor.core.publisher.Mono;
 @RestController
 public class AmqpReactiveController {
 
-    private static Logger log = LoggerFactory.getLogger(AmqpReactiveController.class);
+    private static final Logger log = LoggerFactory.getLogger(AmqpReactiveController.class);
 
     @Autowired
     private AmqpTemplate amqpTemplate;
@@ -142,10 +142,10 @@ public class AmqpReactiveController {
 
         MessageListenerContainer mlc = messageListenerContainerFactory.createMessageListenerContainer(d.getRoutingKey());
 
-        Flux<String> f = Flux.<String> create(emitter -> {
+        Flux<String> f = Flux.create(emitter -> {
 
             log.info("[I168] Adding listener, queue={}", d.getRoutingKey());
-            mlc.setupMessageListener((MessageListener) m -> {
+            mlc.setupMessageListener(m -> {
 
                 String qname = m.getMessageProperties()
                     .getConsumerQueue();
@@ -233,11 +233,11 @@ public class AmqpReactiveController {
 
         MessageListenerContainer mlc = messageListenerContainerFactory.createMessageListenerContainer(qname);
 
-        Flux<String> f = Flux.<String> create(emitter -> {
+        Flux<String> f = Flux.create(emitter -> {
 
             log.info("[I168] Adding listener, queue={}", qname);
 
-            mlc.setupMessageListener((MessageListener) m -> {
+            mlc.setupMessageListener(m -> {
 
                 log.info("[I137] Message received, queue={}", qname);
 

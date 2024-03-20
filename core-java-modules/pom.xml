@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.core-java-modules</groupId>
     <artifactId>core-java-modules</artifactId>
-    <name>core-java-modules</name>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
+    <name>core-java-modules</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -144,6 +144,7 @@
         <module>core-java-lang-6</module>
         <module>core-java-lang-math</module>
         <module>core-java-lang-math-2</module>
+        <module>core-java-lang-math-4</module>
         <module>core-java-lang-oop-constructors</module>
         <module>core-java-lang-oop-patterns</module>
         <module>core-java-lang-oop-generics</module>
