@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>maven-integration-test</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>maven-integration-test</name>
     <packaging>war</packaging>
+    <name>maven-integration-test</name>
 
     <parent>
         <groupId>com.baeldung</groupId>

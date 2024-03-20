@@ -5,8 +5,8 @@
     <groupId>com.baeldung.jhipster</groupId>
     <artifactId>jhipster-6</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>jhipster-6</name>
     <packaging>pom</packaging>
+    <name>jhipster-6</name>
 
     <parent>
         <artifactId>parent-boot-2</artifactId>

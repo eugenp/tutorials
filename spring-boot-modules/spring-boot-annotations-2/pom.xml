@@ -26,6 +26,7 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-inline</artifactId>
+            <version>${mockito-inline.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -33,6 +34,15 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
     </dependencies>
+
+    <properties>
+        <mockito-inline.version>5.2.0</mockito-inline.version>
+        <start-class>com.baeldung.springbootconfiguration.Application</start-class>
+    </properties>
 
 </project>

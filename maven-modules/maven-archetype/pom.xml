@@ -6,8 +6,8 @@
     <groupId>com.baeldung.archetypes</groupId>
     <artifactId>maven-archetype</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>maven-archetype</name>
     <packaging>maven-archetype</packaging>
+    <name>maven-archetype</name>
     <description>Archetype used to generate rest application based on jaxrs 2.1</description>
 
     <build>

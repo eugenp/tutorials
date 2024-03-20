@@ -109,11 +109,11 @@ public class Car {
         car.startWithHasText("t");
         car.startWithNotContain("132");
 
-        List<String> repairPartsCollection = new ArrayList<String>();
+        List<String> repairPartsCollection = new ArrayList<>();
         repairPartsCollection.add("part");
         car.repair(repairPartsCollection);
 
-        Map<String, String> repairPartsMap = new HashMap<String, String>();
+        Map<String, String> repairPartsMap = new HashMap<>();
         repairPartsMap.put("1", "part");
         car.repair(repairPartsMap);
 
