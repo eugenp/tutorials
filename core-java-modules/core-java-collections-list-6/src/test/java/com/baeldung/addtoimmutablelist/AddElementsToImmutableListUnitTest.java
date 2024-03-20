@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -13,14 +14,14 @@ public class AddElementsToImmutableListUnitTest {
     public static <T> List<T> appendAnElement(List<T> immutableList, T element) {
         List<T> tmpList = new ArrayList<>(immutableList);
         tmpList.add(element);
-        return List.copyOf(tmpList);
+        return Collections.unmodifiableList(tmpList);
     }
 
     @SafeVarargs
     public static <T> List<T> appendElements(List<T> immutableList, T... elements) {
         List<T> tmpList = new ArrayList<>(immutableList);
         tmpList.addAll(Arrays.asList(elements));
-        return List.copyOf(tmpList);
+        return Collections.unmodifiableList(tmpList);
     }
 
     @Test
