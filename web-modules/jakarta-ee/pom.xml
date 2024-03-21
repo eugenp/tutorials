@@ -104,7 +104,6 @@
         <local.glassfish.home>C:/glassfish6</local.glassfish.home>
         <local.glassfish.user>admin</local.glassfish.user>
         <local.glassfish.domain>mvn-domain</local.glassfish.domain>
-        <mockito.version>1.10.19</mockito.version>
         <local.glassfish.passfile>
             ${local.glassfish.home}\\domains\\${local.glassfish.domain}\\config\\domain-passwords
         </local.glassfish.passfile>
