@@ -1,8 +1,7 @@
 package com.baeldung.loki;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.verify;
 
 import java.net.URI;
 import java.time.LocalDateTime;
@@ -31,13 +30,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @SpringBootTest(classes = DemoService.class)
 public class DemoServiceLiveTest {
 
+    /**
+     * This test assumes that loki service is already up.
+     * For more details please check section #2 Running Loki and Grafana Service
+     * Which spin up Loki server using docker-compose
+     */
     @Test
     public void givenLokiContainerRunning_whenDemoServiceInvoked_thenLokiAppenderCollectLogs() throws JsonProcessingException, InterruptedException {
         DemoService service = new DemoService();
         service.log();
-        Thread.sleep(2000);
-        String baseUrl = "http://localhost:3100/loki/api/v1/query_range";
 
+        String baseUrl = "http://localhost:3100/loki/api/v1/query_range";
         // Set up query parameters
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -45,43 +48,38 @@ public class DemoServiceLiveTest {
 
         // Get current time in UTC
         LocalDateTime currentDateTime = LocalDateTime.now(ZoneOffset.UTC);
-        String current_time_est = currentDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'"));
+        String currentTimeUtc = currentDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'"));
 
-        LocalDateTime  tenMinsAgo = currentDateTime.minusMinutes(10);
-        String start_time_est = tenMinsAgo.format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'"));
+        LocalDateTime tenMinsAgo = currentDateTime.minusMinutes(10);
+        String startTimeUtc = tenMinsAgo.format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'"));
 
         URI uri = UriComponentsBuilder.fromUriString(baseUrl)
             .queryParam("query", query)
-            .queryParam("start", start_time_est)
-            .queryParam("end", current_time_est)
+            .queryParam("start", startTimeUtc)
+            .queryParam("end", currentTimeUtc)
             .build()
             .toUri();
 
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<String> response = restTemplate.exchange(
-            uri,
-            HttpMethod.GET,
-            new HttpEntity<>(headers),
-            String.class
-        );
+        ResponseEntity<String> response = restTemplate.exchange(uri, HttpMethod.GET, new HttpEntity<>(headers), String.class);
 
         List<String> messages = new ArrayList<>();
         ObjectMapper objectMapper = new ObjectMapper();
-        if (response.getStatusCode() == HttpStatus.OK) {
-            String responseBody = response.getBody();
-            JsonNode jsonNode = objectMapper.readTree(responseBody);
-            JsonNode result = jsonNode.get("data").get("result").get(0).get("values");
-            result.iterator().forEachRemaining(e-> {
+        assertEquals(response.getStatusCode(), HttpStatus.OK);
+
+        String responseBody = response.getBody();
+        JsonNode jsonNode = objectMapper.readTree(responseBody);
+        JsonNode result = jsonNode.get("data")
+            .get("result")
+            .get(0)
+            .get("values");
+        result.iterator()
+            .forEachRemaining(e -> {
                 Iterator<JsonNode> elements = e.elements();
-                elements.forEachRemaining(f ->
-                    messages.add(f.toString())
-                );
+                elements.forEachRemaining(f -> messages.add(f.toString()));
             });
-        } else {
-            System.out.println("Error: " + response.getStatusCodeValue());
-        }
 
         String expected = "DemoService.log invoked";
-        assertTrue(messages.stream().anyMatch(e -> e.contains(expected)));
+        assertThat(messages).anyMatch(e -> e.contains(expected));
     }
 }
