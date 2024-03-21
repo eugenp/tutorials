@@ -49,7 +49,7 @@
         <dependency>
             <groupId>jakarta.json</groupId>
             <artifactId>jakarta.json-api</artifactId>
-            <version>${jakarta.json-api.version}</version> <!-- Use the latest version available -->
+            <version>${jakarta.json-api.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.geronimo.specs</groupId>

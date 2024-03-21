@@ -9,7 +9,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 import com.baeldung.reactive.model.Foo;
 
 @SpringBootApplication
-public class Spring5ReactiveTestApplication {
+public class SpringReactiveTestApplication {
 
     @Bean
     public WebClient client() {
@@ -29,7 +29,7 @@ public class Spring5ReactiveTestApplication {
     // 
     
     public static void main(String[] args) {
-        SpringApplication.run(Spring5ReactiveTestApplication.class, args);
+        SpringApplication.run(SpringReactiveTestApplication.class, args);
     }
     
 }
