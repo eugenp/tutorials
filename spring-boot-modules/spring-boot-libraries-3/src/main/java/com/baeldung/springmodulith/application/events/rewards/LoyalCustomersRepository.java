@@ -1,0 +1,41 @@
+package com.baeldung.springmodulith.application.events.rewards;
+
+import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+@Component
+public class LoyalCustomersRepository {
+
+	private List<LoyalCustomer> customers = new ArrayList<>();
+
+	public Optional<LoyalCustomer> find(String customerId) {
+		return customers.stream()
+			.filter(it -> it.customerId().equals(customerId))
+			.findFirst();
+	}
+
+	public void awardPoints(String customerId, int points) {
+		var customer = find(customerId).orElseThrow();
+		customers.remove(customer);
+		customers.add(customer.addPoints(points));
+	}
+
+	public void save(String customerId) {
+		customers.add(new LoyalCustomer(customerId, 0));
+	}
+
+	public boolean isLoyalCustomer(String customerId) {
+		return find(customerId).isPresent();
+	}
+
+	public record LoyalCustomer(String customerId, int points) {
+
+		LoyalCustomer addPoints(int points) {
+			return new LoyalCustomer(customerId, this.points() + points);
+		}
+	}
+
+}
