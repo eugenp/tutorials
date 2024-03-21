@@ -140,7 +140,7 @@ public class NatsClientLiveTest {
     }
 
     @Test
-    public void whenSubscribingAsynchronouslyWithQueueGroups_thenTheMessageHandlerShouldReceiveEachMessage() throws Exception {
+    public void whenSubscribingAsynchronously_thenTheMessageHandlerShouldReceiveEachMessage() throws Exception {
         try (NatsClient client = connectClient()) {
             List<Message> messages = new ArrayList<>();
             Subscription sub = client.subscribeAsync("asyncSubject", messages::add);
@@ -156,7 +156,7 @@ public class NatsClientLiveTest {
     }
 
     @Test
-    public void whenSubscribingAsynchronously_thenOnlyOneSubscriberInTheGroupShouldReceiveEachMessage() throws Exception {
+    public void whenSubscribingAsynchronouslyWithQueueGroups_thenOnlyOneSubscriberInTheGroupShouldReceiveEachMessage() throws Exception {
         try (NatsClient client = connectClient()) {
             List<Message> messages = new ArrayList<>();
             Subscription qSub1 = client.subscribeAsyncInQueueGroup("foo.bar.requests", "myQueue", messages::add);
