@@ -1,13 +1,20 @@
 package com.baeldung.jnats;
 
-import io.nats.client.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import io.nats.client.Connection;
+import io.nats.client.Dispatcher;
+import io.nats.client.ErrorListener;
+import io.nats.client.Message;
+import io.nats.client.Nats;
+import io.nats.client.Options;
+import io.nats.client.Subscription;
 
 public final class NatsClient implements AutoCloseable {
 
@@ -26,8 +33,7 @@ public final class NatsClient implements AutoCloseable {
     }
 
     public static Connection createConnection(String serverURI) throws IOException, InterruptedException {
-        Options options = new Options.Builder()
-            .server(serverURI)
+        Options options = new Options.Builder().server(serverURI)
             .connectionListener((connection, event) -> log.info("Connection Event: {}", event.toString()))
             .errorListener(new CustomErrorListener())
             .build();
@@ -35,6 +41,7 @@ public final class NatsClient implements AutoCloseable {
     }
 
     static class CustomErrorListener implements ErrorListener {
+
         @Override
         public void errorOccurred(Connection conn, String error) {
             log.error("Error Occurred: {}", error);
@@ -52,10 +59,10 @@ public final class NatsClient implements AutoCloseable {
             if (natsConnection != null) {
                 natsConnection.close();
             }
-        }
-        catch (InterruptedException e) {
+        } catch (InterruptedException e) {
             log.warn("Warning:", e);
-            Thread.currentThread().interrupt();
+            Thread.currentThread()
+                .interrupt();
         }
     }
 
@@ -126,8 +133,7 @@ public final class NatsClient implements AutoCloseable {
         Dispatcher dispatcher = dispatcherBySubscription.remove(subscription);
         if (dispatcher == null) {
             subscription.unsubscribe();
-        }
-        else {
+        } else {
             dispatcher.unsubscribe(subscription);
         }
     }

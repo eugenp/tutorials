@@ -1,8 +1,8 @@
 package com.baeldung.jnats;
 
-import io.nats.client.Message;
-import io.nats.client.Subscription;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,7 +10,10 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+import io.nats.client.Message;
+import io.nats.client.Subscription;
 
 public class NatsClientLiveTest {
 
