@@ -119,7 +119,7 @@ public final class NatsClient implements AutoCloseable {
         return natsConnection.subscribe(subject, queueGroup);
     }
 
-    public CompletableFuture<Message> makeRequest(String subject, String request) {
+    public CompletableFuture<Message> request(String subject, String request) {
         return natsConnection.request(subject, request.getBytes());
     }
 

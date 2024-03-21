@@ -28,7 +28,7 @@ public class NatsClientLiveTest {
     }
 
     @Test
-    public void givenMessageExchangeViaPublishSubscribe_MessagesReceived() throws Exception {
+    public void whenMessagesAreExchangedViaPublish_thenResponsesMustBeReceivedWithSecondarySubscription() throws Exception {
         try (NatsClient client = connectClient()) {
             Subscription replySideSubscription = client.subscribeSync("requestSubject");
             Subscription publishSideSubscription = client.subscribeSync("replyToSubject");
@@ -46,11 +46,11 @@ public class NatsClientLiveTest {
     }
 
     @Test
-    public void givenMessageExchangeViaRequestReply_MessagesReceived() throws Exception {
+    public void whenMessagesAreExchangedViaRequest_thenResponsesMustBeReceivedDirectly() throws Exception {
         try (NatsClient client = connectClient()) {
             Subscription replySideSubscription = client.subscribeSync("requestSubject");
 
-            CompletableFuture<Message> future = client.makeRequest("requestSubject", "hello there");
+            CompletableFuture<Message> future = client.request("requestSubject", "hello there");
 
             Message message = replySideSubscription.nextMessage(TIMEOUT_MILLIS);
             assertNotNull(message, "No message!");
@@ -64,7 +64,7 @@ public class NatsClientLiveTest {
     }
 
     @Test
-    public void whenWildCardSubscription_andMatchTopic_MessageReceived() throws Exception {
+    public void whenMatchingWildCardsAreUsedInSubscriptions_thenSubscriptionsMustReceiveAllMatchingMessages() throws Exception {
         try (NatsClient client = connectClient()) {
             Subscription fooStarSubscription = client.subscribeSync("foo.*");
 
@@ -84,7 +84,7 @@ public class NatsClientLiveTest {
     }
 
     @Test
-    public void whenWildCardSubscription_andNotMatchTopic_NoMessageReceived() throws Exception {
+    public void whenNonMatchingWildCardsAreUsedInSubscriptions_thenSubscriptionsMustNotReceiveNonMatchingMessages() throws Exception {
         try (NatsClient client = connectClient()) {
             Subscription starSubscription = client.subscribeSync("foo.*");
 
@@ -103,7 +103,7 @@ public class NatsClientLiveTest {
     }
 
     @Test
-    public void givenQueueMessage_OnlyOneReceived() throws Exception {
+    public void whenSubscribingWithQueueGroups_thenOnlyOneSubscriberInTheGroupShouldReceiveEachMessage() throws Exception {
         try (NatsClient client = connectClient()) {
             Subscription qSub1 = client.subscribeSyncInQueueGroup("foo.bar.requests", "myQueue");
             Subscription qSub2 = client.subscribeSyncInQueueGroup("foo.bar.requests", "myQueue");
@@ -112,12 +112,12 @@ public class NatsClientLiveTest {
 
             List<Message> messages = new ArrayList<>();
 
-            Message message = qSub1.nextMessage(TIMEOUT_MILLIS);
+            Message message = qSub2.nextMessage(TIMEOUT_MILLIS);
             if (message != null) {
                 messages.add(message);
             }
 
-            message = qSub2.nextMessage(TIMEOUT_MILLIS);
+            message = qSub1.nextMessage(TIMEOUT_MILLIS);
             if (message != null) {
                 messages.add(message);
             }
