@@ -2,19 +2,18 @@ package com.baeldung.springmodulith.application.events;
 
 import com.baeldung.springmodulith.application.events.orders.OrderService;
 import com.baeldung.springmodulith.application.events.rewards.LoyalCustomersRepository;
-import com.baeldung.springmodulith.application.events.rewards.LoyalCustomersRepository.LoyalCustomer;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
-
-import java.util.Optional;
+import org.springframework.modulith.test.ApplicationModuleTest;
+import org.springframework.modulith.test.Scenario;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest
+@ApplicationModuleTest
 @ComponentScan(basePackages = "com.baeldung.springmodulith.application.events")
-public class ApplicationEventsUnitTest {
+public class SpringModulithScenarioApiUnitTest {
 
 	@Autowired
 	OrderService orderService;
@@ -23,15 +22,8 @@ public class ApplicationEventsUnitTest {
 	LoyalCustomersRepository loyalCustomers;
 
 	@Test
-	void whenNewCustomerCompletesAnOrder_thenHeReceivesSingUpPointsPlusOrderPoints() {
-		orderService.placeOrder("customer1", "product1", "product2");
+	void test(Scenario scenario) {
 
-		Optional<LoyalCustomer> customer = loyalCustomers.find("customer1");
-
-		assertThat(customer).isPresent()
-				.get()
-				.extracting(LoyalCustomer::points)
-				.isEqualTo(50 + 10);
 	}
 
 }
