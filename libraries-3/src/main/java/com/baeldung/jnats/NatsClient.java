@@ -28,10 +28,6 @@ public final class NatsClient implements AutoCloseable {
         this.natsConnection = natsConnection;
     }
 
-    public static Connection createConnection() throws IOException, InterruptedException {
-        return createConnection(Options.DEFAULT_URL);
-    }
-
     public static Connection createConnection(String serverURI) throws IOException, InterruptedException {
         Options options = new Options.Builder().server(serverURI)
             .connectionListener((connection, event) -> log.info("Connection Event: {}", event.toString()))
