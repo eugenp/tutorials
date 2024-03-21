@@ -1,7 +1,7 @@
 package com.baeldung.hibernate.unknownentityexception;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.h2.Driver;
 import org.hibernate.Session;
@@ -9,6 +9,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.dialect.H2Dialect;
+import org.hibernate.query.sqm.UnknownEntityException;
 import org.hibernate.service.ServiceRegistry;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
@@ -18,69 +19,60 @@ import org.junit.jupiter.api.Test;
 
 public class UnknownEntityExceptionUnitTest {
 
-  private static SessionFactory sessionFactory;
-  private Session session;
+    private static SessionFactory sessionFactory;
+    private Session session;
 
-  @BeforeAll
-  public static void beforeTests() {
-    Configuration configuration = new Configuration().addAnnotatedClass(Customer.class)
-        .setProperty("hibernate.dialect", H2Dialect.class.getName())
-        .setProperty("hibernate.connection.driver_class", Driver.class.getName())
-        .setProperty("hibernate.connection.url", "jdbc:h2:mem:customerdb")
-        .setProperty("hibernate.connection.username", "sa")
-        .setProperty("hibernate.connection.password", "")
-        .setProperty("hibernate.hbm2ddl.auto", "update");
-    ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties())
-        .build();
-    sessionFactory = configuration.buildSessionFactory(serviceRegistry);
-  }
+    @BeforeAll
+    public static void beforeTests() {
+        Configuration configuration = new Configuration().addAnnotatedClass(Customer.class)
+            .setProperty("hibernate.dialect", H2Dialect.class.getName())
+            .setProperty("hibernate.connection.driver_class", Driver.class.getName())
+            .setProperty("hibernate.connection.url", "jdbc:h2:mem:customerdb")
+            .setProperty("hibernate.connection.username", "sa")
+            .setProperty("hibernate.connection.password", "")
+            .setProperty("hibernate.hbm2ddl.auto", "update");
+        ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties())
+            .build();
+        sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+    }
 
-  @BeforeEach
-  public void setUp() {
-    session = sessionFactory.openSession();
-    session.beginTransaction();
-  }
+    @BeforeEach
+    public void setUp() {
+        session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.doWork(connection -> connection.setAutoCommit(true));
+    }
 
-  @Test
-  public void whenDatabaseTableNameUsed_thenExceptionIsThrown() {
-    Customer customer = new Customer();
-    customer.setEmail("john@baeldung.com");
-    session.persist(customer);
+    @Test
+    public void whenDatabaseTableNameUsed_thenExceptionIsThrown() {
+        Customer customer = new Customer();
+        customer.setEmail("john@baeldung.com");
+        session.persist(customer);
 
-    session.getTransaction().commit();
-    session.close();
+        assertThatThrownBy(() -> {
+            session.createQuery("FROM customer", Customer.class);
+        }).isInstanceOf(IllegalArgumentException.class)
+            .hasCauseInstanceOf(UnknownEntityException.class)
+            .hasMessageContaining("Could not resolve root entity");
+    }
 
-    session = sessionFactory.openSession();
-    session.beginTransaction();
+    @Test
+    public void whenEntityTableNameUsed_thenExceptionIsNotThrown() {
+        Customer customer = new Customer();
+        customer.setEmail("john@baeldung.com");
+        session.persist(customer);
 
-    assertThrows(IllegalArgumentException.class, () -> {
-      session.createQuery("FROM customer", Customer.class);
-    });
-  }
+        assertDoesNotThrow(() -> session.createQuery("FROM Customer", Customer.class));
+    }
 
-  @Test
-  public void whenEntityTableNameUsed_thenExceptionIsNotThrown() {
-    Customer customer = new Customer();
-    customer.setEmail("john@baeldung.com");
-    session.persist(customer);
+    @AfterEach
+    public void closeSession() {
+        session.close();
+    }
 
-    session.getTransaction().commit();
-    session.close();
-
-    session = sessionFactory.openSession();
-    session.beginTransaction();
-
-    assertDoesNotThrow(() -> session.createQuery("FROM Customer", Customer.class));
-  }
-
-  @AfterEach
-  public void closeSession() {
-    session.close();
-  }
-
-  @AfterAll
-  public static void afterTests() {
-    sessionFactory.close();
-  }
+    @AfterAll
+    public static void afterTests() {
+        sessionFactory.close();
+    }
 
 }
