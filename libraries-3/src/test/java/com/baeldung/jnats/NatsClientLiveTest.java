@@ -2,7 +2,7 @@ package com.baeldung.jnats;
 
 import io.nats.client.Message;
 import io.nats.client.Subscription;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,12 +10,12 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class NatsClientLiveTest {
 
     private NatsClient connectClient() throws IOException, InterruptedException {
-        return new NatsClient();
+        return new NatsClient(NatsClient.createConnection());
     }
 
     @Test
@@ -27,12 +27,12 @@ public class NatsClientLiveTest {
             client.publishMessageWithReply("requestSubject", "replyToSubject", "hello there");
 
             Message message = replySideSubscription.nextMessage(200);
-            assertNotNull("No message!", message);
+            assertNotNull(message, "No message!");
             assertEquals("hello there", new String(message.getData()));
             client.publishMessage(message.getReplyTo(), "hello back");
 
             message = publishSideSubscription.nextMessage(200);
-            assertNotNull("No message!", message);
+            assertNotNull(message, "No message!");
             assertEquals("hello back", new String(message.getData()));
         }
     }
@@ -46,12 +46,12 @@ public class NatsClientLiveTest {
             CompletableFuture<Message> future = client.makeRequest("requestSubject", "hello there");
 
             Message message = replySideSubscription.nextMessage(200);
-            assertNotNull("No message!", message);
+            assertNotNull(message, "No message!");
             assertEquals("hello there", new String(message.getData()));
             client.publishMessage(message.getReplyTo(), "hello back");
 
             message = future.get(200, TimeUnit.MILLISECONDS);
-            assertNotNull("No message!", message);
+            assertNotNull(message, "No message!");
             assertEquals("hello back", new String(message.getData()));
         }
     }
@@ -65,14 +65,14 @@ public class NatsClientLiveTest {
             client.publishMessage("foo.star", "hello foo star");
 
             Message message = fooStarSubscription.nextMessage(200);
-            assertNotNull("No message!", message);
+            assertNotNull(message, "No message!");
             assertEquals("hello foo star", new String(message.getData()));
 
             Subscription fooGreaterSubscription = client.subscribeSync("foo.>");
             client.publishMessage("foo.greater.than", "hello foo greater");
 
             message = fooGreaterSubscription.nextMessage(200);
-            assertNotNull("No message!", message);
+            assertNotNull(message, "No message!");
             assertEquals("hello foo greater", new String(message.getData()));
         }
     }
@@ -86,13 +86,13 @@ public class NatsClientLiveTest {
             client.publishMessage("foo.bar.plop", "hello there");
 
             Message message = starSubscription.nextMessage(200);
-            assertNull("Got message!", message);
+            assertNull(message, "Got message!");
 
             Subscription greaterSubscription = client.subscribeSync("foo.>");
             client.publishMessage("foo.bar.plop", "hello there");
 
             message = greaterSubscription.nextMessage(200);
-            assertNotNull("No message!", message);
+            assertNotNull(message, "No message!");
             assertEquals("hello there", new String(message.getData()));
         }
     }

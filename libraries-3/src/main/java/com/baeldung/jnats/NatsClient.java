@@ -15,22 +15,14 @@ public final class NatsClient implements AutoCloseable {
 
     private final static Logger log = LoggerFactory.getLogger(NatsClient.class);
 
-    private final String serverURI;
-
     private final Connection natsConnection;
 
-    public NatsClient() throws IOException, InterruptedException {
-        this(null);
+    public NatsClient(Connection natsConnection) {
+        this.natsConnection = natsConnection;
     }
 
-    public NatsClient(String serverURI) throws IOException, InterruptedException {
-        if (serverURI == null || serverURI.isEmpty()) {
-            this.serverURI = "nats://localhost:4222";
-        }
-        else {
-            this.serverURI = serverURI;
-        }
-        natsConnection = createConnection(this.serverURI);
+    public static Connection createConnection() throws IOException, InterruptedException {
+        return createConnection(Options.DEFAULT_URL);
     }
 
     public static Connection createConnection(String serverURI) throws IOException, InterruptedException {
