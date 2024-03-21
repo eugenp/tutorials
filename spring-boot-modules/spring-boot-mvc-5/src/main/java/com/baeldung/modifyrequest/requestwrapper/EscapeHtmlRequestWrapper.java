@@ -7,7 +7,6 @@ import jakarta.servlet.http.HttpServletRequestWrapper;
 import java.io.*;
 import java.util.Collections;
 import java.util.Enumeration;
-import org.apache.commons.lang.StringEscapeUtils;
 import org.springframework.http.HttpHeaders;
 
 public class EscapeHtmlRequestWrapper extends HttpServletRequestWrapper {
@@ -30,11 +29,10 @@ public class EscapeHtmlRequestWrapper extends HttpServletRequestWrapper {
         }
         String input = stringBuilder.toString();
         // Escape HTML characters
-        String value =  input.replaceAll("&", "&amp;")
+        return input.replaceAll("&", "&amp;")
             .replaceAll("<", "&lt;")
             .replaceAll(">", "&gt;")
             .replaceAll("'", "&#39;");
-        return value;
     }
 
     @Override
