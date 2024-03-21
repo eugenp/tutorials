@@ -78,6 +78,8 @@
     </repositories>
 
     <properties>
+        <spring-boot.version>3.2.2</spring-boot.version>
+        <junit-jupiter.version>5.10.2</junit-jupiter.version>
         <spring.fox.version>3.0.0</spring.fox.version>
         <start-class>com.baeldung.springbootmvc.SpringBootMvcFnApplication</start-class>
         <xstream.version>1.4.11.1</xstream.version>
