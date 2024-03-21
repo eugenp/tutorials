@@ -14,8 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @ComponentScan(basePackages = "com.baeldung.springmodulith.application.events")
-public class ApplicationEventsTest {
-
+public class ApplicationEventsUnitTest {
 
 	@Autowired
 	OrderService orderService;
