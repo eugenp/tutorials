@@ -1,38 +1,45 @@
 package com.baeldung.jnats;
 
-import java.io.IOException;
-import java.time.Duration;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-
 import io.nats.client.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public final class NatsClient {
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
 
-    private final String serverURI;
+public final class NatsClient implements AutoCloseable {
 
     private final Map<Subscription, Dispatcher> dispatcherBySubscription = new HashMap<>();
 
     private final static Logger log = LoggerFactory.getLogger(NatsClient.class);
 
-    private Connection natsConnection;
+    private final String serverURI;
 
-    NatsClient() {
+    private final Connection natsConnection;
+
+    public NatsClient() throws IOException, InterruptedException {
         this(null);
     }
 
-    public NatsClient(String serverURI) {
+    public NatsClient(String serverURI) throws IOException, InterruptedException {
         if (serverURI == null || serverURI.isEmpty()) {
             this.serverURI = "nats://localhost:4222";
         }
         else {
             this.serverURI = serverURI;
         }
-        initConnection();
+        natsConnection = createConnection(this.serverURI);
+    }
+
+    public static Connection createConnection(String serverURI) throws IOException, InterruptedException {
+        Options options = new Options.Builder()
+            .server(serverURI)
+            .connectionListener((connection, event) -> log.info("Connection Event: {}", event.toString()))
+            .errorListener(new CustomErrorListener())
+            .build();
+        return Nats.connect(options);
     }
 
     static class CustomErrorListener implements ErrorListener {
@@ -46,30 +53,21 @@ public final class NatsClient {
             log.error("Exception Occurred: {}", exp.toString());
         }
     }
-    private void initConnection() {
-        try {
-            Options options = new Options.Builder()
-                .server(serverURI)
-                .connectionListener((connection, event) -> log.info("Connection Event: {}", event.toString()))
-                .errorListener(new CustomErrorListener())
-                .build();
-            natsConnection = Nats.connect(options);
-        } catch (IOException | InterruptedException e) {
-            log.error("Error connecting to NATs! {}", e.toString());
-        }
-    }
 
-    public void closeConnection() {
-        // Close connection
+    @Override
+    public void close() throws Exception {
         try {
-            natsConnection.close();
+            if (natsConnection != null) {
+                natsConnection.close();
+            }
         }
         catch (InterruptedException e) {
             log.warn("Warning:", e);
+            Thread.currentThread().interrupt();
         }
     }
 
-    void publishMessage(String subject, String message) {
+    public void publishMessage(String subject, String message) {
         try {
             natsConnection.publish(subject, message.getBytes());
         } catch (IllegalStateException ise) {
@@ -77,7 +75,7 @@ public final class NatsClient {
         }
     }
 
-    void publishMessageWithReply(String subject, String replyTo, String message) {
+    public void publishMessageWithReply(String subject, String replyTo, String message) {
         try {
             natsConnection.publish(subject, replyTo, message.getBytes());
         } catch (IllegalStateException ise) {
