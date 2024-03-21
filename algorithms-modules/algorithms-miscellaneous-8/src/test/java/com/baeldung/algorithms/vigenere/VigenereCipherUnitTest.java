@@ -24,17 +24,17 @@ public class VigenereCipherUnitTest {
     @Test
     void encodeArticleTitle() {
         VigenereCipher cipher = new VigenereCipher();
-        String output = cipher.encode("VEGENERE CIPHER IN JAVA", "BAELDUNG");
+        String output = cipher.encode("VIGENERE CIPHER IN JAVA", "BAELDUNG");
 
-        Assertions.assertEquals("XFLQRZFL EJUTIM WU LBAM", output);
+        Assertions.assertEquals("XJLQRZFL EJUTIM WU LBAM", output);
     }
 
     @Test
     void encodeArticleTitleMoreCharacters() {
         VigenereCipher cipher = new VigenereCipher("ABCDEFGHIJKLMNOPQRSTUVWXYZ ");
-        String output = cipher.encode("VEGENERE CIPHER IN JAVA", "BAELDUNG");
+        String output = cipher.encode("VIGENERE CIPHER IN JAVA", "BAELDUNG");
 
-        Assertions.assertEquals("XFLQRZELBDNALZEGKOEVEPO", output);
+        Assertions.assertEquals("XJLQRZELBDNALZEGKOEVEPO", output);
     }
 
     @Test
@@ -56,8 +56,21 @@ public class VigenereCipherUnitTest {
     @Test
     void decodeArticleTitleMoreCharacters() {
         VigenereCipher cipher = new VigenereCipher("ABCDEFGHIJKLMNOPQRSTUVWXYZ ");
-        String output = cipher.decode("XFLQRZELBDNALZEGKOEVEPO", "BAELDUNG");
+        String output = cipher.decode("XJLQRZELBDNALZEGKOEVEPO", "BAELDUNG");
 
-        Assertions.assertEquals("VEGENERE CIPHER IN JAVA", output);
+        Assertions.assertEquals("VIGENERE CIPHER IN JAVA", output);
+    }
+
+    @Test
+    void encodeDecodeBaeldung() {
+        VigenereCipher cipher = new VigenereCipher();
+
+        String input = "BAELDUNG";
+        String key = "HELLO";
+
+        String encoded = cipher.encode(input, key);
+        String decoded = cipher.decode(encoded, key);
+
+        Assertions.assertEquals(input, decoded);
     }
 }
