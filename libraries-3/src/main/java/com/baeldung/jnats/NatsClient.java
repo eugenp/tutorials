@@ -12,6 +12,7 @@ import io.nats.client.Connection;
 import io.nats.client.Dispatcher;
 import io.nats.client.ErrorListener;
 import io.nats.client.Message;
+import io.nats.client.MessageHandler;
 import io.nats.client.Nats;
 import io.nats.client.Options;
 import io.nats.client.Subscription;
@@ -78,9 +79,9 @@ public final class NatsClient implements AutoCloseable {
         }
     }
 
-    public Subscription subscribeAsync(String subject) {
+    public Subscription subscribeAsync(String subject, MessageHandler handler) {
         Dispatcher dispatcher = natsConnection.createDispatcher();
-        Subscription subscription = dispatcher.subscribe(subject, msg -> log.info("Subscription received message on {}", msg));
+        Subscription subscription = dispatcher.subscribe(subject, handler);
         if (subscription == null) {
             log.error("Error subscribing to {}", subject);
             return null;
@@ -89,22 +90,11 @@ public final class NatsClient implements AutoCloseable {
         return subscription;
     }
 
-    public Subscription subscribeAsyncInQueueGroup(String subject, String queueGroup) {
+    public Subscription subscribeAsyncInQueueGroup(String subject, String queueGroup, MessageHandler handler) {
         Dispatcher dispatcher = natsConnection.createDispatcher();
-        Subscription subscription = dispatcher.subscribe(subject, queueGroup, msg -> log.info("Queue group subscription received message on {}", msg));
+        Subscription subscription = dispatcher.subscribe(subject, queueGroup, handler);
         if (subscription == null) {
             log.error("Error subscribing to {}", subject);
-            return null;
-        }
-        dispatcherBySubscription.put(subscription, dispatcher);
-        return subscription;
-    }
-
-    public Subscription makeAsyncReplier(String subject, String reply) {
-        Dispatcher dispatcher = natsConnection.createDispatcher();
-        Subscription subscription = dispatcher.subscribe(subject, message -> publishMessage(message.getReplyTo(), reply));
-        if (subscription == null) {
-            log.error("Error making replier to {}", subject);
             return null;
         }
         dispatcherBySubscription.put(subscription, dispatcher);

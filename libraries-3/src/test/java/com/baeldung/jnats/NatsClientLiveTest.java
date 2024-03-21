@@ -42,6 +42,9 @@ public class NatsClientLiveTest {
             message = publishSideSubscription.nextMessage(TIMEOUT_MILLIS);
             assertNotNull(message, "No message!");
             assertEquals("hello back", new String(message.getData()));
+
+            client.unsubscribe(replySideSubscription);
+            client.unsubscribe(publishSideSubscription);
         }
     }
 
@@ -60,6 +63,8 @@ public class NatsClientLiveTest {
             message = future.get(TIMEOUT_MILLIS, TimeUnit.MILLISECONDS);
             assertNotNull(message, "No message!");
             assertEquals("hello back", new String(message.getData()));
+
+            client.unsubscribe(replySideSubscription);
         }
     }
 
@@ -80,6 +85,8 @@ public class NatsClientLiveTest {
             message = fooGreaterSubscription.nextMessage(TIMEOUT_MILLIS);
             assertNotNull(message, "No message!");
             assertEquals("hello foo greater", new String(message.getData()));
+
+            client.unsubscribe(fooGreaterSubscription);
         }
     }
 
@@ -99,6 +106,9 @@ public class NatsClientLiveTest {
             message = greaterSubscription.nextMessage(TIMEOUT_MILLIS);
             assertNotNull(message, "No message!");
             assertEquals("hello there", new String(message.getData()));
+
+            client.unsubscribe(starSubscription);
+            client.unsubscribe(greaterSubscription);
         }
     }
 
@@ -123,6 +133,42 @@ public class NatsClientLiveTest {
             }
 
             assertEquals(1, messages.size());
+
+            client.unsubscribe(qSub1);
+            client.unsubscribe(qSub2);
+        }
+    }
+
+    @Test
+    public void whenSubscribingAsynchronouslyWithQueueGroups_thenTheMessageHandlerShouldReceiveEachMessage() throws Exception {
+        try (NatsClient client = connectClient()) {
+            List<Message> messages = new ArrayList<>();
+            Subscription sub = client.subscribeAsync("asyncSubject", messages::add);
+
+            client.publishMessage("asyncSubject", "data1");
+            client.publishMessage("asyncSubject", "data2");
+
+            Thread.sleep(200); // give the messages time to be published and received
+            assertEquals(2, messages.size());
+
+            client.unsubscribe(sub);
+        }
+    }
+
+    @Test
+    public void whenSubscribingAsynchronously_thenOnlyOneSubscriberInTheGroupShouldReceiveEachMessage() throws Exception {
+        try (NatsClient client = connectClient()) {
+            List<Message> messages = new ArrayList<>();
+            Subscription qSub1 = client.subscribeAsyncInQueueGroup("foo.bar.requests", "myQueue", messages::add);
+            Subscription qSub2 = client.subscribeAsyncInQueueGroup("foo.bar.requests", "myQueue", messages::add);
+
+            client.publishMessage("foo.bar.requests", "foobar");
+
+            Thread.sleep(200); // give the messages time to be published and received
+            assertEquals(1, messages.size());
+
+            client.unsubscribe(qSub1);
+            client.unsubscribe(qSub2);
         }
     }
 }
