@@ -180,7 +180,6 @@
 
     <properties>
         <quarkus.version>2.16.3.Final</quarkus.version>
-        <mockito.version>3.3.0</mockito.version>
     </properties>
 
 </project>
