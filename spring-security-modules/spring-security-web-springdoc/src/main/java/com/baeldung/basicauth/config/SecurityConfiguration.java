@@ -34,18 +34,4 @@ public class SecurityConfiguration {
             .roles("USER");
     }
     
-//    @Bean
-//    public InMemoryUserDetailsManager userDetailsService(PasswordEncoder passwordEncoder) {
-//        UserDetails user = User.withUsername("user")
-//            .password(passwordEncoder.encode("password"))
-//            .roles("USER")
-//            .build();
-//
-//        return new InMemoryUserDetailsManager(user);
-//    }
-//
-//    @Bean
-//    public BCryptPasswordEncoder passwordEncoder() {
-//        return new BCryptPasswordEncoder();
-//    }
 }

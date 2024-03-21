@@ -27,12 +27,7 @@
         </dependency>
         <dependency>
             <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-ui</artifactId>
-            <version>${springdoc.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-security</artifactId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
             <version>${springdoc.version}</version>
         </dependency>
         <dependency>
@@ -48,7 +43,7 @@
     </dependencies>
 
     <properties>
-        <springdoc.version>1.8.0</springdoc.version>
+        <springdoc.version>2.4.0</springdoc.version>
         <start-class>com.baeldung.basicauth.SpringBootSpringdocBasicAuth</start-class>
     </properties>
 
