@@ -1,18 +1,17 @@
 package com.baeldung.springmodulith.application.events;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
+import com.baeldung.springmodulith.application.events.orders.OrderService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
 
-import com.baeldung.springmodulith.application.events.orders.OrderService;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @ComponentScan(basePackages = "com.baeldung.springmodulith.application.events")
-public class EventPublisherUnitTest {
+class EventPublisherUnitTest {
 
 	@Autowired
 	OrderService orderService;
@@ -30,10 +29,10 @@ public class EventPublisherUnitTest {
 		orderService.placeOrder("customer1", "product1", "product2");
 
 		assertThat(testEventListener.getEvents())
-			.hasSize(1).first()
-			.hasFieldOrPropertyWithValue("customerId", "customer1")
-			.hasFieldOrProperty("orderId")
-			.hasFieldOrProperty("timestamp");
+		  .hasSize(1).first()
+		  .hasFieldOrPropertyWithValue("customerId", "customer1")
+		  .hasFieldOrProperty("orderId")
+		  .hasFieldOrProperty("timestamp");
 	}
 
 }

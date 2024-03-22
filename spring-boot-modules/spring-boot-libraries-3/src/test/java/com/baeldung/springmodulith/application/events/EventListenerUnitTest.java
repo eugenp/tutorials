@@ -16,7 +16,7 @@ import com.baeldung.springmodulith.application.events.rewards.LoyalCustomersRepo
 
 @SpringBootTest
 @ComponentScan(basePackages = "com.baeldung.springmodulith.application.events")
-public class EventListenerUnitTest {
+class EventListenerUnitTest {
 
 	@Autowired
 	private LoyalCustomersRepository customers;
@@ -31,9 +31,9 @@ public class EventListenerUnitTest {
 		testEventPublisher.publishEvent(event);
 
 		assertThat(customers.find("customer-1"))
-			.isPresent().get()
-			.hasFieldOrPropertyWithValue("customerId", "customer-1")
-			.hasFieldOrPropertyWithValue("points", 60);
+		  .isPresent().get()
+		  .hasFieldOrPropertyWithValue("customerId", "customer-1")
+		  .hasFieldOrPropertyWithValue("points", 60);
 	}
 
 }

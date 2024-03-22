@@ -7,8 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class LoyaltyPointsService {
 
-	public static final int ORDER_COMPLETED_POINTS = 10;
-	public static final int SING_UP_POINTS = 50;
+	public static final int ORDER_COMPLETED_POINTS = 60;
 	private final LoyalCustomersRepository loyalCustomers;
 
 	public LoyaltyPointsService(LoyalCustomersRepository loyalCustomers) {
@@ -17,11 +16,7 @@ public class LoyaltyPointsService {
 
 	@EventListener
 	public void onOrderCompleted(OrderCompletedEvent event) {
-		if (loyalCustomers.find(event.customerId()).isEmpty()) {
-			loyalCustomers.save(event.customerId());
-			loyalCustomers.awardPoints(event.customerId(), SING_UP_POINTS);
-		}
-
+		// business logic to award points to loyal customers
 		loyalCustomers.awardPoints(event.customerId(), ORDER_COMPLETED_POINTS);
 	}
 
