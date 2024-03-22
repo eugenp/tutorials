@@ -13,4 +13,5 @@ This module contains articles about numbers in Java.
 - [Binary Numbers in Java](https://www.baeldung.com/java-binary-numbers)
 - [Finding the Least Common Multiple in Java](https://www.baeldung.com/java-least-common-multiple)
 - [Binary Numbers in Java](https://www.baeldung.com/java-binary-numbers)
+- [RGB Representation as an Integer in Java](https://www.baeldung.com/java-rgb-color-representation)
 - More articles: [[<-- prev]](../core-java-numbers) [[next -->]](../core-java-numbers-3)
