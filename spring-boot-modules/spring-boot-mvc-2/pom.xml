@@ -56,9 +56,28 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>${start-class}</mainClass>
+                    <layout>JAR</layout>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>jcenter-release</id>
+            <name>jcenter</name>
+            <url>http://oss.jfrog.org/artifactory/oss-release-local/</url>
+        </repository>
+    </repositories>
+
     <properties>
-        <spring-boot.version>3.2.2</spring-boot.version>
-        <junit-jupiter.version>5.10.2</junit-jupiter.version>
         <spring.fox.version>3.0.0</spring.fox.version>
         <start-class>com.baeldung.springbootmvc.SpringBootMvcFnApplication</start-class>
         <maven.compiler.release>17</maven.compiler.release>
