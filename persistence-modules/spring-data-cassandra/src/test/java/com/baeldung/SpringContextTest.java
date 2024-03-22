@@ -1,12 +1,17 @@
 package com.baeldung;
 
 import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.util.Collections;
 import java.util.HashMap;
 
 import org.apache.cassandra.exceptions.ConfigurationException;
 import org.apache.thrift.transport.TTransportException;
 import com.baeldung.spring.data.cassandra.config.CassandraConfig;
 import com.baeldung.spring.data.cassandra.model.Book;
+import com.datastax.oss.driver.api.core.CqlIdentifier;
+import com.datastax.oss.driver.api.core.CqlSession;
+
 import org.cassandraunit.utils.EmbeddedCassandraServerHelper;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -15,13 +20,9 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cassandra.core.cql.CqlIdentifier;
 import org.springframework.data.cassandra.core.CassandraAdminOperations;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import com.datastax.driver.core.Cluster;
-import com.datastax.driver.core.Session;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = CassandraConfig.class)
@@ -38,9 +39,7 @@ public class SpringContextTest {
 
     @BeforeClass
     public static void startCassandraEmbedded() throws InterruptedException, TTransportException, ConfigurationException, IOException {
-        EmbeddedCassandraServerHelper.startEmbeddedCassandra();
-        final Cluster cluster = Cluster.builder().addContactPoints("127.0.0.1").withPort(9142).build();
-        final Session session = cluster.connect();
+        final CqlSession session = CqlSession.builder().addContactPoints(Collections.singleton(new InetSocketAddress("127.0.0.1", 9142))).build();
         session.execute(KEYSPACE_CREATION_QUERY);
         session.execute(KEYSPACE_ACTIVATE_QUERY);
         Thread.sleep(5000);
@@ -48,7 +47,7 @@ public class SpringContextTest {
 
     @Before
     public void createTable() {
-        adminTemplate.createTable(true, CqlIdentifier.cqlId(DATA_TABLE_NAME), Book.class, new HashMap<>());
+        adminTemplate.createTable(true, CqlIdentifier.fromCql(DATA_TABLE_NAME), Book.class, new HashMap<>());
     }
 
 	@Test
@@ -57,7 +56,7 @@ public class SpringContextTest {
 
 	@After
     public void dropTable() {
-        adminTemplate.dropTable(CqlIdentifier.cqlId(DATA_TABLE_NAME));
+        adminTemplate.dropTable(CqlIdentifier.fromCql(DATA_TABLE_NAME));
     }
 
     @AfterClass
