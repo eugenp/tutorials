@@ -27,7 +27,6 @@ class SpringModulithScenarioApiUnitTest {
 	@Test
 	void whenPlacingOrder_thenPublishOrderCompletedEvent(Scenario scenario) {
 		scenario.stimulate(() -> orderService.placeOrder("customer-1", "product-1", "product-2"))
-		  .andWaitAtMost(ofMillis(500))
 		  .andWaitForEventOfType(OrderCompletedEvent.class)
 		  .toArriveAndVerify(evt -> assertThat(evt)
 			.hasFieldOrPropertyWithValue("customerId", "customer-1")
@@ -38,7 +37,6 @@ class SpringModulithScenarioApiUnitTest {
 	@Test
 	void whenReceivingPublishOrderCompletedEvent_thenRewardCustomerWithLoyaltyPoints(Scenario scenario) {
 		scenario.publish(new OrderCompletedEvent("order-1", "customer-1", Instant.now()))
-		  .andWaitAtMost(ofMillis(500))
 		  .andWaitForStateChange(() -> loyalCustomers.find("customer-1"))
 		  .andVerify(it -> assertThat(it)
 		    .isPresent().get()
