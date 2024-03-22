@@ -2,11 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-concurrency-advanced-5</artifactId>
-    <name>core-java-concurrency-advanced-5</name>
     <packaging>jar</packaging>
+    <name>core-java-concurrency-advanced-5</name>
 
     <parent>
         <groupId>com.baeldung.core-java-modules</groupId>
@@ -29,8 +28,8 @@
     </build>
 
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>9</maven.compiler.source>
+        <maven.compiler.target>9</maven.compiler.target>
     </properties>
 
 </project>

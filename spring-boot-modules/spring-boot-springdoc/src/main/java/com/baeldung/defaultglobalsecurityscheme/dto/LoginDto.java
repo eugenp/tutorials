@@ -1,5 +1,6 @@
 package com.baeldung.defaultglobalsecurityscheme.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -30,7 +31,7 @@ public class LoginDto {
      * @return user
     */
 
-    @Schema(name = "user", required = true)
+    @Schema(name = "user", requiredMode = RequiredMode.REQUIRED)
     public String getUser() {
         return user;
     }

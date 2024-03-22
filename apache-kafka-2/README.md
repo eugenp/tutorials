@@ -16,3 +16,4 @@ You can build the project from the command line using: *mvn clean install*, or i
 - [Introduction to Apache Kafka](https://www.baeldung.com/apache-kafka)
 - [Ensuring Message Ordering in Kafka: Strategies and Configurations](https://www.baeldung.com/kafka-message-ordering)
 - [Read Multiple Messages with Apache Kafka](https://www.baeldung.com/kafka-read-multiple-messages)
+- [Creating a Kafka Listener Using the Consumer API](https://www.baeldung.com/kafka-create-listener-consumer-api)

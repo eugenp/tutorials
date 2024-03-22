@@ -6,11 +6,11 @@
        xmlns:security="http://www.springframework.org/schema/security"
        xsi:schemaLocation="
         http://www.springframework.org/schema/mvc
-        http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
-       http://www.springframework.org/schema/security
-        http://www.springframework.org/schema/security/spring-security-5.2.xsd
-		http://www.springframework.org/schema/beans
-		http://www.springframework.org/schema/beans/spring-beans.xsd">
+        https://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/security
+        https://www.springframework.org/schema/security/spring-security.xsd
+        http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <security:authentication-manager>
         <security:authentication-provider>
@@ -40,7 +40,7 @@
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/loginUser"/>
-            <bean class="com.baeldung.loginredirect.LoginPageInterceptor"/>
+            <beans:bean class="com.baeldung.loginredirect.LoginPageInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
 </beans>

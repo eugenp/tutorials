@@ -157,7 +157,7 @@
         <rome.version>1.9.0</rome.version>
         <xstream.version>1.4.9</xstream.version>
         <scribejava.version>5.1.0</scribejava.version>
-        <json.version>20180130</json.version>
+        <json.version>20240303</json.version>
         <javax.mail.version>1.6.1</javax.mail.version>
         <spring-boot.version>2.5.6</spring-boot.version>
     </properties>

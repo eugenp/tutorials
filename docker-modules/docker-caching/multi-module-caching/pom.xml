@@ -6,8 +6,8 @@
     <groupId>com.baeldung</groupId>
     <artifactId>multi-module-caching</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <description>Multi-module Maven caching example</description>
     <packaging>pom</packaging>
+    <description>Multi-module Maven caching example</description>
 
     <modules>
         <module>runner-module</module>
