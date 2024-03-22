@@ -13,18 +13,21 @@ public class LoyalCustomersRepository {
 
 	public Optional<LoyalCustomer> find(String customerId) {
 		return customers.stream()
-			.filter(it -> it.customerId().equals(customerId))
-			.findFirst();
+		  .filter(it -> it.customerId().equals(customerId))
+		  .findFirst();
 	}
 
 	public void awardPoints(String customerId, int points) {
-		var customer = find(customerId).orElseThrow();
+		var customer = find(customerId)
+		  .orElseGet(() -> save(new LoyalCustomer(customerId, 0)));
+
 		customers.remove(customer);
 		customers.add(customer.addPoints(points));
 	}
 
-	public void save(String customerId) {
-		customers.add(new LoyalCustomer(customerId, 0));
+	public LoyalCustomer save(LoyalCustomer customer) {
+		customers.add(customer);
+		return customer;
 	}
 
 	public boolean isLoyalCustomer(String customerId) {
