@@ -83,6 +83,7 @@
         <start-class>com.baeldung.springboot.swagger.ArticleApplication</start-class>
         <spring-cloud.version>2023.0.0</spring-cloud.version>
         <commons-configuration.version>1.10</commons-configuration.version>
+        <maven.compiler.release>17</maven.compiler.release>
     </properties>
 
 </project>
