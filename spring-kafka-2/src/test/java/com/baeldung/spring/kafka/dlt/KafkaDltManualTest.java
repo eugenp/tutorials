@@ -34,7 +34,7 @@ import org.springframework.test.context.ActiveProfiles;
     topics = {"payments-fail-on-error-dlt", "payments-retry-on-error-dlt", "payments-no-dlt"}
 )
 @ActiveProfiles("dlt")
-public class KafkaDltIntegrationTest {
+public class KafkaDltManualTest {
     private static final String FAIL_ON_ERROR_TOPIC = "payments-fail-on-error-dlt";
     private static final String RETRY_ON_ERROR_TOPIC = "payments-retry-on-error-dlt";
     private static final String NO_DLT_TOPIC = "payments-no-dlt";
