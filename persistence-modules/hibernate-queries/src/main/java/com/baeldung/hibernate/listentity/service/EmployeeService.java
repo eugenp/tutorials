@@ -35,15 +35,13 @@ public class EmployeeService {
     }
 
     public List<Employee> getAllEmployeesUsingNamedQuery() {
-        String namedQuery = "findAllEmployees";
-        Query query = entityManager.createNamedQuery(namedQuery, Employee.class);
+        Query query = entityManager.createNamedQuery("findAllEmployees", Employee.class);
 
         return query.getResultList();
     }
 
     public List<Employee> getAllEmployeesByDepartmentUsingNamedQuery(String department) {
-        String namedQuery = "findEmployeesByDepartment";
-        Query query = entityManager.createNamedQuery(namedQuery, Employee.class);
+        Query query = entityManager.createNamedQuery("findEmployeesByDepartment", Employee.class);
         query.setParameter("department", department);
 
         return query.getResultList();
