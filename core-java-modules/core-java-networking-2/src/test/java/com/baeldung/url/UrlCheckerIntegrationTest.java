@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import org.junit.Test;
 
-public class UrlCheckerUnitTest {
+public class UrlCheckerIntegrationTest {
 
     @Test
     public void givenValidUrl_WhenUsingHEAD_ThenReturn200() throws IOException {
@@ -18,7 +18,7 @@ public class UrlCheckerUnitTest {
     @Test
     public void givenInvalidIUrl_WhenUsingHEAD_ThenReturn404() throws IOException {
         UrlChecker tester = new UrlChecker();
-        int responseCode = tester.getResponseCodeForURLUsingHead("http://www.example.com/unkownurl");
+        int responseCode = tester.getResponseCodeForURLUsingHead("http://www.example.com/xyz");
         assertEquals(404, responseCode);
     }
     
@@ -32,7 +32,7 @@ public class UrlCheckerUnitTest {
     @Test
     public void givenInvalidIUrl_WhenUsingGET_ThenReturn404() throws IOException {
         UrlChecker tester = new UrlChecker();
-        int responseCode = tester.getResponseCodeForURL("http://www.example.com/unkownurl");
+        int responseCode = tester.getResponseCodeForURL("http://www.example.com/xyz");
         assertEquals(404, responseCode);
     }
     
