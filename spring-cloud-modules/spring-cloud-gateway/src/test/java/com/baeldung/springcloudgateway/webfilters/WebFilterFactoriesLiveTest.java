@@ -1,11 +1,8 @@
 package com.baeldung.springcloudgateway.webfilters;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-import org.assertj.core.api.Condition;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
@@ -25,7 +22,7 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.test.web.reactive.server.WebTestClient.ResponseSpec;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-@ActiveProfiles("webfilters")
+@ActiveProfiles({"webfilters","nosecurity"})
 public class WebFilterFactoriesLiveTest {
 
     @LocalServerPort
