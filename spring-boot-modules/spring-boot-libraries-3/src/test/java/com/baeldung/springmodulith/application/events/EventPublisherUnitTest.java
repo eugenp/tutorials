@@ -10,7 +10,6 @@ import org.springframework.context.annotation.ComponentScan;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-@ComponentScan(basePackages = "com.baeldung.springmodulith.application.events")
 class EventPublisherUnitTest {
 
 	@Autowired

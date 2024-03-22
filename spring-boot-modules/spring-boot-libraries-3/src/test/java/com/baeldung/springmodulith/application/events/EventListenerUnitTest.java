@@ -15,7 +15,6 @@ import com.baeldung.springmodulith.application.events.orders.OrderCompletedEvent
 import com.baeldung.springmodulith.application.events.rewards.LoyalCustomersRepository;
 
 @SpringBootTest
-@ComponentScan(basePackages = "com.baeldung.springmodulith.application.events")
 class EventListenerUnitTest {
 
 	@Autowired
