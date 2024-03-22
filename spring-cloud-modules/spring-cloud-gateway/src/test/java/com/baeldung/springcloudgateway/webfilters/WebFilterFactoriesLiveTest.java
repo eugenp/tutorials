@@ -52,6 +52,7 @@ public class WebFilterFactoriesLiveTest {
         assertThat(headers.getString("My-Header-Good")).isEqualTo("Good");
         assertThat(headers.getString("My-Header-Bad")).isEqualTo("Good");
         assertThat(headers.getString("My-Header-Set")).isEqualTo("Set");
+        assertThat(headers.getString("My-Header-Absent")).isEqualTo("Absent");
         assertTrue(headers.isNull("My-Header-Remove"));
         JSONObject vars = json.getJSONObject("args");
         assertThat(vars.getString("var")).isEqualTo("good");

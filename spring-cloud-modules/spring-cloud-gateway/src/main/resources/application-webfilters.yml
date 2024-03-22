@@ -17,6 +17,7 @@ spring:
         filters:
         - AddRequestHeader=My-Header-Good,Good
         - AddRequestHeader=My-Header-Remove,Remove
+        - AddRequestHeadersIfNotPresent=My-Header-Absent:Absent
         - AddRequestParameter=var, good
         - AddRequestParameter=var2, remove
         - MapRequestHeader=My-Header-Good, My-Header-Bad
