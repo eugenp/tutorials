@@ -9,10 +9,9 @@
     <description>Module For Spring Boot MVC Web Fn</description>
 
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-3</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-3</relativePath>
+        <groupId>com.baeldung.spring-boot-modules</groupId>
+        <artifactId>spring-boot-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <dependencies>
@@ -56,27 +55,6 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>${start-class}</mainClass>
-                    <layout>JAR</layout>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
-    <repositories>
-        <repository>
-            <id>jcenter-release</id>
-            <name>jcenter</name>
-            <url>http://oss.jfrog.org/artifactory/oss-release-local/</url>
-        </repository>
-    </repositories>
 
     <properties>
         <spring-boot.version>3.2.2</spring-boot.version>
