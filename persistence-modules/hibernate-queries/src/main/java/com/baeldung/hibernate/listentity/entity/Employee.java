@@ -1,9 +1,6 @@
-package com.baeldung.spring.data.jpa.entity;
+package com.baeldung.hibernate.listentity.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.NamedQuery;
+import jakarta.persistence.*;
 
 @Entity
 @NamedQuery(name = "findAllEmployees", query = "SELECT e FROM Employee e")

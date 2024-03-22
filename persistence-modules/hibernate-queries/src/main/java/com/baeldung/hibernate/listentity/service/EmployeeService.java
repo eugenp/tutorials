@@ -1,22 +1,19 @@
-package com.baeldung.spring.data.jpa.service;
+package com.baeldung.hibernate.listentity.service;
 
 import java.util.Collections;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Path;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
+import jakarta.persistence.*;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Path;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 
 import org.springframework.stereotype.Service;
 
-import com.baeldung.spring.data.jpa.entity.Department;
-import com.baeldung.spring.data.jpa.entity.Employee;
+import com.baeldung.hibernate.listentity.entity.Department;
+import com.baeldung.hibernate.listentity.entity.Employee;
 
 @Service
 public class EmployeeService {

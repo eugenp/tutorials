@@ -1,13 +1,7 @@
-package com.baeldung.spring.data.jpa.entity;
+package com.baeldung.hibernate.listentity.entity;
 
 import java.util.List;
-
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import jakarta.persistence.*;
 
 @Entity
 public class Department {
