@@ -1,9 +1,16 @@
 package com.baeldung.httpfirewall.service;
 
-import com.baeldung.httpfirewall.dao.InMemoryUserDao;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
-import com.baeldung.httpfirewall.model.User;
-import com.baeldung.httpfirewall.utility.UserTestUtility;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,19 +18,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import com.baeldung.httpfirewall.dao.InMemoryUserDao;
+import com.baeldung.httpfirewall.model.User;
+import com.baeldung.httpfirewall.utility.UserTestUtility;
 
 @DisplayName("UserService Unit Tests")
 class UserServiceUnitTest {
