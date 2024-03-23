@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>rest-express</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>rest-express</name>
     <packaging>jar</packaging>
+    <name>rest-express</name>
     <description>A Basic, MongoDB-backed Service Suite</description>
     <url>https://github.com/RestExpress/RestExpress-Scaffold</url>
     <!--

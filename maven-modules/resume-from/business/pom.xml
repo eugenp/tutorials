@@ -6,11 +6,13 @@
     <artifactId>business</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>business</name>
+
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>resume-from</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
+
     <dependencies>
         <dependency>
             <groupId>com.baeldung</groupId>

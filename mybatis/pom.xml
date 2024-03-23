@@ -22,7 +22,6 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>${h2database.version}</version>
-
         </dependency>
     </dependencies>
 
