@@ -29,6 +29,20 @@ public class IteratorVsForeach {
           }
         }
     );
+
+    // Separate collection for items to be removed
+    List<String> toRemove = new ArrayList<>();
+
+    // Using forEach to identify items to remove
+    list.forEach(item -> {
+      if (item.equals("unwanted")) {
+        toRemove.add(item);
+      }
+    });
+
+    // Removing the identified items from the original list
+    list.removeAll(toRemove);
+
   }
 
 }
