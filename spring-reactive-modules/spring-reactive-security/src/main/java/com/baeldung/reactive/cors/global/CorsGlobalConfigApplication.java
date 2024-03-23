@@ -27,7 +27,7 @@ public class CorsGlobalConfigApplication {
 
     @Bean
     public SecurityWebFilterChain corsGlobalSpringSecurityFilterChain(ServerHttpSecurity http) {
-        http.csrf().disable();
+        http.csrf(csrfSpec -> csrfSpec.disable());
         return http.build();
     }
 }

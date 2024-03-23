@@ -1,7 +1,6 @@
-package com.baeldung.kafka.ssl;
+package com.baeldung.spring.kafka.ssl;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication

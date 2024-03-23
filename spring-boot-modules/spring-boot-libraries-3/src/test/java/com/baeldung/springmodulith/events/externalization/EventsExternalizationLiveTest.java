@@ -1,10 +1,8 @@
 package com.baeldung.springmodulith.events.externalization;
 
-import static java.time.Duration.ofMillis;
-import static java.time.Duration.ofSeconds;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.testcontainers.shaded.org.awaitility.Awaitility.await;
-
+import com.baeldung.springmodulith.Application;
+import com.baeldung.springmodulith.events.externalization.listener.TestKafkaListenerConfig;
+import com.baeldung.springmodulith.events.externalization.listener.TestListener;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,14 +10,16 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.KafkaContainer;
+import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.shaded.org.awaitility.Awaitility;
 import org.testcontainers.utility.DockerImageName;
 
-import com.baeldung.springmodulith.Application;
-import com.baeldung.springmodulith.events.externalization.listener.TestKafkaListenerConfig;
-import com.baeldung.springmodulith.events.externalization.listener.TestListener;
+import static java.time.Duration.ofMillis;
+import static java.time.Duration.ofSeconds;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.testcontainers.shaded.org.awaitility.Awaitility.await;
 
 @Testcontainers
 @SpringBootTest(classes = { Application.class, TestKafkaListenerConfig.class })
@@ -35,13 +35,20 @@ class EventsExternalizationLiveTest {
     @Container
     static KafkaContainer kafkaContainer = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:latest"));
 
+    @Container
+    public static PostgreSQLContainer postgresqlContainer = new PostgreSQLContainer()
+            .withDatabaseName("test_db")
+            .withUsername("test_user")
+            .withPassword("test_pass");
+
     @DynamicPropertySource
     static void dynamicProperties(DynamicPropertyRegistry registry) {
         registry.add("spring.kafka.bootstrap-servers", kafkaContainer::getBootstrapServers);
+        registry.add("spring.datasource.url", postgresqlContainer::getJdbcUrl);
     }
 
     static {
-        Awaitility.setDefaultTimeout(ofSeconds(3));
+        Awaitility.setDefaultTimeout(ofSeconds(50));
         Awaitility.setDefaultPollDelay(ofMillis(100));
     }
 
