@@ -1,9 +1,10 @@
-package com.baeldung.kafka.ssl;
+package com.baeldung.spring.kafka.ssl;
+
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.stereotype.Component;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.stereotype.Component;
 
 @Slf4j
 @AllArgsConstructor

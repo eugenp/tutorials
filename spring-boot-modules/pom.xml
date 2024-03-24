@@ -58,7 +58,7 @@
         <module>spring-boot-mvc-2</module>
         <module>spring-boot-mvc-3</module>
         <module>spring-boot-mvc-4</module>
-        <!--        <module>spring-boot-mvc-5</module>--> <!-- failing after upgrading to spring boot 3.2.x -->
+        <module>spring-boot-mvc-5</module>
         <module>spring-boot-mvc-birt</module>
         <module>spring-boot-mvc-jersey</module>
         <module>spring-boot-nashorn</module>
@@ -78,8 +78,8 @@
         <module>spring-boot-swagger-jwt</module>
         <module>spring-boot-swagger-keycloak</module>
         <module>spring-boot-swagger-springfox</module>
-        <!--        <module>spring-boot-testing</module>--> <!-- failing after upgrading to spring boot 3.2.x -->
-<!--        <module>spring-boot-testing-2</module>--> <!-- failing after upgrading to spring boot 3.2.x -->
+        <module>spring-boot-testing</module>
+        <module>spring-boot-testing-2</module>
         <module>spring-boot-testing-spock</module>
         <module>spring-boot-vue</module>
         <module>spring-boot-actuator</module>
@@ -90,7 +90,7 @@
 <!--        <module>spring-caching-2</module>--> <!-- failing after upgrading to spring boot 3.2.x -->
         <!--        <module>spring-boot-redis</module>--> <!-- failing after upgrading to spring boot 3.2.x -->
         <module>spring-boot-cassandre</module>
-<!--        <module>spring-boot-react</module>--> <!-- failing after upgrading to spring boot 3.2.x. very old node version which is not available now. -->
+        <module>spring-boot-react</module>
         <!-- <module>spring-boot-3</module> --> <!-- JAVA-20931 -->
         <module>spring-boot-3-grpc</module>
         <!--        <module>spring-boot-3-native</module>--> <!-- failing after upgrading to spring boot 3.2.x -->

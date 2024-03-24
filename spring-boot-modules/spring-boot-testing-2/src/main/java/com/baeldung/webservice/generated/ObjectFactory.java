@@ -1,7 +1,7 @@
 
 package com.baeldung.webservice.generated;
 
-import javax.xml.bind.annotation.XmlRegistry;
+import jakarta.xml.bind.annotation.XmlRegistry;
 
 
 /**
@@ -32,6 +32,8 @@ public class ObjectFactory {
     /**
      * Create an instance of {@link GetProductRequest }
      * 
+     * @return
+     *     the new instance of {@link GetProductRequest }
      */
     public GetProductRequest createGetProductRequest() {
         return new GetProductRequest();
@@ -40,6 +42,8 @@ public class ObjectFactory {
     /**
      * Create an instance of {@link GetProductResponse }
      * 
+     * @return
+     *     the new instance of {@link GetProductResponse }
      */
     public GetProductResponse createGetProductResponse() {
         return new GetProductResponse();
@@ -48,6 +52,8 @@ public class ObjectFactory {
     /**
      * Create an instance of {@link Product }
      * 
+     * @return
+     *     the new instance of {@link Product }
      */
     public Product createProduct() {
         return new Product();
