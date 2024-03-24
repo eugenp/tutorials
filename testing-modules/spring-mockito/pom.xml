@@ -11,9 +11,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-2</relativePath>
+        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -32,5 +32,9 @@
             <version>${lombok.version}</version>
         </dependency>
     </dependencies>
+
+    <properties>
+        <start-class>com.baeldung.Main</start-class>
+    </properties>
 
 </project>

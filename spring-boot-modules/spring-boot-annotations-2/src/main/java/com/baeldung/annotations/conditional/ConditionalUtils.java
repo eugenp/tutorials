@@ -9,12 +9,12 @@ public class ConditionalUtils {
         return SystemUtils.IS_OS_WINDOWS;
     }
 
-    public static boolean isJava8() {
-        return JavaVersion.getJavaVersion().equals(JavaVersion.EIGHT);
+    public static boolean isJava17() {
+        return JavaVersion.getJavaVersion().equals(JavaVersion.SEVENTEEN);
     }
 
-    public static boolean isJava9() {
-        return JavaVersion.getJavaVersion().equals(JavaVersion.NINE);
+    public static boolean isJava21() {
+        return JavaVersion.getJavaVersion().equals(JavaVersion.TWENTY_ONE);
     }
 
 }

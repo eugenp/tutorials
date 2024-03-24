@@ -7,7 +7,7 @@ import static org.springframework.restdocs.operation.preprocess.Preprocessors.pr
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.preprocessResponse;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.prettyPrint;
 import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
-import static org.springframework.restdocs.request.RequestDocumentation.requestParameters;
+import static org.springframework.restdocs.request.RequestDocumentation.queryParameters;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
@@ -50,6 +50,6 @@ class BookControllerMvcIntegrationTest {
         mockMvc.perform(get("/books?page=2"))
           .andExpect(status().isOk())
           .andDo(document("books",
-            requestParameters(parameterWithName("page").description("The page to retrieve"))));
+            queryParameters(parameterWithName("page").description("The page to retrieve"))));
     }
 }

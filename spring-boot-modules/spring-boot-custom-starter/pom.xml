@@ -23,4 +23,9 @@
         <module>parent-multi-module</module>
     </modules>
 
+    <properties>
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
+        <spring.boot.version>3.2.2</spring.boot.version>
+    </properties>
+
 </project>

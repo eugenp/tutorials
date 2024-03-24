@@ -50,7 +50,7 @@
         </dependency>
         <!-- Embedded Redis Server -->
         <dependency>
-            <groupId>it.ozimov</groupId>
+            <groupId>com.github.codemonstur</groupId>
             <artifactId>embedded-redis</artifactId>
             <version>${embedded-redis.version}</version>
             <scope>test</scope>
@@ -114,7 +114,7 @@
         <git-commit-id-plugin.version>2.2.4</git-commit-id-plugin.version>
         <spock.version>2.4-M1-groovy-4.0</spock.version>
         <gmavenplus-plugin.version>3.0.0</gmavenplus-plugin.version>
-        <embedded-redis.version>0.7.2</embedded-redis.version>
+        <embedded-redis.version>1.4.2</embedded-redis.version>
     </properties>
 
 </project>

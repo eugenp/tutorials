@@ -5,6 +5,9 @@ import jakarta.servlet.ServletInputStream;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletRequestWrapper;
 import java.io.*;
+import java.util.Collections;
+import java.util.Enumeration;
+import org.springframework.http.HttpHeaders;
 
 public class EscapeHtmlRequestWrapper extends HttpServletRequestWrapper {
     private String body = null;
@@ -63,5 +66,13 @@ public class EscapeHtmlRequestWrapper extends HttpServletRequestWrapper {
     @Override
     public BufferedReader getReader() throws IOException {
         return new BufferedReader(new InputStreamReader(this.getInputStream()));
+    }
+
+    @Override
+    public Enumeration<String> getHeaders(String name) {
+        if(HttpHeaders.CONTENT_LENGTH.equals(name)) {
+            return Collections.enumeration(Collections.singletonList(String.valueOf(body.length())));
+        }
+        return super.getHeaders(name);
     }
 }

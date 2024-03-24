@@ -51,7 +51,7 @@
             <version>${caffeine.version}</version>
         </dependency>
         <dependency>
-            <groupId>it.ozimov</groupId>
+            <groupId>com.github.codemonstur</groupId>
             <artifactId>embedded-redis</artifactId>
             <version>${embedded.redis.version}</version>
             <exclusions>
@@ -65,7 +65,7 @@
     </dependencies>
 
     <properties>
-        <embedded.redis.version>0.7.3</embedded.redis.version>
+        <embedded.redis.version>1.4.0</embedded.redis.version>
         <caffeine.version>3.1.8</caffeine.version>
         <start-class>com.baeldung.caching.ttl.CachingTTLApplication</start-class>
     </properties>

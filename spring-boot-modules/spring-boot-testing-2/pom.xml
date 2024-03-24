@@ -78,14 +78,21 @@
             <version>${testcontainers-redis-junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>${rest-assured.version}</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
         <plugins>
             <plugin>
-                <groupId>org.jvnet.jaxb2.maven2</groupId>
-                <artifactId>maven-jaxb2-plugin</artifactId>
-                <version>${maven-jaxb2-plugin.version}</version>
+                <groupId>org.jvnet.jaxb</groupId>
+                <artifactId>jaxb-maven-plugin</artifactId>
+                <version>4.0.0</version>
                 <executions>
                     <execution>
                         <id>xjc</id>
@@ -107,11 +114,12 @@
 
     <properties>
         <start-class>com.baeldung.boot.Application</start-class>
-        <spring-ws-test.version>3.1.3</spring-ws-test.version>
-        <testcontainers.version>1.17.2</testcontainers.version>
-        <testcontainers-keycloak.version>1.10.0</testcontainers-keycloak.version>
+        <spring-ws-test.version>4.0.10</spring-ws-test.version>
+        <testcontainers.version>1.19.7</testcontainers.version>
+        <testcontainers-keycloak.version>3.3.0</testcontainers-keycloak.version>
         <testcontainers-redis-junit-jupiter.version>1.4.6</testcontainers-redis-junit-jupiter.version>
-        <maven-jaxb2-plugin.version>0.15.1</maven-jaxb2-plugin.version>
+        <maven-jaxb2-plugin.version>0.15.3</maven-jaxb2-plugin.version>
+        <rest-assured.version>5.4.0</rest-assured.version>
     </properties>
 
 </project>

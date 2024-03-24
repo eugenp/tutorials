@@ -1,26 +1,25 @@
 package com.baeldung.boot.embeddedRedis.domain.repository;
 
-import com.baeldung.boot.embeddedRedis.TestRedisConfiguration;
-import com.baeldung.boot.embeddedRedis.domain.User;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.UUID;
 
-import static org.junit.Assert.assertNotNull;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
-@RunWith(SpringRunner.class)
+import com.baeldung.boot.embeddedRedis.TestRedisConfiguration;
+import com.baeldung.boot.embeddedRedis.domain.User;
+
+
 @SpringBootTest(classes = TestRedisConfiguration.class)
-public class UserRepositoryIntegrationTest {
+class UserRepositoryIntegrationTest {
 
     @Autowired
     private UserRepository userRepository;
 
     @Test
-    public void shouldSaveUser_toRedis() {
+    void shouldSaveUser_toRedis() {
         final UUID id = UUID.randomUUID();
         final User user = new User(id, "name");
 

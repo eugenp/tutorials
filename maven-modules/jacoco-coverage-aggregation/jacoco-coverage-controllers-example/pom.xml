@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.jacoco-coverage-aggregation</groupId>
     <artifactId>jacoco-coverage-controllers-example</artifactId>
-    <name>jacoco-coverage-controllers-example</name>
     <packaging>jar</packaging>
+    <name>jacoco-coverage-controllers-example</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -17,7 +17,7 @@
     <dependencies>
         <dependency>
             <groupId>com.baeldung.jacoco-coverage-aggregation</groupId>
-            <artifactId>services</artifactId>
+            <artifactId>jacoco-coverage-services-example</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
         <dependency>
