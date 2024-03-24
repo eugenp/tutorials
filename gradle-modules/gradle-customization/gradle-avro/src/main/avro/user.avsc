@@ -1,0 +1,10 @@
+{
+    "type": "record",
+    "name": "User",
+    "namespace": "com.example",
+    "fields": [
+        { "name": "firstName", "type": "string" },
+        { "name": "lastName", "type": "string" },
+        { "name": "phoneNumber", "type": "string" }
+    ]
+}
