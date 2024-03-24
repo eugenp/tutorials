@@ -54,7 +54,7 @@
     </dependencies>
 
     <properties>
-        <spring-cloud-dependencies.version>2022.0.3</spring-cloud-dependencies.version>
+        <spring-cloud-dependencies.version>2022.0.4</spring-cloud-dependencies.version>
     </properties>
 
 </project>
