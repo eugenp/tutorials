@@ -1,4 +1,4 @@
-package com.baeldung.dto;
+package com.baeldung.mapstruct.enums.model;
 
 /**
  * The traffic signal number.

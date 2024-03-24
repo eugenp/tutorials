@@ -1,7 +1,7 @@
-package com.baeldung.mapper;
+package com.baeldung.mapstruct.enums;
 
-import com.baeldung.dto.TrafficSignalNumber;
-import com.baeldung.enums.*;
+import com.baeldung.mapstruct.enums.mapper.TrafficSignalMapper;
+import com.baeldung.mapstruct.enums.model.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -100,8 +100,8 @@ class TrafficSignalMapperUnitTest {
     /**
      * Traffic signal to working day.
      *
-     * @param source the traffic signal
-     * @param expected      the expected traffic signal
+     * @param source   the traffic signal
+     * @param expected the expected traffic signal
      */
     @ParameterizedTest
     @CsvSource({"Off,Off", "Go,On", "Stop,Off"})
@@ -126,8 +126,8 @@ class TrafficSignalMapperUnitTest {
     /**
      * Traffic signal to traffic signal with exception handling.
      *
-     * @param source the traffic signal
-     * @param expected      the expected traffic signal
+     * @param source   the traffic signal
+     * @param expected the expected traffic signal
      */
     @ParameterizedTest
     @CsvSource({",", "Go,On", "Stop,"})
@@ -198,7 +198,7 @@ class TrafficSignalMapperUnitTest {
     /**
      * Apply lowercase.
      *
-     * @param source  the traffic signal
+     * @param source   the traffic signal
      * @param expected the expected result
      */
     @ParameterizedTest
@@ -211,7 +211,7 @@ class TrafficSignalMapperUnitTest {
     /**
      * Apply uppercase.
      *
-     * @param source  the traffic signal
+     * @param source   the traffic signal
      * @param expected the expected result
      */
     @ParameterizedTest
@@ -224,7 +224,7 @@ class TrafficSignalMapperUnitTest {
     /**
      * Underscore to capital.
      *
-     * @param source  the traffic signal
+     * @param source   the traffic signal
      * @param expected the expected result
      */
     @ParameterizedTest
@@ -237,7 +237,7 @@ class TrafficSignalMapperUnitTest {
     /**
      * Lowercase to capital.
      *
-     * @param source  the traffic signal
+     * @param source   the traffic signal
      * @param expected the expected result
      */
     @ParameterizedTest

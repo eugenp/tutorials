@@ -1,19 +1,19 @@
-package com.baeldung.enums;
+package com.baeldung.mapstruct.enums.model;
 
 /**
  * The enum Traffic Signal with uppercase.
  */
-public enum TrafficSignalUnderscore {
+public enum TrafficSignalUppercase {
     /**
      * Off signal.
      */
-    OFF_VALUE,
+    OFF,
     /**
      * Stop signal.
      */
-    STOP_VALUE,
+    STOP,
     /**
      * Go signal.
      */
-    GO_VALUE
+    GO
 }

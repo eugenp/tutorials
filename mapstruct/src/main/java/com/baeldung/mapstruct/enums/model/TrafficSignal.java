@@ -1,9 +1,9 @@
-package com.baeldung.enums;
+package com.baeldung.mapstruct.enums.model;
 
 /**
- * The enum road signal.
+ * The enum Traffic Signal.
  */
-public enum RoadSign {
+public enum TrafficSignal {
     /**
      * Off signal.
      */
@@ -11,9 +11,9 @@ public enum RoadSign {
     /**
      * Stop signal.
      */
-    Halt,
+    Stop,
     /**
      * Go signal.
      */
-    Move
+    Go
 }

@@ -1,7 +1,6 @@
-package com.baeldung.mapper;
+package com.baeldung.mapstruct.enums.mapper;
 
-import com.baeldung.dto.TrafficSignalNumber;
-import com.baeldung.enums.*;
+import com.baeldung.mapstruct.enums.model.*;
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 

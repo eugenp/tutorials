@@ -1,4 +1,4 @@
-package com.baeldung.enums;
+package com.baeldung.mapstruct.enums.model;
 
 /**
  * The enum Traffic Signal with prefix.
