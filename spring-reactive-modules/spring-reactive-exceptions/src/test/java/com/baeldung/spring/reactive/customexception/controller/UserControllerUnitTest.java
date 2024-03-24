@@ -55,7 +55,7 @@ class UserControllerUnitTest {
         // Then
         assertNotNull(problemDetail);
         assertNotNull(problemDetail.getProperties().get("errors"));
-        List<LinkedHashMap> errors = (List<LinkedHashMap>) problemDetail.getProperties().get("errors");
+        List<LinkedHashMap<String,Object>> errors = (List<LinkedHashMap<String,Object>>) problemDetail.getProperties().get("errors");
         assertEquals(ErrorDetails.API_USER_NOT_FOUND.getErrorCode().toString(),
           errors.get(0).get("code"));
         assertEquals(ErrorDetails.API_USER_NOT_FOUND.getErrorMessage().toString(),
