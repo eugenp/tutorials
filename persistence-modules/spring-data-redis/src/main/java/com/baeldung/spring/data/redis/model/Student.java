@@ -2,9 +2,11 @@ package com.baeldung.spring.data.redis.model;
 
 import java.io.Serializable;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.RedisHash;
 
 @RedisHash("Student")
+@RequiredArgsConstructor
 public class Student implements Serializable {
 
     public enum Gender {
