@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>aws-s3</artifactId>
     <version>0.1.0-SNAPSHOT</version>
-    <name>aws-s3</name>
     <packaging>jar</packaging>
+    <name>aws-s3</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -26,7 +26,6 @@
             <version>${aws.java.sdk.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
@@ -56,7 +55,6 @@
             <version>${com.adobe.testing.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.testcontainers</groupId>
             <artifactId>junit-jupiter</artifactId>
