@@ -30,14 +30,14 @@ public class BackpackCopyServiceTest {
         assertNotEquals(backpack, backpackCopy);
         assertEquals(backpack.getLunchBox(), backpackCopy.getLunchBox());
         assertEquals(food, backpackCopy.getLunchBox()
-            .grabFood());
+          .grabFood());
         assertEquals("sweet", backpackCopy.getLunchBox()
-            .grabFood()
-            .getTaste());
+          .grabFood()
+          .getTaste());
         backpack.getLunchBox().replaceFood(new Food("tart"));
         assertEquals("tart", backpackCopy.getLunchBox()
-            .grabFood()
-            .getTaste());
+          .grabFood()
+          .getTaste());
     }
 
     @Test
@@ -46,10 +46,10 @@ public class BackpackCopyServiceTest {
         assertNotEquals(backpack, backpackCopy);
         assertNotEquals(backpack.getLunchBox(), backpackCopy.getLunchBox());
         assertNotEquals(food, backpackCopy.getLunchBox()
-            .grabFood());
+          .grabFood());
         backpack.getLunchBox().replaceFood(new Food("tart"));
         assertEquals("sweet", backpackCopy.getLunchBox()
-            .grabFood()
-            .getTaste());
+          .grabFood()
+          .getTaste());
     }
 }
