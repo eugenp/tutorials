@@ -3,10 +3,12 @@
 
 [versions]
 junit-jupiter = "5.10.0"
+avro = "1.11.0"
 
 [libraries]
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit-jupiter" }
-avro = {module = "org.apache.avro:avro", version = "1.11.0"}
+avro = {module = "org.apache.avro:avro", version.ref = "avro"}
+avro-tools = {module = "org.apache.avro:avro-tools", version.ref = "avro"}
 
 [plugins]
 avro = { id = "com.github.davidmc24.gradle.plugin.avro", version = "1.9.1" }
