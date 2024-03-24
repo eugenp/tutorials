@@ -8,21 +8,34 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.jupiter.api.Test;
 
 import io.nats.client.Message;
+import io.nats.client.MessageHandler;
 import io.nats.client.Subscription;
 
 /**
  * All the tests in this class require that a NATS server be running on localhost at the default port.
  * See {@link <a href="https://docs.nats.io/nats-server/installation">Installing a NATS Server</a>}.
+ * <p>
+ * IMPORTANT: Using Thread.sleep() is not a generally recommended development concept.
+ * In the case of tests, it is the easiest way to simulate the real behavior
+ * that messages take some amount of time to go from being published
+ * to being received. This amount of time will vary depending on many factors including:
+ * <ul>
+ *     <li>network latency</li>
+ *     <li>server cluster configuration</li>
+ *     <li>server computing power relative to the load of work</li>
+ * </ul>
+ * </p>
  */
 public class NatsClientLiveTest {
 
     public static final int TIMEOUT_MILLIS = 200;
-    public static final int WAIT_MILLIS = 250;
+    public static final int WAIT_MILLIS = 300;
 
     private NatsClient connectClient() throws IOException, InterruptedException {
         return new NatsClient(NatsClient.createConnection("nats://localhost:4222"));
@@ -40,7 +53,9 @@ public class NatsClientLiveTest {
             client.publishMessage("mySubject", "data1");
             client.publishMessage("mySubject", "data2");
 
-            Thread.sleep(WAIT_MILLIS); // give the messages time to be published and received
+            // Simulate real world time for messages to propagate. See note at top about using Thread.sleep()
+            Thread.sleep(WAIT_MILLIS); 
+
             assertEquals(2, messages1.size());
             assertEquals(2, messages2.size());
 
@@ -88,7 +103,8 @@ public class NatsClientLiveTest {
             client.publishMessage("mySubject", "data1");
             client.publishMessage("mySubject", "data2");
 
-            Thread.sleep(WAIT_MILLIS); // give the messages time to be published and received
+            // Simulate real world time for messages to propagate. See note at top about using Thread.sleep()
+            Thread.sleep(WAIT_MILLIS);
 
             assertEquals(2, messages1.size());
             assertEquals(2, messages2.size());
@@ -101,15 +117,22 @@ public class NatsClientLiveTest {
     @Test
     public void whenSubscribingAsynchronouslyWithQueueGroups_thenOnlyOneMessageHandlerInTheGroupShouldReceiveEachMessage() throws Exception {
         try (NatsClient client = connectClient()) {
+            CountDownLatch awaitMessages = new CountDownLatch(1);
             List<Message> messages = new ArrayList<>();
-            Subscription qSub1 = client.subscribeAsyncInQueueGroup("mySubject", "myQueue", messages::add);
-            Subscription qSub2 = client.subscribeAsyncInQueueGroup("mySubject", "myQueue", messages::add);
+            MessageHandler add = message -> {
+                awaitMessages.countDown();
+                messages.add(message);
+            };
 
+            Subscription qSub1 = client.subscribeAsyncInQueueGroup("mySubject", "myQueue", add);
+            Subscription qSub2 = client.subscribeAsyncInQueueGroup("mySubject", "myQueue", add);
             client.publishMessage("mySubject", "data");
+            awaitMessages.await();
 
-            Thread.sleep(WAIT_MILLIS); // give the messages time to be published and received
+            // Simulate real world time for messages to propagate. See note at top about using Thread.sleep()
+            Thread.sleep(WAIT_MILLIS);
+            
             assertEquals(1, messages.size());
-
             client.unsubscribe(qSub1);
             client.unsubscribe(qSub2);
         }
