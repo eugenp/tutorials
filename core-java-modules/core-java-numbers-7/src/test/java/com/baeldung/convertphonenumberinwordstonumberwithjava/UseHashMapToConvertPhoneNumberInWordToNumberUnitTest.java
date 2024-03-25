@@ -1,48 +1,58 @@
-package com.baeldung.convertphonenumberinwordstonumberwithjava;
-
 import org.junit.jupiter.api.Test;
-import java.util.HashMap;
 import java.util.Map;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class UseHashMapToConvertPhoneNumberInWordToNumberUnitTest {
 
     @Test
     public void givenStringWithWhiteSpaces_WhenConvertPhoneNumberInWordToNumber_ThenEquivalentNumber(){
 
-        String firstResult = UseHashMapToConvertPhoneNumberInWordToNumber.ConvertPhoneNumberInWordToNumber("five eight three two four triple eight");
-        assertEquals("58324888", firstResult);
+        String firstResult = UseHashMapToConvertPhoneNumberInWordToNumber.ConvertPhoneNumberInWordToNumber("five two four quadruple eight");
+        assertEquals("5248888", firstResult);
 
-        String secondResult = UseHashMapToConvertPhoneNumberInWordToNumber.ConvertPhoneNumberInWordToNumber("");
-        assertNotEquals(-1, secondResult);
+        String secondResult = UseHashMapToConvertPhoneNumberInWordToNumber.ConvertPhoneNumberInWordToNumber("five eight three double triple");
+        assertEquals("", secondResult);
 
-        String thirdResult = UseHashMapToConvertPhoneNumberInWordToNumber.ConvertPhoneNumberInWordToNumber("five invalid three two four penta eight");
-        assertNotEquals("5832488888", thirdResult);
+        String thirdResult = UseHashMapToConvertPhoneNumberInWordToNumber.ConvertPhoneNumberInWordToNumber("five eight three two four penta eight");
+        assertEquals("", thirdResult);
+        String fourthResult = UseHashMapToConvertPhoneNumberInWordToNumber.ConvertPhoneNumberInWordToNumber("one two three four five six seven eight nine zero two");
+        assertNull(null, fourthResult);
 
-        String fourthResult = UseHashMapToConvertPhoneNumberInWordToNumber.ConvertPhoneNumberInWordToNumber("one two three four five six seven eight nine zero");
-        assertEquals("1234567890", fourthResult);
+        String fifthResult = UseHashMapToConvertPhoneNumberInWordToNumber.ConvertPhoneNumberInWordToNumber("five invalid three two four penta eight");
+        assertEquals("", fifthResult);
     }
 
     @Test
     public void givenHashMap_WhenMapModifiers_ThenEquivalentNumber(){
-        Map<String, Integer> modifiers = new HashMap<>();
-        Map<String, Integer> result = UseHashMapToConvertPhoneNumberInWordToNumber.mapModifiers(modifiers);
+        Map<String, Integer > result = UseHashMapToConvertPhoneNumberInWordToNumber.mapModifiers();
         assertEquals(2, result.get("double"));
         assertEquals(null, result.get("invalid"));
         assertEquals(null, result.get(""));
-        assertEquals(5, result.get("penta"));
-
     }
 
     @Test
     public void givenHashMap_WhenMapIndividualDigits_ThenEquivalentNumber(){
-        Map<String, Integer> digits = new HashMap<>();
-        Map<String, Integer> result = UseHashMapToConvertPhoneNumberInWordToNumber.mapIndividualDigits(digits);
-        assertEquals(2, result.get("two"));
+        Map<String, String> result = UseHashMapToConvertPhoneNumberInWordToNumber.mapIndividualDigits();
+        assertEquals("2", result.get("two"));
         assertEquals(null, result.get("invalid"));
         assertEquals(null, result.get(""));
-        assertEquals(5, result.get("five"));
+        assertEquals("5", result.get("five"));
+
+    }
+
+    @Test
+    public void givenStringWithWhiteSpaces_isValidPhoneNumberFormat_ThenBoolean() {
+        boolean firstResult = UseHashMapToConvertPhoneNumberInWordToNumber.isValidPhoneNumberFormat("one two");
+        assertEquals(true, firstResult);
+
+        boolean secondResult = UseHashMapToConvertPhoneNumberInWordToNumber.isValidPhoneNumberFormat("two double");
+        assertEquals(false, secondResult);
+
+        boolean thirdResult = UseHashMapToConvertPhoneNumberInWordToNumber.isValidPhoneNumberFormat("two three hexa");
+        assertEquals(false, thirdResult);
+
+        boolean fourthResult = UseHashMapToConvertPhoneNumberInWordToNumber.isValidPhoneNumberFormat("invalid two triple three");
+        assertEquals(false, fourthResult);
 
     }
 }

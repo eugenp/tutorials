@@ -1,26 +1,29 @@
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
-public class UseHashMapToConvertPhoneNumberInWordToNumber {
+public class UseSwitchToConvertPhoneNumberInWordToNumber {
 
     public static String ConvertPhoneNumberInWordToNumber(String phoneNumberInWord) {
 
         boolean format = isValidPhoneNumberFormat(phoneNumberInWord);
-        Map<String, String> digits = mapIndividualDigits();
-        Map<String, Integer> modifiers = mapModifiers();
-        String convertedNumber = "";
-        int prefixCounter = 1;
+        String convertedNumber = "", temp = "";
+
 
         if (format) {
-            String[] words = phoneNumberInWord.split("\\s+");
-            for (String word : words) {
-                if (modifiers.containsKey(word)) {
-                    prefixCounter *= modifiers.get(word);
+            List<String> phoneNumberInWordArray = Arrays.asList(phoneNumberInWord.split(" "));
+
+            for (int i = 0; i < phoneNumberInWordArray.size(); i++) {
+                temp = mapModifiers(phoneNumberInWordArray.get(i));
+                if (temp.equals("-1")) {
+                    convertedNumber += mapIndividualDigits(phoneNumberInWordArray.get(i));
                 } else {
-                    convertedNumber += digits.get(word).repeat(prefixCounter);
-                    prefixCounter = 1;
+                    convertedNumber += String.join("", Collections.nCopies(Integer.parseInt(temp), mapIndividualDigits(phoneNumberInWordArray.get(i + 1))));
+                    i++;
                 }
             }
         }
+
 
         if (convertedNumber.length() > 10) {
             System.out.println("Incorrect Phone Number! The correct one is 10-digit long.");
@@ -28,6 +31,7 @@ public class UseHashMapToConvertPhoneNumberInWordToNumber {
         }
 
         return convertedNumber;
+
     }
 
     public static boolean isValidPhoneNumberFormat(String phoneNumberInWord) {
@@ -62,32 +66,45 @@ public class UseHashMapToConvertPhoneNumberInWordToNumber {
         return word.equals("double") || word.equals("triple") || word.equals("quadruple");
     }
 
-    public static Map<String, Integer> mapModifiers() {
-        Map<String, Integer> modifiers = new HashMap<>();
+    public static String mapModifiers(String word) {
 
-        modifiers.put("double", 2);
-        modifiers.put("triple", 3);
-        modifiers.put("quadruple", 4);
+        switch (word) {
+            case "double":
+                return "2";
+            case "triple":
+                return "3";
+            case "quadruple":
+                return "4";
+            default:
+                return "-1";
+        }
 
-        return modifiers;
     }
 
-
-    public static Map<String, String> mapIndividualDigits() {
-        Map<String, String> digits = new HashMap<>();
-
-        digits.put("zero", "0");
-        digits.put("one", "1");
-        digits.put("two", "2");
-        digits.put("three", "3");
-        digits.put("four", "4");
-        digits.put("five", "5");
-        digits.put("six", "6");
-        digits.put("seven", "7");
-        digits.put("eight", "8");
-        digits.put("nine", "9");
-
-        return digits;
+    public static String mapIndividualDigits(String word) {
+        switch (word) {
+            case "zero":
+                return "0";
+            case "one":
+                return "1";
+            case "two":
+                return "2";
+            case "three":
+                return "3";
+            case "four":
+                return "4";
+            case "five":
+                return "5";
+            case "six":
+                return "6";
+            case "seven":
+                return "7";
+            case "eight":
+                return "8";
+            case "nine":
+                return "9";
+            default:
+                return "-1";
+        }
     }
-
 }
