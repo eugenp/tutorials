@@ -171,7 +171,7 @@ public class DozerIntegrationTest {
         configureMapper("dozer_custom_convertor.xml");
 
         String dateTime = "2007-06-26T21:22:39Z";
-        long timestamp = new Long("1182882159000");
+        long timestamp = Long.parseLong("1182882159000");
 
         Person3 person = new Person3("Rich", dateTime);
         Personne3 person0 = mapper.map(person, Personne3.class);
@@ -182,7 +182,7 @@ public class DozerIntegrationTest {
 
     @Test
     public void givenSrcAndDestWithDifferentFieldTypes_whenAbleToCustomConvertBidirectionally_thenCorrect() {
-        long timestamp = new Long("1182882159000");
+        long timestamp = Long.parseLong("1182882159000");
         Personne3 person = new Personne3("Rich", timestamp);
         configureMapper("dozer_custom_convertor.xml");
 
