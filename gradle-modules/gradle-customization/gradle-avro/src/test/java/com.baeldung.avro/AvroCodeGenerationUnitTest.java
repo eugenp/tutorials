@@ -39,7 +39,6 @@ public class AvroCodeGenerationUnitTest {
                 .setAge(age)
                 .build();
 
-        // Assertions to verify the values
         assertEquals(petId, pet.getPetId());
         assertEquals(name, pet.getName());
         assertEquals(species, pet.getSpecies());
