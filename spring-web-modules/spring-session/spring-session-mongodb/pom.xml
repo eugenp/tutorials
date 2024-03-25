@@ -11,9 +11,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../../parent-boot-2</relativePath>
+        <relativePath>../../../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -36,8 +36,8 @@
         </dependency>
         <dependency>
             <groupId>de.flapdoodle.embed</groupId>
-            <artifactId>de.flapdoodle.embed.mongo</artifactId>
-            <scope>test</scope>
+            <artifactId>de.flapdoodle.embed.mongo.spring3x</artifactId>
+            <version>${embedded-mongodb.version}</version>
         </dependency>
     </dependencies>
 
@@ -49,5 +49,9 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <embedded-mongodb.version>4.12.2</embedded-mongodb.version>
+    </properties>
 
 </project>
