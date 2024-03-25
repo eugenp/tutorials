@@ -56,7 +56,7 @@
         <module>spring-boot-process-automation</module>
         <module>spring-boot-logging-logback</module>
         <module>spring-boot-logging-log4j2</module>
-<!--        <module>spring-boot-mvc</module>--> <!-- failing after upgrading to spring boot 3.2.x -->
+        <module>spring-boot-mvc</module>
         <module>spring-boot-mvc-2</module>
         <module>spring-boot-mvc-3</module>
         <module>spring-boot-mvc-4</module>
