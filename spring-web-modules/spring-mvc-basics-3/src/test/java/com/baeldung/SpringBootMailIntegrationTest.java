@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.subethamail.wiser.Wiser;
 import org.subethamail.wiser.WiserMessage;
 
-import javax.mail.MessagingException;
+import jakarta.mail.MessagingException;
 import java.io.IOException;
 import java.util.List;
 
@@ -29,20 +29,20 @@ public class SpringBootMailIntegrationTest {
 
     private Wiser wiser;
 
-    private String userTo = "user2@localhost";
-    private String userFrom = "user1@localhost";
-    private String subject = "Test subject";
-    private String textMail = "Text subject mail";
+    private final String userTo = "user2@localhost";
+    private final String userFrom = "user1@localhost";
+    private final String subject = "Test subject";
+    private final String textMail = "Text subject mail";
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         final int TEST_PORT = 8025;
-        wiser = new Wiser(TEST_PORT);
+        wiser = Wiser.port(TEST_PORT);
         wiser.start();
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
         wiser.stop();
     }
 

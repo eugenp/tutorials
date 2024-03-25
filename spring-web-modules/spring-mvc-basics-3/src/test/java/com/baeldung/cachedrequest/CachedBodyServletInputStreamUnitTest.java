@@ -3,7 +3,7 @@ package com.baeldung.cachedrequest;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-import javax.servlet.ReadListener;
+import jakarta.servlet.ReadListener;
 
 import org.junit.After;
 import org.junit.Test;
@@ -54,7 +54,7 @@ public class CachedBodyServletInputStreamUnitTest extends TestCase {
     }
 
     @Test
-    public void testGivenServletInputStreamCreatedAndBodyRead_whenCalledIsReady_ThenTrue() throws IOException {
+    public void testGivenServletInputStreamCreatedAndBodyRead_whenCalledIsReady_ThenTrue() {
         // Given
         byte[] cachedBody = "{\"firstName\" :\"abc\",\"lastName\" : \"xyz\",\"age\" : 30\"}".getBytes();
         servletInputStream = new CachedBodyServletInputStream(cachedBody);
@@ -85,7 +85,7 @@ public class CachedBodyServletInputStreamUnitTest extends TestCase {
     }
 
     @Test(expected = UnsupportedOperationException.class)
-    public void testGivenServletInputStreamCreated_whenCalledIsRead_ThenThrowsException() throws IOException {
+    public void testGivenServletInputStreamCreated_whenCalledIsRead_ThenThrowsException() {
         // Given
         byte[] cachedBody = "{\"firstName\" :\"abc\",\"lastName\" : \"xyz\",\"age\" : 30\"}".getBytes();
         servletInputStream = new CachedBodyServletInputStream(cachedBody);
