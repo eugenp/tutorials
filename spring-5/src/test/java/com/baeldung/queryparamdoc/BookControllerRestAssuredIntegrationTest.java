@@ -3,9 +3,7 @@ package com.baeldung.queryparamdoc;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
-import static org.springframework.restdocs.request.RequestDocumentation.requestParameters;
-import static org.springframework.restdocs.restassured3.RestAssuredRestDocumentation.document;
-import static org.springframework.restdocs.restassured3.RestAssuredRestDocumentation.documentationConfiguration;
+import static org.springframework.restdocs.request.RequestDocumentation.queryParameters;
 
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
@@ -19,6 +17,7 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.restdocs.RestDocumentationContextProvider;
 import org.springframework.restdocs.RestDocumentationExtension;
+import org.springframework.restdocs.restassured.RestAssuredRestDocumentation;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
@@ -31,7 +30,7 @@ class BookControllerRestAssuredIntegrationTest {
 
     @BeforeEach
     void setUp(RestDocumentationContextProvider restDocumentation, @LocalServerPort int port) {
-        this.spec = new RequestSpecBuilder().addFilter(documentationConfiguration(restDocumentation))
+        this.spec = new RequestSpecBuilder().addFilter(RestAssuredRestDocumentation.documentationConfiguration(restDocumentation))
           .setPort(port)
           .build();
     }
@@ -44,7 +43,7 @@ class BookControllerRestAssuredIntegrationTest {
     @Test
     @WithMockUser
     void givenEndpoint_whenSendGetRequest_thenSuccessfulResponse() {
-        RestAssured.given(this.spec).filter(document("users", requestParameters(
+        RestAssured.given(this.spec).filter(RestAssuredRestDocumentation.document("users", queryParameters(
             parameterWithName("page").description("The page to retrieve"))))
           .when().get("/books?page=2")
           .then().assertThat().statusCode(is(200));

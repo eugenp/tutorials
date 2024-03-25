@@ -61,7 +61,6 @@
         <!-- and would be overidden by the plugin specific properties above. -->
         <!--project.build.sourceEncoding></project.build.sourceEncoding -->
         <!--project.build.sourceEncoding>US-ASCII</project.build.sourceEncoding -->
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 

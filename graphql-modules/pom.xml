@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.graphql</groupId>
     <artifactId>graphql-modules</artifactId>
-    <name>graphql-modules</name>
     <packaging>pom</packaging>
+    <name>graphql-modules</name>
 
     <parent>
         <groupId>com.baeldung</groupId>

@@ -22,7 +22,8 @@
         <!--Please uncomment when spring-cloud-modules is moved to JDK9+ profile-->
         <!--<module>spring-cloud-eureka</module>-->
         <module>spring-cloud-hystrix</module>
-        <module>spring-cloud-bootstrap</module>
+        <!--Please uncomment when spring-cloud-modules is moved to JDK9+ profile-->
+        <!--<module>spring-cloud-bootstrap</module> -->
         <module>spring-cloud-ribbon-client</module>
         <module>spring-cloud-zookeeper</module>
         <module>spring-cloud-gateway</module>

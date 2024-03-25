@@ -20,21 +20,21 @@ public class BeanRegistrationIntegrationTest {
 
     @Test
     public void whenRegisterBean_thenOk() {
-        context.registerBean(MyService.class, () -> new MyService());
+        context.registerBean(MyService.class, MyService::new);
         MyService myService = (MyService) context.getBean("com.baeldung.functional.MyService");
         assertTrue(myService.getRandomNumber() < 10);
     }
 
     @Test
     public void whenRegisterBeanWithName_thenOk() {
-        context.registerBean("mySecondService", MyService.class, () -> new MyService());
+        context.registerBean("mySecondService", MyService.class, MyService::new);
         MyService mySecondService = (MyService) context.getBean("mySecondService");
         assertTrue(mySecondService.getRandomNumber() < 10);
     }
 
     @Test
     public void whenRegisterBeanWithCallback_thenOk() {
-        context.registerBean("myCallbackService", MyService.class, () -> new MyService(), bd -> bd.setAutowireCandidate(false));
+        context.registerBean("myCallbackService", MyService.class, MyService::new, bd -> bd.setAutowireCandidate(false));
         MyService myCallbackService = (MyService) context.getBean("myCallbackService");
         assertTrue(myCallbackService.getRandomNumber() < 10);
     }

@@ -3,12 +3,15 @@ package com.baeldung.batchtesting;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.batch.test.AssertFile.assertFileEquals;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
 
-import com.baeldung.batchtesting.model.Book;
-import com.baeldung.batchtesting.model.BookRecord;
-
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.JobParametersBuilder;
@@ -25,13 +28,15 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.test.context.ContextConfiguration;
 
+import com.baeldung.batchtesting.model.Book;
+import com.baeldung.batchtesting.model.BookRecord;
 
 @SpringBatchTest
 @EnableAutoConfiguration
 @ContextConfiguration(classes = { SpringBatchConfiguration.class })
 public class SpringBatchStepScopeIntegrationTest {
 
-    private static final String TEST_OUTPUT = "src/test/resources/output/actual-output.json";
+    private static String TEST_OUTPUT = "src/test/resources/output/actual-output.json";
 
     private static final String EXPECTED_OUTPUT_ONE = "src/test/resources/output/expected-output-one.json";
 
@@ -44,6 +49,13 @@ public class SpringBatchStepScopeIntegrationTest {
 
     @Autowired
     private JobRepositoryTestUtils jobRepositoryTestUtils;
+
+    @BeforeAll
+    public static void setup() throws IOException {
+        final File tempFile = Files.createTempFile("actual-output", ".json").toFile();
+        Files.copy(Paths.get(TEST_OUTPUT), Paths.get(tempFile.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
+        TEST_OUTPUT = tempFile.getAbsolutePath();
+    }
 
     private JobParameters defaultJobParameters() {
         JobParametersBuilder paramsBuilder = new JobParametersBuilder();

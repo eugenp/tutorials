@@ -11,4 +11,7 @@
 - [Find the Largest Prime Under the Given Number in Java](https://www.baeldung.com/java-largest-prime-lower-threshold)
 - [Count the Number of Unique Digits in an Integer using Java](https://www.baeldung.com/java-int-count-unique-digits)
 - [Generate Juggler Sequence in Java](https://www.baeldung.com/java-generate-juggler-sequence)
+- [Finding the Parent of a Node in a Binary Search Tree with Java](https://www.baeldung.com/java-find-parent-node-binary-search-tree)
+- [Check if a Number Is a Happy Number in Java](https://www.baeldung.com/java-happy-sad-number-test)
+- [Find the Largest Number Possible After Removing k Digits of a Number](https://www.baeldung.com/java-find-largest-number-remove-k-digits)
 - More articles: [[<-- prev]](/algorithms-miscellaneous-6)

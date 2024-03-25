@@ -5,7 +5,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -53,7 +53,7 @@ public class CRUDController {
 
     @PatchMapping("/{id}")
     public List<CrudInput> patch(@PathVariable("id") long id, @RequestBody CrudInput crudInput) {
-        List<CrudInput> returnList = new ArrayList<CrudInput>();
+        List<CrudInput> returnList = new ArrayList<>();
         crudInput.setId(id);
         returnList.add(crudInput);
         return returnList;

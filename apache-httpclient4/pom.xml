@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>apache-httpclient4</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>apache-httpclient4</name>
     <packaging>war</packaging>
+    <name>apache-httpclient4</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -176,12 +176,6 @@
             <version>${jstl.version}</version>
             <scope>runtime</scope>
         </dependency>
-        <!-- util -->
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-        </dependency>
         <!-- test scoped -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -199,7 +193,6 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
-
     </build>
 
     <profiles>

@@ -1,6 +1,7 @@
 package com.baeldung.circulardependency;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -11,7 +12,7 @@ public class CircularDependencyB {
 	private String message = "Hi!";
 
 	@Autowired
-	public void setCircA(final CircularDependencyA circA) {
+	public void setCircA(@Lazy final CircularDependencyA circA) {
 		this.circA = circA;
 	}
 
