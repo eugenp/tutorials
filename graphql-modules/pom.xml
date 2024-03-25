@@ -34,4 +34,9 @@
         <module>graphql-spqr-boot-starter</module>
     </modules>
 
+    <properties>
+        <org.slf4j.version>1.7.32</org.slf4j.version>
+        <logback.version>1.2.7</logback.version>
+    </properties>
+
 </project>

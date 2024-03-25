@@ -47,12 +47,12 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
+            <version>${org.slf4j.version}</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jcl-over-slf4j</artifactId>
-            <version>${slf4j.version}</version>
+            <version>${org.slf4j.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -232,8 +232,6 @@
         <spring-boot.version>3.1.5</spring-boot.version>
         <junit-jupiter.version>5.8.2</junit-jupiter.version>
         <native-build-tools-plugin.version>0.9.17</native-build-tools-plugin.version>
-        <logback.version>1.4.4</logback.version>
-        <slf4j.version>2.0.3</slf4j.version>
     </properties>
 
 </project>

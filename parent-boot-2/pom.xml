@@ -107,6 +107,8 @@
         <spring-boot.version>2.7.11</spring-boot.version>
         <aspectj.version>1.9.20.1</aspectj.version>
         <mysql-connector-java.version>8.2.0</mysql-connector-java.version>
+        <org.slf4j.version>1.7.32</org.slf4j.version>
+        <logback.version>1.2.7</logback.version>
     </properties>
 
 </project>
