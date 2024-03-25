@@ -101,7 +101,7 @@
         <module>spring-boot-resilience4j</module>
         <module>spring-boot-properties</module>
         <module>spring-boot-properties-2</module>
-<!--        <module>spring-boot-properties-3</module>--> <!-- failing after upgrading to spring boot 3.2.x -->
+        <module>spring-boot-properties-3</module> <!-- failing after upgrading to spring boot 3.2.x -->
         <module>spring-boot-properties-4</module>
         <module>spring-boot-properties-migrator-demo</module>
         <module>spring-boot-aws</module> <!-- This project is Spring Boot 2 and cannot be updated -->
