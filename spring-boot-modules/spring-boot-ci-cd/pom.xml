@@ -105,7 +105,7 @@
     </profiles>
 
     <properties>
-        <jacoco-maven-plugin.version>0.8.5</jacoco-maven-plugin.version>
+        <jacoco-maven-plugin.version>0.8.11</jacoco-maven-plugin.version>
         <heroku-maven-plugin.version>3.0.2</heroku-maven-plugin.version>
         <jib-maven-plugin.version>2.2.0</jib-maven-plugin.version>
     </properties>
