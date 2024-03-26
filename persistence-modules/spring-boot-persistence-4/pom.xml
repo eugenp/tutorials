@@ -71,7 +71,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
-            <version>6.1.4</version>
+            <version>${spring.tx.version}</version>
         </dependency>
     </dependencies>
 
@@ -94,6 +94,7 @@
         <jackson.version>2.16.0</jackson.version>
         <modelmapper.version>3.2.0</modelmapper.version>
         <lombok.version>1.18.30</lombok.version>
+        <spring.tx.version>6.1.4</spring.tx.version>
     </properties>
 
 </project>
