@@ -41,6 +41,7 @@ public class StocksResourceIntegrationTest extends JerseyTest {
         resourceConfig.register(IllegalArgumentExceptionMapper.class);
         resourceConfig.register(ServerExceptionMapper.class);
         resourceConfig.packages("com.baeldung.jersey.exceptionhandling.rest");
+        forceSet(TestProperties.CONTAINER_PORT, "0");
         return resourceConfig;
     }
 

@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>log-mdc</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>log-mdc</name>
     <packaging>war</packaging>
+    <name>log-mdc</name>
     <description>tutorial on logging with MDC and NDC</description>
 
     <parent>

@@ -4,8 +4,9 @@ import static org.springframework.web.servlet.function.RouterFunctions.route;
 import static org.springframework.web.servlet.function.ServerResponse.ok;
 import static org.springframework.web.servlet.function.ServerResponse.status;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.baeldung.springbootmvc.SpringBootMvcFnApplication.Error;
+import com.baeldung.springbootmvc.model.Product;
+import com.baeldung.springbootmvc.svc.ProductService;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.function.EntityResponse;
@@ -13,10 +14,6 @@ import org.springframework.web.servlet.function.RequestPredicates;
 import org.springframework.web.servlet.function.RouterFunction;
 import org.springframework.web.servlet.function.ServerRequest;
 import org.springframework.web.servlet.function.ServerResponse;
-
-import com.baeldung.springbootmvc.SpringBootMvcFnApplication.Error;
-import com.baeldung.springbootmvc.model.Product;
-import com.baeldung.springbootmvc.svc.ProductService;
 
 @Component
 public class ProductController {
@@ -27,10 +24,8 @@ public class ProductController {
     }
 
     public RouterFunction<ServerResponse> productSearch(ProductService ps) {
-        return route().nest(RequestPredicates.path("/product"), builder -> {
-            builder.GET("/name/{name}", req -> ok().body(ps.findByName(req.pathVariable("name"))))
-                .GET("/id/{id}", req -> ok().body(ps.findById(Integer.parseInt(req.pathVariable("id")))));
-        })
+        return route().nest(RequestPredicates.path("/product"), builder -> builder.GET("/name/{name}", req -> ok().body(ps.findByName(req.pathVariable("name"))))
+            .GET("/id/{id}", req -> ok().body(ps.findById(Integer.parseInt(req.pathVariable("id"))))))
             .onError(ProductService.ItemNotFoundException.class, (e, req) -> EntityResponse.fromObject(new Error(e.getMessage()))
                 .status(HttpStatus.NOT_FOUND)
                 .build())

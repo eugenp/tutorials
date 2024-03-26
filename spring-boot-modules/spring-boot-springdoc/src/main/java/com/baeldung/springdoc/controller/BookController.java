@@ -2,8 +2,8 @@ package com.baeldung.springdoc.controller;
 
 import java.util.Collection;
 
-import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 import com.baeldung.springdoc.exception.BookNotFoundException;
 import com.baeldung.springdoc.model.Book;

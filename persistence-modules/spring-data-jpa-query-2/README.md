@@ -4,7 +4,6 @@ This module contains articles about querying data using Spring Data JPA .
 
 ### Relevant Articles:
 
-- [Spring Data JPA @Query](https://www.baeldung.com/spring-data-jpa-query)
 - [Use Criteria Queries in a Spring Data Application](https://www.baeldung.com/spring-data-criteria-queries)
 - [Hibernate Pagination](https://www.baeldung.com/hibernate-pagination)
 - [Sorting with Hibernate](https://www.baeldung.com/hibernate-sort)

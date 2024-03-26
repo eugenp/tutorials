@@ -13,4 +13,5 @@ This module contains articles about Java collections
 - [Guide to the Java Queue Interface](https://www.baeldung.com/java-queue)
 - [An Introduction to Synchronized Java Collections](https://www.baeldung.com/java-synchronized-collections)
 - [Convert an Array of Primitives to a List](https://www.baeldung.com/java-primitive-array-to-list)
+- [Adding Elements to a Collection During Iteration](https://www.baeldung.com/java-add-elements-collection)
 - More articles: [[next -->]](/core-java-modules/core-java-collections-2)

@@ -4,9 +4,9 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>jackson-modules</artifactId>
-    <name>jackson-modules</name>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
+    <name>jackson-modules</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -31,11 +31,6 @@
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-xml</artifactId>
             <version>${jackson.version}</version>
-        </dependency>
-         <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
         </dependency>
          <dependency>
             <groupId>commons-io</groupId>

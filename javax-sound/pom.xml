@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.javax-sound</groupId>
     <artifactId>javax-sound</artifactId>
-    <name>javax-sound</name>
     <packaging>jar</packaging>
+    <name>javax-sound</name>
 
     <parent>
         <groupId>com.baeldung</groupId>

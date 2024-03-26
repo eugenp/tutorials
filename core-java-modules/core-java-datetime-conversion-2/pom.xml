@@ -4,8 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-datetime-conversion-2</artifactId>
-    <name>core-java-datetime-conversion-2</name>
     <packaging>jar</packaging>
+    <name>core-java-datetime-conversion-2</name>
 
     <parent>
         <groupId>com.baeldung.core-java-modules</groupId>
@@ -29,7 +29,6 @@
             <artifactId>ummalqura-calendar</artifactId>
             <version>${ummalqura-calendar.version}</version>
         </dependency>
-
     </dependencies>
 
     <build>

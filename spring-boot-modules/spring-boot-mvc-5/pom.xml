@@ -65,22 +65,17 @@
                     <layout>JAR</layout>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>9</source>
-                    <target>9</target>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 
     <properties>
+        <spring-boot.version>3.2.2</spring-boot.version>
+        <junit-jupiter.version>5.10.2</junit-jupiter.version>
         <spring.fox.version>3.0.0</spring.fox.version>
         <start-class>com.baeldung.springboot.swagger.ArticleApplication</start-class>
-        <spring-cloud.version>2021.0.5</spring-cloud.version>
+        <spring-cloud.version>2023.0.0</spring-cloud.version>
         <commons-configuration.version>1.10</commons-configuration.version>
+        <maven.compiler.release>17</maven.compiler.release>
     </properties>
 
 </project>

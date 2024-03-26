@@ -9,6 +9,7 @@
     <name>spring-katharsis</name>
     <packaging>war</packaging>
 
+    <!-- Upgrade to Boot 3 not possible as the project has not been upgraded to Support Jakarta dependencies-->
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-boot-2</artifactId>

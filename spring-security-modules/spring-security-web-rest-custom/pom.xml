@@ -73,6 +73,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-oxm</artifactId>
+            <version>${spring-oxm.version}</version>
         </dependency>
         <dependency>
             <groupId>commons-logging</groupId>
@@ -172,6 +173,7 @@
     <properties>
         <commons-logging.version>1.2</commons-logging.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>
+        <spring-oxm.version>6.1.4</spring-oxm.version>
         <!-- Maven plugins -->
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
     </properties>

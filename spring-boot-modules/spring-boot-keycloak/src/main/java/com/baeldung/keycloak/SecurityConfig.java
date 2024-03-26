@@ -7,6 +7,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -56,6 +57,9 @@ class SecurityConfig {
     @Bean
     public SecurityFilterChain resourceServerFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(auth -> auth
+            // Allows preflight requests from browser
+            .requestMatchers(new AntPathRequestMatcher("/customers*", HttpMethod.OPTIONS.name()))
+            .permitAll()
             .requestMatchers(new AntPathRequestMatcher("/customers*"))
             .hasRole("user")
             .requestMatchers(new AntPathRequestMatcher("/"))
