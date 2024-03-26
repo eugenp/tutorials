@@ -1,31 +1,36 @@
 package info.customer;
 
-import io.quarkus.test.common.QuarkusTestResource;
-import io.quarkus.test.common.http.TestHTTPEndpoint;
-import io.quarkus.test.junit.QuarkusTest;
-import io.restassured.RestAssured;
+import java.util.stream.Stream;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.stream.Stream;
+import io.quarkus.test.common.QuarkusTestResource;
+import io.quarkus.test.common.http.TestHTTPEndpoint;
+import io.quarkus.test.junit.QuarkusTest;
+import io.restassured.RestAssured;
 
-@QuarkusTestResource(TestcontainersManager.class)
+@QuarkusTestResource(CustomerServiceTestcontainersManager.class)
 @QuarkusTest
 @TestHTTPEndpoint(CustomerResource.class)
-class CustomerResourceTest {
+class CustomerResourceLiveTest {
 
     @ParameterizedTest
     @MethodSource(value = "customerDataProvider")
     void findById(long customerId, String customerName, int orderSize) {
-        RestAssured.given().pathParam("id", customerId)
-                .get()
-                .then().statusCode(200);
+        RestAssured.given()
+            .pathParam("id", customerId)
+            .get()
+            .then()
+            .statusCode(200);
 
-        Customer response = RestAssured.given().pathParam("id", customerId)
-                .get()
-                .thenReturn().as(Customer.class);
+        Customer response = RestAssured.given()
+            .pathParam("id", customerId)
+            .get()
+            .thenReturn()
+            .as(Customer.class);
 
         Assertions.assertEquals(customerId, response.id);
         Assertions.assertEquals(customerName, response.name);
@@ -38,11 +43,7 @@ class CustomerResourceTest {
     }
 
     private static Stream<Arguments> customerDataProvider() {
-        return Stream.of(
-                Arguments.of(1, "Customer 1", 3),
-                Arguments.of(2, "Customer 2", 1),
-                Arguments.of(3, "Customer 3", 0)
-        );
+        return Stream.of(Arguments.of(1, "Customer 1", 3), Arguments.of(2, "Customer 2", 1), Arguments.of(3, "Customer 3", 0));
     }
 
 }

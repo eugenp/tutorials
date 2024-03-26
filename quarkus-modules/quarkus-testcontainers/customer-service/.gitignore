@@ -41,3 +41,4 @@ nb-configuration.xml
 
 # Plugin directory
 /.quarkus/cli/plugins/
+.java-version

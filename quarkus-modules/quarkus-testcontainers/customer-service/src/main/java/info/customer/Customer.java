@@ -1,12 +1,12 @@
 package info.customer;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import info.customer.client.Order;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Transient;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 public class Customer extends PanacheEntity {
