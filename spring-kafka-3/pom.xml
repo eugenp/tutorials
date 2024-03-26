@@ -22,6 +22,7 @@
         <dependency>
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
+            <version>2.9.13</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -50,6 +51,16 @@
             <version>${awaitility.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>${jackson-datatype.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -57,5 +68,6 @@
         <kafka-version>3.0.12</kafka-version>
         <testcontainers.version>1.19.3</testcontainers.version>
         <awaitility.version>4.2.0</awaitility.version>
+        <jackson-datatype.version>2.13.5</jackson-datatype.version>
     </properties>
 </project>
