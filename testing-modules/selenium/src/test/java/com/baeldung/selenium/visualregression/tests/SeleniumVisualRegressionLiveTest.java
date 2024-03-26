@@ -1,16 +1,21 @@
 package com.baeldung.selenium.visualregression.tests;
 
+import com.baeldung.selenium.visualregression.DriverManager;
 import com.baeldung.selenium.visualregression.pages.CameraProductPage;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class SeleniumVisualRegressionTest extends BaseTest {
+public class SeleniumVisualRegressionLiveTest {
 
+    private DriverManager driverManager;
     private CameraProductPage cameraProductPage;
 
-    @BeforeClass
-    public void setup() {
-        cameraProductPage = new CameraProductPage(this.driverManager.getDriver());
+    @BeforeClass(alwaysRun = true)
+    public void testSetup() {
+        this.driverManager = new DriverManager();
+        this.driverManager.startChromeInCloud();
+        this.cameraProductPage = new CameraProductPage(this.driverManager.getDriver());
     }
 
     @Test
@@ -29,4 +34,8 @@ public class SeleniumVisualRegressionTest extends BaseTest {
         this.cameraProductPage.checkVisual();
     }
 
+    @AfterClass(alwaysRun = true)
+    public void tearDown() {
+        this.driverManager.quitDriver();
+    }
 }
