@@ -7,7 +7,7 @@ public class CamelLoggingMainApp {
     public static void main(String[] args) throws Exception {
         Main main = new Main();
         main.configure()
-            .addRoutesBuilder(new FileCopierTracerCamelRoute());
+            .addRoutesBuilder(new FileCopierCamelRoute());
         main.run(args);
     }
 }

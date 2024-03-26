@@ -18,6 +18,5 @@ public class FileCopierTracerCamelRoute extends RouteBuilder {
             .marshal()
             .json(JsonLibrary.Jackson)
             .to("file:data/output");
-        ;
     }
 }
