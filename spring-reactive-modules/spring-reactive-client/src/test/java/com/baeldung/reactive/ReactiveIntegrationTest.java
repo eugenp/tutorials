@@ -49,7 +49,9 @@ public class ReactiveIntegrationTest {
             .withHeader("Content-Type", "application/json")
             .withBody("{\"id\":123, \"name\":\"foo\"}")));
         
-        final Mono<ClientResponse> fooMono = client.get().uri("/foo/123").exchange().log();
+        final Mono<ClientResponse> fooMono = client.get().uri("/foo/123").retrieve()
+            .bodyToMono(ClientResponse.class)
+            .log();
 
         System.out.println(fooMono.subscribe());
     }

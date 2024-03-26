@@ -4,6 +4,7 @@ package com.baeldung.reactive.service;
 import com.baeldung.reactive.exception.ServiceException;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
 import org.springframework.http.client.MultipartBodyBuilder;
 import org.springframework.stereotype.Service;
@@ -26,10 +27,10 @@ public class ReactiveUploadService {
     }
 
 
-    public Mono<HttpStatus> uploadPdf(final Resource resource) {
+    public Mono<HttpStatusCode> uploadPdf(final Resource resource) {
 
         final URI url = UriComponentsBuilder.fromHttpUrl(EXTERNAL_UPLOAD_URL).build().toUri();
-        Mono<HttpStatus> httpStatusMono = webClient.post()
+        Mono<HttpStatusCode> httpStatusMono = webClient.post()
           .uri(url)
           .contentType(MediaType.APPLICATION_PDF)
           .body(BodyInserters.fromResource(resource))
@@ -44,13 +45,13 @@ public class ReactiveUploadService {
     }
 
 
-    public Mono<HttpStatus> uploadMultipart(final MultipartFile multipartFile) {
+    public Mono<HttpStatusCode> uploadMultipart(final MultipartFile multipartFile) {
         final URI url = UriComponentsBuilder.fromHttpUrl(EXTERNAL_UPLOAD_URL).build().toUri();
 
         final MultipartBodyBuilder builder = new MultipartBodyBuilder();
         builder.part("file", multipartFile.getResource());
 
-        Mono<HttpStatus> httpStatusMono = webClient.post()
+        Mono<HttpStatusCode> httpStatusMono = webClient.post()
           .uri(url)
           .contentType(MediaType.MULTIPART_FORM_DATA)
           .body(BodyInserters.fromMultipartData(builder.build()))

@@ -37,7 +37,7 @@ public class LogFilters {
             if (log.isDebugEnabled()) {
                 StringBuilder sb = new StringBuilder("Response: \n")
                   .append("Status: ")
-                  .append(clientResponse.rawStatusCode());
+                  .append(clientResponse.statusCode());
                 clientResponse
                   .headers()
                   .asHttpHeaders()
