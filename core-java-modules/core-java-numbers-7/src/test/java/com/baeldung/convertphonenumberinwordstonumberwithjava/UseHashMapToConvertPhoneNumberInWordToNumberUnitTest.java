@@ -5,54 +5,47 @@ import static org.junit.jupiter.api.Assertions.*;
 public class UseHashMapToConvertPhoneNumberInWordToNumberUnitTest {
 
     @Test
-    public void givenStringWithWhiteSpaces_WhenConvertPhoneNumberInWordToNumber_ThenEquivalentNumber(){
+    public void givenStringWithWhiteSpaces_WhenConvertPhoneNumberInWordToNumber_ThenEquivalentNumber() {
 
-        String firstResult = UseHashMapToConvertPhoneNumberInWordToNumber.ConvertPhoneNumberInWordToNumber("five two four quadruple eight");
-        assertEquals("5248888", firstResult);
+        assertEquals("5248888",
+                UseHashMapToConvertPhoneNumberInWordsToNumber
+                        .convertPhoneNumberInWordToNumber("five two four quadruple eight"));
 
-        String secondResult = UseHashMapToConvertPhoneNumberInWordToNumber.ConvertPhoneNumberInWordToNumber("five eight three double triple");
-        assertEquals("", secondResult);
+        assertThrows(IllegalArgumentException.class, () -> {
+            UseHashMapToConvertPhoneNumberInWordsToNumber
+                    .convertPhoneNumberInWordToNumber("five eight three double triple");
+        });
 
-        String thirdResult = UseHashMapToConvertPhoneNumberInWordToNumber.ConvertPhoneNumberInWordToNumber("five eight three two four penta eight");
-        assertEquals("", thirdResult);
-        String fourthResult = UseHashMapToConvertPhoneNumberInWordToNumber.ConvertPhoneNumberInWordToNumber("one two three four five six seven eight nine zero two");
-        assertNull(null, fourthResult);
+        assertThrows(IllegalArgumentException.class, () -> {
+            UseHashMapToConvertPhoneNumberInWordsToNumber
+                    .convertPhoneNumberInWordToNumber("five eight three two four penta eight");
+        });
 
-        String fifthResult = UseHashMapToConvertPhoneNumberInWordToNumber.ConvertPhoneNumberInWordToNumber("five invalid three two four penta eight");
-        assertEquals("", fifthResult);
+        assertThrows(IllegalArgumentException.class, () -> {
+            UseHashMapToConvertPhoneNumberInWordsToNumber
+                    .convertPhoneNumberInWordToNumber("five eight invalid two four null eight");
+        });
+
     }
 
+
     @Test
-    public void givenHashMap_WhenMapModifiers_ThenEquivalentNumber(){
-        Map<String, Integer > result = UseHashMapToConvertPhoneNumberInWordToNumber.mapModifiers();
+    public void givenNothing_WhenGetWordAsMultiplier_ThenEquivalentNumber() {
+        Map<String, Integer> result = UseHashMapToConvertPhoneNumberInWordsToNumber.getWordAsMultiplier();
         assertEquals(2, result.get("double"));
         assertEquals(null, result.get("invalid"));
         assertEquals(null, result.get(""));
+        assertEquals(null, result.get("deca"));
     }
 
     @Test
-    public void givenHashMap_WhenMapIndividualDigits_ThenEquivalentNumber(){
-        Map<String, String> result = UseHashMapToConvertPhoneNumberInWordToNumber.mapIndividualDigits();
+    public void givenNothing_WhenGetWordAsDigit_ThenEquivalentNumber(){
+        Map<String, String> result = UseHashMapToConvertPhoneNumberInWordsToNumber.getWordAsDigit();
         assertEquals("2", result.get("two"));
         assertEquals(null, result.get("invalid"));
         assertEquals(null, result.get(""));
         assertEquals("5", result.get("five"));
-
-    }
-
-    @Test
-    public void givenStringWithWhiteSpaces_isValidPhoneNumberFormat_ThenBoolean() {
-        boolean firstResult = UseHashMapToConvertPhoneNumberInWordToNumber.isValidPhoneNumberFormat("one two");
-        assertEquals(true, firstResult);
-
-        boolean secondResult = UseHashMapToConvertPhoneNumberInWordToNumber.isValidPhoneNumberFormat("two double");
-        assertEquals(false, secondResult);
-
-        boolean thirdResult = UseHashMapToConvertPhoneNumberInWordToNumber.isValidPhoneNumberFormat("two three hexa");
-        assertEquals(false, thirdResult);
-
-        boolean fourthResult = UseHashMapToConvertPhoneNumberInWordToNumber.isValidPhoneNumberFormat("invalid two triple three");
-        assertEquals(false, fourthResult);
+        assertEquals(null, result.get("twelve"));
 
     }
 }
