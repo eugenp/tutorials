@@ -35,7 +35,6 @@ public class UseHashMapToConvertPhoneNumberInWordsToNumber {
 
     public static Map<String, Integer> getWordAsMultiplier() {
         Map<String, Integer> multiplier = new HashMap<>();
-
         multiplier.put("double", 2);
         multiplier.put("triple", 3);
         multiplier.put("quadruple", 4);
@@ -46,7 +45,6 @@ public class UseHashMapToConvertPhoneNumberInWordsToNumber {
 
     public static Map<String, String> getWordAsDigit() {
         Map<String, String> digits = new HashMap<>();
-
         digits.put("zero", "0");
         digits.put("one", "1");
         digits.put("two", "2");
