@@ -27,6 +27,8 @@
         <module>spring-boot-basic-customization</module>
         <module>spring-boot-basic-customization-2</module>
         <module>spring-boot-bootstrap</module>
+        <module>spring-boot-caching</module>  <!-- failing after upgrading to spring boot 3.2.x -->
+        <module>spring-boot-caching-2</module>  <!-- failing after upgrading to spring boot 3.2.x -->
         <module>spring-boot-client</module>
         <module>spring-boot-config-jpa-error</module>
         <module>spring-boot-ctx-fluent</module>
@@ -54,7 +56,7 @@
         <module>spring-boot-process-automation</module>
         <module>spring-boot-logging-logback</module>
         <module>spring-boot-logging-log4j2</module>
-<!--        <module>spring-boot-mvc</module>--> <!-- failing after upgrading to spring boot 3.2.x -->
+        <module>spring-boot-mvc</module>
         <module>spring-boot-mvc-2</module>
         <module>spring-boot-mvc-3</module>
         <module>spring-boot-mvc-4</module>
@@ -86,8 +88,6 @@
         <module>spring-boot-data-2</module>
         <module>spring-boot-validation</module>
 <!--        <module>spring-boot-data-3</module>--> <!-- failing after upgrading to spring boot 3.2.x -->
-<!--        <module>spring-caching</module>--> <!-- failing after upgrading to spring boot 3.2.x -->
-<!--        <module>spring-caching-2</module>--> <!-- failing after upgrading to spring boot 3.2.x -->
         <!--        <module>spring-boot-redis</module>--> <!-- failing after upgrading to spring boot 3.2.x -->
         <module>spring-boot-cassandre</module>
         <module>spring-boot-react</module>
@@ -101,7 +101,7 @@
         <module>spring-boot-resilience4j</module>
         <module>spring-boot-properties</module>
         <module>spring-boot-properties-2</module>
-<!--        <module>spring-boot-properties-3</module>--> <!-- failing after upgrading to spring boot 3.2.x -->
+        <module>spring-boot-properties-3</module> <!-- failing after upgrading to spring boot 3.2.x -->
         <module>spring-boot-properties-4</module>
         <module>spring-boot-properties-migrator-demo</module>
         <module>spring-boot-aws</module> <!-- This project is Spring Boot 2 and cannot be updated -->
