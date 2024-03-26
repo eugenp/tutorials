@@ -17,11 +17,10 @@ import org.springframework.context.annotation.Primary;
 import com.baeldung.disablingscheduledtasks.DelayedNotificationScheduler;
 import com.baeldung.disablingscheduledtasks.Notification;
 import com.baeldung.disablingscheduledtasks.NotificationRepository;
-import com.baeldung.disablingscheduledtasks.config.disablewithprofile.ApplicationConfig;
-import com.baeldung.disablingscheduledtasks.config.disablewithprofile.SchedulingConfig;
+import com.baeldung.disablingscheduledtasks.config.schedulingon.ApplicationConfig;
 
 @SpringBootTest(
-    classes = { ApplicationConfig.class, SchedulingConfig.class, SchedulerTestConfiguration.class },
+    classes = { ApplicationConfig.class, SchedulerTestConfiguration.class },
     properties = {
         "notification.send.out.delay: 10",
         "notification.send.out.initial.delay: 60000"
