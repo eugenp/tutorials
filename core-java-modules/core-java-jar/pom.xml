@@ -260,7 +260,6 @@
         <!-- util -->
         <unix4j.version>0.4</unix4j.version>
         <grep4j.version>1.8.7</grep4j.version>
-        <mockito.version>4.6.1</mockito.version>
         <!-- maven plugins -->
         <javamoney.moneta.version>1.1</javamoney.moneta.version>
         <maven-javadoc-plugin.version>3.6.2</maven-javadoc-plugin.version>
