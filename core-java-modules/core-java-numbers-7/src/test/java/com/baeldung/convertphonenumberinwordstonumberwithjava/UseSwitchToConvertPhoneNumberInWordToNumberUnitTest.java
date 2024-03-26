@@ -6,69 +6,78 @@ public class UseSwitchToConvertPhoneNumberInWordToNumberUnitTest {
     @Test
     public void givenStringWithWhiteSpaces_WhenConvertPhoneNumberInWordToNumber_ThenEquivalentNumber(){
 
-        String firstResult = UseSwitchToConvertPhoneNumberInWordToNumber.ConvertPhoneNumberInWordToNumber("five eight three two four triple eight");
-        assertEquals("58324888", firstResult);
+        assertEquals("5248888",
+                UseSwitchToConvertPhoneNumberInWordToNumber
+                        .convertPhoneNumberInWordToNumber("five two four quadruple eight"));
 
-        String secondResult = UseSwitchToConvertPhoneNumberInWordToNumber.ConvertPhoneNumberInWordToNumber("five eight three double triple");
-        assertEquals("", secondResult);
+        assertThrows(IllegalArgumentException.class, () -> {
+            UseSwitchToConvertPhoneNumberInWordToNumber
+                    .convertPhoneNumberInWordToNumber("five eight three double triple");
+        });
 
-        String thirdResult = UseSwitchToConvertPhoneNumberInWordToNumber.ConvertPhoneNumberInWordToNumber("five eight three two four penta eight");
-        assertEquals("", thirdResult);
+        assertThrows(IllegalArgumentException.class, () -> {
+            UseSwitchToConvertPhoneNumberInWordToNumber
+                    .convertPhoneNumberInWordToNumber("five eight three two four penta eight");
+        });
 
-        String fourthResult = UseSwitchToConvertPhoneNumberInWordToNumber.ConvertPhoneNumberInWordToNumber("one two three four five six seven eight nine zero two");
-        assertNull(null, fourthResult);
+        assertThrows(IllegalArgumentException.class, () -> {
+            UseSwitchToConvertPhoneNumberInWordToNumber
+                    .convertPhoneNumberInWordToNumber("five eight invalid two four null eight");
+        });
+
     }
 
     @Test
-    public void givenStringWithWhiteSpaces_WhenMapModifiers_ThenEquivalentNumber() {
-        String firstResult = UseSwitchToConvertPhoneNumberInWordToNumber.mapModifiers("double");
-        assertEquals("2", firstResult);
+    public void givenString_WhenGetWordAsMultiplier_ThenEquivalentNumber() {
+        assertEquals(2, UseSwitchToConvertPhoneNumberInWordToNumber
+                .getWordAsMultiplier("double"));
 
-        String secondResult = UseSwitchToConvertPhoneNumberInWordToNumber.mapModifiers("two");
-        assertNotEquals("2", secondResult);
+        assertEquals(null, UseSwitchToConvertPhoneNumberInWordToNumber
+                .getWordAsMultiplier("two"));
 
-        String thirdResult = UseSwitchToConvertPhoneNumberInWordToNumber.mapModifiers("");
-        assertEquals("-1", thirdResult);
+        assertEquals(null, UseSwitchToConvertPhoneNumberInWordToNumber
+                .getWordAsMultiplier(""));
 
-        String fourthResult = UseSwitchToConvertPhoneNumberInWordToNumber.mapModifiers("Invalid");
-        assertEquals("-1", fourthResult);
+        assertEquals(null, UseSwitchToConvertPhoneNumberInWordToNumber
+                .getWordAsMultiplier("invalid"));
 
-        String fifthResult = UseSwitchToConvertPhoneNumberInWordToNumber.mapModifiers("null");
-        assertEquals("-1", fifthResult);
+        assertEquals(null, UseSwitchToConvertPhoneNumberInWordToNumber
+                .getWordAsMultiplier("null"));
+
+        assertEquals(null, UseSwitchToConvertPhoneNumberInWordToNumber
+                .getWordAsMultiplier("hexa"));
+
     }
 
     @Test
-    public void givenStringWithWhiteSpaces_WhenMapIndividualDigits_ThenEquivalentNumber() {
-        String firstResult = UseSwitchToConvertPhoneNumberInWordToNumber.mapIndividualDigits("five");
-        assertEquals("5", firstResult);
+    public void givenString_WhenMapIndividualDigits_ThenEquivalentNumber() {
+          assertEquals("5",
+                  UseSwitchToConvertPhoneNumberInWordToNumber
+                          .getWordAsDigit("five"));
 
-        String secondResult = UseSwitchToConvertPhoneNumberInWordToNumber.mapIndividualDigits("penta");
-        assertEquals("-1", secondResult);
+        assertThrows(IllegalArgumentException.class, () -> {
+            UseSwitchToConvertPhoneNumberInWordToNumber
+                    .convertPhoneNumberInWordToNumber("penta");
+        });
 
-        String thirdResult = UseSwitchToConvertPhoneNumberInWordToNumber.mapIndividualDigits("Invalid");
-        assertEquals("-1", thirdResult);
+        assertThrows(IllegalArgumentException.class, () -> {
+            UseSwitchToConvertPhoneNumberInWordToNumber
+                    .convertPhoneNumberInWordToNumber("twelve");
+        });
 
-        String fourthResult = UseSwitchToConvertPhoneNumberInWordToNumber.mapIndividualDigits("null");
-        assertEquals("-1", fourthResult);
+        assertThrows(IllegalArgumentException.class, () -> {
+            UseSwitchToConvertPhoneNumberInWordToNumber
+                    .convertPhoneNumberInWordToNumber("");
+        });
 
-        String fifthResult = UseSwitchToConvertPhoneNumberInWordToNumber.mapIndividualDigits("");
-        assertEquals("-1", fifthResult);
+        assertThrows(IllegalArgumentException.class, () -> {
+            UseSwitchToConvertPhoneNumberInWordToNumber
+                    .convertPhoneNumberInWordToNumber("invalid");
+        });
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            UseSwitchToConvertPhoneNumberInWordToNumber
+                    .convertPhoneNumberInWordToNumber("null");
+        });
     }
-
-    @Test
-    public void givenStringWithWhiteSpaces_isValidPhoneNumberFormat_ThenBoolean() {
-        boolean firstResult = UseSwitchToConvertPhoneNumberInWordToNumber.isValidPhoneNumberFormat("one two");
-        assertEquals(true, firstResult);
-
-        boolean secondResult = UseSwitchToConvertPhoneNumberInWordToNumber.isValidPhoneNumberFormat("two double");
-        assertEquals(false, secondResult);
-
-        boolean thirdResult = UseSwitchToConvertPhoneNumberInWordToNumber.isValidPhoneNumberFormat("two three hexa");
-        assertEquals(false, thirdResult);
-
-        boolean fourthResult = UseSwitchToConvertPhoneNumberInWordToNumber.isValidPhoneNumberFormat("invalid two triple three");
-        assertEquals(false, fourthResult);
-
-    }
-
 }
