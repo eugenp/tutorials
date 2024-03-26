@@ -4,6 +4,7 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>aws-modules</artifactId>
+    <packaging>pom</packaging>
     <name>aws-modules</name>
 
     <parent>
@@ -11,16 +12,6 @@
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-
-    <dependencies>
-        <dependency>
-            <groupId>com.amazonaws</groupId>
-            <artifactId>aws-java-sdk-dynamodb</artifactId>
-            <version>1.12.523</version>
-            <scope>compile</scope>
-        </dependency>
-    </dependencies>
-    <packaging>pom</packaging>
 
     <modules>
         <module>aws-app-sync</module>
@@ -30,6 +21,15 @@
         <module>aws-reactive</module>
         <module>aws-s3</module>
     </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk-dynamodb</artifactId>
+            <version>1.12.523</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 
     <properties>
         <aws-java-sdk.version>1.12.331</aws-java-sdk.version>

@@ -1,7 +1,7 @@
 package com.baeldung.restvalidation.service3;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
 public class FieldNotEmptyValidator implements ConstraintValidator<FieldNotEmpty, Object> {
 

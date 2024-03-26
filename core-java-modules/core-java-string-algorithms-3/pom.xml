@@ -55,7 +55,7 @@
     </build>
 
     <properties>
-        <validator.version>1.7</validator.version>
+        <validator.version>1.8.0</validator.version>
         <emoji-java.version>5.1.1</emoji-java.version>
         <apache-commons-text.version>1.10.0</apache-commons-text.version>
     </properties>

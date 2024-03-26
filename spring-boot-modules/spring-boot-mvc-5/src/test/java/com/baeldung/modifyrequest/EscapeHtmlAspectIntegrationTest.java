@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -45,6 +46,7 @@ public class EscapeHtmlAspectIntegrationTest {
 
         mockMvc.perform(MockMvcRequestBuilders.post(URI.create("/save"))
                 .contentType(MediaType.APPLICATION_JSON)
+                .header(HttpHeaders.CONTENT_LENGTH, 100)
                 .content(objectMapper.writeValueAsString(requestBody)))
             .andExpect(MockMvcResultMatchers.status()
                 .isCreated())

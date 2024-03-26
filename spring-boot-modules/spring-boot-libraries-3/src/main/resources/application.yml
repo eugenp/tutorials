@@ -1,4 +1,3 @@
-logging.level.org.springframework.orm.jpa: TRACE
 
 spring.kafka:
   bootstrap-servers: localhost:9092
@@ -10,3 +9,20 @@ spring.kafka:
     key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
     value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
     auto-offset-reset: earliest
+
+spring.modulith:
+  republish-outstanding-events-on-restart: true
+  events.jdbc.schema-initialization.enabled: true
+
+logging.level.org.springframework.orm.jpa: TRACE
+
+spring:
+  datasource:
+    username: test_user
+    password: test_pass
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        hbm2ddl.auto: create
+

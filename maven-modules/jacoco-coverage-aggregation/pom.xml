@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>jacoco-coverage-aggregation</artifactId>
     <version>1.0</version>
-    <name>jacoco-coverage-aggregation</name>
     <packaging>pom</packaging>
+    <name>jacoco-coverage-aggregation</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -38,7 +38,7 @@
     </build>
 
     <properties>
-        <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
+        <jacoco-maven-plugin.version>0.8.11</jacoco-maven-plugin.version>
     </properties>
 
 </project>
