@@ -1,79 +1,50 @@
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
-public class UseHashMapToConvertPhoneNumberInWordToNumber {
+public class UseHashMapToConvertPhoneNumberInWordsToNumber {
+    
+    public static String convertPhoneNumberInWordToNumber(String phoneNumberInWord) {
 
-    public static String ConvertPhoneNumberInWordToNumber(String phoneNumberInWord) {
+        Map<String, Integer> mulpliers = getWordAsMultiplier();
+        Map<String, String> digits = getWordAsDigit();
 
-        boolean format = isValidPhoneNumberFormat(phoneNumberInWord);
-        Map<String, String> digits = mapIndividualDigits();
-        Map<String, Integer> modifiers = mapModifiers();
-        String convertedNumber = "";
-        int prefixCounter = 1;
+        StringBuilder output = new StringBuilder();
+        Integer currentMultiplier = null;
+        String[] words = phoneNumberInWord.split(" ");
 
-        if (format) {
-            String[] words = phoneNumberInWord.split("\\s+");
-            for (String word : words) {
-                if (modifiers.containsKey(word)) {
-                    prefixCounter *= modifiers.get(word);
+        for (String word : words) {
+            Integer multiplier = mulpliers.get(word);
+            if (multiplier != null) {
+                if (currentMultiplier != null) {
+                    throw new IllegalArgumentException("Cannot have consecutive multipliers, at: " + word);
+                }
+                currentMultiplier = multiplier;
+            } else {
+                String digit = digits.get(word);
+                if (digit != null) {
+                    output.append(digit.repeat(currentMultiplier != null ? currentMultiplier : 1));
+                    currentMultiplier = null;
                 } else {
-                    convertedNumber += digits.get(word).repeat(prefixCounter);
-                    prefixCounter = 1;
+                    throw new IllegalArgumentException("Invalid word: " + word);
                 }
             }
         }
 
-        if (convertedNumber.length() > 10) {
-            System.out.println("Incorrect Phone Number! The correct one is 10-digit long.");
-            return null;
-        }
-
-        return convertedNumber;
+        return output.toString();
     }
 
-    public static boolean isValidPhoneNumberFormat(String phoneNumberInWord) {
+    public static Map<String, Integer> getWordAsMultiplier() {
+        Map<String, Integer> multiplier = new HashMap<>();
 
-        String regex = "^(double|triple|quadruple|zero|one|two|three|four|five|six|seven|eight|nine)$";
+        multiplier.put("double", 2);
+        multiplier.put("triple", 3);
+        multiplier.put("quadruple", 4);
 
-        phoneNumberInWord = phoneNumberInWord.toLowerCase();
-
-        if (phoneNumberInWord.endsWith("double") ||
-                phoneNumberInWord.endsWith("triple") ||
-                phoneNumberInWord.endsWith("quadruple")) {
-            System.out.println("A Phone Number Can't End with a Numerical Prefix");
-            return false;
-        } else {
-            List<String> phoneNumberInWordArray = Arrays.asList(phoneNumberInWord.split(" "));
-            for (int i = 0; i < phoneNumberInWordArray.size(); i++) {
-                if ((isNumericalPrefix(phoneNumberInWordArray.get(i)) && isNumericalPrefix(phoneNumberInWordArray.get(i + 1)))) {
-                    System.out.println("Consecutive Numerical Prefixes Detected.");
-                    return false;
-                }
-                if (!phoneNumberInWordArray.get(i).matches(regex)) {
-                    System.out.println("Invalid Numberical Prefix or Digit in Words! Try again");
-                    return false;
-                }
-            }
-
-        }
-        return true;
-    }
-
-    public static boolean isNumericalPrefix(String word) {
-        return word.equals("double") || word.equals("triple") || word.equals("quadruple");
-    }
-
-    public static Map<String, Integer> mapModifiers() {
-        Map<String, Integer> modifiers = new HashMap<>();
-
-        modifiers.put("double", 2);
-        modifiers.put("triple", 3);
-        modifiers.put("quadruple", 4);
-
-        return modifiers;
+        return multiplier;
     }
 
 
-    public static Map<String, String> mapIndividualDigits() {
+    public static Map<String, String> getWordAsDigit() {
         Map<String, String> digits = new HashMap<>();
 
         digits.put("zero", "0");
@@ -89,5 +60,4 @@ public class UseHashMapToConvertPhoneNumberInWordToNumber {
 
         return digits;
     }
-
 }
