@@ -157,6 +157,8 @@
     </profiles>
 
     <properties>
+        <spring-boot.version>3.2.2</spring-boot.version>
+        <junit-jupiter.version>5.10.2</junit-jupiter.version>
         <git-commit-id-plugin.version>2.2.4</git-commit-id-plugin.version>
         <javafx.version>19</javafx.version>
         <start-class>com.baeldung.SpringBootDataApplication</start-class>
