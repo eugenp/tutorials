@@ -13,25 +13,23 @@ import java.util.HashMap;
 import static java.text.MessageFormat.format;
 
 public class DriverManager {
-
     private WebDriver driver;
 
     public void startChromeInCloud()  {
-        final String LT_USERNAME = System.getenv("LT_USERNAME");
-        final String LT_ACCESS_KEY = System.getenv("LT_ACCESS_KEY");
-        final String GRID_URL = "@hub.lambdatest.com/wd/hub";
-
-        final ChromeOptions browserOptions = new ChromeOptions();
+        String ltUsername = System.getenv("LT_USERNAME");
+        String ltAccessKey = System.getenv("LT_ACCESS_KEY");
+        String gridUrl = "@hub.lambdatest.com/wd/hub";
+        ChromeOptions browserOptions = new ChromeOptions();
         browserOptions.setPlatformName("Windows 10");
         browserOptions.setBrowserVersion("latest");
         browserOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
 
-        final HashMap<String, Object> ltOptions = getLambdaTestOptions();
+        HashMap<String, Object> ltOptions = getLambdaTestOptions();
         browserOptions.setCapability("LT:Options", ltOptions);
 
         try {
-            this.driver = new RemoteWebDriver(new URL(format("https://{0}:{1}{2}", LT_USERNAME, LT_ACCESS_KEY, GRID_URL)), browserOptions);
-        } catch (final MalformedURLException e) {
+            this.driver = new RemoteWebDriver(new URL(format("https://{0}:{1}{2}", ltUsername, ltAccessKey, gridUrl)), browserOptions);
+        } catch (MalformedURLException e) {
             throw new Error("Error in setting RemoteDriver's URL!");
         }
         this.driver.manage()
@@ -40,7 +38,7 @@ public class DriverManager {
     }
 
     private static HashMap<String, Object> getLambdaTestOptions() {
-        final HashMap<String, Object> ltOptions = new HashMap<>();
+        HashMap<String, Object> ltOptions = new HashMap<>();
         ltOptions.put("resolution", "2560x1440");
         ltOptions.put("video", true);
         ltOptions.put("build", "smartui-demo");
@@ -49,7 +47,7 @@ public class DriverManager {
         ltOptions.put("smartUI.baseline", false);
         ltOptions.put("w3c", true);
         ltOptions.put("plugin", "java-testNG");
-        final HashMap<String, Object> smartOptions = new HashMap<>();
+        HashMap<String, Object> smartOptions = new HashMap<>();
         smartOptions.put("largeImageThreshold", 1200);
         smartOptions.put("transparency", 0.3);
         smartOptions.put("errorType", "movement");
@@ -64,5 +62,4 @@ public class DriverManager {
     public void quitDriver() {
         this.driver.quit();
     }
-
 }
