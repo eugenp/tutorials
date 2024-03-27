@@ -39,11 +39,22 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-dataflow-shell</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-boot-starter-hateoas</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy</artifactId>
+            <version>${groovy.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <spring-cloud-dependencies.version>Brixton.SR7</spring-cloud-dependencies.version>
-        <spring-cloud-dataflow-dependencies.version>1.1.0.RELEASE</spring-cloud-dataflow-dependencies.version>
+        <spring-cloud-dataflow-dependencies.version>2.0.0.RELEASE</spring-cloud-dataflow-dependencies.version>
+        <spring-boot.version>2.1.4.RELEASE</spring-boot.version>
+        <groovy.version>3.0.8</groovy.version>
     </properties>
 
 </project>
