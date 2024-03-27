@@ -6,6 +6,13 @@
     <groupId>info.customer</groupId>
     <artifactId>customer-service</artifactId>
     <version>1.0.0-SNAPSHOT</version>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>quarkus-testcontainers</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
     <properties>
         <compiler-plugin.version>3.12.1</compiler-plugin.version>
         <maven.compiler.release>17</maven.compiler.release>
@@ -17,6 +24,7 @@
         <skipITs>true</skipITs>
         <surefire-plugin.version>3.2.5</surefire-plugin.version>
     </properties>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
