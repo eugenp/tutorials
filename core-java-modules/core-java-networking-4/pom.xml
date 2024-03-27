@@ -47,20 +47,6 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <finalName>core-java-networking-4</finalName>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>18</source>
-                    <target>18</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
     <properties>
         <commons-validator.version>1.7</commons-validator.version>
         <jsoup.version>1.17.2</jsoup.version>
