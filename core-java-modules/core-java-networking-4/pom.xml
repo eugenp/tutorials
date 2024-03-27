@@ -54,6 +54,7 @@
         <javax.ws.rs-api.version>2.1.1</javax.ws.rs-api.version>
         <jersey-common.version>2.22.2</jersey-common.version>
         <spring-web.version>6.0.6</spring-web.version>
+        <maven.compiler.release>18</maven.compiler.release>
     </properties>
 
 </project>
