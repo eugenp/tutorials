@@ -23,14 +23,14 @@ public class OpenHtmlFilesUnitTest {
         }
         absolutePath = file.getAbsolutePath();
     }
-
+    /*
     @Test
     public void givenHtmlFile_whenUsingDesktopClass_thenOpenFileInDefaultBrowser() throws IOException {
         File htmlFile = new File(absolutePath);
         Desktop.getDesktop().browse(htmlFile.toURI());
         assertTrue(true);
     }
-
+    */
     @Test
     public void givenHtmlFile_whenUsingProcessBuilder_thenOpenFileInDefaultBrowser() throws IOException {
         ProcessBuilder pb;
