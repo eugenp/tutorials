@@ -683,7 +683,6 @@
                 <module>di-modules</module>
                 <module>disruptor</module>
                 <module>docker-modules</module>
-                <module>dozer</module>
                 <module>drools</module>
                 <module>dubbo</module>
                 <module>feign</module>
@@ -931,7 +930,6 @@
                 <module>di-modules</module>
                 <module>disruptor</module>
                 <module>docker-modules</module>
-                <module>dozer</module>
                 <module>drools</module>
                 <module>dubbo</module>
                 <module>feign</module>
