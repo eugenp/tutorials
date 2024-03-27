@@ -4,8 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-networking-4</artifactId>
-    <packaging>jar</packaging>
     <name>core-java-networking-4</name>
+    <packaging>jar</packaging>
 
     <parent>
         <groupId>com.baeldung.core-java-modules</groupId>
@@ -17,43 +17,56 @@
         <dependency>
             <groupId>commons-validator</groupId>
             <artifactId>commons-validator</artifactId>
-            <version>${commons-validator.version}</version>
+            <version>${apache.commons-validator.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
             <version>${jsoup.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
-            <version>${httpclient.version}</version>
+            <version>4.5.2</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/javax.ws.rs/javax.ws.rs-api -->
         <dependency>
             <groupId>javax.ws.rs</groupId>
             <artifactId>javax.ws.rs-api</artifactId>
-            <version>${javax.ws.rs-api.version}</version>
+            <version>2.1.1</version>
         </dependency>
         <dependency>
             <groupId>org.glassfish.jersey.core</groupId>
             <artifactId>jersey-common</artifactId>
-            <version>${jersey-common.version}</version>
+            <version>2.22.2</version>
             <scope>test</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>${spring-web.version}</version>
+            <version>6.0.6</version>
         </dependency>
     </dependencies>
 
+    <build>
+        <finalName>core-java-networking-4</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>18</source>
+                    <target>18</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
-        <commons-validator.version>1.7</commons-validator.version>
-        <jsoup.version>1.17.2</jsoup.version>
-        <httpclient.version>4.5.2</httpclient.version>
-        <javax.ws.rs-api.version>2.1.1</javax.ws.rs-api.version>
-        <jersey-common.version>2.22.2</jersey-common.version>
-        <spring-web.version>6.0.6</spring-web.version>
+        <apache.commons-validator.version>1.7</apache.commons-validator.version>
+        <jsoup.version>1.16.2</jsoup.version>
     </properties>
 
 </project>
