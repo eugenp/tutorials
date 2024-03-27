@@ -13,10 +13,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.actuate.beans.BeansEndpoint.ContextBeans;
+import org.springframework.boot.actuate.beans.BeansEndpoint.ContextBeansDescriptor;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -54,12 +54,12 @@ public class DisplayBeanIntegrationTest {
 
     @Test
     public void givenRestTemplate_whenAccessEndpointUrl_thenHttpStatusOK() throws Exception {
-        ParameterizedTypeReference<Map<String, ContextBeans>> responseType = new ParameterizedTypeReference<Map<String, ContextBeans>>() {
+        ParameterizedTypeReference<Map<String, ContextBeansDescriptor>> responseType = new ParameterizedTypeReference<Map<String, ContextBeansDescriptor>>() {
         };
         RequestEntity<Void> requestEntity = RequestEntity.get(new URI("http://localhost:" + this.mgt + ACTUATOR_PATH + "/beans"))
             .accept(MediaType.APPLICATION_JSON)
             .build();
-        ResponseEntity<Map<String, ContextBeans>> entity = this.testRestTemplate.exchange(requestEntity, responseType);
+        ResponseEntity<Map<String, ContextBeansDescriptor>> entity = this.testRestTemplate.exchange(requestEntity, responseType);
 
         then(entity.getStatusCode()).isEqualTo(HttpStatus.OK);
     }

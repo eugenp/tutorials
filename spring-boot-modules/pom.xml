@@ -33,7 +33,7 @@
         <module>spring-boot-config-jpa-error</module>
         <module>spring-boot-ctx-fluent</module>
         <module>spring-boot-deployment</module>
-<!--        <module>spring-boot-di</module>--> <!-- failing after upgrading to spring boot 3.2.x -->
+        <module>spring-boot-di</module>
         <module>spring-boot-disable-logging</module>
         <module>spring-boot-ci-cd</module>
         <!-- <module>spring-boot-cli</module> --> <!-- Not a maven project -->
@@ -104,7 +104,7 @@
         <module>spring-boot-properties-3</module> <!-- failing after upgrading to spring boot 3.2.x -->
         <module>spring-boot-properties-4</module>
         <module>spring-boot-properties-migrator-demo</module>
-        <module>spring-boot-aws</module> <!-- This project is Spring Boot 2 and cannot be updated -->
+        <module>spring-boot-aws</module>
         <module>spring-boot-keycloak-adapters</module>
         <module>spring-boot-mvc-legacy</module>
         <module>spring-boot-springdoc-2</module>
