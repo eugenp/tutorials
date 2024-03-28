@@ -1,14 +1,13 @@
-package com.baeldung.storedprocedure.controller;
+package com.baeldung.spring.data.persistence.storedprocedure.controller;
 
-import java.util.List;
-
+import com.baeldung.spring.data.persistence.storedprocedure.entity.Car;
+import com.baeldung.spring.data.persistence.storedprocedure.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.baeldung.storedprocedure.entity.Car;
-import com.baeldung.storedprocedure.service.CarService;
+import java.util.List;
 
 @RestController
 public class CarController {
