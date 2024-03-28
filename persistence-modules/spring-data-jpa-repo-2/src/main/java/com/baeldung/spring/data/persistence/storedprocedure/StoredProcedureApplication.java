@@ -1,4 +1,4 @@
-package com.baeldung.storedprocedure;
+package com.baeldung.spring.data.persistence.storedprocedure;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

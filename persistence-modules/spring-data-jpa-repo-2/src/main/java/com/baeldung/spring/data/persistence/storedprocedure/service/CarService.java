@@ -1,12 +1,11 @@
-package com.baeldung.storedprocedure.service;
+package com.baeldung.spring.data.persistence.storedprocedure.service;
 
-import java.util.List;
-
+import com.baeldung.spring.data.persistence.storedprocedure.entity.Car;
+import com.baeldung.spring.data.persistence.storedprocedure.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.baeldung.storedprocedure.entity.Car;
-import com.baeldung.storedprocedure.repository.CarRepository;
+import java.util.List;
 
 @Service
 public class CarService {
