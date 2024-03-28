@@ -835,6 +835,7 @@
                 <module>spring-reactive-modules</module>
                 <module>spring-remoting-modules</module> <!-- Upgrade to Boot 3 not possible as since Spring 6 the remoting modules has been removed from Spring. -->
                 <module>spring-scheduling</module>
+                <module>spring-scheduling-2</module>
                 <module>spring-security-modules</module>
                 <module>spring-shell</module>
                 <module>spring-soap</module>
@@ -1083,6 +1084,7 @@
                 <module>spring-reactive-modules</module>
                 <module>spring-remoting-modules</module> <!-- Upgrade to Boot 3 not possible as since Spring 6 the remoting modules has been removed from Spring. -->
                 <module>spring-scheduling</module>
+                <module>spring-scheduling-2</module>
                 <module>spring-security-modules</module>
                 <module>spring-shell</module>
                 <module>spring-soap</module>
