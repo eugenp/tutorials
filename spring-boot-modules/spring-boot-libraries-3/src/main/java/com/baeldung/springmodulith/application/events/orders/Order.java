@@ -5,8 +5,8 @@ import java.util.List;
 
 record Order(String id, String customerId, List<String> productIds, Instant timestamp) {
 
-	public Order(String customerId, List<String> productIds) {
-		this(null, customerId, productIds, Instant.now());
-	}
+    public Order(String customerId, List<String> productIds) {
+        this(null, customerId, productIds, Instant.now());
+    }
 
 }
