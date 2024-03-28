@@ -118,6 +118,9 @@
                         <exclude>**/JdbcTest.java</exclude>
                         <exclude>**/*LiveTest.java</exclude>
                     </excludes>
+                    <systemPropertyVariables>
+                        <logback.configurationFile>${tutorialsproject.basedir}/${logback.configurationFileName}</logback.configurationFile>
+                    </systemPropertyVariables>
                 </configuration>
                 <dependencies>
                     <dependency>
@@ -318,9 +321,6 @@
                                 <exclude>**/JdbcTest.java</exclude>
                                 <exclude>**/*LiveTest.java</exclude>
                             </excludes>
-                            <systemPropertyVariables>
-                                <logback.configurationFile>${tutorialsproject.basedir}/logback-config.xml</logback.configurationFile>
-                            </systemPropertyVariables>
                         </configuration>
                     </plugin>
 
@@ -388,9 +388,6 @@
                                 <exclude>**/*JdbcTest.java</exclude>
                                 <exclude>**/*LiveTest.java</exclude>
                             </excludes>
-                            <systemPropertyVariables>
-                                <logback.configurationFile>${tutorialsproject.basedir}/logback-config.xml</logback.configurationFile>
-                            </systemPropertyVariables>
                         </configuration>
                     </plugin>
 
@@ -471,9 +468,6 @@
                                 <include>**/*IntegrationTest.java</include>
                                 <include>**/*IntTest.java</include>
                             </includes>
-                            <systemPropertyVariables>
-                                <logback.configurationFile>${tutorialsproject.basedir}/logback-config.xml</logback.configurationFile>
-                            </systemPropertyVariables>
                         </configuration>
                     </plugin>
                 </plugins>
@@ -530,9 +524,6 @@
                                 <include>**/*IntegrationTest.java</include>
                                 <include>**/*IntTest.java</include>
                             </includes>
-                            <systemPropertyVariables>
-                                <logback.configurationFile>${tutorialsproject.basedir}/logback-config.xml</logback.configurationFile>
-                            </systemPropertyVariables>
                         </configuration>
                     </plugin>
                 </plugins>
@@ -1198,6 +1189,8 @@
         <h2.version>2.1.214</h2.version>
         <guava.version>33.0.0-jre</guava.version>
         <maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
+
+        <logback.configurationFileName>logback-config-global.xml</logback.configurationFileName>
     </properties>
 
 </project>
