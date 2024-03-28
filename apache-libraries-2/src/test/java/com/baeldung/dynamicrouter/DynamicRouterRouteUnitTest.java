@@ -1,4 +1,4 @@
-package dynamicrouter;
+package com.baeldung.dynamicrouter;
 
 import com.baeldung.dynamicrouter.DynamicRouterRoute;
 import org.apache.camel.RoutesBuilder;

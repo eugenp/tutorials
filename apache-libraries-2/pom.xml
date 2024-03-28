@@ -35,11 +35,16 @@
             <artifactId>camel-main</artifactId>
             <version>${camel.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-jackson</artifactId>
+            <version>${camel.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <javax.validation.validation-api.version>2.0.1.Final</javax.validation.validation-api.version>
-        <camel.version>4.3.0</camel.version>
+        <camel.version>4.4.1</camel.version>
     </properties>
 
 </project>
