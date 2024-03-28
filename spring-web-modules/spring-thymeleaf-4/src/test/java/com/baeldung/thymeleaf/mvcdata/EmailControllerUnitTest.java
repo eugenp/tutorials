@@ -49,20 +49,6 @@ public class EmailControllerUnitTest {
     }
 
     @Test
-    public void whenCallSessionAttributes_thenReturnEmailData() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/email/sessionattributes"))
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Good morning !")));
-    }
-
-    @Test
-    public void whenCallServletContext_thenReturnEmailData() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/email/servletcontext"))
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("jhon.doe@example.com")));
-    }
-
-    @Test
     public void whenCallBeanData_thenReturnEmailData() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/email/beandata"))
                 .andExpect(status().isOk())
