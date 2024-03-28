@@ -10,9 +10,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-2</relativePath>
+        <relativePath>../parent-boot-3</relativePath>
     </parent>
 
     <dependencyManagement>
@@ -90,12 +90,22 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <parameters>true</parameters>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
     <properties>
         <mockwebserver.version>5.0.0-alpha.12</mockwebserver.version>
         <kotlin-stdlib.version>2.0.0-Beta4</kotlin-stdlib.version>
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
+        <spring-boot.version>3.2.2</spring-boot.version>
+        <junit-jupiter.version>5.10.2</junit-jupiter.version>
     </properties>
 
 </project>
