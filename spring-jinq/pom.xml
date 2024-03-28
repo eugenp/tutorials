@@ -38,7 +38,6 @@
         <dependency>
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>${hibernate-core.version}</version>
         </dependency>
         <!-- Testing -->
         <dependency>
@@ -65,7 +64,6 @@
     <properties>
         <jinq.version>2.0.1</jinq.version>
         <hibernate-core.version>6.4.2.Final</hibernate-core.version>
-        <spring-boot.version>3.1.5</spring-boot.version>
     </properties>
 
 </project>

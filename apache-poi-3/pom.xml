@@ -24,50 +24,41 @@
             <artifactId>poi-scratchpad</artifactId>
             <version>${poi.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.github.ozlerhakan/poiji -->
         <dependency>
             <groupId>com.github.ozlerhakan</groupId>
             <artifactId>poiji</artifactId>
             <version>${poiji.version}</version>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.apache.poi/poi/5.2.3 -->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
             <version>${poi.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml-schemas/4.1.2 -->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml-schemas</artifactId>
-            <version>4.1.2</version>
+            <version>${poi-ooxml-schemas.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.xmlbeans/xmlbeans/5.1.1 -->
         <dependency>
             <groupId>org.apache.xmlbeans</groupId>
             <artifactId>xmlbeans</artifactId>
-            <version>5.1.1</version>
+            <version>${xmlbeans.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-collections4 -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>
-            <version>4.4</version>
+            <version>${commons-collections4.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.dhatim/fastexcel/0.15.7 -->
         <dependency>
             <groupId>org.dhatim</groupId>
             <artifactId>fastexcel</artifactId>
             <version>${fastexcel.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.dhatim/fastexcel-reader/0.15.7 -->
         <dependency>
             <groupId>org.dhatim</groupId>
             <artifactId>fastexcel-reader</artifactId>
             <version>${fastexcel.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/net.sourceforge.jexcelapi/jxl/2.6.12 -->
         <dependency>
             <groupId>net.sourceforge.jexcelapi</groupId>
             <artifactId>jxl</artifactId>
@@ -77,8 +68,11 @@
 
     <properties>
         <poi.version>5.2.5</poi.version>
-        <poiji.version>4.1.1</poiji.version>
-        <fastexcel.version>0.15.7</fastexcel.version>
+        <poi-ooxml-schemas.version>4.1.2</poi-ooxml-schemas.version>
+        <poiji.version>4.2.0</poiji.version>
+        <xmlbeans.version>5.2.0</xmlbeans.version>
+        <commons-collections4.version>4.4</commons-collections4.version>
+        <fastexcel.version>0.17.0</fastexcel.version>
         <jxl.version>2.6.12</jxl.version>
     </properties>
 

@@ -8,10 +8,9 @@
     <description>Demo project for Spring Boot 3 Observation</description>
 
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-3</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-3</relativePath>
+        <groupId>com.baeldung.spring-boot-modules</groupId>
+        <artifactId>spring-boot-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <dependencies>
@@ -109,6 +108,7 @@
     <properties>
         <start-class>com.baeldung.samples.SimpleObservationApplication</start-class>
         <p6spy-spring-boot-starter.version>1.9.0</p6spy-spring-boot-starter.version>
+        <java.version>17</java.version>
     </properties>
 
 </project>

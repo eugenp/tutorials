@@ -114,7 +114,7 @@
     </profiles>
 
     <properties>
-        <json.version>20180130</json.version>
+        <json.version>20240303</json.version>
         <logback.contrib.version>0.1.5</logback.contrib.version>
         <docx4j.version>3.3.5</docx4j.version>
         <angus.mail.version>2.0.1</angus.mail.version>

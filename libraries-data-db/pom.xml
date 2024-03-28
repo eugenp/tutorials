@@ -121,7 +121,6 @@
             <artifactId>flexy-micrometer-metrics</artifactId>
             <version>${flexy-pool.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.vladmihalcea.flexy-pool</groupId>
             <artifactId>flexy-hikaricp</artifactId>

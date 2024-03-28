@@ -28,12 +28,14 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-maven-plugin.version}</version>
             </plugin>
         </plugins>
     </build>
 
     <properties>
         <tensorflow.version>1.12.0</tensorflow.version>
+        <spring-maven-plugin.version>3.2.2</spring-maven-plugin.version>
     </properties>
 
 </project>

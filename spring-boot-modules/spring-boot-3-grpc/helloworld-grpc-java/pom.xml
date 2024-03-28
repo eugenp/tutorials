@@ -79,11 +79,12 @@
     </build>
 
     <properties>
-        <io.grpc.version>1.58.0</io.grpc.version>
+        <io.grpc.version>1.62.2</io.grpc.version>
         <protoc.version>3.25.1</protoc.version>
         <os-maven-plugin.version>1.7.1</os-maven-plugin.version>
         <protobuf-maven-plugin.version>0.6.1</protobuf-maven-plugin.version>
         <annotation-api.version>1.3.2</annotation-api.version>
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
     </properties>
 
 </project>

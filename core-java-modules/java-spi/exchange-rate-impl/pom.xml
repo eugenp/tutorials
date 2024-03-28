@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>exchange-rate-impl</artifactId>
     <groupId>com.baeldung</groupId>
-    <name>exchange-rate-impl</name>
     <packaging>jar</packaging>
+    <name>exchange-rate-impl</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -66,7 +66,7 @@
 
     <properties>
         <exchange-rate-api.version>1.0.0-SNAPSHOT</exchange-rate-api.version>
-        <okhttp.version>4.12.0</okhttp.version>
+        <okhttp.version>5.0.0-alpha.12</okhttp.version>
         <javax.json.bind-api.version>1.0</javax.json.bind-api.version>
         <yasson.version>1.0.1</yasson.version>
         <javax.json.version>1.1.2</javax.json.version>

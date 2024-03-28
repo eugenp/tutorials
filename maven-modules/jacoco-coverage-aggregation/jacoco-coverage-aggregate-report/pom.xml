@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.jacoco-coverage-aggregation</groupId>
     <artifactId>jacoco-coverage-aggregate-report</artifactId>
-    <name>jacoco-coverage-aggregate-report</name>
     <packaging>pom</packaging>
+    <name>jacoco-coverage-aggregate-report</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -17,12 +17,12 @@
     <dependencies>
         <dependency>
             <groupId>com.baeldung.jacoco-coverage-aggregation</groupId>
-            <artifactId>services</artifactId>
+            <artifactId>jacoco-coverage-services-example</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
         <dependency>
             <groupId>com.baeldung.jacoco-coverage-aggregation</groupId>
-            <artifactId>controllers</artifactId>
+            <artifactId>jacoco-coverage-controllers-example</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
     </dependencies>

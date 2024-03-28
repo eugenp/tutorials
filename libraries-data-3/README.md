@@ -12,4 +12,5 @@ This module contains articles about libraries for data processing in Java.
 - [Introduction to Eclipse Collections](https://www.baeldung.com/eclipse-collections)
 - [Introduction to Caffeine](https://www.baeldung.com/java-caching-caffeine)
 - [Guide to Using ModelMapper](https://www.baeldung.com/java-modelmapper)
+- [A Guide to Mapping With Dozer](https://www.baeldung.com/dozer)
 - More articles: [[<-- prev]](/../libraries-data-2)

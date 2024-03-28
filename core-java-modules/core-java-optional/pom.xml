@@ -4,8 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-optional</artifactId>
-    <name>core-java-optional</name>
     <packaging>jar</packaging>
+    <name>core-java-optional</name>
 
     <parent>
         <groupId>com.baeldung.core-java-modules</groupId>
@@ -54,7 +54,7 @@
 
     <properties>
         <hibernate.core.version>6.4.2.Final</hibernate.core.version>
-        <json-path.version>5.3.2</json-path.version>
+        <json-path.version>5.4.0</json-path.version>
     </properties>
 
 </project>

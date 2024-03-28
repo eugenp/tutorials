@@ -1,10 +1,8 @@
 package com.baeldung.students;
 
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,14 +14,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.baeldung.students.StudentService;
-
 @RestController
 @RequestMapping("/students")
 public class StudentController {
 
-    @Autowired
-    private StudentService service;
+    private final StudentService service;
+
+    public StudentController(StudentService service) {
+        this.service = service;
+    }
 
     @GetMapping("/")
     public List<Student> read() {
@@ -31,7 +30,7 @@ public class StudentController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Student> read(@PathVariable("id") Long id) {
+    public ResponseEntity<Student> read(@PathVariable(name = "id") Long id) {
         Student foundStudent = service.read(id);
         if (foundStudent == null) {
             return ResponseEntity.notFound().build();
@@ -41,7 +40,7 @@ public class StudentController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<Student> create(@RequestBody Student student) throws URISyntaxException {
+    public ResponseEntity<Student> create(@RequestBody Student student) {
         Student createdStudent = service.create(student);
 
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
@@ -55,7 +54,7 @@ public class StudentController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Student> update(@RequestBody Student student, @PathVariable Long id) {
+    public ResponseEntity<Student> update(@RequestBody Student student, @PathVariable(name = "id") Long id) {
         Student updatedStudent = service.update(id, student);
         if (updatedStudent == null) {
             return ResponseEntity.notFound().build();
@@ -65,10 +64,9 @@ public class StudentController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Object> deleteStudent(@PathVariable Long id) {
+    public ResponseEntity<Object> deleteStudent(@PathVariable(name = "id") Long id) {
         service.delete(id);
 
         return ResponseEntity.noContent().build();
     }
-
 }

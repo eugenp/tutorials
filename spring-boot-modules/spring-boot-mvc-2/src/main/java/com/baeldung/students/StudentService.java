@@ -19,7 +19,7 @@ public class StudentService {
                 new Student(2, "Sebastian","Bach"),
                 new Student(3, "Pablo","Picasso"),
         }).stream()
-        .collect(Collectors.toConcurrentMap(s -> s.getId(), Function.identity()));
+        .collect(Collectors.toConcurrentMap(Student::getId, Function.identity()));
     
     // DB id sequence mock
     private AtomicLong sequence = new AtomicLong(3);

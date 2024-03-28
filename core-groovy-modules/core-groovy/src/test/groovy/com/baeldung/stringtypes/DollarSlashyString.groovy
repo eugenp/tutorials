@@ -2,6 +2,8 @@ package groovy.com.baeldung.stringtypes
 
 import org.junit.Test
 
+import static org.junit.Assert.assertFalse
+
 class DollarSlashyString {
 
     @Test
@@ -19,6 +21,7 @@ class DollarSlashyString {
             - $/$$
         /$
 
-        print(dollarSlashy)
+        //print(dollarSlashy)
+        assertFalse(dollarSlashy.isEmpty())
     }
 }
