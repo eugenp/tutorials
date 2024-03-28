@@ -13,7 +13,6 @@ public class FileCopierCamelRoute extends RouteBuilder {
     public void configure() {
         from("file:data/inbox?noop=true").log("We got an incoming file ${file:name} containing: ${body}")
             .to("log:com.baeldung.apachecamellogging?level=INFO")
-
             .process(process -> {
                 LOGGER.info("We are passing the message to a FileProcesor bean to capitalize the message body");
             })
@@ -21,6 +20,6 @@ public class FileCopierCamelRoute extends RouteBuilder {
             .to("file:data/outbox")
             .to("log:com.baeldung.apachecamellogging?showBodyType=false&maxChars=20")
             .log(LoggingLevel.DEBUG, "Output Process", "The Process ${id}")
-            .log("Successlly transfer file: ${file:name}");
+            .log("Successfully transfer file: ${file:name}");
     }
 }
