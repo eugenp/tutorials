@@ -1,4 +1,4 @@
-package com.baeldung.jpa.query;
+package com.baeldung.jpa.query.model;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -106,9 +106,7 @@ public class User {
 
     @Override
     public String toString() {
-        final StringBuilder builder = new StringBuilder();
-        builder.append("User [name=").append(name).append(", id=").append(id).append("]");
-        return builder.toString();
+        return "User [name=" + name + ", id=" + id + "]";
     }
 
     @Override
