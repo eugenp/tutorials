@@ -28,12 +28,10 @@ public class BookReviewsLogicUnitTest {
     public void givenCacheEnabled_whenLogicExecuted2ndTime_thenItDoesntQueriesDB(CapturedOutput output){
         BookReview bookReview = insertBookReview();
 
-        String target = "Hibernate: select bookreview0_.reviews_id as reviews_1_0_, "
-            + "bookreview0_.book_rating as book_rat2_0_, "
-            + "bookreview0_.isbn as isbn3_0_, "
-            + "bookreview0_.user_id as user_id4_0_ "
-            + "from book_reviews bookreview0_ "
-            + "where bookreview0_.isbn=?";
+        String target = "Hibernate: select b1_0.reviews_id,"
+            + "b1_0.book_rating,b1_0.isbn,b1_0.user_id "
+            + "from book_reviews b1_0 "
+            + "where b1_0.isbn=?";
 
         // 1st execution
         bookReviewsLogic.getBooksByIsbn(bookReview.getIsbn());

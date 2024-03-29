@@ -1,10 +1,8 @@
 package com.baeldung.caching.disable;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 import java.util.Objects;
-
-import javax.persistence.Entity;
 
 @Entity
 @Table(name = "BOOK_REVIEWS")
