@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class DemoService {
 
-    private final Logger LOG = LoggerFactory.getLogger(DemoService.class);
+    private static final Logger LOG = LoggerFactory.getLogger(DemoService.class);
 
     public void log() {
         LOG.info("DemoService.log invoked");
