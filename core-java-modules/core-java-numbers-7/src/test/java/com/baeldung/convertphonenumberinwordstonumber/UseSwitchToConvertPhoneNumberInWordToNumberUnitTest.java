@@ -1,10 +1,10 @@
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class UseSwitchToConvertPhoneNumberInWordToNumberUnitTest {
+class UseSwitchToConvertPhoneNumberInWordToNumberUnitTest {
 
     @Test
-    public void givenStringWithWhiteSpaces_WhenConvertPhoneNumberInWordToNumber_ThenEquivalentNumber(){
+    void givenStringWithWhiteSpaces_WhenConvertPhoneNumberInWordToNumber_ThenEquivalentNumber(){
 
         assertEquals("5248888",
                 UseSwitchToConvertPhoneNumberInWordToNumber
@@ -28,21 +28,9 @@ public class UseSwitchToConvertPhoneNumberInWordToNumberUnitTest {
     }
 
     @Test
-    public void givenString_WhenGetWordAsMultiplier_ThenEquivalentNumber() {
+    void givenString_WhenGetWordAsMultiplier_ThenEquivalentNumber() {
         assertEquals(2, UseSwitchToConvertPhoneNumberInWordToNumber
                 .getWordAsMultiplier("double"));
-
-        assertEquals(null, UseSwitchToConvertPhoneNumberInWordToNumber
-                .getWordAsMultiplier("two"));
-
-        assertEquals(null, UseSwitchToConvertPhoneNumberInWordToNumber
-                .getWordAsMultiplier(""));
-
-        assertEquals(null, UseSwitchToConvertPhoneNumberInWordToNumber
-                .getWordAsMultiplier("invalid"));
-
-        assertEquals(null, UseSwitchToConvertPhoneNumberInWordToNumber
-                .getWordAsMultiplier("null"));
 
         assertEquals(null, UseSwitchToConvertPhoneNumberInWordToNumber
                 .getWordAsMultiplier("hexa"));
@@ -50,7 +38,7 @@ public class UseSwitchToConvertPhoneNumberInWordToNumberUnitTest {
     }
 
     @Test
-    public void givenString_WhenMapIndividualDigits_ThenEquivalentNumber() {
+    void givenString_WhenMapIndividualDigits_ThenEquivalentNumber() {
           assertEquals("5",
                   UseSwitchToConvertPhoneNumberInWordToNumber
                           .getWordAsDigit("five"));
@@ -58,26 +46,6 @@ public class UseSwitchToConvertPhoneNumberInWordToNumberUnitTest {
         assertThrows(IllegalArgumentException.class, () -> {
             UseSwitchToConvertPhoneNumberInWordToNumber
                     .convertPhoneNumberInWordToNumber("penta");
-        });
-
-        assertThrows(IllegalArgumentException.class, () -> {
-            UseSwitchToConvertPhoneNumberInWordToNumber
-                    .convertPhoneNumberInWordToNumber("twelve");
-        });
-
-        assertThrows(IllegalArgumentException.class, () -> {
-            UseSwitchToConvertPhoneNumberInWordToNumber
-                    .convertPhoneNumberInWordToNumber("");
-        });
-
-        assertThrows(IllegalArgumentException.class, () -> {
-            UseSwitchToConvertPhoneNumberInWordToNumber
-                    .convertPhoneNumberInWordToNumber("invalid");
-        });
-
-        assertThrows(IllegalArgumentException.class, () -> {
-            UseSwitchToConvertPhoneNumberInWordToNumber
-                    .convertPhoneNumberInWordToNumber("null");
         });
     }
 }

@@ -1,18 +1,29 @@
-import java.util.HashMap;
 import java.util.Map;
 
 public class UseHashMapToConvertPhoneNumberInWordsToNumber {
-    public static String convertPhoneNumberInWordToNumber(String phoneNumberInWord) {
+    private static Map<String, Integer> multipliers = Map.of("double",2,
+            "triple", 3,
+            "quadruple", 4);
+    private static Map<String, String> digits = Map.of("zero","1",
+            "one", "1",
+            "two", "2",
+            "three", "3",
+            "four", "4",
+            "five", "5",
+            "six", "6",
+            "seven", "7",
+            "eight", "8",
+            "nine", "9");
 
-        Map<String, Integer> mulpliers = getWordAsMultiplier();
-        Map<String, String> digits = getWordAsDigit();
+
+    public static String convertPhoneNumberInWordToNumber(String phoneNumberInWord) {
 
         StringBuilder output = new StringBuilder();
         Integer currentMultiplier = null;
         String[] words = phoneNumberInWord.split(" ");
 
         for (String word : words) {
-            Integer multiplier = mulpliers.get(word);
+            Integer multiplier = multipliers.get(word);
             if (multiplier != null) {
                 if (currentMultiplier != null) {
                     throw new IllegalArgumentException("Cannot have consecutive multipliers, at: " + word);
@@ -28,35 +39,6 @@ public class UseHashMapToConvertPhoneNumberInWordsToNumber {
                 }
             }
         }
-
         return output.toString();
-    }
-
-    public static Map<String, Integer> getWordAsMultiplier() {
-        Map<String, Integer> multiplier = new HashMap<>();
-
-        multiplier.put("double", 2);
-        multiplier.put("triple", 3);
-        multiplier.put("quadruple", 4);
-
-        return multiplier;
-    }
-
-
-    public static Map<String, String> getWordAsDigit() {
-        Map<String, String> digits = new HashMap<>();
-
-        digits.put("zero", "0");
-        digits.put("one", "1");
-        digits.put("two", "2");
-        digits.put("three", "3");
-        digits.put("four", "4");
-        digits.put("five", "5");
-        digits.put("six", "6");
-        digits.put("seven", "7");
-        digits.put("eight", "8");
-        digits.put("nine", "9");
-
-        return digits;
     }
 }
