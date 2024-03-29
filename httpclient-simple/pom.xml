@@ -4,8 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>httpclient-simple</artifactId>
-    <name>httpclient-simple</name>
     <packaging>war</packaging>
+    <name>httpclient-simple</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -117,12 +117,7 @@
             <version>${jstl.version}</version>
             <scope>runtime</scope>
         </dependency>
-        <!-- util -->
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-        </dependency>
+
     </dependencies>
 
     <build>

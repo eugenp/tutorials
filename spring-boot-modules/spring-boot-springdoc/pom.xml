@@ -119,10 +119,11 @@
     </build>
 
     <properties>
-        <springdoc.version>1.7.0</springdoc.version>
-        <asciidoctor-plugin.version>1.5.6</asciidoctor-plugin.version>
+        <springdoc.version>1.8.0</springdoc.version>
+        <asciidoctor-plugin.version>2.2.6</asciidoctor-plugin.version>
         <snippetsDirectory>${project.build.directory}/generated-snippets</snippetsDirectory>
         <springdoc-openapi-maven-plugin.version>1.4</springdoc-openapi-maven-plugin.version>
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
     </properties>
 
 </project>

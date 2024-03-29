@@ -1,0 +1,55 @@
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+  <changeSet id="4" author="Mikhail Polivakha">
+    <createTable tableName="system_settings">
+      <column name="id" type="bigserial" autoIncrement="true">
+        <constraints primaryKey="true" nullable="false"/>
+      </column>
+      <column name="attr_key" type="text">
+        <constraints nullable="false"/>
+      </column>
+      <column name="val" type="text">
+        <constraints nullable="false"/>
+      </column>
+      <column name="type" type="text">
+        <constraints nullable="false"/>
+      </column>
+      <column name="active" type="boolean">
+        <constraints nullable="false"/>
+      </column>
+      <column name="created_at" type="timestamptz">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+
+    <insert tableName="system_settings">
+      <column name="id">1</column>
+      <column name="attr_key">splitting.enabled</column>
+      <column name="val">true</column>
+      <column name="active">true</column>
+      <column name="type">SYSTEM</column>
+      <column name="created_at" valueComputed="NOW()"/>
+    </insert>
+
+    <insert tableName="system_settings">
+      <column name="id">2</column>
+      <column name="attr_key">splitting.enabled</column>
+      <column name="val">false</column>
+      <column name="active">false</column>
+      <column name="type">SYSTEM</column>
+      <column name="created_at" valueComputed="NOW()"/>
+    </insert>
+
+    <insert tableName="system_settings">
+      <column name="id">3</column>
+      <column name="attr_key">redelivery.enabled</column>
+      <column name="val">false</column>
+      <column name="active">true</column>
+      <column name="type">ORDER</column>
+      <column name="created_at" valueComputed="NOW()"/>
+    </insert>
+  </changeSet>
+</databaseChangeLog>

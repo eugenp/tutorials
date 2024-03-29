@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>libraries-reporting</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>libraries-reporting</name>
     <packaging>jar</packaging>
+    <name>libraries-reporting</name>
 
     <parent>
         <groupId>com.baeldung</groupId>

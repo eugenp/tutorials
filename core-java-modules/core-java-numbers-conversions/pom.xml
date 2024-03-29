@@ -3,8 +3,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-conversions.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-numbers-conversions</artifactId>
-    <name>core-java-numbers-conversions</name>
     <packaging>jar</packaging>
+    <name>core-java-numbers-conversions</name>
 
     <parent>
         <groupId>com.baeldung.core-java-modules</groupId>

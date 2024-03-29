@@ -6,9 +6,9 @@
     <groupId>com.baelduung</groupId>
     <artifactId>lightrun</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
     <name>lightrun</name>
     <description>Services for LightRun Article</description>
-    <packaging>pom</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>

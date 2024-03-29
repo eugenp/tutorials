@@ -1,0 +1,62 @@
+@startuml
+hide empty attributes
+skinparam Handwritten false
+skinparam ClassBorderColor black
+skinparam BackgroundColor #fffce8/#f8f9fa
+skinparam class {
+ ArrowColor SeaGreen
+ BackgroundColor #fffce8
+}
+
+interface CommandLineParser {
+  +parse():CommandLine
+}
+class CommandLine {
+  +getOptionValue():String
+  +hasOption():boolean
+}
+class DefaultParser {
+  +parse():CommandLine
+}
+
+class OptionGroup {
+  +addOption():OptionGroup
+}
+class Options {
+  +addOptions():Options
+  +addOptionGroup():Options
+  +hasOption():boolean
+}
+
+class Option {
+  +Option.Builder
+}
+
+
+class HelpFormatter {
+  +printHelp()
+}
+
+class MissingOptionException
+class MissingArgumentException
+class UnrecognizedOptionException
+class AlreadySelectedException
+class ParseException
+
+HelpFormatter -down-> Options:uses
+Options -right-> Option:uses
+Options -up-> OptionGroup:uses
+OptionGroup -down-> Option:uses
+
+CommandLineParser -up-> Options:uses
+DefaultParser -up-|> CommandLineParser:implements
+
+ParseException <|-up- AlreadySelectedException:implements
+ParseException <|-up- MissingOptionException:implements
+ParseException <|-down- MissingArgumentException:implements
+ParseException <|-down- UnrecognizedOptionException:implements
+
+CommandLineParser -left-> ParseException:throws
+CommandLineParser -right-> CommandLine:creates
+
+@enduml

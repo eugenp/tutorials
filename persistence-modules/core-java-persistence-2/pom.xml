@@ -87,7 +87,7 @@
         <oracle.driver.version>10.2.0.4.0</oracle.driver.version>
         <mysql.driver.version>8.2.0</mysql.driver.version>
         <jooq.version>3.11.11</jooq.version>
-        <json.version>20220320</json.version>
+        <json.version>20240303</json.version>
         <microstream.storage.version>07.00.00-MS-GA</microstream.storage.version>
         <h2.version>2.1.214</h2.version>
         <spring-jdbc.version>5.3.29</spring-jdbc.version>

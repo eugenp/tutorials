@@ -539,12 +539,6 @@
             </build>
 
             <modules>
-                <module>parent-boot-1</module>
-                <module>parent-boot-2</module>
-                <module>parent-spring-4</module>
-                <module>parent-spring-5</module>
-                <module>parent-spring-6</module>
-                
                 <module>spring-4</module>
 
                 <module>spring-cloud-modules</module>
@@ -586,12 +580,6 @@
             </build>
 
             <modules>
-                <module>parent-boot-1</module>
-                <module>parent-boot-2</module>
-                <module>parent-spring-4</module>
-                <module>parent-spring-5</module>
-                <module>parent-spring-6</module>
-
                 <module>apache-spark</module>
                 <module>jhipster-modules</module>
                 <module>spring-cloud-modules/spring-cloud-azure</module>
@@ -672,6 +660,7 @@
                 <module>apache-httpclient4</module>
                 <module>apache-httpclient</module>
                 <module>apache-kafka-2</module>
+                <module>apache-kafka-3</module>
                 <module>apache-kafka</module>
                 <module>apache-libraries-2</module>
                 <module>apache-libraries</module>
@@ -694,7 +683,6 @@
                 <module>di-modules</module>
                 <module>disruptor</module>
                 <module>docker-modules</module>
-                <module>dozer</module>
                 <module>drools</module>
                 <module>dubbo</module>
                 <module>feign</module>
@@ -767,7 +755,7 @@
                 <module>lombok-modules</module>
                 <module>lucene</module>
                 <module>mapstruct</module>
-                <!--<module>maven-modules</module>--> <!-- failing after upgrading to jdk17-->
+                <module>maven-modules</module>
                 <module>mesos-marathon</module>
                 <module>messaging-modules</module>
                 <module>metrics</module>
@@ -817,6 +805,7 @@
                 <module>spring-cloud-modules/spring-cloud-security</module>
                 <!--<module>spring-cloud-modules/spring-cloud-stream-starters</module>--><!-- failing after upgrading to jdk17-->
                 <module>spring-cloud-modules/spring-cloud-zuul-eureka-integration</module>
+                <module>spring-cloud-modules/spring-cloud-bootstrap</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
                 <module>spring-core-4</module>
@@ -837,14 +826,14 @@
                 <module>spring-kafka-2</module>
                 <module>spring-kafka-3</module>
                 <module>spring-kafka</module>
-                <module>spring-katharsis</module>
+                <module>spring-katharsis</module> <!-- Upgrade to Boot 3 not possible as the project has not been upgraded to Support Jakarta dependencies-->
                 <module>spring-mobile</module>
                 <module>spring-native</module>
                 <module>spring-protobuf</module>
                 <module>spring-pulsar</module>
                 <module>spring-quartz</module>
                 <module>spring-reactive-modules</module>
-                <module>spring-remoting-modules</module>
+                <module>spring-remoting-modules</module> <!-- Upgrade to Boot 3 not possible as since Spring 6 the remoting modules has been removed from Spring. -->
                 <module>spring-scheduling</module>
                 <module>spring-security-modules</module>
                 <module>spring-shell</module>
@@ -918,6 +907,7 @@
                 <module>apache-httpclient4</module>
                 <module>apache-httpclient</module>
                 <module>apache-kafka-2</module>
+                <module>apache-kafka-3</module>
                 <module>apache-kafka</module>
                 <module>apache-libraries-2</module>
                 <module>apache-libraries</module>
@@ -940,7 +930,6 @@
                 <module>di-modules</module>
                 <module>disruptor</module>
                 <module>docker-modules</module>
-                <module>dozer</module>
                 <module>drools</module>
                 <module>dubbo</module>
                 <module>feign</module>
@@ -1014,7 +1003,7 @@
                 <module>lombok-modules</module>
                 <module>lucene</module>
                 <module>mapstruct</module>
-                <!--<module>maven-modules</module>--> <!-- failing after upgrading to jdk17-->
+                <module>maven-modules</module>
                 <module>mesos-marathon</module>
                 <module>messaging-modules</module>
                 <module>metrics</module>
@@ -1064,6 +1053,7 @@
                 <module>spring-cloud-modules/spring-cloud-security</module>
                 <!--<module>spring-cloud-modules/spring-cloud-stream-starters</module>--><!-- failing after upgrading to jdk17-->
                 <module>spring-cloud-modules/spring-cloud-zuul-eureka-integration</module>
+                <module>spring-cloud-modules/spring-cloud-bootstrap</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
                 <module>spring-core-4</module>
@@ -1084,14 +1074,14 @@
                 <module>spring-kafka-2</module>
                 <module>spring-kafka-3</module>                     
                 <module>spring-kafka</module>
-                <module>spring-katharsis</module>
+                <module>spring-katharsis</module> <!-- Upgrade to Boot 3 not possible as the project has not been upgraded to Support Jakarta dependencies-->
                 <module>spring-mobile</module>
                 <module>spring-native</module>
                 <module>spring-protobuf</module>
                 <module>spring-pulsar</module>
                 <module>spring-quartz</module>
                 <module>spring-reactive-modules</module>
-                <module>spring-remoting-modules</module>
+                <module>spring-remoting-modules</module> <!-- Upgrade to Boot 3 not possible as since Spring 6 the remoting modules has been removed from Spring. -->
                 <module>spring-scheduling</module>
                 <module>spring-security-modules</module>
                 <module>spring-shell</module>
@@ -1139,7 +1129,6 @@
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
             </modules>
-
         </profile>
     </profiles>
 

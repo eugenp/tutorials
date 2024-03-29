@@ -2,6 +2,7 @@ package com.baeldung.customfunc;
 
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -53,6 +54,11 @@ public class ProductRepositoryIntegrationTest {
     void whenCallGetSha256Hex_thenReturnCorrectHash() {
         var hashList = productRepository.getProductNameListInSha256Hex();
         assertThat(hashList.get(0)).isEqualTo(EXPECTED_HASH_HEX);
+    }
+    
+    @AfterEach
+    public void afterEach() {
+        productRepository.deleteAll();
     }
 
 }

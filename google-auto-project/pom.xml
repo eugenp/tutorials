@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>google-auto-project</artifactId>
     <version>1.0</version>
-    <name>google-auto-project</name>
     <packaging>pom</packaging>
+    <name>google-auto-project</name>
 
     <parent>
         <groupId>com.baeldung</groupId>

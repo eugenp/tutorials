@@ -1,9 +1,10 @@
 package com.baeldung.defaultglobalsecurityscheme.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema.RequiredMode;
 import java.time.OffsetDateTime;
 import java.util.Objects;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -33,7 +34,7 @@ public class PingResponseDto {
      * @return pong
     */
     @Valid
-    @Schema(name = "pong", required = false)
+    @Schema(name = "pong", requiredMode = RequiredMode.REQUIRED)
     public OffsetDateTime getPong() {
         return pong;
     }

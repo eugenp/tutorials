@@ -11,7 +11,8 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>spring-security-modules</artifactId>
+        <artifactId>parent-boot-3</artifactId>
+        <relativePath>../../parent-boot-3</relativePath>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
@@ -26,12 +27,7 @@
         </dependency>
         <dependency>
             <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-ui</artifactId>
-            <version>${springdoc.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-security</artifactId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
             <version>${springdoc.version}</version>
         </dependency>
         <dependency>
@@ -47,7 +43,8 @@
     </dependencies>
 
     <properties>
-        <springdoc.version>1.6.13</springdoc.version>
+        <springdoc.version>2.4.0</springdoc.version>
+        <start-class>com.baeldung.basicauth.SpringBootSpringdocBasicAuth</start-class>
     </properties>
 
 </project>
