@@ -1,4 +1,4 @@
-package com.baeldung.jpa.paginationsorting;
+package com.baeldung.jpa.paginationsorting.config;
 
 import java.util.HashMap;
 
