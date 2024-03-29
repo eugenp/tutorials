@@ -1,4 +1,4 @@
-package com.baeldung.storedprocedure.entity;
+package com.baeldung.spring.data.persistence.storedprocedure.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
