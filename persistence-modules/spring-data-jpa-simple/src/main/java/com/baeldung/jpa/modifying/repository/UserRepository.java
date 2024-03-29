@@ -1,4 +1,4 @@
-package com.baeldung.jpa.modifying.dao;
+package com.baeldung.jpa.modifying.repository;
 
 import java.time.LocalDate;
 import java.util.List;
