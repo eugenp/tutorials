@@ -25,19 +25,19 @@ public class UserControllerUnitTest {
         User user = new User(userId, "John Doe");
 
         Mockito.when(userService.getUser(userId))
-          .thenReturn(Mono.just(user));
+            .thenReturn(Mono.just(user));
         Mockito.when(emailService.sendEmail(userId))
-          .thenReturn(Mono.just(true));
+            .thenReturn(Mono.just(true));
         Mockito.when(databaseService.saveUserData(user))
-          .thenReturn(Mono.just(true));
+            .thenReturn(Mono.just(true));
 
         UserController userController = new UserController(userService, emailService, databaseService);
 
         Mono<ResponseEntity<String>> responseMono = userController.combineAllDataFor(userId);
 
         StepVerifier.create(responseMono)
-          .expectNextMatches(responseEntity -> responseEntity.getStatusCode() == HttpStatus.OK && responseEntity.getBody()
-            .equals("Response: " + user + ", Email Sent: true, Database Result: " + true))
-          .verifyComplete();
+            .expectNextMatches(responseEntity -> responseEntity.getStatusCode() == HttpStatus.OK && responseEntity.getBody()
+                .equals("Response: " + user + ", Email Sent: true, Database Result: " + true))
+            .verifyComplete();
     }
 }

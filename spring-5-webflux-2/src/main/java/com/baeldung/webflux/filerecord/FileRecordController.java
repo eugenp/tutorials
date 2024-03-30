@@ -1,11 +1,12 @@
 package com.baeldung.webflux.filerecord;
 
+import java.nio.file.Paths;
+
 import org.springframework.http.codec.multipart.FilePart;
 import org.springframework.web.bind.annotation.*;
+
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
-import java.nio.file.Paths;
 
 @RestController
 public class FileRecordController {
@@ -28,7 +29,7 @@ public class FileRecordController {
         FileRecord fileRecord = new FileRecord();
 
         return filePartFlux.flatMap(filePart -> filePart.transferTo(Paths.get(filePart.filename()))
-            .then(Mono.just(filePart.filename())))
+                .then(Mono.just(filePart.filename())))
             .collectList()
             .flatMap(filenames -> {
                 fileRecord.setFilenames(filenames);
