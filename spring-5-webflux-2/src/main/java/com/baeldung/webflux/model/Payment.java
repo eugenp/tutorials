@@ -1,5 +1,6 @@
 package com.baeldung.webflux.model;
 
+
 public class Payment {
     private final int amount;
 

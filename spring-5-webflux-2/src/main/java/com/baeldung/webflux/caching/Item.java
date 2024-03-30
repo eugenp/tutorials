@@ -41,6 +41,10 @@ public class Item {
 
     @Override
     public String toString() {
-        return "Item{" + "id='" + _id + '\'' + ", name='" + name + '\'' + ", price=" + price + '}';
+        return "Item{" +
+                "id='" + _id + '\'' +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                '}';
     }
 }
