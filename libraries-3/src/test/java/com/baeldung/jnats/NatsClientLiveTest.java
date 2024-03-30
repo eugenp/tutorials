@@ -3,6 +3,7 @@ package com.baeldung.jnats;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -151,41 +152,77 @@ public class NatsClientLiveTest {
     @Test
     public void whenMessagesAreExchangedViaPublish_thenResponsesMustBeReceivedWithSecondarySubscription() throws Exception {
         try (NatsClient client = connectClient()) {
-            Subscription replySideSubscription = client.subscribeSync("requestSubject");
-            Subscription publishSideSubscription = client.subscribeSync("replyToSubject");
-            client.publishMessageWithReply("requestSubject", "replyToSubject", "hello there");
+            Subscription replySideSubscription1 = client.subscribeSync("publishSubject");
+            Subscription replySideSubscription2 = client.subscribeSync("publishSubject");
 
-            Message message = replySideSubscription.nextMessage(TIMEOUT_MILLIS);
+            Subscription publishSideSubscription = client.subscribeSync("replyToSubject");
+            client.publishMessageWithReply("publishSubject", "replyToSubject", "Please respond!");
+
+            Message message = replySideSubscription1.nextMessage(TIMEOUT_MILLIS);
             assertNotNull(message, "No message!");
-            assertEquals("hello there", new String(message.getData()));
-            client.publishMessage(message.getReplyTo(), "hello back");
+            assertEquals("Please respond!", new String(message.getData()));
+            client.publishMessage(message.getReplyTo(), "Message Received By Subscription 1");
+
+            message = replySideSubscription2.nextMessage(TIMEOUT_MILLIS);
+            assertNotNull(message, "No message!");
+            assertEquals("Please respond!", new String(message.getData()));
+            client.publishMessage(message.getReplyTo(), "Message Received By Subscription 2");
+
+            int responsesFrom1 = 0;
+            int responsesFrom2 = 0;
+            message = publishSideSubscription.nextMessage(TIMEOUT_MILLIS);
+            assertNotNull(message, "No message!");
+            String response = new String(message.getData());
+            assertTrue(response.contains("Message Received"));
+            if (response.contains("1")) {
+                responsesFrom1++;
+            }
+            else if (response.contains("2")) {
+                responsesFrom2++;
+            }
 
             message = publishSideSubscription.nextMessage(TIMEOUT_MILLIS);
             assertNotNull(message, "No message!");
-            assertEquals("hello back", new String(message.getData()));
+            response = new String(message.getData());
+            assertTrue(response.contains("Message Received"));
+            if (response.contains("1")) {
+                responsesFrom1++;
+            }
+            else if (response.contains("2")) {
+                responsesFrom2++;
+            }
 
-            client.unsubscribe(replySideSubscription);
+            assertEquals(1, responsesFrom1);
+            assertEquals(1, responsesFrom2);
+
+            client.unsubscribe(replySideSubscription1);
             client.unsubscribe(publishSideSubscription);
         }
     }
 
     @Test
-    public void whenMessagesAreExchangedViaRequest_thenResponsesMustBeReceivedDirectly() throws Exception {
+    public void whenMessagesAreExchangedViaRequest_thenOnlyTheFirstResponseWillBeReceived() throws Exception {
         try (NatsClient client = connectClient()) {
-            Subscription replySideSubscription = client.subscribeSync("requestSubject");
+            Subscription replySideSubscription1 = client.subscribeSync("requestSubject");
+            Subscription replySideSubscription2 = client.subscribeSync("requestSubject");
 
-            CompletableFuture<Message> future = client.request("requestSubject", "hello there");
+            CompletableFuture<Message> future = client.request("requestSubject", "Please respond!");
 
-            Message message = replySideSubscription.nextMessage(TIMEOUT_MILLIS);
+            Message message = replySideSubscription1.nextMessage(TIMEOUT_MILLIS);
             assertNotNull(message, "No message!");
-            assertEquals("hello there", new String(message.getData()));
-            client.publishMessage(message.getReplyTo(), "hello back");
+            assertEquals("Please respond!", new String(message.getData()));
+            client.publishMessage(message.getReplyTo(), "Message Received From Subscription 1");
+
+            message = replySideSubscription2.nextMessage(TIMEOUT_MILLIS);
+            assertNotNull(message, "No message!");
+            assertEquals("Please respond!", new String(message.getData()));
+            client.publishMessage(message.getReplyTo(), "Message Received From Subscription 2");
 
             message = future.get(TIMEOUT_MILLIS, TimeUnit.MILLISECONDS);
             assertNotNull(message, "No message!");
-            assertEquals("hello back", new String(message.getData()));
+            assertEquals("Message Received From Subscription 1", new String(message.getData()));
 
-            client.unsubscribe(replySideSubscription);
+            client.unsubscribe(replySideSubscription1);
         }
     }
 
