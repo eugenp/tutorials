@@ -11,10 +11,10 @@ public class EmailService {
 
     public Mono<Boolean> sendEmail(String userId) {
         return userService.getUser(userId)
-            .flatMap(user -> {
-                System.out.println("Sending email to: " + user.getEmail());
-                return Mono.just(true);
-            })
-            .defaultIfEmpty(false);
+          .flatMap(user -> {
+              System.out.println("Sending email to: " + user.getEmail());
+              return Mono.just(true);
+          })
+          .defaultIfEmpty(false);
     }
 }

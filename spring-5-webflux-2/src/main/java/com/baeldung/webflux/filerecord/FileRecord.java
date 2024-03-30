@@ -1,8 +1,8 @@
 package com.baeldung.webflux.filerecord;
 
-import java.util.List;
-
 import org.springframework.data.annotation.Id;
+
+import java.util.List;
 
 public class FileRecord {
     @Id
