@@ -1,0 +1,24 @@
+package com.baeldung.webflux.exceptionhandeling.repository;
+
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
+import org.springframework.stereotype.Repository;
+
+import com.baeldung.webflux.zipwhen.model.User;
+
+import reactor.core.publisher.Mono;
+
+@Repository
+public class UserRepository {
+    private final Map<String, User> userDatabase = new ConcurrentHashMap<>();
+
+    public UserRepository() {
+        userDatabase.put("1", new User("1", "John Doe"));
+        userDatabase.put("2", new User("2", "Jane Smith"));
+    }
+
+    public Mono<User> findById(String id) {
+        return Mono.justOrEmpty(userDatabase.get(id));
+    }
+}
