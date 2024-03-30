@@ -16,7 +16,8 @@ public class ItemService {
 
     public ItemService(ItemRepository repository) {
         this.repository = repository;
-        this.cache = Caffeine.newBuilder().build(this::getItem_withCaffeine);
+        this.cache = Caffeine.newBuilder()
+            .build(this::getItem_withCaffeine);
     }
 
     @Cacheable("items")
@@ -30,11 +31,14 @@ public class ItemService {
 
     @Cacheable("items")
     public Mono<Item> getItem_withCache(String id) {
-        return repository.findById(id).cache();
+        return repository.findById(id)
+            .cache();
     }
 
     @Cacheable("items")
     public Mono<Item> getItem_withCaffeine(String id) {
-        return cache.asMap().computeIfAbsent(id, k -> repository.findById(id).cast(Item.class));
+        return cache.asMap()
+            .computeIfAbsent(id, k -> repository.findById(id)
+                .cast(Item.class));
     }
 }

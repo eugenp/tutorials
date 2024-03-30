@@ -28,16 +28,16 @@ public class UserController {
     public Mono<ResponseEntity<String>> combineAllDataFor(@PathVariable String userId) {
         Mono<User> userMono = userService.getUser(userId);
         Mono<Boolean> emailSentMono = emailService.sendEmail(userId)
-          .subscribeOn(Schedulers.parallel());
+            .subscribeOn(Schedulers.parallel());
         Mono<String> databaseResultMono = userMono.flatMap(user -> databaseService.saveUserData(user)
-          .map(Object::toString));
+            .map(Object::toString));
 
         return userMono.zipWhen(user -> emailSentMono, Tuples::of)
-          .zipWhen(tuple -> databaseResultMono, (tuple, databaseResult) -> {
-              User user = tuple.getT1();
-              Boolean emailSent = tuple.getT2();
-              return ResponseEntity.ok()
-                .body("Response: " + user + ", Email Sent: " + emailSent + ", Database Result: " + databaseResult);
-          });
+            .zipWhen(tuple -> databaseResultMono, (tuple, databaseResult) -> {
+                User user = tuple.getT1();
+                Boolean emailSent = tuple.getT2();
+                return ResponseEntity.ok()
+                    .body("Response: " + user + ", Email Sent: " + emailSent + ", Database Result: " + databaseResult);
+            });
     }
 }

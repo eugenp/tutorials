@@ -1,5 +1,6 @@
 package com.baeldung.webflux.caching;
 
+import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +13,9 @@ import org.testcontainers.utility.DockerImageName;
 
 import reactor.core.publisher.Mono;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 @SpringBootTest
 @ActiveProfiles("cache")
 public class MonoFluxResultCachingLiveTest {
-
 
     @Autowired
     ItemService itemService;
@@ -30,32 +28,34 @@ public class MonoFluxResultCachingLiveTest {
         registry.add("spring.data.mongodb.uri", mongoDBContainer::getReplicaSetUrl);
     }
 
-@Test
-public void givenItem_whenGetItemIsCalled_thenMonoIsCached() {
-    Mono<Item> glass = itemService.save(new Item("glass", 1.00));
+    @Test
+    public void givenItem_whenGetItemIsCalled_thenMonoIsCached() {
+        Mono<Item> glass = itemService.save(new Item("glass", 1.00));
 
-    String id = glass.block().get_id();
+        String id = glass.block()
+            .get_id();
 
-    Mono<Item> mono = itemService.getItem(id);
-    Item item = mono.block();
+        Mono<Item> mono = itemService.getItem(id);
+        Item item = mono.block();
 
-    assertThat(item).isNotNull();
-    assertThat(item.getName()).isEqualTo("glass");
-    assertThat(item.getPrice()).isEqualTo(1.00);
+        assertThat(item).isNotNull();
+        assertThat(item.getName()).isEqualTo("glass");
+        assertThat(item.getPrice()).isEqualTo(1.00);
 
-    Mono<Item> mono2 = itemService.getItem(id);
-    Item item2 = mono2.block();
+        Mono<Item> mono2 = itemService.getItem(id);
+        Item item2 = mono2.block();
 
-    assertThat(item2).isNotNull();
-    assertThat(item2.getName()).isEqualTo("glass");
-    assertThat(item2.getPrice()).isEqualTo(1.00);
-}
+        assertThat(item2).isNotNull();
+        assertThat(item2.getName()).isEqualTo("glass");
+        assertThat(item2.getPrice()).isEqualTo(1.00);
+    }
 
     @Test
     public void givenItem_whenGetItemWithCacheIsCalled_thenMonoResultIsCached() {
         Mono<Item> glass = itemService.save(new Item("glass", 1.00));
 
-        String id = glass.block().get_id();
+        String id = glass.block()
+            .get_id();
 
         Mono<Item> mono = itemService.getItem_withCache(id);
         Item item = mono.block();
@@ -76,7 +76,8 @@ public void givenItem_whenGetItemIsCalled_thenMonoIsCached() {
     public void givenItem_whenGetItemWithCaffeineIsCalled_thenMonoResultIsCached() {
         Mono<Item> glass = itemService.save(new Item("glass", 1.00));
 
-        String id = glass.block().get_id();
+        String id = glass.block()
+            .get_id();
 
         Mono<Item> mono = itemService.getItem_withCaffeine(id);
         Item item = mono.block();
