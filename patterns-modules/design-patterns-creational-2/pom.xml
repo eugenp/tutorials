@@ -20,5 +20,9 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+    
+    <properties>
+        <mockito.version>5.2.0</mockito.version>
+    </properties>
 
 </project>

@@ -27,8 +27,7 @@
     </dependencies>
 
     <properties>
-        <mockito-inline.version>4.8.1</mockito-inline.version>
-        <mockito.version>5.9.0</mockito.version>
+        <mockito-inline.version>5.2.0</mockito-inline.version>
     </properties>
 
 </project>

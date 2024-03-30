@@ -120,6 +120,7 @@
         <reactive.stream.version>1.0.3</reactive.stream.version>
         <reactor.version>3.6.0</reactor.version>
         <jmockit.version>1.49</jmockit.version>
+        <mockito.version>5.2.0</mockito.version>
     </properties>
 
 </project>
