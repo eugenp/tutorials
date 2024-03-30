@@ -1,15 +1,12 @@
 package com.baeldung.algorithms.conversion;
 
-import java.math.BigInteger;
-
-
-
+import com.google.common.io.BaseEncoding;
+import jakarta.xml.bind.DatatypeConverter;
 import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.binary.Hex;
 
-import com.google.common.io.BaseEncoding;
-
-import jakarta.xml.bind.DatatypeConverter;
+import java.math.BigInteger;
+import java.util.HexFormat;
 
 public class HexStringConverter {
 
@@ -108,5 +105,15 @@ public class HexStringConverter {
     public byte[] decodeUsingGuava(String hexString) {
         return BaseEncoding.base16()
             .decode(hexString.toUpperCase());
+    }
+
+    public String encodeUsingHexFormat(byte[] bytes) {
+        HexFormat hexFormat = HexFormat.of();
+        return hexFormat.formatHex(bytes);
+    }
+
+    public byte[] decodeUsingHexFormat(String hexString) {
+        HexFormat hexFormat = HexFormat.of();
+        return hexFormat.parseHex(hexString);
     }
 }
