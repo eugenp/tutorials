@@ -29,7 +29,7 @@ import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = { AppConfig.class })
-class JoinRepositoryTest {
+class JoinRepositoryUnitTest {
 
     @Autowired
     JoinRepository joinRepository;
