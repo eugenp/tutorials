@@ -1,9 +1,6 @@
 package com.baeldung.barcodes;
 
-import com.baeldung.barcodes.generators.BarbecueBarcodeGenerator;
-import com.baeldung.barcodes.generators.Barcode4jBarcodeGenerator;
-import com.baeldung.barcodes.generators.QRGenBarcodeGenerator;
-import com.baeldung.barcodes.generators.ZxingBarcodeGenerator;
+import com.baeldung.barcodes.generators.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -74,6 +71,11 @@ public class BarcodesController {
     @PostMapping(value = "/zxing/code128", produces = MediaType.IMAGE_PNG_VALUE)
     public ResponseEntity<BufferedImage> zxingCode128Barcode(@RequestBody String barcode) throws Exception {
         return okResponse(ZxingBarcodeGenerator.generateCode128BarcodeImage(barcode));
+    }
+
+    @GetMapping(value = "/zxing/qrcode/text", produces = MediaType.IMAGE_PNG_VALUE)
+    public ResponseEntity<BufferedImage> zxingCodeQRcodeText(@RequestParam("barcode") String barcode, @RequestParam("name") String name, @RequestParam("info") String info) throws Exception {
+        return okResponse(ZxingBarcodeGeneratorWithText.createQRwithText(barcode, name, info));
     }
 
     @PostMapping(value = "/zxing/pdf417", produces = MediaType.IMAGE_PNG_VALUE)
