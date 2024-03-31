@@ -1,6 +1,6 @@
 package com.baeldung.unsupportedmediatype;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
 @XmlRootElement
