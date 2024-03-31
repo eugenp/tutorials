@@ -1,5 +1,6 @@
 package com.baeldung.spring.data.jpa.joinquery;
 
+import com.baeldung.spring.data.jpa.joinquery.DTO.ResultDTO_wo_Ids;
 import com.baeldung.spring.data.jpa.joinquery.entities.Customer;
 import com.baeldung.spring.data.jpa.joinquery.entities.CustomerOrder;
 import com.baeldung.spring.data.jpa.joinquery.DTO.ResultDTO;
@@ -90,6 +91,13 @@ class JoinRepositoryTest {
             assertEquals(9, map.keySet().size());
         });
     }
+
+    @Test
+    void whenFindResultDTOByCustomerWithoutIds_thenReturnResultDTO() {
+        List<ResultDTO_wo_Ids> resultDTO = joinRepository.findResultDTOByCustomerWithoutIds(1L);
+        assertInstanceOf(ResultDTO_wo_Ids.class, resultDTO.get(0));
+    }
+
     private EntityTransaction getTransaction() {
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();

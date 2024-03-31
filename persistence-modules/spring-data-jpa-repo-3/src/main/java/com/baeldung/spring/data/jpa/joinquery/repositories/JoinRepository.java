@@ -1,6 +1,7 @@
 package com.baeldung.spring.data.jpa.joinquery.repositories;
 
 import com.baeldung.spring.data.jpa.joinquery.DTO.ResultDTO;
+import com.baeldung.spring.data.jpa.joinquery.DTO.ResultDTO_wo_Ids;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -15,6 +16,13 @@ public interface JoinRepository extends CrudRepository<ResultDTO, Long> {
       + " and o.id=p.customerOrder.id "
       + " and c.id=?1 ")
     List<ResultDTO> findResultDTOByCustomer(Long id);
+
+    @Query(value = "SELECT new com.baeldung.spring.data.jpa.joinquery.DTO.ResultDTO_wo_Ids(c.name, c.email, o.orderDate, p.productName, p.price) "
+      + " from Customer c, CustomerOrder o ,Product p "
+      + " where c.id=o.customer.id "
+      + " and o.id=p.customerOrder.id "
+      + " and c.id=?1 ")
+    List<ResultDTO_wo_Ids> findResultDTOByCustomerWithoutIds(Long id);
 
     @Query(value = "SELECT c.*, o.*, p.* "
       + " from Customer c, CustomerOrder o ,Product p "
