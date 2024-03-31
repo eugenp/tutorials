@@ -5,10 +5,11 @@ import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 
-import java.awt.*;
+import java.awt.Graphics2D;
+import java.awt.Color;
+import java.awt.FontMetrics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-
 
 public class ZxingBarcodeGeneratorWithText {
 
