@@ -75,7 +75,7 @@
         <module>spring-boot-ssl-bundles</module>
         <module>spring-boot-telegram</module>
         <module>spring-boot-springdoc</module>
-<!--        <module>spring-boot-swagger</module>--> <!-- failing after upgrading to spring boot 3.2.x -->
+        <module>spring-boot-swagger</module>
 <!--        <module>spring-boot-swagger-2</module>--> <!-- failing after upgrading to spring boot 3. Swagger codegen yet not compatible?!-->
         <module>spring-boot-swagger-jwt</module>
         <module>spring-boot-swagger-keycloak</module>
