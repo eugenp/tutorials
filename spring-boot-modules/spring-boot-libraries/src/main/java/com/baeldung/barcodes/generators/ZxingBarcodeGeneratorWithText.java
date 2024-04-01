@@ -13,10 +13,10 @@ import java.io.IOException;
 
 public class ZxingBarcodeGeneratorWithText {
 
-    public static BufferedImage createQRwithText(String data, String name, String info) throws WriterException, IOException {
+    public static BufferedImage createQRwithText(String data, String topText, String bottomText) throws WriterException, IOException {
         QRCodeWriter barcodeWriter = new QRCodeWriter();
         BitMatrix matrix = barcodeWriter.encode(data, BarcodeFormat.QR_CODE, 200, 200);
-        return modifiedQRCode(matrix, name, info);
+        return modifiedQRCode(matrix, topText, bottomText);
     }
 
     public static BufferedImage modifiedQRCode(BitMatrix matrix, String topText, String bottomText) throws IOException {
@@ -40,7 +40,7 @@ public class ZxingBarcodeGeneratorWithText {
         FontMetrics fontMetrics = graphics.getFontMetrics();
         int topTextWidth = fontMetrics.stringWidth(topText);
         int bottomTextWidth = fontMetrics.stringWidth(bottomText);
-        int finalWidth = Math.max(matrixWidth, Math.max(topTextWidth, bottomTextWidth)) + 10;
+        int finalWidth = Math.max(matrixWidth, Math.max(topTextWidth, bottomTextWidth)) + 1;
         int finalHeight = matrixHeight + fontMetrics.getHeight() + fontMetrics.getAscent() + 1;
 
         BufferedImage finalImage = new BufferedImage(finalWidth, finalHeight, BufferedImage.TYPE_INT_RGB);
@@ -49,9 +49,9 @@ public class ZxingBarcodeGeneratorWithText {
         finalGraphics.fillRect(0, 0, finalWidth, finalHeight);
         finalGraphics.setColor(Color.BLACK);
 
-        finalGraphics.drawImage(image, (finalWidth - matrixWidth) / 2, fontMetrics.getAscent() + 5, null);
-        finalGraphics.drawString(topText, (finalWidth - topTextWidth) / 2, fontMetrics.getAscent() + 5);
-        finalGraphics.drawString(bottomText, (finalWidth - bottomTextWidth) / 2, finalHeight - fontMetrics.getDescent() - 5);
+        finalGraphics.drawImage(image, (finalWidth - matrixWidth) / 2, fontMetrics.getAscent() + 2, null);
+        finalGraphics.drawString(topText, (finalWidth - topTextWidth) / 2, fontMetrics.getAscent() + 2);
+        finalGraphics.drawString(bottomText, (finalWidth - bottomTextWidth) / 2, finalHeight - fontMetrics.getDescent() - 2);
 
         return finalImage;
     }

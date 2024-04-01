@@ -84,8 +84,8 @@ public class BarcodesController {
     }
 
     @GetMapping(value = "/zxing/qrcode/text", produces = MediaType.IMAGE_PNG_VALUE)
-    public ResponseEntity<BufferedImage> zxingCodeQRcodeText(@RequestParam("barcode") String barcode, @RequestParam("name") String name, @RequestParam("info") String info) throws Exception {
-        return okResponse(ZxingBarcodeGeneratorWithText.createQRwithText(barcode, name, info));
+    public ResponseEntity<BufferedImage> zxingCodeQRcodeText(@RequestParam("barcode") String barcode, @RequestParam("toptext") String toptext, @RequestParam("bottomtext") String bottomtext) throws Exception {
+        return okResponse(ZxingBarcodeGeneratorWithText.createQRwithText(barcode, toptext, bottomtext));
     }
 
     @PostMapping(value = "/zxing/pdf417", produces = MediaType.IMAGE_PNG_VALUE)
