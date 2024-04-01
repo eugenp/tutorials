@@ -1,92 +1,85 @@
 package com.baeldung.spring;
 
 import com.baeldung.data.Employee;
-import com.baeldung.data.EmployeeRepository;
+import com.vaadin.flow.component.Composite;
 import com.vaadin.flow.component.Key;
-import com.vaadin.flow.component.KeyNotifier;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
-import com.vaadin.flow.spring.annotation.SpringComponent;
-import com.vaadin.flow.spring.annotation.UIScope;
-import org.springframework.beans.factory.annotation.Autowired;
 
-@SpringComponent
-@UIScope
-public class EmployeeEditor extends VerticalLayout implements KeyNotifier {
+public class EmployeeEditor extends Composite<VerticalLayout> {
 
-    private final EmployeeRepository repository;
+    public interface SaveListener {
+        void onSave(Employee employee);
+    }
+
+    public interface DeleteListener {
+        void onDelete(Employee employee);
+    }
+
+    public interface CancelListener {
+        void onCancel();
+    }
 
     private Employee employee;
 
-    TextField firstName = new TextField("First name");
-    TextField lastName = new TextField("Last name");
+    private SaveListener saveListener;
+    private DeleteListener deleteListener;
+    private CancelListener cancelListener;
 
-    Button save = new Button("Save", VaadinIcon.CHECK.create());
-    Button cancel = new Button("Cancel");
-    Button delete = new Button("Delete", VaadinIcon.TRASH.create());
-    HorizontalLayout actions = new HorizontalLayout(save, cancel, delete);
+    private final Binder<Employee> binder = new Binder<>(Employee.class);
 
-    Binder<Employee> binder = new Binder<>(Employee.class);
-    private ChangeHandler changeHandler;
+public EmployeeEditor() {
+    var firstName = new TextField("First name");
+    var lastName = new TextField("Last name");
 
-    @Autowired
-    public EmployeeEditor(EmployeeRepository repository) {
-        this.repository = repository;
+    var save = new Button("Save", VaadinIcon.CHECK.create());
+    var cancel = new Button("Cancel");
+    var delete = new Button("Delete", VaadinIcon.TRASH.create());
 
-        add(firstName, lastName, actions);
+    binder.forField(firstName).bind(Employee::getFirstName, Employee::setFirstName);
+    binder.forField(lastName).bind(Employee::getLastName, Employee::setLastName);
 
-        binder.bindInstanceFields(this);
+    save.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
+    save.addClickListener(e -> save());
+    save.addClickShortcut(Key.ENTER);
 
-        setSpacing(true);
+    delete.addThemeVariants(ButtonVariant.LUMO_ERROR);
+    delete.addClickListener(e -> deleteListener.onDelete(employee));
 
-        save.getElement().getThemeList().add("primary");
-        delete.getElement().getThemeList().add("error");
+    cancel.addClickListener(e -> cancelListener.onCancel());
 
-        addKeyPressListener(Key.ENTER, e -> save());
+    getContent().add(firstName, lastName, new HorizontalLayout(save, cancel, delete));
+}
 
-        save.addClickListener(e -> save());
-        delete.addClickListener(e -> delete());
-        cancel.addClickListener(e -> editEmployee(employee));
-        setVisible(false);
-    }
+    private void save() {
+        // Save the form into a new instance of Employee
+        var updated = new Employee();
+        updated.setId(employee.getId());
 
-    void delete() {
-        repository.delete(employee);
-        changeHandler.onChange();
-    }
-
-    void save() {
-        repository.save(employee);
-        changeHandler.onChange();
-    }
-
-    public interface ChangeHandler {
-        void onChange();
-    }
-
-    public final void editEmployee(Employee c) {
-        if (c == null) {
-            setVisible(false);
-            return;
+        if (binder.writeBeanIfValid(updated)) {
+            saveListener.onSave(updated);
         }
-        final boolean persisted = c.getId() != null;
-        if (persisted) {
-            employee = repository.findById(c.getId()).get();
-        } else {
-            employee = c;
-        }
-
-        cancel.setVisible(persisted);
-        binder.setBean(employee);
-        setVisible(true);
-        firstName.focus();
     }
 
-    public void setChangeHandler(ChangeHandler h) {
-        changeHandler = h;
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+        binder.readBean(employee);
+    }
+
+    public void setSaveListener(SaveListener saveListener) {
+        this.saveListener = saveListener;
+    }
+
+    public void setDeleteListener(DeleteListener deleteListener) {
+        this.deleteListener = deleteListener;
+    }
+
+    public void setCancelListener(CancelListener cancelListener) {
+        this.cancelListener = cancelListener;
     }
 }

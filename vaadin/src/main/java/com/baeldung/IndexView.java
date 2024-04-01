@@ -4,7 +4,7 @@ import com.baeldung.introduction.PushView;
 import com.baeldung.introduction.basics.VaadinFlowBasics;
 import com.baeldung.introduction.FormView;
 import com.baeldung.introduction.GridView;
-import com.baeldung.spring.CrudView;
+import com.baeldung.spring.EmployeesView;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
@@ -20,6 +20,6 @@ public class IndexView extends VerticalLayout {
         add(new RouterLink("Grid", GridView.class));
         add(new RouterLink("Form", FormView.class));
         add(new RouterLink("Push", PushView.class));
-        add(new RouterLink("CRUD", CrudView.class));
+        add(new RouterLink("CRUD", EmployeesView.class));
     }
 }
