@@ -15,7 +15,7 @@ import com.baeldung.contextvsunit.service.PersistenceUnitProductService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = com.baeldung.contextvsunit.PersistenceContextVsUnitApplication.class)
-public class PersistenceContextVsUnitProductServiceTest {
+public class PersistenceContextVsUnitProductServiceIntegrationTest {
 
     @Autowired
     private PersistenceContextProductService persistenceContextProductService;
