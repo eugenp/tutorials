@@ -5,6 +5,18 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>libraries-apache-commons-2</artifactId>
     <name>libraries-apache-commons-2</name>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>9</source>
+                    <target>9</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -44,6 +56,21 @@
             <version>${mockftpserver.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-configuration2</artifactId>
+            <version>${commons-configuration2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>${commons-beanutils.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-jexl</artifactId>
+            <version>${commons-jexl.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -53,6 +80,9 @@
         <apache-commons-text.version>1.10.0</apache-commons-text.version>
         <commons-net.version>3.6</commons-net.version>
         <mockftpserver.version>2.7.1</mockftpserver.version>
+        <commons-configuration2.version>2.10.0</commons-configuration2.version>
+        <commons-beanutils.version>1.9.4</commons-beanutils.version>
+        <commons-jexl.version>2.1.1</commons-jexl.version>
     </properties>
 
 </project>
