@@ -10,9 +10,10 @@
     <description>Module For Spring Boot Swagger</description>
 
     <parent>
-        <groupId>com.baeldung.spring-boot-modules</groupId>
-        <artifactId>spring-boot-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-3</artifactId>
+        <relativePath>../../parent-boot-3</relativePath>
+        <version>0.0.1-SNAPSHOT</version>
     </parent>
 
     <dependencies>
@@ -29,6 +30,11 @@
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-ui</artifactId>
             <version>${springdoc.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.ws.rs</groupId>
+            <artifactId>jakarta.ws.rs-api</artifactId>
+            <version>${jakarta.ws.rs-api.version}</version>
         </dependency>
     </dependencies>
 
@@ -82,6 +88,8 @@
     <properties>
         <swagger-maven-plugin.version>3.1.1</swagger-maven-plugin.version>
         <springdoc.version>1.7.0</springdoc.version>
+        <jakarta.ws.rs-api.version>3.1.0</jakarta.ws.rs-api.version>
+        <start-class>com.baeldung.swaggerexample.SwaggerExampleApplication</start-class>
     </properties>
 
 </project>
