@@ -14,7 +14,7 @@ import com.baeldung.async.config.SpringAsyncConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { SpringAsyncConfig.class }, loader = AnnotationConfigContextLoader.class)
-public class AsyncServiceResponseTest {
+public class AsyncServiceUnitTest {
 
     @Autowired
     private AsyncService asyncServiceExample;
