@@ -8,7 +8,7 @@ import java.nio.file.Paths;
 
 public interface TestResources {
 
-    static final String DIR = "/compress/";
+    String DIR = "/compress/";
 
     static InputStream compressedArchive() {
         return TestResources.class.getResourceAsStream(DIR + CompressUtilsUnitTest.COMPRESSED_ARCHIVE);

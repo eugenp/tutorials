@@ -52,7 +52,7 @@ class CompressUtilsUnitTest {
 
     @Test
     @Order(2)
-    public void givenFile_whenZipping_thenZipFileCreated() throws IOException, URISyntaxException {
+    void givenFile_whenZipping_thenZipFileCreated() throws IOException, URISyntaxException {
         Path destination = TMP.resolve(ZIP_FILE);
 
         CompressUtils.zip(TestResources.testFile(), destination);
@@ -105,7 +105,7 @@ class CompressUtilsUnitTest {
     void givenExistingArchive_whenAddingSingleEntry_thenArchiveModified() throws IOException, ArchiveException, CompressorException, URISyntaxException {
         Path archive = TMP.resolve(DECOMPRESSED_ARCHIVE);
         Path newArchive = TMP.resolve(MODIFIED_ARCHIVE);
-        Path tmpDir = TMP.resolve(newArchive.toString() + "-tmpd");
+        Path tmpDir = TMP.resolve(newArchive + "-tmpd");
 
         Path newEntry = TestResources.testFile();
 
@@ -124,7 +124,7 @@ class CompressUtilsUnitTest {
 
     @Test
     @Order(8)
-    void givenExistingArchive_whenExtractingSingleEntry_thenFileExtracted() throws IOException, ArchiveException, CompressorException {
+    void givenExistingArchive_whenExtractingSingleEntry_thenFileExtracted() throws IOException, ArchiveException {
         Path archive = TMP.resolve(DECOMPRESSED_ARCHIVE);
         String targetFile = "sub/other.txt";
 
