@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 public class SetMatrixToZeroUnitTest{
     @Test 
-    void givenMatrix_whenUsingBruteForce_thenSetZeroes() {
+    void givenMatrix_whenUsingSetZeroesByNaiveApproach_thenSetZeroes() {
         int[][] matrix = {
                 {1, 2, 3},
                 {4, 0, 6},
@@ -16,12 +16,12 @@ public class SetMatrixToZeroUnitTest{
                 {0, 0, 0},
                 {7, 0, 9}
         };
-        SetMatrixToZero.setZeroesBruteForce(matrix);
+        SetMatrixToZero.setZeroesByNaiveApproach(matrix);
         assertArrayEquals(expected, matrix);
     }
 
     @Test
-    void givenMatrix_whenUsingExtraSpace_thenSetZeroes() {
+    void givenMatrix_whenUsingSetZeroesByTimeOptimizedApproach_thenSetZeroes() {
         int[][] matrix = {
                 {1, 2, 3},
                 {4, 0, 6},
@@ -32,12 +32,12 @@ public class SetMatrixToZeroUnitTest{
                 {0, 0, 0},
                 {7, 0, 9}
         };
-        SetMatrixToZero.setZeroesExtraSpace(matrix);
+        SetMatrixToZero.setZeroesByTimeOptimizedApproach(matrix);
         assertArrayEquals(expected, matrix);
     }
 
     @Test
-    void givenMatrix_whenUsingOptimized_thenSetZeroes() {
+    void givenMatrix_whenUsingSetZeroesByOptimalApproach_thenSetZeroes() {
         int[][] matrix = {
                 {1, 2, 3},
                 {4, 0, 6},
@@ -48,7 +48,7 @@ public class SetMatrixToZeroUnitTest{
                 {0, 0, 0},
                 {7, 0, 9}
         };
-        SetMatrixToZero.setZeroesOptimized(matrix);
+        SetMatrixToZero.setZeroesByOptimalApproach(matrix);
         assertArrayEquals(expected, matrix);
     }
 }
