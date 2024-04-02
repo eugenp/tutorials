@@ -3,7 +3,7 @@ package com.baeldung.matrixtozero;
 import java.util.*;
 
 public class SetMatrixToZero{
-    static void setZeroesBruteForce(int[][] matrix) {
+    static void setZeroesByNaiveApproach(int[][] matrix) {
         int row = matrix.length;
         int col = matrix[0].length;
         int [][] result = new int[row][col];
@@ -34,7 +34,7 @@ public class SetMatrixToZero{
         }
     }
     
-    static void setZeroesExtraSpace(int[][] matrix) {
+    static void setZeroesByTimeOptimizedApproach(int[][] matrix) {
         int rows = matrix.length;
         int cols = matrix[0].length;
 
@@ -63,7 +63,7 @@ public class SetMatrixToZero{
         }
     }
     
-    static void setZeroesOptimized(int[][] matrix){
+    static void setZeroesByOptimalApproach(int[][] matrix){
         int rows = matrix.length;
         int cols = matrix[0].length;
 
