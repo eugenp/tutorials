@@ -39,6 +39,7 @@
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
+                <version>${jetty-plugin.version}</version>
                 <configuration>
                     <webApp>
                         <contextPath>/</contextPath>
@@ -50,6 +51,7 @@
 
     <properties>
         <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
+        <jetty-plugin.version>11.0.20</jetty-plugin.version>
     </properties>
 
 </project>

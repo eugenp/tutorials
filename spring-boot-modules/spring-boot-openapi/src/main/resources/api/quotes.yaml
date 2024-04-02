@@ -1,0 +1,54 @@
+openapi: 3.0.0
+info:
+  title: Quotes API
+  version: 1.0.0
+servers:
+  - description: Test server
+    url: http://localhost:8080
+paths:
+  /quotes/{symbol}:
+    get:
+      tags:
+        - quotes
+      summary: Get current quote for a security
+      operationId: getQuote
+      x-spring-cacheable:
+        name: get-quotes
+      security:
+        - ApiKey:
+            - Quotes.Read
+      parameters:
+        - name: symbol
+          in: path
+          required: true
+          description: Security's symbol
+          schema:
+            type: string
+            pattern: '[A-Z0-9]+'
+      responses:
+        '200':
+            description: OK
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/QuoteResponse'
+components:
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+  schemas:
+    QuoteResponse:
+      description: Quote response
+      type: object
+      properties:
+        symbol:
+          type: string
+          description: security's symbol
+        price:
+          type: number
+          description: Quote value
+        timestamp:
+          type: string
+          format: date-time

@@ -19,7 +19,7 @@ import io.swagger.v3.oas.annotations.security.SecurityScheme;
 public class DefaultGlobalSecuritySchemeApplication {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        return http.authorizeHttpRequests(authorizeRequests -> authorizeRequests.antMatchers("/api/auth/**", "/swagger-ui-custom.html", "/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**", "/webjars/**", "/swagger-ui/index.html", "/api-docs/**")
+        return http.authorizeHttpRequests(authorizeRequests -> authorizeRequests.requestMatchers("/api/auth/**", "/swagger-ui-custom.html", "/swagger-ui.html", "/swagger-ui/**", "/v3/api-docs/**", "/webjars/**", "/swagger-ui/index.html", "/api-docs/**")
             .permitAll()
             .anyRequest()
             .authenticated())

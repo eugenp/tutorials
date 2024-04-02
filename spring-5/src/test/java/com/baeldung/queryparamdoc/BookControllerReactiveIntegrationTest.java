@@ -2,7 +2,7 @@ package com.baeldung.queryparamdoc;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
-import static org.springframework.restdocs.request.RequestDocumentation.requestParameters;
+import static org.springframework.restdocs.request.RequestDocumentation.queryParameters;
 import static org.springframework.restdocs.webtestclient.WebTestClientRestDocumentation.document;
 import static org.springframework.restdocs.webtestclient.WebTestClientRestDocumentation.documentationConfiguration;
 
@@ -46,7 +46,7 @@ class BookControllerReactiveIntegrationTest {
         webTestClient.get().uri("/books?page=2")
           .exchange().expectStatus().isOk().expectBody()
           .consumeWith(document("books",
-            requestParameters(parameterWithName("page").description("The page to retrieve"))));
+            queryParameters(parameterWithName("page").description("The page to retrieve"))));
     }
 
     @TestConfiguration

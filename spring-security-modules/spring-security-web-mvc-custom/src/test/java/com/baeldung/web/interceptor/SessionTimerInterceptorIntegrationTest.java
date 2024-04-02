@@ -3,7 +3,7 @@ package com.baeldung.web.interceptor;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpSession;
 
 import com.baeldung.security.spring.SecurityWithoutCsrfConfig;
 import com.baeldung.spring.MvcConfig;

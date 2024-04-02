@@ -20,17 +20,16 @@
             <artifactId>spark-core</artifactId>
             <version>${sparkjava.spark-core.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-            <version>${google.code.gson.version}</version>
+            <version>${gson.version}</version>
         </dependency>
     </dependencies>
 
     <properties>
         <sparkjava.spark-core.version>2.5.4</sparkjava.spark-core.version>
-        <google.code.gson.version>2.10.1</google.code.gson.version>
+        <gson.version>2.10.1</gson.version>
     </properties>
 
 </project>

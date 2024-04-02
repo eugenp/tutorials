@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.blockchain</groupId>
     <artifactId>java-blockchain</artifactId>
-    <name>java-blockchain</name>
     <packaging>jar</packaging>
+    <name>java-blockchain</name>
 
     <parent>
         <groupId>com.baeldung</groupId>

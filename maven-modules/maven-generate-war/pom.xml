@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>maven-generate-war</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>maven-generate-war</name>
     <packaging>war</packaging>
+    <name>maven-generate-war</name>
     <description>Spring boot project to demonstrate war file generation</description>
 
     <parent>
@@ -59,10 +59,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>${maven.compiler.source.version}</source>
-                    <target>${maven.compiler.target.version}</target>
-                </configuration>
             </plugin>
         </plugins>
     </build>
