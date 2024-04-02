@@ -9,6 +9,7 @@ import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.data.binder.BeanValidationBinder;
 import com.vaadin.flow.data.binder.Binder;
 
 public class EmployeeEditor extends Composite<VerticalLayout> {
@@ -31,7 +32,7 @@ public class EmployeeEditor extends Composite<VerticalLayout> {
     private DeleteListener deleteListener;
     private CancelListener cancelListener;
 
-    private final Binder<Employee> binder = new Binder<>(Employee.class);
+    private final Binder<Employee> binder = new BeanValidationBinder<>(Employee.class);
 
 public EmployeeEditor() {
     var firstName = new TextField("First name");
@@ -41,8 +42,8 @@ public EmployeeEditor() {
     var cancel = new Button("Cancel");
     var delete = new Button("Delete", VaadinIcon.TRASH.create());
 
-    binder.forField(firstName).bind(Employee::getFirstName, Employee::setFirstName);
-    binder.forField(lastName).bind(Employee::getLastName, Employee::setLastName);
+    binder.forField(firstName).bind("firstName");
+    binder.forField(lastName).bind("lastName");
 
     save.addThemeVariants(ButtonVariant.LUMO_PRIMARY);
     save.addClickListener(e -> save());

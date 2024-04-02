@@ -37,7 +37,7 @@ public class EmployeesView extends VerticalLayout {
         addButton.addClickListener(e -> editEmployee(new Employee()));
 
         filter.setPlaceholder("Filter by last name");
-        filter.setValueChangeMode(ValueChangeMode.EAGER);
+        filter.setValueChangeMode(ValueChangeMode.LAZY);
         filter.addValueChangeListener(e -> updateEmployees(e.getValue()));
 
         grid.setHeight("200px");
