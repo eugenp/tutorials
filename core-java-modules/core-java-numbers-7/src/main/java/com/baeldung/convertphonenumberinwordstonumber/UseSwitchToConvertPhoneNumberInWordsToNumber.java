@@ -1,6 +1,6 @@
-public class UseSwitchToConvertPhoneNumberInWordToNumber {
+public class UseSwitchToConvertPhoneNumberInWordsToNumber {
 
-    public static String convertPhoneNumberInWordToNumber(String phoneNumberInWord) {
+    public static String convertPhoneNumberInWordsToNumber(String phoneNumberInWord) {
 
         StringBuilder output = new StringBuilder();
         Integer currentMultiplier = null;

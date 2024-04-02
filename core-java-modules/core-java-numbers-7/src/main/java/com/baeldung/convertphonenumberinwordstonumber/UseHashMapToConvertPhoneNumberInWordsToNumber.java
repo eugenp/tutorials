@@ -16,7 +16,7 @@ public class UseHashMapToConvertPhoneNumberInWordsToNumber {
             "nine", "9");
 
 
-    public static String convertPhoneNumberInWordToNumber(String phoneNumberInWord) {
+    public static String convertPhoneNumberInWordsToNumber(String phoneNumberInWord) {
 
         StringBuilder output = new StringBuilder();
         Integer currentMultiplier = null;
@@ -31,12 +31,11 @@ public class UseHashMapToConvertPhoneNumberInWordsToNumber {
                 currentMultiplier = multiplier;
             } else {
                 String digit = digits.get(word);
-                if (digit != null) {
-                    output.append(digit.repeat(currentMultiplier != null ? currentMultiplier : 1));
-                    currentMultiplier = null;
-                } else {
+                if (digit == null) {
                     throw new IllegalArgumentException("Invalid word: " + word);
                 }
+                output.append(digit.repeat(currentMultiplier != null ? currentMultiplier : 1));
+                currentMultiplier = null;
             }
         }
         return output.toString();
