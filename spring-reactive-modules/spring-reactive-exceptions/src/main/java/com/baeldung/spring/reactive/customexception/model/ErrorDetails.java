@@ -11,11 +11,11 @@ public enum ErrorDetails {
 
     API_USER_NOT_FOUND(123, "User not found", "http://example.com/123");
     @Getter
-    private Integer errorCode;
+    private final Integer errorCode;
     @Getter
-    private String errorMessage;
+    private final String errorMessage;
     @Getter
-    private String referenceUrl;
+    private final String referenceUrl;
 
     ErrorDetails(Integer errorCode, String errorMessage, String referenceUrl) {
         this.errorCode = errorCode;
