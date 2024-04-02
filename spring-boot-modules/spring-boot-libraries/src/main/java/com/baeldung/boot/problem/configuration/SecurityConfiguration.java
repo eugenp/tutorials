@@ -6,7 +6,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.zalando.problem.spring.web.advice.security.SecurityProblemSupport;
 
 @Configuration
@@ -19,16 +21,12 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.csrf()
-            .disable();
-
-        http.authorizeRequests()
-            .antMatchers("/")
-            .permitAll();
-
-        http.exceptionHandling()
-            .authenticationEntryPoint(problemSupport)
-            .accessDeniedHandler(problemSupport);
-        return http.build();
+        return http.csrf(AbstractHttpConfigurer::disable)
+            .authorizeHttpRequests(request -> request.requestMatchers(new AntPathRequestMatcher("/tasks/**"))
+                .permitAll())
+            .exceptionHandling(exceptionHandling -> exceptionHandling.authenticationEntryPoint(problemSupport)
+                .accessDeniedHandler(problemSupport))
+            .build();
     }
+
 }

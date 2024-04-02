@@ -1,8 +1,8 @@
 package com.baeldung.optionalreturntype;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 
 public class PersistUserExample {
     static String persistenceUnit = "com.baeldung.optionalreturntype";

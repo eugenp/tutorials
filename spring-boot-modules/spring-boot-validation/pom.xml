@@ -41,4 +41,8 @@
         </plugins>
     </build>
 
+    <properties>
+        <start-class>com.baeldung.beanvalidation.application.Application</start-class>
+    </properties>
+
 </project>

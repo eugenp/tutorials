@@ -29,13 +29,13 @@ public class Application {
 
         String orderId = UUID.randomUUID()
             .toString();
-        Inventory inventory = inventoryRepository.findOne(productId);
+        Inventory inventory = inventoryRepository.getReferenceById(productId);
         inventory.setBalance(inventory.getBalance() - amount);
         inventoryRepository.save(inventory);
         Order order = new Order();
         order.setOrderId(orderId);
         order.setProductId(productId);
-        order.setAmount(new Long(amount));
+        order.setAmount( Long.valueOf(amount));
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
         Set<ConstraintViolation<Order>> violations = validator.validate(order);

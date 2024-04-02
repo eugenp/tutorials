@@ -4,14 +4,22 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-datetime-string-2</artifactId>
-    <name>core-java-datetime-string-2</name>
     <packaging>jar</packaging>
+    <name>core-java-datetime-string-2</name>
 
     <parent>
         <groupId>com.baeldung.core-java-modules</groupId>
         <artifactId>core-java-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>${joda-time.version}</version>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
@@ -21,5 +29,9 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <joda-time.version>2.12.5</joda-time.version>
+    </properties>
 
 </project>

@@ -1,5 +1,6 @@
 package com.baeldung.modifyrequest;
 
+import com.baeldung.modifyrequest.config.WebMvcConfiguration;
 import com.baeldung.modifyrequest.controller.UserController;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
@@ -9,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -21,7 +23,7 @@ import java.util.Map;
 
 @ExtendWith(SpringExtension.class)
 @AutoConfigureMockMvc
-@WebMvcTest(UserController.class)
+@WebMvcTest(value ={UserController.class, WebMvcConfiguration.class})
 @ActiveProfiles("filterExample")
 public class EscapeHtmlFilterIntegrationTest {
     Logger logger = LoggerFactory.getLogger(EscapeHtmlFilterIntegrationTest.class);
@@ -44,6 +46,7 @@ public class EscapeHtmlFilterIntegrationTest {
 
         mockMvc.perform(MockMvcRequestBuilders.post(URI.create("/save"))
             .contentType(MediaType.APPLICATION_JSON)
+            .header(HttpHeaders.CONTENT_LENGTH, "100")
             .content(objectMapper.writeValueAsString(requestBody))).andExpect(MockMvcResultMatchers.status()
             .isCreated()).andExpect(MockMvcResultMatchers.content()
             .json(objectMapper.writeValueAsString(expectedResponseBody)));

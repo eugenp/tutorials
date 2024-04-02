@@ -14,6 +14,8 @@ import org.testcontainers.containers.CassandraContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -30,14 +32,14 @@ class ProductRepositoryNestedLiveTest {
     private static final String KEYSPACE_NAME = "mynamespace";
 
     @Container
-    private static final CassandraContainer cassandra = (CassandraContainer) new CassandraContainer("cassandra:3.11.2")
+    private static final CassandraContainer<?> cassandra = new CassandraContainer<>("cassandra:3.11.2")
         .withExposedPorts(9042);
 
     @BeforeAll
     static void setupCassandraConnectionProperties() {
-        System.setProperty("spring.data.cassandra.keyspace-name", KEYSPACE_NAME);
-        System.setProperty("spring.data.cassandra.contact-points", cassandra.getHost());
-        System.setProperty("spring.data.cassandra.port", String.valueOf(cassandra.getMappedPort(9042)));
+        System.setProperty("spring.cassandra.keyspace-name", KEYSPACE_NAME);
+        System.setProperty("spring.cassandra.contact-points", cassandra.getHost());
+        System.setProperty("spring.cassandra.port", String.valueOf(cassandra.getMappedPort(9042)));
         createKeyspace(cassandra.getCluster());
     }
 
@@ -72,9 +74,9 @@ class ProductRepositoryNestedLiveTest {
             Product product3 = new Product(productId3, "Banana", "Banana v1", 5.5);
             Product product4 = new Product(productId3, "Banana v2", "Banana v2", 15.5);
 
-            productRepository.saveAll(List.of(product1, product2, product3, product4));
+            productRepository.saveAll(Arrays.asList(product1, product2, product3, product4));
 
-            List<Product> existingProducts = productRepository.findByProductIds(List.of(productId1, productId2));
+            List<Product> existingProducts = productRepository.findByProductIds(Arrays.asList(productId1, productId2));
             assertEquals(2, existingProducts.size());
             assertTrue(existingProducts.contains(product1));
             assertTrue(existingProducts.contains(product2));
@@ -89,10 +91,10 @@ class ProductRepositoryNestedLiveTest {
             Product product3 = new Product(productId2, "Banana", "Banana v1", 5.5);
             Product product4 = new Product(productId2, "Banana v2", "Banana v2", 15.5);
 
-            productRepository.saveAll(List.of(product1, product2, product3, product4));
+            productRepository.saveAll(Arrays.asList(product1, product2, product3, product4));
 
             List<Product> existingProducts = productRepository.findByProductIdAndNames(productId1,
-                List.of(product1.getProductName(), product2.getProductName()));
+                Arrays.asList(product1.getProductName(), product2.getProductName()));
             assertEquals(2, existingProducts.size());
             assertTrue(existingProducts.contains(product1));
             assertTrue(existingProducts.contains(product2));
@@ -107,10 +109,11 @@ class ProductRepositoryNestedLiveTest {
             Product product3 = new Product(productId2, "Banana", "Banana v1", 5.5);
             Product product4 = new Product(productId2, "Banana v2", "Banana v2", 15.5);
 
-            productRepository.saveAll(List.of(product1, product2, product4));
+            productRepository.saveAll(Arrays.asList(product1, product2, product4));
 
             List<Product> existingProducts = productRepository.findByProductIdAndNames(productId1,
-                    List.of(product3.getProductName()));
+                    Collections.singletonList(product3.getProductName())
+            );
             assertEquals(0, existingProducts.size());
         }
     }

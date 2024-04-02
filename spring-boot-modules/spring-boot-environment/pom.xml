@@ -9,10 +9,9 @@
     <description>Demo project for Spring Boot</description>
 
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-3</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-3</relativePath>
+        <groupId>com.baeldung.spring-boot-modules</groupId>
+        <artifactId>spring-boot-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <dependencies>
@@ -47,11 +46,7 @@
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-        </dependency>
+
         <dependency>
             <groupId>org.subethamail</groupId>
             <artifactId>subethasmtp</artifactId>
@@ -158,7 +153,7 @@
     <properties>
         <subethasmtp.version>3.1.7</subethasmtp.version>
         <httpclient.version>4.5.8</httpclient.version>
-        <spring.cloud-version>2021.0.0</spring.cloud-version>
+        <spring.cloud-version>2023.0.0</spring.cloud-version>
     </properties>
 
 </project>

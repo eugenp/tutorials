@@ -3,7 +3,7 @@ package com.baeldung.defaultglobalsecurityscheme.controller;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;

@@ -5,7 +5,7 @@ import static org.hamcrest.Matchers.equalTo;
 
 import org.junit.Test;
 
-import com.jayway.restassured.RestAssured;
+import io.restassured.RestAssured;
 
 public class RequestMappingLiveTest {
     private static String BASE_URI = "http://localhost:8082/spring-rest/ex/";

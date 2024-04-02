@@ -4,8 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-reflection-2</artifactId>
-    <name>core-java-reflection-2</name>
     <packaging>jar</packaging>
+    <name>core-java-reflection-2</name>
 
     <parent>
         <groupId>com.baeldung.core-java-modules</groupId>
@@ -49,7 +49,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.8</version>
+                <version>${jacoco-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -73,6 +73,7 @@
         <source.version>1.8</source.version>
         <target.version>1.8</target.version>
         <spring.version>5.3.4</spring.version>
+        <jacoco-maven-plugin.version>0.8.11</jacoco-maven-plugin.version>
     </properties>
 
 </project>

@@ -160,7 +160,7 @@
         <uberjar.name>benchmarks</uberjar.name>
         <clean.plugin.version>3.1.0</clean.plugin.version>
         <deploy.plugin.version>3.0.0-M1</deploy.plugin.version>
-        <compiler.plugin.version>3.8.1</compiler.plugin.version>
+        <compiler.plugin.version>3.12.1</compiler.plugin.version>
         <shade.plugin.version>3.2.4</shade.plugin.version>
         <install.version>3.0.0-M1</install.version>
         <jar.plugin.version>3.2.0</jar.plugin.version>

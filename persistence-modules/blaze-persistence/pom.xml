@@ -9,9 +9,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-2</relativePath>
+        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencyManagement>
@@ -34,37 +34,41 @@
         <!-- Core dependencies -->
         <dependency>
             <groupId>com.blazebit</groupId>
-            <artifactId>blaze-persistence-core-api</artifactId>
+            <artifactId>blaze-persistence-core-api-jakarta</artifactId>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.blazebit</groupId>
-            <artifactId>blaze-persistence-core-impl</artifactId>
+            <artifactId>blaze-persistence-core-impl-jakarta</artifactId>
+            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>com.blazebit</groupId>
-            <artifactId>blaze-persistence-integration-hibernate-5.6</artifactId>
+            <artifactId>blaze-persistence-integration-hibernate-6.2</artifactId>
+            <scope>runtime</scope>
         </dependency>
         <!-- Entity View dependencies -->
         <dependency>
             <groupId>com.blazebit</groupId>
-            <artifactId>blaze-persistence-entity-view-api</artifactId>
+            <artifactId>blaze-persistence-entity-view-api-jakarta</artifactId>
         </dependency>
         <dependency>
             <groupId>com.blazebit</groupId>
-            <artifactId>blaze-persistence-entity-view-impl</artifactId>
+            <artifactId>blaze-persistence-entity-view-impl-jakarta</artifactId>
         </dependency>
         <dependency>
             <groupId>com.blazebit</groupId>
-            <artifactId>blaze-persistence-entity-view-processor</artifactId>
+            <artifactId>blaze-persistence-entity-view-processor-jakarta</artifactId>
         </dependency>
         <!-- Spring integration dependencies -->
         <dependency>
             <groupId>com.blazebit</groupId>
-            <artifactId>blaze-persistence-integration-entity-view-spring</artifactId>
+            <artifactId>blaze-persistence-integration-entity-view-spring-6.0</artifactId>
         </dependency>
         <dependency>
             <groupId>com.blazebit</groupId>
-            <artifactId>blaze-persistence-integration-spring-data-2.7</artifactId>
+            <artifactId>blaze-persistence-integration-spring-data-3.1</artifactId>
+            <scope>compile</scope>
         </dependency>
         <!-- Spring dependencies -->
         <dependency>
@@ -108,9 +112,9 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <blaze-persistence.version>1.6.8</blaze-persistence.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <blaze-persistence.version>1.6.11</blaze-persistence.version>
     </properties>
 
 </project>

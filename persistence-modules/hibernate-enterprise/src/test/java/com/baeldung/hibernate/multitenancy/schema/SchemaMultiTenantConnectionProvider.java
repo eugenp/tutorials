@@ -12,7 +12,7 @@ import org.hibernate.engine.jdbc.connections.spi.AbstractMultiTenantConnectionPr
 import org.hibernate.engine.jdbc.connections.spi.ConnectionProvider;
 
 @SuppressWarnings("serial")
-public class SchemaMultiTenantConnectionProvider extends AbstractMultiTenantConnectionProvider {
+public class SchemaMultiTenantConnectionProvider extends AbstractMultiTenantConnectionProvider<String> {
 
     private final ConnectionProvider connectionProvider;
 

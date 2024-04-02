@@ -1,5 +1,22 @@
 package com.baeldung.ecommerce.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.util.CollectionUtils;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
 import com.baeldung.ecommerce.dto.OrderProductDto;
 import com.baeldung.ecommerce.exception.ResourceNotFoundException;
 import com.baeldung.ecommerce.model.Order;
@@ -8,18 +25,8 @@ import com.baeldung.ecommerce.model.OrderStatus;
 import com.baeldung.ecommerce.service.OrderProductService;
 import com.baeldung.ecommerce.service.OrderService;
 import com.baeldung.ecommerce.service.ProductService;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.util.CollectionUtils;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
+import jakarta.validation.constraints.NotNull;
 
 @RestController
 @RequestMapping("/api/orders")

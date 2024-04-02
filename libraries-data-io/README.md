@@ -11,3 +11,4 @@ This module contains articles about IO data processing libraries.
 - [Introduction To Docx4J](https://www.baeldung.com/docx4j)
 - [Breaking YAML Strings Over Multiple Lines](https://www.baeldung.com/yaml-multi-line)
 - [Different Serialization Approaches for Java](https://www.baeldung.com/java-serialization-approaches)
+- [A Guide to etcd](https://www.baeldung.com/java-etcd-guide)

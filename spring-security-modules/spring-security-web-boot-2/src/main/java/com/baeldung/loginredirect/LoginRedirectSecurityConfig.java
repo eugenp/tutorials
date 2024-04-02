@@ -13,8 +13,9 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-@Configuration
-@EnableWebSecurity
+//if you use xsd configuration (spring-security-login-redirect.xml) please comment the annotations from this class, because it will overlap with configuration from this class
+/*@Configuration
+@EnableWebSecurity*/
 class LoginRedirectSecurityConfig {
 
     private static final String LOGIN_USER = "/loginUser";

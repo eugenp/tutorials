@@ -78,8 +78,6 @@ public class PDFMergeUnitTest {
         try (PDDocument document = PDDocument.load(new File("src/test/resources/temp/output.pdf"))) {
             PDFTextStripper pdfStripper = new PDFTextStripper();
             String actual = pdfStripper.getText(document);
-            List.of("hello_world1", "hello_world2")
-                .forEach(text -> assertTrue(actual.contains(text)));
             String expected = """
                 hello_world1, page:0
                 hello_world1, page:1
@@ -101,8 +99,6 @@ public class PDFMergeUnitTest {
         try (PDDocument document = PDDocument.load(new File("src/test/resources/temp/output1.pdf"))) {
             PDFTextStripper pdfStripper = new PDFTextStripper();
             String actual = pdfStripper.getText(document);
-            List.of("hello_world1", "hello_world2")
-                .forEach(text -> assertTrue(actual.contains(text)));
             String expected = """
                 hello_world1, page:0
                 hello_world1, page:1

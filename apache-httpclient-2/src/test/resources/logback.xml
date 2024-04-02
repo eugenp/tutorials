@@ -6,9 +6,9 @@
     </appender>
     <logger name="com.baeldung.httpclient.cookies" level="info"/>
 
-    <logger name="com.baeldung.httpclient.readresponsebodystring" level="debug"/>
-    <logger name="org.apache.http" level="debug"/>
-    <logger name="org.apache.hc.client5.http" level="debug"/>
+    <logger name="com.baeldung.httpclient.readresponsebodystring" level="INFO"/>
+    <logger name="org.apache.http" level="WARN"/>
+    <logger name="org.apache.hc.client5.http" level="WARN"/>
 
     <root level="WARN">
         <appender-ref ref="stdout"/>

@@ -11,8 +11,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>spring-security-modules</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -30,7 +31,8 @@
         </dependency>
         <dependency>
             <groupId>de.flapdoodle.embed</groupId>
-            <artifactId>de.flapdoodle.embed.mongo</artifactId>
+            <artifactId>de.flapdoodle.embed.mongo.spring30x</artifactId>
+            <version>${de.flapdoodle.emeded.mongo.version}</version>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>
@@ -65,11 +67,22 @@
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+        </dependency>
     </dependencies>
 
     <properties>
         <bootstrap.version>5.1.1</bootstrap.version>
         <jquery.version>3.6.0</jquery.version>
+        <start-class>com.baeldung.cors.basicauth.SpringBootSecurityApplication</start-class>
+        <de.flapdoodle.emeded.mongo.version>4.11.0</de.flapdoodle.emeded.mongo.version>
     </properties>
 
 </project>

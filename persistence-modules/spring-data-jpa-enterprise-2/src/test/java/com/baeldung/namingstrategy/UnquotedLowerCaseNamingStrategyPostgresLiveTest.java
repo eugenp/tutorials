@@ -8,10 +8,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-
 import org.hibernate.exception.SQLGrammarException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,6 +17,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.TestDatabaseAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.TestPropertySource;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
 
 @DataJpaTest(excludeAutoConfiguration = TestDatabaseAutoConfiguration.class)
 @TestPropertySource("unquoted-lower-case-naming-strategy-on-postgres.properties")
@@ -77,8 +77,7 @@ class UnquotedLowerCaseNamingStrategyPostgresLiveTest {
     public Person fromDatabase(Object databaseRow) {
         Object[] typedDatabaseRow = (Object[]) databaseRow;
 
-        return new Person(
-          ((BigInteger) typedDatabaseRow[0]).longValue(),
+        return new Person((Long) typedDatabaseRow[0],
           (String) typedDatabaseRow[1],
           (String) typedDatabaseRow[2]
         );

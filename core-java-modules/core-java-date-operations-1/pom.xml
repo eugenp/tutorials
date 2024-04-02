@@ -4,8 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-date-operations-1</artifactId>
-    <name>core-java-date-operations-1</name>
     <packaging>jar</packaging>
+    <name>core-java-date-operations-1</name>
 
     <parent>
         <groupId>com.baeldung.core-java-modules</groupId>

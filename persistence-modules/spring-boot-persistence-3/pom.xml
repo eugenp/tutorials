@@ -55,13 +55,13 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring.boot.dependencies}</version>
             </plugin>
         </plugins>
     </build>
 
-
     <properties>
-        <spring.boot.dependencies>3.2.0</spring.boot.dependencies>
+        <spring.boot.dependencies>3.2.2</spring.boot.dependencies>
         <org.slf4j.version>2.0.9</org.slf4j.version>
         <logback.version>1.4.14</logback.version>
     </properties>

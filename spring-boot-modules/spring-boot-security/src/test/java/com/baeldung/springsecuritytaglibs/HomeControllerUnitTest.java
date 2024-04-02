@@ -1,25 +1,22 @@
 package com.baeldung.springsecuritytaglibs;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.test.context.junit4.SpringRunner;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT, classes = SpringBootSecurityTagLibsApplication.class)
-public class HomeControllerUnitTest {
+class HomeControllerUnitTest {
 
     @Autowired
     private TestRestTemplate restTemplate;
 
     @Test
-    public void whenUserIsAuthenticatedThenAuthenticatedSectionsShowOnSite() throws Exception {
+    void whenUserIsAuthenticatedThenAuthenticatedSectionsShowOnSite() {
         String body = this.restTemplate.withBasicAuth("testUser", "password")
             .getForEntity("/", String.class)
             .getBody();
@@ -47,7 +44,7 @@ public class HomeControllerUnitTest {
     }
 
     @Test
-    public void whenUserIsNotAuthenticatedThenOnlyAnonymousSectionsShowOnSite() throws Exception {
+    void whenUserIsNotAuthenticatedThenOnlyAnonymousSectionsShowOnSite() throws Exception {
         String body = this.restTemplate.getForEntity("/", String.class)
             .getBody();
 

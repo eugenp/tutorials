@@ -172,10 +172,12 @@
         <dependency>
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
+            <version>${spring-kafka.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka-test</artifactId>
+            <version>${spring-kafka.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -193,6 +195,11 @@
         <dependency>
             <groupId>io.zipkin.reporter2</groupId>
             <artifactId>zipkin-sender-urlconnection</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.swagger.core.v3</groupId>
+            <artifactId>swagger-core</artifactId>
+            <version>2.2.20</version>
         </dependency>
     </dependencies>
 
@@ -277,6 +284,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>17</source>
+                    <target>17</target>
+                </configuration>
             </plugin>
         </plugins>
     </build>
@@ -284,11 +295,12 @@
     <properties>
         <start-class>com.baeldung.restclient.RestClientApplication</start-class>
         <mapstruct.version>1.6.0.Beta1</mapstruct.version>
-        <springdoc.version>2.0.0</springdoc.version>
+        <springdoc.version>2.3.0</springdoc.version>
         <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
         <mockserver.version>5.14.0</mockserver.version>
         <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
         <jedis.version>5.0.2</jedis.version>
+        <spring-kafka.version>3.1.2</spring-kafka.version>
     </properties>
 
 </project>

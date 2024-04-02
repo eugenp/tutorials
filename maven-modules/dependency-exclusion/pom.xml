@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.dependency-exclusion</groupId>
     <artifactId>dependency-exclusion</artifactId>
-    <name>dependency-exclusion</name>
     <packaging>pom</packaging>
+    <name>dependency-exclusion</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -14,14 +14,20 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <surefire-version>2.22.2</surefire-version>
-    </properties>
-
     <modules>
         <module>dummy-surefire-junit47</module>
         <module>core-java-exclusions</module>
     </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <pluginManagement>
@@ -29,10 +35,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.7.0</version>
                     <configuration>
-                        <source>1.8</source>
-                        <target>1.8</target>
                         <compilerArgs>
                             <arg>-parameters</arg>
                         </compilerArgs>
@@ -57,14 +60,8 @@
         </pluginManagement>
     </build>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>${junit.version}</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+    <properties>
+        <surefire-version>2.22.2</surefire-version>
+    </properties>
 
 </project>

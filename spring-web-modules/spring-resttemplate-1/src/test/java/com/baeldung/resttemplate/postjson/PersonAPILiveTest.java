@@ -41,8 +41,8 @@ public class PersonAPILiveTest {
 
     @BeforeClass
     public static void runBeforeAllTestMethods() throws JSONException {
-        createPersonUrl = "http://localhost:8082/spring-rest/createPerson";
-        updatePersonUrl = "http://localhost:8082/spring-rest/updatePerson";
+        createPersonUrl = "http://localhost:8080/spring-rest/createPerson";
+        updatePersonUrl = "http://localhost:8080/spring-rest/updatePerson";
 
         restTemplate = new RestTemplate();
 

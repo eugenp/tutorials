@@ -8,9 +8,10 @@
     <packaging>jar</packaging>
 
     <parent>
-        <groupId>com.baeldung.spring.cloud</groupId>
-        <artifactId>spring-cloud-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-3</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencyManagement>
@@ -26,13 +27,6 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>${spring-cloud-dependencies.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring-boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -67,8 +61,9 @@
             <version>${hibernate-validator.version}</version>
         </dependency>
         <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <version>${jakarta.validation-api.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -109,6 +104,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
+                    <mainClass>com.baeldung.springcloudgateway.introduction.IntroductionGatewayApplication</mainClass>
                     <excludes>
                         <exclude>
                             <groupId>org.projectlombok</groupId>
@@ -183,12 +179,12 @@
     </profiles>
 
     <properties>
-        <!-- <spring-cloud-dependencies.version>Hoxton.SR3</spring-cloud-dependencies.version> -->
-        <!-- <spring-boot.version>2.2.6.RELEASE</spring-boot.version> -->
+        <spring-cloud-dependencies.version>2023.0.0</spring-cloud-dependencies.version>
         <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
         <redis.version>0.7.2</redis.version>
         <oauth2-oidc-sdk.version>9.19</oauth2-oidc-sdk.version>
         <!-- <junit-bom.version>5.5.2</junit-bom.version> -->
+        <jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
     </properties>
 
 </project>
