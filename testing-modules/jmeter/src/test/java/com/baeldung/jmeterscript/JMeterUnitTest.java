@@ -21,16 +21,18 @@ import org.apache.jmeter.control.LoopController;
 import org.apache.jmeter.threads.gui.ThreadGroupGui;
 import org.apache.jmeter.util.JMeterUtils;
 import org.apache.jorphan.collections.HashTree;
+import org.junit.jupiter.api.Test;
 
-public class JMeterTestScript {
+public class JMeterUnitTest {
 
-    public static void main(String[] args) throws IOException {
+    @Test
+    void givenJMeterScript_whenUsingCode_thenExecuteViaJavaProgram() throws IOException {
         String jmeterHome = System.getenv("JMETER_HOME");
         if (jmeterHome == null) {
             throw new RuntimeException("JMETER_HOME environment variable is not set.");
         }
 
-        String file = Objects.requireNonNull(JMeterTestScript.class.getClassLoader().getResource("jmeter.properties")).getFile();
+        String file = Objects.requireNonNull(JMeterUnitTest.class.getClassLoader().getResource("jmeter.properties")).getFile();
         JMeterUtils.setJMeterHome(jmeterHome);
 
         JMeterUtils.loadJMeterProperties(file);
