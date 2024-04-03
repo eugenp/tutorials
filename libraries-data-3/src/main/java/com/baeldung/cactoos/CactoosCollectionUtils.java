@@ -33,7 +33,7 @@ public class CactoosCollectionUtils {
 	public Collection<String> getFilteredList(List<String> strings) {
         return new ListOf<>(
 			new Filtered<>(
-				s -> s.length() > 4,
+				s -> s.length() == 5,
 				strings
 			)
 		);
