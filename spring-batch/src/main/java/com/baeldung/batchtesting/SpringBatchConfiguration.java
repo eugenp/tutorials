@@ -23,6 +23,7 @@ import org.springframework.batch.item.json.JacksonJsonObjectMarshaller;
 import org.springframework.batch.item.json.JsonFileItemWriter;
 import org.springframework.batch.item.json.builder.JsonFileItemWriterBuilder;
 import org.springframework.batch.item.support.ListItemWriter;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -111,7 +112,7 @@ public class SpringBatchConfiguration {
     }
 
     @Bean(name = "transformBooksRecords")
-    public Job transformBookRecords(JobRepository jobRepository, Step step1, Step step2) {
+    public Job transformBookRecords(JobRepository jobRepository, @Qualifier("step1") Step step1, @Qualifier("step2") Step step2) {
         // @formatter:off
         return new JobBuilder("transformBooksRecords", jobRepository)
           .flow(step1)

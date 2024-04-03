@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         name="M2Eclipse PMD RuleSet"
+         xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.sourceforge.io/ruleset_2_0_0.xsd">
+   <description>M2Eclipse PMD RuleSet</description>
+   <exclude-pattern>.*D:/workspaces/baeldung/tutorials/spring-security-modules/spring-security-oauth2-bff/backend/reverse-proxy/target.*</exclude-pattern>
+   <exclude-pattern>.*D:/workspaces/baeldung/tutorials/spring-security-modules/spring-security-oauth2-bff/backend/reverse-proxy/target/generated-sources.*</exclude-pattern>
+</ruleset>

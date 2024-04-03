@@ -1,16 +1,13 @@
 package com.baeldung.web.hateoas.listener;
 
-import java.net.URI;
-
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.http.HttpHeaders;
 import com.baeldung.web.hateoas.event.ResourceCreatedEvent;
+import com.google.common.base.Preconditions;
+import java.net.URI;
+import jakarta.servlet.http.HttpServletResponse;
+import org.apache.http.HttpHeaders;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
-import com.google.common.base.Preconditions;
 
 @Component
 class ResourceCreatedDiscoverabilityListener implements ApplicationListener<ResourceCreatedEvent> {

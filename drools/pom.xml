@@ -16,50 +16,50 @@
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpcore</artifactId>
-            <version>${http-component-version}</version>
+            <version>${httpcore.version}</version>
         </dependency>
         <dependency>
             <groupId>org.kie</groupId>
             <artifactId>kie-ci</artifactId>
-            <version>${drools-version}</version>
+            <version>${drools.version}</version>
         </dependency>
         <dependency>
             <groupId>org.drools</groupId>
             <artifactId>drools-decisiontables</artifactId>
-            <version>${drools-version}</version>
+            <version>${drools.version}</version>
         </dependency>
         <dependency>
             <groupId>org.drools</groupId>
             <artifactId>drools-core</artifactId>
-            <version>${drools-version}</version>
+            <version>${drools.version}</version>
         </dependency>
         <dependency>
             <groupId>org.drools</groupId>
             <artifactId>drools-compiler</artifactId>
-            <version>${drools-version}</version>
+            <version>${drools.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
-            <version>${apache-poi-version}</version>
+            <version>${poi.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
-            <version>${apache-poi-version}</version>
+            <version>${poi.version}</version>
         </dependency>
         <dependency>
             <groupId>org.optaplanner</groupId>
             <artifactId>optaplanner-core</artifactId>
-            <version>${opta-planner-version}</version>
+            <version>${optaplanner-core.version}</version>
         </dependency>
     </dependencies>
 
     <properties>
-        <http-component-version>4.4.16</http-component-version>
-        <drools-version>8.32.0.Final</drools-version>
-        <apache-poi-version>5.2.3</apache-poi-version>
-        <opta-planner-version>8.32.0.Final</opta-planner-version>
+        <httpcore.version>4.4.16</httpcore.version>
+        <drools.version>8.32.0.Final</drools.version>
+        <poi.version>5.2.3</poi.version>
+        <optaplanner-core.version>8.32.0.Final</optaplanner-core.version>
     </properties>
 
 </project>

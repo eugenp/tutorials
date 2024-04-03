@@ -4,7 +4,7 @@ import static springfox.bean.validators.plugins.Validators.annotationFromBean;
 
 import java.util.Optional;
 
-import javax.validation.constraints.Email;
+import jakarta.validation.constraints.Email;
 
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;

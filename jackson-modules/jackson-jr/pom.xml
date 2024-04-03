@@ -4,8 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>jackson-jr</artifactId>
-    <name>jackson-jr</name>
     <packaging>pom</packaging>
+    <name>jackson-jr</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -18,18 +18,17 @@
         <dependency>
             <groupId>com.fasterxml.jackson.jr</groupId>
             <artifactId>jackson-jr-all</artifactId>
-            <version>2.15.2</version>
+            <version>${jackson.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.jr</groupId>
             <artifactId>jackson-jr-annotation-support</artifactId>
-            <version>2.15.2</version>
+            <version>${jackson.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>RELEASE</version>
-            <scope>compile</scope>
+            <version>${lombok.version}</version>
         </dependency>
 
     </dependencies>
@@ -43,5 +42,9 @@
             </resource>
         </resources>
     </build>
+
+    <properties>
+        <jackson.version>2.16.0</jackson.version>
+    </properties>
 
 </project>

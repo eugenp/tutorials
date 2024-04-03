@@ -18,7 +18,6 @@ import com.mongodb.client.model.IndexOptions;
 import com.mongodb.client.model.Indexes;
 import com.mongodb.client.result.UpdateResult;
 
-import groovyjarjarantlr4.v4.runtime.misc.NotNull;
 
 import org.axonframework.config.ProcessingGroup;
 import org.axonframework.eventhandling.EventHandler;
@@ -30,6 +29,7 @@ import org.reactivestreams.Publisher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Profile;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
 import reactor.core.publisher.Flux;
@@ -172,7 +172,7 @@ public class MongoOrdersEventHandler implements OrdersEventHandler {
             .toString());
     }
 
-    private Order documentToOrder(@NotNull Document document) {
+    private Order documentToOrder(@NonNull Document document) {
         Order order = new Order(document.getString(ORDER_ID_PROPERTY_NAME));
         Document products = document.get(PRODUCTS_PROPERTY_NAME, Document.class);
         products.forEach((k, v) -> order.getProducts()

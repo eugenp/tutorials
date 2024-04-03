@@ -46,7 +46,7 @@ public class EmployeeClient {
 
         ResponseEntity<Employee[]> response =
                 restTemplate.getForEntity(
-                        "http://localhost:8082/spring-rest/employees/",
+                        "http://localhost:8080/spring-rest/employees/",
                         Employee[].class);
 
         Employee[] employees = response.getBody();
@@ -64,7 +64,7 @@ public class EmployeeClient {
 
         ResponseEntity<List<Employee>> response =
                 restTemplate.exchange(
-                        "http://localhost:8082/spring-rest/employees/",
+                        "http://localhost:8080/spring-rest/employees/",
                         HttpMethod.GET,
                         null,
                         new ParameterizedTypeReference<List<Employee>>() {
@@ -83,7 +83,7 @@ public class EmployeeClient {
 
         EmployeeList response =
                 restTemplate.getForObject(
-                        "http://localhost:8082/spring-rest/employees/v2",
+                        "http://localhost:8080/spring-rest/employees/v2",
                         EmployeeList.class);
 
         List<Employee> employees = response.getEmployees();
@@ -101,7 +101,7 @@ public class EmployeeClient {
         newEmployees.add(new Employee(4, "CEO"));
 
         restTemplate.postForObject(
-                "http://localhost:8082/spring-rest/employees/",
+                "http://localhost:8080/spring-rest/employees/",
                 newEmployees,
                 ResponseEntity.class);
     }
@@ -114,7 +114,7 @@ public class EmployeeClient {
         newEmployees.add(new Employee(4, "CEO"));
 
         restTemplate.postForObject(
-                "http://localhost:8082/spring-rest/employees/v2/",
+                "http://localhost:8080/spring-rest/employees/v2",
                 new EmployeeList(newEmployees),
                 ResponseEntity.class);
     }

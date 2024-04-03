@@ -4,7 +4,15 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-lang-math</artifactId>
+    <packaging>jar</packaging>
     <name>core-java-lang-math</name>
+
+    <parent>
+        <groupId>com.baeldung.core-java-modules</groupId>
+        <artifactId>core-java-modules</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -13,13 +21,6 @@
             <scope>compile</scope>
         </dependency>
     </dependencies>
-    <packaging>jar</packaging>
-
-    <parent>
-        <groupId>com.baeldung.core-java-modules</groupId>
-        <artifactId>core-java-modules</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-    </parent>
 
     <build>
         <finalName>core-java-lang-math</finalName>

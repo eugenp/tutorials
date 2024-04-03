@@ -32,7 +32,7 @@
     </dependencies>
 
     <properties>
-        <spring-boot-starter-data-jpa.version>2.2.5.RELEASE</spring-boot-starter-data-jpa.version>
+        <spring-boot-starter-data-jpa.version>3.1.5</spring-boot-starter-data-jpa.version>
     </properties>
 
 </project>

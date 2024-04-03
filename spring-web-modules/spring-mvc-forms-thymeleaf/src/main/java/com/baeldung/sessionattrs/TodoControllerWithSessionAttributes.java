@@ -13,7 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
-@RequestMapping("/sessionattributes")
+@RequestMapping(value = "/sessionattributes")
 @SessionAttributes("todos")
 public class TodoControllerWithSessionAttributes {
 

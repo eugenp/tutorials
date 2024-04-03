@@ -1,26 +1,31 @@
 package com.baeldung.multitenant.security;
 
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import javax.crypto.SecretKey;
+import java.nio.charset.StandardCharsets;
 import java.util.Collections;
 import java.util.Date;
 
 public class AuthenticationService {
 
     private static final long EXPIRATIONTIME = 864_000_00; // 1 day in milliseconds
-    private static final String SIGNINGKEY = "SecretKey";
+    private static final String SECRETKEY = "q3t6w9zCFJNcQfTjWnq3t6w9zCFJNcQfTjWnZr4u7xADGKaPd";
+    private static final SecretKey SIGNINGKEY = Keys.hmacShaKeyFor(SECRETKEY.getBytes(StandardCharsets.UTF_8));
     private static final String PREFIX = "Bearer";
 
     public static void addToken(HttpServletResponse res, String username, String tenant) {
-        String JwtToken = Jwts.builder().setSubject(username)
-          .setAudience(tenant)
-          .setExpiration(new Date(System.currentTimeMillis() + EXPIRATIONTIME))
-          .signWith(SignatureAlgorithm.HS512, SIGNINGKEY)
+        String JwtToken = Jwts.builder()
+          .subject(username)
+          .audience().add(tenant).and()
+          .issuedAt(new Date(System.currentTimeMillis()))
+          .expiration(new Date(System.currentTimeMillis() + EXPIRATIONTIME))
+          .signWith(SIGNINGKEY)
           .compact();
         res.addHeader("Authorization", PREFIX + " " + JwtToken);
     }
@@ -29,9 +34,8 @@ public class AuthenticationService {
         String token = req.getHeader("Authorization");
         if (token != null) {
             String user = Jwts.parser()
-              .setSigningKey(SIGNINGKEY)
-              .build().parseClaimsJws(token.replace(PREFIX, ""))
-              .getBody()
+              .verifyWith(SIGNINGKEY)
+              .build().parseClaimsJws(token.replace(PREFIX, "").trim()).getPayload()
               .getSubject();
             if (user != null) {
                 return new UsernamePasswordAuthenticationToken(user, null, Collections.emptyList());
@@ -48,7 +52,7 @@ public class AuthenticationService {
         }
         String tenant = Jwts.parser()
           .setSigningKey(SIGNINGKEY)
-          .build().parseClaimsJws(token.replace(PREFIX, ""))
+          .build().parseClaimsJws(token.replace(PREFIX, "").trim())
           .getBody()
           .getAudience()
             .iterator()

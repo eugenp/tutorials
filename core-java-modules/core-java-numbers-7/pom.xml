@@ -3,8 +3,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-numbers-7</artifactId>
-    <name>core-java-numbers-7</name>
     <packaging>jar</packaging>
+    <name>core-java-numbers-7</name>
 
     <parent>
         <groupId>com.baeldung.core-java-modules</groupId>
@@ -19,12 +19,8 @@
             <version>${junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-        </dependency>
     </dependencies>
+
     <build>
         <finalName>core-java-numbers-7</finalName>
         <resources>
@@ -34,4 +30,5 @@
             </resource>
         </resources>
     </build>
+
 </project>

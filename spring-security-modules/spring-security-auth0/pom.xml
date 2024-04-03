@@ -69,7 +69,7 @@
     </build>
 
     <properties>
-        <json.version>20190722</json.version>
+        <json.version>20240303</json.version>
         <mvc-auth-commons.version>1.2.0</mvc-auth-commons.version>
     </properties>
 

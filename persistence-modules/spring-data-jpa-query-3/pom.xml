@@ -5,6 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-data-jpa-query-3</artifactId>
     <name>spring-data-jpa-query-3</name>
+
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-boot-2</artifactId>
@@ -46,10 +47,6 @@
             <version>1.9.1</version>
         </dependency>
     </dependencies>
-
-    <properties>
-        <javafaker.version>0.15</javafaker.version>
-    </properties>
     <build>
         <plugins>
             <plugin>
@@ -63,4 +60,7 @@
         </plugins>
     </build>
 
+    <properties>
+        <javafaker.version>0.15</javafaker.version>
+    </properties>
 </project>

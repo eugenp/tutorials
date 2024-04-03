@@ -42,6 +42,7 @@
 
     <properties>
         <javers.version>6.6.5</javers.version>
+        <start-class> com.baeldung.boot.bootstrapmode.Application</start-class>
     </properties>
 
 </project>

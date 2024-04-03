@@ -3,7 +3,7 @@ package com.baeldung.springbootsecurityrest.controller;
 import java.security.Principal;
 import java.util.Base64;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;

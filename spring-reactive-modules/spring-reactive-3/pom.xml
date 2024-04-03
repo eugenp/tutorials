@@ -10,9 +10,10 @@
     <description>spring sample project about new features</description>
 
     <parent>
-        <groupId>com.baeldung.spring.reactive</groupId>
-        <artifactId>spring-reactive-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-3</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -64,6 +65,21 @@
             <groupId>org.springframework.session</groupId>
             <artifactId>spring-session-data-redis</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>mockwebserver</artifactId>
+            <version>${mockwebserver.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-stdlib</artifactId>
+            <version>${kotlin-stdlib.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -81,6 +97,9 @@
     <properties>
         <reactor-spring.version>1.0.1.RELEASE</reactor-spring.version>
         <spring-cloud.version>2021.0.4</spring-cloud.version>
+        <mockwebserver.version>5.0.0-alpha.12</mockwebserver.version>
+        <kotlin-stdlib.version>2.0.0-Beta4</kotlin-stdlib.version>
+        <start-class>com.baeldung.custom.deserialization.Application</start-class>
     </properties>
 
 </project>

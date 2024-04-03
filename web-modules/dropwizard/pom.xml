@@ -27,6 +27,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
+                <version>${maven-shade-plugin.version}</version>
                 <configuration>
                     <createDependencyReducedPom>true</createDependencyReducedPom>
                     <filters>
@@ -64,6 +65,7 @@
 
     <properties>
         <dropwizard.version>2.0.0</dropwizard.version>
+        <maven-shade-plugin.version>3.5.0</maven-shade-plugin.version>
     </properties>
 
 </project>

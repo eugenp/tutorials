@@ -33,18 +33,18 @@ public class StudentRepositoryManualTest {
     private static redis.embedded.RedisServer redisServer;
     
     @BeforeClass
-    public static void startRedisServer() throws IOException {
+    public static void startRedisServer() {
         redisServer = new RedisServerBuilder().port(6379).setting("maxmemory 128M").build();
         redisServer.start();
     }
     
     @AfterClass
-    public static void stopRedisServer() throws IOException {
+    public static void stopRedisServer() {
         redisServer.stop();
     }
 
     @Test
-    public void whenSavingStudent_thenAvailableOnRetrieval() throws Exception {
+    public void whenSavingStudent_thenAvailableOnRetrieval() {
         final Student student = new Student("Eng2015001", "John Doe", Student.Gender.MALE, 1);
         studentRepository.save(student);
         final Student retrievedStudent = studentRepository.findById(student.getId()).get();
@@ -52,7 +52,7 @@ public class StudentRepositoryManualTest {
     }
 
     @Test
-    public void whenUpdatingStudent_thenAvailableOnRetrieval() throws Exception {
+    public void whenUpdatingStudent_thenAvailableOnRetrieval() {
         final Student student = new Student("Eng2015001", "John Doe", Student.Gender.MALE, 1);
         studentRepository.save(student);
         student.setName("Richard Watson");
@@ -62,7 +62,7 @@ public class StudentRepositoryManualTest {
     }
 
     @Test
-    public void whenSavingStudents_thenAllShouldAvailableOnRetrieval() throws Exception {
+    public void whenSavingStudents_thenAllShouldAvailableOnRetrieval() {
         final Student engStudent = new Student("Eng2015001", "John Doe", Student.Gender.MALE, 1);
         final Student medStudent = new Student("Med2015001", "Gareth Houston", Student.Gender.MALE, 2);
         studentRepository.save(engStudent);
@@ -73,7 +73,7 @@ public class StudentRepositoryManualTest {
     }
 
     @Test
-    public void whenDeletingStudent_thenNotAvailableOnRetrieval() throws Exception {
+    public void whenDeletingStudent_thenNotAvailableOnRetrieval() {
         final Student student = new Student("Eng2015001", "John Doe", Student.Gender.MALE, 1);
         studentRepository.save(student);
         studentRepository.deleteById(student.getId());

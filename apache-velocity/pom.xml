@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>apache-velocity</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>apache-velocity</name>
     <packaging>war</packaging>
+    <name>apache-velocity</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -28,7 +28,7 @@
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
-            <version>${org.apache.httpcomponents.version}</version>
+            <version>${httpclient.version}</version>
             <scope>test</scope>
             <exclusions>
                 <exclusion>
@@ -60,7 +60,7 @@
     </build>
 
     <properties>
-        <org.apache.httpcomponents.version>4.5.2</org.apache.httpcomponents.version>
+        <httpclient.version>4.5.2</httpclient.version>
         <velocity-version>1.7</velocity-version>
         <velocity-tools-version>2.0</velocity-tools-version>
     </properties>

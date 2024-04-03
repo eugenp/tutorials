@@ -28,10 +28,10 @@ public class SecretResource {
         String value = env.getProperty(key);
         
         if ( value != null ) {        
-            return new ResponseEntity<String>(value, HttpStatus.OK);
+            return new ResponseEntity<>(value, HttpStatus.OK);
         }
         else {
-            return new ResponseEntity<String>("not found", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("not found", HttpStatus.NOT_FOUND);
         }              
     }
 }

@@ -12,9 +12,8 @@ import com.baeldung.boot.jackson.model.Coffee;
 public class CoffeeController {
 
     @GetMapping("/coffee")
-    public Coffee getCoffee(
-            @RequestParam(required = false) String brand,
-            @RequestParam(required = false) String name) {
+    public Coffee getCoffee(@RequestParam(name = "brand", required = false) String brand,
+        @RequestParam(name = "name", required = false) String name) {
         return new Coffee().setBrand(brand)
                 .setDate(FIXED_DATE)
                 .setName(name);
