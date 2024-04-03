@@ -1183,7 +1183,7 @@
         <directory-maven-plugin.version>1.0</directory-maven-plugin.version>
         <maven-install-plugin.version>3.1.1</maven-install-plugin.version>
         <custom-pmd.version>0.0.1</custom-pmd.version>
-        <gitflow-incremental-builder.version>3.15.0</gitflow-incremental-builder.version>
+        <gitflow-incremental-builder.version>4.5.3</gitflow-incremental-builder.version>
         <maven-jxr-plugin.version>3.3.0</maven-jxr-plugin.version>
         <maven-pmd-plugin.version>3.21.0</maven-pmd-plugin.version>
         <lombok.version>1.18.30</lombok.version>
