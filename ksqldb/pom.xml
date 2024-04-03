@@ -45,6 +45,7 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <!--check this -->
             <groupId>org.testcontainers</groupId>
             <artifactId>junit-jupiter</artifactId>
             <version>${testcontainers.version}</version>
