@@ -63,7 +63,7 @@ public class VectorAPIExamples {
     public float[] scalarNormOfTwoArrays(float[] arr1, float[] arr2) {
         float[] finalResult = new float[arr1.length];
         for (int i = 0; i < arr1.length; i++) {
-            finalResult[i] = (arr1[i] * arr1[i] + arr2[i] * arr2[i]) * -1.0f;
+            finalResult[i] = (float) Math.sqrt(arr1[i] * arr1[i] + arr2[i] * arr2[i]);
         }
         return finalResult;
     }
@@ -77,13 +77,13 @@ public class VectorAPIExamples {
             var vb = FloatVector.fromArray(PREFERRED_SPECIES, arr2, i);
             var vc = va.mul(va)
               .add(vb.mul(vb))
-              .neg();
+              .sqrt();
             vc.intoArray(finalResult, i);
         }
 
         // tail cleanup
         for (; i < arr1.length; i++) {
-            finalResult[i] = (arr1[i] * arr1[i] + arr2[i] * arr2[i]) * -1.0f;
+            finalResult[i] = (float) Math.sqrt(arr1[i] * arr1[i] + arr2[i] * arr2[i]);
         }
         return finalResult;
     }

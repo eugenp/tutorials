@@ -1,0 +1,10 @@
+### Relevant Articles:
+- [Count Uppercase and Lowercase Letters in a String](https://www.baeldung.com/java-string-count-letters-uppercase-lowercase)
+- [Find The Largest Number in a String](https://www.baeldung.com/java-find-largest-number-string)
+- [Check if String is Base64 Encoded](https://www.baeldung.com/java-check-string-base64-encoding)
+- [Find an Unique Email Address in a List](https://www.baeldung.com/java-find-unique-email-address)
+- [Get First n Characters in a String in Java](https://www.baeldung.com/get-first-n-characters-in-a-string-in-java)
+- [Remove Only Trailing Spaces or Whitespace From a String in Java](https://www.baeldung.com/java-string-remove-only-trailing-whitespace)
+- [Get the Initials of a Name in Java](https://www.baeldung.com/java-shorten-name-initials)
+- [Normalizing the EOL Character in Java](https://www.baeldung.com/java-normalize-end-of-line-character)
+- [Converting UTF-8 to ISO-8859-1 in Java](https://www.baeldung.com/java-utf-8-iso-8859-1-conversion)

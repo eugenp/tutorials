@@ -4,22 +4,23 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
-import org.springframework.boot.actuate.trace.http.HttpTrace;
-import org.springframework.boot.actuate.trace.http.HttpTraceRepository;
+import org.apache.hc.client5.http.classic.methods.HttpTrace;
+import org.springframework.boot.actuate.web.exchanges.HttpExchange;
+import org.springframework.boot.actuate.web.exchanges.HttpExchangeRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class CustomTraceRepository implements HttpTraceRepository {
+public class CustomTraceRepository implements HttpExchangeRepository {
 
-    AtomicReference<HttpTrace> lastTrace = new AtomicReference<>();
+    AtomicReference<HttpExchange> lastTrace = new AtomicReference<>();
 
     @Override
-    public List<HttpTrace> findAll() {
+    public List<HttpExchange> findAll() {
         return Collections.singletonList(lastTrace.get());
     }
 
     @Override
-    public void add(HttpTrace trace) {
+    public void add(HttpExchange trace) {
         if ("GET".equals(trace.getRequest()
             .getMethod())) {
             lastTrace.set(trace);

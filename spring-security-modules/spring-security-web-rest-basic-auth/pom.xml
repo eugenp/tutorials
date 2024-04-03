@@ -75,6 +75,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-oxm</artifactId>
+            <version>${spring-oxm.version}</version>
         </dependency>
         <!-- marshalling -->
         <dependency>
@@ -213,6 +214,7 @@
 
     <properties>
         <jaxb-api.version>2.3.1</jaxb-api.version>
+        <spring-oxm.version>6.1.4</spring-oxm.version>
         <!-- http -->
         <httpcore.version>4.4.11</httpcore.version>
         <httpclient.version>4.5.8</httpclient.version>

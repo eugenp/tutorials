@@ -20,21 +20,21 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         super();
     }
 
-    // API
-
     @Override
     public Authentication authenticate(final Authentication authentication) throws AuthenticationException {
         final String name = authentication.getName();
         final String password = authentication.getCredentials().toString();
-        if (name.equals("admin") && password.equals("system")) {
-            final List<GrantedAuthority> grantedAuths = new ArrayList<>();
-            grantedAuths.add(new SimpleGrantedAuthority("ROLE_USER"));
-            final UserDetails principal = new User(name, password, grantedAuths);
-            final Authentication auth = new UsernamePasswordAuthenticationToken(principal, password, grantedAuths);
-            return auth;
-        } else {
+        if (!"admin".equals(name) || !"system".equals(password)) {
             return null;
         }
+        return authenticateAgainstThirdPartyAndGetAuthentication(name, password);
+    }
+
+    private static UsernamePasswordAuthenticationToken authenticateAgainstThirdPartyAndGetAuthentication(String name, String password) {
+        final List<GrantedAuthority> grantedAuths = new ArrayList<>();
+        grantedAuths.add(new SimpleGrantedAuthority("ROLE_USER"));
+        final UserDetails principal = new User(name, password, grantedAuths);
+        return new UsernamePasswordAuthenticationToken(principal, password, grantedAuths);
     }
 
     @Override

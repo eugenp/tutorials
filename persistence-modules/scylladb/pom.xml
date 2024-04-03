@@ -8,16 +8,14 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>scylladb</name>
     <description>Sample ScyllaDB Project</description>
-    <properties>
-        <testcontainers.version>1.17.6</testcontainers.version>
-        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
-    </properties>
+
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../../parent-boot-3</relativePath>
     </parent>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -84,5 +82,10 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <testcontainers.version>1.17.6</testcontainers.version>
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
+    </properties>
 
 </project>

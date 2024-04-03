@@ -8,9 +8,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-2</relativePath>
+        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -34,11 +34,13 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-oxm</artifactId>
+            <version>${spring-oxm.version}</version>
         </dependency>
     </dependencies>
 
     <properties>
         <datasource-proxy.version>1.4.1</datasource-proxy.version>
+        <spring-oxm.version>6.1.4</spring-oxm.version>
     </properties>
 
 </project>

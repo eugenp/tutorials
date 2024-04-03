@@ -5,6 +5,7 @@ import com.baeldung.persistence.model.Foo;
 import com.baeldung.persistence.service.IFooService;
 import com.baeldung.persistence.service.common.AbstractService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,7 +24,7 @@ public class FooService extends AbstractService<Foo> implements IFooService {
     // API
 
     @Override
-    protected PagingAndSortingRepository<Foo, Long> getDao() {
+    protected JpaRepository<Foo, Long> getDao() {
         return dao;
     }
 

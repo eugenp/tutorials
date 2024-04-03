@@ -1,6 +1,7 @@
 package com.baeldung.hibernate.exception.transientobject.entity;
 
 
+import jakarta.persistence.JoinTable;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
@@ -29,7 +30,7 @@ public class Book {
 
     @ManyToMany
     @Cascade({ CascadeType.SAVE_UPDATE, CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "author_id")
+    @JoinTable(joinColumns = { @JoinColumn(name = "author_id") })
     private Set<Author> authors = new HashSet<>();
 
     public void addAuthor(Author author) {

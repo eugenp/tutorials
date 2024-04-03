@@ -4,9 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-datetime-conversion</artifactId>
-    <version>${project.parent.version}</version>
-    <name>core-java-datetime-conversion</name>
     <packaging>jar</packaging>
+    <name>core-java-datetime-conversion</name>
 
     <parent>
         <groupId>com.baeldung.core-java-modules</groupId>
@@ -25,12 +24,6 @@
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.github.msarhan</groupId>
-            <artifactId>ummalqura-calendar</artifactId>
-            <version>${ummalqura-calendar.version}</version>
-        </dependency>
-
     </dependencies>
 
     <build>
@@ -51,7 +44,6 @@
 
     <properties>
         <joda-time.version>2.12.5</joda-time.version>
-        <ummalqura-calendar.version>2.0.2</ummalqura-calendar.version>
     </properties>
 
 </project>

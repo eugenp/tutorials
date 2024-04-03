@@ -11,12 +11,18 @@ import org.springframework.kafka.test.context.EmbeddedKafka;
 import org.springframework.util.CollectionUtils;
 
 import java.util.Objects;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.annotation.DirtiesContext.ClassMode;
+import org.springframework.test.context.ActiveProfiles;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest(classes = ManagingConsumerGroupsApplicationKafkaApp.class)
-@EmbeddedKafka(partitions = 2, brokerProperties = {"listeners=PLAINTEXT://localhost:9098", "port=9098"})
+@EmbeddedKafka(partitions = 2, brokerProperties = {"listeners=PLAINTEXT://localhost:9098", "port=9098"}, topics = {"topic1"})
+@DirtiesContext(classMode = ClassMode.BEFORE_CLASS)
+@ActiveProfiles("managed")
 public class ManagingConsumerGroupsIntegrationTest {
 
     private static final String CONSUMER_1_IDENTIFIER = "org.springframework.kafka.KafkaListenerEndpointContainer#1";

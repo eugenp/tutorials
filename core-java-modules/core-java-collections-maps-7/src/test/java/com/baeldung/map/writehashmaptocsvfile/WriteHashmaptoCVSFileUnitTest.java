@@ -1,5 +1,6 @@
 package com.baeldung.writehashmaptocsvfile;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -62,5 +63,17 @@ public class WriteHashmaptoCVSFileUnitTest {
 
         // Ensure the CSV file exists
         assertTrue(new File("employee_data2.csv").exists());
+    }
+
+    @AfterAll
+    public static void cleanUp() {
+        final File employeeData = new File("employee_data.csv");
+        if (employeeData.exists()) {
+            employeeData.deleteOnExit();
+        }
+        final File employeeData2 = new File("employee_data2.csv");
+        if (employeeData2.exists()) {
+            employeeData2.deleteOnExit();
+        }
     }
 }

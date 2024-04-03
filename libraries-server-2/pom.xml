@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>libraries-server-2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>libraries-server-2</name>
     <packaging>war</packaging>
+    <name>libraries-server-2</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -29,6 +29,11 @@
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-webapp</artifactId>
             <version>${jetty.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>${netty.version}</version>
         </dependency>
     </dependencies>
 
@@ -73,6 +78,7 @@
     <properties>
         <jetty.version>9.4.27.v20200227</jetty.version>
         <alpn.version>8.1.11.v20170118</alpn.version>
+        <netty.version>4.1.104.Final</netty.version>
     </properties>
 
 </project>

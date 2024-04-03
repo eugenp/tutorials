@@ -18,7 +18,7 @@ public class AccountResource {
         
         Account acc = repo.findById(id).orElse(null);
         if ( acc != null ) {
-            return new ResponseEntity<Account>(acc, HttpStatus.OK);
+            return new ResponseEntity<>(acc, HttpStatus.OK);
         }
         else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

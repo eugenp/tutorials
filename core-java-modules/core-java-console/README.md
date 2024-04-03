@@ -8,3 +8,5 @@
 - [System.console() vs. System.out](https://www.baeldung.com/java-system-console-vs-system-out)
 - [How to Log to the Console in Color](https://www.baeldung.com/java-log-console-in-color)
 - [Create Table Using ASCII in a Console in Java](https://www.baeldung.com/java-console-ascii-make-table)
+- [Printing Message on Console without Using main() Method in Java](https://www.baeldung.com/java-no-main-print-message-console)
+- [Guide to System.in.read()](https://www.baeldung.com/java-system-in-read)

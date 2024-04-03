@@ -7,4 +7,5 @@ This module contains articles about core Java Security
 - [Extract CN From X509 Certificate in Java](https://www.baeldung.com/java-extract-common-name-x509-certificate)
 - [Check Certificate Name and Alias in Keystore File](https://www.baeldung.com/java-keystore-check-certificate-name-alias)
 - [Using a Custom TrustStore in Java](https://www.baeldung.com/java-custom-truststore)
+- [Enable Java SSL Debug Logging](https://www.baeldung.com/java-ssl-debug-logging)
 - More articles: [[<-- prev]](/core-java-modules/core-java-security-3)

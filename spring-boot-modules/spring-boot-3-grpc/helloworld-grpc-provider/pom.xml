@@ -8,10 +8,9 @@
     <name>helloworld-grpc-provider</name>
 
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-3</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../../parent-boot-3</relativePath>
+        <groupId>com.baeldung.spring-boot-modules</groupId>
+        <artifactId>spring-boot-3-grpc</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <dependencies>
@@ -28,7 +27,6 @@
     </dependencies>
 
     <properties>
-        <spring-boot.version>3.2.0</spring-boot.version>
         <grpc-spring-boot-starter.version>2.15.0.RELEASE</grpc-spring-boot-starter.version>
     </properties>
 

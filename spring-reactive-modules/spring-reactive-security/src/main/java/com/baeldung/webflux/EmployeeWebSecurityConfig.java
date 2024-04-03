@@ -3,6 +3,7 @@ package com.baeldung.webflux;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.core.userdetails.MapReactiveUserDetailsService;
@@ -27,15 +28,13 @@ public class EmployeeWebSecurityConfig {
 
     @Bean
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
-        http.csrf()
-            .disable()
-            .authorizeExchange()
+        http.csrf(csrfSpec -> csrfSpec.disable())
+            .authorizeExchange(auth -> auth
             .pathMatchers(HttpMethod.POST, "/employees/update")
             .hasRole("ADMIN")
             .pathMatchers("/**")
-            .permitAll()
-            .and()
-            .httpBasic();
+            .permitAll())
+            .httpBasic(Customizer.withDefaults());
         return http.build();
     }
     

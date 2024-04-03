@@ -10,9 +10,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-2</relativePath>
+        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -156,14 +156,11 @@
                     </plugin>
                 </plugins>
             </build>
-
-            <properties>
-                <jmeter-maven-plugin.version>3.7.0</jmeter-maven-plugin.version>
-            </properties>
         </profile>
     </profiles>
 
     <properties>
+        <start-class>com.baeldung.dashboard.DashboardApplication</start-class>
         <jmeter-maven-plugin.version>3.7.0</jmeter-maven-plugin.version>
     </properties>
 

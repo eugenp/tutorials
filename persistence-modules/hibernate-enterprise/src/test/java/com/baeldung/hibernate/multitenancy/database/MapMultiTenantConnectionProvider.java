@@ -10,7 +10,7 @@ import org.hibernate.engine.jdbc.connections.spi.AbstractMultiTenantConnectionPr
 import org.hibernate.engine.jdbc.connections.spi.ConnectionProvider;
 
 @SuppressWarnings("serial")
-public class MapMultiTenantConnectionProvider extends AbstractMultiTenantConnectionProvider {
+public class MapMultiTenantConnectionProvider extends AbstractMultiTenantConnectionProvider<String> {
 
     private final Map<String, ConnectionProvider> connectionProviderMap = new HashMap<>();
 
@@ -25,6 +25,7 @@ public class MapMultiTenantConnectionProvider extends AbstractMultiTenantConnect
             .iterator()
             .next();
     }
+
 
     @Override
     protected ConnectionProvider selectConnectionProvider(String tenantIdentifier) {

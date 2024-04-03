@@ -29,11 +29,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-        </dependency>
-        <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
         </dependency>
@@ -121,8 +116,8 @@
             <artifactId>httpclient</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.github.tomakehurst</groupId>
-            <artifactId>wiremock</artifactId>
+            <groupId>org.wiremock</groupId>
+            <artifactId>wiremock-standalone</artifactId>
             <version>${wiremock.version}</version>
         </dependency>
         <dependency>
@@ -181,7 +176,7 @@
         <libphonenumber.version>8.0.0</libphonenumber.version>
         <msg-simple.version>1.1</msg-simple.version>
         <btf.version>1.2</btf.version>
-        <wiremock.version>2.27.2</wiremock.version>
+        <wiremock.version>3.3.1</wiremock.version>
         <scribejava.version>2.5.3</scribejava.version>
         <rest-assured.version>5.3.0</rest-assured.version>
     </properties>

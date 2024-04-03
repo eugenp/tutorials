@@ -2,10 +2,13 @@ package com.baeldung.reactive.authresolver;
 
 import java.util.Collections;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.ReactiveAuthenticationManager;
 import org.springframework.security.authentication.ReactiveAuthenticationManagerResolver;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableReactiveMethodSecurity;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.SecurityWebFiltersOrder;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
@@ -24,12 +27,10 @@ public class CustomWebSecurityConfig {
     @Bean
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
         return http
-          .authorizeExchange()
-          .pathMatchers("/**")
-          .authenticated()
-          .and()
-          .httpBasic()
-          .disable()
+            .csrf(csrfSpec -> csrfSpec.disable())
+            .authorizeExchange(auth -> auth.pathMatchers(HttpMethod.GET,"/**")
+                .authenticated())
+            .httpBasic(httpBasicSpec -> httpBasicSpec.disable())
           .addFilterAfter(authenticationWebFilter(), SecurityWebFiltersOrder.REACTOR_CONTEXT)
           .build();
     }

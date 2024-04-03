@@ -1,19 +1,21 @@
 package com.baeldung.annotations.globalmethod;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.security.RolesAllowed;
+import jakarta.annotation.security.RolesAllowed;
 
 @RestController
-@EnableGlobalMethodSecurity(jsr250Enabled = true, prePostEnabled = true)
+@EnableMethodSecurity(jsr250Enabled = true, securedEnabled = true)
 public class AnnotationSecuredController {
 
-    @Autowired
-    DifferentClass differentClass;
+    final DifferentClass differentClass;
+
+    public AnnotationSecuredController(DifferentClass differentClass) {
+        this.differentClass = differentClass;
+    }
 
     @GetMapping("/public")
     public String publicHello() {
@@ -46,5 +48,4 @@ public class AnnotationSecuredController {
     public String preAuthorizeHello() {
         return "Hello PreAuthorize";
     }
-
 }

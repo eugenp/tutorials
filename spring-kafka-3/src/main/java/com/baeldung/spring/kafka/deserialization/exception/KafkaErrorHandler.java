@@ -13,8 +13,9 @@ class KafkaErrorHandler implements CommonErrorHandler {
     private static final Logger log = LoggerFactory.getLogger(KafkaErrorHandler.class);
 
     @Override
-    public void handleRecord(Exception exception, ConsumerRecord<?, ?> record, Consumer<?, ?> consumer, MessageListenerContainer container) {
+    public boolean handleOne(Exception exception, ConsumerRecord<?, ?> record, Consumer<?, ?> consumer, MessageListenerContainer container) {
         handle(exception, consumer);
+        return true;
     }
 
     @Override

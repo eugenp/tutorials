@@ -37,13 +37,13 @@ public class RedisTemplateValueOpsManualTest {
     private ReactiveValueOperations<String, Employee> reactiveValueOps;
     
     @BeforeClass
-    public static void startRedisServer() throws IOException {
+    public static void startRedisServer() {
         redisServer = new RedisServerBuilder().port(6379).setting("maxmemory 256M").build();
         redisServer.start();
     }
     
     @AfterClass
-    public static void stopRedisServer() throws IOException {
+    public static void stopRedisServer() {
         redisServer.stop();
     }
 

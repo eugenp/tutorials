@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>java-spi</artifactId>
-    <name>java-spi</name>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
+    <name>java-spi</name>
 
     <parent>
         <groupId>com.baeldung.core-java-modules</groupId>

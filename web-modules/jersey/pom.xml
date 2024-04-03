@@ -104,7 +104,7 @@
     </build>
 
     <properties>
-        <jersey.version>3.1.1</jersey.version>
+        <jersey.version>3.1.5</jersey.version>
     </properties>
 
 </project>

@@ -8,5 +8,5 @@
 - [HTTP Interface in Spring 6](https://www.baeldung.com/spring-6-http-interface)
 - [Working with Virtual Threads in Spring 6](https://www.baeldung.com/spring-6-virtual-threads)
 - [Docker Compose Support in Spring Boot 3](https://www.baeldung.com/ops/docker-compose-support-spring-boot)
-
+- [The SpringJUnitConfig and SpringJUnitWebConfig Annotations in Spring](https://www.baeldung.com/spring-5-junit-config)
 - More articles: [[next -->]](/spring-boot-modules/spring-boot-3-2)
