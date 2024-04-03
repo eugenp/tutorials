@@ -8,7 +8,7 @@ public class CustomDecoder implements ConfigurationDecoder {
     public static final String DUMMY_CONSTANT = "dummyConstant";
 
     @Override
-    public String decode(String s) {
-        return new String(Base64.decodeBase64(s));
+    public String decode(String encodedValue) {
+        return new String(Base64.decodeBase64(encodedValue));
     }
 }

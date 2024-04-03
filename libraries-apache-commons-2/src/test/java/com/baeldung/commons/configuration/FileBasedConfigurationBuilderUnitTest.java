@@ -18,10 +18,10 @@ import org.apache.commons.configuration2.interpol.ExprLookup;
 import org.apache.commons.configuration2.interpol.Lookup;
 import org.junit.jupiter.api.Test;
 
-public class FileBasedConfigurationBuilderUnitTest {
+class FileBasedConfigurationBuilderUnitTest {
 
     @Test
-    public void whenReadingPropertiesFile_thenIsSuccessful() throws ConfigurationException {
+    void whenReadingPropertiesFile_thenIsSuccessful() throws ConfigurationException {
         Parameters params = new Parameters();
         FileBasedConfigurationBuilder<FileBasedConfiguration> builder = new FileBasedConfigurationBuilder<FileBasedConfiguration>(
             PropertiesConfiguration.class).configure(params.properties()
@@ -36,7 +36,7 @@ public class FileBasedConfigurationBuilderUnitTest {
     }
 
     @Test
-    public void whenReadingXMLFile_thenIsSuccessful() throws ConfigurationException {
+    void whenReadingXMLFile_thenIsSuccessful() throws ConfigurationException {
         Parameters params = new Parameters();
         FileBasedConfigurationBuilder<XMLConfiguration> builder = new FileBasedConfigurationBuilder<>(XMLConfiguration.class).configure(params.xml()
             .setFileName("src/test/resources/configuration/hierarchical.xml")
@@ -49,7 +49,7 @@ public class FileBasedConfigurationBuilderUnitTest {
     }
 
     @Test
-    public void whenExpressionEvaluationIsAttempted_thenIsSuccessful() throws ConfigurationException {
+    void whenExpressionEvaluationIsAttempted_thenIsSuccessful() throws ConfigurationException {
         System.setProperty("user.home", "/usr/lib");
         Parameters params = new Parameters();
         Map<String, Lookup> lookups = new HashMap<>(ConfigurationInterpolator.getDefaultPrefixLookups());

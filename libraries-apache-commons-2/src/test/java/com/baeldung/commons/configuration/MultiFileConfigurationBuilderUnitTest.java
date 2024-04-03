@@ -10,10 +10,10 @@ import org.apache.commons.configuration2.ex.ConfigurationException;
 import org.apache.commons.configuration2.interpol.ConfigurationInterpolator;
 import org.junit.jupiter.api.Test;
 
-public class MultiFileConfigurationBuilderUnitTest {
+class MultiFileConfigurationBuilderUnitTest {
 
     @Test
-    public void givenMultiplePropertyFiles_whenReadingWithMultiFileConfigurationBuilder_thenIsLoaded() throws ConfigurationException {
+    void givenMultiplePropertyFiles_whenReadingWithMultiFileConfigurationBuilder_thenIsLoaded() throws ConfigurationException {
         System.setProperty("tenant", "A");
         String filePattern = "src/test/resources/configuration/tenant-${sys:tenant}.properties";
         MultiFileConfigurationBuilder<PropertiesConfiguration> builder = new MultiFileConfigurationBuilder<>(PropertiesConfiguration.class).configure(

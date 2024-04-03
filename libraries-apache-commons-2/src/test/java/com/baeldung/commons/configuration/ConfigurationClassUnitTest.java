@@ -19,16 +19,16 @@ import org.apache.commons.configuration2.ex.ConfigurationException;
 import org.apache.commons.configuration2.ex.ConversionException;
 import org.junit.jupiter.api.Test;
 
-public class ConfigurationClassUnitTest {
+class ConfigurationClassUnitTest {
 
     @Test
-    public void givenPropertiesFile_whenReadingWithConfigurationClass_thenIsLoaded() throws ConfigurationException {
+    void givenPropertiesFile_whenReadingWithConfigurationClass_thenIsLoaded() throws ConfigurationException {
         Configurations configs = new Configurations();
         Configuration config = configs.properties(new File("src/test/resources/configuration/file.properties"));
         String dbHost = config.getString("db.host");
         int dbPort = config.getInt("db.port");
         String dbUser = config.getString("db.user");
-        String dbPassword = config.getString("undefinedKey", "defaultValue");  // provide a default value
+        String dbPassword = config.getString("undefinedKey", "defaultValue");
         assertEquals("baeldung.com", dbHost);
         assertEquals(9999, dbPort);
         assertEquals("admin", dbUser);
@@ -36,7 +36,7 @@ public class ConfigurationClassUnitTest {
     }
 
     @Test
-    public void givenXMLFile_whenReadingWithConfigurationClass_thenIsLoaded() throws ConfigurationException {
+    void givenXMLFile_whenReadingWithConfigurationClass_thenIsLoaded() throws ConfigurationException {
         Configurations configs = new Configurations();
         XMLConfiguration config = configs.xml(new File("src/test/resources/configuration/hierarchical.xml"));
         String appender = config.getString("appender[@name]");
@@ -48,7 +48,7 @@ public class ConfigurationClassUnitTest {
     }
 
     @Test
-    public void givenPropertiesFile_whenCopyingConfiguration_thenIsSuccessful() throws ConfigurationException {
+    void givenPropertiesFile_whenCopyingConfiguration_thenIsSuccessful() throws ConfigurationException {
         Configurations configs = new Configurations();
         Configuration baseConfig = configs.properties(new File("src/test/resources/configuration/file.properties"));
         Configuration subConfig = new PropertiesConfiguration();
@@ -84,7 +84,7 @@ public class ConfigurationClassUnitTest {
     }
 
     @Test
-    public void givenXMLFile_whenCloningConfiguration_thenIsSuccessful() throws ConfigurationException {
+    void givenXMLFile_whenCloningConfiguration_thenIsSuccessful() throws ConfigurationException {
         Configurations configs = new Configurations();
         XMLConfiguration baseConfig = configs.xml(new File("src/test/resources/configuration/hierarchical.xml"));
         XMLConfiguration subConfig = new XMLConfiguration();
@@ -99,7 +99,7 @@ public class ConfigurationClassUnitTest {
     }
 
     @Test
-    public void givenEncodedProperty_whenCustomDecoderImplemented_thenIsSuccessful() throws ConfigurationException {
+    void givenEncodedProperty_whenCustomDecoderImplemented_thenIsSuccessful() throws ConfigurationException {
         Configurations configs = new Configurations();
         Configuration config = configs.properties(new File("src/test/resources/configuration/file.properties"));
         ((AbstractConfiguration) config).setConfigurationDecoder(new CustomDecoder());
@@ -107,7 +107,7 @@ public class ConfigurationClassUnitTest {
     }
 
     @Test
-    public void whenDataTypeConversionAttempted_thenIsSuccessful() {
+    void whenDataTypeConversionAttempted_thenIsSuccessful() {
         Configuration config = new PropertiesConfiguration();
         config.addProperty("stringProperty", "This is a string");
         config.addProperty("numericProperty", "9999");
@@ -118,14 +118,14 @@ public class ConfigurationClassUnitTest {
     }
 
     @Test
-    public void whenDataTypeConversionAttempted_thenThrowsException() {
+    void whenDataTypeConversionAttempted_thenThrowsException() {
         Configuration config = new PropertiesConfiguration();
         config.addProperty("numericProperty", "9999a");
         assertThrows(ConversionException.class, () -> config.getInt("numericProperty"));
     }
 
     @Test
-    public void whenInterpolationIsAttempted_thenIsSuccessful() throws ConfigurationException {
+    void whenInterpolationIsAttempted_thenIsSuccessful() throws ConfigurationException {
         System.setProperty("user.name", "Baeldung");
         Configurations configs = new Configurations();
         Configuration config = configs.properties(new File("src/test/resources/configuration/file.properties"));
@@ -138,7 +138,7 @@ public class ConfigurationClassUnitTest {
     }
 
     @Test
-    public void whenDelimiterIsSpecified_thenMultiValuePropertyIsLoaded() {
+    void whenDelimiterIsSpecified_thenMultiValuePropertyIsLoaded() {
         PropertiesConfiguration propertiesConfig = new PropertiesConfiguration();
         propertiesConfig.setListDelimiterHandler(new DefaultListDelimiterHandler(';'));
         propertiesConfig.addProperty("delimitedProperty", "admin;read-only;read-write");
@@ -152,7 +152,7 @@ public class ConfigurationClassUnitTest {
     }
 
     @Test
-    public void whenPropertiesAreMissing_thenIsHandled() {
+    void whenPropertiesAreMissing_thenIsHandled() {
         PropertiesConfiguration propertiesConfig = new PropertiesConfiguration();
         String objectProperty = propertiesConfig.getString("anyProperty");
         int primitiveProperty = propertiesConfig.getInt("anyProperty", 1);
@@ -161,7 +161,7 @@ public class ConfigurationClassUnitTest {
     }
 
     @Test
-    public void whenPropertiesAreMissing_thenExceptionIsThrown() {
+    void whenPropertiesAreMissing_thenExceptionIsThrown() {
         PropertiesConfiguration propertiesConfig = new PropertiesConfiguration();
         assertThrows(NoSuchElementException.class, () -> propertiesConfig.getInt("anyProperty"));
     }
