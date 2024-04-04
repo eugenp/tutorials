@@ -13,7 +13,7 @@ public class TraceWebFilter implements WebFilter {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
         exchange.getRequest().mutate()
-            .header("traceId", "ANNOTATED-TRACE-ID");
+          .header("traceId", "ANNOTATED-TRACE-ID");
         return chain.filter(exchange);
     }
 }

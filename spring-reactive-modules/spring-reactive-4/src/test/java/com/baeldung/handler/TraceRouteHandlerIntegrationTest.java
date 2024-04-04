@@ -30,28 +30,28 @@ public class TraceRouteHandlerIntegrationTest {
     @Test
     public void whenCallTraceFunctionalFilterEndpoint_thenResponseContainsTraceId() {
         EntityExchangeResult<String> result = webTestClient.get()
-            .uri("/trace-functional-filter")
-            .exchange()
-            .expectStatus().isOk()
-            .expectBody(String.class)
-            .returnResult();
+          .uri("/trace-functional-filter")
+          .exchange()
+          .expectStatus()
+          .isOk()
+          .expectBody(String.class)
+          .returnResult();
 
         final String body = "TraceId: FUNCTIONAL-TRACE-ID";
         assertEquals(result.getResponseBody(), body);
-
     }
 
     @Test
     public void whenCallTraceFunctionalBeforeEndpoint_thenResponseContainsTraceId() {
         EntityExchangeResult<String> result = webTestClient.get()
-            .uri("/trace-functional-before")
-            .exchange()
-            .expectStatus().isOk()
-            .expectBody(String.class)
-            .returnResult();
+          .uri("/trace-functional-before")
+          .exchange()
+          .expectStatus()
+          .isOk()
+          .expectBody(String.class)
+          .returnResult();
 
         final String body = "TraceId: FUNCTIONAL-TRACE-ID";
         assertEquals(result.getResponseBody(), body);
-
     }
 }

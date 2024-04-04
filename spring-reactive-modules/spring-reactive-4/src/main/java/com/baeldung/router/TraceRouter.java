@@ -16,12 +16,12 @@ public class TraceRouter {
     @Bean
     public RouterFunction<ServerResponse> routes(TraceRouterHandler routerHandler) {
         return route(GET("/trace-functional-filter"), routerHandler::handle)
-            .filter(new TraceHandlerFilterFunction())
-            .and(route()
-                .GET("/trace-functional-before", routerHandler::handle)
-                .before(request -> ServerRequest.from(request)
-                    .header("traceId", "FUNCTIONAL-TRACE-ID")
-                    .build())
-                .build());
+          .filter(new TraceHandlerFilterFunction())
+          .and(route()
+            .GET("/trace-functional-before", routerHandler::handle)
+            .before(request -> ServerRequest.from(request)
+              .header("traceId", "FUNCTIONAL-TRACE-ID")
+              .build())
+            .build());
     }
 }
