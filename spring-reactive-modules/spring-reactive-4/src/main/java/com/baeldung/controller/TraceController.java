@@ -13,4 +13,9 @@ public class TraceController {
     public Mono<String> trace(@RequestHeader(name = "traceId") final String traceId) {
         return Mono.just("TraceId: ".concat(traceId));
     }
+
+    @GetMapping(value = "/trace-exceptional")
+    public Mono<String> traceExceptional() {
+        return Mono.just("Traced");
+    }
 }
