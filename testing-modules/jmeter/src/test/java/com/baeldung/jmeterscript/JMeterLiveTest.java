@@ -23,7 +23,10 @@ import org.apache.jmeter.util.JMeterUtils;
 import org.apache.jorphan.collections.HashTree;
 import org.junit.jupiter.api.Test;
 
-public class JMeterUnitTest {
+/**
+ * This is a Live Test so that JMETER_HOME Environment variable will be available to run this test.
+ */
+public class JMeterLiveTest {
 
     @Test
     void givenJMeterScript_whenUsingCode_thenExecuteViaJavaProgram() throws IOException {
@@ -32,7 +35,7 @@ public class JMeterUnitTest {
             throw new RuntimeException("JMETER_HOME environment variable is not set.");
         }
 
-        String file = Objects.requireNonNull(JMeterUnitTest.class.getClassLoader().getResource("jmeter.properties")).getFile();
+        String file = Objects.requireNonNull(JMeterLiveTest.class.getClassLoader().getResource("jmeter.properties")).getFile();
         JMeterUtils.setJMeterHome(jmeterHome);
 
         JMeterUtils.loadJMeterProperties(file);
