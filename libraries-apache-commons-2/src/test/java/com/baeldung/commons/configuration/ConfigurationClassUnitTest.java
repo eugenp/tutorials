@@ -131,10 +131,10 @@ class ConfigurationClassUnitTest {
         Configuration config = configs.properties(new File("src/test/resources/configuration/file.properties"));
         String dbUrl = config.getString("db.url");
         String userName = config.getString("db.username");
-        String dummyConstant = config.getString("db.dummy-constant");
+        String externalService = config.getString("db.external-service");
         assertEquals("baeldung.com:9999", dbUrl);
         assertEquals("Baeldung", userName);
-        assertEquals("dummyConstant", dummyConstant);
+        assertEquals("https://www.baeldung.com", externalService);
     }
 
     @Test
