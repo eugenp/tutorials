@@ -12,11 +12,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class MainApplication {
 
-    private static final Logger logger = LoggerFactory.getLogger(MainApplication.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(MainApplication.class);
 
     public static void main(String[] args) {
+        // For having the value available from the very early stages of the execution, even before detecting the Spring Profile, set the value here:
         // TimeZone.setDefault(TimeZone.getTimeZone("GMT+08:00"));
-        logger.info("Default timezone, before main run, is set to: " + TimeZone.getDefault()
+        LOGGER.info("Default timezone, before main run, is set to: " + TimeZone.getDefault()
             .getDisplayName());
 
         SpringApplication.run(MainApplication.class, args);
@@ -24,8 +25,9 @@ public class MainApplication {
 
     @PostConstruct
     public void executeAfterMain() {
+        // For having the value available just after WebApplicationContext initialization is completed, set the value here:
         // TimeZone.setDefault(TimeZone.getTimeZone("GMT+08:00"));
-        logger.info("Default timezone, after main run, is set to: " + TimeZone.getDefault()
+        LOGGER.info("Default timezone, after main run, is set to: " + TimeZone.getDefault()
             .getDisplayName());
     }
 }

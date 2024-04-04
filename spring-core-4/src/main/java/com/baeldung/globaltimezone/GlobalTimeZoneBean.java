@@ -9,16 +9,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class GlobalTimeZoneBean {
 
-    private static final Logger logger = LoggerFactory.getLogger(GlobalTimeZoneBean.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(GlobalTimeZoneBean.class);
 
     private final String globalTimeZone;
 
     public GlobalTimeZoneBean() {
         // TimeZone.setDefault(TimeZone.getTimeZone("GMT+08:00"));
-        logger.info("Default timezone, during beans creation, is set to: " + TimeZone.getDefault()
+        LOGGER.info("Default timezone, during beans creation, is set to: " + TimeZone.getDefault()
             .getDisplayName());
 
-        this.globalTimeZone = TimeZone.getDefault()
+        globalTimeZone = TimeZone.getDefault()
             .getDisplayName();
     }
 

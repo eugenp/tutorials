@@ -12,11 +12,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class GlobalTimezoneBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
 
-    private static final Logger logger = LoggerFactory.getLogger(GlobalTimezoneBeanFactoryPostProcessor.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(GlobalTimezoneBeanFactoryPostProcessor.class);
 
     @Override
     public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
-        logger.info("Default timezone, before bean factory post processor, is set to: " + TimeZone.getDefault()
+        LOGGER.info("Default timezone, before bean factory post processor, is set to: " + TimeZone.getDefault()
             .getDisplayName());
 
         TimeZone.setDefault(TimeZone.getTimeZone("GMT+08:00"));
