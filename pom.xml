@@ -234,7 +234,7 @@
 
         <extensions>
             <extension>
-                <groupId>com.vackosar.gitflowincrementalbuilder</groupId>
+                <groupId>io.github.gitflow-incremental-builder</groupId>
                 <artifactId>gitflow-incremental-builder</artifactId>
                 <version>${gitflow-incremental-builder.version}</version>
             </extension>
@@ -1142,6 +1142,7 @@
         <gib.failOnMissingGitDir>false</gib.failOnMissingGitDir>
         <gib.failOnError>false</gib.failOnError>
         <gib.disable>true</gib.disable>
+        <gib.excludePathsMatching>.*gradle-modules.*</gib.excludePathsMatching>
 
         <!-- used only in dependency management to force this version, not included as a direct dependency -->
         <junit.version>4.13.2</junit.version>
@@ -1182,7 +1183,7 @@
         <directory-maven-plugin.version>1.0</directory-maven-plugin.version>
         <maven-install-plugin.version>3.1.1</maven-install-plugin.version>
         <custom-pmd.version>0.0.1</custom-pmd.version>
-        <gitflow-incremental-builder.version>3.12.2</gitflow-incremental-builder.version>
+        <gitflow-incremental-builder.version>4.5.3</gitflow-incremental-builder.version>
         <maven-jxr-plugin.version>3.3.0</maven-jxr-plugin.version>
         <maven-pmd-plugin.version>3.21.0</maven-pmd-plugin.version>
         <lombok.version>1.18.30</lombok.version>
