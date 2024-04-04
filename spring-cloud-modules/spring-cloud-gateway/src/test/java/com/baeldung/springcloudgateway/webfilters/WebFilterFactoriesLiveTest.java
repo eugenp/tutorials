@@ -73,7 +73,10 @@ public class WebFilterFactoriesLiveTest {
           .expectHeader()
           .valueEquals("My-Header-Good", "Good")
           .expectHeader()
-          .doesNotExist("My-Header-Remove");
+          .doesNotExist("My-Header-Remove")
+          .expectBody()
+          .jsonPath("$.headers.Accept").doesNotExist()
+          .jsonPath("form").doesNotExist();
     }
 
     @Test
