@@ -10,9 +10,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-2</relativePath>
+        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -59,26 +59,16 @@
             <version>${spring-oxm.version}</version>
         </dependency>
         <dependency>
-            <groupId>commons-fileupload</groupId>
-            <artifactId>commons-fileupload</artifactId>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-fileupload2-jakarta</artifactId>
             <version>${commons-fileupload.version}</version>
         </dependency>
-        <!-- web -->
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
-            <scope>runtime</scope>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-fileupload2-jakarta-servlet6</artifactId>
+            <version>${commons-fileupload2-jakarta-servlet6.version}</version>
         </dependency>
         <!-- marshalling -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-        </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-xml</artifactId>
@@ -87,6 +77,11 @@
             <groupId>com.thoughtworks.xstream</groupId>
             <artifactId>xstream</artifactId>
             <version>${xstream.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>${jakarta.xml.bind-api.version}</version>
         </dependency>
         <!-- util -->
         <dependency>
@@ -110,9 +105,10 @@
             <artifactId>spring-test</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.jayway.restassured</groupId>
+            <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
-            <version>${jayway-rest-assured.version}</version>
+            <version>${rest-assured.version}</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.google.protobuf</groupId>
@@ -273,7 +269,6 @@
         <protobuf-java-format.version>1.4</protobuf-java-format.version>
         <protobuf-java.version>3.1.0</protobuf-java.version>
         <xstream.version>1.4.9</xstream.version>
-        <jayway-rest-assured.version>2.9.0</jayway-rest-assured.version>
         <spring-oxm.version>6.1.4</spring-oxm.version>
         <!-- Maven plugins -->
         <cargo-maven2-plugin.version>1.6.0</cargo-maven2-plugin.version>
@@ -281,6 +276,11 @@
         <!-- okhttp -->
         <com.squareup.okhttp3.version>4.12.0</com.squareup.okhttp3.version>
         <json.path.version>2.2.0</json.path.version>
+        <commons-fileupload.version>2.0.0-M1</commons-fileupload.version>
+        <rest-assured.version>5.4.0</rest-assured.version>
+        <jakarta.xml.bind-api.version>2.3.2</jakarta.xml.bind-api.version>
+        <commons-fileupload2-jakarta-servlet6.version>2.0.0-M2</commons-fileupload2-jakarta-servlet6.version>
+        <httpclient5.version>5.3.1</httpclient5.version>
     </properties>
 
 </project>

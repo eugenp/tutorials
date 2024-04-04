@@ -19,7 +19,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.mapping.PropertyReferenceException;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.baeldung.jpa.modifying.dao.UserRepository;
+import com.baeldung.jpa.modifying.repository.UserRepository;
 import com.baeldung.jpa.modifying.model.User;
 
 import jakarta.persistence.EntityManager;

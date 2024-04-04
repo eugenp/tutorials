@@ -3,8 +3,9 @@ package com.baeldung.security.spring;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
@@ -16,7 +17,7 @@ import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableMethodSecurity
 public class SecurityWithCsrfCookieConfig {
 
     @Bean
@@ -41,26 +42,19 @@ public class SecurityWithCsrfCookieConfig {
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
         return (web) -> web.ignoring()
-            .antMatchers("/resources/**");
+            .requestMatchers("/resources/**");
     }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-            .antMatchers("/auth/admin/*")
-            .hasAnyRole("ROLE_ADMIN")
-            .anyRequest()
-            .authenticated()
-            .and()
-            .httpBasic()
-            .and()
-            .headers()
-            .cacheControl()
-            .disable()
-            // Stateless API CSRF configuration
-            .and()
-            .csrf()
-            .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
+        // Stateless API CSRF configuration
+        http.csrf(csrf -> csrf.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
+            .httpBasic(Customizer.withDefaults())
+            .headers(headers -> headers.cacheControl((cacheControl) -> cacheControl.disable()))
+            .authorizeHttpRequests(auth -> auth.requestMatchers("/auth/admin/*")
+                .hasAnyRole("ADMIN")
+                .anyRequest()
+                .authenticated());
         return http.build();
     }
 
