@@ -42,6 +42,12 @@
             <version>${spring-boot.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy-agent</artifactId>
+            <version>1.14.13</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
