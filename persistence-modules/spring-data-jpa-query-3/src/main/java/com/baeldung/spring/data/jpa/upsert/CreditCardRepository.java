@@ -8,4 +8,6 @@ public interface CreditCardRepository extends JpaRepository<CreditCard, Long> {
     default CreditCard updateOrInsert(CreditCard entity) {
         return save(entity);
     }
+
+    CreditCard findByCardNumber(String cardNumber);
 }
