@@ -1,15 +1,14 @@
 package com.baeldung.java.listInitialization;
 
+import lombok.extern.java.Log;
+import org.junit.Assert;
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-import lombok.extern.java.Log;
-
-import org.junit.Assert;
-import org.junit.Test;
 
 @Log
 public class ListInitializationUnitTest {
@@ -50,9 +49,28 @@ public class ListInitializationUnitTest {
     }
 
     @Test
+    public void givenIntNumbers_whenRequiredLong_thenCastAutomatically() {
+        int intNum = 42;
+        long longNum = intNum;
+
+        Assert.assertEquals(42L, longNum);
+    }
+
+    @Test
+    public void givenArrayAsList_whenRequiredLongList_thenGetExpectedResult() {
+        List<Long> listOfLongFixedSize = Arrays.asList(1L, 2L, 3L);
+        List<Long> listOfLong = new ArrayList<>(Arrays.asList(1L, 2L, 3L));
+
+        List<Long> expected = List.of(1L, 2L, 3L);
+
+        Assert.assertEquals(expected, listOfLongFixedSize);
+        Assert.assertEquals(expected, listOfLong);
+    }
+
+    @Test
     public void givenStream_thenInitializeList() {
         List<String> list = Stream.of("foo", "bar")
-            .collect(Collectors.toList());
+                                  .collect(Collectors.toList());
 
         Assert.assertTrue(list.contains("foo"));
     }
