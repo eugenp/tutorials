@@ -7,105 +7,90 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class EnvelopUnitTest {
 
+    private static void assertShallowCopy(Envelope envelope, Envelope copiedEnvelope) {
+        assertThat(envelope).isNotSameAs(copiedEnvelope);
+        assertThat(envelope).usingRecursiveComparison().isEqualTo(copiedEnvelope);
+        assertThat(envelope.getLetter()).isSameAs(copiedEnvelope.getLetter());
+    }
+
     @Test
     void givenExistingObject_whenCopyingUsingParameterizedConstructor_thenSuccessfullyCreatedShallowCopy() {
-        final String content = "Dear colleagues, I hope this letter finds you well.";
-        final Letter letter = new Letter(content);
+        String content = "Dear colleagues, I hope this letter finds you well.";
+        Letter letter = new Letter(content);
+        Envelope envelope = new Envelope("Baeldung", Envelope.Size.C4, letter, true);
 
-        final Envelope envelope = new Envelope("Baeldung", Envelope.Size.C4, letter, true);
+        Envelope copiedEnvelope = new Envelope(envelope.getRecipient(), envelope.getSize(), envelope.getLetter(), envelope.isSealed());
 
-        final Envelope copiedEnvelope = new Envelope(envelope.getRecipient(), envelope.getSize(), envelope.getLetter(), envelope.isSealed());
-
-        assertThat(envelope)
-                .isNotSameAs(copiedEnvelope);
-        assertThat(envelope.getLetter())
-                .isSameAs(copiedEnvelope.getLetter());
-
-        letter.setContent("No content");
-
-        assertThat(envelope.getLetter())
-                .isSameAs(copiedEnvelope.getLetter());
+        assertShallowCopy(envelope, copiedEnvelope);
+        envelope.getLetter().setContent("No content.");
+        assertThat(envelope.getLetter()).isSameAs(copiedEnvelope.getLetter());
     }
 
     @Test
     void givenExistingObject_whenCopyingUsingCloneMethod_thenSuccessfullyCreatedShallowCopy() {
-        final String content = "Dear colleagues, I hope this letter finds you well.";
-        final Letter letter = new Letter(content);
+        String content = "Dear colleagues, I hope this letter finds you well.";
+        Letter letter = new Letter(content);
 
-        final Envelope envelope = new Envelope("Baeldung", Envelope.Size.C4, letter, true);
+        Envelope envelope = new Envelope("Baeldung", Envelope.Size.C4, letter, true);
 
-        final Envelope copiedEnvelope = envelope.clone();
+        Envelope copiedEnvelope = envelope.clone();
 
-        assertThat(envelope)
-                .isNotSameAs(copiedEnvelope);
-        assertThat(envelope.getLetter())
-                .isSameAs(copiedEnvelope.getLetter());
+        assertShallowCopy(envelope, copiedEnvelope);
 
-        letter.setContent("No content");
+        envelope.getLetter().setContent("No content.");
 
-        assertThat(envelope.getLetter())
-                .isSameAs(copiedEnvelope.getLetter());
+        assertThat(envelope.getLetter()).isSameAs(copiedEnvelope.getLetter());
+    }
+
+    private static void assertDeepCopy(Envelope envelope, Envelope copiedEnvelope) {
+        assertThat(envelope).isNotSameAs(copiedEnvelope);
+        assertThat(envelope).usingRecursiveComparison().isEqualTo(copiedEnvelope);
+        assertThat(envelope.getLetter()).isNotSameAs(copiedEnvelope.getLetter());
     }
 
     @Test
     void givenExistingObject_whenCopyingUsingCopyConstructor_thenSuccessfullyCreatedDeepCopy() {
-        final String content = "Dear colleagues, I hope this letter finds you well.";
-        final Letter letter = new Letter(content);
+        String content = "Dear colleagues, I hope this letter finds you well.";
+        Letter letter = new Letter(content);
 
-        final Envelope envelope = new Envelope("Baeldung", Envelope.Size.C4, letter, true);
+        Envelope envelope = new Envelope("Baeldung", Envelope.Size.C4, letter, true);
 
-        final Envelope copiedEnvelope = new Envelope(envelope);
+        Envelope copiedEnvelope = new Envelope(envelope);
 
-        assertThat(envelope)
-                .isNotSameAs(copiedEnvelope);
-        assertThat(envelope.getLetter())
-                .isNotSameAs(copiedEnvelope.getLetter());
+        assertDeepCopy(envelope, copiedEnvelope);
 
-        letter.setContent("No content");
+        envelope.getLetter().setContent("No content.");
 
-        assertThat(envelope.getLetter())
-                .isNotSameAs(copiedEnvelope.getLetter());
+        assertThat(envelope.getLetter()).isNotSameAs(copiedEnvelope.getLetter());
     }
 
     @Test
     void givenExistingObject_whenCopyingUsingCopyFactoryMethod_thenSuccessfullyCreatedDeepCopy() {
-        final String content = "Dear colleagues, I hope this letter finds you well.";
-        final Letter letter = new Letter(content);
+        String content = "Dear colleagues, I hope this letter finds you well.";
+        Letter letter = new Letter(content);
+        Envelope envelope = new Envelope("Baeldung", Envelope.Size.C4, letter, true);
 
-        final Envelope envelope = new Envelope("Baeldung", Envelope.Size.C4, letter, true);
+        Envelope copiedEnvelope = Envelope.copyOf(envelope);
 
-        final Envelope copiedEnvelope = Envelope.copyOf(envelope);
+        assertDeepCopy(envelope, copiedEnvelope);
 
-        assertThat(envelope)
-                .isNotSameAs(copiedEnvelope);
-        assertThat(envelope.getLetter())
-                .isNotSameAs(copiedEnvelope.getLetter());
+        letter.setContent("No content.");
 
-        letter.setContent("No content");
-
-        assertThat(envelope.getLetter())
-                .isNotSameAs(copiedEnvelope.getLetter());
+        assertThat(envelope.getLetter()).isNotSameAs(copiedEnvelope.getLetter());
     }
 
     @Test
     void givenExistingObject_whenCopyingUsingGson_thenSuccessfullyCreatedDeepCopy() {
-        final String content = "Dear colleagues, I hope this letter finds you well.";
-        final Letter letter = new Letter(content);
-
-        final Envelope envelope = new Envelope("Baeldung", Envelope.Size.C4, letter, true);
+        String content = "Dear colleagues, I hope this letter finds you well.";
+        Letter letter = new Letter(content);
+        Envelope envelope = new Envelope("Baeldung", Envelope.Size.C4, letter, true);
 
         Gson gson = new Gson();
+        Envelope copiedEnvelope = gson.fromJson(gson.toJson(envelope), Envelope.class);
 
-        final Envelope copiedEnvelope = gson.fromJson(gson.toJson(envelope), Envelope.class);
-
-        assertThat(envelope)
-                .isNotSameAs(copiedEnvelope);
-        assertThat(envelope.getLetter())
-                .isNotSameAs(copiedEnvelope.getLetter());
-
-        letter.setContent("No content");
-
-        assertThat(envelope.getLetter())
-                .isNotSameAs(copiedEnvelope.getLetter());
+        assertDeepCopy(envelope, copiedEnvelope);
+        envelope.getLetter().setContent("No content.");
+        assertThat(envelope.getLetter()).isNotSameAs(copiedEnvelope.getLetter());
     }
+
 }

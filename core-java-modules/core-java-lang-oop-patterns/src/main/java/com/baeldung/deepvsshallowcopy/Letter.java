@@ -4,7 +4,7 @@ public class Letter {
 
     private String content;
 
-    public Letter(final String content) {
+    public Letter(String content) {
         this.content = content;
     }
 

@@ -14,7 +14,7 @@ public class Envelope implements Cloneable {
         C6
     }
 
-    public Envelope(final String recipient, final Size size, final Letter letter, boolean sealed) {
+    public Envelope(String recipient, Size size, Letter letter, boolean sealed) {
         this.recipient = recipient;
         this.size = size;
         this.letter = letter;
@@ -28,7 +28,7 @@ public class Envelope implements Cloneable {
         this.sealed = envelope.sealed;
     }
 
-    public static Envelope copyOf(Envelope envelope) {
+    public static Envelope copyOf(final Envelope envelope) {
         return new Envelope(envelope.getRecipient(), envelope.getSize(), new Letter(envelope.getLetter().getContent()), envelope.isSealed());
     }
 
@@ -75,7 +75,7 @@ public class Envelope implements Cloneable {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Envelope{");
+        StringBuilder sb = new StringBuilder("Envelope{");
         sb.append("recipient='").append(recipient).append('\'');
         sb.append(", size=").append(size);
         sb.append(", letter=").append(letter);
