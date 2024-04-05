@@ -43,33 +43,13 @@ public class JMeterLiveTest {
 
         StandardJMeterEngine jmeter = new StandardJMeterEngine();
 
-        HTTPSamplerProxy httpSampler = new HTTPSamplerProxy();
-        httpSampler.setDomain("www.google.com");
-        httpSampler.setPort(80);
-        httpSampler.setPath("/");
-        httpSampler.setMethod("GET");
-        httpSampler.setProperty(TestElement.TEST_CLASS, HTTPSamplerProxy.class.getName());
-        httpSampler.setProperty(TestElement.GUI_CLASS, HttpTestSampleGui.class.getName());
+        HTTPSamplerProxy httpSampler = getHttpSamplerProxy();
 
-        LoopController loopController = new LoopController();
-        loopController.setLoops(1);
-        loopController.setFirst(true);
-        loopController.setProperty(TestElement.TEST_CLASS, LoopController.class.getName());
-        loopController.setProperty(TestElement.GUI_CLASS, LoopControlPanel.class.getName());
-        loopController.initialize();
+        LoopController loopController = getLoopController();
 
-        ThreadGroup threadGroup = new ThreadGroup();
-        threadGroup.setName("Sample Thread Group");
-        threadGroup.setNumThreads(10);
-        threadGroup.setRampUp(5);
-        threadGroup.setSamplerController(loopController);
-        threadGroup.setProperty(TestElement.TEST_CLASS, ThreadGroup.class.getName());
-        threadGroup.setProperty(TestElement.GUI_CLASS, ThreadGroupGui.class.getName());
+        ThreadGroup threadGroup = getThreadGroup(loopController);
 
-        TestPlan testPlan = new TestPlan("Sample Test Plan");
-        testPlan.setProperty(TestElement.TEST_CLASS, TestPlan.class.getName());
-        testPlan.setProperty(TestElement.GUI_CLASS, TestPlanGui.class.getName());
-        testPlan.addThreadGroup(threadGroup);
+        TestPlan testPlan = getTestPlan(threadGroup);
 
         HashTree testPlanTree = new HashTree();
         HashTree threadGroupHashTree = testPlanTree.add(testPlan, threadGroup);
@@ -92,5 +72,45 @@ public class JMeterLiveTest {
 
         System.out.println("Test completed. See output-logs.jtl file for results");
         System.out.println("JMeter .jmx script is available at script.jmx");
+    }
+
+    private static TestPlan getTestPlan(ThreadGroup threadGroup) {
+        TestPlan testPlan = new TestPlan("Sample Test Plan");
+        testPlan.setProperty(TestElement.TEST_CLASS, TestPlan.class.getName());
+        testPlan.setProperty(TestElement.GUI_CLASS, TestPlanGui.class.getName());
+        testPlan.addThreadGroup(threadGroup);
+        return testPlan;
+    }
+
+    private static ThreadGroup getThreadGroup(LoopController loopController) {
+        ThreadGroup threadGroup = new ThreadGroup();
+        threadGroup.setName("Sample Thread Group");
+        threadGroup.setNumThreads(10);
+        threadGroup.setRampUp(5);
+        threadGroup.setSamplerController(loopController);
+        threadGroup.setProperty(TestElement.TEST_CLASS, ThreadGroup.class.getName());
+        threadGroup.setProperty(TestElement.GUI_CLASS, ThreadGroupGui.class.getName());
+        return threadGroup;
+    }
+
+    private static LoopController getLoopController() {
+        LoopController loopController = new LoopController();
+        loopController.setLoops(1);
+        loopController.setFirst(true);
+        loopController.setProperty(TestElement.TEST_CLASS, LoopController.class.getName());
+        loopController.setProperty(TestElement.GUI_CLASS, LoopControlPanel.class.getName());
+        loopController.initialize();
+        return loopController;
+    }
+
+    private static HTTPSamplerProxy getHttpSamplerProxy() {
+        HTTPSamplerProxy httpSampler = new HTTPSamplerProxy();
+        httpSampler.setDomain("www.google.com");
+        httpSampler.setPort(80);
+        httpSampler.setPath("/");
+        httpSampler.setMethod("GET");
+        httpSampler.setProperty(TestElement.TEST_CLASS, HTTPSamplerProxy.class.getName());
+        httpSampler.setProperty(TestElement.GUI_CLASS, HttpTestSampleGui.class.getName());
+        return httpSampler;
     }
 }
