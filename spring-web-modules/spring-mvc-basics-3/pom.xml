@@ -10,9 +10,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-2</relativePath>
+        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -52,17 +52,12 @@
             <scope>runtime</scope>
         </dependency>
         <dependency>
-            <groupId>javax.persistence</groupId>
-            <artifactId>javax.persistence-api</artifactId>
-            <version>${jpa.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.subethamail</groupId>
+            <groupId>com.github.davidmoten</groupId>
             <artifactId>subethasmtp</artifactId>
             <version>${subethasmtp.version}</version>
             <scope>test</scope>
@@ -130,7 +125,7 @@
         <jquery.version>3.1.1</jquery.version>
         <bootstrap.version>3.3.7-1</bootstrap.version>
         <jpa.version>2.2</jpa.version>
-        <subethasmtp.version>3.1.7</subethasmtp.version>
+        <subethasmtp.version>7.0.2</subethasmtp.version>
         <httpclient.version>4.5.8</httpclient.version>
     </properties>
 

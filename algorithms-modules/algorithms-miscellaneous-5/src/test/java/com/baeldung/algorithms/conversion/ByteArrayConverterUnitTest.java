@@ -1,15 +1,13 @@
 package com.baeldung.algorithms.conversion;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import org.apache.commons.codec.DecoderException;
 import org.hamcrest.text.IsEqualIgnoringCase;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.baeldung.algorithms.conversion.HexStringConverter;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ByteArrayConverterUnitTest {
 
@@ -24,7 +22,7 @@ class ByteArrayConverterUnitTest {
     void shouldEncodeByteArrayToHexStringUsingBigIntegerToString() {
         byte[] bytes = getSampleBytes();
         String hexString = getSampleHexString();
-        if(hexString.charAt(0) == '0') {
+        if (hexString.charAt(0) == '0') {
             hexString = hexString.substring(1);
         }
         String output = hexStringConverter.encodeUsingBigIntegerToString(bytes);
@@ -46,7 +44,7 @@ class ByteArrayConverterUnitTest {
         byte[] output = hexStringConverter.decodeUsingBigInteger(hexString);
         assertArrayEquals(bytes, output);
     }
-    
+
     @Test
     void shouldEncodeByteArrayToHexStringUsingCharacterConversion() {
         byte[] bytes = getSampleBytes();
@@ -62,7 +60,7 @@ class ByteArrayConverterUnitTest {
         byte[] output = hexStringConverter.decodeHexString(hexString);
         assertArrayEquals(bytes, output);
     }
-    
+
     @Test
     void shouldDecodeHexToByteWithInvalidHexCharacter() {
         assertThrows(IllegalArgumentException.class, () -> {
@@ -118,12 +116,28 @@ class ByteArrayConverterUnitTest {
         assertArrayEquals(bytes, output);
     }
 
+    @Test
+    void shouldEncodeByteArrayToHexStringUsingHexFormat() throws DecoderException {
+        byte[] bytes = getSampleBytes();
+        String hexString = getSampleHexString();
+        String output = hexStringConverter.encodeUsingHexFormat(bytes);
+        assertThat(output, IsEqualIgnoringCase.equalToIgnoringCase(hexString));
+    }
+
+    @Test
+    void shouldDecodeHexStringToByteArrayUsingHexFormat() throws DecoderException {
+        byte[] bytes = getSampleBytes();
+        String hexString = getSampleHexString();
+        byte[] output = hexStringConverter.decodeUsingHexFormat(hexString);
+        assertArrayEquals(bytes, output);
+    }
+
     private String getSampleHexString() {
         return "0af50c0e2d10";
     }
 
     private byte[] getSampleBytes() {
-        return new byte[] { 10, -11, 12, 14, 45, 16 };
+        return new byte[]{10, -11, 12, 14, 45, 16};
     }
 
 }
