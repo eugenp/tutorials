@@ -19,16 +19,14 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    @GetMapping("/user/{id}")
-    public Mono<User> getUserByIdThrowingException(@PathVariable String id) {
+    public Mono<User> getUserByIdThrowingException(String id) {
         User user = userRepository.findById(id);
         if (user == null)
           throw new NotFoundException("User Not Found");
         return Mono.justOrEmpty(user);
     }
 
-    @GetMapping("/user/{id}")
-    public Mono<User> getUserByIdUsingMonoError(@PathVariable String id) {
+    public Mono<User> getUserByIdUsingMonoError(String id) {
         User user = userRepository.findById(id);
         return (user != null) ? Mono.justOrEmpty(user) : Mono.error(new NotFoundException("User Not Found"));
 
