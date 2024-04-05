@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.baeldung.webflux.exceptionhandeling.ex.NotFoundException;
+import com.baeldung.webflux.exceptionhandeling.model.User;
 import com.baeldung.webflux.exceptionhandeling.repository.UserRepository;
-import com.baeldung.webflux.zipwhen.model.User;
 
 import reactor.core.publisher.Mono;
 
@@ -17,19 +17,23 @@ public class UserController {
     private final UserRepository userRepository;
 
     @Autowired
-    public UserController(UserRepository userRepository) {
+    public UserController(MyRepository userRepository) {
         this.userRepository = userRepository;
     }
 
     @GetMapping("/user/{id}")
     public Mono<User> getUserByIdThrowingException(@PathVariable String id) {
-        return userRepository.findById(id)
-          .switchIfEmpty(Mono.error(new NotFoundException("User not found")));
+        User user= userRepository.findById(id);
+        if(user==null)
+            throw new  NotFoundException("User Not Found");
+        return  Mono.justOrEmpty(user);
     }
 
     @GetMapping("/user/{id}")
     public Mono<User> getUserByIdUsingMonoError(@PathVariable String id) {
-        return userRepository.findById(id)
-          .switchIfEmpty(Mono.error(() -> new NotFoundException("User not found")));
+        User user= userRepository.findById(id);
+        if(user==null)
+            return Mono.error(new NotFoundException("User Not Found"));
+        return  Mono.justOrEmpty(user);
     }
 }
