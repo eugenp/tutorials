@@ -5,9 +5,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import org.springframework.stereotype.Repository;
 
-import com.baeldung.webflux.zipwhen.model.User;
-
-import reactor.core.publisher.Mono;
+import com.baeldung.webflux.exceptionhandeling.model.User;
 
 @Repository
 public class UserRepository {
@@ -18,7 +16,7 @@ public class UserRepository {
         userDatabase.put("2", new User("2", "Jane Smith"));
     }
 
-    public Mono<User> findById(String id) {
-        return Mono.justOrEmpty(userDatabase.get(id));
+    public User findById(String id) {
+        return userDatabase.get(id);
     }
 }

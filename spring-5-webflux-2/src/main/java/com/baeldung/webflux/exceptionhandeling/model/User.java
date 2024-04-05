@@ -21,8 +21,8 @@ public class User {
     }
 
     public User(String userId, String userName) {
-        this.id=userId;
-        this.username=userName;
+        this.id = userId;
+        this.username = userName;
 
     }
 }
