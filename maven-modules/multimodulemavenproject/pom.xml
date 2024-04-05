@@ -40,6 +40,8 @@
     </build>
 
     <properties>
+        <maven.compiler.source>9</maven.compiler.source>
+        <maven.compiler.target>9</maven.compiler.target>
         <compiler.plugin.version>3.12.1</compiler.plugin.version>
         <source.version>1.9</source.version>
         <target.version>1.9</target.version>
