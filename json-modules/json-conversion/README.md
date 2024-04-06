@@ -9,3 +9,4 @@ This module contains articles about JSON Conversions
 - [Preventing Gson from Expressing Integers as Floats](https://www.baeldung.com/java-gson-prevent-expressing-integers-as-floats)
 - [Simplified Array Operations on JsonNode Without Typecasting in Jackson](https://www.baeldung.com/java-jsonnode-persistence-simplified-array-operations)
 - [How to Convert Excel to JSON in Java](https://www.baeldung.com/java-excel-json-conversion)
+- [Include null Value in JSON Serialization](https://www.baeldung.com/java-json-null-serialization)
