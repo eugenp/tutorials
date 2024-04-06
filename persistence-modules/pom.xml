@@ -108,6 +108,7 @@
         <module>spring-hibernate-6</module>
         <module>spring-jpa</module>
         <module>spring-jpa-2</module>
+        <module>spring-jpa-3</module>
         <module>spring-jdbc</module>
 	    <module>spring-jdbc-2</module>
         <!--<module>spring-jooq</module>-->
