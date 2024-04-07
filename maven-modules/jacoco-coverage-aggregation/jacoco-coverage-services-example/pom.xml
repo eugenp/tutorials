@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.jacoco-coverage-aggregation</groupId>
     <artifactId>jacoco-coverage-services-example</artifactId>
-    <name>jacoco-coverage-services-example</name>
     <packaging>jar</packaging>
+    <name>jacoco-coverage-services-example</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -33,7 +33,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.1.2</version>
+                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <includes>
                         <include>**/*Test.java</include>
@@ -46,6 +46,7 @@
     <properties>
         <junit-jupiter-engine.version>5.9.2</junit-jupiter-engine.version>
         <spring-context.version>6.0.11</spring-context.version>
+        <maven-surefire-plugin.version>3.1.2</maven-surefire-plugin.version>
     </properties>
 
 </project>

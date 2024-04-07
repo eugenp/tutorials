@@ -9,7 +9,9 @@ import static org.junit.Assert.assertSame;
 
 import jakarta.persistence.PersistenceException;
 
+import org.h2.tools.RunScript;
 import org.hibernate.HibernateException;
+import org.hibernate.ReplicationMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -24,35 +26,58 @@ import org.junit.Test;
 
 import com.baeldung.persistence.model.Person;
 
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.sql.Connection;
+import java.sql.DriverManager;
+
 /**
  * Testing specific implementation details for different methods:
- * persist, save, merge, update, saveOrUpdate.
+ * persist, save, merge, update, saveOrUpdate, refresh, replicate
  */
 public class SaveMethodsIntegrationTest {
 
-    private static SessionFactory sessionFactory;
+    private static SessionFactory sessionFactory1;
 
-    private Session session;
+    private static SessionFactory sessionFactory2;
+
+    private Session session1;
+
+    private Session session2;
     private boolean doNotCommit = false;
 
-    @BeforeClass
-    public static void beforeTests() {
+    private static SessionFactory createSessionFactoryAndInitializeDBs(String dbUrl) throws Exception {
         Configuration configuration = new Configuration().addAnnotatedClass(Person.class)
-            .setProperty("hibernate.dialect", HSQLDialect.class.getName())
-            .setProperty("hibernate.connection.driver_class", org.hsqldb.jdbcDriver.class.getName())
-            .setProperty("hibernate.connection.url", "jdbc:hsqldb:mem:test")
-            .setProperty("hibernate.connection.username", "sa")
-            .setProperty("hibernate.connection.password", "")
-            .setProperty("hibernate.hbm2ddl.auto", "update");
+          .setProperty("hibernate.dialect", HSQLDialect.class.getName())
+          .setProperty("hibernate.connection.driver_class", org.hsqldb.jdbcDriver.class.getName())
+          .setProperty("hibernate.connection.url", dbUrl)
+          .setProperty("hibernate.connection.username", "sa")
+          .setProperty("hibernate.connection.password", "")
+          .setProperty("hibernate.hbm2ddl.auto", "update");
+        Connection connection = DriverManager.getConnection(dbUrl, "sa", "");
         ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties())
-            .build();
-        sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+                .build();
+        SessionFactory sf = configuration.buildSessionFactory(serviceRegistry);
+        try (InputStream h2InitStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("h2-trigger.sql")) {
+            assert h2InitStream != null;
+            try (InputStreamReader h2InitReader = new InputStreamReader(h2InitStream)) {
+                RunScript.execute(connection, h2InitReader);
+            }
+        }
+        return sf;
+    }
+    @BeforeClass
+    public static void beforeTests() throws Exception{
+        sessionFactory1 = createSessionFactoryAndInitializeDBs("jdbc:hsqldb:mem:test");
+        sessionFactory2 = createSessionFactoryAndInitializeDBs("jdbc:hsqldb:mem:test2");
+
     }
 
     @Before
-    public void setUp() {
-        session = sessionFactory.openSession();
-        session.beginTransaction();
+    public void setUp() throws Exception {
+        session1 = sessionFactory1.openSession();
+        session1.beginTransaction();
+
         doNotCommit = false;
     }
 
@@ -61,16 +86,16 @@ public class SaveMethodsIntegrationTest {
 
         Person person = new Person();
         person.setName("John");
-        session.persist(person);
+        session1.persist(person);
 
-        session.getTransaction()
-            .commit();
-        session.close();
+        session1.getTransaction()
+                .commit();
+        session1.close();
 
-        session = sessionFactory.openSession();
-        session.beginTransaction();
+        session1 = sessionFactory1.openSession();
+        session1.beginTransaction();
 
-        assertNotNull(session.get(Person.class, person.getId()));
+        assertNotNull(session1.get(Person.class, person.getId()));
 
     }
 
@@ -80,10 +105,10 @@ public class SaveMethodsIntegrationTest {
         Person person = new Person();
         person.setName("John");
 
-        session.persist(person);
+        session1.persist(person);
         Long id1 = person.getId();
 
-        session.persist(person);
+        session1.persist(person);
         Long id2 = person.getId();
 
         assertEquals(id1, id2);
@@ -93,13 +118,13 @@ public class SaveMethodsIntegrationTest {
     public void whenPersistDetached_thenThrowsException() {
 
         doNotCommit = true;
-        
+
         Person person = new Person();
         person.setName("John");
-        session.persist(person);
-        session.evict(person);
-        
-        session.persist(person);
+        session1.persist(person);
+        session1.evict(person);
+
+        session1.persist(person);
     }
 
     @Test
@@ -107,12 +132,12 @@ public class SaveMethodsIntegrationTest {
 
         Person person = new Person();
         person.setName("John");
-        session.save(person);
-        session.flush();
-        session.evict(person);
+        session1.save(person);
+        session1.flush();
+        session1.evict(person);
 
         person.setName("Mary");
-        Person mergedPerson = (Person) session.merge(person);
+        Person mergedPerson = (Person) session1.merge(person);
 
         assertNotSame(person, mergedPerson);
         assertEquals("Mary", mergedPerson.getName());
@@ -127,20 +152,20 @@ public class SaveMethodsIntegrationTest {
 
         assertNull(person.getId());
 
-        Long id = (Long) session.save(person);
+        Long id = (Long) session1.save(person);
 
         assertNotNull(id);
 
-        session.getTransaction()
-            .commit();
-        session.close();
+        session1.getTransaction()
+                .commit();
+        session1.close();
 
         assertEquals(id, person.getId());
 
-        session = sessionFactory.openSession();
-        session.beginTransaction();
+        session1 = sessionFactory1.openSession();
+        session1.beginTransaction();
 
-        assertNotNull(session.get(Person.class, person.getId()));
+        assertNotNull(session1.get(Person.class, person.getId()));
 
     }
 
@@ -149,8 +174,8 @@ public class SaveMethodsIntegrationTest {
 
         Person person = new Person();
         person.setName("John");
-        Long id1 = (Long) session.save(person);
-        Long id2 = (Long) session.save(person);
+        Long id1 = (Long) session1.save(person);
+        Long id2 = (Long) session1.save(person);
         assertEquals(id1, id2);
 
     }
@@ -160,10 +185,10 @@ public class SaveMethodsIntegrationTest {
 
         Person person = new Person();
         person.setName("John");
-        Long id1 = (Long) session.save(person);
-        session.evict(person);
+        Long id1 = (Long) session1.save(person);
+        session1.evict(person);
 
-        Long id2 = (Long) session.save(person);
+        Long id2 = (Long) session1.save(person);
         assertNotEquals(id1, id2);
 
     }
@@ -173,11 +198,11 @@ public class SaveMethodsIntegrationTest {
 
         Person person = new Person();
         person.setName("John");
-        Person mergedPerson = (Person) session.merge(person);
+        Person mergedPerson = (Person) session1.merge(person);
 
-        session.getTransaction()
-            .commit();
-        session.beginTransaction();
+        session1.getTransaction()
+                .commit();
+        session1.beginTransaction();
 
         assertNotNull(person.getId());
         assertNotNull(mergedPerson.getId());
@@ -189,9 +214,9 @@ public class SaveMethodsIntegrationTest {
 
         Person person = new Person();
         person.setName("John");
-        session.save(person);
+        session1.save(person);
 
-        Person mergedPerson = (Person) session.merge(person);
+        Person mergedPerson = (Person) session1.merge(person);
 
         assertSame(person, mergedPerson);
 
@@ -202,11 +227,11 @@ public class SaveMethodsIntegrationTest {
 
         Person person = new Person();
         person.setName("John");
-        session.save(person);
-        session.evict(person);
+        session1.save(person);
+        session1.evict(person);
 
         person.setName("Mary");
-        session.update(person);
+        session1.update(person);
         assertEquals("Mary", person.getName());
 
     }
@@ -216,7 +241,7 @@ public class SaveMethodsIntegrationTest {
 
         Person person = new Person();
         person.setName("John");
-        session.update(person);
+        session1.update(person);
 
     }
 
@@ -225,9 +250,9 @@ public class SaveMethodsIntegrationTest {
 
         Person person = new Person();
         person.setName("John");
-        session.save(person);
+        session1.save(person);
 
-        session.update(person);
+        session1.update(person);
 
     }
 
@@ -236,11 +261,11 @@ public class SaveMethodsIntegrationTest {
 
         Person person = new Person();
         person.setName("John");
-        session.save(person);
-        session.evict(person);
+        session1.save(person);
+        session1.evict(person);
 
         person.setName("Mary");
-        session.saveOrUpdate(person);
+        session1.saveOrUpdate(person);
         assertEquals("Mary", person.getName());
 
     }
@@ -250,16 +275,75 @@ public class SaveMethodsIntegrationTest {
 
         Person person = new Person();
         person.setName("John");
-        session.saveOrUpdate(person);
+        session1.saveOrUpdate(person);
 
-        session.getTransaction()
-            .commit();
-        session.close();
+        session1.getTransaction()
+                .commit();
+        session1.close();
 
-        session = sessionFactory.openSession();
-        session.beginTransaction();
+        session1 = sessionFactory1.openSession();
+        session1.beginTransaction();
 
-        assertNotNull(session.get(Person.class, person.getId()));
+        assertNotNull(session1.get(Person.class, person.getId()));
+
+    }
+
+    @Test
+    public void whenSaveAndTriggerUpdatedAndRefresh_thenRefreshPersistentEntity() {
+
+        Person person = new Person();
+        person.setName("Zeeshan Arif");
+        session1.persist(person);
+        session1.getTransaction()
+                .commit();
+        session1.close();
+
+        session1 = sessionFactory1.openSession();
+        session1.beginTransaction();
+        session1.refresh(person);
+        session1.getTransaction()
+                .commit();
+        session1.close();
+
+        session1 = sessionFactory1.openSession();
+        session1.beginTransaction();
+        assertEquals(person.getName(), "Neymar Santos");
+
+    }
+
+    @Test
+    public void whenReplicate_thenRefreshPersistentEntity() {
+
+        Person p = new Person();
+        p.setName("Ronaldinho Gaucho");
+        session1.persist(p);
+        session1.getTransaction()
+                .commit();
+        session1.close();
+
+        Session session2 = sessionFactory2.openSession();
+        session2.beginTransaction();
+        session2.replicate(p, ReplicationMode.LATEST_VERSION);
+        session2.getTransaction()
+                .commit();
+        session2.close();
+
+        session2 = sessionFactory2.openSession();
+        session2.beginTransaction();
+        Person actual = session2.get(Person.class, p.getId());
+        session2.getTransaction().commit();
+        session2.close();
+
+        session1 = sessionFactory1.openSession();
+        session1.beginTransaction();
+        Person expected = session1.get(Person.class, p.getId());
+        session1.getTransaction().commit();
+        session1.close();
+
+        session1 = sessionFactory1.openSession();
+        session1.beginTransaction();
+        assertEquals(expected.getId(), actual.getId());
+        assertEquals(expected.getName(), actual.getName());
 
     }
 
@@ -268,24 +352,25 @@ public class SaveMethodsIntegrationTest {
 
         Person person = new Person();
         person.setName("John");
-        session.save(person);
+        session1.save(person);
 
-        session.saveOrUpdate(person);
+        session1.saveOrUpdate(person);
 
     }
 
     @After
     public void tearDown() {
         if (!doNotCommit) {
-            session.getTransaction()
-                .commit();
+            session1.getTransaction()
+                    .commit();
         }
-        session.close();
+        session1.close();
     }
 
     @AfterClass
     public static void afterTests() {
-        sessionFactory.close();
+        sessionFactory1.close();
+        sessionFactory2.close();
     }
 
 }

@@ -4,8 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-collections-array-list</artifactId>
-    <name>core-java-collections-array-list</name>
     <packaging>jar</packaging>
+    <name>core-java-collections-array-list</name>
 
     <parent>
         <groupId>com.baeldung.core-java-modules</groupId>
@@ -18,12 +18,6 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>
             <version>${commons-collections4.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 

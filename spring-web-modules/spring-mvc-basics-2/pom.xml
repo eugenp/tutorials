@@ -10,9 +10,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-spring-5</artifactId>
+        <artifactId>parent-spring-6</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-spring-5</relativePath>
+        <relativePath>../../parent-spring-6</relativePath>
     </parent>
 
     <dependencies>
@@ -23,13 +23,13 @@
         </dependency>
         <dependency>
             <groupId>com.sun.mail</groupId>
-            <artifactId>javax.mail</artifactId>
-            <version>${javax.mail.version}</version>
+            <artifactId>jakarta.mail</artifactId>
+            <version>${jakarta.mail.version}</version>
         </dependency>
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>${javax.servlet-api.version}</version>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>${jakarta.servlet-api.version}</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet.jsp</groupId>
@@ -157,9 +157,10 @@
         <rome.version>1.9.0</rome.version>
         <xstream.version>1.4.9</xstream.version>
         <scribejava.version>5.1.0</scribejava.version>
-        <json.version>20180130</json.version>
-        <javax.mail.version>1.6.1</javax.mail.version>
-        <spring-boot.version>2.5.6</spring-boot.version>
+        <json.version>20240303</json.version>
+        <jakarta.mail.version>2.0.1</jakarta.mail.version>
+        <spring-boot.version>3.1.5</spring-boot.version>
+        <jakarta.servlet-api.version>6.1.0-M2</jakarta.servlet-api.version>
     </properties>
 
 </project>

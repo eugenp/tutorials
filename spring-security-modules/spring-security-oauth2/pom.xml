@@ -9,6 +9,8 @@
     <packaging>jar</packaging>
     <description>spring 5 security oauth sample project</description>
 
+    <!-- Unable to update this project to Boot 3 due to the lack of support for
+    Spring-security-oauth2 dependencies in Spring Boot 3, which have reached their end of life. -->
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>spring-security-modules</artifactId>

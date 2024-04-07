@@ -210,7 +210,7 @@
         <jakarta.el.version>5.0.0-M1</jakarta.el.version>
         <jakarta.version>6.1.0-M1</jakarta.version>
         <jakarta-servlet-api.version>4.0.0-M1</jakarta-servlet-api.version>
-        <json-path.version>2.8.0</json-path.version>
+        <json-path.version>2.9.0</json-path.version>
         <start-class>com.baeldung.SpringMVCApplication</start-class>
         <jakarta-servlet-jstl-version>3.0.0</jakarta-servlet-jstl-version>
         <rest.assured.version>5.4.0</rest.assured.version>

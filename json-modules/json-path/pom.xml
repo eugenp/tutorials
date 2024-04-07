@@ -21,7 +21,7 @@
     </dependencies>
 
     <properties>
-        <json-path.version>2.8.0</json-path.version>
+        <json-path.version>2.9.0</json-path.version>
     </properties>
 
 </project>

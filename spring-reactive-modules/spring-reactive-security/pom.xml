@@ -10,9 +10,10 @@
     <description>spring boot security sample project about new features</description>
 
     <parent>
-        <groupId>com.baeldung.spring.reactive</groupId>
-        <artifactId>spring-reactive-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-3</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -34,8 +35,8 @@
             <version>${reactor-spring.version}</version>
         </dependency>
         <dependency>
-            <groupId>javax.json.bind</groupId>
-            <artifactId>javax.json.bind-api</artifactId>
+            <groupId>jakarta.json.bind</groupId>
+            <artifactId>jakarta.json.bind-api</artifactId>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -51,6 +52,7 @@
         <dependency>
             <groupId>org.apache.johnzon</groupId>
             <artifactId>johnzon-jsonb</artifactId>
+            <version>${johnzon-jsonb.version}</version>
         </dependency>
         <!-- utils -->
         <dependency>
@@ -62,6 +64,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.json</groupId>
+            <artifactId>jakarta.json-api</artifactId>
+            <version>${jakarta.json-api.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -117,6 +124,8 @@
         <geronimo-json_1.1_spec.version>1.0</geronimo-json_1.1_spec.version>
         <reactor-test.version>3.1.6.RELEASE</reactor-test.version>
         <reactor.version>3.4.29</reactor.version>
+        <jakarta.json-api.version>2.0.1</jakarta.json-api.version>
+        <johnzon-jsonb.version>2.0.0</johnzon-jsonb.version>
     </properties>
 
 </project>

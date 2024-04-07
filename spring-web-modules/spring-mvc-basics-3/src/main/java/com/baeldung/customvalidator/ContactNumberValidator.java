@@ -1,7 +1,7 @@
 package com.baeldung.customvalidator;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
 public class ContactNumberValidator implements ConstraintValidator<ContactNumberConstraint, String> {
 

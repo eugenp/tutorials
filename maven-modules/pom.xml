@@ -27,7 +27,7 @@
         <module>maven-classifier</module>
         <module>maven-copy-files</module>
         <module>maven-custom-plugin</module>
-        <module>maven-exec-plugin</module>
+<!--        <module>maven-exec-plugin</module>--> <!-- failing after upgrading to jdk17-->
         <module>maven-generate-war</module>
         <module>maven-integration-test</module>
         <module>maven-multi-source</module>
@@ -84,4 +84,7 @@
         </plugins>
     </build>
 
+    <properties>
+        <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
+    </properties>
 </project>

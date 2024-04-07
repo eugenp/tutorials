@@ -4,8 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-concurrency-advanced-3</artifactId>
-    <name>core-java-concurrency-advanced-3</name>
     <packaging>jar</packaging>
+    <name>core-java-concurrency-advanced-3</name>
 
     <parent>
         <groupId>com.baeldung.core-java-modules</groupId>
@@ -86,7 +86,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <jcabi-aspects.version>0.22.6</jcabi-aspects.version>
         <aspectjrt.version>1.9.20.1</aspectjrt.version>
-        <cactoos.version>0.43</cactoos.version>
+        <cactoos.version>0.55.0</cactoos.version>
         <ea-async.version>1.2.3</ea-async.version>
         <jcabi-maven-plugin.version>0.14.1</jcabi-maven-plugin.version>
         <aspectjtools.version>1.9.20.1</aspectjtools.version>
