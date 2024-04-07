@@ -38,7 +38,7 @@ public class UpdateOrInsertUnitTest {
     }
 
     @Test
-    public void givenCreditCards_whenUpdateOrInsert0Executed_thenUpserted() {
+    void givenCreditCards_whenUpdateOrInsert0Executed_thenUpserted() {
         // insert test
         CreditCard newCreditCard = buildCreditCard();
         CreditCard cardExists = creditCardRepository.findByCardNumber(newCreditCard.getCardNumber());
@@ -64,7 +64,7 @@ public class UpdateOrInsertUnitTest {
     }
 
     @Test
-    public void givenCreditCards_whenUpdateOrInsert1Executed_thenUpserted() {
+    void givenCreditCards_whenUpdateOrInsert1Executed_thenUpserted() {
         // insert test
         CreditCard newCreditCard = buildCreditCard();
         CreditCard cardExists = creditCardRepository.findByCardNumber(newCreditCard.getCardNumber());
@@ -88,7 +88,7 @@ public class UpdateOrInsertUnitTest {
     }
 
     @Test
-    public void givenCreditCards_whenUpdateOrInsert2Executed_thenUpserted() {
+    void givenCreditCards_whenUpdateOrInsert2Executed_thenUpserted() {
         // insert test
         CreditCard newCreditCard = buildCreditCard();
         CreditCard cardExists = creditCardRepository.findByCardNumber(newCreditCard.getCardNumber());

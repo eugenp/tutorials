@@ -14,14 +14,14 @@ public class CreditCard {
     private String cardNumber;
     private String expiryDate;
 
-    private Long customer_id;
+    private Long customerId;
 
     public Long getCustomerId() {
-        return customer_id;
+        return customerId;
     }
 
-    public void setCustomerId(Long customer_id) {
-        this.customer_id = customer_id;
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
     }
 
     public Long getId() {
@@ -53,6 +53,6 @@ public class CreditCard {
 
     @Override
     public String toString() {
-        return "CreditCard{" + "id=" + id + ", cardNumber='" + cardNumber + '\'' + ", expiryDate='" + expiryDate + '\'' + ", customer_id=" + customer_id + '}';
+        return "CreditCard{" + "id=" + id + ", cardNumber='" + cardNumber + '\'' + ", expiryDate='" + expiryDate + '\'' + ", customerId=" + customerId + '}';
     }
 }
