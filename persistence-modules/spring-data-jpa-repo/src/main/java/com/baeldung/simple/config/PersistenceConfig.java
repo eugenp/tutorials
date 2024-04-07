@@ -1,4 +1,4 @@
-package com.baeldung.jpa.simple.config;
+package com.baeldung.simple.config;
 
 import java.util.Properties;
 
@@ -32,7 +32,7 @@ public class PersistenceConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan("com.baeldung.jpa.simple.model");
+        em.setPackagesToScan("com.baeldung.simple.entity");
 
         final HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);

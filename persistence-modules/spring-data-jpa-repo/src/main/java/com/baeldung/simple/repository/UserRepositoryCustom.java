@@ -1,11 +1,11 @@
-package com.baeldung.jpa.simple.repository;
+package com.baeldung.simple.repository;
 
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Predicate;
 
-import com.baeldung.jpa.simple.model.User;
+import com.baeldung.simple.entity.User;
 
 public interface UserRepositoryCustom {
 
