@@ -10,8 +10,5 @@
 <div th:if="${param.query != null}">
     <p th:text="${param.query[0]}" th:unless="${param.query == null}"></p>
 </div>
-<div th:if="${#request.getParameter('query') != null}">
-    <p th:text="${#request.getParameter('query')}" th:unless="${#request.getParameter('query') == null}"></p>
-</div>
 </body>
 </html>
