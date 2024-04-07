@@ -1,54 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns="http://maven.apache.org/POM/4.0.0"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <artifactId>core-java-collections-6</artifactId>
-  <name>core-java-collections-6</name>
-  <packaging>jar</packaging>
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>core-java-collections-6</artifactId>
+    <name>core-java-collections-6</name>
+    <packaging>jar</packaging>
 
-  <parent>
-    <artifactId>core-java-modules</artifactId>
-    <groupId>com.baeldung.core-java-modules</groupId>
-    <version>0.0.1-SNAPSHOT</version>
-  </parent>
+    <parent>
+        <artifactId>core-java-modules</artifactId>
+        <groupId>com.baeldung.core-java-modules</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
 
-  <dependencies>
-    <dependency>
-      <artifactId>junit-platform-runner</artifactId>
-      <groupId>org.junit.platform</groupId>
-      <scope>test</scope>
-      <version>${junit-platform.version}</version>
-    </dependency>
-    <dependency>
-      <artifactId>junit-jupiter</artifactId>
-      <groupId>org.junit.jupiter</groupId>
-      <scope>test</scope>
-      <version>${junit.version}</version>
-    </dependency>
-    <dependency>
-      <artifactId>junit-vintage-engine</artifactId>
-      <groupId>org.junit.vintage</groupId>
-      <scope>test</scope>
-      <version>${junit.version}</version>
-    </dependency>
-  </dependencies>
+    <dependencies>
+        <dependency>
+            <artifactId>junit-platform-runner</artifactId>
+            <groupId>org.junit.platform</groupId>
+            <scope>test</scope>
+            <version>${junit-platform.version}</version>
+        </dependency>
+        <dependency>
+            <artifactId>junit-jupiter</artifactId>
+            <groupId>org.junit.jupiter</groupId>
+            <scope>test</scope>
+            <version>${junit.version}</version>
+        </dependency>
+        <dependency>
+            <artifactId>junit-vintage-engine</artifactId>
+            <groupId>org.junit.vintage</groupId>
+            <scope>test</scope>
+            <version>${junit.version}</version>
+        </dependency>
+    </dependencies>
 
-  <build>
-    <plugins>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>9</source>
-          <target>9</target>
-        </configuration>
-        <groupId>org.apache.maven.plugins</groupId>
-      </plugin>
-    </plugins>
-  </build>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>9</source>
+                    <target>9</target>
+                </configuration>
+                <groupId>org.apache.maven.plugins</groupId>
+            </plugin>
+        </plugins>
+    </build>
 
-  <properties>
-    <junit.version>5.10.2</junit.version>
-  </properties>
+    <properties>
+        <junit.version>5.10.2</junit.version>
+    </properties>
 
 </project>
