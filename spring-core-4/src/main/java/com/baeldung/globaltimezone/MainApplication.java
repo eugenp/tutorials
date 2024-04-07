@@ -6,11 +6,15 @@ import javax.annotation.PostConstruct;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class MainApplication {
+
+    @Value("${application.timezone:UTC}")
+    private String applicationTimeZone;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MainApplication.class);
 
@@ -25,8 +29,8 @@ public class MainApplication {
 
     @PostConstruct
     public void executeAfterMain() {
-        // For having the value available just after WebApplicationContext initialization is completed, set the value here:
-        // TimeZone.setDefault(TimeZone.getTimeZone("GMT+08:00"));
+        // For having the value available just after WebApplicationContext initialization  is completed and using application properties:
+        // TimeZone.setDefault(TimeZone.getTimeZone(applicationTimeZone));
         LOGGER.info("Default timezone, after main run, is set to: " + TimeZone.getDefault()
             .getDisplayName());
     }
