@@ -4,6 +4,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 class ComplexNumber {
     public long real;
     public long imaginary;
@@ -13,39 +16,23 @@ class ComplexNumber {
         this.imaginary = b;
     }
 
-    public ComplexNumber(String complexNumberStr1) {
+    public ComplexNumber(String complexNumberStr) {
 
-        String complexNumberStr = complexNumberStr1.replaceAll("\\s", "");
-        if (complexNumberStr.contains("i")) {
-            // Split the string based on '+' or '-'
-            String[] parts = complexNumberStr.split("(?=[+-])");
+        Pattern pattern = Pattern.compile("(-?\\d+)?(?:([+-]?\\d+)i)?");
+        Matcher matcher = pattern.matcher(complexNumberStr.replaceAll("\\s", ""));
 
-            if (parts.length == 1) {
-                // Only real part (no imaginary part)
-                if (complexNumberStr.endsWith("i")) {
-                    real = 0;
-                    imaginary = Long.parseLong(parts[0].substring(0, parts[0].length() - 1));
-                } else {
-                    real = Long.parseLong(complexNumberStr);
-                    imaginary = 0;
-                }
-            } else if (parts.length == 2) {
-                // Both real and imaginary parts present
-                real = Long.parseLong(parts[0]);
-                String imaginaryString = parts[1].substring(0, parts[1].length() - 1); // Remove 'i'
-                if (imaginaryString.isEmpty()) {
-                    // Only 'i' without coefficient, hence imaginary part is 1
-                    imaginary = 1;
-                } else {
-                    imaginary = Long.parseLong(imaginaryString);
-                }
-            } else {
-                throw new IllegalArgumentException("Invalid complex number format");
-            }
+        if (matcher.matches()) {
+            // Extract real and imaginary parts
+            String realPartStr = matcher.group(1);
+            String imaginaryPartStr = matcher.group(2);
+
+            // Parse real part (if present)
+            real = (realPartStr != null) ? Long.parseLong(realPartStr) : 0;
+
+            // Parse imaginary part (if present)
+            imaginary = (imaginaryPartStr != null) ? Long.parseLong(imaginaryPartStr) : 0;
         } else {
-            // Only real part without 'i'
-            real = Long.parseLong(complexNumberStr);
-            imaginary = 0;
+            throw new IllegalArgumentException("Invalid complex number format, supported format is `a+bi`");
         }
     }
 
