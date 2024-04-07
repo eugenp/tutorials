@@ -1,12 +1,8 @@
 package com.baeldung.complexnumbers;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 class ComplexNumber {
     public long real;
