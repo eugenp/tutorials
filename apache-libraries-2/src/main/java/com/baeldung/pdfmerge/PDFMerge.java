@@ -18,7 +18,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 public class PDFMerge {
 
-    public void merge(List<String> pdfFiles, String outputFile) throws IOException {
+    public void mergeUsingPDFBox(List<String> pdfFiles, String outputFile) throws IOException {
         PDFMergerUtility pdfMergerUtility = new PDFMergerUtility();
         pdfMergerUtility.setDestinationFileName(outputFile);
 
@@ -33,7 +33,7 @@ public class PDFMerge {
         pdfMergerUtility.mergeDocuments(MemoryUsageSetting.setupMainMemoryOnly());
     }
 
-    public void merge2(List<String> pdfFiles, String outputFile) throws IOException, DocumentException {
+    public void mergeUsingIText(List<String> pdfFiles, String outputFile) throws IOException, DocumentException {
         List<PdfReader> pdfReaders = List.of(new PdfReader(pdfFiles.get(0)), new PdfReader(pdfFiles.get(1)));
         Document document = new Document();
         FileOutputStream fos = new FileOutputStream(outputFile);

@@ -70,10 +70,10 @@ public class PDFMergeUnitTest {
     }
 
     @Test
-    public void giveMultiplePdfs_whenMerge1Executed_thenPdfsMerged() throws IOException {
+    void giveMultiplePdfs_whenMergeUsingPDFBoxExecuted_thenPdfsMerged() throws IOException {
         List<String> files = List.of("src/test/resources/temp/file1.pdf", "src/test/resources/temp/file2.pdf");
         PDFMerge pdfMerge = new PDFMerge();
-        pdfMerge.merge(files, "src/test/resources/temp/output.pdf");
+        pdfMerge.mergeUsingPDFBox(files, "src/test/resources/temp/output.pdf");
 
         try (PDDocument document = PDDocument.load(new File("src/test/resources/temp/output.pdf"))) {
             PDFTextStripper pdfStripper = new PDFTextStripper();
@@ -91,10 +91,10 @@ public class PDFMergeUnitTest {
     }
 
     @Test
-    public void giveMultiplePdfs_whenMerge2Executed_thenPdfsMerged() throws IOException, DocumentException {
+    void giveMultiplePdfs_whenMergeUsingITextExecuted_thenPdfsMerged() throws IOException, DocumentException {
         List<String> files = List.of("src/test/resources/temp/file1.pdf", "src/test/resources/temp/file2.pdf");
         PDFMerge pdfMerge = new PDFMerge();
-        pdfMerge.merge2(files, "src/test/resources/temp/output1.pdf");
+        pdfMerge.mergeUsingIText(files, "src/test/resources/temp/output1.pdf");
 
         try (PDDocument document = PDDocument.load(new File("src/test/resources/temp/output1.pdf"))) {
             PDFTextStripper pdfStripper = new PDFTextStripper();
