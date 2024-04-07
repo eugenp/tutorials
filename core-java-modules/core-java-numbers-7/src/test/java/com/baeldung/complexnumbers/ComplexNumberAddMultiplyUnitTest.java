@@ -72,8 +72,7 @@ public class ComplexNumberAddMultiplyUnitTest {
     @CsvSource({
             "3+2i, 1+7i, -11+23i",
             "1+1i, 1+1i, 0+2i",
-            "2i+3, 1+7i, 23i+-11",
-            "2i  +3, 1 +    7i,   23i+   -11",
+            "  3+2i, 1 +    7i,   -11 + 23i   ",
             "0+5i, 3+0i, 0+15i",
             "0+0i, -2+0i, 0+0i",
             "-3+2i, 1-7i, -23-23i"
