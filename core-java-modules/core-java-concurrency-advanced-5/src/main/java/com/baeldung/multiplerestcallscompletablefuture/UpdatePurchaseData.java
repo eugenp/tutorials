@@ -2,12 +2,13 @@ package com.baeldung.multiplerestcallscompletablefuture;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 import java.util.function.BiFunction;
 
 public class UpdatePurchaseData {
 
-    public void upsertPurchases(List<Purchase> purchases) {
+    public void updatePurchases(List<Purchase> purchases) {
         purchases.forEach(this::updatePurchase);
     }
 
@@ -22,6 +23,26 @@ public class UpdatePurchaseData {
                 CompletableFuture.
                         supplyAsync(() -> getUserName("user_id"))
                         .thenAccept(purchase::setBuyerName)
+        ).join();
+    }
+
+    public void updatePurchaseHandlingExceptions(Purchase purchase) {
+        CompletableFuture.allOf(
+                CompletableFuture.
+                        supplyAsync(() -> getOrderDescription("order_id"))
+                        .thenAccept(purchase::setOrderDescription)
+                        .orTimeout(5, TimeUnit.SECONDS)
+                        .handle(handleGracefully()),
+                CompletableFuture.
+                        supplyAsync(() -> getPaymentDescription("payment_id"))
+                        .thenAccept(purchase::setPaymentDescription)
+                        .orTimeout(5, TimeUnit.SECONDS)
+                        .handle(handleGracefully()),
+                CompletableFuture.
+                        supplyAsync(() -> getUserName("user_id"))
+                        .thenAccept(purchase::setBuyerName)
+                        .orTimeout(5, TimeUnit.SECONDS)
+                        .handle(handleGracefully())
         ).join();
     }
 
@@ -51,14 +72,10 @@ public class UpdatePurchaseData {
         }
     }
 
-    private static BiFunction<Void, Throwable, ?> handleGracefully() {
+    private static BiFunction<Void, Throwable, Void> handleGracefully() {
         return (result, exception) -> {
             if (exception != null) {
-                if (exception instanceof TimeoutException) {
-                    // handle timeouts
-                }
-                // handle other exceptions
-                return null;
+                // handle exception
             }
             return result;
         };

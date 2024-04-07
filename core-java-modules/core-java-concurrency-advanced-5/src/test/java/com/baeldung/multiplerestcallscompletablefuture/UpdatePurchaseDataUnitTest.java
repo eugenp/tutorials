@@ -15,7 +15,7 @@ class UpdatePurchaseDataUnitTest {
                 new Purchase(), new Purchase());
 
         UpdatePurchaseData subject = spy(new UpdatePurchaseData());
-        subject.upsertPurchases(purchases);
+        subject.updatePurchases(purchases);
 
         System.out.println(purchases);
     }
@@ -26,7 +26,7 @@ class UpdatePurchaseDataUnitTest {
                 new Purchase(), new Purchase());
 
         UpdatePurchaseData subject = new UpdatePurchaseData();
-        subject.upsertPurchases(purchases);
+        subject.updatePurchases(purchases);
 
         System.out.println(purchases);
     }
@@ -37,7 +37,7 @@ class UpdatePurchaseDataUnitTest {
                 new Purchase(), new Purchase());
 
         UpdatePurchaseData subject = new UpdatePurchaseData();
-        subject.upsertPurchases(purchases);
+        subject.updatePurchases(purchases);
 
         System.out.println(purchases);
     }
