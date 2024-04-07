@@ -17,24 +17,39 @@ class ComplexNumber {
         this.imaginary = b;
     }
 
-    public ComplexNumber(String complexNumberStr) {
-        Pattern pattern = Pattern.compile("(-?\\d+)\\s*[+]\\s*(-?\\d+)\\s*i|(-?\\d+)\\s*i\\s*[+]\\s*(-?\\d+)");
-        Matcher matcher = pattern.matcher(complexNumberStr);
-        if (matcher.find()) {
-            // Extract real and imaginary parts
-            long realPart;
-            long imaginaryPart;
-            if (matcher.group(1) != null && matcher.group(2) != null) {
-                realPart = Long.parseLong(matcher.group(1)); // Group 1 is the real part
-                imaginaryPart = Long.parseLong(matcher.group(2)); // Group 2 is the imaginary part
+    public ComplexNumber(String complexNumberStr1) {
+
+        String complexNumberStr = complexNumberStr1.replaceAll("\\s", "");
+        if (complexNumberStr.contains("i")) {
+            // Split the string based on '+' or '-'
+            String[] parts = complexNumberStr.split("(?=[+-])");
+
+            if (parts.length == 1) {
+                // Only real part (no imaginary part)
+                if (complexNumberStr.endsWith("i")) {
+                    real = 0;
+                    imaginary = Long.parseLong(parts[0].substring(0, parts[0].length() - 1));
+                } else {
+                    real = Long.parseLong(complexNumberStr);
+                    imaginary = 0;
+                }
+            } else if (parts.length == 2) {
+                // Both real and imaginary parts present
+                real = Long.parseLong(parts[0]);
+                String imaginaryString = parts[1].substring(0, parts[1].length() - 1); // Remove 'i'
+                if (imaginaryString.isEmpty()) {
+                    // Only 'i' without coefficient, hence imaginary part is 1
+                    imaginary = 1;
+                } else {
+                    imaginary = Long.parseLong(imaginaryString);
+                }
             } else {
-                realPart = Long.parseLong(matcher.group(4)); // Group 4 is the real part
-                imaginaryPart = Long.parseLong(matcher.group(3)); // Group 3 is the imaginary part
+                throw new IllegalArgumentException("Invalid complex number format");
             }
-            this.real = realPart;
-            this.imaginary = imaginaryPart;
         } else {
-            throw new IllegalArgumentException("String does not match the complex number pattern of `a+bi` or `bi+a`.");
+            // Only real part without 'i'
+            real = Long.parseLong(complexNumberStr);
+            imaginary = 0;
         }
     }
 
@@ -71,18 +86,20 @@ public class ComplexNumberAddMultiplyUnitTest {
     @ParameterizedTest(name = "Multiplying {0} and {1}")
     @CsvSource({
             "3+2i, 1+7i, -11+23i",
+            "2, 4, 8",
+            "2, 4i, 8i",
             "1+1i, 1+1i, 0+2i",
             "  3+2i, 1 +    7i,   -11 + 23i   ",
             "0+5i, 3+0i, 0+15i",
             "0+0i, -2+0i, 0+0i",
-            "-3+2i, 1-7i, -23-23i"
+            "-3+2i, 1-7i, 11+23i",
+            "2+4i, 0, 0"
     })
     public void sum_two_complex_numbers(String complexStr1, String complexStr2, String expectedStr) {
         ComplexNumber complex1 = new ComplexNumber(complexStr1);
         ComplexNumber complex2 = new ComplexNumber(complexStr2);
         ComplexNumber expected = new ComplexNumber(expectedStr);
         ComplexNumber multiplied = complex1.multiply(complex2);
-        System.out.println(multiplied.toString());
         Assertions.assertTrue(multiplied.isSame(expected));
     }
 
