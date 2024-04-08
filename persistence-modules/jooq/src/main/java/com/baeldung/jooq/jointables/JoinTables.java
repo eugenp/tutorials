@@ -1,9 +1,12 @@
 package com.baeldung.jooq.jointables;
 
-import static org.jooq.impl.DSL.*;
+import static org.jooq.impl.DSL.field;
 
-import org.jooq.*;
+import org.jooq.DSLContext;
 import org.jooq.Record;
+import org.jooq.Result;
+import org.jooq.SelectJoinStep;
+
 import com.baeldung.jooq.jointables.public_.Tables;
 
 public class JoinTables {
