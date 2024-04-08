@@ -3,19 +3,18 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <artifactId>core-java-calculating-moving-averages</artifactId>
-    <name>core-java-calculating-moving-averages</name>
-    <packaging>war</packaging>
-
     <parent>
-        <groupId>com.baeldung.core-java-modules</groupId>
-        <artifactId>core-java-modules</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <groupId>com.baeldung</groupId>
+        <artifactId>algorithms-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
+    <artifactId>algorithms-miscellaneous-9</artifactId>
+
     <properties>
-        <commons-math3.version>3.6.1</commons-math3.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>

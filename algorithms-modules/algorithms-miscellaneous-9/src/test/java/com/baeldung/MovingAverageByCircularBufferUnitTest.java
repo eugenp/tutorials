@@ -1,7 +1,6 @@
 package com.baeldung;
 
 import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 
 public class MovingAverageByCircularBufferUnitTest {
