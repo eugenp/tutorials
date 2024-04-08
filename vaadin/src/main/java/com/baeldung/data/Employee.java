@@ -1,8 +1,10 @@
-package com.baeldung;
+package com.baeldung.data;
+
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Employee {
@@ -11,11 +13,13 @@ public class Employee {
     @GeneratedValue
     private Long id;
 
+    @Size(min = 2, message = "First name must have at least 2 characters")
     private String firstName;
 
+    @Size(min = 2, message = "Last name must have at least 2 characters")
     private String lastName;
 
-    protected Employee() {
+    public Employee() {
     }
 
     public Employee(String firstName, String lastName) {
@@ -25,6 +29,10 @@ public class Employee {
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getFirstName() {
