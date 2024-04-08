@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class WriteVsPrintUnitTest {
 
     Object outputFromPrintWriter;
-    public Object outputFromPrintWriter() {
+    Object outputFromPrintWriter() {
         try (BufferedReader br = new BufferedReader(new FileReader("output.txt"))){
             outputFromPrintWriter = br.readLine();
         } catch (IOException e){
@@ -22,7 +22,7 @@ public class WriteVsPrintUnitTest {
     }
 
     @Test
-    public void whenUsingWriteInt_thenASCIICharacterIsPrinted() throws FileNotFoundException {
+    void whenUsingWriteInt_thenASCIICharacterIsPrinted() throws FileNotFoundException {
 
         PrintWriter printWriter = new PrintWriter("output.txt");
 
@@ -33,7 +33,7 @@ public class WriteVsPrintUnitTest {
     }
 
     @Test
-    public void whenUsingWriteCharArrayFromOffset_thenCharArrayIsPrinted() throws FileNotFoundException {
+    void whenUsingWriteCharArrayFromOffset_thenCharArrayIsPrinted() throws FileNotFoundException {
 
         PrintWriter printWriter = new PrintWriter("output.txt");
 
@@ -44,7 +44,7 @@ public class WriteVsPrintUnitTest {
     }
 
     @Test
-    public void whenUsingWriteStringFromOffset_thenLengthOfStringIsPrinted() throws FileNotFoundException {
+    void whenUsingWriteStringFromOffset_thenLengthOfStringIsPrinted() throws FileNotFoundException {
 
         PrintWriter printWriter = new PrintWriter("output.txt");
 
@@ -55,7 +55,7 @@ public class WriteVsPrintUnitTest {
     }
 
     @Test
-    public void whenUsingPrintBoolean_thenStringValueIsPrinted() throws FileNotFoundException {
+    void whenUsingPrintBoolean_thenStringValueIsPrinted() throws FileNotFoundException {
 
         PrintWriter printWriter = new PrintWriter("output.txt");
 
@@ -66,7 +66,7 @@ public class WriteVsPrintUnitTest {
     }
 
     @Test
-    public void whenUsingPrintChar_thenCharIsPrinted() throws FileNotFoundException {
+    void whenUsingPrintChar_thenCharIsPrinted() throws FileNotFoundException {
 
         PrintWriter printWriter = new PrintWriter("output.txt");
 
@@ -77,7 +77,7 @@ public class WriteVsPrintUnitTest {
     }
 
     @Test
-    public void whenUsingPrintInt_thenValueOfIntIsPrinted() throws FileNotFoundException {
+    void whenUsingPrintInt_thenValueOfIntIsPrinted() throws FileNotFoundException {
 
         PrintWriter printWriter = new PrintWriter("output.txt");
 
@@ -88,7 +88,7 @@ public class WriteVsPrintUnitTest {
     }
 
     @Test
-    public void whenUsingPrintString_thenStringIsPrinted() throws FileNotFoundException {
+    void whenUsingPrintString_thenStringIsPrinted() throws FileNotFoundException {
 
         PrintWriter printWriter = new PrintWriter("output.txt");
 
@@ -99,7 +99,7 @@ public class WriteVsPrintUnitTest {
     }
 
     @Test
-    public void whenUsingPrintObject_thenObjectToStringIsPrinted() throws FileNotFoundException {
+    void whenUsingPrintObject_thenObjectToStringIsPrinted() throws FileNotFoundException {
 
         PrintWriter printWriter = new PrintWriter("output.txt");
 
