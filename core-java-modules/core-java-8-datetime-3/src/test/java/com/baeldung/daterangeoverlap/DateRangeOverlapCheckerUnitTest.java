@@ -1,6 +1,5 @@
 package com.baeldung.daterangeoverlap;
 
-import daterangeoverlap.DateRangeOverlapChecker;
 import org.joda.time.DateTime;
 import org.junit.Test;
 
