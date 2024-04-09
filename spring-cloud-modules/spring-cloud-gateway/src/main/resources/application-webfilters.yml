@@ -113,3 +113,13 @@ spring:
             redis-rate-limiter.replenishRate: 10
             redis-rate-limiter.burstCapacity: 5
             key-resolver: "#{@userKeyResolver}"
+
+      - id: cache_request_body_route
+        uri: https://httpbin.org
+        predicates:
+        - Path=/cache/post/**
+        filters:
+        - StripPrefix=1
+        - name: CacheRequestBody
+          args:
+            bodyClass: java.lang.String

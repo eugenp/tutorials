@@ -20,6 +20,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.test.web.reactive.server.WebTestClient.ResponseSpec;
+import org.springframework.web.reactive.function.BodyInserters;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @ActiveProfiles({"webfilters","nosecurity"})
@@ -134,4 +135,18 @@ public class WebFilterFactoriesLiveTest {
         JSONObject json = new JSONObject(response.getBody());
         assertThat(json.getString("url")).contains("anything");
     }
+
+    @Test
+    public void whenCallCachePostThroughGateway_thenMyHeaderCacheIsSet() {
+        ResponseSpec response = client.post()
+            .uri("/cache/post")
+            .body(BodyInserters.fromValue("CachedBody"))
+            .exchange();
+
+        response.expectStatus()
+            .isOk()
+            .expectHeader()
+            .valueEquals("My-Header-Cache", "CachedBody");
+    }
+
 }
