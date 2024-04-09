@@ -1,18 +1,14 @@
-package com.baeldung.hibernate.oneToMany.config;
+package com.baeldung.hibernate;
 
-import com.baeldung.hibernate.oneToMany.model.Cart;
-import com.baeldung.hibernate.oneToMany.model.CartOIO;
-import com.baeldung.hibernate.oneToMany.model.Item;
-import com.baeldung.hibernate.oneToMany.model.ItemOIO;
+import com.baeldung.hibernate.subselect.RuntimeConfiguration;
+import java.util.HashMap;
+import java.util.Map;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class HibernateAnnotationUtil {
 
@@ -34,10 +30,7 @@ public class HibernateAnnotationUtil {
           .build();
 
         Metadata metadata = new MetadataSources(serviceRegistry)
-          .addAnnotatedClass(Cart.class)
-          .addAnnotatedClass(CartOIO.class)
-          .addAnnotatedClass(Item.class)
-          .addAnnotatedClass(ItemOIO.class)
+          .addAnnotatedClass(RuntimeConfiguration.class)
           .buildMetadata();
 
         return metadata.buildSessionFactory();
