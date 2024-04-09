@@ -24,7 +24,7 @@
         <module>spring-reactive-client-2</module>
         <module>spring-reactive-filters</module>
         <module>spring-reactive-oauth</module>
-        <module>spring-reactive-security</module>
+        <!--<module>spring-reactive-security</module> Uncomment after the parent module gets upgraded to Boot 3--> 
         <module>spring-reactive-data-couchbase</module>
         <module>spring-reactive</module>
         <module>spring-reactive-exceptions</module>

@@ -3,7 +3,7 @@ package com.baeldung.spring.mail;
 import java.io.IOException;
 import java.util.Map;
 
-import javax.mail.MessagingException;
+import jakarta.mail.MessagingException;
 
 import freemarker.template.TemplateException;
 

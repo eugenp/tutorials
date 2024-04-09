@@ -34,13 +34,13 @@ public class RedisTemplateListOpsManualTest {
     private ReactiveListOperations<String, String> reactiveListOps;
     
     @BeforeClass
-    public static void startRedisServer() throws IOException {
+    public static void startRedisServer() {
         redisServer = new RedisServerBuilder().port(6379).setting("maxmemory 128M").build();
         redisServer.start();
     }
     
     @AfterClass
-    public static void stopRedisServer() throws IOException {
+    public static void stopRedisServer() {
         redisServer.stop();
     }
 

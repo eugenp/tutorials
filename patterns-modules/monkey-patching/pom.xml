@@ -29,7 +29,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
-            <version>2.7.0</version>
+            <version>${spring-boot.version}</version>
         </dependency>
     </dependencies>
 
@@ -38,7 +38,12 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <spring-boot.version>2.7.0</spring-boot.version>
+    </properties>
 </project>

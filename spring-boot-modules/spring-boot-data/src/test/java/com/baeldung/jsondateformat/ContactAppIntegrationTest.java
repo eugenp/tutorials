@@ -44,7 +44,7 @@ public class ContactAppIntegrationTest {
     public void givenJsonFormatAnnotationAndJava8DateType_whenGet_thenReturnExpectedDateFormat() throws IOException, ParseException {
         ResponseEntity<String> response = restTemplate.getForEntity("http://localhost:" + port + "/contacts", String.class);
 
-        assertEquals(200, response.getStatusCodeValue());
+        assertEquals(200, response.getStatusCode().value());
 
         List<Map<String, String>> respMap = mapper.readValue(response.getBody(), new TypeReference<List<Map<String, String>>>(){});
 
@@ -59,7 +59,7 @@ public class ContactAppIntegrationTest {
     public void givenJsonFormatAnnotationAndLegacyDateType_whenGet_thenReturnExpectedDateFormat() throws IOException {
         ResponseEntity<String> response = restTemplate.getForEntity("http://localhost:" + port + "/contacts/javaUtilDate", String.class);
 
-        assertEquals(200, response.getStatusCodeValue());
+        assertEquals(200, response.getStatusCode().value());
 
         List<Map<String, String>> respMap = mapper.readValue(response.getBody(), new TypeReference<List<Map<String, String>>>(){});
 
@@ -74,7 +74,7 @@ public class ContactAppIntegrationTest {
     public void givenDefaultDateFormatInAppPropertiesAndLegacyDateType_whenGet_thenReturnExpectedDateFormat() throws IOException {
         ResponseEntity<String> response = restTemplate.getForEntity("http://localhost:" + port + "/contacts/plainWithJavaUtilDate", String.class);
 
-        assertEquals(200, response.getStatusCodeValue());
+        assertEquals(200, response.getStatusCode().value());
 
         List<Map<String, String>> respMap = mapper.readValue(response.getBody(), new TypeReference<List<Map<String, String>>>(){});
 
@@ -89,7 +89,7 @@ public class ContactAppIntegrationTest {
     public void givenDefaultDateFormatInAppPropertiesAndJava8DateType_whenGet_thenNotApplyFormat() throws IOException {
         ResponseEntity<String> response = restTemplate.getForEntity("http://localhost:" + port + "/contacts/plain", String.class);
 
-        assertEquals(200, response.getStatusCodeValue());
+        assertEquals(200, response.getStatusCode().value());
 
         List<Map<String, String>> respMap = mapper.readValue(response.getBody(), new TypeReference<List<Map<String, String>>>(){});
 
