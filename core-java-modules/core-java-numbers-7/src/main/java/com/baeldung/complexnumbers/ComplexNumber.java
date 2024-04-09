@@ -4,17 +4,17 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ComplexNumber {
-    public long real;
-    public long imaginary;
+    public double real;
+    public double imaginary;
 
-    public ComplexNumber(long a, long b) {
+    public ComplexNumber(double a, double b) {
         this.real = a;
         this.imaginary = b;
     }
 
     public ComplexNumber(String complexNumberStr) {
 
-        Pattern pattern = Pattern.compile("(-?\\d+)?(?:([+-]?\\d+)i)?");
+        Pattern pattern = Pattern.compile("(-?\\d*\\.?\\d+)?(?:([+-]?\\d*\\.?\\d+)i)?");
         Matcher matcher = pattern.matcher(complexNumberStr.replaceAll("\\s", ""));
 
         if (matcher.matches()) {
@@ -23,20 +23,20 @@ public class ComplexNumber {
             String imaginaryPartStr = matcher.group(2);
 
             // Parse real part (if present)
-            real = (realPartStr != null) ? Long.parseLong(realPartStr) : 0;
+            real = (realPartStr != null) ? Double.parseDouble(realPartStr) : 0;
 
             // Parse imaginary part (if present)
-            imaginary = (imaginaryPartStr != null) ? Long.parseLong(imaginaryPartStr) : 0;
+            imaginary = (imaginaryPartStr != null) ? Double.parseDouble(imaginaryPartStr) : 0;
         } else {
-            throw new IllegalArgumentException("Invalid complex number format, supported format is `a+bi`");
+            throw new IllegalArgumentException("Invalid complex number format(" + complexNumberStr + "), supported format is `a+bi`");
         }
     }
 
-    public long getReal() {
+    public double getReal() {
         return real;
     }
 
-    public long getImaginary() {
+    public double getImaginary() {
         return imaginary;
     }
 
@@ -49,8 +49,19 @@ public class ComplexNumber {
     }
 
     public ComplexNumber multiply(ComplexNumber that) {
-        long newReal = this.real * that.real - this.imaginary * that.imaginary;
-        long newImaginary = this.real * that.imaginary + this.imaginary * that.real;
+        double newReal = this.real * that.real - this.imaginary * that.imaginary;
+        double newImaginary = this.real * that.imaginary + this.imaginary * that.real;
+        return new ComplexNumber(newReal, newImaginary);
+    }
+
+    public ComplexNumber subtract(ComplexNumber that) {
+        return new ComplexNumber(real - that.getReal(), imaginary - that.getImaginary());
+    }
+
+    public ComplexNumber divide(ComplexNumber that) {
+        double c2d2 = Math.pow(that.real, 2) + Math.pow(that.imaginary, 2);
+        double newReal = (this.real * that.real + this.imaginary * that.imaginary) / c2d2;
+        double newImaginary = (this.imaginary * that.real - this.real * that.imaginary) / c2d2;
         return new ComplexNumber(newReal, newImaginary);
     }
 
