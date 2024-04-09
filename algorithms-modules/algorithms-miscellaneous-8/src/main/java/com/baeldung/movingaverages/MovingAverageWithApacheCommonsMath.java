@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.movingaverages;
 
 import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 
