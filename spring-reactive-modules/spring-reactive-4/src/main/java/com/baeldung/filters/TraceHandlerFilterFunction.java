@@ -13,7 +13,8 @@ public class TraceHandlerFilterFunction implements HandlerFilterFunction<ServerR
     public Mono<ServerResponse> filter(ServerRequest request, HandlerFunction<ServerResponse> handlerFunction) {
 
         ServerRequest serverRequest = ServerRequest.from(request)
-          .header("traceId", "FUNCTIONAL-TRACE-ID").build();
+            .header("traceId", "FUNCTIONAL-TRACE-ID")
+            .build();
         return handlerFunction.handle(serverRequest);
     }
 }

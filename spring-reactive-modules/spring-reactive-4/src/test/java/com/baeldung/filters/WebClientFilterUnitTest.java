@@ -4,6 +4,7 @@ import static com.baeldung.filters.WebClientFilters.modifyRequestHeaders;
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static com.github.tomakehurst.wiremock.client.WireMock.get;
 import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.wireMockConfig;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
@@ -19,19 +20,20 @@ public class WebClientFilterUnitTest {
 
     @RegisterExtension
     static WireMockExtension extension = WireMockExtension.newInstance()
-      .options(wireMockConfig().dynamicPort().dynamicHttpsPort())
-      .build();
+        .options(wireMockConfig().dynamicPort()
+            .dynamicHttpsPort())
+        .build();
 
     @Test
     void whenCallEndpoint_thenRequestHeadersModified() {
         extension.stubFor(get("/test").willReturn(aResponse().withStatus(200)
-          .withBody("SUCCESS")));
+            .withBody("SUCCESS")));
 
         final MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
 
         WebClient webClient = WebClient.builder()
-          .filter(modifyRequestHeaders(map))
-          .build();
+            .filter(modifyRequestHeaders(map))
+            .build();
         String actual = sendGetRequest(webClient);
 
         final String body = "SUCCESS";
@@ -41,10 +43,10 @@ public class WebClientFilterUnitTest {
 
     private String sendGetRequest(final WebClient webClient) {
         return webClient.get()
-          .uri(getUrl())
-          .retrieve()
-          .bodyToMono(String.class)
-          .block();
+            .uri(getUrl())
+            .retrieve()
+            .bodyToMono(String.class)
+            .block();
     }
 
     private String getUrl() {

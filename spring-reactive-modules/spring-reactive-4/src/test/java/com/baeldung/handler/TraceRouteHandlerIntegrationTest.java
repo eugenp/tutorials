@@ -1,6 +1,7 @@
 package com.baeldung.handler;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -11,10 +12,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.reactive.server.EntityExchangeResult;
 import org.springframework.test.web.reactive.server.WebTestClient;
+
 import com.baeldung.router.TraceRouter;
 
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = { TraceRouter.class, TraceRouterHandler.class})
+@ContextConfiguration(classes = { TraceRouter.class, TraceRouterHandler.class })
 @WebFluxTest
 public class TraceRouteHandlerIntegrationTest {
 
@@ -23,33 +25,34 @@ public class TraceRouteHandlerIntegrationTest {
     private WebTestClient webTestClient;
 
     @BeforeEach
-    public void setUp() {
-        webTestClient = WebTestClient.bindToApplicationContext(context).build();
+    void setUp() {
+        webTestClient = WebTestClient.bindToApplicationContext(context)
+            .build();
     }
 
     @Test
-    public void whenCallTraceFunctionalFilterEndpoint_thenResponseContainsTraceId() {
+    void whenCallTraceFunctionalFilterEndpoint_thenResponseContainsTraceId() {
         EntityExchangeResult<String> result = webTestClient.get()
-          .uri("/trace-functional-filter")
-          .exchange()
-          .expectStatus()
-          .isOk()
-          .expectBody(String.class)
-          .returnResult();
+            .uri("/trace-functional-filter")
+            .exchange()
+            .expectStatus()
+            .isOk()
+            .expectBody(String.class)
+            .returnResult();
 
         final String body = "TraceId: FUNCTIONAL-TRACE-ID";
         assertEquals(result.getResponseBody(), body);
     }
 
     @Test
-    public void whenCallTraceFunctionalBeforeEndpoint_thenResponseContainsTraceId() {
+    void whenCallTraceFunctionalBeforeEndpoint_thenResponseContainsTraceId() {
         EntityExchangeResult<String> result = webTestClient.get()
-          .uri("/trace-functional-before")
-          .exchange()
-          .expectStatus()
-          .isOk()
-          .expectBody(String.class)
-          .returnResult();
+            .uri("/trace-functional-before")
+            .exchange()
+            .expectStatus()
+            .isOk()
+            .expectBody(String.class)
+            .returnResult();
 
         final String body = "TraceId: FUNCTIONAL-TRACE-ID";
         assertEquals(result.getResponseBody(), body);

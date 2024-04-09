@@ -12,8 +12,13 @@ public class ExceptionalTraceFilter implements WebFilter {
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
-        if(exchange.getRequest().getPath().toString().equals("/trace-exceptional")){
-            exchange.getRequest().getHeaders() .add("traceId", "TRACE-ID");
+        if (exchange.getRequest()
+            .getPath()
+            .toString()
+            .equals("/trace-exceptional")) {
+            exchange.getRequest()
+                .getHeaders()
+                .add("traceId", "TRACE-ID");
         }
         return chain.filter(exchange);
     }

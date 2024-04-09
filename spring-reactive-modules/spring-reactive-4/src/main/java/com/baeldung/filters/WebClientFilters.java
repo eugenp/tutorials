@@ -9,8 +9,8 @@ public final class WebClientFilters {
     public static ExchangeFilterFunction modifyRequestHeaders(final MultiValueMap<String, String> changedMap) {
         return (request, next) -> {
             final ClientRequest clientRequest = ClientRequest.from(request)
-              .header("traceId", "TRACE-ID")
-              .build();
+                .header("traceId", "TRACE-ID")
+                .build();
             changedMap.addAll(clientRequest.headers());
             return next.exchange(clientRequest);
         };
