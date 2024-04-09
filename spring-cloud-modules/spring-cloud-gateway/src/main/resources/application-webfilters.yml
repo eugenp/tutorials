@@ -9,6 +9,11 @@ spring:
     port: 6379
   cloud:
     gateway:
+      filter:
+        local-response-cache:
+          enabled: true
+          timeToLive: 20m
+          size: 6MB
       routes:
       - id: request_header_route
         uri: https://httpbin.org
@@ -123,3 +128,11 @@ spring:
         - name: CacheRequestBody
           args:
             bodyClass: java.lang.String
+
+      - id: cache_response_body_route
+        uri: https://httpbin.org
+        predicates:
+          - Path=/cache/get/**
+        filters:
+          - StripPrefix=1
+          - LocalResponseCache=10s,20MB

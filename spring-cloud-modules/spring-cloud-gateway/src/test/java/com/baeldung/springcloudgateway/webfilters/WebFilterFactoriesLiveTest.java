@@ -149,4 +149,14 @@ public class WebFilterFactoriesLiveTest {
             .valueEquals("My-Header-Cache", "CachedBody");
     }
 
+    @Test
+    public void whenCallCacheGetThroughGateway_thenCacheControlIsSet() {
+        ResponseSpec response = client.get()
+            .uri("/cache/get")
+            .exchange();
+
+        response.expectStatus().isOk()
+            .expectHeader()
+            .valueEquals("Cache-Control", "max-age=10");
+    }
 }
