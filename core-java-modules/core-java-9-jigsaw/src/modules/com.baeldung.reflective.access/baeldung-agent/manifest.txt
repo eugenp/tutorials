@@ -1,3 +1,0 @@
-Premain-Class: com.baeldung.agent.LoadTimeAgent
-Can-Redefine-Classes: true
-Can-Retransform-Classes: true

@@ -1,5 +1,0 @@
-/*
- * Output variables
- */
-
-

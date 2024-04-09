@@ -1,3 +1,0 @@
-Line 1 : Hello World!!!
-Line 2 : This is a file content.
-Line 3 : String content

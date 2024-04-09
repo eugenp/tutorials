@@ -1,5 +1,0 @@
-subprojects {
-    repositories {
-        mavenCentral()
-    }
-}

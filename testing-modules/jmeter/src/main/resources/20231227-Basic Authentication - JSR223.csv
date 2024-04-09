@@ -1,8 +1,0 @@
-timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
-1703684618895,36,Soap Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,"Non HTTP response message: Connect to localhost:8080 [localhost/127.0.0.1, localhost/0:0:0:0:0:0:0:1] failed: Connection refused: connect",Number of Users 1-1,text,false,"Test failed: code expected to equal /
-
-****** received  : [[[Non HTTP response code: org.apache.http.conn.HttpHostConnectException]]]
-
-****** comparison: [[[200                                                                  ]]]
-
-/",2630,0,1,1,http://localhost:8080/secured/uuid,0,0,36

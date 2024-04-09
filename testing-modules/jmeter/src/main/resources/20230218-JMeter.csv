@@ -1,6 +1,0 @@
-timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,Latency,IdleTime,Connect
-1676711094371,176,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Thread Group 1-1,text,false,"The operation lasted too long: It took 176 milliseconds, but should not have lasted longer than 10 milliseconds.",2215,0,3,3,0,0,175
-1676711094372,176,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Thread Group 1-2,text,false,"The operation lasted too long: It took 176 milliseconds, but should not have lasted longer than 10 milliseconds.",2215,0,3,3,0,0,175
-1676711094556,10,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Thread Group 1-3,text,false,,2215,0,1,1,0,0,9
-1676711094755,3,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Thread Group 1-4,text,false,,2215,0,1,1,0,0,3
-1676711094954,3,HTTP Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Thread Group 1-5,text,false,,2215,0,1,1,0,0,3

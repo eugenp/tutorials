@@ -1,8 +1,0 @@
-Dear [(${username})],
-
-This is the list of our students:
-[# th:each="s : ${students}"]
-   - [(${s.name})]. ID: [(${s.id})]
-[/]
-Thanks,
-The Baeldung University

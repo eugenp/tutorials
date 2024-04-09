@@ -1,3 +1,0 @@
-/*
- * SvcFeedback output values
- */

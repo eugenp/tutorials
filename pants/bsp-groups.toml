@@ -1,7 +1,0 @@
-[groups.default]
-addresses = [  
-  "src/jvm::",  
-  "tests/jvm::",  
-]
-
-resolve = "jvm:jvm-default"

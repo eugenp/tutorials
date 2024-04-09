@@ -1,6 +1,0 @@
-spring:
-  graphql:
-    graphiql:
-      enabled: true
-  jackson:
-    property-naming-strategy: SNAKE_CASE

@@ -1,1 +1,0 @@
-Main-Class: com.baeldung.jarArguments.JarExample

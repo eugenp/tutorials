@@ -1,3 +1,0 @@
--d javac-target
--Xlint:rawtypes,unchecked,static,cast,serial,fallthrough
-com/baeldung/javac/Data.java

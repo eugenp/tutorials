@@ -1,1 +1,0 @@
-resources(name = "word", sources=["word.txt"])

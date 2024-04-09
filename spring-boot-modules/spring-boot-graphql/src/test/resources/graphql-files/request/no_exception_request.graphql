@@ -1,8 +1,0 @@
-query {
-    searchByVin(vin: "KM8JN72DX7U587496"){
-        vin
-        year
-        make
-        model
-    }
-}

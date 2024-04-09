@@ -1,3 +1,0 @@
-datastax-java-driver:
-  basic:
-    contact-points: 127.0.0.1:9042

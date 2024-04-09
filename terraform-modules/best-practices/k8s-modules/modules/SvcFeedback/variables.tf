@@ -1,5 +1,0 @@
-/*
- * SvcFeedback deployment variables
- */
-
- 

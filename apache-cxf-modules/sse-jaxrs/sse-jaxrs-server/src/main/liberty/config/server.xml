@@ -1,7 +1,0 @@
-<server description="OpenLiberty Server">
-    <featureManager>
-        <feature>jaxrs-2.1</feature>
-        <feature>cdi-2.0</feature>
-    </featureManager>
-    <httpEndpoint httpPort="9080" httpsPort="9443" id="defaultHttpEndpoint" host="*"/>
-</server>

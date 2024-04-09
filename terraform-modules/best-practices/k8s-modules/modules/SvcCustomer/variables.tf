@@ -1,5 +1,0 @@
-/*
- * SvcCustomer deployment variables
- */
-
- 

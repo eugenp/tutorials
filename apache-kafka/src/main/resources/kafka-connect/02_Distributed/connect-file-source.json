@@ -1,9 +1,0 @@
-{
-    "name": "local-file-source",
-    "config": {
-        "connector.class": "FileStreamSource",
-        "tasks.max": 1,
-        "file": "test-distributed.txt",
-        "topic": "connect-distributed"
-    }
-}

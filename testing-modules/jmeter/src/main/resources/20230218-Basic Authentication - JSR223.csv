@@ -1,8 +1,0 @@
-timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,Latency,IdleTime,Connect
-1676710986043,566,Soap Request,Non HTTP response code: java.net.ConnectException,Non HTTP response message: Connection refused: connect,Number of Users 1-1,text,false,"Test failed: code expected to equal /
-
-****** received  : [[[Non HTTP response code: java.net.ConnectException]]]
-
-****** comparison: [[[200                                              ]]]
-
-/",2215,0,1,1,0,0,565

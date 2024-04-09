@@ -1,1 +1,0 @@
--XX:-TieredCompilation -XX:TieredStopAtLevel=1

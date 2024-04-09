@@ -1,3 +1,0 @@
-{"name":"Book A", "genre": "Comedy"}
-{"name":"Book B", "genre": "Thriller"}
-{"_id": "mongo-id", "name":"Book C", "genre": "Drama"}

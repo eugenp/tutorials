@@ -1,1 +1,0 @@
-Premain-Class: com.baeldung.objectsize.ObjectSizeCalculator

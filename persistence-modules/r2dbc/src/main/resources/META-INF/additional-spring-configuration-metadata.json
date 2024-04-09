@@ -1,5 +1,0 @@
-{"properties": [{
-  "name": "r2dbc",
-  "type": "com.baeldung.examples.r2dbc.R2DBCConfigurationProperties",
-  "description": "R2DBC Connection properties"
-}]}

@@ -1,3 +1,0 @@
-/*
- * SvcCustomer output values
- */

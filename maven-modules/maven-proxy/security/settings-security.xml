@@ -1,7 +1,0 @@
-<!-- 
-     Encrypt master password with: 
-         mvn --encrypt-master-password 
--->
-<settingsSecurity>
-    <master>{QFMlh/6WjF8H9po9UD\}0Nv18e527jqWb6mUgIB798n4=}</master>
-</settingsSecurity>

@@ -1,3 +1,0 @@
-mutation createPostReturnNullableType($title: String!, $text: String!, $category: String!, $author: String!) {
-    createPostReturnNullableType(title: $title, text: $text, category: $category, author: $author)
-}

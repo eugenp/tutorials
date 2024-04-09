@@ -1,1 +1,0 @@
-[<@render partial="product" collection=products spacer="comma"/>]

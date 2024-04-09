@@ -1,9 +1,0 @@
-*.class
-
-# Folders #
-/gensrc
-/target
-
-# Packaged files #
-*.jar
-/bin/

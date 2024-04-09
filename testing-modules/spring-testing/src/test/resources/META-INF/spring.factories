@@ -1,3 +1,0 @@
-# Test Execution Listeners
-org.springframework.test.context.TestExecutionListener=\
-com.baeldung.testexecutionlisteners.CustomTestExecutionListener
