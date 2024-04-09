@@ -1,13 +1,13 @@
 package com.baeldung.daterangeoverlap;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import org.joda.time.DateTime;
+import org.junit.Test;
 
 import java.time.LocalDate;
 import java.util.Calendar;
 
-import org.joda.time.DateTime;
-import org.junit.Test;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class DateRangeOverlapCheckerUnitTest {
 
