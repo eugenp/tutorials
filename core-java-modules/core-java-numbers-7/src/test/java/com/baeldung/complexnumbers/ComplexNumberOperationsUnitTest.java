@@ -19,9 +19,9 @@ public class ComplexNumberOperationsUnitTest {
             "2+4i, 0, 0"
     })
     public void multiply_two_complex_numbers(String complexStr1, String complexStr2, String expectedStr) {
-        ComplexNumber complex1 = new ComplexNumber(complexStr1);
-        ComplexNumber complex2 = new ComplexNumber(complexStr2);
-        ComplexNumber expected = new ComplexNumber(expectedStr);
+        ComplexNumber complex1 = ComplexNumber.fromString(complexStr1);
+        ComplexNumber complex2 = ComplexNumber.fromString(complexStr2);
+        ComplexNumber expected = ComplexNumber.fromString(expectedStr);
         ComplexNumber product = complex1.multiply(complex2);
         Assertions.assertTrue(isSame(product, expected));
     }
@@ -39,9 +39,9 @@ public class ComplexNumberOperationsUnitTest {
             "2+4i, 0, 2+4i"
     })
     public void add_two_complex_numbers(String complexStr1, String complexStr2, String expectedStr) {
-        ComplexNumber complex1 = new ComplexNumber(complexStr1);
-        ComplexNumber complex2 = new ComplexNumber(complexStr2);
-        ComplexNumber expected = new ComplexNumber(expectedStr);
+        ComplexNumber complex1 = ComplexNumber.fromString(complexStr1);
+        ComplexNumber complex2 = ComplexNumber.fromString(complexStr2);
+        ComplexNumber expected = ComplexNumber.fromString(expectedStr);
         ComplexNumber sum = complex1.add(complex2);
         Assertions.assertTrue(isSame(sum, expected));
     }
@@ -59,9 +59,9 @@ public class ComplexNumberOperationsUnitTest {
             "2+4i, 0, 2+4i"
     })
     public void subtract_two_complex_numbers(String complexStr1, String complexStr2, String expectedStr) {
-        ComplexNumber complex1 = new ComplexNumber(complexStr1);
-        ComplexNumber complex2 = new ComplexNumber(complexStr2);
-        ComplexNumber expected = new ComplexNumber(expectedStr);
+        ComplexNumber complex1 = ComplexNumber.fromString(complexStr1);
+        ComplexNumber complex2 = ComplexNumber.fromString(complexStr2);
+        ComplexNumber expected = ComplexNumber.fromString(expectedStr);
         ComplexNumber sum = complex1.subtract(complex2);
         Assertions.assertTrue(isSame(sum, expected));
     }
@@ -79,14 +79,14 @@ public class ComplexNumberOperationsUnitTest {
             "2+4i, 1, 2+4i"
     })
     public void divide_two_complex_numbers(String complexStr1, String complexStr2, String expectedStr) {
-        ComplexNumber complex1 = new ComplexNumber(complexStr1);
-        ComplexNumber complex2 = new ComplexNumber(complexStr2);
-        ComplexNumber expected = new ComplexNumber(expectedStr);
+        ComplexNumber complex1 = ComplexNumber.fromString(complexStr1);
+        ComplexNumber complex2 = ComplexNumber.fromString(complexStr2);
+        ComplexNumber expected = ComplexNumber.fromString(expectedStr);
         ComplexNumber sum = complex1.divide(complex2);
         Assertions.assertTrue(isSame(sum, expected));
     }
 
     public boolean isSame(ComplexNumber result, ComplexNumber expected) {
-        return result.real == expected.real && result.imaginary == expected.imaginary;
+        return result.real() == expected.real() && result.imaginary() == expected.imaginary();
     }
 }

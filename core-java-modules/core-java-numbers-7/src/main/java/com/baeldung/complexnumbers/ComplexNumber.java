@@ -3,16 +3,9 @@ package com.baeldung.complexnumbers;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ComplexNumber {
-    public double real;
-    public double imaginary;
+public record ComplexNumber(double real, double imaginary) {
 
-    public ComplexNumber(double a, double b) {
-        this.real = a;
-        this.imaginary = b;
-    }
-
-    public ComplexNumber(String complexNumberStr) {
+    public static ComplexNumber fromString(String complexNumberStr) {
 
         Pattern pattern = Pattern.compile("(-?\\d*\\.?\\d+)?(?:([+-]?\\d*\\.?\\d+)i)?");
         Matcher matcher = pattern.matcher(complexNumberStr.replaceAll("\\s", ""));
@@ -23,21 +16,14 @@ public class ComplexNumber {
             String imaginaryPartStr = matcher.group(2);
 
             // Parse real part (if present)
-            real = (realPartStr != null) ? Double.parseDouble(realPartStr) : 0;
+            double real = (realPartStr != null) ? Double.parseDouble(realPartStr) : 0;
 
             // Parse imaginary part (if present)
-            imaginary = (imaginaryPartStr != null) ? Double.parseDouble(imaginaryPartStr) : 0;
+            double imaginary = (imaginaryPartStr != null) ? Double.parseDouble(imaginaryPartStr) : 0;
+            return new ComplexNumber(real, imaginary);
         } else {
             throw new IllegalArgumentException("Invalid complex number format(" + complexNumberStr + "), supported format is `a+bi`");
         }
-    }
-
-    public double getReal() {
-        return real;
-    }
-
-    public double getImaginary() {
-        return imaginary;
     }
 
     public String toString() {
@@ -45,7 +31,7 @@ public class ComplexNumber {
     }
 
     public ComplexNumber add(ComplexNumber that) {
-        return new ComplexNumber(real + that.getReal(), imaginary + that.getImaginary());
+        return new ComplexNumber(real + that.real, imaginary + that.imaginary);
     }
 
     public ComplexNumber multiply(ComplexNumber that) {
@@ -55,7 +41,7 @@ public class ComplexNumber {
     }
 
     public ComplexNumber subtract(ComplexNumber that) {
-        return new ComplexNumber(real - that.getReal(), imaginary - that.getImaginary());
+        return new ComplexNumber(real - that.real, imaginary - that.imaginary);
     }
 
     public ComplexNumber divide(ComplexNumber that) {
