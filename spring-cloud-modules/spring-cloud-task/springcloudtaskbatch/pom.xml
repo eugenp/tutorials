@@ -33,6 +33,7 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-task-core</artifactId>
+            <version>${spring-cloud-task-core.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -60,6 +61,7 @@
 
     <properties>
         <start-class>com.baeldung.TaskDemo</start-class>
+        <spring-cloud-task-core.version>2.4.6</spring-cloud-task-core.version>
     </properties>
 
 </project>

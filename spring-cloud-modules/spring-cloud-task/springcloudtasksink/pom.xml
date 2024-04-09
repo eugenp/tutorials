@@ -50,7 +50,8 @@
     </build>
 
     <properties>
-        <spring-cloud-deployer.version>2.3.1.RELEASE</spring-cloud-deployer.version>
+        <spring-cloud-deployer.version>2.9.2</spring-cloud-deployer.version>
+        <spring-cloud-dependencies.version>2021.0.9</spring-cloud-dependencies.version>
     </properties>
 
 </project>

@@ -47,8 +47,8 @@
     </dependencyManagement>
 
     <properties>
-        <spring-cloud-dependencies.version>2021.0.0</spring-cloud-dependencies.version>
-        <spring-cloud-task.version>2.4.0</spring-cloud-task.version>
+        <spring-cloud-dependencies.version>2023.0.1</spring-cloud-dependencies.version>
+        <spring-cloud-task.version>3.0.0</spring-cloud-task.version>
     </properties>
 
 </project>
