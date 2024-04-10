@@ -14,6 +14,8 @@ public class Post {
         this.category = builder.category;
     }
 
+    Post() {}
+
     public String getTitle() {
         return title;
     }
@@ -26,10 +28,29 @@ public class Post {
         return category;
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    @Override
+    public String toString() {
+        return "Post{" + "title='" + title + '\'' + ", text='" + text + '\'' + ", category='" + category + '\'' + '}';
+    }
+
     public static class Builder {
         private String title;
         private String text;
         private String category;
+
+        public Builder() {}
 
         public Builder title(String title) {
             this.title = title;
