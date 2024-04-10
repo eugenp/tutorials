@@ -1,6 +1,6 @@
 package com.baeldung.hibernate.subselect;
 
-import com.baeldung.hibernate.oneToMany.config.HibernateAnnotationUtil;
+import com.baeldung.hibernate.HibernateAnnotationUtil;
 import jakarta.persistence.criteria.Root;
 import liquibase.Contexts;
 import liquibase.LabelExpression;
