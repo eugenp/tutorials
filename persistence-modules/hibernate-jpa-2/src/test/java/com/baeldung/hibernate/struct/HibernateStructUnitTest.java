@@ -12,7 +12,6 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.service.ServiceRegistry;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Test;
 
 import java.io.FileInputStream;
 import java.io.IOException;
