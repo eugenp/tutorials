@@ -94,7 +94,7 @@ public class ComplexNumberOperationsUnitTest {
         Exception exception = Assertions.assertThrows(ArithmeticException.class, () -> {
             complex1.divide(zero);
         });
-        Assertions.assertEquals(exception.getMessage(), "Division by 0 is now allowed!");
+        Assertions.assertEquals(exception.getMessage(), "Division by 0 is not allowed!");
     }
 
     public boolean isSame(ComplexNumber result, ComplexNumber expected) {
