@@ -20,6 +20,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
+            <version>${spring-boot.version}</version>
         </dependency>
 
         <dependency>
@@ -30,7 +31,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-
+            <version>${spring-boot.version}</version>
         </dependency>
     </dependencies>
 
@@ -48,9 +49,9 @@
     </build>
 
     <properties>
-        <spring-boot.version>3.2.0-SNAPSHOT</spring-boot.version>
         <junit-jupiter.version>5.10.0</junit-jupiter.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring-boot.version>3.2.4</spring-boot.version> <!-- Requires at least spring framework version 6.1.X to work -->
     </properties>
 
 </project>
