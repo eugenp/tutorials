@@ -1,6 +1,6 @@
 package com.baeldung.algorithms.largestNumberRemovingK;
 
-import java.util.*;
+import java.util.Stack;
 
 public class LargestNumberRemoveKDigits {
     public static int findLargestNumberUsingArithmetic(int num, int k) {

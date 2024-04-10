@@ -1,10 +1,10 @@
 package com.baeldung.daterangeoverlap;
 
-import java.time.LocalDate;
-import java.util.Calendar;
-
 import org.joda.time.DateTime;
 import org.joda.time.Interval;
+
+import java.time.LocalDate;
+import java.util.Calendar;
 
 public class DateRangeOverlapChecker {
 
