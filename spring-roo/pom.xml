@@ -582,15 +582,6 @@
         </plugins>
     </build>
 
-    <repositories>
-        <!-- Spring Roo repository -->
-        <repository>
-            <id>spring-roo-repository</id>
-            <name>Spring Roo Repository</name>
-            <url>https://repo.spring.io/spring-roo</url>
-        </repository>
-    </repositories>
-
     <properties>
         <roo.version>2.0.0.RELEASE</roo.version>
         <java.product.version>8</java.product.version>
