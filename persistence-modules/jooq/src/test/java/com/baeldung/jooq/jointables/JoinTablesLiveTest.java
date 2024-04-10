@@ -20,7 +20,7 @@ import com.baeldung.jooq.jointables.public_.tables.Book;
 import com.baeldung.jooq.jointables.public_.tables.Bookauthor;
 import com.baeldung.jooq.jointables.public_.tables.Store;
 
-public class JoinTablesIntegrationTest {
+public class JoinTablesLiveTest {
 
     static DSLContext context;
 
