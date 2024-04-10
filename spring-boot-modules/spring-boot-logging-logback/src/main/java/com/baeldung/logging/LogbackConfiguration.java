@@ -8,3 +8,4 @@ public class LogbackConfiguration {
         System.setProperty("logback.configurationFile", path);
     }
 }
+
