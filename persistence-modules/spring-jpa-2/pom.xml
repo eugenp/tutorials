@@ -131,7 +131,6 @@
         <jakson-databind.version>2.16.1</jakson-databind.version>
         <jakson-core.version>2.16.1</jakson-core.version>
         <jjwt.version>0.12.3</jjwt.version>
-        <logback.version>1.4.14</logback.version>
     </properties>
 
 </project>

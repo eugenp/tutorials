@@ -15,7 +15,7 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>${slf4j-api.version}</version>
+            <version>${org.slf4j.version}</version>
         </dependency>
     </dependencies>
 
@@ -39,7 +39,7 @@
 
     <properties>
         <commons-collections.version>3.2.2</commons-collections.version>
-        <slf4j-api.version>1.7.25</slf4j-api.version>
+        <org.slf4j.version>2.0.12</org.slf4j.version>
         <maven-dependency-plugin.version>3.1.2</maven-dependency-plugin.version>
         <maven-compiler-plugin.version>3.12.1</maven-compiler-plugin.version>
     </properties>
