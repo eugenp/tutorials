@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {LogbackConfiguration.class})
-public class LogbackConfigurationUnitTests {
+public class LogbackConfigurationUnitTest {
 
     @Autowired
     LogbackConfiguration logbackConfiguration;
