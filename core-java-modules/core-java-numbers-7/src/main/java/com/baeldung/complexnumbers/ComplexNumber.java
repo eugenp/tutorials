@@ -46,7 +46,7 @@ public record ComplexNumber(double real, double imaginary) {
 
     public ComplexNumber divide(ComplexNumber that) {
         if(that.real == 0 && that.imaginary == 0 ){
-            throw new ArithmeticException("Division by 0 is now allowed!");
+            throw new ArithmeticException("Division by 0 is not allowed!");
         }
         double c2d2 = Math.pow(that.real, 2) + Math.pow(that.imaginary, 2);
         double newReal = (this.real * that.real + this.imaginary * that.imaginary) / c2d2;
