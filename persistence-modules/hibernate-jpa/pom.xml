@@ -15,7 +15,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.hibernate</groupId>
+            <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
@@ -84,6 +84,7 @@
 
     <properties>
         <mysql.version>8.2.0</mysql.version>
+        <hibernate.version>6.4.2.Final</hibernate.version>
         <mariaDB4j.version>2.6.0</mariaDB4j.version>
         <spring-boot.version>3.0.4</spring-boot.version>
         <h2.version>2.1.214</h2.version>

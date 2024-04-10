@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>aws-s3</artifactId>
     <version>0.1.0-SNAPSHOT</version>
-    <name>aws-s3</name>
     <packaging>jar</packaging>
+    <name>aws-s3</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -18,9 +18,14 @@
         <dependency>
             <groupId>software.amazon.awssdk</groupId>
             <artifactId>s3</artifactId>
-            <version>${aws.java.sdk.version}</version>
+            <version>${aws-java-sdk-v2.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>url-connection-client</artifactId>
+            <version>${aws.java.sdk.version}</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
@@ -30,19 +35,40 @@
         <dependency>
             <groupId>org.lucee</groupId>
             <artifactId>jets3t</artifactId>
-            <version>${jets3t-version}</version>
+            <version>${jets3t.version}</version>
         </dependency>
         <dependency>
             <groupId>org.lucee</groupId>
             <artifactId>commons-codec</artifactId>
-            <version>${commons-codec-version}</version>
+            <version>${commons-codec.version}</version>
+        </dependency>
+        <!-- adobe s3mock -->
+        <dependency>
+            <groupId>com.adobe.testing</groupId>
+            <artifactId>s3mock</artifactId>
+            <version>${com.adobe.testing.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.testing</groupId>
+            <artifactId>s3mock-testcontainers</artifactId>
+            <version>${com.adobe.testing.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${org.testcontainers.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
     <properties>
         <aws.java.sdk.version>2.20.52</aws.java.sdk.version>
-        <commons-codec-version>1.10.L001</commons-codec-version>
-        <jets3t-version>0.9.4.0006L</jets3t-version>
+        <com.adobe.testing.version>3.3.0</com.adobe.testing.version>
+        <org.testcontainers.version>1.19.4</org.testcontainers.version>
+        <commons-codec.version>1.10.L001</commons-codec.version>
+        <jets3t.version>0.9.4.0014L</jets3t.version>
     </properties>
 
 </project>

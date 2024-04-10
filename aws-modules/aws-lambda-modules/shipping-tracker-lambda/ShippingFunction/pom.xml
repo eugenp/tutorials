@@ -3,8 +3,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>ShippingFunction</artifactId>
-    <version>1.0</version>
     <name>ShippingFunction</name>
+    <version>1.0</version>
     <packaging>jar</packaging>
 
     <parent>
@@ -31,15 +31,21 @@
             <version>${jackson-databind.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.hibernate</groupId>
+            <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.hibernate</groupId>
+            <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-hikaricp</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>${hikari.cp.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
@@ -70,11 +76,12 @@
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-        <hibernate.version>5.4.21.Final</hibernate.version>
+        <hibernate.version>6.4.2.Final</hibernate.version>
         <aws-lambda-java-core.version>1.2.0</aws-lambda-java-core.version>
         <aws-lambda-java-events.version>3.1.0</aws-lambda-java-events.version>
         <jackson-databind.version>2.11.2</jackson-databind.version>
         <postgresql.version>42.2.16</postgresql.version>
+        <hikari.cp.version>5.1.0</hikari.cp.version>
     </properties>
 
 </project>

@@ -10,3 +10,5 @@ This module contains articles about Mockito
 - [How to Mock Constructors for Unit Testing using Mockito](https://www.baeldung.com/java-mockito-constructors-unit-testing)
 - [Overview of Mockito MockedConstruction](https://www.baeldung.com/java-mockito-mockedconstruction)
 - [Verify That Lambda Expression Was Called Using Mockito](https://www.baeldung.com/java-mockito-verify-lambda-expression)
+- [Injecting @Mock and @Captor in JUnit 5 Method Parameters](https://www.baeldung.com/junit-5-mock-captor-method-parameter-injection)
+- [Fix Ambiguous Method Call Error in Mockito](https://www.baeldung.com/mockito-fix-ambiguous-method-call-error)

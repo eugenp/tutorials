@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>exchange-rate-api</artifactId>
-    <name>exchange-rate-api</name>
     <packaging>jar</packaging>
+    <name>exchange-rate-api</name>
 
     <parent>
         <groupId>com.baeldung</groupId>

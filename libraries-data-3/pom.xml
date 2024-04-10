@@ -71,6 +71,17 @@
             <artifactId>modelmapper</artifactId>
             <version>${org.modelmapper.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.dozer</groupId>
+            <artifactId>dozer</artifactId>
+            <version>${dozer.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -89,13 +100,14 @@
         <javatuples.version>1.2</javatuples.version>
         <multiverse.version>0.7.0</multiverse.version>
         <chronicle.map.version>3.24ea1</chronicle.map.version>
-        <cactoos.version>0.43</cactoos.version>
+        <cactoos.version>0.55.0</cactoos.version>
         <cache2k.version>1.2.3.Final</cache2k.version>
         <pcollections.version>2.1.2</pcollections.version>
         <eclipse-collections.version>8.2.0</eclipse-collections.version>
         <caffeine.version>3.1.8</caffeine.version>
         <findbugs.version>3.0.2</findbugs.version>
         <org.modelmapper.version>3.2.0</org.modelmapper.version>
+        <dozer.version>5.5.1</dozer.version>
     </properties>
 
 </project>

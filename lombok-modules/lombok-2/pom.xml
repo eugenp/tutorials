@@ -55,8 +55,16 @@
             <version>${validation-api.version}</version>
         </dependency>
     </dependencies>
+
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.openapitools</groupId>
                 <artifactId>openapi-generator-maven-plugin</artifactId>
@@ -82,6 +90,7 @@
             </plugin>
         </plugins>
     </build>
+
     <properties>
         <openapi.version>7.1.0</openapi.version>
         <gson.version>2.10.1</gson.version>

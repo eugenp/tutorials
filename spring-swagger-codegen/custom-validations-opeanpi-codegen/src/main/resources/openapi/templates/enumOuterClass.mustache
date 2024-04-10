@@ -1,0 +1,61 @@
+{{#jackson}}
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+{{/jackson}}
+
+/**
+ * {{^description}}Gets or Sets {{{name}}}{{/description}}{{{description}}}
+ */
+{{>additionalEnumTypeAnnotations}}
+{{>generatedAnnotation}}
+public enum {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}} {
+  {{#gson}}
+  {{#allowableValues}}{{#enumVars}}
+  {{#enumDescription}}
+  /**
+   * {{.}}
+   */
+  {{/enumDescription}}
+  @SerializedName({{#isInteger}}"{{/isInteger}}{{#isDouble}}"{{/isDouble}}{{#isLong}}"{{/isLong}}{{#isFloat}}"{{/isFloat}}{{{value}}}{{#isInteger}}"{{/isInteger}}{{#isDouble}}"{{/isDouble}}{{#isLong}}"{{/isLong}}{{#isFloat}}"{{/isFloat}})
+  {{{name}}}({{{value}}}){{^-last}},
+  {{/-last}}{{#-last}};{{/-last}}{{/enumVars}}{{/allowableValues}}
+  {{/gson}}
+  {{^gson}}
+  {{#allowableValues}}{{#enumVars}}
+  {{#enumDescription}}
+  /**
+   * {{.}}
+   */
+  {{/enumDescription}}
+  {{{name}}}({{{value}}}){{^-last}},
+  {{/-last}}{{#-last}};{{/-last}}{{/enumVars}}{{/allowableValues}}
+  {{/gson}}
+
+  private {{{dataType}}} value;
+
+  {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}}({{{dataType}}} value) {
+    this.value = value;
+  }
+
+  {{#jackson}}
+  @JsonValue
+  {{/jackson}}
+  public {{{dataType}}} getValue() {
+    return value;
+  }
+
+  @Override
+  public String toString() {
+    return String.valueOf(value);
+  }
+
+  @JsonCreator
+  public static {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}} fromValue({{{dataType}}} value) {
+    for ({{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}} b : {{{datatypeWithEnum}}}{{^datatypeWithEnum}}{{{classname}}}{{/datatypeWithEnum}}.values()) {
+      if (b.value.{{^isString}}equals{{/isString}}{{#isString}}{{#useEnumCaseInsensitive}}equalsIgnoreCase{{/useEnumCaseInsensitive}}{{^useEnumCaseInsensitive}}equals{{/useEnumCaseInsensitive}}{{/isString}}(value)) {
+        return b;
+      }
+    }
+    {{#isNullable}}return null;{{/isNullable}}{{^isNullable}}throw new IllegalArgumentException("Unexpected value '" + value + "'");{{/isNullable}}
+  }
+}

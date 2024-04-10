@@ -50,8 +50,9 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
+            <groupId>jakarta.servlet.jsp.jstl</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+            <version>${jstl.api.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -82,6 +83,7 @@
         <start-class>com.baeldung.springbootsecurity.basic_auth.SpringBootSecurityApplication</start-class>
         <spring-security-oauth2.version>2.4.0.RELEASE</spring-security-oauth2.version>
         <spring-security-oauth2-autoconfigure.version>2.2.2.RELEASE</spring-security-oauth2-autoconfigure.version>
+        <jstl.api.version>3.0.0</jstl.api.version>
     </properties>
 
 </project>

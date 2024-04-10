@@ -98,6 +98,11 @@
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.jfree</groupId>
+            <artifactId>jfreechart</artifactId>
+            <version>${jfreechart.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -117,6 +122,7 @@
         <javafx.version>19</javafx.version>
         <spoon-core.version>10.3.0</spoon-core.version>
         <vavr.version>0.9.0</vavr.version>
+        <jfreechart.version>1.5.4</jfreechart.version>
     </properties>
 
 </project>

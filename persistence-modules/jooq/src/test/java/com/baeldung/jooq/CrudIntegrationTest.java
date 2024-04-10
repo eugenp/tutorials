@@ -37,7 +37,7 @@ public class CrudIntegrationTest {
         Connection conn = DriverManager.getConnection("jdbc:h2:mem:tes;INIT=CREATE SCHEMA IF NOT EXISTS \"public\"");
         context = DSL.using(conn, SQLDialect.H2);
 
-        context.createTable(Author.AUTHOR)
+        context.createTableIfNotExists(Author.AUTHOR)
                 .columns(
                         Author.AUTHOR.ID,
                         Author.AUTHOR.FIRST_NAME,
@@ -45,7 +45,7 @@ public class CrudIntegrationTest {
                         Author.AUTHOR.AGE
                 )
                 .execute();
-        context.createTable(Article.ARTICLE)
+        context.createTableIfNotExists(Article.ARTICLE)
                 .columns(
                         Article.ARTICLE.ID,
                         Article.ARTICLE.TITLE,

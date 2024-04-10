@@ -27,7 +27,7 @@
             <dependency>
                 <groupId>software.amazon.awssdk</groupId>
                 <artifactId>bom</artifactId>
-                <version>${awssdk.version}</version>
+                <version>${aws-java-sdk-v2.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -87,13 +87,13 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring.version}</version>
             </plugin>
         </plugins>
     </build>
 
     <properties>
         <spring.version>2.2.1.RELEASE</spring.version>
-        <awssdk.version>2.17.283</awssdk.version>
         <reactor.version>3.6.0</reactor.version>
     </properties>
 

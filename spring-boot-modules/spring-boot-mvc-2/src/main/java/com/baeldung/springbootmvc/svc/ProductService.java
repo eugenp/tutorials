@@ -38,7 +38,7 @@ public class ProductService {
     }
 
     public Product save(Product product) {
-        if (StringUtils.isEmpty(product.getName()) || product.getPrice() == 0.0) {
+        if (!StringUtils.hasLength(product.getName()) || product.getPrice() == 0.0) {
             throw new IllegalArgumentException();
         }
         int newId = products.stream()

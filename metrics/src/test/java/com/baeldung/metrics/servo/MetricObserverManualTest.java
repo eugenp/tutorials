@@ -24,6 +24,12 @@ import static org.junit.Assert.assertThat;
 
 public class MetricObserverManualTest extends MetricTestBase {
 
+    static {
+        System.setProperty(
+            "com.netflix.servo.DefaultMonitorRegistry.registryClass",
+            "com.netflix.servo.jmx.JmxMonitorRegistry");
+    }
+
     @Test
     public void givenMetrics_whenRegister_thenMonitored() throws InterruptedException {
         Gauge<Double> gauge = new BasicGauge<>(MonitorConfig

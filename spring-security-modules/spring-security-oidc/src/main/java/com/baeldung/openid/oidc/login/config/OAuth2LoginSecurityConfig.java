@@ -21,10 +21,9 @@ public class OAuth2LoginSecurityConfig {
         OidcUserService googleUserService = new OidcUserService();
         googleUserService.setAccessibleScopes(googleScopes);
 
-        http.authorizeRequests(authorizeRequests -> authorizeRequests.anyRequest()
-            .authenticated())
-            .oauth2Login(oauthLogin -> oauthLogin.userInfoEndpoint()
-                .oidcUserService(googleUserService));
+        http.authorizeHttpRequests(authorizeRequests -> authorizeRequests.anyRequest().authenticated())
+            .oauth2Login(oauthLogin -> oauthLogin.userInfoEndpoint(userInfoEndpointConfig ->
+                    userInfoEndpointConfig.oidcUserService(googleUserService)));
         return http.build();
     }
 }
