@@ -1,6 +1,7 @@
 package com.baeldung.complexnumbers;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -84,6 +85,16 @@ public class ComplexNumberOperationsUnitTest {
         ComplexNumber expected = ComplexNumber.fromString(expectedStr);
         ComplexNumber sum = complex1.divide(complex2);
         Assertions.assertTrue(isSame(sum, expected));
+    }
+
+    @Test
+    public void check_divide_by_zero() {
+        ComplexNumber complex1 = new ComplexNumber(1, 1);
+        ComplexNumber zero = new ComplexNumber(0, 0);
+        Exception exception = Assertions.assertThrows(ArithmeticException.class, () -> {
+            complex1.divide(zero);
+        });
+        Assertions.assertEquals(exception.getMessage(), "Division by 0 is now allowed!");
     }
 
     public boolean isSame(ComplexNumber result, ComplexNumber expected) {
