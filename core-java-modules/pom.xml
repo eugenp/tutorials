@@ -89,6 +89,7 @@
         <module>core-java-collections-3</module>
         <module>core-java-collections-4</module>
         <module>core-java-collections-5</module>
+        <module>core-java-collections-6</module>
         <module>core-java-collections-conversions</module>
         <module>core-java-collections-set-2</module>
         <module>core-java-collections-list</module>
@@ -99,6 +100,7 @@
         <module>core-java-collections-maps-2</module>
         <module>core-java-collections-maps-3</module>
         <module>core-java-collections-maps-7</module>
+        <module>core-java-collections-maps-8</module>
         <module>core-java-compiler</module>
         <module>core-java-concurrency-2</module>
         <module>core-java-concurrency-advanced</module>

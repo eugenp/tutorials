@@ -6,9 +6,9 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import org.springframework.http.MediaType;
 
-import com.jayway.restassured.RestAssured;
-import com.jayway.restassured.response.Response;
-import com.jayway.restassured.specification.RequestSpecification;
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 
 public class LiveTest {
 
@@ -35,8 +35,6 @@ public class LiveTest {
         final Response response = givenAuth("user", "pass").get(APP_ROOT + "/foos");
         assertEquals(200, response.getStatusCode());
     }*/
-
-    //
 
     private final String resourceWithNullName() {
         return "{\"name\":null}";
