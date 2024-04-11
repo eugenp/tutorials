@@ -362,6 +362,10 @@
                 <module>jenkins-modules</module> <!-- Not able to upgrade now to jdk17. JAVA-21748 -->
             </modules>
 
+            <properties>
+                <logback.version>1.3.14</logback.version>
+            </properties>
+
         </profile>
 
         <profile>
@@ -410,6 +414,10 @@
                 <module>video-tutorials</module>
             </modules>
 
+            <properties>
+                <logback.version>1.3.14</logback.version>
+            </properties>
+
         </profile>
 
         <profile>
@@ -449,6 +457,11 @@
                 <module>web-modules/restx</module>
                 <module>libraries-testing</module>
             </modules>
+
+            <properties>
+                <logback.version>1.3.14</logback.version>
+            </properties>
+
         </profile>
 
         <profile>
