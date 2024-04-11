@@ -5,73 +5,70 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class SymmetricSubstringMaxLengthUnitTest {
-    String input = "<><??>>";
+    String input = "abba";
     int expected = 4;
 
-    @Test
-    public void givenString_whenUsingSymmetricSubstringExpansion_thenFindLongestSymmetricSubstring() {
-        int start = 0;
-        int mid = 0;
-        int last_gt = 0;
-        int end = 0;
-        int best = 0;
+    static int findLongestSymmetricSubstringUsingSymmetricApproach(String str) {
+        int maxLength = 1;
 
-        while (start < input.length()) {
-            int current = Math.min(mid - start, end - mid);
-            if (best < current) {
-                best = current;
-            }
-
-            if (end - mid == current && end < input.length()) {
-                if (input.charAt(end) == '?') {
-                    end++;
-                } else if (input.charAt(end) == '>') {
-                    end++;
-                    last_gt = end;
-                } else {
-                    end++;
-                    mid = end;
-                    start = Math.max(start, last_gt);
+        for (int i = 0; i < str.length(); i++) {
+            for (int j = i; j < str.length(); j++) {
+                int flag = 1;
+                for (int k = 0; k < (j - i + 1) / 2; k++) {
+                    if (str.charAt(i + k) != str.charAt(j - k)) {
+                        flag = 0;
+                        break;
+                    }
                 }
-            } else if (mid < input.length() && input.charAt(mid) == '?') {
-                mid++;
-            } else if (start < mid) {
-                start++;
-            } else {
-                start = Math.max(start, last_gt);
-                mid++;
-                end = Math.max(mid, end);
+                if (flag != 0 && (j - i + 1) > maxLength) {
+                    maxLength = j - i + 1;
+                }
             }
         }
-        int result = 2 * best;
-
-        assertEquals(expected, result);
+        return maxLength;
     }
 
     @Test
     public void givenString_whenUsingBruteForce_thenFindLongestSymmetricSubstring() {
-        int max = 0;
-        for (int i = 0; i < input.length(); i++) {
-            for (int j = i + 1; j <= input.length(); j++) {
-                String t = input.substring(i, j);
-                if (t.length() % 2 == 0) {
-                    int k = 0, l = t.length() - 1;
-                    boolean isSym = true;
-                    while (k < l && isSym) {
-                        if (!(t.charAt(k) == '<' || t.charAt(k) == '?') && (t.charAt(l) == '>' || t.charAt(l) == '?')) {
-                            isSym = false;
-                        }
-                        k++;
-                        l--;
-                    }
-                    if (isSym) {
-                        max = Math.max(max, t.length());
-                    }
+        assertEquals(expected, findLongestSymmetricSubstringUsingBruteForce(input).length());
+    }
+
+    @Test
+    public void givenString_whenUsingSymmetricSubstring_thenFindLongestSymmetricSubstring() {
+        assertEquals(expected, findLongestSymmetricSubstringUsingSymmetricApproach(input));
+    }
+
+    private String findLongestSymmetricSubstringUsingBruteForce(String str) {
+        if (str == null || str.length() == 0) {
+            return "";
+        }
+
+        int maxLength = 0;
+        String longestPalindrome = "";
+
+        for (int i = 0; i < str.length(); i++) {
+            for (int j = i + 1; j <= str.length(); j++) {
+                String substring = str.substring(i, j);
+                if (isPalindrome(substring) && substring.length() > maxLength) {
+                    maxLength = substring.length();
+                    longestPalindrome = substring;
                 }
             }
         }
 
-        assertEquals(expected, max);
+        return longestPalindrome;
     }
 
+    private boolean isPalindrome(String s) {
+        int left = 0;
+        int right = s.length() - 1;
+        while (left < right) {
+            if (s.charAt(left) != s.charAt(right)) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
+    }
 }
