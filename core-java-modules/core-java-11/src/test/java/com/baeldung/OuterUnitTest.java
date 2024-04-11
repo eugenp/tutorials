@@ -1,5 +1,6 @@
 package com.baeldung;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.hamcrest.CoreMatchers.is;
 
@@ -24,12 +25,12 @@ public class OuterUnitTest {
 
     @Test
     public void whenCheckNestmatesForNestedClasses_thenGetTrue() {
-        is(Outer.Inner.class.isNestmateOf(Outer.class)).equals(true);
+        assertTrue(Outer.Inner.class.isNestmateOf(Outer.class));
     }
 
     @Test
     public void whenCheckNestmatesForUnrelatedClasses_thenGetFalse() {
-        is(Outer.Inner.class.isNestmateOf(Outer.class)).equals(false);
+        assertFalse(Outer.Inner.class.isNestmateOf(Unrelated.class));
     }
 
     @Test
