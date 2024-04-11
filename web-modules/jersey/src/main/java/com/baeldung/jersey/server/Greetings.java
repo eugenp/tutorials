@@ -5,6 +5,7 @@ import com.baeldung.jersey.server.config.HelloBinding;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.Response;
 
 @Path("/greetings")
@@ -17,6 +18,7 @@ public class Greetings {
     }
 
     @GET
+    @Produces("text/html")
     @Path("/hi")
     public String getHiGreeting() {
         return "hi";
