@@ -1,6 +1,5 @@
 package com.baeldung.printnullvalues;
 
-import com.baeldung.printnullvalues.Employee;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -10,26 +9,22 @@ public class PrintingNullValuesUnitTest {
     String expected = "Name: Unknown, Age: 30, Department: Unknown";
 
     @Test
-    public void testToStringNullCheck() {
+    public void givenNullValues_whenToStringUsingNullCheck_thenCorrectStringReturned() {
         assertEquals(expected, employee.toStringUsingNullCheck());
     }
 
     @Test
-
-    public void testToStringOptional() {
+    public void givenNullValues_whenToStringUsingOptional_thenCorrectStringReturned() {
         assertEquals(expected, employee.toStringUsingOptional());
     }
 
     @Test
-
-    public void testToStringCustomHelper() {
+    public void givenNullValues_whenToStringUsingCustomHelper_thenCorrectStringReturned() {
         assertEquals(expected, employee.toStringUsingCustomHelper());
-
     }
 
     @Test
-
-    public void testToStringObjects() {
+    public void givenNullValues_whenToStringUsingObjects_thenCorrectStringReturned() {
         assertEquals(expected, employee.toStringUsingObjects());
     }
 }
