@@ -1,0 +1,19 @@
+<configuration xmlns="http://www.jooq.org/xsd/jooq-codegen-3.15.0.xsd">
+    <jdbc>
+        <driver>org.postgresql.Driver</driver>
+        <url>jdbc:postgresql://localhost:5432/postgres</url>
+        <user>postgres</user>
+        <password></password>
+    </jdbc>
+    <generator>
+        <database>
+            <name>org.jooq.meta.postgres.PostgresDatabase</name>
+            <includes>Store|Book|BookAuthor</includes>
+            <excludes></excludes>
+        </database>
+        <target>
+            <packageName>com.baeldung.jooq.jointables</packageName>
+            <directory>src/main/java</directory>
+        </target>
+    </generator>
+</configuration>

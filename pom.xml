@@ -826,6 +826,7 @@
                 <module>spring-reactive-modules</module>
                 <module>spring-remoting-modules</module> <!-- Upgrade to Boot 3 not possible as since Spring 6 the remoting modules has been removed from Spring. -->
                 <module>spring-scheduling</module>
+                <module>spring-scheduling-2</module>
                 <module>spring-security-modules</module>
                 <module>spring-shell</module>
                 <module>spring-soap</module>
@@ -1074,6 +1075,7 @@
                 <module>spring-reactive-modules</module>
                 <module>spring-remoting-modules</module> <!-- Upgrade to Boot 3 not possible as since Spring 6 the remoting modules has been removed from Spring. -->
                 <module>spring-scheduling</module>
+                <module>spring-scheduling-2</module>
                 <module>spring-security-modules</module>
                 <module>spring-shell</module>
                 <module>spring-soap</module>
@@ -1149,7 +1151,7 @@
         <assertj.version>3.21.0</assertj.version>
         <hamcrest.version>2.2</hamcrest.version>
         <hamcrest-all.version>1.3</hamcrest-all.version>
-        <mockito.version>4.4.0</mockito.version>
+        <mockito.version>5.11.0</mockito.version>
         <byte-buddy.version>1.14.11</byte-buddy.version>
 
         <!-- logging -->
@@ -1187,7 +1189,7 @@
         <maven-jxr-plugin.version>3.3.0</maven-jxr-plugin.version>
         <maven-pmd-plugin.version>3.21.0</maven-pmd-plugin.version>
         <lombok.version>1.18.30</lombok.version>
-        <h2.version>2.1.214</h2.version>
+        <h2.version>2.2.224</h2.version>
         <guava.version>33.0.0-jre</guava.version>
         <maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
 
