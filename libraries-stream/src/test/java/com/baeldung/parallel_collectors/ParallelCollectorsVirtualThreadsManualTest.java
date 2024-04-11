@@ -15,6 +15,7 @@ import static java.util.stream.Collectors.toList;
 
 public class ParallelCollectorsVirtualThreadsManualTest {
 
+    // increase the number of parallel processes to find the max number of threads on your machine
     @Test
     public void processInParallelOnOSThreads() {
         int parallelProcesses = 5_000;
