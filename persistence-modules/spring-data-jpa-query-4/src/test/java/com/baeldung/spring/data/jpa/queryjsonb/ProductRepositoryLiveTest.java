@@ -25,7 +25,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @SpringBootTest
 @ActiveProfiles("test")
 @Sql(scripts = "/testdata.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
-public class ProductRepositoryIntegrationTest {
+public class ProductRepositoryLiveTest {
 
     @Autowired
     private ProductRepository productRepository;
