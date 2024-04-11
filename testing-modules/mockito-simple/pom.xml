@@ -60,7 +60,6 @@
 
     <properties>
         <spring-framework.version>6.0.8</spring-framework.version>
-        <mockito.version>5.3.1</mockito.version>
     </properties>
 
 </project>
