@@ -3,9 +3,7 @@ package com.baeldung.version;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest(classes = VersionObtainer.class)
 public class VersionObtainerUnitTest {
 
     public VersionObtainer version = new VersionObtainer();

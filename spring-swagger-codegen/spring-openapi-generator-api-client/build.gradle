@@ -100,9 +100,8 @@ ext {
     jackson_databind_version = "2.10.1"
     jackson_databind_nullable_version = "0.2.1"
     spring_web_version = "4.3.9.RELEASE"
-    jodatime_version = "2.9.9"
     junit_version = "4.13"
-    jackson_threeten_version = "2.9.10"
+    jackson_threeten_version = "2.15.2"
 }
 
 dependencies {

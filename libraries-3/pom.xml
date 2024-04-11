@@ -168,7 +168,7 @@
     </build>
 
     <properties>
-        <jcabi-aspects.version>0.22.6</jcabi-aspects.version>
+        <jcabi-aspects.version>0.26.0</jcabi-aspects.version>
         <aspectjrt.version>1.9.20.1</aspectjrt.version>
         <jcabi-maven-plugin.version>0.14.1</jcabi-maven-plugin.version>
         <aspectjtools.version>1.9.20.1</aspectjtools.version>
