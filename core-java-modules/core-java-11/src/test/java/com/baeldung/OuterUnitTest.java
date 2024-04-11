@@ -1,8 +1,7 @@
 package com.baeldung;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.*;
 
 import java.util.Arrays;
 import java.util.Set;
@@ -15,12 +14,12 @@ public class OuterUnitTest {
 
     @Test
     public void whenGetNestHostFromOuter_thenGetNestHost() {
-        is(Outer.class.getNestHost().getName()).equals(NEST_HOST_NAME);
+        assertEquals(NEST_HOST_NAME, Outer.class.getNestHost().getName());
     }
 
     @Test
     public void whenGetNestHostFromInner_thenGetNestHost() {
-        is(Outer.Inner.class.getNestHost().getName()).equals(NEST_HOST_NAME);
+        assertEquals(NEST_HOST_NAME, Outer.Inner.class.getNestHost().getName());
     }
 
     @Test
