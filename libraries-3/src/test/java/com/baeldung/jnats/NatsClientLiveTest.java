@@ -47,17 +47,25 @@ public class NatsClientLiveTest {
     public static final int WAIT_AT_MOST_MILLIS = 300;
     public static final int POLL_DELAY_MILLIS = 50;
 
-    private Connection createConnection() throws IOException, InterruptedException {
-        Options options = new Options.Builder().server("nats://localhost:4222")
-            .connectionListener((connection, event) -> System.out.println("Connection Event: " + event.toString()))
+    private static Connection createConnection() throws IOException, InterruptedException {
+        return createConnection("nats://localhost:4222");
+    }
+
+    private static Connection createConnection(String uri) throws IOException, InterruptedException {
+        Options options = new Options.Builder().server(uri)
+            .connectionListener((connection, event) -> System.out.println("Connection Event: " + event))
             .errorListener(new CustomErrorListener())
             .build();
         return Nats.connect(options);
     }
 
     public static Connection createConnectionWithReportNoResponders() throws IOException, InterruptedException {
-        Options options = new Options.Builder().server("nats://localhost:4222")
-            .connectionListener((connection, event) -> System.out.println("Connection Event: " + event.toString()))
+        return createConnectionWithReportNoResponders("nats://localhost:4222");
+    }
+
+    public static Connection createConnectionWithReportNoResponders(String uri) throws IOException, InterruptedException {
+        Options options = new Options.Builder().server(uri)
+            .connectionListener((connection, event) -> System.out.println("Connection Event: " + event))
             .errorListener(new CustomErrorListener())
             .reportNoResponders()
             .build();
@@ -72,14 +80,19 @@ public class NatsClientLiveTest {
 
         @Override
         public void exceptionOccurred(Connection conn, Exception exp) {
-            System.err.println("Exception Occurred: " + exp.toString());
+            System.err.println("Exception Occurred: " + exp);
         }
     }
 
+//    public static void main(String[] args) throws Exception {
+//        Connection conn = createConnection("nats://localhost:4222");
+//        Thread.sleep(60000);
+//    }
+
     @Test
     public void givenNoSubscribers_whenPublishingMessages_thenItCannotBeDeterminedIfMessageIsReceived() {
-        try (Connection connection = createConnection()) {
-            connection.publish("mySubject", "myData".getBytes());
+        try (Connection natsConnection = createConnection()) {
+            natsConnection.publish("mySubject", "myData".getBytes());
         }
         catch (Exception e) {
             fail("There should not be an exception");
@@ -88,9 +101,9 @@ public class NatsClientLiveTest {
 
     @Test
     public void givenNoSubscribersAndReportNoResponders_whenRequestReply_thenReceiveNoResponders() {
-        try (Connection connection = createConnectionWithReportNoResponders()) {
-            connection.publish("noOneIsSubscribed", null);
-            CompletableFuture<Message> f = connection.request("noOneIsSubscribed", null);
+        try (Connection natsConnection = createConnectionWithReportNoResponders()) {
+            natsConnection.publish("noOneIsSubscribed", null);
+            CompletableFuture<Message> f = natsConnection.request("noOneIsSubscribed", null);
             f.get(WAIT_AT_MOST_MILLIS, TimeUnit.MILLISECONDS);
             fail("There should be an exception");
         }
@@ -106,27 +119,27 @@ public class NatsClientLiveTest {
 
     @Test
     public void whenSubscribingSynchronouslyWithoutQueueGroups_thenEachSubscriptionShouldReceiveEachMessage() throws Exception {
-        try (Connection connection = createConnection()) {
-            Subscription sub1 = connection.subscribe("mySubject");
-            Subscription sub2 = connection.subscribe("mySubject");
+        try (Connection natsConnection = createConnection()) {
+            Subscription subscription1 = natsConnection.subscribe("mySubject");
+            Subscription subscription2 = natsConnection.subscribe("mySubject");
 
-            connection.publish("mySubject", "data".getBytes());
+            natsConnection.publish("mySubject", "data".getBytes());
 
-            assertNotNull(sub1.nextMessage(TIMEOUT_MILLIS));
-            assertNotNull(sub2.nextMessage(TIMEOUT_MILLIS));
+            assertNotNull(subscription1.nextMessage(TIMEOUT_MILLIS));
+            assertNotNull(subscription2.nextMessage(TIMEOUT_MILLIS));
 
-            sub1.unsubscribe();
-            sub2.unsubscribe();
+            subscription1.unsubscribe();
+            subscription2.unsubscribe();
         }
     }
 
     @Test
     public void whenSubscribingSynchronouslyWithQueueGroups_thenOnlyOneSubscriberInTheGroupShouldReceiveEachMessage() throws Exception {
-        try (Connection connection = createConnection()) {
-            Subscription qSub1 = connection.subscribe("mySubject", "myQueue");
-            Subscription qSub2 = connection.subscribe("mySubject", "myQueue");
+        try (Connection natsConnection = createConnection()) {
+            Subscription qSub1 = natsConnection.subscribe("mySubject", "myQueue");
+            Subscription qSub2 = natsConnection.subscribe("mySubject", "myQueue");
 
-            connection.publish("mySubject", "data".getBytes());
+            natsConnection.publish("mySubject", "data".getBytes());
 
             List<Message> messages = new ArrayList<>();
 
@@ -149,16 +162,16 @@ public class NatsClientLiveTest {
 
     @Test
     public void whenSubscribingAsynchronouslyWithoutQueueGroups_thenEachMessageHandlerShouldReceiveEachMessage() throws Exception {
-        try (Connection connection = createConnection()) {
+        try (Connection natsConnection = createConnection()) {
             List<Message> messages1 = new ArrayList<>();
             List<Message> messages2 = new ArrayList<>();
 
-            Dispatcher dispatcher = connection.createDispatcher();
-            Subscription sub1 = dispatcher.subscribe("mySubject", messages1::add);
-            Subscription sub2 = dispatcher.subscribe("mySubject", messages2::add);
+            Dispatcher dispatcher = natsConnection.createDispatcher();
+            Subscription subscription1 = dispatcher.subscribe("mySubject", messages1::add);
+            Subscription subscription2 = dispatcher.subscribe("mySubject", messages2::add);
 
-            connection.publish("mySubject", "data1".getBytes());
-            connection.publish("mySubject", "data2".getBytes());
+            natsConnection.publish("mySubject", "data1".getBytes());
+            natsConnection.publish("mySubject", "data2".getBytes());
 
             // Simulate real world time for messages to propagate.
             Awaitility.await()
@@ -169,21 +182,21 @@ public class NatsClientLiveTest {
             assertEquals(2, messages1.size());
             assertEquals(2, messages2.size());
 
-            dispatcher.unsubscribe(sub1);
-            dispatcher.unsubscribe(sub2);
+            dispatcher.unsubscribe(subscription1);
+            dispatcher.unsubscribe(subscription2);
         }
     }
 
     @Test
     public void whenSubscribingAsynchronouslyWithQueueGroups_thenOnlyOneMessageHandlerInTheGroupShouldReceiveEachMessage() throws Exception {
-        try (Connection connection = createConnection()) {
+        try (Connection natsConnection = createConnection()) {
             List<Message> messages = new ArrayList<>();
 
-            Dispatcher dispatcher = connection.createDispatcher();
+            Dispatcher dispatcher = natsConnection.createDispatcher();
             Subscription qSub1 = dispatcher.subscribe("mySubject", "myQueue", messages::add);
             Subscription qSub2 = dispatcher.subscribe("mySubject", "myQueue", messages::add);
 
-            connection.publish("mySubject", "data".getBytes());
+            natsConnection.publish("mySubject", "data".getBytes());
 
             // Simulate real world time for messages to propagate.
             Awaitility.await()
@@ -199,22 +212,22 @@ public class NatsClientLiveTest {
 
     @Test
     public void whenMessagesAreExchangedViaPublish_thenResponsesMustBeReceivedWithSecondarySubscription() throws Exception {
-        try (Connection connection = createConnection()) {
-            Subscription replySideSubscription1 = connection.subscribe("publishSubject");
-            Subscription replySideSubscription2 = connection.subscribe("publishSubject");
+        try (Connection natsConnection = createConnection()) {
+            Subscription replySideSubscription1 = natsConnection.subscribe("publishSubject");
+            Subscription replySideSubscription2 = natsConnection.subscribe("publishSubject");
 
-            Subscription publishSideSubscription = connection.subscribe("replyToSubject");
-            connection.publish("publishSubject", "replyToSubject", "Please respond!".getBytes());
+            Subscription publishSideSubscription = natsConnection.subscribe("replyToSubject");
+            natsConnection.publish("publishSubject", "replyToSubject", "Please respond!".getBytes());
 
             Message message = replySideSubscription1.nextMessage(TIMEOUT_MILLIS);
             assertNotNull(message, "No message!");
             assertEquals("Please respond!", new String(message.getData()));
-            connection.publish(message.getReplyTo(), "Message Received By Subscription 1".getBytes());
+            natsConnection.publish(message.getReplyTo(), "Message Received By Subscription 1".getBytes());
 
             message = replySideSubscription2.nextMessage(TIMEOUT_MILLIS);
             assertNotNull(message, "No message!");
             assertEquals("Please respond!", new String(message.getData()));
-            connection.publish(message.getReplyTo(), "Message Received By Subscription 2".getBytes());
+            natsConnection.publish(message.getReplyTo(), "Message Received By Subscription 2".getBytes());
 
             int responsesFrom1 = 0;
             int responsesFrom2 = 0;
@@ -251,21 +264,21 @@ public class NatsClientLiveTest {
 
     @Test
     public void whenMessagesAreExchangedViaRequest_thenOnlyTheFirstResponseWillBeReceived() throws Exception {
-        try (Connection connection = createConnection()) {
-            Subscription replySideSubscription1 = connection.subscribe("requestSubject");
-            Subscription replySideSubscription2 = connection.subscribe("requestSubject");
+        try (Connection natsConnection = createConnection()) {
+            Subscription replySideSubscription1 = natsConnection.subscribe("requestSubject");
+            Subscription replySideSubscription2 = natsConnection.subscribe("requestSubject");
 
-            CompletableFuture<Message> future = connection.request("requestSubject", "Please respond!".getBytes());
+            CompletableFuture<Message> future = natsConnection.request("requestSubject", "Please respond!".getBytes());
 
             Message message = replySideSubscription1.nextMessage(TIMEOUT_MILLIS);
             assertNotNull(message, "No message!");
             assertEquals("Please respond!", new String(message.getData()));
-            connection.publish(message.getReplyTo(), "Message Received From Subscription 1".getBytes());
+            natsConnection.publish(message.getReplyTo(), "Message Received From Subscription 1".getBytes());
 
             message = replySideSubscription2.nextMessage(TIMEOUT_MILLIS);
             assertNotNull(message, "No message!");
             assertEquals("Please respond!", new String(message.getData()));
-            connection.publish(message.getReplyTo(), "Message Received From Subscription 2".getBytes());
+            natsConnection.publish(message.getReplyTo(), "Message Received From Subscription 2".getBytes());
 
             message = future.get(TIMEOUT_MILLIS, TimeUnit.MILLISECONDS);
             assertNotNull(message, "No message!");
@@ -278,17 +291,17 @@ public class NatsClientLiveTest {
 
     @Test
     public void whenMatchingWildCardsAreUsedInSubscriptions_thenSubscriptionsMustReceiveAllMatchingMessages() throws Exception {
-        try (Connection connection = createConnection()) {
-            Subscription segmentStarSubscription = connection.subscribe("segment.*");
+        try (Connection natsConnection = createConnection()) {
+            Subscription segmentStarSubscription = natsConnection.subscribe("segment.*");
 
-            connection.publish("segment.star", "hello segment star".getBytes());
+            natsConnection.publish("segment.star", "hello segment star".getBytes());
 
             Message message = segmentStarSubscription.nextMessage(TIMEOUT_MILLIS);
             assertNotNull(message, "No message!");
             assertEquals("hello segment star", new String(message.getData()));
 
-            Subscription segmentGreaterSubscription = connection.subscribe("segment.>");
-            connection.publish("segment.greater.than", "hello segment greater".getBytes());
+            Subscription segmentGreaterSubscription = natsConnection.subscribe("segment.>");
+            natsConnection.publish("segment.greater.than", "hello segment greater".getBytes());
 
             message = segmentGreaterSubscription.nextMessage(TIMEOUT_MILLIS);
             assertNotNull(message, "No message!");
@@ -301,16 +314,16 @@ public class NatsClientLiveTest {
 
     @Test
     public void whenNonMatchingWildCardsAreUsedInSubscriptions_thenSubscriptionsMustNotReceiveNonMatchingMessages() throws Exception {
-        try (Connection connection = createConnection()) {
-            Subscription starSubscription = connection.subscribe("segment.*");
+        try (Connection natsConnection = createConnection()) {
+            Subscription starSubscription = natsConnection.subscribe("segment.*");
 
-            connection.publish("segment.second.third", "hello there".getBytes());
+            natsConnection.publish("segment.second.third", "hello there".getBytes());
 
             Message message = starSubscription.nextMessage(TIMEOUT_MILLIS);
             assertNull(message, "Got message!");
 
-            Subscription greaterSubscription = connection.subscribe("segment.>");
-            connection.publish("segment.second.third", "hello there".getBytes());
+            Subscription greaterSubscription = natsConnection.subscribe("segment.>");
+            natsConnection.publish("segment.second.third", "hello there".getBytes());
 
             message = greaterSubscription.nextMessage(TIMEOUT_MILLIS);
             assertNotNull(message, "No message!");
