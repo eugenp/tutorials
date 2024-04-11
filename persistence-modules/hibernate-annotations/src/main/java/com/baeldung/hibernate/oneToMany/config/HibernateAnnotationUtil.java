@@ -4,7 +4,6 @@ import com.baeldung.hibernate.oneToMany.model.Cart;
 import com.baeldung.hibernate.oneToMany.model.CartOIO;
 import com.baeldung.hibernate.oneToMany.model.Item;
 import com.baeldung.hibernate.oneToMany.model.ItemOIO;
-import com.baeldung.hibernate.subselect.RuntimeConfiguration;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
@@ -39,7 +38,6 @@ public class HibernateAnnotationUtil {
           .addAnnotatedClass(CartOIO.class)
           .addAnnotatedClass(Item.class)
           .addAnnotatedClass(ItemOIO.class)
-          .addAnnotatedClass(RuntimeConfiguration.class)
           .buildMetadata();
 
         return metadata.buildSessionFactory();
