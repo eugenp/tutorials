@@ -17,8 +17,8 @@ public class ParallelCollectorsVirtualThreadsManualTest {
 
     // increase the number of parallel processes to find the max number of threads on your machine
     @Test
-    public void processInParallelOnOSThreads() {
-        int parallelProcesses = 5_000;
+    public void givenParallelism_whenUsingOSThreads_thenShouldRunOutOfThreads() {
+        int parallelProcesses = 50_000;
 
         var e = Executors.newFixedThreadPool(parallelProcesses);
 
@@ -30,8 +30,8 @@ public class ParallelCollectorsVirtualThreadsManualTest {
     }
 
     @Test
-    public void processInParallelOnVirtualThreads() {
-        int parallelProcesses = 100_000;
+    public void givenParallelism_whenUsingVThreads_thenShouldProcessInParallel() {
+        int parallelProcesses = 1000_000;
 
         var result = timed(() -> Stream.iterate(0, i -> i + 1).limit(parallelProcesses)
           .collect(ParallelCollectors.parallel(i -> fetchById(i), toList()))
@@ -41,8 +41,8 @@ public class ParallelCollectorsVirtualThreadsManualTest {
     }
 
     @Test
-    public void processInParallelOnVirtualThreadsParallelCollectors2() {
-        int parallelProcesses = 100_000;
+    public void givenParallelismAndPCollectors2_whenUsingVThreads_thenShouldProcessInParallel() {
+        int parallelProcesses = 1000_000;
 
         var result = timed(() -> Stream.iterate(0, i -> i + 1).limit(parallelProcesses)
           .collect(ParallelCollectors.parallel(i -> fetchById(i), toList(), Executors.newVirtualThreadPerTaskExecutor(), Integer.MAX_VALUE))
