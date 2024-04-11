@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.baeldung.jpa.simple.entity.User;
+import com.baeldung.jpa.simple.model.User;
 import com.baeldung.jpa.simple.repository.UserRepository;
 
 @ExtendWith(SpringExtension.class)
