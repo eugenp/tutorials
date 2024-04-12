@@ -24,6 +24,7 @@
         <module>core-java-persistence-2</module>
         <module>core-java-persistence-3</module>
         <module>couchbase</module>
+        <module>duckdb</module>
         <module>elasticsearch</module>
         <module>flyway</module>
         <module>flyway-repair</module>
