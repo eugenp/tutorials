@@ -136,6 +136,12 @@
             <type>so</type>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy</artifactId>
+            <version>1.14.13</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -175,5 +181,4 @@
         <maven-dependency-plugin.version>3.1.1</maven-dependency-plugin.version>
         <spring-boot.version>2.4.7</spring-boot.version>
     </properties>
-
 </project>

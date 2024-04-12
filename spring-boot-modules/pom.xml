@@ -114,6 +114,7 @@
         <module>spring-boot-graalvm-docker</module>
         <module>spring-boot-validations</module>
         <module>spring-boot-openapi</module>
+        <module>spring-boot-brave</module>
     </modules>
 
     <dependencyManagement>
