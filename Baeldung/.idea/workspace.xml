@@ -5,8 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="36a5f2fb-7861-4f52-98a2-c64dd3e02744" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../java-object-copying-guide/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../java-object-copying-guide/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java-object-copying-guide/src/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DeepCopyExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DeepCopyExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ShallowCopyExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ShallowCopyExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/DeepCopyExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/DeepCopyExample.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Person.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/ShallowCopyExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/ShallowCopyExample.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/CopyExampleUnitTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/CopyExampleUnitTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/CopyExampleUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/CopyExampleUnitTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java-object-copying-guide/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java-object-copying-guide/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java-object-copying-guide/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java-object-copying-guide/src/main/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java-object-copying-guide/src/test/unit.Java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,9 +56,14 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.DeepCopyExample.executor": "Run",
     "Application.Main.executor": "Run",
+    "Application.ShallowCopyExample.executor": "Run",
     "JUnit.All in Baeldung.executor": "Run",
     "JUnit.CopyExampleUnitTest.executor": "Run",
+    "JUnit.CopyExampleUnitTest.givenOriginalPerson_whenCloneNotSupported_thenThrowException.executor": "Run",
+    "JUnit.CopyExampleUnitTest.givenOriginalPerson_whenDeepCopying_thenCopiedPersonHasDifferentAge.executor": "Run",
+    "JUnit.CopyExampleUnitTest.givenOriginalPerson_whenShallowCopying_thenCopiedPersonHasSameAge.executor": "Run",
     "Maven.baeldung [deploy].executor": "Run",
     "Maven.baeldung [site].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -76,14 +94,7 @@
       <command value="mvn deploy" />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.CopyExampleUnitTest">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="Baeldung" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.CopyExampleUnitTest.givenOriginalPerson_whenCloneNotSupported_thenThrowException">
     <configuration name="All in Baeldung" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Baeldung" />
       <option name="PACKAGE_NAME" value="" />
@@ -101,11 +112,43 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="CopyExampleUnitTest.givenOriginalPerson_whenCloneNotSupported_thenThrowException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Baeldung" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="CopyExampleUnitTest" />
+      <option name="METHOD_NAME" value="givenOriginalPerson_whenCloneNotSupported_thenThrowException" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CopyExampleUnitTest.givenOriginalPerson_whenDeepCopying_thenCopiedPersonHasDifferentAge" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Baeldung" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="CopyExampleUnitTest" />
+      <option name="METHOD_NAME" value="givenOriginalPerson_whenDeepCopying_thenCopiedPersonHasDifferentAge" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CopyExampleUnitTest.givenOriginalPerson_whenShallowCopying_thenCopiedPersonHasSameAge" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Baeldung" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="CopyExampleUnitTest" />
+      <option name="METHOD_NAME" value="givenOriginalPerson_whenShallowCopying_thenCopiedPersonHasSameAge" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CopyExampleUnitTest.givenOriginalPerson_whenCloneNotSupported_thenThrowException" />
         <item itemvalue="JUnit.CopyExampleUnitTest" />
+        <item itemvalue="JUnit.CopyExampleUnitTest.givenOriginalPerson_whenShallowCopying_thenCopiedPersonHasSameAge" />
+        <item itemvalue="JUnit.CopyExampleUnitTest.givenOriginalPerson_whenDeepCopying_thenCopiedPersonHasDifferentAge" />
         <item itemvalue="JUnit.All in Baeldung" />
-        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
