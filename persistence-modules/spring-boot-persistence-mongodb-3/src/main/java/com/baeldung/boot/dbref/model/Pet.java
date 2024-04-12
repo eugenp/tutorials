@@ -1,4 +1,4 @@
-package com.baeldung.mongodb.dbref.model;
+package com.baeldung.boot.dbref.model;
 
 public class Pet {
 

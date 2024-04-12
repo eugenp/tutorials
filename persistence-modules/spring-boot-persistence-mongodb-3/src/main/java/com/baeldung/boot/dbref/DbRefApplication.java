@@ -1,4 +1,4 @@
-package com.baeldung.mongodb.dbref;
+package com.baeldung.boot.dbref;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
