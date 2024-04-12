@@ -117,6 +117,7 @@ spring:
           args:
             redis-rate-limiter.replenishRate: 10
             redis-rate-limiter.burstCapacity: 5
+            redis-rate-limiter.requestedTokens: 1
             key-resolver: "#{@userKeyResolver}"
 
       - id: cache_request_body_route
