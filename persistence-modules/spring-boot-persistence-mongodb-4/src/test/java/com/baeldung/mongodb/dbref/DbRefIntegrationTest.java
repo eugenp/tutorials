@@ -1,11 +1,11 @@
 package com.baeldung.mongodb.dbref;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import java.util.ArrayList;
-import java.util.List;
-
+import com.baeldung.mongodb.dbref.model.Person;
+import com.baeldung.mongodb.dbref.model.Pet;
+import com.baeldung.mongodb.dbref.repository.PersonRepository;
+import com.mongodb.BasicDBObjectBuilder;
+import com.mongodb.DBObject;
+import com.mongodb.DBRef;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +14,11 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.baeldung.mongodb.dbref.model.Person;
-import com.baeldung.mongodb.dbref.model.Pet;
-import com.baeldung.mongodb.dbref.repository.PersonRepository;
-import com.mongodb.BasicDBObjectBuilder;
-import com.mongodb.DBObject;
-import com.mongodb.DBRef;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
