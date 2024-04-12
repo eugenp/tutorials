@@ -24,13 +24,12 @@ import org.junit.jupiter.api.Test;
 
         @Test
         public void givenOriginalPerson_whenDeepCopying_thenCopiedPersonHasDifferentAge() {
-            // Given
+
             Person originalPerson = new Person("John", 30, 18, 30,new Address("UnitTest  Main St.", "Pal Alto", "USA"));
 
-            // When
             Person copiedPerson = originalPerson.deepClone();
 
-            // Then
+        
             assertEquals(30, originalPerson.getAge(), "Original person's age should remain unchanged after deep copying");
             assertEquals(30, copiedPerson.getAge(), "Copied person's age should be independent of the original person after deep copying");
         }
@@ -53,7 +52,6 @@ import org.junit.jupiter.api.Test;
         public void givenOriginalPerson_whenCloneNotSupported_thenThrowException() {
             Person originalPerson = new Person("Jane", 30, 18, 28, new Address("Throw exception Test", "Dubai", "UAE"));
 
-            // Override clone() method in an anonymous inner class to throw CloneNotSupportedException
             Person originalPersonWithException = new Person(originalPerson.getName(), originalPerson.getAge(), originalPerson.getHeight(), originalPerson.getWeight(), originalPerson.getAddress()) {
                 @Override
                 public Person clone() throws CloneNotSupportedException {

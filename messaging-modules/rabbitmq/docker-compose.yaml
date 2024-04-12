@@ -1,0 +1,14 @@
+version: '3.0'
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+      - RABBITMQ_VM_MEMORY_HIGH_WATERMARK_RELATIVE=0.8
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - ./src/rabbitmq/20-mem.conf:/etc/rabbitmq/conf.d/20-mem.conf
+

@@ -1,0 +1,7 @@
+rootProject.name = 'gradle-modules'
+include 'gradle'
+include 'gradle-5'
+include 'gradle-6'
+include 'gradle-7'
+include 'gradle-8'
+include 'gradle-customization'

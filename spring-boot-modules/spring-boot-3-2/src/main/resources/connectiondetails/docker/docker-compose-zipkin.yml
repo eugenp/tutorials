@@ -1,0 +1,10 @@
+version: '3'
+services:
+  zipkin:
+    image: 'openzipkin/zipkin:latest'
+    ports:
+      - "9411:9411"
+#    environment:
+#      - ZIPKIN_AUTH_USERNAME=your-username
+#      - ZIPKIN_AUTH_PASSWORD=your-password
+    # Add other necessary configurations here

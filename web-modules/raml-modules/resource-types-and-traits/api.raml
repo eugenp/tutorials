@@ -1,0 +1,108 @@
+#%RAML 1.0
+title: Baeldung Foo REST Services API
+version: v1
+protocols: [ HTTPS ]
+baseUri: http://rest-api.baeldung.com/api/{version}
+mediaType: application/json
+securedBy: basicAuth
+securitySchemes:
+  - basicAuth:
+      description: Each request must contain the headers necessary for
+                   basic authentication
+      type: Basic Authentication
+      describedBy:
+        headers:
+          Authorization:
+            description: |
+              Used to send the Base64 encoded "username:password"
+              credentials
+            type: string
+        responses:
+          401:
+            description: |
+              Unauthorized. Either the provided username and password
+              combination is invalid, or the user is not allowed to
+              access the content provided by the requested URL.
+types:
+  Foo:   !include types/Foo.raml
+  Bar:   !include types/Bar.raml
+  Error: !include types/Error.raml
+resourceTypes:
+  - collection:
+      usage: Use this resourceType to represent a collection of items
+      description: A collection of <<resourcePathName|!uppercamelcase>>
+      get:
+        description: |
+          Get all <<resourcePathName|!uppercamelcase>>,
+          optionally filtered
+        is: [ hasResponseCollection ]
+      post:
+        description: |
+          Create a new <<resourcePathName|!uppercamelcase|!singularize>>
+        is: [ hasRequestItem ]
+  - item:
+      usage: Use this resourceType to represent any single item
+      description: A single <<typeName>>
+      get:
+        description: Get a <<typeName>> by <<resourcePathName>>
+        is: [ hasResponseItem, hasNotFound ]
+      put:
+        description: Update a <<typeName>> by <<resourcePathName>>
+        is: [ hasRequestItem, hasResponseItem, hasNotFound ]
+      delete:
+        description: Delete a <<typeName>> by <<resourcePathName>>
+        is: [ hasNotFound ]
+        responses:
+          204:
+traits:
+  - hasRequestItem:
+      body:
+        application/json:
+          type: <<typeName>>
+  - hasResponseItem:
+      responses:
+          200:
+            body:
+              application/json:
+                type: <<typeName>>
+                example: !include examples/<<typeName>>.json
+  - hasResponseCollection:
+      responses:
+          200:
+            body:
+              application/json:
+                type: <<typeName>>[]
+                example: !include examples/<<typeName|!pluralize>>.json
+  - hasNotFound:
+      responses:
+          404:
+            body:
+              application/json:
+                type: Error
+                example: !include examples/Error.json
+/foos:
+  type: collection
+  typeName: Foo
+  get:
+    queryParameters:
+      name?: string
+      ownerName?: string
+  /{fooId}:
+    type: item
+    typeName: Foo
+  /name/{name}:
+    get:
+      description: List all foos with a certain name
+      typeName: Foo
+      is: [ hasResponseCollection ]
+/bars:
+  type: collection
+  typeName: Bar
+  /{barId}:
+    type: item
+    typeName: Bar
+  /fooId/{fooId}:
+    get:
+      description: Get all bars for the matching fooId
+      typeName: Bar
+      is: [ hasResponseCollection ]

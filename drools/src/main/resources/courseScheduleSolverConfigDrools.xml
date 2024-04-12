@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<solver>
+   
+    <solutionClass>com.baeldung.drools.optaplanner.CourseSchedule</solutionClass>
+    <entityClass>com.baeldung.drools.optaplanner.Lecture</entityClass>
+    
+    <scoreDirectorFactory>
+        <scoreDrl>courseSchedule.drl</scoreDrl>
+    </scoreDirectorFactory>
+
+    <termination>
+        <secondsSpentLimit>10</secondsSpentLimit>
+    </termination>
+</solver>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notification>
+  <from>builds@baeldung.com</from>
+  <heading>Build #7 passed</heading>
+  <content>Success: The Jenkins CI build passed</content>
+</notification>

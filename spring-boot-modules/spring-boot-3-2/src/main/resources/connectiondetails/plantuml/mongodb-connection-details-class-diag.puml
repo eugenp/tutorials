@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface MongoConnectionDetails {
+    getConnectionString():ConnectionString
+}
+class MongoDBConnectionDetails {
+    getConnectionString():ConnectionString
+}
+class VaultAdapter {
+   +getSecret(String secretKey):String
+}
+class MongoDBConnectionDetailsConfiguration {
+    +getMongoConnectionDetails() : MongoConnectionDetails
+}
+MongoDBConnectionDetails -left-> VaultAdapter:uses
+MongoDBConnectionDetails -right-|> MongoConnectionDetails : implements
+MongoDBConnectionDetailsConfiguration -up-> MongoDBConnectionDetails:uses
+@enduml

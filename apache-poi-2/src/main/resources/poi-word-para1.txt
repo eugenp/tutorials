@@ -1,0 +1,1 @@
+I published the first REST with Spring tutorials over four years ago, and after 300,000 readers and over a thousand personal questions over email, I am finally realizing that there is a huge education gap in the ecosystem.

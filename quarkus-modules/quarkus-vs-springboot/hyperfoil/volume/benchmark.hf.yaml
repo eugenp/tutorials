@@ -1,0 +1,86 @@
+name: benchmark
+http:
+  host: http://localhost:8080
+  sharedConnections: 100
+phases:
+  - main:
+      constantRate:
+        startAfter: rampup
+        usersPerSec: 3300
+        maxSessions: 6000
+        duration: 5m
+        forks:
+          - post_zipcode: &post_zipcode
+              scenario:
+                - fetchIndex:
+                    - randomCsvRow:
+                        file: /benchmarks/zip_code_database.csv
+                        removeQuotes: true
+                        columns:
+                          0: zip
+                          1: type
+                          3: city
+                          6: state
+                          7: county
+                          8: timezone
+                    - httpRequest:
+                        sla:
+                          - blockedRatio: 500
+                        POST: /zipcode
+                        headers:
+                          Content-Type: application/json;charset=UTF-8
+                          Accept: application/json
+                        body: |
+                          {
+                              "zip" : "${zip}",
+                              "type" : "${type}",
+                              "city" : "${city}",
+                              "state" : "${state}",
+                              "county" : "${county}",
+                              "timezone" : "${timezone}"
+                          }
+          - get_zipcode: &get_zipcode
+              scenario:
+                - fetchIndex:
+                    - randomCsvRow:
+                        file: /benchmarks/zip_code_database.csv
+                        removeQuotes: true
+                        columns:
+                          0: zipcode
+                    - httpRequest:
+                        sla:
+                          - blockedRatio: 500
+                        headers:
+                          accept: application/json
+                        GET: /zipcode/${zipcode}
+          - get_zipcode_by_city: &get_zipcode_by_city
+              scenario:
+                - fetchDetails:
+                    - randomCsvRow:
+                        file: /benchmarks/cities.csv
+                        removeQuotes: true
+                        columns:
+                          0: city
+                    - httpRequest:
+                        sla:
+                          - blockedRatio: 500
+                        headers:
+                          accept: application/json
+                        GET: /zipcode/by_city?city=${city}
+  - spike:
+      constantRate:
+        startAfter: main
+        usersPerSec: 4400
+        duration: 2m
+        forks:
+          - get_zipcode_by_city: *get_zipcode_by_city
+          - get_zipcode: *get_zipcode
+
+  - rampup:
+      increasingRate:
+        initialUsersPerSec: 3
+        targetUsersPerSec: 2500
+        duration: 1m
+        forks:
+          - post_zipcode: *post_zipcode
+          - get_zipcode: *get_zipcode

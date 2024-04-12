@@ -1,0 +1,11 @@
+server:
+  port: 8080
+zuul:
+  prefix: /api
+  routes:
+    greeting-service:
+      path: /greeting/**
+      url: forward:/greeting
+    foos-service:
+      path: /foos/**
+      url: http://localhost:8081/spring-zuul-foos-resource/foos

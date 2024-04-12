@@ -1,0 +1,9 @@
+id,zoneId,FIRST_NAME,MIDDLE_NAME,LAST_NAME,CITY,gender,transaction_date,transaction_amount
+1,EU11,Ana1,A,MN, London,Female,1/2/2018,5200
+2,EU12,Ana2,A,MN, London,Female,29/3/2018,1000
+3,EU13,Jack1,Josh,MN, London,Male,19/6/2018,9600
+4,EU14,Jack2,Josh,MN, London,Male,9/9/2018,1000
+5,EU15,Nick1,H,Dee,London,Male,9/6/2021,3000
+6,EU16,Nick2,H,Dee,London,Male,27/9/2021,500
+7,EU17,Nick3,H,Dee,London,Male,8/12/2021,500
+8,EU18,Sara1,H,Dee,London,Female,7/4/2021,2000

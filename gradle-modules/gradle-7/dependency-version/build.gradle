@@ -1,0 +1,19 @@
+plugins {
+    id 'java'
+}
+
+group = "com.baeldung.gradle"
+version = "1.0.0-SNAPSHOT"
+sourceCompatibility = JavaVersion.VERSION_17
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
+    implementation group: 'org.apache.commons', name: 'commons-collections4', version: '4.+'
+    implementation group: 'org.apache.commons', name: 'commons-math3', version: '[3.4, 3.5)'
+    implementation group: 'org.apache.commons', name: 'commons-text', version: 'latest.release'
+}

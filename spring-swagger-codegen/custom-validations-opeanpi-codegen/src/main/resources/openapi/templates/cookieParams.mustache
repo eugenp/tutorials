@@ -1,0 +1,1 @@
+{{#isCookieParam}}{{#useBeanValidation}}{{>beanValidationQueryParams}}{{/useBeanValidation}}{{>paramDoc}} @CookieValue(name = "{{baseName}}"{{^required}}, required = false{{/required}}{{#defaultValue}}, defaultValue = "{{{.}}}"{{/defaultValue}}){{>dateTimeParam}} {{>optionalDataType}} {{paramName}}{{/isCookieParam}}

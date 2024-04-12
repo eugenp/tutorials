@@ -1,0 +1,11 @@
+<server description="OpenLiberty MicroProfile server">
+    <featureManager>
+        <feature>jakartaee-10.0</feature>
+        <feature>jsonp-2.1</feature>
+        <feature>cdi-4.0</feature>
+    </featureManager>
+    <httpEndpoint httpPort="${default.http.port}" httpsPort="${default.https.port}"
+                  id="defaultHttpEndpoint" host="*"/>
+    <applicationManager autoExpand="true"/>
+    <webApplication context-root="${app.context.root}" location="${app.location}"/>
+</server>

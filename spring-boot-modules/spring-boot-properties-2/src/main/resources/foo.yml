@@ -1,0 +1,5 @@
+yaml:
+  name: foo
+  aliases:
+    - abc
+    - xyz

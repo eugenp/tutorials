@@ -1,0 +1,19 @@
+eureka:
+  client:
+    enabled: false
+
+spring:
+  application:
+    name: books-service
+  cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
+    discovery:
+      client:
+        simple:
+          instances:
+            books-service[0]:
+              uri: http://localhost:1030
+            books-service[1]:
+              uri: http://localhost:1031

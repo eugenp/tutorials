@@ -1,0 +1,10 @@
+<teachers>
+	<teacher department="science" id='309'>
+		<subject>math</subject>
+		<subject>physics</subject>
+	</teacher>
+	<teacher department="arts" id='310'>
+		<subject>political education</subject>
+		<subject>english</subject>
+	</teacher>
+</teachers>

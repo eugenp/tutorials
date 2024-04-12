@@ -1,0 +1,54 @@
+
+plugins {
+    id 'java'
+    id 'jacoco'
+}
+
+ext {
+    junitVersion = '5.7.2'
+    lombokVersion = '1.18.20'
+}
+
+group 'com.com.baeldung'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+dependencies {
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+}
+
+test {
+    useJUnitPlatform()
+
+    finalizedBy jacocoTestReport // report is always generated after tests run
+}
+
+jacocoTestReport {
+    dependsOn test // tests are required to run before generating the report
+
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: [
+                "com/baeldung/**/ExcludedPOJO.class",
+                "com/baeldung/**/*DTO.*",
+                "**/config/*"
+            ])
+        }))
+    }
+}
+
+jacoco {
+    toolVersion = "0.8.6"
+}

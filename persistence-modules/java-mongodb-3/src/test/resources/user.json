@@ -1,0 +1,3 @@
+{"userId":"123","userName":"Jack","age":23,"role":"Admin"}
+{"userId":"456","userName":"Lisa","age":27,"role":"Admin","type":"Web"}
+{"userId":"789","userName":"Tim","age":31,"role":"Analyst"}

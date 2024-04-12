@@ -1,0 +1,1 @@
+ <ResourceLink name="jdbc/BaeldungDatabase" global="jdbc/BaeldungDatabase" type="javax.sql.DataSource"/>

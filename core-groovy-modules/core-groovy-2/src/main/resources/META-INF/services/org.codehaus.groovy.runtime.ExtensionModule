@@ -1,0 +1,4 @@
+moduleName=core-groovy-2
+moduleVersion=1.0-SNAPSHOT
+extensionClasses=com.baeldung.metaprogramming.extension.BasicExtensions
+staticExtensionClasses=com.baeldung.metaprogramming.extension.StaticEmployeeExtension

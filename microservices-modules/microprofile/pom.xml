@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>microprofile</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>microprofile</name>
+    <packaging>war</packaging>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>microservices-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.eclipse.microprofile</groupId>
+            <artifactId>microprofile</artifactId>
+            <version>${microprofile.version}</version>
+            <scope>provided</scope>
+            <type>pom</type>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                    <packagingExcludes>pom.xml</packagingExcludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>net.wasdev.wlp.maven.plugins</groupId>
+                <artifactId>liberty-maven-plugin</artifactId>
+                <version>${liberty-maven-plugin.version}</version>
+                <configuration>
+                    <assemblyArtifact>
+                        <groupId>io.openliberty</groupId>
+                        <artifactId>openliberty-runtime</artifactId>
+                        <version>${openliberty-runtime.version}</version>
+                        <type>zip</type>
+                    </assemblyArtifact>
+                    <configFile>${basedir}/src/main/liberty/config/server.xml</configFile>
+                    <packageFile>${package.file}</packageFile>
+                    <include>${packaging.type}</include>
+                    <looseApplication>false</looseApplication>
+                    <installAppPackages>project</installAppPackages>
+                    <bootstrapProperties>
+                        <app.context.root>/</app.context.root>
+                        <app.location>${project.artifactId}-${project.version}.war</app.location>
+                        <default.http.port>9080</default.http.port>
+                        <default.https.port>9443</default.https.port>
+                    </bootstrapProperties>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>install-server</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>install-server</goal>
+                            <goal>create-server</goal>
+                            <goal>install-feature</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>package-server-with-apps</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>install-apps</goal>
+                            <goal>package-server</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <properties>
+        <app.name>library</app.name>
+        <package.file>${project.build.directory}/${app.name}-service.jar</package.file>
+        <packaging.type>runnable</packaging.type>
+        <microprofile.version>6.0</microprofile.version>
+        <liberty-maven-plugin.version>2.1.2</liberty-maven-plugin.version>
+        <openliberty-runtime.version>23.0.0.5</openliberty-runtime.version>
+    </properties>
+
+</project>

@@ -1,0 +1,25 @@
+@startuml
+'https://plantuml.com/class-diagram
+interface Job {
++getJobType
+}
+class PlatinumJobCard <T extends Job> {
+ +setJobType(Class<T> jobTypeClass)
+ +startJob()
+}
+
+class MaintenanceJob implements Job {
+ +getJobType()
+}
+class RepairJob  implements Job {
+ +getJobType()
+}
+class PaintJob  implements Job {
+ +getJobType()
+}
+PlatinumJobCard -up-> MaintenanceJob:creates
+PlatinumJobCard -up-> RepairJob:creates
+PlatinumJobCard -up-> PaintJob:creates
+
+
+@enduml

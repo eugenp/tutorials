@@ -1,0 +1,11 @@
+logging:
+  level:
+    root: info
+    org:
+      springframework:
+        test:
+          context:
+            cache: DEBUG
+spring:
+  main:
+    allow-bean-definition-overriding: true

@@ -1,0 +1,11 @@
+version: '3.4'
+
+services:
+  tomcatsso:
+    image: tomcat:10-jdk17-openjdk-slim-buster
+    volumes:
+      - ./res/conf:/usr/local/tomcat/conf
+      - ./webapps:/usr/local/tomcat/webapps
+    ports:
+      - 8080:8080
+    command: ["catalina.sh", "run"]

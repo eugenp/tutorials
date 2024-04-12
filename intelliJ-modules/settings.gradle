@@ -1,0 +1,3 @@
+rootProject.name = 'intellij-modules'
+include 'stackoverflow-plugin'
+include 'stackoverflow-plugin-gradle'

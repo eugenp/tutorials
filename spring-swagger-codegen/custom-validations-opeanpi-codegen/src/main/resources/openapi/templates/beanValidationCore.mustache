@@ -1,0 +1,25 @@
+{{{ vendorExtensions.x-constraints }}}
+{{#pattern}}{{^isByteArray}}@Pattern(regexp = "{{{pattern}}}"{{#vendorExtensions.x-pattern-message}}, message="{{vendorExtensions.x-pattern-message}}"{{/vendorExtensions.x-pattern-message}}) {{/isByteArray}}{{/pattern}}{{!
+minLength && maxLength set
+}}{{#minLength}}{{#maxLength}}@Size(min = {{minLength}}, max = {{maxLength}}) {{/maxLength}}{{/minLength}}{{!
+minLength set, maxLength not
+}}{{#minLength}}{{^maxLength}}@Size(min = {{minLength}}) {{/maxLength}}{{/minLength}}{{!
+minLength not set, maxLength set
+}}{{^minLength}}{{#maxLength}}@Size(max = {{.}}) {{/maxLength}}{{/minLength}}{{!
+@Size: minItems && maxItems set
+}}{{#minItems}}{{#maxItems}}@Size(min = {{minItems}}, max = {{maxItems}}) {{/maxItems}}{{/minItems}}{{!
+@Size: minItems set, maxItems not
+}}{{#minItems}}{{^maxItems}}@Size(min = {{minItems}}) {{/maxItems}}{{/minItems}}{{!
+@Size: minItems not set && maxItems set
+}}{{^minItems}}{{#maxItems}}@Size(max = {{.}}) {{/maxItems}}{{/minItems}}{{!
+@Email: useBeanValidation
+}}{{#isEmail}}{{#useBeanValidation}}@{{javaxPackage}}.validation.constraints.Email {{/useBeanValidation}}{{!
+@Email: performBeanValidation exclusive
+}}{{^useBeanValidation}}{{#performBeanValidation}}@org.hibernate.validator.constraints.Email {{/performBeanValidation}}{{/useBeanValidation}}{{/isEmail}}{{!
+check for integer or long / all others=decimal type with @Decimal*
+isInteger set
+}}{{#isInteger}}{{#minimum}}@Min({{.}}) {{/minimum}}{{#maximum}}@Max({{.}}) {{/maximum}}{{/isInteger}}{{!
+isLong set
+}}{{#isLong}}{{#minimum}}@Min({{.}}L) {{/minimum}}{{#maximum}}@Max({{.}}L) {{/maximum}}{{/isLong}}{{!
+Not Integer, not Long => we have a decimal value!
+}}{{^isInteger}}{{^isLong}}{{#minimum}}@DecimalMin({{#exclusiveMinimum}}value = {{/exclusiveMinimum}}"{{minimum}}"{{#exclusiveMinimum}}, inclusive = false{{/exclusiveMinimum}}) {{/minimum}}{{#maximum}}@DecimalMax({{#exclusiveMaximum}}value = {{/exclusiveMaximum}}"{{maximum}}"{{#exclusiveMaximum}}, inclusive = false{{/exclusiveMaximum}}) {{/maximum}}{{/isLong}}{{/isInteger}}

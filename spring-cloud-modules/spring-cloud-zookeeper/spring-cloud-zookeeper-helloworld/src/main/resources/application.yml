@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: HelloWorld
+  cloud:
+    zookeeper:
+      connect-string: localhost:2181
+      discovery:
+        enabled: true
+server:
+  port: 8081
+endpoints:
+  restart:
+    enabled: true
+logging:
+  level:
+    org.apache.zookeeper.ClientCnxn: WARN

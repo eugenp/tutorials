@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:mock="http://www.mulesoft.org/schema/mule/mock" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:core="http://www.mulesoft.org/schema/mule/core" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:test="http://www.mulesoft.org/schema/mule/test"
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/mock http://www.mulesoft.org/schema/mule/mock/current/mule-mock.xsd
+http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/test http://www.mulesoft.org/schema/mule/test/current/mule-test.xsd">
+	<munit:config name="munit" doc:name="MUnit configuration" />
+	
+	<spring:beans>
+		<spring:import resource="classpath:variablescopetest.xml" />
+	</spring:beans>
+	
+	<munit:test name="variablescopetest-test-suite-FlowTest"
+		description="Test">
+		<mock:when messageProcessor="vm:outbound-endpoint" doc:name="VM">
+            <mock:with-attributes>
+                <mock:with-attribute name="path" whereValue="test"/>
+            </mock:with-attributes>
+            <mock:then-return payload="#['Converted in flow 2']"/>
+		</mock:when>
+
+		<flow-ref name="Flow" doc:name="Flow-ref to Flow" />
+		<munit:assert-on-equals message="Flow variable doesn't have the actual value"
+			expectedValue="#['Flow Variable 1']" actualValue="#[flowVars.f1]"
+			doc:name="Assert Equals" />
+	</munit:test>
+	<munit:test name="variablescopetest-test-suite-Flow1Test"
+		description="Test">
+		<flow-ref name="Flow1" doc:name="Flow-ref to Flow1" />
+	</munit:test>
+    <munit:test name="variablescopetest-test-suite-Flow2Test" description="Test">
+        <flow-ref name="Flow2" doc:name="Flow-ref to Flow2"/>
+    </munit:test>
+</mule>

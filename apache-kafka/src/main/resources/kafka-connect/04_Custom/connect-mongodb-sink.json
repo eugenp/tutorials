@@ -1,0 +1,14 @@
+{
+    "name": "mongodb-sink",
+    "config": {
+        "connector.class": "at.grahsl.kafka.connect.mongodb.MongoDbSinkConnector",
+        "tasks.max": 1,
+        "topics": "connect-custom",
+        "mongodb.connection.uri": "mongodb://mongo-db/test?retryWrites=true",
+        "mongodb.collection": "MyCollection",
+        "key.converter": "org.apache.kafka.connect.json.JsonConverter",
+        "key.converter.schemas.enable": false,
+        "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+        "value.converter.schemas.enable": false
+    }
+}

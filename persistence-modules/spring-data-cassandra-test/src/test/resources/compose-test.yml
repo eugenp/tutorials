@@ -1,0 +1,79 @@
+version: '2.1'
+services:
+  cassandra1:
+    image: cassandra:3.11.10
+    hostname: cassandra1
+    networks:
+      - cassandranet
+    ports:
+      - "9042:9042"
+    environment:
+      CASSANDRA_SEEDS: "cassandra1"
+      CASSANDRA_DC: datacenter1
+      CASSANDRA_RACK: rack1
+      CASSANDRA_ENDPOINT_SNITCH: GossipingPropertyFileSnitch
+    healthcheck:
+      test: [ "CMD", "cqlsh", "-u cassandra", "-p cassandra" ,"-e describe keyspaces" ]
+      interval: 15s
+      timeout: 10s
+      retries: 10
+
+  cassandra2:
+    image: cassandra:3.11.10
+    hostname: cassandra2
+    networks:
+      - cassandranet
+    depends_on:
+      cassandra1:
+        condition: service_healthy
+    ports:
+      - "9043:9042"
+    environment:
+      CASSANDRA_SEEDS: "cassandra1"
+      CASSANDRA_DC: datacenter1
+      CASSANDRA_RACK: rack1
+      CASSANDRA_ENDPOINT_SNITCH: GossipingPropertyFileSnitch
+    healthcheck:
+      test: [ "CMD", "cqlsh", "-u cassandra", "-p cassandra" ,"-e describe keyspaces" ]
+      interval: 15s
+      timeout: 10s
+      retries: 10
+
+  cassandra3:
+    image: cassandra:3.11.10
+    hostname: cassandra3
+    networks:
+      - cassandranet
+    depends_on:
+      cassandra2:
+        condition: service_healthy
+    ports:
+      - "9044:9042"
+    environment:
+      CASSANDRA_SEEDS: "cassandra1"
+      CASSANDRA_DC: datacenter1
+      CASSANDRA_RACK: rack1
+      CASSANDRA_ENDPOINT_SNITCH: GossipingPropertyFileSnitch
+    healthcheck:
+      test: [ "CMD", "cqlsh", "-u cassandra", "-p cassandra" ,"-e describe keyspaces" ]
+      interval: 15s
+      timeout: 10s
+      retries: 10
+
+  cassandra-load-keyspace:
+    image: cassandra:3.11.10
+    networks:
+      - cassandranet
+    depends_on:
+      cassandra1:
+        condition: service_healthy
+      cassandra2:
+        condition: service_healthy
+      cassandra3:
+        condition: service_healthy
+    volumes:
+      - ./bootstrap-test.cql:/schema.cql
+    command: /bin/bash -c "echo loading cassandra keyspace && cqlsh cassandra1 -f /schema.cql"
+
+networks:
+  cassandranet:

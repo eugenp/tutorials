@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>OAuth2Client</title>
+</head>
+<body>
+<h3>
+    <a href="/home" th:href="@{/home}" th:if="${#httpServletRequest?.remoteUser != undefined }">
+        Go to Home
+    </a>
+    <a href="/login/github" th:href="@{/login/github}" th:if="${#httpServletRequest?.remoteUser == undefined }">
+        GitHub Login
+    </a>
+</h3>
+</body>
+</html>

@@ -1,0 +1,36 @@
+openapi: 3.0.1
+info:
+  title: API Title
+  description: This is a sample API.
+  version: 1.0.0
+servers:
+  - url: https://host/
+paths:
+  /users:
+    get:
+      summary: Get Users
+      operationId: getUsers
+      responses:
+        200:
+          description: Valid input
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        createdAt:
+          type: string
+          format: date
+          description: Creation date
+          example: "2021-01-30"
+        username:
+          type: string

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>data-flow-server</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>data-flow-server</name>
+    <packaging>jar</packaging>
+    <description>Demo project for Spring Boot</description>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>spring-cloud-data-flow-stream-processing</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dataflow-dependencies</artifactId>
+                <version>${spring-cloud-dataflow-dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-dataflow-server-local</artifactId>
+            <version>1.7.4.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.compatible.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${hibernate.compatible.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy</artifactId>
+            <version>${byte-buddy.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy</artifactId>
+            <version>${groovy.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session-data-redis</artifactId>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <spring-cloud-dataflow-dependencies.version>2.0.0.RELEASE</spring-cloud-dataflow-dependencies.version>
+        <hibernate.compatible.version>5.6.0.Final</hibernate.compatible.version>
+        <spring-boot.version>2.1.4.RELEASE</spring-boot.version>
+        <groovy.version>3.0.8</groovy.version>
+    </properties>
+
+</project>

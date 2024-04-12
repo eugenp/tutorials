@@ -1,0 +1,16 @@
+# Deprecated Properties for Demonstration
+#spring:
+#  resources:
+#    cache:
+#      period: 31536000
+#    chain:
+#      compressed: true
+#      html-application-cache: true
+
+spring:
+  web:
+    resources:
+      cache:
+        period: 31536000
+      chain:
+        compressed: false

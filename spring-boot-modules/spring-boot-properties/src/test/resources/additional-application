@@ -1,0 +1,7 @@
+baeldung:
+  additionalProperty: additionalValue
+  otherProperty: otherValue
+
+spring:
+  config:
+    import: classpath:additional-application2.properties

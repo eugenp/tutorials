@@ -1,0 +1,6 @@
+Thread.getAllStackTraces().keySet().each() {
+    if (it.name.contains('sampleZombieJob')) {  
+      println "Stopping $it.name"
+      it.stop()
+    }
+}

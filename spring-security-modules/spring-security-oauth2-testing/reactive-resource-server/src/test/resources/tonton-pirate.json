@@ -1,0 +1,15 @@
+{
+  "iss": "https://localhost:8443/realms/master",
+  "sub": "2d2e5bde6b9b-550c-413b-9972-281c4558",
+  "iat": 1695992551,
+  "exp": 1695992651,
+  "preferred_username": "tonton-pirate",
+  "realm_access": {
+    "roles": [
+      "uncle",
+      "PIRATE"
+    ]
+  },
+  "email": "tonton-pirate@c4-soft.com",
+  "scope": "openid email"
+}

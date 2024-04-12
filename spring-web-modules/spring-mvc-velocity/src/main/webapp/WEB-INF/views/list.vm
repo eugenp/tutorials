@@ -1,0 +1,19 @@
+<h1>Index</h1>
+ 
+<h2>Tutorials list</h2>
+<table border="1">
+<tr>
+ <th>Tutorial Id</th>
+ <th>Tutorial Title</th>
+ <th>Tutorial Description</th>
+ <th>Tutorial Author</th>
+</tr>
+#foreach($tut in $tutorials)
+  <tr>
+   <td id="tutId_$foreach.count">$tut.tutId</td>
+   <td id="title_$foreach.count">$tut.title</td>
+   <td id="desc_$foreach.count">$tut.description</td>
+   <td id="auth_$foreach.count">$tut.author</td>
+  </tr>
+#end
+</table>

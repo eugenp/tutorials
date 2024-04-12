@@ -1,0 +1,7 @@
+class com.baeldung.libraries.reladomo.Department
+id, name
+1, "Marketing"
+
+class com.baeldung.libraries.reladomo.Employee
+id, name
+1, "Paul"

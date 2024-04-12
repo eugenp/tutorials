@@ -1,0 +1,25 @@
+version: '3.1'
+services:
+  db:
+    image: mysql:5.7.38
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: baeldung
+    command: [ 'mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci' ]
+    healthcheck:
+      test: mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
+  app:
+    image: quarkus-project:0.1-SNAPSHOT
+    network_mode: "host"
+    environment:
+      DB_URL: mysql://localhost:3306/baeldung?useSSL=true&requireSSL=true
+      HOST_HOSTNAME: ${EXTERNAL_IP}
+    depends_on:
+      db:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          cpus: '3.00'

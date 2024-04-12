@@ -1,0 +1,41 @@
+# Name of application (make sure it has no spaces)
+name: "${project.artifactId}"
+
+# Display name of application (can have spaces)
+display_name: "${project.name}"
+
+# Type of launcher (CONSOLE or DAEMON)
+type: DAEMON
+
+# Java class to run
+main_class: "${application.class}"
+
+domain: "${project.groupId}"
+
+short_description: "${project.artifactId}"
+
+# Platform launchers to generate (WINDOWS, LINUX, MAC_OSX)
+# Linux launcher is suitable for Bourne shells (e.g. Linux/BSD)
+platforms: [ LINUX ]
+
+# Working directory for app
+#  RETAIN will not change the working directory
+#  APP_HOME will change the working directory to the home of the app
+#    (where it was intalled) before running the main class
+working_dir_mode: RETAIN
+
+# Minimum version of java required (system will be searched for acceptable jvm)
+min_java_version: "1.8"
+
+# Min/max fixed memory (measured in MB)
+min_java_memory: 512
+max_java_memory: 512
+
+# Min/max memory by percentage of system
+#min_java_memory_pct: 10
+#max_java_memory_pct: 20
+
+# Try to create a symbolic link to java executable in <app_home>/run with
+# the name of "<app_name>-java" so that commands like "ps" will make it
+# easier to find your app
+symlink_java: true

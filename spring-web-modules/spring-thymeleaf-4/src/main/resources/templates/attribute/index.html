@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Spring Boot Thymeleaf Application - Checkbox Checked Conditionally</title>
+</head>
+<body>
+<div class="container">
+
+    <div class="row">
+        <div class="col">
+            <form method="post">
+                <label>
+                    <input type="checkbox" th:checked="${flag}"/> Flag activated
+                </label>
+                <label>
+                    <input type="checkbox" th:checked="${engine.getActive()}"/> Customer activated
+                </label>
+                <label>
+                    <input type="checkbox" th:checked="${flag ? false: true}"/> Flag deactivated
+                </label>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

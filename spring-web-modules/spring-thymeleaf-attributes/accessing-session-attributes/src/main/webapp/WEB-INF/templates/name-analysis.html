@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title data-th-text="#{web.title}">Baeldung - Accessing Session Attributes in Thymeleaf</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" media="all" />
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+</head>
+
+<body class="full-container px-4">
+  <div class="row py-5">
+    <div class="col-5 px-4">
+      <div class="border mx-auto">
+        <h5 class="display-5 text-center mb-3" data-th-text="#{name-analysis.title}">Analizar nombre</h5>
+        <div class="border-top py-4">
+          <form class="px-4 mb-3" action="#" data-th-action="@{/name-analysis}" data-th-object="${nameRequest}"
+            method="post">
+            <div class="border rounded-3 px-4 py-4 bg-light">
+              <div class="col-12 mb-3">
+                <label for="name" class="form-label" data-th-text="#{name-analysis.form.name}">Nombre</label>
+                <input id="name" type="text" class="form-control" data-th-field="*{name}" placeholder value required>
+              </div>
+              <div class="row mb-3">
+                <div class="btn-toolbar" role="toolbar">
+                  <div class="btn-group me-2">
+                    <button class="btn btn-lg btn-primary" type="submit" name="search"
+                      data-th-text="#{name-analysis.form.button.analyze}">Analizar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <hr class="my-4" />
+
+      <div class="border mx-auto">
+        <h5 class="display-5 text-center mb-3" data-th-text="#{result.title}">Nombre analizado</h5>
+        <div class="border-top py-4">
+          <h4 class="display-6 text-center" data-th-if="${#ctx.session.analysisError}!=null"
+            data-th-text="#{result.error}">Error durante el análisis</h4>
+          <h4 class="display-6 text-center"
+            data-th-if="${#ctx.session.analysisError}==null and ${#ctx.session.lastAnalysis}==null"
+            data-th-text="#{result.no-request-performed}">Sin búsquedas</h4>
+          <div data-th-if="${#ctx.session.analysisError}==null and ${#ctx.session.lastAnalysis}!=null"
+            data-th-object="${#ctx.session.lastAnalysis}">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th class="px-2" scope="col">#</th>
+                  <th class="px-2" scope="col" data-th-text="#{result.header.value}">Valor</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row" data-th-text="#{result.column.name}">Nombre</th>
+                  <td><span data-th-text="*{name}">Nombre buscado</span></td>
+                </tr>
+                <tr>
+                  <th scope="row" data-th-text="#{result.column.gender}">Género</th>
+                  <td><span data-th-text="*{gender.gender}">[Masculino|Femenino]</span> (<span
+                      data-th-text="*{gender.probability}">{%}</span>)</td>
+                </tr>
+                <tr>
+                  <th scope="row" data-th-text="#{result.column.age}">Edad</th>
+                  <td><span data-th-text="*{age.age}">{Edad media del nombre}</span></td>
+                </tr>
+                <tr>
+                  <th scope="row" data-th-text="#{result.column.age-count}">Número de personas<h>
+                  <td><span data-th-text="*{age.count}">{Número de personas}</span></td>
+                </tr>
+                <tr data-th-each="country : *{countries.country}">
+                  <th scope="row" data-th-text="#{result.column.city}">Ciudad</th>
+                  <td><span data-th-text="${country.country_id}">Country id</span> (<span
+                      data-th-text="${country.probability}">{%}</span>)</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="px-2">
+              <a class="btn btn-lg btn-danger px-2" data-th-href="@{/name-analysis/clear}"
+                data-th-text="#{result.clear}">Borrar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-7">
+      <div class="border mx-auto">
+        <h5 class="display-5 text-center mb-3" data-th-text="#{history.title}">Historial</h5>
+        <div class="border-top py-4">
+          <h4 class="display-6 text-center"
+            data-th-if="${#ctx.session.requests}==null or ${#ctx.session.requests.isEmpty()}"
+            data-th-text="#{history.no-data}">Sin datos</h4>
+          <table data-th-if="${#ctx.session.requests}!=null and ${not #ctx.session.requests.isEmpty()}">
+            <thead>
+              <tr>
+                <th class="px-2" data-th-text="#{history.header.date}">Fecha</th>
+                <th class="px-2" data-th-text="#{history.header.name}">Nombre</th>
+                <th class="px-2" data-th-text="#{history.header.actions}">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-th-each="request,rowStat : ${#ctx.session.requests}">
+                <td class="px-2">[[${request.requestDate}]]</td>
+                <td class="px-2">[[${request.nameRequest}]]</td>
+                <td class="px-2">
+                  <a class="btn btn-danger px-2" name="remove-request"
+                    data-th-href="@{/name-analysis/remove-history-request(id=${rowStat.index})}"
+                    data-th-text="#{history.request.remove-row}">Remove row</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

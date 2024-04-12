@@ -1,0 +1,3 @@
+Jenkins.instance.getItemByFullName("sampleZombieJob")
+       .getBuildByNumber(17)
+       .finish(hudson.model.Result.ABORTED, new java.io.IOException("Aborting build")); 

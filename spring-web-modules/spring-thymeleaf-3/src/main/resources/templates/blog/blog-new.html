@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hidden Input Examples</title>
+</head>
+<body>
+
+<h2>Hidden Input Example 1</h2>
+<form action="#" method="post" th:action="@{/blog}" th:object="${blog}">
+    <input type="text" th:field="*{title}">
+    <input type="text" th:field="*{category}">
+    <textarea th:field="*{body}"></textarea>
+    <input type="hidden" th:field="*{blogId}" id="blogId">
+    <input type="submit">
+</form>
+
+<h2>Hidden Input Example 2</h2>
+<form action="#" method="post" th:action="@{/blog}" th:object="${blog}">
+    <input type="text" th:field="*{title}">
+    <input type="text" th:field="*{category}">
+    <textarea th:field="*{body}"></textarea>
+    <input type="hidden" th:value="${blog.blogId}" th:attr="name='blogId'"/>
+    <input type="submit">
+</form>
+
+<h2>Hidden Input Example 3</h2>
+<form action="#" method="post" th:action="@{/blog}" th:object="${blog}">
+    <input type="text" th:field="*{title}">
+    <input type="text" th:field="*{category}">
+    <textarea th:field="*{body}"></textarea>
+    <input type="hidden" th:value="${blog.blogId}" name="blogId"/>
+    <input type="submit">
+</form>
+
+</body>

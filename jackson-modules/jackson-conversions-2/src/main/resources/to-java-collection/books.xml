@@ -1,0 +1,17 @@
+<ArrayList>
+    <item>
+        <bookId>1</bookId>
+        <title>A Song of Ice and Fire</title>
+        <author>George R. R. Martin</author>
+    </item>
+    <item>
+        <bookId>2</bookId>
+        <title>The Hitchhiker's Guide to the Galaxy</title>
+        <author>Douglas Adams</author>
+    </item>
+    <item>
+        <bookId>3</bookId>
+        <title>Hackers And Painters</title>
+        <author>Paul Graham</author>
+    </item>
+</ArrayList>

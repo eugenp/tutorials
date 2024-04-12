@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.baeldung.spring.ejb</groupId>
+    <artifactId>spring-ejb-modules</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>spring-ejb-modules</name>
+    <packaging>pom</packaging>
+    <description>Spring EJB Tutorial</description>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <modules>
+        <!--<module>ejb-beans</module> cannot upgrade to java 17 -->
+        <module>spring-ejb-remote</module>
+        <module>spring-ejb-client</module>
+        <module>wildfly-mdb</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- for junit5 to successfully be able to discover junit4 tests, we need 4.12+ version of -->
+            <!-- junit:junit in the classpath. hence forcing the latest 4.13.2 available version for -->
+            <!-- junit5 compatibility -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.baeldung.spring.ejb</groupId>
+                <artifactId>spring-ejb-remote</artifactId>
+                <version>${spring-ejb-remote.version}</version>
+                <type>ejb</type>
+            </dependency>
+            <dependency>
+                <groupId>javax</groupId>
+                <artifactId>javaee-api</artifactId>
+                <version>${javaee.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.wildfly</groupId>
+                <artifactId>wildfly-ejb-client-bom</artifactId>
+                <version>${wildfly-ejb.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-ejb-plugin</artifactId>
+                    <version>${maven-ejb-plugin.version}</version>
+                    <configuration>
+                        <ejbVersion>${ejb.version}</ejbVersion>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <properties>
+        <spring-ejb-remote.version>1.0.0-SNAPSHOT</spring-ejb-remote.version>
+        <javaee.version>8.0</javaee.version>
+        <wildfly-ejb.version>12.0.0.Final</wildfly-ejb.version>
+        <maven-ejb-plugin.version>2.4</maven-ejb-plugin.version>
+        <ejb.version>3.2</ejb.version>
+        <javaee-api.version>7.0</javaee-api.version>
+    </properties>
+
+</project>
