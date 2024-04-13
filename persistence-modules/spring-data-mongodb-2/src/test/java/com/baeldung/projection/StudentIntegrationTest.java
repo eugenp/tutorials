@@ -39,7 +39,7 @@ public class StudentIntegrationTest {
     }
 
     @Test
-    public void testFindAll() {
+    public void whenRetrievingAllStudents_thenReturnsCorrectNumberOfRecords() {
         // WHEN
         List<Student> result = studentRepository.findAll(0L, 5L);
         // THEN
@@ -47,7 +47,7 @@ public class StudentIntegrationTest {
     }
 
     @Test
-    public void testFindAllWithLimitAndSkip() {
+    public void whenLimitingAndSkipping_thenReturnsLimitedStudents() {
         // WHEN
         List<Student> result = studentRepository.findAll(3L, 2L);
         // THEN
@@ -57,7 +57,7 @@ public class StudentIntegrationTest {
     }
 
     @Test
-    public void testFindAllWithAgeCriteria() {
+    public void whenFilteringByAge_thenReturnsStudentsMatchingCriteria() {
         // WHEN
         List<Student> result = studentRepository.findAllByAgeCriteria(30L, 0L, 10L);
         // THEN
@@ -66,7 +66,7 @@ public class StudentIntegrationTest {
     }
 
     @Test
-    public void testFindByStudentId() {
+    public void whenFindingById_thenReturnsMatchingStudent() {
         // WHEN
         List<Student> result = studentRepository.findByStudentId("A", 0L, 5L);
         // THEN
@@ -75,7 +75,7 @@ public class StudentIntegrationTest {
     }
 
     @Test
-    public void testFindByStudentIdUsingPageable() {
+    public void whenFindByStudentIdUsingPageable_thenReturnsPageOfStudents() {
         // GIVEN
         Sort sort = Sort.by(Sort.Direction.DESC, "id");
         Pageable pageable = PageRequest.of(0, 5, sort);
