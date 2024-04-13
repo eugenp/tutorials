@@ -55,6 +55,7 @@
         <spring-security-jwt.version>1.0.9.RELEASE</spring-security-jwt.version>
         <jwks-rsa.version>0.3.0</jwks-rsa.version>
         <spring-boot.version>2.4.7</spring-boot.version>
+        <mockito.version>4.4.0</mockito.version>
     </properties>
 
 </project>

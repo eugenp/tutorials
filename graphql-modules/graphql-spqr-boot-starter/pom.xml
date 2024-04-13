@@ -36,6 +36,7 @@
 
     <properties>
         <graphql-spqr-spring-boot-starter-version>0.0.6</graphql-spqr-spring-boot-starter-version>
+        <mockito.version>4.4.0</mockito.version>
     </properties>
 
 </project>

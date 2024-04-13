@@ -67,7 +67,11 @@
     <properties>
         <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
         <greeter.version>0.0.1-SNAPSHOT</greeter.version>
+<<<<<<< HEAD
         <byte-buddy.version>1.14.13</byte-buddy.version>
+=======
+        <mockito.version>4.4.0</mockito.version>
+>>>>>>> a96cfe0520f4b0702dcb3bb8de46159ce08674dd
     </properties>
 
 </project>
