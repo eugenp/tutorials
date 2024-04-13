@@ -1189,6 +1189,7 @@
         <h2.version>2.1.214</h2.version>
         <guava.version>33.0.0-jre</guava.version>
         <maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
+        <mockito-inline.version>5.2.0</mockito-inline.version>
 
         <logback.configurationFileName>logback-config-global.xml</logback.configurationFileName>
     </properties>
