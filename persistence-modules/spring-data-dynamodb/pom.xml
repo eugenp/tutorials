@@ -180,7 +180,6 @@
         <dynamodblocal.version>1.21.1</dynamodblocal.version>
         <maven-dependency-plugin.version>3.1.1</maven-dependency-plugin.version>
         <spring-boot.version>2.4.7</spring-boot.version>
-        <mockito.version>4.4.0</mockito.version>
     </properties>
 
 </project>
