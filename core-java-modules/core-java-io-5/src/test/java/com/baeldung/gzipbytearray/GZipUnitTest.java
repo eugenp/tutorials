@@ -16,7 +16,7 @@ public class GZipUnitTest {
     Logger logger = LoggerFactory.getLogger(GZipUnitTest.class);
 
     @Test
-    void givenGzip_whenEnteringString_thenGetCompressedByteArray() throws IOException {
+    void whenCompressingUsingGZip_thenGetCompressedByteArray() throws IOException {
         String payload = "This is a sample text to test methods gzip and gunzip. The gzip algorithm will compress this string. "
             + "The result will be smaller than this string.";
         ByteArrayOutputStream os = new ByteArrayOutputStream();
