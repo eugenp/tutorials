@@ -24,16 +24,16 @@
         <hazelcast-hibernate52.version>1.2</hazelcast-hibernate52.version>
         <hibernate.version>5.2.8.Final</hibernate.version>
         <hikaricp.version>5.1.0</hikaricp.version>
-        <jacoco-maven-plugin.version>0.7.9</jacoco-maven-plugin.version>
+        <jacoco-maven-plugin.version>0.8.11</jacoco-maven-plugin.version>
         <java.version>1.8</java.version>
         <javassist.version>3.21.0-GA</javassist.version>
         <jcache.version>1.0.0</jcache.version>
         <jhipster.server.version>1.1.0</jhipster.server.version>
         <jjwt.version>0.12.3</jjwt.version>
         <lifecycle.mapping.version>1.0.0</lifecycle.mapping.version>
-        <liquibase-hibernate5.version>3.6</liquibase-hibernate5.version>
+        <liquibase-hibernate5.version>4.27.0</liquibase-hibernate5.version>
         <liquibase-slf4j.version>2.0.0</liquibase-slf4j.version>
-        <liquibase.version>3.6.2</liquibase.version>
+        <liquibase.version>4.27.0</liquibase.version>
         <logstash-logback-encoder.version>4.8</logstash-logback-encoder.version>
         <m2e.apt.activation>jdt_apt</m2e.apt.activation>
         <mapstruct.version>1.1.0.Final</mapstruct.version>

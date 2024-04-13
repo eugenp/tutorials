@@ -17,6 +17,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.JpaSort;
 import org.springframework.data.mapping.PropertyReferenceException;
 
+import com.baeldung.jpa.query.model.User;
+import com.baeldung.jpa.query.repository.UserRepository;
+
 @DataJpaTest(properties = "spring.sql.init.data-locations=classpath:insert_users.sql", showSql = false)
 @AutoConfigurationPackage(basePackages = "com.baeldung.jpa.query")
 class UserQueryRepositoryIntegrationTest {

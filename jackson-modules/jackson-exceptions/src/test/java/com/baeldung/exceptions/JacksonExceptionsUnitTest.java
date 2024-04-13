@@ -1,16 +1,5 @@
 package com.baeldung.exceptions;
 
-import static org.hamcrest.Matchers.containsString;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertThrows;
-import static org.junit.Assert.assertTrue;
-
-import java.io.IOException;
-import java.util.List;
-
-import org.junit.Test;
-
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.core.JsonFactory;
@@ -22,6 +11,13 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException;
+import org.junit.Test;
+
+import java.io.IOException;
+import java.util.List;
+
+import static org.hamcrest.Matchers.containsString;
+import static org.junit.Assert.*;
 
 public class JacksonExceptionsUnitTest {
 
@@ -196,6 +192,16 @@ public class JacksonExceptionsUnitTest {
         final String json = "{'id':1,'name':'John'}";
         final ObjectMapper mapper = new ObjectMapper();
 
+        mapper.reader()
+            .forType(User.class)
+            .readValue(json);
+    }
+
+    // JsonParseException: Unexpected character ('n' (code 110))
+    @Test(expected = JsonParseException.class)
+    public void givenInvalidJsonString_whenDeserializing_thenException() throws JsonProcessingException, IOException {
+        final String json = "{\"id\":1, name:\"John\"}"; // Missing double quotes around 'name'
+        final ObjectMapper mapper = new ObjectMapper();
         mapper.reader()
             .forType(User.class)
             .readValue(json);
