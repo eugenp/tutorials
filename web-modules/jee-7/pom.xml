@@ -16,6 +16,13 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
+    <repositories>
+        <repository>
+            <id>jboss-https</id>
+            <url>https://repository.jboss.org/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -305,7 +312,7 @@
                     <scope>test</scope>
                 </dependency>
                 <dependency>
-                    <groupId>org.wildfly</groupId>
+                    <groupId>org.wildfly.arquillian</groupId>
                     <artifactId>wildfly-arquillian-container-managed</artifactId>
                     <version>${wildfly.version}</version>
                     <scope>test</scope>
@@ -338,7 +345,7 @@
                                         <artifactItem>
                                             <groupId>org.wildfly</groupId>
                                             <artifactId>wildfly-dist</artifactId>
-                                            <version>${wildfly.version}</version>
+                                            <version>${wildfly-dist.version}</version>
                                             <type>zip</type>
                                             <overWrite>false</overWrite>
                                             <outputDirectory>${project.build.directory}</outputDirectory>
@@ -388,7 +395,7 @@
                     <scope>test</scope>
                 </dependency>
                 <dependency>
-                    <groupId>org.wildfly</groupId>
+                    <groupId>org.wildfly.arquillian</groupId>
                     <artifactId>wildfly-arquillian-container-remote</artifactId>
                     <version>${wildfly.version}</version>
                     <scope>test</scope>
@@ -513,7 +520,8 @@
         <maven.min.version>3.0.0</maven.min.version>
         <javaee_api.version>7.0</javaee_api.version>
         <arquillian_core.version>1.1.11.Final</arquillian_core.version>
-        <wildfly.version>8.2.1.Final</wildfly.version>
+        <wildfly-dist.version>31.0.1.Final</wildfly-dist.version>
+        <wildfly.version>5.0.1.Final</wildfly.version>
         <awaitility.version>1.7.0</awaitility.version>
         <undertow-websockets-jsr.version>1.4.6.Final</undertow-websockets-jsr.version>
         <resteasy.version>3.0.19.Final</resteasy.version>

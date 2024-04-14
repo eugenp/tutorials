@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.function.Predicate;
 
-import com.baeldung.jpa.simple.entity.User;
+import com.baeldung.jpa.simple.model.User;
 
 public interface UserRepositoryCustom {
 

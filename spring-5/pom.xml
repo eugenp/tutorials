@@ -131,36 +131,11 @@
                     <layout>JAR</layout>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.asciidoctor</groupId>
-                <artifactId>asciidoctor-maven-plugin</artifactId>
-                <version>${asciidoctor-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <id>generate-docs</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>process-asciidoc</goal>
-                        </goals>
-                        <configuration>
-                            <backend>html</backend>
-                            <doctype>book</doctype>
-                            <attributes>
-                                <snippets>${snippetsDirectory}</snippets>
-                            </attributes>
-                            <sourceDirectory>src/docs/asciidocs</sourceDirectory>
-                            <outputDirectory>target/generated-docs</outputDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
 
     <properties>
         <geronimo-json_1.1_spec.version>1.0</geronimo-json_1.1_spec.version>
-        <asciidoctor-plugin.version>2.2.6</asciidoctor-plugin.version>
-        <snippetsDirectory>${project.build.directory}/generated-snippets</snippetsDirectory>
         <hikaricp.version>5.1.0</hikaricp.version>
         <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
         <jakarta.json-api.version>2.0.1</jakarta.json-api.version>
