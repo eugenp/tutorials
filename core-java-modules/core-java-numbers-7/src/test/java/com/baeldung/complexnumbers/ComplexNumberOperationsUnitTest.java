@@ -19,7 +19,7 @@ public class ComplexNumberOperationsUnitTest {
             "-3+2i, 1-7i, 11+23i",
             "2+4i, 0, 0"
     })
-    public void multiply_two_complex_numbers(String complexStr1, String complexStr2, String expectedStr) {
+    public void givenTwoComplexNumbers_multiplyAndGetResult(String complexStr1, String complexStr2, String expectedStr) {
         ComplexNumber complex1 = ComplexNumber.fromString(complexStr1);
         ComplexNumber complex2 = ComplexNumber.fromString(complexStr2);
         ComplexNumber expected = ComplexNumber.fromString(expectedStr);
@@ -39,7 +39,7 @@ public class ComplexNumberOperationsUnitTest {
             "-3+2i, 1-7i, -2-5i",
             "2+4i, 0, 2+4i"
     })
-    public void add_two_complex_numbers(String complexStr1, String complexStr2, String expectedStr) {
+    public void givenTwoComplexNumbers_addThemAndGetResult(String complexStr1, String complexStr2, String expectedStr) {
         ComplexNumber complex1 = ComplexNumber.fromString(complexStr1);
         ComplexNumber complex2 = ComplexNumber.fromString(complexStr2);
         ComplexNumber expected = ComplexNumber.fromString(expectedStr);
@@ -59,7 +59,7 @@ public class ComplexNumberOperationsUnitTest {
             "-3+2i, 1-7i, -4+9i",
             "2+4i, 0, 2+4i"
     })
-    public void subtract_two_complex_numbers(String complexStr1, String complexStr2, String expectedStr) {
+    public void givenTwoComplexNumbers_subtractAndGetResult(String complexStr1, String complexStr2, String expectedStr) {
         ComplexNumber complex1 = ComplexNumber.fromString(complexStr1);
         ComplexNumber complex2 = ComplexNumber.fromString(complexStr2);
         ComplexNumber expected = ComplexNumber.fromString(expectedStr);
@@ -79,7 +79,7 @@ public class ComplexNumberOperationsUnitTest {
             "-3+2i, 1-7i, -0.34-0.38i",
             "2+4i, 1, 2+4i"
     })
-    public void divide_two_complex_numbers(String complexStr1, String complexStr2, String expectedStr) {
+    public void givenTwoComplexNumbers_divideThemAndGetResult(String complexStr1, String complexStr2, String expectedStr) {
         ComplexNumber complex1 = ComplexNumber.fromString(complexStr1);
         ComplexNumber complex2 = ComplexNumber.fromString(complexStr2);
         ComplexNumber expected = ComplexNumber.fromString(expectedStr);
@@ -88,7 +88,7 @@ public class ComplexNumberOperationsUnitTest {
     }
 
     @Test
-    public void check_divide_by_zero() {
+    public void givenAComplexNumberAsZero_handleDivideByZeroScenario() {
         ComplexNumber complex1 = new ComplexNumber(1, 1);
         ComplexNumber zero = new ComplexNumber(0, 0);
         Exception exception = Assertions.assertThrows(ArithmeticException.class, () -> {
