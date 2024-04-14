@@ -443,12 +443,19 @@
             </build>
 
             <modules>
-                <module>apache-spark</module>
-                <module>jhipster-modules</module>
+                <!--<module>apache-spark</module>--><!-- failing after upgrading to jdk17-->
+                <!--<module>jhipster-modules</module>--><!-- JAVA-33843 -->
                 <module>spring-cloud-modules/spring-cloud-azure</module>
                 <module>web-modules/restx</module>
                 <module>libraries-testing</module>
             </modules>
+
+            <properties>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <java.version>17</java.version>
+                <maven.compiler.source>17</maven.compiler.source>
+                <maven.compiler.target>17</maven.compiler.target>
+            </properties>
         </profile>
 
         <profile>
@@ -571,11 +578,19 @@
             </build>
 
             <modules>
-                <module>apache-spark</module>
-                <module>jhipster-modules</module>
+                <!--<module>apache-spark</module>--><!-- failing after upgrading to jdk17-->
+                <!--<module>jhipster-modules</module>--><!-- JAVA-33843 -->
                 <module>spring-cloud-modules/spring-cloud-azure</module>
                 <module>web-modules/restx</module>
+                <module>libraries-testing</module>
             </modules>
+
+            <properties>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <java.version>17</java.version>
+                <maven.compiler.source>17</maven.compiler.source>
+                <maven.compiler.target>17</maven.compiler.target>
+            </properties>
 
         </profile>
 
@@ -986,7 +1001,6 @@
                 <module>libraries-server-2</module>
                 <module>libraries-server</module>
                 <module>libraries-stream</module>
-                <module>libraries-testing</module>
                 <module>libraries-testing-2</module>
                 <module>libraries-transform</module>
                 <module>libraries</module> <!-- very long running -->
