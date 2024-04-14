@@ -44,15 +44,27 @@
             <version>${mockftpserver.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.tukaani</groupId>
+            <artifactId>xz</artifactId>
+            <version>${xz.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.luben</groupId>
+            <artifactId>zstd-jni</artifactId>
+            <version>${zstd-jni.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
-        <commons-compress.version>1.23.0</commons-compress.version>
+        <commons-compress.version>1.26.1</commons-compress.version>
         <ant.version>1.10.13</ant.version>
         <commons-vfs2.version>2.9.0</commons-vfs2.version>
         <apache-commons-text.version>1.10.0</apache-commons-text.version>
         <commons-net.version>3.6</commons-net.version>
         <mockftpserver.version>2.7.1</mockftpserver.version>
+        <xz.version>1.9</xz.version>
+        <zstd-jni.version>1.5.5-11</zstd-jni.version>
     </properties>
 
 </project>

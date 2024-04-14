@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.baeldung.jpa.simple.entity.User;
+import com.baeldung.jpa.simple.model.User;
 
 public interface UserRepository extends JpaRepository<User, Integer>, UserRepositoryCustom {
 
