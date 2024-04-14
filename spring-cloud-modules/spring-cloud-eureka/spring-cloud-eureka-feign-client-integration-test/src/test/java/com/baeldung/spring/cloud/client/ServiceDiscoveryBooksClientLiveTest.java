@@ -23,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @ActiveProfiles("eureka-test")
 @EnableConfigurationProperties
 @ExtendWith(SpringExtension.class)
-@SpringBootTest(classes = {Application.class, MockBookServiceConfig.class}, webEnvironment =  SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = Application.class, webEnvironment =  SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ContextConfiguration(classes = { MockBookServiceConfig.class })
 class ServiceDiscoveryBooksClientLiveTest {
 
