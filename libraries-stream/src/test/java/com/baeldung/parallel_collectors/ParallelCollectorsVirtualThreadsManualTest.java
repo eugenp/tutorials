@@ -2,18 +2,20 @@ package com.baeldung.parallel_collectors;
 
 import com.pivovarit.collectors.ParallelCollectors;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
 import java.time.Instant;
-import java.util.List;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
 
 public class ParallelCollectorsVirtualThreadsManualTest {
+
+    private static final Logger log = LoggerFactory.getLogger(ParallelCollectorsVirtualThreadsManualTest.class);
 
     // increase the number of parallel processes to find the max number of threads on your machine
     @Test
@@ -26,7 +28,7 @@ public class ParallelCollectorsVirtualThreadsManualTest {
           .collect(ParallelCollectors.parallel(i -> fetchById(i), toList(), e, parallelProcesses))
           .join());
 
-        System.out.println(result);
+        log.info("{}", result);
     }
 
     @Test
@@ -37,7 +39,7 @@ public class ParallelCollectorsVirtualThreadsManualTest {
           .collect(ParallelCollectors.parallel(i -> fetchById(i), toList()))
           .join());
 
-        System.out.println(result);
+        log.info("{}", result);
     }
 
     @Test
@@ -48,7 +50,7 @@ public class ParallelCollectorsVirtualThreadsManualTest {
           .collect(ParallelCollectors.parallel(i -> fetchById(i), toList(), Executors.newVirtualThreadPerTaskExecutor(), Integer.MAX_VALUE))
           .join());
 
-        System.out.println(result);
+        log.info("{}", result);
     }
 
     private static String fetchById(int id) {
@@ -60,11 +62,12 @@ public class ParallelCollectorsVirtualThreadsManualTest {
 
         return "user-" + id;
     }
+
     private static <T> T timed(Supplier<T> supplier) {
         var before = Instant.now();
         T result = supplier.get();
         var after = Instant.now();
-        System.out.printf("Execution time: %d ms%n", Duration.between(before, after).toMillis());
+        log.info("Execution time: {} ms", Duration.between(before, after).toMillis());
         return result;
     }
 }
