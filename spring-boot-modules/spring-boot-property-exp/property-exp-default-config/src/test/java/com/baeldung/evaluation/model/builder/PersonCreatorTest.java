@@ -1,6 +1,7 @@
 package com.baeldung.evaluation.model.builder;
 
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 
 import com.baeldung.evaluation.model.Address;
 import com.baeldung.evaluation.model.Person;
@@ -21,17 +22,17 @@ public class PersonCreatorTest {
 		// clone usage, change the existing value
 		Person clonedPerson = (Person) originalPerson.clone();
 		clonedPerson.getAddress().setCountry("New Zealand");	
-		System.out.println(originalPerson.getAddress().getCountry()); // will print New Zealand
+		Assertions.assertEquals("New Zealand", originalPerson.getAddress().getCountry());
 		
 		// shallow copy, change the existing value
 		Person shalowCopyPerson = personCreator.createShallowCopy(originalPerson);
 		shalowCopyPerson.getAddress().setCountry("Australia");
-		System.out.println(originalPerson.getAddress().getCountry()); // will print Australia
+		Assertions.assertEquals("Australia", originalPerson.getAddress().getCountry());
 		
 		//deep copy, do not change the existing value
 		Person deepCopyPerson = (Person) personCreator.createDeepCopy(originalPerson);
 		deepCopyPerson.getAddress().setCountry("Japan");	
-		System.out.println(originalPerson.getAddress().getCountry()); // will print New Australia again
+		Assertions.assertEquals("Australia", originalPerson.getAddress().getCountry());
 		
 	}
 }
