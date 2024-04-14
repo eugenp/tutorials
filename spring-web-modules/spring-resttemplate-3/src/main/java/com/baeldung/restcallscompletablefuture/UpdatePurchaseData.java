@@ -1,12 +1,25 @@
-package com.baeldung.multiplerestcallscompletablefuture;
+package com.baeldung.restcallscompletablefuture;
 
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
+
+import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 import java.util.function.BiFunction;
 
+import static java.lang.String.format;
+
+@Component
 public class UpdatePurchaseData {
+
+    private final RestTemplate restTemplate;
+
+    public UpdatePurchaseData(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
 
     public void updatePurchases(List<Purchase> purchases) {
         purchases.forEach(this::updatePurchase);
@@ -15,13 +28,13 @@ public class UpdatePurchaseData {
     public void updatePurchase(Purchase purchase) {
         CompletableFuture.allOf(
                 CompletableFuture.
-                        supplyAsync(() -> getOrderDescription("order_id"))
+                        supplyAsync(() -> getOrderDescription(purchase.getOrderId()))
                         .thenAccept(purchase::setOrderDescription),
                 CompletableFuture.
-                        supplyAsync(() -> getPaymentDescription("payment_id"))
+                        supplyAsync(() -> getPaymentDescription(purchase.getPaymentId()))
                         .thenAccept(purchase::setPaymentDescription),
                 CompletableFuture.
-                        supplyAsync(() -> getUserName("user_id"))
+                        supplyAsync(() -> getUserName(purchase.getUserId()))
                         .thenAccept(purchase::setBuyerName)
         ).join();
     }
@@ -47,29 +60,24 @@ public class UpdatePurchaseData {
     }
 
     public String getOrderDescription(String orderId) {
-        // Implementation of a rest call
-        sleep(500);
-        return "Order description from REST call";
+        ResponseEntity<String> result = restTemplate.getForEntity(format("/orders/%s", orderId),
+                String.class);
+
+        return result.getBody();
     }
 
-    public String getPaymentDescription(String purchaseId) {
-        // Implementation of a rest call
-        sleep(500);
-        return "Purchase description from REST call";
+    public String getPaymentDescription(String paymentId) {
+        ResponseEntity<String> result = restTemplate.getForEntity(format("/payments/%s", paymentId),
+                String.class);
+
+        return result.getBody();
     }
 
     public String getUserName(String userId) {
-        // Implementation of a rest call
-        sleep(10000);
-        return "User name from REST call";
-    }
+        ResponseEntity<String> result = restTemplate.getForEntity(format("/users/%s", userId),
+                String.class);
 
-    private void sleep(int millis) {
-        try {
-            Thread.sleep(millis);
-        } catch (InterruptedException ex) {
-
-        }
+        return result.getBody();
     }
 
     private static BiFunction<Void, Throwable, Void> handleGracefully() {
