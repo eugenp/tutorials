@@ -1,6 +1,5 @@
 package com.baeldung.filter;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,7 +17,6 @@ public class AppConfig {
     }
 
     @Bean
-    @Autowired
     public FilterRegistrationBean<LoggingFilterRegistrationBean> loggingFilterRegistration(LoggingService loggingService) {
         FilterRegistrationBean<LoggingFilterRegistrationBean> registrationBean = new FilterRegistrationBean<>();
         registrationBean.setFilter(new LoggingFilterRegistrationBean(loggingService));
