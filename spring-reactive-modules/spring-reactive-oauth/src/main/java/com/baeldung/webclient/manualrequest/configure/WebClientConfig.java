@@ -11,6 +11,6 @@ public class WebClientConfig {
     public WebClient configureWebClient() {
         return WebClient.builder()
             .build();
-    };
+    }
 
 }

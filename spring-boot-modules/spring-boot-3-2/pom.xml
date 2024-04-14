@@ -14,14 +14,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <repositories>
-        <repository>
-            <id>repository.spring.release</id>
-            <name>Spring GA Repository</name>
-            <url>https://repo.spring.io/milestone</url>
-        </repository>
-    </repositories>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -73,7 +65,7 @@
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-            <version>${springdoc.version}</version>
+            <version>${springdoc-openapi-webmvc-ui.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -102,7 +94,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>3.2.0-M2</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -202,18 +193,6 @@
         </dependency>
     </dependencies>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>3.2.0-M2</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <profiles>
 
         <profile>
@@ -300,6 +279,8 @@
         <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
         <jedis.version>5.0.2</jedis.version>
         <spring-kafka.version>3.1.2</spring-kafka.version>
+        <spring-boot.version>3.2.4</spring-boot.version>
+        <springdoc-openapi-webmvc-ui.version>2.5.0</springdoc-openapi-webmvc-ui.version>
     </properties>
 
 </project>
