@@ -41,6 +41,8 @@
     </build>
 
     <properties>
+        <maven.compiler.source>9</maven.compiler.source>
+        <maven.compiler.target>9</maven.compiler.target>
         <entitymodule.version>1.0</entitymodule.version>
         <daomodule.version>1.0</daomodule.version>
     </properties>
