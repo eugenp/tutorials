@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class TaskService {
-    private static Logger logger = LoggerFactory.getLogger(TaskService.class);
+    private static final Logger logger = LoggerFactory.getLogger(TaskService.class);
 
     public void execute(String task) {
-        logger.info("do " + task);
+        logger.info("do {}", task);
     }
 }
