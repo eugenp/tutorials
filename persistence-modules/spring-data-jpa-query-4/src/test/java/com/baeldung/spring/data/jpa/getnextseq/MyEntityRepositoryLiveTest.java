@@ -12,7 +12,7 @@ import org.springframework.test.context.jdbc.Sql;
 @SpringBootTest
 @ActiveProfiles("test")
 @Sql(scripts = "/testsequence.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
-public class MyEntityRepositoryIntegrationTest {
+public class MyEntityRepositoryLiveTest {
     @Autowired
     private MyEntityRepository myEntityRepository;
 
