@@ -1,4 +1,4 @@
-package com.baeldung.spring.notamanagedtypeexceptioninspringdatajpa.entitywithjakartaannotation;
+package com.baeldung.spring.notamanagedtype.jakartaannotation;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

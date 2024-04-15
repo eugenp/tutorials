@@ -1,4 +1,4 @@
-package com.baeldung.spring.notamanagedtypeexceptioninspringdatajpa.entitywithoutannotationfixed;
+package com.baeldung.spring.notamanagedtype.missedannotationfixed;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

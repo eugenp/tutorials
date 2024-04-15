@@ -1,4 +1,4 @@
-package com.baeldung.spring.notamanagedtypeexceptioninspringdatajpa.entitywithoutannotation;
+package com.baeldung.spring.notamanagedtype.missedannotation;
 
 import javax.persistence.Id;
 

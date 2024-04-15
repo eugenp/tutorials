@@ -1,4 +1,4 @@
-package com.baeldung.spring.notamanagedtypeexceptioninspringdatajpa.wrongentityscanapplication.entity;
+package com.baeldung.spring.notamanagedtype.missedentityscan.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

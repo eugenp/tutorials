@@ -1,4 +1,4 @@
-package com.baeldung.spring.notamanagedtypeexceptioninspringdatajpa;
+package com.baeldung.spring.notamanagedtype;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -7,17 +7,17 @@ import static org.springframework.boot.SpringApplication.run;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ConfigurableApplicationContext;
 
-import com.baeldung.spring.notamanagedtypeexceptioninspringdatajpa.entitywithoutannotation.EntityWithoutAnnotationApplication;
-import com.baeldung.spring.notamanagedtypeexceptioninspringdatajpa.entitywithoutannotationfixed.EntityWithoutAnnotationFixedApplication;
-import com.baeldung.spring.notamanagedtypeexceptioninspringdatajpa.entitywithoutannotationfixed.EntityWithoutAnnotationFixedRepository;
-import com.baeldung.spring.notamanagedtypeexceptioninspringdatajpa.entitywithjakartaannotation.EntityWithJakartaAnnotationApplication;
-import com.baeldung.spring.notamanagedtypeexceptioninspringdatajpa.wrongentityscanapplication.app.WrongEntityScanApplication;
-import com.baeldung.spring.notamanagedtypeexceptioninspringdatajpa.wrongentityscanapplication.fixed.app.WrongEntityScanFixedApplication;
-import com.baeldung.spring.notamanagedtypeexceptioninspringdatajpa.wrongentityscanapplication.repository.CorrectEntityRepository;
+import com.baeldung.spring.notamanagedtype.missedannotation.EntityWithoutAnnotationApplication;
+import com.baeldung.spring.notamanagedtype.missedannotationfixed.EntityWithoutAnnotationFixedApplication;
+import com.baeldung.spring.notamanagedtype.missedannotationfixed.EntityWithoutAnnotationFixedRepository;
+import com.baeldung.spring.notamanagedtype.jakartaannotation.EntityWithJakartaAnnotationApplication;
+import com.baeldung.spring.notamanagedtype.missedentityscan.app.WrongEntityScanApplication;
+import com.baeldung.spring.notamanagedtype.missedentityscan.fixed.app.WrongEntityScanFixedApplication;
+import com.baeldung.spring.notamanagedtype.missedentityscan.repository.CorrectEntityRepository;
 
 class NotManagedTypeExceptionIntegrationTest {
     @Test
-    void givenEntityWithoutAnnotationApplicationWhenBootstrapThenExpectedExceptionThrown() {
+    void givenEntityWithoutAnnotationApplication_WhenBootstrap_ThenExpectedExceptionThrown() {
         Exception exception = assertThrows(Exception.class,
           () -> run(EntityWithoutAnnotationApplication.class));
 
@@ -27,7 +27,7 @@ class NotManagedTypeExceptionIntegrationTest {
     }
 
     @Test
-    void givenEntityWithoutAnnotationApplicationFixedWhenBootstrapThenRepositoryBeanShouldBePresentInContext() {
+    void givenEntityWithoutAnnotationApplicationFixed_WhenBootstrap_ThenRepositoryBeanShouldBePresentInContext() {
         ConfigurableApplicationContext context = run(EntityWithoutAnnotationFixedApplication.class);
         EntityWithoutAnnotationFixedRepository repository = context
           .getBean(EntityWithoutAnnotationFixedRepository.class);
@@ -36,7 +36,7 @@ class NotManagedTypeExceptionIntegrationTest {
     }
 
     @Test
-    void givenEntityWithJakartaAnnotationApplicationWhenBootstrapThenExpectedExceptionThrown() {
+    void givenEntityWithJakartaAnnotationApplication_WhenBootstrap_ThenExpectedExceptionThrown() {
         Exception exception = assertThrows(Exception.class,
           () -> run(EntityWithJakartaAnnotationApplication.class));
 
@@ -46,7 +46,7 @@ class NotManagedTypeExceptionIntegrationTest {
     }
 
     @Test
-    void givenWrongEntityScanApplicationWhenBootstrapThenExpectedExceptionThrown() {
+    void givenWrongEntityScanApplication_WhenBootstrap_ThenExpectedExceptionThrown() {
         Exception exception = assertThrows(Exception.class,
           () -> run(WrongEntityScanApplication.class));
 
@@ -56,7 +56,7 @@ class NotManagedTypeExceptionIntegrationTest {
     }
 
     @Test
-    void givenWrongEntityScanApplicationFixedWhenBootstrapThenRepositoryBeanShouldBePresentInContext() {
+    void givenWrongEntityScanApplicationFixed_WhenBootstrap_ThenRepositoryBeanShouldBePresentInContext() {
         ConfigurableApplicationContext context = run(WrongEntityScanFixedApplication.class);
         CorrectEntityRepository repository = context
           .getBean(CorrectEntityRepository.class);

@@ -1,4 +1,4 @@
-package com.baeldung.spring.notamanagedtypeexceptioninspringdatajpa.wrongentityscanapplication.fixed.app;
+package com.baeldung.spring.notamanagedtype.missedentityscan.fixed.app;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
