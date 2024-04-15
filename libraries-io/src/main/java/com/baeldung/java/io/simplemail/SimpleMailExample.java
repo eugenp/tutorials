@@ -113,7 +113,9 @@ public class SimpleMailExample {
     }
 
     private static void sendEmail(Email email) {
-        Mailer mailer = MailerBuilder.withSMTPServer("smtp.example.com", 25, "username", "password")
+        Mailer mailer = MailerBuilder
+            .withSMTPServer("smtp.example.com", 25, "username", "password")
+            .withMaximumEmailSize(1024 * 1024 * 5) // 5 Megabytes
             .buildMailer();
         boolean validate = mailer.validate(email);
         if (validate) {
