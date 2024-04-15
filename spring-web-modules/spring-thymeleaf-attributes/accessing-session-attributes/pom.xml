@@ -77,7 +77,6 @@
         <downloadSources>true</downloadSources>
         <downloadJavadocs>true</downloadJavadocs>
         <junit.jupiter.engine.version>5.9.3</junit.jupiter.engine.version>
-        <mockito.version>5.3.1</mockito.version>
         <thymeleaf.spring6.version>3.1.1.RELEASE</thymeleaf.spring6.version>
         <spring.boot.starter.thymeleaf>3.1.1</spring.boot.starter.thymeleaf>
     </properties>

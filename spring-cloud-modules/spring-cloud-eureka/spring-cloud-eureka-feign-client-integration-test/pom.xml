@@ -90,14 +90,6 @@
         </dependency>
     </dependencies>
 
-    <repositories>
-        <repository>
-            <id>repository.spring.milestone</id>
-            <name>Spring Milestone Repository</name>
-            <url>https://repo.spring.io/release</url>
-        </repository>
-    </repositories>
-
     <build>
         <plugins>
             <plugin>
