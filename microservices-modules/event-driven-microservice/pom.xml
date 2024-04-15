@@ -34,7 +34,7 @@
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-            <version>${spring.webmvc.version}</version>
+            <version>${springdoc-openapi-webmvc-ui.version}</version>
         </dependency>
 
         <dependency>
@@ -71,6 +71,7 @@
         <java.version>17</java.version>
         <conductor.client.version>2.0.8</conductor.client.version>
         <spring.webmvc.version>2.1.0</spring.webmvc.version>
+        <springdoc-openapi-webmvc-ui.version>2.5.0</springdoc-openapi-webmvc-ui.version>
     </properties>
 
 </project>
