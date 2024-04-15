@@ -18,12 +18,7 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-oauth2-authorization-server</artifactId>
-            <version>${spring-authorization-server.version}</version>
         </dependency>
     </dependencies>
-
-    <properties>
-        <spring-authorization-server.version>0.3.1</spring-authorization-server.version>
-    </properties>
 
 </project>

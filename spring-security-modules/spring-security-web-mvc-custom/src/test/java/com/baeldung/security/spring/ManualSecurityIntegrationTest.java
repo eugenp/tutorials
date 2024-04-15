@@ -3,7 +3,7 @@ package com.baeldung.security.spring;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpSession;
 
 import com.baeldung.spring.MvcConfig;
 import org.junit.Before;

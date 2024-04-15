@@ -14,7 +14,7 @@ public class TimeoutController {
     @GetMapping("/{timeout}")
     private Mono<String> timeout(@PathVariable int timeout) {
         try {
-            Thread.sleep(timeout * 1000);
+            Thread.sleep(timeout * 1000L);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }

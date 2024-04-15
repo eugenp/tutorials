@@ -24,11 +24,18 @@
             <version>${mockito.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <properties>
         <mockito-inline.version>4.8.1</mockito-inline.version>
-        <mockito.version>5.9.0</mockito.version>
+        <lombok.version>1.18.30</lombok.version>
+
     </properties>
 
 </project>

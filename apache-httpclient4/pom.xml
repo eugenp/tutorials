@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>apache-httpclient4</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>apache-httpclient4</name>
     <packaging>war</packaging>
+    <name>apache-httpclient4</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -82,7 +82,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-oxm</artifactId>
-            <version>${spring.version}</version>
+            <version>${spring-oxm.version}</version>
         </dependency>
         <!-- marshalling -->
         <dependency>
@@ -176,12 +176,6 @@
             <version>${jstl.version}</version>
             <scope>runtime</scope>
         </dependency>
-        <!-- util -->
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-        </dependency>
         <!-- test scoped -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -199,7 +193,6 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
-
     </build>
 
     <profiles>
@@ -233,6 +226,7 @@
     </profiles>
 
     <properties>
+        <spring-oxm.version>6.1.4</spring-oxm.version>
         <!-- util -->
         <commons-codec.version>1.16.0</commons-codec.version>
         <httpasyncclient.version>4.1.5</httpasyncclient.version>

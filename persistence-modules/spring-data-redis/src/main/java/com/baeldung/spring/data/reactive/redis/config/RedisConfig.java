@@ -14,7 +14,7 @@ import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializationContext;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
-import javax.annotation.PreDestroy;
+import jakarta.annotation.PreDestroy;
 
 @Configuration
 public class RedisConfig {
@@ -45,7 +45,7 @@ public class RedisConfig {
 
     @PreDestroy
     public void cleanRedis() {
-        factory.getConnection()
+        factory.getConnection().serverCommands()
             .flushDb();
     }
 }

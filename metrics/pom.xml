@@ -85,7 +85,7 @@
     <properties>
         <dropwizard.metrics.version>4.2.17</dropwizard.metrics.version>
         <netflix.servo.version>0.13.2</netflix.servo.version>
-        <micrometer-registry-atlas.version>1.11.0</micrometer-registry-atlas.version>
+        <micrometer-registry-atlas.version>1.12.3</micrometer-registry-atlas.version>
         <spring-boot-starter-web.version>3.1.0</spring-boot-starter-web.version>
         <metrics-aspectj-deps.version>1.2.0</metrics-aspectj-deps.version>
         <spectator-api.version>1.7.7</spectator-api.version>

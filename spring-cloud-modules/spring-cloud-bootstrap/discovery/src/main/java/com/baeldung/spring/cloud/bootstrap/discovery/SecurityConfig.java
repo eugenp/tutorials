@@ -4,41 +4,38 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 
 @Configuration
 @EnableWebSecurity
 @Order(1)
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig  {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication().withUser("discUser").password("{noop}discPassword").roles("SYSTEM");
     }
 
-    @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.ALWAYS).and().requestMatchers().antMatchers("/eureka/**").and().authorizeRequests().antMatchers("/eureka/**").hasRole("SYSTEM").anyRequest().denyAll().and().httpBasic().and().csrf()
-                .disable();
+        http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.ALWAYS)).authorizeHttpRequests(auth -> auth.requestMatchers("/eureka/**")).authorizeRequests(auth -> auth.requestMatchers("/eureka/**").hasRole("SYSTEM").anyRequest().denyAll()).httpBasic(
+                Customizer.withDefaults()).csrf(csrf -> csrf.disable());
     }
 
     @Configuration
     // no order tag means this is the last security filter to be evaluated
-    public static class AdminSecurityConfig extends WebSecurityConfigurerAdapter {
+    public static class AdminSecurityConfig {
 
-        @Autowired
         public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
             auth.inMemoryAuthentication();
         }
 
-        @Override
         protected void configure(HttpSecurity http) throws Exception {
-            http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.NEVER).and().httpBasic().disable().authorizeRequests().antMatchers(HttpMethod.GET, "/").hasRole("ADMIN").antMatchers("/info", "/health").authenticated().anyRequest().denyAll()
-                    .and().csrf().disable();
+            http.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.NEVER)).httpBasic(basic -> basic.disable()).authorizeRequests().requestMatchers(HttpMethod.GET, "/").hasRole("ADMIN").requestMatchers("/info", "/health").authenticated().anyRequest().denyAll()
+                    .and().csrf(csrf -> csrf.disable());
         }
     }
 }

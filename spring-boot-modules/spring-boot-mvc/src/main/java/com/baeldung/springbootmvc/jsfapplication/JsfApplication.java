@@ -1,7 +1,6 @@
 package com.baeldung.springbootmvc.jsfapplication;
 
-import javax.faces.webapp.FacesServlet;
-
+import jakarta.faces.webapp.FacesServlet;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;

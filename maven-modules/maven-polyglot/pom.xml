@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>maven-polyglot</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>maven-polyglot</name>
     <packaging>pom</packaging>
+    <name>maven-polyglot</name>
 
     <parent>
         <groupId>com.baeldung</groupId>

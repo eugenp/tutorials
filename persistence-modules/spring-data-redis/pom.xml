@@ -10,9 +10,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-2</relativePath>
+        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -72,10 +72,15 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
-                    <verbose>true</verbose>
-                    <fork>false</fork>
                     <forkCount>0</forkCount>
                     <argLine>-Xmx1024m</argLine>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <parameters>true</parameters>
                 </configuration>
             </plugin>
         </plugins>
@@ -85,7 +90,10 @@
         <cglib.version>3.2.4</cglib.version>
         <nosqlunit.version>0.10.0</nosqlunit.version>
         <embedded-redis.version>0.6</embedded-redis.version>
-        <jedis.version>5.0.2</jedis.version>
+        <jedis.version>5.1.2</jedis.version>
+        <spring-boot.version>3.2.0</spring-boot.version>
+        <junit-jupiter.version>5.10.2</junit-jupiter.version>
+        <start-class>com.baeldung.spring.data.redis.SpringRedisApplication</start-class>
     </properties>
 
 </project>

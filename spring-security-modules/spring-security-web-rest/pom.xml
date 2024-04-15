@@ -10,9 +10,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-spring-5</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-spring-5</relativePath>
+        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -144,6 +144,12 @@
             <artifactId>commons-fileupload</artifactId>
             <version>${commons-fileupload.version}</version>
         </dependency>
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>${jakarta.servlet.version}</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -155,6 +161,13 @@
             </resource>
         </resources>
         <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.codehaus.cargo</groupId>
                 <artifactId>cargo-maven2-plugin</artifactId>
@@ -237,6 +250,9 @@
         <rest-assured.version>2.9.0</rest-assured.version>
         <!-- Maven plugins -->
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
+        <spring.version>6.0.13</spring.version>
+        <spring-security.version>6.1.5</spring-security.version>
+        <jakarta.servlet.version>6.0.0</jakarta.servlet.version>
     </properties>
 
 </project>

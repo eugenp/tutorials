@@ -1,24 +1,22 @@
 package com.baeldung.eclipse.krazo;
 
-import com.baeldung.eclipse.krazo.User;
-import com.baeldung.eclipse.krazo.UserController;
-import jakarta.mvc.Models;
-import jakarta.mvc.binding.BindingResult;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.when;
+
 import org.eclipse.krazo.core.ModelsImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyString;
-import static org.mockito.Mockito.when;
+import jakarta.mvc.Models;
+import jakarta.mvc.binding.BindingResult;
 
 /**
  * The class contains unit tests. We do only unit tests. Most of the classes are mocked
