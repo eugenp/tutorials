@@ -50,6 +50,6 @@ public class MeController {
      * @param exp seconds from 1970-01-01T00:00:00Z UTC until the specified UTC date/time when the access token expires
      */
     public static record UserInfoDto(String username, String email, List<String> roles, Long exp) {
-        public static final UserInfoDto ANONYMOUS = new UserInfoDto("", "", List.of(), Long.MAX_VALUE);
+        public static final UserInfoDto ANONYMOUS = new UserInfoDto("", "", List.of(), null);
     }
 }

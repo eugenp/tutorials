@@ -68,6 +68,7 @@ com:
           - /api/**
           - /login/**
           - /oauth2/**
+          post-logout-redirect-host: ${hostname}
           csrf: cookie-accessible-from-js
           oauth2-redirections:
             rp-initiated-logout: ACCEPTED

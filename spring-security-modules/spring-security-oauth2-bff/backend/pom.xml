@@ -19,9 +19,9 @@
 	<properties>
 		<java.version>17</java.version>
 		<tutorialsproject.basedir>../../..</tutorialsproject.basedir>
-		<spring-addons.version>7.5.3</spring-addons.version>
-		<spring-boot.version>3.2.2</spring-boot.version>
-		<spring-cloud.version>2023.0.0</spring-cloud.version>
+		<spring-addons.version>7.7.0</spring-addons.version>
+		<spring-boot.version>3.2.5</spring-boot.version>
+		<spring-cloud.version>2023.0.1</spring-cloud.version>
 	</properties>
 
 	<modules>
@@ -66,5 +66,26 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>arm64</id>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<groupId>org.springframework.boot</groupId>
+							<artifactId>spring-boot-maven-plugin</artifactId>
+							<configuration>
+								<image>
+									<builder>dashaun/builder:tiny</builder>
+								</image>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
+	</profiles>
 
 </project>
