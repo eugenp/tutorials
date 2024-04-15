@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-boot-logging-loki</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>loki</name>
+    <name>spring-boot-logging-loki</name>
 
     <parent>
         <groupId>com.baeldung.spring-boot-modules</groupId>
