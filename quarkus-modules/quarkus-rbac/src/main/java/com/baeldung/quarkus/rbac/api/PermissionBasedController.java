@@ -8,20 +8,20 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
-@Path("/another-secured")
-public class SecureResource2Controller {
+@Path("/permission-based")
+public class PermissionBasedController {
 
     private final SecurityIdentity securityIdentity;
 
-    public SecureResource2Controller(SecurityIdentity securityIdentity) {
+    public PermissionBasedController(SecurityIdentity securityIdentity) {
         this.securityIdentity = securityIdentity;
     }
 
     @GET
-    @Path("/resource2/version")
+    @Path("/resource/version")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @PermissionsAllowed("Admin")
+    @PermissionsAllowed("VIEW_ADMIN_DETAILS")
     public String get() {
         return "2.0.0";
     }
@@ -29,8 +29,8 @@ public class SecureResource2Controller {
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/resource2/message")
-    @PermissionsAllowed(value = {"User", "Operator"}, inclusive = true)
+    @Path("/resource/message")
+    @PermissionsAllowed(value = {"SEND_MESSAGE", "OPERATOR"}, inclusive = true)
     public Message message() {
         return new Message("Hello "+securityIdentity.getPrincipal().getName()+"!");
     }

@@ -2,7 +2,6 @@ package com.baeldung.quarkus.rbac.api;
 
 import com.baeldung.quarkus.rbac.users.Role;
 import com.baeldung.quarkus.rbac.users.UserService;
-import io.quarkus.security.PermissionsAllowed;
 import io.quarkus.security.identity.SecurityIdentity;
 import jakarta.annotation.security.PermitAll;
 import jakarta.annotation.security.RolesAllowed;
@@ -32,16 +31,16 @@ public class SecureResourceController {
     @Path("/resource")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @RolesAllowed({"Admin"})
+    @RolesAllowed({"VIEW_ADMIN_DETAILS"})
     public String get() {
-        return "Hello world";
+        return "Hello world, here are some details about the admin!";
     }
 
     @GET
     @Path("/resource/user")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @RolesAllowed({"User", "Admin"})
+    @RolesAllowed({"VIEW_USER_DETAILS"})
     public Message getUser() {
         return new Message("Hello "+securityIdentity.getPrincipal().getName()+"!");
     }
@@ -50,14 +49,14 @@ public class SecureResourceController {
     @Path("/resource")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @RolesAllowed("${customer.guest.permission:Guest}")
+    @RolesAllowed("${customer.send.message.permission:SEND_MESSAGE}")
     public Response getUser(Message message) {
         return Response.ok(message).build();
     }
 
     @POST
     @Path("/user")
-    @RolesAllowed({"Admin"})
+    @RolesAllowed({"CREATE_USER"})
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response postUser(@Valid final UserDto userDto) {

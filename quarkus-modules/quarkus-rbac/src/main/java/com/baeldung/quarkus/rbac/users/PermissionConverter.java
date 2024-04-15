@@ -16,7 +16,7 @@ public class PermissionConverter implements AttributeConverter<Set<Permission>, 
             return null;
         }
         return attribute.stream()
-                .map(Permission::getPermission)
+                .map(Permission::name)
                 .collect(Collectors.joining(","));
     }
 
@@ -27,7 +27,7 @@ public class PermissionConverter implements AttributeConverter<Set<Permission>, 
         }
         return Arrays.stream(dbData.split(","))
                 .map(String::trim)
-                .map(Permission::from)
+                .map(Permission::valueOf)
                 .collect(Collectors.toSet());
     }
 }

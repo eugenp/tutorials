@@ -30,7 +30,7 @@ class SecureResourceControllerTest {
     }
 
     @Test
-    @TestSecurity(user = "user", roles = "User")
+    @TestSecurity(user = "user", roles = "VIEW_USER_DETAILS")
     @JwtSecurity(claims = {
         @Claim(key = "email", value = "user@test.io")
     })
@@ -44,7 +44,7 @@ class SecureResourceControllerTest {
     }
 
     @Test
-    @TestSecurity(user = "user", roles = "User")
+    @TestSecurity(user = "user", roles = "VIEW_USER_DETAILS")
     @JwtSecurity(claims = {
         @Claim(key = "email", value = "user@test.io")
     })
@@ -57,7 +57,7 @@ class SecureResourceControllerTest {
     }
 
     @Test
-    @TestSecurity(user = "admin", roles = "Admin")
+    @TestSecurity(user = "admin", roles = "VIEW_ADMIN_DETAILS")
     @JwtSecurity(claims = {
         @Claim(key = "email", value = "admin@test.io")
     })
@@ -67,11 +67,11 @@ class SecureResourceControllerTest {
                 .get("/secured/resource")
                 .then()
                 .statusCode(200)
-                .body(equalTo("Hello world"));
+                .body(equalTo("Hello world, here are some details about the admin!"));
     }
 
     @Test
-    @TestSecurity(user = "guest", roles = "Guest")
+    @TestSecurity(user = "guest", roles = "SEND_MESSAGE")
     @JwtSecurity(claims = {
         @Claim(key = "email", value = "guest@test.io")
     })

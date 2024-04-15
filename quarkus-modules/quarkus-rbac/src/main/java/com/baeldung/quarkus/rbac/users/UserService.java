@@ -30,7 +30,7 @@ public class UserService {
         final Set<String> permissions = user.getRoles()
                 .stream()
                 .flatMap(role -> role.getPermissions().stream())
-                .map(Permission::getPermission)
+                .map(Permission::name)
                 .collect(Collectors.toSet());
 
         return Jwt.issuer(issuer)
