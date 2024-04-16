@@ -1,4 +1,4 @@
-package com.baeldung.jpa.simple.model;
+package com.baeldung.simple.entity;
 
 import java.time.ZonedDateTime;
 

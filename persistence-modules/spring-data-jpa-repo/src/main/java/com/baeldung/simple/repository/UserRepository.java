@@ -1,4 +1,4 @@
-package com.baeldung.jpa.simple.repository;
+package com.baeldung.simple.repository;
 
 import java.time.ZonedDateTime;
 import java.util.Collection;
@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.baeldung.jpa.simple.model.User;
+import com.baeldung.simple.entity.User;
 
 public interface UserRepository extends JpaRepository<User, Integer>, UserRepositoryCustom {
 
