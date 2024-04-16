@@ -6,8 +6,8 @@ import com.rometools.rome.feed.rss.Item;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.view.feed.AbstractRssFeedView;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

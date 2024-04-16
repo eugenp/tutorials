@@ -4,8 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
-@SpringBootApplication
-@ComponentScan(basePackages = "com.baledung.jdbcclient")
+@SpringBootApplication(scanBasePackages = "com.baeldung")
 public class JdbcClientDemoApplication {
 
     public static void main(String[] args) {

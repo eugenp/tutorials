@@ -266,7 +266,7 @@
         <jackson.version>2.11.1</jackson.version>
         <!-- <jackson-databind-version>2.10.1</jackson-databind-version> -->
         <jackson-databind-nullable.version>0.2.1</jackson-databind-nullable.version>
-        <jackson-threetenbp.version>2.9.10</jackson-threetenbp.version>
+        <jackson-threetenbp.version>2.15.2</jackson-threetenbp.version>
         <maven-plugin.version>1.0.0</maven-plugin.version>
         <junit-jupiter.version>5.8.1</junit-jupiter.version>
         <javax.annotation-api.version>1.3.2</javax.annotation-api.version>

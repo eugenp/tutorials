@@ -1,6 +1,7 @@
 package com.baeldung.boot.domain;
 
-import static org.apache.commons.lang3.RandomStringUtils.randomAlphanumeric;
+import static org.thymeleaf.util.StringUtils.randomAlphanumeric;
+
 public class Foo extends AbstractEntity {
 
     private String name;
