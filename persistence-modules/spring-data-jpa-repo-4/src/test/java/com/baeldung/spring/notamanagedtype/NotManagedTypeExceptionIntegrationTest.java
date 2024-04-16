@@ -17,7 +17,7 @@ import com.baeldung.spring.notamanagedtype.missedentityscan.repository.CorrectEn
 
 class NotManagedTypeExceptionIntegrationTest {
     @Test
-    void givenEntityWithoutAnnotationApplication_WhenBootstrap_ThenExpectedExceptionThrown() {
+    void givenEntityWithoutAnnotationApplication_whenBootstrap_thenExpectedExceptionThrown() {
         Exception exception = assertThrows(Exception.class,
           () -> run(EntityWithoutAnnotationApplication.class));
 
@@ -27,7 +27,7 @@ class NotManagedTypeExceptionIntegrationTest {
     }
 
     @Test
-    void givenEntityWithoutAnnotationApplicationFixed_WhenBootstrap_ThenRepositoryBeanShouldBePresentInContext() {
+    void givenEntityWithoutAnnotationApplicationFixed_whenBootstrap_thenRepositoryBeanShouldBePresentInContext() {
         ConfigurableApplicationContext context = run(EntityWithoutAnnotationFixedApplication.class);
         EntityWithoutAnnotationFixedRepository repository = context
           .getBean(EntityWithoutAnnotationFixedRepository.class);
@@ -36,7 +36,7 @@ class NotManagedTypeExceptionIntegrationTest {
     }
 
     @Test
-    void givenEntityWithJakartaAnnotationApplication_WhenBootstrap_ThenExpectedExceptionThrown() {
+    void givenEntityWithJakartaAnnotationApplication_whenBootstrap_thenExpectedExceptionThrown() {
         Exception exception = assertThrows(Exception.class,
           () -> run(EntityWithJakartaAnnotationApplication.class));
 
@@ -46,7 +46,7 @@ class NotManagedTypeExceptionIntegrationTest {
     }
 
     @Test
-    void givenWrongEntityScanApplication_WhenBootstrap_ThenExpectedExceptionThrown() {
+    void givenWrongEntityScanApplication_whenBootstrap_thenExpectedExceptionThrown() {
         Exception exception = assertThrows(Exception.class,
           () -> run(WrongEntityScanApplication.class));
 
@@ -56,7 +56,7 @@ class NotManagedTypeExceptionIntegrationTest {
     }
 
     @Test
-    void givenWrongEntityScanApplicationFixed_WhenBootstrap_ThenRepositoryBeanShouldBePresentInContext() {
+    void givenWrongEntityScanApplicationFixed_whenBootstrap_thenRepositoryBeanShouldBePresentInContext() {
         ConfigurableApplicationContext context = run(WrongEntityScanFixedApplication.class);
         CorrectEntityRepository repository = context
           .getBean(CorrectEntityRepository.class);
