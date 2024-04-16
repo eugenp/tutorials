@@ -1,10 +1,10 @@
-package com.baeldung.jpa.simple.repository;
+package com.baeldung.simple.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.baeldung.jpa.simple.model.Foo;
+import com.baeldung.simple.entity.Foo;
 
 public interface IFooDAO extends JpaRepository<Foo, Long> {
 

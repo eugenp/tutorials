@@ -1,11 +1,11 @@
-package com.baeldung.jpa.simple;
+package com.baeldung.simple;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EnableJpaRepositories("com.baeldung.jpa.simple.repository")
+@EnableJpaRepositories("com.baeldung.simple.repository")
 public class JpaApplication {
 
     public static void main(String[] args) {
