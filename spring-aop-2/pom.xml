@@ -92,6 +92,7 @@
                 <dependency>
                     <groupId>org.springframework</groupId>
                     <artifactId>spring-aspects</artifactId>
+                    <version>${spring-aspects.version}</version>
                 </dependency>
             </dependencies>
             <build>
@@ -119,6 +120,7 @@
                                 <aspectLibrary>
                                     <groupId>org.springframework</groupId>
                                     <artifactId>spring-aspects</artifactId>
+                                    <version>${spring-aspects.version}</version>
                                 </aspectLibrary>
                             </aspectLibraries>
                         </configuration>
@@ -141,6 +143,7 @@
                 <dependency>
                     <groupId>org.springframework</groupId>
                     <artifactId>spring-aspects</artifactId>
+                    <version>${spring-aspects.version}</version>
                 </dependency>
                 <dependency>
                     <groupId>org.springframework</groupId>
@@ -175,6 +178,7 @@
         <spring.version>5.3.27</spring.version>
         <start-class>com.baeldung.Application</start-class>
         <commons-rng-core.version>1.5</commons-rng-core.version>
+        <spring-aspects.version>6.1.5</spring-aspects.version>
     </properties>
 
 </project>

@@ -11,5 +11,6 @@ This module contains articles about core Java input and output (IO)
 - [Read and Write Files in Java Using Separate Threads](https://www.baeldung.com/java-read-write-files-different-threads)
 - [Convert an OutputStream to a Byte Array in Java](https://www.baeldung.com/java-outputstream-byte-array)
 - [Reading a .gz File Line by Line Using GZIPInputStream](https://www.baeldung.com/java-gzipinputstream-read-gz-file-line-by-line)
+- [Opening HTML File Using Java](https://www.baeldung.com/java-open-html-file)
 - [[<-- Prev]](/core-java-modules/core-java-io-4)
 
