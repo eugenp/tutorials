@@ -23,10 +23,10 @@ public class BuilderImplementationUnitTest {
     @Test
     void givenGenericBuilder_whenBuild_thenReturnObject() {
 
-        Post post = GenericBuilder.of(Post::new)
-          .with(Post::setTitle, "Java Builder Pattern")
-          .with(Post::setText, "Explaining how to implement the Builder Pattern in Java")
-          .with(Post::setCategory, "Programming")
+        GenericPost post = GenericBuilder.of(GenericPost::new)
+          .with(GenericPost::setTitle, "Java Builder Pattern")
+          .with(GenericPost::setText, "Explaining how to implement the Builder Pattern in Java")
+          .with(GenericPost::setCategory, "Programming")
           .build();
 
         assertEquals("Java Builder Pattern", post.getTitle());
