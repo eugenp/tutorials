@@ -65,6 +65,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aspects</artifactId>
+            <version>${spring-aspects.version}</version>
         </dependency>
         <!-- persistence -->
         <dependency>
@@ -135,6 +136,7 @@
     </build>
 
     <properties>
+        <spring-aspects.version>6.1.5</spring-aspects.version>
         <annotation-api.version>1.3.2</annotation-api.version>
         <servlet-api.version>4.0.0</servlet-api.version>
         <hibernate.version>6.2.5.Final</hibernate.version>
