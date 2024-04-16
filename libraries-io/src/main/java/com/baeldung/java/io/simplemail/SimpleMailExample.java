@@ -20,8 +20,18 @@ public class SimpleMailExample {
         Email email = EmailBuilder.startingBlank()
             .from("sender@example.com")
             .to("recipient@example.com")
-            .withSubject("Hello, World!")
-            .withPlainText("This is a test email sent using Simple Java Mail.")
+            .withSubject("Email with Plain Text!")
+            .withPlainText("This is a test email sent using SJM.")
+            .buildEmail();
+        sendEmail(email);
+    }
+
+    public static void sendPlainTextEmailToMultipleRecipient() {
+        Email email = EmailBuilder.startingBlank()
+            .from("sender@example.com")
+            .to("recipient1@example.com, recipient2@example.com, recipient3@example.com")
+            .withSubject("Email with Plain Text!")
+            .withPlainText("This is a test email sent using SJM to multiple recipients.")
             .buildEmail();
         sendEmail(email);
     }
@@ -30,8 +40,8 @@ public class SimpleMailExample {
         Email email = EmailBuilder.startingBlank()
             .from("sender@example.com")
             .to("recipient@example.com")
-            .withSubject("Email with Plain Text")
-            .withPlainText("This is a test email with attachment sent using Simple Java Mail.")
+            .withSubject("Email with Plain Text and Attachment!")
+            .withPlainText("This is a test email with attachment sent using SJM.")
             .withAttachment("important_document.pdf", new FileDataSource("path/to/important_document.pdf"))
             .buildEmail();
         sendEmail(email);
@@ -40,12 +50,12 @@ public class SimpleMailExample {
     public static void sendEmailWithMultipleAttachment() {
         List<AttachmentResource> arList = new ArrayList<>();
         arList.add(new AttachmentResource("important_document.pdf", new FileDataSource("path/to/important_document.pdf")));
-        arList.add(new AttachmentResource("company_logo.jpg", new FileDataSource("path/to/company_logo.jpg")));
+        arList.add(new AttachmentResource("company_logo.png", new FileDataSource("path/to/company_logo.png")));
         Email email = EmailBuilder.startingBlank()
             .from("sender@example.com")
             .to("recipient@example.com")
-            .withSubject("Email with Plain Text")
-            .withPlainText("This is a test email with attachment sent using Simple Java Mail.")
+            .withSubject("Email with Plain Text and multiple Attachments!")
+            .withPlainText("This is a test email with attachment sent using SJM.")
             .withAttachments(arList)
             .buildEmail();
         sendEmail(email);
@@ -58,9 +68,9 @@ public class SimpleMailExample {
         Email email = EmailBuilder.startingBlank()
             .from("sender@example.com")
             .to("recipient@example.com")
-            .withSubject("Email with HTML and CID Image")
+            .withSubject("Email with HTML and Embedded Image!")
             .withHTMLText(htmlContent)
-            .withEmbeddedImage("company_logo", new FileDataSource("path/to/image.png"))
+            .withEmbeddedImage("company_logo", new FileDataSource("path/to/company_logo.png"))
             .buildEmail();
         sendEmail(email);
     }
@@ -68,14 +78,14 @@ public class SimpleMailExample {
     public static void replyingToEmail(Email receivedEmail) {
         EmailBuilder.replyingTo(receivedEmail)
             .from("sender@example.com")
-            .prependText("Reply body. Original email included below")
+            .prependText("This is a Reply Email. Original email included below:")
             .buildEmail();
     }
 
     public static void forwardingEmail(Email receivedEmail) {
-        EmailBuilder.forwarding(receivedEmail)
+        Email email = EmailBuilder.forwarding(receivedEmail)
             .from("sender@example.com")
-            .prependText("Hello? This is Forward. See below email:")
+            .prependText("This is an Forward Email. See below email:")
             .buildEmail();
     }
 
@@ -92,7 +102,7 @@ public class SimpleMailExample {
         Email email = EmailBuilder.startingBlank()
             .from("sender@example.com")
             .to("recipient@example.com")
-            .withSubject("Important Message")
+            .withSubject("Email with Custom Header")
             .withPlainText("This is an important message.")
             .withHeader("X-Priority", "1")
             .buildEmail();
@@ -103,8 +113,8 @@ public class SimpleMailExample {
         Email email = EmailBuilder.startingBlank()
             .from("sender@example.com")
             .to("recipient@example.com")
-            .withSubject("Important Message")
-            .withPlainText("This is an important message.")
+            .withSubject("Email with Delivery/Read Receipt Configured!")
+            .withPlainText("This is an email sending with delivery/read receipt.")
             .withDispositionNotificationTo(new Recipient("name", "address@domain.com", Message.RecipientType.TO))
             .withReturnReceiptTo(new Recipient("name", "address@domain.com", Message.RecipientType.TO))
             .buildEmail();
@@ -113,8 +123,7 @@ public class SimpleMailExample {
     }
 
     private static void sendEmail(Email email) {
-        Mailer mailer = MailerBuilder
-            .withSMTPServer("smtp.example.com", 25, "username", "password")
+        Mailer mailer = MailerBuilder.withSMTPServer("smtp.example.com", 25, "username", "password")
             .withMaximumEmailSize(1024 * 1024 * 5) // 5 Megabytes
             .buildMailer();
         boolean validate = mailer.validate(email);
