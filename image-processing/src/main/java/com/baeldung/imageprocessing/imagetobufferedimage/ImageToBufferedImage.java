@@ -22,7 +22,7 @@ public class ImageToBufferedImage {
         if (image instanceof BufferedImage) {
             return (BufferedImage) image;
         } else {
-            throw new ClassCastException("Image type is not compatible with BufferedImage");
+            throw new ClassCastException("Image type is not compatible with BufferedImage.");
         }
     }
 }
