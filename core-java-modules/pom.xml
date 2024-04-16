@@ -165,6 +165,7 @@
         <module>core-java-networking</module>
         <module>core-java-networking-2</module>
         <module>core-java-networking-4</module>
+        <module>core-java-networking-5</module>
         <module>core-java-nio</module>
         <module>core-java-nio-2</module>
         <module>core-java-numbers</module>

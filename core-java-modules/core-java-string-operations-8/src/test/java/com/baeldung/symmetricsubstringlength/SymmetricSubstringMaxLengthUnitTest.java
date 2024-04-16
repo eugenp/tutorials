@@ -30,7 +30,7 @@ public class SymmetricSubstringMaxLengthUnitTest {
 
     @Test
     public void givenString_whenUsingBruteForce_thenFindLongestSymmetricSubstring() {
-        assertEquals(expected, findLongestSymmetricSubstringUsingBruteForce(input).length());
+        assertEquals(expected, findLongestSymmetricSubstringUsingBruteForce(input));
     }
 
     @Test
@@ -38,25 +38,23 @@ public class SymmetricSubstringMaxLengthUnitTest {
         assertEquals(expected, findLongestSymmetricSubstringUsingSymmetricApproach(input));
     }
 
-    private String findLongestSymmetricSubstringUsingBruteForce(String str) {
+    private int findLongestSymmetricSubstringUsingBruteForce(String str) {
         if (str == null || str.length() == 0) {
-            return "";
+            return 0;
         }
 
         int maxLength = 0;
-        String longestPalindrome = "";
 
         for (int i = 0; i < str.length(); i++) {
             for (int j = i + 1; j <= str.length(); j++) {
                 String substring = str.substring(i, j);
                 if (isPalindrome(substring) && substring.length() > maxLength) {
                     maxLength = substring.length();
-                    longestPalindrome = substring;
                 }
             }
         }
 
-        return longestPalindrome;
+        return maxLength;
     }
 
     private boolean isPalindrome(String s) {

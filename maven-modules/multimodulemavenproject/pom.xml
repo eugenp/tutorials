@@ -9,12 +9,12 @@
     <name>multimodulemavenproject</name>
     <packaging>pom</packaging>
 
-    <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../../</relativePath>
-    </parent>
+    <!--
+     No <parent> tag since we want the compiler plugin defined
+     in the <pluginManagement> to be used in submodules.
+     Detailed discussion:
+       https://jira.baeldung.com/browse/BAEL-7813
+    -->
 
     <modules>
         <module>maven-entitymodule</module>
