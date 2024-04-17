@@ -11,6 +11,12 @@ public class Purchase {
     private String paymentId;
     private String userId;
 
+    public Purchase(String orderId, String paymentId, String userId) {
+        this.orderId = orderId;
+        this.paymentId = paymentId;
+        this.userId = userId;
+    }
+
     public void setOrderDescription(String orderDescription) {
         this.orderDescription = orderDescription;
     }
@@ -27,23 +33,23 @@ public class Purchase {
         return orderId;
     }
 
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
-    }
-
     public String getPaymentId() {
         return paymentId;
-    }
-
-    public void setPaymentId(String paymentId) {
-        this.paymentId = paymentId;
     }
 
     public String getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public String getOrderDescription() {
+        return orderDescription;
+    }
+
+    public String getPaymentDescription() {
+        return paymentDescription;
+    }
+
+    public String getBuyerName() {
+        return buyerName;
     }
 }
