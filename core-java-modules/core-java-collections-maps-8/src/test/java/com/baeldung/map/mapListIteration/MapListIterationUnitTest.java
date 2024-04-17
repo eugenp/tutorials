@@ -92,4 +92,27 @@ public class MapListIterationUnitTest {
         assertEquals("Jones", map2.get("name"));
         assertEquals(25, map2.get("age"));
     }
+
+    @Test
+    public void whenIterateListMapUsingForEach_thenPrintList() {
+        Map<String, Object> map1 = new HashMap<>();
+        map1.put("name", "Jack");
+        map1.put("age", 30);
+
+        Map<String, Object> map2 = new HashMap<>();
+        map2.put("name", "Jones");
+        map2.put("age", 25);
+
+        List<Map<String, Object>> listOfMaps = Arrays.asList(map1, map2);
+
+        listOfMaps.forEach(map -> map.forEach((key, value) -> {
+            System.out.println("Key: " + key + ", Value: " + value);
+        }));
+
+        assertEquals(2, listOfMaps.size());
+        assertEquals("Jack", map1.get("name"));
+        assertEquals(30, map1.get("age"));
+        assertEquals("Jones", map2.get("name"));
+        assertEquals(25, map2.get("age"));
+    }
 }
