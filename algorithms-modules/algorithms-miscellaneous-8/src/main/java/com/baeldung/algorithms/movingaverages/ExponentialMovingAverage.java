@@ -1,4 +1,4 @@
-package com.baeldung.movingaverages;
+package com.baeldung.algorithms.movingaverages;
 
 public class ExponentialMovingAverage {
 
