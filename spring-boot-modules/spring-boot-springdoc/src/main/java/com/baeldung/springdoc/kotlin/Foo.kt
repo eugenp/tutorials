@@ -1,10 +1,9 @@
 package com.baeldung.springdoc.kotlin
 
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
-import javax.validation.constraints.NotBlank
-import javax.validation.constraints.Size
+import jakarta.persistence.Entity
+import jakarta.persistence.Id
+import jakarta.validation.constraints.NotBlank
+import jakarta.validation.constraints.Size
 
 @Entity
 data class Foo(

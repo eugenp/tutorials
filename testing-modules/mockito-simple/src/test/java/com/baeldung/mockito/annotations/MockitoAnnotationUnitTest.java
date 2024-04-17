@@ -13,11 +13,7 @@ import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentCaptor;
-import org.mockito.Captor;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Spy;
+import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.baeldung.mockito.MyDictionary;
@@ -126,5 +122,15 @@ class MockitoAnnotationUnitTest {
         when(wordMap.get("aWord")).thenReturn("aMeaning");
 
         assertEquals("aMeaning", dic.getMeaning("aWord"));
+    }
+
+    @DoNotMock(reason = "Use a real instance instead")
+    public abstract class NotToMock {
+        // Class implementation
+    }
+    @Test
+    public void testOperation() {
+        // This will cause an error due to @DoNotMock annotation
+        //NotToMock noToMock = mock(NotToMock.class);
     }
 }

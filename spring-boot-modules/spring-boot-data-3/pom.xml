@@ -18,8 +18,8 @@
     <dependencies>
         <dependency>
             <groupId>io.hypersistence</groupId>
-            <artifactId>hypersistence-utils-hibernate-55</artifactId>
-            <version>3.7.1</version>
+            <artifactId>hypersistence-utils-hibernate-60</artifactId>
+            <version>${hypersistence-utils-hibernate-60.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -68,6 +68,7 @@
         <spring-cloud-starter-aws-secrets-manager-config.version>2.4.4</spring-cloud-starter-aws-secrets-manager-config.version>
         <aws-secretsmanager-jdbc.version>1.0.11</aws-secretsmanager-jdbc.version>
         <start-class>com.baeldung.startwithoutdb.StartWithoutDbApplication</start-class>
+        <hypersistence-utils-hibernate-60.version>3.7.3</hypersistence-utils-hibernate-60.version>
     </properties>
 
 </project>

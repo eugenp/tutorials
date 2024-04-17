@@ -4,8 +4,8 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>helloworld</groupId>
     <artifactId>ToDoFunction</artifactId>
-    <version>1.0</version>
     <name>ToDoFunction</name>
+    <version>1.0</version>
     <packaging>jar</packaging>
 
     <parent>
@@ -71,7 +71,7 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
-            <version>${mockito-core.version}</version>
+            <version>${mockito.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -112,7 +112,6 @@
         <feign-core.version>11.2</feign-core.version>
         <guice.version>5.1.0</guice.version>
         <system-stubs-junit4.version>2.0.2</system-stubs-junit4.version>
-        <mockito-core.version>4.1.0</mockito-core.version>
         <assertj-core.version>3.19.0</assertj-core.version>
         <junit-jupiter.version>5.8.1</junit-jupiter.version>
     </properties>

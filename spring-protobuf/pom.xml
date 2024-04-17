@@ -9,9 +9,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-2</relativePath>
+        <relativePath>../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -37,12 +37,14 @@
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
+            <version>${httpclient.version}</version>
         </dependency>
     </dependencies>
 
     <properties>
-        <protobuf-java.version>3.1.0</protobuf-java.version>
+        <protobuf-java.version>3.25.3</protobuf-java.version>
         <protobuf-java-format.version>1.4</protobuf-java-format.version>
+        <httpclient.version>4.5.14</httpclient.version>
         <start-class>com.baeldung.protobuf.Application</start-class>
     </properties>
 

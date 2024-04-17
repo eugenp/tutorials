@@ -29,7 +29,7 @@
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-sql</artifactId>
-            <version>${groovy.sql.version}</version>
+            <version>${groovy-sql.version}</version>
         </dependency>
         <dependency>
             <groupId>io.ratpack</groupId>
@@ -104,8 +104,10 @@
         <httpclient.version>4.5.3</httpclient.version>
         <httpcore.version>4.4.6</httpcore.version>
         <hystrix.version>1.5.12</hystrix.version>
-        <groovy.sql.version>2.4.15</groovy.sql.version>
+        <groovy-sql.version>2.4.15</groovy-sql.version>
         <ratpack.test.latest.version>1.6.1</ratpack.test.latest.version>
+        <org.slf4j.version>1.7.32</org.slf4j.version>
+        <logback.version>1.2.7</logback.version>
     </properties>
 
 </project>

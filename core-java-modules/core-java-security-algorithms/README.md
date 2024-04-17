@@ -9,3 +9,4 @@ This module contains articles about core Java Security Algorithms such as AES, D
 - [InvalidAlgorithmParameterException: Wrong IV Length](https://www.baeldung.com/java-invalidalgorithmparameter-exception)
 - [RSA in Java](https://www.baeldung.com/java-rsa)
 - [3DES in Java](https://www.baeldung.com/java-3des)
+- [Blowfish Encryption Algorithm](https://www.baeldung.com/java-jca-blowfish-implementation)

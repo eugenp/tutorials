@@ -53,6 +53,7 @@
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
             <scope>test</scope>
+            <version>${rest-assured-version}</version>
         </dependency>
     </dependencies>
 
@@ -80,7 +81,11 @@
     <properties>
         <spring.fox.version>3.0.0</spring.fox.version>
         <start-class>com.baeldung.springbootmvc.SpringBootMvcFnApplication</start-class>
+        <maven.compiler.release>17</maven.compiler.release>
         <xstream.version>1.4.11.1</xstream.version>
+        <rest-assured-version>5.4.0</rest-assured-version>
+        <spring-boot.version>3.2.2</spring-boot.version>
+        <junit-jupiter.version>5.10.2</junit-jupiter.version>
     </properties>
 
 </project>

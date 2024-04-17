@@ -5,7 +5,7 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.baeldung.greeter.sample.GreeterSampleApplication;
+import com.baeldung.greeter.GreeterSampleApplication;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = GreeterSampleApplication.class)

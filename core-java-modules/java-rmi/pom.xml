@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.rmi</groupId>
     <artifactId>java-rmi</artifactId>
-    <name>java-rmi</name>
     <packaging>jar</packaging>
+    <name>java-rmi</name>
 
     <parent>
         <groupId>com.baeldung.core-java-modules</groupId>

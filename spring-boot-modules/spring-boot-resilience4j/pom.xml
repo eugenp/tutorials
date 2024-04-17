@@ -29,8 +29,8 @@
         </dependency>
         <dependency>
             <groupId>io.github.resilience4j</groupId>
-            <artifactId>resilience4j-spring-boot2</artifactId>
-            <version>${resilience4j-spring-boot2.version}</version>
+            <artifactId>resilience4j-spring-boot3</artifactId>
+            <version>${resilience4j-spring-boot3.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
@@ -43,17 +43,17 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.github.tomakehurst</groupId>
-            <artifactId>wiremock-jre8</artifactId>
-            <version>${wiremock-jre8.version}</version>
+            <groupId>org.wiremock</groupId>
+            <artifactId>wiremock</artifactId>
+            <version>${wiremock.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
 
     <properties>
-        <wiremock-jre8.version>2.35.0</wiremock-jre8.version>
-        <resilience4j-spring-boot2.version>2.0.2</resilience4j-spring-boot2.version>
-        <jackson-datatype-jsr310.version>2.16.0</jackson-datatype-jsr310.version>
+        <wiremock.version>3.4.2</wiremock.version>
+        <resilience4j-spring-boot3.version>2.2.0</resilience4j-spring-boot3.version>
+        <jackson-datatype-jsr310.version>2.16.1</jackson-datatype-jsr310.version>
     </properties>
 
 </project>

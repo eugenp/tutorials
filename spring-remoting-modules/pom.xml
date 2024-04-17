@@ -10,6 +10,8 @@
     <description>Parent for all projects related to Spring Remoting, except remoting-hessian-burlap</description>
     <!-- remoting-hessian-burlap needs to stick to spring-boot-1, -->
     <!-- some classes were removed in spring 5 -->
+    <!-- Upgrade to Boot 3 not possible as since Spring 6 the remoting modules has been removed
+         from Spring completely. -->
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -19,7 +21,7 @@
     </parent>
 
     <modules>
-        <module>remoting-hessian-burlap</module>
+<!--        <module>remoting-hessian-burlap</module>-->
         <module>remoting-http</module>
         <module>remoting-amqp</module>
         <module>remoting-jms</module>

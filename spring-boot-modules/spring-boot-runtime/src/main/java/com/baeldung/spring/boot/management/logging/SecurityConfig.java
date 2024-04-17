@@ -9,8 +9,8 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilter(HttpSecurity http) throws Exception {
-        return http.csrf()
-            .ignoringAntMatchers("/actuator/**").and()
+        return http
+            .csrf(csrf -> csrf.ignoringRequestMatchers("/actuator/**") )
             .build();
     }
 }
