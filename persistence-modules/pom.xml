@@ -36,6 +36,7 @@
         <module>hibernate-exceptions</module>
         <module>hibernate-libraries</module>
         <module>hibernate-jpa</module>
+        <module>hibernate-jpa-2</module>
         <module>hibernate-queries</module>
         <module>hibernate-enterprise</module>
         <module>influxdb</module>
