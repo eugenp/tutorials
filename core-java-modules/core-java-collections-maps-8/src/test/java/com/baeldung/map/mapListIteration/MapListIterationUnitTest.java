@@ -92,7 +92,6 @@ public class MapListIterationUnitTest {
         assertEquals("Jones", map2.get("name"));
         assertEquals(25, map2.get("age"));
     }
-
     @Test
     public void whenIterateListMapUsingForEach_thenPrintList() {
         Map<String, Object> map1 = new HashMap<>();
