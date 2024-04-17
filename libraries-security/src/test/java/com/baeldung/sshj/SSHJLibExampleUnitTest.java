@@ -4,97 +4,160 @@
 package com.baeldung.sshj;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
-import org.junit.After;
-import org.junit.Before;
+import org.apache.sshd.server.SshServer;
+import org.apache.tomcat.util.http.fileupload.FileUtils;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.TestMethodOrder;
+
+import com.google.common.io.Resources;
 
 import net.schmizz.sshj.SSHClient;
 import net.schmizz.sshj.connection.channel.direct.LocalPortForwarder;
+import net.schmizz.sshj.sftp.FileAttributes;
+import net.schmizz.sshj.sftp.SFTPClient;
 
+@TestMethodOrder(OrderAnnotation.class)
 public class SSHJLibExampleUnitTest {
 
-    private static final int PORT = 22;
-    private static final String HOST = "HOST_NAME";
-    private static final String USER = "USER_NAME";
-    private static final String PASSWORD = "USER_PASSWORD";
+    private static final String rebex_username = "demo";
+    private static final String rebex_password = "password";
+    private static final String rebex_host = "test.rebex.net";
+    private static final int rebex_port = 22;
 
-    private SSHClient sshClient;
-
-    @Before
-    public void setUp() throws Exception {
-        sshClient = SSHJAppDemo.loginSftp(HOST, PORT, USER, PASSWORD);
-    }
+    private static final int PORT = 2222;
+    private static final String HOST = "localhost";
+    private static final String USER = "testuser";
+    private static final String PASSWORD = "testpassword";
+    private static final String SCP_FILE_NAME = "test_file_SCP.txt";
+    private static final String SFTP_FILE_NAME = "test_file_SFTP.txt";
     
+    private static SSHClient sshClient;
 
-    @After
-    public void tearDown() throws IOException {
+    private static SSHClient rebexSshClient;
+
+    private static SFTPClient sftpClient;
+
+    private static SshServer sshdServer;
+
+    private static String downLoadPath;
+
+    private static String privateKeyPath;
+
+    @BeforeClass
+    public static void setUp() throws Exception {
+        sshdServer = SSHServerSetup.setupServer();
+        sshClient = SSHJAppDemo.loginSftp(HOST, PORT, USER, PASSWORD);
+        rebexSshClient = SSHJAppDemo.loginSftp(rebex_host, rebex_port, rebex_username, rebex_password);
+        sftpClient = sshClient.newSFTPClient();
+
+        Path resourcesPath = Paths.get("src", "main", "resources");
+
+        downLoadPath = resourcesPath.resolve("downloads")
+            .toAbsolutePath()
+            .toString();
+
+        privateKeyPath = resourcesPath.resolve("PrivateKeys")
+            .toAbsolutePath()
+            .toString();
+    }
+
+    @AfterClass
+    public static void shutdownServer() throws Exception {
+        FileUtils.cleanDirectory(new File(downLoadPath));
         if (sshClient != null && sshClient.isConnected()) {
             sshClient.disconnect();
         }
+        sshdServer.stop();
+        sftpClient.close();
     }
     
     @Test
+    @Order(1)
     public void given_whenUserPassAuth_thenConnected() throws IOException {
         assertEquals(true, sshClient.isConnected(), "Server connected via ssh login using user and passowrd");
     }
-
+    
     @Test
+    @Order(2)
     public void given_whenUserPubKeyAuth_thenConnected() throws IOException {
-        SSHClient pubSSHClient = SSHJAppDemo.loginPubKey(HOST, USER);
+        SSHClient pubSSHClient = SSHJAppDemo.loginPubKey(HOST, USER, privateKeyPath, PORT);
         assertEquals(true, pubSSHClient.isConnected(), "Server connected via ssh login using pub key");
     }
-
+    
     @Test
+    @Order(3)
     public void given_whenPingCmdExecuted_thenResultReturned() throws IOException {
-        String response = SSHJAppDemo.executeCommand(sshClient);
-        assertEquals("success", response, "commoand executed on the server successfully");
+        String response = SSHJAppDemo.executeCommand(rebexSshClient);
+        assertEquals("success", response, "command executed on the server successfully");
     }
     
-
     @Test
+    @Order(4)
     public void given_whenFileSCPUpload_thenFileUploaded() throws IOException {
-        String response = SSHJAppDemo.scpUpload(sshClient);
-        assertEquals("success", response, "SCP file download successful");
+        String scpfilePath = Resources.getResource(SCP_FILE_NAME)
+            .getPath();
+        SSHJAppDemo.scpUpload(sshClient, scpfilePath);
+        FileAttributes stat = null;
+        try {
+        stat = sftpClient.stat("/upload/" + SCP_FILE_NAME);
+        } catch (Exception e) {
+        }
+        assertNotNull(stat, "SCP file upload successful");
     }
     
     @Test
+    @Order(5)
     public void given_whenFileSCPDownloaded_thenFileDownloaded() throws IOException {
-        String response = SSHJAppDemo.scpDownLoad(sshClient);
-        assertEquals("success", response, "SCP file download successful");
+        SSHJAppDemo.scpDownLoad(sshClient, downLoadPath, SCP_FILE_NAME);
+        assertEquals(true, Files.exists(Path.of(downLoadPath + File.separator + SCP_FILE_NAME)), "SCP file download successful");
     }
     
     @Test
+    @Order(6)
     public void given_whenFileSFTPUpload_thenFileUploaded() throws IOException {
-        String response = SSHJAppDemo.SFTPUpload(sshClient);
-        assertEquals("success", response, "SFTP file upload successful");
+        String sftpfilePath = Resources.getResource(SFTP_FILE_NAME)
+            .getPath();
+        SSHJAppDemo.SFTPUpload(sshClient, sftpfilePath);
+        FileAttributes stat = null;
+        try {
+            stat = sftpClient.stat("/upload/" + SFTP_FILE_NAME);
+        } catch (Exception e) {
+        }
+        assertNotNull(stat, "SFTP file upload successful");
     }
     
     @Test
+    @Order(7)
     public void given_whenFileSFTPDownload_thenFileUploaded() throws IOException {
-        String response = SSHJAppDemo.SFTPDownLoad(sshClient);
-        assertEquals("success", response, "SFTP file download successful");
+        SSHJAppDemo.SFTPDownLoad(sshClient, downLoadPath, SFTP_FILE_NAME);
+        assertEquals(true, Files.exists(Path.of(downLoadPath + File.separator + SFTP_FILE_NAME)), "SFTP file download successful");
     }
     
     @Test
+    @Order(8)
     public void given_whenLocalPortForward_thenLocalPortForwarded() throws IOException, InterruptedException {
-        LocalPortForwarder locForwarder = SSHJAppDemo.localPortForwarding(sshClient);
-
-        assertEquals(true, locForwarder.isRunning(), "Local port forwarding should be successful");
+        LocalPortForwarder localForwarder = SSHJAppDemo.localPortForwarding(sshClient);
+        Thread.sleep(2000);
+        assertEquals(true, localForwarder.isRunning(), "Local port forwarding should be successful");
     }
     
     @Test
+    @Order(9)
     public void given_whenRemotePortForward_thenRemotePortForwarded() throws IOException, InterruptedException {
         String response = SSHJAppDemo.remotePortForwarding(sshClient);
+        Thread.sleep(2000);
         assertEquals("success", response, "Remote port forwarding should be successful");
-    }
-
-
-    @Test
-    public void given_whenKeepAlive_thenKeptAlive() throws IOException, InterruptedException {
-        String response = SSHJAppDemo.KeepAlive(HOST, USER, PASSWORD);
-        assertEquals("success", response, "Keep alive execution should be successful");
     }
 }

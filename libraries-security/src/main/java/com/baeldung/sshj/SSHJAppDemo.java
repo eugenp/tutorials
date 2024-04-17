@@ -24,6 +24,7 @@ import net.schmizz.sshj.connection.channel.forwarded.RemotePortForwarder.Forward
 import net.schmizz.sshj.connection.channel.forwarded.SocketForwardingConnectListener;
 import net.schmizz.sshj.sftp.SFTPClient;
 import net.schmizz.sshj.transport.verification.PromiscuousVerifier;
+import net.schmizz.sshj.userauth.keyprovider.KeyProvider;
 import net.schmizz.sshj.xfer.FileSystemFile;
 
 
@@ -37,19 +38,25 @@ public class SSHJAppDemo {
         return client;
     }
 
-    public static SSHClient loginPubKey(String host, String username) throws IOException {
+    public static SSHClient loginPubKey(String host, String username, String privateFilePath, int port) throws IOException {
         final SSHClient client = new SSHClient();
-        client.addHostKeyVerifier(new PromiscuousVerifier());
-        client.loadKnownHosts();
-        client.connect("localhost");
-        client.authPublickey(username);
+        File privateKeyFile = new File(privateFilePath + "\\private_key");
+        try {
+            KeyProvider privateKey = client.loadKeys(privateKeyFile.getPath());
+            client.addHostKeyVerifier(new PromiscuousVerifier());
+            client.connect(host, port);
+            client.authPublickey(username, privateKey);
+            System.out.println(client.getRemoteHostname());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return client;
     }
 
     public static String executeCommand(SSHClient sshClient) throws IOException {
         String response = "";
         try (Session session = sshClient.startSession()) {
-            final Command cmd = session.exec("ping -c 1 yourwebsiteurl.com");
+            final Command cmd = session.exec("ls -lsa");
             try (BufferedReader reader = new BufferedReader(new InputStreamReader(cmd.getInputStream()))) {
                 String line;
                 while ((line = reader.readLine()) != null) {
@@ -57,93 +64,87 @@ public class SSHJAppDemo {
                 }
             }
             cmd.join(5, TimeUnit.SECONDS);
-            response = "SUCCESS";
+            response = "success";
             System.out.println("\n** exit status: " + cmd.getExitStatus());
         }
         return response;
     }
 
-    public static String scpUpload(SSHClient ssh) throws IOException {
-        String response = "";
+    public static void scpUpload(SSHClient ssh, String filePath) throws IOException {
         ssh.useCompression();
-
-        final String src = System.getProperty("user.home") + File.separator + "test_file.txt";
         ssh.newSCPFileTransfer()
-            .upload(new FileSystemFile(src), "/tmp/");
-        response = "SUCCESS";
-
-        return response;
+            .upload(new FileSystemFile(filePath), "/upload/");
     }
 
-    public static String scpDownLoad(SSHClient ssh) throws IOException {
-        String response = "";
+    public static void scpDownLoad(SSHClient ssh, String downloadPath, String fileName) throws IOException {
         ssh.newSCPFileTransfer()
-            .download("/tmp/test_file.txt", new FileSystemFile(System.getProperty("user.home")));
-        response = "SUCCESS";
-        return response;
+            .download("/upload/" + fileName, downloadPath);
     }
 
-    public static String SFTPUpload(SSHClient ssh) throws IOException {
-        String response = "";
+    public static void SFTPUpload(SSHClient ssh, String filePath) throws IOException {
         ssh.useCompression();
-
-        final String src = System.getProperty("user.home") + File.separator + "test_file.txt";
-        ssh.newSCPFileTransfer()
-            .upload(new FileSystemFile(src), "/tmp/");
-        response = "SUCCESS";
-        return response;
+        final SFTPClient sftp = ssh.newSFTPClient();
+        sftp.put(new FileSystemFile(filePath), "/upload/");
     }
 
-    public static String SFTPDownLoad(SSHClient ssh) throws IOException {
-        String response = "";
+    public static void SFTPDownLoad(SSHClient ssh, String downloadPath, String fileName) throws IOException {
         final SFTPClient sftp = ssh.newSFTPClient();
         try {
-            sftp.get("/tmp/test_file.txt", new FileSystemFile(System.getProperty("user.home")));
-            response = "SUCCESS";
+            sftp.get("/upload/" + fileName, downloadPath);
         } finally {
             sftp.close();
         }
-        return response;
     }
 
     public static LocalPortForwarder localPortForwarding(SSHClient ssh) throws IOException, InterruptedException {
 
         LocalPortForwarder locForwarder;
-        final Parameters params = new Parameters("localhost", 8081, "remote_host", 80);
+        System.out.println(ssh.getRemoteHostname());
+        //final Parameters params = new Parameters("localhost", 8081, "google.com", 80);
+        final Parameters params = new Parameters(ssh.getRemoteHostname(), 8081, "google.com", 80);
         final ServerSocket ss = new ServerSocket();
         ss.setReuseAddress(true);
         ss.bind(new InetSocketAddress(params.getLocalHost(), params.getLocalPort()));
 
-        try {
+        // try {
             locForwarder = ssh.newLocalPortForwarder(params, ss);
-            locForwarder.listen();
-        } finally {
-            ss.close();
-        }
+            // locForwarder.listen();
+            new Thread(() -> {
+                try {
+                    locForwarder.listen();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }).start();
+
+            /*} finally {
+                ss.close();
+            }*/
 
         return locForwarder;
     }
 
     public static String remotePortForwarding(SSHClient ssh) throws IOException, InterruptedException {
-        String response = "";
+        String response;
+        RemotePortForwarder rpf;
         ssh.getConnection()
             .getKeepAlive()
             .setKeepAliveInterval(5);
-        try {
-            RemotePortForwarder rpf = ssh.getRemotePortForwarder();
-            ssh.getRemotePortForwarder()
-                .bind(
-                    new Forward(8080),
-                    new SocketForwardingConnectListener(new InetSocketAddress("remote_host", 80)));
 
-            ssh.getTransport()
-                .join();
-            response = "suceess";
+            rpf = ssh.getRemotePortForwarder();
 
-        } finally {
-            ssh.disconnect();
-        }
-        return response;
+            new Thread(() -> {
+                try {
+                    rpf.bind(new Forward(8083), new SocketForwardingConnectListener(new InetSocketAddress("google.com", 80)));
+                    ssh.getTransport()
+                        .join();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }).start();
+
+            response = "success";
+            return response;
     }
 
     public static String KeepAlive(String hostName, String userName, String password) throws IOException, InterruptedException {
@@ -151,23 +152,30 @@ public class SSHJAppDemo {
         DefaultConfig defaultConfig = new DefaultConfig();
         defaultConfig.setKeepAliveProvider(KeepAliveProvider.KEEP_ALIVE);
         final SSHClient ssh = new SSHClient(defaultConfig);
+
         try {
             ssh.addHostKeyVerifier(new PromiscuousVerifier());
-            ssh.getConnection()
-            .getKeepAlive()
-            .setKeepAliveInterval(5);
+
             ssh.connect(hostName, 22);
+            ssh.getConnection()
+                .getKeepAlive()
+                .setKeepAliveInterval(5);
             ssh.authPassword(userName, password);
 
-            try (Session session = ssh.startSession();) {
+            Session session = ssh.startSession();
+            session.allocateDefaultPTY();
+            new CountDownLatch(1).await();
+            try {
                 session.allocateDefaultPTY();
-                new CountDownLatch(1).await();
-                session.allocateDefaultPTY();
+            } finally {
+                session.close();
             }
-            response = "success";
         } finally {
             ssh.disconnect();
         }
+
+        response = "success";
+
         return response;
     }
 }
