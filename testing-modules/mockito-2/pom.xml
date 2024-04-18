@@ -35,7 +35,6 @@
     <properties>
         <mockito-inline.version>4.8.1</mockito-inline.version>
         <lombok.version>1.18.30</lombok.version>
-
     </properties>
 
 </project>
