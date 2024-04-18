@@ -1,9 +1,14 @@
 package com.baeldung.pdfmerge;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.stream.Stream;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
@@ -14,14 +19,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.List;
-import java.util.stream.Stream;
-
-import com.baeldung.pdfmerge.PDFMerge;
 import com.itextpdf.text.DocumentException;
 
 public class PDFMergeUnitTest {
@@ -71,7 +68,7 @@ public class PDFMergeUnitTest {
     }
 
     @Test
-    void giveMultiplePdfs_whenMergeUsingPDFBoxExecuted_thenPdfsMerged() throws IOException {
+    void givenMultiplePdfs_whenMergeUsingPDFBoxExecuted_thenPdfsMerged() throws IOException {
         List<String> files = List.of("src/test/resources/temp/file1.pdf", "src/test/resources/temp/file2.pdf");
         PDFMerge pdfMerge = new PDFMerge();
         pdfMerge.mergeUsingPDFBox(files, "src/test/resources/temp/output.pdf");
@@ -92,7 +89,7 @@ public class PDFMergeUnitTest {
     }
 
     @Test
-    void giveMultiplePdfs_whenMergeUsingITextExecuted_thenPdfsMerged() throws IOException, DocumentException {
+    void givenMultiplePdfs_whenMergeUsingITextExecuted_thenPdfsMerged() throws IOException, DocumentException {
         List<String> files = List.of("src/test/resources/temp/file1.pdf", "src/test/resources/temp/file2.pdf");
         PDFMerge pdfMerge = new PDFMerge();
         pdfMerge.mergeUsingIText(files, "src/test/resources/temp/output1.pdf");

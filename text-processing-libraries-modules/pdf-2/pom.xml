@@ -50,16 +50,6 @@
             <artifactId>log4j-core</artifactId>
             <version>${log4j-core.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.pdfbox</groupId>
-            <artifactId>pdfbox</artifactId>
-            <version>${pdfbox.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.itextpdf</groupId>
-            <artifactId>itextpdf</artifactId>
-            <version>${itext.version}</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -70,16 +60,6 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>17</source>
-                    <target>17</target>
-                </configuration>
-            </plugin>
-        </plugins>
     </build>
 
     <properties>
@@ -90,8 +70,6 @@
         <poi-ooxml.version>5.2.5</poi-ooxml.version>
         <log4j-api.version>2.20.0</log4j-api.version>
         <log4j-core.version>2.20.0</log4j-core.version>
-        <pdfbox.version>2.0.24</pdfbox.version>
-        <itext.version>5.5.13.3</itext.version>
     </properties>
 
 </project>
