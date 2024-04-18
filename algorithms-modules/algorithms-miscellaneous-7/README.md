@@ -8,4 +8,7 @@
 - [Find Missing Number From a Given Array in Java](https://www.baeldung.com/java-array-find-missing-number)
 - [Calculate Weighted Mean in Java](https://www.baeldung.com/java-compute-weighted-average)
 - [Check if Two Strings Are Rotations of Each Other](https://www.baeldung.com/java-string-check-strings-rotations)
+- [Find the Largest Prime Under the Given Number in Java](https://www.baeldung.com/java-largest-prime-lower-threshold)
+- [Count the Number of Unique Digits in an Integer using Java](https://www.baeldung.com/java-int-count-unique-digits)
+- [How to Check Number Perfection](https://www.baeldung.com/java-number-perfection-test)
 - More articles: [[<-- prev]](/algorithms-miscellaneous-6)

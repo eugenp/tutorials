@@ -44,7 +44,7 @@
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>okhttp</artifactId>
-            <version>${squareup.okhttp.version}</version>
+            <version>${okhttp.version}</version>
         </dependency>
     </dependencies>
 
@@ -61,7 +61,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler.version}</version>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <compilerArgs>
                         <arg>-parameters</arg>
@@ -76,8 +76,7 @@
         <rest-assured.version>3.1.1</rest-assured.version>
         <application.class>com.baeldung.jooby.App</application.class>
         <maven-shade-plugin.version>3.2.4</maven-shade-plugin.version>
-        <squareup.okhttp.version>5.0.0-alpha.12</squareup.okhttp.version>
-        <maven-compiler.version>3.12.1</maven-compiler.version>
+        <okhttp.version>5.0.0-alpha.12</okhttp.version>
     </properties>
 
 </project>

@@ -1,6 +1,6 @@
 package com.baeldung.resttemplate.web.controller;
 
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletResponse;
 
 import com.baeldung.resttemplate.web.service.PersonService;
 import com.baeldung.resttemplate.web.dto.Person;

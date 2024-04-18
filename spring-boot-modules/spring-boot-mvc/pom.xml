@@ -52,8 +52,8 @@
         <!--JSF -->
         <dependency>
             <groupId>org.glassfish</groupId>
-            <artifactId>javax.faces</artifactId>
-            <version>${javax.faces.version}</version>
+            <artifactId>jakarta.faces</artifactId>
+            <version>${jakarta.faces.version}</version>
         </dependency>
         <!--Test -->
         <dependency>
@@ -73,8 +73,9 @@
             <artifactId>hibernate-validator</artifactId>
         </dependency>
         <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <version>${jakarta.validation-api.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -112,8 +113,9 @@
     <properties>
         <!-- ROME for RSS -->
         <rome.version>1.10.0</rome.version>
-        <javax.faces.version>2.3.7</javax.faces.version>
+        <jakarta.faces.version>4.1.0-M1</jakarta.faces.version>
         <aspectj.version>1.9.20.1</aspectj.version>
+        <jakarta.validation-api.version>3.1.0-M1</jakarta.validation-api.version>
         <start-class>com.baeldung.springbootmvc.SpringBootMvcApplication</start-class>
     </properties>
 

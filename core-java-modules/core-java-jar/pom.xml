@@ -4,8 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-jar</artifactId>
-    <name>core-java-jar</name>
     <packaging>jar</packaging>
+    <name>core-java-jar</name>
 
     <parent>
         <groupId>com.baeldung.core-java-modules</groupId>
@@ -260,7 +260,6 @@
         <!-- util -->
         <unix4j.version>0.4</unix4j.version>
         <grep4j.version>1.8.7</grep4j.version>
-        <mockito.version>4.6.1</mockito.version>
         <!-- maven plugins -->
         <javamoney.moneta.version>1.1</javamoney.moneta.version>
         <maven-javadoc-plugin.version>3.6.2</maven-javadoc-plugin.version>

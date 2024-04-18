@@ -15,7 +15,7 @@ public class SpringWebfluxAmqpLiveTest {
         
         client.post()
             .uri("/queue/NYSE")
-            .syncBody("Test Message")
+            .bodyValue("Test Message")
             .exchange()
             .expectStatus().isAccepted();
 

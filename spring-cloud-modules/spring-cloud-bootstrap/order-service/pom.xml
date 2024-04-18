@@ -11,9 +11,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../../parent-boot-2</relativePath>
+        <relativePath>../../../parent-boot-3</relativePath>
     </parent>
 
     <modules>
@@ -81,16 +81,6 @@
                                 <classifier>exec</classifier>
                             </configuration>
                         </execution>
-                        <execution>
-                            <id>start-application</id>
-                            <configuration>
-                                <mainClass>com.baeldung.orderservice.OrderApplication</mainClass>
-                                <classesDirectory>../order-server/target/classes</classesDirectory>
-                            </configuration>
-                            <goals>
-                                <goal>start</goal>
-                            </goals>
-                        </execution>
                     </executions>
                 </plugin>
                 <plugin>
@@ -116,6 +106,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <orderservice.mainclass>com.baeldung.orderservice.OrderApplication</orderservice.mainclass>
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
     </properties>
 
 </project>

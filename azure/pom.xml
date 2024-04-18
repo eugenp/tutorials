@@ -5,15 +5,15 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>azure</artifactId>
     <version>0.1</version>
-    <name>azure</name>
     <packaging>war</packaging>
+    <name>azure</name>
     <description>Demo project for Spring Boot on Azure</description>
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-2</relativePath>
+        <relativePath>../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -98,7 +98,7 @@
                         </property>
                         <property>
                             <name>spring.datasource.password</name>
-                            <value></value>
+                            <value>test</value>
                             <!--<value>replace-with-your-password</value> -->
                         </property>
                     </appSettings>
@@ -113,6 +113,14 @@
                     <!--</resource> -->
                     <!--</resources> -->
                 </configuration>
+                <dependencies>
+                    <!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
+                    <dependency>
+                        <groupId>javax.xml.bind</groupId>
+                        <artifactId>jaxb-api</artifactId>
+                        <version>2.4.0-b180830.0359</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>

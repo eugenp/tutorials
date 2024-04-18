@@ -11,10 +11,9 @@
 
     <!-- "sam build" needs all the dependencies including its parent project. Hence, we cannot use parent-boot in this case -->
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.11</version>
-        <relativePath/>
+        <groupId>com.baeldung.spring-boot-modules</groupId>
+        <artifactId>spring-boot-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <dependencies>
@@ -24,8 +23,21 @@
         </dependency>
         <dependency>
             <groupId>com.amazonaws.serverless</groupId>
-            <artifactId>aws-serverless-java-container-springboot2</artifactId>
-            <version>${aws-serverless-java-container-springboot2.version}</version>
+            <artifactId>aws-serverless-java-container-springboot3</artifactId>
+            <version>${aws-serverless-java-container.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.amazonaws.serverless</groupId>
+            <artifactId>aws-serverless-java-container-core</artifactId>
+            <version>${aws-serverless-java-container.version}</version>
+            <classifier>tests</classifier>
+            <type>test-jar</type>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents.client5</groupId>
+            <artifactId>httpclient5</artifactId>
+            <version>${httpclient5.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -74,10 +86,11 @@
     </build>
 
     <properties>
-        <aws-serverless-java-container-springboot2.version>1.9.1</aws-serverless-java-container-springboot2.version>
-        <maven-shade-plugin.version>3.2.4</maven-shade-plugin.version>
+        <aws-serverless-java-container.version>2.0.0</aws-serverless-java-container.version>
+        <maven-shade-plugin.version>3.3.0</maven-shade-plugin.version>
         <maven.compiler.source.version>11</maven.compiler.source.version>
         <maven.compiler.target.version>11</maven.compiler.target.version>
+        <httpclient5.version>5.3.1</httpclient5.version>
     </properties>
 
 </project>

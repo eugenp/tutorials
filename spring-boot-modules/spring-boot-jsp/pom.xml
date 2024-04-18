@@ -55,6 +55,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -101,8 +102,9 @@
 
     <properties>
         <jstl.version>1.2</jstl.version>
-        <spring-boot.version>2.4.4</spring-boot.version>
+        <spring-boot.version>3.2.2</spring-boot.version>
         <commons-text.version>1.10.0</commons-text.version>
+        <junit-jupiter.version>5.10.2</junit-jupiter.version>
     </properties>
 
 </project>

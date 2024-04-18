@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>libraries-stream</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>libraries-stream</name>
     <packaging>jar</packaging>
+    <name>libraries-stream</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -49,11 +49,23 @@
 
     <properties>
         <jool.version>0.9.12</jool.version>
-        <parallel-collectors.version>2.6.0</parallel-collectors.version>
+        <parallel-collectors.version>3.0.0</parallel-collectors.version>
         <vavr.version>0.9.0</vavr.version>
         <eclipse-collections.version>8.2.0</eclipse-collections.version>
         <streamex.version>0.8.1</streamex.version>
         <protonpack.version>1.15</protonpack.version>
     </properties>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>21</source>
+                    <target>21</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
