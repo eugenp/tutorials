@@ -180,7 +180,7 @@
 
     <properties>
         <quarkus.version>2.16.3.Final</quarkus.version>
-        <mockito.version>3.3.0</mockito.version>
+        <mockito.version>4.4.0</mockito.version> <!-- Current quarkus doesn't support latest version. If Upgrading to a new quarkus remove this. -->
     </properties>
 
 </project>

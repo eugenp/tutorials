@@ -89,6 +89,7 @@
         <module>core-java-collections-3</module>
         <module>core-java-collections-4</module>
         <module>core-java-collections-5</module>
+        <module>core-java-collections-6</module>
         <module>core-java-collections-conversions</module>
         <module>core-java-collections-set-2</module>
         <module>core-java-collections-list</module>
@@ -164,6 +165,7 @@
         <module>core-java-networking</module>
         <module>core-java-networking-2</module>
         <module>core-java-networking-4</module>
+        <module>core-java-networking-5</module>
         <module>core-java-nio</module>
         <module>core-java-nio-2</module>
         <module>core-java-numbers</module>
