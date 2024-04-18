@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -167,7 +169,20 @@ class DuckDbAccessIntegrationTest {
     }
 
     private String getResourceAbsolutePath(String name) {
-        return this.getClass().getResource(name).getPath().replaceFirst("/", "");
+        return Optional.ofNullable(this.getClass()
+                        .getResource(name))
+                .map(URL::getPath)
+                .map(this::removeSlashFromPathIfWindows)
+                .orElseThrow(IllegalArgumentException::new);
+    }
+
+    private String removeSlashFromPathIfWindows(String path) {
+        if (System.getProperty("os.name")
+                .toLowerCase()
+                .contains("win")) {
+            return path.replaceFirst("/", "");
+        }
+        return path;
     }
 
     private int getTableRowCount(Connection conn, String tableName) throws SQLException {
