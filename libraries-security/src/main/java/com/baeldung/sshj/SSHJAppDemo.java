@@ -97,29 +97,21 @@ public class SSHJAppDemo {
     }
 
     public static LocalPortForwarder localPortForwarding(SSHClient ssh) throws IOException, InterruptedException {
-
         LocalPortForwarder locForwarder;
         System.out.println(ssh.getRemoteHostname());
-        //final Parameters params = new Parameters("localhost", 8081, "google.com", 80);
         final Parameters params = new Parameters(ssh.getRemoteHostname(), 8081, "google.com", 80);
         final ServerSocket ss = new ServerSocket();
         ss.setReuseAddress(true);
         ss.bind(new InetSocketAddress(params.getLocalHost(), params.getLocalPort()));
 
-        // try {
-            locForwarder = ssh.newLocalPortForwarder(params, ss);
-            // locForwarder.listen();
-            new Thread(() -> {
-                try {
-                    locForwarder.listen();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }).start();
-
-            /*} finally {
-                ss.close();
-            }*/
+        locForwarder = ssh.newLocalPortForwarder(params, ss);
+        new Thread(() -> {
+            try {
+                locForwarder.listen();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }).start();
 
         return locForwarder;
     }
@@ -131,20 +123,20 @@ public class SSHJAppDemo {
             .getKeepAlive()
             .setKeepAliveInterval(5);
 
-            rpf = ssh.getRemotePortForwarder();
+        rpf = ssh.getRemotePortForwarder();
 
-            new Thread(() -> {
-                try {
-                    rpf.bind(new Forward(8083), new SocketForwardingConnectListener(new InetSocketAddress("google.com", 80)));
-                    ssh.getTransport()
-                        .join();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }).start();
+        new Thread(() -> {
+            try {
+                rpf.bind(new Forward(8083), new SocketForwardingConnectListener(new InetSocketAddress("google.com", 80)));
+                ssh.getTransport()
+                    .join();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }).start();
 
-            response = "success";
-            return response;
+        response = "success";
+        return response;
     }
 
     public static String KeepAlive(String hostName, String userName, String password) throws IOException, InterruptedException {
