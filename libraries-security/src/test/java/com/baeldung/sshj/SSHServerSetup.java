@@ -4,6 +4,8 @@
 package com.baeldung.sshj;
 
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import org.apache.sshd.common.config.keys.AuthorizedKeyEntry;
 import org.apache.sshd.common.config.keys.PublicKeyEntry;
+import org.apache.sshd.common.file.virtualfs.VirtualFileSystemFactory;
 import org.apache.sshd.common.forward.PortForwardingEventListener;
 import org.apache.sshd.scp.server.ScpCommandFactory;
 import org.apache.sshd.server.SshServer;
@@ -32,13 +35,15 @@ public class SSHServerSetup {
     public static final String USERNAME = "testuser";
     public static final String PASSWORD = "testpassword";
     public static final String UPLOAD_DIRECTORY = "/upload/";
-
     private static final Map<String, PublicKeyEntry> authorizedKeys = new ConcurrentHashMap<>();
 
     public static SshServer setupServer() {
+        Path resourcesPath = Paths.get("src", "main", "resources");
+        Path realDirectory = resourcesPath.resolve("home")
+            .toAbsolutePath();
         SshServer sshd = null;
         try {
-            addAuthorizedKey("testuser",
+            addAuthorizedKey(USERNAME,
                 "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCxv4COUoJYtz6S1PEUSBvNWP+uy1dmDXek+f6L+wzPs6VzAa+pvn/Qxf7gm7OUVZtvkrxsgaJ0jPfWKFOnqvyO4p/UrpaLTIyqZdD4Rr+uIUW5qn14oiVqbqEOst21oX/NiJOD/WMCeONdLzkKxWpZ7waaD1dHiaYS69FHQTWNTA7D0pcWZlv7+8x2tY3toAUFO1Jq+bAmq1mkShrSojfbWCD1mNgy3DZp+rDxrbhvpQQYs1bcrx3h9WsmFSSIFKhNio+qGPo8xjDhPXSVedK/V1XWhI6SCHLtCmoktvjQnbr6TGv/Nao5gbqKnoBIV3gsuJryOXO95MIB2i8nvRjtmqFYNezYLfNtcdY0OpkEVGaFwSD4852NYS2FVmefdK3ZX5iCBkIZC6wH09T6ysaBFtSEnv87tFmjEBD4NDP8CdWiv750meZOb7ip6X5DWfhzFJgJ52us3tM0/+BVJ8iIqqG1lqCtZig4TI7i7r+RU7XDhQtpOVjJ6Q/3oxr98Wc= testuser@localhost");
 
             sshd = SshServer.setUpDefaultServer();
@@ -69,6 +74,10 @@ public class SSHServerSetup {
             subFactList.add(new SftpSubsystemFactory());
 
             sshd.setSubsystemFactories(subFactList);
+
+            VirtualFileSystemFactory fsFactory = new VirtualFileSystemFactory();
+            fsFactory.setUserHomeDir(USERNAME, realDirectory);
+            sshd.setFileSystemFactory(fsFactory);
 
             sshd.setShellFactory(new ProcessShellFactory("/bin/sh", "-i", "-l"));
             

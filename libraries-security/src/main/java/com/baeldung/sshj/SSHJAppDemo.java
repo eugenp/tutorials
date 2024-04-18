@@ -40,7 +40,7 @@ public class SSHJAppDemo {
 
     public static SSHClient loginPubKey(String host, String username, String privateFilePath, int port) throws IOException {
         final SSHClient client = new SSHClient();
-        File privateKeyFile = new File(privateFilePath + "\\private_key");
+        File privateKeyFile = new File(privateFilePath + "/private_key");
         try {
             KeyProvider privateKey = client.loadKeys(privateKeyFile.getPath());
             client.addHostKeyVerifier(new PromiscuousVerifier());
