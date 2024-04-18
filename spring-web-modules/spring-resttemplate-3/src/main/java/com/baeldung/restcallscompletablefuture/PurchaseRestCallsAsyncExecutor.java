@@ -4,11 +4,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import java.net.URI;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 import java.util.function.BiFunction;
 
 import static java.lang.String.format;
@@ -18,7 +16,7 @@ public class PurchaseRestCallsAsyncExecutor {
 
     private final RestTemplate restTemplate;
 
-    private static final URI BASE_URL = URI.create("https://internal-api.com");
+    private static final String BASE_URL ="https://internal-api.com";
 
     public PurchaseRestCallsAsyncExecutor(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;

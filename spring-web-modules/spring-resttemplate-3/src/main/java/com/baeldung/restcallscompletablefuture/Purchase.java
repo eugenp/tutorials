@@ -1,11 +1,8 @@
 package com.baeldung.restcallscompletablefuture;
 
 public class Purchase {
-
     private String orderDescription;
-
     private String paymentDescription;
-
     private String buyerName;
     private String orderId;
     private String paymentId;
