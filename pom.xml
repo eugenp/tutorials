@@ -401,7 +401,6 @@
 
                 <module>spring-exceptions</module>
                 <module>spring-integration</module>
-                <module>spring-jenkins-pipeline</module>
 
                 <!-- <module>spring-roo</module> --> <!-- Not supported JAVA-17327 -->
 
@@ -537,7 +536,6 @@
 
                 <module>spring-exceptions</module>
                 <module>spring-integration</module>
-                <module>spring-jenkins-pipeline</module>
 
                 <!-- <module>spring-roo</module> --> <!-- Not supported JAVA-17327 -->
 
@@ -747,7 +745,6 @@
                 <module>lucene</module>
                 <module>mapstruct</module>
                 <module>maven-modules</module>
-                <module>mesos-marathon</module>
                 <module>messaging-modules</module>
                 <module>metrics</module>
                 <module>microservices-modules</module>
@@ -811,7 +808,6 @@
                 <module>spring-ejb-modules</module>
                 <module>spring-exceptions</module>
                 <!--<module>spring-integration</module>--><!-- failing after upgrading to jdk17-->
-                <module>spring-jenkins-pipeline</module>
                 <module>spring-jersey</module>
                 <!--<module>spring-jinq</module>-->
                 <module>spring-kafka-2</module>
@@ -996,7 +992,6 @@
                 <module>lucene</module>
                 <module>mapstruct</module>
                 <module>maven-modules</module>
-                <module>mesos-marathon</module>
                 <module>messaging-modules</module>
                 <module>metrics</module>
                 <module>microservices-modules</module>
@@ -1060,7 +1055,6 @@
                 <module>spring-ejb-modules</module>
                 <module>spring-exceptions</module>
                 <!--<module>spring-integration</module>--><!-- failing after upgrading to jdk17-->
-                <module>spring-jenkins-pipeline</module>
                 <module>spring-jersey</module>
                 <!--<module>spring-jinq</module>-->
                 <module>spring-kafka-2</module>
