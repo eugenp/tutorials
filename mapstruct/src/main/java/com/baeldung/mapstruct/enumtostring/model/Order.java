@@ -6,7 +6,6 @@ package com.baeldung.mapstruct.enumtostring.model;
 public class Order {
     private Long id;
     private String summary;
-    private OrderStatus orderStatus;
     private OrderType orderType;
 
     /**
@@ -25,24 +24,6 @@ public class Order {
      */
     public void setId(Long id) {
         this.id = id;
-    }
-
-    /**
-     * Gets order status.
-     *
-     * @return the order status
-     */
-    public OrderStatus getOrderStatus() {
-        return orderStatus;
-    }
-
-    /**
-     * Sets order status.
-     *
-     * @param orderStatus the order status
-     */
-    public void setOrderStatus(OrderStatus orderStatus) {
-        this.orderStatus = orderStatus;
     }
 
     /**

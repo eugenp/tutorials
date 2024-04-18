@@ -9,7 +9,7 @@ import org.mapstruct.factory.Mappers;
 /**
  * The order mapper.
  */
-@Mapper(uses = {OrderStatusMapper.class, OrderTypeMapper.class})
+@Mapper(uses = {OrderTypeMapper.class})
 public interface OrderMapper {
     /**
      * The order mapper.
@@ -23,6 +23,5 @@ public interface OrderMapper {
      * @return the external order
      */
     @Mapping(target = "orderType", source = "orderType", qualifiedByName = "orderTypeToString")
-    @Mapping(target = "orderStatus", source = "orderStatus", qualifiedByName = "orderStatusToString")
     ExternalOrder toExternalOrder(Order source);
 }
