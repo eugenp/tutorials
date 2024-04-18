@@ -71,6 +71,7 @@ public class SSHJLibExampleUnitTest {
         privateKeyPath = resourcesPath.resolve("PrivateKeys")
             .toAbsolutePath()
             .toString();
+        FileUtils.cleanDirectory(new File(downLoadPath));
     }
 
     @AfterClass

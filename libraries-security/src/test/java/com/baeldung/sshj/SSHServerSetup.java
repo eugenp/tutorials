@@ -4,9 +4,6 @@
 package com.baeldung.sshj;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,9 +40,6 @@ public class SSHServerSetup {
         try {
             addAuthorizedKey("testuser",
                 "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCxv4COUoJYtz6S1PEUSBvNWP+uy1dmDXek+f6L+wzPs6VzAa+pvn/Qxf7gm7OUVZtvkrxsgaJ0jPfWKFOnqvyO4p/UrpaLTIyqZdD4Rr+uIUW5qn14oiVqbqEOst21oX/NiJOD/WMCeONdLzkKxWpZ7waaD1dHiaYS69FHQTWNTA7D0pcWZlv7+8x2tY3toAUFO1Jq+bAmq1mkShrSojfbWCD1mNgy3DZp+rDxrbhvpQQYs1bcrx3h9WsmFSSIFKhNio+qGPo8xjDhPXSVedK/V1XWhI6SCHLtCmoktvjQnbr6TGv/Nao5gbqKnoBIV3gsuJryOXO95MIB2i8nvRjtmqFYNezYLfNtcdY0OpkEVGaFwSD4852NYS2FVmefdK3ZX5iCBkIZC6wH09T6ysaBFtSEnv87tFmjEBD4NDP8CdWiv750meZOb7ip6X5DWfhzFJgJ52us3tM0/+BVJ8iIqqG1lqCtZig4TI7i7r+RU7XDhQtpOVjJ6Q/3oxr98Wc= testuser@localhost");
-
-            Path uploadDirectory = Paths.get(UPLOAD_DIRECTORY);
-            Files.createDirectories(uploadDirectory);
 
             sshd = SshServer.setUpDefaultServer();
             sshd.setPort(SSH_PORT);
@@ -93,7 +87,7 @@ public class SSHServerSetup {
 
             sshd.start();
 
-            System.out.println("SSH server started on port " + SSH_PORT + " with upload directory: " + UPLOAD_DIRECTORY);
+            System.out.println("SSH server started on port " + SSH_PORT);
         } catch (IOException e) {
             e.printStackTrace();
         }
