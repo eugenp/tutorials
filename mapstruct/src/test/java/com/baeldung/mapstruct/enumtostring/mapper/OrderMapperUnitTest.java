@@ -1,18 +1,29 @@
 package com.baeldung.mapstruct.enumtostring.mapper;
 
-import org.junit.jupiter.api.Test;
+import com.baeldung.mapstruct.enumtostring.model.ExternalOrder;
+import com.baeldung.mapstruct.enumtostring.model.Order;
+import com.baeldung.mapstruct.enumtostring.model.OrderStatus;
+import com.baeldung.mapstruct.enumtostring.model.OrderType;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+
+import static org.junit.Assert.assertEquals;
 
 class OrderMapperUnitTest {
 
-    @Test
-    void toExternalOrder() {
-    }
+    private final OrderMapper orderMapper = OrderMapper.INSTANCE;
 
-    @Test
-    void toOrderStatus() {
-    }
+    @ParameterizedTest
+    @CsvSource({"1,Holiday preparations,RECEIVED,SALE"})
+    void toExternalOrder(Long orderId, String orderSummary, OrderStatus orderStatus, OrderType orderType) {
+        Order order = new Order();
+        order.setId(orderId);
+        order.setSummary(orderSummary);
+        order.setOrderStatus(orderStatus);
+        order.setOrderType(orderType);
 
-    @Test
-    void toStringOrderStatus() {
+        final ExternalOrder externalOrder = orderMapper.toExternalOrder(order);
+        assertEquals("Ids do not match.", orderId, externalOrder.getId());
+
     }
 }

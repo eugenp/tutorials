@@ -2,8 +2,8 @@ package com.baeldung.mapstruct.enumtostring.mapper;
 
 import com.baeldung.mapstruct.enumtostring.model.ExternalOrder;
 import com.baeldung.mapstruct.enumtostring.model.Order;
-import com.baeldung.mapstruct.enumtostring.model.OrderStatus;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 /**
@@ -22,13 +22,7 @@ public interface OrderMapper {
      * @param source the source order
      * @return the external order
      */
+    @Mapping(target = "orderType", source = "orderType", qualifiedByName = "orderTypeToString")
+    @Mapping(target = "orderStatus", source = "orderStatus", qualifiedByName = "orderStatusToString")
     ExternalOrder toExternalOrder(Order source);
-
-    /**
-     * Maps string order status to enum order status.
-     *
-     * @param source the source
-     * @return the order status enum
-     */
-    OrderStatus toOrderStatus(String source);
 }

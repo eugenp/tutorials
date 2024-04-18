@@ -2,6 +2,7 @@ package com.baeldung.mapstruct.enumtostring.mapper;
 
 import com.baeldung.mapstruct.enumtostring.model.OrderStatus;
 import org.mapstruct.Mapper;
+import org.mapstruct.Named;
 import org.mapstruct.factory.Mappers;
 
 /**
@@ -20,6 +21,7 @@ public interface OrderStatusMapper {
      * @param source the source order status
      * @return the string value for the enum
      */
+    @Named("orderStatusToString")
     String toString(OrderStatus source);
 
     /**

@@ -18,6 +18,13 @@ class OrderTypeMapperUnitTest {
     }
 
     @ParameterizedTest
+    @CsvSource({"BULK,Big Savings", "REGULAR,Daily Needs", "SALE,Season Sale", "SUBSCRIPTION,Subscribe to Save"})
+    void testToDisplayString(OrderType source, String expected) {
+        final String target = mapper.toDisplayString(source);
+        assertEquals(expected, target);
+    }
+
+    @ParameterizedTest
     @CsvSource({"BULK,BULK", "REGULAR,REGULAR", "SALE,SALE", "SUBSCRIPTION,SUBSCRIPTION"})
     void toOrderType(String source, OrderType expected) {
         final OrderType target = mapper.toOrderType(source);
