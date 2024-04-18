@@ -26,7 +26,10 @@
         <dependency>
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
-            <version>${spring-kafka.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka-test</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.kafka</groupId>
@@ -47,11 +50,6 @@
             <artifactId>commons-lang3</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.kafka</groupId>
-            <artifactId>spring-kafka-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.testcontainers</groupId>
             <artifactId>kafka</artifactId>
             <version>${testcontainers-kafka.version}</version>
@@ -70,9 +68,8 @@
     </dependencies>
 
     <properties>
-        <testcontainers-kafka.version>1.19.3</testcontainers-kafka.version>
-        <spring-kafka.version>3.1.2</spring-kafka.version>
-        <kafka-streams.version>3.6.1</kafka-streams.version>
+        <testcontainers-kafka.version>1.19.7</testcontainers-kafka.version>
+        <kafka-streams.version>3.7.0</kafka-streams.version>
         <start-class>com.baeldung.spring.kafka.dlt.KafkaDltApplication</start-class>
     </properties>
 

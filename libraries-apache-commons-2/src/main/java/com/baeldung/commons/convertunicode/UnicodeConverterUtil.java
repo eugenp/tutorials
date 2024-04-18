@@ -1,9 +1,9 @@
 package com.baeldung.commons.convertunicode;
 
-import org.apache.commons.text.StringEscapeUtils;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import org.apache.commons.text.StringEscapeUtils;
 
 public class UnicodeConverterUtil {
 
@@ -15,7 +15,7 @@ public class UnicodeConverterUtil {
         Pattern pattern = Pattern.compile("\\\\u[0-9a-fA-F]{4}");
         Matcher matcher = pattern.matcher(input);
 
-        StringBuilder decodedString = new StringBuilder();
+        StringBuffer decodedString = new StringBuffer();
 
         while (matcher.find()) {
             String unicodeSequence = matcher.group();

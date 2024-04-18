@@ -38,25 +38,25 @@ public class UpdateOrInsertUnitTest {
     }
 
     @Test
-    void givenCreditCards_whenUpdateOrInsert0Executed_thenUpserted() {
+    void givenCreditCards_whenUpdateOrInsertUsingRepositoryExecuted_thenUpserted() {
         // insert test
         CreditCard newCreditCard = buildCreditCard();
-        CreditCard cardExists = creditCardRepository.findByCardNumber(newCreditCard.getCardNumber());
-        assertNull(cardExists);
+        CreditCard existingCardByCardNumber = creditCardRepository.findByCardNumber(newCreditCard.getCardNumber());
+        assertNull(existingCardByCardNumber);
 
-        creditCardLogic.updateOrInsert0(newCreditCard);
+        creditCardLogic.updateOrInsertUsingRepository(newCreditCard);
 
-        cardExists = creditCardRepository.findByCardNumber(newCreditCard.getCardNumber());
-        assertNotNull(cardExists);
+        existingCardByCardNumber = creditCardRepository.findByCardNumber(newCreditCard.getCardNumber());
+        assertNotNull(existingCardByCardNumber);
 
         // update test
         CreditCard cardForUpdate = existingCard;
         String beforeExpiryDate = cardForUpdate.getExpiryDate();
         cardForUpdate.setExpiryDate("2029-08-29");
-        cardExists = creditCardRepository.findByCardNumber(cardForUpdate.getCardNumber());
-        assertNotNull(cardExists);
+        existingCardByCardNumber = creditCardRepository.findByCardNumber(cardForUpdate.getCardNumber());
+        assertNotNull(existingCardByCardNumber);
 
-        creditCardLogic.updateOrInsert0(cardForUpdate);
+        creditCardLogic.updateOrInsertUsingRepository(cardForUpdate);
 
         assertNotEquals("2029-08-29", beforeExpiryDate);
         CreditCard updatedCard = creditCardRepository.findById(cardForUpdate.getId()).get();
@@ -64,23 +64,23 @@ public class UpdateOrInsertUnitTest {
     }
 
     @Test
-    void givenCreditCards_whenUpdateOrInsert1Executed_thenUpserted() {
+    void givenCreditCards_whenUpdateOrInsertUsingCustomLogicExecuted_thenUpserted() {
         // insert test
         CreditCard newCreditCard = buildCreditCard();
-        CreditCard cardExists = creditCardRepository.findByCardNumber(newCreditCard.getCardNumber());
-        assertNull(cardExists);
+        CreditCard existingCardByCardNumber = creditCardRepository.findByCardNumber(newCreditCard.getCardNumber());
+        assertNull(existingCardByCardNumber);
 
-        creditCardLogic.updateOrInsert1(newCreditCard);
+        creditCardLogic.updateOrInsertUsingCustomLogic(newCreditCard);
 
-        cardExists = creditCardRepository.findByCardNumber(newCreditCard.getCardNumber());
-        assertNotNull(cardExists);
+        existingCardByCardNumber = creditCardRepository.findByCardNumber(newCreditCard.getCardNumber());
+        assertNotNull(existingCardByCardNumber);
 
         // update test
         CreditCard cardForUpdate = existingCard;
         String beforeExpiryDate = cardForUpdate.getExpiryDate();
         cardForUpdate.setExpiryDate("2029-08-29");
 
-        creditCardLogic.updateOrInsert1(cardForUpdate);
+        creditCardLogic.updateOrInsertUsingCustomLogic(cardForUpdate);
 
         assertNotEquals("2029-08-29", beforeExpiryDate);
         CreditCard updatedCard = creditCardRepository.findById(cardForUpdate.getId()).get();
@@ -88,23 +88,23 @@ public class UpdateOrInsertUnitTest {
     }
 
     @Test
-    void givenCreditCards_whenUpdateOrInsert2Executed_thenUpserted() {
+    void givenCreditCards_whenUpdateOrInsertUsingBuiltInFeatureExecuted_thenUpserted() {
         // insert test
         CreditCard newCreditCard = buildCreditCard();
-        CreditCard cardExists = creditCardRepository.findByCardNumber(newCreditCard.getCardNumber());
-        assertNull(cardExists);
+        CreditCard existingCardByCardNumber = creditCardRepository.findByCardNumber(newCreditCard.getCardNumber());
+        assertNull(existingCardByCardNumber);
 
-        creditCardLogic.updateOrInsert2(newCreditCard);
+        creditCardLogic.updateOrInsertUsingBuiltInFeature(newCreditCard);
 
-        cardExists = creditCardRepository.findByCardNumber(newCreditCard.getCardNumber());
-        assertNotNull(cardExists);
+        existingCardByCardNumber = creditCardRepository.findByCardNumber(newCreditCard.getCardNumber());
+        assertNotNull(existingCardByCardNumber);
 
         // update test
         CreditCard cardForUpdate = existingCard;
         String beforeExpiryDate = cardForUpdate.getExpiryDate();
         cardForUpdate.setExpiryDate("2029-08-29");
 
-        creditCardLogic.updateOrInsert2(cardForUpdate);
+        creditCardLogic.updateOrInsertUsingBuiltInFeature(cardForUpdate);
 
         assertNotEquals("2029-08-29", beforeExpiryDate);
         CreditCard updatedCard = creditCardRepository.findById(cardForUpdate.getId()).get();
@@ -120,7 +120,6 @@ public class UpdateOrInsertUnitTest {
         return card;
     }
 
-    @Transactional
     private CreditCard createAndReturnCreditCards() {
         CreditCard card = new CreditCard();
         card.setCardNumber("3494323432112222");

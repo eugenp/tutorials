@@ -1,5 +1,2 @@
-## Spring Data JPA - Query
-
-This module contains articles about querying data using Spring Data JPA.
-
-### Relevant Articles:
+### Relevant Articles
+- [Querying JSONB Columns Using Spring Data JPA](https://www.baeldung.com/spring-data-jpa-querying-jsonb-columns)

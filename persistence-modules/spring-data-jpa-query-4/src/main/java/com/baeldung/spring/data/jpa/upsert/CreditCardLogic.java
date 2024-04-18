@@ -22,10 +22,10 @@ public class CreditCardLogic {
     @Autowired
     private EntityManager em;
 
-    public void updateOrInsert1(CreditCard creditCard) {
-        CreditCard existedCard = creditCardRepository.findByCardNumber(creditCard.getCardNumber());
-        if (existedCard != null) {
-            existedCard.setExpiryDate(creditCard.getExpiryDate());
+    public void updateOrInsertUsingCustomLogic(CreditCard creditCard) {
+        CreditCard existingCard = creditCardRepository.findByCardNumber(creditCard.getCardNumber());
+        if (existingCard != null) {
+            existingCard.setExpiryDate(creditCard.getExpiryDate());
             creditCardRepository.save(creditCard);
         } else {
             creditCardRepository.save(creditCard);
@@ -33,7 +33,7 @@ public class CreditCardLogic {
     }
 
     @Transactional
-    public void updateOrInsert2(CreditCard creditCard) {
+    public void updateOrInsertUsingBuiltInFeature(CreditCard creditCard) {
         Long id = creditCard.getId();
         if (creditCard.getId() == null) {
             BigInteger nextVal = (BigInteger) em.createNativeQuery("SELECT nextval('credit_card_id_seq')")
@@ -56,7 +56,7 @@ public class CreditCardLogic {
         query.executeUpdate();
     }
 
-    public void updateOrInsert0(CreditCard creditCard) {
+    public void updateOrInsertUsingRepository(CreditCard creditCard) {
         creditCardRepository.updateOrInsert(creditCard);
     }
 }

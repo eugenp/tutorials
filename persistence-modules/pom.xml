@@ -24,6 +24,7 @@
         <module>core-java-persistence-2</module>
         <module>core-java-persistence-3</module>
         <module>couchbase</module>
+        <module>duckdb</module>
         <module>elasticsearch</module>
         <module>flyway</module>
         <module>flyway-repair</module>
@@ -35,6 +36,7 @@
         <module>hibernate-exceptions</module>
         <module>hibernate-libraries</module>
         <module>hibernate-jpa</module>
+        <module>hibernate-jpa-2</module>
         <module>hibernate-queries</module>
         <module>hibernate-enterprise</module>
         <module>influxdb</module>
@@ -68,6 +70,7 @@
         <module>spring-boot-persistence-mongodb</module>
         <module>spring-boot-persistence-mongodb-2</module>
         <module>spring-boot-persistence-mongodb-3</module>
+        <module>spring-boot-persistence-mongodb-4</module>
         <module>spring-data-arangodb</module>
         <!--<module>spring-data-cassandra</module>-->   <!-- failing after upgrading to jdk17. JDK 17 compatibility in progress CASSANDRA-16895 -->
         <module>spring-data-cassandra-test</module>
@@ -88,6 +91,7 @@
         <module>spring-data-jpa-query</module>
         <module>spring-data-jpa-query-2</module>
         <module>spring-data-jpa-query-3</module>
+        <module>spring-data-jpa-query-4</module>
         <module>spring-data-jpa-repo</module>
         <module>spring-data-jpa-repo-2</module>
         <module>spring-data-jpa-repo-4</module>
@@ -107,6 +111,7 @@
         <module>spring-hibernate-6</module>
         <module>spring-jpa</module>
         <module>spring-jpa-2</module>
+        <module>spring-jpa-3</module>
         <module>spring-jdbc</module>
 	    <module>spring-jdbc-2</module>
         <!--<module>spring-jooq</module>-->
