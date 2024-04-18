@@ -77,12 +77,12 @@ public class SSHJAppDemo {
     }
 
     public static void scpDownLoad(SSHClient ssh, String downloadPath, String fileName) throws IOException {
+        ssh.useCompression();
         ssh.newSCPFileTransfer()
             .download("/upload/" + fileName, downloadPath);
     }
 
     public static void SFTPUpload(SSHClient ssh, String filePath) throws IOException {
-        ssh.useCompression();
         final SFTPClient sftp = ssh.newSFTPClient();
         sftp.put(new FileSystemFile(filePath), "/upload/");
     }
