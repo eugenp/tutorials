@@ -21,6 +21,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Stream;
 
+import com.baeldung.pdfmerge.PDFMerge;
 import com.itextpdf.text.DocumentException;
 
 public class PDFMergeUnitTest {
