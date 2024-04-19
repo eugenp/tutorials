@@ -812,6 +812,7 @@
                 <!--<module>spring-jinq</module>-->
                 <module>spring-kafka-2</module>
                 <module>spring-kafka-3</module>
+                <module>spring-kafka-4</module>
                 <module>spring-kafka</module>
                 <module>spring-katharsis</module> <!-- Upgrade to Boot 3 not possible as the project has not been upgraded to Support Jakarta dependencies-->
                 <module>spring-mobile</module>
@@ -1059,6 +1060,7 @@
                 <!--<module>spring-jinq</module>-->
                 <module>spring-kafka-2</module>
                 <module>spring-kafka-3</module>                     
+                <module>spring-kafka-4</module>
                 <module>spring-kafka</module>
                 <module>spring-katharsis</module> <!-- Upgrade to Boot 3 not possible as the project has not been upgraded to Support Jakarta dependencies-->
                 <module>spring-mobile</module>
