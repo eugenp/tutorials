@@ -91,6 +91,7 @@
         <module>spring-boot-redis</module>
         <module>spring-boot-cassandre</module>
         <module>spring-boot-react</module>
+        <module>spring-caching-3</module>
         <!-- <module>spring-boot-3</module> --> <!-- JAVA-20931 -->
         <module>spring-boot-3-grpc</module>
         <module>spring-boot-3-native</module>
@@ -113,6 +114,7 @@
         <module>spring-boot-graalvm-docker</module>
         <module>spring-boot-validations</module>
         <module>spring-boot-openapi</module>
+        <module>spring-boot-brave</module>
     </modules>
 
     <dependencyManagement>

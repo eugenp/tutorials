@@ -28,6 +28,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aspects</artifactId>
+            <version>${spring-aspects.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -46,6 +47,7 @@
 
     <properties>
         <spring-retry.version>2.0.3</spring-retry.version>
+        <spring-aspects.version>6.1.5</spring-aspects.version>
     </properties>
 
 </project>

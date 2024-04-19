@@ -58,6 +58,10 @@
             <version>${querydsl.version}</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-ant</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
