@@ -1,14 +1,14 @@
 package com.baeldung.lombok;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 public class RequiredArgsPersonUnitTest {
     @Test
     public void whenUsingRequiredArgsConstructor_initializedFinalFieldsWillBeIgnored() {
         RequiredArgsPerson person = new RequiredArgsPerson("Hispanic", "Isabela");
-        Assertions.assertEquals("unknown", person.getNickname());
+        assertEquals("unknown", person.getNickname());
     }
 
     @Test
