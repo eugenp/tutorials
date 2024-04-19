@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.Date;
@@ -47,9 +48,8 @@ public class CompareYesterdayUnitTest {
     void givenYesterdayDate_whenCompareWithDateMilliseconds_returnTrue() {
         // Create a Date object representing yesterday
         Date expectedDate = new Date(System.currentTimeMillis() - (1000 * 60 * 60 * 24));
-        long yesterdayMidnightMillis = Instant.now()
-            .minus(1, ChronoUnit.DAYS)
-            .toEpochMilli();
+        ZonedDateTime yesterdayMidnight = ZonedDateTime.now().minusDays(1).truncatedTo(ChronoUnit.DAYS);
+        long yesterdayMidnightMillis = yesterdayMidnight.toInstant().toEpochMilli();
 
         boolean isEqualToYesterday = expectedDate.getTime() >= yesterdayMidnightMillis && expectedDate.getTime() < yesterdayMidnightMillis + 86_400_000;
         assertTrue(isEqualToYesterday);
@@ -59,9 +59,8 @@ public class CompareYesterdayUnitTest {
     void givenTodayDate_whenCompareWithDateMilliseconds_returnFalse() {
         // Create a Date object representing yesterday
         Date expectedDate = new Date();
-        long yesterdayMidnightMillis = Instant.now()
-            .minus(1, ChronoUnit.DAYS)
-            .toEpochMilli();
+        ZonedDateTime yesterdayMidnight = ZonedDateTime.now().minusDays(1).truncatedTo(ChronoUnit.DAYS);
+        long yesterdayMidnightMillis = yesterdayMidnight.toInstant().toEpochMilli();
 
         boolean isEqualToYesterday = expectedDate.getTime() >= yesterdayMidnightMillis && expectedDate.getTime() < yesterdayMidnightMillis + 86_400_000;
         assertFalse(isEqualToYesterday);
