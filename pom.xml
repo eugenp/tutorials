@@ -170,6 +170,9 @@
                     <excludeRoots>
                         <excludeRoot>target/generated-sources</excludeRoot>
                     </excludeRoots>
+                    <excludeRoots>
+                        <excludeRoot>src/main</excludeRoot>
+                    </excludeRoots>
                 </configuration>
                 <executions>
                     <execution>
