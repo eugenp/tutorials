@@ -13,15 +13,16 @@ class OrderMapperUnitTest {
     private final OrderMapper orderMapper = OrderMapper.INSTANCE;
 
     @ParameterizedTest
-    @CsvSource({"1,Holiday preparations,SALE"})
-    void toExternalOrder(Long orderId, String orderSummary, OrderType orderType) {
+    @CsvSource({"1,Holiday preparations,SALE,Season Sale"})
+    void whnOrderMappedToExternalOrder_thenExternalOrderGetsOrderDetails(Long orderId, String orderSummary, OrderType orderType, String externalOrderType) {
         Order order = new Order();
         order.setId(orderId);
         order.setSummary(orderSummary);
         order.setOrderType(orderType);
 
         final ExternalOrder externalOrder = orderMapper.toExternalOrder(order);
-        assertEquals("Ids do not match.", orderId, externalOrder.getId());
-
+        assertEquals("ID does not match.", orderId, externalOrder.getId());
+        assertEquals("Summary does not match.", orderSummary, externalOrder.getSummary());
+        assertEquals("Order type does not match.", externalOrderType, externalOrder.getOrderType());
     }
 }

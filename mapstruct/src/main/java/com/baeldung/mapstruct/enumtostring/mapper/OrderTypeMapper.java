@@ -1,6 +1,7 @@
 package com.baeldung.mapstruct.enumtostring.mapper;
 
 import com.baeldung.mapstruct.enumtostring.model.OrderType;
+import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Named;
 import org.mapstruct.ValueMapping;
@@ -34,7 +35,7 @@ public interface OrderTypeMapper {
     @ValueMapping(target = "Big Savings", source = "BULK")
     @ValueMapping(target = "Daily Needs", source = "REGULAR")
     @ValueMapping(target = "Season Sale", source = "SALE")
-    @ValueMapping(target = "Subscribe to Save", source = "SUBSCRIPTION")
+    @Named("orderTypeToDisplayString")
     String toDisplayString(OrderType source);
 
     /**
@@ -43,5 +44,6 @@ public interface OrderTypeMapper {
      * @param source the source
      * @return the order type enum
      */
+    @InheritInverseConfiguration(name = "toDisplayString")
     OrderType toOrderType(String source);
 }

@@ -11,22 +11,23 @@ class OrderTypeMapperUnitTest {
     private final OrderTypeMapper mapper = OrderTypeMapper.INSTANCE;
 
     @ParameterizedTest
-    @CsvSource({"BULK,BULK", "REGULAR,REGULAR", "SALE,SALE", "SUBSCRIPTION,SUBSCRIPTION"})
-    void testToString(OrderType source, String expected) {
+    @CsvSource({"BULK,BULK", "REGULAR,REGULAR", "SALE,SALE"})
+    void whenOrderTypeIsMapped_thenGetsNameString(OrderType source, String expected) {
         final String target = mapper.toString(source);
         assertEquals(expected, target);
     }
 
     @ParameterizedTest
-    @CsvSource({"BULK,Big Savings", "REGULAR,Daily Needs", "SALE,Season Sale", "SUBSCRIPTION,Subscribe to Save"})
-    void testToDisplayString(OrderType source, String expected) {
+    @CsvSource({"BULK,Big Savings", "REGULAR,Daily Needs", "SALE,Season Sale"})
+    void whenOrderTypeIsMapped_thenGetsDisplayString(OrderType source, String expected) {
         final String target = mapper.toDisplayString(source);
         assertEquals(expected, target);
     }
 
     @ParameterizedTest
-    @CsvSource({"BULK,BULK", "REGULAR,REGULAR", "SALE,SALE", "SUBSCRIPTION,SUBSCRIPTION"})
-    void toOrderType(String source, OrderType expected) {
+    @CsvSource(
+            {"BULK,BULK", "REGULAR,REGULAR", "SALE,SALE", "Big Savings,BULK", "Daily Needs,REGULAR", "Season Sale,SALE"})
+    void whenStringIsMapped_thenGetsOrderType(String source, OrderType expected) {
         final OrderType target = mapper.toOrderType(source);
         assertEquals(expected, target);
     }

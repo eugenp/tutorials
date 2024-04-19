@@ -22,6 +22,6 @@ public interface OrderMapper {
      * @param source the source order
      * @return the external order
      */
-    @Mapping(target = "orderType", source = "orderType", qualifiedByName = "orderTypeToString")
+    @Mapping(target = "orderType", source = "orderType", qualifiedByName = "orderTypeToDisplayString")
     ExternalOrder toExternalOrder(Order source);
 }
