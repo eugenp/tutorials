@@ -17,7 +17,7 @@ public class GZipUnitTest {
 
 	@Test
 	void whenCompressingUsingGZip_thenGetCompressedByteArray() throws IOException {
-		String payload = "This is a sample text to test methods gzip and gunzip. The gzip algorithm will compress this string. "
+		String payload = "This is a sample text to test method gzip. The gzip algorithm will compress this string. "
 				+ "The result will be smaller than this string.";
 		ByteArrayOutputStream os = new ByteArrayOutputStream();
 		GZip.gzip(new ByteArrayInputStream(payload.getBytes()), os);
