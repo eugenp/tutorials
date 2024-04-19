@@ -13,10 +13,10 @@ import java.io.IOException;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-public class ImageToBufferedImageUnitTest {
+public class ImageToBufferedImageIntegrationTest {
     Image image = ImageIO.read(new File("src/main/resources/images/sampleImage.jpg"));
 
-    public ImageToBufferedImageUnitTest() throws IOException {
+    public ImageToBufferedImageIntegrationTest() throws IOException {
     }
 
     @Test

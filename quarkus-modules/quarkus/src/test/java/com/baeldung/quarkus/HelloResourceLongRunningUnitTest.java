@@ -7,7 +7,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
 
 @QuarkusTest
-public class HelloResourceUnitTest {
+public class HelloResourceLongRunningUnitTest {
 
     @Test
     public void testHelloEndpoint() {
