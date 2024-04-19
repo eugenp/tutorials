@@ -95,7 +95,7 @@ public class SSHJLibExampleUnitTest {
     }
     
     @Test
-    public void given_whenPingCmdExecuted_thenResultReturned() throws IOException {
+    public void given_whenCmdExecuted_thenResultReturned() throws IOException {
         String response = SSHJAppDemo.executeCommand(rebexSshClient);
         assertEquals("success", response, "command executed on the server successfully");
     }
