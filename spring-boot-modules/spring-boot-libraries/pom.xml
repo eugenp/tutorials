@@ -131,6 +131,11 @@
             <artifactId>jcache</artifactId>
             <version>${caffeine.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.nayuki</groupId>
+            <artifactId>qrcodegen</artifactId>
+            <version>${qrcodegen.version}</version>
+        </dependency>
     </dependencies>
 
     <repositories>
@@ -239,6 +244,7 @@
         <bucket4j.version>8.9.0</bucket4j.version>
         <bucket4j-spring-boot-starter.version>0.10.3</bucket4j-spring-boot-starter.version>
         <caffeine.version>3.1.8</caffeine.version>
+        <qrcodegen.version>1.8.0</qrcodegen.version>
     </properties>
 
 </project>
