@@ -64,7 +64,7 @@ public class JsonNodeToCollectionUnitTest {
         module.addDeserializer(List.class, new CustomPersonListDeserializer());
         objectMapper.registerModule(module);
         List<Person> personList = objectMapper.convertValue(personsNode, new TypeReference<List<Person>>() {
-        });
+          });
 
         validateList(personList);
     }

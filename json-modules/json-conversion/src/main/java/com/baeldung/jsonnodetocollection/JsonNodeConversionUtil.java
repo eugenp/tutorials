@@ -29,8 +29,8 @@ public class JsonNodeConversionUtil {
     public static Map<String, Person> manualJsonNodeToMap(JsonNode jsonNode) {
         Map<String, Person> mapOfIdToPerson = new HashMap<>();
         jsonNode.fields()
-                .forEachRemaining(node -> mapOfIdToPerson.put(node.getKey(),
-                        new Person(node.getValue().get("name").asText(), node.getValue().get("age").asInt())));
+          .forEachRemaining(node -> mapOfIdToPerson.put(node.getKey(),
+            new Person(node.getValue().get("name").asText(), node.getValue().get("age").asInt())));
 
         return mapOfIdToPerson;
     }
