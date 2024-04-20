@@ -48,9 +48,9 @@ public class JsonNodeToCollectionUnitTest {
     @Test
     public void givenJsonNode_whenConvertingToMap_thenFieldsAreCorrect() throws IOException {
 
-        Map<String, Person> personMap1 = JsonNodeConversionUtil.manualJsonNodeToMap(personsNode);
-        Map<String, Person> personMap2 = JsonNodeConversionUtil.readValueJsonNodeToMap(personsNode);
-        Map<String, Person> personMap3 = JsonNodeConversionUtil.convertValueJsonNodeToMap(personsNode);
+        Map<String, Person> personMap1 = JsonNodeConversionUtil.manualJsonNodeToMap(idToPersonNode);
+        Map<String, Person> personMap2 = JsonNodeConversionUtil.readValueJsonNodeToMap(idToPersonNode);
+        Map<String, Person> personMap3 = JsonNodeConversionUtil.convertValueJsonNodeToMap(idToPersonNode);
 
         validateMapOfPersons(personMap1);
         validateMapOfPersons(personMap2);

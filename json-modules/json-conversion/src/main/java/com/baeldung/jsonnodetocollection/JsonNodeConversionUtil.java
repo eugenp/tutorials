@@ -41,7 +41,6 @@ public class JsonNodeConversionUtil {
     }
 
     public static Map<String, Person> readValueJsonNodeToMap(JsonNode jsonNode) throws IOException {
-        Map<String, Person> mapOfIdToPerson = new HashMap<>();
         TypeReference<Map<String, Person>> typeReferenceMap = new TypeReference<Map<String, Person>>() {};
         return new ObjectMapper().readValue(jsonNode.traverse(), typeReferenceMap);
     }
@@ -52,22 +51,7 @@ public class JsonNodeConversionUtil {
     }
 
     public static Map<String, Person> convertValueJsonNodeToMap(JsonNode jsonNode) {
-        Map<String, Person> mapOfIdToPerson = new HashMap<>();
         TypeReference<Map<String, Person>> typeReferenceMap = new TypeReference<Map<String, Person>>() {};
         return new ObjectMapper().convertValue(jsonNode, typeReferenceMap);
     }
-
-    public static List<Person> customJsonNodeToList(JsonNode jsonNode) {
-        TypeReference<List<Person>> typeReferenceList = new TypeReference<List<Person>>() {};
-        return new ObjectMapper().convertValue(jsonNode, typeReferenceList);
-    }
-
-    public static Map<String, Person> customJsonNodeToMap(JsonNode jsonNode) {
-        Map<String, Person> mapOfIdToPerson = new HashMap<>();
-        TypeReference<Map<String, Person>> typeReferenceMap = new TypeReference<Map<String, Person>>() {};
-        return new ObjectMapper().convertValue(jsonNode, typeReferenceMap);
-    }
-
-
-
 }
