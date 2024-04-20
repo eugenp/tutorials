@@ -11,7 +11,7 @@ import io.javaoperatorsdk.operator.springboot.starter.test.EnableMockOperator;
 
 @SpringBootTest
 @EnableMockOperator(crdPaths = "classpath:META-INF/fabric8/deptrackresources.com.baeldung-v1.yml")
-class ApplicationUnitTest {
+class ApplicationLongRunningUnitTest {
     @Autowired
     KubernetesClient client;
     @Test
