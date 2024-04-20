@@ -77,7 +77,6 @@
     <properties>
         <camel.version>4.3.0</camel.version>
         <camel-swagger.version>3.22.0</camel-swagger.version>
-        <junit-jupiter.version>5.10.2</junit-jupiter.version> <!--Version not compatible with the one inherited from parent-->
         <spring-boot.repackage.skip>true</spring-boot.repackage.skip> <!--Skip repackaging for multiple main classes-->
     </properties>
 
