@@ -1,4 +1,4 @@
-package com.baeldung.image.resize.imgscalr;
+package com.baeldung.image.resize.core;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
@@ -13,14 +13,14 @@ import javax.imageio.ImageIO;
 
 import org.junit.Test;
 
-public class ImgscalrExampleUnitTest {
+public class Graphics2DExampleIntegrationTest {
 
     @Test(expected = Test.None.class)
     public void whenOriginalImageExistsAndTargetSizesAreNotZero_thenImageGeneratedWithoutError() throws IOException {
         int targetWidth = 200;
         int targetHeight = 200;
         BufferedImage originalImage = ImageIO.read(new File("src/main/resources/images/sampleImage.jpg"));
-        BufferedImage outputImage = ImgscalrExample.resizeImage(originalImage, targetWidth, targetHeight);
+        BufferedImage outputImage = Graphics2DExample.resizeImage(originalImage, targetWidth, targetHeight);
 
         assertNotNull(outputImage);
     }
@@ -32,38 +32,40 @@ public class ImgscalrExampleUnitTest {
         BufferedImage originalImage = ImageIO.read(new File("src/main/resources/images/sampleImage.jpg"));
         assertNotEquals(originalImage.getWidth(), targetWidth);
         assertNotEquals(originalImage.getHeight(), targetHeight);
-        BufferedImage outputImage = ImgscalrExample.resizeImage(originalImage, targetWidth, targetHeight);
+        BufferedImage outputImage = Graphics2DExample.resizeImage(originalImage, targetWidth, targetHeight);
 
         assertEquals(outputImage.getWidth(), targetWidth);
         assertEquals(outputImage.getHeight(), targetHeight);
     }
 
-    @Test(expected = Test.None.class)
-    public void whenTargetWidthIsZero_thenImageIsCreated() throws IOException {
+    @Test(expected = Exception.class)
+    public void whenTargetWidthIsZero_thenErrorIsThrown() throws IOException {
         int targetWidth = 0;
         int targetHeight = 200;
         BufferedImage originalImage = ImageIO.read(new File("src/main/resources/images/sampleImage.jpg"));
-        BufferedImage outputImage = ImgscalrExample.resizeImage(originalImage, targetWidth, targetHeight);
+        BufferedImage outputImage = Graphics2DExample.resizeImage(originalImage, targetWidth, targetHeight);
 
-        assertNotNull(outputImage);
-    }
-
-    @Test(expected = Test.None.class)
-    public void whenTargetHeightIsZero_thenImageIsCreated() throws IOException {
-        int targetWidth = 200;
-        int targetHeight = 0;
-        BufferedImage originalImage = ImageIO.read(new File("src/main/resources/images/sampleImage.jpg"));
-        BufferedImage outputImage = ImgscalrExample.resizeImage(originalImage, targetWidth, targetHeight);
-
-        assertNotNull(outputImage);
+        assertNull(outputImage);
     }
 
     @Test(expected = Exception.class)
-    public void whenOriginalImageDoesNotExist_thenErrorIsThrown() {
+    public void whenTargetHeightIsZero_thenErrorIsThrown() throws IOException {
         int targetWidth = 200;
-        int targetHeight = 200;
-        BufferedImage outputImage = ImgscalrExample.resizeImage(null, targetWidth, targetHeight);
+        int targetHeight = 0;
+        BufferedImage originalImage = ImageIO.read(new File("src/main/resources/images/sampleImage.jpg"));
+        BufferedImage outputImage = Graphics2DExample.resizeImage(originalImage, targetWidth, targetHeight);
 
         assertNull(outputImage);
+    }
+
+    @Test(expected = Test.None.class)
+    public void whenOriginalImageDoesNotExist_thenErrorIsNotThrownAndImageIsGenerated() throws IOException {
+        int targetWidth = 200;
+        int targetHeight = 200;
+        BufferedImage outputImage = Graphics2DExample.resizeImage(null, targetWidth, targetHeight);
+
+        assertNotNull(outputImage);
+        assertEquals(outputImage.getWidth(), targetWidth);
+        assertEquals(outputImage.getHeight(), targetHeight);
     }
 }

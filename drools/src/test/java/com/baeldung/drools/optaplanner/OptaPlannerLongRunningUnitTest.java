@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.optaplanner.core.api.solver.Solver;
 import org.optaplanner.core.api.solver.SolverFactory;
 
-public class OptaPlannerUnitTest {
+public class OptaPlannerLongRunningUnitTest {
 
     static CourseSchedule unsolvedCourseSchedule;
 
