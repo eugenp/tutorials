@@ -20,7 +20,8 @@ public class UserService {
     private final UserRepository repository;
     private final String issuer;
 
-    public UserService(final UserRepository repository, @ConfigProperty(name = "mp.jwt.verify.issuer") final String issuer)  {
+    public UserService(final UserRepository repository,
+                       final @ConfigProperty(name = "mp.jwt.verify.issuer") String issuer)  {
         this.repository = repository;
         this.issuer = issuer;
     }

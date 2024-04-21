@@ -15,7 +15,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
 
 @QuarkusTest
-class SecureResourceControllerTest {
+class SecureResourceControllerIntegrationTest {
 
     @Test
     void givenSecureLoginApi_whenAdminLogsIn_thenShouldReturnOK() {

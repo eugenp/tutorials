@@ -11,7 +11,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
 @QuarkusTest
-class PermissionBasedControllerTest {
+class PermissionBasedControllerIntegrationTest {
 
     @Test
     @TestSecurity(user = "admin", roles = "VIEW_ADMIN_DETAILS")
