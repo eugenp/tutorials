@@ -985,7 +985,7 @@
                 <module>libraries-security</module>
                 <module>libraries-server-2</module>
                 <module>libraries-server</module>
-                <module>libraries-stream</module>
+<!--                <module>libraries-stream</module> JDK21-->
                 <module>libraries-testing</module>
                 <module>libraries-testing-2</module>
                 <module>libraries-transform</module>
