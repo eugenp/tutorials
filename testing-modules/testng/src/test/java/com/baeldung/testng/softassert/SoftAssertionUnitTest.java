@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.testng.softassert;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
