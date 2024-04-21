@@ -32,17 +32,17 @@ class PurchaseRestCallsAsyncExecutorUnitTest {
     }
 
     @Test
-    public void givenPurchases_whenAllRestCallsRunsWithoutException_thenUpdateAllPurchasesProperly() {
+    void givenPurchases_whenAllRestCallsRunsWithoutException_thenUpdateAllPurchasesProperly() {
         Purchase purchase = new Purchase("1", "1", "1");
         List<Purchase> purchases = new ArrayList<>(List.of(purchase));
 
-        when(restTemplate.getForEntity(eq(MOCK_BASE_URL.concat("/users/1")), eq(String.class)))
+        when(restTemplate.getForEntity(MOCK_BASE_URL.concat("/users/1"), String.class))
                 .thenReturn(new ResponseEntity<>("User 1", HttpStatus.OK));
 
-        when(restTemplate.getForEntity(eq(MOCK_BASE_URL.concat("/orders/1")), eq(String.class)))
+        when(restTemplate.getForEntity(MOCK_BASE_URL.concat("/orders/1"), String.class))
                 .thenReturn(new ResponseEntity<>("Order 1", HttpStatus.OK));
 
-        when(restTemplate.getForEntity(eq(MOCK_BASE_URL.concat("/payments/1")), eq(String.class)))
+        when(restTemplate.getForEntity(MOCK_BASE_URL.concat("/payments/1"), String.class))
                 .thenReturn(new ResponseEntity<>("Payment 1", HttpStatus.OK));
 
         subject.updatePurchases(purchases);
@@ -53,7 +53,7 @@ class PurchaseRestCallsAsyncExecutorUnitTest {
     }
 
     @Test
-    public void givenPurchases_whenExecutorOneRestCallFails_thenHandleExceptionGracefully() {
+    void givenPurchases_whenExecutorOneRestCallFails_thenHandleExceptionGracefully() {
         Purchase purchase = new Purchase("1", "1", "1");
         List<Purchase> purchases = new ArrayList<>(List.of(purchase));
 

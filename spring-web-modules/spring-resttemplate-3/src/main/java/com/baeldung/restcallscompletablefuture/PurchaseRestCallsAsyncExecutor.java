@@ -16,7 +16,7 @@ public class PurchaseRestCallsAsyncExecutor {
 
     private final RestTemplate restTemplate;
 
-    private static final String BASE_URL ="https://internal-api.com";
+    private static final String BASE_URL = "https://internal-api.com";
 
     public PurchaseRestCallsAsyncExecutor(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
@@ -65,22 +65,19 @@ public class PurchaseRestCallsAsyncExecutor {
     }
 
     public String getOrderDescription(String orderId) {
-        ResponseEntity<String> result = restTemplate.getForEntity(format("%s/orders/%s", BASE_URL, orderId),
-                String.class);
+        ResponseEntity<String> result = restTemplate.getForEntity(format("%s/orders/%s", BASE_URL, orderId), String.class);
 
         return result.getBody();
     }
 
     public String getPaymentDescription(String paymentId) {
-        ResponseEntity<String> result = restTemplate.getForEntity(format("%s/payments/%s", BASE_URL, paymentId),
-                String.class);
+        ResponseEntity<String> result = restTemplate.getForEntity(format("%s/payments/%s", BASE_URL, paymentId), String.class);
 
         return result.getBody();
     }
 
     public String getUserName(String userId) {
-        ResponseEntity<String> result = restTemplate.getForEntity(format("%s/users/%s", BASE_URL, userId),
-                String.class);
+        ResponseEntity<String> result = restTemplate.getForEntity(format("%s/users/%s", BASE_URL, userId), String.class);
 
         return result.getBody();
     }
