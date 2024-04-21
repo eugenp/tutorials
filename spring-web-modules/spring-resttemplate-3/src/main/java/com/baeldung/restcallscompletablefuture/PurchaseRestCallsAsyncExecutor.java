@@ -49,17 +49,17 @@ public class PurchaseRestCallsAsyncExecutor {
                 CompletableFuture.
                         supplyAsync(() -> getOrderDescription(purchase.getOrderId()))
                         .thenAccept(purchase::setOrderDescription)
-                        .orTimeout(100, TimeUnit.MILLISECONDS)
+                        .orTimeout(1, TimeUnit.SECONDS)
                         .handle(handleGracefully()),
                 CompletableFuture.
                         supplyAsync(() -> getPaymentDescription(purchase.getPaymentId()))
                         .thenAccept(purchase::setPaymentDescription)
-                        .orTimeout(100, TimeUnit.MILLISECONDS)
+                        .orTimeout(1, TimeUnit.SECONDS)
                         .handle(handleGracefully()),
                 CompletableFuture.
                         supplyAsync(() -> getUserName(purchase.getUserId()))
                         .thenAccept(purchase::setBuyerName)
-                        .orTimeout(100, TimeUnit.MILLISECONDS)
+                        .orTimeout(1, TimeUnit.SECONDS)
                         .handle(handleGracefully())
         ).join();
     }
