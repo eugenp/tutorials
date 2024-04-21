@@ -13,13 +13,13 @@ public class CastingToStringVsStringValueOfUnitTest {
 
     @Test
     void whenCastingStringAndCallingValueOf_thenCorrect() {
-        Object obj = "Baedlung is awesome!";
+        Object obj = "Baeldung is awesome!";
 
         String castResult = (String) obj;
-        assertEquals("Baedlung is awesome!", castResult);
+        assertEquals("Baeldung is awesome!", castResult);
 
         String valueOfResult = String.valueOf(obj);
-        assertEquals("Baedlung is awesome!", valueOfResult);
+        assertEquals("Baeldung is awesome!", valueOfResult);
     }
 
     @Test
