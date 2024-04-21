@@ -1,21 +1,18 @@
 package com.baeldung.mapper.inheritance;
 
-import static com.baeldung.util.VehicleMapperTestUtil.getBusInstance;
-import static com.baeldung.util.VehicleMapperTestUtil.getCarInstance;
-import static com.baeldung.util.VehicleMapperTestUtil.runAssertionChecksForBusInstance;
-import static com.baeldung.util.VehicleMapperTestUtil.runAssertionChecksForCarInstance;
+import static com.baeldung.util.VehicleMapperTestUtil.*;
 
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
 
-import com.baeldung.inheritance.mapper.VehicleMapperBySubclassMapping;
 import com.baeldung.inheritance.model.Bus;
 import com.baeldung.inheritance.model.Car;
 import com.baeldung.inheritance.model.dto.VehicleDTO;
+import com.baeldung.inheritance.mapper.VehicleMapperByVisitorPattern;
 
-public class VehicleMapperBySubclassMappingIntegrationTest {
+public class VehicleMapperByVisitorPatternUnitTest {
 
-    private final VehicleMapperBySubclassMapping vehicleMapper = Mappers.getMapper(VehicleMapperBySubclassMapping.class);
+    private final VehicleMapperByVisitorPattern vehicleMapper = Mappers.getMapper(VehicleMapperByVisitorPattern.class);
 
     @Test
     void givenVehicleTypeCar_whenMaps_thenMappedToCarDTOCorrectly() {
@@ -32,4 +29,5 @@ public class VehicleMapperBySubclassMappingIntegrationTest {
         VehicleDTO vehicleDTO = vehicleMapper.mapToVehicleDTO(bus);
         runAssertionChecksForBusInstance(vehicleDTO, bus);
     }
+
 }

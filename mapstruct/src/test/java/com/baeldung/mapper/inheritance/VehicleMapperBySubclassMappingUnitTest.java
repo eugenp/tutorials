@@ -8,14 +8,14 @@ import static com.baeldung.util.VehicleMapperTestUtil.runAssertionChecksForCarIn
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
 
-import com.baeldung.inheritance.mapper.VehicleMapperByInstanceChecks;
+import com.baeldung.inheritance.mapper.VehicleMapperBySubclassMapping;
 import com.baeldung.inheritance.model.Bus;
 import com.baeldung.inheritance.model.Car;
 import com.baeldung.inheritance.model.dto.VehicleDTO;
 
-public class VehicleMapperByInstanceChecksIntegrationTest {
+public class VehicleMapperBySubclassMappingUnitTest {
 
-    private final VehicleMapperByInstanceChecks vehicleMapper = Mappers.getMapper(VehicleMapperByInstanceChecks.class);
+    private final VehicleMapperBySubclassMapping vehicleMapper = Mappers.getMapper(VehicleMapperBySubclassMapping.class);
 
     @Test
     void givenVehicleTypeCar_whenMaps_thenMappedToCarDTOCorrectly() {

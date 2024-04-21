@@ -12,7 +12,7 @@ import com.baeldung.inheritance.model.Car;
 import com.baeldung.inheritance.model.dto.CarDTO;
 import com.baeldung.inheritance.model.dto.VehicleDTO;
 
-public class VehicleMapperIntegrationTest {
+public class VehicleMapperUnitTest {
 
     private final VehicleMapper vehicleMapper = Mappers.getMapper(VehicleMapper.class);
 
