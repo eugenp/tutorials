@@ -52,8 +52,8 @@ public class IntToBooleanUnitTest {
 
         assertTrue(BooleanUtils.toBoolean(1, trueValue, falseValue));
         assertFalse(BooleanUtils.toBoolean(0, trueValue, falseValue));
-        assertThrows(IllegalArgumentException.class, () ->BooleanUtils.toBoolean(42, trueValue, falseValue));
-        assertThrows(IllegalArgumentException.class, () ->BooleanUtils.toBoolean(-42, trueValue, falseValue));
+        assertThrows(IllegalArgumentException.class, () -> BooleanUtils.toBoolean(42, trueValue, falseValue));
+        assertThrows(IllegalArgumentException.class, () -> BooleanUtils.toBoolean(-42, trueValue, falseValue));
     }
 
 }
