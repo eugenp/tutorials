@@ -100,7 +100,7 @@
         <javatuples.version>1.2</javatuples.version>
         <multiverse.version>0.7.0</multiverse.version>
         <chronicle.map.version>3.24ea1</chronicle.map.version>
-        <cactoos.version>0.43</cactoos.version>
+        <cactoos.version>0.55.0</cactoos.version>
         <cache2k.version>1.2.3.Final</cache2k.version>
         <pcollections.version>2.1.2</pcollections.version>
         <eclipse-collections.version>8.2.0</eclipse-collections.version>

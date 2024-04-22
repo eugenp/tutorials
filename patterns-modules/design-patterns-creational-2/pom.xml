@@ -19,6 +19,15 @@
             <version>${mockito-inline.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.32</version>
+        </dependency>
     </dependencies>
+
+    <properties>
+        <mockito-inline.version>5.2.0</mockito-inline.version>
+    </properties>
 
 </project>
