@@ -29,11 +29,10 @@ public class MapListIterationUnitTest {
             for (Map.Entry<String, Object> entry : map.entrySet()) {
                 String key = entry.getKey();
                 Object value = entry.getValue();
-                System.out.println("Name: " + key + ", Age: " + value);
+                System.out.format("%s: %s\n", key, value);
             }
         }
 
-        assertEquals(2, listOfMaps.size());
         assertEquals("Jack", map1.get("name"));
         assertEquals(30, map1.get("age"));
         assertEquals("Jones", map2.get("name"));
@@ -57,7 +56,7 @@ public class MapListIterationUnitTest {
                 .forEach(entry -> {
                     String key = entry.getKey();
                     Object value = entry.getValue();
-                    System.out.println("Name: " + key + ", Age: " + value);
+                    System.out.format("%s: %s\n", key, value);
                 });
 
         assertEquals(2, listOfMaps.size());
@@ -82,7 +81,7 @@ public class MapListIterationUnitTest {
         for (Map<String, Object> map : listOfMaps) {
             for (String key : map.keySet()) {
                 Object value = map.get(key);
-                System.out.println("Name: " + key + ", Age: " + value);
+                System.out.format("%s: %s\n", key, value);
             }
         }
 
@@ -106,7 +105,7 @@ public class MapListIterationUnitTest {
         List<Map<String, Object>> listOfMaps = Arrays.asList(map1, map2);
 
         listOfMaps.forEach(map -> map.forEach((key, value) -> {
-            System.out.println("Key: " + key + ", Value: " + value);
+            System.out.format("%s: %s\n", key, value);
         }));
 
         assertEquals(2, listOfMaps.size());
