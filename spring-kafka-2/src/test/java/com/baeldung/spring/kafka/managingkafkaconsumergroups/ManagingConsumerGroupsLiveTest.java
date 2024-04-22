@@ -2,7 +2,6 @@ package com.baeldung.spring.kafka.managingkafkaconsumergroups;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.time.Duration;
 import java.util.Objects;
 import java.util.Set;
 
@@ -26,7 +25,7 @@ import lombok.extern.slf4j.Slf4j;
 @DirtiesContext(classMode = ClassMode.BEFORE_CLASS)
 @ActiveProfiles("managed")
 @Slf4j
-class ManagingConsumerGroupsIntegrationTest {
+class ManagingConsumerGroupsLiveTest {
 
     private static final String CONSUMER_1_IDENTIFIER = "org.springframework.kafka.KafkaListenerEndpointContainer#1";
     private static final int TOTAL_PRODUCED_MESSAGES = 5000;
