@@ -21,12 +21,11 @@ public class CopyExampleUnitTest {
         assertEquals(30, originalPerson.getAge(), "Original person's age should remain unchanged after shallow copying");
         assertEquals(originalPerson.getAge(), copiedPerson.getAge(), "Copied person should have the same age as the original person after shallow copying");
 
-        // Check if changes in copied person affect the original person
+
         copiedPerson.setAge(35);
         assertEquals(35, copiedPerson.getAge(), "Copied person's age should change");
         assertEquals(35, originalPerson.getAge(), "Changes in copied person should affect the original person for shallow copying");
 
-        // Ensure that changing originalPerson's age affects copiedPerson
         originalPerson.setAge(40);
         assertEquals(40, copiedPerson.getAge(), "Changes in original person should affect the copied person for shallow copying");
     }
@@ -40,7 +39,6 @@ public class CopyExampleUnitTest {
         assertEquals(30, originalPerson.getAge(), "Original person's age should remain unchanged after deep copying");
         assertEquals(30, copiedPerson.getAge(), "Copied person's age should be independent of the original person after deep copying");
 
-        // Check if changes in copied person do not affect the original person
         copiedPerson.setAge(35);
         assertNotEquals(originalPerson.getAge(), copiedPerson.getAge(), "Changes in copied person should not affect the original person for deep copying");
     }
@@ -75,7 +73,7 @@ public class CopyExampleUnitTest {
         assertEquals(CloneNotSupportedException.class, exception.getClass());
     }
 
-    // New test added
+
     @Test
     public void givenOriginalPerson_whenShallowCopying_thenChangingCopiedPersonAffectsOriginal() {
         Person originalPerson = new Person("John", 30, 18, 30, new Address("Unit Test Test Main St.", "Cape town", "South Africa"));
