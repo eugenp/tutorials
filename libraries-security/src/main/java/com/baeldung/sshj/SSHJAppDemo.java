@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.baeldung.sshj;
 
 import java.io.BufferedReader;
