@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.ordermanagement.copy.demo.OrderCopyClientTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-04-21T09:23:25" hostname="Sudiss-MacBook-Pro.local" time="0.027">
-  <properties/>
-  <testcase name="Shallow copy overwrites original order line's description" classname="org.ordermanagement.copy.demo.OrderCopyClientTest" time="0.027"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
