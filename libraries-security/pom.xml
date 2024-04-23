@@ -123,16 +123,16 @@
             <artifactId>jaxb-runtime</artifactId>
         </dependency>
         <dependency>
-		    <groupId>com.hierynomus</groupId>
-		    <artifactId>sshj</artifactId>
-		    <version>${sshj.version}</version>
-		</dependency>
-		<dependency>
+            <groupId>com.hierynomus</groupId>
+            <artifactId>sshj</artifactId>
+            <version>${sshj.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.apache.sshd</groupId>
             <artifactId>sshd-sftp</artifactId>
             <version>${apache-sftp.version}</version>
         </dependency>
-		<dependency>
+        <dependency>
             <groupId>org.apache.sshd</groupId>
             <artifactId>sshd-scp</artifactId>
             <version>${apache-scp.version}</version>
