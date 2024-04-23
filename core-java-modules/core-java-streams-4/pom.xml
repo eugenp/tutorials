@@ -101,7 +101,6 @@
 
     <properties>
         <!-- testing -->
-        <assertj.version>3.23.1</assertj.version>
         <rx.java.version>1.2.5</rx.java.version>
         <rx.java2.version>2.2.2</rx.java2.version>
         <rx.java3.version>3.1.5</rx.java3.version>

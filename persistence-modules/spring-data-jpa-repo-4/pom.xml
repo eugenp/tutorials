@@ -15,6 +15,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>jakarta.persistence</groupId>
+            <artifactId>jakarta.persistence-api</artifactId>
+            <version>${jakarta.persistence-api.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
@@ -142,6 +147,7 @@
         <postgresql.version>42.7.1</postgresql.version>
         <db.util.version>1.0.7</db.util.version>
         <hypersistence-utils.version>3.7.0</hypersistence-utils.version>
+        <jakarta.persistence-api.version>3.1.0</jakarta.persistence-api.version>
     </properties>
 
 </project>
