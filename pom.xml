@@ -448,6 +448,7 @@
                 <module>apache-spark</module>
                 <module>jhipster-modules</module>
                 <module>spring-cloud-modules/spring-cloud-azure</module>
+                <module>kubernetes-modules/k8s-operator</module>
                 <module>web-modules/restx</module>
                 <module>libraries-testing</module>
             </modules>
@@ -576,6 +577,7 @@
                 <module>jhipster-modules</module>
                 <module>spring-cloud-modules/spring-cloud-azure</module>
                 <module>web-modules/restx</module>
+                <module>kubernetes-modules/k8s-operator</module>
             </modules>
 
         </profile>
