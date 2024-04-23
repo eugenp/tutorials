@@ -20,6 +20,10 @@
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+        </dependency>
         <!-- this is all you need to write tests with JUnit Jupiter -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
