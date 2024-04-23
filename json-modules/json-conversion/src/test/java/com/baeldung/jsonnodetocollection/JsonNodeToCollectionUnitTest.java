@@ -14,8 +14,6 @@ import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 
 public class JsonNodeToCollectionUnitTest {
 
@@ -33,7 +31,7 @@ public class JsonNodeToCollectionUnitTest {
     }
 
     @Test
-    public void givenJsonNode_whenConvertingToList_thenFieldsAreCorrect() throws IOException {
+    void givenJsonNode_whenConvertingToList_thenFieldsAreCorrect() throws IOException {
 
         List<Person> personList1 = JsonNodeConversionUtil.manualJsonNodeToList(personsNode);
         List<Person> personList2 = JsonNodeConversionUtil.readValueJsonNodeToList(personsNode);
@@ -46,7 +44,7 @@ public class JsonNodeToCollectionUnitTest {
 
 
     @Test
-    public void givenJsonNode_whenConvertingToMap_thenFieldsAreCorrect() throws IOException {
+    void givenJsonNode_whenConvertingToMap_thenFieldsAreCorrect() throws IOException {
 
         Map<String, Person> personMap1 = JsonNodeConversionUtil.manualJsonNodeToMap(idToPersonNode);
         Map<String, Person> personMap2 = JsonNodeConversionUtil.readValueJsonNodeToMap(idToPersonNode);
@@ -58,7 +56,7 @@ public class JsonNodeToCollectionUnitTest {
     }
 
     @Test
-    public void givenJsonNode_whenConvertingToListWithCustomDeserializer_thenFieldsAreCorrect() throws IOException {
+    void givenJsonNode_whenConvertingToListWithCustomDeserializer_thenFieldsAreCorrect() {
         ObjectMapper objectMapper = new ObjectMapper();
         SimpleModule module = new SimpleModule();
         module.addDeserializer(List.class, new CustomPersonListDeserializer());
@@ -69,7 +67,7 @@ public class JsonNodeToCollectionUnitTest {
         validateList(personList);
     }
 
-    private static void validateList(List<Person> personList) {
+    private void validateList(List<Person> personList) {
         assertEquals(2, personList.size());
 
         Person person1 = personList.get(0);
@@ -81,7 +79,7 @@ public class JsonNodeToCollectionUnitTest {
         assertEquals(25, person2.getAge());
     }
 
-    public static void validateMapOfPersons(Map<String, Person> map) {
+    private void validateMapOfPersons(Map<String, Person> map) {
         assertEquals(2, map.size());
 
         Person person1 = map.get("1234");
