@@ -1,5 +1,9 @@
 package com.baeldung.restcallscompletablefuture;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.mockito.Mockito.when;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,22 +16,18 @@ import org.springframework.web.client.RestTemplate;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.when;
-
 @ExtendWith(MockitoExtension.class)
 class PurchaseRestCallsAsyncExecutorUnitTest {
 
-    @Mock private RestTemplate restTemplate;
+    @Mock
+    private RestTemplate restTemplate;
 
     private static final String MOCK_BASE_URL = "https://internal-api.com";
 
     PurchaseRestCallsAsyncExecutor subject;
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
         subject = new PurchaseRestCallsAsyncExecutor(restTemplate);
     }
 
