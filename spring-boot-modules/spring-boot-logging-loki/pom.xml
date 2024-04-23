@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-boot-logging-loki</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>loki</name>
+    <name>spring-boot-logging-loki</name>
 
     <parent>
         <groupId>com.baeldung.spring-boot-modules</groupId>
@@ -28,6 +28,18 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <properties>
         <loki-logback.version>1.4.2</loki-logback.version>

@@ -21,6 +21,7 @@
         <module>spring-security-cognito</module>
         <module>spring-security-core</module>
         <module>spring-security-core-2</module>
+        <module>spring-security-core-3</module>
         <!--        <module>spring-security-ldap</module>-->
         <module>spring-security-legacy-oidc</module> <!-- Ths module wasn't able to upgrade because is using Spring Security oauth2 which reached end of life. JAVA-29292-->
         <module>spring-security-oauth2</module> <!-- This module wasn't updated to spring boot 3 because of spring-oauth2 not supporting Jakarta and reaching end of life. JAVA-29293 -->

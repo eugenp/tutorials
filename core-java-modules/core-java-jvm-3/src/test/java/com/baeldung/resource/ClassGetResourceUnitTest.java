@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import java.net.URL;
 
-@Disabled
 class ClassGetResourceUnitTest {
 
     @Test
