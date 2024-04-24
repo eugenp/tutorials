@@ -1,4 +1,4 @@
-package com.baeldung.inheritance.model.dto;
+package com.baeldung.mapstruct.inheritance.model.dto;
 
 import lombok.Data;
 

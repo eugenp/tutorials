@@ -1,16 +1,16 @@
-package com.baeldung.mapper.inheritance;
+package com.baeldung.mapstruct.inheritance;
 
-import static com.baeldung.util.VehicleMapperTestUtil.getCarInstance;
+import static com.baeldung.mapstruct.inheritance.VehicleMapperTestUtil.getCarInstance;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
 
-import com.baeldung.inheritance.mapper.CarMapper;
-import com.baeldung.inheritance.mapper.VehicleMapper;
-import com.baeldung.inheritance.model.Car;
-import com.baeldung.inheritance.model.dto.CarDTO;
-import com.baeldung.inheritance.model.dto.VehicleDTO;
+import com.baeldung.mapstruct.inheritance.mapper.CarMapper;
+import com.baeldung.mapstruct.inheritance.mapper.VehicleMapper;
+import com.baeldung.mapstruct.inheritance.model.Car;
+import com.baeldung.mapstruct.inheritance.model.dto.CarDTO;
+import com.baeldung.mapstruct.inheritance.model.dto.VehicleDTO;
 
 public class VehicleMapperUnitTest {
 
@@ -19,7 +19,7 @@ public class VehicleMapperUnitTest {
     private final CarMapper carMapper = Mappers.getMapper(CarMapper.class);
 
     @Test
-    void givenVehicleToVehicleDTO_whenMaps_thenParentMappingNotWorking() {
+    void whenVehicleTypeIsCar_thenParentMappingNotWorking() {
         Car car = getCarInstance();
 
         VehicleDTO vehicleDTO = vehicleMapper.vehicleToDTO(car);

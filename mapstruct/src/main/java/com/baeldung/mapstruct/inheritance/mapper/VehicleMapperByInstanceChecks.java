@@ -1,13 +1,13 @@
-package com.baeldung.inheritance.mapper;
+package com.baeldung.mapstruct.inheritance.mapper;
 
 import org.mapstruct.Mapper;
 
-import com.baeldung.inheritance.model.Bus;
-import com.baeldung.inheritance.model.dto.BusDTO;
-import com.baeldung.inheritance.model.Car;
-import com.baeldung.inheritance.model.dto.CarDTO;
-import com.baeldung.inheritance.model.Vehicle;
-import com.baeldung.inheritance.model.dto.VehicleDTO;
+import com.baeldung.mapstruct.inheritance.model.Bus;
+import com.baeldung.mapstruct.inheritance.model.dto.BusDTO;
+import com.baeldung.mapstruct.inheritance.model.Car;
+import com.baeldung.mapstruct.inheritance.model.dto.CarDTO;
+import com.baeldung.mapstruct.inheritance.model.Vehicle;
+import com.baeldung.mapstruct.inheritance.model.dto.VehicleDTO;
 
 @Mapper()
 public interface VehicleMapperByInstanceChecks {

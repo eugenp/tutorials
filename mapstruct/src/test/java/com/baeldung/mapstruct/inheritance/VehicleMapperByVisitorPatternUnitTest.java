@@ -1,21 +1,21 @@
-package com.baeldung.mapper.inheritance;
+package com.baeldung.mapstruct.inheritance;
 
-import static com.baeldung.util.VehicleMapperTestUtil.*;
+import static com.baeldung.mapstruct.inheritance.VehicleMapperTestUtil.*;
 
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
 
-import com.baeldung.inheritance.model.Bus;
-import com.baeldung.inheritance.model.Car;
-import com.baeldung.inheritance.model.dto.VehicleDTO;
-import com.baeldung.inheritance.mapper.VehicleMapperByVisitorPattern;
+import com.baeldung.mapstruct.inheritance.model.Bus;
+import com.baeldung.mapstruct.inheritance.model.Car;
+import com.baeldung.mapstruct.inheritance.model.dto.VehicleDTO;
+import com.baeldung.mapstruct.inheritance.mapper.VehicleMapperByVisitorPattern;
 
 public class VehicleMapperByVisitorPatternUnitTest {
 
     private final VehicleMapperByVisitorPattern vehicleMapper = Mappers.getMapper(VehicleMapperByVisitorPattern.class);
 
     @Test
-    void givenVehicleTypeCar_whenMaps_thenMappedToCarDTOCorrectly() {
+    void whenVehicleTypeIsCar_thenMappedToCarDTOCorrectly() {
         Car car = getCarInstance();
 
         VehicleDTO vehicleDTO = vehicleMapper.mapToVehicleDTO(car);
@@ -23,7 +23,7 @@ public class VehicleMapperByVisitorPatternUnitTest {
     }
 
     @Test
-    void givenVehicleTypeBus_whenMaps_thenMappedToBusDTOCorrectly() {
+    void whenVehicleTypeIsBus_thenMappedToBusDTOCorrectly() {
         Bus bus = getBusInstance();
 
         VehicleDTO vehicleDTO = vehicleMapper.mapToVehicleDTO(bus);

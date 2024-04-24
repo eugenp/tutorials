@@ -1,12 +1,12 @@
-package com.baeldung.util;
+package com.baeldung.mapstruct.inheritance;
 
 import org.junit.jupiter.api.Assertions;
 
-import com.baeldung.inheritance.model.Bus;
-import com.baeldung.inheritance.model.dto.BusDTO;
-import com.baeldung.inheritance.model.Car;
-import com.baeldung.inheritance.model.dto.CarDTO;
-import com.baeldung.inheritance.model.dto.VehicleDTO;
+import com.baeldung.mapstruct.inheritance.model.Bus;
+import com.baeldung.mapstruct.inheritance.model.dto.BusDTO;
+import com.baeldung.mapstruct.inheritance.model.Car;
+import com.baeldung.mapstruct.inheritance.model.dto.CarDTO;
+import com.baeldung.mapstruct.inheritance.model.dto.VehicleDTO;
 
 public final class VehicleMapperTestUtil {
 

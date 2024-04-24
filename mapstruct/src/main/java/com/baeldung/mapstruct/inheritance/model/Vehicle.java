@@ -1,6 +1,6 @@
-package com.baeldung.inheritance.model;
+package com.baeldung.mapstruct.inheritance.model;
 
-import com.baeldung.inheritance.model.dto.VehicleDTO;
+import com.baeldung.mapstruct.inheritance.model.dto.VehicleDTO;
 
 import lombok.Data;
 

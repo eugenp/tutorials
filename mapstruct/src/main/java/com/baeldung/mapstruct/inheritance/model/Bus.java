@@ -1,6 +1,6 @@
-package com.baeldung.inheritance.model;
+package com.baeldung.mapstruct.inheritance.model;
 
-import com.baeldung.inheritance.model.dto.VehicleDTO;
+import com.baeldung.mapstruct.inheritance.model.dto.VehicleDTO;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -15,5 +15,7 @@ public class Bus extends Vehicle {
     public VehicleDTO accept(Visitor visitor) {
         return visitor.visit(this);
     }
+
+    // standard constructors, getters and setters
 
 }
