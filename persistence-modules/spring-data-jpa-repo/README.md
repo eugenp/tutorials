@@ -3,6 +3,7 @@
 This module contains articles about repositories in Spring Data JPA 
 
 ### Relevant Articles:
+- [Introduction to Spring Data JPA](https://www.baeldung.com/the-persistence-layer-with-spring-data-jpa)
 - [Case Insensitive Queries with Spring Data Repository](https://www.baeldung.com/spring-data-case-insensitive-queries)
 - [Spring Data – CrudRepository save() Method](https://www.baeldung.com/spring-data-crud-repository-save)
 - [Spring Data JPA – Adding a Method in All Repositories](https://www.baeldung.com/spring-data-jpa-method-in-all-repositories)
