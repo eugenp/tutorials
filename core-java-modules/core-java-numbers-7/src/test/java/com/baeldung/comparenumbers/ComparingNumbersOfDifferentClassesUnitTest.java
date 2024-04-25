@@ -119,7 +119,7 @@ class ComparingNumbersOfDifferentClassesUnitTest {
 
     @MethodSource("numbersWithSameScaleProvider")
     @ParameterizedTest
-    void givenBigDecimalsWithSameScale_WhenCheckEquality_ThenTheyNotEqual(String firstNumber,
+    void givenBigDecimalsWithSameScale_WhenCheckEquality_ThenTheyEqual(String firstNumber,
       String secondNumber) {
         BigDecimal firstBigDecimal = new BigDecimal(firstNumber);
         BigDecimal secondBigDecimal = new BigDecimal(secondNumber);
