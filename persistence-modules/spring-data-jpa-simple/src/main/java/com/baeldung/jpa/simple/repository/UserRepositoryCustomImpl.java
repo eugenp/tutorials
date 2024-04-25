@@ -1,4 +1,4 @@
-package com.baeldung.simple.repository;
+package com.baeldung.jpa.simple.repository;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -7,7 +7,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import com.baeldung.simple.entity.User;
+import com.baeldung.jpa.simple.model.User;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;

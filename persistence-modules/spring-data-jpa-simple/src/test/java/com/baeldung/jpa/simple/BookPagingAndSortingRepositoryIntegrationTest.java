@@ -1,9 +1,11 @@
-package com.baeldung.simple;
+package com.baeldung.jpa.simple;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.jupiter.api.Assertions;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,8 +13,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
-import com.baeldung.simple.entity.Book;
-import com.baeldung.simple.repository.BookPagingAndSortingRepository;
+import com.baeldung.jpa.simple.model.Book;
+import com.baeldung.jpa.simple.repository.BookPagingAndSortingRepository;
 
 @SpringBootTest
 class BookPagingAndSortingRepositoryIntegrationTest {
@@ -29,8 +31,8 @@ class BookPagingAndSortingRepositoryIntegrationTest {
 
         Pageable pageable = PageRequest.of(0, 2, Sort.by("title").descending());
         List<Book> books = bookPagingAndSortingRepository.findBooksByAuthor("John Miller", pageable);
-        Assertions.assertEquals(2, books.size());
-        Assertions.assertEquals(book3.getId(), books.get(0).getId());
-        Assertions.assertEquals(book2.getId(), books.get(1).getId());
+        assertEquals(2, books.size());
+        assertEquals(book3.getId(), books.get(0).getId());
+        assertEquals(book2.getId(), books.get(1).getId());
     }
 }
