@@ -35,7 +35,7 @@ public class TwosComplementUnitTest {
             "-12345, 16, 1100 1111 1100 0111"
     })
     public void givenNumberAndBits_getTwosComplementUsingShortcut(String number, int noOfBits, String expected) {
-        String twosComplement = TwosComplement.decimalToTwosComplementBinary(new BigInteger(number), noOfBits);
+        String twosComplement = TwosComplement.decimalToTwosComplementBinaryUsingShortCut(new BigInteger(number), noOfBits);
         Assertions.assertEquals(expected, twosComplement);
     }
 
