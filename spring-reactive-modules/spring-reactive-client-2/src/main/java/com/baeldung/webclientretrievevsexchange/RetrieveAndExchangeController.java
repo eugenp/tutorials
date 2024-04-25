@@ -29,7 +29,7 @@ public class RetrieveAndExchangeController {
     }
 
     @GetMapping("/user-status/{id}")
-    Mono<User> retrieveOneUserAndHandleErrorBaseOnStatus(@PathVariable int id) {
+    Mono<User> retrieveOneUserAndHandleErrorBasedOnStatus(@PathVariable int id) {
         return client.get()
             .uri("/{id}", id)
             .retrieve()
@@ -76,10 +76,6 @@ public class RetrieveAndExchangeController {
             .exchangeToMono(res -> {
                 if (res.statusCode()
                     .is2xxSuccessful()) {
-                    logger.info("Status code: " + res.headers()
-                        .asHttpHeaders());
-                    logger.info("Content-type" + res.headers()
-                        .contentType());
                     return res.bodyToMono(User.class);
                 } else if (res.statusCode()
                     .is4xxClientError()) {
