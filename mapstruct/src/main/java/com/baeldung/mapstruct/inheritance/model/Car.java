@@ -16,6 +16,4 @@ public class Car extends Vehicle {
         return visitor.visit(this);
     }
 
-    // standard constructors, getters and setters
-
 }
