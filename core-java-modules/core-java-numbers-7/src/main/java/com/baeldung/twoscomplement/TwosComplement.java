@@ -1,6 +1,7 @@
 package com.baeldung.twoscomplement;
 
 import java.math.BigInteger;
+import java.util.stream.Collectors;
 
 public class TwosComplement {
 
@@ -72,6 +73,41 @@ public class TwosComplement {
         BigInteger minValue = BigInteger.ONE.shiftLeft(numBits - 1).negate(); // -2^(numBits-1)
         BigInteger maxValue = BigInteger.ONE.shiftLeft(numBits - 1).subtract(BigInteger.ONE); // 2^(numBits-1) - 1
         return number.compareTo(minValue) >= 0 && number.compareTo(maxValue) <= 0;
+    }
+
+    public static String decimalToTwosComplementBinaryUsingShortCut(BigInteger num, int numBits) {
+        if (!canRepresentInNBits(num, numBits)) {
+            throw new IllegalArgumentException(numBits + " bits is not enough to represent the number " + num);
+        }
+        var isNegative = num.signum() == -1;
+        var absNum = num.abs();
+
+        // Convert the abs value of the number to its binary representation
+        String binary = absNum.toString(2);
+
+        // Pad the binary representation with zeros to make it numBits long
+        while (binary.length() < numBits) {
+            binary = "0" + binary;
+        }
+
+        // If the input number is negative, calculate two's complement
+        if (isNegative) {
+            binary = performTwosComplementUsingShortCut(binary);
+        }
+
+        return formatInNibbles(binary);
+    }
+
+    private static String performTwosComplementUsingShortCut(String binary) {
+        int firstOneIndexFromRight = binary.lastIndexOf('1');
+        if (firstOneIndexFromRight == -1) {
+            return binary;
+        }
+        String rightPart = binary.substring(firstOneIndexFromRight);
+        String leftPart = binary.substring(0, firstOneIndexFromRight);
+        String leftWithOnes = leftPart.chars().mapToObj(c -> c == '0' ? '1' : '0')
+                .map(String::valueOf).collect(Collectors.joining(""));
+        return leftWithOnes + rightPart;
     }
 
 }
