@@ -48,13 +48,26 @@ class ComparingNumbersOfDifferentClassesUnitTest {
     }
 
     @Test
-    void givenSameNumbersButDifferentPrimitivesWithLongOverflow_WhenCheckEquality_ThenTheyNotEqual() {
+    void givenSameNumbersButDifferentPrimitivesWithLongOverflow_WhenCheckEquality_ThenTheyEqual() {
         long longValue = BigInteger.valueOf(Long.MAX_VALUE)
           .add(BigInteger.ONE)
           .multiply(BigInteger.TWO).longValue();
         int integerValue = BigInteger.valueOf(Long.MAX_VALUE)
           .add(BigInteger.ONE).intValue();
         assertThat(longValue).isEqualTo(integerValue);
+    }
+    @Test
+    void givenSameNumbersButDifferentPrimitivesWithDoubleOverflow_WhenCheckEquality_ThenTheyEqual() {
+        double firstDoubleValue = BigDecimal.valueOf(Double.MAX_VALUE).add(BigDecimal.valueOf(42)).doubleValue();
+        double secondDoubleValue = BigDecimal.valueOf(Double.MAX_VALUE).doubleValue();
+        assertEquals(firstDoubleValue, secondDoubleValue);
+    }
+
+    @Test
+    void givenSameNumbersWithDoubleRoundingErrors_WhenCheckEquality_ThenTheyNotEqual() {
+        double doubleValue = 0.3 / 0.1;
+        int integerValue = 30 / 10;
+        assertNotEquals(doubleValue, integerValue);
     }
 
     @ValueSource(strings = {"1", "2", "3", "4", "5"})
