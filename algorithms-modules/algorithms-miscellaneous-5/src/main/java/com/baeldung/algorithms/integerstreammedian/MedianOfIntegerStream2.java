@@ -25,11 +25,11 @@ public class MedianOfIntegerStream2 {
     }
 
     double getMedian() {
-        int median;
+        double median;
         if (minHeap.size() > maxHeap.size()) {
             median = minHeap.peek();
         } else {
-            median = (minHeap.peek() + maxHeap.peek()) / 2;
+            median = (minHeap.peek() + maxHeap.peek()) / 2.0;
         }
         return median;
     }
