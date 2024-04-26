@@ -45,13 +45,12 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-junit-jupiter</artifactId>
-            <version>${mockito.version}</version>
+            <version>${mockito-junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
 
     <properties>
         <instancio.version>2.9.0</instancio.version>
-        <junit-jupiter.version>5.9.2</junit-jupiter.version>
     </properties>
 </project>
