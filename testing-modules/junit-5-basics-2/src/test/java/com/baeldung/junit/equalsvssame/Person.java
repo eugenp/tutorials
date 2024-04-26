@@ -1,4 +1,4 @@
-package com.baeldung.junit.equlsvssame;
+package com.baeldung.junit.equalsvssame;
 
 public class Person {
 

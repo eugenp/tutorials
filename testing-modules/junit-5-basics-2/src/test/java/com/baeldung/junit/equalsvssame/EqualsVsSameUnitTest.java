@@ -1,4 +1,4 @@
-package com.baeldung.junit.equlsvssame;
+package com.baeldung.junit.equalsvssame;
 
 
 import static org.junit.Assert.assertFalse;
@@ -42,8 +42,8 @@ class EqualsVsSameUnitTest {
     @ParameterizedTest
     @ValueSource(strings = {"Hello", "World"})
     void givenAStrings_WhenCompareNewStringsInJava_ThenItEqualsButNotSame(String string) {
-        assertTrue(string.equals(string));
-        assertFalse(string == string);
+        assertTrue(new String(string).equals(new String(string)));
+        assertFalse(new String(string) == new String(string));
     }
 
     @Test
