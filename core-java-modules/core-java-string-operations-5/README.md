@@ -11,3 +11,4 @@
 - [Check if the First Letter of a String Is a Number](https://www.baeldung.com/java-check-if-string-starts-with-number)
 - [Print “” Quotes Around a String in Java](https://www.baeldung.com/java-string-print-quotes)
 - [Remove Punctuation From a String in Java](https://www.baeldung.com/java-remove-punctuation-from-string)
+- More articles: [[<-- prev]](../core-java-string-operations-4) [[next -->]](../core-java-string-operations-6)

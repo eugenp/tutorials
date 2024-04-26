@@ -12,7 +12,7 @@
 	</parent>
 
 	<groupId>com.baeldung.bff</groupId>
-	<artifactId>backend-parent</artifactId>
+	<artifactId>backend</artifactId>
 	<packaging>pom</packaging>
 	<description>Parent pom for the backend services in the OAuth2 BFF article</description>
 
