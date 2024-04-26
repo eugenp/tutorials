@@ -46,12 +46,12 @@ class EqualsVsSameUnitTest {
         assertFalse(string == string);
     }
 
-@Test
-void givePeople_WhenCompareWithoutOverridingEquals_TheyNotEqual() {
-    Person firstPerson = new Person("John", "Doe");
-    Person secondPerson = new Person("John", "Doe");
-    assertNotEquals(firstPerson, secondPerson);
-}
+    @Test
+    void givePeople_WhenCompareWithoutOverridingEquals_TheyNotEqual() {
+        Person firstPerson = new Person("John", "Doe");
+        Person secondPerson = new Person("John", "Doe");
+        assertNotEquals(firstPerson, secondPerson);
+    }
 
 
 }
