@@ -63,6 +63,8 @@
     <properties>
         <junit.pioneer.version>2.2.0</junit.pioneer.version>
         <testcontaienr.version>1.19.3</testcontaienr.version>
+        <mapstruct.version>1.6.0.Beta1</mapstruct.version>
+        <jmh.version>1.37</jmh.version>
     </properties>
 
 </project>
