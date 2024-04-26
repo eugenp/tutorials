@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 public class AllArgsPersonUnitTest {
     @Test
-    public void whenUsingAllArgsConstructor_itShouldCheckNotNullFields() {
+    void whenUsingAllArgsConstructor_thenCheckNotNullFields() {
         assertThatThrownBy(() -> {
             new AllArgsPerson(10, "Asian", null);
         }).isInstanceOf(NullPointerException.class)

@@ -6,13 +6,13 @@ import org.junit.jupiter.api.Test;
 
 public class RequiredArgsPersonUnitTest {
     @Test
-    public void whenUsingRequiredArgsConstructor_initializedFinalFieldsWillBeIgnored() {
+    void whenUsingRequiredArgsConstructor_thenInitializedFinalFieldsWillBeIgnored() {
         RequiredArgsPerson person = new RequiredArgsPerson("Hispanic", "Isabela");
         assertEquals("unknown", person.getNickname());
     }
 
     @Test
-    public void whenUsingRequiredArgsConstructor_itShouldCheckNotNullFields() {
+    void whenUsingRequiredArgsConstructor_thenCheckNotNullFields() {
         assertThatThrownBy(() -> {
             new RequiredArgsPerson("Hispanic", null);
         }).isInstanceOf(NullPointerException.class)

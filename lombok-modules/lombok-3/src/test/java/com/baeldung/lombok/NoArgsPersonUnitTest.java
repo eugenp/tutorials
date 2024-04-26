@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 public class NoArgsPersonUnitTest {
     @Test
-    public void whenUsingNoArgsConstructor_itAddsDefaultValuesToUnInitializedFinalFields() {
+    void whenUsingNoArgsConstructor_thenAddDefaultValuesToUnInitializedFinalFields() {
         NoArgsPerson person = new NoArgsPerson();
         assertNull(person.getRace());
         assertEquals("unknown", person.getNickname());
