@@ -205,6 +205,7 @@
         <module>core-java-string-operations-6</module>
         <module>core-java-string-operations-7</module>
         <module>core-java-string-operations-8</module>
+        <module>core-java-string-operations-9</module>
         <module>core-java-regex</module>
         <module>core-java-regex-2</module>
         <module>core-java-regex-3</module>
@@ -212,8 +213,8 @@
         <module>core-java-collections-maps-6</module>
         <module>core-java-records</module>
         <module>core-java-9-jigsaw</module>
-        <!--<module>core-java-20</module>--> <!--JAVA-25373-->
-        <!--<module>core-java-21</module>--> <!--JAVA-25373-->
+        <!--<module>core-java-20</module>--> <!--JAVA-29040-->
+        <!--<module>core-java-21</module>--> <!--JAVA-29040-->
         <!--<module>core-java-conditionals</module>--> <!--JAVA-20931-->
         <module>core-java-collections-set</module>
         <module>core-java-date-operations-1</module>
@@ -224,7 +225,8 @@
         <module>java-rmi</module>
         <module>java-spi</module>
         <module>java-websocket</module>
-        <module>core-java-22</module>
+        <module>core-java-8-datetime-3</module>
+        <!--<module>core-java-22</module>--> <!-- requires JDK 22 -->
     </modules>
 
     <dependencies>
