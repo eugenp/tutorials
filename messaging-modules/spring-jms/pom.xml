@@ -4,8 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-jms</artifactId>
-    <name>spring-jms</name>
     <packaging>war</packaging>
+    <name>spring-jms</name>
     <description>Introduction to Spring JMS</description>
 
     <parent>
@@ -85,7 +85,6 @@
         <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
         <activemq-junit.version>5.16.5</activemq-junit.version>
         <testcontainers.version>1.17.3</testcontainers.version>
-        <junit-jupiter.version>5.10.1</junit-jupiter.version>
     </properties>
 
 </project>

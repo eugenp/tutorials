@@ -6,8 +6,8 @@
     <groupId>com.baeldung.multimodulemavenproject</groupId>
     <artifactId>multimodulemavenproject</artifactId>
     <version>1.0</version>
-    <name>multimodulemavenproject</name>
     <packaging>pom</packaging>
+    <name>multimodulemavenproject</name>
 
     <!--
      No <parent> tag since we want the compiler plugin defined
