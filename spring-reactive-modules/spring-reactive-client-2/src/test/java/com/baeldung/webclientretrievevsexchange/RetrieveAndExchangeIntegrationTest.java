@@ -12,7 +12,7 @@ class RetrieveAndExchangeIntegrationTest {
     private WebTestClient webTestClient;
 
     @Test
-    void givenFirstUser_whenRetrieveMethodIsUsed_returnOk() throws Exception {
+    void givenFirstUser_whenRetrieveMethodIsUsed_thenReturnOk() throws Exception {
         this.webTestClient.get()
             .uri("/user/1")
             .exchange()
@@ -21,7 +21,7 @@ class RetrieveAndExchangeIntegrationTest {
     }
 
     @Test
-    void givenFirstUser_whenRetreiveMethodIsUsedWithOnStatusHandler_returnNotFound() throws Exception {
+    void givenFirstUser_whenRetreiveMethodIsUsedWithOnStatusHandler_thenReturnNotFound() throws Exception {
         this.webTestClient.get()
             .uri("/user-status/100")
             .exchange()
@@ -30,7 +30,7 @@ class RetrieveAndExchangeIntegrationTest {
     }
 
     @Test
-    void givenFirstUser_whenExchangeMonoMethodIsUsed_returnOk() throws Exception {
+    void givenFirstUser_whenExchangeMonoMethodIsUsed_thenReturnOk() throws Exception {
         this.webTestClient.get()
             .uri("/user/exchange-mono/1")
             .exchange()
@@ -39,7 +39,7 @@ class RetrieveAndExchangeIntegrationTest {
     }
 
     @Test
-    void givenAllUsers_whenRetrieveMethodIsUsed_returnOk() throws Exception {
+    void givenAllUsers_whenRetrieveMethodIsUsed_thenReturnOk() throws Exception {
         this.webTestClient.get()
             .uri("/users")
             .exchange()
@@ -48,7 +48,7 @@ class RetrieveAndExchangeIntegrationTest {
     }
 
     @Test
-    void givenSingleUser_whenResponseBodyIsAltered_returnOk() throws Exception {
+    void givenSingleUser_whenResponseBodyIsAltered_thenReturnOk() throws Exception {
         this.webTestClient.get()
             .uri("/user/exchange-alter/1")
             .exchange()
@@ -57,7 +57,7 @@ class RetrieveAndExchangeIntegrationTest {
     }
 
     @Test
-    void givenAllUsers_whenExchangeFluxMethodIsUsed_returnOk() throws Exception {
+    void givenAllUsers_whenExchangeFluxMethodIsUsed_thenReturnOk() throws Exception {
         this.webTestClient.get()
             .uri("/user-exchange-flux")
             .exchange()
