@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
+import org.apache.commons.lang3.ArrayUtils;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -71,12 +72,18 @@ class SmallestElementIndexUnitTest {
     }
 
     @ParameterizedTest
+    @MethodSource("primitiveProvider")
+    void givenArray_whenUsingIntStreamAndLookForIndexWithArrayUtils_thenGetCorrectResult(int[] array, int expectedIndex) {
+        int minValue = Arrays.stream(array).min().orElse(Integer.MAX_VALUE);
+        int minIndex = ArrayUtils.indexOf(array, minValue);
+        assertThat(minIndex).isEqualTo(expectedIndex);
+    }
+
+    @ParameterizedTest
     @MethodSource("referenceTypesProvider")
     void givenArray_whenUsingReduce_thenGetCorrectResult(Integer[] array, int expectedIndex) {
         int minValue = Arrays.stream(array).reduce(Integer.MAX_VALUE, Integer::min);
-        int minIndex = IntStream.range(0, array.length)
-          .filter(index -> array[index] == minValue)
-          .findFirst().orElse(-1);
+        int minIndex = ArrayUtils.indexOf(array, minValue);
         assertThat(minIndex).isEqualTo(expectedIndex);
     }
 
