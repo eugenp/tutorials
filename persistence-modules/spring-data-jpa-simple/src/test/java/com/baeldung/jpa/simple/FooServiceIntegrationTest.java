@@ -1,4 +1,4 @@
-package com.baeldung.simple;
+package com.baeldung.jpa.simple;
 
 import javax.sql.DataSource;
 
@@ -10,8 +10,8 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.baeldung.simple.entity.Foo;
-import com.baeldung.simple.service.IFooService;
+import com.baeldung.jpa.simple.model.Foo;
+import com.baeldung.jpa.simple.service.IFooService;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = { JpaApplication.class})
