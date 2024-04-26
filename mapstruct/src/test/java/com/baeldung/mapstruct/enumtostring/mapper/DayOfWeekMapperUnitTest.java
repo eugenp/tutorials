@@ -65,7 +65,7 @@ public class DayOfWeekMapperUnitTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"Mon,MONDAY", "null,MONDAY"})
+    @CsvSource({"Mon, MONDAY"})
     void whenInvalidNameStringMappedWithDefaults_thenReturnsDefault(String source, DayOfWeek expected) {
         final DayOfWeek target = dayOfWeekMapper.nameStringToDayOfWeekWithDefaults(source);
         assertEquals(expected, target);

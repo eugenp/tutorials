@@ -19,7 +19,6 @@ public interface DayOfWeekMapper {
 
     DayOfWeek nameStringToDayOfWeek(String day);
 
-    @ValueMapping(target = "MONDAY", source = MappingConstants.NULL)
     @ValueMapping(target = "MONDAY", source = MappingConstants.ANY_UNMAPPED)
     DayOfWeek nameStringToDayOfWeekWithDefaults(String day);
 
