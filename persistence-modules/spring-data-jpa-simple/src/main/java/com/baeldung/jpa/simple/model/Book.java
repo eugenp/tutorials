@@ -1,4 +1,4 @@
-package com.baeldung.simple.entity;
+package com.baeldung.jpa.simple.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

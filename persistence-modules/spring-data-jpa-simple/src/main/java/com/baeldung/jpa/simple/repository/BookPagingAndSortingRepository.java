@@ -1,4 +1,4 @@
-package com.baeldung.simple.repository;
+package com.baeldung.jpa.simple.repository;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import org.springframework.data.repository.ListCrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
-import com.baeldung.simple.entity.Book;
+import com.baeldung.jpa.simple.model.Book;
 
 @Repository
 public interface BookPagingAndSortingRepository extends PagingAndSortingRepository<Book, Long>, ListCrudRepository<Book, Long> {

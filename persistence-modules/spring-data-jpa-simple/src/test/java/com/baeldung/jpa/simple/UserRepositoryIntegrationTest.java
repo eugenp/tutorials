@@ -1,4 +1,4 @@
-package com.baeldung.simple;
+package com.baeldung.jpa.simple;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -14,8 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import com.baeldung.simple.entity.User;
-import com.baeldung.simple.repository.UserRepository;
+import com.baeldung.jpa.simple.model.User;
+import com.baeldung.jpa.simple.repository.UserRepository;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = JpaApplication.class)
