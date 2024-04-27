@@ -24,6 +24,7 @@ public class VehicleMapperUnitTest {
 
         VehicleDTO vehicleDTO = vehicleMapper.vehicleToDTO(car);
         Assertions.assertFalse(vehicleDTO instanceof CarDTO);
+        Assertions.assertTrue(vehicleDTO instanceof VehicleDTO);
 
         VehicleDTO carDTO = carMapper.carToDTO(car);
         Assertions.assertTrue(carDTO instanceof CarDTO);
