@@ -15,20 +15,16 @@ class ConvertingListToPrimitiveArrayUnitTest {
     @MethodSource("floatListProvider")
     void givenListOfWrapperFloat_whenConvertToWrapperArray_thenGetCorrectResult(List<Float> floats) {
         Float[] actual = floats.toArray(new Float[0]);
-        assertThat(actual).hasSameSizeAs(floats);
-        for (Float value : floats) {
-            assertThat(actual).contains(value);
-        }
+        assertSequences(floats, actual);
     }
+
     @ParameterizedTest
     @MethodSource("floatListProvider")
     void givenListOfWrapperFloat_whenConvertToWrapperArrayWithPreSizedArray_thenGetCorrectResult(List<Float> floats) {
         Float[] actual = floats.toArray(new Float[floats.size()]);
-        assertThat(actual).hasSameSizeAs(floats);
-        for (Float value : floats) {
-            assertThat(actual).contains(value);
-        }
+        assertSequences(floats, actual);
     }
+
     @ParameterizedTest
     @MethodSource("floatListProvider")
     void givenListOfWrapperFloat_whenConvertToPrimitiveArray_thenGetCorrectResult(List<Float> floats) {
@@ -36,26 +32,56 @@ class ConvertingListToPrimitiveArrayUnitTest {
         for (int i = 0; i < floats.size(); i++) {
             actual[i] = floats.get(i);
         }
-        assertThat(actual).hasSameSizeAs(floats);
-        for (Float value : floats) {
-            assertThat(actual).contains(value);
-        }
+        assertSequences(floats, actual);
     }
+
+    @ParameterizedTest
+    @MethodSource("floatListProvider")
+    void givenListOfWrapperFloat_whenUnboxToPrimitiveArray_thenGetCorrectResult(List<Float> floats) {
+        float[] actual = new float[floats.size()];
+        Float[] floatArray = floats.toArray(new Float[0]);
+        for (int i = 0; i < floats.size(); i++) {
+            actual[i] = floatArray[i];
+        }
+        assertSequences(floats, actual);
+    }
+
     @ParameterizedTest
     @MethodSource("floatListProvider")
     void givenListOfWrapperFloat_whenConvertToPrimitiveArrayWithArrayUtils_thenGetCorrectResult(List<Float> floats) {
-
         float[] actual = ArrayUtils.toPrimitive(floats.toArray(new Float[]{}));
-
-        assertThat(actual).hasSameSizeAs(floats);
-        for (Float value : floats) {
-            assertThat(actual).contains(value);
-        }
+        assertSequences(floats, actual);
     }
+
     @ParameterizedTest
     @MethodSource("floatListProvider")
     void givenListOfWrapperFloat_whenConvertingToPrimitiveArrayUsingStreams_thenGetCorrectResult(List<Float> floats) {
         double[] actual = floats.stream().mapToDouble(Float::doubleValue).toArray();
+        assertSequences(floats, actual);
+    }
+
+    @ParameterizedTest
+    @MethodSource("floatListProvider")
+    void givenListOfWrapperFloat_whenConvertingWithCollector_thenGetCorrectResult(List<Float> floats) {
+        float[] actual = floats.stream().collect(new FloatCollector(floats.size()));
+        assertSequences(floats, actual);
+    }
+
+    private static void assertSequences(Iterable<Float> floats, Float[] actual) {
+        assertThat(actual).hasSameSizeAs(floats);
+        for (Float value : floats) {
+            assertThat(actual).contains(value);
+        }
+    }
+
+    private static void assertSequences(Iterable<Float> floats, float[] actual) {
+        assertThat(actual).hasSameSizeAs(floats);
+        for (Float value : floats) {
+            assertThat(actual).contains(value);
+        }
+    }
+
+    private static void assertSequences(Iterable<Float> floats, double[] actual) {
         assertThat(actual).hasSameSizeAs(floats);
         for (Float value : floats) {
             assertThat(actual).contains(value);
