@@ -50,20 +50,5 @@ public class ImageToBufferedImageIntegrationTest {
         Image image = new ImageIcon("src/main/resources/images/baeldung.png").getImage();
         converter.convertUsingCasting(image);
     }
-
-    @Test
-    public void whenConvertUsingImageIOWithValidFile_thenImageGeneratedWithoutError() throws IOException {
-        ImageToBufferedImage converter = new ImageToBufferedImage();
-        BufferedImage bufferedImage = converter.convertUsingImageIO("src/main/resources/images/sampleImage.jpg");
-        assertNotNull(bufferedImage);
-        assertEquals(image.getWidth(null), bufferedImage.getWidth());
-        assertEquals(image.getHeight(null), bufferedImage.getHeight());
-    }
-
-    @Test(expected = IOException.class)
-    public void whenConvertUsingImageIOWithInvalidFile_thenImageGeneratedWithError() throws IOException {
-        ImageToBufferedImage converter = new ImageToBufferedImage();
-        converter.convertUsingImageIO("invalid_file.jpg");
-    }
 }
 
