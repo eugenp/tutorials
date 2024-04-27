@@ -19,7 +19,7 @@ public class VehicleMapperUnitTest {
     private final CarMapper carMapper = Mappers.getMapper(CarMapper.class);
 
     @Test
-    void whenVehicleTypeIsCar_thenParentMappingNotWorking() {
+    void whenVehicleTypeIsCar_thenBaseMapperNotMappingToSubclass() {
         Car car = getCarInstance();
 
         VehicleDTO vehicleDTO = vehicleMapper.vehicleToDTO(car);
