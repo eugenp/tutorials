@@ -6,16 +6,16 @@ import org.junit.jupiter.api.Test;
 
 class ShallowCopyUnitTest {
 
-	@Test
-	void whenShallowCopying_referencesShouldPointToSameObject() {
-		Author authorInReview = new Author("Hardik", "behl.hardiksingh@gmail.com");
-		Author selectedAuthor = authorInReview;
+    @Test
+    void whenShallowCopying_referencesShouldPointToSameObject() {
+        Author authorInReview = new Author("Hardik", "behl.hardiksingh@gmail.com");
+        Author selectedAuthor = authorInReview;
 
-		String updatedEmail = "behl.hardiksingh@baeldung.com";
-		selectedAuthor.setEmail(updatedEmail);
+        String updatedEmail = "behl.hardiksingh@baeldung.com";
+        selectedAuthor.setEmail(updatedEmail);
 
-		assertThat(authorInReview.getEmail()).isEqualTo(updatedEmail);
-		assertThat(authorInReview).isSameAs(selectedAuthor);
-	}
+        assertThat(authorInReview.getEmail()).isEqualTo(updatedEmail);
+        assertThat(authorInReview).isSameAs(selectedAuthor);
+    }
 
 }
