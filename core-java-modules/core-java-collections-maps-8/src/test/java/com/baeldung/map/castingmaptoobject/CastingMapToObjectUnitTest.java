@@ -7,10 +7,12 @@ import org.apache.commons.beanutils.BeanUtils;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CastingMapToObjectUnitTest {
 
@@ -18,8 +20,8 @@ public class CastingMapToObjectUnitTest {
         "id", 1L,
         "name", "Baeldung",
         "addresses", List.of(
-                new Address("La Havana", new Country("Cuba")),
-                new Address("Paris", new Country("France"))
+            new Address("La Havana", new Country("Cuba")),
+            new Address("Paris", new Country("France"))
         )
     );
 
@@ -28,9 +30,7 @@ public class CastingMapToObjectUnitTest {
         User user = new User();
         BeanUtils.populate(user, map);
 
-        assertEquals(user.getId(), map.get("id"));
-        assertEquals(user.getName(), map.get("name"));
-        assertEquals(user.getAddresses(), map.get("addresses"));
+        assertEqualsUserAndMap(user, map);
     }
 
     @Test
@@ -38,20 +38,29 @@ public class CastingMapToObjectUnitTest {
         ObjectMapper objectMapper = new ObjectMapper();
         User user = objectMapper.convertValue(map, User.class);
 
-        assertEquals(user.getId(), map.get("id"));
-        assertEquals(user.getName(), map.get("name"));
-        assertEquals(user.getAddresses(), map.get("addresses"));
+        assertEqualsUserAndMap(user, map);
+    }
+
+    @Test
+    void givenMap_whenUsingJacksonWithWrongAttrs_thenThrow() {
+        Map<String, Object> modifiedMap = new HashMap<>(map);
+        modifiedMap.put("enabled", true);
+
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        assertThrows(IllegalArgumentException.class, () -> objectMapper.convertValue(modifiedMap, User.class));
     }
 
     @Test
     void givenMap_whenUsingJacksonIgnoreUnknownProps_thenConvertToObject() {
+        Map<String, Object> modifiedMap = new HashMap<>(map);
+        modifiedMap.put("enabled", true);
+
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        User user = objectMapper.convertValue(map, User.class);
+        User user = objectMapper.convertValue(modifiedMap, User.class);
 
-        assertEquals(user.getId(), map.get("id"));
-        assertEquals(user.getName(), map.get("name"));
-        assertEquals(user.getAddresses(), map.get("addresses"));
+        assertEqualsUserAndMap(user, modifiedMap);
     }
 
     @Test
@@ -60,6 +69,10 @@ public class CastingMapToObjectUnitTest {
         String jsonMap = gson.toJson(map);
         User user = gson.fromJson(jsonMap, User.class);
 
+        assertEqualsUserAndMap(user, map);
+    }
+
+    private static void assertEqualsUserAndMap(User user, Map<String, Object> map) {
         assertEquals(user.getId(), map.get("id"));
         assertEquals(user.getName(), map.get("name"));
         assertEquals(user.getAddresses(), map.get("addresses"));

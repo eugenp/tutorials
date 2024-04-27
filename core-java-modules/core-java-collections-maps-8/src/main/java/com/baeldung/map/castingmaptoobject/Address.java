@@ -5,6 +5,7 @@ public class Address {
     private Country country;
 
     public Address() {
+        // default constructor needed for Jackson deserialization
     }
 
     public Address(String city, Country country) {

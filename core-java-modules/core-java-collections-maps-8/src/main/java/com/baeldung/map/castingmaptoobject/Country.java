@@ -4,6 +4,7 @@ public class Country {
     private String name;
 
     public Country() {
+        // default constructor needed for Jackson deserialization
     }
 
     public Country(String name) {
