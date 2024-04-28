@@ -1,27 +1,25 @@
 package com.baeldung.streams.tomapvsgroupingby;
 
 import static com.google.common.collect.Lists.newArrayList;
-import static com.google.common.collect.Sets.newHashSet;
 import static java.util.stream.Collectors.mapping;
 import static java.util.stream.Collectors.toList;
-import static java.util.stream.Collectors.toSet;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.junit.jupiter.api.Test;
 
-class City {
+final class City {
 
-    private String name;
-    private String country;
+    private final String name;
+    private final String country;
 
     public City(String name, String country) {
         this.name = name;
@@ -37,15 +35,15 @@ class City {
     }
 
     @Override
-    public final boolean equals(Object o) {
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof City city)) {
-            return false;
+        if (o instanceof City) {
+            City city = (City) o;
+            return Objects.equals(name, city.name) && Objects.equals(country, city.country);
         }
-
-        return Objects.equals(name, city.name) && Objects.equals(country, city.country);
+        return false;
     }
 
     @Override
@@ -58,31 +56,28 @@ class City {
 
 public class ToMapVsGroupingByUnitTest {
 
-    private City paris = new City("Paris", "France");
-    private City berlin = new City("Berlin", "Germany");
-    private City london = new City("London", "UK");
-    private City newYork = new City("New York", "USA");
-    private City tokyo = new City("Tokyo", "Japan");
+    private static final City PARIS = new City("Paris", "France");
+    private static final City BERLIN = new City("Berlin", "Germany");
+    private static final City TOKYO = new City("Tokyo", "Japan");
 
-    private City nice = new City("Nice", "France");
-    private City hamburg = new City("Hamburg", "Germany");
-    private City aachen = new City("Aachen", "Germany");
+    private static final City NICE = new City("Nice", "France");
+    private static final City HAMBURG = new City("Hamburg", "Germany");
+    private static final City AACHEN = new City("Aachen", "Germany");
 
-    private City franceNull = new City(null, "France");
-    private City germanyNull = new City(null, "Germany");
+    private static final City FRANCE_NULL = new City(null, "France");
+
+    private static final City COUNTRY_NULL = new City("Unknown", null);
 
     @Test
     void whenUsingToMap_thenGetExpectedResult() {
-        Map<String, City> result = Stream.of(paris, berlin, london, newYork, tokyo)
+        Map<String, City> result = Stream.of(PARIS, BERLIN, TOKYO)
             .collect(Collectors.toMap(City::getCountry, Function.identity()));
 
         Map<String, City> expected = Map.of(
             // @formatter:off
-            "France", paris,
-            "Germany", berlin,
-            "UK", london,
-            "USA", newYork,
-            "Japan", tokyo
+            "France", PARIS,
+            "Germany", BERLIN,
+            "Japan", TOKYO
             // @formatter:on
         );
 
@@ -91,16 +86,14 @@ public class ToMapVsGroupingByUnitTest {
 
     @Test
     void whenUsingGroupingBy_thenGetExpectedResult() {
-        Map<String, List<City>> result = Stream.of(paris, berlin, london, newYork, tokyo)
+        Map<String, List<City>> result = Stream.of(PARIS, BERLIN, TOKYO)
             .collect(Collectors.groupingBy(City::getCountry));
 
         Map<String, List<City>> expected = Map.of(
             // @formatter:off
-            "France", List.of(paris),
-            "Germany", List.of(berlin),
-            "UK", List.of(london),
-            "USA", List.of(newYork),
-            "Japan", List.of(tokyo)
+            "France", List.of(PARIS),
+            "Germany", List.of(BERLIN),
+            "Japan", List.of(TOKYO)
             // @formatter:on
         );
 
@@ -108,21 +101,35 @@ public class ToMapVsGroupingByUnitTest {
     }
 
     @Test
+    void whenUsingGroupingAndToMapWithNullKeys_thenGetExpectedResult() {
+
+        Map<String, City> result = Stream.of(PARIS, COUNTRY_NULL)
+            .collect(Collectors.toMap(City::getCountry, Function.identity()));
+
+        Map<String, City> expected = new HashMap<>() {{
+            put("France", PARIS);
+            put(null, COUNTRY_NULL);
+        }};
+        assertEquals(expected, result);
+
+        assertThrows(NullPointerException.class, () -> Stream.of(PARIS, COUNTRY_NULL)
+            .collect(Collectors.groupingBy(City::getCountry)));
+    }
+
+    @Test
     void whenUsingToMapWithDuplicateKey_thenGetExpectedResult() {
-        assertThrows(IllegalStateException.class, () -> Stream.of(paris, berlin, london, newYork, tokyo, nice, hamburg, aachen)
+        assertThrows(IllegalStateException.class, () -> Stream.of(PARIS, BERLIN, TOKYO, NICE, HAMBURG, AACHEN)
             .collect(Collectors.toMap(City::getCountry, Function.identity())));
 
-        Map<String, City> result = Stream.of(paris, berlin, london, newYork, tokyo, nice, hamburg, aachen)
+        Map<String, City> result = Stream.of(PARIS, BERLIN, TOKYO, NICE, HAMBURG, AACHEN)
             .collect(Collectors.toMap(City::getCountry, Function.identity(), (c1, c2) -> c1.getName()
                 .compareTo(c2.getName()) < 0 ? c1 : c2));
 
         Map<String, City> expected = Map.of(
             // @formatter:off
-            "France", nice, // Paris, Nice
-            "Germany", aachen, // Berlin, Aachen, Hamburg
-            "UK", london,
-            "USA", newYork,
-            "Japan", tokyo
+            "France", NICE, // Paris, Nice
+            "Germany", AACHEN, // Berlin, Aachen, Hamburg
+            "Japan", TOKYO
             // @formatter:on
         );
 
@@ -131,16 +138,14 @@ public class ToMapVsGroupingByUnitTest {
 
     @Test
     void whenUsingGroupingByWithDuplicateKey_thenGetExpectedResult() {
-        Map<String, List<City>> result = Stream.of(paris, berlin, london, newYork, tokyo, nice, hamburg, aachen)
+        Map<String, List<City>> result = Stream.of(PARIS, BERLIN, TOKYO, NICE, HAMBURG, AACHEN)
             .collect(Collectors.groupingBy(City::getCountry));
 
         Map<String, List<City>> expected = Map.of(
             // @formatter:off
-            "France", List.of(paris, nice),
-            "Germany", List.of(berlin, hamburg, aachen),
-            "UK", List.of(london),
-            "USA", List.of(newYork),
-            "Japan", List.of(tokyo)
+            "France", List.of(PARIS, NICE),
+            "Germany", List.of(BERLIN, HAMBURG, AACHEN),
+            "Japan", List.of(TOKYO)
             // @formatter:on
         );
 
@@ -149,51 +154,45 @@ public class ToMapVsGroupingByUnitTest {
 
     @Test
     void whenUsingToMapWithValueMapper_thenGetExpectedResult() {
-        Map<String, String> result = Stream.of(paris, berlin, london, newYork, tokyo, nice, hamburg, aachen)
-            .collect(Collectors.toMap(City::getCountry, City::getName, (name1, name2) -> name1.compareTo(name2) < 0 ? name1 : name2));
+        Map<String, String> result = Stream.of(PARIS, BERLIN, TOKYO)
+            .collect(Collectors.toMap(City::getCountry, City::getName));
 
         Map<String, String> expected = Map.of(
             // @formatter:off
-            "France", "Nice",
-            "Germany", "Aachen",
-            "UK", "London",
-            "USA", "New York",
+            "France", "Paris",
+            "Germany", "Berlin",
             "Japan", "Tokyo"
             // @formatter:on
         );
 
         assertEquals(expected, result);
 
-        assertThrows(NullPointerException.class, () -> Stream.of(paris, berlin, london, newYork, tokyo, nice, hamburg, aachen, franceNull, germanyNull)
-            .collect(Collectors.toMap(City::getCountry, City::getName, (name1, name2) -> name1.compareTo(name2) < 0 ? name1 : name2)));
+        assertThrows(NullPointerException.class, () -> Stream.of(PARIS, FRANCE_NULL)
+            .collect(Collectors.toMap(City::getCountry, City::getName)));
     }
 
     @Test
     void whenUsingGroupingByWithValueMapping_thenGetExpectedResult() {
-        Map<String, List<String>> result = Stream.of(paris, berlin, london, newYork, tokyo, nice, hamburg, aachen)
+        Map<String, List<String>> result = Stream.of(PARIS, BERLIN, TOKYO)
             .collect(Collectors.groupingBy(City::getCountry, mapping(City::getName, toList())));
 
         Map<String, List<String>> expected = Map.of(
             // @formatter:off
-            "France", List.of("Paris", "Nice"),
-            "Germany", List.of("Berlin", "Hamburg", "Aachen"),
-            "UK", List.of("London"),
-            "USA", List.of("New York"),
+            "France", List.of("Paris"),
+            "Germany", List.of("Berlin"),
             "Japan", List.of("Tokyo")
             // @formatter:on
         );
 
         assertEquals(expected, result);
 
-        Map<String, List<String>> resultWithNull = Stream.of(paris, berlin, london, newYork, tokyo, nice, hamburg, aachen, franceNull, germanyNull)
+        Map<String, List<String>> resultWithNull = Stream.of(PARIS, BERLIN, TOKYO, FRANCE_NULL)
             .collect(Collectors.groupingBy(City::getCountry, mapping(City::getName, toList())));
 
         Map<String, List<String>> expectedWithNull = Map.of(
             // @formatter:off
-            "France", newArrayList("Paris", "Nice", null),
-            "Germany", newArrayList("Berlin", "Hamburg", "Aachen", null),
-            "UK", List.of("London"),
-            "USA", List.of("New York"),
+            "France", newArrayList("Paris", null),
+            "Germany", newArrayList("Berlin"),
             "Japan", List.of("Tokyo")
             // @formatter:on
         );
