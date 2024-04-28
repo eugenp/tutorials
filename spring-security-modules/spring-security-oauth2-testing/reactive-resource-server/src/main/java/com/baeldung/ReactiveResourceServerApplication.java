@@ -1,7 +1,5 @@
 package com.baeldung;
 
-import static org.springframework.security.config.Customizer.withDefaults;
-
 import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 import org.springframework.security.config.annotation.method.configuration.EnableReactiveMethodSecurity;
@@ -52,22 +51,22 @@ public class ReactiveResourceServerApplication {
     @EnableReactiveMethodSecurity
     static class SecurityConfig {
         @Bean
-        SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
-            http.oauth2ResourceServer(resourceServer -> resourceServer.jwt(withDefaults()));
+        SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http, Converter<Jwt, Mono<AbstractAuthenticationToken>> authenticationConverter) {
+            http.oauth2ResourceServer(resourceServer -> resourceServer.jwt(jwtResourceServer -> jwtResourceServer.jwtAuthenticationConverter(authenticationConverter)));
             http.securityContextRepository(NoOpServerSecurityContextRepository.getInstance());
             http.csrf(CsrfSpec::disable);
-            http.exceptionHandling(eh -> eh
-                    .accessDeniedHandler((var exchange, var ex) -> exchange.getPrincipal().flatMap(principal -> {
-                        final var response = exchange.getResponse();
-                        response.setStatusCode(
-                                principal instanceof AnonymousAuthenticationToken ? HttpStatus.UNAUTHORIZED
-                                        : HttpStatus.FORBIDDEN);
-                        response.getHeaders().setContentType(MediaType.TEXT_PLAIN);
-                        final var dataBufferFactory = response.bufferFactory();
-                        final var buffer = dataBufferFactory.wrap(ex.getMessage().getBytes(Charset.defaultCharset()));
-                        return response.writeWith(Mono.just(buffer))
-                                .doOnError(error -> DataBufferUtils.release(buffer));
-                    })));
+            http.exceptionHandling(eh -> eh.accessDeniedHandler((var exchange, var ex) -> exchange.getPrincipal()
+                .flatMap(principal -> {
+                    final var response = exchange.getResponse();
+                    response.setStatusCode(principal instanceof AnonymousAuthenticationToken ? HttpStatus.UNAUTHORIZED : HttpStatus.FORBIDDEN);
+                    response.getHeaders()
+                        .setContentType(MediaType.TEXT_PLAIN);
+                    final var dataBufferFactory = response.bufferFactory();
+                    final var buffer = dataBufferFactory.wrap(ex.getMessage()
+                        .getBytes(Charset.defaultCharset()));
+                    return response.writeWith(Mono.just(buffer))
+                        .doOnError(error -> DataBufferUtils.release(buffer));
+                })));
 
             // @formatter:off
             http.authorizeExchange(req -> req
@@ -84,17 +83,18 @@ public class ReactiveResourceServerApplication {
         @Bean
         ReactiveJwtAuthoritiesConverter realmRoles2AuthoritiesConverter() {
             return (Jwt jwt) -> {
-                final var realmRoles = Optional.of(jwt.getClaimAsMap("realm_access")).orElse(Map.of());
+                final var realmRoles = Optional.of(jwt.getClaimAsMap("realm_access"))
+                    .orElse(Map.of());
                 @SuppressWarnings("unchecked")
                 final var roles = (List<String>) realmRoles.getOrDefault("roles", List.of());
-                return Flux.fromStream(roles.stream()).map(SimpleGrantedAuthority::new)
-                        .map(GrantedAuthority.class::cast);
+                return Flux.fromStream(roles.stream())
+                    .map(SimpleGrantedAuthority::new)
+                    .map(GrantedAuthority.class::cast);
             };
         }
 
         @Bean
-        ReactiveJwtAuthenticationConverter authenticationConverter(
-                Converter<Jwt, Flux<GrantedAuthority>> authoritiesConverter) {
+        ReactiveJwtAuthenticationConverter authenticationConverter(Converter<Jwt, Flux<GrantedAuthority>> authoritiesConverter) {
             final var authenticationConverter = new ReactiveJwtAuthenticationConverter();
             authenticationConverter.setPrincipalClaimName(StandardClaimNames.PREFERRED_USERNAME);
             authenticationConverter.setJwtGrantedAuthoritiesConverter(authoritiesConverter);
@@ -106,10 +106,12 @@ public class ReactiveResourceServerApplication {
     public static class MessageService {
 
         public Mono<String> greet() {
-            return ReactiveSecurityContextHolder.getContext().map(ctx -> {
-                final var who = (JwtAuthenticationToken) ctx.getAuthentication();
-                return "Hello %s! You are granted with %s.".formatted(who.getName(), who.getAuthorities());
-            }).switchIfEmpty(Mono.error(new AuthenticationCredentialsNotFoundException("Security context is empty")));
+            return ReactiveSecurityContextHolder.getContext()
+                .map(ctx -> {
+                    final var who = (JwtAuthenticationToken) ctx.getAuthentication();
+                    return "Hello %s! You are granted with %s.".formatted(who.getName(), who.getAuthorities());
+                })
+                .switchIfEmpty(Mono.error(new AuthenticationCredentialsNotFoundException("Security context is empty")));
         }
 
         @PreAuthorize("hasRole('AUTHORIZED_PERSONNEL')")
@@ -125,18 +127,21 @@ public class ReactiveResourceServerApplication {
 
         @GetMapping("/greet")
         public Mono<ResponseEntity<String>> greet() {
-            return messageService.greet().map(ResponseEntity::ok);
+            return messageService.greet()
+                .map(ResponseEntity::ok);
         }
 
         @GetMapping("/secured-route")
         public Mono<ResponseEntity<String>> securedRoute() {
-            return messageService.getSecret().map(ResponseEntity::ok);
+            return messageService.getSecret()
+                .map(ResponseEntity::ok);
         }
 
         @GetMapping("/secured-method")
         @PreAuthorize("hasRole('AUTHORIZED_PERSONNEL')")
         public Mono<ResponseEntity<String>> securedMethod() {
-            return messageService.getSecret().map(ResponseEntity::ok);
+            return messageService.getSecret()
+                .map(ResponseEntity::ok);
         }
     }
 

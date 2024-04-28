@@ -13,4 +13,4 @@ docker run --init -p 8080:8080 -p 1234:5000 conductoross/conductor-standalone:3.
 ```
 
 ### Relevant Articles:
-- [Saga Pattern in Microservices Architecture](https://www.baeldung.com/orkes-conductor-saga-pattern-spring-boot)
+- [Saga Pattern in a Microservices Architecture](https://www.baeldung.com/orkes-conductor-saga-pattern-spring-boot)
