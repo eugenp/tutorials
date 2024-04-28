@@ -11,24 +11,18 @@ import com.samskivert.mustache.Template;
 public class PathLambda implements Mustache.Lambda {
     @Override
     public void execute(Template.Fragment fragment, Writer writer) throws IOException {
-
         String maybeUri = fragment.execute();
         try {
             URI uri = new URI(maybeUri);
-
-            // Extract path
-            if ( uri.getPath() != null ) {
+            if (uri.getPath() != null) {
                 writer.write(uri.getPath());
-            }
-            else {
+            } else {
                 writer.write("/");
             }
-
         }
         catch (URISyntaxException e) {
             // Keep as is
             writer.write(maybeUri);
         }
-
     }
 }
