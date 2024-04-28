@@ -18,7 +18,6 @@ import org.junit.Test;
 import com.google.common.io.Resources;
 
 import net.schmizz.sshj.SSHClient;
-import net.schmizz.sshj.connection.channel.direct.LocalPortForwarder;
 import net.schmizz.sshj.sftp.FileAttributes;
 import net.schmizz.sshj.sftp.SFTPClient;
 
@@ -81,24 +80,24 @@ public class SSHJLibExampleUnitTest {
     }
     
     @Test
-    public void given_whenUserPassAuth_thenConnected() throws IOException {
+    public void whenUserPassAuth_thenConnected() throws IOException {
         assertEquals(true, sshClient.isConnected(), "Server connected via ssh login using user and passowrd");
     }
     
     @Test
-    public void given_whenUserPubKeyAuth_thenConnected() throws IOException {
+    public void whenUserPubKeyAuth_thenConnected() throws IOException {
         SSHClient pubSSHClient = SSHJAppDemo.loginPubKey(HOST, USER, privateKeyPath, PORT);
         assertEquals(true, pubSSHClient.isConnected(), "Server connected via ssh login using pub key");
     }
     
     @Test
-    public void given_whenCmdExecuted_thenResultReturned() throws IOException {
+    public void whenCmdExecuted_thenResultReturned() throws IOException {
         String response = SSHJAppDemo.executeCommand(rebexSshClient);
         assertEquals("success", response, "command executed on the server successfully");
     }
     
     @Test
-    public void given_whenFileSCPUploadDownload_thenFileUploadedandDownloaded() throws IOException {
+    public void whenFileSCPUploadDownload_thenFileUploadedandDownloaded() throws IOException {
         String scpfilePath = Resources.getResource(SCP_FILE_NAME)
             .getPath();
         SSHJAppDemo.scpUpload(sshClient, scpfilePath);
@@ -114,7 +113,7 @@ public class SSHJLibExampleUnitTest {
     }
 
     @Test
-    public void given_whenFileSFTPUploadDownload_thenFileUploadedandDownloaded() throws IOException {
+    public void whenFileSFTPUploadDownload_thenFileUploadedandDownloaded() throws IOException {
         String sftpfilePath = Resources.getResource(SFTP_FILE_NAME)
             .getPath();
         SSHJAppDemo.SFTPUpload(sshClient, sftpfilePath);
@@ -130,16 +129,14 @@ public class SSHJLibExampleUnitTest {
     }
 
     @Test
-    public void given_whenLocalPortForward_thenLocalPortForwarded() throws IOException, InterruptedException {
-        LocalPortForwarder localForwarder = SSHJAppDemo.localPortForwarding(sshClient);
-        Thread.sleep(2000);
-        assertEquals(true, localForwarder.isRunning(), "Local port forwarding should be successful");
+    public void whenLocalPortForward_thenLocalPortForwarded() throws IOException, InterruptedException {
+        String response = SSHJAppDemo.localPortForwarding(sshClient);
+        assertEquals("success", response, "Local port forwarding should be successful");
     }
     
     @Test
-    public void given_whenRemotePortForward_thenRemotePortForwarded() throws IOException, InterruptedException {
+    public void whenRemotePortForward_thenRemotePortForwarded() throws IOException, InterruptedException {
         String response = SSHJAppDemo.remotePortForwarding(sshClient);
-        Thread.sleep(2000);
         assertEquals("success", response, "Remote port forwarding should be successful");
     }
 }

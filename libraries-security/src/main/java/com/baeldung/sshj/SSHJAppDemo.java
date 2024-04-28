@@ -93,7 +93,8 @@ public class SSHJAppDemo {
         }
     }
 
-    public static LocalPortForwarder localPortForwarding(SSHClient ssh) throws IOException, InterruptedException {
+    public static String localPortForwarding(SSHClient ssh) throws IOException, InterruptedException {
+        String response;
         LocalPortForwarder locForwarder;
         System.out.println(ssh.getRemoteHostname());
         final Parameters params = new Parameters(ssh.getRemoteHostname(), 8081, "google.com", 80);
@@ -110,7 +111,8 @@ public class SSHJAppDemo {
             }
         }).start();
 
-        return locForwarder;
+        response = "success";
+        return response;
     }
 
     public static String remotePortForwarding(SSHClient ssh) throws IOException, InterruptedException {

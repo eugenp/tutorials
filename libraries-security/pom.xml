@@ -88,7 +88,7 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-oauth2-authorization-server</artifactId>
-            <version>1.2.1</version><!--$NO-MVN-MAN-VER$-->
+            <version>1.2.1</version>
         </dependency>
         <dependency>
             <groupId>org.apache.sshd</groupId>
