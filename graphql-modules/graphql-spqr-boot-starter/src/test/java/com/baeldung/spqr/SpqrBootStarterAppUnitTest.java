@@ -13,7 +13,7 @@ import reactor.core.publisher.Mono;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 @SpringBootTest(webEnvironment = RANDOM_PORT, classes = SpqrBootStarterApp.class)
-class SpqrBootStarterAppIntegrationTest {
+class SpqrBootStarterAppUnitTest {
 
     private static final String GRAPHQL_PATH = "/graphql";
 
