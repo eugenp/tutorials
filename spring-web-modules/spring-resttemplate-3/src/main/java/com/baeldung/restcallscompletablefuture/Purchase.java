@@ -1,12 +1,13 @@
 package com.baeldung.restcallscompletablefuture;
 
 public class Purchase {
+
     private String orderDescription;
     private String paymentDescription;
     private String buyerName;
-    private String orderId;
-    private String paymentId;
-    private String userId;
+    private final String orderId;
+    private final String paymentId;
+    private final String userId;
 
     public Purchase(String orderId, String paymentId, String userId) {
         this.orderId = orderId;

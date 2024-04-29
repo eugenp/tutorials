@@ -2,14 +2,14 @@ package com.baeldung.restcallscompletablefuture;
 
 import static java.lang.String.format;
 
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestTemplate;
-
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.function.BiFunction;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 
 @Component
 public class PurchaseRestCallsAsyncExecutor {
@@ -31,37 +31,29 @@ public class PurchaseRestCallsAsyncExecutor {
     }
 
     public void updatePurchase(Purchase purchase) {
-        CompletableFuture.allOf(
-                CompletableFuture.
-                        supplyAsync(() -> getOrderDescription(purchase.getOrderId()))
-                        .thenAccept(purchase::setOrderDescription),
-                CompletableFuture.
-                        supplyAsync(() -> getPaymentDescription(purchase.getPaymentId()))
-                        .thenAccept(purchase::setPaymentDescription),
-                CompletableFuture.
-                        supplyAsync(() -> getUserName(purchase.getUserId()))
-                        .thenAccept(purchase::setBuyerName)
-        ).join();
+        CompletableFuture.allOf(CompletableFuture.supplyAsync(() -> getOrderDescription(purchase.getOrderId()))
+                    .thenAccept(purchase::setOrderDescription),
+                CompletableFuture.supplyAsync(() -> getPaymentDescription(purchase.getPaymentId()))
+                    .thenAccept(purchase::setPaymentDescription),
+                CompletableFuture.supplyAsync(() -> getUserName(purchase.getUserId()))
+                    .thenAccept(purchase::setBuyerName))
+            .join();
     }
 
     public void updatePurchaseHandlingExceptions(Purchase purchase) {
-        CompletableFuture.allOf(
-                CompletableFuture.
-                        supplyAsync(() -> getOrderDescription(purchase.getOrderId()))
-                        .thenAccept(purchase::setOrderDescription)
-                        .orTimeout(1, TimeUnit.SECONDS)
-                        .handle(handleGracefully()),
-                CompletableFuture.
-                        supplyAsync(() -> getPaymentDescription(purchase.getPaymentId()))
-                        .thenAccept(purchase::setPaymentDescription)
-                        .orTimeout(1, TimeUnit.SECONDS)
-                        .handle(handleGracefully()),
-                CompletableFuture.
-                        supplyAsync(() -> getUserName(purchase.getUserId()))
-                        .thenAccept(purchase::setBuyerName)
-                        .orTimeout(1, TimeUnit.SECONDS)
-                        .handle(handleGracefully())
-        ).join();
+        CompletableFuture.allOf(CompletableFuture.supplyAsync(() -> getOrderDescription(purchase.getOrderId()))
+                    .thenAccept(purchase::setOrderDescription)
+                    .orTimeout(1, TimeUnit.SECONDS)
+                    .handle(handleGracefully()),
+                CompletableFuture.supplyAsync(() -> getPaymentDescription(purchase.getPaymentId()))
+                    .thenAccept(purchase::setPaymentDescription)
+                    .orTimeout(1, TimeUnit.SECONDS)
+                    .handle(handleGracefully()),
+                CompletableFuture.supplyAsync(() -> getUserName(purchase.getUserId()))
+                    .thenAccept(purchase::setBuyerName)
+                    .orTimeout(1, TimeUnit.SECONDS)
+                    .handle(handleGracefully()))
+            .join();
     }
 
     public String getOrderDescription(String orderId) {
