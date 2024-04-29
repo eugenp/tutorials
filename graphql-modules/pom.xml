@@ -15,18 +15,6 @@
         <relativePath>../parent-boot-3</relativePath>
     </parent>
 
-<!--    <dependencyManagement>-->
-<!--        <dependencies>-->
-<!--            <dependency>-->
-<!--                &lt;!&ndash; Boot version compatible with spqr-boot-starter &ndash;&gt;-->
-<!--                <groupId>org.springframework.boot</groupId>-->
-<!--                <artifactId>spring-boot-dependencies</artifactId>-->
-<!--                <version>3.1.5</version>-->
-<!--                <type>pom</type>-->
-<!--                <scope>import</scope>-->
-<!--            </dependency>-->
-<!--        </dependencies>-->
-<!--    </dependencyManagement>-->
 
     <modules>
         <module>graphql-dgs</module>
@@ -34,10 +22,5 @@
         <module>graphql-spqr</module>
         <module>graphql-spqr-boot-starter</module>
     </modules>
-
-    <properties>
-<!--        <org.slf4j.version>1.7.32</org.slf4j.version>-->
-<!--        <logback.version>1.2.7</logback.version>-->
-    </properties>
 
 </project>
