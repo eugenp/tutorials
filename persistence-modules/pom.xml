@@ -46,6 +46,7 @@
         <module>java-jpa</module> <!-- long running -->
         <module>java-jpa-2</module>
         <module>java-jpa-3</module>
+        <module>java-jpa-4</module>
         <module>java-mongodb-2</module> <!-- long running -->
         <module>java-mongodb-3</module> <!-- long running -->
         <module>java-mongodb-queries</module> <!-- long running -->
