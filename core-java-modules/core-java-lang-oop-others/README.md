@@ -11,3 +11,4 @@ This module contains articles about Object Oriented Programming (OOP) in Java
 - [Java Interface Naming Conventions](https://www.baeldung.com/java-interface-naming-conventions)
 - [Difference Between Information Hiding and Encapsulation](https://www.baeldung.com/java-information-hiding-vs-encapsulation)
 - [Statements Before super() in Java](https://www.baeldung.com/java-statements-before-super-constructor)
+- [Print the Default Value When Overriding toString() Method](https://www.baeldung.com/java-print-default-value-override-tostring)

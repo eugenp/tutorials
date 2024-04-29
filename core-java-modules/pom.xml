@@ -16,19 +16,19 @@
     </parent>
 
     <modules>
-        <!--Won't be upgraded to JDK 17 -->
+        <!--Won't be upgraded to JDK 17 reason specified in JAVA-18131-->
         <!--<module>core-java-8</module> -->
         <!--<module>core-java-8-2</module> -->
         <!--<module>core-java-8-datetime</module> -->
         <!--<module>core-java-8-datetime-2</module> -->
-        <module>core-java-collections-conversions-2</module>
-        <module>core-java-collections-conversions-3</module>
-        <module>core-java-concurrency-advanced-5</module>
         <!--<module>core-java-lang</module> -->
         <!--<module>core-java-lang-math-3</module> -->
         <!--<module>core-java-security</module> -->
         <!--<module>core-java-streams-2</module> -->
         <!--<module>core-java-sun</module> -->
+        <module>core-java-collections-conversions-2</module>
+        <module>core-java-collections-conversions-3</module>
+        <module>core-java-concurrency-advanced-5</module>
         <!-- <module>core-java-modules/core-java-9-new-features</module> --> <!-- JAVA-26056 -->
         <!-- <module>core-java-modules/core-java-14</module> --> <!-- JAVA-26056 -->
         <!-- <module>core-java-modules/core-java-16</module> --> <!-- JAVA-26056 -->
@@ -36,6 +36,7 @@
         <!-- <module>core-java-modules/core-java-18</module> --> <!-- JAVA-26056 -->
         <!-- <module>core-java-modules/core-java-19</module> --> <!-- JAVA-26056 -->
         <module>core-java-numbers-conversions</module>
+        <module>core-java-numbers-conversions-2</module>
         <module>core-java-9-improvements</module>
         <module>core-java-9-streams</module>
         <module>core-java-9</module>
@@ -144,6 +145,7 @@
         <module>core-java-lang-4</module>
         <module>core-java-lang-5</module>
         <module>core-java-lang-6</module>
+        <module>core-java-lang-7</module>
         <module>core-java-lang-math</module>
         <module>core-java-lang-math-2</module>
         <module>core-java-lang-math-4</module>
@@ -205,6 +207,7 @@
         <module>core-java-string-operations-6</module>
         <module>core-java-string-operations-7</module>
         <module>core-java-string-operations-8</module>
+        <module>core-java-string-operations-9</module>
         <module>core-java-regex</module>
         <module>core-java-regex-2</module>
         <module>core-java-regex-3</module>
@@ -212,8 +215,8 @@
         <module>core-java-collections-maps-6</module>
         <module>core-java-records</module>
         <module>core-java-9-jigsaw</module>
-        <!--<module>core-java-20</module>--> <!--JAVA-25373-->
-        <!--<module>core-java-21</module>--> <!--JAVA-25373-->
+        <!--<module>core-java-20</module>--> <!--JAVA-29040-->
+        <!--<module>core-java-21</module>--> <!--JAVA-29040-->
         <!--<module>core-java-conditionals</module>--> <!--JAVA-20931-->
         <module>core-java-collections-set</module>
         <module>core-java-date-operations-1</module>
@@ -224,6 +227,7 @@
         <module>java-rmi</module>
         <module>java-spi</module>
         <module>java-websocket</module>
+        <module>core-java-8-datetime-3</module>
     </modules>
 
     <dependencies>

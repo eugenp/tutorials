@@ -68,13 +68,13 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>${junit.jupiter.version}</version>
+            <version>${junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>${junit.jupiter.version}</version>
+            <version>${junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -102,7 +102,6 @@
         <org.springframework.data.version>4.1.9</org.springframework.data.version>
         <testcontainers.version>1.19.5</testcontainers.version>
         <system.stubs.version>2.1.5</system.stubs.version>
-        <junit.jupiter.version>5.9.3</junit.jupiter.version>
         <start-class>org.baeldung.springcassandra.SpringCassandraApplication</start-class>
     </properties>
 

@@ -6,4 +6,6 @@
 - [Check if a Number Is a Happy Number in Java](https://www.baeldung.com/java-happy-sad-number-test)
 - [Find the Largest Number Possible After Removing k Digits of a Number](https://www.baeldung.com/java-find-largest-number-remove-k-digits)
 - [Implement Connect 4 Game with Java](https://www.baeldung.com/java-connect-4-game)
+- [SkipList Implementation in Java](https://www.baeldung.com/java-skiplist)
+- [Find the Date of Easter Sunday for the Given Year](https://www.baeldung.com/java-determine-easter-date-specific-year)
 - More articles: [[<-- prev]](/algorithms-miscellaneous-7)
