@@ -59,6 +59,19 @@
             <scope>runtime</scope>
         </dependency>
         <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-core</artifactId>
+            <version>${jmh.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-generator-annprocess</artifactId>
+            <version>${jmh.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <scope>test</scope>
@@ -71,6 +84,7 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-junit-jupiter</artifactId>
+            <version>${mockito-junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -140,6 +154,7 @@
         <reactor-spring.version>1.0.1.RELEASE</reactor-spring.version>
         <jetty-reactive-httpclient.version>1.1.6</jetty-reactive-httpclient.version>
         <resilience4j.version>1.7.1</resilience4j.version>
+        <jmh.version>1.37</jmh.version>
     </properties>
 
 </project>

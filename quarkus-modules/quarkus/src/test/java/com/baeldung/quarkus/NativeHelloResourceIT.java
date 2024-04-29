@@ -6,7 +6,7 @@ import io.quarkus.test.junit.QuarkusIntegrationTest;
 
 @QuarkusIntegrationTest
 @QuarkusTestResource(H2DatabaseTestResource.class)
-public class NativeHelloResourceIT extends HelloResourceUnitTest {
+public class NativeHelloResourceIT extends HelloResourceLongRunningUnitTest {
 
     // Execute the same tests but in native mode.
 }

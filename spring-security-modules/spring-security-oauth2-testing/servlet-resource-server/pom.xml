@@ -12,6 +12,7 @@
         <groupId>com.baeldung</groupId>
         <artifactId>spring-security-oauth2-testing</artifactId>
         <version>0.0.1-SNAPSHOT</version>
+        <relativePath>..</relativePath>
     </parent>
 
     <dependencies>
