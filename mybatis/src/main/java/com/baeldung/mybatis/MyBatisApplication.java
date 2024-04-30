@@ -20,9 +20,9 @@ public class MyBatisApplication {
         // Open a SqlSession
         try (SqlSession session = sqlSessionFactory.openSession()) {
             // Execute a query
-            List<Address> addresseList = session.selectList("com.baeldung.mybatis.mapper.AddressMapper.getAddresses", 1);
+            List<Address> addressList = session.selectList("com.baeldung.mybatis.mapper.AddressMapper.getAddresses", 1);
 
-            for (Address address : addresseList) {
+            for (Address address : addressList) {
                 System.out.println(address);
             }
         }
