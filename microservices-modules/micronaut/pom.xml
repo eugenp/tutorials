@@ -6,8 +6,8 @@
     <groupId>com.baeldung.micronaut</groupId>
     <artifactId>micronaut</artifactId>
     <version>0.1</version>
-    <name>micronaut</name>
     <packaging>${packaging}</packaging>
+    <name>micronaut</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
