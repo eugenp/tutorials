@@ -93,10 +93,8 @@ public class SSHJAppDemo {
         }
     }
 
-    public static String localPortForwarding(SSHClient ssh) throws IOException, InterruptedException {
-        String response;
+    public static LocalPortForwarder localPortForwarding(SSHClient ssh) throws IOException, InterruptedException {
         LocalPortForwarder locForwarder;
-        System.out.println(ssh.getRemoteHostname());
         final Parameters params = new Parameters(ssh.getRemoteHostname(), 8081, "google.com", 80);
         final ServerSocket ss = new ServerSocket();
         ss.setReuseAddress(true);
@@ -111,12 +109,10 @@ public class SSHJAppDemo {
             }
         }).start();
 
-        response = "success";
-        return response;
+        return locForwarder;
     }
 
-    public static String remotePortForwarding(SSHClient ssh) throws IOException, InterruptedException {
-        String response;
+    public static RemotePortForwarder remotePortForwarding(SSHClient ssh) throws IOException, InterruptedException {
         RemotePortForwarder rpf;
         ssh.getConnection()
             .getKeepAlive()
@@ -134,8 +130,7 @@ public class SSHJAppDemo {
             }
         }).start();
 
-        response = "success";
-        return response;
+        return rpf;
     }
 
     public static String KeepAlive(String hostName, String userName, String password) throws IOException, InterruptedException {

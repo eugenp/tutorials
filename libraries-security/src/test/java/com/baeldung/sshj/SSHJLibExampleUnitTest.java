@@ -18,6 +18,8 @@ import org.junit.Test;
 import com.google.common.io.Resources;
 
 import net.schmizz.sshj.SSHClient;
+import net.schmizz.sshj.connection.channel.direct.LocalPortForwarder;
+import net.schmizz.sshj.connection.channel.forwarded.RemotePortForwarder;
 import net.schmizz.sshj.sftp.FileAttributes;
 import net.schmizz.sshj.sftp.SFTPClient;
 
@@ -130,13 +132,16 @@ public class SSHJLibExampleUnitTest {
 
     @Test
     public void whenLocalPortForward_thenLocalPortForwarded() throws IOException, InterruptedException {
-        String response = SSHJAppDemo.localPortForwarding(sshClient);
-        assertEquals("success", response, "Local port forwarding should be successful");
+        LocalPortForwarder lpf = SSHJAppDemo.localPortForwarding(sshClient);
+        Thread.sleep(2000);//added sleep so thread in above method is executed and we can check local port forwarding
+        assertEquals(true, lpf.isRunning(), "Local port forwarding should be successful");
     }
     
     @Test
     public void whenRemotePortForward_thenRemotePortForwarded() throws IOException, InterruptedException {
-        String response = SSHJAppDemo.remotePortForwarding(sshClient);
-        assertEquals("success", response, "Remote port forwarding should be successful");
+        RemotePortForwarder rpf = SSHJAppDemo.remotePortForwarding(sshClient);
+        Thread.sleep(2000);//added sleep so thread in above method is executed and we can check remote port forwarding
+        assertEquals(1, rpf.getActiveForwards()
+            .size(), "Remote port forwarding should be successful");
     }
 }
