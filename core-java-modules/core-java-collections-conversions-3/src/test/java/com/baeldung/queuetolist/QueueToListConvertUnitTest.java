@@ -1,9 +1,9 @@
 package com.baeldung.queuetolist;
 
 import com.google.common.collect.Lists;
-import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import queuetolist.QueueToListConvert;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -17,17 +17,24 @@ public class QueueToListConvertUnitTest {
     @BeforeEach
     public void beforeEach() {
         queue = new LinkedList<>();
-        queue.add("hello");
-        queue.add("baeldung");
-        queue.add("page");
+        queue.add("AA");
+        queue.add("BB");
+        queue.add("CC");
+        queue.add("DD");
     }
 
     @Test
-    public void givenAQueue_whenConvertUsingIteration_thenReturnArrayList(){
-        List<String> queueList = new ArrayList<>();
-        for (String element : queue) {
-            queueList.add(element);
-        }
+    public void givenAQueue_whenConvertUsingForLoop_thenReturnArrayList(){
+        List<String> queueList = QueueToListConvert.convertUsingForLoop(queue);
+
+        assertNotNull(queueList);
+        assertEquals(queue.size(), queueList.size());
+        assertTrue(queueList.containsAll(queue));
+    }
+
+    @Test
+    public void givenAQueue_whenConvertUsingConstructor_thenReturnArrayList(){
+        List<String> queueList = QueueToListConvert.convertUsingArrayListConstructor(queue);
 
         assertNotNull(queueList);
         assertEquals(queue.size(), queueList.size());
@@ -36,8 +43,7 @@ public class QueueToListConvertUnitTest {
 
     @Test
     public void givenAQueue_whenConvertUsingAddAllMethod_thenReturnArrayList(){
-        List<String> queueList = new ArrayList<>();
-        queueList.addAll(queue);
+        List<String> queueList = QueueToListConvert.convertUsingAddAllMethod(queue);
 
         assertNotNull(queueList);
         assertEquals(queue.size(), queueList.size());
@@ -46,7 +52,7 @@ public class QueueToListConvertUnitTest {
 
     @Test
     public void givenAQueue_whenConvertUsingConstructor_thenReturnLinkedList(){
-        LinkedList<String> queueList = new LinkedList<>(queue);
+        LinkedList<String> queueList = QueueToListConvert.convertUsingLinkedListConstructor(queue);
 
         assertNotNull(queueList);
         assertEquals(queue.size(), queueList.size());
@@ -55,7 +61,7 @@ public class QueueToListConvertUnitTest {
 
     @Test
     public void givenAQueue_whenConvertUsingStream_thenReturnList(){
-        List<String> queueList = queue.stream().collect(Collectors.toList());
+        List<String> queueList = QueueToListConvert.convertUsingStream(queue);
 
         assertNotNull(queueList);
         assertEquals(queue.size(), queueList.size());
@@ -64,7 +70,7 @@ public class QueueToListConvertUnitTest {
 
     @Test
     public void givenAQueue_whenConvertUsingGuava_thenReturnList(){
-        List<String> queueList = Lists.newArrayList(queue);
+        List<String> queueList = QueueToListConvert.convertUsingGuava(queue);
 
         assertNotNull(queueList);
         assertEquals(queue.size(), queueList.size());
