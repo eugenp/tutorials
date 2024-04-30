@@ -14,6 +14,7 @@ import org.springframework.cloud.deployer.spi.task.TaskLauncher;
 import org.springframework.cloud.stream.function.StreamBridge;
 import org.springframework.cloud.task.launcher.TaskLaunchRequest;
 import org.springframework.context.ApplicationContext;
+import org.springframework.messaging.support.GenericMessage;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.assertEquals;
@@ -44,7 +45,8 @@ public class SpringCloudTaskSinkApplicationIntegrationTest {
                 + "timestamp-task:jar:1.0.1.RELEASE", null,
             prop,
             null, null);
-        streamBridge.send("task-launch-requests", request);
+        GenericMessage<TaskLaunchRequest> message = new GenericMessage<>(request);
+        this.streamBridge.send("taskLauncherSink-in-0", message);
 
         ArgumentCaptor<AppDeploymentRequest> deploymentRequest = ArgumentCaptor
             .forClass(AppDeploymentRequest.class);
