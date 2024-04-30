@@ -228,6 +228,7 @@
         <module>java-spi</module>
         <module>java-websocket</module>
         <module>core-java-8-datetime-3</module>
+        <!--<module>core-java-22</module>--> <!-- requires JDK 22 -->
     </modules>
 
     <dependencies>
