@@ -24,15 +24,6 @@ public class QueueToListConvertUnitTest {
     }
 
     @Test
-    public void givenAQueue_whenConvertUsingForLoop_thenReturnArrayList(){
-        List<String> queueList = QueueToListConvert.convertUsingForLoop(queue);
-
-        assertNotNull(queueList);
-        assertEquals(queue.size(), queueList.size());
-        assertTrue(queueList.containsAll(queue));
-    }
-
-    @Test
     public void givenAQueue_whenConvertUsingConstructor_thenReturnArrayList(){
         List<String> queueList = QueueToListConvert.convertUsingArrayListConstructor(queue);
 
@@ -42,12 +33,12 @@ public class QueueToListConvertUnitTest {
     }
 
     @Test
-    public void givenAQueue_whenConvertUsingAddAllMethod_thenReturnArrayList(){
+    public void givenAQueue_whenConvertUsingAddAllMethod_thenReturnList(){
         List<String> queueList = QueueToListConvert.convertUsingAddAllMethod(queue);
 
         assertNotNull(queueList);
         assertEquals(queue.size(), queueList.size());
-        assertTrue(queueList.containsAll(queue));;
+        assertTrue(queueList.containsAll(queue));
     }
 
     @Test

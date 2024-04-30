@@ -7,18 +7,6 @@ import java.util.stream.Collectors;
 
 public class QueueToListConvert {
 
-    public static List<String> convertUsingForLoop(Queue<String> queue) {
-        if (queue == null) {
-            return null;
-        }
-        List<String> queueList = new ArrayList<>();
-        for (String element : queue) {
-            queueList.add(element);
-        }
-
-        return queueList;
-    }
-
     public static ArrayList<String> convertUsingArrayListConstructor(Queue<String> queue) {
         if (queue == null) {
             return null;
