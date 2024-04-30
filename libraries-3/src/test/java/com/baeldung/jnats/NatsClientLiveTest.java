@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -31,7 +32,7 @@ import io.nats.client.Subscription;
  * All the tests in this class require that a NATS server be running on localhost at the default port.
  * See {@link <a href="https://docs.nats.io/nats-server/installation">Installing a NATS Server</a>}.
  * <p>
- * IMPORTANT: Awaitility.await is used to simulate the real behavior
+ * IMPORTANT: Awaitility.await is used to account for the real behavior
  * that messages take some amount of time to go from being published
  * to being received. This amount of time will vary depending on many factors including:
  * <ul>
@@ -43,9 +44,9 @@ import io.nats.client.Subscription;
  */
 public class NatsClientLiveTest {
 
-    public static final int TIMEOUT_MILLIS = 200;
-    public static final int WAIT_AT_MOST_MILLIS = 300;
-    public static final int POLL_DELAY_MILLIS = 50;
+    private static final int TIMEOUT_MILLIS = 200;
+    private static final int WAIT_AT_MOST_MILLIS = 300;
+    private static final int POLL_DELAY_MILLIS = 50;
 
     private static Connection createConnection() throws IOException, InterruptedException {
         return createConnection("nats://localhost:4222");
@@ -73,6 +74,7 @@ public class NatsClientLiveTest {
     }
 
     static class CustomErrorListener implements ErrorListener {
+
         @Override
         public void errorOccurred(Connection conn, String error) {
             System.err.println("Error Occurred: " + error);
@@ -84,17 +86,11 @@ public class NatsClientLiveTest {
         }
     }
 
-//    public static void main(String[] args) throws Exception {
-//        Connection conn = createConnection("nats://localhost:4222");
-//        Thread.sleep(60000);
-//    }
-
     @Test
     public void givenNoSubscribers_whenPublishingMessages_thenItCannotBeDeterminedIfMessageIsReceived() {
         try (Connection natsConnection = createConnection()) {
-            natsConnection.publish("mySubject", "myData".getBytes());
-        }
-        catch (Exception e) {
+            natsConnection.publish("mySubject", "myData".getBytes(StandardCharsets.UTF_8));
+        } catch (Exception e) {
             fail("There should not be an exception");
         }
     }
@@ -103,15 +99,15 @@ public class NatsClientLiveTest {
     public void givenNoSubscribersAndReportNoResponders_whenRequestReply_thenReceiveNoResponders() {
         try (Connection natsConnection = createConnectionWithReportNoResponders()) {
             natsConnection.publish("noOneIsSubscribed", null);
-            CompletableFuture<Message> f = natsConnection.request("noOneIsSubscribed", null);
-            f.get(WAIT_AT_MOST_MILLIS, TimeUnit.MILLISECONDS);
+            CompletableFuture<Message> future = natsConnection.request("noOneIsSubscribed", null);
+            future.get(WAIT_AT_MOST_MILLIS, TimeUnit.MILLISECONDS);
             fail("There should be an exception");
-        }
-        catch (ExecutionException e) {
+        } catch (ExecutionException e) {
             Throwable cause = e.getCause();
             assertNotNull(cause);
             assertInstanceOf(JetStreamStatusException.class, cause);
-            assertTrue(cause.getMessage().contains("503 No Responders Available For Request"));
+            assertTrue(cause.getMessage()
+                .contains("503 No Responders Available For Request"));
         } catch (InterruptedException | TimeoutException | IOException e) {
             fail("There should not be one of these exceptions");
         }
@@ -123,7 +119,7 @@ public class NatsClientLiveTest {
             Subscription subscription1 = natsConnection.subscribe("mySubject");
             Subscription subscription2 = natsConnection.subscribe("mySubject");
 
-            natsConnection.publish("mySubject", "data".getBytes());
+            natsConnection.publish("mySubject", "data".getBytes(StandardCharsets.UTF_8));
 
             assertNotNull(subscription1.nextMessage(TIMEOUT_MILLIS));
             assertNotNull(subscription2.nextMessage(TIMEOUT_MILLIS));
@@ -139,7 +135,7 @@ public class NatsClientLiveTest {
             Subscription qSub1 = natsConnection.subscribe("mySubject", "myQueue");
             Subscription qSub2 = natsConnection.subscribe("mySubject", "myQueue");
 
-            natsConnection.publish("mySubject", "data".getBytes());
+            natsConnection.publish("mySubject", "data".getBytes(StandardCharsets.UTF_8));
 
             List<Message> messages = new ArrayList<>();
 
@@ -170,10 +166,10 @@ public class NatsClientLiveTest {
             Subscription subscription1 = dispatcher.subscribe("mySubject", messages1::add);
             Subscription subscription2 = dispatcher.subscribe("mySubject", messages2::add);
 
-            natsConnection.publish("mySubject", "data1".getBytes());
-            natsConnection.publish("mySubject", "data2".getBytes());
+            natsConnection.publish("mySubject", "data1".getBytes(StandardCharsets.UTF_8));
+            natsConnection.publish("mySubject", "data2".getBytes(StandardCharsets.UTF_8));
 
-            // Simulate real world time for messages to propagate.
+            // wait for messages to propagate.
             Awaitility.await()
                 .atMost(WAIT_AT_MOST_MILLIS, TimeUnit.MILLISECONDS)
                 .pollDelay(POLL_DELAY_MILLIS, TimeUnit.MILLISECONDS)
@@ -196,9 +192,9 @@ public class NatsClientLiveTest {
             Subscription qSub1 = dispatcher.subscribe("mySubject", "myQueue", messages::add);
             Subscription qSub2 = dispatcher.subscribe("mySubject", "myQueue", messages::add);
 
-            natsConnection.publish("mySubject", "data".getBytes());
+            natsConnection.publish("mySubject", "data".getBytes(StandardCharsets.UTF_8));
 
-            // Simulate real world time for messages to propagate.
+            // wait for messages to propagate.
             Awaitility.await()
                 .atMost(WAIT_AT_MOST_MILLIS, TimeUnit.MILLISECONDS)
                 .pollDelay(POLL_DELAY_MILLIS, TimeUnit.MILLISECONDS)
@@ -217,17 +213,17 @@ public class NatsClientLiveTest {
             Subscription replySideSubscription2 = natsConnection.subscribe("publishSubject");
 
             Subscription publishSideSubscription = natsConnection.subscribe("replyToSubject");
-            natsConnection.publish("publishSubject", "replyToSubject", "Please respond!".getBytes());
+            natsConnection.publish("publishSubject", "replyToSubject", "Please respond!".getBytes(StandardCharsets.UTF_8));
 
             Message message = replySideSubscription1.nextMessage(TIMEOUT_MILLIS);
             assertNotNull(message, "No message!");
             assertEquals("Please respond!", new String(message.getData()));
-            natsConnection.publish(message.getReplyTo(), "Message Received By Subscription 1".getBytes());
+            natsConnection.publish(message.getReplyTo(), "Message Received By Subscription 1".getBytes(StandardCharsets.UTF_8));
 
             message = replySideSubscription2.nextMessage(TIMEOUT_MILLIS);
             assertNotNull(message, "No message!");
             assertEquals("Please respond!", new String(message.getData()));
-            natsConnection.publish(message.getReplyTo(), "Message Received By Subscription 2".getBytes());
+            natsConnection.publish(message.getReplyTo(), "Message Received By Subscription 2".getBytes(StandardCharsets.UTF_8));
 
             int responsesFrom1 = 0;
             int responsesFrom2 = 0;
@@ -237,8 +233,7 @@ public class NatsClientLiveTest {
             assertTrue(response.contains("Message Received"));
             if (response.contains("1")) {
                 responsesFrom1++;
-            }
-            else if (response.contains("2")) {
+            } else if (response.contains("2")) {
                 responsesFrom2++;
             }
 
@@ -248,8 +243,7 @@ public class NatsClientLiveTest {
             assertTrue(response.contains("Message Received"));
             if (response.contains("1")) {
                 responsesFrom1++;
-            }
-            else if (response.contains("2")) {
+            } else if (response.contains("2")) {
                 responsesFrom2++;
             }
 
@@ -268,17 +262,17 @@ public class NatsClientLiveTest {
             Subscription replySideSubscription1 = natsConnection.subscribe("requestSubject");
             Subscription replySideSubscription2 = natsConnection.subscribe("requestSubject");
 
-            CompletableFuture<Message> future = natsConnection.request("requestSubject", "Please respond!".getBytes());
+            CompletableFuture<Message> future = natsConnection.request("requestSubject", "Please respond!".getBytes(StandardCharsets.UTF_8));
 
             Message message = replySideSubscription1.nextMessage(TIMEOUT_MILLIS);
             assertNotNull(message, "No message!");
             assertEquals("Please respond!", new String(message.getData()));
-            natsConnection.publish(message.getReplyTo(), "Message Received From Subscription 1".getBytes());
+            natsConnection.publish(message.getReplyTo(), "Message Received From Subscription 1".getBytes(StandardCharsets.UTF_8));
 
             message = replySideSubscription2.nextMessage(TIMEOUT_MILLIS);
             assertNotNull(message, "No message!");
             assertEquals("Please respond!", new String(message.getData()));
-            natsConnection.publish(message.getReplyTo(), "Message Received From Subscription 2".getBytes());
+            natsConnection.publish(message.getReplyTo(), "Message Received From Subscription 2".getBytes(StandardCharsets.UTF_8));
 
             message = future.get(TIMEOUT_MILLIS, TimeUnit.MILLISECONDS);
             assertNotNull(message, "No message!");
@@ -294,14 +288,14 @@ public class NatsClientLiveTest {
         try (Connection natsConnection = createConnection()) {
             Subscription segmentStarSubscription = natsConnection.subscribe("segment.*");
 
-            natsConnection.publish("segment.star", "hello segment star".getBytes());
+            natsConnection.publish("segment.star", "hello segment star".getBytes(StandardCharsets.UTF_8));
 
             Message message = segmentStarSubscription.nextMessage(TIMEOUT_MILLIS);
             assertNotNull(message, "No message!");
             assertEquals("hello segment star", new String(message.getData()));
 
             Subscription segmentGreaterSubscription = natsConnection.subscribe("segment.>");
-            natsConnection.publish("segment.greater.than", "hello segment greater".getBytes());
+            natsConnection.publish("segment.greater.than", "hello segment greater".getBytes(StandardCharsets.UTF_8));
 
             message = segmentGreaterSubscription.nextMessage(TIMEOUT_MILLIS);
             assertNotNull(message, "No message!");
@@ -317,13 +311,13 @@ public class NatsClientLiveTest {
         try (Connection natsConnection = createConnection()) {
             Subscription starSubscription = natsConnection.subscribe("segment.*");
 
-            natsConnection.publish("segment.second.third", "hello there".getBytes());
+            natsConnection.publish("segment.second.third", "hello there".getBytes(StandardCharsets.UTF_8));
 
             Message message = starSubscription.nextMessage(TIMEOUT_MILLIS);
             assertNull(message, "Got message!");
 
             Subscription greaterSubscription = natsConnection.subscribe("segment.>");
-            natsConnection.publish("segment.second.third", "hello there".getBytes());
+            natsConnection.publish("segment.second.third", "hello there".getBytes(StandardCharsets.UTF_8));
 
             message = greaterSubscription.nextMessage(TIMEOUT_MILLIS);
             assertNotNull(message, "No message!");
