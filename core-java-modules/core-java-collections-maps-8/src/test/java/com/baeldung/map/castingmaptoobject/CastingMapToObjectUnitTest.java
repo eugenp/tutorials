@@ -26,6 +26,11 @@ public class CastingMapToObjectUnitTest {
     );
 
     @Test
+    void givenMap_whenCasting_thenThrow() {
+        assertThrows(ClassCastException.class, () -> { User user = (User) map; });
+    }
+
+    @Test
     void givenMap_whenUsingBeanUtils_thenConvertToObject() throws InvocationTargetException, IllegalAccessException {
         User user = new User();
         BeanUtils.populate(user, map);
@@ -73,9 +78,9 @@ public class CastingMapToObjectUnitTest {
     }
 
     private static void assertEqualsUserAndMap(User user, Map<String, Object> map) {
-        assertEquals(user.getId(), map.get("id"));
-        assertEquals(user.getName(), map.get("name"));
-        assertEquals(user.getAddresses(), map.get("addresses"));
+        assertEquals(map.get("id"), user.getId());
+        assertEquals(map.get("name"), user.getName());
+        assertEquals(map.get("addresses"), user.getAddresses());
     }
 
 }
