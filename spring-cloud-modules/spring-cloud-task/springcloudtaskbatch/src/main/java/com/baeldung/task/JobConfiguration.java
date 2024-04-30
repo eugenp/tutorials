@@ -1,16 +1,18 @@
 package com.baeldung.task;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.logging.Logger;
 
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.StepContribution;
-import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
-import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
+import org.springframework.batch.core.job.builder.JobBuilder;
+import org.springframework.batch.core.launch.support.RunIdIncrementer;
+import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.scope.context.ChunkContext;
+import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.batch.core.step.tasklet.Tasklet;
+import org.springframework.batch.item.Chunk;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.batch.item.support.ListItemReader;
@@ -18,6 +20,7 @@ import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
 public class JobConfiguration {
@@ -26,14 +29,23 @@ public class JobConfiguration {
         .getLogger(JobConfiguration.class.getName());
 
     @Autowired
-    private JobBuilderFactory jobBuilderFactory;
+    private PlatformTransactionManager transactionManager;
 
     @Autowired
-    private StepBuilderFactory stepBuilderFactory;
+    private JobRepository jobRepository;
+
+    @Bean
+    public Job job1(Step step1, Step step2) {
+        return new JobBuilder("job1", jobRepository)
+            .incrementer(new RunIdIncrementer())
+            .start(step1)
+            .next(step2)
+            .build();
+    }
 
     @Bean
     public Step step1() {
-        return this.stepBuilderFactory.get("job1step1")
+        return new StepBuilder("job1step1", jobRepository)
             .tasklet(new Tasklet() {
                 @Override
                 public RepeatStatus execute(
@@ -43,14 +55,14 @@ public class JobConfiguration {
                     LOGGER.info("Tasklet has run");
                     return RepeatStatus.FINISHED;
                 }
-            }).build();
+            },transactionManager)
+            .build();
     }
 
     @Bean
     public Step step2() {
-        return this.stepBuilderFactory
-            .get("job1step2")
-            .<String, String> chunk(3)
+        return new StepBuilder("job1step2", jobRepository)
+            .<String, String> chunk(3,transactionManager)
             .reader(
                 new ListItemReader<>(Arrays.asList("7",
                     "2", "3", "10", "5", "6")))
@@ -66,40 +78,38 @@ public class JobConfiguration {
                 })
             .writer(new ItemWriter<String>() {
                 @Override
-                public void write(
-                    List<? extends String> items)
-                    throws Exception {
+                public void write(Chunk<? extends String> items) throws Exception {
                     for (String item : items) {
                         LOGGER.info(">> " + item);
                     }
                 }
-            }).build();
-    }
-
-    @Bean
-    public Job job1() {
-        return this.jobBuilderFactory.get("job1")
-            .start(step1())
-            .next(step2())
+            })
             .build();
     }
 
     @Bean
-    public Job job2() {
-        return jobBuilderFactory.get("job2")
-            .start(stepBuilderFactory.get("job2step1")
-                .tasklet(new Tasklet() {
-                    @Override
-                    public RepeatStatus execute(
-                        StepContribution contribution,
-                        ChunkContext chunkContext)
-                        throws Exception {
-                        LOGGER
-                            .info("This job is from Baeldung");
-                        return RepeatStatus.FINISHED;
-                    }
-                })
-                .build())
+    public Job job2(Step job2step1) {
+        return new JobBuilder("job2", jobRepository)
+            .incrementer(new RunIdIncrementer())
+            .start(job2step1)
             .build();
     }
+
+    @Bean
+    public Step job2step1() {
+        return new StepBuilder("job2step1", jobRepository)
+            .tasklet(new Tasklet() {
+                @Override
+                public RepeatStatus execute(
+                    StepContribution contribution,
+                    ChunkContext chunkContext)
+                    throws Exception {
+                    LOGGER
+                        .info("This job is from Baeldung");
+                    return RepeatStatus.FINISHED;
+                }
+            },transactionManager)
+            .build();
+    }
+
 }
