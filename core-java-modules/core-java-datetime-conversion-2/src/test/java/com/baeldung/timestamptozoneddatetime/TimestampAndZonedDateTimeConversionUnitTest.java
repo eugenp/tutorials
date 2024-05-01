@@ -12,60 +12,59 @@ public class TimestampAndZonedDateTimeConversionUnitTest {
      void givenTimestamp_whenUsingInstant_thenConvertToZonedDateTime() {
         Timestamp timestamp = Timestamp.valueOf("2024-04-17 12:30:00");
         ZonedDateTime actualResult = TimestampAndZonedDateTimeConversion.convertToZonedDateTimeUsingInstant(timestamp);
-        Assertions.assertEquals(ZoneId.of("Etc/UTC"), actualResult.getZone());
-        Assertions.assertEquals(2024, actualResult.getYear());
-        Assertions.assertEquals(4, actualResult.getMonthValue());
-        Assertions.assertEquals(17, actualResult.getDayOfMonth());
+        ZonedDateTime expectedResult = ZonedDateTime.of(2024, 4, 17, 12, 30, 0, 0, ZoneId.systemDefault());
+        Assertions.assertEquals(expectedResult.toLocalDate(), actualResult.toLocalDate());
+        Assertions.assertEquals(expectedResult.toLocalTime(), actualResult.toLocalTime());
     }
 
     @Test
     void givenTimestamp_whenUsingCalendar_thenConvertToZonedDateTime() {
         Timestamp timestamp = Timestamp.valueOf("2024-04-17 12:30:00");
         ZonedDateTime actualResult = TimestampAndZonedDateTimeConversion.convertToZonedDateTimeUsingCalendar(timestamp);
-        Assertions.assertEquals(ZoneId.of("Etc/UTC"), actualResult.getZone());
-        Assertions.assertEquals(2024, actualResult.getYear());
-        Assertions.assertEquals(4, actualResult.getMonthValue());
-        Assertions.assertEquals(17, actualResult.getDayOfMonth());
+        ZonedDateTime expectedResult = ZonedDateTime.of(2024, 4, 17, 12, 30, 0, 0, ZoneId.systemDefault());
+        Assertions.assertEquals(expectedResult.toLocalDate(), actualResult.toLocalDate());
+        Assertions.assertEquals(expectedResult.toLocalTime(), actualResult.toLocalTime());
     }
 
     @Test
     void givenTimestamp_whenUsingLocalDateTime_thenConvertToZonedDateTime() {
         Timestamp timestamp = Timestamp.valueOf("2024-04-17 12:30:00");
         ZonedDateTime actualResult = TimestampAndZonedDateTimeConversion.convertToZonedDateTimeUsingLocalDateTime(timestamp);
-        Assertions.assertEquals(ZoneId.of("Etc/UTC"), actualResult.getZone());
-        Assertions.assertEquals(2024, actualResult.getYear());
-        Assertions.assertEquals(4, actualResult.getMonthValue());
-        Assertions.assertEquals(17, actualResult.getDayOfMonth());
+        ZonedDateTime expectedResult = ZonedDateTime.of(2024, 4, 17, 12, 30, 0, 0, ZoneId.systemDefault());
+        Assertions.assertEquals(expectedResult.toLocalDate(), actualResult.toLocalDate());
+        Assertions.assertEquals(expectedResult.toLocalTime(), actualResult.toLocalTime());
     }
 
     @Test
     void givenTimestamp_whenUsingJodaTime_thenConvertToZonedDateTime() {
         Timestamp timestamp = Timestamp.valueOf("2024-04-17 12:30:00");
         ZonedDateTime actualResult = TimestampAndZonedDateTimeConversion.convertToZonedDateTimeUsingJodaTime(timestamp);
-        Assertions.assertEquals(ZoneId.of("Etc/UTC"), actualResult.getZone());
-        Assertions.assertEquals(2024, actualResult.getYear());
-        Assertions.assertEquals(4, actualResult.getMonthValue());
-        Assertions.assertEquals(17, actualResult.getDayOfMonth());
+        ZonedDateTime expectedResult = ZonedDateTime.of(2024, 4, 17, 12, 30, 0, 0, ZoneId.systemDefault());
+        Assertions.assertEquals(expectedResult.toLocalDate(), actualResult.toLocalDate());
+        Assertions.assertEquals(expectedResult.toLocalTime(), actualResult.toLocalTime());
     }
 
     @Test
     void givenZonedDateTime_whenUsingInstant_thenConvertToTimestamp() {
-        ZonedDateTime zonedDateTime = ZonedDateTime.parse("2024-04-17T12:30+05:30[Asia/Kolkata]");
-        Timestamp timestamp = TimestampAndZonedDateTimeConversion.convertToTimeStampUsingInstant(zonedDateTime);
-        Assertions.assertEquals(timestamp.toString(), "2024-04-17 00:00:00.0");
+        ZonedDateTime zonedDateTime = ZonedDateTime.of(2024, 4, 17, 12, 30, 0, 0, ZoneId.systemDefault());
+        Timestamp actualResult = TimestampAndZonedDateTimeConversion.convertToTimeStampUsingInstant(zonedDateTime);
+        Timestamp expectedResult = Timestamp.valueOf("2024-04-17 12:30:00");
+        Assertions.assertEquals(expectedResult, actualResult);
     }
 
     @Test
     void givenZonedDateTime_whenUsingLocalDateTime_thenConvertToTimestamp() {
-        ZonedDateTime zonedDateTime = ZonedDateTime.parse("2024-04-17T12:30+05:30[Asia/Kolkata]");
-        Timestamp timestamp = TimestampAndZonedDateTimeConversion.convertToTimeStampUsingLocalDateTime(zonedDateTime);
-        Assertions.assertEquals(timestamp.toString(), "2024-04-17 12:30:00.0");
+        ZonedDateTime zonedDateTime = ZonedDateTime.of(2024, 4, 17, 12, 30, 0, 0, ZoneId.systemDefault());
+        Timestamp actualResult = TimestampAndZonedDateTimeConversion.convertToTimeStampUsingLocalDateTime(zonedDateTime);
+        Timestamp expectedResult = Timestamp.valueOf("2024-04-17 12:30:00");
+        Assertions.assertEquals(expectedResult, actualResult);
     }
 
     @Test
     void givenZonedDateTime_whenUsingJodaDateTime_thenConvertToTimestamp() {
-        ZonedDateTime zonedDateTime = ZonedDateTime.parse("2024-04-17T12:30+05:30[Asia/Kolkata]");
-        Timestamp timestamp = TimestampAndZonedDateTimeConversion.convertToTimestampUsingJodaTime(zonedDateTime);
-        Assertions.assertEquals(timestamp.toString(), "2024-04-17 00:00:00.0");
+        ZonedDateTime zonedDateTime = ZonedDateTime.of(2024, 4, 17, 12, 30, 0, 0, ZoneId.systemDefault());
+        Timestamp actualResult = TimestampAndZonedDateTimeConversion.convertToTimestampUsingJodaTime(zonedDateTime);
+        Timestamp expectedResult = Timestamp.valueOf("2024-04-17 12:30:00");
+        Assertions.assertEquals(expectedResult, actualResult);
     }
 }
