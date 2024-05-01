@@ -25,7 +25,7 @@ public class PositionKeyValueInLinkedHashMapUsingItsKeyUnitTest {
             }
             position++;
         }
-        fail();
+        fail("Key not found");
     }
 
     @Test
