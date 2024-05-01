@@ -46,13 +46,13 @@ public class DelayedMessageListenerAdapter<K, V> extends AbstractDelegatingMessa
     public void setDelayForTopic(String topic, Duration delay) {
         Objects.requireNonNull(topic, "Topic cannot be null");
         Objects.requireNonNull(delay, "Delay cannot be null");
-        this.logger.debug(() -> String.format("Setting delay %s for listener id %s", delay, this.listenerId));
+        this.logger.debug(() -> String.format("Setting %s seconds delay for topic %s", delay, topic));
         this.delaysPerTopic.put(topic, delay);
     }
 
     public void setDefaultDelay(Duration delay) {
         Objects.requireNonNull(delay, "Delay cannot be null");
-        this.logger.debug(() -> String.format("Setting delay %s for listener id %s", delay, this.listenerId));
+        this.logger.debug(() -> String.format("Setting %s seconds delay for listener id %s", delay, this.listenerId));
         this.defaultDelay = delay;
     }
 
