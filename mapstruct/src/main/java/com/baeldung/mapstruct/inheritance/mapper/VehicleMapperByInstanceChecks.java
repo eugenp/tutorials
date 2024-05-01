@@ -12,6 +12,10 @@ import com.baeldung.mapstruct.inheritance.model.dto.VehicleDTO;
 @Mapper()
 public interface VehicleMapperByInstanceChecks {
 
+    CarDTO map(Car car);
+
+    BusDTO map(Bus bus);
+
     default VehicleDTO mapToVehicleDTO(Vehicle vehicle) {
         if (vehicle instanceof Bus) {
             return map((Bus) vehicle);
@@ -21,10 +25,6 @@ public interface VehicleMapperByInstanceChecks {
             return null;
         }
     }
-
-    CarDTO map(Car car);
-
-    BusDTO map(Bus bus);
 }
 
 
