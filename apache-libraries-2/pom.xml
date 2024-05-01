@@ -40,11 +40,22 @@
             <artifactId>camel-jackson</artifactId>
             <version>${camel.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.avro</groupId>
+            <artifactId>avro</artifactId>
+            <version>${avro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <javax.validation.validation-api.version>2.0.1.Final</javax.validation.validation-api.version>
         <camel.version>4.4.1</camel.version>
+        <avro.version>1.11.3</avro.version>
     </properties>
 
 </project>
