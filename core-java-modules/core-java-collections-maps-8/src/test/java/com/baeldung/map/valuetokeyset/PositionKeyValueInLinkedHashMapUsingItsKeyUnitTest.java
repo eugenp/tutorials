@@ -21,7 +21,8 @@ public class PositionKeyValueInLinkedHashMapUsingItsKeyUnitTest {
         boolean found = false;
         for (Map.Entry<String, Integer> entry : linkedHashMap.entrySet()) {
             if (entry.getKey().equals("orange")) {
-                assertEquals("Position of 'orange' key should be 1", 1, position);
+                assertEquals(1, position);
+                found = true;
                 break;
             }
             position++;
