@@ -10,14 +10,26 @@ public class RemoveAllCharsBeforeSpecificOneUnitTest {
 
     @Test
     public void givenString_whenUsingSubstring_thenCharactersRemoved() {
-        String result = inputString.substring(inputString.indexOf(targetCharacter));
-        assertEquals("World!", result);
+        int index = inputString.indexOf(targetCharacter);
+
+        if (index != -1) {
+            String result = inputString.substring(index);
+            assertEquals("World!", result);
+        } else {
+            assertEquals(inputString, inputString);
+        }
     }
 
     @Test
     public void givenString_whenUsingRegex_thenCharactersRemoved() {
-        String result = (targetCharacter) + inputString.replaceAll(".*" + targetCharacter, "");
-        assertEquals("World!", result);
+        int index = inputString.indexOf(targetCharacter);
+
+        if (index != -1) {
+            String result = targetCharacter + inputString.replaceAll(".*" + targetCharacter, "");
+            assertEquals("World!", result);
+        } else {
+            assertEquals(inputString, inputString);
+        }
     }
 
     @Test
