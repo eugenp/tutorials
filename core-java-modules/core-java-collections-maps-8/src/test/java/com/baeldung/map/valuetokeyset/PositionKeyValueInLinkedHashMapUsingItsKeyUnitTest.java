@@ -18,6 +18,7 @@ public class PositionKeyValueInLinkedHashMapUsingItsKeyUnitTest {
     @Test
     public void givenLinkedHashMap_whenIteratingThroughEntrySet_thenRetrievePositionByKey() {
         int position = 0;
+        boolean found = false;
         for (Map.Entry<String, Integer> entry : linkedHashMap.entrySet()) {
             if (entry.getKey().equals("orange")) {
                 assertEquals("Position of 'orange' key should be 1", 1, position);
@@ -25,6 +26,7 @@ public class PositionKeyValueInLinkedHashMapUsingItsKeyUnitTest {
             }
             position++;
         }
+        assertTrue(found);
     }
 
     @Test
@@ -32,7 +34,7 @@ public class PositionKeyValueInLinkedHashMapUsingItsKeyUnitTest {
         Optional<String> key = linkedHashMap.keySet().stream()
                 .filter(integer -> Objects.equals(integer, "orange"))
                 .findFirst();
-
+        assertTrue(key.isPresent());
         key.ifPresent(s -> assertEquals(1, new LinkedList<>(linkedHashMap.keySet()).indexOf(s)));
     }
 
