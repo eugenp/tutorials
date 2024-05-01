@@ -1,4 +1,4 @@
-package com.baeldung.map.mapListIteration;
+package com.baeldung.map.maplistiteration;
 
 import org.junit.jupiter.api.Test;
 
