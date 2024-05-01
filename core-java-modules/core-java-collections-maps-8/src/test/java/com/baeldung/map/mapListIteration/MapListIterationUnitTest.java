@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class MapListIterationUnitTest {
 
     @Test
-    public void whenIterateListMapUsingTraditionalLoop_thenPrintList() {
+    public void whenIterateListMapUsingTraditionalLoop_thenPrintMapList() {
         List<Map<String, Object>> listOfMaps = new ArrayList<>();
         Map<String, Object> map1 = new HashMap<>();
         map1.put("name", "Jack");
@@ -40,7 +40,7 @@ public class MapListIterationUnitTest {
     }
 
     @Test
-    public void whenIterateListMapUsingStream_thenPrintList() {
+    public void whenIterateListMapUsingStream_thenPrintMapList() {
         Map<String, Object> map1 = new HashMap<>();
         map1.put("name", "Jack");
         map1.put("age", 30);
@@ -67,7 +67,7 @@ public class MapListIterationUnitTest {
     }
 
     @Test
-    public void whenIterateListMapUsingKeySet_thenPrintList() {
+    public void whenIterateListMapUsingKeySet_thenPrintMapList() {
         Map<String, Object> map1 = new HashMap<>();
         map1.put("name", "Jack");
         map1.put("age", 30);
@@ -93,7 +93,7 @@ public class MapListIterationUnitTest {
     }
 
     @Test
-    public void whenIterateListMapUsingForEach_thenPrintList() {
+    public void whenIterateListMapUsingForEach_thenPrintMapList() {
         Map<String, Object> map1 = new HashMap<>();
         map1.put("name", "Jack");
         map1.put("age", 30);
