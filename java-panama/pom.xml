@@ -38,8 +38,8 @@
         <project.model.version>4.0.0</project.model.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.version>1.0</project.version>
-        <maven.compiler.source>19</maven.compiler.source>
-        <maven.compiler.target>19</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <maven.compiler.version>3.12.1</maven.compiler.version>
         <junit.jupiter.version>5.9.0</junit.jupiter.version>
     </properties>
