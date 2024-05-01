@@ -1,13 +1,15 @@
 package com.baeldung.assertj.exceptions;
 
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.api.Assertions.catchThrowable;
+import static org.assertj.core.api.Assertions.catchThrowableOfType;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import org.junit.Test;
 
 public class Java8StyleAssertions {
@@ -63,4 +65,22 @@ public class Java8StyleAssertions {
             .hasMessageContaining("/ by zero");
 
     }
+
+    @Test
+    public void whenUsingCatchThrowableOfType_thenAssertField() {
+        String givenCity = "Paris";
+        CityNotFoundException exception = catchThrowableOfType(() -> CityUtils.search(givenCity), CityNotFoundException.class);
+
+        assertThat(exception.getCity()).isEqualTo(givenCity);
+        assertThat(exception.getMessage()).isEqualTo("The specified city is not found");
+    }
+
+    @Test
+    public void whenUsingAssertThatThrownBy_thenAssertField() {
+        String givenCity = "Geneva";
+        assertThatThrownBy(() -> CityUtils.search(givenCity)).isInstanceOf(CityNotFoundException.class)
+          .extracting("city")
+          .isEqualTo(givenCity);
+    }
+
 }

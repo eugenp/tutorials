@@ -2,6 +2,7 @@ package com.baeldung.executorservicetest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -47,6 +48,16 @@ public class ExecutorServiceUnitTest {
         MyRunnable r = new MyRunnable();
         threadPoolExecutor.submit(r);
         System.out.println(threadPoolExecutor.getCompletedTaskCount() < 1);
+        while (threadPoolExecutor.getCompletedTaskCount() < 1) {
+        }
+        assertEquals(2305843005992468481L, r.getResult());
+    }
+   
+    @Test
+    void whenDirectlyUsingThreadPoolExecutor_thenTestSucceeds() throws InterruptedException {
+        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(1, 1, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>());
+        MyRunnable r = new MyRunnable();
+        threadPoolExecutor.submit(r);
         while (threadPoolExecutor.getCompletedTaskCount() < 1) {
         }
         assertEquals(2305843005992468481L, r.getResult());
