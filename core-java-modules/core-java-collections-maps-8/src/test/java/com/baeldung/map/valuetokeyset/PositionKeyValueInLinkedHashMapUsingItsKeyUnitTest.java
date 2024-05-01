@@ -18,16 +18,14 @@ public class PositionKeyValueInLinkedHashMapUsingItsKeyUnitTest {
     @Test
     public void givenLinkedHashMap_whenIteratingThroughEntrySet_thenRetrievePositionByKey() {
         int position = 0;
-        boolean found = false;
         for (Map.Entry<String, Integer> entry : linkedHashMap.entrySet()) {
             if (entry.getKey().equals("orange")) {
                 assertEquals(1, position);
-                found = true;
                 break;
             }
             position++;
         }
-        assertTrue(found);
+        fail();
     }
 
     @Test
