@@ -16,7 +16,8 @@ import org.springframework.kafka.listener.MessageListener;
 import org.springframework.kafka.listener.adapter.AbstractDelegatingMessageListenerAdapter;
 import org.springframework.kafka.support.Acknowledgment;
 
-public class DelayedMessageListenerAdapter<K, V> extends AbstractDelegatingMessageListenerAdapter<MessageListener<K, V>> implements AcknowledgingConsumerAwareMessageListener<K, V> {
+public class DelayedMessageListenerAdapter<K, V> extends AbstractDelegatingMessageListenerAdapter<MessageListener<K, V>>
+    implements AcknowledgingConsumerAwareMessageListener<K, V> {
 
     private static final Duration DEFAULT_DELAY_VALUE = Duration.of(0, ChronoUnit.SECONDS);
 
@@ -38,8 +39,9 @@ public class DelayedMessageListenerAdapter<K, V> extends AbstractDelegatingMessa
 
     @Override
     public void onMessage(ConsumerRecord<K, V> consumerRecord, Acknowledgment acknowledgment, Consumer<?, ?> consumer) throws KafkaBackoffException {
-        this.kafkaConsumerBackoffManager.backOffIfNecessary(createContext(consumerRecord, consumerRecord.timestamp() + delaysPerTopic.getOrDefault(consumerRecord.topic(), this.defaultDelay)
-          .toMillis(), consumer));
+        this.kafkaConsumerBackoffManager.backOffIfNecessary(createContext(consumerRecord, consumerRecord.timestamp() +
+            delaysPerTopic.getOrDefault(consumerRecord.topic(), this.defaultDelay)
+                .toMillis(), consumer));
         invokeDelegateOnMessage(consumerRecord, acknowledgment, consumer);
     }
 
@@ -58,22 +60,23 @@ public class DelayedMessageListenerAdapter<K, V> extends AbstractDelegatingMessa
 
     private void invokeDelegateOnMessage(ConsumerRecord<K, V> consumerRecord, Acknowledgment acknowledgment, Consumer<?, ?> consumer) {
         switch (this.delegateType) {
-        case ACKNOWLEDGING_CONSUMER_AWARE:
-            this.delegate.onMessage(consumerRecord, acknowledgment, consumer);
-            break;
-        case ACKNOWLEDGING:
-            this.delegate.onMessage(consumerRecord, acknowledgment);
-            break;
-        case CONSUMER_AWARE:
-            this.delegate.onMessage(consumerRecord, consumer);
-            break;
-        case SIMPLE:
-            this.delegate.onMessage(consumerRecord);
+            case ACKNOWLEDGING_CONSUMER_AWARE:
+                this.delegate.onMessage(consumerRecord, acknowledgment, consumer);
+                break;
+            case ACKNOWLEDGING:
+                this.delegate.onMessage(consumerRecord, acknowledgment);
+                break;
+            case CONSUMER_AWARE:
+                this.delegate.onMessage(consumerRecord, consumer);
+                break;
+            case SIMPLE:
+                this.delegate.onMessage(consumerRecord);
         }
     }
 
     private KafkaConsumerBackoffManager.Context createContext(ConsumerRecord<K, V> data, long nextExecutionTimestamp, Consumer<?, ?> consumer) {
-        return this.kafkaConsumerBackoffManager.createContext(nextExecutionTimestamp, this.listenerId, new TopicPartition(data.topic(), data.partition()), consumer);
+        return this.kafkaConsumerBackoffManager.createContext(nextExecutionTimestamp, this.listenerId, new TopicPartition(data.topic(), data.partition()),
+            consumer);
     }
 
     @Override

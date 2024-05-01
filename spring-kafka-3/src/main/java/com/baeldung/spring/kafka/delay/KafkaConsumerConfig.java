@@ -25,12 +25,13 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 public class KafkaConsumerConfig {
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<Object, Object> kafkaListenerContainerFactory(ConsumerFactory<Object, Object> consumerFactory, ListenerContainerRegistry registry, TaskScheduler scheduler) {
+    public ConcurrentKafkaListenerContainerFactory<Object, Object> kafkaListenerContainerFactory(ConsumerFactory<Object, Object> consumerFactory,
+        ListenerContainerRegistry registry, TaskScheduler scheduler) {
         ConcurrentKafkaListenerContainerFactory<Object, Object> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory);
         KafkaConsumerBackoffManager backOffManager = createBackOffManager(registry, scheduler);
         factory.getContainerProperties()
-          .setAckMode(ContainerProperties.AckMode.RECORD);
+            .setAckMode(ContainerProperties.AckMode.RECORD);
         factory.setContainerCustomizer(container -> {
             DelayedMessageListenerAdapter<Object, Object> delayedAdapter = wrapWithDelayedMessageListenerAdapter(backOffManager, container);
             delayedAdapter.setDelayForTopic("web.orders", Duration.ofSeconds(10));
@@ -43,7 +44,7 @@ public class KafkaConsumerConfig {
     @Bean
     public ObjectMapper objectMapper() {
         return new ObjectMapper().registerModule(new JavaTimeModule())
-          .configure(DeserializationFeature.READ_DATE_TIMESTAMPS_AS_NANOSECONDS, false);
+            .configure(DeserializationFeature.READ_DATE_TIMESTAMPS_AS_NANOSECONDS, false);
     }
 
     @Bean
@@ -52,13 +53,15 @@ public class KafkaConsumerConfig {
     }
 
     @SuppressWarnings("unchecked")
-    private DelayedMessageListenerAdapter<Object, Object> wrapWithDelayedMessageListenerAdapter(KafkaConsumerBackoffManager backOffManager, ConcurrentMessageListenerContainer<Object, Object> container) {
+    private DelayedMessageListenerAdapter<Object, Object> wrapWithDelayedMessageListenerAdapter(KafkaConsumerBackoffManager backOffManager,
+        ConcurrentMessageListenerContainer<Object, Object> container) {
         return new DelayedMessageListenerAdapter<>((MessageListener<Object, Object>) container.getContainerProperties()
-          .getMessageListener(), backOffManager, container.getListenerId());
+            .getMessageListener(), backOffManager, container.getListenerId());
     }
 
     private ContainerPartitionPausingBackOffManager createBackOffManager(ListenerContainerRegistry registry, TaskScheduler scheduler) {
-        return new ContainerPartitionPausingBackOffManager(registry, new ContainerPausingBackOffHandler(new ListenerContainerPauseService(registry, scheduler)));
+        return new ContainerPartitionPausingBackOffManager(registry,
+            new ContainerPausingBackOffHandler(new ListenerContainerPauseService(registry, scheduler)));
     }
 
 }

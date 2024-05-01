@@ -36,7 +36,7 @@ class KafkaDelayIntegrationTest {
     private static KafkaContainer KAFKA = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:latest"));
     private static KafkaProducer<String, String> testKafkaProducer;
     private final ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule())
-      .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
+        .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
 
     @Autowired
     OrderService orderService;
@@ -60,27 +60,27 @@ class KafkaDelayIntegrationTest {
         // Given
         var orderId = UUID.randomUUID();
         Order order = Order.builder()
-          .orderId(orderId)
-          .price(1.0)
-          .orderGeneratedDateTime(LocalDateTime.now())
-          .address(List.of("41 Felix Avenue, Luton"))
-          .build();
+            .orderId(orderId)
+            .price(1.0)
+            .orderGeneratedDateTime(LocalDateTime.now())
+            .address(List.of("41 Felix Avenue, Luton"))
+            .build();
 
         String orderString = objectMapper.writeValueAsString(order);
         ProducerRecord<String, String> record = new ProducerRecord<>("web.orders", orderString);
 
         // When
         testKafkaProducer.send(record)
-          .get();
+            .get();
         await().atMost(Duration.ofSeconds(1800))
-          .until(() -> {
-              // then
-              Map<UUID, Order> orders = orderService.getOrders();
-              return orders != null && orders.get(orderId) != null && Duration.between(orders.get(orderId)
-                  .getOrderGeneratedDateTime(), orders.get(orderId)
-                  .getOrderProcessedTime())
-                .getSeconds() >= 10;
-          });
+            .until(() -> {
+                // then
+                Map<UUID, Order> orders = orderService.getOrders();
+                return orders != null && orders.get(orderId) != null && Duration.between(orders.get(orderId)
+                        .getOrderGeneratedDateTime(), orders.get(orderId)
+                        .getOrderProcessedTime())
+                    .getSeconds() >= 10;
+            });
     }
 
     @Test
@@ -88,31 +88,31 @@ class KafkaDelayIntegrationTest {
         // Given
         var orderId = UUID.randomUUID();
         Order order = Order.builder()
-          .orderId(orderId)
-          .price(1.0)
-          .orderGeneratedDateTime(LocalDateTime.now())
-          .address(List.of("41 Felix Avenue, Luton"))
-          .build();
+            .orderId(orderId)
+            .price(1.0)
+            .orderGeneratedDateTime(LocalDateTime.now())
+            .address(List.of("41 Felix Avenue, Luton"))
+            .build();
 
         String orderString = objectMapper.writeValueAsString(order);
         ProducerRecord<String, String> record = new ProducerRecord<>("web.internal.orders", orderString);
 
         // When
         testKafkaProducer.send(record)
-          .get();
+            .get();
         await().atMost(Duration.ofSeconds(1800))
-          .until(() -> {
-              // Then
-              Map<UUID, Order> orders = orderService.getOrders();
-              System.out.println("Time...." + Duration.between(orders.get(orderId)
-                  .getOrderGeneratedDateTime(), orders.get(orderId)
-                  .getOrderProcessedTime())
-                .getSeconds());
-              return orders != null && orders.get(orderId) != null && Duration.between(orders.get(orderId)
-                  .getOrderGeneratedDateTime(), orders.get(orderId)
-                  .getOrderProcessedTime())
-                .getSeconds() <= 1;
-          });
+            .until(() -> {
+                // Then
+                Map<UUID, Order> orders = orderService.getOrders();
+                System.out.println("Time...." + Duration.between(orders.get(orderId)
+                        .getOrderGeneratedDateTime(), orders.get(orderId)
+                        .getOrderProcessedTime())
+                    .getSeconds());
+                return orders != null && orders.get(orderId) != null && Duration.between(orders.get(orderId)
+                        .getOrderGeneratedDateTime(), orders.get(orderId)
+                        .getOrderProcessedTime())
+                    .getSeconds() <= 1;
+            });
     }
 
 }

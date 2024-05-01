@@ -26,6 +26,9 @@ public class OrderService {
     }
 
     enum Status {
-        CREATED, ORDER_CONFIRMED, ORDER_PROCESSED, DELETED
+        CREATED,
+        ORDER_CONFIRMED,
+        ORDER_PROCESSED,
+        DELETED
     }
 }
