@@ -18,6 +18,8 @@ import java.util.concurrent.TimeoutException;
 
 import org.awaitility.Awaitility;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import io.nats.client.Connection;
 import io.nats.client.Dispatcher;
@@ -44,6 +46,8 @@ import io.nats.client.Subscription;
  */
 public class NatsClientLiveTest {
 
+    private final static Logger log = LoggerFactory.getLogger(NatsClientLiveTest.class);
+
     private static final int TIMEOUT_MILLIS = 200;
     private static final int WAIT_AT_MOST_MILLIS = 300;
     private static final int POLL_DELAY_MILLIS = 50;
@@ -54,7 +58,7 @@ public class NatsClientLiveTest {
 
     private static Connection createConnection(String uri) throws IOException, InterruptedException {
         Options options = new Options.Builder().server(uri)
-            .connectionListener((connection, event) -> System.out.println("Connection Event: " + event))
+            .connectionListener((connection, event) -> log.info("Connection Event: " + event))
             .errorListener(new CustomErrorListener())
             .build();
         return Nats.connect(options);
@@ -66,7 +70,7 @@ public class NatsClientLiveTest {
 
     public static Connection createConnectionWithReportNoResponders(String uri) throws IOException, InterruptedException {
         Options options = new Options.Builder().server(uri)
-            .connectionListener((connection, event) -> System.out.println("Connection Event: " + event))
+            .connectionListener((connection, event) -> log.info("Connection Event: " + event))
             .errorListener(new CustomErrorListener())
             .reportNoResponders()
             .build();
@@ -77,12 +81,12 @@ public class NatsClientLiveTest {
 
         @Override
         public void errorOccurred(Connection conn, String error) {
-            System.err.println("Error Occurred: " + error);
+            log.error("Error Occurred: " + error);
         }
 
         @Override
         public void exceptionOccurred(Connection conn, Exception exp) {
-            System.err.println("Exception Occurred: " + exp);
+            log.error("Exception Occurred: " + exp);
         }
     }
 
@@ -209,51 +213,46 @@ public class NatsClientLiveTest {
     @Test
     public void whenMessagesAreExchangedViaPublish_thenResponsesMustBeReceivedWithSecondarySubscription() throws Exception {
         try (Connection natsConnection = createConnection()) {
+            Subscription replySideSubscription0 = natsConnection.subscribe("publishSubject");
             Subscription replySideSubscription1 = natsConnection.subscribe("publishSubject");
-            Subscription replySideSubscription2 = natsConnection.subscribe("publishSubject");
 
             Subscription publishSideSubscription = natsConnection.subscribe("replyToSubject");
             natsConnection.publish("publishSubject", "replyToSubject", "Please respond!".getBytes(StandardCharsets.UTF_8));
 
-            Message message = replySideSubscription1.nextMessage(TIMEOUT_MILLIS);
+            Message message = replySideSubscription0.nextMessage(TIMEOUT_MILLIS);
+            assertNotNull(message, "No message!");
+            assertEquals("Please respond!", new String(message.getData()));
+            natsConnection.publish(message.getReplyTo(), "Message Received By Subscription 0".getBytes(StandardCharsets.UTF_8));
+
+            message = replySideSubscription1.nextMessage(TIMEOUT_MILLIS);
             assertNotNull(message, "No message!");
             assertEquals("Please respond!", new String(message.getData()));
             natsConnection.publish(message.getReplyTo(), "Message Received By Subscription 1".getBytes(StandardCharsets.UTF_8));
 
-            message = replySideSubscription2.nextMessage(TIMEOUT_MILLIS);
-            assertNotNull(message, "No message!");
-            assertEquals("Please respond!", new String(message.getData()));
-            natsConnection.publish(message.getReplyTo(), "Message Received By Subscription 2".getBytes(StandardCharsets.UTF_8));
-
-            int responsesFrom1 = 0;
-            int responsesFrom2 = 0;
+            int[] responsesFrom = new int[2];
             message = publishSideSubscription.nextMessage(TIMEOUT_MILLIS);
             assertNotNull(message, "No message!");
-            String response = new String(message.getData());
-            assertTrue(response.contains("Message Received"));
-            if (response.contains("1")) {
-                responsesFrom1++;
-            } else if (response.contains("2")) {
-                responsesFrom2++;
-            }
+            int replierIndex = extractReplierIndexFromMessageData(message);
+            responsesFrom[replierIndex]++;
 
             message = publishSideSubscription.nextMessage(TIMEOUT_MILLIS);
             assertNotNull(message, "No message!");
-            response = new String(message.getData());
-            assertTrue(response.contains("Message Received"));
-            if (response.contains("1")) {
-                responsesFrom1++;
-            } else if (response.contains("2")) {
-                responsesFrom2++;
-            }
+            replierIndex = extractReplierIndexFromMessageData(message);
+            responsesFrom[replierIndex]++;
 
-            assertEquals(1, responsesFrom1);
-            assertEquals(1, responsesFrom2);
+            assertEquals(1, responsesFrom[0]);
+            assertEquals(1, responsesFrom[1]);
 
+            replySideSubscription0.unsubscribe();
             replySideSubscription1.unsubscribe();
-            replySideSubscription2.unsubscribe();
             publishSideSubscription.unsubscribe();
         }
+    }
+
+    private int extractReplierIndexFromMessageData(Message message) {
+        String messageData = new String(message.getData(), StandardCharsets.UTF_8);
+        assertTrue(messageData.contains("Message Received By Subscription"));
+        return messageData.endsWith("0") ? 0 : 1;
     }
 
     @Test
