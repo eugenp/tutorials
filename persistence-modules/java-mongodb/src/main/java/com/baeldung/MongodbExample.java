@@ -33,7 +33,7 @@ public class MongodbExample {
 		// Connect with MongoClient
 		// Configure the environment variable with your own MongoDB Connection String
 		
-		String uri = "mongodb+srv://timkelly:secr3t@cluster0.q3ffudy.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+		String uri = System.getenv("MONGODB_URI");
 
 		try (MongoClient mongoClient = MongoClients.create(uri)) {
 			
