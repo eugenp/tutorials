@@ -871,6 +871,8 @@
                 <module>xml</module>
                 <module>xstream</module>
                 <module>libraries-data-io-2</module>
+                <module>spring-swagger-codegen/openapi-custom-generator</module>
+                <module>spring-swagger-codegen/openapi-custom-generator-api-client</module>
             </modules>
 
             <properties>
