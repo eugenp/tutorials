@@ -10,7 +10,8 @@ import static org.junit.Assert.assertTrue;
 
 public class StringReplaceAndRemoveUnitTest {
 
-    private static final String INPUT = "some prefix=Important Info: a=b";
+    private static final String INPUT1 = "some prefix=Important Info: a=b";
+    private static final String INPUT2 = "some prefix<a, <b, c>>";
 
     @Test
     public void givenTestStrings_whenReplace_thenProcessedString() {
@@ -92,26 +93,35 @@ public class StringReplaceAndRemoveUnitTest {
 
     @Test
     public void givenTestStrings_whenUsingIndexOfAndSubstring_thenGetExpectedResult() {
-        String result = INPUT.substring(INPUT.indexOf("=") + 1);
-        assertEquals("Important Info: a=b", result);
+        String result1 = INPUT1.substring(INPUT1.indexOf("=") + 1);
+        assertEquals("Important Info: a=b", result1);
+        String result2 = INPUT2.substring(INPUT2.indexOf("<"));
+        assertEquals("<a, <b, c>>", result2);
     }
 
     @Test
     public void givenTestStrings_whenUsingSplit_thenGetExpectedResult() {
-        String result = INPUT.split("=", 2)[1];
-        assertEquals("Important Info: a=b", result);
+        String result1 = INPUT1.split("=", 2)[1];
+        assertEquals("Important Info: a=b", result1);
+
+        String result2 = INPUT2.split("(?=<)", 2)[1];
+        assertEquals("<a, <b, c>>", result2);
     }
 
     @Test
     public void givenTestStrings_whenUsingRegexReplaceAll_thenGetExpectedResult() {
-        String wrongResult = INPUT.replaceFirst(".*=", "");
+        String wrongResult = INPUT1.replaceFirst(".*=", "");
         assertEquals("b", wrongResult);
 
-        String result = INPUT.replaceFirst(".*?=", "");
-        assertEquals("Important Info: a=b", result);
+        String result1 = INPUT1.replaceFirst(".*?=", "");
+        assertEquals("Important Info: a=b", result1);
 
-        result = INPUT.replaceFirst("[^=]*=", "");
-        assertEquals("Important Info: a=b", result);
+        result1 = INPUT1.replaceFirst("[^=]*=", "");
+        assertEquals("Important Info: a=b", result1);
+
+        String result2 = INPUT2.replaceFirst("[^<]*", "");
+        assertEquals("<a, <b, c>>", result2);
+
     }
 
 }
