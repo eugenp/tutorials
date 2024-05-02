@@ -12,7 +12,7 @@ import org.testcontainers.utility.DockerImageName;
 @Testcontainers
 public class BaseSqsLiveTest {
 
-    private static final String LOCAL_STACK_VERSION = "localstack/localstack:2.3.2";
+    private static final String LOCAL_STACK_VERSION = "localstack/localstack:3.4.0";
 
     @Container
     static LocalStackContainer localStack = new LocalStackContainer(DockerImageName.parse(LOCAL_STACK_VERSION));
