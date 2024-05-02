@@ -19,12 +19,34 @@
             <artifactId>mongodb-driver-sync</artifactId>
             <version>${mongo.version}</version>
         </dependency>
+	    <dependency>
+	        <groupId>org.junit.jupiter</groupId>
+	        <artifactId>junit-jupiter-api</artifactId>
+	        <version>${junit.jupiter.version}</version>
+	        <scope>test</scope>
+	    </dependency>
+	    <dependency>
+	        <groupId>org.junit.jupiter</groupId>
+	        <artifactId>junit-jupiter-engine</artifactId>
+	        <version>${junit.jupiter.version}</version>
+	        <scope>test</scope>
+	    </dependency>
+	    <dependency>
+		  <groupId>org.slf4j</groupId>
+		  <artifactId>slf4j-api</artifactId>
+		  <version>${slf4j.version}</version> 
+		</dependency>
+		<dependency>
+		  <groupId>org.slf4j</groupId>
+		  <artifactId>slf4j-simple</artifactId>
+		  <version>${slf4j.version}</version> 
+		</dependency>
         <dependency>
             <groupId>dev.morphia.morphia</groupId>
             <artifactId>morphia-core</artifactId>
             <version>${morphia.version}</version>
         </dependency>
-        <dependency>
+        <!-- <dependency>
             <groupId>org.testcontainers</groupId>
             <artifactId>mongodb</artifactId>
             <version>${testcontainers.version}</version>
@@ -35,7 +57,7 @@
             <artifactId>junit-jupiter</artifactId>
             <version>${testcontainers.version}</version>
             <scope>test</scope>
-        </dependency>
+        </dependency> -->
         <dependency>
             <groupId>de.flapdoodle.embed</groupId>
             <artifactId>de.flapdoodle.embed.mongo</artifactId>
@@ -45,9 +67,43 @@
     </dependencies>
 
     <properties>
-        <mongo.version>4.8.2</mongo.version>
+        <mongo.version>5.0.1</mongo.version>
+        <slf4j.version>2.0.13</slf4j.version>
+        <junit.jupiter.version>5.7.0</junit.jupiter.version>
         <flapdoodle.version>4.4.1</flapdoodle.version>
         <morphia.version>2.0.0</morphia.version>
     </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M5</version>
+                <configuration>
+                    <includes>
+                        <include>**/*Test.java</include>
+                    </includes>
+                    <useModulePath>false</useModulePath>
+                    <dependenciesToScan>
+                        <dependency>org.junit.jupiter</dependency>
+                    </dependenciesToScan>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.junit.jupiter</groupId>
+                        <artifactId>junit-jupiter-engine</artifactId>
+                        <version>${junit.jupiter.version}</version>
+                        <exclusions>
+                            <exclusion>
+                                <groupId>junit</groupId>
+                                <artifactId>junit</artifactId>
+                            </exclusion>
+                        </exclusions>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
