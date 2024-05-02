@@ -44,7 +44,7 @@ public class MongoDBCrudOperationsUnitTest {
 	@BeforeEach
 	public void setup() {
 		// Setup MongoDB connection
-		uri = System.getenv("MONGODB_URI");
+		uri = System.getenv("MONGODB_URI") != null ? System.getenv("MONGODB_URI") : "mongodb://localhost:27017";
 		mongoClient = MongoClients.create(uri);
 		database = mongoClient.getDatabase("sample_mflix");
 		collection = database.getCollection("movies");

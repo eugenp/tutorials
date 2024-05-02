@@ -33,7 +33,7 @@ public class MongodbExample {
 		// Connect with MongoClient
 		// Configure the environment variable with your own MongoDB Connection String
 		
-		String uri = System.getenv("MONGODB_URI");
+		String uri = System.getenv("MONGODB_URI") != null ? System.getenv("MONGODB_URI") : "mongodb://localhost:27017";
 
 		try (MongoClient mongoClient = MongoClients.create(uri)) {
 			
