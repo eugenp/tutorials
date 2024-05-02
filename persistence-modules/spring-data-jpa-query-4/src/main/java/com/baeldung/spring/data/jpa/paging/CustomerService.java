@@ -1,13 +1,13 @@
 package com.baeldung.spring.data.jpa.paging;
 
-import java.util.Collections;
-import java.util.List;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.Collections;
+import java.util.List;
 
 @Service
 public class CustomerService {
