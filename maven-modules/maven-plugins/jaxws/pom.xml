@@ -36,7 +36,7 @@
         <dependency>
             <groupId>com.sun.xml.ws</groupId>
             <artifactId>jaxws-ri</artifactId>
-            <version>2.3.0</version>
+            <version>${jaxws.version}</version>
             <type>pom</type>
         </dependency>
     </dependencies>
@@ -46,7 +46,7 @@
             <plugin>
                 <groupId>com.sun.xml.ws</groupId>
                 <artifactId>jaxws-maven-plugin</artifactId>
-                <version>4.0.1</version>
+                <version>${jaxws.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -72,5 +72,9 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <jaxws.version>4.0.2</jaxws.version>
+    </properties>
 
 </project>

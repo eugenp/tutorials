@@ -6,8 +6,8 @@ import static java.lang.foreign.ValueLayout.JAVA_INT;
 import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.Linker;
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.MemorySession;
 import java.lang.foreign.SymbolLookup;
+import java.lang.foreign.Arena;
 import java.lang.invoke.MethodHandle;
 
 public class Greetings {
@@ -23,8 +23,8 @@ public class Greetings {
 
         FunctionDescriptor descriptor = FunctionDescriptor.of(JAVA_INT, ADDRESS);
 
-        MethodHandle methodHandle = loaderLookup.lookup(symbolName)
-          .or(() -> stdlibLookup.lookup(symbolName))
+        MethodHandle methodHandle = loaderLookup.find(symbolName)
+          .or(() -> stdlibLookup.find(symbolName))
           .map(symbolSegment -> nativeLinker.downcallHandle(symbolSegment, descriptor))
           .orElse(null);
 
@@ -32,7 +32,7 @@ public class Greetings {
             throw new NoSuchMethodError("Method Handle was not found");
         }
 
-        try (MemorySession memorySession = MemorySession.openConfined()) {
+        try (Arena memorySession = Arena.ofConfined()) {
             MemorySegment greetingSegment = memorySession.allocateUtf8String(greeting);
             methodHandle.invoke(greetingSegment);
         }

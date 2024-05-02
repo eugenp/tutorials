@@ -97,7 +97,7 @@ ext {
     swagger_annotations_version = "1.5.15"
     jackson_version = "2.13.3"
     spring_web_version = "4.3.9.RELEASE"
-    jodatime_version = "2.9.9"
+    jodatime_version = "2.12.7"
     junit_version = "4.12"
 }
 

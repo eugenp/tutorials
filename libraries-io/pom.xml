@@ -48,6 +48,11 @@
             <artifactId>spring-web</artifactId>
             <version>${spring.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.simplejavamail</groupId>
+            <artifactId>simple-java-mail</artifactId>
+            <version>${simplejavamail.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -71,6 +76,7 @@
         <zip4j.version>2.11.5</zip4j.version>
         <opencsv.version>5.9</opencsv.version>
         <spring.version>6.1.4</spring.version>
+        <simplejavamail.version>8.7.0</simplejavamail.version>
     </properties>
 
 </project>

@@ -40,6 +40,16 @@
             <artifactId>fastexcel-reader</artifactId>
             <version>${fastexcel.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -64,6 +74,7 @@
         <jexcel.version>1.0.9</jexcel.version>
         <fastexcel.version>0.17.0</fastexcel.version>
         <maven.resources.plugin.version>3.3.1</maven.resources.plugin.version>
+        <log4j.version>2.23.1</log4j.version>
     </properties>
 
 </project>

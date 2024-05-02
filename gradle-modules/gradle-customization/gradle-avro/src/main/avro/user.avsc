@@ -1,0 +1,19 @@
+{
+  "type": "record",
+  "name": "User",
+  "namespace": "avro",
+  "fields": [
+    {
+      "name": "firstName",
+      "type": "string"
+    },
+    {
+      "name": "lastName",
+      "type": "string"
+    },
+    {
+      "name": "phoneNumber",
+      "type": "string"
+    }
+  ]
+}

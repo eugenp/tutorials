@@ -27,6 +27,8 @@
         <module>spring-boot-basic-customization</module>
         <module>spring-boot-basic-customization-2</module>
         <module>spring-boot-bootstrap</module>
+        <!--<module>spring-boot-basic-customization-3</module>--> <!--JAVA-33979-->
+        <module>spring-boot-logging-loki</module>
         <module>spring-boot-caching</module>  <!-- failing after upgrading to spring boot 3.2.x -->
         <module>spring-boot-caching-2</module>  <!-- failing after upgrading to spring boot 3.2.x -->
         <module>spring-boot-client</module>
@@ -91,6 +93,7 @@
         <module>spring-boot-redis</module>
         <module>spring-boot-cassandre</module>
         <module>spring-boot-react</module>
+        <module>spring-caching-3</module>
         <!-- <module>spring-boot-3</module> --> <!-- JAVA-20931 -->
         <module>spring-boot-3-grpc</module>
         <module>spring-boot-3-native</module>
@@ -113,6 +116,7 @@
         <module>spring-boot-graalvm-docker</module>
         <module>spring-boot-validations</module>
         <module>spring-boot-openapi</module>
+        <module>spring-boot-brave</module>
     </modules>
 
     <dependencyManagement>
