@@ -15,7 +15,7 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class TextSearchTest {
+public class TextSearchUnitTest {
     private static MongoDBClient mongoDBClient;
 
     @BeforeClass
