@@ -9,9 +9,9 @@ import java.util.Map;
 public class FibonacciMemoization {
 
     private static final Map<Integer, Long> cache = new HashMap<>();
-    private static Logger logger = LoggerFactory.getLogger(FibonacciMemoization.class);
+    private static final Logger logger = LoggerFactory.getLogger(FibonacciMemoization.class);
 
-    static long fibonacci(int n) {
+    public static long fibonacci(int n) {
         if (n <= 1) {
             return n;
         }
