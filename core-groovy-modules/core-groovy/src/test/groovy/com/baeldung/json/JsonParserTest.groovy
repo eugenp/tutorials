@@ -43,7 +43,6 @@ class JsonParserTest extends Specification {
         when:
         def accountToJson = jsonGenerator.toJson(account)
 
-        println accountToJson
         then:
         accountToJson == '{"id":"123","createdAt":"01/31/2024"}'
     }
