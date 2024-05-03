@@ -7,76 +7,75 @@ import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.IndexOptions;
 import com.mongodb.client.model.Indexes;
 import org.bson.Document;
-import org.junit.BeforeClass;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class TextSearchUnitTest {
-    private static MongoDBClient mongoDBClient;
+    private MongoClient mongoClient;
+    private MongoDatabase database;
+    private MongoCollection<Document> collection;
 
-    @BeforeClass
-    public static void setup() {
-        mongoDBClient = new MongoDBClient("mongodb://localhost:27017", "baeldung", "user");
+    @Before
+    public void setUp() {
+        if (mongoClient == null) {
+            mongoClient = MongoClients.create("mongodb://localhost:27017");
+            database = mongoClient.getDatabase("baeldung");
+            collection = database.getCollection("user");
+        }
     }
 
     @Test
     public void whenSearchingUserWithFullText_thenCorrectCountReturned() {
         /// WHEN
-        mongoDBClient.insertUser("Leonel", "Java Spring");
-        mongoDBClient.insertUser("John", "Java Spring MongoDB");
-        mongoDBClient.insertUser("Smith", "Java");
-        mongoDBClient.createTextIndex("description");
+        insertUser("Leonel", "Java Spring");
+        insertUser("John", "Java Spring MongoDB");
+        insertUser("Smith", "Java");
+        createTextIndex("description");
 
         // THEN
-        assertEquals("Simple text search", 3, mongoDBClient.searchUser("Java Spring").size());
-        assertEquals("Full text search with term Exclusion", 2, mongoDBClient.searchUser("Java Spring -MongoDB").size());
-        assertEquals("All users with term Java", 1, mongoDBClient.searchUser("\"Java\"").size());
+        assertEquals("Simple text search", 3, searchUser("Java Spring").size());
+        assertEquals("Full text search with term Exclusion", 2, searchUser("Java Spring -MongoDB").size());
+        assertEquals("All users with term Java", 1, searchUser("\"Java\"").size());
     }
 
     @Test
     public void whenSearchingUserWithPartialText_thenCorrectCountReturned() {
         /// WHEN
-        mongoDBClient.insertUser("LEONEL", "Java Spring");
-        mongoDBClient.createTextIndex("name");
+        insertUser("LEONEL", "Java Spring");
+        createTextIndex("name");
 
         // THEN
-        assertEquals("Search with capital case", 1, mongoDBClient.searchUser("LEONEL").size());
-        assertEquals("Search with lower case", 1, mongoDBClient.searchUser("leonel").size());
-        assertEquals("Partial search", 1, mongoDBClient.searchUser("LEONE").size());
-        assertEquals("Partial search with LEO", 0, mongoDBClient.searchUser("LEO").size());
-        assertEquals("Partial search with L", 0, mongoDBClient.searchUser("L").size());
+        assertEquals("Search with capital case", 1, searchUser("LEONEL").size());
+        assertEquals("Search with lower case", 1, searchUser("leonel").size());
+        assertEquals("Partial search", 1, searchUser("LEONE").size());
+        assertEquals("Partial search with LEO", 0, searchUser("LEO").size());
+        assertEquals("Partial search with L", 0, searchUser("L").size());
     }
 
+    public void insertUser(String name, String description) {
+        Document doc = new Document("name", name).append("description", description);
+        collection.insertOne(doc);
+    }
 
-    private static class MongoDBClient {
-        private MongoClient mongoClient;
-        private MongoDatabase db;
-        private MongoCollection<Document> collection;
+    public List<Document> searchUser(String query) {
+        Document result = new Document("$text", new Document("$search", query));
+        return collection.find(result).into(new ArrayList<>());
+    }
 
-        public MongoDBClient(String connectionString, String dbName, String collectionName) {
-            mongoClient = MongoClients.create(connectionString);
-            db = mongoClient.getDatabase(dbName);
-            collection = db.getCollection(collectionName);
-        }
+    public void createTextIndex(String field) {
+        IndexOptions indexOptions = new IndexOptions();
+        indexOptions.name("textIndex").unique(false).background(true);
+        collection.createIndex(Indexes.text(field), indexOptions);
+    }
 
-        public void insertUser(String name, String description) {
-            Document doc = new Document("name", name).append("description", description);
-            collection.insertOne(doc);
-        }
-
-        public List<Document> searchUser(String query) {
-            Document result = new Document("$text", new Document("$search", query));
-            return collection.find(result).into(new ArrayList<>());
-        }
-
-        public void createTextIndex(String field) {
-            IndexOptions indexOptions = new IndexOptions();
-            indexOptions.name("textIndex").unique(false).background(true);
-            collection.createIndex(Indexes.text(field), indexOptions);
-        }
+    @After
+    public void cleanUp() {
+        mongoClient.close();
     }
 }
