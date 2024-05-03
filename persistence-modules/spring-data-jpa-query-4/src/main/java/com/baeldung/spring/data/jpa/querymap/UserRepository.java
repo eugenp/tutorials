@@ -1,13 +1,14 @@
 package com.baeldung.spring.data.jpa.querymap;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.util.Streamable;
+
+import javax.transaction.Transactional;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import javax.transaction.Transactional;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.util.Streamable;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
