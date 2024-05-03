@@ -4,7 +4,7 @@ import com.baeldung.recordswithjpa.RecordsAsJpaEmbeddableIntegrationTest;
 import com.baeldung.recordswithjpa.embeddable.Author;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class EmbeddableBookRepositoryIntegrationTest extends RecordsAsJpaEmbeddableIntegrationTest {
 
