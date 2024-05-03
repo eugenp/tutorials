@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class MapListIterationUnitTest {
 
     @Test
-    public void whenIterateListMapUsingTraditionalLoop_thenPrintMapList() {
+    public void whenIterateListMapUsingTraditionalLoop_thenCountEntries() {
         List<Map<String, Object>> listOfMaps = new ArrayList<>();
         Map<String, Object> map1 = new HashMap<>();
         map1.put("name", "Jack");
@@ -33,14 +33,15 @@ public class MapListIterationUnitTest {
             }
         }
 
-        assertEquals("Jack", map1.get("name"));
-        assertEquals(30, map1.get("age"));
-        assertEquals("Jones", map2.get("name"));
-        assertEquals(25, map2.get("age"));
+        int entryCounter = listOfMaps.stream()
+                .mapToInt(map -> map.size())
+                .sum();
+
+        assertEquals(4, entryCounter);
     }
 
     @Test
-    public void whenIterateListMapUsingStream_thenPrintMapList() {
+    public void whenIterateListMapUsingStream_thenCountEntries() {
         Map<String, Object> map1 = new HashMap<>();
         map1.put("name", "Jack");
         map1.put("age", 30);
@@ -59,15 +60,15 @@ public class MapListIterationUnitTest {
                     System.out.format("%s: %s\n", key, value);
                 });
 
-        assertEquals(2, listOfMaps.size());
-        assertEquals("Jack", map1.get("name"));
-        assertEquals(30, map1.get("age"));
-        assertEquals("Jones", map2.get("name"));
-        assertEquals(25, map2.get("age"));
+        int entryCounter = listOfMaps.stream()
+                .mapToInt(map -> map.size())
+                .sum();
+
+        assertEquals(4, entryCounter);
     }
 
     @Test
-    public void whenIterateListMapUsingKeySet_thenPrintMapList() {
+    public void whenIterateListMapUsingKeySet_thenCountEntries() {
         Map<String, Object> map1 = new HashMap<>();
         map1.put("name", "Jack");
         map1.put("age", 30);
@@ -85,15 +86,15 @@ public class MapListIterationUnitTest {
             }
         }
 
-        assertEquals(2, listOfMaps.size());
-        assertEquals("Jack", map1.get("name"));
-        assertEquals(30, map1.get("age"));
-        assertEquals("Jones", map2.get("name"));
-        assertEquals(25, map2.get("age"));
+        int entryCounter = listOfMaps.stream()
+                .mapToInt(map -> map.size())
+                .sum();
+
+        assertEquals(4, entryCounter);
     }
 
     @Test
-    public void whenIterateListMapUsingForEach_thenPrintMapList() {
+    public void whenIterateListMapUsingForEach_thenCountEntries() {
         Map<String, Object> map1 = new HashMap<>();
         map1.put("name", "Jack");
         map1.put("age", 30);
@@ -108,10 +109,10 @@ public class MapListIterationUnitTest {
             System.out.format("%s: %s\n", key, value);
         }));
 
-        assertEquals(2, listOfMaps.size());
-        assertEquals("Jack", map1.get("name"));
-        assertEquals(30, map1.get("age"));
-        assertEquals("Jones", map2.get("name"));
-        assertEquals(25, map2.get("age"));
+        int entryCounter = listOfMaps.stream()
+                .mapToInt(map -> map.size())
+                .sum();
+
+        assertEquals(4, entryCounter);
     }
 }
