@@ -65,7 +65,7 @@ class MemoizationWithMonoCacheUnitTest {
     }
 
     @Test
-    void givenRetrievedUser_whenTheCallToRemoteIsCacheWithSuration_thenReturnInvocationCountAndCompareResult() {
+    void givenRetrievedUser_whenTheCallToRemoteIsCacheWithDuration_thenReturnInvocationCountAndCompareResult() {
 
         MemoizationWithMonoCache memoizationWithMonoCache = new MemoizationWithMonoCache();
 
