@@ -2,8 +2,8 @@ package com.baeldung.mockito.stubbing;
 
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 public class BaeldungListUnitTest {
 
@@ -20,7 +20,9 @@ public class BaeldungListUnitTest {
     @Test
     void testThenReturn_ThenReturnChaining() {
         BaeldungList myList = mock(BaeldungList.class);
-        when(myList.get(anyInt())).thenReturn("answer one").thenReturn("answer two");
+        when(myList.get(anyInt()))
+                .thenReturn("answer one")
+                .thenReturn("answer two");
         assertEquals("answer one", myList.get(1));
         assertEquals("answer two", myList.get(1));
     }
@@ -28,7 +30,8 @@ public class BaeldungListUnitTest {
     @Test
     void testThenReturn_MultipleReturns() {
         BaeldungList myList = mock(BaeldungList.class);
-        when(myList.get(anyInt())).thenReturn("answer one", "answer two");
+        when(myList.get(anyInt()))
+                .thenReturn("answer one", "answer two");
         assertEquals("answer one", myList.get(1));
         assertEquals("answer two", myList.get(1));
     }
@@ -77,9 +80,12 @@ public class BaeldungListUnitTest {
         doAnswer(invocation -> {
             Integer index = invocation.getArgument(0);
             switch (index) {
-                case 1: return "answer one";
-                case 2: return "answer two";
-                default: return "answer " + index;
+                case 1:
+                    return "answer one";
+                case 2:
+                    return "answer two";
+                default:
+                    return "answer " + index;
             }
         }).when(myList)
                 .get(anyInt());
