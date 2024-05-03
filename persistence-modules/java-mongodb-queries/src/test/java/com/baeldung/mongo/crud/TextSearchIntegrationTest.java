@@ -16,7 +16,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class TextSearchUnitTest {
+public class TextSearchIntegrationTest {
     private MongoClient mongoClient;
     private MongoDatabase database;
     private MongoCollection<Document> collection;
