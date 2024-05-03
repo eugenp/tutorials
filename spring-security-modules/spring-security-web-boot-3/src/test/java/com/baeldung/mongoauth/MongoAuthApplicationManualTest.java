@@ -27,7 +27,7 @@ import com.baeldung.mongoauth.domain.UserRole;
 @SpringBootTest(classes = { MongoAuthApplication.class })
 @AutoConfigureMockMvc
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-class MongoAuthApplicationIntegrationTest {
+class MongoAuthApplicationManualTest {
 
     @Autowired
     private WebApplicationContext context;
