@@ -1,6 +1,7 @@
 package com.baeldung.queuetolist;
 
 import com.google.common.collect.Lists;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -38,7 +39,6 @@ public class QueueToListConvertUnitTest {
         assertNotNull(list);
         assertEquals(queue.size(), list.size());
         assertTrue(list.containsAll(queue));
-        ;
     }
 
     @Test
@@ -52,7 +52,8 @@ public class QueueToListConvertUnitTest {
 
     @Test
     public void givenAQueue_whenConvertUsingStream_thenReturnList() {
-        List<String> list = queue.stream().collect(Collectors.toList());
+        List<String> list = queue.stream()
+            .collect(Collectors.toList());
 
         assertNotNull(list);
         assertEquals(queue.size(), list.size());
