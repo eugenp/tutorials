@@ -31,7 +31,6 @@ public class TextSearchUnitTest {
             collection = database.getCollection("user");
             db = mongoClient.getDB("baeldung");
             dbCollection = db.getCollection("user");
-            collection.drop();
         }
     }
 
