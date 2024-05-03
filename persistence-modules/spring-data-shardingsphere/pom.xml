@@ -15,11 +15,6 @@
         <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
-    <properties>
-        <shardingsphere.version>5.3.2</shardingsphere.version>
-        <mysql.version>8.2.0</mysql.version>
-    </properties>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -76,5 +71,10 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <shardingsphere.version>5.3.2</shardingsphere.version>
+        <mysql.version>8.2.0</mysql.version>
+    </properties>
 
 </project>
