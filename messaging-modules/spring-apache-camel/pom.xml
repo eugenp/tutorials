@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.baeldung.apache.camel</groupId>
     <artifactId>spring-apache-camel</artifactId>
-    <name>spring-apache-camel</name>
     <packaging>jar</packaging>
+    <name>spring-apache-camel</name>
     <url>http://maven.apache.org</url>
 
     <parent>
