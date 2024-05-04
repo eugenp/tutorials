@@ -1,3 +1,4 @@
+import java.util.Objects;
 public class Employee {
     String name;
     Float salary;
