@@ -36,6 +36,7 @@
 
     <properties>
         <spqr-version>0.11.2</spqr-version>
+        <mockito.version>4.4.0</mockito.version>
     </properties>
 
 </project>
