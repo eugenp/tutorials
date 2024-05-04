@@ -35,7 +35,7 @@ public class CastingMapToObjectUnitTest {
         User user = new User();
         BeanUtils.populate(user, map);
 
-        assertEqualsUserAndMap(user, map);
+        assertEqualsMapAndUser(map, user);
     }
 
     @Test
@@ -43,7 +43,7 @@ public class CastingMapToObjectUnitTest {
         ObjectMapper objectMapper = new ObjectMapper();
         User user = objectMapper.convertValue(map, User.class);
 
-        assertEqualsUserAndMap(user, map);
+        assertEqualsMapAndUser(map, user);
     }
 
     @Test
@@ -65,7 +65,7 @@ public class CastingMapToObjectUnitTest {
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         User user = objectMapper.convertValue(modifiedMap, User.class);
 
-        assertEqualsUserAndMap(user, modifiedMap);
+        assertEqualsMapAndUser(modifiedMap, user);
     }
 
     @Test
@@ -74,10 +74,10 @@ public class CastingMapToObjectUnitTest {
         String jsonMap = gson.toJson(map);
         User user = gson.fromJson(jsonMap, User.class);
 
-        assertEqualsUserAndMap(user, map);
+        assertEqualsMapAndUser(map, user);
     }
 
-    private static void assertEqualsUserAndMap(User user, Map<String, Object> map) {
+    private static void assertEqualsMapAndUser(Map<String, Object> map, User user) {
         assertEquals(map.get("id"), user.getId());
         assertEquals(map.get("name"), user.getName());
         assertEquals(map.get("addresses"), user.getAddresses());
