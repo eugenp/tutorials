@@ -23,7 +23,7 @@ class BookServiceAutowiredAndInjectMocksUnitTest {
     private BookService bookService;
 
     @Test
-    void getBook() throws JsonProcessingException {
+    void givenBookService_whenGettingBook_thenBookIsCorrect() throws JsonProcessingException {
         Book book1 = new Book("1234", "Inferno", "Dan Brown");
 
         MockitoAnnotations.openMocks(this);
