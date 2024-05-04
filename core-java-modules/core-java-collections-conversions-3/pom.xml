@@ -13,6 +13,14 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${apache.commons.version}</version>
+        </dependency>
+    </dependencies>
+
     <build>
         <finalName>core-java-collections-conversions-3</finalName>
         <resources>
@@ -22,5 +30,9 @@
             </resource>
         </resources>
     </build>
+
+    <properties>
+        <apache.commons.version>3.14.0</apache.commons.version>
+    </properties>
 
 </project>

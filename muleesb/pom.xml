@@ -6,8 +6,8 @@
     <groupId>com.mycompany</groupId>
     <artifactId>muleesb</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>muleesb</name>
     <packaging>mule</packaging>
+    <name>muleesb</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
