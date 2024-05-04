@@ -1,0 +1,13 @@
+<config
+        xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+        xmlns='http://www.ehcache.org/v3'
+        xsi:schemaLocation="
+        https://www.ehcache.org/v3/ https://www.ehcache.org/schema/ehcache-core-3.0.xsd">
+
+    <cache alias="com.baeldung.hibernatejfr.entity.PersonEntity">
+        <key-type>java.lang.Object</key-type>
+        <value-type>java.lang.Object</value-type>
+        <heap unit="entries">10000</heap>
+    </cache>
+
+</config>

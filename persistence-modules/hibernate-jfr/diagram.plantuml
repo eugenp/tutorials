@@ -1,0 +1,28 @@
+@startuml
+PersonDao .up.|> JpaRepository
+PersonService -- PersonDao
+PersonService -up- PersonController
+PersonDao -down- PersonEntity
+
+class PersonDao
+interface JpaRepository
+class PersonEntity {
+  - Long id
+  - String name
+  - Long mobile
+}
+class PersonController{
+  + PersonEntity getPerson(Long id)
+  + List<PersonEntity> listPerson()
+  + updatePerson(Long id, PersonEntity person)
+  + batchCreatePerson(List<PersonEntity> persons)
+}
+
+class PersonService {
+
++ findPersonById(Long id)
++ updatePerson(Long id, PersonEntity person)
++ void createPersons(List<PersonEntity> personList)
++ List<PersonEntity> listPersons()
+}
+@enduml
