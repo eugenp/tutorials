@@ -37,7 +37,7 @@ public class OptionalAllPresentUnitTest {
         var name = Optional.of("Jean-Luc Picard");
         var designation = Optional.of("Captain");
         var ship = Optional.of("USS Enterprise D");
-        var action = name.flatMap(n -> designation.flatMap(d -> ship.map(s -> true)));
+        Optional<Boolean> action = name.flatMap(n -> designation.flatMap(d -> ship.map(s -> true)));
 
         Assertions.assertEquals(action, Optional.of(true));
     }
@@ -53,6 +53,15 @@ public class OptionalAllPresentUnitTest {
     }
 
     @Test
+    public void givenThreeOptionals_performAction_onlyIfAllPresent_usingIfPresent() {
+        var name = Optional.of("Jean-Luc Picard");
+        var designation = Optional.of("Captain");
+        var ship = Optional.of("USS Enterprise D");
+        name.ifPresent(n -> designation.ifPresent(d -> ship.ifPresent(s -> System.out.println("Perform action instead!"))));
+        // Intentionally not asserting since the ifPresent returns void
+    }
+
+    @Test
     public void givenThreeOptionals_performAction_onlyIfAllPresent_usingStream() {
         var name = Optional.of("Jean-Luc Picard");
         var designation = Optional.of("Captain");
@@ -60,6 +69,7 @@ public class OptionalAllPresentUnitTest {
         var status = false;
         var allPresent = Stream.of(name, designation, ship).allMatch(Optional::isPresent);
         if (allPresent) {
+            // Perform action if al values present
             status = true;
         }
         Assertions.assertTrue(status);
@@ -73,6 +83,7 @@ public class OptionalAllPresentUnitTest {
         var status = false;
         var allPresent = Stream.of(name, designation, ship).allMatch(Optional::isPresent);
         if (allPresent) {
+            // Perform action if all values present
             status = true;
         }
         Assertions.assertFalse(status);
