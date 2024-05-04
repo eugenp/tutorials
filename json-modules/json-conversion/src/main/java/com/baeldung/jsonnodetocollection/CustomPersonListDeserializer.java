@@ -14,8 +14,8 @@ public class CustomPersonListDeserializer extends JsonDeserializer<List<Person>>
     public List<Person> deserialize(com.fasterxml.jackson.core.JsonParser p, com.fasterxml.jackson.databind.DeserializationContext ctxt) throws IOException {
         ObjectMapper objectMapper = (ObjectMapper) p.getCodec();
         List<Person> personList = new ArrayList<>();
-        JsonNode jsonNode = objectMapper.readTree(p);
-        for (JsonNode node : jsonNode) {
+        JsonNode personsNode = objectMapper.readTree(p);
+        for (JsonNode node : personsNode) {
             personList.add(objectMapper.readValue(node.traverse(), Person.class));
         }
 
