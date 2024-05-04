@@ -1,9 +1,11 @@
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class EmployeeSorterUnitTest {
 
@@ -22,9 +24,9 @@ class EmployeeSorterUnitTest {
         Map<Integer, List<Employee>> sortedMap = EmployeeSorter.sortEmployeeMap(employeeMap, "salary");
 
         assertThat(sortedMap.get(1)).containsExactly(
-                new Employee("Aarav", 5000.0f, 30, "New York"),
-                new Employee("Brent", 4000.0f, 25, "Chicago"),
-                new Employee("Cooper", 4400f, 32, "LA")
+                new Employee("Aarav", 4000.0f, 25, "Chicago"),
+                new Employee("Cooper", 4400f, 32, "LA"),
+                new Employee("Brent", 5000.0f, 30, "New York")
         );
 
     }
@@ -43,8 +45,8 @@ class EmployeeSorterUnitTest {
         Map<Integer, List<Employee>> sortedMap = EmployeeSorter.sortEmployeeMap(employeeMap, "age");
 
         assertThat(sortedMap.get(1)).containsExactly(
-                new Employee("Aarav", 5000.0f, 30, "New York"),
-                new Employee("Brent", 4000.0f, 25, "Chicago"),
+                new Employee("Aarav", 4000.0f, 25, "Chicago"),
+                new Employee("Brent", 5000.0f, 30, "New York"),
                 new Employee("Cooper", 5400f, 32, "LA")
         );
     }
