@@ -8,7 +8,7 @@ import static org.mockito.Mockito.*;
 public class BaeldungListUnitTest {
 
     @Test
-    void testThenReturn_ForMethodThatReturnValue() {
+    void givenThenReturn_whenGetCalled_thenValue() {
         BaeldungList myList = mock(BaeldungList.class);
 
         when(myList.get(anyInt()))
@@ -18,26 +18,30 @@ public class BaeldungListUnitTest {
     }
 
     @Test
-    void testThenReturn_ThenReturnChaining() {
+    void givenThenReturn_whenGetCalled_thenReturnChaining() {
         BaeldungList myList = mock(BaeldungList.class);
+
         when(myList.get(anyInt()))
                 .thenReturn("answer one")
                 .thenReturn("answer two");
+
         assertEquals("answer one", myList.get(1));
         assertEquals("answer two", myList.get(1));
     }
 
     @Test
-    void testThenReturn_MultipleReturns() {
+    void givenThenReturn_whenGetCalled_thenMultipleValues() {
         BaeldungList myList = mock(BaeldungList.class);
+
         when(myList.get(anyInt()))
                 .thenReturn("answer one", "answer two");
+
         assertEquals("answer one", myList.get(1));
         assertEquals("answer two", myList.get(1));
     }
 
     @Test
-    void testDoAnswer_ForVoidMethod() {
+    void givenDoAnswer_whenAddCalled_thenAnswered() {
         BaeldungList myList = mock(BaeldungList.class);
 
         doAnswer(invocation -> {
@@ -47,20 +51,21 @@ public class BaeldungListUnitTest {
             // verify the invocation is called with correct index and element parameters
             assertEquals(3, index);
             assertEquals("answer", element);
+
             // return null as this is a void method
             return null;
         }).when(myList)
                 .add(any(Integer.class), any(String.class));
-
         myList.add(3, "answer");
     }
 
     @Test
-    void testDoAnswer_ForMethodThatReturnValue() {
+    void givenDoAnswer_whenGetCalled_thenAnswered() {
         BaeldungList myList = mock(BaeldungList.class);
 
         doAnswer(invocation -> {
             Object index = invocation.getArgument(0);
+
             // verify the invocation is called with index
             assertEquals(1, index);
 
@@ -74,7 +79,7 @@ public class BaeldungListUnitTest {
     }
 
     @Test
-    void testDoAnswer_ConditionalAnswer() {
+    void givenDoAnswer_whenGetCalled_thenAnsweredConditionally() {
         BaeldungList myList = mock(BaeldungList.class);
 
         doAnswer(invocation -> {
