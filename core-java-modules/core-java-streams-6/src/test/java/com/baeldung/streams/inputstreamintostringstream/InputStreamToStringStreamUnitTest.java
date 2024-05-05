@@ -12,13 +12,13 @@ import java.util.stream.Stream;
 import static org.junit.Assert.assertEquals;
 
 public class InputStreamToStringStreamUnitTest {
+
     byte[] bytes = "Hello\nWorld\nThis\nis\na\ntest".getBytes(StandardCharsets.UTF_8);
     InputStream inputStream = new ByteArrayInputStream(bytes);
 
     @Test
     void givenInputStream_whenConvertingWithBufferedReader_thenConvertInputStreamToStringStream() throws IOException {
-        try (InputStreamReader isr = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
-             BufferedReader reader = new BufferedReader(isr)) {
+        try (InputStreamReader isr = new InputStreamReader(inputStream, StandardCharsets.UTF_8); BufferedReader reader = new BufferedReader(isr)) {
 
             Stream<String> stringStream = reader.lines();
 
@@ -31,7 +31,8 @@ public class InputStreamToStringStreamUnitTest {
     @Test
     void givenInputStream_whenConvertingWithScannerFindAll_thenConvertInputStreamToStringStream() throws IOException {
         try (Scanner scanner = new Scanner(inputStream, StandardCharsets.UTF_8)) {
-            Stream<String> stringStream = scanner.findAll(".+").map(MatchResult::group);
+            Stream<String> stringStream = scanner.findAll(".+")
+                .map(MatchResult::group);
 
             String result = stringStream.collect(Collectors.joining());
 
