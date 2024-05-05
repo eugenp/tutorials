@@ -31,8 +31,7 @@ public class InputStreamToStringStreamUnitTest {
     @Test
     void givenInputStream_whenConvertingWithScannerFindAll_thenConvertInputStreamToStringStream() throws IOException {
         try (Scanner scanner = new Scanner(inputStream, StandardCharsets.UTF_8)) {
-            Stream<String> stringStream = scanner.findAll(".+")
-                    .map(MatchResult::group);
+            Stream<String> stringStream = scanner.findAll(".+").map(MatchResult::group);
 
             String result = stringStream.collect(Collectors.joining());
 
