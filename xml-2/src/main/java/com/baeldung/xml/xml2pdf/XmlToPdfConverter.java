@@ -29,42 +29,27 @@ public class XmlToPdfConverter {
         FOUserAgent foUserAgent = fopFactory.newFOUserAgent();
 
         // Specify output stream for PDF
-        OutputStream out = new BufferedOutputStream(Files.newOutputStream(new File(pdfFilePath).toPath()));
-        try {
-            // Create FOP instance
+        try (OutputStream out = new BufferedOutputStream(Files.newOutputStream(new File(pdfFilePath).toPath()))) {
             Fop fop = fopFactory.newFop(MimeConstants.MIME_PDF, foUserAgent, out);
-
             // Create Transformer from XSLT
             TransformerFactory factory = TransformerFactory.newInstance();
             Transformer transformer = factory.newTransformer(new StreamSource(new File(xsltFilePath)));
-
             // Apply transformation
             Source src = new StreamSource(new File(xmlFilePath));
             Result res = new SAXResult(fop.getDefaultHandler());
             transformer.transform(src, res);
-        } finally {
-            out.close();
         }
     }
 
     public static void convertXMLtoPDFUsingIText(String xmlFilePath, String pdfFilePath) throws Exception {
-        // Create a new Document
-        Document document = new Document();
-        // Specify output stream for PDF
-        FileOutputStream outputStream = new FileOutputStream(pdfFilePath);
-
-        try {
-            // Initialize PDF writer
+        try (FileOutputStream outputStream = new FileOutputStream(pdfFilePath)) {
+            Document document = new Document();
             PdfWriter.getInstance(document, outputStream);
-            // Open the Document
             document.open();
             // Read XML content and add it to the Document
             String xmlContent = new String(Files.readAllBytes(Paths.get(xmlFilePath)));
             document.add(new Paragraph(xmlContent));
-        } finally {
-            // Close the Document
             document.close();
-            outputStream.close();
         }
     }
 }
