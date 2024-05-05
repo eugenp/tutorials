@@ -9,8 +9,4 @@
 - [Normalizing the EOL Character in Java](https://www.baeldung.com/java-normalize-end-of-line-character)
 - [Converting UTF-8 to ISO-8859-1 in Java](https://www.baeldung.com/java-utf-8-iso-8859-1-conversion)
 - [Get Last n Characters From a String](https://www.baeldung.com/java-string-get-last-n-characters)
-- [Find the Length of the Longest Symmetric Substring](https://www.baeldung.com/java-find-length-longest-symmetric-substring)
 - More articles: [[<-- prev]](../core-java-string-operations-7) [[next -->]](../core-java-string-operations-9)
-
-
-
