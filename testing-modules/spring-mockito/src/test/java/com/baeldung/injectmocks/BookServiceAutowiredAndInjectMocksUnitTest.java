@@ -30,7 +30,6 @@ class BookServiceAutowiredAndInjectMocksUnitTest {
 
         when(databaseService.findById(eq("1234"))).thenReturn(book1);
         String bookString1 = bookService.getBook("1234");
-        System.out.println(bookString1);
         Assertions.assertTrue(bookString1.contains("Dan Brown"));
     }
 }
