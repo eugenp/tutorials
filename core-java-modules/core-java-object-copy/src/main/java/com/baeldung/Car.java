@@ -3,7 +3,6 @@ package com.baeldung;
 public class Car {
 
     int number;
-    String name;
     Engine engine;
 
     public static class Engine {
@@ -33,17 +32,12 @@ public class Car {
         return number;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public Engine getEngine() {
         return engine;
     }
 
-    public Car(int number, String name, Engine engine) {
+    public Car(int number, Engine engine) {
         this.number = number;
-        this.name = name;
         this.engine = engine;
     }
 
