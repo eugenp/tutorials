@@ -1,13 +1,16 @@
-package com.baeldung.sample.singleton;
+package com.baeldung.singleton;
 
-import static org.junit.jupiter.api.Assertions.assertNotSame;
-import static org.junit.jupiter.api.Assertions.assertSame;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
+
+import static org.junit.jupiter.api.Assertions.assertNotSame;
+import static org.junit.jupiter.api.Assertions.assertSame;
 
 @SpringBootTest
+@ContextConfiguration(classes = SingletonBeanConfig.class)
 class SingletonBeanUnitTest {
 
     @Autowired

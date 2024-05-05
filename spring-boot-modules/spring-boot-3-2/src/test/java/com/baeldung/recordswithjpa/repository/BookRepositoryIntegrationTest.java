@@ -3,7 +3,7 @@ package com.baeldung.recordswithjpa.repository;
 import com.baeldung.recordswithjpa.RecordsAsJpaIntegrationTest;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BookRepositoryIntegrationTest extends RecordsAsJpaIntegrationTest {
 

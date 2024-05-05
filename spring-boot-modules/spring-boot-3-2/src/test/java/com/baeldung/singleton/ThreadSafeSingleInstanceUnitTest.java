@@ -1,4 +1,4 @@
-package com.baeldung.sample.singleton;
+package com.baeldung.singleton;
 
 import org.junit.jupiter.api.Test;
 
