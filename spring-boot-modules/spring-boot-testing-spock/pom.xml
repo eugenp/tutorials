@@ -78,7 +78,7 @@
     <properties>
         <!-- The main class to start by executing java -jar -->
         <start-class>com.baeldung.boot.Application</start-class>
-        <spock.version>2.4-M1-groovy-4.0</spock.version>
+        <spock.version>2.4-M4-groovy-4.0</spock.version>
         <gmavenplus-plugin.version>3.0.2</gmavenplus-plugin.version>
         <spring-boot.version>3.2.1</spring-boot.version>
     </properties>
