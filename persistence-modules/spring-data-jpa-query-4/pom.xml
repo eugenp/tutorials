@@ -42,6 +42,7 @@
             <version>${postgresql.version}</version>
         </dependency>
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -54,6 +55,7 @@
             </plugin>
         </plugins>
     </build>
+
     <properties>
         <postgresql.version>42.7.1</postgresql.version>
         <datasource-proxy.version>1.9.1</datasource-proxy.version>
