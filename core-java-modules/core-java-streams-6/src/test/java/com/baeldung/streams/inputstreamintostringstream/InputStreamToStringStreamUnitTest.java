@@ -1,4 +1,4 @@
-package inputstreamintostringstream;
+package com.baeldung.streams.inputstreamtostringstream;
 
 import org.junit.jupiter.api.Test;
 
@@ -9,7 +9,7 @@ import java.util.regex.MatchResult;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class InputStreamToStringStreamUnitTest {
 
@@ -18,7 +18,8 @@ public class InputStreamToStringStreamUnitTest {
 
     @Test
     void givenInputStream_whenConvertingWithBufferedReader_thenConvertInputStreamToStringStream() throws IOException {
-        try (InputStreamReader isr = new InputStreamReader(inputStream, StandardCharsets.UTF_8); BufferedReader reader = new BufferedReader(isr)) {
+        try (InputStreamReader isr = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
+             BufferedReader reader = new BufferedReader(isr)) {
 
             Stream<String> stringStream = reader.lines();
 
@@ -29,10 +30,10 @@ public class InputStreamToStringStreamUnitTest {
     }
 
     @Test
-    void givenInputStream_whenConvertingWithScannerFindAll_thenConvertInputStreamToStringStream() throws IOException {
+    void givenInputStream_whenConvertingWithScannerFindAll_thenConvertInputStreamToStringStream() {
         try (Scanner scanner = new Scanner(inputStream, StandardCharsets.UTF_8)) {
             Stream<String> stringStream = scanner.findAll(".+")
-                .map(MatchResult::group);
+                    .map(MatchResult::group);
 
             String result = stringStream.collect(Collectors.joining());
 
