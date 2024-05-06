@@ -47,6 +47,7 @@
         <module>java-jpa</module> <!-- long running -->
         <module>java-jpa-2</module>
         <module>java-jpa-3</module>
+        <module>java-jpa-4</module>
         <module>java-mongodb-2</module> <!-- long running -->
         <module>java-mongodb-3</module> <!-- long running -->
         <module>java-mongodb-queries</module> <!-- long running -->
@@ -113,7 +114,7 @@
         <module>spring-jpa-2</module>
         <module>spring-jpa-3</module>
         <module>spring-jdbc</module>
-	    <module>spring-jdbc-2</module>
+	      <module>spring-jdbc-2</module>
         <!--<module>spring-jooq</module>--><!--disabling the jooq modules, as the default build profile is failing due to bad mv files. Please refer: JAVA-31341-->
         <module>spring-mybatis</module>
         <module>spring-persistence-simple</module>
