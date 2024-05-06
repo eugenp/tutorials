@@ -33,7 +33,7 @@ public class InputStreamToStringStreamUnitTest {
     void givenInputStream_whenConvertingWithScannerFindAll_thenConvertInputStreamToStringStream() {
         try (Scanner scanner = new Scanner(inputStream, StandardCharsets.UTF_8)) {
             Stream<String> stringStream = scanner.findAll(".+")
-                    .map(MatchResult::group);
+                .map(MatchResult::group);
 
             String result = stringStream.collect(Collectors.joining());
 
