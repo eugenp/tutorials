@@ -10,7 +10,7 @@ import static com.baeldung.algorithms.permutation.StringPermutation.isPermutatio
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class StringPermutationTest {
+public class StringPermutationUnitTest {
 
     @Test
     void givenTwoStringsArePermutation_whenSortingCharsArray_thenOk() {
