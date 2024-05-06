@@ -9,9 +9,6 @@ import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import groovy.util.logging.Slf4j;
-
-@Slf4j
 @Component
 public class OrderListener {
 
