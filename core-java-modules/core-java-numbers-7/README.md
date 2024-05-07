@@ -7,3 +7,4 @@
 - [Convert a Phone Number in Words to Number with Java](https://www.baeldung.com/java-convert-phone-number-words-number)
 - [Exploring Complex Number Arithmetic Operations in Java](https://www.baeldung.com/java-complex-numbers)
 - [BigDecimal equals() vs. compareTo()](https://www.baeldung.com/java-bigdecimal-equals-compareto-difference)
+- [Get 2’s Complement of a Number in Java](https://www.baeldung.com/java-compute-twos-complement)
