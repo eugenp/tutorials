@@ -1,0 +1,26 @@
+package com.baeldung.arrays;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.Test;
+
+public class RetrieveFirstAndLastElementUnitTest {
+
+    @Test
+    void whenRetrieveFirstAndLastElement_thenCorrect() {
+        String[] array = { "a", "b", "c", "d", "e", "f", "g", "h" };
+        assertEquals("a", array[0]);
+        assertEquals("h", array[array.length - 1]);
+    }
+
+    @Test
+    void whenGetElementFromAnEmptyArray_thenThrowsException() {
+        String[] array = new String[] {};
+
+        assertEquals(0, array.length);
+
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> {String failing = array[0];});
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> {String failing = array[array.length - 1];});
+    }
+}
