@@ -11,4 +11,5 @@
 - [Finding the nth Last Occurrence of char in String](https://www.baeldung.com/java-find-the-nth-last-occurrence-char-string)
 - [Create HashMap with Character Count of a String in Java](https://www.baeldung.com/java-create-hashmap-character-count-string)
 - [Print Distinct Characters of a String in Java](https://www.baeldung.com/java-string-print-unique-characters)
+- [Remove All Characters Before a Specific Character in Java](https://www.baeldung.com/java-remove-all-characters-before-specific-one)
 - More articles: [[<-- prev]](../core-java-string-operations-8)
