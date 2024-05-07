@@ -41,7 +41,7 @@ public class GrpcBroadcastingClient {
 
         NotificationResponse response = notificationServiceStub.notify(NotificationRequest.newBuilder()
             .setType("Warning")
-            .setMessage("Rain coming")
+            .setMessage("Heavy rains expected")
             .setMessageID(generateMessageID())
             .build());
         channel.shutdown();

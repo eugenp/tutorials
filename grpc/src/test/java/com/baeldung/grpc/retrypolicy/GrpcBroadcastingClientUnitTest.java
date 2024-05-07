@@ -43,10 +43,10 @@ public class GrpcBroadcastingClientUnitTest {
     }
 
     @Test
-    void givenValidBroadCasting_thenSuccessOrThrowsStatusRuntimeException() {
+    void whenMessageBroadCasting_thenSuccessOrThrowsStatusRuntimeException() {
         try {
             NotificationResponse notificationResponse = GrpcBroadcastingClient.sendNotification(managedChannel);
-            assertEquals("Message received: Warning - Rain coming", notificationResponse.getResponse());
+            assertEquals("Message received: Warning - Heavy rains expected", notificationResponse.getResponse());
             logger.info("Message broadcast successful");
         } catch (Exception ex) {
             logger.error("Error occurred");
