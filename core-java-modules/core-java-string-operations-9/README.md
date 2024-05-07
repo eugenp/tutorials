@@ -9,4 +9,5 @@
 - [Check If a Java StringBuilder Object Contains a Character](https://www.baeldung.com/java-check-stringbuilder-object-contains-character)
 - [Find the Length of the Longest Symmetric Substring](https://www.baeldung.com/java-find-length-longest-symmetric-substring)
 - [Finding the nth Last Occurrence of char in String](https://www.baeldung.com/java-find-the-nth-last-occurrence-char-string)
+- [Create HashMap with Character Count of a String in Java](https://www.baeldung.com/java-create-hashmap-character-count-string)
 - More articles: [[<-- prev]](../core-java-string-operations-8)
