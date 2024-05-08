@@ -662,6 +662,7 @@
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
+                <module>jhipster-8-modules</module>
                 <module>akka-modules</module>
                 <module>algorithms-modules</module>
                 <module>apache-cxf-modules</module>

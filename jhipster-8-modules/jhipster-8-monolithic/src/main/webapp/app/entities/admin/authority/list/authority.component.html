@@ -1,0 +1,73 @@
+<div>
+  <h2 id="page-heading" data-cy="AuthorityHeading">
+    <span>Authorities</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-authority"
+        [routerLink]="['/authority/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span>Create a new Authority</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (authorities?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span>No Authorities found</span>
+    </div>
+  }
+
+  @if (authorities && authorities.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="name">
+              <div class="d-flex">
+                <span>Name</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (authority of authorities; track trackName) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/authority', authority.name, 'view']">{{ authority.name }}</a>
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/authority', authority.name, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline">View</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(authority)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

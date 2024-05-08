@@ -1,0 +1,25 @@
+<h4>Memory</h4>
+
+@if (!updating() && jvmMemoryMetrics()) {
+  <div>
+    @for (entry of jvmMemoryMetrics() | keyvalue; track $index) {
+      <div>
+        @if (entry.value.max !== -1) {
+          <span>
+            <span>{{ entry.key }}</span>
+            ({{ entry.value.used / 1048576 | number: '1.0-0' }}M / {{ entry.value.max / 1048576 | number: '1.0-0' }}M)
+          </span>
+
+          <div>Committed : {{ entry.value.committed / 1048576 | number: '1.0-0' }}M</div>
+          <ngb-progressbar type="success" [value]="(100 * entry.value.used) / entry.value.max" [striped]="true" [animated]="false">
+            <span>{{ (entry.value.used * 100) / entry.value.max | number: '1.0-0' }}%</span>
+          </ngb-progressbar>
+        } @else {
+          <span
+            ><span>{{ entry.key }}</span> {{ entry.value.used / 1048576 | number: '1.0-0' }}M</span
+          >
+        }
+      </div>
+    }
+  </div>
+}
