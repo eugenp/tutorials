@@ -9,7 +9,7 @@ import static org.junit.Assert.assertEquals;
 
 public class ArrayDuplicateUnitTest {
     @Test
-    public void testFindDuplicates() {
+    public void givenArray_whenUsingSet_thenReturnExpectedDuplicates() {
         int[] arrayWithDuplicates = {1, 2, 3, 4, 2, 5, 6, 6, 7};
         Set<Integer> expectedDuplicates = new HashSet<>();
         expectedDuplicates.add(2);
