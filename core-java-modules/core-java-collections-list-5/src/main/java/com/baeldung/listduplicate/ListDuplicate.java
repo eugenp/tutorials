@@ -1,12 +1,6 @@
 package com.baeldung.listduplicate;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -67,14 +61,21 @@ public class ListDuplicate {
         return duplicates;
     }
 
-    public static Set<Integer> findDuplicateInArray(int[] array) {
-        Set<Integer> duplicates = new HashSet<>();
-        Set<Integer> seen = new HashSet<>();
-        for (int val : array) {
+    public static <T> Set<T> findDuplicateInArrayWithForLoop(T[] array) {
+        Set<T> duplicates = new HashSet<>();
+        Set<T> seen = new HashSet<>();
+        for (T val : array) {
             if (!seen.add(val)) {
                 duplicates.add(val);
             }
         }
         return duplicates;
+    }
+
+    public static <T> Set<T> findDuplicateInArrayWithStream(T[] array) {
+        Set<T> seen = new HashSet<>();
+        return Arrays.stream(array)
+          .filter(val -> !seen.add(val))
+          .collect(Collectors.toSet());
     }
 }
