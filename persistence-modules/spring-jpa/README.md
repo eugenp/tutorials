@@ -6,6 +6,7 @@
 - [Sorting with JPA](https://www.baeldung.com/jpa-sort)
 - [Self-Contained Testing Using an In-Memory Database](https://www.baeldung.com/spring-jpa-test-in-memory-database)
 - [Spring Data Annotations](http://www.baeldung.com/spring-data-annotations)
+- [Inheritance vs. Composition in JPA](https://www.baeldung.com/jpa-inheritance-vs-composition)
 - More articles: [[next -->]](/spring-jpa-2)
 
 ### Eclipse Config 

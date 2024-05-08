@@ -6,3 +6,4 @@
 - [Reset ListIterator to First Element of the List in Java](https://www.baeldung.com/java-reset-listiterator)
 - [Modify and Print List Items With Java Streams](https://www.baeldung.com/java-stream-list-update-print-elements)
 - [Add One Element to an Immutable List in Java](https://www.baeldung.com/java-immutable-list-add-element)
+- [Avoiding the IndexOutOfBoundsException When Using List.subList() in Java](https://www.baeldung.com/java-list-sublist-indexoutofboundsexception)
