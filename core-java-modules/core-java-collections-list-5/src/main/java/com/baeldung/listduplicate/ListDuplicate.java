@@ -66,4 +66,15 @@ public class ListDuplicate {
         duplicates.addAll(set);
         return duplicates;
     }
+
+    public static Set<Integer> findDuplicateInArray(int[] array) {
+        Set<Integer> duplicates = new HashSet<>();
+        Set<Integer> seen = new HashSet<>();
+        for (int val : array) {
+            if (!seen.add(val)) {
+                duplicates.add(val);
+            }
+        }
+        return duplicates;
+    }
 }
