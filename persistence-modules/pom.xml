@@ -36,6 +36,7 @@
         <module>hibernate-exceptions</module>
         <module>hibernate-libraries</module>
         <module>hibernate-jpa</module>
+        <module>hibernate-jpa-2</module>
         <module>hibernate-queries</module>
         <module>hibernate-enterprise</module>
         <module>influxdb</module>
@@ -46,6 +47,7 @@
         <module>java-jpa</module> <!-- long running -->
         <module>java-jpa-2</module>
         <module>java-jpa-3</module>
+        <module>java-jpa-4</module>
         <module>java-mongodb-2</module> <!-- long running -->
         <module>java-mongodb-3</module> <!-- long running -->
         <module>java-mongodb-queries</module> <!-- long running -->
@@ -69,6 +71,7 @@
         <module>spring-boot-persistence-mongodb</module>
         <module>spring-boot-persistence-mongodb-2</module>
         <module>spring-boot-persistence-mongodb-3</module>
+        <module>spring-boot-persistence-mongodb-4</module>
         <module>spring-data-arangodb</module>
         <!--<module>spring-data-cassandra</module>-->   <!-- failing after upgrading to jdk17. JDK 17 compatibility in progress CASSANDRA-16895 -->
         <module>spring-data-cassandra-test</module>
@@ -111,8 +114,8 @@
         <module>spring-jpa-2</module>
         <module>spring-jpa-3</module>
         <module>spring-jdbc</module>
-	    <module>spring-jdbc-2</module>
-        <!--<module>spring-jooq</module>-->
+	      <module>spring-jdbc-2</module>
+        <!--<module>spring-jooq</module>--><!--disabling the jooq modules, as the default build profile is failing due to bad mv files. Please refer: JAVA-31341-->
         <module>spring-mybatis</module>
         <module>spring-persistence-simple</module>
         <module>spring-data-yugabytedb</module>
@@ -126,6 +129,7 @@
         <module>spring-data-cassandra-2</module>
         <module>spring-data-jpa-repo-3</module>
         <module>spring-boot-persistence-4</module>
+        <module>hibernate-annotations-2</module>
     </modules>
 
     <properties>

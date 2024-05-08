@@ -1,11 +1,8 @@
 package com.baeldung.springcloudgateway.webfilters;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-import org.assertj.core.api.Condition;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
@@ -23,9 +20,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.test.web.reactive.server.WebTestClient.ResponseSpec;
+import org.springframework.web.reactive.function.BodyInserters;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-@ActiveProfiles("webfilters")
+@ActiveProfiles({"webfilters","nosecurity"})
 public class WebFilterFactoriesLiveTest {
 
     @LocalServerPort
@@ -55,6 +53,7 @@ public class WebFilterFactoriesLiveTest {
         assertThat(headers.getString("My-Header-Good")).isEqualTo("Good");
         assertThat(headers.getString("My-Header-Bad")).isEqualTo("Good");
         assertThat(headers.getString("My-Header-Set")).isEqualTo("Set");
+        assertThat(headers.getString("My-Header-Absent")).isEqualTo("Absent");
         assertTrue(headers.isNull("My-Header-Remove"));
         JSONObject vars = json.getJSONObject("args");
         assertThat(vars.getString("var")).isEqualTo("good");
@@ -75,7 +74,10 @@ public class WebFilterFactoriesLiveTest {
           .expectHeader()
           .valueEquals("My-Header-Good", "Good")
           .expectHeader()
-          .doesNotExist("My-Header-Remove");
+          .doesNotExist("My-Header-Remove")
+          .expectBody()
+          .jsonPath("$.headers.Accept").doesNotExist()
+          .jsonPath("form").doesNotExist();
     }
 
     @Test
@@ -132,5 +134,29 @@ public class WebFilterFactoriesLiveTest {
 
         JSONObject json = new JSONObject(response.getBody());
         assertThat(json.getString("url")).contains("anything");
+    }
+
+    @Test
+    public void whenCallCachePostThroughGateway_thenMyHeaderCacheIsSet() {
+        ResponseSpec response = client.post()
+            .uri("/cache/post")
+            .body(BodyInserters.fromValue("CachedBody"))
+            .exchange();
+
+        response.expectStatus()
+            .isOk()
+            .expectHeader()
+            .valueEquals("My-Header-Cache", "CachedBody");
+    }
+
+    @Test
+    public void whenCallCacheGetThroughGateway_thenCacheControlIsSet() {
+        ResponseSpec response = client.get()
+            .uri("/cache/get")
+            .exchange();
+
+        response.expectStatus().isOk()
+            .expectHeader()
+            .valueEquals("Cache-Control", "max-age=10");
     }
 }
