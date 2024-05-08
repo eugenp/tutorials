@@ -4,12 +4,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeoutException;
-import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -21,54 +21,56 @@ class ConsumerAcksPublisherConfirmsIntegrationLiveTest {
 
     static final String QUEUE = ConsumerAcksPublisherConfirmsIntegrationLiveTest.class.getName();
 
+    private List<String> generateRandomMessages(int n) {
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            list.add(UUID.randomUUID()
+                .toString());
+        }
+        return list;
+    }
+
     @Test
     @Order(1)
     void whenPublishingWithConfirms_thenMessagesConfirmed() throws IOException, InterruptedException, TimeoutException {
-        boolean confirmed = false;
         try (StringPublisher publisher = new StringPublisher(QUEUE)) {
-            confirmed = publisher.send("hello") && publisher.send("world");
+            assertTrue(publisher.send("hello"));
+            assertTrue(publisher.send("world"));
         }
-
-        assertTrue(confirmed);
     }
 
     @Test
     @Order(2)
-    void whenConsumerWithAcks_thenAllMessagesAcked() throws IOException, TimeoutException, InterruptedException, ExecutionException {
-        StringConsumer consumer = new StringConsumer(QUEUE, 2);
+    void givenMultipleMessageLimit_whenConsumerWithAcks_thenAllMessagesAcked() throws IOException, TimeoutException, InterruptedException, ExecutionException {
+        int maxMessages = 2;
+
+        StringConsumer consumer = new StringConsumer(QUEUE, maxMessages);
         Future<List<String>> messages = consumer.consume();
 
-        assertEquals(2, messages.get()
+        assertEquals(maxMessages, messages.get()
             .size());
     }
 
     @Test
     @Order(3)
     void givenMultipleMessages_whenPublishingWithConfirms_thenMessagesConfirmed() throws IOException, InterruptedException, TimeoutException {
-        Random random = new Random();
-        int length = 10;
-        List<String> messages = random.ints(50, 0, 256)
-            .mapToObj(i -> random.ints(length, 97, 123)
-                .mapToObj(n -> String.valueOf((char) n))
-                .collect(Collectors.joining()))
-            .collect(Collectors.toList());
+        List<String> messages = generateRandomMessages(5);
 
-        boolean confirmed = false;
         try (StringPublisher publisher = new StringPublisher(QUEUE)) {
-            confirmed = publisher.send(messages);
+            assertTrue(publisher.send(messages));
         }
-
-        assertTrue(confirmed);
     }
 
     @Test
     @Order(4)
     void givenSingleMessageLimit_whenConsumerWithAcks_thenLimitedMessagesAcked() throws IOException, TimeoutException, InterruptedException, ExecutionException {
+        int maxMessages = 1;
+
         Future<List<String>> messages;
-        StringConsumer consumer = new StringConsumer(QUEUE, 1);
+        StringConsumer consumer = new StringConsumer(QUEUE, maxMessages);
         messages = consumer.consume();
 
-        assertEquals(1, messages.get()
+        assertEquals(maxMessages, messages.get()
             .size());
     }
 }

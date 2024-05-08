@@ -36,11 +36,12 @@ public class StringConsumer {
     }
 
     public Future<List<String>> consume() throws IOException {
-        if (closed)
+        if (closed) {
             throw new IllegalStateException("already consumed");
+        }
 
-        final AtomicInteger consumed = new AtomicInteger(0);
-        final CompletableFuture<List<String>> future = new CompletableFuture<>();
+        AtomicInteger consumed = new AtomicInteger(0);
+        CompletableFuture<List<String>> future = new CompletableFuture<>();
 
         System.out.printf("waiting for %d messages...\n", maximum);
         channel.basicConsume(queue, false, (consumerTag, delivery) -> {
@@ -64,10 +65,11 @@ public class StringConsumer {
     }
 
     private void close() throws IOException {
-        try {
-            if (closed)
-                return;
+        if (closed) {
+            return;
+        }
 
+        try {
             channel.close();
             connection.close();
             closed = true;
