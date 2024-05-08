@@ -14,10 +14,28 @@ class IntToLongUnitTest {
     }
 
     @Test
+    void whenUsingTheAutoboxing_thenGetTheExpectedPrimitiveLong() {
+        int intTen = 10;
+
+        long longNoCast = intTen;
+        assertEquals(intTen, longNoCast);
+
+        long longCastLong = (long) intTen;
+        assertEquals(intTen, longCastLong);
+    }
+
+    @Test
     void whenUsingTheValueOf_thenGetTheExpectedLong() {
         int intTen = 10;
         Long longTen = Long.valueOf(intTen);
         assertEquals(intTen, longTen);
+    }
+
+    @Test
+    void whenIntegerUsingTheValueOf_thenGetTheExpectedLong() {
+        Integer integerTen = 10;
+        Long integerToLongTen = Long.valueOf(integerTen);
+        assertEquals(integerTen.longValue(), integerToLongTen.longValue());
     }
 
     @Test
@@ -28,9 +46,27 @@ class IntToLongUnitTest {
     }
 
     @Test
+    void whenIntegerUsingTheLongConstructor_thenGetTheExpectedLong() {
+        Integer integerTen = 10;
+        Long integerToLongTen = new Long(integerTen);
+        assertEquals(integerTen.longValue(), integerToLongTen.longValue());
+    }
+
+    @Test
     void whenUsingTheParseLong_thenGetTheExpectedLong() {
         int intTen = 10;
         Long longTen = Long.parseLong(String.valueOf(intTen));
         assertEquals(intTen, longTen);
+    }
+
+    @Test
+    void whenUsingTheIntegerLongValue_thenGetTheExpectedLong() {
+        Integer integerTen = 10;
+
+        Long integerLongValueTen = integerTen.longValue();
+        assertEquals(integerTen.longValue(), integerLongValueTen.longValue());
+
+        Long longValueOfTen = Long.valueOf(integerTen.longValue());
+        assertEquals(integerTen.longValue(), longValueOfTen.longValue());
     }
 }
