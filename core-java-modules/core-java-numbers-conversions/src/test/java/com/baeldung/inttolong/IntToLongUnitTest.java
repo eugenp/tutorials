@@ -2,6 +2,8 @@ package com.baeldung.inttolong;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.Optional;
+
 import org.junit.jupiter.api.Test;
 
 class IntToLongUnitTest {
@@ -68,5 +70,20 @@ class IntToLongUnitTest {
 
         Long longValueOfTen = Long.valueOf(integerTen.longValue());
         assertEquals(integerTen.longValue(), longValueOfTen.longValue());
+    }
+
+    @Test
+    void whenUsingTheIntegerLongValue_thenCheckIfNullAndGetTheExpectedLong() {
+        Integer integerTen = 10;
+
+        Long integerToValueOfLongNullCheck = Optional.ofNullable(integerTen)
+            .map(Long::valueOf)
+            .orElse(null);
+        assertEquals(integerTen.longValue(), integerToValueOfLongNullCheck.longValue());
+
+        Long integerToLongValueNullCheck = Optional.ofNullable(integerTen)
+            .map(Integer::longValue)
+            .orElse(null);
+        assertEquals(integerTen.longValue(), integerToLongValueNullCheck.longValue());
     }
 }
