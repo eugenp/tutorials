@@ -1,5 +1,6 @@
 package com.baeldung.streams.mapstreamtomap;
 
+import org.junit.BeforeClass;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -15,6 +16,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class MapStreamToMapUnitTest {
+    private static MergeMaps mergeMaps;
+
+    @BeforeClass
+    public static void setup() {
+        mergeMaps = new MergeMaps();
+    }
 
     Map<String, Integer> playerMap1 = new HashMap<String, Integer>() {{
         put("Kai", 92);
@@ -47,9 +54,9 @@ public class MapStreamToMapUnitTest {
         }};
 
         Map<String, Integer> mergedMap = Stream.of(playerMap1, playerMap2, playerMap3)
-                .flatMap(map -> map.entrySet()
-                        .stream())
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+            .flatMap(map -> map.entrySet()
+                .stream())
+            .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
         assertEquals(expectedMap, mergedMap);
     }
@@ -66,14 +73,14 @@ public class MapStreamToMapUnitTest {
         }};
 
         assertThrows(IllegalStateException.class, () -> Stream.of(playerMap1, playerMap2, playerMap3, playerMap4)
-                .flatMap(map -> map.entrySet()
-                        .stream())
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)), "Duplicate key Kai (attempted merging values 92 and 76)");
+            .flatMap(map -> map.entrySet()
+                .stream())
+            .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)), "Duplicate key Kai (attempted merging values 92 and 76)");
 
         Map<String, Integer> mergedMap = Stream.of(playerMap1, playerMap2, playerMap3, playerMap4)
-                .flatMap(map -> map.entrySet()
-                        .stream())
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, Integer::max));
+            .flatMap(map -> map.entrySet()
+                .stream())
+            .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, Integer::max));
 
         assertEquals(expectedMap, mergedMap);
     }
@@ -101,23 +108,23 @@ public class MapStreamToMapUnitTest {
         }};
 
         assertThrows(NullPointerException.class, () -> Stream.of(playerMap1, playerMap2, playerMap3, playerMap4, playerMap5)
-                .flatMap(map -> map.entrySet()
-                        .stream())
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, Integer::max)));
+            .flatMap(map -> map.entrySet()
+                .stream())
+            .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, Integer::max)));
 
         Map<String, Integer> mergedMap = new HashMap<>();
         Stream.of(playerMap1, playerMap2, playerMap3, playerMap4, playerMap5)
-                .flatMap(map -> map.entrySet()
-                        .stream())
-                .forEach(entry -> {
-                    String k = entry.getKey();
-                    Integer v = entry.getValue();
-                    if (mergedMap.containsKey(k)) {
-                        mergedMap.put(k, maxInteger(mergedMap.get(k), v));
-                    } else {
-                        mergedMap.put(k, v);
-                    }
-                });
+            .flatMap(map -> map.entrySet()
+                .stream())
+            .forEach(entry -> {
+                String k = entry.getKey();
+                Integer v = entry.getValue();
+                if (mergedMap.containsKey(k)) {
+                    mergedMap.put(k, maxInteger(mergedMap.get(k), v));
+                } else {
+                    mergedMap.put(k, v);
+                }
+            });
         assertEquals(expectedMap, mergedMap);
 
     }
@@ -134,9 +141,9 @@ public class MapStreamToMapUnitTest {
             put("Jerry", null);
         }};
         Map<String, Integer> mergedMap = Stream.of(playerMap1, playerMap2, playerMap3, playerMap4, playerMap5)
-                .flatMap(x -> x.entrySet()
-                        .stream())
-                .collect(groupingBy(Map.Entry::getKey, mapping(Map.Entry::getValue, reducing(null, this::maxInteger))));
+            .flatMap(x -> x.entrySet()
+                .stream())
+            .collect(groupingBy(Map.Entry::getKey, mapping(Map.Entry::getValue, reducing(null, this::maxInteger))));
         assertEquals(expectedMap, mergedMap);
     }
 
@@ -152,7 +159,7 @@ public class MapStreamToMapUnitTest {
         expected.put("Eric", 42);
         expected.put("Kevin", 77);
 
-        Map<String, Integer> result = mergeMapsUsingLoop(listOfMaps);
+        Map<String, Integer> result = mergeMaps.mergeMapsUsingLoop(listOfMaps);
         assertEquals(expected, result);
     }
 
@@ -168,25 +175,7 @@ public class MapStreamToMapUnitTest {
         expected.put("Eric", 42);
         expected.put("Kevin", 77);
 
-        Map<String, Integer> result = mergeMapsUsingStream(listOfMaps);
+        Map<String, Integer> result = mergeMaps.mergeMapsUsingStream(listOfMaps);
         assertEquals(expected, result);
-    }
-
-    // Method using a simple for loop
-    public static <K, V> Map<K, V> mergeMapsUsingLoop(List<Map<K, V>> listOfMaps) {
-        Map<K, V> result = new HashMap<>();
-        for (Map<K, V> map : listOfMaps) {
-            for (Map.Entry<K, V> entry : map.entrySet()) {
-                result.put(entry.getKey(), entry.getValue());
-            }
-        }
-        return result;
-    }
-
-    // Method using Java streams
-    public static <K, V> Map<K, V> mergeMapsUsingStream(List<Map<K, V>> listOfMaps) {
-        return listOfMaps.stream()
-                .flatMap(map -> map.entrySet().stream())
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (v1, v2) -> v2));
     }
 }
