@@ -12,3 +12,4 @@ This module contains articles about methods in Java
 - [Does a Method’s Signature Include the Return Type in Java?](https://www.baeldung.com/java-method-signature-return-type)
 - [Solving the Hide Utility Class Public Constructor Sonar Warning](https://www.baeldung.com/java-sonar-hide-implicit-constructor)
 - [Best Practices for Passing Many Arguments to a Method in Java](https://www.baeldung.com/java-best-practices-many-parameters-method)
+- [Unit Test for hashCode() in Java](https://www.baeldung.com/java-unit-test-hashcode)
