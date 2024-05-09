@@ -9,9 +9,9 @@ public class RetrieveFirstAndLastElementUnitTest {
 
     @Test
     void whenRetrieveFirstAndLastElement_thenCorrect() {
-        String[] array = { "a", "b", "c", "d", "e", "f", "g", "h" };
-        assertEquals("a", array[0]);
-        assertEquals("h", array[array.length - 1]);
+        String[] array = { "java", "kotlin", "c", "c#", "go", "python", "rust", "ruby" };
+        assertEquals("java", array[0]);
+        assertEquals("ruby", array[array.length - 1]);
     }
 
     @Test
