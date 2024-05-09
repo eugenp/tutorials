@@ -8,9 +8,4 @@ public class FluxMap {
         return Flux.range(50, 10);
     }
 
-    public static Flux<Integer> numerical_values_2() {
-        return Flux.just(10, -15, 0, 78, 11);
-    }
-
-
 }
