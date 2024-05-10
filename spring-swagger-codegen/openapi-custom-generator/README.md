@@ -1,3 +1,6 @@
+### Relevant Articles: 
+- [OpenAPI Custom Generator](https://www.baeldung.com/java-openapi-custom-generator)
+
 # OpenAPI Generator for the java-camel-client library
 
 ## Overview
