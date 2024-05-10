@@ -76,7 +76,7 @@
 
     <properties>
         <start-class>com.baeldung.springwithgroovy.SpringBootGroovyApplication</start-class>
-        <groovy.version>4.0.11</groovy.version>
+        <groovy.version>4.0.21</groovy.version>
         <gmavenplus-plugin.version>3.0.2</gmavenplus-plugin.version>
     </properties>
 

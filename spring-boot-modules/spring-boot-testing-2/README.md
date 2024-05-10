@@ -15,4 +15,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Spring Boot – Keycloak Integration Testing with Testcontainers](https://www.baeldung.com/spring-boot-keycloak-integration-testing)
 - [Difference Between @Spy and @SpyBean](https://www.baeldung.com/spring-spy-vs-spybean)
 - [Overriding Spring Beans in Integration Test](https://www.baeldung.com/spring-beans-integration-test-override)
-- More articles: [[<-- prev]](../spring-boot-testing)
+- More articles: [[more -->]](../spring-boot-testing-3)
