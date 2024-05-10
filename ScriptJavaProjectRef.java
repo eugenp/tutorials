@@ -1,6 +1,6 @@
-package com.ayor;
+package com.ayor.pr;
 
-public class Scriptrunning {
+public class ScriptJavaProjectRef {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
