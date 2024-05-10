@@ -7,4 +7,5 @@
 - [Simple Morse Code Translation in Java](https://www.baeldung.com/java-morse-code-english-translate)
 - [How to Determine if a String Contains Invalid Encoded Characters](https://www.baeldung.com/java-check-string-contains-invalid-encoded-characters)
 - [Check If a Java StringBuilder Object Contains a Character](https://www.baeldung.com/java-check-stringbuilder-object-contains-character)
+- [Find the Length of the Longest Symmetric Substring](https://www.baeldung.com/java-find-length-longest-symmetric-substring)
 - More articles: [[<-- prev]](../core-java-string-operations-8)
