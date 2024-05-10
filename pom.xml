@@ -764,6 +764,7 @@
                 <module>lombok-modules</module>
                 <module>lucene</module>
                 <module>mapstruct</module>
+                <module>mapstruct-2</module>
                 <module>maven-modules</module>
                 <module>messaging-modules</module>
                 <module>metrics</module>
