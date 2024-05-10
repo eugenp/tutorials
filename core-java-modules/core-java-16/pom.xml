@@ -37,7 +37,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>${surefire.plugin.version}</version>
+                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <argLine>--enable-preview</argLine>
                     <forkCount>1</forkCount>
@@ -57,7 +57,6 @@
         <maven.compiler.source.version>16</maven.compiler.source.version>
         <maven.compiler.target.version>16</maven.compiler.target.version>
         <maven.compiler.release>16</maven.compiler.release>
-        <surefire.plugin.version>3.0.0-M5</surefire.plugin.version>
     </properties>
 
 </project>

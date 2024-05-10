@@ -72,7 +72,6 @@
     <properties>
         <spring.version>5.0.9.RELEASE</spring.version>
         <apacheds.version>2.0.0.AM26</apacheds.version>
-        <maven-surefire-plugin.version>3.2.3</maven-surefire-plugin.version>
     </properties>
 
 </project>

@@ -140,7 +140,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.12.4</version>
+                <version>${maven-surefire-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>default-test</id>

@@ -109,7 +109,6 @@
         <httpclient.version>4.5.13</httpclient.version>
         <jmockit.version>1.49</jmockit.version>
         <spring-test.version>5.3.20</spring-test.version>
-        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
         <jetty-maven-plugin.version>10.0.4</jetty-maven-plugin.version>
         <commons-text.version>1.10.0</commons-text.version>
         <uap.version>1.5.4</uap.version>

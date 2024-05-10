@@ -89,6 +89,7 @@
             <!-- Skip normal test execution, we use gwt:test instead -->
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <skip>true</skip>
                 </configuration>
