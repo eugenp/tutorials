@@ -1,6 +1,10 @@
-# jhipster8Monolithic
 
-This application was generated using JHipster 8.4.0, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v8.4.0](https://www.jhipster.tech/documentation-archive/v8.4.0).
+- [Intro to JHipster](https://www.baeldung.com/jhipster)
+- [Creating New Roles and Authorities in JHipster](https://www.baeldung.com/jhipster-new-roles)
+
+
+# baeldung
+This application was generated using JHipster 8.4.0, you can find documentation and help at [https://jhipster.github.io/documentation-archive/v8.4.0](https://jhipster.github.io/documentation-archive/v8.4.0).
 
 ## Project Structure
 
