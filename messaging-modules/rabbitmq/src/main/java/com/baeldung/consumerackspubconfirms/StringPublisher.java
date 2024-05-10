@@ -4,11 +4,16 @@ import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeoutException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 
 public class StringPublisher implements AutoCloseable {
+
+    private static final Logger log = LoggerFactory.getLogger(StringPublisher.class);
 
     private final String queue;
     private final Connection connection;
@@ -30,7 +35,7 @@ public class StringPublisher implements AutoCloseable {
             channel.basicPublish("", queue, null, message.getBytes());
             return channel.waitForConfirms(1000);
         } finally {
-            System.out.printf("* sent %s\n", message);
+            log.info("* sent {}", message);
         }
     }
 
@@ -40,7 +45,7 @@ public class StringPublisher implements AutoCloseable {
         }
 
         channel.waitForConfirmsOrDie();
-        System.out.printf("* sent %d messages\n", messages.size());
+        log.info("* sent {} messages", messages.size());
         return true;
     }
 

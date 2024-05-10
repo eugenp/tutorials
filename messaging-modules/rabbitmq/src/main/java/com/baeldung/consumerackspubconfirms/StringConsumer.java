@@ -8,12 +8,17 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeoutException;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.Delivery;
 
 public class StringConsumer {
+
+    private static final Logger log = LoggerFactory.getLogger(StringConsumer.class);
 
     private final Connection connection;
     private final Channel channel;
@@ -43,7 +48,7 @@ public class StringConsumer {
         AtomicInteger consumed = new AtomicInteger(0);
         CompletableFuture<List<String>> future = new CompletableFuture<>();
 
-        System.out.printf("waiting for %d messages...\n", maximum);
+        log.info("waiting for {} messages...", maximum);
         channel.basicConsume(queue, false, (consumerTag, delivery) -> {
             String message = new String(delivery.getBody(), "UTF-8");
 
@@ -53,12 +58,12 @@ public class StringConsumer {
                 channel.basicAck(delivery.getEnvelope()
                     .getDeliveryTag(), true);
 
-                System.out.printf("* acknowledged consumption of %d messages\n", consumed.get());
+                log.info("* acknowledged consumption of {} messages", consumed.get());
                 future.complete(messages);
                 close();
             }
         }, consumerTag -> {
-            System.out.printf("cancelled: %s\n", consumerTag);
+            log.info("cancelled: {}", consumerTag);
         });
 
         return future;
@@ -74,7 +79,7 @@ public class StringConsumer {
             connection.close();
             closed = true;
         } catch (TimeoutException e) {
-            e.printStackTrace();
+            log.error("timed out", e);
         }
     }
 
@@ -83,6 +88,6 @@ public class StringConsumer {
             .getDeliveryTag();
 
         messages.add(message);
-        System.out.printf("* [%d] processed: %s\n", deliveryTag, message);
+        log.info("* [{}] processed: {}", deliveryTag, message);
     }
 }
