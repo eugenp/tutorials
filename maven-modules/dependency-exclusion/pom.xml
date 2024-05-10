@@ -44,7 +44,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
-                    <version>${surefire-version}</version>
+                    <version>${maven-surefire-plugin.version}</version>
                     <configuration>
                         <threadCount>1</threadCount>
                     </configuration>
@@ -59,9 +59,5 @@
             </plugins>
         </pluginManagement>
     </build>
-
-    <properties>
-        <surefire-version>2.22.2</surefire-version>
-    </properties>
 
 </project>
