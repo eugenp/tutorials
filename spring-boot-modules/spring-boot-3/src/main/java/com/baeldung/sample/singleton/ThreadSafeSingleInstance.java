@@ -1,4 +1,4 @@
-package com.baeldung.singleton;
+package com.baeldung.sample.singleton;
 
 public final class ThreadSafeSingleInstance {
 
