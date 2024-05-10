@@ -1,4 +1,4 @@
-package com.baeldung.arrays;
+package com.baeldung.array.access;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
