@@ -4,15 +4,18 @@ public class Author {
 
     private String name;
     private String email;
+    private Portal portal;
 
-    public Author(String name, String email) {
+    public Author(String name, String email, Portal portal) {
         this.name = name;
         this.email = email;
+        this.portal = portal;
     }
 
     public Author(Author author) {
         this.name = author.getName();
         this.email = author.getEmail();
+        this.portal = new Portal(author.getPortal().getName());
     }
 
     public String getName() {
@@ -29,6 +32,14 @@ public class Author {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Portal getPortal() {
+        return portal;
+    }
+
+    public void setPortal(Portal portal) {
+        this.portal = portal;
     }
 
 }

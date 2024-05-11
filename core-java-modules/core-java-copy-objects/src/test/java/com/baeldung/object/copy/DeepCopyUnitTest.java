@@ -7,15 +7,18 @@ import org.junit.jupiter.api.Test;
 class DeepCopyUnitTest {
 
     @Test
-    void whenDeepCopying_referencesShouldPointToDifferentObjects() {
-        Author authorInReview = new Author("Hardik", "behl.hardiksingh@gmail.com");
+    void whenDeepCopying_mutableReferencesShouldBeDifferent() {
+    	Portal portal = new Portal("Not Baeldung");
+        Author authorInReview = new Author("Hardik", "behl.hardiksingh@gmail.com", portal);
+        
         Author selectedAuthor = new Author(authorInReview);
 
-        String updatedEmail = "behl.hardiksingh@baeldung.com";
-        selectedAuthor.setEmail(updatedEmail);
+        String updatedPortal = "Baeldung";
+        selectedAuthor.getPortal().setName(updatedPortal);
 
-        assertThat(authorInReview.getEmail()).isNotEqualTo(updatedEmail);
         assertThat(authorInReview).isNotSameAs(selectedAuthor);
+        assertThat(authorInReview.getPortal()).isNotSameAs(selectedAuthor.getPortal());
+        assertThat(authorInReview.getPortal().getName()).isNotSameAs(selectedAuthor.getPortal().getName());
     }
 
 }
