@@ -1,13 +1,11 @@
-package com.baeldung.autowiremultipleimplementations.controller;
+package com.baeldung.autowiremultipleimplementations.components;
 
+import com.baeldung.autowiremultipleimplementations.candidates.GoodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.baeldung.autowiremultipleimplementations.service.GoodService;
-
 import java.util.Map;
 import java.util.Set;
-
 
 @Component
 public class CollectionsAutowire {

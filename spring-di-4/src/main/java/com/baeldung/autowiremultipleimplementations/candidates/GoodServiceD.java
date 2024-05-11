@@ -1,4 +1,4 @@
-package com.baeldung.autowiremultipleimplementations.service;
+package com.baeldung.autowiremultipleimplementations.candidates;
 
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;

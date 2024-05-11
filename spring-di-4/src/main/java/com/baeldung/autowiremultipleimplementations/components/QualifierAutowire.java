@@ -1,6 +1,6 @@
-package com.baeldung.autowiremultipleimplementations.controller;
+package com.baeldung.autowiremultipleimplementations.components;
 
-import com.baeldung.autowiremultipleimplementations.service.GoodService;
+import com.baeldung.autowiremultipleimplementations.candidates.GoodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -13,11 +13,11 @@ public class QualifierAutowire {
     private final GoodService goodServiceC;
 
     @Autowired
-    public QualifierAutowire(@Qualifier("goodServiceA-custom-name") GoodService goodServiceA,
-                             @Qualifier("goodServiceB") GoodService goodServiceB,
+    public QualifierAutowire(@Qualifier("goodServiceA-custom-name") GoodService niceServiceA,
+                             @Qualifier("goodServiceB") GoodService niceServiceB,
                              GoodService goodServiceC) {
-        this.goodServiceA = goodServiceA;
-        this.goodServiceB = goodServiceB;
+        this.goodServiceA = niceServiceA;
+        this.goodServiceB = niceServiceB;
         this.goodServiceC = goodServiceC;
     }
 

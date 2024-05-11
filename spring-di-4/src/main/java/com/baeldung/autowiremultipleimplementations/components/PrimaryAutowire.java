@@ -1,6 +1,6 @@
-package com.baeldung.autowiremultipleimplementations.controller;
+package com.baeldung.autowiremultipleimplementations.components;
 
-import com.baeldung.autowiremultipleimplementations.service.GoodService;
+import com.baeldung.autowiremultipleimplementations.candidates.GoodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

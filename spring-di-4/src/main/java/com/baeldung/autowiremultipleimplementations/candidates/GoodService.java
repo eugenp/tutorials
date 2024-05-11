@@ -1,4 +1,4 @@
-package com.baeldung.autowiremultipleimplementations.service;
+package com.baeldung.autowiremultipleimplementations.candidates;
 
 public interface GoodService {
 
