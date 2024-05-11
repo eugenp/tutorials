@@ -56,7 +56,7 @@ class KafkaDelayIntegrationTest {
     }
 
     @Test
-    void givenKafkaBrokerExists_whenCreteOrderIsReceived_thenMessageShouldBeDelayed() throws Exception {
+    void givenKafkaBrokerExists_whenCreateOrderIsReceived_thenMessageShouldBeDelayed() throws Exception {
         // Given
         var orderId = UUID.randomUUID();
         Order order = Order.builder()
@@ -84,7 +84,7 @@ class KafkaDelayIntegrationTest {
     }
 
     @Test
-    void givenKafkaBrokerExists_whenCreteOrderIsReceivedForOtherTopics_thenMessageShouldNotBeDelayed() throws Exception {
+    void givenKafkaBrokerExists_whenCreateOrderIsReceivedForOtherTopics_thenMessageShouldNotBeDelayed() throws Exception {
         // Given
         var orderId = UUID.randomUUID();
         Order order = Order.builder()
