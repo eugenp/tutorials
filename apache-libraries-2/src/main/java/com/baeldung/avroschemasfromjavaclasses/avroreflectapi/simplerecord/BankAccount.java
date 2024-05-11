@@ -1,12 +1,10 @@
 package com.baeldung.avroschemasfromjavaclasses.avroreflectapi.simplerecord;
 
-import java.math.BigDecimal;
-import java.util.List;
-import java.util.UUID;
+import org.apache.avro.reflect.Nullable;
 
 public class BankAccount {
     private String number;
+
+    @Nullable
     private BankAccountHolder holder;
-    private BigDecimal balance;
-    private List<UUID> transactionIds;
 }

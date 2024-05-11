@@ -50,12 +50,18 @@
             <artifactId>jackson-core</artifactId>
             <version>${jackson.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-avro</artifactId>
+            <version>${jackson.dataformat.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <javax.validation.validation-api.version>2.0.1.Final</javax.validation.validation-api.version>
         <camel.version>4.4.1</camel.version>
         <avro.version>1.11.3</avro.version>
+        <jackson.dataformat.version>2.17.1</jackson.dataformat.version>
     </properties>
 
 </project>
