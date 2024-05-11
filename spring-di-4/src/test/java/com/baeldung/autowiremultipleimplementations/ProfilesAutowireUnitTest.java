@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest(classes = {PrimaryAutowire.class, GoodServiceD.class, GoodServiceC.class,
         GoodServiceB.class, GoodServiceA.class})
 @ActiveProfiles("dev")
-public class ProfilesAutowireTest {
+public class ProfilesAutowireUnitTest {
 
     @Autowired
     private GoodService goodService;
