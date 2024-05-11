@@ -1,6 +1,6 @@
 package com.baeldung.object.copy;
 
-public class Portal {
+public class Portal implements Cloneable {
 
     private String name;
 
@@ -15,5 +15,10 @@ public class Portal {
     public void setName(String name) {
         this.name = name;
     }
-    
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+
 }
