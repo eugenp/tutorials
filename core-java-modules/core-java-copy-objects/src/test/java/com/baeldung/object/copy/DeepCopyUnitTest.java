@@ -8,7 +8,7 @@ class DeepCopyUnitTest {
 
     @Test
     void whenDeepCopying_mutableReferencesShouldBeDifferent() {
-    	Portal portal = new Portal("Not Baeldung");
+        Portal portal = new Portal("Not Baeldung");
         Author authorInReview = new Author("Hardik", "behl.hardiksingh@gmail.com", portal);
         
         Author selectedAuthor = new Author(authorInReview);
