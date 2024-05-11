@@ -4,8 +4,8 @@ import reactor.core.publisher.Flux;
 
 public class FluxMap {
 
-    public static Flux<Integer> numerical_values() {
-        return Flux.range(50, 10);
+    public Flux<Integer> numerical_values() {
+        return Flux.just(50, 51, 52, 53, 54, 55, 56, 57, 58, 59);
     }
 
 }

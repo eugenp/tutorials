@@ -9,9 +9,6 @@ import reactor.test.StepVerifier;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static com.baeldung.fluxmapandondonext.DoOnNext.number_service;
-import static com.baeldung.fluxmapandondonext.DoOnNext.number_service_range;
-
 class DoOnNextUnitTest {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DoOnNextUnitTest.class);
@@ -20,7 +17,8 @@ class DoOnNextUnitTest {
     void givenFluxOfNumbers_whenCountingNumbers_thenReturnCorrectCountAndLogToOutput() {
         AtomicInteger counter = new AtomicInteger(0);
 
-        Flux<Integer> numberFlux = number_service().doOnNext(number -> {
+        Flux<Integer> numberFlux = Flux.just(1, 2, 3, 4, 5)
+            .doOnNext(number -> {
                 LOGGER.info(String.valueOf(number));
                 counter.incrementAndGet();
             })
@@ -35,7 +33,8 @@ class DoOnNextUnitTest {
 
     @Test
     void givenNumberServiceRange_whenTransformingAndAddingSideEffect_thenReturnTransformedNumbers() {
-        Flux<Integer> numbersFlux = number_service_range().doOnNext(number -> {
+        Flux<Integer> numbersFlux = Flux.just(10, 11, 12, 13, 14)
+            .doOnNext(number -> {
                 LOGGER.info("Number: " + number);
             })
             .map(i -> i * 5)

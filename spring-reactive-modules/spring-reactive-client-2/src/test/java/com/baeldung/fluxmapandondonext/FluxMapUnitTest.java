@@ -4,13 +4,11 @@ import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
 
-import static com.baeldung.fluxmapandondonext.FluxMap.numerical_values;
-
 class FluxMapUnitTest {
 
     @Test
     void givenNumericalValues_whenTransformedByMap_thenReturnTransformedData() {
-        Flux<Integer> numbersFlux = numerical_values().map(i -> i * 10)
+        Flux<Integer> numbersFlux = Flux.just(50, 51, 52, 53, 54, 55, 56, 57, 58, 59).map(i -> i * 10)
             .onErrorResume(Flux::error);
 
         StepVerifier.create(numbersFlux)
