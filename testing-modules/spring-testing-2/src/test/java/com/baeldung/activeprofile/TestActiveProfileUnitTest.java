@@ -15,6 +15,6 @@ public class TestActiveProfileUnitTest {
 
     @Test
     void whenTestIsActive_thenValueShouldBeKeptFromApplicationTestYaml() {
-        Assertions.assertEquals("This the the application-test.yaml file", propertyString);
+        Assertions.assertEquals("This the application-test.yaml file", propertyString);
     }
 }
