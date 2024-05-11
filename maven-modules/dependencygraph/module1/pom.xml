@@ -18,22 +18,22 @@
         <dependency>
             <groupId>commons-collections</groupId>
             <artifactId>commons-collections</artifactId>
-            <version>3.2.2</version>
+            <version>${commons-collections.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-            <version>6.1.1</version>
+            <artifactId>spring-core</artifactId>
+            <version>${spring-core.version}</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.25</version>
+            <version>${slf4j-api.version}</version>
         </dependency>
         <dependency>
             <groupId>com.baeldung.module2</groupId>
             <artifactId>module2</artifactId>
-            <version>1.0</version>
+            <version>${module2.version}</version>
         </dependency>
     </dependencies>
 
@@ -53,6 +53,10 @@
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
+        <commons-collections.version>3.2.2</commons-collections.version>
+        <spring-core.version>6.1.1</spring-core.version>
+        <slf4j-api.version>1.7.25</slf4j-api.version>
+        <module2.version>1.0</module2.version>
     </properties>
 
 </project>
