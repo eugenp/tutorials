@@ -1,12 +1,11 @@
 package com.baeldung.recordswithjpa.repository;
 
-import com.baeldung.recordswithjpa.embeddable.Author;
 import com.baeldung.recordswithjpa.embeddable.EmbeddableBook;
+import com.baeldung.recordswithjpa.embeddable.Author;
+import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
-
-import java.util.List;
 
 public interface EmbeddableBookRepository extends CrudRepository<EmbeddableBook, Long> {
     @Query("SELECT b FROM EmbeddableBook b WHERE b.author = :author")
