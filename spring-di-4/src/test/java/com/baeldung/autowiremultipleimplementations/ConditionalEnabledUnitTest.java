@@ -12,7 +12,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
-@SpringBootTest(classes = {GoodServiceE.class})  // Make sure you are loading the configuration class
+@SpringBootTest(classes = {GoodServiceE.class})
 @TestPropertySource(properties = {"feature.toggle=enabled"})
 public class ConditionalEnabledUnitTest {
 

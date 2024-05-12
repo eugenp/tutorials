@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(classes = {PrimaryAutowire.class, GoodServiceC.class, GoodServiceB.class, GoodServiceA.class})
 @ExtendWith(SpringExtension.class)
-public class PrimaryAutowireIntegrationUnitTest {
+public class PrimaryAutowireUnitTest {
 
     @Autowired
     private ApplicationContext context;
