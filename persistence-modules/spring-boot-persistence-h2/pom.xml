@@ -30,6 +30,12 @@
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-jfr</artifactId>
+            <version>${hibernate.core.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
         </dependency>
@@ -51,6 +57,17 @@
             <artifactId>hibernate-core</artifactId>
             <version>${hibernate.core.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.ehcache</groupId>
+            <artifactId>ehcache</artifactId>
+            <version>${ehcache.version}</version>
+            <classifier>jakarta</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-jcache</artifactId>
+            <version>${hibernate.core.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -58,6 +75,25 @@
         <start-class>com.baeldung.h2db.demo.server.SpringBootApp</start-class>
         <db-util.version>1.0.7</db-util.version>
         <hibernate.core.version>6.4.2.Final</hibernate.core.version>
+        <ehcache.version>3.10.8</ehcache.version>
     </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.1.2</version> <!-- Use the latest version of Surefire Plugin -->
+
+                <!-- Configure the VM options using the argLine parameter -->
+                <configuration>
+                    <argLine>-XX:StartFlightRecording=filename=finalRecordingTestMvn.jfr</argLine>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
