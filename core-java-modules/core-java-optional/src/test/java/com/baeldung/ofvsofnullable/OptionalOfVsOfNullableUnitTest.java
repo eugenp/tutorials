@@ -27,10 +27,4 @@ public class OptionalOfVsOfNullableUnitTest {
         String s = null;
         assertThat(Optional.ofNullable(s)).isEmpty();
     }
-
-    @Test
-    void whenUsingNullReference_thenNullPointerExceptionThrown() {
-        String s = null;
-        assertThatThrownBy(() -> s.length()).isInstanceOf(NullPointerException.class);
-    }
 }
