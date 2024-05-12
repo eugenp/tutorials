@@ -6,6 +6,12 @@
         </encoder>
     </appender>
 
+    <logger name="org.springframework" level="ERROR"/>
+
+    <logger name="de.flapdoodle.embed.mongo" level="ERROR"/>
+
+    <logger name="org.mongodb.driver" level="ERROR"/>
+
     <root level="INFO">
         <appender-ref ref="STDOUT" />
     </root>

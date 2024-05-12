@@ -31,17 +31,6 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>jakarta.xml.bind</groupId>
-            <artifactId>jakarta.xml.bind-api</artifactId>
-            <version>${jakarta.xml.bind-api.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.glassfish.jaxb</groupId>
-            <artifactId>jaxb-runtime</artifactId>
-        </dependency>
-
     </dependencies>
 
     <build>
@@ -98,7 +87,6 @@
     </build>
 
     <properties>
-        <jakarta.xml.bind-api.version>4.0.0</jakarta.xml.bind-api.version>
         <jaxb-maven-plugin.version>4.0.0</jaxb-maven-plugin.version>
         <jaxb2-maven-plugin.version>3.1.0</jaxb2-maven-plugin.version>
     </properties>
