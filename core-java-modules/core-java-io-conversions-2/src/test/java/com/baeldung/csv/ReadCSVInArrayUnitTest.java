@@ -1,11 +1,24 @@
 package com.baeldung.csv;
 
-import com.opencsv.CSVReader;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.io.*;
-import java.util.*;
+import com.opencsv.CSVReader;
 
 public class ReadCSVInArrayUnitTest {
     public static final String COMMA_DELIMITER = ",";
@@ -92,6 +105,52 @@ public class ReadCSVInArrayUnitTest {
                 .toArray(),
                 records.get(i)
                     .toArray());
+        }
+    }
+
+    @Test
+    public void givenCSVFile_whenUsingFilesReadAllLinesMethod_thenContentsAsExpected() throws IOException {
+        List<List<String>> records = Files.readAllLines(Paths.get(CSV_FILE))
+          .stream()
+          .map(line -> Arrays.asList(line.split(COMMA_DELIMITER)))
+          .collect(Collectors.toList());
+
+        for (int i = 0; i < EXPECTED_ARRAY.size(); i++) {
+            Assert.assertArrayEquals(EXPECTED_ARRAY.get(i)
+                .toArray(),
+                records.get(i)
+                    .toArray());
+        }
+    }
+
+    @Test
+    public void givenCSVFile_whenUsingFilesNewBufferedReaderMethod_thenContentsAsExpected() throws IOException {
+        try (BufferedReader reader = Files.newBufferedReader(Paths.get(CSV_FILE))) {
+            List<List<String>> records = reader.lines()
+              .map(line -> Arrays.asList(line.split(COMMA_DELIMITER)))
+              .collect(Collectors.toList());
+
+            for (int i = 0; i < EXPECTED_ARRAY.size(); i++) {
+                Assert.assertArrayEquals(EXPECTED_ARRAY.get(i)
+                    .toArray(),
+                    records.get(i)
+                        .toArray());
+            }
+        }
+    }
+
+    @Test
+    public void givenCSVFile_whenUsingFilesLinesMethod_thenContentsAsExpected() throws IOException {
+        try (Stream<String> lines = Files.lines(Paths.get(CSV_FILE))) {
+            List<List<String>> records = lines.map(line -> Arrays.asList(line.split(COMMA_DELIMITER)))
+              .collect(Collectors.toList());
+
+            for (int i = 0; i < EXPECTED_ARRAY.size(); i++) {
+                Assert.assertArrayEquals(EXPECTED_ARRAY.get(i)
+                    .toArray(),
+                    records.get(i)
+                        .toArray());
+            }
         }
     }
 }

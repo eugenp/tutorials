@@ -81,7 +81,6 @@
 
     <properties>
         <spring.boot.dependencies>3.2.2</spring.boot.dependencies>
-        <junit-jupiter.version>5.10.2</junit-jupiter.version>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <db.util.version>1.0.7</db.util.version>

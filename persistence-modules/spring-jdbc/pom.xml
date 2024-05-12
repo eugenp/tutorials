@@ -13,10 +13,6 @@
         <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
-    <properties>
-        <start-class>com.baeldung.spring.jdbc.batch.SpringJdbcBatchPerformanceApplication</start-class>
-   </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.data</groupId>
@@ -41,5 +37,9 @@
             <scope>runtime</scope>
         </dependency>
     </dependencies>
+
+    <properties>
+        <start-class>com.baeldung.spring.jdbc.batch.SpringJdbcBatchPerformanceApplication</start-class>
+    </properties>
 
 </project>
