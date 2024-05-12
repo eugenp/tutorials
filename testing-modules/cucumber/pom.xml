@@ -117,13 +117,11 @@
     <properties>
         <rest-assured.version>5.4.0</rest-assured.version>
         <cucumber.version>7.17.0</cucumber.version>
-        <cucumber-reporting.version>5.4.0</cucumber-reporting.version>
         <selenium.version>4.20.0</selenium.version>
         <webdrivermanager.version>5.8.0</webdrivermanager.version>
         <webjars-locator.version>0.52</webjars-locator.version>
         <jquery.version>3.0.0</jquery.version>
-        <bootstrap.version>4.5.3</bootstrap.version>
-        <spring-cloud-contract-wiremock.version>2.2.5.RELEASE</spring-cloud-contract-wiremock.version>
+        <bootstrap.version>5.3.3</bootstrap.version>
     </properties>
 
 </project>
