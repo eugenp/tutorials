@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.StudentMapper">
+    <select id="selectStudentById" parameterType="int" resultType="com.baeldung.mybatisvshibernate.Student">
+        select id, name, phone, email from dbMyBatis.Student where id = #{id}
+    </select>
+    <insert id="insertStudent" flushCache="true" keyColumn="id" keyProperty="id"  parameterType="com.baeldung.mybatisvshibernate.Student" useGeneratedKeys="true">
+        insert into dbMyBatis.Student (name,phone,email)
+        values (#{name},#{phone},#{email})
+        <!--<selectKey keyProperty = "id" resultType = "int" order = "AFTER">
+            SELECT CURRENT VALUE FOR dbMyBatis.STUDENT_TBL_SEQ
+        </selectKey>-->
+    </insert>
+</mapper>
