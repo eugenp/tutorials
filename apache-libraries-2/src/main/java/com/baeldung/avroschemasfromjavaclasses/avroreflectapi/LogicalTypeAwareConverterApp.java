@@ -12,7 +12,7 @@ public class LogicalTypeAwareConverterApp {
     public static void main(String[] args) {
         ReflectData reflectData = ReflectData.get();
         reflectData.addLogicalTypeConversion(new Conversions.UUIDConversion());
-        reflectData.addLogicalTypeConversion(new TimeConversions.TimestampMillisConversion());
+        reflectData.addLogicalTypeConversion(new TimeConversions.LocalTimestampMillisConversion());
 
         Schema bankAccountSchema = reflectData.getSchema(BankAccount.class);
 

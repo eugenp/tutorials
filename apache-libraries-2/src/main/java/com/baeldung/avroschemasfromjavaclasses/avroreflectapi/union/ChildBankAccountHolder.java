@@ -1,9 +1,6 @@
 package com.baeldung.avroschemasfromjavaclasses.avroreflectapi.union;
 
-public class ChildBankAccountHolder extends BankAccount {
-    private String firstName;
-    private String lastName;
-
+public class ChildBankAccountHolder extends BankAccountHolder {
     private String parentFirstName;
     private String parentLastName;
 

@@ -4,7 +4,5 @@ import org.apache.avro.reflect.AvroIgnore;
 
 public class BankAccount {
     private String number;
-
-    @AvroIgnore
-    private String password;
+    @AvroIgnore private String password;
 }
