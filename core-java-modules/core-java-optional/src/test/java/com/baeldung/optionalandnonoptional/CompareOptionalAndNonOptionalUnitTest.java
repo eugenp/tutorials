@@ -8,40 +8,43 @@ import java.util.Optional;
 import org.junit.jupiter.api.Test;
 
 public class CompareOptionalAndNonOptionalUnitTest {
+    private static final String A_B_C = "a b c";
+    private static final String X_Y_Z = "x y z";
 
     @Test
     void whenCovertToOptionalBeforeComparison_thenGetExpectedResult() {
         Optional<String> opt = Optional.empty();
-        assertFalse(opt.isPresent() && opt.equals(Optional.of("a b c")));
+        assertFalse(opt.isPresent() && opt.equals(Optional.of(A_B_C)));
 
-        opt = Optional.of("x y z");
-        assertFalse(opt.isPresent() && opt.equals(Optional.of("a b c")));
+        opt = Optional.of(X_Y_Z);
+        assertFalse(opt.isPresent() && opt.equals(Optional.of(A_B_C)));
 
-        opt = Optional.of("a b c");
-        assertTrue(opt.isPresent() && opt.equals(Optional.of("a b c")));
+        opt = Optional.of(A_B_C);
+        assertTrue(opt.isPresent() && opt.equals(Optional.of(A_B_C)));
     }
 
     @Test
     void whenOptionalGetBeforeComparison_thenGetExpectedResult() {
         Optional<String> opt = Optional.empty();
-        assertFalse(opt.isPresent() && opt.get().equals("a b c"));
+        assertFalse(opt.isPresent() && opt.get().equals(A_B_C));
 
-        opt = Optional.of("x y z");
-        assertFalse(opt.isPresent() && opt.get().equals("a b c"));
+        opt = Optional.of(X_Y_Z);
+        assertFalse(opt.isPresent() && opt.get().equals(A_B_C));
 
-        opt = Optional.of("a b c");
-        assertTrue(opt.isPresent() && opt.get().equals("a b c"));
+        opt = Optional.of(A_B_C);
+        assertTrue(opt.isPresent() && opt.get().equals(A_B_C));
     }
 
     @Test
     void whenUsingOptionalMap_thenGetExpectedResult() {
         Optional<String> opt = Optional.empty();
-        assertFalse(opt.map(c -> c.equals("a b c")).orElse(false));
+        assertFalse(opt.map(c -> c.equals(A_B_C)).orElse(false));
 
-        opt = Optional.of("x y z");
-        assertFalse(opt.map(c -> c.equals("a b c")).orElse(false));
+        opt = Optional.of(X_Y_Z);
+        assertFalse(opt.map(c -> c.equals(A_B_C)).orElse(false));
 
-        opt = Optional.of("a b c");
-        assertTrue(opt.map(c -> c.equals("a b c")).orElse(false));
+        opt = Optional.of(A_B_C);
+        assertTrue(opt.map(c -> c.equals(A_B_C)).orElse(false));
     }
+
 }
