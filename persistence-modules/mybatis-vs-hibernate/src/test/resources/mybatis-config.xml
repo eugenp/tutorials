@@ -9,7 +9,7 @@
             <dataSource type="POOLED">
                 <property name="driver" value="org.h2.Driver"/>
                 <property name="url" value="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1"/>
-                <property name="username" value=""/>
+                <property name="username" value="sa"/>
                 <property name="password" value=""/>
             </dataSource>
         </environment>
