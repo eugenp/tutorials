@@ -13,11 +13,11 @@ public class IteratorVersusIterableUnitTest {
             "Bob Smith, 25, Developer",
             "Charlie Brown, 28, Designer"
     );
-    String expectedReport = """
-            Employee: Alice Johnson, 30, Manager
-            Employee: Bob Smith, 25, Developer
-            Employee: Charlie Brown, 28, Designer
-            """;
+    String expectedReport =
+            "Employee: Alice Johnson, 30, Manager\n" +
+            "Employee: Bob Smith, 25, Developer\n" +
+            "Employee: Charlie Brown, 28, Designer\n";
+
 
     @Test
     public void givenEmployeeDetails_whenUsingIterator_thenGenerateEmployeeReport() {
