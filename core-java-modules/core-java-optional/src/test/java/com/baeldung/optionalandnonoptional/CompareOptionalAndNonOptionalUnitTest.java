@@ -12,7 +12,7 @@ public class CompareOptionalAndNonOptionalUnitTest {
     private static final String X_Y_Z = "x y z";
 
     @Test
-    void whenCovertToOptionalBeforeComparison_thenGetExpectedResult() {
+    void whenUsingOptionalEquals_thenGetExpectedResult() {
         Optional<String> opt = Optional.empty();
         assertFalse(opt.isPresent() && opt.equals(Optional.of(A_B_C)));
 
