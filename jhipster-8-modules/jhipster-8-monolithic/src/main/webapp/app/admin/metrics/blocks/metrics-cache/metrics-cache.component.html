@@ -1,0 +1,46 @@
+<h3 id="cacheMetrics()">Cache statistics</h3>
+
+@if (!updating() && cacheMetrics()) {
+  <div class="table-responsive">
+    <table class="table table-striped" aria-describedby="cacheMetrics">
+      <thead>
+        <tr>
+          <th scope="col">Cache name</th>
+          <th scope="col" class="text-end">Cache Hits</th>
+          <th scope="col" class="text-end">Cache Misses</th>
+          <th scope="col" class="text-end">Cache Gets</th>
+          <th scope="col" class="text-end">Cache Puts</th>
+          <th scope="col" class="text-end">Cache Removals</th>
+          <th scope="col" class="text-end">Cache Evictions</th>
+          <th scope="col" class="text-end">Cache Hit %</th>
+          <th scope="col" class="text-end">Cache Miss %</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (entry of cacheMetrics() | keyvalue; track entry.key) {
+          <tr>
+            <td>{{ entry.key }}</td>
+            <td class="text-end">{{ entry.value['cache.gets.hit'] }}</td>
+            <td class="text-end">{{ entry.value['cache.gets.miss'] }}</td>
+            <td class="text-end">{{ entry.value['cache.gets.hit'] + entry.value['cache.gets.miss'] }}</td>
+            <td class="text-end">{{ entry.value['cache.puts'] }}</td>
+            <td class="text-end">{{ entry.value['cache.removals'] }}</td>
+            <td class="text-end">{{ entry.value['cache.evictions'] }}</td>
+            <td class="text-end">
+              {{
+                filterNaN((100 * entry.value['cache.gets.hit']) / (entry.value['cache.gets.hit'] + entry.value['cache.gets.miss']))
+                  | number: '1.0-4'
+              }}
+            </td>
+            <td class="text-end">
+              {{
+                filterNaN((100 * entry.value['cache.gets.miss']) / (entry.value['cache.gets.hit'] + entry.value['cache.gets.miss']))
+                  | number: '1.0-4'
+              }}
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+}
