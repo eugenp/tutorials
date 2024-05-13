@@ -43,6 +43,11 @@
             <version>${angus-activation.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -153,6 +158,7 @@
         <fscontext.version>4.4.2</fscontext.version>
         <jakarta-activation-api.version>2.1.2</jakarta-activation-api.version>
         <angus-activation.version>2.0.1</angus-activation.version>
+        <spring.version>6.1.6</spring.version>
     </properties>
 
 </project>
