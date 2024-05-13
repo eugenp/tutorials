@@ -38,13 +38,13 @@ public class CompareOptionalAndNonOptionalUnitTest {
     @Test
     void whenUsingOptionalMap_thenGetExpectedResult() {
         Optional<String> opt = Optional.empty();
-        assertFalse(opt.map(c -> c.equals(A_B_C)).orElse(false));
+        assertFalse(opt.map(A_B_C::equals).orElse(false));
 
         opt = Optional.of(X_Y_Z);
-        assertFalse(opt.map(c -> c.equals(A_B_C)).orElse(false));
+        assertFalse(opt.map(A_B_C::equals).orElse(false));
 
         opt = Optional.of(A_B_C);
-        assertTrue(opt.map(c -> c.equals(A_B_C)).orElse(false));
+        assertTrue(opt.map(A_B_C::equals).orElse(false));
     }
 
 }
