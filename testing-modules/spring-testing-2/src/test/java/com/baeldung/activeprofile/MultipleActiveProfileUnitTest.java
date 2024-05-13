@@ -22,6 +22,6 @@ public class MultipleActiveProfileUnitTest {
     @Test
     void whenDevIsActive_thenValueShouldBeKeptFromDedicatedApplicationYaml() {
         String currentProfile = env.getActiveProfiles()[0];
-        Assertions.assertEquals(String.format("This the the application-%s.yaml file", currentProfile), propertyString);
+        Assertions.assertEquals(String.format("This the application-%s.yaml file", currentProfile), propertyString);
     }
 }
