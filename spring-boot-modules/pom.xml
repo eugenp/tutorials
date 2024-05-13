@@ -84,6 +84,7 @@
         <module>spring-boot-swagger-springfox</module>
         <module>spring-boot-testing</module>
         <module>spring-boot-testing-2</module>
+        <module>spring-boot-testing-3</module>
         <module>spring-boot-testing-spock</module>
         <module>spring-boot-vue</module>
         <module>spring-boot-actuator</module>

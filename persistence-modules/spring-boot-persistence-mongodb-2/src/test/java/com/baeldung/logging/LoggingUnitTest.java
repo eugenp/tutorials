@@ -34,7 +34,7 @@ import de.flapdoodle.embed.mongo.distribution.Version;
 import de.flapdoodle.embed.process.runtime.Network;
 
 @SpringBootTest(classes = SpringBootLoggingApplication.class)
-@TestPropertySource(properties = {"logging.level.org.springframework.data.mongodb.core.MongoTemplate=INFO"}, value = "/embedded.properties")
+@TestPropertySource(properties = {"logging.level.org.springframework.data.mongodb.core.MongoTemplate=WARN"}, value = "/embedded.properties")
 public class LoggingUnitTest {
 
     private static final String CONNECTION_STRING = "mongodb://%s:%d";

@@ -445,12 +445,20 @@
             </build>
 
             <modules>
-                <module>apache-spark</module>
-                <module>jhipster-modules</module>
+                <!--<module>apache-spark</module>--><!-- failing after upgrading to jdk17-->
+                <module>jhipster-8-modules</module>
                 <module>spring-cloud-modules/spring-cloud-azure</module>
+                <module>kubernetes-modules/k8s-operator</module>
                 <module>web-modules/restx</module>
                 <module>libraries-testing</module>
             </modules>
+
+            <properties>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <java.version>17</java.version>
+                <maven.compiler.source>17</maven.compiler.source>
+                <maven.compiler.target>17</maven.compiler.target>
+            </properties>
         </profile>
 
         <profile>
@@ -572,11 +580,20 @@
             </build>
 
             <modules>
-                <module>apache-spark</module>
-                <module>jhipster-modules</module>
+                <!--<module>apache-spark</module>--><!-- failing after upgrading to jdk17-->
+                <module>jhipster-8-modules</module>
                 <module>spring-cloud-modules/spring-cloud-azure</module>
                 <module>web-modules/restx</module>
+                <module>libraries-testing</module>
+                <module>kubernetes-modules/k8s-operator</module>
             </modules>
+
+            <properties>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <java.version>17</java.version>
+                <maven.compiler.source>17</maven.compiler.source>
+                <maven.compiler.target>17</maven.compiler.target>
+            </properties>
 
         </profile>
 
@@ -854,6 +871,8 @@
                 <module>xml</module>
                 <module>xstream</module>
                 <module>libraries-data-io-2</module>
+                <module>spring-swagger-codegen/openapi-custom-generator</module>
+                <module>spring-swagger-codegen/openapi-custom-generator-api-client</module>
             </modules>
 
             <properties>
@@ -985,8 +1004,7 @@
                 <module>libraries-security</module>
                 <module>libraries-server-2</module>
                 <module>libraries-server</module>
-<!--                <module>libraries-stream</module> JDK21-->
-                <module>libraries-testing</module>
+<!--            <module>libraries-stream</module> JDK21-->
                 <module>libraries-testing-2</module>
                 <module>libraries-transform</module>
                 <module>libraries</module> <!-- very long running -->
@@ -1179,7 +1197,7 @@
         <jackson.version>2.16.1</jackson.version>
         <commons-fileupload.version>1.5</commons-fileupload.version>
         <junit-platform.version>1.9.2</junit-platform.version>
-        <junit-jupiter.version>5.9.2</junit-jupiter.version>
+        <junit-jupiter.version>5.10.2</junit-jupiter.version>
         <junit-platform-surefire-provider.version>1.3.2</junit-platform-surefire-provider.version>
         <directory-maven-plugin.version>1.0</directory-maven-plugin.version>
         <maven-install-plugin.version>3.1.1</maven-install-plugin.version>
@@ -1191,7 +1209,7 @@
         <h2.version>2.2.224</h2.version>
         <guava.version>33.0.0-jre</guava.version>
         <maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
-
+        <mockito-junit-jupiter.version>5.11.0</mockito-junit-jupiter.version>
         <logback.configurationFileName>logback-config-global.xml</logback.configurationFileName>
     </properties>
 

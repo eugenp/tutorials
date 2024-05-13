@@ -23,7 +23,6 @@
         <module>jwt</module>
         <module>oauth2-framework-impl</module>
         <module>sql-injection-samples</module>
-        <module>unrecoverablekeyexception</module>
     </modules>
 
 </project>

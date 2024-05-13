@@ -5,12 +5,13 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.springframework.boot.SpringApplication.run;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import com.baeldung.spring.notamanagedtype.jakartaannotation.EntityWithJakartaAnnotationApplication;
 import com.baeldung.spring.notamanagedtype.missedannotation.EntityWithoutAnnotationApplication;
 import com.baeldung.spring.notamanagedtype.missedannotationfixed.EntityWithoutAnnotationFixedApplication;
 import com.baeldung.spring.notamanagedtype.missedannotationfixed.EntityWithoutAnnotationFixedRepository;
-import com.baeldung.spring.notamanagedtype.jakartaannotation.EntityWithJakartaAnnotationApplication;
 import com.baeldung.spring.notamanagedtype.missedentityscan.app.WrongEntityScanApplication;
 import com.baeldung.spring.notamanagedtype.missedentityscan.fixed.app.WrongEntityScanFixedApplication;
 import com.baeldung.spring.notamanagedtype.missedentityscan.repository.CorrectEntityRepository;
@@ -57,7 +58,9 @@ class NotManagedTypeExceptionIntegrationTest {
 
     @Test
     void givenWrongEntityScanApplicationFixed_whenBootstrap_thenRepositoryBeanShouldBePresentInContext() {
-        ConfigurableApplicationContext context = run(WrongEntityScanFixedApplication.class);
+        SpringApplication app = new SpringApplication(WrongEntityScanFixedApplication.class);
+        app.setAdditionalProfiles("test");
+        ConfigurableApplicationContext context = app.run();
         CorrectEntityRepository repository = context
           .getBean(CorrectEntityRepository.class);
 
