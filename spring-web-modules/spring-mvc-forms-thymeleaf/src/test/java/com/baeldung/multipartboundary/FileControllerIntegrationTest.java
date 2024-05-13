@@ -1,5 +1,7 @@
 package com.baeldung.multipartboundary;
 
+import static com.baeldung.multipartboundary.FileController.FILES;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -8,8 +10,6 @@ import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-
-import static com.baeldung.multipartboundary.FileController.FILES;
 
 @WebMvcTest(FileController.class)
 class FileControllerIntegrationTest {
@@ -24,10 +24,12 @@ class FileControllerIntegrationTest {
         MockMultipartFile file = new MockMultipartFile("file", "import.csv", MediaType.APPLICATION_OCTET_STREAM_VALUE, fileContent.getBytes());
 
         mockMvc.perform(MockMvcRequestBuilders.multipart(FILES)
-                        .file(file)
-                        .param("fileDescription", "Records"))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.view().name("files/success"));
+                .file(file)
+                .param("fileDescription", "Records"))
+            .andExpect(MockMvcResultMatchers.status()
+                .isOk())
+            .andExpect(MockMvcResultMatchers.view()
+                .name("files/success"));
     }
 
 }
