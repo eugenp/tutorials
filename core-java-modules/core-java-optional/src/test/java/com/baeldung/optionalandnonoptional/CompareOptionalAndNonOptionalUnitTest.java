@@ -24,7 +24,7 @@ public class CompareOptionalAndNonOptionalUnitTest {
     }
 
     @Test
-    void whenOptionalGetBeforeComparison_thenGetExpectedResult() {
+    void whenUsingOptionalGet_thenGetExpectedResult() {
         Optional<String> opt = Optional.empty();
         assertFalse(opt.isPresent() && opt.get().equals(A_B_C));
 
