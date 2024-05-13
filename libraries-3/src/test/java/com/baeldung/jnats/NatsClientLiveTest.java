@@ -84,7 +84,7 @@ public class NatsClientLiveTest {
     private static byte[] convertStringToBytes(String s) {
         return s.getBytes(StandardCharsets.UTF_8);
     }
-    
+
     static class CustomErrorListener implements ErrorListener {
 
         @Override
@@ -199,7 +199,6 @@ public class NatsClientLiveTest {
     public void whenSubscribingAsynchronouslyWithQueueGroups_thenOnlyOneMessageHandlerInTheGroupShouldReceiveEachMessage() throws Exception {
         try (Connection natsConnection = createConnection()) {
             List<Message> messages = new ArrayList<>();
-
             Dispatcher dispatcher = natsConnection.createDispatcher();
             Subscription qSub1 = dispatcher.subscribe("mySubject", "myQueue", messages::add);
             Subscription qSub2 = dispatcher.subscribe("mySubject", "myQueue", messages::add);
@@ -295,18 +294,18 @@ public class NatsClientLiveTest {
         try (Connection natsConnection = createConnection()) {
             Subscription segmentStarSubscription = natsConnection.subscribe("segment.*");
 
-            natsConnection.publish("segment.star", convertStringToBytes("hello segment star"));
+            natsConnection.publish("segment.another", convertStringToBytes("hello segment star sub"));
 
             Message message = segmentStarSubscription.nextMessage(TIMEOUT_MILLIS);
             assertNotNull(message, "No message!");
-            assertEquals("hello segment star", new String(message.getData()));
+            assertEquals("hello segment star sub", convertMessageDataBytesToString(message));
 
             Subscription segmentGreaterSubscription = natsConnection.subscribe("segment.>");
-            natsConnection.publish("segment.greater.than", convertStringToBytes("hello segment greater"));
+            natsConnection.publish("segment.one.two", convertStringToBytes("hello segment greater sub"));
 
             message = segmentGreaterSubscription.nextMessage(TIMEOUT_MILLIS);
             assertNotNull(message, "No message!");
-            assertEquals("hello segment greater", new String(message.getData()));
+            assertEquals("hello segment greater sub", convertMessageDataBytesToString(message));
 
             segmentStarSubscription.unsubscribe();
             segmentGreaterSubscription.unsubscribe();
@@ -328,7 +327,7 @@ public class NatsClientLiveTest {
 
             message = greaterSubscription.nextMessage(TIMEOUT_MILLIS);
             assertNotNull(message, "No message!");
-            assertEquals("hello there", new String(message.getData()));
+            assertEquals("hello there", convertMessageDataBytesToString(message));
 
             starSubscription.unsubscribe();
             greaterSubscription.unsubscribe();
