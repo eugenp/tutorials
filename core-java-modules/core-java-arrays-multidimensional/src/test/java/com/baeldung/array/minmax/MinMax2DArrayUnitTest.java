@@ -11,7 +11,7 @@ public class MinMax2DArrayUnitTest {
 
     @Test
     public void givenArray2DWhenFindMinAndMaxUsingForLoopsThenCorrect() {
-        int[][] array = {{1, 4, 8}, {2, 5, 7}, {3, 6, 9}};
+        int[][] array = {{8, 4, 1}, {2, 5, 7}, {3, 6, 9}};
 
         int min = array[0][0];
         int max = array[0][0];
@@ -32,7 +32,7 @@ public class MinMax2DArrayUnitTest {
 
     @Test
     public void givenArray2DWhenFindMinAndMaxUsingStreamThenCorrect() {
-        int[][] array = {{1, 4, 8}, {2, 5, 7}, {3, 6, 9}};
+        int[][] array = {{8, 4, 1}, {2, 5, 7}, {3, 6, 9}};
 
         IntSummaryStatistics stats = Arrays
           .stream(array)
@@ -45,7 +45,7 @@ public class MinMax2DArrayUnitTest {
 
     @Test
     public void givenArray2DWhenFindMinAndMaxUsingParallelStreamThenCorrect() {
-        int[][] array = {{1, 4, 8}, {2, 5, 7}, {3, 6, 9}};
+        int[][] array = {{8, 4, 1}, {2, 5, 7}, {3, 6, 9}};
 
         IntSummaryStatistics stats = Arrays
           .stream(array)
