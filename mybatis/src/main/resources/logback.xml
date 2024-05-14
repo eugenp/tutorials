@@ -7,7 +7,9 @@
         </encoder>
     </appender>
 
+    <logger name="com.baeldung.mybatis.mapper.AddressMapper.getAddresses" level="TRACE"/>
+
     <root level="INFO">
-        <appender-ref ref="STDOUT" />
+        <appender-ref ref="STDOUT"/>
     </root>
 </configuration>
