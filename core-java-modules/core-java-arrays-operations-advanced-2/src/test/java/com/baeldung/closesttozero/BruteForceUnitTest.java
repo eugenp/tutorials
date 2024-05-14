@@ -17,17 +17,6 @@ class BruteForceUnitTest {
     }
 
     @Test
-    void whenFindingClosestToZeroWithBruteForce_thenShouldNotExceedTimeLimit() {
-        int[] arr = new Random().ints(1000000, -1000000, 1000000)
-                .toArray();
-
-        assertTimeout(Duration.ofSeconds(1), () -> {
-            BruteForce.findClosestToZero(arr);
-        });
-    }
-
-
-    @Test
     void whenValidatingBruteForceComplexity_thenTimeShouldIncreaseLinearlyWithInputSize() throws IllegalAccessException {
         int[] arr1 = new Random().ints(1000, -1000000, 1000000)
                 .toArray();

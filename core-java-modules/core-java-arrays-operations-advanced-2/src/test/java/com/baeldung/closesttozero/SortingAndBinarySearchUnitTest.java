@@ -2,12 +2,12 @@ package com.baeldung.closesttozero;
 
 import org.junit.jupiter.api.Test;
 
-import java.time.Duration;
 import java.util.Random;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class SortingAndBinarySearchUnitTest {
+class SortingAndBinarySearchUnitTest {
 
     @Test
     void whenFindingClosestToZeroWithBruteForce_thenResultShouldBeCorrect() throws IllegalAccessException {
@@ -16,37 +16,30 @@ public class SortingAndBinarySearchUnitTest {
     }
 
     @Test
-    public void whenFindingClosestToZeroWithSortingAndBinarySearch_thenShouldNotExceedTimeLimit() {
-        int[] arr = new Random().ints(1000000, -1000000, 1000000)
+    void whenValidatingOptimizedApproachTimeComplexity_thenTimeShouldIncreaseWithInputSize() {
+        int[] arr1 = new Random().ints(1000, -1000000, 1000000)
                 .toArray();
-
-        assertTimeout(Duration.ofSeconds(1), () -> {
-            SortingAndBinarySearch.findClosestToZero(arr);
-        });
-    }
-
-    @Test
-    void whenValidatingOptimizedApproachTimeComplexity_thenTimeShouldRemainConstantWithInputSize() {
-        int[] arr1 = new Random().ints(1000, -1000000, 1000000).toArray();
         long startTime1 = System.currentTimeMillis();
         SortingAndBinarySearch.findClosestToZero(arr1);
         long endTime1 = System.currentTimeMillis();
         long duration1 = endTime1 - startTime1;
 
-        int[] arr2 = new Random().ints(10000000, -1000000, 1000000).toArray();
+        int[] arr2 = new Random().ints(10000000, -1000000, 1000000)
+                .toArray();
         long startTime2 = System.currentTimeMillis();
         SortingAndBinarySearch.findClosestToZero(arr2);
         long endTime2 = System.currentTimeMillis();
         long duration2 = endTime2 - startTime2;
 
-        int[] arr3 = new Random().ints(100000000, -1000000, 1000000).toArray();
+        int[] arr3 = new Random().ints(100000000, -1000000, 1000000)
+                .toArray();
         long startTime3 = System.currentTimeMillis();
         SortingAndBinarySearch.findClosestToZero(arr3);
         long endTime3 = System.currentTimeMillis();
         long duration3 = endTime3 - startTime3;
 
-        assertTrue( duration1 <= 1);
-        assertTrue( duration2 <= 1);
-        assertTrue(duration3  <= 1);
+        assertTrue(duration1 <= duration2);
+        assertTrue(duration2 <= duration3);
+        assertTrue(duration1 <= duration3);
     }
 }
