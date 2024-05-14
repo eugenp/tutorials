@@ -12,7 +12,7 @@ import com.baeldung.mockprotected.Movies;
 class StreamingMediaUnitTest {
 
     @Test
-    void givenProtectedMethod_whenMethodNotVisible_thenUseJUnitWithReflection() throws NoSuchMethodException {
+    void givenProtectedMethod_whenMethodNotVisibleAndUseJUnitWithReflection_thenResponseIsStubbed() throws NoSuchMethodException {
         Movies matrix = Mockito.spy(new Movies("The Matrix"));
         assertThat(matrix.getPlaceHolder()).isEqualTo("Movie: The Matrix");
 
@@ -22,7 +22,7 @@ class StreamingMediaUnitTest {
     }
 
     @Test
-    void givenProtectedMethod_whenMethodNotVisible_thenUseInnerTestClass() {
+    void givenProtectedMethod_whenMethodNotVisibleAndUseInnerTestClass_thenResponseIsStubbed() {
         MoviesWrapper matrix = Mockito.spy(new MoviesWrapper("The Matrix"));
         assertThat(matrix.getPlaceHolder()).isEqualTo("Movie: The Matrix");
 

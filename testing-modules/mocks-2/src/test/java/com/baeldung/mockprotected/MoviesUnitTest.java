@@ -9,7 +9,7 @@ import org.mockito.Mockito;
 class MoviesUnitTest {
 
     @Test
-    void givenProtectedMethod_whenMethodIsVisible_thenUseMockitoToStub() {
+    void givenProtectedMethod_whenMethodIsVisibleAndUseMockitoToStub_thenResponseIsStubbed() {
         Movies matrix = Mockito.spy(new Movies("The Matrix"));
         assertThat(matrix.getPlaceHolder()).isEqualTo("Movie: The Matrix");
 
