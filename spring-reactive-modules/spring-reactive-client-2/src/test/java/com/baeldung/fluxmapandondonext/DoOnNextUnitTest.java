@@ -1,6 +1,5 @@
 package com.baeldung.fluxmapandondonext;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,6 +7,8 @@ import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
 
 import java.util.concurrent.atomic.AtomicInteger;
+
+import static org.junit.Assert.assertEquals;
 
 class DoOnNextUnitTest {
 
@@ -28,7 +29,7 @@ class DoOnNextUnitTest {
             .expectNextCount(5)
             .verifyComplete();
 
-        Assertions.assertEquals(counter.get(), 5);
+        assertEquals(5, counter.get());
     }
 
     @Test
