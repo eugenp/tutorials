@@ -8,3 +8,4 @@ This module contains articles about conversions among Collection types in Java.
 - [HashSet toArray() Method in Java](https://www.baeldung.com/java-hashset-toarray)
 - [Converting Float ArrayList to Primitive Array in Java](https://www.baeldung.com/java-convert-float-arraylist-primitive-array)
 - [Convert an Optional to an ArrayList in Java](https://www.baeldung.com/java-optional-arraylist-conversion)
+- [Convert a Queue to a List](https://www.baeldung.com/java-convert-queue-list)
