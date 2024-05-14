@@ -13,4 +13,5 @@ Remember, for advanced libraries like [Jackson](/jackson) and [JUnit](/testing-m
 - [Introduction to MBassador](https://www.baeldung.com/mbassador)
 - [Using Pairs in Java](https://www.baeldung.com/java-pairs)
 - [Introduction to JFreeChart](https://www.baeldung.com/jfreechart-visualize-data)
+- [Introduction to JavaParser](https://www.baeldung.com/javaparser)
 - More articles [[<-- prev]](/libraries-3)

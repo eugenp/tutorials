@@ -67,6 +67,14 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+            <artifactId>caffeine</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
         <dependency>
@@ -179,11 +187,12 @@
     </profiles>
 
     <properties>
+        <spring-boot.version>3.2.3</spring-boot.version>
         <spring-cloud-dependencies.version>2023.0.0</spring-cloud-dependencies.version>
         <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
         <redis.version>0.7.2</redis.version>
         <oauth2-oidc-sdk.version>9.19</oauth2-oidc-sdk.version>
-        <!-- <junit-bom.version>5.5.2</junit-bom.version> -->
+        <junit-jupiter.version>5.10.2</junit-jupiter.version>
         <jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
     </properties>
 

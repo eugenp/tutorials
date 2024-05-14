@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.helidon</groupId>
     <artifactId>helidon</artifactId>
-    <name>helidon</name>
     <packaging>pom</packaging>
+    <name>helidon</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
