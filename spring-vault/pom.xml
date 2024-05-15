@@ -75,9 +75,9 @@
     </dependencies>
 
     <properties>
-        <spring-vault-core.version>3.0.4</spring-vault-core.version>
+        <spring-vault-core.version>3.1.1</spring-vault-core.version>
         <auth.version>2.25.6</auth.version>
-        <spring-cloud-starter-vault-config.version>4.0.2</spring-cloud-starter-vault-config.version>
+        <spring-cloud-starter-vault-config.version>4.1.1</spring-cloud-starter-vault-config.version>
         <maven.compiler.release>17</maven.compiler.release>
         <start-class>com.baeldung.springvault.SpringVaultApplication</start-class>
     </properties>
