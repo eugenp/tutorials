@@ -12,3 +12,4 @@ This module contains articles about security libraries.
 - [Digital Signatures in Java](https://www.baeldung.com/java-digital-signature)
 - [How to Read PEM File to Get Public and Private Keys](https://www.baeldung.com/java-read-pem-file-keys)
 - [SSH Connection With Java](https://www.baeldung.com/java-ssh-connection)
+- [Introduction to SSHJ](https://www.baeldung.com/java-sshj-ssh-library)
