@@ -17,6 +17,7 @@
 
     <modules>
         <module>jhipster-8-monolithic</module>
+        <module>jhipster-8-microservice</module>
     </modules>
 
 </project>
