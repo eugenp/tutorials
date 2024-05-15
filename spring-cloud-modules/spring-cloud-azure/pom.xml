@@ -46,8 +46,8 @@
     </build>
 
     <properties>
-        <spring-cloud-dependencies.version>2021.0.3</spring-cloud-dependencies.version>
-        <azure-key-vault-extension-version>5.0.0</azure-key-vault-extension-version>
+        <spring-cloud-dependencies.version>2023.0.1</spring-cloud-dependencies.version>
+        <azure-key-vault-extension-version>5.12.0-beta.1</azure-key-vault-extension-version>
     </properties>
 
 </project>

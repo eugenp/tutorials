@@ -6,8 +6,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @EnableJpaRepositories(basePackages =
-  "com.baeldung.spring.notamanagedtypeexceptioninspringdatajpa.wrongentityscanapplication.repository")
-@EntityScan("com.baeldung.spring.notamanagedtypeexceptioninspringdatajpa.wrongentityscanapplication.entity")
+  "com.baeldung.spring.notamanagedtype.missedentityscan.repository")
+@EntityScan("com.baeldung.spring.notamanagedtype.missedentityscan.entity")
 public class WrongEntityScanFixedApplication {
 
 }
