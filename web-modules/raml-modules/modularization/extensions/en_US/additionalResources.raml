@@ -1,0 +1,16 @@
+#%RAML 1.0 Extension
+# File located at:
+# /extensions/en_US/additionalResources.raml
+masterRef: /api.raml
+usage: This extension defines additional resources for version 2 of the API.
+version: v2
+/foos:
+  /bar/{barId}:
+    get:
+      description: |
+        Get the foo that is related to the bar having barId = {barId}
+      typeName: Foo
+      queryParameters:
+        barId?: integer
+        typeName: Foo
+        is: [ hasResponseItem ]

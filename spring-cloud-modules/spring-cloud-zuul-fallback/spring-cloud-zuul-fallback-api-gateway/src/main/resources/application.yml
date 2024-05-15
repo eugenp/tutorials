@@ -1,0 +1,22 @@
+spring:
+   application:
+      name: api-gateway
+server:
+   port: 7070
+  
+zuul:
+   igoredServices: '*'
+   routes:
+      weather-service:
+         path: /weather/**
+         serviceId: weather-service
+         strip-prefix: false
+
+ribbon:
+   eureka:
+      enabled: false
+
+weather-service:
+   ribbon:
+      listOfServers: localhost:8080
+

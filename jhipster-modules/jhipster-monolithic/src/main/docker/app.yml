@@ -1,0 +1,14 @@
+version: '2'
+services:
+    baeldung-app:
+        image: baeldung
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:mysql://baeldung-mysql:3306/baeldung?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    baeldung-mysql:
+        extends:
+            file: mysql.yml
+            service: baeldung-mysql

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+  <appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d %-5p [%t] %C{2} (%F:%L) - %m%n"/>
+    </layout>
+  </appender>
+
+  <logger name="org.hibernate">
+    <level value="info" />
+  </logger>
+
+  <logger name="org.hibernate.SQL">
+    <level value="info" />
+  </logger>
+
+  <logger name="org.hibernate.type.descriptor.sql">
+    <level value="info" />
+  </logger>
+
+  <logger name="org.hibernate.stat">
+    <level value="info" />
+  </logger>
+
+  <root>
+    <priority value ="info" />
+    <appender-ref ref="STDOUT" />
+  </root>
+
+</log4j:configuration>

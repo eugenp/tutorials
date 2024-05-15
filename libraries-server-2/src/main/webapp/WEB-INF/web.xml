@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+    <servlet>
+        <servlet-name>http2Jetty</servlet-name>
+        <servlet-class>com.baeldung.jetty.http2.Http2JettyServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>http2Jetty</servlet-name>
+        <url-pattern>/images/*</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>push</filter-name>
+        <filter-class>org.eclipse.jetty.servlets.PushCacheFilter</filter-class>
+        <init-param>
+            <param-name>ports</param-name>
+            <param-value>8444</param-value>
+        </init-param>
+        <init-param>
+            <param-name>maxAssociations</param-name>
+            <param-value>32</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>push</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+</web-app>

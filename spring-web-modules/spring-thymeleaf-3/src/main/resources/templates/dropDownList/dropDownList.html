@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Populate a drop down with a list using thymeleaf</title>
+</head>
+<body>
+	<h1>Populate a drop down with a list using thymeleaf</h1>
+	<select class="form-control" id="dropDownList">
+		<option value="0">select option</option>
+		<option th:each="option : ${options}" th:value="${option}" th:text="${option}"></option>
+	</select>
+</body>
+</html>

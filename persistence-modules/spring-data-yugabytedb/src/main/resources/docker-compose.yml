@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  yugabytedb:
+    image: yugabytedb/yugabyte:latest
+    container_name: yugabyte
+    user: root
+    ports:
+      - '5433:5433'
+      - '7000:7000'
+      - '9000:9000'
+    command: ["bin/yugabyted", "start", "--daemon=false"]
+

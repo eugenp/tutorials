@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package protobuf;
+ 
+option java_package = "com.baeldung.serialization.protocols"; 
+option java_outer_classname = "UserProtos";
+ 
+message User { 
+  int32 id = 1; 
+  string name = 2; 
+ }

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.baeldung.rules.jess</groupId>
+    <artifactId>jess</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <dependencies>
+        <dependency>
+            <groupId>jsr94</groupId>
+            <artifactId>jsr94</artifactId>
+            <version>1.1</version>
+        </dependency>
+        <!-- the below be available after we download and unpack jess.jar -->
+        <!-- and mvn install it into our local m2, compile errors with this project would go away then -->
+        <!-- <dependency> <groupId>gov.sandia</groupId> -->
+        <!--<artifactId>jess</artifactId> <version>7.1p2</version> </dependency> -->
+    </dependencies>
+
+    <!-- include repository http://dist.wso2.org/maven2 for jsr94 -->
+    <repositories>
+        <repository>
+            <id>wso2</id>
+            <name>Numerical Method's Maven Repository</name>
+            <url>http://dist.wso2.org/maven2/</url>
+        </repository>
+    </repositories>
+
+</project>

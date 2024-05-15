@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<websites>
+    <website url="https://baeldung.com">
+        <name>Baeldung</name>
+        <category>Online Courses</category>
+        <status>Online</status>
+    </website>
+    <website url="http://example.com">
+        <name>Example</name>
+        <category>Examples</category>
+        <status>Offline</status>
+    </website>
+    <website url="http://localhost:8080">
+        <name>Localhost</name>
+        <category>Tests</category>
+        <status>Offline</status>
+    </website>
+</websites>

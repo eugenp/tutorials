@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Expression utility objects</title>
+</head>
+<body>
+	<h1>Date expression utility</h1>
+	<p th:text="${#dates.formatISO(date)}"></p>
+	<p th:text="${#dates.format(date, 'dd-MM-yyyy HH:mm')}"></p>
+	<p th:text="${#dates.dayOfWeekName(date)}"></p>
+	<p th:text="${#dates.createNow()}"></p>
+	<p th:text="${#dates.createToday()}"></p>
+
+	<h1>Calendar expression utility</h1>
+	<p th:text="${#calendars.formatISO(calendar)}"></p>
+	<p th:text="${#calendars.format(calendar, 'dd-MM-yyyy HH:mm')}"></p>
+	<p th:text="${#calendars.dayOfWeekName(calendar)}"></p>
+	<p th:text="${#calendars.createNow().getTime()}"></p>
+	<p th:text="${#calendars.createToday().getFirstDayOfWeek()}"></p>
+
+	<h1>Numbers expression utility</h1>
+	<p th:text="${#numbers.formatDecimal(num,2,3)}"></p>
+	<p th:text="${#numbers.formatDecimal(num,2,3,'COMMA')}"></p>
+	<p th:each="number: ${#numbers.sequence(0,2)}">
+		<span th:text="${number}"></span>
+	</p>
+	<p th:each="number: ${#numbers.sequence(0,4,2)}">
+		<span th:text="${number}"></span>
+	</p>
+
+	<h1>Calendar expression utility</h1>
+	<p th:text="${#strings.isEmpty(string)}"></p>
+	<p th:text="${#strings.isEmpty(nullString)}"></p>
+	<p th:text="${#strings.defaultString(emptyString,'Empty String')}"></p>
+	<p th:text="${#strings.containsIgnoreCase(string,'new')}"></p>
+	<p th:text="${#strings.abbreviate(string,5)} "></p>
+	<p th:text="${#strings.capitalizeWords(string)}"></p>
+
+	<h1>Aggregates expression utility</h1>
+	<p th:text="${#aggregates.sum(array)}"></p>
+	<p th:text="${#aggregates.avg(array)}"></p>
+	<p th:text="${#aggregates.sum(set)}"></p>
+	<p th:text="${#aggregates.avg(set)}"></p>
+</body>
+</html>

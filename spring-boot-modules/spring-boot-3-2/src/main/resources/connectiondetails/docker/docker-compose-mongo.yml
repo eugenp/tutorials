@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  mongodb:
+    image: 'mongo:latest'
+    environment:
+      - 'MONGO_INITDB_DATABASE=demodb'
+#      - 'MONGO_INITDB_ROOT_PASSWORD=Mongo123'
+#      - 'MONGO_INITDB_ROOT_USERNAME=mongouser'
+    ports:
+      - '27017:27017'

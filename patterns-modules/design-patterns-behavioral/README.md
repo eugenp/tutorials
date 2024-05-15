@@ -1,0 +1,11 @@
+### Relevant Articles:
+- [The Observer Pattern in Java](https://www.baeldung.com/java-observer-pattern)
+- [Visitor Design Pattern in Java](https://www.baeldung.com/java-visitor-pattern)
+- [Interpreter Design Pattern in Java](https://www.baeldung.com/java-interpreter-pattern)
+- [State Design Pattern in Java](https://www.baeldung.com/java-state-design-pattern)
+- [Implementing the Template Method Pattern in Java](https://www.baeldung.com/java-template-method-pattern)
+- [Chain of Responsibility Design Pattern in Java](https://www.baeldung.com/chain-of-responsibility-pattern)
+- [The Command Pattern in Java](https://www.baeldung.com/java-command-pattern)
+- [The Mediator Pattern in Java](https://www.baeldung.com/java-mediator-pattern)
+- [Introduction to the Null Object Pattern](https://www.baeldung.com/java-null-object-pattern)
+- [Avoid Check for Null Statement in Java](https://www.baeldung.com/java-avoid-null-check)

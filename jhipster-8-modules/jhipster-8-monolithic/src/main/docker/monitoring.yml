@@ -1,0 +1,31 @@
+# This configuration is intended for development purpose, it's **your** responsibility to harden it for production
+name: jhipster8monolithic
+services:
+  prometheus:
+    image: prom/prometheus:v2.51.2
+    volumes:
+      - ./prometheus/:/etc/prometheus/
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    # If you want to expose these ports outside your dev PC,
+    # remove the "127.0.0.1:" prefix
+    ports:
+      - 127.0.0.1:9090:9090
+    # On MacOS, remove next line and replace localhost by host.docker.internal in prometheus/prometheus.yml and
+    # grafana/provisioning/datasources/datasource.yml
+    network_mode: 'host' # to test locally running service
+  grafana:
+    image: grafana/grafana:10.4.2
+    volumes:
+      - ./grafana/provisioning/:/etc/grafana/provisioning/
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_INSTALL_PLUGINS=grafana-piechart-panel
+    # If you want to expose these ports outside your dev PC,
+    # remove the "127.0.0.1:" prefix
+    ports:
+      - 127.0.0.1:3000:3000
+    # On MacOS, remove next line and replace localhost by host.docker.internal in prometheus/prometheus.yml and
+    # grafana/provisioning/datasources/datasource.yml
+    network_mode: 'host' # to test locally running service

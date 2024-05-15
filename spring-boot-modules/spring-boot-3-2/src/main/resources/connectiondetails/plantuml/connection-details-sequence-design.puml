@@ -1,0 +1,16 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+skinparam sequenceMessageAlign direction
+skinparam handwritten true
+skinparam sequence {
+ParticipantBackgroundColor beige
+ParticipantPadding 50
+}
+autonumber
+
+"Spring Boot" -[#63b175]> "Hashicorp Vault": Secret Request
+"Hashicorp Vault" -[#63b175]-> "Spring Boot": Secret Response
+"Spring Boot" -[#63b175]> "Remote Service": Connection Request
+
+"Remote Service" -[#63b175]-> "Spring Boot": Connection Response
+@enduml

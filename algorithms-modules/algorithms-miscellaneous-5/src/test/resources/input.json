@@ -1,0 +1,41 @@
+{
+	"nodes": 5,
+	"edges": 7,
+	"edgeList": [
+		{
+			"first": 0,
+			"second": 1,
+			"weight": 8
+		},
+		{
+			"first": 0,
+			"second": 2,
+			"weight": 5
+		},
+		{
+			"first": 1,
+			"second": 2,
+			"weight": 9
+		},
+		{
+			"first": 1,
+			"second": 3,
+			"weight": 11
+		},
+		{
+			"first": 2,
+			"second": 3,
+			"weight": 15
+		},
+		{
+			"first": 2,
+			"second": 4,
+			"weight": 10
+		},
+		{
+			"first": 3,
+			"second": 4,
+			"weight": 7
+		}
+	]
+}

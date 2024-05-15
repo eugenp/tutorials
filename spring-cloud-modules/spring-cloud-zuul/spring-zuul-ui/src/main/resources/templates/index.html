@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Spring Zuul</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>
+</head>
+<body ng-app="myApp" ng-controller="mainCtrl">
+
+<div>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" th:href="@{/}">Spring Zuul</a>
+    </div>
+    
+  </div><!-- /.container-fluid -->
+</nav>
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-resource.min.js"></script>
+
+
+<script>
+/*<![CDATA[*/
+var app = angular.module('myApp', ["ngResource"]);
+
+app.controller('mainCtrl', function($scope,$resource,$http) {
+    $scope.foo = {id:0 , name:"sample foo"};
+    $scope.foos = $resource("/foos/:fooId",{fooId:'@id'});
+    
+    $scope.getFoo = function(){
+        $scope.foo = $scope.foos.get({fooId:$scope.foo.id});
+    }
+    
+});
+/*]]>*/
+</script>
+</div>
+<div class="container">
+	<h1 class="col-sm-12">Foo Details</h1>
+	<div class="col-sm-12">
+		<label class="col-sm-3">ID</label>
+		<span>{{foo.id}}</span>
+	</div>
+	
+	<div class="col-sm-12">
+	<label class="col-sm-3">Name</label>
+	<span>{{foo.name}}</span>
+	</div>
+	
+	<div class="col-sm-12">
+	<a class="btn btn-default" href="#" ng-click="getFoo()">New Foo</a>
+	</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      registerHealthIndicator: true
+      slidingWindowSize: 10
+      minimumNumberOfCalls: 5
+      permittedNumberOfCallsInHalfOpenState: 3
+      automaticTransitionFromOpenToHalfOpenEnabled: true
+      waitDurationInOpenState: 5s
+      failureRateThreshold: 50
+      eventConsumerBufferSize: 50
+  instances:
+    externalService:
+      baseConfig: default
+
+resilience4j.retry:
+  configs:
+    default:
+      maxAttempts: 3
+      waitDuration: 100
+  instances:
+    externalService:
+      baseConfig: default
+
+resilience4j.timelimiter:
+  configs:
+    default:
+      cancelRunningFuture: true
+      timeoutDuration: 2s
+  instances:
+    externalService:
+      baseConfig: default
+
+resilience4j.bulkhead:
+  configs:
+    default:
+      max-concurrent-calls: 3
+      max-wait-duration: 1
+  instances:
+    externalService:
+      baseConfig: default
+
+resilience4j.ratelimiter:
+  configs:
+    default:
+      limit-for-period: 5
+      limit-refresh-period: 60s
+      timeout-duration: 0s
+      allow-health-indicator-to-fail: true
+      subscribe-for-events: true
+      event-consumer-buffer-size: 50
+  instances:
+    externalService:
+      baseConfig: default

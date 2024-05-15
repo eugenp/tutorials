@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.baeldung.multimodulemavenproject</groupId>
+    <artifactId>multimodulemavenproject</artifactId>
+    <version>1.0</version>
+    <packaging>pom</packaging>
+    <name>multimodulemavenproject</name>
+
+    <!--
+     No <parent> tag since we want the compiler plugin defined
+     in the <pluginManagement> to be used in submodules.
+     Detailed discussion:
+       https://jira.baeldung.com/browse/BAEL-7813
+    -->
+
+    <modules>
+        <module>maven-entitymodule</module>
+        <module>maven-daomodule</module>
+        <module>maven-userdaomodule</module>
+        <module>maven-mainappmodule</module>
+    </modules>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${compiler.plugin.version}</version>
+                    <configuration>
+                        <source>${source.version}</source>
+                        <target>${target.version}</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <properties>
+        <compiler.plugin.version>3.12.1</compiler.plugin.version>
+        <source.version>17</source.version>
+        <target.version>17</target.version>
+    </properties>
+
+</project>

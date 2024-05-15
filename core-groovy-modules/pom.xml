@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>core-groovy-modules</artifactId>
+    <name>core-groovy-modules</name>
+    <packaging>pom</packaging>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <modules>
+        <module>core-groovy</module>
+        <module>core-groovy-2</module>
+        <module>core-groovy-collections</module>
+        <module>core-groovy-strings</module>
+    </modules>
+
+    <properties>
+        <groovy.version>3.0.15</groovy.version>
+        <groovy-all.version>3.0.15</groovy-all.version>
+        <groovy-sql.version>3.0.15</groovy-sql.version>
+        <hsqldb.version>2.7.1</hsqldb.version>
+        <spock-core.version>2.3-groovy-3.0</spock-core.version>
+        <gmavenplus-plugin.version>2.1.0</gmavenplus-plugin.version>
+        <maven-failsafe-plugin.version>2.21.0</maven-failsafe-plugin.version>
+    </properties>
+
+</project>

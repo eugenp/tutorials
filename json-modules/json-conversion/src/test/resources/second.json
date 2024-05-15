@@ -1,0 +1,22 @@
+{
+  "name": "John",
+  "age": 30,
+  "cars": [
+    "Ford",
+    "Audi"
+  ],
+  "address": {
+    "street": "Main Street",
+    "city": "New York"
+  },
+  "children": [
+    {
+      "name": "Peter",
+      "age": 5
+    },
+    {
+      "name": "Cathy",
+      "age": 10
+    }
+  ]
+}

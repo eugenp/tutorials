@@ -1,0 +1,5 @@
+// this project is not supposed to be built. We check only if it compiles fine.
+
+plugins {
+    id 'java'
+}

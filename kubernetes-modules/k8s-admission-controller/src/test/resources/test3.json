@@ -1,0 +1,94 @@
+{
+    "kind": "AdmissionReview",
+    "apiVersion": "admission.k8s.io/v1",
+    "request": {
+        "uid": "c46a6607-129d-425b-af2f-c6f87a0756da",
+        "kind": {
+            "group": "apps",
+            "version": "v1",
+            "kind": "Deployment"
+        },
+        "resource": {
+            "group": "apps",
+            "version": "v1",
+            "resource": "deployments"
+        },
+        "requestKind": {
+            "group": "apps",
+            "version": "v1",
+            "kind": "Deployment"
+        },
+        "requestResource": {
+            "group": "apps",
+            "version": "v1",
+            "resource": "deployments"
+        },
+        "name": "test-deployment",
+        "namespace": "test-namespace",
+        "operation": "CREATE",
+        "object": {
+            "kind": "Deployment",
+            "apiVersion": "apps/v1",
+            "metadata": {
+                "name": "test-deployment",
+                "namespace": "test-namespace",
+                "annotations": {
+                    "com.baeldung/wait-for-it": "www.google.com:80"
+                }
+            },
+            "spec": {
+                "replicas": 1,
+                "selector": {
+                    "matchLabels": {
+                        "app": "test-app"
+                    }
+                },
+                "template": {
+                    "metadata": {
+                        "name": "test-app",
+                        "creationTimestamp": null,
+                        "labels": {
+                            "app": "test-app"
+                        }
+                    },
+                    "spec": {
+                        "initContainers": [
+                            {
+                                "name": "init1",
+                                "image": "test-app-image:latest",
+                                "resources": {},
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File",
+                                "imagePullPolicy": "Always"
+                            }
+                        ],
+                        "containers": [
+                            {
+                                "name": "app",
+                                "image": "test-app-image:latest",
+                                "ports": [
+                                    {
+                                        "name": "http",
+                                        "containerPort": 8080,
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {},
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File",
+                                "imagePullPolicy": "Always"
+                            }
+                        ]
+                    }
+                }
+            },
+            "status": {}
+        },
+        "oldObject": null,
+        "dryRun": false,
+        "options": {
+            "kind": "CreateOptions",
+            "apiVersion": "meta.k8s.io/v1"
+        }
+    }
+}

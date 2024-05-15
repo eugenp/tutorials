@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Currency table</title>
+	</head>
+	<body>
+		<p>Currency format by Locale</p>
+		<p th:text="${#numbers.formatCurrency(param.amount)}"></p>
+
+		<p>Currency Arrays format by Locale</p>
+		<p th:text="${#numbers.listFormatCurrency(param.amountList)}"></p>
+
+		<p>Remove decimal values</p>
+		<p th:text="${#strings.replace(#numbers.formatCurrency(param.amount), '.00', '')}"></p>
+
+		<p>Replace decimal points</p>
+		<p th:text="${#numbers.formatDecimal(param.amount, 1, 2, 'COMMA')}"></p>
+	</body>
+</html>

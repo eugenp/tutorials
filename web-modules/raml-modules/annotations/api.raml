@@ -1,0 +1,126 @@
+#%RAML 1.0
+title: API for REST Services used in the RAML tutorials on Baeldung.com
+documentation:
+  - title: Overview
+    content: |
+      This document defines the interface for the REST services
+      used in the popular RAML Tutorial series at Baeldung.com.
+  - title: Disclaimer
+    content: |
+      All names used in this definition are purely fictional.
+      Any similarities between the names used in this tutorial and those of real persons, whether living or dead, are merely coincidental.
+  - title: Copyright
+    content: Copyright 2016 by Baeldung.com. All rights reserved.
+uses:
+  mySecuritySchemes: !include libraries/securitySchemes.raml
+  myDataTypes: !include libraries/dataTypes.raml
+  myTraits: !include libraries/traits.raml
+  myResourceTypes: !include libraries/resourceTypes.raml
+version: v1
+protocols: [ HTTPS ]
+baseUri: http://rest-api.baeldung.com/api/{version}
+mediaType: application/json
+securedBy: [ mySecuritySchemes.basicAuth ]
+annotationTypes:
+  testCase:
+    allowedTargets: [ Method ]
+    allowMultiple: true
+    usage: |
+      Use this annotation to declare a test case
+      within a testSuite declaration.
+      You may apply this annotation multiple times
+      within the target testSuite.
+    properties:
+      scenario: string
+      setupScript?: string[]
+      testScript: string[]
+      expectedOutput?: string
+      cleanupScript?: string[]
+/foos:
+  type: myResourceTypes.collection
+  get:
+    queryParameters:
+      name?: string
+      ownerName?: string
+    responses:
+      200:
+        body:
+          example: !include examples/Foos.json
+    (testCase):
+      scenario: No Foos
+      setupScript: deleteAllFoosIfAny
+      testScript: getAllFoos
+      expectedOutput: ""
+    (testCase):
+      scenario: One Foo
+      setupScript: [ deleteAllFoosIfAny, addInputFoos ]
+      testScript: getAllFoos
+      expectedOutput: '[ { "id": 999, "name": Joe } ]'
+      cleanupScript: deleteInputFoos
+    (testCase):
+      scenario: Multiple Foos
+      setupScript: [ deleteAllFoosIfAny, addInputFoos ]
+      testScript: getAllFoos
+      expectedOutput: '[ { "id": 998, "name": "Bob" }, { "id": 999, "name": "Joe", "ownerName": "Bob" } ]'
+      cleanupScript: deleteInputFoos
+  post:
+    responses:
+      200:
+        body:
+          example: !include examples/Foo.json
+  /{fooId}:
+    type:  myResourceTypes.item
+    get:
+      responses:
+        200:
+          body:
+            example: !include examples/Foo.json
+    put:
+      responses:
+        200:
+          body:
+            example: !include examples/Foo.json
+/foos/name/{name}:
+  get:
+    description: Get all Foos with the name {name}
+    responses:
+      200:
+        body:
+          type: myDataTypes.Foo
+      404:
+        body:
+          type: myDataTypes.Error
+/foos/bar/{barId}:
+  get:
+    description: Get the Foo for the Bar with barId = {barId}
+    responses:
+      200:
+        body:
+          example: !include examples/Foo.json
+/bars:
+  type: myResourceTypes.collection
+  get:
+    queryParameters:
+      name?: string
+      ownerName?: string
+    responses:
+      200:
+        body:
+          example: !include examples/Bars.json
+  post:
+    responses:
+      200:
+        body:
+          example: !include examples/Bar.json
+  /{barId}:
+    type: myResourceTypes.item
+    get:
+      responses:
+        200:
+          body:
+            example: !include examples/Bar.json
+    put:
+      responses:
+        200:
+          body:
+            example: !include examples/Bars.json

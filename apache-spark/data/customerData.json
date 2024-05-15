@@ -1,0 +1,114 @@
+[
+  {
+    "zoneId": "LONDON",
+    "customerId": 1,
+    "gender": "Female",
+    "name": "jane austin",
+    "contact": {
+      "street_Address": "XYZ Road",
+      "address2": "house 47",
+      "zipcode": "MK1110",
+      "county": "DCounty",
+      "phone_number": "(919) 403-0025",
+      "customer_city": "CityA"
+    },
+    "transaction_date": "2021-02-05",
+    "transaction_amount": 15000
+  },
+  {
+    "zoneId": "LONDON",
+    "customerId": 2,
+    "gender": "Male",
+    "name": "Jack Trevor",
+    "contact": {
+      "street_Address": " kingfisher road",
+      "address2": "SUITE 110",
+      "zipcode": "HM1190",
+      "county": "CCounty",
+      "phone_number": "(919) 403-0025",
+      "customer_city": "CityB"
+    },
+    "transaction_date": "2021-02-05",
+    "transaction_amount": 12000
+  },
+  {
+    "zoneId": "LONDON",
+    "customerId": 11,
+    "gender": "Female",
+    "name": "jane1 austin",
+    "contact": {
+      "street_Address": "B Road",
+      "address2": "house 47",
+      "zipcode": "MK1110",
+      "county": "BCounty",
+      "phone_number": "(919) 403-0025",
+      "customer_city": "CityA"
+    },
+    "transaction_date": "2021-02-05",
+    "transaction_amount": 1000
+  },
+  {
+    "zoneId": "LONDON",
+    "customerId": 21,
+    "gender": "Male",
+    "name": "Jack1 Trevor",
+    "contact": {
+      "street_Address": " A road",
+      "address2": "SUITE 777",
+      "zipcode": "AZ890",
+      "county": "ACounty",
+      "phone_number": "(919) 403-0025",
+      "customer_city": "CityB"
+    },
+    "transaction_date": "2021-02-05",
+    "transaction_amount": 1000
+  },
+  {
+    "zoneId": "Wales",
+    "customerId": 3,
+    "gender": "Male",
+    "name": "John Jack",
+    "contact": {
+      "street_Address": "sunny croft",
+      "address2": "SUITE 1",
+      "zipcode": "SN1030",
+      "county": "bucks",
+      "phone_number": "(919) 403-0025",
+      "customer_city": "Cardiff"
+    },
+    "transaction_date": "2018-02-05",
+    "transaction_amount": 5000
+  },
+  {
+    "zoneId": "LONDON",
+    "customerId": 4,
+    "gender": "Male",
+    "name": "Jack Trevor",
+    "contact": {
+      "street_Address": " kingfisher road",
+      "address2": "SUITE 110",
+      "zipcode": "HM1190",
+      "county": "Hampshire",
+      "phone_number": "(919) 403-0025",
+      "customer_city": "CityB"
+    },
+    "transaction_date": "2021-02-05",
+    "transaction_amount": 500
+  },
+  {
+    "zoneId": "Wales",
+    "customerId": 5,
+    "gender": "Male",
+    "name": "John Jack",
+    "contact": {
+      "street_Address": "sunny croft",
+      "address2": "SUITE 1",
+      "zipcode": "SN1030",
+      "county": "ECounty",
+      "phone_number": "(919) 403-0025",
+      "customer_city": "Cardiff"
+    },
+    "transaction_date": "2018-01-25",
+    "transaction_amount": 500
+  }
+]

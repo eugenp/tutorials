@@ -1,0 +1,6 @@
+{
+  "query": "query($id: String!){ retrieveUser ( id: $id) { id name email} }",
+  "parameters": {
+    "id": 1
+  }
+}

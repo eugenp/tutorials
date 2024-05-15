@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="15 seconds" debug="false">
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%d{ISO8601}]-[%thread] %-5level %logger - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.springframework.boot.test.context" level="WARN"/>
+
+    <logger name="org.springframework.cloud.netflix" level="ERROR"/>
+
+    <logger name="com.netflix.discovery" level="ERROR"/>
+
+    <logger name="com.netflix.config.sources" level="WARN"/>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>

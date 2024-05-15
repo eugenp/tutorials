@@ -1,0 +1,6 @@
+allprojects {
+    apply plugin: "nebula.lint"
+    gradleLint {
+        rules = ['dependency-parenthesis']
+    }
+}

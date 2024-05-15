@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lists Utility Class in Thymeleaf</title>
+</head>
+<body>
+sort: <span th:text="${#lists.sort(myList)}"/>
+
+sort with Comparator: <span th:text="${#lists.sort(myList, reverse)}"/>
+</body>
+</html>

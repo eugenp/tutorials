@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    ManagedBy: deptrack-operator
+    component: frontend-service
+  name: deptrack-frontend
+  namespace: deptrack
+spec:
+  ports:
+    - name: http
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    ManagedBy: deptrack-operator
+    component: frontend
+  sessionAffinity: None
+  type: ClusterIP

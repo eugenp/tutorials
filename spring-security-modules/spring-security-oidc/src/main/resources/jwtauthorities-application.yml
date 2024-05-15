@@ -1,0 +1,15 @@
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+#          issuer-uri: https://sts.windows.net/2e9fde3a-38ec-44f9-8bcd-c184dc1e8033/
+          issuer-uri: http://localhost:8083/auth/realms/baeldung
+baeldung:
+  jwt:
+    mapping:
+      authorities-prefix: "MY_SCOPE_"
+      principal-claim-name: preferred_username
+      scopes:
+        profile: profile.read
+        "profile_read": profile.read

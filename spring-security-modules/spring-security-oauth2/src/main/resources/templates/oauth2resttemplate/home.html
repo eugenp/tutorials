@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+</head>
+<body>
+    <p>
+        Welcome <b th:inline="text"> [[${name}]] </b>
+    </p>
+    <h3>
+        <a href="/repos">View Repositories</a><br/><br/>
+    </h3>
+
+    <form th:action="@{/logout}" method="POST">
+        <input type="submit" value="Logout"/>
+    </form>
+</body>
+</html>

@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="unit">
+    <test name="unit tests">
+        <classes>
+            <class name="com.baeldung.DependentLongRunningUnitTest" />
+            <class name="com.baeldung.PriorityLongRunningUnitTest" />
+        </classes>
+    </test>
+</suite>

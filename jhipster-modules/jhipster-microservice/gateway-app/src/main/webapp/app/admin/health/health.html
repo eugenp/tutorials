@@ -1,0 +1,34 @@
+<div>
+    <h2>Health Checks</h2>
+
+    <p>
+        <button type="button" class="btn btn-primary" ng-click="vm.refresh()"><span class="glyphicon glyphicon-refresh"></span>&nbsp;<span>Refresh</span>
+        </button>
+    </p>
+
+    <table id="healthCheck" class="table table-striped">
+        <thead>
+            <tr>
+                <th class="col-md-7">Service Name</th>
+                <th class="col-md-2 text-center">Status</th>
+                <th class="col-md-2 text-center">Details</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="health in vm.healthData">
+                <td><span class="text-capitalize">{{ vm.baseName(health.name) }}</span> {{vm.subSystemName(health.name)}}</td>
+                <td class="text-center">
+                    <span class="label" ng-class="vm.getLabelClass(health.status)">
+                        {{ health.status }}
+                    </span>
+                </td>
+                <td class="text-center">
+                    <a class="hand" ng-click="vm.showHealth(health)" ng-show="health.details || health.error">
+                        <i class="glyphicon glyphicon-eye-open"></i>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://www.oracle.com/webfolder/technetwork/jsc/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+
+    <display-name>CafeAddress</display-name>
+
+    <!--
+        There are three means to configure Wickets configuration mode and they
+        are tested in the order given.
+
+        1) A system property: -Dwicket.configuration
+        2) servlet specific <init-param>
+        3) context specific <context-param>
+
+        The value might be either "development" (reloading when templates change) or
+        "deployment". If no configuration is found, "development" is the default. -->
+
+    <filter>
+        <filter-name>wicket.examples</filter-name>
+        <filter-class>org.apache.wicket.protocol.http.WicketFilter</filter-class>
+        <init-param>
+            <param-name>applicationClassName</param-name>
+            <param-value>com.baeldung.wicket.examples.HelloWorldApplication</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>wicket.examples</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+</web-app>

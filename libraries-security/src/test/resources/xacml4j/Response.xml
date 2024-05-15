@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Response xmlns="urn:oasis:names:tc:xacml:2.0:context:schema:os" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:xacml:2.0:context:schema:os http://docs.oasis-open.org/xacml/access_control-xacml-2.0-context-schema-os.xsd">
+	<Result>
+		<Decision>NotApplicable</Decision>
+		<Status>
+			<StatusCode Value="urn:oasis:names:tc:xacml:1.0:status:ok"/>
+		</Status>
+	</Result>
+</Response>

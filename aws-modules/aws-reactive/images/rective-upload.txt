@@ -1,0 +1,29 @@
+participant "Client 1" as C1
+participant "Client 2" as C2
+participant "Reactive Web App" as RWS
+participant "Backend" as S3
+C1 -> RWS: POST
+activate C1
+activate RWS
+RWS -> S3: Async POST
+deactivate RWS
+C2 -> RWS: POST
+activate C2
+activate RWS
+RWS -> S3: Async POST
+deactivate RWS
+S3 --> RWS: Async Result
+activate RWS
+RWS -->C2: Result
+deactivate RWS
+deactivate C2
+// First file EOF
+S3 --> RWS: Async Result
+activate RWS
+RWS -->C1: Result
+deactivate RWS
+deactivate C1
+
+
+
+

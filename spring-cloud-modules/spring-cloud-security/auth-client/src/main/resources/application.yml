@@ -1,0 +1,45 @@
+# Make the application available at http://localhost:8080
+# These are default settings, but we add them for clarity.
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+# Configure the Authorization Server and User Info Resource Server details
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          baeldung:
+            client-id: authserver
+            client-secret: passwordforauthserver
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+        provider:
+          baeldung:
+            token-uri: http://localhost:7070/authserver/oauth/token
+            authorization-uri: http://localhost:7070/authserver/oauth/authorize
+            user-info-uri: http://localhost:9000/user
+
+person:
+  url: http://localhost:9000/person
+
+# Proxies the calls to http://localhost:8080/api/* to our REST service at http://localhost:8081/*
+# and automatically includes our OAuth2 token in the request headers
+zuul:
+  sensitiveHeaders: Cookie,Set-Cookie  
+  routes:
+    resource:
+      path: /api/**
+      url: http://localhost:9000
+    user: 
+      path: /user/**
+      url: http://localhost:9000/user
+
+# Make sure the OAuth2 token is only relayed when using the internal API,
+# do not pass any authentication to the external API
+proxy:
+  auth:
+    routes:
+      api: oauth2

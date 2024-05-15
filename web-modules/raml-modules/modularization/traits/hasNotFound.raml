@@ -1,0 +1,8 @@
+#%RAML 1.0 Trait
+usage: Use this trait for resources that could respond with a 404 status
+responses:
+    404:
+      body:
+        application/json:
+          type: Error
+          example: !include /examples/Error.json

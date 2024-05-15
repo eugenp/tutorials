@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.intellij' version '1.16.0'
+}
+
+group 'com.baeldung'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation('junit:junit:4.12')
+}
+
+// See https://github.com/JetBrains/gradle-intellij-plugin/
+intellij {
+    version = "2022.2.5"
+    type = "IC"
+}
+
+patchPluginXml {
+    changeNotes = """
+      Add change notes here.<br>
+      <em>most HTML tags may be used</em>"""
+}

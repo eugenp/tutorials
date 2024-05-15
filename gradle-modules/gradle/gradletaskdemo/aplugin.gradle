@@ -1,0 +1,5 @@
+task fromPlugin {
+    doLast {
+        println "I'm from plugin"
+    }
+}

@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  db:
+    image: mongo:latest
+    ports:
+      - '27017:27017'
+    volumes:
+      - db:/data/db
+    labels:
+      org.springframework.boot.service-connection: mongo
+volumes:
+  db:
+    driver:
+      local
