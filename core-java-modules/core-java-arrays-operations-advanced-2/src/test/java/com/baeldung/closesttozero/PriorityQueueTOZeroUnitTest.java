@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class PriorityQueueTOZeroUnitTest {
     @Test
-    public void whenFindingClosestToZeroWithBruteForce_thenResultShouldBeCorrect() throws IllegalAccessException {
+    void whenFindingClosestToZeroWithBruteForce_thenResultShouldBeCorrect() throws IllegalAccessException {
         int[] arr = {1, 60, -10, 70, -80, 85};
         assertEquals(1, PriorityQueueToZero.findClosestToZeroWithPriorityQueue(arr, 1));
     }
