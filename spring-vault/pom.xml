@@ -16,22 +16,11 @@
         <relativePath>../parent-boot-3</relativePath>
     </parent>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.data</groupId>
-                <artifactId>spring-data-releasetrain</artifactId>
-                <version>Moore-SR1</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
+            <version>${spring-boot.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.vault</groupId>
@@ -41,6 +30,7 @@
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-keyvalue</artifactId>
+            <version>${spring-data-keyvalue.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -49,6 +39,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <version>${spring-boot.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -70,11 +61,14 @@
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-commons</artifactId>
-            <version>3.0.8</version>
+            <version>${spring-data-commons.version}</version>
         </dependency>
     </dependencies>
 
     <properties>
+        <spring-boot.version>3.2.5</spring-boot.version>
+        <spring-data-keyvalue.version>3.2.5</spring-data-keyvalue.version>
+        <spring-data-commons.version>3.2.5</spring-data-commons.version>
         <spring-vault-core.version>3.1.1</spring-vault-core.version>
         <auth.version>2.25.6</auth.version>
         <spring-cloud-starter-vault-config.version>4.1.1</spring-cloud-starter-vault-config.version>
