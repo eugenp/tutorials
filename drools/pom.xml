@@ -39,6 +39,11 @@
             <version>${drools.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.drools</groupId>
+            <artifactId>drools-mvel</artifactId>
+            <version>${drools.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
             <version>${poi.version}</version>
@@ -57,7 +62,7 @@
 
     <properties>
         <httpcore.version>4.4.16</httpcore.version>
-        <drools.version>8.32.0.Final</drools.version>
+        <drools.version>9.44.0.Final</drools.version>
         <poi.version>5.2.3</poi.version>
         <optaplanner-core.version>8.32.0.Final</optaplanner-core.version>
     </properties>
