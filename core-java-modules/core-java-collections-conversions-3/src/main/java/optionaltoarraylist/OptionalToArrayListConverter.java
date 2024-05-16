@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 public class OptionalToArrayListConverter {
 
-    public static List<String> usingIsPresent(Optional<String> obj) {
+    public static List<String> usingIfPresent(Optional<String> obj) {
         List<String> arrayList = new ArrayList<>();
         obj.ifPresent(arrayList::add);
         return arrayList;
