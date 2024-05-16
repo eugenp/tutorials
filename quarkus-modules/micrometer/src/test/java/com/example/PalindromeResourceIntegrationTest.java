@@ -8,7 +8,7 @@ import static io.restassured.RestAssured.when;
 import static org.hamcrest.CoreMatchers.containsString;
 
 @QuarkusTest
-class PalindromeResourceTest {
+class PalindromeResourceIntegrationTest {
 
     @Test
     void givenMicrometerApp_whenCallingEndpoint_gaugeIsUpdated() {
