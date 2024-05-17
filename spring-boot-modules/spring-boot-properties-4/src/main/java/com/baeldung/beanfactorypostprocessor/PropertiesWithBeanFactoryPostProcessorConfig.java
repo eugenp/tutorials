@@ -11,8 +11,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 
-import com.baeldung.envvariables.BaeldungProperties;
-
 @Configuration
 public class PropertiesWithBeanFactoryPostProcessorConfig {
 
@@ -21,17 +19,17 @@ public class PropertiesWithBeanFactoryPostProcessorConfig {
     @Bean
     public static BeanFactoryPostProcessor beanFactoryPostProcessor(Environment environment) {
         return beanFactory -> {
-            String serviceName = environment.getProperty("custom-properties.name", String.class);
-            LOGGER.debug("Service name, using environment::getProperty: " + serviceName);
+            String articleName = environment.getProperty("article.name", String.class);
+            LOGGER.debug("Article name, using environment::getProperty: " + articleName);
 
-            BindResult<BaeldungProperties> result = Binder.get(environment)
-                .bind("baeldung", BaeldungProperties.class);
-            BaeldungProperties properties = result.get();
-            LOGGER.debug("Presentation, using binder to access BaeldungProperties: " + properties.getPresentation());
+            BindResult<ApplicationProperties> result = Binder.get(environment)
+                .bind("application", ApplicationProperties.class);
+            ApplicationProperties properties = result.get();
+            LOGGER.debug("Application name, using binder to access ApplicationProperties: " + properties.getName());
 
             BeanDefinitionRegistry registry = (BeanDefinitionRegistry) beanFactory;
-            registry.registerBeanDefinition("presentationValueFromBeanAnnotation", BeanDefinitionBuilder.genericBeanDefinition(String.class)
-                .addConstructorArgValue(serviceName + " " + properties.getPresentation())
+            registry.registerBeanDefinition("tutorialTitleFromBeanAnnotation", BeanDefinitionBuilder.genericBeanDefinition(String.class)
+                .addConstructorArgValue(properties.getName() + ": " + articleName)
                 .getBeanDefinition());
         };
     }

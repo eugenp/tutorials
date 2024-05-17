@@ -6,7 +6,7 @@
         </encoder>
     </appender>
 
-    <logger name="com.baeldung.properties.spring" level="DEBUG"/>
+    <logger name="com.baeldung.beanfactorypostprocessor" level="DEBUG"/>
 
     <root level="INFO">
         <appender-ref ref="STDOUT" />
