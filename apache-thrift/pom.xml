@@ -60,7 +60,6 @@
 
     <properties>
         <thrift.version>0.10.0</thrift.version>
-        <maven-thrift.version>0.1.11</maven-thrift.version>
         <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
     </properties>
 

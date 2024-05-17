@@ -41,6 +41,7 @@
                 <plugin>
                     <groupId>org.graalvm.buildtools</groupId>
                     <artifactId>native-maven-plugin</artifactId>
+                    <version>${native.maven.plugin.version}</version>
                     <configuration>
                         <!-- Mockito is not supported -->
                         <skipNativeTests>true</skipNativeTests>
@@ -80,6 +81,7 @@
                     <plugin>
                         <groupId>org.graalvm.buildtools</groupId>
                         <artifactId>native-maven-plugin</artifactId>
+                        <version>${native.maven.plugin.version}</version>
                         <executions>
                             <execution>
                                 <id>build-native</id>
