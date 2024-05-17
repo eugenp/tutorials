@@ -9,7 +9,7 @@ public class BruteForce {
 
         int closest = arr[0];
         for (int i = 1; i < arr.length; i++) {
-            if (Math.abs(arr[i]) < Math.abs(closest) || Math.abs(arr[i]) == Math.abs(closest) && arr[i] > closest) {
+            if ((Math.abs(arr[i]) < Math.abs(closest)) || ((Math.abs(arr[i]) == Math.abs(closest)) && (arr[i] > closest))) {
                 closest = arr[i];
             }
         }
