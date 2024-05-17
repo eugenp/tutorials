@@ -271,6 +271,7 @@
             <plugin>
                 <groupId>org.gaul</groupId>
                 <artifactId>modernizer-maven-plugin</artifactId>
+                <version>${modernizer-maven-plugin.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>
