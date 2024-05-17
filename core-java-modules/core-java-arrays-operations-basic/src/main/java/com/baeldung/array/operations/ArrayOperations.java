@@ -1,13 +1,18 @@
 package com.baeldung.array.operations;
 
-import org.apache.commons.lang3.ArrayUtils;
-
 import java.lang.reflect.Array;
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.LinkedList;
+import java.util.Random;
+import java.util.Set;
 import java.util.function.Function;
 import java.util.function.IntPredicate;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
+
+import org.apache.commons.lang3.ArrayUtils;
 
 public class ArrayOperations {
 
@@ -225,7 +230,7 @@ public class ArrayOperations {
     public static int[] insertAnElementAtAGivenIndex(final int[] srcArray, int index, int newElement) {
         int[] destArray = new int[srcArray.length + 1];
         int j = 0;
-        for (int i = 0; i < destArray.length - 1; i++) {
+        for (int i = 0; i < destArray.length; i++) {
 
             if (i == index) {
                 destArray[i] = newElement;
@@ -235,5 +240,12 @@ public class ArrayOperations {
             }
         }
         return destArray;
+    }
+
+    public static int[] prependAnElementToArray(int[] srcArray, int element) {
+        int[] newArray =  new int[srcArray.length + 1];
+        newArray[0] = element;
+        System.arraycopy(srcArray, 0, newArray, 1, srcArray.length);
+        return newArray;
     }
 }
