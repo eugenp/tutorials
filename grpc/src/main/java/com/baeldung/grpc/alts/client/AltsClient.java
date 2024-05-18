@@ -26,6 +26,7 @@ public class AltsClient {
             .setDoctorID("DC-3904")
             .build());
         logger.info("Date of booking: {}", bookingResponse.getBookingDate());
+        managedChannel.shutdown();
     }
 
 }
