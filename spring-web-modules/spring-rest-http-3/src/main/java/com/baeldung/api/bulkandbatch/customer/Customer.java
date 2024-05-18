@@ -1,20 +1,16 @@
-package com.baeldung.api.bulk;
+package com.baeldung.api.bulkandbatch.customer;
 
 import java.util.Objects;
 
-public class User {
+public class Customer {
 
     private int id;
     private String name;
     private String email;
+    private int addressId;
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+    public int getId() {
+        return id;
     }
 
     public void setId(int id) {
@@ -37,12 +33,20 @@ public class User {
         this.email = email;
     }
 
+    public int getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(int addressId) {
+        this.addressId = addressId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(email, user.email);
+        Customer customer = (Customer) o;
+        return Objects.equals(email, customer.email);
     }
 
     @Override
