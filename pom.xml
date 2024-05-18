@@ -931,6 +931,7 @@
                 <module>core-groovy-modules</module>
                 <module>core-java-modules</module>
                 <module>custom-pmd</module>
+                <module>data-processing-libraries-modules</module>
                 <module>data-structures</module>
                 <module>deeplearning4j</module>
                 <module>di-modules</module>
