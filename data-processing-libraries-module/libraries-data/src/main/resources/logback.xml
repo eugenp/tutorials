@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+    <logger name="io.ebean.DDL" level="TRACE"/>
+    <logger name="io.ebean.SQL" level="TRACE"/>
+    <logger name="io.ebean.TXN" level="TRACE"/>
+    <root level="WARN">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>
