@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>frontend-modules</artifactId>
+    <name>frontend-modules</name>
+    <packaging>pom</packaging>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <modules>
+        <module>apache-velocity</module>
+        <module>vaadin</module>
+        <module>jws</module>
+        <module>mustache</module>
+        <module>webrtc</module>
+    </modules>
+
+    <properties>
+        <commons-codec.version>1.16.0</commons-codec.version>
+        <commons-math3.version>3.6.1</commons-math3.version>
+        <cobertura.plugin.version>2.7</cobertura.plugin.version>
+        <tradukisto.version>1.0.1</tradukisto.version>
+    </properties>
+
+</project>
