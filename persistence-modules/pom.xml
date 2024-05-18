@@ -130,6 +130,8 @@
         <module>spring-data-jpa-repo-3</module>
         <module>spring-boot-persistence-4</module>
         <module>hibernate-annotations-2</module>
+        <module>hibernate-reactive</module>
+
     </modules>
 
     <properties>
