@@ -1,12 +1,15 @@
-package com.baeldung.api.bulkandbatch.customer;
+package com.baeldung.bulkandbatchapi.customer;
 
 import java.util.Objects;
 
 public class Customer {
 
     private int id;
+
     private String name;
+
     private String email;
+
     private int addressId;
 
     public int getId() {
@@ -52,5 +55,15 @@ public class Customer {
     @Override
     public int hashCode() {
         return Objects.hashCode(email);
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", addressId=" + addressId +
+                '}';
     }
 }

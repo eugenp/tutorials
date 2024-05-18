@@ -1,15 +1,14 @@
-package com.baeldung.api.bulkandbatch;
+package com.baeldung.bulkandbatchapi;
 
-public class BatchRequest {
-
-    private String data;
+public class BatchUpdateRequest {
     private ResourceType resourceType;
+    private Object data;
 
-    public String getData() {
+    public Object getData() {
         return data;
     }
 
-    public void setData(String data) {
+    public void setData(Object data) {
         this.data = data;
     }
 

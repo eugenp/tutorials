@@ -1,4 +1,4 @@
-package com.baeldung.api.bulkandbatch.customer;
+package com.baeldung.bulkandbatchapi.customer;
 
 public enum BatchMethodType {
     POST, PUT, DELETE

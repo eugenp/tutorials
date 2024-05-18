@@ -1,7 +1,10 @@
-package com.baeldung.api.bulkandbatch.customer;
+package com.baeldung.bulkandbatchapi.customer;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Size;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -10,6 +13,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/api")
+@Validated
 public class CustomerController {
 
     private final CustomerRepository customerRepository;
@@ -18,38 +22,29 @@ public class CustomerController {
         this.customerRepository = customerRepository;
     }
 
-    @GetMapping(path = "/customers")
-    public Set<Customer> customerBatchUpdate() {
-        return customerRepository.getCustomers();
-    }
-
-    @PostMapping(path = "/customer")
-    public Customer createCustomer(@RequestBody Customer customer) {
-        return customerRepository.createCustomer(customer);
-    }
-
     @PutMapping(path = "/customer")
     public Customer updateCustomer(@RequestBody Customer customer) {
         return customerRepository.updateCustomer(customer);
     }
 
-    @DeleteMapping(path = "/customer")
-    public String deleteCustomer(@RequestBody Customer customer) {
-        customerRepository.deleteCustomer(customer);
-        return "Customer deleted successfully";
+    @GetMapping(path = "/customers")
+    public Set<Customer> getAllCustomers() {
+        return customerRepository.getCustomers();
     }
 
     @PostMapping(path = "/bulk/customers")
-    public List<Customer> createCustomers(@RequestBody List<Customer> customers) {
+    public List<Customer> bulkCreateCustomers(@RequestBody @Valid @Size(min = 1, max = 3, message = "should be of maximum 20 size")
+                                              List<Customer> customers) {
         return customerRepository.createCustomers(customers);
     }
 
     @PostMapping(path = "/batch/customers")
-    public ResponseEntity<String> batchUpdateCustomers(@RequestBody List<CustomerBatchRequest> customerBatchRequests) {
+    public ResponseEntity<String> batchUpdateCustomers(@RequestBody @Valid @Size(min = 1, max = 3, message = "should be of maximum 20 size")
+                                                       List<CustomerBatchRequest> customerBatchRequests) {
         List<Customer> customerProcessed = new ArrayList<>();
 
         customerBatchRequests.forEach(customerBatchRequest -> {
-            switch (customerBatchRequest.getHttpMethodType()) {
+            switch (customerBatchRequest.getBatchMethodType()) {
                 case POST:
                     customerProcessed.addAll(customerRepository.createCustomers(customerBatchRequest.getCustomerData()));
                     break;
@@ -64,6 +59,6 @@ public class CustomerController {
             }
         });
 
-        return ResponseEntity.ok("Customer Batch Processed Successfully for customer size " + customerProcessed.size());
+        return ResponseEntity.ok("Customer Batch Request is processed successfully of customer size " + customerProcessed.size());
     }
 }

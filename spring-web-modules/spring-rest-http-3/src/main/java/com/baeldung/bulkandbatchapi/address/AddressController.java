@@ -1,7 +1,9 @@
-package com.baeldung.api.bulkandbatch.address;
+package com.baeldung.bulkandbatchapi.address;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/address")
@@ -13,8 +15,13 @@ public class AddressController {
         this.addressRepository = addressRepository;
     }
 
+    @GetMapping
+    public List<Address> getAllAddresses() {
+        return addressRepository.getAddresses();
+    }
+
     @PostMapping
-    public Address createOrUpdateAddress(@RequestBody Address address) {
-        return addressRepository.createOrUpdateAddress(address);
+    public Address createAddress(@RequestBody Address address) {
+        return addressRepository.createAddress(address);
     }
 }

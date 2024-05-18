@@ -1,4 +1,4 @@
-package com.baeldung.api.bulkandbatch;
+package com.baeldung.bulkandbatchapi;
 
 public enum ResourceType {
     ADDRESS, CUSTOMER
