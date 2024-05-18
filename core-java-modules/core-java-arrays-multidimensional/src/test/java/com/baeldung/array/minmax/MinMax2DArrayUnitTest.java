@@ -19,8 +19,7 @@ public class MinMax2DArrayUnitTest {
             for (int currentValue : row) {
                 if (currentValue < min) {
                     min = currentValue;
-                }
-                else if (currentValue > max) {
+                } else if (currentValue > max) {
                     max = currentValue;
                 }
             }
