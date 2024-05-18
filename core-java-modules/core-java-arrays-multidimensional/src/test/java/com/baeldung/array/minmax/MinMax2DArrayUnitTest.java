@@ -20,7 +20,7 @@ public class MinMax2DArrayUnitTest {
                 if (currentValue < min) {
                     min = currentValue;
                 }
-                if (currentValue > max) {
+                else if (currentValue > max) {
                     max = currentValue;
                 }
             }
