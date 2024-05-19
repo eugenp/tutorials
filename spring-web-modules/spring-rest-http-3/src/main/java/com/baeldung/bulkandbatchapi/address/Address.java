@@ -3,12 +3,8 @@ package com.baeldung.bulkandbatchapi.address;
 public class Address {
 
     private int id;
-
     private String addressLn1;
-
     private String city;
-
-    private int pin;
 
     public int getId() {
         return id;
@@ -34,21 +30,12 @@ public class Address {
         this.city = city;
     }
 
-    public int getPin() {
-        return pin;
-    }
-
-    public void setPin(int pin) {
-        this.pin = pin;
-    }
-
     @Override
     public String toString() {
         return "Address{" +
                 "id=" + id +
                 ", addressLn1='" + addressLn1 + '\'' +
                 ", city='" + city + '\'' +
-                ", pin=" + pin +
                 '}';
     }
 }

@@ -1,16 +1,11 @@
 package com.baeldung.bulkandbatchapi.customer;
 
-import java.util.Objects;
-
 public class Customer {
 
     private int id;
-
     private String name;
-
     private String email;
-
-    private int addressId;
+    private String address;
 
     public int getId() {
         return id;
@@ -36,25 +31,12 @@ public class Customer {
         this.email = email;
     }
 
-    public int getAddressId() {
-        return addressId;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAddressId(int addressId) {
-        this.addressId = addressId;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Customer customer = (Customer) o;
-        return Objects.equals(email, customer.email);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(email);
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     @Override
@@ -63,7 +45,7 @@ public class Customer {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
-                ", addressId=" + addressId +
+                ", address=" + address +
                 '}';
     }
 }

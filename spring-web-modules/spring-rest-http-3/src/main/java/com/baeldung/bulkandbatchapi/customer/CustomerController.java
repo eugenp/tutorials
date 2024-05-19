@@ -7,9 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @RestController
 @RequestMapping("/api")
@@ -22,43 +20,36 @@ public class CustomerController {
         this.customerRepository = customerRepository;
     }
 
-    @PutMapping(path = "/customer")
-    public Customer updateCustomer(@RequestBody Customer customer) {
-        return customerRepository.updateCustomer(customer);
-    }
-
     @GetMapping(path = "/customers")
-    public Set<Customer> getAllCustomers() {
+    public List<Customer> getAllCustomers() {
         return customerRepository.getCustomers();
     }
 
     @PostMapping(path = "/bulk/customers")
-    public List<Customer> bulkCreateCustomers(@RequestBody @Valid @Size(min = 1, max = 3, message = "should be of maximum 20 size")
+    public List<Customer> bulkCreateCustomers(@RequestBody @Valid @Size(min = 1, max = 20, message = "size should be between 1 and 20")
                                               List<Customer> customers) {
         return customerRepository.createCustomers(customers);
     }
 
     @PostMapping(path = "/batch/customers")
-    public ResponseEntity<String> batchUpdateCustomers(@RequestBody @Valid @Size(min = 1, max = 3, message = "should be of maximum 20 size")
+    public ResponseEntity<String> batchUpdateCustomers(@RequestBody @Valid @Size(min = 1, max = 20, message = "size should be between 1 and 20")
                                                        List<CustomerBatchRequest> customerBatchRequests) {
-        List<Customer> customerProcessed = new ArrayList<>();
-
         customerBatchRequests.forEach(customerBatchRequest -> {
-            switch (customerBatchRequest.getBatchMethodType()) {
-                case POST:
-                    customerProcessed.addAll(customerRepository.createCustomers(customerBatchRequest.getCustomerData()));
+            switch (customerBatchRequest.getBatchOperationType()) {
+                case CREATE:
+                    customerRepository.createCustomers(customerBatchRequest.getCustomers());
                     break;
-                case PUT:
-                    customerProcessed.addAll(customerRepository.updateCustomers(customerBatchRequest.getCustomerData()));
+                case UPDATE:
+                    customerRepository.updateCustomers(customerBatchRequest.getCustomers());
                     break;
                 case DELETE:
-                    customerProcessed.addAll(customerRepository.deleteCustomers(customerBatchRequest.getCustomerData()));
+                    customerRepository.deleteCustomers(customerBatchRequest.getCustomers());
                     break;
                 default:
                     break;
             }
         });
 
-        return ResponseEntity.ok("Customer Batch Request is processed successfully of customer size " + customerProcessed.size());
+        return ResponseEntity.ok("Customer Batch Request is processed");
     }
 }
