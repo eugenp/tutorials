@@ -446,7 +446,7 @@
 
             <modules>
                 <!--<module>apache-spark</module>--><!-- failing after upgrading to jdk17-->
-                <!--<module>jhipster-modules</module>--><!-- JAVA-33843 -->
+                <module>jhipster-8-modules</module>
                 <module>spring-cloud-modules/spring-cloud-azure</module>
                 <module>kubernetes-modules/k8s-operator</module>
                 <module>web-modules/restx</module>
@@ -581,7 +581,7 @@
 
             <modules>
                 <!--<module>apache-spark</module>--><!-- failing after upgrading to jdk17-->
-                <!--<module>jhipster-modules</module>--><!-- JAVA-33843 -->
+                <module>jhipster-8-modules</module>
                 <module>spring-cloud-modules/spring-cloud-azure</module>
                 <module>web-modules/restx</module>
                 <module>libraries-testing</module>
@@ -871,8 +871,8 @@
                 <module>xml</module>
                 <module>xstream</module>
                 <module>libraries-data-io-2</module>
-                <module>spring-swagger-codegen/openapi-custom-generator</module>
-                <module>spring-swagger-codegen/openapi-custom-generator-api-client</module>
+                <!--<module>spring-swagger-codegen/openapi-custom-generator</module>
+                <module>spring-swagger-codegen/openapi-custom-generator-api-client</module> --> <!-- cannot add the individual modules here because the order is not guaranteed -->
             </modules>
 
             <properties>

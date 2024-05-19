@@ -1,6 +1,7 @@
 package com.baeldung.mimetype;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,11 +10,14 @@ import java.net.MalformedURLException;
 import java.net.URLConnection;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Optional;
 
 import jakarta.activation.MimetypesFileTypeMap;
 
 import org.apache.tika.Tika;
 import org.junit.Test;
+import org.springframework.http.MediaType;
+import org.springframework.http.MediaTypeFactory;
 
 import net.sf.jmimemagic.Magic;
 import net.sf.jmimemagic.MagicException;
@@ -127,5 +131,16 @@ public class MimeTypeUnitTest {
         final Tika tika = new Tika();
         final String mimeType = tika.detect(file);
         assertEquals(mimeType, PNG_EXT);
+    }
+
+    /**
+     * Test method demonstrating usage of Spring MediaTypeFactory.
+     */
+    @Test
+    public void whenUsingSpringMediaTypeFactory_thenSuccess() {
+        final File file = new File(FILE_LOC);
+        Optional<MediaType> mimeTypeOptional = MediaTypeFactory.getMediaType(file.getName());
+        assertTrue(mimeTypeOptional.isPresent());
+        assertEquals(mimeTypeOptional.get().toString(), PNG_EXT);
     }
 }
