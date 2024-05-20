@@ -21,11 +21,12 @@ public class AltsOtBookingClient {
             .build();
         OtBookingServiceGrpc.OtBookingServiceBlockingStub OTBookingServiceStub = OtBookingServiceGrpc.newBlockingStub(
             managedChannel);
+        logger.info("RPC initiated successfully to fetch the booking info");
         BookingResponse bookingResponse = OTBookingServiceStub.getBookingInfo(BookingRequest.newBuilder()
             .setPatientID("PT-1204")
             .setDoctorID("DC-3904")
             .build());
-        logger.info("Date of booking: {}", bookingResponse.getBookingDate());
+        logger.info("RPC response fetched successfully, Date of booking: {}", bookingResponse.getBookingDate());
         managedChannel.shutdown();
     }
 }

@@ -25,9 +25,12 @@ public class ClientAuthInterceptor implements ServerInterceptor {
         logger.info("Entering interceptor {}", "ClientAuthInterceptor");
         Status status = AuthorizationUtil.clientAuthorizationCheck(serverCall,
             Lists.newArrayList(this.clientServiceAccount));
+
         if (!status.isOk()) {
             logger.info("Authentication of the client failed");
             serverCall.close(status, new Metadata());
+        } else {
+            logger.info("Client successfully authenticated");
         }
         return serverCallHandler.startCall(serverCall, metadata);
     }
