@@ -39,7 +39,7 @@
         <logback.version>1.2.7</logback.version>
         <!-- Can't update to the recent mockito version, without updating the spring boot version-->
         <mockito.version>4.4.0</mockito.version>
-        <!-- Can't update to recent junit version -->
+        <!-- Can't update to recent junit version, need to update the spring boot version -->
         <junit-jupiter.version>5.7.0</junit-jupiter.version>
     </properties>
 
