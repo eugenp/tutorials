@@ -1,6 +1,6 @@
 package com.baeldung.bulkandbatchapi;
 
-public class BatchUpdateRequest {
+public class BatchRequest {
     private ResourceType resourceType;
     private Object data;
 

@@ -11,10 +11,10 @@ import java.util.List;
 @Validated
 public class AddressController {
 
-    private final AddressRepository addressRepository;
+    private final AddressService addressRepository;
 
-    public AddressController(@Autowired AddressRepository addressRepository) {
-        this.addressRepository = addressRepository;
+    public AddressController(@Autowired AddressService addressService) {
+        this.addressRepository = addressService;
     }
 
     @GetMapping(path = "/addresses")

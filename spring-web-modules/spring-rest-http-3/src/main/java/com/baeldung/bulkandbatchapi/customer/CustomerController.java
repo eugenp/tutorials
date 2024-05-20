@@ -14,41 +14,28 @@ import java.util.List;
 @Validated
 public class CustomerController {
 
-    private final CustomerRepository customerRepository;
+    private final CustomerService customerService;
 
-    public CustomerController(@Autowired CustomerRepository customerRepository) {
-        this.customerRepository = customerRepository;
+    public CustomerController(@Autowired CustomerService customerService) {
+        this.customerService = customerService;
     }
 
     @GetMapping(path = "/customers")
     public List<Customer> getAllCustomers() {
-        return customerRepository.getCustomers();
+        return customerService.getCustomers();
     }
 
     @PostMapping(path = "/bulk/customers")
     public List<Customer> bulkCreateCustomers(@RequestBody @Valid @Size(min = 1, max = 20, message = "size should be between 1 and 20")
                                               List<Customer> customers) {
-        return customerRepository.createCustomers(customers);
+        return customerService.createCustomers(customers);
     }
 
     @PostMapping(path = "/batch/customers")
-    public ResponseEntity<String> batchUpdateCustomers(@RequestBody @Valid @Size(min = 1, max = 20, message = "size should be between 1 and 20")
-                                                       List<CustomerBatchRequest> customerBatchRequests) {
-        customerBatchRequests.forEach(customerBatchRequest -> {
-            switch (customerBatchRequest.getBatchOperationType()) {
-                case CREATE:
-                    customerRepository.createCustomers(customerBatchRequest.getCustomers());
-                    break;
-                case UPDATE:
-                    customerRepository.updateCustomers(customerBatchRequest.getCustomers());
-                    break;
-                case DELETE:
-                    customerRepository.deleteCustomers(customerBatchRequest.getCustomers());
-                    break;
-                default:
-                    break;
-            }
-        });
+    public ResponseEntity<String> batchProcessCustomers(@RequestBody @Valid @Size(min = 1, max = 20, message = "size should be between 1 and 20")
+                                                        List<CustomerBatchRequest> customerBatchRequests) {
+        customerBatchRequests.forEach(customerBatchRequest -> customerService.processCustomers(customerBatchRequest.getCustomers(),
+                customerBatchRequest.getBatchType()));
 
         return ResponseEntity.ok("Customer Batch Request is processed");
     }

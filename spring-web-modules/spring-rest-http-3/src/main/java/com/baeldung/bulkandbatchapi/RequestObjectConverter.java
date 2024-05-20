@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CustomObjectConverter<T> {
+public class RequestObjectConverter<T> {
 
     public T convertObject(Object object, Class<T> valueType) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();

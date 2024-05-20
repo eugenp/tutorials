@@ -1,5 +1,5 @@
 package com.baeldung.bulkandbatchapi.customer;
 
-public enum BatchOperationType {
+public enum BatchType {
     CREATE, UPDATE, DELETE
 }

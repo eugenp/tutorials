@@ -1,9 +1,11 @@
 package com.baeldung.bulkandbatchapi.address;
 
-public class Address {
+import java.io.Serializable;
+
+public class Address implements Serializable {
 
     private int id;
-    private String addressLn1;
+    private String street;
     private String city;
 
     public int getId() {
@@ -14,12 +16,12 @@ public class Address {
         this.id = id;
     }
 
-    public String getAddressLn1() {
-        return addressLn1;
+    public String getStreet() {
+        return street;
     }
 
-    public void setAddressLn1(String addressLn1) {
-        this.addressLn1 = addressLn1;
+    public void setStreet(String street) {
+        this.street = street;
     }
 
     public String getCity() {
@@ -34,7 +36,7 @@ public class Address {
     public String toString() {
         return "Address{" +
                 "id=" + id +
-                ", addressLn1='" + addressLn1 + '\'' +
+                ", street='" + street + '\'' +
                 ", city='" + city + '\'' +
                 '}';
     }
