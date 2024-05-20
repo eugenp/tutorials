@@ -9,13 +9,13 @@ import com.baeldung.grpc.alts.otbooking.OtBookingServiceGrpc;
 
 import io.grpc.stub.StreamObserver;
 
-public class OTBookingService extends OtBookingServiceGrpc.OtBookingServiceImplBase {
+public class OtBookingService extends OtBookingServiceGrpc.OtBookingServiceImplBase {
 
-    private static final Logger logger = LoggerFactory.getLogger(OTBookingService.class);
+    private static final Logger logger = LoggerFactory.getLogger(OtBookingService.class);
 
     @Override
     public void getBookingInfo(BookingRequest request, StreamObserver<BookingResponse> responseObserver) {
-        logger.info("Received request for booking info for patient {}", request.getPateintID());
+        logger.info("Received request for booking info for patient {}", request.getPatientID());
         BookingResponse bookingResponse = BookingResponse.newBuilder()
             .setBookingDate("01-Jun-2024 11:30")
             .setCondition("Gall bladder stone")

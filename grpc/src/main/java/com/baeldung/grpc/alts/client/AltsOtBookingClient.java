@@ -10,8 +10,8 @@ import com.baeldung.grpc.alts.otbooking.OtBookingServiceGrpc;
 import io.grpc.ManagedChannel;
 import io.grpc.alts.AltsChannelBuilder;
 
-public class AltsClient {
-    private static final Logger logger = LoggerFactory.getLogger(AltsClient.class);
+public class AltsOtBookingClient {
+    private static final Logger logger = LoggerFactory.getLogger(AltsOtBookingClient.class);
 
     public static void main(String[] args) {
         final String SERVER_ADDRESS = args[0];
@@ -22,11 +22,10 @@ public class AltsClient {
         OtBookingServiceGrpc.OtBookingServiceBlockingStub OTBookingServiceStub = OtBookingServiceGrpc.newBlockingStub(
             managedChannel);
         BookingResponse bookingResponse = OTBookingServiceStub.getBookingInfo(BookingRequest.newBuilder()
-            .setPateintID("PT-1204")
+            .setPatientID("PT-1204")
             .setDoctorID("DC-3904")
             .build());
         logger.info("Date of booking: {}", bookingResponse.getBookingDate());
         managedChannel.shutdown();
     }
-
 }
