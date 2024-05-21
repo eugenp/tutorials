@@ -69,4 +69,7 @@
     <logger name="com.baeldung.parameterized.logging" additivity="false" level="INFO">
         <appender-ref ref="out"/>
     </logger>
+
+    <logger name="com.baeldung.logback.disableclass.VerboseClass" level="OFF"/>
+
 </configuration>
