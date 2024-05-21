@@ -20,6 +20,16 @@
             <version>5.8.1</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
+
     </dependencies>
 
+    <properties>
+        <commons-lang3.version>3.14.0</commons-lang3.version>
+    </properties>
 </project>
