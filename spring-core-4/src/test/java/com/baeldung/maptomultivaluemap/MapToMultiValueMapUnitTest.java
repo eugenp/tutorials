@@ -19,40 +19,43 @@ public class MapToMultiValueMapUnitTest {
     public void givenMap_whenConvertToMultiValueMapUsingIteration_thenCountEntries() {
 
         Map<String, List<String>> map = new HashMap<>();
-        map.put("name", Arrays.asList("John"));
-        map.put("hobbies", Arrays.asList("Badminton", "Reading novels", "Painting"));
+        map.put("rollNo", Arrays.asList("4", "2", "7", "3"));
+        map.put("name", Arrays.asList("John", "Alex", "Maria", "Jack"));
+        map.put("hobbies", Arrays.asList("Badminton", "Reading novels", "Painting", "Cycling"));
 
         MultiValueMap<String, String> multiValueMap = new LinkedMultiValueMap<>();
         for (Map.Entry<String, List<String>> entry : map.entrySet()) {
             multiValueMap.put(entry.getKey(), entry.getValue());
         }
 
-        assertEquals(2, multiValueMap.size());
+        assertEquals(3, multiValueMap.size());
     }
 
     @Test
     public void givenMap_whenConvertToMultiValueMapUsingCollections_thenCountEntries() {
 
         Map<String, List<String>> map = new HashMap<>();
-        map.put("name", Arrays.asList("John"));
-        map.put("hobbies", Arrays.asList("Badminton", "Reading novels", "Painting"));
+        map.put("rollNo", Arrays.asList("4", "2", "7", "3"));
+        map.put("name", Arrays.asList("John", "Alex", "Maria", "Jack"));
+        map.put("hobbies", Arrays.asList("Badminton", "Reading novels", "Painting", "Cycling"));
 
         MultiValueMap<String, String> multiValueMap = CollectionUtils.toMultiValueMap(map);
 
-        assertEquals(2, multiValueMap.size());
+        assertEquals(3, multiValueMap.size());
     }
 
     @Test
     public void givenMap_whenConvertToMultiValueMapUsingStreams_thenCountEntries() {
 
         Map<String, List<String>> map = new HashMap<>();
-        map.put("name", Arrays.asList("John"));
-        map.put("hobbies", Arrays.asList("Badminton", "Reading novels", "Painting"));
+        map.put("rollNo", Arrays.asList("4", "2", "7", "3"));
+        map.put("name", Arrays.asList("John", "Alex", "Maria", "Jack"));
+        map.put("hobbies", Arrays.asList("Badminton", "Reading novels", "Painting", "Cycling"));
 
         MultiValueMap<String, String> multiValueMap = map.entrySet()
             .stream()
             .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (oldValue, newValue) -> oldValue, LinkedMultiValueMap::new));
 
-        assertEquals(2, multiValueMap.size());
+        assertEquals(3, multiValueMap.size());
     }
 }
