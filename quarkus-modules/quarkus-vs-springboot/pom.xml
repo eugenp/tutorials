@@ -15,7 +15,7 @@
     </parent>
 
     <modules>
-        <module>quarkus-project</module>
+<!--        <module>quarkus-project</module>-->
         <module>spring-project</module>
     </modules>
 
