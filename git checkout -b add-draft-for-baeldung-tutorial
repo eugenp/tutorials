@@ -1,0 +1,151 @@
+Shallow Copy Technique
+A shallow copy duplicates simple object values to a new object, excluding internal object values. Let's explore the shallow copy technique with an example:
+
+public class Product {
+    private String name;
+    private double price;
+    private int[] ratings; // mutable property
+
+    public Product(String name, double price, int[] ratings) {
+        this.name = name;
+        this.price = price;
+        this.ratings = ratings;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public int[] getRatings() {
+        return ratings;
+    }
+
+    public void setRatings(int[] ratings) {
+        this.ratings = ratings;
+    }
+}
+
+
+We create a shallow copy of Product:
+
+
+public class ShallowCopy {
+    public static void main(String[] args) {
+        int[] ratings = {5, 4, 4};
+        Product product = new Product("Macbook Pro", 3000, ratings);
+        Product copyOfProduct = new Product(product.getName(), product.getPrice(), product.getRatings());
+
+        product.setName("Alienware");
+        System.out.println(product.getName()); // Alienware
+        System.out.println(copyOfProduct.getName()); // Macbook Pro
+    }
+}
+
+
+
+
+
+
+Deep Copy Technique
+
+For the product command:
+
+Public class Product implements Cloneable {
+    private String name;
+    private double price;
+    private Category category;
+
+    public Product(String name, double price, Category category) {
+        this.name = name;
+        this.price = price;
+        this.category = category;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        Product cloned = (Product) super.clone();
+        cloned.category = (Category) category.clone();
+        return cloned;
+    }
+}
+
+
+
+
+The Category class:
+
+public class Category implements Cloneable {
+    private String name;
+    private String description;
+
+    public Category(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+}
+
+
+
+
+Here’s a test to demonstrate deep copying:
+
+
+public class DeepCopyTest {
+
+	public static void main(String[] args) throws CloneNotSupportedException {
+        Category category = new Category("Laptop", "Portable computers");
+        Product product = new Product("Macbook Pro", 3000, category);
+        Product copyOfProduct = (Product) product.clone();
+
+        Category copiedCategory = copyOfProduct.getCategory();
+        copiedCategory.setName("Phone");
+
+        System.out.println(copiedCategory.getName()); // Phone
+        System.out.println(category.getName()); // Laptop
+    }
+}
