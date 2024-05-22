@@ -10,11 +10,6 @@ class UnitTests {
 
         personShallow2.address.city = "Los Angeles";
 
-        System.out.println("Person 1's name: " + personShallow1.name);
-        System.out.println("Person 1's city: " + personShallow1.address.city);
-        System.out.println("Person 2's name: " + personShallow2.name);
-        System.out.println("Person 2's city: " + personShallow2.address.city);
-
         assertEquals("Los Angeles", personShallow1.address.city);
         assertEquals("Los Angeles", personShallow2.address.city);
     }
@@ -27,13 +22,9 @@ class UnitTests {
 
         personDeep2.address.city = "Los Angeles";
 
-        System.out.println("Person 1's name: " + personDeep1.name);
-        System.out.println("Person 1's city: " + personDeep1.address.city);
-        System.out.println("Person 2's name: " + personDeep2.name);
-        System.out.println("Person 2's city: " + personDeep2.address.city);
-
         assertEquals("New York", personDeep1.address.city);
         assertEquals("Los Angeles", personDeep2.address.city);
     }
 }
+
 
