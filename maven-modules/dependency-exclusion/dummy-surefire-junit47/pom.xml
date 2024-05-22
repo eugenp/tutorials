@@ -5,6 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.apache.maven.surefire</groupId>
     <artifactId>dummy-surefire-junit47</artifactId>
+    <packaging>pom</packaging>
     <version>dummy</version>
 
     <parent>
