@@ -83,7 +83,6 @@
         <hibernate.version>6.4.2.Final</hibernate.version>
         <hibernate-types.version>2.21.1</hibernate-types.version>
         <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
-        <org.glassfish.javax.el.version>3.0.1-b11</org.glassfish.javax.el.version>
         <money-api.version>1.1</money-api.version>
         <moneta.version>1.4.2</moneta.version>
         <jackson-module-jakarta-xmlbind-annotation>2.16.0</jackson-module-jakarta-xmlbind-annotation>
