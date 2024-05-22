@@ -35,7 +35,6 @@
     </build>
 
     <properties>
-        <project.model.version>4.0.0</project.model.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.version>1.0</project.version>
         <maven.compiler.source>21</maven.compiler.source>

@@ -156,7 +156,6 @@
         <tika.version>2.8.0</tika.version>
         <jmime-magic.version>0.1.5</jmime-magic.version>
         <fscontext.version>4.4.2</fscontext.version>
-        <jakarta-activation-api.version>2.1.2</jakarta-activation-api.version>
         <angus-activation.version>2.0.1</angus-activation.version>
         <spring.version>6.1.6</spring.version>
     </properties>
