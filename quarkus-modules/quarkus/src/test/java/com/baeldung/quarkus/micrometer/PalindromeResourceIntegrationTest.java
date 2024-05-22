@@ -1,11 +1,11 @@
-package com.example;
-
-import io.quarkus.test.junit.QuarkusTest;
-
-import org.junit.jupiter.api.Test;
+package com.baeldung.quarkus.micrometer;
 
 import static io.restassured.RestAssured.when;
 import static org.hamcrest.CoreMatchers.containsString;
+
+import org.junit.jupiter.api.Test;
+
+import io.quarkus.test.junit.QuarkusTest;
 
 @QuarkusTest
 class PalindromeResourceIntegrationTest {
