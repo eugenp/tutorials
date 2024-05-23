@@ -155,10 +155,9 @@ com:
     springaddons:
       oidc:
         client:
-          authorization-request-params:
+          authorization-params:
             baeldung:
-            - name: audience
-              value: ${audience}
+              audience: ${audience}
           oauth2-logout:
             baeldung:
               uri: ${issuer}v2/logout
