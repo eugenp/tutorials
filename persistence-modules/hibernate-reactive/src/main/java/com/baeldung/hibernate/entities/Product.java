@@ -1,16 +1,23 @@
 package com.baeldung.hibernate.entities;
-import jakarta.persistence.*;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 @Entity
 public class Product {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String category;
     private double price;
+
+    public Product(Long id, String name, String category, double price) {
+        this.id = id;
+        this.name = name;
+        this.category = category;
+        this.price = price;
+    }
 
     public Long getId() {
         return id;
@@ -44,10 +51,4 @@ public class Product {
         this.price = price;
     }
 
-    public Product(Long id, String name, String category, double price) {
-        this.id = id;
-        this.name = name;
-        this.category = category;
-        this.price = price;
-    }
 }

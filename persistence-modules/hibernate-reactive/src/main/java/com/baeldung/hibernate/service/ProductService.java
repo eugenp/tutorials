@@ -1,19 +1,22 @@
 package com.baeldung.hibernate.service;
 
-import com.baeldung.hibernate.entities.Product;
-import com.baeldung.hibernate.repository.ProductRepository;
-import reactor.core.publisher.*;
-import  org.springframework.data.repository.reactive.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
-public class ProductService {
-    @Autowired
-    private ProductRepository productRepository;
+import com.baeldung.hibernate.entities.Product;
+import com.baeldung.hibernate.repository.ProductRepository;
 
-    public Mono<Product> findById(Long id) {
-        return productRepository.findById(id);
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+
+@Service
+
+public class ProductService {
+    private final ProductRepository productRepository;
+
+    @Autowired
+    public ProductService(ProductRepository productRepository) {
+        this.productRepository = productRepository;
     }
 
     public Flux<Product> findAll() {
@@ -22,10 +25,6 @@ public class ProductService {
 
     public Mono<Product> save(Product product) {
         return productRepository.save(product);
-    }
-
-    public Mono<Void> deleteById(Long id) {
-        return productRepository.deleteById(id);
     }
 
 }

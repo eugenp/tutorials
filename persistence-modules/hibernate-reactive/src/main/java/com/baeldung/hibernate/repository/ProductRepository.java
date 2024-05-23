@@ -1,11 +1,11 @@
 package com.baeldung.hibernate.repository;
 
-import com.baeldung.hibernate.entities.*;
-import org.springframework.data.jpa.repository.Query;
-import reactor.core.publisher.Flux;
-import org.springframework.data.repository.reactive.*;
+import org.springframework.data.r2dbc.repository.R2dbcRepository;
+import org.springframework.stereotype.Repository;
 
-public interface ProductRepository extends ReactiveCrudRepository<Product, Long> {
-    Flux<Product> findAllByCategory(String category);
+import com.baeldung.hibernate.entities.Product;
+
+@Repository
+public interface ProductRepository extends R2dbcRepository<Product, Long> {
 
 }

@@ -1,16 +1,26 @@
 package com.baeldung.hibernate.service;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
+import com.baeldung.hibernate.configuration.R2DBCConfiguration;
 import com.baeldung.hibernate.entities.Product;
 import com.baeldung.hibernate.repository.ProductRepository;
 
-@SpringBootTest
-@AutoConfigureWebTestClient
-public class ProductControllerTest {
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import reactor.test.StepVerifier;
+
+import javax.transaction.Transactional;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+@SpringBootTest(classes = { R2DBCConfiguration.class, ProductService.class, ProductRepository.class })
+@Transactional
+public class ProductServiceUnitTest {
     @Autowired
-    private WebTestClient webTestClient;
+    private ProductService productService;
 
     @Autowired
     private ProductRepository productRepository;
@@ -18,66 +28,33 @@ public class ProductControllerTest {
     @BeforeEach
     void setUp() {
         productRepository.deleteAll()
-            .then(productRepository.save(new Product(null, "Product 1", "Category 1", 10.0)))
-            .then(productRepository.save(new Product(null, "Product 2", "Category 1", 15.0)))
+            .then(productRepository.save(new Product(1L, "Product 1", "Category 1", 10.0)))
+            .then(productRepository.save(new Product(2L, "Product 2", "Category 2", 15.0)))
+            .then(productRepository.save(new Product(3L, "Product 3", "Category 3", 20.0)))
             .block();
     }
 
     @Test
-    void testGetProductById() {
-        webTestClient.get().uri("/products/1")
-            .exchange()
-            .expectStatus().isOk()
-            .expectBody(Product.class)
-            .value(product -> {
-                assertEquals("Product 1", product.getName());
-                assertEquals("Category 1", product.getCategory());
-                assertEquals(10.0, product.getPrice());
-            });
-    }
+    void testSave() {
+        Product newProduct = new Product(4L, "Product 4", "Category 4", 24.0);
 
-    @Test
-    void testGetAllProducts() {
-        webTestClient.get().uri("/products")
-            .exchange()
-            .expectStatus().isOk()
-            .expectBodyList(Product.class)
-            .hasSize(2)
-            .value(products -> {
-                assertEquals("Product 1", products.get(0).getName());
-                assertEquals("Product 2", products.get(1).getName());
-            });
-    }
-
-    @Test
-    void testCreateProduct() {
-        Product newProduct = new Product(null, "Product 3", "Category 2", 20.0);
-
-        webTestClient.post().uri("/products")
-            .bodyValue(newProduct)
-            .exchange()
-            .expectStatus().isOk()
-            .expectBody(Product.class)
-            .value(product -> {
+        StepVerifier.create(productService.save(newProduct))
+            .assertNext(product -> {
                 assertNotNull(product.getId());
-                assertEquals("Product 3", product.getName());
-            });
+                assertEquals("Product 4", product.getName());
+            })
+            .verifyComplete();
 
-        webTestClient.get().uri("/products")
-            .exchange()
-            .expectStatus().isOk()
-            .expectBodyList(Product.class)
-            .hasSize(3);
+        StepVerifier.create(productService.findAll())
+            .expectNextCount(4)
+            .verifyComplete();
     }
 
     @Test
-    void testDeleteProduct() {
-        webTestClient.delete().uri("/products/1")
-            .exchange()
-            .expectStatus().isOk();
-
-        webTestClient.get().uri("/products/1")
-            .exchange()
-            .expectStatus().isNotFound();
+    void testFindAll() {
+        StepVerifier.create(productService.findAll())
+            .expectNextCount(3)
+            .verifyComplete();
     }
+
 }
