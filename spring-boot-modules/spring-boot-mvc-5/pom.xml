@@ -70,7 +70,6 @@
 
     <properties>
         <spring-boot.version>3.2.2</spring-boot.version>
-        <junit-jupiter.version>5.10.2</junit-jupiter.version>
         <spring.fox.version>3.0.0</spring.fox.version>
         <start-class>com.baeldung.springboot.swagger.ArticleApplication</start-class>
         <spring-cloud.version>2023.0.0</spring-cloud.version>

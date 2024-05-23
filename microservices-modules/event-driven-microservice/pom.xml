@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <groupId>io.orkes.demo</groupId>
+    <artifactId>event-driven-microservice</artifactId>
+    <version>0.1</version>
+    <name>event-driven-microservice</name>
+    <description>Demo Project for Orkes Conductor on Spring Boot</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -10,39 +16,26 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>io.orkes.demo</groupId>
-    <artifactId>event-driven-microservice</artifactId>
-    <version>0.1</version>
-
-    <name>event-driven-microservice</name>
-    <description>Demo Project for Orkes Conductor on Spring Boot</description>
-
-
     <dependencies>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
         <dependency>
             <groupId>io.orkes.conductor</groupId>
             <artifactId>orkes-conductor-client</artifactId>
             <version>${conductor.client.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-            <version>${spring.webmvc.version}</version>
+            <version>${springdoc-openapi-webmvc-ui.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -70,7 +63,7 @@
     <properties>
         <java.version>17</java.version>
         <conductor.client.version>2.0.8</conductor.client.version>
-        <spring.webmvc.version>2.1.0</spring.webmvc.version>
+        <springdoc-openapi-webmvc-ui.version>2.5.0</springdoc-openapi-webmvc-ui.version>
     </properties>
 
 </project>

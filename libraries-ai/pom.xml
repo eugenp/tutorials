@@ -28,12 +28,28 @@
             <artifactId>neuroph</artifactId>
             <version>${neuroph.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.theokanning.openai-gpt3-java</groupId>
+            <artifactId>api</artifactId>
+            <version>${theokanning.gpt}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.theokanning.openai-gpt3-java</groupId>
+            <artifactId>client</artifactId>
+            <version>${theokanning.gpt}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.theokanning.openai-gpt3-java</groupId>
+            <artifactId>service</artifactId>
+            <version>${theokanning.gpt}</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <stanford-corenlp.version>4.5.3</stanford-corenlp.version>
         <opennlp-tools.version>2.1.1</opennlp-tools.version>
         <neuroph.version>2.92</neuroph.version>
+        <theokanning.gpt>0.18.2</theokanning.gpt>
     </properties>
 
 </project>

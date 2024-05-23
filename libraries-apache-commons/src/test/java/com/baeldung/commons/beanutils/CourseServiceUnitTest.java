@@ -1,5 +1,8 @@
 package com.baeldung.commons.beanutils;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.List;
@@ -50,4 +53,23 @@ public class CourseServiceUnitTest {
         Assert.assertEquals(course.getCodes(), courseEntity.getCodes());
         Assert.assertNull(courseEntity.getStudent("ST-1"));
     }
+    
+    @Test
+    public void givenNullName_whenCopyProperties_thenCopyEveryPropertyButName() throws IllegalAccessException, InvocationTargetException {
+        Course originalCourse = new Course();
+        originalCourse.setName(null);
+        originalCourse.setCodes(Arrays.asList("CS"));
+        originalCourse.setEnrolledStudent("ST-1", new Student());
+
+        CourseEntity destCourse = new CourseEntity();
+        destCourse.setName("entityName");
+
+        IgnoreNullBeanUtilsBean ignoreNullBeanUtilsBean = new IgnoreNullBeanUtilsBean();
+        ignoreNullBeanUtilsBean.copyProperties(destCourse, originalCourse);
+        
+        assertEquals("entityName", destCourse.getName());
+        assertThat(destCourse.getCodes()).containsExactly("CS");
+        assertThat(destCourse.getStudents()).isEmpty();
+    }
+    
 }

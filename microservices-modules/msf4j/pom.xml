@@ -45,6 +45,20 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <argLine>
+                        --add-opens java.base/java.lang=ALL-UNNAMED
+                    </argLine>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
         <microservice.mainClass>com.baeldung.msf4j.msf4jintro.Application</microservice.mainClass>
         <msf4j.version>2.8.11</msf4j.version>

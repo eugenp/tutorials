@@ -1,0 +1,55 @@
+<div>
+  <h2>
+    <span id="health-page-heading" data-cy="healthPageHeading">Health Checks</span>
+
+    <button class="btn btn-primary float-end" (click)="refresh()"><fa-icon icon="sync"></fa-icon> <span>Refresh</span></button>
+  </h2>
+
+  <div class="table-responsive">
+    <table id="healthCheck" class="table table-striped" aria-describedby="health-page-heading">
+      <thead>
+        <tr>
+          <th scope="col">Service name</th>
+          <th scope="col" class="text-center">Status</th>
+          <th scope="col" class="text-center">Details</th>
+        </tr>
+      </thead>
+      @if (health) {
+        <tbody>
+          @for (componentHealth of health.components | keyvalue; track componentHealth.key) {
+            <tr>
+              <td>
+                {{
+                  {
+                    diskSpace: 'Disk space',
+                    mail: 'Email',
+                    livenessState: 'Liveness state',
+                    readinessState: 'Readiness state',
+                    ping: 'Application',
+                    db: 'Database'
+                  }[componentHealth.key] || componentHealth.key
+                }}
+              </td>
+              <td class="text-center">
+                <span class="badge" [ngClass]="getBadgeClass(componentHealth.value!.status)">
+                  {{
+                    { UNKNOWN: 'UNKNOWN', UP: 'UP', OUT_OF_SERVICE: 'OUT_OF_SERVICE', DOWN: 'DOWN' }[
+                      componentHealth.value?.status ?? 'UNKNOWN'
+                    ]
+                  }}
+                </span>
+              </td>
+              <td class="text-center">
+                @if (componentHealth.value!.details) {
+                  <a class="hand" (click)="showHealth({ key: componentHealth.key, value: componentHealth.value! })">
+                    <fa-icon icon="eye"></fa-icon>
+                  </a>
+                }
+              </td>
+            </tr>
+          }
+        </tbody>
+      }
+    </table>
+  </div>
+</div>

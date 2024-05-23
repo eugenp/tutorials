@@ -1,23 +1,22 @@
 package com.baeldung.algorithms.mergeintervals;
 
+import static java.lang.Integer.max;
+
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class MergeOverlappingIntervals {
 
     public List<Interval> doMerge(List<Interval> intervals) {
-        // Sort the intervals based on start time
-        intervals.sort((one, two) -> one.start - two.start);
-
-        // Create somewhere to put the merged list, start it off with the earliest starting interval
+        intervals.sort(Comparator.comparingInt(interval -> interval.start));
         ArrayList<Interval> merged = new ArrayList<>();
         merged.add(intervals.get(0));
 
-        // Loop over each interval and merge if start time is before the end time of the
-        // previous interval
         intervals.forEach(interval -> {
-            if (merged.get(merged.size() - 1).end > interval.start) {
-                merged.get(merged.size() - 1).setEnd(interval.end);
+            Interval lastMerged = merged.get(merged.size() - 1);
+            if (interval.start <= lastMerged.end){
+                lastMerged.setEnd(max(interval.end, lastMerged.end));
             } else {
                 merged.add(interval);
             }
@@ -25,5 +24,4 @@ public class MergeOverlappingIntervals {
 
         return merged;
     }
-
 }

@@ -81,7 +81,6 @@
     <properties>
         <system-lambda.version>1.2.1</system-lambda.version>
         <jmockit.version>1.49</jmockit.version>
-        <assertj.version>3.24.2</assertj.version>
         <junit-platform.version>1.10.1</junit-platform.version>
         <maven-surefire-plugin.version>3.0.0</maven-surefire-plugin.version>
     </properties>

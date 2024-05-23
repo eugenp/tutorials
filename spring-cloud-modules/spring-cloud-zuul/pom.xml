@@ -60,6 +60,12 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy</artifactId>
+            <version>${byte-buddy.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -82,6 +88,7 @@
     <properties>
         <spring-cloud-dependencies.version>2021.0.3</spring-cloud-dependencies.version>
         <spring-cloud-netflix-zuul.version>2.2.7.RELEASE</spring-cloud-netflix-zuul.version>
+        <byte-buddy.version>1.14.13</byte-buddy.version>
     </properties>
 
 </project>

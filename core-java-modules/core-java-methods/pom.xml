@@ -33,8 +33,4 @@
         </resources>
     </build>
 
-    <properties>
-        <assertj.version>3.22.0</assertj.version>
-    </properties>
-
 </project>
