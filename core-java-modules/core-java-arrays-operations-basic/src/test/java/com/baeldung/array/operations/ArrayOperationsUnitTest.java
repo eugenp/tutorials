@@ -1,11 +1,14 @@
 package com.baeldung.array.operations;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertArrayEquals;
+
 import java.util.Arrays;
+
+import org.apache.commons.lang3.ArrayUtils;
 import org.assertj.core.api.Condition;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertArrayEquals;
 
 public class ArrayOperationsUnitTest {
 
@@ -314,7 +317,8 @@ public class ArrayOperationsUnitTest {
         Condition<int[]> atLeastOneArraysIsNotEqual = new Condition<int[]>("at least one output should be different (order-wise)") {
             @Override
             public boolean matches(int[] value) {
-                return !Arrays.equals(value, output) || !Arrays.equals(value, output2) || !Arrays.equals(value, output3) || !Arrays.equals(value, output4) || !Arrays.equals(value, output5) || !Arrays.equals(value, output6);
+                return !Arrays.equals(value, output) || !Arrays.equals(value, output2) || !Arrays.equals(value, output3) || !Arrays.equals(value, output4) ||
+                    !Arrays.equals(value, output5) || !Arrays.equals(value, output6);
             }
         };
 
@@ -333,7 +337,8 @@ public class ArrayOperationsUnitTest {
         Condition<Integer[]> atLeastOneArraysIsNotEqual = new Condition<Integer[]>("at least one output should be different (order-wise)") {
             @Override
             public boolean matches(Integer[] value) {
-                return !Arrays.equals(value, output) || !Arrays.equals(value, output2) || !Arrays.equals(value, output3) || !Arrays.equals(value, output4) || !Arrays.equals(value, output5) || !Arrays.equals(value, output6);
+                return !Arrays.equals(value, output) || !Arrays.equals(value, output2) || !Arrays.equals(value, output3) || !Arrays.equals(value, output4) ||
+                    !Arrays.equals(value, output5) || !Arrays.equals(value, output6);
             }
         };
 
@@ -367,14 +372,38 @@ public class ArrayOperationsUnitTest {
     }
 
     @Test
-    public void whenInsertAnElementAtAGivenIndexCalled_thenShiftTheFollowingElementsAndInsertTheElementInArray() {
-        int[] expectedArray = { 1, 4, 2, 3, 0 };
-        int[] anArray = new int[4];
-        anArray[0] = 1;
-        anArray[1] = 2;
-        anArray[2] = 3;
-        int[] outputArray = ArrayOperations.insertAnElementAtAGivenIndex(anArray, 1, 4);
+    void whenInsertAnElementAtAGivenIndexCalled_thenShiftTheFollowingElementsAndInsertTheElementInArray() {
+        int[] expectedArray = { 1, 2, 42, 3, 4 };
+        int[] anArray = { 1, 2, 3, 4 };
+        int[] outputArray = ArrayOperations.insertAnElementAtAGivenIndex(anArray, 2, 42);
 
         assertThat(outputArray).containsExactly(expectedArray);
+    }
+
+    @Test
+    void whenPrependingAnElementUsingInsertAnElementAtAGivenIndex_thenGetExpectedResult() {
+        int[] anArray = { 1, 2, 3, 4 };
+        int[] expectedArray = { 42, 1, 2, 3, 4 };
+        int[] result = ArrayOperations.insertAnElementAtAGivenIndex(anArray, 0, 42);
+
+        assertThat(result).containsExactly(expectedArray);
+    }
+
+    @Test
+    void whenUsingPrependAnElementToArray_thenGetExpectedResult() {
+        int[] anArray = { 1, 2, 3, 4 };
+        int[] expectedArray = { 42, 1, 2, 3, 4 };
+        int[] result = ArrayOperations.prependAnElementToArray(anArray, 42);
+
+        assertThat(result).containsExactly(expectedArray);
+    }
+
+    @Test
+    void whenPrependingAnElementUsingArrayUtils_thenGetExpectedResult() {
+        int[] anArray = { 1, 2, 3, 4 };
+        int[] expectedArray = { 42, 1, 2, 3, 4 };
+        int[] result = ArrayUtils.addFirst(anArray, 42);
+
+        assertThat(result).containsExactly(expectedArray);
     }
 }

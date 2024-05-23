@@ -9,9 +9,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-2</relativePath>
+        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -87,12 +87,6 @@
             <version>${rest-assured.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-contract-wiremock</artifactId>
-            <version>${spring-cloud-contract-wiremock.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <profiles>
@@ -121,14 +115,13 @@
     </profiles>
 
     <properties>
-        <cucumber.version>6.10.3</cucumber.version>
-        <cucumber-reporting.version>5.4.0</cucumber-reporting.version>
-        <selenium.version>3.141.59</selenium.version>
-        <webdrivermanager.version>4.3.1</webdrivermanager.version>
-        <webjars-locator.version>0.40</webjars-locator.version>
+        <rest-assured.version>5.4.0</rest-assured.version>
+        <cucumber.version>7.17.0</cucumber.version>
+        <selenium.version>4.20.0</selenium.version>
+        <webdrivermanager.version>5.8.0</webdrivermanager.version>
+        <webjars-locator.version>0.52</webjars-locator.version>
         <jquery.version>3.0.0</jquery.version>
-        <bootstrap.version>4.5.3</bootstrap.version>
-        <spring-cloud-contract-wiremock.version>2.2.5.RELEASE</spring-cloud-contract-wiremock.version>
+        <bootstrap.version>5.3.3</bootstrap.version>
     </properties>
 
 </project>

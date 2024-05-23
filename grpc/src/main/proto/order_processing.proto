@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package orderprocessing;
+
+option java_multiple_files = true;
+option java_package = "com.baeldung.grpc.orderprocessing";
+
+message OrderRequest {
+  string product = 1;
+  int32 quantity = 2;
+  float price = 3;
+  string orderID = 4;
+}
+message OrderResponse {
+  string response = 1;
+  string orderID = 2;
+  string error = 3;
+}
+service OrderProcessor {
+  rpc createOrder(OrderRequest) returns (OrderResponse){}
+  rpc getOrder(OrderRequest) returns (OrderResponse){}
+}
