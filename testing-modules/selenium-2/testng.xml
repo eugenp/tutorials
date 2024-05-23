@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Visual regression test suite ">
+    <test name="Visual Regression Test using Smart UI from LambdaTest">
+        <classes>
+            <class name="com.baeldung.selenium.visualregression.tests.SeleniumVisualRegressionLiveTest">
+                <methods>
+                    <include name="whenActualImageIsDifferentFromBaseline_thenItShouldShowDifference"/>
+                    <exclude name="whenActualImageIsSameAsBaseline_thenItShouldNotShowAnyDifference"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
