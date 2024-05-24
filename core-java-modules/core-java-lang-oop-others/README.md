@@ -12,3 +12,4 @@ This module contains articles about Object Oriented Programming (OOP) in Java
 - [Difference Between Information Hiding and Encapsulation](https://www.baeldung.com/java-information-hiding-vs-encapsulation)
 - [Statements Before super() in Java](https://www.baeldung.com/java-statements-before-super-constructor)
 - [Print the Default Value When Overriding toString() Method](https://www.baeldung.com/java-print-default-value-override-tostring)
+- [Pass a Class as a Parameter in Java](https://www.baeldung.com/java-pass-class-parameter)
