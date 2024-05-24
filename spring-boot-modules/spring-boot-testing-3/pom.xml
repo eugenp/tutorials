@@ -29,6 +29,38 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.opentable.components</groupId>
+            <artifactId>otj-pg-embedded</artifactId>
+            <version>1.0.3</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>1.19.8</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.zonky.test</groupId>
+            <artifactId>embedded-postgres</artifactId>
+            <version>2.0.7</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.zonky.test</groupId>
+            <artifactId>embedded-database-spring-test</artifactId>
+            <version>2.5.1</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -36,6 +68,14 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>9</source>
+                    <target>9</target>
+                </configuration>
             </plugin>
         </plugins>
     </build>
