@@ -14,9 +14,9 @@ public class OrderProcessor {
    * @param orderItems the order items
    * @return the grouped items
    */
-  public Map<OrderCategory, Pair<Double, Double>> groupByCategoryWithMinMax(
+  public Map<OrderItemCategory, Pair<Double, Double>> groupByCategoryWithMinMax(
       List<OrderItem> orderItems) {
-    Map<OrderCategory, DoubleSummaryStatistics> categoryStatistics =
+    Map<OrderItemCategory, DoubleSummaryStatistics> categoryStatistics =
         orderItems.stream()
             .collect(
                 Collectors.groupingBy(

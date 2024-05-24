@@ -12,24 +12,24 @@ class OrderProcessorUnitTest {
   void whenOrderItemsAreGrouped_thenGetsMinMaxPerGroup() {
     List<OrderItem> items =
         Arrays.asList(
-            new OrderItem(1L, OrderCategory.ELECTRONICS, 1299.99),
-            new OrderItem(2L, OrderCategory.ELECTRONICS, 1199.99),
-            new OrderItem(3L, OrderCategory.ELECTRONICS, 2199.99),
-            new OrderItem(4L, OrderCategory.FURNITURE, 220.00),
-            new OrderItem(4L, OrderCategory.FURNITURE, 200.20),
-            new OrderItem(5L, OrderCategory.FURNITURE, 215.00),
-            new OrderItem(6L, OrderCategory.CLOTHING, 50.75),
-            new OrderItem(7L, OrderCategory.CLOTHING, 75.00),
-            new OrderItem(8L, OrderCategory.CLOTHING, 75.00));
+            new OrderItem(1L, OrderItemCategory.ELECTRONICS, 1299.99),
+            new OrderItem(2L, OrderItemCategory.ELECTRONICS, 1199.99),
+            new OrderItem(3L, OrderItemCategory.ELECTRONICS, 2199.99),
+            new OrderItem(4L, OrderItemCategory.FURNITURE, 220.00),
+            new OrderItem(4L, OrderItemCategory.FURNITURE, 200.20),
+            new OrderItem(5L, OrderItemCategory.FURNITURE, 215.00),
+            new OrderItem(6L, OrderItemCategory.CLOTHING, 50.75),
+            new OrderItem(7L, OrderItemCategory.CLOTHING, 75.00),
+            new OrderItem(8L, OrderItemCategory.CLOTHING, 75.00));
 
     OrderProcessor orderProcessor = new OrderProcessor();
-    final Map<OrderCategory, Pair<Double, Double>> orderCategoryPairMap =
+    final Map<OrderItemCategory, Pair<Double, Double>> orderItemCategoryPairMap =
         orderProcessor.groupByCategoryWithMinMax(items);
     Assertions.assertEquals(
-        orderCategoryPairMap.get(OrderCategory.ELECTRONICS), Pair.of(1199.99, 2199.99));
+        orderItemCategoryPairMap.get(OrderItemCategory.ELECTRONICS), Pair.of(1199.99, 2199.99));
     Assertions.assertEquals(
-        orderCategoryPairMap.get(OrderCategory.FURNITURE), Pair.of(200.20, 220.00));
+        orderItemCategoryPairMap.get(OrderItemCategory.FURNITURE), Pair.of(200.20, 220.00));
     Assertions.assertEquals(
-        orderCategoryPairMap.get(OrderCategory.CLOTHING), Pair.of(50.75, 75.00));
+        orderItemCategoryPairMap.get(OrderItemCategory.CLOTHING), Pair.of(50.75, 75.00));
   }
 }

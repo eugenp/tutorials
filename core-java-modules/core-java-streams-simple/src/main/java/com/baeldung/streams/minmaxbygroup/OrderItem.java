@@ -3,21 +3,21 @@ package com.baeldung.streams.minmaxbygroup;
 public class OrderItem {
   private Long id;
   private Double price;
-  private OrderCategory category;
+  private OrderItemCategory category;
 
   // other fields
 
-  public OrderItem(long id, OrderCategory category, double price) {
+  public OrderItem(long id, OrderItemCategory category, double price) {
     this.id = id;
     this.category = category;
     this.price = price;
   }
 
-  public OrderCategory getCategory() {
+  public OrderItemCategory getCategory() {
     return category;
   }
 
-  public void setCategory(OrderCategory category) {
+  public void setCategory(OrderItemCategory category) {
     this.category = category;
   }
 
