@@ -22,7 +22,9 @@
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -44,6 +46,9 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${surefire.plugin.version}</version>
+                <configuration>
+                    <argLine>--add-modules jdk.incubator.foreign</argLine>
+                </configuration>
             </plugin>
         </plugins>
     </build>
