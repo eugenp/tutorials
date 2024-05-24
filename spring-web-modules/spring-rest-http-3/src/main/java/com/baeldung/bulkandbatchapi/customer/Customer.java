@@ -1,10 +1,18 @@
 package com.baeldung.bulkandbatchapi.customer;
 
+import jakarta.validation.constraints.NotBlank;
+
 public class Customer {
 
     private int id;
+
+    @NotBlank
     private String name;
+
+    @NotBlank
     private String email;
+
+    @NotBlank
     private String address;
 
     public int getId() {

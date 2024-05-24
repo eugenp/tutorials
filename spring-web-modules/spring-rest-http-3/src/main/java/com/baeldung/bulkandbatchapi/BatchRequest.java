@@ -1,7 +1,11 @@
 package com.baeldung.bulkandbatchapi;
 
+import jakarta.validation.constraints.NotNull;
+
 public class BatchRequest {
+    @NotNull
     private ResourceType resourceType;
+    @NotNull
     private Object data;
 
     public Object getData() {

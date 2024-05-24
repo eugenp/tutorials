@@ -1,9 +1,15 @@
 package com.baeldung.bulkandbatchapi.address;
 
+import jakarta.validation.constraints.NotBlank;
+
 public class Address {
 
     private int id;
+
+    @NotBlank
     private String street;
+
+    @NotBlank
     private String city;
 
     public int getId() {

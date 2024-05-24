@@ -10,7 +10,6 @@ import jakarta.validation.constraints.Size;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.CollectionUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,12 +27,8 @@ public class BatchController {
     private final RequestObjectConverter<Address> addressRequestDataConverter;
     private final RequestObjectConverter<Customer> customerRequestDataConverter;
 
-
     @Autowired
-    public BatchController(CustomerService customerService,
-                           AddressService addressService,
-                           RequestObjectConverter<Address> addressRequestDataConverter,
-                           RequestObjectConverter<Customer> customerRequestDataConverter) {
+    public BatchController(CustomerService customerService, AddressService addressService, RequestObjectConverter<Address> addressRequestDataConverter, RequestObjectConverter<Customer> customerRequestDataConverter) {
         this.customerService = customerService;
         this.addressService = addressService;
         this.addressRequestDataConverter = addressRequestDataConverter;
@@ -45,9 +40,9 @@ public class BatchController {
         List<CustomerBatchResponse> customerBatchResponseList = new ArrayList<>();
 
         customerBatchRequests.forEach(customerBatchRequest -> {
-            List<Customer> customers = customerService.processCustomers(customerBatchRequest.getCustomers(),
-                    customerBatchRequest.getBatchType());
-            customerBatchResponseList.add(getCustomerBatchResponse(customerBatchRequest, customers));
+            List<Customer> customers = customerService.processCustomers(customerBatchRequest.getCustomers(), customerBatchRequest.getBatchType());
+            BatchStatus batchStatus = getBatchStatus(customerBatchRequest.getCustomers(), customers);
+            customerBatchResponseList.add(CustomerBatchResponse.getCustomerBatchResponse(customers, customerBatchRequest.getBatchType(), batchStatus));
         });
 
         return ResponseEntity.ok(customerBatchResponseList);
@@ -55,33 +50,25 @@ public class BatchController {
 
     @PostMapping(path = "/customer-address")
     public ResponseEntity<String> batchCreateCustomerWithAddress(@RequestBody @Valid @Size(min = 1, max = 20) List<BatchRequest> batchRequests) {
-        batchRequests.forEach(batchRequest ->
-                CompletableFuture.runAsync(() -> {
-                    try {
-                        processBatchRequest(batchRequest);
-                    } catch (JsonProcessingException ex) {
-                        throw new BatchCreateException(ex.getMessage());
-                    }
-                })
-        );
+        batchRequests.forEach(batchRequest -> CompletableFuture.runAsync(() -> {
+            try {
+                processBatchRequest(batchRequest);
+            } catch (JsonProcessingException ex) {
+                throw new BatchCreateException(ex.getMessage());
+            }
+        }));
 
         return new ResponseEntity<>("Batch create Customer and Address is processing async", HttpStatus.ACCEPTED);
     }
 
-    private CustomerBatchResponse getCustomerBatchResponse(CustomerBatchRequest customerBatchRequest, List<Customer> customers) {
-        CustomerBatchResponse customerBatchResponse = new CustomerBatchResponse();
-        customerBatchResponse.setBatchType(customerBatchRequest.getBatchType());
-        customerBatchResponse.setCustomers(customers);
+    private BatchStatus getBatchStatus(List<Customer> customersInRequest, List<Customer> customersProcessed) {
+        BatchStatus batchStatus;
 
-        if (!CollectionUtils.isEmpty(customers) && customerBatchRequest.getCustomers().size() == customers.size()) {
-            customerBatchResponse.setStatus(BatchStatus.PROCESSED);
-        } else if (!CollectionUtils.isEmpty(customers) && customerBatchRequest.getCustomers().size() > customers.size()) {
-            customerBatchResponse.setStatus(BatchStatus.PARTIALLY_PROCESSED);
-        } else {
-            customerBatchResponse.setStatus(BatchStatus.NOT_PROCESSED);
-        }
+        if (customersProcessed.size() == customersInRequest.size()) batchStatus = BatchStatus.PROCESSED;
+        else if (customersProcessed.size() < customersInRequest.size()) batchStatus = BatchStatus.PARTIALLY_PROCESSED;
+        else batchStatus = BatchStatus.NOT_PROCESSED;
 
-        return customerBatchResponse;
+        return batchStatus;
     }
 
     private void processBatchRequest(BatchRequest batchRequest) throws JsonProcessingException {
