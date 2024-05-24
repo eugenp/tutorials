@@ -22,12 +22,4 @@ public class CustomerBatchRequest {
     public List<Customer> getCustomers() {
         return customers;
     }
-
-    public void setBatchType(BatchType batchType) {
-        this.batchType = batchType;
-    }
-
-    public void setCustomers(List<Customer> customers) {
-        this.customers = customers;
-    }
 }

@@ -10,28 +10,28 @@ public class CustomerBatchResponse {
     private List<Customer> customers;
     private BatchStatus status;
 
-    public BatchStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(BatchStatus status) {
-        this.status = status;
-    }
-
     public BatchType getBatchType() {
         return batchType;
-    }
-
-    public List<Customer> getCustomers() {
-        return customers;
     }
 
     public void setBatchType(BatchType batchType) {
         this.batchType = batchType;
     }
 
+    public List<Customer> getCustomers() {
+        return customers;
+    }
+
     public void setCustomers(List<Customer> customers) {
         this.customers = customers;
+    }
+
+    public BatchStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(BatchStatus status) {
+        this.status = status;
     }
 
     public static CustomerBatchResponse getCustomerBatchResponse(List<Customer> customers, BatchType batchType, BatchStatus batchStatus) {

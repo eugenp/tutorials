@@ -12,10 +12,6 @@ public class BatchRequest {
         return data;
     }
 
-    public void setData(Object data) {
-        this.data = data;
-    }
-
     public ResourceType getResourceType() {
         return resourceType;
     }
