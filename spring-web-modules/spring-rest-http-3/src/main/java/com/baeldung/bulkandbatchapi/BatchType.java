@@ -1,4 +1,4 @@
-package com.baeldung.bulkandbatchapi.customer;
+package com.baeldung.bulkandbatchapi;
 
 public enum BatchType {
     CREATE, UPDATE, DELETE

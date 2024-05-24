@@ -1,8 +1,6 @@
 package com.baeldung.bulkandbatchapi.customer;
 
-import java.io.Serializable;
-
-public class Customer implements Serializable {
+public class Customer {
 
     private int id;
     private String name;

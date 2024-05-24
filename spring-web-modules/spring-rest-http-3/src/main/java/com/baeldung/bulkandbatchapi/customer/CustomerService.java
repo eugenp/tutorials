@@ -1,5 +1,6 @@
 package com.baeldung.bulkandbatchapi.customer;
 
+import com.baeldung.bulkandbatchapi.BatchType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -22,9 +23,7 @@ public class CustomerService {
         customers.forEach(customer ->
         {
             Optional<Customer> customerCreated = createCustomer(customer);
-            if (customerCreated.isPresent()) {
-                createdCustomers.add(customerCreated.get());
-            }
+            customerCreated.ifPresent(createdCustomers::add);
         });
 
         return createdCustomers;
@@ -50,9 +49,7 @@ public class CustomerService {
                     break;
             }
 
-            if (customerProcessed.isPresent()) {
-                processedCustomers.add(customerProcessed.get());
-            }
+            customerProcessed.ifPresent(processedCustomers::add);
         });
 
         return processedCustomers;

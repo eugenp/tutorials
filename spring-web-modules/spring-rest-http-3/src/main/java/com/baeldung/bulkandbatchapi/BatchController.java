@@ -8,10 +8,13 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Size;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.CollectionUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
@@ -37,28 +40,57 @@ public class BatchController {
         this.customerRequestDataConverter = customerRequestDataConverter;
     }
 
+    @PostMapping(path = "/customers")
+    public ResponseEntity<List<CustomerBatchResponse>> batchProcessCustomers(@RequestBody @Valid @Size(min = 1, max = 20) List<CustomerBatchRequest> customerBatchRequests) {
+        List<CustomerBatchResponse> customerBatchResponseList = new ArrayList<>();
+
+        customerBatchRequests.forEach(customerBatchRequest -> {
+            List<Customer> customers = customerService.processCustomers(customerBatchRequest.getCustomers(),
+                    customerBatchRequest.getBatchType());
+            customerBatchResponseList.add(getCustomerBatchResponse(customerBatchRequest, customers));
+        });
+
+        return ResponseEntity.ok(customerBatchResponseList);
+    }
+
     @PostMapping(path = "/customer-address")
     public ResponseEntity<String> batchCreateCustomerWithAddress(@RequestBody @Valid @Size(min = 1, max = 20) List<BatchRequest> batchRequests) {
         batchRequests.forEach(batchRequest ->
                 CompletableFuture.runAsync(() -> {
                     try {
                         processBatchRequest(batchRequest);
-                    } catch (JsonProcessingException e) {
-                        throw new BatchCreateException(e.getMessage());
+                    } catch (JsonProcessingException ex) {
+                        throw new BatchCreateException(ex.getMessage());
                     }
                 })
         );
 
-        return ResponseEntity.ok("Batch request processing asynchronously");
+        return new ResponseEntity<>("Batch create Customer and Address is processing async", HttpStatus.ACCEPTED);
+    }
+
+    private CustomerBatchResponse getCustomerBatchResponse(CustomerBatchRequest customerBatchRequest, List<Customer> customers) {
+        CustomerBatchResponse customerBatchResponse = new CustomerBatchResponse();
+        customerBatchResponse.setBatchType(customerBatchRequest.getBatchType());
+        customerBatchResponse.setCustomers(customers);
+
+        if (!CollectionUtils.isEmpty(customers) && customerBatchRequest.getCustomers().size() == customers.size()) {
+            customerBatchResponse.setStatus(BatchStatus.PROCESSED);
+        } else if (!CollectionUtils.isEmpty(customers) && customerBatchRequest.getCustomers().size() > customers.size()) {
+            customerBatchResponse.setStatus(BatchStatus.PARTIALLY_PROCESSED);
+        } else {
+            customerBatchResponse.setStatus(BatchStatus.NOT_PROCESSED);
+        }
+
+        return customerBatchResponse;
     }
 
     private void processBatchRequest(BatchRequest batchRequest) throws JsonProcessingException {
         switch (batchRequest.getResourceType()) {
             case ADDRESS:
-                addressService.createAddress(addressRequestDataConverter.convertObject(batchRequest.getData(), Address.class));
+                addressService.createAddress(addressRequestDataConverter.convertJsonObject(batchRequest.getData(), Address.class));
                 break;
             case CUSTOMER:
-                customerService.createCustomer(customerRequestDataConverter.convertObject(batchRequest.getData(), Customer.class));
+                customerService.createCustomer(customerRequestDataConverter.convertJsonObject(batchRequest.getData(), Customer.class));
                 break;
             default:
                 break;

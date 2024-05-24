@@ -1,8 +1,6 @@
 package com.baeldung.bulkandbatchapi.address;
 
-import java.io.Serializable;
-
-public class Address implements Serializable {
+public class Address {
 
     private int id;
     private String street;
