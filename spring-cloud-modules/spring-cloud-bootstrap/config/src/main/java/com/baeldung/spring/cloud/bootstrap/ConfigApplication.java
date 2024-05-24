@@ -1,4 +1,4 @@
-package com.baeldung.spring.cloud.bootstrap.config;
+package com.baeldung.spring.cloud.bootstrap;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

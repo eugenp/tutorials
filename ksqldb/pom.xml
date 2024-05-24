@@ -55,7 +55,7 @@
     <properties>
         <ksqldb.version>6.2.0</ksqldb.version>
         <awaitility.version>4.1.0</awaitility.version>
-        <testcontainers.version>1.15.3</testcontainers.version>
+        <testcontainers.version>1.19.7</testcontainers.version>
     </properties>
 
 </project>
