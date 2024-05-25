@@ -1,9 +1,6 @@
 package com.baeldung.barcodes;
 
-import com.baeldung.barcodes.generators.BarbecueBarcodeGenerator;
-import com.baeldung.barcodes.generators.Barcode4jBarcodeGenerator;
-import com.baeldung.barcodes.generators.QRGenBarcodeGenerator;
-import com.baeldung.barcodes.generators.ZxingBarcodeGenerator;
+import com.baeldung.barcodes.generators.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -91,6 +88,11 @@ public class BarcodesController {
     @PostMapping(value = "/qrgen/qrcode", produces = MediaType.IMAGE_PNG_VALUE)
     public ResponseEntity<BufferedImage> qrgenQRCode(@RequestBody String barcode) throws Exception {
         return okResponse(QRGenBarcodeGenerator.generateQRCodeImage(barcode));
+    }
+
+    @GetMapping(value = "/okapi/2d/{barcode}", produces = MediaType.IMAGE_PNG_VALUE)
+    public ResponseEntity<BufferedImage> okapiBarcode(@PathVariable("barcode") String barcode) throws Exception {
+        return okResponse(OkapiBarcodeGenerator.generateOkapiBarcode(barcode));
     }
 
     private ResponseEntity<BufferedImage> okResponse(BufferedImage image) {
