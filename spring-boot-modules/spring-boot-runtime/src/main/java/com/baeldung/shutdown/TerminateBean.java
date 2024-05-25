@@ -1,6 +1,6 @@
 package com.baeldung.shutdown;
 
-import javax.annotation.PreDestroy;
+import jakarta.annotation.PreDestroy;
 
 public class TerminateBean {
 

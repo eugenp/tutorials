@@ -4,8 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-streams-4</artifactId>
-    <name>core-java-streams-4</name>
     <packaging>jar</packaging>
+    <name>core-java-streams-4</name>
 
     <parent>
         <groupId>com.baeldung.core-java-modules</groupId>
@@ -23,19 +23,6 @@
             <groupId>io.reactivex.rxjava2</groupId>
             <artifactId>rxjava</artifactId>
             <version>${rx.java2.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.junit</groupId>
-            <artifactId>junit-bom</artifactId>
-            <version>${junit-jupiter.version}</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
@@ -74,11 +61,6 @@
             <version>${apache.commons.collection4.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.oath.cyclops</groupId>
             <artifactId>cyclops</artifactId>
             <version>${cyclops.version}</version>
@@ -106,7 +88,6 @@
 
     <properties>
         <!-- testing -->
-        <assertj.version>3.23.1</assertj.version>
         <rx.java.version>1.2.5</rx.java.version>
         <rx.java2.version>2.2.2</rx.java2.version>
         <rx.java3.version>3.1.5</rx.java3.version>

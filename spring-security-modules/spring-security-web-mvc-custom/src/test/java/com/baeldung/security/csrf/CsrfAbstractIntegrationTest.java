@@ -3,7 +3,7 @@ package com.baeldung.security.csrf;
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 
-import javax.servlet.Filter;
+import jakarta.servlet.Filter;
 
 import com.baeldung.web.dto.Foo;
 import org.junit.Before;

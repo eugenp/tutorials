@@ -13,6 +13,11 @@ public class RedisTestConfiguration {
 
     public RedisTestConfiguration(RedisProperties redisProperties) {
         this.redisServer = new RedisServer(redisProperties.getPort());
+        // To run on windows uncomment the following lines
+        // this.redisServer = RedisServer.builder().setting("maxheap 200m")
+        //         .port(redisProperties.getPort())
+        //         .setting("bind localhost")
+        //         .build();
     }
 
     @PostConstruct

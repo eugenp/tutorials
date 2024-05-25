@@ -27,6 +27,11 @@
         </dependency>
         <dependency>
             <groupId>org.drools</groupId>
+            <artifactId>drools-mvel</artifactId>
+            <version>${drools-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.drools</groupId>
             <artifactId>drools-core</artifactId>
             <version>${drools-version}</version>
         </dependency>
@@ -75,8 +80,8 @@
     </dependencies>
 
     <properties>
-        <drools-version>8.34.0.Final</drools-version>
-        <kie-spring.version>7.73.0.Final</kie-spring.version>
+        <drools-version>9.44.0.Final</drools-version>
+        <kie-spring.version>7.74.1.Final</kie-spring.version>
     </properties>
 
 </project>

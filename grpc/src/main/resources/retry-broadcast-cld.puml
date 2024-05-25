@@ -1,0 +1,61 @@
+@startuml
+hide empty attributes
+skinparam Handwritten false
+skinparam ClassBorderColor black
+skinparam BackgroundColor #fffce8/#f8f9fa
+skinparam class {
+ ArrowColor SeaGreen
+ BackgroundColor #fffce8
+}
+class NotificationServiceBlockingStub {
+   +notify()::void
+}
+class NotificationServiceGrpc {
+
+}
+class NotificationServiceImplBase {
+}
+
+class NotificationServiceImpl {
+   +notify()::void
+}
+class GrpcBroadcastingServer {
+}
+class ServerBuilder {
+}
+class GrpcBroadcastingClient {
+   +broadcastMessage()::NotificationResponse
+   +sendNotification(ManagedChannel channel)::NotificationResponse
+   +getRetryingServiceConfig()::Map
+}
+class NotificationRequest {
+    +getMessage()::String
+    +getMessageID()::int
+    +getType()::String
+    +setMessage()::void
+    +setMessageID()::void
+    +setType()::void
+}
+class NotificationResponse {
+    +getResponse()::String
+    +setResponse()::String
+}
+class ManagedChannel {
+   +disableServiceConfigLookUp()
+   +enableRetry()
+   +defaultServiceConfig()
+}
+
+GrpcBroadcastingServer -down-> ServerBuilder: uses
+GrpcBroadcastingServer -up-> NotificationServiceImpl: uses
+NotificationServiceImpl -left-> NotificationServiceImplBase: extends
+NotificationServiceImpl -down-> NotificationRequest: uses
+NotificationServiceImpl -down-> NotificationResponse: uses
+NotificationServiceGrpc +-right- NotificationServiceImplBase
+NotificationServiceGrpc +-down- NotificationServiceBlockingStub
+GrpcBroadcastingClient -right-> NotificationRequest: uses
+GrpcBroadcastingClient -up-> NotificationResponse: uses
+GrpcBroadcastingClient -left-> NotificationServiceBlockingStub: uses
+GrpcBroadcastingClient -up-> ManagedChannel: uses
+
+@enduml

@@ -107,6 +107,12 @@
             <version>${jool.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.awaitility</groupId>
+            <artifactId>awaitility</artifactId>
+            <version>${awaitility.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>com.github.docker-java</groupId>
             <artifactId>docker-java</artifactId>
             <version>${docker.version}</version>
@@ -168,7 +174,7 @@
     </build>
 
     <properties>
-        <jcabi-aspects.version>0.22.6</jcabi-aspects.version>
+        <jcabi-aspects.version>0.26.0</jcabi-aspects.version>
         <aspectjrt.version>1.9.20.1</aspectjrt.version>
         <jcabi-maven-plugin.version>0.14.1</jcabi-maven-plugin.version>
         <aspectjtools.version>1.9.20.1</aspectjtools.version>
@@ -181,9 +187,10 @@
         <immutables.version>2.5.6</immutables.version>
         <mutabilitydetector.version>0.9.6</mutabilitydetector.version>
         <javax.annotation-api.version>1.3.2</javax.annotation-api.version>
-        <jnats.version>1.0</jnats.version>
+        <jnats.version>2.17.3</jnats.version>
         <fugue.version>4.5.1</fugue.version>
         <jool.version>0.9.12</jool.version>
+        <awaitility.version>4.2.1</awaitility.version>
         <scala.version>2.12</scala.version>
         <docker.version>3.0.14</docker.version>
     </properties>

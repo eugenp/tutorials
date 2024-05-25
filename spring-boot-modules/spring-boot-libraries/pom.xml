@@ -137,6 +137,11 @@
             <artifactId>jcache</artifactId>
             <version>${caffeine.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.nayuki</groupId>
+            <artifactId>qrcodegen</artifactId>
+            <version>${qrcodegen.version}</version>
+        </dependency>
     </dependencies>
 
     <repositories>
@@ -227,11 +232,8 @@
     <properties>
         <!-- The main class to start by executing java -jar -->
         <start-class>com.baeldung.graphql.DemoApplication</start-class>
-        <tomee-servlet-api.version>8.5.11</tomee-servlet-api.version>
         <togglz.version>4.4.0</togglz.version>
         <rome.version>1.9.0</rome.version>
-        <chaos.monkey.version>2.0.0</chaos.monkey.version>
-        <graphql-spring-boot-starter.version>5.0.2</graphql-spring-boot-starter.version>
         <graphql-java-tools.version>5.2.4</graphql-java-tools.version>
         <git-commit-id-plugin.version>2.2.4</git-commit-id-plugin.version>
         <modelmapper.version>3.2.0</modelmapper.version>
@@ -246,6 +248,7 @@
         <bucket4j-spring-boot-starter.version>0.10.3</bucket4j-spring-boot-starter.version>
         <caffeine.version>3.1.8</caffeine.version>
         <okapi.version>0.4.6</okapi.version>
+        <qrcodegen.version>1.8.0</qrcodegen.version>
     </properties>
 
 </project>

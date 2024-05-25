@@ -20,13 +20,13 @@ public class KafkaMessageConsumer {
 
         String topicName = (String) headers.get(KafkaHeaders.TOPIC);
         System.out.println("Topic: " + topicName);
-        int partitionID = (int) headers.get(KafkaHeaders.RECEIVED_PARTITION_ID);
+        int partitionID = (int) headers.get(KafkaHeaders.RECEIVED_PARTITION);
         System.out.println("Partition ID: " + partitionID);
     }
 
     @KafkaListener(topics = { "my-topic" }, groupId = "my-consumer-group")
     public void listen(@Payload String message, @Header(KafkaHeaders.RECEIVED_TOPIC) String topicName,
-        @Header(KafkaHeaders.RECEIVED_PARTITION_ID) int partition) {
+        @Header(KafkaHeaders.RECEIVED_PARTITION) int partition) {
         System.out.println("Topic: " + topicName);
         System.out.println("Partition ID: " + partition);
     }

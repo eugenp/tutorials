@@ -60,6 +60,11 @@
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>${spring.tx.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -76,7 +81,6 @@
 
     <properties>
         <spring.boot.dependencies>3.2.2</spring.boot.dependencies>
-        <junit-jupiter.version>5.10.2</junit-jupiter.version>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <db.util.version>1.0.7</db.util.version>
@@ -84,6 +88,7 @@
         <modelmapper.version>3.2.0</modelmapper.version>
         <commons-codec.version>1.16.1</commons-codec.version>
         <lombok.version>1.18.30</lombok.version>
+        <spring.tx.version>6.1.4</spring.tx.version>
     </properties>
 
 </project>

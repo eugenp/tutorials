@@ -4,8 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-collections-list-4</artifactId>
-    <name>core-java-collections-list-4</name>
     <packaging>jar</packaging>
+    <name>core-java-collections-list-4</name>
 
     <parent>
         <groupId>com.baeldung.core-java-modules</groupId>
@@ -84,7 +84,6 @@
         <fastutil.version>8.1.0</fastutil.version>
         <colt.version>1.2.0</colt.version>
         <apache-commons.version>3.0</apache-commons.version>
-        <assertj.version>3.22.0</assertj.version>
         <spring.version>5.3.22</spring.version>
     </properties>
 

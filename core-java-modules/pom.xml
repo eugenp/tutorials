@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.core-java-modules</groupId>
     <artifactId>core-java-modules</artifactId>
-    <name>core-java-modules</name>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
+    <name>core-java-modules</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -16,19 +16,19 @@
     </parent>
 
     <modules>
-        <!--Won't be upgraded to JDK 17 -->
+        <!--Won't be upgraded to JDK 17 reason specified in JAVA-18131-->
         <!--<module>core-java-8</module> -->
         <!--<module>core-java-8-2</module> -->
         <!--<module>core-java-8-datetime</module> -->
         <!--<module>core-java-8-datetime-2</module> -->
-        <module>core-java-collections-conversions-2</module>
-        <module>core-java-collections-conversions-3</module>
-        <module>core-java-concurrency-advanced-5</module>
         <!--<module>core-java-lang</module> -->
         <!--<module>core-java-lang-math-3</module> -->
         <!--<module>core-java-security</module> -->
         <!--<module>core-java-streams-2</module> -->
         <!--<module>core-java-sun</module> -->
+        <module>core-java-collections-conversions-2</module>
+        <module>core-java-collections-conversions-3</module>
+        <module>core-java-concurrency-advanced-5</module>
         <!-- <module>core-java-modules/core-java-9-new-features</module> --> <!-- JAVA-26056 -->
         <!-- <module>core-java-modules/core-java-14</module> --> <!-- JAVA-26056 -->
         <!-- <module>core-java-modules/core-java-16</module> --> <!-- JAVA-26056 -->
@@ -36,6 +36,7 @@
         <!-- <module>core-java-modules/core-java-18</module> --> <!-- JAVA-26056 -->
         <!-- <module>core-java-modules/core-java-19</module> --> <!-- JAVA-26056 -->
         <module>core-java-numbers-conversions</module>
+        <module>core-java-numbers-conversions-2</module>
         <module>core-java-9-improvements</module>
         <module>core-java-9-streams</module>
         <module>core-java-9</module>
@@ -89,6 +90,7 @@
         <module>core-java-collections-3</module>
         <module>core-java-collections-4</module>
         <module>core-java-collections-5</module>
+        <module>core-java-collections-6</module>
         <module>core-java-collections-conversions</module>
         <module>core-java-collections-set-2</module>
         <module>core-java-collections-list</module>
@@ -99,6 +101,7 @@
         <module>core-java-collections-maps-2</module>
         <module>core-java-collections-maps-3</module>
         <module>core-java-collections-maps-7</module>
+        <module>core-java-collections-maps-8</module>
         <module>core-java-compiler</module>
         <module>core-java-concurrency-2</module>
         <module>core-java-concurrency-advanced</module>
@@ -128,6 +131,7 @@
         <module>core-java-io-3</module>
         <module>core-java-io-4</module>
         <module>core-java-io-5</module>
+        <module>core-java-io-6</module>
         <module>core-java-io-apis</module>
         <module>core-java-io-apis-2</module>
         <module>core-java-io-conversions</module>
@@ -142,8 +146,10 @@
         <module>core-java-lang-4</module>
         <module>core-java-lang-5</module>
         <module>core-java-lang-6</module>
+        <module>core-java-lang-7</module>
         <module>core-java-lang-math</module>
         <module>core-java-lang-math-2</module>
+        <module>core-java-lang-math-4</module>
         <module>core-java-lang-oop-constructors</module>
         <module>core-java-lang-oop-patterns</module>
         <module>core-java-lang-oop-generics</module>
@@ -162,6 +168,7 @@
         <module>core-java-networking</module>
         <module>core-java-networking-2</module>
         <module>core-java-networking-4</module>
+        <module>core-java-networking-5</module>
         <module>core-java-nio</module>
         <module>core-java-nio-2</module>
         <module>core-java-numbers</module>
@@ -171,6 +178,7 @@
         <module>core-java-numbers-5</module>
         <module>core-java-numbers-6</module>
         <module>core-java-numbers-7</module>
+        <module>core-java-numbers-8</module>
         <module>core-java-optional</module>
         <module>core-java-perf</module>
         <module>core-java-properties</module>
@@ -201,6 +209,7 @@
         <module>core-java-string-operations-6</module>
         <module>core-java-string-operations-7</module>
         <module>core-java-string-operations-8</module>
+        <module>core-java-string-operations-9</module>
         <module>core-java-regex</module>
         <module>core-java-regex-2</module>
         <module>core-java-regex-3</module>
@@ -208,8 +217,8 @@
         <module>core-java-collections-maps-6</module>
         <module>core-java-records</module>
         <module>core-java-9-jigsaw</module>
-        <!--<module>core-java-20</module>--> <!--JAVA-25373-->
-        <!--<module>core-java-21</module>--> <!--JAVA-25373-->
+        <!--<module>core-java-20</module>--> <!--JAVA-29040-->
+        <!--<module>core-java-21</module>--> <!--JAVA-29040-->
         <!--<module>core-java-conditionals</module>--> <!--JAVA-20931-->
         <module>core-java-collections-set</module>
         <module>core-java-date-operations-1</module>
@@ -220,6 +229,8 @@
         <module>java-rmi</module>
         <module>java-spi</module>
         <module>java-websocket</module>
+        <module>core-java-8-datetime-3</module>
+        <!--<module>core-java-22</module>--> <!-- requires JDK 22 -->
     </modules>
 
     <dependencies>
@@ -243,6 +254,7 @@
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
+        <org.json.version>20240303</org.json.version>
     </properties>
 
     <dependencyManagement>

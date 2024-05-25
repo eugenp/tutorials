@@ -35,6 +35,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-oxm</artifactId>
+            <version>${spring-oxm.version}</version>
             <exclusions>
                 <exclusion>
                     <artifactId>commons-logging</artifactId>
@@ -69,8 +70,13 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.batch</groupId>
+            <artifactId>spring-batch-core</artifactId>
+            <version>${spring-batch-core.version}</version>
+        </dependency>
     </dependencies>
-    
+
     <properties>
         <opencsv.version>5.8</opencsv.version>
         <jakarta.xml.bind-api>4.0.0</jakarta.xml.bind-api>
@@ -78,9 +84,10 @@
         <jackson-datatype.version>2.16.0</jackson-datatype.version>
         <http-client.version>4.5.14</http-client.version>
         <jettison.version>1.5.3</jettison.version>
+        <spring-oxm.version>6.1.4</spring-oxm.version>
+        <spring-batch-core.version>5.1.1</spring-batch-core.version>
         <start-class>com.baeldung.batchtesting.SpringBatchApplication</start-class>
         <spring-boot.version>3.2.2</spring-boot.version>
-        <junit-jupiter.version>5.10.2</junit-jupiter.version>
     </properties>
 
 </project>

@@ -1,6 +1,6 @@
 package com.baeldung.web.util;
 
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * Provides some constants and utility methods to build a Link Header to be stored in the {@link HttpServletResponse} object

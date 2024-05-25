@@ -32,7 +32,6 @@
                     </execution>
                 </executions>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
@@ -42,7 +41,6 @@
                     <!--propertiesEncoding>ISO-8859-1</propertiesEncoding -->
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -50,7 +48,6 @@
                     <!--encoding>UTF-8</encoding -->
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
 
@@ -61,7 +58,6 @@
         <!-- and would be overidden by the plugin specific properties above. -->
         <!--project.build.sourceEncoding></project.build.sourceEncoding -->
         <!--project.build.sourceEncoding>US-ASCII</project.build.sourceEncoding -->
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 

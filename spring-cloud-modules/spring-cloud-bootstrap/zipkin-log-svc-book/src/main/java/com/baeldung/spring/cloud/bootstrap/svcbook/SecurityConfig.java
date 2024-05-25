@@ -20,18 +20,17 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        return http.authorizeHttpRequests((auth) -> auth.antMatchers(HttpMethod.GET, "/books")
+        return http.authorizeHttpRequests((auth) -> auth.requestMatchers(HttpMethod.GET, "/books")
                 .permitAll()
-                .antMatchers(HttpMethod.GET, "/books/*")
+                .requestMatchers(HttpMethod.GET, "/books/*")
                 .permitAll()
-                .antMatchers(HttpMethod.POST, "/books")
+                .requestMatchers(HttpMethod.POST, "/books")
                 .hasRole("ADMIN")
-                .antMatchers(HttpMethod.PATCH, "/books/*")
+                .requestMatchers(HttpMethod.PATCH, "/books/*")
                 .hasRole("ADMIN")
-                .antMatchers(HttpMethod.DELETE, "/books/*")
+                .requestMatchers(HttpMethod.DELETE, "/books/*")
                 .hasRole("ADMIN"))
-            .csrf()
-            .disable()
+            .csrf(csrf -> csrf.disable())
             .build();
     }
 }

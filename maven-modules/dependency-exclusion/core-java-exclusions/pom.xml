@@ -4,8 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-exclusions</artifactId>
-    <name>core-java-exclusions</name>
     <packaging>jar</packaging>
+    <name>core-java-exclusions</name>
 
     <parent>
         <groupId>com.baeldung.dependency-exclusion</groupId>
@@ -19,7 +19,6 @@
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
     <build>

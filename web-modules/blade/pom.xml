@@ -62,6 +62,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
+                <version>${maven-failsafe-plugin.version}</version>
                 <configuration>
                     <skipITs>true</skipITs>
                     <includes>
@@ -111,7 +112,6 @@
         <httpclient.version>4.5.6</httpclient.version>
         <httpmime.version>4.5.6</httpmime.version>
         <httpcore.version>4.4.10</httpcore.version>
-        <process-exec-maven-plugin.version>0.7</process-exec-maven-plugin.version>
         <assembly.plugin.version>3.1.0</assembly.plugin.version>
     </properties>
 

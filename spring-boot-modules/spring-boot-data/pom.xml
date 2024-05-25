@@ -147,16 +147,13 @@
                             </systemPropertyVariables>
                         </configuration>
                     </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-compiler-plugin</artifactId>
-                    </plugin>
                 </plugins>
             </build>
         </profile>
     </profiles>
 
     <properties>
+        <spring-boot.version>3.2.2</spring-boot.version>
         <git-commit-id-plugin.version>2.2.4</git-commit-id-plugin.version>
         <javafx.version>19</javafx.version>
         <start-class>com.baeldung.SpringBootDataApplication</start-class>

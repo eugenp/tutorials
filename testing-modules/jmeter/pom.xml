@@ -37,6 +37,17 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.apache.jmeter</groupId>
+            <artifactId>ApacheJMeter_core</artifactId>
+            <version>5.4.1</version>
+        </dependency>
+        <!-- Apache JMeter HTTP -->
+        <dependency>
+            <groupId>org.apache.jmeter</groupId>
+            <artifactId>ApacheJMeter_http</artifactId>
+            <version>5.4.1</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -106,6 +117,12 @@
                                     <mainClass>com.baeldung.dashboard.DashboardApplication</mainClass>
                                 </configuration>
                             </execution>
+                            <execution>
+                                <id>stop-web-app</id>
+                                <goals>
+                                    <goal>stop</goal>
+                                </goals>
+                            </execution>
                         </executions>
                         <configuration>
                             <profiles>
@@ -141,18 +158,6 @@
                             <ignoreResultFailures>true</ignoreResultFailures>
                             <testResultsTimestamp>true</testResultsTimestamp>
                         </configuration>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.springframework.boot</groupId>
-                        <artifactId>spring-boot-maven-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <id>stop-web-app</id>
-                                <goals>
-                                    <goal>stop</goal>
-                                </goals>
-                            </execution>
-                        </executions>
                     </plugin>
                 </plugins>
             </build>

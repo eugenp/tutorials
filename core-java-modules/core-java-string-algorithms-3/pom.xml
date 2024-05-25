@@ -3,8 +3,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-string-algorithms-3</artifactId>
-    <name>core-java-string-algorithms-3</name>
     <packaging>jar</packaging>
+    <name>core-java-string-algorithms-3</name>
 
     <parent>
         <groupId>com.baeldung.core-java-modules</groupId>
@@ -55,7 +55,7 @@
     </build>
 
     <properties>
-        <validator.version>1.7</validator.version>
+        <validator.version>1.8.0</validator.version>
         <emoji-java.version>5.1.1</emoji-java.version>
         <apache-commons-text.version>1.10.0</apache-commons-text.version>
     </properties>

@@ -4,8 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-functional</artifactId>
-    <name>core-java-functional</name>
     <packaging>jar</packaging>
+    <name>core-java-functional</name>
 
     <parent>
         <groupId>com.baeldung.core-java-modules</groupId>
@@ -14,6 +14,17 @@
     </parent>
 
     <dependencies>
+        <dependency>
+            <groupId>io.vavr</groupId>
+            <artifactId>vavr</artifactId>
+            <version>${vavr.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-core</artifactId>
+            <version>${reactor-core.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-inline</artifactId>
@@ -34,8 +45,8 @@
 
     <properties>
         <mockito-inline.version>3.8.0</mockito-inline.version>
-        <assertj.version>3.22.0</assertj.version>
         <vavr.version>0.10.4</vavr.version>
+        <reactor-core.version>3.6.5</reactor-core.version>
     </properties>
 
 </project>

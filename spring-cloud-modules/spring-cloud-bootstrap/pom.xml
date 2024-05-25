@@ -25,4 +25,10 @@
         <module>order-service</module>
     </modules>
 
+    <properties>
+        <maven.compiler.release>17</maven.compiler.release>
+        <spring-cloud-dependencies.version>2023.0.1</spring-cloud-dependencies.version>
+        <spring-boot.version>3.2.2</spring-boot.version>
+    </properties>
+
 </project>

@@ -22,7 +22,7 @@
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-            <version>${springdoc.version}</version>
+            <version>${springdoc-openapi-webmvc-ui.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -41,6 +41,7 @@
                 <plugin>
                     <groupId>org.graalvm.buildtools</groupId>
                     <artifactId>native-maven-plugin</artifactId>
+                    <version>${native.maven.plugin.version}</version>
                     <configuration>
                         <!-- Mockito is not supported -->
                         <skipNativeTests>true</skipNativeTests>
@@ -80,6 +81,7 @@
                     <plugin>
                         <groupId>org.graalvm.buildtools</groupId>
                         <artifactId>native-maven-plugin</artifactId>
+                        <version>${native.maven.plugin.version}</version>
                         <executions>
                             <execution>
                                 <id>build-native</id>
@@ -100,6 +102,7 @@
         <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
         <native.maven.plugin.version>0.9.17</native.maven.plugin.version>
         <java.version>17</java.version>
+        <springdoc-openapi-webmvc-ui.version>2.5.0</springdoc-openapi-webmvc-ui.version>
     </properties>
 
 </project>

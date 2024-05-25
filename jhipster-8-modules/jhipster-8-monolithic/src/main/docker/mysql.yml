@@ -1,0 +1,21 @@
+# This configuration is intended for development purpose, it's **your** responsibility to harden it for production
+name: jhipster8monolithic
+services:
+  mysql:
+    image: mysql:8.3.0
+    volumes:
+      - ./config/mysql:/etc/mysql/conf.d
+    #   - ~/volumes/jhipster/jhipster8Monolithic/mysql/:/var/lib/mysql/
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_DATABASE=jhipster8monolithic
+    # If you want to expose these ports outside your dev PC,
+    # remove the "127.0.0.1:" prefix
+    ports:
+      - 127.0.0.1:3306:3306
+    command: mysqld --lower_case_table_names=1 --skip-ssl --character_set_server=utf8mb4 --explicit_defaults_for_timestamp
+    healthcheck:
+      test: ['CMD', 'mysql', '-e', 'SHOW DATABASES;']
+      interval: 5s
+      timeout: 5s
+      retries: 10

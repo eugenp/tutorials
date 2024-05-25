@@ -12,3 +12,5 @@ This module contains articles about Java operators
 - [What Does “––>” Mean in Java?](https://www.baeldung.com/java-minus-minus-greaterthan)
 - [All the Ways Java Uses the Colon Character](https://www.baeldung.com/java-colon)
 - [Convert Infix to Postfix Expressions in Java](https://www.baeldung.com/java-convert-infix-to-postfix-expressions)
+- [Representation of Integers at a Bit Level in Java](https://www.baeldung.com/java-integer-bit-representation)
+- [How to Implement Elvis Operator in Java 8](https://www.baeldung.com/java-8-elvis-operator-implementation)
