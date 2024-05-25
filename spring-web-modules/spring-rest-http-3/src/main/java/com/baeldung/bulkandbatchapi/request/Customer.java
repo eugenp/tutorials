@@ -1,4 +1,4 @@
-package com.baeldung.bulkandbatchapi.customer;
+package com.baeldung.bulkandbatchapi.request;
 
 import jakarta.validation.constraints.NotBlank;
 

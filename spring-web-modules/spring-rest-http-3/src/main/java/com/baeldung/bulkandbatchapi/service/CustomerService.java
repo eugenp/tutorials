@@ -1,6 +1,7 @@
-package com.baeldung.bulkandbatchapi.customer;
+package com.baeldung.bulkandbatchapi.service;
 
-import com.baeldung.bulkandbatchapi.BatchType;
+import com.baeldung.bulkandbatchapi.request.Customer;
+import com.baeldung.bulkandbatchapi.request.BatchType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

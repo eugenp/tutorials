@@ -1,5 +1,6 @@
-package com.baeldung.bulkandbatchapi.address;
+package com.baeldung.bulkandbatchapi.service;
 
+import com.baeldung.bulkandbatchapi.request.Address;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

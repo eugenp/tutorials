@@ -1,6 +1,5 @@
-package com.baeldung.bulkandbatchapi;
+package com.baeldung.bulkandbatchapi.request;
 
-import com.baeldung.bulkandbatchapi.customer.Customer;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 

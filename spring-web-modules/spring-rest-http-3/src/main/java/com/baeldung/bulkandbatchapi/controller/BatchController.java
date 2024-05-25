@@ -1,9 +1,15 @@
-package com.baeldung.bulkandbatchapi;
+package com.baeldung.bulkandbatchapi.controller;
 
-import com.baeldung.bulkandbatchapi.address.Address;
-import com.baeldung.bulkandbatchapi.address.AddressService;
-import com.baeldung.bulkandbatchapi.customer.Customer;
-import com.baeldung.bulkandbatchapi.customer.CustomerService;
+import com.baeldung.bulkandbatchapi.exception.BatchCreateException;
+import com.baeldung.bulkandbatchapi.response.BatchStatus;
+import com.baeldung.bulkandbatchapi.response.CustomerBatchResponse;
+import com.baeldung.bulkandbatchapi.utility.RequestObjectConverter;
+import com.baeldung.bulkandbatchapi.request.Address;
+import com.baeldung.bulkandbatchapi.service.AddressService;
+import com.baeldung.bulkandbatchapi.request.Customer;
+import com.baeldung.bulkandbatchapi.service.CustomerService;
+import com.baeldung.bulkandbatchapi.request.BatchRequest;
+import com.baeldung.bulkandbatchapi.request.CustomerBatchRequest;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Size;

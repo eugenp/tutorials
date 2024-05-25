@@ -1,6 +1,7 @@
-package com.baeldung.bulkandbatchapi;
+package com.baeldung.bulkandbatchapi.response;
 
-import com.baeldung.bulkandbatchapi.customer.Customer;
+import com.baeldung.bulkandbatchapi.request.Customer;
+import com.baeldung.bulkandbatchapi.request.BatchType;
 
 import java.util.List;
 

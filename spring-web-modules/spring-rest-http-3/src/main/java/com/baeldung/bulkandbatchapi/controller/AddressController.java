@@ -1,5 +1,7 @@
-package com.baeldung.bulkandbatchapi.address;
+package com.baeldung.bulkandbatchapi.controller;
 
+import com.baeldung.bulkandbatchapi.request.Address;
+import com.baeldung.bulkandbatchapi.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;

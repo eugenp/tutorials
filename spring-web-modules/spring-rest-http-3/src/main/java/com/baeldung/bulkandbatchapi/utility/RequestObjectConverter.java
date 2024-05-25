@@ -1,4 +1,4 @@
-package com.baeldung.bulkandbatchapi;
+package com.baeldung.bulkandbatchapi.utility;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

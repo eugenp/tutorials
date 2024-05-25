@@ -1,4 +1,4 @@
-package com.baeldung.bulkandbatchapi;
+package com.baeldung.bulkandbatchapi.exception;
 
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.ConstraintViolationException;

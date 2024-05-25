@@ -1,5 +1,7 @@
-package com.baeldung.bulkandbatchapi.customer;
+package com.baeldung.bulkandbatchapi.controller;
 
+import com.baeldung.bulkandbatchapi.request.Customer;
+import com.baeldung.bulkandbatchapi.service.CustomerService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Size;
 import org.springframework.beans.factory.annotation.Autowired;
