@@ -61,16 +61,6 @@ public class BatchController {
         return new ResponseEntity<>("Batch create Customer and Address is processing async", HttpStatus.ACCEPTED);
     }
 
-    private BatchStatus getBatchStatus(List<Customer> customersInRequest, List<Customer> customersProcessed) {
-        BatchStatus batchStatus;
-
-        if (customersProcessed.size() == customersInRequest.size()) batchStatus = BatchStatus.PROCESSED;
-        else if (customersProcessed.size() < customersInRequest.size()) batchStatus = BatchStatus.PARTIALLY_PROCESSED;
-        else batchStatus = BatchStatus.NOT_PROCESSED;
-
-        return batchStatus;
-    }
-
     private void processBatchRequest(BatchRequest batchRequest) throws JsonProcessingException {
         switch (batchRequest.getResourceType()) {
             case ADDRESS:
@@ -82,5 +72,15 @@ public class BatchController {
             default:
                 break;
         }
+    }
+
+    private BatchStatus getBatchStatus(List<Customer> customersInRequest, List<Customer> customersProcessed) {
+        BatchStatus batchStatus;
+
+        if (customersProcessed.size() == customersInRequest.size()) batchStatus = BatchStatus.PROCESSED;
+        else if (customersProcessed.size() < customersInRequest.size()) batchStatus = BatchStatus.PARTIALLY_PROCESSED;
+        else batchStatus = BatchStatus.NOT_PROCESSED;
+
+        return batchStatus;
     }
 }

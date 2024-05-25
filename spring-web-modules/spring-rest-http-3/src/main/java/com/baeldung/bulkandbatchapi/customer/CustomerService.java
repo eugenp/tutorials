@@ -3,11 +3,11 @@ package com.baeldung.bulkandbatchapi.customer;
 import com.baeldung.bulkandbatchapi.BatchType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.*;
 
-@Component
+@Service
 public class CustomerService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CustomerService.class);

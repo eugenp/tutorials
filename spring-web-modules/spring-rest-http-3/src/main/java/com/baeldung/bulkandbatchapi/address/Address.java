@@ -2,7 +2,9 @@ package com.baeldung.bulkandbatchapi.address;
 
 import jakarta.validation.constraints.NotBlank;
 
-public class Address {
+import java.io.Serializable;
+
+public class Address implements Serializable {
 
     private int id;
 

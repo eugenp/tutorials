@@ -2,7 +2,9 @@ package com.baeldung.bulkandbatchapi.customer;
 
 import jakarta.validation.constraints.NotBlank;
 
-public class Customer {
+import java.io.Serializable;
+
+public class Customer implements Serializable {
 
     private int id;
 
