@@ -12,4 +12,8 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
+    <properties>
+            <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+    </properties>
+
 </project>
