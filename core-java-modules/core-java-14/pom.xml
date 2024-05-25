@@ -20,12 +20,6 @@
             <version>1.18.24</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>${junit-jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -38,8 +32,6 @@
                         <arg>--add-modules</arg>
                         <arg>jdk.incubator.foreign</arg>
                     </compilerArgs>
-                    <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.target}</target>
                 </configuration>
             </plugin>
             <plugin>
