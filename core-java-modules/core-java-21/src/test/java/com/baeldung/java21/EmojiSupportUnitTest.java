@@ -45,7 +45,7 @@ class EmojiSupportUnitTest {
 
     @Test
     public void testIsEmojiComponent() {
-        assertTrue(Character.isEmojiComponent(0x200D)); // Zero witdth joiner
+        assertTrue(Character.isEmojiComponent(0x200D)); // Zero width joiner
         assertTrue(Character.isEmojiComponent(0x1F3FD)); // medium skin tone
     }
 
