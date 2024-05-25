@@ -10,11 +10,6 @@ public class PersonShallow {
     public PersonShallow(String name, int age, Address address) {
         this.name = name;
         this.age = age;
-    }
-
-    public PersonShallow(PersonShallow another) {
-        this.name = another.name;
-        this.age = another.age;
-        this.address = another.address;
+        this.address = address;
     }
 }

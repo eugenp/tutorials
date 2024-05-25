@@ -20,13 +20,13 @@ public class DeepCopyShallowCopyUnitTest {
     }
 
     @Test
-    public void whenCreatingDeepCopyWithCloneMethod_thenObjectsShouldNotBeSame() throws java.lang.CloneNotSupportedException {
+    public void whenCreatingDeepCopyWithCloneMethod_thenObjectsShouldNotBeSame() throws CloneNotSupportedException {
 
         Address address = new Address("Baker St", 10);
         PersonDeep pd = new PersonDeep("Brad", 25, address);
 
-        PersonDeep deepCopy = pd;
-        assertThat(deepCopy).isEqualTo(pd);
+        PersonDeep deepCopy = pd.clone();
+        assertThat(deepCopy).isNotEqualTo(pd);
     }
 
 }
