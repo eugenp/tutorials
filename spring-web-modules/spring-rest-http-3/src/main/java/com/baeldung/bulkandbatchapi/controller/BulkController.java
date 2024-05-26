@@ -8,6 +8,8 @@ import com.baeldung.bulkandbatchapi.service.CustomerService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Size;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,14 +24,17 @@ public class BulkController {
 
     private final CustomerService customerService;
 
-    public BulkController(@Autowired CustomerService customerService) {
+    @Autowired
+    public BulkController(CustomerService customerService) {
         this.customerService = customerService;
     }
 
     @PostMapping(path = "/customers")
-    public List<Customer> createCustomers(@RequestHeader(value="X-ActionType") String actionType, @RequestBody @Valid @Size(min = 1, max = 20) List<Customer> customers) {
-        return "bulk".equals(actionType) ? customerService.createCustomers(customers) :
+    public ResponseEntity<List<Customer>> createCustomers(@RequestHeader(value = "X-ActionType") String actionType, @RequestBody @Valid @Size(min = 1, max = 20) List<Customer> customers) {
+        List<Customer> customerList = actionType.equals("bulk") ? customerService.createCustomers(customers) :
                 Collections.singletonList(customerService.createCustomer(customers.get(0)).orElse(null));
+
+        return new ResponseEntity<>(customerList, HttpStatus.CREATED);
     }
 
     @PostMapping(path = "/customers/bulk")

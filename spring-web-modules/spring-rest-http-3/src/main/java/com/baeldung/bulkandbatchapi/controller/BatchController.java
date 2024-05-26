@@ -47,7 +47,7 @@ public class BatchController {
             }
         }));
 
-        return new ResponseEntity<>("Batch update Customer and Address is processing async", HttpStatus.ACCEPTED);
+        return new ResponseEntity<>("Batch update is processing async", HttpStatus.ACCEPTED);
     }
 
     private void processBatchRequest(BatchRequest batchRequest) throws JsonProcessingException {

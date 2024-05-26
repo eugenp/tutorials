@@ -14,10 +14,6 @@ public class CustomerService {
     private static final Logger LOGGER = LoggerFactory.getLogger(CustomerService.class);
     private final Map<String, Customer> customerRepoMap = new HashMap<>();
 
-    public List<Customer> getCustomers() {
-        return new ArrayList<>(customerRepoMap.values());
-    }
-
     public List<Customer> createCustomers(List<Customer> customers) {
         List<Customer> createdCustomers = new ArrayList<>();
 
