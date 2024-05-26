@@ -19,7 +19,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class ConsumerAcksPublisherConfirmsIntegrationLiveTest {
 
-    static final String QUEUE = ConsumerAcksPublisherConfirmsIntegrationLiveTest.class.getName();
+    static final String QUEUE = "serial-number-validation";
 
     private List<String> generateRandomMessages(int n) {
         List<String> list = new ArrayList<>();
@@ -33,7 +33,7 @@ class ConsumerAcksPublisherConfirmsIntegrationLiveTest {
     @Test
     @Order(1)
     void whenPublishingWithConfirms_thenMessagesConfirmed() throws IOException, InterruptedException, TimeoutException {
-        try (StringPublisher publisher = new StringPublisher(QUEUE)) {
+        try (SerialNumberPublisher publisher = new SerialNumberPublisher(QUEUE)) {
             assertTrue(publisher.send("hello"));
             assertTrue(publisher.send("world"));
         }
@@ -44,7 +44,7 @@ class ConsumerAcksPublisherConfirmsIntegrationLiveTest {
     void givenMultipleMessageLimit_whenConsumerWithAcks_thenAllMessagesAcked() throws IOException, TimeoutException, InterruptedException, ExecutionException {
         int maxMessages = 2;
 
-        StringConsumer consumer = new StringConsumer(QUEUE, maxMessages);
+        SimpleSerialNumberConsumer consumer = new SimpleSerialNumberConsumer(QUEUE, maxMessages);
         Future<List<String>> messages = consumer.consume();
 
         assertEquals(maxMessages, messages.get()
@@ -56,7 +56,7 @@ class ConsumerAcksPublisherConfirmsIntegrationLiveTest {
     void givenMultipleMessages_whenPublishingWithConfirms_thenMessagesConfirmed() throws IOException, InterruptedException, TimeoutException {
         List<String> messages = generateRandomMessages(5);
 
-        try (StringPublisher publisher = new StringPublisher(QUEUE)) {
+        try (SerialNumberPublisher publisher = new SerialNumberPublisher(QUEUE)) {
             assertTrue(publisher.send(messages));
         }
     }
@@ -67,7 +67,7 @@ class ConsumerAcksPublisherConfirmsIntegrationLiveTest {
         int maxMessages = 1;
 
         Future<List<String>> messages;
-        StringConsumer consumer = new StringConsumer(QUEUE, maxMessages);
+        SimpleSerialNumberConsumer consumer = new SimpleSerialNumberConsumer(QUEUE, maxMessages);
         messages = consumer.consume();
 
         assertEquals(maxMessages, messages.get()

@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeoutException;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,9 +15,9 @@ import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.Delivery;
 
-public class StringConsumer {
+public class SimpleSerialNumberConsumer {
 
-    private static final Logger log = LoggerFactory.getLogger(StringConsumer.class);
+    private static final Logger log = LoggerFactory.getLogger(SimpleSerialNumberConsumer.class);
 
     private final Connection connection;
     private final Channel channel;
@@ -27,7 +26,7 @@ public class StringConsumer {
     private final int maximum;
     private boolean closed = false;
 
-    public StringConsumer(String queue, int maximum) throws IOException, TimeoutException {
+    public SimpleSerialNumberConsumer(String queue, int maximum) throws IOException, TimeoutException {
         ConnectionFactory factory = new ConnectionFactory();
 
         this.queue = queue;
@@ -45,7 +44,6 @@ public class StringConsumer {
             throw new IllegalStateException("already consumed");
         }
 
-        AtomicInteger consumed = new AtomicInteger(0);
         CompletableFuture<List<String>> future = new CompletableFuture<>();
 
         log.info("waiting for {} messages...", maximum);
@@ -54,11 +52,11 @@ public class StringConsumer {
 
             process(message, delivery);
             
-            if (consumed.incrementAndGet() >= maximum) {
+            if (messages.size() >= maximum) {
                 channel.basicAck(delivery.getEnvelope()
                     .getDeliveryTag(), true);
 
-                log.info("* acknowledged consumption of {} messages", consumed.get());
+                log.info("* acknowledged consumption of {} messages", messages.size());
                 future.complete(messages);
                 close();
             }
