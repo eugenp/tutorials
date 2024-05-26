@@ -1,6 +1,6 @@
 package com.baeldung.bulkandbatchapi.controller;
 
-import com.baeldung.bulkandbatchapi.exception.BatchCreateException;
+import com.baeldung.bulkandbatchapi.exception.BatchException;
 import com.baeldung.bulkandbatchapi.utility.RequestObjectConverter;
 import com.baeldung.bulkandbatchapi.request.Address;
 import com.baeldung.bulkandbatchapi.service.AddressService;
@@ -38,16 +38,16 @@ public class BatchController {
     }
 
     @PostMapping(path = "/customer-address")
-    public ResponseEntity<String> batchCreateCustomerWithAddress(@RequestBody @Valid @Size(min = 1, max = 20) List<BatchRequest> batchRequests) {
+    public ResponseEntity<String> batchUpdateCustomerWithAddress(@RequestBody @Valid @Size(min = 1, max = 20) List<BatchRequest> batchRequests) {
         batchRequests.forEach(batchRequest -> CompletableFuture.runAsync(() -> {
             try {
                 processBatchRequest(batchRequest);
             } catch (JsonProcessingException ex) {
-                throw new BatchCreateException(ex.getMessage());
+                throw new BatchException(ex.getMessage());
             }
         }));
 
-        return new ResponseEntity<>("Batch create Customer and Address is processing async", HttpStatus.ACCEPTED);
+        return new ResponseEntity<>("Batch update Customer and Address is processing async", HttpStatus.ACCEPTED);
     }
 
     private void processBatchRequest(BatchRequest batchRequest) throws JsonProcessingException {

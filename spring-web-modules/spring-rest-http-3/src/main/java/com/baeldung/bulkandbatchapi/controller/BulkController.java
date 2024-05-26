@@ -8,7 +8,6 @@ import com.baeldung.bulkandbatchapi.service.CustomerService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Size;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,19 +26,14 @@ public class BulkController {
         this.customerService = customerService;
     }
 
-    @GetMapping(path = "/customers")
-    public List<Customer> getAllCustomers() {
-        return customerService.getCustomers();
-    }
-
     @PostMapping(path = "/customers")
-    public List<Customer> createCustomers(@RequestHeader(value="X-Action") String actionType, @RequestBody @Valid @Size(min = 1, max = 20) List<Customer> customers) {
+    public List<Customer> createCustomers(@RequestHeader(value="X-ActionType") String actionType, @RequestBody @Valid @Size(min = 1, max = 20) List<Customer> customers) {
         return "bulk".equals(actionType) ? customerService.createCustomers(customers) :
                 Collections.singletonList(customerService.createCustomer(customers.get(0)).orElse(null));
     }
 
     @PostMapping(path = "/customers/bulk")
-    public ResponseEntity<List<CustomerBulkResponse>> bulkProcessCustomers(@RequestBody @Valid @Size(min = 1, max = 20) List<CustomerBulkRequest> customerBulkRequests) {
+    public List<CustomerBulkResponse> bulkProcessCustomers(@RequestBody @Valid @Size(min = 1, max = 20) List<CustomerBulkRequest> customerBulkRequests) {
         List<CustomerBulkResponse> customerBulkResponseList = new ArrayList<>();
 
         customerBulkRequests.forEach(customerBulkRequest -> {
@@ -48,7 +42,7 @@ public class BulkController {
             customerBulkResponseList.add(CustomerBulkResponse.getCustomerBatchResponse(customers, customerBulkRequest.getBulkActionType(), bulkStatus));
         });
 
-        return ResponseEntity.ok(customerBulkResponseList);
+        return customerBulkResponseList;
     }
 
     private BulkStatus getBulkStatus(List<Customer> customersInRequest, List<Customer> customersProcessed) {

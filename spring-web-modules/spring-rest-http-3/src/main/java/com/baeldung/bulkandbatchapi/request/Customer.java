@@ -45,6 +45,15 @@ public class Customer implements Serializable {
         return address;
     }
 
+    public Customer() {
+    }
+
+    public Customer(String name, String email, String address) {
+        this.name = name;
+        this.email = email;
+        this.address = address;
+    }
+
     public void setAddress(String address) {
         this.address = address;
     }
