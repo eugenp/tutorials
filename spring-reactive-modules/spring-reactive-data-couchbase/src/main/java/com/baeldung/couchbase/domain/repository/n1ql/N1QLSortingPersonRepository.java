@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 
 @Repository
-public interface N1QLSortingPersonRepository extends ReactiveCrudRepository<Person, UUID>, ReactiveSortingRepository<Person, UUID> {
+public interface N1QLSortingPersonRepository extends ReactiveCrudRepository<Person, UUID>{
 }

@@ -9,7 +9,7 @@ import reactor.core.publisher.Flux;
 import java.util.UUID;
 
 @Repository
-public interface N1QLPersonRepository extends ReactiveCrudRepository<Person, UUID>, ReactiveSortingRepository<Person, UUID> {
+public interface N1QLPersonRepository extends ReactiveCrudRepository<Person, UUID> {
 
     Flux<Person> findAllByFirstName(final String firstName);
 }
