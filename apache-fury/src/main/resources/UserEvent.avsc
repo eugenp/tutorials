@@ -1,0 +1,10 @@
+{
+  "namespace": "com.baeldung.apachefury.event.avro",
+  "type": "record",
+  "name": "UserEvent",
+  "fields": [
+    {"name": "userId", "type": "string"},
+    {"name": "eventType", "type": "string"},
+    {"name": "timestamp", "type": "long"}
+  ]
+}

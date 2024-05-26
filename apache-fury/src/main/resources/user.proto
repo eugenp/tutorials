@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option java_package = "com.baeldung.apachefury.event";
+option java_outer_classname = "UserEventProto";
+
+message UserEvent {
+  string userId = 1;
+  string eventType = 2;
+  int64 timestamp = 3;
+}
