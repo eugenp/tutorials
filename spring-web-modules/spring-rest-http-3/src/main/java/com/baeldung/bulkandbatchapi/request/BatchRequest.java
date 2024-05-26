@@ -1,5 +1,6 @@
 package com.baeldung.bulkandbatchapi.request;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import jakarta.validation.constraints.NotNull;
 
 public class BatchRequest {
@@ -8,9 +9,9 @@ public class BatchRequest {
     @NotNull
     private String relativeUrl;
     @NotNull
-    private Object data;
+    private JsonNode data;
 
-    public Object getData() {
+    public JsonNode getData() {
         return data;
     }
 
@@ -22,7 +23,7 @@ public class BatchRequest {
         this.relativeUrl = relativeUrl;
     }
 
-    public void setData(@NotNull Object data) {
+    public void setData(@NotNull JsonNode data) {
         this.data = data;
     }
 

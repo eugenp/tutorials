@@ -7,7 +7,6 @@ import com.baeldung.bulkandbatchapi.service.AddressService;
 import com.baeldung.bulkandbatchapi.request.Customer;
 import com.baeldung.bulkandbatchapi.service.CustomerService;
 import com.baeldung.bulkandbatchapi.request.BatchRequest;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Size;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
@@ -42,7 +42,7 @@ public class BatchController {
         batchRequests.forEach(batchRequest -> CompletableFuture.runAsync(() -> {
             try {
                 processBatchRequest(batchRequest);
-            } catch (JsonProcessingException ex) {
+            } catch (IOException ex) {
                 throw new BatchException(ex.getMessage());
             }
         }));
@@ -50,11 +50,12 @@ public class BatchController {
         return new ResponseEntity<>("Batch update is processing async", HttpStatus.ACCEPTED);
     }
 
-    private void processBatchRequest(BatchRequest batchRequest) throws JsonProcessingException {
+    private void processBatchRequest(BatchRequest batchRequest) throws IOException {
         if (batchRequest.getMethod().equals("POST") && batchRequest.getRelativeUrl().equals("/address")) {
             addressService.createAddress(addressRequestDataConverter.convertJsonObject(batchRequest.getData(), Address.class));
         } else if (batchRequest.getMethod().equals("PATCH") && batchRequest.getRelativeUrl().equals("/customer")) {
             customerService.updateCustomer(customerRequestDataConverter.convertJsonObject(batchRequest.getData(), Customer.class));
         }
     }
+
 }
