@@ -1,15 +1,16 @@
 package com.baeldung.bulkandbatchapi.utility;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Component;
+
+import java.io.IOException;
 
 @Component
 public class RequestObjectConverter<T> {
 
-    public T convertJsonObject(Object object, Class<T> valueType) throws JsonProcessingException {
+    public T convertJsonObject(JsonNode jsonNode, Class<T> valueType) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        String json = mapper.writeValueAsString(object);
-        return mapper.readValue(json, valueType);
+        return mapper.readValue(jsonNode.traverse(), valueType);
     }
 }
