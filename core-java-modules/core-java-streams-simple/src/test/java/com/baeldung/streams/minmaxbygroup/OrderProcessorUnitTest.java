@@ -1,13 +1,15 @@
 package com.baeldung.streams.minmaxbygroup;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import org.apache.commons.lang3.tuple.Pair;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class OrderProcessorUnitTest {
+
   @Test
   void whenOrderItemsAreGrouped_thenGetsMinMaxPerGroup() {
     List<OrderItem> items =
@@ -25,11 +27,8 @@ class OrderProcessorUnitTest {
     OrderProcessor orderProcessor = new OrderProcessor();
     final Map<OrderItemCategory, Pair<Double, Double>> orderItemCategoryPairMap =
         orderProcessor.groupByCategoryWithMinMax(items);
-    Assertions.assertEquals(
-        orderItemCategoryPairMap.get(OrderItemCategory.ELECTRONICS), Pair.of(1199.99, 2199.99));
-    Assertions.assertEquals(
-        orderItemCategoryPairMap.get(OrderItemCategory.FURNITURE), Pair.of(200.20, 220.00));
-    Assertions.assertEquals(
-        orderItemCategoryPairMap.get(OrderItemCategory.CLOTHING), Pair.of(50.75, 75.00));
+    assertEquals(orderItemCategoryPairMap.get(OrderItemCategory.ELECTRONICS), Pair.of(1199.99, 2199.99));
+    assertEquals(orderItemCategoryPairMap.get(OrderItemCategory.FURNITURE), Pair.of(200.20, 220.00));
+    assertEquals(orderItemCategoryPairMap.get(OrderItemCategory.CLOTHING), Pair.of(50.75, 75.00));
   }
 }

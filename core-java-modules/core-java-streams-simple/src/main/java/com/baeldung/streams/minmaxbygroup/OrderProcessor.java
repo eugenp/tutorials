@@ -6,21 +6,14 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import org.apache.commons.lang3.tuple.Pair;
 
-/** The type Order processor. */
 public class OrderProcessor {
-  /**
-   * Group by category with min max per group.
-   *
-   * @param orderItems the order items
-   * @return the grouped items
-   */
+
   public Map<OrderItemCategory, Pair<Double, Double>> groupByCategoryWithMinMax(
       List<OrderItem> orderItems) {
-    Map<OrderItemCategory, DoubleSummaryStatistics> categoryStatistics =
-        orderItems.stream()
-            .collect(
-                Collectors.groupingBy(
-                    OrderItem::getCategory, Collectors.summarizingDouble(OrderItem::getPrice)));
+    Map<OrderItemCategory, DoubleSummaryStatistics> categoryStatistics = orderItems.stream()
+        .collect(
+            Collectors.groupingBy(
+                OrderItem::getCategory, Collectors.summarizingDouble(OrderItem::getPrice)));
 
     return categoryStatistics.entrySet().stream()
         .collect(

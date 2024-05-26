@@ -5,8 +5,6 @@ public class OrderItem {
   private Double price;
   private OrderItemCategory category;
 
-  // other fields
-
   public OrderItem(long id, OrderItemCategory category, double price) {
     this.id = id;
     this.category = category;

@@ -5,5 +5,5 @@ public enum OrderItemCategory {
   CLOTHING,
   ELECTRONICS,
   FURNITURE,
-  OTHER;
+  OTHER
 }
