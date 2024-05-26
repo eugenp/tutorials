@@ -8,9 +8,9 @@
     <packaging>pom</packaging>
 
     <parent>
-        <groupId>com.jhi</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.5</version>
+        <groupId>com.baeldung.jhipster</groupId>
+        <artifactId>jhipster-8-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
         <relativePath/>
     </parent>
 
