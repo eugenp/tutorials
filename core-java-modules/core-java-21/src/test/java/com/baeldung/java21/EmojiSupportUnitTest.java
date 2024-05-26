@@ -37,10 +37,10 @@ class EmojiSupportUnitTest {
 
     @Test
     void when_character_is_emoji_modifier_base_then_isEmojiModifierBase_returns_true() {
-        assertTrue(Character.isEmojiModifierBase(0x1F44D)); // Thumbs up 👍
-        assertTrue(Character.isEmojiModifierBase(0x1F476)); // Baby 👶
+        assertTrue(Character.isEmojiModifierBase(Character.codePointAt("👍", 0)));
+        assertTrue(Character.isEmojiModifierBase(Character.codePointAt("👶", 0)));
 
-        assertFalse(Character.isEmojiModifierBase(0x1F355)); // Pizza 🍕
+        assertFalse(Character.isEmojiModifierBase(Character.codePointAt("🍕", 0)));
     }
 
     @Test
@@ -51,8 +51,8 @@ class EmojiSupportUnitTest {
 
     @Test
     void when_character_is_extended_pictographic_then_isExtendedPictographic_returns_true() {
-        assertTrue(Character.isExtendedPictographic(0x2600)); // Sun with rays ☀
-        assertTrue(Character.isExtendedPictographic(0x2714)); // Check mark ✔️
+        assertTrue(Character.isExtendedPictographic(Character.codePointAt("☀", 0))); // Sun with rays
+        assertTrue(Character.isExtendedPictographic(Character.codePointAt("✔", 0))); // Checkmark
     }
 
     @Test
