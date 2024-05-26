@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
 
-public class RecordVsLombokUntTest {
+public class RecordVsLombokUnitTest {
 
     @Test
     public void givenAColorRecord_hexStringIsCorrect() {
