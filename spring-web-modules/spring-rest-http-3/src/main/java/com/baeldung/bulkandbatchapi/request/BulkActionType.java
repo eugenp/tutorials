@@ -1,5 +1,5 @@
 package com.baeldung.bulkandbatchapi.request;
 
-public enum BatchType {
+public enum BulkActionType {
     CREATE, UPDATE, DELETE
 }

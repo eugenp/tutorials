@@ -4,7 +4,9 @@ import jakarta.validation.constraints.NotNull;
 
 public class BatchRequest {
     @NotNull
-    private ResourceType resourceType;
+    private String method;
+    @NotNull
+    private String relativeUrl;
     @NotNull
     private Object data;
 
@@ -12,11 +14,23 @@ public class BatchRequest {
         return data;
     }
 
-    public ResourceType getResourceType() {
-        return resourceType;
+    public @NotNull String getRelativeUrl() {
+        return relativeUrl;
     }
 
-    public void setResourceType(ResourceType resourceType) {
-        this.resourceType = resourceType;
+    public void setRelativeUrl(@NotNull String relativeUrl) {
+        this.relativeUrl = relativeUrl;
+    }
+
+    public void setData(@NotNull Object data) {
+        this.data = data;
+    }
+
+    public @NotNull String getMethod() {
+        return method;
+    }
+
+    public void setMethod(@NotNull String method) {
+        this.method = method;
     }
 }

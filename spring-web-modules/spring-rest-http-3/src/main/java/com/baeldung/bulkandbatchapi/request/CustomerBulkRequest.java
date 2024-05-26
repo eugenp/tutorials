@@ -5,17 +5,17 @@ import jakarta.validation.constraints.Size;
 
 import java.util.List;
 
-public class CustomerBatchRequest {
+public class CustomerBulkRequest {
 
     @NotNull
-    private BatchType batchType;
+    private BulkActionType bulkActionType;
 
     @NotNull
     @Size(min = 1, max = 20)
     private List<Customer> customers;
 
-    public BatchType getBatchType() {
-        return batchType;
+    public BulkActionType getBulkActionType() {
+        return bulkActionType;
     }
 
     public List<Customer> getCustomers() {

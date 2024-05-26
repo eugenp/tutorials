@@ -1,7 +1,7 @@
 package com.baeldung.bulkandbatchapi.service;
 
 import com.baeldung.bulkandbatchapi.request.Customer;
-import com.baeldung.bulkandbatchapi.request.BatchType;
+import com.baeldung.bulkandbatchapi.request.BulkActionType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -30,7 +30,7 @@ public class CustomerService {
         return createdCustomers;
     }
 
-    public List<Customer> processCustomers(List<Customer> customers, BatchType batchType) {
+    public List<Customer> processCustomers(List<Customer> customers, BulkActionType batchType) {
         List<Customer> processedCustomers = new ArrayList<>();
 
         customers.forEach(customer ->
