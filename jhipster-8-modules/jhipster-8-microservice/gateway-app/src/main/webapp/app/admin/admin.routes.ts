@@ -23,11 +23,6 @@ const routes: Routes = [
     title: 'health.title',
   },
   {
-    path: 'logs',
-    loadComponent: () => import('./logs/logs.component'),
-    title: 'logs.title',
-  },
-  {
     path: 'metrics',
     loadComponent: () => import('./metrics/metrics.component'),
     title: 'metrics.title',
