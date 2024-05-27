@@ -69,4 +69,44 @@ public class SubstringUnitTest {
         Assert.assertEquals("USA (United States of America)", text.substring(text.indexOf("USA"), text.indexOf(')') + 1));
     }
 
+    @Test
+    public void givenAString_whenGettingTextBeforeAndAfterTheSubstringUsingIndexes_thenGetExpectedResult() {
+        String substring = "was born on 25-09-1984. She ";
+        int startIdx = text.indexOf(substring);
+        String before = text.substring(0, startIdx);
+        String after = text.substring(startIdx + substring.length());
+
+        Assert.assertEquals("Julia Evans ", before);
+        Assert.assertEquals("is currently living in the USA (United States of America).", after);
+    }
+
+    @Test
+    public void givenAString_whenGettingTextBeforeAndAfterTheSubstringUsingSplit_thenGetExpectedResult() {
+        String substring = "was born on 25-09-1984. She ";
+        String[] result = text.split(Pattern.quote(substring));
+        Assert.assertEquals(2, result.length);
+
+        String before = result[0];
+        String after = result[1];
+
+        Assert.assertEquals("Julia Evans ", before);
+        Assert.assertEquals("is currently living in the USA (United States of America).", after);
+    }
+
+    @Test
+    public void givenAString_whenSplitWithRegexAndPatternQuote_thenGetDifferentResults() {
+        String input = "This is an *important* issue.";
+        String substring = " *important* ";
+        String[] resultWithoutQuote = input.split(substring);
+        Assert.assertEquals(1, resultWithoutQuote.length);
+        Assert.assertEquals(input, resultWithoutQuote[0]);
+
+        String[] result = input.split(Pattern.quote(substring));
+        String before = result[0];
+        String after = result[1];
+
+        Assert.assertEquals("This is an", before);
+        Assert.assertEquals("issue.", after);
+    }
+
 }
