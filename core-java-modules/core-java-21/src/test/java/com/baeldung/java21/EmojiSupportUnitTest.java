@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 class EmojiSupportUnitTest {
 
     @Test
-    void when_message_contains_emoji_then_isEmoji_returns_true() {
+    void whenMessageContainsEmoji_thenIsEmojiReturnsTrue() {
         String messageWithEmoji = "Hello Java 21! 😄";
         String messageWithoutEmoji = "Hello Java!";
 
@@ -20,7 +20,7 @@ class EmojiSupportUnitTest {
     }
 
     @Test
-    void when_message_contains_emoji_presentation_then_isEmojiPresentation_returns_true() {
+    void whenMessageContainsEmojiPresentation_thenIsEmojiPresentationReturnsTrue() {
         String emojiPresentationMessage = "Hello Java 21! 🔥😄";
         String nonEmojiPresentationMessage = "Hello Java 21!️";
 
@@ -29,14 +29,14 @@ class EmojiSupportUnitTest {
     }
 
     @Test
-    void when_character_is_emoji_modifier_then_isEmojiModifier_returns_true() {
+    void whenCharacterIsEmojiModifier_thenIsEmojiModifierReturnsTrue() {
         assertTrue(Character.isEmojiModifier(0x1F3FB)); // light skin tone
         assertTrue(Character.isEmojiModifier(0x1F3FD)); // medium skin tone
         assertTrue(Character.isEmojiModifier(0x1F3FF)); // dark skin tone
     }
 
     @Test
-    void when_character_is_emoji_modifier_base_then_isEmojiModifierBase_returns_true() {
+    void whenCharacterIsEmojiModifierBase_thenIsEmojiModifierBaseReturnsTrue() {
         assertTrue(Character.isEmojiModifierBase(Character.codePointAt("👍", 0)));
         assertTrue(Character.isEmojiModifierBase(Character.codePointAt("👶", 0)));
 
@@ -44,19 +44,19 @@ class EmojiSupportUnitTest {
     }
 
     @Test
-    void when_character_is_emoji_component_then_isEmojiComponent_returns_true() {
+    void whenCharacterIsEmojiComponent_thenIsEmojiComponentReturnsTrue() {
         assertTrue(Character.isEmojiComponent(0x200D)); // Zero width joiner
         assertTrue(Character.isEmojiComponent(0x1F3FD)); // medium skin tone
     }
 
     @Test
-    void when_character_is_extended_pictographic_then_isExtendedPictographic_returns_true() {
+    void whenCharacterIsExtendedPictographic_thenIsExtendedPictographicReturnsTrue() {
         assertTrue(Character.isExtendedPictographic(Character.codePointAt("☀", 0))); // Sun with rays
         assertTrue(Character.isExtendedPictographic(Character.codePointAt("✔", 0))); // Checkmark
     }
 
     @Test
-    void testEmojiRegex() {
+    void whenMessageContainsEmoji_thenEmojiRegexMatches() {
         String messageWithEmoji = "Hello Java 21! 😄";
 
         Matcher isEmojiMatcher = Pattern.compile("\\p{IsEmoji}").matcher(messageWithEmoji);
