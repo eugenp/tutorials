@@ -2,10 +2,11 @@ package com.baeldung.bulkandbatchapi.request;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import jakarta.validation.constraints.NotNull;
+import org.springframework.http.HttpMethod;
 
 public class BatchRequest {
     @NotNull
-    private String method;
+    private HttpMethod method;
     @NotNull
     private String relativeUrl;
     @NotNull
@@ -27,11 +28,11 @@ public class BatchRequest {
         this.data = data;
     }
 
-    public @NotNull String getMethod() {
+    public @NotNull HttpMethod getMethod() {
         return method;
     }
 
-    public void setMethod(@NotNull String method) {
+    public void setMethod(@NotNull HttpMethod method) {
         this.method = method;
     }
 }

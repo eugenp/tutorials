@@ -10,6 +10,7 @@ import com.baeldung.bulkandbatchapi.request.BatchRequest;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Size;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -53,9 +54,9 @@ public class BatchController {
     }
 
     private void processBatchRequest(BatchRequest batchRequest) throws IOException {
-        if (batchRequest.getMethod().equals("POST") && batchRequest.getRelativeUrl().equals("/address")) {
+        if (batchRequest.getMethod().equals(HttpMethod.POST) && batchRequest.getRelativeUrl().equals("/address")) {
             addressService.createAddress(addressRequestDataConverter.convertJsonObject(batchRequest.getData(), Address.class));
-        } else if (batchRequest.getMethod().equals("PATCH") && batchRequest.getRelativeUrl().equals("/customer")) {
+        } else if (batchRequest.getMethod().equals(HttpMethod.PATCH) && batchRequest.getRelativeUrl().equals("/customer")) {
             customerService.updateCustomer(customerRequestDataConverter.convertJsonObject(batchRequest.getData(), Customer.class));
         }
     }
