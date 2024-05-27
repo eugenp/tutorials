@@ -30,7 +30,9 @@ public class BatchController {
     private final RequestObjectConverter<Customer> customerRequestDataConverter;
 
     @Autowired
-    public BatchController(CustomerService customerService, AddressService addressService, RequestObjectConverter<Address> addressRequestDataConverter, RequestObjectConverter<Customer> customerRequestDataConverter) {
+    public BatchController(CustomerService customerService, AddressService addressService,
+                           RequestObjectConverter<Address> addressRequestDataConverter,
+                           RequestObjectConverter<Customer> customerRequestDataConverter) {
         this.customerService = customerService;
         this.addressService = addressService;
         this.addressRequestDataConverter = addressRequestDataConverter;
@@ -57,5 +59,4 @@ public class BatchController {
             customerService.updateCustomer(customerRequestDataConverter.convertJsonObject(batchRequest.getData(), Customer.class));
         }
     }
-
 }

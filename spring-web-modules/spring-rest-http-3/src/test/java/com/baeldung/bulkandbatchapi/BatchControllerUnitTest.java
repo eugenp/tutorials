@@ -72,9 +72,8 @@ class BatchControllerUnitTest {
                         "            \"address\": \"test1 test\"" +
                         "        }" +
                         "    }" +
-                        "]"))
-                .andExpect(status().is(HttpStatus.ACCEPTED.value()))
-                .andExpect(content().string("Batch update is processing async"));
+                        "]")).andExpect(status().is(HttpStatus.ACCEPTED.value()))
+      .andExpect(content().string("Batch update is processing async"));
     }
 
     @Test
@@ -84,8 +83,8 @@ class BatchControllerUnitTest {
         httpHeaders.add("Accept", "application/json");
 
         mockMvc.perform(post("/api/batch/customer-address").headers(httpHeaders).content("[]"))
-                .andExpect(status().is(HttpStatus.BAD_REQUEST.value()))
-                .andExpect(content().string(""));
+          .andExpect(status().is(HttpStatus.BAD_REQUEST.value()))
+          .andExpect(content().string(""));
     }
 
     private Customer getCustomer() {

@@ -53,22 +53,22 @@ class BulkControllerUnitTest {
                         "        \"address\": \"address2\"" +
                         "    }" +
                         "]"))
-                .andExpect(status().is(HttpStatus.CREATED.value()))
-                .andExpect(content().string("[]"));
+          .andExpect(status().is(HttpStatus.CREATED.value()))
+          .andExpect(content().string("[]"));
     }
 
     @Test
     void givenCustomersNotExists_WhenCalledBulkCreateCustomers_WithInvalidData_ThenShouldReturnBadRequestError() throws Exception {
         mockMvc.perform(post("/api/customers").headers(getHttpHeaders("bulk")).content("[]"))
-                .andExpect(status().is(HttpStatus.BAD_REQUEST.value()))
-                .andExpect(content().string(""));
+          .andExpect(status().is(HttpStatus.BAD_REQUEST.value()))
+          .andExpect(content().string(""));
     }
 
     @Test
     void givenActionTypeHeaderIsMissing_WhenCalledBulkCreateCustomers_ThenShouldReturnBadRequestError() throws Exception {
         mockMvc.perform(post("/api/customers"))
-                .andExpect(status().is(HttpStatus.BAD_REQUEST.value()))
-                .andExpect(content().string(""));
+          .andExpect(status().is(HttpStatus.BAD_REQUEST.value()))
+          .andExpect(content().string(""));
     }
 
     @Test
@@ -105,7 +105,7 @@ class BulkControllerUnitTest {
                         "        ]" +
                         "}" +
                         "]"))
-                .andExpect(status().is(HttpStatus.OK.value()));
+          .andExpect(status().is(HttpStatus.OK.value()));
     }
 
     @Test
@@ -131,7 +131,7 @@ class BulkControllerUnitTest {
                         "        ]" +
                         "    }" +
                         "]"))
-                .andExpect(status().is(HttpStatus.OK.value()));
+          .andExpect(status().is(HttpStatus.OK.value()));
     }
 
     private Customer getCustomer(String name, String email, String address) {
