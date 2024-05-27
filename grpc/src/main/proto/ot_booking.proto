@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package otbooking;
+
+option java_multiple_files = true;
+option java_package = "com.baeldung.grpc.alts.otbooking";
+
+service OtBookingService {
+  rpc getBookingInfo(BookingRequest) returns (BookingResponse) {}
+}
+
+message BookingRequest {
+  string patientID = 1;
+  string doctorID = 2;
+  string description = 3;
+}
+
+message BookingResponse {
+  string bookingDate = 1;
+  string condition = 2;
+}
