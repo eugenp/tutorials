@@ -105,7 +105,7 @@ class BulkControllerUnitTest {
                         "        ]" +
                         "}" +
                         "]"))
-          .andExpect(status().is(HttpStatus.OK.value()));
+          .andExpect(status().is(HttpStatus.MULTI_STATUS.value()));
     }
 
     @Test
@@ -131,7 +131,7 @@ class BulkControllerUnitTest {
                         "        ]" +
                         "    }" +
                         "]"))
-          .andExpect(status().is(HttpStatus.OK.value()));
+          .andExpect(status().is(HttpStatus.MULTI_STATUS.value()));
     }
 
     private Customer getCustomer(String name, String email, String address) {
