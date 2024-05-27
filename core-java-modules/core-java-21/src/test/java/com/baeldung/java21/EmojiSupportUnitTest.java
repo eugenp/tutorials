@@ -22,7 +22,7 @@ class EmojiSupportUnitTest {
     @Test
     void when_message_contains_emoji_presentation_then_isEmojiPresentation_returns_true() {
         String emojiPresentationMessage = "Hello Java 21! 🔥😄";
-        String nonEmojiPresentationMessage = "Hello Java 2️⃣1️⃣❗️";
+        String nonEmojiPresentationMessage = "Hello Java 21!️";
 
         assertTrue(emojiPresentationMessage.codePoints().anyMatch(Character::isEmojiPresentation));
         assertFalse(nonEmojiPresentationMessage.codePoints().anyMatch(Character::isEmojiPresentation));
@@ -65,7 +65,7 @@ class EmojiSupportUnitTest {
         assertTrue(isEmojiMatcher.find());
         assertTrue(isEmojiPresentationMatcher.find());
         
-        String messageWithoutEmoji = "Hello Java 21";
+        String messageWithoutEmoji = "Hello Java!";
         isEmojiMatcher = Pattern.compile("\\p{IsEmoji}").matcher(messageWithoutEmoji);
         assertFalse(isEmojiMatcher.find());
     }
