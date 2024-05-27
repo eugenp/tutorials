@@ -38,7 +38,7 @@ public class BulkController {
     }
 
     @PostMapping(path = "/customers/bulk")
-    public List<CustomerBulkResponse> bulkProcessCustomers(@RequestBody @Valid @Size(min = 1, max = 20) List<CustomerBulkRequest> customerBulkRequests) {
+    public ResponseEntity<List<CustomerBulkResponse>> bulkProcessCustomers(@RequestBody @Valid @Size(min = 1, max = 20) List<CustomerBulkRequest> customerBulkRequests) {
         List<CustomerBulkResponse> customerBulkResponseList = new ArrayList<>();
 
         customerBulkRequests.forEach(customerBulkRequest -> {
@@ -47,7 +47,7 @@ public class BulkController {
             customerBulkResponseList.add(CustomerBulkResponse.getCustomerBatchResponse(customers, customerBulkRequest.getBulkActionType(), bulkStatus));
         });
 
-        return customerBulkResponseList;
+        return new ResponseEntity<>(customerBulkResponseList, HttpStatus.MULTI_STATUS);
     }
 
     private BulkStatus getBulkStatus(List<Customer> customersInRequest, List<Customer> customersProcessed) {
