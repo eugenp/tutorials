@@ -18,6 +18,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Optional;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -26,7 +27,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(BatchController.class)
 class BatchControllerUnitTest {
-
     @MockBean
     private CustomerService customerService;
     @MockBean
@@ -47,6 +47,8 @@ class BatchControllerUnitTest {
 
         when(addressService.createAddress(address)).thenReturn(address);
         when(customerService.updateCustomer(customer)).thenReturn(Optional.of(customer));
+        when(customerRequestDataConverter.convertJsonObject(any(), any())).thenReturn(customer);
+        when(addressRequestDataConverter.convertJsonObject(any(), any())).thenReturn(address);
 
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add("Content-Type", "application/json");
