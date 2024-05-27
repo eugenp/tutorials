@@ -1,4 +1,4 @@
-package org.casting.demo;
+package com.baeldung.casting;
 
 public class Character {
 

@@ -1,4 +1,4 @@
-package org.casting.demo;
+package com.baeldung.casting;
 
 import java.util.ArrayList;
 import java.util.List;

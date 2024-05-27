@@ -1,4 +1,4 @@
-package org.casting.demo;
+package com.baeldung.casting;
 
 public class Commander extends Character {
 
@@ -8,7 +8,7 @@ public class Commander extends Character {
     }
 
     public void issueCommand(String command) {
-        System.out.println(String.format("Commander [%s] issues a command [%s]: ", this.getName(), command));
+        System.out.printf("Commander [%s] issues a command [%s]: %n", this.getName(), command);
     }
 }
 

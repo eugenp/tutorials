@@ -1,4 +1,4 @@
-package org.casting.demo;
+package com.baeldung.casting;
 
 public class Warrior extends Character {
 
@@ -8,7 +8,7 @@ public class Warrior extends Character {
     }
 
     public void obeyCommand(String command) {
-        System.out.println(String.format("Warrior [%s] obeys a command [%s]: ", this.getName(), command));
+        System.out.printf("Warrior [%s] obeys a command [%s]: %n", this.getName(), command);
     }
 
 }

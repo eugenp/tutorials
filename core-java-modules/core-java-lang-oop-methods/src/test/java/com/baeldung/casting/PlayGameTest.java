@@ -1,7 +1,6 @@
-package org.casting.demo;
+package com.baeldung.casting;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -18,15 +17,13 @@ class PlayGameTest {
     }
 
     @Test
-    @DisplayName("Should demonstrate casting via class cast")
-    public void shouldPlayGameViaClassCasting() {
+    public void whenCastingViaClass_thenSuccess() {
         String command = "Advance to the next checkpoint!";
         playGame.playViaClassCast(characters, command);
     }
 
     @Test
-    @DisplayName("Should demonstrate casting via cast operator")
-    public void shouldPlayGameViaCastOperator() {
+    public void whenCastingViaOperator_thenSuccess() {
         String command = "Retreat to a safe distance and regroup!";
         playGame.playViaCastOperator(characters, command);
     }
