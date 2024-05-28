@@ -2,11 +2,10 @@ package com.baeldung.couchbase.domain.repository.view;
 
 import java.util.UUID;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import com.baeldung.couchbase.configuration.CouchbaseProperties;
 import com.baeldung.couchbase.configuration.ViewReactiveCouchbaseConfiguration;
@@ -17,10 +16,10 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
-@RunWith(SpringRunner.class)
+
 @SpringBootTest(properties = { "spring.couchbase.port=10010", "spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.mongo.embedded.EmbeddedMongoAutoConfiguration,org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration" },
                 classes = { CouchbaseMockConfiguration.class, ViewReactiveCouchbaseConfiguration.class, CouchbaseProperties.class })
-public class ViewPersonRepositoryIntegrationTest {
+public class ViewPersonRepositoryLiveTest {
 
     @Autowired private ViewPersonRepository personRepository;
 
