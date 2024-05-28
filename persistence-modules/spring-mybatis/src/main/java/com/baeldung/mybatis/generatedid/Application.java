@@ -1,8 +1,10 @@
 package com.baeldung.mybatis.generatedid;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@MapperScan("com.baeldung.mybatis.generatedId")
 @SpringBootApplication
 public class Application {
 
