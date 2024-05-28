@@ -46,24 +46,21 @@
             <artifactId>morphia-core</artifactId>
             <version>${morphia.version}</version>
         </dependency>
-        <!-- <dependency>
-            <groupId>org.testcontainers</groupId>
-            <artifactId>mongodb</artifactId>
-            <version>${testcontainers.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.testcontainers</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>${testcontainers.version}</version>
-            <scope>test</scope>
-        </dependency> -->
-        <dependency>
-            <groupId>de.flapdoodle.embed</groupId>
-            <artifactId>de.flapdoodle.embed.mongo</artifactId>
-            <version>${flapdoodle.version}</version>
-            <scope>test</scope>
-        </dependency>
+	    <!-- Testcontainers for MongoDB -->
+	    <dependency>
+	        <groupId>org.testcontainers</groupId>
+	        <artifactId>mongodb</artifactId>
+	        <version>${testcontainers.version}</version>
+	        <scope>test</scope>
+	    </dependency>
+	
+	    <!-- Testcontainers JUnit 5 -->
+	    <dependency>
+	        <groupId>org.testcontainers</groupId>
+	        <artifactId>junit-jupiter</artifactId>
+	        <version>${testcontainers.version}</version>
+	        <scope>test</scope>
+	    </dependency>
     </dependencies>
 
     <properties>
@@ -75,35 +72,22 @@
     </properties>
 
     <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M5</version>
-                <configuration>
-                    <includes>
-                        <include>**/*Test.java</include>
-                    </includes>
-                    <useModulePath>false</useModulePath>
-                    <dependenciesToScan>
-                        <dependency>org.junit.jupiter</dependency>
-                    </dependenciesToScan>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.junit.jupiter</groupId>
-                        <artifactId>junit-jupiter-engine</artifactId>
-                        <version>${junit.jupiter.version}</version>
-                        <exclusions>
-                            <exclusion>
-                                <groupId>junit</groupId>
-                                <artifactId>junit</artifactId>
-                            </exclusion>
-                        </exclusions>
-                    </dependency>
-                </dependencies>
-            </plugin>
-        </plugins>
-    </build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>3.0.0-M5</version>
+            <configuration>
+                <includes>
+                    <include>**/*Test.java</include>
+                    <include>**/*Tests.java</include>
+                    <include>**/*TestCase.java</include>
+                    <include>**/*LiveTest.java</include>
+                </includes>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
+
 
 </project>

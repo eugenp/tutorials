@@ -15,6 +15,9 @@ import org.bson.types.ObjectId;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.testcontainers.containers.MongoDBContainer;
+import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
 
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
@@ -32,30 +35,37 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class MongoDBCrudOperationsUnitTest {
+@Testcontainers
+public class MongoDBCrudOperationsLiveTest {
 	
 	private static final int REQUIRED_DOCUMENT_COUNT = 250;
 
 	private MongoClient mongoClient;
 	private MongoDatabase database;
 	private MongoCollection<Document> collection;
-	private String uri;
 
-	@BeforeEach
-	public void setup() {
-		// Setup MongoDB connection
-		uri = System.getenv("MONGODB_URI") != null ? System.getenv("MONGODB_URI") : "mongodb://localhost:27017";
-		mongoClient = MongoClients.create(uri);
-		database = mongoClient.getDatabase("sample_mflix");
-		collection = database.getCollection("movies");
+	@Container
+    private static final MongoDBContainer mongoDBContainer = new MongoDBContainer("mongo:latest");
 
-	}
 
-	@AfterEach
-	public void tearDown() {
-		// Cleanup and close the connection
-		mongoClient.close();
-	}
+    @BeforeEach
+    public void setup() {
+        mongoDBContainer.start();
+        mongoClient = MongoClients.create(mongoDBContainer.getReplicaSetUrl());
+        database = mongoClient.getDatabase("sample_mflix");
+        collection = database.getCollection("movies");
+    }
+    
+    @AfterEach
+    public void tearDown() {
+        if (mongoClient != null) {
+            mongoClient.close();
+        }
+        if (mongoDBContainer != null) {
+            mongoDBContainer.stop();
+        }
+    }
+
 
     @Test
     public void testInsertSingleDocument() {
