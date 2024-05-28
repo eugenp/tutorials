@@ -20,13 +20,12 @@ public class LombokMapperUnitTest {
 
         SimpleDestination simpleDestination = lombokMapper.sourceToDestination(simpleSource);
         Assertions.assertNotNull(simpleDestination);
-        Assertions.assertEquals(simpleSource.getName(),simpleDestination.getName());
-        Assertions.assertEquals(simpleSource.getDescription(),simpleDestination.getDescription());
+        Assertions.assertEquals(simpleSource.getName(), simpleDestination.getName());
+        Assertions.assertEquals(simpleSource.getDescription(), simpleDestination.getDescription());
 
         LombokDestination lombokDestination = lombokMapper.sourceToLombokDestination(simpleSource);
         Assertions.assertNotNull(lombokDestination);
-        Assertions.assertEquals(simpleSource.getName(),lombokDestination.getName());
-        Assertions.assertEquals(simpleSource.getDescription(),lombokDestination.getDescription());
+        Assertions.assertEquals(simpleSource.getName(), lombokDestination.getName());
+        Assertions.assertEquals(simpleSource.getDescription(), lombokDestination.getDescription());
     }
-
 }
