@@ -7,7 +7,7 @@ import org.springframework.test.context.ContextConfiguration;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@SpringBootTest
+@SpringBootTest(classes = Application.class)
 @ContextConfiguration(classes = TestConfig.class)
 class CarXmlMapperUnitTest {
 
