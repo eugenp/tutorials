@@ -1,0 +1,62 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+hide empty attributes
+skinparam Handwritten false
+skinparam ClassBorderColor black
+skinparam BackgroundColor #fffce8/#f8f9fa
+skinparam class {
+ ArrowColor SeaGreen
+ BackgroundColor #fffce8
+}
+class OrderProcessorGrpc {
+}
+class OrderProcessorImplBase {
+   +createOrder()
+}
+class ServerBuilder {
++intercept()
++addService()
+}
+class OrderProcessorImpl {
+   +createOrder()
+   -validateOrder()
+}
+class OrderRequest {
+   +setOrderID()
+   +setProductID()
+   +setQuantity();
+}
+class OrderResponse {
+   +setOrderID()
+   +setResponse()
+   +setError()
+}
+class GlobalExceptionInterceptor {
+   +interceptCall()
+   -handleEndpointException()
+   -handleInterceptorException()
+}
+class LogInterceptor {
+   +interceptCall()
+   -logMessage()
+}
+class TicketService {
+   +createTicket()
+}
+
+class ServerInterceptor {
++interceptCall()
+}
+GlobalExceptionInterceptor --> TicketService: uses
+GlobalExceptionInterceptor --|> ServerInterceptor: implements
+LogInterceptor --|> ServerInterceptor: implements
+OrderProcessorImpl -left-> OrderRequest: uses
+OrderProcessorImpl -down-> OrderResponse: uses
+OrderProcessorImpl -up-> OrderProcessorImplBase: extends
+OrderProcessorImplBase-left-+ OrderProcessorGrpc
+ServerBuilder --> OrderProcessorImpl: uses
+ServerBuilder --> GlobalExceptionInterceptor: uses
+ServerBuilder --> LogInterceptor: uses
+
+@enduml

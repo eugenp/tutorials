@@ -385,7 +385,6 @@
         <rcaller.version>3.0</rcaller.version>
         <rserve.version>1.8.1</rserve.version>
         <agrona.version>1.17.1</agrona.version>
-        <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
         <sbe-tool.version>1.27.0</sbe-tool.version>
         <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
     </properties>

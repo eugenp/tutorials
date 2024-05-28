@@ -52,5 +52,6 @@
 
     <properties>
         <instancio.version>2.9.0</instancio.version>
+        <junit-jupiter.version>5.10.2</junit-jupiter.version>
     </properties>
 </project>

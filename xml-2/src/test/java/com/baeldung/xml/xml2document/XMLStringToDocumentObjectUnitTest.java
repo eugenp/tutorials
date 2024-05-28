@@ -1,4 +1,4 @@
-package com.baeldung.xml2document;
+package com.baeldung.xml.xml2document;
 
 import org.junit.Test;
 import org.w3c.dom.*;
