@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import com.baeldung.internal.repo.sample.GreeterServiceExample;
 import com.baeldung.internal.repo.sample.Greeting;
 
-public class GreeterServiceUsageTest {
+public class GreeterServiceUsageUnitTest {
     @Test
     public void whenGreetingInEnglish_thenAnENCodeShouldBeMadeAvailable() {
         GreeterServiceExample greeterService
