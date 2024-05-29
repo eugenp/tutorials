@@ -8,9 +8,9 @@
     <name>core-java-14</name>
 
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <groupId>com.baeldung.core-java-modules</groupId>
+        <artifactId>core-java-modules</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
     </parent>
 
     <dependencies>
@@ -28,10 +28,10 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <release>${maven.compiler.release}</release>
-                    <compilerArgs>--enable-preview</compilerArgs>
-                    <source>14</source>
-                    <target>14</target>
+                    <compilerArgs>
+                        <arg>--add-modules</arg>
+                        <arg>jdk.incubator.foreign</arg>
+                    </compilerArgs>
                 </configuration>
             </plugin>
             <plugin>
@@ -39,14 +39,13 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${surefire.plugin.version}</version>
                 <configuration>
-                    <argLine>--enable-preview</argLine>
+                    <argLine>--add-modules jdk.incubator.foreign</argLine>
                 </configuration>
             </plugin>
         </plugins>
     </build>
 
     <properties>
-        <maven.compiler.release>14</maven.compiler.release>
         <surefire.plugin.version>3.0.0-M3</surefire.plugin.version>
     </properties>
 

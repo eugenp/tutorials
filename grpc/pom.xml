@@ -37,6 +37,11 @@
         </dependency>
         <dependency>
             <groupId>io.grpc</groupId>
+            <artifactId>grpc-alts</artifactId>
+            <version>${io.grpc.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.grpc</groupId>
             <artifactId>grpc-testing</artifactId>
             <version>${io.grpc.version}</version>
             <scope>test</scope>
@@ -79,7 +84,7 @@
     </build>
 
     <properties>
-        <io.grpc.version>1.62.2</io.grpc.version>
+        <io.grpc.version>1.63.0</io.grpc.version>
         <protoc.version>3.17.2</protoc.version>
         <os-maven-plugin.version>1.6.2</os-maven-plugin.version>
         <protobuf-maven-plugin.version>0.6.1</protobuf-maven-plugin.version>

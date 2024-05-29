@@ -766,6 +766,7 @@
                 <module>lombok-modules</module>
                 <module>lucene</module>
                 <module>mapstruct</module>
+                <module>mapstruct-2</module>
                 <module>maven-modules</module>
                 <module>messaging-modules</module>
                 <module>metrics</module>
@@ -786,6 +787,7 @@
                 <module>quarkus-modules</module>
                 <module>reactive-systems</module>
                 <module>reactor-core</module>
+                <module>reactor-core-2</module>
                 <module>rsocket</module>
                 <module>rule-engines-modules</module>
                 <module>rxjava-modules</module>
@@ -873,8 +875,8 @@
                 <module>xml</module>
                 <module>xstream</module>
                 <module>libraries-data-io-2</module>
-                <module>spring-swagger-codegen/openapi-custom-generator</module>
-                <module>spring-swagger-codegen/openapi-custom-generator-api-client</module>
+                <!--<module>spring-swagger-codegen/openapi-custom-generator</module>
+                <module>spring-swagger-codegen/openapi-custom-generator-api-client</module> --> <!-- cannot add the individual modules here because the order is not guaranteed -->
             </modules>
 
             <properties>
@@ -1035,6 +1037,7 @@
                 <module>quarkus-modules</module>
                 <module>reactive-systems</module>
                 <module>reactor-core</module>
+                <module>reactor-core-2</module>
                 <module>rsocket</module>
                 <module>rule-engines-modules</module>
                 <module>rxjava-modules</module>

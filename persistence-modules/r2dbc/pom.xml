@@ -73,11 +73,6 @@
             <artifactId>flyway-core</artifactId>
             <version>${flyway.core.version}</version>
         </dependency>
-        <dependency>
-            <groupId>io.r2dbc</groupId>
-            <artifactId>r2dbc-h2</artifactId>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
