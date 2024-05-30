@@ -1,11 +1,7 @@
-package com.baeldung.mybatis.spring;
+package com.baeldung.mybatis.generatedid;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
-import org.mybatis.spring.annotation.MapperScan;
-import org.mybatis.spring.boot.autoconfigure.MybatisAutoConfiguration;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
@@ -14,17 +10,16 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import javax.sql.DataSource;
 
 @Configuration
-@MapperScan("com.baeldung.mybatis.spring")
-@EnableAutoConfiguration(exclude = { DataSourceAutoConfiguration.class, MybatisAutoConfiguration.class })
-public class PersistenceConfig {
+public class TestConfig {
 
     @Bean
     public DataSource dataSource() {
-        return new EmbeddedDatabaseBuilder()
-          .setType(EmbeddedDatabaseType.H2)
-          .addScript("schema.sql")
-          .addScript("data.sql")
-          .build();
+        EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
+        return builder
+                .setType(EmbeddedDatabaseType.H2)
+                .setName("testdb;MODE=LEGACY")
+                .addScript("car-schema.sql")
+                .build();
     }
 
     @Bean
@@ -33,5 +28,4 @@ public class PersistenceConfig {
         factoryBean.setDataSource(dataSource());
         return factoryBean.getObject();
     }
-
 }
