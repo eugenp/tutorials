@@ -13,4 +13,3 @@ This module contains articles about methods in Java
 - [Solving the Hide Utility Class Public Constructor Sonar Warning](https://www.baeldung.com/java-sonar-hide-implicit-constructor)
 - [Best Practices for Passing Many Arguments to a Method in Java](https://www.baeldung.com/java-best-practices-many-parameters-method)
 - [Unit Test for hashCode() in Java](https://www.baeldung.com/java-unit-test-hashcode)
-- [Java Class.cast() vs. Cast Operator](https://drafts.baeldung.com/?p=198942&preview_id=198942&preview_nonce=0dc2ad872f&_thumbnail_id=-1&preview=true)
