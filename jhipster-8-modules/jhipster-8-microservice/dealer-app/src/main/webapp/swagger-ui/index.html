@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>dealerApp - Swagger UI</title>
+    <base href="/swagger-ui/" />
+    <link rel="stylesheet" type="text/css" href="./swagger-ui.css" />
+    <link rel="icon" type="image/png" href="./favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="./favicon-16x16.png" sizes="16x16" />
+  </head>
+
+  <body>
+    <div id="swagger-ui"></div>
+
+    <script src="./swagger-ui-bundle.js"></script>
+    <script src="./swagger-ui-standalone-preset.js"></script>
+    <script src="./axios.min.js"></script>
+
+    <script type="text/javascript">
+      const AlwaysEnableTryItOutPlugin = function (system) {
+        return {
+          components: {
+            TryItOutButton: () => null,
+          },
+        };
+      };
+
+      const getBearerToken = () => {
+        var authToken = localStorage.getItem('jhi-authenticationToken') || sessionStorage.getItem('jhi-authenticationToken');
+        if (authToken) {
+          authToken = JSON.parse(authToken);
+          return `Bearer ${authToken}`;
+        }
+        return null;
+      };
+
+      function createAxiosConfig(serverBaseUri) {
+        return {
+          timeout: 5000,
+          baseURL: serverBaseUri,
+          headers: { Authorization: getBearerToken() },
+        };
+      }
+
+      async function fetchUrls(serverBaseUri, axiosConfig, baseUrl) {
+        let urls;
+
+        try {
+          const response = await axios.get('/management/health/discoveryComposite', axiosConfig);
+          const services = response.data?.components?.discoveryClient?.details?.services;
+          console.log(`Services`, services);
+
+          if (services && services.length > 0) {
+            urls = (
+              await Promise.allSettled(
+                services.map(async service => {
+                  return axios
+                    .get(`/services/${service}/management/jhiopenapigroups`, axiosConfig)
+                    .then(response => {
+                      if (Array.isArray(response.data)) {
+                        return response.data.map(({ group, description }) => ({
+                          name: description,
+                          url: `/services/${service}/${baseUrl}/${group}`,
+                        }));
+                      }
+                      return undefined;
+                    })
+                    .catch(() => {
+                      return axios
+                        .get(`/services/${service}/${baseUrl}`, axiosConfig)
+                        .then(() => [{ url: `/services/${service}/${baseUrl}`, name: `${service} (default)` }]);
+                    });
+                }),
+              )
+            )
+              .filter(settled => settled.status === 'fulfilled')
+              .map(settled => settled.value)
+              .filter(Array.isArray)
+              .flat();
+          }
+        } catch (error) {
+          console.log(error);
+        }
+
+        if (!urls || urls.length === 0) {
+          const response = await axios.get('/management/jhiopenapigroups', axiosConfig);
+          if (Array.isArray(response.data)) {
+            urls = response.data.map(({ group, description }) => ({ name: description, url: `${serverBaseUri}${baseUrl}/${group}` }));
+          } else {
+            urls = [{ name: 'default', url: `${serverBaseUri}${baseUrl}` }];
+          }
+        }
+        console.log(`Swagger urls`, urls);
+
+        return urls;
+      }
+
+      function sortUrls(urls) {
+        if (!urls) return urls;
+
+        urls.sort((a, b) => compareUrls(a.name.toLowerCase(), b.name.toLowerCase()));
+
+        return urls;
+      }
+
+      function compareUrls(nameA, nameB) {
+        if (nameA.includes('(default)')) return -1;
+        if (nameB.includes('(default)')) return 1;
+        if (nameA.includes('(management)')) return -1;
+        if (nameB.includes('(management)')) return 1;
+        return nameA.localeCompare(nameB);
+      }
+
+      function initializeSwaggerUI(urls, baseUrl) {
+        // Build a system
+        var ui = SwaggerUIBundle({
+          urls: urls,
+          url: baseUrl,
+          dom_id: '#swagger-ui',
+          deepLinking: true,
+          filter: true,
+          layout: 'StandaloneLayout',
+          withCredentials: true,
+          presets: [SwaggerUIBundle.presets.apis, SwaggerUIStandalonePreset],
+          plugins: [SwaggerUIBundle.plugins.DownloadUrl, AlwaysEnableTryItOutPlugin],
+          tryItOutEnabled: true,
+          requestInterceptor: function (req) {
+            req.headers['Authorization'] = getBearerToken();
+            // Remove the sample Swagger UI request body if present
+            if (req.method === 'GET' && req.body === '{"additionalProp1":"string","additionalProp2":"string","additionalProp3":"string"}') {
+              req.body = undefined;
+            }
+            return req;
+          },
+        });
+
+        window.ui = ui;
+      }
+
+      window.onload = async function () {
+        const baseUrl = 'v3/api-docs';
+        const serverBaseUri = document.baseURI.replace('swagger-ui/', '');
+        const axiosConfig = createAxiosConfig(serverBaseUri);
+        const urls = await fetchUrls(serverBaseUri, axiosConfig, baseUrl);
+        const sortedUrls = sortUrls(urls);
+
+        initializeSwaggerUI(sortedUrls, baseUrl);
+      };
+    </script>
+  </body>
+</html>

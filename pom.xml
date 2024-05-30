@@ -446,6 +446,7 @@
 
             <modules>
                 <!--<module>apache-spark</module>--><!-- failing after upgrading to jdk17-->
+                <!--<module>jhipster-modules/jhipster-uaa</module>--><!-- failing after upgrading to jdk17-->
                 <module>jhipster-8-modules</module>
                 <module>spring-cloud-modules/spring-cloud-azure</module>
                 <module>kubernetes-modules/k8s-operator</module>
@@ -581,6 +582,7 @@
 
             <modules>
                 <!--<module>apache-spark</module>--><!-- failing after upgrading to jdk17-->
+                <!--<module>jhipster-modules/jhipster-uaa</module>--><!-- failing after upgrading to jdk17-->
                 <module>jhipster-8-modules</module>
                 <module>spring-cloud-modules/spring-cloud-azure</module>
                 <module>web-modules/restx</module>
