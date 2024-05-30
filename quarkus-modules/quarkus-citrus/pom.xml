@@ -45,7 +45,15 @@
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-hibernate-validator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
             <artifactId>quarkus-hibernate-orm-panache</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-smallrye-reactive-messaging-kafka</artifactId>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
@@ -86,8 +94,22 @@
         </dependency>
         <dependency>
             <groupId>org.citrusframework</groupId>
+            <artifactId>citrus-openapi</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.citrusframework</groupId>
             <artifactId>citrus-http</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.citrusframework</groupId>
+            <artifactId>citrus-validation-json</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.citrusframework</groupId>
+            <artifactId>citrus-validation-hamcrest</artifactId>
+            <version>${citrus.version}</version>
         </dependency>
         <dependency>
             <groupId>org.citrusframework</groupId>
@@ -96,26 +118,10 @@
         </dependency>
         <dependency>
             <groupId>org.citrusframework</groupId>
-            <artifactId>citrus-selenium</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.citrusframework</groupId>
-            <artifactId>citrus-openapi</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.citrusframework</groupId>
-            <artifactId>citrus-validation-text</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.citrusframework</groupId>
-            <artifactId>citrus-validation-json</artifactId>
+            <artifactId>citrus-kafka</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
-
     <build>
         <pluginManagement>
             <plugins>
@@ -178,8 +184,8 @@
     </build>
 
     <properties>
-        <quarkus.version>3.8.1</quarkus.version>
-        <citrus.version>4.1.1</citrus.version>
+        <quarkus.version>3.10.2</quarkus.version>
+        <citrus.version>4.2.1</citrus.version>
         <mapstruct.version>1.5.5.Final</mapstruct.version>
         <maven-surefire-plugin.version>3.2.2</maven-surefire-plugin.version>
         <maven-compiler-plugin.version>3.12.1</maven-compiler-plugin.version>

@@ -1,0 +1,55 @@
+package com.baeldung.quarkus.todos;
+
+import com.baeldung.quarkus.todos.config.BoundaryOpenApiCitrusConfig;
+import io.quarkus.test.junit.QuarkusTest;
+import org.citrusframework.GherkinTestActionRunner;
+import org.citrusframework.annotations.CitrusConfiguration;
+import org.citrusframework.annotations.CitrusEndpoint;
+import org.citrusframework.annotations.CitrusResource;
+import org.citrusframework.http.client.HttpClient;
+import org.citrusframework.openapi.OpenApiSpecification;
+import org.citrusframework.quarkus.CitrusSupport;
+import org.citrusframework.spi.Resources;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.http.HttpStatus;
+
+import static org.citrusframework.openapi.actions.OpenApiActionBuilder.openapi;
+
+@QuarkusTest
+@CitrusSupport
+@CitrusConfiguration(classes = {
+        BoundaryOpenApiCitrusConfig.class
+})
+class BoundaryOpenApiCitrusTests {
+
+    @CitrusEndpoint(name = BoundaryOpenApiCitrusConfig.API_CLIENT)
+    HttpClient apiClient;
+    final OpenApiSpecification apiSpecification = OpenApiSpecification.from(
+            Resources.create("classpath:openapi.yml")
+    );
+    @CitrusResource
+    GherkinTestActionRunner t;
+
+    @BeforeEach
+    void setup() {
+        this.apiSpecification.setGenerateOptionalFields(false);
+    }
+
+    @Test
+    void shouldReturn201OnCreateItem() {
+        t.when(
+                openapi()
+                        .specification(apiSpecification)
+                        .client(apiClient)
+                        .send("createTodo") // operationId
+        );
+        t.then(
+                openapi()
+                        .specification(apiSpecification)
+                        .client(apiClient)
+                        .receive("createTodo", HttpStatus.CREATED)
+        );
+    }
+
+}
