@@ -9,7 +9,6 @@ public class KafkaCitrusConfig {
 
     public static final String TODOS_EVENTS_TOPIC = "todosEvents";
 
-
     @BindToRegistry(name = TODOS_EVENTS_TOPIC)
     public KafkaEndpoint todosEvents() {
         return kafka()
