@@ -233,6 +233,67 @@
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
+			
+			<plugin>
+			  <groupId>com.diffplug.spotless</groupId>
+			  <artifactId>spotless-maven-plugin</artifactId>
+			  <version>${spotless.version}</version>
+			  <configuration>
+				<formats>
+				  <format>
+					<includes>
+					  <include>.gitattributes</include>
+					  <include>.gitignore</include>
+					</includes>
+					<trimTrailingWhitespace/>
+					<endWithNewline/>
+				  </format>
+				</formats>
+				
+				<removeUnusedImports/>
+				
+				<java>
+					<includes>
+						<include>src/main/java/**/*.java</include>
+						<include>src/test/java/**/*.java</include>
+					</includes>
+
+					<googleJavaFormat/>
+					<indent>
+						<tabs>true</tabs>
+						<spacesPerTab>2</spacesPerTab>
+					</indent>
+					<indent>
+						<spaces>true</spaces>
+						<spacesPerTab>4</spacesPerTab>
+					</indent>
+					<importOrder>
+						<wildcardsLast>false</wildcardsLast>
+						<order>java,jakarta,javax,org,com</order>
+						<semanticSort>false</semanticSort>
+					</importOrder>
+				</java>
+
+				<pom>
+					<includes>
+						<include>pom.xml</include>
+					</includes>
+
+					<sortPom>
+						<nrOfIndentSpace>4</nrOfIndentSpace>
+						<sortProperties>false</sortProperties>
+						<sortModules>false</sortModules>
+						<sortExecutions>false</sortExecutions>
+						<keepBlankLines>true</keepBlankLines>
+						<indentBlankLines>false</indentBlankLines>
+						<indentSchemaLocation>false</indentSchemaLocation>
+						<predefinedSortOrder>recommended_2008_06</predefinedSortOrder>
+						<sortOrderFile></sortOrderFile>
+					</sortPom>
+				</pom>
+			  </configuration>
+			</plugin>
+			
         </plugins>
 
         <extensions>
@@ -1216,6 +1277,7 @@
         <maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
         <mockito-junit-jupiter.version>5.11.0</mockito-junit-jupiter.version>
         <logback.configurationFileName>logback-config-global.xml</logback.configurationFileName>
+		<spotless.version>2.41.0</spotless.version>
     </properties>
 
 </project>
