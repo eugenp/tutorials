@@ -102,6 +102,12 @@
             <artifactId>javase</artifactId>
             <version>${zxing.version}</version>
         </dependency>
+        <dependency>
+            <groupId>uk.org.okapibarcode</groupId>
+            <artifactId>okapibarcode</artifactId>
+            <version>${okapi.version}</version>
+        </dependency>
+
         <!-- Bucket4j -->
         <dependency>
             <groupId>com.bucket4j</groupId>
@@ -241,6 +247,7 @@
         <bucket4j.version>8.9.0</bucket4j.version>
         <bucket4j-spring-boot-starter.version>0.10.3</bucket4j-spring-boot-starter.version>
         <caffeine.version>3.1.8</caffeine.version>
+        <okapi.version>0.4.6</okapi.version>
         <qrcodegen.version>1.8.0</qrcodegen.version>
     </properties>
 
