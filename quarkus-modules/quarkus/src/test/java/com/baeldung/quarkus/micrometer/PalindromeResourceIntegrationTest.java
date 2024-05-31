@@ -11,7 +11,7 @@ import io.quarkus.test.junit.QuarkusTest;
 class PalindromeResourceIntegrationTest {
 
     @Test
-    void givenMicrometerApp_whenCallingEndpoint_gaugeIsUpdated() {
+    void givenMicrometerApp_whenCallingEndpoint_thenGaugeIsUpdated() {
         when().get("palindrome/clearmetrics").then().statusCode(200);
         when().get("/palindrome/check/radar").then().statusCode(200);
         when().get("/palindrome/check/article").then().statusCode(200);
@@ -27,7 +27,7 @@ class PalindromeResourceIntegrationTest {
     }
 
     @Test
-    void givenMicrometerApp_whenCallingEndpoint_counterIsIncremented() {
+    void givenMicrometerApp_whenCallingEndpoint_thenCounterIsIncremented() {
         when().get("palindrome/clearmetrics").then().statusCode(200);
         when().get("/palindrome/check/article").then().statusCode(200);
         when().get("/palindrome/check/level").then().statusCode(200);
@@ -38,7 +38,7 @@ class PalindromeResourceIntegrationTest {
     }
 
     @Test
-    void givenMicrometerApp_whenCallingEndpoint_timersAreUpdated() {
+    void givenMicrometerApp_whenCallingEndpoint_thenTimersAreUpdated() {
         when().get("palindrome/clearmetrics").then().statusCode(200);
         when().get("/palindrome/check/level").then().statusCode(200);
         when().get("/q/metrics").then().statusCode(200)
