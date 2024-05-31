@@ -21,7 +21,7 @@ public class ProductIntegrationTest extends AbstractBaseIntegrationTest {
     private ObjectMapper objectMapper = new ObjectMapper();
 
     @Test
-    public void testThatProductSaveThenGetProduct() throws Exception {
+    public void givenProduct_whenSave_thenGetProduct() throws Exception {
         MvcResult mvcResult = mvc.perform(post("/products").contentType("application/json")
                 .content(objectMapper.writeValueAsString(new Product("Banana", "Fruit", 10))))
             .andExpect(status().isOk())
