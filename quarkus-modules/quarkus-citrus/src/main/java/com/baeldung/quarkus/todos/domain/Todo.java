@@ -13,7 +13,7 @@ import java.time.LocalDate;
 public class Todo {
 
 	private Long id;
-	@Size(min = 4)
+	@Size(min = 3)
 	private String title;
 	private boolean completed;
 	private LocalDate dueDate;

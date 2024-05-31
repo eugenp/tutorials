@@ -18,7 +18,6 @@ public class TodoDto {
 	@Size(min = 3)
 	private String title;
 	private boolean completed;
-	// @JsonProperty("due_date") -> see application.properties (quarkus.jackson.property-naming-strategy)
 	private LocalDate dueDate;
 
 }

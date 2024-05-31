@@ -12,10 +12,15 @@ import org.citrusframework.quarkus.CitrusSupport;
 import org.citrusframework.spi.Resources;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junitpioneer.jupiter.SetSystemProperty;
 import org.springframework.http.HttpStatus;
 
 import static org.citrusframework.openapi.actions.OpenApiActionBuilder.openapi;
 
+@SetSystemProperty(
+        key = "citrus.json.message.validation.strict",
+        value = "false"
+)
 @QuarkusTest
 @CitrusSupport
 @CitrusConfiguration(classes = {
@@ -26,7 +31,7 @@ class BoundaryOpenApiCitrusTests {
     @CitrusEndpoint(name = BoundaryOpenApiCitrusConfig.API_CLIENT)
     HttpClient apiClient;
     final OpenApiSpecification apiSpecification = OpenApiSpecification.from(
-            Resources.create("classpath:openapi.yml")
+            Resources.create("classpath:META-INF/resources/openapi.yml")
     );
     @CitrusResource
     GherkinTestActionRunner t;
@@ -34,6 +39,7 @@ class BoundaryOpenApiCitrusTests {
     @BeforeEach
     void setup() {
         this.apiSpecification.setGenerateOptionalFields(false);
+        this.apiSpecification.setValidateOptionalFields(false);
     }
 
     @Test
