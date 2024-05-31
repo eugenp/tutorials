@@ -11,7 +11,7 @@ import com.baeldung.criteriabuilder.Book;
 import com.baeldung.criteriabuilder.BookRepositoryImpl;
 
 @DataJpaTest
-public class BookRepositoryTest {
+public class BookRepositoryIntegrationTest {
 
     @Autowired
     private TestEntityManager entityManager;

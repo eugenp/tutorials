@@ -10,7 +10,7 @@ import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
 
 @Repository
-public class BookRepositoryImpl implements BookRepositoryCustom{
+public class BookRepositoryImpl implements BookRepositoryCustom {
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -18,7 +18,8 @@ public class BookRepositoryImpl implements BookRepositoryCustom{
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<Long> cq = cb.createQuery(Long.class);
         cq.select(cb.count(cq.from(Book.class)));
-        return entityManager.createQuery(cq).getSingleResult();
+        return entityManager.createQuery(cq)
+          .getSingleResult();
     }
 
     public long countBooksByTitle(String titleKeyword) {
@@ -28,7 +29,8 @@ public class BookRepositoryImpl implements BookRepositoryCustom{
         Predicate titleCondition = cb.like(bookRoot.get("title"), "%" + titleKeyword + "%");
         cq.where(titleCondition);
         cq.select(cb.count(bookRoot));
-        return entityManager.createQuery(cq).getSingleResult();
+        return entityManager.createQuery(cq)
+          .getSingleResult();
     }
 
     public long countBooksByAuthor(String authorName) {
@@ -38,7 +40,8 @@ public class BookRepositoryImpl implements BookRepositoryCustom{
         Predicate authorCondition = cb.equal(bookRoot.get("author"), authorName);
         cq.where(authorCondition);
         cq.select(cb.count(bookRoot));
-        return entityManager.createQuery(cq).getSingleResult();
+        return entityManager.createQuery(cq)
+          .getSingleResult();
     }
 
     public long countBooksByTitleAndAuthor(String titleKeyword, String authorName) {
@@ -49,7 +52,8 @@ public class BookRepositoryImpl implements BookRepositoryCustom{
         Predicate authorCondition = cb.equal(bookRoot.get("author"), authorName);
         cq.where(cb.and(titleCondition, authorCondition));
         cq.select(cb.count(bookRoot));
-        return entityManager.createQuery(cq).getSingleResult();
+        return entityManager.createQuery(cq)
+          .getSingleResult();
     }
 
     @Override
@@ -64,7 +68,8 @@ public class BookRepositoryImpl implements BookRepositoryCustom{
         cq.where(cb.or(authorCondition, yearCondition));
         cq.select(cb.count(bookRoot));
 
-        return entityManager.createQuery(cq).getSingleResult();
+        return entityManager.createQuery(cq)
+          .getSingleResult();
     }
 
     public long countBooksByTitleOrYearAndAuthor(String authorName, int publishYear, String titleKeyword) {
@@ -80,6 +85,7 @@ public class BookRepositoryImpl implements BookRepositoryCustom{
         cq.where(cb.or(authorAndYear, titleCondition));
         cq.select(cb.count(bookRoot));
 
-        return entityManager.createQuery(cq).getSingleResult();
+        return entityManager.createQuery(cq)
+          .getSingleResult();
     }
 }
