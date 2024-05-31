@@ -14,6 +14,15 @@ public class Address implements Serializable {
     @NotBlank
     private String city;
 
+    public Address() {
+    }
+
+    public Address(int id, String street, String city) {
+        this.id = id;
+        this.street = street;
+        this.city = city;
+    }
+
     public void setId(int id) {
         this.id = id;
     }

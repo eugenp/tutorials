@@ -11,6 +11,15 @@ public class CustomerBulkResponse {
     private List<Customer> customers;
     private BulkStatus status;
 
+    public CustomerBulkResponse() {
+    }
+
+    public CustomerBulkResponse(List<Customer> customers, BulkActionType bulkActionType, BulkStatus status) {
+        this.customers = customers;
+        this.bulkActionType = bulkActionType;
+        this.status = status;
+    }
+
     public BulkActionType getBulkType() {
         return bulkActionType;
     }
@@ -33,14 +42,5 @@ public class CustomerBulkResponse {
 
     public void setStatus(BulkStatus status) {
         this.status = status;
-    }
-
-    public static CustomerBulkResponse getCustomerBatchResponse(List<Customer> customers, BulkActionType bulkActionType, BulkStatus batchStatus) {
-        CustomerBulkResponse customerBulkResponse = new CustomerBulkResponse();
-        customerBulkResponse.setBulkType(bulkActionType);
-        customerBulkResponse.setCustomers(customers);
-        customerBulkResponse.setStatus(batchStatus);
-
-        return customerBulkResponse;
     }
 }

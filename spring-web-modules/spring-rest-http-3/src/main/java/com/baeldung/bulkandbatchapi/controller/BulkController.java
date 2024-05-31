@@ -7,7 +7,6 @@ import com.baeldung.bulkandbatchapi.response.CustomerBulkResponse;
 import com.baeldung.bulkandbatchapi.service.CustomerService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Size;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -24,7 +23,6 @@ public class BulkController {
 
     private final CustomerService customerService;
 
-    @Autowired
     public BulkController(CustomerService customerService) {
         this.customerService = customerService;
     }
@@ -44,19 +42,19 @@ public class BulkController {
         customerBulkRequests.forEach(customerBulkRequest -> {
             List<Customer> customers = customerService.processCustomers(customerBulkRequest.getCustomers(), customerBulkRequest.getBulkActionType());
             BulkStatus bulkStatus = getBulkStatus(customerBulkRequest.getCustomers(), customers);
-            customerBulkResponseList.add(CustomerBulkResponse.getCustomerBatchResponse(customers, customerBulkRequest.getBulkActionType(), bulkStatus));
+            customerBulkResponseList.add(new CustomerBulkResponse(customers, customerBulkRequest.getBulkActionType(), bulkStatus));
         });
 
         return new ResponseEntity<>(customerBulkResponseList, HttpStatus.MULTI_STATUS);
     }
 
     private BulkStatus getBulkStatus(List<Customer> customersInRequest, List<Customer> customersProcessed) {
-        BulkStatus bulkStatus;
+        if (customersProcessed.size() == customersInRequest.size()) {
+            return BulkStatus.PROCESSED;
+        } else if (customersProcessed.size() < customersInRequest.size()) {
+            return BulkStatus.PARTIALLY_PROCESSED;
+        }
 
-        if (customersProcessed.size() == customersInRequest.size()) bulkStatus = BulkStatus.PROCESSED;
-        else if (customersProcessed.size() < customersInRequest.size()) bulkStatus = BulkStatus.PARTIALLY_PROCESSED;
-        else bulkStatus = BulkStatus.NOT_PROCESSED;
-
-        return bulkStatus;
+        return BulkStatus.NOT_PROCESSED;
     }
 }

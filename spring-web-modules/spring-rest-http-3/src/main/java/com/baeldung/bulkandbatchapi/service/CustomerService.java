@@ -7,6 +7,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.function.BiFunction;
+
+import static java.util.stream.Collectors.toList;
 
 @Service
 public class CustomerService {
@@ -15,48 +18,32 @@ public class CustomerService {
     private final Map<String, Customer> customerRepoMap = new HashMap<>();
 
     public List<Customer> createCustomers(List<Customer> customers) {
-        List<Customer> createdCustomers = new ArrayList<>();
-
-        customers.forEach(customer ->
-        {
-            Optional<Customer> customerCreated = createCustomer(customer);
-            customerCreated.ifPresent(createdCustomers::add);
-        });
-
-        return createdCustomers;
+        return customers.stream()
+                .map(this::createCustomer)
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                .collect(toList());
     }
 
     public List<Customer> processCustomers(List<Customer> customers, BulkActionType batchType) {
-        List<Customer> processedCustomers = new ArrayList<>();
+        BiFunction<Customer, BulkActionType, Optional<Customer>> customerProcessFunction = (customer, bulkActionType) -> switch (bulkActionType) {
+            case CREATE -> createCustomer(customer);
+            case UPDATE -> updateCustomer(customer);
+            case DELETE -> deleteCustomer(customer);
+        };
 
-        customers.forEach(customer ->
-        {
-            Optional<Customer> customerProcessed = Optional.empty();
-            switch (batchType) {
-                case CREATE:
-                    customerProcessed = createCustomer(customer);
-                    break;
-                case UPDATE:
-                    customerProcessed = updateCustomer(customer);
-                    break;
-                case DELETE:
-                    customerProcessed = deleteCustomer(customer);
-                    break;
-                default:
-                    break;
-            }
-
-            customerProcessed.ifPresent(processedCustomers::add);
-        });
-
-        return processedCustomers;
+        return customers.stream()
+                .map(customer -> customerProcessFunction.apply(customer, batchType))
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                .collect(toList());
     }
 
     public Optional<Customer> createCustomer(Customer customer) {
         LOGGER.info("Creating Customer : {}", customer);
 
         if (!customerRepoMap.containsKey(customer.getEmail()) && customer.getId() == 0) {
-            Customer customerToCreate = getCustomer(customerRepoMap.size() + 1, customer.getName(), customer.getEmail());
+            Customer customerToCreate = new Customer(customerRepoMap.size() + 1, customer.getName(), customer.getEmail());
             customerToCreate.setAddress(customer.getAddress());
             customerRepoMap.put(customerToCreate.getEmail(), customerToCreate);
             LOGGER.info("Created Customer : {}", customerToCreate);
@@ -92,14 +79,5 @@ public class CustomerService {
         }
 
         return customerToDelete != null ? Optional.of(customerToDelete) : Optional.empty();
-    }
-
-    private static Customer getCustomer(int id, String name, String email) {
-        Customer customer = new Customer();
-        customer.setId(id);
-        customer.setName(name);
-        customer.setEmail(email);
-
-        return customer;
     }
 }
