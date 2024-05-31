@@ -1,7 +1,6 @@
 package com.baeldung.quarkus.shared.interceptors;
 
 import lombok.experimental.UtilityClass;
-import lombok.var;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
@@ -10,7 +9,7 @@ import java.util.Optional;
 @UtilityClass
 class AnnotationUtils {
     <A extends Annotation> Optional<A> findAnnotation(Method method, Class<A> annotationClass) {
-        var result = Optional
+        Optional<A> result = Optional
                 .ofNullable(method.getAnnotation(annotationClass));
         // since Java 9, we could simply use Optional#or(...)
         if(!result.isPresent()) {

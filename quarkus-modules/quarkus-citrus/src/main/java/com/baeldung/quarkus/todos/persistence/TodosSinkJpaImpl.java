@@ -5,7 +5,6 @@ import com.baeldung.quarkus.todos.domain.TodosSink;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.inject.Typed;
 import lombok.RequiredArgsConstructor;
-import lombok.var;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -36,7 +35,7 @@ public class TodosSinkJpaImpl implements TodosSink {
 
     @Override
     public void add(Todo todo) {
-        var entity = mapper.map(todo);
+        TodoEntity entity = mapper.map(todo);
         repo.persist(entity);
         todo.setId(entity.getId());
     }
