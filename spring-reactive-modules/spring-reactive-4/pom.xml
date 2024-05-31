@@ -17,6 +17,7 @@
 
     <properties>
         <wiremock-standalone.version>3.4.2</wiremock-standalone.version>
+        <wiremock-spring-cloud.version>4.1.2</wiremock-spring-cloud.version>
     </properties>
 
     <dependencies>
@@ -31,16 +32,10 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-contract-wiremock</artifactId>
-            <scope>test</scope>
-            <version>4.1.2</version></dependency>
-        <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-test</artifactId>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
@@ -52,6 +47,11 @@
             <version>${wiremock-standalone.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-contract-wiremock</artifactId>
+            <scope>test</scope>
+            <version>${wiremock-spring-cloud.version}</version></dependency>
     </dependencies>
 
 </project>
