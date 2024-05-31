@@ -5,7 +5,6 @@ import com.baeldung.bulkandbatchapi.request.Address;
 import com.baeldung.bulkandbatchapi.request.Customer;
 import com.baeldung.bulkandbatchapi.service.AddressService;
 import com.baeldung.bulkandbatchapi.service.CustomerService;
-import com.baeldung.bulkandbatchapi.utility.RequestObjectConverter;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,6 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Optional;
 
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -31,10 +29,6 @@ class BatchControllerUnitTest {
     private CustomerService customerService;
     @MockBean
     private AddressService addressService;
-    @MockBean
-    private RequestObjectConverter<Address> addressRequestDataConverter;
-    @MockBean
-    private RequestObjectConverter<Customer> customerRequestDataConverter;
 
     @Autowired
     private MockMvc mockMvc;
@@ -47,8 +41,6 @@ class BatchControllerUnitTest {
 
         when(addressService.createAddress(address)).thenReturn(address);
         when(customerService.updateCustomer(customer)).thenReturn(Optional.of(customer));
-        when(customerRequestDataConverter.convertJsonObject(any(), any())).thenReturn(customer);
-        when(addressRequestDataConverter.convertJsonObject(any(), any())).thenReturn(address);
 
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add("Content-Type", "application/json");
