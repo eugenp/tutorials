@@ -40,7 +40,7 @@ The projects are broadly divided into 3 lists: default, default-jdk8 and default
 
 Next, they are segregated further on the basis of the tests that we want to execute.
 
-Additionally, there are 2 profiles dedicated for JDK9 and above builds - **which require JDK 17**.
+Additionally, there are 2 profiles dedicated for JDK17 and above builds - **which require JDK 17**.
 
 We also have a parents profile to build only parent modules.
 
@@ -48,8 +48,8 @@ Therefore, we have a total of 7 profiles:
 
 | Profile           | Includes                    | Type of test enabled |
 |-------------------|-----------------------------| -------------------- |
-| default           | JDK9 and above projects     | *UnitTest            |
-| integration       | JDK9 and above projects     | *IntegrationTest     |
+| default           | JDK17 and above projects    | *UnitTest            |
+| integration       | JDK17 and above projects    | *IntegrationTest     |
 | default-heavy     | Heavy/long running projects | *UnitTest            |
 | integration-heavy | Heavy/long running projects | *IntegrationTest     |
 | default-jd8       | JDK8  projects              | *UnitTest            |
