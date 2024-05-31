@@ -101,7 +101,7 @@ public class SubstringUnitTest {
         String substring = " *important* ";
         String[] resultWithoutQuote = input.split(substring);
         assertEquals(1, resultWithoutQuote.length);
-        assertEquals(input, resultWithoutQuote[0]);
+        assertEquals("This is an *important* issue.", resultWithoutQuote[0]);
 
         String[] result = input.split(Pattern.quote(substring));
         String before = result[0];
