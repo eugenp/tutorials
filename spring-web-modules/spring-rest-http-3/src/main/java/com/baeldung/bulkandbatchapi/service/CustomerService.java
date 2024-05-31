@@ -17,12 +17,6 @@ public class CustomerService {
     private static final Logger LOGGER = LoggerFactory.getLogger(CustomerService.class);
     private final Map<String, Customer> customerRepoMap = new HashMap<>();
 
-    private final BiFunction<Customer, BulkActionType, Optional<Customer>> customerProcessFunction = (customer, bulkActionType) -> switch (bulkActionType) {
-        case CREATE -> createCustomer(customer);
-        case UPDATE -> updateCustomer(customer);
-        case DELETE -> deleteCustomer(customer);
-    };
-
     public List<Customer> createCustomers(List<Customer> customers) {
         return customers.stream()
                 .map(this::createCustomer)
@@ -32,6 +26,12 @@ public class CustomerService {
     }
 
     public List<Customer> processCustomers(List<Customer> customers, BulkActionType batchType) {
+        BiFunction<Customer, BulkActionType, Optional<Customer>> customerProcessFunction = (customer, bulkActionType) -> switch (bulkActionType) {
+            case CREATE -> createCustomer(customer);
+            case UPDATE -> updateCustomer(customer);
+            case DELETE -> deleteCustomer(customer);
+        };
+
         return customers.stream()
                  .map(customer -> customerProcessFunction.apply(customer, batchType))
                  .filter(Optional::isPresent)
