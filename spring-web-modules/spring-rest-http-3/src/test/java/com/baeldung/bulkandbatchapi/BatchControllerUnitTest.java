@@ -46,7 +46,7 @@ class BatchControllerUnitTest {
         httpHeaders.add("Content-Type", "application/json");
         httpHeaders.add("Accept", "application/json");
 
-        mockMvc.perform(post("/api/batch/customer-address").headers(httpHeaders).content("[" +
+        mockMvc.perform(post("/api/batch").headers(httpHeaders).content("[" +
                         "    {" +
                         "        \"method\": \"POST\"," +
                         "        \"relativeUrl\": \"/address\"," +
@@ -66,8 +66,8 @@ class BatchControllerUnitTest {
                         "            \"address\": \"test1 test\"" +
                         "        }" +
                         "    }" +
-                        "]")).andExpect(status().is(HttpStatus.ACCEPTED.value()))
-      .andExpect(content().string("Batch update is processing async"));
+                        "]")).andExpect(status().is(HttpStatus.OK.value()))
+      .andExpect(content().string("Batch update is processed"));
     }
 
     @Test
@@ -76,7 +76,7 @@ class BatchControllerUnitTest {
         httpHeaders.add("Content-Type", "application/json");
         httpHeaders.add("Accept", "application/json");
 
-        mockMvc.perform(post("/api/batch/customer-address").headers(httpHeaders).content("[]"))
+        mockMvc.perform(post("/api/batch").headers(httpHeaders).content("[]"))
           .andExpect(status().is(HttpStatus.BAD_REQUEST.value()))
           .andExpect(content().string(""));
     }
