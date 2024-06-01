@@ -34,7 +34,7 @@ public class H2Application {
     @PostConstruct
     public void init() throws SQLException, IOException {
         Connection connection = DriverManager.getConnection(url, user, password);
-        ResultSet rs = RunScript.execute(connection, new FileReader(new ClassPathResource("script.sql").getFile()));
+        ResultSet rs = RunScript.execute(connection, new FileReader(new ClassPathResource("db/script.sql").getFile()));
         System.out.println("Data from the employee table:");
         while (rs.next()) {
             System.out.println(rs.getString("name"));
