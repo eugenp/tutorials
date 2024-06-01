@@ -6,6 +6,7 @@ import com.baeldung.hibernate.joinfetchcriteriaquery.model.Player;
 import com.baeldung.hibernate.joinfetchcriteriaquery.util.HibernateUtil;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.JoinType;
 import jakarta.persistence.criteria.Root;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -24,7 +25,7 @@ public class JoinFetchApplicationView {
         CriteriaBuilder cb = session.getCriteriaBuilder();
         CriteriaQuery<Player> query = cb.createQuery(Player.class);
         Root<Player> root = query.from(Player.class);
-        root.fetch("league");
+        root.fetch("league", JoinType.LEFT);
         query.where(cb.equal(root.get("league")
           .get("league"), "Premier League"));
         List<Player> playerList = session.createQuery(query)
