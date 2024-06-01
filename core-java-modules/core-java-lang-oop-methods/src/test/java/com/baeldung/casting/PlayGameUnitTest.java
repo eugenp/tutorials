@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-class PlayGameTest {
+class PlayGameUnitTest {
 
     private PlayGame playGame;
     private List<Character> characters;

@@ -1,5 +1,8 @@
 package com.baeldung.casting;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class Warrior extends Character {
 
     // standard constructor
@@ -8,7 +11,7 @@ public class Warrior extends Character {
     }
 
     public void obeyCommand(String command) {
-        System.out.printf("Warrior [%s] obeys a command [%s]: %n", this.getName(), command);
+        log.info("Warrior {} obeys a command {}", this.getName(), command);
     }
 
 }
