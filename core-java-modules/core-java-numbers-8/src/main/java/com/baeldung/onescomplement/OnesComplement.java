@@ -6,7 +6,6 @@ public class OnesComplement {
 
     public static int calculateOnesComplementUsingBitwiseNot(int num) {
         int onesComplement = ~num;
-        System.out.println("One's complement of " + num + " is: " + onesComplement);
         return onesComplement;
     }
 
@@ -18,7 +17,6 @@ public class OnesComplement {
             onesComplementString.append(bit == '0' ? '1' : '0');
         }
         int onesComplement = Integer.parseInt(onesComplementString.toString(), 2);
-        System.out.println("One's complement of " + num + " is: " + onesComplement);
         return onesComplement;
     }
 
@@ -28,20 +26,11 @@ public class OnesComplement {
         int extendedNum = num < 0 ? (1 << bitLength) + num : num;
 
         int onesComplement = extendedNum ^ mask;
-        System.out.println("One's complement of " + num + " (" + bitLength + "-bit) is: " + onesComplement);
         return onesComplement;
     }
 
     public static BigInteger calculateOnesComplementUsingBigInteger(BigInteger num) {
         BigInteger onesComplement = num.not();
-        System.out.println("One's complement of " + num + " is: " + onesComplement);
         return onesComplement;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(calculateOnesComplementUsingBitwiseNot(10));
-        System.out.println(calculateOnesComplementUsingIntegerBinaryString(10));
-        System.out.println(calculateOnesComplementUsingXOROperator(-10, 32));
-        System.out.println(calculateOnesComplementUsingBigInteger(BigInteger.valueOf(10)));
     }
 }
