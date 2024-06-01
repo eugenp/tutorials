@@ -66,7 +66,7 @@ public class CustomerService {
             LOGGER.info("Updated Customer : {}", customerToUpdate);
         }
 
-        return customerToUpdate != null ? Optional.of(customerToUpdate) : Optional.empty();
+        return Optional.ofNullable(customerToUpdate);
     }
 
     private Optional<Customer> deleteCustomer(Customer customer) {
@@ -78,6 +78,6 @@ public class CustomerService {
             LOGGER.info("Deleted Customer : {}", customerToDelete);
         }
 
-        return customerToDelete != null ? Optional.of(customerToDelete) : Optional.empty();
+        return Optional.ofNullable(customerToDelete);
     }
 }
