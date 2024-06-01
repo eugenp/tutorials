@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/batch")
+@RequestMapping("/api")
 @Validated
 public class BatchController {
 
@@ -29,7 +29,7 @@ public class BatchController {
         this.addressService = addressService;
     }
 
-    @PostMapping(path = "/customer-address")
+    @PostMapping(path = "/batch")
     public ResponseEntity<String> batchUpdateCustomerWithAddress(@RequestBody @Valid @Size(min = 1, max = 20) List<BatchRequest> batchRequests) {
         ObjectMapper mapper = new ObjectMapper();
 
