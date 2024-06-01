@@ -23,6 +23,7 @@ const CallbackHandler = ({
             })
               .then((response) => response.json())
               .then((userInfo) => {
+                console.log(userInfo);
                 setUserInfo(userInfo);
               });
           } else {
@@ -35,10 +36,10 @@ const CallbackHandler = ({
     }
   }, [authenticated, userManager, setAuth, setUserInfo]);
 
-  if (authenticated === true) {
+  if (authenticated === true && userInfo) {
     return (
       <div>
-        <h2>Welcome to Baeldung</h2>
+        <h2>Welcome to Baeldung, {userInfo.sub}</h2>
       </div>
     );
   } else {
