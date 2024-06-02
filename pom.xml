@@ -326,7 +326,6 @@
                             </excludes>
                         </configuration>
                     </plugin>
-
                 </plugins>
             </build>
 
@@ -367,6 +366,11 @@
                 <module>video-tutorials</module>
             </modules>
 
+            <properties>
+                <maven.compiler.source>1.8</maven.compiler.source>
+                <maven.compiler.target>1.8</maven.compiler.target>
+            </properties>
+
         </profile>
 
 
@@ -374,7 +378,6 @@
             <id>default-heavy</id>
             <build>
                 <plugins>
-
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
@@ -396,7 +399,6 @@
                             </excludes>
                         </configuration>
                     </plugin>
-
                 </plugins>
             </build>
 
@@ -421,7 +423,6 @@
 
         <profile>
             <id>integration-jdk8</id>
-
             <build>
                 <plugins>
                     <plugin>
@@ -477,11 +478,15 @@
                 <module>video-tutorials</module>
             </modules>
 
+            <properties>
+                <maven.compiler.source>1.8</maven.compiler.source>
+                <maven.compiler.target>1.8</maven.compiler.target>
+            </properties>
+
         </profile>
 
         <profile>
             <id>integration-heavy</id>
-
             <build>
                 <plugins>
                     <plugin>
@@ -522,7 +527,6 @@
 
         <profile>
             <id>default</id>
-
             <build>
                 <plugins>
                     <plugin>
@@ -780,7 +784,6 @@
 
         <profile>
             <id>integration</id>
-
             <build>
                 <plugins>
                     <plugin>
