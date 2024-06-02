@@ -9,7 +9,7 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>frontend-modules</artifactId>
+        <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 

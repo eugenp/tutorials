@@ -16,7 +16,6 @@
     <modules>
         <module>apache-velocity</module>
         <module>vaadin</module>
-        <module>jws</module>
         <module>mustache</module>
         <module>webrtc</module>
     </modules>

@@ -724,6 +724,7 @@
                 <module>jmh</module>
                 <module>json-modules</module>
                 <module>jsoup</module>
+                <module>jws</module>
                 <module>ksqldb</module>
                 <module>kubernetes-modules</module>
                 <module>language-interop</module>
@@ -969,6 +970,7 @@
                 <module>jmh</module>
                 <module>json-modules</module>
                 <module>jsoup</module>
+                <module>jws</module>
                 <module>ksqldb</module>
                 <module>kubernetes-modules</module>
                 <module>language-interop</module>
