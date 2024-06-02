@@ -2,12 +2,13 @@ package com.baeldung.executorservicetest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.jupiter.api.Test;
@@ -43,13 +44,17 @@ public class ExecutorServiceUnitTest {
 
     @Test
     void whenUsingThreadPoolExecutor_thenTestSucceeds() throws InterruptedException {
-        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(1, 1, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>());
-        MyRunnable r = new MyRunnable();
-        threadPoolExecutor.submit(r);
-        System.out.println(threadPoolExecutor.getCompletedTaskCount() < 1);
-        while (threadPoolExecutor.getCompletedTaskCount() < 1) {
+        MyThreadPoolExecutor threadPoolExecutor = new MyThreadPoolExecutor(3, 6, 10L, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>(), 20);
+        List<MyRunnable> runnables = new ArrayList<MyRunnable>();
+        for (int i = 0; i < 20; i++) {
+            MyRunnable r = new MyRunnable();
+            runnables.add(r);
+            threadPoolExecutor.submit(r);
         }
-        assertEquals(2305843005992468481L, r.getResult());
+        threadPoolExecutor.waitDone();
+        for (int i = 0; i < 20; i++) {
+            assertEquals(2305843005992468481L, runnables.get(i).result);
+        }
     }
 
 }

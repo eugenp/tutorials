@@ -1,4 +1,4 @@
-package com.baeldung.xml2string;
+package com.baeldung.xml.xml2string;
 
 import org.apache.xmlbeans.XmlException;
 import org.apache.xmlbeans.XmlObject;

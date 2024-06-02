@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration>
+
+<configuration scan="true">
+    <!-- Patterns based on https://github.com/spring-projects/spring-boot/blob/v3.0.0/spring-boot-project/spring-boot/src/main/resources/org/springframework/boot/logging/logback/defaults.xml -->
+    <conversionRule conversionWord="crlf" converterClass="com.dealers.app.config.CRLFLogConverter" />
+    <property name="CONSOLE_LOG_PATTERN" value="${CONSOLE_LOG_PATTERN:-%clr(%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd'T'HH:mm:ss.SSSXXX}}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %crlf(%m){red} %n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"/>
+    <!-- The FILE and ASYNC appenders are here as examples for a production configuration -->
+    <!--
+    <property name="FILE_LOG_PATTERN" value="${FILE_LOG_PATTERN:-%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd'T'HH:mm:ss.SSSXXX}} ${LOG_LEVEL_PATTERN:-%5p} ${PID:- } &#45;&#45;&#45; [%t] %-40.40logger{39} : %crlf(%m) %n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"/>
+    -->
+
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
+
+    <!-- The FILE and ASYNC appenders are here as examples for a production configuration -->
+    <!--
+    <include resource="org/springframework/boot/logging/logback/file-appender.xml" />
+
+    <appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+        <queueSize>512</queueSize>
+        <appender-ref ref="FILE"/>
+    </appender>
+
+    <root level="${logging.level.root}">
+        <appender-ref ref="ASYNC"/>
+    </root>
+    -->
+
+    <logger name="com.dealers.app" level="INFO"/>
+
+    <logger name="angus.activation" level="WARN"/>
+    <logger name="jakarta.activation" level="WARN"/>
+    <logger name="jakarta.mail" level="WARN"/>
+    <logger name="jakarta.management.remote" level="WARN"/>
+    <logger name="jakarta.xml.bind" level="WARN"/>
+    <logger name="jdk.event.security" level="INFO"/>
+    <logger name="io.github.resilience4j" level="INFO"/>
+    <logger name="com.hazelcast" level="INFO"/>
+    <logger name="com.netflix" level="WARN"/>
+    <logger name="com.netflix.config.sources.URLConfigurationSource" level="ERROR"/>
+    <logger name="com.netflix.discovery" level="INFO"/>
+    <logger name="com.ryantenney" level="WARN"/>
+    <logger name="com.sun" level="WARN"/>
+    <logger name="com.zaxxer" level="WARN"/>
+    <logger name="io.undertow" level="WARN"/>
+    <logger name="io.undertow.websockets.jsr" level="ERROR"/>
+    <logger name="org.apache" level="WARN"/>
+    <logger name="org.apache.catalina.startup.DigesterFactory" level="OFF"/>
+    <logger name="org.bson" level="WARN"/>
+    <logger name="org.hibernate.validator" level="WARN"/>
+    <logger name="org.hibernate" level="WARN"/>
+    <logger name="org.hibernate.ejb.HibernatePersistence" level="OFF"/>
+    <logger name="org.postgresql" level="WARN"/>
+    <logger name="org.springframework" level="WARN"/>
+    <logger name="org.springframework.web" level="WARN"/>
+    <logger name="org.springframework.security" level="WARN"/>
+    <logger name="org.springframework.boot.autoconfigure.logging" level="INFO"/>
+    <logger name="org.springframework.cache" level="WARN"/>
+    <logger name="org.thymeleaf" level="WARN"/>
+    <logger name="org.xnio" level="WARN"/>
+    <logger name="io.swagger.v3" level="INFO"/>
+    <logger name="sun.rmi" level="WARN"/>
+    <logger name="sun.net.www" level="INFO"/>
+    <logger name="sun.rmi.transport" level="WARN"/>
+    <!-- See https://github.com/jhipster/generator-jhipster/issues/13835 -->
+    <logger name="Validator" level="INFO"/>
+    <!-- See https://github.com/jhipster/generator-jhipster/issues/14444 -->
+    <logger name="_org.springframework.web.servlet.HandlerMapping.Mappings" level="INFO"/>
+    <logger name="liquibase" level="WARN"/>
+    <logger name="LiquibaseSchemaResolver" level="INFO"/>
+    <!-- jhipster-needle-logback-add-log - JHipster will add a new log with level -->
+
+    <springProperty name="log.level" source="logging.level.root" defaultValue="INFO" />
+    <root level="${log.level}">
+        <appender-ref ref="CONSOLE" />
+    </root>
+
+    <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+        <resetJUL>true</resetJUL>
+    </contextListener>
+
+</configuration>

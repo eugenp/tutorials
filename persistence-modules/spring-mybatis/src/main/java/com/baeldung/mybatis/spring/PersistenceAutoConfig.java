@@ -7,7 +7,7 @@ import org.springframework.context.annotation.FilterType;
 
 @SpringBootConfiguration
 @EnableAutoConfiguration
-@ComponentScan(basePackages = { "com.baeldung.mybatis" }, excludeFilters = {
+@ComponentScan(basePackages = { "com.baeldung.mybatis.spring" }, excludeFilters = {
   @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, value = { PersistenceConfig.class })
 })
 public class PersistenceAutoConfig {

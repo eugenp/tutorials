@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="00000000000000" author="jhipster">
+        <createSequence sequenceName="sequence_generator" startValue="1050" incrementBy="50"/>
+    </changeSet>
+
+    <!--
+        JHipster core tables.
+        The initial schema has the '00000000000001' id, so that it is over-written if we re-generate it.
+    -->
+    <changeSet id="00000000000001" author="jhipster">
+    </changeSet>
+
+    <changeSet author="jhipster" id="00000000000002" context="test">
+        <createTable tableName="jhi_date_time_wrapper">
+            <column  name="id" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="jhi_date_time_wrapperPK"/>
+            </column>
+            <column name="instant" type="timestamp"/>
+            <column name="local_date_time" type="timestamp"/>
+            <column name="offset_date_time" type="timestamp"/>
+            <column name="zoned_date_time" type="timestamp"/>
+            <column name="local_time" type="time"/>
+            <column name="offset_time" type="time"/>
+            <column name="local_date" type="date"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
