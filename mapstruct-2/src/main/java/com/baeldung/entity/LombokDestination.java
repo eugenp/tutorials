@@ -1,10 +1,10 @@
 package com.baeldung.entity;
 
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 
 @Builder
-@Data
+@Getter
 public class LombokDestination {
 
     private String name;
