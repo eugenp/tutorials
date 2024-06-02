@@ -180,6 +180,7 @@
         <module>core-java-numbers-6</module>
         <module>core-java-numbers-7</module>
         <module>core-java-numbers-8</module>
+        <module>core-java-object-copy</module>
         <module>core-java-optional</module>
         <module>core-java-perf</module>
         <module>core-java-properties</module>
