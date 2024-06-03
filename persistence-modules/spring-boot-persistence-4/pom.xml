@@ -65,6 +65,12 @@
             <artifactId>spring-tx</artifactId>
             <version>${spring.tx.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.instancio</groupId>
+            <artifactId>instancio-junit</artifactId>
+            <version>${instancio.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -89,6 +95,7 @@
         <commons-codec.version>1.16.1</commons-codec.version>
         <lombok.version>1.18.30</lombok.version>
         <spring.tx.version>6.1.4</spring.tx.version>
+        <instancio.version>2.9.0</instancio.version>
     </properties>
 
 </project>
