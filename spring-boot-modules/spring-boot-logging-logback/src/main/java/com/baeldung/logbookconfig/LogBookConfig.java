@@ -14,7 +14,7 @@ public class LogBookConfig {
     @Bean
     public Logbook logbook() {
         Logbook logbook = Logbook.builder()
-            .condition(Conditions.exclude(Conditions.requestTo("/health"), Conditions.requestTo("/admin/**"), Conditions.contentType(
+            .condition(Conditions.exclude(Conditions.requestTo("/api/welcome"), Conditions.contentType(
                 "pplication/octet-stream"), Conditions.header("X-Secret", "true")))
             .sink(new DefaultSink(new DefaultHttpLogFormatter(), new DefaultHttpLogWriter()))
             .build();

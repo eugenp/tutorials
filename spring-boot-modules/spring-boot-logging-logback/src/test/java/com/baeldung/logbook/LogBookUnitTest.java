@@ -1,14 +1,17 @@
 package com.baeldung.logbook;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,5 +42,22 @@ public class LogBookUnitTest {
         boolean isLogged = logLines.stream()
             .anyMatch(line -> line.contains("http://localhost/api/hello"));
         assertTrue(isLogged, "Log file should contain log message containing api request details");
+    }
+
+    @Test
+    public void whenExcludedHttpRequestCalled_thenRequestDetailsNotLogged() throws Exception {
+        mockMvc.perform(get("/api/welcome"))
+            .andExpect(status().isOk())
+            .andExpect(content().string("Welcome, World!"));
+
+        List<String> logLines = Files.readAllLines(Paths.get(LOG_FILE_PATH));
+        boolean isLogged = logLines.stream()
+            .anyMatch(line -> line.contains("http://localhost/api/welcome"));
+        assertFalse(isLogged, "Log file should not contain log message containing api request details");
+    }
+
+    @BeforeClass
+    public static void init() throws IOException {
+        Files.deleteIfExists(Paths.get(LOG_FILE_PATH));
     }
 }
