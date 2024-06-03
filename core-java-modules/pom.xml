@@ -29,9 +29,9 @@
         <module>core-java-collections-conversions-2</module>
         <module>core-java-collections-conversions-3</module>
         <module>core-java-concurrency-advanced-5</module>
-        <!-- <module>core-java-modules/core-java-9-new-features</module> --> <!-- JAVA-26056 -->
-        <!-- <module>core-java-modules/core-java-14</module> --> <!-- JAVA-26056 -->
-        <!-- <module>core-java-modules/core-java-16</module> --> <!-- JAVA-26056 -->
+        <module>core-java-9-new-features</module>
+        <module>core-java-14</module>
+        <module>core-java-16</module>
         <!-- <module>core-java-modules/core-java-17</module> --> <!-- JAVA-26056 -->
         <!-- <module>core-java-modules/core-java-18</module> --> <!-- JAVA-26056 -->
         <!-- <module>core-java-modules/core-java-19</module> --> <!-- JAVA-26056 -->
@@ -131,9 +131,11 @@
         <module>core-java-io-3</module>
         <module>core-java-io-4</module>
         <module>core-java-io-5</module>
+        <module>core-java-io-6</module>
         <module>core-java-io-apis</module>
         <module>core-java-io-apis-2</module>
         <module>core-java-io-conversions</module>
+        <module>core-java-io-conversions-3</module>
         <module>core-java-jar</module>
         <module>core-java-jndi</module>
         <module>core-java-jvm</module>
@@ -209,6 +211,7 @@
         <module>core-java-string-operations-7</module>
         <module>core-java-string-operations-8</module>
         <module>core-java-string-operations-9</module>
+        <module>core-java-string-operations-10</module>
         <module>core-java-regex</module>
         <module>core-java-regex-2</module>
         <module>core-java-regex-3</module>
