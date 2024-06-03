@@ -27,7 +27,7 @@ public class JoinFetchApplicationView {
         Root<Player> root = query.from(Player.class);
         root.fetch("league", JoinType.LEFT);
         query.where(cb.equal(root.get("league")
-          .get("league"), "Premier League"));
+          .get("name"), "Premier League"));
         List<Player> playerList = session.createQuery(query)
           .getResultList();
 

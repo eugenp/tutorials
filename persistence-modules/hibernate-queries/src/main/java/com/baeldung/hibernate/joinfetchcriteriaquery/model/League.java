@@ -13,7 +13,7 @@ public class League {
 
     @Id
     private int id;
-    private String league;
+    private String name;
 
     @OneToMany(mappedBy = "league")
     private List<Player> players = new ArrayList<>();
@@ -21,9 +21,9 @@ public class League {
     public League() {
     }
 
-    public League(int id, String league) {
+    public League(int id, String name) {
         this.id = id;
-        this.league = league;
+        this.name = name;
     }
 
     public int getId() {
@@ -34,12 +34,12 @@ public class League {
         this.id = id;
     }
 
-    public String getLeague() {
-        return league;
+    public String getName() {
+        return name;
     }
 
-    public void setLeague(String league) {
-        this.league = league;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public List<Player> getPlayers() {
@@ -52,6 +52,6 @@ public class League {
 
     @Override
     public String toString() {
-        return "League{" + "id=" + id + ", league='" + league + '\'' + ", players=" + players.size() + '}';
+        return "League{" + "id=" + id + ", name='" + name + '\'' + ", players=" + players.size() + '}';
     }
 }
