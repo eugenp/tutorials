@@ -1,0 +1,74 @@
+@startuml
+hide empty attributes
+skinparam Handwritten false
+skinparam ClassBorderColor black
+skinparam BackgroundColor #fffce8/#f8f9fa
+skinparam class {
+ ArrowColor SeaGreen
+ BackgroundColor #fffce8
+}
+
+class ClientAuthInterceptor {
+   +interceptCall()
+}
+
+class AuthorizationUtil {
+   +clientAuthorizationCheck()::Status
+}
+class OtBookingServiceBlockingStub {
+   +getBookingInfo()::void
+}
+class OtBookingServiceGrpc {
+   +newBlockingStub()
+
+}
+class OtBookingServiceImplBase {
+   +getBookingInfo()::void
+}
+
+class OtBookingService {
+   +getBookingInfo()::void
+
+}
+class AltsOtBookingServer {
+}
+class AltsChannelBuilder {
+   +addTargetServiceAccount()
+}
+class AltsServerBuilder {
+   +intercept()
+   +addService()
+}
+class AltsOtBookingClient {
+}
+class BookingRequest {
+   +setPatientID()
+   +setDoctorID()
+   +setDescription()
+}
+class BookingResponse {
+   +setBookingDate()
+   +setCondition()
+}
+class ManagedChannel {
+}
+
+AltsOtBookingServer -down-> AltsServerBuilder: uses
+AltsOtBookingServer -down-> OtBookingService: uses
+AltsServerBuilder -up-> OtBookingService: uses
+OtBookingService -up-> OtBookingServiceImplBase: extends
+OtBookingService -down-> BookingRequest: uses
+OtBookingService -down-> BookingResponse: uses
+OtBookingServiceGrpc +-right- OtBookingServiceImplBase
+OtBookingServiceGrpc +-down- OtBookingServiceBlockingStub
+OtBookingServiceGrpc -right-> ManagedChannel: uses
+AltsOtBookingClient -up-> BookingRequest: uses
+AltsOtBookingClient -up-> BookingResponse: uses
+AltsOtBookingClient -left-> OtBookingServiceBlockingStub: uses
+AltsOtBookingClient -up-> ManagedChannel: uses
+AltsOtBookingClient -up-> AltsChannelBuilder: uses
+AltsChannelBuilder -down-> ManagedChannel: creates
+ClientAuthInterceptor -left-> AuthorizationUtil: uses
+AltsServerBuilder -down-> ClientAuthInterceptor: uses
+
+@enduml

@@ -14,7 +14,7 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import javax.sql.DataSource;
 
 @Configuration
-@MapperScan("com.baeldung.mybatis")
+@MapperScan("com.baeldung.mybatis.spring")
 @EnableAutoConfiguration(exclude = { DataSourceAutoConfiguration.class, MybatisAutoConfiguration.class })
 public class PersistenceConfig {
 

@@ -7,10 +7,9 @@
     <name>core-java-9-new-features</name>
 
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../../</relativePath>
+        <groupId>com.baeldung.core-java-modules</groupId>
+        <artifactId>core-java-modules</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
     </parent>
 
     <dependencies>
@@ -150,8 +149,6 @@
     <properties>
         <rxjava.version>3.0.0</rxjava.version>
         <awaitility.version>4.0.2</awaitility.version>
-        <maven.compiler.source>1.9</maven.compiler.source>
-        <maven.compiler.target>1.9</maven.compiler.target>
     </properties>
 
 </project>

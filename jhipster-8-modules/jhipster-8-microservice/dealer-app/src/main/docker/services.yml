@@ -1,0 +1,11 @@
+# This configuration is intended for development purpose, it's **your** responsibility to harden it for production
+name: dealerapp
+services:
+  postgresql:
+    extends:
+      file: ./postgresql.yml
+      service: postgresql
+  jhipster-registry:
+    extends:
+      file: ./jhipster-registry.yml
+      service: jhipster-registry
