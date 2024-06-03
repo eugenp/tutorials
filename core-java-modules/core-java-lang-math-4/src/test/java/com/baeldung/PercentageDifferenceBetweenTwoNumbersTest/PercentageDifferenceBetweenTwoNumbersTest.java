@@ -12,7 +12,7 @@ class PercentageDifferenceBetweenTwoNumbersTest {
     void calculatePercentageDifferenceBetweenTwoNumbers() {
         double V1 = 50.0;
         double V2 = 70.0;
-        double expected = 33.33; // Manual calculation: |(50 - 70)/((50 + 70)/2)| * 100 = 33.33
+        double expected = 33.33;
         double result = PercentageDifferenceBetweenTwoNumbers.calculatePercentageDifference(V1, V2);
         assertEquals(expected, result, 0.01, "Percentage difference should be correctly calculated.");
     }
@@ -30,7 +30,7 @@ class PercentageDifferenceBetweenTwoNumbersTest {
     void whenV1IsGreaterThanV2_thenCalculateCorrectPercentageDifference() {
         double V1 = 70.0;
         double V2 = 50.0;
-        double expected = 33.33; // Manual calculation: |(70 - 50)/((70 + 50)/2)| * 100 = 33.33
+        double expected = 33.33;
         double result = PercentageDifferenceBetweenTwoNumbers.calculatePercentageDifference(V1, V2);
         assertEquals(expected, result, 0.01, "Percentage difference should be correctly calculated.");
     }
@@ -39,7 +39,7 @@ class PercentageDifferenceBetweenTwoNumbersTest {
     void whenV2IsGreaterThanV1_thenCalculateCorrectPercentageDifference() {
         double V1 = 50.0;
         double V2 = 70.0;
-        double expected = 33.33; // Manual calculation: |(50 - 70)/((50 + 70)/2)| * 100 = 33.33
+        double expected = 33.33;
         double result = PercentageDifferenceBetweenTwoNumbers.calculatePercentageDifference(V1, V2);
         assertEquals(expected, result, 0.01, "Percentage difference should be correctly calculated.");
     }
@@ -48,7 +48,7 @@ class PercentageDifferenceBetweenTwoNumbersTest {
     void whenOneValueIsZero_thenCalculateCorrectPercentageDifference() {
         double V1 = 0.0;
         double V2 = 50.0;
-        double expected = 200.0; // Manual calculation: |(0 - 50)/((0 + 50)/2)| * 100 = 200
+        double expected = 200.0;
         double result = PercentageDifferenceBetweenTwoNumbers.calculatePercentageDifference(V1, V2);
         assertEquals(expected, result, "Percentage difference should be correctly calculated when one value is zero.");
     }
