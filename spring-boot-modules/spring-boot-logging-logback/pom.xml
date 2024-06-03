@@ -7,7 +7,6 @@
     <name>spring-boot-logging-logback</name>
     <packaging>jar</packaging>
     <description>Demo project for Spring Boot Logging with Logback</description>
-
     <parent>
         <groupId>com.baeldung.spring-boot-modules</groupId>
         <artifactId>spring-boot-modules</artifactId>
@@ -23,6 +22,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.zalando</groupId>
+            <artifactId>logbook-spring-boot-starter</artifactId>
+            <version>3.9.0</version>
+         </dependency>
     </dependencies>
 
     <build>
