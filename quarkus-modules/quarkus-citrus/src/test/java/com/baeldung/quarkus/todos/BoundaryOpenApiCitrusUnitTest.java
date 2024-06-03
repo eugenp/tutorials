@@ -26,7 +26,7 @@ import static org.citrusframework.openapi.actions.OpenApiActionBuilder.openapi;
 @CitrusConfiguration(classes = {
         BoundaryOpenApiCitrusConfig.class
 })
-class BoundaryOpenApiCitrusTest {
+class BoundaryOpenApiCitrusUnitTest {
 
     @CitrusEndpoint(name = BoundaryOpenApiCitrusConfig.API_CLIENT)
     HttpClient apiClient;
