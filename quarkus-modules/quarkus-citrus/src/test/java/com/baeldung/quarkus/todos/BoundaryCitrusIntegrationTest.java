@@ -23,7 +23,7 @@ import static org.hamcrest.Matchers.notNullValue;
 @CitrusConfiguration(classes = {
         BoundaryCitrusConfig.class
 })
-class BoundaryCitrusUnitTest {
+class BoundaryCitrusIntegrationTest {
 
     @CitrusEndpoint(name = BoundaryCitrusConfig.API_CLIENT)
     HttpClient apiClient;
