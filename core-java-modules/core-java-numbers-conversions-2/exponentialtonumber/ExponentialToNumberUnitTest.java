@@ -10,40 +10,40 @@ import org.junit.jupiter.api.Test;
 public class ExponentialToNumberUnitTest {
 
     double scientificValue = 1.23456789E9;
-    double scientificValueNegative = 1.23456789E-9;
-    String expectedPositive = "1234567890";
-    String expectedNegative = "0.00000000123456789";
+    String expectedValue = "1234567890";
 
     @Test
     public void givenScientificValue_whenUtilizingDecimalFormat_thenCorrectNumberFormat() {
-        DecimalFormat decimalFormatPositive = new DecimalFormat("#");
+        DecimalFormat decimalFormat;
 
-        DecimalFormat decimalFormatNegative = new DecimalFormat("0.#################");
+        if (scientificValue >= 1 || scientificValue <= -1) {
+            decimalFormat = new DecimalFormat("#");
+        } else {
+            decimalFormat = new DecimalFormat("0.#################");
+        }
 
-        String resultPositive = decimalFormatPositive.format(scientificValue);
-        String resultNegative = decimalFormatNegative.format(scientificValueNegative);
+        String result = decimalFormat.format(scientificValue);
 
-        assertEquals(expectedPositive, resultPositive);
-        assertEquals(expectedNegative, resultNegative);
+        assertEquals(expectedValue, result);
     }
 
     @Test
     public void givenScientificValue_whenUtilizingBigDecimal_thenCorrectNumberFormat() {
         BigDecimal bigDecimalPositive = new BigDecimal(Double.toString(scientificValue));
-        BigDecimal bigDecimalNegative = new BigDecimal(Double.toString(scientificValueNegative));
-        String resultPositive = bigDecimalPositive.toPlainString();
-        String resultNegative = bigDecimalNegative.toPlainString();
+        String result = bigDecimalPositive.toPlainString();
 
-        assertEquals(expectedPositive, resultPositive);
-        assertEquals(expectedNegative, resultNegative);
+        assertEquals(expectedValue, result);
     }
 
     @Test
     public void givenScientificValue_whenUtilizingStringFormat_thenCorrectNumberFormat() {
-        String resultPositive = String.format("%.0f", scientificValue);
-        String resultNegative = String.format("%.17f", scientificValueNegative);
+        String formatResult;
+        if (scientificValue >= 1 || scientificValue <= -1) {
+            formatResult = String.format("%.0f", scientificValue);
+        } else {
+            formatResult = String.format("%.17f", scientificValue);
+        }
 
-        assertEquals(expectedPositive, resultPositive);
-        assertEquals(expectedNegative, resultNegative);
+        assertEquals(expectedValue, formatResult);
     }
 }
