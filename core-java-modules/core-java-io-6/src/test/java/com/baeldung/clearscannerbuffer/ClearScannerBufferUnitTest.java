@@ -22,4 +22,14 @@ public class ClearScannerBufferUnitTest {
         assertEquals(123, number);
         assertEquals("Hello World", text);
     }
+    
+    @Test
+    public void givenInput_whenUsingSkip_thenBufferCleared() {
+        int number = scanner.nextInt();
+        scanner.skip("\n");
+        String text = scanner.nextLine();
+
+        assertEquals(123, number);
+        assertEquals("Hello World", text);
+    }
 }
