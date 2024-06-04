@@ -17,25 +17,25 @@ public class RemoveDigitsUnitTest {
 
     @Test
     void whenUsingReplaceAll_thenGetExpectedResult() {
-        String correctString = INPUT_STRING.replaceAll(DIGIT_REGEX, "");
+        String updatedString = INPUT_STRING.replaceAll(DIGIT_REGEX, "");
 
-        assertEquals(EXPECTED_STRING, correctString);
+        assertEquals(EXPECTED_STRING, updatedString);
     }
 
     @Test
     void whenUsingPatternAndMatcher_thenGetExpectedResult() {
         Pattern pattern = Pattern.compile(DIGIT_REGEX);
         Matcher matcher = pattern.matcher(INPUT_STRING);
-        String correctString = matcher.replaceAll("");
+        String updatedString = matcher.replaceAll("");
 
-        assertEquals(EXPECTED_STRING, correctString);
+        assertEquals(EXPECTED_STRING, updatedString);
     }
 
     @Test
     void whenUsingApacheCommonsLang_thenGetExpectedResult() {
-        String correctString = RegExUtils.replacePattern(INPUT_STRING, DIGIT_REGEX, "");
+        String updatedString = RegExUtils.replacePattern(INPUT_STRING, DIGIT_REGEX, "");
 
-        assertEquals(EXPECTED_STRING, correctString);
+        assertEquals(EXPECTED_STRING, updatedString);
     }
 
     @Test
@@ -52,13 +52,13 @@ public class RemoveDigitsUnitTest {
 
     @Test
     void whenUsingCharacterStream_thenGetExpectedResult() {
-        String correctString = INPUT_STRING.chars()
+        String updatedString = INPUT_STRING.chars()
             .filter(c -> !Character.isDigit(c))
             .mapToObj(c -> (char) c)
             .map(String::valueOf)
             .collect(Collectors.joining());
 
-        assertEquals(EXPECTED_STRING, correctString);
+        assertEquals(EXPECTED_STRING, updatedString);
     }
 
 }
