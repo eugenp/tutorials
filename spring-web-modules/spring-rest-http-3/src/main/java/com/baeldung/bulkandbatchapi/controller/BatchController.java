@@ -23,21 +23,21 @@ public class BatchController {
 
     private final CustomerService customerService;
     private final AddressService addressService;
+    private final ObjectMapper objectMapper;
 
-    public BatchController(CustomerService customerService, AddressService addressService) {
+    public BatchController(CustomerService customerService, AddressService addressService, ObjectMapper objectMapper) {
         this.customerService = customerService;
         this.addressService = addressService;
+        this.objectMapper = objectMapper;
     }
 
     @PostMapping(path = "/batch")
     public ResponseEntity<String> batchUpdateCustomerWithAddress(@RequestBody @Valid @Size(min = 1, max = 20) List<BatchRequest> batchRequests) {
-        ObjectMapper mapper = new ObjectMapper();
-
         batchRequests.forEach(batchRequest -> {
             if (batchRequest.getMethod().equals(HttpMethod.POST) && batchRequest.getRelativeUrl().equals("/address")) {
-                addressService.createAddress(mapper.convertValue(batchRequest.getData(), Address.class));
+                addressService.createAddress(objectMapper.convertValue(batchRequest.getData(), Address.class));
             } else if (batchRequest.getMethod().equals(HttpMethod.PATCH) && batchRequest.getRelativeUrl().equals("/customer")) {
-                customerService.updateCustomer(mapper.convertValue(batchRequest.getData(), Customer.class));
+                customerService.updateCustomer(objectMapper.convertValue(batchRequest.getData(), Customer.class));
             }
         });
 

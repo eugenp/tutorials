@@ -1,5 +1,6 @@
 package com.baeldung.bulkandbatchapi.controller;
 
+import com.baeldung.bulkandbatchapi.request.BulkActionType;
 import com.baeldung.bulkandbatchapi.request.Customer;
 import com.baeldung.bulkandbatchapi.request.CustomerBulkRequest;
 import com.baeldung.bulkandbatchapi.response.BulkStatus;
@@ -12,9 +13,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+import java.util.function.Function;
+
+import static java.util.stream.Collectors.toList;
 
 @RestController
 @RequestMapping("/api")
@@ -22,9 +24,13 @@ import java.util.List;
 public class BulkController {
 
     private final CustomerService customerService;
+    private final EnumMap<BulkActionType, Function<Customer, Optional<Customer>>> bulkActionFuncMap = new EnumMap<>(BulkActionType.class);
 
     public BulkController(CustomerService customerService) {
         this.customerService = customerService;
+        bulkActionFuncMap.put(BulkActionType.CREATE, customerService::createCustomer);
+        bulkActionFuncMap.put(BulkActionType.UPDATE, customerService::updateCustomer);
+        bulkActionFuncMap.put(BulkActionType.DELETE, customerService::deleteCustomer);
     }
 
     @PostMapping(path = "/customers")
@@ -40,7 +46,12 @@ public class BulkController {
         List<CustomerBulkResponse> customerBulkResponseList = new ArrayList<>();
 
         customerBulkRequests.forEach(customerBulkRequest -> {
-            List<Customer> customers = customerService.processCustomers(customerBulkRequest.getCustomers(), customerBulkRequest.getBulkActionType());
+            List<Customer> customers = customerBulkRequest.getCustomers().stream()
+                    .map(bulkActionFuncMap.get(customerBulkRequest.getBulkActionType()))
+                    .filter(Optional::isPresent)
+                    .map(Optional::get)
+                    .collect(toList());
+
             BulkStatus bulkStatus = getBulkStatus(customerBulkRequest.getCustomers(), customers);
             customerBulkResponseList.add(new CustomerBulkResponse(customers, customerBulkRequest.getBulkActionType(), bulkStatus));
         });
@@ -49,10 +60,10 @@ public class BulkController {
     }
 
     private BulkStatus getBulkStatus(List<Customer> customersInRequest, List<Customer> customersProcessed) {
-        if (customersProcessed.size() == customersInRequest.size()) {
-            return BulkStatus.PROCESSED;
-        } else if (customersProcessed.size() < customersInRequest.size()) {
-            return BulkStatus.PARTIALLY_PROCESSED;
+        if (!customersProcessed.isEmpty()) {
+            return customersProcessed.size() == customersInRequest.size() ?
+                BulkStatus.PROCESSED :
+                BulkStatus.PARTIALLY_PROCESSED;
         }
 
         return BulkStatus.NOT_PROCESSED;

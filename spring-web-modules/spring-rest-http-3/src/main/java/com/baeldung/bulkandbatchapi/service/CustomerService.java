@@ -1,13 +1,11 @@
 package com.baeldung.bulkandbatchapi.service;
 
 import com.baeldung.bulkandbatchapi.request.Customer;
-import com.baeldung.bulkandbatchapi.request.BulkActionType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
-import java.util.function.BiFunction;
 
 import static java.util.stream.Collectors.toList;
 
@@ -23,20 +21,6 @@ public class CustomerService {
                 .filter(Optional::isPresent)
                 .map(Optional::get)
                 .collect(toList());
-    }
-
-    public List<Customer> processCustomers(List<Customer> customers, BulkActionType batchType) {
-        BiFunction<Customer, BulkActionType, Optional<Customer>> customerProcessFunction = (customer, bulkActionType) -> switch (bulkActionType) {
-            case CREATE -> createCustomer(customer);
-            case UPDATE -> updateCustomer(customer);
-            case DELETE -> deleteCustomer(customer);
-        };
-
-        return customers.stream()
-                 .map(customer -> customerProcessFunction.apply(customer, batchType))
-                 .filter(Optional::isPresent)
-                 .map(Optional::get)
-                 .collect(toList());
     }
 
     public Optional<Customer> createCustomer(Customer customer) {
@@ -69,7 +53,7 @@ public class CustomerService {
         return Optional.ofNullable(customerToUpdate);
     }
 
-    private Optional<Customer> deleteCustomer(Customer customer) {
+    public Optional<Customer> deleteCustomer(Customer customer) {
         LOGGER.info("Deleting Customer : {}", customer);
         Customer customerToDelete = customerRepoMap.get(customer.getEmail());
 

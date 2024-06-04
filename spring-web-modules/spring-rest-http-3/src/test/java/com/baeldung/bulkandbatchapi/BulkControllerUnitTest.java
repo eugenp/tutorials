@@ -1,7 +1,6 @@
 package com.baeldung.bulkandbatchapi;
 
 import com.baeldung.bulkandbatchapi.controller.BulkController;
-import com.baeldung.bulkandbatchapi.request.BulkActionType;
 import com.baeldung.bulkandbatchapi.request.Customer;
 import com.baeldung.bulkandbatchapi.service.CustomerService;
 import org.junit.jupiter.api.Test;
@@ -16,6 +15,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -76,11 +76,9 @@ class BulkControllerUnitTest {
         Customer customer1 = this.getCustomer("test4", "test4@email.com", "address1");
         Customer customer2 = this.getCustomer("test1-update", "test2@email.com", "address1-update");
         customer2.setId(1);
-        List<Customer> customersList1 = List.of(customer1);
-        List<Customer> customersList2 = List.of(customer2);
 
-        when(customerService.processCustomers(customersList1, BulkActionType.CREATE)).thenReturn(customersList1);
-        when(customerService.processCustomers(customersList2, BulkActionType.UPDATE)).thenReturn(customersList2);
+        when(customerService.createCustomer(customer1)).thenReturn(Optional.of(customer1));
+        when(customerService.updateCustomer(customer1)).thenReturn(Optional.of(customer2));
 
         mockMvc.perform(post("/api/customers/bulk").headers(getHttpHeaders("singular")).content("[" +
                         "    {" +
@@ -111,9 +109,7 @@ class BulkControllerUnitTest {
     @Test
     void givenCustomerAreValid_WhenCalledSingleCustomer_ThenShouldProcessCustomers_ReturnValidData() throws Exception {
         Customer customer1 = this.getCustomer("test4", "test4@email.com", "address1");
-        List<Customer> customersList1 = List.of(customer1);
-
-        when(customerService.processCustomers(customersList1, BulkActionType.CREATE)).thenReturn(customersList1);
+        when(customerService.createCustomer(customer1)).thenReturn(Optional.of(customer1));
 
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add("Content-Type", "application/json");
