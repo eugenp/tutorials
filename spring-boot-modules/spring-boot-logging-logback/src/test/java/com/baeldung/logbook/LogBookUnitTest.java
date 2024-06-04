@@ -8,6 +8,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
@@ -27,7 +28,7 @@ import com.baeldung.extensions.SpringBootLogbackExtensionsApplication;
 @AutoConfigureMockMvc
 public class LogBookUnitTest {
 
-    private static final String LOG_FILE_PATH = "./src/main/resources/logs/logback-extension.log";
+    private static String logFilePath;
 
     @Autowired
     private MockMvc mockMvc;
@@ -38,7 +39,7 @@ public class LogBookUnitTest {
             .andExpect(status().isOk())
             .andExpect(content().string("Hello, World!"));
 
-        List<String> logLines = Files.readAllLines(Paths.get(LOG_FILE_PATH));
+        List<String> logLines = Files.readAllLines(Paths.get(logFilePath));
         boolean isLogged = logLines.stream()
             .anyMatch(line -> line.contains("http://localhost/api/hello"));
         assertTrue(isLogged, "Log file should contain log message containing api request details");
@@ -50,7 +51,7 @@ public class LogBookUnitTest {
             .andExpect(status().isOk())
             .andExpect(content().string("Welcome, World!"));
 
-        List<String> logLines = Files.readAllLines(Paths.get(LOG_FILE_PATH));
+        List<String> logLines = Files.readAllLines(Paths.get(logFilePath));
         boolean isLogged = logLines.stream()
             .anyMatch(line -> line.contains("http://localhost/api/welcome"));
         assertFalse(isLogged, "Log file should not contain log message containing api request details");
@@ -58,6 +59,10 @@ public class LogBookUnitTest {
 
     @BeforeClass
     public static void init() throws IOException {
-        Files.deleteIfExists(Paths.get(LOG_FILE_PATH));
+        Path resourcesPath = Paths.get("src", "main", "resources");
+        logFilePath = resourcesPath.resolve("logs/logback-extension.log")
+            .toAbsolutePath()
+            .toString();
+        Files.deleteIfExists(Paths.get(logFilePath));
     }
 }
