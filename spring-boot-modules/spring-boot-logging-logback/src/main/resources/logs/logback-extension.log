@@ -1,0 +1,16 @@
+15:16:51.424 [main] INFO  c.baeldung.logbook.LogBookUnitTest - Starting LogBookUnitTest using Java 17.0.1 with PID 36624 
+15:16:51.465 [main] INFO  c.baeldung.logbook.LogBookUnitTest - The following 1 profile is active: "logbook"
+15:16:54.505 [main] INFO  o.s.b.t.m.w.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+15:16:54.506 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Initializing Servlet ''
+15:16:54.510 [main] INFO  o.s.t.w.s.TestDispatcherServlet - Completed initialization in 1 ms
+15:16:54.581 [main] INFO  c.baeldung.logbook.LogBookUnitTest - Started LogBookUnitTest in 4.227 seconds (process running for 6.132)
+15:16:56.383 [main] TRACE org.zalando.logbook.Logbook - Incoming Request: c40ee15b50babc93
+Remote: 127.0.0.1
+GET http://localhost/api/hello HTTP/1.1
+15:16:56.402 [main] TRACE org.zalando.logbook.Logbook - Outgoing Response: c40ee15b50babc93
+Duration: 27 ms
+HTTP/1.1 200 OK
+Content-Length: 13
+Content-Type: text/plain;charset=UTF-8
+
+Hello, World!
