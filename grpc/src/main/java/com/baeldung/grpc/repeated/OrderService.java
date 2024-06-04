@@ -1,5 +1,6 @@
 package com.baeldung.grpc.repeated;
 
+import java.util.List;
 import java.util.Random;
 
 import org.slf4j.Logger;
@@ -12,14 +13,21 @@ public class OrderService extends OrderServiceGrpc.OrderServiceImplBase {
 
     @Override
     public void createOrder(UnPackedOrder unpackedOrder, StreamObserver<UnPackedOrder> responseObserver) {
-        int orderID = insertOrder(unpackedOrder);
-        logger.info("Order {} created successfully", orderID);
-        UnPackedOrder createdUnPackedOrder = UnPackedOrder.newBuilder(unpackedOrder).setOrderId(orderID).build();
-        responseObserver.onNext(createdUnPackedOrder);
-        responseObserver.onCompleted();
+        List<Integer> productIds = unpackedOrder.getProductIdsList();
+        if(validateProducts(productIds)) {
+            int orderID = insertOrder(unpackedOrder);
+            logger.info("Order {} created successfully", orderID);
+            UnPackedOrder createdUnPackedOrder = UnPackedOrder.newBuilder(unpackedOrder).setOrderId(orderID).build();
+            responseObserver.onNext(createdUnPackedOrder);
+            responseObserver.onCompleted();
+        }
     }
 
     private int insertOrder(UnPackedOrder unpackedOrder) {
         return new Random().nextInt(100);
+    }
+
+    private boolean validateProducts(List<Integer> productIds) {
+        return true;
     }
 }
