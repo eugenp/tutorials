@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
 public class ModeOfArrayUnitTest {
 
     @Test
-    public void testFreqCount() {
+    public void givenArray_whenFindUsingFrequencyCount_thenOutputMode() {
 
         int[] nums = { 1, 2, 2, 3, 3, 4, 4, 4, 5 };
         Map<Integer, Integer> frequencyMap = new HashMap<>();
@@ -43,7 +43,7 @@ public class ModeOfArrayUnitTest {
     }
 
     @Test
-    public void testSorting() {
+    public void givenArray_whenFindUsingSorting_thenOutputMode() {
         int[] nums = { 1, 2, 2, 3, 3, 4, 4, 4, 5 };
 
         Arrays.sort(nums);
@@ -77,7 +77,7 @@ public class ModeOfArrayUnitTest {
     }
 
     @Test
-    public void testTreeMap() {
+    public void givenArray_whenFindUsingTreeMap_thenOutputMode() {
         int[] nums = { 1, 2, 2, 3, 3, 4, 4, 4, 5 };
         Map<Integer, Integer> frequencyMap = new TreeMap<>();
 
@@ -104,7 +104,7 @@ public class ModeOfArrayUnitTest {
     }
 
     @Test
-    public void testStream() {
+    public void givenArray_whenFindUsingStream_thenOutputMode() {
         int[] nums = { 1, 2, 2, 3, 3, 4, 4, 4, 5 };
         Map<Integer, Long> frequencyMap = Arrays.stream(nums)
             .boxed()
