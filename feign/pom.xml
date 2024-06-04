@@ -8,9 +8,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-2</relativePath>
+        <relativePath>../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -137,11 +137,12 @@
     </build>
 
     <properties>
-        <feign.version>11.8</feign.version>
+        <feign.version>13.1</feign.version>
         <wsdl4j.version>1.6.3</wsdl4j.version>
         <feign.form.spring.version>3.8.0</feign.form.spring.version>
         <wire.mock.version>2.33.2</wire.mock.version>
         <jakarta.xml.bind.version>4.0.0</jakarta.xml.bind.version>
+        <start-class>com.baeldung.core.ExampleApplication</start-class>
     </properties>
 
 </project>
