@@ -27,7 +27,7 @@ import com.baeldung.extensions.SpringBootLogbackExtensionsApplication;
 @AutoConfigureMockMvc
 public class LogBookUnitTest {
 
-    private static final String LOG_FILE_PATH = "./logs/logbook/logback-extension.log";
+    private static final String LOG_FILE_PATH = "./src/main/resources/logs/logback-extension.log";
 
     @Autowired
     private MockMvc mockMvc;

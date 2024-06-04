@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
-	<property name="LOG_PATH" value="${LOG_PATH:-./logs}"/>
+	<property name="LOG_PATH" value="${LOG_PATH:-./src/main/resources/logs}"/>
     <property name="LOGS" value="./logs" />
     <springProperty scope="context" name="application.name" source="spring.application.name" />
 
@@ -35,7 +35,7 @@
     <springProfile name="logbook">
 
         <appender name="RollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
-            <file>${LOG_PATH}/logbook/${application.name}.log</file>
+            <file>${LOG_PATH}/${application.name}.log</file>
             <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
                 <Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
             </encoder>
