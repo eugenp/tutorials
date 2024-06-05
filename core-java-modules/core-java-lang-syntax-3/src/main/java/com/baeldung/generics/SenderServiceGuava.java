@@ -6,7 +6,8 @@ public class SenderServiceGuava<T extends Sender> {
 
     TypeToken<T> typeToken;
 
-    TypeToken<T> typeTokenAnonymous = new TypeToken<T>(getClass()) {};
+    TypeToken<T> typeTokenAnonymous = new TypeToken<T>(getClass()) {
+    };
 
     public SenderServiceGuava() {
     }
@@ -17,7 +18,9 @@ public class SenderServiceGuava<T extends Sender> {
 
     public T createInstance() {
         try {
-            return (T) typeToken.getRawType().getDeclaredConstructor().newInstance();
+            return (T) typeToken.getRawType()
+                .getDeclaredConstructor()
+                .newInstance();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -25,7 +28,9 @@ public class SenderServiceGuava<T extends Sender> {
 
     public T createInstanceAnonymous() {
         try {
-            return (T) typeTokenAnonymous.getRawType().getDeclaredConstructor().newInstance();
+            return (T) typeTokenAnonymous.getRawType()
+                .getDeclaredConstructor()
+                .newInstance();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

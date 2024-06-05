@@ -1,8 +1,8 @@
 package com.baeldung.generics;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
 
 class SenderServiceFactoryUnitTest {
 
@@ -18,8 +18,7 @@ class SenderServiceFactoryUnitTest {
 
     @Test
     void givenNotificationSender_whenCreateInstanceUsingFactory_thenReturnResult() {
-        SenderServiceFactory<NotificationSender<String>> service = new SenderServiceFactory<>(
-                () -> new NotificationSender<>("Hello from Baeldung"));
+        SenderServiceFactory<NotificationSender<String>> service = new SenderServiceFactory<>(() -> new NotificationSender<>("Hello from Baeldung"));
 
         NotificationSender<String> notificationSender = service.createInstance();
         String result = notificationSender.send();
