@@ -9,8 +9,9 @@ public class Article {
     private Long id;
     private String name;
     private String content;
+    private String slug;
 
-    public Article(Long id, String name, String content) {
+    public Article(Long id, String name, String content, String slug) {
         this.id = id;
         this.name = name;
         this.content = content;
@@ -41,5 +42,13 @@ public class Article {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getSlug() {
+        return slug;
+    }
+
+    public void setSlug(String slug) {
+        this.slug = slug;
     }
 }

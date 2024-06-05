@@ -11,9 +11,15 @@ import com.baeldung.hexagonal.persistence.repository.ArticleRepository;
 public class ArticleService {
 
     private final ArticleRepository repository;
+    private final CommentService commentService;
+    private final RecommendationService recommendationService;
+    private final UserService userService;
 
-    public ArticleService(ArticleRepository repository) {
+    public ArticleService(ArticleRepository repository, CommentService commentService, RecommendationService recommendationService, UserService userService) {
         this.repository = repository;
+        this.commentService = commentService;
+        this.recommendationService = recommendationService;
+        this.userService = userService;
     }
 
     public Article create(Article article) {
@@ -27,6 +33,8 @@ public class ArticleService {
     public Article update(Long articleId, String newContent) {
         var article = findById(articleId).orElseThrow();
         article.setContent(newContent);
+        article.getSlug();
         return repository.save(article);
     }
+
 }

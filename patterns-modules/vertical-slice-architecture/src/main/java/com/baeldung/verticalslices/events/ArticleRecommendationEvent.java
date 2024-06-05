@@ -1,4 +1,4 @@
-package com.baeldung.vsa.events;
+package com.baeldung.verticalslices.events;
 
 public class ArticleRecommendationEvent {
 

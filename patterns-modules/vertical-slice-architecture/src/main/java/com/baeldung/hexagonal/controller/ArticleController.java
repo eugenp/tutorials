@@ -44,11 +44,11 @@ public class ArticleController {
     }
 
     private static ArticleDto mapToDto(Article updatedArticle) {
-        return new ArticleDto(updatedArticle.getId(), updatedArticle.getName(), updatedArticle.getContent());
+        return new ArticleDto(updatedArticle.getId(), updatedArticle.getName(), updatedArticle.getContent(), updatedArticle.getSlug());
     }
 
     private static Article mapToEntity(ArticleDto dto) {
-        return new Article(dto.id(), dto.name(), dto.content());
+        return new Article(dto.id(), dto.name(), dto.content(), dto.slug());
     }
 
 }

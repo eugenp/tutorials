@@ -1,4 +1,4 @@
-package com.baeldung.vsa.author;
+package com.baeldung.verticalslices.author;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
