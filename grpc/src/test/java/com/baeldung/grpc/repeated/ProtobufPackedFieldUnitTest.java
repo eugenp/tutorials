@@ -31,7 +31,7 @@ public class ProtobufPackedFieldUnitTest {
 
     OrderServiceGrpc.OrderServiceBlockingStub orderClientStub = null;
 
-    int[] PRODUCT_IDS = null;
+    static int[] PRODUCT_IDS = null;
     static final String FOLDER_TO_WRITE_OBJECTS = getFolderToWriteObject();
 
     @AfterAll
