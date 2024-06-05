@@ -28,6 +28,7 @@ class PersonServiceUnitTest {
     @Test
     void whenIdExists_thenFindPersonById() {
         PersonEntity entity = personService.findPersonById(1L);
+        
         assertNotNull(entity);
         assertEquals(1L,entity.getId());
     }
@@ -39,6 +40,7 @@ class PersonServiceUnitTest {
         updatedEntity.setId(null);
         personService.updatePerson(1L, updatedEntity);
         PersonEntity foundEntity=personService.findPersonById(1L);
+        
         assertEquals(7777L,foundEntity.getMobile());
     }
 
@@ -58,15 +60,18 @@ class PersonServiceUnitTest {
 
         Long id1 = newEntity.getId();
         PersonEntity foundEntity=personService.findPersonById(id1);
+        
         assertEquals(newEntity.getDesignation(),foundEntity.getDesignation());
         Long id2 = entity2.getId();
         foundEntity=personService.findPersonById(id2);
+        
         assertEquals(entity2.getDesignation(),foundEntity.getDesignation());
     }
 
     @Test
     void whenDatabaseHasPersons_thenListPersons(){
         List<PersonEntity> personList = personService.listPersons();
+        
         assertNotNull(personService.listPersons());
     }
 
