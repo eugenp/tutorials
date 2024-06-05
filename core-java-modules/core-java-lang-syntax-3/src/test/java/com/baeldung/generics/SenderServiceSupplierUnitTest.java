@@ -1,8 +1,8 @@
 package com.baeldung.generics;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
 
 class SenderServiceSupplierUnitTest {
 
@@ -28,8 +28,7 @@ class SenderServiceSupplierUnitTest {
 
     @Test
     void givenNotificationSender_whenCreateInstanceUsingSupplier_thenReturnCorrectResult() {
-        SenderServiceSupplier<NotificationSender<String>> service = new SenderServiceSupplier<>(
-                NotificationSender::new);
+        SenderServiceSupplier<NotificationSender<String>> service = new SenderServiceSupplier<>(NotificationSender::new);
 
         Sender notificationSender = service.createInstance();
         String result = notificationSender.send();

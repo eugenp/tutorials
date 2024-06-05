@@ -10,7 +10,8 @@ public class SenderServiceReflection<T extends Sender> {
 
     public T createInstance() {
         try {
-            return clazz.getDeclaredConstructor().newInstance();
+            return clazz.getDeclaredConstructor()
+                .newInstance();
         } catch (Exception e) {
             throw new RuntimeException("Error while creating an instance.");
         }
