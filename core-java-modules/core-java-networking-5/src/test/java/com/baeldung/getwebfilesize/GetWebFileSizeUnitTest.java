@@ -14,7 +14,7 @@ class GetWebFileSizeUnitTest {
     String fileUrl = "https://www.ingka.com/wp-content/uploads/2020/11/dummy.pdf";
 
     @Test
-    void givenUrl_whenGetFileSizeUsingURLConnection_thenCorrect() throws IOException {
+    void givenUrl_whenGetFileSizeUsingURLConnectionAndGetContentLengthLong_thenCorrect() throws IOException {
         URL url = new URL(fileUrl);
         URLConnection urlConnection = url.openConnection();
 
@@ -26,4 +26,21 @@ class GetWebFileSizeUnitTest {
         }
 
     }
+
+    @Test
+    void givenUrl_whenGetFileSizeUsingURLConnectionAndGetHeaderField_thenCorrect() throws IOException {
+        URL url = new URL(fileUrl);
+        URLConnection urlConnection = url.openConnection();
+
+        String headerField = urlConnection.getHeaderField("Content-Length");
+        if (headerField != null && !headerField.isEmpty()) {
+            long fileSize = Long.parseLong(headerField);
+            assertEquals(29789, fileSize);
+
+        } else {
+            fail("Could not determine file size");
+        }
+
+    }
+
 }
