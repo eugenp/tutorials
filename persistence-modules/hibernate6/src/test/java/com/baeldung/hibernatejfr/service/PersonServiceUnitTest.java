@@ -26,14 +26,14 @@ class PersonServiceUnitTest {
 
 
     @Test
-    void test_findPersonById_when_id_exists() {
+    void whenIdExists_thenFindPersonById() {
         PersonEntity entity = personService.findPersonById(1L);
         assertNotNull(entity);
         assertEquals(1L,entity.getId());
     }
 
     @Test
-    void test_updatePerson_when_id_exists() {
+    void whenIdExists_thenUpdatePerson() {
         PersonEntity updatedEntity=personService.findPersonById(1L);
         updatedEntity.setMobile(7777L);
         updatedEntity.setId(null);
@@ -43,7 +43,7 @@ class PersonServiceUnitTest {
     }
 
     @Test
-    void test_createperson_when_database_is_empty() {
+    void whenDatabaseIsEmpty_thenCreatepersons() {
         PersonEntity newEntity = new PersonEntity();
         newEntity.setMobile(9999L);
         newEntity.setName("DoomMarine");
@@ -65,7 +65,7 @@ class PersonServiceUnitTest {
     }
 
     @Test
-    void test_listPersons_when_database_has_data(){
+    void whenDatabaseHasPersons_thenListPersons(){
         List<PersonEntity> personList = personService.listPersons();
         assertNotNull(personService.listPersons());
     }
