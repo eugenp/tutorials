@@ -9,41 +9,43 @@ import org.junit.jupiter.api.Test;
 
 public class ExponentialToNumberUnitTest {
 
-    double scientificValue = 1.23456789E9;
-    String expectedValue = "1234567890";
+    String scientificValueStringPositive = "1.2345E3";
+    String expectedValuePositive = "1234.5";
+    String scientificValueStringNegative = "-1.2345E3";
+    String expectedValueNegative = "-1234.5";
 
     @Test
-    public void givenScientificValue_whenUtilizingDecimalFormat_thenCorrectNumberFormat() {
-        DecimalFormat decimalFormat;
+    public void givenScientificValueString_whenUtilizingDecimalFormat_thenCorrectNumberFormat() {
 
-        if (scientificValue >= 1 || scientificValue <= -1) {
-            decimalFormat = new DecimalFormat("#");
-        } else {
-            decimalFormat = new DecimalFormat("0.#################");
-        }
+        double scientificValuePositive = Double.parseDouble(scientificValueStringPositive);
+        DecimalFormat decimalFormat = new DecimalFormat("0.######");
+        String resultPositive = decimalFormat.format(scientificValuePositive);
+        assertEquals(expectedValuePositive, resultPositive);
 
-        String result = decimalFormat.format(scientificValue);
-
-        assertEquals(expectedValue, result);
+        double scientificValueNegative = Double.parseDouble(scientificValueStringNegative);
+        String resultNegative = decimalFormat.format(scientificValueNegative);
+        assertEquals(expectedValueNegative, resultNegative);
     }
 
     @Test
-    public void givenScientificValue_whenUtilizingBigDecimal_thenCorrectNumberFormat() {
-        BigDecimal bigDecimalPositive = new BigDecimal(Double.toString(scientificValue));
-        String result = bigDecimalPositive.toPlainString();
+    public void givenScientificValueString_whenUtilizingBigDecimal_thenCorrectNumberFormat() {
+        BigDecimal bigDecimalPositive = new BigDecimal(scientificValueStringPositive);
+        String resultPositive = bigDecimalPositive.toPlainString();
+        assertEquals(expectedValuePositive, resultPositive);
 
-        assertEquals(expectedValue, result);
+        BigDecimal bigDecimalNegative = new BigDecimal(scientificValueStringNegative);
+        String resultNegative = bigDecimalNegative.toPlainString();
+        assertEquals(expectedValueNegative, resultNegative);
     }
 
     @Test
-    public void givenScientificValue_whenUtilizingStringFormat_thenCorrectNumberFormat() {
-        String formatResult;
-        if (scientificValue >= 1 || scientificValue <= -1) {
-            formatResult = String.format("%.0f", scientificValue);
-        } else {
-            formatResult = String.format("%.17f", scientificValue);
-        }
+    public void givenScientificValueString_whenUtilizingStringFormat_thenCorrectNumberFormat() {
+        double scientificValuePositive = Double.parseDouble(scientificValueStringPositive);
+        String formatResultPositive = String.format("%.6f", scientificValuePositive).replaceAll("0*$", "").replaceAll("\\.$", "");
+        assertEquals(expectedValuePositive, formatResultPositive);
 
-        assertEquals(expectedValue, formatResult);
+        double scientificValueNegative = Double.parseDouble(scientificValueStringNegative);
+        String formatResultNegative = String.format("%.6f", scientificValueNegative).replaceAll("0*$", "").replaceAll("\\.$", "");
+        assertEquals(expectedValueNegative, formatResultNegative);
     }
 }
