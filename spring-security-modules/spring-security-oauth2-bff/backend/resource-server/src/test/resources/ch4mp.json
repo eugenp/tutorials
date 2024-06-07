@@ -1,0 +1,11 @@
+{
+	"iss":  "http://localhost:7080/auth/realms/baeldung",
+	"sub": "123-456-789",
+	"preferred_username": "ch4mpy",
+	"email": "ch4mp@c4-soft.com",
+	"realm_access": {
+		"roles": [
+			"AUTHOR"
+		]
+	}
+}

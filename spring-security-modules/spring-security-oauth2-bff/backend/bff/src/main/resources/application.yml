@@ -7,7 +7,7 @@ reverse-proxy-uri: ${scheme}://${hostname}:${reverse-proxy-port}
 authorization-server-prefix: /auth
 issuer: ${reverse-proxy-uri}${authorization-server-prefix}/realms/baeldung
 client-id: baeldung-confidential
-client-secret: change-me
+client-secret: secret
 username-claim-json-path: $.preferred_username
 authorities-json-path: $.realm_access.roles
 bff-port: 7081
