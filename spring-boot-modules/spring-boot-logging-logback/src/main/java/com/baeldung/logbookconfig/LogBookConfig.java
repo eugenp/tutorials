@@ -1,14 +1,19 @@
 package com.baeldung.logbookconfig;
 
+import java.util.Arrays;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.zalando.logbook.HttpLogFormatter;
 import org.zalando.logbook.Logbook;
+import org.zalando.logbook.core.ChunkingSink;
+import org.zalando.logbook.core.CommonsLogFormatSink;
 import org.zalando.logbook.core.CompositeSink;
 import org.zalando.logbook.core.Conditions;
 import org.zalando.logbook.core.DefaultHttpLogFormatter;
 import org.zalando.logbook.core.DefaultHttpLogWriter;
 import org.zalando.logbook.core.DefaultSink;
+import org.zalando.logbook.core.ExtendedLogFormatSink;
 import org.zalando.logbook.json.JsonHttpLogFormatter;
 import org.zalando.logbook.logstash.LogstashLogbackSink;
 
@@ -25,8 +30,16 @@ public class LogBookConfig {
         return logbook;
     }
 
+    public Logbook chunkSink() {
+        Logbook logbook = Logbook.builder()
+            .sink(new ChunkingSink(new CommonsLogFormatSink(new DefaultHttpLogWriter()), 1000))
+            .build();
+        return logbook;
+    }
+
     public Logbook compositesink() {
-        CompositeSink comsink = new CompositeSink(null);
+        CompositeSink comsink = new CompositeSink(Arrays.asList(new CommonsLogFormatSink(new DefaultHttpLogWriter()), new ExtendedLogFormatSink(
+            new DefaultHttpLogWriter())));
         Logbook logbook = Logbook.builder()
             .sink(comsink)
             .build();
