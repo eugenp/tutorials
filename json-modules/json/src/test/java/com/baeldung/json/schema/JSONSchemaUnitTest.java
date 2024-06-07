@@ -28,7 +28,7 @@ public class JSONSchemaUnitTest {
         Set<ValidationMessage> errors = jsonSchema.validate(jsonNode);
         assertThat(errors).isNotEmpty()
             .asString()
-            .contains("price: must have a minimum value of 0");
+            .contains("price: must have an exclusive minimum value of 0");
     }
 
     @Test

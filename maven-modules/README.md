@@ -7,4 +7,3 @@ This module contains articles about Apache Maven. Please refer to its submodules
 - [Apache Maven Standard Directory Layout](https://www.baeldung.com/maven-directory-structure)
 - [Maven Packaging Types](https://www.baeldung.com/maven-packaging-types)
 - [Maven Snapshot Repository vs Release Repository](https://www.baeldung.com/maven-snapshot-release-repository)
-- [Understanding Maven Dependency Graph or Tree](https://www.baeldung.com/maven-dependency-graph)
