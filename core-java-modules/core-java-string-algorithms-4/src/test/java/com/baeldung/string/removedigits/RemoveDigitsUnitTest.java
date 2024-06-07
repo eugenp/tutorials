@@ -53,10 +53,10 @@ public class RemoveDigitsUnitTest {
     @Test
     void whenUsingCharacterStream_thenGetExpectedResult() {
         String updatedString = INPUT_STRING.chars()
-            .filter(c -> !Character.isDigit(c))
-            .mapToObj(c -> (char) c)
-            .map(String::valueOf)
-            .collect(Collectors.joining());
+          .filter(c -> !Character.isDigit(c))
+          .mapToObj(c -> (char) c)
+          .map(String::valueOf)
+          .collect(Collectors.joining());
 
         assertEquals(EXPECTED_STRING, updatedString);
     }
