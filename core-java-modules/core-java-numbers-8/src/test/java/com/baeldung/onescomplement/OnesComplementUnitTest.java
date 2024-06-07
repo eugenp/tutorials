@@ -41,32 +41,16 @@ public class OnesComplementUnitTest {
     }
 
     @Test
-    void givenAPositiveNumber_whenCalculateOnesComplementUsingIntegerBinaryString_thenReturnOneComplementValue() {
-        int onesComplement = OnesComplement.calculateOnesComplementUsingIntegerBinaryString(10);
-
-        assertEquals(5, onesComplement);
-        assertEquals("101", Integer.toBinaryString(onesComplement));
-    }
-
-    @Test
-    void givenANegativeeNumber_whenCalculateOnesComplementUsingIntegerBinaryString_thenReturnOneComplementValue() {
-        int onesComplement = OnesComplement.calculateOnesComplementUsingIntegerBinaryString(-10);
-
-        assertEquals(9, onesComplement);
-        assertEquals("1001", Integer.toBinaryString(onesComplement));
-    }
-
-    @Test
     void givenAPositiveNumber_whenCalculateOnesComplementUsingXOROperator_thenReturnOneComplementValue() {
-        int onesComplement = OnesComplement.calculateOnesComplementUsingXOROperator(10, 4);
+        int onesComplement = OnesComplement.calculateOnesComplementUsingXOROperator(10, 8);
 
-        assertEquals(5, onesComplement);
-        assertEquals("101", Integer.toBinaryString(onesComplement));
+        assertEquals(245, onesComplement);
+        assertEquals("11110101", Integer.toBinaryString(onesComplement));
     }
 
     @Test
     void givenANegativeNumber_whenCalculateOnesComplementUsingXOROperator_thenReturnOneComplementValue() {
-        int onesComplement = OnesComplement.calculateOnesComplementUsingXOROperator(-10, 4);
+        int onesComplement = OnesComplement.calculateOnesComplementUsingXOROperator(-10, 8);
 
         assertEquals(9, onesComplement);
         assertEquals("1001", Integer.toBinaryString(onesComplement));
