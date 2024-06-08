@@ -2,6 +2,7 @@ package com.baeldung.logbookconfig;
 
 import java.util.Arrays;
 
+import org.slf4j.event.Level;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.zalando.logbook.HttpLogFormatter;
@@ -30,6 +31,7 @@ public class LogBookConfig {
         return logbook;
     }
 
+    //@Bean
     public Logbook chunkSink() {
         Logbook logbook = Logbook.builder()
             .sink(new ChunkingSink(new CommonsLogFormatSink(new DefaultHttpLogWriter()), 1000))
@@ -37,6 +39,7 @@ public class LogBookConfig {
         return logbook;
     }
 
+    //@Bean
     public Logbook compositesink() {
         CompositeSink comsink = new CompositeSink(Arrays.asList(new CommonsLogFormatSink(new DefaultHttpLogWriter()), new ExtendedLogFormatSink(
             new DefaultHttpLogWriter())));
@@ -46,14 +49,30 @@ public class LogBookConfig {
         return logbook;
     }
 
+    // to run logstash example set spring.profiles.active=logbooklogstash in application.properties and enable following bean disabling all others
+    //@Bean
     public Logbook logstashsink() {
         HttpLogFormatter formatter = new JsonHttpLogFormatter();
-
-        LogstashLogbackSink logstashsink = new LogstashLogbackSink(formatter);
-        //LogstashLogbackSink logstashsink = new LogstashLogbackSink(formatter, Level.INFO);
+        LogstashLogbackSink logstashsink = new LogstashLogbackSink(formatter, Level.INFO);
 
         Logbook logbook = Logbook.builder()
             .sink(logstashsink)
+            .build();
+        return logbook;
+    }
+
+    //@Bean
+    public Logbook commonLogFormat() {
+        Logbook logbook = Logbook.builder()
+            .sink(new CommonsLogFormatSink(new DefaultHttpLogWriter()))
+            .build();
+        return logbook;
+    }
+
+    //@Bean
+    public Logbook extendedLogFormat() {
+        Logbook logbook = Logbook.builder()
+            .sink(new ExtendedLogFormatSink(new DefaultHttpLogWriter()))
             .build();
         return logbook;
     }
