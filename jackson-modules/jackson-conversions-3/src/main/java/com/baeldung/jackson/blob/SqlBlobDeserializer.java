@@ -1,12 +1,14 @@
 package com.baeldung.jackson.blob;
+
+import java.io.IOException;
+import java.sql.Blob;
+
+import javax.sql.rowset.serial.SerialBlob;
+
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JacksonStdImpl;
-
-import javax.sql.rowset.serial.SerialBlob;
-import java.io.IOException;
-import java.sql.Blob;
 
 @JacksonStdImpl
 public class SqlBlobDeserializer extends JsonDeserializer<Blob> {
