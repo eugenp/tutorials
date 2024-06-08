@@ -28,6 +28,11 @@
             <artifactId>milyn-smooks-all</artifactId>
             <version>${smooks.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.mvel</groupId>
+            <artifactId>mvel2</artifactId>
+            <version>${mvel2.version}</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/com.opencsv/opencsv -->
         <dependency>
             <groupId>com.opencsv</groupId>
@@ -106,7 +111,8 @@
     <properties>
         <snakeyaml.version>2.2</snakeyaml.version>
         <kryo.version>4.0.1</kryo.version>
-        <smooks.version>1.7.0</smooks.version>
+        <smooks.version>1.7.1</smooks.version>
+        <mvel2.version>2.5.2.Final</mvel2.version>
         <opencsv.version>5.8</opencsv.version>
         <google-api.version>1.23.0</google-api.version>
         <google-sheets.version>v4-rev493-1.21.0</google-sheets.version>
