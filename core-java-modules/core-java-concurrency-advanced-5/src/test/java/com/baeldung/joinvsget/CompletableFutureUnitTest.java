@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CompletableFutureUnitTest {
 
     @Test
-    public void testJoin() {
+    public void givenJoinMethod_whenThrow_thenGetUncheckedException() {
         CompletableFuture<String> future = CompletableFuture.supplyAsync(() -> "Test join");
         
         assertEquals("Test join", future.join());
@@ -22,7 +22,7 @@ public class CompletableFutureUnitTest {
     }
 
     @Test
-    public void testGet() {
+    public void givenGetMethod_whenThrow_thenGetCheckedException() {
         CompletableFuture<String> future = CompletableFuture.supplyAsync(() -> "Test get");
 
         try {
