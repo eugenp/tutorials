@@ -16,7 +16,7 @@ public class ExcelUtilsUnitTest {
     private static final String XLSX_TEST_FILE_PATH = "src/main/resources/food_info.xlsx";
     private static final String SHEET_NAME = "Sheet1";
 @Test
-public void givenExcelFileWithXLSXFormat_whentestGetColumnNames_thenReturnsColumnNames() throws IOException {
+public void givenExcelFileWithXLSXFormat_whenGetColumnNames_thenReturnsColumnNames() throws IOException {
     Workbook workbook = ExcelUtils.openWorkbook(XLSX_TEST_FILE_PATH);
     Sheet sheet = ExcelUtils.getSheet(workbook, SHEET_NAME);
     List<String> columnNames = ExcelUtils.getColumnNames(sheet);
@@ -29,7 +29,7 @@ public void givenExcelFileWithXLSXFormat_whentestGetColumnNames_thenReturnsColum
     workbook.close();
 }
 @Test
-public void givenExcelFileWithXLSFormat_whentestGetColumnNames_thenReturnsColumnNames() throws IOException {
+public void givenExcelFileWithXLSFormat_whenGetColumnNames_thenReturnsColumnNames() throws IOException {
     Workbook workbook = ExcelUtils.openWorkbook(XLS_TEST_FILE_PATH);
     Sheet sheet = ExcelUtils.getSheet(workbook, SHEET_NAME);
     List<String> columnNames = ExcelUtils.getColumnNames(sheet);
