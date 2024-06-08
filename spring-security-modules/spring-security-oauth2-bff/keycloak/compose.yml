@@ -1,0 +1,22 @@
+name: keycloak-baeldung-bff
+services:
+  keycloak:
+    container_name: baeldung-bff/auth-only
+    image: quay.io/keycloak/keycloak:24.0.0
+    command:
+    - start-dev
+    - --import-realm
+    ports:
+      - 8080:8080
+    volumes:
+      - ./import/:/opt/keycloak/data/import/
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
+      KC_HTTP_PORT: 8080
+      KC_HOSTNAME_URL: http://localhost:8080/auth
+      KC_HOSTNAME_ADMIN_URL: http://localhost:8080/auth
+      KC_HTTP_RELATIVE_PATH: /auth
+      #KC_LOG_LEVEL: DEBUG
+    extra_hosts:
+    - "host.docker.internal:host-gateway"

@@ -118,7 +118,6 @@
         <testcontainers.version>1.19.7</testcontainers.version>
         <testcontainers-keycloak.version>3.3.0</testcontainers-keycloak.version>
         <testcontainers-redis-junit-jupiter.version>1.4.6</testcontainers-redis-junit-jupiter.version>
-        <maven-jaxb2-plugin.version>0.15.3</maven-jaxb2-plugin.version>
         <rest-assured.version>5.4.0</rest-assured.version>
     </properties>
 

@@ -1,0 +1,51 @@
+<div class="modal-header">
+  @if (health) {
+    <h4 class="modal-title" id="showHealthLabel">
+      {{
+        {
+          diskSpace: 'Disk space',
+          mail: 'Email',
+          livenessState: 'Liveness state',
+          readinessState: 'Readiness state',
+          ping: 'Application',
+          db: 'Database'
+        }[health.key] || health.key
+      }}
+    </h4>
+  }
+
+  <button aria-label="Close" data-dismiss="modal" class="btn-close" type="button" (click)="dismiss()">
+    <span aria-hidden="true">&nbsp;</span>
+  </button>
+</div>
+
+<div class="modal-body pad">
+  @if (health) {
+    <div>
+      <h5>Properties</h5>
+
+      <div class="table-responsive">
+        <table class="table table-striped" aria-describedby="showHealthLabel">
+          <thead>
+            <tr>
+              <th scope="col" class="text-start">Name</th>
+              <th scope="col" class="text-start">Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (healthDetail of health.value.details! | keyvalue; track healthDetail.key) {
+              <tr>
+                <td class="text-start">{{ healthDetail.key }}</td>
+                <td class="text-start">{{ readableValue(healthDetail.value) }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  }
+</div>
+
+<div class="modal-footer">
+  <button data-dismiss="modal" class="btn btn-secondary float-start" type="button" (click)="dismiss()">Done</button>
+</div>

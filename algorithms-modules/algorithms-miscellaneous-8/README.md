@@ -8,4 +8,5 @@
 - [Implement Connect 4 Game with Java](https://www.baeldung.com/java-connect-4-game)
 - [SkipList Implementation in Java](https://www.baeldung.com/java-skiplist)
 - [Find the Date of Easter Sunday for the Given Year](https://www.baeldung.com/java-determine-easter-date-specific-year)
+- [Calculating Moving Averages in Java](https://www.baeldung.com/java-compute-moving-average)
 - More articles: [[<-- prev]](/algorithms-miscellaneous-7)

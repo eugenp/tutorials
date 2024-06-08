@@ -1,0 +1,19 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+}
+
+h1,
+h2,
+h3 {
+  color: #2c3e50;
+  text-align: center;
+}
+
+button {
+  background-color: #0000ff;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}

@@ -1,20 +1,22 @@
 package com.baeldung.h2db.notnull;
 
-import com.baeldung.h2db.notnull.daos.ItemRepository;
-import com.baeldung.h2db.notnull.models.Item;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import com.baeldung.h2db.notnull.daos.ItemRepository;
+import com.baeldung.h2db.notnull.models.Item;
 
 import jakarta.validation.ConstraintViolationException;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = NotNullVsNullableApplication.class)
+@ActiveProfiles("not-null-vs-nullable")
 public class ItemIntegrationTest {
 
     @Autowired

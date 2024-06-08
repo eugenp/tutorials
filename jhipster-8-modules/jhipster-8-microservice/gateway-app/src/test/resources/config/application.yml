@@ -1,0 +1,103 @@
+# ===================================================================
+# Spring Boot configuration.
+#
+# This configuration is used for unit/integration tests.
+#
+# More information on profiles: https://www.jhipster.tech/profiles/
+# More information on configuration properties: https://www.jhipster.tech/common-application-properties/
+# ===================================================================
+
+# ===================================================================
+# Standard Spring Boot properties.
+# Full reference is available at:
+# http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+# ===================================================================
+
+eureka:
+  client:
+    enabled: false
+  instance:
+    appname: gatewayApp
+    instanceId: gatewayApp:${spring.application.instance-id:${random.value}}
+
+spring:
+  application:
+    name: gatewayApp
+  autoconfigure:
+    exclude:
+      - org.springframework.cloud.gateway.config.GatewayMetricsAutoConfiguration
+  cloud:
+    config:
+      enabled: false
+  # Replace by 'prod, faker' to add the faker context and have sample data loaded in production
+  liquibase:
+    contexts: test
+  jackson:
+    serialization:
+      write-durations-as-timestamps: false
+  mail:
+    host: localhost
+  main:
+    allow-bean-definition-overriding: true
+  messages:
+    basename: i18n/messages
+  task:
+    execution:
+      thread-name-prefix: gateway-app-task-
+      pool:
+        core-size: 1
+        max-size: 50
+        queue-capacity: 10000
+    scheduling:
+      thread-name-prefix: gateway-app-scheduling-
+      pool:
+        size: 20
+  thymeleaf:
+    mode: HTML
+
+server:
+  port: 10344
+  address: localhost
+
+# ===================================================================
+# JHipster specific properties
+#
+# Full reference is available at: https://www.jhipster.tech/common-application-properties/
+# ===================================================================
+jhipster:
+  clientApp:
+    name: 'gatewayApp'
+  mail:
+    from: gatewayApp@localhost.com
+    base-url: http://127.0.0.1:8080
+  logging:
+    # To test json console appender
+    use-json-format: false
+    logstash:
+      enabled: false
+      host: localhost
+      port: 5000
+      ring-buffer-size: 512
+  security:
+    authentication:
+      jwt:
+        # This token must be encoded using Base64 (you can type `echo 'secret-key'|base64` on your command line)
+        base64-secret: Y2YwMmY1OWVlMzJkMzQyZGZhYzEzMjIxMzZiY2ExNGM1NzY1MDUwMzU2MTYwN2NkMzFhOThlODYxMWYzZTE4YTNkMDM4OTgzYjBhMDFhODgxMGVhNGJhMzZlYjgwMjM0MTVjMjBkMjA4ZmI1ZmMyNmJlMWE1YTEwNWM1ZmI0NTU=
+        # Token is valid 24 hours
+        token-validity-in-seconds: 86400
+        token-validity-in-seconds-for-remember-me: 86400
+
+# ===================================================================
+# Application specific properties
+# Add your own application properties here, see the ApplicationProperties class
+# to have type-safe configuration, like in the JHipsterProperties above
+#
+# More documentation is available at:
+# https://www.jhipster.tech/common-application-properties/
+# ===================================================================
+
+# application:
+management:
+  health:
+    mail:
+      enabled: false

@@ -8,4 +8,5 @@
 - [RxJava One Observable, Multiple Subscribers](https://www.baeldung.com/rxjava-multiple-subscribers-observable)
 - [RxJava StringObservable](https://www.baeldung.com/rxjava-string)
 - [Filtering Observables in RxJava](https://www.baeldung.com/rxjava-filtering)
+- [concat() vs. merge() Operators in RxJava Observables](https://www.baeldung.com/java-rxjava-concat-vs-merge)
  

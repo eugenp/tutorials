@@ -67,7 +67,7 @@
     </build>
 
     <properties>
-        <checker.version>3.35.0</checker.version>
+        <checker.version>3.42.0</checker.version>
     </properties>
 
 </project>
