@@ -17,7 +17,9 @@ public class OrderService extends OrderServiceGrpc.OrderServiceImplBase {
         if(validateProducts(productIds)) {
             int orderID = insertOrder(unpackedOrder);
             logger.info("Order {} created successfully", orderID);
-            UnPackedOrder createdUnPackedOrder = UnPackedOrder.newBuilder(unpackedOrder).setOrderId(orderID).build();
+            UnPackedOrder createdUnPackedOrder = UnPackedOrder.newBuilder(unpackedOrder)
+                .setOrderId(orderID)
+                .build();
             responseObserver.onNext(createdUnPackedOrder);
             responseObserver.onCompleted();
         }

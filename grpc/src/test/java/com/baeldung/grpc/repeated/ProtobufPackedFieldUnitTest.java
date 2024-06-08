@@ -24,8 +24,8 @@ import io.grpc.inprocess.InProcessServerBuilder;
 import io.grpc.testing.GrpcCleanupRule;
 
 public class ProtobufPackedFieldUnitTest {
-
     private static final Logger logger = LoggerFactory.getLogger(ProtobufPackedFieldUnitTest.class);
+
     @Rule
     public final GrpcCleanupRule grpcCleanup = new GrpcCleanupRule();
 
@@ -46,15 +46,19 @@ public class ProtobufPackedFieldUnitTest {
     @BeforeEach
     void setup() throws IOException {
         String serverName = InProcessServerBuilder.generateName();
-        grpcCleanup.register(InProcessServerBuilder.forName(serverName)
-            .directExecutor()
-            .addService(new OrderService())
-            .build()
-            .start());
-        orderClientStub = OrderServiceGrpc.newBlockingStub(grpcCleanup.register(
-            InProcessChannelBuilder.forName(serverName)
+        grpcCleanup.register(
+            InProcessServerBuilder.forName(serverName)
                 .directExecutor()
-                .build())
+                .addService(new OrderService())
+                .build()
+                .start()
+        );
+        orderClientStub = OrderServiceGrpc.newBlockingStub(
+            grpcCleanup.register(
+                InProcessChannelBuilder.forName(serverName)
+                    .directExecutor()
+                    .build()
+            )
         );
         PRODUCT_IDS = fetchProductIds();
     }
