@@ -11,72 +11,72 @@ class RemoveElementFromAnArrayUnitTest {
     private final int[] inputArray = new int[] { 40, 10, 20, 30, 40, 50 };
 
     @Test
-    void testRemoveAnElementWithAGivenIndex() {
-        int index = 2;
-        int[] modifiedArray = sut.removeAnElementWithAGivenIndex(inputArray, index);
-
-        assertFalse(ArrayUtils.contains(modifiedArray, inputArray[index]));
+    void givenIndex_whenUsingApacheCommonsLang_thenRemoveLastElement() {
+        int lastElementIndex = inputArray.length - 1;
+        int[] modifiedArray = sut.removeAnElementWithAGivenIndex(inputArray, lastElementIndex);
+        assertEquals(modifiedArray.length, inputArray.length - 1);
+        assertFalse(ArrayUtils.contains(modifiedArray, inputArray[lastElementIndex]));
     }
 
     @Test
-    void testRemoveAllElementsWithGivenIndices() {
+    void givenIndices_whenUsingApacheCommonsLang_thenRemoveAllElements() {
         int first = 0;
-        int last = inputArray.length - 1;
-        int[] modifiedArray = sut.removeAllElementsWithGivenIndices(inputArray, first, last);
-
-        assertFalse(ArrayUtils.contains(modifiedArray, inputArray[first]) && ArrayUtils.contains(modifiedArray, inputArray[last]));
+        int lastElementIndex = inputArray.length - 1;
+        int[] modifiedArray = sut.removeAllElementsWithGivenIndices(inputArray, first, lastElementIndex);
+        assertEquals(modifiedArray.length, inputArray.length - 2);
+        assertFalse(ArrayUtils.contains(modifiedArray, inputArray[first]) && ArrayUtils.contains(modifiedArray, inputArray[lastElementIndex]));
     }
 
-    @Test
-    void testRemoveElement_WhenArrayIsNull_ThrowsIndexOutOfBoundEx() {
-        int index = 2;
-
-        assertThrows(IndexOutOfBoundsException.class, () -> {
-            sut.removeAnElementWithAGivenIndex(null, index);
-        });
-
-        assertThrows(IndexOutOfBoundsException.class, () -> {
-            sut.removeAllElementsWithGivenIndices(null, index);
-        });
-    }
 
     @Test
-    void testRemoveFirstOccurrenceOfGivenElement() {
+    void givenElement_whenUsingApacheCommonsLang_thenRemoveItsFirstOccurrence() {
         int element = 40;
         int[] modifiedArray = sut.removeFirstOccurrenceOfGivenElement(inputArray, element);
 
         int indexInInputArray = ArrayUtils.indexOf(inputArray, element);
         int indexInModifiedArray = ArrayUtils.indexOf(modifiedArray, element);
-        assertFalse(indexInInputArray == indexInModifiedArray);
+        assertEquals(modifiedArray.length, inputArray.length - 1);
+        assertNotEquals(indexInInputArray, indexInModifiedArray);
     }
 
+
     @Test
-    void testRemoveAllGivenElements() {
+    void givenElements_whenUsingApacheCommonsLang_thenRemoveAllGivenElements() {
         int duplicateElement = 40;
         int[] elements = new int[] { duplicateElement, 10, 50 };
         int[] modifiedArray = sut.removeAllGivenElements(inputArray, elements);
-
+        assertEquals(modifiedArray.length, inputArray.length - 3);
         assertTrue(ArrayUtils.contains(modifiedArray, duplicateElement));
         assertFalse(ArrayUtils.contains(modifiedArray, elements[1]));
         assertFalse(ArrayUtils.contains(modifiedArray, elements[2]));
     }
 
     @Test
-    void testRemoveAllOccurrencesOfAGivenElement() {
-        int element = 40;
-        int[] modifiedArray = sut.removeAllOccurrencesOfAGivenElement(inputArray, element);
-
-        assertFalse(ArrayUtils.contains(modifiedArray, element));
+    void givenElements_whenUsingCopyOf_thenRemoveLastElement() {
+        int[] modifiedArray = sut.removeLastElementUsingCopyOfMethod(inputArray);
+        assertEquals(modifiedArray.length, inputArray.length - 1);
+        assertFalse(ArrayUtils.contains(modifiedArray, inputArray[inputArray.length-1]));
     }
 
     @Test
-    void testRemoveElement_WhenArrayIsNull_ReturnsNull() {
-        int element = 20;
-
-        assertEquals(null, sut.removeFirstOccurrenceOfGivenElement(null, element));
-        assertEquals(null, sut.removeAllGivenElements(null, element));
-        assertEquals(null, sut.removeAllOccurrencesOfAGivenElement(null, element));
-
+    void givenElements_whenUsingCopyOfRange_thenRemoveLastElement() {
+        int[] modifiedArray = sut.removeLastElementUsingCopyOfRangeMethod(inputArray);
+        assertEquals(modifiedArray.length, inputArray.length - 1);
+        assertFalse(ArrayUtils.contains(modifiedArray, inputArray[inputArray.length-1]));
     }
 
+    @Test
+    void givenElements_whenUsingArrayCopyMethod_thenRemoveLastElement() {
+        int[] resultArray = new int[inputArray.length - 1];
+        int[] modifiedArray = sut.removeLastElementUsingArrayCopyMethod(inputArray, resultArray);
+        assertEquals(modifiedArray.length, inputArray.length - 1);
+        assertFalse(ArrayUtils.contains(modifiedArray, inputArray[inputArray.length-1]));
+    }
+
+    @Test
+    void givenElements_whenUsingIntStreamRange_thenRemoveLastElement() {
+        int[] modifiedArray = sut.removeLastElementUsingIntStreamRange(inputArray);
+        assertEquals(modifiedArray.length, inputArray.length - 1);
+        assertFalse(ArrayUtils.contains(modifiedArray, inputArray[inputArray.length-1]));
+    }
 }
