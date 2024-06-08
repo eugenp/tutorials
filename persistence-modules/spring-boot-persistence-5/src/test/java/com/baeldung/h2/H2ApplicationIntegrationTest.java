@@ -12,7 +12,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 
 @SpringBootTest
-class H2ApplicationTest {
+class H2ApplicationIntegrationTest {
 
 
     @Test
