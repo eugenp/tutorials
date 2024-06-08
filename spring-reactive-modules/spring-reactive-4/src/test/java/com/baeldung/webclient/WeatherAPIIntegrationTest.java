@@ -195,7 +195,7 @@ public class WeatherAPIIntegrationTest {
         // Stubbing response for the first call
         stubFor(WireMock.get(urlEqualTo("/weather?city=London"))
           .inScenario("Weather Scenario")
-          .whenScenarioStateIs(Scenario.STARTED)
+          .whenScenarioStateIs("started")
           .willReturn(aResponse().withStatus(200)
             .withHeader("Content-Type", "application/json")
             .withBody("{\"city\": \"London\", \"temperature\": 20, \"description\": \"Cloudy\"}"))

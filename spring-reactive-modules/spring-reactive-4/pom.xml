@@ -51,7 +51,8 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-contract-wiremock</artifactId>
             <scope>test</scope>
-            <version>${wiremock-spring-cloud.version}</version></dependency>
+            <version>${wiremock-spring-cloud.version}</version>
+        </dependency>
     </dependencies>
 
 </project>
