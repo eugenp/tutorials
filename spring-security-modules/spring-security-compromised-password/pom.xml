@@ -43,6 +43,11 @@
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-core</artifactId>
+			<version>${logback-core.version}</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -65,6 +70,7 @@
 	<properties>
 		<java.version>17</java.version>
 		<spring-boot.version>3.3.0</spring-boot.version>
+		<logback-core.version>1.5.6</logback-core.version>
 	</properties>
 
 </project>
