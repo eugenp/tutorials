@@ -15,15 +15,14 @@ import com.baeldung.embeddedpostgresql.EmbeddedPostgresConfiguration.EmbeddedPos
 @DataJpaTest
 @ExtendWith(EmbeddedPostgresExtension.class)
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-@ContextConfiguration(classes = {EmbeddedPostgresConfiguration.class})
-public class EmbeddedPostgresIntegrationTest {
+@ContextConfiguration(classes = { EmbeddedPostgresConfiguration.class })
+class EmbeddedPostgresLiveTest {
 
     @Autowired
     private PersonRepository repository;
 
-
     @Test
-    void givenEmbeddedPostgres_whenSavePerson_thenSavedEntityShouldBeReturnedWithExpectedFields(){
+    void givenEmbeddedPostgres_whenSavePerson_thenSavedEntityShouldBeReturnedWithExpectedFields() {
         Person person = new Person();
         person.setName("New user");
 

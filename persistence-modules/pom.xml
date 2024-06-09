@@ -30,6 +30,7 @@
         <module>flyway-repair</module>
         <module>hbase</module>
         <module>hibernate5</module>
+        <module>hibernate6</module>
         <module>hibernate-mapping</module> <!-- long running -->
         <module>hibernate-mapping-2</module>
         <module>hibernate-annotations</module>
