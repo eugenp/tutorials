@@ -6,7 +6,7 @@ import java.util.UUID;
 import com.baeldung.spring.cloud.aws.sqs.conversion.model.entity.DomesticShipment;
 import com.baeldung.spring.cloud.aws.sqs.conversion.model.entity.ShipmentStatus;
 
-public final class DomesticShipmentRequestedEvent extends ShipmentRequestedEvent {
+public class DomesticShipmentRequestedEvent extends ShipmentRequestedEvent {
 
     private String deliveryRouteCode;
 

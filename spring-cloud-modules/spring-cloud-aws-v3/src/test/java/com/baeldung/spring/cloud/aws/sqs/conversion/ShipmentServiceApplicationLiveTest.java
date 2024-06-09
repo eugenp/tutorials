@@ -18,6 +18,7 @@ import com.baeldung.spring.cloud.aws.sqs.conversion.configuration.ShipmentEvents
 import com.baeldung.spring.cloud.aws.sqs.conversion.configuration.ShippingHeaderTypesProperties;
 import com.baeldung.spring.cloud.aws.sqs.conversion.model.entity.DomesticShipment;
 import com.baeldung.spring.cloud.aws.sqs.conversion.model.entity.InternationalShipment;
+import com.baeldung.spring.cloud.aws.sqs.conversion.model.entity.Shipment;
 import com.baeldung.spring.cloud.aws.sqs.conversion.model.event.DomesticShipmentRequestedEvent;
 import com.baeldung.spring.cloud.aws.sqs.conversion.model.event.InternationalShipmentRequestedEvent;
 import com.baeldung.spring.cloud.aws.sqs.conversion.model.event.ShipmentRequestedEvent;
@@ -52,31 +53,29 @@ public class ShipmentServiceApplicationLiveTest extends BaseSqsLiveTest {
 
     @Test
     void givenPojoPayload_whenMessageReceived_shouldDeserializeCorrectly() {
-        var orderId = UUID.randomUUID();
-        var shipmentRequestedEvent = new ShipmentRequestedEvent(orderId, "123 Main St", LocalDate.now()
-            .plusDays(5));
+        UUID orderId = UUID.randomUUID();
+        ShipmentRequestedEvent shipmentRequestedEvent = new ShipmentRequestedEvent(orderId, "123 Main St", LocalDate.parse("2024-05-12"));
 
         sqsTemplate.send(queuesProperties.getSimplePojoConversionQueue(), shipmentRequestedEvent);
 
         await().atMost(Duration.ofSeconds(10))
             .untilAsserted(() -> {
-                assertThat(shipmentService.getShipment(orderId)).isNotNull();
-                assertThat(shipmentService.getShipment(orderId)).usingRecursiveComparison()
+                Shipment shipment = shipmentService.getShipment(orderId);
+                assertThat(shipment).isNotNull();
+                assertThat(shipment).usingRecursiveComparison()
                     .ignoringFields("status")
                     .isEqualTo(shipmentRequestedEvent);
-                assertThat(shipmentService.getShipment(orderId)
-                    .getStatus()).isEqualTo(ShipmentStatus.PROCESSED);
+                assertThat(shipment.getStatus()).isEqualTo(ShipmentStatus.PROCESSED);
             });
     }
 
     @Test
     void givenShipmentRequestWithCustomDateFormat_whenMessageReceived_shouldDeserializeDateCorrectly() {
-        var orderId = UUID.randomUUID();
-        var shipBy = LocalDate.now()
-            .plusDays(5)
+        UUID orderId = UUID.randomUUID();
+        String shipBy = LocalDate.parse("2024-05-12")
             .format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
 
-        var jsonMessage = """
+        String jsonMessage = """
             {
                 "orderId": "%s",
                 "customerAddress": "123 Main St",
@@ -104,12 +103,14 @@ public class ShipmentServiceApplicationLiveTest extends BaseSqsLiveTest {
     @Test
     void givenPayloadWithSubclasses_whenMessageReceived_shouldDeserializeCorrectType() {
         var domesticOrderId = UUID.randomUUID();
-        var domesticEvent = new DomesticShipmentRequestedEvent(domesticOrderId, "123 Main St", LocalDate.now()
-            .plusDays(5), "XPTO1234");
+        String deliveryRouteCode = "XPTO1234";
+        var domesticEvent = new DomesticShipmentRequestedEvent(domesticOrderId, "123 Main St", LocalDate.parse("2024-05-12"), deliveryRouteCode);
 
         var internationalOrderId = UUID.randomUUID();
-        InternationalShipmentRequestedEvent internationalEvent = new InternationalShipmentRequestedEvent(internationalOrderId, "123 Main St", LocalDate.now()
-            .plusDays(15), "Canada", "HS Code: 8471.30, Origin: China, Value: $500");
+        String destinationCountry = "Canada";
+        String customsInfo = "HS Code: 8471.30, Origin: China, Value: $500";
+        InternationalShipmentRequestedEvent internationalEvent = new InternationalShipmentRequestedEvent(internationalOrderId, "123 Main St", LocalDate.parse("2024-05-24"),
+            destinationCountry, customsInfo);
 
         var customTemplate = SqsTemplate.builder()
             .sqsAsyncClient(sqsAsyncClient)
@@ -119,11 +120,11 @@ public class ShipmentServiceApplicationLiveTest extends BaseSqsLiveTest {
             })
             .build();
 
-        customTemplate.send(to -> to.queue(queuesProperties.getDeserializesSubclass())
+        customTemplate.send(to -> to.queue(queuesProperties.getSubclassDeserializationQueue())
             .payload(internationalEvent)
             .header(headerTypesProperties.getHeaderName(), headerTypesProperties.getInternational()));
 
-        customTemplate.send(to -> to.queue(queuesProperties.getDeserializesSubclass())
+        customTemplate.send(to -> to.queue(queuesProperties.getSubclassDeserializationQueue())
             .payload(domesticEvent)
             .header(headerTypesProperties.getHeaderName(), headerTypesProperties.getDomestic()));
 
@@ -131,12 +132,18 @@ public class ShipmentServiceApplicationLiveTest extends BaseSqsLiveTest {
             .untilAsserted(() -> {
                 var domesticShipment = (DomesticShipment) shipmentService.getShipment(domesticOrderId);
                 assertThat(domesticShipment).isNotNull();
+                assertThat(domesticShipment).usingRecursiveComparison()
+                    .ignoringFields("status")
+                    .isEqualTo(domesticEvent);
                 assertThat(domesticShipment.getStatus()).isEqualTo(ShipmentStatus.READY_FOR_DISPATCH);
 
                 var internationalShipment = (InternationalShipment) shipmentService.getShipment(internationalOrderId);
                 assertThat(internationalShipment).isNotNull();
+                assertThat(internationalShipment).usingRecursiveComparison()
+                    .ignoringFields("status")
+                    .isEqualTo(internationalEvent);
                 assertThat(internationalShipment.getStatus()).isEqualTo(ShipmentStatus.CUSTOMS_CHECK);
             });
-    }
+        }
 
 }

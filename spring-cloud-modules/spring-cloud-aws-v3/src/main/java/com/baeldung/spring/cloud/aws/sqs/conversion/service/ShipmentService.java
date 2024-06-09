@@ -28,7 +28,7 @@ public class ShipmentService {
     }
 
     public Shipment getShipment(UUID requestId) {
-        return shippingRepository.getOrDefault(requestId, null);
+        return shippingRepository.get(requestId);
     }
 
     public void processDomesticShipping(DomesticShipment shipment) {

@@ -9,7 +9,7 @@ public class ShipmentEventsQueuesProperties {
 
     private String customObjectMapperQueue;
 
-    private String deserializesSubclass;
+    private String subclassDeserializationQueue;
 
     public String getSimplePojoConversionQueue() {
         return simplePojoConversionQueue;
@@ -27,11 +27,11 @@ public class ShipmentEventsQueuesProperties {
         this.customObjectMapperQueue = customObjectMapperQueue;
     }
 
-    public String getDeserializesSubclass() {
-        return deserializesSubclass;
+    public String getSubclassDeserializationQueue() {
+        return subclassDeserializationQueue;
     }
 
-    public void setDeserializesSubclass(String deserializesSubclass) {
-        this.deserializesSubclass = deserializesSubclass;
+    public void setSubclassDeserializationQueue(String subclassDeserializationQueue) {
+        this.subclassDeserializationQueue = subclassDeserializationQueue;
     }
 }

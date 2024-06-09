@@ -6,7 +6,7 @@ import java.util.UUID;
 import com.baeldung.spring.cloud.aws.sqs.conversion.model.entity.InternationalShipment;
 import com.baeldung.spring.cloud.aws.sqs.conversion.model.entity.ShipmentStatus;
 
-public final class InternationalShipmentRequestedEvent extends ShipmentRequestedEvent {
+public class InternationalShipmentRequestedEvent extends ShipmentRequestedEvent {
 
     private String destinationCountry;
     private String customsInfo;

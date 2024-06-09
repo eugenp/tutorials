@@ -28,7 +28,7 @@ public class ShipmentRequestListener {
         shippingService.processShippingRequest(shipmentRequestedEvent.toDomain());
     }
 
-    @SqsListener(queueNames = "${events.queues.shipping.deserializes-subclass}")
+    @SqsListener(queueNames = "${events.queues.shipping.subclass-deserialization-queue}")
     public void receiveShippingRequestWithType(ShipmentRequestedEvent shipmentRequestedEvent) {
         if (shipmentRequestedEvent instanceof InternationalShipmentRequestedEvent event) {
             shippingService.processInternationalShipping(event.toDomain());

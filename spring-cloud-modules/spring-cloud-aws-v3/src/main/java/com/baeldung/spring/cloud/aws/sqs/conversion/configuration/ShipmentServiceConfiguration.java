@@ -36,9 +36,8 @@ public class ShipmentServiceConfiguration {
     public ObjectMapper objectMapper() {
         ObjectMapper mapper = new ObjectMapper();
         JavaTimeModule module = new JavaTimeModule();
-        // Custom deserializer for LocalDate
-        LocalDateDeserializer deser = new LocalDateDeserializer(DateTimeFormatter.ofPattern("dd-MM-yyyy", Locale.US));
-        module.addDeserializer(LocalDate.class, deser);
+        LocalDateDeserializer customDeserializer = new LocalDateDeserializer(DateTimeFormatter.ofPattern("dd-MM-yyyy", Locale.getDefault()));
+        module.addDeserializer(LocalDate.class, customDeserializer);
         mapper.registerModule(module);
         return mapper;
     }
@@ -46,13 +45,20 @@ public class ShipmentServiceConfiguration {
     @Bean
     public SqsMessageListenerContainerFactory<?> defaultSqsListenerContainerFactory(ObjectMapper objectMapper) {
         SqsMessagingMessageConverter converter = new SqsMessagingMessageConverter();
-        converter.setPayloadTypeMapper(message -> message.getHeaders()
-            .containsKey(typesProperties.getHeaderName()) ? switch (MessageHeaderUtils.getHeaderAsString(message, typesProperties.getHeaderName())) {
-            // We need to use Strings known at compile time for the switch expressions
-            case "INTERNATIONAL" -> InternationalShipmentRequestedEvent.class;
-            case "DOMESTIC" -> DomesticShipmentRequestedEvent.class;
-            default -> throw new RuntimeException("Invalid shipping type");
-        } : Object.class); converter.setObjectMapper(objectMapper);
+        converter.setPayloadTypeMapper(message -> {
+            if (!message.getHeaders()
+                .containsKey(typesProperties.getHeaderName())) {
+                return Object.class;
+            }
+            String eventTypeHeader = MessageHeaderUtils.getHeaderAsString(message, typesProperties.getHeaderName());
+            if (eventTypeHeader.equals(typesProperties.getDomestic())) {
+                return DomesticShipmentRequestedEvent.class;
+            } else if (eventTypeHeader.equals(typesProperties.getInternational())) {
+                return InternationalShipmentRequestedEvent.class;
+            }
+            throw new RuntimeException("Invalid shipping type");
+        });
+        converter.setObjectMapper(objectMapper);
 
         return SqsMessageListenerContainerFactory.builder()
             .sqsAsyncClient(sqsAsyncClient)

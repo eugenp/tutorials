@@ -6,7 +6,7 @@ import java.util.UUID;
 import com.baeldung.spring.cloud.aws.sqs.conversion.model.entity.Shipment;
 import com.baeldung.spring.cloud.aws.sqs.conversion.model.entity.ShipmentStatus;
 
-public sealed class ShipmentRequestedEvent permits DomesticShipmentRequestedEvent, InternationalShipmentRequestedEvent{
+public class ShipmentRequestedEvent {
 
     private UUID orderId;
     private String customerAddress;
