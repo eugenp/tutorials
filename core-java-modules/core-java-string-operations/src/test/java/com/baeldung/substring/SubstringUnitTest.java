@@ -1,5 +1,7 @@
 package com.baeldung.substring;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -14,23 +16,23 @@ public class SubstringUnitTest {
 
     @Test
     public void givenAString_whenUsedStringUtils_ShouldReturnProperSubstring() {
-        Assert.assertEquals("United States of America", StringUtils.substringBetween(text, "(", ")"));
-        Assert.assertEquals("the USA (United States of America).", StringUtils.substringAfter(text, "living in "));
-        Assert.assertEquals("Julia Evans", StringUtils.substringBefore(text, " was born"));
+        assertEquals("United States of America", StringUtils.substringBetween(text, "(", ")"));
+        assertEquals("the USA (United States of America).", StringUtils.substringAfter(text, "living in "));
+        assertEquals("Julia Evans", StringUtils.substringBefore(text, " was born"));
     }
 
     @Test
     public void givenAString_whenUsedScanner_ShouldReturnProperSubstring() {
         try (Scanner scanner = new Scanner(text)) {
             scanner.useDelimiter("\\.");
-            Assert.assertEquals("Julia Evans was born on 25-09-1984", scanner.next());
+            assertEquals("Julia Evans was born on 25-09-1984", scanner.next());
         }
     }
 
     @Test
     public void givenAString_whenUsedSplit_ShouldReturnProperSubstring() {
         String[] sentences = text.split("\\.");
-        Assert.assertEquals("Julia Evans was born on 25-09-1984", sentences[0]);
+        assertEquals("Julia Evans was born on 25-09-1984", sentences[0]);
     }
 
     @Test
@@ -39,34 +41,74 @@ public class SubstringUnitTest {
         Matcher matcher = pattern.matcher(text);
 
         if (matcher.find()) {
-            Assert.assertEquals("25-09-1984", matcher.group());
+            assertEquals("25-09-1984", matcher.group());
         }
     }
 
     @Test
     public void givenAString_whenUsedSubSequence_ShouldReturnProperSubstring() {
-        Assert.assertEquals("USA (United States of America)", text.subSequence(67, text.length() - 1));
+        assertEquals("USA (United States of America)", text.subSequence(67, text.length() - 1));
     }
 
     @Test
     public void givenAString_whenUsedSubstring_ShouldReturnProperSubstring() {
-        Assert.assertEquals("USA (United States of America).", text.substring(67));
-        Assert.assertEquals("USA (United States of America)", text.substring(67, text.length() - 1));
+        assertEquals("USA (United States of America).", text.substring(67));
+        assertEquals("USA (United States of America)", text.substring(67, text.length() - 1));
     }
 
     @Test
     public void givenAString_whenUsedSubstringWithIndexOf_ShouldReturnProperSubstring() {
-        Assert.assertEquals("United States of America", text.substring(text.indexOf('(') + 1, text.indexOf(')')));
+        assertEquals("United States of America", text.substring(text.indexOf('(') + 1, text.indexOf(')')));
     }
 
     @Test
     public void givenAString_whenUsedSubstringWithLastIndexOf_ShouldReturnProperSubstring() {
-        Assert.assertEquals("1984", text.substring(text.lastIndexOf('-') + 1, text.indexOf('.')));
+        assertEquals("1984", text.substring(text.lastIndexOf('-') + 1, text.indexOf('.')));
     }
 
     @Test
     public void givenAString_whenUsedSubstringWithIndexOfAString_ShouldReturnProperSubstring() {
-        Assert.assertEquals("USA (United States of America)", text.substring(text.indexOf("USA"), text.indexOf(')') + 1));
+        assertEquals("USA (United States of America)", text.substring(text.indexOf("USA"), text.indexOf(')') + 1));
+    }
+
+    @Test
+    public void givenAString_whenGettingTextBeforeAndAfterTheSubstringUsingIndexes_thenGetExpectedResult() {
+        String substring = "was born on 25-09-1984. She ";
+        int startIdx = text.indexOf(substring);
+        String before = text.substring(0, startIdx);
+        String after = text.substring(startIdx + substring.length());
+
+        assertEquals("Julia Evans ", before);
+        assertEquals("is currently living in the USA (United States of America).", after);
+    }
+
+    @Test
+    public void givenAString_whenGettingTextBeforeAndAfterTheSubstringUsingSplit_thenGetExpectedResult() {
+        String substring = "was born on 25-09-1984. She ";
+        String[] result = text.split(Pattern.quote(substring));
+        assertEquals(2, result.length);
+
+        String before = result[0];
+        String after = result[1];
+
+        assertEquals("Julia Evans ", before);
+        assertEquals("is currently living in the USA (United States of America).", after);
+    }
+
+    @Test
+    public void givenAString_whenSplitWithRegexAndPatternQuote_thenGetDifferentResults() {
+        String input = "This is an *important* issue.";
+        String substring = " *important* ";
+        String[] resultWithoutQuote = input.split(substring);
+        assertEquals(1, resultWithoutQuote.length);
+        assertEquals("This is an *important* issue.", resultWithoutQuote[0]);
+
+        String[] result = input.split(Pattern.quote(substring));
+        String before = result[0];
+        String after = result[1];
+
+        assertEquals("This is an", before);
+        assertEquals("issue.", after);
     }
 
 }

@@ -1,0 +1,68 @@
+@if (allBeans()) {
+  <div>
+    <h2 id="configuration-page-heading" data-cy="configurationPageHeading">Configuration</h2>
+
+    <span>Filter (by prefix)</span>
+    <input type="text" [ngModel]="beansFilter()" (ngModelChange)="beansFilter.set($event)" class="form-control" />
+
+    <h3 id="spring-configuration">Spring configuration</h3>
+
+    <table class="table table-striped table-bordered table-responsive d-table" aria-describedby="spring-configuration">
+      <thead>
+        <tr jhiSort [sortState]="sortState" (sortChange)="sortState.set($event)">
+          <th jhiSortBy="prefix" scope="col" class="w-40"><span>Prefix</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" class="w-60"><span>Properties</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (bean of beans(); track $index) {
+          <tr>
+            <td>
+              <span>{{ bean.prefix }}</span>
+            </td>
+            <td>
+              @for (property of bean.properties | keyvalue; track property.key) {
+                <div class="row">
+                  <div class="col-md-4">{{ property.key }}</div>
+                  <div class="col-md-8">
+                    <span class="float-end bg-secondary break">{{ property.value | json }}</span>
+                  </div>
+                </div>
+              }
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+
+    @for (propertySource of propertySources(); track i; let i = $index) {
+      <div>
+        <h4 [id]="'property-source-' + i">
+          <span>{{ propertySource.name }}</span>
+        </h4>
+
+        <table
+          class="table table-sm table-striped table-bordered table-responsive d-table"
+          [attr.aria-describedby]="'property-source-' + i"
+        >
+          <thead>
+            <tr>
+              <th scope="col" class="w-40">Property</th>
+              <th scope="col" class="w-60">Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (property of propertySource.properties | keyvalue; track property.key) {
+              <tr>
+                <td class="break">{{ property.key }}</td>
+                <td class="break">
+                  <span class="float-end bg-secondary break">{{ property.value.value }}</span>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    }
+  </div>
+}

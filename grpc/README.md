@@ -9,3 +9,4 @@ This module contains articles about gRPC
 - [Error Handling in gRPC](https://www.baeldung.com/grpcs-error-handling)
 - [Configuring Retry Policy for gRPC Request](https://www.baeldung.com/java-gprc-retry-policy)
 - [Add Global Exception Interceptor in gRPC Server](https://www.baeldung.com/grpc-server-global-exception-interceptor)
+- [gRPC Authentication in Java Using Application Layer Transport Security (ALTS)](https://www.baeldung.com/java-grpc-authentication-application-layer-transport-security-alts)
