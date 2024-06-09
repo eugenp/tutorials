@@ -18,7 +18,7 @@
 
     <modules>
         <module>springcloudtaskbatch</module>
-        <module>springcloudtasksink</module>
+        <module>springcloudtaskstreambridge</module>
     </modules>
 
     <dependencyManagement>
