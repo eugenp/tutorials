@@ -31,7 +31,7 @@ class ValidationAnnotationUnitTest {
         user.setAge(24);
         user.setEmail("test@baeldung.ut");
 
-        Set <ConstraintViolation<User>> violations = validator.validate(user);
+        Set<ConstraintViolation<User>> violations = validator.validate(user);
 
         assertTrue(violations.isEmpty());
     }
@@ -45,7 +45,7 @@ class ValidationAnnotationUnitTest {
         user.setAge(10);
         user.setEmail("test-invalid-email");
 
-        Set <ConstraintViolation<User>> violations = validator.validate(user);
+        Set<ConstraintViolation<User>> violations = validator.validate(user);
 
         assertFalse(violations.isEmpty());
         assertThat(violations).hasSize(5);
