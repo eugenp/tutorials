@@ -14,9 +14,7 @@ public class CompletableFutureUnitTest {
         
         assertEquals("Test join", future.join());
 
-        CompletableFuture<String> exceptionFuture = CompletableFuture.supplyAsync(() -> {
-            throw new RuntimeException("Test join exception");
-        });
+        CompletableFuture<String> exceptionFuture = CompletableFuture.failedFuture(new RuntimeException("Test join exception"));
 
         assertThrows(CompletionException.class, exceptionFuture::join);
     }
@@ -31,9 +29,7 @@ public class CompletableFutureUnitTest {
             fail("Exception should not be thrown");
         }
 
-        CompletableFuture<String> exceptionFuture = CompletableFuture.supplyAsync(() -> {
-            throw new RuntimeException("Test get exception");
-        });
+        CompletableFuture<String> exceptionFuture = CompletableFuture.failedFuture(new RuntimeException("Test get exception"));
 
         assertThrows(ExecutionException.class, exceptionFuture::get);
     }
