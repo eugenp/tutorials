@@ -1,4 +1,4 @@
-package com.bealdung.rsocket;
+package com.baeldung.rsocket;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -7,8 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.messaging.rsocket.RSocketRequester;
 import org.springframework.messaging.rsocket.service.RSocketServiceProxyFactory;
 
-import com.bealdung.rsocket.requester.MessageClient;
-import com.bealdung.rsocket.responder.RSocketApplication;
+import com.baeldung.rsocket.requester.MessageClient;
+import com.baeldung.rsocket.responder.RSocketApplication;
 
 import reactor.core.publisher.Mono;
 

@@ -1,4 +1,4 @@
-package com.bealdung.rsocket.requester;
+package com.baeldung.rsocket.requester;
 
 import org.springframework.messaging.rsocket.service.RSocketExchange;
 

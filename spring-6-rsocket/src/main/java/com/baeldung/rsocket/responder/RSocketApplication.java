@@ -1,4 +1,4 @@
-package com.bealdung.rsocket.responder;
+package com.baeldung.rsocket.responder;
 
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.messaging.rsocket.RSocketRequester;
 import org.springframework.messaging.rsocket.service.RSocketServiceProxyFactory;
 
-import com.bealdung.rsocket.requester.MessageClient;
+import com.baeldung.rsocket.requester.MessageClient;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
