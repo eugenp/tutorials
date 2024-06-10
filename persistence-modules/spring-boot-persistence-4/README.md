@@ -6,3 +6,4 @@
 - [Calling Custom Database Functions With JPA and Spring Boot](https://www.baeldung.com/spring-data-jpa-custom-database-functions)
 - [Spring Data JPA Repository for Database View](https://www.baeldung.com/spring-data-jpa-repository-view)
 - [Can @Transactional and @Async Work Together?](https://www.baeldung.com/spring-transactional-async-annotation)
+- [Using Enum in Spring Data JPA Queries](https://www.baeldung.com/spring-data-jpa-enums)
