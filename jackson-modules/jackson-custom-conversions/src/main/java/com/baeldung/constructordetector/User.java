@@ -5,9 +5,6 @@ public class User {
     private String lastName;
     private int age;
 
-    public User() {
-    }
-
     public User(String firstName, String lastName, int age) {
         this.firstName = firstName;
         this.lastName = lastName;
