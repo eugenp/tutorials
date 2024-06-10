@@ -8,9 +8,6 @@ public class Product {
     private String value;
     private double price;
 
-    public Product() {
-    }
-
     @JsonCreator
     public Product(@JsonProperty("value") String value, @JsonProperty("price") double price) {
         this.value = value;
