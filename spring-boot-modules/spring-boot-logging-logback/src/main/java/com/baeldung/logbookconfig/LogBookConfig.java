@@ -25,7 +25,7 @@ public class LogBookConfig {
     public Logbook logbook() {
         Logbook logbook = Logbook.builder()
             .condition(Conditions.exclude(Conditions.requestTo("/api/welcome"), Conditions.contentType(
-                "Application/octet-stream"), Conditions.header("X-Secret", "true")))
+                "application/octet-stream"), Conditions.header("X-Secret", "true")))
             .sink(new DefaultSink(new DefaultHttpLogFormatter(), new DefaultHttpLogWriter()))
             .build();
         return logbook;
