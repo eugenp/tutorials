@@ -24,9 +24,8 @@ public class RatingController {
     private RatingService ratingService;
 
     @GetMapping
-    public List<Rating> findRatingsByBookId(@RequestParam(required = false) Optional<Long> bookId) {
-        return bookId.map(ratingService::findRatingsByBookId)
-            .orElseGet(ratingService::findAllRatings);
+    public List<Rating> findRatingsByBookId(@RequestParam(required = false) Long bookId) {
+        return bookId != null ? ratingService.findRatingsByBookId(bookId) : ratingService.findAllRatings();
     }
 
     @PostMapping
