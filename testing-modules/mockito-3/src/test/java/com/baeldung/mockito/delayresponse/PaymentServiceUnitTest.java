@@ -18,11 +18,12 @@ public class PaymentServiceUnitTest {
 
     @Mock
     PaymentService paymentService;
+    private static long DELAY = 1;
 
     @Test
     public void whenProcessingPayment_thenDelayResponseUsingThreadSleep(){
         when(paymentService.processPayment()).thenAnswer(invocation -> {
-            Thread.sleep(2000); // Delay of 2 seconds
+            Thread.sleep(DELAY); // Delay of 2 seconds
             return "SUCCESS";
         });
 
@@ -37,7 +38,7 @@ public class PaymentServiceUnitTest {
     @Test
     public void whenProcessingPayment_thenDelayResponseUsingAnswersWithDelay() throws Exception {
 
-        when(paymentService.processPayment()).thenAnswer(AdditionalAnswers.answersWithDelay(2000, invocation -> "SUCCESS"));
+        when(paymentService.processPayment()).thenAnswer(AdditionalAnswers.answersWithDelay(DELAY, invocation -> "SUCCESS"));
 
         long startTime = System.currentTimeMillis();
         String result = paymentService.processPayment();
@@ -52,7 +53,7 @@ public class PaymentServiceUnitTest {
     public void whenProcessingPayment_thenDelayResponseUsingAwaitility() {
 
         when(paymentService.processPayment()).thenAnswer(invocation -> {
-            Awaitility.await().pollDelay(2, TimeUnit.SECONDS).until(()->true);
+            Awaitility.await().pollDelay(DELAY, TimeUnit.MILLISECONDS).until(()->true);
             return "SUCCESS";
         });
 
