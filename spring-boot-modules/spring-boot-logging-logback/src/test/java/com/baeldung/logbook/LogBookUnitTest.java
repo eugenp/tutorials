@@ -12,7 +12,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -64,15 +63,5 @@ public class LogBookUnitTest {
         logFilePath = resourcesPath.resolve("logs/logback-extension.log")
             .toAbsolutePath()
             .toString();
-    }
-
-    @AfterClass
-    public static void cleanup() {
-        try {
-            Files.deleteIfExists(Paths.get(logFilePath));
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
     }
 }
