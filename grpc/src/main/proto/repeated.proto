@@ -8,11 +8,11 @@ message PackedOrder {
   repeated int32 productIds = 2 [packed = true];
 }
 
-message UnPackedOrder {
+message UnpackedOrder {
   int32 orderId = 1;
   repeated int32 productIds = 2 [packed = false];
 }
 
 service OrderService {
-  rpc createOrder(UnPackedOrder) returns (UnPackedOrder){}
+  rpc createOrder(UnpackedOrder) returns (UnpackedOrder){}
 }

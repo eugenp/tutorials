@@ -12,20 +12,20 @@ public class OrderService extends OrderServiceGrpc.OrderServiceImplBase {
     private static final Logger logger = LoggerFactory.getLogger(OrderService.class);
 
     @Override
-    public void createOrder(UnPackedOrder unpackedOrder, StreamObserver<UnPackedOrder> responseObserver) {
+    public void createOrder(UnpackedOrder unpackedOrder, StreamObserver<UnpackedOrder> responseObserver) {
         List<Integer> productIds = unpackedOrder.getProductIdsList();
         if(validateProducts(productIds)) {
             int orderID = insertOrder(unpackedOrder);
             logger.info("Order {} created successfully", orderID);
-            UnPackedOrder createdUnPackedOrder = UnPackedOrder.newBuilder(unpackedOrder)
+            UnpackedOrder createdUnpackedOrder = UnpackedOrder.newBuilder(unpackedOrder)
                 .setOrderId(orderID)
                 .build();
-            responseObserver.onNext(createdUnPackedOrder);
+            responseObserver.onNext(createdUnpackedOrder);
             responseObserver.onCompleted();
         }
     }
 
-    private int insertOrder(UnPackedOrder unpackedOrder) {
+    private int insertOrder(UnpackedOrder unpackedOrder) {
         return new Random().nextInt(100);
     }
 

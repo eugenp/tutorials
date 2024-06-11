@@ -37,8 +37,8 @@ public class ProtobufPackedFieldUnitTest {
     @AfterAll
     static void clean() {
         File packedFile = new File(FOLDER_TO_WRITE_OBJECTS + "packed_order.bin");
-        File unPackedFile = new File(FOLDER_TO_WRITE_OBJECTS + "unpacked_order.bin");
-        if (packedFile.delete() && unPackedFile.delete()) {
+        File unpackedFile = new File(FOLDER_TO_WRITE_OBJECTS + "unpacked_order.bin");
+        if (packedFile.delete() && unpackedFile.delete()) {
             logger.info("files {} and {} deleted successfully", "packed_order.bin", "unpacked_order.bin");
         }
     }
@@ -64,26 +64,26 @@ public class ProtobufPackedFieldUnitTest {
     }
 
     @Test
-    void whenUnPackedRepeatedProductIds_thenCreateUnPackedOrderAndInvokeRPC() {
-        UnPackedOrder.Builder unPackedOrderBuilder = UnPackedOrder.newBuilder();
-        unPackedOrderBuilder.setOrderId(1);
-        Arrays.stream(fetchProductIds()).forEach(unPackedOrderBuilder::addProductIds);
-        UnPackedOrder unPackedOrderRequest = unPackedOrderBuilder.build();
+    void whenUnpackedRepeatedProductIds_thenCreateUnpackedOrderAndInvokeRPC() {
+        UnpackedOrder.Builder unpackedOrderBuilder = UnpackedOrder.newBuilder();
+        unpackedOrderBuilder.setOrderId(1);
+        Arrays.stream(fetchProductIds()).forEach(unpackedOrderBuilder::addProductIds);
+        UnpackedOrder unpackedOrderRequest = unpackedOrderBuilder.build();
 
-        UnPackedOrder unPackedOrderResponse = orderClientStub.createOrder(unPackedOrderRequest);
+        UnpackedOrder unpackedOrderResponse = orderClientStub.createOrder(unpackedOrderRequest);
 
-        assertInstanceOf(Integer.class, unPackedOrderResponse.getOrderId());
+        assertInstanceOf(Integer.class, unpackedOrderResponse.getOrderId());
     }
 
     @Test
-    void whenSerializeUnPackedOrderAndPackedOrderObject_thenSizeofPackedOrderObjectIsLess() throws IOException {
-        UnPackedOrder.Builder unPackedOrderBuilder = UnPackedOrder.newBuilder();
-        unPackedOrderBuilder.setOrderId(1);
-        Arrays.stream(fetchProductIds()).forEach(unPackedOrderBuilder::addProductIds);
-        UnPackedOrder unPackedOrder = unPackedOrderBuilder.build();
-        String unPackedOrderObjFileName = FOLDER_TO_WRITE_OBJECTS + "unpacked_order.bin";
+    void whenSerializeUnpackedOrderAndPackedOrderObject_thenSizeofPackedOrderObjectIsLess() throws IOException {
+        UnpackedOrder.Builder unpackedOrderBuilder = UnpackedOrder.newBuilder();
+        unpackedOrderBuilder.setOrderId(1);
+        Arrays.stream(fetchProductIds()).forEach(unpackedOrderBuilder::addProductIds);
+        UnpackedOrder unpackedOrder = unpackedOrderBuilder.build();
+        String unpackedOrderObjFileName = FOLDER_TO_WRITE_OBJECTS + "unpacked_order.bin";
 
-        serializeObject(unPackedOrderObjFileName, unPackedOrder);
+        serializeObject(unpackedOrderObjFileName, unpackedOrder);
 
         PackedOrder.Builder packedOrderBuilder = PackedOrder.newBuilder();
         packedOrderBuilder.setOrderId(1);
@@ -93,7 +93,7 @@ public class ProtobufPackedFieldUnitTest {
 
         serializeObject(packedOrderObjFileName, packedOrder);
 
-        long sizeOfUnpackedOrderObjectFile = getFileSize(unPackedOrderObjFileName);
+        long sizeOfUnpackedOrderObjectFile = getFileSize(unpackedOrderObjFileName);
         long sizeOfPackedOrderObjectFile = getFileSize(packedOrderObjFileName);
         long sizeReductionPercentage = (sizeOfUnpackedOrderObjectFile - sizeOfPackedOrderObjectFile) * 100/sizeOfUnpackedOrderObjectFile;
         logger.info("Packed field saved {}% over unpacked field", sizeReductionPercentage);
