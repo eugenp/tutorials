@@ -50,7 +50,7 @@
         <dependency>
             <groupId>org.springframework.session</groupId>
             <artifactId>spring-session-data-redis</artifactId>
-            <version>3.2.2</version>
+            <version>${spring-session-data-redis.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -77,6 +77,11 @@
         <dependency>
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-tracing-bridge-brave</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>${jakarta.servlet-api.version}</version>
         </dependency>
     </dependencies>
 
@@ -119,6 +124,8 @@
         <spring-cloud-dependencies.version>2023.0.1</spring-cloud-dependencies.version>
         <rest-assured.version>5.4.0</rest-assured.version>
         <spring-boot.version>3.2.2</spring-boot.version>
+        <spring-session-data-redis.version>3.2.2</spring-session-data-redis.version>
+        <jakarta.servlet-api.version>6.1.0-M2</jakarta.servlet-api.version>
     </properties>
 
 </project>
