@@ -13,7 +13,7 @@ class ShoppingCartUnitTest {
 
     @Test
     void givenAnObject_whenDoShallowCopy_thenReturnNewReferenceOfObject() {
-        ShoppingCart shoppingCart = getShoppingCart();
+        ShoppingCart shoppingCart = getShoppingCart("MyCart", new ArrayList<String>(List.of("Bread")));
         ShoppingCart shallowCopy = getObjectCopyUtils().shallowCopy(shoppingCart, "ShallowCopy");
 
         shallowCopy.getItems()
@@ -27,7 +27,7 @@ class ShoppingCartUnitTest {
 
     @Test
     void givenAnObject_whenDoDeepCopy_thenReturnNewCopyOfObject() {
-        ShoppingCart shoppingCart = getShoppingCart();
+        ShoppingCart shoppingCart = getShoppingCart("MyCart", new ArrayList<String>(List.of("Bread")));
         ShoppingCart deepCopy = getObjectCopyUtils().deepCopy(shoppingCart, "DeepCopy");
 
         deepCopy.getItems()
@@ -41,7 +41,7 @@ class ShoppingCartUnitTest {
     
     @Test
     void givenAnObject_whenDoCopyByCloning_thenReturnNewCopyOfObject() throws CloneNotSupportedException {
-        ShoppingCart shoppingCart = getShoppingCart();
+        ShoppingCart shoppingCart = getShoppingCart("MyCart", new ArrayList<String>(List.of("Bread")));
         ShoppingCart deepCopyByCloning = getObjectCopyUtils().cloneCopy(shoppingCart, "CloneCopy");
 
         deepCopyByCloning.getItems()
@@ -55,7 +55,7 @@ class ShoppingCartUnitTest {
 
     @Test
     void givenAnObject_whenDoDeepCopyByCloning_thenReturnNewCopyOfObject() throws CloneNotSupportedException {
-        ShoppingCart shoppingCart = getShoppingCart();
+        ShoppingCart shoppingCart = getShoppingCart("MyCart", new ArrayList<String>(List.of("Bread")));
         ShoppingCart deepCopyByCloning = getObjectCopyUtils().deepCloneCopy(shoppingCart, "DeepCloneCopy");
 
         deepCopyByCloning.getItems()
@@ -67,17 +67,8 @@ class ShoppingCartUnitTest {
             .equals(deepCopyByCloning.getItems()));
     }
 
-    ShoppingCart getShoppingCart() {
-        ShoppingCart shoppingCart = new ShoppingCart();
-
-        List<String> items = new ArrayList<String>();
-
-        items.add("Bread");
-
-        shoppingCart.setItems(items);
-        shoppingCart.setCartName("BeforeCopyShoppingCart");
-
-        return shoppingCart;
+    ShoppingCart getShoppingCart(String cartName, List<String> items) {
+        return new ShoppingCart(cartName, items);
     }
 
     ObjectCopyService getObjectCopyUtils() {

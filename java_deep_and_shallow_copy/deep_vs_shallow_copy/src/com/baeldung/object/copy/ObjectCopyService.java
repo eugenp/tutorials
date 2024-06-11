@@ -7,26 +7,24 @@ public class ObjectCopyService {
 
     public ShoppingCart shallowCopy(ShoppingCart shoppingCart, String cartName) {
 
-        ShoppingCart shallowCopy = new ShoppingCart(shoppingCart.getCartName(), shoppingCart.getItems());
+        ShoppingCart shallowCopy = new ShoppingCart(cartName, shoppingCart.getItems());
         
-        shallowCopy.setCartName(cartName);
+        //shallowCopy.setCartName(cartName);
 
         return shallowCopy;
     }
 
     public ShoppingCart deepCopy(ShoppingCart shoppingCart, String cartName) {
 
-        ShoppingCart deepCopy = new ShoppingCart();
+        ShoppingCart deepCopy = new ShoppingCart(cartName, shoppingCart.getItems());
 
         ArrayList<String> itemList = new ArrayList<String>();
 
-        shoppingCart.setCartName(shoppingCart.getCartName());
         shoppingCart.getItems()
             .stream()
             .forEach(t -> itemList.add(t));
 
         deepCopy.setItems(itemList);
-        deepCopy.setCartName(cartName);
 
         return deepCopy;
     }
