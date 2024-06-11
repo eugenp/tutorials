@@ -30,6 +30,11 @@
             <artifactId>jakarta.persistence-api</artifactId>
             <version>${jakarta.persistence-api.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.18</version>
+        </dependency>
     </dependencies>
 
     <build>
