@@ -1,13 +1,10 @@
 package com.baeldung.interpolation;
 
-import java.util.Formatter;
-import javax.validation.constraints.Size;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Size;
 
 public class ValidationExamples {
-
-    private static final Formatter formatter = new Formatter();
 
     @Size(
       min = 5,

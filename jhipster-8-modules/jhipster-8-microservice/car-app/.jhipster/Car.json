@@ -1,0 +1,20 @@
+{
+  "annotations": {
+    "changelogDate": "20240515104419"
+  },
+  "clientRootFolder": "carsapp",
+  "databaseType": "sql",
+  "fields": [
+    {
+      "fieldName": "price",
+      "fieldType": "Double"
+    }
+  ],
+  "microserviceName": "carsapp",
+  "name": "Car",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "no"
+}

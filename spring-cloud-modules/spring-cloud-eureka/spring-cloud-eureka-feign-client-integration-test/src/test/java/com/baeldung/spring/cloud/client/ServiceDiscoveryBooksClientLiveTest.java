@@ -24,7 +24,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @EnableConfigurationProperties
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = Application.class, webEnvironment =  SpringBootTest.WebEnvironment.RANDOM_PORT)
-@ContextConfiguration(classes = { MockBookServiceConfig.class }, initializers = { EurekaContainerConfig.Initializer.class })
+@ContextConfiguration(classes = { MockBookServiceConfig.class })
 class ServiceDiscoveryBooksClientLiveTest {
 
     @Autowired
@@ -39,6 +39,11 @@ class ServiceDiscoveryBooksClientLiveTest {
         await().atMost(60, SECONDS).until(() -> eurekaClient.getApplications().size() > 0);
     }
 
+    /**
+     *  Please ensure that Eureka is running on port , 8761 for this test to pass.
+     *  The EurekaServerApplication.main in spring-cloud-eureka-server project can be
+     *  run to make an Eureka Server available.
+     */
     @Test
     public void whenGetBooks_thenTheCorrectBooksAreReturned() {
         List<Book> books = booksClient.getBooks();

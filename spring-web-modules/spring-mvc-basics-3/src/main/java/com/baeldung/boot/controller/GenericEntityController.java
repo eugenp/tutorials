@@ -53,6 +53,6 @@ public class GenericEntityController {
 
     @GetMapping("/entity/findbyversion")
     public ResponseEntity findByVersion(@Version String version) {
-        return version != null ? new ResponseEntity(entityList.stream().findFirst().get(), HttpStatus.OK) : new ResponseEntity(HttpStatus.NOT_FOUND);
+        return version != null ? new ResponseEntity<>(entityList.stream().findFirst().get(), HttpStatus.OK) : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }

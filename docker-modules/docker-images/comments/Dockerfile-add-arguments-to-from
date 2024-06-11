@@ -1,2 +1,0 @@
-FROM ubuntu:latest # Declare parent image
-RUN echo 'This is a Baeldung tutorial'

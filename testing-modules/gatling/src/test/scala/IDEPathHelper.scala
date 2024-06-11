@@ -1,19 +1,16 @@
-import java.nio.file.Path
-
-import io.gatling.commons.util.PathHelper._
+import java.nio.file.{Path, Paths}
 
 object IDEPathHelper {
+    val gatlingConfUrl: Path = Paths.get(getClass.getClassLoader.getResource("gatling.conf").toURI)
 
-    val gatlingConfUrl: Path = getClass.getClassLoader.getResource("gatling.conf")
-    val projectRootDir = gatlingConfUrl.ancestor(3)
+    val projectRootDir: Path = gatlingConfUrl.getParent.getParent.getParent
 
-    val mavenSourcesDirectory = projectRootDir / "src" / "test" / "scala"
-    val mavenResourcesDirectory = projectRootDir / "src" / "test" / "resources"
-    val mavenTargetDirectory = projectRootDir / "target"
-    val mavenBinariesDirectory = mavenTargetDirectory / "test-classes"
-
-    val resourcesDirectory = mavenResourcesDirectory
-    val recorderSimulationsDirectory = mavenSourcesDirectory
-    val resultsDirectory = mavenTargetDirectory / "gatling"
-    val recorderConfigFile = mavenResourcesDirectory / "recorder.conf"
+    val mavenSourcesDirectory: Path = projectRootDir.resolve("src").resolve("test").resolve("scala")
+    val mavenResourcesDirectory: Path = projectRootDir.resolve("src").resolve("test").resolve("resources")
+    val mavenTargetDirectory: Path = projectRootDir.resolve("target")
+    val mavenBinariesDirectory: Path = mavenTargetDirectory.resolve("test-classes")
+    val resourcesDirectory: Path = mavenResourcesDirectory
+    val recorderSimulationsDirectory: Path = mavenSourcesDirectory
+    val resultsDirectory: Path = mavenTargetDirectory.resolve("gatling")
+    val recorderConfigFile: Path = mavenResourcesDirectory.resolve("recorder.conf")
 }

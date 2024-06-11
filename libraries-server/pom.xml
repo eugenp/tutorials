@@ -97,6 +97,7 @@
         <smack.version>4.3.1</smack.version>
         <eclipse.paho.client.mqttv3.version>1.2.0</eclipse.paho.client.mqttv3.version>
         <nanohttpd.version>2.3.1</nanohttpd.version>
+        <logback.configurationFileName>logback.xml</logback.configurationFileName>
     </properties>
 
 </project>

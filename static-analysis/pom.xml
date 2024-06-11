@@ -34,6 +34,7 @@
         <module>pmd</module>
         <module>my-bugchecker-plugin</module>
         <module>error-prone-project</module>
+        <module>infer</module>
     </modules>
 
     <properties>

@@ -1,0 +1,23 @@
+{
+  "type": "record",
+  "name": "Pet",
+  "namespace": "custom.avro",
+  "fields": [
+    {
+      "name": "petId",
+      "type": "string"
+    },
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "species",
+      "type": "string"
+    },
+    {
+      "name": "age",
+      "type": "int"
+    }
+  ]
+}

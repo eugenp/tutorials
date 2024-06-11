@@ -6,8 +6,8 @@
     <groupId>com.baeldung</groupId>
     <artifactId>maven-war-plugin</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>maven-war-plugin</name>
     <packaging>war</packaging>
+    <name>maven-war-plugin</name>
 
     <build>
         <plugins>

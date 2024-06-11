@@ -20,6 +20,7 @@
         <module>spring-reactive-data</module>
         <module>spring-reactive-2</module>
         <module>spring-reactive-3</module>
+        <module>spring-reactive-4</module>
         <module>spring-reactive-client</module>
         <module>spring-reactive-client-2</module>
         <module>spring-reactive-filters</module>

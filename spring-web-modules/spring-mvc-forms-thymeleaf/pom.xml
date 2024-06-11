@@ -10,9 +10,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-2</relativePath>
+        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -40,11 +40,17 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <artifactId>okhttp</artifactId>
+            <groupId>com.squareup.okhttp3</groupId>
+            <version>${com.squareup.okhttp3.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <properties>
-        <thymeleaf.version>3.0.9.RELEASE</thymeleaf.version>
         <start-class>com.baeldung.sessionattrs.SessionAttrsApplication</start-class>
+        <com.squareup.okhttp3.version>4.12.0</com.squareup.okhttp3.version>
     </properties>
 
 </project>

@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.data.repository.ListCrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.baeldung.jpa.simple.entity.Book;
+import com.baeldung.jpa.simple.model.Book;
 
 @Repository
 public interface BookListRepository extends ListCrudRepository<Book, Long> {

@@ -8,12 +8,6 @@
     <artifactId>quarkus-funqy</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
-    <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>quarkus-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-    </parent>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -135,8 +129,9 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
         <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
-        <quarkus.platform.version>2.16.0.Final</quarkus.platform.version>
+        <quarkus.platform.version>3.9.4</quarkus.platform.version>
         <surefire-plugin.version>3.0.0-M7</surefire-plugin.version>
+        <junit-jupiter.version>5.9.2</junit-jupiter.version><!--set to previous version as getting exception -->
     </properties>
 
 </project>

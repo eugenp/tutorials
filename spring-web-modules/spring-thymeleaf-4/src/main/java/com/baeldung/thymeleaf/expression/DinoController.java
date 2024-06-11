@@ -23,7 +23,7 @@ public class DinoController {
         model.addAttribute("dinos", dinos);
         System.out.println(dinos);
 
-        return "templates-3/index";
+        return "index";
 
     }
 
@@ -32,7 +32,7 @@ public class DinoController {
 
         model.addAttribute("dinos", new Dino());
 
-        return "templates-3/form";
+        return "form";
 
     }
 
@@ -40,7 +40,7 @@ public class DinoController {
     public String dinoSubmit(@ModelAttribute Dino dino, Model model) {
 
         model.addAttribute("dino", dino);
-        return "templates-3/result";
+        return "result";
     }
 
 }

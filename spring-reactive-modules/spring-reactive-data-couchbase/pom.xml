@@ -8,9 +8,10 @@
     <packaging>jar</packaging>
 
     <parent>
-        <groupId>com.baeldung.spring.reactive</groupId>
-        <artifactId>spring-reactive-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-3</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -37,7 +38,7 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>io.reactivex.rxjava2</groupId>
+            <groupId>io.reactivex.rxjava3</groupId>
             <artifactId>rxjava</artifactId>
         </dependency>
         <dependency>
@@ -45,18 +46,12 @@
             <artifactId>spring-test</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
-            <version>${spring-tx.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
+            <groupId>org.apache.httpcomponents.client5</groupId>
+            <artifactId>httpclient5</artifactId>
             <version>${httpclient.version}</version>
         </dependency>
         <dependency>
@@ -64,6 +59,20 @@
             <artifactId>CouchbaseMock</artifactId>
             <version>${couchbaseMock.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy</artifactId>
+            <version>${byte-buddy.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
         </dependency>
     </dependencies>
 
@@ -120,15 +129,11 @@
     </build>
 
     <properties>
-        <spring-tx.version>5.2.2.RELEASE</spring-tx.version>
-        <httpclient.version>4.5.2</httpclient.version>
-        <couchbaseMock.version>1.5.23</couchbaseMock.version>
-        <!-- This spring-boot.version is set manually, For upgrading this please refer http://team.baeldung.com/browse/JAVA-2802 -->
-        <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
-        <!-- This spring-boot.version is not compatible with JDK 17 -->
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-        <java.version>11</java.version>
+        <httpclient.version>5.3.1</httpclient.version>
+        <couchbaseMock.version>1.5.27</couchbaseMock.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <java.version>17</java.version>
     </properties>
 
 </project>

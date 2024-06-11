@@ -10,17 +10,17 @@ import org.cactoos.text.Upper;
 
 public class CactoosStringUtils {
 
-	public String createString() throws IOException {
+	public String createString() throws Exception {
 		String testString = new TextOf("Test String").asString();
 		return testString;
 	}
 
-	public String createdFormattedString(String stringToFormat) throws IOException {
+	public String createdFormattedString(String stringToFormat) throws Exception {
 		String formattedString = new FormattedText("Hello %s", stringToFormat).asString();
 		return formattedString;
 	}
 
-	public String toLowerCase(String testString) throws IOException {
+	public String toLowerCase(String testString) throws Exception {
 		String lowerCaseString = new Lowered(new TextOf(testString)).asString();
 		return lowerCaseString;
 	}

@@ -3,4 +3,4 @@ spring:
     active: dev
 profile:
   property:
-    value: This the the application.yaml file
+    value: This the application.yaml file

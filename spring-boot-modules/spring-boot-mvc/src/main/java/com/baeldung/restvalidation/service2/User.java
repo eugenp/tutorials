@@ -1,7 +1,6 @@
 package com.baeldung.restvalidation.service2;
 
-import javax.validation.constraints.NotEmpty;
-
+import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 
 @Data

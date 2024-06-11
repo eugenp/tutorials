@@ -79,7 +79,7 @@
         <dependency>
             <groupId>org.testcontainers</groupId>
             <artifactId>testcontainers</artifactId>
-            <version>1.14.3</version>
+            <version>${testcontainers.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -89,14 +89,6 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <repositories>
-        <repository>
-            <id>repository.spring.milestone</id>
-            <name>Spring Milestone Repository</name>
-            <url>https://repo.spring.io/release</url>
-        </repository>
-    </repositories>
 
     <build>
         <plugins>
@@ -115,7 +107,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <wiremock.version>3.3.1</wiremock.version>
-        <junit-jupiter.version>5.10.2</junit-jupiter.version>
+        <testcontainers.version>1.17.3</testcontainers.version>
     </properties>
 
 </project>

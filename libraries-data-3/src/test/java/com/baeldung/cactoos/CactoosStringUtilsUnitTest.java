@@ -9,7 +9,7 @@ import org.junit.Test;
 public class CactoosStringUtilsUnitTest {
 
 	@Test
-	public void whenFormattedTextIsPassedWithArgs_thenFormattedStringIsReturned() throws IOException {
+	public void whenFormattedTextIsPassedWithArgs_thenFormattedStringIsReturned() throws Exception {
 
 		CactoosStringUtils obj = new CactoosStringUtils();
 

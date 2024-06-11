@@ -1,5 +1,6 @@
 package com.baeldung.petstore.client.invoker;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonTokenId;
 import com.fasterxml.jackson.databind.DeserializationContext;
@@ -148,11 +149,18 @@ public class CustomInstantDeserializer<T extends Temporal>
   }
 
   @Override
-  protected JsonDeserializer<T> withDateFormat(DateTimeFormatter dtf) {
-    if (dtf == _formatter) {
-      return this;
-    }
-    return new CustomInstantDeserializer<T>(this, dtf);
+  protected ThreeTenDateTimeDeserializerBase<T> withDateFormat(DateTimeFormatter dateTimeFormatter) {
+    return null;
+  }
+
+  @Override
+  protected ThreeTenDateTimeDeserializerBase<T> withLeniency(Boolean aBoolean) {
+    return null;
+  }
+
+  @Override
+  protected ThreeTenDateTimeDeserializerBase<T> withShape(JsonFormat.Shape shape) {
+    return null;
   }
 
   @Override

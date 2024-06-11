@@ -1,0 +1,13 @@
+<!ELEMENT configuration (appender+, root)>
+<!ELEMENT appender (encoder?)>
+<!ATTLIST appender
+    name CDATA #REQUIRED
+    class CDATA #REQUIRED
+    >
+<!ELEMENT encoder (pattern+)>
+<!ELEMENT pattern (#PCDATA)>
+<!ELEMENT root (appender-ref+)>
+<!ELEMENT appender-ref EMPTY>
+<!ATTLIST appender-ref
+    ref CDATA #REQUIRED
+    >

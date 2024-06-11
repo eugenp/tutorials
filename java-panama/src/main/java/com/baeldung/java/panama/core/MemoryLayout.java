@@ -6,9 +6,9 @@ import static java.lang.foreign.ValueLayout.JAVA_DOUBLE;
 import static java.lang.foreign.ValueLayout.JAVA_FLOAT;
 import static java.lang.foreign.ValueLayout.PathElement;
 
+import java.lang.foreign.Arena;
 import java.lang.foreign.GroupLayout;
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.MemorySession;
 import java.lang.foreign.SequenceLayout;
 import java.lang.invoke.VarHandle;
 
@@ -23,7 +23,7 @@ public class MemoryLayout {
         VarHandle xvarHandle = pointLayout.varHandle(PathElement.groupElement("x"));
         VarHandle yvarHandle = pointLayout.varHandle(PathElement.groupElement("y"));
 
-        try (MemorySession memorySession = MemorySession.openConfined()) {
+        try (Arena memorySession = Arena.ofConfined()) {
 
             MemorySegment pointSegment = memorySession.allocate(pointLayout);
             xvarHandle.set(pointSegment, 3d);
@@ -39,14 +39,16 @@ public class MemoryLayout {
 
         public static void main(String[] args) {
 
-            try (MemorySession memorySession = MemorySession.openConfined()) {
+            try (Arena memorySession = Arena.ofConfined()) {
                 int byteSize = 5;
                 int index = 3;
                 float value = 6;
-                MemorySegment segment = MemorySegment.allocateNative(byteSize, memorySession);
-                segment.setAtIndex(JAVA_FLOAT, index, value);
-                float result = segment.getAtIndex(JAVA_FLOAT, index);
-                System.out.println("Float value is:" + result);
+                try(Arena arena = Arena.ofAuto()) {
+                    MemorySegment segment = arena.allocate(byteSize);
+                    segment.setAtIndex(JAVA_FLOAT, index, value);
+                    float result = segment.getAtIndex(JAVA_FLOAT, index);
+                    System.out.println("Float value is:" + result);
+                }
             }
         }
     }

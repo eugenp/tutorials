@@ -17,7 +17,7 @@ public class StreamingResponseBodyController {
             String msg = Constants.API_SRB_MSG + " @ " + new Date();
             out.write(msg.getBytes());
         };
-        return new ResponseEntity(stream, HttpStatus.OK);
+        return new ResponseEntity<>(stream, HttpStatus.OK);
       }
 
 }

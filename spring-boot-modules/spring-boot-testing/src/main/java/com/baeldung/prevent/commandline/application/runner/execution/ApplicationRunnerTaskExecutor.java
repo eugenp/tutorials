@@ -14,14 +14,16 @@ import org.springframework.stereotype.Component;
   matchIfMissing = true)
 @Component
 public class ApplicationRunnerTaskExecutor implements ApplicationRunner {
-    private TaskService taskService;
+
+    private final TaskService taskService;
 
     public ApplicationRunnerTaskExecutor(TaskService taskService) {
         this.taskService = taskService;
     }
 
     @Override
-    public void run(ApplicationArguments args) throws Exception {
+    public void run(ApplicationArguments args) {
         taskService.execute("application runner task");
     }
+
 }

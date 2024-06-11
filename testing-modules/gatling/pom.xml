@@ -33,7 +33,7 @@
             </dependency>
             <dependency>
                 <groupId>org.scala-lang</groupId>
-                <artifactId>scala-library</artifactId>
+                <artifactId>scala3-library_3</artifactId>
                 <version>${scala.version}</version>
             </dependency>
         </dependencies>
@@ -54,7 +54,7 @@
         </dependency>
         <dependency>
             <groupId>org.scala-lang</groupId>
-            <artifactId>scala-library</artifactId>
+            <artifactId>scala3-library_3</artifactId>
         </dependency>
     </dependencies>
 
@@ -105,10 +105,10 @@
     </build>
 
     <properties>
-        <scala.version>2.12.6</scala.version>
-        <gatling.version>3.3.1</gatling.version>
-        <scala-maven-plugin.version>4.3.0</scala-maven-plugin.version>
-        <gatling-maven-plugin.version>3.0.4</gatling-maven-plugin.version>
+        <scala.version>3.4.1</scala.version>
+        <gatling.version>3.10.5</gatling.version>
+        <scala-maven-plugin.version>4.8.1</scala-maven-plugin.version>
+        <gatling-maven-plugin.version>4.8.1</gatling-maven-plugin.version>
     </properties>
 
 </project>

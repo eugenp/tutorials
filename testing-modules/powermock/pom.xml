@@ -41,7 +41,7 @@
     </build>
 
     <properties>
-        <mockito.version>2.21.0</mockito.version>
+        <mockito.version>2.21.0</mockito.version> <!--Cannot upgrade to the latest version as powermock doesn't support that-->
         <powermock.version>2.0.9</powermock.version>
     </properties>
 

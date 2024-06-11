@@ -1,17 +1,13 @@
 "use client";
 
 import { Inter } from "next/font/google";
-import { createContext, useContext, useState } from "react";
+import { useState } from "react";
 import "./globals.css";
 import Authentication from "./lib/auth/authentication.component";
 import { User, UserService } from "./lib/auth/user.service";
+import { UserContext } from "./user-context";
 
 const inter = Inter({ subsets: ["latin"] });
-
-export const UserContext = createContext(User.ANONYMOUS);
-export function useUserContext() {
-  return useContext(UserContext);
-}
 
 export default function RootLayout({
   children,
@@ -29,10 +25,10 @@ export default function RootLayout({
             <div className="m-auto"></div>
             <h1 className="mt-2">React UI</h1>
             <div className="m-auto"></div>
-            <div  className="mt-2">
-            <Authentication
-              onLogin={() => userService.refresh(user, setUser)}
-            ></Authentication>
+            <div className="mt-2">
+              <Authentication
+                onLogin={() => userService.refresh(user, setUser)}
+              ></Authentication>
             </div>
             <div className="mr-3"></div>
           </div>

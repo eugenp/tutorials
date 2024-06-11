@@ -1,7 +1,6 @@
 package com.baeldung.restvalidation.config;
 
-import javax.validation.MessageInterpolator;
-
+import jakarta.validation.MessageInterpolator;
 import org.hibernate.validator.messageinterpolation.ResourceBundleMessageInterpolator;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;

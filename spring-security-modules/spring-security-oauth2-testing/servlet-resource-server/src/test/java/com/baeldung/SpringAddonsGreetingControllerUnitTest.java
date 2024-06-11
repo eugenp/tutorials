@@ -44,9 +44,7 @@ class SpringAddonsGreetingControllerUnitTest {
     }
 
     @ParameterizedTest
-    @AuthenticationSource({
-            @WithMockAuthentication(authorities = { "admin", "ROLE_AUTHORIZED_PERSONNEL" }, name = "ch4mpy"),
-            @WithMockAuthentication(authorities = { "uncle", "PIRATE" }, name = "tonton-pirate") })
+    @AuthenticationSource({ @WithMockAuthentication(authorities = { "admin", "ROLE_AUTHORIZED_PERSONNEL" }, name = "ch4mpy"), @WithMockAuthentication(authorities = { "uncle", "PIRATE" }, name = "tonton-pirate") })
     void givenUserIsAuthenticated_whenGetGreet_thenOk(@ParameterizedAuthentication Authentication auth) throws Exception {
         final var greeting = "Whatever the service returns";
         when(messageService.greet()).thenReturn(greeting);

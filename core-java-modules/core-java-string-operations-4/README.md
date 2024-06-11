@@ -10,3 +10,4 @@
 - [How to Truncate a String in Java](https://www.baeldung.com/java-truncating-strings)
 - [Remove Whitespace From a String in Java](https://www.baeldung.com/java-string-remove-whitespace)
 - [Named Placeholders in String Formatting](https://www.baeldung.com/java-string-formatting-named-placeholders)
+- More articles: [[<-- prev]](../core-java-string-operations-3) [[next -->]](../core-java-string-operations-5)

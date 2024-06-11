@@ -1,7 +1,7 @@
 package com.baeldung.thymeleaf.mvcdata;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,21 +39,6 @@ public class EmailController {
             @RequestParam(value = "emailaddress") String emailAddress2,
             @RequestParam(value = "emaillocale") String emailLocale) {
         return "mvcdata/email-request-parameters";
-    }
-
-    @GetMapping("/email/sessionattributes")
-    public String emailSessionAttributes(HttpSession httpSession) {
-        httpSession.setAttribute("emaildata", emailData);
-        return "mvcdata/email-session-attributes";
-    }
-
-    @GetMapping("/email/servletcontext")
-    public String emailServletContext() {
-        servletContext.setAttribute("emailsubject", emailData.getEmailSubject());
-        servletContext.setAttribute("emailcontent", emailData.getEmailBody());
-        servletContext.setAttribute("emailaddress", emailData.getEmailAddress1());
-        servletContext.setAttribute("emaillocale", emailData.getEmailLocale());
-        return "mvcdata/email-servlet-context";
     }
 
     @GetMapping("/email/beandata")

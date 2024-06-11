@@ -10,7 +10,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.baeldung.jpa.simple.entity.Foo;
+import com.baeldung.jpa.simple.model.Foo;
 import com.baeldung.jpa.simple.service.IFooService;
 
 @RunWith(SpringRunner.class)

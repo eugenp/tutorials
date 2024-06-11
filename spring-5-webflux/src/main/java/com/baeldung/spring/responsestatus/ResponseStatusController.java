@@ -18,18 +18,18 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
 @RestController
 public class ResponseStatusController {
 
-    @GetMapping(value = "/ok", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @GetMapping(value = "/ok", produces = MediaType.APPLICATION_JSON_VALUE)
     public Flux<String> ok() {
         return Flux.just("ok");
     }
 
-    @GetMapping(value = "/no-content", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @GetMapping(value = "/no-content", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public Flux<String> noContent() {
         return Flux.empty();
     }
 
-    @GetMapping(value = "/accepted", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @GetMapping(value = "/accepted", produces = MediaType.APPLICATION_JSON_VALUE)
     public Flux<String> accepted(ServerHttpResponse response) {
         response.setStatusCode(HttpStatus.ACCEPTED);
         return Flux.just("accepted");

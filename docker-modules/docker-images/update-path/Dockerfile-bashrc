@@ -1,5 +1,0 @@
-FROM ubuntu:latest
-RUN echo $PATH
-RUN echo "export PATH=$PATH:/etc/profile" >> ~/.bashrc
-RUN cat ~/.bashrc
-RUN echo $PATH

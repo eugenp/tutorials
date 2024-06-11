@@ -8,3 +8,4 @@ This module contains articles about Gson
 - [Resolving Gson’s “Multiple JSON Fields” Exception](https://www.baeldung.com/java-gson-multiple-json-fields-exception)
 - [Using Static Methods Instead of Deprecated JsonParser](https://www.baeldung.com/java-static-methods-jsonparser-replacement)
 - [Gson TypeToken With Dynamic List Item Type](https://www.baeldung.com/gson-typetoken-dynamic-list-item-type)
+- [Polymorphism with Gson](https://www.baeldung.com/gson-polymorphism)

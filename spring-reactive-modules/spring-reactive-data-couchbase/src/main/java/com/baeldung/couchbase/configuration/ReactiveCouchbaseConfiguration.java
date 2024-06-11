@@ -1,16 +1,14 @@
 package com.baeldung.couchbase.configuration;
 
-import com.couchbase.client.java.env.CouchbaseEnvironment;
-import com.couchbase.client.java.env.DefaultCouchbaseEnvironment;
-
-import org.springframework.context.annotation.Bean;
-import org.springframework.data.couchbase.config.AbstractReactiveCouchbaseConfiguration;
-import org.springframework.data.couchbase.config.BeanNames;
-import org.springframework.data.couchbase.repository.support.IndexManager;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.couchbase.config.AbstractCouchbaseConfiguration;
+import org.springframework.data.couchbase.repository.config.EnableReactiveCouchbaseRepositories;
 
 import java.util.List;
 
-public abstract class ReactiveCouchbaseConfiguration extends AbstractReactiveCouchbaseConfiguration {
+@Configuration
+@EnableReactiveCouchbaseRepositories
+public abstract class ReactiveCouchbaseConfiguration extends AbstractCouchbaseConfiguration {
 
     private CouchbaseProperties couchbaseProperties;
 
@@ -19,30 +17,23 @@ public abstract class ReactiveCouchbaseConfiguration extends AbstractReactiveCou
     }
 
     @Override
-    protected List<String> getBootstrapHosts() {
-        return couchbaseProperties.getBootstrapHosts();
+    public String getConnectionString() {
+        return String.join(",", couchbaseProperties.getBootstrapHosts());
     }
 
     @Override
-    protected String getBucketName() {
+    public String getUserName() {
         return couchbaseProperties.getBucketName();
     }
 
     @Override
-    protected String getBucketPassword() {
+    public String getPassword() {
         return couchbaseProperties.getBucketPassword();
     }
 
     @Override
-    public CouchbaseEnvironment couchbaseEnvironment() {
-        return DefaultCouchbaseEnvironment
-          .builder()
-          .bootstrapHttpDirectPort(couchbaseProperties.getPort())
-          .build();
+    public String getBucketName() {
+        return couchbaseProperties.getBucketName();
     }
-    
-    @Bean(name = BeanNames.COUCHBASE_INDEX_MANAGER)
-    public IndexManager couchbaseIndexManager() {
-        return new IndexManager(true, true, false);
-    }
+
 }

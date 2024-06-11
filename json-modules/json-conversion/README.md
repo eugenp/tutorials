@@ -8,3 +8,6 @@ This module contains articles about JSON Conversions
 - [Convert Byte Array to JSON and Vice Versa in Java](https://www.baeldung.com/java-json-byte-array-conversion)
 - [Preventing Gson from Expressing Integers as Floats](https://www.baeldung.com/java-gson-prevent-expressing-integers-as-floats)
 - [Simplified Array Operations on JsonNode Without Typecasting in Jackson](https://www.baeldung.com/java-jsonnode-persistence-simplified-array-operations)
+- [How to Convert Excel to JSON in Java](https://www.baeldung.com/java-excel-json-conversion)
+- [Include null Value in JSON Serialization](https://www.baeldung.com/java-json-null-serialization)
+- [Convert Jackson JsonNode to Typed Collection](https://www.baeldung.com/java-jackson-jsonnode-collection)

@@ -1,6 +1,6 @@
 package com.baeldung.spring.push.controller;
 
-import javax.servlet.http.PushBuilder;
+import jakarta.servlet.http.PushBuilder;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

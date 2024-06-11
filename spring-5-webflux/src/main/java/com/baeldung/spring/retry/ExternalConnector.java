@@ -3,6 +3,7 @@ package com.baeldung.spring.retry;
 import java.time.Duration;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -24,7 +25,7 @@ public class ExternalConnector {
             .uri(PATH_BY_ID, stockId)
             .accept(MediaType.APPLICATION_JSON)
             .retrieve()
-            .onStatus(HttpStatus::is5xxServerError, response -> Mono.error(new ServiceException("Server error", response.rawStatusCode())))
+            .onStatus(HttpStatusCode::is5xxServerError, response -> Mono.error(new ServiceException("Server error", response.statusCode().value())))
             .bodyToMono(String.class)
             .retryWhen(Retry.backoff(3, Duration.ofSeconds(2))
                 .filter(throwable -> throwable instanceof ServiceException)

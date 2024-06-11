@@ -1,0 +1,9 @@
+# This configuration is intended for development purpose, it's **your** responsibility to harden it for production
+name: carsapp
+services:
+  hazelcast-management-center:
+    image: hazelcast/management-center:5.4.1
+    # If you want to expose these ports outside your dev PC,
+    # remove the "127.0.0.1:" prefix
+    ports:
+      - 127.0.0.1:8180:8080

@@ -48,7 +48,7 @@
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
+            <artifactId>mockito-core</artifactId>
             <version>${mockito.version}</version>
             <scope>test</scope>
         </dependency>
@@ -100,11 +100,10 @@
         <jakartaee-api.version>9.0.0</jakartaee-api.version>
         <krazo.version>2.0.0</krazo.version>
         <jakarta.mvc-api.version>2.0.0</jakarta.mvc-api.version>
-        <junit.jupiter.version>5.8.2</junit.jupiter.version>
+        <junit.jupiter.version>5.10.2</junit.jupiter.version>
         <local.glassfish.home>C:/glassfish6</local.glassfish.home>
         <local.glassfish.user>admin</local.glassfish.user>
         <local.glassfish.domain>mvn-domain</local.glassfish.domain>
-        <mockito.version>1.10.19</mockito.version>
         <local.glassfish.passfile>
             ${local.glassfish.home}\\domains\\${local.glassfish.domain}\\config\\domain-passwords
         </local.glassfish.passfile>

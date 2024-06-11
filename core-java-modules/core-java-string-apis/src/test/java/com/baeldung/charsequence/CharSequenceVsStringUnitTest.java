@@ -1,19 +1,22 @@
 package com.baeldung.charsequence;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertTrue;
-
 import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 public class CharSequenceVsStringUnitTest {
 
     @Test
-    public void givenUsingString_whenInstantiatingString_thenWrong() {
-        CharSequence firstString = "bealdung";
-        String secondString = "baeldung";
+    public void givenSameValue_whenInstantiatingStringWithConstructor_thenDifferentObjects() {
+        String string1 = "baeldung";
+        String string2 = "baeldung";
 
-        assertNotEquals(firstString, secondString);
+        assertEquals(string1, string2);
+        assertSame(string1, string2);
+
+        String string3 = new String("baeldung");
+        assertEquals(string1, string3);
+        assertNotSame(string1, string3);
     }
 
     @Test

@@ -1,0 +1,23 @@
+name: baeldung-testing-oauth2
+services:
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:24.0.0
+    volumes:
+      - ./keycloak/import/:/opt/keycloak/data/import/
+    command:
+    - start-dev
+    - --import-realm
+    ports:
+      - 8080:8080
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
+      KC_HTTP_PORT: 8080
+      KC_HOSTNAME_URL: http://localhost:8080
+      KC_HOSTNAME_ADMIN_URL: http://localhost:8080
+      KC_HTTP_RELATIVE_PATH: /
+      #KC_LOG_LEVEL: DEBUG
+    container_name: baeldung-testing-oauth2
+    extra_hosts:
+    - "host.docker.internal:host-gateway"

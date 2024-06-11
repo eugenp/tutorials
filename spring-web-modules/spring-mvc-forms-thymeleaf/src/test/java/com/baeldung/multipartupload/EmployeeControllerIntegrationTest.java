@@ -1,8 +1,6 @@
 package com.baeldung.multipartupload;
 
 import org.junit.jupiter.api.Test;
-import org.mockito.BDDMockito;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -10,7 +8,6 @@ import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-import static org.apache.http.entity.ContentType.DEFAULT_BINARY;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.multipart;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -18,7 +15,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @EnableWebMvc
 public class EmployeeControllerIntegrationTest {
 
-    private static final MockMultipartFile A_FILE = new MockMultipartFile("document", null, DEFAULT_BINARY.toString(), "Employee Record".getBytes());
+    private static final MockMultipartFile A_FILE = new MockMultipartFile("document", null, "application/octet-stream", "Employee Record".getBytes());
 
     @Autowired
     private MockMvc mockMvc;

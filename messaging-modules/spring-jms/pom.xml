@@ -4,8 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-jms</artifactId>
-    <name>spring-jms</name>
     <packaging>war</packaging>
+    <name>spring-jms</name>
     <description>Introduction to Spring JMS</description>
 
     <parent>
@@ -44,7 +44,7 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
-            <version>${mockito-core.version}</version>
+            <version>${mockito.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -83,10 +83,9 @@
         <activemq.version>5.14.1</activemq.version>
         <spring-boot-test.version>1.5.10.RELEASE</spring-boot-test.version>
         <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
-        <mockito-core.version>4.6.1</mockito-core.version>
         <activemq-junit.version>5.16.5</activemq-junit.version>
         <testcontainers.version>1.17.3</testcontainers.version>
-        <junit-jupiter.version>5.10.1</junit-jupiter.version>
+        <junit-jupiter.version>5.10.2</junit-jupiter.version>
     </properties>
 
 </project>

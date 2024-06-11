@@ -9,7 +9,7 @@ import org.springframework.mock.web.MockMultipartFile;
 class CustomMultipartFileUnitTest {
 
     @Test
-    void whenProvidingByteArray_thenMultipartFileCreated() throws IOException {
+    void whenProvidingByteArray_thenMultipartFileCreated() {
         byte[] inputArray = "Test String".getBytes();
         CustomMultipartFile customMultipartFile = new CustomMultipartFile(inputArray);
         Assertions.assertFalse(customMultipartFile.isEmpty());
@@ -18,21 +18,21 @@ class CustomMultipartFileUnitTest {
     }
 
     @Test
-    void whenProvidingEmptyByteArray_thenMockMultipartFileIsEmpty() throws IOException {
+    void whenProvidingEmptyByteArray_thenMockMultipartFileIsEmpty() {
         byte[] inputArray = "".getBytes();
         MockMultipartFile mockMultipartFile = new MockMultipartFile("tempFileName", inputArray);
         Assertions.assertTrue(mockMultipartFile.isEmpty());
     }
 
     @Test
-    void whenProvidingNullByteArray_thenMockMultipartFileIsEmpty() throws IOException {
+    void whenProvidingNullByteArray_thenMockMultipartFileIsEmpty() {
         byte[] inputArray = null;
         MockMultipartFile mockMultipartFile = new MockMultipartFile("tempFileName", inputArray);
         Assertions.assertTrue(mockMultipartFile.isEmpty());
     }
 
     @Test
-    void whenProvidingByteArray_thenMultipartFileInputSizeMatches() throws IOException {
+    void whenProvidingByteArray_thenMultipartFileInputSizeMatches() {
         byte[] inputArray = "Testing String".getBytes();
         CustomMultipartFile customMultipartFile = new CustomMultipartFile(inputArray);
         Assertions.assertEquals(inputArray.length, customMultipartFile.getSize());

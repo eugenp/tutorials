@@ -92,6 +92,11 @@
             <artifactId>commons-collections4</artifactId>
             <version>${commons-collections4.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.mvel</groupId>
+            <artifactId>mvel2</artifactId>
+            <version>${mvel2.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -113,6 +118,7 @@
         <handlebars.version>4.3.1</handlebars.version>
         <spring.version>5.3.25</spring.version>
         <hsqldb.version>2.7.1</hsqldb.version>
+        <mvel2.version>2.5.2.Final</mvel2.version>
     </properties>
 
 </project>

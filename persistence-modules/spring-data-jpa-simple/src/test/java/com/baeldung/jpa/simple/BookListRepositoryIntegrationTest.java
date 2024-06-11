@@ -1,14 +1,15 @@
 package com.baeldung.jpa.simple;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.baeldung.jpa.simple.entity.Book;
+import com.baeldung.jpa.simple.model.Book;
 import com.baeldung.jpa.simple.repository.BookListRepository;
 
 @SpringBootTest(classes = JpaApplication.class)
@@ -25,6 +26,6 @@ class BookListRepositoryIntegrationTest {
         bookListRepository.saveAll(Arrays.asList(book1, book2, book3));
 
         List<Book> books = bookListRepository.findBooksByAuthor("John Doe");
-        Assertions.assertEquals(3, books.size());
+        assertEquals(3, books.size());
     }
 }

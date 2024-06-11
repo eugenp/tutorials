@@ -3,7 +3,7 @@ package com.baeldung.jpa.simple.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.baeldung.jpa.simple.entity.Foo;
+import com.baeldung.jpa.simple.model.Foo;
 import com.baeldung.jpa.simple.repository.IFooDAO;
 
 @Service

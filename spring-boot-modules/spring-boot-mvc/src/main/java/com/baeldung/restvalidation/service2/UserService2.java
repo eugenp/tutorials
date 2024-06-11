@@ -3,8 +3,7 @@ package com.baeldung.restvalidation.service2;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.validation.Valid;
-
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

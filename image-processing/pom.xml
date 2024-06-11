@@ -12,6 +12,13 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
+    <repositories>
+        <repository>
+            <id>maven</id>
+            <url>https://maven.openimaj.org/</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>net.imagej</groupId>

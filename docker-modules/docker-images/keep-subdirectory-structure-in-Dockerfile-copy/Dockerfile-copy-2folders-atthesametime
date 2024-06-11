@@ -1,3 +1,0 @@
-FROM ubuntu:latest
-COPY folder1/ folder2/ /workdir/
-RUN ls --recursive /workdir/

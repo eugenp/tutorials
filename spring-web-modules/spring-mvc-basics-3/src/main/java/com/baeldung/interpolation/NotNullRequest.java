@@ -1,6 +1,6 @@
 package com.baeldung.interpolation;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 public class NotNullRequest {
 

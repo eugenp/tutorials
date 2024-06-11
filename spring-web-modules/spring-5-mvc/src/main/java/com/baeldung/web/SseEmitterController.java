@@ -14,7 +14,7 @@ import com.baeldung.Constants;
 
 @Controller
 public class SseEmitterController {
-    private ExecutorService nonBlockingService = Executors.newCachedThreadPool();
+    private final ExecutorService nonBlockingService = Executors.newCachedThreadPool();
 
     @GetMapping(Constants.API_SSE)
     public SseEmitter handleSse() {

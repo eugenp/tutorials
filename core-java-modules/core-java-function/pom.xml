@@ -50,7 +50,6 @@
 
     <properties>
         <mockito-inline.version>3.8.0</mockito-inline.version>
-        <assertj.version>3.22.0</assertj.version>
         <vavr.version>0.10.4</vavr.version>
     </properties>
 

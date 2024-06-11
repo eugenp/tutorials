@@ -13,12 +13,11 @@
     </parent>
 
     <modules>
-        <module>jkube-demo</module>
         <module>k8s-intro</module>
         <module>k8s-admission-controller</module>
         <module>kubernetes-spring</module>
         <module>k8s-java-heap-dump</module>
-        <module>k8s-operator</module>
+<!--        <module>k8s-operator</module>--> <!-- Migrated to heavy profile -->
     </modules>
 
 </project>

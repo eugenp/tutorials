@@ -13,14 +13,14 @@ import org.springframework.stereotype.Component;
   matchIfMissing = true)
 @Component
 public class CommandLineTaskExecutor implements CommandLineRunner {
-    private TaskService taskService;
+    private final TaskService taskService;
 
     public CommandLineTaskExecutor(TaskService taskService) {
         this.taskService = taskService;
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         taskService.execute("command line runner task");
     }
 }
