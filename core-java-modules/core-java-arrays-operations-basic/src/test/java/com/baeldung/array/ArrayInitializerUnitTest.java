@@ -1,6 +1,22 @@
 package com.baeldung.array;
 
-import static com.baeldung.array.ArrayInitializer.*;
+import static com.baeldung.array.ArrayInitializer.initializeArrayAtTimeOfDeclarationMethod1;
+import static com.baeldung.array.ArrayInitializer.initializeArrayAtTimeOfDeclarationMethod2;
+import static com.baeldung.array.ArrayInitializer.initializeArrayAtTimeOfDeclarationMethod3;
+import static com.baeldung.array.ArrayInitializer.initializeArrayInLoop;
+import static com.baeldung.array.ArrayInitializer.initializeArrayRangeUsingArraysFill;
+import static com.baeldung.array.ArrayInitializer.initializeArrayUsingArraysCopy;
+import static com.baeldung.array.ArrayInitializer.initializeArrayUsingArraysFill;
+import static com.baeldung.array.ArrayInitializer.initializeArrayUsingArraysSetAll;
+import static com.baeldung.array.ArrayInitializer.initializeArrayUsingArraysUtilClone;
+import static com.baeldung.array.ArrayInitializer.initializeLargerArrayUsingArraysCopy;
+import static com.baeldung.array.ArrayInitializer.initializeMultiDimensionalArrayInLoop;
+import static com.baeldung.array.ArrayInitializer.initializeEmptyTwoDimensionalArray;
+import static com.baeldung.array.ArrayInitializer.initializeEmptyArray;
+import static com.baeldung.array.ArrayInitializer.initializeArrayUsingArraysStream;
+import static com.baeldung.array.ArrayInitializer.initializeArrayOfStringTypeUsingStreamApi;
+import static com.baeldung.array.ArrayInitializer.initializeArrayUsingIntStream;
+import static com.baeldung.array.ArrayInitializer.initializeArrayOfDoubleTypeUsingStreamApi;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
