@@ -7,11 +7,10 @@ public class ShoppingCart implements Cloneable {
     private String cartName;
     private List<String> items;
     
-    public ShoppingCart() {
-        super();
-    }
+    public ShoppingCart() { }
     
     public ShoppingCart(String cartName, List<String> items) {
+	this();
         this.cartName = cartName;
         this.items = items;
     }
