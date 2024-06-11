@@ -7,7 +7,7 @@ public class ObjectCopyService {
 
     public ShoppingCart shallowCopy(ShoppingCart shoppingCart, String cartName) {
 
-        ShoppingCart shallowCopy = shoppingCart;
+        ShoppingCart shallowCopy = new ShoppingCart(shoppingCart.getCartName(), shoppingCart.getItems());
         
         shallowCopy.setCartName(cartName);
 

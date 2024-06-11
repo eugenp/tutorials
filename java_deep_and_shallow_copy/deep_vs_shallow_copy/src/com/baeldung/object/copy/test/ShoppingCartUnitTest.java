@@ -19,7 +19,7 @@ class ShoppingCartUnitTest {
         shallowCopy.getItems()
             .add("Butter");
 
-        Assert.assertTrue(shallowCopy.getCartName()
+        Assert.assertFalse(shallowCopy.getCartName()
             .equals(shoppingCart.getCartName()));
         Assert.assertTrue(shoppingCart.getItems()
             .equals(shallowCopy.getItems()));
