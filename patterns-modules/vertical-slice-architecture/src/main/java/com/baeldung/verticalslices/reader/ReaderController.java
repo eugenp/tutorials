@@ -3,6 +3,7 @@ package com.baeldung.verticalslices.reader;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.baeldung.hexagonal.dto.ArticleDto;
@@ -12,6 +13,7 @@ import com.baeldung.hexagonal.dto.ArticleDto;
 class ReaderController {
 
     private final ReadArticleUseCase viewArticle;
+    private final SearchArticleUseCase searchArticle;
 
     @GetMapping("{id}")
     ResponseEntity<ArticleDto> readArticle(@PathVariable Long id) {
@@ -19,7 +21,13 @@ class ReaderController {
         return null;
     }
 
-    ReaderController(ReadArticleUseCase viewArticle) {
+    @GetMapping
+    ResponseEntity<SearchArticleUseCase.Article> searchArticle(@RequestParam String slug) {
+        return ResponseEntity.of(searchArticle.search(slug));
+    }
+
+    ReaderController(ReadArticleUseCase viewArticle, SearchArticleUseCase searchArticle) {
         this.viewArticle = viewArticle;
+        this.searchArticle = searchArticle;
     }
 }
