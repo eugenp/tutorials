@@ -24,7 +24,8 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 public class IntegrationTest {
     private static final String FILES_GET_ENDPOINT = "/bael7724/v1/files/{id}";
     private static final String BLOCKING_FILE_SEARCH_ENDPOINT = "/bael7724/v1/files/{id}/blocking-search";
-    private static final String NON_BLOCKING_FILE_SEARCH_ENDPOINT = "/bael7724/v1/files/{id}/blocking-search";
+    private static final String WORKABLE_BLOCKING_FILE_SEARCH_ENDPOINT = "/bael7724/v1/files/{id}/workable-blocking-search";
+    private static final String NON_BLOCKING_FILE_SEARCH_ENDPOINT = "/bael7724/v1/files/{id}/non-blocking-search";
 
     @Value("${files.base.dir:/tmp/bael-7724}")
     private String filesBaseDir;
@@ -95,8 +96,9 @@ public class IntegrationTest {
         "GIVEN" +
         "   1. A valid file name" +
         "   2. The file exits in the configured files.base.dir" +
+        "   3. A Search Term" +
         "WHEN" +
-        "   1. Such a file is requested by its name" +
+        "   1. When a request is received to search for this search term in the given file" +
         "THEN" +
         "   1. Expect a 500 response form the server")
     void testReadingTheFileUsingTheBlockingAPILeadsToServerError() {
@@ -121,5 +123,38 @@ public class IntegrationTest {
             .exchange()
             .expectStatus()
             .is5xxServerError();
+    }
+
+    @Test
+    @DisplayName("Test searching a file using the workable blocking API Returns a 200" +
+        "GIVEN" +
+        "   1. A valid file name" +
+        "   2. The file exits in the configured files.base.dir" +
+        "   3. A Search Term" +
+        "WHEN" +
+        "   1. When a request is received to search for this search term in the given file" +
+        "THEN" +
+        "   1. Expect a 200 response form the server")
+    void testSearchingAFileUsingTheWorkableBlockingAPIReturnsA200() {
+        // Given
+        String validFileName = "robots.txt";
+        Optional<String> expectedFileContent = getBytesFromAResourceFile(validFileName);
+
+        if (!expectedFileContent.isPresent()) {
+            fail("Unable to load expected test file content. FileName=" + validFileName);
+        }
+
+        String searchTerm = expectedFileContent.get().substring(3, 5);
+
+        setupATestFileWithContent(validFileName, expectedFileContent.get());
+
+        // When
+        webTestClient.get()
+            .uri(uriBuilder -> uriBuilder.path(WORKABLE_BLOCKING_FILE_SEARCH_ENDPOINT)
+                .queryParam("term", searchTerm)
+                .build(validFileName))
+            .exchange()
+            .expectStatus()
+            .is2xxSuccessful();
     }
 }
