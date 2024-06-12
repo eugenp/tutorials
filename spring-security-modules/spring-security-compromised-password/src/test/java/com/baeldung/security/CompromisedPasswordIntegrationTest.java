@@ -1,8 +1,11 @@
 package com.baeldung.security;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.util.Set;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +17,10 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 
+import com.baeldung.security.dto.UserCreationRequestDto;
+
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.Validator;
 import lombok.SneakyThrows;
 import net.bytebuddy.utility.RandomString;
 
@@ -25,6 +32,9 @@ class CompromisedPasswordIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;
+
+    @Autowired
+    private Validator validator;
 
     @Test
     @SneakyThrows
@@ -60,6 +70,19 @@ class CompromisedPasswordIntegrationTest {
         String apiPath = "/users";
         mockMvc.perform(post(apiPath).contentType(MediaType.APPLICATION_JSON).content(requestBody))
                 .andExpect(status().isOk());
+    }
+
+    @Test
+    void whenPasswordCompromised_thenValidationFails() {
+        UserCreationRequestDto request = new UserCreationRequestDto();
+        request.setEmailId(RandomString.make() + "@baeldung.it");
+        request.setPassword(PasswordCheckerSimulator.FAILURE_KEYWORD + RandomString.make());
+
+        Set<ConstraintViolation<UserCreationRequestDto>> violations = validator.validate(request);
+
+        assertThat(violations).isNotEmpty();
+        assertThat(violations).extracting(ConstraintViolation::getMessage)
+                .contains("The provided password is compromised and cannot be used.");
     }
 
 }
