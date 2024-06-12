@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import com.baeldung.math.percentagedifferecebetweentwonumbers.PercentageDifferenceBetweenTwoNumbers;
 import org.junit.jupiter.api.Test;
 
-public class PercentageDifferenceBetweenTwoNumbersTest {
+class PercentageDifferenceBetweenTwoNumbersTest {
 
   @Test
   void calculatePercentageDifferenceBetweenTwoNumbers() {
@@ -73,7 +73,7 @@ public class PercentageDifferenceBetweenTwoNumbersTest {
   void whenV1AndV2AreSwapped_thenPercentageDifferenceIsSame() {
     double V1 = 70.0;
     double V2 = 50.0;
-    double expecgit ted = PercentageDifferenceBetweenTwoNumbers.calculatePercentageDifference(V1, V2);
+    double expected = PercentageDifferenceBetweenTwoNumbers.calculatePercentageDifference(V1, V2);
     double result = PercentageDifferenceBetweenTwoNumbers.calculatePercentageDifference(V2, V1);
     assertEquals(
         expected,
