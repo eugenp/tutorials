@@ -30,6 +30,7 @@
         <module>flyway-repair</module>
         <module>hbase</module>
         <module>hibernate5</module>
+        <module>hibernate6</module>
         <module>hibernate-mapping</module> <!-- long running -->
         <module>hibernate-mapping-2</module>
         <module>hibernate-annotations</module>
@@ -130,6 +131,8 @@
         <module>spring-data-jpa-repo-3</module>
         <module>spring-boot-persistence-4</module>
         <module>hibernate-annotations-2</module>
+        <module>hibernate-reactive</module>
+
     </modules>
 
     <properties>
