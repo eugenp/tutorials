@@ -1,0 +1,11 @@
+<div class="alerts" role="alert">
+  @for (alert of alerts(); track $index) {
+    <div [ngClass]="setClasses(alert)">
+      @if (alert.message) {
+        <ngb-alert [type]="alert.type" (closed)="close(alert)">
+          <pre [innerHTML]="alert.message"></pre>
+        </ngb-alert>
+      }
+    </div>
+  }
+</div>

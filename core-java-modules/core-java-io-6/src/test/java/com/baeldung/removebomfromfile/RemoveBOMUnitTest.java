@@ -1,7 +1,8 @@
 package com.baeldung.removebomfromfile;
 
-import org.apache.commons.io.input.BOMInputStream;
 import org.junit.Test;
+
+import org.apache.commons.io.input.BOMInputStream;
 
 import java.io.*;
 import java.net.URISyntaxException;
@@ -12,10 +13,11 @@ import java.nio.file.Paths;
 import java.util.Objects;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class RemoveBOMUnitTest {
     String filePath;
-    String expectedContent = "This is a test file with BOM.";
+    String expectedContent = "This is a test file with a UTF-8 BOM.";
 
     {
         try {
@@ -27,17 +29,17 @@ public class RemoveBOMUnitTest {
 
     @Test
     public void givenFileWithBOM_whenUsingInputStreamAndReader_thenRemoveBOM() throws IOException {
-        try (InputStream is = new FileInputStream(filePath);
-             Reader reader = new InputStreamReader(is, StandardCharsets.UTF_8)) {
-
+        try (InputStream is = new FileInputStream(filePath)) {
             byte[] bom = new byte[3];
             int n = is.read(bom, 0, bom.length);
 
+            Reader reader;
             if (n == 3 && (bom[0] & 0xFF) == 0xEF && (bom[1] & 0xFF) == 0xBB && (bom[2] & 0xFF) == 0xBF) {
-                assertEquals(expectedContent, readFully(reader));
+                reader = new InputStreamReader(is, StandardCharsets.UTF_8);
             } else {
-                assertEquals(expectedContent, readFully(new InputStreamReader(new FileInputStream(filePath), StandardCharsets.UTF_8)));
+                reader = new InputStreamReader(new FileInputStream(filePath), StandardCharsets.UTF_8);
             }
+            assertEquals(expectedContent, readFully(reader));
         }
     }
 
@@ -45,6 +47,9 @@ public class RemoveBOMUnitTest {
     public void givenFileWithBOM_whenUsingApacheCommonsIO_thenRemoveBOM() throws IOException {
         try (BOMInputStream bomInputStream = new BOMInputStream(new FileInputStream(filePath));
              Reader reader = new InputStreamReader(bomInputStream, StandardCharsets.UTF_8)) {
+
+            assertTrue(bomInputStream.hasBOM());
+
             assertEquals(expectedContent, readFully(reader));
         }
     }

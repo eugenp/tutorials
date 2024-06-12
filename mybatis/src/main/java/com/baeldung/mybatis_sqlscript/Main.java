@@ -1,4 +1,4 @@
-package org.baeldung.mybatis_sqlscript;
+package com.baeldung.mybatis_sqlscript;
 
 import org.apache.ibatis.jdbc.ScriptRunner;
 
