@@ -9,14 +9,6 @@ public class Patient implements Serializable, Cloneable{
     private int pAge;
     private MedicalTestResult pMedical_test;
 
-    public MedicalTestResult getMedical_test() {
-        return pMedical_test;
-    }
-
-    public void setMedical_test(MedicalTestResult pMedical_test) {
-        this.pMedical_test = pMedical_test;
-    }
-
 
     public Patient(String pName, int pID, String pGender, int pAge, MedicalTestResult pMedical_test) {
         this.pName = pName;
@@ -57,6 +49,15 @@ public class Patient implements Serializable, Cloneable{
     public void setpGender(String pGender) {
         this.pGender = pGender;
     }
+
+    public MedicalTestResult getMedical_test() {
+        return pMedical_test;
+    }
+
+    public void setMedical_test(MedicalTestResult pMedical_test) {
+        this.pMedical_test = pMedical_test;
+    }
+
 
 
     @Override
