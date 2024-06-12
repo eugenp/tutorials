@@ -3,13 +3,12 @@ package com.baeldung.security.exception;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.security.authentication.password.CompromisedPasswordException;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.server.ResponseStatusException;
-import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-@ControllerAdvice
-public class ExceptionResponseHandler extends ResponseEntityExceptionHandler {
+@RestControllerAdvice
+public class ExceptionResponseHandler {
 
     @ExceptionHandler(CompromisedPasswordException.class)
     public ProblemDetail handle(CompromisedPasswordException exception) {
