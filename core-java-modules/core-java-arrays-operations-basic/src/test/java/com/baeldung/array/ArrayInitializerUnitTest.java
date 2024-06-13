@@ -14,9 +14,9 @@ import static com.baeldung.array.ArrayInitializer.initializeMultiDimensionalArra
 import static com.baeldung.array.ArrayInitializer.initializeEmptyTwoDimensionalArray;
 import static com.baeldung.array.ArrayInitializer.initializeEmptyArray;
 import static com.baeldung.array.ArrayInitializer.initializeArrayUsingArraysStream;
-import static com.baeldung.array.ArrayInitializer.initializeArrayOfStringTypeUsingStreamApi;
 import static com.baeldung.array.ArrayInitializer.initializeArrayUsingIntStream;
 import static com.baeldung.array.ArrayInitializer.initializeArrayOfDoubleTypeUsingStreamApi;
+import static com.baeldung.array.ArrayInitializer.initializeTwoDimensionalArrayUsingStream;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -126,11 +126,6 @@ public class ArrayInitializerUnitTest {
     }
 
     @Test
-    public void whenInitializeArrayOfStringTypeWithStreamApi_thenCorrect() {
-        assertEquals(5, initializeArrayOfStringTypeUsingStreamApi().length);
-    }
-
-    @Test
     public void whenInitializeArrayOfIntegerUsingIntStream_thenCorrect() {
         assertArrayEquals(new int[] { 1, 2, 3, 4, 5 }, initializeArrayUsingIntStream());
     }
@@ -138,5 +133,18 @@ public class ArrayInitializerUnitTest {
     @Test
     public void whenInitializeArrayOfDoubleUsingStreamApi_thenCorrect() {
         assertArrayEquals(new double[] { 1.1, 2.2, 3.3, 4.4, 5.5 }, initializeArrayOfDoubleTypeUsingStreamApi(), 0.0);
+    }
+
+    @Test
+    public void whenInitializeEmptyThreeDimensionalArray_thenCorrect() {
+        int[][][] threeDimensionalArray = new int[2][3][4];
+        assertEquals(2, threeDimensionalArray.length);
+        assertEquals(3, threeDimensionalArray[0].length);
+        assertEquals(4, threeDimensionalArray[0][0].length);
+    }
+
+    @Test
+    public void whenInitializeTwoDimensionalArrayWithStreamApi_thenCorrect() {
+        assertArrayEquals(new int[][] {{0, 1, 2, 3}, {4, 5, 6, 7}, {8, 9, 10, 11}}, initializeTwoDimensionalArrayUsingStream());
     }
 }

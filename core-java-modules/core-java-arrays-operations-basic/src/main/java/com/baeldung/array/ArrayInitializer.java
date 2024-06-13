@@ -93,15 +93,31 @@ public class ArrayInitializer {
     }
 
     static int[] initializeArrayUsingIntStream() {
-        int [] values = IntStream.of(1, 2, 3, 4, 5).toArray();
+        int[] values = IntStream.of(1, 2, 3, 4, 5)
+            .toArray();
         return values;
     }
 
-    static String[] initializeArrayOfStringTypeUsingStreamApi() {
-        return Arrays.stream(new String[] { "India", "USA", "Japan", "UK", "Germany" }).toArray(String[]::new);
+    static double[] initializeArrayOfDoubleTypeUsingStreamApi() {
+        return Arrays.stream(new double[] { 1.1, 2.2, 3.3, 4.4, 5.5 })
+            .toArray();
     }
 
-    static double [] initializeArrayOfDoubleTypeUsingStreamApi() {
-        return Arrays.stream(new double[] { 1.1, 2.2, 3.3, 4.4, 5.5 }).toArray();
+    static int[][][] initializeEmptyThreeDimensionalArray() {
+        return new int[2][3][4];
     }
+
+    static int[][] initializeTwoDimensionalArrayUsingStream() {
+        int[][] matrix = new int[3][4];
+        for (int i = 0; i < matrix.length; i++) {
+            matrix[i] = IntStream.of(i * 4, i * 4 + 1, i * 4 + 2, i * 4 + 3)
+                .toArray();
+        }
+        return matrix;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(Arrays.deepToString(initializeTwoDimensionalArrayUsingStream()));
+    }
+
 }
