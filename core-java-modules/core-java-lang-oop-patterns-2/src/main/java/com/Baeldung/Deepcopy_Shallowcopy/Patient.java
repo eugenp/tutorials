@@ -9,6 +9,14 @@ public class Patient implements Serializable, Cloneable{
     private int pAge;
     private MedicalTestResult pMedical_test;
 
+    public MedicalTestResult getMedical_test() {
+        return pMedical_test;
+    }
+
+    public void setMedical_test(MedicalTestResult pMedical_test) {
+        this.pMedical_test = pMedical_test;
+    }
+
 
     public Patient(String pName, int pID, String pGender, int pAge, MedicalTestResult pMedical_test) {
         this.pName = pName;
@@ -50,19 +58,16 @@ public class Patient implements Serializable, Cloneable{
         this.pGender = pGender;
     }
 
-    public MedicalTestResult getMedical_test() {
-        return pMedical_test;
-    }
-
-    public void setMedical_test(MedicalTestResult pMedical_test) {
-        this.pMedical_test = pMedical_test;
-    }
-
-
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
-        this.pMedical_test = (MedicalTestResult) pMedical_test.clone();
-        return super.clone();
+    public Object clone() throws CloneNotSupportedException{
+        Patient patient1 = null;
+        try {
+            patient1 = (Patient) super.clone();
+        }catch (CloneNotSupportedException e){
+            patient1 = new Patient(this.getpName(), this.getpID(), this.getpGender(), this.getpAge(), this.getMedical_test());
+        }
+        patient1.pMedical_test = (MedicalTestResult) this.pMedical_test.clone();
+        return patient1;
     }
 }

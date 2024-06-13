@@ -13,32 +13,21 @@ public class ShallowCopyUnitTest {
     }
 
     @Test
-    void copyShallowOjectAndPassingTheValues_ThenObjectShouldNotBeTheSame() throws CloneNotSupportedException {
+    void copyShallowOjectAndPassingTheValues_thenObjectShouldNotBeTheSame() throws CloneNotSupportedException {
         MedicalTestResult medicalTest = new MedicalTestResult("BP", "TEST-H/05", 20.0);
-        Patient p1 = new Patient("James Balli", 101, "Male", 36, medicalTest);
-        Patient copyShallowP1 = new Patient(p1.getpName(), p1.getpID(), p1.getpGender(), p1.getpAge(), medicalTest);
-        assertThat(copyShallowP1.getpName()).isNotSameAs(p1.getpName());
+        Patient patient1 = new Patient("James Balli", 101, "Male", 36, medicalTest);
+        Patient copyShallowPatient1 = new Patient(patient1.getpName(), patient1.getpID(), patient1.getpGender(), patient1.getpAge(), medicalTest);
+        assertThat(copyShallowPatient1).isNotSameAs(patient1);
     }
 
     @Test
-    void ModifyingTheOriginalObject_ThenTheObjectShouldAlsoChange() throws CloneNotSupportedException {
+    void whenModifyingTheOriginalObject_thenTheCopyObjectShouldChange() throws CloneNotSupportedException {
         MedicalTestResult medicalTest = new MedicalTestResult("BP", "TEST-H/05", 20.0);
-        Patient p1 = new Patient("James Balli", 101, "Male", 36, medicalTest);
-        Patient copyShallowP1 = new Patient(p1.getpName(), p1.getpID(), p1.getpGender(), p1.getpAge(), medicalTest);
-        p1.setpName("Steven Dremo");
-        assertThat(copyShallowP1.getpName()).isNotEqualTo(p1.getpName());
+        Patient patient1 = new Patient("James Balli", 101, "Male", 36, medicalTest);
+        Patient copyShallowPatient1 = new Patient(patient1.getpName(), patient1.getpID(), patient1.getpGender(), patient1.getpAge(), medicalTest);
+        medicalTest.setTestName("Urine");
+        assertThat(copyShallowPatient1.getMedical_test().getTestName()).isEqualTo(medicalTest.getTestName());
     }
-
-
-    @Test
-    void CopyOfShallowOjectAndPassingTheValuesUsingCloneMethod_TheObjectShouldNotAlsoBeTheSame() throws CloneNotSupportedException {
-        MedicalTestResult medicalTest = new MedicalTestResult("BP", "TEST-H/05", 20.0);
-        Patient p1 = new Patient("James Balli", 101, "Male", 36, medicalTest);
-        Patient copyShallowP1 = (Patient) p1.clone();
-        medicalTest.setTestName("Genetic");
-        assertThat(copyShallowP1.getMedical_test().getTestName()).isNotEqualTo(medicalTest.getTestName());
-    }
-
 
     @Test
     void copyShallowOjectWithSerializable() {
@@ -46,8 +35,8 @@ public class ShallowCopyUnitTest {
             ByteArrayOutputStream bos = new ByteArrayOutputStream();
             ObjectOutputStream out = new ObjectOutputStream(bos);
             MedicalTestResult medicalTest = new MedicalTestResult("BP", "TEST-H/05", 20.0);
-            Patient p1 = new Patient("James Balli", 101, "Male", 36, medicalTest);
-            out.writeObject(p1);
+            Patient patient1 = new Patient("James Balli", 101, "Male", 36, medicalTest);
+            out.writeObject(patient1);
             out.flush();
             out.close();
 

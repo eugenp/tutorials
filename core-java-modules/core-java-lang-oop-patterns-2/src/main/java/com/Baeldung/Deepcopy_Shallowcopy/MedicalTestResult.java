@@ -32,32 +32,30 @@ class MedicalTestResult implements Serializable,Cloneable {
     private String testID;
     private double testPrice;
 
-public MedicalTestResult(String testName, String testID, double testPrice){
-    this.testName = testName;
-    this.testID = testID;
-    this.testPrice = testPrice;
+    public MedicalTestResult(String testName, String testID, double testPrice) {
+        this.testName = testName;
+        this.testID = testID;
+        this.testPrice = testPrice;
+    }
+
+    @Override
+    public Object clone() {
+        try {
+            return (MedicalTestResult) super.clone();
+        } catch (CloneNotSupportedException e) {
+            return new MedicalTestResult(this.testName, this.getTestID(), this.getTestPrice());
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "MedicalTestResult{" +
+                "testName='" + testName + '\'' +
+                ", testID='" + testID + '\'' +
+                ", testPrice=" + testPrice +
+                '}';
+    }
 }
 
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        MedicalTestResult that = (MedicalTestResult) o;
-        return Double.compare(testPrice, that.testPrice) == 0 && Objects.equals(testName, that.testName) && Objects.equals(testID, that.testID);
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(testName, testID, testPrice);
-    }
-
-//    @Override
-//    public String toString() {
-//        return "MedicalTestResult{" + "test name='" + testName + "' test id='" + testID + "' test price='" + testPrice + "' }";
-//    }
-}
