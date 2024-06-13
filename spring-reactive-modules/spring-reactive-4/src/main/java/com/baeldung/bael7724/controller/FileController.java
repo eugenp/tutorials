@@ -1,5 +1,7 @@
 package com.baeldung.bael7724.controller;
 
+import java.util.function.Function;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.baeldung.bael7724.service.FileContentSearchService;
 import com.baeldung.bael7724.service.FileService;
+import com.baeldung.bael7724.util.ThreadLogger;
 
 import reactor.core.publisher.Mono;
 
@@ -34,6 +37,17 @@ public class FileController {
 
     @GetMapping(value = "/{name}/workable-blocking-search")
     Mono<Boolean> workableBlockingSearch(@PathVariable("name") String fileName, @RequestParam String term) {
-        return fileContentSearchService.workableBlockingSearch(fileName, term);
+        return fileContentSearchService.workableBlockingSearch(fileName, term)
+            .doOnNext(aBoolean -> ThreadLogger.log("1. In Controller"))
+            .map(Function.identity())
+            .doOnNext(aBoolean -> ThreadLogger.log("2. In Controller"));
+    }
+
+    @GetMapping(value = "/{name}/non-blocking-search")
+    Mono<Boolean> nonBlockingSearch(@PathVariable("name") String fileName, @RequestParam String term) {
+        return fileContentSearchService.nonBlockingSearch(fileName, term)
+            .doOnNext(aBoolean -> ThreadLogger.log("1. In Controller"))
+            .map(Function.identity())
+            .doOnNext(aBoolean -> ThreadLogger.log("2. In Controller"));
     }
 }

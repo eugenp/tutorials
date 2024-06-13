@@ -1,26 +1,22 @@
 package com.baeldung.bael7724.service;
 
-import java.time.OffsetDateTime;
-import java.time.ZoneId;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.baeldung.bael7724.util.ThreadLogger;
 
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 
 @Service
 public class FileContentSearchService {
-    private static final String MESSAGE_FORMAT = "%d. ThreadName: %s, Time: %s%n";
-    private static final String ZONE_ID = "UTC";
-
     @Autowired
     private FileService fileService;
 
     public Mono<Boolean> blockingSearch(String fileName, String searchTerm) {
         String fileContent = fileService
             .getFileContentAsString(fileName)
-            .doOnNext(content -> logThread(1))
+            .doOnNext(content -> ThreadLogger.log("1. BlockingSearch"))
             .block();
 
         boolean isSearchTermPresent = fileContent.contains(searchTerm);
@@ -29,26 +25,20 @@ public class FileContentSearchService {
     }
 
     public Mono<Boolean> workableBlockingSearch(String fileName, String searchTerm) {
-        String fileContent = fileService
-            .getFileContentAsString(fileName)
-            .doOnNext(content -> logThread(1))
-            .subscribeOn(Schedulers.boundedElastic())
-            .doOnNext(content -> logThread(2))
-            .block();
-
-        boolean isSearchTermPresent = fileContent.contains(searchTerm);
-
-        return Mono.just(isSearchTermPresent);
+        return Mono.just("")
+            .doOnNext(s -> ThreadLogger.log("1. WorkableBlockingSearch"))
+            .publishOn(Schedulers.boundedElastic())
+            .doOnNext(s -> ThreadLogger.log("2. WorkableBlockingSearch"))
+            .map(s -> fileService.getFileContentAsString(fileName)
+                .block()
+                .contains(searchTerm))
+            .doOnNext(s -> ThreadLogger.log("3. WorkableBlockingSearch"));
     }
 
     public Mono<Boolean> nonBlockingSearch(String fileName, String searchTerm) {
         return fileService.getFileContentAsString(fileName)
-            .doOnNext(content -> logThread(1))
+            .doOnNext(content -> ThreadLogger.log("1. NonBlockingSearch"))
             .map(content -> content.contains(searchTerm))
-            .doOnNext(content -> logThread(2));
-    }
-    private void logThread(int i) {
-        System.out.printf(MESSAGE_FORMAT, i, Thread.currentThread().getName(), OffsetDateTime.now(
-            ZoneId.of(ZONE_ID)));
+            .doOnNext(content -> ThreadLogger.log("2. NonBlockingSearch"));
     }
 }
