@@ -7,4 +7,11 @@ message UserEvent {
   string userId = 1;
   string eventType = 2;
   int64 timestamp = 3;
+  Address address = 4;
+}
+
+message Address {
+  string street = 1;
+  string city = 2;
+  string zipCode = 3;
 }

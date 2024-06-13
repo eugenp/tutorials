@@ -5,6 +5,15 @@
   "fields": [
     {"name": "userId", "type": "string"},
     {"name": "eventType", "type": "string"},
-    {"name": "timestamp", "type": "long"}
+    {"name": "timestamp", "type": "long"},
+    {"name": "address", "type": {
+          "type": "record",
+          "name": "Address",
+          "fields": [
+            {"name": "street", "type": "string"},
+            {"name": "city", "type": "string"},
+            {"name": "zipCode", "type": "string"}
+          ]
+	}}
   ]
 }

@@ -1,6 +1,7 @@
 package com.baeldung.apachefury.serialization;
 
 
+import com.baeldung.apachefury.event.avro.Address;
 import com.baeldung.apachefury.event.avro.UserEvent;
 import org.apache.avro.io.DatumReader;
 import org.apache.avro.io.DatumWriter;
@@ -22,7 +23,7 @@ import java.util.UUID;
 class AvroSerializationUnitTest {
 
     @Test
-    void testAvroSerialization() throws IOException {
+    void whenUsingAvroSerialization_thenGenerateByteOutput() throws IOException {
 
         List<UserEvent> events = new ArrayList<>(100000);
         List<UserEvent> parserEvents = new ArrayList<>(100000);
@@ -32,6 +33,11 @@ class AvroSerializationUnitTest {
                     .setUserId(UUID.randomUUID()+"-"+i)
                     .setEventType("login")
                     .setTimestamp(System.currentTimeMillis())
+                    .setAddress(Address.newBuilder()
+                            .setStreet(i + " Main St")
+                            .setCity("Spring field " + i)
+                            .setZipCode(UUID.randomUUID().toString())
+                            .build())
                     .build());
         }
 
@@ -50,7 +56,7 @@ class AvroSerializationUnitTest {
         }
 
         System.out.println("Avro serialization time: " + (endTime - startTime) + " ms");
-        System.out.println("Total bytes: " + totalBytes);
+        System.out.println("Total bytes: " + totalBytes / (1024 * 1024) + " MB");
 
         Assertions.assertEquals(events, parserEvents);
     }

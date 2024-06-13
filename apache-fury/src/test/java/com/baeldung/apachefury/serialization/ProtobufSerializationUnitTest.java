@@ -12,7 +12,7 @@ import java.util.UUID;
 class ProtobufSerializationUnitTest {
 
     @Test
-    void testProtobufSerialization() throws InvalidProtocolBufferException {
+    void whenUsingProtobufSerialization_thenGenerateByteOutput() throws InvalidProtocolBufferException {
 
         List<UserEventProto.UserEvent> events = new ArrayList<>(100000);
         List<UserEventProto.UserEvent> parserEvents = new ArrayList<>(100000);
@@ -22,6 +22,11 @@ class ProtobufSerializationUnitTest {
                     .setUserId(UUID.randomUUID() +"-"+i)
                     .setEventType("login")
                     .setTimestamp(System.currentTimeMillis())
+                    .setAddress(UserEventProto.Address.newBuilder()
+                            .setStreet(i + " Main St")
+                            .setCity("Spring field " + i)
+                            .setZipCode(UUID.randomUUID().toString())
+                            .build())
                     .build());
         }
 
@@ -40,7 +45,7 @@ class ProtobufSerializationUnitTest {
         }
 
         System.out.println("Protocol Buffers serialization time: " + (endTime - startTime) + " ms");
-        System.out.println("Total bytes: " + totalBytes);
+        System.out.println("Total bytes: " + (totalBytes / (1024 * 1024)) + " MB");
 
         Assertions.assertEquals(events, parserEvents);
     }
