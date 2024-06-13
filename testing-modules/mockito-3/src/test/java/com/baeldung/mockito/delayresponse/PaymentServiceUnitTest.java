@@ -32,7 +32,7 @@ public class PaymentServiceUnitTest {
         long endTime = System.currentTimeMillis();
 
         assertEquals("SUCCESS", result);
-        assertTrue((endTime - startTime) >= 2000); // Verify the delay
+        assertTrue((endTime - startTime) >= DELAY); // Verify the delay
     }
 
     @Test
@@ -45,7 +45,7 @@ public class PaymentServiceUnitTest {
         long endTime = System.currentTimeMillis();
 
         assertEquals("SUCCESS", result);
-        assertTrue((endTime - startTime) >= 2000); // Verify the delay
+        assertTrue((endTime - startTime) >= DELAY); // Verify the delay
     }
 
 
@@ -62,6 +62,6 @@ public class PaymentServiceUnitTest {
         long endTime = System.currentTimeMillis();
 
         assertEquals("SUCCESS", result);
-        assertTrue((endTime - startTime) >= 2000); // Verify the delay
+        assertTrue((endTime - startTime) >= DELAY); // Verify the delay
     }
 }
