@@ -91,8 +91,9 @@ public class UuidConsumer implements AutoCloseable {
                 log.trace("watcher: waiting for lock on possible pendingTag");
                 synchronized (pendingTag) {
                     log.debug("watcher: checking pendingTag #{}/{}", pendingTag, scheduler.toString());
-                    if (pendingTag.get() == 0)
+                    if (pendingTag.get() == 0) {
                         return;
+                    }
 
                     try {
                         channel.basicAck(pendingTag.get(), true);
