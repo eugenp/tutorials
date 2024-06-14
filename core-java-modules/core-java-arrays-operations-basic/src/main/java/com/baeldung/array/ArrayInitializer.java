@@ -84,11 +84,23 @@ public class ArrayInitializer {
         return array;
     }
 
-    static int[] initializeEmptyArray() {
+    static int[] initializeArrayWithDefaultValues() {
         return new int[5];
     }
 
-    static int[][] initializeEmptyTwoDimensionalArray() {
+    static double[] initializeArrayOfDoubleTypeWithDefaultValues() {
+        return new double[5];
+    }
+
+    static String[] initializeArrayOfStringTypeWithDefaultValues() {
+        return new String[5];
+    }
+
+    static boolean[] initializeArrayOfBooleanTypeWithDefaultValues() {
+        return new boolean[5];
+    }
+
+    static int[][] initializeTwoDimensionalArrayWithDefaultValues() {
         return new int[2][5];
     }
 
@@ -103,7 +115,7 @@ public class ArrayInitializer {
             .toArray();
     }
 
-    static int[][][] initializeEmptyThreeDimensionalArray() {
+    static int[][][] initializeThreeDimensionalArrayWithDefaultValue() {
         return new int[2][3][4];
     }
 
@@ -114,10 +126,6 @@ public class ArrayInitializer {
                 .toArray();
         }
         return matrix;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(Arrays.deepToString(initializeTwoDimensionalArrayUsingStream()));
     }
 
 }
