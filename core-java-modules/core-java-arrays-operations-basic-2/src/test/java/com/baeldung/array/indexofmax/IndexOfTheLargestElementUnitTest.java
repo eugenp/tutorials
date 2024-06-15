@@ -44,7 +44,7 @@ public class IndexOfTheLargestElementUnitTest {
     }
 
     @Test
-    void whenUsingSingleLoop_thenCorrect() {
+    void whenUsingIndexOfTheMaxByLoop_thenCorrect() {
         int result = indexOfTheMaxByLoop(ARRAY);
         assertEquals(3, result);
 
