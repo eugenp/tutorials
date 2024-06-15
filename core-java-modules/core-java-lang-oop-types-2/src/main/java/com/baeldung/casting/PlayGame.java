@@ -1,11 +1,14 @@
 package com.baeldung.casting;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.List;
 
+@Slf4j
 public class PlayGame {
 
     public void playViaClassCast(List<Character> characters, String command) {
-        System.out.println("Playing game via a class cast operation...");
+        log.info("Playing game via a class cast operation...");
         for (Character character : characters) {
             if (character instanceof Warrior) {
                 Warrior warrior = Warrior.class.cast(character);
@@ -18,7 +21,7 @@ public class PlayGame {
     }
 
     public void playViaCastOperator(List<Character> characters, String command) {
-        System.out.println("Playing game via a the cast operator...");
+        log.info("Playing game via a the cast operator...");
         for (Character character : characters) {
             if (character instanceof Warrior) {
                 Warrior warrior = (Warrior) character;
