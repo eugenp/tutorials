@@ -24,7 +24,7 @@ public class IndexOfTheLargestElementUnitTest {
     }
 
     @Test
-    void whenFindMaxAndIndexOf_thenCorrect() {
+    void whenFindIndexOfTheMax_thenCorrect() {
         int result = indexOfTheMax(ARRAY);
         assertEquals(3, result);
 
