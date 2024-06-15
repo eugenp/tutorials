@@ -50,7 +50,6 @@
     </dependencies>
 
     <properties>
-        <swagger2.version>2.9.2</swagger2.version>
         <resilience4j.version>2.1.0</resilience4j.version>
         <springdoc.version>1.7.0</springdoc.version>
         <start-class>com.baeldung.Main</start-class>

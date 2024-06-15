@@ -1,0 +1,63 @@
+buildscript {
+    dependencies {
+        classpath libs.avro.tools
+    }
+}
+
+plugins {
+    id 'java'
+    alias libs.plugins.avro
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation libs.avro
+    // Use JUnit Jupiter for testing.
+    testImplementation libs.junit.jupiter
+
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+}
+
+import org.apache.avro.tool.SpecificCompilerTool
+
+sourceCompatibility = JavaVersion.VERSION_21
+targetCompatibility = JavaVersion.VERSION_21
+
+def avroSchemasDir = "src/main/custom"
+def avroCodeGenerationDir = "build/generated-main-avro-custom-java"
+
+// Add the generated Avro Java code to the Gradle source files.
+sourceSets.main.java.srcDirs += [avroCodeGenerationDir]
+
+tasks.register('customAvroCodeGeneration') {
+    // Define the task inputs and outputs for the Gradle up-to-date checks.
+    inputs.dir(avroSchemasDir)
+    outputs.dir(avroCodeGenerationDir)
+    // The Avro code generation logs to the standard streams. Redirect the standard streams to the Gradle log.
+    logging.captureStandardOutput(LogLevel.INFO);
+    logging.captureStandardError(LogLevel.ERROR)
+    doLast {
+        // Run the Avro code generation.
+        new SpecificCompilerTool().run(System.in, System.out, System.err, List.of(
+                "-encoding", "UTF-8",
+                "-string",
+                "-fieldVisibility", "private",
+                "-noSetters",
+                "schema", "$projectDir/$avroSchemasDir".toString(), "$projectDir/$avroCodeGenerationDir".toString()
+        ))
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    // Make Java compilation tasks depend on the Avro code generation task.
+    dependsOn('customAvroCodeGeneration')
+}
+
+tasks.named('test') {
+    // Use JUnit Platform for unit tests.
+    useJUnitPlatform()
+}

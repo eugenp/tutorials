@@ -10,3 +10,5 @@
 - [Remove Beginning and Ending Double Quotes from a String](https://www.baeldung.com/java-remove-start-end-double-quote)
 - [Splitting a Java String by Multiple Delimiters](https://www.baeldung.com/java-string-split-multiple-delimiters)
 - [Split a String Only on the First Occurrence of Delimiter](https://www.baeldung.com/java-split-string-first-delimiter)
+- More articles: [[<-- prev]](../core-java-string-operations-2) [[next -->]](../core-java-string-operations-4)
+

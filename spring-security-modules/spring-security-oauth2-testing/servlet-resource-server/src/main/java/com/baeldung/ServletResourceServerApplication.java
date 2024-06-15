@@ -1,7 +1,5 @@
 package com.baeldung;
 
-import static org.springframework.security.config.Customizer.withDefaults;
-
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +14,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -48,8 +47,8 @@ public class ServletResourceServerApplication {
     @EnableWebSecurity
     static class SecurityConf {
         @Bean
-        SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-            http.oauth2ResourceServer(resourceServer -> resourceServer.jwt(withDefaults()));
+        SecurityFilterChain filterChain(HttpSecurity http, Converter<Jwt, AbstractAuthenticationToken> authenticationConverter) throws Exception {
+            http.oauth2ResourceServer(resourceServer -> resourceServer.jwt(jwtResourceServer -> jwtResourceServer.jwtAuthenticationConverter(authenticationConverter)));
             http.sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
             http.csrf(AbstractHttpConfigurer::disable);
             http.exceptionHandling(eh -> eh.authenticationEntryPoint((request, response, authException) -> {
@@ -57,11 +56,11 @@ public class ServletResourceServerApplication {
                 response.sendError(HttpStatus.UNAUTHORIZED.value(), HttpStatus.UNAUTHORIZED.getReasonPhrase());
             }));
 
-            // @formatter:off
-            http.authorizeHttpRequests(req -> req
-                    .requestMatchers(new AntPathRequestMatcher("/secured-route")).hasRole("AUTHORIZED_PERSONNEL")
-                    .anyRequest().authenticated());
-            // @formatter:on
+    // @formatter:off
+    http.authorizeHttpRequests(req -> req
+            .requestMatchers(new AntPathRequestMatcher("/secured-route")).hasRole("AUTHORIZED_PERSONNEL")
+            .anyRequest().authenticated());
+    // @formatter:on
 
             return http.build();
         }
@@ -72,10 +71,14 @@ public class ServletResourceServerApplication {
         @Bean
         JwtAuthoritiesConverter realmRoles2AuthoritiesConverter() {
             return (Jwt jwt) -> {
-                final var realmRoles = Optional.of(jwt.getClaimAsMap("realm_access")).orElse(Map.of());
+                final var realmRoles = Optional.of(jwt.getClaimAsMap("realm_access"))
+                    .orElse(Map.of());
                 @SuppressWarnings("unchecked")
                 final var roles = (List<String>) realmRoles.getOrDefault("roles", List.of());
-                return roles.stream().map(SimpleGrantedAuthority::new).map(GrantedAuthority.class::cast).toList();
+                return roles.stream()
+                    .map(SimpleGrantedAuthority::new)
+                    .map(GrantedAuthority.class::cast)
+                    .toList();
             };
         }
 
@@ -92,7 +95,8 @@ public class ServletResourceServerApplication {
     public static class MessageService {
 
         public String greet() {
-            final var who = (JwtAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
+            final var who = (JwtAuthenticationToken) SecurityContextHolder.getContext()
+                .getAuthentication();
             return "Hello %s! You are granted with %s.".formatted(who.getName(), who.getAuthorities());
         }
 

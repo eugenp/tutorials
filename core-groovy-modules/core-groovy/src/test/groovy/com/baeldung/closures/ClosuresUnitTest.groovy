@@ -1,6 +1,8 @@
 package com.baeldung.closures
 
-class ClosuresUnitTest extends GroovyTestCase {
+import junit.framework.TestCase
+
+class ClosuresUnitTest extends TestCase {
 
     Closures closures = new Closures()
     

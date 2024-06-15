@@ -115,7 +115,6 @@
     <properties>
         <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
         <redis.version>0.7.2</redis.version>
-        <oauth2-oidc-sdk.version>9.19</oauth2-oidc-sdk.version>
         <spring-cloud-dependencies.version>2022.0.4</spring-cloud-dependencies.version>
     </properties>
 

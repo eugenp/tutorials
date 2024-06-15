@@ -57,12 +57,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jooq</artifactId>
         </dependency>
-        <!-- Testing -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -190,11 +184,12 @@
     </build>
 
     <properties>
-        <org.jooq.version>3.18.7</org.jooq.version>
+        <org.jooq.version>3.19.7</org.jooq.version>
         <lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
         <sql-maven-plugin.version>1.5</sql-maven-plugin.version>
         <properties-maven-plugin.version>1.0.0</properties-maven-plugin.version>
         <h2.version>2.2.224</h2.version>
+        <spring-boot.version>3.2.2</spring-boot.version>
     </properties>
 
 </project>

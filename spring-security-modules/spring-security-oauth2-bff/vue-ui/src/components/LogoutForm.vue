@@ -8,7 +8,7 @@ async function logout(xsrfToken: string) {
       method: 'POST',
       headers: {
         'X-XSRF-TOKEN': xsrfToken,
-        'X-POST-LOGOUT-SUCCESS-URI': `${import.meta.env.VITE_REVERSE_PROXY}${import.meta.env.BASE_URL}`
+        'X-POST-LOGOUT-SUCCESS-URI': `${import.meta.env.VITE_REVERSE_PROXY}${import.meta.env.BASE_URL}/`
       }
     })
     const location = response.headers.get('Location')

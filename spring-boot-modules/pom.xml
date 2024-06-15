@@ -27,6 +27,8 @@
         <module>spring-boot-basic-customization</module>
         <module>spring-boot-basic-customization-2</module>
         <module>spring-boot-bootstrap</module>
+        <!--<module>spring-boot-basic-customization-3</module>--> <!--JAVA-33979-->
+        <module>spring-boot-logging-loki</module>
         <module>spring-boot-caching</module>  <!-- failing after upgrading to spring boot 3.2.x -->
         <module>spring-boot-caching-2</module>  <!-- failing after upgrading to spring boot 3.2.x -->
         <module>spring-boot-client</module>
@@ -82,6 +84,7 @@
         <module>spring-boot-swagger-springfox</module>
         <module>spring-boot-testing</module>
         <module>spring-boot-testing-2</module>
+        <module>spring-boot-testing-3</module>
         <module>spring-boot-testing-spock</module>
         <module>spring-boot-vue</module>
         <module>spring-boot-actuator</module>

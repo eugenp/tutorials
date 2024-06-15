@@ -88,7 +88,6 @@
         <spring-batch-core.version>5.1.1</spring-batch-core.version>
         <start-class>com.baeldung.batchtesting.SpringBatchApplication</start-class>
         <spring-boot.version>3.2.2</spring-boot.version>
-        <junit-jupiter.version>5.10.2</junit-jupiter.version>
     </properties>
 
 </project>

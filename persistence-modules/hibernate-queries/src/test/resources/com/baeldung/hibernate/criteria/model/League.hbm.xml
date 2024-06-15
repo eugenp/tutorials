@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.baeldung.hibernate.criteria.model.League" table="LEAGUE">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="league" type="java.lang.String">
+            <column name="LEAGUE" not-null="true" />
+        </property>
+        <list name="players" cascade="all">
+            <key column="LEAGUE_ID" not-null="true"/>
+            <list-index column="INDEX_COLUMN"/>
+            <one-to-many class="com.baeldung.hibernate.criteria.model.Player"/>
+        </list>
+    </class>
+</hibernate-mapping>
+

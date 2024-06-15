@@ -21,7 +21,7 @@
     </parent>
 
     <modules>
-<!--        <module>remoting-hessian-burlap</module>-->
+        <!--<module>remoting-hessian-burlap</module> cannot upgrade logback due to usage of old spring boot 1 version-->
         <module>remoting-http</module>
         <module>remoting-amqp</module>
         <module>remoting-jms</module>

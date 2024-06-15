@@ -13,4 +13,4 @@ This module contains articles about string operations.
 - [Encode a String to UTF-8 in Java](https://www.baeldung.com/java-string-encode-utf-8)
 - [Guide to Character Encoding](https://www.baeldung.com/java-char-encoding)
 - [Convert Hex to ASCII in Java](https://www.baeldung.com/java-convert-hex-to-ascii)
-- More articles: [[<-- prev]](../core-java-string-operations)
+- More articles: [[<-- prev]](../core-java-string-operations) [[next -->]](../core-java-string-operations-3)

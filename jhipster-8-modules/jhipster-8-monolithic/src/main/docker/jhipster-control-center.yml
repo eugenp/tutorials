@@ -1,0 +1,51 @@
+## How to use JHCC docker compose
+# To allow JHCC to reach JHipster application from a docker container note that we set the host as host.docker.internal
+# To reach the application from a browser, you need to add '127.0.0.1 host.docker.internal' to your hosts file.
+### Discovery mode
+# JHCC support 3 kinds of discovery mode: Consul, Eureka and static
+# In order to use one, please set SPRING_PROFILES_ACTIVE to one (and only one) of this values: consul,eureka,static
+### Discovery properties
+# According to the discovery mode choose as Spring profile, you have to set the right properties
+# please note that current properties are set to run JHCC with default values, personalize them if needed
+# and remove those from other modes. You can only have one mode active.
+#### Eureka
+#       - EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE=http://admin:admin@host.docker.internal:8761/eureka/
+#### Consul
+#       - SPRING_CLOUD_CONSUL_HOST=host.docker.internal
+#       - SPRING_CLOUD_CONSUL_PORT=8500
+#### Static
+# Add instances to "MyApp"
+#       - SPRING_CLOUD_DISCOVERY_CLIENT_SIMPLE_INSTANCES_MYAPP_0_URI=http://host.docker.internal:8081
+#       - SPRING_CLOUD_DISCOVERY_CLIENT_SIMPLE_INSTANCES_MYAPP_1_URI=http://host.docker.internal:8082
+# Or add a new application named MyNewApp
+#       - SPRING_CLOUD_DISCOVERY_CLIENT_SIMPLE_INSTANCES_MYNEWAPP_0_URI=http://host.docker.internal:8080
+# This configuration is intended for development purpose, it's **your** responsibility to harden it for production
+
+#### IMPORTANT
+# If you choose Consul or Eureka mode:
+# Do not forget to remove the prefix "127.0.0.1" in front of their port in order to expose them.
+# This is required because JHCC need to communicate with Consul or Eureka.
+# - In Consul mode, the ports are in the consul.yml file.
+# - In Eureka mode, the ports are in the jhipster-registry.yml file.
+
+name: jhipster8monolithic
+services:
+  jhipster-control-center:
+    image: 'jhipster/jhipster-control-center:v0.5.0'
+    command:
+      - /bin/sh
+      - -c
+      # Patch /etc/hosts to support resolving host.docker.internal to the internal IP address used by the host in all OSes
+      - echo "`ip route | grep default | cut -d ' ' -f3` host.docker.internal" | tee -a /etc/hosts > /dev/null && java -jar /jhipster-control-center.jar
+    environment:
+      - _JAVA_OPTIONS=-Xmx512m -Xms256m
+      - SPRING_PROFILES_ACTIVE=prod,api-docs,static
+      - SPRING_SECURITY_USER_PASSWORD=admin
+      # The token should have the same value than the one declared in you Spring configuration under the jhipster.security.authentication.jwt.base64-secret configuration's entry
+      - JHIPSTER_SECURITY_AUTHENTICATION_JWT_BASE64_SECRET=ZDFlNDJhNTQzYzRlZGIxMmYxZDNiOWZmOGQ5MzdjMWY2Zjc5MDQyNGU0NWI5ODRlYmFmZDVmNGI5MzJjYTFmYWE0ZWNmMjIwN2Y2MmM3MjViYmY5YmQ5YjY0MGZiOWFlODY3M2IyNDFmNzEzOGJjMjM2NzVlM2IzODdkZTE0NDU=
+      - SPRING_CLOUD_DISCOVERY_CLIENT_SIMPLE_INSTANCES_JHIPSTER8MONOLITHIC_0_URI=http://host.docker.internal:8080
+      - LOGGING_FILE_NAME=/tmp/jhipster-control-center.log
+    # If you want to expose these ports outside your dev PC,
+    # remove the "127.0.0.1:" prefix
+    ports:
+      - 127.0.0.1:7419:7419

@@ -92,7 +92,6 @@
         <embedded-redis.version>0.6</embedded-redis.version>
         <jedis.version>5.1.2</jedis.version>
         <spring-boot.version>3.2.0</spring-boot.version>
-        <junit-jupiter.version>5.10.2</junit-jupiter.version>
         <start-class>com.baeldung.spring.data.redis.SpringRedisApplication</start-class>
     </properties>
 

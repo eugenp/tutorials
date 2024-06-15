@@ -12,6 +12,7 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../../parent-boot-2</relativePath>
     </parent>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -31,4 +32,5 @@
             <artifactId>jakarta.persistence-api</artifactId>
         </dependency>
     </dependencies>
+
 </project>

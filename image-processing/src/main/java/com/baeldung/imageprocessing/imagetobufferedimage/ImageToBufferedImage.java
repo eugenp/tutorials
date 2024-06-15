@@ -1,10 +1,7 @@
 package com.baeldung.imageprocessing.imagetobufferedimage;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
 public class ImageToBufferedImage {
 
@@ -25,17 +22,7 @@ public class ImageToBufferedImage {
         if (image instanceof BufferedImage) {
             return (BufferedImage) image;
         } else {
-            throw new ClassCastException("Image type is not compatible with BufferedImage");
-        }
-    }
-
-    // Method 3: Using ImageIO Class
-    public BufferedImage convertUsingImageIO(String filePath) throws IOException {
-        try {
-            File file = new File(filePath);
-            return ImageIO.read(file);
-        } catch (Exception e) {
-            throw new IOException("Error reading image file: " + e.getMessage());
+            throw new ClassCastException("Image type is not compatible with BufferedImage.");
         }
     }
 }

@@ -7,11 +7,9 @@ import static org.junit.Assert.assertTrue;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import com.baeldung.boot.jdbi.dao.CarMakerDao;
 import com.baeldung.boot.jdbi.dao.CarModelDao;
@@ -21,10 +19,9 @@ import com.baeldung.boot.jdbi.service.CarMakerService;
 
 import lombok.extern.slf4j.Slf4j;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest(classes = {SpringBootJdbiApplication.class, JdbiConfiguration.class})
 @Slf4j
-public class SpringBootJdbiApplicationIntegrationTest {
+class SpringBootJdbiApplicationIntegrationTest {
     
     
     @Autowired
@@ -37,7 +34,7 @@ public class SpringBootJdbiApplicationIntegrationTest {
     private CarMakerService carMakerService;
  
     @Test
-    public void givenNewCarMaker_whenInsertNewCarMaker_thenSuccess() {
+    void givenNewCarMaker_whenInsertNewCarMaker_thenSuccess() {
         
         assertNotNull(carMakerDao);
         
@@ -51,7 +48,7 @@ public class SpringBootJdbiApplicationIntegrationTest {
     }
 
     @Test
-    public void givenNewCarMakers_whenInsertNewCarMakers_thenSuccess() {
+    void givenNewCarMakers_whenInsertNewCarMakers_thenSuccess() {
         
         assertNotNull(carMakerDao);
         
@@ -74,7 +71,7 @@ public class SpringBootJdbiApplicationIntegrationTest {
     
     
     @Test
-    public void givenExistingCarMaker_whenFindById_thenReturnExistingCarMaker() {
+    void givenExistingCarMaker_whenFindById_thenReturnExistingCarMaker() {
     
         CarMaker maker = carMakerDao.findById(1L);
         assertThat(maker).isNotNull();
@@ -83,7 +80,7 @@ public class SpringBootJdbiApplicationIntegrationTest {
     }
     
     @Test
-    public void givenExistingCarMaker_whenBulkInsertFails_thenRollback() {
+    void givenExistingCarMaker_whenBulkInsertFails_thenRollback() {
         
         CarMaker maker = carMakerDao.findById(1L);
         CarModel m1 = CarModel.builder()

@@ -54,7 +54,7 @@
     </build>
 
     <properties>
-        <discord4j-core.version>3.1.1</discord4j-core.version>
+        <discord4j-core.version>3.3.0-RC1</discord4j-core.version>
     </properties>
 
 </project>

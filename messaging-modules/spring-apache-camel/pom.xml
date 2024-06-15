@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.baeldung.apache.camel</groupId>
     <artifactId>spring-apache-camel</artifactId>
-    <name>spring-apache-camel</name>
     <packaging>jar</packaging>
+    <name>spring-apache-camel</name>
     <url>http://maven.apache.org</url>
 
     <parent>
@@ -77,7 +77,6 @@
     <properties>
         <camel.version>4.3.0</camel.version>
         <camel-swagger.version>3.22.0</camel-swagger.version>
-        <junit-jupiter.version>5.10.1</junit-jupiter.version> <!--Version not compatible with the one inherited from parent-->
         <spring-boot.repackage.skip>true</spring-boot.repackage.skip> <!--Skip repackaging for multiple main classes-->
     </properties>
 
