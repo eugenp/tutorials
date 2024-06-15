@@ -22,4 +22,8 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <testproperty>1.0</testproperty>
+    </properties>
 </project>
