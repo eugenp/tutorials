@@ -13,7 +13,7 @@ public class IntToUnsignedByteUnitTest {
     public void givenInt_whenUsingTypeCastingAndBitMasking_thenConvertToUnsignedByte() {
         byte unsignedByte = (byte) (value & 0xFF);
 
-        assertEquals(200, Byte.toUnsignedInt(unsignedByte));
+        assertEquals(value, Byte.toUnsignedInt(unsignedByte));
     }
 
     @Test
@@ -22,6 +22,6 @@ public class IntToUnsignedByteUnitTest {
         ByteBuffer buffer = ByteBuffer.allocate(4).putInt(value);
         byte unsignedByte = buffer.array()[3];
 
-        assertEquals(200, Byte.toUnsignedInt(unsignedByte));
+        assertEquals(value, Byte.toUnsignedInt(unsignedByte));
     }
 }
