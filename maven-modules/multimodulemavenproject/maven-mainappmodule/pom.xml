@@ -45,6 +45,7 @@
         <entitymodule.version>1.0</entitymodule.version>
         <daomodule.version>1.0</daomodule.version>
         <userdaomodule.version>1.0</userdaomodule.version>
+        <testproperty>1.0</testproperty>
     </properties>
 
 </project>
