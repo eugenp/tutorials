@@ -29,24 +29,11 @@
             <version>${equalsverifier.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>${junit-jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>${jupiter.engine.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <properties>
         <assertj-core.version>3.10.0</assertj-core.version>
         <equalsverifier.version>3.15.3</equalsverifier.version>
-        <jupiter.engine.version>5.8.1</jupiter.engine.version>
     </properties>
 
 </project>

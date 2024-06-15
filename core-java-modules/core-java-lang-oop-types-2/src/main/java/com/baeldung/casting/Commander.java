@@ -13,4 +13,3 @@ public class Commander extends Character {
         log.info("Commander {} issues a command {}", this.getName(), command);
     }
 }
-

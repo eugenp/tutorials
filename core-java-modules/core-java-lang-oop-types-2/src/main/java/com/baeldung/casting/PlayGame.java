@@ -1,16 +1,8 @@
 package com.baeldung.casting;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class PlayGame {
-
-    public List<Character> buildCharacters() {
-        List<Character> characters = new ArrayList<>();
-        characters.add(new Commander( "Odin"));
-        characters.add(new Warrior("Thor"));
-        return characters;
-    }
 
     public void playViaClassCast(List<Character> characters, String command) {
         System.out.println("Playing game via a class cast operation...");
