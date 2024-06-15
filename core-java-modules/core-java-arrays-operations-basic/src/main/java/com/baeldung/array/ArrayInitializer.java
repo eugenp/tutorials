@@ -120,11 +120,12 @@ public class ArrayInitializer {
     }
 
     static int[][] initializeTwoDimensionalArrayUsingStream() {
-        int[][] matrix = new int[3][4];
-        for (int i = 0; i < matrix.length; i++) {
-            matrix[i] = IntStream.of(i * 4, i * 4 + 1, i * 4 + 2, i * 4 + 3)
-                .toArray();
-        }
+        int[][] matrix = IntStream.range(0, 3)
+            .mapToObj(i -> IntStream.range(0, 4)
+                .map(j -> i * 4 + j)
+                .toArray())
+            .toArray(int[][]::new);
+
         return matrix;
     }
 
