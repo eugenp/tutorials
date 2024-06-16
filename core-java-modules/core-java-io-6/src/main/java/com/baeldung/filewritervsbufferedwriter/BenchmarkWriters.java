@@ -23,7 +23,7 @@ import java.util.concurrent.TimeUnit;
 public class BenchmarkWriters {
 
     private static final Logger log = LoggerFactory.getLogger(BenchmarkWriters.class);
-    private static final String FILE_PATH = "/media/francesco/5a0cb140-396f-4b01-869c-b8f17e476b14/benchmark.txt";
+    private static final String FILE_PATH = "benchmark.txt";
     private static final String CONTENT = "This is a test line.";
     private static final int BUFSIZE = 4194304; // 4MiB
 
