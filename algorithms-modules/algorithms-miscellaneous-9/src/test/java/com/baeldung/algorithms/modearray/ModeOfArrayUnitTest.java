@@ -40,7 +40,7 @@ public class ModeOfArrayUnitTest {
                 modes.add(entry.getKey());
             }
         }
-        List<Integer> expected = Arrays.asList(4);
+        Set<Integer> expected = new HashSet<>(Arrays.asList(4));
         assertEquals(expected, modes);
     }
 
@@ -74,7 +74,7 @@ public class ModeOfArrayUnitTest {
             modes.add(nums[0]);
         }
 
-        List<Integer> expected = Arrays.asList(4);
+        Set<Integer> expected = new HashSet<>(Arrays.asList(4));
         assertEquals(expected, modes);
     }
 
@@ -101,7 +101,7 @@ public class ModeOfArrayUnitTest {
             }
         }
 
-        List<Integer> expected = Arrays.asList(4);
+        Set<Integer> expected = new HashSet<>(Arrays.asList(4));
         assertEquals(expected, modes);
     }
 
@@ -114,13 +114,13 @@ public class ModeOfArrayUnitTest {
 
         long maxFrequency = Collections.max(frequencyMap.values());
 
-        List<Integer> modes = frequencyMap.entrySet()
+        Set<Integer> modes = frequencyMap.entrySet()
             .stream()
             .filter(entry -> entry.getValue() == maxFrequency)
             .map(Map.Entry::getKey)
-            .collect(Collectors.toList());
+            .collect(Collectors.toSet());
 
-        List<Integer> expected = Arrays.asList(4);
+        Set<Integer> expected = new HashSet<>(Arrays.asList(4));
         assertEquals(expected, modes);
     }
 }
