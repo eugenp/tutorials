@@ -42,8 +42,7 @@ public class Employee implements Cloneable, Serializable {
     public Employee clone() {
         try {
             Employee clone = (Employee) super.clone();
-            clone.setCompany(clone.getCompany()
-                .clone());
+            clone.setCompany(clone.getCompany().clone());
             return clone;
         } catch (CloneNotSupportedException e) {
             return new Employee(0, "", new Company(""));

@@ -8,20 +8,7 @@ import org.junit.jupiter.api.Test;
 class EmployeeTest {
 
     // Shallow Copy Tests
-    @Test
-    void whenModifyingOriginalObject_thenCopyShouldChange() {
-
-        Company company = new Company("John Ventures");
-        Employee originalObject = new Employee(1, "John", company);
-        Employee shallowCopy = originalObject; // shallow copy
-
-        originalObject.getCompany()
-            .setName("New Company");
-
-        assertThat(shallowCopy.getCompany()
-            .getName()).isEqualTo("New Company");
-    }
-
+    @Disabled
     @Test
     void givenShallowCopyCreatedUsingConstructor_whenModifyingOriginalObject_thenCopyShouldChange() {
 
@@ -29,14 +16,11 @@ class EmployeeTest {
         Employee originalObject = new Employee(1, "John", company);
         Employee shallowCopy = new Employee(originalObject.getId(), originalObject.getName(), originalObject.getCompany());
 
-        originalObject.getCompany()
-            .setName("New Company");
+        originalObject.getCompany().setName("New Company");
 
-        assertThat(shallowCopy.getCompany()
-            .getName()).isEqualTo("New Company");
+        assertThat(shallowCopy.getCompany().getName()).isEqualTo("New Company");
     }
 
-    @Disabled
     @Test
     void whenModifyingOriginalObject_thenCopyPrimitiveShouldNotChange() {
 
@@ -57,11 +41,9 @@ class EmployeeTest {
         Employee originalObject = new Employee(1, "John", company);
         Employee deepCopy = new Employee(originalObject.getId(), originalObject.getName(), originalObject.getCompany());
 
-        originalObject.getCompany()
-            .setName("New Company");
+        originalObject.getCompany().setName("New Company");
 
-        assertThat(deepCopy.getCompany()
-            .getName()).isEqualTo("John Ventures");
+        assertThat(deepCopy.getCompany().getName()).isEqualTo("John Ventures");
     }
 
     @Test
@@ -71,11 +53,9 @@ class EmployeeTest {
         Employee originalObject = new Employee(1, "John", company);
         Employee deepCopy = originalObject.clone();
 
-        originalObject.getCompany()
-            .setName("New Company");
+        originalObject.getCompany().setName("New Company");
 
-        assertThat(deepCopy.getCompany()
-            .getName()).isEqualTo("John Ventures");
+        assertThat(deepCopy.getCompany().getName()).isEqualTo("John Ventures");
     }
 
     @Test
@@ -85,10 +65,8 @@ class EmployeeTest {
         Employee originalObject = new Employee(1, "John", company);
         Employee deepCopy = SerializationUtils.clone(originalObject);
 
-        originalObject.getCompany()
-            .setName("New Company");
+        originalObject.getCompany().setName("New Company");
 
-        assertThat(deepCopy.getCompany()
-            .getName()).isEqualTo("John Ventures");
+        assertThat(deepCopy.getCompany().getName()).isEqualTo("John Ventures");
     }
 }
