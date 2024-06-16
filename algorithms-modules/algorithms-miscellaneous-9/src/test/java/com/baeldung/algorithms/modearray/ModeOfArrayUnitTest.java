@@ -32,7 +32,7 @@ public class ModeOfArrayUnitTest {
             }
         }
 
-        List<Integer> modes = new ArrayList<>();
+        Set<Integer> modes = new HashSet<>();
         for (Map.Entry<Integer, Integer> entry : frequencyMap.entrySet()) {
             if (entry.getValue() == maxFrequency) {
                 modes.add(entry.getKey());
@@ -50,7 +50,7 @@ public class ModeOfArrayUnitTest {
 
         int maxCount = 1;
         int currentCount = 1;
-        List<Integer> modes = new ArrayList<>();
+        Set<Integer> modes = new HashSet<>();
 
         for (int i = 1; i < nums.length; i++) {
             if (nums[i] == nums[i - 1]) {
@@ -92,7 +92,7 @@ public class ModeOfArrayUnitTest {
             }
         }
 
-        List<Integer> modes = new ArrayList<>();
+        Set<Integer> modes = new HashSet<>();
         for (Map.Entry<Integer, Integer> entry : frequencyMap.entrySet()) {
             if (entry.getValue() == maxFrequency) {
                 modes.add(entry.getKey());
