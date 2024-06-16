@@ -40,21 +40,21 @@
             <artifactId>asm-util</artifactId>
             <version>${asm.version}</version>
         </dependency>
-<!--        Commented out. The jars can be built from the libraries code available under src/main/java/com/baeldung/incompatibleclasschange -->
-<!--        <dependency>-->
-<!--            <groupId>org.dinosaur</groupId>-->
-<!--            <artifactId>dinosaur</artifactId>-->
-<!--            <version>1</version>-->
-<!--            <scope>system</scope>-->
-<!--            <systemPath>${project.basedir}/src/main/resources/dinosaur-1.jar</systemPath>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>org.dinosaur</groupId>-->
-<!--            <artifactId>dinosaur</artifactId>-->
-<!--            <version>2</version>-->
-<!--            <scope>system</scope>-->
-<!--            <systemPath>${project.basedir}/src/main/resources/dinosaur-2.jar</systemPath>-->
-<!--        </dependency>-->
+
+        <dependency>
+            <groupId>org.dinosaur</groupId>
+            <artifactId>dinosaur</artifactId>
+            <version>1</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/dinosaur-1.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>org.dinosaur</groupId>
+            <artifactId>dinosaur</artifactId>
+            <version>2</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/resources/dinosaur-2.jar</systemPath>
+        </dependency>
     </dependencies>
 
     <build>
