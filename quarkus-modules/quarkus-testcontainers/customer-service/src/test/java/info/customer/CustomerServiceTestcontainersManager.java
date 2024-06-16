@@ -18,7 +18,6 @@ public class CustomerServiceTestcontainersManager implements QuarkusTestResource
     @Override
     public Map<String, String> start() {
         Network network = Network.newNetwork();
-
         String networkAlias = "baeldung";
 
         postgreSQLContainer = new PostgreSQLContainer<>(DockerImageName.parse("postgres:14")).withExposedPorts(5432)
@@ -30,7 +29,6 @@ public class CustomerServiceTestcontainersManager implements QuarkusTestResource
         postgreSQLContainer.start();
 
         String jdbcUrl = String.format("jdbc:postgresql://%s:5432/quarkus", networkAlias);
-
         orderService = new GenericContainer<>(DockerImageName.parse("quarkus/order-service-jvm:latest")).withExposedPorts(8080)
             .withEnv("quarkus.datasource.jdbc.url", jdbcUrl)
             .withEnv("quarkus.datasource.username", postgreSQLContainer.getUsername())
@@ -42,7 +40,6 @@ public class CustomerServiceTestcontainersManager implements QuarkusTestResource
         orderService.start();
 
         String orderInfoUrl = String.format("http://%s:%s/orderapi/v1", orderService.getHost(), orderService.getMappedPort(8080));
-
         return Map.of("quarkus.rest-client.order-api.url", orderInfoUrl);
     }
 
