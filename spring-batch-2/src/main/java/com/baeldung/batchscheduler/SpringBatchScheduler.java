@@ -16,7 +16,6 @@ import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.builder.FlatFileItemReaderBuilder;
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
@@ -127,7 +126,7 @@ public class SpringBatchScheduler {
                 .resource(new ClassPathResource("books.csv"))
                 .delimited()
                 .names(new String[] { "id", "name" })
-                .fieldSetMapper(new BeanWrapperFieldSetMapper<>() {
+                .fieldSetMapper(new BeanWrapperFieldSetMapper<Book>() {
                     {
                         setTargetType(Book.class);
                     }
