@@ -59,7 +59,7 @@ public class FileContentSearchService {
     public Mono<Boolean> incorrectUseOfSchedulersSearch(String fileName, String searchTerm) {
         String fileContent = fileService.getFileContentAsString(fileName)
             .doOnNext(content -> ThreadLogger.log("1. IncorrectUseOfSchedulersSearch"))
-            .subscribeOn(Schedulers.boundedElastic())
+            .publishOn(Schedulers.boundedElastic())
             .doOnNext(content -> ThreadLogger.log("2. IncorrectUseOfSchedulersSearch"))
             .block();
 
