@@ -1,5 +1,6 @@
 package com.baeldung.athena.service;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -71,6 +72,9 @@ public class QueryService {
     @SneakyThrows
     private List<Map<String, String>> processQueryResult(@NonNull final GetQueryResultsResponse queryResultsResponse) {
         final var rows = queryResultsResponse.resultSet().rows();
+        if (rows.isEmpty()) {
+            return Collections.emptyList();
+        }
         final var headers = rows.get(0).data().stream()
             .map(Datum::varCharValue)
             .toList();
@@ -84,7 +88,6 @@ public class QueryService {
                 for (int i = 0; i < headers.size(); i++) {
                     rowMap.put(headers.get(i), data.get(i).varCharValue());
                 }
-
                 return rowMap;
             })
             .collect(Collectors.toList());
