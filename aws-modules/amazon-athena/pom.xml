@@ -34,6 +34,11 @@
 			<version>${amazon-athena.version}</version>
 		</dependency>
 		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${commons-io.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
@@ -59,6 +64,7 @@
 
 	<properties>
 		<java.version>21</java.version>
+		<commons-io.version>2.16.1</commons-io.version>
 		<amazon-athena.version>2.26.0</amazon-athena.version>
 	</properties>
 
