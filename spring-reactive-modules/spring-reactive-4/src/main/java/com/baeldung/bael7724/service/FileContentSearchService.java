@@ -56,6 +56,18 @@ public class FileContentSearchService {
             .doOnNext(s -> ThreadLogger.log("3. WorkableBlockingSearch"));
     }
 
+    public Mono<Boolean> incorrectUseOfSchedulersSearch(String fileName, String searchTerm) {
+        String fileContent = fileService.getFileContentAsString(fileName)
+            .doOnNext(content -> ThreadLogger.log("1. IncorrectUseOfSchedulersSearch"))
+            .subscribeOn(Schedulers.boundedElastic())
+            .doOnNext(content -> ThreadLogger.log("2. IncorrectUseOfSchedulersSearch"))
+            .block();
+
+        boolean isSearchTermPresent = fileContent.contains(searchTerm);
+
+        return Mono.just(isSearchTermPresent);
+    }
+
     public Mono<Boolean> blockingSearchOnCustomThreadPool(String fileName, String searchTerm) {
         return Mono.just("")
             .doOnNext(s -> ThreadLogger.log("1. BlockingSearchOnCustomThreadPool"))

@@ -43,6 +43,14 @@ public class FileController {
             .doOnNext(aBoolean -> ThreadLogger.log("2. In Controller"));
     }
 
+    @GetMapping(value = "/{name}/incorrect-use-of-schedulers-search")
+    Mono<Boolean> incorrectUseOfSchedulersSearch(@PathVariable("name") String fileName, @RequestParam String term) {
+        return fileContentSearchService.incorrectUseOfSchedulersSearch(fileName, term)
+            .doOnNext(aBoolean -> ThreadLogger.log("1. In Controller"))
+            .map(Function.identity())
+            .doOnNext(aBoolean -> ThreadLogger.log("2. In Controller"));
+    }
+
     @GetMapping(value = "/{name}/blocking-search-on-custom-thread-pool")
     Mono<Boolean> blockingSearchOnCustomThreadPool(@PathVariable("name") String fileName, @RequestParam String term) {
         return fileContentSearchService.blockingSearchOnCustomThreadPool(fileName, term)

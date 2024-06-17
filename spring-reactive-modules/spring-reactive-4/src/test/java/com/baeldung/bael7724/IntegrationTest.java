@@ -24,6 +24,9 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 public class IntegrationTest {
     private static final String FILES_GET_ENDPOINT = "/bael7724/v1/files/{id}";
     private static final String BLOCKING_FILE_SEARCH_ENDPOINT = "/bael7724/v1/files/{id}/blocking-search";
+
+    private static final String INCORRECT_USE_OF_SCHEDULERS_FILE_SEARCH_ENDPOINT = "/bael7724/v1/files/{id}/incorrect-use-of-schedulers-search";
+
     private static final String WORKABLE_BLOCKING_FILE_SEARCH_ENDPOINT = "/bael7724/v1/files/{id}/workable-blocking-search";
 
     private static final String BLOCKING_FILE_SEARCH_ON_PARALLEL_THREAD_POOL_ENDPOINT = "/bael7724/v1/files/{id}/blocking-search-on-parallel-thread-pool";
@@ -160,6 +163,39 @@ public class IntegrationTest {
             .exchange()
             .expectStatus()
             .is2xxSuccessful();
+    }
+
+    @Test
+    @DisplayName("Test searching a file using the Schedulers incorrectly returns a server error" +
+        "GIVEN" +
+        "   1. A valid file name" +
+        "   2. The file exits in the configured files.base.dir" +
+        "   3. A Search Term" +
+        "WHEN" +
+        "   1. When a request is received to search for this search term in the given file" +
+        "THEN" +
+        "   1. Expect a 500 response form the server")
+    void testSearchingAFileUsingTheSchedulersIncorrectlyReturnsAServerError() {
+        // Given
+        String validFileName = "robots.txt";
+        Optional<String> expectedFileContent = getBytesFromAResourceFile(validFileName);
+
+        if (!expectedFileContent.isPresent()) {
+            fail("Unable to load expected test file content. FileName=" + validFileName);
+        }
+
+        String searchTerm = expectedFileContent.get().substring(3, 5);
+
+        setupATestFileWithContent(validFileName, expectedFileContent.get());
+
+        // When
+        webTestClient.get()
+            .uri(uriBuilder -> uriBuilder.path(INCORRECT_USE_OF_SCHEDULERS_FILE_SEARCH_ENDPOINT)
+                .queryParam("term", searchTerm)
+                .build(validFileName))
+            .exchange()
+            .expectStatus()
+            .is5xxServerError();
     }
 
     @Test
