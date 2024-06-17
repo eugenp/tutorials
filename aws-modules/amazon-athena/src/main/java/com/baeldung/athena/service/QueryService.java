@@ -8,6 +8,8 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
+import com.baeldung.athena.exception.QueryExecutionFailureException;
+
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
@@ -52,7 +54,7 @@ public class QueryService {
             switch (queryState) {
                 case FAILED:
                 case CANCELLED:
-                    throw new RuntimeException();
+                    throw new QueryExecutionFailureException();
                 case QUEUED:
                 case RUNNING:
                     TimeUnit.MILLISECONDS.sleep(10);
@@ -61,7 +63,7 @@ public class QueryService {
                     queryState = QueryExecutionState.SUCCEEDED;
                     return;
                 default:
-                    throw new IllegalStateException();
+                    throw new IllegalStateException("Invalid query state");
             }
         } while (queryState != QueryExecutionState.SUCCEEDED);
     }
