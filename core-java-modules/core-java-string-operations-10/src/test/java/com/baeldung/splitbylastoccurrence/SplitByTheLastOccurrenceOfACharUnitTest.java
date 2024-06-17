@@ -18,7 +18,7 @@ public class SplitByTheLastOccurrenceOfACharUnitTest {
     private static final String INPUT4 = "a b c";
     private static final String[] EXPECTED4 = new String[] { "a b c" };
 
-    public String[] splitByLastOccurrence(String input, Character character) {
+    public String[] splitByLastOccurrence(String input, char character) {
         int idx = input.lastIndexOf(character);
         if (idx < 0) {
             return new String[] { input };
