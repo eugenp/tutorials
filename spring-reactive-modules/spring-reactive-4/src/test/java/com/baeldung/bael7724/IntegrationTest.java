@@ -163,6 +163,39 @@ public class IntegrationTest {
     }
 
     @Test
+    @DisplayName("Test searching a file using the blocking API on a Custom thread pool Returns a 200" +
+        "GIVEN" +
+        "   1. A valid file name" +
+        "   2. The file exits in the configured files.base.dir" +
+        "   3. A Search Term" +
+        "WHEN" +
+        "   1. When a request is received to search for this search term in the given file" +
+        "THEN" +
+        "   1. Expect a 200 response form the server")
+    void testSearchingAFileUsingTheBlockingAPIOnACustomThreadPoolReturnsA200() {
+        // Given
+        String validFileName = "robots.txt";
+        Optional<String> expectedFileContent = getBytesFromAResourceFile(validFileName);
+
+        if (!expectedFileContent.isPresent()) {
+            fail("Unable to load expected test file content. FileName=" + validFileName);
+        }
+
+        String searchTerm = expectedFileContent.get().substring(3, 5);
+
+        setupATestFileWithContent(validFileName, expectedFileContent.get());
+
+        // When
+        webTestClient.get()
+            .uri(uriBuilder -> uriBuilder.path(BLOCKING_FILE_SEARCH_ON_CUSTOM_THREAD_POOL_ENDPOINT)
+                .queryParam("term", searchTerm)
+                .build(validFileName))
+            .exchange()
+            .expectStatus()
+            .is2xxSuccessful();
+    }
+
+    @Test
     @DisplayName("Test searching the file using the the Parallel thread pool leads to Server Error" +
         "GIVEN" +
         "   1. A valid file name" +
