@@ -35,6 +35,17 @@ public class FileContentSearchService {
             .doOnNext(s -> ThreadLogger.log("3. WorkableBlockingSearch"));
     }
 
+    public Mono<Boolean> blockingSearchOnParallelThreadPool(String fileName, String searchTerm) {
+        return Mono.just("")
+            .doOnNext(s -> ThreadLogger.log("1. WorkableBlockingSearchOnParallelThreadPool"))
+            .publishOn(Schedulers.parallel())
+            .doOnNext(s -> ThreadLogger.log("2. WorkableBlockingSearchOnParallelThreadPool"))
+            .map(s -> fileService.getFileContentAsString(fileName)
+                .block()
+                .contains(searchTerm))
+            .doOnNext(s -> ThreadLogger.log("3. WorkableBlockingSearchOnParallelThreadPool"));
+    }
+
     public Mono<Boolean> nonBlockingSearch(String fileName, String searchTerm) {
         return fileService.getFileContentAsString(fileName)
             .doOnNext(content -> ThreadLogger.log("1. NonBlockingSearch"))

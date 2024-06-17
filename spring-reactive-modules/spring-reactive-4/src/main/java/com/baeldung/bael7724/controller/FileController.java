@@ -43,6 +43,14 @@ public class FileController {
             .doOnNext(aBoolean -> ThreadLogger.log("2. In Controller"));
     }
 
+    @GetMapping(value = "/{name}/blocking-search-on-parallel-thread-pool")
+    Mono<Boolean> blockingSearchOnParallelThreadPool(@PathVariable("name") String fileName, @RequestParam String term) {
+        return fileContentSearchService.blockingSearchOnParallelThreadPool(fileName, term)
+            .doOnNext(aBoolean -> ThreadLogger.log("1. In Controller"))
+            .map(Function.identity())
+            .doOnNext(aBoolean -> ThreadLogger.log("2. In Controller"));
+    }
+
     @GetMapping(value = "/{name}/non-blocking-search")
     Mono<Boolean> nonBlockingSearch(@PathVariable("name") String fileName, @RequestParam String term) {
         return fileContentSearchService.nonBlockingSearch(fileName, term)
