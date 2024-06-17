@@ -16,7 +16,7 @@ import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import reactor.test.StepVerifier;
 
 @SpringJUnitConfig(classes = FileService.class)
-class FileServiceTest {
+class FileServiceUnitTest {
     @Value("${files.base.dir:/tmp/bael-7724}")
     private String filesBaseDir;
 
