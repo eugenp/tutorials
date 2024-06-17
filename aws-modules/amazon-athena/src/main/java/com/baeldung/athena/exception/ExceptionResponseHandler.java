@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.server.ResponseStatusException;
 
+import lombok.extern.slf4j.Slf4j;
 import software.amazon.awssdk.services.athena.model.InvalidRequestException;
 
+@Slf4j
 @RestControllerAdvice
 public class ExceptionResponseHandler {
 
@@ -20,16 +22,19 @@ public class ExceptionResponseHandler {
 
     @ExceptionHandler(ResponseStatusException.class)
     public ProblemDetail handle(ResponseStatusException exception) {
+        log(exception);
         return ProblemDetail.forStatusAndDetail(exception.getStatusCode(), exception.getReason());
     }
 
     @ExceptionHandler(InvalidRequestException.class)
     public ProblemDetail handle(InvalidRequestException exception) {
+        log(exception);
         return ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, "Invalid SQL query syntax.");
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     ProblemDetail handle(MethodArgumentNotValidException exception) {
+        log(exception);
         List<String> violations = new ArrayList<>();
         for (FieldError fieldError : exception.getBindingResult().getFieldErrors()) {
             violations.add(fieldError.getDefaultMessage());
@@ -41,7 +46,12 @@ public class ExceptionResponseHandler {
 
     @ExceptionHandler(Exception.class)
     public ProblemDetail handle(Exception exception) {
+        log(exception);
         return ProblemDetail.forStatusAndDetail(HttpStatus.NOT_IMPLEMENTED, "Something went wrong.");
+    }
+
+    private void log(final Exception exception) {
+        log.error("Exception encountered: {}", exception.getMessage(), exception);
     }
 
 }
