@@ -7,7 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.baeldung.athena.service.QueryService;
+import com.baeldung.athena.validation.SelectSqlQuery;
 
+import jakarta.validation.Valid;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
@@ -19,11 +21,11 @@ public class QueryController {
     private final QueryService queryService;
 
     @PostMapping
-    public ResponseEntity<?> executeQuery(@RequestBody final QueryRequest request) {
+    public ResponseEntity<?> executeQuery(@RequestBody @Valid final QueryRequest request) {
         final var response = queryService.execute(request.sqlQuery);
         return ResponseEntity.ok(response);
     }
 
-    public record QueryRequest(@NonNull String sqlQuery) {}
+    public record QueryRequest(@NonNull @SelectSqlQuery String sqlQuery) {}
 
 }
