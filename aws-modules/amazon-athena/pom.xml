@@ -3,17 +3,18 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.3.0</version>
-		<relativePath />
-	</parent>
-	<groupId>com.baeldung</groupId>
 	<artifactId>amazon-athena</artifactId>
 	<version>0.0.1</version>
+	<packaging>jar</packaging>
 	<name>amazon-athena</name>
 	<description>codebase demonstrating the integration of Amazon Athena in Spring Boot to query data stored in a S3 bucket</description>
+
+	<parent>
+		<groupId>com.baeldung</groupId>
+		<artifactId>parent-boot-3</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../../parent-boot-3</relativePath>
+	</parent>
 
 	<dependencies>
 		<dependency>
@@ -63,7 +64,7 @@
 	</build>
 
 	<properties>
-		<java.version>21</java.version>
+		<java.version>17</java.version>
 		<commons-io.version>2.16.1</commons-io.version>
 		<amazon-athena.version>2.26.0</amazon-athena.version>
 	</properties>

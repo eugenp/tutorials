@@ -21,6 +21,7 @@
         <module>aws-reactive</module>
         <module>aws-s3</module>
         <module>aws-rest</module>
+        <module>amazon-athena</module>
     </modules>
 
     <dependencies>
