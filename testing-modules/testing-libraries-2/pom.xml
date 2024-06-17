@@ -167,6 +167,9 @@
                         <version>${spotbugs.version}</version>
                     </dependency>
                 </dependencies>
+                <configuration>
+                    <htmlOutput>true</htmlOutput>
+                </configuration>
             </plugin>
         </plugins>
         <resources>
