@@ -28,4 +28,8 @@
             </repositories>
         </profile>
     </profiles>
+
+    <activeProfiles>
+        <activeProfile>local-dev</activeProfile>
+    </activeProfiles>
 </settings>
