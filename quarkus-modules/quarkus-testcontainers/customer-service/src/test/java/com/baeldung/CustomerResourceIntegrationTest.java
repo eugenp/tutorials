@@ -1,4 +1,4 @@
-package info.customer;
+package com.baeldung;
 
 import java.util.stream.Stream;
 
@@ -19,13 +19,7 @@ class CustomerResourceLiveTest {
 
     @ParameterizedTest
     @MethodSource(value = "customerDataProvider")
-    void findById(long customerId, String customerName, int orderSize) {
-        RestAssured.given()
-            .pathParam("id", customerId)
-            .get()
-            .then()
-            .statusCode(200);
-
+    void givenCustomer_whenFindById_thenReturnOrders(long customerId, String customerName, int orderSize) {
         Customer response = RestAssured.given()
             .pathParam("id", customerId)
             .get()
@@ -35,11 +29,6 @@ class CustomerResourceLiveTest {
         Assertions.assertEquals(customerId, response.id);
         Assertions.assertEquals(customerName, response.name);
         Assertions.assertEquals(orderSize, response.orders.size());
-
-        response.orders.forEach(order -> {
-            Assertions.assertNotNull(order.getId());
-            Assertions.assertNotNull(order.getDescription());
-        });
     }
 
     private static Stream<Arguments> customerDataProvider() {

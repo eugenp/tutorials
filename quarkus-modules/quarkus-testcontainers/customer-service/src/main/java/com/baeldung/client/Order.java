@@ -1,4 +1,4 @@
-package info.customer.client;
+package com.baeldung.client;
 
 public class Order {
 

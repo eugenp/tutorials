@@ -1,11 +1,12 @@
-package info.customer;
+package com.baeldung;
 
 import java.util.List;
 
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
-import info.customer.client.Order;
-import info.customer.client.OrderService;
+import com.baeldung.client.Order;
+import com.baeldung.client.OrderService;
+
 import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped

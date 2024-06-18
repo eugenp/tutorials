@@ -1,9 +1,10 @@
-package info.customer;
+package com.baeldung;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import info.customer.client.Order;
+import com.baeldung.client.Order;
+
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Transient;

@@ -1,4 +1,4 @@
-package info.customer;
+package com.baeldung;
 
 import java.util.Map;
 

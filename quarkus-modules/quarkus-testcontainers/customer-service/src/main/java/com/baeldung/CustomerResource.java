@@ -1,4 +1,4 @@
-package info.customer;
+package com.baeldung;
 
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;

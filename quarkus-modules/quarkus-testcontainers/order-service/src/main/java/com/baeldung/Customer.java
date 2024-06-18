@@ -1,4 +1,4 @@
-package info.order;
+package com.baeldung;
 
 import java.util.Set;
 
