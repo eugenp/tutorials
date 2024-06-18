@@ -1,9 +1,7 @@
 package com.baeldung.hexagonal.service;
 
-public class RecommendationService {
-    private final ArticleService articleService;
+import org.springframework.stereotype.Service;
 
-    public RecommendationService(ArticleService articleService) {
-        this.articleService = articleService;
-    }
+@Service
+public class RecommendationService {
 }

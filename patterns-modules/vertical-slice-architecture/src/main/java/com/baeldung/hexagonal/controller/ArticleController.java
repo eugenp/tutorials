@@ -24,27 +24,27 @@ public class ArticleController {
     }
 
     @PostMapping
-    ArticleDto createArticle(@RequestBody ArticleDto dto) {
+    public ArticleDto createArticle(@RequestBody ArticleDto dto) {
         var article = mapToEntity(dto);
         article = articleService.create(article);
         return mapToDto(article);
     }
 
     @PutMapping
-    ArticleDto update(@RequestBody ArticleDto dto) {
+    public ArticleDto update(@RequestBody ArticleDto dto) {
         var updatedArticle = articleService.update(dto.id(), dto.content());
         return mapToDto(updatedArticle);
     }
 
     @GetMapping("{id}")
-    ResponseEntity<ArticleDto> readArticle(@PathVariable Long id) {
+    public ResponseEntity<ArticleDto> readArticle(@PathVariable Long id) {
         var article = articleService.findById(id)
             .map(ArticleController::mapToDto);
         return ResponseEntity.of(article);
     }
 
-    private static ArticleDto mapToDto(Article updatedArticle) {
-        return new ArticleDto(updatedArticle.getId(), updatedArticle.getName(), updatedArticle.getContent(), updatedArticle.getSlug());
+    private static ArticleDto mapToDto(Article entity) {
+        return new ArticleDto(entity.getId(), entity.getName(), entity.getContent(), entity.getSlug());
     }
 
     private static Article mapToEntity(ArticleDto dto) {
