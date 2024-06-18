@@ -11,9 +11,6 @@ class ReadArticleUseCase {
     private JdbcClient jdbcClient;
 
     public void apply(Long id) {
-
     }
-
-
 
 }
