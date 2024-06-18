@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.baeldung.hexagonal.dto.ArticleDto;
 import com.baeldung.hexagonal.persistence.entity.Article;
 import com.baeldung.hexagonal.persistence.repository.ArticleRepository;
 
@@ -33,7 +34,6 @@ public class ArticleService {
     public Article update(Long articleId, String newContent) {
         var article = findById(articleId).orElseThrow();
         article.setContent(newContent);
-        article.getSlug();
         return repository.save(article);
     }
 

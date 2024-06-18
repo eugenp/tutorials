@@ -10,27 +10,26 @@ import org.springframework.stereotype.Component;
 @Component
 class SearchArticleUseCase {
 
+    private static final String FIND_BY_SLUG_SQL = """
+        SELECT id, name, slug, description, category, authorid
+        FROM articles
+        WHERE slug = ?;
+        """;
+
     private final JdbcClient jdbcClient;
 
-    record Article(String name, String slug, String description, String category, long authorId) {
-    }
-
-    public Optional<Article> search(String slug) {
-
-        String sql = """
-            SELECT id, name, slug, description, category, authorid
-            FROM articles
-            WHERE slug = ?;
-            """;
-
-        return jdbcClient.sql(sql)
+    public Optional<SearchArticleDto> search(String slug) {
+        return jdbcClient.sql(FIND_BY_SLUG_SQL)
             .param(slug)
-            .query(this::mapRowToArticle)
+            .query(this::mapArticleProjection)
             .optional();
     }
 
-    private Article mapRowToArticle(ResultSet rs, int rowNum) throws SQLException {
-        return new Article(rs.getString("name"), rs.getString("slug"), rs.getString("description"), rs.getString("category"), rs.getLong("authorid"));
+    record SearchArticleDto(String name, String slug, String description, String category, Long authorId) {
+    }
+
+    private SearchArticleDto mapArticleProjection(ResultSet rs, int rowNum) throws SQLException {
+        return new SearchArticleDto(rs.getString("name"), rs.getString("slug"), rs.getString("description"), rs.getString("category"), rs.getLong("authorid"));
     }
 
     SearchArticleUseCase(JdbcClient jdbcClient) {

@@ -26,8 +26,8 @@ public class ArticleController {
     @PostMapping
     public ArticleDto createArticle(@RequestBody ArticleDto dto) {
         var article = mapToEntity(dto);
-        article = articleService.create(article);
-        return mapToDto(article);
+        var entity = articleService.create(article);
+        return mapToDto(entity);
     }
 
     @PutMapping

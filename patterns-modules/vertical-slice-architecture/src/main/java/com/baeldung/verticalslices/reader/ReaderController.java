@@ -24,7 +24,7 @@ class ReaderController {
     }
 
     @GetMapping
-    ResponseEntity<SearchArticleUseCase.Article> searchArticle(@RequestParam String slug) {
+    ResponseEntity<SearchArticleUseCase.SearchArticleDto> searchArticle(@RequestParam String slug) {
         return ResponseEntity.of(searchArticle.search(slug));
     }
 
