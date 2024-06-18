@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class StudentManagerTest {
 
     @Test
-    public void testCreateStudent() {
+    public void givenValidStudentDetails_whenCreateStudent_thenStudentIsCreatedSuccessfully() {
         StudentManager studentManager = new StudentManager();
         Map<String, Integer> grades = new HashMap<>();
         grades.put("Math", 95);
@@ -28,7 +28,7 @@ public class StudentManagerTest {
     }
 
     @Test
-    public void testSerializeAndDeserializeStudent() {
+    public void givenSerializedStudent_whenDeserialize_thenStudentIsDeserializedSuccessfully() {
         StudentManager studentManager = new StudentManager();
         Map<String, Integer> grades = new HashMap<>();
         grades.put("Math", 95);
