@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.cloud.deployer.spi.core.AppDeploymentRequest;
 import org.springframework.cloud.deployer.spi.task.TaskLauncher;
-import org.springframework.cloud.stream.messaging.Sink;
+import org.springframework.cloud.stream.function.StreamBridge;
 import org.springframework.cloud.task.launcher.TaskLaunchRequest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.messaging.support.GenericMessage;
@@ -23,14 +23,14 @@ import static org.mockito.Mockito.verify;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(
-    classes = SpringCloudTaskSinkApplication.class)
-public class SpringCloudTaskSinkApplicationIntegrationTest {
+    classes = SpringCloudTaskStreamBridgeApplication.class)
+public class SpringCloudTaskStreamBridgeIntegrationTest {
 
     @Autowired
     ApplicationContext context;
 
     @Autowired
-    private Sink sink;
+    private StreamBridge streamBridge;
 
     @Test
     public void testTaskLaunch() throws IOException {
@@ -45,9 +45,8 @@ public class SpringCloudTaskSinkApplicationIntegrationTest {
                 + "timestamp-task:jar:1.0.1.RELEASE", null,
             prop,
             null, null);
-        GenericMessage<TaskLaunchRequest> message = new GenericMessage<TaskLaunchRequest>(
-            request);
-        this.sink.input().send(message);
+        GenericMessage<TaskLaunchRequest> message = new GenericMessage<>(request);
+        this.streamBridge.send("taskLauncherSink-in-0", message);
 
         ArgumentCaptor<AppDeploymentRequest> deploymentRequest = ArgumentCaptor
             .forClass(AppDeploymentRequest.class);

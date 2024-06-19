@@ -6,11 +6,11 @@ import org.springframework.cloud.task.launcher.annotation.EnableTaskLauncher;
 
 @SpringBootApplication
 @EnableTaskLauncher
-public class SpringCloudTaskSinkApplication {
+public class SpringCloudTaskStreamBridgeApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(
-            SpringCloudTaskSinkApplication.class, args);
+            SpringCloudTaskStreamBridgeApplication.class, args);
     }
 
 }

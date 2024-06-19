@@ -713,6 +713,7 @@
                 <!--<module>spring-cloud-modules/spring-cloud-stream-starters</module>--><!-- failing after upgrading to jdk17-->
                 <module>spring-cloud-modules/spring-cloud-zuul-eureka-integration</module>
                 <module>spring-cloud-modules/spring-cloud-bootstrap</module>
+                <module>spring-cloud-modules/spring-cloud-task</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
                 <module>spring-core-4</module>
@@ -963,6 +964,7 @@
                 <!--<module>spring-cloud-modules/spring-cloud-stream-starters</module>--><!-- failing after upgrading to jdk17-->
                 <module>spring-cloud-modules/spring-cloud-zuul-eureka-integration</module>
                 <module>spring-cloud-modules/spring-cloud-bootstrap</module>
+                <module>spring-cloud-modules/spring-cloud-task</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
                 <module>spring-core-4</module>
