@@ -12,7 +12,7 @@ import io.zonky.test.db.AutoConfigureEmbeddedDatabase;
 
 @DataJpaTest
 @AutoConfigureEmbeddedDatabase(provider = ZONKY)
-public class ZonkyEmbeddedPostgresIntegrationTest {
+class ZonkyEmbeddedPostgresLiveTest {
 
     @Autowired
     private PersonRepository repository;
