@@ -1,0 +1,20 @@
+{
+    "namespace": "generated.avro",
+    "type": "record",
+    "name": "Car",
+    "fields": [
+        {   "name": "brand",
+            "type": ["null", "string"]
+         },
+        {   "name": "number_of_doors",
+            "type": ["null", "int"]
+        },
+        {   "name": "color",
+            "type": "string"
+        },
+        {
+            "name": "number_of_wheels",
+            "type": "int"
+        }
+    ]
+}
