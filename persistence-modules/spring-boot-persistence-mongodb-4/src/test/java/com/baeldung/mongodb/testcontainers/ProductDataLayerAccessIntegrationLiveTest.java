@@ -10,7 +10,7 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ProductDataLayerAccessIntegrationTest extends AbstractBaseIntegrationTest {
+public class ProductDataLayerAccessIntegrationLiveTest extends AbstractBaseIntegrationTest {
 
     @Autowired
     private ProductRepository productRepository;
