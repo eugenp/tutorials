@@ -32,4 +32,9 @@ public class CourseEntity {
     public Student getStudent(String enrolledId) {
         return students.get(enrolledId);
     }
+    
+    public Map<String, Student> getStudents() {
+        return students;
+    }
+    
 }

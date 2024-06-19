@@ -6,6 +6,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import static com.google.common.base.Preconditions.checkNotNull;
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
+import java.time.Duration;
+
 public class Page {
     private static final long DEFAULT_WAIT_SECONDS = 5;
     private static Page currentPage;
@@ -22,7 +24,7 @@ public class Page {
     }
 
     WebDriverWait getWait() {
-        return new WebDriverWait(driver, DEFAULT_WAIT_SECONDS);
+        return new WebDriverWait(driver, Duration.ofSeconds(5));
     }
 
 }

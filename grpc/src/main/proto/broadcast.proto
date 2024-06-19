@@ -1,0 +1,18 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_package = "com.baeldung.grpc.retry";
+package retryexample;
+
+message NotificationRequest {
+  string message = 1;
+  string type = 2;
+  int32 messageID = 3;
+}
+
+message NotificationResponse {
+  string response = 1;
+}
+
+service NotificationService {
+  rpc notify(NotificationRequest) returns (NotificationResponse){}
+}

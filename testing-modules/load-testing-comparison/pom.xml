@@ -70,7 +70,6 @@
         <gatling.version>3.4.0</gatling.version>
         <scala-maven-plugin.version>4.4.0</scala-maven-plugin.version>
         <gatling-maven-plugin.version>3.1.0</gatling-maven-plugin.version>
-        <jmeter.version>5.0</jmeter.version>
     </properties>
 
 </project>

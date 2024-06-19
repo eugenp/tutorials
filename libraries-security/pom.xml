@@ -122,6 +122,21 @@
             <groupId>org.glassfish.jaxb</groupId>
             <artifactId>jaxb-runtime</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.hierynomus</groupId>
+            <artifactId>sshj</artifactId>
+            <version>${sshj.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.sshd</groupId>
+            <artifactId>sshd-sftp</artifactId>
+            <version>${apache-sftp.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.sshd</groupId>
+            <artifactId>sshd-scp</artifactId>
+            <version>${apache-scp.version}</version>
+        </dependency>        
     </dependencies>
 
     <build>
@@ -146,8 +161,11 @@
         <jasypt.version>1.9.2</jasypt.version>
         <bouncycastle.version>1.68</bouncycastle.version>
         <jsch.version>0.1.55</jsch.version>
-        <apache-mina.version>2.5.1</apache-mina.version>
+        <apache-mina.version>2.12.1</apache-mina.version>
+        <apache-sftp.version>2.12.1</apache-sftp.version>
+        <apache-scp.version>2.12.1</apache-scp.version>
         <xacml4j.version>1.4.0</xacml4j.version>
+        <sshj.version>0.38.0</sshj.version>
     </properties>
 
 </project>

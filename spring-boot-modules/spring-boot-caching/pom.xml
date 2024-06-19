@@ -86,7 +86,6 @@
     </build>
 
     <properties>
-        <ehcache.version>3.10.8</ehcache.version>
         <start-class>com.baeldung.caching.boot.CacheApplication</start-class>
     </properties>
 

@@ -44,7 +44,3 @@ build/
 *.swp
 .DS_Store
 Thumbs.db
-
-# Ignore any specific environment configuration files
-.env
-.env.*

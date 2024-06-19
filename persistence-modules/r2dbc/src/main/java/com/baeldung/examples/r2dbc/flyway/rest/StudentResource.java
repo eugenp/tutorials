@@ -1,6 +1,6 @@
 package com.baeldung.examples.r2dbc.flyway.rest;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

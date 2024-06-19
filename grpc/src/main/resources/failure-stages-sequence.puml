@@ -1,0 +1,45 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+'hide footbox
+'footer Foot Box removed
+'skinparam monochrome true
+skinparam Box {
+Padding 40
+
+}
+
+skinparam sequenceMessageAlign direction
+skinparam handwritten false
+skinparam SequenceBoxBorderColor #fffce8/#f8f9fa
+
+skinparam BackgroundColor #fffce8/#f8f9fa
+
+skinparam sequence {
+Participant underline
+ParticipantFontSize 11
+ParticipantFontColor black
+
+ParticipantBackgroundColor #fffce8
+'ParticipantPadding 1
+}
+box Client #beige
+participant "Client Application"
+participant "gRPC Client Library"
+end box
+
+box Server #beige
+participant "gRPC Server Library"
+participant "Server Application"
+end box
+"Client Application" ->> "gRPC Client Library": Request
+"gRPC Client Library" -->> "gRPC Server Library": [1] Request
+destroy "gRPC Client Library"
+
+"gRPC Server Library" ->> "Server Application":   [2] Request
+destroy "gRPC Server Library"
+"Server Application" -->>?:[3]
+
+destroy "Server Application"
+
+@enduml

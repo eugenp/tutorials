@@ -8,4 +8,6 @@ This module contains articles about core Java Security
 - [Check Certificate Name and Alias in Keystore File](https://www.baeldung.com/java-keystore-check-certificate-name-alias)
 - [Using a Custom TrustStore in Java](https://www.baeldung.com/java-custom-truststore)
 - [Enable Java SSL Debug Logging](https://www.baeldung.com/java-ssl-debug-logging)
+- [Resolving Security Exception: java.security.UnrecoverableKeyException: Cannot Recover Key](https://www.baeldung.com/java-security-unrecoverablekeyexception-resolve)
+- [List Private Keys From a Keystore](https://www.baeldung.com/java-keystore-jks-list-private-keys)
 - More articles: [[<-- prev]](/core-java-modules/core-java-security-3)

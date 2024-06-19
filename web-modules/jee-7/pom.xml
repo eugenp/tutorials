@@ -516,8 +516,6 @@
     <properties>
         <lifecycle.mapping.version>1.0.0</lifecycle.mapping.version>
         <mvc.api.version>1.0-edr2</mvc.api.version>
-        <java.min.version>1.8</java.min.version>
-        <maven.min.version>3.0.0</maven.min.version>
         <javaee_api.version>7.0</javaee_api.version>
         <arquillian_core.version>1.1.11.Final</arquillian_core.version>
         <wildfly-dist.version>31.0.1.Final</wildfly-dist.version>

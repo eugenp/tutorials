@@ -7,3 +7,4 @@
 - [Creating a Custom Logback Appender](https://www.baeldung.com/custom-logback-appender)
 - [A Guide To Logback](https://www.baeldung.com/logback)
 - [Parameterized Logging with SLF4J](TODO)
+- [Disable Logging From a Specific Class in Logback](https://www.baeldung.com/logback-disable-logging-specific-class)

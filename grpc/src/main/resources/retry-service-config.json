@@ -1,0 +1,21 @@
+{
+  "methodConfig": [
+    {
+      "name": [
+        {
+          "service": "retryexample.NotificationService",
+          "method": "notify"
+        }
+      ],
+      "retryPolicy": {
+        "maxAttempts": 5,
+        "initialBackoff": "0.5s",
+        "maxBackoff": "30s",
+        "backoffMultiplier": 2,
+        "retryableStatusCodes": [
+          "UNAVAILABLE"
+        ]
+      }
+    }
+  ]
+}
