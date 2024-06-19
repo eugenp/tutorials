@@ -131,3 +131,8 @@ persistence-modules/neo4j/data/**
 
 #spring-5-webflux-2
 **/testdb.mv.db
+
+/patterns-modules/design-patterns-creational-2/app.log
+/microservices-modules/micronaut-reactive/.micronaut/test-resources/test-resources.properties
+/libraries-security/src/main/resources/home/upload/test_file_SCP.txt
+/libraries-security/src/main/resources/home/upload/test_file_SFTP.txt
