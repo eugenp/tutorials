@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 
 
 @Configuration
-public class TaskSinkConfiguration {
+public class TaskStreamBridgeConfiguration {
 
     @Bean
     public TaskLauncher taskLauncher() {
