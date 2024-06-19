@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-rest-http-3</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>spring-rest-http-3</name>
     <packaging>war</packaging>
+    <name>spring-rest-http-3</name>
 
     <parent>
         <groupId>com.baeldung</groupId>

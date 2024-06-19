@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-rest-query-language</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>spring-rest-query-language</name>
     <packaging>war</packaging>
+    <name>spring-rest-query-language</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
