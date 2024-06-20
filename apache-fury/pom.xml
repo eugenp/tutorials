@@ -36,6 +36,7 @@
         <apache-fury.version>0.5.0</apache-fury.version>
         <avro.version>1.11.3</avro.version>
         <protobuff.version>4.27.0</protobuff.version>
+        <protobuf.plugin.version>2.1.1</protobuf.plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
@@ -45,16 +46,14 @@
             <plugin>
                 <groupId>io.github.ascopes</groupId>
                 <artifactId>protobuf-maven-plugin</artifactId>
-                <version>2.1.1</version>
-
+                <version>${protobuf.plugin.version}</version>
                 <configuration>
-                    <protocVersion>4.27.0</protocVersion>
+                    <protocVersion>${protobuff.version}</protocVersion>
                     <sourceDirectories>
                         <sourceDirectory>src/main/resources</sourceDirectory>
 
                     </sourceDirectories>
                 </configuration>
-
                 <executions>
                     <execution>
                         <goals>
