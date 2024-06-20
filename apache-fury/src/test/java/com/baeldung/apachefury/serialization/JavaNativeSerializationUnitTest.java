@@ -13,8 +13,11 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.logging.Logger;
 
 class JavaNativeSerializationUnitTest {
+
+    static final Logger LOG = Logger.getLogger(JavaNativeSerializationUnitTest.class.getName());
 
     @Test
     void whenUsingJavaNativeSerialization_thenGenerateByteOutput() throws IOException {
@@ -57,8 +60,8 @@ class JavaNativeSerializationUnitTest {
             }
         }
 
-        System.out.println("Java Native serialization time: " + (endTime - startTime) + " ms");
-        System.out.println("Total bytes: " + totalBytes / (1024 * 1024) + " MB");
+        LOG.info("Java Native serialization time: " + (endTime - startTime) + " ms");
+        LOG.info("Total bytes: " + totalBytes / (1024 * 1024) + " MB");
 
         Assertions.assertEquals(events, parserEvents);
     }

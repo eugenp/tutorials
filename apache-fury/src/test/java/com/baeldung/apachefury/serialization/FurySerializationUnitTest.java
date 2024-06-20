@@ -10,8 +10,11 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.logging.Logger;
 
 class FurySerializationUnitTest {
+
+    static final Logger LOG = Logger.getLogger(FurySerializationUnitTest.class.getName());
 
     @Test
     void whenUsingFurySerialization_thenGenerateByteOutput() {
@@ -46,8 +49,8 @@ class FurySerializationUnitTest {
             totalBytes += serializedData.length;
         }
 
-        System.out.println("Apache Fury serialization time: " + (endTime - startTime) + " ms");
-        System.out.println("Total bytes: " + totalBytes / (1024 * 1024) + " MB");
+        LOG.info("Apache Fury serialization time: " + (endTime - startTime) + " ms");
+        LOG.info("Total bytes: " + totalBytes / (1024 * 1024) + " MB");
 
         Assertions.assertEquals(events, parserEvents);
     }

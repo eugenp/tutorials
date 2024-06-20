@@ -8,8 +8,11 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.logging.Logger;
 
 class ProtobufSerializationUnitTest {
+
+    static final Logger LOG = Logger.getLogger(ProtobufSerializationUnitTest.class.getName());
 
     @Test
     void whenUsingProtobufSerialization_thenGenerateByteOutput() throws InvalidProtocolBufferException {
@@ -44,8 +47,8 @@ class ProtobufSerializationUnitTest {
             totalBytes += serializedData.length;
         }
 
-        System.out.println("Protocol Buffers serialization time: " + (endTime - startTime) + " ms");
-        System.out.println("Total bytes: " + (totalBytes / (1024 * 1024)) + " MB");
+        LOG.info("Protocol Buffers serialization time: " + (endTime - startTime) + " ms");
+        LOG.info("Total bytes: " + (totalBytes / (1024 * 1024)) + " MB");
 
         Assertions.assertEquals(events, parserEvents);
     }

@@ -19,8 +19,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.logging.Logger;
 
 class AvroSerializationUnitTest {
+
+    static final Logger LOG = Logger.getLogger(AvroSerializationUnitTest.class.getName());
 
     @Test
     void whenUsingAvroSerialization_thenGenerateByteOutput() throws IOException {
@@ -55,8 +58,8 @@ class AvroSerializationUnitTest {
             totalBytes += serializedData.length;
         }
 
-        System.out.println("Avro serialization time: " + (endTime - startTime) + " ms");
-        System.out.println("Total bytes: " + totalBytes / (1024 * 1024) + " MB");
+        LOG.info("Avro serialization time: " + (endTime - startTime) + " ms");
+        LOG.info("Total bytes: " + totalBytes / (1024 * 1024) + " MB");
 
         Assertions.assertEquals(events, parserEvents);
     }
