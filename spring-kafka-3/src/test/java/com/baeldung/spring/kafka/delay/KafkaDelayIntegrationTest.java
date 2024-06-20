@@ -30,7 +30,7 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 @Testcontainers
 @SpringBootTest(classes = KafkaDelayApplication.class)
-class KafkaDelayLiveTest {
+class KafkaDelayIntegrationTest {
 
     @Container
     private static KafkaContainer KAFKA = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:latest"));
