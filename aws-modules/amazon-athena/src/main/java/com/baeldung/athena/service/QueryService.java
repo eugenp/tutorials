@@ -57,7 +57,7 @@ public class QueryService {
             switch (queryState) {
                 case FAILED:
                 case CANCELLED:
-                    throw new QueryExecutionFailureException();
+                    throw new QueryExecutionFailureException("Query execution failed. Validate the query before resubmitting.");
                 case QUEUED:
                 case RUNNING:
                     TimeUnit.MILLISECONDS.sleep(WAIT_PERIOD);

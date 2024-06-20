@@ -9,7 +9,6 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.server.ResponseStatusException;
 
 import lombok.extern.slf4j.Slf4j;
 import software.amazon.awssdk.services.athena.model.InvalidRequestException;
@@ -20,10 +19,10 @@ public class ExceptionResponseHandler {
 
     private static final String VIOLATIONS_KEY = "violations";
 
-    @ExceptionHandler(ResponseStatusException.class)
-    public ProblemDetail handle(ResponseStatusException exception) {
+    @ExceptionHandler(QueryExecutionFailureException.class)
+    public ProblemDetail handle(QueryExecutionFailureException exception) {
         log(exception);
-        return ProblemDetail.forStatusAndDetail(exception.getStatusCode(), exception.getReason());
+        return ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, exception.getMessage());
     }
 
     @ExceptionHandler(InvalidRequestException.class)
