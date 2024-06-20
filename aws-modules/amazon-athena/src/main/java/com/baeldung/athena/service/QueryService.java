@@ -29,6 +29,8 @@ public class QueryService {
     private final ResultConfiguration resultConfiguration;
     private final QueryExecutionContext queryExecutionContext;
 
+    private static final long WAIT_PERIOD = 30;
+
     public List<Map<String, String>> execute(@NonNull final String sqlQuery) {
         final var queryExecutionId = athenaClient.startQueryExecution(query -> 
             query.queryString(sqlQuery)
@@ -58,7 +60,7 @@ public class QueryService {
                     throw new QueryExecutionFailureException();
                 case QUEUED:
                 case RUNNING:
-                    TimeUnit.MILLISECONDS.sleep(10);
+                    TimeUnit.MILLISECONDS.sleep(WAIT_PERIOD);
                     break;
                 case SUCCEEDED:
                     queryState = QueryExecutionState.SUCCEEDED;
