@@ -18,7 +18,6 @@ public class JdbcConnection {
     public static Connection connect() throws SQLException {
         Connection connection = DriverManager.getConnection("jdbc:h2:./test", "sa", "");
         return connection;
-
     }
 
     public static byte[] convertFileToByteArray(String filePath) throws IOException {
