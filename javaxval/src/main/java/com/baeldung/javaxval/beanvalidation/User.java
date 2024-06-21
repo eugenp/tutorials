@@ -18,10 +18,10 @@ public class User {
     @NotNull(message = "Name cannot be null")
     private String name;
 
-    @AssertTrue
+    @AssertTrue(message = "Working must be true")
     private boolean working;
 
-    @Size(min = 10, max = 200, message = "Number of characters should be in between 10 and 200 inclusive")
+    @Size(min = 10, max = 200, message = "About Me must be between 10 and 200 characters")
     private String aboutMe;
 
     @Min(value = 18, message = "Age should not be less than 18")

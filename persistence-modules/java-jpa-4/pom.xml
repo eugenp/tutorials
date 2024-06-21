@@ -35,6 +35,11 @@
             <artifactId>postgresql</artifactId>
             <version>${postgresql.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${fasterxml.jackson.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -57,6 +62,7 @@
         <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
         <h2.version>2.1.214</h2.version>
         <jakarta.persistence-api.version>3.1.0</jakarta.persistence-api.version>
+        <fasterxml.jackson.version>2.17.0</fasterxml.jackson.version>
     </properties>
 
 </project>
