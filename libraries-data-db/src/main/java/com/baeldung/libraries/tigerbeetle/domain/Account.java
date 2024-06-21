@@ -11,6 +11,8 @@ public record Account(
     BigInteger accountHolderId,
     int code,
     int ledger,
+    int userData32,
+    long userData64,
     BigInteger creditsPosted,
     BigInteger creditsPending,
     BigInteger debtsPosted,
