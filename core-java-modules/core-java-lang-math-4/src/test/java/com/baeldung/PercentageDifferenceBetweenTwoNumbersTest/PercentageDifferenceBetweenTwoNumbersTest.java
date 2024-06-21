@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 class PercentageDifferenceBetweenTwoNumbersTest {
 
   @Test
-  void calculatePercentageDifferenceBetweenTwoNumbers() {
+  void whenCalculatePercentageDifferenceBetweenTwoNumbers_thenCorrectResult() {
     double V1 = 50.0;
     double V2 = 70.0;
     double expected = 33.33;
