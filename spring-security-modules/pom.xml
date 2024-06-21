@@ -56,7 +56,8 @@
         <module>spring-security-oauth2-testing</module>
         <module>spring-security-saml2</module>
         <module>spring-security-oauth2-bff/backend</module>
-		<module>spring-security-pkce-spa</module>
+        <module>spring-security-pkce-spa</module>
+        <module>spring-security-compromised-password</module>
     </modules>
 
 </project>

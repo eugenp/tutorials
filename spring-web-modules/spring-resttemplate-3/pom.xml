@@ -5,26 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-resttemplate-3</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>9</source>
-                    <target>9</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
     <name>spring-resttemplate-3</name>
     <packaging>war</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-3</artifactId>
+        <artifactId>spring-web-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -42,6 +29,19 @@
             <version>${httpclient5.version}</version>
         </dependency>
     </dependencies>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>9</source>
+                    <target>9</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <properties>
         <start-class>com.baeldung.resttemplate.methods.RestTemplateMethodsApplication</start-class>
