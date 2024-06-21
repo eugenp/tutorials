@@ -4,7 +4,8 @@
     "name": "Car",
     "fields": [
         {   "name": "brand",
-            "type": ["null", "string"]
+            "type": ["string", "null"],
+            "default": "null"
          },
         {   "name": "number_of_doors",
             "type": ["null", "int"]
