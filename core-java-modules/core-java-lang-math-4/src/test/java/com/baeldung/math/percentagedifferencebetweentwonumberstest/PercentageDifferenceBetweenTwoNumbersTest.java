@@ -1,4 +1,4 @@
-package com.baeldung.PercentageDifferenceBetweenTwoNumbersTest;
+package com.baeldung.math.percentagedifferencebetweentwonumberstest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
