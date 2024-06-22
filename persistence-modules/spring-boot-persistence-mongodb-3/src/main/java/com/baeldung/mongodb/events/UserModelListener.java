@@ -1,6 +1,7 @@
 package com.baeldung.mongodb.events;
 
 
+import java.math.BigInteger;
 import com.baeldung.mongodb.models.User;
 import com.baeldung.mongodb.services.SequenceGeneratorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +22,8 @@ public class UserModelListener extends AbstractMongoEventListener<User> {
 
     @Override
     public void onBeforeConvert(BeforeConvertEvent<User> event) {
-        if (event.getSource().getId() < 1) {
-            event.getSource().setId(sequenceGenerator.generateSequence(User.SEQUENCE_NAME));
+        if (event.getSource().getId().intValue() < 1) {
+            event.getSource().setId(BigInteger.valueOf(sequenceGenerator.generateSequence(User.SEQUENCE_NAME)));
         }
     }
 

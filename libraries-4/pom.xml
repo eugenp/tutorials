@@ -113,6 +113,11 @@
             <artifactId>failsafe</artifactId>
             <version>${dev.failsafe.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.aeron</groupId>
+            <artifactId>aeron-all</artifactId>
+            <version>${aeron.version}</version>
+        </dependency>
 
     </dependencies>
 
@@ -136,6 +141,7 @@
         <jfreechart.version>1.5.4</jfreechart.version>
         <javaparser.version>3.25.10</javaparser.version>
         <dev.failsafe.version>3.3.2</dev.failsafe.version>
+        <aeron.version>1.44.1</aeron.version>
     </properties>
 
 </project>

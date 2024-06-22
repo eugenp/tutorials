@@ -44,7 +44,7 @@
     </build>
 
     <properties>
-        <junit-jupiter.version>5.9.3</junit-jupiter.version> <!-- Latest compatible library. NamespacedHierarchicalStore was extracted starting from 5.10.x. So, fails to compile.-->
+        <junit-platform.version>1.10.2</junit-platform.version>
     </properties>
 
 </project>

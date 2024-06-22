@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.examples.r2dbc</groupId>
     <artifactId>r2dbc</artifactId>
@@ -11,9 +11,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-2</relativePath>
+        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -73,11 +73,6 @@
             <artifactId>flyway-core</artifactId>
             <version>${flyway.core.version}</version>
         </dependency>
-        <dependency>
-            <groupId>io.r2dbc</groupId>
-            <artifactId>r2dbc-h2</artifactId>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -90,9 +85,10 @@
     </build>
 
     <properties>
-        <flyway.core.version>9.16.0</flyway.core.version>
-        <jdbc.postgresql.version>42.5.4</jdbc.postgresql.version>
-        <r2dbc.postgresql.version>1.0.1.RELEASE</r2dbc.postgresql.version>
+        <start-class>com.baeldung.examples.r2dbc.R2dbcExampleApplication</start-class>
+        <flyway.core.version>10.12.0</flyway.core.version>
+        <jdbc.postgresql.version>42.7.3</jdbc.postgresql.version>
+        <r2dbc.postgresql.version>1.0.5.RELEASE</r2dbc.postgresql.version>
     </properties>
 
 </project>

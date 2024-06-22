@@ -2,14 +2,11 @@ package com.baeldung.value_based_class;
 
 import java.util.Objects;
 
-import jdk.internal.ValueBased;
-
 /**
  * This class is written with the intention that it can serve as an example of
  * what a Value-based class could be.
  */
 
-@ValueBased
 public final class Point {
     private final int x;
     private final int y;
