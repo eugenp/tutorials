@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class InsertJsonDataTest {
+public class InsertJsonDataUnitTest {
 
     @Mock
     InsertJsonData insertJsonData;
