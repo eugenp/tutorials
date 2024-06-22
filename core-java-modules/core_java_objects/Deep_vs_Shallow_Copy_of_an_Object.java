@@ -1,3 +1,4 @@
+// Address class
 public class Address {
     String city;
 
@@ -6,6 +7,7 @@ public class Address {
     }
 }
 
+// Person class with shallow and deep copy implementations
 public class Person implements Cloneable {
     String name;
     Address address;
@@ -17,45 +19,45 @@ public class Person implements Cloneable {
 
     @Override
     protected Object clone() throws CloneNotSupportedException {
-        // Deep copy implementation
         Person cloned = (Person) super.clone();
-        cloned.address = new Address(this.address.city);
+        // Deep copy: Uncomment the next line for deep copy, comment it for shallow copy
+        // cloned.address = new Address(this.address.city);
         return cloned;
     }
+}
 
-    // Uncomment the following for shallow copy implementation
-    /*
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
+// Unit tests for shallow and deep copy
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+public class CopyTest {
+
+    @Test
+    public void testShallowCopy() throws CloneNotSupportedException {
+        Address address = new Address("Mumbai");
+        Person person1 = new Person("Patel", address);
+        Person person2 = (Person) person1.clone();
+
+        assertEquals("Mumbai", person1.address.city);
+        assertEquals("Mumbai", person2.address.city);
+
+        person2.address.city = "Bengaluru";
+        assertEquals("Bengaluru", person1.address.city);
+        assertEquals("Bengaluru", person2.address.city);
     }
-    */
 
-    public static void main(String[] args) throws CloneNotSupportedException {
-        // Shallow copy demonstration
-        /*
+    @Test
+    public void testDeepCopy() throws CloneNotSupportedException {
         Address address = new Address("Mumbai");
         Person person1 = new Person("Patel", address);
         Person person2 = (Person) person1.clone();
+        person2.address = new Address(person1.address.city); // Ensure deep copy
 
-        System.out.println(person1.address.city); // Mumbai
-        System.out.println(person2.address.city); // Mumbai
-
-        person2.address.city = "Bengaluru";
-        System.out.println(person1.address.city); // Bengaluru
-        System.out.println(person2.address.city); // Bengaluru
-        */
-
-        // Deep copy demonstration
-        Address address = new Address("Mumbai");
-        Person person1 = new Person("Patel", address);
-        Person person2 = (Person) person1.clone();
-
-        System.out.println(person1.address.city); // Mumbai
-        System.out.println(person2.address.city); // Mumbai
+        assertEquals("Mumbai", person1.address.city);
+        assertEquals("Mumbai", person2.address.city);
 
         person2.address.city = "Bengaluru";
-        System.out.println(person1.address.city); // Mumbai
-        System.out.println(person2.address.city); // Bengaluru
+        assertEquals("Mumbai", person1.address.city);
+        assertEquals("Bengaluru", person2.address.city);
     }
 }
