@@ -12,4 +12,3 @@ This module contains articles about core features in the Java language
 - [Static Final Variables in Java](https://www.baeldung.com/java-static-final-variables)
 - [What Is the Error: “Non-static method cannot be referenced from a static context”?](https://www.baeldung.com/java-non-static-method-cannot-be-referenced-from-a-static-context)
 - [Recursively Sum the Integers in an Array](https://www.baeldung.com/java-recursive-sum-integer-array)
-- [Set an Environment Variable at Runtime in Java](https://www.baeldung.com/java-set-environment-variable-runtime)
