@@ -25,14 +25,16 @@ public class SerializationDeserializationLogic {
         }
     }
 
-    static Car deserializeCar() throws IOException {
+    static Car deserializeCar() {
 
-        DatumReader<Car> userDatumReader = new SpecificDatumReader(Car.class);
-        DataFileReader<Car> dataFileReader = new DataFileReader(new File("cars.avro"), userDatumReader);
         Car resultCar = null;
+        DatumReader<Car> userDatumReader = new SpecificDatumReader(Car.class);
 
-        resultCar = dataFileReader.next();
-
+        try(DataFileReader<Car> dataFileReader = new DataFileReader(new File("cars.avro"), userDatumReader)){
+            resultCar = dataFileReader.next();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return resultCar;
     }
 }
