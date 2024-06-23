@@ -4,18 +4,15 @@
     "name": "Car",
     "fields": [
         {   "name": "brand",
-            "type": ["string", "null"],
-            "default": "null"
+            "type": "string",
+            "default": "Dacia"
          },
         {   "name": "number_of_doors",
-            "type": ["null", "int"]
+            "type": "int",
+            "default": 4
         },
         {   "name": "color",
             "type": "string"
-        },
-        {
-            "name": "number_of_wheels",
-            "type": "int"
         }
     ]
 }

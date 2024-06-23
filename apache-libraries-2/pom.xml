@@ -70,6 +70,7 @@
                 <configuration>
                     <sourceDirectory>${project.basedir}/src/main/java/com/baeldung/avro/</sourceDirectory>
                     <outputDirectory>${project.basedir}/src/main/java/com/baeldung/avro/</outputDirectory>
+                    <stringType>String</stringType>
                 </configuration>
                 <executions>
                     <execution>
