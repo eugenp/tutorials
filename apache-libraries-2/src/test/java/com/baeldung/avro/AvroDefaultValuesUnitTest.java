@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class AvroDefaultValuesUnitTest {
 
     @Test
-    public void givenCarJSONSchema_whenCarIsSerialized_thenCarIsSuccessfullyDeSerialized(){
+    public void givenCarJsonSchema_whenCarIsSerialized_thenCarIsSuccessfullyDeserialized() {
 
         Car car1 = new Car();
         car1.setColor("blue");
