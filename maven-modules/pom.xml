@@ -30,6 +30,7 @@
 <!--        <module>maven-exec-plugin</module>--> <!-- failing after upgrading to jdk17-->
         <module>maven-generate-war</module>
         <module>maven-integration-test</module>
+        <module>maven-jvm-args</module>
         <module>maven-multi-source</module>
         <module>maven-parent-pom-resolution</module>
         <module>maven-plugins</module>
