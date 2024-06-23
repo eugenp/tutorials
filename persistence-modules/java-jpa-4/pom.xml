@@ -31,11 +31,15 @@
             <version>${jakarta.persistence-api.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>${fasterxml.jackson.version}</version>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -53,6 +57,7 @@
 
     <properties>
         <hibernate.version>6.4.7.Final</hibernate.version>
+        <postgresql.version>42.2.18</postgresql.version>
         <maven-processor-plugin.version>3.3.3</maven-processor-plugin.version>
         <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
         <h2.version>2.1.214</h2.version>
