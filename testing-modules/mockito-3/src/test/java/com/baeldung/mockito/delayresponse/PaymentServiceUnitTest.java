@@ -23,7 +23,7 @@ public class PaymentServiceUnitTest {
     @Test
     public void whenProcessingPayment_thenDelayResponseUsingThreadSleep(){
         when(paymentService.processPayment()).thenAnswer(invocation -> {
-            Thread.sleep(DELAY); // Delay of 2 seconds
+            Thread.sleep(DELAY); // Delay of 1 seconds
             return "SUCCESS";
         });
 

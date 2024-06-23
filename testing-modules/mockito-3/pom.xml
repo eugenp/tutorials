@@ -53,7 +53,7 @@
     </build>
 
     <properties>
-        <awaitility.version>4.0.3</awaitility.version>
+        <awaitility.version>4.2.1</awaitility.version>
     </properties>
 
 </project>
