@@ -13,13 +13,16 @@ import java.io.IOException;
 
 public class SerializationDeserializationLogic {
 
-    static void serializeCar(Car car) throws IOException {
+    static void serializeCar(Car car) {
 
         DatumWriter<Car> userDatumWriter = new SpecificDatumWriter(Car.class);
-        DataFileWriter<Car> dataFileWriter = new DataFileWriter(userDatumWriter);
-        dataFileWriter.create(car.getSchema(), new File("cars.avro"));
-        dataFileWriter.append(car);
-        dataFileWriter.close();
+
+        try (DataFileWriter<Car> dataFileWriter = new DataFileWriter(userDatumWriter)) {
+            dataFileWriter.create(car.getSchema(), new File("cars.avro"));
+            dataFileWriter.append(car);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     static Car deserializeCar() throws IOException {
