@@ -1,4 +1,4 @@
-package com.bealdung.rsocket.responder;
+package com.baeldung.rsocket.responder;
 
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.stereotype.Controller;
