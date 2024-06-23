@@ -23,6 +23,7 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
     <dependencies>
         <dependency>
             <groupId>ai.timefold.solver</groupId>

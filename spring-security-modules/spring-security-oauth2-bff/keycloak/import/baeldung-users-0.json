@@ -1,0 +1,24 @@
+{
+  "realm" : "baeldung",
+  "users" : [ {
+    "id" : "b4ba1e85-c692-4656-9001-653123305c5e",
+    "username" : "user",
+    "firstName" : "Test",
+    "lastName" : "User",
+    "email" : "user@baeldung",
+    "emailVerified" : true,
+    "createdTimestamp" : 1713148467217,
+    "enabled" : true,
+    "totp" : false,
+    "credentials" : [ {
+      "type": "password",
+      "value": "user"
+
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-baeldung" ],
+    "notBefore" : 0,
+    "groups" : [ ]
+  } ]
+}

@@ -131,7 +131,7 @@
         <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
         <quarkus.platform.version>3.9.4</quarkus.platform.version>
         <surefire-plugin.version>3.0.0-M7</surefire-plugin.version>
-        <junit-jupiter.version>5.7.2</junit-jupiter.version> <!-- Latest version not compatible. Maybe old quarkus version -->
+        <junit-jupiter.version>5.9.2</junit-jupiter.version><!--set to previous version as getting exception -->
     </properties>
 
 </project>

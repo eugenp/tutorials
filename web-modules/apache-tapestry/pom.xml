@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>apache-tapestry</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>apache-tapestry</name>
     <packaging>war</packaging>
+    <name>apache-tapestry</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -134,7 +134,6 @@
 
     <properties>
         <compiler.jetty.version>6.1.16</compiler.jetty.version>
-        <compiler.surefire.version>3.0.0-M5</compiler.surefire.version>
         <tapestry.version>5.8.2</tapestry.version>
         <servlet-api-release-version>2.5</servlet-api-release-version>
         <testng-release-version>6.8.21</testng-release-version>

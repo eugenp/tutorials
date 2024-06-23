@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.util.Collections;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 
 import org.springframework.boot.test.context.TestConfiguration;
 

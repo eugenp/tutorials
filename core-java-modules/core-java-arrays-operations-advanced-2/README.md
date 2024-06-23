@@ -4,3 +4,4 @@
 - [Moves Zeros to the End of an Array in Java](https://www.baeldung.com/java-array-sort-move-zeros-end)
 - [Finding the Majority Element of an Array in Java](https://www.baeldung.com/java-array-find-majority-element)
 - [Set Matrix Elements to Zero in Java](https://www.baeldung.com/java-set-matrix-elements-zero)
+- [Finding the Second Smallest Integer in an Array in Java](https://www.baeldung.com/java-array-second-smallest-integer)
