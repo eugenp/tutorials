@@ -10,7 +10,7 @@ public class AvroDefaultValuesUnitTest {
     @Test
     public void givenCarJsonSchema_whenCarIsSerialized_thenCarIsSuccessfullyDeserialized() {
 
-        Car car1 = new Car();
+        Car car = new Car();
         car1.setColor("blue");
 
         try {
