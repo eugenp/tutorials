@@ -31,10 +31,10 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Properties;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
-import static org.junit.Assert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = Application.class)
@@ -90,7 +90,7 @@ public class ProductInfoRepositoryIntegrationTest {
         }
 
         // TODO How to handle different environments. i.e. AVOID deleting all entries in ProductInfo on table
-        dynamoDBMapper.batchDelete((List<ProductInfo>) repository.findAll());
+        dynamoDBMapper.batchDelete(repository.findAll());
     }
 
     @Test
