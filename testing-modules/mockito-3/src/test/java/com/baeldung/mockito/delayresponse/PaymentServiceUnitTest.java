@@ -23,7 +23,7 @@ public class PaymentServiceUnitTest {
     @Test
     public void whenProcessingPayment_thenDelayResponseUsingThreadSleep(){
         when(paymentService.processPayment()).thenAnswer(invocation -> {
-            Thread.sleep(DELAY); // Delay of 1 seconds
+            Thread.sleep(DELAY); // Delay of 1 second
             return "SUCCESS";
         });
 
@@ -36,7 +36,7 @@ public class PaymentServiceUnitTest {
     }
 
     @Test
-    public void whenProcessingPayment_thenDelayResponseUsingAnswersWithDelay() throws Exception {
+    public void whenProcessingPayment_thenDelayResponseUsingAnswersWithDelay() {
 
         when(paymentService.processPayment()).thenAnswer(AdditionalAnswers.answersWithDelay(DELAY, invocation -> "SUCCESS"));
 
