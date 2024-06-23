@@ -18,7 +18,7 @@ public class PaymentServiceUnitTest {
 
     @Mock
     PaymentService paymentService;
-    private static long DELAY = 1;
+    private static final long DELAY = 1;
 
     @Test
     public void whenProcessingPayment_thenDelayResponseUsingThreadSleep(){
