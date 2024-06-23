@@ -6,8 +6,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>google-web-toolkit</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>google-web-toolkit</name>
     <packaging>war</packaging>
+    <name>google-web-toolkit</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
