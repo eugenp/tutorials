@@ -16,7 +16,7 @@ public class AvroDefaultValuesUnitTest {
         Car deserializedCar = SerializationDeserializationLogic.deserializeCar();
 
         assertEquals("Dacia", deserializedCar.getBrand());
-        assertEquals(4,deserializedCar.getNumberOfDoors());
-        assertEquals("blue", deserializedCar.getColor().toString());
+        assertEquals(4, deserializedCar.getNumberOfDoors());
+        assertEquals("blue", deserializedCar.getColor());
     }
 }
