@@ -47,6 +47,7 @@ public class SecurityConfiguration {
     }
 
     @Bean
+    @ConditionalOnMissingBean
     public CompromisedPasswordChecker customCompromisedPasswordChecker() {
         RestClient customRestClient = RestClient.builder().baseUrl(CUSTOM_COMPROMISED_PASSWORD_CHECK_URL)
                 .defaultHeader("X-API-KEY", "api-key").build();
