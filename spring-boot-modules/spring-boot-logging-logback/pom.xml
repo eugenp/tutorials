@@ -7,7 +7,6 @@
     <name>spring-boot-logging-logback</name>
     <packaging>jar</packaging>
     <description>Demo project for Spring Boot Logging with Logback</description>
-
     <parent>
         <groupId>com.baeldung.spring-boot-modules</groupId>
         <artifactId>spring-boot-modules</artifactId>
@@ -23,6 +22,21 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.zalando</groupId>
+            <artifactId>logbook-spring-boot-starter</artifactId>
+            <version>${logbook-spring-boot-starter.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+            <version>${logstash-logback-encoder.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.zalando</groupId>
+            <artifactId>logbook-logstash</artifactId>
+            <version>${logbook-logstash.version}</version>
+         </dependency>
     </dependencies>
 
     <build>
@@ -34,4 +48,9 @@
         </plugins>
     </build>
 
+    <properties>
+        <logbook-spring-boot-starter.version>3.9.0</logbook-spring-boot-starter.version>
+        <logstash-logback-encoder.version>7.4</logstash-logback-encoder.version>
+        <logbook-logstash.version>3.9.0</logbook-logstash.version>
+    </properties> 
 </project>
