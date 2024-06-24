@@ -14,8 +14,8 @@ import org.junit.jupiter.api.Test;
 
 public class HamcrestItemNotInCollectionUnitTest {
 
-    private final List<String> LIST = List.of("a", "b", "c", "d", "e", "f");
-    private final String[] ARRAY = { "a", "b", "c", "d", "e", "f" };
+    private static final List<String> LIST = List.of("a", "b", "c", "d", "e", "f");
+    private static final String[] ARRAY = { "a", "b", "c", "d", "e", "f" };
 
     @Test
     void whenUsingNotAndHasItem_thenCorrect() {
