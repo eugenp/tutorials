@@ -24,8 +24,7 @@ class CorsIntegrationTest {
     @SneakyThrows
     void whenRequestFromAllowedOrigin_thenAllowsCors() {
         mockMvc.perform(get("/api/v1/joke")
-          .header("Origin", "https://baeldung.com")
-          .header("X-BAELDUNG-KEY", "someValue"))
+          .header("Origin", "https://baeldung.com"))
           .andExpect(status().isOk())
           .andExpect(header().string("Access-Control-Allow-Origin", "https://baeldung.com"));
     }
@@ -34,7 +33,7 @@ class CorsIntegrationTest {
     @SneakyThrows
     void whenRequestFromNotAllowedOrigin_thenDoesNotAllowCors() {
         mockMvc.perform(get("/api/v1/joke")
-          .header("Origin", "https://example.com"))
+          .header("Origin", "https://non-baeldung.com"))
           .andExpect(status().isForbidden())
           .andExpect(header().doesNotExist("Access-Control-Allow-Origin"));
     }
