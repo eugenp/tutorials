@@ -1,6 +1,7 @@
 package com.baeldung.avro;
 
 import generated.avro.Car;
+
 import org.apache.avro.file.DataFileReader;
 import org.apache.avro.file.DataFileWriter;
 import org.apache.avro.io.DatumReader;
@@ -13,7 +14,7 @@ import java.io.IOException;
 
 public class SerializationDeserializationLogic {
 
-    static void serializeCar(Car car) {
+    static void serializeCar(Car car) throws IOException {
 
         DatumWriter<Car> userDatumWriter = new SpecificDatumWriter(Car.class);
 
@@ -21,20 +22,18 @@ public class SerializationDeserializationLogic {
             dataFileWriter.create(car.getSchema(), new File("cars.avro"));
             dataFileWriter.append(car);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw e;
         }
     }
 
-    static Car deserializeCar() {
+    static Car deserializeCar() throws IOException {
 
-        Car resultCar = null;
         DatumReader<Car> userDatumReader = new SpecificDatumReader(Car.class);
 
-        try (DataFileReader<Car> dataFileReader = new DataFileReader(new File("cars.avro"), userDatumReader)){
+        try (DataFileReader<Car> dataFileReader = new DataFileReader(new File("cars.avro"), userDatumReader)) {
             return dataFileReader.next();
         } catch (Exception e) {
-            e.printStackTrace();
+            throw e;
         }
-        return resultCar;
     }
 }

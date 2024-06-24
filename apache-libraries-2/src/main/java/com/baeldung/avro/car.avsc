@@ -12,7 +12,8 @@
             "default": 4
         },
         {   "name": "color",
-            "type": "string"
+            "type": ["null", "string"],
+            "default": null
         }
     ]
 }
