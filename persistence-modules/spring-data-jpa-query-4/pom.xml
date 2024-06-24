@@ -41,6 +41,11 @@
             <artifactId>postgresql</artifactId>
             <version>${postgresql.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.vladmihalcea</groupId>
+            <artifactId>hibernate-types-52</artifactId>
+            <version>${vladmihalcea.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -59,5 +64,6 @@
     <properties>
         <postgresql.version>42.7.1</postgresql.version>
         <datasource-proxy.version>1.9.1</datasource-proxy.version>
+        <vladmihalcea.version>2.18.0</vladmihalcea.version>
     </properties>
 </project>
