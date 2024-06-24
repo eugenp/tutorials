@@ -5,5 +5,5 @@
 /target
 
 # Packaged files #
-#*.jar
+*.jar
 /bin/
