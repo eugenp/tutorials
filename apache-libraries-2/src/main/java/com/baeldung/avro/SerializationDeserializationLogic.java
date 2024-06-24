@@ -31,7 +31,7 @@ public class SerializationDeserializationLogic {
         DatumReader<Car> userDatumReader = new SpecificDatumReader(Car.class);
 
         try(DataFileReader<Car> dataFileReader = new DataFileReader(new File("cars.avro"), userDatumReader)){
-            resultCar = dataFileReader.next();
+            return dataFileReader.next();
         } catch (Exception e) {
             e.printStackTrace();
         }
