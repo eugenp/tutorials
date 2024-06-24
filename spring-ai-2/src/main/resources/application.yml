@@ -2,16 +2,14 @@ spring:
   ai:
     vectorstore:
       redis:
-        uri: redis://:PQzkkZLOgO4eGTXXXXXXXXXXX@redis-19438.c330.asia-south1-1.gce.redns.redis-cloud.com:19438
+        uri: redis://:XXXXXXXXXXX@redis-19438.c330.asia-south1-1.gce.redns.redis-cloud.com:19438
         index: faqs
         prefix: "faq:"
         initialize-schema: true
     openai:
       temperature: 0.3
-      #api-key: ${SPRING_AI_OPENAI_API_KEY}
-      api-key: sk-baledung-cdGROduwOymsAox8F39VT3BlXXXXXXXXXXXXX
+      api-key: ${SPRING_AI_OPENAI_API_KEY}
       model: gpt-3.5-turbo
       embedding-base-url: https://api.openai.com
       #embedding-api-key: ${SPRING_AI_OPENAI_API_KEY}
-      #embedding-api-key: sk-baledung-cdGROduwOymsAox8F39VT3BlXXXXXXXXXXXXX
       #embedding-model: text-embedding-ada-002
