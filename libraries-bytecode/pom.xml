@@ -48,7 +48,7 @@
         the systemPath property and uncomment the following lines.
 
                -->
-        <dependency>
+        <!--<dependency>
             <groupId>org.dinosaur</groupId>
             <artifactId>dinosaur</artifactId>
             <version>1</version>
@@ -61,7 +61,7 @@
             <version>2</version>
             <scope>system</scope>
             <systemPath>${project.basedir}/src/main/resources/dinosaur-2.jar</systemPath>
-        </dependency>
+        </dependency>-->
     </dependencies>
 
     <build>
