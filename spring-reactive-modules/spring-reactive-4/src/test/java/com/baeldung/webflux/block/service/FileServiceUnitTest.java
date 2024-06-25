@@ -31,7 +31,7 @@ class FileServiceUnitTest {
         "1. Requested to get the content of a file by its name" +
         "Then" +
         "1. Return the Content of the file as a String")
-    void testCanReadTheContentOfAFilePresentUnderConfiguredFileBaseDirectory() {
+    void givenAValidFile_wheRequestedToGetTheContentOfTheFile_thenReturnContentOfTheFileAsAString() {
         String fileName = "test.txt";
         String fileContent = "This is a test file.";
 

@@ -21,7 +21,7 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureWebTestClient
-public class IntegrationTest {
+public class FileSearchAPIIntegrationTest {
     private static final String FILES_GET_ENDPOINT = "/bael7724/v1/files/{id}";
     private static final String BLOCKING_FILE_SEARCH_ENDPOINT = "/bael7724/v1/files/{id}/blocking-search";
 
@@ -49,7 +49,7 @@ public class IntegrationTest {
         "1. Files endpoint is requested with the valid file name" +
         "Then " +
         "1. Return the file data")
-    void testAFileIsServed() {
+    void givenAValidFile_whenRequestedViaFilesEndpoint_thenReturnFileData() {
         // Given
         String validFileName = "robots.txt";
         Optional<String> expectedFileContent = getBytesFromAResourceFile(validFileName);
@@ -108,7 +108,7 @@ public class IntegrationTest {
         "   1. When a request is received to search for this search term in the given file" +
         "THEN" +
         "   1. Expect a 500 response form the server")
-    void testSearchingTheFileUsingTheBlockingAPILeadsToServerError() {
+    void givenAFileNameAndASearchTerm_whenBlockingAPIIsHit_thenReturnAServerError() {
         // Given
         String validFileName = "robots.txt";
         Optional<String> expectedFileContent = getBytesFromAResourceFile(validFileName);
@@ -142,7 +142,7 @@ public class IntegrationTest {
         "   1. When a request is received to search for this search term in the given file" +
         "THEN" +
         "   1. Expect a 200 response form the server")
-    void testSearchingAFileUsingTheWorkableBlockingAPIReturnsA200() {
+    void givenAFileNameAndASearchTerm_whenWorkableBlockingAPIIsHit_thenReturnASuccessfulResponse() {
         // Given
         String validFileName = "robots.txt";
         Optional<String> expectedFileContent = getBytesFromAResourceFile(validFileName);
@@ -175,7 +175,7 @@ public class IntegrationTest {
         "   1. When a request is received to search for this search term in the given file" +
         "THEN" +
         "   1. Expect a 500 response form the server")
-    void testSearchingAFileUsingTheSchedulersIncorrectlyReturnsAServerError() {
+    void givenAFileNameAndASearchTerm_whenIncorrectSchedulersAPIIsHit_thenReturnAServerError() {
         // Given
         String validFileName = "robots.txt";
         Optional<String> expectedFileContent = getBytesFromAResourceFile(validFileName);
@@ -208,7 +208,7 @@ public class IntegrationTest {
         "   1. When a request is received to search for this search term in the given file" +
         "THEN" +
         "   1. Expect a 200 response form the server")
-    void testSearchingAFileUsingTheBlockingAPIOnACustomThreadPoolReturnsA200() {
+    void givenAFileNameAndASearchTerm_whenCustomThreadPoolAPIIsHit_thenReturnASuccessfulResponse() {
         // Given
         String validFileName = "robots.txt";
         Optional<String> expectedFileContent = getBytesFromAResourceFile(validFileName);
@@ -241,7 +241,7 @@ public class IntegrationTest {
         "   1. When a request is received to search for this search term in the given file" +
         "THEN" +
         "   1. Expect a 500 response form the server")
-    void testSearchingTheFileUsingTheParallelThreadPoolLeadsToServerError() {
+    void givenAFileNameAndASearchTerm_whenParallelThreadPoolAPIIsHit_thenReturnAServerError() {
         // Given
         String validFileName = "robots.txt";
         Optional<String> expectedFileContent = getBytesFromAResourceFile(validFileName);
@@ -275,7 +275,7 @@ public class IntegrationTest {
         "   1. When a request is received to search for this search term in the given file" +
         "THEN" +
         "   1. Expect a 200 response form the server")
-    void testSearchingAFileUsingTheNonBlockingAPIReturnsA200() {
+    void givenAFileNameAndASearchTerm_whenNonBlockingAPIIsHit_thenReturnASuccessfulResponse() {
         // Given
         String validFileName = "robots.txt";
         Optional<String> expectedFileContent = getBytesFromAResourceFile(validFileName);
