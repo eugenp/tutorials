@@ -2,8 +2,11 @@ package com.baeldung.spring.data.jpa.jsontypeexception;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.junit.jupiter.api.Test;
+import org.postgresql.util.PSQLException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
@@ -24,13 +27,14 @@ public class StudentRepositoryLiveTest {
         Student student = new Student();
         student.setAdmitYear("2024");
         student.setAddress("{\"postCode\": \"TW9 2SF\", \"city\": \"London\"}");
-
-        assertThrows(Exception.class, () -> studentRepository.save(student));
+        Throwable throwable = assertThrows(Exception.class, () -> studentRepository.save(student));
+        assertTrue(ExceptionUtils.getRootCause(throwable) instanceof PSQLException);
     }
 
     @Test
     void whenInsertStringToJsonColumnUsingQuery_thenThrowException() {
-        assertThrows(Exception.class, () -> studentRepository.insertJsonData("2024","{\"postCode\": \"TW9 2SF\", \"city\": \"London\"}"));
+        Throwable throwable = assertThrows(Exception.class, () -> studentRepository.insertJsonData("2024","{\"postCode\": \"TW9 2SF\", \"city\": \"London\"}"));
+        assertTrue(ExceptionUtils.getRootCause(throwable) instanceof PSQLException);
     }
 
     @Test
