@@ -34,7 +34,8 @@ public class SecurityConfiguration {
         final var corsConfiguration = new CorsConfiguration();
         corsConfiguration.setAllowedOrigins(List.of("https://baeldung.com"));
         corsConfiguration.setAllowedMethods(List.of("GET"));
-        corsConfiguration.setAllowedHeaders(List.of("X-BAELDUNG-KEY"));
+        corsConfiguration.setAllowedHeaders(List.of("X-Baeldung-Key"));
+        corsConfiguration.setExposedHeaders(List.of("X-Rate-Limit-Remaining"));
 
         final var corsConfigurationSource = new UrlBasedCorsConfigurationSource();
         corsConfigurationSource.registerCorsConfiguration("/**", corsConfiguration);

@@ -63,9 +63,9 @@ class CorsIntegrationTest {
         mockMvc.perform(options("/api/v1/joke")
           .header("Origin", "https://baeldung.com")
           .header("Access-Control-Request-Method", "GET")
-          .header("Access-Control-Request-Headers", "X-BAELDUNG-KEY"))
+          .header("Access-Control-Request-Headers", "X-Baeldung-Key"))
           .andExpect(status().isOk())
-          .andExpect(header().string("Access-Control-Allow-Headers", "X-BAELDUNG-KEY"));
+          .andExpect(header().string("Access-Control-Allow-Headers", "X-Baeldung-Key"));
     }
     
     @Test
@@ -74,8 +74,28 @@ class CorsIntegrationTest {
         mockMvc.perform(options("/api/v1/joke")
           .header("Origin", "https://baeldung.com")
           .header("Access-Control-Request-Method", "GET")
-          .header("Access-Control-Request-Headers", "X-NON-BAELDUNG-KEY"))
+          .header("Access-Control-Request-Headers", "X-Non-Baeldung-Key"))
           .andExpect(status().isForbidden());
+    }
+    
+    @Test
+    @SneakyThrows
+    void whenRequestFromAllowedOrigin_thenExposesHeader() {
+        mockMvc.perform(get("/api/v1/joke")
+          .header("Origin", "https://baeldung.com"))
+          .andExpect(status().isOk())
+          .andExpect(header().string("Access-Control-Expose-Headers", "X-Rate-Limit-Remaining"))
+          .andExpect(header().exists("X-Rate-Limit-Remaining"));
+    }
+
+    @Test
+    @SneakyThrows
+    void whenRequestFromNotAllowedOrigin_thenDoesNotExposeHeader() {
+        mockMvc.perform(get("/api/v1/joke")
+          .header("Origin", "https://non-baeldung.com"))
+          .andExpect(status().isForbidden())
+          .andExpect(header().doesNotExist("Access-Control-Expose-Headers"))
+          .andExpect(header().doesNotExist("X-Rate-Limit-Remaining"));
     }
     
 }
