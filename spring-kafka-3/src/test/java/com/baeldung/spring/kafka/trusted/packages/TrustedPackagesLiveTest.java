@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
 /**
  * This test requires a running instance of kafka to be present
  */
-@SpringBootTest(classes = TrustedPackageApp.class)
+@SpringBootTest
 @Disabled("This test requires a running instance of kafka to be present - manually run it")
 public class TrustedPackagesLiveTest {
 
