@@ -24,11 +24,10 @@ public class FileContentSearchService {
     public FileContentSearchService() {
         ThreadFactory customThreadFactory = new ThreadFactory() {
             private final AtomicInteger threadNumber = new AtomicInteger(1);
-            private final String namePrefix = "custom-thread-";
 
             @Override
             public Thread newThread(Runnable r) {
-                return new Thread(r, namePrefix + threadNumber.getAndIncrement());
+                return new Thread(r, "custom-thread-" + threadNumber.getAndIncrement());
             }
         };
 
