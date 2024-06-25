@@ -1,4 +1,4 @@
-package com.baeldung.bael7724;
+package com.baeldung.webflux.block;
 
 import static org.junit.jupiter.api.Assertions.fail;
 

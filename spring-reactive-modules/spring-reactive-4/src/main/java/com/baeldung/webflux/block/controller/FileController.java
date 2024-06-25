@@ -1,4 +1,4 @@
-package com.baeldung.bael7724.controller;
+package com.baeldung.webflux.block.controller;
 
 import java.util.function.Function;
 
@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.baeldung.bael7724.service.FileContentSearchService;
-import com.baeldung.bael7724.service.FileService;
-import com.baeldung.bael7724.util.ThreadLogger;
+import com.baeldung.webflux.block.service.FileContentSearchService;
+import com.baeldung.webflux.block.service.FileService;
+import com.baeldung.webflux.block.util.ThreadLogger;
 
 import reactor.core.publisher.Mono;
 

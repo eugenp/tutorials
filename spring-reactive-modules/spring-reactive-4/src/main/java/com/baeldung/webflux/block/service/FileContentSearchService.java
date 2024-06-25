@@ -1,4 +1,4 @@
-package com.baeldung.bael7724.service;
+package com.baeldung.webflux.block.service;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.baeldung.bael7724.util.ThreadLogger;
+import com.baeldung.webflux.block.util.ThreadLogger;
 
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
