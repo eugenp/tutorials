@@ -3,13 +3,12 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung.spring-security-modules.testing</groupId>
     <artifactId>servlet-resource-server</artifactId>
     <name>servlet-resource-server</name>
     <description>Demo project for Spring Boot servlet resource-server</description>
 
     <parent>
-        <groupId>com.baeldung</groupId>
+        <groupId>com.baeldung.spring-security-modules.testing.oauth2</groupId>
         <artifactId>spring-security-oauth2-testing</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>..</relativePath>

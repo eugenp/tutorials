@@ -13,6 +13,14 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
+    <dependencies>
+        <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
+            <version>1.3.2</version>
+        </dependency>
+    </dependencies>
+
     <build>
         <finalName>core-java-annotations</finalName>
         <resources>
@@ -22,13 +30,5 @@
             </resource>
         </resources>
     </build>
-
-    <dependencies>
-        <dependency>
-            <groupId>javax.annotation</groupId>
-            <artifactId>javax.annotation-api</artifactId>
-            <version>1.3.2</version>
-        </dependency>
-    </dependencies>
 
 </project>

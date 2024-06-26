@@ -50,12 +50,12 @@ class QueryStringControllerIntegrationTest {
     }
 
     @ParameterizedTest
-    @CsvSource(textBlock = """
-        /api/byGetParameterMap
-        /api/byParameterName
-        /api/byAnnoRequestParam
-        /api/byPojo
-        """)
+    @CsvSource({
+        "/api/byGetParameterMap",
+        "/api/byParameterName",
+        "/api/byAnnoRequestParam",
+        "/api/byPojo"
+    })
     public void whenPassParameters_thenReturnResolvedModel(String path) throws Exception {
         this.mockMvc.perform(get(path + "?username=bob&roles=admin&roles=stuff"))
             .andExpect(status().isOk())

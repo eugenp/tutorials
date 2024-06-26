@@ -2,12 +2,10 @@ package com.baeldung.hibernate.exception;
 
 import static org.hamcrest.CoreMatchers.isA;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import java.io.IOException;
 import java.util.List;
-
-import jakarta.persistence.OptimisticLockException;
-import jakarta.persistence.PersistenceException;
 
 import org.h2.jdbc.JdbcSQLDataException;
 import org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException;
@@ -23,11 +21,9 @@ import org.hibernate.StaleStateException;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.AvailableSettings;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.exception.ConstraintViolationException;
-import org.hibernate.exception.DataException;
-import org.hibernate.exception.SQLGrammarException;
 import org.hibernate.id.IdentifierGenerationException;
 import org.hibernate.query.NativeQuery;
+import org.hibernate.query.SemanticException;
 import org.hibernate.query.sqm.UnknownEntityException;
 import org.hibernate.tool.schema.spi.CommandAcceptanceException;
 import org.hibernate.tool.schema.spi.SchemaManagementException;
@@ -37,6 +33,8 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import jakarta.persistence.OptimisticLockException;
 
 public class HibernateExceptionUnitTest {
 
@@ -444,4 +442,23 @@ public class HibernateExceptionUnitTest {
             closeSessionQuietly(session);
         }
     }
+
+    @Test
+    public void givenEnumParam_whenExecutingQuery_thenThrowSemanticException() {
+        thrown.expectCause(isA(SemanticException.class));
+        thrown.expectMessage("Cannot compare left expression of type");
+
+        Session session = sessionFactory.openSession();
+        session.createQuery("FROM User u WHERE u.role = 'ADMIN'", User.class);
+        session.close();
+    }
+
+    @Test
+    public void givenEnumParam_whenSettingEnumParam_thenSemanticExceptionIsNotThrown() {
+        Session session = sessionFactory.openSession();
+        assertDoesNotThrow(() -> session.createQuery("FROM User u WHERE u.role = ?1", User.class)
+            .setParameter(1, Role.ADMIN));
+        session.close();
+    }
+
 }

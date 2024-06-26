@@ -13,4 +13,5 @@ This module contains articles about MapStruct.
 - [Throw Exception for Unexpected Input for Enum With MapStruct](https://www.baeldung.com/java-mapstruct-enum-unexpected-input-exception)
 - [How to Use Conditional Mapping With MapStruct](https://www.baeldung.com/java-mapstruct-bean-types-conditional)
 - [Mapping Enum With MapStruct](https://www.baeldung.com/java-mapstruct-enum)
+- [Using MapStruct With Inheritance](https://www.baeldung.com/java-mapstruct-inheritance)
 
