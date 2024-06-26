@@ -1,5 +1,7 @@
 package com.baeldung.mongodb.models;
 
+import java.math.BigInteger;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -12,7 +14,7 @@ public class User {
     public static final String SEQUENCE_NAME = "users_sequence";
 
     @Id
-    private long id;
+    private BigInteger id;
 
     private String firstName;
 
@@ -28,11 +30,11 @@ public class User {
         this.email = email;
     }
 
-    public long getId() {
+    public BigInteger getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(BigInteger id) {
         this.id = id;
     }
 

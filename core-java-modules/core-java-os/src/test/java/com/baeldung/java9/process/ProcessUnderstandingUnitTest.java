@@ -19,7 +19,7 @@ class ProcessUnderstandingUnitTest {
     @Test
     public void givenSubProcess_whenEncounteringError_thenErrorStreamNotNull() throws IOException {
         Process process = Runtime.getRuntime()
-            .exec("javac -cp src src\\main\\java\\com\\baeldung\\java9\\process\\ProcessCompilationError.java");
+            .exec("javac -cp src\\test\\resources\\com\\baeldung\\java9\\process\\ProcessCompilationError.java");
         BufferedReader error = new BufferedReader(new InputStreamReader(process.getErrorStream()));
         String errorString = error.readLine();
         assertNotNull(errorString);

@@ -3,8 +3,8 @@ package com.baeldung.examples.r2dbc.flyway.model;
 import java.time.LocalDate;
 import java.util.UUID;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.domain.Persistable;

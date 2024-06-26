@@ -1,0 +1,8 @@
+# robotstxt.org/
+
+User-agent: *
+Disallow: /api/account
+Disallow: /api/logs/
+Disallow: /api/users/
+Disallow: /management/
+Disallow: /v3/api-docs/

@@ -16,9 +16,9 @@ import optionaltoarraylist.OptionalToArrayListConverter;
 public class OptionalToArrayListConverterUnitTest {
 
     @Test
-    public void givenOptional_whenConvertUsingIsPresent_thenReturnArrayList() {
+    public void givenOptional_whenConvertUsingIfPresent_thenReturnArrayList() {
         Optional<String> optionalValue = Optional.of("Hello, World!");
-        List<String> arrayList = OptionalToArrayListConverter.usingIsPresent(optionalValue);
+        List<String> arrayList = OptionalToArrayListConverter.usingIfPresent(optionalValue);
         assertTrue(arrayList.contains("Hello, World!"));
     }
 

@@ -14,5 +14,4 @@ This module contains articles about MapStruct.
 - [How to Use Conditional Mapping With MapStruct](https://www.baeldung.com/java-mapstruct-bean-types-conditional)
 - [Mapping Enum With MapStruct](https://www.baeldung.com/java-mapstruct-enum)
 - [Using MapStruct With Inheritance](https://www.baeldung.com/java-mapstruct-inheritance)
-- [Mapping Enum to String Using MapStruct](https://www.baeldung.com/mapstruct-enum-string)
 
