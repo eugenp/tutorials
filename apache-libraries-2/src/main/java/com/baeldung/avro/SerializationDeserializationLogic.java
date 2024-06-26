@@ -24,13 +24,10 @@ public class SerializationDeserializationLogic {
     }
 
     static Car deserializeCar() throws IOException {
-
         DatumReader<Car> userDatumReader = new SpecificDatumReader(Car.class);
 
         try (DataFileReader<Car> dataFileReader = new DataFileReader(new File("cars.avro"), userDatumReader)) {
             return dataFileReader.next();
-        } catch (Exception e) {
-            throw e;
         }
     }
 }
