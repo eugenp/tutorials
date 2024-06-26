@@ -31,17 +31,14 @@ public class ExceptionAssertionUnitTest {
     }
 
     @Test
-    public void givenASpecificExceptionType_thenEnsureThatExceptionIsNotThrown() {
+    public void givenASpecificExceptionType_whenExecuted_thenEnsureThatExceptionIsNotThrown() {
         assertSpecificExceptionIsNotThrown(IllegalArgumentException.class, () -> {
-            // Double d = 100d / 0;
-            //Integer.parseInt("100f");
-            //throw new IllegalArgumentException("illegal argument!");
             throw new ArithmeticException("illegal argument!");
         });
     }
 
     @Test
-    public void givenABlock_thenEnsureThatNoExceptionAreThrown() {
+    public void givenABlock_whenExecuted_thenEnsureThatNoExceptionAreThrown() {
         assertNoExceptionIsThrown(() -> {
             int d = 100 / 10;
         });
