@@ -2,9 +2,13 @@ package com.baeldung.assertexception;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.logging.Logger;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ExceptionAssertionUnitTest {
+
+    private static final Logger LOG = Logger.getLogger(ExceptionAssertionUnitTest.class.getName());
 
     @Test
     void whenExceptionThrown_thenAssertionSucceeds() {
@@ -27,7 +31,7 @@ class ExceptionAssertionUnitTest {
     }
 
     @Test
-    void ensureNoExceptionThrown_thenAssertSucceed() {
+    void givenABlock_whenExecutes_thenEnsureNoExceptionThrown() {
         assertDoesNotThrow(() -> {
             Integer.parseInt("100");
         });
@@ -42,13 +46,13 @@ class ExceptionAssertionUnitTest {
             } else {
                 // Any other exception types are ignored and test passes!
                 // Logging it here for debugging purpose
-                System.out.printf("Caught exception: %s, but ignoring since it it not an instance of %s", e.getClass().getName(), exceptionClass.getName());
+                LOG.info("Caught exception: " + e.getClass().getName() + ", but ignoring since it it not an instance of " + exceptionClass.getName());
             }
         }
     }
 
     @Test
-    public void givenASpecificExceptionType_thenEnsureThatExceptionIsNotThrown() {
+    void givenASpecificExceptionType_whenBlockExecutes_thenEnsureThatExceptionIsNotThrown() {
         assertSpecificExceptionIsNotThrown(IllegalArgumentException.class, () -> {
             int i = 100 / 10;
         });
