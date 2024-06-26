@@ -12,7 +12,15 @@ public class StudentManager {
         studentBuilder.putAllGrades(grades);
         return studentBuilder.build();
     }
-
+    public MultiTypeMap createMultiTypeMap(Map<Integer, String> intToStringMap,
+                                           Map<String, Double> stringToDoubleMap,
+                                           Map<Boolean, byte[]> boolToBytesMap) {
+        MultiTypeMap.Builder multiTypeMapBuilder = MultiTypeMap.newBuilder();
+        multiTypeMapBuilder.putIntToString(intToStringMap);
+        multiTypeMapBuilder.putStringToDouble(stringToDoubleMap);
+        multiTypeMapBuilder.putBoolToBytes(boolToBytesMap);
+        return multiTypeMapBuilder.build();
+    }
     public byte[] serializeStudent(Student student) {
         return student.toByteArray();
     }
