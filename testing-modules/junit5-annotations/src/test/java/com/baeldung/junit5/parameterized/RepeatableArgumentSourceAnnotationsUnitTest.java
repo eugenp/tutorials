@@ -21,7 +21,7 @@ class RepeatableArgumentSourceAnnotationsUnitTest {
     @ParameterizedTest
     @MethodSource("asia")
     @MethodSource("europe")
-    void stringLengthCheck_ShouldReturnTrueWhenTheCountryLengthIsLargerThanThreeCharacters(String country) {
+    void whenStringIsLargerThanThreeCharacters_thenReturnTrue(String country) {
         assertTrue(country.length() > 3);
     }
 
