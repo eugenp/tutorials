@@ -1,9 +1,9 @@
 package com.baeldung.quarkus.todos.config;
 
+import static org.citrusframework.kafka.endpoint.builder.KafkaEndpoints.kafka;
+
 import org.citrusframework.kafka.endpoint.KafkaEndpoint;
 import org.citrusframework.spi.BindToRegistry;
-
-import static org.citrusframework.kafka.endpoint.builder.KafkaEndpoints.kafka;
 
 public class KafkaCitrusConfig {
 
@@ -11,10 +11,9 @@ public class KafkaCitrusConfig {
 
     @BindToRegistry(name = TODOS_EVENTS_TOPIC)
     public KafkaEndpoint todosEvents() {
-        return kafka()
-                .asynchronous()
-                .topic("todo-events")
-                .build();
+        return kafka().asynchronous()
+            .topic("todo-events")
+            .build();
     }
 
 }

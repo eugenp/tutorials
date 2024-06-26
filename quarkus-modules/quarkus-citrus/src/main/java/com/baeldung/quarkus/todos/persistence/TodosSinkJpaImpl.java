@@ -1,14 +1,16 @@
 package com.baeldung.quarkus.todos.persistence;
 
-import com.baeldung.quarkus.todos.domain.Todo;
-import com.baeldung.quarkus.todos.domain.TodosSink;
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.enterprise.inject.Typed;
-import lombok.RequiredArgsConstructor;
-
 import java.util.Collection;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.inject.Typed;
+
+import com.baeldung.quarkus.todos.domain.Todo;
+import com.baeldung.quarkus.todos.domain.TodosSink;
+
+import lombok.RequiredArgsConstructor;
 
 @ApplicationScoped
 @Typed(TodosSink.class)
@@ -21,16 +23,16 @@ public class TodosSinkJpaImpl implements TodosSink {
     @Override
     public Collection<Todo> findAll() {
         return repo.listAll()
-                .stream()
-                .map(mapper::map)
-                .collect(Collectors.toList());
+            .stream()
+            .map(mapper::map)
+            .collect(Collectors.toList());
 
     }
 
     @Override
     public Optional<Todo> findById(Long id) {
         return repo.findByIdOptional(id)
-                .map(mapper::map);
+            .map(mapper::map);
     }
 
     @Override

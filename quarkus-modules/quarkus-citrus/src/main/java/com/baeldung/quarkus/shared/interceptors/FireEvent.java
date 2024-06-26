@@ -1,12 +1,18 @@
 package com.baeldung.quarkus.shared.interceptors;
 
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Inherited;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
 import jakarta.enterprise.util.Nonbinding;
 import jakarta.interceptor.InterceptorBinding;
+
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-
-import java.lang.annotation.*;
 
 /**
  * Annotate a method to get an event fired after method execution.
@@ -14,7 +20,7 @@ import java.lang.annotation.*;
 @Inherited
 @Documented
 @InterceptorBinding
-@Target({ElementType.METHOD, ElementType.TYPE})
+@Target({ ElementType.METHOD, ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)
 public @interface FireEvent {
 

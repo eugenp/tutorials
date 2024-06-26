@@ -1,9 +1,9 @@
 package com.baeldung.quarkus.todos.config;
 
+import static org.citrusframework.http.endpoint.builder.HttpEndpoints.http;
+
 import org.citrusframework.http.client.HttpClient;
 import org.citrusframework.spi.BindToRegistry;
-
-import static org.citrusframework.http.endpoint.builder.HttpEndpoints.http;
 
 public class BoundaryCitrusConfig {
 
@@ -11,10 +11,9 @@ public class BoundaryCitrusConfig {
 
     @BindToRegistry(name = API_CLIENT)
     public HttpClient apiClient() {
-        return http()
-                .client()
-                .requestUrl("http://localhost:8081")
-                .build();
+        return http().client()
+            .requestUrl("http://localhost:8081")
+            .build();
     }
 
 }

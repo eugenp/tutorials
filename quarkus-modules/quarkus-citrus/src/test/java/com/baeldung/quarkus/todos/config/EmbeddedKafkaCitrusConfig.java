@@ -1,11 +1,11 @@
 package com.baeldung.quarkus.todos.config;
 
+import static org.citrusframework.container.SequenceAfterSuite.Builder.afterSuite;
+
 import org.citrusframework.container.AfterSuite;
 import org.citrusframework.kafka.embedded.EmbeddedKafkaServer;
 import org.citrusframework.kafka.embedded.EmbeddedKafkaServerBuilder;
 import org.citrusframework.spi.BindToRegistry;
-
-import static org.citrusframework.container.SequenceAfterSuite.Builder.afterSuite;
 
 public class EmbeddedKafkaCitrusConfig {
 
@@ -14,19 +14,17 @@ public class EmbeddedKafkaCitrusConfig {
     @BindToRegistry
     public EmbeddedKafkaServer kafka() {
         if (null == kafkaServer) {
-            kafkaServer = new EmbeddedKafkaServerBuilder()
-                    .kafkaServerPort(9092)
-                    .topics("todo-events")
-                    .build();
+            kafkaServer = new EmbeddedKafkaServerBuilder().kafkaServerPort(9092)
+                .topics("todo-events")
+                .build();
         }
         return kafkaServer;
     }
 
     @BindToRegistry
     public AfterSuite afterSuiteActions() {
-        return afterSuite()
-                .actions(context -> kafka().stop())
-                .build();
+        return afterSuite().actions(context -> kafka().stop())
+            .build();
     }
 
 }

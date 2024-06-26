@@ -1,12 +1,14 @@
 package com.baeldung.quarkus.todos.messaging;
 
-import com.baeldung.quarkus.todos.domain.Todo;
-import com.baeldung.quarkus.todos.domain.TodoEvents.TodoCreated;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.event.Observes;
 import jakarta.inject.Inject;
+
 import org.eclipse.microprofile.reactive.messaging.Channel;
 import org.eclipse.microprofile.reactive.messaging.Emitter;
+
+import com.baeldung.quarkus.todos.domain.Todo;
+import com.baeldung.quarkus.todos.domain.TodoEvents.TodoCreated;
 
 @ApplicationScoped
 public class TodoCreatedKafkaProducer {
