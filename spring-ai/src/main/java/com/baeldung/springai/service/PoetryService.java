@@ -1,6 +1,6 @@
-package com.baeldung.spring.ai.service;
+package com.baeldung.springai.service;
 
-import com.baeldung.spring.ai.dto.PoetryDto;
+import com.baeldung.springai.dto.PoetryDto;
 
 public interface PoetryService {
 
