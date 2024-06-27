@@ -1,5 +1,6 @@
 package com.baeldung.systemin;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public class Application {
@@ -10,7 +11,7 @@ public class Application {
     }
 
     public static String readName() {
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in, StandardCharsets.UTF_8.displayName());
         String input = scanner.next();
         return NAME.concat(input);
     }
