@@ -1,0 +1,49 @@
+<div>
+  <h2>
+    <span id="metrics-page-heading" data-cy="metricsPageHeading">Application Metrics</span>
+
+    <button class="btn btn-primary float-end" (click)="refresh()"><fa-icon icon="sync"></fa-icon> <span>Refresh</span></button>
+  </h2>
+
+  <h3>JVM Metrics</h3>
+
+  @if (metrics() && !updatingMetrics()) {
+    <div class="row">
+      <jhi-jvm-memory class="col-md-4" [updating]="updatingMetrics()" [jvmMemoryMetrics]="metrics()?.jvm"></jhi-jvm-memory>
+
+      <jhi-jvm-threads class="col-md-4" [threads]="threads()"></jhi-jvm-threads>
+
+      <jhi-metrics-system class="col-md-4" [updating]="updatingMetrics()" [systemMetrics]="metrics()?.processMetrics"></jhi-metrics-system>
+    </div>
+  }
+
+  @if (metrics() && metricsKeyExists('garbageCollector')) {
+    <jhi-metrics-garbagecollector
+      [updating]="updatingMetrics()"
+      [garbageCollectorMetrics]="metrics()?.garbageCollector"
+    ></jhi-metrics-garbagecollector>
+  }
+
+  @if (updatingMetrics()) {
+    <div class="well well-lg">Updating...</div>
+  }
+
+  @if (metrics() && metricsKeyExists('http.server.requests')) {
+    <jhi-metrics-request [updating]="updatingMetrics()" [requestMetrics]="metrics()?.['http.server.requests']"></jhi-metrics-request>
+  }
+
+  @if (metrics() && metricsKeyExists('services')) {
+    <jhi-metrics-endpoints-requests
+      [updating]="updatingMetrics()"
+      [endpointsRequestsMetrics]="metrics()?.services"
+    ></jhi-metrics-endpoints-requests>
+  }
+
+  @if (metrics() && metricsKeyExists('cache')) {
+    <jhi-metrics-cache [updating]="updatingMetrics()" [cacheMetrics]="metrics()?.cache"></jhi-metrics-cache>
+  }
+
+  @if (metrics() && metricsKeyExistsAndObjectNotEmpty('databases')) {
+    <jhi-metrics-datasource [updating]="updatingMetrics()" [datasourceMetrics]="metrics()?.databases"></jhi-metrics-datasource>
+  }
+</div>

@@ -143,7 +143,6 @@
         <!-- util -->
         <easymock.version>3.6</easymock.version>
         <javassist.version>3.22.0-GA</javassist.version>
-        <maven-war-plugin.version.version>3.2.2</maven-war-plugin.version.version>
         <spring-retry.version>2.0.5</spring-retry.version>
         <spring-boot.version>2.2.2.RELEASE</spring-boot.version>
     </properties>

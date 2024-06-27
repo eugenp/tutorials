@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>restx</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>restx</name>
     <packaging>war</packaging>
+    <name>restx</name>
 
     <parent>
         <artifactId>parent-modules</artifactId>
@@ -116,6 +116,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven-javadoc-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>attach-docs</id>
@@ -134,6 +135,7 @@
 
     <properties>
         <restx.version>1.0.0-rc3</restx.version>
+        <maven-javadoc-plugin.version>3.6.3</maven-javadoc-plugin.version>
     </properties>
 
 </project>

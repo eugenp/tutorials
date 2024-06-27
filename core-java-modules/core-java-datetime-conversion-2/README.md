@@ -8,3 +8,4 @@ This module contains articles about converting between Java date and time object
 - [Convert TemporalAccessor to LocalDate](https://www.baeldung.com/java-temporalaccessor-localdate-conversion)
 - [How to Convert Between java.sql.Timestamp and ZonedDateTime in Java](https://www.baeldung.com/java-sql-timestamp-zoneddatetime-conversion)
 - [How to Convert Between ZonedDateTime and Date in Java](https://www.baeldung.com/java-zoneddatetime-date-conversion)
+- [Converting java.sql.Timestamp to java.util.Calendar](https://www.baeldung.com/java-timestamp-calendar)

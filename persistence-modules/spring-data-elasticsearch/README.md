@@ -7,6 +7,7 @@
 - [Geospatial Support in ElasticSearch](https://www.baeldung.com/elasticsearch-geo-spatial)
 - [A Simple Tagging Implementation with Elasticsearch](https://www.baeldung.com/elasticsearch-tagging)
 - [What Is Elasticsearch?](https://www.baeldung.com/java-elasticsearch)
+- [Add an Aggregation to an Elasticsearch Query](https://www.baeldung.com/elasticsearch-aggregation-query)
 
 ### Build the Project with Tests Running
 ```

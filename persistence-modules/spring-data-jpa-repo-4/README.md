@@ -8,4 +8,5 @@
 - [Implementing Persistable-Only Entities in Spring Data JPA](https://www.baeldung.com/spring-data-persistable-only-entities)
 - [Storing PostgreSQL JSONB Using Spring Boot and JPA](https://www.baeldung.com/spring-boot-jpa-storing-postgresql-jsonb)
 - [“Not a Managed Type” Exception in Spring Data JPA](https://www.baeldung.com/spring-data-jpa-not-managed-type-exception)
+- [Solving Spring Data JPA ConverterNotFoundException: No converter found](https://www.baeldung.com/spring-jpa-converter-exception)
 - More articles: [[<-- prev]](../spring-data-jpa-repo-3)
