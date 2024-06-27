@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>apache-tapestry</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>apache-tapestry</name>
     <packaging>war</packaging>
+    <name>apache-tapestry</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
