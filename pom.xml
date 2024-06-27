@@ -714,6 +714,7 @@
                 <!--<module>spring-cloud-modules/spring-cloud-stream-starters</module>--><!-- failing after upgrading to jdk17-->
                 <module>spring-cloud-modules/spring-cloud-zuul-eureka-integration</module>
                 <module>spring-cloud-modules/spring-cloud-bootstrap</module>
+                <module>spring-cloud-modules/spring-cloud-task</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
                 <module>spring-core-4</module>
@@ -964,6 +965,7 @@
                 <!--<module>spring-cloud-modules/spring-cloud-stream-starters</module>--><!-- failing after upgrading to jdk17-->
                 <module>spring-cloud-modules/spring-cloud-zuul-eureka-integration</module>
                 <module>spring-cloud-modules/spring-cloud-bootstrap</module>
+                <module>spring-cloud-modules/spring-cloud-task</module>
                 <module>spring-core-2</module>
                 <module>spring-core-3</module>
                 <module>spring-core-4</module>
@@ -1111,6 +1113,7 @@
         <h2.version>2.2.224</h2.version>
         <guava.version>33.0.0-jre</guava.version>
         <maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
+        <mockito-inline.version>5.2.0</mockito-inline.version>
         <mockito-junit-jupiter.version>5.11.0</mockito-junit-jupiter.version>
         <logback.configurationFileName>logback-config-global.xml</logback.configurationFileName>
     </properties>

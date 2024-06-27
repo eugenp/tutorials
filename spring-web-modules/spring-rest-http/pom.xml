@@ -5,14 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-rest-http</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>spring-rest-http</name>
     <packaging>war</packaging>
+    <name>spring-rest-http</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-3</artifactId>
+        <artifactId>spring-web-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
