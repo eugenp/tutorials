@@ -182,6 +182,7 @@
         <module>core-java-numbers-7</module>
         <module>core-java-numbers-8</module>
         <module>core-java-optional</module>
+        <module>core-java-optional-2</module>
         <module>core-java-perf</module>
         <module>core-java-properties</module>
         <module>core-java-reflection</module>
