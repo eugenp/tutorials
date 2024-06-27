@@ -1,6 +1,6 @@
-package com.baeldung.spring.ai.web;
+package com.baeldung.springai.web;
 
-import com.theokanning.openai.OpenAiHttpException;
+import org.springframework.ai.openai.api.common.OpenAiApiException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -14,10 +14,10 @@ public class ExceptionTranslator extends ResponseEntityExceptionHandler {
 
     public static final String OPEN_AI_CLIENT_RAISED_EXCEPTION = "Open AI client raised exception";
 
-    @ExceptionHandler(OpenAiHttpException.class)
-    ProblemDetail handleOpenAiHttpException(OpenAiHttpException ex) {
+    @ExceptionHandler(OpenAiApiException.class)
+    ProblemDetail handleOpenAiHttpException(OpenAiApiException ex) {
         HttpStatus status = Optional
-                .ofNullable(HttpStatus.resolve(ex.statusCode))
+                .ofNullable(HttpStatus.resolve(400))
                 .orElse(HttpStatus.BAD_REQUEST);
 
         ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(status, ex.getMessage());

@@ -1,12 +1,13 @@
-package com.baeldung.spring.kafka.delay;
+package com.baeldung.springaistructuredoutput;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class KafkaDelayApplication {
+public class DemoApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(KafkaDelayApplication.class, args);
+        SpringApplication.run(DemoApplication.class, args);
     }
+
 }

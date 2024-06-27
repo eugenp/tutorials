@@ -1,9 +1,9 @@
-package com.baeldung.spring.ai.web;
+package com.baeldung.springai.web;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.ai.client.AiClient;
+import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -26,7 +26,7 @@ public class PoetryControllerManualTest {
     private ObjectMapper objectMapper;
 
     @Autowired
-    private AiClient aiClient;
+    private ChatModel aiClient;
 
     @Test
     public void givenGetCatHaiku_whenCallingAiClient_thenCorrect() throws Exception {

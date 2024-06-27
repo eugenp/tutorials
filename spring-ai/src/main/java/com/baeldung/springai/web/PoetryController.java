@@ -1,11 +1,7 @@
-package com.baeldung.spring.ai.web;
+package com.baeldung.springai.web;
 
-import com.baeldung.spring.ai.dto.PoetryDto;
-import com.baeldung.spring.ai.service.PoetryService;
-import org.springframework.ai.client.AiClient;
-import org.springframework.ai.client.AiResponse;
-import org.springframework.ai.parser.BeanOutputParser;
-import org.springframework.ai.prompt.PromptTemplate;
+import com.baeldung.springai.dto.PoetryDto;
+import com.baeldung.springai.service.PoetryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +21,7 @@ public class PoetryController {
     }
 
     @GetMapping("/cathaiku")
-    public ResponseEntity<String> generateHaiku(){
+    public ResponseEntity<String> generateHaiku() {
         return ResponseEntity.ok(poetryService.getCatHaiku());
     }
 
@@ -33,7 +29,7 @@ public class PoetryController {
     public ResponseEntity<PoetryDto> generatePoetry(
             @RequestParam("genre") String genre,
             @RequestParam("theme") String theme
-    ){
+    ) {
         return ResponseEntity.ok(poetryService.getPoetryByGenreAndTheme(genre, theme));
     }
 }
