@@ -1,0 +1,2 @@
+org.springframework.test.context.ContextCustomizerFactory = com.baeldung.\
+    jhipster8.config.SqlTestContainersSpringContextCustomizerFactory

@@ -1,0 +1,7 @@
+# This configuration is intended for development purpose, it's **your** responsibility to harden it for production
+name: jhipster8monolithic
+services:
+  mysql:
+    extends:
+      file: ./mysql.yml
+      service: mysql

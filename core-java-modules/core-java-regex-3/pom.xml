@@ -20,6 +20,11 @@
             <version>5.8.1</version>
             <scope>test</scope>
         </dependency>
+                <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.14.3</version>
+        </dependency>
     </dependencies>
 
 </project>
