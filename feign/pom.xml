@@ -115,7 +115,7 @@
             <plugin>
                 <groupId>org.jvnet.jaxb2.maven2</groupId>
                 <artifactId>maven-jaxb2-plugin</artifactId>
-                <version>${jvnet-jaxb2-maven-plugin.version}</version>
+                <version>${jvnet-maven-jaxb2-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>feign-soap-stub-generation</id>
@@ -137,7 +137,7 @@
     </build>
 
     <properties>
-        <jvnet-jaxb2-maven-plugin.version>0.14.0</jvnet-jaxb2-maven-plugin.version>
+        <jvnet-maven-jaxb2-plugin.version>0.14.0</jvnet-maven-jaxb2-plugin.version>
         <codehaus-jaxb2-maven-plugin.version>3.1.0</codehaus-jaxb2-maven-plugin.version>
         <jakarta.xml.bind-api.version>4.0.0</jakarta.xml.bind-api.version>
         <jaxb-impl.version>4.0.0</jaxb-impl.version>
