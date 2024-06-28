@@ -87,7 +87,7 @@ public class QueryService {
     @SneakyThrows
     private <T> List<T> transformQueryResult(@NonNull final GetQueryResultsResponse queryResultsResponse,
         @NonNull final Class<T> targetClass) {
-        final var response = new ArrayList<T>();
+        List<T> response = new ArrayList<T>();
         final var rows = queryResultsResponse.resultSet().rows();
         if (rows.isEmpty()) {
             return Collections.emptyList();
@@ -107,12 +107,12 @@ public class QueryService {
                     final var value = data.get(i).varCharValue();
                     element.put(key, value);
                 }
-                final var user = OBJECT_MAPPER.convertValue(element, targetClass);
-                response.add(user);
+                final var obj = OBJECT_MAPPER.convertValue(element, targetClass);
+                response.add(obj);
             });
         return response;
     }
     
-    public record User(Integer id, String name, Integer age, String city) {};
+    record User(Integer id, String name, Integer age, String city) {};
     
 }
