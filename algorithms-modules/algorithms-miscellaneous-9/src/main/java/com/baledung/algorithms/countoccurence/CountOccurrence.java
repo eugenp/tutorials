@@ -1,4 +1,4 @@
-package com.baeldung.algorithms.permutation;
+package com.baledung.algorithms.countoccurence;
 
 import java.util.Arrays;
 import java.util.HashMap;
