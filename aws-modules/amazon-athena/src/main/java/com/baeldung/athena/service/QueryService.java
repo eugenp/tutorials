@@ -87,7 +87,7 @@ public class QueryService {
     @SneakyThrows
     private <T> List<T> transformQueryResult(@NonNull final GetQueryResultsResponse queryResultsResponse,
         @NonNull final Class<T> targetClass) {
-        List<T> response = new ArrayList<T>();
+        final var response = new ArrayList<T>();
         final var rows = queryResultsResponse.resultSet().rows();
         if (rows.isEmpty()) {
             return Collections.emptyList();
@@ -113,6 +113,6 @@ public class QueryService {
         return response;
     }
     
-    record User(Integer id, String name, Integer age, String city) {};
+    public record User(Integer id, String name, Integer age, String city) {};
     
 }
