@@ -1,12 +1,16 @@
 package com.baeldung.athena.service;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 import com.baeldung.athena.exception.QueryExecutionFailureException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsonorg.JsonOrgModule;
 
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -30,8 +34,9 @@ public class QueryService {
     private final QueryExecutionContext queryExecutionContext;
 
     private static final long WAIT_PERIOD = 30;
+    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper().registerModule(new JsonOrgModule());
 
-    public JSONArray execute(@NonNull final String sqlQuery) {
+    public List<User> execute(@NonNull final String sqlQuery) {
         String queryExecutionId;
         try {
             queryExecutionId = athenaClient.startQueryExecution(query -> 
@@ -48,7 +53,7 @@ public class QueryService {
 
         final var queryResult = athenaClient.getQueryResults(request -> 
             request.queryExecutionId(queryExecutionId));
-        return processQueryResult(queryResult);
+        return transformQueryResult(queryResult, User.class);
     }
 
     @SneakyThrows
@@ -80,11 +85,12 @@ public class QueryService {
     }
 
     @SneakyThrows
-    private JSONArray processQueryResult(@NonNull final GetQueryResultsResponse queryResultsResponse) {
-        final var response = new JSONArray();
+    private <T> List<T> transformQueryResult(@NonNull final GetQueryResultsResponse queryResultsResponse,
+        @NonNull final Class<T> targetClass) {
+        final var response = new ArrayList<T>();
         final var rows = queryResultsResponse.resultSet().rows();
         if (rows.isEmpty()) {
-            return response;
+            return Collections.emptyList();
         }
         final var headers = rows.get(0).data().stream()
           .map(Datum::varCharValue)
@@ -101,9 +107,12 @@ public class QueryService {
                     final var value = data.get(i).varCharValue();
                     element.put(key, value);
                 }
-                response.put(element);
+                final var user = OBJECT_MAPPER.convertValue(element, targetClass);
+                response.add(user);
             });
         return response;
     }
+    
+    public record User(Integer id, String name, Integer age, String city) {};
     
 }
