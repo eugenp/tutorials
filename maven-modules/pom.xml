@@ -52,6 +52,7 @@
         <module>maven-pom-types</module>
         <module>multimodulemavenproject</module>
         <module>resume-from</module>
+        <module>maven-multiple-repositories</module>
     </modules>
 
     <dependencyManagement>
