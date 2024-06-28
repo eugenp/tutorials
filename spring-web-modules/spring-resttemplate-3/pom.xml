@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-resttemplate-3</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>spring-resttemplate-3</name>
     <packaging>war</packaging>
+    <name>spring-resttemplate-3</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -29,7 +29,7 @@
             <version>${httpclient5.version}</version>
         </dependency>
     </dependencies>
-    
+
     <build>
         <plugins>
             <plugin>

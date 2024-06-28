@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-rest-simple</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>spring-rest-simple</name>
     <packaging>war</packaging>
+    <name>spring-rest-simple</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
