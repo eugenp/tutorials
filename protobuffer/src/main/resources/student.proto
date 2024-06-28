@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package com.baeldung.studentmanager;
+
+message Student {
+  int32 id = 1;
+  string name = 2;
+  map<string, int32> grades = 3;
+}
+
