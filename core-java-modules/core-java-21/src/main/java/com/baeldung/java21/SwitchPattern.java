@@ -1,6 +1,8 @@
 package com.baeldung.java21;
 
 public class SwitchPattern {
+
+    private SwitchPattern(){}
     
     static class Account{
         double getBalance() {
@@ -9,21 +11,18 @@ public class SwitchPattern {
     }
     
     static class SavingsAccount extends Account {
-        @Override
-        double getBalance() {
+        double getSavings() {
             return 100;
         } 
     }
     
     static class TermAccount extends Account {
-        @Override
-        double getBalance() {
+        double getTermAccount() {
             return 1000;
         } 
     }
     static class CurrentAccount extends Account {
-        @Override
-        double getBalance() {
+        double getCurrentAccount() {
             return 10000;
         } 
     }
@@ -31,13 +30,13 @@ public class SwitchPattern {
     static double getBalanceWithOutSwitchPattern(Account account) {
         double balance = 0;
         if(account instanceof SavingsAccount sa) {
-            balance = sa.getBalance();
+            balance = sa.getSavings();
         }
         else if(account instanceof TermAccount ta) {
-            balance = ta.getBalance();
+            balance = ta.getTermAccount();
         }
         else if(account instanceof CurrentAccount ca) {
-            balance = ca.getBalance();
+            balance = ca.getCurrentAccount();
         }
         return balance;
     }
@@ -46,9 +45,9 @@ public class SwitchPattern {
         double result;
         switch (account) {
             case null -> throw new IllegalArgumentException("Oops, account is null");
-            case SavingsAccount sa -> result = sa.getBalance();
-            case TermAccount ta -> result = ta.getBalance();
-            case CurrentAccount ca -> result = ca.getBalance();
+            case SavingsAccount sa -> result = sa.getSavings();
+            case TermAccount ta -> result = ta.getTermAccount();
+            case CurrentAccount ca -> result = ca.getCurrentAccount();
             default -> result = account.getBalance();
         }
         return result;
