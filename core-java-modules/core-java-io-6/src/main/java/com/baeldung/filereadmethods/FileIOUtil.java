@@ -20,8 +20,8 @@ public class FileIOUtil {
             String result = null;
             if (inputStream != null) {
                 result = new BufferedReader(new InputStreamReader(inputStream))
-                        .lines()
-                        .collect(Collectors.joining("\n"));
+                  .lines()
+                    .collect(Collectors.joining("\n"));
             }
             return result;
         } catch (IOException e) {
@@ -33,8 +33,8 @@ public class FileIOUtil {
     public static String readFileFromFileSystem(String filePath) {
         try (InputStream inputStream = Files.newInputStream(Paths.get(filePath))) {
             return new BufferedReader(new InputStreamReader(inputStream))
-                    .lines()
-                    .collect(Collectors.joining("\n"));
+              .lines()
+                .collect(Collectors.joining("\n"));
         } catch (IOException e) {
             LOG.error("Error reading file:", e);
             return null;
