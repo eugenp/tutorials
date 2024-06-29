@@ -16,6 +16,7 @@
 
     <modules>
         <module>assertion-libraries</module>
+        <module>cors</module>
         <module>cucumber</module>
         <module>easy-random</module>
         <module>easymock</module>
