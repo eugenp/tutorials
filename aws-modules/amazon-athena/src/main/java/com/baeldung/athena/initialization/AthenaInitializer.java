@@ -30,7 +30,7 @@ public class AthenaInitializer implements ApplicationRunner {
         final var initScripts = resourcePatternResolver.getResources(ATHENA_INIT_SCRIPT_PATTERN);
         for (final var script : initScripts) {
             final var sqlScript = FileUtils.readFileToString(script.getFile(), StandardCharsets.UTF_8);
-            queryService.execute(sqlScript);
+            queryService.execute(sqlScript, Void.class);
             log.info("Successfully executed {}.", script.getFilename());
         }
     }
