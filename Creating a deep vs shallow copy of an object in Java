@@ -1,0 +1,93 @@
+//Creating a Shallow Copy of an Object in Java
+class Courses {
+	String courseName;
+	Courses(String courseName) {
+		this.courseName = courseName;
+	}
+}
+
+class Students implements Cloneable {
+	String name;
+	Courses course;
+
+	Students(String name, Courses course) {
+		this.name = name;
+		this.course = course;
+	}
+
+	protected Object clone() throws CloneNotSupportedException {
+		return super.clone();
+	}
+}
+
+public class ClassShallowCopy {
+
+	public static void main(String[] args) {
+        try {
+            Courses course = new Courses("Java");
+            Students originalStudent = new Students("Anees", course);
+            Students shallowCopy = (Students) originalStudent.clone();
+
+            System.out.println("Original Course: " + originalStudent.course.courseName);
+            System.out.println("Shallow Copied Course: " + shallowCopy.course.courseName);
+
+            originalStudent.course.courseName = "Python";
+            System.out.println("\nAfter changing the course name:");
+            System.out.println("Original Course: " + originalStudent.course.courseName);
+            System.out.println("Shallow Copied Course: " + shallowCopy.course.courseName);
+
+        } catch (CloneNotSupportedException excep) {
+        	excep.printStackTrace();
+        }
+    }
+}
+
+//Creating a Deep Copy of an Object in Java
+class Courses {
+    String courseName;
+
+    Courses(String courseName) {
+        this.courseName = courseName;
+    }
+
+    public Courses(Courses other) {
+        this.courseName = other.courseName;
+    }
+}
+
+class Students implements Cloneable {
+    String name;
+    Courses course;
+    Students(String name, Courses course) {
+        this.name = name;
+        this.course = course;
+    }
+
+    protected Object clone() throws CloneNotSupportedException {
+        Students clonedStudent = (Students) super.clone();
+        clonedStudent.course = new Courses(this.course);
+        return clonedStudent;
+    }
+}
+
+public class ClassDeepCopy {
+    public static void main(String[] args) {
+        try {
+            Courses course = new Courses("Java");
+            Students originalStudent = new Students("Anees", course);
+            Students deepCopy = (Students) originalStudent.clone();
+
+            System.out.println("Original Course: " + originalStudent.course.courseName);
+            System.out.println("Deep Copied Course: " + deepCopy.course.courseName);
+
+            originalStudent.course.courseName = "Python";
+
+            System.out.println("\nAfter changing the course name:");
+            System.out.println("Original Course: " + originalStudent.course.courseName);
+            System.out.println("Deep Copied Course: " + deepCopy.course.courseName);
+
+        } catch (CloneNotSupportedException excep) {
+            excep.printStackTrace();
+        }
+    }
+}
