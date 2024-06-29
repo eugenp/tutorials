@@ -3,6 +3,8 @@ package com.baeldung.spring.ai.mistral.functioncalling;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.ai.chat.ChatResponse;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.mistralai.MistralAiChatClient;
@@ -24,6 +26,8 @@ import java.util.Set;
 @SpringBootTest
 public class MistralAIFunctionCallingManualTest {
 
+    private static final Logger logger = LoggerFactory.getLogger(MistralAIFunctionCallingManualTest.class);
+    
     @Autowired
     private MistralAiChatClient chatClient;
 
@@ -37,7 +41,7 @@ public class MistralAIFunctionCallingManualTest {
           new Prompt("What's the health status of the patient with id P004?",  options));
 
         String responseContent = paymentStatusResponse.getResult().getOutput().getContent();
-        System.out.println(responseContent);
+        logger.info(responseContent);
 
         Assertions.assertThat(responseContent)
           .containsIgnoringCase("has increased blood pressure");
@@ -58,7 +62,7 @@ public class MistralAIFunctionCallingManualTest {
 
         String paymentStatusResponseContent = paymentStatusResponse.getResult()
           .getOutput().getContent();
-        System.out.println(paymentStatusResponseContent);
+        logger.info(paymentStatusResponseContent);
 
         Assertions.assertThat(paymentStatusResponseContent)
                 .containsIgnoringCase("healthy");
@@ -69,7 +73,7 @@ public class MistralAIFunctionCallingManualTest {
              options));
 
         String changeDateResponseContent = changeDateResponse.getResult().getOutput().getContent();
-        System.out.println(changeDateResponseContent);
+        logger.info(changeDateResponseContent);
 
         Assertions.assertThat(paymentStatusResponseContent)
           .containsIgnoringCase("June 1, 2024");
@@ -97,7 +101,7 @@ public class MistralAIFunctionCallingManualTest {
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         String responseBody = response.body();
-        System.out.println("Model response: " + responseBody);
+        logger.info("Model response: " + responseBody);
 
         Assertions.assertThat(responseBody)
           .containsIgnoringCase("healthy");
