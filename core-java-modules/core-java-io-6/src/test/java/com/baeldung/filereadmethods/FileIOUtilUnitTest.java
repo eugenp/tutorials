@@ -14,9 +14,17 @@ class FileIOUtilUnitTest {
                 "Welcome to the world of Java NIO.");
     }
 
+
     @Test
     void givenFileUnderResources_whenReadFileFromFileSystem_thenSuccess() {
         String result = FileIOUtil.readFileFromFileSystem("src/test/resources/test.txt");
+        assertNotNull(result);
+        assertEquals(result, "Hello!\n" +
+                "Welcome to the world of Java NIO.");
+    }
+    @Test
+    void givenFileOutsideResources_whenReadFileFromFileSystem_thenSuccess() {
+        String result = FileIOUtil.readFileFromFileSystem("../external.txt");
         assertNotNull(result);
         assertEquals(result, "Hello!\n" +
                 "Welcome to the world of Java NIO.");
@@ -26,14 +34,6 @@ class FileIOUtilUnitTest {
     void givenFileOutsideResources_whenReadFileFromResource_thenNull() {
         String result = FileIOUtil.readFileFromResource("../external.txt");
         assertNull(result);
-    }
-
-    @Test
-    void givenFileOutsideResources_whenReadFileFromFileSystem_thenSuccess() {
-        String result = FileIOUtil.readFileFromFileSystem("../external.txt");
-        assertNotNull(result);
-        assertEquals(result, "Hello!\n" +
-                "Welcome to the world of Java NIO.");
     }
 
 }
