@@ -27,7 +27,7 @@
         <hsqldb.version>2.7.1</hsqldb.version>
         <spock-core.version>2.3-groovy-3.0</spock-core.version>
         <gmavenplus-plugin.version>2.1.0</gmavenplus-plugin.version>
-        <maven-failsafe-plugin.version>2.21.0</maven-failsafe-plugin.version>
+        <maven-failsafe-plugin.version>3.3.0</maven-failsafe-plugin.version>
     </properties>
 
 </project>
