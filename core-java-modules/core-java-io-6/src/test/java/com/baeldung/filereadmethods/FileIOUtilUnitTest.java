@@ -23,17 +23,17 @@ class FileIOUtilUnitTest {
     }
 
     @Test
-    void testReadFileFromFileSystemOutsideResources() {
-        String result = FileIOUtil.readFileFromFileSystem("./external.txt");
-        assertNotNull(result);
-        assertEquals(result, "Hello!\n" +
-                "Welcome to the world of Java NIO.");
+    void testReadFileFromResourceExternalFile() {
+        String result = FileIOUtil.readFileFromResource("../external.txt");
+        assertNull(result);
     }
 
     @Test
-    void ReadFileFromResourceOutsideResources() {
-        String result = FileIOUtil.readFileFromResource("./external.txt");
-        assertNull(result);
+    void testReadFileFromFileSystemExternalFile() {
+        String result = FileIOUtil.readFileFromFileSystem("../external.txt");
+        assertNotNull(result);
+        assertEquals(result, "Hello!\n" +
+                "Welcome to the world of Java NIO.");
     }
 
 }
