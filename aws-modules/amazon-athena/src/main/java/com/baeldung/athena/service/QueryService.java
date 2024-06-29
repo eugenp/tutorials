@@ -36,7 +36,7 @@ public class QueryService {
     private static final long WAIT_PERIOD = 30;
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper().registerModule(new JsonOrgModule());
 
-    public List<User> execute(@NonNull final String sqlQuery) {
+    public <T> List<T> execute(@NonNull final String sqlQuery, @NonNull final Class<T> targetClass) {
         String queryExecutionId;
         try {
             queryExecutionId = athenaClient.startQueryExecution(query -> 
@@ -53,7 +53,7 @@ public class QueryService {
 
         final var queryResult = athenaClient.getQueryResults(request -> 
             request.queryExecutionId(queryExecutionId));
-        return transformQueryResult(queryResult, User.class);
+        return transformQueryResult(queryResult, targetClass);
     }
 
     @SneakyThrows
