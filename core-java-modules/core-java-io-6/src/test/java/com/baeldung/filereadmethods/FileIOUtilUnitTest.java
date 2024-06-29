@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class FileIOUtilUnitTest {
 
     @Test
-    void testReadFileFromResource() {
+    void givenFileUnderResources_whenReadFileFromResource_thenSuccess() {
         String result = FileIOUtil.readFileFromResource("/test.txt");
         assertNotNull(result);
         assertEquals(result, "Hello!\n" +
@@ -15,7 +15,7 @@ class FileIOUtilUnitTest {
     }
 
     @Test
-    void testReadFileFromFileSystem() {
+    void givenFileUnderResources_whenReadFileFromFileSystem_thenSuccess() {
         String result = FileIOUtil.readFileFromFileSystem("src/test/resources/test.txt");
         assertNotNull(result);
         assertEquals(result, "Hello!\n" +
@@ -23,13 +23,13 @@ class FileIOUtilUnitTest {
     }
 
     @Test
-    void testReadFileFromResourceExternalFile() {
+    void givenFileOutsideResources_whenReadFileFromResource_thenNull() {
         String result = FileIOUtil.readFileFromResource("../external.txt");
         assertNull(result);
     }
 
     @Test
-    void testReadFileFromFileSystemExternalFile() {
+    void givenFileOutsideResources_whenReadFileFromFileSystem_thenSuccess() {
         String result = FileIOUtil.readFileFromFileSystem("../external.txt");
         assertNotNull(result);
         assertEquals(result, "Hello!\n" +
