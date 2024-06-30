@@ -1,6 +1,5 @@
 package com.baeldung.apachefury.serialization;
 
-
 import com.baeldung.apachefury.event.avro.Address;
 import com.baeldung.apachefury.event.avro.UserEvent;
 import org.apache.avro.io.DatumReader;
