@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.json.JSONObject;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Service;
 
 import com.baeldung.athena.exception.QueryExecutionFailureException;
@@ -37,12 +38,18 @@ public class QueryService {
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper().registerModule(new JsonOrgModule());
 
     public <T> List<T> execute(@NonNull final String sqlQuery, @NonNull final Class<T> targetClass) {
+        return execute(sqlQuery, null, targetClass);
+    }
+    
+    public <T> List<T> execute(@NonNull final String sqlQuery, @Nullable final List<String> parameters,
+            @NonNull final Class<T> targetClass) {
         String queryExecutionId;
         try {
             queryExecutionId = athenaClient.startQueryExecution(query -> 
                 query.queryString(sqlQuery)
                   .queryExecutionContext(queryExecutionContext)
                   .resultConfiguration(resultConfiguration)
+                  .executionParameters(parameters)
             ).queryExecutionId();
         } catch (final InvalidRequestException exception) {
             log.error("Invalid SQL syntax detected in query {}", sqlQuery, exception);
