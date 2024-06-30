@@ -2,14 +2,14 @@ package com.baeldung.junit5.autoclosable;
 
 class DummyClearableResource {
 
-    private boolean clear = false;
+    private boolean cleared = false;
 
     public void clear() {
         System.out.println("Clear Dummy Resource");
-        clear = true;
+        cleared = true;
     }
 
     public boolean isClear() {
-        return clear;
+        return cleared;
     }
 }
