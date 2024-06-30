@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {Principal} from "./principal";
-import {Response} from "@angular/http";
+import {HttpResponse} from "@angular/common/http";
 import {Book} from "./book";
 import {HttpService} from "./http.service";
+import {CommonModule} from '@angular/common';
+import {BookListComponent} from"./book/book-list/book-list.component"
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet,CommonModule,BookListComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -21,7 +23,7 @@ export class AppComponent {
 
   ngOnInit(): void {
     this.httpService.me()
-      .subscribe((response: Response) => {
+      .subscribe((response) => {
         let principalJson = response.json();
         this.principal = new Principal(principalJson.authenticated, principalJson.authorities);
       }, (error) => {
@@ -31,7 +33,7 @@ export class AppComponent {
 
   onLogout() {
     this.httpService.logout()
-      .subscribe((response: Response) => {
+      .subscribe((response) => {
         if (response.status === 200) {
           this.loginFailed = false;
           this.principal = new Principal(false, []);
