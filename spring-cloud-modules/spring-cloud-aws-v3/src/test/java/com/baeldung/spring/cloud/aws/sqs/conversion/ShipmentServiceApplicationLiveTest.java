@@ -52,7 +52,7 @@ public class ShipmentServiceApplicationLiveTest extends BaseSqsLiveTest {
     private ObjectMapper objectMapper;
 
     @Test
-    void givenPojoPayload_whenMessageReceived_shouldDeserializeCorrectly() {
+    void givenPojoPayload_whenMessageReceived_thenDeserializesCorrectly() {
         UUID orderId = UUID.randomUUID();
         ShipmentRequestedEvent shipmentRequestedEvent = new ShipmentRequestedEvent(orderId, "123 Main St", LocalDate.parse("2024-05-12"));
 
@@ -70,7 +70,7 @@ public class ShipmentServiceApplicationLiveTest extends BaseSqsLiveTest {
     }
 
     @Test
-    void givenShipmentRequestWithCustomDateFormat_whenMessageReceived_shouldDeserializeDateCorrectly() {
+    void givenShipmentRequestWithCustomDateFormat_whenMessageReceived_thenDeserializesDateCorrectly() {
         UUID orderId = UUID.randomUUID();
         String shipBy = LocalDate.parse("2024-05-12")
             .format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
@@ -101,7 +101,7 @@ public class ShipmentServiceApplicationLiveTest extends BaseSqsLiveTest {
     }
 
     @Test
-    void givenPayloadWithSubclasses_whenMessageReceived_shouldDeserializeCorrectType() {
+    void givenPayloadWithSubclasses_whenMessageReceived_thenDeserializesCorrectType() {
         var domesticOrderId = UUID.randomUUID();
         String deliveryRouteCode = "XPTO1234";
         var domesticEvent = new DomesticShipmentRequestedEvent(domesticOrderId, "123 Main St", LocalDate.parse("2024-05-12"), deliveryRouteCode);
