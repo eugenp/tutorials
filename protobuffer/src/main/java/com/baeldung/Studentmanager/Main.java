@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
-        StudentManager studentManager = new StudentManager();
+        StudentManager studentmanager = new Studentmanager();
 
         Map<String, Course> courses = new HashMap<>();
         Course mathCourse = Course.newBuilder().setName("Math").putGrades("John Doe", 95).build();
@@ -20,7 +20,7 @@ public class Main {
         byte[] byteArray = studentManager.serializeStudent(studentWithCourses);
 
         try {
-            Student deserializedStudent = studentManager.deserializeStudent(byteArray);
+            Student deserializedStudent = studentmanager.deserializeStudent(byteArray);
             System.out.println("Student ID: " + deserializedStudent.getId());
             System.out.println("Student Name: " + deserializedStudent.getName());
             System.out.println("Courses: " + deserializedStudent.getCoursesMap());

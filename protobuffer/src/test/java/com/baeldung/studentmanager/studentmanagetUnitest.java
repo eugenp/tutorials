@@ -13,7 +13,7 @@ public class studentmanagerUnitest {
 
     @Test
     public void givenValidStudentDetails_whenCreateStudent_thenStudentIsCreatedSuccessfully() {
-        StudentManager studentManager = new StudentManager();
+        Studentmanager studentmanager = new Studentmanager();
         Map<String, Integer> grades = new HashMap<>();
         grades.put("Math", 95);
         grades.put("Science", 90);
@@ -29,7 +29,7 @@ public class studentmanagerUnitest {
 
     @Test
     public void givenSerializedStudent_whenDeserialize_thenStudentIsDeserializedSuccessfully() {
-        StudentManager studentManager = new StudentManager();
+        Studentmanager studentmanager = new Studentmanager();
         Map<String, Integer> grades = new HashMap<>();
         grades.put("Math", 95);
         grades.put("Science", 90);

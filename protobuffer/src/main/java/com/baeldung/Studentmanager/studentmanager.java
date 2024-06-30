@@ -3,7 +3,7 @@ package com.baeldung.studentmanager;
 import baeldung.StudentOuterClass.Student;
 import java.util.Map;
 
-public class StudentManager {
+public class Studentmanager {
 
     public Student createStudent(int id, String name, Map<String, Integer> grades) {
         Student.Builder studentBuilder = Student.newBuilder();
