@@ -14,10 +14,10 @@ class JdbcSupportLiveTest {
 
 	@Test
 	void whenCallingSave_thenEntityIsPersistedToDb() {
-		theShire.save(new Hobbit("Bilbo Baggnis"));
+		theShire.save(new Hobbit("Bilbo Baggins"));
 
 		assertThat(theShire.findAll())
 		  .hasSize(1).first()
-		  .extracting(Hobbit::getName).isEqualTo("Bilbo Baggnis");
+		  .extracting(Hobbit::getName).isEqualTo("Bilbo Baggins");
 	}
 }
