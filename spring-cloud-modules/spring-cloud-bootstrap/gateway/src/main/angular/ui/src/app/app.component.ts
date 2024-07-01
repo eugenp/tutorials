@@ -1,18 +1,17 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {Principal} from "./principal";
 import {HttpResponse} from "@angular/common/http";
 import {Book} from "./book";
 import {HttpService} from "./http.service";
 import {CommonModule} from '@angular/common';
-import {BookListComponent} from"./book/book-list/book-list.component"
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,CommonModule,BookListComponent],
+  imports: [RouterOutlet,CommonModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css'  
 })
 export class AppComponent {
   selectedBook: Book = null;

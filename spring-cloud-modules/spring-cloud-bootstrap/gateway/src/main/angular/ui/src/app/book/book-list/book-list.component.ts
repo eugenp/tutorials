@@ -1,8 +1,9 @@
 import {Component, OnInit, Input, Output, EventEmitter} from "@angular/core";
 import {Principal} from "../../principal";
 import {Book} from "../../book";
-import {Response} from "@angular/http";
+import {HttpResponse} from "@angular/common/http";
 import {HttpService} from "../../http.service";
+import {FormsModule}   from '@angular/forms';
 
 @Component({
   selector: 'app-book-list',
@@ -29,7 +30,7 @@ export class BookListComponent implements OnInit {
 
   loadBooks() {
     this.httpService.getBooks()
-      .subscribe((response: Response) => {
+      .subscribe((response) => {
         let booksJson: any[] = response.json()
         booksJson.forEach(book => {
           this.books.push(new Book(book.id, book.author, book.title));
@@ -57,7 +58,7 @@ export class BookListComponent implements OnInit {
     console.log(newBook);
     //save the book to the database
     this.httpService.updateBook(newBook)
-      .subscribe((response: Response) => {
+      .subscribe((response) => {
         let bookJson = response.json();
         let book: Book = new Book(bookJson.id, bookJson.author, bookJson.title);
         //update the current array of books
@@ -96,7 +97,7 @@ export class BookListComponent implements OnInit {
   addNewBook(newBook: Book, element: any) {
     //write new book to db
     this.httpService.createBook(newBook)
-      .subscribe((response: Response) => {
+      .subscribe((response) => {
         let bookJson = response.json();
         let book: Book = new Book(bookJson.id, bookJson.author, bookJson.title);
         console.log(book);
