@@ -13,6 +13,10 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
+    <modules>
+        <module>accessing-session-attributes</module>
+    </modules>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -20,7 +24,4 @@
         </dependency>
     </dependencies>
 
-    <modules>
-        <module>accessing-session-attributes</module>
-    </modules>
 </project>

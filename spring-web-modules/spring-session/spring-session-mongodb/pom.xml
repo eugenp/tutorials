@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-session-mongodb</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-session-mongodb</name>
     <packaging>jar</packaging>
+    <name>spring-session-mongodb</name>
     <description>Spring Session with MongoDB tutorial</description>
 
     <parent>
