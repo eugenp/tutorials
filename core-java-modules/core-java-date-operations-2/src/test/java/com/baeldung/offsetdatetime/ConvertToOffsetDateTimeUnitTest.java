@@ -1,8 +1,10 @@
 package com.baeldung.offsetdatetime;
 
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 
 import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
 import java.util.Date;
 import java.util.TimeZone;
 
@@ -32,6 +34,15 @@ public class ConvertToOffsetDateTimeUnitTest {
 
         // Reset the timezone to its original value to prevent side effects
         TimeZone.setDefault(prevTimezone);
+    }
+
+    @Test
+    public void givenDate_whenUsingGetTimezoneOffsetMethod_thenConvertWithOffset() {
+        Date date = new Date(98, 1, 14, 5, 30);
+
+        OffsetDateTime offsetDateTime = ConvertToOffsetDateTime.convertWithGetTimeZone(date);
+        assertEquals(5, offsetDateTime.getHour());
+        assertEquals(30, offsetDateTime.getMinute());
     }
 
 }
