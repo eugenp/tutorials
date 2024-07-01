@@ -1,6 +1,6 @@
 package com.baeldung.selenium.webdriver;
 
-import org.junit.Assert;
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,7 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class SeleniumWebDriverUnitTest {
+public class SeleniumWebDriverLiveTest {
 
     private WebDriver driver;
 
@@ -37,7 +37,7 @@ public class SeleniumWebDriverUnitTest {
         inputElement.sendKeys("Hello World!");
 
         String inputValue = inputElement.getAttribute("value");
-        Assert.assertEquals("Hello World!", inputValue);
+        assertEquals("Hello World!", inputValue);
     }
 
 }
