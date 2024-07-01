@@ -94,6 +94,11 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot.version}</version>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+            </plugin>
         </plugins>
     </build>
 
@@ -103,6 +108,7 @@
         <testcontainers-bom.version>1.17.2</testcontainers-bom.version>
         <r2dbc-mysql.version>1.0.2</r2dbc-mysql.version>
         <spring-boot.version>3.1.3</spring-boot.version>
+        <maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
         <native-maven-plugin.version>0.9.24</native-maven-plugin.version>
     </properties>
 
