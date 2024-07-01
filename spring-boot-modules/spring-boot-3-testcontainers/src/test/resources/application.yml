@@ -1,3 +1,2 @@
-
-spring.datasource:
-  url: jdbc:tc:postgresql:16.3:///testdb?TC_INITSCRIPT=file:src/test/resources/schema.sql
+spring.datasource.url: jdbc:tc:postgresql:16-alpine:///test-db
+spring.jpa.hibernate.ddl-auto: create
