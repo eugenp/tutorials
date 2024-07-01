@@ -26,6 +26,26 @@ public class DateHelper {
             .max(Comparator.naturalOrder())
             .get();
     }
+    
+    static final Date findMinDateOf(List<Event> events) {
+        if (events == null || events.isEmpty()) {
+            return null;
+        }
+        return events.stream()
+            .map(Event::getDate)
+            .min(Date::compareTo)
+            .get();
+    }
+
+    static final Date findMinDateOfWithComparator(List<Event> events) {
+        if (events == null || events.isEmpty()) {
+            return null;
+        }
+        return events.stream()
+            .map(Event::getDate)
+            .min(Comparator.naturalOrder())
+            .get();
+    }
 
     static final LocalDate findMaxDateOfLocalEvents(List<LocalEvent> events) {
         if (events == null || events.isEmpty()) {
@@ -44,6 +64,26 @@ public class DateHelper {
         return events.stream()
             .map(LocalEvent::getDate)
             .max(Comparator.naturalOrder())
+            .get();
+    }
+    
+    static final LocalDate findMinDateOfLocalEvents(List<LocalEvent> events) {
+        if (events == null || events.isEmpty()) {
+            return null;
+        }
+        return events.stream()
+            .map(LocalEvent::getDate)
+            .min(LocalDate::compareTo)
+            .get();
+    }
+
+    static final LocalDate findMinDateOfLocalEventsWithComparator(List<LocalEvent> events) {
+        if (events == null || events.isEmpty()) {
+            return null;
+        }
+        return events.stream()
+            .map(LocalEvent::getDate)
+            .min(Comparator.naturalOrder())
             .get();
     }
 
