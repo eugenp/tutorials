@@ -12,7 +12,7 @@ public class ByteToIntConversionUnitTest {
     }
 
     @Test
-    void givenByte_whenUsingIntegerValueOf_thenConvertToInt() {
+    public void givenByte_whenUsingIntegerValueOf_thenConvertToInt() {
         byte b = -51;
         int result = ByteToIntConversion.usingIntegerValueOf(b);
 
@@ -20,7 +20,7 @@ public class ByteToIntConversionUnitTest {
     }
 
     @Test
-    void givenByte_whenUsingByteIntValue_thenConvertToInt() {
+    public void givenByte_whenUsingByteIntValue_thenConvertToInt() {
         byte b = -51;
         int result = ByteToIntConversion.usingByteIntValue(b);
 
@@ -28,7 +28,7 @@ public class ByteToIntConversionUnitTest {
     }
 
     @Test
-    void givenByte_whenUsingMathToIntExact_thenConvertToInt() {
+    public void givenByte_whenUsingMathToIntExact_thenConvertToInt() {
         byte b = -51;
         int result = ByteToIntConversion.usingMathToIntExact(b);
 
@@ -36,7 +36,7 @@ public class ByteToIntConversionUnitTest {
     }
 
     @Test
-    void givenByte_whenUsingByteUnsignedInt_thenConvertToInt() {
+    public void givenByte_whenUsingByteUnsignedInt_thenConvertToInt() {
         byte b = -51;
         int result = ByteToIntConversion.usingByteUnsignedInt(b);
 

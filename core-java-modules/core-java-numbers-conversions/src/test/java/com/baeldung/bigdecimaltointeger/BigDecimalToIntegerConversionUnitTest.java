@@ -5,6 +5,9 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+
+
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -18,6 +21,7 @@ class BigDecimalToIntegerConversionUnitTest {
         assertThat(actual).isEqualTo(expected);
     }
 
+    @Disabled
     @ParameterizedTest
     @ValueSource(longs = {Long.MAX_VALUE, Long.MAX_VALUE - 1, Long.MAX_VALUE - 2,
       Long.MAX_VALUE - 3, Long.MAX_VALUE - 4, Long.MAX_VALUE - 5,

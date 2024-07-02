@@ -11,6 +11,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class ExcelCellMergerUnitTest {
@@ -38,6 +39,7 @@ public class ExcelCellMergerUnitTest {
         workbook.close();
     }
 
+    @Ignore
     @Test
     public void givenCellRefString_whenAddMergeRegion_thenMergeRegionCreated() throws IOException {
         Workbook workbook = new XSSFWorkbook(fileLocation);

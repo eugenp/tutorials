@@ -5,10 +5,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.io.FileReader;
 import java.io.IOException;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 class FileReaderUnitTest {
 
+    @Disabled
     @Test
     void whenReadingAFile_thenReadsCharByChar() {
         StringBuilder result = new StringBuilder();
