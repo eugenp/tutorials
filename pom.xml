@@ -679,6 +679,7 @@
                 <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->
                 <module>persistence-modules/spring-data-neo4j</module>
                 <module>protobuffer</module>
+                <module>podman</module>
                 <module>quarkus-modules</module>
                 <module>reactive-systems</module>
                 <module>reactor-core</module>
@@ -698,6 +699,7 @@
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
                 <module>spring-ai</module>
+		<module>spring-ai-2</module>
                 <module>spring-aop-2</module>
                 <module>spring-aop</module>
                 <module>spring-batch-2</module>
@@ -949,6 +951,7 @@
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
                 <module>spring-ai</module>
+		<module>spring-ai-2</module>
                 <module>spring-aop-2</module>
                 <module>spring-aop</module>
                 <module>spring-batch-2</module>
@@ -1076,7 +1079,7 @@
 
         <!-- logging -->
         <!-- overwriting in the slf4j and logback in the hibernate-jpa, spring-data-eclipselink. When updated to the latest version remove the version from that module-->
-        <org.slf4j.version>2.0.12</org.slf4j.version>
+        <org.slf4j.version>2.0.13</org.slf4j.version>
         <logback.version>1.5.3</logback.version>
 
         <!-- plugins -->
