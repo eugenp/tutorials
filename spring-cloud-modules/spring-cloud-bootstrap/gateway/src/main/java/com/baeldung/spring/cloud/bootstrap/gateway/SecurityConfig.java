@@ -39,7 +39,7 @@ public class SecurityConfig {
     @Bean
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
         http.formLogin()
-            .authenticationSuccessHandler(new RedirectServerAuthenticationSuccessHandler("/home/index.html"))
+            .authenticationSuccessHandler(new RedirectServerAuthenticationSuccessHandler("/home/browser/index.html"))
             .and()
             .authorizeExchange()
             .pathMatchers("/book-service/**", "/rating-service/**", "/login*", "/")
