@@ -1,13 +1,19 @@
 package com.baeldung.streams;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.StringWriter;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
 
 public class PeekUnitTest {
 
@@ -93,6 +99,28 @@ public class PeekUnitTest {
 
         // then
         assertThat(out.toString()).isEqualTo("alicebobchuck");
+    }
+
+    @Test
+    void givenIntegerList_whenCallingMap_thenTransformsElement() {
+        List<Integer> integers = Arrays.asList(1, 2, 3, 4);
+        java.util.List<Integer> transformedElements = integers.stream()
+            .map(e -> e * 2)
+            .collect(Collectors.toList());
+        List<Integer> expected = (List<Integer>) Arrays.asList(2, 4, 6, 8);
+        assertThat(expected).isEqualTo(transformedElements);
+    }
+
+    @Test
+    void givenIntegerList_whenCallingPeekWithFilter_thenPeekedAndResulListDonotMatch() {
+        List<Integer> integers = Arrays.asList(1, 2, 3, 4);
+        List<Integer> peekedList = new ArrayList<>();
+        List<Integer> result = integers.stream()
+            .peek(peekedList::add)
+            .filter(e -> e < 3)
+            .collect(Collectors.toList());
+        assertThat(Arrays.asList(1, 2)).isEqualTo(result);
+        assertThat(Arrays.asList(1, 2, 3, 4)).isEqualTo(peekedList);
     }
 
     private static class User {
