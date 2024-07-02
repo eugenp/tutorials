@@ -679,6 +679,7 @@
                 <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->
                 <module>persistence-modules/spring-data-neo4j</module>
                 <module>protobuffer</module>
+                <module>podman</module>
                 <module>quarkus-modules</module>
                 <module>reactive-systems</module>
                 <module>reactor-core</module>
@@ -698,6 +699,7 @@
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
                 <module>spring-ai</module>
+		<module>spring-ai-2</module>
                 <module>spring-aop-2</module>
                 <module>spring-aop</module>
                 <module>spring-batch-2</module>
@@ -949,6 +951,7 @@
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
                 <module>spring-ai</module>
+		<module>spring-ai-2</module>
                 <module>spring-aop-2</module>
                 <module>spring-aop</module>
                 <module>spring-batch-2</module>
@@ -1076,7 +1079,7 @@
 
         <!-- logging -->
         <!-- overwriting in the slf4j and logback in the hibernate-jpa, spring-data-eclipselink. When updated to the latest version remove the version from that module-->
-        <org.slf4j.version>2.0.12</org.slf4j.version>
+        <org.slf4j.version>2.0.13</org.slf4j.version>
         <logback.version>1.5.3</logback.version>
 
         <!-- plugins -->
@@ -1107,11 +1110,11 @@
         <custom-pmd.version>0.0.1</custom-pmd.version>
         <gitflow-incremental-builder.version>4.5.3</gitflow-incremental-builder.version>
         <maven-jxr-plugin.version>3.3.0</maven-jxr-plugin.version>
-        <maven-pmd-plugin.version>3.21.0</maven-pmd-plugin.version>
+        <maven-pmd-plugin.version>3.23.0</maven-pmd-plugin.version>
         <lombok.version>1.18.32</lombok.version>
         <h2.version>2.2.224</h2.version>
         <guava.version>33.2.1-jre</guava.version>
-        <maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
+        <maven-jar-plugin.version>3.4.2</maven-jar-plugin.version>
         <mockito-inline.version>5.2.0</mockito-inline.version>
         <mockito-junit-jupiter.version>5.11.0</mockito-junit-jupiter.version>
         <logback.configurationFileName>logback-config-global.xml</logback.configurationFileName>
