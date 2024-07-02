@@ -63,7 +63,7 @@ class CreateStudentUnitTest {
 
     private static void assertModelProperties(Student student) {
         assertThat(student.getDateOfBirth()).isBefore(LocalDate.now());
-        assertThat(student.getEnrollmentYear()).isLessThan(Year.now());
+        assertThat(student.getEnrollmentYear().getValue()).isLessThan(Year.now().getValue());
         assertThat(student.getContactInfo().getEmail()).matches("^[a-zA-Z0-9]+@example.com$");
         assertThat(student.getContactInfo().getPhones())
                 .extracting(Phone::getCountryCode)
