@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package baeldung;
+
+message Student {
+  int32 id = 1;
+  string name = 2;
+  map<string, int32> grades = 3;
+}
+
+message Course {
+  string name = 1;
+  map<string, int32> grades = 2;
+}
+
+message MultiTypeMap {
+  map<int32, string> intToString = 1;
+  map<string, double> stringToDouble = 2;
+  map<bool, bytes> boolToBytes = 3;
+}
