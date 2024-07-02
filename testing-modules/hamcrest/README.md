@@ -10,3 +10,5 @@ This module contains articles about Hamcrest
 - [Using Hamcrest Number Matchers](https://www.baeldung.com/hamcrest-number-matchers)
 - [Hamcrest Common Core Matchers](https://www.baeldung.com/hamcrest-core-matchers)
 - [Hamcrest Custom Matchers](https://www.baeldung.com/hamcrest-custom-matchers)
+- [Check if a Variable Is Null Using Hamcrest](https://www.baeldung.com/java-hamcrest-check-null)
+- [Difference Between hasItems(), contains(), and containsInAnyOrder() in Hamcrest](https://www.baeldung.com/hamcrest-hasitems-contains-containsinanyorder)
