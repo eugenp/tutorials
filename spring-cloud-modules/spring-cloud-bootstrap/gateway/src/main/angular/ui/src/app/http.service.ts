@@ -4,7 +4,7 @@ import {HttpClientModule, HttpResponse, HttpClient, HttpHeaders, HttpRequest, Ht
 import {Book} from "./book";
 import {Rating} from "./rating";
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class HttpService {
 
   constructor(private http: HttpClient) { }

@@ -4,9 +4,13 @@ import {Book} from "../../book";
 import {HttpResponse} from "@angular/common/http";
 import {HttpService} from "../../http.service";
 import {FormsModule}   from '@angular/forms';
+import {CommonModule} from '@angular/common';
 
 @Component({
   selector: 'app-book-list',
+  standalone: true,
+  imports: [FormsModule, CommonModule],
+  providers: [HttpService],
   templateUrl: './book-list.component.html',
   styleUrls: ['./book-list.component.css']
 })
