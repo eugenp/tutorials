@@ -1037,6 +1037,61 @@
         </profile>
 
         <profile>
+            <id>live-all</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <excludes>
+                                <exclude>**/SpringContextTest.java</exclude>
+                                <exclude>**/*UnitTest.java</exclude>
+                                <exclude>**/*IntegrationTest.java</exclude>
+                                <exclude>**/*IntTest.java</exclude>
+                                <exclude>**/*LongRunningUnitTest.java</exclude>
+                                <exclude>**/*ManualTest.java</exclude>
+                                <exclude>**/*JdbcTest.java</exclude>
+                            </excludes>
+                            <includes>
+                                <include>**/*LiveTest.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+
+            <modules>
+                <!--<module>apache-kafka</module>-->
+                <!--<module>apache-libraries</module>-->
+                <!--<module>apache-spark</module>--><!-- failing after upgrading to jdk17-->
+                <!-- <module>atomix</module>-->
+                <!--<module>gcp-firebase</module>-->
+                <!--<module>libraries-data-io</module>-->
+                <!--<module>persistence-modules/spring-data-jpa-enterprise</module>-->
+                <module>persistence-modules/spring-data-jpa-query-2</module>
+                <!--<module>spring-reactive-modules/spring-reactive-2</module>-->
+                <!--<module>spring-reactive-modules/spring-reactive-client-2</module>-->
+                <!--<module>spring-reactive-modules/spring-reactive-data-couchbase</module>-->
+                <module>spring-reactive-modules/spring-reactive-oauth</module>
+                <!--<module>spring-reactive-modules/spring-reactive-security</module>-->
+                <!--<module>spring-reactive-modules/spring-reactive</module>-->
+                <!--<module>spring-reactive-modules/spring-webflux-ampq</module>-->
+                <!--<module>spring-reactive-modules/spring-rest-http</module>-->
+                <!--<module>web-modules/jee-7</module>-->
+                <module>web-modules/ratpack</module>
+            </modules>
+
+            <properties>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <java.version>17</java.version>
+                <maven.compiler.source>17</maven.compiler.source>
+                <maven.compiler.target>17</maven.compiler.target>
+            </properties>
+
+        </profile>
+
+        <profile>
             <id>parents</id>
             <modules>
                 <module>parent-boot-1</module>
