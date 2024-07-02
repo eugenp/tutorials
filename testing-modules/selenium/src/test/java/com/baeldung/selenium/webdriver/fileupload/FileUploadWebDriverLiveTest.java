@@ -1,6 +1,6 @@
 package com.baeldung.selenium.webdriver.fileupload;
 
-import org.junit.Assert;
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,7 +11,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class FileUploadWebDriverUnitTest {
+public class FileUploadWebDriverLiveTest {
 
     private WebDriver driver;
 
@@ -34,18 +34,18 @@ public class FileUploadWebDriverUnitTest {
     public void givenFileUploadPage_whenInputFilePath_thenFileUploadEndsWithFilename() {
         driver.get(URL);
 
-        String filePath = System.getProperty("user.dir") + "/1688web.png";
+        String filePath = System.getProperty("user.dir") + System.getProperty("file.separator") + "1688web.png";
         WebElement inputElement = driver.findElement(By.name(INPUT_NAME));
         WebElement submitButton = driver.findElement(By.name("http_submit"));
 
         inputElement.sendKeys(filePath);
 
         String actualFilePath = inputElement.getAttribute("value");
-        String fileName = filePath.substring(filePath.lastIndexOf("/") + 1);
+        String fileName = filePath.substring(filePath.lastIndexOf(System.getProperty("file.separator")) + 1);
 
         submitButton.click();
 
-        Assert.assertTrue(actualFilePath.endsWith(fileName));
+        assertTrue(actualFilePath.endsWith(fileName));
     }
 
 }

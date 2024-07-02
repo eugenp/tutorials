@@ -77,7 +77,7 @@
 
     <properties>
         <start-class>com.baeldung.spring.cloud.aws.sqs.SpringCloudAwsApplication</start-class>
-        <spring-cloud-aws.version>3.1.0</spring-cloud-aws.version>
+        <spring-cloud-aws.version>3.1.1</spring-cloud-aws.version>
         <maven.surefire.version>3.1.0</maven.surefire.version>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
