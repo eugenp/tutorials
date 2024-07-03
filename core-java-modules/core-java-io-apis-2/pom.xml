@@ -65,6 +65,7 @@
 
     <properties>
         <junit-jupiter-version>5.9.3</junit-jupiter-version>
+        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
     </properties>
 
 </project>

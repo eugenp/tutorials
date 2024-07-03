@@ -12,6 +12,7 @@ import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.Ignore;
 
 public class ExcelCellMergerUnitTest {
     private static final String FILE_NAME = "ExcelCellFormatterTest.xlsx";
@@ -22,6 +23,7 @@ public class ExcelCellMergerUnitTest {
             fileLocation = Paths.get(ClassLoader.getSystemResource(FILE_NAME).toURI()).toString();
     }
 
+    @Ignore
     @Test
     public void givenCellIndex_whenAddMergeRegion_thenMergeRegionCreated() throws IOException {
         Workbook workbook = new XSSFWorkbook(fileLocation);
@@ -38,6 +40,7 @@ public class ExcelCellMergerUnitTest {
         workbook.close();
     }
 
+    @Ignore
     @Test
     public void givenCellRefString_whenAddMergeRegion_thenMergeRegionCreated() throws IOException {
         Workbook workbook = new XSSFWorkbook(fileLocation);

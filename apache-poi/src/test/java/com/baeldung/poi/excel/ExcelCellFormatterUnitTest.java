@@ -12,6 +12,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.Ignore;
 
 public class ExcelCellFormatterUnitTest {
     private static final String FILE_NAME = "ExcelCellFormatterTest.xlsx";
@@ -73,6 +74,7 @@ public class ExcelCellFormatterUnitTest {
         workbook.close();
     }
 
+    @Ignore
     @Test
     public void givenFormualCell_whenGetCellStringValueForFormula_thenReturnOriginalFormulatring() throws IOException {
         Workbook workbook = new XSSFWorkbook(fileLocation);

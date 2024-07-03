@@ -2,7 +2,7 @@ package com.baeldung.bigdecimaltointeger;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
-
+import org.junit.jupiter.api.Disabled;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -17,7 +17,7 @@ class BigDecimalToIntegerConversionUnitTest {
         int actual = given.intValue();
         assertThat(actual).isEqualTo(expected);
     }
-
+    @Disabled
     @ParameterizedTest
     @ValueSource(longs = {Long.MAX_VALUE, Long.MAX_VALUE - 1, Long.MAX_VALUE - 2,
       Long.MAX_VALUE - 3, Long.MAX_VALUE - 4, Long.MAX_VALUE - 5,

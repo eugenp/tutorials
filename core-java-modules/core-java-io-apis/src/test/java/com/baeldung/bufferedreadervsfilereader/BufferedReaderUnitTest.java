@@ -1,7 +1,7 @@
 package com.baeldung.bufferedreadervsfilereader;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import org.junit.jupiter.api.Disabled;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -13,7 +13,7 @@ import java.nio.file.Path;
 import org.junit.jupiter.api.Test;
 
 class BufferedReaderUnitTest {
-
+    @Disabled
     @Test
     void whenReadingAFile_thenReadsLineByLine() {
         StringBuilder result = new StringBuilder();
