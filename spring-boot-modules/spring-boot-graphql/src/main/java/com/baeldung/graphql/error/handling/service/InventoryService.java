@@ -17,7 +17,7 @@ import com.baeldung.graphql.error.handling.exception.VehicleNotFoundException;
 import com.baeldung.graphql.error.handling.repository.InventoryRepository;
 import com.baeldung.graphql.error.handling.repository.LocationRepository;
 
-import javax.transaction.Transactional;
+import jakarta.transaction.Transactional;
 
 @Service
 public class InventoryService {
