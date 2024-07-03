@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: spring-ai-milestone
+  ai:
+    ollama:
+      base-url: http://localhost:11434
+      chat:
+        options:
+          model: llama3
+#          temperature: 0.4 # Increasing the temperature will make the model answer more creatively.
+#          top-p: 0.4 # A higher value (e.g., 0.95) will lead to more diverse text, while a lower value (e.g., 0.5) will generate more focused and conservative text
+#          top-k: 10 # A higher value (e.g., 100) will give more diverse answers, while a lower value (e.g., 10) will be more conservative.
