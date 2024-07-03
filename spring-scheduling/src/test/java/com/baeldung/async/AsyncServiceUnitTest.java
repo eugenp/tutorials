@@ -23,16 +23,15 @@ public class AsyncServiceUnitTest {
 
     @Test
     public void testAsyncAnnotationForMergedServicesResponse() throws InterruptedException, ExecutionException {
-        System.out.println("Invoking an asynchronous method. " + Thread.currentThread()
-            .getName());
+        // System.out.println("Invoking an asynchronous method. " + Thread.currentThread().getName());
         CompletableFuture<String> completableFuture = asyncServiceExample.asyncMergeServicesResponse();
 
         while (true) {
             if (completableFuture.isDone()) {
-                System.out.println("Result from asynchronous process - " + completableFuture.get());
+                // System.out.println("Result from asynchronous process - " + completableFuture.get());
                 break;
             }
-            System.out.println("Continue doing something else. ");
+            // System.out.println("Continue doing something else. ");
             Thread.sleep(1000);
         }
     }

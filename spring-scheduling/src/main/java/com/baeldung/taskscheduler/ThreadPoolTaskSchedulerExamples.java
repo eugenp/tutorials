@@ -42,7 +42,7 @@ public class ThreadPoolTaskSchedulerExamples {
 
         @Override
         public void run() {
-            System.out.println("Runnable Task with " + message + " on thread " + Thread.currentThread().getName());
+            // System.out.println("Runnable Task with " + message + " on thread " + Thread.currentThread().getName());
         }
     }
 }

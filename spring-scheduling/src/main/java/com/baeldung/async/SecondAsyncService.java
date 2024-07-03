@@ -11,8 +11,7 @@ public class SecondAsyncService {
 
     @Async
     public CompletableFuture<String> asyncGetData() throws InterruptedException {
-        System.out.println("Execute method asynchronously " + Thread.currentThread()
-            .getName());
+        // System.out.println("Execute method asynchronously " + Thread.currentThread().getName());
         Thread.sleep(4000);
         return new AsyncResult<>(super.getClass().getSimpleName() + " response !!! ").completable();
     }
