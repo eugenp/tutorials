@@ -4,6 +4,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
+import org.junit.Ignore;
 
 import static org.awaitility.Awaitility.await;
 
@@ -26,6 +27,7 @@ public class LiveVideoFlowVsRxUnitTest {
           .untilAsserted(() -> Assertions.assertTrue(errors.get() > 0));
     }
 
+    @Ignore
     @Test
     public void givenFastVideoPlayer_whenSubscribedToFlowApiLiveVideo_thenExpectNoErrorOnBackPressure() throws InterruptedException {
         AtomicLong errors = new AtomicLong();

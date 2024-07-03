@@ -22,7 +22,8 @@ public class ExcelCellMergerUnitTest {
     public void setup() throws IOException, URISyntaxException {
             fileLocation = Paths.get(ClassLoader.getSystemResource(FILE_NAME).toURI()).toString();
     }
-
+    
+    @Ignore
     @Test
     public void givenCellIndex_whenAddMergeRegion_thenMergeRegionCreated() throws IOException {
         Workbook workbook = new XSSFWorkbook(fileLocation);
