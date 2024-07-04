@@ -410,6 +410,7 @@
                 <module>kubernetes-modules/k8s-operator</module>
                 <module>web-modules/restx</module>
                 <module>libraries-testing</module>
+                <module>text-processing-libraries-modules</module>
             </modules>
 
             <properties>
@@ -514,6 +515,7 @@
                 <module>web-modules/restx</module>
                 <module>libraries-testing</module>
                 <module>kubernetes-modules/k8s-operator</module>
+                <module>text-processing-libraries-modules</module>
             </modules>
 
             <properties>
@@ -762,7 +764,6 @@
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>
                 <module>testing-modules/mockito-simple</module>
-                <module>text-processing-libraries-modules</module>
                 <module>timefold-solver</module>
                 <module>vaadin</module>
                 <module>vavr-modules</module>
@@ -1014,7 +1015,6 @@
                 <module>tensorflow-java</module>
                 <module>testing-modules</module>
                 <module>testing-modules/mockito-simple</module>
-                <module>text-processing-libraries-modules</module>
                 <module>timefold-solver</module>
                 <module>vaadin</module>
                 <module>vavr-modules</module>
