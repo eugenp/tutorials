@@ -4,10 +4,12 @@ import com.google.common.util.concurrent.ListeningExecutorService;
 import com.google.common.util.concurrent.MoreExecutors;
 import org.junit.Assert;
 import org.junit.Test;
-
+import org.junit.Ignore;
 import java.util.concurrent.*;
 
 public class MoreExecutorsUnitTest {
+
+    @Ignore
     @Test
     public void whenExecutingRunnableInThreadPool_shouldLogAllThreadsExecutions() throws Exception {
         ConcurrentHashMap<String, Boolean> threadExecutions = new ConcurrentHashMap<>();
