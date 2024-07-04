@@ -12,6 +12,11 @@ import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.Arrays;
 
+import org.openjdk.jmh.runner.Runner;
+import org.openjdk.jmh.runner.RunnerException;
+import org.openjdk.jmh.runner.options.Options;
+import org.openjdk.jmh.runner.options.OptionsBuilder;
+
 public class FileOutputStreamVSFileChannel {
 
     private static final Object lock = new Object();
@@ -107,30 +112,16 @@ public class FileOutputStreamVSFileChannel {
         thread2.start();
     }
 
-    public static void writeLargeFileUsingFileOutputStream() {
-        Arrays.fill(largeData, (byte) 1);
+    public static void performanceComparisonUsingJMH() throws RunnerException {
+        Options opt = new OptionsBuilder()
+            .include(FileIOBenchmark.class.getSimpleName())
+            .forks(1)
+            .build();
 
-        long startTime = System.currentTimeMillis();
-        try (FileOutputStream outputStream = new FileOutputStream(largeOutputFile)) {
-            outputStream.write(largeData);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        long endTime = System.currentTimeMillis();
-        System.out.println("Time taken: " + (endTime - startTime) + " ms");
+        new Runner(opt).run();
     }
 
-    public static void writeLargeFileUsingFileChannel() {
-        Arrays.fill(largeData, (byte) 1);
-        ByteBuffer buffer = ByteBuffer.wrap(largeData);
-
-        long startTime = System.currentTimeMillis();
-        try (FileChannel fileChannel = FileChannel.open(Path.of(largeOutputFile), StandardOpenOption.WRITE, StandardOpenOption.CREATE)) {
-            fileChannel.write(buffer);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        long endTime = System.currentTimeMillis();
-        System.out.println("Time taken: " + (endTime - startTime) + " ms");
+    public static void main(String [] args) throws RunnerException {
+        performanceComparisonUsingJMH();
     }
 }
