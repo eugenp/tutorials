@@ -645,7 +645,7 @@
     </build>
     <profiles>
         <profile>
-            <id>default-jdk9-and-above</id>
+            <id>default</id>
             <build>
                 <plugins>
                     <plugin>
@@ -680,7 +680,7 @@
             </build>
         </profile>
         <profile>
-            <id>integration-jdk9-and-above</id>
+            <id>integration</id>
             <build>
                 <plugins>
                     <plugin>
