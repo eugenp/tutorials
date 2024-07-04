@@ -1113,7 +1113,7 @@
         <maven-pmd-plugin.version>3.23.0</maven-pmd-plugin.version>
         <lombok.version>1.18.32</lombok.version>
         <h2.version>2.2.224</h2.version>
-        <guava.version>33.0.0-jre</guava.version>
+        <guava.version>33.2.1-jre</guava.version>
         <maven-jar-plugin.version>3.4.2</maven-jar-plugin.version>
         <mockito-inline.version>5.2.0</mockito-inline.version>
         <mockito-junit-jupiter.version>5.11.0</mockito-junit-jupiter.version>
