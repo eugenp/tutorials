@@ -8,5 +8,6 @@ This module contains articles about core Java input and output (IO)
 - [Clear the Scanner Buffer in Java](https://www.baeldung.com/java-scanner-buffer)
 - [Checking Write Permissions of a Directory in Java](https://www.baeldung.com/java-check-directory-write-permissions)
 - [Read Last N Lines From File in Java](https://www.baeldung.com/java-file-read-last-n-lines)
+- [Guide to FileWriter vs. BufferedWriter](https://www.baeldung.com/java-filewriter-vs-bufferedwriter)
 - [[<-- Prev]](/core-java-modules/core-java-io-5)
 
