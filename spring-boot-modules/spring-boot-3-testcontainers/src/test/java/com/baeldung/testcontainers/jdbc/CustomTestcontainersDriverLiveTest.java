@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest(properties =
   "spring.datasource.url: jdbc:tc:postgresql:16-alpine:///test-db"
 )
-class TcJdbcDriverLiveTest {
+class CustomTestcontainersDriverLiveTest {
 
     @Autowired
     HobbitRepository theShire;

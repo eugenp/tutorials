@@ -12,7 +12,7 @@ import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.PostgreSQLContainer;
 
 @SpringBootTest
-class FullTcLifecycleLiveTest {
+class FullTestcontainersLifecycleLiveTest {
 
     @Autowired
     HobbitRepository theShire;
