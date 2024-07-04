@@ -1,3 +1,5 @@
+package com.example;
+
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -20,8 +22,9 @@ class BankAccountTest {
         // Verify the transaction histories 
         String expectedOriginalTransactions = "Deposit: 200.00\n";
         String expectedShallowCopyTransactions = "Deposit: 200.00\nDeposit: 300.00\n";      
-        assertEquals(expectedOriginalTransactions, original.getTransactionHistory());
+        assertNotEquals(expectedOriginalTransactions, original.getTransactionHistory());
         assertEquals(expectedShallowCopyTransactions, shallowCopy.getTransactionHistory());
+        assertEquals(original.getTransactionHistory(), shallowCopy.getTransactionHistory());
     }
 
     @Test
@@ -43,5 +46,6 @@ class BankAccountTest {
         String expectedDeepCopyTransactions = "Deposit: 200.00\nDeposit: 300.00\n";
         assertEquals(expectedOriginalTransactions, original.getTransactionHistory());
         assertEquals(expectedDeepCopyTransactions, deepCopy.getTransactionHistory());
+        assertNotEquals(original.getTransactionHistory(), deepCopy.getTransactionHistory());
     }
 }
