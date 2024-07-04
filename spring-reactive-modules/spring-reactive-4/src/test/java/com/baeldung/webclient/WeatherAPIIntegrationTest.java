@@ -12,6 +12,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,10 @@ public class WeatherAPIIntegrationTest {
     @Value("${wiremock.server.port}")
     private int wireMockPort;
 
+    @BeforeEach
+    void init() {
+        WireMock.reset();
+    }
     @Test
     public void givenWebClientBaseURLConfiguredToWireMock_whenGetRequestForACity_thenWebClientRecievesSuccessResponse() {
         stubFor(WireMock.get(urlEqualTo("/weather?city=London"))
@@ -195,7 +200,7 @@ public class WeatherAPIIntegrationTest {
         // Stubbing response for the first call
         stubFor(WireMock.get(urlEqualTo("/weather?city=London"))
           .inScenario("Weather Scenario")
-          .whenScenarioStateIs("started")
+          .whenScenarioStateIs(Scenario.STARTED)
           .willReturn(aResponse().withStatus(200)
             .withHeader("Content-Type", "application/json")
             .withBody("{\"city\": \"London\", \"temperature\": 20, \"description\": \"Cloudy\"}"))
