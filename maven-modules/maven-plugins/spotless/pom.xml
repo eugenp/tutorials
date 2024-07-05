@@ -11,14 +11,6 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <dependencies>
-        <!--        <dependency>-->
-        <!--            <groupId>com.diffplug.spotless</groupId>-->
-        <!--            <artifactId>spotless-maven-plugin</artifactId>-->
-        <!--            <version>${spotless.version}</version>-->
-        <!--        </dependency>-->
-    </dependencies>
-
     <build>
         <plugins>
             <plugin>
@@ -27,7 +19,10 @@
                 <version>${spotless.version}</version>
                 <configuration>
                     <java>
-                        <googleJavaFormat/>
+                        <!--  <googleJavaFormat/>  -->
+                        <eclipse>
+                            <file>${project.basedir}/baeldung-style.xml</file>
+                        </eclipse>
                     </java>
                 </configuration>
             </plugin>
@@ -39,16 +34,3 @@
     </properties>
 
 </project>
-
-
-        <!--            <includes>-->
-        <!--                <include>src/main/java/**/*.java</include>-->
-        <!--                <include>src/test/java/**/*.java</include>-->
-        <!--            </includes>-->
-        <!--            <eclipse>-->
-        <!--                <file>${project.basedir}/bael-eclipse.xml</file>-->
-        <!--            </eclipse>-->
-        <!--            <indent>-->
-        <!--                <tabs>true</tabs>-->
-        <!--                <spacesPerTab>4</spacesPerTab>-->
-        <!--            </indent>-->
