@@ -32,20 +32,12 @@
                             <file>${project.basedir}/baeldung-style.xml</file>
                         </eclipse>
 
+                        <importOrder/>
                         <removeUnusedImports />
                         <formatAnnotations />
-
                         <licenseHeader>
                             <content>/* (C)$YEAR */</content>
                         </licenseHeader>
-
-                        <cleanthat>
-                            <mutators>            <!-- List of mutators: https://github.com/solven-eu/cleanthat/blob/master/MUTATORS.generated.MD -->
-                                <mutator>LiteralsFirstInComparisons</mutator>
-                                <mutator>LiteralsFirstInComparisons</mutator>
-                            </mutators>
-                        </cleanthat>
-
                     </java>
                 </configuration>
             </plugin>

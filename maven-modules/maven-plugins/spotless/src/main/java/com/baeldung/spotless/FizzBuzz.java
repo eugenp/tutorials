@@ -37,13 +37,4 @@ public class FizzBuzz {
         }
     }
 
-	static void complexBooleanLogic() {
-		int x = 100;
-		int y = 200;
-		boolean b = (x > 1 ) ? true : y < 7 || true;
-		if (b) {
-			System.out.println("condition was true!");
-		}
-	}
-
 }
