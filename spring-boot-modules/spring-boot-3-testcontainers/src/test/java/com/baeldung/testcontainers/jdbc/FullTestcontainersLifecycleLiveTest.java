@@ -1,7 +1,5 @@
 package com.baeldung.testcontainers.jdbc;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -11,39 +9,40 @@ import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.PostgreSQLContainer;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @SpringBootTest
 class FullTestcontainersLifecycleLiveTest {
 
-    @Autowired
-    HobbitRepository theShire;
+	@Autowired
+	HobbitRepository theShire;
 
-    static PostgreSQLContainer postgres = new PostgreSQLContainer("postgres:16-alpine")
-        .withDatabaseName("test-db");
+	static PostgreSQLContainer postgres = new PostgreSQLContainer("postgres:16-alpine").withDatabaseName("test-db");
 
-    @BeforeAll
-    static void beforeAll() {
-        postgres.start();
-    }
+	@BeforeAll
+	static void beforeAll() {
+		postgres.start();
+	}
 
-    @AfterAll
-    static void afterAll() {
-        postgres.stop();
-    }
+	@AfterAll
+	static void afterAll() {
+		postgres.stop();
+	}
 
-    @DynamicPropertySource
-    static void setProperties(DynamicPropertyRegistry registry) {
-        registry.add("spring.datasource.url", postgres::getJdbcUrl);
-        registry.add("spring.datasource.username", postgres::getUsername);
-        registry.add("spring.datasource.password", postgres::getPassword);
-    }
+	@DynamicPropertySource
+	static void setProperties(DynamicPropertyRegistry registry) {
+		registry.add("spring.datasource.url", postgres::getJdbcUrl);
+		registry.add("spring.datasource.username", postgres::getUsername);
+		registry.add("spring.datasource.password", postgres::getPassword);
+	}
 
-    @Test
-    void whenCallingSave_thenEntityIsPersistedToDb() {
-        theShire.save(new Hobbit("Bilbo Baggins"));
+	@Test
+	void whenCallingSave_thenEntityIsPersistedToDb() {
+		theShire.save(new Hobbit("Bilbo Baggins"));
 
-        assertThat(theShire.findAll()).hasSize(1)
-            .first()
-            .extracting(Hobbit::getName)
-            .isEqualTo("Bilbo Baggins");
-    }
+		assertThat(theShire.findAll())
+		  .hasSize(1).first()
+		  .extracting(Hobbit::getName)
+		  .isEqualTo("Bilbo Baggins");
+	}
 }
