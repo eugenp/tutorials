@@ -1,7 +1,0 @@
-# Eclipse-specific files
-.classpath
-.project
-.settings/
-
-# Maven build folder
-target/
