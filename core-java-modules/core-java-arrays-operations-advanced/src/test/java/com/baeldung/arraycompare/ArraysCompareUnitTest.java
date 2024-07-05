@@ -18,8 +18,8 @@ class ArraysCompareUnitTest {
 
     @Test
     void givenDifferentContents_whenCompare_thenDifferent() {
-        String[] array1 = new String[] { "A", "B", "C" };
-        String[] array2 = new String[] { "A", "C", "B", "D" };
+        String[] array1 = new String[] { "A", "B", "C", "D"};
+        String[] array2 = new String[] { "A", "C", "B" };
 
         assertThat(Arrays.compare(array1, array2)).isLessThan(0);
         assertThat(Arrays.compare(array2, array1)).isGreaterThan(0);

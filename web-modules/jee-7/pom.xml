@@ -6,8 +6,8 @@
     <groupId>com.baeldung.jee-7</groupId>
     <artifactId>jee-7</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>jee-7</name>
     <packaging>war</packaging>
+    <name>jee-7</name>
     <description>JavaEE 7 Arquillian Archetype Sample</description>
 
     <parent>

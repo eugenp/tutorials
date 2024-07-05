@@ -6,8 +6,8 @@
     <groupId>com.baeldung.javax-servlets</groupId>
     <artifactId>javax-servlets</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>javax-servlets</name>
     <packaging>war</packaging>
+    <name>javax-servlets</name>
 
     <parent>
         <groupId>com.baeldung</groupId>

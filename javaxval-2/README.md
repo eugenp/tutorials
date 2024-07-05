@@ -8,4 +8,5 @@ This module contains articles about Bean Validation.
 - [Hibernate Validator Annotation Processor in Depth](https://www.baeldung.com/hibernate-validator-annotation-processor)
 - [Object Validation After Deserialization](https://www.baeldung.com/java-object-validation-deserialization)
 - [Java Validation List Annotations](https://www.baeldung.com/java-validation-list-annotations)
+- [@Valid Annotation on Child Objects](https://www.baeldung.com/java-valid-annotation-child-objects)
 - More articles: [[<-- prev]](../javaxval)
