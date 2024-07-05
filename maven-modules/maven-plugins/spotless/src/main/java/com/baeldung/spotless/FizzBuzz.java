@@ -1,9 +1,18 @@
 package com.baeldung.spotless;
 
-import java.util.HashMap;
+import org.jetbrains.annotations.Nullable;
+
+import java.io.File;
+import java.lang.annotation.Documented;
 import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
 
 public class FizzBuzz {
+
+	@Nullable
+	static String pi = "3.14";
 
     public static void main(String[] args) {
         Map<Integer, String> dividers = new HashMap<>();
@@ -27,5 +36,14 @@ public class FizzBuzz {
             }
         }
     }
+
+	static void complexBooleanLogic() {
+		int x = 100;
+		int y = 200;
+		boolean b = (x > 1 ) ? true : y < 7 || true;
+		if (b) {
+			System.out.println("condition was true!");
+		}
+	}
 
 }

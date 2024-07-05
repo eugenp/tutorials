@@ -11,6 +11,14 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>24.1.0</version>
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -23,6 +31,21 @@
                         <eclipse>
                             <file>${project.basedir}/baeldung-style.xml</file>
                         </eclipse>
+
+                        <removeUnusedImports />
+                        <formatAnnotations />
+
+                        <licenseHeader>
+                            <content>/* (C)$YEAR */</content>
+                        </licenseHeader>
+
+                        <cleanthat>
+                            <mutators>            <!-- List of mutators: https://github.com/solven-eu/cleanthat/blob/master/MUTATORS.generated.MD -->
+                                <mutator>LiteralsFirstInComparisons</mutator>
+                                <mutator>LiteralsFirstInComparisons</mutator>
+                            </mutators>
+                        </cleanthat>
+
                     </java>
                 </configuration>
             </plugin>
