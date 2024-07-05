@@ -1062,23 +1062,25 @@
             </build>
 
             <modules>
-                <!--<module>apache-kafka</module>-->
-                <!--<module>apache-libraries</module>-->
-                <!--<module>apache-spark</module>--><!-- failing after upgrading to jdk17-->
-                <!-- <module>atomix</module>-->
-                <!--<module>gcp-firebase</module>-->
-                <!--<module>libraries-data-io</module>-->
-                <!--<module>persistence-modules/spring-data-jpa-enterprise</module>-->
+                <module>apache-kafka</module>
+                <module>apache-libraries</module>
+                <module>apache-spark</module> <!-- failing after upgrading to jdk17 -->
+                <module>atomix</module>
+                <module>gcp-firebase</module>
+                <module>libraries-data-io</module>
+                <module>persistence-modules/spring-data-jpa-enterprise</module>
                 <module>persistence-modules/spring-data-jpa-query-2</module>
-                <!--<module>spring-reactive-modules/spring-reactive-2</module>-->
-                <!--<module>spring-reactive-modules/spring-reactive-client-2</module>-->
-                <!--<module>spring-reactive-modules/spring-reactive-data-couchbase</module>-->
+                <module>spring-boot-modules/spring-boot-3-2</module>
+                <module>spring-kafka</module>
+                <module>spring-reactive-modules/spring-reactive-2</module>
+                <module>spring-reactive-modules/spring-reactive-client-2</module>
+                <module>spring-reactive-modules/spring-reactive-data-couchbase</module>
                 <module>spring-reactive-modules/spring-reactive-oauth</module>
-                <!--<module>spring-reactive-modules/spring-reactive-security</module>-->
-                <!--<module>spring-reactive-modules/spring-reactive</module>-->
-                <!--<module>spring-reactive-modules/spring-webflux-ampq</module>-->
-                <!--<module>spring-reactive-modules/spring-rest-http</module>-->
-                <!--<module>web-modules/jee-7</module>-->
+                <module>spring-reactive-modules/spring-reactive-security</module>
+                <module>spring-reactive-modules/spring-reactive</module>
+                <module>spring-reactive-modules/spring-webflux-amqp</module>
+                <module>spring-web-modules/spring-rest-http</module>
+                <module>web-modules/jee-7</module>
                 <module>web-modules/ratpack</module>
             </modules>
 
@@ -1088,7 +1090,6 @@
                 <maven.compiler.source>17</maven.compiler.source>
                 <maven.compiler.target>17</maven.compiler.target>
             </properties>
-
         </profile>
 
         <profile>
