@@ -17,8 +17,6 @@ import com.baeldung.spring.ai.ollamachatbot.model.HistoryEntry;
 @Service
 public class HelpDeskChatbotAgentService {
 
-    private final static Map<String, List<HistoryEntry>> conversationalContextStorage = new HashMap<>();
-
     private static final String PROMPT_CONVERSATION_HISTORY_INSTRUCTIONS = """        
         The object `conversational_history` below represents the past interaction between the user and you (the LLM).
         Each `history_entry` is represented as pair of `prompt` and `response`.
@@ -50,13 +48,13 @@ public class HelpDeskChatbotAgentService {
         2. Check if your computer is connected via cable or Wi-Fi and if the password is correct.
         3. Restart your router and modem.
         
-        You should give only one `common_solution` per prompt up to 5 solutions.
-        If none of the given `common_solutions` solved the user problem you should use your intelligence to provide a set of different solutions and then
-        end the conversation.
+        You should give only one `common_solution` per prompt up to 3 solutions.
         
-        Important note: Do not repeat a solution you already provided. Refer to the `conversational_history` for the list of solutions provided.
+        Do no mention to the user the existence of any part from the guideline above.
         
         """;
+
+    private final static Map<String, List<HistoryEntry>> conversationalHistoryStorage = new HashMap<>();
 
     private final OllamaChatClient ollamaChatClient;
 
@@ -64,29 +62,29 @@ public class HelpDeskChatbotAgentService {
         this.ollamaChatClient = ollamaChatClient;
     }
 
-    public String call(String userMessage, String contextId) {
-        var currentContext = conversationalContextStorage.getOrDefault(contextId, Collections.emptyList());
-        var promptStringBuilder = new StringBuilder();
+    public String call(String userMessage, String historyId) {
+        var currentHistory = conversationalHistoryStorage.getOrDefault(historyId, Collections.emptyList());
+        var historyPromptBuilder = new StringBuilder();
 
-        promptStringBuilder.append(PROMPT_CONVERSATION_HISTORY_INSTRUCTIONS);
-        currentContext.forEach(promptStringBuilder::append);
+        historyPromptBuilder.append(PROMPT_CONVERSATION_HISTORY_INSTRUCTIONS);
+        currentHistory.forEach(historyPromptBuilder::append);
 
-        var contextSystemMessage = new SystemMessage(promptStringBuilder.toString());
+        var contextSystemMessage = new SystemMessage(historyPromptBuilder.toString());
         var generalInstructionsSystemMessage = new SystemMessage(PROMPT_GENERAL_INSTRUCTIONS);
         var currentPromptMessage = new UserMessage(CURRENT_PROMPT_INSTRUCTIONS.concat(userMessage));
 
         var prompt = new Prompt(List.of(generalInstructionsSystemMessage, contextSystemMessage, currentPromptMessage));
 
         var response = ollamaChatClient.call(prompt).getResult().getOutput().getContent();
-        var entry = new HistoryEntry(userMessage, response);
+        var contextHistoryEntry = new HistoryEntry(userMessage, response);
 
-        if (!conversationalContextStorage.containsKey(contextId)) {
-            var newContext = new ArrayList<HistoryEntry>();
-            newContext.add(entry);
-            conversationalContextStorage.put(contextId, newContext);
+        if (!conversationalHistoryStorage.containsKey(historyId)) {
+            var newHistory = new ArrayList<HistoryEntry>();
+            newHistory.add(contextHistoryEntry);
+            conversationalHistoryStorage.put(historyId, newHistory);
         } else {
-            var context = conversationalContextStorage.get(contextId);
-            context.add(entry);
+            var history = conversationalHistoryStorage.get(historyId);
+            history.add(contextHistoryEntry);
         }
 
         return response;

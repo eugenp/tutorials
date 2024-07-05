@@ -8,23 +8,23 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.baeldung.spring.ai.ollamachatbot.model.ChatBotRequest;
-import com.baeldung.spring.ai.ollamachatbot.model.ChatBotResponse;
+import com.baeldung.spring.ai.ollamachatbot.model.HelpDeskRequest;
+import com.baeldung.spring.ai.ollamachatbot.model.HelpDeskResponse;
 import com.baeldung.spring.ai.ollamachatbot.service.HelpDeskChatbotAgentService;
 
 @RestController
-@RequestMapping("/chatbot")
-public class ChatBotController {
+@RequestMapping("/helpdesk")
+public class HelpDeskController {
     private final HelpDeskChatbotAgentService helpDeskChatbotAgentService;
 
-    public ChatBotController(OllamaChatClient chatBotService, HelpDeskChatbotAgentService helpDeskChatbotAgentService) {
+    public HelpDeskController(OllamaChatClient chatBotService, HelpDeskChatbotAgentService helpDeskChatbotAgentService) {
         this.helpDeskChatbotAgentService = helpDeskChatbotAgentService;
     }
 
     @PostMapping("/chat")
-    public ResponseEntity<ChatBotResponse> chat(@RequestBody ChatBotRequest chatBotRequest) {
-        var chatResponse = helpDeskChatbotAgentService.call(chatBotRequest.getPromptMessage(), chatBotRequest.getContextId());
+    public ResponseEntity<HelpDeskResponse> chat(@RequestBody HelpDeskRequest helpDeskRequest) {
+        var chatResponse = helpDeskChatbotAgentService.call(helpDeskRequest.getPromptMessage(), helpDeskRequest.getHistoryId());
 
-        return new ResponseEntity<>(new ChatBotResponse(chatResponse), HttpStatus.OK);
+        return new ResponseEntity<>(new HelpDeskResponse(chatResponse), HttpStatus.OK);
     }
 }
