@@ -1,4 +1,4 @@
-package insertid;
+package com.baeldung.jdbcinsertid;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -32,7 +32,7 @@ public class GetInsertIdsUnitTest {
     }
 
     @Test
-    void givenDBPopulated_WhenGetInsertIds_ThenReturnsIds() throws SQLException {
+    void givenDBPopulated_WhenGetInsertIds_thenReturnsIds() throws SQLException {
         GetInsertIds getInsertIds = new GetInsertIds();
         List<Long> actualIds = getInsertIds.insertAndReturnIds(connection);
         ResultSet resultSet = connection.prepareStatement("select id from employees")
