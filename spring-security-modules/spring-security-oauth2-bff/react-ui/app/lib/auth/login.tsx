@@ -66,6 +66,10 @@ export default function Login({ onLogin }: LoginProperties) {
       "post_login_success_uri",
       `${process.env.NEXT_PUBLIC_BASE_URI}${currentPath}`
     );
+    url.searchParams.append(
+      "post_login_failure_uri",
+      `${process.env.NEXT_PUBLIC_BASE_URI}/login-error`
+    );
     const loginUrl = url.toString();
     if (
       +selectedLoginExperience === +LoginExperience.IFRAME &&
