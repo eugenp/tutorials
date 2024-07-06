@@ -36,9 +36,9 @@
                         <removeUnusedImports/>
                         <formatAnnotations/>
 
-                        <licenseHeader>
-                            <content>/* (C)$YEAR */</content>
-                        </licenseHeader>
+<!--                        <licenseHeader>-->
+<!--                            <content>/* (C)$YEAR */</content>-->
+<!--                        </licenseHeader>-->
                     </java>
                 </configuration>
 
