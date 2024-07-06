@@ -1,6 +1,6 @@
-package com.baeldung.junit5.autoclosable;
+package com.baeldung.junit5.autoclose;
 
-class DummyAutoClosableResource implements AutoCloseable {
+class DummyAutoCloseableResource implements AutoCloseable {
 
     private boolean open = true;
 

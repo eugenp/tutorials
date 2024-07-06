@@ -1,4 +1,4 @@
-package com.baeldung.junit5.autoclosable;
+package com.baeldung.junit5.autoclose;
 
 class DummyClearableResource {
 

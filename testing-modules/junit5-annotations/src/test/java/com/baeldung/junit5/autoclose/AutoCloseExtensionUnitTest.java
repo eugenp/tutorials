@@ -1,4 +1,4 @@
-package com.baeldung.junit5.autoclosable;
+package com.baeldung.junit5.autoclose;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -6,16 +6,16 @@ import static org.junit.Assert.assertTrue;
 import org.junit.jupiter.api.AutoClose;
 import org.junit.jupiter.api.Test;
 
-class AutoClosableExtensionUnitTest {
+class AutoCloseExtensionUnitTest {
 
     @AutoClose
-    DummyAutoClosableResource resource = new DummyAutoClosableResource();
+    DummyAutoCloseableResource resource = new DummyAutoCloseableResource();
 
     @AutoClose("clear")
     DummyClearableResource clearResource = new DummyClearableResource();
 
     @Test
-    void whenUsingDummyAutoClosableResource_thenResourceIsOpen() {
+    void whenUsingDummyAutoCloseableResource_thenResourceIsOpen() {
         assertTrue(resource.isOpen());
     }
 
