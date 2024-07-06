@@ -15,7 +15,7 @@
         <dependency>
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
-            <version>24.1.0</version>
+            <version>${jetbrains-annotations.version}</version>
         </dependency>
     </dependencies>
 
@@ -33,19 +33,30 @@
                         </eclipse>
 
                         <importOrder/>
-                        <removeUnusedImports />
-                        <formatAnnotations />
+                        <removeUnusedImports/>
+                        <formatAnnotations/>
+
                         <licenseHeader>
                             <content>/* (C)$YEAR */</content>
                         </licenseHeader>
                     </java>
                 </configuration>
+
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                        <phase>package</phase>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
 
     <properties>
         <spotless.version>2.43.0</spotless.version>
+        <jetbrains-annotations.version>24.1.0</jetbrains-annotations.version>
     </properties>
 
 </project>
