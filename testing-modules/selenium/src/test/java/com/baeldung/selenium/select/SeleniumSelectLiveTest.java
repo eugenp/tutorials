@@ -39,7 +39,7 @@ public class SeleniumSelectLiveTest {
     public void givenBaeldungContactPage_whenSelectQuestion_thenContainsOptionBugs() {
         driver.get(URL);
         WebElement inputElement = driver.findElement(By.xpath(OPTION_XPATH));
-        assertEquals("Bug reporting", inputElement.getText());
+        assertEquals(OPTION_TEXT, inputElement.getText());
     }
 
     @Test
