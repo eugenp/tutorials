@@ -36,20 +36,21 @@
                         <removeUnusedImports/>
                         <formatAnnotations/>
 
-<!--                        <licenseHeader>-->
-<!--                            <content>/* (C)$YEAR */</content>-->
-<!--                        </licenseHeader>-->
+                        <licenseHeader>
+                            <content>/* (C)$YEAR */</content>
+                        </licenseHeader>
                     </java>
                 </configuration>
 
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                        <phase>package</phase>
-                    </execution>
-                </executions>
+<!--                this setup is showcased in the article, but we don't want to run it on Jenkins -->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <goals>-->
+<!--                            <goal>check</goal>-->
+<!--                        </goals>-->
+<!--                        <phase>package</phase>-->
+<!--                    </execution>-->
+<!--                </executions>-->
             </plugin>
         </plugins>
     </build>
