@@ -1,7 +1,7 @@
-package com.baeldung.patterns.objectoriented;
+package com.baeldung.patterns;
 
 import com.baeldung.patterns.dataoriented.YahtzeeDO;
-import com.baeldung.patterns.objectoriented.YahtzeeOO.Strategy;
+import com.baeldung.patterns.objectoriented.YahtzeeOO;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -40,7 +40,7 @@ class YahtzeeTest {
 	void testCalculateScore_DO(List<Integer> dices, String strategyStr, Integer expectedScore) {
 		YahtzeeDO.Strategy strategy = YahtzeeDO.Strategy.valueOf(strategyStr);
 
-		Integer actualScore = new YahtzeeDO().calculateScore(dices, strategy);
+		Integer actualScore = YahtzeeDO.calculateScore(dices, strategy);
 
 		assertEquals(expectedScore, actualScore,
 				() -> String.format("Failed for roll %s and category %s", dices, strategy));

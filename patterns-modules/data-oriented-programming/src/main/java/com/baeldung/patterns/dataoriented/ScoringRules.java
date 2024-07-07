@@ -2,6 +2,7 @@ package com.baeldung.patterns.dataoriented;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import static java.util.Comparator.reverseOrder;
 import static java.util.function.Function.identity;
@@ -9,7 +10,7 @@ import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
 
 public class ScoringRules {
-	static int calculatePairs(List<Integer> dices, int nrOfPairs) {
+	static int pairs(List<Integer> dices, int nrOfPairs) {
 		Map<Integer, Long> frequency = dices.stream()
 				.collect(groupingBy(identity(), counting()));
 
@@ -30,4 +31,23 @@ public class ScoringRules {
 				.sum();
 	}
 
+	public static Integer moreOfSameKind(List<Integer> roll, int nrOfDicesOfSameKind) {
+		Map<Integer, Long> frequency = roll.stream()
+				.collect(groupingBy(identity(), counting()));
+
+		Optional<Integer> diceValue = frequency.entrySet().stream()
+				.filter(entry -> entry.getValue() >= nrOfDicesOfSameKind)
+				.map(Map.Entry::getKey)
+				.max(Integer::compare);
+
+		return diceValue.map(it -> it * nrOfDicesOfSameKind)
+				.orElse(0);
+	}
+
+	public static Integer specificValue(List<Integer> dices, Integer value) {
+		return dices.stream()
+				.filter(value::equals)
+				.mapToInt(it -> it)
+				.sum();
+	}
 }
