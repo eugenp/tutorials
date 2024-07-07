@@ -154,6 +154,7 @@
         <jetty-maven-plugin.version>10.0.7</jetty-maven-plugin.version>
         <graphql-java-extended-scalars.version>2022-04-06T00-10-27-a70541e</graphql-java-extended-scalars.version>
         <javax.ws.rs-api.version>2.1.1</javax.ws.rs-api.version>
+        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
     </properties>
 
 </project>
