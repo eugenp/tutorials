@@ -54,6 +54,8 @@
                 <version>${maven.verifier.version}</version>
                 <configuration>
                     <verificationFile>input-resources/verifications.xml</verificationFile>
+                    <!-- failOnError = false by the children modules, used for different articles  -->
+                    <failOnError>false</failOnError>
                 </configuration>
                 <executions>
                     <execution>
