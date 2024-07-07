@@ -33,5 +33,9 @@
         <module>graphql-spqr</module>
         <module>graphql-spqr-boot-starter</module>
     </modules>
-
+    
+    <properties>
+        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+    </properties>
+    
 </project>
