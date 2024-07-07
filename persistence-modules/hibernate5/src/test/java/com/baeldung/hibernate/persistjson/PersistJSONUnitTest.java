@@ -110,7 +110,7 @@ public class PersistJSONUnitTest {
     }
 
     @Test
-    public void givenWarehouse_whenSaving_thenJsonAttribute() {
+    public void givenWarehouseWithJsonAttributes_whenSavingAndRetrieving_thenJsonAttributesArePersistedAndRetrievedCorrectly() {
         Warehouse warehouse = new Warehouse();
         warehouse.setName("Walmart");
         warehouse.setLocation("123 Main Street");
