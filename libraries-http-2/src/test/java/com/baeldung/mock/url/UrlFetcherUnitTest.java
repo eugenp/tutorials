@@ -31,7 +31,7 @@ class UrlFetcherUnitTest {
     @Test
     void givenMockedUrl_whenRequestSent_thenIsUrlAvailableFalse() throws Exception {
         mockHttpURLConnection.setResponseCode(HttpURLConnection.HTTP_FORBIDDEN);
-        URL url = new URL("https://www.baeldung.com/");
+        URL url = new URI("https://www.baeldung.com/").toURL();
 
         UrlFetcher fetcher = new UrlFetcher(url);
         assertFalse(fetcher.isUrlAvailable(), "Url should NOT be available: ");
