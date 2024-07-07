@@ -53,6 +53,17 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <!-- the configuration below in not needed for this tutorial or for Spotless,
+                but we need it when building all the modules in our Jenkins CI  -->
+            <plugin>
+                <artifactId>maven-verifier-plugin</artifactId>
+                <version>${maven.verifier.version}</version>
+                <configuration>
+                    <verificationFile>../input-resources/verifications.xml</verificationFile>
+                    <failOnError>false</failOnError>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
