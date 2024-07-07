@@ -14,6 +14,8 @@ public class Employee implements Cloneable, Serializable {
         this.company = new Company(company.getName());
     }
 
+    public Employee() {}
+
     public int getId() {
         return id;
     }

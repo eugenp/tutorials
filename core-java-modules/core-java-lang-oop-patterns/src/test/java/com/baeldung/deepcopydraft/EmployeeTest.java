@@ -8,13 +8,19 @@ import org.junit.jupiter.api.Test;
 class EmployeeTest {
 
     // Shallow Copy Tests
-    @Disabled
     @Test
     void givenShallowCopyCreatedUsingConstructor_whenModifyingOriginalObject_thenCopyShouldChange() {
 
         Company company = new Company("John Ventures");
-        Employee originalObject = new Employee(1, "John", company);
-        Employee shallowCopy = new Employee(originalObject.getId(), originalObject.getName(), originalObject.getCompany());
+        Employee originalObject = new Employee();
+        originalObject.setId(1);
+        originalObject.setName("John");
+        originalObject.setCompany(company);
+
+        Employee shallowCopy = new Employee();
+        shallowCopy.setName("New Employee");
+        shallowCopy.setId(2);
+        shallowCopy.setCompany(company);
 
         originalObject.getCompany().setName("New Company");
 
