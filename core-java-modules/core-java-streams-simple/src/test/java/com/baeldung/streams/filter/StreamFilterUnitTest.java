@@ -129,7 +129,7 @@ class StreamFilterUnitTest {
           .filter(c -> {
               try {
                   return c.hasValidProfilePhoto();
-              } catch (IOException e) {
+              } catch (Exception e) {
                   //handle exception
               }
               return false;
@@ -150,7 +150,7 @@ class StreamFilterUnitTest {
           .filter(c -> {
               try {
                   return c.hasValidProfilePhoto();
-              } catch (IOException e) {
+              } catch (Exception e) {
                   throw new RuntimeException(e);
               }
           })

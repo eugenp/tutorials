@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.file.Files;
@@ -44,10 +45,10 @@ public class JdkFtpClientIntegrationTest {
     }
 
     @Test
-    public void givenRemoteFile_whenDownloading_thenItIsOnTheLocalFilesystem() throws IOException {
+    public void givenRemoteFile_whenDownloading_thenItIsOnTheLocalFilesystem() throws Exception {
         String ftpUrl = String.format("ftp://user:password@localhost:%d/foobar.txt", fakeFtpServer.getServerControlPort());
 
-        URLConnection urlConnection = new URL(ftpUrl).openConnection();
+        URLConnection urlConnection = new URI(ftpUrl).toURL().openConnection();
         InputStream inputStream = urlConnection.getInputStream();
         Files.copy(inputStream, new File("downloaded_buz.txt").toPath());
         inputStream.close();
