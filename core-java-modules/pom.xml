@@ -164,6 +164,7 @@
         <module>core-java-lang-operators-2</module>
         <module>core-java-lang-syntax</module>
         <module>core-java-lang-syntax-2</module>
+        <module>core-java-lang-syntax-3</module>
         <module>core-java-locale</module>
         <module>core-java-loops</module>
         <module>core-java-networking</module>
@@ -181,6 +182,7 @@
         <module>core-java-numbers-7</module>
         <module>core-java-numbers-8</module>
         <module>core-java-optional</module>
+        <module>core-java-optional-2</module>
         <module>core-java-perf</module>
         <module>core-java-properties</module>
         <module>core-java-reflection</module>

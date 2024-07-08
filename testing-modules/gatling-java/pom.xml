@@ -13,6 +13,7 @@
         <artifactId>testing-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
+
     <dependencies>
         <dependency>
             <groupId>io.gatling</groupId>
@@ -24,7 +25,6 @@
             <artifactId>gatling-charts-highcharts</artifactId>
             <version>${gatling.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -41,7 +41,6 @@
             <artifactId>javafaker</artifactId>
             <version>${faker.version}</version>
         </dependency>
-
     </dependencies>
 
     <build>
