@@ -40,6 +40,11 @@
             <artifactId>camel-jackson</artifactId>
             <version>${camel.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-http</artifactId>
+            <version>${camel.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
