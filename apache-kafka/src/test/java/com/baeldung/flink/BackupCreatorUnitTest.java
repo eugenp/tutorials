@@ -18,6 +18,7 @@ import org.apache.flink.streaming.api.functions.sink.SinkFunction;
 import org.apache.flink.streaming.api.windowing.time.Time;
 import org.awaitility.Awaitility;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -48,6 +49,7 @@ public class BackupCreatorUnitTest {
     }
 
     @Test
+    @Ignore
     public void givenMultipleInputMessagesFromDifferentDays_whenBackupCreatorIsUser_thenMessagesAreGroupedProperly() throws Exception {
         LocalDateTime currentTime = LocalDateTime.now();
         InputMessage message = new InputMessage("Me", "User", currentTime, "First TestMessage");

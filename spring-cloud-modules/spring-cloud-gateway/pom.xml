@@ -191,7 +191,6 @@
         <spring-cloud-dependencies.version>2023.0.0</spring-cloud-dependencies.version>
         <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
         <redis.version>0.7.2</redis.version>
-        <junit-jupiter.version>5.10.2</junit-jupiter.version>
         <jakarta.validation-api.version>3.0.2</jakarta.validation-api.version>
     </properties>
 
