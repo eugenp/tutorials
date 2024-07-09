@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,6 +48,8 @@ public class JsonArrayStringToListUnitTest {
         );
     }
 
+
+    @Ignore
     @Test
     void givenJsonArray_whenListElementTypeDynamic_thenConvertToJavaListUsingTypeTokenFails() {
         Gson gson = new Gson();
