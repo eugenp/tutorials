@@ -1,4 +1,4 @@
-package com.baeldung.spring.ai.dto;
+package com.baeldung.springai.dto;
 
 import java.time.LocalDate;
 

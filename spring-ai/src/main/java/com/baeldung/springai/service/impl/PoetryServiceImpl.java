@@ -7,6 +7,7 @@ import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.ai.converter.BeanOutputConverter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,7 +19,7 @@ public class PoetryServiceImpl implements PoetryService {
     private final ChatModel aiClient;
 
     @Autowired
-    public PoetryServiceImpl(ChatModel aiClient) {
+    public PoetryServiceImpl(@Qualifier("openAiChatModel") ChatModel aiClient) {
         this.aiClient = aiClient;
     }
     @Override

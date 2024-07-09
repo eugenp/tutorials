@@ -1,7 +1,7 @@
 package com.baeldung.spring.ai.mistral.functioncalling;
 
-import com.baeldung.spring.ai.dto.HealthStatus;
-import com.baeldung.spring.ai.dto.Patient;
+import com.baeldung.springai.dto.HealthStatus;
+import com.baeldung.springai.dto.Patient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Description;
