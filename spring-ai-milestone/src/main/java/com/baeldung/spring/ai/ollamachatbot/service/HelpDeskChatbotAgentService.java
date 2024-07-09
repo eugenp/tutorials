@@ -1,7 +1,6 @@
 package com.baeldung.spring.ai.ollamachatbot.service;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,7 +8,7 @@ import java.util.Map;
 import org.springframework.ai.chat.messages.SystemMessage;
 import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.prompt.Prompt;
-import org.springframework.ai.ollama.OllamaChatClient;
+import org.springframework.ai.ollama.OllamaChatModel;
 import org.springframework.stereotype.Service;
 
 import com.baeldung.spring.ai.ollamachatbot.model.HistoryEntry;
@@ -56,36 +55,26 @@ public class HelpDeskChatbotAgentService {
 
     private final static Map<String, List<HistoryEntry>> conversationalHistoryStorage = new HashMap<>();
 
-    private final OllamaChatClient ollamaChatClient;
+    private final OllamaChatModel ollamaChatClient;
 
-    public HelpDeskChatbotAgentService(OllamaChatClient ollamaChatClient) {
+    public HelpDeskChatbotAgentService(OllamaChatModel ollamaChatClient) {
         this.ollamaChatClient = ollamaChatClient;
     }
 
     public String call(String userMessage, String historyId) {
-        var currentHistory = conversationalHistoryStorage.getOrDefault(historyId, Collections.emptyList());
-        var historyPromptBuilder = new StringBuilder();
+        var currentHistory = conversationalHistoryStorage.computeIfAbsent(historyId, k -> new ArrayList<>());
 
-        historyPromptBuilder.append(PROMPT_CONVERSATION_HISTORY_INSTRUCTIONS);
-        currentHistory.forEach(historyPromptBuilder::append);
+        var historyPrompt = new StringBuilder(PROMPT_CONVERSATION_HISTORY_INSTRUCTIONS);
+        currentHistory.forEach(entry -> historyPrompt.append(entry.toString()));
 
-        var contextSystemMessage = new SystemMessage(historyPromptBuilder.toString());
+        var contextSystemMessage = new SystemMessage(historyPrompt.toString());
         var generalInstructionsSystemMessage = new SystemMessage(PROMPT_GENERAL_INSTRUCTIONS);
         var currentPromptMessage = new UserMessage(CURRENT_PROMPT_INSTRUCTIONS.concat(userMessage));
 
         var prompt = new Prompt(List.of(generalInstructionsSystemMessage, contextSystemMessage, currentPromptMessage));
-
         var response = ollamaChatClient.call(prompt).getResult().getOutput().getContent();
         var contextHistoryEntry = new HistoryEntry(userMessage, response);
-
-        if (!conversationalHistoryStorage.containsKey(historyId)) {
-            var newHistory = new ArrayList<HistoryEntry>();
-            newHistory.add(contextHistoryEntry);
-            conversationalHistoryStorage.put(historyId, newHistory);
-        } else {
-            var history = conversationalHistoryStorage.get(historyId);
-            history.add(contextHistoryEntry);
-        }
+        currentHistory.add(contextHistoryEntry);
 
         return response;
     }

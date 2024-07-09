@@ -2,9 +2,6 @@ package com.baeldung.spring.ai.ollamachatbot.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import lombok.NoArgsConstructor;
-
-@NoArgsConstructor
 public class HelpDeskRequest {
     @JsonProperty("prompt_message")
     String promptMessage;

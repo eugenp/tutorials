@@ -1,6 +1,5 @@
 package com.baeldung.spring.ai.ollamachatbot.controller;
 
-import org.springframework.ai.ollama.OllamaChatClient;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +16,7 @@ import com.baeldung.spring.ai.ollamachatbot.service.HelpDeskChatbotAgentService;
 public class HelpDeskController {
     private final HelpDeskChatbotAgentService helpDeskChatbotAgentService;
 
-    public HelpDeskController(OllamaChatClient chatBotService, HelpDeskChatbotAgentService helpDeskChatbotAgentService) {
+    public HelpDeskController(HelpDeskChatbotAgentService helpDeskChatbotAgentService) {
         this.helpDeskChatbotAgentService = helpDeskChatbotAgentService;
     }
 
