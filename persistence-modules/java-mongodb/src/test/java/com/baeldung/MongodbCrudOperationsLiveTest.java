@@ -10,10 +10,7 @@ import static com.mongodb.client.model.Updates.addToSet;
 import static com.mongodb.client.model.Updates.combine;
 import static com.mongodb.client.model.Updates.currentTimestamp;
 import static com.mongodb.client.model.Updates.set;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -66,12 +63,15 @@ public class MongodbCrudOperationsLiveTest {
             .append("genres", Arrays.asList("Action", "Adventure"));
 
         InsertOneResult result = collection.insertOne(newMovie);
-        assertTrue(result.wasAcknowledged(), "Insert operation should be acknowledged");
+        assertThat(result.wasAcknowledged()).as("Insert operation should be acknowledged")
+            .isTrue();
 
         Document found = collection.find(eq("_id", objectId))
             .first();
-        assertNotNull(found, "Document should be found in the database");
-        assertEquals("Silly Video", found.getString("title"), "Titles should match");
+        assertThat(found).as("Document should be found in the database")
+            .isNotNull();
+        assertThat(found.getString("title")).as("Titles should match")
+            .isEqualTo("Silly Video");
     }
 
     @Test
@@ -79,23 +79,26 @@ public class MongodbCrudOperationsLiveTest {
         List<Document> movies = Arrays.asList(new Document().append("title", "Silly Video 2"), new Document().append("title", "Silly Video: The Prequel"));
 
         InsertManyResult result = collection.insertMany(movies);
-        assertTrue(result.wasAcknowledged(), "Insert operation should be acknowledged");
+        assertThat(result.wasAcknowledged()).as("Insert operation should be acknowledged")
+            .isTrue();
 
         Document foundMovie1 = collection.find(new Document("title", "Silly Video 2"))
             .first();
         Document foundMovie2 = collection.find(new Document("title", "Silly Video: The Prequel"))
             .first();
 
-        assertNotNull(foundMovie1, "First document should be found in the database");
-        assertNotNull(foundMovie2, "Second document should be found in the database");
+        assertThat(foundMovie1).as("First document should be found in the database")
+            .isNotNull();
+        assertThat(foundMovie2).as("Second document should be found in the database")
+            .isNotNull();
     }
 
     @Test
     public void givenTitle_whenFind_thenDocumentShouldBeFound() {
         Document found = collection.find(eq("title", "The Great Train Robbery"))
             .first();
-        assertNotNull(found);
-        assertEquals("The Great Train Robbery", found.getString("title"));
+        assertThat(found).isNotNull();
+        assertThat(found.getString("title")).isEqualTo("The Great Train Robbery");
     }
 
     @Test
@@ -105,8 +108,8 @@ public class MongodbCrudOperationsLiveTest {
             .projection(projection)
             .sort(ascending("year"))
             .first();
-        assertNotNull(found);
-        assertEquals("The Great Train Robbery", found.getString("title"));
+        assertThat(found).isNotNull();
+        assertThat(found.getString("title")).isEqualTo("The Great Train Robbery");
     }
 
     @Test
@@ -121,17 +124,17 @@ public class MongodbCrudOperationsLiveTest {
             while (cursor.hasNext()) {
                 Document doc = cursor.next();
                 titles.add(doc.getString("title"));
-                assertNotNull(doc.getString("title"));
-                assertNotNull(doc.getInteger("year"));
-                assertNull(doc.get("_id"));
+                assertThat(doc.getString("title")).isNotNull();
+                assertThat(doc.getInteger("year")).isNotNull();
+                assertThat(doc.get("_id")).isNull();
             }
         } finally {
             cursor.close();
         }
         if (titles.size() > 1) {
             for (int i = 0; i < titles.size() - 1; i++) {
-                assertTrue(titles.get(i)
-                    .compareTo(titles.get(i + 1)) <= 0);
+                assertThat(titles.get(i)
+                    .compareTo(titles.get(i + 1))).isLessThanOrEqualTo(0);
             }
         }
     }
@@ -145,7 +148,8 @@ public class MongodbCrudOperationsLiveTest {
         Bson updates = combine(set("runtime", 99), addToSet("genres", "Comedy"), currentTimestamp("lastUpdated"));
 
         UpdateResult result = collection.updateOne(updateQuery, updates);
-        assertTrue(result.getModifiedCount() > 0, "Should modify at least one document");
+        assertThat(result.getModifiedCount()).as("Should modify at least one document")
+            .isGreaterThan(0);
     }
 
     @Test
@@ -156,10 +160,12 @@ public class MongodbCrudOperationsLiveTest {
         Bson updates = combine(addToSet("genres", "Frequently Discussed"), currentTimestamp("lastUpdated"));
 
         UpdateResult result = collection.updateMany(query, updates);
-        assertTrue(result.getModifiedCount() > 0, "Expected to modify at least one document.");
+        assertThat(result.getModifiedCount()).as("Expected to modify at least one document.")
+            .isGreaterThan(0);
 
         long updatedCount = collection.countDocuments(and(gt("num_mflix_comments", 50), in("genres", "Frequently Discussed")));
-        assertEquals(result.getModifiedCount(), updatedCount, "Expected modified document count to match actual.");
+        assertThat(result.getModifiedCount()).as("Expected modified document count to match actual.")
+            .isEqualTo(updatedCount);
     }
 
     private void prepareSeedDataIfNeeded(String field, int minValue, int targetCount) {
@@ -179,10 +185,12 @@ public class MongodbCrudOperationsLiveTest {
         collection.insertOne(new Document("title", "Silly Video").append("genre", "Comedy"));
 
         DeleteResult result = collection.deleteOne(eq("title", "Silly Video"));
-        assertEquals(1, result.getDeletedCount(), "Exactly one document should have been deleted");
+        assertThat(result.getDeletedCount()).as("Exactly one document should have been deleted")
+            .isEqualTo(1);
 
         long remainingCount = collection.countDocuments(eq("title", "Silly Video"));
-        assertEquals(0, remainingCount, "No documents should remain with the title 'Silly Video'");
+        assertThat(remainingCount).as("No documents should remain with the title 'Silly Video'")
+            .isEqualTo(0);
     }
 
     @Test
@@ -191,10 +199,13 @@ public class MongodbCrudOperationsLiveTest {
         collection.insertOne(new Document("title", "Even Shorter Film").append("runtime", 45));
 
         long initialCount = collection.countDocuments(lt("runtime", 60));
-        assertTrue(initialCount > 0, "There should be documents to delete");
+        assertThat(initialCount).as("There should be documents to delete")
+            .isGreaterThan(0);
 
         DeleteResult result = collection.deleteMany(lt("runtime", 60));
-        assertTrue(result.getDeletedCount() > 0, "Should delete at least one document");
-        assertEquals(0, collection.countDocuments(lt("runtime", 60)), "No documents should remain that match the query");
+        assertThat(result.getDeletedCount()).as("Should delete at least one document")
+            .isGreaterThan(0);
+        assertThat(collection.countDocuments(lt("runtime", 60))).as("No documents should remain that match the query")
+            .isEqualTo(0);
     }
 }
