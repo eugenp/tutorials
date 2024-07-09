@@ -6,8 +6,8 @@
     <groupId>com.baeldung.bootique</groupId>
     <artifactId>bootique</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>bootique</name>
     <packaging>jar</packaging>
+    <name>bootique</name>
     <url>http://maven.apache.org</url>
 
     <parent>
