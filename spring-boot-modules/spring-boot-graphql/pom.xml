@@ -108,9 +108,16 @@
             <version>${jsonassert.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${servlet.version}</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <properties>
+        <servlet.version>4.0.1</servlet.version>
         <protobuf.version>3.19.2</protobuf.version>
         <protobuf-plugin.version>0.6.1</protobuf-plugin.version>
         <grpc.version>1.62.2</grpc.version>
