@@ -1,15 +1,15 @@
 package com.baeldung.apachecamelpostrequest;
 
-public class PostPojo {
+public class Post {
 
     private int userId;
     private String title;
     private String body;
 
-    public PostPojo() {
+    public Post() {
     }
 
-    public PostPojo(int userId, String title, String body) {
+    public Post(int userId, String title, String body) {
         this.userId = userId;
         this.title = title;
         this.body = body;

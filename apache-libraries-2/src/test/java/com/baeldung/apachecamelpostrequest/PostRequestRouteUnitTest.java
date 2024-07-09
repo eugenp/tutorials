@@ -27,7 +27,7 @@ class PostRequestRouteUnitTest extends CamelTestSupport {
             .body()
             .isNotNull();
 
-        template.sendBody(new PostPojo(1, "Java 21", "Virtual Thread"));
+        template.sendBody(new Post(1, "Java 21", "Virtual Thread"));
 
         resultEndpoint.assertIsSatisfied();
     }

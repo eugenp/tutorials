@@ -10,7 +10,7 @@ public class PostRequestRoute extends RouteBuilder {
     public void configure() throws Exception {
 
         from("direct:start").process(exchange -> exchange.getIn()
-                .setBody(new PostPojo(1, "Java 21", "Virtual Thread")))
+                .setBody(new Post(1, "Java 21", "Virtual Thread")))
             .marshal()
             .json(JsonLibrary.Jackson)
             .setHeader(Exchange.HTTP_METHOD, constant("POST"))
@@ -24,9 +24,8 @@ public class PostRequestRoute extends RouteBuilder {
 
         from("direct:post").process(exchange -> exchange.getIn()
                 .setBody("{\"title\":\"Java 21\",\"body\":\"Virtual Thread\",\"userId\":\"1\"}"))
-            .setHeader(Exchange.HTTP_METHOD, constant("POST"))
             .setHeader(Exchange.CONTENT_TYPE, constant("application/json"))
-            .to("https://jsonplaceholder.typicode.com/posts")
+            .to("https://jsonplaceholder.typicode.com/posts?httpMethod=POST")
             .to("mock:post");
     }
 
