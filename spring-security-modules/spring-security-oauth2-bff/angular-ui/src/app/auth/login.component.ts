@@ -129,6 +129,10 @@ export class LoginComponent {
       'post_login_success_uri',
       `${baseUri}${this.router.url}`
     );
+    url.searchParams.append(
+      'post_login_failure_uri',
+      `${baseUri}login-error`
+    );
     const loginUrl = url.toString();
 
     if (this.selectedLoginExperience.value === LoginExperience.IFRAME) {

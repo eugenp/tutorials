@@ -3,14 +3,24 @@ package com.baeldung.jpa.primarykeys;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import jakarta.persistence.Query;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
 
 import com.baeldung.jpa.primarykeys.Account;
 import com.baeldung.jpa.primarykeys.AccountId;
 import com.baeldung.jpa.primarykeys.Book;
 import com.baeldung.jpa.primarykeys.BookId;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -47,6 +57,19 @@ public class CompositeKeysIntegrationTest {
         clearThePersistenceContext();
         Account account = findAccountByAccountId();
         verifyAssertionsWith(account);
+    }
+
+    @Test
+    public void givenBookWithEmbeddedId_whenCountCalled_thenReturnsCount() {
+        IntStream.rangeClosed(1, 10)
+            .forEach(i -> {
+                BookId bookId = new BookId("Book" + i, "English");
+                Book book = new Book(bookId);
+                book.setDescription("Novel and Historical Fiction" + i);
+                persist(book);
+            });
+        assertEquals(10, countBookByEmbeddedIdUsingJPQL());
+        assertEquals(10, countBookByEmbeddedIdUsingCriteriaQuery());
     }
 
     @AfterClass
@@ -110,6 +133,22 @@ public class CompositeKeysIntegrationTest {
         em.persist(book);
         em.getTransaction()
             .commit();
+    }
+
+    private long countBookByEmbeddedIdUsingJPQL() {
+        String jpql = "SELECT count(b) FROM Book b";
+        Query query = em.createQuery(jpql);
+        return (long) query.getSingleResult();
+    }
+
+    private long countBookByEmbeddedIdUsingCriteriaQuery() {
+        CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
+        CriteriaQuery<Long> criteriaQuery = criteriaBuilder.createQuery(Long.class);
+        Root<Book> root = criteriaQuery.from(Book.class);
+        criteriaQuery.select(criteriaBuilder.count(root));
+
+        return em.createQuery(criteriaQuery)
+            .getSingleResult();
     }
 
     private void clearThePersistenceContext() {
