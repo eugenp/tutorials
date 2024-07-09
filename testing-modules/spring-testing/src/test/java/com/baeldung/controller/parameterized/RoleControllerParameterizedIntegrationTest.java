@@ -63,7 +63,7 @@ public class RoleControllerParameterizedIntegrationTest {
     @Test
     public void givenEmployeeNameWhenInvokeRoleThenReturnRole() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/role/" + name))
-                /*.andDo(print())*/.andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.content().contentType(CONTENT_TYPE))
+                .andExpect(MockMvcResultMatchers.status().isOk()).andExpect(MockMvcResultMatchers.content().contentType(CONTENT_TYPE))
                 .andExpect(MockMvcResultMatchers.content().string(role));
     }
 
