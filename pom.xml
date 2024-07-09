@@ -703,7 +703,6 @@
                 <module>spring-batch-2</module>
                 <module>spring-batch</module>
                 <module>spring-boot-modules</module>
-                <module>spring-boot-modules-2</module>
                 <module>spring-boot-rest</module>
                 <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
                 <module>spring-cloud-modules/spring-cloud-contract</module>

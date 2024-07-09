@@ -25,7 +25,7 @@ class SalesControllerUnitTest {
 
   @Test
   void givenValidInput_whenSellingPriceIsCalculated_thenReturnResult() throws Exception {
-    OperationRequest operationRequest = new OperationRequest(100.0, 32.0);
+    OperationRequest operationRequest = new OperationRequest(100.0, 20.0);
     mockMvc
         .perform(
             MockMvcRequestBuilders.post("/sales/calculate")
