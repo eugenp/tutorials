@@ -35,7 +35,7 @@ public class WhatsappMessageDispatcher {
         PhoneNumber toPhoneNumber = new PhoneNumber(String.format("whatsapp:%s", phoneNumber));
 
         String message = String.format("Hey %s, our team will get back to you shortly.", username);
-        Message.creator(toPhoneNumber, messagingSid, message);
+        Message.creator(toPhoneNumber, messagingSid, message).create();
     }
 
 }
