@@ -2,7 +2,7 @@
 
 From the [order-service](order-service) run the following 2 commands:
 ```
-./mvnw package
+mvn package
 ```
 
 ```
@@ -13,5 +13,5 @@ This will package and build the image needed to run the [tests](customer-service
 
 Otherwise from [customer-service](customer-service) run:
 ```
-./mvnw test
+mvn test
 ```
