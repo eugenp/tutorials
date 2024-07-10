@@ -18,10 +18,10 @@ export class HomePage {
     this.searchBtn = page.getByRole("button", { name: "Search" });
   }
 
-  async hoverMyAccountLink() {
+  async hoverMyAccountLink():Promise<void> {
     await this.myAccountLink.hover({ force: true });
   }
-  async navigateToRegistrationPage() {
+  async navigateToRegistrationPage(): Promise<void>{
     await this.hoverMyAccountLink();
     await this.registerLink.click();
   }

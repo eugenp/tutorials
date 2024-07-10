@@ -20,12 +20,12 @@ export class SearchResultPage {
     this.viewCardBtn = this.notificationPopup.locator("a.btn-primary");
   }
 
-  async addProductToCart() {
+  async addProductToCart():Promise<void> {
     await this.selectProduct.hover();
     await this.addToCartBtn.first().click();
   }
 
-  async viewCart(): Promise<ShoppingCart> {
+  async viewCart():Promise<ShoppingCart> {
     await this.viewCardBtn.click();
     return new ShoppingCart(this.page);
   }

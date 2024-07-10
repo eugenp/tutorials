@@ -11,7 +11,7 @@ export class ShoppingCart {
     this.productQty = this.tableLocator.locator("td").nth(3);
   }
 
-  async getProductQty() {
+  async getProductQty():Promise<void> {
     await this.productQty.getAttribute("defaultValue");
   }
 }
