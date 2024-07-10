@@ -1136,7 +1136,7 @@
         <!-- logging -->
         <!-- overwriting in the slf4j and logback in the hibernate-jpa, spring-data-eclipselink. When updated to the latest version remove the version from that module-->
         <org.slf4j.version>2.0.13</org.slf4j.version>
-        <logback.version>1.5.3</logback.version>
+        <logback.version>1.5.6</logback.version>
 
         <!-- plugins -->
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
@@ -1164,7 +1164,7 @@
         <directory-maven-plugin.version>1.0</directory-maven-plugin.version>
         <maven-install-plugin.version>3.1.2</maven-install-plugin.version>
         <custom-pmd.version>0.0.1</custom-pmd.version>
-        <gitflow-incremental-builder.version>4.5.3</gitflow-incremental-builder.version>
+        <gitflow-incremental-builder.version>4.5.4</gitflow-incremental-builder.version>
         <maven-jxr-plugin.version>3.3.0</maven-jxr-plugin.version>
         <maven-pmd-plugin.version>3.23.0</maven-pmd-plugin.version>
         <lombok.version>1.18.32</lombok.version>
