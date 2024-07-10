@@ -10,7 +10,7 @@
 
     <artifactId>openapi-custom-generator</artifactId>
     <packaging>jar</packaging>
-    <name>${project.artifactId}</name>
+    <name>openapi-custom-generator</name>
 
     <dependencies>
         <dependency>
