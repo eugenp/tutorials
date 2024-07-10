@@ -699,7 +699,7 @@
                 <module>spring-ai</module>
                 <module>spring-aop-2</module>
                 <module>spring-aop</module>
-                <module>spring-batch-2</module>
+                <!--<module>spring-batch-2</module>--><!-- requires JDK-21 -->
                 <module>spring-batch</module>
                 <module>spring-boot-modules</module>
                 <module>spring-boot-rest</module>
@@ -949,7 +949,7 @@
                 <module>spring-ai</module>
                 <module>spring-aop-2</module>
                 <module>spring-aop</module>
-                <module>spring-batch-2</module>
+                <!--<module>spring-batch-2</module>--><!-- requires JDK-21 -->
                 <module>spring-batch</module>
                 <module>spring-boot-modules</module>
                 <module>spring-boot-rest</module>
