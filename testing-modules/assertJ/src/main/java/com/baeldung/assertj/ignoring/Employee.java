@@ -15,14 +15,19 @@ public class Employee {
     // Optional: Override equals and hashCode for better comparison in some contexts
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
 
         Employee employee = (Employee) o;
 
-        if (id != null ? !id.equals(employee.id) : employee.id != null) return false;
-        if (name != null ? !name.equals(employee.name) : employee.name != null) return false;
-        if (department != null ? !department.equals(employee.department) : employee.department != null) return false;
+        if (id != null ? !id.equals(employee.id) : employee.id != null)
+            return false;
+        if (name != null ? !name.equals(employee.name) : employee.name != null)
+            return false;
+        if (department != null ? !department.equals(employee.department) : employee.department != null)
+            return false;
         if (homeAddress != null ? !homeAddress.equals(employee.homeAddress) : employee.homeAddress != null)
             return false;
         if (workAddress != null ? !workAddress.equals(employee.workAddress) : employee.workAddress != null)
