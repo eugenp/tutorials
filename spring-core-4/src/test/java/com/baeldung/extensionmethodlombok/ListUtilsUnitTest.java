@@ -15,23 +15,23 @@ public class ListUtilsUnitTest {
 
     @Test
     public void testSumOfList() {
-        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4);
         int total = numbers.sum();
-        assertEquals(15, total, "The sum of the list should be 15");
+        assertEquals(10, total);
     }
 
     @Test
     public void testEmptyList() {
         List<Integer> numbers = Collections.emptyList();
         int total = numbers.sum();
-        assertEquals(0, total, "The sum of an empty list should be 0");
+        assertEquals(0, total);
     }
 
     @Test
     public void testMixedNumbersList() {
         List<Integer> numbers = Arrays.asList(-1, 2, -3, 4, -5);
         int total = numbers.sum();
-        assertEquals(-3, total, "The sum of the list with mixed numbers should be -3");
+        assertEquals(-3, total);
     }
 }
 
