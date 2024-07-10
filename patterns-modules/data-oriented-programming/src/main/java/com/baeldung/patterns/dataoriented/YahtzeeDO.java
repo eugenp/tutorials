@@ -15,10 +15,15 @@ public class YahtzeeDO {
 	}
 
 	public static int calculateScore(List<Integer> dices, Strategy strategy) {
-		return switch (PlayFactory.createPlayedHand(dices, strategy)) {
-			case SpecificDiceValue(List<Integer> roll, int value) -> ScoringRules.specificValue(roll, value);
-			case Pairs(List<Integer> roll, int pairsCount) -> ScoringRules.pairs(roll, pairsCount);
-			case MoreOfTheSameKind(List<Integer> roll, int sameKindCount) -> ScoringRules.moreOfSameKind(roll, sameKindCount);
+		PlayedHand play = PlayFactory.createPlayedHand(dices, strategy);
+
+		return switch (play) {
+			case SpecificDiceValue(List<Integer> roll, int value)
+					-> ScoringRules.specificValue(roll, value);
+			case Pairs(List<Integer> roll, int pairsCount)
+					-> ScoringRules.pairs(roll, pairsCount);
+			case MoreOfTheSameKind(List<Integer> roll, int sameKindCount)
+					-> ScoringRules.moreOfSameKind(roll, sameKindCount);
 		};
 	}
 

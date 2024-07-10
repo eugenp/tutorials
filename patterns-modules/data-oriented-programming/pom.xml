@@ -6,8 +6,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>clean-architecture</artifactId>
     <version>1.0</version>
-    <name>clean-architecture</name>
-    <description>Project for clean architecture in java</description>
+    <name>data-oriented-programming</name>
+    <description>Project for Data Oriented Programming in Java</description>
 
     <parent>
         <groupId>com.baeldung</groupId>
