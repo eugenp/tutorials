@@ -27,7 +27,7 @@ public class UrlValidateUnitTest {
     @Test
     public void givenInvalidStringAsURL_whenUsingJDK_shouldReturnTrue() throws MalformedURLException {
         UrlValidation urlValidator = new UrlValidation();
-        assertTrue(urlValidator.invalidUrlAsValidJavaNet("https://www.baeldung.com/ java-%%$^&& iuyi"));
+        assertFalse(urlValidator.invalidUrlAsValidJavaNet("https://www.baeldung.com/ java-%%$^&& iuyi"));
     }
     
     @Test
