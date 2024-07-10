@@ -12,22 +12,29 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 @EnableConfigurationProperties(TwilioConfigurationProperties.class)
-public class ArticlePublishedNotificationDispatcher {
+public class WhatsappMessageDispatcher {
 
     private final TwilioConfigurationProperties twilioConfigurationProperties;
 
-    public void dispatch(String phoneNumber, String articleUrl) {
+    public void dispatchNewArticleNotification(String phoneNumber, String articleUrl) {
         String messagingSid = twilioConfigurationProperties.getMessagingSid();
         String contentSid = twilioConfigurationProperties.getNewArticleNotification().getContentSid();
         PhoneNumber toPhoneNumber = new PhoneNumber(String.format("whatsapp:%s", phoneNumber));
 
         JSONObject contentVariables = new JSONObject();
         contentVariables.put("ArticleURL", articleUrl);
-        
+
         Message.creator(toPhoneNumber, messagingSid, "")
           .setContentSid(contentSid)
-          .setContentVariables(contentVariables.toString())
-          .create();
+          .setContentVariables(contentVariables.toString()).create();
+    }
+
+    public void dispatchReplyMessage(String phoneNumber, String username) {
+        String messagingSid = twilioConfigurationProperties.getMessagingSid();
+        PhoneNumber toPhoneNumber = new PhoneNumber(String.format("whatsapp:%s", phoneNumber));
+
+        String message = String.format("Hey %s, our team will get back to you shortly.", username);
+        Message.creator(toPhoneNumber, messagingSid, message);
     }
 
 }
