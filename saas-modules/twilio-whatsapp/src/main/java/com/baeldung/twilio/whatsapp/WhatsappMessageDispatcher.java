@@ -26,7 +26,8 @@ public class WhatsappMessageDispatcher {
 
         Message.creator(toPhoneNumber, messagingSid, "")
           .setContentSid(contentSid)
-          .setContentVariables(contentVariables.toString()).create();
+          .setContentVariables(contentVariables.toString())
+          .create();
     }
 
     public void dispatchReplyMessage(String phoneNumber, String username) {
