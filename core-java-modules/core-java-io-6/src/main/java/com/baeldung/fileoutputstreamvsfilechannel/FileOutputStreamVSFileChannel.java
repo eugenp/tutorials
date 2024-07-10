@@ -11,13 +11,18 @@ import java.nio.channels.FileLock;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.Arrays;
-
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.baeldung.filewritervsbufferedwriter.BenchmarkWriters;
 
 public class FileOutputStreamVSFileChannel {
+    private static final Logger log = LoggerFactory.getLogger(FileOutputStreamVSFileChannel.class);
+
 
     private static final Object lock = new Object();
     private static final String outputFile = "output.txt";
@@ -70,7 +75,7 @@ public class FileOutputStreamVSFileChannel {
         synchronized (lock) {
             try (FileOutputStream outputStream = new FileOutputStream(fileName, true)) {
                 outputStream.write(data);
-                System.out.println("Data written by " + Thread.currentThread()
+                log.info("Data written by " + Thread.currentThread()
                     .getName());
             } catch (IOException e) {
                 e.printStackTrace();
@@ -91,7 +96,7 @@ public class FileOutputStreamVSFileChannel {
             try (FileLock lock = fileChannel.lock(position, buffer.remaining(), false)) {
                 fileChannel.position(position);
                 fileChannel.write(buffer);
-                System.out.println("Data written by " + Thread.currentThread()
+                log.info("Data written by " + Thread.currentThread()
                     .getName() + " at position " + position);
             } catch (IOException e) {
                 e.printStackTrace();
