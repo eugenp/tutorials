@@ -14,21 +14,21 @@ import java.util.List;
 public class ListUtilsUnitTest {
 
     @Test
-    public void testSumOfList() {
+    public void givenList_whenUsingExtensionMethod_thenSum() {
         List<Integer> numbers = Arrays.asList(1, 2, 3, 4);
         int total = numbers.sum();
         assertEquals(10, total);
     }
 
     @Test
-    public void testEmptyList() {
+    public void givenEmptyList_whenUsingExtensionMethod_thenSum() {
         List<Integer> numbers = Collections.emptyList();
         int total = numbers.sum();
         assertEquals(0, total);
     }
 
     @Test
-    public void testMixedNumbersList() {
+    public void givenMixedNumList_whenUsingExtensionMethod_thenSum() {
         List<Integer> numbers = Arrays.asList(-1, 2, -3, 4, -5);
         int total = numbers.sum();
         assertEquals(-3, total);
