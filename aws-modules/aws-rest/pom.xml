@@ -101,6 +101,7 @@
         <awssdk.version>2.20.45</awssdk.version>
         <lombok.version>1.18.20</lombok.version>
         <junit-jupiter.version>5.5.2</junit-jupiter.version>
+        <commons-io.version>2.16.1</commons-io.version>
     </properties>
 
 </project>
