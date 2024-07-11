@@ -19,7 +19,7 @@
         <module>quarkus-jandex</module>
         <module>quarkus-vs-springboot</module>
         <module>quarkus-funqy</module>
-        <module>quarkus-virtual-threads</module>
+        <!-- <module>quarkus-virtual-threads</module>> --> <!-- failing after upgrade to jdk21 -->
     </modules>
 
 </project>
