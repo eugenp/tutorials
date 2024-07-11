@@ -340,6 +340,7 @@
                 <module>core-java-modules/core-java-lang</module>
                 <module>core-java-modules/core-java-lang-math-3</module>
                 <module>core-java-modules/core-java-streams-2</module>
+                <module>core-java-modules/core-java-deep-vs-shallow-copy</module>
                 <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
                 <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
                 <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
