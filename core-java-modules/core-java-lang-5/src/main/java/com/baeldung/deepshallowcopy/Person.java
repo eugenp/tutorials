@@ -17,9 +17,4 @@ public class Person implements Cloneable {
     protected Person deepClone() {
         return new Person(this.name, new Address(this.address.city));
     }
-
-    @Override
-    public String toString() {
-        return name + " lives in " + address;
-    }
 }
