@@ -145,7 +145,7 @@ public class BouncyCastlePGPDemoApplication {
                 outFileName = defaultFileName;
                 InputStream unc = ld.getInputStream();
                 OutputStream fOut = new FileOutputStream(outFileName);
-                Streams.pipeAll(unc, fOut, 8192);
+                Streams.pipeAll(unc, fOut);
                 fOut.close();
             }
             else if (message instanceof PGPOnePassSignatureList) {
