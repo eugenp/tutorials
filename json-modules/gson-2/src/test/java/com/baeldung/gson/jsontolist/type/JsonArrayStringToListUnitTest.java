@@ -6,7 +6,6 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,13 +48,11 @@ public class JsonArrayStringToListUnitTest {
     }
 
 
-    @Ignore
+
     @Test
     void givenJsonArray_whenListElementTypeDynamic_thenConvertToJavaListUsingTypeTokenFails() {
         Gson gson = new Gson();
-        List<Student> studentsLst = gson.fromJson(jsonArrayOfStudents, new ListWithDynamicTypeElement<Student>().getType());
-        assertFalse(studentsLst.get(0) instanceof Student);
-        assertThrows(ClassCastException.class, () -> studentsLst.forEach(e -> assertTrue(e instanceof Student)));
+        assertThrows(IllegalArgumentException.class, () -> gson.fromJson(jsonArrayOfStudents, new ListWithDynamicTypeElement<Student>().getType()));
     }
 
     class ListWithDynamicTypeElement<T> {
