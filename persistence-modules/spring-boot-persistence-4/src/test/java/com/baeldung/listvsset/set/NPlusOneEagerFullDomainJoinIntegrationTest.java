@@ -22,8 +22,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest(classes = {Application.class, TestConfig.class}, properties = {
-  "hibernate.show_sql=true",
-  "logging.level.org.hibernate.SQL=debug",
+  "hibernate.show_sql=false",
+  "logging.level.org.hibernate.SQL=info",
   "logging.level.org.hibernate.orm.jdbc.bind=trace"
 })
 class NPlusOneEagerFullDomainJoinIntegrationTest extends BaseNPlusOneIntegrationTest<User> {

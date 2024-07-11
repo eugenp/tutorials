@@ -9,6 +9,8 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 
 import static org.junit.Assert.assertEquals;
@@ -18,8 +20,8 @@ public class RedirectedUrlUnitTest {
     String expectedRedirectedUrl = "https://www.baeldung.com/";
 
     @Test
-    public void givenOriginalUrl_whenFindRedirectUrlUsingHttpURLConnection_thenCorrectRedirectedUrlReturned() throws IOException {
-        URL url = new URL(canonicalUrl);
+    public void givenOriginalUrl_whenFindRedirectUrlUsingHttpURLConnection_thenCorrectRedirectedUrlReturned() throws IOException, URISyntaxException {
+        URL url = new URI(canonicalUrl).toURL();
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setInstanceFollowRedirects(true);
         int status = connection.getResponseCode();
