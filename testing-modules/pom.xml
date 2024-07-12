@@ -62,6 +62,7 @@
         <module>mockito-3</module>
         <module>testing-techniques</module>
         <module>gatling-java</module>
+        <module>assertJ</module> 
     </modules>
 
 </project>
