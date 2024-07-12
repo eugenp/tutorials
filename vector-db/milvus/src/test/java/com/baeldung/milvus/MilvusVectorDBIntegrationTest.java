@@ -1,11 +1,13 @@
 package com.baeldung.milvus;
 
+import static com.baeldung.utility.PropertyUtil.getVal;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,7 +21,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.alibaba.fastjson.JSONObject;
-import com.baeldung.utility.JsonUtility;
+import com.baeldung.utility.JsonUtil;
 
 import io.milvus.v2.client.ConnectConfig;
 import io.milvus.v2.client.MilvusClientV2;
@@ -30,16 +32,19 @@ import io.milvus.v2.service.collection.request.DropCollectionReq;
 import io.milvus.v2.service.collection.request.HasCollectionReq;
 import io.milvus.v2.service.vector.request.DeleteReq;
 import io.milvus.v2.service.vector.request.InsertReq;
+import io.milvus.v2.service.vector.request.SearchReq;
 import io.milvus.v2.service.vector.response.DeleteResp;
 import io.milvus.v2.service.vector.response.InsertResp;
+import io.milvus.v2.service.vector.response.SearchResp;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 
 public class MilvusVectorDBIntegrationTest {
     private static final Logger logger = LoggerFactory.getLogger(MilvusVectorDBIntegrationTest.class);
 
-    private static final String CONNECTION_URI = "https://in03-9078dd4edbed8ef.api.gcp-us-west1.zillizcloud.com";
-    private static final String API_KEY = "c9563b286ee36287454a4121de92b6524e66351be3f09976cfe0e22013efe3c505a4122be126badae9669c730c0f6e55ac706740";
+    private static final String PROPERTY_FILE = "milvus.properties";
+    private static final String CONNECTION_URI = getVal("CONNECTION_URI", PROPERTY_FILE);
+    private static final String API_KEY = getVal("API_TOKEN", PROPERTY_FILE);
 
     private static MilvusClientV2 milvusClientV2 = null;
 
@@ -132,20 +137,30 @@ public class MilvusVectorDBIntegrationTest {
 
     private List<JSONObject> readJsonObjectsFromFile(String fileName) throws FileNotFoundException {
         String filePath = getClass().getClassLoader().getResource(fileName).getPath();
-        List<JSONObject> bookJsons = JsonUtility.getJsonObjects(filePath).stream().map(e -> {
+        List<JSONObject> bookJsons = JsonUtil.getJsonObjects(filePath).stream().map(e -> {
             List<BigDecimal> bookVectorDouble = e.getObject("book_vector", List.class);
 
             JSONObject book = new JSONObject();
             book.put("book_id", e.getLong("book_id"));
             book.put("book_name", e.getString("book_name"));
             book.put("book_vector", bookVectorDouble.stream()
-                .map(el -> el.floatValue())
+                .map(BigDecimal::floatValue)
                 .collect(Collectors.toList())
             );
             return book;
         }).collect(Collectors.toList());
         return bookJsons;
     }
+
+    private static List<Float> getQueryEmbedding(String query) {
+        //take the query String and generate the embedding
+        return List.of(0.8883106956939386f,
+            0.34840710312979917f,
+            0.08596867125476038f,
+            0.8619797519039474f,
+            0.4589036272047099f);
+    }
+
 
     @Test
     @Order(1)
@@ -166,13 +181,16 @@ public class MilvusVectorDBIntegrationTest {
             .collectionName("Books")
             .build()));
     }
-
+    static List<Float> sampleQuery = null;
     @Test
     @Order(2)
     void whenCommandInsertDataIntoVectorDB_thenSuccess() throws IOException {
 
-        List<JSONObject> bookJsons = readJsonObjectsFromFile("yoga_vectors.json");
-
+        List<JSONObject> bookJsons = readJsonObjectsFromFile("book_vectors.json");
+        logger.info("Data for insertion: {}", bookJsons);
+        sampleQuery = bookJsons.get(0).getJSONArray("book_vector").stream()
+            .map(e -> Float.valueOf(e.toString()))
+            .collect(Collectors.toList());
         InsertReq insertReq = InsertReq.builder()
             .collectionName("Books")
             .data(bookJsons)
@@ -181,8 +199,31 @@ public class MilvusVectorDBIntegrationTest {
         logger.info("No. of records inserted: {}", insertResp.getInsertCnt());
         assertEquals(bookJsons.size(), insertResp.getInsertCnt());
     }
+
     @Test
     @Order(3)
+    void givenSearchVector_whenCommandSearchDataFromCollection_thenSuccess() {
+        List<Float> queryEmbedding = getQueryEmbedding("What are the benefits of Yoga?");
+        SearchReq searchReq = SearchReq.builder()
+            .collectionName("Books")
+            .data(Collections.singletonList(queryEmbedding))
+            .outputFields(List.of("book_id", "book_name"))
+            .topK(2)
+            .build();
+
+        SearchResp searchResp = milvusClientV2.search(searchReq);
+        List<List<SearchResp.SearchResult>> searchResults = searchResp.getSearchResults();
+
+        for (List<SearchResp.SearchResult> lstSearchResult : searchResults) {
+            lstSearchResult.forEach(e -> {
+                logger.info("book_id: {}, book_name: {}, distance: {}",
+                    e.getEntity().get("book_id"), e.getEntity().get("book_name"), e.getDistance());
+            });
+        }
+    }
+
+    @Test
+    @Order(4)
     void givenListOfIds_whenCommandDeleteDataFromCollection_thenSuccess() {
         DeleteReq deleteReq = DeleteReq.builder()
             .collectionName("Books")
@@ -194,7 +235,7 @@ public class MilvusVectorDBIntegrationTest {
     }
 
     @Test
-    @Order(4)
+    @Order(5)
     void givenFilterCondition_whenCommandDeleteDataFromCollection_thenSuccess() {
         DeleteReq deleteReq = DeleteReq.builder()
             .collectionName("Books")

@@ -12,7 +12,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-public class JsonUtility {
+public class JsonUtil {
 
     public static List<JsonObject> getListOfJsonObjectFromFile(String filePath) throws IOException {
         List<JsonObject> lstOfJsonObject = new ArrayList<>();
