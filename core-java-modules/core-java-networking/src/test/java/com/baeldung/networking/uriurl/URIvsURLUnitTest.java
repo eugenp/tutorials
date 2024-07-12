@@ -21,9 +21,9 @@ public class URIvsURLUnitTest {
     }
 
     @Test
-    public void whenCreatingURLs_thenSameInfo() throws MalformedURLException {
-        URL firstURL = new URL("http://theuser:thepassword@somehost:80/path/to/file?thequery#somefragment");
-        URL secondURL = new URL("http", "somehost", 80, "/path/to/file");
+    public void whenCreatingURLs_thenSameInfo() throws Exception {
+        URL firstURL = new URI("http://theuser:thepassword@somehost:80/path/to/file?thequery#somefragment").toURL();
+        URL secondURL = new URI("http", null,  "somehost", 80, "/path/to/file", null, null).toURL();
 
         assertEquals(firstURL.getHost(), secondURL.getHost());
         assertEquals(firstURL.getPath(), secondURL.getPath());
@@ -37,8 +37,8 @@ public class URIvsURLUnitTest {
     }
 
     @Test(expected = MalformedURLException.class)
-    public void whenCreatingURLs_thenException() throws MalformedURLException {
-        URL theURL = new URL("otherprotocol://somehost/path/to/file");
+    public void whenCreatingURLs_thenException() throws Exception {
+        URL theURL = new URI("otherprotocol://somehost/path/to/file").toURL();
 
         assertNotNull(theURL);
     }
@@ -47,7 +47,7 @@ public class URIvsURLUnitTest {
     public void givenObjects_whenConverting_thenCorrect() throws MalformedURLException, URISyntaxException {
         String aURIString = "http://somehost:80/path?thequery";
         URI uri = new URI(aURIString);
-        URL url = new URL(aURIString);
+        URL url = new URI(aURIString).toURL();
 
         URL toURL = uri.toURL();
         URI toURI = url.toURI();
@@ -67,8 +67,8 @@ public class URIvsURLUnitTest {
     }
 
     @Test
-    public void givenURL_whenGettingContents_thenCorrect() throws MalformedURLException, IOException {
-        URL url = new URL("http://courses.baeldung.com");
+    public void givenURL_whenGettingContents_thenCorrect() throws MalformedURLException, IOException, URISyntaxException {
+        URL url = new URI("http://courses.baeldung.com").toURL();
 
         String contents = IOUtils.toString(url.openStream());
     } 

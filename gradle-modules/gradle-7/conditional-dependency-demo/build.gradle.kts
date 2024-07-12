@@ -6,9 +6,11 @@ plugins {
 
 group = "com.baeldung.gradle"
 version = "0.0.1-SNAPSHOT"
-sourceCompatibility = "1.8"
-targetCompatibility = "1.8"
-
+java {
+  toolchain {
+    languageVersion.set(JavaLanguageVersion.of(17))
+  }
+}
 repositories {
 	mavenCentral()
 }

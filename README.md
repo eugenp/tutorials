@@ -13,13 +13,13 @@ The Courses
 ==============================
 
 
-Here's the new "Learn Spring" course: <br/>
+"Learn Spring" Course: <br/>
 **[>> LEARN SPRING - THE MASTER CLASS](https://www.baeldung.com/learn-spring-course?utm_source=github&utm_medium=social&utm_content=tutorials&utm_campaign=ls#master-class)**
 
-Here's the Master Class of "REST With Spring" (along with the new announced Boot 2 material): <br/>
+"REST With Spring" Course: <br/>
 **[>> THE REST WITH SPRING - MASTER CLASS](https://www.baeldung.com/rest-with-spring-course?utm_source=github&utm_medium=social&utm_content=tutorials&utm_campaign=rws#master-class)**
 
-And here's the Master Class of "Learn Spring Security": <br/>
+"Learn Spring Security" Course: <br/>
 **[>> LEARN SPRING SECURITY - MASTER CLASS](https://www.baeldung.com/learn-spring-security-course?utm_source=github&utm_medium=social&utm_content=tutorials&utm_campaign=lss#master-class)**
 
 

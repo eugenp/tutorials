@@ -2,10 +2,16 @@ import {Component, OnInit, Input, OnChanges} from "@angular/core";
 import {Rating} from "../rating";
 import {Principal} from "../principal";
 import {HttpService} from "../http.service";
-import {Response} from "@angular/http";
+import {HttpResponse} from "@angular/common/http";
+import {CommonModule} from '@angular/common';
+import {NgModule} from "@angular/core";
+import {FormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-rating',
+  standalone: true,
+  imports: [CommonModule, FormsModule],
+  providers: [HttpService],
   templateUrl: './rating.component.html',
   styleUrls: ['./rating.component.css']
 })
@@ -34,7 +40,7 @@ export class RatingComponent implements OnInit, OnChanges {
 
   private loadRatings() {
     this.httpService.getRatings(this.bookId)
-      .subscribe((response: Response) => {
+      .subscribe((response) => {
         let responseJson: any[] = response.json();
         responseJson.forEach(rating => this.ratings.push(new Rating(rating.id, rating.bookId, rating.stars)))
       }, (error) => {
@@ -46,7 +52,7 @@ export class RatingComponent implements OnInit, OnChanges {
     console.log(this.newRating);
     let ratingCopy: Rating = Object.assign({}, this.newRating);
     this.httpService.createRating(ratingCopy)
-      .subscribe((response: Response) => {
+      .subscribe((response) => {
         let ratingJson = response.json()
         this.ratings.push(new Rating(ratingJson.id, ratingJson.bookId, ratingJson.stars))
       }, (error) => {
