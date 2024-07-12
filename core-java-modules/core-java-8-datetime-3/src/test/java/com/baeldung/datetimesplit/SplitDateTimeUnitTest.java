@@ -5,22 +5,86 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
+import java.util.Arrays;
 import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SplitDateTimeUnitTest {
 
     @Test
     void givenDateTimeString_whenFormatsKnown_thenSplitIntoDateAndTime() {
-        String dateTimeStr = "8/29/2011 11:16:12 AM";
-        DateTimeFormatter format1 = DateTimeFormatter.ofPattern("M/d/yyyy h:mm:ss a", Locale.ENGLISH);
-        DateTimeFormatter format2 = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-        DateTimeFormatter format3 = DateTimeFormatter.ofPattern("dd-MM-yyyy'T'HH:mm:ss");
-        DateTimeFormatterBuilder dateTimeFormatterBuilder = new DateTimeFormatterBuilder();
-        DateTimeFormatter formatter = dateTimeFormatterBuilder.appendOptional(format2).appendOptional(format1).appendOptional(format3).toFormatter(Locale.ENGLISH);
-        LocalDateTime dateTime = LocalDateTime.parse(dateTimeStr, formatter);
 
-//        LocalDateTime dateTime = LocalDateTime.parse(dateTimeStr, format1);
-//        DateTimeFormatter formatter = dateTimeFormatterBuilder.append(format1).toFormatter(Locale.ENGLISH);
-        System.out.println(dateTime);
+        DateTimeFormatter format1 = DateTimeFormatter.ofPattern("dd-MM-yyyy'T'HH:mm:ss.SSS", Locale.ENGLISH);
+        DateTimeFormatter format2 = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
+        DateTimeFormatter format3 = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss", Locale.ENGLISH);
+        DateTimeFormatterBuilder dateTimeFormatterBuilder = new DateTimeFormatterBuilder();
+        DateTimeFormatter multiFormatter = dateTimeFormatterBuilder
+                .appendOptional(format1)
+                .appendOptional(format2)
+                .appendOptional(format3)
+                .toFormatter(Locale.ENGLISH);
+
+        //case 1
+        LocalDateTime dateTime1 = LocalDateTime.parse("2024-07-04 11:15:24", multiFormatter);
+        String date1 = dateTime1.toLocalDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        String time1 = dateTime1.toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+        assertEquals("2024-07-04", date1);
+        assertEquals("11:15:24", time1);
+        //case 2
+        LocalDateTime dateTime2 = LocalDateTime.parse("04-07-2024T11:15:24.123", multiFormatter);
+        String date2 = dateTime2.toLocalDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        String time2 = dateTime2.toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm:ss.SSS"));
+        assertEquals("2024-07-04", date2);
+        assertEquals("11:15:24.123", time2);
+        //case 3
+        LocalDateTime dateTime3 = LocalDateTime.parse("04-07-2024 11:15:24", multiFormatter);
+        String date3 = dateTime3.toLocalDate().format(DateTimeFormatter.ofPattern("dd-MM-yyy"));
+        String time3 = dateTime3.toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+        assertEquals("04-07-2024", date3);
+        assertEquals("11:15:24", time3);
     }
+
+    @Test
+    void givenDateTimeString_whenUsingSplit_thenGetDateAndTimeParts() {
+        String dateTimeStr = "2024-07-04 11:15:24";
+        String[] split = dateTimeStr.split("\\s");
+        assertEquals(2, split.length);
+        assertEquals("2024-07-04", split[0]);
+        assertEquals("11:15:24", split[1]);
+    }
+
+    @Test
+    void givenDateTimeString_whenUsingSplit_thenGetDateAndTimePartsForADifferentPattern() {
+        String dateTimeStr = "2024/07/04 11:15:24.233";
+        String[] split = dateTimeStr.split("\\s");
+        assertEquals(2, split.length);
+        assertEquals("2024/07/04", split[0]);
+        assertEquals("11:15:24.233", split[1]);
+    }
+
+    @Test
+    void givenDateTimeString_whenUsingDateTimeFormatter_thenSeparateDateAndTimeParts() {
+        String dateTimeStr = "2024-07-04 11:15:24";
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH);
+        DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm:ss", Locale.ENGLISH);
+        LocalDateTime dateTime = LocalDateTime.parse(dateTimeStr, format);
+        assertEquals("2024-07-04", dateTime.toLocalDate().format(dateFormat));
+        assertEquals("11:15:24", dateTime.toLocalTime().format(timeFormat));
+    }
+
+    @Test
+    void givenDateTimeString_whenUsingRegex_thenGetDateAndTimeParts() {
+        String dateTimeStr = "2024-07-04 11:15:24.123";
+        Pattern pattern = Pattern.compile("(\\d{4}-\\d{2}-\\d{2})\\s(\\d{2}:\\d{2}:\\d{2}(\\.\\d{3})?)");
+        Matcher matcher = pattern.matcher(dateTimeStr);
+        assertTrue(matcher.matches());
+        assertEquals("2024-07-04", matcher.group(1));
+        assertEquals("11:15:24.123", matcher.group(2));
+    }
+
 }
