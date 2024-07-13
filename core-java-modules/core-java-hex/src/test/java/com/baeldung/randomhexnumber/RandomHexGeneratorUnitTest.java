@@ -18,7 +18,7 @@ class RandomHexGeneratorUnitTest {
     }
 
     @Test
-    void givenGeneratingUnboundedHex_thenWillGetHexValue() {
+    void whenGeneratingUnboundedHex_thenWillGetHexValue() {
         String randomHex = randomHexGenerator.generateUnboundedRandomHexUsingRandomNextInt();
 
         assertNotNull(randomHex);
@@ -27,7 +27,7 @@ class RandomHexGeneratorUnitTest {
     }
 
     @Test
-    void givenGeneratingBoundedHex_thenWillGetHexWithinRange() {
+    void whenGeneratingBoundedHex_thenWillGetHexWithinRange() {
         String randomHex = randomHexGenerator.generateRandomHexUsingRandomNextIntWithInRange(500, 1000);
 
         assertNotNull(randomHex);
@@ -36,7 +36,7 @@ class RandomHexGeneratorUnitTest {
     }
 
     @Test
-    void givenGeneratingLongHex_thenWillGetHex() {
+    void whenGeneratingLongHex_thenWillGetHex() {
         String randomHex = randomHexGenerator.generateUnboundedRandomHexUsingRandomNextLong();
 
         assertNotNull(randomHex);
@@ -45,7 +45,7 @@ class RandomHexGeneratorUnitTest {
     }
 
     @Test
-    void givenGeneratingSecureUnboundedHex_thenWillGetHexValue() {
+    void whenGeneratingSecureUnboundedHex_thenWillGetHexValue() {
         String randomHex = randomHexGenerator.generateRandomHexUsingSecureRandomNextInt();
 
         assertNotNull(randomHex);
@@ -54,7 +54,7 @@ class RandomHexGeneratorUnitTest {
     }
 
     @Test
-    void givenGeneratingSecureBoundedHex_thenWillGetHexWithinRange() {
+    void whenGeneratingSecureBoundedHex_thenWillGetHexWithinRange() {
         String randomHex = randomHexGenerator.generateRandomHexUsingSecureRandomNextIntWithInRange(500, 1000);
 
         assertNotNull(randomHex);
@@ -63,7 +63,7 @@ class RandomHexGeneratorUnitTest {
     }
 
     @Test
-    void givenGeneratingSecureLongHex_thenWillGetHex() {
+    void whenGeneratingSecureLongHex_thenWillGetHex() {
         String randomHex = randomHexGenerator.generateRandomHexUsingSecureRandomNextLong();
 
         assertNotNull(randomHex);
@@ -72,7 +72,7 @@ class RandomHexGeneratorUnitTest {
     }
 
     @Test
-    void givenGeneratingUsingStringFormatter_thenWillGetHex() {
+    void whenGeneratingUsingStringFormatter_thenWillGetHex() {
         String randomHex = randomHexGenerator.generateRandomHexWithStringFormatter();
 
         assertNotNull(randomHex);
@@ -81,7 +81,7 @@ class RandomHexGeneratorUnitTest {
     }
 
     @Test
-    void givenGeneratingUsingCommonsMathForGivenLength_thenWillGetHexWithGivenLength() {
+    void whenGeneratingUsingCommonsMathForGivenLength_thenWillGetHexWithGivenLength() {
         String randomHex = randomHexGenerator.generateRandomHexWithCommonsMathRandomDataGenerator(10);
 
         assertNotNull(randomHex);
@@ -91,7 +91,7 @@ class RandomHexGeneratorUnitTest {
     }
 
     @Test
-    void givenGeneratingSecureRandomHexStringUsingCommonsMath_thenWillGetHexWithGivenLength() {
+    void whenGeneratingSecureRandomHexStringUsingCommonsMath_thenWillGetHexWithGivenLength() {
         String randomHex = randomHexGenerator.generateSecureRandomHexWithCommonsMathRandomDataGenerator(10);
 
         assertNotNull(randomHex);
@@ -101,7 +101,7 @@ class RandomHexGeneratorUnitTest {
     }
 
     @Test
-    void givenGeneratingBoundedHexUsingCommonsMath_thenWillGetHexInRange() {
+    void whenGeneratingBoundedHexUsingCommonsMath_thenWillGetHexInRange() {
         String randomHex = randomHexGenerator.generateRandomHexWithCommonsMathRandomDataGeneratorNextIntWithRange(500, 1000);
 
         assertNotNull(randomHex);
@@ -110,7 +110,7 @@ class RandomHexGeneratorUnitTest {
     }
 
     @Test
-    void givenGeneratingSecureBoundedHexUsingCommonsMath_thenWillGetHexInRange() {
+    void whenGeneratingSecureBoundedHexUsingCommonsMath_thenWillGetHexInRange() {
         String randomHex = randomHexGenerator.generateRandomHexWithCommonsMathRandomDataGeneratorSecureNextIntWithRange(500, 1000);
 
         assertNotNull(randomHex);
