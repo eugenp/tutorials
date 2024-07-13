@@ -15,6 +15,9 @@ class MilvusClientV2 {
 
 class InsertReq {
    +builder()
+   +setData()
+   +setCollectionName()
+   +setPartionName()
 }
 
 class InsertResp {
@@ -22,12 +25,13 @@ class InsertResp {
 }
 
 class InsertReqBuilder {
-   collectionName()
-   data(List<JSONObject>)
-   build()
+   +collectionName()
+   +data(List<JSONObject>)
+   +partitionName()
+   +build()
 }
 
-InsertReqBuilder -up-+ InsertReq: contains
+InsertReqBuilder -down-+ InsertReq: contains
 MilvusClientV2 -right-> InsertReq: uses
 MilvusClientV2 -up-> InsertResp: uses
 @enduml
