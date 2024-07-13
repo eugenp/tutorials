@@ -5,6 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-java-lang-oop-types-2</artifactId>
     <packaging>jar</packaging>
+
+    <parent>
+        <artifactId>core-java-modules</artifactId>
+        <groupId>com.baeldung.core-java-modules</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
     <build>
         <plugins>
             <plugin>
@@ -17,12 +24,6 @@
             </plugin>
         </plugins>
     </build>
-
-    <parent>
-        <artifactId>core-java-modules</artifactId>
-        <groupId>com.baeldung.core-java-modules</groupId>
-        <version>0.0.1-SNAPSHOT</version>
-    </parent>
 
     <dependencies>
         <dependency>
@@ -59,4 +60,5 @@
         <jupiter.engine.version>5.8.1</jupiter.engine.version>
         <mockito.inline.version>4.0.0</mockito.inline.version>
     </properties>
+
 </project>
