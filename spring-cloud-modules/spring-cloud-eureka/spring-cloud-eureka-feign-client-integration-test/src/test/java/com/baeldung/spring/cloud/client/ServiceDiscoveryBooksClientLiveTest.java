@@ -45,7 +45,7 @@ class ServiceDiscoveryBooksClientLiveTest {
      *  run to make an Eureka Server available.
      */
     @Test
-    public void whenGetBooks_thenTheCorrectBooksAreReturned() throws InterruptedException {
+    public void whenGetBooks_thenTheCorrectBooksAreReturned()  {
         List<Book> books = booksClient.getBooks();
 
         assertEquals(1, books.size());
