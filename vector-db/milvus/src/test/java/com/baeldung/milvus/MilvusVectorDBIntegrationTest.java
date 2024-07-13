@@ -30,6 +30,8 @@ import io.milvus.v2.common.IndexParam;
 import io.milvus.v2.service.collection.request.CreateCollectionReq;
 import io.milvus.v2.service.collection.request.DropCollectionReq;
 import io.milvus.v2.service.collection.request.HasCollectionReq;
+import io.milvus.v2.service.partition.request.CreatePartitionReq;
+import io.milvus.v2.service.partition.request.HasPartitionReq;
 import io.milvus.v2.service.vector.request.DeleteReq;
 import io.milvus.v2.service.vector.request.InsertReq;
 import io.milvus.v2.service.vector.request.SearchReq;
@@ -38,7 +40,6 @@ import io.milvus.v2.service.vector.response.InsertResp;
 import io.milvus.v2.service.vector.response.SearchResp;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-
 public class MilvusVectorDBIntegrationTest {
     private static final Logger logger = LoggerFactory.getLogger(MilvusVectorDBIntegrationTest.class);
 
@@ -55,7 +56,7 @@ public class MilvusVectorDBIntegrationTest {
 
     @AfterAll
     static void clean() throws InterruptedException {
-        dropCollections("Books");
+        dropCollection("Books");
         milvusClientV2.close(2);
         logger.info("connection closed successfully");
     }
@@ -71,28 +72,6 @@ public class MilvusVectorDBIntegrationTest {
             milvusClientV2.listCollections().getCollectionNames()
         );
         return milvusClientV2;
-    }
-
-    private static void createCollections(String ... collectionNames) {
-        for (String collectionName : collectionNames) {
-            createCollection(collectionName);
-            logger.info("Collection {} created", collectionName);
-        }
-    }
-
-    private static void createCollection(String collectionName) {
-        CreateCollectionReq createCollectionReq = CreateCollectionReq.builder()
-            .collectionName(collectionName)
-            .dimension(4)
-            .build();
-        milvusClientV2.createCollection(createCollectionReq);
-    }
-
-    private static void dropCollections(String... collectionNames) {
-        for (String collectionName : collectionNames) {
-            dropCollection(collectionName);
-            logger.info("Collection {} dropped", collectionName);
-        }
     }
 
     private static void dropCollection(String collectionName) {
@@ -161,7 +140,6 @@ public class MilvusVectorDBIntegrationTest {
             0.4589036272047099f);
     }
 
-
     @Test
     @Order(1)
     void whenCommandCreateCollectionInVectorDB_thenSuccess() {
@@ -180,19 +158,34 @@ public class MilvusVectorDBIntegrationTest {
         assertTrue(milvusClientV2.hasCollection(HasCollectionReq.builder()
             .collectionName("Books")
             .build()));
+        logger.info("Collection Created Successfully!");
     }
-    static List<Float> sampleQuery = null;
+
     @Test
     @Order(2)
+    void whenCommandCreatePartitionInCollection_thenSuccess() {
+        CreatePartitionReq createPartitionReq = CreatePartitionReq.builder()
+            .collectionName("Books")
+            .partitionName("Health")
+            .build();
+        milvusClientV2.createPartition(createPartitionReq);
+
+        assertTrue(milvusClientV2.hasPartition(HasPartitionReq.builder()
+            .collectionName("Books")
+            .partitionName("Health")
+            .build()));
+        logger.info("Partition Created Successfully!");
+    }
+
+    @Test
+    @Order(3)
     void whenCommandInsertDataIntoVectorDB_thenSuccess() throws IOException {
 
         List<JSONObject> bookJsons = readJsonObjectsFromFile("book_vectors.json");
         logger.info("Data for insertion: {}", bookJsons);
-        sampleQuery = bookJsons.get(0).getJSONArray("book_vector").stream()
-            .map(e -> Float.valueOf(e.toString()))
-            .collect(Collectors.toList());
         InsertReq insertReq = InsertReq.builder()
             .collectionName("Books")
+            .partitionName("Health")
             .data(bookJsons)
             .build();
         InsertResp insertResp = milvusClientV2.insert(insertReq);
@@ -201,7 +194,7 @@ public class MilvusVectorDBIntegrationTest {
     }
 
     @Test
-    @Order(3)
+    @Order(4)
     void givenSearchVector_whenCommandSearchDataFromCollection_thenSuccess() {
         List<Float> queryEmbedding = getQueryEmbedding("What are the benefits of Yoga?");
         SearchReq searchReq = SearchReq.builder()
@@ -213,17 +206,13 @@ public class MilvusVectorDBIntegrationTest {
 
         SearchResp searchResp = milvusClientV2.search(searchReq);
         List<List<SearchResp.SearchResult>> searchResults = searchResp.getSearchResults();
-
-        for (List<SearchResp.SearchResult> lstSearchResult : searchResults) {
-            lstSearchResult.forEach(e -> {
-                logger.info("book_id: {}, book_name: {}, distance: {}",
-                    e.getEntity().get("book_id"), e.getEntity().get("book_name"), e.getDistance());
-            });
-        }
+        searchResults.forEach(e -> e.forEach(el -> logger.info("book_id: {}, book_name: {}, distance: {}",
+            el.getEntity().get("book_id"), el.getEntity().get("book_name"), el.getDistance()))
+        );
     }
 
     @Test
-    @Order(4)
+    @Order(5)
     void givenListOfIds_whenCommandDeleteDataFromCollection_thenSuccess() {
         DeleteReq deleteReq = DeleteReq.builder()
             .collectionName("Books")
@@ -232,10 +221,11 @@ public class MilvusVectorDBIntegrationTest {
 
         DeleteResp deleteResp = milvusClientV2.delete(deleteReq);
         assertEquals(2, deleteResp.getDeleteCnt());
+        logger.info("number of records deleted: {}", deleteResp.getDeleteCnt());
     }
 
     @Test
-    @Order(5)
+    @Order(6)
     void givenFilterCondition_whenCommandDeleteDataFromCollection_thenSuccess() {
         DeleteReq deleteReq = DeleteReq.builder()
             .collectionName("Books")
@@ -244,5 +234,6 @@ public class MilvusVectorDBIntegrationTest {
 
         DeleteResp deleteResp = milvusClientV2.delete(deleteReq);
         assertTrue(deleteResp.getDeleteCnt() >= 1 );
+        logger.info("number of records deleted: {}", deleteResp.getDeleteCnt());
     }
 }
