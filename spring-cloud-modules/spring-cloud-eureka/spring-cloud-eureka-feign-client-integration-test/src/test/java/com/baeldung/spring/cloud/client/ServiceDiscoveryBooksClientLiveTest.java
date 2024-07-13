@@ -36,7 +36,7 @@ class ServiceDiscoveryBooksClientLiveTest {
 
     @BeforeEach
     void setUp() {
-        await().atMost(60, SECONDS).until(() -> eurekaClient.getApplications().size() > 0);
+        await().atMost(120, SECONDS).until(() -> eurekaClient.getApplications().size() > 0);
     }
 
     /**
@@ -45,7 +45,7 @@ class ServiceDiscoveryBooksClientLiveTest {
      *  run to make an Eureka Server available.
      */
     @Test
-    public void whenGetBooks_thenTheCorrectBooksAreReturned() {
+    public void whenGetBooks_thenTheCorrectBooksAreReturned() throws InterruptedException {
         List<Book> books = booksClient.getBooks();
 
         assertEquals(1, books.size());
