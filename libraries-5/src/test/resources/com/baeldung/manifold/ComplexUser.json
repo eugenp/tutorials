@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "http://baeldung.com/manifold/ComplexUser.json",
+  "type": "object",
+  "properties": {
+    "username": {
+      "type": "string",
+      "maxLength": 100
+    },
+    "name": {
+      "type": "string",
+      "description": "User's full name",
+      "maxLength": 80
+    },
+    "email": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "type": "string",
+          "maxLength": 260
+        },
+        "verified": {
+          "type": "boolean"
+        }
+      },
+      "required": ["address", "verified"]
+    }
+  },
+  "required": [
+    "username",
+    "name"
+  ]
+}
