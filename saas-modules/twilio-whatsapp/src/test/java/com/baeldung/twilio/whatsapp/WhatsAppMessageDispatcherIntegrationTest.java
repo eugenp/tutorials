@@ -25,12 +25,12 @@ import net.bytebuddy.utility.RandomString;
 @MockServerTest
 @ActiveProfiles("integration-test")
 @EnableConfigurationProperties(TwilioConfigurationProperties.class)
-class WhatsappMessageDispatcherIntegrationTest {
+class WhatsAppMessageDispatcherIntegrationTest {
 
     private MockServerClient mockServerClient;
 
     @Autowired
-    private WhatsappMessageDispatcher whatsappMessageDispatcher;
+    private WhatsAppMessageDispatcher whatsAppMessageDispatcher;
 
     @Autowired
     private TwilioConfigurationProperties twilioConfigurationProperties;
@@ -77,7 +77,7 @@ class WhatsappMessageDispatcherIntegrationTest {
             .withBody(EMPTY_JSON));
 
         // Invoke method under test
-        whatsappMessageDispatcher.dispatchNewArticleNotification(contactNumber, RandomString.make());
+        whatsAppMessageDispatcher.dispatchNewArticleNotification(contactNumber, RandomString.make());
         
         // Verify the expected request was made
         mockServerClient.verify(request()
@@ -116,7 +116,7 @@ class WhatsappMessageDispatcherIntegrationTest {
             .withBody(EMPTY_JSON));
 
         // Invoke method under test
-        whatsappMessageDispatcher.dispatchReplyMessage(contactNumber, username);
+        whatsAppMessageDispatcher.dispatchReplyMessage(contactNumber, username);
         
         // Verify the expected request was made 
         mockServerClient.verify(request()

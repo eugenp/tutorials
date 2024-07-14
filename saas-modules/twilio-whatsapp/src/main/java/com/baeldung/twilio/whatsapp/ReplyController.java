@@ -11,12 +11,12 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ReplyController {
 
-    private final WhatsappMessageDispatcher whatsappMessageDispatcher;
+    private final WhatsAppMessageDispatcher whatsAppMessageDispatcher;
 
     @PostMapping(value = "/api/v1/whatsapp-message-reply")
     public ResponseEntity<Void> reply(@RequestParam("ProfileName") String username,
             @RequestParam("WaId") String phoneNumber) {
-        whatsappMessageDispatcher.dispatchReplyMessage(phoneNumber, username);
+        whatsAppMessageDispatcher.dispatchReplyMessage(phoneNumber, username);
         return ResponseEntity.ok().build();
     }
 

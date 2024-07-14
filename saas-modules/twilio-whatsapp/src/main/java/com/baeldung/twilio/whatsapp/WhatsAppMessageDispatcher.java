@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 @EnableConfigurationProperties(TwilioConfigurationProperties.class)
-public class WhatsappMessageDispatcher {
+public class WhatsAppMessageDispatcher {
 
     private final TwilioConfigurationProperties twilioConfigurationProperties;
 
