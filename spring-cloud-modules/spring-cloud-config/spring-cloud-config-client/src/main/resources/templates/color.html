@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Color Service</title>
+    <script>
+        function setColor(color){
+            document.body.style.backgroundColor = color;
+            document.getElementById('colorText').innerText = color;
+        }
+    </script>
+
+</head>
+<body onload="setColor('{{color}}')">
+    <h1>The background color is <span id="colorText"></span>!</h1>
+</body>
+</html>
