@@ -83,14 +83,17 @@ public class SplitDateTimeUnitTest {
         assertEquals("11:15:24", dateTime.toLocalTime().format(timeFormat));
     }
 
-    @Test
-    void givenDateTimeString_whenUsingRegex_thenGetDateAndTimeParts() {
-        String dateTimeStr = "2024-07-04 11:15:24.123";
+    @ParameterizedTest
+    @CsvSource({
+            "2024-07-04 11:15:24,2024-07-04,11:15:24",
+            "2024-07-04 11:15:24.987,2024-07-04,11:15:24.987"
+    })
+    void givenDateTimeString_whenUsingRegex_thenGetDateAndTimeParts(String dateTimeStr, String expectedDate, String expectedTime) {
         Pattern pattern = Pattern.compile("(\\d{4}-\\d{2}-\\d{2})\\s(\\d{2}:\\d{2}:\\d{2}(\\.\\d{3})?)");
         Matcher matcher = pattern.matcher(dateTimeStr);
         assertTrue(matcher.matches());
-        assertEquals("2024-07-04", matcher.group(1));
-        assertEquals("11:15:24.123", matcher.group(2));
+        assertEquals(expectedDate, matcher.group(1));
+        assertEquals(expectedTime, matcher.group(2));
     }
 
 }
