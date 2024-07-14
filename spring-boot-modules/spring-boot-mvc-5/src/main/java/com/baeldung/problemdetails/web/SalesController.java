@@ -17,7 +17,7 @@ public class SalesController {
   @PostMapping("/calculate")
   public ResponseEntity<OperationResult> calculate(
       @Validated @RequestBody OperationRequest operationRequest) {
-    OperationResult operationResult = null;
+    OperationResult operationResult;
     final Double discount = operationRequest.discount();
     if (discount == null) {
       operationResult =
