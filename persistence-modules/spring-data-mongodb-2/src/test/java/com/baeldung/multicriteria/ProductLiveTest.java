@@ -84,6 +84,12 @@ public class ProductLiveTest {
     }
 
     @Test
+    void givenProductNameCategoryAvailabilityAndPrice_whenFindUsingQueryDSLWithOrCondition_thenReturnsMatchingProduct() {
+        List<Product> actualProducts = productService.findProductsUsingQueryDSLWithOrCondition("Laptop", "MacBook Pro M3", 800);
+        assertThat(actualProducts).hasSize(2);
+    }
+
+    @Test
     void givenProductNameCategoryAvailabilityAndPrice_whenFindUsingQueryDSLWithAndOrCondition_thenReturnsMatchingProduct () {
         List<Product> actualProducts = productService.findProductsUsingQueryDSLWithAndOrCondition("Laptop", true, "MacBook Pro M3", 1000);
         assertThat(actualProducts).hasSize(1);

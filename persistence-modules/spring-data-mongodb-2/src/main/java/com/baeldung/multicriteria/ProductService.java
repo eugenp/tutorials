@@ -76,12 +76,22 @@ public class ProductService {
             .collect(Collectors.toList());
     }
 
+    List<Product> findProductsUsingQueryDSLWithOrCondition(String category, String name, double minPrice) {
+        QProduct qProduct = QProduct.product;
+        Predicate predicate = qProduct.category.eq(category)
+            .or(qProduct.name.eq(name))
+            .or(qProduct.price.gt(minPrice));
+        return StreamSupport.stream(productRepository.findAll(predicate)
+                .spliterator(), false)
+            .collect(Collectors.toList());
+    }
+
     List<Product> findProductsUsingQueryDSLWithAndOrCondition(String category, boolean available, String name, double minPrice) {
         QProduct qProduct = QProduct.product;
         Predicate predicate = qProduct.category.eq(category)
             .and(qProduct.available.eq(available))
             .or(qProduct.name.eq(name)
-             .and(qProduct.price.gt(minPrice)));
+                .and(qProduct.price.gt(minPrice)));
         return StreamSupport.stream(productRepository.findAll(predicate)
                 .spliterator(), false)
             .collect(Collectors.toList());
