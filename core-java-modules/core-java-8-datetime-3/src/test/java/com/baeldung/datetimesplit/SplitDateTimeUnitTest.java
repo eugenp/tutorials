@@ -1,11 +1,12 @@
 package com.baeldung.datetimesplit;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
-import java.util.Arrays;
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -48,13 +49,18 @@ public class SplitDateTimeUnitTest {
         assertEquals("11:15:24", time3);
     }
 
-    @Test
-    void givenDateTimeString_whenUsingSplit_thenGetDateAndTimeParts() {
-        String dateTimeStr = "2024-07-04 11:15:24";
-        String[] split = dateTimeStr.split("\\s");
+    @ParameterizedTest
+    @CsvSource({
+            "2024-07-04 11:15:24,2024-07-04,11:15:24",
+            "8/29/2011 11:16:12 AM,8/29/2011,11:16:12 AM",
+            "2024-07-04 11:15:24.987,2024-07-04,11:15:24.987",
+            "01-07-2024 11:15:24.987,01-07-2024,11:15:24.987"
+    })
+    void givenDateTimeString_whenUsingSplit_thenGetDateAndTimeParts(String dateTimeStr, String expectedDate, String expectedTime) {
+        String[] split = dateTimeStr.split("\\s", 2);
         assertEquals(2, split.length);
-        assertEquals("2024-07-04", split[0]);
-        assertEquals("11:15:24", split[1]);
+        assertEquals(expectedDate, split[0]);
+        assertEquals(expectedTime, split[1]);
     }
 
     @Test
