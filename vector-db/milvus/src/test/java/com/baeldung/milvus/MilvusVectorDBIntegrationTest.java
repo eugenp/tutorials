@@ -105,6 +105,13 @@ public class MilvusVectorDBIntegrationTest {
         return fieldSchemas;
     }
 
+    private static CreateCollectionReq.CollectionSchema createCollectionSchema(
+        List<CreateCollectionReq.FieldSchema> fieldSchemas) {
+        return CreateCollectionReq.CollectionSchema.builder()
+            .fieldSchemaList(fieldSchemas)
+            .build();
+    }
+
     private static IndexParam createIndexParam(String fieldName, String indexName) {
         return IndexParam.builder()
             .fieldName(fieldName)
@@ -143,16 +150,11 @@ public class MilvusVectorDBIntegrationTest {
     @Test
     @Order(1)
     void whenCommandCreateCollectionInVectorDB_thenSuccess() {
-        List<CreateCollectionReq.FieldSchema> fieldSchemas = createFieldSchemas();
-
-        CreateCollectionReq.CollectionSchema collectionSchemaForBooks = CreateCollectionReq.CollectionSchema.builder()
-            .fieldSchemaList(fieldSchemas)
-            .build();
         CreateCollectionReq createCollectionReq = CreateCollectionReq.builder()
             .collectionName("Books")
             .indexParams(List.of(createIndexParam("book_vector", "book_vector_indx")))
             .description("Collection for storing the details of books")
-            .collectionSchema(collectionSchemaForBooks)
+            .collectionSchema(createCollectionSchema(createFieldSchemas()))
             .build();
         milvusClientV2.createCollection(createCollectionReq);
         assertTrue(milvusClientV2.hasCollection(HasCollectionReq.builder()
