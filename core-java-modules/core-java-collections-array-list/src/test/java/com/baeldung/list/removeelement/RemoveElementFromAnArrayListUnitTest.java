@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class RemoveElementFromAnArrayListUnitTest {
     private List<String> getSportList() {
@@ -22,12 +22,10 @@ public class RemoveElementFromAnArrayListUnitTest {
     @Test
     void whenRemoveByIndex_thenCorrect() {
         List<String> sports = getSportList();
-        assertEquals(5, sports.size());
-        assertTrue(sports.contains("Basketball"));
+        assertThat(sports).hasSize(5).contains("Basketball");
 
         sports.remove(1); //removing Basketball
-        assertEquals(4, sports.size());
-        assertFalse(sports.contains("Basketball"));
+        assertThat(sports).hasSize(4).doesNotContain("Basketball");
     }
 
     @Test
@@ -36,7 +34,7 @@ public class RemoveElementFromAnArrayListUnitTest {
         List<String> expected = List.of("Football", "Basketball", "Baseball", "Boxing");
 
         sports.remove(sports.size() - 1);
-        assertEquals(expected, sports);
+        assertThat(sports).isEqualTo(expected);
     }
 
     @Test
@@ -45,26 +43,23 @@ public class RemoveElementFromAnArrayListUnitTest {
         List<String> expected = List.of("Football", "Basketball", "Baseball", "Boxing");
 
         sports.removeLast();
-        assertEquals(expected, sports);
+        assertThat(sports).isEqualTo(expected);
     }
 
 
     @Test
     void whenRemoveByElement_thenCorrect() {
         List<String> sports = getSportList();
-        assertEquals(5, sports.size());
-        assertTrue(sports.contains("Basketball"));
+        assertThat(sports).hasSize(5).contains("Basketball");
 
         sports.remove("Basketball");
-        assertEquals(4, sports.size());
-        assertFalse(sports.contains("Basketball"));
+        assertThat(sports).hasSize(4).doesNotContain("Basketball");
     }
 
     @Test
     void whenRemovingWhileIterating_thenCorrect() {
         List<String> sports = getSportList();
-        assertEquals(5, sports.size());
-        assertTrue(sports.contains("Basketball"));
+        assertThat(sports).hasSize(5).contains("Basketball");
 
         Iterator<String> iterator = sports.iterator();
         while (iterator.hasNext()) {
@@ -73,19 +68,16 @@ public class RemoveElementFromAnArrayListUnitTest {
                 break;
             }
         }
-        assertEquals(4, sports.size());
-        assertFalse(sports.contains("Basketball"));
+        assertThat(sports).hasSize(4).doesNotContain("Basketball");
     }
 
     @Test
     void whenRemoveIf_thenCorrect() {
         List<String> sports = getSportList();
-        assertEquals(5, sports.size());
-        assertTrue(sports.contains("Basketball"));
+        assertThat(sports).hasSize(5).contains("Basketball");
 
         sports.removeIf(p -> p.equals("Basketball"));
 
-        assertEquals(4, sports.size());
-        assertFalse(sports.contains("Basketball"));
+        assertThat(sports).hasSize(4).doesNotContain("Basketball");
     }
 }
