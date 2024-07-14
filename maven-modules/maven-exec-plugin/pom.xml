@@ -84,7 +84,8 @@
 
     <properties>
         <maven-compiler-plugin.version>3.12.1</maven-compiler-plugin.version>
-        <exec-maven-plugin.version>3.1.0</exec-maven-plugin.version>
+        <exec-maven-plugin.version>3.3.0</exec-maven-plugin.version>
+        <junit-jupiter.version>5.10.0</junit-jupiter.version>
         <apache.maven.version>3.9.6</apache.maven.version>
         <apache.maven.invoker.version>3.2.0</apache.maven.invoker.version>
     </properties>
