@@ -7,7 +7,7 @@ reverse-proxy-uri: ${scheme}://${hostname}:${reverse-proxy-port}
 authorization-server-prefix: /auth
 issuer: ${reverse-proxy-uri}${authorization-server-prefix}/realms/baeldung
 client-id: baeldung-confidential
-client-secret: change-me
+client-secret: secret
 username-claim-json-path: $.preferred_username
 authorities-json-path: $.realm_access.roles
 bff-port: 7081
@@ -63,16 +63,21 @@ com:
           - /api/**
           - /login/**
           - /oauth2/**
-          - /logout
+          - /logout/**
           permit-all:
           - /api/**
           - /login/**
           - /oauth2/**
+          - /logout/connect/back-channel/baeldung
+          post-logout-redirect-host: ${hostname}
           csrf: cookie-accessible-from-js
           oauth2-redirections:
             rp-initiated-logout: ACCEPTED
           back-channel-logout:
             enabled: true
+            # internal-logout-uri: ${reverse-proxy-uri}${bff-prefix}/logout
+            # should work too,  but there is no reason to go through the reverse proxy for this internal call
+            internal-logout-uri: ${scheme}://localhost:${bff-port}/logout
         # SecurityFilterChain with oauth2ResourceServer() (sessions and CSRF protection disabled)
         resourceserver:
           permit-all:
@@ -104,7 +109,7 @@ logging:
     org:
       springframework:
         boot: INFO
-        security: INFO
+        security: TRACE
         web: INFO
     
 ---
@@ -154,10 +159,9 @@ com:
     springaddons:
       oidc:
         client:
-          authorization-request-params:
+          authorization-params:
             baeldung:
-            - name: audience
-              value: ${audience}
+              audience: ${audience}
           oauth2-logout:
             baeldung:
               uri: ${issuer}v2/logout

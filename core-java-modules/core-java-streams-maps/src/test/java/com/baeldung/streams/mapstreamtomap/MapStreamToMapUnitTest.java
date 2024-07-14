@@ -1,21 +1,27 @@
 package com.baeldung.streams.mapstreamtomap;
 
-import static java.lang.Math.max;
-import static java.util.stream.Collectors.flatMapping;
-import static java.util.stream.Collectors.groupingBy;
-import static java.util.stream.Collectors.mapping;
-import static java.util.stream.Collectors.reducing;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import org.junit.BeforeClass;
+import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import org.junit.jupiter.api.Test;
+import static java.lang.Math.max;
+import static java.util.stream.Collectors.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class MapStreamToMapUnitTest {
+    private static MergeMaps mergeMaps;
+
+    @BeforeClass
+    public static void setup() {
+        mergeMaps = new MergeMaps();
+    }
 
     Map<String, Integer> playerMap1 = new HashMap<String, Integer>() {{
         put("Kai", 92);
@@ -139,5 +145,37 @@ public class MapStreamToMapUnitTest {
                 .stream())
             .collect(groupingBy(Map.Entry::getKey, mapping(Map.Entry::getValue, reducing(null, this::maxInteger))));
         assertEquals(expectedMap, mergedMap);
+    }
+
+    @Test
+    public void givenListOfMaps_whenConvertingToSingleMap_thenResultIsSingleMergedMap() {
+        List<Map<String, Integer>> listOfMaps = new ArrayList<>();
+        listOfMaps.add(playerMap1);
+        listOfMaps.add(playerMap2);
+
+        Map<String, Integer> expected = new HashMap<>();
+        expected.put("Kai", 92);
+        expected.put("Liam", 100);
+        expected.put("Eric", 42);
+        expected.put("Kevin", 77);
+
+        Map<String, Integer> result = mergeMaps.mergeMapsUsingLoop(listOfMaps);
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void givenListOfMaps_whenConvertingToSingleMapUsingStream_thenResultIsSingleMergedMap() {
+        List<Map<String, Integer>> listOfMaps = new ArrayList<>();
+        listOfMaps.add(playerMap1);
+        listOfMaps.add(playerMap2);
+
+        Map<String, Integer> expected = new HashMap<>();
+        expected.put("Kai", 92);
+        expected.put("Liam", 100);
+        expected.put("Eric", 42);
+        expected.put("Kevin", 77);
+
+        Map<String, Integer> result = mergeMaps.mergeMapsUsingStream(listOfMaps);
+        assertEquals(expected, result);
     }
 }

@@ -4,8 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>testing-modules</artifactId>
-    <name>testing-modules</name>
     <packaging>pom</packaging>
+    <name>testing-modules</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -16,6 +16,7 @@
 
     <modules>
         <module>assertion-libraries</module>
+        <module>cors</module>
         <module>cucumber</module>
         <module>easy-random</module>
         <module>easymock</module>
@@ -58,6 +59,7 @@
         <module>xmlunit-2</module>
         <module>zerocode</module>
         <module>mockito-2</module>
+        <module>mockito-3</module>
         <module>testing-techniques</module>
         <module>gatling-java</module>
     </modules>

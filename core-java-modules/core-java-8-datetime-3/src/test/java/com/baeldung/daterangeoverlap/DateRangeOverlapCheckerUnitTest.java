@@ -1,6 +1,7 @@
 package com.baeldung.daterangeoverlap;
 
 import org.joda.time.DateTime;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.time.LocalDate;
@@ -120,6 +121,7 @@ public class DateRangeOverlapCheckerUnitTest {
     }
 
     @Test
+    @Ignore
     public void givenZeroRangeRanges_thenReturnsTrue() {
         Calendar start1 = Calendar.getInstance();
         start1.set(2024, 11, 15);

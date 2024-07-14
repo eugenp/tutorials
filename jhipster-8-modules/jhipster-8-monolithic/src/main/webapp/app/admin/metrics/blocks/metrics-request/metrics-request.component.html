@@ -1,0 +1,36 @@
+<h3 id="requestMetrics">HTTP requests (time in millisecond)</h3>
+
+@if (!updating() && requestMetrics()) {
+  <table class="table table-striped" aria-describedby="requestMetrics">
+    <thead>
+      <tr>
+        <th scope="col">Code</th>
+        <th scope="col">Count</th>
+        <th scope="col" class="text-end">Mean</th>
+        <th scope="col" class="text-end">Max</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (entry of requestMetrics()!['percode'] | keyvalue; track entry.key) {
+        <tr>
+          <td>{{ entry.key }}</td>
+          <td>
+            <ngb-progressbar
+              [max]="requestMetrics()!['all'].count"
+              [value]="entry.value.count"
+              [striped]="true"
+              [animated]="false"
+              type="success"
+            >
+              <span>{{ entry.value.count }}</span>
+            </ngb-progressbar>
+          </td>
+          <td class="text-end">
+            {{ filterNaN(entry.value.mean) | number: '1.0-2' }}
+          </td>
+          <td class="text-end">{{ entry.value.max | number: '1.0-2' }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+}

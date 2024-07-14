@@ -86,6 +86,16 @@
             <artifactId>openhtmltopdf-pdfbox</artifactId>
             <version>${open-html-pdfbox.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.pdfbox</groupId>
+            <artifactId>pdfbox</artifactId>
+            <version>${pdfbox.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itextpdf</artifactId>
+            <version>${itext.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -111,6 +121,8 @@
         <open-html-pdfbox.version>1.0.6</open-html-pdfbox.version>
         <open-html-pdf-core.version>1.0.10</open-html-pdf-core.version>
         <jsoup.version>1.17.2</jsoup.version>
+        <pdfbox.version>2.0.31</pdfbox.version>
+        <itext.version>5.5.13.3</itext.version>
     </properties>
 
 </project>

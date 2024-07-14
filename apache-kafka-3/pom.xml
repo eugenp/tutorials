@@ -54,9 +54,11 @@
         <testcontainers-kafka.version>1.19.3</testcontainers-kafka.version>
         <testcontainers-jupiter.version>1.19.3</testcontainers-jupiter.version>
     </properties>
+
     <profiles>
         <profile>
             <id>integration-jdk9-and-above</id>
         </profile>
     </profiles>
+
 </project>

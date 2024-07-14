@@ -11,3 +11,5 @@ This module contains articles about Java Optional.
 - [Throw Exception in Optional in Java 8](https://www.baeldung.com/java-optional-throw-exception)
 - [Optional orElse Optional](https://www.baeldung.com/java-optional-or-else-optional)
 - [Uses for Optional in Java](https://www.baeldung.com/java-optional-uses)
+- [Perform Action Only if All Optionals Are Available](https://www.baeldung.com/java-perform-action-all-optionals-available)
+- [Difference Between Optional.of() and Optional.ofNullable() in Java](https://www.baeldung.com/java-optional-of-vs-optional-ofnullable)

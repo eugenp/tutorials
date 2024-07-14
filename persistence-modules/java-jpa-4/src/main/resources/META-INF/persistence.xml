@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+             http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+             version="2.2">
+    <persistence-unit name="jpa-savechildobjects">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>com.baeldung.jpa.savechildobjects.Parent</class>
+        <class>com.baeldung.jpa.savechildobjects.ParentWithCascadeType</class>
+        <class>com.baeldung.jpa.savechildobjects.BidirectionalChild</class>
+        <class>com.baeldung.jpa.savechildobjects.BidirectionalChildWithCascadeType</class>
+        <class>com.baeldung.jpa.savechildobjects.UnidirectionalChild</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:idGen"/>
+            <property name="javax.persistence.jdbc.user" value="sa"/>
+            <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.temp.use_jdbc_metadata_defaults" value="false"/>
+        </properties>
+    </persistence-unit>
+    <persistence-unit name="jpa-savechildobjects-parent-without-relationship">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>com.baeldung.jpa.savechildobjects.ParentWithoutSpecifiedRelationship</class>
+        <class>com.baeldung.jpa.savechildobjects.Parent</class>
+        <class>com.baeldung.jpa.savechildobjects.BidirectionalChild</class>
+        <class>com.baeldung.jpa.savechildobjects.UnidirectionalChild</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:idGen"/>
+            <property name="javax.persistence.jdbc.user" value="sa"/>
+            <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.temp.use_jdbc_metadata_defaults" value="false"/>
+        </properties>
+    </persistence-unit>
+    <persistence-unit name="jpa-emclear">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>com.baeldung.jpa.emclear.Person</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:idGen"/>
+            <property name="javax.persistence.jdbc.user" value="sa"/>
+            <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.temp.use_jdbc_metadata_defaults" value="false"/>
+        </properties>
+    </persistence-unit>
+
+    <persistence-unit name="jpa-undeterminejdbctype-complextype">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>com.baeldung.jpa.undeterminejdbctype.Student</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1"/>
+            <property name="javax.persistence.jdbc.user" value="sa"/>
+            <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.show_sql" value="true"/>
+        </properties>
+    </persistence-unit>
+
+    <persistence-unit name="jpa-undeterminejdbctype-complextypewithJSON">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>com.baeldung.jpa.undeterminejdbctype.StudentWithJson</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1"/>
+            <property name="javax.persistence.jdbc.user" value="sa"/>
+            <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.show_sql" value="true"/>
+        </properties>
+    </persistence-unit>
+
+    <persistence-unit name="jpa-undeterminejdbctype-relationship">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>com.baeldung.jpa.undeterminejdbctype.Employee</class>
+        <class>com.baeldung.jpa.undeterminejdbctype.EmployeeWithAnnotation</class>
+        <class>com.baeldung.jpa.undeterminejdbctype.Address</class>
+        <class>com.baeldung.jpa.undeterminejdbctype.Department</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1"/>
+            <property name="javax.persistence.jdbc.user" value="sa"/>
+            <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.show_sql" value="true"/>
+        </properties>
+    </persistence-unit>
+
+    <persistence-unit name="jpa-undeterminejdbctype-annotatedrelationship">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>com.baeldung.jpa.undeterminejdbctype.Address</class>
+        <class>com.baeldung.jpa.undeterminejdbctype.EmployeeWithAnnotation</class>
+        <class>com.baeldung.jpa.undeterminejdbctype.Department</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1"/>
+            <property name="javax.persistence.jdbc.user" value="sa"/>
+            <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.show_sql" value="true"/>
+        </properties>
+    </persistence-unit>
+
+    <persistence-unit name="jpa-undeterminejdbctype-enum">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>com.baeldung.jpa.undeterminejdbctype.Address</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1"/>
+            <property name="javax.persistence.jdbc.user" value="sa"/>
+            <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="none"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.show_sql" value="true"/>
+        </properties>
+    </persistence-unit>
+</persistence>

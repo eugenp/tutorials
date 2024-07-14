@@ -20,6 +20,8 @@
         <module>spring-swagger-codegen-api-client</module>
         <module>spring-openapi-generator-api-client</module>
         <module>spring-swagger-codegen-app</module>
+		<module>openapi-custom-generator</module>
+<!--		<module>openapi-custom-generator-api-client</module>-->
     </modules>
 
 </project>

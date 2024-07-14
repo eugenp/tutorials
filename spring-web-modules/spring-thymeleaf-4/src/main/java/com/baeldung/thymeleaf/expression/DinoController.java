@@ -40,7 +40,7 @@ public class DinoController {
     public String dinoSubmit(@ModelAttribute Dino dino, Model model) {
 
         model.addAttribute("dino", dino);
-        return "templates-3/result";
+        return "result";
     }
 
 }

@@ -44,7 +44,7 @@ class JsonParserTest extends Specification {
         def accountToJson = jsonGenerator.toJson(account)
 
         then:
-        accountToJson == '{"createdAt":"01/31/2024","id":"123"}'
+        accountToJson == '{"id":"123","createdAt":"01/31/2024"}'
     }
 
     /*def 'Should parse to Account given Json String with date property' () {

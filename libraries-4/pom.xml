@@ -103,6 +103,22 @@
             <artifactId>jfreechart</artifactId>
             <version>${jfreechart.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.javaparser</groupId>
+            <artifactId>javaparser-core</artifactId>
+            <version>${javaparser.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>dev.failsafe</groupId>
+            <artifactId>failsafe</artifactId>
+            <version>${dev.failsafe.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.aeron</groupId>
+            <artifactId>aeron-all</artifactId>
+            <version>${aeron.version}</version>
+        </dependency>
+
     </dependencies>
 
     <properties>
@@ -123,6 +139,9 @@
         <spoon-core.version>10.3.0</spoon-core.version>
         <vavr.version>0.9.0</vavr.version>
         <jfreechart.version>1.5.4</jfreechart.version>
+        <javaparser.version>3.25.10</javaparser.version>
+        <dev.failsafe.version>3.3.2</dev.failsafe.version>
+        <aeron.version>1.44.1</aeron.version>
     </properties>
 
 </project>

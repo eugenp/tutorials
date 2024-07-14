@@ -20,9 +20,8 @@
         <dependency>
             <groupId>io.leangen.graphql</groupId>
             <artifactId>spqr</artifactId>
-            <version>${spqr-version}</version>
+            <version>${spqr.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -36,7 +35,7 @@
     </dependencies>
 
     <properties>
-        <spqr-version>0.11.2</spqr-version>
+        <spqr.version>0.12.4</spqr.version>
     </properties>
 
 </project>

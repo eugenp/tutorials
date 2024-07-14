@@ -1,0 +1,24 @@
+@if (car) {
+  <form name="deleteForm" (ngSubmit)="confirmDelete(car.id!)">
+    <div class="modal-header">
+      <h4 class="modal-title" data-cy="carDeleteDialogHeading">Confirm delete operation</h4>
+
+      <span class="btn btn-close" data-dismiss="modal" aria-hidden="true" (click)="cancel()"></span>
+    </div>
+
+    <div class="modal-body">
+      <jhi-alert-error></jhi-alert-error>
+      <p id="jhi-delete-car-heading">Are you sure you want to delete Car {{ car.id }}?</p>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancel()">
+        <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+      </button>
+
+      <button id="jhi-confirm-delete-car" data-cy="entityConfirmDeleteButton" type="submit" class="btn btn-danger">
+        <fa-icon icon="times"></fa-icon>&nbsp;<span>Delete</span>
+      </button>
+    </div>
+  </form>
+}

@@ -8,10 +8,9 @@
     <name>core-java-16</name>
 
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../../</relativePath>
+        <groupId>com.baeldung.core-java-modules</groupId>
+        <artifactId>core-java-modules</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
     </parent>
 
     <dependencies>
@@ -28,10 +27,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <release>${maven.compiler.release}</release>
-                    <compilerArgs>--enable-preview</compilerArgs>
-                    <source>${maven.compiler.source.version}</source>
-                    <target>${maven.compiler.target.version}</target>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -39,7 +36,9 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${surefire.plugin.version}</version>
                 <configuration>
-                    <argLine>--enable-preview</argLine>
+                    <argLine>
+                        --add-opens core.java/com.baeldung.features=ALL-UNNAMED
+                    </argLine>
                     <forkCount>1</forkCount>
                 </configuration>
                 <dependencies>
@@ -54,9 +53,6 @@
     </build>
 
     <properties>
-        <maven.compiler.source.version>16</maven.compiler.source.version>
-        <maven.compiler.target.version>16</maven.compiler.target.version>
-        <maven.compiler.release>16</maven.compiler.release>
         <surefire.plugin.version>3.0.0-M5</surefire.plugin.version>
     </properties>
 

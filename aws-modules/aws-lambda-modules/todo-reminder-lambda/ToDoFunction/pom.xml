@@ -113,6 +113,7 @@
         <guice.version>5.1.0</guice.version>
         <system-stubs-junit4.version>2.0.2</system-stubs-junit4.version>
         <assertj-core.version>3.19.0</assertj-core.version>
+        <junit-jupiter.version>5.10.2</junit-jupiter.version>
     </properties>
 
 </project>
