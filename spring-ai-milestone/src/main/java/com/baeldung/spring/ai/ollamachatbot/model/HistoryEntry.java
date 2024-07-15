@@ -38,7 +38,7 @@ public class HistoryEntry {
                         
                             `response`: %s
                         -----------------
-                       \n
+                       
             """, prompt, response);
     }
 }
