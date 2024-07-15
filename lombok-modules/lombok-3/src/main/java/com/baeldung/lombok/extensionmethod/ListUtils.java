@@ -4,9 +4,9 @@ import java.util.List;
 
 public class ListUtils {
 
-    public static int sum(List<Integer> listInt) {
-        return listInt.stream()
-            .mapToInt(Integer::intValue)
+    public static int sum(List<? extends Number> list) {
+        return list.stream()
+            .mapToInt(Number::intValue)
             .sum();
     }
 }
