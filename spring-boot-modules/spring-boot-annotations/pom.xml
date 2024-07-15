@@ -56,7 +56,7 @@
     </dependencies>
 
     <properties>
-        <hibernate.core.version>6.4.2.Final</hibernate.core.version>
+        <hibernate.core.version>6.5.2.Final</hibernate.core.version>
         <mockito.inline.version>5.2.0</mockito.inline.version>
         <start-class>com.baeldung.annotations.VehicleFactoryApplication</start-class>
     </properties>
