@@ -21,13 +21,14 @@
         <module>aws-reactive</module>
         <module>aws-s3</module>
         <module>aws-rest</module>
+        <module>amazon-athena</module>
     </modules>
 
     <dependencies>
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-java-sdk-dynamodb</artifactId>
-            <version>1.12.523</version>
+            <version>${aws-java-sdk-dynamodb.version}</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
@@ -36,6 +37,7 @@
         <aws-java-sdk.version>1.12.331</aws-java-sdk.version>
         <aws-java-sdk-v2.version>2.24.9</aws-java-sdk-v2.version>
         <maven-shade-plugin.version>3.0.0</maven-shade-plugin.version>
+        <aws-java-sdk-dynamodb.version>1.12.523</aws-java-sdk-dynamodb.version>
     </properties>
 
 </project>

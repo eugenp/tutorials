@@ -1,18 +1,15 @@
 package com.baeldung.networking.proxies;
 
 import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.InetSocketAddress;
-import java.net.Proxy;
-import java.net.URL;
+import java.net.*;
 
 public class WebProxyDemo {
 
     private static final String URL_STRING = "http://www.google.com";
 
-    public static void main(String... args) throws IOException {
+    public static void main(String... args) throws Exception {
 
-        URL weburl = new URL(URL_STRING);
+        URL weburl = new URI(URL_STRING).toURL();
         Proxy webProxy 
           = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("127.0.0.1", 3128));
         HttpURLConnection webProxyConnection 

@@ -8,3 +8,4 @@ This module contains articles about Hibernate 5 with Spring.
 - [Hibernate Second-Level Cache](http://www.baeldung.com/hibernate-second-level-cache)
 - [Deleting Objects with Hibernate](http://www.baeldung.com/delete-with-hibernate)
 - [Spring, Hibernate and a JNDI Datasource](http://www.baeldung.com/spring-persistence-jpa-jndi-datasource)
+- [Java Enums, JPA and PostgreSQL Enums](https://www.baeldung.com/java-enums-jpa-postgresql)

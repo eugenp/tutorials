@@ -15,9 +15,10 @@
 
     <modules>
         <module>quarkus</module>
+        <module>quarkus-citrus</module>
         <module>quarkus-extension</module>
         <module>quarkus-jandex</module>
-        <module>quarkus-vs-springboot</module>
+        <!-- <module>quarkus-vs-springboot</module> fixing in JAVA-37334 --> 
         <module>quarkus-funqy</module>
         <!-- requires Java 21 <module>quarkus-virtual-threads</module> -->
     </modules>

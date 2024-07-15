@@ -16,4 +16,9 @@ public class ConvertToOffsetDateTime {
             .atOffset(ZoneOffset.ofHoursMinutes(hour, minute));
     }
 
+    public static OffsetDateTime convertWithGetTimeZone(Date date) {
+        return date.toInstant()
+            .atOffset(ZoneOffset.ofTotalSeconds(date.getTimezoneOffset() * -60));
+    }
+
 }

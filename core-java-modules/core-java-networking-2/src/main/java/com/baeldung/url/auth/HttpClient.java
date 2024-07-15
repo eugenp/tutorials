@@ -1,12 +1,7 @@
 package com.baeldung.url.auth;
 
 import java.io.IOException;
-import java.net.Authenticator;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.PasswordAuthentication;
-import java.net.ProtocolException;
-import java.net.URL;
+import java.net.*;
 import java.nio.charset.StandardCharsets;
 
 import org.apache.commons.codec.binary.Base64;
@@ -27,6 +22,8 @@ public class HttpClient {
             connection = createConnection(url);
             connection.setRequestProperty("Authorization", createBasicAuthHeaderValue());
             return connection.getResponseCode();
+        } catch (URISyntaxException e) {
+            throw new IOException(e);
         } finally {
             if (connection != null) {
                 connection.disconnect();
@@ -34,7 +31,7 @@ public class HttpClient {
         }
     }
 
-    public int sendRequestWithAuthenticator(String url) throws IOException {
+    public int sendRequestWithAuthenticator(String url) throws IOException, URISyntaxException {
         setAuthenticator();
 
         HttpURLConnection connection = null;
@@ -48,8 +45,8 @@ public class HttpClient {
         }
     }
 
-    private HttpURLConnection createConnection(String urlString) throws MalformedURLException, IOException, ProtocolException {
-        URL url = new URL(String.format(urlString));
+    private HttpURLConnection createConnection(String urlString) throws MalformedURLException, IOException, URISyntaxException {
+        URL url = new URI(String.format(urlString)).toURL();
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("GET");
         return connection;

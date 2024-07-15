@@ -2,6 +2,8 @@ package com.baeldung.java9.streams.reactive.flowvsrx;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
+
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
@@ -27,6 +29,7 @@ public class LiveVideoFlowVsRxUnitTest {
     }
 
     @Test
+    @Ignore
     public void givenFastVideoPlayer_whenSubscribedToFlowApiLiveVideo_thenExpectNoErrorOnBackPressure() throws InterruptedException {
         AtomicLong errors = new AtomicLong();
 

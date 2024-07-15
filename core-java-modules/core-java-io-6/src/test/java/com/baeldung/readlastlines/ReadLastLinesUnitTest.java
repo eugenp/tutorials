@@ -9,9 +9,10 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.apache.commons.io.FileUtils;
@@ -21,46 +22,52 @@ import org.junit.jupiter.api.Test;
 public class ReadLastLinesUnitTest {
 
     private static final String FILE_PATH = "src/test/resources/data.txt";
-    private static final int TOTAL_LINES = 10;
     private static final int LAST_LINES_TO_READ = 3;
     private static final String OUTPUT_TO_VERIFY = "line 8\nline 9\nline 10";
 
     @Test
     public void givenFile_whenUsingBufferedReader_thenExtractedLastLinesCorrect() throws IOException {
         try (BufferedReader br = Files.newBufferedReader(Paths.get(FILE_PATH))) {
-            for (int i = 0; i < (TOTAL_LINES - LAST_LINES_TO_READ); i++) {
-                br.readLine();
-            }
-            StringBuilder stringBuilder = new StringBuilder();
-            for (int i = (TOTAL_LINES - LAST_LINES_TO_READ); i < TOTAL_LINES; i++) {
-                stringBuilder.append(br.readLine()).append("\n");
+            Queue<String> queue = new LinkedList<>();
+            String line;
+            while ((line = br.readLine()) != null){
+                if(queue.size() >= LAST_LINES_TO_READ){
+                    queue.remove();
+                }
+                queue.add(line);
             }
 
-            assertEquals(stringBuilder.toString().trim(), OUTPUT_TO_VERIFY);
+            assertEquals(OUTPUT_TO_VERIFY,String.join("\n", queue));
         }
     }
 
     @Test
     public void givenFile_whenUsingScanner_thenExtractedLastLinesCorrect() throws IOException {
         try (Scanner scanner = new Scanner(new File(FILE_PATH))) {
-            for (int i = 0; i < (TOTAL_LINES - LAST_LINES_TO_READ); i++) {
-                scanner.nextLine();
-            }
-            StringBuilder stringBuilder = new StringBuilder();
-            for (int i = (TOTAL_LINES - LAST_LINES_TO_READ); i < TOTAL_LINES; i++) {
-                stringBuilder.append(scanner.nextLine()).append("\n");
+            Queue<String> queue = new LinkedList<>();
+            while (scanner.hasNextLine()){
+                if(queue.size() >= LAST_LINES_TO_READ){
+                    queue.remove();
+                }
+                queue.add(scanner.nextLine());
             }
 
-            assertEquals(stringBuilder.toString().trim(), OUTPUT_TO_VERIFY);
+            assertEquals(OUTPUT_TO_VERIFY,String.join("\n", queue));
         }
     }
 
     @Test
     public void givenLargeFile_whenUsingFilesAPI_thenExtractedLastLinesCorrect() throws IOException{
         try (Stream<String> lines = Files.lines(Paths.get(FILE_PATH))) {
-            Stream<String> remainingLines = lines.skip(TOTAL_LINES - LAST_LINES_TO_READ);
+            Queue<String> queue = new LinkedList<>();
+            lines.forEach(line ->{
+                if(queue.size() >= LAST_LINES_TO_READ){
+                    queue.remove();
+                }
+                queue.add(line);
+            });
 
-            assertEquals(OUTPUT_TO_VERIFY, remainingLines.collect(Collectors.joining("\n")));
+            assertEquals(OUTPUT_TO_VERIFY, String.join("\n", queue));
         }
     }
 
@@ -69,7 +76,7 @@ public class ReadLastLinesUnitTest {
         File file = new File(FILE_PATH);
         List<String> lines = FileUtils.readLines(file, "UTF-8");
         StringBuilder stringBuilder = new StringBuilder();
-        for (int i = (TOTAL_LINES - LAST_LINES_TO_READ); i < TOTAL_LINES; i++) {
+        for (int i = (lines.size() - LAST_LINES_TO_READ); i < lines.size(); i++) {
             stringBuilder.append(lines.get(i)).append("\n");
         }
 
@@ -84,7 +91,7 @@ public class ReadLastLinesUnitTest {
             StringBuilder stringBuilder = new StringBuilder();
             Collections.reverse(lastLines);
             lastLines.forEach(
-              line -> stringBuilder.append(line).append("\n")
+                line -> stringBuilder.append(line).append("\n")
             );
 
             assertEquals(OUTPUT_TO_VERIFY, stringBuilder.toString().trim());
