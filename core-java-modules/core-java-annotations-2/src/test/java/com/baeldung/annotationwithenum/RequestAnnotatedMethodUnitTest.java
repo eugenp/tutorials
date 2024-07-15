@@ -1,4 +1,4 @@
-package com.baeldung.annitationwithenum;
+package com.baeldung.annotationwithenum;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
