@@ -53,7 +53,7 @@
     </dependencies>
 
     <properties>
-        <hibernate.core.version>6.4.2.Final</hibernate.core.version>
+        <hibernate.core.version>7.0.0.Alpha3</hibernate.core.version>
         <json-path.version>5.4.0</json-path.version>
     </properties>
 
