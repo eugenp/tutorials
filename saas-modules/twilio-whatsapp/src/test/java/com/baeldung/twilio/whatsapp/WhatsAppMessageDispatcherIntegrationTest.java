@@ -60,6 +60,7 @@ class WhatsAppMessageDispatcherIntegrationTest {
         String contentSid = twilioConfigurationProperties.getNewArticleNotification().getContentSid();
         String messagingSid = twilioConfigurationProperties.getMessagingSid();
         String contactNumber = "+911001001000";
+        String articleUrl = RandomString.make();
 
         // Configure mock server expectations
         mockServerClient
@@ -69,6 +70,7 @@ class WhatsAppMessageDispatcherIntegrationTest {
             .withBody(new ParameterBody(
                 param("To", String.format("whatsapp:%s", contactNumber)),
                 param("ContentSid", contentSid),
+                param("ContentVariables", String.format("{\"ArticleURL\":\"%s\"}", articleUrl)),
                 param("MessagingServiceSid", messagingSid)
             ))
           )
@@ -77,7 +79,7 @@ class WhatsAppMessageDispatcherIntegrationTest {
             .withBody(EMPTY_JSON));
 
         // Invoke method under test
-        whatsAppMessageDispatcher.dispatchNewArticleNotification(contactNumber, RandomString.make());
+        whatsAppMessageDispatcher.dispatchNewArticleNotification(contactNumber, articleUrl);
         
         // Verify the expected request was made
         mockServerClient.verify(request()
