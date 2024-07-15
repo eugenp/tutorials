@@ -1,11 +1,46 @@
 package com.baeldung.copies.deep;
 
+import com.baeldung.copies.Engine;
+import com.baeldung.copies.FuelTank;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class CarTest {
+
+    @Nested
+    public class CloneableAsMarker {
+
+        @Test
+        public void clone_onClassWhich_shouldThrowCloneNotSupportedException() {
+            Unmarked unmarked = new Unmarked();
+
+            Assertions.assertThrows(CloneNotSupportedException.class, () -> unmarked.clone());
+        }
+
+        @Test
+        public void clone_shouldNotThrowCloneNotSupportedException() throws CloneNotSupportedException {
+            Unmarked marked = new MarkedWithCloneable();
+
+            marked.clone();
+        }
+
+        public class Unmarked {
+
+            @Override
+            public Object clone() throws CloneNotSupportedException {
+                return super.clone();
+            }
+
+        }
+
+        public class MarkedWithCloneable extends Unmarked implements java.lang.Cloneable {
+
+        }
+
+    }
 
     @Nested
     public class CopyConstructor {

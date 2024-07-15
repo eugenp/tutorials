@@ -1,6 +1,6 @@
-package com.baeldung.copies.deep;
+package com.baeldung.copies;
 
-class Engine implements Cloneable {
+public class Engine implements Cloneable {
 
     private final int numberOfCylinders;
     private final int power;
@@ -12,10 +12,10 @@ class Engine implements Cloneable {
         this.capacity = capacity;
     }
 
-    public Engine(Engine engine) {
-        this.numberOfCylinders = engine.numberOfCylinders;
-        this.power = engine.power;
-        this.capacity = engine.capacity;
+    public Engine(Engine other) {
+        this.numberOfCylinders = other.numberOfCylinders;
+        this.power = other.power;
+        this.capacity = other.capacity;
     }
 
     public int getNumberOfCylinders() {
@@ -34,8 +34,8 @@ class Engine implements Cloneable {
     public Engine clone() {
         try {
             return (Engine) super.clone();
-        } catch (CloneNotSupportedException exception) {
-            throw  new IllegalStateException(exception);
+        } catch (CloneNotSupportedException cloneNotSupportedException) {
+            throw new IllegalStateException(cloneNotSupportedException);
         }
     }
 

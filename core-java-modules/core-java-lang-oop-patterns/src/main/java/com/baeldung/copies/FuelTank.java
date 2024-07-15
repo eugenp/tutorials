@@ -1,6 +1,6 @@
-package com.baeldung.copies.deep;
+package com.baeldung.copies;
 
-class FuelTank implements Cloneable {
+public class FuelTank implements Cloneable {
 
     private int gasMl;
 
@@ -28,8 +28,8 @@ class FuelTank implements Cloneable {
     public FuelTank clone() {
         try {
             return (FuelTank) super.clone();
-        } catch (CloneNotSupportedException exception) {
-            throw  new IllegalStateException(exception);
+        } catch (CloneNotSupportedException cloneNotSupportedException) {
+            throw new IllegalStateException(cloneNotSupportedException);
         }
     }
 

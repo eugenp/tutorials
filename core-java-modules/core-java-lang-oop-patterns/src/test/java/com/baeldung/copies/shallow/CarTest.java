@@ -1,5 +1,7 @@
 package com.baeldung.copies.shallow;
 
+import com.baeldung.copies.Engine;
+import com.baeldung.copies.FuelTank;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 

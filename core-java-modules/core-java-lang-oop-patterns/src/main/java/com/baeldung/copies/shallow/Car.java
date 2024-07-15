@@ -1,5 +1,8 @@
 package com.baeldung.copies.shallow;
 
+import com.baeldung.copies.Engine;
+import com.baeldung.copies.FuelTank;
+
 class Car implements Cloneable {
 
     private int numberOfDoors;
