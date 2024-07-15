@@ -103,7 +103,7 @@
         <spring.data.version>2.2.2.RELEASE</spring.data.version>
         <cglib.version>2.2.2</cglib.version>
         <hsqldb.version>2.5.0</hsqldb.version>
-        <hibernate.version>7.0.0.Alpha3</hibernate.version>
+        <hibernate.version>5.4.9.Final</hibernate.version>
         <deploy-path>enter-location-of-server</deploy-path>
         <apache-tiles.version>3.0.8</apache-tiles.version>
     </properties>
