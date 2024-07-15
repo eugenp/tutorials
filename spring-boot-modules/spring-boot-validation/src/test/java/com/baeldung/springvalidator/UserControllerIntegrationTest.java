@@ -15,7 +15,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.validation.Errors;
 
 @WebMvcTest(UserController.class)
-public class UserControllerUnitTest {
+public class UserControllerIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;
