@@ -3,8 +3,6 @@ package com.baeldung.twilio.whatsapp;
 import javax.net.ssl.SSLContext;
 
 import org.apache.http.HttpHost;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.ssl.SSLContextBuilder;
 
@@ -39,9 +37,7 @@ class TwilioProxyClient {
         
         HttpClientBuilder clientBuilder = HttpClientBuilder.create()
           .setSSLContext(sslContext)
-          .setSSLHostnameVerifier(NoopHostnameVerifier.INSTANCE)
-          .setProxy(new HttpHost(host, port))
-          .setDefaultRequestConfig(RequestConfig.DEFAULT);
+          .setProxy(new HttpHost(host, port));
 
         return new NetworkHttpClient(clientBuilder);
     }
