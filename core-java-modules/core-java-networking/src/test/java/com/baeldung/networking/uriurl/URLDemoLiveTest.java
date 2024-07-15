@@ -7,10 +7,7 @@ import static org.junit.Assert.assertTrue;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
+import java.net.*;
 
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
@@ -43,8 +40,8 @@ public class URLDemoLiveTest {
     String urlContent = "";
 
     @BeforeClass
-    public static void givenEmplyURL_whenInitializeURL_thenSuccess() throws MalformedURLException {
-        url = new URL(URLCOMPOUND);
+    public static void givenEmplyURL_whenInitializeURL_thenSuccess() throws Exception {
+        url = new URI(URLCOMPOUND).toURL();
     }
 
     // check parsed URL
