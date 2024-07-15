@@ -49,7 +49,7 @@ class WhatsAppMessageDispatcherIntegrationTest {
         int port = remoteAddress.getPort();
 
         TwilioProxyClient twilioProxyClient = new TwilioProxyClient(accountSid, authToken, host, port);
-        Twilio.setRestClient(twilioProxyClient.getHttpClient());
+        Twilio.setRestClient(twilioProxyClient.createHttpClient());
         
         twilioApiPath = String.format("/2010-04-01/Accounts/%s/Messages.json", accountSid);
     }

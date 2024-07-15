@@ -21,16 +21,9 @@ class TwilioProxyClient {
     private final String authToken;
     private final String host;
     private final int port;
-    
-    public TwilioRestClient getHttpClient() {
-        HttpClient httpClient = createHttpClient();
-        return new Builder(accountSid, authToken)
-          .httpClient(httpClient)
-          .build();
-    }
 
     @SneakyThrows
-    private HttpClient createHttpClient() {
+    public TwilioRestClient createHttpClient() {
         SSLContext sslContext = SSLContextBuilder.create()
           .loadTrustMaterial((chain, authType) -> true)
           .build();
@@ -39,7 +32,10 @@ class TwilioProxyClient {
           .setSSLContext(sslContext)
           .setProxy(new HttpHost(host, port));
 
-        return new NetworkHttpClient(clientBuilder);
+        HttpClient httpClient = new NetworkHttpClient(clientBuilder);
+        return new Builder(accountSid, authToken)
+          .httpClient(httpClient)
+          .build();
     }
 
 }
