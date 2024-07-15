@@ -14,11 +14,10 @@ import com.baeldung.problemdetails.model.InvalidInputException;
 @RestControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
-  @ExceptionHandler(InvalidInputException.class)
-  public ProblemDetail handleInvalidOpException(InvalidInputException e, WebRequest request) {
-    final ProblemDetail problemDetail =
-        ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, e.getMessage());
-    problemDetail.setInstance(URI.create("discount"));
-    return problemDetail;
-  }
+    @ExceptionHandler(InvalidInputException.class)
+    public ProblemDetail handleInvalidOpException(InvalidInputException e, WebRequest request) {
+        final ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, e.getMessage());
+        problemDetail.setInstance(URI.create("discount"));
+        return problemDetail;
+    }
 }
