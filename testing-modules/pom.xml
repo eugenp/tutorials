@@ -16,6 +16,7 @@
 
     <modules>
         <module>assertion-libraries</module>
+        <module>assertJ</module>
         <module>cors</module>
         <module>cucumber</module>
         <module>easy-random</module>
@@ -62,7 +63,6 @@
         <module>mockito-3</module>
         <module>testing-techniques</module>
         <module>gatling-java</module>
-        <module>assertJ</module> 
     </modules>
 
 </project>
