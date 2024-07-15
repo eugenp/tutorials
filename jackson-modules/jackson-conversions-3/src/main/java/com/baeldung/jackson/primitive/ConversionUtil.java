@@ -22,7 +22,6 @@ public class ConversionUtil {
 
     public static PersonDTOWithType readJsonWithValueType(String json) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
-        mapper.enable(DeserializationFeature.USE_LONG_FOR_INTS);
         return mapper.readValue(json, PersonDTOWithType.class);
     }
 }
