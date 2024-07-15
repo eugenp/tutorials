@@ -1,7 +1,5 @@
 package com.baeldung.jackson.primitive.dtos;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-
 import java.util.List;
 
 public class PersonDTO {
