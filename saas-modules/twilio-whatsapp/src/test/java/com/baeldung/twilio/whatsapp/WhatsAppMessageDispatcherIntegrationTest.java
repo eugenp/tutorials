@@ -88,6 +88,7 @@ class WhatsAppMessageDispatcherIntegrationTest {
           .withBody(new ParameterBody(
               param("To", String.format("whatsapp:%s", contactNumber)),
               param("ContentSid", contentSid),
+              param("ContentVariables", String.format("{\"ArticleURL\":\"%s\"}", articleUrl)),
               param("MessagingServiceSid", messagingSid)
           )),
           VerificationTimes.once()
