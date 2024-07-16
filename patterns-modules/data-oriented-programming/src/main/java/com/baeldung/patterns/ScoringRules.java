@@ -1,4 +1,4 @@
-package com.baeldung.patterns.dataoriented;
+package com.baeldung.patterns;
 
 import java.util.List;
 import java.util.Map;
@@ -10,6 +10,10 @@ import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
 
 public class ScoringRules {
+
+	private ScoringRules() {
+	}
+
 	static int pairs(List<Integer> dices, int nrOfPairs) {
 		Map<Integer, Long> frequency = dices.stream()
 				.collect(groupingBy(identity(), counting()));
@@ -31,7 +35,7 @@ public class ScoringRules {
 				.sum();
 	}
 
-	public static Integer moreOfSameKind(List<Integer> roll, int nrOfDicesOfSameKind) {
+	static Integer moreOfSameKind(List<Integer> roll, int nrOfDicesOfSameKind) {
 		Map<Integer, Long> frequency = roll.stream()
 				.collect(groupingBy(identity(), counting()));
 
@@ -44,7 +48,7 @@ public class ScoringRules {
 				.orElse(0);
 	}
 
-	public static Integer specificValue(List<Integer> dices, Integer value) {
+	static Integer specificValue(List<Integer> dices, Integer value) {
 		return dices.stream()
 				.filter(value::equals)
 				.mapToInt(it -> it)
