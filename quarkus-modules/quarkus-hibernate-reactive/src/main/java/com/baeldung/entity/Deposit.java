@@ -1,20 +1,11 @@
 package com.baeldung.entity;
 
+import jakarta.persistence.Entity;
+
 import io.quarkus.hibernate.reactive.panache.PanacheEntity;
 import io.vertx.mutiny.sqlclient.Row;
 
-import jakarta.persistence.Entity;
-
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
 @Entity
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
 public class Deposit extends PanacheEntity {
 
     private String depositCode;
@@ -25,4 +16,36 @@ public class Deposit extends PanacheEntity {
         return new Deposit(row.getString("DEPOSITCODE"), row.getString("CURRENCY"), row.getString("AMOUNT"));
     }
 
+    public Deposit() {
+    }
+
+    public Deposit(String depositCode, String currency, String amount) {
+        this.depositCode = depositCode;
+        this.currency = currency;
+        this.amount = amount;
+    }
+
+    public String getDepositCode() {
+        return depositCode;
+    }
+
+    public void setDepositCode(String depositCode) {
+        this.depositCode = depositCode;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
+    public String getAmount() {
+        return amount;
+    }
+
+    public void setAmount(String amount) {
+        this.amount = amount;
+    }
 }

@@ -19,7 +19,6 @@
         <quarkus-test-hibernate-reactive-panache.version>3.3.3</quarkus-test-hibernate-reactive-panache.version>
         <quarkus-jdbc-h2.version>3.12.0</quarkus-jdbc-h2.version>
         <quarkus-reactive-h2-client.version>0.3.4</quarkus-reactive-h2-client.version>
-        <lombok.version>1.18.22</lombok.version>
     </properties>
 
     <dependencyManagement>
@@ -79,11 +78,6 @@
             <groupId>io.quarkiverse.quarkus-reactive-h2-client</groupId>
             <artifactId>quarkus-reactive-h2-client</artifactId>
             <version>${quarkus-reactive-h2-client.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
         </dependency>
     </dependencies>
 
