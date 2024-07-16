@@ -82,7 +82,7 @@
         <mysql.version>8.2.0</mysql.version>
         <mariaDB4j.version>2.6.0</mariaDB4j.version>
         <geodb.version>0.9</geodb.version>
-        <hibernate.version>6.4.2.Final</hibernate.version>
+        <hibernate.version>6.5.2.Final</hibernate.version>
     </properties>
 
 </project>
