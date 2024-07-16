@@ -27,8 +27,7 @@ class PGPExampleUtil {
     static byte[] compressFile(String fileName, int algorithm) throws IOException {
         ByteArrayOutputStream bOut = new ByteArrayOutputStream();
         PGPCompressedDataGenerator comData = new PGPCompressedDataGenerator(algorithm);
-        PGPUtil.writeFileToLiteralData(comData.open(bOut), PGPLiteralData.BINARY,
-                new File(fileName));
+        PGPUtil.writeFileToLiteralData(comData.open(bOut), PGPLiteralData.BINARY, new File(fileName));
         comData.close();
         return bOut.toByteArray();
     }
@@ -44,14 +43,13 @@ class PGPExampleUtil {
      * @throws PGPException
      * @throws NoSuchProviderException
      */
-    static PGPPrivateKey findSecretKey(PGPSecretKeyRingCollection pgpSec, long keyID, char[] pass)
-            throws PGPException, NoSuchProviderException {
+    static PGPPrivateKey findSecretKey(PGPSecretKeyRingCollection pgpSec, long keyID, char[] pass) throws PGPException, NoSuchProviderException {
         PGPSecretKey pgpSecKey = pgpSec.getSecretKey(keyID);
         if (pgpSecKey == null) {
             return null;
         }
-        return pgpSecKey.extractPrivateKey(
-                new JcePBESecretKeyDecryptorBuilder().setProvider("BC").build(pass));
+        return pgpSecKey.extractPrivateKey(new JcePBESecretKeyDecryptorBuilder().setProvider("BC")
+            .build(pass));
     }
 
     static PGPPublicKey readPublicKey(String fileName) throws IOException, PGPException {
@@ -71,8 +69,7 @@ class PGPExampleUtil {
      * @throws PGPException
      */
     static PGPPublicKey readPublicKey(InputStream input) throws IOException, PGPException {
-        PGPPublicKeyRingCollection pgpPub = new PGPPublicKeyRingCollection(
-                PGPUtil.getDecoderStream(input), new JcaKeyFingerprintCalculator());
+        PGPPublicKeyRingCollection pgpPub = new PGPPublicKeyRingCollection(PGPUtil.getDecoderStream(input), new JcaKeyFingerprintCalculator());
         Iterator keyRingIter = pgpPub.getKeyRings();
         while (keyRingIter.hasNext()) {
             PGPPublicKeyRing keyRing = (PGPPublicKeyRing) keyRingIter.next();
@@ -106,8 +103,7 @@ class PGPExampleUtil {
      * @throws PGPException if there is an issue parsing the input stream.
      */
     static PGPSecretKey readSecretKey(InputStream input) throws IOException, PGPException {
-        PGPSecretKeyRingCollection pgpSec = new PGPSecretKeyRingCollection(
-                PGPUtil.getDecoderStream(input), new JcaKeyFingerprintCalculator());
+        PGPSecretKeyRingCollection pgpSec = new PGPSecretKeyRingCollection(PGPUtil.getDecoderStream(input), new JcaKeyFingerprintCalculator());
         Iterator keyRingIter = pgpSec.getKeyRings();
         while (keyRingIter.hasNext()) {
             PGPSecretKeyRing keyRing = (PGPSecretKeyRing) keyRingIter.next();
