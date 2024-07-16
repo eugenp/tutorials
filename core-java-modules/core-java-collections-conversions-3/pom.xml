@@ -19,6 +19,11 @@
             <artifactId>commons-lang3</artifactId>
             <version>${apache.commons.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>${gson.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -43,6 +48,7 @@
 
     <properties>
         <apache.commons.version>3.14.0</apache.commons.version>
+        <gson.version>2.11.0</gson.version>
     </properties>
 
 </project>
