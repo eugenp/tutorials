@@ -162,6 +162,7 @@
         <h2.version>1.4.200</h2.version>
         <jakarta.xml.bind-api.version>4.0.0</jakarta.xml.bind-api.version>
         <javax.annotation.version>1.3.2</javax.annotation.version>
+        <hibernate.version>6.5.2.Final</hibernate.version>
     </properties>
 
 </project>
