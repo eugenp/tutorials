@@ -44,10 +44,8 @@ public class JSONArrayToHashMapConverterUnitTest {
 
     @Test
     void givenJsonArrayWithObjects_whenConvertUsingIterative_thenCorrectHashMap() {
-        // when
         Map<String, Object> hashMap = JSONArrayToHashMapConverter.convertUsingIterative(jsonArray);
 
-        // then
         assertEquals("John Doe", hashMap.get("name"));
         assertEquals("35", hashMap.get("age"));
         assertEquals("Programmer", hashMap.get("job"));
@@ -56,10 +54,8 @@ public class JSONArrayToHashMapConverterUnitTest {
 
     @Test
     void givenJsonArrayWithObjects_whenConvertUsingStreams_thenCorrectHashMap() {
-        // when
         Map<String, Object> hashMap = JSONArrayToHashMapConverter.convertUsingStreams(jsonArray);
 
-        // then
         assertEquals("John Doe", hashMap.get("name"));
         assertEquals("35", hashMap.get("age"));
         assertEquals("Programmer", hashMap.get("job"));
@@ -68,10 +64,8 @@ public class JSONArrayToHashMapConverterUnitTest {
 
     @Test
     void givenJsonArrayWithObjects_whenConvertUsingGson_thenCorrectHashMap() {
-        // when
         Map<String, Object> hashMap = JSONArrayToHashMapConverter.convertUsingGson(jsonArray);
 
-        // then
         assertEquals("John Doe", hashMap.get("name"));
         assertEquals(35.0, hashMap.get("age")); // Note: Gson parses numbers as Double
         assertEquals("Programmer", hashMap.get("job"));
