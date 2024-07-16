@@ -18,6 +18,7 @@
         <module>clean-architecture</module>
         <module>coupling</module>
         <module>cqrs-es</module>
+        <module>data-oriented-programming</module>
         <module>ddd</module>
         <module>ddd-contexts</module>
         <module>design-patterns-architectural</module>
