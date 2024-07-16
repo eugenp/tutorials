@@ -376,6 +376,30 @@
   "webAuthnPolicyPasswordlessAvoidSameAuthenticatorRegister" : false,
   "webAuthnPolicyPasswordlessAcceptableAaguids" : [ ],
   "webAuthnPolicyPasswordlessExtraOrigins" : [ ],
+  "users" : [ {
+    "id" : "d2406d7a-ddda-4c48-bd08-7cb6ad8d3a8d",
+    "username" : "user",
+    "firstName" : "User",
+    "lastName" : "Baeldung",
+    "email" : "user@baedung.com",
+    "emailVerified" : true,
+    "createdTimestamp" : 1718129923907,
+    "enabled" : true,
+    "totp" : false,
+    "credentials" : [ {
+      "id" : "c58d8940-3a70-4cfb-9fe0-cdc5e9653a9b",
+      "type" : "password",
+      "userLabel" : "My password",
+      "createdDate" : 1718129934654,
+      "secretData" : "{\"value\":\"SY263mJcWpq2025hLXOBbVNXaSjSwotkTbbBxXaBqbURG5C4jZ8sZKCZ9A/zHtZqUDw/ifcaJMXy9vw/sOtccA==\",\"salt\":\"Jz/12t80PwEGNj77zZBFkg==\",\"additionalParameters\":{}}",
+      "credentialData" : "{\"hashIterations\":210000,\"algorithm\":\"pbkdf2-sha512\",\"additionalParameters\":{}}"
+    } ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-baeldung" ],
+    "notBefore" : 0,
+    "groups" : [ ]
+  } ],
   "scopeMappings" : [ {
     "clientScope" : "offline_access",
     "roles" : [ "offline_access" ]
@@ -475,7 +499,9 @@
     "publicClient" : true,
     "frontchannelLogout" : false,
     "protocol" : "openid-connect",
-    "attributes" : { },
+    "attributes" : {
+      "post.logout.redirect.uris" : "+"
+    },
     "authenticationFlowBindingOverrides" : { },
     "fullScopeAllowed" : false,
     "nodeReRegistrationTimeout" : 0,
@@ -494,7 +520,15 @@
     "alwaysDisplayInConsole" : false,
     "clientAuthenticatorType" : "client-secret",
     "secret" : "secret",
-    "redirectUris" : [ "http://localhost:7080/bff/login/oauth2/code/baeldung", "https://localhost:7080/bff/login/oauth2/code/baeldung", "http://host.docker.internal:7080/bff/login/oauth2/code/baeldung", "https://host.docker.internal:7080/bff/login/oauth2/code/baeldung", "http://127.0.0.1:7080/bff/login/oauth2/code/baeldung", "https://127.0.0.1:7080/bff/login/oauth2/code/baeldung", "http://LOCALHOST_NAME:7080/bff/login/oauth2/code/baeldung", "https://LOCALHOST_NAME:7080/bff/login/oauth2/code/baeldung" ],
+    "redirectUris" : [ 
+      "http://localhost:7080/bff/login/oauth2/code/baeldung",
+      "http://127.0.0.1:7080/bff/login/oauth2/code/baeldung",
+      "http://host.docker.internal:7080/bff/login/oauth2/code/baeldung",
+      "http://LOCALHOST_NAME:7080/bff/login/oauth2/code/baeldung",
+      "https://localhost:7080/bff/login/oauth2/code/baeldung",
+      "https://127.0.0.1:7080/bff/login/oauth2/code/baeldung",
+      "https://host.docker.internal:7080/bff/login/oauth2/code/baeldung",
+      "https://LOCALHOST_NAME:7080/bff/login/oauth2/code/baeldung" ],
     "webOrigins" : [ "+" ],
     "notBefore" : 0,
     "bearerOnly" : false,
@@ -504,12 +538,13 @@
     "directAccessGrantsEnabled" : false,
     "serviceAccountsEnabled" : false,
     "publicClient" : false,
-    "frontchannelLogout" : true,
+    "frontchannelLogout" : false,
     "protocol" : "openid-connect",
     "attributes" : {
       "oidc.ciba.grant.enabled" : "false",
       "client.secret.creation.time" : "1713148612",
       "backchannel.logout.session.required" : "true",
+      "backchannel.logout.url" : "http://LOCALHOST_NAME:7080/bff/logout/connect/back-channel/baeldung",
       "post.logout.redirect.uris" : "http://localhost:7080/*##http://127.0.0.1:7080/*##https://localhost:7080/*##https://127.0.0.1:7080/*##http://LOCALHOST_NAME:7080/*##https://LOCALHOST_NAME:7080/*",
       "oauth2.device.authorization.grant.enabled" : "false",
       "display.on.consent.screen" : "false",
@@ -540,7 +575,9 @@
     "publicClient" : false,
     "frontchannelLogout" : false,
     "protocol" : "openid-connect",
-    "attributes" : { },
+    "attributes" : {
+      "post.logout.redirect.uris" : "+"
+    },
     "authenticationFlowBindingOverrides" : { },
     "fullScopeAllowed" : false,
     "nodeReRegistrationTimeout" : 0,
@@ -566,7 +603,9 @@
     "publicClient" : false,
     "frontchannelLogout" : false,
     "protocol" : "openid-connect",
-    "attributes" : { },
+    "attributes" : {
+      "post.logout.redirect.uris" : "+"
+    },
     "authenticationFlowBindingOverrides" : { },
     "fullScopeAllowed" : false,
     "nodeReRegistrationTimeout" : 0,
@@ -700,6 +739,7 @@
       "config" : {
         "introspection.token.claim" : "true",
         "multivalued" : "true",
+        "userinfo.token.claim" : "true",
         "user.attribute" : "foo",
         "id.token.claim" : "true",
         "access.token.claim" : "true",
@@ -1107,7 +1147,8 @@
       "config" : {
         "id.token.claim" : "true",
         "introspection.token.claim" : "true",
-        "access.token.claim" : "true"
+        "access.token.claim" : "true",
+        "userinfo.token.claim" : "true"
       }
     } ]
   } ],
@@ -1147,7 +1188,7 @@
       "subType" : "authenticated",
       "subComponents" : { },
       "config" : {
-        "allowed-protocol-mapper-types" : [ "saml-user-property-mapper", "oidc-usermodel-property-mapper", "oidc-full-name-mapper", "oidc-address-mapper", "saml-role-list-mapper", "oidc-usermodel-attribute-mapper", "oidc-sha256-pairwise-sub-mapper", "saml-user-attribute-mapper" ]
+        "allowed-protocol-mapper-types" : [ "oidc-usermodel-attribute-mapper", "oidc-sha256-pairwise-sub-mapper", "oidc-usermodel-property-mapper", "oidc-full-name-mapper", "oidc-address-mapper", "saml-user-property-mapper", "saml-role-list-mapper", "saml-user-attribute-mapper" ]
       }
     }, {
       "id" : "422076bf-db6c-4b05-8c41-45240adbaae5",
@@ -1156,7 +1197,7 @@
       "subType" : "anonymous",
       "subComponents" : { },
       "config" : {
-        "allowed-protocol-mapper-types" : [ "oidc-address-mapper", "oidc-full-name-mapper", "oidc-usermodel-property-mapper", "oidc-usermodel-attribute-mapper", "saml-role-list-mapper", "saml-user-attribute-mapper", "oidc-sha256-pairwise-sub-mapper", "saml-user-property-mapper" ]
+        "allowed-protocol-mapper-types" : [ "oidc-address-mapper", "oidc-sha256-pairwise-sub-mapper", "oidc-full-name-mapper", "oidc-usermodel-property-mapper", "saml-user-property-mapper", "saml-user-attribute-mapper", "saml-role-list-mapper", "oidc-usermodel-attribute-mapper" ]
       }
     }, {
       "id" : "49e4eeef-0974-4771-a972-7b16215eec1e",
@@ -1797,8 +1838,8 @@
   "attributes" : {
     "cibaBackchannelTokenDeliveryMode" : "poll",
     "cibaAuthRequestedUserHint" : "login_hint",
-    "oauth2DevicePollingInterval" : "5",
     "clientOfflineSessionMaxLifespan" : "0",
+    "oauth2DevicePollingInterval" : "5",
     "clientSessionIdleTimeout" : "0",
     "actionTokenGeneratedByUserLifespan.verify-email" : "",
     "actionTokenGeneratedByUserLifespan.idp-verify-account-via-email" : "",
@@ -1814,7 +1855,7 @@
     "shortVerificationUri" : "",
     "actionTokenGeneratedByUserLifespan.reset-credentials" : ""
   },
-  "keycloakVersion" : "24.0.2",
+  "keycloakVersion" : "24.0.0",
   "userManagedAccessAllowed" : false,
   "clientProfiles" : {
     "profiles" : [ ]
