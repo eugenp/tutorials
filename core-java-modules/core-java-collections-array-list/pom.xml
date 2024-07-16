@@ -45,8 +45,8 @@
     </build>
 
     <properties>
-        <maven-compiler-plugin.source>16</maven-compiler-plugin.source>
-        <maven-compiler-plugin.target>16</maven-compiler-plugin.target>
+        <maven-compiler-plugin.source>21</maven-compiler-plugin.source>
+        <maven-compiler-plugin.target>21</maven-compiler-plugin.target>
         <surefire.plugin.version>3.0.0-M3</surefire.plugin.version>
     </properties>
 
