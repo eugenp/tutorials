@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>clean-architecture</artifactId>
+    <artifactId>data-oriented-programming</artifactId>
     <version>1.0</version>
-    <name>data-oriented-programming</name>
+    <name>Data-Oriented Programming</name>
     <description>Project for Data Oriented Programming in Java</description>
 
     <parent>
