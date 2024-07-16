@@ -46,4 +46,8 @@
         </dependency>
     </dependencies>
 
+    <properties>
+        <start-class>com.baeldung.h2db.schema.SampleSchemaApplication</start-class>
+    </properties>
+
 </project>
