@@ -57,7 +57,6 @@
         <!-- The main class to start by executing java -jar -->
         <start-class>com.baeldung.h2db.demo.server.SpringBootApp</start-class>
         <db-util.version>1.0.7</db-util.version>
-        <hibernate-core.version>6.5.2.Final</hibernate-core.version>
     </properties>
 
 </project>
