@@ -11,19 +11,21 @@ import com.twilio.http.NetworkHttpClient;
 import com.twilio.http.TwilioRestClient;
 import com.twilio.http.TwilioRestClient.Builder;
 
-import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
-
-@RequiredArgsConstructor
 class TwilioProxyClient {
 
     private final String accountSid;
     private final String authToken;
     private final String host;
     private final int port;
+    
+    public TwilioProxyClient(String accountSid, String authToken, String host, int port) {
+        this.accountSid = accountSid;
+        this.authToken = authToken;
+        this.host = host;
+        this.port = port;
+    }
 
-    @SneakyThrows
-    public TwilioRestClient createHttpClient() {
+    public TwilioRestClient createHttpClient() throws Exception {
         SSLContext sslContext = SSLContextBuilder.create()
           .loadTrustMaterial((chain, authType) -> true)
           .build();

@@ -40,7 +40,7 @@ class WhatsAppMessageDispatcherIntegrationTest {
     private static final String EMPTY_JSON = "{}";
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws Exception {
         String accountSid = twilioConfigurationProperties.getAccountSid();
         String authToken = twilioConfigurationProperties.getAuthToken();
 

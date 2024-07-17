@@ -7,14 +7,15 @@ import org.springframework.stereotype.Component;
 
 import com.twilio.Twilio;
 
-import lombok.RequiredArgsConstructor;
-
 @Component
-@RequiredArgsConstructor
 @EnableConfigurationProperties(TwilioConfigurationProperties.class)
 public class TwilioInitializer implements ApplicationRunner {
 
     private final TwilioConfigurationProperties twilioConfigurationProperties;
+
+    public TwilioInitializer(TwilioConfigurationProperties twilioConfigurationProperties) {
+        this.twilioConfigurationProperties = twilioConfigurationProperties;
+    }
 
     @Override
     public void run(ApplicationArguments args) {

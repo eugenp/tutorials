@@ -6,11 +6,7 @@ import org.springframework.validation.annotation.Validated;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
 @Validated
 @ConfigurationProperties(prefix = "com.baeldung.twilio")
 public class TwilioConfigurationProperties {
@@ -29,13 +25,51 @@ public class TwilioConfigurationProperties {
     @Valid
     private NewArticleNotification newArticleNotification = new NewArticleNotification();
 
-    @Getter
-    @Setter
+    public String getAccountSid() {
+        return accountSid;
+    }
+
+    public void setAccountSid(String accountSid) {
+        this.accountSid = accountSid;
+    }
+
+    public String getAuthToken() {
+        return authToken;
+    }
+
+    public void setAuthToken(String authToken) {
+        this.authToken = authToken;
+    }
+
+    public String getMessagingSid() {
+        return messagingSid;
+    }
+
+    public void setMessagingSid(String messagingSid) {
+        this.messagingSid = messagingSid;
+    }
+
+    public NewArticleNotification getNewArticleNotification() {
+        return newArticleNotification;
+    }
+
+    public void setNewArticleNotification(NewArticleNotification newArticleNotification) {
+        this.newArticleNotification = newArticleNotification;
+    }
+
     public class NewArticleNotification {
 
         @NotBlank(message = "Content SID must be configured")
         @Pattern(regexp = "^HX[0-9a-fA-F]{32}$", message = "Invalid content SID format")
         private String contentSid;
+
+        public String getContentSid() {
+            return contentSid;
+        }
+
+        public void setContentSid(String contentSid) {
+            this.contentSid = contentSid;
+        }
 
     }
 

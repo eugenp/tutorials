@@ -7,14 +7,15 @@ import org.springframework.stereotype.Service;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
 
-import lombok.RequiredArgsConstructor;
-
 @Service
-@RequiredArgsConstructor
 @EnableConfigurationProperties(TwilioConfigurationProperties.class)
 public class WhatsAppMessageDispatcher {
 
     private final TwilioConfigurationProperties twilioConfigurationProperties;
+
+    public WhatsAppMessageDispatcher(TwilioConfigurationProperties twilioConfigurationProperties) {
+        this.twilioConfigurationProperties = twilioConfigurationProperties;
+    }
 
     public void dispatchNewArticleNotification(String phoneNumber, String articleUrl) {
         String messagingSid = twilioConfigurationProperties.getMessagingSid();
