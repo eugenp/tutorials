@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 class SubarrayMeanBruteForceUnitTest {
 
       @Test
-    void givenMultipleTestCasesReturnTheCorrectCount() {
+    void givenMultipleTestCases_thenReturnTheCorrectCount() {
         int[][] testCases = {
             {5, 3, 6, 2},
             {1, 1, 1},
@@ -25,21 +25,21 @@ class SubarrayMeanBruteForceUnitTest {
     }
 
     @Test
-    void givenSingleValueWithSameTargetMeanShouldCountCorrectly() {
+    void givenSingleValueWithSameTargetMean_thenCountCorrectly() {
         int[] arr = {5};
         assertEquals(1, SubarrayMeansBruteForce.countSubarraysWithMean(arr, 5));
         assertEquals(0, SubarrayMeansBruteForce.countSubarraysWithMean(arr, 0));
     }
 
     @Test
-    void givenMultipleZerosReturnPermutationCount() {
+    void givenMultipleZeros_thenReturnPermutationCount() {
         int[] arr = {0, 0, 0, 0};
         assertEquals(10, SubarrayMeansBruteForce.countSubarraysWithMean(arr, 0));
         assertEquals(0, SubarrayMeansBruteForce.countSubarraysWithMean(arr, 1));
     }
 
     @Test
-    void givenLargeNumbersReturnCountCorrectly() {
+    void givenLargeNumbers_thenReturnCountCorrectly() {
         int[] arr = {1_000_000_000, 2_000_000_000};
         assertEquals(1, SubarrayMeansBruteForce.countSubarraysWithMean(arr, 1_500_000_000));
     }
