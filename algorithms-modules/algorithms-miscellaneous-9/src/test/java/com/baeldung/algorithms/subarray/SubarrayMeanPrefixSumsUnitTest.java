@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 class SubarrayMeanPrefixSumsUnitTest {
 
     @Test
-    void givenMultipleTestCasesReturnTheCorrectCount() {
+    void givenMultipleTestCases_thenReturnTheCorrectCount() {
         int[][] testCases = {
             {5, 3, 6, 2},
             {1, 1, 1},
@@ -25,21 +25,21 @@ class SubarrayMeanPrefixSumsUnitTest {
     }
 
     @Test
-    void givenSingleValueWithSameTargetMeanShouldBe1() {
+    void givenSingleValueWithSameTargetMean_whenMeanIs5_thenReturn1() {
         int[] arr = {5};
         assertEquals(1, SubarrayMeansPrefixSums.countSubarraysWithMean(arr, 5));
         assertEquals(0, SubarrayMeansPrefixSums.countSubarraysWithMean(arr, 0));
     }
 
     @Test
-    void givenMultipleZerosReturnPermutationCount() {
+    void givenMultipleZeros_thenReturnPermutationCount() {
         int[] arr = {0, 0, 0, 0};
         assertEquals(10, SubarrayMeansPrefixSums.countSubarraysWithMean(arr, 0));
         assertEquals(0, SubarrayMeansPrefixSums.countSubarraysWithMean(arr, 1));
     }
 
     @Test
-    void givenLargeNumbersReturnCountCorrectly() {
+    void givenLargeNumbers_thenCountCorrectly() {
         int[] arr = {1_000_000_000, 2_000_000_000};
         assertEquals(1, SubarrayMeansPrefixSums.countSubarraysWithMean(arr, 1_500_000_000));
     }
