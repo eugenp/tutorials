@@ -82,6 +82,7 @@
 
     <properties>
         <jakarta.xml.bind.version>4.0.0</jakarta.xml.bind.version>
+        <hibernate.version>6.5.2.Final</hibernate.version>
     </properties>
 
 </project>
