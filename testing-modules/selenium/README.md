@@ -8,6 +8,7 @@
 - [Taking Screenshots With Selenium WebDriver](https://www.baeldung.com/java-selenium-screenshots)
 - [Uploading File Using Selenium Webdriver in Java](https://www.baeldung.com/java-selenium-upload-file)
 - [StaleElementReferenceException in Selenium](https://www.baeldung.com/selenium-staleelementreferenceexception)
+- [How to Select Value From Dropdown Using Selenium Webdriver](https://www.baeldung.com/java-selenium-select-dropdown-value)
 
 
 #### Notes:
