@@ -25,11 +25,11 @@ public class ConvertBetweenStringAndStringBuilderUnitTest {
 
     @Test
     void whenConvertStringToStringBuilderUsingAppend_thenCorrect() {
-        String input = "a b c d e f";
+        String input = "C C++ C# Ruby Go Rust";
         StringBuilder sb = new StringBuilder().append(input);
         assertEquals(input, sb.toString());
 
-        String[] strings = new String[] { "a ", "b ", "c ", "d ", "e ", "f" };
+        String[] strings = new String[] { "C ", "C++ ", "C# ", "Ruby ", "Go ", "Rust" };
         StringBuilder sb2 = new StringBuilder();
         for (String str : strings) {
             sb2.append(str);
