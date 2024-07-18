@@ -10,13 +10,17 @@ public class ShallowCopyTest {
         SystemConfig originalConfig = new SystemConfig(1, originalSetting);
 
         //        Create a Shallow copy
-        SystemConfig shallowCopyConfig = originalConfig;
+        SystemConfig shallowCopyConfig = new SystemConfig(originalConfig);
         shallowCopyConfig.setId(2);
-        shallowCopyConfig.setSetting(new Setting("Timeout", "20s"));
+        shallowCopyConfig.getSetting().setName("Timeout");
+        shallowCopyConfig.getSetting().setValue("20s");
 
         //        Assert if changes affect the original object
-        assertEquals(2, originalConfig.getId());
+        assertEquals(1, originalConfig.getId());
         assertEquals("Setting{name='Timeout', value='20s'}", originalConfig.getSetting()
             .toString());
+
+        assertEquals(2, shallowCopyConfig.getId());
+        assertEquals("Setting{name='Timeout', value='20s'}", shallowCopyConfig.getSetting().toString());
     }
 }
