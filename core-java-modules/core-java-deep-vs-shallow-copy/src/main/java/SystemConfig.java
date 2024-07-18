@@ -10,7 +10,7 @@ public class SystemConfig {
 
     public SystemConfig(SystemConfig systemConfig) {
         this.id = systemConfig.id;
-        this.setting = new Setting(systemConfig.setting);
+        this.setting = systemConfig.setting;
     }
 
     public void setId(int id) {
