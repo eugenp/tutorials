@@ -47,7 +47,7 @@
         <module>core-java-12</module>
         <module>core-java-13</module>
         <module>core-java-15</module>
-        <module>core-java-collections-array-list</module>
+        <!--<module>core-java-collections-array-list</module> --> <!-- requires JDK 21 -->
         <module>core-java-collections-array-list-2</module>
         <module>core-java-collections-list-4</module>
         <module>core-java-collections-list-5</module>
@@ -75,6 +75,7 @@
         <!--<module>core-java-strings</module> Failing test cases JAVA-24414-->
         <module>core-java-time-measurements</module>
         <module>core-java-annotations</module>
+        <module>core-java-annotations-2</module>
         <module>core-java-arrays-sorting</module>
         <module>core-java-arrays-guides</module>
         <module>core-java-arrays-multidimensional</module>
@@ -164,6 +165,7 @@
         <module>core-java-lang-operators-2</module>
         <module>core-java-lang-syntax</module>
         <module>core-java-lang-syntax-2</module>
+        <module>core-java-lang-syntax-3</module>
         <module>core-java-locale</module>
         <module>core-java-loops</module>
         <module>core-java-networking</module>
@@ -181,6 +183,7 @@
         <module>core-java-numbers-7</module>
         <module>core-java-numbers-8</module>
         <module>core-java-optional</module>
+        <module>core-java-optional-2</module>
         <module>core-java-perf</module>
         <module>core-java-properties</module>
         <module>core-java-reflection</module>

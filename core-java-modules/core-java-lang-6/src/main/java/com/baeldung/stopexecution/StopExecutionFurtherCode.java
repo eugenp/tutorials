@@ -4,6 +4,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Locale;
 
@@ -65,12 +67,12 @@ public class StopExecutionFurtherCode {
         return statusCode;
     }
 
-    void download(String fileUrl, String destinationPath) throws MalformedURLException {
+    void download(String fileUrl, String destinationPath) throws MalformedURLException, URISyntaxException {
         if (fileUrl == null || fileUrl.isEmpty() || destinationPath == null || destinationPath.isEmpty()) {
             return;
         }
         // execute downloading
-        URL url = new URL(fileUrl);
+        URL url = new URI(fileUrl).toURL();
         try (InputStream in = url.openStream(); FileOutputStream out = new FileOutputStream(destinationPath)) {
             byte[] buffer = new byte[1024];
             int bytesRead;

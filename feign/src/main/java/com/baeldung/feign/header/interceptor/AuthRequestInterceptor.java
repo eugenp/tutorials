@@ -7,7 +7,7 @@ import feign.RequestTemplate;
 
 public class AuthRequestInterceptor implements RequestInterceptor {
 
-    private AuthorisationService authTokenService;
+    private final AuthorisationService authTokenService;
 
     public AuthRequestInterceptor(AuthorisationService authTokenService) {
         this.authTokenService = authTokenService;

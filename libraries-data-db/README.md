@@ -13,3 +13,4 @@ This module contains articles about database-related data processing libraries.
 - [Introduction to Debezium](https://www.baeldung.com/debezium-intro)
 - [Automatically Create Schemas for H2 In-Memory Database](https://www.baeldung.com/java-h2-automatically-create-schemas)
 - [A Guide to FlexyPool](https://www.baeldung.com/spring-flexypool-guide)
+- [Introduction to TigerBeetle Transactions Database](https://www.baeldung.com/java-db-tigerbeetle)
