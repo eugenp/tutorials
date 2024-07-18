@@ -3,14 +3,17 @@ package com.baeldung.lombok;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import jakarta.persistence.*;
+import lombok.Setter;
 
-@Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 @Entity
 public class DefaultConstructorPerson {
 
@@ -19,11 +22,5 @@ public class DefaultConstructorPerson {
     private Long id;
     private String username;
     private String password;
-
-/*    public DefaultConstructorPerson() {
-        this.id = null;
-        this.username = null;
-        this.password = null;
-    }*/
 }
 
