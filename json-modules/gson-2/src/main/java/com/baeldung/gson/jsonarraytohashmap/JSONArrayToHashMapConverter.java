@@ -23,13 +23,9 @@ public class JSONArrayToHashMapConverter {
         Map<String, Object> hashMap = new HashMap<>();
         for (JsonElement element : jsonArray) {
             JsonObject jsonObject = element.getAsJsonObject();
-            for (Map.Entry<String, JsonElement> entry : jsonObject.entrySet()) {
-                if (entry.getValue().isJsonPrimitive()) {
-                    hashMap.put(entry.getKey(), entry.getValue().getAsJsonPrimitive().getAsString());
-                } else {
-                    hashMap.put(entry.getKey(), entry.getValue());
-                }
-            }
+            String type = jsonObject.get("name").getAsString();
+            Integer amount = jsonObject.get("age").getAsInt();
+            hashMap.put(type, amount);
         }
         return hashMap;
     }
@@ -37,10 +33,9 @@ public class JSONArrayToHashMapConverter {
     public static Map<String, Object> convertUsingStreams (JsonArray jsonArray) {
         return StreamSupport.stream(jsonArray.spliterator(), false)
             .map(JsonElement::getAsJsonObject)
-            .flatMap(jsonObject -> jsonObject.entrySet().stream())
             .collect(Collectors.toMap(
-                Map.Entry::getKey,
-                entry -> entry.getValue().isJsonPrimitive() ? entry.getValue().getAsJsonPrimitive().getAsString() : entry.getValue()
+                jsonObject -> jsonObject.get("name").getAsString(),
+                jsonObject -> jsonObject.get("age").getAsInt()
             ));
     }
 
@@ -48,26 +43,11 @@ public class JSONArrayToHashMapConverter {
         Map<String, Object> hashMap = new HashMap<>();
         Gson gson = new Gson();
         List<Map<String, Object>> list = new Gson().fromJson(jsonArray, List.class);
-        for (Map<String, Object> entry : list) {
-            hashMap.putAll(entry);
+        for (Map<String, Object> map : list) {
+            String type = (String) map.get("name");
+            Integer amount = ((Double) map.get("age")).intValue(); // Gson parses numbers as Double
+            hashMap.put(type, amount);
         }
         return hashMap;
-    }
-
-    public static void main (String args []) {
-        JsonArray jsonArray = new JsonArray();
-
-        JsonObject jsonObject1 = new JsonObject();
-        jsonObject1.addProperty("name", "John Doe");
-        jsonObject1.addProperty("age", "35");
-        jsonArray.add(jsonObject1);
-
-        JsonObject jsonObject2 = new JsonObject();
-        jsonObject2.addProperty("job", "Programmer");
-        jsonObject2.addProperty("department", "IT");
-        jsonArray.add(jsonObject2);
-        Map<String, Object> hashMap = convertUsingIterative(jsonArray);
-
-        System.out.println(hashMap);
     }
 }

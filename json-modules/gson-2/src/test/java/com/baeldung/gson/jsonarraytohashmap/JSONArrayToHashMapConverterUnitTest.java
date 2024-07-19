@@ -26,18 +26,20 @@ public class JSONArrayToHashMapConverterUnitTest {
         jsonArray.add(jsonObject1);
 
         JsonObject jsonObject2 = new JsonObject();
-        jsonObject2.addProperty("job", "Programmer");
-        jsonObject2.addProperty("department", "IT");
+        jsonObject2.addProperty("name", "Mary Jenn");
+        jsonObject2.addProperty("age", 41);
         jsonArray.add(jsonObject2);
 
         jsonArrayWithDuplicates = new JsonArray();
 
         JsonObject jsonObject3 = new JsonObject();
-        jsonObject3.addProperty("key", "value1");
+        jsonObject3.addProperty("name", "John Doe");
+        jsonObject3.addProperty("age", 35);
         jsonArrayWithDuplicates.add(jsonObject3);
 
         JsonObject jsonObject4 = new JsonObject();
-        jsonObject4.addProperty("key", "value2");
+        jsonObject4.addProperty("name", "John Doe");
+        jsonObject4.addProperty("age", 41);
         jsonArrayWithDuplicates.add(jsonObject4);
     }
 
@@ -46,47 +48,41 @@ public class JSONArrayToHashMapConverterUnitTest {
     void givenJsonArrayWithObjects_whenConvertUsingIterative_thenCorrectHashMap() {
         Map<String, Object> hashMap = JSONArrayToHashMapConverter.convertUsingIterative(jsonArray);
 
-        assertEquals("John Doe", hashMap.get("name"));
-        assertEquals("35", hashMap.get("age"));
-        assertEquals("Programmer", hashMap.get("job"));
-        assertEquals("IT", hashMap.get("department"));
+        assertEquals(35, hashMap.get("John Doe"));
+        assertEquals(41, hashMap.get("Mary Jenn"));
     }
 
     @Test
     void givenJsonArrayWithObjects_whenConvertUsingStreams_thenCorrectHashMap() {
         Map<String, Object> hashMap = JSONArrayToHashMapConverter.convertUsingStreams(jsonArray);
 
-        assertEquals("John Doe", hashMap.get("name"));
-        assertEquals("35", hashMap.get("age"));
-        assertEquals("Programmer", hashMap.get("job"));
-        assertEquals("IT", hashMap.get("department"));
+        assertEquals(35, hashMap.get("John Doe"));
+        assertEquals(41, hashMap.get("Mary Jenn"));
     }
 
     @Test
     void givenJsonArrayWithObjects_whenConvertUsingGson_thenCorrectHashMap() {
         Map<String, Object> hashMap = JSONArrayToHashMapConverter.convertUsingGson(jsonArray);
 
-        assertEquals("John Doe", hashMap.get("name"));
-        assertEquals(35.0, hashMap.get("age")); // Note: Gson parses numbers as Double
-        assertEquals("Programmer", hashMap.get("job"));
-        assertEquals("IT", hashMap.get("department"));
+        assertEquals(35, hashMap.get("John Doe"));
+        assertEquals(41, hashMap.get("Mary Jenn"));
     }
 
     @Test
     void givenJsonArrayWithDuplicateKeys_whenConvertUsingIterative_thenLastValueWins() {
         Map<String, Object> hashMap = JSONArrayToHashMapConverter.convertUsingIterative(jsonArrayWithDuplicates);
-        assertEquals("value2", hashMap.get("key"));
+        assertEquals(41, hashMap.get("John Doe"));
     }
 
     @Test
     void givenJsonArrayWithDuplicateKeys_whenConvertUsingStreams_thenLastValueWins() {
         Map<String, Object> hashMap = JSONArrayToHashMapConverter.convertUsingIterative(jsonArrayWithDuplicates);
-        assertEquals("value2", hashMap.get("key"));
+        assertEquals(41, hashMap.get("John Doe"));
     }
 
     @Test
     void givenJsonArrayWithDuplicateKeys_whenConvertUsingGson_thenLastValueWins() {
         Map<String, Object> hashMap = JSONArrayToHashMapConverter.convertUsingGson(jsonArrayWithDuplicates);
-        assertEquals("value2", hashMap.get("key"));
+        assertEquals(41, hashMap.get("John Doe"));
     }
 }
