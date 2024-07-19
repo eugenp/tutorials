@@ -26,8 +26,8 @@ public class CustomUserAttrController {
 
         Map<String, Object> customClaims = token.getClaims();
 
-        if (customClaims.containsKey("sid")) {
-            userId = String.valueOf(customClaims.get("sid"));
+        if (customClaims.containsKey("user_id")) {
+            userId = String.valueOf(customClaims.get("user_id"));
         }
 
         if (customClaims.containsKey("DOB")) {
