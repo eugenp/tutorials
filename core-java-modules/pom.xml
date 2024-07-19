@@ -47,7 +47,7 @@
         <module>core-java-12</module>
         <module>core-java-13</module>
         <module>core-java-15</module>
-        <module>core-java-collections-array-list</module>
+        <!--<module>core-java-collections-array-list</module> --> <!-- requires JDK 21 -->
         <module>core-java-collections-array-list-2</module>
         <module>core-java-collections-list-4</module>
         <module>core-java-collections-list-5</module>
