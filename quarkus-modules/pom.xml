@@ -14,12 +14,12 @@
     </parent>
 
     <modules>
-        <!-- <module>quarkus</module> --> <!-- failing after upgrade to jdk21 -->
+        <module>quarkus</module><!-- failing after upgrade to jdk21 -->
         <module>quarkus-extension</module>
         <module>quarkus-jandex</module>
         <module>quarkus-vs-springboot</module>
         <module>quarkus-funqy</module>
-        <!-- <module>quarkus-virtual-threads</module>> --> <!-- failing after upgrade to jdk21 -->
+        <!-- <module>quarkus-virtual-threads</module> --> <!-- failing after upgrade to jdk21 -->
     </modules>
 
 </project>
