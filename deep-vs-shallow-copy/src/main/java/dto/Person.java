@@ -1,7 +1,6 @@
 package dto;
 
 public class Person implements Cloneable {
-
     public String name;
     public Car car;
 
