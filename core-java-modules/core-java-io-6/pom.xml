@@ -19,6 +19,11 @@
             <artifactId>commons-io</artifactId>
             <version>${commons-io.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.tika</groupId>
+            <artifactId>tika-core</artifactId>
+            <version>${tika-core.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -43,6 +48,7 @@
     </build>
 
     <properties>
-      
+        <tika-core.version>2.9.2</tika-core.version>
     </properties>
+
 </project>
