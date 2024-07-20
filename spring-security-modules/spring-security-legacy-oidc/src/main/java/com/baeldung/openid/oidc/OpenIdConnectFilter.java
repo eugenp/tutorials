@@ -1,6 +1,7 @@
 package com.baeldung.openid.oidc;
 
 import java.io.IOException;
+import java.net.URI;
 import java.net.URL;
 import java.security.interfaces.RSAPublicKey;
 import java.util.Date;
@@ -82,7 +83,7 @@ public class OpenIdConnectFilter extends AbstractAuthenticationProcessingFilter 
 
 
     private RsaVerifier verifier(String kid) throws Exception {
-        JwkProvider provider = new UrlJwkProvider(new URL(jwkUrl));
+        JwkProvider provider = new UrlJwkProvider(new URI(jwkUrl).toURL());
         Jwk jwk = provider.get(kid);
         return new RsaVerifier((RSAPublicKey) jwk.getPublicKey());
     }
