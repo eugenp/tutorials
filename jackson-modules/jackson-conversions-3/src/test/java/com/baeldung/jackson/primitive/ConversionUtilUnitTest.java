@@ -12,19 +12,27 @@ import static org.junit.jupiter.api.Assertions.*;
 class ConversionUtilUnitTest {
 
     @Test
-    void givenJsonWithDifferentValueTypes_whenDeserialize_thenSuccess() throws JsonProcessingException {
+    void givenJsonWithDifferentValueTypes_whenDeserialize_thenLongValue() throws JsonProcessingException {
         String json = "{\"person\": [{\"key\": \"name\", \"value\": \"John\"}, {\"key\": \"id\", \"value\": 25}]}";
-        PersonDTOWithCustomDeserializer personDTO = readJson(json);
+        PersonDTOWithCustomDeserializer personDTO = readJsonWithCustomDeserializer(json);
         assertEquals(String.class, personDTO.getPerson().get(0).getValue().getClass());
         assertEquals(Long.class, personDTO.getPerson().get(1).getValue().getClass());
     }
 
     @Test
-    void givenJsonWithDifferentValueTypes_whenDeserializeWithLongForInts_thenSuccess() throws JsonProcessingException {
+    void givenJsonWithDifferentValueTypes_whenDeserializeWithLongForInts_thenLongValue() throws JsonProcessingException {
         String json = "{\"person\": [{\"key\": \"name\", \"value\": \"John\"}, {\"key\": \"id\", \"value\": 25}]}";
         PersonDTO personDTO = readJsonWithLongForInts(json);
         assertEquals(String.class, personDTO.getPerson().get(0).getValue().getClass());
         assertEquals(Long.class, personDTO.getPerson().get(1).getValue().getClass());
+    }
+
+    @Test
+    void givenJsonWithDifferentValueTypes_whenDeserialize_thenIntValue() throws JsonProcessingException {
+        String json = "{\"person\": [{\"key\": \"name\", \"value\": \"John\"}, {\"key\": \"id\", \"value\": 25}]}";
+        PersonDTO personDTO = readJson(json);
+        assertEquals(String.class, personDTO.getPerson().get(0).getValue().getClass());
+        assertEquals(Integer.class, personDTO.getPerson().get(1).getValue().getClass());
     }
 
     @Test

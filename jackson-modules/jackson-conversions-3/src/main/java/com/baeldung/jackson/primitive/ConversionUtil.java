@@ -9,9 +9,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class ConversionUtil {
 
-    public static PersonDTOWithCustomDeserializer readJson(String json) throws JsonProcessingException {
+    public static PersonDTOWithCustomDeserializer readJsonWithCustomDeserializer(String json) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
         return mapper.readValue(json, PersonDTOWithCustomDeserializer.class);
+    }
+
+    public static PersonDTO readJson(String json) throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.readValue(json, PersonDTO.class);
     }
 
     public static PersonDTO readJsonWithLongForInts(String json) throws JsonProcessingException {
