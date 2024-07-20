@@ -32,4 +32,22 @@ class RemoveWhitespaceUnitTest {
         String result = StringUtils.normalizeSpace(myString);
         assertThat(result).isEqualTo("I am a wonderful String !");
     }
+    
+    @Test
+    void givenStringWithWhitespace_whenStrip_shouldGetExpectedResult() {
+        String result = StringUtils.strip(myString);
+        assertThat(result).isEqualTo("I am a wonderful String !");
+    }
+    
+    @Test
+    void givenStringWithWhitespace_whenStripLeading_shouldGetExpectedResult() {
+        String result = StringUtils.strip(myString);
+        assertThat(result).isEqualTo("I    am a    wonderful String     !   ");
+    }
+
+    @Test
+    void givenStringWithWhitespace_whenStripTrailing_shouldGetExpectedResult() {
+        String result = StringUtils.strip(myString);
+        assertThat(result).isEqualTo("   I    am a    wonderful String     !");
+    }
 }
