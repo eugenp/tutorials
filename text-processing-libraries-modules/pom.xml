@@ -17,8 +17,8 @@
         <module>antlr</module>
         <module>apache-tika</module>
         <module>asciidoctor</module>
-        <!-- <module>pdf</module> --> <!-- failing after upgrade to jdk21 -->
-        <!-- <module>pdf-2</module> --> <!-- failing after upgrade to jdk21 -->
+        <module>pdf</module>
+        <module>pdf-2</module>
     </modules>
 
     <build>
