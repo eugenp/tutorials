@@ -406,6 +406,7 @@
                 <!--<module>apache-spark</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>jhipster-modules/jhipster-uaa</module>--><!-- failing after upgrading to jdk17-->
                 <module>jhipster-8-modules</module>
+                <module>microservices-modules/microprofile</module>
                 <module>spring-cloud-modules/spring-cloud-azure</module>
                 <module>kubernetes-modules/k8s-operator</module>
                 <module>web-modules/restx</module>
@@ -511,6 +512,7 @@
                 <!--<module>apache-spark</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>jhipster-modules/jhipster-uaa</module>--><!-- failing after upgrading to jdk17-->
                 <module>jhipster-8-modules</module>
+                <module>microservices-modules/microprofile</module>
                 <module>spring-cloud-modules/spring-cloud-azure</module>
                 <module>web-modules/restx</module>
                 <module>libraries-testing</module>
@@ -704,7 +706,7 @@
 		<module>spring-ai-2</module>
                 <module>spring-aop-2</module>
                 <module>spring-aop</module>
-                <module>spring-batch-2</module>
+                <!--<module>spring-batch-2</module>--><!-- requires JDK-21 -->
                 <module>spring-batch</module>
                 <module>spring-boot-modules</module>
                 <module>spring-boot-rest</module>
@@ -883,6 +885,7 @@
                 <module>libraries-2</module>
                 <module>libraries-3</module>
                 <module>libraries-4</module>
+                <module>libraries-5</module>
                 <module>libraries-ai</module>
                 <module>libraries-apache-commons-2</module>
                 <module>libraries-apache-commons-collections</module>
@@ -932,6 +935,7 @@
                 <module>persistence-modules</module>
                 <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->                     
                 <module>persistence-modules/spring-data-neo4j</module>
+                <module>podman</module>
                 <module>protobuffer</module>
                 <module>quarkus-modules</module>
                 <module>reactive-systems</module>
@@ -955,7 +959,7 @@
 		<module>spring-ai-2</module>
                 <module>spring-aop-2</module>
                 <module>spring-aop</module>
-                <module>spring-batch-2</module>
+                <!--<module>spring-batch-2</module>--><!-- requires JDK-21 -->
                 <module>spring-batch</module>
                 <module>spring-boot-modules</module>
                 <module>spring-boot-rest</module>
@@ -1131,7 +1135,7 @@
         <hamcrest.version>2.2</hamcrest.version>
         <hamcrest-all.version>1.3</hamcrest-all.version>
         <mockito.version>5.11.0</mockito.version>
-        <byte-buddy.version>1.14.11</byte-buddy.version>
+        <byte-buddy.version>1.14.18</byte-buddy.version>
 
         <!-- logging -->
         <!-- overwriting in the slf4j and logback in the hibernate-jpa, spring-data-eclipselink. When updated to the latest version remove the version from that module-->
@@ -1141,7 +1145,7 @@
         <!-- plugins -->
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
         <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
-        <exec-maven-plugin.version>3.2.0</exec-maven-plugin.version>
+        <exec-maven-plugin.version>3.3.0</exec-maven-plugin.version>
         <java.version>8</java.version>
         <log4j.version>1.2.17</log4j.version>
         <jmh-core.version>1.37</jmh-core.version>
@@ -1172,7 +1176,7 @@
         <guava.version>33.2.1-jre</guava.version>
         <maven-jar-plugin.version>3.4.2</maven-jar-plugin.version>
         <mockito-inline.version>5.2.0</mockito-inline.version>
-        <mockito-junit-jupiter.version>5.11.0</mockito-junit-jupiter.version>
+        <mockito-junit-jupiter.version>5.12.0</mockito-junit-jupiter.version>
         <logback.configurationFileName>logback-config-global.xml</logback.configurationFileName>
     </properties>
 

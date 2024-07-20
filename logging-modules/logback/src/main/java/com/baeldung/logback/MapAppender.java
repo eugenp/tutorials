@@ -9,8 +9,7 @@ import java.util.concurrent.ConcurrentMap;
 
 public class MapAppender extends AppenderBase<ILoggingEvent> {
 
-    private final ConcurrentMap<String, ILoggingEvent> eventMap
-      = new ConcurrentHashMap<>();
+    private final ConcurrentMap<String, ILoggingEvent> eventMap = new ConcurrentHashMap<>();
 
     private String prefix;
 
