@@ -19,7 +19,7 @@ public class AddArrayToArrayListUnitTest {
 
     //@formatter:off
     private final static List<String> EXPECTED = List.of(
-         "Languages", ":",
+        "Languages", ":",
         "Java", "Kotlin", "Sql", "Javascript",
         "C", "C++", "C#", "Typescript",
         "Python", "Ruby", "Go", "Rust");
