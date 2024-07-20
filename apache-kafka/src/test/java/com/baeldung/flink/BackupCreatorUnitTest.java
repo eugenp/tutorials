@@ -17,6 +17,7 @@ import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.sink.SinkFunction;
 import org.apache.flink.streaming.api.windowing.time.Time;
 import org.awaitility.Awaitility;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -33,10 +34,12 @@ import static org.junit.Assert.assertEquals;
 
 public class BackupCreatorUnitTest {
     public static ObjectMapper mapper;
+    CollectingSink sink;
 
     @Before
     public void setup() {
         mapper = new ObjectMapper().registerModule(new JavaTimeModule());
+        sink = new CollectingSink();
     }
 
     @Test
@@ -67,7 +70,6 @@ public class BackupCreatorUnitTest {
         env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
         env.setParallelism(1);
         DataStreamSource<InputMessage> testDataSet = env.fromCollection(inputMessages);
-        CollectingSink sink = new CollectingSink();
         testDataSet.assignTimestampsAndWatermarks(new InputMessageTimestampAssigner())
           .timeWindowAll(Time.hours(24))
           .aggregate(new BackupAggregator())
@@ -101,6 +103,13 @@ public class BackupCreatorUnitTest {
         @Override
         public void invoke(Backup value, Context context) throws Exception {
             backups.add(value);
+        }
+    }
+
+    @After
+    public void cleanUp() {
+        if(sink.backups.size() > 0) {
+            sink.backups.clear();
         }
     }
 }
