@@ -43,8 +43,8 @@
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>javax.el</groupId>
-            <artifactId>el-api</artifactId>
+            <groupId>jakarta.el</groupId>
+            <artifactId>jakarta.el-api</artifactId>
             <version>${el.version}</version>
             <scope>provided</scope>
         </dependency>
@@ -54,14 +54,14 @@
             <version>${hibernate-validator.version}</version>
         </dependency>
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
-            <version>${jstl.version}</version>
+            <groupId>jakarta.servlet.jsp.jstl</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+            <version>${jakarta.servlet.jsp.jstl-api.version}</version>
         </dependency>
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>${javax.servlet-api.version}</version>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>${jakarta.servlet-api.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -94,6 +94,11 @@
             <artifactId>freemarker</artifactId>
             <version>${freemarker.version}</version>
         </dependency>
+        <dependency>
+            <groupId>jakarta.persistence</groupId>
+            <artifactId>jakarta.persistence-api</artifactId>
+            <version>${jakarta.persistence-api.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -112,16 +117,19 @@
     </build>
 
     <properties>
-        <vraptor.version>4.2.0.Final</vraptor.version>
-        <weld.version>2.1.2.Final</weld.version>
-        <el.version>2.2</el.version>
+        <vraptor.version>4.2.2</vraptor.version>
+        <weld.version>5.1.2.Final</weld.version>
+        <el.version>6.0.0</el.version>
         <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
         <vraptor-freemarker.version>4.1.0-RC3</vraptor-freemarker.version>
-        <vraptor-hibernate.version>4.0.4</vraptor-hibernate.version>
+        <vraptor-hibernate.version>4.1.0</vraptor-hibernate.version>
         <mysql-connector.version>8.2.0</mysql-connector.version>
         <jbcrypt.version>0.4</jbcrypt.version>
         <freemarker.version>2.3.27-incubating</freemarker.version>
         <tomcat7-maven-plugin.version>2.1</tomcat7-maven-plugin.version>
+        <jakarta.servlet.jsp.jstl-api.version>3.0.0</jakarta.servlet.jsp.jstl-api.version>
+        <jakarta.servlet-api.version>6.1.0</jakarta.servlet-api.version>
+        <jakarta.persistence-api.version>3.2.0</jakarta.persistence-api.version>
     </properties>
 
 </project>

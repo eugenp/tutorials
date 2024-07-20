@@ -8,9 +8,8 @@ import com.baeldung.daos.UserDao;
 import com.baeldung.models.User;
 import org.mindrot.jbcrypt.BCrypt;
 
-import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
-import java.util.Objects;
+import jakarta.inject.Inject;
+import jakarta.servlet.http.HttpServletRequest;
 import java.util.logging.Logger;
 
 @Controller

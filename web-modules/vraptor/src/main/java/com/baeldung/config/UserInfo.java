@@ -2,7 +2,7 @@ package com.baeldung.config;
 
 import com.baeldung.models.User;
 
-import javax.enterprise.context.SessionScoped;
+import jakarta.enterprise.context.SessionScoped;
 import java.io.Serializable;
 
 @SessionScoped

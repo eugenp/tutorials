@@ -2,7 +2,6 @@ package com.baeldung.controllers;
 
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
-import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.freemarker.FreemarkerView;
 import br.com.caelum.vraptor.validator.Validator;
@@ -10,8 +9,7 @@ import com.baeldung.config.UserInfo;
 import com.baeldung.daos.PostDao;
 import com.baeldung.models.Post;
 
-import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.inject.Inject;
 import java.util.Objects;
 import java.util.logging.Logger;
 
