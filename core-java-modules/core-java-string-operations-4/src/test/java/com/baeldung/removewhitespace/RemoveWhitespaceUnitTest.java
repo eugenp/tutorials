@@ -35,19 +35,19 @@ class RemoveWhitespaceUnitTest {
     
     @Test
     void givenStringWithWhitespace_whenStrip_shouldGetExpectedResult() {
-        String result = StringUtils.strip(myString);
+        String result = myString.strip();
         assertThat(result).isEqualTo("I am a wonderful String !");
     }
     
     @Test
     void givenStringWithWhitespace_whenStripLeading_shouldGetExpectedResult() {
-        String result = StringUtils.strip(myString);
+        String result = myString.stripLeading(myString);
         assertThat(result).isEqualTo("I    am a    wonderful String     !   ");
     }
 
     @Test
     void givenStringWithWhitespace_whenStripTrailing_shouldGetExpectedResult() {
-        String result = StringUtils.strip(myString);
+        String result = myString.stripTrailing();
         assertThat(result).isEqualTo("   I    am a    wonderful String     !");
     }
 }
