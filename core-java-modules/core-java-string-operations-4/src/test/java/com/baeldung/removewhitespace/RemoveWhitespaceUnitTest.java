@@ -36,7 +36,7 @@ class RemoveWhitespaceUnitTest {
     @Test
     void givenStringWithWhitespace_whenStrip_shouldGetExpectedResult() {
         String result = myString.strip();
-        assertThat(result).isEqualTo("I am a wonderful String !");
+        assertThat(result).isEqualTo("I    am a    wonderful String     !");
     }
     
     @Test
