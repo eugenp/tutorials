@@ -121,7 +121,6 @@ public class DateRangeOverlapCheckerUnitTest {
     }
 
     @Test
-    @Ignore
     public void givenZeroRangeRanges_thenReturnsTrue() {
         Calendar start1 = Calendar.getInstance();
         start1.set(2024, 11, 15);
