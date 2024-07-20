@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.quarkus.testcontainers;
 
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;

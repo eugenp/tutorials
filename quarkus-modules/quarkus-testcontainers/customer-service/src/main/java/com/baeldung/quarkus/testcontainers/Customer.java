@@ -1,9 +1,9 @@
-package com.baeldung;
+package com.baeldung.quarkus.testcontainers;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.baeldung.client.Order;
+import com.baeldung.quarkus.testcontainers.client.Order;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.Entity;

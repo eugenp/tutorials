@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.quarkus.testcontainers;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.Entity;

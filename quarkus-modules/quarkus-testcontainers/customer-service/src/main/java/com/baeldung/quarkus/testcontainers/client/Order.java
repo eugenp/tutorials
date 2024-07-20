@@ -1,4 +1,4 @@
-package com.baeldung.client;
+package com.baeldung.quarkus.testcontainers.client;
 
 public class Order {
 
