@@ -30,11 +30,6 @@
             <version>${httpclient.version}</version>
         </dependency>
         <dependency>
-            <groupId>javax.ws.rs</groupId>
-            <artifactId>javax.ws.rs-api</artifactId>
-            <version>${javax.ws.rs-api.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.glassfish.jersey.core</groupId>
             <artifactId>jersey-common</artifactId>
             <version>${jersey-common.version}</version>
@@ -52,7 +47,7 @@
         <jsoup.version>1.17.2</jsoup.version>
         <httpclient.version>4.5.2</httpclient.version>
         <javax.ws.rs-api.version>2.1.1</javax.ws.rs-api.version>
-        <jersey-common.version>2.22.2</jersey-common.version>
+        <jersey-common.version>3.1.7</jersey-common.version>
         <spring-web.version>6.0.6</spring-web.version>
     </properties>
 
