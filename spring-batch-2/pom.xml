@@ -56,10 +56,9 @@
     </dependencies>
 
     <properties>
-        <spring.batch.version>5.0.0</spring.batch.version>
-        <awaitility.version>4.2.0</awaitility.version>
+        <spring.batch.version>5.1.2</spring.batch.version>
+        <awaitility.version>4.2.1</awaitility.version>
         <start-class>com.baeldung.batch.SpringBootBatchProcessingApplication</start-class>
-        <lombok.version>1.18.28</lombok.version>
     </properties>
 
 </project>

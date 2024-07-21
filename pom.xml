@@ -576,7 +576,6 @@
                 <module>persistence-modules/spring-data-neo4j</module>
                 <module>quarkus-modules</module>
                 <module>security-modules</module>
-                <module>spring-batch-2</module>
                 <!--<module>spring-cloud-modules/spring-cloud-data-flow</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-cloud-modules/spring-cloud-stream-starters</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-di-2</module>--><!-- failing after upgrading to jdk17-->
@@ -763,6 +762,7 @@
                 <module>spring-aop-2</module>
                 <module>spring-aop</module>
                 <module>spring-batch</module>
+                <module>spring-batch-2</module>
                 <module>spring-boot-modules</module>
                 <module>spring-boot-rest</module>
                 <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
@@ -874,7 +874,6 @@
                 <module>persistence-modules/spring-data-neo4j</module>
                 <module>quarkus-modules</module>
                 <module>security-modules</module>
-                <module>spring-batch-2</module>
                 <!--<module>spring-cloud-modules/spring-cloud-data-flow</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-cloud-modules/spring-cloud-stream-starters</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-di-2</module>--><!-- failing after upgrading to jdk17-->
@@ -1055,6 +1054,7 @@
                 <module>spring-aop-2</module>
                 <module>spring-aop</module>
                 <module>spring-batch</module>
+                <module>spring-batch-2</module>
                 <module>spring-boot-modules</module>
                 <module>spring-boot-rest</module>
                 <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
