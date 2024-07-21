@@ -566,7 +566,6 @@
                 <module>jhipster-6</module>
                 <module>json-modules</module>
                 <module>libraries-4</module>
-                <module>libraries-data-3</module>
                 <module>libraries</module> <!-- very long running -->
                 <module>maven-modules</module>
                 <module>messaging-modules</module>
@@ -706,6 +705,7 @@
                 <module>libraries-cli</module>
                 <module>libraries-concurrency</module>
                 <module>libraries-data-2</module>
+                <module>libraries-data-3</module>
                 <module>libraries-data-db</module>
                 <module>libraries-data-io</module>
                 <module>libraries-data</module>
@@ -864,7 +864,6 @@
                 <module>jhipster-6</module>
                 <module>json-modules</module>
                 <module>libraries-4</module>
-                <module>libraries-data-3</module>
                 <module>libraries</module> <!-- very long running -->
                 <module>maven-modules</module>
                 <module>messaging-modules</module>
@@ -998,6 +997,7 @@
                 <module>libraries-cli</module>
                 <module>libraries-concurrency</module>
                 <module>libraries-data-2</module>
+                <module>libraries-data-3</module>
                 <module>libraries-data-db</module>
                 <module>libraries-data-io</module>
                 <module>libraries-data</module>
