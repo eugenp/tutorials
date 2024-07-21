@@ -55,6 +55,7 @@ public class AddArrayToArrayListUnitTest {
     @Test
     void whenUsingStream_thenCorrect() {
         List<String> languageList = initLanguageList();
+
         languageList.addAll(Stream.of(ARRAY1, ARRAY2, ARRAY3)
             .flatMap(Arrays::stream)
             .collect(Collectors.toList())); // Java 16+: .collect(...) can be replaced with .toList()
