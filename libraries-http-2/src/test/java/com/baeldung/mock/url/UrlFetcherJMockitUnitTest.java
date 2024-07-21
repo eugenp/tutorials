@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
 
 import org.junit.jupiter.api.Test;
@@ -24,7 +25,7 @@ class UrlFetcherJMockitUnitTest {
                 result = HttpURLConnection.HTTP_OK;
         }};
 
-        UrlFetcher fetcher = new UrlFetcher(new URL("https://www.baeldung.com/"));
+        UrlFetcher fetcher = new UrlFetcher(new URI("https://www.baeldung.com/").toURL());
         assertTrue(fetcher.isUrlAvailable(), "Url should be available: ");
     }
     
@@ -35,7 +36,7 @@ class UrlFetcherJMockitUnitTest {
                 result = HttpURLConnection.HTTP_INTERNAL_ERROR;
         }};
 
-        UrlFetcher fetcher = new UrlFetcher(new URL("https://www.baeldung.com/"));
+        UrlFetcher fetcher = new UrlFetcher(new URI("https://www.baeldung.com/").toURL());
         assertFalse(fetcher.isUrlAvailable(), "Url should NOT be available: ");
     }
 
