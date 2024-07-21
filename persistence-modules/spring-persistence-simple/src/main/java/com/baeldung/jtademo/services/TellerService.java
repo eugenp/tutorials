@@ -3,8 +3,8 @@ package com.baeldung.jtademo.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
-import javax.transaction.UserTransaction;
+import jakarta.transaction.Transactional;
+import jakarta.transaction.UserTransaction;
 import java.math.BigDecimal;
 
 @Service
