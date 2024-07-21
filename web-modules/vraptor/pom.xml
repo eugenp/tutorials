@@ -43,6 +43,7 @@
             </exclusions>
         </dependency>
         <dependency>
+            <!--  Vraptor is unmaintained and cannot upgrade from Javax to Jakarta JAVA-37376 -->
             <groupId>javax.el</groupId>
             <artifactId>el-api</artifactId>
             <version>${el.version}</version>
@@ -54,11 +55,13 @@
             <version>${hibernate-validator.version}</version>
         </dependency>
         <dependency>
+            <!--  Vraptor is unmaintained and cannot upgrade from Javax to Jakarta JAVA-37376 -->
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>${jstl.version}</version>
         </dependency>
         <dependency>
+            <!--  Vraptor is unmaintained and cannot upgrade from Javax to Jakarta JAVA-37376 -->
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>${javax.servlet-api.version}</version>
