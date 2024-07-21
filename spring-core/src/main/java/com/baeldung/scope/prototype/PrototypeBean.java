@@ -1,10 +1,11 @@
 package com.baeldung.scope.prototype;
 
-import org.apache.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 public class PrototypeBean {
 
-    private final Logger logger = Logger.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public PrototypeBean() {
         logger.info("Prototype instance created");
