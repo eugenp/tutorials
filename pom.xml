@@ -561,7 +561,6 @@
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
-                <module>aws-modules</module>
                 <module>core-groovy-modules</module>
                 <module>core-java-modules</module>
                 <module>jhipster-6</module>
@@ -653,6 +652,7 @@
                 <module>apache-thrift</module>
                 <module>apache-velocity</module>
                 <module>atomix</module>
+                <module>aws-modules</module>
                 <module>azure</module>
                 <module>bazel</module>
                 <module>checker-framework</module>
@@ -859,7 +859,6 @@
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
-                <module>aws-modules</module>
                 <module>core-groovy-modules</module>
                 <module>core-java-modules</module>
                 <module>jhipster-6</module>
@@ -945,6 +944,7 @@
                 <module>apache-thrift</module>
                 <module>apache-velocity</module>
                 <module>atomix</module>
+                <module>aws-modules</module>
                 <module>azure</module>
                 <module>bazel</module>
                 <module>checker-framework</module>

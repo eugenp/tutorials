@@ -20,7 +20,7 @@
         <module>aws-miscellaneous</module>
         <module>aws-reactive</module>
         <module>aws-s3</module>
-        <module>aws-rest</module> <!-- failing after upgrade to jdk21 -->
+        <module>aws-rest</module>
     </modules>
 
     <dependencies>
