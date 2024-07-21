@@ -564,7 +564,6 @@
                 <module>core-groovy-modules</module>
                 <module>core-java-modules</module>
                 <module>jhipster-6</module>
-                <module>json-modules</module>
                 <module>libraries-4</module>
                 <module>libraries</module> <!-- very long running -->
                 <module>maven-modules</module>
@@ -688,6 +687,7 @@
                 <module>jetbrains</module>
                 <module>jgit</module>
                 <module>jmh</module>
+                <module>json-modules</module>
                 <module>jsoup</module>
                 <module>jws</module>
                 <module>ksqldb</module>
@@ -862,7 +862,6 @@
                 <module>core-groovy-modules</module>
                 <module>core-java-modules</module>
                 <module>jhipster-6</module>
-                <module>json-modules</module>
                 <module>libraries-4</module>
                 <module>libraries</module> <!-- very long running -->
                 <module>maven-modules</module>
@@ -980,6 +979,7 @@
                 <module>jetbrains</module>
                 <module>jgit</module>
                 <module>jmh</module>
+                <module>json-modules</module>
                 <module>jsoup</module>
                 <module>jws</module>
                 <module>ksqldb</module>
