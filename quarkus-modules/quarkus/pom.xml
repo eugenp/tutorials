@@ -111,6 +111,16 @@
             <artifactId>quarkus-micrometer-registry-prometheus</artifactId>
             <version>${micrometer.prometheus.version}</version>
         </dependency>
+        <dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy</artifactId>
+            <version>${byte-buddy.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.transaction</groupId>
+            <artifactId>jakarta.transaction-api</artifactId>
+            <version>${jakarta.transaction-api.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -184,9 +194,11 @@
     </profiles>
 
     <properties>
-        <quarkus.version>2.16.3.Final</quarkus.version>
+        <quarkus.version>3.5.0</quarkus.version>
         <mockito.version>4.4.0</mockito.version> <!-- Current quarkus doesn't support latest version. If Upgrading to a new quarkus remove this. -->
         <micrometer.prometheus.version>3.11.0</micrometer.prometheus.version>
+        <jakarta.transaction-api.version>2.0.1</jakarta.transaction-api.version>
+        <byte-buddy.version>1.14.17</byte-buddy.version>
     </properties>
 
 </project>
