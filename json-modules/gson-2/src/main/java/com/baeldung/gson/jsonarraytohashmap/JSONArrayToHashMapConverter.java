@@ -19,8 +19,8 @@ import com.google.gson.JsonPrimitive;
 import com.google.gson.reflect.TypeToken;
 
 public class JSONArrayToHashMapConverter {
-    public static Map<String, Object> convertUsingIterative (JsonArray jsonArray) {
-        Map<String, Object> hashMap = new HashMap<>();
+    public static Map<String, Integer> convertUsingIterative (JsonArray jsonArray) {
+        Map<String, Integer> hashMap = new HashMap<>();
         for (JsonElement element : jsonArray) {
             JsonObject jsonObject = element.getAsJsonObject();
             String type = jsonObject.get("name").getAsString();
@@ -30,7 +30,7 @@ public class JSONArrayToHashMapConverter {
         return hashMap;
     }
 
-    public static Map<String, Object> convertUsingStreams (JsonArray jsonArray) {
+    public static Map<String, Integer> convertUsingStreams (JsonArray jsonArray) {
         return StreamSupport.stream(jsonArray.spliterator(), false)
             .map(JsonElement::getAsJsonObject)
             .collect(Collectors.toMap(
@@ -39,8 +39,8 @@ public class JSONArrayToHashMapConverter {
             ));
     }
 
-    public static Map<String, Object> convertUsingGson(JsonArray jsonArray) {
-        Map<String, Object> hashMap = new HashMap<>();
+    public static Map<String, Integer> convertUsingGson(JsonArray jsonArray) {
+        Map<String, Integer> hashMap = new HashMap<>();
         Gson gson = new Gson();
         List<Map<String, Object>> list = new Gson().fromJson(jsonArray, List.class);
         for (Map<String, Object> map : list) {
