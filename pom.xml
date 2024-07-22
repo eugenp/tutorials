@@ -581,7 +581,6 @@
                 <module>spring-static-resources</module>
 <!--            <module>static-analysis</module> - requires additional configuration to be compiled due to the JVM strong encapsulation -->
                 <!--<module>tablesaw</module>--><!-- failing after upgrading to jdk17-->
-                <module>testing-modules</module>
                 <!--<module>spring-swagger-codegen/openapi-custom-generator</module>
                 <module>spring-swagger-codegen/openapi-custom-generator-api-client</module> --> <!-- cannot add the individual modules here because the order is not guaranteed -->
             </modules>
@@ -811,6 +810,7 @@
                 <module>spring-websockets</module>
                 <module>tensorflow-java</module>
                 <module>timefold-solver</module>
+                <module>testing-modules</module>
                 <module>vaadin</module>
                 <module>vavr-modules</module>
                 <module>vertx-modules</module>
@@ -879,7 +879,6 @@
                 <module>spring-static-resources</module>
                 <!--            <module>static-analysis</module> - requires additional configuration to be compiled due to the JVM strong encapsulation -->
                 <!--<module>tablesaw</module>--><!-- failing after upgrading to jdk17-->
-                <module>testing-modules</module>
                 <!--<module>spring-swagger-codegen/openapi-custom-generator</module>
                 <module>spring-swagger-codegen/openapi-custom-generator-api-client</module> --> <!-- cannot add the individual modules here because the order is not guaranteed -->
             </modules>
@@ -1103,6 +1102,7 @@
                 <module>spring-websockets</module>
                 <module>tensorflow-java</module>
                 <module>timefold-solver</module>
+                <module>testing-modules</module>
                 <module>vavr-modules</module>
                 <module>vaadin</module>
                 <module>vertx-modules</module>

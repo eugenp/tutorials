@@ -162,6 +162,11 @@
             <version>${scribejava.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy</artifactId>
+            <version>${byte-buddy.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -179,6 +184,7 @@
         <wiremock.version>3.3.1</wiremock.version>
         <scribejava.version>2.5.3</scribejava.version>
         <rest-assured.version>5.3.0</rest-assured.version>
+        <byte-buddy.version>1.14.17</byte-buddy.version>
     </properties>
 
 </project>
