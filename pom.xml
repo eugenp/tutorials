@@ -561,13 +561,10 @@
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
-                <module>aws-modules</module>
                 <module>core-groovy-modules</module>
                 <module>core-java-modules</module>
                 <module>jhipster-6</module>
-                <module>json-modules</module>
                 <module>libraries-4</module>
-                <module>libraries-data-3</module>
                 <module>libraries</module> <!-- very long running -->
                 <module>maven-modules</module>
                 <module>messaging-modules</module>
@@ -575,9 +572,7 @@
                 <module>persistence-modules</module>
                 <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->
                 <module>persistence-modules/spring-data-neo4j</module>
-                <module>quarkus-modules</module>
                 <module>security-modules</module>
-                <module>spring-batch-2</module>
                 <!--<module>spring-cloud-modules/spring-cloud-data-flow</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-cloud-modules/spring-cloud-stream-starters</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-di-2</module>--><!-- failing after upgrading to jdk17-->
@@ -653,6 +648,7 @@
                 <module>apache-thrift</module>
                 <module>apache-velocity</module>
                 <module>atomix</module>
+                <module>aws-modules</module>
                 <module>azure</module>
                 <module>bazel</module>
                 <module>checker-framework</module>
@@ -691,6 +687,7 @@
                 <module>jetbrains</module>
                 <module>jgit</module>
                 <module>jmh</module>
+                <module>json-modules</module>
                 <module>jsoup</module>
                 <module>jws</module>
                 <module>ksqldb</module>
@@ -708,6 +705,7 @@
                 <module>libraries-cli</module>
                 <module>libraries-concurrency</module>
                 <module>libraries-data-2</module>
+                <module>libraries-data-3</module>
                 <module>libraries-data-db</module>
                 <module>libraries-data-io</module>
                 <module>libraries-data</module>
@@ -742,6 +740,7 @@
                 <module>performance-tests</module>
                 <module>protobuffer</module>
                 <module>podman</module>
+                <module>quarkus-modules</module>
                 <module>reactive-systems</module>
                 <module>reactor-core</module>
                 <module>reactor-core-2</module>
@@ -763,6 +762,7 @@
                 <module>spring-aop-2</module>
                 <module>spring-aop</module>
                 <module>spring-batch</module>
+                <module>spring-batch-2</module>
                 <module>spring-boot-modules</module>
                 <module>spring-boot-rest</module>
                 <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
@@ -859,13 +859,10 @@
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
-                <module>aws-modules</module>
                 <module>core-groovy-modules</module>
                 <module>core-java-modules</module>
                 <module>jhipster-6</module>
-                <module>json-modules</module>
                 <module>libraries-4</module>
-                <module>libraries-data-3</module>
                 <module>libraries</module> <!-- very long running -->
                 <module>maven-modules</module>
                 <module>messaging-modules</module>
@@ -873,9 +870,7 @@
                 <module>persistence-modules</module>
                 <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->
                 <module>persistence-modules/spring-data-neo4j</module>
-                <module>quarkus-modules</module>
                 <module>security-modules</module>
-                <module>spring-batch-2</module>
                 <!--<module>spring-cloud-modules/spring-cloud-data-flow</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-cloud-modules/spring-cloud-stream-starters</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-di-2</module>--><!-- failing after upgrading to jdk17-->
@@ -945,6 +940,7 @@
                 <module>apache-thrift</module>
                 <module>apache-velocity</module>
                 <module>atomix</module>
+                <module>aws-modules</module>
                 <module>azure</module>
                 <module>bazel</module>
                 <module>checker-framework</module>
@@ -983,6 +979,7 @@
                 <module>jetbrains</module>
                 <module>jgit</module>
                 <module>jmh</module>
+                <module>json-modules</module>
                 <module>jsoup</module>
                 <module>jws</module>
                 <module>ksqldb</module>
@@ -1000,6 +997,7 @@
                 <module>libraries-cli</module>
                 <module>libraries-concurrency</module>
                 <module>libraries-data-2</module>
+                <module>libraries-data-3</module>
                 <module>libraries-data-db</module>
                 <module>libraries-data-io</module>
                 <module>libraries-data</module>
@@ -1034,6 +1032,7 @@
                 <module>performance-tests</module>
                 <module>protobuffer</module>
                 <module>podman</module>
+                <module>quarkus-modules</module>
                 <module>reactive-systems</module>
                 <module>reactor-core</module>
                 <module>reactor-core-2</module>
@@ -1055,6 +1054,7 @@
                 <module>spring-aop-2</module>
                 <module>spring-aop</module>
                 <module>spring-batch</module>
+                <module>spring-batch-2</module>
                 <module>spring-boot-modules</module>
                 <module>spring-boot-rest</module>
                 <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
