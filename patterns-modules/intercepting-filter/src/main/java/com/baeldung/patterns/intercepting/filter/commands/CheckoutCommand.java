@@ -2,8 +2,8 @@ package com.baeldung.patterns.intercepting.filter.commands;
 
 import com.baeldung.patterns.intercepting.filter.data.Order;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
 public class CheckoutCommand extends FrontCommand {
