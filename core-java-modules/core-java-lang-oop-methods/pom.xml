@@ -6,6 +6,7 @@
     <artifactId>core-java-lang-oop-methods</artifactId>
     <packaging>jar</packaging>
     <name>core-java-lang-oop-methods</name>
+
     <parent>
         <artifactId>core-java-modules</artifactId>
         <groupId>com.baeldung.core-java-modules</groupId>
