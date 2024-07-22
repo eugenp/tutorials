@@ -51,7 +51,41 @@
             <version>${testcontaienr.version}</version>
             <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>${httpclient.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-codec</groupId>
+                    <artifactId>commons-codec</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>some.vulnerable.group</groupId>
+                    <artifactId>vulnerable-artifact</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.15</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring-web.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>${okhttp.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.okio</groupId>
+            <artifactId>okio</artifactId>
+            <version>${okio.version}</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -84,6 +118,10 @@
         <jmh.version>1.37</jmh.version>
         <junit.pioneer.version>2.2.0</junit.pioneer.version>
         <testcontaienr.version>1.19.3</testcontaienr.version>
+        <httpclient.version>4.5.13</httpclient.version>
+        <spring-web.version>6.1.5</spring-web.version>
+        <okhttp.version>4.11.0</okhttp.version>
+        <okio.version>3.4.0</okio.version>
     </properties>
 
 </project>
