@@ -3,7 +3,7 @@ package com.baeldung.scope.singleton;
 import com.baeldung.scope.prototype.PrototypeBean;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.inject.Provider;
+import jakarta.inject.Provider;
 
 public class SingletonProviderBean {
 
