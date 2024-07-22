@@ -51,7 +51,6 @@
             <version>${testcontaienr.version}</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
     <build>
         <plugins>
@@ -84,6 +83,10 @@
         <jmh.version>1.37</jmh.version>
         <junit.pioneer.version>2.2.0</junit.pioneer.version>
         <testcontaienr.version>1.19.3</testcontaienr.version>
+        <httpclient.version>4.5.13</httpclient.version>
+        <spring-web.version>6.1.5</spring-web.version>
+        <okhttp.version>4.11.0</okhttp.version>
+        <okio.version>3.4.0</okio.version>
     </properties>
 
 </project>
