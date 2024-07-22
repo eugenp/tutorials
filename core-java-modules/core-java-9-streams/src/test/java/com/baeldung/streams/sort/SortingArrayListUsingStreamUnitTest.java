@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,8 +26,8 @@ public class SortingArrayListUsingStreamUnitTest {
 
     static final Map<String, Map<String, List<Employee>>> MAP_OF_DEPT_TO_MAP_OF_SEX_TO_EMPLOYEES = new HashMap<>();
 
-    @BeforeAll
-    static void setup() throws IOException {
+    @BeforeEach
+    void setup() throws IOException {
         populateMap(getFilePath("emp_not_sorted.csv"));
     }
 
@@ -44,14 +44,14 @@ public class SortingArrayListUsingStreamUnitTest {
     }
 
     private static String[] getCSVDelimitedLines(List<Employee> emps) {
-        List<String> lines = emps.stream()
+        return emps.stream()
             .map(emp -> emp.getDepartment() + "," + emp.getName() + "," + emp.getSalary() + "," + emp.getSex())
-            .collect(Collectors.toList());
-        return lines.toArray(new String[0]);
+            .toArray(String[]::new);
     }
 
     private static void populateMap(String filePath) throws IOException {
         String[] lines = readLinesFromFile(filePath);
+        MAP_OF_DEPT_TO_MAP_OF_SEX_TO_EMPLOYEES.clear();
         Arrays.asList(lines)
             .forEach(e -> {
                 String[] strArr = e.split(",");
