@@ -8,13 +8,13 @@ import org.junit.jupiter.api.Test;
 
 public class FindSubstringAfterTheLastPatternUnitTest {
 
-    private static final String INPUT1 = "a, b, c, I need this value";
+    private static final String INPUT1 = "a,   b,   c,   I need this value";
     private static final String EXPECTED1 = "I need this value";
 
-    private static final String INPUT2 = "No pattern found here";
+    private static final String INPUT2 = "no-pattern-found";
     private static final String EXPECTED2 = "";
 
-    private static final String INPUT3 = "a, b, c, ";
+    private static final String INPUT3 = "a,   b,   c,   ";
     private static final String EXPECTED3 = "";
 
     public String afterTheLastPatternBySubstring(String input, String pattern) {
@@ -24,7 +24,7 @@ public class FindSubstringAfterTheLastPatternUnitTest {
 
     @Test
     void whenUsingSubstring_thenCorrect() {
-        String pattern = ", ";
+        String pattern = ",   ";
 
         String result1 = afterTheLastPatternBySubstring(INPUT1, pattern);
         assertEquals(EXPECTED1, result1);
@@ -43,7 +43,7 @@ public class FindSubstringAfterTheLastPatternUnitTest {
 
     @Test
     void whenUsingSplitWithOrWithoutLimit_thenGetDifferentResult() {
-        String pattern = ", ";
+        String pattern = ", {3}";
 
         String[] array1 = INPUT3.split(pattern);
         assertArrayEquals(new String[] { "a", "b", "c" }, array1);
@@ -54,7 +54,7 @@ public class FindSubstringAfterTheLastPatternUnitTest {
 
     @Test
     void whenUsingSplit_thenCorrect() {
-        String pattern = ", ";
+        String pattern = ", {3}";
 
         String result1 = afterTheLastPatternBySplit(INPUT1, pattern);
         assertEquals(EXPECTED1, result1);
@@ -73,7 +73,7 @@ public class FindSubstringAfterTheLastPatternUnitTest {
 
     @Test
     void whenUsingReplaceAll_thenCorrect() {
-        String pattern = ".*, ";
+        String pattern = ".*, {3}";
 
         String result1 = afterTheLastPatternByReplaceAll(INPUT1, pattern);
         assertEquals(EXPECTED1, result1);
