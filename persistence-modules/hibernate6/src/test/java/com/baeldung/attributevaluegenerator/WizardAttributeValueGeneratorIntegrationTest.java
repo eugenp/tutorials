@@ -43,4 +43,17 @@ class WizardAttributeValueGeneratorIntegrationTest {
         assertThat(updatedWizard.getUpdatedAt()).isAfter(initialUpdatedAtTimestamp);
     }
 
+    @Test
+    void whenNewWizardRecordSaved_thenSpellPowerGenerated() {
+        Wizard wizard = new Wizard();
+        wizard.setId(UUID.randomUUID());
+        wizard.setName(RandomString.make());
+
+        Wizard savedWizard = wizardRepository.save(wizard);
+
+        assertThat(savedWizard.getSpellPower())
+          .isNotNull()
+          .isGreaterThan(50);
+    }
+
 }

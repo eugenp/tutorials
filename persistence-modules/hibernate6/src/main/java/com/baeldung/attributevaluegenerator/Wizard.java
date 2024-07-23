@@ -18,6 +18,9 @@ public class Wizard {
 
     @SortHouse
     private String house;
+    
+    @GenerateSpellPower
+    private Integer spellPower;
 
     @GenerateUpdatedAtTimestamp
     private LocalDateTime updatedAt;
@@ -44,6 +47,10 @@ public class Wizard {
 
     public LocalDateTime getUpdatedAt() {
         return updatedAt;
+    }
+    
+    public Integer getSpellPower() {
+        return spellPower;
     }
 
 }

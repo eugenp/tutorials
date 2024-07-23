@@ -51,6 +51,7 @@
     </dependencies>
 
     <properties>
+        <java.version>17</java.version>
         <hibernate.version>6.4.2.Final</hibernate.version>
         <ehcache.version>3.10.8</ehcache.version>
         <maven.compiler.source>17</maven.compiler.source>
