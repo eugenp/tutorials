@@ -1,5 +1,6 @@
 package com.baeldung.attributevaluegenerator;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 import jakarta.persistence.Entity;
@@ -17,6 +18,9 @@ public class Wizard {
 
     @SortHouse
     private String house;
+
+    @GenerateUpdatedAtTimestamp
+    private LocalDateTime updatedAt;
 
     public UUID getId() {
         return id;
@@ -36,6 +40,10 @@ public class Wizard {
 
     public String getHouse() {
         return house;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
     }
 
 }
