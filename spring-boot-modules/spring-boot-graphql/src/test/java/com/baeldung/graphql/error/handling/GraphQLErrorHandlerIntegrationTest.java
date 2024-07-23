@@ -1,15 +1,5 @@
 package com.baeldung.graphql.error.handling;
 
-import static graphql.ErrorType.NullValueInNonNullableField;
-import static org.springframework.graphql.execution.ErrorType.INTERNAL_ERROR;
-import static org.springframework.graphql.execution.ErrorType.NOT_FOUND;
-
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
-import org.junit.Ignore;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +7,15 @@ import org.springframework.boot.test.autoconfigure.graphql.tester.AutoConfigureH
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.graphql.test.tester.HttpGraphQlTester;
 import org.springframework.test.context.ActiveProfiles;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+import static graphql.ErrorType.NullValueInNonNullableField;
+import static org.springframework.graphql.execution.ErrorType.INTERNAL_ERROR;
+import static org.springframework.graphql.execution.ErrorType.NOT_FOUND;
 
 @SpringBootTest(classes = GraphQLErrorHandlerApplication.class)
 @ActiveProfiles("error-handling")
@@ -44,7 +43,6 @@ class GraphQLErrorHandlerIntegrationTest {
     }
 
     @Test
-    @Ignore
     void whenUnhandledException_thenRespondWithGenericError() throws IOException {
         String unhandledExceptionScenario = "unhandled_exception";
 
@@ -58,7 +56,6 @@ class GraphQLErrorHandlerIntegrationTest {
     }
 
     @Test
-    @Ignore
     void whenHandledException_thenRespondWithCustomErrorDetails() throws IOException {
         String handledExceptionScenario = "handled_exception";
 
