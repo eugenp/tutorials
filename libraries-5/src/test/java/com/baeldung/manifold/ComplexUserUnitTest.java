@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ComplexUserUnitTest {
     @Test
-    void testGenerateComplexUserToString() {
+    void whenRenderingComplexUser_thenCorrectJsonIsProduced() {
         ComplexUser user = ComplexUser.builder("testuser", "Test User")
             .withEmail(ComplexUser.email.builder("testuser@example.com", false).build())
             .build();

@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ComplexUnitTest {
     @Test
-    void testComplex() {
+    void whenRenderingComplex_thenCorrectJsonIsProduced() {
         Complex complex = Complex.builder( "writeonly")
             .withRo("readonly")
             .build();
