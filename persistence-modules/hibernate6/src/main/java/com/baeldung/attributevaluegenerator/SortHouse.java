@@ -10,5 +10,5 @@ import org.hibernate.annotations.ValueGenerationType;
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 @ValueGenerationType(generatedBy = SortingHatHouseGenerator.class)
-@interface SortHouse {
+public @interface SortHouse {
 }

@@ -8,7 +8,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "wizards")
-class Wizard {
+public class Wizard {
 
     @Id
     private UUID id;

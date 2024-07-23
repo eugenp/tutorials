@@ -7,7 +7,7 @@ import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.hibernate.generator.BeforeExecutionGenerator;
 import org.hibernate.generator.EventType;
 
-class SortingHatHouseGenerator implements BeforeExecutionGenerator {
+public class SortingHatHouseGenerator implements BeforeExecutionGenerator {
 
     private static final String[] HOUSES = { "Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin" };
     private static final Random RANDOM = new Random();
