@@ -18,6 +18,26 @@ class ReverseArrayElementsTest {
     }
 
     @Test
+    void givenArray_whenCallReverseRowsUsingStreams_thenExpectAllRowsReversed() {
+        int[][] input = new int[][] { { 1, 2, 3 }, { 3, 2, 1 }, { 2, 1, 3 } };
+
+        int[][] expected = new int[][] { { 3, 2, 1 }, { 1, 2, 3 }, { 3, 1, 2 } };
+        ReverseArrayElements.reverseRowsUsingStreams(input);
+
+        assertThat(input, is(expected));
+    }
+
+    @Test
+    void givenArray_whenCallReverseRowsUsingCollectionsReverse_thenExpectAllRowsReversed() {
+        int[][] input = new int[][] { { 1, 2, 3 }, { 3, 2, 1 }, { 2, 1, 3 } };
+
+        int[][] expected = new int[][] { { 3, 2, 1 }, { 1, 2, 3 }, { 3, 1, 2 } };
+        ReverseArrayElements.reverseRowsCollectionsReverse(input);
+
+        assertThat(input, is(expected));
+    }
+
+    @Test
     void givenArray_whenCallReverseColumns_thenExpectAllColumnsReversed() {
         int[][] input = new int[][] { { 1, 2, 3 }, { 3, 2, 1 }, { 2, 1, 3 } };
 
