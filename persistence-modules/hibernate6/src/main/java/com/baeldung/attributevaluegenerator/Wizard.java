@@ -38,8 +38,4 @@ public class Wizard {
         return house;
     }
 
-    public void setHouse(String house) {
-        this.house = house;
-    }
-
 }
