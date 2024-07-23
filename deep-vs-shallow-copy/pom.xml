@@ -3,32 +3,22 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.3.1</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<groupId>com.baeldung</groupId>
+		<artifactId>parent-boot-3</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../parent-boot-3</relativePath>
 	</parent>
-	<groupId>org.example</groupId>
+
 	<artifactId>deep-vs-shallow-copy</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>deep-vs-shallow-copy</name>
-	<description>deep-vs-shallow-copy</description>
-	<url/>
-	<licenses>
-		<license/>
-	</licenses>
-	<developers>
-		<developer/>
-	</developers>
-	<scm>
-		<connection/>
-		<developerConnection/>
-		<tag/>
-		<url/>
-	</scm>
+	<description>code base demonstrating deep vs shallow copy in Java</description>
+	<packaging>jar</packaging>
+
 	<properties>
 		<java.version>17</java.version>
 	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
