@@ -25,7 +25,8 @@ class WizardAttributeValueGeneratorIntegrationTest {
 
         Wizard savedWizard = wizardRepository.save(wizard);
 
-        assertThat(savedWizard.getHouse()).isNotBlank();
+        assertThat(savedWizard.getHouse())
+            .isNotBlank();
     }
 
     @Test
@@ -40,7 +41,8 @@ class WizardAttributeValueGeneratorIntegrationTest {
         savedWizard.setName(RandomString.make());
         Wizard updatedWizard = wizardRepository.save(savedWizard);
 
-        assertThat(updatedWizard.getUpdatedAt()).isAfter(initialUpdatedAtTimestamp);
+        assertThat(updatedWizard.getUpdatedAt())
+            .isAfter(initialUpdatedAtTimestamp);
     }
 
     @Test
@@ -52,8 +54,8 @@ class WizardAttributeValueGeneratorIntegrationTest {
         Wizard savedWizard = wizardRepository.save(wizard);
 
         assertThat(savedWizard.getSpellPower())
-          .isNotNull()
-          .isGreaterThan(50);
+            .isNotNull()
+            .isGreaterThan(50);
     }
 
 }
