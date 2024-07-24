@@ -199,6 +199,10 @@
         <!-- Maven plugins -->
         <yuicompressor-maven-plugin.version>1.5.1</yuicompressor-maven-plugin.version>
         <json.version>20240303</json.version>
+
+        <java.version>21</java.version>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
     </properties>
 
 </project>
