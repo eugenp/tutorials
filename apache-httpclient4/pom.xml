@@ -183,6 +183,17 @@
             <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
+        <!-- okhttp -->
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>${okhttp.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.okio</groupId>
+            <artifactId>okio</artifactId>
+            <version>${okio.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -234,6 +245,8 @@
         <wiremock.version>3.3.1</wiremock.version>
         <httpcore.version>4.4.16</httpcore.version>
         <httpclient.version>4.5.14</httpclient.version>
+        <okhttp.version>4.11.0</okhttp.version>
+        <okio.version>3.4.0</okio.version>
         <mockserver.version>5.11.2</mockserver.version>
     </properties>
 
