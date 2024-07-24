@@ -14,6 +14,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.baeldung.javaxval.enums.demo.Customer;
+import com.baeldung.javaxval.enums.demo.CustomerType;
 import com.baeldung.javaxval.enums.demo.CustomerUnitTest;
 
 public class EnumNamePatternValidatorUnitTest {
@@ -28,7 +29,7 @@ public class EnumNamePatternValidatorUnitTest {
 
     @Test
     public void whenEnumMatchesRegex_thenShouldNotReportConstraintViolations() {
-        Customer customer = new Customer.Builder().withCustomerTypeMatchesPattern(DEFAULT)
+        Customer customer = new Customer.Builder().withCustomerTypeMatchesPattern("DEFAULT")
             .build();
         Set<ConstraintViolation<Customer>> violations = validator.validate(customer);
         assertThat(violations.isEmpty()).isTrue();
@@ -44,12 +45,31 @@ public class EnumNamePatternValidatorUnitTest {
 
     @Test
     public void whenEnumDoesNotMatchRegex_thenShouldGiveOccurrenceOfConstraintViolations() {
-        Customer customer = new Customer.Builder().withCustomerTypeMatchesPattern(OLD)
+        Customer customer = new Customer.Builder().withCustomerTypeMatchesPattern("OLD")
             .build();
         Set<ConstraintViolation<Customer>> violations = validator.validate(customer);
         assertThat(violations.size()).isEqualTo(1);
 
         assertThat(violations).anyMatch(CustomerUnitTest.havingPropertyPath("customerTypeMatchesPattern")
             .and(CustomerUnitTest.havingMessage("must match \"NEW|DEFAULT\"")));
+    }
+
+    @Test
+    public void whenEnumDoesNotMatchRegexAndCustomerType_thenShouldGiveOccurrenceOfConstraintViolations() {
+        Customer customer = new Customer.Builder().withCustomerTypeMatchesPattern("TESTING")
+            .build();
+        Set<ConstraintViolation<Customer>> violations = validator.validate(customer);
+
+        for (ConstraintViolation<Customer> violation : violations) {
+            System.out.printf("Property: %s, Invalid value: %s, Error message: %s%n",
+                violation.getPropertyPath(), violation.getInvalidValue(), violation.getMessage());
+        }
+        // Check for constraint violations
+        assertThat(violations.size()).isEqualTo(1);
+
+        assertThat(violations).anyMatch(violation ->
+            violation.getPropertyPath().toString().equals("customerTypeMatchesPattern") &&
+                violation.getMessage().equals("must match \"NEW|DEFAULT\"")
+        );
     }
 }

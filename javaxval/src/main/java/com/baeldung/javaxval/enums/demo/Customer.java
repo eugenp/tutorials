@@ -15,12 +15,12 @@ public class Customer {
     private CustomerType customerTypeOfSubset;
 
     @EnumNamePattern(regexp = "NEW|DEFAULT")
-    private CustomerType customerTypeMatchesPattern;
+    private String customerTypeMatchesPattern;
 
     public Customer() {
     }
 
-    public Customer(String customerTypeString, CustomerType customerTypeOfSubset, CustomerType customerTypeMatchesPattern) {
+    public Customer(String customerTypeString, CustomerType customerTypeOfSubset, String customerTypeMatchesPattern) {
         this.customerTypeString = customerTypeString;
         this.customerTypeOfSubset = customerTypeOfSubset;
         this.customerTypeMatchesPattern = customerTypeMatchesPattern;
@@ -42,18 +42,18 @@ public class Customer {
         this.customerTypeOfSubset = customerTypeOfSubset;
     }
 
-    public CustomerType getCustomerTypeMatchesPattern() {
+    public String getCustomerTypeMatchesPattern() {
         return customerTypeMatchesPattern;
     }
 
-    public void setCustomerTypeMatchesPattern(CustomerType customerTypeMatchesPattern) {
+    public void setCustomerTypeMatchesPattern(String customerTypeMatchesPattern) {
         this.customerTypeMatchesPattern = customerTypeMatchesPattern;
     }
 
     public static class Builder {
         private String customerTypeString;
         private CustomerType customerTypeOfSubset = CustomerType.NEW;
-        private CustomerType customerTypeMatchesPattern;
+        private String customerTypeMatchesPattern;
 
         public Builder withCustomerTypeString(String customerTypeString) {
             this.customerTypeString = customerTypeString;
@@ -65,7 +65,7 @@ public class Customer {
             return this;
         }
 
-        public Builder withCustomerTypeMatchesPattern(CustomerType customerTypeMatchesPattern) {
+        public Builder withCustomerTypeMatchesPattern(String customerTypeMatchesPattern) {
             this.customerTypeMatchesPattern = customerTypeMatchesPattern;
             return this;
         }

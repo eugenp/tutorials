@@ -46,7 +46,7 @@ public class CustomerUnitTest extends LocaleAwareUnitTest {
         Customer customer = new Customer();
         customer.setCustomerTypeString("invalid");
         customer.setCustomerTypeOfSubset(CustomerType.DEFAULT);
-        customer.setCustomerTypeMatchesPattern(CustomerType.OLD);
+        customer.setCustomerTypeMatchesPattern("TESTING");
 
         Set<ConstraintViolation<Customer>> violations = validator.validate(customer);
         assertThat(violations.size()).isEqualTo(3);

@@ -9,7 +9,7 @@ import jakarta.validation.ConstraintValidatorContext;
 
 import com.baeldung.javaxval.enums.constraints.EnumNamePattern;
 
-public class EnumNamePatternValidator implements ConstraintValidator<EnumNamePattern, Enum<?>> {
+public class EnumNamePatternValidator implements ConstraintValidator<EnumNamePattern, String> {
     private Pattern pattern;
 
     @Override
@@ -22,12 +22,12 @@ public class EnumNamePatternValidator implements ConstraintValidator<EnumNamePat
     }
 
     @Override
-    public boolean isValid(Enum<?> value, ConstraintValidatorContext context) {
+    public boolean isValid(String value, ConstraintValidatorContext context) {
         if (value == null) {
             return true;
         }
 
-        Matcher m = pattern.matcher(value.name());
+        Matcher m = pattern.matcher(value);
         return m.matches();
     }
 }
