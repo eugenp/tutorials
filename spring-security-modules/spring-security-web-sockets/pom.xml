@@ -174,7 +174,7 @@
     <properties>
         <spring-security.version>6.1.5</spring-security.version>
         <spring-security-messaging.version>6.0.2</spring-security-messaging.version>
-        <hibernate-core.version>6.4.2.Final</hibernate-core.version>
+        <hibernate-core.version>6.5.2.Final</hibernate-core.version>
         <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
         <expressly.version>5.0.0</expressly.version>
         <spring-data-jpa.version>3.2.1</spring-data-jpa.version>
