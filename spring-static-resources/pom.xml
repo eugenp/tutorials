@@ -139,6 +139,11 @@
             <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>${json.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -193,6 +198,7 @@
         <inject.version>1</inject.version>
         <!-- Maven plugins -->
         <yuicompressor-maven-plugin.version>1.5.1</yuicompressor-maven-plugin.version>
+        <json.version>20240303</json.version>
     </properties>
 
 </project>
