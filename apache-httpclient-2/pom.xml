@@ -102,6 +102,10 @@
         <mockserver.version>5.11.2</mockserver.version>
         <httpclient5.version>5.2.1</httpclient5.version>
         <spring-boot.version>2.1.7.RELEASE</spring-boot.version>
+        <httpclient.version>4.5.13</httpclient.version>
+        <spring-web.version>6.1.5</spring-web.version>
+        <okhttp.version>4.11.0</okhttp.version>
+        <okio.version>3.4.0</okio.version>
     </properties>
 
 </project>
