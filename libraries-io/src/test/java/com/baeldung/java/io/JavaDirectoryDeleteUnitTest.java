@@ -13,6 +13,7 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Stream;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.After;
@@ -110,7 +111,9 @@ public class JavaDirectoryDeleteUnitTest {
     public void givenDirectory_whenDeletedWithFilesWalk_thenIsGone() throws IOException {
         Path pathToBeDeleted = TEMP_DIRECTORY.resolve(DIRECTORY_NAME);
 
-        Files.walk(pathToBeDeleted).sorted(Comparator.reverseOrder()).map(Path::toFile).forEach(File::delete);
+        try (Stream<Path> paths = Files.walk(pathToBeDeleted)) {
+            paths.sorted(Comparator.reverseOrder()).map(Path::toFile).forEach(File::delete);
+        }
 
         assertFalse("Directory still exists", Files.exists(pathToBeDeleted));
     }
