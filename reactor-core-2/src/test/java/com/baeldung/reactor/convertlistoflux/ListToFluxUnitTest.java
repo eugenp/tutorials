@@ -21,7 +21,6 @@ public class ListToFluxUnitTest {
             .verify();
     }
 
-
     @Test
     public void givenList_whenCallingCreateOperator_thenListItemsTransformedAsFluxAndEmitted(){
 
