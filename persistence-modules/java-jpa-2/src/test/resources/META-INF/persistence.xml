@@ -42,7 +42,6 @@
 	<persistence-unit name="entity-default-values">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<class>com.baeldung.jpa.defaultvalues.User</class>
-		<class>com.baeldung.jpa.defaultvalues.UserEntity</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
 			<property name="jakarta.persistence.jdbc.driver" value="org.h2.Driver" />
@@ -51,8 +50,7 @@
 			<property name="jakarta.persistence.jdbc.password" value="" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
 			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
-			<property name="hibernate.show_sql" value="true" />
-			<property name="hibernate.format_sql" value="true" />
+			<property name="show_sql" value="false" />
 			<property name="hibernate.temp.use_jdbc_metadata_defaults" value="false" />
 		</properties>
 	</persistence-unit>
