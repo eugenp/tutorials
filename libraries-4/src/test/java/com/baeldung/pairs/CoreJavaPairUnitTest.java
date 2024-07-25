@@ -12,6 +12,7 @@ public class CoreJavaPairUnitTest {
         Pair<String, Boolean> pair = new Pair<>(key, value);
 
         Assert.assertEquals(key, pair.getKey());
+        Assert.assertEquals(key, pair.getKey());
         Assert.assertEquals(value, pair.getValue());
     }
 }
