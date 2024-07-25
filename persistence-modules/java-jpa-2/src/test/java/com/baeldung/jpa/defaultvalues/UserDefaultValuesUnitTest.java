@@ -11,9 +11,12 @@ public class UserDefaultValuesUnitTest {
 
     private static UserRepository userRepository = null;
 
+    private static UserEntityRepository userEntityRepository = null;
+
     @BeforeClass
     public static void once() {
         userRepository = new UserRepository();
+        userEntityRepository = new UserEntityRepository();
     }
 
     @Test
@@ -42,6 +45,7 @@ public class UserDefaultValuesUnitTest {
     }
 
     @Test
+    @Ignore
     public void saveUser_shouldSaveWithDefaultSqlValues() {
         User user = new User();
         userRepository.save(user, 3L);
@@ -52,9 +56,30 @@ public class UserDefaultValuesUnitTest {
         assertFalse(user.getLocked());
     }
 
+    @Test
+    public void saveUser_shouldSaveWithColumnDefaultValues() {
+        UserEntity user = new UserEntity();
+        userEntityRepository.saveEntity(user, 2L);
+        user = userEntityRepository.find(2L);
+        assertEquals(user.getName(), "John Snow");
+        assertEquals(25, (int) user.getAge());
+        assertFalse(user.getLocked());
+    }
+
+    @Test
+    public void saveUser_shouldSaveWithPrePersistlValues() {
+        UserEntity user = new UserEntity();
+        userEntityRepository.save(user, 3L);
+        user = userEntityRepository.find(3L);
+        assertEquals(user.getName(), "John Snow");
+        assertEquals(25, (int) user.getAge());
+        assertFalse(user.getLocked());
+    }
+
     @AfterClass
     public static void destroy() {
         userRepository.clean();
+        userEntityRepository.clean();
     }
 
 }
