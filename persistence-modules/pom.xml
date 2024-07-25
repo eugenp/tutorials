@@ -67,6 +67,7 @@
         <module>spring-boot-persistence-2</module>
         <module>spring-boot-persistence-3</module>
         <module>spring-boot-mysql</module>
+        <module>spring-boot-postgresql</module>
         <module>spring-boot-persistence</module>
         <module>spring-boot-persistence-h2</module>
         <module>spring-boot-persistence-h2-2</module>
