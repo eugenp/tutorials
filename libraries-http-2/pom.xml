@@ -127,17 +127,17 @@
     </build>
 
     <properties>
-        <okhttp.version>4.11.0</okhttp.version> <!-- Updated to correct version -->
+        <okhttp.version>4.11.0</okhttp.version>
         <spring-web.version>6.1.5</spring-web.version>
         <httpclient.version>4.5.13</httpclient.version>
         <okio.version>3.4.0</okio.version>
         <gson.version>2.11.0</gson.version>
         <mockwebserver.version>5.0.0-alpha.12</mockwebserver.version>
-        <jetty.httpclient.version>11.0.15</jetty.httpclient.version> <!-- Updated to a compatible version -->
-        <jetty.server.version>11.0.15</jetty.server.version> <!-- Updated to a compatible version -->
+        <jetty.httpclient.version>10.0.14</jetty.httpclient.version> <!-- Updated to an available version -->
+        <jetty.server.version>10.0.14</jetty.server.version> <!-- Updated to an available version -->
         <rxjava2.version>2.2.11</rxjava2.version>
         <retrofit.version>2.3.0</retrofit.version>
-        <spring.webflux.version>6.0.0</spring.webflux.version> <!-- Updated to a more recent version -->
+        <spring.webflux.version>6.0.0</spring.webflux.version>
         <reactive.stream.version>1.0.3</reactive.stream.version>
         <reactor.version>3.6.0</reactor.version>
         <jmockit.version>1.49</jmockit.version>
