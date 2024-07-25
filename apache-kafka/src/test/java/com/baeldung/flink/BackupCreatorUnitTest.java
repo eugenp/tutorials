@@ -77,10 +77,10 @@ public class BackupCreatorUnitTest {
 
         env.execute();
 
-        Awaitility.await().until(() ->  sink.backups.size() == 2);
-        assertEquals(2, sink.backups.size());
-        assertEquals(firstBackupMessages, sink.backups.get(0).getInputMessages());
-        assertEquals(secondBackupMessages, sink.backups.get(1).getInputMessages());
+        Awaitility.await().until(() ->  CollectingSink.backups.size() == 2);
+        assertEquals(2, CollectingSink.backups.size());
+        assertEquals(firstBackupMessages, CollectingSink.backups.get(0).getInputMessages());
+        assertEquals(secondBackupMessages, CollectingSink.backups.get(1).getInputMessages());
 
     }
 
@@ -108,8 +108,8 @@ public class BackupCreatorUnitTest {
 
     @After
     public void cleanUp() {
-        if(sink.backups.size() > 0) {
-            sink.backups.clear();
+        if(CollectingSink.backups.size() > 0) {
+            CollectingSink.backups.clear();
         }
     }
 }
