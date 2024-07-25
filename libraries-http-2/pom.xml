@@ -40,6 +40,21 @@
             <version>${mockwebserver.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>${httpclient.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring-web.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.okio</groupId>
+            <artifactId>okio</artifactId>
+            <version>${okio.version}</version>
+        </dependency>
         <!-- Dependencies for Jetty ReactiveStreams HTTP Client -->
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
@@ -109,7 +124,10 @@
     </build>
 
     <properties>
-        <okhttp.version>5.0.0-alpha.12</okhttp.version>
+        <httpclient.version>4.5.13</httpclient.version>
+        <spring-web.version>6.1.5</spring-web.version>
+        <okhttp.version>4.11.0</okhttp.version>
+        <okio.version>3.4.0</okio.version>
         <gson.version>2.11.0</gson.version>
         <mockwebserver.version>5.0.0-alpha.12</mockwebserver.version>
         <jetty.httpclient.version>1.0.3</jetty.httpclient.version>
