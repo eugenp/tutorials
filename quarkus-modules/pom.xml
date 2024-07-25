@@ -16,6 +16,7 @@
     <modules>
         <module>quarkus</module>
         <module>quarkus-citrus</module>
+        <module>quarkus-clientbasicauth</module>
         <module>quarkus-extension</module>
         <module>quarkus-jandex</module>
         <!-- <module>quarkus-vs-springboot</module> fixing in JAVA-37334 -->
