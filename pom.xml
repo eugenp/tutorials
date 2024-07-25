@@ -413,6 +413,7 @@
                 <module>libraries-testing</module>
                 <module>text-processing-libraries-modules</module>
                 <module>core-java-modules/core-java-concurrency-advanced-5</module>
+                <module>spring-boot-modules/spring-boot-react</module>
             </modules>
 
             <properties>
@@ -520,6 +521,7 @@
                 <module>kubernetes-modules/k8s-operator</module>
                 <module>text-processing-libraries-modules</module>
                 <module>core-java-modules/core-java-concurrency-advanced-5</module>
+                <module>spring-boot-modules/spring-boot-react</module>
             </modules>
 
             <properties>
