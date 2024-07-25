@@ -139,7 +139,7 @@
 
     <properties>
         <!-- persistence -->
-        <hibernate.version>6.2.0.Final</hibernate.version>
+        <hibernate.version>6.5.2.Final</hibernate.version>
         <postgresql.version>42.5.4</postgresql.version>
         <hsqldb.version>2.7.1</hsqldb.version>
         <testcontainers.version>1.19.6</testcontainers.version>

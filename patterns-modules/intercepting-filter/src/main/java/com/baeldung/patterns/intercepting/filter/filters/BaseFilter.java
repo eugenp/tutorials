@@ -3,9 +3,9 @@ package com.baeldung.patterns.intercepting.filter.filters;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.servlet.Filter;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletException;
+import jakarta.servlet.Filter;
+import jakarta.servlet.FilterConfig;
+import jakarta.servlet.ServletException;
 
 public abstract class BaseFilter implements Filter {
     private static final Logger log = LoggerFactory.getLogger(BaseFilter.class);

@@ -3,7 +3,7 @@ package com.baeldung.xmlhtml.pojo.jaxb.html;
 import com.baeldung.xmlhtml.pojo.jaxb.html.elements.Body;
 import com.baeldung.xmlhtml.pojo.jaxb.html.elements.Meta;
 
-import javax.xml.bind.annotation.*;
+import jakarta.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
