@@ -50,7 +50,7 @@ class JpaProjectionIntegrationTest {
     void whenUsingClassBasedProjectionsAndJPANativeQuery_thenDtoWithRequiredPropertiesIsReturned() {
         List<PersonDto> personDtos = personRepository.findByFirstNameLike("Jo%");
         assertThat(personDtos.size()).isEqualTo(2);
-        assertThat(personDtos).isEqualTo(Arrays.asList(new PersonDto("John", "Doe"), new PersonDto("Job", "Doe")));
+        assertThat(personDtos).isEqualTo(Arrays.asList(new PersonDto("John", "Doe"), new PersonDto("Job", "Dob")));
     }
 
     @Test

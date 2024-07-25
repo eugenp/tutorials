@@ -6,6 +6,8 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 
 import org.junit.Before;
@@ -31,9 +33,9 @@ public class BasicAuthConfigurationIntegrationTest {
     @LocalServerPort int port;
 
     @Before
-    public void setUp() throws MalformedURLException {
+    public void setUp() throws MalformedURLException, URISyntaxException {
         restTemplate = new TestRestTemplate("user", "password");
-        base = new URL("http://localhost:" + port);
+        base = new URI("http://localhost:" + port).toURL();
     }
 
     @Test
