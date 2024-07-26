@@ -17,6 +17,7 @@ import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.sink.SinkFunction;
 import org.apache.flink.streaming.api.windowing.time.Time;
 import org.awaitility.Awaitility;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -26,16 +27,19 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 public class BackupCreatorUnitTest {
     public static ObjectMapper mapper;
+    CollectingSink sink;
 
     @Before
     public void setup() {
         mapper = new ObjectMapper().registerModule(new JavaTimeModule());
+        sink = new CollectingSink();
     }
 
     @Test
@@ -49,7 +53,6 @@ public class BackupCreatorUnitTest {
     }
 
     @Test
-    @Ignore
     public void givenMultipleInputMessagesFromDifferentDays_whenBackupCreatorIsUser_thenMessagesAreGroupedProperly() throws Exception {
         LocalDateTime currentTime = LocalDateTime.now();
         InputMessage message = new InputMessage("Me", "User", currentTime, "First TestMessage");
@@ -67,7 +70,6 @@ public class BackupCreatorUnitTest {
         env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime);
         env.setParallelism(1);
         DataStreamSource<InputMessage> testDataSet = env.fromCollection(inputMessages);
-        CollectingSink sink = new CollectingSink();
         testDataSet.assignTimestampsAndWatermarks(new InputMessageTimestampAssigner())
           .timeWindowAll(Time.hours(24))
           .aggregate(new BackupAggregator())
@@ -75,10 +77,10 @@ public class BackupCreatorUnitTest {
 
         env.execute();
 
-        Awaitility.await().until(() ->  sink.backups.size() == 2);
-        assertEquals(2, sink.backups.size());
-        assertEquals(firstBackupMessages, sink.backups.get(0).getInputMessages());
-        assertEquals(secondBackupMessages, sink.backups.get(1).getInputMessages());
+        Awaitility.await().until(() ->  CollectingSink.backups.size() == 2);
+        assertEquals(2, CollectingSink.backups.size());
+        assertEquals(firstBackupMessages, CollectingSink.backups.get(0).getInputMessages());
+        assertEquals(secondBackupMessages, CollectingSink.backups.get(1).getInputMessages());
 
     }
 
@@ -96,11 +98,18 @@ public class BackupCreatorUnitTest {
 
     private static class CollectingSink implements SinkFunction<Backup> {
         
-        public static List<Backup> backups = new ArrayList<>();
+        public static List<Backup> backups = new CopyOnWriteArrayList<>();
 
         @Override
-        public synchronized void invoke(Backup value, Context context) throws Exception {
+        public void invoke(Backup value, Context context) throws Exception {
             backups.add(value);
+        }
+    }
+
+    @After
+    public void cleanUp() {
+        if(CollectingSink.backups.size() > 0) {
+            CollectingSink.backups.clear();
         }
     }
 }
