@@ -38,15 +38,13 @@ public class Yahtzee {
 		if (!new HashSet<>(roll.dice()).containsAll(valuesToReroll)) {
 			throw new IllegalStateException("You can re-roll dice values which are not from the original roll.");
 		}
-		List<Integer> newDice = roll.dice()
-				.stream()
-				.map(it -> {
-					if (!valuesToReroll.contains(it)) {
-						return it;
-					}
-					valuesToReroll.remove(it);
-					return randomDieValue();
-				}).toList();
+		List<Integer> newDice = roll.dice().stream().map(it -> {
+			if (!valuesToReroll.contains(it)) {
+				return it;
+			}
+			valuesToReroll.remove(it);
+			return randomDieValue();
+		}).toList();
 
 		return new Roll(newDice, roll.rollCount() + 1);
 	}
