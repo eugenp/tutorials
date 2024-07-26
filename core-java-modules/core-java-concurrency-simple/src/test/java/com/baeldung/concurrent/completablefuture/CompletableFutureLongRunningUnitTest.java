@@ -198,7 +198,7 @@ public class CompletableFutureLongRunningUnitTest {
     }
 
     @Test
-    public void testDelay () throws Exception {
+    public void whenPassingDelayToDelayedExecutor_thenSubmitsDelayedTask () throws Exception {
         Object input = new Object();
         CompletableFuture<Object> future = new CompletableFuture<>();
         future.completeAsync(() -> input, CompletableFuture.delayedExecutor(1, TimeUnit.SECONDS));
@@ -213,7 +213,7 @@ public class CompletableFutureLongRunningUnitTest {
     }
 
     @Test
-    public void testTimeoutTriggered () throws Exception {
+    public void whenTimeoutTriggeredOnCompletableFuture_thenCompletesWithException() throws Exception {
         CompletableFuture<Object> future = new CompletableFuture<>();
         future.orTimeout(1, TimeUnit.SECONDS);
 
@@ -229,7 +229,7 @@ public class CompletableFutureLongRunningUnitTest {
     }
 
     @Test
-    public void testTimeoutNotTriggered () throws Exception {
+    public void whenTimeoutNotTriggeredOnCompletableFuture_thenCompletesNormally () throws Exception {
         Object input = new Object();
         CompletableFuture<Object> future = new CompletableFuture<>();
 
@@ -246,7 +246,7 @@ public class CompletableFutureLongRunningUnitTest {
     }
 
     @Test
-    public void completeOnTimeout () throws Exception {
+    public void whenCompleteOnTimeoutTriggered_thenCompletesNormally() throws Exception {
         Object input = new Object();
         CompletableFuture<Object> future = new CompletableFuture<>();
         future.completeOnTimeout(input, 1, TimeUnit.SECONDS);
