@@ -412,6 +412,9 @@
                 <module>web-modules/restx</module>
                 <module>libraries-testing</module>
                 <module>text-processing-libraries-modules</module>
+                <module>core-java-modules/core-java-concurrency-advanced-5</module>
+                <module>spring-boot-modules/spring-boot-react</module>
+                <module>testing-modules/jmeter</module>
             </modules>
 
             <properties>
@@ -518,6 +521,9 @@
                 <module>libraries-testing</module>
                 <module>kubernetes-modules/k8s-operator</module>
                 <module>text-processing-libraries-modules</module>
+                <module>core-java-modules/core-java-concurrency-advanced-5</module>
+                <module>spring-boot-modules/spring-boot-react</module>
+                <module>testing-modules/jmeter</module>
             </modules>
 
             <properties>
