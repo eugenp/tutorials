@@ -10,37 +10,40 @@ import org.springframework.security.test.context.support.WithAnonymousUser;
 import org.springframework.test.web.servlet.MockMvc;
 import com.c4_soft.springaddons.security.oauth2.test.annotations.WithJwt;
 
+/**
+ * @author ch4mp&#64;c4-soft.com
+ */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 @AutoConfigureMockMvc
 class ApplicationIntegrationTests {
-  @Autowired
-  MockMvc api;
+    @Autowired
+    MockMvc api;
 
-  @Test
-  @WithAnonymousUser
-  void givenRequestIsAnonymous_whenGetMe_thenUnauthorized() throws Exception {
-    api.perform(get("/me")).andExpect(status().isUnauthorized());
-  }
+    @Test
+    @WithAnonymousUser
+    void givenRequestIsAnonymous_whenGetMe_thenUnauthorized() throws Exception {
+        api.perform(get("/me")).andExpect(status().isUnauthorized());
+    }
 
-  @Test
-  @WithJwt("brice.json")
-  void givenUserIsBrice_whenGetMe_thenOk()
-      throws Exception {
-    api.perform(get("/me")).andExpect(status().isOk());
-  }
+    @Test
+    @WithJwt("brice.json")
+    void givenUserIsBrice_whenGetMe_thenOk()
+            throws Exception {
+        api.perform(get("/me")).andExpect(status().isOk());
+    }
 
-  @Test
-  @WithAnonymousUser
-  void givenRequestIsAnonymous_whenGetLiveness_thenUnauthorized()
-      throws Exception {
-    api.perform(get("/actuator/health/liveness")).andExpect(status().isUnauthorized());
-  }
+    @Test
+    @WithAnonymousUser
+    void givenRequestIsAnonymous_whenGetLiveness_thenUnauthorized()
+            throws Exception {
+        api.perform(get("/actuator/health/liveness")).andExpect(status().isUnauthorized());
+    }
 
-  @Test
-  @WithJwt("brice.json")
-  void givenUserIsBrice_whenGetLiveness_thenForbidden()
-      throws Exception {
-    api.perform(get("/actuator/health/liveness")).andExpect(status().isForbidden());
-  }
+    @Test
+    @WithJwt("brice.json")
+    void givenUserIsBrice_whenGetLiveness_thenForbidden()
+            throws Exception {
+        api.perform(get("/actuator/health/liveness")).andExpect(status().isForbidden());
+    }
 
 }

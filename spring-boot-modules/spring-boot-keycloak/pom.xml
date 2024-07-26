@@ -1,39 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>com.baeldung.spring-boot-modules</groupId>
-		<artifactId>spring-boot-modules</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
-		<relativePath>..</relativePath>
-	</parent>
-	<groupId>com.baeldung.spring-boot-modules.keycloak</groupId>
-	<artifactId>spring-boot-keycloak</artifactId>
-	<packaging>pom</packaging>
-	<description>Parent for a set of simple applications demonstrating
-		integration between Keycloak and Spring Boot.</description>
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.baeldung.spring-boot-modules</groupId>
+        <artifactId>spring-boot-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>..</relativePath>
+    </parent>
+    <groupId>com.baeldung.spring-boot-modules.keycloak</groupId>
+    <artifactId>spring-boot-keycloak</artifactId>
+    <packaging>pom</packaging>
+    <description>Parent for a set of simple applications demonstrating
+        integration between Keycloak and Spring Boot.</description>
+        
+    <developers>
+        <developer>
+            <id>ch4mpy</id>
+            <name>Jérôme Wacongne</name>
+            <email>ch4mp@c4-soft.com</email>
+            <url>https://github.com/ch4mpy</url>
+        </developer>
+    </developers>
 
-	<properties>
-		<java.version>17</java.version>
-		<spring-boot.version>3.3.1</spring-boot.version>
-		<spring-addons.version>7.8.7</spring-addons.version>
-	</properties>
+    <properties>
+        <java.version>17</java.version>
+        <spring-boot.version>3.3.1</spring-boot.version>
+        <spring-addons.version>7.8.7</spring-addons.version>
+    </properties>
 
-	<modules>
-		<module>spring-boot-mvc-client</module>
-		<module>spring-boot-resource-server</module>
-	</modules>
+    <modules>
+        <module>spring-boot-mvc-client</module>
+        <module>spring-boot-resource-server</module>
+    </modules>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>com.c4-soft.springaddons</groupId>
-				<artifactId>spring-addons-oauth2-test</artifactId>
-				<version>${spring-addons.version}</version>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.c4-soft.springaddons</groupId>
+                <artifactId>spring-addons-oauth2-test</artifactId>
+                <version>${spring-addons.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 </project>
