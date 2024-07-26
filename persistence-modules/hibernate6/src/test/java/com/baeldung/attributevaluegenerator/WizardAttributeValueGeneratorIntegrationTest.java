@@ -26,7 +26,8 @@ class WizardAttributeValueGeneratorIntegrationTest {
         Wizard savedWizard = wizardRepository.save(wizard);
 
         assertThat(savedWizard.getHouse())
-            .isNotBlank();
+            .isNotBlank()
+            .isIn("Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin");
     }
 
     @Test
