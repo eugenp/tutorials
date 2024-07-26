@@ -12,17 +12,17 @@ class ReverseArrayElementsTest {
         int[][] input = new int[][] { { 1, 2, 3 }, { 3, 2, 1 }, { 2, 1, 3 } };
 
         int[][] expected = new int[][] { { 3, 2, 1 }, { 1, 2, 3 }, { 3, 1, 2 } };
-        ReverseArrayElements.reverseRows(input);
+        ReverseArrayElements.reverseRowsUsingSimpleForLoops(input);
 
         assertThat(input, is(expected));
     }
 
     @Test
-    void givenArray_whenCallReverseRowsUsingStreams_thenExpectAllRowsReversed() {
+    void givenArray_whenCallReverseRowsUsingNestedIntStreams_thenExpectAllRowsReversed() {
         int[][] input = new int[][] { { 1, 2, 3 }, { 3, 2, 1 }, { 2, 1, 3 } };
 
         int[][] expected = new int[][] { { 3, 2, 1 }, { 1, 2, 3 }, { 3, 1, 2 } };
-        ReverseArrayElements.reverseRowsUsingStreams(input);
+        ReverseArrayElements.reverseRowsUsingNestedIntStreams(input);
 
         assertThat(input, is(expected));
     }
@@ -32,17 +32,17 @@ class ReverseArrayElementsTest {
         int[][] input = new int[][] { { 1, 2, 3 }, { 3, 2, 1 }, { 2, 1, 3 } };
 
         int[][] expected = new int[][] { { 3, 2, 1 }, { 1, 2, 3 }, { 3, 1, 2 } };
-        ReverseArrayElements.reverseRowsCollectionsReverse(input);
+        ReverseArrayElements.reverseRowsUsingCollectionsReverse(input);
 
         assertThat(input, is(expected));
     }
 
     @Test
-    void givenArray_whenCallReverseColumns_thenExpectAllColumnsReversed() {
+    void givenArray_whenCallReverseRowsUsingStreamsAndExtraDeque_thenExpectAllRowsReversed() {
         int[][] input = new int[][] { { 1, 2, 3 }, { 3, 2, 1 }, { 2, 1, 3 } };
 
-        int[][] expected = new int[][] { { 2, 1, 3 }, { 3, 2, 1 }, { 1, 2, 3 } };
-        ReverseArrayElements.reverseColumns(input);
+        int[][] expected = new int[][] { { 3, 2, 1 }, { 1, 2, 3 }, { 3, 1, 2 } };
+        ReverseArrayElements.reverseRowsUsingStreamsAndExtraDeque(input);
 
         assertThat(input, is(expected));
     }
