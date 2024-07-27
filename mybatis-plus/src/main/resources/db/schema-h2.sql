@@ -21,7 +21,7 @@ CREATE TABLE account
     interest_rate numeric(19, 10),
     term          int,
     client_id     BIGINT NOT NULL,
-    deleted       int,
+    deleted       int default 0,
     type          varchar(32),
     constraint fk_account_client_id foreign key (client_id) references client (id)
 )

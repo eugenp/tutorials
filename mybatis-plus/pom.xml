@@ -34,11 +34,6 @@
             <version>${mysql.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-generator</artifactId>
             <version>${myBatisPlus.version}</version>
@@ -60,7 +55,6 @@
         <myBatisPlus.version>3.5.7</myBatisPlus.version>
         <h2.version>2.2.220</h2.version>
         <mysql.version>8.0.26</mysql.version>
-        <lombok.version>1.18.32</lombok.version>
         <freemarker.version>2.3.31</freemarker.version>
         <p6spy.version>3.9.1</p6spy.version>
     </properties>

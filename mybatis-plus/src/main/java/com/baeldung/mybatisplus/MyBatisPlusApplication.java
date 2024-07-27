@@ -1,5 +1,18 @@
 package com.baeldung.mybatisplus;
 
+import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.session.ResultContext;
+import org.apache.ibatis.session.ResultHandler;
+import org.mybatis.spring.annotation.MapperScan;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 import com.baeldung.mybatisplus.entity.Account;
 import com.baeldung.mybatisplus.entity.Client;
 import com.baeldung.mybatisplus.idgenerator.TimestampIdGenerator;
@@ -10,18 +23,6 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.conditions.query.QueryChainWrapper;
-import org.apache.ibatis.session.ResultContext;
-import org.apache.ibatis.session.ResultHandler;
-import org.mybatis.spring.annotation.MapperScan;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.math.BigDecimal;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
 
 @SpringBootApplication
 @MapperScan("com.baeldung.mybatisplus.mapper")
@@ -65,7 +66,8 @@ public class MyBatisPlusApplication {
         clientService.saveBatch(Arrays.asList(client2, client3, client4));
 
         // read
-        logger.info("Read client: " + clientService.getById(client.getId()).toString());
+        logger.info("Read client: " + clientService.getById(client.getId())
+            .toString());
 
         // read all
         List<Client> clientList = clientService.list();
@@ -74,7 +76,8 @@ public class MyBatisPlusApplication {
         // update
         client.setEmail("anshul.bansal@baeldung.com");
         clientService.updateById(client);
-        logger.info("Updated client: " + clientService.getById(client.getId()).toString());
+        logger.info("Updated client: " + clientService.getById(client.getId())
+            .toString());
 
         // delete
         clientService.removeById(client.getId());
@@ -89,38 +92,46 @@ public class MyBatisPlusApplication {
         // query wrapper
         QueryWrapper<Client> clientQueryWrapper = new QueryWrapper<>();
         clientQueryWrapper.allEq(map);
-        logger.info(clientService.getBaseMapper().selectOne(clientQueryWrapper).toString());
+        logger.info(clientService.getBaseMapper()
+            .selectOne(clientQueryWrapper)
+            .toString());
 
         // lambda query wrapper
         LambdaQueryWrapper<Client> lambdaQueryWrapper = new LambdaQueryWrapper<>();
         lambdaQueryWrapper.eq(Client::getId, 2L);
-        logger.info(clientService.getBaseMapper().selectOne(lambdaQueryWrapper).toString());
+        logger.info(clientService.getBaseMapper()
+            .selectOne(lambdaQueryWrapper)
+            .toString());
 
         // query wrapper through service layer
         QueryChainWrapper<Client> queryChainWrapper = clientService.query();
         queryChainWrapper.allEq(map);
-        logger.info(clientService.getBaseMapper().selectOne(queryChainWrapper.getWrapper()).toString());
+        logger.info(clientService.getBaseMapper()
+            .selectOne(queryChainWrapper.getWrapper())
+            .toString());
 
         // lambda update wrapper
         LambdaUpdateWrapper<Client> lambdaUpdateWrapper = new LambdaUpdateWrapper<>();
         lambdaUpdateWrapper.set(Client::getEmail, "x@e.com");
-        logger.info(String.valueOf(clientService.getBaseMapper().update(lambdaUpdateWrapper)));
+        logger.info(String.valueOf(clientService.getBaseMapper()
+            .update(lambdaUpdateWrapper)));
 
         lambdaUpdateWrapper.clear();
         lambdaUpdateWrapper.setSql("email = 'x@e.com' where id >2 ");
-        logger.info(String.valueOf(clientService.getBaseMapper().update(lambdaUpdateWrapper)));
+        logger.info(String.valueOf(clientService.getBaseMapper()
+            .update(lambdaUpdateWrapper)));
 
         // streaming queries
-        clientService.getBaseMapper().selectList(Wrappers.emptyWrapper(), new ResultHandler<Client>() {
-            int count = 0;
+        clientService.getBaseMapper()
+            .selectList(Wrappers.emptyWrapper(), new ResultHandler<Client>() {
+                int count = 0;
 
-            @Override
-            public void handleResult(ResultContext<? extends Client> resultContext) {
-                Client client = resultContext.getResultObject();
-                logger.info("Processing " + (++count) + "Record : " + client);
-            }
-        });
-
+                @Override
+                public void handleResult(ResultContext<? extends Client> resultContext) {
+                    Client client = resultContext.getResultObject();
+                    logger.info("Processing " + (++count) + "Record : " + client);
+                }
+            });
 
         // Snowflake UUID generator
 

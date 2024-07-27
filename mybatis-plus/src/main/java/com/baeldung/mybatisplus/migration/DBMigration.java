@@ -1,13 +1,15 @@
 package com.baeldung.mybatisplus.migration;
 
-import com.baomidou.mybatisplus.extension.ddl.IDdl;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-import javax.sql.DataSource;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Consumer;
+
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.baomidou.mybatisplus.extension.ddl.IDdl;
 
 @Component
 public class DBMigration implements IDdl {
@@ -22,6 +24,7 @@ public class DBMigration implements IDdl {
 
     @Override
     public List<String> getSqlFiles() {
+        
         // works for MySQL setup
         /*return Arrays.asList(
                 "db/db_v1.sql",
@@ -31,4 +34,5 @@ public class DBMigration implements IDdl {
 
         return Collections.emptyList();
     }
+
 }
