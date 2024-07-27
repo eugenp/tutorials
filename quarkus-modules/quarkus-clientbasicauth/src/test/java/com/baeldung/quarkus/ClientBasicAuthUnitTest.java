@@ -15,10 +15,10 @@ import io.quarkus.rest.client.reactive.ClientBasicAuth;
 import io.quarkus.test.junit.QuarkusTest;
 
 @QuarkusTest
-class GreetingResourceTest {
+class ClientBasicAuthUnitTest {
 
     @Test
-    void testHelloEndpointWithoutCredentials() {
+    void whenNoCredentialsProvided_then401StatusCode() {
 
         MyService myService = RestClientBuilder.newBuilder()
             .baseUri(URI.create("http://localhost:8081"))
@@ -28,8 +28,7 @@ class GreetingResourceTest {
             myService.hello();
         } catch (Exception e) {
             if (e.getCause() instanceof WebApplicationException webApp) {
-                assertTrue(webApp.getResponse()
-                    .getStatus() == 401);
+                assertTrue(webApp.getResponse().getStatus() == 401);
                 return;
             }
         }
@@ -38,7 +37,7 @@ class GreetingResourceTest {
     }
 
     @Test
-    void testHelloEndpointWithCredentials() {
+    void whenRightCredentinalsProvided_thenResponseReceived() {
 
         @ClientBasicAuth(username = "john", password = "secret1")
         interface MyService$John extends MyService {
@@ -49,6 +48,29 @@ class GreetingResourceTest {
             .build(MyService$John.class);
 
         assertEquals("Hello from Quarkus REST", myService.hello());
+    }
+
+    @Test
+    void whenWrongCredentinalsProvided_then401StatusCode() {
+
+        @ClientBasicAuth(username = "john", password = "wrongPassword")
+        interface MyService$John extends MyService {
+        }
+
+        MyService myService = RestClientBuilder.newBuilder()
+            .baseUri(URI.create("http://localhost:8081"))
+            .build(MyService$John.class);
+
+        try {
+            myService.hello();
+        } catch (Exception e) {
+            if (e.getCause() instanceof WebApplicationException webApp) {
+                assertTrue(webApp.getResponse().getStatus() == 401);
+                return;
+            }
+        }
+
+        fail("Should have thrown exception with 401");
     }
 
 }
