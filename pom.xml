@@ -670,6 +670,7 @@
                 <module>microservices-modules</module>
                 <module>mustache</module>
                 <module>mybatis</module>
+                <module>mybatis-plus</module>
                 <module>netflix-modules</module>
                 <module>optaplanner</module>
                 <module>orika</module>
@@ -922,6 +923,7 @@
                 <module>microservices-modules</module>
                 <module>mustache</module>
                 <module>mybatis</module>
+                <module>mybatis-plus</module>
                 <module>netflix-modules</module>
                 <module>optaplanner</module>
                 <module>orika</module>

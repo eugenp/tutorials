@@ -1,0 +1,35 @@
+# DataSource Config
+spring:
+  datasource:
+    initialize: true
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:~/mybatisplus;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE;
+    username: "sa"
+
+    #driver-class-name: com.mysql.cj.jdbc.Driver
+    #url: jdbc:mysql://localhost:3306/
+    #driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+    #url: jdbc:p6spy:mysql://localhost:3306/
+    #username: root
+    #password: rootpassword
+  sql:
+    init:
+      #schema-locations: classpath:db/schema-mysql.sql
+      schema-locations: classpath:db/schema-h2.sql
+      data-locations: classpath:db/data-h2.sql
+      mode: always
+
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+#decorator:
+#  datasource:
+#    p6spy:
+#      # 日志格式
+#      log-format: "\ntime:%(executionTime) || sql:%(sql)\n"
+#      # 自定义日志类
+#      logging: custom
