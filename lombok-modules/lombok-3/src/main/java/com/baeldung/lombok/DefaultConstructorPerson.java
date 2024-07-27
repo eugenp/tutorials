@@ -7,13 +7,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import jakarta.persistence.*;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-@Builder
+
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
 @Entity
 public class DefaultConstructorPerson {
 
@@ -22,5 +22,6 @@ public class DefaultConstructorPerson {
     private Long id;
     private String username;
     private String password;
+
 }
 
