@@ -1,4 +1,4 @@
-package com.baeldung.jackson.primitive;
+package com.baeldung.jackson.specifictype;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;

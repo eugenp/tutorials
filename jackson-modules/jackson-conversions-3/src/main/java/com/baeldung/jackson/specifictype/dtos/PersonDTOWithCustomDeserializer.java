@@ -1,6 +1,6 @@
-package com.baeldung.jackson.primitive.dtos;
+package com.baeldung.jackson.specifictype.dtos;
 
-import com.baeldung.jackson.primitive.ValueDeserializer;
+import com.baeldung.jackson.specifictype.ValueDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import java.util.List;

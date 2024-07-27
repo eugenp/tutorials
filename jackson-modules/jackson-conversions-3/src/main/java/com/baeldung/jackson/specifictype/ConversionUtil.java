@@ -1,8 +1,8 @@
-package com.baeldung.jackson.primitive;
+package com.baeldung.jackson.specifictype;
 
-import com.baeldung.jackson.primitive.dtos.PersonDTO;
-import com.baeldung.jackson.primitive.dtos.PersonDTOWithCustomDeserializer;
-import com.baeldung.jackson.primitive.dtos.PersonDTOWithType;
+import com.baeldung.jackson.specifictype.dtos.PersonDTO;
+import com.baeldung.jackson.specifictype.dtos.PersonDTOWithCustomDeserializer;
+import com.baeldung.jackson.specifictype.dtos.PersonDTOWithType;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;

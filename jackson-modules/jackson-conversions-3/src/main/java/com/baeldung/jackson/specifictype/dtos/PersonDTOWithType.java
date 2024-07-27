@@ -1,4 +1,4 @@
-package com.baeldung.jackson.primitive.dtos;
+package com.baeldung.jackson.specifictype.dtos;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;

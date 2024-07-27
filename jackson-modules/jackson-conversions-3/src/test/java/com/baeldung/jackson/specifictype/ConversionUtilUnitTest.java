@@ -1,12 +1,12 @@
-package com.baeldung.jackson.primitive;
+package com.baeldung.jackson.specifictype;
 
-import com.baeldung.jackson.primitive.dtos.PersonDTO;
-import com.baeldung.jackson.primitive.dtos.PersonDTOWithCustomDeserializer;
-import com.baeldung.jackson.primitive.dtos.PersonDTOWithType;
+import com.baeldung.jackson.specifictype.dtos.PersonDTO;
+import com.baeldung.jackson.specifictype.dtos.PersonDTOWithCustomDeserializer;
+import com.baeldung.jackson.specifictype.dtos.PersonDTOWithType;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.junit.jupiter.api.Test;
 
-import static com.baeldung.jackson.primitive.ConversionUtil.*;
+import static com.baeldung.jackson.specifictype.ConversionUtil.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ConversionUtilUnitTest {
