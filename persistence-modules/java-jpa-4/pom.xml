@@ -14,7 +14,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.hibernate</groupId>
+            <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
@@ -56,7 +56,6 @@
     </build>
 
     <properties>
-        <hibernate.version>6.4.7.Final</hibernate.version>
         <postgresql.version>42.2.18</postgresql.version>
         <maven-processor-plugin.version>3.3.3</maven-processor-plugin.version>
         <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
