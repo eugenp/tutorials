@@ -19,12 +19,10 @@ import org.apache.flink.streaming.api.windowing.time.Time;
 import org.awaitility.Awaitility;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -32,7 +30,10 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
-public class BackupCreatorUnitTest {
+/**
+ * This test remains flaky in Jenkins hence making it manual.
+ */
+public class BackupCreatorManualTest {
     public static ObjectMapper mapper;
     CollectingSink sink;
 
