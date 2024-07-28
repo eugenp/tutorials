@@ -47,7 +47,7 @@ public class EmailServiceLiveTest {
     }
 
     @Test
-    public void givenEmailMessageWithMultipleRecipients_whenEmailIsSent_MessageIsReceived() throws Exception {
+    public void givenEmailMessageWithMultipleRecipients_whenEmailIsSent_AllRecipientReceivedMessage() throws Exception {
         emailService.sendMailToMultipleRecipients();
 
         MimeMessage[] receivedMessages = greenMail.getReceivedMessages();
