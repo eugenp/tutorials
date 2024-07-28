@@ -15,21 +15,21 @@ import jakarta.annotation.PostConstruct;
 @Service
 public class ChatbotService {
 	
-	private static final Logger logger = LoggerFactory.getLogger(ChatbotService.class);
+    private static final Logger logger = LoggerFactory.getLogger(ChatbotService.class);
 
-	@Value("${ollama.api_url}")
-	private String apiUrl;
+    @Value("${ollama.api_url}")
+    private String apiUrl;
 
-	@Value("${ollama.model}")
-	private String modelName;
+    @Value("${ollama.model}")
+    private String modelName;
 	
-	@Value("${ollama.timeout}")
+    @Value("${ollama.timeout}")
     private int timeout;
 
     @Value("${ollama.max_response_length}")
     private int maxResponseLength;
 
-	private OllamaChatModel ollamaChatModel;
+    private OllamaChatModel ollamaChatModel;
 
     @PostConstruct
     public void init() {
@@ -41,18 +41,18 @@ public class ChatbotService {
          	.build();
     }
 
-	public String getResponse(String question) {
-		logger.debug("Sending to Ollama: {}",  question);
-		String answer = ollamaChatModel.generate(question);
-		logger.debug("Receiving from Ollama: {}",  answer);
-	    if (answer != null && !answer.isEmpty()) {
-	        return answer;
-	    } else {
-	    	logger.error("Invalid Ollama response for:\n\n" + question);
-	        throw new ResponseStatusException(
-	        		HttpStatus.SC_INTERNAL_SERVER_ERROR,
-	        		"Ollama didn't generate a valid response",
-	        		null);
-	    }
-	}
+    public String getResponse(String question) {
+        logger.debug("Sending to Ollama: {}",  question);
+        String answer = ollamaChatModel.generate(question);
+        logger.debug("Receiving from Ollama: {}",  answer);
+        if (answer != null && !answer.isEmpty()) {
+            return answer;
+        } else {
+            logger.error("Invalid Ollama response for:\n\n" + question);
+            throw new ResponseStatusException(
+                HttpStatus.SC_INTERNAL_SERVER_ERROR,
+                "Ollama didn't generate a valid response",
+                null);
+        }
+    }
 }
