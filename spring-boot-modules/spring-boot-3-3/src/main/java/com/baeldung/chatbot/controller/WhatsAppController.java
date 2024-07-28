@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class WhatsAppController {
 	
-	@Value("${whatsapp.verify_token}")
+    @Value("${whatsapp.verify_token}")
     private String verifyToken;
 
     @Autowired
