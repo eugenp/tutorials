@@ -15,8 +15,8 @@ public class DefaultSecurityJavaConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http.authorizeHttpRequests (authorizeRequests -> authorizeRequests
-            .requestMatchers("/test-resource").hasRole("ADMIN"))
-            .httpBasic(withDefaults())
-            .build();
+          .requestMatchers("/test-resource").hasRole("ADMIN"))
+          .httpBasic(withDefaults())
+          .build();
     }
 }

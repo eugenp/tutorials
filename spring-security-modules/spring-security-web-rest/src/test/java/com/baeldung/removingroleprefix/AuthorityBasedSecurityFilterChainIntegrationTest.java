@@ -32,15 +32,15 @@ public class AuthorityBasedSecurityFilterChainIntegrationTest {
     @BeforeEach
     void setup() {
         mockMvc =  MockMvcBuilders
-                .webAppContextSetup(wac)
-                .apply(SecurityMockMvcConfigurers.springSecurity())
-                .build();
+          .webAppContextSetup(wac)
+          .apply(SecurityMockMvcConfigurers.springSecurity())
+          .build();
     }
 
     @Test
     void givenAuthorityBasedSecurityJavaConfig_whenCallTheResourceWithAdminAuthority_thenOkResponseCodeExpected() throws Exception {
         MockHttpServletRequestBuilder with = MockMvcRequestBuilders.get("/test-resource")
-                .header("Authorization", basicAuthHeader("admin", "password"));
+          .header("Authorization", basicAuthHeader("admin", "password"));
 
         ResultActions performed = mockMvc.perform(with);
 

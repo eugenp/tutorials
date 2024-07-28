@@ -32,15 +32,15 @@ public class RemovingRolePrefixMethodSecurityIntegrationTest {
     @BeforeEach
     void setup() {
         mockMvc = MockMvcBuilders
-                .webAppContextSetup(wac)
-                .apply(SecurityMockMvcConfigurers.springSecurity())
-                .build();
+          .webAppContextSetup(wac)
+          .apply(SecurityMockMvcConfigurers.springSecurity())
+          .build();
     }
 
     @Test
     public void givenMethodSecurityJavaConfig_whenCallTheResourceWithAdminRole_thenOkResponseCodeExpected() throws Exception {
         MockHttpServletRequestBuilder with = MockMvcRequestBuilders.get("/test-resource-method-security-resource")
-                .header("Authorization", basicAuthHeader("admin", "password"));
+          .header("Authorization", basicAuthHeader("admin", "password"));
 
         ResultActions performed = mockMvc.perform(with);
 

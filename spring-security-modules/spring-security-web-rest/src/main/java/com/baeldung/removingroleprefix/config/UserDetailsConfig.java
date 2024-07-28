@@ -17,10 +17,10 @@ public class UserDetailsConfig {
     public InMemoryUserDetailsManager userDetailsService() {
         PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
         UserDetails admin = User.withUsername("admin")
-                .password(encoder.encode("password"))
-                .authorities(Arrays.asList(new SimpleGrantedAuthority("ADMIN"),
-                        new SimpleGrantedAuthority("ADMINISTRATION")))
-                .build();
+          .password(encoder.encode("password"))
+          .authorities(Arrays.asList(new SimpleGrantedAuthority("ADMIN"),
+             new SimpleGrantedAuthority("ADMINISTRATION")))
+          .build();
 
         return new InMemoryUserDetailsManager(admin);
     }

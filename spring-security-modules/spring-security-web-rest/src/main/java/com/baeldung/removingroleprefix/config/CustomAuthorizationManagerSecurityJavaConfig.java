@@ -17,9 +17,8 @@ public class CustomAuthorizationManagerSecurityJavaConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-            .authorizeHttpRequests (authorizeRequests -> {
-                hasRole(authorizeRequests.requestMatchers("/test-resource"), "ADMIN");
-            })
+            .authorizeHttpRequests (authorizeRequests ->
+              hasRole(authorizeRequests.requestMatchers("/test-resource"), "ADMIN"))
             .httpBasic(withDefaults());
 
 

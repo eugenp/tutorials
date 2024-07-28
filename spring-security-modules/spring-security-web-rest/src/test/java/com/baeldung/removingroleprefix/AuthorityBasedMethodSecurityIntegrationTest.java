@@ -32,16 +32,16 @@ public class AuthorityBasedMethodSecurityIntegrationTest {
     @BeforeEach
     void setup() {
         mockMvc =  MockMvcBuilders
-                .webAppContextSetup(wac)
-                .apply(SecurityMockMvcConfigurers.springSecurity())
-                .build();
+          .webAppContextSetup(wac)
+          .apply(SecurityMockMvcConfigurers.springSecurity())
+          .build();
     }
 
     @Test
     void givenMethodSecurityJavaConfig_whenCallTheResourceWithAdminAuthority_thenOkResponseCodeExpected() throws Exception {
         MockHttpServletRequestBuilder with = MockMvcRequestBuilders
-                .get("/test-resource-method-security-with-authorities-resource")
-                .header("Authorization", basicAuthHeader("admin", "password"));
+          .get("/test-resource-method-security-with-authorities-resource")
+          .header("Authorization", basicAuthHeader("admin", "password"));
 
         ResultActions performed = mockMvc.perform(with);
 

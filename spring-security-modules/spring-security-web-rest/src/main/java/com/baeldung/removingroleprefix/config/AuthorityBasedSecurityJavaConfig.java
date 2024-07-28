@@ -15,8 +15,8 @@ public class AuthorityBasedSecurityJavaConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http.authorizeHttpRequests (authorizeRequests -> authorizeRequests
-            .requestMatchers("/test-resource").hasAuthority("ADMINISTRATION"))
-            .httpBasic(withDefaults())
-            .build();
+          .requestMatchers("/test-resource").hasAuthority("ADMINISTRATION"))
+          .httpBasic(withDefaults())
+          .build();
     }
 }
