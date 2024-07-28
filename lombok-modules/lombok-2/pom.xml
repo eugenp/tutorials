@@ -4,8 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>lombok-2</artifactId>
-    <version>0.1-SNAPSHOT</version>
     <name>lombok-2</name>
+    <version>0.1-SNAPSHOT</version>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -22,7 +22,7 @@
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
+            <artifactId>jackson-core</artifactId>
             <version>${jackson.version}</version>
         </dependency>
         <dependency>
@@ -68,7 +68,7 @@
             <plugin>
                 <groupId>org.openapitools</groupId>
                 <artifactId>openapi-generator-maven-plugin</artifactId>
-                <version>${openapi.version}</version>
+                <version>${openapi-generator-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -95,7 +95,7 @@
     </build>
 
     <properties>
-        <openapi.version>7.7.0</openapi.version>
+        <openapi-generator-maven-plugin.version>7.7.0</openapi-generator-maven-plugin.version>
         <gson.version>2.11.0</gson.version>
         <swagger-annotations.version>2.2.22</swagger-annotations.version>
         <jackson-databind-nullable.version>0.2.6</jackson-databind-nullable.version>

@@ -1,8 +1,8 @@
 package com.baeldung.patterns.intercepting.filter.filters;
 
-import javax.servlet.*;
-import javax.servlet.annotation.WebFilter;
-import javax.servlet.annotation.WebInitParam;
+import jakarta.servlet.*;
+import jakarta.servlet.annotation.WebFilter;
+import jakarta.servlet.annotation.WebInitParam;
 import java.io.IOException;
 import java.util.Optional;
 

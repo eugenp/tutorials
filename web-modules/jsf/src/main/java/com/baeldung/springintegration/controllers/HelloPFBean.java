@@ -3,13 +3,11 @@ package com.baeldung.springintegration.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-import javax.el.ELContextEvent;
-import javax.el.ELContextListener;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import jakarta.annotation.PostConstruct;
+import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Named;
 
-@ManagedBean(name = "helloPFBean")
+@Named("helloPFBean")
 @ViewScoped
 public class HelloPFBean {
 

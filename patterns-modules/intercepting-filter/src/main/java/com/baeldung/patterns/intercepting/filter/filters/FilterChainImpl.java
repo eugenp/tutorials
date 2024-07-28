@@ -1,6 +1,6 @@
 package com.baeldung.patterns.intercepting.filter.filters;
 
-import javax.servlet.*;
+import jakarta.servlet.*;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Iterator;
