@@ -53,7 +53,7 @@
     <properties>
         <springBoot.version>3.3.0</springBoot.version>
         <myBatisPlus.version>3.5.7</myBatisPlus.version>
-        <h2.version>2.2.220</h2.version>
+        <h2.version>2.3.230</h2.version>
         <mysql.version>8.0.26</mysql.version>
         <freemarker.version>2.3.31</freemarker.version>
         <p6spy.version>3.9.1</p6spy.version>

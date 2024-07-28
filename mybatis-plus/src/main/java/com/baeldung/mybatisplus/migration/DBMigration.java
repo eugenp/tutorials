@@ -24,7 +24,7 @@ public class DBMigration implements IDdl {
 
     @Override
     public List<String> getSqlFiles() {
-        
+
         // works for MySQL setup
         /*return Arrays.asList(
                 "db/db_v1.sql",

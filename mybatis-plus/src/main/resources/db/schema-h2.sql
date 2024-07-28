@@ -1,7 +1,6 @@
 CREATE SCHEMA IF NOT EXISTS mybatisplus;
 SET SCHEMA mybatisplus;
 
-DROP TABLE IF EXISTS account cascade;
 DROP TABLE IF EXISTS client cascade;
 
 CREATE TABLE client
@@ -11,17 +10,6 @@ CREATE TABLE client
     last_name          VARCHAR(255),
     email              VARCHAR(255),
     creation_date      timestamp,
-    last_modified_date timestamp
+    last_modified_date timestamp,
+    deleted            int default 0
 );
-
-CREATE TABLE account
-(
-    id            varchar(32),
-    principal     numeric(19, 10),
-    interest_rate numeric(19, 10),
-    term          int,
-    client_id     BIGINT NOT NULL,
-    deleted       int default 0,
-    type          varchar(32),
-    constraint fk_account_client_id foreign key (client_id) references client (id)
-)

@@ -12,7 +12,7 @@ spring:
 #    url: jdbc:p6spy:mysql://localhost:3306/
   sql:
     init:
-      #schema-locations: classpath:db/schema-mysql.sql
+#      schema-locations: classpath:db/schema-mysql.sql
       schema-locations: classpath:db/schema-h2.sql
       data-locations: classpath:db/data-h2.sql
       mode: always
