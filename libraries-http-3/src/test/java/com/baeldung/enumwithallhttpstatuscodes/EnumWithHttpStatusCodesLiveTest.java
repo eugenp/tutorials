@@ -7,13 +7,14 @@ import org.apache.hc.client5.http.classic.methods.HttpGet;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class EnumWithHttpStatusCodesLiveTest {
 
@@ -40,8 +41,8 @@ public class EnumWithHttpStatusCodesLiveTest {
     public void givenHttpRequest_whenUsingOkHttp_thenCorrectStatusDescription() throws IOException {
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
-                .url("http://example.com")
-                .build();
+            .url("http://example.com")
+            .build();
         try (Response response = client.newCall(request).execute()) {
             int statusCode = response.code();
             String statusDescription = HttpStatus.getStatusFromCode(statusCode).getDescription();
