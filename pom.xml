@@ -647,6 +647,7 @@
                 <module>libraries-data</module>
                 <module>libraries-files</module>
                 <module>libraries-http-2</module>
+                <module>libraries-http-3</module>
                 <module>libraries-http</module>
                 <module>libraries-io</module>
                 <module>libraries-llms</module>
