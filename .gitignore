@@ -1,5 +1,5 @@
 # Ignore all files
-*
+#*
 
 # But not these directories and their contents
 !src/
