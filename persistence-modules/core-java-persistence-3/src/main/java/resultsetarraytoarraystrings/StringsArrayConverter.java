@@ -21,88 +21,44 @@ public class StringsArrayConverter {
         return DriverManager.getConnection(URL, USER, PASSWORD);
     }
 
-    public static String[] convertAllArraysUsingGetArray() {
-        List<String> resultList = new ArrayList<>();
-        try (Connection conn = connect();
-             Statement stmt = conn.createStatement()) {
-            ResultSet rs = stmt.executeQuery("SELECT test_array FROM test_table");
+    public static List<TestRow> convertAllArraysUsingGetArray() {
+        List<TestRow> resultList = new ArrayList<>();
+        try (Connection conn = connect(); Statement stmt = conn.createStatement()) {
+            ResultSet rs = stmt.executeQuery("SELECT id, test_array FROM test_table");
 
             while (rs.next()) {
+                int id = rs.getInt("id");
                 Array array = rs.getArray("test_array");
-                if (array != null) {
-                    String[] stringArray = (String[]) array.getArray();
-                    for (String element : stringArray) {
-                        resultList.add(element);
-                    }
-                }
+                String[] testArray = (String[]) array.getArray();
+                TestRow row = new TestRow(id, testArray);
+                resultList.add(row);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            // Handle exception
         }
-
-        return resultList.toArray(new String[0]);
+        return resultList;
     }
 
-
-    public static String[] convertAllArraysToStringArrayUsingObject() {
-        // This will store the combined result from all rows
-        List<String> resultList = new ArrayList<>();
-        try (Connection conn = connect();
-             Statement stmt = conn.createStatement()) {
-            ResultSet rs = stmt.executeQuery("SELECT test_array FROM test_table");
+    public static List<NestedTestRow> convertNestedArraysToStringArray() {
+        List<NestedTestRow> resultList = new ArrayList<>();
+        try (Connection conn = connect(); Statement stmt = conn.createStatement()) {
+            ResultSet rs = stmt.executeQuery("SELECT id, nested_array FROM nested_array_table");
 
             while (rs.next()) {
-                // Retrieve the PostgreSQL array from the ResultSet
-                Array array = rs.getArray("test_array");
-                if (array != null) {
-                    // Convert the PostgreSQL array to Object[]
-                    Object[] objArray = (Object[]) array.getArray();
-                    // Convert Object[] to String[] and add to resultList
-                    for (Object obj : objArray) {
-                        resultList.add(obj.toString());
-                    }
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return resultList.toArray(new String[0]);
-    }
-
-    public static String[] convertNestedArraysToStringArray() {
-        try (Connection conn = connect();
-             Statement stmt = conn.createStatement()) {
-            ResultSet rs = stmt.executeQuery("SELECT nested_array FROM nested_array_table");
-
-            // Use Streams to process the ResultSet
-            List<String> resultList = new ArrayList<>();
-
-            while (rs.next()) {
+                int id = rs.getInt("id");
                 Array array = rs.getArray("nested_array");
-                if (array != null) {
-                    Object[][] nestedArray = (Object[][]) array.getArray();
-
-                    // Flatten nested arrays using Streams
-                    List<String> flattenedList = Arrays.stream(nestedArray)
-                        .flatMap(subArray -> Arrays.stream(subArray)
-                            .map(Object::toString))
-                        .collect(Collectors.toList());
-
-                    resultList.addAll(flattenedList);
-                }
+                Object[][] nestedArray = (Object[][]) array.getArray();
+                String[][] stringNestedArray = Arrays.stream(nestedArray)
+                    .map(subArray -> Arrays.stream(subArray)
+                        .map(Object::toString)
+                        .toArray(String[]::new))
+                    .toArray(String[][]::new);
+                NestedTestRow row = new NestedTestRow(id, stringNestedArray);
+                resultList.add(row);
             }
-
-            return resultList.toArray(new String[0]);
         } catch (SQLException e) {
-            e.printStackTrace();
-            return new String[0];
+            // Handle exception
         }
-    }
-
-    public static void main (String [] args) {
-        String[] arr = convertNestedArraysToStringArray();
-        for (String s : arr) {
-            System.out.println(s);
-        }
+        return resultList;
     }
 }
