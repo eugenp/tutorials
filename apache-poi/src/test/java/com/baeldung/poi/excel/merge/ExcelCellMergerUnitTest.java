@@ -3,6 +3,7 @@ package com.baeldung.poi.excel.merge;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URISyntaxException;
@@ -23,11 +24,17 @@ import org.junit.Test;
 
 public class ExcelCellMergerUnitTest {
     private static final String FILE_NAME = "ExcelCellFormatterTest.xlsx";
+
+    private static final String FILE_NAME_2 = "MergedAlignCell.xlsx";
+
     private String fileLocation;
+
+    private String fileLocation2;
 
     @Before
     public void setup() throws IOException, URISyntaxException {
-            fileLocation = Paths.get(ClassLoader.getSystemResource(FILE_NAME).toURI()).toString();
+        fileLocation = Paths.get(ClassLoader.getSystemResource(FILE_NAME).toURI()).toString();
+        fileLocation2 = Paths.get(ClassLoader.getSystemResource(FILE_NAME_2).toURI()).toString();
     }
 
     @Test
@@ -60,7 +67,7 @@ public class ExcelCellMergerUnitTest {
 
     @Test
     public void givenCellIndex_whenAddMergeRegionWithCenterAlignment_thenMergeRegionWithCenterCreated() throws IOException {
-        Workbook workbook = new XSSFWorkbook(fileLocation);
+        Workbook workbook = new XSSFWorkbook(fileLocation2);
         Sheet sheet = workbook.getSheetAt(0);
 
         assertEquals(0, sheet.getNumMergedRegions());
