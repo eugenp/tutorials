@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 import org.junit.jupiter.api.Test;
 
-public class StreamsTo2DArrayConversionUnitTest {
+public class StreamsTo2DArrayConvertUnitTest {
 
     @Test
     public void given2DArray_whenUsingArrayStream_thenConvertToStream() {
