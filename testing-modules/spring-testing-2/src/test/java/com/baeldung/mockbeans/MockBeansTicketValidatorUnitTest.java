@@ -27,7 +27,7 @@ class MockBeansTicketValidatorUnitTest {
     private TicketValidator ticketValidator;
 
     @Test
-    void givenCustomer_whenOrder_thenOk() {
+    void givenCustomerAndTicket_whenValidate_thenReturnTrue() {
         String code = UUID.randomUUID()
             .toString();
         when(customerRepository.findById(any())).thenReturn(Optional.of(new Customer(1L, "John", "Doe")));
