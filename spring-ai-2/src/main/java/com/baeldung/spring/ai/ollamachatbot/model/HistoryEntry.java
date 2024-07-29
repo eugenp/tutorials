@@ -8,6 +8,10 @@ public class HistoryEntry {
 
     private String response;
 
+    public String getPrompt() {
+        return prompt;
+    }
+
     public HistoryEntry(String prompt, String response) {
         this.prompt = prompt;
         this.response = response;

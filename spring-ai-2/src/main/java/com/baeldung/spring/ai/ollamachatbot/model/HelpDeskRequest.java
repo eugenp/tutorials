@@ -9,6 +9,11 @@ public class HelpDeskRequest {
     @JsonProperty("history_id")
     String historyId;
 
+    public HelpDeskRequest(String promptMessage, String historyId) {
+        this.promptMessage = promptMessage;
+        this.historyId = historyId;
+    }
+
     public String getPromptMessage() {
         return promptMessage;
     }
