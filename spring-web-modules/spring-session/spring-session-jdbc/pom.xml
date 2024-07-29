@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-session-jdbc</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-session-jdbc</name>
     <packaging>jar</packaging>
+    <name>spring-session-jdbc</name>
     <description>Spring Session with JDBC tutorial</description>
 
     <parent>

@@ -4,8 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>text-processing-libraries-modules</artifactId>
-    <name>text-processing-libraries-modules</name>
     <packaging>pom</packaging>
+    <name>text-processing-libraries-modules</name>
 
     <parent>
         <artifactId>parent-modules</artifactId>

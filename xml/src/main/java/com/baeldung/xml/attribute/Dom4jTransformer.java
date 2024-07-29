@@ -27,7 +27,7 @@ public class Dom4jTransformer {
         this.input = xmlReader.read(resourcePath);
     }
 
-    public String modifyAttribute(String attribute, String oldValue, String newValue) throws TransformerException {
+    public String modifyAttribute(String attribute, String oldValue, String newValue) throws TransformerException, TransformerException {
         // 2- Locate the node(s) with xpath, we can use index and iterator too.
         String expr = String.format("//*[contains(@%s, '%s')]", attribute, oldValue);
         XPath xpath = DocumentHelper.createXPath(expr);

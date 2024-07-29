@@ -20,8 +20,8 @@ import static io.hypersistence.utils.jdbc.validator.SQLStatementCountValidator.a
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 @SpringBootTest(classes = {PagingApplication.class, TestConfig.class}, properties = {
-        "spring.jpa.show-sql=true",
-        "spring.jpa.properties.hibernate.format_sql=true",
+        "spring.jpa.show-sql=false",
+        "spring.jpa.properties.hibernate.format_sql=false",
         "spring.jpa.generate-ddl=true",
         "spring.jpa.defer-datasource-initialization=true",
         "spring.sql.init.data-locations=classpath:school-student-data.sql"
