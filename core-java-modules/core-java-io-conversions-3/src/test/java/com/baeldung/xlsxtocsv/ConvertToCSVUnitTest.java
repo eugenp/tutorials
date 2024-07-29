@@ -15,7 +15,7 @@ class ConvertToCSVUnitTest {
     private static final String CSV_FILE_OUTPUT = "src/test/resources/xlsxToCsv_output.csv";
 
     @Test
-    public void givenXlsxFile_whenUsingCommonsCSV_thenGetValuesAsList() throws IOException {
+    void givenXlsxFile_whenUsingCommonsCSV_thenGetValuesAsList() throws IOException {
         ConvertToCSV.convertWithCommonsCSV(XLSX_FILE_INPUT, CSV_FILE_OUTPUT);
         List<String> lines = Files.readAllLines(Paths.get(CSV_FILE_OUTPUT));
         assertEquals("1,Dulce,Abril,Female,United States,32,15/10/2017,1562", lines.get(1));
@@ -23,7 +23,7 @@ class ConvertToCSVUnitTest {
     }
 
     @Test
-    public void givenXlsxFile_whenUsingOpenCSV_thenGetValuesAsList() throws IOException {
+    void givenXlsxFile_whenUsingOpenCSV_thenGetValuesAsList() throws IOException {
         ConvertToCSV.convertWithOpenCSV(XLSX_FILE_INPUT, CSV_FILE_OUTPUT);
         List<String> lines = Files.readAllLines(Paths.get(CSV_FILE_OUTPUT));
         assertEquals("1,Dulce,Abril,Female,United States,32,15/10/2017,1562", lines.get(1));
