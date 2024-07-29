@@ -21,7 +21,7 @@ public class UserDefaultValuesUnitTest {
 
     @Test
     @Ignore // SQL default values are also defined
-    public void saveUser_shouldSaveWithDefaultFieldValues() {
+    public void givenUser_whenUsingEntityValue_thenSavedWithDefaultValues() {
         User user = new User();
         userRepository.save(user, 1L);
 
@@ -33,7 +33,7 @@ public class UserDefaultValuesUnitTest {
 
     @Test
     @Ignore // SQL default values are also defined
-    public void saveUser_shouldSaveWithNullName() {
+    public void givenUser_whenNameIsNull_thenSavedNameWithNullValue() {
         User user = new User();
         user.setName(null);
         userRepository.save(user, 2L);
@@ -46,7 +46,7 @@ public class UserDefaultValuesUnitTest {
 
     @Test
     @Ignore
-    public void saveUser_shouldSaveWithDefaultSqlValues() {
+    public void givenUser_whenUsingSQLDefault_thenSavedWithDefaultValues() {
         User user = new User();
         userRepository.save(user, 3L);
 
@@ -57,7 +57,7 @@ public class UserDefaultValuesUnitTest {
     }
 
     @Test
-    public void saveUser_shouldSaveWithColumnDefaultValues() {
+    public void givenUser_whenSaveUsingQuery_thenSavedWithDefaultValues() {
         UserEntity user = new UserEntity();
         userEntityRepository.saveEntity(user, 2L);
         user = userEntityRepository.find(2L);
@@ -67,7 +67,7 @@ public class UserDefaultValuesUnitTest {
     }
 
     @Test
-    public void saveUser_shouldSaveWithPrePersistlValues() {
+    public void givenUser_whenSaveUsingPrePersist_thenSavedWithDefaultValues() {
         UserEntity user = new UserEntity();
         userEntityRepository.save(user, 3L);
         user = userEntityRepository.find(3L);
