@@ -37,8 +37,8 @@ public class ChatbotService {
             .baseUrl(apiUrl)
             .modelName(modelName)
             .timeout(Duration.ofSeconds(timeout))
-             .numPredict(maxResponseLength)
-             .build();
+            .numPredict(maxResponseLength)
+            .build();
     }
 
     public String getResponse(String question) {
