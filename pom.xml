@@ -412,6 +412,9 @@
                 <module>web-modules/restx</module>
                 <module>libraries-testing</module>
                 <module>text-processing-libraries-modules</module>
+                <module>core-java-modules/core-java-concurrency-advanced-5</module>
+                <module>spring-boot-modules/spring-boot-react</module>
+                <module>testing-modules/jmeter</module>
             </modules>
 
             <properties>
@@ -518,6 +521,9 @@
                 <module>libraries-testing</module>
                 <module>kubernetes-modules/k8s-operator</module>
                 <module>text-processing-libraries-modules</module>
+                <module>core-java-modules/core-java-concurrency-advanced-5</module>
+                <module>spring-boot-modules/spring-boot-react</module>
+                <module>testing-modules/jmeter</module>
             </modules>
 
             <properties>
@@ -769,6 +775,7 @@
                 <module>timefold-solver</module>
                 <module>vaadin</module>
                 <module>vavr-modules</module>
+                <module>vector-db</module>
                 <module>vertx-modules</module>
                 <module>web-modules</module>
                 <module>webrtc</module>
@@ -1022,6 +1029,7 @@
                 <module>timefold-solver</module>
                 <module>vaadin</module>
                 <module>vavr-modules</module>
+                <module>vector-db</module>
                 <module>vertx-modules</module>
                 <module>web-modules</module>
                 <module>webrtc</module>
@@ -1160,7 +1168,7 @@
         <jstl-api.version>1.2</jstl-api.version>
         <javax.servlet.jsp-api.version>2.3.3</javax.servlet.jsp-api.version>
         <jstl.version>1.2</jstl.version>
-        <jackson.version>2.16.1</jackson.version>
+        <jackson.version>2.17.2</jackson.version>
         <commons-fileupload.version>1.5</commons-fileupload.version>
         <junit-platform.version>1.11.0-M2</junit-platform.version>
         <junit-jupiter.version>5.11.0-M2</junit-jupiter.version>
@@ -1176,7 +1184,7 @@
         <guava.version>33.2.1-jre</guava.version>
         <maven-jar-plugin.version>3.4.2</maven-jar-plugin.version>
         <mockito-inline.version>5.2.0</mockito-inline.version>
-        <mockito-junit-jupiter.version>5.11.0</mockito-junit-jupiter.version>
+        <mockito-junit-jupiter.version>5.12.0</mockito-junit-jupiter.version>
         <logback.configurationFileName>logback-config-global.xml</logback.configurationFileName>
     </properties>
 

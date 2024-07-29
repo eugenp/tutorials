@@ -1,6 +1,6 @@
 package com.baeldung.xmlhtml.pojo.jaxb.xml.elements;
 
-import javax.xml.bind.annotation.XmlValue;
+import jakarta.xml.bind.annotation.XmlValue;
 
 public class DescendantThree {
 
