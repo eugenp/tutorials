@@ -16,9 +16,9 @@
          
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <okhttp.version>4.10.0</okhttp.version>
+        <okhttp.version>4.12.0</okhttp.version>
         <apache.httpclient.version>5.3.1</apache.httpclient.version>
-        <spring.web.version>6.1.5</spring.web.version>
+        <spring.web.version>6.1.11</spring.web.version>
     </properties>
 
     <dependencies>
