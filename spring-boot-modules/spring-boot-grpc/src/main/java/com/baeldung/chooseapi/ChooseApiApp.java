@@ -1,14 +1,13 @@
-package com.baeldung.returnnull;
+package com.baeldung.chooseapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ReturnNullApp {
+public class ChooseApiApp {
 
     public static void main(String[] args) {
-        System.setProperty("spring.profiles.default", "returnnull");
-        SpringApplication.run(ReturnNullApp.class, args);
+        SpringApplication.run(ChooseApiApp.class, args);
     }
-}
 
+}
