@@ -9,17 +9,45 @@
     <name>spring-boot-simple-starters</name>
 
     <parent>
-        <groupId>com.baeldung</groupId>
+        <groupId>com.baeldung.spring-boot-simple</groupId>
         <artifactId>spring-boot-simple</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../../spring-boot-simple</relativePath>
     </parent>
 
     <dependencies>
-
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.davidmoten</groupId>
+            <artifactId>subethasmtp</artifactId>
+            <version>${subethasmtp.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <properties>
+        <subethasmtp.version>7.0.2</subethasmtp.version>
     </properties>
 
 </project>

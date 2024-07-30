@@ -7,6 +7,7 @@
     <artifactId>spring-boot-simple</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <name>spring-boot-simple</name>
+    <packaging>pom</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -17,6 +18,7 @@
 
     <modules>
         <module>spring-boot-starters</module>
+        <module>spring-boot-logging</module>
     </modules>
 
     <dependencies>
@@ -59,16 +61,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-mail</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.github.davidmoten</groupId>
-            <artifactId>subethasmtp</artifactId>
-            <version>${subethasmtp.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
