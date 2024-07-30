@@ -41,7 +41,7 @@ import io.milvus.v2.service.vector.response.SearchResp;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class MilvusVectorDBLiveTest {
-    private static final Logger logger = LoggerFactory.getLogger(MilvusVectorDBIntegrationTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(MilvusVectorDBLiveTest.class);
 
     private static final String PROPERTY_FILE = "milvus.properties";
     private static final String CONNECTION_URI = getVal("CONNECTION_URI", PROPERTY_FILE);
