@@ -40,7 +40,7 @@ import io.milvus.v2.service.vector.response.InsertResp;
 import io.milvus.v2.service.vector.response.SearchResp;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class MilvusVectorDBIntegrationTest {
+public class MilvusVectorDBLiveTest {
     private static final Logger logger = LoggerFactory.getLogger(MilvusVectorDBIntegrationTest.class);
 
     private static final String PROPERTY_FILE = "milvus.properties";
