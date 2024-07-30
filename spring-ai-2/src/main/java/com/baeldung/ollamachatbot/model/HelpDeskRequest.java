@@ -14,6 +14,9 @@ public class HelpDeskRequest {
         this.historyId = historyId;
     }
 
+    public HelpDeskRequest() {
+    }
+
     public String getPromptMessage() {
         return promptMessage;
     }
