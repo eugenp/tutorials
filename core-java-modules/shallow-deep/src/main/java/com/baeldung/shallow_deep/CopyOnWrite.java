@@ -14,5 +14,5 @@ class CopyDocument {
             copied = true; 
         } 
         this.doc.setDocId(id); 
-    } 
-}
+    }
+ }

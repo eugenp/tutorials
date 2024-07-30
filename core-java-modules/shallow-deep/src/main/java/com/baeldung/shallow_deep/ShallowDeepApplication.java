@@ -9,10 +9,12 @@ import com.baeldung.shallow_deep.models.DocDescription;
 public class ShallowDeepApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ShallowDeepApplication.class, args);
+		shallowExample();
+		deepExample();
+		copyOnWriteExample();
 	}
 
-	public void shallowExample() {
+	public static void shallowExample() {
 
 		Document originalDocument = new Document(123, new DocDescription(56, "XLS")); 
 		Document shallowCopyDocument = new Document(originalDocument); 
@@ -22,13 +24,30 @@ public class ShallowDeepApplication {
 		System.out.println("Shallow Copy Document: " + shallowCopyDocument); // {123, (56, "PDF")}
 	}
 
-	public void deepExample() {
+	public static void deepExample() {
 		Document originalDocument = new Document(123, new DocDescription(56, "XLS")); 
 		Document deepCopyDocument = DeepCopyUtil.deepCopy(originalDocument, Document.class); 
 		deepCopyDocument.getDocDescription().setType("PDF"); 
 		
 		System.out.println("Original: " + originalDocument); // {123, (56, "XLS")} 
 		System.out.println("Deep Copy Document: " + deepCopyDocument); // {123, (56, "PDF")}
+	}
+
+	public static void copyOnWriteExample() {
+		Document originalDocument = new Document(123, new DocDescription(56, "XLS"));
+        CopyDocument copyDocument = new CopyDocument(originalDocument);
+        
+        // Get original document ID
+        System.out.println("Original Document ID: " + copyDocument.getDocId());
+        
+        // Change document ID
+        copyDocument.setDocId(456);
+        
+        // Get updated document ID
+        System.out.println("Updated Document ID: " + copyDocument.getDocId());
+        
+        // Check original document ID
+        System.out.println("Original Document ID After Update: " + originalDocument.getDocId());
 	}
 
 }
