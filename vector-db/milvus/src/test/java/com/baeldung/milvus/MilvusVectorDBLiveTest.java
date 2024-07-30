@@ -40,8 +40,8 @@ import io.milvus.v2.service.vector.response.InsertResp;
 import io.milvus.v2.service.vector.response.SearchResp;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class MilvusVectorDBIntegrationTest {
-    private static final Logger logger = LoggerFactory.getLogger(MilvusVectorDBIntegrationTest.class);
+public class MilvusVectorDBLiveTest {
+    private static final Logger logger = LoggerFactory.getLogger(MilvusVectorDBLiveTest.class);
 
     private static final String PROPERTY_FILE = "milvus.properties";
     private static final String CONNECTION_URI = getVal("CONNECTION_URI", PROPERTY_FILE);
