@@ -2,8 +2,11 @@ package com.baeldung.algorithms.findmissingnumber;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.BitSet;
+import java.util.Collections;
+import java.util.List;
 import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -80,5 +83,29 @@ public class FindMissingNumberUnitTest {
         int missingNumber = bitSet.nextClearBit(1);
 
         assertEquals(3, missingNumber);
+    }
+
+    @Test
+    void givenIntegersArrayWithMultipleMissingNumbers_whenUseBitSetToFindMultipleMissingNumbers_thenGetMultipleMissingNumbers() {
+        int[] numbersWithMultipleMissing = new int[] { 1, 5, 2, 8, 9 };
+        int N = Arrays.stream(numbersWithMultipleMissing)
+            .max()
+            .getAsInt();
+
+        BitSet bitSet = new BitSet(N + 1);
+        for (int num : numbersWithMultipleMissing) {
+            bitSet.set(num);
+        }
+
+        List<Integer> result = new ArrayList<>();
+        for (int i = 1; i <= N; i++) {
+            if (bitSet.get(i)) {
+                continue;
+            }
+            result.add(i);
+        }
+
+        Collections.sort(result);
+        assertEquals(result, Arrays.asList(3, 4, 6, 7));
     }
 }
