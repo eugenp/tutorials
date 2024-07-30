@@ -4,6 +4,7 @@ import static java.util.stream.Collectors.joining;
 import static org.hamcrest.CoreMatchers.is;
 
 import java.io.UnsupportedEncodingException;
+import java.net.URI;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
@@ -47,7 +48,7 @@ public class EncoderDecoderUnitTest {
 
     @Test
     public void givenURL_whenAnalyze_thenCorrect() throws Exception {
-        URL url = new URL(testUrl);
+        URL url = new URI(testUrl).toURL();
 
         Assert.assertThat(url.getProtocol(), is("http"));
         Assert.assertThat(url.getHost(), is("www.baeldung.com"));
@@ -68,7 +69,7 @@ public class EncoderDecoderUnitTest {
 
     @Test
     public void givenRequestParam_whenUTF8Scheme_thenDecodeRequestParams() throws Exception {
-        URL url = new URL(testUrl);
+        URL url = new URI(testUrl).toURL();
 
         String query = url.getQuery();
 

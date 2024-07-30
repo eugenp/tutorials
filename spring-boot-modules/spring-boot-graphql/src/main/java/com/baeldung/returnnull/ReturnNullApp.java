@@ -8,7 +8,7 @@ public class ReturnNullApp {
 
     public static void main(String[] args) {
         System.setProperty("spring.profiles.default", "returnnull");
-        SpringApplication.run(com.baeldung.chooseapi.ChooseApiApp.class, args);
+        SpringApplication.run(ReturnNullApp.class, args);
     }
 }
 

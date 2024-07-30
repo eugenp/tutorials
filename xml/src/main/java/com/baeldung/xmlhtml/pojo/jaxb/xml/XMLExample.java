@@ -2,8 +2,8 @@ package com.baeldung.xmlhtml.pojo.jaxb.xml;
 
 import com.baeldung.xmlhtml.pojo.jaxb.xml.elements.Ancestor;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "xmlexample")
 public class XMLExample {

@@ -3,7 +3,9 @@ package com.baeldung.cucumber.tags.acceptance.commonutil;
 import org.openqa.selenium.InvalidArgumentException;
 
 import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.net.URI;
 import java.util.Optional;
 
 public final class CucumberEnvironment {
@@ -36,8 +38,10 @@ public final class CucumberEnvironment {
 
     private static URL parseSeleniumGridUrl(String seleniumGridUrlString) {
         try {
-            return new URL(seleniumGridUrlString);
+            return new URI(seleniumGridUrlString).toURL();
         } catch (MalformedURLException e) {
+            throw new InvalidArgumentException(SELENIUM_GRID_URL_ENV_VAR + "env var is not a valid URL");
+        } catch (URISyntaxException e) {
             throw new InvalidArgumentException(SELENIUM_GRID_URL_ENV_VAR + "env var is not a valid URL");
         }
     }

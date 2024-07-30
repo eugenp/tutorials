@@ -14,14 +14,18 @@ public class DateRangeOverlapCheckerUnitTest {
     @Test
     public void givenPartialOverlappingRanges_thenReturnsTrue() {
         Calendar start1 = Calendar.getInstance();
-        start1.set(2024, 11, 15);
+        start1.clear();
+        start1.set(2024, Calendar.DECEMBER, 15);
         Calendar end1 = Calendar.getInstance();
-        end1.set(2024, 11, 20);
+        end1.clear();
+        end1.set(2024, Calendar.DECEMBER, 20);
 
         Calendar start2 = Calendar.getInstance();
-        start2.set(2024, 11, 18);
+        start2.clear();
+        start2.set(2024, Calendar.DECEMBER, 18);
         Calendar end2 = Calendar.getInstance();
-        end2.set(2024, 11, 22);
+        end2.clear();
+        end2.set(2024, Calendar.DECEMBER, 22);
 
         LocalDate startLD1 = LocalDate.of(2024, 12, 15);
         LocalDate endLD1 = LocalDate.of(2024, 12, 20);
@@ -50,14 +54,16 @@ public class DateRangeOverlapCheckerUnitTest {
     @Test
     public void givenFullOverlappingRanges_thenReturnsTrue() {
         Calendar start1 = Calendar.getInstance();
-        start1.set(2024, 11, 15);
+        start1.clear();
+        start1.set(2024, Calendar.DECEMBER, 15);
         Calendar end1 = Calendar.getInstance();
-        end1.set(2024, 11, 20);
+        end1.clear();
+        end1.set(2024, Calendar.DECEMBER, 20);
 
         Calendar start2 = Calendar.getInstance();
-        start2.set(2024, 11, 16);
+        start2.set(2024, Calendar.DECEMBER, 16);
         Calendar end2 = Calendar.getInstance();
-        end2.set(2024, 11, 18);
+        end2.set(2024, Calendar.DECEMBER, 18);
 
         LocalDate startLD1 = LocalDate.of(2024, 12, 15);
         LocalDate endLD1 = LocalDate.of(2024, 12, 20);
@@ -86,14 +92,18 @@ public class DateRangeOverlapCheckerUnitTest {
     @Test
     public void givenConsecutiveRanges_thenReturnsFalse() {
         Calendar start1 = Calendar.getInstance();
-        start1.set(2024, 11, 15);
+        start1.clear();
+        start1.set(2024, Calendar.DECEMBER, 15);
         Calendar end1 = Calendar.getInstance();
-        end1.set(2024, 11, 20);
+        end1.clear();
+        end1.set(2024, Calendar.DECEMBER, 20);
 
         Calendar start2 = Calendar.getInstance();
-        start2.set(2024, 11, 21);
+        start2.clear();
+        start2.set(2024, Calendar.DECEMBER, 21);
         Calendar end2 = Calendar.getInstance();
-        end2.set(2024, 11, 24);
+        end2.clear();
+        end2.set(2024, Calendar.DECEMBER, 24);
 
         LocalDate startLD1 = LocalDate.of(2024, 12, 15);
         LocalDate endLD1 = LocalDate.of(2024, 12, 20);
@@ -122,24 +132,26 @@ public class DateRangeOverlapCheckerUnitTest {
     @Test
     public void givenZeroRangeRanges_thenReturnsTrue() {
         Calendar start1 = Calendar.getInstance();
-        start1.set(2024, 11, 15);
+        start1.clear();
+        start1.set(2024, Calendar.DECEMBER, 15);
         Calendar end1 = Calendar.getInstance();
-        end1.set(2024, 11, 20);
+        end1.clear();
+        end1.set(2024, Calendar.DECEMBER, 20);
 
         Calendar start2 = Calendar.getInstance();
-        start2.set(2024, 11, 20);
+        start2.clear();
+        start2.set(2024, Calendar.DECEMBER, 20);
         Calendar end2 = Calendar.getInstance();
-        end2.set(2024, 11, 20);
+        end2.clear();
+        end2.set(2024, Calendar.DECEMBER, 20);
 
         LocalDate startLD1 = LocalDate.of(2024, 12, 15);
         LocalDate endLD1 = LocalDate.of(2024, 12, 20);
-
         LocalDate startLD2 = LocalDate.of(2024, 12, 20);
         LocalDate endLD2 = LocalDate.of(2024, 12, 20);
 
         DateTime startJT1 = new DateTime(2024, 12, 15, 0, 0);
         DateTime endJT1 = new DateTime(2024, 12, 20, 0, 0);
-
         DateTime startJT2 = new DateTime(2024, 12, 20, 0, 0);
         DateTime endJT2 = new DateTime(2024, 12, 20, 0, 0);
 
@@ -155,4 +167,5 @@ public class DateRangeOverlapCheckerUnitTest {
         //the overlaps method considers two intervals as overlapping only if they have a non-zero duration.
         assertFalse(DateRangeOverlapChecker.isOverlapUsingJodaTime(startJT1, endJT1, startJT2, endJT2));
     }
+
 }

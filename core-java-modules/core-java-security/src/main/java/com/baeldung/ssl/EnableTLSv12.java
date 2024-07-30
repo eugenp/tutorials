@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.UnknownHostException;
 import java.security.KeyManagementException;
@@ -31,7 +33,7 @@ public class EnableTLSv12 {
     public EnableTLSv12() {
     }
 
-    public static void main(String[] args) throws IOException, KeyManagementException, NoSuchAlgorithmException {
+    public static void main(String[] args) throws IOException, KeyManagementException, NoSuchAlgorithmException, URISyntaxException {
         EnableTLSv12 enableTLSv12 = new EnableTLSv12();
         if (args.length != 2) {
             System.out.println("Provide the server url and the secure port:");
@@ -89,8 +91,8 @@ public class EnableTLSv12 {
         handleCommunication(sslSocket, "SSLSocketFactory-EnabledProtocols");
     }
 
-    public void enableTLSv12UsingHttpConnection() throws IOException, NoSuchAlgorithmException, KeyManagementException {
-        URL urls = new URL("https://" + url + ":" + port);
+    public void enableTLSv12UsingHttpConnection() throws IOException, NoSuchAlgorithmException, KeyManagementException, URISyntaxException {
+        URL urls = new URI("https://" + url + ":" + port).toURL();
         SSLContext sslContext = SSLContext.getInstance("TLSv1.2");
         sslContext.init(null, null, new SecureRandom());
         HttpsURLConnection connection = (HttpsURLConnection) urls.openConnection();

@@ -54,8 +54,6 @@
     </dependencies>
 
     <modules>
-        <module>jhipster-monolithic</module>
-        <module>jhipster-microservice</module>
         <module>jhipster-uaa</module>
     </modules>
 

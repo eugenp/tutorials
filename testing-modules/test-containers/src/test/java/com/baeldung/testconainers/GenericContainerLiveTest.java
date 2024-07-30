@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
 
 import org.junit.ClassRule;
@@ -33,7 +34,7 @@ public class GenericContainerLiveTest {
     }
 
     private String simpleGetRequest(String address) throws Exception {
-        URL url = new URL(address);
+        URL url = new URI(address).toURL();
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
 

@@ -4,8 +4,7 @@ plugins {
 
 group = "com.baeldung"
 version = "1.0.0"
-sourceCompatibility = "1.8"
-targetCompatibility = "1.8"
+
 
 dependencies {
     api("io.reactivex.rxjava2:rxjava:2.2.16")

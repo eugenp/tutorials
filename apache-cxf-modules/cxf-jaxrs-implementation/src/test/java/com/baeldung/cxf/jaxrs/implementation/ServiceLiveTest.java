@@ -5,8 +5,11 @@ import static org.junit.Assert.assertEquals;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 
+import com.ctc.wstx.shaded.msv_core.util.Uri;
 import jakarta.xml.bind.JAXB;
 
 import org.apache.http.HttpResponse;
@@ -117,13 +120,23 @@ public class ServiceLiveTest {
     }
 
     private Course getCourse(int courseOrder) throws IOException {
-        final URL url = new URL(BASE_URL + courseOrder);
+        final URL url;
+        try {
+            url = new URI(BASE_URL + courseOrder).toURL();
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
         final InputStream input = url.openStream();
         return JAXB.unmarshal(new InputStreamReader(input), Course.class);
     }
 
     private Student getStudent(int courseOrder, int studentOrder) throws IOException {
-        final URL url = new URL(BASE_URL + courseOrder + "/students/" + studentOrder);
+        final URL url;
+        try {
+            url = new URI(BASE_URL + courseOrder + "/students/" + studentOrder).toURL();
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
         final InputStream input = url.openStream();
         return JAXB.unmarshal(new InputStreamReader(input), Student.class);
     }

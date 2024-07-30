@@ -1,5 +1,6 @@
 package com.baeldung.networking.proxies;
 
+import java.net.URI;
 import java.net.URL;
 import java.net.URLConnection;
 
@@ -12,7 +13,7 @@ public class SystemPropertyProxyDemo {
         System.setProperty("http.proxyHost", "127.0.0.1");
         System.setProperty("http.proxyPort", "3128");
 
-        URL url = new URL(RESOURCE_URL);
+        URL url = new URI(RESOURCE_URL).toURL();
         URLConnection con = url.openConnection();
         System.out.println(UrlConnectionUtils.contentAsString(con));
 

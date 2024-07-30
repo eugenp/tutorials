@@ -6,9 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
+import java.net.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
@@ -79,11 +77,11 @@ public class JcabiAspectJ {
     public static String cacheExchangeRates() {
         String result = null;
         try {
-            URL exchangeRateUrl = new URL("https://api.exchangeratesapi.io/latest");
+            URL exchangeRateUrl = new URI("https://api.exchangeratesapi.io/latest").toURL();
             URLConnection con = exchangeRateUrl.openConnection();
             BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
             result = in.readLine();
-        } catch (IOException e) {
+        } catch (IOException | URISyntaxException e) {
             e.printStackTrace();
         }
         return result;

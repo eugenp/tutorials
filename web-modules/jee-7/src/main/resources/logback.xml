@@ -7,7 +7,7 @@
         </encoder>
     </appender>
 
-    <logger name="org.jboss.weld" level="WARN" />
+    <logger name="org.jboss.weld" level="ERROR" />
 
     <root level="INFO">
         <appender-ref ref="STDOUT" />

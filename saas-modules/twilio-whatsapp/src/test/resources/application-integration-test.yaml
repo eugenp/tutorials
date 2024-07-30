@@ -1,0 +1,8 @@
+com:
+  baeldung:
+    twilio:
+      account-sid: AC123abc123abc123abc123abc123abc12
+      auth-token: test-auth-token
+      messaging-sid: MG123abc123abc123abc123abc123abc12
+      new-article-notification:
+        content-sid: HX123abc123abc123abc123abc123abc12

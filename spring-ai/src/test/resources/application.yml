@@ -1,3 +1,8 @@
 spring:
   ai:
     openai.api-key: "mock-key-token"
+    mistralai:
+      api-key: ${MISTRAL_AI_API_KEY}
+      chat:
+        options:
+          model: mistral-small-latest

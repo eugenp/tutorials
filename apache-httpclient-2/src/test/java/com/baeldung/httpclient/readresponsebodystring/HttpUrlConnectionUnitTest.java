@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 
 import org.junit.jupiter.api.Test;
@@ -17,8 +19,8 @@ public class HttpUrlConnectionUnitTest {
     public static final String DUMMY_URL = "https://postman-echo.com/get";
 
     @Test
-    void whenUseHttpUrlConnection_thenCorrect() throws IOException {
-        HttpURLConnection connection = (HttpURLConnection) new URL(DUMMY_URL).openConnection();
+    void whenUseHttpUrlConnection_thenCorrect() throws IOException, URISyntaxException {
+        HttpURLConnection connection = (HttpURLConnection) new URI(DUMMY_URL).toURL().openConnection();
 
         InputStream inputStream = connection.getInputStream();
 

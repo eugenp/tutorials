@@ -3,10 +3,7 @@ package com.baeldung.networking.uriurl;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URI;
-import java.net.URL;
-import java.net.URLConnection;
+import java.net.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,14 +30,14 @@ public class URLDemo {
     BufferedReader in = null;
     String urlContent = "";
 
-    public String testURL(String urlString) throws IOException, IllegalArgumentException {
+    public String testURL(String urlString) throws IOException, IllegalArgumentException, URISyntaxException {
         String urlStringCont = "";
         // comment the if clause if experiment with URL
         /*if (!URLSTRING.equals(urlString)) {
             throw new IllegalArgumentException("URL String argument is not proper: " + urlString);
         }*/
         // creating URL object
-        url = new URL(urlString);
+        url = new URI(urlString).toURL();
         // get URL connection
         urlConnection = url.openConnection();
         connection = null;

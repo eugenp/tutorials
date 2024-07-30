@@ -12,3 +12,4 @@ This module contains articles about Hamcrest
 - [Hamcrest Custom Matchers](https://www.baeldung.com/hamcrest-custom-matchers)
 - [Check if a Variable Is Null Using Hamcrest](https://www.baeldung.com/java-hamcrest-check-null)
 - [Difference Between hasItems(), contains(), and containsInAnyOrder() in Hamcrest](https://www.baeldung.com/hamcrest-hasitems-contains-containsinanyorder)
+- [Check Whether a Collection Contains an Element or Not Using Hamcrest](https://www.baeldung.com/java-hamcrest-collection-hasitem)

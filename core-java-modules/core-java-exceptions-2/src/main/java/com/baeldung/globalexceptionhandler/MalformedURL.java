@@ -1,6 +1,8 @@
 package com.baeldung.globalexceptionhandler;
 
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 
 import org.slf4j.Logger;
@@ -15,8 +17,8 @@ public class MalformedURL {
         URL baeldungURL = null;
 
         try {
-            baeldungURL = new URL("malformedurl");
-        } catch (MalformedURLException e) {
+            baeldungURL = new URI("malformedurl").toURL();
+        } catch (MalformedURLException | URISyntaxException e) {
             LOGGER.error("MalformedURLException caught!");
         }
 

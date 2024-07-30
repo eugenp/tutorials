@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.task.VirtualThreadTaskExecutor;
 import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
@@ -25,6 +26,11 @@ public class BatchConfiguration {
     
     @Value("${file.input}")
     private String fileInput;
+
+    @Bean
+    public VirtualThreadTaskExecutor taskExecutor() {
+        return new VirtualThreadTaskExecutor("virtual-thread-executor");
+    }
 
     @Bean
     public FlatFileItemReader<Coffee> reader() {
@@ -62,12 +68,13 @@ public class BatchConfiguration {
     }
 
     @Bean
-    public Step step1(JobRepository jobRepository, PlatformTransactionManager transactionManager, JdbcBatchItemWriter<Coffee> writer) {
+    public Step step1(JobRepository jobRepository, PlatformTransactionManager transactionManager, JdbcBatchItemWriter<Coffee> writer, VirtualThreadTaskExecutor taskExecutor) {
         return new StepBuilder("step1", jobRepository)
             .<Coffee, Coffee> chunk(10, transactionManager)
             .reader(reader())
             .processor(processor())
             .writer(writer)
+            .taskExecutor(taskExecutor)
             .build();
     }
 

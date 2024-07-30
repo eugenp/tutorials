@@ -1,0 +1,2 @@
+spring.datasource.url: jdbc:tc:postgresql:16-alpine:///test-db
+spring.jpa.hibernate.ddl-auto: create

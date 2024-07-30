@@ -1,5 +1,6 @@
 package com.baeldung.jarfile;
 
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Paths;
@@ -32,7 +33,7 @@ public class JarFilePathResolver {
             // extract 'file:......jarName.jar' part from the url string
             String path = url.replaceAll("^jar:(file:.*[.]jar)!/.*", "$1");
             try {
-                return Paths.get(new URL(path).toURI()).toString();
+                return Paths.get(new URI(path)).toString();
             } catch (Exception e) {
                 throw new RuntimeException("Invalid Jar File URL String");
             }

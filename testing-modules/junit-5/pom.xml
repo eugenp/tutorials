@@ -136,7 +136,6 @@
         <powermock.version>2.0.9</powermock.version>
         <spring.version>5.0.1.RELEASE</spring.version>
         <mockito.version>3.3.0</mockito.version>
-        <mockito-junit-jupiter.version>5.11.0</mockito-junit-jupiter.version>
     </properties>
 
 </project>

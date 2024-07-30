@@ -4,6 +4,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -30,7 +32,7 @@ public class PDF2ImageExample {
 			generateImageFromPDF(PDF, "gif");
 			generatePDFFromImage(JPG, "jpg");
 			generatePDFFromImage(GIF, "gif");
-		} catch (IOException | DocumentException e) {
+		} catch (IOException | DocumentException | URISyntaxException e) {
 			e.printStackTrace();
 		}
 	}
@@ -46,7 +48,7 @@ public class PDF2ImageExample {
 	}
 
 	private static void generatePDFFromImage(String filename, String extension)
-			throws IOException, BadElementException, DocumentException {
+            throws IOException, DocumentException, URISyntaxException {
 		Document document = new Document();
 		String input = filename + "." + extension;
 		String output = "src/output/" + extension + ".pdf";
@@ -54,7 +56,7 @@ public class PDF2ImageExample {
 		PdfWriter writer = PdfWriter.getInstance(document, fos);
 		writer.open();
 		document.open();
-		document.add(Image.getInstance((new URL(input))));
+		document.add(Image.getInstance((new URI(input).toURL())));
 		document.close();
 		writer.close();
 	}

@@ -1,0 +1,8 @@
+com:
+  baeldung:
+    aws:
+      access-key: ${AWS_ACCESS_KEY}
+      secret-key: ${AWS_SECRET_KEY}
+      athena:
+        database: ${AMAZON_ATHENA_DATABASE}
+        s3-output-location: ${AMAZON_ATHENA_S3_OUTPUT_LOCATION}

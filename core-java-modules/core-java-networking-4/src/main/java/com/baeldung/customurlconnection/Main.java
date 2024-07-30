@@ -2,6 +2,8 @@ package com.baeldung.customurlconnection;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Scanner;
 
@@ -11,7 +13,7 @@ public class Main {
         URL.setURLStreamHandlerFactory(new CustomURLStreamHandlerFactory());
 
         try {
-            URL url = new URL("myprotocol://example.com/resource");
+            URL url = new URI("myprotocol://example.com/resource").toURL();
 
             CustomURLConnection customConnection = (CustomURLConnection) url.openConnection();
             customConnection.connect();
@@ -28,6 +30,8 @@ public class Main {
             System.out.println("Header Value: " + headerValue);
 
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (URISyntaxException e) {
             e.printStackTrace();
         }
     }

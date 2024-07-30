@@ -8,3 +8,4 @@
 - [Hibernate’s “Not-Null Property References a Null or Transient Value” Error](https://www.baeldung.com/hibernate-not-null-error)
 - [Hibernate’s “Detached Entity Passed to Persist” Error](https://www.baeldung.com/hibernate-detached-entity-passed-to-persist)
 - [Fixing Hibernate QueryException: Named Parameter Not Bound](https://www.baeldung.com/hibernate-queryexception-named-parameter-not-bound-fix)
+- [How to Fix Hibernate UnknownEntityException: Could not resolve root entity](https://www.baeldung.com/hibernate-unknownentityexception-could-not-resolve-root-entity)

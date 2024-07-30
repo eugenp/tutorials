@@ -12,4 +12,5 @@ public class SpringCoreConfig {
     public UserManagementDAO userManagementDAO() {
         return new UserManagementDAOImpl();
     }
+
 }

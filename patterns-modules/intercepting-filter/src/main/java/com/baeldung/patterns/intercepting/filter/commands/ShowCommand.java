@@ -3,7 +3,7 @@ package com.baeldung.patterns.intercepting.filter.commands;
 import com.baeldung.patterns.intercepting.filter.data.Book;
 import com.baeldung.patterns.intercepting.filter.data.Bookshelf;
 
-import javax.servlet.ServletException;
+import jakarta.servlet.ServletException;
 import java.io.IOException;
 import java.util.Collections;
 

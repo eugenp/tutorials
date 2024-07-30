@@ -1,0 +1,80 @@
+openapi: 3.0.3
+info:
+  title: quarkus-citrus API
+  version: 1.0.0-SNAPSHOT
+servers:
+  - url: http://localhost:8080/api/v1
+paths:
+  /todos:
+    get:
+      operationId: getTodos
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Todo'
+    post:
+      operationId: createTodo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Todo'
+      responses:
+        201:
+          description: Todo created
+          headers:
+            Location:
+              description: The URL of the newly created todo.
+              required: true
+              schema:
+                type: string
+                format: uri
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todo'
+  /todos/{id}:
+    get:
+      operationId: findTodo
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            format: int64
+            minimum: 0
+            type: integer
+      responses:
+        200:
+          description: Todo found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Todo'
+        404:
+          description: Todo with ID not found
+components:
+  schemas:
+    Todo:
+      type: object
+      required:
+        - title
+      properties:
+        id:
+          format: int64
+          type: integer
+          readOnly: true
+        title:
+          minLength: 3
+          type: string
+        completed:
+          type: boolean
+        due_date:
+          format: date
+          type: string
+          example: 2022-03-10

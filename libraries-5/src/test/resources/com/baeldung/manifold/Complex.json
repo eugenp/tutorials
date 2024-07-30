@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "http://baeldung.com/manifold/SimpleUser.json",
+  "type": "object",
+  "properties": {
+    "ro": {
+      "type": "string",
+      "maxLength": 100,
+      "readOnly": true
+    },
+    "wo": {
+      "type": "string",
+      "maxLength": 80,
+      "writeOnly": true
+    },
+    "dt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "patternProperties": {
+    "p[0-9]": {
+      "type": "number",
+      "format": "u64"
+    }
+  },
+  "additionalProperties": true,
+  "required": [
+    "wo"
+  ]
+}

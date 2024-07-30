@@ -13,8 +13,8 @@ import java.nio.charset.StandardCharsets;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @SpringBootTest(classes = CustomFunctionApplication.class, properties = {
-        "spring.jpa.show-sql=true",
-        "spring.jpa.properties.hibernate.format_sql=true",
+        "spring.jpa.show-sql=false",
+        "spring.jpa.properties.hibernate.format_sql=false",
         "spring.jpa.generate-ddl=true",
         "spring.jpa.defer-datasource-initialization=true",
         "spring.sql.init.data-locations=classpath:product-data.sql"

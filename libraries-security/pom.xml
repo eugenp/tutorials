@@ -63,7 +63,7 @@
             <version>${jasypt.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.jcraft</groupId>
+            <groupId>com.github.mwiede</groupId>
             <artifactId>jsch</artifactId>
             <version>${jsch.version}</version>
         </dependency>
@@ -160,7 +160,7 @@
         <cryptacular.version>1.2.2</cryptacular.version>
         <jasypt.version>1.9.2</jasypt.version>
         <bouncycastle.version>1.68</bouncycastle.version>
-        <jsch.version>0.1.55</jsch.version>
+        <jsch.version>0.2.18</jsch.version>
         <apache-mina.version>2.12.1</apache-mina.version>
         <apache-sftp.version>2.12.1</apache-sftp.version>
         <apache-scp.version>2.12.1</apache-scp.version>

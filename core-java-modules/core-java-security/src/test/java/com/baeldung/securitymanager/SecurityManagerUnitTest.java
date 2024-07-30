@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.net.URI;
 import java.net.URL;
 import java.security.AccessControlException;
 
@@ -24,8 +25,8 @@ public class SecurityManagerUnitTest {
     }
 
     @Test(expected = AccessControlException.class)
-    public void whenSecurityManagerIsActive_thenNetworkIsNotAccessibleByDefault() throws IOException {
-        new URL("http://www.google.com").openConnection().connect();
+    public void whenSecurityManagerIsActive_thenNetworkIsNotAccessibleByDefault() throws Exception {
+        new URI("http://www.google.com").toURL().openConnection().connect();
     }
 
     @Test(expected = AccessControlException.class)

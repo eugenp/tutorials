@@ -15,7 +15,7 @@
 
     <modules>
         <module>axon</module>
-        <module>clean-architecture</module> <!-- failing after upgrade to jdk21 -->
+        <module>clean-architecture</module>
         <module>coupling</module>
         <module>cqrs-es</module>
         <module>ddd</module>

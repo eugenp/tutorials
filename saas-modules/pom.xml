@@ -22,6 +22,7 @@
         <module>slack</module>
         <module>stripe</module>
         <module>twilio</module>
+        <module>twilio-whatsapp</module>
         <module>twitter4j</module>
     </modules>
 

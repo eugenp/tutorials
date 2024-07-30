@@ -1,0 +1,44 @@
+{
+  "solar_events": [
+    {
+      "event_name": "Solar Eclipse",
+      "date": "2024-04-08",
+      "coordinates": {
+        "latitude": 37.7749,
+        "longitude": -122.4194
+      },
+      "size": "Large",
+      "speed_km_per_s": 1000
+    },
+    {
+      "event_name": "Solar Flare",
+      "date": "2023-10-28",
+      "coordinates": {
+        "latitude": 0,
+        "longitude": 0
+      },
+      "size": "Small",
+      "speed_km_per_s": 100
+    },
+    {
+      "event_name": "Sunspot",
+      "date": "2023-11-15",
+      "coordinates": {
+        "latitude": 15,
+        "longitude": -75
+      },
+      "size": "Large",
+      "speed_km_per_s": 1500
+    },
+    {
+      "event_name": "Coronal Mass Ejection",
+      "date": "2024-01-10",
+      "coordinates": {
+        "latitude": -5,
+        "longitude": 80
+      },
+      "size": "Medium",
+      "speed_km_per_s": 500
+    }
+  ]
+}

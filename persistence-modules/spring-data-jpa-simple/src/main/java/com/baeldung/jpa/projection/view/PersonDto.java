@@ -31,4 +31,9 @@ public class PersonDto {
     public int hashCode() {
         return Objects.hash(firstName, lastName);
     }
+
+    @Override
+    public String toString() {
+        return "PersonDto{" + "firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + '}';
+    }
 }

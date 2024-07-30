@@ -19,7 +19,6 @@ public class NotificationService {
           , notification.getDate(), notification.getFormat());
     }
 
-    @Async
     @ApplicationModuleListener
     public void notificationEvent(NotificationDTO event) {
         Notification notification = toEntity(event);
