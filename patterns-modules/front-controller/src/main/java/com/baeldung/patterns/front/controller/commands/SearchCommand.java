@@ -3,7 +3,7 @@ package com.baeldung.patterns.front.controller.commands;
 import com.baeldung.patterns.front.controller.data.Book;
 import com.baeldung.patterns.front.controller.data.BookshelfImpl;
 
-import javax.servlet.ServletException;
+import jakarta.servlet.ServletException;
 import java.io.IOException;
 
 public class SearchCommand extends FrontCommand {

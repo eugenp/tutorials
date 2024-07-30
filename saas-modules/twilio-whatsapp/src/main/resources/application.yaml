@@ -1,0 +1,8 @@
+com:
+  baeldung:
+    twilio:
+      account-sid: ${TWILIO_ACCOUNT_SID}
+      auth-token: ${TWILIO_AUTH_TOKEN}
+      messaging-sid: ${TWILIO_MESSAGING_SID}
+      new-article-notification:
+        content-sid: ${NEW_ARTICLE_NOTIFICATION_CONTENT_SID}

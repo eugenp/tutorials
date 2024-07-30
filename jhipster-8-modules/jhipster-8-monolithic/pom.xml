@@ -7,7 +7,7 @@
     <artifactId>jhipster-8-monolithic</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>Jhipster 8 Monolithic</name>
+    <name>jhipster-8-monolithic</name>
     <description>Description for Jhipster 8 Monolithic</description>
     <parent>
         <groupId>org.springframework.boot</groupId>

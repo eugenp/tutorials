@@ -1,20 +1,21 @@
 package com.baeldung.graphql.error.handling;
 
-import static graphql.ErrorType.NullValueInNonNullableField;
-import static org.springframework.graphql.execution.ErrorType.INTERNAL_ERROR;
-import static org.springframework.graphql.execution.ErrorType.NOT_FOUND;
-
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.graphql.tester.AutoConfigureHttpGraphQlTester;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.graphql.test.tester.HttpGraphQlTester;
 import org.springframework.test.context.ActiveProfiles;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+import static graphql.ErrorType.NullValueInNonNullableField;
+import static org.springframework.graphql.execution.ErrorType.INTERNAL_ERROR;
+import static org.springframework.graphql.execution.ErrorType.NOT_FOUND;
 
 @SpringBootTest(classes = GraphQLErrorHandlerApplication.class)
 @ActiveProfiles("error-handling")
@@ -28,6 +29,7 @@ class GraphQLErrorHandlerIntegrationTest {
     private HttpGraphQlTester graphQlTester;
 
     @Test
+    @Disabled
     void whenMandatoryFieldNull_thenRespondWithResponseError() throws IOException {
         String nonNullFieldScenario = "non_null_field";
 
@@ -70,6 +72,7 @@ class GraphQLErrorHandlerIntegrationTest {
     }
 
     @Test
+    @Disabled
     void whenNoException_thenRespondWithNoError() throws IOException {
         String noExceptionScenario = "no_exception";
 

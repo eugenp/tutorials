@@ -5,7 +5,7 @@ import static junit.framework.TestCase.assertEquals;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import javax.ws.rs.core.UriBuilder;
+import jakarta.ws.rs.core.UriBuilder;
 
 import org.apache.http.client.utils.URIBuilder;
 

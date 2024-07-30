@@ -6,7 +6,7 @@
     <artifactId>car-app</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>Carsapp</name>
+    <name>car-app</name>
     <description>Description for Carsapp</description>
     <parent>
         <groupId>org.springframework.boot</groupId>
