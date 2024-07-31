@@ -4,6 +4,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.lang.Nullable;
 import org.springframework.validation.annotation.Validated;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
@@ -22,6 +23,9 @@ public class SendGridConfigurationProperties {
 
     @Nullable
     private String fromName;
+
+    @Valid
+    private HydrationAlertNotification hydrationAlertNotification = new HydrationAlertNotification();
 
     public String getApiKey() {
         return apiKey;
@@ -45,6 +49,30 @@ public class SendGridConfigurationProperties {
 
     public void setFromName(String fromName) {
         this.fromName = fromName;
+    }
+
+    public HydrationAlertNotification getHydrationAlertNotification() {
+        return hydrationAlertNotification;
+    }
+
+    public void setHydrationAlertNotification(HydrationAlertNotification hydrationAlertNotification) {
+        this.hydrationAlertNotification = hydrationAlertNotification;
+    }
+
+    class HydrationAlertNotification {
+
+        @NotBlank(message = "Template-id must be configured")
+        @Pattern(regexp = "^d-[a-f0-9]{32}$", message = "Invalid template ID format")
+        private String templateId;
+
+        public String getTemplateId() {
+            return templateId;
+        }
+
+        public void setTemplateId(String templateId) {
+            this.templateId = templateId;
+        }
+
     }
 
 }
