@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Base64;
 import java.util.List;
 
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,14 +17,20 @@ import com.sendgrid.helpers.mail.objects.Content;
 import com.sendgrid.helpers.mail.objects.Email;
 
 @Service
+@EnableConfigurationProperties(SendGridConfigurationProperties.class)
 public class EmailDispatcher {
+
+    private static final String EMAIL_ENDPOINT = "mail/send";
 
     private final SendGrid sendGrid;
     private final Email fromEmail;
+    private final SendGridConfigurationProperties sendGridConfigurationProperties;
 
-    public EmailDispatcher(SendGrid sendGrid, Email fromEmail) {
+    public EmailDispatcher(SendGrid sendGrid, Email fromEmail,
+            SendGridConfigurationProperties sendGridConfigurationProperties) {
         this.sendGrid = sendGrid;
         this.fromEmail = fromEmail;
+        this.sendGridConfigurationProperties = sendGridConfigurationProperties;
     }
 
     public void dispatchEmail(String emailId, String subject, String body) throws IOException {
@@ -33,7 +40,7 @@ public class EmailDispatcher {
 
         Request request = new Request();
         request.setMethod(Method.POST);
-        request.setEndpoint("mail/send");
+        request.setEndpoint(EMAIL_ENDPOINT);
         request.setBody(mail.build());
 
         sendGrid.api(request);
@@ -54,9 +61,31 @@ public class EmailDispatcher {
 
         Request request = new Request();
         request.setMethod(Method.POST);
-        request.setEndpoint("mail/send");
+        request.setEndpoint(EMAIL_ENDPOINT);
         request.setBody(mail.build());
 
+        sendGrid.api(request);
+    }
+
+    public void dispatchHydrationAlert(String emailId, String username) throws IOException {
+        Email toEmail = new Email(emailId);
+        String templateId = sendGridConfigurationProperties.getHydrationAlertNotification().getTemplateId();
+
+        DynamicTemplatePersonalization personalization = new DynamicTemplatePersonalization();
+        personalization.add("name", username);
+        personalization.add("lastDrinkTime", "Way too long ago");
+        personalization.add("hydrationStatus", "Thirsty as a camel");
+        personalization.addTo(toEmail);
+
+        Mail mail = new Mail();
+        mail.setFrom(fromEmail);
+        mail.setTemplateId(templateId);
+        mail.addPersonalization(personalization);
+
+        Request request = new Request();
+        request.setMethod(Method.POST);
+        request.setEndpoint(EMAIL_ENDPOINT);
+        request.setBody(mail.build());
         sendGrid.api(request);
     }
 
