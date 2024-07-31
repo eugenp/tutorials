@@ -1,0 +1,13 @@
+spring:
+  security:
+    oauth2:
+      client:
+        provider:
+          baeldung:
+            issuer-uri: http://localhost:8085
+        registration: 
+          pkce: 
+            provider: baeldung
+            client-id: pkce-client
+            client-secret: obscura
+            scope: openid,email

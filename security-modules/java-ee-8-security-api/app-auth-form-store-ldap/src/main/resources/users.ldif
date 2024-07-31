@@ -1,0 +1,47 @@
+dn: dc=baeldung,dc=com
+objectclass: top
+objectclass: dcObject
+objectclass: organization
+dc: baeldung
+o: baeldung
+
+dn: ou=caller,dc=baeldung,dc=com
+objectclass: top
+objectclass: organizationalUnit
+ou: caller
+
+dn: ou=group,dc=baeldung,dc=com
+objectclass: top
+objectclass: organizationalUnit
+ou: group
+
+dn: uid=admin,ou=caller,dc=baeldung,dc=com
+objectclass: top
+objectclass: uidObject
+objectclass: person
+uid: admin
+cn: Administrator
+sn: Admin
+userPassword: passadmin
+
+dn: uid=user,ou=caller,dc=baeldung,dc=com
+objectclass: top
+objectclass: uidObject
+objectclass: person
+uid: user
+cn: User
+sn: User
+userPassword: passuser
+
+dn: cn=admin_role,ou=group,dc=baeldung,dc=com
+objectclass: top
+objectclass: groupOfNames
+cn: admin_role
+member: uid=admin,ou=caller,dc=baeldung,dc=com
+
+dn: cn=user_role,ou=group,dc=baeldung,dc=com
+objectclass: top
+objectclass: groupOfNames
+cn: user_role
+member: uid=admin,ou=caller,dc=baeldung,dc=com
+member: uid=user,ou=caller,dc=baeldung,dc=com

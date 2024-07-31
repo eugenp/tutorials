@@ -1,0 +1,62 @@
+{
+  "realm": "baeldung",
+  "users": [
+    {
+      "id": "bb83bd5b-b895-49aa-b62e-fde8ff8d5e64",
+      "username": "authorized",
+      "firstName": "authorized",
+      "lastName": "user",
+      "email": "authorized@baeldung.gg",
+      "emailVerified": true,
+      "createdTimestamp": 1713615702990,
+      "enabled": true,
+      "totp": false,
+      "credentials": [
+        {
+          "id": "23d3b6ce-fa3c-4f6e-9b09-e7b3cefa00f6",
+          "type": "password",
+          "userLabel": "My password",
+          "createdDate": 1713615715678,
+          "secretData": "{\"value\":\"lCZEOiVbCynSkCWiWe67/5/PybB+Om5mhi6SynpGFPB+r2b+QEKNYsB7ibO2f1ur9UB2aMO7jfoBYQdTJMcHbQ==\",\"salt\":\"hrIbqMOt0L7PPEYh/PsLNQ==\",\"additionalParameters\":{}}",
+          "credentialData": "{\"hashIterations\":210000,\"algorithm\":\"pbkdf2-sha512\",\"additionalParameters\":{}}"
+        }
+      ],
+      "disableableCredentialTypes": [],
+      "requiredActions": [],
+      "realmRoles": [
+        "AUTHORIZED_PERSONNEL",
+        "default-roles-baeldung"
+      ],
+      "notBefore": 0,
+      "groups": []
+    },
+    {
+      "id": "d205d854-547c-43cf-a02d-fd6c385b128b",
+      "username": "forbidden",
+      "firstName": "forbidden",
+      "lastName": "user",
+      "email": "forbidden@baeldung.gg",
+      "emailVerified": true,
+      "createdTimestamp": 1713615781285,
+      "enabled": true,
+      "totp": false,
+      "credentials": [
+        {
+          "id": "2fa8244c-fba9-43d9-ab4d-80804ca26f6f",
+          "type": "password",
+          "userLabel": "My password",
+          "createdDate": 1713615795357,
+          "secretData": "{\"value\":\"sOUpOdi8yf31YbMEub+tAF7N55QHjrPjg48mO3/C1zGaAxLUYdLodf4upuy6w7eBuRrFaVa1m4mRe6wkWtmLIw==\",\"salt\":\"OMbZn6ojNyZdp6/k/72B/A==\",\"additionalParameters\":{}}",
+          "credentialData": "{\"hashIterations\":210000,\"algorithm\":\"pbkdf2-sha512\",\"additionalParameters\":{}}"
+        }
+      ],
+      "disableableCredentialTypes": [],
+      "requiredActions": [],
+      "realmRoles": [
+        "default-roles-baeldung"
+      ],
+      "notBefore": 0,
+      "groups": []
+    }
+  ]
+}

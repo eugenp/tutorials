@@ -1,0 +1,45 @@
+plugins {
+    id 'java'
+    id 'groovy'
+    id 'io.spring.dependency-management' version '1.1.4'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencyManagement {
+    imports {
+        mavenBom 'org.springframework.boot:spring-boot-dependencies:3.0.0'
+    }
+}
+
+dependencies {
+
+    // Spring implementation dependencies
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // Test implementation
+    testImplementation(
+            'junit:junit',
+            'org.spockframework:spock-core:2.4-M1-groovy-4.0',
+            'org.spockframework:spock-spring:2.4-M1-groovy-4.0',
+            'org.springframework.boot:spring-boot-starter-test',
+    )
+    // Test run time only
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+test {
+    useJUnitPlatform()
+
+    testLogging {
+        events "started", "passed", "skipped", "failed"
+    }
+}

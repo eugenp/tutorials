@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<individual>
+    <name>Baeldung</name>
+    <address>
+        <zip>00001</zip>
+        <city>New York</city>
+    </address>
+</individual>

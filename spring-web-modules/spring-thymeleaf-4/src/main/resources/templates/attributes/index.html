@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Difference Between th:text and th:value in Thymeleaf</title>
+</head>
+<body>
+
+<h1 th:text="${title} ?: 'Default title'"/>
+
+<form th:action="@{/attributes}" method="post">
+    <label>Email:
+        <input name="email" type="email" th:value="${email}">
+    </label>
+    <input type="submit" value="Submit"/>
+</form>
+
+</body>
+</html>

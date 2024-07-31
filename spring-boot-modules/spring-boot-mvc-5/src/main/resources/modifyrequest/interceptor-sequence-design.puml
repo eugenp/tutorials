@@ -1,0 +1,33 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+skinparam sequenceMessageAlign direction
+skinparam handwritten true
+skinparam sequence {
+ParticipantBackgroundColor beige
+ParticipantPadding 50
+}
+
+autonumber
+
+Browser -[#63b175]> Filter: Http Request
+activate Browser
+activate Filter
+Filter -[#63b175]> DispatcherServlet: Http Request
+activate DispatcherServlet
+
+DispatcherServlet -[#63b175]> Interceptor: Http Request
+activate Interceptor
+Interceptor -[#63b175]> Interceptor: preHandle()
+Interceptor -[#63b175]> Controller: Http Request
+activate Controller
+Controller --[#63b175]> Interceptor: Http Response
+deactivate Controller
+Interceptor --[#63b175]> DispatcherServlet: Http Response
+deactivate Interceptor
+DispatcherServlet --[#63b175]> Filter: Http Response
+deactivate DispatcherServlet
+
+Filter --[#63b175]> Browser: Http Response
+deactivate Filter
+deactivate Browser
+@enduml

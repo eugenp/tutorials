@@ -1,0 +1,23 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface RedisConnectionDetails {
+   +getPassword():String
+   +getStandalone():Standalone
+}
+class RedisCacheConnectionDetails {
+   +getPassword():String
+   +getStandalone():Standalone
+}
+class VaultAdapter {
+   +getSecret(String secretKey):String
+}
+class RedisConnectonDetailsConfiguration {
+    +getRedisCacheConnection():RedisConnectionDetails
+}
+RedisCacheConnectionDetails -left-> VaultAdapter:uses
+RedisCacheConnectionDetails -right-|> RedisConnectionDetails : implements
+RedisConnectonDetailsConfiguration -up-> RedisCacheConnectionDetails:uses
+
+
+@enduml

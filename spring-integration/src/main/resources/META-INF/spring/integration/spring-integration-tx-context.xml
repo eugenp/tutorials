@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:int="http://www.springframework.org/schema/integration"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:int-file="http://www.springframework.org/schema/integration/file"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xmlns:int-jdbc="http://www.springframework.org/schema/integration/jdbc"
+       xsi:schemaLocation="http://www.springframework.org/schema/jdbc https://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+		http://www.springframework.org/schema/integration https://www.springframework.org/schema/integration/spring-integration.xsd
+		http://www.springframework.org/schema/integration/file https://www.springframework.org/schema/integration/file/spring-integration-file.xsd
+		http://www.springframework.org/schema/integration/jdbc https://www.springframework.org/schema/integration/jdbc/spring-integration-jdbc.xsd
+
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config/>
+
+    <context:property-placeholder/>
+
+    <int-file:inbound-channel-adapter
+            channel="inputChannel"
+            auto-create-directory="true"
+            filename-pattern="*.txt"
+            directory="${java.io.tmpdir}/tx/">
+        <int:poller fixed-delay="500">
+            <int:transactional transaction-manager="txManager" synchronization-factory="syncFactory"/>
+        </int:poller>
+    </int-file:inbound-channel-adapter>
+
+    <int:transaction-synchronization-factory id="syncFactory">
+        <int:after-commit expression="payload.renameTo(new java.io.File(payload.absolutePath + '.PASSED'))"
+                          channel="infoLogger"/>
+        <int:after-rollback expression="payload.renameTo(new java.io.File(payload.absolutePath + '.FAILED'))"
+                            channel="errorLogger"/>
+    </int:transaction-synchronization-factory>
+
+    <int:channel id="inputChannel"/>
+
+    <int-file:file-to-string-transformer input-channel="inputChannel" output-channel="toServiceChannel"/>
+
+    <int:service-activator input-channel="toServiceChannel"
+                           ref="serviceActivator"
+                           method="checkTestResults"/>
+
+    <int:logging-channel-adapter id="infoLogger" level="INFO"/>
+    <int:logging-channel-adapter id="errorLogger" level="ERROR"/>
+
+    <bean id="serviceActivator" class="com.baeldung.tx.ServiceActivator"/>
+
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <jdbc:embedded-database id="dataSource" type="H2">
+        <jdbc:script location="classpath*:table.sql"/>
+    </jdbc:embedded-database>
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <int-jdbc:inbound-channel-adapter channel="infoLogger"
+                                      query="select TEST from STUDENT" data-source="dataSource">
+        <int:poller fixed-delay="5000"/>
+    </int-jdbc:inbound-channel-adapter>
+</beans>

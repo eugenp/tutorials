@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: demo
+spec:
+  ingressClassName: kong
+  rules:
+  - http:
+      paths:
+      - path: /actuator/health
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: demo
+            port:
+              number: 8080

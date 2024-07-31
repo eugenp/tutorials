@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is JAX-WS RI 2.2.9-b130926.1035 svn-revision#5f6196f2b90e9460065a4c2f4e30e065b245e51e. -->
+<xs:schema xmlns:tns="http://server.ws.soap.baeldung.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="1.0"
+    targetNamespace="http://server.ws.soap.baeldung.com/">
+
+    <xs:complexType name="country">
+        <xs:sequence>
+            <xs:element name="capital" type="xs:string" minOccurs="0"></xs:element>
+            <xs:element name="currency" type="tns:currency" minOccurs="0"></xs:element>
+            <xs:element name="name" type="xs:string" minOccurs="0"></xs:element>
+            <xs:element name="population" type="xs:int"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="currency">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="EUR"></xs:enumeration>
+            <xs:enumeration value="INR"></xs:enumeration>
+            <xs:enumeration value="USD"></xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

@@ -1,0 +1,16 @@
+import com.netflix.nebula.lint.plugin.GradleLintPlugin
+
+initscript {
+    repositories { mavenCentral() }
+    dependencies {
+        classpath 'com.netflix.nebula:gradle-lint-plugin:18.1.0'
+    }
+}
+
+allprojects {
+    apply plugin: GradleLintPlugin
+    gradleLint {
+        rules=[]
+        alwaysRun= false
+    }
+}

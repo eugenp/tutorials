@@ -1,0 +1,8 @@
+{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "http://localhost:8900/login/cas",
+  "name" : "casSecuredApp",
+  "id" : 8900,
+  "logoutType" : "BACK_CHANNEL",
+  "logoutUrl" : "http://localhost:8900/exit/cas"
+}

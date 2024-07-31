@@ -1,0 +1,12 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: rewrite_with_scrub
+        uri: ${rewrite.backend.uri:http://example.com}
+        predicates:
+        - Path=/v1/customer/**
+        filters:
+        - RewritePath=/v1/customer/(?<segment>.*),/api/$\{segment}
+        - ScrubResponse=ssn,***
+        

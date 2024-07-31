@@ -1,0 +1,28 @@
+
+{
+    "gatewayApp": {
+        "quotesQuote" : {
+            "home": {
+                "title": "Quotes",
+                "createLabel": "Criar novo Quote",
+                "createOrEditLabel": "Criar ou editar Quote"
+            },
+            "delete": {
+                "question": "Tem certeza de que deseja excluir Quote {{ id }}?"
+            },
+            "detail": {
+                "title": "Quote"
+            },
+            "symbol": "Symbol",
+            "price": "Price",
+            "lastTrade": "Last Trade"
+        }
+    },
+    "quotesApp": {
+        "quotesQuote" : {
+            "created": "Um novo Quote foi criado com o identificador {{ param }}",
+            "updated": "Um Quote foi atualizado com o identificador {{ param }}",
+            "deleted": "Um Quote foi deletado com o identificador {{ param }}"
+        }
+    }
+}

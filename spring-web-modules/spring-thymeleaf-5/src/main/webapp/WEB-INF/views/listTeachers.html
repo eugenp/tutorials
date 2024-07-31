@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Teacher List</title>
+</head>
+
+<body>
+	<h1>Teacher List</h1>
+	<table border="1">
+		<thead>
+			<tr>
+				<th th:text="#{msg.id}" />
+				<th th:text="#{msg.name}" />
+				<th th:text="#{msg.gender}" />
+				<th th:text="#{msg.active}" />
+				<th th:text="#{msg.courses}" />
+				<th th:text="#{msg.skills}" />
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="teacher: ${teachers}">
+				<td th:text="${teacher.id}" />
+				<td th:text="${{teacher.name}}" />
+
+				<td><span th:if="${teacher.gender == 'F'}">Female</span> <span
+					th:unless="${teacher.gender == 'F'}">Male</span></td>
+
+				<td th:text="${teacher.active} ? 'ACTIVE' : 'RETIRED'" />
+
+				<td th:switch="${#lists.size(teacher.courses)}"><span
+					th:case="'0'">NO COURSES YET!</span> <span th:case="'1'"
+					th:text="${teacher.courses[0]}"></span>
+					<div th:case="*">
+						<div th:each="course: ${teacher.courses}" th:text="${course}"></div>
+					</div></td>
+
+				<td th:text="*{teacher.additionalSkills}?: 'UNKNOWN'" />
+			</tr>
+		</tbody>
+	</table>
+	<div>
+		<p>
+			<a th:href="@{/}" th:text="#{msg.Home}" />
+		</p>
+	</div>
+</body>
+</html>
+
+

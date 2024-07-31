@@ -1,0 +1,17 @@
+2024-02-19T07:28:19.936+01:00  INFO 18999 --- [main] p.m.DevMultidocumentFilesIntegrationTest : Starting DevMultidocumentFilesIntegrationTest using Java 21.0.1 with PID 18999 (started by harry9656 in /Users/harry9656/Desktop/Projects/tutorials/spring-boot-modules/spring-boot-properties-3)
+2024-02-19T07:28:19.941+01:00  INFO 18999 --- [main] p.m.DevMultidocumentFilesIntegrationTest : The following 1 profile is active: "multidocument-dev"
+2024-02-19T07:28:20.502+01:00  WARN 18999 --- [main] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.baeldung.boot.properties.config.TshirtSizeConfig
+2024-02-19T07:28:20.908+01:00  INFO 18999 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2024-02-19T07:28:20.945+01:00  INFO 18999 --- [main] p.m.DevMultidocumentFilesIntegrationTest : Started DevMultidocumentFilesIntegrationTest in 1.286 seconds (process running for 1.797)
+2024-02-19T07:28:21.269+01:00  INFO 18999 --- [main] grationMultidocumentFilesIntegrationTest : Starting IntegrationMultidocumentFilesIntegrationTest using Java 21.0.1 with PID 18999 (started by harry9656 in /Users/harry9656/Desktop/Projects/tutorials/spring-boot-modules/spring-boot-properties-3)
+2024-02-19T07:28:21.270+01:00  INFO 18999 --- [main] grationMultidocumentFilesIntegrationTest : The following 2 profiles are active: "multidocument-integration", "multidocument-integration-extension"
+2024-02-19T07:28:21.532+01:00  INFO 18999 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2024-02-19T07:28:21.559+01:00  INFO 18999 --- [main] grationMultidocumentFilesIntegrationTest : Started IntegrationMultidocumentFilesIntegrationTest in 0.307 seconds (process running for 2.41)
+2024-02-19T07:28:21.618+01:00  INFO 18999 --- [main] .m.ProdMultidocumentFilesIntegrationTest : Starting ProdMultidocumentFilesIntegrationTest using Java 21.0.1 with PID 18999 (started by harry9656 in /Users/harry9656/Desktop/Projects/tutorials/spring-boot-modules/spring-boot-properties-3)
+2024-02-19T07:28:21.618+01:00  INFO 18999 --- [main] .m.ProdMultidocumentFilesIntegrationTest : The following 1 profile is active: "multidocument-prod"
+2024-02-19T07:28:21.773+01:00  INFO 18999 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2024-02-19T07:28:21.781+01:00  INFO 18999 --- [main] .m.ProdMultidocumentFilesIntegrationTest : Started ProdMultidocumentFilesIntegrationTest in 0.202 seconds (process running for 2.632)
+2024-02-19T07:28:21.802+01:00  INFO 18999 --- [main] StagingMultidocumentFilesIntegrationTest : Starting StagingMultidocumentFilesIntegrationTest using Java 21.0.1 with PID 18999 (started by harry9656 in /Users/harry9656/Desktop/Projects/tutorials/spring-boot-modules/spring-boot-properties-3)
+2024-02-19T07:28:21.803+01:00  INFO 18999 --- [main] StagingMultidocumentFilesIntegrationTest : The following 1 profile is active: "multidocument-staging"
+2024-02-19T07:28:21.923+01:00  INFO 18999 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2024-02-19T07:28:21.935+01:00  INFO 18999 --- [main] StagingMultidocumentFilesIntegrationTest : Started StagingMultidocumentFilesIntegrationTest in 0.147 seconds (process running for 2.786)

@@ -1,0 +1,11 @@
+log:
+  level: warn
+  appenders:
+    - type: file
+      logFormat: '%c{20}: %m%n'
+      file: /home/logger.log
+
+jetty:
+  context: /hello
+  connector:
+    port: 10001

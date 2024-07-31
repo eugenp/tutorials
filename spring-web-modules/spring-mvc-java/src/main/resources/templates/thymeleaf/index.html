@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Access Spring MVC params</title>
+<script src="/js/jquery.js"></script>
+<script src="/js/script-async.js"></script>
+<script src="/js/script-async-jquery.js"></script>
+<script>
+	var number = [[${number}]];
+	var message = "[[${message}]]";
+</script>
+</head>
+<body>
+    Number=
+    <span th:text="${number}" th:remove="tag"></span>
+    <br /> Message=
+    <span th:text="${message}" th:remove="tag"></span>
+    <h2>Data from the external JS file (due to loading order)</h2>
+    <div id="number-ext"></div>
+    <div id="message-ext"></div>
+    <h2>Asynchronous loading from external JS file (plain JS)</h2>
+    <div id="number-async"></div>
+    <div id="message-async"></div>
+    <h2>Asynchronous loading from external JS file (jQuery)</h2>
+    <div id="number-async-jquery"></div>
+    <div id="message-async-jquery"></div>
+</body>
+<script src="/js/script.js"></script>
+</html>

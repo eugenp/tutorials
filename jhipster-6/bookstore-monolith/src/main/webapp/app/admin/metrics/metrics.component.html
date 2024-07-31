@@ -1,0 +1,56 @@
+<div>
+    <h2>
+        <span id="metrics-page-heading">Application Metrics</span>
+        <button class="btn btn-primary float-right" (click)="refresh()">
+            <fa-icon [icon]="'sync'"></fa-icon> <span>Refresh</span>
+        </button>
+    </h2>
+
+    <h3>JVM Metrics</h3>
+    <div class="row" *ngIf="!updatingMetrics">
+        <jhi-jvm-memory
+            class="col-md-4"
+            [updating]="updatingMetrics"
+            [jvmMemoryMetrics]="metrics.jvm">
+        </jhi-jvm-memory>
+        <jhi-jvm-threads class="col-md-4" [threadData]="threadData"></jhi-jvm-threads>
+        <jhi-metrics-system
+            class="col-md-4"
+            [updating]="updatingMetrics"
+            [systemMetrics]="metrics.processMetrics">
+        </jhi-metrics-system>
+    </div>
+
+    <div *ngIf="isObjectExisting(metrics, 'garbageCollector')">
+        <h3>Garbage collector statistics</h3>
+        <jhi-metrics-garbagecollector [updating]="updatingMetrics" [garbageCollectorMetrics]="metrics.garbageCollector"></jhi-metrics-garbagecollector>
+    </div>
+
+    <div class="well well-lg" *ngIf="updatingMetrics">Updating...</div>
+
+    <jhi-metrics-request
+        *ngIf="isObjectExisting(metrics, 'http.server.requests')"
+        [updating]="updatingMetrics"
+        [requestMetrics]="metrics['http.server.requests']">
+    </jhi-metrics-request>
+
+    <div >
+        <jhi-metrics-endpoints-requests
+            *ngIf="isObjectExisting(metrics, 'services')"
+            [updating]="updatingMetrics"
+            [endpointsRequestsMetrics]="metrics.services">
+        </jhi-metrics-endpoints-requests>
+
+    <jhi-metrics-cache
+        *ngIf="isObjectExisting(metrics, 'cache')"
+        [updating]="updatingMetrics"
+        [cacheMetrics]="metrics.cache">
+    </jhi-metrics-cache>
+
+    <jhi-metrics-datasource
+        *ngIf="isObjectExistingAndNotEmpty(metrics, 'databases')"
+        [updating]="updatingMetrics"
+        [datasourceMetrics]="metrics.databases">
+    </jhi-metrics-datasource>
+
+</div>

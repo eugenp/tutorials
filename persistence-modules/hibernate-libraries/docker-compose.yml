@@ -1,0 +1,19 @@
+version: '3.2'
+
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: mysql57
+    restart: unless-stopped
+    ports:
+      - 53306:3306
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+    volumes :
+      - ./docker/etc/mysql/conf.d:/etc/mysql/conf.d
+      - ./docker/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "1"

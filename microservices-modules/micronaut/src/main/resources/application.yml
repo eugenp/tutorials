@@ -1,0 +1,19 @@
+context-path: /
+
+micronaut:
+  router:
+    versioning:
+      enabled: true
+      default-version: 2
+      parameter:
+        enabled: true
+        names: 'v,api-version'
+      header:
+        enabled: true
+        names:
+          - 'X-API-VERSION'
+
+  application:
+    name: hello-world-server
+  server:
+    port: ${random.port}

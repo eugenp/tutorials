@@ -1,0 +1,16 @@
+[ 
+	{ 
+		"_class" : "com.baeldung.domain.Product",
+		"id": "5edcbfd30717397ae8cfb7f0",
+ 		"name" : "Product A",
+  		"price" : "12",
+  		"stock" : "100"
+  	},
+  	{ 
+  		"_class" : "com.baeldung.domain.Product",
+  		"id": "5edcbfd30717397ae8cfb7f1",
+ 		"name" : "Product D",
+  		"price" : "16",
+  		"stock" : "100"
+  	} 
+]

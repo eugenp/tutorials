@@ -1,0 +1,41 @@
+@startuml
+'https://gist.github.com/QuantumGhost/0955a45383a0b6c0bc24f9654b3cb561
+' uncomment the line below if you're using computer with a retina display
+' skinparam dpi 300
+!theme sketchy-outline
+!define Table(name,desc) class name as "desc" << (T, #63b175) >>
+' we use bold for primary key
+' green color for unique
+' and underscore for not_null
+!define primary_key(x) <b>x</b>
+!define unique(x) <color:green>x</color>
+!define not_null(x) <u>x</u>
+' other tags available:
+' <i></i>
+' <back:COLOR></color>, where color is a color name or html color code
+' (#FFAACC)
+' see: http://plantuml.com/classes.html#More
+hide methods
+hide stereotypes
+
+' entities
+
+
+Table(Teacher, "Teacher") {
+    primary_key(Id) Number
+    Name Varchar
+    joining_date Date
+}
+Table(Subject, "Subject") {
+    primary_key(Id) Number
+    Name Varchar
+}
+Table(Teacher_Details, "Teacher_Details") {
+    primary_key(Id) Number
+    teacher_id Number
+    subject_id Number
+}
+
+Teacher_Details "*" -left-> "1" Subject: "        "
+Teacher "1" -left-> "*" Teacher_Details: "        "
+@enduml

@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deptrack-frontend
+  namespace: deptrack
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      ManagedBy: deptrack-operator
+      component: frontend
+  template:
+    metadata:
+      labels:
+        ManagedBy: deptrack-operator
+        component: frontend
+    spec:
+      containers:
+        - name: main
+          env:
+            - name: API_BASE_URL
+              value: https://example.com
+          image: dependencytrack/frontend
+          imagePullPolicy: Always
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /
+              port: http
+              scheme: HTTP
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          ports:
+            - containerPort: 8080
+              name: http
+              protocol: TCP
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /
+              port: http
+              scheme: HTTP
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1

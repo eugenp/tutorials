@@ -1,0 +1,1 @@
+Some StringProduct name is iPhone and its price is 1000 $

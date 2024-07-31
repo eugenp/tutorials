@@ -1,0 +1,11 @@
+server:
+  port: 8081
+
+spring:
+  graphql:
+    schema:
+      locations: classpath:graphql-vs-rest/
+
+  jackson:
+    parser:
+      allow-unquoted-control-chars: true

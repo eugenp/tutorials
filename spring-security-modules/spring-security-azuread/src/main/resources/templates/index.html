@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html data-theme="dark"	>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+</head>
+<body class="container">
+<h1>Hello, <span data-th-text="${user.name}">NOMO_NOMO</span></h1>
+
+<h2>User info:</h2>
+
+<table role="grid">
+	<thead>
+		<tr>
+			<th>Attribute</th>
+			<th>Value</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Name</td>
+			<td data-th-text="${user.name}">user.name</td>
+		</tr>
+		<tr>
+			<td>Class</td>
+			<td data-th-text="${user.class}">user.class</td>
+		</tr>
+		<tr>
+			<td>Principal Class</td>
+			<td data-th-text="${user.principal.class}">user.principal.class</td>
+		</tr>
+		<tr>
+			<td>isAuthenticated?</td>
+			<td data-th-text="${user.authenticated}">user.authenticated</td>
+		</tr>
+		<tr>
+			<td>clientRegistrationId</td>
+			<td data-th-text="${user.authorizedClientRegistrationId}">user.authorizedClientregistrationId</td>
+		</tr>
+		<tr data-th-each="claim : ${user.principal.claims}">
+			<td >Claim: <span data-th-text="${claim.key}">key</span></td>
+			<td data-th-text="${claim.value}">value</td>
+		</tr>
+		<tr data-th-each="ga : ${user.authorities}">
+			<td >Granted Authority: <span data-th-text="${ga.class.simpleName}"></span></td>
+			<td data-th-text="${ga.authority}">authority</td>
+		</tr>
+		
+	</tbody>	
+</table>
+</body>
+</html>

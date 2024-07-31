@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<binding>
+	<mapping class="com.baeldung.xml.jibx.Identity" abstract="true">
+		<value name="customer-id" field="customerId" />
+	</mapping>
+
+	<mapping name="customer" class="com.baeldung.xml.jibx.Customer">
+		<structure field="person" />
+		<structure name="home-phone" field="homePhone" usage="optional" />
+		<structure name="office-phone" field="officePhone" usage="optional" />
+		<value name="city" field="city" />
+	</mapping>
+
+	<mapping name="person" class="com.baeldung.xml.jibx.Person"
+		extends="com.baeldung.xml.jibx.Identity">
+		<structure map-as="com.baeldung.xml.jibx.Identity" />
+		<value name="name" field="name" />
+
+	</mapping>
+
+	<mapping class="com.baeldung.xml.jibx.Phone" abstract="true">
+		<value name="number" field="number" />
+	</mapping>
+
+
+</binding>

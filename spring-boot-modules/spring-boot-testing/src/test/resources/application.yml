@@ -1,0 +1,19 @@
+spring:
+   config:
+    activate:
+      on-profile: test
+server:
+   address:
+      ip: 192.168.0.4
+   resources_path:
+      imgs: /etc/test/imgs
+---
+spring:
+   config:
+    activate:
+      on-profile: dev
+server:
+   address:
+      ip: 192.168.0.5
+   resources_path:
+      imgs: /etc/dev/imgs

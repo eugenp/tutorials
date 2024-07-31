@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Request 
+    xmlns="urn:oasis:names:tc:xacml:3.0:core:schema:wd-17"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="urn:oasis:names:tc:xacml:3.0:core:schema:wd-17 http://docs.oasis-open.org/xacml/3.0/xacml-core-v3-schema-wd-17.xsd"
+    CombinedDecision="true"
+    ReturnPolicyIdList="false">
+    
+    <Attributes Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action">
+        <Attribute 
+            IncludeInResult="false" 
+            AttributeId="urn:oasis:names:tc:xacml:3.0:attribute-category:action">
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">withdrawal</AttributeValue>
+        </Attribute>
+    </Attributes>
+    <Attributes Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action">
+        <Attribute 
+            IncludeInResult="false" 
+            AttributeId="urn:oasis:names:tc:xacml:1.0:environment:current-time">
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#time">21:00:00</AttributeValue>
+        </Attribute>
+    </Attributes>
+    <Attributes Category="urn:baeldung:atm:withdrawal">
+        <Attribute 
+            IncludeInResult="false" 
+            AttributeId="urn:baeldung:atm:withdrawal:amount">
+            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#decimal">1200</AttributeValue>
+        </Attribute>
+    </Attributes>
+</Request>

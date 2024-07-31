@@ -1,0 +1,50 @@
+<div>
+    <h2>
+        <span id="gateway-page-heading" jhiTranslate="gateway.title">Gateway</span>
+        <button class="btn btn-primary float-xs-right" (click)="refresh()" (disabled)="updatingRoutes">
+            <fa-icon [icon]="'sync'"></fa-icon> <span jhiTranslate="gateway.refresh.button">Refresh</span>
+        </button>
+    </h2>
+    <h3 jhiTranslate="gateway.routes.title">Current routes</h3>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th jhiTranslate="gateway.routes.url">URL</th>
+                <th jhiTranslate="gateway.routes.service">Service</th>
+                <th jhiTranslate="gateway.routes.servers">Available servers</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let route of gatewayRoutes">
+                    <td>{{route.path}}</td>
+                    <td>{{route.serviceId}}</td>
+                    <td>
+                        <div *ngIf="route.serviceInstances.length === 0" class="label label-danger" jhiTranslate="gateway.routes.error">
+                            Warning: no server available!
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-striped" *ngIf="route">
+                                <tr *ngFor="let instance of route.serviceInstances">
+                                    <td><a href="{{instance.uri}}" target="_blank">{{instance.uri}}</a></td>
+                                    <td>
+                                        <div *ngIf="instance.instanceInfo" class="badge badge-{{instance.instanceInfo.status === 'UP'?'success':'danger'}}">{{instance.instanceInfo.status}}</div>
+                                        <div *ngIf="!instance.instanceInfo" class="badge badge-warning">?</div>
+                                    </td>
+                                    <td>
+                                        <span *ngFor="let entry of (instance.metadata | keys )">
+                                            <span class="badge badge-default font-weight-normal">
+                                                <span class="badge badge-pill badge-info font-weight-normal">{{entry.key}}</span>
+                                                {{entry.value}}
+                                            </span>
+                                        </span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

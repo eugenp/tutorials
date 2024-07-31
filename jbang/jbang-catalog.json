@@ -1,0 +1,15 @@
+{
+  "catalogs": {},
+  "aliases": {
+    "hello": {
+      "script-ref": "hello.java"
+    },
+    "hellocli": {
+      "script-ref": "hellocli.java"
+    },
+    "jbangquarkus": {
+      "script-ref": "jbangquarkus.java"
+    }
+  },
+  "templates": {}
+}

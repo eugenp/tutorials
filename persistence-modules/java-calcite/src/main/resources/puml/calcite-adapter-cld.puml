@@ -1,0 +1,58 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+
+skinparam Handwritten true
+skinparam ClassBorderColor black/#63b175
+skinparam BackgroundColor #fdf8f6
+skinparam class {
+ ArrowColor black/#63b175
+
+}
+
+'hide empty methods
+hide empty attributes
+
+
+interface Schema {
++getTable()
++getType()
++getFunctions()
++more methods()..
+}
+
+interface SchemaFactory {
++creates()
+}
+
+interface Table {
+
+}
+
+interface TableFactory <T extends Table> {
+  +create()
+}
+
+interface SchemaFactory {
+}
+interface Schema {
+}
+interface Table {
+}
+interface TableFactory {
+}
+
+
+SchemaFactory -right-> Schema:creates
+CassandraSchemaFactory -right-|> SchemaFactory:implements
+CsvSchemaFactory -down-|> SchemaFactory:implements
+MongoSchemaFactory -down-|> SchemaFactory:implements
+FileSchemaFactory -down-|> SchemaFactory:implements
+TableFactory -right-> Table:creates
+Table <-up- Schema:gets
+CassandraSchema -down-|> Schema:implements
+CsvSchema -down-|> Schema:implements
+MongoSchema -up-|> Schema:implements
+SplunkSchema -up-|> Schema:implements
+
+@enduml

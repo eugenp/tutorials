@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>spotless</artifactId>
+
+    <parent>
+        <artifactId>maven-plugins</artifactId>
+        <groupId>com.baeldung</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>${jetbrains-annotations.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.diffplug.spotless</groupId>
+                <artifactId>spotless-maven-plugin</artifactId>
+                <version>${spotless.version}</version>
+                <configuration>
+                    <java>
+                        <!-- this <googleJavaFormat/> step is showcased in the article, but we'll use the baeldung-style -->
+                        <!--  <googleJavaFormat/>  -->
+                        <eclipse>
+                            <file>${project.basedir}/baeldung-style.xml</file>
+                        </eclipse>
+
+                        <importOrder/>
+                        <removeUnusedImports/>
+                        <formatAnnotations/>
+
+                        <!--  this <licenseHeader> step is showcased in the article, but we don't want to run it on Jenkins -->
+                        <!--  <licenseHeader>   -->
+                        <!--      <content>/* (C)$YEAR */</content>  -->
+                        <!--  </licenseHeader>  -->
+                    </java>
+                </configuration>
+
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                        <phase>package</phase>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- the configuration below in not needed for this tutorial or for Spotless,
+                but we need it when building all the modules in our Jenkins CI  -->
+            <plugin>
+                <artifactId>maven-verifier-plugin</artifactId>
+                <version>${maven.verifier.version}</version>
+                <configuration>
+                    <verificationFile>../input-resources/verifications.xml</verificationFile>
+                    <failOnError>false</failOnError>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <properties>
+        <spotless.version>2.43.0</spotless.version>
+        <jetbrains-annotations.version>24.1.0</jetbrains-annotations.version>
+    </properties>
+
+</project>

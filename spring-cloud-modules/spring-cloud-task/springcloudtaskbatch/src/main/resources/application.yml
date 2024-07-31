@@ -1,0 +1,22 @@
+logging:
+  level:
+    org:
+      springframework:
+        cloud:
+          task: DEBUG
+                           
+spring:
+  application:
+    name: helloWorld
+  datasource:
+    url: jdbc:mysql://localhost:3306/springcloud?useSSL=false
+    username: root
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+  batch:
+    initialize-schema: always

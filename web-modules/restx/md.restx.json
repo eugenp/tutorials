@@ -1,0 +1,38 @@
+{
+    "module": "restx-demo:restx-demo:0.1-SNAPSHOT",
+    "packaging": "war",
+
+    "properties": {
+        "java.version": "17",
+        "restx.version": "1.0.0-rc3"
+    },
+    "fragments": {
+        "maven": [
+            "classpath:///restx/build/fragments/maven/javadoc-apidoclet.xml"        ]
+    },
+    "dependencies": {
+        "compile": [
+            "io.restx:restx-core:${restx.version}",
+            "io.restx:restx-security-basic:${restx.version}",
+            "io.restx:restx-core-annotation-processor:${restx.version}",
+            "io.restx:restx-factory:${restx.version}",
+            "io.restx:restx-factory-admin:${restx.version}",
+            "io.restx:restx-validation:${restx.version}",
+            "io.restx:restx-monitor-codahale:${restx.version}",
+            "io.restx:restx-monitor-admin:${restx.version}",
+            "io.restx:restx-log-admin:${restx.version}",
+            "io.restx:restx-i18n-admin:${restx.version}",
+            "io.restx:restx-stats-admin:${restx.version}",
+            "io.restx:restx-servlet:${restx.version}",
+            "io.restx:restx-server-jetty11:${restx.version}!optional",
+            "io.restx:restx-apidocs:${restx.version}",
+            "io.restx:restx-specs-admin:${restx.version}",
+            "io.restx:restx-admin:${restx.version}",
+            "ch.qos.logback:logback-classic:1.0.13"
+        ],
+        "test": [
+            "io.restx:restx-specs-tests:${restx.version}",
+            "junit:junit:4.11"
+        ]
+    }
+}

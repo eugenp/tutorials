@@ -1,0 +1,11 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: quarkus-funqy-project
+spec:
+  template:
+    metadata:
+      name: quarkus-funqy-project-v1
+    spec:
+      containers:
+        - image: docker.io/<<dockerUserName>>/quarkus-funqy-project

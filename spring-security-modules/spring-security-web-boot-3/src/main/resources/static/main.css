@@ -1,0 +1,26 @@
+html, body{
+    font-family: Raleway, serif;
+    background-color: #f5f5f5;
+}
+.navbar
+{
+    background-color: #63b175 !important;
+}
+.navbar-brand
+{
+    font-size: 1.75rem;
+    font-weight: bold;
+}
+/*
+hr{
+    border: 0px dotted rgba(249, 249, 249, 0.88);
+}*/
+
+hr {
+    border: 0;
+    border-bottom: 1px dashed #969595;
+    background: #969595;
+}
+label{
+    font-weight: bold;
+}

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>web-modules</artifactId>
+    <packaging>pom</packaging>
+    <name>web-modules</name>
+
+    <parent>
+        <artifactId>parent-modules</artifactId>
+        <groupId>com.baeldung</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <modules>
+        <module>apache-tapestry</module>
+        <module>blade</module>
+        <module>bootique</module>
+        <module>dropwizard</module>
+        <module>google-web-toolkit</module>
+        <!-- <module>grails</module> --> <!-- Not a maven project -->
+        <module>jakarta-ee</module>
+        <!-- <module>java-lite</module> Not upgradable to java-17 adding in default-second and  integration-lite-second profile that uses JDK 8-->
+        <module>java-takes</module>
+        <module>jakarta-servlets</module>
+        <module>jakarta-servlets-2</module>
+        <module>jee-7</module>
+        <module>jersey</module>
+        <module>jooby</module>
+        <module>jsf</module>
+        <module>linkrest</module>
+        <!-- <module>ninja</module> --> <!-- Fixing in JAVA-24584 -->
+        <!-- <module>play-modules</module> --> <!-- Not a maven project -->
+        <!-- <module>raml-modules</module> --> <!-- Not a maven project -->
+        <module>ratpack</module>
+        <module>resteasy</module>
+        <module>rome</module>
+        <module>spark-java</module>
+        <module>struts-2</module>
+        <module>vraptor</module>
+        <module>wicket</module>
+    </modules>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+</project>

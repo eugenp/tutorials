@@ -1,0 +1,28 @@
+body, html {
+    font-family: Raleway, serif;
+    font-weight: 300;
+}
+
+.bg-dark {
+    background-color: #63b175 !important;
+    font-weight: 600 !important;
+}
+
+body {
+    padding-top: 80px;
+}
+
+@media (max-width: 979px) {
+    body {
+        padding-top: 0;
+    }
+}
+
+label {
+    font-weight: bold;
+}
+
+.hr-dark {
+    border-top: 2px solid #000;
+    margin-bottom: 20px;
+}

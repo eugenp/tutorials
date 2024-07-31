@@ -1,0 +1,23 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface Neo4jConnectionDetails {
+   +getUri():URI
+   +getAuthToken():AuthToken
+}
+class CustomNeo4jConnectionDetails {
+   +getUri():URI
+   +getAuthToken():AuthToken
+}
+class VaultAdapter {
+   +getSecret(String secretKey):String
+}
+class CustomNeo4jConnectionDetailsConfiguration {
+    +getNeo4jConnectionDetails():Neo4jConnectionDetails
+}
+CustomNeo4jConnectionDetails -left-> VaultAdapter:uses
+CustomNeo4jConnectionDetails -right-|> Neo4jConnectionDetails:implements
+CustomNeo4jConnectionDetailsConfiguration -up-> CustomNeo4jConnectionDetails:uses
+
+
+@enduml

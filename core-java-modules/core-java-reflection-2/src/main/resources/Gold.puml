@@ -1,0 +1,20 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class GoldJobCard<T> {
+ -T jobType
+ +setJobType(Class<T> jobTypeClass)
+ +startJob()
+}
+
+class MaintenanceJob {
+ +getJobType()
+}
+class RepairJob {
+ +getJobType()
+}
+GoldJobCard -left-> MaintenanceJob:creates
+GoldJobCard -right-> RepairJob:creates
+
+
+@enduml

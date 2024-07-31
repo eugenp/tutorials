@@ -1,0 +1,169 @@
+# Custom properties to ease configuration overrides
+# on command-line or IDE launch configurations
+scheme: http
+hostname: localhost
+reverse-proxy-port: 7080
+reverse-proxy-uri: ${scheme}://${hostname}:${reverse-proxy-port}
+authorization-server-prefix: /auth
+issuer: ${reverse-proxy-uri}${authorization-server-prefix}/realms/baeldung
+client-id: baeldung-confidential
+client-secret: secret
+username-claim-json-path: $.preferred_username
+authorities-json-path: $.realm_access.roles
+bff-port: 7081
+bff-prefix: /bff
+resource-server-port: 7084
+audience: 
+
+server:
+  port: ${bff-port}
+  ssl:
+    enabled: false
+
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: bff
+        uri: ${scheme}://${hostname}:${resource-server-port}
+        predicates:
+        - Path=/api/**
+        filters:
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+        - TokenRelay=
+        - SaveSession
+        - StripPrefix=1
+  security:
+    oauth2:
+      client:
+        provider:
+          baeldung:
+            issuer-uri: ${issuer}
+        registration:
+          baeldung:
+            provider: baeldung
+            authorization-grant-type: authorization_code
+            client-id: ${client-id}
+            client-secret: ${client-secret}
+            scope: openid,profile,email,offline_access
+
+com:
+  c4-soft:
+    springaddons:
+      oidc:
+        ops:
+        - iss: ${issuer}
+          authorities:
+          - path: ${authorities-json-path}
+          aud: ${audience}
+        # SecurityFilterChain with oauth2Login() (sessions and CSRF protection enabled)
+        client:
+          client-uri: ${reverse-proxy-uri}${bff-prefix}
+          security-matchers:
+          - /api/**
+          - /login/**
+          - /oauth2/**
+          - /logout/**
+          permit-all:
+          - /api/**
+          - /login/**
+          - /oauth2/**
+          - /logout/connect/back-channel/baeldung
+          post-logout-redirect-host: ${hostname}
+          csrf: cookie-accessible-from-js
+          oauth2-redirections:
+            rp-initiated-logout: ACCEPTED
+          back-channel-logout:
+            enabled: true
+            # internal-logout-uri: ${reverse-proxy-uri}${bff-prefix}/logout
+            # should work too,  but there is no reason to go through the reverse proxy for this internal call
+            internal-logout-uri: ${scheme}://localhost:${bff-port}/logout
+        # SecurityFilterChain with oauth2ResourceServer() (sessions and CSRF protection disabled)
+        resourceserver:
+          permit-all:
+          - /login-options
+          - /error
+          - /v3/api-docs/**
+          - /swagger-ui/**
+          - /actuator/health/readiness
+          - /actuator/health/liveness
+
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
+
+logging:
+  level:
+    root: INFO
+    org:
+      springframework:
+        boot: INFO
+        security: TRACE
+        web: INFO
+    
+---
+spring:
+  config:
+    activate:
+      on-profile: ssl
+server:
+  ssl:
+    enabled: true
+scheme: https
+
+---
+spring:
+  config:
+    activate:
+      on-profile: cognito
+issuer: https://cognito-idp.us-west-2.amazonaws.com/us-west-2_RzhmgLwjl
+client-id: 12olioff63qklfe9nio746es9f
+client-secret: change-me
+username-claim-json-path: username
+authorities-json-path: $.cognito:groups
+com:
+  c4-soft:
+    springaddons:
+      oidc:
+        client:
+          oauth2-logout:
+            baeldung:
+              uri: https://spring-addons.auth.us-west-2.amazoncognito.com/logout
+              client-id-request-param: client_id
+              post-logout-uri-request-param: logout_uri
+
+---
+spring:
+  config:
+    activate:
+      on-profile: auth0
+issuer: https://dev-ch4mpy.eu.auth0.com/
+client-id: yWgZDRJLAksXta8BoudYfkF5kus2zv2Q
+client-secret: change-me
+username-claim-json-path: $['https://c4-soft.com/user']['name']
+authorities-json-path: $['https://c4-soft.com/user']['roles']
+audience: bff.baeldung.com
+com:
+  c4-soft:
+    springaddons:
+      oidc:
+        client:
+          authorization-params:
+            baeldung:
+              audience: ${audience}
+          oauth2-logout:
+            baeldung:
+              uri: ${issuer}v2/logout
+              client-id-request-param: client_id
+              post-logout-uri-request-param: returnTo

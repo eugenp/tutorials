@@ -1,0 +1,23 @@
+type Vehicle {
+  vin: ID!
+  year: Int!
+  make: String!
+  model: String!
+  trim: String!
+}
+
+input Location {
+  city: String
+  state: String
+  zipcode: String!
+}
+
+type Query {
+  searchAll:  [Vehicle]!
+  searchByLocation(zipcode: String!): [Vehicle]!
+  searchByVin(vin: String!): Vehicle
+}
+
+type Mutation {
+  addVehicle(vin: ID!, year: Int!, make: String!, model: String!, trim: String, location: Location): Vehicle!
+}

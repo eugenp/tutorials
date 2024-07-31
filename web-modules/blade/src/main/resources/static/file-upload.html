@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+<script src="https://cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+
+
+    <h1>File Upload and download test</h1>
+    <form id="uploadForm" enctype="multipart/form-data">
+        <input id="file" type="file" name="file" />
+        <button id="upload" type="button">Upload</button>
+    </form>
+
+    <br />
+    <a href="/">Back</a>
+    <script>
+		var data = new FormData();
+
+		$('#upload').click(function() {
+			$.ajax({
+				url : '/params-file',
+				type : 'POST',
+				cache : false,
+				data : new FormData($('#uploadForm')[0]),
+				processData : false,
+				contentType : false
+			}).done(function(res) {
+				console.log(res);
+				if (res.success) {
+					alert('Ok');
+				} else {
+					alert(res.msg || 'Error');
+				}
+			}).fail(function(res) {
+			});
+		});
+	</script>
+
+</body>
+</html>

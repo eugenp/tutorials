@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lists Utility Class in Thymeleaf</title>
+</head>
+<body>
+
+<span th:with="convertedList=${#lists.toList(myArray)}">
+    converted list size: <span th:text="${#lists.size(convertedList)}"/>
+</span>
+
+</body>
+</html>

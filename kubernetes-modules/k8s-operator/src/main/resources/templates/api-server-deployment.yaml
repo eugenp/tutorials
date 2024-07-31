@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deptrack-api
+  namespace: deptrack
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      ManagedBy: deptrack-operator
+      component: api-server
+  template:
+    metadata:
+      labels:
+        ManagedBy: deptrack-operator
+        component: api-server
+    spec:
+      containers:
+        - name: main
+          image: dependencytrack/apiserver:4.10.1
+          ports:
+            - containerPort: 8080
+              name: http
+              protocol: TCP
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /
+              port: http
+              scheme: HTTP
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 2
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /api/version
+              port: http
+              scheme: HTTP
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 2
+          resources:
+            limits:
+              cpu: "2"
+              memory: 8Gi
+            requests:
+              cpu: "1"
+              memory: 2Gi
+      restartPolicy: Always
+

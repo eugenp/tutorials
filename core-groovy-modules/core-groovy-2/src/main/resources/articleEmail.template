@@ -1,0 +1,5 @@
+Dear <% out << (user) %>,
+Please read the requested article below.
+<% out << (articleText) %>
+From,
+<% out << (signature) %>

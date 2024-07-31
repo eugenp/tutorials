@@ -1,0 +1,27 @@
+package com.baeldung.drools.rules
+
+import com.baeldung.drools.model.Fact;
+
+global com.baeldung.drools.model.Result result;
+
+dialect  "mvel"
+
+query belongsTo(String x, String y)
+  Fact(x, y;)
+  or
+  (Fact(z, y;) and belongsTo(x, z;))
+end
+
+rule "Great Wall of China BELONGS TO Planet Earth"
+when
+    belongsTo("Great Wall of China", "Planet Earth";)
+then
+	result.setValue("Decision one taken: Great Wall of China BELONGS TO Planet Earth");
+end
+
+rule "print all facts"
+when
+    belongsTo(element, place;)
+then
+    result.addFact(element + " IS ELEMENT OF " + place);
+end

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Enums in Thymeleaf</title>
+</head>
+<body>
+    <h3>View Widget</h3>
+    <div>
+        <label for="name">Name: </label>
+        <span th:text="${widget.name}"></span>
+    </div>
+    <div>
+        <label for="color">Color: </label>
+        <span th:text="${widget.color.displayValue}"></span>
+    </div>
+    <div th:if="${widget.color == T(com.baeldung.thymeleaf.enums.Color).RED}">
+        This color screams danger.
+    </div>
+    <div th:if="${widget.color.name() == 'GREEN'}">
+        Green is for go.
+    </div>
+    <div th:switch="${widget.color}">
+        <span th:case="${T(com.baeldung.thymeleaf.enums.Color).RED}" style="color: red;">Alert</span>
+        <span th:case="${T(com.baeldung.thymeleaf.enums.Color).ORANGE}" style="color: orange;">Warning</span>
+        <span th:case="${T(com.baeldung.thymeleaf.enums.Color).YELLOW}" style="color: yellow;">Caution</span>
+        <span th:case="${T(com.baeldung.thymeleaf.enums.Color).GREEN}" style="color: green;">All Good</span>
+    </div>
+</body>
+</html>

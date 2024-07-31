@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title th:text="${title}">Title</title>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"
+	href="../../css/bootstrap.min.css" />
+</head>
+<body>
+	<div class="container">
+	
+		<div class="navbar">
+			<div class="navbar-inner">
+				<a class="brand" href="http://www.thymeleaf.org"> Thymeleaf -
+					Plain </a>
+				<ul class="nav">
+					<li><a th:href="@{/}" href="home.html"> Home </a></li>
+					<li><a th:href="@{/secure}" href="home.html"> Secure Page </a></li>
+				</ul>
+			</div>
+		</div>
+		
+		
+		<div id="content">
+			<p>
+				<h1 th:text="${title}"></h1>
+				<h2 th:text="${message}"></h2>
+			</p>
+		</div>
+		
+		<div id="footer">
+			<p>
+				Logged in as: <span th:text="${username}"></span>, Roles: <span th:text="${userroles}"></span>
+			</p>
+		</div>
+	</div>
+</body>
+</html>

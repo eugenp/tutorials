@@ -1,0 +1,3 @@
+# OPA configuration properties
+opa:
+  endpoint: http://localhost:8181/v1/data/baeldung/auth/account

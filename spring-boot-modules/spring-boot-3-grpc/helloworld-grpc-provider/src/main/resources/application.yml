@@ -1,0 +1,9 @@
+grpc:
+  server:
+    port: 9090
+logging:
+  pattern:
+    console: "[%d{yyyy-MM-dd HH:mm:ss.SSS}] %-5level [%t] [%logger - %line]: %m%n"
+  level:
+    com.baeldung.helloworld.provider: info
+  include-application-name: false

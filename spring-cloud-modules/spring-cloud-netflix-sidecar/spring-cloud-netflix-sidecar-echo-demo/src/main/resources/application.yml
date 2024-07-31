@@ -1,0 +1,14 @@
+server.port: 8085
+spring:
+  application:
+    name: echo
+eureka:
+  instance:
+    hostname: localhost
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka
+    healthcheck:
+      enabled: true

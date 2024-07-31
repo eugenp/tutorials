@@ -1,0 +1,8 @@
+version: '3.8'
+services:
+  redis:
+    image: 'redis:latest'
+    ports:
+      - '6379:6379'
+    environment:
+      - 'REDIS_REQUIREPASS=redis'

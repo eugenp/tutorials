@@ -1,0 +1,4 @@
+
+logging.level.org.hibernate:
+  SQL: ERROR
+  type.descriptor.sql.BasicBinder: ERROR

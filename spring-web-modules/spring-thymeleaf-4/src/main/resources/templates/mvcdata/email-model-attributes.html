@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org">
+    <body>
+        <h1>Subject</h1>
+        <p th:text="${emaildata.emailSubject}">Subject</p>
+        <h1>Content</h1>
+        <p th:text="${emaildata.emailBody}"></p>
+        <h1>Email addresses</h1>
+        <p th:each="emailAddress : ${emailModelAttribute.getEmailAddresses()}">
+          <span th:text="${emailAddress}"></span>
+        </p>
+        <h1>Language</h1>
+        <p th:text="${emaildata.emailLocale}"></p>
+    </body>
+</html>

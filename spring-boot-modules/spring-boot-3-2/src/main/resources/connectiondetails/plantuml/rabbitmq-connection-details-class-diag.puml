@@ -1,0 +1,27 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface RabbitConnectionDetails {
+   +getUsername():String
+   +getPassword():String
+   +getFirstAddress():Address
+   +getAddresses():List<Address>
+}
+class RabbitMQConnectionDetails {
+   +getUsername():String
+   +getPassword():String
+   +getFirstAddress():Address
+   +getAddresses():List<Address>
+}
+class VaultAdapter {
+   +getSecret(String secretKey):String
+}
+class RabbitMQConnectionDetailsConfiguration {
+    +getRabbitmqConnection() : RabbitConnectionDetails
+}
+RabbitMQConnectionDetails -left-> VaultAdapter:uses
+RabbitMQConnectionDetails -right-|> RabbitConnectionDetails : implements
+RabbitMQConnectionDetailsConfiguration -up-> RabbitMQConnectionDetails:uses
+
+
+@enduml

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>Pong</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+
+
+    <security-constraint>
+        <display-name>Pong Login Auth</display-name>
+        <web-resource-collection>
+            <web-resource-name>PongRestrictedAccess</web-resource-name>
+            <url-pattern>/private/*</url-pattern>     
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>admin</role-name>        
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>NONE</transport-guarantee>     
+        </user-data-constraint>
+    </security-constraint>
+
+    <security-role>
+        <role-name>admin</role-name>
+    </security-role>
+
+
+    <login-config>
+        <auth-method>DIGEST</auth-method>
+    </login-config>
+
+    <filter>
+        <filter-name>PongExpiresFilter</filter-name>
+        <filter-class>org.apache.catalina.filters.ExpiresFilter</filter-class>
+        <init-param>
+            <param-name>ExpiresByType text/html</param-name>
+            <param-value>access plus 0 seconds</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>PongExpiresFilter</filter-name>
+        <url-pattern>/private/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
+</web-app>

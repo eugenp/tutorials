@@ -1,0 +1,3 @@
+{"title":"Movie A", "genre": "Comedy"}
+{"title":"Movie B", "genre": "Thriller"}
+{"_id": "mongo-id", "title":"Movie C", "genre": "Drama"}

@@ -1,0 +1,28 @@
+<server description="Baeldung Open Liberty server">
+    <featureManager>
+        <feature>mpHealth-2.0</feature>
+        <feature>servlet-4.0</feature>
+        <feature>jaxrs-2.1</feature>
+        <feature>jsonp-1.1</feature>
+        <feature>jsonb-1.0</feature>
+        <feature>cdi-2.0</feature>
+        <feature>jpa-2.2</feature>
+    </featureManager>
+
+    <webApplication location="open-liberty.war" contextRoot="/" />
+
+    <logging traceSpecification="com.ibm.ws.microprofile.health.*=all" hideMessage="SRVE9967W" />
+
+    <httpEndpoint host="*" httpPort="${default.http.port}" httpsPort="${default.https.port}" id="defaultHttpEndpoint" />
+
+    <library id="derbyJDBCLib">
+        <fileset dir="${shared.resource.dir}" includes="derby*.jar"/> 
+    </library>
+
+    <!-- Datasource Configuration -->
+    <dataSource id="jpadatasource" jndiName="jdbc/jpadatasource">
+        <jdbcDriver libraryRef="derbyJDBCLib" />
+        <properties.derby.embedded databaseName="libertyDB" createDatabase="create" />
+    </dataSource>
+
+</server>

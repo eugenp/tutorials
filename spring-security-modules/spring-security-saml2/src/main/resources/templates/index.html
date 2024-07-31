@@ -1,0 +1,51 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+    xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <title>Baeldung Example for Spring Security - SAML 2.0 Login/Logout</title>
+    <meta charset="utf-8" />
+    <style>
+        span,
+        dt {
+            font-weight: bold;
+        }
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <ul class="nav">
+            <li class="nav-item">
+                <form th:action="@{/logout}" method="post">
+                    <button class="btn btn-primary" id="rp_logout_button" type="submit">
+                        Logout
+                    </button>
+                </form>
+            </li>
+        </ul>
+    </div>
+    <main role="main" class="container">
+        <h1 class="mt-5">Baeldung Example for SAML 2.0 Login/Logout with Spring Security</h1>
+        <p class="lead">You are successfully logged in as <span sec:authentication="name"></span></p>
+        <h2 class="mt-2">User Identity Attributes</h2>
+        <table class='table table-striped'>
+            <thead>
+                <tr>
+                    <th>Attribute</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="userAttribute : ${userAttributes}">
+                    <th th:text="${userAttribute.key}"></th>
+                    <td th:text="${userAttribute.value}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+</body>
+
+</html>

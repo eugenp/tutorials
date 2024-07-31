@@ -1,0 +1,13 @@
+[ {
+    "bookId" : 1,
+    "title" : "A Song of Ice and Fire",
+    "author" : "George R. R. Martin"
+}, {
+    "bookId" : 2,
+    "title" : "The Hitchhiker's Guide to the Galaxy",
+    "author" : "Douglas Adams"
+}, {
+    "bookId" : 3,
+    "title" : "Hackers And Painters",
+    "author" : "Paul Graham"
+} ]

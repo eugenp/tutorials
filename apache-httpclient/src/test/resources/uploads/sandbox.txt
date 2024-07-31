@@ -1,0 +1,49 @@
+web - 2014-01-30 20:48:07,171 [main] DEBUG o.a.h.c.protocol.RequestAuthCache - Auth cache not set in the context
+web - 2014-01-30 20:48:07,172 [main] DEBUG o.a.h.i.c.PoolingHttpClientConnectionManager - Connection request: [route: {}->http://localhost:8080][total kept alive: 0; route allocated: 0 of 2; total allocated: 0 of 20]
+web - 2014-01-30 20:48:07,185 [main] DEBUG o.a.h.i.c.PoolingHttpClientConnectionManager - Connection leased: [id: 0][route: {}->http://localhost:8080][total kept alive: 0; route allocated: 1 of 2; total allocated: 1 of 20]
+web - 2014-01-30 20:48:07,190 [main] DEBUG o.a.h.impl.execchain.MainClientExec - Opening connection {}->http://localhost:8080
+web - 2014-01-30 20:48:07,192 [main] DEBUG o.a.h.c.HttpClientConnectionManager - Connecting to localhost/127.0.0.1:8080
+web - 2014-01-30 20:48:07,193 [main] DEBUG o.a.h.impl.execchain.MainClientExec - Executing request GET /spring-security-rest-basic-auth/api/foos/1 HTTP/1.1
+web - 2014-01-30 20:48:07,193 [main] DEBUG o.a.h.impl.execchain.MainClientExec - Target auth state: UNCHALLENGED
+web - 2014-01-30 20:48:07,193 [main] DEBUG o.a.h.impl.execchain.MainClientExec - Proxy auth state: UNCHALLENGED
+web - 2014-01-30 20:48:07,194 [main] DEBUG org.apache.http.headers - http-outgoing-0 >> GET /spring-security-rest-basic-auth/api/foos/1 HTTP/1.1
+web - 2014-01-30 20:48:07,194 [main] DEBUG org.apache.http.headers - http-outgoing-0 >> Host: localhost:8080
+web - 2014-01-30 20:48:07,194 [main] DEBUG org.apache.http.headers - http-outgoing-0 >> Connection: Keep-Alive
+web - 2014-01-30 20:48:07,194 [main] DEBUG org.apache.http.headers - http-outgoing-0 >> User-Agent: Apache-HttpClient/4.3.1 (java 1.5)
+web - 2014-01-30 20:48:07,194 [main] DEBUG org.apache.http.headers - http-outgoing-0 >> Accept-Encoding: gzip,deflate
+web - 2014-01-30 20:48:07,203 [main] DEBUG org.apache.http.headers - http-outgoing-0 << HTTP/1.1 401 Unauthorized
+web - 2014-01-30 20:48:07,203 [main] DEBUG org.apache.http.headers - http-outgoing-0 << Server: Apache-Coyote/1.1
+web - 2014-01-30 20:48:07,203 [main] DEBUG org.apache.http.headers - http-outgoing-0 << WWW-Authenticate: Basic realm="Spring Security Application"
+web - 2014-01-30 20:48:07,203 [main] DEBUG org.apache.http.headers - http-outgoing-0 << Content-Type: text/html;charset=utf-8
+web - 2014-01-30 20:48:07,203 [main] DEBUG org.apache.http.headers - http-outgoing-0 << Content-Language: en
+web - 2014-01-30 20:48:07,203 [main] DEBUG org.apache.http.headers - http-outgoing-0 << Content-Length: 1061
+web - 2014-01-30 20:48:07,203 [main] DEBUG org.apache.http.headers - http-outgoing-0 << Date: Thu, 30 Jan 2014 18:48:07 GMT
+web - 2014-01-30 20:48:07,206 [main] DEBUG o.a.h.impl.execchain.MainClientExec - Connection can be kept alive indefinitely
+web - 2014-01-30 20:48:07,206 [main] DEBUG o.a.http.impl.auth.HttpAuthenticator - Authentication required
+web - 2014-01-30 20:48:07,206 [main] DEBUG o.a.http.impl.auth.HttpAuthenticator - localhost:8080 requested authentication
+web - 2014-01-30 20:48:07,206 [main] DEBUG o.a.h.i.c.TargetAuthenticationStrategy - Authentication schemes in the order of preference: [negotiate, Kerberos, NTLM, Digest, Basic]
+web - 2014-01-30 20:48:07,206 [main] DEBUG o.a.h.i.c.TargetAuthenticationStrategy - Challenge for negotiate authentication scheme not available
+web - 2014-01-30 20:48:07,206 [main] DEBUG o.a.h.i.c.TargetAuthenticationStrategy - Challenge for Kerberos authentication scheme not available
+web - 2014-01-30 20:48:07,206 [main] DEBUG o.a.h.i.c.TargetAuthenticationStrategy - Challenge for NTLM authentication scheme not available
+web - 2014-01-30 20:48:07,206 [main] DEBUG o.a.h.i.c.TargetAuthenticationStrategy - Challenge for Digest authentication scheme not available
+web - 2014-01-30 20:48:07,213 [main] DEBUG o.a.http.impl.auth.HttpAuthenticator - Selected authentication options: [BASIC]
+web - 2014-01-30 20:48:07,214 [main] DEBUG o.a.h.impl.execchain.MainClientExec - Executing request GET /spring-security-rest-basic-auth/api/foos/1 HTTP/1.1
+web - 2014-01-30 20:48:07,214 [main] DEBUG o.a.h.impl.execchain.MainClientExec - Target auth state: CHALLENGED
+web - 2014-01-30 20:48:07,214 [main] DEBUG o.a.http.impl.auth.HttpAuthenticator - Generating response to an authentication challenge using basic scheme
+web - 2014-01-30 20:48:07,215 [main] DEBUG o.a.h.impl.execchain.MainClientExec - Proxy auth state: UNCHALLENGED
+web - 2014-01-30 20:48:07,215 [main] DEBUG org.apache.http.headers - http-outgoing-0 >> GET /spring-security-rest-basic-auth/api/foos/1 HTTP/1.1
+web - 2014-01-30 20:48:07,215 [main] DEBUG org.apache.http.headers - http-outgoing-0 >> Host: localhost:8080
+web - 2014-01-30 20:48:07,215 [main] DEBUG org.apache.http.headers - http-outgoing-0 >> Connection: Keep-Alive
+web - 2014-01-30 20:48:07,215 [main] DEBUG org.apache.http.headers - http-outgoing-0 >> User-Agent: Apache-HttpClient/4.3.1 (java 1.5)
+web - 2014-01-30 20:48:07,215 [main] DEBUG org.apache.http.headers - http-outgoing-0 >> Accept-Encoding: gzip,deflate
+web - 2014-01-30 20:48:07,215 [main] DEBUG org.apache.http.headers - http-outgoing-0 >> Authorization: Basic dXNlcjE6dXNlcjFQYXNz
+web - 2014-01-30 20:48:07,217 [main] DEBUG org.apache.http.headers - http-outgoing-0 << HTTP/1.1 200 OK
+web - 2014-01-30 20:48:07,217 [main] DEBUG org.apache.http.headers - http-outgoing-0 << Server: Apache-Coyote/1.1
+web - 2014-01-30 20:48:07,217 [main] DEBUG org.apache.http.headers - http-outgoing-0 << Content-Type: application/json;charset=UTF-8
+web - 2014-01-30 20:48:07,217 [main] DEBUG org.apache.http.headers - http-outgoing-0 << Transfer-Encoding: chunked
+web - 2014-01-30 20:48:07,217 [main] DEBUG org.apache.http.headers - http-outgoing-0 << Date: Thu, 30 Jan 2014 18:48:07 GMT
+web - 2014-01-30 20:48:07,218 [main] DEBUG o.a.h.impl.execchain.MainClientExec - Connection can be kept alive indefinitely
+web - 2014-01-30 20:48:07,218 [main] DEBUG o.a.http.impl.auth.HttpAuthenticator - Authentication succeeded
+web - 2014-01-30 20:48:07,219 [main] DEBUG o.a.h.i.c.TargetAuthenticationStrategy - Caching 'basic' auth scheme for http://localhost:8080
+web - 2014-01-30 20:48:07,227 [main] DEBUG o.a.h.i.c.PoolingHttpClientConnectionManager - Connection [id: 0][route: {}->http://localhost:8080] can be kept alive indefinitely
+web - 2014-01-30 20:48:07,227 [main] DEBUG o.a.h.i.c.PoolingHttpClientConnectionManager - Connection released: [id: 0][route: {}->http://localhost:8080][total kept alive: 1; route allocated: 1 of 2; total allocated: 1 of 20]

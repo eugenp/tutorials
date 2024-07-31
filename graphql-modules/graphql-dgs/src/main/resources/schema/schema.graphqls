@@ -1,0 +1,9 @@
+type Query {
+    albums(titleFilter: String): [Album]
+}
+
+type Album {
+    title: String
+    artist: String
+    recordNo: Int
+}

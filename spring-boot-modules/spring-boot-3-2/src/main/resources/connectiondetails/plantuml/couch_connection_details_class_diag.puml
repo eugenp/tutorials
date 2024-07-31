@@ -1,0 +1,25 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface CouchbaseConnectionDetails {
+   +getUsername():String
+   +getPassword():String
+   +getConnectionString():String
+}
+class CustomCouchBaseConnectionDetails {
+   +getUsername():String
+   +getPassword():String
+   +getConnectionString():String
+}
+class VaultAdapter {
+   +getSecret(String secretKey):String
+}
+class CustomCouchBaseConnectionDetailsConfiguration {
+    +getCouchBaseConnectionDetails():CouchbaseConnectionDetails
+}
+CustomCouchBaseConnectionDetails -left-> VaultAdapter:uses
+CustomCouchBaseConnectionDetails -right-|> CouchbaseConnectionDetails : implements
+CustomCouchBaseConnectionDetailsConfiguration -up-> CustomCouchBaseConnectionDetails:uses
+
+
+@enduml

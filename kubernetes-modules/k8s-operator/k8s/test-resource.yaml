@@ -1,0 +1,12 @@
+apiVersion: com.baeldung/v1
+kind: DeptrackResource
+metadata:
+  namespace: test
+  name: deptrack1
+  labels:
+    project: tutorials
+  annotations:
+    author: Philippe Sevestre
+
+spec:
+  ingressHostname: deptrack.172.31.42.16.nip.io

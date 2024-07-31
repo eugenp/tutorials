@@ -1,0 +1,6 @@
+version: "3.5"
+services:
+  docker-with-spring-profile:
+    image: docker-with-spring-profile:latest
+    environment:
+      - "SPRING_PROFILES_ACTIVE=test"

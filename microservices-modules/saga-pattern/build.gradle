@@ -1,0 +1,34 @@
+buildscript {
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:3.2.3"
+    }
+}
+
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.2.3'
+    id 'io.freefair.lombok' version '8.6'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'io.orkes.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'io.orkes.conductor:orkes-conductor-client:2.1.0'
+
+    implementation 'org.xerial:sqlite-jdbc:3.32.3.3'
+}
+
+test {
+    useJUnitPlatform()
+}

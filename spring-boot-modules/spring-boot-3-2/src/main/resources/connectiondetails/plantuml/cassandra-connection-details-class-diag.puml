@@ -1,0 +1,27 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface CassandraConnectionDetails {
+   +getUsername():String
+   +getPassword():String
+   +getContactPoints():List<Node>
+   +getLocalDatacenter():String
+}
+class CustomCouchBaseConnectionDetails {
+   +getUsername():String
+   +getPassword():String
+   +getContactPoints():List<Node>
+   +getLocalDatacenter():String
+}
+class VaultAdapter {
+   +getSecret(String secretKey):String
+}
+class CustomCassandraConnectionDetailsConfiguration {
+    +getCustomCassandraConnectionDetails():CassandraConnectionDetails
+}
+CustomCouchBaseConnectionDetails -left-> VaultAdapter:uses
+CustomCouchBaseConnectionDetails -right-|> CassandraConnectionDetails : implements
+CustomCassandraConnectionDetailsConfiguration -up-> CustomCassandraConnectionDetails:uses
+
+
+@enduml

@@ -1,0 +1,14 @@
+{
+  "version": "1.0",
+  "defaultSchema": "TRADES",
+  "schemas": [
+    {
+      "name": "TRADES",
+      "type": "custom",
+      "factory": "org.apache.calcite.adapter.file.FileSchemaFactory",
+      "operand": {
+        "directory": "trades"
+      }
+    }
+  ]
+}

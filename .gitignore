@@ -1,0 +1,46 @@
+# Ignore all files
+*
+
+# But not these directories and their contents
+!src/
+!src/main/
+!src/main/java/
+!src/test/
+!src/test/java/
+
+# Do not ignore specific file types in the included directories
+!*.java
+!*.xml
+
+# Do not ignore specific configuration files
+!.gitignore
+!pom.xml
+
+# Ignore IDE-specific files
+# IntelliJ
+.idea/
+*.iml
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# NetBeans
+nbproject/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# Ignore build output directories
+target/
+build/
+
+# Ignore temporary files and directories
+*.log
+*.tmp
+*.bak
+*.swp
+.DS_Store
+Thumbs.db

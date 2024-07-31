@@ -1,0 +1,19 @@
+#
+# Test profile configuration
+#
+spring:
+  liquibase:
+    change-log: db/changelog/db.changelog-master.xml
+    
+  jpa:
+    hibernate:
+      ddl-auto: none
+      
+  datasource:
+    initialization-mode: embedded
+    driver-class-name: org.apache.derby.jdbc.EmbeddedDriver
+
+logging:
+  level:
+    sql: DEBUG    
+    

@@ -1,0 +1,19 @@
+server:
+  port: 8086
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        opaquetoken:
+          introspection-uri: http://localhost:8083/auth/realms/baeldung/protocol/openid-connect/token/introspect
+          client-id: quotes-client
+          client-secret: 0e082231-a70d-48e8-b8a5-fbfb743041b6
+  cloud:
+    gateway:
+      redis:
+        enabled: false
+      routes:
+      - id: quotes
+        uri: http://localhost:8085
+        predicates:
+        - Path=/quotes/**

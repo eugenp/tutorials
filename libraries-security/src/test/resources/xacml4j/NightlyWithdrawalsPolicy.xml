@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Policy xmlns="urn:oasis:names:tc:xacml:3.0:core:schema:wd-17" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="urn:oasis:names:tc:xacml:3.0:core:schema:wd-17 http://docs.oasis-open.org/xacml/3.0/xacml-core-v3-schema-wd-17.xsd" 
+  PolicyId="urn:baeldung:atm:WithdrawalPolicy"
+  Version="1.0" 
+  RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:deny-overrides">
+    <Description>
+       Withdrawal policy example
+    </Description>
+    <Target/>
+    <Rule RuleId="urn:oasis:names:tc:baeldung:WithDrawalPolicy:Rule1" Effect="Deny">
+        <Description>
+Deny withdrawals over $500 between 20:00 and 08:00
+        </Description>
+        <Target>
+            <AnyOf>
+                <AllOf>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">withdrawal</AttributeValue>
+                        <AttributeDesignator 
+                            DataType="http://www.w3.org/2001/XMLSchema#string" 
+                            MustBePresent="true" 
+                            Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action" 
+                            AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id"/>
+                    </Match>
+                </AllOf>
+            </AnyOf>
+        </Target>
+        <Condition>
+            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:and">
+                <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-in-range">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-one-and-only">
+                            <AttributeDesignator
+                                DataType="http://www.w3.org/2001/XMLSchema#time"
+                                MustBePresent="true"
+                                Category="urn:oasis:names:tc:xacml:3.0:attribute-category:environment"
+                                AttributeId="urn:oasis:names:tc:xacml:1.0:environment:current-time"/>
+                        </Apply>
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#time">08:00:00</AttributeValue>
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#time">20:00:00</AttributeValue>
+                    </Apply>
+                </Apply>
+                <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:double-greater-than">
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:double-one-and-only">
+                        <AttributeDesignator
+                            DataType="http://www.w3.org/2001/XMLSchema#double"
+                            MustBePresent="true"
+                            Category="urn:baeldung:atm:withdrawal"
+                            AttributeId="urn:baeldung:atm:withdrawal:amount"/>
+                    </Apply>
+                    <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#double">500.00</AttributeValue>
+                </Apply>
+            </Apply>
+        </Condition>
+    </Rule>
+    <Rule RuleId="urn:oasis:names:tc:baeldung:WithDrawalPolicy:Rule2" Effect="Permit">
+        <Description>
+Permit withdrawals under $500 between 20:00 and 08:00
+        </Description>
+        <Target>
+            <AnyOf>
+                <AllOf>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">withdrawal</AttributeValue>
+                        <AttributeDesignator 
+                            DataType="http://www.w3.org/2001/XMLSchema#string" 
+                            MustBePresent="true" 
+                            Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action" 
+                            AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id"/>
+                    </Match>
+                </AllOf>
+            </AnyOf>
+        </Target>
+        <Condition>
+            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:and">
+                <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:not">
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-in-range">
+                        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-one-and-only">
+                            <AttributeDesignator
+                                DataType="http://www.w3.org/2001/XMLSchema#time"
+                                MustBePresent="true"
+                                Category="urn:oasis:names:tc:xacml:3.0:attribute-category:environment"
+                                AttributeId="urn:oasis:names:tc:xacml:1.0:environment:current-time"/>
+                        </Apply>
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#time">08:00:00</AttributeValue>
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#time">20:00:00</AttributeValue>
+                    </Apply>
+                </Apply>
+                <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:double-less-than-or-equal">
+                    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:double-one-and-only">
+                        <AttributeDesignator
+                            DataType="http://www.w3.org/2001/XMLSchema#double"
+                            MustBePresent="true"
+                            Category="urn:baeldung:atm:withdrawal"
+                            AttributeId="urn:baeldung:atm:withdrawal:amount"/>
+                    </Apply>
+                    <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#double">500.00</AttributeValue>
+                </Apply>
+            </Apply>
+        </Condition>
+    </Rule>
+    <Rule RuleId="urn:oasis:names:tc:baeldung:WithDrawalPolicy:Rule3" Effect="Permit">
+        <Description>
+Permit withdrawals of any value between 08:00 and 20:00
+        </Description>
+        <Target>
+            <AnyOf>
+                <AllOf>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">withdrawal</AttributeValue>
+                        <AttributeDesignator 
+                            DataType="http://www.w3.org/2001/XMLSchema#string" 
+                            MustBePresent="true" 
+                            Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action" 
+                            AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id"/>
+                    </Match>
+                </AllOf>
+            </AnyOf>
+        </Target>
+        <Condition>
+            <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-in-range">
+                <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:time-one-and-only">
+                    <AttributeDesignator
+                        DataType="http://www.w3.org/2001/XMLSchema#time"
+                        MustBePresent="true"
+                        Category="urn:oasis:names:tc:xacml:3.0:attribute-category:environment"
+                        AttributeId="urn:oasis:names:tc:xacml:1.0:environment:current-time"/>
+                </Apply>
+                <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#time">08:00:00</AttributeValue>
+                <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#time">20:00:00</AttributeValue>
+            </Apply>
+        </Condition>
+    </Rule>
+    
+</Policy>

@@ -1,0 +1,9 @@
+ambiguous-bean: 'A'
+api:
+  clients:
+    - name: example
+      url: https://api.example.com
+      key: 12345
+    - name: anotherexample
+      url: https://api.anotherexample.com
+      key: 67890

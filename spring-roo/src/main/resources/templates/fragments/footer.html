@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Footer</title>
+  </head>
+  <body id="body">
+    <!--
+    Only the internal content of the following div is included within
+    the template, in footer fragment
+    -->
+    <footer class="container" data-th-fragment="footer">
+
+       <div class="row">
+      	 <div class="col-sm-6 col-sm-offset-3">
+           <small class="clearfix">
+             Made with
+             <a href="http://projects.spring.io/spring-roo/" data-th-title="#{label_gotowebsite}" target="_blank">
+                Spring Roo</a>
+             <span data-th-text="|© ${#calendars.format(#dates.createNow(),'yyyy')}|">
+                � 2016</span> • We <span class="glyphicon glyphicon-heart"></span>
+             <a href="https://github.com/spring-projects/spring-roo/" data-th-title="#{label_gotoGithub}" target="_blank">
+                Open source</a>
+             <span sec:authorize="isAuthenticated()"> • </span>
+             <a sec:authorize="isAuthenticated()" data-th-href="@{/accessibility}" href="/accessibility" data-th-title="#{label_accessibility_lead}">
+                <!-- This content is only shown to authenticated users. -->
+                <span data-th-text="#{label_accessibility}">Accessibility</span>
+            </a>
+            </small>
+         </div>
+       </div>
+       <!-- certified logos -->
+       <div class="row">
+        <div class="col-sm-6 col-sm-offset-6 text-right">
+
+         <a title="Explanation of WCAG 2.0 Level Double-A Conformance" data-th-title="#{label_accessibility_title}" target="_blank" href="http://www.w3.org/WAI/WCAG2AA-Conformance">
+            <img height="32" width="88" src="http://www.w3.org/WAI/wcag2AA" data-th-alt="#{label_accessibility_alt}" alt="Level Double-A conformance, W3C WAI Web Content
+                 Accessibility Guidelines 2.0" />
+         </a>
+         &nbsp;
+         <a title="Application developed and tested with OWASP -
+             Open Web Application Security Project" data-th-title="#{label_owasp_title}" target="_blank" href="https://www.owasp.org">
+          <img height="32" width="90" data-th-src="@{/public/img/owasp_logo.png}" src="../static/public/img/owasp_logo.png" data-th-alt="#{label_owasp_alt}" alt="Application developed and tested with OWASP" />
+         </a>
+        </div>
+       </div>
+
+    </footer>
+
+  </body>
+</html>

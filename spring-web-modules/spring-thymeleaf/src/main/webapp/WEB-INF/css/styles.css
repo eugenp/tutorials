@@ -1,0 +1,13 @@
+body {
+	background-color: lightGray
+}
+
+.dark {
+	background-color: black;
+	color: white;
+}
+
+.light {
+	background-color: #f1f1f1;
+	color: #ccc;
+}

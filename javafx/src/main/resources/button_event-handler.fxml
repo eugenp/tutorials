@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+    xmlns="http://javafx.com/javafx"
+    fx:controller="com.baeldung.button.eventhandler.ButtonEventHandlerController"
+    prefHeight="200.0" prefWidth="300.0">
+    <center>
+        <Button fx:id="button" HBox.hgrow="ALWAYS"/>
+    </center>
+    
+    <bottom>
+        <Label fx:id="label" text="Test label"/>
+    </bottom>
+</BorderPane>

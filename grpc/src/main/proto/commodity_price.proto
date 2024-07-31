@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+import "google/rpc/status.proto";
+
+package commodityprice;
+
+option java_multiple_files = true;
+option java_package = "com.baeldung.grpc.errorhandling";
+option java_outer_classname = "CommodityPriceProto";
+option objc_class_prefix = "RTG";
+
+service CommodityPriceProvider {
+  
+  rpc getBestCommodityPrice(Commodity) returns (CommodityQuote) {}
+  
+  rpc bidirectionalListOfPrices(stream Commodity) returns (stream StreamingCommodityQuote) {}
+}
+
+message Commodity {
+   string access_token = 1;
+   string commodity_name = 2;
+}
+
+message CommodityQuote {
+   string commodity_name = 1;
+   string producer_name = 2;
+   double price = 3;
+}
+
+message ErrorResponse {
+   string commodity_name = 1;
+   string access_token = 2;
+   string expected_token = 3;
+   string expected_value = 4;
+}
+
+message StreamingCommodityQuote{
+   oneof message{
+      CommodityQuote comodity_quote = 1;
+      google.rpc.Status status = 2;
+   }   
+}

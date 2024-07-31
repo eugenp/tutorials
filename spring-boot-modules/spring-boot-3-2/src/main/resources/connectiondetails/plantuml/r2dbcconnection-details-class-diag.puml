@@ -1,0 +1,21 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface R2dbcConnectionDetails {
+   +getConnectionFactoryOptions():ConnectionFactoryOptions
+}
+class R2dbcPostgresConnectionDetails {
+   +getConnectionFactoryOptions():ConnectionFactoryOptions
+}
+class VaultAdapter {
+   +getSecret(String secretKey):String
+}
+class R2dbcPostgresConnectionDetailsConfiguration {
+    +getR2dbcPostgresConnectionDetails():R2dbcConnectionDetails
+}
+R2dbcPostgresConnectionDetails -right-> VaultAdapter:uses
+R2dbcPostgresConnectionDetails -up-|> R2dbcConnectionDetails:implements
+R2dbcPostgresConnectionDetailsConfiguration -up-> R2dbcPostgresConnectionDetails:uses
+
+
+@enduml

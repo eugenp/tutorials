@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:sec="https://www.thymeleaf.org">
+<body>
+	Current user authorities:
+	<span sec:authentication="principal.authorities">user</span>
+	<br />
+	<span id="temp"></span>
+	<a href="#" onclick="tryRunAs()">Generate Report As Super User</a>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script type="text/javascript">
+	
+		function tryRunAs(){
+			var context = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 2));
+		    $.get( context + "/runas" , function( data ) {
+		         $("#temp").html(data);
+		    });
+		}
+	</script>
+</body>
+</html>

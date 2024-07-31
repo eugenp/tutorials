@@ -1,0 +1,86 @@
+scheme: http
+hostname: localhost
+reverse-proxy-port: 7080
+reverse-proxy-uri: ${scheme}://${hostname}:${reverse-proxy-port}
+authorization-server-prefix: /auth
+issuer: ${reverse-proxy-uri}${authorization-server-prefix}/realms/baeldung
+username-claim-json-path: $.preferred_username
+authorities-json-path: $.realm_access.roles
+resource-server-port: 7084
+audience: 
+
+server:
+  port: ${resource-server-port}
+  ssl:
+    enabled: false
+
+com:
+  c4-soft:
+    springaddons:
+      oidc:
+        ops:
+        - iss: ${issuer}
+          username-claim: ${username-claim-json-path}
+          authorities:
+          - path: ${authorities-json-path}
+          aud: ${audience}
+        resourceserver:
+          permit-all:
+          - /me
+          - /v3/api-docs/**
+          - /swagger-ui/**
+          - /actuator/health/readiness
+          - /actuator/health/liveness
+          
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
+
+logging:
+  level:
+    root: INFO
+    org:
+      springframework:
+        boot: INFO
+        security: INFO
+        web: INFO
+        
+---
+spring:
+  config:
+    activate:
+      on-profile: ssl
+server:
+  ssl:
+    enabled: true
+scheme: https
+
+---
+spring:
+  config:
+    activate:
+      on-profile: cognito
+issuer: https://cognito-idp.us-west-2.amazonaws.com/us-west-2_RzhmgLwjl
+username-claim-json-path: username
+authorities-json-path: $.cognito:groups
+
+---
+spring:
+  config:
+    activate:
+      on-profile: auth0
+issuer: https://dev-ch4mpy.eu.auth0.com/
+username-claim-json-path: $['https://c4-soft.com/user']['name']
+authorities-json-path: $['https://c4-soft.com/user']['roles']
+audience: bff.baeldung.com

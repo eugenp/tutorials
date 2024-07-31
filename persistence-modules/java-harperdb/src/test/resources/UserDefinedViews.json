@@ -1,0 +1,5 @@
+{
+  "View_Teacher_Details": {
+    "query": "SELECT t.name as teacher_name, t.joining_date as joining_date, s.name as subject_name from Demo.Teacher_Details AS td INNER JOIN Demo.Teacher AS t ON t.id = td.teacher_id INNER JOIN Demo.Subject AS s on s.id = td.subject_id"
+  }
+}

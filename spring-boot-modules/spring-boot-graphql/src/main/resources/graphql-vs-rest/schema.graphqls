@@ -1,0 +1,56 @@
+type Product {
+    id: ID
+    name: String!
+    description: String
+    status: String
+    currency: String!
+    price: Float
+    imageUrls: [String]
+    videoUrls: [String]
+    stock: Int
+    averageRating: Float
+    orders:[Order]
+}
+
+type Order{
+    id:ID
+    productId:Int
+    customerId:String
+    address:String
+    status:String
+    creationDate:String
+}
+
+input ProductModel {
+    name: String!
+    description: String
+    status: String
+    currency: String!
+    price: Float
+    imageUrls: [String]
+    videoUrls: [String]
+    stock: Int
+}
+
+input ProductUpdateModel {
+    name: String
+    description: String
+    status: String
+    currency: String
+    price: Float
+    imageUrls: [String]
+    videoUrls: [String]
+    stock: Int
+}
+
+# The Root Query for the application
+type Query {
+    products(size: Int, page: Int): [Product]!
+    product(id: Int): Product!
+}
+
+# The Root Mutation for the application
+type Mutation {
+    saveProduct(product: ProductModel) : Product!
+    updateProduct(id: Int, product: ProductUpdateModel) : Product!
+}

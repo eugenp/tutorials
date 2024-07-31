@@ -1,0 +1,6 @@
+<!-- 
+     Redirect maven to settings-security.xml stored elsewhere: 
+-->
+<settingsSecurity>
+   <relocation>R:\config\settings-security.xml</relocation> 
+</settingsSecurity>

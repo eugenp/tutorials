@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job id="splitJobSequence"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/jobXML_1_0.xsd"
+	version="1.0">
+	<split id="split1" next="splitJobSequenceStep3">
+		<flow id="flow1">
+			<step id="splitJobSequenceStep1">
+				<batchlet ref="simpleBatchLet" />
+			</step>
+		</flow>
+		<flow id="flow2">
+			<step id="splitJobSequenceStep2">
+				<batchlet ref="simpleBatchLet" />
+			</step>
+		</flow>
+	</split>
+	<step id="splitJobSequenceStep3">
+		<batchlet ref="simpleBatchLet" />
+	</step>
+</job>	

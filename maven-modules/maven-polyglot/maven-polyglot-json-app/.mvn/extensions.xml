@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extensions>
+    <extension>
+        <groupId>com.baeldung.maven.polyglot</groupId>
+        <artifactId>maven-polyglot-json-extension</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </extension>
+</extensions>
