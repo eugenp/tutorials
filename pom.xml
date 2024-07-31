@@ -623,6 +623,7 @@
                 <module>javax-sound</module>
                 <module>javaxval-2</module>
                 <module>javaxval</module>
+                <module>jdbc-cp</module>
                 <module>jaxb</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
