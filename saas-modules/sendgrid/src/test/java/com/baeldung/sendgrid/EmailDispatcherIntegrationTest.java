@@ -147,6 +147,57 @@ class EmailDispatcherIntegrationTest {
         ), VerificationTimes.once());
     }
     
+    @Test
+    void whenDispatchHydrationAlertCalled_thenSendGridApiCalledWithCorrectJsonBody() throws IOException {
+        // Set up test data
+        String username = RandomString.make();
+        String toEmail = username + "@baeldung.it";
+        String templateId = sendGridConfigurationProperties.getHydrationAlertNotification().getTemplateId();
+        String fromName = sendGridConfigurationProperties.getFromName();
+        String fromEmail = sendGridConfigurationProperties.getFromEmail();
+        String apiKey = sendGridConfigurationProperties.getApiKey();
+        
+        // Create JSON body
+        String jsonBody = String.format("""
+            {
+                "from": {
+                    "name": "%s",
+                    "email": "%s"
+                },
+                "personalizations": [{
+                    "to": [{
+                        "email": "%s"
+                    }],
+                    "dynamic_template_data": {
+                        "name": "%s"
+                    }
+                }],
+                "template_id": "%s"
+            }
+            """, fromName, fromEmail, toEmail, username, templateId);
+        
+        // Configure mock server expectations
+        mockServerClient
+            .when(request()
+                .withMethod("POST")
+                .withPath(SENDGRID_EMAIL_API_PATH)
+                .withHeader("Authorization", "Bearer " + apiKey)
+                .withBody(new JsonBody(jsonBody, MatchType.ONLY_MATCHING_FIELDS)
+            ))
+            .respond(response().withStatusCode(202));
+        
+        // Invoke method under test
+        emailDispatcher.dispatchHydrationAlert(toEmail, username);
+    
+        // Verify the expected request was made
+        mockServerClient.verify(request()
+            .withMethod("POST")
+            .withPath(SENDGRID_EMAIL_API_PATH)
+            .withHeader("Authorization", "Bearer " + apiKey)
+            .withBody(new JsonBody(jsonBody, MatchType.ONLY_MATCHING_FIELDS)
+        ), VerificationTimes.once());
+    }
+    
     private MultipartFile createTextFile(String fileName) throws IOException {
         final var fileContentBytes = RandomString.make().getBytes();
         final var inputStream = new ByteArrayInputStream(fileContentBytes);
