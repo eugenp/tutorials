@@ -38,12 +38,7 @@ public class EmailDispatcher {
         Content content = new Content("text/plain", body);
         Mail mail = new Mail(fromEmail, subject, toEmail, content);
 
-        Request request = new Request();
-        request.setMethod(Method.POST);
-        request.setEndpoint(EMAIL_ENDPOINT);
-        request.setBody(mail.build());
-
-        sendGrid.api(request);
+        sendRequest(mail);
     }
 
     public void dispatchEmail(String emailId, String subject, String body, List<MultipartFile> files)
@@ -59,12 +54,7 @@ public class EmailDispatcher {
             }
         }
 
-        Request request = new Request();
-        request.setMethod(Method.POST);
-        request.setEndpoint(EMAIL_ENDPOINT);
-        request.setBody(mail.build());
-
-        sendGrid.api(request);
+        sendRequest(mail);
     }
 
     public void dispatchHydrationAlert(String emailId, String username) throws IOException {
@@ -82,10 +72,15 @@ public class EmailDispatcher {
         mail.setTemplateId(templateId);
         mail.addPersonalization(personalization);
 
+        sendRequest(mail);
+    }
+
+    private void sendRequest(Mail mail) throws IOException {
         Request request = new Request();
         request.setMethod(Method.POST);
         request.setEndpoint(EMAIL_ENDPOINT);
         request.setBody(mail.build());
+
         sendGrid.api(request);
     }
 
