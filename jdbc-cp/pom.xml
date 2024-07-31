@@ -33,7 +33,7 @@
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <includes>
-                        <include>**/*HikariCPConfigurationTest.java</include>
+                        <include>com.baeldung.config.HikariCPConfiguratiogit nLiveTest</include>
                     </includes>
                 </configuration>
             </plugin>
