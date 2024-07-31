@@ -3,11 +3,11 @@ package com.baeldung.array.reversearray;
 import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Deque;
 import java.util.List;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class ReverseArrayElements {
 
@@ -45,31 +45,17 @@ public class ReverseArrayElements {
         }
     }
 
-    public static void reverseRowsUsingStreamsAndExtraDeque(int[][] array) {
-        final int[] rowNumber = { 0 };
-        Arrays.stream(array)
-            .forEach(row -> {
-                Deque<Integer> reversedRow = Arrays.stream(row)
-                    .boxed()
-                    .collect(Collector.of(ArrayDeque::new, ArrayDeque::addFirst, (d1, d2) -> {
-                        d2.addAll(d1);
-                        return d2;
-                    }));
-
-                array[rowNumber[0]] = reversedRow.stream()
-                    .mapToInt(Integer::intValue)
-                    .toArray();
-                rowNumber[0]++;
-            });
+    public static void reverseRowsUsingCollectionsReverse(List<List<Integer>> array) {
+        array.forEach(Collections::reverse);
     }
 
-    public static void reverseRowsCollectionsReverses(int[][] array) {
-        IntStream.range(0, array.length)
-            .forEach(row -> {
-                array[row] = IntStream.range(row, array[row].length)
-                    .map(i -> row - i + array[row].length - 1)
-                    .toArray();
-            });
+    public static Stream<Iterable<Iterable<Integer>>> reverse(List<List<Integer>> list) {
+        return list.stream()
+            .map(row -> row.stream()
+                .collect(Collector.of(ArrayDeque::new, ArrayDeque::addFirst, (d1, d2) -> {
+                    d2.addAll(d1);
+                    return d2;
+                })));
     }
 
     public static void reverseColumns(int[][] array) {
