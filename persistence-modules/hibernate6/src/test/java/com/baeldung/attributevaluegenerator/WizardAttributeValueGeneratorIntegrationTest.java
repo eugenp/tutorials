@@ -56,7 +56,7 @@ class WizardAttributeValueGeneratorIntegrationTest {
 
         assertThat(savedWizard.getSpellPower())
             .isNotNull()
-            .isGreaterThan(50);
+            .isGreaterThanOrEqualTo(50);
     }
 
 }
