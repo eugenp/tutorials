@@ -22,6 +22,7 @@ public class StringListToIntListUnitTest {
           .map(Integer::valueOf)
           .collect(Collectors.toList());
         assertEquals(EXPECTED_LIST, result);
+        assertEquals(EXPECTED_LIST, result);
     }
 
     @Test
