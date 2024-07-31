@@ -18,5 +18,3 @@ spring:
       chat:
         options:
           model: llama3
-  application:
-    name: spring-ai-milestone
