@@ -49,7 +49,7 @@
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.16.1</version>
+            <version>${commons.io.version}</version>
         </dependency>
     </dependencies>
 
@@ -58,6 +58,7 @@
         <maven.compiler.target.version>18</maven.compiler.target.version>
         <maven.compiler.release>18</maven.compiler.release>
         <surefire.plugin.version>3.0.0-M5</surefire.plugin.version>
+        <commons.io.version>2.16.1</commons.io.version>
     </properties>
 
 </project>

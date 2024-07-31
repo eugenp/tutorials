@@ -11,7 +11,7 @@ import java.nio.file.Path;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class FileListingTest {
+public class FileListingUnitTest {
 
     @TempDir
     Path tempDir;

@@ -7,9 +7,12 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Iterator;
+import java.util.logging.Logger;
 import java.util.stream.Stream;
 
 public class FileListing {
+
+    private static final Logger LOGGER = Logger.getLogger(FileListing.class.getName());
 
     /**
      * List files in a directory using Apache Commons IO
@@ -19,10 +22,9 @@ public class FileListing {
         Iterator<File> fileIterator = FileUtils.iterateFiles(dir, null, true);
         while (fileIterator.hasNext()) {
             File file = fileIterator.next();
-            System.out.println("File: " + file.getAbsolutePath());
+            LOGGER.info("File: " + file.getAbsolutePath());
         }
     }
-
 
     /**
      * List files in a directory using Java NIO
@@ -30,15 +32,15 @@ public class FileListing {
      */
     public static void listFilesJavaNIO(Path dir) {
         try (Stream<Path> stream = Files.walk(dir)) {
-            stream.filter(Files::isRegularFile).forEach(path -> System.out.println("File: " + path.toAbsolutePath()));
+            stream.filter(Files::isRegularFile).forEach(path -> LOGGER.info("File: " + path.toAbsolutePath()));
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.severe(e.getMessage());
         }
     }
 
     /**
      * List files in a directory using Java IO
-     * @param dir
+     * @param dir directory to list files
      */
     public static void listFilesJavaIO(File dir) {
         File[] files = dir.listFiles();
@@ -46,7 +48,7 @@ public class FileListing {
             if (file.isDirectory()) {
                 listFilesJavaIO(file);
             } else {
-                System.out.println("File: " + file.getAbsolutePath());
+                LOGGER.info("File: " + file.getAbsolutePath());
             }
         }
     }
