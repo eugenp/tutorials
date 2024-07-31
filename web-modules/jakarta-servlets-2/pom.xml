@@ -79,6 +79,16 @@
             <artifactId>uap-java</artifactId>
             <version>${uap.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>${gson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.thoughtworks.xstream</groupId>
+            <artifactId>xstream</artifactId>
+            <version>${xstream.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -116,6 +126,8 @@
         <jakarta.servlet-api.version>6.1.0</jakarta.servlet-api.version>
         <jakarta.servlet.jsp-api.version>4.0.0</jakarta.servlet.jsp-api.version>
         <jakarta.servlet.jsp.jstl-api.version>3.0.0</jakarta.servlet.jsp.jstl-api.version>
+        <gson.version>2.11.0</gson.version>
+        <xstream.version>1.4.20</xstream.version>
     </properties>
 
 </project>
