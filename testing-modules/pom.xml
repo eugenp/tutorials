@@ -24,8 +24,9 @@
         <module>gatling</module>
         <module>groovy-spock</module>
         <module>hamcrest</module>
+        <module>hamcrest-2</module>
         <module>instancio</module>
-        <module>jmeter</module>
+<!--        <module>jmeter</module>--> <!-- Migrated to heavy profile -->
         <module>jqwik</module>
         <module>junit-4</module>
         <module>junit-5-advanced</module>
