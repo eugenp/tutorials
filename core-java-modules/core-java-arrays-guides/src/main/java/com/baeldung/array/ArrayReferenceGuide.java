@@ -1,5 +1,6 @@
 package com.baeldung.array;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -13,6 +14,8 @@ public class ArrayReferenceGuide {
         declaration();
 
         initialization();
+
+        getLength();
 
         access();
 
@@ -42,6 +45,16 @@ public class ArrayReferenceGuide {
         anArray[5] = 4;
 
         int[] anotherArray = new int[] {1, 2, 3, 4, 5};
+    }
+
+    private static void getLength() {
+        int[] anArray = new int[] { 1, 2, 3, 4, 5 };
+        System.out.println("anArray's length: " + anArray.length);
+
+        System.out.println("[Array.getLength()] anArray's length: " + Array.getLength(anArray));
+
+        Object arrayAsObj = anArray;
+        System.out.println("the array Object (anArray) 's length: " + Array.getLength(arrayAsObj));
     }
 
     private static void access() {

@@ -1,5 +1,6 @@
 package com.baeldung.mail;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
@@ -11,7 +12,9 @@ import org.junit.Test;
 import com.icegreen.greenmail.junit.GreenMailRule;
 import com.icegreen.greenmail.util.ServerSetupTest;
 
+import jakarta.mail.Address;
 import jakarta.mail.MessagingException;
+import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
 import jakarta.mail.internet.MimeMultipart;
 
@@ -24,7 +27,8 @@ public class EmailServiceLiveTest {
 
     @Before
     public void setup() {
-        emailService = new EmailService("localhost", greenMail.getSmtp().getPort());
+        emailService = new EmailService("localhost", greenMail.getSmtp()
+            .getPort());
     }
 
     @Test
@@ -42,29 +46,43 @@ public class EmailServiceLiveTest {
         assertEquals("sample attachment content", attachmentContentsFrom(receivedMessage));
     }
 
+    @Test
+    public void givenEmailMessageWithMultipleRecipients_whenEmailIsSent_AllRecipientReceivedMessage() throws Exception {
+        emailService.sendMailToMultipleRecipients();
+
+        MimeMessage[] receivedMessages = greenMail.getReceivedMessages();
+        assertEquals(4, receivedMessages.length);
+
+        for (MimeMessage mimeMessage : receivedMessages) {
+            Address[] recipients = new Address[4];
+            recipients[0] = new InternetAddress("to@gmail.com");
+            recipients[1] = new InternetAddress("to1@gmail.com");
+            recipients[2] = new InternetAddress("to2@gmail.com");
+            recipients[3] = new InternetAddress("to3@gmail.com");
+            assertArrayEquals(recipients, mimeMessage.getAllRecipients());
+        }
+    }
+
     private static String subjectFromMessage(MimeMessage receivedMessage) throws MessagingException {
         return receivedMessage.getSubject();
     }
 
     private static String emailTextFrom(MimeMessage receivedMessage) throws IOException, MessagingException {
-        return ((MimeMultipart) receivedMessage.getContent())
-          .getBodyPart(0)
-          .getContent()
-          .toString();
+        return ((MimeMultipart) receivedMessage.getContent()).getBodyPart(0)
+            .getContent()
+            .toString();
     }
 
     private static String emailStyledTextFrom(MimeMessage receivedMessage) throws IOException, MessagingException {
-        return ((MimeMultipart) receivedMessage.getContent())
-            .getBodyPart(1)
+        return ((MimeMultipart) receivedMessage.getContent()).getBodyPart(1)
             .getContent()
             .toString();
     }
 
     private static String attachmentContentsFrom(MimeMessage receivedMessage) throws Exception {
-        return ((MimeMultipart) receivedMessage.getContent())
-          .getBodyPart(2)
-          .getContent()
-          .toString();
+        return ((MimeMultipart) receivedMessage.getContent()).getBodyPart(2)
+            .getContent()
+            .toString();
     }
 
 }

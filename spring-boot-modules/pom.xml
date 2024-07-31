@@ -48,6 +48,7 @@
         <module>spring-boot-graphql</module>
         <!--<module>spring-boot-groovy</module>--> <!-- failing after upgrading to jdk17-->
         <!-- <module>spring-boot-gradle</module> --> <!-- Not a maven project -->
+        <module>spring-boot-grpc</module>
         <module>spring-boot-jasypt</module>
         <module>spring-boot-jsp</module>
         <module>spring-boot-keycloak</module>
@@ -93,7 +94,7 @@
 <!--        <module>spring-boot-data-3</module>--> <!-- failing after upgrading to spring boot 3.2.x -->
         <module>spring-boot-redis</module>
         <module>spring-boot-cassandre</module>
-        <module>spring-boot-react</module>
+<!--        <module>spring-boot-react</module>--> <!-- Migrated to heavy profile -->
         <module>spring-caching-3</module>
         <!-- <module>spring-boot-3</module> --> <!-- JAVA-20931 -->
         <module>spring-boot-3-grpc</module>

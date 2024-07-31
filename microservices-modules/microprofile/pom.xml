@@ -34,7 +34,7 @@
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>net.wasdev.wlp.maven.plugins</groupId>
+                <groupId>io.openliberty.tools</groupId>
                 <artifactId>liberty-maven-plugin</artifactId>
                 <version>${liberty-maven-plugin.version}</version>
                 <configuration>
@@ -44,8 +44,8 @@
                         <version>${openliberty-runtime.version}</version>
                         <type>zip</type>
                     </assemblyArtifact>
-                    <configFile>${basedir}/src/main/liberty/config/server.xml</configFile>
-                    <packageFile>${package.file}</packageFile>
+                    <serverXmlFile>${basedir}/src/main/liberty/config/server.xml</serverXmlFile>
+                    <packageName>${package.name}</packageName>
                     <include>${packaging.type}</include>
                     <looseApplication>false</looseApplication>
                     <installAppPackages>project</installAppPackages>
@@ -62,7 +62,7 @@
                         <phase>prepare-package</phase>
                         <goals>
                             <goal>install-server</goal>
-                            <goal>create-server</goal>
+                            <goal>create</goal>
                             <goal>install-feature</goal>
                         </goals>
                     </execution>
@@ -70,8 +70,7 @@
                         <id>package-server-with-apps</id>
                         <phase>package</phase>
                         <goals>
-                            <goal>install-apps</goal>
-                            <goal>package-server</goal>
+                            <goal>package</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -81,10 +80,10 @@
 
     <properties>
         <app.name>library</app.name>
-        <package.file>${project.build.directory}/${app.name}-service.jar</package.file>
+        <package.name>${app.name}-service</package.name>
         <packaging.type>runnable</packaging.type>
         <microprofile.version>6.0</microprofile.version>
-        <liberty-maven-plugin.version>2.1.2</liberty-maven-plugin.version>
+        <liberty-maven-plugin.version>3.10.3</liberty-maven-plugin.version>
         <openliberty-runtime.version>23.0.0.5</openliberty-runtime.version>
     </properties>
 

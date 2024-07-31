@@ -1,14 +1,15 @@
 package com.baeldung.substring;
 
-import static org.junit.Assert.assertEquals;
+import org.apache.commons.lang3.StringUtils;
+import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.commons.lang3.StringUtils;
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 public class SubstringUnitTest {
 
@@ -111,4 +112,29 @@ public class SubstringUnitTest {
         assertEquals("issue.", after);
     }
 
+    @Test
+    public void givenAString_whenExtractWithGreedyRegex_thenIncorrect() {
+        String input = "a <%One%> b <%Two%> c <%Three%>";
+        Pattern pattern = Pattern.compile("<%(.*)%>");
+        Matcher matcher = pattern.matcher(input);
+        List<String> result = new ArrayList<>();
+        while (matcher.find()) {
+            result.add(matcher.group(1));
+        }
+        assertEquals(1, result.size());
+        assertEquals("One%> b <%Two%> c <%Three", result.get(0));
+    }
+
+    @Test
+    public void givenAString_whenExtractWithNonGreedyRegex_thenCorrect() {
+        String input = "a <%One%> b <%Two%> c <%Three%>";
+        List<String> expected = List.of("One", "Two", "Three");
+        Pattern pattern = Pattern.compile("<%(.*?)%>");
+        Matcher matcher = pattern.matcher(input);
+        List<String> result = new ArrayList<>();
+        while (matcher.find()) {
+            result.add(matcher.group(1));
+        }
+        assertEquals(expected, result);
+    }
 }

@@ -124,6 +124,7 @@
             <artifactId>javax.mvc-api</artifactId>
             <version>${mvc.api.version}</version>
         </dependency>
+        <!-- JAVA-37373 unable to upgrade to Jakarta namespace since this library is abandoned -->
         <dependency>
             <groupId>org.glassfish.ozark</groupId>
             <artifactId>ozark</artifactId>

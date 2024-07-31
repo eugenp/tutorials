@@ -89,7 +89,7 @@
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <openapi-generator.version>7.3.0</openapi-generator.version>
+        <openapi-generator.version>7.7.0</openapi-generator.version>
         <swagger-annotations.version>2.2.20</swagger-annotations.version>
     </properties>
 

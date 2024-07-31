@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>apache-kafka</artifactId>
     <name>apache-kafka</name>
@@ -156,6 +156,7 @@
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
+
     </dependencies>
 
     <build>
@@ -176,7 +177,7 @@
     </build>
 
     <properties>
-        <jackson.version>2.13.4</jackson.version>
+        <jackson.version>2.15.4</jackson.version> <!-- Upgrading to version >= 2.16 breaks tests -->
         <kafka.version>3.4.0</kafka.version>
         <testcontainers-kafka.version>1.19.3</testcontainers-kafka.version>
         <testcontainers-jupiter.version>1.15.3</testcontainers-jupiter.version>

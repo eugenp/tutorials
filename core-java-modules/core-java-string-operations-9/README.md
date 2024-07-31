@@ -10,5 +10,4 @@
 - [Finding the nth Last Occurrence of char in String](https://www.baeldung.com/java-find-the-nth-last-occurrence-char-string)
 - [Create HashMap with Character Count of a String in Java](https://www.baeldung.com/java-create-hashmap-character-count-string)
 - [Print Distinct Characters of a String in Java](https://www.baeldung.com/java-string-print-unique-characters)
-- [How to Insert an Emoji in a Java String](https://www.baeldung.com/java-string-insert-emoji)
 - More articles: [[<-- prev]](../core-java-string-operations-8) [[next -->]](../core-java-string-operations-10)

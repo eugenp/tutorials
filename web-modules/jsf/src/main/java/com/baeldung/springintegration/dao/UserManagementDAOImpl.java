@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.PostConstruct;
+import jakarta.annotation.PostConstruct;
 
 @Repository
 public class UserManagementDAOImpl implements UserManagementDAO {

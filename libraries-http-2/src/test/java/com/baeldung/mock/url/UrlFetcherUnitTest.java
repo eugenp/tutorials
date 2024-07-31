@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
 import java.net.URI;
 
@@ -32,7 +33,7 @@ class UrlFetcherUnitTest {
     @Test
     void givenMockedUrl_whenRequestSent_thenIsUrlAvailableFalse() throws Exception {
         mockHttpURLConnection.setResponseCode(HttpURLConnection.HTTP_FORBIDDEN);
-        URL url = new URL("https://www.baeldung.com/");
+        URL url = new URI("https://www.baeldung.com/").toURL();
 
         UrlFetcher fetcher = new UrlFetcher(url);
         assertFalse(fetcher.isUrlAvailable(), "Url should NOT be available: ");

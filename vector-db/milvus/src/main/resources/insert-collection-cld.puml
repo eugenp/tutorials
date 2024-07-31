@@ -1,0 +1,37 @@
+@startuml
+'https://plantuml.com/class-diagram
+hide empty attributes
+skinparam Handwritten false
+skinparam ClassBorderColor black
+skinparam BackgroundColor #fffce8/#f8f9fa
+skinparam class {
+ ArrowColor SeaGreen
+ BackgroundColor #fffce8
+}
+
+class MilvusClientV2 {
+   +insert(InsertReq)::InsertResp
+}
+
+class InsertReq {
+   +builder()
+   +setData()
+   +setCollectionName()
+   +setPartionName()
+}
+
+class InsertResp {
+   +getInsertCnt()
+}
+
+class InsertReqBuilder {
+   +collectionName()
+   +data(List<JSONObject>)
+   +partitionName()
+   +build()
+}
+
+InsertReqBuilder -down-+ InsertReq: contains
+MilvusClientV2 -right-> InsertReq: uses
+MilvusClientV2 -up-> InsertResp: uses
+@enduml
