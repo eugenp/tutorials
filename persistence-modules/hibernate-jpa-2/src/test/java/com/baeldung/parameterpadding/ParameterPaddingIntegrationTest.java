@@ -13,7 +13,7 @@ import org.springframework.test.context.jdbc.Sql;
 import jakarta.persistence.EntityManager;
 
 @SpringBootTest(classes = Application.class)
-@Sql(scripts = { "/schema.sql", "/data.sql" })
+@Sql(scripts = { "/pokemon-schema.sql", "/pokemon-data.sql" })
 class ParameterPaddingIntegrationTest {
 
     @Autowired
