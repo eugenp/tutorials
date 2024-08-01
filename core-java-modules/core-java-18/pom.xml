@@ -44,11 +44,21 @@
         </plugins>
     </build>
 
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons.io.version}</version>
+        </dependency>
+    </dependencies>
+
     <properties>
         <maven.compiler.source.version>18</maven.compiler.source.version>
         <maven.compiler.target.version>18</maven.compiler.target.version>
         <maven.compiler.release>18</maven.compiler.release>
         <surefire.plugin.version>3.0.0-M5</surefire.plugin.version>
+        <commons.io.version>2.16.1</commons.io.version>
     </properties>
 
 </project>
