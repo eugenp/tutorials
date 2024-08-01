@@ -1,0 +1,7 @@
+spring:
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        query:
+          in_clause_parameter_padding: true
