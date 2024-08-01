@@ -50,9 +50,9 @@
             <version>${bval.version}</version>
         </dependency>
         <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-            <version>${javax.validation.validation-api.version}</version>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <version>${jakarta.validation.validation-api.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.bval</groupId>
@@ -151,6 +151,39 @@
             <artifactId>solr-solrj</artifactId>
             <version>${solr.solr-solrj.version}</version>
         </dependency>
+        <dependency>
+            <groupId>jakarta.enterprise.concurrent</groupId>
+            <artifactId>jakarta.enterprise.concurrent-api</artifactId>
+            <version>3.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.enterprise.concurrent</groupId>
+            <artifactId>jakarta.enterprise.concurrent-tck</artifactId>
+            <version>3.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.enterprise.concurrent</groupId>
+            <artifactId>jakarta.enterprise.concurrent.parent</artifactId>
+            <version>3.1.1</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.enterprise.concurrent</groupId>
+            <artifactId>concurrency-spec</artifactId>
+            <version>3.1.1</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.enterprise</groupId>
+            <artifactId>jakarta.enterprise.cdi-api</artifactId>
+            <version>4.1.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/jakarta.ws.rs/jakarta.ws.rs-api -->
+        <dependency>
+            <groupId>jakarta.ws.rs</groupId>
+            <artifactId>jakarta.ws.rs-api</artifactId>
+            <version>4.0.0</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -188,8 +221,8 @@
     <properties>
         <avro.version>1.8.2</avro.version>
         <beam.version>2.45.0</beam.version>
-        <bval.version>2.0.6</bval.version>
-        <javax.validation.validation-api.version>2.0.1.Final</javax.validation.validation-api.version>
+        <bval.version>3.0.1</bval.version>
+        <jakarta.validation.validation-api.version>3.1.0</jakarta.validation.validation-api.version>
         <meecrowave-junit.version>1.2.15</meecrowave-junit.version>
         <okhttp.version>5.0.0-alpha.12</okhttp.version>
         <meecrowave-jpa.version>1.2.15</meecrowave-jpa.version>
@@ -200,7 +233,7 @@
         <zookeeper.version>3.4.11</zookeeper.version>
         <curator.version>4.0.1</curator.version>
         <avaitility.version>1.7.0</avaitility.version>
-        <geode.core>1.6.0</geode.core>
+        <geode.core>1.15.1</geode.core>
         <solr.solr-solrj.version>6.4.0</solr.solr-solrj.version>
     </properties>
 
