@@ -23,7 +23,7 @@ public class StringArrayConverterLiveTest {
 
 
     @Test
-    public void givenResultSetArray_whenUsingGetArray_thenReturnStringArray() throws SQLException {
+    public void givenArray_whenUsingConvertArrays_thenReturnStringArray() throws SQLException {
         // Call the method under test
         List<TestRow> result = StringsArrayConverter.convertAllArraysUsingGetArray();
 
@@ -46,7 +46,7 @@ public class StringArrayConverterLiveTest {
     }
 
     @Test
-    public void testConvertNestedArraysToStringArray() throws SQLException {
+    public void givenNestedArray_whenUsingConvertNestedArrays_thenReturnStringNestedArray() throws SQLException {
         // Call the method under test
         List<NestedTestRow> result = StringsArrayConverter.convertNestedArraysToStringArray();
 
