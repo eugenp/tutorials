@@ -29,7 +29,7 @@ public class EmployeeServiceUnitTest {
     private EmployeeService empService = new EmployeeService();
 
     @Test
-    public void givenMockingIsDoneByMockito_whenGetForEntityIsCalled_shouldReturnMockedObject() throws Exception {
+    public void givenMockingIsDoneByMockito_whenGetForEntityIsCalled_thenReturnMockedObject() throws Exception {
         Employee emp = new Employee("E001", "Eric Simmons");
         Mockito.when(restTemplate.getForEntity("http://localhost:8080/employee/E001", Employee.class))
           .thenReturn(new ResponseEntity(emp, HttpStatus.OK));
@@ -40,7 +40,7 @@ public class EmployeeServiceUnitTest {
     }
 
     @Test
-    public void givenMockingIsDoneByMockito_whenExchangeIsCalled_shouldReturnMockedObject(){
+    public void givenMockingIsDoneByMockito_whenExchangeIsCalled_thenReturnMockedObject(){
         Employee emp = new Employee("E001", "Eric Simmons");
         Mockito.when(restTemplate.exchange("http://localhost:8080/employee/E001",
             HttpMethod.GET,

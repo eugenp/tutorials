@@ -48,7 +48,7 @@ public class EmployeeServiceMockRestServiceServerUnitTest {
     }
 
     @Test
-    public void givenMockingIsDoneByMockRestServiceServer_whenGetForEntityIsCalled_shouldReturnMockedObject() throws Exception {
+    public void givenMockingIsDoneByMockRestServiceServer_whenGetForEntityIsCalled_thenReturnMockedObject() throws Exception {
         Employee emp = new Employee("E001", "Eric Simmons");
 
         mockServer.expect(ExpectedCount.once(),
@@ -64,7 +64,7 @@ public class EmployeeServiceMockRestServiceServerUnitTest {
     }
 
     @Test
-    public void givenMockingIsDoneByMockRestServiceServer_whenExchangeIsCalled_shouldReturnMockedObject() throws Exception {
+    public void givenMockingIsDoneByMockRestServiceServer_whenExchangeIsCalled_thenReturnMockedObject() throws Exception {
         Employee emp = new Employee("E001", "Eric Simmons");
 
         mockServer.expect(ExpectedCount.once(),
