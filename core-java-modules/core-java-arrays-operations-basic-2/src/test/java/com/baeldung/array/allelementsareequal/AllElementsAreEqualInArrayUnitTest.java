@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.Test;
 
@@ -94,7 +95,7 @@ public class AllElementsAreEqualInArrayUnitTest {
             return false;
         }
         for (int i = 1; i < array.length; i++) {
-            if (!Objects.equals(array[0], array[i])) {
+            if (array[0] != array[i]) {
                 return false;
             }
         }
@@ -113,7 +114,7 @@ public class AllElementsAreEqualInArrayUnitTest {
         if (array == null || array.length == 0) {
             return false;
         }
-        return Arrays.stream(array)
+        return IntStream.of(array)
             .distinct()
             .count() == 1;
     }
@@ -130,8 +131,8 @@ public class AllElementsAreEqualInArrayUnitTest {
         if (array == null || array.length == 0) {
             return false;
         }
-        return Arrays.stream(array)
-            .allMatch(element -> Objects.equals(array[0], element));
+        return IntStream.of(array)
+            .allMatch(element -> array[0] == element);
     }
 
     @Test
