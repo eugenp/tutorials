@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.baeldung.httpstatuscode.exception.ResourceGoneException;
+import com.baeldung.httpstatuscode.exception.CustomException;
 
 @Controller
 public class StatusController {
@@ -32,6 +32,6 @@ public class StatusController {
 
     @GetMapping("/custom-exception")
     public ResponseEntity<String> goneStatusCode() {
-        throw new ResourceGoneException("Resource Gone", HttpStatusCode.valueOf(410));
+        throw new CustomException("Resource Gone", HttpStatusCode.valueOf(410));
     }
 }
