@@ -25,6 +25,7 @@
             <artifactId>spring-context</artifactId>
             <version>${spring.version}</version>
         </dependency>
+        <!-- JAVA-37413 impossible to migrate to Jakarta due to incompatibilities with apache-tiles -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>

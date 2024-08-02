@@ -623,6 +623,7 @@
                 <module>javax-sound</module>
                 <module>javaxval-2</module>
                 <module>javaxval</module>
+                <module>jdbc-cp</module>
                 <module>jaxb</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
@@ -704,7 +705,6 @@
                 <module>spring-5-webflux-2</module>
                 <module>spring-5-webflux</module>
                 <module>spring-5</module>
-                <module>spring-6</module>
                 <module>spring-6-rsocket</module>
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
@@ -958,7 +958,6 @@
                 <module>spring-5-webflux-2</module>
                 <module>spring-5-webflux</module>
                 <module>spring-5</module>
-                <module>spring-6</module>
                 <module>spring-6-rsocket</module>
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
@@ -1159,7 +1158,7 @@
         <jmh-core.version>1.37</jmh-core.version>
         <jmh-generator.version>1.37</jmh-generator.version>
         <maven-failsafe-plugin.version>3.3.0</maven-failsafe-plugin.version>
-        <commons-collections4.version>4.4</commons-collections4.version>
+        <commons-collections4.version>4.5.0-M2</commons-collections4.version>
         <commons-io.version>2.15.1</commons-io.version>
         <commons-lang3.version>3.14.0</commons-lang3.version>
         <commons-cli.version>1.6.0</commons-cli.version>
