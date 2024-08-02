@@ -12,12 +12,6 @@ public class MyBatisPlusCodeGenerator {
                     .outputDir("../tutorials/mybatis-plus/src/main/java/");
             })
             .packageConfig(builder -> builder.parent("com.baeldung.mybatisplus.codegenerator"))
-            .strategyConfig(builder -> builder.addInclude("client")
-                .controllerBuilder()
-                .disable())
-            .strategyConfig(builder -> builder.addInclude("account")
-                .controllerBuilder()
-                .disable())
             .templateEngine(new FreemarkerTemplateEngine())
             .execute();
 

@@ -1,6 +1,7 @@
 package com.baeldung.mybatisplus;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -81,6 +82,10 @@ public class MyBatisPlusApplication {
             logger.info("Deleted client with id " + client.getId());
         }
 
+        Map<String, Object> columnMap = new HashMap<>();
+        columnMap.put("email", "x@e.com");
+        clientService.removeByMap(columnMap);
+
         /* conditional builders */
         Map map = Map.of("id", 2L, "first_name", "Laxman");
 
@@ -134,8 +139,9 @@ public class MyBatisPlusApplication {
         clientService.save(harry);
 
         // logical delete
-
         clientService.removeById(harry);
+        clientService.getById(harry.getId());
+
     }
 
 }

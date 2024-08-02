@@ -43,11 +43,6 @@
             <artifactId>freemarker</artifactId>
             <version>${freemarker.version}</version>
         </dependency>
-        <dependency>
-            <groupId>p6spy</groupId>
-            <artifactId>p6spy</artifactId>
-            <version>${p6spy.version}</version>
-        </dependency>
     </dependencies>
 
     <properties>
@@ -56,7 +51,6 @@
         <h2.version>2.3.230</h2.version>
         <mysql.version>8.0.26</mysql.version>
         <freemarker.version>2.3.31</freemarker.version>
-        <p6spy.version>3.9.1</p6spy.version>
     </properties>
 
 </project>

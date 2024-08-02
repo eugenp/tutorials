@@ -8,8 +8,6 @@ spring:
 #    url: jdbc:mysql://localhost:3306/
 #    username: root
 #    password: rootpassword
-#    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
-#    url: jdbc:p6spy:mysql://localhost:3306/
   sql:
     init:
 #      schema-locations: classpath:db/schema-mysql.sql
