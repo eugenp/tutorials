@@ -1,13 +1,17 @@
 package com.baeldung.array.reversearray;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Deque;
 import java.util.List;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
+
+import org.apache.commons.lang3.ArrayUtils;
 
 public class ReverseArrayElements {
 
@@ -49,33 +53,38 @@ public class ReverseArrayElements {
         array.forEach(Collections::reverse);
     }
 
-    public static Stream<Iterable<Iterable<Integer>>> reverse(List<List<Integer>> list) {
-        return list.stream()
-            .map(row -> row.stream()
-                .collect(Collector.of(ArrayDeque::new, ArrayDeque::addFirst, (d1, d2) -> {
-                    d2.addAll(d1);
-                    return d2;
-                })));
-    }
-
-    public static void reverseColumns(int[][] array) {
-        for (int col = 0; col < array[0].length; col++) {
-            for (int row = 0; row < array.length / 2; row++) {
-                int current = array[row][col];
-                array[row][col] = array[array.length - row - 1][col];
-                array[array.length - row - 1][col] = current;
-            }
+    public static void reverseRowsUsingArrayUtilsReverse(int[][] array) {
+        for (int i = 0; i < array.length; i++) {
+            ArrayUtils.reverse(array[i]);
         }
     }
 
-    public static void reverseColumnsUsingStreams(int[][] array) {
-        IntStream.range(0, array[0].length)
-            .forEach(col -> IntStream.range(0, array.length / 2)
-                .forEach(row -> {
-                    int current = array[row][col];
-                    array[row][col] = array[array.length - row - 1][col];
-                    array[array.length - row - 1][col] = current;
-                }));
+    public static void reverseRowsUsingArrayUtilsReverseAndStream(int[][] array) {
+        Arrays.stream(array)
+            .forEach(ArrayUtils::reverse);
+    }
+
+    static <T> Collector<T, ?, List<T>> toReversedList() {
+        return Collector.of(
+            ArrayDeque::new,
+            (Deque<T> deque, T element) -> deque.addFirst(element),
+            (d1, d2) -> {
+                d2.addAll(d1);
+                return d2;
+            },
+            ArrayList::new
+        );
+    }
+
+    @SuppressWarnings("unchecked")
+    static <T> Stream<T> reverseInternal(Stream<T> input) {
+        Object[] temp = input.toArray();
+
+        return (Stream<T>) IntStream.range(0, temp.length)
+            .mapToObj(i -> temp[temp.length - i - 1]);
+    }
+    static <T> List<T> reverse(List<T> list) {
+        return reverseInternal(list.stream()).collect(Collectors.toList());
     }
 }
 
