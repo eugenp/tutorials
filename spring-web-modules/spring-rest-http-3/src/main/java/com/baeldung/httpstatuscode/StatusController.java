@@ -32,6 +32,6 @@ public class StatusController {
 
     @GetMapping("/custom-exception")
     public ResponseEntity<String> goneStatusCode() {
-            throw new ResourceGoneException("Resource Gone", HttpStatusCode.valueOf(410));
+        throw new ResourceGoneException("Resource Gone", HttpStatusCode.valueOf(410));
     }
 }
