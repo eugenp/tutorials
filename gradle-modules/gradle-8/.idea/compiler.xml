@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel target="1.8">
+      <module name="gradle-8.exclude-transitive" target="11" />
+      <module name="gradle-8.exclude-transitive.main" target="11" />
+      <module name="gradle-8.exclude-transitive.test" target="11" />
+      <module name="gradle-8.excluding-group" target="11" />
+      <module name="gradle-8.excluding-group.main" target="11" />
+      <module name="gradle-8.excluding-group.test" target="11" />
+      <module name="gradle-8.excluding-transitive.exclude-group" target="11" />
+      <module name="gradle-8.excluding-transitive.exclude-module.main" target="11" />
+      <module name="gradle-8.excluding-transitive.exclude-module.test" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

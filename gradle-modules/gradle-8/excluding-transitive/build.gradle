@@ -1,0 +1,137 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath('org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.0') {
+            exclude group: 'org.jetbrains.kotlin', module: 'kotlin-reflect'
+        }
+    }
+}
+
+
+plugins {
+    id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '1.8.0'
+}
+
+group = 'com.baeldung'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+
+    // exclude Group In Dependency
+    implementation ('com.google.guava:guava:31.1-jre') {
+        exclude group: 'com.google.code.findbugs'
+    }
+
+    // exclude Specific Modules
+    implementation ('org.apache.logging.log4j:log4j-core:2.23.1'){
+        exclude group: 'org.apache.logging.log4j', module : 'log4j-api'
+    }
+
+    // exclude multiple mudule In Dependency Declaration
+    testImplementation ('org.junit.jupiter:junit-jupiter'){
+        exclude group: 'org.junit.jupiter', module : 'junit-jupiter-api'
+        exclude group: 'org.junit.jupiter', module : 'junit-jupiter-params'
+        exclude group: 'org.junit.jupiter', module : 'junit-jupiter-engine'
+    }
+
+    implementation ('com.google.guava:guava:31.1-jre') {
+        exclude group: 'com.google.guava', module : 'failureaccess'
+    }
+}
+
+configurations.all {
+    exclude group: 'org.jetbrains.kotlin', module: 'kotlin-reflect'
+}
+
+
+// exclude Globally In Configurations
+configurations.configureEach {
+    exclude group: 'org.junit.jupiter', module: 'junit-jupiter-api'
+    exclude group: 'org.junit.jupiter', module: 'junit-jupiter-params'
+    exclude group: 'org.junit.jupiter', module: 'junit-jupiter-engine'
+
+    exclude group: 'com.google.guava', module : 'failureaccess'
+
+    exclude group: 'org.apache.logging.log4j', module : 'log4j-api'
+}
+
+// exclude In Implementation Configuration
+configurations.implementation {
+    exclude group: 'org.junit.jupiter', module: 'junit-jupiter-api'
+    exclude group: 'org.junit.jupiter', module: 'junit-jupiter-params'
+    exclude group: 'org.junit.jupiter', module: 'junit-jupiter-engine'
+
+    exclude group: 'com.google.guava', module : 'failureaccess'
+
+    exclude group: 'org.apache.logging.log4j', module : 'log4j-api'
+}
+
+task printDependencies {
+    doLast {
+        Set<String> uniqueDependencies = new HashSet<>()
+        configurations.each { configuration ->
+            if (configuration.canBeResolved) {
+                configuration.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+                    String dependency = "   >  ${artifact.moduleVersion.id.group}:${artifact.moduleVersion.id.name}:${artifact.moduleVersion.id.version}"
+                    if (uniqueDependencies.add(dependency)) {
+                        println dependency
+                    }
+                }
+            }
+        }
+    }
+}
+
+tasks.register('logDependencies') {
+    doLast {
+        Set<String> uniqueDependencies = new HashSet<>()
+        configurations.each { configuration ->
+            if (configuration.canBeResolved) {
+                configuration.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+                    String dependency = "   >  ${artifact.moduleVersion.id.group}:${artifact.moduleVersion.id.name}:${artifact.moduleVersion.id.version}"
+                    if (uniqueDependencies.add(dependency)) {
+                        println dependency
+                    }
+                }
+            }
+        }
+    }
+}
+
+tasks.register('logDependenciesAscending') {
+    doLast {
+        // Menggunakan TreeSet untuk mengurutkan dependensi secara abjad
+        Set<String> sortedDependencies = new TreeSet<>()
+        configurations.each { configuration ->
+            if (configuration.canBeResolved) {
+                configuration.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+                    String dependency = "   >  ${artifact.moduleVersion.id.group}:${artifact.moduleVersion.id.name}:${artifact.moduleVersion.id.version}"
+                    sortedDependencies.add(dependency)
+                }
+            }
+        }
+        // Mencetak dependensi yang telah diurutkan
+        sortedDependencies.each { dependency ->
+            println dependency
+        }
+    }
+}
+
+
+
+
+
+test {
+    useJUnitPlatform()
+}
+
+
+

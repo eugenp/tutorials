@@ -1,0 +1,50 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.baeldung'
+version = 'unspecified'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    // exclude Group In Dependency
+    implementation ('com.google.guava:guava:31.1-jre') {
+        exclude group: 'com.google.code.findbugs'
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
+
+tasks.register('logDependenciesGrouped') {
+    doLast {
+
+        Map<String, Set<String>> groupedDependencies = new TreeMap<>()
+        configurations.each { configuration ->
+            if (configuration.canBeResolved) {
+                configuration.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+                    String group = artifact.moduleVersion.id.group
+                    String dependency = "${artifact.moduleVersion.id.name}:${artifact.moduleVersion.id.version}"
+
+                    // Gets or creates a set of dependencies for the group.
+                    groupedDependencies.computeIfAbsent(group, { new TreeSet<>() }).add(dependency)
+                }
+            }
+        }
+
+        // Prints dependencies sorted per group
+        groupedDependencies.each { group, dependencies ->
+            println "+ $group"
+            dependencies.each { dependency ->
+                println "   module : $dependency"
+            }
+        }
+    }
+}
