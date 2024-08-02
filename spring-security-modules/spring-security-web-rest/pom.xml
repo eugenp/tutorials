@@ -130,7 +130,7 @@
         <dependency>
             <groupId>jakarta.annotation</groupId>
             <artifactId>jakarta.annotation-api</artifactId>
-            <version>3.0.0</version>
+            <version>${jakarta.annotation-api.version}</version>
         </dependency>
         <dependency>
             <groupId>com.jayway.restassured</groupId>
@@ -258,6 +258,7 @@
         <spring.version>6.0.13</spring.version>
         <spring-security.version>6.1.5</spring-security.version>
         <jakarta.servlet.version>6.0.0</jakarta.servlet.version>
+        <jakarta.annotation-api.version>3.0.0</jakarta.annotation-api.version>
     </properties>
 
 </project>
