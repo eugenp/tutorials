@@ -12,6 +12,13 @@ repositories {
 dependencies {
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    // exclude multiple mudule In Dependency Declaration
+    testImplementation ('org.junit.jupiter:junit-jupiter'){
+        exclude group: 'org.junit.jupiter', module : 'junit-jupiter-api'
+        exclude group: 'org.junit.jupiter', module : 'junit-jupiter-params'
+        exclude group: 'org.junit.jupiter', module : 'junit-jupiter-engine'
+    }
 }
 
 test {

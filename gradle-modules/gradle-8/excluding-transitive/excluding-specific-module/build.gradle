@@ -12,6 +12,11 @@ repositories {
 dependencies {
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    // exclude Specific Modules
+    implementation ('org.apache.logging.log4j:log4j-core:2.23.1'){
+        exclude group: 'org.apache.logging.log4j', module : 'log4j-api'
+    }
 }
 
 test {

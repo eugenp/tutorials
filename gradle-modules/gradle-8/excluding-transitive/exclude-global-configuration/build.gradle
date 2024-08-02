@@ -14,6 +14,22 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }
 
+configurations.all {
+    exclude group: 'org.jetbrains.kotlin', module: 'kotlin-reflect'
+}
+
+
+// exclude Globally In Configurations
+configurations.configureEach {
+    exclude group: 'org.junit.jupiter', module: 'junit-jupiter-api'
+    exclude group: 'org.junit.jupiter', module: 'junit-jupiter-params'
+    exclude group: 'org.junit.jupiter', module: 'junit-jupiter-engine'
+
+    exclude group: 'com.google.guava', module : 'failureaccess'
+
+    exclude group: 'org.apache.logging.log4j', module : 'log4j-api'
+}
+
 test {
     useJUnitPlatform()
 }
