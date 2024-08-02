@@ -21,9 +21,3 @@ mybatis-plus:
       logic-delete-field: deleted
       logic-delete-value: 1
       logic-not-delete-value: 0
-
-#decorator:
-#  datasource:
-#    p6spy:
-#      log-format: "\ntime:%(executionTime) || sql:%(sql)\n"
-#      logging: custom
