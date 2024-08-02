@@ -1,7 +1,6 @@
 package com.baeldung.sendgrid;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.lang.Nullable;
 import org.springframework.validation.annotation.Validated;
 
 import jakarta.validation.Valid;
@@ -21,7 +20,7 @@ public class SendGridConfigurationProperties {
     @Email(message = "Invalid email format")
     private String fromEmail;
 
-    @Nullable
+    @NotBlank
     private String fromName;
 
     @Valid
