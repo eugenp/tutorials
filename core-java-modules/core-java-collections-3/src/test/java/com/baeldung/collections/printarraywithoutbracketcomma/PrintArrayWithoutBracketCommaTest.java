@@ -18,8 +18,8 @@ public class PrintArrayWithoutBracketCommaTest {
     @Test
     public void givenArray_whenUsingStringBuilder_thenPrintedArrayWithoutCommaBrackets() {
         StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < content.length; i++) {
-            builder.append(content[i]);
+        for (String element: content) {
+            builder.append(element);
         }
 
         assertEquals("www.Baeldung.com", builder.toString());
