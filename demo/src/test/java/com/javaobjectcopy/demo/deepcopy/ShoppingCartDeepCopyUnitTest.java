@@ -7,7 +7,7 @@ class ShoppingCartDeepCopyUnitTest {
 
     @Test
     void whenDeepClonedObjectIsUpdated_thenChangeShouldNotReflectInOriginal() throws CloneNotSupportedException {
-        ShoppingCartDeepCopy original = new ShoppingCartDeepCopy(2, new Item2("soap"));
+        ShoppingCartDeepCopy original = new ShoppingCartDeepCopy(2, new Item1("soap"));
 
         ShoppingCartDeepCopy cloned = (ShoppingCartDeepCopy) original.clone();
 
@@ -24,7 +24,7 @@ class ShoppingCartDeepCopyUnitTest {
 
     @Test
     void whenDeepClonedUsingCopyConstructorObjectIsUpdated_thenChangeShouldNotReflectInOriginal() {
-        ShoppingCartDeepCopy original = new ShoppingCartDeepCopy(2, new Item2("soap"));
+        ShoppingCartDeepCopy original = new ShoppingCartDeepCopy(2, new Item1("soap"));
 
         ShoppingCartDeepCopy cloned = new ShoppingCartDeepCopy(original);
 

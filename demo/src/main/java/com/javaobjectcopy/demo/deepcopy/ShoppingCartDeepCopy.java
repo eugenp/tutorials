@@ -2,9 +2,9 @@ package com.javaobjectcopy.demo.deepcopy;
 
 public class ShoppingCartDeepCopy implements Cloneable {
     private int numOfItems;
-    private Item2 item;
+    private Item1 item;
 
-    public ShoppingCartDeepCopy(int numOfItems, Item2 item) {
+    public ShoppingCartDeepCopy(int numOfItems, Item1 item) {
         this.numOfItems = numOfItems;
         this.item = item;
     }
@@ -12,17 +12,16 @@ public class ShoppingCartDeepCopy implements Cloneable {
     @Override
     protected Object clone() throws CloneNotSupportedException {
         ShoppingCartDeepCopy copy = (ShoppingCartDeepCopy) super.clone();
-        copy.item = (item != null) ? (Item2) item.clone() : null;
+        copy.item = (item != null) ? (Item1) item.clone() : null;
         return copy;
     }
 
     public ShoppingCartDeepCopy(ShoppingCartDeepCopy deepCopyUsingCopyConstructor) {
         this.numOfItems = deepCopyUsingCopyConstructor.numOfItems;
-        this.item = new Item2(deepCopyUsingCopyConstructor.item);
+        this.item = new Item1(deepCopyUsingCopyConstructor.item);
     }
 
     // standard setters and getters
-
     public int getNumOfItems() {
         return numOfItems;
     }
@@ -31,38 +30,11 @@ public class ShoppingCartDeepCopy implements Cloneable {
         this.numOfItems = numOfItems;
     }
 
-    public Item2 getItem() {
+    public Item1 getItem() {
         return item;
     }
 
-    public void setItem(Item2 item) {
+    public void setItem(Item1 item) {
         this.item = item;
-    }
-}
-
-class Item2 implements Cloneable {
-    private String name;
-
-    public Item2(String name) {
-        this.name = name;
-    }
-
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
-
-    public Item2(Item2 item2UsingCopyConstructor) {
-        this.name = item2UsingCopyConstructor.name;
-    }
-
-    // standard setters and getters
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 }

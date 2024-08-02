@@ -1,5 +1,7 @@
 package com.javaobjectcopy.demo.shallowcopy;
 
+import com.javaobjectcopy.demo.deepcopy.Item1;
+
 public class ShoppingCartShallowCopy implements Cloneable {
     private int numOfItems;
     private Item1 item;
@@ -9,12 +11,12 @@ public class ShoppingCartShallowCopy implements Cloneable {
         this.item = item;
     }
 
-    public Object tryClone() throws CloneNotSupportedException {
-        return this.clone();
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 
     // standard setters and getters
-
     public int getNumOfItems() {
         return numOfItems;
     }
@@ -29,23 +31,5 @@ public class ShoppingCartShallowCopy implements Cloneable {
 
     public void setItem(Item1 item) {
         this.item = item;
-    }
-}
-
-class Item1 {
-    private String name;
-
-    public Item1(String name) {
-        this.name = name;
-    }
-
-    // standard setters and getters
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 }
