@@ -151,7 +151,6 @@
         <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
         <quarkus.platform.version>2.9.2.Final</quarkus.platform.version>
         <surefire-plugin.version>3.0.0-M6</surefire-plugin.version>
-        <byte-buddy.version>1.14.17</byte-buddy.version>
     </properties>
 
 </project>

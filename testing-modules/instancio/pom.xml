@@ -4,8 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>instancio</artifactId>
-    <name>instancio</name>
     <packaging>jar</packaging>
+    <name>instancio</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -52,6 +52,6 @@
 
     <properties>
         <instancio.version>2.9.0</instancio.version>
-        <junit-jupiter.version>5.10.2</junit-jupiter.version>
     </properties>
+
 </project>

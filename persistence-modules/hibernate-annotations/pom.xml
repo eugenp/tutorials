@@ -30,7 +30,7 @@
         <dependency>
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>${hibernate-core.version}</version>
+            <version>${hibernate.version}</version>
         </dependency>
         <dependency>
             <groupId>org.hsqldb</groupId>
@@ -50,12 +50,12 @@
         <dependency>
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-testing</artifactId>
-            <version>${hibernate-core.version}</version>
+            <version>${hibernate.version}</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-spatial</artifactId>
-            <version>${hibernate-core.version}</version>
+            <version>${hibernate.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.tomcat</groupId>
@@ -97,7 +97,6 @@
         <!-- Spring -->
         <org.springframework.version>6.0.6</org.springframework.version>
         <org.springframework.data.version>3.0.3</org.springframework.data.version>
-        <hibernate-core.version>6.4.2.Final</hibernate-core.version>
         <maven.deploy.skip>true</maven.deploy.skip>
         <tomcat-dbcp.version>9.0.0.M26</tomcat-dbcp.version>
         <hypersistance-utils-hibernate-60.version>3.3.1</hypersistance-utils-hibernate-60.version>

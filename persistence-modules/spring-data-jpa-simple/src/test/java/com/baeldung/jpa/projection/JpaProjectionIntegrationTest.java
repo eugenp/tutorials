@@ -3,6 +3,9 @@ package com.baeldung.jpa.projection;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.context.jdbc.Sql.ExecutionPhase.AFTER_TEST_METHOD;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigurationPackage;
@@ -41,6 +44,13 @@ class JpaProjectionIntegrationTest {
     void whenUsingOpenProjections_thenViewWithRequiredPropertiesIsReturned() {
         PersonView personView = personRepository.findByLastName("Doe");
         assertThat(personView.getFullName()).isEqualTo("John Doe");
+    }
+
+    @Test
+    void whenUsingClassBasedProjectionsAndJPANativeQuery_thenDtoWithRequiredPropertiesIsReturned() {
+        List<PersonDto> personDtos = personRepository.findByFirstNameLike("Jo%");
+        assertThat(personDtos.size()).isEqualTo(2);
+        assertThat(personDtos).isEqualTo(Arrays.asList(new PersonDto("John", "Doe"), new PersonDto("Job", "Dob")));
     }
 
     @Test

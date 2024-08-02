@@ -3,7 +3,7 @@
 This module contains articles about Java 11 core features
 
 ### Relevant articles
-- [Guide To Java 8 Optional](https://www.baeldung.com/java-optional)
+- [Guide To Java Optional](https://www.baeldung.com/java-optional)
 - [Guide to Java Reflection](http://www.baeldung.com/java-reflection)
 - [New Features in Java 11](https://www.baeldung.com/java-11-new-features)
 - [Getting the Java Version at Runtime](https://www.baeldung.com/get-java-version-runtime)
