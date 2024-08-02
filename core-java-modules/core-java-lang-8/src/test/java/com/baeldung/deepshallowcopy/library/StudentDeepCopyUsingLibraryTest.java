@@ -13,7 +13,7 @@ public class StudentDeepCopyUsingLibraryTest {
         Gson gson = new Gson();
         Student newDeepCopiedStudent = gson.fromJson(gson.toJson(student), Student.class);
         assertThat(newDeepCopiedStudent)
-                .isNotSameAs(student);
+          .isNotSameAs(student);
     }
     @Test
     public void whenDeepCopyingThenNestedObjectShouldNotBeTheSame() {
@@ -23,7 +23,7 @@ public class StudentDeepCopyUsingLibraryTest {
         Gson gson = new Gson();
         Student newDeepCopiedStudent = gson.fromJson(gson.toJson(student), Student.class);
         assertThat(newDeepCopiedStudent.getAddress())
-                .isNotSameAs(student.getAddress());
+          .isNotSameAs(student.getAddress());
     }
     @Test
     public void whenModifyingDeepCopiedObjectThenOriginalObjectShouldNotChange() {
@@ -34,7 +34,7 @@ public class StudentDeepCopyUsingLibraryTest {
         Student newDeepCopiedStudent = gson.fromJson(gson.toJson(student), Student.class);
         newDeepCopiedStudent.setName("kumar");
         assertThat(newDeepCopiedStudent.getName())
-                .isNotSameAs(student.getName());
+          .isNotSameAs(student.getName());
     }
 
     @Test
@@ -46,6 +46,6 @@ public class StudentDeepCopyUsingLibraryTest {
         Student newDeepCopiedStudent = gson.fromJson(gson.toJson(student), Student.class);
         newDeepCopiedStudent.getAddress().setCity("BLR");
         assertThat(newDeepCopiedStudent.getAddress().getCity())
-                .isNotSameAs(student.getAddress().getCity());
+          .isNotSameAs(student.getAddress().getCity());
     }
 }
