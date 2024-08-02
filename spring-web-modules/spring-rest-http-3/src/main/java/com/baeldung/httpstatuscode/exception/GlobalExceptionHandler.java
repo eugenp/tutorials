@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(ResourceGoneException.class)
-    public ResponseEntity<String> handleGoneException(ResourceGoneException e) {
+    @ExceptionHandler(CustomException.class)
+    public ResponseEntity<String> handleGoneException(CustomException e) {
         return new ResponseEntity<>(e.getMessage(), e.getStatusCode());
     }
 }
