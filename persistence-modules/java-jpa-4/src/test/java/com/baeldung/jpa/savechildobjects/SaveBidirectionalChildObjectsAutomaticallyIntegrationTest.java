@@ -30,7 +30,7 @@ class SaveBidirectionalChildObjectsAutomaticallyIntegrationTest {
         PersistenceException exception = assertThrows(PersistenceException.class,
           () -> createEntityManagerFactory("jpa-savechildobjects-parent-without-relationship"));
         assertThat(exception)
-          .hasMessage("Could not determine recommended JdbcType for Java type 'com.baeldung.jpa.savechildobjects.BidirectionalChild'");
+            .hasMessage("Basic collection has element type 'com.baeldung.jpa.savechildobjects.BidirectionalChild' which is not a known basic type (attribute is not annotated '@ElementCollection', '@OneToMany', or '@ManyToMany')");
     }
 
     @Test
