@@ -2,31 +2,32 @@ plugins {
     id 'java'
 }
 
-group = 'org.example'
-
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
+//    implementation 'com.google.guava:guava:31.1-jre'
+    implementation ('com.google.guava:guava:31.1-jre') {
+        exclude group: 'com.google.guava' // Excludes all modules except the main module in com.google.guava.
+    }
 }
 
-test {
-    useJUnitPlatform()
-}
-
-task printDependencies {
+task printDependenciesOnAllConfig {
     doLast {
-        // Pilih konfigurasi yang dapat di-resolve
         configurations.each { configuration ->
             if (configuration.canBeResolved) {
-                println "Configuration: ${configuration.name}"
-                configuration.resolvedConfiguration.resolvedArtifacts.each { artifact ->
-                    println "    ${artifact.moduleVersion.id.group}:${artifact.moduleVersion.id.name}:${artifact.moduleVersion.id.version}"
+                def resolvedArtifacts = configuration.resolvedConfiguration.resolvedArtifacts
+                if (!resolvedArtifacts.isEmpty()) {
+                    println "Configuration: ${configuration.name}"
+                    println "----------------------------------------------------------"
+                    resolvedArtifacts.each { artifact ->
+                        println "+---- ${artifact.moduleVersion.id.group}:${artifact.moduleVersion.id.name}:${artifact.moduleVersion.id.version}"
+                    }
+                    println "----------------------------------------------------------"
                 }
             }
         }
     }
 }
+
