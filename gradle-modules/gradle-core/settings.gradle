@@ -1,1 +1,5 @@
 rootProject.name = 'gradle-core'
+include 'exclude-group'
+include 'exclude-specific-module'
+include 'exclude-multiple-module'
+
