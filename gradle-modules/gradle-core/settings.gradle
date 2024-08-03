@@ -5,4 +5,5 @@ include 'exclude-multiple-module'
 include 'exclude-in-global-implementation'
 include 'exclude-each-config'
 include 'exclude-plugin'
+include 'exclude-config-all'
 

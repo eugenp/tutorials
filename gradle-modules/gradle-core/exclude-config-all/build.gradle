@@ -11,7 +11,7 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }
 
-configurations.implementation {
+configurations.all {
     exclude group: 'org.junit.jupiter', module: 'junit-jupiter-api'
     exclude group: 'org.junit.jupiter', module: 'junit-jupiter-params'
 //    exclude group: 'org.junit.jupiter', module: 'junit-jupiter-engine'
