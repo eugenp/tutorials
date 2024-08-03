@@ -1,6 +1,7 @@
 package com.baeldung.javafeatures.classfile;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.classfile.ClassElement;
 import java.lang.classfile.ClassFile;
 import java.lang.classfile.ClassModel;
@@ -9,20 +10,29 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class ClassFileDriver {
+
     public Path updateClass() throws IOException {
         final String PREFIX = "test_";
+        byte[] original;
+
+        try (InputStream is = getClass().getClassLoader()
+            .getResourceAsStream("com/baeldung/javafeatures/classfile/ClassFileExample.class")) {
+            original = is.readAllBytes();
+        }
+
         final Path PATH = Path.of("src/main/java/com/baeldung/javafeatures/classfile/ClassFileExample.class");
         ClassFile cf = ClassFile.of();
-        ClassModel classModel = cf.parse(PATH);
-        byte[] newBytes = cf.build(classModel.thisClass().asSymbol(), classBuilder -> {
-            for (ClassElement ce : classModel) {
-                if (!(ce instanceof MethodModel mm && mm.methodName()
-                  .stringValue()
-                  .startsWith(PREFIX))) {
-                    classBuilder.with(ce);
+        ClassModel classModel = cf.parse(original);
+        byte[] newBytes = cf.build(classModel.thisClass()
+            .asSymbol(), classBuilder -> {
+                for (ClassElement ce : classModel) {
+                    if (!(ce instanceof MethodModel mm && mm.methodName()
+                        .stringValue()
+                        .startsWith(PREFIX))) {
+                        classBuilder.with(ce);
+                    }
                 }
-            }
-        });
+            });
         return Files.write(PATH, newBytes);
     }
 }
