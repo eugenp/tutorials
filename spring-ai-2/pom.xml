@@ -40,11 +40,6 @@
 			<groupId>org.springframework.ai</groupId>
 			<artifactId>spring-ai-pdf-document-reader</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>group.springframework.ai</groupId>
-			<artifactId>spring-ai-ollama-spring-boot-starter</artifactId>
-			<version>${ollama-spring-boot-starter.version}</version>
-		</dependency>
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
