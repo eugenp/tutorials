@@ -1,0 +1,38 @@
+!gradle-wrapper.jar
+# IntelliJ IDEA-specific files
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Target folder for build output
+/out/
+
+# Gradle-specific files
+/.gradle/
+/build/
+/buildSrc/build/
+/buildSrc/.gradle/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+
+# Ignore all files in the build directory except special-case files
+/build/*
+!/build/keepme.txt
+
+# Exclude specific module from gitignore
+!module-to-include/
+!module-to-include/**
+
+# Ignore specific files and directories
+*.class
+*.jar
+*.war
+*.ear
+
+# OS-specific files
+.DS_Store
+Thumbs.db
