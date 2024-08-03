@@ -23,6 +23,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <logback.version>1.4.14</logback.version>
         <slf4j.version>2.0.9</slf4j.version>
+        <junit-jupiter.version>5.10.3</junit-jupiter.version> <!-- Updating to 5.11.x breaks -->
     </properties>
 
     <dependencies>
