@@ -34,7 +34,7 @@ public class DepositResourceIntegrationTest {
 
     @Test
     @RunOnVertxContext
-    public void givenDeposit_WhenSaveDepositCalled_ThenCheckCount(TransactionalUniAsserter asserter) {
+    public void givenDeposit_whenSaveDepositCalled_thenCheckCount(TransactionalUniAsserter asserter) {
         asserter.execute(() -> repository.save(new Deposit("DEP20230201", "10", "USD")));
         asserter.assertEquals(() -> Deposit.count(), 2l);
     }
