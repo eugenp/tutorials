@@ -16,3 +16,17 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+task printDependencies {
+    doLast {
+        // Pilih konfigurasi yang dapat di-resolve
+        configurations.each { configuration ->
+            if (configuration.canBeResolved) {
+                println "Configuration: ${configuration.name}"
+                configuration.resolvedConfiguration.resolvedArtifacts.each { artifact ->
+                    println "    ${artifact.moduleVersion.id.group}:${artifact.moduleVersion.id.name}:${artifact.moduleVersion.id.version}"
+                }
+            }
+        }
+    }
+}
