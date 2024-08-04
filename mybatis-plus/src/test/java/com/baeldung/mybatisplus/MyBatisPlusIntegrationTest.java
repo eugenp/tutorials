@@ -199,7 +199,8 @@ public class MyBatisPlusIntegrationTest {
         harry.setFirstName("Harry");
         clientService.save(harry);
 
-        assertTrue(System.nanoTime() > harry.getId());
+        assertTrue(timestampIdGenerator.nextId(harry) > harry.getId(),
+            "Since we've used the timestampIdGenerator, the NextId value is greater than the previous Id");
     }
 
 }
