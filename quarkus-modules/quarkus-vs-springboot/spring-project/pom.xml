@@ -103,6 +103,7 @@
         <testcontainers-bom.version>1.17.2</testcontainers-bom.version>
         <r2dbc-mysql.version>1.0.2</r2dbc-mysql.version>
         <spring-boot.version>3.1.3</spring-boot.version>
+        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version> <!-- latest version of maven surefire not compatible -->
         <native-maven-plugin.version>0.9.24</native-maven-plugin.version>
     </properties>
 
