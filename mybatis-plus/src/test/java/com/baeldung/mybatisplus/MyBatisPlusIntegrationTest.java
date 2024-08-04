@@ -38,7 +38,7 @@ public class MyBatisPlusIntegrationTest {
 
     @Test
     @Order(1)
-    public void whenSaveIsInvoked_ThenClientIsInserted() {
+    public void givenClientObject_whenSaveIsInvoked_thenClientIsInserted() {
         Client client = new Client();
         client.setFirstName("Anshul");
         client.setLastName("Bansal");
@@ -50,20 +50,20 @@ public class MyBatisPlusIntegrationTest {
 
     @Test
     @Order(2)
-    public void whenGetByIdIsInvoked_ThenClientIsRead() {
+    public void givenClientExists_whenGetByIdIsInvoked_thenClientIsRead() {
         assertNotNull(clientService.getById(2));
     }
 
     @Test
     @Order(3)
-    public void whenListIsInvoked_ThenClientsAreRead() {
+    public void givenClientExists_whenListIsInvoked_thenClientsAreRead() {
         assertEquals(6, clientService.list()
             .size());
     }
 
     @Test
     @Order(4)
-    public void whenUsingQueryMappers_ThenClientsAreRead() {
+    public void givenClientExists_whenUsingQueryMappers_thenClientsAreRead() {
         Map<String, Object> map = Map.of("id", 2, "first_name", "Laxman");
 
         QueryWrapper<Client> clientQueryWrapper = new QueryWrapper<>();
@@ -84,7 +84,7 @@ public class MyBatisPlusIntegrationTest {
 
     @Test
     @Order(5)
-    public void givenExistingClient_whenUpdateIsInvoked_ThenClientIsUpdated() {
+    public void givenClientExists_whenUpdateIsInvoked_thenClientIsUpdated() {
         Client client = clientService.getById(2);
         client.setEmail("anshul.bansal@baeldung.com");
 
@@ -96,7 +96,7 @@ public class MyBatisPlusIntegrationTest {
 
     @Test
     @Order(6)
-    public void WhenUsingLambdaUpdateWrapper_ThenClientsAreUpdated() {
+    public void givenClientExists_whenUsingLambdaUpdateWrapper_thenClientsAreUpdated() {
         LambdaUpdateWrapper<Client> lambdaUpdateWrapper = new LambdaUpdateWrapper<>();
         lambdaUpdateWrapper.set(Client::getEmail, "x@e.com");
 
@@ -111,15 +111,15 @@ public class MyBatisPlusIntegrationTest {
 
     @Test
     @Order(7)
-    public void whenRemoveByIdIsInvoked_ThenClientIsDeleted() {
+    public void givenClientExists_whenRemoveByIdIsInvoked_thenClientIsDeleted() {
         clientService.removeById(1);
 
         assertNull(clientService.getById(1));
     }
 
     @Test
-    @Order(7)
-    public void givenColumnMap_whenRemoveByMapIsInvoked_ThenClientsAreDeleted() {
+    @Order(8)
+    public void givenColumnMap_whenRemoveByMapIsInvoked_thenClientsAreDeleted() {
         Map<String, Object> columnMap = new HashMap<>();
         columnMap.put("email", "x@e.com");
 
@@ -130,8 +130,8 @@ public class MyBatisPlusIntegrationTest {
     }
 
     @Test
-    @Order(8)
-    public void whenSaveBatchIsInvoked_ThenClientsAreInsertedInBatch() {
+    @Order(9)
+    public void givenClientObjects_whenSaveBatchIsInvoked_thenClientsAreInsertedInBatch() {
         Client client2 = new Client();
         client2.setFirstName("Harry");
 
@@ -149,8 +149,8 @@ public class MyBatisPlusIntegrationTest {
     }
 
     @Test
-    @Order(9)
-    public void givenExistingClients_whenPageIsInvoked_ThenResultsArePaginated() {
+    @Order(10)
+    public void givenClientsExists_whenPageIsInvoked_thenResultsArePaginated() {
         Client client2 = new Client();
         client2.setFirstName("John");
 
@@ -170,16 +170,15 @@ public class MyBatisPlusIntegrationTest {
     }
 
     @Test
-    @Order(10)
-    public void whenSelectListIsInvoked_ThenResultsAreStreamed() {
+    @Order(11)
+    public void givenClientsExists_whenSelectListIsInvoked_thenResultsAreStreamed() {
         clientService.getBaseMapper()
-            .selectList(Wrappers.emptyWrapper(), resultContext ->
-                assertNotNull(resultContext.getResultObject()));
+            .selectList(Wrappers.emptyWrapper(), resultContext -> assertNotNull(resultContext.getResultObject()));
     }
 
     @Test
-    @Order(11)
-    public void givenExistingClient_WhenUsingRemovedByIdWithDeleted_ThenClientIsLogicallyDeleted() {
+    @Order(12)
+    public void givenClientExists_whenUsingRemovedByIdWithDeleted_thenClientIsLogicallyDeleted() {
         Map<String, String> map = Map.of("first_name", "Harry");
 
         QueryWrapper<Client> clientQueryWrapper = new QueryWrapper<>();
@@ -193,8 +192,8 @@ public class MyBatisPlusIntegrationTest {
     }
 
     @Test
-    @Order(12)
-    public void whenNextIdIsInvoked_ThenCustomIdGeneratorIsUsed() {
+    @Order(13)
+    public void givenClientObject_whenNextIdIsInvoked_thenCustomIdGeneratorIsUsed() {
         Client harry = new Client();
         harry.setId(timestampIdGenerator.nextId(harry));
         harry.setFirstName("Harry");

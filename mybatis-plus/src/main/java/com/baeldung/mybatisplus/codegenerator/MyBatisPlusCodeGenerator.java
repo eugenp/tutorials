@@ -5,16 +5,16 @@ import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 
 public class MyBatisPlusCodeGenerator {
 
-    public static void main(String[] args) {
+    public void generateCode() {
         FastAutoGenerator.create("jdbc:h2:file:~/mybatisplus", "sa", "")
             .globalConfig(builder -> {
                 builder.author("anshulbansal")
-                    .outputDir("../tutorials/mybatis-plus/src/main/java/");
+                    .outputDir("../tutorials/mybatis-plus/src/main/java/")
+                    .disableOpenDir();
             })
             .packageConfig(builder -> builder.parent("com.baeldung.mybatisplus.codegenerator"))
             .templateEngine(new FreemarkerTemplateEngine())
             .execute();
-
     }
 
 }
