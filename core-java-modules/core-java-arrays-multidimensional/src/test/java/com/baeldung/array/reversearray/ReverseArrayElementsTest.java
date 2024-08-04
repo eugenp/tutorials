@@ -77,7 +77,8 @@ class ReverseArrayElementsTest {
         List<List<Integer>> array = asList(asList(1, 2, 3), asList(3, 2, 1), asList(2, 1, 3));
         List<List<Integer>> expected = asList(asList(3, 2, 1), asList(1, 2, 3), asList(3, 1, 2));
 
-        List<List<Integer>> result = array.stream().map(ReverseArrayElements::reverse)
+        List<List<Integer>> result = array.stream()
+            .map(ReverseArrayElements::reverse)
             .collect(Collectors.toList());
 
         assertThat(result, is(expected));
