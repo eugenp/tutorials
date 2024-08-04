@@ -3,7 +3,7 @@ package com.baeldung.quarkus.repository;
 import com.baeldung.quarkus.model.Book;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 
-import javax.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.ApplicationScoped;
 import java.util.stream.Stream;
 
 import static io.quarkus.panache.common.Parameters.with;

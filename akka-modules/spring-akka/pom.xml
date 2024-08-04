@@ -43,8 +43,8 @@
     </dependencyManagement>
 
     <properties>
-        <spring.version>5.3.25</spring.version>
-        <akka.version>2.4.14</akka.version>
+        <spring.version>6.1.5</spring.version>
+        <akka.version>2.4.17</akka.version>
     </properties>
 
 </project>

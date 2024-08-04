@@ -3,9 +3,9 @@ package com.baeldung.quarkus.service;
 import com.baeldung.quarkus.model.Book;
 import com.baeldung.quarkus.repository.BookRepository;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.transaction.Transactional;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 import java.util.Set;
 
 import static java.util.stream.Collectors.toSet;
