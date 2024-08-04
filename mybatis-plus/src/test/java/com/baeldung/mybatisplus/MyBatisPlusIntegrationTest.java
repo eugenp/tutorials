@@ -1,12 +1,17 @@
 package com.baeldung.mybatisplus;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.junit.jupiter.api.MethodOrderer;
@@ -16,6 +21,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.baeldung.mybatisplus.codegenerator.MyBatisPlusCodeGenerator;
 import com.baeldung.mybatisplus.entity.Client;
 import com.baeldung.mybatisplus.idgenerator.TimestampIdGenerator;
 import com.baeldung.mybatisplus.service.ClientService;
@@ -105,8 +111,8 @@ public class MyBatisPlusIntegrationTest {
         QueryWrapper<Client> clientQueryWrapper = new QueryWrapper<>();
         clientQueryWrapper.allEq(Map.of("email", "x@e.com"));
 
-        assertTrue(clientService.list(clientQueryWrapper)
-            .size() > 5);
+        assertThat(clientService.list(clientQueryWrapper)
+            .size()).isGreaterThan(5);
     }
 
     @Test
@@ -199,8 +205,25 @@ public class MyBatisPlusIntegrationTest {
         harry.setFirstName("Harry");
         clientService.save(harry);
 
-        assertTrue(timestampIdGenerator.nextId(harry) > harry.getId(),
-            "Since we've used the timestampIdGenerator, the NextId value is greater than the previous Id");
+        assertThat(timestampIdGenerator.nextId(harry)).describedAs(
+                "Since we've used the timestampIdGenerator, the nextId value is greater than the previous Id")
+            .isGreaterThan(harry.getId());
+    }
+
+    @Test
+    @Order(14)
+    public void givenMyBatisPlusCodeGenerator_whenGenerateCodeIsInvoked_thenCodeFilesAreGenerated() {
+        new MyBatisPlusCodeGenerator().generateCode();
+
+        List<String> codeFiles = Arrays.asList("src/main/java/com/baeldung/mybatisplus/entity/Client.java",
+            "src/main/java/com/baeldung/mybatisplus/mapper/ClientMapper.java",
+            "src/main/java/com/baeldung/mybatisplus/service/ClientService.java",
+            "src/main/java/com/baeldung/mybatisplus/service/impl/ClientServiceImpl.java");
+
+        for (String filePath : codeFiles) {
+            Path path = Paths.get(filePath);
+            assertTrue(Files.exists(path));
+        }
     }
 
 }

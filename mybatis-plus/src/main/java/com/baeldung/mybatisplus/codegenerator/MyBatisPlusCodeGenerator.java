@@ -12,7 +12,7 @@ public class MyBatisPlusCodeGenerator {
                     .outputDir("../tutorials/mybatis-plus/src/main/java/")
                     .disableOpenDir();
             })
-            .packageConfig(builder -> builder.parent("com.baeldung.mybatisplus.codegenerator"))
+            .packageConfig(builder -> builder.parent("com.baeldung.mybatisplus").service("ClientService"))
             .templateEngine(new FreemarkerTemplateEngine())
             .execute();
     }
