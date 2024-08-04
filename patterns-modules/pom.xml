@@ -36,6 +36,7 @@
         <module>intercepting-filter</module>
         <module>solid</module>
         <module>monkey-patching</module>
+        <module>vertical-slice-architecture</module>
     </modules>
 
 </project>

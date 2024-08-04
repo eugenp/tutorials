@@ -81,8 +81,7 @@
 
     <properties>
         <spring.boot.dependencies>3.2.2</spring.boot.dependencies>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <java.version>17</java.version>
         <db.util.version>1.0.7</db.util.version>
         <hypersistence-utils.version>3.7.0</hypersistence-utils.version>
         <modelmapper.version>3.2.0</modelmapper.version>
