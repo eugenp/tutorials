@@ -14,7 +14,5 @@ dependencies {
 
 
 task printDependencies {
-    doLast {
-        rootProject.ext.printDependencies(configurations)
-    }
+    rootProject.ext.printDependencies(configurations)
 }

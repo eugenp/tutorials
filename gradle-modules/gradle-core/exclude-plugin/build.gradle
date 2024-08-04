@@ -2,9 +2,6 @@ plugins {
     id 'java'
 }
 
-group = 'org.example'
-version = 'unspecified'
-
 repositories {
     mavenCentral()
 }
@@ -14,6 +11,6 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }
 
-test {
-    useJUnitPlatform()
+task printDependencies {
+    rootProject.ext.printDependencies(configurations)
 }
