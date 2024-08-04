@@ -64,6 +64,13 @@
             <groupId>org.apache.meecrowave</groupId>
             <artifactId>meecrowave-core</artifactId>
             <version>${meecrowave-core.version}</version>
+            <classifier>jakarta</classifier>
+            <exclusions>
+                <exclusion>
+                    <groupId>*</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.apache.meecrowave/meecrowave-jpa -->
         <dependency>
@@ -80,6 +87,13 @@
             <groupId>org.apache.meecrowave</groupId>
             <artifactId>meecrowave-junit</artifactId>
             <version>${meecrowave-junit.version}</version>
+            <classifier>jakarta</classifier>
+            <exclusions>
+                <exclusion>
+                    <groupId>*</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
             <scope>test</scope>
         </dependency>
         <!-- opennlp -->
@@ -144,45 +158,22 @@
             <groupId>org.apache.geode</groupId>
             <artifactId>geode-core</artifactId>
             <version>${geode.core}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>javax.resource</groupId>
+                    <artifactId>javax.resource-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>javax.xml.bind</groupId>
+                    <artifactId>jaxb-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!-- solr -->
         <dependency>
             <groupId>org.apache.solr</groupId>
             <artifactId>solr-solrj</artifactId>
             <version>${solr.solr-solrj.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>jakarta.enterprise.concurrent</groupId>
-            <artifactId>jakarta.enterprise.concurrent-api</artifactId>
-            <version>3.1.1</version>
-        </dependency>
-        <dependency>
-            <groupId>jakarta.enterprise.concurrent</groupId>
-            <artifactId>jakarta.enterprise.concurrent-tck</artifactId>
-            <version>3.1.1</version>
-        </dependency>
-        <dependency>
-            <groupId>jakarta.enterprise.concurrent</groupId>
-            <artifactId>jakarta.enterprise.concurrent.parent</artifactId>
-            <version>3.1.1</version>
-            <type>pom</type>
-        </dependency>
-        <dependency>
-            <groupId>jakarta.enterprise.concurrent</groupId>
-            <artifactId>concurrency-spec</artifactId>
-            <version>3.1.1</version>
-            <type>pom</type>
-        </dependency>
-        <dependency>
-            <groupId>jakarta.enterprise</groupId>
-            <artifactId>jakarta.enterprise.cdi-api</artifactId>
-            <version>4.1.0</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/jakarta.ws.rs/jakarta.ws.rs-api -->
-        <dependency>
-            <groupId>jakarta.ws.rs</groupId>
-            <artifactId>jakarta.ws.rs-api</artifactId>
-            <version>4.0.0</version>
         </dependency>
     </dependencies>
 
