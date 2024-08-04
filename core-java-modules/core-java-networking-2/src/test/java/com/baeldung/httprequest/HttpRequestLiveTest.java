@@ -4,10 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
 import java.io.*;
-import java.net.CookieManager;
-import java.net.HttpCookie;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.net.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,8 +16,8 @@ import static org.junit.Assert.assertTrue;
 public class HttpRequestLiveTest {
 
     @Test
-    public void whenGetRequest_thenOk() throws IOException {
-        URL url = new URL("http://example.com");
+    public void whenGetRequest_thenOk() throws IOException, URISyntaxException {
+        URL url = new URI("http://example.com").toURL();
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
 
@@ -50,8 +47,8 @@ public class HttpRequestLiveTest {
     }
 
     @Test
-    public void whenPostRequest_thenOk() throws IOException {
-        URL url = new URL("http://example.com");
+    public void whenPostRequest_thenOk() throws IOException, URISyntaxException {
+        URL url = new URI("http://example.com").toURL();
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("POST");
         con.setRequestProperty("Content-Type", "application/json");
@@ -77,8 +74,8 @@ public class HttpRequestLiveTest {
     }
 
     @Test
-    public void whenGetCookies_thenOk() throws IOException {
-        URL url = new URL("http://example.com");
+    public void whenGetCookies_thenOk() throws IOException, URISyntaxException {
+        URL url = new URI("http://example.com").toURL();
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
 
@@ -112,8 +109,8 @@ public class HttpRequestLiveTest {
     }
 
     @Test
-    public void whenRedirect_thenOk() throws IOException {
-        URL url = new URL("http://example.com");
+    public void whenRedirect_thenOk() throws IOException, URISyntaxException {
+        URL url = new URI("http://example.com").toURL();
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
 
@@ -122,7 +119,7 @@ public class HttpRequestLiveTest {
 
         if (status == HttpURLConnection.HTTP_MOVED_TEMP || status == HttpURLConnection.HTTP_MOVED_PERM) {
             String location = con.getHeaderField("Location");
-            URL newUrl = new URL(location);
+            URL newUrl = new URI(location).toURL();
             con = (HttpURLConnection) newUrl.openConnection();
         }
 
@@ -130,8 +127,8 @@ public class HttpRequestLiveTest {
     }
 
     @Test
-    public void whenFailedRequest_thenOk() throws IOException {
-        URL url = new URL("http://example.com");
+    public void whenFailedRequest_thenOk() throws IOException, URISyntaxException {
+        URL url = new URI("http://example.com").toURL();
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("POST");
 
@@ -164,8 +161,8 @@ public class HttpRequestLiveTest {
     }
 
     @Test
-    public void whenGetRequestFullResponse_thenOk() throws IOException {
-        URL url = new URL("http://example.com");
+    public void whenGetRequestFullResponse_thenOk() throws IOException, URISyntaxException {
+        URL url = new URI("http://example.com").toURL();
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
 

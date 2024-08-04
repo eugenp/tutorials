@@ -2,6 +2,8 @@
 package com.baeldung.jaxws.server.topdown;
 
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
@@ -30,8 +32,8 @@ public class EmployeeServiceTopDown_Service
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("file:/Users/do-enr-lap-4/Developer/baeldung/source/tutorials/jee7/src/main/java/com/baeldung/jaxws/server/topdown/wsdl/employeeservicetopdown.wsdl");
-        } catch (MalformedURLException ex) {
+            url = new URI("file:/Users/do-enr-lap-4/Developer/baeldung/source/tutorials/jee7/src/main/java/com/baeldung/jaxws/server/topdown/wsdl/employeeservicetopdown.wsdl").toURL();
+        } catch (MalformedURLException | URISyntaxException ex) {
             e = new WebServiceException(ex);
         }
         EMPLOYEESERVICETOPDOWN_WSDL_LOCATION = url;

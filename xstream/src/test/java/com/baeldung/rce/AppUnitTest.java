@@ -9,6 +9,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.SocketException;
+import java.net.URI;
 import java.net.URL;
 
 import static org.junit.Assert.assertTrue;
@@ -43,9 +44,9 @@ public final class AppUnitTest {
      * side-effect that is difficult to observe.
      */
     @Test(expected = SocketException.class)
-    public void givenAppIsVulneable_whenExecuteRemoteCodeWhichThrowsException_thenThrowsException() throws IOException {
+    public void givenAppIsVulneable_whenExecuteRemoteCodeWhichThrowsException_thenThrowsException() throws Exception {
         // POST the attack.xml to the application's /persons endpoint
-        final URL url = new URL("http://localhost:" + app.port() + "/persons");
+        final URL url = new URI("http://localhost:" + app.port() + "/persons").toURL();
         final HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("POST");
         connection.setDoOutput(true);

@@ -56,7 +56,7 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.hibernate</groupId>
+            <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>${hibernate.version}</version>
             <scope>provided</scope>
@@ -98,7 +98,6 @@
     <properties>
         <atomikos-version>6.0.0</atomikos-version>
         <spring-version>6.1.2</spring-version>
-        <hibernate.version>6.4.2.Final</hibernate.version>
         <spring-data-jpa.version>3.2.2</spring-data-jpa.version>
         <activemq-core.version>5.7.0</activemq-core.version>
         <derby.version>10.8.1.2</derby.version>

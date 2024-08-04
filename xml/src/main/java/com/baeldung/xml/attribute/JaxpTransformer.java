@@ -9,6 +9,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.TransformerFactoryConfigurationError;
@@ -37,7 +38,8 @@ public class JaxpTransformer {
             .parse(resourcePath);
     }
 
-    public String modifyAttribute(String attribute, String oldValue, String newValue) throws XPathExpressionException, TransformerFactoryConfigurationError, TransformerException {
+    public String modifyAttribute(String attribute, String oldValue, String newValue)
+            throws XPathExpressionException, TransformerFactoryConfigurationError, TransformerException, TransformerConfigurationException {
         // 2- Locate the node(s) with xpath
         XPath xpath = XPathFactory.newInstance()
             .newXPath();

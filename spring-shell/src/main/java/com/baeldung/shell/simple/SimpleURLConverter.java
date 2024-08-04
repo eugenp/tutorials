@@ -1,6 +1,8 @@
 package com.baeldung.shell.simple;
 
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.List;
 import org.springframework.shell.core.Completion;
@@ -14,8 +16,8 @@ public class SimpleURLConverter implements Converter<URL> {
     @Override
     public URL convertFromText(String value, Class<?> requiredType, String optionContext) {
         try {
-            return new URL(value);
-        } catch (MalformedURLException ex) {
+            return new URI(value).toURL();
+        } catch (URISyntaxException | MalformedURLException ex) {
             // Ignore
         }
         return null;

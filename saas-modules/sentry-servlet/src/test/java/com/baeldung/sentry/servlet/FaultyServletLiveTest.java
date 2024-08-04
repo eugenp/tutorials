@@ -3,6 +3,7 @@ package com.baeldung.sentry.servlet;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
 
 import org.junit.jupiter.api.Test;
@@ -14,7 +15,7 @@ class FaultyServletLiveTest {
     void testGivenFaultyRequestWithNoQueryString_thenSuccess() throws Exception {
         
         //int port = getServerPort();
-        URL u = new URL("http://localhost:8080/sentry-servlet/fault");
+        URL u = new URI("http://localhost:8080/sentry-servlet/fault").toURL();
         HttpURLConnection conn = (HttpURLConnection)u.openConnection();
         int rc = conn.getResponseCode();
         assertThat(rc)
@@ -25,7 +26,7 @@ class FaultyServletLiveTest {
     void testGivenFaultyRequestWithFaultString_thenFail() throws Exception {
         
         //int port = getServerPort();
-        URL u = new URL("http://localhost:8080/sentry-servlet/fault?fault=true");
+        URL u = new URI("http://localhost:8080/sentry-servlet/fault?fault=true").toURL();
         HttpURLConnection conn = (HttpURLConnection)u.openConnection();
         int rc = conn.getResponseCode();
         assertThat(rc)
@@ -36,7 +37,7 @@ class FaultyServletLiveTest {
     void testGivenFaultyRequestWithExceptionString_thenFail() throws Exception {
         
         //int port = getServerPort();
-        URL u = new URL("http://localhost:8080/sentry-servlet/fault?exception=true");
+        URL u = new URI("http://localhost:8080/sentry-servlet/fault?exception=true").toURL();
         HttpURLConnection conn = (HttpURLConnection)u.openConnection();
         int rc = conn.getResponseCode();
         assertThat(rc)
