@@ -2,7 +2,7 @@ package com.baeldung.checkedcollections;
 
 import java.util.Collection;
 
-public class DataProcessor {
+class DataProcessor {
 
     public boolean checkPrefix(Collection<?> data) {
         boolean result = true;
