@@ -7,14 +7,12 @@ repositories {
 }
 
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
+    implementation 'com.google.guava:guava:31.1-jre'
 }
 
 configurations.all {
-    exclude group: 'org.junit.jupiter', module: 'junit-jupiter-api'
-    exclude group: 'org.junit.jupiter', module: 'junit-jupiter-params'
-//    exclude group: 'org.junit.jupiter', module: 'junit-jupiter-engine'
+    exclude group: 'com.google.guava', module : 'failureaccess'
+    exclude group: 'com.google.guava', module : 'listenablefuture'
 }
 
 task printDependencies {

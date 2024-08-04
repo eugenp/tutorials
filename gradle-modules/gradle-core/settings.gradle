@@ -6,4 +6,5 @@ include 'exclude-in-global-implementation'
 include 'exclude-each-config'
 include 'exclude-plugin'
 include 'exclude-config-all'
+include 'exclude-all-transitive'
 
