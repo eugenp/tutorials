@@ -1,7 +1,6 @@
-package resultsetarraytoarraystrings;
+package com.baeldung.resultsetarraytoarraystrings;
 
 import java.util.Arrays;
-import java.util.Objects;
 
 public class NestedTestRow {
     private int id;

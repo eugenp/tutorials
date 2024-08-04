@@ -1,18 +1,17 @@
-package resultsetarraytoarraystring;
+package com.baeldung.resultsetarraytoarraystring;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.*;
+
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import resultsetarraytoarraystrings.NestedTestRow;
-import resultsetarraytoarraystrings.StringsArrayConverter;
-import resultsetarraytoarraystrings.TestRow;
+import com.baeldung.resultsetarraytoarraystrings.NestedTestRow;
+import com.baeldung.resultsetarraytoarraystrings.StringsArrayConverter;
+import com.baeldung.resultsetarraytoarraystrings.TestRow;
 
 public class StringArrayConverterLiveTest {
     private Connection connection;

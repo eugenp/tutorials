@@ -1,7 +1,6 @@
-package resultsetarraytoarraystrings;
+package com.baeldung.resultsetarraytoarraystrings;
 
 import java.util.Arrays;
-import java.util.Objects;
 
 public class TestRow {
     private int id;
@@ -39,16 +38,4 @@ public class TestRow {
         return id == testRow.id &&
             Arrays.equals(testArray, testRow.testArray);
     }
-
-//    @Override
-//    public int hashCode() {
-//        int result = Objects.hash(id);
-//        result = 31 * result + Arrays.hashCode(testArray);
-//        return result;
-//    }
-//
-//    @Override
-//    public String toString() {
-//        return "TestRow{id=" + id + ", testArray=" + Arrays.toString(testArray) + "}";
-//    }
 }
