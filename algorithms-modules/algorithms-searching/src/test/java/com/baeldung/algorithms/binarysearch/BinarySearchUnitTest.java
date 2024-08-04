@@ -39,5 +39,11 @@ class BinarySearchUnitTest {
         BinarySearch binSearch = new BinarySearch();
         assertEquals(expectedIndexForSearchKey, binSearch.runBinarySearchUsingJavaCollections(sortedList, key));
     }
+
+    @Test
+    void givenSortedListOfIntegers_whenBinarySearchOnSortedArraysWithDuplicates_thenGetIndexOfStartAndEndIndexOfDuplicates() {
+        BinarySearch binSearch = new BinarySearch();
+        assertEquals(Arrays.asList(5, 6), binSearch.runBinarySearchOnSortedArraysWithDuplicates(sortedArray, 5));
+    }
     
 }
