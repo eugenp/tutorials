@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>ddd</artifactId>
     <name>ddd</name>
@@ -14,18 +14,6 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../../parent-boot-3</relativePath>
     </parent>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.jmolecules</groupId>
-                <artifactId>jmolecules-bom</artifactId>
-                <version>2023.1.4</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <dependencies>
         <dependency>
@@ -77,16 +65,13 @@
         <dependency>
             <groupId>org.jmolecules.integrations</groupId>
             <artifactId>jmolecules-starter-ddd</artifactId>
+            <version>${jmolecules-integration.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jmolecules.integrations</groupId>
             <artifactId>jmolecules-starter-test</artifactId>
+            <version>${jmolecules-integration.version}</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jmolecules</groupId>
-            <artifactId>jmolecules-events</artifactId>
-            <version>${jmolecules.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jmolecules</groupId>
@@ -94,11 +79,11 @@
             <version>${jmolecules-archunit.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>com.tngtech.archunit</groupId>
             <artifactId>archunit</artifactId>
-            <version>1.3.0</version>
+            <version>${archunit.version}</version>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
@@ -125,6 +110,7 @@
         <jmolecules.version>1.9.0</jmolecules.version>
         <jmolecules-archunit.version>1.0.0</jmolecules-archunit.version>
         <archunit.version>1.3.0</archunit.version>
+        <jmolecules-integration.version>0.21.0</jmolecules-integration.version>
     </properties>
 
 </project>
