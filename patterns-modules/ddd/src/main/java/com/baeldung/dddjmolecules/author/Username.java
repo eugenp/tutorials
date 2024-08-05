@@ -5,8 +5,8 @@ import org.springframework.util.Assert;
 
 @ValueObject
 public record Username(String value) {
-	public Username {
-		Assert.isTrue(value != null && !value.isBlank(), "Username value cannot be null or blank.");
-	}
+    public Username {
+        Assert.isTrue(value != null && !value.isBlank(), "Username value cannot be null or blank.");
+    }
 
 }
