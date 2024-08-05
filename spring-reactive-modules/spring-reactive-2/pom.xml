@@ -93,6 +93,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
                         <configuration>
                             <systemPropertyVariables>
                                 <logback.configurationFile>${project.basedir}/src/test/resources/logback-test.xml</logback.configurationFile>
@@ -109,6 +110,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
                         <configuration>
                             <systemPropertyVariables>
                                 <logback.configurationFile>${project.basedir}/src/test/resources/logback-test.xml</logback.configurationFile>
