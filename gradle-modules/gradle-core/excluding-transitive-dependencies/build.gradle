@@ -1,0 +1,53 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // exclude group
+    implementation ('com.google.guava:guava:31.1-jre') {
+        exclude group: 'com.google.guava' // Excludes all modules except the main module in com.google.guava.
+    }
+
+    // exclude specific module
+    implementation ('com.google.guava:guava:31.1-jre') {
+        exclude group: 'com.google.guava', module : 'failureaccess'
+    }
+
+    // exclude specific module & multiple module
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation ('org.junit.jupiter:junit-jupiter'){
+        exclude group: 'org.junit.jupiter', module : 'junit-jupiter-api'
+        exclude group: 'org.junit.jupiter', module : 'junit-jupiter-params'
+        exclude group: 'org.junit.jupiter', module : 'junit-jupiter-engine'
+    }
+
+    implementation 'org.apache.poi:poi:5.2.3' // excluded on configurations.all
+
+    testImplementation "org.mockito:mockito-core:3.+" // excluded on configureEach
+
+    implementation 'com.google.code.gson:gson:2.11.0' // excluded on configurations.implementation
+
+    implementation('org.hibernate.orm:hibernate-core:7.0.0.Beta1'){
+        transitive = false
+    }
+}
+
+configurations.all {
+    exclude group: 'org.apache.commons', module : 'commons-collections4'
+}
+
+configurations.configureEach {
+    exclude group: 'net.bytebuddy', module: 'byte-buddy-agent'
+}
+
+configurations.implementation {
+    exclude group: 'com.google.errorprone', module: 'error_prone_annotations'
+}
+
+task printDependencies {
+    rootProject.ext.printDependencies(configurations)
+}

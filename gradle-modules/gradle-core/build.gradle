@@ -7,12 +7,17 @@ ext {
         configurationContainer.each { configuration ->
             if (configuration.canBeResolved) {
                 def resolvedArtifacts = configuration.resolvedConfiguration.resolvedArtifacts
+
+                // order by grup
+                def sortedArtifacts = resolvedArtifacts.sort { it.moduleVersion.id.group }
+
                 println "${configuration.name}: "
-                if (resolvedArtifacts.isEmpty()){
+                if (sortedArtifacts.isEmpty()) {
                     println "---- no artifact found"
                 } else {
-                    resolvedArtifacts.each { artifact ->
-                        println "+---- ${artifact.moduleVersion.id.group}:${artifact.moduleVersion.id.name}:${artifact.moduleVersion.id.version}"
+                    sortedArtifacts.each { artifact ->
+                        println "+---- ${artifact.moduleVersion.id.group} : ${artifact.moduleVersion.id.name} " +
+                                ": ${artifact.moduleVersion.id.version}"
                     }
                 }
             }
@@ -20,3 +25,31 @@ ext {
         println ""
     }
 }
+
+//ext {
+//    printDependencies = { configurationContainer ->
+//        configurationContainer.each { configuration ->
+//            if (configuration.canBeResolved) {
+//                def resolvedArtifacts = configuration.resolvedConfiguration.resolvedArtifacts
+//
+//                // Mengumpulkan dan mengelompokkan artefak berdasarkan deklarasi utama (label)
+//                def labels = resolvedArtifacts.collect { artifact ->
+//                    "${artifact.moduleVersion.id.group}:${artifact.moduleVersion.id.name}:${artifact.moduleVersion.id.version}"
+//                }.toSet()
+//
+//                println "${configuration.name}: "
+//                if (labels.isEmpty()) {
+//                    println "---- no artifact found"
+//                } else {
+//                    labels.each { label ->
+//                        println "+ ${label}"
+//                    }
+//                }
+//            }
+//        }
+//        println ""
+//    }
+//}
+
+
+
