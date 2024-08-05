@@ -1,6 +1,6 @@
 package com.baeldung.jpa.equality;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 public class EqualByBusinessKey {
