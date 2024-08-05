@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
+	<property name="LOG_PATH" value="${LOG_PATH:-./src/main/resources/logs}"/>
     <property name="LOGS" value="./logs" />
     <springProperty scope="context" name="application.name" source="spring.application.name" />
 
@@ -24,10 +25,53 @@
             <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
                 <fileNamePattern>${LOGS}/archived/${application.name}-%d{yyyy-MM-dd}.log</fileNamePattern>
             </rollingPolicy>
-        </appender>
+        </appender>        
+        
         <root level="info">
             <appender-ref ref="RollingFile" />
         </root>
+    </springProfile>
+    
+    <springProfile name="logbook">
+
+        <appender name="RollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <file>${LOG_PATH}/${application.name}.log</file>
+            <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+                <Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
+            </encoder>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>${LOG_PATH}/archived/${application.name}-%d{yyyy-MM-dd}.log</fileNamePattern>
+            </rollingPolicy>
+        </appender> 
+
+        <logger name="org.zalando.logbook" level="INFO" additivity="false">
+            <appender-ref ref="RollingFile"/>
+        </logger>
+
+        <root level="INFO">
+            <appender-ref ref="RollingFile"/>
+        </root>
+
+    </springProfile>
+    
+       <springProfile name="logbooklogstash">
+
+        <appender name="RollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <file>${LOG_PATH}/${application.name}.log</file>
+            <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <fileNamePattern>${LOG_PATH}/archived/${application.name}-%d{yyyy-MM-dd}.log</fileNamePattern>
+            </rollingPolicy>
+        </appender> 
+
+        <logger name="org.zalando.logbook" level="INFO" additivity="false">
+            <appender-ref ref="RollingFile"/>
+        </logger>
+
+        <root level="INFO">
+            <appender-ref ref="RollingFile"/>
+        </root>
+
     </springProfile>
 
 </configuration>

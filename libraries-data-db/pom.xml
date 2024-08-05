@@ -163,6 +163,13 @@
             <artifactId>jakarta.xml.bind-api</artifactId>
             <version>${jakarta.xml.bind.version}</version>
         </dependency>
+
+        <!-- TigerBeetle -->
+        <dependency>
+            <groupId>com.tigerbeetle</groupId>
+            <artifactId>tigerbeetle-java</artifactId>
+            <version>0.15.3</version>
+        </dependency>
     </dependencies>
 
     <build>

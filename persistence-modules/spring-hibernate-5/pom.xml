@@ -123,6 +123,18 @@
             <artifactId>jaxb-impl</artifactId>
             <version>${com.sun.xml.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.hypersistence</groupId>
+            <artifactId>hypersistence-utils-hibernate-55</artifactId>
+            <version>${io.hypersistence.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
+            <scope>provided</scope>
+            <optional>true</optional>
+        </dependency>
     </dependencies>
 
     <build>
@@ -153,6 +165,8 @@
         <jta.version>1.1</jta.version>
         <com.sun.xml.version>2.3.0.1</com.sun.xml.version>
         <javax.xml.bind.version>2.3.1</javax.xml.bind.version>
+        <io.hypersistence.version>3.7.0</io.hypersistence.version>
+        <postgresql.version>42.4.1</postgresql.version>
     </properties>
 
 </project>
