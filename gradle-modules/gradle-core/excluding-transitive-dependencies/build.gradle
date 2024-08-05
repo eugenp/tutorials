@@ -25,14 +25,15 @@ dependencies {
         exclude group: 'org.junit.jupiter', module : 'junit-jupiter-engine'
     }
 
-    implementation 'org.apache.poi:poi:5.2.3'
-    testImplementation "org.mockito:mockito-core:3.+"
-    implementation 'com.google.code.gson:gson:2.11.0'
+    implementation 'org.apache.poi:poi:5.2.3' // excluded on configurations.all
 
-    implementation "org.hibernate.orm:hibernate-core:7.0.0.Beta1"
-//    implementation('com.google.code.gson:gson:2.8.2'){
-//        transitive = false
-//    }
+    testImplementation "org.mockito:mockito-core:3.+" // excluded on configureEach
+
+    implementation 'com.google.code.gson:gson:2.11.0' // excluded on configurations.implementation
+
+    implementation('org.hibernate.orm:hibernate-core:7.0.0.Beta1'){
+        transitive = false
+    }
 }
 
 configurations.all {
@@ -48,23 +49,5 @@ configurations.implementation {
 }
 
 task printDependencies {
-    configurations.each { configuration ->
-        if (configuration.canBeResolved) {
-            def resolvedArtifacts = configuration.resolvedConfiguration.resolvedArtifacts
-
-            // Mengumpulkan artefak dan mengurutkannya berdasarkan grup
-            def sortedArtifacts = resolvedArtifacts.sort { it.moduleVersion.id.group }
-
-            println "${configuration.name}: "
-            if (sortedArtifacts.isEmpty()) {
-                println "---- no artifact found"
-            } else {
-                sortedArtifacts.each { artifact ->
-                    println "+---- ${artifact.moduleVersion.id.group} : ${artifact.moduleVersion.id.name} " +
-                            ": ${artifact.moduleVersion.id.version}"
-                }
-            }
-        }
-    }
-    println ""
+    rootProject.ext.printDependencies(configurations)
 }
