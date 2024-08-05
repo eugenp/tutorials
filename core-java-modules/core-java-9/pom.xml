@@ -47,9 +47,9 @@
             <version>${commons-io.version}</version>
         </dependency>
         <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-            <version>${javax.xml.bind.version}</version>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>${jakarta.xml.bind-api.version}</version>
         </dependency>
     </dependencies>
 
@@ -81,7 +81,7 @@
         <awaitility.version>1.7.0</awaitility.version>
         <maven.compiler.source>1.9</maven.compiler.source>
         <maven.compiler.target>1.9</maven.compiler.target>
-        <javax.xml.bind.version>2.4.0-b180725.0427</javax.xml.bind.version>
+        <jakarta.xml.bind-api.version>4.0.2</jakarta.xml.bind-api.version>
     </properties>
 
 </project>

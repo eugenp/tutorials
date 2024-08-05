@@ -7,6 +7,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 
 import java.io.File;
+import java.net.URI;
 import java.net.URL;
 import java.util.List;
 import java.util.Map;
@@ -103,7 +104,7 @@ public class JavaReadWriteJsonExampleUnitTest {
 
     @Test
     public void wheReadFromUrl_thanCorrect() throws Exception {
-        URL resource = new URL("file:src/test/resources/json_car.json");
+        URL resource = new URI("file:src/test/resources/json_car.json").toURL();
 
         ObjectMapper objectMapper = new ObjectMapper();
         Car fromFile = objectMapper.readValue(resource, Car.class);

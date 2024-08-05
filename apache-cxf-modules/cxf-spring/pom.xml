@@ -47,15 +47,15 @@
             <type>pom</type>
         </dependency>
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>${javax.servlet-api.version}</version>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>${jakarta.servlet-api.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
-            <version>${jstl.version}</version>
+            <groupId>jakarta.servlet.jsp.jstl</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+            <version>${jakarta.jstl-api.version}</version>
         </dependency>
     </dependencies>
 
@@ -115,12 +115,12 @@
     </profiles>
 
     <properties>
-        <cxf.version>3.1.8</cxf.version>
-        <spring.version>5.3.25</spring.version>
+        <cxf.version>4.0.5</cxf.version>
+        <spring.version>6.1.8</spring.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
-        <jstl.version>1.2</jstl.version>
-        <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
-        <jaxws-ri.version>2.3.3</jaxws-ri.version>
+        <jakarta.jstl-api.version>3.0.0</jakarta.jstl-api.version>
+        <jakarta.servlet-api.version>6.1.0</jakarta.servlet-api.version>
+        <jaxws-ri.version>4.0.2</jaxws-ri.version>
     </properties>
 
 </project>

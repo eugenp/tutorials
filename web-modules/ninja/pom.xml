@@ -183,6 +183,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <argLine>
                         --add-opens java.base/java.lang=ALL-UNNAMED
@@ -220,7 +221,6 @@
         <enforcer.plugin.version>1.3.1</enforcer.plugin.version>
         <deploy.plugin.version>2.8.2</deploy.plugin.version>
         <shade.plugin.version>2.2</shade.plugin.version>
-        <junit-jupiter.version>5.10.2</junit-jupiter.version>
     </properties>
 
 </project>

@@ -16,14 +16,17 @@
 
     <modules>
         <module>assertion-libraries</module>
+        <module>assertJ</module>
+        <module>cors</module>
         <module>cucumber</module>
         <module>easy-random</module>
         <module>easymock</module>
         <module>gatling</module>
         <module>groovy-spock</module>
         <module>hamcrest</module>
+        <module>hamcrest-2</module>
         <module>instancio</module>
-        <module>jmeter</module>
+<!--        <module>jmeter</module>--> <!-- Migrated to heavy profile -->
         <module>jqwik</module>
         <module>junit-4</module>
         <module>junit-5-advanced</module>

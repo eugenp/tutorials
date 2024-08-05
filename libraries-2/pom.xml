@@ -75,7 +75,7 @@
         <dependency>
             <groupId>com.sleepycat</groupId>
             <artifactId>je</artifactId>
-            <version>18.3.12</version>
+            <version>${sleepycat-je.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mapdb</groupId>
@@ -104,6 +104,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
             </plugin>
         </plugins>
     </build>
@@ -119,6 +120,7 @@
         <spring.version>5.3.25</spring.version>
         <hsqldb.version>2.7.1</hsqldb.version>
         <mvel2.version>2.5.2.Final</mvel2.version>
+        <sleepycat-je.version>18.3.12</sleepycat-je.version>
     </properties>
 
 </project>

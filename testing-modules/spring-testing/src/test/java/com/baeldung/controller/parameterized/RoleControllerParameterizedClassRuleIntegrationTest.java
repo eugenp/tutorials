@@ -1,6 +1,10 @@
 package com.baeldung.controller.parameterized;
 
-import com.baeldung.config.WebConfig;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
 import org.junit.Before;
 import org.junit.ClassRule;
 import org.junit.Rule;
@@ -11,7 +15,6 @@ import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestContextManager;
 import org.springframework.test.context.junit4.rules.SpringClassRule;
 import org.springframework.test.context.junit4.rules.SpringMethodRule;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -21,10 +24,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import com.baeldung.config.WebConfig;
 
 @RunWith(Parameterized.class)
 @WebAppConfiguration
@@ -60,7 +60,7 @@ public class RoleControllerParameterizedClassRuleIntegrationTest {
     }
 
     @Before
-    public void setup() throws Exception {
+    public void setup() {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
     }
 

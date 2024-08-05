@@ -4,6 +4,8 @@ import org.apache.commons.io.FileUtils;
 import org.asynchttpclient.*;
 
 import java.io.*;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.FileChannel;
@@ -17,30 +19,30 @@ public class FileDownload {
 
     public static void downloadWithJavaIO(String url, String localFilename) {
 
-        try (BufferedInputStream in = new BufferedInputStream(new URL(url).openStream()); FileOutputStream fileOutputStream = new FileOutputStream(localFilename)) {
+        try (BufferedInputStream in = new BufferedInputStream(new URI(url).toURL().openStream()); FileOutputStream fileOutputStream = new FileOutputStream(localFilename)) {
 
             byte dataBuffer[] = new byte[1024];
             int bytesRead;
             while ((bytesRead = in.read(dataBuffer, 0, 1024)) != -1) {
                 fileOutputStream.write(dataBuffer, 0, bytesRead);
             }
-        } catch (IOException e) {
+        } catch (IOException |URISyntaxException e) {
             e.printStackTrace();
         }
     }
 
     public static void downloadWithJava7IO(String url, String localFilename) {
 
-        try (InputStream in = new URL(url).openStream()) {
+        try (InputStream in = new URI(url).toURL().openStream()) {
             Files.copy(in, Paths.get(localFilename), StandardCopyOption.REPLACE_EXISTING);
-        } catch (IOException e) {
+        } catch (IOException | URISyntaxException e) {
             e.printStackTrace();
         }
     }
 
-    public static void downloadWithJavaNIO(String fileURL, String localFilename) throws IOException {
+    public static void downloadWithJavaNIO(String fileURL, String localFilename) throws IOException, URISyntaxException {
 
-        URL url = new URL(fileURL);
+        URL url = new URI(fileURL).toURL();
         try (ReadableByteChannel readableByteChannel = Channels.newChannel(url.openStream()); 
             FileOutputStream fileOutputStream = new FileOutputStream(localFilename); FileChannel fileChannel = fileOutputStream.getChannel()) {
 
@@ -54,8 +56,8 @@ public class FileDownload {
         int CONNECT_TIMEOUT = 10000;
         int READ_TIMEOUT = 10000;
         try {
-            FileUtils.copyURLToFile(new URL(url), new File(localFilename), CONNECT_TIMEOUT, READ_TIMEOUT);
-        } catch (IOException e) {
+            FileUtils.copyURLToFile(new URI(url).toURL(), new File(localFilename), CONNECT_TIMEOUT, READ_TIMEOUT);
+        } catch (IOException | URISyntaxException e) {
             e.printStackTrace();
         }
 

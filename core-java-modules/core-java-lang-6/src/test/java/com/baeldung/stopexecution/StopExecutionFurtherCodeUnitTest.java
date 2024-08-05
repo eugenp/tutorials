@@ -33,7 +33,7 @@ public class StopExecutionFurtherCodeUnitTest {
     }*/
 
     @Test
-    void givenWrongUrlAndPath_whenDownloadCalled_thenExecutionIsStopped() throws MalformedURLException {
+    void givenWrongUrlAndPath_whenDownloadCalled_thenExecutionIsStopped() throws Exception {
         StopExecutionFurtherCode stopExecutionFurtherCode = new StopExecutionFurtherCode();
         stopExecutionFurtherCode.download("", "");
     }
