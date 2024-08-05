@@ -1,6 +1,6 @@
 package com.baeldung.mapstruct.date.model;
 
-public class UserDTO {
+public class UserDto {
     private String name;
 
     // Date in String format

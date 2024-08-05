@@ -1,11 +1,11 @@
 package com.baeldung.mapstruct.date.mapper;
 
 import com.baeldung.mapstruct.date.model.User;
-import com.baeldung.mapstruct.date.model.UserDTO;
+import com.baeldung.mapstruct.date.model.UserDto;
 import org.mapstruct.Mapper;
 
 @Mapper(uses = DateMapper.class)
-public interface ReuseUserMapper {
+public interface UserConversionMapper {
 
-    User toUser(UserDTO userDTO);
+    User toUser(UserDto userDto);
 }

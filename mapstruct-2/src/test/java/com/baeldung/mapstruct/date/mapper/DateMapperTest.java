@@ -28,7 +28,7 @@ public class DateMapperTest {
     public void whenMappingInvalidStringToDate_thenThrowsException() {
         String invalidDateString = "invalid-date";
 
-        assertThrows(RuntimeException.class, () -> {
+        assertThrows(ParseException.class, () -> {
             dateMapper.mapStringToDate(invalidDateString);
         });
     }

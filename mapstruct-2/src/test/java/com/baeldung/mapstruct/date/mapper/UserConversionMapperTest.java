@@ -1,7 +1,7 @@
 package com.baeldung.mapstruct.date.mapper;
 
 import com.baeldung.mapstruct.date.model.User;
-import com.baeldung.mapstruct.date.model.UserDTO;
+import com.baeldung.mapstruct.date.model.UserDto;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
@@ -13,29 +13,29 @@ import java.util.Date;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class ReuseUserMapperTest {
+public class UserConversionMapperTest {
 
-    private final ReuseUserMapper userMapper = Mappers.getMapper(ReuseUserMapper.class);
+    private final UserConversionMapper userConversionMapper = Mappers.getMapper(UserConversionMapper.class);
 
     @Test
-    public void whenMappingUserDTOToUser_thenMapsNameCorrectly() {
-        UserDTO userDTO = new UserDTO();
+    public void whenMappingUserDtoToUser_thenMapsNameCorrectly() {
+        UserDto userDTO = new UserDto();
         userDTO.setName("John Doe");
         userDTO.setBirthDate("2024-08-01");
 
-        User user = userMapper.toUser(userDTO);
+        User user = userConversionMapper.toUser(userDTO);
 
         assertNotNull(user);
         Assertions.assertEquals("John Doe", user.getName());
     }
 
     @Test
-    public void whenMappingUserDTOToUser_thenMapsBirthDateCorrectly() throws ParseException {
-        UserDTO userDTO = new UserDTO();
+    public void whenMappingUserDtoToUser_thenMapsBirthDateCorrectly() throws ParseException {
+        UserDto userDTO = new UserDto();
         userDTO.setName("John Doe");
         userDTO.setBirthDate("2024-08-01");
 
-        User user = userMapper.toUser(userDTO);
+        User user = userConversionMapper.toUser(userDTO);
 
         assertNotNull(user);
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -45,12 +45,12 @@ public class ReuseUserMapperTest {
 
     @Test
     public void whenMappingInvalidDateString_thenThrowsException() {
-        UserDTO userDTO = new UserDTO();
+        UserDto userDTO = new UserDto();
         userDTO.setName("John Doe");
         userDTO.setBirthDate("invalid-date");
 
         assertThrows(RuntimeException.class, () -> {
-            userMapper.toUser(userDTO);
+            userConversionMapper.toUser(userDTO);
         });
     }
 }

@@ -1,7 +1,7 @@
 package com.baeldung.mapstruct.date.mapper;
 
 import com.baeldung.mapstruct.date.model.User;
-import com.baeldung.mapstruct.date.model.UserDTO;
+import com.baeldung.mapstruct.date.model.UserDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -13,17 +13,13 @@ import java.util.Date;
 public interface UserMapper {
 
     @Mapping(source = "birthDate", target = "birthDate", dateFormat = "yyyy-MM-dd")
-    User toUser(UserDTO userDTO);
+    User toUser(UserDto userDto);
 
-    @Mapping(source = "birthDate", target = "birthDate")
-    User toUserCustom(UserDTO userDTO);
+    @Mapping(target = "birthDate", expression = "java(mapStringToDate(userDto.getBirthDate()))")
+    User toUserCustom(UserDto userDto) throws ParseException;
 
-    default Date mapStringToDate(String date) {
-        try {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            return dateFormat.parse(date);
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
+    default Date mapStringToDate(String date) throws ParseException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        return dateFormat.parse(date);
     }
 }
