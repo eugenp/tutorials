@@ -76,7 +76,6 @@ public class ReverseArrayElements {
         );
     }
 
-    @SuppressWarnings("unchecked")
     static <T> List<T> reverse(List<T> input) {
         Object[] temp = input.toArray();
 
