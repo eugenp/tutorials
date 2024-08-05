@@ -2,18 +2,69 @@ plugins {
     id 'java'
 }
 
-group = 'org.example'
-version = 'unspecified'
-
 repositories {
     mavenCentral()
 }
 
 dependencies {
+    // exclude group
+    implementation ('com.google.guava:guava:31.1-jre') {
+        exclude group: 'com.google.guava' // Excludes all modules except the main module in com.google.guava.
+    }
+
+    // exclude specific module
+    implementation ('com.google.guava:guava:31.1-jre') {
+        exclude group: 'com.google.guava', module : 'failureaccess'
+    }
+
+    // exclude specific module & multiple module
     testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation ('org.junit.jupiter:junit-jupiter'){
+        exclude group: 'org.junit.jupiter', module : 'junit-jupiter-api'
+        exclude group: 'org.junit.jupiter', module : 'junit-jupiter-params'
+        exclude group: 'org.junit.jupiter', module : 'junit-jupiter-engine'
+    }
+
+    implementation 'org.apache.poi:poi:5.2.3'
+    testImplementation "org.mockito:mockito-core:3.+"
+    implementation 'com.google.code.gson:gson:2.11.0'
+
+    implementation "org.hibernate.orm:hibernate-core:7.0.0.Beta1"
+//    implementation('com.google.code.gson:gson:2.8.2'){
+//        transitive = false
+//    }
 }
 
-test {
-    useJUnitPlatform()
+configurations.all {
+    exclude group: 'org.apache.commons', module : 'commons-collections4'
+}
+
+configurations.configureEach {
+    exclude group: 'net.bytebuddy', module: 'byte-buddy-agent'
+}
+
+configurations.implementation {
+    exclude group: 'com.google.errorprone', module: 'error_prone_annotations'
+}
+
+task printDependencies {
+    configurations.each { configuration ->
+        if (configuration.canBeResolved) {
+            def resolvedArtifacts = configuration.resolvedConfiguration.resolvedArtifacts
+
+            // Mengumpulkan artefak dan mengurutkannya berdasarkan grup
+            def sortedArtifacts = resolvedArtifacts.sort { it.moduleVersion.id.group }
+
+            println "${configuration.name}: "
+            if (sortedArtifacts.isEmpty()) {
+                println "---- no artifact found"
+            } else {
+                sortedArtifacts.each { artifact ->
+                    println "+---- ${artifact.moduleVersion.id.group} : ${artifact.moduleVersion.id.name} " +
+                            ": ${artifact.moduleVersion.id.version}"
+                }
+            }
+        }
+    }
+    println ""
 }

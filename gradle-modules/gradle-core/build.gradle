@@ -1,22 +1,3 @@
 plugins {
     id 'java'
 }
-
-ext {
-    printDependencies = { configurationContainer ->
-        configurationContainer.each { configuration ->
-            if (configuration.canBeResolved) {
-                def resolvedArtifacts = configuration.resolvedConfiguration.resolvedArtifacts
-                println "${configuration.name}: "
-                if (resolvedArtifacts.isEmpty()){
-                    println "---- no artifact found"
-                } else {
-                    resolvedArtifacts.each { artifact ->
-                        println "+---- ${artifact.moduleVersion.id.group}:${artifact.moduleVersion.id.name}:${artifact.moduleVersion.id.version}"
-                    }
-                }
-            }
-        }
-        println ""
-    }
-}
