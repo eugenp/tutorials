@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
-public class NullAndEmptyArrayTests {
+public class NullAndEmptyArrayUnitTests {
 
     @Test
     public void givenNullArray_whenAccessLength_thenThrowsNullPointerException() {
