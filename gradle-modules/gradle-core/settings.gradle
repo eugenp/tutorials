@@ -7,4 +7,5 @@ include 'exclude-each-config'
 include 'exclude-plugin'
 include 'exclude-config-all'
 include 'exclude-all-transitive'
+include 'excluding-transitive-dependencies'
 
