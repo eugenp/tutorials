@@ -53,8 +53,8 @@
             <version>${hibernate.version}</version>
         </dependency>
         <dependency>
-            <groupId>javax.transaction</groupId>
-            <artifactId>jta</artifactId>
+            <groupId>jakarta.transaction</groupId>
+            <artifactId>jakarta.transaction-api</artifactId>
             <version>${jta.version}</version>
         </dependency>
         <dependency>
@@ -113,10 +113,11 @@
             <artifactId>jaxb-core</artifactId>
             <version>${com.sun.xml.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/jakarta.xml.bind/jakarta.xml.bind-api -->
         <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-            <version>${javax.xml.bind.version}</version>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>${jakarta.xml.bind.version}</version>
         </dependency>
         <dependency>
             <groupId>com.sun.xml.bind</groupId>
@@ -163,9 +164,9 @@
         <hibernatesearch.version>5.11.12.Final</hibernatesearch.version>
         <mysql-connector-java.version>8.2.0</mysql-connector-java.version>
         <tomcat-dbcp.version>9.0.0.M26</tomcat-dbcp.version>
-        <jta.version>1.1</jta.version>
+        <jta.version>2.0.1</jta.version>
         <com.sun.xml.version>2.3.0.1</com.sun.xml.version>
-        <javax.xml.bind.version>2.3.1</javax.xml.bind.version>
+        <jakarta.xml.bind.version>4.0.2</jakarta.xml.bind.version>
         <io.hypersistence.version>3.7.0</io.hypersistence.version>
         <postgresql.version>42.4.1</postgresql.version>
     </properties>
