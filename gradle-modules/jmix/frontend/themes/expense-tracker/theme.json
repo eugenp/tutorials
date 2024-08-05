@@ -1,0 +1,4 @@
+{
+  "parent": "jmix-lumo",
+  "lumoImports":["typography","color","spacing","badge","utility"]
+}
