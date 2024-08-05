@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.BitSet;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -92,20 +93,22 @@ public class FindMissingNumberUnitTest {
             .max()
             .getAsInt();
 
-        BitSet bitSet = new BitSet(N + 1);
-        for (int num : numbersWithMultipleMissing) {
-            bitSet.set(num);
-        }
+        BitSet allBitSet = new BitSet(N + 1);
+        IntStream.rangeClosed(1, N)
+            .forEach(allBitSet::set);
 
-        List<Integer> result = new ArrayList<>();
-        for (int i = 1; i <= N; i++) {
-            if (bitSet.get(i)) {
-                continue;
-            }
-            result.add(i);
-        }
+        BitSet presentBitSet = new BitSet(N + 1);
+        Arrays.stream(numbersWithMultipleMissing)
+            .forEach(presentBitSet::set);
 
-        Collections.sort(result);
+        allBitSet.and(presentBitSet);
+
+        List<Integer> result = IntStream.rangeClosed(1, N)
+            .filter(i -> !allBitSet.get(i))
+            .boxed()
+            .sorted()
+            .collect(Collectors.toList());
+
         assertEquals(result, Arrays.asList(3, 4, 6, 7));
     }
 }
