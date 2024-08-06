@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class BinarySearch {
 
@@ -54,18 +56,11 @@ public class BinarySearch {
     }
 
     public List<Integer> runBinarySearchOnSortedArraysWithDuplicates(int[] sortedArray, Integer key) {
-        int result = startIndexSearch(sortedArray, key);
-        List<Integer> results = new ArrayList<>();
-        if (result != -1) {
-            results.add(result);
-        }
-
-        result = endIndexSearch(sortedArray, key);
-        if (result != -1) {
-            results.add(result);
-        }
-
-        return results;
+        int startIndex = startIndexSearch(sortedArray, key);
+        int endIndex = endIndexSearch(sortedArray, key);
+        return IntStream.rangeClosed(startIndex, endIndex)
+            .boxed()
+            .collect(Collectors.toList());
     }
 
     private int endIndexSearch(int[] sortedArray, int target) {

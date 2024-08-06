@@ -42,8 +42,9 @@ class BinarySearchUnitTest {
 
     @Test
     void givenSortedListOfIntegers_whenBinarySearchOnSortedArraysWithDuplicates_thenGetIndexOfStartAndEndIndexOfDuplicates() {
+        int[] sortedArray = { 1, 2, 3, 4, 5, 5, 5, 5, 5, 6, 7, 7, 8, 9 };
         BinarySearch binSearch = new BinarySearch();
-        assertEquals(Arrays.asList(5, 6), binSearch.runBinarySearchOnSortedArraysWithDuplicates(sortedArray, 5));
+        assertEquals(Arrays.asList(4, 5, 6, 7, 8), binSearch.runBinarySearchOnSortedArraysWithDuplicates(sortedArray, 5));
     }
     
 }
