@@ -23,7 +23,7 @@ import io.quarkus.test.junit.QuarkusTest;
 @QuarkusTest
 @CitrusSupport
 @CitrusConfiguration(classes = { BoundaryOpenApiCitrusConfig.class })
-class BoundaryOpenApiCitrusIntegrationTest {
+class BoundaryOpenApiCitrusLiveTest {
 
     @CitrusEndpoint(name = BoundaryOpenApiCitrusConfig.API_CLIENT)
     HttpClient apiClient;
