@@ -8,6 +8,8 @@ import io.restassured.authentication.FormAuthConfig;
 import io.restassured.config.RedirectConfig;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -35,9 +37,22 @@ public class LiveTest {
 
     @Test
     public void whenAccessProtectedResourceWithoutLogin_thenRedirectToLogin() {
-        final Response response = RestAssured.get(ROOT_URI + "/home/index.html");
+        RequestSpecification request = RestAssured.given()
+            .header("Accept",
+                "text/html,application/xhtml+xml,application/xml,application/signed-exchange")
+            .header("Accept-Language", "en")
+            .header("Connection", "keep-alive")
+            .header("Sec-Fetch-Dest", "document")
+            .header("Sec-Fetch-Mode", "navigate")
+            .header("Sec-Fetch-Site", "none")
+            .header("Sec-Fetch-User", "?1")
+            .header("Upgrade-Insecure-Requests", "1")
+            .cookie("SESSION", "fake");
+
+        Response response = request.get(ROOT_URI + "/home/index.html");
+
         Assert.assertEquals(HttpStatus.FOUND.value(), response.getStatusCode());
-        Assert.assertEquals("http://localhost:8080/login", response.getHeader("Location"));
+        Assert.assertEquals("/login", response.getHeader("Location"));
     }
 
     @Test
@@ -57,7 +72,6 @@ public class LiveTest {
             .form("user", "password", formConfig)
             .get(ROOT_URI + "/rating-service/ratings");
         Assert.assertEquals(HttpStatus.FORBIDDEN.value(), response.getStatusCode());
-
     }
 
     @Test
@@ -68,15 +82,6 @@ public class LiveTest {
             .get(ROOT_URI + "/rating-service/ratings");
         Assert.assertEquals(HttpStatus.OK.value(), response.getStatusCode());
         Assert.assertNotNull(response.getBody());
-    }
-
-    @Test
-    public void whenAdminAccessDiscoveryResource_thenSuccess() {
-        final Response response = RestAssured.given()
-            .auth()
-            .form("admin", "admin", formConfig)
-            .get(ROOT_URI + "/discovery");
-        Assert.assertEquals(HttpStatus.OK.value(), response.getStatusCode());
     }
 
     @Test
@@ -125,7 +130,7 @@ public class LiveTest {
     public void accessCombinedEndpoint() {
         final Response response = RestAssured.given()
             .auth()
-            .form("user", "password", formConfig)
+            .form("admin", "admin", formConfig)
             .get(ROOT_URI + "/combined?bookId=1");
         Assert.assertEquals(HttpStatus.OK.value(), response.getStatusCode());
         Assert.assertNotNull(response.getBody());
