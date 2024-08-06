@@ -57,6 +57,7 @@ class ConsumerFooServiceIntegrationTest {
           .anyMatch(entry -> entry.contains("| onSubscribe"))
           .anyMatch(entry -> entry.contains("| cancel()"));
 
+
         assertThat(allSuppressedEntries)
           .anyMatch(entry -> entry.contains("reactor.core.publisher.FluxOnAssembly$OnAssemblyException"));
     }
