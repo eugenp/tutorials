@@ -2,9 +2,9 @@ package com.javaobjectcopy.demo.deepcopy;
 
 public class ShoppingCartDeepCopy implements Cloneable {
     private int numOfItems;
-    private Item1 item;
+    private Item item;
 
-    public ShoppingCartDeepCopy(int numOfItems, Item1 item) {
+    public ShoppingCartDeepCopy(int numOfItems, Item item) {
         this.numOfItems = numOfItems;
         this.item = item;
     }
@@ -12,13 +12,13 @@ public class ShoppingCartDeepCopy implements Cloneable {
     @Override
     protected Object clone() throws CloneNotSupportedException {
         ShoppingCartDeepCopy copy = (ShoppingCartDeepCopy) super.clone();
-        copy.item = (item != null) ? (Item1) item.clone() : null;
+        copy.item = (item != null) ? (Item) item.clone() : null;
         return copy;
     }
 
     public ShoppingCartDeepCopy(ShoppingCartDeepCopy deepCopyUsingCopyConstructor) {
         this.numOfItems = deepCopyUsingCopyConstructor.numOfItems;
-        this.item = new Item1(deepCopyUsingCopyConstructor.item);
+        this.item = new Item(deepCopyUsingCopyConstructor.item);
     }
 
     // standard setters and getters
@@ -30,11 +30,11 @@ public class ShoppingCartDeepCopy implements Cloneable {
         this.numOfItems = numOfItems;
     }
 
-    public Item1 getItem() {
+    public Item getItem() {
         return item;
     }
 
-    public void setItem(Item1 item) {
+    public void setItem(Item item) {
         this.item = item;
     }
 }

@@ -1,6 +1,6 @@
 package com.javaobjectcopy.demo.shallowcopy;
 
-import com.javaobjectcopy.demo.deepcopy.Item1;
+import com.javaobjectcopy.demo.deepcopy.Item;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -8,7 +8,7 @@ class ShoppingCartShallowCopyUnitTest {
 
     @Test
     void whenShallowClonedObjectIsUpdated_thenChangeShouldReflectInOriginal() throws CloneNotSupportedException {
-        ShoppingCartShallowCopy original = new ShoppingCartShallowCopy(2, new Item1("soap"));
+        ShoppingCartShallowCopy original = new ShoppingCartShallowCopy(2, new Item("soap"));
 
         ShoppingCartShallowCopy cloned = (ShoppingCartShallowCopy) original.clone();
 

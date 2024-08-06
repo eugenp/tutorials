@@ -1,9 +1,9 @@
 package com.javaobjectcopy.demo.deepcopy;
 
-public class Item1 implements Cloneable {
+public class Item implements Cloneable {
     private String name;
 
-    public Item1(String name) {
+    public Item(String name) {
         this.name = name;
     }
 
@@ -12,8 +12,8 @@ public class Item1 implements Cloneable {
         return super.clone();
     }
 
-    public Item1(Item1 item1UsingCopyConstructor) {
-        this.name = item1UsingCopyConstructor.name;
+    public Item(Item itemUsingCopyConstructor) {
+        this.name = itemUsingCopyConstructor.name;
     }
 
     // standard setters and getters
