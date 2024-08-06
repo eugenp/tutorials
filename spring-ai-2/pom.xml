@@ -17,7 +17,7 @@
 		<java.version>17</java.version>
 		<spring-ai.version>1.0.0-M1</spring-ai.version>
 		<spring-boot.version>3.2.7</spring-boot.version>
-		<ollama-spring-boot-starter.version>1.1.0</ollama-spring-boot-starter.version>
+		<ollama-spring-boot-starter.version>1.0.0-M1</ollama-spring-boot-starter.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -42,7 +42,7 @@
 			<artifactId>spring-ai-pdf-document-reader</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>group.springframework.ai</groupId>
+			<groupId>org.springframework.ai</groupId>
 			<artifactId>spring-ai-ollama-spring-boot-starter</artifactId>
 			<version>${ollama-spring-boot-starter.version}</version>
 		</dependency>
