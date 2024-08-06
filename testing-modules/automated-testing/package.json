@@ -1,0 +1,20 @@
+{
+  "name": "playwright-ts-demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test_local": "npx playwright test --project=\"Google Chrome\"",
+    "test_cloud": "npx playwright test --project=\"chrome:latest:macOS Sonoma@lambdatest\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.45.0",
+    "@types/node": "^20.14.9"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  }
+}
