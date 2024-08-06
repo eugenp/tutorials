@@ -364,6 +364,7 @@
                 <module>spring-security-modules/spring-security-ldap</module>
                 <module>spring-swagger-codegen</module>
                 <module>video-tutorials</module>
+                <module>jhipster-6</module>
             </modules>
 
             <properties>
@@ -482,6 +483,7 @@
                 <module>spring-security-modules/spring-security-ldap</module>
                 <module>spring-swagger-codegen</module>
                 <module>video-tutorials</module>
+                <module>jhipster-6</module>
             </modules>
 
             <properties>
@@ -630,7 +632,6 @@
                 <module>jaxb</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
-                <module>jhipster-6</module>
                 <module>jmh</module>
                 <module>json-modules</module>
                 <module>jsoup</module>
@@ -712,7 +713,7 @@
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
                 <module>spring-ai</module>
-		<module>spring-ai-2</module>
+		        <module>spring-ai-2</module>
                 <module>spring-aop-2</module>
                 <module>spring-aop</module>
                 <!--<module>spring-batch-2</module>--><!-- requires JDK-21 -->
@@ -885,7 +886,6 @@
                 <module>jaxb</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
-                <module>jhipster-6</module>
                 <module>jmh</module>
                 <module>json-modules</module>
                 <module>jsoup</module>
@@ -966,7 +966,7 @@
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
                 <module>spring-ai</module>
-		<module>spring-ai-2</module>
+		        <module>spring-ai-2</module>
                 <module>spring-aop-2</module>
                 <module>spring-aop</module>
                 <!--<module>spring-batch-2</module>--><!-- requires JDK-21 -->
