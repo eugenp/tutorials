@@ -39,7 +39,6 @@
 
     <properties>
         <combinatoricslib3.version>3.3.3</combinatoricslib3.version>
-        <commons-collections4.version>4.4</commons-collections4.version>
     </properties>
 
 </project>

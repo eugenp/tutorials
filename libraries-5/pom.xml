@@ -34,6 +34,18 @@
         </plugins>
     </build>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.linecorp.armeria</groupId>
+                <artifactId>armeria-bom</artifactId>
+                <version>${armeria.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
         <dependency>
             <groupId>com.alicp.jetcache</groupId>
@@ -82,6 +94,14 @@
             <artifactId>manifold-yaml-rt</artifactId>
             <version>${manifold.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.linecorp.armeria</groupId>
+            <artifactId>armeria</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.linecorp.armeria</groupId>
+            <artifactId>armeria-graphql</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -98,6 +118,7 @@
         <logback.version>1.5.6</logback.version>
         <slf4j.version>2.0.13</slf4j.version>
         <manifold.version>2024.1.20</manifold.version>
+        <armeria.version>1.29.2</armeria.version>
     </properties>
 
 </project>
