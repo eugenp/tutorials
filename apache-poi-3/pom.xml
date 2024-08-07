@@ -64,6 +64,21 @@
             <artifactId>jxl</artifactId>
             <version>${jxl.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.deepoove</groupId>
+            <artifactId>poi-tl</artifactId>
+            <version>${poitl.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback-classic.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>${logback-core.version}</version>
+        </dependency>        
     </dependencies>
 
     <properties>
@@ -73,6 +88,9 @@
         <xmlbeans.version>5.2.0</xmlbeans.version>
         <fastexcel.version>0.17.0</fastexcel.version>
         <jxl.version>2.6.12</jxl.version>
+        <poitl.version>1.12.2</poitl.version>
+        <logback-classic.version>1.5.6</logback-classic.version>
+        <logback-core.version>1.5.6</logback-core.version>        
     </properties>
 
 </project>
