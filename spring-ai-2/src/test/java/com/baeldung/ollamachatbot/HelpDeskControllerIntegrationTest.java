@@ -41,7 +41,7 @@ class HelpDeskControllerIntegrationTest {
     final ObjectMapper mapper = new ObjectMapper();
 
     @Test
-    public void givenPostChatRequest_whenRequested_thenReturn200() throws Exception {
+    void givenPostChatRequest_whenRequested_thenReturn200() throws Exception {
         final String jsonContent = mapper.writeValueAsString(new HelpDeskRequest("Test prompt", "123"));
 
         mockMvc.perform(post("/helpdesk/chat").content(jsonContent)
@@ -50,7 +50,7 @@ class HelpDeskControllerIntegrationTest {
     }
 
     @Test
-    public void givenPostChatRequests_whenRequestedWithSameHistoryId_thenSaveConversationProperly() throws Exception {
+    void givenPostChatRequests_whenRequestedWithSameHistoryId_thenSaveConversationProperly() throws Exception {
         final String firstRequest = mapper.writeValueAsString(new HelpDeskRequest("Can you help me with my internet?", "123"));
 
         mockMvc.perform(post("/helpdesk/chat").content(firstRequest)

@@ -5,8 +5,4 @@ public class HelpDeskResponse {
     public HelpDeskResponse(String result) {
         this.result = result;
     }
-
-    public String getResult() {
-        return result;
-    }
 }

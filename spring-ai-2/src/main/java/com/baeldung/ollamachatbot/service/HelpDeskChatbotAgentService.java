@@ -54,7 +54,7 @@ public class HelpDeskChatbotAgentService {
                 
         """;
 
-    private final static Map<String, List<HistoryEntry>> conversationalHistoryStorage = new HashMap<>();
+    private static final Map<String, List<HistoryEntry>> conversationalHistoryStorage = new HashMap<>();
 
     @Qualifier("ollamaChatModel")
     private final OllamaChatModel ollamaChatClient;
