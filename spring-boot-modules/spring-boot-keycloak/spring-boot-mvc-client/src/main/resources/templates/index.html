@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>Baeldung-Keycloak index</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+	<link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet"
+		crossorigin="anonymous" />
+</head>
+
+<body>
+	<div class="container">
+		<h1 class="form-signin-heading">Baeldung: Keycloak &amp; Spring Boot</h1>
+		<p>Welcome to a Thymeleaf UI served by Spring Boot and secured using Keycloak!</p>
+		<div th:if="${!isAuthenticated}">
+			<a href="/oauth2/authorization/keycloak"><button type="button"
+					class="btn btn-lg btn-primary btn-block">Login</button></a>
+		</div>
+		<div th:if="${isAuthenticated}">
+			<p>Hi <span th:utext="${name}">..!..</span>!</p>
+			<a href="/logout"><button type="button" class="btn btn-lg btn-primary">Logout</button></a>
+			<a th:if="${isNice}" href="/nice"><button type="button" class="btn btn-lg btn-primary">Browse to NICE users
+					page</button></a>
+		</div>
+	</div>
+</body>
