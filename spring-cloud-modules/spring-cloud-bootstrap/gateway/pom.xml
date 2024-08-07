@@ -79,6 +79,11 @@
             <artifactId>micrometer-tracing-bridge-brave</artifactId>
         </dependency>
         <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-jackson</artifactId>
+            <version>${openfeign-jackson-version}</version>
+        </dependency>
+        <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
             <version>${jakarta.servlet-api.version}</version>
@@ -126,6 +131,7 @@
         <spring-boot.version>3.2.2</spring-boot.version>
         <spring-session-data-redis.version>3.2.2</spring-session-data-redis.version>
         <jakarta.servlet-api.version>6.1.0-M2</jakarta.servlet-api.version>
+        <openfeign-jackson-version>13.3</openfeign-jackson-version>
     </properties>
 
 </project>

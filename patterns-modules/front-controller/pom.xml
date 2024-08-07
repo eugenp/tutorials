@@ -15,9 +15,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>${javax.servlet-api.version}</version>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>${jakarta.servlet-api.version}</version>
         </dependency>
     </dependencies>
 
@@ -44,7 +44,7 @@
     <properties>
         <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
         <jetty-maven-plugin.version>11.0.13</jetty-maven-plugin.version>
-
+        <jakarta.servlet-api.version>5.0.0</jakarta.servlet-api.version>
     </properties>
 
 </project>

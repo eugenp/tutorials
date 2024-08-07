@@ -412,6 +412,9 @@
                 <module>web-modules/restx</module>
                 <module>libraries-testing</module>
                 <module>text-processing-libraries-modules</module>
+                <module>core-java-modules/core-java-concurrency-advanced-5</module>
+                <module>spring-boot-modules/spring-boot-react</module>
+                <module>testing-modules/jmeter</module>
             </modules>
 
             <properties>
@@ -430,6 +433,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
                         <configuration>
                             <excludes>
                                 <exclude>**/*ManualTest.java</exclude>
@@ -494,6 +498,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
                         <configuration>
                             <excludes>
                                 <exclude>**/*ManualTest.java</exclude>
@@ -518,6 +523,9 @@
                 <module>libraries-testing</module>
                 <module>kubernetes-modules/k8s-operator</module>
                 <module>text-processing-libraries-modules</module>
+                <module>core-java-modules/core-java-concurrency-advanced-5</module>
+                <module>spring-boot-modules/spring-boot-react</module>
+                <module>testing-modules/jmeter</module>
             </modules>
 
             <properties>
@@ -536,6 +544,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
                         <configuration>
                             <forkCount>3</forkCount>
                             <reuseForks>true</reuseForks>
@@ -617,6 +626,7 @@
                 <module>javax-sound</module>
                 <module>javaxval-2</module>
                 <module>javaxval</module>
+                <module>jdbc-cp</module>
                 <module>jaxb</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
@@ -698,7 +708,6 @@
                 <module>spring-5-webflux-2</module>
                 <module>spring-5-webflux</module>
                 <module>spring-5</module>
-                <module>spring-6</module>
                 <module>spring-6-rsocket</module>
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
@@ -769,6 +778,7 @@
                 <module>timefold-solver</module>
                 <module>vaadin</module>
                 <module>vavr-modules</module>
+                <module>vector-db</module>
                 <module>vertx-modules</module>
                 <module>web-modules</module>
                 <module>webrtc</module>
@@ -797,6 +807,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
                         <configuration>
                             <excludes>
                                 <exclude>**/*ManualTest.java</exclude>
@@ -952,7 +963,6 @@
                 <module>spring-5-webflux-2</module>
                 <module>spring-5-webflux</module>
                 <module>spring-5</module>
-                <module>spring-6</module>
                 <module>spring-6-rsocket</module>
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
@@ -1023,6 +1033,7 @@
                 <module>timefold-solver</module>
                 <module>vaadin</module>
                 <module>vavr-modules</module>
+                <module>vector-db</module>
                 <module>vertx-modules</module>
                 <module>web-modules</module>
                 <module>webrtc</module>
@@ -1145,7 +1156,7 @@
         <logback.version>1.5.6</logback.version>
 
         <!-- plugins -->
-        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+        <maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
         <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
         <exec-maven-plugin.version>3.3.0</exec-maven-plugin.version>
         <java.version>8</java.version>
@@ -1153,7 +1164,7 @@
         <jmh-core.version>1.37</jmh-core.version>
         <jmh-generator.version>1.37</jmh-generator.version>
         <maven-failsafe-plugin.version>3.3.0</maven-failsafe-plugin.version>
-        <commons-collections4.version>4.4</commons-collections4.version>
+        <commons-collections4.version>4.5.0-M2</commons-collections4.version>
         <commons-io.version>2.15.1</commons-io.version>
         <commons-lang3.version>3.14.0</commons-lang3.version>
         <commons-cli.version>1.6.0</commons-cli.version>
@@ -1162,7 +1173,7 @@
         <jstl-api.version>1.2</jstl-api.version>
         <javax.servlet.jsp-api.version>2.3.3</javax.servlet.jsp-api.version>
         <jstl.version>1.2</jstl.version>
-        <jackson.version>2.16.1</jackson.version>
+        <jackson.version>2.17.2</jackson.version>
         <commons-fileupload.version>1.5</commons-fileupload.version>
         <junit-platform.version>1.11.0-M2</junit-platform.version>
         <junit-jupiter.version>5.11.0-M2</junit-jupiter.version>

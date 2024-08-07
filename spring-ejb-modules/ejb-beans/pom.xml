@@ -134,9 +134,12 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
                         <configuration>
                             <!-- Fork every test because it will launch a separate AS instance -->
-                            <forkMode>always</forkMode>
+                            <!--<forkMode>always</forkMode> removed in version 3+ -->
+                            <forkCount>1</forkCount>
+                            <reuseForks>false</reuseForks>
                             <systemProperties>
                                 <property>
                                     <name>java.util.logging.config.file</name>

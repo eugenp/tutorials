@@ -10,10 +10,10 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-public class ExcelCellFormatterUnitTest {
+class ExcelCellFormatterUnitTest {
     private static final String FILE_NAME = "ExcelCellFormatterTest.xlsx";
     private static final int STRING_CELL_INDEX = 0;
     private static final int BOOLEAN_CELL_INDEX = 1;
@@ -23,13 +23,13 @@ public class ExcelCellFormatterUnitTest {
 
     private String fileLocation;
 
-    @Before
-    public void setup() throws IOException, URISyntaxException {
+    @BeforeEach
+    void setup() throws IOException, URISyntaxException {
             fileLocation = Paths.get(ClassLoader.getSystemResource(FILE_NAME).toURI()).toString();
     }
 
     @Test
-    public void givenStringCell_whenGetCellStringValue_thenReturnStringValue() throws IOException {
+    void givenStringCell_whenGetCellStringValue_thenReturnStringValue() throws IOException {
         Workbook workbook = new XSSFWorkbook(fileLocation);
         Sheet sheet = workbook.getSheetAt(0);
         Row row = sheet.getRow(0);
@@ -40,7 +40,7 @@ public class ExcelCellFormatterUnitTest {
     }
 
     @Test
-    public void givenBooleanCell_whenGetCellStringValue_thenReturnBooleanStringValue() throws IOException {
+    void givenBooleanCell_whenGetCellStringValue_thenReturnBooleanStringValue() throws IOException {
         Workbook workbook = new XSSFWorkbook(fileLocation);
         Sheet sheet = workbook.getSheetAt(0);
         Row row = sheet.getRow(0);
@@ -51,7 +51,7 @@ public class ExcelCellFormatterUnitTest {
     }
 
     @Test
-    public void givenNumericCell_whenGetCellStringValue_thenReturnNumericStringValue() throws IOException {
+    void givenNumericCell_whenGetCellStringValue_thenReturnNumericStringValue() throws IOException {
         Workbook workbook = new XSSFWorkbook(fileLocation);
         Sheet sheet = workbook.getSheetAt(0);
         Row row = sheet.getRow(0);
@@ -63,7 +63,7 @@ public class ExcelCellFormatterUnitTest {
     }
 
     @Test
-    public void givenFormualCell_whenGetCellStringValue_thenReturnOriginalFormulaString() throws IOException {
+    void givenFormulaCell_whenGetCellStringValue_thenReturnOriginalFormulaString() throws IOException {
         Workbook workbook = new XSSFWorkbook(fileLocation);
         Sheet sheet = workbook.getSheetAt(0);
         Row row = sheet.getRow(0);
@@ -74,7 +74,7 @@ public class ExcelCellFormatterUnitTest {
     }
 
     @Test
-    public void givenFormualCell_whenGetCellStringValueForFormula_thenReturnOriginalFormulatring() throws IOException {
+    void givenFormulaCell_whenGetCellStringValueForFormula_thenReturnOriginalFormulaString() throws IOException {
         Workbook workbook = new XSSFWorkbook(fileLocation);
         Sheet sheet = workbook.getSheetAt(0);
         Row row = sheet.getRow(0);

@@ -16,7 +16,7 @@ public class LiteralSyntaxForByteArraysUsingHexNotation {
     public static void initializeByteArrayWithHex() {
         byte[] byteArray = {0x0A, 0x14, 0x1E, 0x28, 0x32};
         for (byte b : byteArray) {
-            logger.info("0x{:02X}", b);
+            logger.info(String.format("0x%02X", b));
         }
     }
 
@@ -24,5 +24,4 @@ public class LiteralSyntaxForByteArraysUsingHexNotation {
         initializeByteArrayWithDecimal();
         initializeByteArrayWithHex();
     }
-
 }
