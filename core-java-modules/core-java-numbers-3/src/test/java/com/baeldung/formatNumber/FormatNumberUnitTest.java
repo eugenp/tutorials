@@ -90,9 +90,9 @@ public class FormatNumberUnitTest {
     @Test
     public void givenDouble_whenFormatMethodIsInvokedWithMinChars_thenGetItInScientificNotation() {
         Locale us = new Locale("en", "US");
-        assertThat(formatScientificNotationWithMinChars(3.14159, us)).isEqualTo(" 3.142E+00");
-        assertThat(formatScientificNotationWithMinChars(0.0123456, us)).isEqualTo(" 1.235E-02");
-        assertThat(formatScientificNotationWithMinChars(1111111, us)).isEqualTo(" 1.111E+06");
+        assertThat(formatScientificNotationWithMinChars(3.14159, us)).isEqualTo("  3.1416E+00");
+        assertThat(formatScientificNotationWithMinChars(0.0123456, us)).isEqualTo("  1.2346E-02");
+        assertThat(formatScientificNotationWithMinChars(1111111, us)).isEqualTo("  1.1111E+06");
     }
 
 }

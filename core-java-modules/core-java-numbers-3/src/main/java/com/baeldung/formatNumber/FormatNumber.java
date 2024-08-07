@@ -75,7 +75,7 @@ public class FormatNumber {
     }
 
     public static String formatScientificNotationWithMinChars(double value, Locale localisation) {
-        return String.format(localisation, "%10.3E", value);
+        return String.format(localisation, "%12.4E", value);
     }
 }
 
