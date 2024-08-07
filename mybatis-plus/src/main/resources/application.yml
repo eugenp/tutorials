@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    initialize: true
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:~/mybatisplus;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE;
+    username: "sa"
+  sql:
+    init:
+      schema-locations: classpath:db/schema-h2.sql
+      data-locations: classpath:db/data-h2.sql
+      mode: always
+
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
