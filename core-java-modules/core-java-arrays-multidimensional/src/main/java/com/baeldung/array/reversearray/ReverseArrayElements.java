@@ -11,8 +11,6 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-import org.apache.commons.lang3.ArrayUtils;
-
 public class ReverseArrayElements {
 
     public static void reverseRowsUsingSimpleForLoops(int[][] array) {
@@ -51,17 +49,6 @@ public class ReverseArrayElements {
 
     public static void reverseRowsUsingCollectionsReverse(List<List<Integer>> array) {
         array.forEach(Collections::reverse);
-    }
-
-    public static void reverseRowsUsingArrayUtilsReverse(int[][] array) {
-        for (int i = 0; i < array.length; i++) {
-            ArrayUtils.reverse(array[i]);
-        }
-    }
-
-    public static void reverseRowsUsingArrayUtilsReverseAndStream(int[][] array) {
-        Arrays.stream(array)
-            .forEach(ArrayUtils::reverse);
     }
 
     static <T> Collector<T, ?, List<T>> toReversedList() {
