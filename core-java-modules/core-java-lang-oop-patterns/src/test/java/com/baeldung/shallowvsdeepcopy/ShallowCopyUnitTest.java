@@ -7,24 +7,14 @@ import org.junit.jupiter.api.Test;
 public class ShallowCopyUnitTest {
 
     @Test
-    public void givenShallowCopy_whenComparing_thenAreEqual() {
+    public void givenShallowCopyCopingFields_whenComparing_thenAreEqual() {
         Line ab = new Line(new Point("a", "b"), new Point("c", "d"));
-        Line cd = ab;
-
-        assertEquals(ab, cd);
-    }
-
-    @Test
-    public void givenShallowCopy_whenChangingProperty_thenAreEqual() {
-        Line ab = new Line(new Point("a", "b"), new Point("c", "d"));
-        Line cd = ab;
+        Line cd = new Line(ab.getStart(), ab.getEnd());
 
         ab.getStart()
             .setX("z");
 
-        assertEquals(
-            ab.getStart().getX(),
-            cd.getStart().getX());
+        assertEquals(ab.getStart(), cd.getStart());
     }
 
 }

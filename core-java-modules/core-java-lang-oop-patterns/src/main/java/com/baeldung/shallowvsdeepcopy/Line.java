@@ -10,10 +10,6 @@ public class Line implements Cloneable {
         this.end = end;
     }
 
-    public Line(Line line) {
-        this(line.getStart(), line.getEnd());
-    }
-
     public Point getStart() {
         return start;
     }
@@ -31,11 +27,9 @@ public class Line implements Cloneable {
     }
 
     @Override
-    public Line clone() {
-        try {
-            return (Line) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError();
-        }
+    protected Line clone() {
+        return new Line(
+          new Point(this.getStart().getX(), this.getStart().getY()),
+          new Point(this.getStart().getX(), this.getStart().getY()));
     }
 }

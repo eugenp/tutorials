@@ -10,10 +10,6 @@ public class Point implements Cloneable {
         this.y = y;
     }
 
-    public Point(Point point) {
-        this(point.getX(), point.getY());
-    }
-
     public String getX() {
         return x;
     }
@@ -31,11 +27,8 @@ public class Point implements Cloneable {
     }
 
     @Override
-    public Point clone() {
-        try {
-            return (Point) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError();
-        }
+    protected Point clone() {
+        return new Point(this.getX(), this.getY());
     }
+
 }
