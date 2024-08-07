@@ -52,7 +52,7 @@ class PreparedStatementInClauseTest {
     }
 
     @Test
-    void inClauseWithArray() throws SQLException {
+    void whenPopulatingINClauseWithArray_thenIsSuccess() throws SQLException {
         ResultSet resultSet = PreparedStatementInClause.populateParamsWithArray(connection, List.of(1, 2, 3, 4, 55));
         Assertions.assertNotNull(resultSet);
         resultSet.beforeFirst();
