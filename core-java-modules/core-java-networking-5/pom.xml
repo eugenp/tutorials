@@ -6,6 +6,18 @@
     <artifactId>core-java-networking-5</artifactId>
     <packaging>jar</packaging>
     <name>core-java-networking-5</name>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>9</source>
+                    <target>9</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <parent>
         <groupId>com.baeldung.core-java-modules</groupId>
@@ -46,9 +58,9 @@
             <version>${spring-web.version}</version>
         </dependency>
         <dependency>
-            <groupId>jakarta.mail</groupId>
-            <artifactId>jakarta.mail-api</artifactId>
-            <version>${jakarta.mail.version}</version>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>jakarta.mail</artifactId>
+            <version>2.0.1</version>
         </dependency>
     </dependencies>
 

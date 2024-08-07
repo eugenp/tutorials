@@ -1,13 +1,13 @@
 package com.baeldung.readbodymail;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 
 import jakarta.mail.BodyPart;
 import jakarta.mail.Folder;
@@ -20,7 +20,8 @@ import jakarta.mail.Store;
 public class EmailService {
 
     private final Session session;
-    private String latestEmailContent;
+    private String plainContent;
+    private String htmlContent;
 
     public EmailService(Session session) {
         this.session = session;
@@ -39,15 +40,24 @@ public class EmailService {
                             Multipart multipart = (Multipart) content;
                             for (int i = 0; i < multipart.getCount(); i++) {
                                 BodyPart bodyPart = multipart.getBodyPart(i);
+                                System.out.println(bodyPart.getContentType());
                                 if (bodyPart.getContentType()
-                                    .startsWith("text")) {
-                                    latestEmailContent = (String) bodyPart.getContent();
+                                    .startsWith("TEXT/PLAIN")) {
+                                    plainContent = (String) bodyPart.getContent();
+                                } else if (bodyPart.getContentType()
+                                    .startsWith("TEXT/HTML")) {
+                                    try (InputStream inputStream = bodyPart.getInputStream()) {
+                                        String html = new String(inputStream.readAllBytes(), "UTF-8");
+                                        Document doc = Jsoup.parse(html);
+                                        htmlContent = doc.text();
+                                    } catch (IOException e) { // Handle exception
+                                    }
                                 } else {
                                     saveAttachment(bodyPart);
                                 }
                             }
                         } else {
-                            latestEmailContent = (String) content;
+                            plainContent = (String) content;
                         }
                     } catch (IOException | MessagingException e) {
                         System.out.println("Error reading email content: " + e.getMessage());
@@ -63,7 +73,7 @@ public class EmailService {
         // Ensure the directory exists
         File directory = new File("attachments");
         if (!directory.exists()) {
-            directory.mkdirs(); // Create the directory if it does not exist
+            directory.mkdirs();
         }
 
         // Save the attachment
@@ -96,7 +106,11 @@ public class EmailService {
         return "";
     }
 
-    public String getLatestEmailContent() {
-        return latestEmailContent;
+    public String getPlainContent() {
+        return plainContent;
+    }
+
+    public String getHTMLContent() {
+        return htmlContent;
     }
 }
