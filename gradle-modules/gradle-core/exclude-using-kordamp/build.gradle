@@ -8,8 +8,6 @@ buildscript {
     }
 }
 
-//apply plugin: 'org.kordamp.gradle.enforcer'
-
 plugins {
     id 'java'
     id 'org.kordamp.gradle.project-enforcer' version '0.13.0'
@@ -30,8 +28,4 @@ enforce {
         r.exclude('org.opentest4j:opentest4j')
 //        r.exclude('org.opentest4j:opentest4j:1.3.0')
     }
-}
-
-task printDependenciesWithoutExclusion {
-    rootProject.ext.printDependencies(configurations)
 }

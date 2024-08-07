@@ -17,7 +17,3 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.11.0'
     implementation 'org.hibernate.orm:hibernate-core:7.0.0.Beta1'
 }
-
-task printDependenciesWithoutExclusion {
-    rootProject.ext.printDependencies(configurations)
-}

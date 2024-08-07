@@ -72,7 +72,3 @@ configurations.configureEach {
 configurations.implementation {
     exclude group: 'com.google.errorprone', module: 'error_prone_annotations'
 }
-
-task printDependencies {
-    rootProject.ext.printDependencies(configurations)
-}
