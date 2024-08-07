@@ -14,4 +14,4 @@ This module contains articles about sorting algorithms.
 - [Selection Sort in Java](https://www.baeldung.com/java-selection-sort)
 - [Radix Sort in Java](https://www.baeldung.com/java-radix-sort)
 - [Bucket Sort in Java](https://www.baeldung.com/java-bucket-sort)
-- More articles: [[next -->]](/algorithms-sorintg-2)
+- More articles: [[next -->]](/algorithms-sorting-2)
