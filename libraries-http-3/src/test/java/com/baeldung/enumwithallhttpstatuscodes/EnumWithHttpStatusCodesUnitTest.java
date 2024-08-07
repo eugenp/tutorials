@@ -1,11 +1,11 @@
 package com.baeldung.enumwithallhttpstatuscodes;
 
-
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class EnumWithHttpStatusCodesUnitTest {
+    
     @Test
     public void givenStatusCode_whenUsingBasicApproach_thenGetCorrectCode() {
         assertEquals(100, HttpStatus.CONTINUE.getCode());
