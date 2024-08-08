@@ -19,11 +19,11 @@ public class UserMapperTest {
 
     @Test
     public void whenMappingUserDtoToUser_thenMapsNameCorrectly() {
-        UserDto userDTO = new UserDto();
-        userDTO.setName("John Doe");
-        userDTO.setBirthDate("2024-08-01");
+        UserDto userDto = new UserDto();
+        userDto.setName("John Doe");
+        userDto.setBirthDate("2024-08-01");
 
-        User user = userMapper.toUser(userDTO);
+        User user = userMapper.toUser(userDto);
 
         assertNotNull(user);
         Assertions.assertEquals("John Doe", user.getName());
@@ -31,11 +31,11 @@ public class UserMapperTest {
 
     @Test
     public void whenCustomMappingUserDtoToUser_thenMapsNameCorrectly() {
-        UserDto userDTO = new UserDto();
-        userDTO.setName("John Doe");
-        userDTO.setBirthDate("2024-08-01");
+        UserDto userDto = new UserDto();
+        userDto.setName("John Doe");
+        userDto.setBirthDate("2024-08-01");
 
-        User user = userMapper.toUser(userDTO);
+        User user = userMapper.toUser(userDto);
 
         assertNotNull(user);
         Assertions.assertEquals("John Doe", user.getName());
@@ -43,11 +43,11 @@ public class UserMapperTest {
 
     @Test
     public void whenMappingUserDtoToUser_thenMapsBirthDateCorrectly() throws ParseException {
-        UserDto userDTO = new UserDto();
-        userDTO.setName("John Doe");
-        userDTO.setBirthDate("2024-08-01");
+        UserDto userDto = new UserDto();
+        userDto.setName("John Doe");
+        userDto.setBirthDate("2024-08-01");
 
-        User user = userMapper.toUser(userDTO);
+        User user = userMapper.toUser(userDto);
 
         assertNotNull(user);
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -57,11 +57,11 @@ public class UserMapperTest {
 
     @Test
     public void whenCustomMappingUserDtoToUser_thenMapsBirthDateCorrectly() throws ParseException {
-        UserDto userDTO = new UserDto();
-        userDTO.setName("John Doe");
-        userDTO.setBirthDate("2024-08-01");
+        UserDto userDto = new UserDto();
+        userDto.setName("John Doe");
+        userDto.setBirthDate("2024-08-01");
 
-        User user = userMapper.toUserCustom(userDTO);
+        User user = userMapper.toUserCustom(userDto);
 
         assertNotNull(user);
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -71,23 +71,23 @@ public class UserMapperTest {
 
     @Test
     public void whenMappingInvalidDateString_thenThrowsException() {
-        UserDto userDTO = new UserDto();
-        userDTO.setName("John Doe");
-        userDTO.setBirthDate("invalid-date");
+        UserDto userDto = new UserDto();
+        userDto.setName("John Doe");
+        userDto.setBirthDate("invalid-date");
 
         assertThrows(RuntimeException.class, () -> {
-            userMapper.toUser(userDTO);
+            userMapper.toUser(userDto);
         });
     }
 
     @Test
     public void whenCustomMappingInvalidDateString_thenThrowsException() {
-        UserDto userDTO = new UserDto();
-        userDTO.setName("John Doe");
-        userDTO.setBirthDate("invalid-date");
+        UserDto userDto = new UserDto();
+        userDto.setName("John Doe");
+        userDto.setBirthDate("invalid-date");
 
         assertThrows(ParseException.class, () -> {
-            userMapper.toUserCustom(userDTO);
+            userMapper.toUserCustom(userDto);
         });
     }
 }

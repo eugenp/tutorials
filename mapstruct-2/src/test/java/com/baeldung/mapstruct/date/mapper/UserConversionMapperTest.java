@@ -19,11 +19,11 @@ public class UserConversionMapperTest {
 
     @Test
     public void whenMappingUserDtoToUser_thenMapsNameCorrectly() {
-        UserDto userDTO = new UserDto();
-        userDTO.setName("John Doe");
-        userDTO.setBirthDate("2024-08-01");
+        UserDto userDto = new UserDto();
+        userDto.setName("John Doe");
+        userDto.setBirthDate("2024-08-01");
 
-        User user = userConversionMapper.toUser(userDTO);
+        User user = userConversionMapper.toUser(userDto);
 
         assertNotNull(user);
         Assertions.assertEquals("John Doe", user.getName());
@@ -31,11 +31,11 @@ public class UserConversionMapperTest {
 
     @Test
     public void whenMappingUserDtoToUser_thenMapsBirthDateCorrectly() throws ParseException {
-        UserDto userDTO = new UserDto();
-        userDTO.setName("John Doe");
-        userDTO.setBirthDate("2024-08-01");
+        UserDto userDto = new UserDto();
+        userDto.setName("John Doe");
+        userDto.setBirthDate("2024-08-01");
 
-        User user = userConversionMapper.toUser(userDTO);
+        User user = userConversionMapper.toUser(userDto);
 
         assertNotNull(user);
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -45,12 +45,12 @@ public class UserConversionMapperTest {
 
     @Test
     public void whenMappingInvalidDateString_thenThrowsException() {
-        UserDto userDTO = new UserDto();
-        userDTO.setName("John Doe");
-        userDTO.setBirthDate("invalid-date");
+        UserDto userDto = new UserDto();
+        userDto.setName("John Doe");
+        userDto.setBirthDate("invalid-date");
 
         assertThrows(RuntimeException.class, () -> {
-            userConversionMapper.toUser(userDTO);
+            userConversionMapper.toUser(userDto);
         });
     }
 }
