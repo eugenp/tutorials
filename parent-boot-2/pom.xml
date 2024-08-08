@@ -101,7 +101,7 @@
     </profiles>
 
     <properties>
-        <rest-assured.version>3.3.0</rest-assured.version>
+        <rest-assured.version>5.5.0</rest-assured.version>
         <!-- plugins -->
         <thin.version>1.0.22.RELEASE</thin.version>
         <spring-boot.version>2.7.11</spring-boot.version>
