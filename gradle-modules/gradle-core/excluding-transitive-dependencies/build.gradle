@@ -89,8 +89,15 @@ configurations.implementation {
 
 enforce {
     rule(enforcer.rules.BannedDependencies) { r ->
-        r.configurations.addAll(['compileClasspath', 'runtimeClasspath'])
+        r.configurations.addAll(['compileClasspath',
+                                 'runtimeClasspath',
+                                 'testCompileClasspath',
+                                 'testRuntimeClasspath'])
+
+        r.exclude('org.junit.jupiter:junit-jupiter-engine')
+        r.exclude('com.google.guava')
         r.exclude('com.google.guava:guava')
-        r.include('com.google.guava:guava:31.1-jre') // only v 31.1-jre is allowed
+        r.exclude('*:guava')
+        r.include('com.google.guava:guava:31.1-jre')
     }
 }
