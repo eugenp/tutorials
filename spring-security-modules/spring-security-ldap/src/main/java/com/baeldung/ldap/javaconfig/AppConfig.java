@@ -25,7 +25,7 @@ public class AppConfig {
     @Bean
     public LdapContextSource contextSource() {
         LdapContextSource contextSource = new LdapContextSource();
-        contextSource.setUrl(env.getRequiredProperty("ldap.url"));
+        contextSource.setUrl(env.getRequiredProperty("ldap.urls"));
         contextSource.setBase(env.getRequiredProperty("ldap.partitionSuffix"));
         contextSource.setUserDn(env.getRequiredProperty("ldap.principal"));
         contextSource.setPassword(env.getRequiredProperty("ldap.password"));
