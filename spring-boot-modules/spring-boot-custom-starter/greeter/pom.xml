@@ -6,6 +6,7 @@
     <artifactId>greeter</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>greeter</name>
+    <packaging>pom</packaging>
 
     <parent>
         <groupId>com.baeldung.spring-boot-modules</groupId>
