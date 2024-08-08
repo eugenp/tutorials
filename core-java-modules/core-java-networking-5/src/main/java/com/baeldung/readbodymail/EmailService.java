@@ -41,11 +41,11 @@ public class EmailService {
                             for (int i = 0; i < multipart.getCount(); i++) {
                                 BodyPart bodyPart = multipart.getBodyPart(i);
                                 System.out.println(bodyPart.getContentType());
-                                if (bodyPart.getContentType()
-                                    .startsWith("TEXT/PLAIN")) {
+                                if (bodyPart.getContentType().toLowerCase()
+                                    .startsWith("text/plain")) {
                                     plainContent = (String) bodyPart.getContent();
-                                } else if (bodyPart.getContentType()
-                                    .startsWith("TEXT/HTML")) {
+                                } else if (bodyPart.getContentType().toLowerCase()
+                                    .startsWith("text/html")) {
                                     try (InputStream inputStream = bodyPart.getInputStream()) {
                                         String html = new String(inputStream.readAllBytes(), "UTF-8");
                                         Document doc = Jsoup.parse(html);
@@ -53,7 +53,7 @@ public class EmailService {
                                     } catch (IOException e) { // Handle exception
                                     }
                                 } else {
-                                    saveAttachment(bodyPart);
+                                    // Handle attachment
                                 }
                             }
                         } else {
@@ -63,25 +63,6 @@ public class EmailService {
                         System.out.println("Error reading email content: " + e.getMessage());
                     }
                 }
-            }
-        }
-    }
-
-    public void saveAttachment(BodyPart bodyPart) throws IOException, MessagingException {
-        String fileName = bodyPart.getFileName();
-
-        // Ensure the directory exists
-        File directory = new File("attachments");
-        if (!directory.exists()) {
-            directory.mkdirs();
-        }
-
-        // Save the attachment
-        try (InputStream inputStream = bodyPart.getInputStream(); FileOutputStream outputStream = new FileOutputStream(new File(directory, fileName))) {
-            byte[] buffer = new byte[1024];
-            int bytesRead;
-            while ((bytesRead = inputStream.read(buffer)) != -1) {
-                outputStream.write(buffer, 0, bytesRead);
             }
         }
     }
