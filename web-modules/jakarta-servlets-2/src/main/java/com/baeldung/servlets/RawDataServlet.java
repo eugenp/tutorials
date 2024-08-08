@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,17 +16,15 @@ public class RawDataServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
-        String payload = "";
+        StringBuilder payload = new StringBuilder();
         try(BufferedReader reader = req.getReader()){
-            StringBuilder sb = new StringBuilder();
             String line;
             while ((line = reader.readLine()) != null){
-                sb.append(line);
+                payload.append(line);
             }
-            payload = sb.toString();
         }
 
-        resp.getWriter().append(countWordsFrequency(payload).toString());
+        resp.getWriter().append(countWordsFrequency(payload.toString()).toString());
     }
 
     private Map<String, Integer> countWordsFrequency(String payload){
