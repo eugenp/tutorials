@@ -58,7 +58,7 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>
-            <version>${apache.commons.collection4.version}</version>
+            <version>${commons-collections4.version}</version>
         </dependency>
         <dependency>
             <groupId>com.oath.cyclops</groupId>
@@ -93,7 +93,6 @@
         <rx.java3.version>3.1.5</rx.java3.version>
         <io.varv.version>1.0.0-alpha-4</io.varv.version>
         <reactor-core.version>3.6.0</reactor-core.version>
-        <apache.commons.collection4.version>4.4</apache.commons.collection4.version>
         <cyclops.version>10.4.1</cyclops.version>
     </properties>
 
