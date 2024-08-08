@@ -17,6 +17,7 @@
 		<java.version>17</java.version>
 		<spring-ai.version>1.0.0-M1</spring-ai.version>
 		<spring-boot.version>3.2.7</spring-boot.version>
+		<ollama-spring-boot-starter.version>1.0.0-M1</ollama-spring-boot-starter.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -40,6 +41,11 @@
 			<groupId>org.springframework.ai</groupId>
 			<artifactId>spring-ai-pdf-document-reader</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.ai</groupId>
+			<artifactId>spring-ai-ollama-spring-boot-starter</artifactId>
+			<version>${ollama-spring-boot-starter.version}</version>
+		</dependency>
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
@@ -58,6 +64,9 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<mainClass>com.baeldung.ollamachatbot.ChatBotApplication</mainClass>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

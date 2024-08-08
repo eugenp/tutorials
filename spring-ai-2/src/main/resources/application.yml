@@ -13,3 +13,8 @@ spring:
       embedding-base-url: https://api.openai.com
       #embedding-api-key: ${SPRING_AI_OPENAI_API_KEY}
       #embedding-model: text-embedding-ada-002
+    ollama:
+      base-url: http://localhost:11434
+      chat:
+        options:
+          model: llama3
