@@ -3,7 +3,6 @@ package com.baeldung.servlets;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,14 +21,12 @@ public class OrderServlet extends HttpServlet {
             resp.sendError(HttpServletResponse.SC_UNSUPPORTED_MEDIA_TYPE, "Invalid content type");
             return;
         }
-        String payload = "";
-        try (BufferedReader reader = req.getReader()) {
-            StringBuilder sb = new StringBuilder();
+        StringBuilder payload = new StringBuilder();
+        try(BufferedReader reader = req.getReader()){
             String line;
-            while ((line = reader.readLine()) != null) {
-                sb.append(line);
+            while ((line = reader.readLine()) != null){
+                payload.append(line);
             }
-            payload = sb.toString();
         } catch (IOException ex) {
             req.setAttribute("message", "There was an error: " + ex.getMessage());
         }
@@ -37,7 +34,7 @@ public class OrderServlet extends HttpServlet {
         XStream xStream = new XStream();
         xStream.allowTypesByWildcard(new String[] { "com.baeldung.**" });
         xStream.alias("Order", Order.class);
-        Order order = (Order) xStream.fromXML(payload);
+        Order order = (Order) xStream.fromXML(payload.toString());
 
         resp.getWriter()
             .append("Created new Order with orderId: ")
