@@ -1,5 +1,16 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        gradlePluginPortal()
+    }
+    dependencies {
+        classpath 'org.kordamp.gradle:enforcer-gradle-plugin:0.13.0'
+    }
+}
+
 plugins {
     id 'java'
+    id 'org.kordamp.gradle.project-enforcer' version '0.13.0'
 }
 
 repositories {
@@ -8,6 +19,9 @@ repositories {
 }
 
 dependencies {
+
+//    implementation 'com.google.guava:guava:33.2.0-jre' // enforce with kordamp
+
     // exclude group
     implementation ('com.google.guava:guava:31.1-jre') {
         exclude group: 'com.google.guava' // Excludes all modules except the main module in com.google.guava.
@@ -71,4 +85,12 @@ configurations.configureEach {
 
 configurations.implementation {
     exclude group: 'com.google.errorprone', module: 'error_prone_annotations'
+}
+
+enforce {
+    rule(enforcer.rules.BannedDependencies) { r ->
+        r.configurations.addAll(['compileClasspath', 'runtimeClasspath'])
+        r.exclude('com.google.guava:guava')
+        r.include('com.google.guava:guava:31.1-jre') // only v 31.1-jre is allowed
+    }
 }
