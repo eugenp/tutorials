@@ -15,8 +15,39 @@
         <relativePath>../parent-boot-2</relativePath>
     </parent>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.platform</groupId>
+                <artifactId>junit-platform-engine</artifactId>
+                <version>${junit-platform.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.platform</groupId>
+                <artifactId>junit-platform-commons</artifactId>
+                <version>${junit-platform.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.javassist</groupId>
+                <artifactId>javassist</artifactId>
+                <version>${javassist.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <modules>
         <module>bookstore-monolith</module>
     </modules>
+
+    <properties>
+        <spring-boot.version>2.1.4.RELEASE</spring-boot.version>
+        <junit-platform.version>1.11.0-M2</junit-platform.version>
+        <javassist.version>3.22.0-GA</javassist.version>
+    </properties>
 
 </project>

@@ -17,7 +17,7 @@ logging:
     level:
         ROOT: DEBUG
         io.github.jhipster: DEBUG
-        com.baeldung.jhipster5: DEBUG
+        com.baeldung.jhipster6: DEBUG
 
 spring:
     profiles:

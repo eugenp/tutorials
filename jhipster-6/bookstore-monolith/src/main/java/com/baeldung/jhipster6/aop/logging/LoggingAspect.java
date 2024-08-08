@@ -43,9 +43,9 @@ public class LoggingAspect {
     /**
      * Pointcut that matches all Spring beans in the application's main packages.
      */
-    @Pointcut("within(com.baeldung.jhipster5.repository..*)"+
-        " || within(com.baeldung.jhipster5.service..*)"+
-        " || within(com.baeldung.jhipster5.web.rest..*)")
+    @Pointcut("within(com.baeldung.jhipster6.repository..*)"+
+        " || within(com.baeldung.jhipster6.service..*)"+
+        " || within(com.baeldung.jhipster6.web.rest..*)")
     public void applicationPackagePointcut() {
         // Method is empty as this is just a Pointcut, the implementations are in the advices.
     }

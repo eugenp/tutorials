@@ -9,6 +9,7 @@ import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
 import org.springframework.aop.interceptor.SimpleAsyncUncaughtExceptionHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.task.TaskExecutor;
 import org.springframework.scheduling.annotation.*;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.scheduling.annotation.SchedulingConfigurer;
@@ -32,7 +33,7 @@ public class AsyncConfiguration implements AsyncConfigurer, SchedulingConfigurer
 
     @Override
     @Bean(name = "taskExecutor")
-    public Executor getAsyncExecutor() {
+    public TaskExecutor getAsyncExecutor() {
         log.debug("Creating Async Task Executor");
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         executor.setCorePoolSize(jHipsterProperties.getAsync().getCorePoolSize());
