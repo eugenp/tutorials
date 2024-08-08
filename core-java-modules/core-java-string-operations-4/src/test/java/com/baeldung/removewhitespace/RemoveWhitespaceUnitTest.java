@@ -41,7 +41,7 @@ class RemoveWhitespaceUnitTest {
     
     @Test
     void givenStringWithWhitespace_whenStripLeading_shouldGetExpectedResult() {
-        String result = myString.stripLeading(myString);
+        String result = myString.stripLeading();
         assertThat(result).isEqualTo("I    am a    wonderful String     !   ");
     }
 
