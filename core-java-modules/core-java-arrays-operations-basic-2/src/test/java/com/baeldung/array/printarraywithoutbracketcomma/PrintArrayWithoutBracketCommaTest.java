@@ -1,4 +1,4 @@
-package com.baeldung.collections.printarraywithoutbracketcomma;
+package com.baeldung.array.printarraywithoutbracketcomma;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
