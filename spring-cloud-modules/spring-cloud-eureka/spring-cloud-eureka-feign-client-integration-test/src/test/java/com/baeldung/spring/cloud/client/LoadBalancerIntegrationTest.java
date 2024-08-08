@@ -5,7 +5,9 @@ import static org.assertj.core.api.BDDAssertions.then;
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringBootConfiguration;
@@ -41,6 +43,7 @@ import reactor.test.StepVerifier;
 @ExtendWith(SpringExtension.class)
 @ActiveProfiles("test")
 @ContextConfiguration(classes = { TestConfig.class })
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class LoadBalancerIntegrationTest {
 
     @Autowired
@@ -107,6 +110,12 @@ class LoadBalancerIntegrationTest {
               clientFactory.getLazyProvider(serviceId, ServiceInstanceListSupplier.class), serviceId, -1);
         }
 
+    }
+
+    @AfterAll
+    void tearDown() {
+        mockBooksService.shutdownServer();
+        secondMockBooksService.shutdownServer();
     }
 
 }
