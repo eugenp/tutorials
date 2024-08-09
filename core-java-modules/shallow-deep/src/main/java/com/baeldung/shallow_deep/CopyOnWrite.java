@@ -6,7 +6,7 @@ class CopyDocument {
     
     public Integer getDocId() { 
         return this.doc.getDocId(); 
-    } 
+    }
     
     public Integer setDocId(Integer id) { 
         if (!copied) { 

@@ -16,7 +16,7 @@ public class ShallowDeepApplication {
 
 	public static void shallowExample() {
 
-		Document originalDocument = new Document(123, new DocDescription(56, "XLS")); 
+        Document originalDocument = new Document(123, new DocDescription(56, "XLS")); 
 		Document shallowCopyDocument = new Document(originalDocument); 
 		shallowCopyDocument.getDocDescription().setType("PDF"); 
 		
