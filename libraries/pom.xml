@@ -107,7 +107,7 @@
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>${commonsio.version}</version>
+            <version>${commons-io.version}</version>
         </dependency>
         <dependency>
             <groupId>org.hamcrest</groupId>
@@ -377,7 +377,6 @@
         <spring-mock-mvc.version>3.0.3</spring-mock-mvc.version>
         <quartz.version>2.3.0</quartz.version>
         <commons-net.version>3.6</commons-net.version>
-        <commonsio.version>2.6</commonsio.version>
         <javapoet.version>1.10.0</javapoet.version>
         <libphonenumber.version>8.12.9</libphonenumber.version>
         <functionaljava.version>4.8.1</functionaljava.version>
