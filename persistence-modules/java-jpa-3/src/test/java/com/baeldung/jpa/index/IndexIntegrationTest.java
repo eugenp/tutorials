@@ -5,9 +5,9 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 import java.util.Optional;
 
 public class IndexIntegrationTest {
@@ -42,7 +42,7 @@ public class IndexIntegrationTest {
             entityManager.getTransaction().commit();
             Assert.fail("Should raise an exception - unique key violation");
         } catch (Exception ex) {
-            Assert.assertTrue(Optional.of(ex).map(Throwable::getCause).map(Throwable::getCause).filter(x -> x instanceof ConstraintViolationException).isPresent());
+            Assert.assertTrue(Optional.of(ex).map(Throwable::getCause).filter(x -> x instanceof ConstraintViolationException).isPresent());
         } finally {
             entityManager.getTransaction().rollback();
         }

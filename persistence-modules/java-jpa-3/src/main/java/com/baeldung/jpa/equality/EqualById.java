@@ -1,12 +1,12 @@
 package com.baeldung.jpa.equality;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 public class EqualById {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String email;
@@ -29,7 +29,6 @@ public class EqualById {
     public void setEmail(String email) {
         this.email = email;
     }
-
 
     @Override
     public int hashCode() {

@@ -1,6 +1,6 @@
 package com.baeldung.jpa.hibernateunproxy;
 
-import javax.persistence.Entity;
+import jakarta.persistence.Entity;
 import java.math.BigDecimal;
 
 @Entity

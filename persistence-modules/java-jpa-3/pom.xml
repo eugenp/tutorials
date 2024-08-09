@@ -40,14 +40,14 @@
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.datatype</groupId>
-            <artifactId>jackson-datatype-hibernate5</artifactId>
+            <artifactId>jackson-datatype-hibernate6</artifactId>
             <version>${jackson.version}</version>
         </dependency>
         <!--Compile time JPA API -->
         <dependency>
-            <groupId>javax.persistence</groupId>
-            <artifactId>javax.persistence-api</artifactId>
-            <version>${javax.persistence-api.version}</version>
+            <groupId>jakarta.persistence</groupId>
+            <artifactId>jakarta.persistence-api</artifactId>
+            <version>${jakarta.persistence-api.version}</version>
         </dependency>
         <!--Runtime JPA implementation -->
         <dependency>
@@ -84,13 +84,14 @@
     </build>
 
     <properties>
-        <hibernate.version>5.4.14.Final</hibernate.version>
+        <hibernate.version>6.1.7.Final</hibernate.version>
         <eclipselink.version>2.7.4</eclipselink.version>
         <mysql.version>8.2.0</mysql.version>
-        <javax.persistence-api.version>2.2</javax.persistence-api.version>
+        <jakarta.persistence-api.version>3.2.0</jakarta.persistence-api.version>
         <maven-processor-plugin.version>3.3.3</maven-processor-plugin.version>
         <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
         <h2.version>2.1.214</h2.version>
+        <jackson.version>2.15.4</jackson.version>
     </properties>
 
 </project>

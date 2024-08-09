@@ -6,9 +6,9 @@ import org.junit.Assert;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -26,7 +26,7 @@ public class HibernateProxyIntegrationTest {
 
     @Test
     public void givenPaymentReceipt_whenAccessingPayment_thenVerifyType() {
-        PaymentReceipt paymentReceipt = entityManager.find(PaymentReceipt.class, 3L);
+        PaymentReceipt paymentReceipt = entityManager.find(PaymentReceipt.class, 1L);
         Assert.assertTrue(paymentReceipt.getPayment() instanceof HibernateProxy);
     }
 
@@ -44,7 +44,7 @@ public class HibernateProxyIntegrationTest {
 
     @Test
     public void givenPaymentReceipt_whenCastingPaymentToConcreteClass_thenThrowClassCastException() {
-        PaymentReceipt paymentReceipt = entityManager.find(PaymentReceipt.class, 3L);
+        PaymentReceipt paymentReceipt = entityManager.find(PaymentReceipt.class, 1L);
         assertThrows(ClassCastException.class, () -> {
             CreditCardPayment creditCardPayment = (CreditCardPayment) paymentReceipt.getPayment();
         });
@@ -52,7 +52,7 @@ public class HibernateProxyIntegrationTest {
 
     @Test
     public void givenPaymentReceipt_whenPaymentIsUnproxied_thenReturnRealEntityObject() {
-        PaymentReceipt paymentReceipt = entityManager.find(PaymentReceipt.class, 3L);
+        PaymentReceipt paymentReceipt = entityManager.find(PaymentReceipt.class, 1L);
         Assert.assertTrue(Hibernate.unproxy(paymentReceipt.getPayment()) instanceof CreditCardPayment);
     }
 
