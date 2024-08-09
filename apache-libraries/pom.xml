@@ -79,6 +79,16 @@
             <version>${meecrowave-jpa.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.apache.xbean</groupId>
+            <artifactId>xbean-asm9-shaded</artifactId>
+            <version>${xbean.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.xbean</groupId>
+            <artifactId>xbean-reflect</artifactId>
+            <version>${xbean.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>okhttp</artifactId>
             <version>${okhttp.version}</version>
@@ -219,6 +229,7 @@
         <meecrowave-jpa.version>1.2.15</meecrowave-jpa.version>
         <meecrowave-core.version>1.2.15</meecrowave-core.version>
         <meecrowave-maven-plugin.version>1.2.15</meecrowave-maven-plugin.version>
+        <xbean.version>4.24</xbean.version>
         <opennlp.opennlp-tools.version>1.8.4</opennlp.opennlp-tools.version>
         <pulsar-client.version>2.1.1-incubating</pulsar-client.version>
         <zookeeper.version>3.4.11</zookeeper.version>
