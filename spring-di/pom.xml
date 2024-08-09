@@ -78,7 +78,7 @@
 
     <properties>
         <start-class>org.baeldung.org.baeldung.sample.App</start-class>
-        <aspectjweaver.version>1.9.20.1</aspectjweaver.version>
+        <aspectjweaver.version>1.9.22.1</aspectjweaver.version>
     </properties>
 
 </project>
