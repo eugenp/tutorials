@@ -1,4 +1,4 @@
-package com.baeldung.shallow_deep;
+package com.baeldung.shallow_deep.utils;
 
 import com.example.yourapp.model.DocDescription;
 import com.example.yourapp.model.Document;

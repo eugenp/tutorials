@@ -1,4 +1,4 @@
-package com.baeldung.shallow_deep;
+package com.baeldung.shallow_deep.util;
 
 public class DeepCopyUtil { 
     private static final Gson gson = new Gson(); 

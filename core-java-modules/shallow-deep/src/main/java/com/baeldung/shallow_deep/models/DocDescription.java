@@ -1,4 +1,4 @@
-package com.baeldung.shallow_deep;
+package com.baeldung.shallow_deep.models;
 
 import java.io.Serializable;
 
