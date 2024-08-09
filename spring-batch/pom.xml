@@ -78,7 +78,7 @@
     </dependencies>
 
     <properties>
-        <opencsv.version>5.8</opencsv.version>
+        <opencsv.version>5.9</opencsv.version>
         <jakarta.xml.bind-api>4.0.0</jakarta.xml.bind-api>
         <jaxb.version>4.0.2</jaxb.version>
         <jackson-datatype.version>2.16.0</jackson-datatype.version>
