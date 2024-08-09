@@ -20,7 +20,7 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>${junit-jupiter-api.version}</version>
+            <version>${junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -45,10 +45,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <junit-jupiter-api.version>5.10.0</junit-jupiter-api.version>
-        <junit-jupiter.version>5.10.3</junit-jupiter.version> <!-- Upgrade to latest breaks tests -->
-    </properties>
 
 </project>
