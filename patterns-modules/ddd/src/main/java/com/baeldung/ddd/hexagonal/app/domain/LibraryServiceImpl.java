@@ -12,7 +12,6 @@ import com.baeldung.ddd.hexagonal.app.ports.in.LibraryService;
 import com.baeldung.ddd.hexagonal.app.ports.out.BookRepository;
 import com.baeldung.ddd.hexagonal.app.ports.out.RentalRepository;
 
-
 @Service
 public class LibraryServiceImpl implements LibraryService {
 	

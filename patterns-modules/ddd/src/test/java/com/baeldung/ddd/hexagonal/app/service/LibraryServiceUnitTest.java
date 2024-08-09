@@ -25,7 +25,6 @@ import com.baeldung.ddd.hexagonal.app.domain.Rental;
 import com.baeldung.ddd.hexagonal.app.ports.out.BookRepository;
 import com.baeldung.ddd.hexagonal.app.ports.out.RentalRepository;
 
-
 @SpringBootTest
 public class LibraryServiceUnitTest {
 

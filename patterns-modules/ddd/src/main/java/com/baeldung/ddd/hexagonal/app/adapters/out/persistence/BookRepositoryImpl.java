@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 import com.baeldung.ddd.hexagonal.app.domain.Book;
 import com.baeldung.ddd.hexagonal.app.ports.out.BookRepository;
 
-
 @Repository
 public class BookRepositoryImpl implements BookRepository {
 	

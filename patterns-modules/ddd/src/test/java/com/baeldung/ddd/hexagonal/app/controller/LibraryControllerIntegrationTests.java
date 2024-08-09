@@ -29,7 +29,6 @@ import com.baeldung.ddd.hexagonal.app.domain.Rental;
 import com.baeldung.ddd.hexagonal.app.ports.in.LibraryService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-
 @WebMvcTest(LibraryController.class)
 public class LibraryControllerIntegrationTests {
 
