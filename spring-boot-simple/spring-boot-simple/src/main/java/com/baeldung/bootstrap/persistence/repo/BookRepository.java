@@ -1,6 +1,6 @@
-package com.baeldung.persistence.repo;
+package com.baeldung.bootstrap.persistence.repo;
 
-import com.baeldung.persistence.model.Book;
+import com.baeldung.bootstrap.persistence.model.Book;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

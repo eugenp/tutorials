@@ -1,6 +1,6 @@
-package com.baeldung;
+package com.baeldung.bootstrap;
 
-import com.baeldung.persistence.model.Book;
+import com.baeldung.bootstrap.persistence.model.Book;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.junit.Test;

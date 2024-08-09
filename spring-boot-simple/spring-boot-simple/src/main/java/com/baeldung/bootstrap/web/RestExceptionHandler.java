@@ -1,7 +1,7 @@
-package com.baeldung.web;
+package com.baeldung.bootstrap.web;
 
-import com.baeldung.web.exception.BookIdMismatchException;
-import com.baeldung.web.exception.BookNotFoundException;
+import com.baeldung.bootstrap.web.exception.BookIdMismatchException;
+import com.baeldung.bootstrap.web.exception.BookNotFoundException;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpHeaders;

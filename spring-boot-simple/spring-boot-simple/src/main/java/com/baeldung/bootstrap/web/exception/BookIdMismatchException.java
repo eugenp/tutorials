@@ -1,4 +1,4 @@
-package com.baeldung.web.exception;
+package com.baeldung.bootstrap.web.exception;
 
 public class BookIdMismatchException extends RuntimeException {
 

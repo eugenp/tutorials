@@ -1,4 +1,4 @@
-package com.baeldung.config;
+package com.baeldung.bootstrap.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

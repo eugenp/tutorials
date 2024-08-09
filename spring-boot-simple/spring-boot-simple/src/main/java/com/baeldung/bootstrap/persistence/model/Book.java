@@ -1,4 +1,4 @@
-package com.baeldung.persistence.model;
+package com.baeldung.bootstrap.persistence.model;
 
 import jakarta.persistence.*;
 

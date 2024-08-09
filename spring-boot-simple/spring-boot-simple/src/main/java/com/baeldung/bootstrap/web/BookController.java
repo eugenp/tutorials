@@ -1,9 +1,9 @@
-package com.baeldung.web;
+package com.baeldung.bootstrap.web;
 
-import com.baeldung.persistence.model.Book;
-import com.baeldung.persistence.repo.BookRepository;
-import com.baeldung.web.exception.BookIdMismatchException;
-import com.baeldung.web.exception.BookNotFoundException;
+import com.baeldung.bootstrap.persistence.model.Book;
+import com.baeldung.bootstrap.persistence.repo.BookRepository;
+import com.baeldung.bootstrap.web.exception.BookIdMismatchException;
+import com.baeldung.bootstrap.web.exception.BookNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
