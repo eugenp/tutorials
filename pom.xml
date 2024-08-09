@@ -656,8 +656,9 @@
                 <module>libraries-data-io</module>
                 <module>libraries-data</module>
                 <module>libraries-files</module>
-                <module>libraries-http-2</module>
                 <module>libraries-http</module>
+		<module>libraries-http-2</module>
+	        <module>libraries-http-3</module>
                 <module>libraries-io</module>
                 <module>libraries-llms</module>
                 <module>libraries-primitive</module>
@@ -911,8 +912,9 @@
                 <module>libraries-data-io</module>
                 <module>libraries-data</module>
                 <module>libraries-files</module>
+		<module>libraries-http</module>
                 <module>libraries-http-2</module>
-                <module>libraries-http</module>
+                <module>libraries-http-3</module>
                 <module>libraries-io</module>
                 <module>libraries-llms</module>
                 <module>libraries-primitive</module>
@@ -1165,7 +1167,7 @@
         <commons-collections4.version>4.5.0-M2</commons-collections4.version>
         <commons-io.version>2.15.1</commons-io.version>
         <commons-lang3.version>3.14.0</commons-lang3.version>
-        <commons-cli.version>1.6.0</commons-cli.version>
+        <commons-cli.version>1.8.0</commons-cli.version>
         <maven-war-plugin.version>3.4.0</maven-war-plugin.version>
         <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
         <jstl-api.version>1.2</jstl-api.version>
