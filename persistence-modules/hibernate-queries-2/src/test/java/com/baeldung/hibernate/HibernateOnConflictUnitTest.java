@@ -48,8 +48,11 @@ public class HibernateOnConflictUnitTest {
     public void givenInsertQueryWithOnConflictClause_whenNoConflict_ThenInsertNewRecord() {
 
         long rowCountBefore = getRowCount();
-        int updated = session.createMutationQuery("insert into Student (id, name) values (2, 'Sean') on conflict(id) do update " + "set name = excluded.name")
-            .executeUpdate();
+        int updated = session.createMutationQuery("""
+            insert into Student (studentId, name) values (2, 'Sean') 
+            on conflict(studentId) do update 
+            set name = excluded.name
+            """).executeUpdate();
         long rowCountAfter = getRowCount();
 
         assertEquals(updated, 1);
@@ -60,7 +63,11 @@ public class HibernateOnConflictUnitTest {
     public void givenInsertQueryWithOnConflictClause_whenConflictOccurs_ThenUpdateExistingRecord() {
 
         long rowCountBefore = getRowCount();
-        int updated = session.createMutationQuery("insert into Student (id, name) values (1, 'Sean') on conflict(id) do update " + "set name = excluded.name")
+        int updated = session.createMutationQuery("""
+            insert into Student (studentId, name) values (1, 'Sean') 
+            on conflict(studentId) do update 
+            set name = excluded.name
+            """)
             .executeUpdate();
         long rowCountAfter = getRowCount();
 
@@ -71,7 +78,10 @@ public class HibernateOnConflictUnitTest {
     @Test
     public void givenInsertQueryWithOnConflictClause_whenNoConflcitDoNothing_ThenInsertNewRecord() {
         long rowCountBefore = getRowCount();
-        int updated = session.createMutationQuery("insert into Student (id, name) values (2, 'Sean') on conflict do nothing ")
+        int updated = session.createMutationQuery("""
+            insert into Student (studentId, name) values (2, 'Sean') 
+            on conflict do nothing
+            """)
             .executeUpdate();
         long rowCountAfter = getRowCount();
 
@@ -82,7 +92,10 @@ public class HibernateOnConflictUnitTest {
     @Test
     public void givenInsertQueryWithOnConflictClause_whenOnConflcitDoNothing_ThenErrorIsLogged() {
         long rowCountBefore = getRowCount();
-        int updated = session.createMutationQuery("insert into Student (id, name) values (1, 'Sean') on conflict do nothing ")
+        int updated = session.createMutationQuery("""
+            insert into Student (studentId, name) values (1, 'Sean') 
+            on conflict do nothing
+            """)
             .executeUpdate();
         long rowCountAfter = getRowCount();
         assertEquals(updated, 0);
