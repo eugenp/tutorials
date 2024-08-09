@@ -42,7 +42,7 @@ public class IndexIntegrationTest {
             entityManager.getTransaction().commit();
             Assert.fail("Should raise an exception - unique key violation");
         } catch (Exception ex) {
-            Assert.assertTrue(Optional.of(ex).map(Throwable::getCause).map(Throwable::getCause).filter(x -> x instanceof ConstraintViolationException).isPresent());
+            Assert.assertTrue(Optional.of(ex).map(Throwable::getCause).filter(x -> x instanceof ConstraintViolationException).isPresent());
         } finally {
             entityManager.getTransaction().rollback();
         }

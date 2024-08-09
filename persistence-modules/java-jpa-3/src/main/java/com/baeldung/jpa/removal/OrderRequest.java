@@ -13,7 +13,7 @@ import java.util.List;
 public class OrderRequest {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @OneToOne(cascade = { CascadeType.REMOVE, CascadeType.PERSIST })

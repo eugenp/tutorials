@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 public class EqualByJavaDefault implements Cloneable{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String email;
