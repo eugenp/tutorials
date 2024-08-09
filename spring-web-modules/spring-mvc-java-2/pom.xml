@@ -101,7 +101,7 @@
     <properties>
         <jaxb-runtime.version>4.0.1</jaxb-runtime.version>
         <htmlunit.version>2.32</htmlunit.version>
-        <poi.version>3.16-beta1</poi.version>
+        <poi.version>5.3.0</poi.version>
         <javax.el.version>3.0.1-b09</javax.el.version>
         <javax-servlet-api.version>2.3.3</javax-servlet-api.version>
         <thymeleaf.version>3.1.2.RELEASE</thymeleaf.version>
