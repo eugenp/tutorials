@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-class PreparedStatementInClauseTest {
+class PreparedStatementInClauseUnitTest {
 
     private static Connection connection = null;
     private static final String JDBC_URL = "jdbc:h2:mem:testDB";

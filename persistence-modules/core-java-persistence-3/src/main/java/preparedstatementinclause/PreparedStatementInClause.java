@@ -41,7 +41,8 @@ public class PreparedStatementInClause {
     public static ResultSet populateParamsWithArray(Connection connection, List<Integer> ids) throws SQLException {
         String sql = "SELECT * FROM customer where id IN (select * from table(x int = ?))";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        Array array = preparedStatement.getConnection().createArrayOf("int", ids.toArray());
+        Array array = preparedStatement.getConnection()
+            .createArrayOf("int", ids.toArray());
         preparedStatement.setArray(1, array);
         return preparedStatement.executeQuery();
     }
