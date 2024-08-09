@@ -6,11 +6,13 @@ import java.util.Random;
 public class JavaStream {
 
     public static void main(String[] args) {
-        int LOWER_BOUND = 1, UPPER_BOUND = 100, ARRAY_SIZE = 10;
+        int LOWER_BOUND = 1;
+        int UPPER_BOUND = 100;
+        int ARRAY_SIZE = 10;
         // random number generator
         Random random = new Random();
         // fill with ints method
-        int[] arr = random.ints(ARRAY_SIZE, LOWER_BOUND, UPPER_BOUND).toArray();
+        int arr[] = random.ints(ARRAY_SIZE, LOWER_BOUND, UPPER_BOUND).toArray();
 
         System.out.println(Arrays.toString(arr));
     }

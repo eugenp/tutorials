@@ -7,18 +7,20 @@ public class SeedExample {
 
     public static void main(String[] args) {
 
-        int LOWER_BOUND = 1, UPPER_BOUND = 100, ARRAY_SIZE = 10;
+        int LOWER_BOUND = 1;
+        int UPPER_BOUND = 100;
+        int ARRAY_SIZE = 10;
 
-        // Producing identifical elemnts repeatbaly
-        int[] arr = new Random(12345).ints(ARRAY_SIZE, LOWER_BOUND, UPPER_BOUND).toArray();
+        // Produce identical elements repeatably
+        int arr[] = new Random(12345).ints(ARRAY_SIZE, LOWER_BOUND, UPPER_BOUND).toArray();
 
-        int[] arr2 = new Random(12345).ints(ARRAY_SIZE, LOWER_BOUND, UPPER_BOUND).toArray();
+        int arr2[] = new Random(12345).ints(ARRAY_SIZE, LOWER_BOUND, UPPER_BOUND).toArray();
 
         System.out.printf("Arr: %s%n", Arrays.toString(arr));
         System.out.printf("Arr2: %s%n", Arrays.toString(arr2));
 
         // using different seeds
-        int[] arr3 = new Random(54321).ints(ARRAY_SIZE, LOWER_BOUND, UPPER_BOUND).toArray();
+        int arr3[] = new Random(54321).ints(ARRAY_SIZE, LOWER_BOUND, UPPER_BOUND).toArray();
 
         System.out.printf("%nArr2: %s%n", Arrays.toString(arr2));
         System.out.printf("Arr3: %s%n", Arrays.toString(arr3));
