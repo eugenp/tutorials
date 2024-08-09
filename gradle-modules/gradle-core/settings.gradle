@@ -1,0 +1,3 @@
+rootProject.name = 'gradle-core'
+include 'excluding-transitive-dependencies'
+
