@@ -118,7 +118,7 @@
         <testcontainers.version>1.19.7</testcontainers.version>
         <testcontainers-keycloak.version>3.3.0</testcontainers-keycloak.version>
         <testcontainers-redis-junit-jupiter.version>1.4.6</testcontainers-redis-junit-jupiter.version>
-        <rest-assured.version>5.4.0</rest-assured.version>
+        <rest-assured.version>5.5.0</rest-assured.version>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version> <!-- Latest version not compatible -->
     </properties>
 

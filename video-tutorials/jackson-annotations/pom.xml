@@ -117,7 +117,7 @@
         <joda-time.version>2.12.5</joda-time.version>
         <gson.version>2.11.0</gson.version>
         <!-- testing -->
-        <rest-assured.version>3.0.1</rest-assured.version>
+        <rest-assured.version>5.5.0</rest-assured.version>
         <rest-assured-json-schema-validator.version>3.0.0</rest-assured-json-schema-validator.version>
         <json-schema-validator.version>2.2.6</json-schema-validator.version>
         <json-path.version>5.3.2</json-path.version>

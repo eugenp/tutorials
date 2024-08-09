@@ -124,7 +124,7 @@
 
     <properties>
         <reactor-spring.version>1.0.1.RELEASE</reactor-spring.version>
-        <wiremock.version>3.3.1</wiremock.version>
+        <wiremock.version>3.9.1</wiremock.version>
     </properties>
 
 </project>
