@@ -11,7 +11,8 @@ import com.baeldung.ddd.hexagonal.app.ports.out.BookRepository;
 
 @Repository
 public class BookRepositoryImpl implements BookRepository {
-	@Autowired
+	
+    @Autowired
     private JpaBookRepository jpaBookRepository;
 
     @Override
@@ -24,9 +25,8 @@ public class BookRepositoryImpl implements BookRepository {
         return jpaBookRepository.findById(bookId).orElse(null);
     }
 
-	@Override
-	public List<Book> findAllBooks() {
-		return jpaBookRepository.findAll();
-	}
-
+    @Override
+    public List<Book> findAllBooks() {
+	    return jpaBookRepository.findAll();
+    }
 }

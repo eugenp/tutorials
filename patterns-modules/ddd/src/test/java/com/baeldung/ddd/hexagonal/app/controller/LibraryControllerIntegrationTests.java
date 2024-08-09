@@ -31,7 +31,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 @WebMvcTest(LibraryController.class)
-public class LibraryControllerTests {
+public class LibraryControllerIntegrationTests {
 
     @Autowired
     private MockMvc mockMvc;
@@ -51,7 +51,7 @@ public class LibraryControllerTests {
     }
 
     @Test
-    public void testRentBook() throws Exception {
+    public void whenRentBook_thenRentalIsReturned() throws Exception {
         when(libraryService.rentBook(anyLong())).thenReturn(rental);
 
         ResultActions resultActions = mockMvc.perform(post("/library/books/1/rent")
@@ -66,7 +66,7 @@ public class LibraryControllerTests {
     }
 
     @Test
-    public void testReturnBook() throws Exception {
+    public void whenReturnBook_thenReturnRentalIsReturned() throws Exception {
         when(libraryService.returnBook(anyLong())).thenReturn(rental);
 
         ResultActions resultActions = mockMvc.perform(post("/library/rentals/1")
@@ -81,7 +81,7 @@ public class LibraryControllerTests {
     }
 
     @Test
-    public void testCalculateFine() throws Exception {
+    public void whenCalculateFine_thenCorrectFineIsReturned() throws Exception {
         BigDecimal fine = BigDecimal.valueOf(10);
         when(libraryService.calculateFine(anyLong())).thenReturn(fine);
 

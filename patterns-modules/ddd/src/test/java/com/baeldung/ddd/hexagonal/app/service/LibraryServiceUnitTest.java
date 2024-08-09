@@ -27,7 +27,7 @@ import com.baeldung.ddd.hexagonal.app.ports.out.RentalRepository;
 
 
 @SpringBootTest
-public class LibraryServiceTest {
+public class LibraryServiceUnitTest {
 
     @Mock
     private BookRepository bookRepository;
@@ -48,7 +48,7 @@ public class LibraryServiceTest {
     }
 
     @Test
-    public void testRentBook() {
+    public void whenRentBook_thenBookIsRented() {
         when(bookRepository.findById(1L)).thenReturn(book);
         when(rentalRepository.save(any(Rental.class))).thenReturn(rental);
 
@@ -59,7 +59,7 @@ public class LibraryServiceTest {
     }
 
     @Test
-    public void testReturnBook() {
+    public void whenReturnBook_thenReturnDateIsSet() {
         when(rentalRepository.findById(1L)).thenReturn(rental);
 
         libraryService.returnBook(1L);
@@ -70,7 +70,7 @@ public class LibraryServiceTest {
     }
 
     @Test
-    public void testCalculateFine() {
+    public void whenCalculateFine_thenCorrectFineIsReturned() {
         rental.setRentDate(LocalDate.now().minusDays(20));
         when(rentalRepository.findById(1L)).thenReturn(rental);
 

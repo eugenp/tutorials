@@ -9,7 +9,8 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Book implements Serializable {
-	@Id
+	
+    @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
     private String title;
@@ -49,6 +50,5 @@ public class Book implements Serializable {
 	}
 	public void setAuthor(String author) {
 		this.author = author;
-	}
-    
+	}  
 }

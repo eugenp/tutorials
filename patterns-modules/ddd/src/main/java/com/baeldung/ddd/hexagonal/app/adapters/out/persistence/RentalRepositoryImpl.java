@@ -8,7 +8,8 @@ import com.baeldung.ddd.hexagonal.app.ports.out.RentalRepository;
 
 @Repository
 public class RentalRepositoryImpl implements RentalRepository {
-	@Autowired
+	
+    @Autowired
     private JpaRentalRepository jpaRentalRepository;
 
     @Override
@@ -20,5 +21,4 @@ public class RentalRepositoryImpl implements RentalRepository {
     public Rental findById(Long rentalId) {
         return jpaRentalRepository.findById(rentalId).orElse(null);
     }
-
 }

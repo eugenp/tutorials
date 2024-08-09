@@ -11,7 +11,8 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Rental implements Serializable{
-	@Id
+	
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
     private Book book;

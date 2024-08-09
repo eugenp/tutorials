@@ -20,7 +20,7 @@ import com.baeldung.ddd.hexagonal.app.ports.in.LibraryService;
 @RequestMapping("/library")
 public class LibraryController {
 	
-	@Autowired
+    @Autowired
     LibraryService libraryService;
 
     @PostMapping("/books/{bookId}/rent")

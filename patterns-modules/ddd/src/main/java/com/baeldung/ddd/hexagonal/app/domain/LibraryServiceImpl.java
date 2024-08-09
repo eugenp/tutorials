@@ -16,9 +16,10 @@ import com.baeldung.ddd.hexagonal.app.ports.out.RentalRepository;
 @Service
 public class LibraryServiceImpl implements LibraryService {
 	
-	@Autowired
-	BookRepository bookRepository;
-	@Autowired
+    @Autowired
+    BookRepository bookRepository;
+	
+    @Autowired
     RentalRepository rentalRepository;
 
     @Override
@@ -67,14 +68,13 @@ public class LibraryServiceImpl implements LibraryService {
         return fine;
     }
 
-	@Override
-	public List<Book> getAllBooks() {
-		return bookRepository.findAllBooks();
-	}
+    @Override
+    public List<Book> getAllBooks() {
+	    return bookRepository.findAllBooks();
+    }
 
-	@Override
-	public Book saveBook(Book book) {
-		return bookRepository.save(book);
-	}
-
+    @Override
+    public Book saveBook(Book book) {
+        return bookRepository.save(book);
+    }
 }
