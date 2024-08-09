@@ -20,4 +20,8 @@
         <module>helloworld-grpc-consumer</module>
     </modules>
 
+    <properties>
+        <grpc-spring-boot-starter.version>3.1.0.RELEASE</grpc-spring-boot-starter.version>
+    </properties>
+
 </project>
