@@ -46,7 +46,7 @@
 
     <properties>
         <hibernate-jpa-2.1-api.version>1.0.0.Final</hibernate-jpa-2.1-api.version>
-        <annotations.version>23.0.0</annotations.version>
+        <annotations.version>24.1.0</annotations.version>
     </properties>
 
 </project>
