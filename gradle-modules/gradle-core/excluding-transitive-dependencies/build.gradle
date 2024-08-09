@@ -1,16 +1,6 @@
-buildscript {
-    repositories {
-        mavenCentral()
-        gradlePluginPortal()
-    }
-    dependencies {
-        classpath 'org.kordamp.gradle:enforcer-gradle-plugin:0.13.0'
-    }
-}
-
 plugins {
     id 'java'
-    id 'org.kordamp.gradle.project-enforcer' version '0.13.0'
+    id 'org.kordamp.gradle.project-enforcer' version '0.14.0'
 }
 
 repositories {
