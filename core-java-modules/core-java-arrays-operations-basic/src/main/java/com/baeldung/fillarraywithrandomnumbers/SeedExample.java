@@ -11,7 +11,7 @@ public class SeedExample {
         int UPPER_BOUND = 100;
         int ARRAY_SIZE = 10;
 
-        // Produce identical elements repeatably
+        // Produce identical elements repeatedly
         int arr[] = new Random(12345).ints(ARRAY_SIZE, LOWER_BOUND, UPPER_BOUND).toArray();
 
         int arr2[] = new Random(12345).ints(ARRAY_SIZE, LOWER_BOUND, UPPER_BOUND).toArray();
