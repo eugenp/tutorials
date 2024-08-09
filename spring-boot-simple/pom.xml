@@ -19,16 +19,8 @@
     <modules>
         <module>spring-boot-starters</module>
         <module>spring-boot-logging</module>
+        <module>spring-boot-simple</module>
+        <module>actuator-boot-1</module>
     </modules>
-
-    <dependencies>
-
-    </dependencies>
-
-    <properties>
-        <subethasmtp.version>7.0.2</subethasmtp.version>
-        <bootstrap.version>3.3.7-1</bootstrap.version>
-        <jpa.version>2.2</jpa.version>
-    </properties>
 
 </project>
