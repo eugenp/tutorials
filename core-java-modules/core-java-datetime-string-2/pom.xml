@@ -31,7 +31,7 @@
     </build>
 
     <properties>
-        <joda-time.version>2.12.5</joda-time.version>
+        <joda-time.version>2.12.7</joda-time.version>
     </properties>
 
 </project>
