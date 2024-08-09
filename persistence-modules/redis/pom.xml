@@ -52,6 +52,11 @@
             <artifactId>netty-transport-native-epoll</artifactId>
             <version>${epoll.version}</version>
         </dependency>
+        <dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy</artifactId>
+            <version>${byte-buddy.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -59,6 +64,7 @@
         <redisson.version>3.20.0</redisson.version>
         <jedis.version>5.0.2</jedis.version>
         <epoll.version>4.1.90.Final</epoll.version>
+        <byte-buddy.version>1.14.17</byte-buddy.version>
     </properties>
 
 </project>
