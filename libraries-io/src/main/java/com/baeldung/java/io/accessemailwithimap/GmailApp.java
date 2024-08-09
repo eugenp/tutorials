@@ -52,7 +52,7 @@ public class GmailApp {
             LOGGER.info("From: " + Arrays.toString(message.getFrom()));
             LOGGER.info("Text: " + message.getContent());
         }
-        inbox.close(false);
+        inbox.close(true);
     }
 
     public static void searchEmails(Store store, String from) throws MessagingException {
