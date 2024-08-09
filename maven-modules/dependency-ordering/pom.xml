@@ -13,7 +13,7 @@
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
-            <version>5.3.0</version>
+            <version>${poi.version}</version>
         </dependency>
         <!-- Change the order of dependencies to simulate the dependency ordering issue -->
         <dependency>
@@ -22,5 +22,9 @@
             <version>4.2</version>
         </dependency>
     </dependencies>
+
+    <properties>
+        <poi.version>5.3.0</poi.version>
+    </properties>
 
 </project>

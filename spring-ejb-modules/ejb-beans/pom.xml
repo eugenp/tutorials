@@ -79,7 +79,6 @@
             <artifactId>arquillian-junit-container</artifactId>
             <scope>test</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/joda-time/joda-time -->
         <dependency>
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
@@ -194,7 +193,7 @@
         <activemq-junit.version>5.16.3</activemq-junit.version>
         <maven-dependency-plugin.version>2.8</maven-dependency-plugin.version>
         <wildfly-ejb.version>8.2.1.Final</wildfly-ejb.version>
-        <joda-time.version>2.12.5</joda-time.version>
+        <joda-time.version>2.12.7</joda-time.version>
     </properties>
 
 </project>

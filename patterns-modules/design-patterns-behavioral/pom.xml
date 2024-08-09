@@ -39,7 +39,7 @@
     </dependencies>
 
     <properties>
-        <intellij.annotations.version>16.0.2</intellij.annotations.version>
+        <intellij.annotations.version>24.1.0</intellij.annotations.version>
         <findbugs.annotations.version>3.0.1</findbugs.annotations.version>
     </properties>
 

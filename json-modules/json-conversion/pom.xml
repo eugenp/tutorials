@@ -32,7 +32,7 @@
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
-            <version>5.2.3</version>
+            <version>${poi.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
@@ -43,6 +43,7 @@
 
     <properties>
         <gson.version>2.11.0</gson.version>
+        <poi.version>5.3.0</poi.version>
     </properties>
 
 </project>

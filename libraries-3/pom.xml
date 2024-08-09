@@ -177,8 +177,8 @@
         <jcabi-aspects.version>0.26.0</jcabi-aspects.version>
         <aspectjrt.version>1.9.20.1</aspectjrt.version>
         <jcabi-maven-plugin.version>0.14.1</jcabi-maven-plugin.version>
-        <aspectjtools.version>1.9.20.1</aspectjtools.version>
-        <aspectjweaver.version>1.9.20.1</aspectjweaver.version>
+        <aspectjtools.version>1.9.22.1</aspectjtools.version>
+        <aspectjweaver.version>1.9.22.1</aspectjweaver.version>
         <velocity-engine-core.version>2.2</velocity-engine-core.version>
         <nullaway.version>0.3.0</nullaway.version>
         <plexus-compiler.version>2.8</plexus-compiler.version>

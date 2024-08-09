@@ -114,7 +114,7 @@
 
     <properties>
         <!-- various -->
-        <joda-time.version>2.12.5</joda-time.version>
+        <joda-time.version>2.12.7</joda-time.version>
         <gson.version>2.11.0</gson.version>
         <!-- testing -->
         <rest-assured.version>3.0.1</rest-assured.version>
