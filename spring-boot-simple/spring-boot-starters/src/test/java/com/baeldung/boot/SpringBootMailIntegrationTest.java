@@ -1,6 +1,6 @@
-package com.baeldung;
+package com.baeldung.boot;
 
-import com.baeldung.boot.Application;
+import jakarta.mail.MessagingException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +13,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.subethamail.wiser.Wiser;
 import org.subethamail.wiser.WiserMessage;
 
-import jakarta.mail.MessagingException;
 import java.io.IOException;
 import java.util.List;
 

@@ -1,6 +1,5 @@
-package com.baeldung;
+package com.baeldung.boot;
 
-import com.baeldung.boot.Application;
 import com.baeldung.boot.domain.GenericEntity;
 import com.baeldung.boot.repository.GenericEntityRepository;
 import org.junit.Test;
