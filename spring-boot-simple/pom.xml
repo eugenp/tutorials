@@ -18,8 +18,8 @@
 
     <modules>
         <module>spring-boot-starters</module>
-        <module>spring-boot-logging</module>
-        <module>spring-boot-simple</module>
+<!--        <module>spring-boot-logging</module>-->
+        <module>spring-boot-simple-common</module>
         <module>actuator-boot-1</module>
     </modules>
 
