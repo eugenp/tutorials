@@ -660,6 +660,7 @@
                 <module>atomix</module>
                 <module>aws-modules</module>
                 <module>azure</module>
+                <module>azure-functions</module>
                 <module>bazel</module>
                 <module>checker-framework</module>
                 <module>custom-pmd</module>
@@ -954,6 +955,7 @@
                 <module>atomix</module>
                 <module>aws-modules</module>
                 <module>azure</module>
+                <module>azure-functions</module>
                 <module>bazel</module>
                 <module>checker-framework</module>
                 <module>custom-pmd</module>
