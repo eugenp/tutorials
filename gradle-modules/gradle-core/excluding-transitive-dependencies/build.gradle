@@ -12,7 +12,7 @@ repositories {
 
 dependencies {
 
-//    implementation 'com.google.guava:guava:33.2.0-jre' // enforce with kordamp
+    //    implementation 'com.google.guava:guava:33.2.0-jre' // enforce this cannot be included with kordamp
 
     // exclude group
     implementation ('com.google.guava:guava:31.1-jre') {
