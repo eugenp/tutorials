@@ -3,13 +3,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-<!--		<groupId>com.baeldung</groupId>-->
-<!--		<artifactId>parent-boot-3</artifactId>-->
-<!--		<version>0.0.1-SNAPSHOT</version>-->
-<!--		<relativePath>../parent-boot-3</relativePath>-->
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.3.2</version>
+		<groupId>com.baeldung</groupId>
+		<artifactId>parent-boot-3</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../parent-boot-3</relativePath>
 	</parent>
 
 	<artifactId>mockito-core-vs-mockito-inline</artifactId>
