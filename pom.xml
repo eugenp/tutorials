@@ -568,6 +568,75 @@
             <modules>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
+                <module>parent-boot-3</module>
+                <module>parent-spring-4</module>
+                <module>parent-spring-5</module>
+                <module>parent-spring-6</module>
+                <module>core-groovy-modules</module>
+                <module>core-java-modules</module>
+                <module>jhipster-6</module>
+                <module>json-modules</module>
+                <module>maven-modules</module>
+                <module>messaging-modules</module>
+                <module>persistence-modules</module>
+                <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->
+                <module>persistence-modules/spring-data-neo4j</module>
+                <module>quarkus-modules</module>
+                <module>security-modules</module>
+                <!--<module>spring-cloud-modules/spring-cloud-data-flow</module>--><!-- failing after upgrading to jdk17-->
+                <!--<module>spring-cloud-modules/spring-cloud-stream-starters</module>--><!-- failing after upgrading to jdk17-->
+                <!--<module>spring-di-2</module>--><!-- failing after upgrading to jdk17-->
+                <!--<module>spring-integration</module>--><!-- failing after upgrading to jdk17-->
+                <!--<module>spring-jinq</module>--><!--disabling the jinq modules, as the default build profile is failing due to bad mv files. Please refer: JAVA-31341-->
+                <module>spring-security-modules</module>
+                <module>spring-static-resources</module>
+                <module>testing-modules</module>
+                <!--<module>static-analysis</module> - requires additional configuration to be compiled due to the JVM strong encapsulation -->
+                <!--<module>tablesaw</module>--><!-- failing after upgrading to jdk17-->
+                <!--<module>spring-swagger-codegen/openapi-custom-generator</module>
+                <module>spring-swagger-codegen/openapi-custom-generator-api-client</module> --> <!-- cannot add the individual modules here because the order is not guaranteed -->
+            </modules>
+
+            <properties>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <java.version>17</java.version>
+                <maven.compiler.source>17</maven.compiler.source>
+                <maven.compiler.target>17</maven.compiler.target>
+            </properties>
+
+        </profile>
+
+        <profile>
+            <id>default-jdk21</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <forkCount>3</forkCount>
+                            <reuseForks>true</reuseForks>
+                            <includes>
+                                <include>SpringContextTest</include>
+                                <include>**/*UnitTest</include>
+                            </includes>
+                            <excludes>
+                                <exclude>**/*IntegrationTest.java</exclude>
+                                <exclude>**/*IntTest.java</exclude>
+                                <exclude>**/*LongRunningUnitTest.java</exclude>
+                                <exclude>**/*ManualTest.java</exclude>
+                                <exclude>**/JdbcTest.java</exclude>
+                                <exclude>**/*LiveTest.java</exclude>
+                            </excludes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+
+            <modules>
+                <module>parent-boot-1</module>
+                <module>parent-boot-2</module>
+                <module>parent-boot-3</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
@@ -577,9 +646,9 @@
                 <module>apache-httpclient-2</module>
                 <module>apache-httpclient4</module>
                 <module>apache-httpclient</module>
+                <module>apache-kafka</module>
                 <module>apache-kafka-2</module>
                 <module>apache-kafka-3</module>
-                <module>apache-kafka</module>
                 <module>apache-libraries-2</module>
                 <module>apache-libraries</module>
                 <module>apache-olingo</module><!-- apache-olingo wasn't updated to boot-3 because a workaround for jakarta namespace wasn't found JAVA-27818 -->
@@ -593,8 +662,6 @@
                 <module>azure</module>
                 <module>bazel</module>
                 <module>checker-framework</module>
-                <module>core-groovy-modules</module>
-                <module>core-java-modules</module>
                 <module>custom-pmd</module>
                 <module>data-structures</module>
                 <module>deeplearning4j</module>
@@ -621,7 +688,7 @@
                 <module>jackson-simple</module>
                 <module>java-blockchain</module>
                 <module>java-jdi</module>
-                <!--<module>java-panama</module>--> <!--JAVA-27339-->
+                <module>java-panama</module>
                 <module>javafx</module>
                 <module>javax-sound</module>
                 <module>javaxval-2</module>
@@ -630,14 +697,13 @@
                 <module>jaxb</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
-                <module>jhipster-6</module>
                 <module>jmh</module>
-                <module>json-modules</module>
                 <module>jsoup</module>
                 <module>jws</module>
                 <module>ksqldb</module>
                 <module>kubernetes-modules</module>
                 <module>language-interop</module>
+                <module>libraries</module> <!-- very long running -->
                 <module>libraries-2</module>
                 <module>libraries-3</module>
                 <module>libraries-4</module>
@@ -667,18 +733,15 @@
                 <module>libraries-security</module>
                 <module>libraries-server-2</module>
                 <module>libraries-server</module>
-<!--                <module>libraries-stream</module> JDK21-->
+                <module>libraries-stream</module>
                 <module>libraries-testing-2</module>
                 <module>libraries-transform</module>
-                <module>libraries</module> <!-- very long running -->
                 <module>lightrun</module>
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
                 <module>lucene</module>
                 <module>mapstruct</module>
                 <module>mapstruct-2</module>
-                <module>maven-modules</module>
-                <module>messaging-modules</module>
                 <module>metrics</module>
                 <module>microservices-modules</module>
                 <module>mustache</module>
@@ -687,15 +750,10 @@
                 <module>optaplanner</module>
                 <module>orika</module>
                 <module>osgi</module>
-                <module>parent-boot-3</module>
                 <module>patterns-modules</module>
                 <module>performance-tests</module>
-                <module>persistence-modules</module>
-                <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->
-                <module>persistence-modules/spring-data-neo4j</module>
                 <module>protobuffer</module>
                 <module>podman</module>
-                <module>quarkus-modules</module>
                 <module>reactive-systems</module>
                 <module>reactor-core</module>
                 <module>reactor-core-2</module>
@@ -703,7 +761,6 @@
                 <module>rule-engines-modules</module>
                 <module>rxjava-modules</module>
                 <module>saas-modules</module>
-                <module>security-modules</module>
                 <module>server-modules</module>
                 <module>spf4j</module>
                 <module>spring-5-webflux-2</module>
@@ -713,20 +770,18 @@
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
                 <module>spring-ai</module>
-		<module>spring-ai-2</module>
+                <module>spring-ai-2</module>
                 <module>spring-aop-2</module>
                 <module>spring-aop</module>
-                <!--<module>spring-batch-2</module>--><!-- requires JDK-21 -->
                 <module>spring-batch</module>
+                <module>spring-batch-2</module>
                 <module>spring-boot-modules</module>
                 <module>spring-boot-rest</module>
                 <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
                 <module>spring-cloud-modules/spring-cloud-contract</module>
-                <!--<module>spring-cloud-modules/spring-cloud-data-flow</module>--><!-- failing after upgrading to jdk17-->
                 <module>spring-cloud-modules/spring-cloud-eureka</module>
                 <module>spring-cloud-modules/spring-cloud-netflix-feign</module>
                 <module>spring-cloud-modules/spring-cloud-security</module>
-                <!--<module>spring-cloud-modules/spring-cloud-stream-starters</module>--><!-- failing after upgrading to jdk17-->
                 <module>spring-cloud-modules/spring-cloud-zuul-eureka-integration</module>
                 <module>spring-cloud-modules/spring-cloud-bootstrap</module>
                 <module>spring-cloud-modules/spring-cloud-task</module>
@@ -736,16 +791,13 @@
                 <module>spring-core</module>
                 <module>spring-credhub</module>
                 <module>spring-cucumber</module>
-                <!--<module>spring-di-2</module>--><!-- failing after upgrading to jdk17-->
                 <module>spring-di-3</module>
                 <module>spring-di-4</module>
                 <module>spring-di</module>
                 <module>spring-drools</module>
                 <module>spring-ejb-modules</module>
                 <module>spring-exceptions</module>
-                <!--<module>spring-integration</module>--><!-- failing after upgrading to jdk17-->
                 <module>spring-jersey</module>
-                <!--<module>spring-jinq</module>--><!--disabling the jinq modules, as the default build profile is failing due to bad mv files. Please refer: JAVA-31341-->
                 <module>spring-kafka-2</module>
                 <module>spring-kafka-3</module>
                 <module>spring-kafka-4</module>
@@ -760,42 +812,33 @@
                 <module>spring-remoting-modules</module> <!-- Upgrade to Boot 3 not possible as since Spring 6 the remoting modules has been removed from Spring. -->
                 <module>spring-scheduling</module>
                 <module>spring-scheduling-2</module>
-                <module>spring-security-modules</module>
                 <module>spring-shell</module>
                 <module>spring-soap</module>
                 <module>spring-spel</module>
                 <module>spring-state-machine</module>
-                <module>spring-static-resources</module>
                 <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
                 <module>spring-threads</module>
                 <module>spring-vault</module>
                 <module>spring-web-modules</module>
                 <module>spring-websockets</module>
-<!--            <module>static-analysis</module> - requires additional configuration to be compiled due to the JVM strong encapsulation -->
-                <!--<module>tablesaw</module>--><!-- failing after upgrading to jdk17-->
                 <module>tensorflow-java</module>
-                <module>testing-modules</module>
-                <module>testing-modules/mockito-simple</module>
                 <module>timefold-solver</module>
                 <module>vaadin</module>
                 <module>vavr-modules</module>
-                <module>vector-db</module>
                 <module>vertx-modules</module>
                 <module>web-modules</module>
                 <module>webrtc</module>
-                <module>xml-2</module>
                 <module>xml</module>
+                <module>xml-2</module>
                 <module>xstream</module>
                 <module>libraries-data-io-2</module>
-                <!--<module>spring-swagger-codegen/openapi-custom-generator</module>
-                <module>spring-swagger-codegen/openapi-custom-generator-api-client</module> --> <!-- cannot add the individual modules here because the order is not guaranteed -->
             </modules>
 
             <properties>
                 <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-                <java.version>17</java.version>
-                <maven.compiler.source>17</maven.compiler.source>
-                <maven.compiler.target>17</maven.compiler.target>
+                <java.version>21</java.version>
+                <maven.compiler.source>21</maven.compiler.source>
+                <maven.compiler.target>21</maven.compiler.target>
             </properties>
 
         </profile>
@@ -825,6 +868,69 @@
             <modules>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
+                <module>parent-boot-3</module>
+                <module>parent-spring-4</module>
+                <module>parent-spring-5</module>
+                <module>parent-spring-6</module>
+                <module>core-groovy-modules</module>
+                <module>core-java-modules</module>
+                <module>jhipster-6</module>
+                <module>json-modules</module>
+                <module>maven-modules</module>
+                <module>messaging-modules</module>
+                <module>persistence-modules</module>
+                <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->
+                <module>persistence-modules/spring-data-neo4j</module>
+                <module>quarkus-modules</module>
+                <module>security-modules</module>
+                <!--<module>spring-cloud-modules/spring-cloud-data-flow</module>--><!-- failing after upgrading to jdk17-->
+                <!--<module>spring-cloud-modules/spring-cloud-stream-starters</module>--><!-- failing after upgrading to jdk17-->
+                <!--<module>spring-di-2</module>--><!-- failing after upgrading to jdk17-->
+                <!--<module>spring-integration</module>--><!-- failing after upgrading to jdk17-->
+                <!--<module>spring-jinq</module>--><!--disabling the jinq modules, as the default build profile is failing due to bad mv files. Please refer: JAVA-31341-->
+                <module>spring-security-modules</module>
+                <module>spring-static-resources</module>
+                <module>testing-modules</module>
+                <!--<module>static-analysis</module> - requires additional configuration to be compiled due to the JVM strong encapsulation -->
+                <!--<module>tablesaw</module>--><!-- failing after upgrading to jdk17-->
+                <!--<module>spring-swagger-codegen/openapi-custom-generator</module>
+                <module>spring-swagger-codegen/openapi-custom-generator-api-client</module> --> <!-- cannot add the individual modules here because the order is not guaranteed -->
+            </modules>
+
+            <properties>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <java.version>17</java.version>
+                <maven.compiler.source>17</maven.compiler.source>
+                <maven.compiler.target>17</maven.compiler.target>
+            </properties>
+
+        </profile>
+
+        <profile>
+            <id>integration-jdk21</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <excludes>
+                                <exclude>**/*ManualTest.java</exclude>
+                                <exclude>**/*LiveTest.java</exclude>
+                            </excludes>
+                            <includes>
+                                <include>**/*IntegrationTest.java</include>
+                                <include>**/*IntTest.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+
+            <modules>
+                <module>parent-boot-1</module>
+                <module>parent-boot-2</module>
+                <module>parent-boot-3</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
@@ -834,9 +940,9 @@
                 <module>apache-httpclient-2</module>
                 <module>apache-httpclient4</module>
                 <module>apache-httpclient</module>
+                <module>apache-kafka</module>
                 <module>apache-kafka-2</module>
                 <module>apache-kafka-3</module>
-                <module>apache-kafka</module>
                 <module>apache-libraries-2</module>
                 <module>apache-libraries</module>
                 <module>apache-olingo</module><!-- apache-olingo wasn't updated to boot-3 because a workaround for jakarta namespace wasn't found JAVA-27818 -->
@@ -850,8 +956,6 @@
                 <module>azure</module>
                 <module>bazel</module>
                 <module>checker-framework</module>
-                <module>core-groovy-modules</module>
-                <module>core-java-modules</module>
                 <module>custom-pmd</module>
                 <module>data-structures</module>
                 <module>deeplearning4j</module>
@@ -878,7 +982,7 @@
                 <module>jackson-simple</module>
                 <module>java-blockchain</module>
                 <module>java-jdi</module>
-                <!--<module>java-panama</module>--> <!--JAVA-27339-->
+                <module>java-panama</module>
                 <module>javafx</module>
                 <module>javax-sound</module>
                 <module>javaxval-2</module>
@@ -886,14 +990,13 @@
                 <module>jaxb</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
-                <module>jhipster-6</module>
                 <module>jmh</module>
-                <module>json-modules</module>
                 <module>jsoup</module>
                 <module>jws</module>
                 <module>ksqldb</module>
                 <module>kubernetes-modules</module>
                 <module>language-interop</module>
+                <module>libraries</module> <!-- very long running -->
                 <module>libraries-2</module>
                 <module>libraries-3</module>
                 <module>libraries-4</module>
@@ -923,17 +1026,15 @@
                 <module>libraries-security</module>
                 <module>libraries-server-2</module>
                 <module>libraries-server</module>
-<!--            <module>libraries-stream</module> JDK21-->
+                <module>libraries-stream</module>
                 <module>libraries-testing-2</module>
                 <module>libraries-transform</module>
-                <module>libraries</module> <!-- very long running -->
                 <module>lightrun</module>
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
                 <module>lucene</module>
                 <module>mapstruct</module>
-                <module>maven-modules</module>
-                <module>messaging-modules</module>
+                <module>mapstruct-2</module>
                 <module>metrics</module>
                 <module>microservices-modules</module>
                 <module>mustache</module>
@@ -942,15 +1043,10 @@
                 <module>optaplanner</module>
                 <module>orika</module>
                 <module>osgi</module>
-                <module>parent-boot-3</module>
                 <module>patterns-modules</module>
                 <module>performance-tests</module>
-                <module>persistence-modules</module>
-                <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->                     
-                <module>persistence-modules/spring-data-neo4j</module>
-                <module>podman</module>
                 <module>protobuffer</module>
-                <module>quarkus-modules</module>
+                <module>podman</module>
                 <module>reactive-systems</module>
                 <module>reactor-core</module>
                 <module>reactor-core-2</module>
@@ -958,7 +1054,6 @@
                 <module>rule-engines-modules</module>
                 <module>rxjava-modules</module>
                 <module>saas-modules</module>
-                <module>security-modules</module>
                 <module>server-modules</module>
                 <module>spf4j</module>
                 <module>spring-5-webflux-2</module>
@@ -968,20 +1063,18 @@
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
                 <module>spring-ai</module>
-		<module>spring-ai-2</module>
+                <module>spring-ai-2</module>
                 <module>spring-aop-2</module>
                 <module>spring-aop</module>
-                <!--<module>spring-batch-2</module>--><!-- requires JDK-21 -->
                 <module>spring-batch</module>
+                <module>spring-batch-2</module>
                 <module>spring-boot-modules</module>
                 <module>spring-boot-rest</module>
                 <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
                 <module>spring-cloud-modules/spring-cloud-contract</module>
-                <!--<module>spring-cloud-modules/spring-cloud-data-flow</module>--><!-- failing after upgrading to jdk17-->
                 <module>spring-cloud-modules/spring-cloud-eureka</module>
                 <module>spring-cloud-modules/spring-cloud-netflix-feign</module>
                 <module>spring-cloud-modules/spring-cloud-security</module>
-                <!--<module>spring-cloud-modules/spring-cloud-stream-starters</module>--><!-- failing after upgrading to jdk17-->
                 <module>spring-cloud-modules/spring-cloud-zuul-eureka-integration</module>
                 <module>spring-cloud-modules/spring-cloud-bootstrap</module>
                 <module>spring-cloud-modules/spring-cloud-task</module>
@@ -991,18 +1084,15 @@
                 <module>spring-core</module>
                 <module>spring-credhub</module>
                 <module>spring-cucumber</module>
-                <!--<module>spring-di-2</module>--><!-- failing after upgrading to jdk17-->
                 <module>spring-di-3</module>
                 <module>spring-di-4</module>
                 <module>spring-di</module>
                 <module>spring-drools</module>
                 <module>spring-ejb-modules</module>
                 <module>spring-exceptions</module>
-                <!--<module>spring-integration</module>--><!-- failing after upgrading to jdk17-->
                 <module>spring-jersey</module>
-                <!--<module>spring-jinq</module>-->
                 <module>spring-kafka-2</module>
-                <module>spring-kafka-3</module>                     
+                <module>spring-kafka-3</module>
                 <module>spring-kafka-4</module>
                 <module>spring-kafka</module>
                 <module>spring-katharsis</module> <!-- Upgrade to Boot 3 not possible as the project has not been upgraded to Support Jakarta dependencies-->
@@ -1015,40 +1105,33 @@
                 <module>spring-remoting-modules</module> <!-- Upgrade to Boot 3 not possible as since Spring 6 the remoting modules has been removed from Spring. -->
                 <module>spring-scheduling</module>
                 <module>spring-scheduling-2</module>
-                <module>spring-security-modules</module>
                 <module>spring-shell</module>
                 <module>spring-soap</module>
                 <module>spring-spel</module>
                 <module>spring-state-machine</module>
-                <module>spring-static-resources</module>
                 <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
                 <module>spring-threads</module>
                 <module>spring-vault</module>
                 <module>spring-web-modules</module>
                 <module>spring-websockets</module>
-<!--            <module>static-analysis</module> - requires additional configuration to be compiled due to the JVM strong encapsulation -->
-                <!--<module>tablesaw</module>--><!-- failing after upgrading to jdk17-->
                 <module>tensorflow-java</module>
-                <module>testing-modules</module>
-                <module>testing-modules/mockito-simple</module>
                 <module>timefold-solver</module>
-                <module>vaadin</module>
                 <module>vavr-modules</module>
-                <module>vector-db</module>
+                <module>vaadin</module>
                 <module>vertx-modules</module>
                 <module>web-modules</module>
                 <module>webrtc</module>
-                <module>xml-2</module>
                 <module>xml</module>
+                <module>xml-2</module>
                 <module>xstream</module>
                 <module>libraries-data-io-2</module>
             </modules>
 
             <properties>
                 <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-                <java.version>17</java.version>
-                <maven.compiler.source>17</maven.compiler.source>
-                <maven.compiler.target>17</maven.compiler.target>
+                <java.version>21</java.version>
+                <maven.compiler.source>21</maven.compiler.source>
+                <maven.compiler.target>21</maven.compiler.target>
             </properties>
 
         </profile>
@@ -1164,8 +1247,8 @@
         <jmh-core.version>1.37</jmh-core.version>
         <jmh-generator.version>1.37</jmh-generator.version>
         <maven-failsafe-plugin.version>3.3.0</maven-failsafe-plugin.version>
+        <commons-io.version>2.16.1</commons-io.version>
         <commons-collections4.version>4.5.0-M2</commons-collections4.version>
-        <commons-io.version>2.15.1</commons-io.version>
         <commons-lang3.version>3.14.0</commons-lang3.version>
         <commons-cli.version>1.8.0</commons-cli.version>
         <maven-war-plugin.version>3.4.0</maven-war-plugin.version>
