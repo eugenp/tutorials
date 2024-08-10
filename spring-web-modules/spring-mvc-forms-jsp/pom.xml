@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-mvc-forms-jsp</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>spring-mvc-forms-jsp</name>
     <packaging>war</packaging>
+    <name>spring-mvc-forms-jsp</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
