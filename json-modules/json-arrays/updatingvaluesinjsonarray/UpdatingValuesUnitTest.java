@@ -14,43 +14,52 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class UpdatingJsonArrayValuesUnitTest {
 
     @Test
-    public void givenJSONArray_whenUtilizingOrgJson_thenElementsAddedAndValueUpdated() {
+    public void givenJSONArray_whenUsingOrgJson_thenArrayCreatedAndVerified() {
         JSONArray jsonArray = new JSONArray().put("Apple").put("Banana").put("Cherry");
 
-        JSONArray expectedArray = new JSONArray().put("Apple").put("Banana").put("Cherry");
-        assertEquals(expectedArray.toString(), jsonArray.toString());
-
-        jsonArray.put(1, "Blueberry");
-        expectedArray.put(1, "Blueberry");
-        assertEquals(expectedArray.toString(), jsonArray.toString());
+        assertEquals("[\"Apple\",\"Banana\",\"Cherry\"]", jsonArray.toString());
     }
 
     @Test
-    public void givenJsonArray_whenUtilizingGson_thenElementsAddedAndValueUpdated() {
+    public void givenJSONArray_whenUsingOrgJson_thenArrayReadAndUpdated() {
+        JSONArray jsonArray = new JSONArray("[\"Apple\",\"Banana\",\"Cherry\"]");
+
+        jsonArray.put(1, "Blueberry");
+        assertEquals("[\"Apple\",\"Blueberry\",\"Cherry\"]", jsonArray.toString());
+    }
+
+    @Test
+    public void givenJsonArray_whenUsingGson_thenArrayCreatedAndVerified() {
         JsonArray jsonArray = new JsonArray();
         jsonArray.add(new JsonPrimitive("Apple"));
         jsonArray.add(new JsonPrimitive("Banana"));
         jsonArray.add(new JsonPrimitive("Cherry"));
 
-        JsonArray expectedArray = JsonParser.parseString("[\"Apple\", \"Banana\", \"Cherry\"]").getAsJsonArray();
-        assertEquals(expectedArray.toString(), jsonArray.toString());
-
-        jsonArray.set(1, new JsonPrimitive("Blueberry"));
-        expectedArray.set(1, new JsonPrimitive("Blueberry"));
-        assertEquals(expectedArray.toString(), jsonArray.toString());
+        assertEquals("[\"Apple\",\"Banana\",\"Cherry\"]", jsonArray.toString());
     }
 
     @Test
-    public void givenArrayNode_whenUtilizingJackson_thenElementsAddedAndValueUpdated() throws Exception {
+    public void givenJsonArray_whenUsingGson_thenArrayReadAndUpdated() {
+        JsonArray jsonArray = JsonParser.parseString("[\"Apple\",\"Banana\",\"Cherry\"]").getAsJsonArray();
+
+        jsonArray.set(1, new JsonPrimitive("Blueberry"));
+        assertEquals("[\"Apple\",\"Blueberry\",\"Cherry\"]", jsonArray.toString());
+    }
+
+    @Test
+    public void givenArrayNode_whenUsingJackson_thenArrayCreatedAndVerified() throws Exception {
         ObjectMapper mapper = new ObjectMapper();
         ArrayNode arrayNode = mapper.createArrayNode().add("Apple").add("Banana").add("Cherry");
 
-        ArrayNode expectedArray = (ArrayNode) mapper.readTree("[\"Apple\", \"Banana\", \"Cherry\"]");
-        assertEquals(expectedArray.toString(), arrayNode.toString());
-
-        arrayNode.set(1, new TextNode("Blueberry"));
-        expectedArray.set(1, new TextNode("Blueberry"));
-        assertEquals(expectedArray.toString(), arrayNode.toString());
+        assertEquals("[\"Apple\",\"Banana\",\"Cherry\"]", arrayNode.toString());
     }
 
+    @Test
+    public void givenArrayNode_whenUsingJackson_thenArrayReadAndUpdated() throws Exception {
+        ObjectMapper mapper = new ObjectMapper();
+        ArrayNode arrayNode = (ArrayNode) mapper.readTree("[\"Apple\",\"Banana\",\"Cherry\"]");
+
+        arrayNode.set(1, new TextNode("Blueberry"));
+        assertEquals("[\"Apple\",\"Blueberry\",\"Cherry\"]", arrayNode.toString());
+    }
 }
