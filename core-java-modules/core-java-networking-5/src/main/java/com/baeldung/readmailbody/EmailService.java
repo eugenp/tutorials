@@ -1,10 +1,7 @@
-package com.baeldung.readbodymail;
+package com.baeldung.readmailbody;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -40,7 +37,6 @@ public class EmailService {
                             Multipart multipart = (Multipart) content;
                             for (int i = 0; i < multipart.getCount(); i++) {
                                 BodyPart bodyPart = multipart.getBodyPart(i);
-                                System.out.println(bodyPart.getContentType());
                                 if (bodyPart.getContentType().toLowerCase()
                                     .startsWith("text/plain")) {
                                     plainContent = (String) bodyPart.getContent();
@@ -60,7 +56,8 @@ public class EmailService {
                             plainContent = (String) content;
                         }
                     } catch (IOException | MessagingException e) {
-                        System.out.println("Error reading email content: " + e.getMessage());
+                        e.printStackTrace();
+                        // Handle exception
                     }
                 }
             }

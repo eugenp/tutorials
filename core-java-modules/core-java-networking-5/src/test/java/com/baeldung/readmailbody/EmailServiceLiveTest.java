@@ -1,4 +1,4 @@
-package com.baeldung.readbodymail;
+package com.baeldung.readmailbody;
 
 import jakarta.mail.*;
 import jakarta.mail.internet.InternetAddress;
@@ -71,15 +71,13 @@ public class EmailServiceLiveTest {
 
             // Send the email
             Transport.send(message);
-            System.out.println("Email sent successfully!");
         } catch (MessagingException e) {
             e.printStackTrace();
-            System.out.println("Error sending email: " + e.getMessage());
         }
     }
 
     @Test
-    void givenHTMLContentEmail_whenReadEmail_returnHTMLContent () throws MessagingException, IOException {
+    void givenHTMLContentEmail_whenReadEmail_thenReturnHTMLContent () throws MessagingException, IOException {
         EmailService es = new EmailService(session);
         es.retrieveEmails();
         assertEquals("This is a text body", es.getPlainContent());
