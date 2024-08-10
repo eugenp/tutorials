@@ -16,10 +16,19 @@
     </parent>
 
     <dependencies>
-
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
     </dependencies>
 
     <properties>
+        <start-class>com.baeldung.flips.ApplicationConfig</start-class>
+        <spring-boot.version>1.5.22.RELEASE</spring-boot.version>
     </properties>
 
 </project>
