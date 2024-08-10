@@ -6,4 +6,3 @@ include 'gradle-7'
 include 'gradle-8'
 include 'gradle-customization'
 include 'gradle-core'
-
