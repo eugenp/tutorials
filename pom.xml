@@ -832,6 +832,7 @@
                 <module>xml-2</module>
                 <module>xstream</module>
                 <module>libraries-data-io-2</module>
+                <module>spring-boot-simple</module>
             </modules>
 
             <properties>
