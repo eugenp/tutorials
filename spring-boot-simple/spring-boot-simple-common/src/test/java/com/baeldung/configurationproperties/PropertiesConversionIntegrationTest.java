@@ -1,9 +1,5 @@
 package com.baeldung.configurationproperties;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import java.time.Duration;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +8,9 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.unit.DataSize;
 
-import com.baeldung.configurationproperties.PropertiesConversionApplication;
-import com.baeldung.configurationproperties.PropertyConversion;
+import java.time.Duration;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = PropertiesConversionApplication.class)
