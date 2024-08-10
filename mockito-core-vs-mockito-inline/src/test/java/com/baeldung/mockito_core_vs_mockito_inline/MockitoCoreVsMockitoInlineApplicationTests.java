@@ -4,8 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.mockito.MockedStatic;
 import org.springframework.boot.test.context.SpringBootTest;
-import utils.FirstUtilClass;
-import utils.SecondUtilClass;
+import com.baeldung.mockito_core_vs_mockito_inline.utils.FirstUtilClass;
+import com.baeldung.mockito_core_vs_mockito_inline.utils.SecondUtilClass;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mockStatic;
