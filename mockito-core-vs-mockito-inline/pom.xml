@@ -3,10 +3,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.baeldung</groupId>
-		<artifactId>parent-boot-3</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../parent-boot-3</relativePath>
+<!--		<groupId>com.baeldung</groupId>-->
+<!--		<artifactId>parent-boot-3</artifactId>-->
+<!--		<version>0.0.1-SNAPSHOT</version>-->
+<!--		<relativePath>../parent-boot-3</relativePath>-->
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.3.2</version>
 	</parent>
 
 	<artifactId>mockito-core-vs-mockito-inline</artifactId>
@@ -22,12 +25,23 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>5.11.0</version>
+			<scope>test</scope>
+		</dependency>
+<dependency>
+    <groupId>org.mockito</groupId>
+    <artifactId>mockito-inline</artifactId>
+    <version>5.2.0</version>
+    <scope>test</scope>
+</dependency>
 	</dependencies>
 
 	<build>

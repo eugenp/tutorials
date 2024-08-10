@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class MockitoCoreVsMockitoInlineApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(MockitoCoreVsMockitoInlineApplication.class, args);
-	}
-
+    public static void main(String[] args) {
+        System.out.println("ASD");
+        SpringApplication.run(MockitoCoreVsMockitoInlineApplication.class, args);
+    }
 }
