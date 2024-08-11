@@ -1,8 +1,9 @@
 package com.baeldung.array;
 
 import java.util.Arrays;
+import java.util.OptionalDouble;
 
-public class SumAndAverageIn2DArray {
+public class AverageIn2DArray {
     public static double findAverageWithoutUsingStream(int[][] array) {
         int sum = 0;
         int count = 0;
@@ -15,7 +16,9 @@ public class SumAndAverageIn2DArray {
         return (double) sum / count;
     }
 
-    public static double findAverageUsingStream(int[][] array) {
-        return Arrays.stream(array).flatMapToInt(Arrays::stream).average().orElse(Double.NaN);
+    public static OptionalDouble findAverageUsingStream(int[][] array) {
+        return Arrays.stream(array)
+                .flatMapToInt(Arrays::stream)
+                .average();
     }
 }
