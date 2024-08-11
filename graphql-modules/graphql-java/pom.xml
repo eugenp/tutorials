@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>graphql-java</artifactId>
     <name>graphql-java</name>
@@ -91,7 +91,6 @@
             <artifactId>javax.ws.rs-api</artifactId>
             <version>${javax.ws.rs-api.version}</version>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -154,6 +153,7 @@
         <jetty-maven-plugin.version>10.0.7</jetty-maven-plugin.version>
         <graphql-java-extended-scalars.version>2022-04-06T00-10-27-a70541e</graphql-java-extended-scalars.version>
         <javax.ws.rs-api.version>2.1.1</javax.ws.rs-api.version>
+        <junit-jupiter.version>5.10.3</junit-jupiter.version> <!-- Upgrade to latest breaks tests -->
     </properties>
 
 </project>

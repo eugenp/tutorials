@@ -10,5 +10,4 @@
 - [Understanding the Difference Between Stream.of() and IntStream.range()](https://www.baeldung.com/java-stream-of-and-intstream-range)
 - [Check if Object Is an Array in Java](https://www.baeldung.com/java-check-if-object-is-an-array)
 - [Mapping an Array of Integers to Strings Using Java Streams](https://www.baeldung.com/java-stream-integer-array-to-strings)
-- [Finding Max and Min Date in List Using Streams](https://www.baeldung.com/java-list-stream-date-find-maximum-mininimum)
 - More articles: [[<-- prev>]](/../core-java-streams-3) [[next -->]](/../core-java-streams-5)
