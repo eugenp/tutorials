@@ -26,7 +26,6 @@ dependencies {
 
     // exclude specific module & multiple module
     implementation('com.google.android.gms:play-services-mlkit-face-detection:17.1.0') {
-        exclude group: 'androidx.annotation', module: 'annotation'
         exclude group: 'android.support.v4', module: 'core'
         exclude group: 'androidx.arch.core', module: 'core'
         exclude group: 'androidx.collection', module: 'collection'
@@ -53,7 +52,7 @@ dependencies {
     testImplementation ('org.junit.jupiter:junit-jupiter'){
         exclude group: 'org.junit.jupiter', module : 'junit-jupiter-api'
         exclude group: 'org.junit.jupiter', module : 'junit-jupiter-params'
-        exclude group: 'org.junit.jupiter', module : 'junit-jupiter-engine'
+//        exclude group: 'org.junit.jupiter', module : 'junit-jupiter-engine'
     }
 
     implementation 'org.apache.poi:poi:5.2.3' // excluded on configurations.all
@@ -78,6 +77,16 @@ configurations.configureEach {
 configurations.implementation {
     exclude group: 'com.google.errorprone', module: 'error_prone_annotations'
 }
+
+configurations.testImplementation {
+    exclude group: 'org.junit.jupiter', module : 'junit-jupiter-engine'
+    exclude group: 'org.objenesis', module : 'objenesis'
+}
+
+configurations.compileOnly {
+    exclude group: 'androidx.annotation', module: 'annotation'
+}
+
 
 enforce {
     rule(BannedDependencies) { r ->
