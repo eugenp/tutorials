@@ -1,10 +1,10 @@
 package com.baeldung.junit.norunnablemethods;
 
 /**
- * This class is actually an utility/helper class, 
- * but incorrectly named so that it could be confused with a real Test class
+ * This class is actually a utility/helper class, but it is incorrectly named
+ * ending in Test, that can be misinterpreted as a real Test class
  * 
- * @see @NameutilTestHelper
+ * @see @NameUtilTestHelper with a name that avoids this problem
  */
 public class NameUtilTest {
 
