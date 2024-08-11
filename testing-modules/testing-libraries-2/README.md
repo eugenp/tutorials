@@ -8,3 +8,4 @@
 - [Unit Testing of System.in With JUnit](https://www.baeldung.com/java-junit-testing-system-in)
 - [Fail Maven Build if JUnit Coverage Falls Below Certain Threshold](https://www.baeldung.com/maven-junit-fail-build-coverage-threshold)
 - [How to Mock Environment Variables in Unit Tests](https://www.baeldung.com/java-unit-testing-environment-variables)
+- [Intro to SpotBugs](https://www.baeldung.com/spotbugs-detect-bugs-code)

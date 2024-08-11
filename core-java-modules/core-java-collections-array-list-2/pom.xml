@@ -16,7 +16,7 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>
-            <version>${apache.commons.version}</version>
+            <version>${commons-collections4.version}</version>
         </dependency>
     </dependencies>
 
@@ -36,6 +36,5 @@
     <properties>
         <maven-compiler-plugin.source>17</maven-compiler-plugin.source>
         <maven-compiler-plugin.target>17</maven-compiler-plugin.target>
-        <apache.commons.version>4.4</apache.commons.version>
     </properties>
 </project>

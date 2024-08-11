@@ -71,7 +71,6 @@
         <poi-ooxml-schemas.version>4.1.2</poi-ooxml-schemas.version>
         <poiji.version>4.2.0</poiji.version>
         <xmlbeans.version>5.2.0</xmlbeans.version>
-        <commons-collections4.version>4.4</commons-collections4.version>
         <fastexcel.version>0.17.0</fastexcel.version>
         <jxl.version>2.6.12</jxl.version>
     </properties>
