@@ -1,6 +1,5 @@
 package com.baeldung.productservice.controller;
 
-import com.baeldung.productservice.model.Product;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,22 +20,9 @@ class ProductControllerUnitTest {
     @Autowired
     private MockMvc mockMvc;
 
-
     @Test
-    void givenProductandPriceDataAvailable_whenGetProductCalled_thenReturnProductDetails() throws Exception {
-        long productId = 100000L;
-
-        Product product = createProduct(productId);
-
-        mockMvc.perform(get("/product/" + productId))
+    void givenProductIsAvailable_whenGetProductCalled_thenReturnProductDetails() throws Exception {
+        mockMvc.perform(get("/product/" + 100000L))
             .andExpect(status().is(HttpStatus.OK.value()));
     }
-
-    private static Product createProduct(long productId) {
-        Product product = new Product();
-        product.setId(productId);
-        product.setName("test");
-        return product;
-    }
-
 }

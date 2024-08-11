@@ -31,11 +31,11 @@ public class ProductController {
                             schema = @Schema(implementation = Product.class)) }),
             @ApiResponse(responseCode = "400", description = "Invalid id supplied",
                     content = @Content),
-            @ApiResponse(responseCode = "404", description = "Price not found",
+            @ApiResponse(responseCode = "404", description = "Product not found",
                     content = @Content) })
     @GetMapping(path = "/product/{id}")
     public Product getProduct(@Parameter(description = "id of product to be searched") @PathVariable("id") long productId){
-        LOGGER.info("Getting Product and Price Details With Product Id {}", productId);
+        LOGGER.info("Getting Product Details for Product Id {}", productId);
         return productMap.get(productId);
     }
 
