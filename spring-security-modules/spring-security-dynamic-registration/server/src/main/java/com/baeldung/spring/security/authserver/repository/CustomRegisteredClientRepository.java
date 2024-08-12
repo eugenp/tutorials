@@ -26,7 +26,7 @@ public class CustomRegisteredClientRepository implements RegisteredClientReposit
           registeredClient.getScopes();
 
         // Disable PKCE & Consent
-        var modifiedClient = RegisteredClient.from(registeredClient)
+        RegisteredClient modifiedClient = RegisteredClient.from(registeredClient)
           .scopes(s -> s.addAll(scopes))
           .clientSettings(ClientSettings
             .withSettings(registeredClient.getClientSettings().getSettings())
