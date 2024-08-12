@@ -18,4 +18,9 @@ public class Person {
     public Person deepCopy(Person other) {
         return new Person(other.name, new Food(other.food));
     }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
 }
