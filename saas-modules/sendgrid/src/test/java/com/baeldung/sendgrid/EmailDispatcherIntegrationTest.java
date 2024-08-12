@@ -83,12 +83,13 @@ class EmailDispatcherIntegrationTest {
         emailDispatcher.dispatchEmail(toEmail, emailSubject, emailBody);
     
         // Verify the expected request was made
-        mockServerClient.verify(request()
-            .withMethod("POST")
-            .withPath(SENDGRID_EMAIL_API_PATH)
-            .withHeader("Authorization", "Bearer " + apiKey)
-            .withBody(new JsonBody(jsonBody, MatchType.ONLY_MATCHING_FIELDS)
-        ), VerificationTimes.once());
+        mockServerClient
+            .verify(request()
+                .withMethod("POST")
+                .withPath(SENDGRID_EMAIL_API_PATH)
+                .withHeader("Authorization", "Bearer " + apiKey)
+                .withBody(new JsonBody(jsonBody, MatchType.ONLY_MATCHING_FIELDS)
+            ), VerificationTimes.once());
     }
     
     @Test
@@ -139,12 +140,13 @@ class EmailDispatcherIntegrationTest {
         emailDispatcher.dispatchEmail(toEmail, emailSubject, emailBody, List.of(attachment));
     
         // Verify the expected request was made
-        mockServerClient.verify(request()
-            .withMethod("POST")
-            .withPath(SENDGRID_EMAIL_API_PATH)
-            .withHeader("Authorization", "Bearer " + apiKey)
-            .withBody(new JsonBody(jsonBody, MatchType.ONLY_MATCHING_FIELDS)
-        ), VerificationTimes.once());
+        mockServerClient
+            .verify(request()
+                .withMethod("POST")
+                .withPath(SENDGRID_EMAIL_API_PATH)
+                .withHeader("Authorization", "Bearer " + apiKey)
+                .withBody(new JsonBody(jsonBody, MatchType.ONLY_MATCHING_FIELDS)
+            ), VerificationTimes.once());
     }
     
     @Test
@@ -190,17 +192,18 @@ class EmailDispatcherIntegrationTest {
         emailDispatcher.dispatchHydrationAlert(toEmail, username);
     
         // Verify the expected request was made
-        mockServerClient.verify(request()
-            .withMethod("POST")
-            .withPath(SENDGRID_EMAIL_API_PATH)
-            .withHeader("Authorization", "Bearer " + apiKey)
-            .withBody(new JsonBody(jsonBody, MatchType.ONLY_MATCHING_FIELDS)
-        ), VerificationTimes.once());
+        mockServerClient
+            .verify(request()
+                .withMethod("POST")
+                .withPath(SENDGRID_EMAIL_API_PATH)
+                .withHeader("Authorization", "Bearer " + apiKey)
+                .withBody(new JsonBody(jsonBody, MatchType.ONLY_MATCHING_FIELDS)
+            ), VerificationTimes.once());
     }
     
     private MultipartFile createTextFile(String fileName) throws IOException {
-        final var fileContentBytes = RandomString.make().getBytes();
-        final var inputStream = new ByteArrayInputStream(fileContentBytes);
+        byte[] fileContentBytes = RandomString.make().getBytes();
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(fileContentBytes);
         return new MockMultipartFile(fileName, fileName, "text/plain", inputStream);
     }
 
