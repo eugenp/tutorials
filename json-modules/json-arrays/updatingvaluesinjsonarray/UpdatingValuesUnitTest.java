@@ -54,12 +54,12 @@ public class UpdatingJsonArrayValuesUnitTest {
         assertEquals("[\"Apple\",\"Banana\",\"Cherry\"]", arrayNode.toString());
     }
 
-    @Test
+     @Test
     public void givenArrayNode_whenUsingJackson_thenArrayReadAndUpdated() throws Exception {
         ObjectMapper mapper = new ObjectMapper();
         ArrayNode arrayNode = (ArrayNode) mapper.readTree("[\"Apple\",\"Banana\",\"Cherry\"]");
 
-        arrayNode.set(1, new TextNode("Blueberry"));
+        arrayNode.set(1, "Blueberry");
         assertEquals("[\"Apple\",\"Blueberry\",\"Cherry\"]", arrayNode.toString());
     }
 }
