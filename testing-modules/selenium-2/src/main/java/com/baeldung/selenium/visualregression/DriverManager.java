@@ -6,6 +6,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.time.Duration;
 import java.util.HashMap;
@@ -28,8 +30,8 @@ public class DriverManager {
         browserOptions.setCapability("LT:Options", ltOptions);
 
         try {
-            this.driver = new RemoteWebDriver(new URL(format("https://{0}:{1}{2}", ltUsername, ltAccessKey, gridUrl)), browserOptions);
-        } catch (MalformedURLException e) {
+            this.driver = new RemoteWebDriver(new URI(format("https://{0}:{1}{2}", ltUsername, ltAccessKey, gridUrl)).toURL(), browserOptions);
+        } catch (MalformedURLException | URISyntaxException e) {
             throw new Error("Error in setting RemoteDriver's URL!");
         }
         this.driver.manage()

@@ -50,9 +50,9 @@
             <version>${bval.version}</version>
         </dependency>
         <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-            <version>${javax.validation.validation-api.version}</version>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <version>${jakarta.validation.validation-api.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.bval</groupId>
@@ -64,12 +64,29 @@
             <groupId>org.apache.meecrowave</groupId>
             <artifactId>meecrowave-core</artifactId>
             <version>${meecrowave-core.version}</version>
+            <classifier>jakarta</classifier>
+            <exclusions>
+                <exclusion>
+                    <groupId>*</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.apache.meecrowave/meecrowave-jpa -->
         <dependency>
             <groupId>org.apache.meecrowave</groupId>
             <artifactId>meecrowave-jpa</artifactId>
             <version>${meecrowave-jpa.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.xbean</groupId>
+            <artifactId>xbean-asm9-shaded</artifactId>
+            <version>${xbean.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.xbean</groupId>
+            <artifactId>xbean-reflect</artifactId>
+            <version>${xbean.version}</version>
         </dependency>
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
@@ -80,6 +97,13 @@
             <groupId>org.apache.meecrowave</groupId>
             <artifactId>meecrowave-junit</artifactId>
             <version>${meecrowave-junit.version}</version>
+            <classifier>jakarta</classifier>
+            <exclusions>
+                <exclusion>
+                    <groupId>*</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
             <scope>test</scope>
         </dependency>
         <!-- opennlp -->
@@ -144,6 +168,16 @@
             <groupId>org.apache.geode</groupId>
             <artifactId>geode-core</artifactId>
             <version>${geode.core}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>javax.resource</groupId>
+                    <artifactId>javax.resource-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>javax.xml.bind</groupId>
+                    <artifactId>jaxb-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!-- solr -->
         <dependency>
@@ -188,19 +222,20 @@
     <properties>
         <avro.version>1.8.2</avro.version>
         <beam.version>2.45.0</beam.version>
-        <bval.version>2.0.6</bval.version>
-        <javax.validation.validation-api.version>2.0.1.Final</javax.validation.validation-api.version>
+        <bval.version>3.0.1</bval.version>
+        <jakarta.validation.validation-api.version>3.1.0</jakarta.validation.validation-api.version>
         <meecrowave-junit.version>1.2.15</meecrowave-junit.version>
         <okhttp.version>5.0.0-alpha.12</okhttp.version>
         <meecrowave-jpa.version>1.2.15</meecrowave-jpa.version>
         <meecrowave-core.version>1.2.15</meecrowave-core.version>
         <meecrowave-maven-plugin.version>1.2.15</meecrowave-maven-plugin.version>
+        <xbean.version>4.24</xbean.version>
         <opennlp.opennlp-tools.version>1.8.4</opennlp.opennlp-tools.version>
         <pulsar-client.version>2.1.1-incubating</pulsar-client.version>
         <zookeeper.version>3.4.11</zookeeper.version>
         <curator.version>4.0.1</curator.version>
         <avaitility.version>1.7.0</avaitility.version>
-        <geode.core>1.6.0</geode.core>
+        <geode.core>1.15.1</geode.core>
         <solr.solr-solrj.version>6.4.0</solr.solr-solrj.version>
     </properties>
 

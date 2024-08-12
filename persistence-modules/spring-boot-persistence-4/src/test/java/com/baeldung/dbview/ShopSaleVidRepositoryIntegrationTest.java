@@ -10,8 +10,8 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(classes = DatabaseViewApplication.class, properties = {
-        "spring.jpa.show-sql=true",
-        "spring.jpa.properties.hibernate.format_sql=true",
+        "spring.jpa.show-sql=false",
+        "spring.jpa.properties.hibernate.format_sql=false",
         "spring.jpa.hibernate.ddl-auto=none",
         "spring.jpa.defer-datasource-initialization=true",
         "spring.sql.init.data-locations=classpath:shop-sale-data.sql"

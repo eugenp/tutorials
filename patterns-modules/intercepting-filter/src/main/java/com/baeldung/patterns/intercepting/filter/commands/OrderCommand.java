@@ -5,8 +5,8 @@ import com.baeldung.patterns.intercepting.filter.data.Bookshelf;
 import com.baeldung.patterns.intercepting.filter.data.Order;
 import com.baeldung.patterns.intercepting.filter.data.OrderImpl;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Optional;
 
