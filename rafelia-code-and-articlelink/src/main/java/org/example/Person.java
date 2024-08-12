@@ -1,5 +1,5 @@
 package org.example;
-public class Person {
+public class Person implements Cloneable{
     String name;
     Food food;
 
