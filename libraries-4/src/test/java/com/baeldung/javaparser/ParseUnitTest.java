@@ -15,6 +15,7 @@ public class ParseUnitTest {
     void parseEmptyClass() {
         CompilationUnit parsed = StaticJavaParser.parse("class TestClass {}");
         System.out.println(parsed);
+        System.out.println(parsed);
     }
 
     @Test
