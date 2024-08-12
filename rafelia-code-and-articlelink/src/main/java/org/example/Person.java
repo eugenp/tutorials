@@ -19,6 +19,7 @@ public class Person implements Cloneable{
         return new Person(other.name, new Food(other.food));
     }
 
+    // The clone() method is overridden to perform a shallow copy.
     @Override
     protected Object clone() throws CloneNotSupportedException {
         return super.clone();
