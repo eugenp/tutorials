@@ -49,8 +49,8 @@ public class EmailDispatcher {
 
         if (files != null && !files.isEmpty()) {
             for (MultipartFile file : files) {
-                Attachments attachments = createAttachment(file);
-                mail.addAttachments(attachments);
+                Attachments attachment = createAttachment(file);
+                mail.addAttachments(attachment);
             }
         }
 
@@ -85,12 +85,12 @@ public class EmailDispatcher {
     }
 
     private Attachments createAttachment(MultipartFile file) throws IOException {
-        Attachments attachments = new Attachments();
-        attachments.setDisposition("attachment");
-        attachments.setType(file.getContentType());
-        attachments.setFilename(file.getOriginalFilename());
-        attachments.setContent(Base64.getEncoder().encodeToString(file.getBytes()));
-        return attachments;
+        Attachments attachment = new Attachments();
+        attachment.setDisposition("attachment");
+        attachment.setType(file.getContentType());
+        attachment.setFilename(file.getOriginalFilename());
+        attachment.setContent(Base64.getEncoder().encodeToString(file.getBytes()));
+        return attachment;
     }
 
 }
