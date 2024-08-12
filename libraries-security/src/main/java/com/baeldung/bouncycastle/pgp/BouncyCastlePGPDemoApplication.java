@@ -55,8 +55,8 @@ public class BouncyCastlePGPDemoApplication {
         String privKeyFileName = pgpresource + "/private_key.asc";
 
         try {
-            encryptFile(encryptedFileName, plainTextInputFileName, pubKeyFileName, true, true);
-            decryptFile(encryptedFileName, privKeyFileName, "baeldung".toCharArray(), "decryptedFile");
+            encryptFile(encryptedFileName, plainTextInputFileName, pubKeyFileName, true);
+            decryptFile(encryptedFileName, privKeyFileName, "baeldung".toCharArray(), "decryptedFile", true);
         } catch (NoSuchProviderException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -67,7 +67,7 @@ public class BouncyCastlePGPDemoApplication {
 
     }
 
-    public static void encryptFile(String outputFileName, String inputFileName, String pubKeyFileName, boolean armor, boolean withIntegrityCheck) throws IOException, NoSuchProviderException, PGPException {
+    public static void encryptFile(String outputFileName, String inputFileName, String pubKeyFileName, boolean armor) throws IOException, NoSuchProviderException, PGPException {
 
         OutputStream out = new BufferedOutputStream(new FileOutputStream(outputFileName));
         PGPPublicKey encKey = PGPExampleUtil.readPublicKey(pubKeyFileName);
@@ -94,7 +94,7 @@ public class BouncyCastlePGPDemoApplication {
         }
     }
 
-    public static void decryptFile(String encryptedInputFileName, String privatekeyFileName, char[] passPhrase, String defaultFileName) throws IOException, NoSuchProviderException {
+    public static void decryptFile(String encryptedInputFileName, String privatekeyFileName, char[] passPhrase, String defaultFileName, boolean withIntegrityCheck) throws IOException, NoSuchProviderException {
         InputStream instream = new BufferedInputStream(new FileInputStream(encryptedInputFileName));
         InputStream privateKeyInStream = new BufferedInputStream(new FileInputStream(privatekeyFileName));
         instream = PGPUtil.getDecoderStream(instream);
