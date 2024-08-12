@@ -22,7 +22,7 @@ class ProductControllerUnitTest {
 
     @Test
     void givenProductIsAvailable_whenGetProductCalled_thenReturnProductDetails() throws Exception {
-        mockMvc.perform(get("/product/" + 100000L))
+        mockMvc.perform(get("/product/100001"))
             .andExpect(status().is(HttpStatus.OK.value()));
     }
 }

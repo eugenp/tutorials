@@ -12,9 +12,10 @@ public class OpenAPIConfig {
 
     @Bean
     public OpenAPI customOpenAPI() {
-        return new OpenAPI().info(new Info()
-                .title("API Gateway Service")
-                .description("API Gateway Service")
-                .version("1.0.0"));
+        return new OpenAPI()
+            .info(new Info()
+              .title("API Gateway Service")
+              .description("API Gateway Service")
+              .version("1.0.0"));
     }
 }

@@ -26,13 +26,10 @@ public class ProductController {
 
     @Operation(summary = "Get a product by its id")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Found the product",
-                    content = { @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = Product.class)) }),
-            @ApiResponse(responseCode = "400", description = "Invalid id supplied",
-                    content = @Content),
-            @ApiResponse(responseCode = "404", description = "Product not found",
-                    content = @Content) })
+        @ApiResponse(responseCode = "200", description = "Found the product",
+          content = { @Content(mediaType = "application/json", schema = @Schema(implementation = Product.class)) }),
+        @ApiResponse(responseCode = "400", description = "Invalid id supplied", content = @Content),
+        @ApiResponse(responseCode = "404", description = "Product not found", content = @Content) })
     @GetMapping(path = "/product/{id}")
     public Product getProduct(@Parameter(description = "id of product to be searched") @PathVariable("id") long productId){
         LOGGER.info("Getting Product Details for Product Id {}", productId);

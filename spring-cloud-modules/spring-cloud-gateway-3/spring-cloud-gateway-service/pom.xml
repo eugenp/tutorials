@@ -18,23 +18,9 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>org.junit</groupId>
-                <artifactId>junit-bom</artifactId>
-                <version>${junit-jupiter.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>${spring-cloud-dependencies.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring-boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -54,8 +40,7 @@
     </dependencies>
 
     <properties>
-        <spring-boot.version>3.2.3</spring-boot.version>
-        <spring-cloud-dependencies.version>2023.0.0</spring-cloud-dependencies.version>
+        <spring-cloud-dependencies.version>2023.0.3</spring-cloud-dependencies.version>
         <springdoc-openapi-starter-webflux-ui.version>2.6.0</springdoc-openapi-starter-webflux-ui.version>
     </properties>
 
