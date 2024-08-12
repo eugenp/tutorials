@@ -1,8 +1,5 @@
-import enforcer.rules.BannedDependencies
-
 plugins {
     id 'java'
-    id 'org.kordamp.gradle.project-enforcer' version '0.14.0'
 }
 
 repositories {
@@ -11,9 +8,6 @@ repositories {
 }
 
 dependencies {
-
-    //    implementation 'com.google.guava:guava:33.2.0-jre' // enforce this cannot be included with kordamp
-
     // exclude group
     implementation ('com.google.guava:guava:31.1-jre') {
         exclude group: 'com.google.guava' // Excludes all modules except the main module in com.google.guava.
@@ -53,7 +47,6 @@ dependencies {
     testImplementation ('org.junit.jupiter:junit-jupiter'){
         exclude group: 'org.junit.jupiter', module : 'junit-jupiter-api'
         exclude group: 'org.junit.jupiter', module : 'junit-jupiter-params'
-        exclude group: 'org.junit.jupiter', module : 'junit-jupiter-engine'
     }
 
     implementation 'org.apache.poi:poi:5.2.3' // excluded on configurations.all
@@ -65,6 +58,9 @@ dependencies {
     implementation('org.hibernate.orm:hibernate-core:7.0.0.Beta1'){
         transitive = false
     }
+
+    implementation 'org.mapstruct:mapstruct:1.5.5.Final'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
 }
 
 configurations.all {
@@ -79,17 +75,10 @@ configurations.implementation {
     exclude group: 'com.google.errorprone', module: 'error_prone_annotations'
 }
 
-enforce {
-    rule(BannedDependencies) { r ->
-        r.configurations.addAll(['compileClasspath',
-                                 'runtimeClasspath',
-                                 'testCompileClasspath',
-                                 'testRuntimeClasspath'])
+configurations.testImplementation {
+    exclude group: 'org.junit.jupiter', module : 'junit-jupiter-engine'
+}
 
-        r.exclude('org.junit.jupiter:junit-jupiter-engine')
-        r.exclude('com.google.guava')
-        r.exclude('com.google.guava:guava')
-        r.exclude('*:guava')
-        r.include('com.google.guava:guava:31.1-jre')
-    }
+configurations.testCompileClasspath {
+    exclude group : 'com.google.j2objc', module : 'j2objc-annotations'
 }
