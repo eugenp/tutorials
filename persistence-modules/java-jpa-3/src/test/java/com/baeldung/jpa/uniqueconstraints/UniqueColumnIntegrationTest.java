@@ -2,9 +2,9 @@ package com.baeldung.jpa.uniqueconstraints;
 
 import java.util.Optional;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 
 import org.hibernate.exception.ConstraintViolationException;
 import org.junit.Assert;
@@ -44,7 +44,6 @@ public class UniqueColumnIntegrationTest {
         } catch (Exception ex) {
             Assert.assertTrue(Optional.of(ex)
                 .map(Throwable::getCause)
-                .map(Throwable::getCause)
                 .filter(x -> x instanceof ConstraintViolationException)
                 .isPresent());
         } finally {
@@ -73,7 +72,6 @@ public class UniqueColumnIntegrationTest {
             Assert.fail("Should raise an exception - unique key violation");
         } catch (Exception ex) {
             Assert.assertTrue(Optional.of(ex)
-                .map(Throwable::getCause)
                 .map(Throwable::getCause)
                 .filter(x -> x instanceof ConstraintViolationException)
                 .isPresent());
@@ -108,7 +106,6 @@ public class UniqueColumnIntegrationTest {
             Assert.fail("Should raise an exception - unique key violation");
         } catch (Exception ex) {
             Assert.assertTrue(Optional.of(ex)
-                .map(Throwable::getCause)
                 .map(Throwable::getCause)
                 .filter(x -> x instanceof ConstraintViolationException)
                 .isPresent());

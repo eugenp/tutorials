@@ -69,5 +69,13 @@ public class FormatNumber {
         NumberFormat nf = NumberFormat.getCurrencyInstance();
         return nf.format(value);
     }
+
+    public static String formatScientificNotation(double value, Locale localisation) {
+        return String.format(localisation, "%.3E", value);
+    }
+
+    public static String formatScientificNotationWithMinChars(double value, Locale localisation) {
+        return String.format(localisation, "%12.4E", value);
+    }
 }
 

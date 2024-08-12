@@ -16,7 +16,7 @@
         <dependency>
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-connector-kafka</artifactId>
-            <version>${flink.version}</version>
+            <version>${flink-connector-kafka.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.flink</groupId>
@@ -146,6 +146,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <argLine>
                         --add-opens java.base/java.lang=ALL-UNNAMED
@@ -157,7 +158,8 @@
     </build>
 
     <properties>
-        <flink.version>1.16.1</flink.version>
+        <flink.version>1.19.1</flink.version>
+        <flink-connector-kafka.version>1.17.2</flink-connector-kafka.version>
         <hll.version>1.6.0</hll.version>
         <crdt.version>0.1.0</crdt.version>
         <unit-ri.version>1.0.3</unit-ri.version>
