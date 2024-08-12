@@ -1,0 +1,95 @@
+import enforcer.rules.BannedDependencies
+
+plugins {
+    id 'java'
+    id 'org.kordamp.gradle.project-enforcer' version '0.14.0'
+}
+
+repositories {
+    google()
+    mavenCentral()
+}
+
+dependencies {
+
+    //    implementation 'com.google.guava:guava:33.2.0-jre' // enforce this cannot be included with kordamp
+
+    // exclude group
+    implementation ('com.google.guava:guava:31.1-jre') {
+        exclude group: 'com.google.guava' // Excludes all modules except the main module in com.google.guava.
+    }
+
+    // exclude specific module
+    implementation ('org.hibernate.orm:hibernate-core:7.0.0.Beta1') {
+        exclude group: 'org.glassfish.jaxb', module : 'txw2'
+    }
+
+    // exclude specific module & multiple module
+    implementation('com.google.android.gms:play-services-mlkit-face-detection:17.1.0') {
+        exclude group: 'androidx.annotation', module: 'annotation'
+        exclude group: 'android.support.v4', module: 'core'
+        exclude group: 'androidx.arch.core', module: 'core'
+        exclude group: 'androidx.collection', module: 'collection'
+        exclude group: 'androidx.coordinatorlayout', module: 'coordinatorlayout'
+        exclude group: 'androidx.core', module: 'core'
+        exclude group: 'androidx.viewpager', module: 'viewpager'
+        exclude group: 'androidx.print', module: 'print'
+        exclude group: 'androidx.localbroadcastmanager', module: 'localbroadcastmanager'
+        exclude group: 'androidx.loader', module: 'loader'
+        exclude group: 'androidx.lifecycle', module: 'lifecycle-viewmodel'
+        exclude group: 'androidx.lifecycle', module: 'lifecycle-livedata'
+        exclude group: 'androidx.lifecycle', module: 'lifecycle-common'
+        exclude group: 'androidx.fragment', module: 'fragment'
+        exclude group: 'androidx.drawerlayout', module: 'drawerlayout'
+        exclude group: 'androidx.legacy.content', module: 'legacy-support-core-utils'
+        exclude group: 'androidx.cursoradapter', module: 'cursoradapter'
+        exclude group: 'androidx.customview', module: 'customview'
+        exclude group: 'androidx.documentfile.provider', module: 'documentfile'
+        exclude group: 'androidx.interpolator', module: 'interpolator'
+        exclude group: 'androidx.exifinterface', module: 'exifinterface'
+    }
+
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation ('org.junit.jupiter:junit-jupiter'){
+        exclude group: 'org.junit.jupiter', module : 'junit-jupiter-api'
+        exclude group: 'org.junit.jupiter', module : 'junit-jupiter-params'
+        exclude group: 'org.junit.jupiter', module : 'junit-jupiter-engine'
+    }
+
+    implementation 'org.apache.poi:poi:5.2.3' // excluded on configurations.all
+
+    testImplementation 'org.mockito:mockito-core:3.+' // excluded on configureEach
+
+    implementation 'com.google.code.gson:gson:2.11.0' // excluded on configurations.implementation
+
+    implementation('org.hibernate.orm:hibernate-core:7.0.0.Beta1'){
+        transitive = false
+    }
+}
+
+configurations.all {
+    exclude group: 'org.apache.commons', module : 'commons-collections4'
+}
+
+configurations.configureEach {
+    exclude group: 'net.bytebuddy', module: 'byte-buddy-agent'
+}
+
+configurations.implementation {
+    exclude group: 'com.google.errorprone', module: 'error_prone_annotations'
+}
+
+enforce {
+    rule(BannedDependencies) { r ->
+        r.configurations.addAll(['compileClasspath',
+                                 'runtimeClasspath',
+                                 'testCompileClasspath',
+                                 'testRuntimeClasspath'])
+
+        r.exclude('org.junit.jupiter:junit-jupiter-engine')
+        r.exclude('com.google.guava')
+        r.exclude('com.google.guava:guava')
+        r.exclude('*:guava')
+        r.include('com.google.guava:guava:31.1-jre')
+    }
+}
