@@ -6,6 +6,18 @@
     <artifactId>spring-batch-2</artifactId>
     <version>0.1-SNAPSHOT</version>
     <name>spring-batch-2</name>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>21</source>
+                    <target>21</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
     <packaging>jar</packaging>
     <url>http://maven.apache.org</url>
 
@@ -53,13 +65,18 @@
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring-core.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
-        <spring.batch.version>5.0.0</spring.batch.version>
-        <awaitility.version>4.2.0</awaitility.version>
+        <spring.batch.version>5.1.2</spring.batch.version>
+        <awaitility.version>4.2.1</awaitility.version>
         <start-class>com.baeldung.batch.SpringBootBatchProcessingApplication</start-class>
-        <lombok.version>1.18.28</lombok.version>
+        <spring-core.version>6.1.5</spring-core.version>
     </properties>
 
 </project>

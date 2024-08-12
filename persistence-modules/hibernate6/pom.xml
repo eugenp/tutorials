@@ -50,17 +50,14 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <hibernate.version>6.4.2.Final</hibernate.version>
-        <ehcache.version>3.10.8</ehcache.version>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-    </properties>
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.baeldung.attributevaluegenerator.Application</mainClass>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -73,5 +70,13 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <java.version>17</java.version>
+        <ehcache.version>3.10.8</ehcache.version>
+        <hibernate.version>6.5.2.Final</hibernate.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+    </properties>
 
 </project>

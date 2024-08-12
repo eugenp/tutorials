@@ -11,4 +11,5 @@ This module contains articles about core java exceptions
 - [Errors and Exceptions in Java](https://www.baeldung.com/java-errors-vs-exceptions)
 - [Fix the IllegalArgumentException: No enum const class](https://www.baeldung.com/java-fix-no-enum-const-class)
 - [How to Fix EOFException in Java](https://www.baeldung.com/java-fix-eofexception)
+- [Fix ClassCastException: java.math.BigInteger cannot be cast to java.lang.Integer](https://www.baeldung.com/java-biginteger-integer-classcastexception)
 - [[<-- Prev]](../core-java-exceptions-3)

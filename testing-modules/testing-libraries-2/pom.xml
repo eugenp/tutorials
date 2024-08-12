@@ -146,6 +146,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <argLine>
                         --add-opens java.base/java.util=ALL-UNNAMED
@@ -154,6 +155,21 @@
                     <environmentVariables>
                         <SET_BY_SUREFIRE>YES</SET_BY_SUREFIRE>
                     </environmentVariables>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+                <version>${spotbugs-maven-plugin.version}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.github.spotbugs</groupId>
+                        <artifactId>spotbugs</artifactId>
+                        <version>${spotbugs.version}</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <htmlOutput>true</htmlOutput>
                 </configuration>
             </plugin>
         </plugins>
@@ -172,6 +188,8 @@
         <system-stubs.version>2.1.3</system-stubs.version>
         <testng.version>7.8.0</testng.version>
         <junit.pioneer.version>2.1.0</junit.pioneer.version>
+        <spotbugs-maven-plugin.version>4.8.5.0</spotbugs-maven-plugin.version>
+        <spotbugs.version>4.8.5</spotbugs.version>
     </properties>
 
 </project>
