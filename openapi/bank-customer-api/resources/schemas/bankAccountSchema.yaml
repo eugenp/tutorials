@@ -1,0 +1,27 @@
+components:
+  schemas:
+    SavingsAccount:
+      type: object
+      properties:
+        accountNumber:
+          type: string
+          description: "The unique account number for the savings account."
+        interestRate:
+          type: number
+          description: "The interest rate for the savings account."
+
+    CheckingAccount:
+      type: object
+      properties:
+        accountNumber:
+          type: string
+          description: "The unique account number for the checking account."
+        overdraftLimit:
+          type: number
+          description: "The overdraft limit for the checking account."
+
+    BankAccount:
+      oneOf:
+        - $ref: '#/components/schemas/SavingsAccount'
+        - $ref: '#/components/schemas/CheckingAccount'
+      description: "A bank account that can be either a savings or checking account."
