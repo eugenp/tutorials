@@ -10,13 +10,7 @@ import lombok.Setter;
 public class Book implements Cloneable{
     private String name;
     private int pageCount;
-    private Author author;
-
-    public void print(){
-        System.out.println(this.name + " = (name: " + name + ", pageCount: " + pageCount
-                + ", author:(authorName: " + author.getAuthorName() + ", email: " + author.getEmail()
-                + ", hashcode: " + this.getAuthor().hashCode() + ")");
-    }
+    private Author author;
 
     @Override
     public Book clone() throws CloneNotSupportedException{
