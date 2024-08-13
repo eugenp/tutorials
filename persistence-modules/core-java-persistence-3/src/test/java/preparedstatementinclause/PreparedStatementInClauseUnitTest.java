@@ -13,6 +13,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 class PreparedStatementInClauseUnitTest {
 
     private static Connection connection = null;
@@ -91,7 +94,7 @@ class PreparedStatementInClauseUnitTest {
     public static Connection connect(String url, String user, String password) throws SQLException {
         Connection connection = DriverManager.getConnection(url, user, password);
         if (connection != null) {
-            System.out.println("Connected to database");
+            log.info("Connected to database");
         }
         return connection;
     }
