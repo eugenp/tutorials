@@ -8,7 +8,8 @@ import static org.junit.Assert.assertEquals;
 
 public class ShallowCopyTest {
     @Test
-    public void whenShallowCloned_thenObjectReferencesAreSharedWithOriginalObject() throws CloneNotSupportedException{
+    public void whenShallowCloned_thenObjectReferencesAreSharedWithOriginalObject() 
+            throws CloneNotSupportedException {
         Author john = new Author("John", "john@oracle.com");
         Book book = new Book("Book", 150, john);
         

@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class Author implements Cloneable{
+public class Author implements Cloneable {
     private String authorName;
     private String email;
 

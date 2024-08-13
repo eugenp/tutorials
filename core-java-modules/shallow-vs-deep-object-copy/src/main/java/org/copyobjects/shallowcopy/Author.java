@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class Author{
+public class Author {
     private String authorName;
     private String email;
 }

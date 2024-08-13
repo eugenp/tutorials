@@ -4,11 +4,12 @@ import org.copyobjects.deepcopy.Author;
 import org.copyobjects.deepcopy.Book;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotEquals;
 
 public class DeepCopyTest {
     @Test
-    public void whenDeepCloned_thenObjectReferencesAreNotSharedWithOriginalObject() throws CloneNotSupportedException{
+    public void whenDeepCloned_thenObjectReferencesAreNotSharedWithOriginalObject() 
+            throws CloneNotSupportedException {
         Author john = new Author("John", "john@oracle.com");
         Book book = new Book("Book", 150, john);
         
