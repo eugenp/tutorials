@@ -61,6 +61,8 @@ dependencies {
 
     implementation 'org.mapstruct:mapstruct:1.5.5.Final'
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.44'
 }
 
 configurations.all {
@@ -81,4 +83,8 @@ configurations.testImplementation {
 
 configurations.testCompileClasspath {
     exclude group : 'com.google.j2objc', module : 'j2objc-annotations'
+}
+
+configurations.annotationProcessor {
+    exclude group: 'com.google.guava'
 }
