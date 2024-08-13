@@ -1,6 +1,7 @@
 package com.baeldung.sendgrid;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.List;
 
@@ -85,11 +86,12 @@ public class EmailDispatcher {
     }
 
     private Attachments createAttachment(MultipartFile file) throws IOException {
+        byte[] encodedFileContent = Base64.getEncoder().encode(file.getBytes());
         Attachments attachment = new Attachments();
         attachment.setDisposition("attachment");
         attachment.setType(file.getContentType());
         attachment.setFilename(file.getOriginalFilename());
-        attachment.setContent(Base64.getEncoder().encodeToString(file.getBytes()));
+        attachment.setContent(new String(encodedFileContent, StandardCharsets.UTF_8));
         return attachment;
     }
 
