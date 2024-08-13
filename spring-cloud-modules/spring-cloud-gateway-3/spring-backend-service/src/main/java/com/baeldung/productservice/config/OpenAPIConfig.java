@@ -18,8 +18,8 @@ public class OpenAPIConfig {
         return new OpenAPI()
             .servers(List.of(new Server().url("http://localhost:8080")))
             .info(new Info()
-              .title("Product Service API")
-              .description("Product Service API Specs")
-              .version("1.0.0"));
+                .title("Product Service API")
+                .description("Product Service API Specs")
+                .version("1.0.0"));
     }
 }
