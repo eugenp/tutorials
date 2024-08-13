@@ -21,7 +21,7 @@ import org.junit.Test;
 public class BouncyCastlePGPUnitTest {
 
     @Test
-    public void givenFileWithMessage_whenEncryptFile_returnTrueIfCreated()
+    public void givenFileWithPlainText_whenPGPEncrypWithPubKey_thenPGPEncryptedFileCreated()
         throws CertificateException, NoSuchProviderException, NoSuchAlgorithmException, IOException, KeyStoreException, UnrecoverableKeyException, CMSException, OperatorCreationException, PGPException {
         Path resourcesPath = Paths.get("src", "main", "resources");
         String pgpresource = resourcesPath.resolve("pgp")
@@ -36,7 +36,7 @@ public class BouncyCastlePGPUnitTest {
     }
 
     @Test
-    public void givenEncryptedFile_whenDecrypt_returnTrueIfSuccessful()
+    public void givenPGPEncryptedFile_whenDecryptWithPrivateKey_thenFileWithPlainTextCreated()
         throws CertificateException, NoSuchProviderException, NoSuchAlgorithmException, IOException, KeyStoreException, UnrecoverableKeyException, CMSException, OperatorCreationException, PGPException {
         Path resourcesPath = Paths.get("src", "main", "resources");
         String pgpresource = resourcesPath.resolve("pgp")
