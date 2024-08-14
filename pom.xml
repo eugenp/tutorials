@@ -364,6 +364,7 @@
                 <module>spring-security-modules/spring-security-ldap</module>
                 <module>spring-swagger-codegen</module>
                 <module>video-tutorials</module>
+                <module>jhipster-6</module>
             </modules>
 
             <properties>
@@ -482,6 +483,7 @@
                 <module>spring-security-modules/spring-security-ldap</module>
                 <module>spring-swagger-codegen</module>
                 <module>video-tutorials</module>
+                <module>jhipster-6</module>
             </modules>
 
             <properties>
@@ -574,7 +576,6 @@
                 <module>parent-spring-6</module>
                 <module>core-groovy-modules</module>
                 <module>core-java-modules</module>
-                <module>jhipster-6</module>
                 <module>json-modules</module>
                 <module>maven-modules</module>
                 <module>messaging-modules</module>
@@ -875,7 +876,6 @@
                 <module>parent-spring-6</module>
                 <module>core-groovy-modules</module>
                 <module>core-java-modules</module>
-                <module>jhipster-6</module>
                 <module>json-modules</module>
                 <module>maven-modules</module>
                 <module>messaging-modules</module>
