@@ -1,12 +1,12 @@
-package com.baeldung.boot;
+package com.baeldung.logging;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Application {
+public class SpringBootLoggingApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(SpringBootLoggingApplication.class, args);
     }
 }

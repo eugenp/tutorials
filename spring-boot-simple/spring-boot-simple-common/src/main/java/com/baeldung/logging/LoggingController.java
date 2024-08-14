@@ -1,4 +1,4 @@
-package com.baeldung.springbootlogging;
+package com.baeldung.logging;
 
 import org.apache.logging.log4j.LogManager;
 import org.slf4j.Logger;

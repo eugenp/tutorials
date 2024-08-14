@@ -1,15 +1,15 @@
-package com.baeldung.boot;
+package com.baeldung.starter;
 
-import com.baeldung.boot.domain.GenericEntity;
-import com.baeldung.boot.repository.GenericEntityRepository;
+import com.baeldung.starter.domain.GenericEntity;
+import com.baeldung.starter.repository.GenericEntityRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)

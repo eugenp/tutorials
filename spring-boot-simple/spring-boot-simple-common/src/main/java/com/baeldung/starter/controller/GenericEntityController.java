@@ -1,6 +1,6 @@
-package com.baeldung.boot.controller;
+package com.baeldung.starter.controller;
 
-import com.baeldung.boot.domain.GenericEntity;
+import com.baeldung.starter.domain.GenericEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;

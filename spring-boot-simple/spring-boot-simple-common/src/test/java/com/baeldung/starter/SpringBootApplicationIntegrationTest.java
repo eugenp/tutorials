@@ -1,4 +1,4 @@
-package com.baeldung.boot;
+package com.baeldung.starter;
 
 import org.junit.Before;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package com.baeldung.boot;
+package com.baeldung.starter;
 
 import jakarta.mail.MessagingException;
 import org.junit.After;
