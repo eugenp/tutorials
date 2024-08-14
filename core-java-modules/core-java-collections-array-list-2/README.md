@@ -7,3 +7,4 @@ This module contains articles about the Java ArrayList collection
 - [Finding the Peak Elements of a List](https://www.baeldung.com/java-list-find-peak)
 - [Handling Nulls in ArrayList.addAll()](https://www.baeldung.com/java-arraylist-handle-null-values)
 - [Avoid Inserting Duplicates in ArrayList in Java](https://www.baeldung.com/java-arraylist-no-duplicates)
+- [How to Sort Map Value List by Element Field Using Java Streams](https://www.baeldung.com/sort-map-value-list-streams)
