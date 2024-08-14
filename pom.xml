@@ -576,7 +576,6 @@
                 <module>parent-spring-6</module>
                 <module>core-groovy-modules</module>
                 <module>core-java-modules</module>
-                <module>jhipster-6</module>
                 <module>json-modules</module>
                 <module>maven-modules</module>
                 <module>messaging-modules</module>
@@ -877,7 +876,6 @@
                 <module>parent-spring-6</module>
                 <module>core-groovy-modules</module>
                 <module>core-java-modules</module>
-                <module>jhipster-6</module>
                 <module>json-modules</module>
                 <module>maven-modules</module>
                 <module>messaging-modules</module>
