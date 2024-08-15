@@ -36,8 +36,12 @@ import org.bouncycastle.openpgp.operator.jcajce.JcePGPDataEncryptorBuilder;
 import org.bouncycastle.openpgp.operator.jcajce.JcePublicKeyDataDecryptorFactoryBuilder;
 import org.bouncycastle.openpgp.operator.jcajce.JcePublicKeyKeyEncryptionMethodGenerator;
 import org.bouncycastle.util.io.Streams;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class BouncyCastlePGPDemoApplication {
+
+    private static final Logger logger = LoggerFactory.getLogger(BouncyCastlePGPDemoApplication.class);
 
     static {
         Security.addProvider(new BouncyCastleProvider());
@@ -143,9 +147,9 @@ public class BouncyCastlePGPDemoApplication {
                 throw new PGPException("message is not a simple encrypted file - type unknown.");
             }
             if (pbe.isIntegrityProtected() && pbe.verify()) {
-                System.err.println("message integrity check passed");
+                logger.error("message integrity check passed");
             } else {
-                System.err.println("message integrity check failed");
+                logger.error("message integrity check failed");
             }
         } catch (PGPException e) {
             e.printStackTrace();
