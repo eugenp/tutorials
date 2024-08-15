@@ -20,9 +20,10 @@ public class CountriesController {
 
 	@GetMapping("api/countries")
 	public List<CountryDto> index() {
+
 		Iterable<Country> all = countries.findAll();
 		return stream(all.spliterator(), false)
-				.map(it -> new CountryDto(it.getId(), it.getName(), it.getIso(), null))
+				.map(it -> new CountryDto(it.getId(), it.getName(), it.getIso(), it.getEmoji()))
 				.collect(toList());
 	}
 

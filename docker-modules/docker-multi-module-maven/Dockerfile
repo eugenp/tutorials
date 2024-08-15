@@ -1,14 +1,26 @@
-FROM maven:3.8.5-openjdk-17 AS MAVEN_TOOL_CHAIN
+FROM maven:3.8.5-openjdk-17 AS DEPENDENCEIS
 
-COPY pom.xml /tmp/
-COPY api /tmp/api/
-COPY domain /tmp/domain/
+WORKDIR /opt/app
+COPY api/pom.xml api/pom.xml
+COPY domain/pom.xml domain/pom.xml
+COPY pom.xml .
 
-WORKDIR /tmp/
-RUN mvn clean install -X
+RUN mvn -B -e org.apache.maven.plugins:maven-dependency-plugin:3.1.2:go-offline -DexcludeArtifactIds=domain
 
-FROM openjdk:17
+FROM maven:3.8.5-openjdk-17 AS BUILDER
 
-COPY --from=MAVEN_TOOL_CHAIN /tmp/api/target/docker-multi-module-maven-api-0.0.1-SNAPSHOT.jar /app.jar
+WORKDIR /opt/app
+COPY --from=DEPENDENCEIS /root/.m2 /root/.m2
+COPY --from=DEPENDENCEIS /opt/app/ /opt/app
+COPY api/src /opt/app/api/src
+COPY domain/src /opt/app/domain/src
+
+RUN mvn -B -e clean install -DskipTests
+
+FROM openjdk:17-slim
+
+WORKDIR /opt/app
+COPY --from=BUILDER /opt/app/api/target/*.jar /app.jar
+EXPOSE 8080
 
 ENTRYPOINT ["java", "-jar", "/app.jar"]
