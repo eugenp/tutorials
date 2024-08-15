@@ -20,8 +20,8 @@
         <dependencies>
             <dependency>
                 <groupId>org.springframework.data</groupId>
-                <artifactId>spring-data-releasetrain</artifactId>
-                <version>Moore-SR1</version>
+                <artifactId>spring-data-bom</artifactId>
+                <version>${spring-data-bom.version}</version>
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
@@ -72,7 +72,6 @@
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-commons</artifactId>
-            <version>3.0.8</version>
         </dependency>
     </dependencies>
 
@@ -81,6 +80,7 @@
         <spring-vault-core.version>3.1.1</spring-vault-core.version>
         <auth.version>2.25.6</auth.version>
         <spring-cloud-starter-vault-config.version>4.1.1</spring-cloud-starter-vault-config.version>
+        <spring-data-bom.version>2023.1.2</spring-data-bom.version>
         <maven.compiler.release>17</maven.compiler.release>
         <start-class>com.baeldung.springvault.SpringVaultApplication</start-class>
     </properties>
