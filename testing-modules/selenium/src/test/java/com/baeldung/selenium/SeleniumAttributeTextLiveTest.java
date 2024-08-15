@@ -43,10 +43,16 @@ public class SeleniumAttributeTextLiveTest {
     }
 
     @Test
+    public void givenBaeldungContactPage_whenFoundNameInput_thenContainsText() {
+        driver.get(URL);
+        WebElement inputElement = driver.findElement(By.xpath(INPUT_XPATH));
+        assertEquals("", inputElement.getText());
+    }
+
+    @Test
     public void givenBaeldungContactPage_whenFoundNameInput_thenHasAttributeName() {
         driver.get(URL);
         WebElement inputElement = driver.findElement(By.xpath(INPUT_XPATH));
-        assertEquals("",inputElement.getText());
         assertEquals(INPUT_NAME, inputElement.getAttribute("name"));
     }
 
@@ -54,7 +60,6 @@ public class SeleniumAttributeTextLiveTest {
     public void givenBaeldungContactPage_whenFoundNameInput_thenHasAttributeMaxlength() {
         driver.get(URL);
         WebElement inputElement = driver.findElement(By.xpath(INPUT_XPATH));
-        assertEquals("",inputElement.getText());
         assertEquals(INPUT_LENGTH, inputElement.getAttribute("maxlength"));
     }
 
@@ -62,7 +67,6 @@ public class SeleniumAttributeTextLiveTest {
     public void givenBaeldungContactPage_whenFoundNameInput_thenHasNoAttributeX() {
         driver.get(URL);
         WebElement inputElement = driver.findElement(By.xpath(INPUT_XPATH));
-        assertEquals("",inputElement.getText());
         assertNull(inputElement.getAttribute("X"));
     }
 
