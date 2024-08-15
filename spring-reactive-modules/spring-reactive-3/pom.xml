@@ -130,6 +130,7 @@
     </build>
 
     <properties>
+        <spring-boot.version>3.3.0</spring-boot.version>
         <reactor-spring.version>1.0.1.RELEASE</reactor-spring.version>
         <spring-cloud.version>2021.0.4</spring-cloud.version>
         <mockwebserver.version>5.0.0-alpha.12</mockwebserver.version>
