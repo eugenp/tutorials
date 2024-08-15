@@ -1,4 +1,4 @@
-package com.baeldung.selenium.select;
+package com.baeldung.selenium;
 
 import static org.junit.jupiter.api.Assertions.*;
 
