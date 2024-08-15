@@ -12,8 +12,15 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer;
 import org.springframework.security.oauth2.client.registration.ClientRegistration;
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
+import org.springframework.security.oauth2.client.web.DefaultOAuth2AuthorizationRequestResolver;
+import org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestCustomizers;
+import org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestResolver;
+import org.springframework.security.web.SecurityFilterChain;
 
 import java.net.URI;
 import java.util.List;
@@ -69,4 +76,23 @@ public class OAuth2DynamicClientConfiguration {
         List<String> redirectUris;
         URI tokenEndpoint;
     }
+
+    @Bean
+    public OAuth2AuthorizationRequestResolver pkceResolver(ClientRegistrationRepository repo) {
+        var resolver = new DefaultOAuth2AuthorizationRequestResolver(repo, "/oauth2/authorization");
+        resolver.setAuthorizationRequestCustomizer(OAuth2AuthorizationRequestCustomizers.withPkce());
+        return resolver;
+    }
+
+    @Bean
+    SecurityFilterChain oauth2SecurityFilterChain(HttpSecurity http, OAuth2AuthorizationRequestResolver resolver) throws Exception {
+        http.authorizeHttpRequests((requests) -> {
+            requests.anyRequest().authenticated();
+        });
+        http.oauth2Login(a -> a.authorizationEndpoint(c -> c.authorizationRequestResolver(resolver))) ;
+        http.oauth2Client(Customizer.withDefaults());
+        return http.build();
+    }
+
+
 }

@@ -4,30 +4,6 @@ spring:
     user:
       name: user1
       password: password
-#    oauth2:
-#      authorizationserver:
-#        client:
-#          fake-client:
-#            registration:
-#              client-id: "invalid"
-#              client-secret: "{noop}secret"
-#              client-authentication-methods:
-#                - "client_secret_basic"
-#              authorization-grant-types:
-#                - "authorization_code"
-#                - "refresh_token"
-#                - "client_credentials"
-#              redirect-uris:
-#                - "http://127.0.0.1:8080/login/oauth2/code/messaging-client-oidc"
-#                - "http://127.0.0.1:8080/authorized"
-#              post-logout-redirect-uris:
-#                - "http://127.0.0.1:8080/logged-out"
-#              scopes:
-#                - "openid"
-#                - "profile"
-#                - "message.read"
-#                - "message.write"
-#            require-authorization-consent: true
 
 baeldung:
   security:
