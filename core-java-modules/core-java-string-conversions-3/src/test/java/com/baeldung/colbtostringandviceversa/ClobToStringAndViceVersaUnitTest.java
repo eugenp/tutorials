@@ -12,21 +12,13 @@ import static org.junit.Assert.assertEquals;
 
 public class ClobToStringAndViceVersaUnitTest {
     @Test
-    public void givenCLOB_whenConvertToString_thenVerifyCorrectness() throws SQLException, IOException {
+    public void givenCLOB_whenSizeLessThanMaxValue_thenConvertToString() throws SQLException {
         Clob clob = new javax.sql.rowset.serial.SerialClob("This is a sample CLOB content.".toCharArray());
-
-        String clobAsString;
-        try (Reader reader = clob.getCharacterStream();
-             StringWriter w = new StringWriter()) {
-            char[] buffer = new char[4096];
-            int charsRead;
-            while ((charsRead = reader.read(buffer)) != -1) {
-                w.write(buffer, 0, charsRead);
-            }
-            clobAsString = w.toString();
+        long clobLength = clob.length();
+        if (clobLength <= Integer.MAX_VALUE) {
+            String clobAsString = clob.getSubString(1, (int) clobLength);
+            assertEquals("This is a sample CLOB content.", clobAsString);
         }
-
-        assertEquals("This is a sample CLOB content.", clobAsString);
     }
 
     @Test
