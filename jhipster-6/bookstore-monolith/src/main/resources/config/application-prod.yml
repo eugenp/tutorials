@@ -16,7 +16,7 @@
 logging:
     level:
         ROOT: INFO
-        com.baeldung.jhipster5: INFO
+        com.baeldung.jhipster6: INFO
         io.github.jhipster: INFO
 
 spring:

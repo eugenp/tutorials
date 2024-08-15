@@ -107,7 +107,7 @@
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>${commonsio.version}</version>
+            <version>${commons-io.version}</version>
         </dependency>
         <dependency>
             <groupId>org.hamcrest</groupId>
@@ -368,16 +368,15 @@
         <google-api.version>1.23.0</google-api.version>
         <jets3t-version>0.9.4.0006L</jets3t-version>
         <javax.jdo.version>3.2.1</javax.jdo.version>
-        <datanucleus.version>6.0.3</datanucleus.version>
-        <datanucleus-api.version>6.0.1</datanucleus-api.version>
+        <datanucleus.version>6.0.7</datanucleus.version>
+        <datanucleus-api.version>6.0.2</datanucleus-api.version>
         <datanucleus-maven-plugin.version>6.0.0-release</datanucleus-maven-plugin.version>
-        <datanucleus-xml.version>5.0.0-release</datanucleus-xml.version>
+        <datanucleus-xml.version>6.0.0-release</datanucleus-xml.version>
         <datanucleus-jdo-query.version>6.0.1</datanucleus-jdo-query.version>
         <spring.version>4.3.8.RELEASE</spring.version>
         <spring-mock-mvc.version>3.0.3</spring-mock-mvc.version>
         <quartz.version>2.3.0</quartz.version>
         <commons-net.version>3.6</commons-net.version>
-        <commonsio.version>2.6</commonsio.version>
         <javapoet.version>1.10.0</javapoet.version>
         <libphonenumber.version>8.12.9</libphonenumber.version>
         <functionaljava.version>4.8.1</functionaljava.version>
