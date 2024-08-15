@@ -4,8 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-reactive-client-2</artifactId>
-    <name>spring-reactive-client-2</name>
     <packaging>jar</packaging>
+    <name>spring-reactive-client-2</name>
     <description>spring boot sample project about new features</description>
 
     <parent>
@@ -70,7 +70,6 @@
             <version>${jmh.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>

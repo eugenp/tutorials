@@ -6,8 +6,8 @@
     <groupId>org.springframework.samples</groupId>
     <artifactId>spring-katharsis</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-katharsis</name>
     <packaging>war</packaging>
+    <name>spring-katharsis</name>
 
     <!-- Upgrade to Boot 3 not possible as the project has not been upgraded to Support Jakarta dependencies-->
     <parent>
