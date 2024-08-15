@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-mvc-basics</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>spring-mvc-basics</name>
     <packaging>jar</packaging>
+    <name>spring-mvc-basics</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -50,7 +50,6 @@
             <version>${rest-assured-version}</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
     <build>

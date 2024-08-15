@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-mvc-java</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>spring-mvc-java</name>
     <packaging>war</packaging>
+    <name>spring-mvc-java</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -78,8 +78,6 @@
             <version>${rest.assured.version}</version>
             <scope>test</scope>
         </dependency>
-
-
         <!-- Validation -->
         <dependency>
             <groupId>org.hibernate.validator</groupId>
@@ -90,7 +88,6 @@
             <artifactId>jakarta.el</artifactId>
             <version>${jakarta.el.version}</version>
         </dependency>
-
     </dependencies>
 
     <build>
