@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 class DataProcessorUnitTest {
 
     @Test
-    void givenGenericCollection_whenInvalidTypeDataAdded_failsAfterInvocation() {
+    void givenGenericCollection_whenInvalidTypeDataAdded_thenFailsAfterInvocation() {
         Collection data = new ArrayList<>();
         data.add("DATA_ONE");
         data.add("DATA_TWO");
@@ -24,7 +24,7 @@ class DataProcessorUnitTest {
     }
 
     @Test
-    void givenGenericCollection_whenInvalidTypeDataAdded_failsAfterAdding() {
+    void givenGenericCollection_whenInvalidTypeDataAdded_thenFailsAfterAdding() {
         Collection data = Collections.checkedCollection(new ArrayList<>(), String.class);
         data.add("DATA_ONE");
         data.add("DATA_TWO");
