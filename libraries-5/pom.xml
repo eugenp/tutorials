@@ -115,8 +115,6 @@
         <jetcache.version>2.7.6</jetcache.version>
         <springBoot.version>3.3.0</springBoot.version>
         <spring.version>6.1.8</spring.version>
-        <logback.version>1.5.6</logback.version>
-        <slf4j.version>2.0.13</slf4j.version>
         <manifold.version>2024.1.20</manifold.version>
         <armeria.version>1.29.2</armeria.version>
     </properties>

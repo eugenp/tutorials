@@ -101,7 +101,6 @@
         <xstream.version>1.4.18</xstream.version>
         <jaxb.version>2.3.3</jaxb.version>
         <xmlbeans.version>5.0.2</xmlbeans.version>
-        <log4j-core.version>2.12.4</log4j-core.version>
         <fop.version>2.9</fop.version>
         <itextpdf.version>5.5.13.3</itextpdf.version>
     </properties>
