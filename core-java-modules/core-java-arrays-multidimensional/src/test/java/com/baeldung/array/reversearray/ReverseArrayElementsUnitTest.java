@@ -9,10 +9,10 @@ import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 
-class ReverseArrayElementsTest {
+class ReverseArrayElementsUnitTest {
 
     @Test
-    void givenArray_whenCallReverseRows_thenExpectAllRowsReversed() {
+    void givenArray_whenCallReverseRows_thenAllRowsReversed() {
         int[][] input = new int[][] { { 1, 2, 3 }, { 3, 2, 1 }, { 2, 1, 3 } };
 
         int[][] expected = new int[][] { { 3, 2, 1 }, { 1, 2, 3 }, { 3, 1, 2 } };
@@ -22,7 +22,7 @@ class ReverseArrayElementsTest {
     }
 
     @Test
-    void givenArray_whenCallReverseRowsUsingNestedIntStreams_thenExpectAllRowsReversed() {
+    void givenArray_whenCallReverseRowsUsingNestedIntStreams_thenAllRowsReversed() {
         int[][] input = new int[][] { { 1, 2, 3 }, { 3, 2, 1 }, { 2, 1, 3 } };
 
         int[][] expected = new int[][] { { 3, 2, 1 }, { 1, 2, 3 }, { 3, 1, 2 } };
@@ -32,7 +32,7 @@ class ReverseArrayElementsTest {
     }
 
     @Test
-    void givenArray_whenCallReverseRowsUsingCollectionsReverse_thenExpectAllRowsReversed() {
+    void givenArray_whenCallReverseRowsUsingCollectionsReverse_thenAllRowsReversed() {
         int[][] input = new int[][] { { 1, 2, 3 }, { 3, 2, 1 }, { 2, 1, 3 } };
 
         int[][] expected = new int[][] { { 3, 2, 1 }, { 1, 2, 3 }, { 3, 1, 2 } };
@@ -42,7 +42,7 @@ class ReverseArrayElementsTest {
     }
 
     @Test
-    void givenArray_whenCallReverseRowsUsingCollectionsReverseWithList_thenExpectAllRowsReversed() {
+    void givenArray_whenCallReverseRowsUsingCollectionsReverseWithList_thenAllRowsReversed() {
         List<List<Integer>> input = asList(asList(1, 2, 3), asList(3, 2, 1), asList(2, 1, 3));
         List<List<Integer>> expected = asList(asList(3, 2, 1), asList(1, 2, 3), asList(3, 1, 2));
 
