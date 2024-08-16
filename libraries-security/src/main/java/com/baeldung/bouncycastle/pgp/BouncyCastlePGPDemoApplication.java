@@ -62,11 +62,11 @@ public class BouncyCastlePGPDemoApplication {
             encryptFile(encryptedFileName, plainTextInputFileName, pubKeyFileName, true);
             decryptFile(encryptedFileName, privKeyFileName, "baeldung".toCharArray(), "decryptedFile", true);
         } catch (NoSuchProviderException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         } catch (PGPException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
 
     }
@@ -90,7 +90,7 @@ public class BouncyCastlePGPDemoApplication {
             cOut.close();
             out.close();
         } catch (PGPException e) {
-            System.err.println(e);
+            logger.error(e.getMessage());
             if (e.getUnderlyingException() != null) {
                 e.getUnderlyingException()
                     .printStackTrace();
