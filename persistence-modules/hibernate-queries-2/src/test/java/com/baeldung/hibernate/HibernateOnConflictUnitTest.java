@@ -1,7 +1,6 @@
 package com.baeldung.hibernate;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.IOException;
 
@@ -49,14 +48,15 @@ public class HibernateOnConflictUnitTest {
 
         long rowCountBefore = getRowCount();
         int updated = session.createMutationQuery("""
-            insert into Student (studentId, name) values (2, 'Sean') 
-            on conflict(studentId) do update 
+            insert into Student (studentId, name) values (2, 'Sean')
+            on conflict(studentId) do update
             set name = excluded.name
-            """).executeUpdate();
+            """)
+            .executeUpdate();
         long rowCountAfter = getRowCount();
 
-        assertEquals(updated, 1);
-        assertEquals(rowCountBefore, rowCountAfter);
+        assertThat(updated).isEqualTo(1);
+        assertThat(rowCountAfter).isEqualTo(rowCountBefore);
     }
 
     @Test
@@ -64,42 +64,43 @@ public class HibernateOnConflictUnitTest {
 
         long rowCountBefore = getRowCount();
         int updated = session.createMutationQuery("""
-            insert into Student (studentId, name) values (1, 'Sean') 
-            on conflict(studentId) do update 
+            insert into Student (studentId, name) values (1, 'Sean')
+            on conflict(studentId) do update
             set name = excluded.name
             """)
             .executeUpdate();
         long rowCountAfter = getRowCount();
 
-        assertEquals(updated, 1);
-        assertEquals(rowCountBefore, rowCountAfter);
+        assertThat(updated).isEqualTo(1);
+        assertThat(rowCountAfter).isEqualTo(rowCountBefore);
     }
 
     @Test
     public void givenInsertQueryWithOnConflictClause_whenNoConflcitDoNothing_ThenInsertNewRecord() {
         long rowCountBefore = getRowCount();
         int updated = session.createMutationQuery("""
-            insert into Student (studentId, name) values (2, 'Sean') 
+            insert into Student (studentId, name) values (2, 'Sean')
             on conflict do nothing
             """)
             .executeUpdate();
         long rowCountAfter = getRowCount();
 
-        assertEquals(updated, 1);
-        assertNotEquals(rowCountBefore, rowCountAfter);
+        assertThat(updated).isEqualTo(1);
+        assertThat(rowCountAfter).isNotEqualTo(rowCountBefore);        
     }
 
     @Test
     public void givenInsertQueryWithOnConflictClause_whenOnConflcitDoNothing_ThenErrorIsLogged() {
         long rowCountBefore = getRowCount();
         int updated = session.createMutationQuery("""
-            insert into Student (studentId, name) values (1, 'Sean') 
+            insert into Student (studentId, name) values (1, 'Sean')
             on conflict do nothing
             """)
             .executeUpdate();
         long rowCountAfter = getRowCount();
-        assertEquals(updated, 0);
-        assertEquals(rowCountBefore, rowCountAfter);
+
+        assertThat(updated).isEqualTo(0);
+        assertThat(rowCountAfter).isEqualTo(rowCountBefore);
     }
 
     private static long getRowCount() {
