@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 
 import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
 import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
+import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.textract.TextractClient;
 
 @Configuration
@@ -20,11 +21,13 @@ public class AmazonTextractConfiguration {
 
     @Bean
     public TextractClient textractClient() {
+        String region = awsConfigurationProperties.getRegion();
         String accessKey = awsConfigurationProperties.getAccessKey();
         String secretKey = awsConfigurationProperties.getSecretKey();
         AwsBasicCredentials awsCredentials = AwsBasicCredentials.create(accessKey, secretKey);
 
         return TextractClient.builder()
+            .region(Region.of(region))
             .credentialsProvider(StaticCredentialsProvider.create(awsCredentials))
             .build();
     }

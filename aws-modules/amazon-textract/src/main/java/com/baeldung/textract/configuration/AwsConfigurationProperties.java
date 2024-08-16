@@ -9,11 +9,22 @@ import jakarta.validation.constraints.NotBlank;
 @ConfigurationProperties(prefix = "com.baeldung.aws")
 public class AwsConfigurationProperties {
 
+    @NotBlank(message = "AWS region must be configured")
+    private String region;
+
     @NotBlank(message = "AWS access key must be configured")
     private String accessKey;
 
     @NotBlank(message = "AWS secret key must be configured")
     private String secretKey;
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
 
     public String getAccessKey() {
         return accessKey;
