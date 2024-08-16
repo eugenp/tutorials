@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.spring.security</groupId>
     <artifactId>spring-security-web-angular</artifactId>
-    <name>spring-security-web-angular</name>
     <packaging>pom</packaging>
+    <name>spring-security-web-angular</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
