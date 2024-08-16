@@ -6,8 +6,8 @@
     <groupId>com.baeldung.spring.cloud</groupId>
     <artifactId>spring-cloud-zuul</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-cloud-zuul</name>
     <packaging>pom</packaging>
+    <name>spring-cloud-zuul</name>
 
     <parent>
         <groupId>com.baeldung.spring.cloud</groupId>

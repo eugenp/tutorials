@@ -6,8 +6,8 @@
     <groupId>com.baeldung.spring.reactive</groupId>
     <artifactId>spring-reactive-modules</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>spring-reactive-modules</name>
     <packaging>pom</packaging>
+    <name>spring-reactive-modules</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -35,17 +35,6 @@
         <!--    the following submodules are commented out as a workaround in order to use java 19+ and SB 3.2.x -->
         <!--    <module>spring-reactive-performance</module>-->
     </modules>
-
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
 
     <dependencyManagement>
         <dependencies>
@@ -76,6 +65,17 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
     <properties>
         <reactor.version>3.6.0</reactor.version>
