@@ -44,7 +44,7 @@
                         <image>openjdk:17-slim</image>
                     </from>
                     <to>
-                        <image>baeldung-demo:v2.2</image>
+                        <image>baeldung-demo:from-jib</image>
                     </to>
                     <container>
                         <mainClass>com.baeldung.api.Application</mainClass>
