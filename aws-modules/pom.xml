@@ -22,6 +22,7 @@
         <module>aws-s3</module>
         <module>aws-rest</module>
         <module>amazon-athena</module>
+        <module>amazon-textract</module>
     </modules>
 
     <dependencies>
