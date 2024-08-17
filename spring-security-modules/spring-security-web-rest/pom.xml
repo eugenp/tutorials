@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-security-web-rest</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>spring-security-web-rest</name>
     <packaging>war</packaging>
+    <name>spring-security-web-rest</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
