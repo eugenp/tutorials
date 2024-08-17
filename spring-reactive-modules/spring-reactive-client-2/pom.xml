@@ -153,7 +153,6 @@
 
     <properties>
         <reactor-spring.version>1.0.1.RELEASE</reactor-spring.version>
-        <jetty-reactive-httpclient.version>1.1.6</jetty-reactive-httpclient.version>
         <resilience4j.version>1.7.1</resilience4j.version>
         <jmh.version>1.37</jmh.version>
     </properties>
