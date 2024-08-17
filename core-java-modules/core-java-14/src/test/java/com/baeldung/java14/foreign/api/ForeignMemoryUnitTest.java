@@ -2,18 +2,18 @@ package com.baeldung.java14.foreign.api;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.lang.foreign.Arena;
+import java.lang.foreign.MemorySegment;
 import java.nio.ByteBuffer;
 
 import org.junit.jupiter.api.Test;
-
-import jdk.incubator.foreign.*;
 
 public class ForeignMemoryUnitTest {
 
     @Test
     void whenAValueIsSet_thenAccessTheValue() {
-        try (ResourceScope scope = ResourceScope.newConfinedScope()) {
-            MemorySegment segment = MemorySegment.allocateNative(4, scope);
+        try (Arena memorySession = Arena.ofConfined()) {
+            MemorySegment segment = memorySession.allocate(4);
             ByteBuffer buffer = segment.asByteBuffer();
 
             buffer.putInt(0, 42);
@@ -25,8 +25,8 @@ public class ForeignMemoryUnitTest {
 
     @Test
     void whenMultipleValuesAreSet_thenAccessAll() {
-        try (ResourceScope scope = ResourceScope.newConfinedScope()) {
-            MemorySegment segment = MemorySegment.allocateNative(12, scope);
+        try (Arena memorySession = Arena.ofConfined()) {
+            MemorySegment segment = memorySession.allocate(12);
             ByteBuffer buffer = segment.asByteBuffer();
 
             buffer.putInt(0, 10);
@@ -58,8 +58,8 @@ public class ForeignMemoryUnitTest {
 
     @Test
     void whenSlicingMemorySegment_thenTheyCanBeAccessedIndividually() {
-        try (ResourceScope scope = ResourceScope.newConfinedScope()) {
-            MemorySegment segment = MemorySegment.allocateNative(12, scope);
+        try (Arena memorySession = Arena.ofConfined()) {
+            MemorySegment segment = memorySession.allocate(12);
             ByteBuffer buffer = segment.asByteBuffer();
 
             buffer.putInt(0, 10);

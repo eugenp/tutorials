@@ -17,7 +17,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.24</version>
+            <version>1.18.32</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
@@ -29,9 +29,10 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
                     <compilerArgs>
-                        <arg>--add-modules</arg>
-                        <arg>jdk.incubator.foreign</arg>
+                        <arg>--enable-preview</arg>
                     </compilerArgs>
+                    <source>21</source>
+                    <target>21</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -39,7 +40,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
-                    <argLine>--add-modules jdk.incubator.foreign</argLine>
+                    <argLine>--enable-preview</argLine>
                 </configuration>
             </plugin>
         </plugins>
