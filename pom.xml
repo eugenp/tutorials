@@ -834,7 +834,7 @@
                 <module>xml-2</module>
                 <module>xstream</module>
                 <module>libraries-data-io-2</module>
-				<module>spring-5-rest-docs</module>
+                <module>spring-5-rest-docs</module>
             </modules>
 
             <properties>
@@ -1128,7 +1128,7 @@
                 <module>xml-2</module>
                 <module>xstream</module>
                 <module>libraries-data-io-2</module>
-				<module>spring-5-rest-docs</module>
+                <module>spring-5-rest-docs</module>
             </modules>
 
             <properties>
