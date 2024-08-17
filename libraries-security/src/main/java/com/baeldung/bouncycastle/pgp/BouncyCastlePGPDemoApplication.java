@@ -91,10 +91,6 @@ public class BouncyCastlePGPDemoApplication {
             out.close();
         } catch (PGPException e) {
             logger.error(e.getMessage());
-            if (e.getUnderlyingException() != null) {
-                e.getUnderlyingException()
-                    .printStackTrace();
-            }
         }
     }
 
@@ -152,7 +148,7 @@ public class BouncyCastlePGPDemoApplication {
                 logger.error("message integrity check failed");
             }
         } catch (PGPException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
         privateKeyInStream.close();
         instream.close();
