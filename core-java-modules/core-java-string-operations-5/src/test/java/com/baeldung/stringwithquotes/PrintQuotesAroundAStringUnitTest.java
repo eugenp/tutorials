@@ -31,7 +31,7 @@ public class PrintQuotesAroundAStringUnitTest {
         System.out.println(quoted);
 
         //assertion
-        String expected = "\"All Java programmers are cute!\"\r\n";
+        String expected = "\"All Java programmers are cute!\"\n";
         assertEquals(expected, outContent.toString());
     }
 
@@ -43,7 +43,7 @@ public class PrintQuotesAroundAStringUnitTest {
         System.out.println(quoted);
 
         //assertion
-        String expected = "\"Can you write Java code?\"\r\n";
+        String expected = "\"Can you write Java code?\"\n";
         assertEquals(expected, outContent.toString());
     }
 
@@ -54,7 +54,7 @@ public class PrintQuotesAroundAStringUnitTest {
         System.out.println(quoted);
 
         //assertion
-        String expected = "\"Yes, we can write beautiful Java codes!\"\r\n";
+        String expected = "\"Yes, we can write beautiful Java codes!\"\n";
         assertEquals(expected, outContent.toString());
     }
 }
