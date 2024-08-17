@@ -33,6 +33,7 @@ public class PrintQuotesAroundAStringUnitTest {
         //assertion
         String expected = "\"All Java programmers are cute!\"\n";
         assertEquals(expected, outContent.toString());
+        assertEquals(expected, outContent.toString());
     }
 
     @Test
