@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-reactive-filters</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-reactive-filters</name>
     <packaging>jar</packaging>
+    <name>spring-reactive-filters</name>
     <description>spring boot sample project about new features</description>
 
     <parent>
@@ -30,7 +30,6 @@
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
         </dependency>
-
         <!-- runtime and test scoped -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

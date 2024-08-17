@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-security-web-boot-2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-security-web-boot-2</name>
     <packaging>war</packaging>
+    <name>spring-security-web-boot-2</name>
     <description>Spring Security MVC Boot - 2</description>
 
     <parent>

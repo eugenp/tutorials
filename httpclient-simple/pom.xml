@@ -207,8 +207,6 @@
         <httpcore5.version>5.2</httpcore5.version>
         <httpclient5.version>5.2</httpclient5.version>
         <httpclient5-fluent.version>5.2</httpclient5-fluent.version>
-        <!-- maven plugins -->
-        <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
     </properties>
 
 </project>

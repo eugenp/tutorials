@@ -27,6 +27,7 @@
     </title>
     <detail>
         <band height="47" splitType="Stretch">
+            <printWhenExpression><![CDATA[$F{FIRST_NAME} != null && $F{LAST_NAME} != null && $F{SALARY} != null]]></printWhenExpression>
             <textField>
                 <reportElement x="0" y="0" width="100" height="20"/>
                 <textElement/>
