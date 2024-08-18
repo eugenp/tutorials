@@ -71,11 +71,7 @@ dependencies {
     }
 }
 
-configurations.all {
-    exclude group: 'org.apache.commons', module : 'commons-collections4'
-}
-
-configurations.configureEach {
+configurations.configureEach {// prefer use .configureEach instead of .all
     exclude group: 'net.bytebuddy', module: 'byte-buddy-agent'
 }
 
