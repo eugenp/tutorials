@@ -4,7 +4,10 @@ import java.io.IOException;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.baeldung.textract.validation.ValidFileType;
 
 import software.amazon.awssdk.core.SdkBytes;
 import software.amazon.awssdk.services.textract.TextractClient;
@@ -13,6 +16,7 @@ import software.amazon.awssdk.services.textract.model.BlockType;
 import software.amazon.awssdk.services.textract.model.DetectDocumentTextResponse;
 
 @Service
+@Validated
 public class TextExtractor {
 
     private final TextractClient textractClient;
@@ -21,7 +25,7 @@ public class TextExtractor {
         this.textractClient = textractClient;
     }
 
-    public String extract(MultipartFile image) throws IOException {
+    public String extract(@ValidFileType MultipartFile image) throws IOException {
         byte[] imageBytes = image.getBytes();
         DetectDocumentTextResponse response = textractClient.detectDocumentText(request -> request
             .document(document -> document
