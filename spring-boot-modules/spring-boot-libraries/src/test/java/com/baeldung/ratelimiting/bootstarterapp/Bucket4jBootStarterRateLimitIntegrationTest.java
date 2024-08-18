@@ -20,7 +20,7 @@ import org.springframework.test.web.servlet.RequestBuilder;
 import com.baeldung.ratelimiting.bucket4japp.service.PricingPlan;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = Bucket4jRateLimitApp.class)
+@SpringBootTest(classes = Bucket4jRateLimitRunnerApp.class)
 @TestPropertySource(properties = "spring.config.location=classpath:ratelimiting/application-bucket4j-starter.yml")
 @AutoConfigureMockMvc
 public class Bucket4jBootStarterRateLimitIntegrationTest {

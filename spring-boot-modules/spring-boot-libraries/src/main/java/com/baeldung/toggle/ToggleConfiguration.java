@@ -16,5 +16,6 @@ public class ToggleConfiguration {
     public FeatureProvider featureProvider() {
         return new EnumBasedFeatureProvider(MyFeatures.class);
     }
-
 }
+
+
