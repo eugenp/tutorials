@@ -22,24 +22,20 @@ public class OrderServlet extends HttpServlet {
             return;
         }
         StringBuilder payload = new StringBuilder();
-        try(BufferedReader reader = req.getReader()){
-            String line;
-            while ((line = reader.readLine()) != null){
-                payload.append(line);
-            }
+        try (BufferedReader reader = req.getReader()) {
+            XStream xStream = new XStream();
+            xStream.allowTypesByWildcard(new String[] { "com.baeldung.**" });
+            xStream.alias("Order", Order.class);
+            Order order = (Order) xStream.fromXML(reader);
+
+            resp.getWriter()
+                .append("Created new Order with orderId: ")
+                .append(order.getOrderId())
+                .append(" for Product: ")
+                .append(order.getProduct());
         } catch (IOException ex) {
             req.setAttribute("message", "There was an error: " + ex.getMessage());
         }
 
-        XStream xStream = new XStream();
-        xStream.allowTypesByWildcard(new String[] { "com.baeldung.**" });
-        xStream.alias("Order", Order.class);
-        Order order = (Order) xStream.fromXML(payload.toString());
-
-        resp.getWriter()
-            .append("Created new Order with orderId: ")
-            .append(order.getOrderId())
-            .append(" for Product: ")
-            .append(order.getProduct());
     }
 }
