@@ -15,7 +15,7 @@ import software.amazon.awssdk.services.textract.model.DetectDocumentTextResponse
 @Service
 public class TextExtractor {
 
-    private TextractClient textractClient;
+    private final TextractClient textractClient;
 
     public TextExtractor(TextractClient textractClient) {
         this.textractClient = textractClient;
@@ -29,9 +29,9 @@ public class TextExtractor {
                 .build())
             .build());
         
-        return process(response);
+        return transformTextDetectionResponse(response);
     }
-    
+
     public String extract(String bucketName, String objectKey) {
         DetectDocumentTextResponse response = textractClient.detectDocumentText(request -> request
             .document(document -> document
@@ -42,10 +42,10 @@ public class TextExtractor {
                 .build())
             .build());
         
-        return process(response);
+        return transformTextDetectionResponse(response);
     }
-    
-    private String process(DetectDocumentTextResponse response) {
+
+    private String transformTextDetectionResponse(DetectDocumentTextResponse response) {
         return response.blocks()
             .stream()
             .filter(block -> block.blockType().equals(BlockType.LINE))
