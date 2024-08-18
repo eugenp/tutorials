@@ -21,7 +21,7 @@ public class OrderServlet extends HttpServlet {
             resp.sendError(HttpServletResponse.SC_UNSUPPORTED_MEDIA_TYPE, "Invalid content type");
             return;
         }
-        StringBuilder payload = new StringBuilder();
+
         try (BufferedReader reader = req.getReader()) {
             XStream xStream = new XStream();
             xStream.allowTypesByWildcard(new String[] { "com.baeldung.**" });
