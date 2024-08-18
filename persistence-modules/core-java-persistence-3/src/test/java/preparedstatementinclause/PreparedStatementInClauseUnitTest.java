@@ -38,7 +38,6 @@ class PreparedStatementInClauseUnitTest {
     void whenPopulatingINClauseWithStringBuilder_thenIsSuccess() throws SQLException {
         ResultSet resultSet = PreparedStatementInClause.populateParamsWithStringBuilder(connection, List.of(1, 2, 3, 4, 55));
         Assertions.assertNotNull(resultSet);
-        resultSet.beforeFirst();
         resultSet.last();
         int size = resultSet.getRow();
         Assertions.assertEquals(5, size);
@@ -48,7 +47,6 @@ class PreparedStatementInClauseUnitTest {
     void whenPopulatingINClauseWithStream_thenIsSuccess() throws SQLException {
         ResultSet resultSet = PreparedStatementInClause.populateParamsWithStream(connection, List.of(1, 2, 3, 4, 55));
         Assertions.assertNotNull(resultSet);
-        resultSet.beforeFirst();
         resultSet.last();
         int size = resultSet.getRow();
         Assertions.assertEquals(5, size);
@@ -58,7 +56,6 @@ class PreparedStatementInClauseUnitTest {
     void whenPopulatingINClauseWithArray_thenIsSuccess() throws SQLException {
         ResultSet resultSet = PreparedStatementInClause.populateParamsWithArray(connection, List.of(1, 2, 3, 4, 55));
         Assertions.assertNotNull(resultSet);
-        resultSet.beforeFirst();
         resultSet.last();
         int size = resultSet.getRow();
         Assertions.assertEquals(5, size);
