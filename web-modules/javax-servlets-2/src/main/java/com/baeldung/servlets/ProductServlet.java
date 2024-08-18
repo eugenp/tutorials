@@ -22,7 +22,6 @@ public class ProductServlet extends HttpServlet {
             return;
         }
 
-        StringBuilder payload = new StringBuilder();
         try (BufferedReader reader = req.getReader()) {
             Gson gson = new Gson();
             Product newProduct = gson.fromJson(reader, Product.class);
