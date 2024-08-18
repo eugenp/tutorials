@@ -1,13 +1,5 @@
 package com.baeldung.shallowdeepcopy;
 
-class AddressShallowCopy {
-    String city;
-
-    AddressShallowCopy(String city) {
-        this.city = city;
-    }
-}
-
 class PersonShallowCopy implements Cloneable {
     String name;
     AddressShallowCopy address;
@@ -17,10 +9,8 @@ class PersonShallowCopy implements Cloneable {
         this.address = address;
     }
 
-    // Creates a shallow copy of the Person object
     @Override
     protected Object clone() throws CloneNotSupportedException {
-        return super.clone(); // Shallow copy
+        return super.clone();
     }
 }
-

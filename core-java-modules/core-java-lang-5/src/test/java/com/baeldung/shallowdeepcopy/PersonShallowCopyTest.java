@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PersonShallowCopyTest {
     @Test
-    public void testShallowCopy() throws CloneNotSupportedException {
+    public void whenShallowCopyingPerson_thenAddressIsShallowCopied() throws CloneNotSupportedException {
         AddressShallowCopy address = new AddressShallowCopy("New York");
         PersonShallowCopy person1 = new PersonShallowCopy("John", address);
         PersonShallowCopy person2 = (PersonShallowCopy) person1.clone();

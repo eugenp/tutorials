@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class PersonDeepCopyTest {
 
     @Test
-    public void testDeepCopy() {
+    public void whenDeepCopyingPerson_thenAddressIsDeepCopied() {
         AddressDeepCopy address = new AddressDeepCopy("New York");
         PersonDeepCopy person1 = new PersonDeepCopy("John", address);
         PersonDeepCopy person2 = person1.clone();
