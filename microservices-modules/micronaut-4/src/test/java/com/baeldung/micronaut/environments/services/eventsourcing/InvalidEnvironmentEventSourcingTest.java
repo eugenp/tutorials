@@ -1,5 +1,6 @@
 package com.baeldung.micronaut.environments.services.eventsourcing;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
@@ -17,12 +18,9 @@ public class InvalidEnvironmentEventSourcingTest {
         ApplicationContext applicationContext = Micronaut.run(ServerApplication.class);
         applicationContext.start();
 
+        assertThat(applicationContext.getEnvironment()
+            .getActiveNames()).containsExactly("test");
         assertThatThrownBy(() -> applicationContext.getBean(EventSourcingService.class)).isInstanceOf(NoSuchBeanException.class)
             .hasMessageContaining("None of the required environments [production] are active: [test]");
-
-        // remove it later. keep it to mention it in the article as the exception thrown if a default impl is missing
-        //        assertThatThrownBy(() -> eventSourcingService.sendEvent("something"))
-        //            .isInstanceOf(DependencyInjectionException.class)
-        //            .hasMessage("No bean of type [com.baeldung.micronaut.environments.services.eventsourcing.EventSourcingService] exists.");
     }
 }

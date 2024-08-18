@@ -1,18 +1,20 @@
-package com.baeldung.micronaut.environments.services.eventsourcing;
+package com.baeldung.micronaut.environments.services.hostresolver;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
+
+import com.baeldung.micronaut.environments.services.HostResolver;
 
 import io.micronaut.context.ApplicationContext;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import jakarta.inject.Inject;
 
 @MicronautTest(environments = { "dev" })
-public class DevEnvironmentEventSourcingTest {
+public class DevEnvironmentHostResolverTest {
 
     @Inject
-    EventSourcingService eventSourcingService;
+    HostResolver hostResolver;
     @Inject
     ApplicationContext applicationContext;
 
@@ -23,9 +25,9 @@ public class DevEnvironmentEventSourcingTest {
     }
 
     @Test
-    public void sendEvent_whenEnvIsDev_usesVoidEnvSourcingService() {
-        String devEvent = eventSourcingService.sendEvent("something");
+    public void getHost_whenEnvIsDev_returnsLocalhost() {
+        String devHost = hostResolver.getHost();
 
-        assertThat(devEvent).isEqualTo("void service. [something] was not sent");
+        assertThat(devHost).isEqualTo("localhost");
     }
 }

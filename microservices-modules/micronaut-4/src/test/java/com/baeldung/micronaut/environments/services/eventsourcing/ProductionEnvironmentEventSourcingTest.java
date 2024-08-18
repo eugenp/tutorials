@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
 
+import io.micronaut.context.ApplicationContext;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import jakarta.inject.Inject;
 
@@ -12,6 +13,14 @@ public class ProductionEnvironmentEventSourcingTest {
 
     @Inject
     EventSourcingService eventSourcingService;
+    @Inject
+    ApplicationContext applicationContext;
+
+    @Test
+    public void assertEnvironmentSet() {
+        assertThat(applicationContext.getEnvironment()
+            .getActiveNames()).containsExactlyInAnyOrder("test", "production");
+    }
 
     @Test
     public void sendEvent_whenEnvIsProduction_usesKafkaEventSourcingService() {

@@ -12,12 +12,15 @@ import io.micronaut.runtime.Micronaut;
 public class InvalidEnvironmentLoggingTest {
 
     @Test
-    public void sendEvent_whenEnvIsNone_usesDefaultLoggingService() {
+    public void log_whenEnvIsNone_usesDefaultLoggingService() {
         ApplicationContext applicationContext = Micronaut.run(ServerApplication.class);
         applicationContext.start();
 
         LoggingService loggingService = applicationContext.getBean(LoggingService.class);
 
+        assertThat(applicationContext.getEnvironment()
+            .getActiveNames()).containsExactly("test");
+        assertThat(loggingService).isNotNull();
         assertThat(loggingService).isExactlyInstanceOf(ConsoleLoggingServiceImpl.class);
     }
 }
