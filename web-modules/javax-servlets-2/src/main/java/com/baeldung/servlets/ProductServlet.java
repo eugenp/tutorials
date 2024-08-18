@@ -21,21 +21,18 @@ public class ProductServlet extends HttpServlet {
             resp.sendError(HttpServletResponse.SC_UNSUPPORTED_MEDIA_TYPE, "Invalid content type");
             return;
         }
+
         StringBuilder payload = new StringBuilder();
-        try(BufferedReader reader = req.getReader()){
-            String line;
-            while ((line = reader.readLine()) != null){
-                payload.append(line);
-            }
+        try (BufferedReader reader = req.getReader()) {
+            Gson gson = new Gson();
+            Product newProduct = gson.fromJson(reader, Product.class);
+            resp.getWriter()
+                .append("Added new Product with name: ")
+                .append(newProduct.getName());
+
         } catch (IOException ex) {
             req.setAttribute("message", "There was an error: " + ex.getMessage());
         }
 
-        Gson gson = new Gson();
-        Product newProduct = gson.fromJson(payload.toString(), Product.class);
-
-        resp.getWriter()
-            .append("Added new Product with name: ")
-            .append(newProduct.getName());
     }
 }
