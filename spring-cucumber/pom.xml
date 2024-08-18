@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-cucumber</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-cucumber</name>
     <packaging>jar</packaging>
+    <name>spring-cucumber</name>
     <description>Demo project for Spring Boot</description>
 
     <parent>
@@ -51,7 +51,6 @@
             <version>${junit-vintage-engine.version}</version>
             <scope>test</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-io -->
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
