@@ -63,6 +63,12 @@ dependencies {
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
 
     annotationProcessor 'com.google.dagger:dagger-compiler:2.44'
+
+    implementation("io.smallrye:jandex") {
+        version {
+            strictly '3.1.2'
+        }
+    }
 }
 
 configurations.all {
