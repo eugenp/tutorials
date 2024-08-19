@@ -9,7 +9,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +27,7 @@ public class PersonRepositoryIntegrationTest {
     private BookRepository bookRepository;
 
     @Test
-    @Ignore
+    @Disabled
     void givenNamingStrategy_whenSavingPerson_thenSequenceIsCreatedWithSpecifiedNamingStrategy() {
         // Change the naming strategy in properties file to see the differences.
 
@@ -41,7 +41,7 @@ public class PersonRepositoryIntegrationTest {
     }
 
     @Test
-    @Ignore
+    @Disabled
     void givenSingleNamingStrategy_whenSavingPersonAndBook_thenUsesSameSequenceForBoth() {
         // Change the naming strategy in properties file to see the differences.
 
