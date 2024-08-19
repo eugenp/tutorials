@@ -30,8 +30,9 @@ class JacksonFindValueUnitTest {
         ObjectMapper mapper = new ObjectMapper();
         JsonNode rootNode = mapper.readTree(jsonString);
         JsonNode emailNode = rootNode.findValue("email");
-        String email = (emailNode != null) ? emailNode.asText() : null;
-
+        Optional<JsonNode> emailOptional = Optional.ofNullable(emailNode);
+        String email = emailOptional.map(JsonNode::asText).orElse(null);
+        
         assertEquals(null, email);
     }
 
