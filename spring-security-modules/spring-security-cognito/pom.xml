@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-security-cognito</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-security-cognito</name>
     <packaging>jar</packaging>
+    <name>spring-security-cognito</name>
     <description>spring 5 security oauth cognito sample project</description>
 
     <parent>

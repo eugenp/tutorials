@@ -1,6 +1,6 @@
 package com.baeldung.hikari;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import javax.sql.DataSource;
 

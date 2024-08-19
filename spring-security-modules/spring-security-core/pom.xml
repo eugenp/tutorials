@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-security-core</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>spring-security-core</name>
     <packaging>war</packaging>
+    <name>spring-security-core</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -67,10 +67,6 @@
         </plugins>
     </build>
 
-    <properties>
-        <start-class>com.baeldung.app.App</start-class>
-    </properties>
-
     <profiles>
         <profile>
             <id>live</id>
@@ -104,5 +100,9 @@
             </build>
         </profile>
     </profiles>
+
+    <properties>
+        <start-class>com.baeldung.app.App</start-class>
+    </properties>
 
 </project>
