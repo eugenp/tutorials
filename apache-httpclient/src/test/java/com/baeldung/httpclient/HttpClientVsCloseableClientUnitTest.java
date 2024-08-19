@@ -1,10 +1,5 @@
-package com.baeldung.httpclient.httpclient;
+package com.baeldung.httpclient;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.io.IOException;
-
-import com.baeldung.httpclient.GetRequestMockServer;
 import org.apache.hc.client5.http.classic.HttpClient;
 import org.apache.hc.client5.http.classic.methods.HttpGet;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
@@ -15,7 +10,11 @@ import org.apache.hc.core5.http.HttpStatus;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
 import org.junit.jupiter.api.Test;
 
-class ApacheHttpClientUnitTest extends GetRequestMockServer {
+import java.io.IOException;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+class HttpClientVsCloseableClientUnitTest extends GetRequestMockServer {
 
     @Test
     void givenDeveloperUsedHttpClient_whenExecutingGetRequest_thenStatusIsOkButSonarReportsAnIssue() throws IOException {
