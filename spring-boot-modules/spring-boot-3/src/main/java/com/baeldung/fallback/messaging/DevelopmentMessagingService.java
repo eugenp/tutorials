@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Profile("!test")
-public class DevelopmentMessagingService implements IMessagingService {
+public class DevelopmentMessagingService implements MessagingService {
 
     @Override
     public void sendMessage(String text) {

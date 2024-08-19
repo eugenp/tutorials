@@ -2,7 +2,7 @@ package com.baeldung.fallback;
 
 import com.baeldung.fallback.messaging.DevelopmentMessagingService;
 import com.baeldung.fallback.messaging.FallbackMessagingService;
-import com.baeldung.fallback.messaging.IMessagingService;
+import com.baeldung.fallback.messaging.MessagingService;
 import com.baeldung.fallback.messaging.ProductionMessagingService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,7 +19,7 @@ import static org.junit.Assert.assertEquals;
 public class ProductionMessagingServiceUnitTest {
 
     @Autowired
-    private IMessagingService messagingService;
+    private MessagingService messagingService;
 
     @Test
     public void givenProductionProfile_whenSendMessage_thenProductionMessagingService() {

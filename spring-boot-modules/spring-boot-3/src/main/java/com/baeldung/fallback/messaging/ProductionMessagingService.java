@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 @Profile("production")
 @Primary
-public class ProductionMessagingService implements IMessagingService {
+public class ProductionMessagingService implements MessagingService {
 
     @Override
     public void sendMessage(String text) {
