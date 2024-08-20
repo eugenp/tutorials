@@ -15,6 +15,7 @@
 
 	<modules>
 		<module>dummy-api</module>
+		<module>consume-api</module>
 	</modules>
 
 </project>
