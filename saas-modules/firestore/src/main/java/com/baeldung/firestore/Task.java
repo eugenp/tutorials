@@ -10,6 +10,8 @@ public class Task {
 
     private String description;
 
+    private String status;
+
     private Date dueDate;
 
     public String getTitle() {
@@ -26,6 +28,14 @@ public class Task {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public Date getDueDate() {
