@@ -4,13 +4,13 @@
 <configuration scan="true">
     <include resource="org/springframework/boot/logging/logback/base.xml"/>
 
-    <logger name="com.baeldung.jhipster5" level="INFO"/>
+    <logger name="com.baeldung.jhipster6" level="INFO"/>
 
     <logger name="io.github.jhipster" level="WARN"/>
 
     <logger name="javax.activation" level="WARN"/>
     <logger name="javax.mail" level="WARN"/>
-    <logger name="jakarta.xml.bind" level="WARN"/>
+    <logger name="javax.xml.bind" level="WARN"/>
     <logger name="ch.qos.logback" level="WARN"/>
     <logger name="com.ryantenney" level="WARN"/>
     <logger name="com.sun" level="WARN"/>

@@ -276,7 +276,7 @@
         <!-- okhttp -->
         <com.squareup.okhttp3.version>4.12.0</com.squareup.okhttp3.version>
         <commons-fileupload.version>2.0.0-M1</commons-fileupload.version>
-        <rest-assured.version>5.4.0</rest-assured.version>
+        <rest-assured.version>5.5.0</rest-assured.version>
         <jakarta.xml.bind-api.version>2.3.2</jakarta.xml.bind-api.version>
         <commons-fileupload2-jakarta-servlet6.version>2.0.0-M2</commons-fileupload2-jakarta-servlet6.version>
         <httpclient5.version>5.3.1</httpclient5.version>
