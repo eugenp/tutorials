@@ -19,7 +19,7 @@ public class EmployeeSalaryFunctionWrapper {
         Function<Employee, Employee> salaryCalculatorFunction;
         switch (employee.getCity()) {
             case "Chicago" -> salaryCalculatorFunction = functionCatalog.lookup("chicagoSalaryCalculatorFn");
-            case "California" -> salaryCalculatorFunction = functionCatalog.lookup("californiaSalaryCalculatorFn");
+            case "California" -> salaryCalculatorFunction = functionCatalog.lookup("californiaSalaryCalculatorFn|defaultSalaryCalculatorFn");
             case "New York" -> salaryCalculatorFunction = functionCatalog.lookup("newYorkSalaryCalculatorFn");
             default -> salaryCalculatorFunction = functionCatalog.lookup("defaultSalaryCalculatorFn");
         }

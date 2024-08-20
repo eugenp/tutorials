@@ -54,8 +54,9 @@ public class EmployeeSalaryHandler {
         Employee employeeRequest = employeeHttpRequestMessage.getBody().get();
         executionContext.getLogger().info("Salary of " + employeeRequest.getName() + " is:" + employeeRequest.getSalary());
         EmployeeSalaryFunctionWrapper employeeSalaryFunctionWrapper = new EmployeeSalaryFunctionWrapper(functionCatalog);
-
-        Employee employee = employeeSalaryFunctionWrapper.getCityBasedSalaryFunction(employeeRequest).apply(employeeRequest);
+        Function<Employee, Employee> cityBasedSalaryFunction = employeeSalaryFunctionWrapper.getCityBasedSalaryFunction(employeeRequest);
+        executionContext.getLogger().info("The class of the cityBasedSalaryFunction:" + cityBasedSalaryFunction.getClass());
+        Employee employee = cityBasedSalaryFunction.apply(employeeRequest);
         executionContext.getLogger().info("Final salary of " + employee.getName() + " is:" + employee.getSalary());
         return employeeHttpRequestMessage.createResponseBuilder(HttpStatus.OK)
             .body(employee)
