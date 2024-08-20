@@ -6,6 +6,12 @@
 	<artifactId>dummy-api</artifactId>
 	<version>1.0-SNAPSHOT</version>
 
+	<parent>
+		<groupId>com.baeldung.quarkus.api</groupId>
+		<artifactId>consume-rest-api</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+
 	<properties>
 		<compiler-plugin.version>3.13.0</compiler-plugin.version>
 		<maven.compiler.release>21</maven.compiler.release>
