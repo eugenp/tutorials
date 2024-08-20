@@ -191,7 +191,6 @@
         <fugue.version>4.5.1</fugue.version>
         <jool.version>0.9.12</jool.version>
         <awaitility.version>4.2.1</awaitility.version>
-        <scala.version>2.12</scala.version>
         <docker.version>3.0.14</docker.version>
     </properties>
 
