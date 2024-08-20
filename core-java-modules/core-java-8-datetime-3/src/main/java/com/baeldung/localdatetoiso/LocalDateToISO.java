@@ -15,15 +15,14 @@ import java.util.TimeZone;
 public class LocalDateToISO {
     public String formatUsingDateTimeFormatter(LocalDate localDate) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSX");
-        String formattedDate = localDate.atStartOfDay().atOffset(ZoneOffset.UTC).format(formatter);
-        return formattedDate;
+        return localDate.atStartOfDay().atOffset(ZoneOffset.UTC).format(formatter);
     }
 
     public String formatUsingSimpleDateFormat(LocalDate date) {
         Date utilDate = Date.from(date.atStartOfDay(ZoneOffset.UTC).toInstant());
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX");
-        String formattedDate = dateFormat.format(utilDate);
-        return formattedDate;
+        dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+        return dateFormat.format(utilDate);
     }
 
     public String formatUsingJodaTime(org.joda.time.LocalDate localDate) {
@@ -33,8 +32,7 @@ public class LocalDateToISO {
 
      public String formatUsingApacheCommonsLang(LocalDate localDate) {
         Date date = Date.from(localDate.atStartOfDay().toInstant(ZoneOffset.UTC));
-        String formattedDate = FastDateFormat.getInstance("yyyy-MM-dd'T'HH:mm:ss.sss'Z'", TimeZone.getTimeZone("UTC"))
+         return FastDateFormat.getInstance("yyyy-MM-dd'T'HH:mm:ss.sss'Z'", TimeZone.getTimeZone("UTC"))
             .format(date);
-        return formattedDate;
     }
 }

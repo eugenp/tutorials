@@ -136,7 +136,6 @@
         <glassfish.web.version>2.2.4</glassfish.web.version>
         <olap4j.version>1.2.0</olap4j.version>
         <javafx.version>19</javafx.version>
-        <spoon-core.version>10.3.0</spoon-core.version>
         <vavr.version>0.9.0</vavr.version>
         <jfreechart.version>1.5.4</jfreechart.version>
         <javaparser.version>3.25.10</javaparser.version>

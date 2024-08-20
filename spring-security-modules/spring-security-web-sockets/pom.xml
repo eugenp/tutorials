@@ -6,8 +6,8 @@
     <groupId>com.baeldung.springsecuredsockets</groupId>
     <artifactId>spring-security-web-sockets</artifactId>
     <version>1.0.0</version>
-    <name>spring-security-web-sockets</name>
     <packaging>war</packaging>
+    <name>spring-security-web-sockets</name>
 
     <parent>
         <groupId>com.baeldung</groupId>

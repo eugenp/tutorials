@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-mvc-velocity</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>spring-mvc-velocity</name>
     <packaging>war</packaging>
+    <name>spring-mvc-velocity</name>
 
     <parent>
         <groupId>com.baeldung</groupId>

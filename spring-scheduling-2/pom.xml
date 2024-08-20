@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-scheduling-2</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>spring-scheduling-2</name>
     <packaging>jar</packaging>
+    <name>spring-scheduling-2</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
