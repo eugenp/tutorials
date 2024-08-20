@@ -172,7 +172,7 @@ class TaskCrudIntegrationTest {
 
     @Test
     @DirtiesContext
-    void whenRetrievingTaskDueWithinNextWeek_thenTaskIsReturned() throws Exception {
+    void whenRetrievingTaskDueWithinNextWeek_thenCorrectTaskIsReturned() throws Exception {
         // Create task with due date within a week
         Date dueDate = Date.from(Instant.now().plus(5, ChronoUnit.DAYS));
         Task task = Instancio.of(Task.class)
