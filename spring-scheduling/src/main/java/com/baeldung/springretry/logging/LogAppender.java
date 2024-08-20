@@ -1,11 +1,12 @@
-package com.baeldung.logging;
+package com.baeldung.springretry.logging;
 
 import java.util.ArrayList;
 import java.util.List;
-import ch.qos.logback.core.AppenderBase;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import ch.qos.logback.core.AppenderBase;
 
 public class LogAppender extends AppenderBase<ch.qos.logback.classic.spi.ILoggingEvent> {
 
