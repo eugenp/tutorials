@@ -23,6 +23,7 @@
         <module>quarkus-funqy</module>
         <module>micrometer</module>
         <module>quarkus-testcontainers</module>
+        <module>consume-rest-api</module>
         <!-- requires Java 21 <module>quarkus-virtual-threads</module> -->
         <module>quarkus-hibernate-reactive</module>
     </modules>
