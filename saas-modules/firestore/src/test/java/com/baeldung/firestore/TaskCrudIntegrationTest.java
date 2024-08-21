@@ -73,7 +73,7 @@ class TaskCrudIntegrationTest {
         // Verify task is saved with auto-generated ID
         String taskId = taskReference.getId();
         assertThat(taskId).isNotBlank();
-        Awaitility.await().atMost(3, TimeUnit.SECONDS).untilAsserted(() -> {
+        Awaitility.await().atMost(2, TimeUnit.SECONDS).untilAsserted(() -> {
             DocumentSnapshot taskSnapshot = firestore
                 .collection(Task.PATH)
                 .document(taskId)
@@ -96,7 +96,7 @@ class TaskCrudIntegrationTest {
             .set(task);
 
         // Verify task is saved
-        Awaitility.await().atMost(3, TimeUnit.SECONDS).untilAsserted(() -> {
+        Awaitility.await().atMost(2, TimeUnit.SECONDS).untilAsserted(() -> {
             DocumentSnapshot taskSnapshot = firestore
                 .collection(Task.PATH)
                 .document(taskId)
@@ -215,7 +215,7 @@ class TaskCrudIntegrationTest {
             .set(initialTask);
 
         // Ensure the task is created
-        Awaitility.await().atMost(3, TimeUnit.SECONDS).untilAsserted(() -> {
+        Awaitility.await().atMost(2, TimeUnit.SECONDS).untilAsserted(() -> {
             DocumentSnapshot taskSnapshot = firestore
                 .collection(Task.PATH)
                 .document(taskId)
@@ -256,7 +256,7 @@ class TaskCrudIntegrationTest {
             .set(task);
 
         // Ensure the task is created
-        Awaitility.await().atMost(3, TimeUnit.SECONDS).untilAsserted(() -> {
+        Awaitility.await().atMost(2, TimeUnit.SECONDS).untilAsserted(() -> {
             DocumentSnapshot taskSnapshot = firestore
                 .collection(Task.PATH)
                 .document(taskId)
@@ -272,7 +272,7 @@ class TaskCrudIntegrationTest {
             .delete();
 
         // Assert that the task is deleted
-        Awaitility.await().atMost(3, TimeUnit.SECONDS).untilAsserted(() -> {
+        Awaitility.await().atMost(2, TimeUnit.SECONDS).untilAsserted(() -> {
             DocumentSnapshot taskSnapshot = firestore
                 .collection(Task.PATH)
                 .document(taskId)
