@@ -4,10 +4,10 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.micronaut</groupId>
-    <artifactId>micronaut-4</artifactId>
+    <artifactId>micronaut-configuration</artifactId>
     <version>0.1</version>
     <packaging>${packaging}</packaging>
-    <name>micronaut-4</name>
+    <name>micronaut-configuration</name>
 
     <parent>
         <groupId>com.baeldung</groupId>

@@ -1,4 +1,0 @@
-micronaut:
-  server:
-    port: 21000
-    context-path: /micronaut-4-tutorials

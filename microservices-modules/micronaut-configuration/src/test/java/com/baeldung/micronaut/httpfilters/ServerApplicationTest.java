@@ -18,7 +18,7 @@ import io.restassured.specification.RequestSpecification;
 @MicronautTest
 class ServerApplicationTest {
 
-    private static final String FILTERED_ENDPOINTS_PATH = "micronaut-4-tutorials/filters-annotations";
+    private static final String FILTERED_ENDPOINTS_PATH = "micronaut-configuration-tutorials/filters-annotations";
 
     @Test
     public void givenFilterForPrivilegedUsers_whenPrivilegedEndpointUsed_thenResponseContainsTag(RequestSpecification spec) {

@@ -35,7 +35,7 @@ class FiltersOrderTest {
     @Test
     public void givenFilterOrder_whenRequestIsFilteredByAllFilters_thenTheOrderIsRight(RequestSpecification spec) {
         spec.given()
-            .basePath("micronaut-4-tutorials/filters-annotations")
+            .basePath("micronaut-configuration-tutorials/filters-annotations")
             .when()
             .get("/endpoint1");
 
@@ -66,7 +66,7 @@ class FiltersOrderTest {
     @Test
     public void givenFilterOrder_whenRequestIsFilteredBy2Filters_thenTheOrderIsRight(RequestSpecification spec) {
         spec.given()
-            .basePath("micronaut-4-tutorials/filters-annotations")
+            .basePath("micronaut-configuration-tutorials/filters-annotations")
             .when()
             .get("/endpoint2");
 
