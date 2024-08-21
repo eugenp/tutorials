@@ -11,7 +11,6 @@ import jakarta.ws.rs.WebApplicationException;
 import org.eclipse.microprofile.rest.client.RestClientBuilder;
 import org.junit.jupiter.api.Test;
 
-import io.quarkus.rest.client.reactive.ClientBasicAuth;
 import io.quarkus.test.junit.QuarkusTest;
 
 @QuarkusTest
@@ -37,29 +36,19 @@ class ClientBasicAuthUnitTest {
     }
 
     @Test
-    void whenRightCredentinalsProvided_thenResponseReceived() {
-
-        @ClientBasicAuth(username = "john", password = "secret1")
-        interface MyService$John extends MyService {
-        }
-
+    void whenRightCredentialsProvided_thenResponseReceived() {
         MyService myService = RestClientBuilder.newBuilder()
             .baseUri(URI.create("http://localhost:8081"))
-            .build(MyService$John.class);
+            .build(MyServiceJohnRightCredentials.class);
 
         assertEquals("Hello from Quarkus REST", myService.hello());
     }
 
     @Test
     void whenWrongCredentinalsProvided_then401StatusCode() {
-
-        @ClientBasicAuth(username = "john", password = "wrongPassword")
-        interface MyService$John extends MyService {
-        }
-
         MyService myService = RestClientBuilder.newBuilder()
             .baseUri(URI.create("http://localhost:8081"))
-            .build(MyService$John.class);
+            .build(MyServiceJohnWrongCredentials.class);
 
         try {
             myService.hello();
