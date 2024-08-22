@@ -1,13 +1,12 @@
 package com.baeldung.jpa.multiplebagfetchexception;
 
-import org.hibernate.jpa.QueryHints;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+import jakarta.persistence.Query;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -33,7 +32,7 @@ public class MultipleBagFetchExceptionIntegrationTest {
               + "JOIN FETCH artist.songs "
               + "JOIN FETCH artist.offers ";
 
-            entityManager.createQuery(jpql);
+            entityManager.createQuery(jpql).getResultList();
         });
 
         final String expectedMessagePart = "MultipleBagFetchException";
@@ -49,8 +48,7 @@ public class MultipleBagFetchExceptionIntegrationTest {
           + "LEFT JOIN FETCH album.followers "
           + "WHERE album.id = 1";
 
-        Query query = entityManager.createQuery(jpql)
-          .setHint(QueryHints.HINT_PASS_DISTINCT_THROUGH, false);
+        Query query = entityManager.createQuery(jpql);
 
         assertEquals(1, query.getResultList().size());
     }
@@ -61,7 +59,6 @@ public class MultipleBagFetchExceptionIntegrationTest {
           + "LEFT JOIN FETCH artist.songs ";
 
         List<Artist> artists = entityManager.createQuery(jpql, Artist.class)
-          .setHint(QueryHints.HINT_PASS_DISTINCT_THROUGH, false)
           .getResultList();
 
         jpql = "SELECT DISTINCT artist FROM Artist artist "
@@ -70,7 +67,6 @@ public class MultipleBagFetchExceptionIntegrationTest {
 
         artists = entityManager.createQuery(jpql, Artist.class)
           .setParameter("artists", artists)
-          .setHint(QueryHints.HINT_PASS_DISTINCT_THROUGH, false)
           .getResultList();
 
         assertEquals(2, artists.size());
@@ -83,7 +79,6 @@ public class MultipleBagFetchExceptionIntegrationTest {
           + "LEFT JOIN FETCH user.favoriteSongs ";
 
         List<User> users = entityManager.createQuery(jpql, User.class)
-          .setHint(QueryHints.HINT_PASS_DISTINCT_THROUGH, false)
           .getResultList();
 
         assertEquals(3, users.size());

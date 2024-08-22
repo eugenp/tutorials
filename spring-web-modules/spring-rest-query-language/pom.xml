@@ -311,7 +311,7 @@
         <commons-lang3.version>3.14.0</commons-lang3.version>
         <jakarta.servlet-api.version>${querydsl.version}</jakarta.servlet-api.version>
         <jakarta.servlet.jsp.jstl.version>2.0.0</jakarta.servlet.jsp.jstl.version>
-        <rest-assured.version>5.4.0</rest-assured.version>
+        <rest-assured.version>5.5.0</rest-assured.version>
         <querydsl.version>5.0.0</querydsl.version>
     </properties>
 

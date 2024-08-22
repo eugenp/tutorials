@@ -9,9 +9,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-2</relativePath>
+        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -29,13 +29,10 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>${servlet-api.version}</version>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>${jakarta.servlet-api.version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
@@ -66,8 +63,9 @@
             <artifactId>jetty-util</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpcore</artifactId>
+            <groupId>org.apache.httpcomponents.core5</groupId>
+            <artifactId>httpcore5</artifactId>
+            <version>${httpcore5.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -112,8 +110,9 @@
             <version>${btf.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
+            <groupId>org.apache.httpcomponents.client5</groupId>
+            <artifactId>httpclient5</artifactId>
+            <version>${httpclient5.version}</version>
         </dependency>
         <dependency>
             <groupId>org.wiremock</groupId>
@@ -166,19 +165,19 @@
 
     <properties>
         <jackson-coreutils.version>1.8</jackson-coreutils.version>
-        <servlet-api.version>2.5</servlet-api.version>
+        <jakarta.servlet-api.version>6.1.0</jakarta.servlet-api.version>
         <javax.mail.version>1.4.7</javax.mail.version>
         <jetty.version>9.4.0.v20161208</jetty.version>
         <commons-collections.version>3.2.2</commons-collections.version>
-        <httpcore.version>4.4.5</httpcore.version>
-        <httpclient.version>4.5.2</httpclient.version>
+        <httpcore5.version>5.2.5</httpcore5.version>
+        <httpclient5.version>5.2.3</httpclient5.version>
         <uri-template.version>0.9</uri-template.version>
         <libphonenumber.version>8.0.0</libphonenumber.version>
         <msg-simple.version>1.1</msg-simple.version>
         <btf.version>1.2</btf.version>
-        <wiremock.version>3.3.1</wiremock.version>
+        <wiremock.version>3.9.1</wiremock.version>
         <scribejava.version>2.5.3</scribejava.version>
-        <rest-assured.version>5.3.0</rest-assured.version>
+        <rest-assured.version>5.5.0</rest-assured.version>
     </properties>
 
 </project>

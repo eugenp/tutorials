@@ -31,7 +31,7 @@
     </dependencies>
 
     <properties>
-        <hibernate.version>5.4.3.Final</hibernate.version>
+        <hibernate.version>6.4.6.Final</hibernate.version>
         <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
     </properties>
 

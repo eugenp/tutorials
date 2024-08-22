@@ -2,8 +2,10 @@ package com.baeldung.spring.cloud.client;
 
 import com.baeldung.spring.cloud.model.Book;
 import com.github.tomakehurst.wiremock.WireMockServer;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -26,6 +28,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @EnableConfigurationProperties
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = { WireMockConfig.class })
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class BooksClientIntegrationTest {
 
     @Autowired
@@ -54,6 +57,12 @@ class BooksClientIntegrationTest {
           .containsAll(asList(
             new Book("Dune", "Frank Herbert"),
             new Book("Foundation", "Isaac Asimov"))));
+    }
+
+    @AfterAll
+    void tearDown() {
+        mockBooksService.shutdownServer();
+        mockBooksService2.shutdownServer();
     }
 
 }
