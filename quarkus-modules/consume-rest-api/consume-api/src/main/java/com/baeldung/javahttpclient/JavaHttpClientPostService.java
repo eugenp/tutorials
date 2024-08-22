@@ -33,9 +33,9 @@ public class JavaHttpClientPostService {
 
         try {
             HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-            return objectMapper.readValue(response.body(), new TypeReference<ArrayList<Post>>() { });
-        }
-        catch (IOException | InterruptedException e) {
+            return objectMapper.readValue(response.body(), new TypeReference<ArrayList<Post>>() {
+            });
+        } catch (IOException | InterruptedException e) {
             throw new RuntimeException("Failed to fetch posts", e);
         }
     }

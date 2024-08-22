@@ -14,7 +14,8 @@ public class Post {
         this.description = description;
     }
 
-    Post() {}
+    Post() {
+    }
 
     Long getId() {
         return id;
