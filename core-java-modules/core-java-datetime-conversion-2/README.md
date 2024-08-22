@@ -10,3 +10,4 @@ This module contains articles about converting between Java date and time object
 - [How to Convert Between ZonedDateTime and Date in Java](https://www.baeldung.com/java-zoneddatetime-date-conversion)
 - [Converting java.sql.Timestamp to java.util.Calendar](https://www.baeldung.com/java-timestamp-calendar)
 - [Fixing UnsupportedTemporalTypeException: Unsupported Field: InstantSeconds](https://www.baeldung.com/java-solve-unsupportedtemporaltypeexception-unsupported-field-instantseconds)
+- [Convert Between org.joda.time.DateTime and java.sql.Timestamp in Java](https://www.baeldung.com/java-convert-joda-time-datetime-sql-timestamp)
