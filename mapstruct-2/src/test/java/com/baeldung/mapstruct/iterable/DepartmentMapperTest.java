@@ -20,7 +20,7 @@ public class DepartmentMapperTest {
     );
 
     @Test
-    public void givenListOfEmployees_whenMapDepartment_thenAssertMappingIsSuccessful() {
+    void givenListOfEmployees_whenMapDepartment_thenAssertMappingIsSuccessful() {
         Department department = departmentMapper.map(employees);
 
         assertNotNull(department);
@@ -33,7 +33,7 @@ public class DepartmentMapperTest {
     }
 
     @Test
-    public void givenListOfEmployeesAndManager_whenMapDepartment_thenAssertMappingIsSuccessful() {
+    void givenListOfEmployeesAndManager_whenMapDepartment_thenAssertMappingIsSuccessful() {
         Department department = departmentMapper.mapWithManager(employees, employees.get(0));
 
         assertNotNull(department);
@@ -48,5 +48,4 @@ public class DepartmentMapperTest {
         assertEquals(department.getManager().getName(), department.getEmployees().get(0).getName());
         assertEquals(department.getManager().getPhoneNumber(), department.getEmployees().get(0).getPhoneNumber());
     }
-
 }

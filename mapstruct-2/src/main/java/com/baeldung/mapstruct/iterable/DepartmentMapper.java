@@ -13,10 +13,6 @@ import com.baeldung.mapstruct.iterable.model.Employee;
 public interface DepartmentMapper {
     DepartmentMapper INSTANCE = Mappers.getMapper(DepartmentMapper.class);
 
-    // This attempt of mapping causes error, preventing code from compiling
-    // @Mapping(target = "employees", source = "employees")
-    // Department map(List<Employee> employees);
-
     default Department map(List<Employee> employees) {
         Department department = new Department();
         department.setEmployees(employees);
@@ -26,5 +22,4 @@ public interface DepartmentMapper {
     @Mapping(target = "employees", source = "employees")
     @Mapping(target = "manager", source = "departmentManager")
     Department mapWithManager(List<Employee> employees, Employee departmentManager);
-
 }
