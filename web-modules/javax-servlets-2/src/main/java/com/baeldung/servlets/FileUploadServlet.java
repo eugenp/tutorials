@@ -38,6 +38,10 @@ public class FileUploadServlet extends HttpServlet {
                 response.getWriter().println("Invalid File Name!");
                 return;
             }
+            // Don't use this code as-is! It is vulnerable to deceptive extensions.
+            // See
+            // https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html
+            // to learn how to harden it.
             if(!fileName.endsWith(".txt")){
                 response.getWriter().println("Only .txt files are allowed!");
                 return;
@@ -45,6 +49,10 @@ public class FileUploadServlet extends HttpServlet {
 
             File file = new File(uploadPath, fileName);
 
+            // Don't use this code as-is! It is vulnerable to directory traversal.
+            // See
+            // https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html
+            // to learn how to harden it.
             try (InputStream fileContent = filePart.getInputStream()) {
                 Files.copy(fileContent, file.toPath(), StandardCopyOption.REPLACE_EXISTING);
             } catch (IOException e) {
