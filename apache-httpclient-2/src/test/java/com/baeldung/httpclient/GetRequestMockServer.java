@@ -1,4 +1,4 @@
-package com.baeldung.httpclient.httpclient;
+package com.baeldung.httpclient;
 
 import org.apache.hc.core5.http.HttpStatus;
 import org.junit.jupiter.api.AfterAll;
@@ -20,12 +20,15 @@ public class GetRequestMockServer {
     public static ClientAndServer mockServer;
     public static String serviceOneUrl;
     public static String serviceTwoUrl;
+    public static String securityPathUrl;
 
     private static int serverPort;
 
     public static final String SERVER_ADDRESS = "127.0.0.1";
     public static final String PATH_ONE = "/test1";
     public static final String PATH_TWO = "/test2";
+
+    public static final String SECURITY_PATH = "/spring-security-rest-basic-auth/api/foos/1";
     public static final String METHOD = "GET";
 
     @BeforeAll
@@ -33,6 +36,7 @@ public class GetRequestMockServer {
         serverPort = getFreePort();
         serviceOneUrl = "http://" + SERVER_ADDRESS + ":" + serverPort + PATH_ONE;
         serviceTwoUrl = "http://" + SERVER_ADDRESS + ":" + serverPort + PATH_TWO;
+        securityPathUrl = "http://" + SERVER_ADDRESS + ":" + serverPort + SECURITY_PATH;
         mockServer = startClientAndServer(serverPort);
         mockGetRequest();
     }
@@ -43,19 +47,21 @@ public class GetRequestMockServer {
     }
 
     private static void mockGetRequest() {
-        new MockServerClient(SERVER_ADDRESS, serverPort)
-          .when(
+        MockServerClient client = new MockServerClient(SERVER_ADDRESS, serverPort);
+
+        client.when(
             request()
               .withPath(PATH_ONE)
               .withMethod(METHOD),
-            exactly(5)
+            exactly(4)
           )
           .respond(
             response()
               .withStatusCode(HttpStatus.SC_OK)
               .withBody("{\"status\":\"ok\"}")
           );
-        new MockServerClient(SERVER_ADDRESS, serverPort)
+
+       client
           .when(
             request()
               .withPath(PATH_TWO)
@@ -67,6 +73,15 @@ public class GetRequestMockServer {
               .withStatusCode(HttpStatus.SC_OK)
               .withBody("{\"status\":\"ok\"}")
           );
+
+        client.when(
+           request().withPath(SECURITY_PATH)
+                   .withMethod("GET"),exactly(1)
+                )
+                .respond(response()
+                    .withStatusCode(HttpStatus.SC_OK)
+                     .withBody("{\"status\":\"ok\"}")
+                );
     }
 
     private static int getFreePort () throws IOException {
