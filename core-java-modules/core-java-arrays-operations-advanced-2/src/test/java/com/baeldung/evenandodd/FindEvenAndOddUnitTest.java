@@ -8,7 +8,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FindEvenAndOddUnitTest {
-    private static final int[] NUMBERS = new int[]{42, 2, 3, 4, 0, 0};
+    private static final int[] NUMBERS = new int[]{1, 2, 3, 4, 5, 6};
 
     @Test
     public void testFindEvenNumbersWithLoop() {
