@@ -661,6 +661,7 @@
                 <module>atomix</module>
                 <module>aws-modules</module>
                 <module>azure</module>
+                <module>azure-functions</module>
                 <module>bazel</module>
                 <module>checker-framework</module>
                 <module>custom-pmd</module>
@@ -834,6 +835,7 @@
                 <module>xml-2</module>
                 <module>xstream</module>
                 <module>libraries-data-io-2</module>
+                <module>spring-5-rest-docs</module>
             </modules>
 
             <properties>
@@ -955,6 +957,7 @@
                 <module>atomix</module>
                 <module>aws-modules</module>
                 <module>azure</module>
+                <module>azure-functions</module>
                 <module>bazel</module>
                 <module>checker-framework</module>
                 <module>custom-pmd</module>
@@ -1035,7 +1038,9 @@
                 <module>lombok-modules</module>
                 <module>lucene</module>
                 <module>mapstruct</module>
-                <module>mapstruct-2</module>
+				<module>mapstruct-2</module>
+                <module>maven-modules</module>
+                <module>messaging-modules</module>
                 <module>metrics</module>
                 <module>microservices-modules</module>
                 <module>mustache</module>
@@ -1127,6 +1132,7 @@
                 <module>xml-2</module>
                 <module>xstream</module>
                 <module>libraries-data-io-2</module>
+                <module>spring-5-rest-docs</module>
             </modules>
 
             <properties>
