@@ -2,12 +2,13 @@ package com.baeldung.javahttpclient;
 
 import java.util.List;
 
-import com.baeldung.Post;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
+
+import com.baeldung.Post;
 
 @Path("/java-http-client/consume-posts")
 public class JavaHttpClientPostResource {
