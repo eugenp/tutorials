@@ -40,7 +40,6 @@ import org.junit.jupiter.api.Test;
 class HttpAsyncClientLiveTest extends GetRequestMockServer {
     private static final String HOST_WITH_SSL = "https://mms.nw.ru/";
     private static final String HOST_WITH_PROXY = "http://httpbin.org/";
-    private static final String URL_SECURED_BY_BASIC_AUTHENTICATION = "http://browserspy.dk/password-ok.php";// "http://localhost:8080/spring-security-rest-basic-auth/api/foos/1";
     private static final String DEFAULT_USER = "test";// "user1";
     private static final String DEFAULT_PASS = "test";// "user1Pass";
 
@@ -97,7 +96,7 @@ class HttpAsyncClientLiveTest extends GetRequestMockServer {
 
     @Test
     void whenUseProxyWithHttpClient_thenCorrect() throws Exception {
-        final HttpHost proxy = new HttpHost("127.0.0.1", GetRequestMockServer.serverPort);
+        final HttpHost proxy = new HttpHost("127.0.0.1", mockServer.getPort());
         DefaultProxyRoutePlanner routePlanner = new DefaultProxyRoutePlanner(proxy);
         final CloseableHttpAsyncClient client = HttpAsyncClients.custom()
             .setRoutePlanner(routePlanner)
@@ -168,12 +167,12 @@ class HttpAsyncClientLiveTest extends GetRequestMockServer {
         final BasicCredentialsProvider credsProvider = new BasicCredentialsProvider();
         final UsernamePasswordCredentials credentials =
             new UsernamePasswordCredentials(DEFAULT_USER, DEFAULT_PASS.toCharArray());
-        credsProvider.setCredentials(new AuthScope(URL_SECURED_BY_BASIC_AUTHENTICATION, 80) ,credentials);
+        credsProvider.setCredentials(new AuthScope(securityPathUrl, 80) ,credentials);
         final CloseableHttpAsyncClient client = HttpAsyncClients
             .custom()
             .setDefaultCredentialsProvider(credsProvider).build();
 
-        final SimpleHttpRequest request = new SimpleHttpRequest("GET" ,URL_SECURED_BY_BASIC_AUTHENTICATION);
+        final SimpleHttpRequest request = new SimpleHttpRequest("GET" ,securityPathUrl);
 
         client.start();
 
