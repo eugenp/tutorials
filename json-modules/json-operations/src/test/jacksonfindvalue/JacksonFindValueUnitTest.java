@@ -5,10 +5,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 class JacksonFindValueUnitTest {
 
@@ -30,10 +32,8 @@ class JacksonFindValueUnitTest {
         ObjectMapper mapper = new ObjectMapper();
         JsonNode rootNode = mapper.readTree(jsonString);
         JsonNode emailNode = rootNode.findValue("email");
-        Optional<JsonNode> emailOptional = Optional.ofNullable(emailNode);
-        String email = emailOptional.map(JsonNode::asText).orElse(null);
-        
-        assertEquals(null, email);
+
+        assertNull(emailNode);
     }
 
     @Test
@@ -47,7 +47,8 @@ class JacksonFindValueUnitTest {
             .map(JsonNode::asText)
             .collect(Collectors.toList());
 
-        assertEquals(List.of("john.doe@example.com", "jane.doe@example.com"), emails);
+        assertThat(emails)
+            .containsExactly("john.doe@example.com", "jane.doe@example.com");
     }
 
     @Test
