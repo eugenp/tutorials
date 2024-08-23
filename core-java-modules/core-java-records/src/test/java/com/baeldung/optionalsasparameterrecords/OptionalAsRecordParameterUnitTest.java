@@ -16,7 +16,7 @@ public class OptionalAsRecordParameterUnitTest {
     }
 
     @Test
-    public void givenRecordCreationWithNullOptional_thenReturnOptional() {
+    public void whenRecordCreationWithNullOptional_thenReturnOptional() {
         User user = new User("john_doe", "john@example.com", null);
         Optional<String> optionalPhoneNumber = user.getOptionalPhoneNumber();
 
