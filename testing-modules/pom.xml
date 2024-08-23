@@ -49,6 +49,7 @@
         <module>selenide</module>
         <module>selenium</module>
         <module>selenium-2</module>
+        <module>selenium-testng</module>
         <module>spring-mockito</module>
         <module>spring-testing-2</module>
         <module>spring-testing</module>

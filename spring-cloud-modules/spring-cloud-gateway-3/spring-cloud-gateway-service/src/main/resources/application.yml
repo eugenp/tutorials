@@ -1,0 +1,29 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: Api-Gateway
+  cloud:
+    gateway:
+      routes:
+        -   id: product_service_route
+            predicates:
+              - Path=/product/**
+            uri: http://localhost:8081
+            method: GET
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+  swagger-ui:
+    enabled: true
+    config-url: /v3/api-docs/swagger-config
+    urls:
+      -   name: gateway-service
+          url: /v3/api-docs
+      -   name: product-service
+          url: /product/v3/api-docs

@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-security-web-login-2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-security-web-login-2</name>
     <packaging>jar</packaging>
+    <name>spring-security-web-login-2</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -60,4 +60,5 @@
     <properties>
         <start-class>com.baeldung.manuallogout.ManualLogoutApplication</start-class>
     </properties>
+
 </project>

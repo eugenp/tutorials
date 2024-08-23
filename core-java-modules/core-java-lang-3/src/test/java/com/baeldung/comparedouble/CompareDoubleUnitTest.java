@@ -68,4 +68,13 @@ public class CompareDoubleUnitTest {
         }
         return d1;
     }
+
+    @Test
+    public void givenTwoEqualDoubleValues_whenUseComparator_thenReturnsZero() {
+        double d1 = getFirstDouble(0);
+        double d2 = .1 * 8;
+        DoubleComparator comparator = new DoubleComparator(0.000001d);
+        int result = comparator.compare(d1, d2);
+        assertEquals(0, result);
+    }
 }

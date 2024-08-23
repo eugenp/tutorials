@@ -36,6 +36,7 @@
 
     <properties>
         <graphql-spqr-spring-boot-starter.version>1.0.1</graphql-spqr-spring-boot-starter.version>
+        <junit-jupiter.version>5.10.3</junit-jupiter.version> <!-- Updating to 5.11.x breaks changes -->
     </properties>
 
 </project>
