@@ -1,4 +1,4 @@
-package comparing2Darrays;
+package com.baeldung.array.comparing2Darrays;
 
 public class NaiveApproach {
 
