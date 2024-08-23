@@ -6,3 +6,4 @@
 - [Getting the Insert ID in JDBC](https://www.baeldung.com/jdbc-get-insert-id)
 - [Setup MySQL DB in Eclipse](https://www.baeldung.com/java-eclipse-ide-setup-mysql-database)
 - [Convert a ResultSet From PostgreSQL Array to Array of Strings](https://www.baeldung.com/java-convert-postgresql-array-strings)
+- [JDBC PreparedStatement SQL IN clause](https://www.baeldung.com/java-jdbc-preparedstatement-in-clause)
