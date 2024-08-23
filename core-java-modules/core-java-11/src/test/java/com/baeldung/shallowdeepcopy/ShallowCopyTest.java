@@ -4,15 +4,17 @@ package com.baeldung.shallowdeepcopy;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 public class ShallowCopyTest {
     @Test
     public void testPrimitives() {
-        int i = 20;
-        int j = i;
-        j = 10;
-        System.out.println("Print i: " + i); // Prints 20
-        System.out.println("Print j: " + j); // Prints 10
-        Assertions.assertNotEquals(i, j);
+        int[] original = {10,20,30};
+        int[] copy = Arrays.copyOf(original, 3);
+        copy[2] = 50;
+        System.out.println("Print Original: " + Arrays.toString(original)); // Prints 20
+        System.out.println("Print copy: " + Arrays.toString(copy)); // Prints 10
+        Assertions.assertNotEquals(original, copy);
     }
 
     @Test
