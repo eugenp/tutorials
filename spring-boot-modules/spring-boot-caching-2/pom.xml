@@ -64,20 +64,6 @@
         </dependency>
     </dependencies>
     
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <compilerArgs>
-                        <arg>-parameters</arg>
-                    </compilerArgs>
-                </configuration>
-           </plugin>
-        </plugins>
-    </build>
-
     <properties>
         <embedded.redis.version>1.4.0</embedded.redis.version>
         <caffeine.version>3.1.8</caffeine.version>
