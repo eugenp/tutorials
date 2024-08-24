@@ -1,11 +1,10 @@
 package com.baeldung.zookeeper.manager;
 
+import com.baeldung.zookeeper.connection.ZKConnection;
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.ZooDefs;
 import org.apache.zookeeper.ZooKeeper;
-
-import com.baeldung.zookeeper.connection.ZKConnection;
 
 public class ZKManagerImpl implements ZKManager {
     private static ZooKeeper zkeeper;

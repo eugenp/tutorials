@@ -1,7 +1,8 @@
-package com.baeldung.apache.curator.recipes;
+package com.baeldung.apachecurator.recipes;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.baeldung.apachecurator.BaseManualTest;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.recipes.leader.LeaderSelector;
 import org.apache.curator.framework.recipes.leader.LeaderSelectorListener;
@@ -10,7 +11,6 @@ import org.apache.curator.framework.recipes.shared.SharedCount;
 import org.apache.curator.framework.state.ConnectionState;
 import org.junit.Test;
 
-import com.baeldung.apache.curator.BaseManualTest;
 
 public class RecipesManualTest extends BaseManualTest {
 

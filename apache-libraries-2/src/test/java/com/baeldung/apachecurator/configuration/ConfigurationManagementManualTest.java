@@ -1,4 +1,4 @@
-package com.baeldung.apache.curator.configuration;
+package com.baeldung.apachecurator.configuration;
 
 import static com.jayway.awaitility.Awaitility.await;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -8,11 +8,10 @@ import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import com.baeldung.apachecurator.BaseManualTest;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.x.async.AsyncCuratorFramework;
 import org.junit.Test;
-
-import com.baeldung.apache.curator.BaseManualTest;
 
 public class ConfigurationManagementManualTest extends BaseManualTest {
 

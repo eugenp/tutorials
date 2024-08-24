@@ -1,4 +1,4 @@
-package com.baeldung.apache.curator;
+package com.baeldung.apachecurator;
 
 import org.apache.curator.RetryPolicy;
 import org.apache.curator.framework.CuratorFramework;

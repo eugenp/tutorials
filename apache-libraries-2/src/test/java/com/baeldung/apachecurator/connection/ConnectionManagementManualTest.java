@@ -1,8 +1,9 @@
-package com.baeldung.apache.curator.connection;
+package com.baeldung.apachecurator.connection;
 
 import static com.jayway.awaitility.Awaitility.await;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.Collections;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.apache.curator.RetryPolicy;
@@ -26,8 +27,8 @@ public class ConnectionManagementManualTest {
             .newClient("127.0.0.1:2181", retryPolicy)) {
             client.start();
 
-            assertThat(client.checkExists()
-                .forPath("/")).isNotNull();
+            assertThat(Collections.singletonList(client.checkExists()
+                    .forPath("/"))).isNotNull();
         }
     }
 

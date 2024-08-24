@@ -1,4 +1,4 @@
-package com.baeldung.apache.curator.modeled;
+package com.baeldung.apachecurator;
 
 public class HostConfig {
     private String hostname;

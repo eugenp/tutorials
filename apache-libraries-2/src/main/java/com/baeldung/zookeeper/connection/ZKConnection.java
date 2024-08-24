@@ -1,12 +1,12 @@
 package com.baeldung.zookeeper.connection;
 
-import java.io.IOException;
-import java.util.concurrent.CountDownLatch;
-
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.Watcher.Event.KeeperState;
 import org.apache.zookeeper.ZooKeeper;
+
+import java.io.IOException;
+import java.util.concurrent.CountDownLatch;
 
 public class ZKConnection {
     private ZooKeeper zoo;

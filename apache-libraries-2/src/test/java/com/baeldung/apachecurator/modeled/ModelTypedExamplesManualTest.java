@@ -1,8 +1,10 @@
-package com.baeldung.apache.curator.modeled;
+package com.baeldung.apachecurator.modeled;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.fail;
 
+import com.baeldung.apachecurator.BaseManualTest;
+import com.baeldung.apachecurator.HostConfig;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.x.async.AsyncCuratorFramework;
 import org.apache.curator.x.async.modeled.JacksonModelSerializer;
@@ -10,8 +12,6 @@ import org.apache.curator.x.async.modeled.ModelSpec;
 import org.apache.curator.x.async.modeled.ModeledFramework;
 import org.apache.curator.x.async.modeled.ZPath;
 import org.junit.Test;
-
-import com.baeldung.apache.curator.BaseManualTest;
 
 public class ModelTypedExamplesManualTest extends BaseManualTest {
 
