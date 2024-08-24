@@ -36,20 +36,6 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <compilerArgs>
-                        <arg>-parameters</arg>
-                    </compilerArgs>
-                </configuration>
-           </plugin>
-        </plugins>
-    </build>
-
     <properties>
         <reactor-bus.version>2.0.8.RELEASE</reactor-bus.version>
         <reactor-core.version>2.0.8.RELEASE</reactor-core.version>
