@@ -37,20 +37,6 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <compilerArgs>
-                        <arg>-parameters</arg>
-                    </compilerArgs>
-                </configuration>
-           </plugin>
-        </plugins>
-    </build>
-
     <properties>
         <jstl.version>1.2</jstl.version>
     </properties>
