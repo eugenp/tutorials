@@ -1,4 +1,4 @@
-package com.baeldung.xsltProcessing;
+package com.baeldung.xslt;
 
 import javax.xml.transform.*;
 import javax.xml.transform.stream.StreamResult;
