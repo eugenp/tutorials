@@ -1,4 +1,4 @@
-package com.baeldung.poi.excel.expandcolumn;
+package com.baeldung.expandcolumn;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;

@@ -1,4 +1,4 @@
-package com.baeldung.poi.word;
+package com.baeldung.word;
 
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
