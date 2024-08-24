@@ -99,13 +99,6 @@
             <artifactId>opennlp-tools</artifactId>
             <version>${opennlp.opennlp-tools.version}</version>
         </dependency>
-        <!-- pulsar -->
-        <dependency>
-            <groupId>org.apache.pulsar</groupId>
-            <artifactId>pulsar-client</artifactId>
-            <version>${pulsar-client.version}</version>
-            <scope>compile</scope>
-        </dependency>
         <!-- zookeeper -->
         <dependency>
             <groupId>org.apache.zookeeper</groupId>
@@ -217,7 +210,6 @@
         <meecrowave-maven-plugin.version>1.2.15</meecrowave-maven-plugin.version>
         <xbean.version>4.24</xbean.version>
         <opennlp.opennlp-tools.version>1.8.4</opennlp.opennlp-tools.version>
-        <pulsar-client.version>2.1.1-incubating</pulsar-client.version>
         <zookeeper.version>3.4.11</zookeeper.version>
         <curator.version>4.0.1</curator.version>
         <avaitility.version>1.7.0</avaitility.version>
