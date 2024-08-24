@@ -1,11 +1,8 @@
-package com.baeldung.apache.beam.intro;
+package com.baeldung.apachebeamintro;
 
-import static org.junit.Assert.assertTrue;
-
-import org.junit.Ignore;
 import org.junit.Test;
 
-import com.baeldung.apache.beam.intro.WordCount;
+import static org.junit.Assert.assertTrue;
 
 public class WordCountIntegrationTest {
     

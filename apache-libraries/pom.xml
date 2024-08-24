@@ -30,19 +30,6 @@
             <artifactId>avro-maven-plugin</artifactId>
             <version>${avro.version}</version>
         </dependency>
-        <!-- beam -->
-        <dependency>
-            <groupId>org.apache.beam</groupId>
-            <artifactId>beam-sdks-java-core</artifactId>
-            <version>${beam.version}</version>
-        </dependency>
-        <!-- runtime scoped -->
-        <dependency>
-            <groupId>org.apache.beam</groupId>
-            <artifactId>beam-runners-direct-java</artifactId>
-            <version>${beam.version}</version>
-            <scope>runtime</scope>
-        </dependency>
         <!-- bval -->
         <dependency>
             <groupId>org.apache.bval</groupId>
@@ -221,7 +208,6 @@
 
     <properties>
         <avro.version>1.8.2</avro.version>
-        <beam.version>2.45.0</beam.version>
         <bval.version>3.0.1</bval.version>
         <jakarta.validation.validation-api.version>3.1.0</jakarta.validation.validation-api.version>
         <meecrowave-junit.version>1.2.15</meecrowave-junit.version>

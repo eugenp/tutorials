@@ -1,4 +1,4 @@
-package com.baeldung.apache.beam.intro;
+package com.baeldung.apachebeamintro;
 
 import java.util.Arrays;
 
