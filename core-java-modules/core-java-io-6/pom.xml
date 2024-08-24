@@ -49,6 +49,7 @@
 
     <properties>
         <tika-core.version>2.9.2</tika-core.version>
+        <java.version>21</java.version>
     </properties>
 
 </project>
