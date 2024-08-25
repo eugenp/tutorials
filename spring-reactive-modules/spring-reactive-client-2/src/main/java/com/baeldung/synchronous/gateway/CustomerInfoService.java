@@ -25,8 +25,9 @@ public class CustomerInfoService {
     }
 
     public CustomerInfo getCustomerInfo(Long customerId) {
-
+        // enable to trigger the test failure (scenario where each method call is blocked)
         // return getCustomerInfoBlockEach(customerId);
+
         return getCustomerInfoBlockCombined(customerId);
     }
 
