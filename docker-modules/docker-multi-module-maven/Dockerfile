@@ -1,4 +1,4 @@
-FROM maven:3.8.5-openjdk-17 AS DEPENDENCEIS
+FROM maven:3.8.5-openjdk-17 AS DEPENDENCIES
 
 WORKDIR /opt/app
 COPY api/pom.xml api/pom.xml
@@ -10,8 +10,8 @@ RUN mvn -B -e org.apache.maven.plugins:maven-dependency-plugin:3.1.2:go-offline 
 FROM maven:3.8.5-openjdk-17 AS BUILDER
 
 WORKDIR /opt/app
-COPY --from=DEPENDENCEIS /root/.m2 /root/.m2
-COPY --from=DEPENDENCEIS /opt/app/ /opt/app
+COPY --from=DEPENDENCIES /root/.m2 /root/.m2
+COPY --from=DEPENDENCIES /opt/app/ /opt/app
 COPY api/src /opt/app/api/src
 COPY domain/src /opt/app/domain/src
 
