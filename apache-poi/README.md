@@ -5,7 +5,6 @@ This module contains articles about Apache POI.
 ### Relevant Articles:
 
 - [Working with Microsoft Excel in Java](https://www.baeldung.com/java-microsoft-excel)
-- [Get String Value of Excel Cell with Apache POI](https://www.baeldung.com/java-apache-poi-cell-string-value)
 - [Insert a Row in Excel Using Apache POI](https://www.baeldung.com/apache-poi-insert-excel-row)
 - [Multiline Text in Excel Cell Using Apache POI](https://www.baeldung.com/apache-poi-write-multiline-text)
 - [Set Background Color of a Cell with Apache POI](https://www.baeldung.com/apache-poi-background-color)
