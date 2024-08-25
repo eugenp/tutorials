@@ -15,7 +15,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class CellStylerUnitTest {
-    private static String FILE_NAME = "com/baeldung/poi/excel/cellstyle/CellStyle.xlsx";
+    private static String FILE_NAME = "cellstyle/CellStyle.xlsx";
     private static final String NEW_FILE_NAME = "CellStyleTest_output.xlsx";
     private String fileLocation;
 
