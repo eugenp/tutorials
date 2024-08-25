@@ -42,6 +42,7 @@
         <module>spring-cloud-open-service-broker</module>
         <module>spring-cloud-archaius</module>
         <module>spring-cloud-functions</module>
+        <module>spring-cloud-functions-azure</module>
         <module>spring-cloud-vault</module>
         <!--        <module>spring-cloud-security</module>-->
         <module>spring-cloud-task</module>
