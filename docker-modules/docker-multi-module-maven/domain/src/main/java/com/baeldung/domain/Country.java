@@ -5,35 +5,36 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Country {
-	@Id
-	private Long id;
-	private String iso;
-	private String name;
-	private String emoji;
 
-	public Country(Long id, String iso, String name, String emoji) {
-		this.id = id;
-		this.iso = iso;
-		this.name = name;
-		this.emoji = emoji;
-	}
+    @Id
+    private Long id;
+    private String iso;
+    private String name;
+    private String emoji;
 
-	public Country() {
-	}
+    public Country(Long id, String iso, String name, String emoji) {
+        this.id = id;
+        this.iso = iso;
+        this.name = name;
+        this.emoji = emoji;
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public Country() {
+    }
 
-	public String getIso() {
-		return iso;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getIso() {
+        return iso;
+    }
 
-	public String getEmoji() {
-		return emoji;
-	}
+    public String getName() {
+        return name;
+    }
+
+    public String getEmoji() {
+        return emoji;
+    }
 }
