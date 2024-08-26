@@ -585,8 +585,7 @@
                 <module>maven-modules</module>
                 <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->
                 <module>persistence-modules/spring-data-neo4j</module>
-                <module>quarkus-modules</module>
-                <module>security-modules</module>
+                <module>quarkus-modules/quarkus</module>
                 <!--<module>spring-cloud-modules/spring-cloud-data-flow</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-cloud-modules/spring-cloud-stream-starters</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-di-2</module>--><!-- failing after upgrading to jdk17-->
@@ -764,6 +763,7 @@
                 <module>persistence-modules</module>
                 <module>protobuffer</module>
                 <module>podman</module>
+                <module>quarkus-modules</module>
                 <module>reactive-systems</module>
                 <module>reactor-core</module>
                 <module>reactor-core-2</module>
@@ -771,6 +771,7 @@
                 <module>rule-engines-modules</module>
                 <module>rxjava-modules</module>
                 <module>saas-modules</module>
+                <module>security-modules</module>
                 <module>server-modules</module>
                 <module>spf4j</module>
                 <module>spring-5-webflux-2</module>
@@ -894,8 +895,7 @@
                 <module>maven-modules</module>
                 <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->
                 <module>persistence-modules/spring-data-neo4j</module>
-                <module>quarkus-modules</module>
-                <module>security-modules</module>
+                <module>quarkus-modules/quarkus</module>
                 <!--<module>spring-cloud-modules/spring-cloud-data-flow</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-cloud-modules/spring-cloud-stream-starters</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-di-2</module>--><!-- failing after upgrading to jdk17-->
@@ -1067,6 +1067,7 @@
                 <module>persistence-modules</module>
                 <module>protobuffer</module>
                 <module>podman</module>
+                <module>quarkus-modules</module>
                 <module>reactive-systems</module>
                 <module>reactor-core</module>
                 <module>reactor-core-2</module>
@@ -1074,6 +1075,7 @@
                 <module>rule-engines-modules</module>
                 <module>rxjava-modules</module>
                 <module>saas-modules</module>
+                <module>security-modules</module>
                 <module>server-modules</module>
                 <module>spf4j</module>
                 <module>spring-5-webflux-2</module>

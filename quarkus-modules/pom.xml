@@ -14,7 +14,7 @@
     </parent>
 
     <modules>
-        <module>quarkus</module>
+        <!-- <module>quarkus</module>--> <!-- failing after upgrade to jdk21 -->
         <module>quarkus-citrus</module>
         <module>quarkus-extension</module>
         <module>quarkus-elasticsearch</module>
@@ -23,7 +23,7 @@
         <module>quarkus-funqy</module>
         <module>quarkus-testcontainers</module>
         <module>consume-rest-api</module>
-        <!-- requires Java 21 <module>quarkus-virtual-threads</module> -->
+        <module>quarkus-virtual-threads</module>
         <module>quarkus-hibernate-reactive</module>
     </modules>
 
