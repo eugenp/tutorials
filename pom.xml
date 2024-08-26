@@ -581,7 +581,7 @@
                 <module>core-java-modules/core-java-lang-7</module>
                 <module>core-java-modules/core-java-lang-oop-modifiers</module>
                 <module>core-java-modules/core-java-datetime-conversion</module>
-                <module>json-modules</module>
+                <module>json-modules/gson</module>
                 <module>maven-modules</module>
                 <module>messaging-modules</module>
                 <module>persistence-modules</module>
@@ -706,6 +706,7 @@
                 <module>jetbrains</module>
                 <module>jgit</module>
                 <module>jmh</module>
+                <module>json-modules</module>
                 <module>jsoup</module>
                 <module>jws</module>
                 <module>ksqldb</module>
@@ -889,7 +890,7 @@
                 <module>core-java-modules/core-java-lang-7</module>
                 <module>core-java-modules/core-java-lang-oop-modifiers</module>
                 <module>core-java-modules/core-java-datetime-conversion</module>
-                <module>json-modules</module>
+                <module>json-modules/gson</module>
                 <module>maven-modules</module>
                 <module>messaging-modules</module>
                 <module>persistence-modules</module>
@@ -1007,6 +1008,7 @@
                 <module>jetbrains</module>
                 <module>jgit</module>
                 <module>jmh</module>
+                <module>json-modules</module>
                 <module>jsoup</module>
                 <module>jws</module>
                 <module>ksqldb</module>
