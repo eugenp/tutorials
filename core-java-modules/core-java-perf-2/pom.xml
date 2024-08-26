@@ -19,5 +19,10 @@
             <artifactId>datafaker</artifactId>
             <version>1.6.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.netbeans.modules</groupId>
+            <artifactId>org-netbeans-lib-profiler</artifactId>
+            <version>RELEASE220</version>
+        </dependency>
     </dependencies>
 </project>
