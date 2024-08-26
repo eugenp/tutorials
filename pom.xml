@@ -575,7 +575,12 @@
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
                 <module>core-groovy-modules</module>
-                <module>core-java-modules</module>
+                <module>core-java-modules/core-java-exceptions-4</module>
+                <module>core-java-modules/core-java-io-6</module>
+                <module>core-java-modules/core-java-jvm</module>
+                <module>core-java-modules/core-java-lang-7</module>
+                <module>core-java-modules/core-java-lang-oop-modifiers</module>
+                <module>core-java-modules/core-java-datetime-conversion</module>
                 <module>json-modules</module>
                 <module>maven-modules</module>
                 <module>messaging-modules</module>
@@ -664,6 +669,7 @@
                 <module>azure-functions</module>
                 <module>bazel</module>
                 <module>checker-framework</module>
+                <module>core-java-modules</module>
                 <module>custom-pmd</module>
                 <module>data-structures</module>
                 <module>deeplearning4j</module>
@@ -725,8 +731,8 @@
                 <module>libraries-data</module>
                 <module>libraries-files</module>
                 <module>libraries-http</module>
-		<module>libraries-http-2</module>
-	        <module>libraries-http-3</module>
+		        <module>libraries-http-2</module>
+	            <module>libraries-http-3</module>
                 <module>libraries-io</module>
                 <module>libraries-llms</module>
                 <module>libraries-primitive</module>
@@ -877,7 +883,12 @@
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
                 <module>core-groovy-modules</module>
-                <module>core-java-modules</module>
+                <module>core-java-modules/core-java-exceptions-4</module>
+                <module>core-java-modules/core-java-io-6</module>
+                <module>core-java-modules/core-java-jvm</module>
+                <module>core-java-modules/core-java-lang-7</module>
+                <module>core-java-modules/core-java-lang-oop-modifiers</module>
+                <module>core-java-modules/core-java-datetime-conversion</module>
                 <module>json-modules</module>
                 <module>maven-modules</module>
                 <module>messaging-modules</module>
@@ -960,6 +971,7 @@
                 <module>azure-functions</module>
                 <module>bazel</module>
                 <module>checker-framework</module>
+                <module>core-java-modules</module>
                 <module>custom-pmd</module>
                 <module>data-structures</module>
                 <module>deeplearning4j</module>
@@ -1019,7 +1031,7 @@
                 <module>libraries-data-io</module>
                 <module>libraries-data</module>
                 <module>libraries-files</module>
-		<module>libraries-http</module>
+		        <module>libraries-http</module>
                 <module>libraries-http-2</module>
                 <module>libraries-http-3</module>
                 <module>libraries-io</module>
