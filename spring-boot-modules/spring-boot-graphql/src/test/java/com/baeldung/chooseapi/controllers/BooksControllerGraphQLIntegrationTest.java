@@ -13,8 +13,7 @@ import org.springframework.test.context.ActiveProfiles;
 
 import com.baeldung.chooseapi.ChooseApiApp;
 
-@SpringBootTest(properties = { "grpc.server.port=-1" }, // Disable gRPC external server
-  classes = ChooseApiApp.class)
+@SpringBootTest(classes = ChooseApiApp.class)
 @ActiveProfiles("chooseapi")
 @AutoConfigureHttpGraphQlTester
 class BooksControllerGraphQLIntegrationTest {

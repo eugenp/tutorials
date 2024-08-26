@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SimpleUserUnitTest {
     @Test
-    void testCreateSimpleUser() {
+    void whenConstructingSimpleUser_thenValuesCanBeRetrieved() {
         SimpleUser user = SimpleUser.create("testuser", "Test User");
         user.setEmail("testuser@example.com");
 
@@ -20,7 +20,7 @@ public class SimpleUserUnitTest {
     }
 
     @Test
-    void testBuildSimpleUser() {
+    void whenBuildingSimpleUser_thenValuesCanBeRetrieved() {
         SimpleUser user = SimpleUser.builder("testuser", "Test User")
             .withEmail("testuser@example.com")
             .build();
@@ -31,7 +31,7 @@ public class SimpleUserUnitTest {
     }
 
     @Test
-    void testLoadSimpleUserFromString() {
+    void whenParsingSimpleUserFromString_thenValuesCanBeRetrieved() {
         SimpleUser user = SimpleUser.load().fromJson("""
             {
                 "username": "testuser",
@@ -46,7 +46,7 @@ public class SimpleUserUnitTest {
     }
 
     @Test
-    void testLoadSimpleUserFromFile() {
+    void whenParsingSimpleUserFromFile_thenValuesCanBeRetrieved() {
         InputStream is = getClass().getResourceAsStream("/com/baeldung/manifold/simpleUserData.json");
         InputStreamReader reader = new InputStreamReader(is);
         SimpleUser user = SimpleUser.load().fromJsonReader(reader);
@@ -57,7 +57,7 @@ public class SimpleUserUnitTest {
     }
 
     @Test
-    void testGenerateSimpleUserToString() {
+    void whenRenderingSimpleUserToString_thenCorrectJsonIsProduced() {
         SimpleUser user = SimpleUser.builder("testuser", "Test User")
             .withEmail("testuser@example.com")
             .build();
@@ -70,7 +70,7 @@ public class SimpleUserUnitTest {
     }
 
     @Test
-    void testGenerateSimpleUserToWriter() {
+    void whenRenderingSimpleUserToWriter_thenCorrectJsonIsProduced() {
         SimpleUser user = SimpleUser.builder("testuser", "Test User")
             .withEmail("testuser@example.com")
             .build();
@@ -87,7 +87,7 @@ public class SimpleUserUnitTest {
     }
 
     @Test
-    void testGenerateSimpleUserToStringYaml() {
+    void whenRenderingSimpleUserToString_thenCorrectYamlIsProduced() {
         SimpleUser user = SimpleUser.builder("testuser", "Test User")
             .withEmail("testuser@example.com")
             .build();
@@ -99,7 +99,7 @@ public class SimpleUserUnitTest {
     }
 
     @Test
-    void testGenerateSimpleUserToStringCsv() {
+    void whenRenderingSimpleUserToString_thenCorrectCsvIsProduced() {
         SimpleUser user = SimpleUser.builder("testuser", "Test User")
             .withEmail("testuser@example.com")
             .build();
@@ -110,7 +110,7 @@ public class SimpleUserUnitTest {
     }
 
     @Test
-    void testGenerateSimpleUserToStringXml() {
+    void whenRenderingSimpleUserToString_thenCorrectXmlIsProduced() {
         SimpleUser user = SimpleUser.builder("testuser", "Test User")
             .withEmail("testuser@example.com")
             .build();

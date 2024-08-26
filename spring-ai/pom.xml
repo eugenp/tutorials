@@ -19,7 +19,6 @@
         <java.version>17</java.version>
         <spring-ai.version>1.0.0-M1</spring-ai.version>
         <spring-ai-mistral-ai.version>0.8.1</spring-ai-mistral-ai.version>
-        <junit-jupiter.version>5.10.3</junit-jupiter.version>
     </properties>
 
     <repositories>

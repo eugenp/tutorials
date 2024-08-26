@@ -63,7 +63,8 @@ public class AttributeBenchMark {
     }
 
     @Benchmark
-    public String jaxpBenchmark() throws TransformerException, ParserConfigurationException, SAXException, IOException, XPathExpressionException {
+    public String jaxpBenchmark()
+            throws TransformerException, ParserConfigurationException, SAXException, IOException, XPathExpressionException {
         String path = this.getClass()
             .getResource("/xml/attribute.xml")
             .toString();

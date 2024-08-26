@@ -6,8 +6,8 @@
     <groupId>com.baeldung.freemarker</groupId>
     <artifactId>spring-freemarker</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>spring-freemarker</name>
     <packaging>war</packaging>
+    <name>spring-freemarker</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -61,6 +61,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <argLine>
                         --add-opens java.base/java.lang=ALL-UNNAMED

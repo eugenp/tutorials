@@ -88,11 +88,9 @@
     </build>
 
     <properties>
-        <springfox-version>3.0.0</springfox-version>
-        <log4j2.version>2.17.1</log4j2.version>
         <springdoc.version>1.7.0</springdoc.version>
         <openapi-generator.version>7.2.0</openapi-generator.version>
-        <openapi-generator-maven-plugin.version>7.2.0</openapi-generator-maven-plugin.version>
+        <openapi-generator-maven-plugin.version>7.7.0</openapi-generator-maven-plugin.version>
         <jackson-databind-nullable.version>0.2.6</jackson-databind-nullable.version>
     </properties>
 
