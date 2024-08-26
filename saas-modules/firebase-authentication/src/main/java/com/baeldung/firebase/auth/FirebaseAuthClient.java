@@ -20,7 +20,7 @@ public class FirebaseAuthClient {
     }
 
     public String login(String emailId, String password) {
-        FirebaseSignInRequest requestBody = prepareRequestBody(emailId, password);
+        FirebaseSignInRequest requestBody = new FirebaseSignInRequest(emailId, password, true);
         FirebaseSignInResponse response = sendSignInRequest(requestBody);
         return response.idToken();
     }
@@ -46,10 +46,6 @@ public class FirebaseAuthClient {
         }
         
         return response;
-    }
-
-    private FirebaseSignInRequest prepareRequestBody(String emailId, String password) {
-        return new FirebaseSignInRequest(emailId, password, true);
     }
 
     record FirebaseSignInRequest(String email, String password, boolean returnSecureToken) {
