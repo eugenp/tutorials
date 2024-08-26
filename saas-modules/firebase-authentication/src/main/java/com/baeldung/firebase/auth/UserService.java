@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
+import com.google.firebase.auth.UserRecord;
 import com.google.firebase.auth.UserRecord.CreateRequest;
 
 @Service
@@ -12,9 +13,11 @@ public class UserService {
     private static final String DUPLICATE_ACCOUNT_ERROR = "EMAIL_EXISTS";
 
     private final FirebaseAuth firebaseAuth;
+    private final AuthenticatedUserIdProvider authenticatedUserIdProvider;
 
-    public UserService(FirebaseAuth firebaseAuth) {
+    public UserService(FirebaseAuth firebaseAuth, AuthenticatedUserIdProvider authenticatedUserIdProvider) {
         this.firebaseAuth = firebaseAuth;
+        this.authenticatedUserIdProvider = authenticatedUserIdProvider;
     }
 
     public void create(String emailId, String password) {
@@ -30,6 +33,11 @@ public class UserService {
                 throw new AccountAlreadyExistsException("Account with given email-id already exists");
             }
         }
+    }
+
+    public UserRecord retrieve() throws FirebaseAuthException {
+        String userId = authenticatedUserIdProvider.getUserId();
+        return firebaseAuth.getUser(userId);
     }
 
 }
