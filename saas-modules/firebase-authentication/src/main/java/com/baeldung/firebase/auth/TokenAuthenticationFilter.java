@@ -40,9 +40,11 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
             String token = authorizationHeader.replace(BEARER_PREFIX, "");
             Optional<String> userId = extractUserIdFromToken(token);
 
-            var authentication = new UsernamePasswordAuthenticationToken(userId, null, null);
-            authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-            SecurityContextHolder.getContext().setAuthentication(authentication);
+            if (userId.isPresent()) {
+                var authentication = new UsernamePasswordAuthenticationToken(userId.get(), null, null);
+                authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                SecurityContextHolder.getContext().setAuthentication(authentication);   
+            }
         }
         filterChain.doFilter(request, response);
     }
