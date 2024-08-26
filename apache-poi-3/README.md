@@ -8,5 +8,6 @@ This module contains articles about Apache POI.
 - [Using Apache POI to Extract Column Names From Excel](https://www.baeldung.com/apache-poi-extract-column-names-excel)
 - [Generate MS Word Documents Using poi-tl Template](https://www.baeldung.com/poi-tl-ms-word)
 - [Add Borders to Excel Cells With Apache POI](https://www.baeldung.com/apache-poi-add-borders)
+- [Insert a Row in Excel Using Apache POI](https://www.baeldung.com/apache-poi-insert-excel-row)
 
 - More articles: [[<-- prev]](../apache-poi-2)
