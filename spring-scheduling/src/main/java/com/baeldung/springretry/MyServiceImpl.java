@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.retry.support.RetrySynchronizationManager;
 import org.springframework.stereotype.Service;
 import org.apache.commons.lang3.StringUtils;
 
@@ -14,6 +15,8 @@ public class MyServiceImpl implements MyService {
 
     @Override
     public void retryService() {
+        logger.info("Retry Number: " + RetrySynchronizationManager.getContext()
+            .getRetryCount());
         logger.info("throw RuntimeException in method retryService()");
         throw new RuntimeException();
     }
