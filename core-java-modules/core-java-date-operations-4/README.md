@@ -6,3 +6,4 @@ This module contains articles about date operations in Java.
 - [Convert Long to Date in Java](https://www.baeldung.com/java-long-date-conversion)
 - [Convert Date to Unix Timestamp in Java](https://www.baeldung.com/java-convert-date-unix-timestamp)
 - [Checking if a Date Object Equals Yesterday](https://www.baeldung.com/java-date-check-yesterday)
+- [Getting Month Number From Its Name in Java](https://www.baeldung.com/java-month-number-name-convert)

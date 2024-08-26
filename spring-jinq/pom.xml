@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-jinq</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>spring-jinq</name>
     <packaging>jar</packaging>
+    <name>spring-jinq</name>
 
     <parent>
         <groupId>com.baeldung</groupId>

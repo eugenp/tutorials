@@ -11,5 +11,6 @@ This module contains articles about core Java input and output (IO)
 - [Guide to FileWriter vs. BufferedWriter](https://www.baeldung.com/java-filewriter-vs-bufferedwriter)
 - [Guide to getResourceAsStream() and FileInputStream in Java](https://www.baeldung.com/java-getresourceasstream-vs-fileinputstream)
 - [Guide to FileOutputStream vs. FileChannel](https://www.baeldung.com/java-fileoutputstream-filechannel-differences)
+- [Checking if a File is an Image in Java](https://www.baeldung.com/java-test-whether-file-image)
 - [[<-- Prev]](/core-java-modules/core-java-io-5)
 
