@@ -20,8 +20,8 @@ public class FirebaseAuthClient {
         this.firebaseConfigurationProperties = firebaseConfigurationProperties;
     }
 
-    public String login(UserLoginRequest userLoginRequest) {
-        FirebaseSignInRequest requestBody = prepareRequestBody(userLoginRequest);
+    public String login(String emailId, String password) {
+        FirebaseSignInRequest requestBody = prepareRequestBody(emailId, password);
         FirebaseSignInResponse response = sendSignInRequest(requestBody);
         return response.idToken();
     }
@@ -50,11 +50,8 @@ public class FirebaseAuthClient {
         return response;
     }
 
-    private FirebaseSignInRequest prepareRequestBody(UserLoginRequest userLoginRequest) {
-        return new FirebaseSignInRequest(userLoginRequest.emailId(), userLoginRequest.password(), true);
-    }
-
-    record UserLoginRequest(String emailId, String password) {
+    private FirebaseSignInRequest prepareRequestBody(String emailId, String password) {
+        return new FirebaseSignInRequest(emailId, password, true);
     }
 
     record FirebaseSignInRequest(String email, String password, boolean returnSecureToken) {
