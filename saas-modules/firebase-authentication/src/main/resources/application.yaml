@@ -1,0 +1,5 @@
+com:
+  baeldung:
+    firebase:
+      private-key: classpath:/private-key.json
+      web-api-key: ${FIREBASE_WEB_API_KEY}
