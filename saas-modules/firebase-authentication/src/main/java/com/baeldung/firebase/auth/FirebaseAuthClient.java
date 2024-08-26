@@ -1,23 +1,22 @@
 package com.baeldung.firebase.auth;
 
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestClient;
 
 @Component
-@EnableConfigurationProperties(FirebaseConfigurationProperties.class)
 public class FirebaseAuthClient {
 
     private static final String API_KEY_PARAM = "key";
     private static final String INVALID_CREDENTIALS_ERROR = "INVALID_LOGIN_CREDENTIALS";
     private static final String BASE_URL = "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword";
 
-    private final FirebaseConfigurationProperties firebaseConfigurationProperties;
+    private final String webApiKey;
 
-    public FirebaseAuthClient(FirebaseConfigurationProperties firebaseConfigurationProperties) {
-        this.firebaseConfigurationProperties = firebaseConfigurationProperties;
+    public FirebaseAuthClient(@Value("${com.baeldung.firebase.web-api-key}") String webApiKey) {
+        this.webApiKey = webApiKey;
     }
 
     public String login(String emailId, String password) {
@@ -27,7 +26,6 @@ public class FirebaseAuthClient {
     }
 
     private FirebaseSignInResponse sendSignInRequest(FirebaseSignInRequest firebaseSignInRequest) {
-        String webApiKey = firebaseConfigurationProperties.getWebApiKey();
         final FirebaseSignInResponse response;
         
         try {
