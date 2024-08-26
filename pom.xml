@@ -583,7 +583,6 @@
                 <module>core-java-modules/core-java-datetime-conversion</module>
                 <module>json-modules/gson</module>
                 <module>maven-modules</module>
-                <module>persistence-modules</module>
                 <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->
                 <module>persistence-modules/spring-data-neo4j</module>
                 <module>quarkus-modules</module>
@@ -762,6 +761,7 @@
                 <module>osgi</module>
                 <module>patterns-modules</module>
                 <module>performance-tests</module>
+                <module>persistence-modules</module>
                 <module>protobuffer</module>
                 <module>podman</module>
                 <module>reactive-systems</module>
@@ -892,7 +892,6 @@
                 <module>core-java-modules/core-java-datetime-conversion</module>
                 <module>json-modules/gson</module>
                 <module>maven-modules</module>
-                <module>persistence-modules</module>
                 <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->
                 <module>persistence-modules/spring-data-neo4j</module>
                 <module>quarkus-modules</module>
@@ -1065,6 +1064,7 @@
                 <module>osgi</module>
                 <module>patterns-modules</module>
                 <module>performance-tests</module>
+                <module>persistence-modules</module>
                 <module>protobuffer</module>
                 <module>podman</module>
                 <module>reactive-systems</module>
