@@ -591,7 +591,7 @@
                 <!--<module>spring-di-2</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-integration</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-jinq</module>--><!--disabling the jinq modules, as the default build profile is failing due to bad mv files. Please refer: JAVA-31341-->
-                <module>spring-security-modules</module>
+                <module>spring-security-modules/spring-security-legacy-oidc</module>
                 <module>spring-static-resources</module>
                 <module>testing-modules</module>
                 <!--<module>static-analysis</module> - requires additional configuration to be compiled due to the JVM strong encapsulation -->
@@ -823,6 +823,7 @@
                 <module>spring-remoting-modules</module> <!-- Upgrade to Boot 3 not possible as since Spring 6 the remoting modules has been removed from Spring. -->
                 <module>spring-scheduling</module>
                 <module>spring-scheduling-2</module>
+                <module>spring-security-modules</module>
                 <module>spring-shell</module>
                 <module>spring-soap</module>
                 <module>spring-spel</module>
@@ -901,7 +902,7 @@
                 <!--<module>spring-di-2</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-integration</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-jinq</module>--><!--disabling the jinq modules, as the default build profile is failing due to bad mv files. Please refer: JAVA-31341-->
-                <module>spring-security-modules</module>
+                <module>spring-security-modules/spring-security-legacy-oidc</module>
                 <module>spring-static-resources</module>
                 <module>testing-modules</module>
                 <!--<module>static-analysis</module> - requires additional configuration to be compiled due to the JVM strong encapsulation -->
@@ -1127,6 +1128,7 @@
                 <module>spring-remoting-modules</module> <!-- Upgrade to Boot 3 not possible as since Spring 6 the remoting modules has been removed from Spring. -->
                 <module>spring-scheduling</module>
                 <module>spring-scheduling-2</module>
+                <module>spring-security-modules</module>
                 <module>spring-shell</module>
                 <module>spring-soap</module>
                 <module>spring-spel</module>
