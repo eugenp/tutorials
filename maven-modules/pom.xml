@@ -90,5 +90,6 @@
 
     <properties>
         <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
+        <maven.compiler.release>21</maven.compiler.release>
     </properties>
 </project>
