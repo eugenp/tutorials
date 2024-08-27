@@ -1,4 +1,4 @@
-package com.baeldung.poi.excel.multilinetext;
+package com.baeldung.poi.excel.insert.multilinetext;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Paths;
 
+import com.baeldung.poi.excel.multilinetext.MultilineText;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
@@ -20,7 +21,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class MultilineTextUnitTest {
-    private static String FILE_NAME = "com/baeldung/poi/excel/multilinetext/MultilineTextTest.xlsx";
+    private static String FILE_NAME = "MultilineTextTest.xlsx";
     private static final String NEW_FILE_NAME = "MultilineTextTest_output.xlsx";
     private static final int STRING_ROW_INDEX = 1;
     private static final int STRING_CELL_INDEX = 0;

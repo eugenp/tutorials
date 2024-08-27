@@ -1,6 +1,5 @@
 package com.baeldung.convert.exceldatatolist;
 
-import com.baeldung.convert.exceldatatolist.FoodInfo;
 import com.baeldung.convert.exceldatatolist.fastexcel.ExcelDataToListOfObjectsFastExcel;
 import com.baeldung.convert.exceldatatolist.jexcelapi.ExcelDataToListOfObjectsJxl;
 import com.baeldung.convert.exceldatatolist.poi.ExcelDataToListApachePOI;
