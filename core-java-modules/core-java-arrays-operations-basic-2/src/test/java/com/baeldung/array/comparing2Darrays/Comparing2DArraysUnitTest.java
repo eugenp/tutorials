@@ -15,6 +15,6 @@ public class Comparing2DArraysUnitTest {
 
     @Test
     public void whenComparing22DArraysOptimized_thenItIsMoreEfficient(){
-        Assertions.assertTrue(OptimizedApproach.areArraysEqual(arr1, arr2));
+        Assertions.assertTrue(OptimizedApproach.areArraysEqual(arr1, arr2, 0.9, 1.0));
     }
 }

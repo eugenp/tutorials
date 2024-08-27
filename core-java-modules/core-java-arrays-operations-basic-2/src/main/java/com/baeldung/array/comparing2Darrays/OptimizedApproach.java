@@ -1,39 +1,32 @@
 package com.baeldung.array.comparing2Darrays;
 
-import java.util.Arrays;
-
 public class OptimizedApproach {
 
-    public static boolean areArraysEqual(int[][] arr1, int[][] arr2) {
+    public static boolean areArraysEqual(int[][] arr1, int[][] arr2, double similarityThreshold, double samplingWeight) {
 
-        if (arr1 == arr2) return true;
-        if (arr1 == null || arr2 == null || arr1.length != arr2.length) return false;
-        if (arr1.length == 0) return true;
-
-        int m = arr1.length;
-        int n = arr1[0].length;
-
-        if (arr2[0].length != n) return false;
-
-        for (int i = 0; i < m; i++) {
-            if (arr1[i].length != n || arr2[i].length != n) return false;
-
-            long hash1 = 0, hash2 = 0;
-            for (int j = 0; j < n; j++) {
-                hash1 = 31 * hash1 + arr1[i][j];
-                hash2 = 31 * hash2 + arr2[i][j];
-            }
-
-            if (hash1 != hash2) return false;
+        if (arr1 == null || arr2 == null || arr1.length != arr2.length ||
+            arr1[0].length != arr2[0].length || samplingWeight <= 0 || samplingWeight > 1) {
+            return false;
         }
 
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                if (arr1[i][j] != arr2[i][j]) return false;
+        int similarElements = 0;
+        int checkedElements = 0;
+
+        // Calculate sampling step based on the sampling weight
+        int step = Math.max(1, (int)(1 / samplingWeight));
+
+        // Iterate through the arrays using the calculated step
+        for (int i = 0; i < arr1.length; i += step) {
+            for (int j = 0; j < arr1[0].length; j += step) {
+                if (Math.abs(arr1[i][j] - arr2[i][j]) <= 1) {
+                    similarElements++;
+                }
+                checkedElements++;
             }
         }
 
-        return true;
+        // Calculate similarity ratio and compare with the threshold
+        return (double) similarElements / checkedElements >= similarityThreshold;
     }
 }
 
