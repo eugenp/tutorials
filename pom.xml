@@ -575,23 +575,27 @@
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
                 <module>core-groovy-modules</module>
-                <module>core-java-modules</module>
-                <module>json-modules</module>
+                <module>core-java-modules/core-java-exceptions-4</module>
+                <module>core-java-modules/core-java-io-6</module>
+                <module>core-java-modules/core-java-jvm</module>
+                <module>core-java-modules/core-java-lang-7</module>
+                <module>core-java-modules/core-java-lang-oop-modifiers</module>
+                <module>core-java-modules/core-java-datetime-conversion</module>
+                <module>json-modules/gson</module>
                 <module>maven-modules</module>
-                <module>messaging-modules</module>
-                <module>persistence-modules</module>
                 <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->
                 <module>persistence-modules/spring-data-neo4j</module>
-                <module>quarkus-modules</module>
-                <module>security-modules</module>
+                <module>quarkus-modules/quarkus</module>
                 <!--<module>spring-cloud-modules/spring-cloud-data-flow</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-cloud-modules/spring-cloud-stream-starters</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-di-2</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-integration</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-jinq</module>--><!--disabling the jinq modules, as the default build profile is failing due to bad mv files. Please refer: JAVA-31341-->
-                <module>spring-security-modules</module>
-                <module>spring-static-resources</module>
-                <module>testing-modules</module>
+                <module>spring-security-modules/spring-security-legacy-oidc</module>
+                <module>testing-modules/junit-5-advanced</module>
+                <module>testing-modules/spring-testing</module>
+                <module>testing-modules/spring-testing-2</module>
+                <module>testing-modules/testing-libraries-2</module>
                 <!--<module>static-analysis</module> - requires additional configuration to be compiled due to the JVM strong encapsulation -->
                 <!--<module>tablesaw</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-swagger-codegen/openapi-custom-generator</module>
@@ -664,6 +668,7 @@
                 <module>azure-functions</module>
                 <module>bazel</module>
                 <module>checker-framework</module>
+                <module>core-java-modules</module>
                 <module>custom-pmd</module>
                 <module>data-structures</module>
                 <module>deeplearning4j</module>
@@ -700,6 +705,7 @@
                 <module>jetbrains</module>
                 <module>jgit</module>
                 <module>jmh</module>
+                <module>json-modules</module>
                 <module>jsoup</module>
                 <module>jws</module>
                 <module>ksqldb</module>
@@ -725,8 +731,8 @@
                 <module>libraries-data</module>
                 <module>libraries-files</module>
                 <module>libraries-http</module>
-		<module>libraries-http-2</module>
-	        <module>libraries-http-3</module>
+		        <module>libraries-http-2</module>
+	            <module>libraries-http-3</module>
                 <module>libraries-io</module>
                 <module>libraries-llms</module>
                 <module>libraries-primitive</module>
@@ -744,6 +750,7 @@
                 <module>lucene</module>
                 <module>mapstruct</module>
                 <module>mapstruct-2</module>
+                <module>messaging-modules</module>
                 <module>metrics</module>
                 <module>microservices-modules</module>
                 <module>mustache</module>
@@ -755,8 +762,10 @@
                 <module>osgi</module>
                 <module>patterns-modules</module>
                 <module>performance-tests</module>
+                <module>persistence-modules</module>
                 <module>protobuffer</module>
                 <module>podman</module>
+                <module>quarkus-modules</module>
                 <module>reactive-systems</module>
                 <module>reactor-core</module>
                 <module>reactor-core-2</module>
@@ -764,6 +773,7 @@
                 <module>rule-engines-modules</module>
                 <module>rxjava-modules</module>
                 <module>saas-modules</module>
+                <module>security-modules</module>
                 <module>server-modules</module>
                 <module>spf4j</module>
                 <module>spring-5-webflux-2</module>
@@ -815,16 +825,19 @@
                 <module>spring-remoting-modules</module> <!-- Upgrade to Boot 3 not possible as since Spring 6 the remoting modules has been removed from Spring. -->
                 <module>spring-scheduling</module>
                 <module>spring-scheduling-2</module>
+                <module>spring-security-modules</module>
                 <module>spring-shell</module>
                 <module>spring-soap</module>
                 <module>spring-spel</module>
                 <module>spring-state-machine</module>
+                <module>spring-static-resources</module>
                 <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
                 <module>spring-threads</module>
                 <module>spring-vault</module>
                 <module>spring-web-modules</module>
                 <module>spring-websockets</module>
                 <module>tensorflow-java</module>
+                <module>testing-modules</module>
                 <module>timefold-solver</module>
                 <module>vaadin</module>
                 <module>vavr-modules</module>
@@ -877,23 +890,27 @@
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
                 <module>core-groovy-modules</module>
-                <module>core-java-modules</module>
-                <module>json-modules</module>
+                <module>core-java-modules/core-java-exceptions-4</module>
+                <module>core-java-modules/core-java-io-6</module>
+                <module>core-java-modules/core-java-jvm</module>
+                <module>core-java-modules/core-java-lang-7</module>
+                <module>core-java-modules/core-java-lang-oop-modifiers</module>
+                <module>core-java-modules/core-java-datetime-conversion</module>
+                <module>json-modules/gson</module>
                 <module>maven-modules</module>
-                <module>messaging-modules</module>
-                <module>persistence-modules</module>
                 <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->
                 <module>persistence-modules/spring-data-neo4j</module>
-                <module>quarkus-modules</module>
-                <module>security-modules</module>
+                <module>quarkus-modules/quarkus</module>
                 <!--<module>spring-cloud-modules/spring-cloud-data-flow</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-cloud-modules/spring-cloud-stream-starters</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-di-2</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-integration</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-jinq</module>--><!--disabling the jinq modules, as the default build profile is failing due to bad mv files. Please refer: JAVA-31341-->
-                <module>spring-security-modules</module>
-                <module>spring-static-resources</module>
-                <module>testing-modules</module>
+                <module>spring-security-modules/spring-security-legacy-oidc</module>
+                <module>testing-modules/junit-5-advanced</module>
+                <module>testing-modules/spring-testing</module>
+                <module>testing-modules/spring-testing-2</module>
+                <module>testing-modules/testing-libraries-2</module>
                 <!--<module>static-analysis</module> - requires additional configuration to be compiled due to the JVM strong encapsulation -->
                 <!--<module>tablesaw</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-swagger-codegen/openapi-custom-generator</module>
@@ -960,6 +977,7 @@
                 <module>azure-functions</module>
                 <module>bazel</module>
                 <module>checker-framework</module>
+                <module>core-java-modules</module>
                 <module>custom-pmd</module>
                 <module>data-structures</module>
                 <module>deeplearning4j</module>
@@ -995,6 +1013,7 @@
                 <module>jetbrains</module>
                 <module>jgit</module>
                 <module>jmh</module>
+                <module>json-modules</module>
                 <module>jsoup</module>
                 <module>jws</module>
                 <module>ksqldb</module>
@@ -1019,7 +1038,7 @@
                 <module>libraries-data-io</module>
                 <module>libraries-data</module>
                 <module>libraries-files</module>
-		<module>libraries-http</module>
+		        <module>libraries-http</module>
                 <module>libraries-http-2</module>
                 <module>libraries-http-3</module>
                 <module>libraries-io</module>
@@ -1039,7 +1058,6 @@
                 <module>lucene</module>
                 <module>mapstruct</module>
 				<module>mapstruct-2</module>
-                <module>maven-modules</module>
                 <module>messaging-modules</module>
                 <module>metrics</module>
                 <module>microservices-modules</module>
@@ -1052,8 +1070,10 @@
                 <module>osgi</module>
                 <module>patterns-modules</module>
                 <module>performance-tests</module>
+                <module>persistence-modules</module>
                 <module>protobuffer</module>
                 <module>podman</module>
+                <module>quarkus-modules</module>
                 <module>reactive-systems</module>
                 <module>reactor-core</module>
                 <module>reactor-core-2</module>
@@ -1061,6 +1081,7 @@
                 <module>rule-engines-modules</module>
                 <module>rxjava-modules</module>
                 <module>saas-modules</module>
+                <module>security-modules</module>
                 <module>server-modules</module>
                 <module>spf4j</module>
                 <module>spring-5-webflux-2</module>
@@ -1112,16 +1133,19 @@
                 <module>spring-remoting-modules</module> <!-- Upgrade to Boot 3 not possible as since Spring 6 the remoting modules has been removed from Spring. -->
                 <module>spring-scheduling</module>
                 <module>spring-scheduling-2</module>
+                <module>spring-security-modules</module>
                 <module>spring-shell</module>
                 <module>spring-soap</module>
                 <module>spring-spel</module>
                 <module>spring-state-machine</module>
+                <module>spring-static-resources</module>
                 <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
                 <module>spring-threads</module>
                 <module>spring-vault</module>
                 <module>spring-web-modules</module>
                 <module>spring-websockets</module>
                 <module>tensorflow-java</module>
+                <module>testing-modules</module>
                 <module>timefold-solver</module>
                 <module>vavr-modules</module>
                 <module>vaadin</module>
