@@ -14,6 +14,7 @@
     </parent>
 
     <dependencies>
+        <!-- camel -->
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-core</artifactId>
@@ -40,6 +41,7 @@
             <artifactId>camel-http</artifactId>
             <version>${camel.version}</version>
         </dependency>
+        <!-- beam -->
         <dependency>
             <groupId>org.apache.beam</groupId>
             <artifactId>beam-sdks-java-core</artifactId>
@@ -66,11 +68,13 @@
             <artifactId>jackson-annotations</artifactId>
             <version>${jackson.version}</version>
         </dependency>
+        <!-- pulsar -->
         <dependency>
             <groupId>org.apache.pulsar</groupId>
             <artifactId>pulsar-client</artifactId>
             <version>${pulsar-client.version}</version>
         </dependency>
+        <!-- curator -->
         <dependency>
             <groupId>org.apache.curator</groupId>
             <artifactId>curator-x-async</artifactId>
@@ -114,6 +118,52 @@
             <artifactId>bval-extras</artifactId>
             <version>${bval.version}</version>
         </dependency>
+        <!-- meecrowave -->
+        <dependency>
+            <groupId>org.apache.meecrowave</groupId>
+            <artifactId>meecrowave-core</artifactId>
+            <version>${meecrowave-core.version}</version>
+            <classifier>jakarta</classifier>
+            <exclusions>
+                <exclusion>
+                    <groupId>*</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.meecrowave</groupId>
+            <artifactId>meecrowave-jpa</artifactId>
+            <version>${meecrowave-jpa.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.xbean</groupId>
+            <artifactId>xbean-asm9-shaded</artifactId>
+            <version>${xbean.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.xbean</groupId>
+            <artifactId>xbean-reflect</artifactId>
+            <version>${xbean.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>${okhttp.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.meecrowave</groupId>
+            <artifactId>meecrowave-junit</artifactId>
+            <version>${meecrowave-junit.version}</version>
+            <classifier>jakarta</classifier>
+            <exclusions>
+                <exclusion>
+                    <groupId>*</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>org.apache.avro</groupId>
             <artifactId>avro</artifactId>
@@ -155,6 +205,12 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- meecrowave -->
+            <plugin>
+                <groupId>org.apache.meecrowave</groupId>
+                <artifactId>meecrowave-maven-plugin</artifactId>
+                <version>${meecrowave-maven-plugin.version}</version>
+            </plugin>
         </plugins>
     </build>
 
@@ -168,6 +224,12 @@
         <curator.version>4.0.1</curator.version>
         <avaitility.version>1.7.0</avaitility.version>
         <zookeeper.version>3.4.11</zookeeper.version>
+        <meecrowave-junit.version>1.2.15</meecrowave-junit.version>
+        <okhttp.version>5.0.0-alpha.12</okhttp.version>
+        <meecrowave-jpa.version>1.2.15</meecrowave-jpa.version>
+        <meecrowave-core.version>1.2.15</meecrowave-core.version>
+        <meecrowave-maven-plugin.version>1.2.15</meecrowave-maven-plugin.version>
+        <xbean.version>4.24</xbean.version>
     </properties>
 
 </project>

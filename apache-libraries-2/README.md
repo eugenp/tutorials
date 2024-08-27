@@ -7,4 +7,5 @@
 - [Introduction to Apache Pulsar](https://www.baeldung.com/apache-pulsar)
 - [Introduction to Apache Curator](https://www.baeldung.com/apache-curator)
 - [Introduction to Apache BVal](https://www.baeldung.com/apache-bval)
+- [Building a Microservice with Apache Meecrowave](https://www.baeldung.com/apache-meecrowave)
 - More articles: [[<-- prev]](../apache-libraries)
