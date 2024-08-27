@@ -582,7 +582,6 @@
                 <module>core-java-modules/core-java-lang-oop-modifiers</module>
                 <module>core-java-modules/core-java-datetime-conversion</module>
                 <module>json-modules/gson</module>
-                <module>maven-modules</module>
                 <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->
                 <module>persistence-modules/spring-data-neo4j</module>
                 <module>quarkus-modules/quarkus</module>
@@ -750,6 +749,7 @@
                 <module>lucene</module>
                 <module>mapstruct</module>
                 <module>mapstruct-2</module>
+                <module>maven-modules</module>
                 <module>messaging-modules</module>
                 <module>metrics</module>
                 <module>microservices-modules</module>
@@ -897,7 +897,6 @@
                 <module>core-java-modules/core-java-lang-oop-modifiers</module>
                 <module>core-java-modules/core-java-datetime-conversion</module>
                 <module>json-modules/gson</module>
-                <module>maven-modules</module>
                 <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->
                 <module>persistence-modules/spring-data-neo4j</module>
                 <module>quarkus-modules/quarkus</module>
