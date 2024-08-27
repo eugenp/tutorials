@@ -49,8 +49,6 @@ dependencies {
         exclude group: 'org.junit.jupiter', module : 'junit-jupiter-params'
     }
 
-    implementation 'org.apache.poi:poi:5.2.3' // excluded on configurations.all
-
     testImplementation 'org.mockito:mockito-core:3.+' // excluded on configureEach
 
     implementation 'com.google.code.gson:gson:2.11.0' // excluded on configurations.implementation
