@@ -6,4 +6,5 @@
 - [Introduction to Apache Beam](https://www.baeldung.com/apache-beam)
 - [Introduction to Apache Pulsar](https://www.baeldung.com/apache-pulsar)
 - [Introduction to Apache Curator](https://www.baeldung.com/apache-curator)
+- [Introduction to Apache BVal](https://www.baeldung.com/apache-bval)
 - More articles: [[<-- prev]](../apache-libraries)

@@ -30,22 +30,6 @@
             <artifactId>avro-maven-plugin</artifactId>
             <version>${avro.version}</version>
         </dependency>
-        <!-- bval -->
-        <dependency>
-            <groupId>org.apache.bval</groupId>
-            <artifactId>bval-jsr</artifactId>
-            <version>${bval.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>jakarta.validation</groupId>
-            <artifactId>jakarta.validation-api</artifactId>
-            <version>${jakarta.validation.validation-api.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.bval</groupId>
-            <artifactId>bval-extras</artifactId>
-            <version>${bval.version}</version>
-        </dependency>
         <!-- meecrowave -->
         <dependency>
             <groupId>org.apache.meecrowave</groupId>

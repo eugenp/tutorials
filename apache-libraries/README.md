@@ -4,7 +4,6 @@ This module contains articles about various Apache libraries and utilities
 
 ### Relevant Articles:
 - [Guide to Apache Avro](https://www.baeldung.com/java-apache-avro)
-- [Intro to Apache BVal](https://www.baeldung.com/apache-bval)
 - [Building a Microservice with Apache Meecrowave](https://www.baeldung.com/apache-meecrowave)
 - [Intro to Apache OpenNLP](https://www.baeldung.com/apache-open-nlp)
 - [Getting Started with Java and Zookeeper](https://www.baeldung.com/java-zookeeper)
