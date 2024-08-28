@@ -67,22 +67,6 @@
             <artifactId>jackson-annotations</artifactId>
             <version>${jackson.version}</version>
         </dependency>
-        <!-- geode -->
-        <dependency>
-            <groupId>org.apache.geode</groupId>
-            <artifactId>geode-core</artifactId>
-            <version>${geode.core}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>javax.resource</groupId>
-                    <artifactId>javax.resource-api</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>javax.xml.bind</groupId>
-                    <artifactId>jaxb-api</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
         <!-- solr -->
         <dependency>
             <groupId>org.apache.solr</groupId>
@@ -121,7 +105,6 @@
         <avro.version>1.8.2</avro.version>
         <bval.version>3.0.1</bval.version>
         <jakarta.validation.validation-api.version>3.1.0</jakarta.validation.validation-api.version><opennlp.opennlp-tools.version>1.8.4</opennlp.opennlp-tools.version>
-        <geode.core>1.15.1</geode.core>
         <solr.solr-solrj.version>6.4.0</solr.solr-solrj.version>
     </properties>
 

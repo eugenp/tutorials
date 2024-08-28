@@ -1,7 +1,5 @@
 package com.baeldung.apache.geode;
 
-import com.baeldung.apache.geode.Customer;
-import com.baeldung.apache.geode.CustomerKey;
 import com.baeldung.apache.geode.functions.UpperCaseNames;
 import org.apache.geode.cache.Region;
 import org.apache.geode.cache.client.ClientCache;

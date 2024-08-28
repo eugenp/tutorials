@@ -8,4 +8,5 @@
 - [Introduction to Apache Curator](https://www.baeldung.com/apache-curator)
 - [Introduction to Apache BVal](https://www.baeldung.com/apache-bval)
 - [Building a Microservice with Apache Meecrowave](https://www.baeldung.com/apache-meecrowave)
+- [A Quick Guide to Apache Geode](https://www.baeldung.com/apache-geode)
 - More articles: [[<-- prev]](../apache-libraries)
