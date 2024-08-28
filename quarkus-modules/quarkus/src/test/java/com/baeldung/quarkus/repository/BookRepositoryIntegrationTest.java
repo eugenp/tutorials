@@ -3,7 +3,7 @@ package com.baeldung.quarkus.repository;
 import com.baeldung.quarkus.utils.QuarkusTransactionalTest;
 import org.junit.jupiter.api.Test;
 
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
