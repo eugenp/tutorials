@@ -128,6 +128,9 @@
                             <generatorName>spring</generatorName>
                             <apiPackage>com.baeldung.openapi.api</apiPackage>
                             <modelPackage>com.baeldung.openapi.model</modelPackage>
+                            <generateApis>false</generateApis>
+                            <generateModels>true</generateModels>
+                            <generateSupportingFiles>false</generateSupportingFiles>
                             <supportingFilesToGenerate>
                                 ApiUtil.java
                             </supportingFilesToGenerate>
