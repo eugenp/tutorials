@@ -1,11 +1,11 @@
 package com.baeldung.etcd;
 
-import java.util.concurrent.CompletableFuture;
-
-import io.etcd.jetcd.kv.GetResponse;
 import io.etcd.jetcd.ByteSequence;
-import io.etcd.jetcd.KV;
 import io.etcd.jetcd.Client;
+import io.etcd.jetcd.KV;
+import io.etcd.jetcd.kv.GetResponse;
+
+import java.util.concurrent.CompletableFuture;
 
 public class JetcdExample {
     public static void main(String[] args) {

@@ -8,9 +8,11 @@ import com.baeldung.libraries.smooks.model.Status;
 import com.baeldung.libraries.smooks.model.Supplier;
 import org.junit.Test;
 import org.milyn.validation.ValidationResult;
+
 import java.text.SimpleDateFormat;
+
 import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 public class SmooksIntegrationTest {
 

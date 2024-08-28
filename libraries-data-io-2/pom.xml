@@ -23,6 +23,10 @@
         <protobuff.version>4.27.0</protobuff.version>
         <protobuf.plugin.version>2.1.1</protobuf.plugin.version>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <kryo.version>4.0.1</kryo.version>
+        <smooks.version>1.7.1</smooks.version>
+        <mvel2.version>2.5.2.Final</mvel2.version>
+        <jetcd-version>0.7.7</jetcd-version>
     </properties>
 
     <dependencies>
@@ -46,6 +50,26 @@
             <groupId>com.google.protobuf</groupId>
             <artifactId>protobuf-java</artifactId>
             <version>${protobuff.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.esotericsoftware</groupId>
+            <artifactId>kryo</artifactId>
+            <version>${kryo.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.milyn</groupId>
+            <artifactId>milyn-smooks-all</artifactId>
+            <version>${smooks.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mvel</groupId>
+            <artifactId>mvel2</artifactId>
+            <version>${mvel2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.etcd</groupId>
+            <artifactId>jetcd-core</artifactId>
+            <version>${jetcd-version}</version>
         </dependency>
     </dependencies>
 
