@@ -1,4 +1,4 @@
-package com.baeldung.firestore;
+package com.baeldung.gcp.firebase.firestore;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.instancio.Select.field;

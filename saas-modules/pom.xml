@@ -17,7 +17,6 @@
 
     <modules>
         <module>discord4j</module>
-        <module>firestore</module>
         <module>jira-rest-integration</module>
         <module>sendgrid</module>
         <module>sentry-servlet</module>

@@ -1,4 +1,4 @@
-package com.baeldung.firestore;
+package com.baeldung.gcp.firebase.firestore;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
