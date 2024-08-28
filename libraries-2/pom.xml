@@ -141,6 +141,18 @@
             <artifactId>vavr</artifactId>
             <version>${vavr.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.mutabilitydetector</groupId>
+            <artifactId>MutabilityDetector</artifactId>
+            <version>${mutabilitydetector.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.awaitility</groupId>
+            <artifactId>awaitility</artifactId>
+            <version>${awaitility.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -170,6 +182,8 @@
         <jnats.version>2.17.3</jnats.version>
         <javafx.version>19</javafx.version>
         <vavr.version>0.9.0</vavr.version>
+        <mutabilitydetector.version>0.9.6</mutabilitydetector.version>
+        <awaitility.version>4.2.1</awaitility.version>
     </properties>
 
 </project>
