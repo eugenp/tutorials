@@ -11,6 +11,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import jxl.Cell;
+import jxl.Sheet;
+import jxl.Workbook;
 import jxl.read.biff.BiffException;
 import jxl.write.WriteException;
 
@@ -45,6 +48,21 @@ public class JExcelIntegrationTest {
             .get(0));
         assertEquals("20", data.get(2)
             .get(1));
+    }
+    
+    @Test
+    public void whenParsingJExcelFile_thenDetectEmptyRow() throws IOException, BiffException {
+    	Workbook workbook = Workbook.getWorkbook(new File(fileLocation));
+        Sheet sheet = workbook.getSheet(0);
+       
+        Cell[] row = sheet.getRow(0);
+        assertEquals(false, jExcelHelper.isRowEmpty(row)); // check writeJExcel() method, we have inserted a row
+        
+        row = sheet.getRow(2);
+        assertEquals(false, jExcelHelper.isRowEmpty(row));
+        
+        row = sheet.getRow(3);
+        assertEquals(true, jExcelHelper.isRowEmpty(row)); // check writeJExcel() method, we have inserted "" in this row
     }
 
     @After

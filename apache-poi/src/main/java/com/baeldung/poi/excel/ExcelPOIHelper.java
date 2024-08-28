@@ -11,6 +11,7 @@ import java.util.Map;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.DateUtil;
 import org.apache.poi.ss.usermodel.FillPatternType;
 import org.apache.poi.ss.usermodel.IndexedColors;
@@ -108,6 +109,15 @@ public class ExcelPOIHelper {
             cell = row.createCell(1);
             cell.setCellValue(20);
             cell.setCellStyle(style);
+            
+            row = sheet.createRow(3);
+            cell = row.createCell(0);
+            cell.setCellValue("");
+            cell.setCellStyle(style);
+
+            cell = row.createCell(1);
+            cell.setCellValue("");
+            cell.setCellStyle(style);
 
             File currDir = new File(".");
             String path = currDir.getAbsolutePath();
@@ -123,5 +133,17 @@ public class ExcelPOIHelper {
             }
         }
     }
-
+    
+    public boolean isRowEmpty(Row row) {
+        if (row == null) {
+            return true;
+        }
+        for (int cellNum = row.getFirstCellNum(); cellNum < row.getLastCellNum(); cellNum++) {
+            Cell cell = row.getCell(cellNum);
+            if (cell != null && cell.getCellType() != CellType.BLANK) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
