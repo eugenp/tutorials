@@ -1,4 +1,4 @@
-package com.baeldung.selenium.generatePDF;
+package com.baeldung.selenium.generatepdf;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
