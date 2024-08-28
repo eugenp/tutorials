@@ -62,6 +62,11 @@ public class JExcelHelper {
             sheet.addCell(cellLabel);
             Number cellNumber = new Number(1, 2, 20, cellFormat);
             sheet.addCell(cellNumber);
+            
+            Label emptyCellLabel = new Label(0, 3, "", cellFormat);
+            sheet.addCell(emptyCellLabel);
+            emptyCellLabel = new Label(1, 3, "", cellFormat);
+            sheet.addCell(emptyCellLabel);
 			
             workbook.write();
         } finally {
@@ -70,5 +75,17 @@ public class JExcelHelper {
             }
         }
 
+    }
+    
+    public boolean isRowEmpty(Cell[] row) {
+    	if (row == null) {
+            return true;
+        }
+        for (Cell cell : row) {
+            if (cell != null && !cell.getContents().trim().isEmpty()) {
+                return false;
+            }
+        }
+        return true;
     }
 }

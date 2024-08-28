@@ -3,10 +3,14 @@ package com.baeldung.poi.excel;
 import static org.junit.Assert.assertEquals;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
-
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -42,6 +46,23 @@ public class ExcelIntegrationTest {
             .get(0));
         assertEquals("20", data.get(1)
             .get(1));
+    }
+    
+    @Test
+    public void whenParsingFastExcelFile_thenDetectEmptyRow() throws IOException {
+    	FileInputStream inputStream = new FileInputStream(new File(fileLocation));
+    	Workbook workbook = new XSSFWorkbook(inputStream);
+    	Sheet sheet = workbook.getSheetAt(0);
+    	
+    	Row row = sheet.getRow(0);
+        assertEquals(false, excelPOIHelper.isRowEmpty(row)); // check writeJExcel() method, we have inserted a row
+        
+        row = sheet.getRow(2);
+        assertEquals(false, excelPOIHelper.isRowEmpty(row));
+        
+        row = sheet.getRow(4);
+        assertEquals(true, excelPOIHelper.isRowEmpty(row)); // check writeJExcel() method, we have inserted "" in this row
+    	
     }
 
     @After
