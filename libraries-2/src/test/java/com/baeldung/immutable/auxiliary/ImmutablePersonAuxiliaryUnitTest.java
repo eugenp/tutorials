@@ -2,8 +2,6 @@ package com.baeldung.immutable.auxiliary;
 
 import org.junit.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 public class ImmutablePersonAuxiliaryUnitTest {
 
     @Test

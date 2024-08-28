@@ -3,7 +3,6 @@ package com.baeldung.immutable;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.mutabilitydetector.unittesting.MutabilityAssert.assertImmutable;
 
 public class ImmutablePersonUnitTest {

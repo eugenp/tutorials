@@ -1,22 +1,21 @@
 package com.baeldung.dockerapi;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.greaterThan;
-import static org.hamcrest.Matchers.not;
-import static org.hamcrest.core.Is.is;
-
-import java.util.List;
-
-import org.hamcrest.MatcherAssert;
-import org.junit.BeforeClass;
-import org.junit.Ignore;
-import org.junit.Test;
-
 import com.github.dockerjava.api.DockerClient;
 import com.github.dockerjava.api.command.CreateNetworkResponse;
 import com.github.dockerjava.api.model.Network;
 import com.github.dockerjava.api.model.Network.Ipam;
 import com.github.dockerjava.core.DockerClientBuilder;
+import org.hamcrest.MatcherAssert;
+import org.junit.BeforeClass;
+import org.junit.Ignore;
+import org.junit.Test;
+
+import java.util.List;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.not;
+import static org.hamcrest.core.Is.is;
 
 public class NetworkLiveTest {
 

@@ -1,10 +1,10 @@
 package com.baeldung.pairs;
 
-import static org.junit.Assert.*;
+import org.junit.Test;
 
 import java.util.AbstractMap;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 public class CoreJavaSimpleEntryUnitTest {
 
