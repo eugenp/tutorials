@@ -183,6 +183,22 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!-- geode -->
+        <dependency>
+            <groupId>org.apache.geode</groupId>
+            <artifactId>geode-core</artifactId>
+            <version>${geode.core}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>javax.resource</groupId>
+                    <artifactId>javax.resource-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>javax.xml.bind</groupId>
+                    <artifactId>jaxb-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
     </dependencies>
 
     <build>
@@ -230,6 +246,7 @@
         <meecrowave-core.version>1.2.15</meecrowave-core.version>
         <meecrowave-maven-plugin.version>1.2.15</meecrowave-maven-plugin.version>
         <xbean.version>4.24</xbean.version>
+        <geode.core>1.15.1</geode.core>
     </properties>
 
 </project>
