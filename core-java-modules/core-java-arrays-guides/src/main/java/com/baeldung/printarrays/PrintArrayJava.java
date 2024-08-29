@@ -37,21 +37,4 @@ public class PrintArrayJava {
         Arrays.stream(empArray).forEach(e -> result.append(e).append("\n"));
         return result.toString().trim();
     }
-
-    // Print 2D array content using nested loops
-    public String print2DArrayUsingNestedLoops(int[][] exampleArr) {
-        StringBuilder result = new StringBuilder();
-        for (int i = 0; i < exampleArr.length; i++) {
-            for (int j = 0; j < exampleArr[i].length; j++) {
-                result.append(exampleArr[i][j]).append(" ");
-            }
-            result.append("\n");
-        }
-        return result.toString().trim();
-    }
-
-    // Print 2D array content using Arrays.deepToString
-    public String print2DArrayUsingDeepToString(int[][] exampleArr) {
-        return Arrays.deepToString(exampleArr);
-    }
 }
