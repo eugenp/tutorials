@@ -58,10 +58,15 @@
             <version>${mockito-junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
-        <h2.version>2.1.214</h2.version>
+        <h2.version>2.3.230</h2.version>
         <commons-dbutils.version>1.8.1</commons-dbutils.version>
         <postgresql.version>42.7.3</postgresql.version>
         <org.json.version>20240303</org.json.version>

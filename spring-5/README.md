@@ -8,4 +8,3 @@ This module contains articles about Spring 5
 - [Spring ResponseStatusException](https://www.baeldung.com/spring-response-status-exception)
 - [Spring Assert Statements](https://www.baeldung.com/spring-assert)
 - [Difference between context:annotation-config vs context:component-scan](https://www.baeldung.com/spring-contextannotation-contextcomponentscan)
-- [Configuring a Hikari Connection Pool with Spring Boot](https://www.baeldung.com/spring-boot-hikari)

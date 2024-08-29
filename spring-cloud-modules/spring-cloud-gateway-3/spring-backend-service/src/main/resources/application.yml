@@ -1,0 +1,16 @@
+server:
+  port: 8081
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: product-service
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /product/v3/api-docs
+  swagger-ui:
+    enabled: true
+    path: /product/swagger-ui.html

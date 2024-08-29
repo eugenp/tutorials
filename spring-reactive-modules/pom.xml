@@ -11,9 +11,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-2</relativePath>
+        <relativePath>../parent-boot-3</relativePath>
     </parent>
 
     <modules>
@@ -25,7 +25,7 @@
         <module>spring-reactive-client-2</module>
         <module>spring-reactive-filters</module>
         <module>spring-reactive-oauth</module>
-        <!--<module>spring-reactive-security</module> Uncomment after the parent module gets upgraded to Boot 3--> 
+        <module>spring-reactive-security</module>
         <module>spring-reactive-data-couchbase</module>
         <module>spring-reactive</module>
         <module>spring-reactive-exceptions</module>

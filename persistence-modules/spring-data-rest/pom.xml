@@ -50,7 +50,7 @@
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
-            <version>3.3.0</version>
+            <version>${rest-assured.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -86,6 +86,7 @@
         <start-class>com.baeldung.books.SpringDataRestApplication</start-class>
         <maven.version>1.0</maven.version>
         <hibernate-community-dialects.version>6.1.7.Final</hibernate-community-dialects.version>
+        <rest-assured.version>5.5.0</rest-assured.version>
     </properties>
 
 </project>

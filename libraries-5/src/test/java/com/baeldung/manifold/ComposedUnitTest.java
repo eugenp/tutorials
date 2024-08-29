@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ComposedUnitTest {
     @Test
-    void testAllOf() {
+    void whenConstructingAllOf_thenCorrectTypesAreUsed() {
         Composed composed = Composed.builder()
             .withAll(Composed.all.builder()
                 .withUsername("testuser")
@@ -17,10 +17,11 @@ public class ComposedUnitTest {
             .build();
 
         assertEquals("testuser", composed.getAll().getUsername());
+        assertEquals(List.of("admin"), composed.getAll().getRoles());
     }
 
     @Test
-    void testAnyOf() {
+    void whenConstructingAnyOf_thenCorrectTypesAreUsed() {
         Composed composed = Composed.builder()
             .withAnyAscat(Composed.cat.builder()
                 .withType(Composed.cat.type.cat)
