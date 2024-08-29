@@ -1,33 +1,31 @@
-package com.baeldung.micronaut.environments.services.hostresolver;
+package com.baeldung.micronaut.environments.services.logging;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
-
-import com.baeldung.micronaut.environments.services.HostResolver;
 
 import io.micronaut.context.ApplicationContext;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import jakarta.inject.Inject;
 
 @MicronautTest(environments = { "production" })
-public class ProductionEnvironmentHostResolverTest {
+public class ProductionEnvironmentLoggingUnitTest {
 
     @Inject
-    HostResolver hostResolver;
+    LoggingService loggingService;
     @Inject
     ApplicationContext applicationContext;
 
     @Test
-    public void assertEnvironmentSet() {
+    public void givenEnvironmentIsSetToProduction_thenActiveEnvironmentsAreTestAndProduction() {
         assertThat(applicationContext.getEnvironment()
             .getActiveNames()).containsExactlyInAnyOrder("test", "production");
     }
 
     @Test
-    public void getHost_whenEnvIsProd_returnsURL() {
-        String prodHost = hostResolver.getHost();
+    public void givenEnvironmentIsSetToProduction_whenLog_thenOverridesDefaultAndUsesFileLoggingService() {
+        String prodLog = loggingService.log("something");
 
-        assertThat(prodHost).isEqualTo("my-service.us-west-2.amazonaws.com");
+        assertThat(prodLog).isEqualTo("logging to some file: [something]");
     }
 }

@@ -10,8 +10,8 @@ import io.micronaut.context.ApplicationContext;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import jakarta.inject.Inject;
 
-@MicronautTest(environments = { "local" })
-public class LocalEnvironmentHostResolverTest {
+@MicronautTest(environments = { "production" })
+public class ProductionEnvironmentHostResolverUnitTest {
 
     @Inject
     HostResolver hostResolver;
@@ -19,15 +19,15 @@ public class LocalEnvironmentHostResolverTest {
     ApplicationContext applicationContext;
 
     @Test
-    public void assertEnvironmentSet() {
+    public void givenEnvironmentIsSetToProduction_thenActiveEnvironmentsAreTestAndProduction() {
         assertThat(applicationContext.getEnvironment()
-            .getActiveNames()).containsExactlyInAnyOrder("test", "local");
+            .getActiveNames()).containsExactlyInAnyOrder("test", "production");
     }
 
     @Test
-    public void getHost_whenEnvIsLocal_returnsLocalhost() {
-        String localHost = hostResolver.getHost();
+    public void givenEnvironmentIsSetToProduction_whenGetHost_thenTheResolverReturnsProdUrl() {
+        String prodHost = hostResolver.getHost();
 
-        assertThat(localHost).isEqualTo("localhost");
+        assertThat(prodHost).isEqualTo("my-service.us-west-2.amazonaws.com");
     }
 }

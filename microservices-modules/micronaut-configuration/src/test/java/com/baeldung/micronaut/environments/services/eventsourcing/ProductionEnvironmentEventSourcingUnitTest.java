@@ -9,7 +9,7 @@ import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import jakarta.inject.Inject;
 
 @MicronautTest(environments = { "production" })
-public class ProductionEnvironmentEventSourcingTest {
+public class ProductionEnvironmentEventSourcingUnitTest {
 
     @Inject
     EventSourcingService eventSourcingService;
@@ -17,13 +17,13 @@ public class ProductionEnvironmentEventSourcingTest {
     ApplicationContext applicationContext;
 
     @Test
-    public void assertEnvironmentSet() {
+    public void givenEnvironmentIsSetToProduction_thenActiveEnvironmentsAreTestAndProduction() {
         assertThat(applicationContext.getEnvironment()
             .getActiveNames()).containsExactlyInAnyOrder("test", "production");
     }
 
     @Test
-    public void sendEvent_whenEnvIsProduction_usesKafkaEventSourcingService() {
+    public void givenEnvironmentIsSetToProduction_whenSendEvent_thenKafkaServiceIsUsed() {
         String devEvent = eventSourcingService.sendEvent("something");
 
         assertThat(devEvent).isEqualTo("using kafka to send message: [something]");

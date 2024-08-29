@@ -9,10 +9,10 @@ import com.baeldung.micronaut.environments.ServerApplication;
 import io.micronaut.context.ApplicationContext;
 import io.micronaut.runtime.Micronaut;
 
-public class InvalidEnvironmentLoggingTest {
+public class InvalidEnvironmentLoggingUnitTest {
 
     @Test
-    public void log_whenEnvIsNone_usesDefaultLoggingService() {
+    public void givenEnvironmentIsNotSet_thenLoggingServiceImplementationIsTheDefaultOne() {
         ApplicationContext applicationContext = Micronaut.run(ServerApplication.class);
         applicationContext.start();
 

@@ -8,8 +8,8 @@ import io.micronaut.context.ApplicationContext;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import jakarta.inject.Inject;
 
-@MicronautTest(environments = { "production" })
-public class ProductionEnvironmentLoggingTest {
+@MicronautTest(environments = { "dev" })
+public class NonProductionEnvironmentLoggingUnitTest {
 
     @Inject
     LoggingService loggingService;
@@ -17,15 +17,15 @@ public class ProductionEnvironmentLoggingTest {
     ApplicationContext applicationContext;
 
     @Test
-    public void assertEnvironmentSet() {
+    public void givenEnvironmentIsSetToDev_thenActiveEnvironmentsAreTestAndDev() {
         assertThat(applicationContext.getEnvironment()
-            .getActiveNames()).containsExactlyInAnyOrder("test", "production");
+            .getActiveNames()).containsExactlyInAnyOrder("test", "dev");
     }
 
     @Test
-    public void log_whenEnvIsProduction_overridesDefault_andUsesFileLoggingService() {
-        String prodLog = loggingService.log("something");
+    public void givenEnvironmentIsSetToDev_whenLog_thenUsesDefaultLoggingService() {
+        String devLog = loggingService.log("something");
 
-        assertThat(prodLog).isEqualTo("logging to some file: [something]");
+        assertThat(devLog).isEqualTo("logging to console: [something]");
     }
 }

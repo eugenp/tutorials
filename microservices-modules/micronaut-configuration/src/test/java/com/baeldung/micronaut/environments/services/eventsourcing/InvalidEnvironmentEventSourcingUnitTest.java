@@ -11,10 +11,10 @@ import io.micronaut.context.ApplicationContext;
 import io.micronaut.context.exceptions.NoSuchBeanException;
 import io.micronaut.runtime.Micronaut;
 
-public class InvalidEnvironmentEventSourcingTest {
+public class InvalidEnvironmentEventSourcingUnitTest {
 
     @Test
-    public void sendEvent_whenEnvIsInvalid_throwsBeanException() {
+    public void givenEnvironmentIsNotSet_thenEventSourcingServiceBeanIsNotCreated() {
         ApplicationContext applicationContext = Micronaut.run(ServerApplication.class);
         applicationContext.start();
 
@@ -22,5 +22,17 @@ public class InvalidEnvironmentEventSourcingTest {
             .getActiveNames()).containsExactly("test");
         assertThatThrownBy(() -> applicationContext.getBean(EventSourcingService.class)).isInstanceOf(NoSuchBeanException.class)
             .hasMessageContaining("None of the required environments [production] are active: [test]");
+    }
+
+    @Test
+    public void givenEnvironmentIsNotSet_thenTestPropertyGetsValueFromDeductedEnvironment() {
+        ApplicationContext applicationContext = Micronaut.run(ServerApplication.class);
+        applicationContext.start();
+
+        assertThat(applicationContext.getEnvironment()
+            .getActiveNames()).containsExactly("test");
+        assertThat(applicationContext.getProperty("service.test.property", String.class)).isNotEmpty();
+        assertThat(applicationContext.getProperty("service.test.property", String.class)
+            .get()).isEqualTo("something-in-test");
     }
 }

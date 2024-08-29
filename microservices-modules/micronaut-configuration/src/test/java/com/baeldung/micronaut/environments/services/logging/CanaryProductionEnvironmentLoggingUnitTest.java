@@ -9,7 +9,7 @@ import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import jakarta.inject.Inject;
 
 @MicronautTest(environments = { "canary-production" })
-public class CanaryProductionEnvironmentLoggingTest {
+public class CanaryProductionEnvironmentLoggingUnitTest {
 
     @Inject
     LoggingService loggingService;
@@ -17,13 +17,13 @@ public class CanaryProductionEnvironmentLoggingTest {
     ApplicationContext applicationContext;
 
     @Test
-    public void assertEnvironmentSet() {
+    public void givenEnvironmentIsSetToCanaryProduction_thenActiveEnvironmentsAreTestAndCanaryProduction() {
         assertThat(applicationContext.getEnvironment()
             .getActiveNames()).containsExactlyInAnyOrder("test", "canary-production");
     }
 
     @Test
-    public void log_whenEnvIsCanaryProduction_overridesDefault_andUsesFileLoggingService() {
+    public void givenEnvironmentIsSetToCanaryProduction_whenLog_thenOverridesDefaultAndUsesFileLoggingService() {
         String prodLog = loggingService.log("something");
 
         assertThat(prodLog).isEqualTo("logging to some file: [something]");

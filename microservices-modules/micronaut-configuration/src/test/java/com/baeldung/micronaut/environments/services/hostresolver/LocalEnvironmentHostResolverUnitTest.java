@@ -1,7 +1,6 @@
 package com.baeldung.micronaut.environments.services.hostresolver;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
 
@@ -11,8 +10,8 @@ import io.micronaut.context.ApplicationContext;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import jakarta.inject.Inject;
 
-@MicronautTest(environments = { "no-mans-land" })
-public class InvalidEnvironmentHostResolverTest {
+@MicronautTest(environments = { "local" })
+public class LocalEnvironmentHostResolverUnitTest {
 
     @Inject
     HostResolver hostResolver;
@@ -20,14 +19,15 @@ public class InvalidEnvironmentHostResolverTest {
     ApplicationContext applicationContext;
 
     @Test
-    public void assertEnvironmentSet() {
+    public void givenEnvironmentIsSetToLocal_thenActiveEnvironmentsAreTestAndLocal() {
         assertThat(applicationContext.getEnvironment()
-            .getActiveNames()).containsExactlyInAnyOrder("test", "no-mans-land");
+            .getActiveNames()).containsExactlyInAnyOrder("test", "local");
     }
 
     @Test
-    public void getHost_whenEnvIsProd_returnsURL() {
-        assertThatThrownBy(() -> hostResolver.getHost()).isInstanceOf(RuntimeException.class)
-            .hasMessageContaining("Unsupported environment: ");
+    public void givenEnvironmentIsSetToLocal_whenGetHost_thenTheResolverReturnsLocalhost() {
+        String localHost = hostResolver.getHost();
+
+        assertThat(localHost).isEqualTo("localhost");
     }
 }

@@ -16,7 +16,7 @@ import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import io.restassured.specification.RequestSpecification;
 
 @MicronautTest
-class ServerApplicationTest {
+class ServerApplicationUnitTest {
 
     private static final String FILTERED_ENDPOINTS_PATH = "micronaut-configuration-tutorials/filters-annotations";
 
