@@ -1,4 +1,4 @@
-package com.baeldung.firebase.auth;
+package com.baeldung.gcp.firebase.auth;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,13 +12,13 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfiguration {
 
     private static final String[] WHITELISTED_API_ENDPOINTS = { "/user", "/user/login" };
-    
+
     private final TokenAuthenticationFilter tokenAuthenticationFilter;
 
     public SecurityConfiguration(TokenAuthenticationFilter tokenAuthenticationFilter) {
         this.tokenAuthenticationFilter = tokenAuthenticationFilter;
     }
-    
+
     @Bean
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http.csrf(csrfConfigurer -> csrfConfigurer.disable())

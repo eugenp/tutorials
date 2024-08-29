@@ -1,4 +1,0 @@
-com:
-  baeldung:
-    firebase:
-      web-api-key: ${FIREBASE_WEB_API_KEY}

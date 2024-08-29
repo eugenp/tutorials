@@ -1,4 +1,4 @@
-package com.baeldung.firebase.auth;
+package com.baeldung.gcp.firebase.auth;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;

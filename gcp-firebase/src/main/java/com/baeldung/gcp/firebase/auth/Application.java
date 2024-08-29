@@ -1,4 +1,4 @@
-package com.baeldung.firebase.auth;
+package com.baeldung.gcp.firebase.auth;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,5 +1,9 @@
-package com.baeldung.firebase.auth;
+package com.baeldung.gcp.firebase.auth;
 
+import java.util.Optional;
+
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -13,11 +17,9 @@ public class UserService {
     private static final String DUPLICATE_ACCOUNT_ERROR = "EMAIL_EXISTS";
 
     private final FirebaseAuth firebaseAuth;
-    private final AuthenticatedUserIdProvider authenticatedUserIdProvider;
 
-    public UserService(FirebaseAuth firebaseAuth, AuthenticatedUserIdProvider authenticatedUserIdProvider) {
+    public UserService(FirebaseAuth firebaseAuth) {
         this.firebaseAuth = firebaseAuth;
-        this.authenticatedUserIdProvider = authenticatedUserIdProvider;
     }
 
     public void create(String emailId, String password) {
@@ -36,8 +38,16 @@ public class UserService {
     }
 
     public UserRecord retrieve() throws FirebaseAuthException {
-        String userId = authenticatedUserIdProvider.getUserId();
+        String userId = getAuthenticatedUserId();
         return firebaseAuth.getUser(userId);
+    }
+
+    private String getAuthenticatedUserId() {
+        return Optional.ofNullable(SecurityContextHolder.getContext().getAuthentication())
+            .map(Authentication::getPrincipal)
+            .filter(String.class::isInstance)
+            .map(String.class::cast)
+            .orElseThrow(IllegalStateException::new);
     }
 
 }

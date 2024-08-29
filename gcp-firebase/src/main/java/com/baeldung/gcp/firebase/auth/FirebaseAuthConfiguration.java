@@ -1,4 +1,4 @@
-package com.baeldung.firebase.auth;
+package com.baeldung.gcp.firebase.auth;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;

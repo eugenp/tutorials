@@ -1,4 +1,4 @@
-package com.baeldung.firebase.auth;
+package com.baeldung.gcp.firebase.auth;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -37,13 +37,10 @@ public class UserController {
         return ResponseEntity.ok(response);
     }
 
-    record CreateUserRequest(String emailId, String password) {
-    }
+    record CreateUserRequest(String emailId, String password) {}
 
-    record LoginUserRequest(String emailId, String password) {
-    }
+    record LoginUserRequest(String emailId, String password) {}
 
-    record TokenResponse(String token) {
-    }
+    record TokenResponse(String token) {}
 
 }

@@ -1,4 +1,4 @@
-package com.baeldung.firebase.auth;
+package com.baeldung.gcp.firebase.auth;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
@@ -27,7 +27,7 @@ public class FirebaseAuthClient {
 
     private FirebaseSignInResponse sendSignInRequest(FirebaseSignInRequest firebaseSignInRequest) {
         final FirebaseSignInResponse response;
-        
+
         try {
             response = RestClient.create(BASE_URL)
                 .post()
@@ -44,7 +44,7 @@ public class FirebaseAuthClient {
             }
             throw exception;
         }
-        
+
         return response;
     }
 

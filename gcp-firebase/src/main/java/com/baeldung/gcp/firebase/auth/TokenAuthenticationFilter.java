@@ -1,4 +1,4 @@
-package com.baeldung.firebase.auth;
+package com.baeldung.gcp.firebase.auth;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -43,7 +43,7 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
             if (userId.isPresent()) {
                 var authentication = new UsernamePasswordAuthenticationToken(userId.get(), null, null);
                 authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-                SecurityContextHolder.getContext().setAuthentication(authentication);   
+                SecurityContextHolder.getContext().setAuthentication(authentication);
             }
         }
         filterChain.doFilter(request, response);
