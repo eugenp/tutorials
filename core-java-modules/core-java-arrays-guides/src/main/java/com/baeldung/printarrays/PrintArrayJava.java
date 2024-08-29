@@ -2,7 +2,6 @@ package com.baeldung.printarrays;
 import java.util.Arrays;
 
 public class PrintArrayJava {
-
     // Print array content using a for loop
     public String printArrayUsingForLoop(String[] empArray) {
         StringBuilder result = new StringBuilder();
