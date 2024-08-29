@@ -3,9 +3,9 @@
     xmlns="http://maven.apache.org/POM/4.0.0"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>apache-poi-3</artifactId>
+    <artifactId>apache-poi-4</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>apache-poi-3</name>
+    <name>apache-poi-4</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -45,26 +45,6 @@
             <version>${commons-collections4.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.dhatim</groupId>
-            <artifactId>fastexcel</artifactId>
-            <version>${fastexcel.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.dhatim</groupId>
-            <artifactId>fastexcel-reader</artifactId>
-            <version>${fastexcel.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>net.sourceforge.jexcelapi</groupId>
-            <artifactId>jxl</artifactId>
-            <version>${jxl.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.deepoove</groupId>
-            <artifactId>poi-tl</artifactId>
-            <version>${poitl.version}</version>
-        </dependency>
-        <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>${logback-classic.version}</version>
@@ -80,9 +60,6 @@
         <poi.version>5.2.5</poi.version>
         <poi-ooxml-schemas.version>4.1.2</poi-ooxml-schemas.version>
         <xmlbeans.version>5.2.0</xmlbeans.version>
-        <fastexcel.version>0.17.0</fastexcel.version>
-        <jxl.version>2.6.12</jxl.version>
-        <poitl.version>1.12.2</poitl.version>
         <logback-classic.version>1.5.6</logback-classic.version>
         <logback-core.version>1.5.6</logback-core.version>        
     </properties>
