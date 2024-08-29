@@ -148,12 +148,11 @@
             </plugin>
             <plugin>
                 <groupId>org.codehaus.cargo</groupId>
-                <artifactId>cargo-maven2-plugin</artifactId>
-                <version>${cargo-maven2-plugin.version}</version>
+                <artifactId>cargo-maven3-plugin</artifactId>
+                <version>${cargo-maven3-plugin.version}</version>
                 <configuration>
-                    <wait>true</wait>
                     <container>
-                        <containerId>jetty8x</containerId>
+                        <containerId>tomcat11x</containerId>
                         <type>embedded</type>
                         <systemProperties>
                             <!-- <provPersistenceTarget>cargo</provPersistenceTarget> -->
@@ -179,7 +178,7 @@
         <jakarta.servlet-api.version>6.1.0-M1</jakarta.servlet-api.version>
         <jakarta.jstl-api.version>3.0.0</jakarta.jstl-api.version>
         <!-- Maven plugins -->
-        <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
+        <cargo-maven3-plugin.version>1.10.14</cargo-maven3-plugin.version>
     </properties>
 
 </project>
