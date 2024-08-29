@@ -37,13 +37,18 @@ public class CustomerInfoService {
                 .pathSegment(String.valueOf(customerId))
                 .build())
             .retrieve()
+            .onStatus(status -> status.is5xxServerError() || status.is4xxClientError(), response -> response.bodyToMono(String.class)
+                .map(ApiGatewayException::new))
             .bodyToMono(Customer.class)
             .block();
+
         Billing billing = webClient.get()
             .uri(uriBuilder -> uriBuilder.path(BillingController.PATH_BILLING)
                 .pathSegment(String.valueOf(customerId))
                 .build())
             .retrieve()
+            .onStatus(status -> status.is5xxServerError() || status.is4xxClientError(), response -> response.bodyToMono(String.class)
+                .map(ApiGatewayException::new))
             .bodyToMono(Billing.class)
             .block();
 
@@ -56,6 +61,8 @@ public class CustomerInfoService {
                 .pathSegment(String.valueOf(customerId))
                 .build())
             .retrieve()
+            .onStatus(status -> status.is5xxServerError() || status.is4xxClientError(), response -> response.bodyToMono(String.class)
+                .map(ApiGatewayException::new))
             .bodyToMono(Customer.class);
 
         Mono<Billing> billingMono = webClient.get()
@@ -63,6 +70,8 @@ public class CustomerInfoService {
                 .pathSegment(String.valueOf(customerId))
                 .build())
             .retrieve()
+            .onStatus(status -> status.is5xxServerError() || status.is4xxClientError(), response -> response.bodyToMono(String.class)
+                .map(ApiGatewayException::new))
             .bodyToMono(Billing.class);
 
         return Mono.zip(customerMono, billingMono, (customer, billing) -> new CustomerInfo(customer.getId(), customer.getName(), billing.getBalance()))
