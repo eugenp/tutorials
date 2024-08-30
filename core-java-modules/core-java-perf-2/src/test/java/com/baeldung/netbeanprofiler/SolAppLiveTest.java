@@ -24,7 +24,12 @@ class SolAppLiveTest {
 
     @Test
     void givenDumpFile_whenProfilingTheSolarSystemClass_thenReturnInstancesAndByteUsed() {
-        SolApp.solarSystemClassSummary();
+        SolApp.solarSystemSummary();
+    }
+
+    @Test
+    void givenDumpFile_whenProfilingTheSolarSystemClass_thenReturnFieldDetails() {
+        SolApp.logFieldDetails();
     }
 
     @Test
@@ -36,4 +41,5 @@ class SolAppLiveTest {
     void givenADumpFile_whenProfilingTopTenInstancesAndBytesUsed_thenReturnTopInstances() {
         SolApp.analyzeClassHistogram();
     }
+
 }

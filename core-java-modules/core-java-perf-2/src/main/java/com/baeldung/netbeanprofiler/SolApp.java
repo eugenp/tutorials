@@ -2,22 +2,19 @@ package com.baeldung.netbeanprofiler;
 
 import com.baeldung.netbeanprofiler.galaxy.SolarSystem;
 import org.netbeans.lib.profiler.heap.GCRoot;
+import org.netbeans.lib.profiler.heap.Instance;
+import org.netbeans.lib.profiler.heap.JavaClass;
+import org.netbeans.lib.profiler.heap.Field;
 import org.netbeans.lib.profiler.heap.Heap;
 import org.netbeans.lib.profiler.heap.HeapFactory;
 import org.netbeans.lib.profiler.heap.HeapSummary;
-import org.netbeans.lib.profiler.heap.Instance;
-import org.netbeans.lib.profiler.heap.JavaClass;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
 import java.util.ArrayList;
-import java.util.Map;
 import java.util.Collection;
-
+import java.util.List;
 import static org.netbeans.lib.profiler.heap.GCRoot.JAVA_FRAME;
 import static org.netbeans.lib.profiler.heap.GCRoot.JNI_GLOBAL;
 import static org.netbeans.lib.profiler.heap.GCRoot.JNI_LOCAL;
@@ -53,34 +50,12 @@ public class SolApp {
         LOGGER.info("Total instances: " + summary.getTotalLiveInstances());
         LOGGER.info("Total bytes: " + summary.getTotalLiveBytes());
         LOGGER.info("Time: " + summary.getTime());
-        LOGGER.info("GC Roots: " + heap.getGCRoots()
-            .size());
+        LOGGER.info("GC Roots: " + heap.getGCRoots().size());
         LOGGER.info("Allocated bytes: " + summary.getTotalAllocatedBytes());
-        LOGGER.info("Total classes: " + heap.getAllClasses()
-            .size());
+        LOGGER.info("Total classes: " + heap.getAllClasses().size());
     }
 
-    public static void logTopTenClassesBaseOnInstanceCount() {
-        List<JavaClass> classes = heap.getAllClasses();
-        Map<String, Long> instanceCounts = new HashMap<>();
-
-        for (JavaClass javaClass : classes) {
-            String className = javaClass.getName();
-            long instanceCount = javaClass.getInstancesCount();
-            instanceCounts.put(className, instanceCount);
-        }
-
-        List<Map.Entry<String, Long>> sortedInstances = new ArrayList<>(instanceCounts.entrySet());
-        sortedInstances.sort((e1, e2) -> e2.getValue()
-            .compareTo(e1.getValue()));
-        LOGGER.info("Top Ten classes by instance count:");
-        for (int i = 0; i < Math.min(5, sortedInstances.size()); i++) {
-            Map.Entry<String, Long> entry = sortedInstances.get(i);
-            LOGGER.info("{}: {} instances", entry.getKey(), entry.getValue());
-        }
-    }
-
-    public static void solarSystemClassSummary() {
+    public static void solarSystemSummary() {
         JavaClass solarSystemClass = heap.getJavaClassByName("com.baeldung.netbeanprofiler.galaxy.SolarSystem");
         if (solarSystemClass == null) {
             LOGGER.error("Class not found");
@@ -94,6 +69,20 @@ public class SolApp {
         }
         LOGGER.info("Total SolarSystem instances: " + instancesNumber);
         LOGGER.info("Total memory used by SolarSystem instances: " + totalSize);
+    }
+
+    public static void logFieldDetails() {
+        JavaClass solarSystemClass = heap.getJavaClassByName("com.baeldung.netbeanprofiler.galaxy.SolarSystem");
+        if (solarSystemClass == null) {
+            LOGGER.error("Class not found");
+            return;
+        }
+
+        List<Field> fields = solarSystemClass.getFields();
+        for (Field field : fields) {
+            LOGGER.info("Field: " + field.getName());
+            LOGGER.info("Type: " + field.getType().getName());
+        }
     }
 
     public static void analyzeGCRoots() {
@@ -113,25 +102,24 @@ public class SolApp {
             String kind = gcRoot.getKind();
 
             switch (kind) {
-            case THREAD_OBJECT:
-                threadObj++;
-                break;
-            case JNI_GLOBAL:
-                jniGlobal++;
-                break;
-            case JNI_LOCAL:
-                jniLocal++;
-                break;
-            case JAVA_FRAME:
-                javaFrame++;
-                break;
-            default:
-                other++;
+                case THREAD_OBJECT:
+                    threadObj++;
+                    break;
+                case JNI_GLOBAL:
+                    jniGlobal++;
+                    break;
+                case JNI_LOCAL:
+                    jniLocal++;
+                    break;
+                case JAVA_FRAME:
+                    javaFrame++;
+                    break;
+                default:
+                    other++;
             }
 
             if (threadObj + jniGlobal + jniLocal + javaFrame + other <= 10) {
-                LOGGER.info("  GC Root: " + instance.getJavaClass()
-                    .getName());
+                LOGGER.info("  GC Root: " + instance.getJavaClass().getName());
                 LOGGER.info("    Kind: " + kind);
                 LOGGER.info("    Size: " + instance.getSize() + " bytes");
             }
@@ -162,4 +150,5 @@ public class SolApp {
             LOGGER.info("    Total size: " + javaClass.getAllInstancesSize() + " bytes");
         }
     }
+
 }
