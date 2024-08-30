@@ -15,7 +15,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 @MockBean(CustomerRepository.class)
 @MockBean(TicketRepository.class)
 @SpringBootTest(classes = Application.class)
-class MockBeanTicketValidatorUnitTest {
+class MockBeanTicketValidatorIntegrationTest {
 
     @Autowired
     private CustomerRepository customerRepository;
