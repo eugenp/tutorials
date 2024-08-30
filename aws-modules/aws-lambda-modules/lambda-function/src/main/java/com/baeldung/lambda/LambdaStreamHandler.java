@@ -17,9 +17,10 @@ public class LambdaStreamHandler implements RequestStreamHandler {
         ObjectMapper mapper = new ObjectMapper();
         Request request = mapper.readValue(input, Request.class);
 
-        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(output));
-        writer.write("Hello " + request.name() + ", Baeldung has great Java content for you!");
-        writer.flush();
+        try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(output))) {
+            writer.write("Hello " + request.name() + ", Baeldung has great Java content for you!");
+            writer.flush();
+        }
     }
 
     record Request(String name) {}
