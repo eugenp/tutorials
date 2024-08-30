@@ -14,14 +14,8 @@ public class Address implements Cloneable {
         this.country = address.country;
         this.city = address.city;
     }
-
     @Override
     protected Object clone() throws CloneNotSupportedException {
         return super.clone();
     }
-
-
-
-
-
 }

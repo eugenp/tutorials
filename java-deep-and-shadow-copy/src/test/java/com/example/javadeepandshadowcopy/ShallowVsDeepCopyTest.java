@@ -12,7 +12,8 @@ public class ShallowVsDeepCopyTest {
 
         Address address = new Address("Iran", "Tehran");
         Person person = new Person("John", "Doe", address);
-        person.getAddress().setCity("Shiraz");
+        Person shallowCopy = new Person(person);
+        shallowCopy.getAddress().setCity("Shiraz");
         assertEquals("Shiraz", person.getAddress().getCity());
 
     }
