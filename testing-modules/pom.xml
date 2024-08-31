@@ -29,7 +29,7 @@
         <!-- <module>jmeter</module> --> <!-- Migrated to heavy profile -->
         <module>jqwik</module>
         <module>junit-4</module>
-        <!-- <module>junit-5-advanced</module> --> <!-- failing after upgrade to jdk21 -->
+        <module>junit-5-advanced</module>
         <module>junit-5-advanced-2</module>
         <module>junit-5-basics</module>
         <module>junit-5-basics-2</module>
