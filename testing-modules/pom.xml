@@ -55,7 +55,7 @@
         <!-- <module>spring-testing</module> --> <!-- failing after upgrade to jdk21 -->
         <module>testing-assertions</module>
         <module>test-containers</module>
-        <!-- <module>testing-libraries-2</module> --> <!-- failing after upgrade to jdk21 -->
+        <module>testing-libraries-2</module>
         <module>testing-libraries</module>
         <module>testng</module>
         <module>testng-command-line</module>
