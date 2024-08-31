@@ -14,7 +14,7 @@ import io.micronaut.runtime.Micronaut;
 public class InvalidEnvironmentEventSourcingUnitTest {
 
     @Test
-    public void givenEnvironmentIsNotSet_thenEventSourcingServiceBeanIsNotCreated() {
+    public void whenEnvironmentIsNotSet_thenEventSourcingServiceBeanIsNotCreated() {
         ApplicationContext applicationContext = Micronaut.run(ServerApplication.class);
         applicationContext.start();
 
@@ -25,7 +25,7 @@ public class InvalidEnvironmentEventSourcingUnitTest {
     }
 
     @Test
-    public void givenEnvironmentIsNotSet_thenTestPropertyGetsValueFromDeductedEnvironment() {
+    public void whenEnvironmentIsNotSet_thenTestPropertyGetsValueFromDeductedEnvironment() {
         ApplicationContext applicationContext = Micronaut.run(ServerApplication.class);
         applicationContext.start();
 

@@ -12,7 +12,7 @@ import io.micronaut.runtime.Micronaut;
 public class InvalidEnvironmentLoggingUnitTest {
 
     @Test
-    public void givenEnvironmentIsNotSet_thenLoggingServiceImplementationIsTheDefaultOne() {
+    public void whenEnvironmentIsNotSet_thenLoggingServiceImplementationIsTheDefaultOne() {
         ApplicationContext applicationContext = Micronaut.run(ServerApplication.class);
         applicationContext.start();
 

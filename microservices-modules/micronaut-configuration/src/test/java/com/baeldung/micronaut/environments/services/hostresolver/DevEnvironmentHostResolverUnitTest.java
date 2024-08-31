@@ -19,7 +19,7 @@ public class DevEnvironmentHostResolverUnitTest {
     ApplicationContext applicationContext;
 
     @Test
-    public void givenEnvironmentIsSetToDev_thenActiveEnvironmentsAreTestAndDev() {
+    public void whenEnvironmentIsSetToDev_thenActiveEnvironmentsAreTestAndDev() {
         assertThat(applicationContext.getEnvironment()
             .getActiveNames()).containsExactlyInAnyOrder("test", "dev");
     }

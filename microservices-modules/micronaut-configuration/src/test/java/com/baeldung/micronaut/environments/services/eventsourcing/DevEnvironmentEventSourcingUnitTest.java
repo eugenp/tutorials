@@ -20,13 +20,13 @@ public class DevEnvironmentEventSourcingUnitTest {
     String testProperty;
 
     @Test
-    public void givenEnvironmentIsSetToDev_thenActiveEnvironmentsAreTestAndDev() {
+    public void whenEnvironmentIsSetToDev_thenActiveEnvironmentsAreTestAndDev() {
         assertThat(applicationContext.getEnvironment()
             .getActiveNames()).containsExactlyInAnyOrder("test", "dev");
     }
 
     @Test
-    public void givenEnvironmentIsSetToDev_thenTestPropertyGetsValueFromDev() {
+    public void whenEnvironmentIsSetToDev_thenTestPropertyGetsValueFromDev() {
         assertThat(testProperty).isEqualTo("something-in-dev");
     }
 

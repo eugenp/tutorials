@@ -17,7 +17,7 @@ public class CanaryProductionEnvironmentLoggingUnitTest {
     ApplicationContext applicationContext;
 
     @Test
-    public void givenEnvironmentIsSetToCanaryProduction_thenActiveEnvironmentsAreTestAndCanaryProduction() {
+    public void whenEnvironmentIsSetToCanaryProduction_thenActiveEnvironmentsAreTestAndCanaryProduction() {
         assertThat(applicationContext.getEnvironment()
             .getActiveNames()).containsExactlyInAnyOrder("test", "canary-production");
     }

@@ -11,7 +11,7 @@ import io.micronaut.context.exceptions.NonUniqueBeanException;
 public class MultipleEnvironmentsEventSourcingUnitTest {
 
     @Test
-    public void givenEnvironmentIsSetToBothProductionAndDev_thenEventSourcingServiceBeanHasConflict() {
+    public void whenEnvironmentIsSetToBothProductionAndDev_thenEventSourcingServiceBeanHasConflict() {
         ApplicationContext applicationContext = ApplicationContext.builder("dev", "production")
             .build();
         applicationContext.start();
@@ -23,7 +23,7 @@ public class MultipleEnvironmentsEventSourcingUnitTest {
     }
 
     @Test
-    public void givenEnvironmentIsSetToBothProductionAndDev_thenTestPropertyGetsValueBasedOnPriority() {
+    public void whenEnvironmentIsSetToBothProductionAndDev_thenTestPropertyGetsValueBasedOnPriority() {
         ApplicationContext applicationContext = ApplicationContext.builder("dev", "production")
             .build();
         applicationContext.start();
@@ -36,7 +36,7 @@ public class MultipleEnvironmentsEventSourcingUnitTest {
     }
 
     @Test
-    public void givenEnvironmentIsSetToBothProductionAndDev_thenMissingPropertyIsEmpty() {
+    public void whenEnvironmentIsSetToBothProductionAndDev_thenMissingPropertyIsEmpty() {
         ApplicationContext applicationContext = ApplicationContext.builder("dev", "production")
             .build();
         applicationContext.start();

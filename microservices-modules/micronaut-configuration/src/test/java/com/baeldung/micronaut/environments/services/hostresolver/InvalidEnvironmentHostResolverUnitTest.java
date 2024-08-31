@@ -20,7 +20,7 @@ public class InvalidEnvironmentHostResolverUnitTest {
     ApplicationContext applicationContext;
 
     @Test
-    public void givenEnvironmentIsSetToIrrelevant_thenActiveEnvironmentsAreTheExpectedOnes() {
+    public void whenEnvironmentIsSetToIrrelevant_thenActiveEnvironmentsAreTheExpectedOnes() {
         assertThat(applicationContext.getEnvironment()
             .getActiveNames()).containsExactlyInAnyOrder("test", "no-mans-land");
     }

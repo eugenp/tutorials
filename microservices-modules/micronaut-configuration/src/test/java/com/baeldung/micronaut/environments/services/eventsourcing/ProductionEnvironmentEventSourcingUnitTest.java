@@ -17,7 +17,7 @@ public class ProductionEnvironmentEventSourcingUnitTest {
     ApplicationContext applicationContext;
 
     @Test
-    public void givenEnvironmentIsSetToProduction_thenActiveEnvironmentsAreTestAndProduction() {
+    public void whenEnvironmentIsSetToProduction_thenActiveEnvironmentsAreTestAndProduction() {
         assertThat(applicationContext.getEnvironment()
             .getActiveNames()).containsExactlyInAnyOrder("test", "production");
     }

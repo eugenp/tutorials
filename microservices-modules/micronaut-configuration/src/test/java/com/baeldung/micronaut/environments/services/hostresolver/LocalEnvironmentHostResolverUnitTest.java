@@ -19,7 +19,7 @@ public class LocalEnvironmentHostResolverUnitTest {
     ApplicationContext applicationContext;
 
     @Test
-    public void givenEnvironmentIsSetToLocal_thenActiveEnvironmentsAreTestAndLocal() {
+    public void whenEnvironmentIsSetToLocal_thenActiveEnvironmentsAreTestAndLocal() {
         assertThat(applicationContext.getEnvironment()
             .getActiveNames()).containsExactlyInAnyOrder("test", "local");
     }
