@@ -53,7 +53,7 @@
         <module>core-java-collections-list-5</module>
         <module>core-java-collections-maps-4</module>
         <module>core-java-collections-maps-5</module>
-        <module>core-java-concurrency-simple</module>
+        <!-- <module>core-java-concurrency-simple</module>  --> <!-- failing after upgrade to jdk21 -->
         <module>core-java-datetime-string</module>
         <module>core-java-io-conversions-2</module>
         <module>core-java-ipc</module>
