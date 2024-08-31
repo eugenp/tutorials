@@ -18,7 +18,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>3.3.2</version>
+            <version>${spring.boot.version}</version>
         </dependency>
     </dependencies>
 
@@ -27,7 +27,7 @@
             <plugin>
                 <groupId>com.heroku.sdk</groupId>
                 <artifactId>heroku-maven-plugin</artifactId>
-                <version>3.0.7</version>
+                <version>${heroku.maven.plugin.version}</version>
                 <configuration>
                     <jdkVersion>17</jdkVersion>
                     <appName>our-app-name</appName>
@@ -38,9 +38,14 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>3.3.2</version>
+                <version>${spring.boot.version}</version>
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <spring.boot.version>3.3.2</spring.boot.version>
+        <heroku.maven.plugin.version>3.0.7</heroku.maven.plugin.version>
+    </properties>
 
 </project>
