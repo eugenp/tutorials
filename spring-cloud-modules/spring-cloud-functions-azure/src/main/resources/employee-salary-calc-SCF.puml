@@ -1,0 +1,128 @@
+@startuml
+'https://plantuml.com/class-diagram
+hide empty attributes
+skinparam Handwritten false
+skinparam ClassBorderColor black
+skinparam BackgroundColor #fffce8/#f8f9fa
+skinparam class {
+ ArrowColor SeaGreen
+ BackgroundColor #fffce8
+}
+
+interface "Function<Employee, Employee>" {
+  +apply(Employee)::Employee
+}
+
+class FunctionCatalog {
+  +lookup(String)::Function<Employee, Employee>
+}
+
+class AzureSpringCloudFunctionApplication {
+  {static}+main()::void
+}
+
+class EmployeeSalaryHandler {
+  -functionCatalog::FunctionCatalog
+  +calculateSalaryWithSCF(HttpRequestMessage, ExecutionContext)::HttpResponseMessage
+}
+
+class ApplicationConfiguration{
+  +newYorkSalaryCalculatorFn()::Function<Employee, Employee>
+  +chicagoSalaryCalculatorFn()::Function<Employee, Employee>
+  +californiaSalaryCalculatorFn()::Function<Employee, Employee>
+  +defaultSalaryCalculatorFn()::Function<Employee, Employee>
+}
+
+class DefaultSalaryCalculatorFn {
+  apply(Employee)::Employee
+}
+
+class CaliforniaSalaryCalculatorFn {
+  apply(Employee)::Employee
+}
+
+class ChicagoSalaryCalculatorFn {
+  apply(Employee)::Employee
+}
+
+class NewYorkSalaryCalculatorFn {
+  apply(Employee)::Employee
+}
+
+class EmployeeSalaryFunctionWrapper {
+  +EmployeeSalaryFunctionWrapper(FunctionCatalog)
+  +getCityBasedSalaryFunction(Employee)::Function<Employee, Employee>
+}
+
+class Employee {
+  -name::String
+  -department::String
+  -city::String
+  -salary::Integer
+}
+
+note top of ApplicationConfiguration
+  <b>@Configuration</b>
+end note
+
+note right of ApplicationConfiguration::chicagoSalaryCalculatorFn
+  <b>@Bean</b>
+end note
+
+note right of ApplicationConfiguration::defaultSalaryCalculatorFn
+  <b>@Bean</b>
+end note
+
+note left of ApplicationConfiguration::newYorkSalaryCalculatorFn
+  <b>@Bean</b>
+end note
+
+note left of ApplicationConfiguration::californiaSalaryCalculatorFn
+  <b>@Bean</b>
+end note
+
+note top of AzureSpringCloudFunctionApplication
+  <b>@SpringBootApplication</b>
+end note
+
+note left of ApplicationConfiguration::employeeSalaryFunction
+ <b>@Bean</b>
+end note
+
+note bottom of EmployeeSalaryHandler
+  <b>@Component</b>
+end note
+
+note left of EmployeeSalaryHandler::functionCatalog
+  <b>@Autowired</b>
+end note
+
+note right of EmployeeSalaryHandler::employeeSalaryFunction
+  <b>@Autowired</b>
+end note
+
+
+note left of EmployeeSalaryHandler::calculateSalaryWithSCF
+  <b>@HttpTrigger</b>
+end note
+
+
+EmployeeSalaryHandler -down-> "Function<Employee, Employee>": uses
+DefaultSalaryCalculatorFn -up-|> "Function<Employee, Employee>": implements
+ChicagoSalaryCalculatorFn -up-|> "Function<Employee, Employee>": implements
+CaliforniaSalaryCalculatorFn -up-|> "Function<Employee, Employee>": implements
+NewYorkSalaryCalculatorFn -up-|> "Function<Employee, Employee>": implements
+EmployeeSalaryHandler -down-> EmployeeSalaryFunctionWrapper: instantiates
+EmployeeSalaryFunctionWrapper -down-> DefaultSalaryCalculatorFn: uses
+EmployeeSalaryFunctionWrapper -down-> NewYorkSalaryCalculatorFn: uses
+EmployeeSalaryFunctionWrapper -down-> ChicagoSalaryCalculatorFn: uses
+EmployeeSalaryFunctionWrapper -down-> CaliforniaSalaryCalculatorFn: uses
+EmployeeSalaryHandler -up-> Employee: uses
+'EmployeeSalaryHandler -down-> FunctionCatalog: uses
+AzureSpringCloudFunctionApplication -up-> ApplicationConfiguration: enables
+ApplicationConfiguration -up-> DefaultSalaryCalculatorFn: instantiates
+ApplicationConfiguration -up-> ChicagoSalaryCalculatorFn: instantiates
+ApplicationConfiguration -up-> CaliforniaSalaryCalculatorFn: instantiates
+ApplicationConfiguration -up-> NewYorkSalaryCalculatorFn: instantiates
+EmployeeSalaryFunctionWrapper -up-> FunctionCatalog: uses
+@enduml

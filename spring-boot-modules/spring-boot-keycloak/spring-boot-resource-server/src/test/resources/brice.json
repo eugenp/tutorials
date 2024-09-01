@@ -1,0 +1,33 @@
+{
+  "iss": "http://localhost:8080/realms/baeldung-keycloak",
+  "sub": "886efb4c-5018-49a5-9855-91e320d1f1c4",
+  "typ": "Bearer",
+  "azp": "baeldung-keycloak-confidential",
+  "allowed-origins": [
+    "http://localhost:8081"
+  ],
+  "realm_access": {
+    "roles": [
+      "default-roles-baeldung-keycloak",
+      "offline_access",
+      "NICE",
+      "uma_authorization"
+    ]
+  },
+  "resource_access": {
+    "account": {
+      "roles": [
+        "manage-account",
+        "manage-account-links",
+        "view-profile"
+      ]
+    }
+  },
+  "scope": "openid profile email",
+  "email_verified": true,
+  "name": "Brice Baeldung",
+  "preferred_username": "brice",
+  "given_name": "Brice",
+  "family_name": "Baeldung",
+  "email": "brice@baeldung.com"
+}
