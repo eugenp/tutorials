@@ -53,8 +53,9 @@
         <module>spring-boot-jsp</module>
         <module>spring-boot-keycloak</module>
         <module>spring-boot-keycloak-2</module>
+
         <!--       <module>spring-boot-libraries</module>--> <!-- can't be upgraded to 3.2.x , will work with boot 3.3.2 (see -> https://team.baeldung.com/browse/JAVA-37798) -->
-<!--        <module>spring-boot-libraries-2</module>--> <!-- failing after upgrading to spring boot 3.2.x -->
+        <module>spring-boot-libraries-2</module>
         <module>spring-boot-libraries-3</module>
         <module>spring-boot-process-automation</module>
         <module>spring-boot-logging-logback</module>

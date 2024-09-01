@@ -1,12 +1,11 @@
-package com.baeldung.openapi;
+package com.baeldung;
 
-import org.jobrunr.autoconfigure.JobRunrAutoConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@EnableAutoConfiguration(exclude = { JobRunrAutoConfiguration.class})
+@EnableAutoConfiguration
 public class OpenApiApplication {
 
     public static void main(String[] args) {
