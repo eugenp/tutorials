@@ -23,7 +23,7 @@
         <module>spring-security-core-2</module>
         <module>spring-security-core-3</module>
         <!-- <module>spring-security-ldap</module>-->
-        <!-- <module>spring-security-legacy-oidc</module> --> <!-- failing after upgrade to jdk21 --> <!-- Ths module wasn't able to upgrade because is using Spring Security oauth2 which reached end of life. JAVA-29292-->
+        <!-- <module>spring-security-legacy-oidc</module> --> <!-- failing after upgrade to jdk21 --> <!-- Ths module wasn't able to upgrade because is using Spring Security oauth2 which reached end of life. JAVA-29292 and JAVA-37717-->
         <module>spring-security-oauth2</module> <!-- This module wasn't updated to spring boot 3 because of spring-oauth2 not supporting Jakarta and reaching end of life. JAVA-29293 -->
         <module>spring-security-oauth2-sso</module> <!-- This module wasn't able to update because Spring Security Oauth reach end of life and not compatible with spring boot 3. JAVA-29294 -->
         <module>spring-security-oidc</module>
