@@ -31,7 +31,7 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>spring-swagger-codegen</artifactId>
+        <artifactId>spring-swagger-codegen-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 

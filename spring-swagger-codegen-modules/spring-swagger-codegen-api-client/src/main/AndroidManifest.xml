@@ -1,0 +1,3 @@
+<manifest package="com.baeldung.petstore.client.invoker" xmlns:android="http://schemas.android.com/apk/res/android">
+    <application />
+</manifest>

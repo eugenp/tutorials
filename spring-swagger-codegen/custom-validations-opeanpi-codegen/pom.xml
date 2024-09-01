@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.example</groupId>
@@ -9,9 +8,9 @@
     <name>custom-validations-opeanpi-codegen</name>
     <description>Demo project for Swagger Custom Validations Codegen</description>
 
-    <parent>
+  <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>spring-swagger-codegen</artifactId>
+        <artifactId>spring-swagger-codegen-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
