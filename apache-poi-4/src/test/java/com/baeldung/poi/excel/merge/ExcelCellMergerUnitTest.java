@@ -35,9 +35,11 @@ class ExcelCellMergerUnitTest {
         fileLocation = Paths.get(ClassLoader.getSystemResource(FILE_NAME)
                 .toURI())
             .toString();
+
         fileLocation1 = Paths.get(ClassLoader.getSystemResource(FILE_NAME_1)
                         .toURI())
                 .toString();
+
         fileLocation2 = Paths.get(ClassLoader.getSystemResource(FILE_NAME_2)
                 .toURI())
             .toString();
