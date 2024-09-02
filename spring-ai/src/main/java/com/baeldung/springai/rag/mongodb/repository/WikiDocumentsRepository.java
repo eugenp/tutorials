@@ -16,7 +16,6 @@ import java.util.Map;
 public class WikiDocumentsRepository {
     private final VectorStore vectorStore;
 
-    @Autowired
     public WikiDocumentsRepository(VectorStore vectorStore) {
         this.vectorStore = vectorStore;
     }
