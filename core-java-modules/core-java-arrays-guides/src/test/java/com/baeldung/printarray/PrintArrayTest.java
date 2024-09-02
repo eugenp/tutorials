@@ -43,4 +43,11 @@ class PrintArrayTest {
         String expected = "Anees\nPeter\nAsghar\nJoseph\nAlex";
         assertEquals(expected, printArray.printArrayUsingStreams(empArray));
     }
+    @Test
+    void testPrintArrayUsingJoin() {
+    	PrintArrayJava printArray = new PrintArrayJava();
+        String[] empArray = {"Anees", "Peter", "Asghar", "Joseph", "Alex"};
+        String expected = "Anees\nPeter\nAsghar\nJoseph\nAlex";
+        assertEquals(expected, printArray.printArrayUsingJoin(empArray));
+    }
 }
