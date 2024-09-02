@@ -574,6 +574,7 @@
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
+                <module>apache-kafka</module>
                 <module>core-groovy-modules</module>
                 <module>core-java-modules/core-java-exceptions-4</module>
                 <module>core-java-modules/core-java-io-6</module>
@@ -646,7 +647,6 @@
                 <module>apache-httpclient-2</module>
                 <module>apache-httpclient4</module>
                 <module>apache-httpclient</module>
-                <module>apache-kafka</module>
                 <module>apache-kafka-2</module>
                 <module>apache-kafka-3</module>
                 <module>apache-libraries-2</module>
@@ -884,6 +884,7 @@
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
+                <module>apache-kafka</module>
                 <module>core-groovy-modules</module>
                 <module>core-java-modules/core-java-exceptions-4</module>
                 <module>core-java-modules/core-java-io-6</module>
@@ -950,7 +951,6 @@
                 <module>apache-httpclient-2</module>
                 <module>apache-httpclient4</module>
                 <module>apache-httpclient</module>
-                <module>apache-kafka</module>
                 <module>apache-kafka-2</module>
                 <module>apache-kafka-3</module>
                 <module>apache-libraries-2</module>
