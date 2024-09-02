@@ -582,6 +582,7 @@
                 <module>core-java-modules/core-java-lang-7</module>
                 <module>core-java-modules/core-java-lang-oop-modifiers</module>
                 <module>core-java-modules/core-java-datetime-conversion</module>
+                <module>libraries-security</module>
                 <module>maven-modules</module>
                 <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->
                 <module>persistence-modules/spring-data-neo4j</module>
@@ -733,7 +734,6 @@
                 <module>libraries-primitive</module>
                 <module>libraries-reporting</module>
                 <module>libraries-rpc</module>
-                <module>libraries-security</module>
                 <module>libraries-server-2</module>
                 <module>libraries-server</module>
                 <module>libraries-stream</module>
@@ -892,6 +892,7 @@
                 <module>core-java-modules/core-java-lang-7</module>
                 <module>core-java-modules/core-java-lang-oop-modifiers</module>
                 <module>core-java-modules/core-java-datetime-conversion</module>
+                <module>libraries-security</module>
                 <module>maven-modules</module>
                 <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->
                 <module>persistence-modules/spring-data-neo4j</module>
@@ -1036,7 +1037,6 @@
                 <module>libraries-primitive</module>
                 <module>libraries-reporting</module>
                 <module>libraries-rpc</module>
-                <module>libraries-security</module>
                 <module>libraries-server-2</module>
                 <module>libraries-server</module>
                 <module>libraries-stream</module>
