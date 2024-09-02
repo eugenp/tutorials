@@ -591,10 +591,6 @@
                 <!--<module>spring-integration</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-jinq</module>--><!--disabling the jinq modules, as the default build profile is failing due to bad mv files. Please refer: JAVA-31341-->
                 <module>spring-security-modules/spring-security-legacy-oidc</module>
-                <module>testing-modules/junit-5-advanced</module>
-                <module>testing-modules/spring-testing</module>
-                <module>testing-modules/spring-testing-2</module>
-                <module>testing-modules/testing-libraries-2</module>
                 <!--<module>static-analysis</module> - requires additional configuration to be compiled due to the JVM strong encapsulation -->
                 <!--<module>tablesaw</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-swagger-codegen/openapi-custom-generator</module>
@@ -905,10 +901,6 @@
                 <!--<module>spring-integration</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-jinq</module>--><!--disabling the jinq modules, as the default build profile is failing due to bad mv files. Please refer: JAVA-31341-->
                 <module>spring-security-modules/spring-security-legacy-oidc</module>
-                <module>testing-modules/junit-5-advanced</module>
-                <module>testing-modules/spring-testing</module>
-                <module>testing-modules/spring-testing-2</module>
-                <module>testing-modules/testing-libraries-2</module>
                 <!--<module>static-analysis</module> - requires additional configuration to be compiled due to the JVM strong encapsulation -->
                 <!--<module>tablesaw</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-swagger-codegen/openapi-custom-generator</module>
