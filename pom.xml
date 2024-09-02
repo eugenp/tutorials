@@ -591,6 +591,7 @@
                 <module>persistence-modules/spring-data-rest-2</module>
                 <module>persistence-modules/spring-persistence-simple</module>
                 <module>quarkus-modules/quarkus</module>
+                <module>quarkus-modules/quarkus-vs-springboot/quarkus-project</module>
                 <!--<module>spring-cloud-modules/spring-cloud-data-flow</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-cloud-modules/spring-cloud-stream-starters</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-di-2</module>--><!-- failing after upgrading to jdk17-->
@@ -905,6 +906,7 @@
                 <module>persistence-modules/spring-data-rest-2</module>
                 <module>persistence-modules/spring-persistence-simple</module>
                 <module>quarkus-modules/quarkus</module>
+                <module>quarkus-modules/quarkus-vs-springboot/quarkus-project</module>
                 <!--<module>spring-cloud-modules/spring-cloud-data-flow</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-cloud-modules/spring-cloud-stream-starters</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-di-2</module>--><!-- failing after upgrading to jdk17-->
