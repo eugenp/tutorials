@@ -660,7 +660,7 @@
                 <module>atomix</module>
                 <module>aws-modules</module>
                 <module>azure</module>
-                <module>azure-functions</module>
+                <!-- <module>azure-functions</module>--> <!-- BAEL-6423 -->
                 <module>bazel</module>
                 <module>checker-framework</module>
                 <module>core-java-modules</module>
@@ -964,7 +964,7 @@
                 <module>atomix</module>
                 <module>aws-modules</module>
                 <module>azure</module>
-                <module>azure-functions</module>
+                <!-- <module>azure-functions</module>--> <!-- BAEL-6423 -->
                 <module>bazel</module>
                 <module>checker-framework</module>
                 <module>core-java-modules</module>
