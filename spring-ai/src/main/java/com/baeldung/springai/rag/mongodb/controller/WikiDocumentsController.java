@@ -19,7 +19,6 @@ public class WikiDocumentsController {
     private final ChatClient chatClient;
     private final QuestionAnswerAdvisor questionAnswerAdvisor;
 
-    @Autowired
     public WikiDocumentsController(WikiDocumentsServiceImpl wikiDocumentsService,
                                    @Qualifier("openAiChatModel") ChatModel chatModel,
                                    QuestionAnswerAdvisor questionAnswerAdvisor) {
