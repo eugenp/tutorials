@@ -195,7 +195,7 @@
         <okhttp.version>5.0.0-alpha.12</okhttp.version>
         <reactor-test.version>3.5.3</reactor-test.version>
         <wiremock-standalone.version>3.4.2</wiremock-standalone.version>
-        <spring-cloud-starter-openfeign.version>4.0.3</spring-cloud-starter-openfeign.version>
+        <spring-cloud-starter-openfeign.version>4.1.3</spring-cloud-starter-openfeign.version>
         <kotlin-stdlib.version>2.0.0-Beta4</kotlin-stdlib.version>
         <johnzon-jsonb.version>2.0.0</johnzon-jsonb.version>
         <jakarta.json-api.version>2.1.3</jakarta.json-api.version>
