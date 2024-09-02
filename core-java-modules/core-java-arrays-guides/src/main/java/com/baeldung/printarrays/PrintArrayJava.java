@@ -36,4 +36,9 @@ public class PrintArrayJava {
         Arrays.stream(empArray).forEach(e -> result.append(e).append("\n"));
         return result.toString().trim();
     }
+    
+    // Print array content using string.join() 
+    public String printArrayUsingJoin(String[] empArray) {
+    	 return String.join("\n", empArray).trim();
+    }
 }
