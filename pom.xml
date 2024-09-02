@@ -576,6 +576,7 @@
                 <module>parent-spring-6</module>
                 <module>apache-kafka</module>
                 <module>core-groovy-modules</module>
+                <module>core-java-modules/core-java-concurrency-simple</module>
                 <module>core-java-modules/core-java-exceptions-4</module>
                 <module>core-java-modules/core-java-io-6</module>
                 <module>core-java-modules/core-java-jvm</module>
@@ -889,6 +890,7 @@
                 <module>parent-spring-6</module>
                 <module>apache-kafka</module>
                 <module>core-groovy-modules</module>
+                <module>core-java-modules/core-java-concurrency-simple</module>
                 <module>core-java-modules/core-java-exceptions-4</module>
                 <module>core-java-modules/core-java-io-6</module>
                 <module>core-java-modules/core-java-jvm</module>
