@@ -14,7 +14,6 @@ import java.util.List;
 public class WikiDocumentsServiceImpl {
     private final WikiDocumentsRepository wikiDocumentsRepository;
 
-    @Autowired
     public WikiDocumentsServiceImpl(WikiDocumentsRepository wikiDocumentsRepository) {
         this.wikiDocumentsRepository = wikiDocumentsRepository;
     }
