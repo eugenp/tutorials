@@ -15,7 +15,8 @@ public class ExceptionHandlingAspect {
 
     @Pointcut("execution(* com.baeldung.exceptionhandling..*(..))")
     public void serviceLayerPointcut() {
-        // Pointcut expression
+        // This method is empty because it's only used as a pointcut expression.
+        // The actual advice (e.g., logging or handling exceptions) is defined in the advice methods that reference this pointcut.
     }
 
     @AfterThrowing(pointcut = "serviceLayerPointcut()", throwing = "ex")

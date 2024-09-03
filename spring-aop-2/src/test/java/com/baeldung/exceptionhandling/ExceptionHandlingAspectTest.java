@@ -1,6 +1,7 @@
 package com.baeldung.exceptionhandling;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
 
@@ -35,32 +36,26 @@ public class ExceptionHandlingAspectTest {
     @Test
     public void givenInvalidPaymentDetails_whenValidationFails_thenAspectLogsException() {
         // When
-        try {
-            paymentService.validatePaymentDetails("");  // Invalid input
-        } catch (IllegalArgumentException e) {
-            // Exception is expected, so no action needed
-        }
+        assertThatThrownBy(() -> paymentService.validatePaymentDetails("")).isInstanceOf(IllegalArgumentException.class)
+            .hasMessage("Payment details cannot be null or empty.");
 
         // Then
         List<ILoggingEvent> logsList = listAppender.list;
         assertThat(logsList).isNotEmpty();
-        assertThat(logsList.get(0)
-            .toString()).contains("[ERROR] Exception occurred: Payment details cannot be null or empty.");
+        assertThat(logsList).extracting(Object::toString)
+            .containsExactly("[ERROR] Exception occurred: Payment details cannot be null or empty.");
     }
 
     @Test
     public void givenInvalidPaymentDetails_whenProcessingFails_thenAspectLogsException() {
         // When
-        try {
-            paymentService.processPayment("INVALID");  // Trigger exception
-        } catch (RuntimeException e) {
-            // Exception is expected, so no action needed
-        }
+        assertThatThrownBy(() -> paymentService.processPayment("INVALID")).isInstanceOf(RuntimeException.class)
+            .hasMessage("Payment processing failed due to invalid details.");
 
         // Then
         List<ILoggingEvent> logsList = listAppender.list;
         assertThat(logsList).isNotEmpty();
-        assertThat(logsList.get(0)
-            .toString()).contains("[ERROR] Exception occurred: Payment processing failed due to invalid details.");
+        assertThat(logsList).extracting(Object::toString)
+            .containsExactly("[ERROR] Exception occurred: Payment processing failed due to invalid details.");
     }
 }
