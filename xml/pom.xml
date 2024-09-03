@@ -354,11 +354,8 @@
         <jdom2.version>2.0.6</jdom2.version>
         <joox.version>1.6.2</joox.version>
         <jibx-version>1.2.4.5</jibx-version>
-        <jaxb-api.version>2.3.1</jaxb-api.version>
-        <jaxp-api.version>1.4.2</jaxp-api.version>
         <jaxb-core.version>2.3.0.1</jaxb-core.version>
         <jaxb-impl.version>4.0.4</jaxb-impl.version>
-        <stax-api.version>1.0-2</stax-api.version>
         <xmlunit-assertj.version>2.6.3</xmlunit-assertj.version>
         <freemarker.version>2.3.29</freemarker.version>
         <mustache.version>0.9.6</mustache.version>

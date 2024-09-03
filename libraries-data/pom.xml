@@ -186,7 +186,6 @@
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <assembly.plugin.version>2.3</assembly.plugin.version>
         <httpclient.version>3.1</httpclient.version>
         <storm.version>1.2.2</storm.version>
         <kafka.version>3.3.1</kafka.version>

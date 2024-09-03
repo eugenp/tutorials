@@ -9,3 +9,4 @@ This module contains articles about conversions among Collection types in Java.
 - [Converting Float ArrayList to Primitive Array in Java](https://www.baeldung.com/java-convert-float-arraylist-primitive-array)
 - [Convert an Optional to an ArrayList in Java](https://www.baeldung.com/java-optional-arraylist-conversion)
 - [Convert a Queue to a List](https://www.baeldung.com/java-convert-queue-list)
+- [How to Convert Gson JsonArray to HashMap](https://www.baeldung.com/java-gson-convert-jsonarray-hashmap)

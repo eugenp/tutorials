@@ -26,6 +26,7 @@
             <plugin>
                 <groupId>net.wasdev.wlp.maven.plugins</groupId>
                 <artifactId>liberty-maven-plugin</artifactId>
+		<version>3.0.M1</version>
                 <executions>
                     <execution>
                         <id>install-server</id>

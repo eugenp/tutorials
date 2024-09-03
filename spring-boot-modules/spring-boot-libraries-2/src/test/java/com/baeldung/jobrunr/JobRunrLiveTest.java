@@ -1,6 +1,7 @@
 package com.baeldung.jobrunr;
 
 import org.jobrunr.jobs.states.StateName;
+import org.jobrunr.storage.PageRequest;
 import org.jobrunr.storage.StorageProvider;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,7 +32,7 @@ public class JobRunrLiveTest {
         String response = enqueueJobViaRest("some-input");
         assertEquals("job enqueued successfully", response);
 
-        await().atMost(30, TimeUnit.SECONDS).until(() -> storageProvider.countJobs(StateName.SUCCEEDED) == 1);
+        await().atMost(30, TimeUnit.SECONDS).until(() -> storageProvider.getJobs(StateName.SUCCEEDED, PageRequest.ascOnUpdatedAt(1)).size() == 1);
     }
 
     private String enqueueJobViaRest(String input) {
