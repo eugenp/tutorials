@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@FeignClient(name = "paymentClient", url = "http://payments-api.com")
+@FeignClient(name = "paymentClient", url = "http://localhost:8083")
 public interface PaymentMethodClient {
 
-    @RequestMapping(method = RequestMethod.GET, value = "/payments/methods")
-    List<String> getAvailablePaymentMethods(@RequestParam(name = "site_id") String siteId);
+    @RequestMapping(method = RequestMethod.POST, value = "/purchase")
+    String processPurchase(@RequestParam(name = "site_id") String siteId);
 }

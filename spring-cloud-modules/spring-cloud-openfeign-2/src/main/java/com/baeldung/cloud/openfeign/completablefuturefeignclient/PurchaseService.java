@@ -1,9 +1,14 @@
 package com.baeldung.cloud.openfeign.completablefuturefeignclient;
 
+import feign.FeignException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+
+import static java.lang.String.format;
 
 @Service
 public class PurchaseService {
@@ -16,13 +21,26 @@ public class PurchaseService {
         this.reportClient = reportClient;
     }
 
-    public void executePurchase(Purchase purchase) {
+    public String executePurchase(Purchase purchase) throws ExecutionException, InterruptedException {
+        CompletableFuture<String> paymentMethodsFuture = CompletableFuture.supplyAsync(() -> paymentMethodClient.processPurchase(purchase.getSiteId()))
+                .handle((res, ex) -> {
+                    if (ex.getCause() instanceof FeignException) {
+                        int status = ((FeignException) ex.getCause()).status();
 
-        ReportRequest report = new ReportRequest("Creating purchase for order", purchase.getOrderId(), purchase.getSiteId());
+                        if (status == 404) {
+                            return null;
+                        }
+                    }
+                    return res;
+                })
+                .orTimeout(2, TimeUnit.SECONDS);
 
-        CompletableFuture.allOf(
-                CompletableFuture.supplyAsync(() -> paymentMethodClient.getAvailablePaymentMethods(purchase.getSiteId())),
-                CompletableFuture.runAsync(() -> reportClient.sendReport(report))
-        );
+        CompletableFuture<Void> reportFuture = CompletableFuture.runAsync(() -> reportClient.sendReport("Purchase Order Report"))
+                .orTimeout(1, TimeUnit.SECONDS);
+
+        CompletableFuture.allOf(paymentMethodsFuture, reportFuture)
+                .join();
+
+        return paymentMethodsFuture.get();
     }
 }
