@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>ibm-mq</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>ibm-mq</name>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>messaging-modules</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.ibm.mq</groupId>
+            <artifactId>com.ibm.mq.allclient</artifactId>
+            <version>${ibm.mq.version}</version>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <ibm.mq.version>9.4.0.0</ibm.mq.version>
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
+    </properties>
+
+</project>
