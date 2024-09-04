@@ -14,9 +14,11 @@ public class ShallowCopyTest {
         // When
         Cat aCat2 = (Cat) aCat1.clone();
         aCat2.getOwner().setName("human2");
+        aCat2.setAge(5);
 
         // Then
         assertThat(aCat2.getOwner()).isSameAs(aCat1.getOwner());
+        assertThat(aCat1.getAge()).isEqualTo(4);
 
     }
 }
