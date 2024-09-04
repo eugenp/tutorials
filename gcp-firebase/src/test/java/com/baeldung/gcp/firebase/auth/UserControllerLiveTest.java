@@ -104,7 +104,7 @@ class UserControllerLiveTest {
             .contentType(MediaType.APPLICATION_JSON)
             .content(requestBody))
             .andExpect(status().isOk())
-            .andExpect(jsonPath("$.token").exists());
+            .andExpect(jsonPath("$.idToken").exists());
     }
 
     @Test
@@ -155,7 +155,7 @@ class UserControllerLiveTest {
             .content(requestBody))
             .andExpect(status().isOk())
             .andReturn();
-        String token = JsonPath.read(loginResult.getResponse().getContentAsString(), "$.token");
+        String token = JsonPath.read(loginResult.getResponse().getContentAsString(), "$.idToken");
 
         // Invoke API under test
         mockMvc.perform(get(GET_USER_API_PATH)

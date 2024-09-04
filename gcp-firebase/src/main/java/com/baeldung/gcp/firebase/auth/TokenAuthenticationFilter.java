@@ -51,7 +51,7 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
 
     private Optional<String> extractUserIdFromToken(String token) {
         try {
-            FirebaseToken firebaseToken = firebaseAuth.verifyIdToken(token);
+            FirebaseToken firebaseToken = firebaseAuth.verifyIdToken(token, true);
             String userId = String.valueOf(firebaseToken.getClaims().get(USER_ID_CLAIM));
             return Optional.of(userId);
         } catch (FirebaseAuthException exception) {
