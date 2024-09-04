@@ -26,7 +26,6 @@ public class FirebaseAuthConfiguration {
         FirebaseOptions firebaseOptions = FirebaseOptions.builder()
             .setCredentials(GoogleCredentials.fromStream(credentials))
             .build();
-
         return FirebaseApp.initializeApp(firebaseOptions);
     }
 
