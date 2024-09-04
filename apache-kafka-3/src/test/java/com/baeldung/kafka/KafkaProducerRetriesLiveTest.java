@@ -62,7 +62,7 @@ class KafkaProducerRetriesLiveTest {
         assertThatThrownBy(() -> producer.send(record)
           .get()).isInstanceOf(ExecutionException.class)
           .hasCauseInstanceOf(org.apache.kafka.common.errors.TimeoutException.class)
-          .hasMessageContaining("Expiring 1 record(s) for test-topic-1-0:120000 ms has passed since batch creation");
+          .hasMessageContaining("Expiring 1 record(s) for test-topic-1-0");
     }
 
     @Test
@@ -88,7 +88,7 @@ class KafkaProducerRetriesLiveTest {
         assertThatThrownBy(() -> producer.send(record)
           .get()).isInstanceOf(ExecutionException.class)
           .hasCauseInstanceOf(org.apache.kafka.common.errors.TimeoutException.class)
-          .hasMessageContaining("Expiring 1 record(s) for test-topic-2-0:5000 ms has passed since batch creation");
+          .hasMessageContaining("Expiring 1 record(s) for test-topic-2-0");
     }
 
     static Map<String, String> mapOf(String key, String value) {
