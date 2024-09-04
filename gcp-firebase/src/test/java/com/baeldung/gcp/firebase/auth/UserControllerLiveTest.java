@@ -240,7 +240,7 @@ class UserControllerLiveTest {
     }
 
     @Test
-    void whenInvalidToken_thenApiAccessForbidden() throws Exception {
+    void whenInvalidToken_thenApiAccessDenied() throws Exception {
         // Set up test data
         String invalidToken = RandomString.make();
 
@@ -248,7 +248,9 @@ class UserControllerLiveTest {
         mockMvc.perform(get(GET_USER_API_PATH)
             .with(csrf())
             .header("Authorization", "Bearer " + invalidToken))
-            .andExpect(status().isForbidden());
+            .andExpect(status().isUnauthorized())
+            .andExpect(jsonPath("$.status").value(HttpStatus.UNAUTHORIZED.value()))
+            .andExpect(jsonPath("$.detail").value("Authentication failure: Token missing, invalid or expired"));;
     }
 
 }

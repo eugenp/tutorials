@@ -3,12 +3,17 @@ package com.baeldung.gcp.firebase.auth;
 import java.io.IOException;
 import java.util.Optional;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ProblemDetail;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseToken;
@@ -26,9 +31,11 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
     private static final String AUTHORIZATION_HEADER = "Authorization";
 
     private final FirebaseAuth firebaseAuth;
+    private final ObjectMapper objectMapper;
 
-    public TokenAuthenticationFilter(FirebaseAuth firebaseAuth) {
+    public TokenAuthenticationFilter(FirebaseAuth firebaseAuth, ObjectMapper objectMapper) {
         this.firebaseAuth = firebaseAuth;
+        this.objectMapper = objectMapper;
     }
 
     @Override
@@ -44,6 +51,9 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
                 var authentication = new UsernamePasswordAuthenticationToken(userId.get(), null, null);
                 authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(authentication);
+            } else {
+                setAuthErrorDetails(response);
+                return;
             }
         }
         filterChain.doFilter(request, response);
@@ -57,6 +67,14 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
         } catch (FirebaseAuthException exception) {
             return Optional.empty();
         }
+    }
+
+    private void setAuthErrorDetails(HttpServletResponse response) throws JsonProcessingException, IOException {
+        HttpStatus unauthorized = HttpStatus.UNAUTHORIZED;
+        response.setStatus(unauthorized.value());
+        response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(unauthorized, "Authentication failure: Token missing, invalid or expired");
+        response.getWriter().write(objectMapper.writeValueAsString(problemDetail));
     }
 
 }
