@@ -1,5 +1,6 @@
 package com.baeldung.gcp.firebase.auth;
 
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -43,6 +44,7 @@ class UserControllerLiveTest {
 
         // Invoke API under test
         mockMvc.perform(post(CREATE_USER_API_PATH)
+            .with(csrf())
             .contentType(MediaType.APPLICATION_JSON)
             .content(requestBody))
             .andExpect(status().isOk());
@@ -62,12 +64,14 @@ class UserControllerLiveTest {
 
         // Invoke create user API
         mockMvc.perform(post(CREATE_USER_API_PATH)
+            .with(csrf())
             .contentType(MediaType.APPLICATION_JSON)
             .content(requestBody))
             .andExpect(status().isOk());
 
         // Invoke create user API with same emailId
         mockMvc.perform(post(CREATE_USER_API_PATH)
+            .with(csrf())
             .contentType(MediaType.APPLICATION_JSON)
             .content(requestBody))
             .andExpect(status().isConflict())
@@ -89,12 +93,14 @@ class UserControllerLiveTest {
 
         // Invoke create user API
         mockMvc.perform(post(CREATE_USER_API_PATH)
+            .with(csrf())
             .contentType(MediaType.APPLICATION_JSON)
             .content(requestBody))
             .andExpect(status().isOk());
 
         // Invoke API under test
         mockMvc.perform(post(LOGIN_USER_API_PATH)
+            .with(csrf())
             .contentType(MediaType.APPLICATION_JSON)
             .content(requestBody))
             .andExpect(status().isOk())
@@ -115,6 +121,7 @@ class UserControllerLiveTest {
 
         // Invoke API under test
         mockMvc.perform(post(LOGIN_USER_API_PATH)
+            .with(csrf())
             .contentType(MediaType.APPLICATION_JSON)
             .content(requestBody))
             .andExpect(status().isUnauthorized())
@@ -136,13 +143,14 @@ class UserControllerLiveTest {
 
         // Invoke create user API
         mockMvc.perform(post(CREATE_USER_API_PATH)
+            .with(csrf())
             .contentType(MediaType.APPLICATION_JSON)
             .content(requestBody))
             .andExpect(status().isOk());
 
         // Invoke user login API and extract token
-        MvcResult loginResult = mockMvc
-            .perform(post(LOGIN_USER_API_PATH)
+        MvcResult loginResult = mockMvc.perform(post(LOGIN_USER_API_PATH)
+            .with(csrf())
             .contentType(MediaType.APPLICATION_JSON)
             .content(requestBody))
             .andExpect(status().isOk())
@@ -151,6 +159,7 @@ class UserControllerLiveTest {
 
         // Invoke API under test
         mockMvc.perform(get(GET_USER_API_PATH)
+            .with(csrf())
             .header("Authorization", "Bearer " + token))
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.email").value(emailId))
@@ -164,6 +173,7 @@ class UserControllerLiveTest {
 
         // Invoke API under test
         mockMvc.perform(get(GET_USER_API_PATH)
+            .with(csrf())
             .header("Authorization", "Bearer " + invalidToken))
             .andExpect(status().isForbidden());
     }

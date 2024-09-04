@@ -22,7 +22,7 @@ public class UserService {
         this.firebaseAuth = firebaseAuth;
     }
 
-    public void create(String emailId, String password) {
+    public void create(String emailId, String password) throws FirebaseAuthException {
         CreateRequest request = new CreateRequest();
         request.setEmail(emailId);
         request.setPassword(password);
@@ -34,6 +34,7 @@ public class UserService {
             if (exception.getMessage().contains(DUPLICATE_ACCOUNT_ERROR)) {
                 throw new AccountAlreadyExistsException("Account with given email-id already exists");
             }
+            throw exception;
         }
     }
 

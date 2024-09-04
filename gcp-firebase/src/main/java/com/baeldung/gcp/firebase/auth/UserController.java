@@ -25,7 +25,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> createUser(@RequestBody CreateUserRequest request) {
+    public ResponseEntity<Void> createUser(@RequestBody CreateUserRequest request) throws FirebaseAuthException {
         userService.create(request.emailId(), request.password());
         return ResponseEntity.ok().build();
     }

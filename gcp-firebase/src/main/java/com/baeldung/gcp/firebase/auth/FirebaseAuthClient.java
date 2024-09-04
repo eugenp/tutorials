@@ -26,10 +26,8 @@ public class FirebaseAuthClient {
     }
 
     private FirebaseSignInResponse sendSignInRequest(FirebaseSignInRequest firebaseSignInRequest) {
-        final FirebaseSignInResponse response;
-
         try {
-            response = RestClient.create(BASE_URL)
+            return RestClient.create(BASE_URL)
                 .post()
                 .uri(uriBuilder -> uriBuilder
                     .queryParam(API_KEY_PARAM, webApiKey)
@@ -44,8 +42,6 @@ public class FirebaseAuthClient {
             }
             throw exception;
         }
-
-        return response;
     }
 
     record FirebaseSignInRequest(String email, String password, boolean returnSecureToken) {

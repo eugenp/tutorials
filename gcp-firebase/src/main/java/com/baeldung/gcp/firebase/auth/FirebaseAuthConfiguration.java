@@ -21,13 +21,17 @@ public class FirebaseAuthConfiguration {
     private Resource privateKey;
 
     @Bean
-    public FirebaseAuth firebaseAuth() throws IOException {
+    public FirebaseApp firebaseApp() throws IOException {
         InputStream credentials = new ByteArrayInputStream(privateKey.getContentAsByteArray());
         FirebaseOptions firebaseOptions = FirebaseOptions.builder()
             .setCredentials(GoogleCredentials.fromStream(credentials))
             .build();
 
-        FirebaseApp firebaseApp = FirebaseApp.initializeApp(firebaseOptions);
+        return FirebaseApp.initializeApp(firebaseOptions);
+    }
+
+    @Bean
+    public FirebaseAuth firebaseAuth(FirebaseApp firebaseApp) {
         return FirebaseAuth.getInstance(firebaseApp);
     }
 
