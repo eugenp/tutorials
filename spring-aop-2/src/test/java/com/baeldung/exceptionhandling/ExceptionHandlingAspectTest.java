@@ -41,7 +41,6 @@ public class ExceptionHandlingAspectTest {
 
         // Then
         List<ILoggingEvent> logsList = listAppender.list;
-        assertThat(logsList).isNotEmpty();
         assertThat(logsList).extracting(Object::toString)
             .containsExactly("[ERROR] Exception occurred: Payment details cannot be null or empty.");
     }
@@ -54,7 +53,6 @@ public class ExceptionHandlingAspectTest {
 
         // Then
         List<ILoggingEvent> logsList = listAppender.list;
-        assertThat(logsList).isNotEmpty();
         assertThat(logsList).extracting(Object::toString)
             .containsExactly("[ERROR] Exception occurred: Payment processing failed due to invalid details.");
     }

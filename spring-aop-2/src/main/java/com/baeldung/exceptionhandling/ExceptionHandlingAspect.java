@@ -21,7 +21,7 @@ public class ExceptionHandlingAspect {
 
     @AfterThrowing(pointcut = "serviceLayerPointcut()", throwing = "ex")
     public void logAndHandleException(Exception ex) {
-        logger.error("Exception occurred: {}", ex.getMessage(), ex);
+        logger.error("Exception occurred: {}", ex.getMessage());
     }
 
 }
