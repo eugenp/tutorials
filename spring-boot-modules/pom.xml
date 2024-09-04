@@ -120,6 +120,7 @@
         <module>spring-boot-validations</module>
         <module>spring-boot-openapi</module>
         <module>spring-boot-brave</module>
+        <module>spring-boot-simple</module>
     </modules>
 
     <build>
