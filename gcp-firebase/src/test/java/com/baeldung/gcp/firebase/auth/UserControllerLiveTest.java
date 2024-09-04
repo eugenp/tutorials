@@ -26,6 +26,7 @@ class UserControllerLiveTest {
     private static final String GET_USER_API_PATH = "/user";
     private static final String CREATE_USER_API_PATH = "/user";
     private static final String LOGIN_USER_API_PATH = "/user/login";
+    private static final String REFRESH_TOKEN_API_PATH = "/user/refresh-token";
 
     @Autowired
     private MockMvc mockMvc;
@@ -164,6 +165,78 @@ class UserControllerLiveTest {
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.email").value(emailId))
             .andExpect(jsonPath("$.emailVerified").value(true));
+    }
+
+    @Test
+    void whenExchangingValidRefreshToken_thenNewIdTokenReturned() throws Exception {
+        // Set up test data        
+        String emailId = RandomString.make().toLowerCase() + "@baeldung.it";
+        String password = RandomString.make();
+        String requestBody = String.format("""
+            {
+                "emailId"  : "%s",
+                "password" : "%s"
+            }
+            """, emailId, password);
+
+        // Invoke create user API
+        mockMvc.perform(post(CREATE_USER_API_PATH)
+            .with(csrf())
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(requestBody))
+            .andExpect(status().isOk());
+
+        // Invoke user login API and extract refresh token
+        MvcResult loginResult = mockMvc.perform(post(LOGIN_USER_API_PATH)
+            .with(csrf())
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(requestBody))
+            .andExpect(status().isOk())
+            .andReturn();
+        String refreshToken = JsonPath.read(loginResult.getResponse().getContentAsString(), "$.refreshToken");
+
+        // Invoke API under test and extract ID token
+        requestBody = String.format("""
+            {
+                "refreshToken" : "%s"
+            }
+            """, refreshToken);
+        MvcResult refreshTokenResult = mockMvc.perform(post(REFRESH_TOKEN_API_PATH)
+            .with(csrf())
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(requestBody))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.id_token").exists())
+            .andReturn();
+        String idToken = JsonPath.read(refreshTokenResult.getResponse().getContentAsString(), "$.id_token");
+        
+        // Verify ID token invokes private API
+        mockMvc.perform(get(GET_USER_API_PATH)
+            .with(csrf())
+            .header("Authorization", "Bearer " + idToken))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$.email").value(emailId))
+            .andExpect(jsonPath("$.emailVerified").value(true));
+    }
+
+    @Test
+    void whenExchangingInvalidRefreshToken_thenNewIdTokenNotReturned() throws Exception {
+        // Set up test data        
+        String invalidRefreshToken = RandomString.make();
+        String requestBody = String.format("""
+            {
+                "refreshToken"  : "%s"
+            }
+            """, invalidRefreshToken);
+        
+        // Invoke API under test
+         mockMvc.perform(post(REFRESH_TOKEN_API_PATH)
+            .with(csrf())
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(requestBody))
+            .andExpect(status().isForbidden())
+            .andExpect(jsonPath("$.status").value(HttpStatus.FORBIDDEN.value()))
+            .andExpect(jsonPath("$.detail").value("Invalid refresh token provided"));
     }
 
     @Test

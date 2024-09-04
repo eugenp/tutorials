@@ -10,7 +10,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 public class SecurityConfiguration {
 
-    private static final String[] WHITELISTED_API_ENDPOINTS = { "/user", "/user/login" };
+    private static final String[] WHITELISTED_API_ENDPOINTS = { "/user", "/user/login", "/user/refresh-token" };
 
     private final TokenAuthenticationFilter tokenAuthenticationFilter;
 
