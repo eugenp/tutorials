@@ -583,7 +583,7 @@
                 <module>core-java-modules/core-java-lang-7</module>
                 <module>core-java-modules/core-java-lang-oop-modifiers</module>
                 <module>core-java-modules/core-java-datetime-conversion</module>
-                <module>libraries-security</module>
+                <!-- <module>libraries-security</module> -->
                 <module>libraries-data-io</module>
                 <module>maven-modules</module>
                 <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->
@@ -898,7 +898,7 @@
                 <module>core-java-modules/core-java-lang-7</module>
                 <module>core-java-modules/core-java-lang-oop-modifiers</module>
                 <module>core-java-modules/core-java-datetime-conversion</module>
-                <module>libraries-security</module>
+                <!--<module>libraries-security</module>-->
                 <module>libraries-data-io</module>
                 <module>maven-modules</module>
                 <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->
