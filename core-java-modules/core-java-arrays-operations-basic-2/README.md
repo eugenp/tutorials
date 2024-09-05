@@ -10,4 +10,4 @@ This module contains articles about Java array fundamentals. They assume no prev
 - [Find the Index of the Largest Value in an Array](https://www.baeldung.com/java-array-find-index-maximum)
 - [Checking if an Array Is Null or Empty in Java](https://www.baeldung.com/java-array-check-null-empty)
 - [Calculate the Sum of Diagonal Values in a 2d Java Array](https://www.baeldung.com/java-2d-array-sum-diagonals)
-- [Remove All Elements From a String Array in Java](Remove All Elements From a String Array in Java)
+- [Remove All Elements From a String Array in Java](https://www.baeldung.com/java-array-delete-all-strings)
