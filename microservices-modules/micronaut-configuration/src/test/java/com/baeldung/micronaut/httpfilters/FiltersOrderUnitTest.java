@@ -19,7 +19,7 @@ import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import io.restassured.specification.RequestSpecification;
 
 @MicronautTest
-class FiltersOrderTest {
+class FiltersOrderUnitTest {
 
     private ListAppender<ILoggingEvent> customFilterLogs;
     private ListAppender<ILoggingEvent> requestIDFilterLogs;
