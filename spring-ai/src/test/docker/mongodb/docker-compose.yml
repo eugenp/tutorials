@@ -1,0 +1,11 @@
+version: '3.1'
+
+services:
+  my-mongodb:
+    image: mongodb/mongodb-atlas-local:7.0.9
+    container_name: my-mongodb
+    environment:
+      - MONGODB_INITDB_ROOT_USERNAME=wikiuser
+      - MONGODB_INITDB_ROOT_PASSWORD=password
+    ports:
+      - 27017:27017
