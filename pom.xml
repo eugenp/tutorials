@@ -574,17 +574,24 @@
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
+                <module>apache-kafka</module>
                 <module>core-groovy-modules</module>
+                <module>core-java-modules/core-java-concurrency-simple</module>
                 <module>core-java-modules/core-java-exceptions-4</module>
                 <module>core-java-modules/core-java-io-6</module>
                 <module>core-java-modules/core-java-jvm</module>
                 <module>core-java-modules/core-java-lang-7</module>
                 <module>core-java-modules/core-java-lang-oop-modifiers</module>
                 <module>core-java-modules/core-java-datetime-conversion</module>
+                <!-- <module>libraries-security</module> -->
+                <module>libraries-data-io</module>
                 <module>maven-modules</module>
                 <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->
                 <module>persistence-modules/spring-data-neo4j</module>
+                <module>persistence-modules/spring-data-rest-2</module>
+                <module>persistence-modules/spring-persistence-simple</module>
                 <module>quarkus-modules/quarkus</module>
+                <module>quarkus-modules/quarkus-vs-springboot/quarkus-project</module>
                 <!--<module>spring-cloud-modules/spring-cloud-data-flow</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-cloud-modules/spring-cloud-stream-starters</module>--><!-- failing after upgrading to jdk17-->
                 <module>spring-di-2</module>
@@ -595,6 +602,7 @@
                 <!--<module>tablesaw</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-swagger-codegen/openapi-custom-generator</module>
                 <module>spring-swagger-codegen/openapi-custom-generator-api-client</module> --> <!-- cannot add the individual modules here because the order is not guaranteed -->
+                <module>vavr-modules/vavr</module>
             </modules>
 
             <properties>
@@ -646,7 +654,6 @@
                 <module>apache-httpclient-2</module>
                 <module>apache-httpclient4</module>
                 <module>apache-httpclient</module>
-                <module>apache-kafka</module>
                 <module>apache-kafka-2</module>
                 <module>apache-kafka-3</module>
                 <module>apache-libraries-2</module>
@@ -660,7 +667,7 @@
                 <module>atomix</module>
                 <module>aws-modules</module>
                 <module>azure</module>
-                <module>azure-functions</module>
+                <!-- <module>azure-functions</module>--> <!-- BAEL-6423 -->
                 <module>bazel</module>
                 <module>checker-framework</module>
                 <module>core-java-modules</module>
@@ -723,7 +730,6 @@
                 <module>libraries-data-2</module>
                 <module>libraries-data-3</module>
                 <module>libraries-data-db</module>
-                <module>libraries-data-io</module>
                 <module>libraries-data</module>
                 <module>libraries-files</module>
                 <module>libraries-http</module>
@@ -734,7 +740,6 @@
                 <module>libraries-primitive</module>
                 <module>libraries-reporting</module>
                 <module>libraries-rpc</module>
-                <module>libraries-security</module>
                 <module>libraries-server-2</module>
                 <module>libraries-server</module>
                 <module>libraries-stream</module>
@@ -885,17 +890,24 @@
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
+                <module>apache-kafka</module>
                 <module>core-groovy-modules</module>
+                <module>core-java-modules/core-java-concurrency-simple</module>
                 <module>core-java-modules/core-java-exceptions-4</module>
                 <module>core-java-modules/core-java-io-6</module>
                 <module>core-java-modules/core-java-jvm</module>
                 <module>core-java-modules/core-java-lang-7</module>
                 <module>core-java-modules/core-java-lang-oop-modifiers</module>
                 <module>core-java-modules/core-java-datetime-conversion</module>
+                <!--<module>libraries-security</module>-->
+                <module>libraries-data-io</module>
                 <module>maven-modules</module>
                 <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->
                 <module>persistence-modules/spring-data-neo4j</module>
+                <module>persistence-modules/spring-data-rest-2</module>
+                <module>persistence-modules/spring-persistence-simple</module>
                 <module>quarkus-modules/quarkus</module>
+                <module>quarkus-modules/quarkus-vs-springboot/quarkus-project</module>
                 <!--<module>spring-cloud-modules/spring-cloud-data-flow</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-cloud-modules/spring-cloud-stream-starters</module>--><!-- failing after upgrading to jdk17-->
                 <module>spring-di-2</module>
@@ -906,6 +918,7 @@
                 <!--<module>tablesaw</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-swagger-codegen/openapi-custom-generator</module>
                 <module>spring-swagger-codegen/openapi-custom-generator-api-client</module> --> <!-- cannot add the individual modules here because the order is not guaranteed -->
+                <module>vavr-modules/vavr</module>
             </modules>
 
             <properties>
@@ -951,7 +964,6 @@
                 <module>apache-httpclient-2</module>
                 <module>apache-httpclient4</module>
                 <module>apache-httpclient</module>
-                <module>apache-kafka</module>
                 <module>apache-kafka-2</module>
                 <module>apache-kafka-3</module>
                 <module>apache-libraries-2</module>
@@ -965,7 +977,7 @@
                 <module>atomix</module>
                 <module>aws-modules</module>
                 <module>azure</module>
-                <module>azure-functions</module>
+                <!-- <module>azure-functions</module>--> <!-- BAEL-6423 -->
                 <module>bazel</module>
                 <module>checker-framework</module>
                 <module>core-java-modules</module>
@@ -1027,7 +1039,6 @@
                 <module>libraries-data-2</module>
                 <module>libraries-data-3</module>
                 <module>libraries-data-db</module>
-                <module>libraries-data-io</module>
                 <module>libraries-data</module>
                 <module>libraries-files</module>
 		        <module>libraries-http</module>
@@ -1038,7 +1049,6 @@
                 <module>libraries-primitive</module>
                 <module>libraries-reporting</module>
                 <module>libraries-rpc</module>
-                <module>libraries-security</module>
                 <module>libraries-server-2</module>
                 <module>libraries-server</module>
                 <module>libraries-stream</module>
