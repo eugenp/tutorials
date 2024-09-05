@@ -31,10 +31,10 @@ import org.testcontainers.utility.DockerImageName;
 class KafkaProducerRetriesLiveTest {
 
     static AdminClient adminClient;
-    
+
     @Container
     static final KafkaContainer KAFKA_CONTAINER = new KafkaContainer(
-      DockerImageName.parse("confluentinc/cp-kafka:latest"));
+        DockerImageName.parse("confluentinc/cp-kafka:latest"));
 
     @BeforeAll
     static void beforeAll() {
@@ -45,34 +45,29 @@ class KafkaProducerRetriesLiveTest {
 
     @Test
     void whenMessageCannotBeSent_thenKafkaProducerRetries_usingDefaultConfig() throws Exception {
-        // given
         NewTopic newTopic = new NewTopic("test-topic-1", 1, (short) 1)
-          .configs(mapOf("min.insync.replicas", "2"));
+            .configs(mapOf("min.insync.replicas", "2"));
         adminClient.createTopics(singleton(newTopic)).all().get();
 
-        // and
         Properties props = new Properties();
         props.put(BOOTSTRAP_SERVERS_CONFIG, KAFKA_CONTAINER.getBootstrapServers());
         props.put(KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
         props.put(VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
         KafkaProducer<String, String> producer = new KafkaProducer<>(props);
 
-        // when/then
         ProducerRecord<String, String> record = new ProducerRecord<>("test-topic-1", "test-value");
         assertThatThrownBy(() -> producer.send(record)
-          .get()).isInstanceOf(ExecutionException.class)
-          .hasCauseInstanceOf(org.apache.kafka.common.errors.TimeoutException.class)
-          .hasMessageContaining("Expiring 1 record(s) for test-topic-1-0");
+            .get()).isInstanceOf(ExecutionException.class)
+            .hasCauseInstanceOf(org.apache.kafka.common.errors.TimeoutException.class)
+            .hasMessageContaining("Expiring 1 record(s) for test-topic-1-0");
     }
 
     @Test
     void whenMessageCannotBeSent_thenKafkaProducerRetries_usingCustomConfig() throws Exception {
-        // given
         NewTopic newTopic = new NewTopic("test-topic-2", 1, (short) 1)
-          .configs(mapOf("min.insync.replicas", "2"));
+            .configs(mapOf("min.insync.replicas", "2"));
         adminClient.createTopics(singleton(newTopic)).all().get();
 
-        // and
         Properties props = new Properties();
         props.put(BOOTSTRAP_SERVERS_CONFIG, KAFKA_CONTAINER.getBootstrapServers());
         props.put(KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
@@ -83,12 +78,11 @@ class KafkaProducerRetriesLiveTest {
         props.put(DELIVERY_TIMEOUT_MS_CONFIG, "5000");
         KafkaProducer<String, String> producer = new KafkaProducer<>(props);
 
-        // when/then
         ProducerRecord<String, String> record = new ProducerRecord<>("test-topic-2", "test-value");
-        assertThatThrownBy(() -> producer.send(record)
-          .get()).isInstanceOf(ExecutionException.class)
-          .hasCauseInstanceOf(org.apache.kafka.common.errors.TimeoutException.class)
-          .hasMessageContaining("Expiring 1 record(s) for test-topic-2-0");
+        assertThatThrownBy(() -> producer.send(record).get())
+            .isInstanceOf(ExecutionException.class)
+            .hasCauseInstanceOf(org.apache.kafka.common.errors.TimeoutException.class)
+            .hasMessageContaining("Expiring 1 record(s) for test-topic-2-0");
     }
 
     static Map<String, String> mapOf(String key, String value) {
