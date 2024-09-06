@@ -15,6 +15,7 @@ public class ContactService extends CrudRepositoryService<Contact, Long, Contact
     }
 
     public Contact findById(Long id) {
-        return getRepository().findById(id).orElseThrow();
+        return getRepository().findById(id)
+            .orElseThrow();
     }
 }
