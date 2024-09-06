@@ -6,20 +6,6 @@
     <artifactId>messaging-modules</artifactId>
     <packaging>pom</packaging>
     <name>messaging-modules</name>
-    <dependencies>
-        <dependency>
-            <groupId>org.apache.activemq</groupId>
-            <artifactId>activemq-all</artifactId>
-            <version>5.14.1</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.ibm.mq</groupId>
-            <artifactId>com.ibm.mq.allclient</artifactId>
-            <version>9.4.0.0</version>
-            <scope>compile</scope>
-        </dependency>
-    </dependencies>
 
     <parent>
         <artifactId>parent-boot-3</artifactId>
