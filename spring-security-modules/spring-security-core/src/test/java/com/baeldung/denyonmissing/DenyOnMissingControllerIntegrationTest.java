@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.authorization.AuthorizationDeniedException;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -45,6 +45,6 @@ public class DenyOnMissingControllerIntegrationTest {
         ServletException exception = Assertions.assertThrows(ServletException.class, () -> mockMvc.perform(get("/bye")));
 
         Assertions.assertNotNull(exception);
-        Assertions.assertEquals(exception.getCause().getClass(), AccessDeniedException.class);
+        Assertions.assertEquals(exception.getCause().getClass(), AuthorizationDeniedException.class);
     }
 }

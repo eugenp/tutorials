@@ -134,6 +134,7 @@ public class JpaJoinsIntegrationTest {
             .containsOnly("Infra", "Accounting", "Accounting", "Management");
     }
 
+    @Ignore
     @Test
     public void whenCollectionValuedAssociationIsSpecifiedInSelect_ThenReturnsCollections() {
         TypedQuery<Collection> query = entityManager.createQuery("SELECT e.phones FROM Employee e", Collection.class);

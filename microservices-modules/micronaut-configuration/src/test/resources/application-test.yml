@@ -1,0 +1,7 @@
+micronaut:
+  server:
+    port: -1
+
+service:
+  test:
+    property: 'something-in-test'

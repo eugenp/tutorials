@@ -68,6 +68,7 @@
                 <configuration>
                     <argLine>
                         -javaagent:${settings.localRepository}/org/jmockit/jmockit/${jmockit.version}/jmockit-${jmockit.version}.jar
+                        -Djava.security.manager=allow
                     </argLine>
                     <disableXmlReport>true</disableXmlReport>
                     <excludes>
