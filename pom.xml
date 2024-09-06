@@ -577,7 +577,6 @@
                 <module>core-groovy-modules</module>
                 <module>core-java-modules</module>
                 <module>json-modules</module>
-                <module>maven-modules</module>
                 <module>messaging-modules</module>
                 <module>persistence-modules</module>
                 <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->
@@ -744,6 +743,7 @@
                 <module>lucene</module>
                 <module>mapstruct</module>
                 <module>mapstruct-2</module>
+                <module>maven-modules</module>
                 <module>metrics</module>
                 <module>microservices-modules</module>
                 <module>mustache</module>
@@ -879,7 +879,6 @@
                 <module>core-groovy-modules</module>
                 <module>core-java-modules</module>
                 <module>json-modules</module>
-                <module>maven-modules</module>
                 <module>messaging-modules</module>
                 <module>persistence-modules</module>
                 <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->
