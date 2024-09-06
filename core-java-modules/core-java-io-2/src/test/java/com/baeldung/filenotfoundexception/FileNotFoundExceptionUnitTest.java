@@ -36,7 +36,7 @@ public class FileNotFoundExceptionUnitTest {
     }
 
     @Test
-    void whenFileExistButInaccessible_thenFileNotFoundException() {
+    void whenFileExistButInaccessible_thenFileNotFoundException() throws IOException {
         File readOnlyFile = tempDir.resolve("dummy.ReadOnly")
             .toFile();
         // first creating a read-only file
@@ -44,7 +44,7 @@ public class FileNotFoundExceptionUnitTest {
             printWriter.println("Hi there!");
             readOnlyFile.setReadOnly();
         } catch (Exception e) {
-            fail();
+            throw e;
         }
         assertTrue(readOnlyFile.exists());
         assertFalse(readOnlyFile.canWrite());
@@ -57,15 +57,15 @@ public class FileNotFoundExceptionUnitTest {
 
     @Test
     void whenFileNotFoundException_thenLogWarn() {
-        Path path = tempDir.resolve("dummy.notExist");
+        Path notExistFile = tempDir.resolve("dummy.notExist");
         try {
-            FileReader fileReader = new FileReader(path.toFile());
+            FileReader fileReader = new FileReader(notExistFile.toFile());
         } catch (FileNotFoundException ex) {
-            LOG.warn("Error Occurred when reading the optional file " + path, ex);
+            LOG.warn("Error Occurred when reading the optional file " + notExistFile, ex);
         }
     }
 
-    public String readConfig(Path path) throws IOException {
+    private String readConfig(Path path) throws IOException {
         try (BufferedReader reader = new BufferedReader(new FileReader(path.toFile()))) {
             return reader.readLine();
         } catch (FileNotFoundException ex) {
@@ -84,7 +84,6 @@ public class FileNotFoundExceptionUnitTest {
         } catch (FileNotFoundException e) {
             try (PrintWriter writer = new PrintWriter(new FileWriter(path.toFile()))) {
                 writer.print(defaultValue);
-                writer.close();
                 return defaultValue;
             } catch (IOException ex) {
                 throw new RuntimeException("IOException when trying to create the file", ex);
