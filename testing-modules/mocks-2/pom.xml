@@ -41,28 +41,18 @@
             <version>1.5.0</version>
             <scope>test</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.github.dreamhead/moco-runner -->
         <dependency>
             <groupId>com.github.dreamhead</groupId>
             <artifactId>moco-runner</artifactId>
             <version>1.5.0</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>com.github.dreamhead</groupId>
             <artifactId>moco-junit</artifactId>
             <version>1.5.0</version>
             <scope>test</scope>
         </dependency>
-
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.7.0</version>
-            <scope>test</scope>
-        </dependency>
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
