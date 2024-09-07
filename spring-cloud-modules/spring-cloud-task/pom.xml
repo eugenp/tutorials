@@ -17,7 +17,7 @@
     </parent>
 
     <modules>
-        <module>springcloudtaskbatch</module>
+        <!-- <module>springcloudtaskbatch</module> --> <!-- JAVA-39367 -->
         <module>springcloudtaskstreambridge</module>
     </modules>
 
