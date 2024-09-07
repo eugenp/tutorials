@@ -574,20 +574,27 @@
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
+                <module>apache-kafka</module>
                 <module>core-groovy-modules</module>
+                <module>core-java-modules/core-java-concurrency-simple</module>
                 <module>core-java-modules/core-java-exceptions-4</module>
                 <module>core-java-modules/core-java-io-6</module>
                 <module>core-java-modules/core-java-jvm</module>
                 <module>core-java-modules/core-java-lang-7</module>
                 <module>core-java-modules/core-java-lang-oop-modifiers</module>
                 <module>core-java-modules/core-java-datetime-conversion</module>
+                <!-- <module>libraries-security</module> -->
+                <module>libraries-data-io</module>
                 <module>maven-modules</module>
                 <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->
                 <module>persistence-modules/spring-data-neo4j</module>
+                <module>persistence-modules/spring-data-rest-2</module>
+                <module>persistence-modules/spring-persistence-simple</module>
                 <module>quarkus-modules/quarkus</module>
+                <module>quarkus-modules/quarkus-vs-springboot/quarkus-project</module>
                 <!--<module>spring-cloud-modules/spring-cloud-data-flow</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-cloud-modules/spring-cloud-stream-starters</module>--><!-- failing after upgrading to jdk17-->
-                <!--<module>spring-di-2</module>--><!-- failing after upgrading to jdk17-->
+                <module>spring-di-2</module>
                 <!--<module>spring-integration</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-jinq</module>--><!--disabling the jinq modules, as the default build profile is failing due to bad mv files. Please refer: JAVA-31341-->
                 <module>spring-security-modules/spring-security-legacy-oidc</module>
@@ -595,6 +602,7 @@
                 <!--<module>tablesaw</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-swagger-codegen/openapi-custom-generator</module>
                 <module>spring-swagger-codegen/openapi-custom-generator-api-client</module> --> <!-- cannot add the individual modules here because the order is not guaranteed -->
+                <module>vavr-modules/vavr</module>
             </modules>
 
             <properties>
@@ -646,7 +654,6 @@
                 <module>apache-httpclient-2</module>
                 <module>apache-httpclient4</module>
                 <module>apache-httpclient</module>
-                <module>apache-kafka</module>
                 <module>apache-kafka-2</module>
                 <module>apache-kafka-3</module>
                 <module>apache-libraries-2</module>
@@ -660,9 +667,9 @@
                 <module>atomix</module>
                 <module>aws-modules</module>
                 <module>azure</module>
-                <module>azure-functions</module>
+                <!-- <module>azure-functions</module>--> <!-- BAEL-6423 -->
                 <module>bazel</module>
-                <module>checker-framework</module>
+                <!-- <module>checker-framework</module>  --> <!-- JAVA-39367 -->
                 <module>core-java-modules</module>
                 <module>custom-pmd</module>
                 <module>data-structures</module>
@@ -682,6 +689,7 @@
                 <module>grpc</module>
                 <module>guava-modules</module>
                 <module>hazelcast</module>
+                <module>heroku</module>
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
                 <module>image-compressing</module>
@@ -699,7 +707,7 @@
                 <module>jaxb</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
-                <module>jmh</module>
+                <!-- <module>jmh</module> --> <!-- JAVA-39367 -->
                 <module>json-modules</module>
                 <module>jsoup</module>
                 <module>jws</module>
@@ -722,7 +730,6 @@
                 <module>libraries-data-2</module>
                 <module>libraries-data-3</module>
                 <module>libraries-data-db</module>
-                <module>libraries-data-io</module>
                 <module>libraries-data</module>
                 <module>libraries-files</module>
                 <module>libraries-http</module>
@@ -733,7 +740,6 @@
                 <module>libraries-primitive</module>
                 <module>libraries-reporting</module>
                 <module>libraries-rpc</module>
-                <module>libraries-security</module>
                 <module>libraries-server-2</module>
                 <module>libraries-server</module>
                 <module>libraries-stream</module>
@@ -773,7 +779,7 @@
                 <module>spf4j</module>
                 <module>spring-5-webflux-2</module>
                 <module>spring-5-webflux</module>
-                <module>spring-5</module>
+                <!-- <module>spring-5</module> --> <!-- JAVA-39367 -->
                 <module>spring-6-rsocket</module>
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
@@ -842,7 +848,7 @@
                 <module>xml</module>
                 <module>xml-2</module>
                 <module>xstream</module>
-                <module>libraries-data-io-2</module>
+                <!-- <module>libraries-data-io-2</module> --> <!-- JAVA-39367 -->
                 <module>spring-5-rest-docs</module>
             </modules>
 
@@ -884,20 +890,27 @@
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
+                <module>apache-kafka</module>
                 <module>core-groovy-modules</module>
+                <module>core-java-modules/core-java-concurrency-simple</module>
                 <module>core-java-modules/core-java-exceptions-4</module>
                 <module>core-java-modules/core-java-io-6</module>
                 <module>core-java-modules/core-java-jvm</module>
                 <module>core-java-modules/core-java-lang-7</module>
                 <module>core-java-modules/core-java-lang-oop-modifiers</module>
                 <module>core-java-modules/core-java-datetime-conversion</module>
+                <!--<module>libraries-security</module>-->
+                <module>libraries-data-io</module>
                 <module>maven-modules</module>
                 <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->
                 <module>persistence-modules/spring-data-neo4j</module>
+                <module>persistence-modules/spring-data-rest-2</module>
+                <module>persistence-modules/spring-persistence-simple</module>
                 <module>quarkus-modules/quarkus</module>
+                <module>quarkus-modules/quarkus-vs-springboot/quarkus-project</module>
                 <!--<module>spring-cloud-modules/spring-cloud-data-flow</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-cloud-modules/spring-cloud-stream-starters</module>--><!-- failing after upgrading to jdk17-->
-                <!--<module>spring-di-2</module>--><!-- failing after upgrading to jdk17-->
+                <module>spring-di-2</module>
                 <!--<module>spring-integration</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-jinq</module>--><!--disabling the jinq modules, as the default build profile is failing due to bad mv files. Please refer: JAVA-31341-->
                 <module>spring-security-modules/spring-security-legacy-oidc</module>
@@ -905,6 +918,7 @@
                 <!--<module>tablesaw</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-swagger-codegen/openapi-custom-generator</module>
                 <module>spring-swagger-codegen/openapi-custom-generator-api-client</module> --> <!-- cannot add the individual modules here because the order is not guaranteed -->
+                <module>vavr-modules/vavr</module>
             </modules>
 
             <properties>
@@ -950,7 +964,6 @@
                 <module>apache-httpclient-2</module>
                 <module>apache-httpclient4</module>
                 <module>apache-httpclient</module>
-                <module>apache-kafka</module>
                 <module>apache-kafka-2</module>
                 <module>apache-kafka-3</module>
                 <module>apache-libraries-2</module>
@@ -964,9 +977,9 @@
                 <module>atomix</module>
                 <module>aws-modules</module>
                 <module>azure</module>
-                <module>azure-functions</module>
+                <!-- <module>azure-functions</module>--> <!-- BAEL-6423 -->
                 <module>bazel</module>
-                <module>checker-framework</module>
+                <!-- <module>checker-framework</module> --> <!-- JAVA-39367 -->
                 <module>core-java-modules</module>
                 <module>custom-pmd</module>
                 <module>data-structures</module>
@@ -986,6 +999,7 @@
                 <module>grpc</module>
                 <module>guava-modules</module>
                 <module>hazelcast</module>
+                <module>heroku</module>
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
                 <module>image-compressing</module>
@@ -1002,7 +1016,7 @@
                 <module>jaxb</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
-                <module>jmh</module>
+                <!-- <module>jmh</module> --> <!-- JAVA-39367 -->
                 <module>json-modules</module>
                 <module>jsoup</module>
                 <module>jws</module>
@@ -1025,7 +1039,6 @@
                 <module>libraries-data-2</module>
                 <module>libraries-data-3</module>
                 <module>libraries-data-db</module>
-                <module>libraries-data-io</module>
                 <module>libraries-data</module>
                 <module>libraries-files</module>
 		        <module>libraries-http</module>
@@ -1036,7 +1049,6 @@
                 <module>libraries-primitive</module>
                 <module>libraries-reporting</module>
                 <module>libraries-rpc</module>
-                <module>libraries-security</module>
                 <module>libraries-server-2</module>
                 <module>libraries-server</module>
                 <module>libraries-stream</module>
@@ -1076,7 +1088,7 @@
                 <module>spf4j</module>
                 <module>spring-5-webflux-2</module>
                 <module>spring-5-webflux</module>
-                <module>spring-5</module>
+                <!-- <module>spring-5</module> --> <!-- JAVA-39367 -->
                 <module>spring-6-rsocket</module>
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
@@ -1145,7 +1157,7 @@
                 <module>xml</module>
                 <module>xml-2</module>
                 <module>xstream</module>
-                <module>libraries-data-io-2</module>
+                <!-- <module>libraries-data-io-2</module> --> <!-- JAVA-39367 -->
                 <module>spring-5-rest-docs</module>
             </modules>
 
