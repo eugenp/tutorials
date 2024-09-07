@@ -17,8 +17,8 @@ public class BankAccountDeepCopyUnitTest {
 
         deepCopy.getTransactions().add("T3");
 
-        assertEquals(2, original.getTransactions().size()); // Original remains unchanged
-        assertEquals(3, deepCopy.getTransactions().size()); // Deep copy is modified independently
-        assertNotSame(original.getTransactions(), deepCopy.getTransactions()); // Different references
+        assertEquals(2, original.getTransactions().size());
+        assertEquals(3, deepCopy.getTransactions().size());
+        assertNotSame(original.getTransactions(), deepCopy.getTransactions());
     }
 }

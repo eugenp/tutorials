@@ -12,14 +12,14 @@ public class BankAccountShallowCopyUnitTest {
 
     @Test
     public void givenShallowCopy_whenModifyingCopy_thenOriginalIsAlsoModified() throws CloneNotSupportedException {
-        List<String> transactions = new ArrayList<>(Arrays.asList("T1", "T2")); // Use ArrayList
+        List<String> transactions = new ArrayList<>(Arrays.asList("T1", "T2"));
         BankAccountShallowCopy original = new BankAccountShallowCopy("123456", transactions);
         BankAccountShallowCopy shallowCopy = (BankAccountShallowCopy) original.clone();
 
         shallowCopy.getTransactions().add("T3");
 
-        assertEquals(3, original.getTransactions().size()); // Original is modified
-        assertSame(original.getTransactions(), shallowCopy.getTransactions()); // Same reference
+        assertEquals(3, original.getTransactions().size());
+        assertSame(original.getTransactions(), shallowCopy.getTransactions());
     }
 }
 

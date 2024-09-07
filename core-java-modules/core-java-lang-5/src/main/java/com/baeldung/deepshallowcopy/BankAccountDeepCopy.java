@@ -34,7 +34,7 @@ class BankAccountDeepCopy implements Cloneable {
     @Override
     protected Object clone() throws CloneNotSupportedException {
         BankAccountDeepCopy cloned = (BankAccountDeepCopy) super.clone();
-        cloned.transactions = new ArrayList<>(this.transactions); // Deep copy of the list
+        cloned.transactions = new ArrayList<>(this.transactions);
         return cloned;
     }
 }
