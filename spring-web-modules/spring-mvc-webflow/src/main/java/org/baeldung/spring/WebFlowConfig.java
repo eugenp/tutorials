@@ -1,4 +1,4 @@
-package com.baeldung.spring;
+package org.baeldung.spring;
 
 import java.util.Collections;
 
