@@ -15,7 +15,7 @@
     </parent>
 
     <properties>
-        <spring-boot.version>3.2.3</spring-boot.version>
+        <spring-boot.version>3.3.2</spring-boot.version>
         <java.version>17</java.version>
         <spring-ai.version>1.0.0-M1</spring-ai.version>
         <spring-ai-mistral-ai.version>0.8.1</spring-ai-mistral-ai.version>
@@ -73,6 +73,10 @@
             <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-mistral-ai-spring-boot-starter</artifactId>
             <version>${spring-ai-mistral-ai.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-mongodb-atlas-store-spring-boot-starter</artifactId>
         </dependency>
     </dependencies>
 

@@ -255,8 +255,8 @@
         <rest-assured.version>5.5.0</rest-assured.version>
         <!-- Maven plugins -->
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
-        <spring.version>6.0.13</spring.version>
-        <spring-security.version>6.1.5</spring-security.version>
+        <spring.version>6.1.12</spring.version>
+        <spring-security.version>6.3.1</spring-security.version>
         <jakarta.servlet.version>6.0.0</jakarta.servlet.version>
         <jakarta.annotation-api.version>3.0.0</jakarta.annotation-api.version>
     </properties>
