@@ -540,7 +540,7 @@
         </profile>
 
         <profile>
-            <id>default</id>
+            <id>default-jdk17</id>
             <build>
                 <plugins>
                     <plugin>
@@ -615,7 +615,7 @@
         </profile>
 
         <profile>
-            <id>default-jdk21</id>
+            <id>default</id>
             <build>
                 <plugins>
                     <plugin>
@@ -862,7 +862,7 @@
         </profile>
 
         <profile>
-            <id>integration</id>
+            <id>integration-jdk17</id>
             <build>
                 <plugins>
                     <plugin>
@@ -931,7 +931,7 @@
         </profile>
 
         <profile>
-            <id>integration-jdk21</id>
+            <id>integration</id>
             <build>
                 <plugins>
                     <plugin>
