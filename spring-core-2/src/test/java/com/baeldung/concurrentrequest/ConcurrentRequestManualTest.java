@@ -20,7 +20,7 @@ import org.springframework.test.web.servlet.ResultMatcher;
  * Test need to pause the main thread for up to 60 seconds
  */
 
-@SpringBootTest
+@SpringBootTest(classes = {ProductController.class, ProductService.class})
 @AutoConfigureMockMvc
 public class ConcurrentRequestManualTest {
 
