@@ -1,25 +1,23 @@
 package com.baeldung.beanfactory;
 
-import org.junit.Test;
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.xml.XmlBeanFactory;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
-
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+
+import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class BeanFactoryWithClassPathResourceIntegrationTest {
 
     @Test
     public void createBeanFactoryAndCheckEmployeeBean() {
-        Resource res = new ClassPathResource("beanfactory-example.xml");
-        BeanFactory factory = new XmlBeanFactory(res);
-        Employee emp = (Employee) factory.getBean("employee");
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("beanfactory-example.xml");
+        Employee emp = (Employee) applicationContext.getBean("employee");
 
-        assertTrue(factory.isSingleton("employee"));
-        assertTrue(factory.getBean("employee") instanceof Employee);
-        assertTrue(factory.isTypeMatch("employee", Employee.class));
-        assertTrue(factory.getAliases("employee").length > 0);
+        assertNotNull(emp);
+        assertTrue(applicationContext.isSingleton("employee"));
+        assertTrue(applicationContext.getBean("employee") instanceof Employee);
+        assertTrue(applicationContext.isTypeMatch("employee", Employee.class));
+        assertTrue(applicationContext.getAliases("employee").length > 0);
     }
 }
