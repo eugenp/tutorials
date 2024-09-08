@@ -4,15 +4,16 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.beans.factory.support.DefaultListableBeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 
 public class BeanFactoryWithClassPathResourceIntegrationTest {
 
     @Test
     public void createBeanFactoryAndCheckEmployeeBean() {
-        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("beanfactory-example.xml");
-        BeanFactory factory = applicationContext.getBeanFactory();
+        DefaultListableBeanFactory factory = new DefaultListableBeanFactory();
+        XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(factory);
+        reader.loadBeanDefinitions("beanfactory-example.xml");
         Employee emp = (Employee) factory.getBean("employee");
 
         assertNotNull(emp);
