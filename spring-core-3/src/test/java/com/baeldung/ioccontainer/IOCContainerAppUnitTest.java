@@ -8,6 +8,10 @@ import com.baeldung.ioccontainer.bean.Student;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
+import org.springframework.beans.factory.support.BeanDefinitionRegistry;
+import org.springframework.beans.factory.support.DefaultListableBeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -23,44 +27,55 @@ public class IOCContainerAppUnitTest {
 
     @Test
     public void whenBFInitialized_thenStudentNotInitialized() {
-        ApplicationContext context = new ClassPathXmlApplicationContext("ioc-container-difference-example.xml");
-        assertNotNull(context);
-        assertTrue(Student.isBeanInstantiated());
+        DefaultListableBeanFactory factory = new DefaultListableBeanFactory();
+        XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(factory);
+        reader.loadBeanDefinitions("ioc-container-difference-example.xml");
+        assertFalse(Student.isBeanInstantiated());
     }
 
     @Test
     public void whenBFInitialized_thenStudentInitialized() {
-        ApplicationContext context = new ClassPathXmlApplicationContext("ioc-container-difference-example.xml");
-        Student student = (Student) context.getBean("student");
+        DefaultListableBeanFactory factory = new DefaultListableBeanFactory();
+        XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(factory);
+        reader.loadBeanDefinitions("ioc-container-difference-example.xml");
+        Student student = (Student) factory.getBean("student");
         assertTrue(Student.isBeanInstantiated());
+        assertNotNull(student);
     }
     
     @Test
     public void whenAppContInitialized_thenStudentInitialized() {
         ApplicationContext context = new ClassPathXmlApplicationContext("ioc-container-difference-example.xml");
+
         assertTrue(Student.isBeanInstantiated());
+        assertNotNull(context);
     }
 
     @Test
     public void whenBFInitialized_thenBFPProcessorAndBPProcessorNotRegAutomatically() {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("ioc-container-difference-example.xml");
+        ConfigurableListableBeanFactory factory = new DefaultListableBeanFactory();
+        XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader((BeanDefinitionRegistry) factory);
+        reader.loadBeanDefinitions("ioc-container-difference-example.xml");
 
-        assertTrue(CustomBeanFactoryPostProcessor.isBeanFactoryPostProcessorRegistered());
-        assertTrue(CustomBeanPostProcessor.isBeanPostProcessorRegistered());
+        assertFalse(CustomBeanFactoryPostProcessor.isBeanFactoryPostProcessorRegistered());
+        assertFalse(CustomBeanPostProcessor.isBeanPostProcessorRegistered());
     }
 
     @Test
     public void whenBFPostProcessorAndBPProcessorRegisteredManually_thenReturnTrue() {
-        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("ioc-container-difference-example.xml");
+        ConfigurableListableBeanFactory factory = new DefaultListableBeanFactory();
+        XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader((BeanDefinitionRegistry) factory);
+        reader.loadBeanDefinitions("ioc-container-difference-example.xml");
 
         CustomBeanFactoryPostProcessor beanFactoryPostProcessor = new CustomBeanFactoryPostProcessor();
-        beanFactoryPostProcessor.postProcessBeanFactory(applicationContext.getBeanFactory());
+        beanFactoryPostProcessor.postProcessBeanFactory(factory);
         assertTrue(CustomBeanFactoryPostProcessor.isBeanFactoryPostProcessorRegistered());
 
         CustomBeanPostProcessor beanPostProcessor = new CustomBeanPostProcessor();
-        applicationContext.getBeanFactory().addBeanPostProcessor(beanPostProcessor);
-        Student student = (Student) applicationContext.getBean("student");
+        factory.addBeanPostProcessor(beanPostProcessor);
+        Student student = (Student) factory.getBean("student");
         assertTrue(CustomBeanPostProcessor.isBeanPostProcessorRegistered());
+        assertNotNull(student);
     }
     
     @Test
@@ -69,5 +84,6 @@ public class IOCContainerAppUnitTest {
 
         assertTrue(CustomBeanFactoryPostProcessor.isBeanFactoryPostProcessorRegistered());
         assertTrue(CustomBeanPostProcessor.isBeanPostProcessorRegistered());
+        assertNotNull(context);
     }
 }
