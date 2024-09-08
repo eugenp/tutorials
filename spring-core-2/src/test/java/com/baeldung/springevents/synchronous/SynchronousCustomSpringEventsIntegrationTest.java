@@ -1,14 +1,15 @@
 package com.baeldung.springevents.synchronous;
 
-import org.junit.Ignore;
+import static org.springframework.util.Assert.isTrue;
+
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
-
-import static org.springframework.util.Assert.isTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { SynchronousSpringEventsConfig.class }, loader = AnnotationConfigContextLoader.class)
@@ -18,6 +19,14 @@ public class SynchronousCustomSpringEventsIntegrationTest {
     private CustomSpringEventPublisher publisher;
     @Autowired
     private AnnotationDrivenEventListener listener;
+    @Autowired
+    private ConfigurableApplicationContext context;
+
+    @Before
+    public void setup() {
+        //Force publish of ContextStartedEvent so that the test case, testContextStartedEvent passes.
+        context.start();
+    }
 
     @Test
     public void testCustomSpringEvents() {
@@ -41,7 +50,6 @@ public class SynchronousCustomSpringEventsIntegrationTest {
         isTrue(!listener.isHitSuccessfulEventHandler(), "The value should still be false");
     }
 
-    @Ignore("fix me")
     @Test
     public void testContextStartedEvent() {
         isTrue(listener.isHitContextStartedHandler(), "Start should be called once");

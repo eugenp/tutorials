@@ -20,8 +20,8 @@ public class AnnotationDrivenEventListener {
         hitContextStartedHandler = true;
     }
 
-    @EventListener(condition = "#event.success")
-    public void handleSuccessful(final GenericSpringEvent<String> event) {
+    @EventListener(condition = "event.getPayload().success")
+    public void handleSuccessful(final GenericSpringEvent<?> event) {
         System.out.println("Handling generic event (conditional): " + event.getWhat());
         hitSuccessfulEventHandler = true;
     }
