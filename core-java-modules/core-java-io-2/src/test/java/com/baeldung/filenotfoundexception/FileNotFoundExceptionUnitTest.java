@@ -43,8 +43,6 @@ public class FileNotFoundExceptionUnitTest {
         try (PrintWriter printWriter = new PrintWriter(new FileWriter(readOnlyFile))) {
             printWriter.println("Hi there!");
             readOnlyFile.setReadOnly();
-        } catch (Exception e) {
-            throw e;
         }
         assertTrue(readOnlyFile.exists());
         assertFalse(readOnlyFile.canWrite());
