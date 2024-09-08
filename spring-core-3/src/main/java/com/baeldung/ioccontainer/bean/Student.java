@@ -1,8 +1,5 @@
 package com.baeldung.ioccontainer.bean;
 
-import org.springframework.context.annotation.Lazy;
-
-@Lazy
 public class Student {
     private static boolean isBeanInstantiated = false;
 
