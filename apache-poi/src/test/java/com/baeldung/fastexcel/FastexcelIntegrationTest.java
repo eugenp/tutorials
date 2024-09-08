@@ -10,11 +10,13 @@ import org.junit.Test;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class FastexcelIntegrationTest {
 
@@ -49,8 +51,13 @@ public class FastexcelIntegrationTest {
     	try (FileInputStream file = new FileInputStream(fileLocation); ReadableWorkbook wb = new ReadableWorkbook(file)) {
             Sheet sheet = wb.getFirstSheet();
             try (Stream<Row> rows = sheet.openStream()) {
-            	assertEquals(false, fastexcelHelper.isRowEmpty(rows.reduce((first, second) -> second).get()));
-            	// assert that last row is empty
+            	Row lastRow = null;
+                Iterator<Row> rowIterator = rows.iterator();
+                // assert that last row is empty
+                while (rowIterator.hasNext()) {
+                    lastRow = rowIterator.next();
+                }
+                assertTrue(fastexcelHelper.isRowEmpty(lastRow));
             }
         }
     }

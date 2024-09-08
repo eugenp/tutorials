@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 public class FastexcelHelper {
 
@@ -72,4 +73,13 @@ public class FastexcelHelper {
         }
         return true;
     }
+    
+    public boolean isRowEmptyUsingStreams(Row row) {
+        if (row == null) {
+            return true;
+        }
+        return StreamSupport.stream(row.spliterator(), false)
+                .noneMatch(cell -> cell != null && !cell.getText().isEmpty());
+    }
+
 }

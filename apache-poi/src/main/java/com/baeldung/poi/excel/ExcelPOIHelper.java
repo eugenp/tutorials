@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.IntStream;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
@@ -146,4 +147,14 @@ public class ExcelPOIHelper {
         }
         return true;
     }
+    
+    public boolean isRowEmptyUsingStreams(Row row) {
+        if (row == null) {
+            return true;
+        }
+        return IntStream.range(row.getFirstCellNum(), row.getLastCellNum())
+                .mapToObj(row::getCell)
+                .noneMatch(cell -> cell != null && cell.getCellType() != CellType.BLANK);
+    }
+
 }

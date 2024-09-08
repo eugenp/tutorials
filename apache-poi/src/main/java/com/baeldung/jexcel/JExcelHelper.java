@@ -4,6 +4,7 @@ import jxl.*;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import jxl.read.biff.BiffException;
 import java.io.File;
@@ -88,4 +89,13 @@ public class JExcelHelper {
         }
         return true;
     }
+    
+    public boolean isRowEmptyUsingStreams(Cell[] row) {
+        if (row == null) {
+            return true;
+        }
+        return Arrays.stream(row)
+                .noneMatch(cell -> cell != null && !cell.getContents().trim().isEmpty());
+    }
+
 }
