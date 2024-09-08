@@ -35,8 +35,7 @@ public class JdbcLiveTest {
     public void setup() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.cj.jdbc.Driver");
 
-        //con = DriverManager.getConnection("jdbc:mysql://localhost:3306/myDb?noAccessToProcedureBodies=true", "user1", "pass");
-        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?noAccessToProcedureBodies=true", "root", "");
+        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/myDb?noAccessToProcedureBodies=true", "user1", "pass");
 
         try (Statement stmt = con.createStatement()) {
 
