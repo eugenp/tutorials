@@ -14,7 +14,7 @@ public class FileUtil {
 
     public static void removeDirectoryRecursively(Path folder) throws IOException {
         if (Files.exists(folder)) {
-            Files.walkFileTree(folder, new SimpleFileVisitor<Path>() {
+            Files.walkFileTree(folder, new SimpleFileVisitor<>() {
                 @Override
                 public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
                     Files.delete(file);
