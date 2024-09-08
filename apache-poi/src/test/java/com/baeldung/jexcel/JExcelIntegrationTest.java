@@ -1,6 +1,8 @@
 package com.baeldung.jexcel;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
@@ -56,13 +58,13 @@ public class JExcelIntegrationTest {
         Sheet sheet = workbook.getSheet(0);
        
         Cell[] row = sheet.getRow(0);
-        assertEquals(false, jExcelHelper.isRowEmpty(row)); // check writeJExcel() method, we have inserted a row
+        assertFalse(jExcelHelper.isRowEmpty(row)); // check writeJExcel() method, we have inserted a row
         
         row = sheet.getRow(2);
-        assertEquals(false, jExcelHelper.isRowEmpty(row));
+        assertFalse(jExcelHelper.isRowEmpty(row));
         
         row = sheet.getRow(3);
-        assertEquals(true, jExcelHelper.isRowEmpty(row)); // check writeJExcel() method, we have inserted "" in this row
+        assertTrue(jExcelHelper.isRowEmpty(row)); // check writeJExcel() method, we have inserted "" in this row
     }
 
     @After

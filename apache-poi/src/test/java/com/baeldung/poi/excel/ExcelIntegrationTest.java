@@ -1,6 +1,8 @@
 package com.baeldung.poi.excel;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -49,19 +51,19 @@ public class ExcelIntegrationTest {
     }
     
     @Test
-    public void whenParsingFastExcelFile_thenDetectEmptyRow() throws IOException {
+    public void whenParsingExcelFile_thenDetectEmptyRow() throws IOException {
     	FileInputStream inputStream = new FileInputStream(new File(fileLocation));
     	Workbook workbook = new XSSFWorkbook(inputStream);
     	Sheet sheet = workbook.getSheetAt(0);
     	
     	Row row = sheet.getRow(0);
-        assertEquals(false, excelPOIHelper.isRowEmpty(row)); // check writeJExcel() method, we have inserted a row
+        assertFalse(excelPOIHelper.isRowEmpty(row)); // check writeExcel() method, we have inserted a row
         
         row = sheet.getRow(2);
-        assertEquals(false, excelPOIHelper.isRowEmpty(row));
+        assertFalse(excelPOIHelper.isRowEmpty(row));
         
         row = sheet.getRow(4);
-        assertEquals(true, excelPOIHelper.isRowEmpty(row)); // check writeJExcel() method, we have inserted "" in this row
+        assertTrue(excelPOIHelper.isRowEmpty(row)); // check writeExcel() method, we have inserted "" in this row
     	
     }
 
