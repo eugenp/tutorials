@@ -21,7 +21,9 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 public class JdbcLiveTest {
 
@@ -33,7 +35,8 @@ public class JdbcLiveTest {
     public void setup() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.cj.jdbc.Driver");
 
-        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/myDb?noAccessToProcedureBodies=true", "user1", "pass");
+        //con = DriverManager.getConnection("jdbc:mysql://localhost:3306/myDb?noAccessToProcedureBodies=true", "user1", "pass");
+        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb?noAccessToProcedureBodies=true", "root", "");
 
         try (Statement stmt = con.createStatement()) {
 
@@ -140,6 +143,17 @@ public class JdbcLiveTest {
                 LOG.info(rsmd.getColumnName(i));
             } catch (SQLException e) {
                 e.printStackTrace();
+            }
+        });
+    }
+
+    @Test
+    public void whenQueryExceedsTimeout_thenThrowSQLException() {
+        String longRunningQuery = "SELECT SLEEP(15)"; // Simulating a long-running query
+        assertThrows(SQLException.class, () -> {
+            try (PreparedStatement pstmt = con.prepareStatement(longRunningQuery)) {
+                pstmt.setQueryTimeout(5); // Set timeout to 5 seconds
+                pstmt.executeQuery();
             }
         });
     }
