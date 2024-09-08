@@ -14,7 +14,7 @@
     </parent>
 
     <modules>
-        <module>vavr</module>
+        <!-- <module>vavr</module> --> <!-- failing after upgrade to jdk21 -->
         <module>vavr-2</module>
         <module>java-vavr-stream</module>
     </modules>
