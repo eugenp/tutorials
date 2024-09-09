@@ -6,7 +6,7 @@ public class Person {
 	
     // Copy constructor for deep copy
     public Person(Person other) {
-        this.name = other.name; // Primitive type, so just copy the value
+        this.name = other.name; 
     }
     
 	public Person(String name) {
