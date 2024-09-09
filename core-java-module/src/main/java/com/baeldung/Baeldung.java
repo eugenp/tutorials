@@ -19,12 +19,15 @@ public class Baeldung implements Cloneable, Serializable {
     public Baeldung() {
         this.articles = new ArrayList<>();
     }
-
     public Baeldung(List<Article> articles) {
-        List<Article> newArticle = new ArrayList<>();
-        articles.forEach(article -> newArticle.add(new Article(article.getTitle(), article.getContent())));
-        this.articles = newArticle;
+        this.articles = articles;
     }
+
+public Baeldung(Baeldung baeldung) {
+    List<Article> newArticle = new ArrayList<>();
+    baeldung.getArticles().forEach(article -> newArticle.add(new Article(article.getTitle(), article.getContent())));
+    this.articles = newArticle;
+}
 
     // Getters and Setters
 
