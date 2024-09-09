@@ -2,12 +2,7 @@ package com.baeldung.logging;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.AfterThrowing;
-import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -16,9 +11,9 @@ import java.util.Arrays;
 
 @Aspect
 @Component
-public class LoggingAspect {
+public class LoggingAspect2 {
 
-    private static final Logger logger = LoggerFactory.getLogger(LoggingAspect.class);
+    private static final Logger logger = LoggerFactory.getLogger(LoggingAspect2.class);
 
     @Pointcut("execution(public * com.baeldung.logging.*.*(..))")
     private void publicMethodsFromLoggingPackage() {
