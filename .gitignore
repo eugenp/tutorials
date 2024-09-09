@@ -137,3 +137,4 @@ persistence-modules/neo4j/data/**
 /microservices-modules/micronaut-reactive/.micronaut/test-resources/test-resources.properties
 /libraries-security/src/main/resources/home/upload/test_file_SCP.txt
 /libraries-security/src/main/resources/home/upload/test_file_SFTP.txt
+/libraries-data-io/src/test/resources/protocols/gson_user.json
