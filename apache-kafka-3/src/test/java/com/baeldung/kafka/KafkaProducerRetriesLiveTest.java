@@ -44,7 +44,7 @@ class KafkaProducerRetriesLiveTest {
     }
 
     @Test
-    void whenMessageCannotBeSent_thenKafkaProducerRetries_usingDefaultConfig() throws Exception {
+    void givenDefaultConfig_whenMessageCannotBeSent_thenKafkaProducerRetries() throws Exception {
         NewTopic newTopic = new NewTopic("test-topic-1", 1, (short) 1)
             .configs(mapOf("min.insync.replicas", "2"));
         adminClient.createTopics(singleton(newTopic)).all().get();
@@ -63,7 +63,7 @@ class KafkaProducerRetriesLiveTest {
     }
 
     @Test
-    void whenMessageCannotBeSent_thenKafkaProducerRetries_usingCustomConfig() throws Exception {
+    void givenCustomConfig_whenMessageCannotBeSent_thenKafkaProducerRetries() throws Exception {
         NewTopic newTopic = new NewTopic("test-topic-2", 1, (short) 1)
             .configs(mapOf("min.insync.replicas", "2"));
         adminClient.createTopics(singleton(newTopic)).all().get();
