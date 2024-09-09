@@ -1,5 +1,7 @@
 package models;
 
+import java.util.List;
+
 /**
  * Represents a person with a name and age with cloneable interface.
  */
@@ -7,10 +9,12 @@ public class PersonCloneable implements Cloneable {
 
     private String name;
     private int age;
+    private List<PhoneNumber> phoneNumbers;
 
-    public PersonCloneable(String name, int age) {
+    public PersonCloneable(String name, int age, List<PhoneNumber> phoneNumbers) {
         this.name = name;
         this.age = age;
+        this.phoneNumbers = phoneNumbers;
     }
 
     @Override
@@ -32,6 +36,14 @@ public class PersonCloneable implements Cloneable {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public List<PhoneNumber> getPhoneNumbers() {
+        return phoneNumbers;
+    }
+
+    public void setPhoneNumbers(List<PhoneNumber> phoneNumbers) {
+        this.phoneNumbers = phoneNumbers;
     }
 }
 

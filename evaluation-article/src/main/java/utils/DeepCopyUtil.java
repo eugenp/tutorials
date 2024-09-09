@@ -1,8 +1,11 @@
 package utils;
 
+import models.Person;
+
 import java.io.*;
 
 public class DeepCopyUtil {
+
     private DeepCopyUtil() {
     }
 
@@ -16,5 +19,10 @@ public class DeepCopyUtil {
         } catch (IOException | ClassNotFoundException e) {
             throw new IllegalArgumentException(e);
         }
+    }
+
+    public static Person shallowCopy(Person person) {
+        // Note: This is a shallow copy, so the address list is not deep-copied
+        return new Person(person.getName(), person.getAge(), person.getPhoneNumbers());
     }
 }

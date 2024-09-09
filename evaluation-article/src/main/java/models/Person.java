@@ -1,5 +1,7 @@
 package models;
 
+import java.util.List;
+
 /**
  * Represents a person with a name and age.
  */
@@ -7,10 +9,12 @@ public class Person {
 
     private String name;
     private int age;
+    private List<PhoneNumber> phoneNumbers;
 
-    public Person(String name, int age) {
+    public Person(String name, int age, List<PhoneNumber> phoneNumbers) {
         this.name = name;
         this.age = age;
+        this.phoneNumbers = phoneNumbers;
     }
 
     public String getName() {
@@ -27,6 +31,14 @@ public class Person {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public List<PhoneNumber> getPhoneNumbers() {
+        return phoneNumbers;
+    }
+
+    public void setPhoneNumbers(List<PhoneNumber> phoneNumbers) {
+        this.phoneNumbers = phoneNumbers;
     }
 }
 
