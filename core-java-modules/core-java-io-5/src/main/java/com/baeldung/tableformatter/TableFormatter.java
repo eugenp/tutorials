@@ -51,6 +51,7 @@ public class TableFormatter {
             System.out.println(formattedRow);
         }
     }
+    
     static void usingStringBuilder() {
         String[] headers = {"ID", "Name", "Age"};
         String[][] data = { 
@@ -71,18 +72,17 @@ public class TableFormatter {
         System.out.print(table.toString());
     }
 
-    static void usingApacheCommonsText() {
-        String[] headers = {"ID", "Name", "Age"};
-        String[][] data = { 
-            {"1", "James", "24"}, 
-            {"2", "Sarah", "27"}, 
-            {"3", "Keith", "31"} 
-        };
-
-        TextTable table = new TextTable(headers, data);
-        TextStringBuilder output = new TextStringBuilder();
-        table.printTable(output, 0);
-
-        System.out.println(output);
+    static void usingAsciiTable() { 
+        AsciiTable table = new AsciiTable(); 
+        table.addRule(); 
+        table.addRow("ID", "Name", "Age"); 
+        table.addRule(); 
+        table.addRow("1", "James", "24"); 
+        table.addRow("2", "Sarah", "27"); 
+        table.addRow("3", "Keith", "31"); 
+        table.addRule(); 
+        
+        String renderedTable = table.render(); 
+        System.out.println(renderedTable); 
     }
 }
