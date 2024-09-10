@@ -1,36 +1,36 @@
 package com.baeldung.sortlistofpair;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
 import org.apache.commons.lang3.tuple.Pair;
 import org.junit.jupiter.api.Test;
 
-import com.google.common.collect.Lists;
-
 public class SortListOfPairUnitTest {
 
     private List<Pair<String, Integer>> getUnsortedInput() {
-        return Lists.newArrayList(
+        return Arrays.asList(
             //@formatter:off
-            Pair.of("a b c d e",5),
-            Pair.of("a b c",3),
-            Pair.of("a b c d",4),
-            Pair.of("a b",2),
-            Pair.of("a",1)
+            Pair.of("False", 5),
+            Pair.of("Yes", 3),
+            Pair.of("True", 4),
+            Pair.of("No", 2),
+            Pair.of("X", 1)
             //@formatter:on
         );
     }
 
     private static final List<Pair<String, Integer>> EXPECTED = List.of(
         //@formatter:off
-        Pair.of("a",1),
-        Pair.of("a b",2),
-        Pair.of("a b c",3),
-        Pair.of("a b c d",4),
-        Pair.of("a b c d e",5)
+        Pair.of("X", 1),
+        Pair.of("No", 2),
+        Pair.of("Yes", 3),
+        Pair.of("True", 4),
+        Pair.of("False", 5)
         //@formatter:on
     );
 
@@ -63,6 +63,12 @@ public class SortListOfPairUnitTest {
         myList.sort(Comparator.comparing(Pair::getRight));
 
         assertEquals(EXPECTED, myList);
+    }
+
+    @Test
+    void whenInPlaceSortingImmutableList_thenCorrect() {
+        List<Pair<String, Integer>> myImmutableList = List.copyOf(getUnsortedInput());
+        assertThrows(UnsupportedOperationException.class, () -> myImmutableList.sort(Comparator.comparing(Pair::getRight)));
     }
 
     @Test
