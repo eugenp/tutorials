@@ -4,9 +4,6 @@ buildscript {
             url "https://plugins.gradle.org/m2/"
         }
     }
-    dependencies {
-        classpath "org.shipkit:shipkit:2.3.5"
-    }
 }
 
 plugins {
@@ -17,7 +14,6 @@ sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
 apply from: 'aplugin.gradle'
-apply plugin: 'org.shipkit.bintray-release'
 
 
 //hello task
@@ -88,12 +84,12 @@ task printTaskProperty {
 //Declaring dependencies
 dependencies {
     implementation group:
-      'org.springframework', name: 'spring-core', version: '4.3.5.RELEASE'
-    implementation 'org.springframework:spring-core:4.3.5.RELEASE',
-            'org.springframework:spring-aop:4.3.5.RELEASE'
+            'org.springframework', name: 'spring-core', version: '5.3.39'
+    implementation 'org.springframework:spring-core:5.3.39',
+            'org.springframework:spring-aop:5.3.39'
     implementation(
-        [group: 'org.springframework', name: 'spring-core', version: '4.3.5.RELEASE'],
-        [group: 'org.springframework', name: 'spring-aop', version: '4.3.5.RELEASE']
+            [group: 'org.springframework', name: 'spring-core', version: '5.3.39'],
+            [group: 'org.springframework', name: 'spring-aop', version: '5.3.39']
     )
     testImplementation('org.hibernate.orm:hibernate-core:6.4.2.Final') {
         transitive = true
