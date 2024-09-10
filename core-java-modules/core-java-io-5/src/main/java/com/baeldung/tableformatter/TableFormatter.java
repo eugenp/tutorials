@@ -1,7 +1,6 @@
 package com.baeldung.tableformatter;
 
-import org.apache.commons.text.TextTable;
-import org.apache.commons.text.TextStringBuilder;
+import de.vandermeer.asciitable.AsciiTable;
 
 public class TableFormatter {
 
