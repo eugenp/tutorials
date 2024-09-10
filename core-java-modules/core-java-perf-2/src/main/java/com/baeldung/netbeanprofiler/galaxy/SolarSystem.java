@@ -29,7 +29,7 @@ public class SolarSystem {
         planet.remove(name);
     }
 
-    public void getLogSolarSystem() {
+    public void logSolarSystem() {
         LOGGER.info(name);
         LOGGER.info(String.valueOf(id));
         LOGGER.info(planet.toString());

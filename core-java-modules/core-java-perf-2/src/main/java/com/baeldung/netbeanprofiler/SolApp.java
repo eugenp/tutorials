@@ -36,7 +36,7 @@ public class SolApp {
         planet.add("Earth");
         planet.add("Venus");
         SolarSystem solarSystem = new SolarSystem(1, "Sol System", planet);
-        solarSystem.getLogSolarSystem();
+        solarSystem.logSolarSystem();
 
         File file = new File("solarSystem.hprof");
         if (file.exists()) {
