@@ -73,13 +73,4 @@ public class FastexcelHelper {
         }
         return true;
     }
-    
-    public boolean isRowEmptyUsingStreams(Row row) {
-        if (row == null) {
-            return true;
-        }
-        return StreamSupport.stream(row.spliterator(), false)
-                .noneMatch(cell -> cell != null && !cell.getText().isEmpty());
-    }
-
 }
