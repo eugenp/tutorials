@@ -5,9 +5,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 public class Baeldung implements Cloneable, Serializable {
 
     @Serial
@@ -15,21 +12,21 @@ public class Baeldung implements Cloneable, Serializable {
 
     private List<Article> articles;
 
-    // Constructors
     public Baeldung() {
         this.articles = new ArrayList<>();
     }
+
     public Baeldung(List<Article> articles) {
         this.articles = articles;
     }
 
-public Baeldung(Baeldung baeldung) {
-    List<Article> newArticle = new ArrayList<>();
-    baeldung.getArticles().forEach(article -> newArticle.add(new Article(article.getTitle(), article.getContent())));
-    this.articles = newArticle;
-}
+    public Baeldung(Baeldung baeldung) {
+        List<Article> newArticle = new ArrayList<>();
 
-    // Getters and Setters
+        baeldung.getArticles()
+            .forEach(article -> newArticle.add(new Article(article.getTitle(), article.getContent())));
+        this.articles = newArticle;
+    }
 
     public List<Article> getArticles() {
         return articles;
@@ -39,24 +36,12 @@ public Baeldung(Baeldung baeldung) {
         this.articles = articles;
     }
 
-    // Method to add an article
-    public void addArticle(Article article) {
-        this.articles.add(article);
-    }
-
-    // Clone method for deep copy
-
     @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
-
-    public static Baeldung createDeepCopy(Baeldung baeldung) {
-        ObjectMapper objectMapper = new ObjectMapper();
+    protected Object clone() {
         try {
-            return objectMapper.readValue(objectMapper.writeValueAsString(baeldung), Baeldung.class);
-        } catch (JsonProcessingException e) {
-            throw new IllegalArgumentException(e);
+            return (Baeldung) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e);
         }
     }
 
