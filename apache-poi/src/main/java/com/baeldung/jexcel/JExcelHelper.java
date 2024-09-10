@@ -89,13 +89,4 @@ public class JExcelHelper {
         }
         return true;
     }
-    
-    public boolean isRowEmptyUsingStreams(Cell[] row) {
-        if (row == null) {
-            return true;
-        }
-        return Arrays.stream(row)
-                .noneMatch(cell -> cell != null && !cell.getContents().trim().isEmpty());
-    }
-
 }

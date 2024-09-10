@@ -147,14 +147,4 @@ public class ExcelPOIHelper {
         }
         return true;
     }
-    
-    public boolean isRowEmptyUsingStreams(Row row) {
-        if (row == null) {
-            return true;
-        }
-        return IntStream.range(row.getFirstCellNum(), row.getLastCellNum())
-                .mapToObj(row::getCell)
-                .noneMatch(cell -> cell != null && cell.getCellType() != CellType.BLANK);
-    }
-
 }
