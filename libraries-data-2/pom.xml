@@ -163,7 +163,7 @@
         <crdt.version>0.1.0</crdt.version>
         <unit-ri.version>1.0.3</unit-ri.version>
         <infinispan.version>14.0.6.Final</infinispan.version>
-        <spring.version>5.3.25</spring.version>
+        <spring.version>6.1.12</spring.version>
         <SuanShu.version>0.1.0</SuanShu.version>
         <derive4j.version>1.1.0</derive4j.version>
         <awaitility.version>3.0.0</awaitility.version>
