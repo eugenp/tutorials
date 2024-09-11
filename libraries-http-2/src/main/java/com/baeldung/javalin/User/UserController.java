@@ -1,9 +1,9 @@
 package com.baeldung.javalin.User;
 
-import io.javalin.Handler;
-
 import java.util.Objects;
 import java.util.Optional;
+
+import io.javalin.Handler;
 
 public class UserController {
     public static Handler fetchAllUsernames = ctx -> {
