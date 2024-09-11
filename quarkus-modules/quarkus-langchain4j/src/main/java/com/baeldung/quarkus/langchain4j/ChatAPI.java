@@ -1,6 +1,5 @@
 package com.baeldung.quarkus.langchain4j;
 
-import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
@@ -19,7 +18,6 @@ public class ChatAPI {
 
     private ChatBot chatBot;
 
-    @Inject
     public ChatAPI(ChatBot chatBot) {
         this.chatBot = chatBot;
     }
