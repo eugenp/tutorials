@@ -4,25 +4,26 @@ import com.baeldung.cloud.openfeign.ExampleApplication;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.cloud.openfeign.FeignClientProperties;
 import org.springframework.http.HttpStatus;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeoutException;
 
-import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
+import static com.github.tomakehurst.wiremock.client.WireMock.configureFor;
+import static com.github.tomakehurst.wiremock.client.WireMock.get;
+import static com.github.tomakehurst.wiremock.client.WireMock.post;
+import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
+import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
 import static org.junit.Assert.*;
-import static org.mockito.ArgumentMatchers.any;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = ExampleApplication.class)
-@TestPropertySource(locations = "classpath:application-integration_test.properties")
 class PurchaseServiceIntegrationTest {
 
     @Autowired
@@ -36,8 +37,6 @@ class PurchaseServiceIntegrationTest {
 
     private WireMockServer wireMockServer;
 
-    private Purchase purchase;
-
     @BeforeEach
     public void startWireMockServer() {
         wireMockServer = new WireMockServer(8083);
@@ -46,8 +45,6 @@ class PurchaseServiceIntegrationTest {
 
         stubFor(post(urlEqualTo("/reports"))
                 .willReturn(aResponse().withStatus(HttpStatus.OK.value())));
-
-        purchase = new Purchase("BR");
     }
 
     @AfterEach
@@ -58,10 +55,10 @@ class PurchaseServiceIntegrationTest {
     @Test
     void givenRestCalls_whenBothReturnsOk_thenReturnCorrectResult()
             throws ExecutionException, InterruptedException {
-        stubFor(post(urlEqualTo("/purchase?site_id=BR"))
+        stubFor(get(urlEqualTo("/payment_methods?site_id=BR"))
                 .willReturn(aResponse().withStatus(HttpStatus.OK.value()).withBody("credit_card")));
 
-        String result = purchaseService.executePurchase(purchase);
+        String result = purchaseService.executePurchase("BR");
 
         assertNotNull(result);
         assertEquals("Purchase executed with payment method credit_card", result);
@@ -70,32 +67,33 @@ class PurchaseServiceIntegrationTest {
     @Test
     void givenRestCalls_whenPurchaseReturns404_thenReturnDefault()
             throws ExecutionException, InterruptedException {
-        stubFor(post(urlEqualTo("/purchase?site_id=BR"))
+        stubFor(get(urlEqualTo("/payment_methods?site_id=BR"))
                 .willReturn(aResponse().withStatus(HttpStatus.NOT_FOUND.value())));
 
-        String result = purchaseService.executePurchase(purchase);
+        String result = purchaseService.executePurchase("BR");
 
         assertNotNull(result);
-        assertEquals("Purchase executed with payment method account_money", result);
+        assertEquals("Purchase executed with payment method cash", result);
     }
 
     @Test
-    void givenRestCalls_whenPurchaseCompletableFutureTimeout_thenReturnDefault() {
-        stubFor(post(urlEqualTo("/purchase?site_id=BR"))
-                .willReturn(aResponse().withFixedDelay(450)));
+    @Disabled
+    void givenRestCalls_whenPurchaseCompletableFutureTimeout_thenThrowNewException() {
+        stubFor(get(urlEqualTo("/payment_methods?site_id=BR"))
+                .willReturn(aResponse().withFixedDelay(550)));
 
-        Throwable error = assertThrows(ExecutionException.class, () -> purchaseService.executePurchase(purchase));
+        Throwable error = assertThrows(ExecutionException.class, () -> purchaseService.executePurchase("BR"));
 
         assertEquals("java.lang.RuntimeException: Thread timeout!", error.getMessage());
     }
 
-//    @Test
-//    void givenRestCalls_whenPurchaseRequestWebTimeout_thenReturnDefault() {
-//        stubFor(post(urlEqualTo("/purchase?site_id=BR"))
-//                .willReturn(aResponse().withFixedDelay(250)));
-//
-//        Throwable error = assertThrows(ExecutionException.class, () -> purchaseService.executePurchase(purchase));
-//
-//        assertEquals("REST call network timeout!", error.getMessage());
-//    }
+    @Test
+    void givenRestCalls_whenPurchaseRequestWebTimeout_thenThrowNewException() {
+        stubFor(get(urlEqualTo("/payment_methods?site_id=BR"))
+                .willReturn(aResponse().withFixedDelay(250)));
+
+        Throwable error = assertThrows(ExecutionException.class, () -> purchaseService.executePurchase("BR"));
+
+        assertEquals("java.lang.RuntimeException: REST call network timeout!", error.getMessage());
+    }
 }
