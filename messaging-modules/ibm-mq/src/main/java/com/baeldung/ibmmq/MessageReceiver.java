@@ -7,6 +7,7 @@ import javax.jms.Message;
 import javax.jms.QueueConnection;
 import javax.jms.QueueConnectionFactory;
 import javax.jms.QueueReceiver;
+import javax.jms.QueueSender;
 import javax.jms.QueueSession;
 import javax.jms.Session;
 import javax.jms.Queue;
@@ -15,37 +16,21 @@ import javax.jms.TextMessage;
 public class MessageReceiver {
 
     private QueueConnectionFactory factory;
+    private QueueConnection connection;
+    private QueueSession session;
+    private QueueReceiver receiver;
 
     public MessageReceiver() throws JMSException {
         factory = new JMSSetup().createConnectionFactory();
-    }
-
-    public QueueConnection createConnection() throws JMSException {
-        return factory.createQueueConnection();
-    }
-
-    public QueueSession createSession(QueueConnection connection) throws JMSException {
-        return connection.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);
-    }
-
-    public Queue getQueue(QueueSession session) throws JMSException {
-        return session.createQueue("QUEUE1");
-    }
-
-    public QueueReceiver createReceiver(QueueSession session, Queue queue) throws JMSException {
-        return session.createReceiver(queue);
+        connection = factory.createQueueConnection();
+        session = connection.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);
+        Queue queue = session.createQueue("QUEUE1");
+        receiver = session.createReceiver(queue);
+        connection.start();
     }
 
     public void receiveMessage() {
-        QueueConnection connection = null;
-        QueueSession session = null;
-        QueueReceiver receiver = null;
         try {
-            connection = createConnection();
-            session = createSession(connection);
-            Queue queue = getQueue(session);
-            receiver = createReceiver(session, queue);
-            connection.start();
             Message message = receiver.receive(1000);
             if (message instanceof TextMessage) {
                 TextMessage textMessage = (TextMessage) message;
@@ -61,7 +46,6 @@ public class MessageReceiver {
             } else {
                 log("No text message received.");
             }
-            // log("Message sent: " + messageText);
         } catch (JMSException e) {
             // handle exception
         } finally {

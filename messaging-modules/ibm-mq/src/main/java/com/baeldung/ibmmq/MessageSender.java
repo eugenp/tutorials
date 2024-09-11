@@ -14,37 +14,21 @@ import javax.jms.TextMessage;
 public class MessageSender {
 
     private QueueConnectionFactory factory;
+    private QueueConnection connection;
+    private QueueSession session;
+    private QueueSender sender;
 
     public MessageSender() throws JMSException {
         factory = new JMSSetup().createConnectionFactory();
-    }
-
-    public QueueConnection createConnection() throws JMSException {
-        return factory.createQueueConnection();
-    }
-
-    public QueueSession createSession(QueueConnection connection) throws JMSException {
-        return connection.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);
-    }
-
-    public Queue getQueue(QueueSession session) throws JMSException {
-        return session.createQueue("QUEUE1");
-    }
-
-    public QueueSender createSender(QueueSession session, Queue queue) throws JMSException {
-        return session.createSender(queue);
+        connection = factory.createQueueConnection();
+        session = connection.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);
+        Queue queue = session.createQueue("QUEUE1");
+        sender = session.createSender(queue);
+        connection.start();
     }
 
     public void sendMessage(String messageText) {
-        QueueConnection connection = null;
-        QueueSession session = null;
-        QueueSender sender = null;
         try {
-            connection = createConnection();
-            session = createSession(connection);
-            Queue queue = getQueue(session);
-            sender = createSender(session, queue);
-            connection.start();
             TextMessage message = session.createTextMessage();
             message.setText(messageText);
             sender.send(message);
