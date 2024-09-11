@@ -108,6 +108,11 @@
             <artifactId>google-http-client-jackson2</artifactId>
             <version>${googleclient.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.asynchttpclient</groupId>
+            <artifactId>async-http-client</artifactId>
+            <version>${async.http.client.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -139,6 +144,7 @@
         <mockito-inline.version>5.2.0</mockito-inline.version>
         <javalin.version>1.6.0</javalin.version>
         <googleclient.version>1.23.0</googleclient.version>
+        <async.http.client.version>2.2.0</async.http.client.version>
     </properties>
 
 </project>
