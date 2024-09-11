@@ -10,4 +10,5 @@ This module contains articles about HTTP libraries.
 - [A Guide to Unirest](https://www.baeldung.com/unirest)
 - [A Quick Guide to Timeouts in OkHttp](https://www.baeldung.com/okhttp-timeouts)
 - [A Quick Guide to Post Requests with OkHttp](https://www.baeldung.com/okhttp-post)
+- [Trusting All Certificates in OkHttp](https://www.baeldung.com/okhttp-client-trust-all-certificates)
 - More articles [[next -->]](/libraries-http-2)
