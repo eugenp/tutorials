@@ -67,15 +67,15 @@ public class SortListOfPairUnitTest {
 
     @Test
     void whenInPlaceSortingImmutableList_thenCorrect() {
-        List<Pair<String, Integer>> myImmutableList = List.copyOf(getUnsortedInput());
-        assertThrows(UnsupportedOperationException.class, () -> myImmutableList.sort(Comparator.comparing(Pair::getRight)));
+        List<Pair<String, Integer>> immutableUnsortedList = List.copyOf(getUnsortedInput());
+        assertThrows(UnsupportedOperationException.class, () -> immutableUnsortedList.sort(Comparator.comparing(Pair::getRight)));
     }
 
     @Test
     void whenSortingUsingStream_thenCorrect() {
-        List<Pair<String, Integer>> unsorted = List.copyOf(getUnsortedInput());
+        List<Pair<String, Integer>> immutableUnsortedList = List.copyOf(getUnsortedInput());
 
-        List<Pair<String, Integer>> sorted = unsorted.stream()
+        List<Pair<String, Integer>> sorted = immutableUnsortedList.stream()
             .sorted(Comparator.comparing(Pair::getRight))
             .toList();
 
