@@ -1,5 +1,11 @@
 package com.baeldung.googlehttpclientguide;
 
+import java.lang.reflect.Type;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+
 import com.google.api.client.http.HttpBackOffUnsuccessfulResponseHandler;
 import com.google.api.client.http.HttpRequest;
 import com.google.api.client.http.HttpRequestFactory;
@@ -11,11 +17,6 @@ import com.google.api.client.json.JsonObjectParser;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.util.ExponentialBackOff;
 import com.google.gson.reflect.TypeToken;
-import java.lang.reflect.Type;
-import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 
 public class GitHubExample {
     static final HttpTransport HTTP_TRANSPORT = new NetHttpTransport();

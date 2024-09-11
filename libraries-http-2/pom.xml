@@ -98,6 +98,16 @@
             <artifactId>javalin</artifactId>
             <version>${javalin.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.google.http-client</groupId>
+            <artifactId>google-http-client</artifactId>
+            <version>${googleclient.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.http-client</groupId>
+            <artifactId>google-http-client-jackson2</artifactId>
+            <version>${googleclient.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -128,6 +138,7 @@
         <jmockit.version>1.49</jmockit.version>
         <mockito-inline.version>5.2.0</mockito-inline.version>
         <javalin.version>1.6.0</javalin.version>
+        <googleclient.version>1.23.0</googleclient.version>
     </properties>
 
 </project>

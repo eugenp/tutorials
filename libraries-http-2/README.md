@@ -14,5 +14,6 @@ This module contains articles about HTTP libraries.
 - [Trusting All Certificates in OkHttp](https://www.baeldung.com/okhttp-client-trust-all-certificates)
 - [Mock a URL Connection in Java](https://www.baeldung.com/java-simulate-url-connection)
 - [Creating REST Microservices with Javalin](https://www.baeldung.com/javalin-rest-microservices)
+- [A Guide to Google-Http-Client](https://www.baeldung.com/google-http-client)
 - More articles [[<-- prev]](/libraries-http)
 
