@@ -6,7 +6,6 @@ This module contains articles about HTTP libraries.
 
 - [A Guide to OkHttp](https://www.baeldung.com/guide-to-okhttp)
 - [Asynchronous HTTP with async-http-client in Java](https://www.baeldung.com/async-http-client)
-- [Integrating Retrofit with RxJava](https://www.baeldung.com/retrofit-rxjava)
 - [Introduction to Retrofit](https://www.baeldung.com/retrofit)
 - [A Guide to Unirest](https://www.baeldung.com/unirest)
 - [A Quick Guide to Timeouts in OkHttp](https://www.baeldung.com/okhttp-timeouts)

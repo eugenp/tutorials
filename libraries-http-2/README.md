@@ -16,5 +16,6 @@ This module contains articles about HTTP libraries.
 - [Creating REST Microservices with Javalin](https://www.baeldung.com/javalin-rest-microservices)
 - [A Guide to Google-Http-Client](https://www.baeldung.com/google-http-client)
 - [WebSockets with AsyncHttpClient](https://www.baeldung.com/async-http-client-websockets)
+- [Integrating Retrofit with RxJava](https://www.baeldung.com/retrofit-rxjava)
 - More articles [[<-- prev]](/libraries-http)
 
