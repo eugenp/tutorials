@@ -1,10 +1,11 @@
 package com.baeldung.spring;
 
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.ImportResource;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
-@ImportResource({ "classpath:webSecurityConfig.xml" })
+@EnableWebMvc
+//@ImportResource({ "classpath:webSecurityConfig.xml" })
 public class SecSecurityConfig {
 
     public SecSecurityConfig() {

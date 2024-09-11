@@ -1,6 +1,7 @@
 package com.baeldung.spring;
 
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -9,6 +10,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
+import org.springframework.http.CacheControl;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -28,6 +30,7 @@ import org.springframework.web.servlet.view.JstlView;
 @ComponentScan(basePackages = { "com.baeldung.web.controller", "com.baeldung.persistence.service", "com.baeldung.persistence.dao" })
 @EnableWebMvc
 public class MvcConfig implements WebMvcConfigurer {
+
     @Autowired
     Environment env;
 
