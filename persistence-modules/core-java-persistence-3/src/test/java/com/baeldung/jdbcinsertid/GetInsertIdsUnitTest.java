@@ -14,8 +14,9 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-public class GetInsertIdsUnitTest {
-    private static Connection connection = null;
+import com.baeldung.TestHelper;
+
+public class GetInsertIdsUnitTest extends TestHelper {
     private static final String JDBC_URL = "jdbc:h2:mem:testDB";
     private static final String USERNAME = "dbUser";
     private static final String PASSWORD = "dbPassword";
@@ -43,35 +44,5 @@ public class GetInsertIdsUnitTest {
         }
 
         assertEquals(expectedIds, actualIds);
-    }
-
-    private static Connection connect(String url, String user, String password) throws SQLException {
-        Connection connection = DriverManager.getConnection(url, user, password);
-        if (connection != null) {
-            System.out.println("Connected to database");
-        }
-
-        return connection;
-    }
-
-    private static void populateDB() throws SQLException {
-        String createTable = """
-            CREATE TABLE EMPLOYEES (
-                id SERIAL PRIMARY KEY ,
-                first_name VARCHAR(50),
-                last_name VARCHAR(50),
-                salary DECIMAL(10, 2)
-            );
-            """;
-        PreparedStatement preparedStatement = connection.prepareStatement(createTable);
-        preparedStatement.execute();
-    }
-
-    private static void destroyDB() throws SQLException {
-        String destroy = """
-              DROP table IF EXISTS EMPLOYEES;
-            """;
-        connection.prepareStatement(destroy)
-            .execute();
     }
 }

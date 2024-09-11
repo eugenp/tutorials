@@ -75,6 +75,11 @@
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>${opencsv.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -84,5 +89,6 @@
         <org.json.version>20240303</org.json.version>
         <jooq.version>3.19.11</jooq.version>
         <jdbc-stream.version>0.1.1</jdbc-stream.version>
+        <opencsv.version>5.9</opencsv.version>
     </properties>
 </project>
