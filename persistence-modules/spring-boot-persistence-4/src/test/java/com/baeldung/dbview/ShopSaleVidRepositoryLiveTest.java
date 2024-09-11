@@ -16,8 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
         "spring.jpa.defer-datasource-initialization=true",
         "spring.sql.init.data-locations=classpath:shop-sale-data.sql"
 })
-@Disabled
-class ShopSaleVidRepositoryIntegrationTest {
+class ShopSaleVidRepositoryLiveTest {
 
     @Autowired
     private ShopSaleVidRepository shopSaleVidRepository;
