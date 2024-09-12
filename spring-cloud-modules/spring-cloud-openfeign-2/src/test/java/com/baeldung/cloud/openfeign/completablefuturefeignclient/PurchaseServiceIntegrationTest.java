@@ -2,6 +2,7 @@ package com.baeldung.cloud.openfeign.completablefuturefeignclient;
 
 import com.baeldung.cloud.openfeign.ExampleApplication;
 import com.github.tomakehurst.wiremock.WireMockServer;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
@@ -43,8 +44,7 @@ class PurchaseServiceIntegrationTest {
         configureFor("localhost", 8083);
         wireMockServer.start();
 
-        stubFor(post(urlEqualTo("/reports"))
-                .willReturn(aResponse().withStatus(HttpStatus.OK.value())));
+        stubFor(post(urlEqualTo("/reports")).willReturn(aResponse().withStatus(HttpStatus.OK.value())));
     }
 
     @AfterEach
@@ -53,10 +53,9 @@ class PurchaseServiceIntegrationTest {
     }
 
     @Test
-    void givenRestCalls_whenBothReturnsOk_thenReturnCorrectResult()
-            throws ExecutionException, InterruptedException {
-        stubFor(get(urlEqualTo("/payment_methods?site_id=BR"))
-                .willReturn(aResponse().withStatus(HttpStatus.OK.value()).withBody("credit_card")));
+    void givenRestCalls_whenBothReturnsOk_thenReturnCorrectResult() throws ExecutionException, InterruptedException {
+        stubFor(get(urlEqualTo("/payment_methods?site_id=BR")).willReturn(aResponse().withStatus(HttpStatus.OK.value())
+            .withBody("credit_card")));
 
         String result = purchaseService.executePurchase("BR");
 
@@ -65,10 +64,8 @@ class PurchaseServiceIntegrationTest {
     }
 
     @Test
-    void givenRestCalls_whenPurchaseReturns404_thenReturnDefault()
-            throws ExecutionException, InterruptedException {
-        stubFor(get(urlEqualTo("/payment_methods?site_id=BR"))
-                .willReturn(aResponse().withStatus(HttpStatus.NOT_FOUND.value())));
+    void givenRestCalls_whenPurchaseReturns404_thenReturnDefault() throws ExecutionException, InterruptedException {
+        stubFor(get(urlEqualTo("/payment_methods?site_id=BR")).willReturn(aResponse().withStatus(HttpStatus.NOT_FOUND.value())));
 
         String result = purchaseService.executePurchase("BR");
 
@@ -79,8 +76,7 @@ class PurchaseServiceIntegrationTest {
     @Test
     @Disabled
     void givenRestCalls_whenPurchaseCompletableFutureTimeout_thenThrowNewException() {
-        stubFor(get(urlEqualTo("/payment_methods?site_id=BR"))
-                .willReturn(aResponse().withFixedDelay(550)));
+        stubFor(get(urlEqualTo("/payment_methods?site_id=BR")).willReturn(aResponse().withFixedDelay(550)));
 
         Throwable error = assertThrows(ExecutionException.class, () -> purchaseService.executePurchase("BR"));
 
@@ -89,8 +85,7 @@ class PurchaseServiceIntegrationTest {
 
     @Test
     void givenRestCalls_whenPurchaseRequestWebTimeout_thenThrowNewException() {
-        stubFor(get(urlEqualTo("/payment_methods?site_id=BR"))
-                .willReturn(aResponse().withFixedDelay(250)));
+        stubFor(get(urlEqualTo("/payment_methods?site_id=BR")).willReturn(aResponse().withFixedDelay(250)));
 
         Throwable error = assertThrows(ExecutionException.class, () -> purchaseService.executePurchase("BR"));
 
