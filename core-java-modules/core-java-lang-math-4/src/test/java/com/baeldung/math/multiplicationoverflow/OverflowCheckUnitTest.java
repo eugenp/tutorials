@@ -1,38 +1,35 @@
 package com.baeldung.math.multiplicationoverflow;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 public class OverflowCheckUnitTest {
 
-    /* Rethrow the exception in the checkMultiplication() method before using this tests
     @Test
-    public void whenMultiplyingLargeIntValues_thenArithmeticExceptionIsThrown() {
-        assertThrows(ArithmeticException.class, () -> {
-            OverflowCheck.checkMultiplication(Integer.MAX_VALUE, 2); // This should cause overflow
-        });
+    public void whenMultiplyingSmallIntValues_thenResultIsReturned() {
+        // Check if result message is returned for valid int multiplication
+        String result = OverflowCheck.checkMultiplication(5_000, 3_000);
+        Assertions.assertEquals("Result (int): 15000000", result);
     }
 
     @Test
-    public void whenMultiplyingLargeLongValues_thenArithmeticExceptionIsThrown() {
-        assertThrows(ArithmeticException.class, () -> {
-            OverflowCheck.checkMultiplication(Long.MAX_VALUE, 2L); // This should cause overflow
-        });
-    }
-     */
-
-    @Test
-    public void whenMultiplyingSmallLongValues_thenNoExceptionIsThrown() {
-        assertDoesNotThrow(() -> {
-            OverflowCheck.checkMultiplication(1_000_000_000L, 10_000_000L); // This should not cause overflow
-        });
+    public void whenMultiplyingLargeIntValues_thenOverflowMessageIsReturned() {
+        // Check if overflow message is returned for int multiplication
+        String result = OverflowCheck.checkMultiplication(Integer.MAX_VALUE, 2);
+        Assertions.assertEquals("Overflow occurred for int!", result);
     }
 
     @Test
-    public void whenMultiplyingSmallIntValues_thenNoExceptionIsThrown() {
-        assertDoesNotThrow(() -> {
-            OverflowCheck.checkMultiplication(1_000, 10_000); // This should not cause overflow
-        });
+    public void whenMultiplyingLargeLongValues_thenResultIsReturned() {
+        // Check if result message is returned for valid long multiplication
+        String result = OverflowCheck.checkMultiplication(1_000_000_000L, 10_000_000L);
+        Assertions.assertEquals("Result (long): 10000000000000000", result);
+    }
+
+    @Test
+    public void whenMultiplyingTooLargeLongValues_thenOverflowMessageIsReturned() {
+        // Check if overflow message is returned for long multiplication
+        String result = OverflowCheck.checkMultiplication(Long.MAX_VALUE, 2);
+        Assertions.assertEquals("Overflow occurred for long!", result);
     }
 }
