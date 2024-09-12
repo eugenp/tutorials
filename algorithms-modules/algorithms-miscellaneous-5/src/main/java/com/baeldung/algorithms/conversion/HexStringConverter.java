@@ -47,6 +47,40 @@ public class HexStringConverter {
         return new String(hexDigits);
     }
 
+    public String byteToHexWithStringFormat(byte num) {
+        return new String(String.format("%02X", num));
+    }
+
+    public String byteToHexWithBitwiseShiftOperators(byte num) {
+        char[] hexInitialization = "0123456789ABCDEF".toCharArray();
+
+        int v = num & 0xFF;
+        char[] hexResult = new char[2];
+        hexResult[0] = hexInitialization[v >>> 4];
+        hexResult[1] = hexInitialization[v & 0x0F];
+        return new String(String.valueOf(hexResult));
+    }
+
+    public String byteToHexWithIntegerClass(byte num) {
+        String result = Integer.toHexString(num);
+        if (result.length() % 2 == 1) {
+            result = "0" + result;
+        }
+        return new String(result);
+    }
+
+    public String byteToHexWithLongClass(byte num) {
+        String result = Long.toHexString(num);
+        if (result.length() % 2 == 1) {
+            result = "0" + result;
+        }
+        return result;
+    }
+
+    public String hexDecimalRepresentationWithBigInteger(byte num) {
+        return new String(new BigInteger(1, new byte[] { num }).toString(16));
+    }
+
     public byte hexToByte(String hexString) {
         int firstDigit = toDigit(hexString.charAt(0));
         int secondDigit = toDigit(hexString.charAt(1));
