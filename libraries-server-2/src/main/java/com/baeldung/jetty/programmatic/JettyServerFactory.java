@@ -1,4 +1,4 @@
-package com.baeldung.jetty;
+package com.baeldung.jetty.programmatic;
 
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;

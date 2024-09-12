@@ -1,19 +1,13 @@
 package com.baeldung.netty;
 
-import java.nio.charset.Charset;
-
-import static org.assertj.core.api.Assertions.*;
-
-import org.assertj.core.api.Assertions;
+import io.netty.channel.embedded.EmbeddedChannel;
+import io.netty.handler.codec.http.*;
 import org.junit.Test;
 
-import io.netty.channel.embedded.EmbeddedChannel;
-import io.netty.handler.codec.http.DefaultFullHttpRequest;
-import io.netty.handler.codec.http.FullHttpRequest;
-import io.netty.handler.codec.http.FullHttpResponse;
-import io.netty.handler.codec.http.HttpMethod;
-import io.netty.handler.codec.http.HttpResponseStatus;
-import io.netty.handler.codec.http.HttpVersion;
+import java.nio.charset.Charset;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class EmbeddedChannelUnitTest {
 
