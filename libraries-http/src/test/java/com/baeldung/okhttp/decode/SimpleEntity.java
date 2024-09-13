@@ -1,4 +1,4 @@
-package com.baeldung.okhttp;
+package com.baeldung.okhttp.decode;
 
 public class SimpleEntity {
     protected String name;
