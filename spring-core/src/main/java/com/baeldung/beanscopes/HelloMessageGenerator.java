@@ -1,4 +1,4 @@
-package com.baeldung.scopes;
+package com.baeldung.beanscopes;
 
 public class HelloMessageGenerator {
 

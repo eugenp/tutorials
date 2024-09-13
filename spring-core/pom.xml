@@ -59,6 +59,10 @@
             <artifactId>jakarta.annotation-api</artifactId>
             <version>${jakarta.annotation-api}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-websocket</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

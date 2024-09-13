@@ -11,5 +11,7 @@ This module contains articles about core Spring functionality.
 - [What Is a Spring Bean?](https://www.baeldung.com/spring-bean)
 - [Spring PostConstruct and PreDestroy Annotations](https://www.baeldung.com/spring-postconstruct-predestroy)
 - [Intro to the Spring ClassPathXmlApplicationContext](http://www.baeldung.com/spring-classpathxmlapplicationcontext)
+- [Quick Guide to Spring Bean Scopes](http://www.baeldung.com/spring-bean-scopes)
+
 - More articles: [[next -->]](../spring-core-2)
 

@@ -1,13 +1,12 @@
-package com.baeldung.scopes;
+package com.baeldung.beanscopes;
 
-import javax.annotation.Resource;
-
+import jakarta.annotation.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 
 @Controller
 public class ScopesController {
@@ -22,7 +21,7 @@ public class ScopesController {
     @Resource(name = "applicationScopedBean")
     HelloMessageGenerator applicationScopedBean;
 
-    @RequestMapping("/scopes/request")
+    @RequestMapping("/beanscopes/request")
     public String getRequestScopeMessage(final Model model) {
         model.addAttribute("previousMessage", requestScopedBean.getMessage());
         requestScopedBean.setMessage("Request Scope Message!");
@@ -30,7 +29,7 @@ public class ScopesController {
         return "scopesExample";
     }
 
-    @RequestMapping("/scopes/session")
+    @RequestMapping("/beanscopes/session")
     public String getSessionScopeMessage(final Model model) {
         model.addAttribute("previousMessage", sessionScopedBean.getMessage());
         sessionScopedBean.setMessage("Session Scope Message!");
@@ -38,7 +37,7 @@ public class ScopesController {
         return "scopesExample";
     }
 
-    @RequestMapping("/scopes/application")
+    @RequestMapping("/beanscopes/application")
     public String getApplicationScopeMessage(final Model model) {
         model.addAttribute("previousMessage", applicationScopedBean.getMessage());
         applicationScopedBean.setMessage("Application Scope Message!");

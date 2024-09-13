@@ -4,7 +4,6 @@ This module contains articles about core Spring functionality
 
 ## Relevant Articles:
 
-- [Quick Guide to Spring Bean Scopes](http://www.baeldung.com/spring-bean-scopes)
 - [Spring Events](https://www.baeldung.com/spring-events)
 - [Solving Spring’s “not eligible for auto-proxying” Warning](https://www.baeldung.com/spring-not-eligible-for-auto-proxying)
 - [Finding the Spring Version](https://www.baeldung.com/spring-find-version)

@@ -1,4 +1,4 @@
-package com.baeldung.scopes;
+package com.baeldung.beanscopes;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
