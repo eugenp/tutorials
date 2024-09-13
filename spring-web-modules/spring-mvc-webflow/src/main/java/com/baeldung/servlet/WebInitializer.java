@@ -1,6 +1,6 @@
 package com.baeldung.servlet;
 
-import javax.servlet.ServletRegistration.Dynamic;
+import jakarta.servlet.ServletRegistration.Dynamic;
 
 import com.baeldung.spring.WebFlowConfig;
 import com.baeldung.spring.WebMvcConfig;
