@@ -14,14 +14,14 @@ import java.util.logging.Handler;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
-import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.hasSize;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 @EnableAspectJAutoProxy
-public class JoinPointBeforeAspectIntegrationTest {
+public class JoinPointAfterThrowingAspectIntegrationTest {
 
     private final List<String> messages = new ArrayList<>();
 
@@ -42,19 +42,19 @@ public class JoinPointBeforeAspectIntegrationTest {
             }
         };
 
-        Logger logger = Logger.getLogger(JoinPointBeforeAspect.class.getName());
+        Logger logger = Logger.getLogger(JoinPointAfterThrowingAspect.class.getName());
         logger.addHandler(logEventHandler);
     }
 
     @Autowired
     private ArticleService articleService;
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void shouldLogMethodSignatureBeforeExecution() {
-        articleService.getArticleList();
+        articleService.getArticleList(" ");
 
         assertThat(messages, hasSize(1));
-        assertTrue(messages.contains("INFO Method List com.baeldung.joinpoint.ArticleService.getArticleList() executed with [] arguments"));
+        assertTrue(messages.contains("SEVERE startsWithFilter can't be blank"));
     }
 
 }

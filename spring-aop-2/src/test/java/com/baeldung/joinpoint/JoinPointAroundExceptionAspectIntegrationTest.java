@@ -14,14 +14,14 @@ import java.util.logging.Handler;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
-import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.hasSize;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 @EnableAspectJAutoProxy
-public class JoinPointAfterThrowingAspectIntegrationTest {
+public class JoinPointAroundExceptionAspectIntegrationTest {
 
     private final List<String> messages = new ArrayList<>();
 
@@ -42,7 +42,7 @@ public class JoinPointAfterThrowingAspectIntegrationTest {
             }
         };
 
-        Logger logger = Logger.getLogger(JoinPointAfterThrowingAspect.class.getName());
+        Logger logger = Logger.getLogger(JoinPointAroundExceptionAspect.class.getName());
         logger.addHandler(logEventHandler);
     }
 
@@ -54,7 +54,7 @@ public class JoinPointAfterThrowingAspectIntegrationTest {
         articleService.getArticleList(" ");
 
         assertThat(messages, hasSize(1));
-        assertTrue(messages.contains("SEVERE startsWithFilter can't be blank"));
+        assertTrue(messages.contains("INFO Retrying operation"));
     }
 
 }
