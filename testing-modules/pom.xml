@@ -40,7 +40,7 @@
         <module>mockito</module>
         <module>mockito-simple</module>
         <!-- <module>mocks</module>--> <!-- failing after upgrading to jdk17 -->
-        <!-- <module>mocks-2</module>--> <!-- failing after upgrading to jdk17 -->
+        <module>mocks-2</module>
         <module>mockserver</module>
         <module>parallel-tests-junit</module>
         <module>powermock</module>
