@@ -23,6 +23,11 @@ public class XmlDocumentUnitTest {
 
         assertNotNull(document);
         assertEquals("root", document.getDocumentElement().getNodeName());
+
+        Element rootElement = document.getDocumentElement();
+        assertNotNull(rootElement.getElementsByTagName("child"));
+        assertEquals(1, rootElement.getElementsByTagName("child").getLength());
+        assertEquals("Example", rootElement.getElementsByTagName("child").item(0).getTextContent());
     }
 
     @Test
