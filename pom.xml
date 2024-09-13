@@ -362,7 +362,7 @@
                 <module>spring-integration</module>
                 <!-- <module>spring-roo</module> --> <!-- Not supported JAVA-17327 -->
                 <module>spring-security-modules/spring-security-ldap</module>
-                <module>spring-swagger-codegen</module>
+                <module>spring-swagger-codegen-modules</module>
                 <module>video-tutorials</module>
                 <module>jhipster-6</module>
             </modules>
@@ -481,7 +481,7 @@
                 <module>spring-integration</module>
                 <!-- <module>spring-roo</module> --> <!-- Not supported JAVA-17327 -->
                 <module>spring-security-modules/spring-security-ldap</module>
-                <module>spring-swagger-codegen</module>
+                <module>spring-swagger-codegen-modules</module>
                 <module>video-tutorials</module>
                 <module>jhipster-6</module>
             </modules>
@@ -598,8 +598,8 @@
                 <module>spring-security-modules/spring-security-legacy-oidc</module>
                 <!--<module>static-analysis</module> - requires additional configuration to be compiled due to the JVM strong encapsulation -->
                 <!--<module>tablesaw</module>--><!-- failing after upgrading to jdk17-->
-                <!--<module>spring-swagger-codegen/openapi-custom-generator</module>
-                <module>spring-swagger-codegen/openapi-custom-generator-api-client</module> --> <!-- cannot add the individual modules here because the order is not guaranteed -->
+                <!--<module>spring-swagger-codegen-modules/openapi-custom-generator</module>
+                <module>spring-swagger-codegen-modules/openapi-custom-generator-api-client</module> --> <!-- cannot add the individual modules here because the order is not guaranteed -->
                 <module>vavr-modules/vavr</module>
             </modules>
 
@@ -830,7 +830,7 @@
                 <module>spring-spel</module>
                 <module>spring-state-machine</module>
                 <module>spring-static-resources</module>
-                <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
+                <module>spring-swagger-codegen-modules/custom-validations-opeanpi-codegen</module>
                 <module>spring-threads</module>
                 <module>spring-vault</module>
                 <module>spring-web-modules</module>
@@ -913,8 +913,8 @@
                 <module>spring-security-modules/spring-security-legacy-oidc</module>
                 <!--<module>static-analysis</module> - requires additional configuration to be compiled due to the JVM strong encapsulation -->
                 <!--<module>tablesaw</module>--><!-- failing after upgrading to jdk17-->
-                <!--<module>spring-swagger-codegen/openapi-custom-generator</module>
-                <module>spring-swagger-codegen/openapi-custom-generator-api-client</module> --> <!-- cannot add the individual modules here because the order is not guaranteed -->
+                <!--<module>spring-swagger-codegen-modules/openapi-custom-generator</module>
+                <module>spring-swagger-codegen-modules/openapi-custom-generator-api-client</module> --> <!-- cannot add the individual modules here because the order is not guaranteed -->
                 <module>vavr-modules/vavr</module>
             </modules>
 
@@ -1138,7 +1138,7 @@
                 <module>spring-spel</module>
                 <module>spring-state-machine</module>
                 <module>spring-static-resources</module>
-                <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
+                <module>spring-swagger-codegen-modules/custom-validations-opeanpi-codegen</module>
                 <module>spring-threads</module>
                 <module>spring-vault</module>
                 <module>spring-web-modules</module>
