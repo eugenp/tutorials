@@ -1,4 +1,4 @@
-package org.example;
+package com.baeldung.java14.recordsCustomConstructors;
 
 record StudentRecordV2(String name, int rollNo, int marks, char grade) {
     public StudentRecordV2(String name, int rollNo, int marks) {
@@ -19,4 +19,3 @@ record StudentRecordV2(String name, int rollNo, int marks, char grade) {
         }
     }
 }
-

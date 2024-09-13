@@ -1,4 +1,4 @@
-package org.example;
+package com.baeldung.java14.recordsCustomConstructors;
 
 import java.util.Objects;
 
