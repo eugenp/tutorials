@@ -362,7 +362,7 @@
                 <module>spring-integration</module>
                 <!-- <module>spring-roo</module> --> <!-- Not supported JAVA-17327 -->
                 <module>spring-security-modules/spring-security-ldap</module>
-                <module>spring-swagger-codegen</module>
+                <module>spring-swagger-codegen-modules</module>
                 <module>video-tutorials</module>
                 <module>jhipster-6</module>
             </modules>
