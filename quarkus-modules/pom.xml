@@ -14,7 +14,7 @@
     </parent>
 
     <modules>
-        <!-- <module>quarkus</module>--> <!-- failing after upgrade to jdk21 -->
+        <module>quarkus</module>
         <module>quarkus-citrus</module>
         <module>quarkus-clientbasicauth</module>
         <module>quarkus-extension</module>

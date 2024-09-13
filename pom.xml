@@ -581,11 +581,9 @@
                 <module>core-java-modules/core-java-io-6</module>
                 <module>core-java-modules/core-java-jvm</module>
                 <module>core-java-modules/core-java-lang-7</module>
-                <module>core-java-modules/core-java-lang-oop-modifiers</module>
                 <module>core-java-modules/core-java-datetime-conversion</module>
                 <!-- <module>libraries-security</module> -->
                 <module>libraries-data-io</module>
-                <module>maven-modules</module>
                 <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->
                 <module>persistence-modules/spring-data-neo4j</module>
                 <module>persistence-modules/spring-data-rest-2</module>
@@ -850,6 +848,7 @@
                 <module>xstream</module>
                 <!-- <module>libraries-data-io-2</module> --> <!-- JAVA-39367 -->
                 <module>spring-5-rest-docs</module>
+                <module>maven-modules</module>
             </modules>
 
             <properties>
@@ -897,11 +896,9 @@
                 <module>core-java-modules/core-java-io-6</module>
                 <module>core-java-modules/core-java-jvm</module>
                 <module>core-java-modules/core-java-lang-7</module>
-                <module>core-java-modules/core-java-lang-oop-modifiers</module>
                 <module>core-java-modules/core-java-datetime-conversion</module>
                 <!--<module>libraries-security</module>-->
                 <module>libraries-data-io</module>
-                <module>maven-modules</module>
                 <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->
                 <module>persistence-modules/spring-data-neo4j</module>
                 <module>persistence-modules/spring-data-rest-2</module>
@@ -1159,6 +1156,7 @@
                 <module>xstream</module>
                 <!-- <module>libraries-data-io-2</module> --> <!-- JAVA-39367 -->
                 <module>spring-5-rest-docs</module>
+                <module>maven-modules</module>
             </modules>
 
             <properties>
