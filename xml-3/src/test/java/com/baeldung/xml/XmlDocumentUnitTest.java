@@ -4,9 +4,11 @@ import org.junit.jupiter.api.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.InputSource;
+import org.xml.sax.SAXParseException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import java.io.StringReader;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -25,9 +27,11 @@ public class XmlDocumentUnitTest {
         assertEquals("root", document.getDocumentElement().getNodeName());
 
         Element rootElement = document.getDocumentElement();
-        assertNotNull(rootElement.getElementsByTagName("child"));
-        assertEquals(1, rootElement.getElementsByTagName("child").getLength());
-        assertEquals("Example", rootElement.getElementsByTagName("child").item(0).getTextContent());
+        var childElements = rootElement.getElementsByTagName("child");
+
+        assertNotNull(childElements);
+        assertEquals(1, childElements.getLength());
+        assertEquals("Example", childElements.item(0).getTextContent());
     }
 
     @Test
@@ -49,5 +53,15 @@ public class XmlDocumentUnitTest {
         assertEquals(1, existingDocument.getDocumentElement().getChildNodes().getLength());
         assertEquals("child", existingDocument.getDocumentElement().getChildNodes().item(0).getNodeName());
     }
-}
 
+    @Test
+    public void givenInvalidXmlString_whenConvertToDocument_thenThrowException() throws ParserConfigurationException {
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = factory.newDocumentBuilder();
+
+        String invalidXmlString = "<child>Example</child";
+        assertThrows(SAXParseException.class, () -> {
+            builder.parse(new InputSource(new StringReader(invalidXmlString)));
+        });
+    }
+}
