@@ -1,8 +1,10 @@
 package com.baeldung.thymeleaf.config;
 
-import javax.servlet.ServletRegistration.Dynamic;
+
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+
+import jakarta.servlet.ServletRegistration;
 
 /**
  * Java configuration file that is used for web application initialization
@@ -29,8 +31,7 @@ public class WebApp extends AbstractAnnotationConfigDispatcherServletInitializer
     }
 
     @Override
-    protected void customizeRegistration(final Dynamic registration) {
-        super.customizeRegistration(registration);
+    protected void customizeRegistration(ServletRegistration.Dynamic registration) {
+        super.customizeRegistration( registration);
     }
-
 }
