@@ -1,4 +1,4 @@
-package com.baeldung.java14.recordsCustomConstructors;
+package com.baeldung.java14.recordscustomconstructors;
 
 record StudentRecordV2(String name, int rollNo, int marks, char grade) {
     public StudentRecordV2(String name, int rollNo, int marks) {

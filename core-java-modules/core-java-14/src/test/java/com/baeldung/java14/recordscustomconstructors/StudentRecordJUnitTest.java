@@ -1,5 +1,6 @@
-package com.baeldung.java14.recordsCustomConstructors;
+package com.baeldung.java14.recordscustomconstructors;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertSame;
@@ -29,14 +30,10 @@ public class StudentRecordJUnitTest {
 
     @Test
     void givenStudentRecordsList_whenSortingDataWithName_thenStudentsSorted() {
-        List<StudentRecord> studentRecords = List.of(new StudentRecord("Dana", 1, 85), new StudentRecord("Jim", 2, 90), new StudentRecord("Jane", 3, 80));
+        List<StudentRecord> studentRecords = new ArrayList<>(List.of(new StudentRecord("Dana", 1, 85), new StudentRecord("Jim", 2, 90), new StudentRecord("Jane", 3, 80)));
+        studentRecords.sort(Comparator.comparing(StudentRecord::name));
 
-        List<StudentRecord> mutableStudentRecords = new ArrayList<>(studentRecords);
-        mutableStudentRecords.sort(Comparator.comparing(StudentRecord::name));
-
-        List<StudentRecord> sortedStudentRecords = List.copyOf(mutableStudentRecords);
-        assertEquals("Jane", sortedStudentRecords.get(1)
-            .name());
+        assertEquals("Jane", studentRecords.get(1).name());
     }
 
     @Test
@@ -54,8 +51,8 @@ public class StudentRecordJUnitTest {
     void whenCreateStudentRecordV3_thenCorrect() {
         StudentRecordV3 studentV3 = new StudentRecordV3("Jane");
 
-        assertFalse(studentV3.id().isEmpty());
-        assertTrue(studentV3.hobbies().isEmpty());
+        assertThat(studentV3.id()).isEmpty();
+        assertThat(studentV3.hobbies()).isEmpty();
         assertTrue(studentV3.active());
     }
 
