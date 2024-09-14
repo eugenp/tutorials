@@ -2,21 +2,23 @@ package com.baeldung.math.multiplicationoverflow;
 
 public class OverflowCheck {
 
-    public static String checkMultiplication(int a, int b) {
+    // Check if multiplication of two ints causes overflow and return a boolean
+    public static boolean checkMultiplication(int a, int b) {
         try {
-            int result = Math.multiplyExact(a, b);
-            return "Result (int): " + result;
+            Math.multiplyExact(a, b);
+            return true; // No overflow
         } catch (ArithmeticException e) {
-            return "Overflow occurred for int!";
+            return false; // Overflow occurred
         }
     }
 
-    public static String checkMultiplication(long a, long b) {
+    // Check if multiplication of two longs causes overflow and return a boolean
+    public static boolean checkMultiplication(long a, long b) {
         try {
-            long result = Math.multiplyExact(a, b);
-            return "Result (long): " + result;
+            Math.multiplyExact(a, b);
+            return true; // No overflow
         } catch (ArithmeticException e) {
-            return "Overflow occurred for long!";
+            return false; // Overflow occurred
         }
     }
 }
