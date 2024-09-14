@@ -66,7 +66,7 @@ public class SortListOfPairUnitTest {
     }
 
     @Test
-    void whenInPlaceSortingImmutableList_thenCorrect() {
+    void whenInPlaceSortingImmutableList_thenThrowExpectedException() {
         List<Pair<String, Integer>> immutableUnsortedList = List.copyOf(getUnsortedInput());
         assertThrows(UnsupportedOperationException.class, () -> immutableUnsortedList.sort(Comparator.comparing(Pair::getRight)));
     }
