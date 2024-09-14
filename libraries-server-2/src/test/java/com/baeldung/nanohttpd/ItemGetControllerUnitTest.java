@@ -1,7 +1,5 @@
 package com.baeldung.nanohttpd;
 
-import static org.junit.Assert.*;
-
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -12,6 +10,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.IOException;
+
+import static org.junit.Assert.assertEquals;
 
 public class ItemGetControllerUnitTest {
 

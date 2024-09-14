@@ -1,4 +1,4 @@
-package com.baeldung.jetty;
+package com.baeldung.jetty.programmatic;
 
 import org.apache.http.HttpHost;
 import org.apache.http.HttpRequest;
