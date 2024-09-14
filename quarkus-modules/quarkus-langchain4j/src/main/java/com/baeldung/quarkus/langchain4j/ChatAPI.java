@@ -14,8 +14,6 @@ import java.util.UUID;
 @Consumes(MediaType.APPLICATION_JSON)
 public class ChatAPI {
 
-    public record Message(String message, UUID chatId) {}
-
     private ChatBot chatBot;
 
     public ChatAPI(ChatBot chatBot) {
@@ -23,13 +21,15 @@ public class ChatAPI {
     }
 
     @POST
-    public Message mesage(@QueryParam("q") String question, @QueryParam("id") UUID chatId) {
+    public Answer mesage(@QueryParam("q") String question, @QueryParam("id") UUID chatId) {
 
         chatId = chatId == null ? UUID.randomUUID() : chatId;
 
-        var message = chatBot.chat(chatId, question);
+        String message = chatBot.chat(chatId, question);
 
-        return new Message(message, chatId);
+        return new Answer(message, chatId);
     }
 
+
+    public record Answer(String message, UUID chatId) {}
 }

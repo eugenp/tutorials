@@ -8,8 +8,8 @@ import jakarta.inject.Singleton;
 
 import java.util.UUID;
 
-@RegisterAiService
 @Singleton
+@RegisterAiService
 public interface ChatBot {
 
     @SystemMessage("""

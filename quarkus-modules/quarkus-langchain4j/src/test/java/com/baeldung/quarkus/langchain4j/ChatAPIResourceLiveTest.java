@@ -12,7 +12,7 @@ import static org.hamcrest.CoreMatchers.containsString;
 
 @QuarkusTest
 @Disabled //Needs chatgpt.com API key
-class ChatAPIResourceTest {
+class ChatAPIResourceLiveTest {
 
     @Test
     void testChatAPI() {
