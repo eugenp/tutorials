@@ -9,10 +9,9 @@ import static io.specto.hoverfly.junit.dsl.matchers.HoverflyMatchers.equalsTo;
 import static io.specto.hoverfly.junit.dsl.matchers.HoverflyMatchers.equalsToJson;
 import static io.specto.hoverfly.junit.dsl.matchers.HoverflyMatchers.equalsToXml;
 import static io.specto.hoverfly.junit.dsl.matchers.HoverflyMatchers.matches;
-import static io.specto.hoverfly.junit.dsl.matchers.HoverflyMatchers.startsWith;
 import static io.specto.hoverfly.junit.dsl.matchers.HoverflyMatchers.matchesJsonPath;
 import static io.specto.hoverfly.junit.dsl.matchers.HoverflyMatchers.matchesXPath;
-
+import static io.specto.hoverfly.junit.dsl.matchers.HoverflyMatchers.startsWith;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 

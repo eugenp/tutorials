@@ -8,7 +8,6 @@ This module contains articles about test libraries.
 - [Serenity BDD and Screenplay](https://www.baeldung.com/serenity-screenplay)
 - [Serenity BDD with Spring and JBehave](https://www.baeldung.com/serenity-spring-jbehave)
 - [Introduction to Awaitility](https://www.baeldung.com/awaitility-testing)
-- [Introduction to Hoverfly in Java](https://www.baeldung.com/hoverfly)
 - [Testing with Hamcrest](https://www.baeldung.com/java-junit-hamcrest-guide)
 - [Introduction to DBUnit](https://www.baeldung.com/java-dbunit)
 - [Introduction to ArchUnit](https://www.baeldung.com/java-archunit-intro)

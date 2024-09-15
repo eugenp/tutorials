@@ -98,11 +98,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>io.specto</groupId>
-            <artifactId>hoverfly-java</artifactId>
-            <version>${hoverfly-java.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
             <version>${spring.version}</version>
@@ -211,7 +206,6 @@
         <serenity.jira.version>1.9.0</serenity.jira.version>
         <serenity.plugin.version>4.0.18</serenity.plugin.version>
         <awaitility.version>3.0.0</awaitility.version>
-        <hoverfly-java.version>0.8.1</hoverfly-java.version>
         <spring.version>4.3.8.RELEASE</spring.version>
         <spring-mock-mvc.version>5.3.0</spring-mock-mvc.version>
         <java-hamcrest.version>2.0.0.0</java-hamcrest.version>

@@ -38,6 +38,11 @@
             <artifactId>jsonassert</artifactId>
             <version>${jsonassert.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.specto</groupId>
+            <artifactId>hoverfly-java</artifactId>
+            <version>${hoverfly-java.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -58,6 +63,7 @@
     <properties>
         <pact.version>3.6.3</pact.version>
         <jsonassert.version>1.5.0</jsonassert.version>
+        <hoverfly-java.version>0.8.1</hoverfly-java.version>
     </properties>
 
 </project>
