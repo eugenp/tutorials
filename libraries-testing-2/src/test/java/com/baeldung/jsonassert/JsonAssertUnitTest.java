@@ -1,5 +1,7 @@
 package com.baeldung.jsonassert;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;
@@ -9,8 +11,6 @@ import org.skyscreamer.jsonassert.JSONCompareMode;
 import org.skyscreamer.jsonassert.RegularExpressionValueMatcher;
 import org.skyscreamer.jsonassert.comparator.ArraySizeComparator;
 import org.skyscreamer.jsonassert.comparator.CustomComparator;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class JsonAssertUnitTest {
 

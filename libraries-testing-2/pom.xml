@@ -33,6 +33,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.skyscreamer</groupId>
+            <artifactId>jsonassert</artifactId>
+            <version>${jsonassert.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -52,6 +57,7 @@
 
     <properties>
         <pact.version>3.6.3</pact.version>
+        <jsonassert.version>1.5.0</jsonassert.version>
     </properties>
 
 </project>
