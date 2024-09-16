@@ -55,48 +55,13 @@
             <artifactId>netty-all</artifactId>
             <version>${netty.version}</version>
         </dependency>
-        <!-- tomcat -->
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-catalina</artifactId>
-            <version>${tomcat.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.igniterealtime.smack</groupId>
-            <artifactId>smack-tcp</artifactId>
-            <version>${smack.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.igniterealtime.smack</groupId>
-            <artifactId>smack-extensions</artifactId>
-            <version>${smack.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.igniterealtime.smack</groupId>
-            <artifactId>smack-java7</artifactId>
-            <version>${smack.version}</version>
-        </dependency>
-        <!-- NanoHTTPD -->
-        <dependency>
-            <groupId>org.nanohttpd</groupId>
-            <artifactId>nanohttpd</artifactId>
-            <version>${nanohttpd.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.nanohttpd</groupId>
-            <artifactId>nanohttpd-nanolets</artifactId>
-            <version>${nanohttpd.version}</version>
-        </dependency>
     </dependencies>
 
     <properties>
         <httpclient.version>4.5.3</httpclient.version>
         <jetty.version>9.4.27.v20200227</jetty.version>
         <netty.version>4.1.20.Final</netty.version>
-        <tomcat.version>8.5.24</tomcat.version>
-        <smack.version>4.3.1</smack.version>
         <eclipse.paho.client.mqttv3.version>1.2.0</eclipse.paho.client.mqttv3.version>
-        <nanohttpd.version>2.3.1</nanohttpd.version>
         <logback.configurationFileName>logback.xml</logback.configurationFileName>
     </properties>
 
