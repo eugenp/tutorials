@@ -11,6 +11,7 @@ This module contains articles about core Spring functionality.
 - [Getting the Current ApplicationContext in Spring](https://www.baeldung.com/spring-get-current-applicationcontext)
 - [Design Patterns in the Spring Framework](https://www.baeldung.com/spring-framework-design-patterns)
 - [The Spring ApplicationContext](https://www.baeldung.com/spring-application-context)
+- [Spring Events](https://www.baeldung.com/spring-events)
 
 - More articles: [[next -->]](../spring-core-2)
 
