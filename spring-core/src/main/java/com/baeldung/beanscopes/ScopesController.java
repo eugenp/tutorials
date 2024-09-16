@@ -21,7 +21,7 @@ public class ScopesController {
     @Resource(name = "applicationScopedBean")
     HelloMessageGenerator applicationScopedBean;
 
-    @RequestMapping("/beanscopes/request")
+    @RequestMapping("/scopes/request")
     public String getRequestScopeMessage(final Model model) {
         model.addAttribute("previousMessage", requestScopedBean.getMessage());
         requestScopedBean.setMessage("Request Scope Message!");
@@ -29,7 +29,7 @@ public class ScopesController {
         return "scopesExample";
     }
 
-    @RequestMapping("/beanscopes/session")
+    @RequestMapping("/scopes/session")
     public String getSessionScopeMessage(final Model model) {
         model.addAttribute("previousMessage", sessionScopedBean.getMessage());
         sessionScopedBean.setMessage("Session Scope Message!");
@@ -37,7 +37,7 @@ public class ScopesController {
         return "scopesExample";
     }
 
-    @RequestMapping("/beanscopes/application")
+    @RequestMapping("/scopes/application")
     public String getApplicationScopeMessage(final Model model) {
         model.addAttribute("previousMessage", applicationScopedBean.getMessage());
         applicationScopedBean.setMessage("Application Scope Message!");
