@@ -23,31 +23,25 @@ import org.junit.jupiter.api.Test;
 class ExcelCellMergerUnitTest {
 
     private static final String FILE_NAME = "ExcelCellFormatterTest.xlsx";
-    private static final String FILE_NAME_1 = "ExcelCellFormatterTest_2.xlsx";
     private static final String FILE_NAME_2 = "MergedAlignCell.xlsx";
 
     private String fileLocation;
-    private String fileLocation1;
     private String fileLocation2;
 
     @BeforeEach
     void setup() throws IOException, URISyntaxException {
         fileLocation = Paths.get(ClassLoader.getSystemResource(FILE_NAME)
-                .toURI())
+            .toURI())
             .toString();
 
-        fileLocation1 = Paths.get(ClassLoader.getSystemResource(FILE_NAME_1)
-                        .toURI())
-                .toString();
-
         fileLocation2 = Paths.get(ClassLoader.getSystemResource(FILE_NAME_2)
-                .toURI())
+            .toURI())
             .toString();
     }
 
     @Test
     void givenCellIndex_whenAddMergeRegion_thenMergeRegionCreated() throws IOException {
-        try(Workbook workbook = new XSSFWorkbook(fileLocation)) {
+        try (Workbook workbook = new XSSFWorkbook(fileLocation)) {
             Sheet sheet = workbook.getSheetAt(0);
             assertEquals(0, sheet.getNumMergedRegions());
             int firstRow = 0;
@@ -61,7 +55,7 @@ class ExcelCellMergerUnitTest {
 
     @Test
     void givenCellRefString_whenAddMergeRegion_thenMergeRegionCreated() throws IOException {
-        try(Workbook workbook = new XSSFWorkbook(fileLocation1)) {
+        try (Workbook workbook = new XSSFWorkbook(fileLocation)) {
             Sheet sheet = workbook.getSheetAt(0);
             assertEquals(0, sheet.getNumMergedRegions());
             sheet.addMergedRegion(CellRangeAddress.valueOf("A1:C1"));
@@ -71,7 +65,7 @@ class ExcelCellMergerUnitTest {
 
     @Test
     void givenCellIndex_whenAddMergeRegionWithCenterAlignment_thenMergeRegionWithCenterCreated() throws IOException {
-        try(Workbook workbook = new XSSFWorkbook(fileLocation2)) {
+        try (Workbook workbook = new XSSFWorkbook(fileLocation2)) {
             Sheet sheet = workbook.getSheetAt(0);
 
             assertEquals(0, sheet.getNumMergedRegions());
@@ -96,7 +90,7 @@ class ExcelCellMergerUnitTest {
 
             // Verify cell style (alignment)
             Cell readCell = sheet.getRow(firstRow)
-                    .getCell(firstCol);
+                .getCell(firstCol);
             assertNotNull(readCell);
             CellStyle readCellStyle = readCell.getCellStyle();
             assertEquals(HorizontalAlignment.CENTER, readCellStyle.getAlignment());
