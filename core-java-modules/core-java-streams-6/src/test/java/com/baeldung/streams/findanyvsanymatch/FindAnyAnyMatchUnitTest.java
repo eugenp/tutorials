@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class FindAnyAnyMatchUnitTest {
 
     @Test
-    public void whenFilterStreamUsingFindAny_ThenOK() {
+    public void whenFilterStreamUsingFindAny_thenOK() {
         List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
         Integer result = numbers.stream()
@@ -23,7 +23,7 @@ public class FindAnyAnyMatchUnitTest {
     }
 
     @Test
-    public void whenParallelStreamUsingFindAny_ThenOK() {
+    public void whenParallelStreamUsingFindAny_thenOK() {
         List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
         Integer result = numbers.parallelStream()
@@ -37,7 +37,7 @@ public class FindAnyAnyMatchUnitTest {
 
 
     @Test
-    public void whenFilterStreamUsingAnyMatch_ThenOK() {
+    public void whenFilterStreamUsingAnyMatch_thenOK() {
         List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
         boolean result = numbers.parallelStream()
@@ -47,7 +47,7 @@ public class FindAnyAnyMatchUnitTest {
     }
 
     @Test
-    public void whenFilterStreamUsingFindFirst_ThenOK() {
+    public void whenFilterStreamUsingFindFirst_thenOK() {
         List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
         Integer result = numbers.stream()
@@ -60,7 +60,7 @@ public class FindAnyAnyMatchUnitTest {
     }
 
     @Test
-    public void whenCountingElementsInStream_ThenOK() {
+    public void whenCountingElementsInStream_thenOK() {
         List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
         long count = numbers.stream()
@@ -71,7 +71,7 @@ public class FindAnyAnyMatchUnitTest {
     }
 
     @Test
-    public void whenCheckingAllMatch_ThenOK() {
+    public void whenCheckingAllMatch_thenOK() {
         List<Integer> numbers = Arrays.asList(2, 4, 6, 8, 10);
 
         boolean allEven = numbers.stream()
