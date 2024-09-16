@@ -1,8 +1,8 @@
 package com.baeldung.streamutils;
 
-import java.io.InputStream;
-
 import org.springframework.util.StreamUtils;
+
+import java.io.InputStream;
 
 public class DrainStream {
     public InputStream getInputStream() {

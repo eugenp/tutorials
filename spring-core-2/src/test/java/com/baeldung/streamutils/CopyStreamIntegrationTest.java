@@ -1,20 +1,14 @@
 package com.baeldung.streamutils;
 
-import static org.junit.Assert.assertTrue;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.nio.charset.StandardCharsets;
-
-import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import org.springframework.util.StreamUtils;
 
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+
 import static com.baeldung.streamutils.CopyStream.getStringFromInputStream;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class CopyStreamIntegrationTest {
 

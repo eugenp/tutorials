@@ -1,12 +1,11 @@
 package com.baeldung.applicationcontext;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import jakarta.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+
+import javax.annotation.PostConstruct;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Teacher {
 

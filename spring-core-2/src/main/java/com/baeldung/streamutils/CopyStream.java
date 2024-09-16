@@ -1,12 +1,12 @@
 package com.baeldung.streamutils;
 
+import org.apache.commons.io.IOUtils;
+import org.springframework.util.StreamUtils;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
-
-import org.apache.commons.io.IOUtils;
-import org.springframework.util.StreamUtils;
 
 public class CopyStream {
     public static String getStringFromInputStream(InputStream input) throws IOException {
