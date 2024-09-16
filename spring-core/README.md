@@ -12,6 +12,9 @@ This module contains articles about core Spring functionality.
 - [Spring PostConstruct and PreDestroy Annotations](https://www.baeldung.com/spring-postconstruct-predestroy)
 - [Intro to the Spring ClassPathXmlApplicationContext](http://www.baeldung.com/spring-classpathxmlapplicationcontext)
 - [Quick Guide to Spring Bean Scopes](http://www.baeldung.com/spring-bean-scopes)
+- [Getting the Current ApplicationContext in Spring](https://www.baeldung.com/spring-get-current-applicationcontext)
+- [Design Patterns in the Spring Framework](https://www.baeldung.com/spring-framework-design-patterns)
+- [The Spring ApplicationContext](https://www.baeldung.com/spring-application-context)
 
 - More articles: [[next -->]](../spring-core-2)
 
