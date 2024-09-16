@@ -15,8 +15,8 @@ public class Currency {
         this.value = value;
     }
 
-    public Currency(Currency that) {
-        this(that.code, that.symbol, that.value);
+    public Currency(Currency currency) {
+        this(currency.code, currency.symbol, currency.value);
     }
 
     public String getCode() {

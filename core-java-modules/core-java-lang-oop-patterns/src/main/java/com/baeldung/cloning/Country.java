@@ -15,8 +15,8 @@ public class Country implements Serializable {
         this.currency = currency;
     }
 
-    public Country(Country that) {
-        this(that.code, that.name, new Currency(that.currency));
+    public Country(Country country) {
+        this(country.code, country.name, new Currency(country.currency));
     }
 
     public String getCode() {
