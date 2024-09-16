@@ -1,6 +1,7 @@
 package com.baeldung.javalin;
 
 import com.baeldung.javalin.User.UserController;
+
 import io.javalin.Javalin;
 
 public class JavalinApp {
