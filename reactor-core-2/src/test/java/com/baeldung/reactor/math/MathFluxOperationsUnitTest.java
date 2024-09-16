@@ -1,10 +1,9 @@
-package com.baeldung.math;
+package com.baeldung.reactor.math;
 
 import org.junit.Test;
-
-import reactor.math.MathFlux;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import reactor.math.MathFlux;
 import reactor.test.StepVerifier;
 
 public class MathFluxOperationsUnitTest {

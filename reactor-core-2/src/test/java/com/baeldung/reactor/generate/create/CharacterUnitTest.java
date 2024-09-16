@@ -1,14 +1,13 @@
 package com.baeldung.reactor.generate.create;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.Test;
+import reactor.core.publisher.Flux;
+import reactor.test.StepVerifier;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
-
-import reactor.core.publisher.Flux;
-import reactor.test.StepVerifier;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class CharacterUnitTest {
     @Test
