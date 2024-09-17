@@ -75,6 +75,11 @@
             <artifactId>spring-batch-core</artifactId>
             <version>${spring-batch-core.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
