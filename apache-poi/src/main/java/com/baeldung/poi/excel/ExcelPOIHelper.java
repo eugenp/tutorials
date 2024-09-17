@@ -8,11 +8,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.IntStream;
-
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.DateUtil;
 import org.apache.poi.ss.usermodel.FillPatternType;
 import org.apache.poi.ss.usermodel.IndexedColors;
@@ -109,15 +106,6 @@ public class ExcelPOIHelper {
 
             cell = row.createCell(1);
             cell.setCellValue(20);
-            cell.setCellStyle(style);
-            
-            row = sheet.createRow(3);
-            cell = row.createCell(0);
-            cell.setCellValue("");
-            cell.setCellStyle(style);
-
-            cell = row.createCell(1);
-            cell.setCellValue("");
             cell.setCellStyle(style);
 
             File currDir = new File(".");

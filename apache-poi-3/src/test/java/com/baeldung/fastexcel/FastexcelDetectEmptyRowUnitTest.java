@@ -29,7 +29,7 @@ public class FastexcelDetectEmptyRowUnitTest {
     }
     
 	@Test
-    public void whenParsingFastExcelFile_thenDetectEmptyRow() throws IOException {
+	public void whenParsingFastExcelFile_thenDetectEmptyRow() throws IOException {
 		System.out.print(fileLocation);
     	try (FileInputStream file = new FileInputStream(fileLocation); ReadableWorkbook wb = new ReadableWorkbook(file)) {
             Sheet sheet = wb.getFirstSheet();

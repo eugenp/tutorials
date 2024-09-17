@@ -1,22 +1,14 @@
 package com.baeldung.fastexcel;
 
-import org.dhatim.fastexcel.reader.ReadableWorkbook;
-import org.dhatim.fastexcel.reader.Row;
-import org.dhatim.fastexcel.reader.Sheet;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Stream;
-
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 public class FastexcelIntegrationTest {
 
@@ -45,7 +37,7 @@ public class FastexcelIntegrationTest {
         assertEquals("John Smith", data.get(3).get(0));
         assertEquals("20", data.get(3).get(1));
     }
-    
+
     @After
     public void cleanup() {
         File testFile = new File(fileLocation);
