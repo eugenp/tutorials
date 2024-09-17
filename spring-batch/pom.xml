@@ -82,6 +82,19 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>21</source>
+                    <target>21</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
         <opencsv.version>5.8</opencsv.version>
         <jakarta.xml.bind-api>4.0.0</jakarta.xml.bind-api>

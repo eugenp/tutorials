@@ -11,4 +11,5 @@ This module contains articles about Spring Batch
 - [Testing a Spring Batch Job](https://www.baeldung.com/spring-batch-testing-job)
 - [Configuring Retry Logic in Spring Batch](https://www.baeldung.com/spring-batch-retry-logic)
 - [Access Job Parameters From ItemReader in Spring Batch](https://www.baeldung.com/spring-batch-itemreader-access-job-parameters)
+- [How to Trigger and Stop a Scheduled Spring Batch Job](https://www.baeldung.com/spring-batch-start-stop-job)
 - More articles [[next -->]](/spring-batch-2)
