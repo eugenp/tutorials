@@ -134,17 +134,4 @@ public class ExcelPOIHelper {
             }
         }
     }
-    
-    public boolean isRowEmpty(Row row) {
-        if (row == null) {
-            return true;
-        }
-        for (int cellNum = row.getFirstCellNum(); cellNum < row.getLastCellNum(); cellNum++) {
-            Cell cell = row.getCell(cellNum);
-            if (cell != null && cell.getCellType() != CellType.BLANK) {
-                return false;
-            }
-        }
-        return true;
-    }
 }

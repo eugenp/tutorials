@@ -51,21 +51,6 @@ public class JExcelIntegrationTest {
         assertEquals("20", data.get(2)
             .get(1));
     }
-    
-    @Test
-    public void whenParsingJExcelFile_thenDetectEmptyRow() throws IOException, BiffException {
-    	Workbook workbook = Workbook.getWorkbook(new File(fileLocation));
-        Sheet sheet = workbook.getSheet(0);
-       
-        Cell[] row = sheet.getRow(0);
-        assertFalse(jExcelHelper.isRowEmpty(row)); // check writeJExcel() method, we have inserted a row
-        
-        row = sheet.getRow(2);
-        assertFalse(jExcelHelper.isRowEmpty(row));
-        
-        row = sheet.getRow(3);
-        assertTrue(jExcelHelper.isRowEmpty(row)); // check writeJExcel() method, we have inserted "" in this row
-    }
 
     @After
     public void cleanup(){
