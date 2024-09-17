@@ -14,7 +14,7 @@ public class SalaryController {
 
     @PostMapping(value = "/increaseSalary")
     @ResponseBody
-    public void increaseSalary(@RequestParam long id) {
+    public void increaseSalary(@RequestParam(name= "id") long id) {
         salaryService.increaseSalary(id);
     }
 }
