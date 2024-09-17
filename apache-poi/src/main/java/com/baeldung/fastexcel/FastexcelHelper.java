@@ -61,16 +61,4 @@ public class FastexcelHelper {
             ws.value(2, 1, 20L);
         }
     }
-    
-    public boolean isRowEmpty(Row row) {
-    	if (row == null) {
-            return true;
-        }
-    	for (Cell cell : row) {
-            if (cell != null && !cell.getText().isEmpty()) {
-                return false;
-            }
-        }
-        return true;
-    }
 }
