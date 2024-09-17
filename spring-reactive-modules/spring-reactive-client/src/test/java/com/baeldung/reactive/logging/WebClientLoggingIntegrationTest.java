@@ -9,7 +9,7 @@ import static org.mockito.Mockito.when;
 
 import java.net.URI;
 
-import org.eclipse.jetty.client.api.Request;
+import org.eclipse.jetty.client.Request;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -120,7 +120,7 @@ public class WebClientLoggingIntegrationTest {
     @Test
     public void givenNettyHttpClientWithCustomLogger_whenEndpointIsConsumed_thenRequestAndResponseBodyLogged() {
         reactor.netty.http.client.HttpClient httpClient = HttpClient.create()
-            .wiretap("reactor.netty.http.client.HttpClient", LogLevel.DEBUG, AdvancedByteBufFormat.TEXTUAL);
+            .wiretap("reactor.netty.http.client.HttpClient", LogLevel.INFO, AdvancedByteBufFormat.SIMPLE);
 
         WebClient.builder()
             .clientConnector(new ReactorClientHttpConnector(httpClient))

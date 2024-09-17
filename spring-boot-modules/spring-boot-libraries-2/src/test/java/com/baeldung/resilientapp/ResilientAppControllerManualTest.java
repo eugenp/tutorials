@@ -7,7 +7,6 @@ import static com.github.tomakehurst.wiremock.client.WireMock.serverError;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import static org.springframework.http.HttpStatus.BANDWIDTH_LIMIT_EXCEEDED;
 import static org.springframework.http.HttpStatus.OK;
