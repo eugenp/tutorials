@@ -1,4 +1,4 @@
-package com.baeldung.batch;
+package com.baeldung.bootbatch;
 
 import javax.sql.DataSource;
 
