@@ -1,4 +1,4 @@
-package org.baeldung.conditionalflow.step;
+package com.baeldung.conditionalflow.step;
 
 import org.springframework.batch.item.Chunk;
 import org.springframework.batch.item.ItemWriter;

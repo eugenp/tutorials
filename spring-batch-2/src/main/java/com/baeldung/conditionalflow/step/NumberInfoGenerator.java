@@ -1,6 +1,6 @@
-package org.baeldung.conditionalflow.step;
+package com.baeldung.conditionalflow.step;
 
-import org.baeldung.conditionalflow.model.NumberInfo;
+import com.baeldung.conditionalflow.model.NumberInfo;
 import org.springframework.batch.item.ItemReader;
 
 public class NumberInfoGenerator implements ItemReader<NumberInfo> {

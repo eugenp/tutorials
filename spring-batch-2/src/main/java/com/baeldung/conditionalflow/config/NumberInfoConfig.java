@@ -1,8 +1,17 @@
-package org.baeldung.conditionalflow.config;
+package com.baeldung.conditionalflow.config;
 
-import org.baeldung.conditionalflow.NumberInfoDecider;
-import org.baeldung.conditionalflow.model.NumberInfo;
-import org.baeldung.conditionalflow.step.*;
+import static com.baeldung.conditionalflow.NumberInfoDecider.NOTIFY;
+
+import javax.sql.DataSource;
+
+import com.baeldung.conditionalflow.NumberInfoDecider;
+import com.baeldung.conditionalflow.model.NumberInfo;
+import com.baeldung.conditionalflow.step.NotifierTasklet;
+import com.baeldung.conditionalflow.step.NumberInfoClassifier;
+import com.baeldung.conditionalflow.step.NumberInfoClassifierWithDecider;
+import com.baeldung.conditionalflow.step.NumberInfoGenerator;
+import com.baeldung.conditionalflow.step.PrependingStdoutWriter;
+
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
@@ -20,10 +29,6 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.transaction.PlatformTransactionManager;
-
-import static org.baeldung.conditionalflow.NumberInfoDecider.NOTIFY;
-
-import javax.sql.DataSource;
 
 @Configuration
 @EnableBatchProcessing

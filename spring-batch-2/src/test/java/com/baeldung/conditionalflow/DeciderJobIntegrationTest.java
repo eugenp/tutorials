@@ -1,9 +1,12 @@
-package org.baeldung.conditionalflow;
+package com.baeldung.conditionalflow;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.baeldung.conditionalflow.config.NumberInfoConfig;
+import java.util.Collection;
+import java.util.Iterator;
+
+import com.baeldung.conditionalflow.config.NumberInfoConfig;
 import org.junit.jupiter.api.Test;
 import org.springframework.batch.core.ExitStatus;
 import org.springframework.batch.core.JobExecution;
@@ -13,9 +16,6 @@ import org.springframework.batch.test.context.SpringBatchTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.test.context.ContextConfiguration;
-
-import java.util.Collection;
-import java.util.Iterator;
 
 @SpringBatchTest
 @EnableAutoConfiguration

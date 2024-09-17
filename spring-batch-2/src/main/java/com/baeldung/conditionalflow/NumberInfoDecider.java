@@ -1,4 +1,4 @@
-package org.baeldung.conditionalflow;
+package com.baeldung.conditionalflow;
 
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.StepExecution;

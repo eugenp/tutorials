@@ -1,14 +1,14 @@
-package org.baeldung.conditionalflow.step;
+package com.baeldung.conditionalflow.step;
 
-import org.baeldung.conditionalflow.model.NumberInfo;
+import static com.baeldung.conditionalflow.NumberInfoDecider.NOTIFY;
+import static com.baeldung.conditionalflow.NumberInfoDecider.QUIET;
+
+import com.baeldung.conditionalflow.model.NumberInfo;
 import org.springframework.batch.core.ExitStatus;
 import org.springframework.batch.core.StepExecution;
 import org.springframework.batch.core.annotation.BeforeStep;
 import org.springframework.batch.core.listener.ItemListenerSupport;
 import org.springframework.batch.item.ItemProcessor;
-
-import static org.baeldung.conditionalflow.NumberInfoDecider.NOTIFY;
-import static org.baeldung.conditionalflow.NumberInfoDecider.QUIET;
 
 public class NumberInfoClassifier extends ItemListenerSupport<NumberInfo, Integer>
         implements ItemProcessor<NumberInfo, Integer> {

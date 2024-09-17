@@ -1,8 +1,8 @@
-package org.baeldung.conditionalflow.step;
+package com.baeldung.conditionalflow.step;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.baeldung.conditionalflow.model.NumberInfo;
+import com.baeldung.conditionalflow.model.NumberInfo;
 import org.junit.jupiter.api.Test;
 
 class NumberInfoClassifierUnitTest {

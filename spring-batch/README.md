@@ -10,5 +10,4 @@ This module contains articles about Spring Batch
 - [Configuring Skip Logic in Spring Batch](https://www.baeldung.com/spring-batch-skip-logic)
 - [Testing a Spring Batch Job](https://www.baeldung.com/spring-batch-testing-job)
 - [Configuring Retry Logic in Spring Batch](https://www.baeldung.com/spring-batch-retry-logic)
-- [Conditional Flow in Spring Batch](https://www.baeldung.com/spring-batch-conditional-flow)
 - More articles [[next -->]](/spring-batch-2)

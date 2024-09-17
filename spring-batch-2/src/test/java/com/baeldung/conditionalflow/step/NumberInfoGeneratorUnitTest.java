@@ -1,9 +1,9 @@
-package org.baeldung.conditionalflow.step;
+package com.baeldung.conditionalflow.step;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
-import org.baeldung.conditionalflow.model.NumberInfo;
+import com.baeldung.conditionalflow.model.NumberInfo;
 import org.junit.jupiter.api.Test;
 
 public class NumberInfoGeneratorUnitTest {
