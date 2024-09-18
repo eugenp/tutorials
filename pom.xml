@@ -845,6 +845,7 @@
                 <module>webrtc</module>
                 <module>xml</module>
                 <module>xml-2</module>
+                <module>xml-3</module>
                 <module>xstream</module>
                 <!-- <module>libraries-data-io-2</module> --> <!-- JAVA-39367 -->
                 <module>spring-5-rest-docs</module>
@@ -1154,6 +1155,7 @@
                 <module>webrtc</module>
                 <module>xml</module>
                 <module>xml-2</module>
+                <module>xml-3</module>
                 <module>xstream</module>
                 <!-- <module>libraries-data-io-2</module> --> <!-- JAVA-39367 -->
                 <module>spring-5-rest-docs</module>
