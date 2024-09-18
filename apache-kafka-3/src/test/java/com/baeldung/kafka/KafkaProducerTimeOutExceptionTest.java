@@ -3,6 +3,7 @@
  */
 package com.baeldung.kafka;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -14,7 +15,6 @@ import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringSerializer;
-import org.assertj.core.api.Assertions;
 import org.junit.FixMethodOrder;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -72,7 +72,7 @@ public class KafkaProducerTimeOutExceptionTest {
     }
 
     @Test
-    void whenProducerConfiguredThenNoExceptionOccurs() throws InterruptedException, ExecutionException {
+    void givenProducerConfiguredWhenRecordSentThenNoExceptionOccurs() throws InterruptedException, ExecutionException {
         Properties producerProperties = getProducerProperties();
         KafkaProducer<String, String> producer = new KafkaProducer<>(producerProperties);
 
@@ -85,7 +85,7 @@ public class KafkaProducerTimeOutExceptionTest {
     }
 
     @Test
-    void whenProducerRequestTimeOutLowThenTimeOutExceptionOccurs() throws InterruptedException, ExecutionException {
+    void givenProducerRequestTimeOutLowWhenRecordSentThenTimeOutExceptionOccurs() throws InterruptedException, ExecutionException {
         Properties producerProperties = getProducerProperties();
         producerProperties.put(ProducerConfig.REQUEST_TIMEOUT_MS_CONFIG, 5);
         producerProperties.put(ProducerConfig.DELIVERY_TIMEOUT_MS_CONFIG, 1000);
@@ -108,13 +108,13 @@ public class KafkaProducerTimeOutExceptionTest {
 
         producer.close();
 
-        Assertions.assertThat(exceptionName)
+        assertThat(exceptionName)
             .isEqualTo(TIMEOUT_EXCEPTION_CLASS);
 
     }
 
     @Test
-    void whenProducerLingerTimeIsLowThenTimeOutExceptionOccurs() throws InterruptedException, ExecutionException {
+    void givenProducerLingerTimeIsLowWhenRecordSentThenTimeOutExceptionOccurs() throws InterruptedException, ExecutionException {
         Properties producerProperties = getProducerProperties();
         producerProperties.put(ProducerConfig.LINGER_MS_CONFIG, 0);
         producerProperties.put(ProducerConfig.BATCH_SIZE_CONFIG, 1);
@@ -137,13 +137,13 @@ public class KafkaProducerTimeOutExceptionTest {
 
         producer.close();
 
-        Assertions.assertThat(exceptionName)
+        assertThat(exceptionName)
             .isEqualTo(TIMEOUT_EXCEPTION_CLASS);
 
     }
 
     @Test
-    void whenProducerLargeBatchSizeThenTimeOutExceptionOccurs() throws InterruptedException, ExecutionException {
+    void givenProducerLargeBatchSizeWhenRecordSentThenTimeOutExceptionOccurs() throws InterruptedException, ExecutionException {
         Properties producerProperties = getProducerProperties();
         producerProperties.put(ProducerConfig.LINGER_MS_CONFIG, 5000);
         producerProperties.put(ProducerConfig.BATCH_SIZE_CONFIG, 10000000);
@@ -168,7 +168,7 @@ public class KafkaProducerTimeOutExceptionTest {
         
         producer.close();
         
-        Assertions.assertThat(exceptionName)
+        assertThat(exceptionName)
             .isEqualTo(TIMEOUT_EXCEPTION_CLASS);
 
     }
