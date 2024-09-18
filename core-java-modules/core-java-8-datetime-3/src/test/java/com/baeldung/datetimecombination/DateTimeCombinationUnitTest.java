@@ -30,9 +30,14 @@ public class DateTimeCombinationUnitTest {
 
     @Test
     public void givenDateAndTime_whenAdjustingTime_thenCombined() {
-        LocalTime adjustedTime = LocalTime.now().with(ChronoField.MINUTE_OF_HOUR, 0);
+        LocalDate date = LocalDate.of(2024, 9, 18);
+        LocalTime originalTime = LocalTime.of(14, 45);
+    
+        LocalTime adjustedTime = originalTime.with(ChronoField.MINUTE_OF_HOUR, 0);
         LocalDateTime expectedAdjustedDateTime = LocalDateTime.of(date, adjustedTime);
-
-        assertEquals(expectedAdjustedDateTime, date.atTime(adjustedTime));
+    
+        LocalDateTime actualDateTime = date.atTime(adjustedTime);
+    
+        assertEquals(expectedAdjustedDateTime, actualDateTime);
     }
 }
