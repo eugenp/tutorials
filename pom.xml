@@ -755,7 +755,7 @@
 <!--                <module>mustache</module>-->
 <!--                <module>mybatis</module>-->
 <!--                <module>mybatis-plus</module>-->
-<!--                <module>netflix-modules</module>-->
+                <module>netflix-modules</module>
 <!--                <module>optaplanner</module>-->
 <!--                <module>orika</module>-->
 <!--                <module>osgi</module>-->
@@ -824,31 +824,31 @@
 <!--                <module>spring-remoting-modules</module> &lt;!&ndash; Upgrade to Boot 3 not possible as since Spring 6 the remoting modules has been removed from Spring. &ndash;&gt;-->
 <!--                <module>spring-scheduling</module>-->
 <!--                <module>spring-scheduling-2</module>-->
-                <module>spring-security-modules</module>
-                <module>spring-shell</module>
-                <module>spring-soap</module>
-                <module>spring-spel</module>
-                <module>spring-state-machine</module>
-                <module>spring-static-resources</module>
-                <module>spring-swagger-codegen-modules/custom-validations-opeanpi-codegen</module>
-                <module>spring-threads</module>
-                <module>spring-vault</module>
-                <module>spring-web-modules</module>
-                <module>spring-websockets</module>
-                <module>tensorflow-java</module>
-                <module>testing-modules</module>
-                <module>timefold-solver</module>
-                <module>vaadin</module>
-                <module>vavr-modules</module>
-                <module>vertx-modules</module>
-                <module>web-modules</module>
-                <module>webrtc</module>
-                <module>xml</module>
-                <module>xml-2</module>
-                <module>xstream</module>
+<!--                <module>spring-security-modules</module>-->
+<!--                <module>spring-shell</module>-->
+<!--                <module>spring-soap</module>-->
+<!--                <module>spring-spel</module>-->
+<!--                <module>spring-state-machine</module>-->
+<!--                <module>spring-static-resources</module>-->
+<!--                <module>spring-swagger-codegen-modules/custom-validations-opeanpi-codegen</module>-->
+<!--                <module>spring-threads</module>-->
+<!--                <module>spring-vault</module>-->
+<!--                <module>spring-web-modules</module>-->
+<!--                <module>spring-websockets</module>-->
+<!--                <module>tensorflow-java</module>-->
+<!--                <module>testing-modules</module>-->
+<!--                <module>timefold-solver</module>-->
+<!--                <module>vaadin</module>-->
+<!--                <module>vavr-modules</module>-->
+<!--                <module>vertx-modules</module>-->
+<!--                <module>web-modules</module>-->
+<!--                <module>webrtc</module>-->
+<!--                <module>xml</module>-->
+<!--                <module>xml-2</module>-->
+<!--                <module>xstream</module>-->
                 <!-- <module>libraries-data-io-2</module> --> <!-- JAVA-39367 -->
                 <module>spring-5-rest-docs</module>
-                <module>maven-modules</module>
+<!--                <module>maven-modules</module>-->
             </modules>
 
             <properties>
