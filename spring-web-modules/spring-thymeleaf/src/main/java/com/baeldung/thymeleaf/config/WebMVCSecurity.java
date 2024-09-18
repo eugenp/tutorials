@@ -27,7 +27,7 @@ public class WebMVCSecurity {
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring().requestMatchers("/resources/**");
+        return web -> web.ignoring().requestMatchers("/resources/**");
     }
 
     @Bean
