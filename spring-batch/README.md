@@ -9,7 +9,6 @@ This module contains articles about Spring Batch
 - [Spring Batch – Tasklets vs Chunks](https://www.baeldung.com/spring-batch-tasklet-chunk)
 - [Configuring Skip Logic in Spring Batch](https://www.baeldung.com/spring-batch-skip-logic)
 - [Testing a Spring Batch Job](https://www.baeldung.com/spring-batch-testing-job)
-- [Configuring Retry Logic in Spring Batch](https://www.baeldung.com/spring-batch-retry-logic)
 - [Access Job Parameters From ItemReader in Spring Batch](https://www.baeldung.com/spring-batch-itemreader-access-job-parameters)
 - [How to Trigger and Stop a Scheduled Spring Batch Job](https://www.baeldung.com/spring-batch-start-stop-job)
 - [Spring Boot With Spring Batch](https://www.baeldung.com/spring-boot-spring-batch)

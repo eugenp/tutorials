@@ -70,9 +70,46 @@
             <artifactId>spring-core</artifactId>
             <version>${spring-core.version}</version>
         </dependency>
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>${jakarta.xml.bind-api}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>${jaxb.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>${http-client.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.jettison</groupId>
+            <artifactId>jettison</artifactId>
+            <version>1.5.4</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-oxm</artifactId>
+            <version>${spring-oxm.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
     </dependencies>
 
     <properties>
+        <spring-oxm.version>6.1.4</spring-oxm.version>
+        <http-client.version>4.5.14</http-client.version>
+        <jakarta.xml.bind-api>4.0.0</jakarta.xml.bind-api>
+        <jaxb.version>4.0.2</jaxb.version>
+
         <spring.batch.version>5.1.2</spring.batch.version>
         <awaitility.version>4.2.1</awaitility.version>
         <start-class>com.baeldung.batch.SpringBootBatchProcessingApplication</start-class>

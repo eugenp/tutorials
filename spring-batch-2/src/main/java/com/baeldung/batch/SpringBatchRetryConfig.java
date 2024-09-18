@@ -1,9 +1,5 @@
 package com.baeldung.batch;
 
-import com.baeldung.batch.model.Transaction;
-import com.baeldung.batch.service.RecordFieldSetMapper;
-import com.baeldung.batch.service.RetryItemProcessor;
-
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.conn.ConnectTimeoutException;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -30,6 +26,10 @@ import org.springframework.dao.DeadlockLoserDataAccessException;
 import org.springframework.oxm.Marshaller;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.transaction.PlatformTransactionManager;
+
+import com.baeldung.batch.model.Transaction;
+import com.baeldung.batch.service.RecordFieldSetMapper;
+import com.baeldung.batch.service.RetryItemProcessor;
 
 @Configuration
 public class SpringBatchRetryConfig {
