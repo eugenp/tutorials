@@ -5,7 +5,6 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
 @EnableWebMvc
-//@ImportResource({ "classpath:webSecurityConfig.xml" })
 public class SecSecurityConfig {
 
     public SecSecurityConfig() {
