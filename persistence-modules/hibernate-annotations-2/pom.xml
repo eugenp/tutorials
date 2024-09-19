@@ -63,6 +63,12 @@
             <version>${spring-boot.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>1.5.8</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <properties>
