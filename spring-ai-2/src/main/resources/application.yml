@@ -18,3 +18,8 @@ spring:
       chat:
         options:
           model: llama3
+    mistralai:
+      api-key: ${MISTRAL_AI_API_KEY}
+      chat:
+        options:
+          model: mistral-small-latest
