@@ -13,13 +13,13 @@ public class JsonPrettyPrinterUnitTest {
     @Test
     public void shouldPrettyPrintJsonStringUsingDefaultPrettyPrinter() throws JsonProcessingException {
         String formattedJsonString = jsonPrettyPrinter.prettyPrintJsonUsingDefaultPrettyPrinter(uglyJsonString);
-        String expectedJson = "{\n" +
-            "  \"one\" : \"AAA\",\n" +
-            "  \"two\" : [ \"BBB\", \"CCC\" ],\n" +
-            "  \"three\" : {\n" +
-            "    \"four\" : \"DDD\",\n" +
-            "    \"five\" : [ \"EEE\", \"FFF\" ]\n" +
-            "  }\n" +
+        String expectedJson = "{" + System.lineSeparator() +
+            "  \"one\" : \"AAA\"," + System.lineSeparator() +
+            "  \"two\" : [ \"BBB\", \"CCC\" ]," + System.lineSeparator() +
+            "  \"three\" : {" + System.lineSeparator() +
+            "    \"four\" : \"DDD\"," + System.lineSeparator() +
+            "    \"five\" : [ \"EEE\", \"FFF\" ]" + System.lineSeparator() +
+            "  }" + System.lineSeparator() +
             "}";
         System.out.println("Formatted String: " + formattedJsonString);
         assertEquals(expectedJson, formattedJsonString);
@@ -28,13 +28,13 @@ public class JsonPrettyPrinterUnitTest {
     @Test
     public void shouldPrettyPrintJsonStringUsingGlobalSetting() throws JsonProcessingException {
         String formattedJsonString = jsonPrettyPrinter.prettyPrintUsingGlobalSetting(uglyJsonString);
-        String expectedJson = "{\n" +
-            "  \"one\" : \"AAA\",\n" +
-            "  \"two\" : [ \"BBB\", \"CCC\" ],\n" +
-            "  \"three\" : {\n" +
-            "    \"four\" : \"DDD\",\n" +
-            "    \"five\" : [ \"EEE\", \"FFF\" ]\n" +
-            "  }\n" +
+        String expectedJson = "{" + System.lineSeparator() +
+            "  \"one\" : \"AAA\"," + System.lineSeparator() +
+            "  \"two\" : [ \"BBB\", \"CCC\" ]," + System.lineSeparator() +
+            "  \"three\" : {" + System.lineSeparator() +
+            "    \"four\" : \"DDD\"," + System.lineSeparator() +
+            "    \"five\" : [ \"EEE\", \"FFF\" ]" + System.lineSeparator() +
+            "  }" + System.lineSeparator() +
             "}";
         System.out.println("Formatted String: " + formattedJsonString);
         assertEquals(expectedJson, formattedJsonString);

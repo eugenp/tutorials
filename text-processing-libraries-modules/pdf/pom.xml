@@ -91,11 +91,6 @@
             <artifactId>pdfbox</artifactId>
             <version>${pdfbox.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.itextpdf</groupId>
-            <artifactId>itextpdf</artifactId>
-            <version>${itext.version}</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -104,6 +99,9 @@
             <resource>
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
+                <excludes>
+                    <exclude>**/*.pdf</exclude> <!-- Exclude PDF files from filtering -->
+                </excludes>
             </resource>
         </resources>
     </build>
