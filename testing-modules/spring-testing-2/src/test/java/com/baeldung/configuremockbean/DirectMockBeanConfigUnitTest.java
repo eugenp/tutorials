@@ -11,6 +11,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 
 @SpringBootTest(classes = ConfigureMockBeanApplication.class)
 public class DirectMockBeanConfigUnitTest {
+
     @MockBean
     private UserService mockUserService;
 
@@ -18,7 +19,7 @@ public class DirectMockBeanConfigUnitTest {
     private UserController userController;
 
     @Test
-    void whenDirectMockBean_thenReturnUserName(){
+    void whenDirectMockBean_thenReturnUserName() {
         when(mockUserService.getUserName(1L)).thenReturn("John Doe");
         assertEquals("John Doe", userController.getUserName(1L));
         verify(mockUserService).getUserName(1L);

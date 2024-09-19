@@ -16,6 +16,7 @@ import org.springframework.context.annotation.Import;
 @SpringBootTest(classes = ConfigureMockBeanApplication.class)
 @Import(InternalConfigMockBeanUnitTest.TestConfig.class)
 public class InternalConfigMockBeanUnitTest {
+
     @TestConfiguration
     static class TestConfig {
 
@@ -23,10 +24,11 @@ public class InternalConfigMockBeanUnitTest {
         UserService userService;
 
         @PostConstruct
-        public void initMock(){
+        public void initMock() {
             when(userService.getUserName(3L)).thenReturn("Bob Johnson");
         }
     }
+
     @Autowired
     private UserService userService;
 
@@ -34,7 +36,7 @@ public class InternalConfigMockBeanUnitTest {
     private UserController userController;
 
     @Test
-    void whenConfiguredUserService_thenReturnUserName(){
+    void whenConfiguredUserService_thenReturnUserName() {
         assertEquals("Bob Johnson", userController.getUserName(3L));
         verify(userService).getUserName(3L);
     }

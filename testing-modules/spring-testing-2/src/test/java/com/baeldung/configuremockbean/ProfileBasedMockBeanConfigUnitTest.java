@@ -25,7 +25,7 @@ public class ProfileBasedMockBeanConfigUnitTest {
     private UserController userController;
 
     @Test
-    void whenDevProfileActive_thenReturnUserName(){
+    void whenDevProfileActive_thenReturnUserName() {
         assertEquals("Alice Brown", userController.getUserName(4L));
         verify(userService).getUserName(4L);
     }
@@ -39,7 +39,7 @@ class DevProfileTestConfig {
     UserService userService;
 
     @PostConstruct
-    public void initMock(){
+    public void initMock() {
         when(userService.getUserName(4L)).thenReturn("Alice Brown");
     }
 }

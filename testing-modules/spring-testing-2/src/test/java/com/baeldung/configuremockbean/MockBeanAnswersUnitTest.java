@@ -13,6 +13,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 
 @SpringBootTest(classes = ConfigureMockBeanApplication.class)
 public class MockBeanAnswersUnitTest {
+
     @MockBean
     private UserService mockUserService;
 
@@ -21,19 +22,20 @@ public class MockBeanAnswersUnitTest {
 
     @BeforeEach
     void setUp() {
-        when(mockUserService.getUserName(anyLong())).thenAnswer(invocation ->{
+        when(mockUserService.getUserName(anyLong())).thenAnswer(invocation -> {
             Long input = invocation.getArgument(0);
-            if(input == 1L)
+            if (input == 1L) {
                 return "John Doe";
-            else if(input == 2L)
+            } else if (input == 2L) {
                 return "Jane Smith";
-            else
+            } else {
                 return "Bob Johnson";
+            }
         });
     }
 
     @Test
-    void whenDirectMockBean_thenReturnUserName(){
+    void whenDirectMockBean_thenReturnUserName() {
         assertEquals("John Doe", mockUserService.getUserName(1L));
         assertEquals("Jane Smith", mockUserService.getUserName(2L));
         assertEquals("Bob Johnson", mockUserService.getUserName(3L));

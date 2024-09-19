@@ -25,7 +25,7 @@ public class ParentContextConfigUnitTest {
     }
 
     @Test
-    void whenParentContextConfigMockBean_thenReturnUserName(){
+    void whenParentContextConfigMockBean_thenReturnUserName() {
         assertEquals("John Doe", userController.getUserName(1L));
         verify(mockUserService).getUserName(1L);
     }
