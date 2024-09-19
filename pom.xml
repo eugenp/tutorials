@@ -540,7 +540,7 @@
         </profile>
 
         <profile>
-            <id>default</id>
+            <id>default-jdk17</id>
             <build>
                 <plugins>
                     <plugin>
@@ -613,7 +613,7 @@
         </profile>
 
         <profile>
-            <id>default-jdk21</id>
+            <id>default</id>
             <build>
                 <plugins>
                     <plugin>
@@ -849,7 +849,7 @@
                 <module>xstream</module>
                 <!-- <module>libraries-data-io-2</module> --> <!-- JAVA-39367 -->
                 <module>spring-5-rest-docs</module>
-                <module>maven-modules</module>
+                <!-- <module>maven-modules</module> --> <!--JAVA 37707-->
             </modules>
 
             <properties>
@@ -862,7 +862,7 @@
         </profile>
 
         <profile>
-            <id>integration</id>
+            <id>integration-jdk17</id>
             <build>
                 <plugins>
                     <plugin>
@@ -929,7 +929,7 @@
         </profile>
 
         <profile>
-            <id>integration-jdk21</id>
+            <id>integration</id>
             <build>
                 <plugins>
                     <plugin>
@@ -1159,7 +1159,7 @@
                 <module>xstream</module>
                 <!-- <module>libraries-data-io-2</module> --> <!-- JAVA-39367 -->
                 <module>spring-5-rest-docs</module>
-                <module>maven-modules</module>
+                <!-- <module>maven-modules</module> --> <!--JAVA 37707-->
             </modules>
 
             <properties>
