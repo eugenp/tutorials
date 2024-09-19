@@ -1,6 +1,7 @@
 package com.baeldung.reflection.getclassfromstaticmethod;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertSame;
 
 import java.lang.invoke.MethodHandles;
 
@@ -21,7 +22,7 @@ class Player {
     }
 
     // the method below doesn't compile
-    //  public static Class<?> getClassInStatic(){
+    //  public static Class<?> getClassInStatic() {
     //      return getClass();
     //  }
 
@@ -40,17 +41,17 @@ public class GetClassFromStaticMethodUnitTest {
     @Test
     void whenUsingGetClass_thenGetExpectedClass() {
         Player kai = new Player("Kai", 25);
-        assertEquals(Player.class, kai.currentClass());
+        assertSame(Player.class, kai.currentClass());
     }
 
     @Test
     void whenUsingClassName_thenGetExpectedClass() {
-        assertEquals(Player.class, Player.currentClassByClassLiteral());
+        assertSame(Player.class, Player.currentClassByClassLiteral());
     }
 
     @Test
     void whenUsingMethodHandlers_thenGetExpectedClass() {
-        assertEquals(Player.class, Player.currentClassByMethodHandles());
+        assertSame(Player.class, Player.currentClassByMethodHandles());
     }
 
 }
