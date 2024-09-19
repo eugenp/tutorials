@@ -688,6 +688,7 @@
                 <module>guava-modules</module>
                 <module>hazelcast</module>
                 <module>heroku</module>
+                <module>hilla</module>
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
                 <module>image-compressing</module>
@@ -998,6 +999,7 @@
                 <module>guava-modules</module>
                 <module>hazelcast</module>
                 <module>heroku</module>
+                <module>hilla</module>
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
                 <module>image-compressing</module>
