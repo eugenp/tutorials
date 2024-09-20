@@ -667,7 +667,7 @@
                 <module>azure</module>
                 <!-- <module>azure-functions</module>--> <!-- BAEL-6423 -->
                 <module>bazel</module>
-                <!-- <module>checker-framework</module>  --> <!-- JAVA-39367 -->
+                <module>checker-framework</module>
                 <module>core-java-modules</module>
                 <module>custom-pmd</module>
                 <module>data-structures</module>
@@ -977,7 +977,7 @@
                 <module>azure</module>
                 <!-- <module>azure-functions</module>--> <!-- BAEL-6423 -->
                 <module>bazel</module>
-                <!-- <module>checker-framework</module> --> <!-- JAVA-39367 -->
+                <module>checker-framework</module>
                 <module>core-java-modules</module>
                 <module>custom-pmd</module>
                 <module>data-structures</module>
