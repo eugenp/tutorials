@@ -17,7 +17,17 @@
         <dependency>
             <groupId>net.datafaker</groupId>
             <artifactId>datafaker</artifactId>
-            <version>1.6.0</version>
+            <version>${datafaker.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.netbeans.modules</groupId>
+            <artifactId>org-netbeans-lib-profiler</artifactId>
+            <version>${neabeans-lib-profiler.version}</version>
         </dependency>
     </dependencies>
+
+    <properties>
+        <datafaker.version>1.6.0</datafaker.version>
+        <neabeans-lib-profiler.version>RELEASE220</neabeans-lib-profiler.version>
+    </properties>
 </project>

@@ -14,7 +14,7 @@
     </parent>
 
     <modules>
-        <!-- <module>quarkus</module>--> <!-- failing after upgrade to jdk21 -->
+        <module>quarkus</module>
         <module>quarkus-citrus</module>
         <module>quarkus-clientbasicauth</module>
         <module>quarkus-extension</module>
@@ -26,6 +26,7 @@
         <module>consume-rest-api</module>
         <module>quarkus-virtual-threads</module>
         <module>quarkus-hibernate-reactive</module>
+        <module>quarkus-langchain4j</module>
     </modules>
 
 </project>
