@@ -705,7 +705,7 @@
                 <module>jaxb</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
-                <!-- <module>jmh</module> --> <!-- JAVA-39367 -->
+                <module>jmh</module>
                 <module>json-modules</module>
                 <module>jsoup</module>
                 <module>jws</module>
@@ -1015,7 +1015,7 @@
                 <module>jdbc-cp</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
-                <!-- <module>jmh</module> --> <!-- JAVA-39367 -->
+                <module>jmh</module>
                 <module>json-modules</module>
                 <module>jsoup</module>
                 <module>jws</module>
