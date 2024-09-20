@@ -14,10 +14,10 @@ import org.springframework.http.converter.json.JsonbHttpMessageConverter;
 
 @SpringBootApplication(exclude = SecurityAutoConfiguration.class)
 @ComponentScan(basePackages = { "com.baeldung.jsonb" })
-public class Spring5Application {
+public class Spring5JsonbApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Spring5Application.class, args);
+        SpringApplication.run(Spring5JsonbApplication.class, args);
     }
 
     @Bean
