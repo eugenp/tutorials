@@ -16,7 +16,7 @@ public class CompositeBookRepositoryIntegrationTest {
     @Test
     public void givenCompositeBook_whenSave_thenSaveToDatabase() {
         CompositeBook compositeBook = new CompositeBook(new BookId(1L, 1234567890L),
-                "Book Title", "Author Name");
+      "Book Title", "Author Name");
         compositeBookRepository.save(compositeBook);
 
         CompositeBook savedBook = compositeBookRepository
