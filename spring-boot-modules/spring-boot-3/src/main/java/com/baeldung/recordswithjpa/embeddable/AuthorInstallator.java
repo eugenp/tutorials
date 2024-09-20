@@ -15,7 +15,8 @@ public class AuthorInstallator implements EmbeddableInstantiator {
     }
 
     @Override
-    public Object instantiate(final ValueAccess valueAccess, final SessionFactoryImplementor sessionFactoryImplementor) {
+    public Object instantiate(final ValueAccess valueAccess,
+      final SessionFactoryImplementor sessionFactoryImplementor) {
         final String firstName = valueAccess.getValue(0, String.class);
         final String secondName = valueAccess.getValue(1, String.class);
         return new Author(firstName, secondName);
