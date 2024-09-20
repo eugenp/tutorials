@@ -44,6 +44,11 @@
             <artifactId>log4j-core</artifactId>
             <version>${log4j.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.ozlerhakan</groupId>
+            <artifactId>poiji</artifactId>
+            <version>${poiji.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -70,6 +75,7 @@
         <maven.resources.plugin.version>3.3.1</maven.resources.plugin.version>
         <log4j.version>2.23.1</log4j.version>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version> <!-- cannot upgrade without breaking build -->
+        <poiji.version>4.2.0</poiji.version>
     </properties>
 
 </project>
