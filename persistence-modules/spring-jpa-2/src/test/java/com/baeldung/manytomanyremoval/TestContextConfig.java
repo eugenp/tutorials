@@ -5,8 +5,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
 @Configuration
-@PropertySource("classpath:/inhertiancesubtypes/test.properties")
-@ComponentScan({"com.baeldung.jpa.subtypes.entity","com.baeldung.jpa.subtypes.repository"})
+@PropertySource("classpath:/manytomanyremoval/test.properties")
+@ComponentScan("com.baeldung.manytomanyremoval")
 public class TestContextConfig {
 
 }
