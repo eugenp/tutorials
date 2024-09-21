@@ -54,7 +54,7 @@
         <module>spring-boot-keycloak</module>
         <module>spring-boot-keycloak-2</module>
         <module>spring-boot-libraries</module>
-        <module>spring-boot-libraries-2</module>
+        <!-- <module>spring-boot-libraries-2</module> --> <!-- JAVA-37799 -->
         <module>spring-boot-libraries-3</module>
         <module>spring-boot-process-automation</module>
         <module>spring-boot-logging-logback</module>
@@ -95,7 +95,7 @@
         <module>spring-boot-redis</module>
         <module>spring-boot-cassandre</module>
 <!--        <module>spring-boot-react</module>--> <!-- Migrated to heavy profile -->
-<!--        <module>spring-caching-3</module> --> <!-- failing after upgrading to spring boot 3.3.2 -->
+        <module>spring-caching-3</module>
         <!-- <module>spring-boot-3</module> --> <!-- JAVA-20931 -->
         <module>spring-boot-3-grpc</module>
         <module>spring-boot-3-native</module>

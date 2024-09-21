@@ -7,7 +7,6 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 
 ### Relevant Articles:
 
-- [Getting Started with GraphQL and Spring Boot](https://www.baeldung.com/spring-graphql)
 
 ### GraphQL sample queries
 
