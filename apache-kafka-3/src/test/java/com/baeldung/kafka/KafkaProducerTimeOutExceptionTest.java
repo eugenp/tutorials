@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.baeldung.kafka;
 
 import static org.assertj.core.api.Assertions.assertThat;
