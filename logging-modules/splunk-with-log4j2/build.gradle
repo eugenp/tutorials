@@ -1,0 +1,41 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.2.4'
+    id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com.spring-splunk'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = '17'
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url "https://splunk.jfrog.io/splunk/ext-releases-local"
+        name 'Splunk Releases'
+    }
+}
+
+dependencies {
+    implementation('org.springframework.boot:spring-boot-starter-web') {
+      exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
+    implementation 'org.springframework.boot:spring-boot-starter-log4j2'
+    implementation group: 'com.splunk.logging', name: 'splunk-library-javalogging', version: '1.8.0'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+      exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
