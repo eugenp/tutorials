@@ -540,7 +540,7 @@
         </profile>
 
         <profile>
-            <id>default</id>
+            <id>default-jdk17</id>
             <build>
                 <plugins>
                     <plugin>
@@ -613,7 +613,7 @@
         </profile>
 
         <profile>
-            <id>default-jdk21</id>
+            <id>default</id>
             <build>
                 <plugins>
                     <plugin>
@@ -659,6 +659,7 @@
                 <module>apache-olingo</module><!-- apache-olingo wasn't updated to boot-3 because a workaround for jakarta namespace wasn't found JAVA-27818 -->
                 <module>apache-poi-2</module>
                 <module>apache-poi-3</module>
+                <module>apache-poi-4</module>
                 <module>apache-poi</module>
                 <module>apache-thrift</module>
                 <module>apache-velocity</module>
@@ -849,7 +850,7 @@
                 <module>xstream</module>
                 <!-- <module>libraries-data-io-2</module> --> <!-- JAVA-39367 -->
                 <module>spring-5-rest-docs</module>
-                <module>maven-modules</module>
+                <!-- <module>maven-modules</module> --> <!--JAVA 37707-->
             </modules>
 
             <properties>
@@ -862,7 +863,7 @@
         </profile>
 
         <profile>
-            <id>integration</id>
+            <id>integration-jdk17</id>
             <build>
                 <plugins>
                     <plugin>
@@ -929,7 +930,7 @@
         </profile>
 
         <profile>
-            <id>integration-jdk21</id>
+            <id>integration</id>
             <build>
                 <plugins>
                     <plugin>
@@ -969,6 +970,7 @@
                 <module>apache-olingo</module><!-- apache-olingo wasn't updated to boot-3 because a workaround for jakarta namespace wasn't found JAVA-27818 -->
                 <module>apache-poi-2</module>
                 <module>apache-poi-3</module>
+                <module>apache-poi-4</module>
                 <module>apache-poi</module>
                 <module>apache-thrift</module>
                 <module>apache-velocity</module>
@@ -1159,7 +1161,7 @@
                 <module>xstream</module>
                 <!-- <module>libraries-data-io-2</module> --> <!-- JAVA-39367 -->
                 <module>spring-5-rest-docs</module>
-                <module>maven-modules</module>
+                <!-- <module>maven-modules</module> --> <!--JAVA 37707-->
             </modules>
 
             <properties>
