@@ -41,7 +41,6 @@ public class HandlePopupsLiveTest {
         assertTrue(bodyText.contains("Congratulations! You must have the proper credentials."));
     }
 
-
     @Test
     public void whenModalDialogAppears_thenCloseIt() {
         driver.get("https://the-internet.herokuapp.com/entry_ad");
@@ -57,7 +56,5 @@ public class HandlePopupsLiveTest {
 
         assertTrue(modalIsClosed, "The modal should be closed after clicking the close button");
     }
-
-
 
 }
