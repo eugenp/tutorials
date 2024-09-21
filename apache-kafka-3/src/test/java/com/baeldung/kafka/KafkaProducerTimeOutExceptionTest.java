@@ -72,7 +72,7 @@ public class KafkaProducerTimeOutExceptionTest {
     }
 
     @Test
-    void givenProducerConfiguredWhenRecordSentThenNoExceptionOccurs() throws InterruptedException, ExecutionException {
+    void givenProducerConfigured_whenRecordSent_thenNoExceptionOccurs() throws InterruptedException, ExecutionException {
         Properties producerProperties = getProducerProperties();
         KafkaProducer<String, String> producer = new KafkaProducer<>(producerProperties);
 
@@ -85,7 +85,7 @@ public class KafkaProducerTimeOutExceptionTest {
     }
 
     @Test
-    void givenProducerRequestTimeOutLowWhenRecordSentThenTimeOutExceptionOccurs() throws InterruptedException, ExecutionException {
+    void givenProducerRequestTimeOutLow_whenRecordSent_thenTimeOutExceptionOccurs() throws InterruptedException, ExecutionException {
         Properties producerProperties = getProducerProperties();
         producerProperties.put(ProducerConfig.REQUEST_TIMEOUT_MS_CONFIG, 5);
         producerProperties.put(ProducerConfig.DELIVERY_TIMEOUT_MS_CONFIG, 1000);
@@ -114,7 +114,7 @@ public class KafkaProducerTimeOutExceptionTest {
     }
 
     @Test
-    void givenProducerLingerTimeIsLowWhenRecordSentThenTimeOutExceptionOccurs() throws InterruptedException, ExecutionException {
+    void givenProducerLingerTimeIsLow_whenRecordSent_thenTimeOutExceptionOccurs() throws InterruptedException, ExecutionException {
         Properties producerProperties = getProducerProperties();
         producerProperties.put(ProducerConfig.LINGER_MS_CONFIG, 0);
         producerProperties.put(ProducerConfig.BATCH_SIZE_CONFIG, 1);
@@ -143,7 +143,7 @@ public class KafkaProducerTimeOutExceptionTest {
     }
 
     @Test
-    void givenProducerLargeBatchSizeWhenRecordSentThenTimeOutExceptionOccurs() throws InterruptedException, ExecutionException {
+    void givenProducerLargeBatchSize_whenRecordSent_thenTimeOutExceptionOccurs() throws InterruptedException, ExecutionException {
         Properties producerProperties = getProducerProperties();
         producerProperties.put(ProducerConfig.LINGER_MS_CONFIG, 5000);
         producerProperties.put(ProducerConfig.BATCH_SIZE_CONFIG, 10000000);
