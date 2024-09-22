@@ -13,5 +13,7 @@ public class SpringContextTest {
 
     @Test
     public void whenSpringContextIsBootstrapped_thenNoExceptions() {
+        //Testing comment
+        System.out.println("Context loads successfully");
     }
 }
