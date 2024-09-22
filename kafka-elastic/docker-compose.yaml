@@ -59,18 +59,6 @@ services:
     networks:
       - private_network
 
-#  kibana:
-#    image: docker.elastic.co/kibana/kibana:8.5.0
-#    container_name: kibana
-#    environment:
-#      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
-#      - ELASTICSEARCH_USERNAME=kibana_user
-#      - ELASTICSEARCH_PASSWORD=Elasticsearch@123
-#    ports:
-#      - 5601:5601
-#    networks:
-#      - private_network
-
   spring-boot-app:
     container_name: springbootapp
     build:
