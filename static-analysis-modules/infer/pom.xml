@@ -6,7 +6,7 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>static-analysis</artifactId>
+        <artifactId>static-analysis-modules</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
