@@ -58,6 +58,10 @@
             <resource>
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
+                <excludes>
+                    <exclude>**/*.xlsx</exclude> <!-- Exclude xlsx files from filtering -->
+                    <exclude>**/*.pdf</exclude> <!-- Exclude pdf files from filtering -->
+                </excludes>
             </resource>
         </resources>
     </build>
