@@ -32,4 +32,13 @@ public class RandomNumbersInARangeUnitTest {
         assertTrue(number >= 1);
         assertTrue(number < 10);
     }
+
+    @Test
+    public void givenTheRange1To10_andUsingThreadLocalRandom_thenExpectCorrectResult() {
+        RandomNumbersInARange randomNumbersInARange = new RandomNumbersInARange();
+        int number = randomNumbersInARange.getRandomNumberUsingThreadLocalRandom(1, 10);
+
+        assertTrue(number >= 1);
+        assertTrue(number < 10);
+    }
 }
