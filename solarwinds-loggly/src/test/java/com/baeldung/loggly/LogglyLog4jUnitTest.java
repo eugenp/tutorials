@@ -2,7 +2,6 @@ package com.baeldung.loggly;
 
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.Test;
-import org.slf4j.LoggerFactory;
 
 public class LogglyLog4jUnitTest {
 
