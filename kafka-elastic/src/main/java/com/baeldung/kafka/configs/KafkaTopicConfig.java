@@ -1,4 +1,4 @@
-package com.itsnaveenk.springkafkaelasticdemo.configs;
+package com.baeldung.kafka.configs;
 
 import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.admin.NewTopic;
@@ -13,8 +13,11 @@ import java.util.Map;
 @Configuration
 public class KafkaTopicConfig {
 
+    public static final String TOPIC_NAME = "foodsOrder";
+    
     @Value(value = "${spring.kafka.bootstrap-servers}")
     private String bootstrapAddress;
+
 
     @Bean
     public KafkaAdmin kafkaAdmin() {
@@ -25,6 +28,6 @@ public class KafkaTopicConfig {
 
     @Bean
     public NewTopic topic1() {
-        return new NewTopic("foodsOrder", 1, (short) 1);
+        return new NewTopic(TOPIC_NAME, 1, (short) 1);
     }
 }

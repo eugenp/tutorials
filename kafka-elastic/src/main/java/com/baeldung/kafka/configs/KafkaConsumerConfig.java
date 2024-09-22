@@ -1,6 +1,5 @@
-package com.itsnaveenk.springkafkaelasticdemo.configs;
+package com.baeldung.kafka.configs;
 
-import com.itsnaveenk.springkafkaelasticdemo.model.NotificationModel;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,6 +14,8 @@ import org.springframework.kafka.support.serializer.JsonDeserializer;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import com.baeldung.kafka.model.NotificationModel;
 
 @EnableKafka
 @Configuration
@@ -37,9 +38,9 @@ public class KafkaConsumerConfig {
     }
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, NotificationModel> kafkaListenerContainerFactory() {
+    public ConcurrentKafkaListenerContainerFactory<String, NotificationModel> kafkaListenerContainerFactory(ConsumerFactory consumerFactory) {
         ConcurrentKafkaListenerContainerFactory<String, NotificationModel> factory = new ConcurrentKafkaListenerContainerFactory<>();
-        factory.setConsumerFactory(consumerFactory());
+        factory.setConsumerFactory(consumerFactory);
         return factory;
     }
 }

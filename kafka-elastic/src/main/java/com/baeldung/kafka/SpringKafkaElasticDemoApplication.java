@@ -1,4 +1,4 @@
-package com.itsnaveenk.springkafkaelasticdemo;
+package com.baeldung.kafka;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

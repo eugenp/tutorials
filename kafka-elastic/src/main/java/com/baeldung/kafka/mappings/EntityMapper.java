@@ -1,9 +1,10 @@
-package com.itsnaveenk.springkafkaelasticdemo.mappings;
+package com.baeldung.kafka.mappings;
 
-import com.itsnaveenk.springkafkaelasticdemo.entity.NotificationEntity;
-import com.itsnaveenk.springkafkaelasticdemo.model.NotificationModel;
+import com.baeldung.kafka.entity.NotificationEntity;
+import com.baeldung.kafka.model.NotificationModel;
 
 public class EntityMapper {
+
     public static NotificationEntity mapToEntity(NotificationModel notificationModel) {
 
         NotificationEntity notificationEntity = new NotificationEntity();

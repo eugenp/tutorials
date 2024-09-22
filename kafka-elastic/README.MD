@@ -25,11 +25,6 @@ This project demonstrates the integration of Spring Boot with Kafka and Elastics
    docker-compose up
    ```
 
-3. **Add Kibana user (Optional, if want to use Kibana. run after complete setup of Elasticsearch) :**
-   ```sh
-   docker exec -it elasticsearch bin/elasticsearch-users useradd kibana_user -p Elasticsearch@123 -r kibana_system
-   ```
-
 ### Run Locally
 
 1. **Build the project:**
@@ -62,9 +57,9 @@ This project demonstrates the integration of Spring Boot with Kafka and Elastics
 - **Request Body:**
   ```json
   {
-    "user_id": 1,
+    "userId": 1,
     "message": "Hello, World!",
-    "recipient_id": 2
+    "recipientId": 2
   }
   ```
 - **Response:**
@@ -100,12 +95,7 @@ This project demonstrates the integration of Spring Boot with Kafka and Elastics
 - **Zookeeper:** `zookeeper:2181`
 - **Kafka:** `kafka:9092`
 - **Elasticsearch:** `elasticsearch:9200`
-- **Kibana:** `kibana:5601`
 - **Spring Boot App:** `springbootapp:8080`
-
-## License
-
-This project is licensed under the MIT License.
 
 ---
 
@@ -137,9 +127,9 @@ This project is licensed under the MIT License.
 **Request Body:**
 ```json
 {
-  "user_id": 1,
+  "userId": 1,
   "message": "Hello, World!",
-  "recipient_id": 2
+  "recipientId": 2
 }
 ```
 

@@ -3,7 +3,7 @@ version: '3.7'
 services:
   zookeeper:
     restart: always
-    image: docker.io/bitnami/zookeeper:3.8
+    image: manios/zookeeper:3.8
     container_name: zookeeper
     ports:
       - "2181:2181"
@@ -16,7 +16,7 @@ services:
 
   kafka:
     restart: always
-    image: docker.io/bitnami/kafka:3.3
+    image: apache/kafka:3.3
     container_name: kafka
     ports:
       - "9092:9092"
@@ -58,18 +58,6 @@ services:
       - esdata1:/usr/share/elasticsearch/data
     networks:
       - private_network
-
-#  kibana:
-#    image: docker.elastic.co/kibana/kibana:8.5.0
-#    container_name: kibana
-#    environment:
-#      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
-#      - ELASTICSEARCH_USERNAME=kibana_user
-#      - ELASTICSEARCH_PASSWORD=Elasticsearch@123
-#    ports:
-#      - 5601:5601
-#    networks:
-#      - private_network
 
   spring-boot-app:
     container_name: springbootapp
