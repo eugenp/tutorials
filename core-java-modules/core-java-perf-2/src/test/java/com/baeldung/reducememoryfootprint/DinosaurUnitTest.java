@@ -41,9 +41,13 @@ class DinosaurUnitTest {
 
     @Test
     void givenCombine_whenEstimatingSizeWithJolAndPackedBoolean_thenLogMemoryFootPrint() {
-        DinousaurBitPacking dinosaur = new DinousaurBitPacking(1, (short) 10, "Carnivorous", "Land", DinousaurBitPacking.convertToShort(true, true, false,false), "Animalia", "Chordata", "Dinosauria", "Saurischia", "Eusaurischia", "Eoraptor", "E. lunensis");
-        LOGGER.info("{} {} {} {}", DinousaurBitPacking.convertToBoolean(dinosaur.flag, DinousaurBitPacking.IS_EXTINCT), DinousaurBitPacking.convertToBoolean(dinosaur.flag, DinousaurBitPacking.IS_CARNIVOROUS),
-            DinousaurBitPacking.convertToBoolean(dinosaur.flag, DinousaurBitPacking.IS_HERBIVOROUS), DinousaurBitPacking.convertToBoolean(dinosaur.flag, DinousaurBitPacking.IS_OMNIVOROUS));
+        short flags = DinousaurBitPacking.convertToShort(true, false, false, true);
+        DinousaurBitPacking dinosaur = new DinousaurBitPacking(1, (short) 10, "Carnivorous", "Land", flags,"Animalia", "Chordata", "Dinosauria", "Saurischia", "Eusaurischia", "Eoraptor", "E. lunensis");
+        LOGGER.info("{} {} {} {}",
+            DinousaurBitPacking.convertToBoolean(dinosaur.flag, DinousaurBitPacking.IS_EXTINCT),
+            DinousaurBitPacking.convertToBoolean(dinosaur.flag, DinousaurBitPacking.IS_CARNIVOROUS),
+            DinousaurBitPacking.convertToBoolean(dinosaur.flag, DinousaurBitPacking.IS_HERBIVOROUS),
+            DinousaurBitPacking.convertToBoolean(dinosaur.flag, DinousaurBitPacking.IS_OMNIVOROUS));
         LOGGER.info(String.valueOf(GraphLayout.parseInstance(dinosaur)
             .totalSize()));
     }
