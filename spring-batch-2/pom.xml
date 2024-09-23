@@ -87,10 +87,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>21</source>
-                    <target>21</target>
-                </configuration>
             </plugin>
         </plugins>
     </build>
@@ -103,7 +99,6 @@
         <spring.batch.version>5.1.2</spring.batch.version>
         <awaitility.version>4.2.1</awaitility.version>
         <start-class>com.baeldung.batch.SpringBootBatchProcessingApplication</start-class>
-        <spring-core.version>6.1.5</spring-core.version>
     </properties>
 
 </project>
