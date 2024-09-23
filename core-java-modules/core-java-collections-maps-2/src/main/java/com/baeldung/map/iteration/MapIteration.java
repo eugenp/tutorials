@@ -7,12 +7,14 @@ import org.eclipse.collections.api.map.MutableMap;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class MapIteration {
 
     public long iterateUsingIteratorAndValues(Map<Integer, Integer> map) {
         long sum = 0;
-        Iterator<Integer> iterator = map.values().iterator();
+        Iterator<Integer> iterator = map.values()
+            .iterator();
         while (iterator.hasNext()) {
             Integer value = iterator.next();
             sum += value;
@@ -20,42 +22,41 @@ public class MapIteration {
         return sum;
     }
 
-    public long iterateUsingEntrySet(Map<Integer, Integer> map) {
+    public long iterateUsingEnhancedForLoopAndEntrySet(Map<Integer, Integer> map) {
         long sum = 0;
         for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-            sum += entry.getKey() + entry.getValue();
+            sum += entry.getValue();
         }
         return sum;
     }
 
-    public long iterateUsingLambda(Map<Integer, Integer> map) {
-        final long[] sum = { 0 };
-        map.forEach((k, v) -> sum[0] += k + v);
-        return sum[0];
+    public long iterateUsingLambdaAndForEach(Map<Integer, Integer> map) {
+        AtomicLong sum = new AtomicLong(0);
+        map.forEach((k, v) -> sum.addAndGet(v));
+        return sum.get();
     }
 
-    public long iterateByKeysUsingLambda(Map<Integer, Integer> map) {
-        final long[] sum = { 0 };
+    public long iterateByKeysUsingLambdaAndForEach(Map<Integer, Integer> map) {
+        AtomicLong sum = new AtomicLong(0);
         map.keySet()
-            .forEach(k -> sum[0] += k + map.get(k));
-
-        return sum[0];
+            .forEach(k -> sum.addAndGet(map.get(k)));
+        return sum.get();
     }
 
-    public long iterateValuesUsingLambda(Map<Integer, Integer> map) {
-        final long[] sum = { 0 };
+    public long iterateValuesUsingLambdaAndForEach(Map<Integer, Integer> map) {
+        AtomicLong sum = new AtomicLong(0);
         map.values()
-            .forEach(v -> sum[0] += v);
-        return sum[0];
+            .forEach(v -> sum.addAndGet(v));
+        return sum.get();
     }
 
-    public long iterateUsingIteratorAndEntry(Map<Integer, Integer> map) {
+    public long iterateUsingIteratorAndEntrySet(Map<Integer, Integer> map) {
         long sum = 0;
         Iterator<Map.Entry<Integer, Integer>> iterator = map.entrySet()
             .iterator();
         while (iterator.hasNext()) {
             Map.Entry<Integer, Integer> pair = iterator.next();
-            sum += pair.getKey() + pair.getValue();
+            sum += pair.getValue();
         }
         return sum;
     }
@@ -66,47 +67,46 @@ public class MapIteration {
             .iterator();
         while (iterator.hasNext()) {
             Integer key = iterator.next();
-            sum += key + map.get(key);
+            sum += map.get(key);
         }
         return sum;
     }
 
-    public long iterateUsingKeySetAndForeach(Map<Integer, Integer> map) {
+    public long iterateUsingKeySetAndEnhanceForLoop(Map<Integer, Integer> map) {
         long sum = 0;
         for (Integer key : map.keySet()) {
-            sum += key + map.get(key);
+            sum += map.get(key);
         }
         return sum;
     }
 
     public long iterateUsingStreamAPIAndEntrySet(Map<Integer, Integer> map) {
-        final long[] sum = { 0 };
-        map.entrySet()
+        return map.entrySet()
             .stream()
-            .forEach(e -> sum[0] += e.getKey() + e.getValue());
-        return sum[0];
+            .mapToLong(Map.Entry::getValue)
+            .sum();
+
     }
 
     public long iterateUsingStreamAPIAndKeySet(Map<Integer, Integer> map) {
-        final long[] sum = { 0 };
-        map.keySet()
+        return map.keySet()
             .stream()
-            .forEach(e -> sum[0] += map.get(e));
-        return sum[0];
+            .mapToLong(map::get)
+            .sum();
     }
 
-    public long iterateKeys(Map<Integer, Integer> map) {
+    public long iterateKeysUsingKeySetAndEnhanceForLoop(Map<Integer, Integer> map) {
         long sum = 0;
         for (Integer key : map.keySet()) {
-            sum += key;
+            sum += map.get(key);
         }
         return sum;
     }
 
-    public long iterateValues(Map<Integer, Integer> map) {
+    public long iterateValuesUsingValuesMethodAndEnhanceForLoop(Map<Integer, Integer> map) {
         long sum = 0;
         for (Integer value : map.values()) {
-            sum += value ;
+            sum += value;
         }
         return sum;
     }
@@ -115,24 +115,24 @@ public class MapIteration {
         long sum = 0;
         MapIterator<Integer, Integer> iterate = map.mapIterator();
         while (iterate.hasNext()) {
-            sum += iterate.next() + iterate.getValue();
+            iterate.next();
+            sum += iterate.getValue();
         }
         return sum;
     }
 
     public long iterateEclipseMap(MutableMap<Integer, Integer> mutableMap) throws IOException {
-        final long[] sum = { 0 };
+        AtomicLong sum = new AtomicLong(0);
         mutableMap.forEachKeyValue((key, value) -> {
-            sum[0] += key + value;
+            sum.addAndGet(value);
         });
-        return sum[0];
+        return sum.get();
     }
 
-
-    public long iterateMapUsingParallelStreamApiParallel(Map<Integer, Integer> map) throws IOException {
+    public long iterateMapUsingParallelStreamApi(Map<Integer, Integer> map) throws IOException {
         return map.entrySet()
             .parallelStream()
-            .mapToLong(e -> e.getKey() + e.getValue())
+            .mapToLong(Map.Entry::getValue)
             .sum();
     }
 
