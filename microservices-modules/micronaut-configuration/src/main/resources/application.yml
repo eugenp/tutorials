@@ -1,0 +1,4 @@
+micronaut:
+  server:
+    port: 21000
+    context-path: /micronaut-configuration-tutorials

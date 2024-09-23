@@ -227,7 +227,7 @@
         <maven-clean-plugin.version>3.2.0</maven-clean-plugin.version>
         <maven-compiler-plugin.version>3.12.1</maven-compiler-plugin.version>
         <maven-resources-plugin.version>3.3.0</maven-resources-plugin.version>
-        <spring-boot.version>3.1.5</spring-boot.version>
+        <spring-boot.version>3.3.2</spring-boot.version>
         <junit-jupiter.version>5.11.0-M2</junit-jupiter.version>
         <native-build-tools-plugin.version>0.9.17</native-build-tools-plugin.version>
     </properties>

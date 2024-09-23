@@ -145,16 +145,6 @@ public class BenchmarkWriters {
 
     public static void main(String[] args) throws Exception {
         Files.deleteIfExists(Paths.get(FILE_PATH));
-
-        // We need to extract the classpath from the class loader before calling JMH
-        // This is necessary to load org.openjdk.jmh.runner.ForkedMain
-        URLClassLoader classLoader = (URLClassLoader) BenchmarkWriters.class.getClassLoader();
-        StringBuilder classpath = new StringBuilder();
-        for (URL url : classLoader.getURLs()) {
-            classpath.append(url.getPath()).append(File.pathSeparator);
-        }
-        System.setProperty("java.class.path", classpath.toString());
-
         org.openjdk.jmh.Main.main(args);
     }
 }

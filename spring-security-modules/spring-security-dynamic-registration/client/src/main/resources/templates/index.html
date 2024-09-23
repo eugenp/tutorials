@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Baeldung Test Application</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css" >
+
+</head>
+<body xmlns:th="http://www.thymeleaf.org">
+    <main>
+    <h1>Hello <span th:text="${user.name}">user_placeholder</span></h1>
+    <h2>Authorities</h2>
+    <ul>
+        <li th:each="auth: ${user.principal.authorities}">
+            <span th:text="${auth}">auth_placeholder</span>
+        </li>
+    </ul>
+    <h2>Claims</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="claim: ${user.principal.idToken.claims}">
+                <td th:text="${claim.key}">key_placeholder</td>
+                <td th:text="${claim.value}">key_placeholder</td>
+            </tr>
+        </tbody>
+    </table>
+    </main>
+</body>
+</html>
