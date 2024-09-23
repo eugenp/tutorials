@@ -26,7 +26,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @AutoConfigureMockMvc
 @RunWith(SpringRunner.class)
 @SpringBootTest
-class HelpDeskControllerIntegrationTest {
+class HelpDeskControllerLiveTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -40,8 +40,7 @@ class HelpDeskControllerIntegrationTest {
     @Autowired
     final ObjectMapper mapper = new ObjectMapper();
 
-// JAVA-39607
-//    @Test
+    @Test
     void givenPostChatRequest_whenRequested_thenReturn200() throws Exception {
         final String jsonContent = mapper.writeValueAsString(new HelpDeskRequest("Test prompt", "123"));
 
@@ -50,8 +49,7 @@ class HelpDeskControllerIntegrationTest {
             .andExpect(status().isOk());
     }
 
-// JAVA-39607
-//    @Test
+    @Test
     void givenPostChatRequests_whenRequestedWithSameHistoryId_thenSaveConversationProperly() throws Exception {
         final String firstRequest = mapper.writeValueAsString(new HelpDeskRequest("Can you help me with my internet?", "123"));
 
