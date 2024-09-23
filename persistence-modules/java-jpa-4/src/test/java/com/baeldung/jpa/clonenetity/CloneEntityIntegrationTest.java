@@ -132,4 +132,53 @@ public class CloneEntityIntegrationTest {
 
         assertSame(original.getCategory(), clone.getCategory(), "Category should be the same instance (shallow copy)");
     }
+
+
+    @Test
+    void whenUsingDetach_thenReturnsNewEntity() {
+        em.getTransaction().begin();
+        Product original = new Product();
+        original.setId(1L);
+        original.setName("Smartphone");
+        original.setCategory(new Category(1L, "Electronics"));
+        original.setPrice(599.99);
+        em.merge(original);
+        em.getTransaction().commit();
+
+        original = em.find(Product.class, 1L);
+        em.detach(original);
+
+        em.getTransaction().begin();
+        original.setId(2L);
+        original.setName("Laptop");
+        Product clone = em.merge(original);
+        original = em.find(Product.class, 1L);
+
+        assertSame("Laptop", clone.getName());
+        assertSame("Smartphone", original.getName());
+    }
+
+    @Test
+    void whenWithoutDetach_thenOriginalEntityModified() {
+        em.getTransaction().begin();
+        Product original = new Product();
+        original.setId(1L);
+        original.setName("Smartphone");
+        original.setCategory(new Category(1L, "Electronics"));
+        original.setPrice(599.99);
+        em.merge(original);
+        em.getTransaction().commit();
+
+        original = em.find(Product.class, 1L);
+        //em.detach(original);
+
+        em.getTransaction().begin();
+        original.setId(2L);
+        original.setName("Laptop");
+        Product clone = em.merge(original);
+        original = em.find(Product.class, 1L);
+
+        assertSame("Laptop", clone.getName());
+        assertSame("Laptop", original.getName());
+    }
 }
