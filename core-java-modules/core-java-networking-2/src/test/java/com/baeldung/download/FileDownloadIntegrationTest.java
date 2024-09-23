@@ -56,6 +56,12 @@ public class FileDownloadIntegrationTest {
         FileDownload.downloadWithApacheCommons(FILE_URL, FILE_NAME);
         assertTrue(checkMd5Hash(FILE_NAME));
     }
+
+    @Test
+    public void giveApacheHttpClient_whenDownloadingFile_thenDownloadShouldBeCorrect() throws IOException, NoSuchAlgorithmException {
+        FileDownload.downloadWithApacheHttpClient(FILE_URL, FILE_NAME);
+        assertTrue(checkMd5Hash(FILE_NAME));
+    }
     
     @Test
     public void givenJavaIO_whenDownloadingFileStops_thenDownloadShouldBeResumedCorrectly() throws NoSuchAlgorithmException, IOException, URISyntaxException {
