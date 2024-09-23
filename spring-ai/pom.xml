@@ -16,7 +16,6 @@
 
     <properties>
         <spring-boot.version>3.3.2</spring-boot.version>
-        <java.version>17</java.version>
         <spring-ai.version>1.0.0-M1</spring-ai.version>
     </properties>
 
