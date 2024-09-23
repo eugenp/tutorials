@@ -75,9 +75,6 @@
     <properties>
         <flyway.configFiles>src/main/resources/application-${spring-boot.run.profiles}.properties</flyway.configFiles>
         <flyway-maven-plugin.version>10.4.0</flyway-maven-plugin.version>
-        <java.version>17</java.version>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
 </project>

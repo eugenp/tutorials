@@ -35,7 +35,6 @@
 
     <properties>
         <start-class>com.baeldung.properties.yaml.YamlApplication</start-class>
-        <java.version>17</java.version>
     </properties>
 
 </project>
