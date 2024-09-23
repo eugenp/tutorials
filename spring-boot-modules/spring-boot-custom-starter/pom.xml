@@ -21,6 +21,7 @@
         <module>greeter-spring-boot-starter</module>
         <module>greeter-spring-boot-sample-app</module>
         <module>parent-multi-module</module>
+        <!-- just a comment for testing -->
     </modules>
 
     <properties>
