@@ -30,8 +30,8 @@ class MapIterationUnitTest {
         Map<Integer, Integer> map = new HashMap<>();
         map.put(1, 2);
         map.put(3, 4);
-        long result = mapIteration.iterateUsingEntrySet(map);
-        assertEquals(10, result);
+        long result = mapIteration.iterateUsingEnhancedForLoopAndEntrySet(map);
+        assertEquals(6, result);
     }
 
     @Test
@@ -39,8 +39,8 @@ class MapIterationUnitTest {
         Map<Integer, Integer> map = new HashMap<>();
         map.put(1, 2);
         map.put(3, 4);
-        long result = mapIteration.iterateUsingLambda(map);
-        assertEquals(10, result);
+        long result = mapIteration.iterateUsingLambdaAndForEach(map);
+        assertEquals(6, result);
     }
 
     @Test
@@ -48,8 +48,8 @@ class MapIterationUnitTest {
         Map<Integer, Integer> map = new HashMap<>();
         map.put(1, 2);
         map.put(3, 4);
-        long result = mapIteration.iterateByKeysUsingLambda(map);
-        assertEquals(10, result);
+        long result = mapIteration.iterateByKeysUsingLambdaAndForEach(map);
+        assertEquals(6, result);
     }
 
     @Test
@@ -57,7 +57,7 @@ class MapIterationUnitTest {
         Map<Integer, Integer> map = new HashMap<>();
         map.put(1, 2);
         map.put(3, 4);
-        long result = mapIteration.iterateValuesUsingLambda(map);
+        long result = mapIteration.iterateValuesUsingLambdaAndForEach(map);
         assertEquals(6, result);
     }
 
@@ -66,8 +66,8 @@ class MapIterationUnitTest {
         Map<Integer, Integer> map = new HashMap<>();
         map.put(1, 2);
         map.put(3, 4);
-        long result = mapIteration.iterateUsingIteratorAndEntry(map);
-        assertEquals(10, result);
+        long result = mapIteration.iterateUsingIteratorAndEntrySet(map);
+        assertEquals(6, result);
     }
 
     @Test
@@ -76,7 +76,7 @@ class MapIterationUnitTest {
         map.put(1, 2);
         map.put(3, 4);
         long result = mapIteration.iterateUsingIteratorAndKeySet(map);
-        assertEquals(10, result);
+        assertEquals(6, result);
     }
 
     @Test
@@ -84,8 +84,8 @@ class MapIterationUnitTest {
         Map<Integer, Integer> map = new HashMap<>();
         map.put(1, 2);
         map.put(3, 4);
-        long result = mapIteration.iterateUsingKeySetAndForeach(map);
-        assertEquals(10, result);
+        long result = mapIteration.iterateUsingKeySetAndEnhanceForLoop(map);
+        assertEquals(6, result);
     }
 
     @Test
@@ -94,7 +94,16 @@ class MapIterationUnitTest {
         map.put(1, 2);
         map.put(3, 4);
         long result = mapIteration.iterateUsingStreamAPIAndEntrySet(map);
-        assertEquals(10, result);
+        assertEquals(6, result);
+    }
+
+    @Test
+    void givenMap_whenIterateUsingStreamAPIParallel_thenCorrectSum() throws IOException {
+        Map<Integer, Integer> map = new HashMap<>();
+        map.put(1, 2);
+        map.put(3, 4);
+        long result = mapIteration.iterateMapUsingParallelStreamApi(map);
+        assertEquals(6, result);
     }
 
     @Test
@@ -102,8 +111,8 @@ class MapIterationUnitTest {
         Map<Integer, Integer> map = new HashMap<>();
         map.put(1, 2);
         map.put(3, 4);
-        long result = mapIteration.iterateKeys(map);
-        assertEquals(4, result);
+        long result = mapIteration.iterateKeysUsingKeySetAndEnhanceForLoop(map);
+        assertEquals(6, result);
     }
 
     @Test
@@ -111,7 +120,7 @@ class MapIterationUnitTest {
         Map<Integer, Integer> map = new HashMap<>();
         map.put(1, 2);
         map.put(3, 4);
-        long result = mapIteration.iterateValues(map);
+        long result = mapIteration.iterateValuesUsingValuesMethodAndEnhanceForLoop(map);
         assertEquals(6, result);
     }
 
@@ -121,7 +130,7 @@ class MapIterationUnitTest {
         iterableMap.put(1, 2);
         iterableMap.put(3, 4);
         long result = mapIteration.iterateUsingMapIteratorApacheCollection(iterableMap);
-        assertEquals(10, result);
+        assertEquals(6, result);
     }
 
     @Test
@@ -130,7 +139,7 @@ class MapIterationUnitTest {
         mutableMap.put(1, 2);
         mutableMap.put(3, 4);
         long result = mapIteration.iterateEclipseMap(mutableMap);
-        assertEquals(10, result);
+        assertEquals(6, result);
     }
 
 }

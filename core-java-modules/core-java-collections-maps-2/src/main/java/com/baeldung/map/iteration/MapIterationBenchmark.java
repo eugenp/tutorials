@@ -31,13 +31,12 @@ import java.util.concurrent.TimeUnit;
 public class MapIterationBenchmark {
 
     private static final int MAP_SIZE = 1000000;
+    @Param({ "100", "1000", "10000", "100000", "1000000" })
+    public int size;
     MapIteration mapIteration = new MapIteration();
     Map<Integer, Integer> map;
     IterableMap<Integer, Integer> iterableMap;
     MutableMap<Integer, Integer> mutableMap;
-
-    @Param({"100","1000","10000","100000","1000000"})
-    public int size;
 
     public static void main(String[] args) throws IOException, RunnerException {
         Options opt = new OptionsBuilder().include(MapIterationBenchmark.class.getSimpleName())
@@ -61,62 +60,72 @@ public class MapIterationBenchmark {
     }
 
     @Benchmark
-    public long benchmarkIterateUsingEntrySet() {
-        return mapIteration.iterateUsingEntrySet(map);
+    public long iterateUsingIteratorAndValues() {
+        return mapIteration.iterateUsingIteratorAndValues(map);
     }
 
     @Benchmark
-    public long benchmarkIterateUsingLambda() {
-        return mapIteration.iterateUsingLambda(map);
+    public long iterateUsingEnhancedForLoopAndEntrySet() {
+        return mapIteration.iterateUsingEnhancedForLoopAndEntrySet(map);
     }
 
     @Benchmark
-    public long benchmarkIterateByKeysUsingLambda() {
-        return mapIteration.iterateByKeysUsingLambda(map);
+    public long iterateUsingLambdaAndForEach() {
+        return mapIteration.iterateUsingLambdaAndForEach(map);
     }
 
     @Benchmark
-    public long benchmarkIterateValuesUsingLambda() {
-        return mapIteration.iterateValuesUsingLambda(map);
+    public long iterateByKeysUsingLambdaAndForEach() {
+        return mapIteration.iterateByKeysUsingLambdaAndForEach(map);
     }
 
     @Benchmark
-    public long benchmarkIterateUsingIteratorAndEntry() {
-        return mapIteration.iterateUsingIteratorAndEntry(map);
+    public long iterateValuesUsingLambdaAndForEach() {
+        return mapIteration.iterateValuesUsingLambdaAndForEach(map);
     }
 
     @Benchmark
-    public long benchmarkIterateUsingIteratorAndKeySet() {
+    public long iterateUsingIteratorAndKeySet() {
         return mapIteration.iterateUsingIteratorAndKeySet(map);
     }
 
     @Benchmark
-    public long benchmarkIterateUsingKeySetAndForeach() {
-        return mapIteration.iterateUsingKeySetAndForeach(map);
+    public long iterateUsingIteratorAndEntrySet() {
+        return mapIteration.iterateUsingIteratorAndEntrySet(map);
     }
 
     @Benchmark
-    public long benchmarkIterateUsingStreamAPI() throws IOException {
-        return mapIteration.iterateMapUsingParallelStreamApiParallel(map);
+    public long iterateUsingKeySetAndEnhanceForLoop() {
+        return mapIteration.iterateUsingKeySetAndEnhanceForLoop(map);
     }
 
     @Benchmark
-    public long benchmarkIterateUsingStreamAPIAndEntrySet() throws IOException {
+    public long iterateUsingStreamAPIAndEntrySet() {
         return mapIteration.iterateUsingStreamAPIAndEntrySet(map);
     }
 
     @Benchmark
-    public long benchmarkIterateUsingStreamAPIAndKeySet() throws IOException {
+    public long iterateUsingStreamAPIAndKeySet() {
         return mapIteration.iterateUsingStreamAPIAndKeySet(map);
     }
 
     @Benchmark
-    public long benchmarkIterateUsingMapIteratorApacheCollection() {
+    public long iterateKeysUsingKeySetAndEnhanceForLoop() {
+        return mapIteration.iterateKeysUsingKeySetAndEnhanceForLoop(map);
+    }
+
+    @Benchmark
+    public long iterateUsingMapIteratorApacheCollection() {
         return mapIteration.iterateUsingMapIteratorApacheCollection(iterableMap);
     }
 
     @Benchmark
-    public long benchmarkIterateEclipseMap() throws IOException {
+    public long iterateEclipseMap() throws IOException {
         return mapIteration.iterateEclipseMap(mutableMap);
+    }
+
+    @Benchmark
+    public long iterateMapUsingParallelStreamApi() throws IOException {
+        return mapIteration.iterateMapUsingParallelStreamApi(map);
     }
 }
