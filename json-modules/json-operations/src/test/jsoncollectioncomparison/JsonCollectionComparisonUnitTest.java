@@ -9,8 +9,15 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static uk.co.datumedge.hamcrest.json.SameJSONAs.sameJSONAs;
 
 public class JsonCollectionComparisonUnitTest {
-    String jsonArray1 = "[{\"id\": 1, \"name\": \"Alice\", \"address\": {\"city\": \"NY\", \"street\": \"5th Ave\"}}, {\"id\": 2, \"name\": \"Bob\", \"address\": {\"city\": \"LA\", \"street\": \"Sunset Blvd\"}}]";
-    String jsonArray2 = "[{\"id\": 2, \"name\": \"Bob\", \"address\": {\"city\": \"LA\", \"street\": \"Sunset Blvd\"}}, {\"id\": 1, \"name\": \"Alice\", \"address\": {\"city\": \"NY\", \"street\": \"5th Ave\"}}]";
+    String jsonArray1 = "["
+            + "{\"id\": 1, \"name\": \"Alice\", \"address\": {\"city\": \"NY\", \"street\": \"5th Ave\"}}, "
+            + "{\"id\": 2, \"name\": \"Bob\", \"address\": {\"city\": \"LA\", \"street\": \"Sunset Blvd\"}}"
+            + "]";
+
+    String jsonArray2 = "["
+            + "{\"id\": 2, \"name\": \"Bob\", \"address\": {\"city\": \"LA\", \"street\": \"Sunset Blvd\"}}, "
+            + "{\"id\": 1, \"name\": \"Alice\", \"address\": {\"city\": \"NY\", \"street\": \"5th Ave\"}}"
+            + "]";
 
     @Test
     public void givenJsonArrays_whenUsingJSONAssertIgnoringOrder_thenEqual() throws JSONException {
@@ -26,7 +33,7 @@ public class JsonCollectionComparisonUnitTest {
 
         JSONAssert.assertEquals(jsonArray1, jsonWithExtraFields, JSONCompareMode.LENIENT);
     }
-    
+
     @Test
     public void givenJsonCollection_whenIgnoringOrder_thenEqual() {
         assertThat(
