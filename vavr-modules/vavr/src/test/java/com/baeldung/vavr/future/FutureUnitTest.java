@@ -175,7 +175,6 @@ public class FutureUnitTest {
           .isEqualTo("fallback value");
     }
 
-    @Disabled /** Failing in the default build, to fix in JAVA-39729 **/
     @Test
     public void whenBothFuturesFail_thenGetErrorMessage() {
         Future<String> f1 = Future.of(() -> "Hello".substring(-1));
@@ -186,6 +185,6 @@ public class FutureUnitTest {
 
         assertThat(
           errorMessage.get().getMessage())
-          .isEqualTo("begin -1, end 5, length 5");
+          .isEqualTo("Range [-1, 5) out of bounds for length 5");
     }
 }
