@@ -16,29 +16,39 @@ import jxl.read.biff.BiffException;
 
 public class JExcelDetectEmptyRowUnitTest {
 
-	private JExcelHelper jexcelHelper;
-	private static String FILE_NAME = "consumer_info_with_empty_row.xls";
-	private String fileLocation;
+    private JExcelHelper jexcelHelper;
+    private static final String FILE_PATH = "src/main/resources/consumer_info_with_empty_row.xls";
+    private static final String EMPTY_FILE_PATH = "src/main/resources/empty_excel_file.xls";
 
-	@Before
-	public void loadExcelFile() throws IOException {
+    @Before
+    public void loadExcelFile() throws IOException {
+        jexcelHelper = new JExcelHelper();
+    }
 
-		fileLocation = "src/main/resources/" + FILE_NAME;
-		jexcelHelper = new JExcelHelper();
-	}
-	
-	@Test
-	public void whenParsingJExcelFile_thenDetectEmptyRow() throws IOException, BiffException {
-		Workbook workbook = Workbook.getWorkbook(new File(fileLocation));
-		Sheet sheet = workbook.getSheet(0);
+    @Test
+    public void givenXLSFile_whenParsingJExcelFile_thenDetectEmptyRow() throws IOException, BiffException {
+        Workbook workbook = Workbook.getWorkbook(new File(FILE_PATH));
+        Sheet sheet = workbook.getSheet(0);
 
-		Cell[] row = sheet.getRow(0);
-		assertFalse(jexcelHelper.isRowEmpty(row));
+        Cell[] row = sheet.getRow(0);
+        assertFalse(jexcelHelper.isRowEmpty(row));
 
-		row = sheet.getRow(2);
-		assertFalse(jexcelHelper.isRowEmpty(row));
+        row = sheet.getRow(2);
+        assertFalse(jexcelHelper.isRowEmpty(row));
 
-		row = sheet.getRow(4);
-		assertTrue(jexcelHelper.isRowEmpty(row)); // check the file consumer_info_with_empty_row.xls in resources folder, we have inserted empty row at the end
-	}
+        row = sheet.getRow(4);
+        assertTrue(jexcelHelper.isRowEmpty(row)); // check the file consumer_info_with_empty_row.xls in resources folder, we have inserted empty row at the end
+    }
+
+    @Test
+    public void givenXLSFile_whenParsingJExcelFile_thenDetectAllRowsEmpty() throws IOException, BiffException {
+        Workbook workbook = Workbook.getWorkbook(new File(EMPTY_FILE_PATH));
+        Sheet sheet = workbook.getSheet(0);
+
+        for (int rowNum = 0; rowNum < sheet.getRows(); rowNum++) {
+            Cell[] row = sheet.getRow(rowNum);
+            assertTrue(jexcelHelper.isRowEmpty(row));
+        }
+    }
+
 }
