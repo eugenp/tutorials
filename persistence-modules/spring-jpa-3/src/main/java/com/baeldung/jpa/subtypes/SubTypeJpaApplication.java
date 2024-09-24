@@ -8,9 +8,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication 
 @EnableJpaRepositories("com.baeldung.jpa.subtypes.repository")
-public class SubTypeJPAApplication {
+public class SubTypeJpaApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SubTypeJPAApplication.class, args);
+        SpringApplication.run(SubTypeJpaApplication.class, args);
     }
 }

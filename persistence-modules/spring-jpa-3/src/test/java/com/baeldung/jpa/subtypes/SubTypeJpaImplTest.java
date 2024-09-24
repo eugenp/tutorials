@@ -20,8 +20,8 @@ import com.baeldung.jpa.subtypes.repository.EmployeeRepository;
 import com.baeldung.jpa.subtypes.repository.PermanentEmployeeRepository;
 
 @ExtendWith(SpringExtension.class)
-@SpringBootTest(classes = SubTypeJPAApplication.class)
-class JPAInheritanceSingleTableTest {
+@SpringBootTest(classes = SubTypeJpaApplication.class)
+class SubTypeJpaImplTest {
 
     @Autowired
     EmployeeRepository empRepository;
@@ -53,31 +53,31 @@ class JPAInheritanceSingleTableTest {
     }
 
     @AfterEach
-    public void tearDown() {
+    void tearDown() {
         permEmpRepository.deleteAll();
         contrEmpRepository.deleteAll();
     }
 
     @Test
-    void givenRecordsInserted_whenPermEmployeesQueried_thenOnlyPermEmployeesRecordsRetruned() {
+    void givenRecordsInserted_whenPermEmployeesQueried_thenOnlyPermEmployeeRecordsReturned() {
         List<PermanentEmployee> perEmpList = permEmpRepository.findAll();
         assertThat(perEmpList.size()).isEqualTo(3);
     }
 
     @Test
-    void givenRecordsInserted_whenContrEmployeesQueried_thenOnlyContrEmployeesRecordsRetruned() {
+    void givenRecordsInserted_whenContrEmployeesQueried_thenOnlyContrEmployeeRecordsReturned() {
         List<ContractEmployee> contrList = contrEmpRepository.findAll();
         assertThat(contrList.size()).isEqualTo(3);
     }
     
     @Test
-    void givenRecordsInserted_whenAllEmployeesQueried_thenAllEmployeesRecordsRetruned() {
+    void givenRecordsInserted_whenAllEmployeesQueried_thenAllEmployeeRecordsReturned() {
         List<Employee> empList = empRepository.findAll();
         assertThat(empList.size()).isEqualTo(6);
     }
     
     @Test
-    void givenRecordsInserted_whenDiscrimnatorQueryUsed_thenEmployeesRecordsByTypeRetruned() {
+    void givenRecordsInserted_whenDiscriminatorQueryUsed_thenEmployeeRecordsByTypeReturned() {
         List<ContractEmployee> contrList = empRepository.findAllContractEmployees();
         List<PermanentEmployee> perEmpList = empRepository.findAllPermEmplouees();
         
