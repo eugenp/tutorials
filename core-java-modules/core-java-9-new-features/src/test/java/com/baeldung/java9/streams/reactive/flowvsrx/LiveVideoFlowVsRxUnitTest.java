@@ -29,7 +29,6 @@ public class LiveVideoFlowVsRxUnitTest {
     }
 
     @Test
-    @Ignore
     public void givenFastVideoPlayer_whenSubscribedToFlowApiLiveVideo_thenExpectNoErrorOnBackPressure() throws InterruptedException {
         AtomicLong errors = new AtomicLong();
 
