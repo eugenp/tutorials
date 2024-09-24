@@ -120,7 +120,7 @@ public class WebClientLoggingIntegrationTest {
     @Test
     public void givenNettyHttpClientWithCustomLogger_whenEndpointIsConsumed_thenRequestAndResponseBodyLogged() {
         reactor.netty.http.client.HttpClient httpClient = HttpClient.create()
-            .wiretap("reactor.netty.http.client.HttpClient", LogLevel.INFO, AdvancedByteBufFormat.SIMPLE);
+            .wiretap("reactor.netty.http.client.HttpClient", LogLevel.DEBUG, AdvancedByteBufFormat.TEXTUAL);
 
         WebClient.builder()
             .clientConnector(new ReactorClientHttpConnector(httpClient))
