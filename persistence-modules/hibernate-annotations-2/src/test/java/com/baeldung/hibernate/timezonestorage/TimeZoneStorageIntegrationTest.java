@@ -15,8 +15,6 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.liquibase.LiquibaseAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import net.bytebuddy.utility.RandomString;
-
 @SpringBootTest(classes = Application.class)
 @EnableAutoConfiguration(exclude = LiquibaseAutoConfiguration.class)
 class TimeZoneStorageIntegrationTest {
@@ -29,7 +27,7 @@ class TimeZoneStorageIntegrationTest {
         ZonedDateTime observationStartTime = ZonedDateTime.now();
         AstronomicalObservation observation = new AstronomicalObservation();
         observation.setId(UUID.randomUUID());
-        observation.setCelestialObjectName(RandomString.make());
+        observation.setCelestialObjectName("test-planet");
         observation.setObservationStartTime(observationStartTime);
 
         AstronomicalObservation savedObservation = astronomicalObservationRepository.save(observation);
@@ -42,7 +40,7 @@ class TimeZoneStorageIntegrationTest {
         OffsetDateTime peakVisibilityTime = OffsetDateTime.now();
         AstronomicalObservation observation = new AstronomicalObservation();
         observation.setId(UUID.randomUUID());
-        observation.setCelestialObjectName(RandomString.make());
+        observation.setCelestialObjectName("test-planet");
         observation.setPeakVisibilityTime(peakVisibilityTime);
         AstronomicalObservation savedObservation = astronomicalObservationRepository.save(observation);
 
@@ -66,7 +64,7 @@ class TimeZoneStorageIntegrationTest {
         ZonedDateTime nextExpectedAppearence = ZonedDateTime.of(1999, 12, 25, 18, 0, 0, 0, ZoneId.of("UTC+8"));
         AstronomicalObservation observation = new AstronomicalObservation();
         observation.setId(UUID.randomUUID());
-        observation.setCelestialObjectName(RandomString.make());
+        observation.setCelestialObjectName("test-planet");
         observation.setNextExpectedAppearance(nextExpectedAppearence);
         AstronomicalObservation savedObservation = astronomicalObservationRepository.save(observation);
  
@@ -82,7 +80,7 @@ class TimeZoneStorageIntegrationTest {
         OffsetDateTime lastRecordedSighting = OffsetDateTime.of(1999, 12, 25, 18, 0, 0, 0, ZoneOffset.ofHours(8));
         AstronomicalObservation observation = new AstronomicalObservation();
         observation.setId(UUID.randomUUID());
-        observation.setCelestialObjectName(RandomString.make());
+        observation.setCelestialObjectName("test-planet");
         observation.setLastRecordedSighting(lastRecordedSighting);
         AstronomicalObservation savedObservation = astronomicalObservationRepository.save(observation);
  
