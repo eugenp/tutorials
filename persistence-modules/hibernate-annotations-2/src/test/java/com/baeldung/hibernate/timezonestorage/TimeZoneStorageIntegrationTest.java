@@ -25,25 +25,25 @@ class TimeZoneStorageIntegrationTest {
     private AstronomicalObservationRepository astronomicalObservationRepository;
 
     @Test
-    void whenNativeStorageStrategyUsed_ThenTimestampWithTimezoneSaved() {
+    void whenNativeStorageStrategyUsed_thenTimestampWithTimezoneSaved() {
+        ZonedDateTime observationStartTime = ZonedDateTime.now();
         AstronomicalObservation observation = new AstronomicalObservation();
         observation.setId(UUID.randomUUID());
         observation.setCelestialObjectName(RandomString.make());
-        observation.setObservationStartTime(ZonedDateTime.now());
+        observation.setObservationStartTime(observationStartTime);
 
         AstronomicalObservation savedObservation = astronomicalObservationRepository.save(observation);
-        assertThat(savedObservation)
-            .isNotNull()
-            .usingRecursiveComparison()
-            .isEqualTo(observation);
+        assertThat(savedObservation.getObservationStartTime())
+            .isEqualTo(observationStartTime);
     }
 
     @Test
-    void whenColumnStorageStrategyUsed_ThenTimestampAndOffsetSaved() {
+    void whenColumnStorageStrategyUsed_thenTimestampAndOffsetSaved() {
+        OffsetDateTime peakVisibilityTime = OffsetDateTime.now();
         AstronomicalObservation observation = new AstronomicalObservation();
         observation.setId(UUID.randomUUID());
         observation.setCelestialObjectName(RandomString.make());
-        observation.setPeakVisibilityTime(OffsetDateTime.now());
+        observation.setPeakVisibilityTime(peakVisibilityTime);
         AstronomicalObservation savedObservation = astronomicalObservationRepository.save(observation);
 
         AstronomicalObservation retrievedObservation = astronomicalObservationRepository
@@ -52,52 +52,45 @@ class TimeZoneStorageIntegrationTest {
         assertThat(retrievedObservation)
             .isNotNull()
             .satisfies(obs -> {
+                assertThat(obs.getPeakVisibilityTime())
+                    .isEqualTo(peakVisibilityTime);
                 assertThat(obs.getPeakVisibilityTimeOffset())
-                    .isNotNull();
-            })
-            .usingRecursiveComparison()
-            .ignoringFields("peakVisibilityTimeOffset")
-            .isEqualTo(savedObservation);
+                    .isEqualTo(peakVisibilityTime.getOffset().getTotalSeconds());
+            });
     }
 
     @Test
     void whenNormalizeStorageStrategyUsed_thenTimestampNormalizedToLocalTimezoneSaved() {
         TimeZone.setDefault(TimeZone.getTimeZone("Asia/Kolkata")); // UTC+05:30
  
+        ZonedDateTime nextExpectedAppearence = ZonedDateTime.of(1999, 12, 25, 18, 0, 0, 0, ZoneId.of("UTC+8"));
         AstronomicalObservation observation = new AstronomicalObservation();
         observation.setId(UUID.randomUUID());
         observation.setCelestialObjectName(RandomString.make());
-        observation.setNextExpectedAppearance(ZonedDateTime.of(1999, 12, 25, 18, 0, 0, 0, ZoneId.of("UTC+8")));
+        observation.setNextExpectedAppearance(nextExpectedAppearence);
         AstronomicalObservation savedObservation = astronomicalObservationRepository.save(observation);
  
         AstronomicalObservation retrievedObservation = astronomicalObservationRepository
             .findById(savedObservation.getId())
             .orElseThrow(IllegalStateException::new);
-        assertThat(retrievedObservation)
-            .isNotNull()
-            .usingRecursiveComparison()
-            .isNotEqualTo(savedObservation)
-            .ignoringFields("nextExpectedAppearance")
-            .isEqualTo(savedObservation);
+        assertThat(retrievedObservation.getNextExpectedAppearance())
+            .isEqualTo(nextExpectedAppearence);
     }
 
     @Test
-    void whenNormalizeUTCStorageStrategyUsed_thenTimestampNormalizedToUTCSaved() {        
+    void whenNormalizeUTCStorageStrategyUsed_thenTimestampNormalizedToUTCSaved() {
+        OffsetDateTime lastRecordedSighting = OffsetDateTime.of(1999, 12, 25, 18, 0, 0, 0, ZoneOffset.ofHours(8));
         AstronomicalObservation observation = new AstronomicalObservation();
         observation.setId(UUID.randomUUID());
         observation.setCelestialObjectName(RandomString.make());
-        observation.setLastRecordedSighting(OffsetDateTime.of(1999, 12, 25, 18, 0, 0, 0, ZoneOffset.ofHours(8)));
+        observation.setLastRecordedSighting(lastRecordedSighting);
         AstronomicalObservation savedObservation = astronomicalObservationRepository.save(observation);
  
         AstronomicalObservation retrievedObservation = astronomicalObservationRepository
             .findById(savedObservation.getId())
             .orElseThrow(IllegalStateException::new);
-        assertThat(retrievedObservation)
-            .isNotNull()
-            .usingRecursiveComparison()
-            .isNotEqualTo(savedObservation)
-            .ignoringFields("lastRecordedSighting")
-            .isEqualTo(savedObservation);
+        assertThat(retrievedObservation.getLastRecordedSighting())
+            .isEqualTo(lastRecordedSighting);
     }
 
 }
