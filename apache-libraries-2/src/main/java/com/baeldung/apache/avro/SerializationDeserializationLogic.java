@@ -11,7 +11,6 @@ import java.io.File;
 import java.io.IOException;
 
 import com.baeldung.apache.avro.generated.Car;
-import com.baeldung.apache.avro.generated.Parent;
 
 public class SerializationDeserializationLogic {
 
@@ -28,23 +27,6 @@ public class SerializationDeserializationLogic {
         DatumReader<Car> userDatumReader = new SpecificDatumReader(Car.class);
 
         try (DataFileReader<Car> dataFileReader = new DataFileReader(new File("cars.avro"), userDatumReader)) {
-            return dataFileReader.next();
-        }
-    }
-
-    static void serializeParent(Parent parent) throws IOException {
-        DatumWriter<Parent> userDatumWriter = new SpecificDatumWriter(Parent.class);
-
-        try (DataFileWriter<Parent> dataFileWriter = new DataFileWriter(userDatumWriter)) {
-            dataFileWriter.create(parent.getSchema(), new File("parent.avro"));
-            dataFileWriter.append(parent);
-        }
-    }
-
-    static Parent deserializeParent() throws IOException {
-        DatumReader<Parent> userDatumReader = new SpecificDatumReader(Parent.class);
-
-        try (DataFileReader<Parent> dataFileReader = new DataFileReader(new File("parent.avro"), userDatumReader)) {
             return dataFileReader.next();
         }
     }

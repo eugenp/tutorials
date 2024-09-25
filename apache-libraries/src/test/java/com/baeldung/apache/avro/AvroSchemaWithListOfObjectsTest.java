@@ -16,7 +16,7 @@ import com.baeldung.apache.avro.generated.Parent;
 public class AvroSchemaWithListOfObjectsTest {
 
     @Test
-    public void givenAvroSchemaWithListOfObjects_thenObjectsAreSuccessfullyCreatedAndSerialized() throws IOException {
+    public void whenAvroSchemaWithListOfObjectsIsUsed_thenObjectsAreSuccessfullyCreatedAndSerialized() throws IOException {
         Parent parent = new Parent();
         List<Child> children = new ArrayList();
 
