@@ -6,4 +6,7 @@
 - [How to Insert an Emoji in a Java String](https://www.baeldung.com/java-string-insert-emoji)
 - [Java Strip Methods](https://www.baeldung.com/java-string-strip-methods)
 - [Find the Substring After the Last Pattern in Java](https://www.baeldung.com/java-string-etract-after-last-occurence-match)
+- [Java StringBuilder and StringBuffer](https://www.baeldung.com/java-string-builder-string-buffer)
+- [Linux Line Break Types](https://www.baeldung.com/linux/line-breaks-types)
+- [String.format() in Java](https://www.baeldung.com/string/format)
 - More articles: [[<-- prev]](../core-java-string-operations-9)
