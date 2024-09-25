@@ -6,6 +6,12 @@
                 <pattern>${hostName} baeldung-java-app %d{yyyy-MM-dd HH:mm:ss,SSS}{GMT} %p %t %c.%M - %m%n</pattern>
             </PatternLayout>
         </Socket>
+        <!--Uncomment to use HTTP appender-->
+        <!--<Http name="Loggly" url="https://logs-01.loggly.com/inputs/TOKEN/tag/java">
+            <PatternLayout>
+                <pattern>${hostName} %d{yyyy-MM-dd HH:mm:ss,SSS}{GMT} %p %t %c.%M - %m%n</pattern>
+            </PatternLayout>
+        </Http> -->
     </Appenders>
     <Loggers>
         <Root level="DEBUG">

@@ -29,6 +29,13 @@
             <artifactId>log4j-api</artifactId>
             <version>${log4j-core.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.logback-extensions</groupId>
+            <artifactId>logback-ext-loggly</artifactId>
+            <scope>runtime</scope>
+            <version>${logback-loggly-ext.version}</version>
+        </dependency>
     </dependencies>
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -36,6 +43,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <loggly.version>2.0.0</loggly.version>
         <log4j-core.version>2.23.1</log4j-core.version>
+        <logback-loggly-ext.version>0.1.5</logback-loggly-ext.version>
     </properties>
 
 </project>
