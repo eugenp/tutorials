@@ -51,6 +51,18 @@
             <version>${org.json.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.jooq</groupId>
+            <artifactId>jooq</artifactId>
+            <version>${jooq.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.juliomarcopineda</groupId>
+            <artifactId>jdbc-stream</artifactId>
+            <version>${jdbc-stream.version}</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.mockito/mockito-junit-jupiter -->
         <dependency>
             <groupId>org.mockito</groupId>
@@ -70,5 +82,7 @@
         <commons-dbutils.version>1.8.1</commons-dbutils.version>
         <postgresql.version>42.7.3</postgresql.version>
         <org.json.version>20240303</org.json.version>
+        <jooq.version>3.19.11</jooq.version>
+        <jdbc-stream.version>0.1.1</jdbc-stream.version>
     </properties>
 </project>
