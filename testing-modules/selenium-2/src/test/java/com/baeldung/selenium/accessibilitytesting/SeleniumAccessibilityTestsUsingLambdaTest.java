@@ -56,7 +56,7 @@ public class SeleniumAccessibilityTestsUsingLambdaTest {
     }
 
     @Test(priority = 1)
-    public void whenLoginLinkIsClickedFromHomePage_ThenItShouldNavigateToLoginPage() {
+    public void whenLoginLinkIsClickedFromHomePage_thenItShouldNavigateToLoginPage() {
         driver.get("https://ecommerce-playground.lambdatest.io/");
         WebElement myAccountLink = driver.findElement(By.cssSelector("#widget-navbar-217834 > ul > li:nth-child(6) > a"));
         Actions actions = new Actions(driver);
@@ -69,7 +69,7 @@ public class SeleniumAccessibilityTestsUsingLambdaTest {
     }
 
     @Test(priority = 2)
-    public void whenValidCredentialsAreEntered_ThenItShouldLoginTheUser() {
+    public void whenValidCredentialsAreEntered_thenItShouldLoginTheUser() {
         WebElement emailAddressField = driver.findElement(By.id("input-email"));
         emailAddressField.sendKeys("davidJacob@demo.com");
         WebElement passwordField = driver.findElement(By.id("input-password"));
