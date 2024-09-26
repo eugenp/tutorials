@@ -18,7 +18,7 @@
         <dependency>
             <groupId>org.apache.avro</groupId>
             <artifactId>avro</artifactId>
-            <version>${avro.version}</version>
+            <version>${apache.avro.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.avro</groupId>
@@ -81,20 +81,18 @@
             <plugin>
                 <groupId>org.apache.avro</groupId>
                 <artifactId>avro-maven-plugin</artifactId>
-                <version>${avro.version}</version>
+                <version>${apache.avro.version}</version>
+                <configuration>
+                    <sourceDirectory>src/main/java/com/baeldung/apache/avro/schemas</sourceDirectory>
+                    <outputDirectory>src/main/java</outputDirectory>
+                    <stringType>String</stringType>
+                </configuration>
                 <executions>
                     <execution>
-                        <id>schemas</id>
                         <phase>generate-sources</phase>
                         <goals>
                             <goal>schema</goal>
-                            <goal>protocol</goal>
-                            <goal>idl-protocol</goal>
                         </goals>
-                        <configuration>
-                            <sourceDirectory>${project.basedir}/src/main/resources/</sourceDirectory>
-                            <outputDirectory>${project.basedir}/src/main/java/</outputDirectory>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
@@ -106,6 +104,7 @@
         <bval.version>3.0.1</bval.version>
         <jakarta.validation.validation-api.version>3.1.0</jakarta.validation.validation-api.version><opennlp.opennlp-tools.version>1.8.4</opennlp.opennlp-tools.version>
         <solr.solr-solrj.version>6.4.0</solr.solr-solrj.version>
+        <apache.avro.version>1.11.3</apache.avro.version>
     </properties>
 
 </project>

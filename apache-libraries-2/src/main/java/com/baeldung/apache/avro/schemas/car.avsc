@@ -1,5 +1,5 @@
 {
-    "namespace": "generated",
+    "namespace": "com.baeldung.apache.avro.generated",
     "type": "record",
     "name": "Car",
     "fields": [
