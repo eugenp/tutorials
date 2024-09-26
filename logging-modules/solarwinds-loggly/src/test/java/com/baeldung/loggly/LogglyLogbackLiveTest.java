@@ -4,9 +4,9 @@ import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class LogglyLogbackUnitTest {
+public class LogglyLogbackLiveTest {
 
-    Logger logger = LoggerFactory.getLogger(LogglyLogbackUnitTest.class);
+    Logger logger = LoggerFactory.getLogger(LogglyLogbackLiveTest.class);
 
     @Test
     void givenLoggly_whenLogEvent_thenPushEventToLoggly() {
