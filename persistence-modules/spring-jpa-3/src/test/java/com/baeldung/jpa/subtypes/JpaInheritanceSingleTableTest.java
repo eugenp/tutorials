@@ -21,7 +21,7 @@ import com.baeldung.jpa.subtypes.repository.PermanentEmployeeRepository;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = SubTypeJpaApplication.class)
-class SubTypeJpaImplTest {
+class JpaInheritanceSingleTableTest {
 
     @Autowired
     EmployeeRepository empRepository;
