@@ -11,13 +11,12 @@ import com.baeldung.spring.data.jpa.optionalfields.BookDto;
 
 @Repository
 public class BookSqlMappingRepositoryImpl implements BookCustomRepository {
-
     @PersistenceContext
     private EntityManager entityManager;
 
     @Override
     public List<BookDto> fetchBooks() {
         return entityManager.createNativeQuery("SELECT b.id, b.title, b.author FROM Book b", "BookMappingResultSet")
-            .getResultList();
+          .getResultList();
     }
 }

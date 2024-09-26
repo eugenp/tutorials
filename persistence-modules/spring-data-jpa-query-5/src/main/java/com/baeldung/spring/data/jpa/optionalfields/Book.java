@@ -13,10 +13,8 @@ import javax.persistence.Table;
 @Entity
 @Table
 @SqlResultSetMapping(name = "BookMappingResultSet", classes = @ConstructorResult(targetClass = BookDto.class, columns = {
-    @ColumnResult(name = "id", type = Integer.class), @ColumnResult(name = "title", type = String.class),
-    @ColumnResult(name = "author", type = String.class) }))
+  @ColumnResult(name = "id", type = Integer.class), @ColumnResult(name = "title", type = String.class), @ColumnResult(name = "author", type = String.class) }))
 public class Book {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column

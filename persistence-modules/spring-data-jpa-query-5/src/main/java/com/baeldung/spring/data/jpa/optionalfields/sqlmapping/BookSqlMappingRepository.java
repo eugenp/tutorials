@@ -7,5 +7,4 @@ import com.baeldung.spring.data.jpa.optionalfields.Book;
 
 @Repository
 public interface BookSqlMappingRepository extends JpaRepository<Book, Integer>, BookCustomRepository {
-
 }

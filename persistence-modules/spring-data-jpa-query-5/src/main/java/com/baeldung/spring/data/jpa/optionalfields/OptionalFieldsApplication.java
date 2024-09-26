@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Profile;
 @Profile("h2")
 @SpringBootApplication
 public class OptionalFieldsApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(OptionalFieldsApplication.class);
     }

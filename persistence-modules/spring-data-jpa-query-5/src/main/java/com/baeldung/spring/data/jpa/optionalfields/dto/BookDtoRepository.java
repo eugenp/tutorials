@@ -11,7 +11,6 @@ import com.baeldung.spring.data.jpa.optionalfields.BookDto;
 
 @Repository
 public interface BookDtoRepository extends JpaRepository<Book, Integer> {
-
     @Query(value = "SELECT new com.baeldung.spring.data.jpa.optionalfields.BookDto(b.id, b.title, b.author) FROM Book b")
     List<BookDto> fetchBooks();
 }

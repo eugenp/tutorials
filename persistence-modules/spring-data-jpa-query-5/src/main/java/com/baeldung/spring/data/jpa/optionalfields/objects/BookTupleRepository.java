@@ -12,7 +12,6 @@ import com.baeldung.spring.data.jpa.optionalfields.Book;
 
 @Repository
 public interface BookTupleRepository extends JpaRepository<Book, Integer> {
-
     @Query(value = "SELECT b.id, b.title, b.author FROM Book b", nativeQuery = true)
     List<Tuple> fetchBooks();
 }

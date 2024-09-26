@@ -10,7 +10,6 @@ import com.baeldung.spring.data.jpa.optionalfields.Book;
 
 @Repository
 public interface BookObjectsRepository extends JpaRepository<Book, Integer> {
-
     @Query("SELECT b.id, b.title, b.author FROM Book b")
     List<Object[]> fetchBooks();
 }

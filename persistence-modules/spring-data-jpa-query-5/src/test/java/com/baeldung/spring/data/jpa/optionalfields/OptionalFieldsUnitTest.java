@@ -23,7 +23,6 @@ import com.baeldung.spring.data.jpa.optionalfields.objects.BookTupleRepository;
 @SpringBootTest(classes = OptionalFieldsApplication.class)
 @Transactional
 public class OptionalFieldsUnitTest {
-
     @Autowired
     private BookProjectionRepository bookProjectionRepository;
 
@@ -53,9 +52,9 @@ public class OptionalFieldsUnitTest {
 
         assertEquals(1, result.size());
         assertEquals(title, result.get(0)
-            .getTitle());
+          .getTitle());
         assertEquals(author, result.get(0)
-            .getAuthor());
+          .getAuthor());
     }
 
     @Test
@@ -72,9 +71,9 @@ public class OptionalFieldsUnitTest {
 
         assertEquals(1, result.size());
         assertEquals(title, result.get(0)
-            .title());
+          .title());
         assertEquals(author, result.get(0)
-            .author());
+          .author());
     }
 
     @Test
@@ -91,9 +90,9 @@ public class OptionalFieldsUnitTest {
 
         assertEquals(1, result.size());
         assertEquals(title, result.get(0)
-            .title());
+          .title());
         assertEquals(author, result.get(0)
-            .author());
+          .author());
     }
 
     @Test
@@ -128,10 +127,10 @@ public class OptionalFieldsUnitTest {
 
         assertEquals(1, result.size());
         assertEquals(3, result.get(0)
-            .toArray().length);
+          .toArray().length);
         assertEquals(title, result.get(0)
-            .get("title"));
+          .get("title"));
         assertEquals(author, result.get(0)
-            .get("author"));
+          .get("author"));
     }
 }
