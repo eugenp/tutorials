@@ -4,9 +4,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Test;
 
-public class LogglyLog4j2UnitTest {
+public class LogglyLog4j2LiveTest {
 
-    private static final Logger logger = LogManager.getLogger(LogglyLog4j2UnitTest.class);
+    private static final Logger logger = LogManager.getLogger(LogglyLog4j2LiveTest.class);
 
     @Test
     void givenLoggly_whenLogEvent_thenPushEventToLoggly() {
