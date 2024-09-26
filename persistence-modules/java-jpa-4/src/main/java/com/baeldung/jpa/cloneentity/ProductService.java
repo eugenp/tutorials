@@ -23,7 +23,19 @@ public class ProductService {
         clone.setName(original.getName());
         clone.setCategory(original.getCategory());
         clone.setPrice(original.getPrice());
-        clone.setId(null);
+        return clone;
+    }
+
+    public Product manualDeepClone(Product original) {
+        Product clone = new Product();
+        clone.setName(original.getName());
+        clone.setPrice(original.getPrice());
+        if (original.getCategory() != null) {
+            Category categoryClone = new Category();
+            categoryClone.setName(original.getCategory()
+                .getName());
+            clone.setCategory(categoryClone);
+        }
         return clone;
     }
 

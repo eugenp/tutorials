@@ -49,6 +49,25 @@ public class CloneEntityIntegrationTest {
     }
 
     @Test
+    public void whenManualCloneDeep_thenReturnsNewEntityWithNewRelatedEntities() {
+        // Create and set up the original Product
+        Product original = new Product();
+        original.setId(1L);
+        original.setName("Smartphone");
+        original.setCategory(new Category(1L, "Electronics"));
+        original.setPrice(499.99);
+
+        ProductService service = new ProductService();
+        Product clone = service.manualDeepClone(original);
+
+        assertNull(clone.getId());
+        assertEquals(original.getName(), clone.getName());
+        assertEquals(original.getCategory().getName(), clone.getCategory().getName());
+        assertNotSame(original, clone, "Cloned product should be a different instance");
+        assertNotSame(original.getCategory(), clone.getCategory(), "Category should be the same instance (shallow copy)");
+    }
+
+    @Test
     void whenUsingSerializationClone_thenReturnsNewEntityWithNewNestedEntities() throws IOException, ClassNotFoundException {
         Product original = new Product();
         original.setId(1L);
