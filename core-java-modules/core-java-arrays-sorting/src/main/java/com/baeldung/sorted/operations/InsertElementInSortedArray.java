@@ -11,14 +11,14 @@ public class InsertElementInSortedArray {
             index = -(index + 1);
         }
 
-        int[] newArr = new int[arr.length + 1];
+        int[] newArray = new int[arr.length + 1];
 
-        System.arraycopy(arr, 0, newArr, 0, index);
+        System.arraycopy(arr, 0, newArray, 0, index);
 
-        newArr[index] = numToInsert;
+        newArray[index] = numToInsert;
 
-        System.arraycopy(arr, index, newArr, index + 1, arr.length - index);
+        System.arraycopy(arr, index, newArray, index + 1, arr.length - index);
 
-        return newArr;
+        return newArray;
     }
 }
