@@ -111,7 +111,7 @@
         <imageio.version>3.3.2</imageio.version>
         <tess4j.version>4.5.1</tess4j.version>
         <tesseract-platform.version>4.1.0-1.5.2</tesseract-platform.version>
-        <opencv.version>3.4.2-0</opencv.version>
+        <opencv.version>4.9.0-0</opencv.version>
         <javacv-platform.version>1.5.5</javacv-platform.version>
         <webcam-capture.version>0.3.12</webcam-capture.version>
         <imgscalr-version>4.2</imgscalr-version>
