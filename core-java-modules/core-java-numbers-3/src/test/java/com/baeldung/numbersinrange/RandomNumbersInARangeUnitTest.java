@@ -7,7 +7,7 @@ import org.junit.Test;
 public class RandomNumbersInARangeUnitTest {
 
     @Test
-    public void givenTheRange1To10_andUsingMathRandom_thenExpectCorrectResult() {
+    public void givenTheRange1To10_whenUsingMathRandom_thenExpectCorrectResult() {
         RandomNumbersInARange randomNumbersInARange = new RandomNumbersInARange();
         int number = randomNumbersInARange.getRandomNumber(1, 10);
 
@@ -16,7 +16,7 @@ public class RandomNumbersInARangeUnitTest {
     }
 
     @Test
-    public void givenTheRange1To10_andUsingRandomInts_thenExpectCorrectResult() {
+    public void givenTheRange1To10_whenUsingRandomInts_thenExpectCorrectResult() {
         RandomNumbersInARange randomNumbersInARange = new RandomNumbersInARange();
         int number = randomNumbersInARange.getRandomNumberUsingInts(1, 10);
 
@@ -25,7 +25,7 @@ public class RandomNumbersInARangeUnitTest {
     }
 
     @Test
-    public void givenTheRange1To10_andUsingRandomNextInt_thenExpectCorrectResult() {
+    public void givenTheRange1To10_whenUsingRandomNextInt_thenExpectCorrectResult() {
         RandomNumbersInARange randomNumbersInARange = new RandomNumbersInARange();
         int number = randomNumbersInARange.getRandomNumberUsingNextInt(1, 10);
 
@@ -34,7 +34,7 @@ public class RandomNumbersInARangeUnitTest {
     }
 
     @Test
-    public void givenTheRange1To10_andUsingThreadLocalRandom_thenExpectCorrectResult() {
+    public void givenTheRange1To10_whenUsingThreadLocalRandom_thenExpectCorrectResult() {
         RandomNumbersInARange randomNumbersInARange = new RandomNumbersInARange();
         int number = randomNumbersInARange.getRandomNumberUsingThreadLocalRandom(1, 10);
 
