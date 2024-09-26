@@ -21,6 +21,12 @@
     "reactstrap": "^8.10.0",
     "web-vitals": "^1.1.1"
   },
+  "resolutions": {
+    "@babel/core": "7.16.0",
+    "@babel/plugin-proposal-private-property-in-object": "7.16.0",
+    "@babel/preset-env": "7.16.0",
+    "@babel/preset-react": "7.16.0"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
