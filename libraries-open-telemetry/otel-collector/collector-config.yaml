@@ -19,6 +19,11 @@ processors:
     actions:
       - key: client.address
         action: delete
+  memory_limiter:
+    check_interval: 1s
+    limit_mib: 6000        # 6GB total memory limit
+    spike_limit_mib: 1200  # 20% of limit_mib
+    ballast_size_mib: 0
 
 exporters:
   prometheus:
@@ -38,13 +43,14 @@ service:
   pipelines:
     traces:
       receivers: [otlp]
-      processors: [batch, attributes/remove_client_address]
+      processors: [memory_limiter, batch, attributes/remove_client_address]
       exporters: [otlp]
     metrics:
       receivers: [hostmetrics, otlp]
+      processors: [memory_limiter]
       exporters: [prometheus]
     logs:
       receivers: [otlp]
-      processors: [batch]
+      processors: [memory_limiter, batch]
       exporters: [debug]	
   extensions: [zpages]

@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class DictionaryServiceTest {
+public class DictionaryServiceUnitTest {
     private DictionaryService dictionaryService;
 
     @BeforeEach
@@ -14,7 +14,7 @@ public class DictionaryServiceTest {
     }
 
     @Test
-    void testGetWordMeaning_Found() {
+    void whenGeneratingAKnownWord_thenReturnMeaning() {
         String word = "serendipity";
         String meaning = dictionaryService.getWordMeaning(word);
 
@@ -22,7 +22,7 @@ public class DictionaryServiceTest {
     }
 
     @Test
-    void testGetWordMeaning_NotFound() {
+    void whenGeneratingAnUnknownWord_thenReturnErrorMessage() {
         String word = "unknownWord";
         String meaning = dictionaryService.getWordMeaning(word);
 

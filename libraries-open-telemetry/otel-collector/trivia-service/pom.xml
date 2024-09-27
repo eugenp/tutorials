@@ -4,7 +4,7 @@
 	<groupId>com.baeldung</groupId>
 	<artifactId>trivia-service</artifactId>
 	<packaging>war</packaging>
-	<version>1.0-SNAPSHOT</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<name>Word Trivia Service</name>
 
 	<properties>

@@ -17,7 +17,7 @@ import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.when;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class TriviaServiceTest {
+class TriviaServiceUnitTest {
 
     @Mock
     private OkHttpClient mockHttpClient;
@@ -43,7 +43,7 @@ class TriviaServiceTest {
     }
 
     @Test
-    void requestWordFromSource_successfulResponse() throws IOException {
+    void whenRequestingAWordFromSource_thenReturnAWordWithDefinition() throws IOException {
         String responseBody = "{\"meaning\":\"Fluent or persuasive in speaking or writing.\",\"word\":\"eloquent\"}";
 
         when(mockHttpClient.newCall(any(Request.class))).thenReturn(mockHttpCall);
