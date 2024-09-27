@@ -208,8 +208,8 @@
                 <artifactId>avro-maven-plugin</artifactId>
                 <version>${apache.avro.version}</version>
                 <configuration>
-                    <sourceDirectory>src/main/java/com/baeldung/apache/avro/</sourceDirectory>
-                    <outputDirectory>src/main/java/com/baeldung/apache/avro/</outputDirectory>
+                    <sourceDirectory>src/main/java/com/baeldung/apache/avro/schemas</sourceDirectory>
+                    <outputDirectory>src/main/java</outputDirectory>
                     <stringType>String</stringType>
                 </configuration>
                 <executions>

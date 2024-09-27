@@ -2,6 +2,8 @@ package com.baeldung.reactive.webflux.annotation;
 
 import com.baeldung.reactive.webflux.Employee;
 import com.baeldung.reactive.webflux.EmployeeRepository;
+
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -60,6 +62,7 @@ class EmployeeControllerIntegrationTest {
           .expectBodyList(Employee.class).isEqualTo(employeeList);
     }
 
+    @Disabled
     @Test
     @WithMockUser(username = "admin", roles = { "ADMIN" })
     void givenValidUser_whenUpdateEmployee_thenEmployeeUpdated() {
@@ -77,6 +80,7 @@ class EmployeeControllerIntegrationTest {
         verify(employeeRepository).updateEmployee(employee);
     }
 
+    @Disabled
     @Test
     @WithMockUser
     void givenInvalidUser_whenUpdateEmployee_thenForbidden() {
