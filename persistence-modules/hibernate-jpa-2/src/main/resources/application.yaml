@@ -2,9 +2,9 @@ spring:
   jpa:
     properties:
       hibernate:
+        integrator_provider: com.baeldung.changevalue.hibernate.HibernateEventListenerIntegratorProvider
         query:
           in_clause_parameter_padding: true
-
 logging:
   level:
     org:

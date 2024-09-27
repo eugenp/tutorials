@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="expense-tracker">
+        <createTable tableName="EXPENSE">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_EXPENSE"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CATEGORY" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="2" author="expense-tracker">
+        <createTable tableName="USER_EXPENSE">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_USER_EXPENSE"/>
+            </column>
+            <column name="USER_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="EXPENSE_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="AMOUNT" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DATE_" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DETAILS" type="VARCHAR(255)"/>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="3" author="expense-tracker">
+        <addUniqueConstraint columnNames="NAME" constraintName="IDX_EXPENSE_UNQ" tableName="EXPENSE"/>
+    </changeSet>
+    <changeSet id="4" author="expense-tracker">
+        <createIndex indexName="IDX_USER_EXPENSE_EXPENSE" tableName="USER_EXPENSE">
+            <column name="EXPENSE_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="EXPENSE_ID" baseTableName="USER_EXPENSE"
+                                 constraintName="FK_USER_EXPENSE_ON_EXPENSE" referencedColumnNames="ID"
+                                 referencedTableName="EXPENSE"/>
+    </changeSet>
+    <changeSet id="5" author="expense-tracker">
+        <createIndex indexName="IDX_USER_EXPENSE_USER" tableName="USER_EXPENSE">
+            <column name="USER_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="USER_ID" baseTableName="USER_EXPENSE"
+                                 constraintName="FK_USER_EXPENSE_ON_USER" referencedColumnNames="ID"
+                                 referencedTableName="USER_"/>
+    </changeSet>
+</databaseChangeLog>

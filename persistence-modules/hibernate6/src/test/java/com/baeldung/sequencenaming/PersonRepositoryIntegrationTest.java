@@ -28,7 +28,6 @@ public class PersonRepositoryIntegrationTest {
     private BookRepository bookRepository;
 
     @Test
-    @Disabled
     void givenNamingStrategy_whenSavingPerson_thenSequenceIsCreatedWithSpecifiedNamingStrategy() {
         // Change the naming strategy in properties file to see the differences.
 
@@ -42,7 +41,6 @@ public class PersonRepositoryIntegrationTest {
     }
 
     @Test
-    @Disabled
     void givenSingleNamingStrategy_whenSavingPersonAndBook_thenUsesSameSequenceForBoth() {
         // Change the naming strategy in properties file to see the differences.
 

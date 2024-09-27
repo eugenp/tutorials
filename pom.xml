@@ -362,7 +362,7 @@
                 <module>spring-integration</module>
                 <!-- <module>spring-roo</module> --> <!-- Not supported JAVA-17327 -->
                 <module>spring-security-modules/spring-security-ldap</module>
-                <module>spring-swagger-codegen</module>
+                <module>spring-swagger-codegen-modules</module>
                 <module>video-tutorials</module>
                 <module>jhipster-6</module>
             </modules>
@@ -481,7 +481,7 @@
                 <module>spring-integration</module>
                 <!-- <module>spring-roo</module> --> <!-- Not supported JAVA-17327 -->
                 <module>spring-security-modules/spring-security-ldap</module>
-                <module>spring-swagger-codegen</module>
+                <module>spring-swagger-codegen-modules</module>
                 <module>video-tutorials</module>
                 <module>jhipster-6</module>
             </modules>
@@ -540,7 +540,7 @@
         </profile>
 
         <profile>
-            <id>default</id>
+            <id>default-jdk17</id>
             <build>
                 <plugins>
                     <plugin>
@@ -574,27 +574,33 @@
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
+                <module>apache-kafka</module>
                 <module>core-groovy-modules</module>
+                <module>core-java-modules/core-java-concurrency-simple</module>
                 <module>core-java-modules/core-java-exceptions-4</module>
                 <module>core-java-modules/core-java-io-6</module>
                 <module>core-java-modules/core-java-jvm</module>
                 <module>core-java-modules/core-java-lang-7</module>
-                <module>core-java-modules/core-java-lang-oop-modifiers</module>
                 <module>core-java-modules/core-java-datetime-conversion</module>
-                <module>maven-modules</module>
+                <!-- <module>libraries-security</module> -->
+                <module>libraries-data-io</module>
                 <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->
                 <module>persistence-modules/spring-data-neo4j</module>
+                <module>persistence-modules/spring-data-rest-2</module>
+                <module>persistence-modules/spring-persistence-simple</module>
                 <module>quarkus-modules/quarkus</module>
+                <module>quarkus-modules/quarkus-vs-springboot/quarkus-project</module>
                 <!--<module>spring-cloud-modules/spring-cloud-data-flow</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-cloud-modules/spring-cloud-stream-starters</module>--><!-- failing after upgrading to jdk17-->
-                <!--<module>spring-di-2</module>--><!-- failing after upgrading to jdk17-->
+                <module>spring-di-2</module>
                 <!--<module>spring-integration</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-jinq</module>--><!--disabling the jinq modules, as the default build profile is failing due to bad mv files. Please refer: JAVA-31341-->
                 <module>spring-security-modules/spring-security-legacy-oidc</module>
                 <!--<module>static-analysis</module> - requires additional configuration to be compiled due to the JVM strong encapsulation -->
                 <!--<module>tablesaw</module>--><!-- failing after upgrading to jdk17-->
-                <!--<module>spring-swagger-codegen/openapi-custom-generator</module>
-                <module>spring-swagger-codegen/openapi-custom-generator-api-client</module> --> <!-- cannot add the individual modules here because the order is not guaranteed -->
+                <!--<module>spring-swagger-codegen-modules/openapi-custom-generator</module>
+                <module>spring-swagger-codegen-modules/openapi-custom-generator-api-client</module> --> <!-- cannot add the individual modules here because the order is not guaranteed -->
+                <module>vavr-modules/vavr</module>
             </modules>
 
             <properties>
@@ -607,7 +613,7 @@
         </profile>
 
         <profile>
-            <id>default-jdk21</id>
+            <id>default</id>
             <build>
                 <plugins>
                     <plugin>
@@ -646,23 +652,23 @@
                 <module>apache-httpclient-2</module>
                 <module>apache-httpclient4</module>
                 <module>apache-httpclient</module>
-                <module>apache-kafka</module>
                 <module>apache-kafka-2</module>
                 <module>apache-kafka-3</module>
-                <module>apache-libraries-2</module>
+                <!-- <module>apache-libraries-2</module> --> <!-- JAVA-38868 -->
                 <module>apache-libraries</module>
                 <module>apache-olingo</module><!-- apache-olingo wasn't updated to boot-3 because a workaround for jakarta namespace wasn't found JAVA-27818 -->
                 <module>apache-poi-2</module>
                 <module>apache-poi-3</module>
+                <module>apache-poi-4</module>
                 <module>apache-poi</module>
                 <module>apache-thrift</module>
                 <module>apache-velocity</module>
                 <module>atomix</module>
                 <module>aws-modules</module>
                 <module>azure</module>
-                <module>azure-functions</module>
+                <!-- <module>azure-functions</module>--> <!-- BAEL-6423 -->
                 <module>bazel</module>
-                <module>checker-framework</module>
+                <!-- <module>checker-framework</module>  --> <!-- JAVA-39367 -->
                 <module>core-java-modules</module>
                 <module>custom-pmd</module>
                 <module>data-structures</module>
@@ -673,7 +679,7 @@
                 <module>drools</module>
                 <module>dubbo</module>
                 <module>feign</module>
-                <module>gcp-firebase</module>
+                <!-- <module>gcp-firebase</module> --> <!-- BAEL-8475 -->
                 <module>geotools</module>
                 <module>google-auto-project</module>
                 <module>google-cloud</module>
@@ -682,6 +688,8 @@
                 <module>grpc</module>
                 <module>guava-modules</module>
                 <module>hazelcast</module>
+                <module>heroku</module>
+                <module>hilla</module>
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
                 <module>image-compressing</module>
@@ -699,7 +707,7 @@
                 <module>jaxb</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
-                <module>jmh</module>
+                <!-- <module>jmh</module> --> <!-- JAVA-39367 -->
                 <module>json-modules</module>
                 <module>jsoup</module>
                 <module>jws</module>
@@ -722,7 +730,6 @@
                 <module>libraries-data-2</module>
                 <module>libraries-data-3</module>
                 <module>libraries-data-db</module>
-                <module>libraries-data-io</module>
                 <module>libraries-data</module>
                 <module>libraries-files</module>
                 <module>libraries-http</module>
@@ -733,7 +740,6 @@
                 <module>libraries-primitive</module>
                 <module>libraries-reporting</module>
                 <module>libraries-rpc</module>
-                <module>libraries-security</module>
                 <module>libraries-server-2</module>
                 <module>libraries-server</module>
                 <module>libraries-stream</module>
@@ -773,7 +779,7 @@
                 <module>spf4j</module>
                 <module>spring-5-webflux-2</module>
                 <module>spring-5-webflux</module>
-                <module>spring-5</module>
+                <!-- <module>spring-5</module> --> <!-- JAVA-39367 -->
                 <module>spring-6-rsocket</module>
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
@@ -818,7 +824,7 @@
                 <module>spring-quartz</module>
                 <module>spring-reactive-modules</module>
                 <module>spring-remoting-modules</module> <!-- Upgrade to Boot 3 not possible as since Spring 6 the remoting modules has been removed from Spring. -->
-                <module>spring-scheduling</module>
+                <!-- <module>spring-scheduling</module> --> <!-- BAEL-8382 -->
                 <module>spring-scheduling-2</module>
                 <module>spring-security-modules</module>
                 <module>spring-shell</module>
@@ -826,7 +832,7 @@
                 <module>spring-spel</module>
                 <module>spring-state-machine</module>
                 <module>spring-static-resources</module>
-                <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
+                <module>spring-swagger-codegen-modules/custom-validations-opeanpi-codegen</module>
                 <module>spring-threads</module>
                 <module>spring-vault</module>
                 <module>spring-web-modules</module>
@@ -841,9 +847,11 @@
                 <module>webrtc</module>
                 <module>xml</module>
                 <module>xml-2</module>
+                <module>xml-3</module>
                 <module>xstream</module>
-                <module>libraries-data-io-2</module>
+                <!-- <module>libraries-data-io-2</module> --> <!-- JAVA-39367 -->
                 <module>spring-5-rest-docs</module>
+                <!-- <module>maven-modules</module> --> <!--JAVA 37707-->
             </modules>
 
             <properties>
@@ -856,7 +864,7 @@
         </profile>
 
         <profile>
-            <id>integration</id>
+            <id>integration-jdk17</id>
             <build>
                 <plugins>
                     <plugin>
@@ -884,27 +892,33 @@
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
+                <module>apache-kafka</module>
                 <module>core-groovy-modules</module>
+                <module>core-java-modules/core-java-concurrency-simple</module>
                 <module>core-java-modules/core-java-exceptions-4</module>
                 <module>core-java-modules/core-java-io-6</module>
                 <module>core-java-modules/core-java-jvm</module>
                 <module>core-java-modules/core-java-lang-7</module>
-                <module>core-java-modules/core-java-lang-oop-modifiers</module>
                 <module>core-java-modules/core-java-datetime-conversion</module>
-                <module>maven-modules</module>
+                <!--<module>libraries-security</module>-->
+                <module>libraries-data-io</module>
                 <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->
                 <module>persistence-modules/spring-data-neo4j</module>
+                <module>persistence-modules/spring-data-rest-2</module>
+                <module>persistence-modules/spring-persistence-simple</module>
                 <module>quarkus-modules/quarkus</module>
+                <module>quarkus-modules/quarkus-vs-springboot/quarkus-project</module>
                 <!--<module>spring-cloud-modules/spring-cloud-data-flow</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-cloud-modules/spring-cloud-stream-starters</module>--><!-- failing after upgrading to jdk17-->
-                <!--<module>spring-di-2</module>--><!-- failing after upgrading to jdk17-->
+                <module>spring-di-2</module>
                 <!--<module>spring-integration</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-jinq</module>--><!--disabling the jinq modules, as the default build profile is failing due to bad mv files. Please refer: JAVA-31341-->
                 <module>spring-security-modules/spring-security-legacy-oidc</module>
                 <!--<module>static-analysis</module> - requires additional configuration to be compiled due to the JVM strong encapsulation -->
                 <!--<module>tablesaw</module>--><!-- failing after upgrading to jdk17-->
-                <!--<module>spring-swagger-codegen/openapi-custom-generator</module>
-                <module>spring-swagger-codegen/openapi-custom-generator-api-client</module> --> <!-- cannot add the individual modules here because the order is not guaranteed -->
+                <!--<module>spring-swagger-codegen-modules/openapi-custom-generator</module>
+                <module>spring-swagger-codegen-modules/openapi-custom-generator-api-client</module> --> <!-- cannot add the individual modules here because the order is not guaranteed -->
+                <module>vavr-modules/vavr</module>
             </modules>
 
             <properties>
@@ -917,7 +931,7 @@
         </profile>
 
         <profile>
-            <id>integration-jdk21</id>
+            <id>integration</id>
             <build>
                 <plugins>
                     <plugin>
@@ -950,7 +964,6 @@
                 <module>apache-httpclient-2</module>
                 <module>apache-httpclient4</module>
                 <module>apache-httpclient</module>
-                <module>apache-kafka</module>
                 <module>apache-kafka-2</module>
                 <module>apache-kafka-3</module>
                 <module>apache-libraries-2</module>
@@ -958,15 +971,16 @@
                 <module>apache-olingo</module><!-- apache-olingo wasn't updated to boot-3 because a workaround for jakarta namespace wasn't found JAVA-27818 -->
                 <module>apache-poi-2</module>
                 <module>apache-poi-3</module>
+                <module>apache-poi-4</module>
                 <module>apache-poi</module>
                 <module>apache-thrift</module>
                 <module>apache-velocity</module>
                 <module>atomix</module>
                 <module>aws-modules</module>
                 <module>azure</module>
-                <module>azure-functions</module>
+                <!-- <module>azure-functions</module>--> <!-- BAEL-6423 -->
                 <module>bazel</module>
-                <module>checker-framework</module>
+                <!-- <module>checker-framework</module> --> <!-- JAVA-39367 -->
                 <module>core-java-modules</module>
                 <module>custom-pmd</module>
                 <module>data-structures</module>
@@ -977,7 +991,7 @@
                 <module>drools</module>
                 <module>dubbo</module>
                 <module>feign</module>
-                <module>gcp-firebase</module>
+                <!-- <module>gcp-firebase</module> --> <!-- BAEL-8475 -->
                 <module>geotools</module>
                 <module>google-auto-project</module>
                 <module>google-cloud</module>
@@ -986,6 +1000,8 @@
                 <module>grpc</module>
                 <module>guava-modules</module>
                 <module>hazelcast</module>
+                <module>heroku</module>
+                <module>hilla</module>
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
                 <module>image-compressing</module>
@@ -1000,9 +1016,10 @@
                 <module>javaxval-2</module>
                 <module>javaxval</module>
                 <module>jaxb</module>
+                <module>jdbc-cp</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
-                <module>jmh</module>
+                <!-- <module>jmh</module> --> <!-- JAVA-39367 -->
                 <module>json-modules</module>
                 <module>jsoup</module>
                 <module>jws</module>
@@ -1025,7 +1042,6 @@
                 <module>libraries-data-2</module>
                 <module>libraries-data-3</module>
                 <module>libraries-data-db</module>
-                <module>libraries-data-io</module>
                 <module>libraries-data</module>
                 <module>libraries-files</module>
 		        <module>libraries-http</module>
@@ -1036,7 +1052,6 @@
                 <module>libraries-primitive</module>
                 <module>libraries-reporting</module>
                 <module>libraries-rpc</module>
-                <module>libraries-security</module>
                 <module>libraries-server-2</module>
                 <module>libraries-server</module>
                 <module>libraries-stream</module>
@@ -1076,7 +1091,7 @@
                 <module>spf4j</module>
                 <module>spring-5-webflux-2</module>
                 <module>spring-5-webflux</module>
-                <module>spring-5</module>
+                <!-- <module>spring-5</module> --> <!-- JAVA-39367 -->
                 <module>spring-6-rsocket</module>
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
@@ -1121,7 +1136,7 @@
                 <module>spring-quartz</module>
                 <module>spring-reactive-modules</module>
                 <module>spring-remoting-modules</module> <!-- Upgrade to Boot 3 not possible as since Spring 6 the remoting modules has been removed from Spring. -->
-                <module>spring-scheduling</module>
+                <!-- <module>spring-scheduling</module> --> <!-- BAEL-8382 -->
                 <module>spring-scheduling-2</module>
                 <module>spring-security-modules</module>
                 <module>spring-shell</module>
@@ -1129,7 +1144,7 @@
                 <module>spring-spel</module>
                 <module>spring-state-machine</module>
                 <module>spring-static-resources</module>
-                <module>spring-swagger-codegen/custom-validations-opeanpi-codegen</module>
+                <module>spring-swagger-codegen-modules/custom-validations-opeanpi-codegen</module>
                 <module>spring-threads</module>
                 <module>spring-vault</module>
                 <module>spring-web-modules</module>
@@ -1144,9 +1159,11 @@
                 <module>webrtc</module>
                 <module>xml</module>
                 <module>xml-2</module>
+                <module>xml-3</module>
                 <module>xstream</module>
-                <module>libraries-data-io-2</module>
+                <!-- <module>libraries-data-io-2</module> --> <!-- JAVA-39367 -->
                 <module>spring-5-rest-docs</module>
+                <!-- <module>maven-modules</module> --> <!--JAVA 37707-->
             </modules>
 
             <properties>
@@ -1188,7 +1205,7 @@
                 <module>apache-libraries</module>
                 <module>apache-spark</module> <!-- failing after upgrading to jdk17 -->
                 <module>atomix</module>
-                <module>gcp-firebase</module>
+                <!-- <module>gcp-firebase</module> --> <!-- BAEL-8475 -->
                 <module>libraries-data-io</module>
                 <module>persistence-modules/spring-data-jpa-enterprise</module>
                 <module>persistence-modules/spring-data-jpa-query-2</module>

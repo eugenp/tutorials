@@ -21,7 +21,9 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 public class JdbcLiveTest {
 
@@ -140,6 +142,17 @@ public class JdbcLiveTest {
                 LOG.info(rsmd.getColumnName(i));
             } catch (SQLException e) {
                 e.printStackTrace();
+            }
+        });
+    }
+
+    @Test
+    public void whenQueryExceedsTimeout_thenThrowSQLException() {
+        String longRunningQuery = "SELECT SLEEP(15)"; // Simulating a long-running query
+        assertThrows(SQLException.class, () -> {
+            try (PreparedStatement pstmt = con.prepareStatement(longRunningQuery)) {
+                pstmt.setQueryTimeout(5); // Set timeout to 5 seconds
+                pstmt.executeQuery();
             }
         });
     }

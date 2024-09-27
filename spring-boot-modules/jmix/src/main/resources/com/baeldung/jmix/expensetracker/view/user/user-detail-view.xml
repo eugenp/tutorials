@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      title="msg://UserDetailView.title"
+      focusComponent="form">
+    <data>
+        <instance id="userDc"
+                  class="com.baeldung.jmix.expensetracker.entity.User">
+            <fetchPlan extends="_base">
+                <property name="expenses" fetchPlan="_base">
+                    <property name="expense" fetchPlan="_base"/>
+                </property>
+            </fetchPlan>
+            <loader/>
+            <collection id="expensesDc" property="expenses"/>
+        </instance>
+    </data>
+    <actions>
+        <action id="saveAction" type="detail_saveClose"/>
+        <action id="closeAction" type="detail_close"/>
+    </actions>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+    <layout>
+        <formLayout id="form" dataContainer="userDc">
+            <textField id="usernameField" property="username" readOnly="true"/>
+            <passwordField id="passwordField"
+                           label="msg://com.baeldung.jmix.expensetracker.entity/User.password"
+                           required="true"
+                           visible="false"/>
+            <passwordField id="confirmPasswordField"
+                           label="msg://confirmPassword"
+                           required="true"
+                           visible="false"/>
+            <textField id="firstNameField" property="firstName"/>
+            <textField id="lastNameField" property="lastName"/>
+            <textField id="emailField" property="email"/>
+            <comboBox id="timeZoneField" property="timeZoneId" clearButtonVisible="true"/>
+            <checkbox id="activeField" property="active"/>
+        </formLayout>
+        <hbox id="buttonsPanel" classNames="buttons-panel">
+            <button action="expensesDataGrid.create"/>
+            <button action="expensesDataGrid.edit"/>
+            <button action="expensesDataGrid.remove"/>
+        </hbox>
+        <dataGrid id="expensesDataGrid" dataContainer="expensesDc" width="100%" height="100%">
+            <actions>
+                <action id="create" type="list_create"/>
+                <action id="edit" type="list_edit"/>
+                <action id="remove" type="list_remove"/>
+            </actions>
+            <columns>
+                <column property="amount"/>
+                <column property="date"/>
+                <column property="details"/>
+                <column property="version"/>
+                <column property="expense.name"/>
+                <column property="expense.category"/>
+            </columns>
+        </dataGrid>
+        <hbox id="detailActions">
+            <button id="saveAndCloseBtn" action="saveAction"/>
+            <button id="closeBtn" action="closeAction"/>
+        </hbox>
+    </layout>
+</view>
