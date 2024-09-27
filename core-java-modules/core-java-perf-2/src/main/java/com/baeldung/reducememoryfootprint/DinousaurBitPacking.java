@@ -32,7 +32,12 @@ public class DinousaurBitPacking {
     }
 
     public static short convertToShort(boolean isExtinct, boolean isCarnivorous, boolean isHerbivorous, boolean isOmnivorous) {
-        return (short) ((isExtinct ? 1 << IS_EXTINCT : 0) | (isCarnivorous ? 1 << IS_CARNIVOROUS : 0) | (isHerbivorous ? 1 << IS_HERBIVOROUS : 0) | (isOmnivorous ? 1 << IS_OMNIVOROUS : 0));
+        short result = 0;
+        result |= (short) (isExtinct ? 1 << IS_EXTINCT : 0);
+        result |= (short) (isCarnivorous ? 1 << IS_CARNIVOROUS : 0);
+        result |= (short) (isHerbivorous ? 1 << IS_HERBIVOROUS : 0);
+        result |= (short) (isOmnivorous ? 1 << IS_OMNIVOROUS : 0);
+        return result;
     }
 
     public static boolean convertToBoolean(short value, short flagPosition) {
