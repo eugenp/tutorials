@@ -3,7 +3,11 @@ package com.baeldung.envandprop;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -55,4 +59,17 @@ public class SystemPropertyAndEnvUnitTest {
         Map<String, String> sysEnv = System.getenv();
         assertThrows(UnsupportedOperationException.class, () -> sysEnv.put("TECH_SITE", "Baeldung"));
     }
+
+    @Test
+    void whenSetEnvVarUsingProcessBuilder_thenVarIsAvailableInChildProcessButNotInCurrent() throws IOException {
+        ProcessBuilder pb = new ProcessBuilder("/bin/sh", "-c", "echo $TECH_SITE");
+        Map<String, String> env = pb.environment();
+        env.put("TECH_SITE", "Baeldung");
+        try (BufferedReader output = new BufferedReader(new InputStreamReader(pb.start().getInputStream()))) {
+            String result = output.readLine();
+            LOG.info("TECH_SITE in the new process: {}", result);
+        }
+        LOG.info("TECH_SITE in the current process: {}", System.getenv("TECH_SITE"));
+    }
+
 }
