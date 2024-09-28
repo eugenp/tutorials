@@ -70,11 +70,6 @@ public class MapIterationBenchmark {
     }
 
     @Benchmark
-    public long iterateUsingLambdaAndForEach() {
-        return mapIteration.iterateUsingLambdaAndForEach(map);
-    }
-
-    @Benchmark
     public long iterateByKeysUsingLambdaAndForEach() {
         return mapIteration.iterateByKeysUsingLambdaAndForEach(map);
     }

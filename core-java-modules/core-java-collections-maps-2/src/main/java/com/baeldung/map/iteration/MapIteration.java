@@ -3,6 +3,8 @@ package com.baeldung.map.iteration;
 import org.apache.commons.collections4.IterableMap;
 import org.apache.commons.collections4.MapIterator;
 import org.eclipse.collections.api.map.MutableMap;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.Iterator;
@@ -10,6 +12,8 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
 public class MapIteration {
+
+    private final Logger LOGGER = LoggerFactory.getLogger(MapIteration.class);
 
     public long iterateUsingIteratorAndValues(Map<Integer, Integer> map) {
         long sum = 0;
@@ -30,10 +34,8 @@ public class MapIteration {
         return sum;
     }
 
-    public long iterateUsingLambdaAndForEach(Map<Integer, Integer> map) {
-        AtomicLong sum = new AtomicLong(0);
-        map.forEach((k, v) -> sum.addAndGet(v));
-        return sum.get();
+    public void iterateUsingLambdaAndForEach(Map<Integer, Integer> map) {
+        map.forEach((k, v) -> LOGGER.info("Key: {}, Value: {}", k, v));
     }
 
     public long iterateByKeysUsingLambdaAndForEach(Map<Integer, Integer> map) {
