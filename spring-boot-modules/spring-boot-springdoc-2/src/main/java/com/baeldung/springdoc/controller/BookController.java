@@ -80,4 +80,20 @@ public class BookController {
     public long deleteBook(@PathVariable final long id) {
         return id;
     }
+
+    @Operation(summary = "Create a new book")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "201", description = "Book created successfully",
+            content = { @Content(mediaType = "application/json",
+                schema = @Schema(implementation = Book.class)) }),
+        @ApiResponse(responseCode = "400", description = "Invalid input provided") })
+    @PostMapping
+    public Book createBook(@io.swagger.v3.oas.annotations.parameters.RequestBody(
+        description = "Book to create", required = true,
+        content = @Content(mediaType = "application/json",
+            schema = @Schema(implementation = Book.class),
+            examples = @ExampleObject(value = "{ \"title\": \"New Book\", \"author\": \"Author Name\" }")))
+    @RequestBody Book book) {
+        return null;
+    }
 }
