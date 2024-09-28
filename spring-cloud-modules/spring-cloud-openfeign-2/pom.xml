@@ -7,6 +7,18 @@
     <artifactId>spring-cloud-openfeign-2</artifactId>
     <name>spring-cloud-openfeign-2</name>
     <description>OpenFeign project for Spring Boot</description>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>9</source>
+                    <target>9</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <parent>
         <groupId>com.baeldung.spring.cloud</groupId>

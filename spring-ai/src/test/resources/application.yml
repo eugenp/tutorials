@@ -11,11 +11,6 @@ spring:
       chat:
         options:
           model: gpt-3.5-turbo
-    mistralai:
-      api-key: ${MISTRAL_AI_API_KEY}
-      chat:
-        options:
-          model: mistral-small-latest
   data:
     mongodb:
       uri: mongodb://wikiuser:password@localhost:27017/admin

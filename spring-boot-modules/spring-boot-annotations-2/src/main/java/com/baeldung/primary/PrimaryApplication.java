@@ -15,6 +15,13 @@ public class PrimaryApplication {
         ManagerService service = context.getBean(ManagerService.class);
         Manager manager = service.getManager();
         System.out.println(manager.getManagerName());
+
+
+        AnnotationConfigApplicationContext context2
+            = new AnnotationConfigApplicationContext(CarConfig.class);
+
+        Car car = context2.getBean(Car.class);
+        System.out.println(car.getName());
     }
     
 }

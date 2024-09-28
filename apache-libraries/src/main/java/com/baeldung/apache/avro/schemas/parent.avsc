@@ -1,0 +1,20 @@
+{
+    "namespace": "com.baeldung.apache.avro.generated",
+    "type": "record",
+    "name": "Parent",
+    "fields": [
+        {
+            "name": "children",
+            "type": {
+                "type": "array",
+                "items": {
+                    "type": "record",
+                    "name": "Child",
+                    "fields": [
+                        {"name": "name", "type": "string"}
+                    ]
+                }
+            }
+        }
+    ]
+}

@@ -86,7 +86,7 @@
         <!-- <module>spring-data-gemfire</module> Won't Fix in JAVA-14499, The dependencies used are -->
         <!-- no longer available or maintained. Ref: https://spring.io/projects/spring-data-gemfire#overview -->
         <module>spring-data-geode</module>
-        <module>spring-data-jpa-annotations</module>
+        <!-- <module>spring-data-jpa-annotations</module> --> <!-- JAVA-37713 -->
         <module>spring-data-jpa-annotations-2</module>
         <module>spring-data-jpa-crud</module>
         <module>spring-data-jpa-enterprise</module>
@@ -95,19 +95,19 @@
         <module>spring-data-jpa-query</module>
         <module>spring-data-jpa-query-2</module>
         <module>spring-data-jpa-query-3</module>
-        <module>spring-data-jpa-query-4</module>
+        <!-- <module>spring-data-jpa-query-4</module> --> <!-- JAVA-37713 -->
         <module>spring-data-jpa-query-5</module>
         <module>spring-data-jpa-repo</module>
         <module>spring-data-jpa-repo-2</module>
         <module>spring-data-jpa-repo-4</module>
         <module>spring-data-jdbc</module>
-        <module>spring-data-jpa-simple</module>
+        <!-- <module>spring-data-jpa-simple</module> --> <!-- JAVA-37713 -->
         <module>spring-data-keyvalue</module>
         <module>spring-data-mongodb</module>
         <module>spring-data-mongodb-2</module>
         <module>spring-data-mongodb-reactive</module>
         <module>spring-data-redis</module>
-        <!-- <module>spring-data-rest-2</module> --> <!-- failing after upgrade to jdk21 -->
+        <module>spring-data-rest-2</module>
         <module>spring-data-rest-querydsl</module>
         <module>spring-data-solr</module>
         <module>spring-data-shardingsphere</module>
