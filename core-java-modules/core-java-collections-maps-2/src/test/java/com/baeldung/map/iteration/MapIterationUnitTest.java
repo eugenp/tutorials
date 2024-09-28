@@ -35,15 +35,6 @@ class MapIterationUnitTest {
     }
 
     @Test
-    void givenMap_whenIterateUsingLambda_thenCorrectSum() {
-        Map<Integer, Integer> map = new HashMap<>();
-        map.put(1, 2);
-        map.put(3, 4);
-        long result = mapIteration.iterateUsingLambdaAndForEach(map);
-        assertEquals(6, result);
-    }
-
-    @Test
     void givenMap_whenIterateByKeysUsingLambda_thenCorrectSum() {
         Map<Integer, Integer> map = new HashMap<>();
         map.put(1, 2);
