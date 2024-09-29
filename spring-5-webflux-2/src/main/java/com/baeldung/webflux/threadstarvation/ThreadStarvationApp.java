@@ -46,7 +46,7 @@ public class ThreadStarvationApp {
         @SuppressWarnings("BlockingMethodInNonBlockingContext")
         @GetMapping("/warning")
         Mono<String> warning() {
-            Mono<String> data = fetchData().subscribeOn(Schedulers.boundedElastic());
+            Mono<String> data = fetchData();
             String response = "retrieved data: " + data.block();
             return Mono.just(response);
         }
