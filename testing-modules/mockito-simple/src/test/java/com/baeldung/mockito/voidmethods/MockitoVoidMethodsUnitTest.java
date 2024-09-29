@@ -1,22 +1,17 @@
 package com.baeldung.mockito.voidmethods;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.isA;
-import static org.mockito.ArgumentMatchers.isNull;
-import static org.mockito.Mockito.doAnswer;
-import static org.mockito.Mockito.doCallRealMethod;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.doThrow;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-
+import com.baeldung.mockito.MyList;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import com.baeldung.mockito.MyList;
+import java.time.Instant;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.Mockito.*;
 
 class MockitoVoidMethodsUnitTest {
 
@@ -72,19 +67,49 @@ class MockitoVoidMethodsUnitTest {
             assertEquals("answer me", arg1);
             return null;
         }).when(myList)
-            .add(any(Integer.class), any(String.class));
+          .add(any(Integer.class), any(String.class));
 
         myList.add(3, "answer me");
     }
 
     @Test
-    void givenDoCallRealMethod_whenAddCalled_thenRealMethodCalled() {
-        MyList myList = mock(MyList.class);
+    void whenDoCallRealMethodOnMock_thenRealMethodCalled() {
+        Greeting greeting = mock(Greeting.class);
+        doCallRealMethod().when(greeting).sayHello(any(String.class));
+        greeting.sayHello("Tom");
+        verify(greeting, times(1)).sayHello("Tom");
+    }
 
-        doCallRealMethod().when(myList)
-            .add(any(Integer.class), any(String.class));
-        myList.add(1, "real");
+    @Test
+    void whenDoCallRealMethodWithPropertyOnMock_thenRealMethodCalled() {
+        Greeting greeting = mock(Greeting.class);
+        doCallRealMethod().when(greeting).sayHelloWithTs(any(String.class));
+        greeting.sayHelloWithTs("Jerry");
+        verify(greeting, times(1)).sayHelloWithTs("Jerry");
+    }
 
-        verify(myList, times(1)).add(1, "real");
+    @Test
+    void whenDoCallRealMethodOnSpy_thenGetExpectedResult() {
+        Greeting greeting = spy(Greeting.class);
+        doCallRealMethod().when(greeting).sayHello(any(String.class));
+        greeting.sayHello("Tom");
+        verify(greeting, times(1)).sayHello("Tom");
+
+        doCallRealMethod().when(greeting).sayHelloWithTs(any(String.class));
+        greeting.sayHelloWithTs("Jerry");
+        verify(greeting, times(1)).sayHelloWithTs("Jerry");
+    }
+}
+
+class Greeting {
+    private static final Logger LOG = LoggerFactory.getLogger(Greeting.class);
+    private Instant timestamp = Instant.now();
+
+    public void sayHello(String name) {
+        LOG.info("Hi {}, how are you?", name);
+    }
+
+    public void sayHelloWithTs(String name) {
+        LOG.info("Hi {}, how are you? [Greeting Created at {}]", name, timestamp);
     }
 }
