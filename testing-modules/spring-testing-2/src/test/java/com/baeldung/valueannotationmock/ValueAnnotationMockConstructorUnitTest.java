@@ -11,7 +11,6 @@ public class ValueAnnotationMockConstructorUnitTest {
 
     @BeforeEach
     public void setUp() {
-        // Instantiate the class with test-specific values
         valueAnnotationConstructorMock = new ValueAnnotationConstructorMock("testUrl", "testPassword");
     }
 
@@ -24,5 +23,4 @@ public class ValueAnnotationMockConstructorUnitTest {
     public void testDefaultPassword() {
         assertEquals("testPassword", valueAnnotationConstructorMock.getApiPassword());
     }
-
 }

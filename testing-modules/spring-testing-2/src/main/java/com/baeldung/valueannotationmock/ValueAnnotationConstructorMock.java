@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Value;
 
 public class ValueAnnotationConstructorMock {
 
-
     private final String apiUrl;
     private final String apiPassword;
 
