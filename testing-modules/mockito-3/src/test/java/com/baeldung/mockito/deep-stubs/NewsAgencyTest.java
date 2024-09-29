@@ -1,6 +1,6 @@
-import org.example.NewsAgency;
-import org.example.NewsArticle;
-import org.example.Reporter;
+import com.baeldung.mockito.deep-stubs.NewsAgency;
+import com.baeldung.mockito.deep-stubs.NewsArticle;
+import com.baeldung.mockito.deep-stubs.Reporter;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 

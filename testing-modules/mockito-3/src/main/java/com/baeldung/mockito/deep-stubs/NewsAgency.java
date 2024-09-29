@@ -1,4 +1,4 @@
-package org.example;
+package com.baeldung.mockito.deep-stubs;
 
 import java.util.ArrayList;
 import java.util.List;
