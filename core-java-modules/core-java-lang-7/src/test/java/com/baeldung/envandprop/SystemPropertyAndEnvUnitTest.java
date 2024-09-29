@@ -7,7 +7,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -15,7 +14,7 @@ import org.slf4j.LoggerFactory;
 
 public class SystemPropertyAndEnvUnitTest {
 
-    private static final Logger LOG = LoggerFactory.getLogger(SystemPropertyAndEnvUnitTest.class);
+    private static final Logger log = LoggerFactory.getLogger(SystemPropertyAndEnvUnitTest.class);
 
     @Test
     void whenUsingSystemGetProperty_thenGetExpectedOutput() {
@@ -24,14 +23,14 @@ public class SystemPropertyAndEnvUnitTest {
         String osVersion = System.getProperty("os.version");
         String fileSep = System.getProperty("file.separator");
 
-        LOG.info("Operating System name: {}", osName);
-        LOG.info("Operating System arch: {}", osArch);
-        LOG.info("Operation System version: {}", osVersion);
-        LOG.info("file separator: {}", fileSep);
+        log.info("Operating System name: {}", osName);
+        log.info("Operating System arch: {}", osArch);
+        log.info("Operation System version: {}", osVersion);
+        log.info("file separator: {}", fileSep);
 
         //print all available properties
         System.getProperties()
-            .forEach((k, v) -> LOG.info("{} -> {}", k, v));
+            .forEach((k, v) -> log.info("{} -> {}", k, v));
     }
 
     @Test
@@ -45,13 +44,13 @@ public class SystemPropertyAndEnvUnitTest {
         String homeDir = System.getenv("HOME");
         String shell = System.getenv("SHELL");
         String terminal = System.getenv("TERM");
-        LOG.info("User Home: {}", homeDir);
-        LOG.info("Shell: {}", shell);
-        LOG.info("Terminal: {}", terminal);
+        log.info("User Home: {}", homeDir);
+        log.info("Shell: {}", shell);
+        log.info("Terminal: {}", terminal);
 
         //print all available env variables
         System.getenv()
-            .forEach((k, v) -> LOG.info("{} -> {}", k, v));
+            .forEach((k, v) -> log.info("{} -> {}", k, v));
     }
 
     @Test
@@ -67,9 +66,9 @@ public class SystemPropertyAndEnvUnitTest {
         env.put("TECH_SITE", "Baeldung");
         try (BufferedReader output = new BufferedReader(new InputStreamReader(pb.start().getInputStream()))) {
             String result = output.readLine();
-            LOG.info("TECH_SITE in the new process: {}", result);
+            log.info("TECH_SITE in the new process: {}", result);
         }
-        LOG.info("TECH_SITE in the current process: {}", System.getenv("TECH_SITE"));
+        log.info("TECH_SITE in the current process: {}", System.getenv("TECH_SITE"));
     }
 
 }
