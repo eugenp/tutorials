@@ -43,6 +43,16 @@ public class StringFormatUnitTest {
 
         String formattedExponential = String.format("Exponential: %e", floatValue);
         assertEquals("Exponential: 1.234568e+02", formattedExponential);
+
+        String multipleFormat = String.format(
+            "Boolean: %b, Character: %c, Decimal: %d, Hex: %x, Float: %.2f, Exponential: %e",
+            boolValue, charValue, intValue, intValue, floatValue, floatValue
+        );
+
+        assertEquals(
+            "Boolean: true, Character: A, Decimal: 255, Hex: ff, Float: 123.46, Exponential: 1.234568e+02",
+            formatted
+        );
     }
 
     @Test
