@@ -100,10 +100,6 @@
     </dependencies>
 
     <properties>
-        <java.version>17</java.version>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-
         <start-class>com.baeldung.ddd.PersistingDddAggregatesApplication</start-class>
         <joda-money.version>1.0.1</joda-money.version>
         <de.flapdoodle.embed.mongo.version>4.11.1</de.flapdoodle.embed.mongo.version>
