@@ -22,7 +22,6 @@ import org.springframework.web.client.RestTemplate;
 
 public class EmployeeClientUnitTest {
 
-  @Disabled /** Failing in the default build, to fix in JAVA-39728 **/
   @Test
   void givenRestTemplate_whenGetEmployeeDataFromExternalAPI_thenGetPageDataWithContents() {
     CustomPageImpl<EmployeeDto> mockedResponse = new CustomPageImpl<>(Arrays.asList(

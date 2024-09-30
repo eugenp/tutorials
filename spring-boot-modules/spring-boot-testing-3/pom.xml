@@ -73,7 +73,6 @@
     </build>
 
     <properties>
-        <java.version>17</java.version>
         <start-class>com.baeldung.Application</start-class>
         <gson.version>2.11.0</gson.version>
     </properties>
