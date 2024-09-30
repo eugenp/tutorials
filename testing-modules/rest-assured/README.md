@@ -8,3 +8,4 @@
 - [Headers, Cookies and Parameters with REST-assured](http://www.baeldung.com/rest-assured-header-cookie-parameter)
 - [JSON Schema Validation with REST-assured](http://www.baeldung.com/rest-assured-json-schema)
 - [Send MultipartFile Request With RestAssured](https://www.baeldung.com/restassured-send-multipartfile-request)
+- [Asserting REST JSON Responses With REST-assured](https://www.baeldung.com/java-rest-assured-assert-json-responses)

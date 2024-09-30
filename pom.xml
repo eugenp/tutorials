@@ -586,7 +586,6 @@
                 <module>libraries-data-io</module>
                 <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->
                 <module>persistence-modules/spring-data-neo4j</module>
-                <module>persistence-modules/spring-data-rest-2</module>
                 <module>persistence-modules/spring-persistence-simple</module>
                 <module>quarkus-modules/quarkus</module>
                 <module>quarkus-modules/quarkus-vs-springboot/quarkus-project</module>
@@ -654,7 +653,7 @@
                 <module>apache-httpclient</module>
                 <module>apache-kafka-2</module>
                 <module>apache-kafka-3</module>
-                <module>apache-libraries-2</module>
+                <!-- <module>apache-libraries-2</module> --> <!-- JAVA-38868 -->
                 <module>apache-libraries</module>
                 <module>apache-olingo</module><!-- apache-olingo wasn't updated to boot-3 because a workaround for jakarta namespace wasn't found JAVA-27818 -->
                 <module>apache-poi-2</module>
@@ -668,7 +667,7 @@
                 <module>azure</module>
                 <!-- <module>azure-functions</module>--> <!-- BAEL-6423 -->
                 <module>bazel</module>
-                <!-- <module>checker-framework</module>  --> <!-- JAVA-39367 -->
+                <module>checker-framework</module>
                 <module>core-java-modules</module>
                 <module>custom-pmd</module>
                 <module>data-structures</module>
@@ -679,7 +678,7 @@
                 <module>drools</module>
                 <module>dubbo</module>
                 <module>feign</module>
-                <module>gcp-firebase</module>
+                <!-- <module>gcp-firebase</module> --> <!-- BAEL-8475 -->
                 <module>geotools</module>
                 <module>google-auto-project</module>
                 <module>google-cloud</module>
@@ -689,6 +688,7 @@
                 <module>guava-modules</module>
                 <module>hazelcast</module>
                 <module>heroku</module>
+                <module>hilla</module>
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
                 <module>image-compressing</module>
@@ -706,7 +706,7 @@
                 <module>jaxb</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
-                <!-- <module>jmh</module> --> <!-- JAVA-39367 -->
+                <module>jmh</module>
                 <module>json-modules</module>
                 <module>jsoup</module>
                 <module>jws</module>
@@ -778,7 +778,7 @@
                 <module>spf4j</module>
                 <module>spring-5-webflux-2</module>
                 <module>spring-5-webflux</module>
-                <!-- <module>spring-5</module> --> <!-- JAVA-39367 -->
+                <module>spring-5</module>
                 <module>spring-6-rsocket</module>
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
@@ -823,7 +823,7 @@
                 <module>spring-quartz</module>
                 <module>spring-reactive-modules</module>
                 <module>spring-remoting-modules</module> <!-- Upgrade to Boot 3 not possible as since Spring 6 the remoting modules has been removed from Spring. -->
-                <module>spring-scheduling</module>
+                <!-- <module>spring-scheduling</module> --> <!-- BAEL-8382 -->
                 <module>spring-scheduling-2</module>
                 <module>spring-security-modules</module>
                 <module>spring-shell</module>
@@ -848,7 +848,7 @@
                 <module>xml-2</module>
                 <module>xml-3</module>
                 <module>xstream</module>
-                <!-- <module>libraries-data-io-2</module> --> <!-- JAVA-39367 -->
+                <module>libraries-data-io-2</module>
                 <module>spring-5-rest-docs</module>
                 <!-- <module>maven-modules</module> --> <!--JAVA 37707-->
             </modules>
@@ -903,7 +903,6 @@
                 <module>libraries-data-io</module>
                 <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->
                 <module>persistence-modules/spring-data-neo4j</module>
-                <module>persistence-modules/spring-data-rest-2</module>
                 <module>persistence-modules/spring-persistence-simple</module>
                 <module>quarkus-modules/quarkus</module>
                 <module>quarkus-modules/quarkus-vs-springboot/quarkus-project</module>
@@ -979,7 +978,7 @@
                 <module>azure</module>
                 <!-- <module>azure-functions</module>--> <!-- BAEL-6423 -->
                 <module>bazel</module>
-                <!-- <module>checker-framework</module> --> <!-- JAVA-39367 -->
+                <module>checker-framework</module>
                 <module>core-java-modules</module>
                 <module>custom-pmd</module>
                 <module>data-structures</module>
@@ -990,7 +989,7 @@
                 <module>drools</module>
                 <module>dubbo</module>
                 <module>feign</module>
-                <module>gcp-firebase</module>
+                <!-- <module>gcp-firebase</module> --> <!-- BAEL-8475 -->
                 <module>geotools</module>
                 <module>google-auto-project</module>
                 <module>google-cloud</module>
@@ -1000,6 +999,7 @@
                 <module>guava-modules</module>
                 <module>hazelcast</module>
                 <module>heroku</module>
+                <module>hilla</module>
                 <module>httpclient-simple</module>
                 <module>hystrix</module>
                 <module>image-compressing</module>
@@ -1017,7 +1017,7 @@
                 <module>jdbc-cp</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
-                <!-- <module>jmh</module> --> <!-- JAVA-39367 -->
+                <module>jmh</module>
                 <module>json-modules</module>
                 <module>jsoup</module>
                 <module>jws</module>
@@ -1089,7 +1089,7 @@
                 <module>spf4j</module>
                 <module>spring-5-webflux-2</module>
                 <module>spring-5-webflux</module>
-                <!-- <module>spring-5</module> --> <!-- JAVA-39367 -->
+                <module>spring-5</module>
                 <module>spring-6-rsocket</module>
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
@@ -1134,7 +1134,7 @@
                 <module>spring-quartz</module>
                 <module>spring-reactive-modules</module>
                 <module>spring-remoting-modules</module> <!-- Upgrade to Boot 3 not possible as since Spring 6 the remoting modules has been removed from Spring. -->
-                <module>spring-scheduling</module>
+                <!-- <module>spring-scheduling</module> --> <!-- BAEL-8382 -->
                 <module>spring-scheduling-2</module>
                 <module>spring-security-modules</module>
                 <module>spring-shell</module>
@@ -1159,7 +1159,7 @@
                 <module>xml-2</module>
                 <module>xml-3</module>
                 <module>xstream</module>
-                <!-- <module>libraries-data-io-2</module> --> <!-- JAVA-39367 -->
+                <module>libraries-data-io-2</module>
                 <module>spring-5-rest-docs</module>
                 <!-- <module>maven-modules</module> --> <!--JAVA 37707-->
             </modules>
@@ -1203,7 +1203,7 @@
                 <module>apache-libraries</module>
                 <module>apache-spark</module> <!-- failing after upgrading to jdk17 -->
                 <module>atomix</module>
-                <module>gcp-firebase</module>
+                <!-- <module>gcp-firebase</module> --> <!-- BAEL-8475 -->
                 <module>libraries-data-io</module>
                 <module>persistence-modules/spring-data-jpa-enterprise</module>
                 <module>persistence-modules/spring-data-jpa-query-2</module>

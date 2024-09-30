@@ -1,7 +1,5 @@
 package com.baeldung.apache.avro;
 
-import com.baeldung.apache.avro.generated.Car;
-
 import org.apache.avro.file.DataFileReader;
 import org.apache.avro.file.DataFileWriter;
 import org.apache.avro.io.DatumReader;
@@ -11,6 +9,8 @@ import org.apache.avro.specific.SpecificDatumWriter;
 
 import java.io.File;
 import java.io.IOException;
+
+import com.baeldung.apache.avro.generated.Car;
 
 public class SerializationDeserializationLogic {
 

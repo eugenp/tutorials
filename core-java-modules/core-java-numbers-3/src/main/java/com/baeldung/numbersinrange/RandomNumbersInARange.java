@@ -1,6 +1,7 @@
 package com.baeldung.numbersinrange;
 
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomNumbersInARange {
 
@@ -18,5 +19,9 @@ public class RandomNumbersInARange {
         return random.ints(min, max)
           .findFirst()
           .getAsInt();
+    }
+
+    public int getRandomNumberUsingThreadLocalRandom(int min, int max) {
+        return ThreadLocalRandom.current().nextInt(min, max);
     }
 }
