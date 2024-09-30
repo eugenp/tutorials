@@ -1,4 +1,4 @@
-package com.baeldung.concurrent.atomic;
+package com.baeldung.atomic;
 
 class IncomingRequest extends Thread {
 

@@ -1,7 +1,8 @@
-package com.baeldung.concurrent.atomic;
+package com.baeldung.atomic;
+
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.ArrayList;
+
 public class AtomicLoadBalancer {
     private List<String> serverList;
     private AtomicInteger counter = new AtomicInteger(0);
