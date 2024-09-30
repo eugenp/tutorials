@@ -16,4 +16,5 @@ This module contains articles about JSON.
 - [Pretty-Print a JSON in Java](https://www.baeldung.com/java-json-pretty-print)
 - [Generate a Java Class From JSON](https://www.baeldung.com/java-generate-class-from-json)
 - [Getting a Value in JSONObject](https://www.baeldung.com/java-jsonobject-get-value)
+- [Check Whether a String Is Valid JSON in Java](https://www.baeldung.com/java-validate-json-string)
 - More Articles: [[next -->]](../json-2)
