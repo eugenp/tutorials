@@ -14,4 +14,5 @@ This module contains articles about JSON.
 - [Reducing JSON Data Size](https://www.baeldung.com/json-reduce-data-size)
 - [How to Convert JsonNode to ObjectNode](https://www.baeldung.com/java-jackson-jsonnode-objectnode)
 - [Pretty-Print a JSON in Java](https://www.baeldung.com/java-json-pretty-print)
+- [Generate a Java Class From JSON](https://www.baeldung.com/java-generate-class-from-json)
 - More Articles: [[next -->]](../json-2)
