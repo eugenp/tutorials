@@ -15,7 +15,7 @@ import static org.mockito.Mockito.when;
 
 public class NewsAgencyTest {
     @Test
-    void whenInitializingAllObjects_ThenGetAllArticlesTest(){
+    void whenInitializingAllObjects_thenGetAllArticlesTest(){
         //Given
         String title1 = "new study reveals the dimension where the single socks disappear";
         NewsArticle article1 = new NewsArticle(title1,"link1");
@@ -34,7 +34,7 @@ public class NewsAgencyTest {
     }
 
     @Test
-    void GivenInitializeUsingMocksAndDeepStubs_WhenCallingGetAllArticles_ThenGetAllArticlesTest(){
+    void givenInitializeUsingMocksAndDeepStubs_whenCallingGetAllArticles_thenGetAllArticlesTest(){
         //Given
         Reporter mockReporter1 = mock(Reporter.class, Mockito.RETURNS_DEEP_STUBS);
         String title1 = "cow flying in London, royal guard still did not move";
