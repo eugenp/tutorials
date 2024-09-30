@@ -78,10 +78,10 @@ class JpaInheritanceSingleTableTest {
     
     @Test
     void givenRecordsInserted_whenDiscriminatorQueryUsed_thenEmployeeRecordsByTypeReturned() {
-        List<ContractEmployee> contrList = empRepository.findAllContractEmployees();
-        List<PermanentEmployee> perEmpList = empRepository.findAllPermEmplouees();
+        List<ContractEmployee> contrList = empRepository.filterContractEmployees(150,"M");
+        List<PermanentEmployee> perEmpList = empRepository.filterPermEmployees(11,"Jo");
         
-        assertThat(contrList.size()).isEqualTo(3);
-        assertThat(perEmpList.size()).isEqualTo(3);
+        assertThat(contrList.size()).isEqualTo(1);
+        assertThat(perEmpList.size()).isEqualTo(1);
     }
 }
