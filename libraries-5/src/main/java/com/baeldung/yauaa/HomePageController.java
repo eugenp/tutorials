@@ -22,7 +22,8 @@ public class HomePageController {
     @GetMapping(value = "/home")
     public ModelAndView homePage(@RequestHeader(value = HttpHeaders.USER_AGENT) String userAgentString) {
         UserAgent userAgent = userAgentAnalyzer.parse(userAgentString);
-        boolean isMobileDevice = userAgent.getValue(UserAgent.OPERATING_SYSTEM_CLASS).equals("Mobile");
+        String osSystemClass = userAgent.getValue(UserAgent.OPERATING_SYSTEM_CLASS);
+        boolean isMobileDevice = osSystemClass.equals("Mobile");
 
         if (isMobileDevice) {
             return new ModelAndView("/mobile-home");
