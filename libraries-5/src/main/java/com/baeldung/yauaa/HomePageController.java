@@ -1,5 +1,7 @@
 package com.baeldung.yauaa;
 
+import java.util.List;
+
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -14,16 +16,17 @@ import nl.basjes.parse.useragent.UserAgentAnalyzer;
 public class HomePageController {
 
     private final UserAgentAnalyzer userAgentAnalyzer;
+    private static final List<String> SUPPORTED_DEVICES = List.of("Mobile", "Tablet", "Phone");
 
     public HomePageController(UserAgentAnalyzer userAgentAnalyzer) {
         this.userAgentAnalyzer = userAgentAnalyzer;
     }
 
-    @GetMapping(value = "/home")
-    public ModelAndView homePage(@RequestHeader(value = HttpHeaders.USER_AGENT) String userAgentString) {
+    @GetMapping("/home")
+    public ModelAndView homePage(@RequestHeader(HttpHeaders.USER_AGENT) String userAgentString) {
         UserAgent userAgent = userAgentAnalyzer.parse(userAgentString);
-        String osSystemClass = userAgent.getValue(UserAgent.OPERATING_SYSTEM_CLASS);
-        boolean isMobileDevice = osSystemClass.equals("Mobile");
+        String deviceClass = userAgent.getValue(UserAgent.DEVICE_CLASS);
+        boolean isMobileDevice = SUPPORTED_DEVICES.contains(deviceClass);
 
         if (isMobileDevice) {
             return new ModelAndView("/mobile-home");

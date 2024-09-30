@@ -14,7 +14,7 @@ public class UserAgentAnalyzerConfiguration {
         return UserAgentAnalyzer
             .newBuilder()
             .withCache(1000)
-            .withField(UserAgent.OPERATING_SYSTEM_CLASS)
+            .withField(UserAgent.DEVICE_CLASS)
             .build();
     }
 
