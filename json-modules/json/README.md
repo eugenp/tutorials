@@ -13,4 +13,5 @@ This module contains articles about JSON.
 - [Escape JSON String in Java](https://www.baeldung.com/java-json-escaping)
 - [Reducing JSON Data Size](https://www.baeldung.com/json-reduce-data-size)
 - [How to Convert JsonNode to ObjectNode](https://www.baeldung.com/java-jackson-jsonnode-objectnode)
+- [Pretty-Print a JSON in Java](https://www.baeldung.com/java-json-pretty-print)
 - More Articles: [[next -->]](../json-2)
