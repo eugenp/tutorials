@@ -1,6 +1,7 @@
 package com.baeldung.yauaa;
 
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -26,7 +27,7 @@ public class HomePageController {
         if (isMobileDevice) {
             return new ModelAndView("/mobile-home");
         }
-        return new ModelAndView("error/open-in-mobile");
+        return new ModelAndView("error/open-in-mobile", HttpStatus.FORBIDDEN);
     }
 
 }
