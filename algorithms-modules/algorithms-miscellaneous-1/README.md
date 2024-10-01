@@ -5,7 +5,6 @@ This module contains articles about algorithms. Some classes of algorithms, e.g.
 
 ### Relevant articles:
 
-- [How to Calculate Levenshtein Distance in Java?](https://www.baeldung.com/java-levenshtein-distance)
 - [Dijkstra Shortest Path Algorithm in Java](https://www.baeldung.com/java-dijkstra)
 - [Implementing Simple State Machines with Java Enums](https://www.baeldung.com/java-enum-simple-state-machine)
 - [Permutations of an Array in Java](https://www.baeldung.com/java-array-permutations)

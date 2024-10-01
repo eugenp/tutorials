@@ -6,3 +6,4 @@
 - [Finding the Closest Number to a Given Value From a List of Integers in Java](https://www.baeldung.com/java-list-find-closest-integer)
 - [How to Find the Kth Largest Element in Java](https://www.baeldung.com/java-kth-largest-element)
 - [Introduction to Minimax Algorithm with a Java Implementation](https://www.baeldung.com/java-minimax-algorithm)
+- [How to Calculate Levenshtein Distance in Java?](https://www.baeldung.com/java-levenshtein-distance)
