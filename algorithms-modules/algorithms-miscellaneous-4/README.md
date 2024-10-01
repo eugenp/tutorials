@@ -11,4 +11,5 @@ This module contains articles about algorithms. Some classes of algorithms, e.g.
 - [Find the Longest Substring Without Repeating Characters](https://www.baeldung.com/java-longest-substring-without-repeated-characters)
 - [Find the Smallest Missing Integer in an Array](https://www.baeldung.com/java-smallest-missing-integer-in-array)
 - [Permutations of a String in Java](https://www.baeldung.com/java-string-permutations)
+- [Example of Hill Climbing Algorithm in Java](https://www.baeldung.com/java-hill-climbing-algorithm)
 - More articles: [[<-- prev]](/algorithms-miscellaneous-3) [[next -->]](/algorithms-miscellaneous-5)
