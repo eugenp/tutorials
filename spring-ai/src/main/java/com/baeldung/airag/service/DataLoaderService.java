@@ -31,12 +31,12 @@ public class DataLoaderService {
     public void load() {
         PagePdfDocumentReader pdfReader = new PagePdfDocumentReader(this.pdfResource,
             PdfDocumentReaderConfig.builder()
-                .withPageExtractedTextFormatter(ExtractedTextFormatter.builder()
-                    .withNumberOfBottomTextLinesToDelete(3)
-                    .withNumberOfTopPagesToSkipBeforeDelete(1)
-                    .build())
-                .withPagesPerDocument(1)
-                .build());
+              .withPageExtractedTextFormatter(ExtractedTextFormatter.builder()
+                .withNumberOfBottomTextLinesToDelete(3)
+                .withNumberOfTopPagesToSkipBeforeDelete(1)
+                .build())
+              .withPagesPerDocument(1)
+              .build());
         var tokenTextSplitter = new TokenTextSplitter();
         this.vectorStore.accept(tokenTextSplitter.apply(pdfReader.get()));
     }
