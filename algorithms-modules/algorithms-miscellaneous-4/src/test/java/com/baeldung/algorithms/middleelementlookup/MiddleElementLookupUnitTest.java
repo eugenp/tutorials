@@ -1,4 +1,4 @@
-package com.baeldung.algorithms;
+package com.baeldung.algorithms.middleelementlookup;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;

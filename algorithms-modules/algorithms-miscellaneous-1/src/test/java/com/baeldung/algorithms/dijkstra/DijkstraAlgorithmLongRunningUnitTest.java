@@ -1,4 +1,4 @@
-package com.baeldung.algorithms;
+package com.baeldung.algorithms.dijkstra;
 
 import static org.junit.Assert.assertTrue;
 
