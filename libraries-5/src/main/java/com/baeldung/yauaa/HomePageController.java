@@ -15,8 +15,8 @@ import nl.basjes.parse.useragent.UserAgentAnalyzer;
 @Controller
 public class HomePageController {
 
-    private final UserAgentAnalyzer userAgentAnalyzer;
     private static final List<String> SUPPORTED_DEVICES = List.of("Mobile", "Tablet", "Phone");
+    private final UserAgentAnalyzer userAgentAnalyzer;
 
     public HomePageController(UserAgentAnalyzer userAgentAnalyzer) {
         this.userAgentAnalyzer = userAgentAnalyzer;
