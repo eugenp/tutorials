@@ -76,7 +76,7 @@ public class RedirectionSecurityIntegrationTest {
             .session(session)
             .with(csrf()))
             .andExpect(status().is3xxRedirection())
-            .andExpect(redirectedUrlPattern("**/secured"))
+            .andExpect(redirectedUrlPattern("**/secured?continue"))
             .andReturn();
 
         mvc.perform(securedResourceAccess.session(session))
