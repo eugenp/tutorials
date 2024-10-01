@@ -1,3 +1,4 @@
 package com.baeldung.springai.dto;
 
-public record Patient(String patientId) {}
+public record Patient(String patientId) {
+}
