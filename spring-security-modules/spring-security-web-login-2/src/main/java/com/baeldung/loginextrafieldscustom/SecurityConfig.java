@@ -37,9 +37,9 @@ public class SecurityConfig extends AbstractHttpConfigurer<SecurityConfig, HttpS
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-            .antMatchers("/css/**", "/index")
+            .requestMatchers("/css/**", "/index")
             .permitAll()
-            .antMatchers("/user/**")
+            .requestMatchers("/user/**")
             .authenticated()
             .and()
             .formLogin()
