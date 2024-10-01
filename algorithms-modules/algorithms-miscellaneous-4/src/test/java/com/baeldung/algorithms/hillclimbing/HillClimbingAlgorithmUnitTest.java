@@ -1,19 +1,15 @@
-package com.baeldung.algorithms;
+package com.baeldung.algorithms.hillclimbing;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-import com.baeldung.algorithms.hillclimbing.HillClimbing;
-import com.baeldung.algorithms.hillclimbing.State;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 class HillClimbingAlgorithmUnitTest {
     private Stack<String> initStack;

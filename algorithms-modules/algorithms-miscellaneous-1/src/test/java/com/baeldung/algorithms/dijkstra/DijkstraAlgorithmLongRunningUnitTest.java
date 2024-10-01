@@ -1,15 +1,15 @@
-package com.baeldung.algorithms;
+package com.baeldung.algorithms.dijkstra;
 
-import com.baeldung.algorithms.ga.dijkstra.Dijkstra;
-import com.baeldung.algorithms.ga.dijkstra.Graph;
-import com.baeldung.algorithms.ga.dijkstra.Node;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.assertTrue;
-
 import org.junit.jupiter.api.Test;
+
+import com.baeldung.algorithms.dijkstra.Dijkstra;
+import com.baeldung.algorithms.dijkstra.Graph;
+import com.baeldung.algorithms.dijkstra.Node;
 
 class DijkstraAlgorithmLongRunningUnitTest {
 

@@ -1,11 +1,9 @@
-package com.baeldung.algorithms;
+package com.baeldung.algorithms.automata;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
-
-import com.baeldung.algorithms.automata.*;
 
 class RtFiniteStateMachineLongRunningUnitTest {
 
