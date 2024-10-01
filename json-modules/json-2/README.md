@@ -10,5 +10,6 @@ This module contains articles about JSON.
 - [A Guide to FastJson](https://www.baeldung.com/fastjson)
 - [Remove Whitespaces From a JSON in Java](https://www.baeldung.com/java-json-minify-remove-whitespaces)
 - [Programmatic Generation of JSON Schemas in Java](https://www.baeldung.com/java-json-schema-create-automatically)
+- [Introduction to the JSON Binding API (JSR 367) in Java](https://www.baeldung.com/java-json-binding-api)
 - More Articles: [[<-- prev]](/json-modules/json)
 
