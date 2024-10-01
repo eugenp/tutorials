@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!-- DO NOT REMOVE. This changelog is required for user management. -->
+
+    <changeSet id="1" author="expense-tracker" context="!cuba">
+
+        <createTable tableName="USER_">
+            <column name="ID" type="${uuid.type}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="VERSION" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="USERNAME" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="FIRST_NAME" type="varchar(255)"/>
+            <column name="LAST_NAME" type="varchar(255)"/>
+            <column name="PASSWORD" type="varchar(255)"/>
+            <column name="EMAIL" type="varchar(255)"/>
+            <column name="ACTIVE" type="boolean"/>
+            <column name="TIME_ZONE_ID" type="VARCHAR(255)"/>
+        </createTable>
+
+    </changeSet>
+
+    <changeSet id="2" author="expense-tracker" context="!cuba">
+        <createIndex indexName="IDX_USER__ON_USERNAME"
+                     tableName="USER_" unique="true">
+            <column name="USERNAME"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="3" author="expense-tracker" context="!cuba">
+
+        <insert tableName="USER_" dbms="postgresql, mssql, hsqldb">
+            <column name="ID" value="60885987-1b61-4247-94c7-dff348347f93"/>
+            <column name="VERSION" value="1"/>
+            <column name="USERNAME" value="admin"/>
+            <column name="PASSWORD" value="{noop}admin"/>
+            <column name="ACTIVE" valueBoolean="true"/>
+        </insert>
+
+        <insert tableName="USER_" dbms="oracle, mysql, mariadb">
+            <column name="ID" value="608859871b61424794c7dff348347f93"/>
+            <column name="VERSION" value="1"/>
+            <column name="USERNAME" value="admin"/>
+            <column name="PASSWORD" value="{noop}admin"/>
+            <column name="ACTIVE" valueBoolean="true"/>
+        </insert>
+
+    </changeSet>
+
+    <changeSet id="4" author="expense-tracker" context="!cuba">
+
+        <insert tableName="SEC_ROLE_ASSIGNMENT" dbms="postgresql, mssql, hsqldb">
+            <column name="ID" value="6c9e420a-2b7a-4c42-8654-a9027ee14083"/>
+            <column name="VERSION" value="1"/>
+            <column name="USERNAME" value="admin"/>
+            <column name="ROLE_CODE" value="system-full-access"/>
+            <column name="ROLE_TYPE" value="resource"/>
+        </insert>
+
+        <insert tableName="SEC_ROLE_ASSIGNMENT" dbms="oracle, mysql, mariadb">
+            <column name="ID" value="6c9e420a2b7a4c428654a9027ee14083"/>
+            <column name="VERSION" value="1"/>
+            <column name="USERNAME" value="admin"/>
+            <column name="ROLE_CODE" value="system-full-access"/>
+            <column name="ROLE_TYPE" value="resource"/>
+        </insert>
+
+    </changeSet>
+
+</databaseChangeLog>

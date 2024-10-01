@@ -86,7 +86,7 @@
     <logger name="restx.factory.Factory" level="WARN" />
 
     <!-- app logs - set DEBUG level, in prod it will go to a dedicated file -->
-    <logger name="restx.demo" level="DEBUG" />
+    <logger name="restx.demo" level="WARN" />
 
     <root level="INFO">
         <appender-ref ref="errorFile" />

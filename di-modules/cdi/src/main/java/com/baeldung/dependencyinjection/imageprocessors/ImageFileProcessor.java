@@ -2,7 +2,7 @@ package com.baeldung.dependencyinjection.imageprocessors;
 
 import com.baeldung.dependencyinjection.loggers.TimeLogger;
 import com.baeldung.dependencyinjection.qualifiers.PngFileEditorQualifier;
-import javax.inject.Inject;
+import jakarta.inject.Inject;
 import com.baeldung.dependencyinjection.imagefileeditors.ImageFileEditor;
 
 public class ImageFileProcessor {

@@ -31,7 +31,6 @@ import java.net.URL;
 
 class HttpClientMultipartLiveTest extends GetRequestMockServer {
 
-    private static final String SERVER = "http://localhost:8080/spring-mvc-java/stub/multipart";
     private static final String TEXTFILENAME = "temp.txt";
     private static final String IMAGEFILENAME = "image.jpg";
     private static final String ZIPFILENAME = "zipFile.zip";
@@ -40,7 +39,6 @@ class HttpClientMultipartLiveTest extends GetRequestMockServer {
 
     @BeforeEach
     public void before() {
-        post = new HttpPost(SERVER);
         String URL = "http://localhost:" + serverPort + "/spring-mvc-java/stub/multipart";
         post = new HttpPost(URL);
     }

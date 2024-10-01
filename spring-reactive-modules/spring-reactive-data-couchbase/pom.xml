@@ -4,14 +4,13 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-reactive-data-couchbase</artifactId>
-    <name>spring-reactive-data-couchbase</name>
     <packaging>jar</packaging>
+    <name>spring-reactive-data-couchbase</name>
 
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-3</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-3</relativePath>
+        <groupId>com.baeldung.spring.reactive</groupId>
+        <artifactId>spring-reactive-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <dependencies>
@@ -81,6 +80,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <argLine>
                         --add-opens java.base/java.util=ALL-UNNAMED
@@ -131,9 +131,6 @@
     <properties>
         <httpclient.version>5.3.1</httpclient.version>
         <couchbaseMock.version>1.5.27</couchbaseMock.version>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <java.version>17</java.version>
     </properties>
 
 </project>

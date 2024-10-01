@@ -157,6 +157,14 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <compilerArgs>
+                        <arg>-parameters</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
@@ -164,7 +172,7 @@
         <start-class>com.baeldung.SpringBootRestApplication</start-class>
         <xstream.version>1.4.11.1</xstream.version>
         <modelmapper.version>3.2.0</modelmapper.version>
-        <rest-assured.version>3.3.0</rest-assured.version>
+        <rest-assured.version>5.5.0</rest-assured.version>
         <jaxb-runtime.version>4.0.1</jaxb-runtime.version>
         <spring-oxm.version>6.1.4</spring-oxm.version>
     </properties>

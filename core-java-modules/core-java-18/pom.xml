@@ -29,7 +29,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>${surefire.plugin.version}</version>
+                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <forkCount>1</forkCount>
                 </configuration>
@@ -48,7 +48,6 @@
         <maven.compiler.source.version>18</maven.compiler.source.version>
         <maven.compiler.target.version>18</maven.compiler.target.version>
         <maven.compiler.release>18</maven.compiler.release>
-        <surefire.plugin.version>3.0.0-M5</surefire.plugin.version>
     </properties>
 
 </project>

@@ -42,16 +42,43 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>${mockito.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>aspectj-maven-plugin</artifactId>
+                <version>${aspectj-plugin.version}</version>
+                <configuration>
+                    <complianceLevel>${java.version}</complianceLevel>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <Xlint>ignore</Xlint>
+                    <encoding>UTF-8</encoding>
+                    <excludes>
+                        <exclude>**/selfinvocation/**</exclude>
+                        <exclude>**/undeclared/**</exclude>
+                    </excludes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <systemPropertyVariables>
+                        <logback.configurationFile>${project.basedir}/src/main/resources/logback.xml</logback.configurationFile>
+                    </systemPropertyVariables>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
@@ -74,11 +101,20 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
                         <configuration>
                             <excludes>
                                 <exclude>com.baeldung.selfinvocation.CompileTimeWeavingIntegrationTest</exclude>
                                 <exclude>com.baeldung.selfinvocation.LoadTimeWeavingIntegrationTest</exclude>
                             </excludes>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <configuration>
+                            <compilerArgs>
+                                <arg>-parameters</arg>
+                            </compilerArgs>
                         </configuration>
                     </plugin>
                 </plugins>
@@ -100,6 +136,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
                         <configuration>
                             <includes>
                                 <include>com.baeldung.selfinvocation.CompileTimeWeavingIntegrationTest</include>
@@ -162,7 +199,9 @@
                                 -javaagent:"${settings.localRepository}"/org/springframework/spring-instrument/${spring.version}/spring-instrument-${spring.version}.jar
                             </argLine>
                             <useSystemClassLoader>true</useSystemClassLoader>
-                            <forkMode>always</forkMode>
+                            <!--<forkMode>always</forkMode> removed in version 3+ -->
+                            <forkCount>1</forkCount>
+                            <reuseForks>false</reuseForks>
                             <includes>
                                 <include>com.baeldung.selfinvocation.LoadTimeWeavingIntegrationTest</include>
                             </includes>
@@ -179,6 +218,7 @@
         <start-class>com.baeldung.Application</start-class>
         <commons-rng-core.version>1.5</commons-rng-core.version>
         <spring-aspects.version>6.1.5</spring-aspects.version>
+        <java.version>16</java.version>
     </properties>
 
 </project>

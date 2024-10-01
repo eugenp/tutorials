@@ -2,9 +2,9 @@ package com.baeldung.boot.documentation.springwolf.adapter.incoming;
 
 import com.baeldung.boot.documentation.springwolf.dto.IncomingPayloadDto;
 import com.baeldung.boot.documentation.springwolf.service.ProcessorService;
-import io.github.stavshamir.springwolf.asyncapi.scanners.channels.operationdata.annotation.AsyncListener;
-import io.github.stavshamir.springwolf.asyncapi.scanners.channels.operationdata.annotation.AsyncOperation;
-import io.github.stavshamir.springwolf.asyncapi.scanners.channels.operationdata.annotation.KafkaAsyncOperationBinding;
+import io.github.springwolf.bindings.kafka.annotations.KafkaAsyncOperationBinding;
+import io.github.springwolf.core.asyncapi.annotations.AsyncListener;
+import io.github.springwolf.core.asyncapi.annotations.AsyncOperation;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;

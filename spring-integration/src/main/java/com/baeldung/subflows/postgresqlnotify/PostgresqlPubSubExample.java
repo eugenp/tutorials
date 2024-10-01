@@ -20,13 +20,9 @@ import org.springframework.integration.annotation.IntegrationComponentScan;
 import org.springframework.integration.annotation.MessagingGateway;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.integration.annotation.Transformer;
-import org.springframework.integration.channel.DirectChannel;
-import org.springframework.integration.channel.PublishSubscribeChannel;
-import org.springframework.integration.channel.QueueChannel;
 import org.springframework.integration.config.EnableIntegration;
 import org.springframework.jdbc.datasource.SingleConnectionDataSource;
 import org.springframework.messaging.Message;
-import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.SubscribableChannel;
 
 import com.baeldung.domain.Order;
@@ -42,7 +38,7 @@ public class PostgresqlPubSubExample {
     
     private static final Logger log = LoggerFactory.getLogger(PostgresqlPubSubExample.class);
     
-    private Map<String,BigDecimal> orderSummary = new HashMap<>();
+    private final Map<String,BigDecimal> orderSummary = new HashMap<>();
     
     private final ObjectMapper om = new ObjectMapper();
     private final Semaphore orderSemaphore = new Semaphore(0);
@@ -81,7 +77,7 @@ public class PostgresqlPubSubExample {
     
     @Transformer(inputChannel = "orders" , outputChannel = "orderProcessor" )
     Order validatedOrders(Message<?> orderMessage)  throws JsonProcessingException {
-        ObjectNode on = (ObjectNode)orderMessage.getPayload();
+        ObjectNode on = (ObjectNode) orderMessage.getPayload();
         Order order = om.treeToValue(on, Order.class);
         return order;
     }

@@ -3,8 +3,10 @@ package com.baeldung.spring.cloud.client;
 import com.baeldung.spring.cloud.model.Book;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.WireMock;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -42,6 +44,7 @@ import reactor.test.StepVerifier;
 @EnableFeignClients
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = { TestConfig.class })
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class LoadBalancerBooksClientIntegrationTest {
 
     @Autowired
@@ -138,5 +141,11 @@ class LoadBalancerBooksClientIntegrationTest {
                 }
             }).verifyComplete();
         }
+    }
+
+    @AfterAll
+    void tearDown() {
+        mockBooksService.shutdownServer();
+        secondMockBooksService.shutdownServer();
     }
 }

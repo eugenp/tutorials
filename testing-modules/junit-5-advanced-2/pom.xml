@@ -74,7 +74,7 @@
 
     <properties>
         <jmockit.version>1.49</jmockit.version>
-        <maven-surefire-plugin.version>3.0.0</maven-surefire-plugin.version>
+        <junit-platform.version>1.10.1</junit-platform.version>
     </properties>
 
 </project>

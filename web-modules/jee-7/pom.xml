@@ -124,6 +124,7 @@
             <artifactId>javax.mvc-api</artifactId>
             <version>${mvc.api.version}</version>
         </dependency>
+        <!-- JAVA-37373 unable to upgrade to Jakarta namespace since this library is abandoned -->
         <dependency>
             <groupId>org.glassfish.ozark</groupId>
             <artifactId>ozark</artifactId>
@@ -268,6 +269,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven-surefire-plugin.version}</version>
                     <configuration>
                         <argLine>
                             --add-opens java.base/java.lang=ALL-UNNAMED
@@ -358,11 +360,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
-                        <configuration>
-                            <argLine>
-                                --add-opens java.base/java.lang=ALL-UNNAMED
-                            </argLine>
-                        </configuration>
+                        <version>${maven-surefire-plugin.version}</version>
                     </plugin>
                 </plugins>
             </build>

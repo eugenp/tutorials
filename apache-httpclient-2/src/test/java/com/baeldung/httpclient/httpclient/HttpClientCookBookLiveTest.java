@@ -43,8 +43,6 @@ class HttpClientCookBookLiveTest {
 
     private CloseableHttpClient httpClient;
 
-    private CloseableHttpResponse response;
-
     @BeforeEach
     public final void before() {
         httpClient = HttpClientBuilder.create().build();

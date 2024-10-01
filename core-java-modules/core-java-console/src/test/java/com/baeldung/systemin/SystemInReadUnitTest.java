@@ -11,12 +11,12 @@ import org.junit.jupiter.api.Test;
 public class SystemInReadUnitTest {
     @Test
     void givenUserInput_whenUsingReadMultipleCharacters_thenRead() {
-        System.setIn(new ByteArrayInputStream("Hello\n".getBytes()));
+        System.setIn(new ByteArrayInputStream(("Hello" + System.lineSeparator() + "").getBytes()));
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outputStream));
         SystemInRead.readMultipleCharacters();
 
-        assertEquals("Enter characters (Press 'Enter' to quit):\n" + "Hello", outputStream.toString().trim());
+        assertEquals("Enter characters (Press 'Enter' to quit):" + System.lineSeparator() + "Hello", outputStream.toString().trim());
     }
 
     @Test
@@ -26,7 +26,7 @@ public class SystemInReadUnitTest {
         System.setOut(new PrintStream(outputStream));
         SystemInRead.readSingleCharacter();
 
-        assertEquals("Enter a character:\nA", outputStream.toString().trim());
+        assertEquals("Enter a character:" + System.lineSeparator() + "A", outputStream.toString().trim());
     }
 
     @Test

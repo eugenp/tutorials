@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.baeldung.joins.model.Department;
 import com.baeldung.joins.model.Phone;
-import java.util.Collection;
 import java.util.List;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -136,9 +135,9 @@ public class JpaJoinsIntegrationTest {
 
     @Test
     public void whenCollectionValuedAssociationIsSpecifiedInSelect_ThenReturnsCollections() {
-        TypedQuery<Collection> query = entityManager.createQuery("SELECT e.phones FROM Employee e", Collection.class);
+        TypedQuery<Phone> query = entityManager.createQuery("SELECT e.phones FROM Employee e", Phone.class);
 
-        List<Collection> resultList = query.getResultList();
+        List<Phone> resultList = query.getResultList();
 
         assertThat(resultList).extracting("number").containsOnly("111", "222", "333");
     }
