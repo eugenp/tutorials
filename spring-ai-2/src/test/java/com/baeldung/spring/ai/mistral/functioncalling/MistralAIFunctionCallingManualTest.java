@@ -65,7 +65,7 @@ public class MistralAIFunctionCallingManualTest {
         logger.info(paymentStatusResponseContent);
 
         Assertions.assertThat(paymentStatusResponseContent)
-                .containsIgnoringCase("healthy");
+          .containsIgnoringCase("healthy");
 
         ChatResponse changeDateResponse = chatClient.call(
            new Prompt(
