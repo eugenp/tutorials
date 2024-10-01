@@ -1,12 +1,14 @@
 package com.baeldung.algorithms.conversion;
 
-import com.google.common.io.BaseEncoding;
-import jakarta.xml.bind.DatatypeConverter;
+import java.math.BigInteger;
+import java.util.HexFormat;
+
 import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.binary.Hex;
 
-import java.math.BigInteger;
-import java.util.HexFormat;
+import com.google.common.io.BaseEncoding;
+
+import jakarta.xml.bind.DatatypeConverter;
 
 public class HexStringConverter {
 
