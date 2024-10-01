@@ -1,4 +1,4 @@
-package com.baeldung.mockito.deep-stubs;
+package com.baeldung.mockito.deepstubs;
 
 public class Reporter {
     String name;
