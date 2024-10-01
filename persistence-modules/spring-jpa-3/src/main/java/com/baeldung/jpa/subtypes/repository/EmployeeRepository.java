@@ -12,9 +12,11 @@ import com.baeldung.jpa.subtypes.entity.PermanentEmployee;
 
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
-    @Query("SELECT e FROM Employee e WHERE type(e) = 'PERM' AND e.employeeId < :idlimit AND e.name LIKE :prefix% ")
-    List<PermanentEmployee> filterPermEmployees(@Param("idlimit") int idlimit, @Param("prefix") String prefix);
+    @Query("SELECT e FROM Employee e WHERE type(e) = 'PERM' AND e.employeeId < :idlimit " 
+    + "AND e.name LIKE :prefix% ")
+    List<PermanentEmployee> filterPermanent(@Param("idlimit") int idlimit, @Param("prefix") String prefix);
 
-    @Query("SELECT e FROM Employee e WHERE type(e) = 'CNTR' AND e.contractPeriod < :period AND e.name LIKE :prefix%  ")
-    List<ContractEmployee> filterContractEmployees(@Param("period") int period, @Param("prefix") String prefix);
+    @Query("SELECT e FROM Employee e WHERE type(e) = 'CNTR' AND e.contractPeriod < :period " 
+    + "AND e.name LIKE :prefix%  ")
+    List<ContractEmployee> filterContract(@Param("period") int period, @Param("prefix") String prefix);
 }
