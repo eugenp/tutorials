@@ -10,4 +10,5 @@ This module contains articles about algorithms. Some classes of algorithms, e.g.
 - [Introduction to Minimax Algorithm with a Java Implementation](https://www.baeldung.com/java-minimax-algorithm)
 - [How to Calculate Levenshtein Distance in Java?](https://www.baeldung.com/java-levenshtein-distance)
 - [How to Find the Kth Largest Element in Java](https://www.baeldung.com/java-kth-largest-element)
+- [Dijkstra Shortest Path Algorithm in Java](https://www.baeldung.com/java-dijkstra)
 - More articles: [[next -->]](/algorithms-miscellaneous-2)
