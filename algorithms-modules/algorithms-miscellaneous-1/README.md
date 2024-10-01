@@ -12,4 +12,5 @@ This module contains articles about algorithms. Some classes of algorithms, e.g.
 - [How to Find the Kth Largest Element in Java](https://www.baeldung.com/java-kth-largest-element)
 - [Dijkstra Shortest Path Algorithm in Java](https://www.baeldung.com/java-dijkstra)
 - [Implementing Simple State Machines with Java Enums](https://www.baeldung.com/java-enum-simple-state-machine)
+- [Permutations of an Array in Java](https://www.baeldung.com/java-array-permutations)
 - More articles: [[next -->]](/algorithms-miscellaneous-2)
