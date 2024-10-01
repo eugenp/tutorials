@@ -7,7 +7,6 @@ This module contains articles about JSON.
 - [Introduction to JSONForms](https://www.baeldung.com/introduction-to-jsonforms)
 - [Introduction to JSON-Java (org.json)](https://www.baeldung.com/java-org-json)
 - [Overview of JSON Pointer](https://www.baeldung.com/json-pointer)
-- [Iterating Over an Instance of org.json.JSONObject](https://www.baeldung.com/jsonobject-iteration)
 - [Escape JSON String in Java](https://www.baeldung.com/java-json-escaping)
 - [Reducing JSON Data Size](https://www.baeldung.com/json-reduce-data-size)
 - [How to Convert JsonNode to ObjectNode](https://www.baeldung.com/java-jackson-jsonnode-objectnode)

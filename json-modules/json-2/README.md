@@ -12,5 +12,6 @@ This module contains articles about JSON.
 - [Programmatic Generation of JSON Schemas in Java](https://www.baeldung.com/java-json-schema-create-automatically)
 - [Introduction to the JSON Binding API (JSR 367) in Java](https://www.baeldung.com/java-json-binding-api)
 - [Get a Value by Key in a JSONArray](https://www.baeldung.com/java-jsonarray-get-value-by-key)
+- [Iterating Over an Instance of org.json.JSONObject](https://www.baeldung.com/jsonobject-iteration)
 - More Articles: [[<-- prev]](/json-modules/json)
 
