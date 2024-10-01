@@ -1,3 +1,6 @@
 spring:
   ai:
     openai.api-key: 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
+
+  main:
+    allow-bean-definition-overriding: true
