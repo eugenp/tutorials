@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
+import org.springframework.web.servlet.handler.HandlerMappingIntrospector;
 
 //@Configuration
 //@ImportResource({ "classpath:RedirectionWebSecurityConfig.xml" })
@@ -26,7 +27,7 @@ public class RedirectionSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-            .antMatchers("/login*")
+            .requestMatchers("/login*")
             .permitAll()
             .anyRequest()
             .authenticated()
@@ -35,6 +36,11 @@ public class RedirectionSecurityConfig {
             .successHandler(new SavedRequestAwareAuthenticationSuccessHandler());
         // .successHandler(new RefererAuthenticationSuccessHandler())
         return http.build();
+    }
+    
+    @Bean
+    public HandlerMappingIntrospector mvcHandlerMappingIntrospector() {
+        return new HandlerMappingIntrospector();
     }
 
 }
