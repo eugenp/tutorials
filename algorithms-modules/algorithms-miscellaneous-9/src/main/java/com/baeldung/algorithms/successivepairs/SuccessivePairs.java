@@ -1,4 +1,4 @@
-package com.baledung.algorithms.successivepairs;
+package com.baeldung.algorithms.successivepairs;
 
 import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;

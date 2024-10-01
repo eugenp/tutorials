@@ -1,4 +1,4 @@
-package com.baledung.algorithms.countoccurence;
+package com.baeldung.algorithms.countoccurence;
 
 import java.util.Arrays;
 import java.util.HashMap;

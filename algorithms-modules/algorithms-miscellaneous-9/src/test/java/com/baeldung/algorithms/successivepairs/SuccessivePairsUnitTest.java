@@ -11,8 +11,6 @@ import java.util.stream.Stream;
 
 import org.junit.jupiter.api.Test;
 
-import com.baledung.algorithms.successivepairs.SuccessivePairs;
-
 public class SuccessivePairsUnitTest {
 
     @Test

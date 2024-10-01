@@ -1,8 +1,8 @@
 package com.baeldung.algorithms.latlondistance;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.Test;
 
 class GeoDistanceUnitTest {
     @Test
