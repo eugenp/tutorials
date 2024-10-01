@@ -15,4 +15,5 @@ This module contains articles about algorithms. Some classes of algorithms, e.g.
 - [Permutations of an Array in Java](https://www.baeldung.com/java-array-permutations)
 - [Maximum Subarray Problem in Java](https://www.baeldung.com/java-maximum-subarray)
 - [Converting Between Byte Arrays and Hexadecimal Strings in Java](https://www.baeldung.com/java-byte-arrays-hex-strings)
+- [Calculate Distance Between Two Coordinates in Java](https://www.baeldung.com/java-find-distance-between-points)
 - More articles: [[next -->]](/algorithms-miscellaneous-2)
