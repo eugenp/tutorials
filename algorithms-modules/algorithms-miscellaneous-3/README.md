@@ -6,7 +6,6 @@ This module contains articles about algorithms. Some classes of algorithms, e.g.
 ## Relevant Articles:
 
 - [Java Two Pointer Technique](https://www.baeldung.com/java-two-pointer-technique)
-- [Implementing Simple State Machines with Java Enums](https://www.baeldung.com/java-enum-simple-state-machine)
 - [Converting Between Roman and Arabic Numerals in Java](https://www.baeldung.com/java-convert-roman-arabic)
 - [Checking If a List Is Sorted in Java](https://www.baeldung.com/java-check-if-list-sorted)
 - [Checking if a Java Graph Has a Cycle](https://www.baeldung.com/java-graph-has-a-cycle)
