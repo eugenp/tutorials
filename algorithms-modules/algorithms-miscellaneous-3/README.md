@@ -12,4 +12,5 @@ This module contains articles about algorithms. Some classes of algorithms, e.g.
 - [A Guide to the Folding Technique in Java](https://www.baeldung.com/folding-hashing-technique)
 - [Creating a Triangle with for Loops in Java](https://www.baeldung.com/java-print-triangle)
 - [The K-Means Clustering Algorithm in Java](https://www.baeldung.com/java-k-means-clustering-algorithm)
+- [Validating Input with Finite Automata in Java](https://www.baeldung.com/java-finite-automata)
 - More articles: [[<-- prev]](/algorithms-miscellaneous-2) [[next -->]](/algorithms-miscellaneous-4)
