@@ -11,20 +11,20 @@ public class StringReplaceAllUnitTest {
 
     @Test
     void whenUseReplaceAll_thenCorrect() {
-        String input = "Hello world";
+        String input = "Hello w o r l d";
         String result = input.replaceAll("\\s", "_");
-        assertEquals("Hello_world", result);
+        assertEquals("Hello_w_o_r_l_d", result);
 
         //greedy
         result = input.replaceAll("e.*o", "X");
-        assertEquals("HXrld", result);
+        assertEquals("HX r l d", result);
 
         //non-greedy
         result = input.replaceAll("e.*?o", "X");
-        assertEquals("HX world", result);
+        assertEquals("HX w o r l d", result);
 
         result = input.replaceAll("e[^o]*o", "X");
-        assertEquals("HX world", result);
+        assertEquals("HX w o r l d", result);
     }
 
     @Test
@@ -76,6 +76,9 @@ public class StringReplaceAllUnitTest {
         String expected = "789-456-123";
 
         String result = input.replaceAll("(\\d{3})(\\d{3})(\\d{3})", "$3-$2-$1");
+        assertEquals(expected, result);
+
+        result = input.replaceAll("(?<g1>\\d{3})(?<g2>\\d{3})(?<g3>\\d{3})", "${g3}-${g2}-${g1}");
         assertEquals(expected, result);
     }
 
