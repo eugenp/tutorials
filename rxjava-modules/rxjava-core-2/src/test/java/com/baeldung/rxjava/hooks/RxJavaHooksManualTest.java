@@ -1,4 +1,4 @@
-package com.baeldung.rxjava;
+package com.baeldung.rxjava.hooks;
 
 import static org.junit.Assert.assertTrue;
 
