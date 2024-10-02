@@ -1,4 +1,4 @@
-package com.baeldung.extensions.testwatcher;
+package com.baeldung.testwatcher;
 
 import static org.junit.jupiter.api.Assertions.fail;
 
