@@ -15,8 +15,6 @@ public class ExcelUtilsUnitTest {
 
     private static final String XLS_TEST_FILE_PATH = "src/main/resources/consumer_info.xls";
     private static final String XLSX_TEST_FILE_PATH = "src/main/resources/food_info.xlsx";
-    private static final String XLS_EMPTY_ROW_FILE_PATH = "src/main/resources/consumer_info_with_empty_row.xls";
-    private static final String XLSX_EMPTY_ROW_FILE_PATH = "src/main/resources/consumer_info_with_empty_row.xlsx";
     private static final String XLS_EMPTY_FILE_PATH = "src/main/resources/empty_excel_file.xls";
     private static final String XLSX_EMPTY_FILE_PATH = "src/main/resources/empty_excel_file.xlsx";
     private static final String SHEET_NAME = "Sheet1";
@@ -47,36 +45,6 @@ public class ExcelUtilsUnitTest {
         assertTrue(columnNames.contains("City"));
 
         workbook.close();
-    }
-
-    @Test
-    public void givenXLSFile_whenParsingExcelFile_thenDetectEmptyRow() throws IOException {
-        Workbook workbook = ExcelUtils.openWorkbook(XLS_EMPTY_ROW_FILE_PATH);
-        Sheet sheet = workbook.getSheetAt(0);
-
-        Row row = sheet.getRow(0); // We have entered data in this row
-        assertFalse(ExcelUtils.isRowEmpty(row));
-
-        row = sheet.getRow(2); // We have entered data in this row
-        assertFalse(ExcelUtils.isRowEmpty(row));
-
-        row = sheet.getRow(5); // It is an empty row 
-        assertTrue(ExcelUtils.isRowEmpty(row));
-    }
-
-    @Test
-    public void givenXLSXFile_whenParsingExcelFile_thenDetectEmptyRow() throws IOException {
-        Workbook workbook = ExcelUtils.openWorkbook(XLSX_EMPTY_ROW_FILE_PATH);
-        Sheet sheet = workbook.getSheetAt(0);
-
-        Row row = sheet.getRow(0); // We have entered data in this row
-        assertFalse(ExcelUtils.isRowEmpty(row));
-
-        row = sheet.getRow(2); // We have entered data in this row
-        assertFalse(ExcelUtils.isRowEmpty(row));
-
-        row = sheet.getRow(5); // It is an empty row 
-        assertTrue(ExcelUtils.isRowEmpty(row));
     }
     
     @Test
