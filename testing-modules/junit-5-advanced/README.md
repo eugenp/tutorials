@@ -1,6 +1,5 @@
 ## Relevant Articles:
 
-- [JUnit Custom Display Name Generator API](https://www.baeldung.com/junit-custom-display-name-generator)
 - [@TestInstance Annotation in JUnit 5](https://www.baeldung.com/junit-testinstance-annotation)
 - [Parallel Test Execution for JUnit 5](https://www.baeldung.com/junit-5-parallel-tests)
 - [JUnit – Testing Methods That Call System.exit()](https://www.baeldung.com/junit-system-exit)

@@ -4,3 +4,4 @@
 - [Run JUnit Test Cases From the Command Line](https://www.baeldung.com/junit-run-from-command-line)
 - [Get the Name of the Currently Executing Test in JUnit](https://www.baeldung.com/junit-get-name-of-currently-executing-test)
 - [JUnit 5 TestWatcher API](https://www.baeldung.com/junit-testwatcher)
+- [JUnit Custom Display Name Generator API](https://www.baeldung.com/junit-custom-display-name-generator)
