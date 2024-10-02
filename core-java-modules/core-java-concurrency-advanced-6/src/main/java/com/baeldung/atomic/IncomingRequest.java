@@ -1,16 +1,17 @@
 package com.baeldung.atomic;
 
 class IncomingRequest extends Thread {
+    private final AtomicLoadBalancer balancer;
+    private final int requestId;
 
-    private final AtomicLoadBalancer loadBalancerInstance;
-
-    public IncomingRequest(AtomicLoadBalancer balancer) {
-        this.loadBalancerInstance = balancer;
+    public IncomingRequest(AtomicLoadBalancer balancer, int requestId) {
+        this.balancer = balancer;
+        this.requestId = requestId;
     }
 
     @Override
     public void run() {
-        String server = this.loadBalancerInstance.getServer();
-        System.out.println("Dispatch Request To: "+server);
+        String assignedServer = balancer.getServer();
+        System.out.println(String.format("Dispatched request %d to %s", requestId, assignedServer));
     }
 }

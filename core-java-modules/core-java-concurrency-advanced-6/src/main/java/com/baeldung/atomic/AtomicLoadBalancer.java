@@ -5,22 +5,23 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class AtomicLoadBalancer {
     private List<String> serverList;
-    private AtomicInteger counter = new AtomicInteger(0);
+    private final AtomicInteger counter = new AtomicInteger(0);
 
     public AtomicLoadBalancer(List<String> serverList) {
         this.serverList = serverList;
     }
 
-    public String getServer() {
-        int index = counter.getAndUpdate(counter -> (counter + 1) % serverList.size());
+    public synchronized String getServer() {
+        int index = counter.get() % serverList.size();
+        counter.incrementAndGet();
         return serverList.get(index);
     }
 
     public static void main(String[] args) {
         List<String> serverList = List.of("Server 1", "Server 2", "Server 3", "Server 4", "Server 5");
         AtomicLoadBalancer balancer = new AtomicLoadBalancer(serverList);
-        for (int i = 0; i < 10; i++) {
-            IncomingRequest request = new IncomingRequest(balancer);
+        for (int i = 1; i <= 10; i++) {
+            IncomingRequest request = new IncomingRequest(balancer, i);
             request.start();
         }
     }
