@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.baeldung.docker-multi-module-maven</groupId>
-    <artifactId>parent</artifactId>
+    <artifactId>docker-multi-module-maven</artifactId>
     <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
 
