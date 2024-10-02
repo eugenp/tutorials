@@ -10,7 +10,6 @@ This module contains articles about RxJava.
 - [Schedulers in RxJava](https://www.baeldung.com/rxjava-schedulers)
 - [Difference Between Flatmap and Switchmap in RxJava](https://www.baeldung.com/rxjava-flatmap-switchmap)
 - [RxJava and Error Handling](https://www.baeldung.com/rxjava-error-handling)
-- [RxJava Maybe](https://www.baeldung.com/rxjava-maybe)
 - [Combining RxJava Completables](https://www.baeldung.com/rxjava-completable)
 - [RxJava Hooks](https://www.baeldung.com/rxjava-hooks)
 
