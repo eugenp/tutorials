@@ -7,3 +7,4 @@
 - [JUnit Custom Display Name Generator API](https://www.baeldung.com/junit-custom-display-name-generator)
 - [JUnit – Testing Methods That Call System.exit()](https://www.baeldung.com/junit-system-exit)
 - [Single Assert Call for Multiple Properties in Java Unit Testing](https://www.baeldung.com/java-testing-single-assert-multiple-properties)
+- [Testing Interface Contract in Java](https://www.baeldung.com/java-junit-verify-interface-contract)
