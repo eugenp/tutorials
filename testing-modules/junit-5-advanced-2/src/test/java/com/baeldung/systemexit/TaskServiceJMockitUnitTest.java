@@ -1,12 +1,13 @@
 package com.baeldung.systemexit;
 
-import mockit.Mock;
-import mockit.MockUp;
+import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.mock;
+
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
-import static org.mockito.Mockito.doThrow;
-import static org.mockito.Mockito.mock;
+import mockit.Mock;
+import mockit.MockUp;
 
 public class TaskServiceJMockitUnitTest {
 

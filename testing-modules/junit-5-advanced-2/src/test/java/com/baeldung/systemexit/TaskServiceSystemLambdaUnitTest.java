@@ -1,11 +1,11 @@
 package com.baeldung.systemexit;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.Test;
-
 import static com.github.stefanbirkner.systemlambda.SystemLambda.catchSystemExit;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
+
+import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 
 public class TaskServiceSystemLambdaUnitTest {
 
