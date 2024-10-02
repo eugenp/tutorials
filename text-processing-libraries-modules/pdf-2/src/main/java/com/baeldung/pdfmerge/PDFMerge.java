@@ -6,7 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
-import org.apache.pdfbox.io.MemoryUsageSetting;
+import org.apache.pdfbox.io.RandomAccessStreamCacheImpl;
 import org.apache.pdfbox.multipdf.PDFMergerUtility;
 
 import com.itextpdf.text.Document;
@@ -30,7 +30,7 @@ public class PDFMerge {
             }
         });
 
-        pdfMergerUtility.mergeDocuments(MemoryUsageSetting.setupMainMemoryOnly());
+        pdfMergerUtility.mergeDocuments(RandomAccessStreamCacheImpl::new);
     }
 
     public void mergeUsingIText(List<String> pdfFiles, String outputFile) throws IOException, DocumentException {
