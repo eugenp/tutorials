@@ -51,7 +51,7 @@ public class StringFormatUnitTest {
 
         assertEquals(
             "Boolean: true, Character: A, Decimal: 255, Hex: ff, Float: 123.46, Exponential: 1.234568e+02",
-            formatted
+            multipleFormat
         );
     }
 
