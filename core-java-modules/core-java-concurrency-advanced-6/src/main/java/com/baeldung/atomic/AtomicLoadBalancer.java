@@ -11,7 +11,7 @@ public class AtomicLoadBalancer {
         this.serverList = serverList;
     }
 
-    public synchronized String getServer() {
+    public String getServer() {
         int index = counter.get() % serverList.size();
         counter.incrementAndGet();
         return serverList.get(index);
