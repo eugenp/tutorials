@@ -156,8 +156,6 @@
     </build>
 
     <properties>
-        <java.version>17</java.version>
-
         <!-- Spring -->
         <org.springframework.version>6.0.6</org.springframework.version>
         <org.springframework.security.version>4.2.0.RELEASE</org.springframework.security.version>

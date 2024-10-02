@@ -77,7 +77,7 @@
         <module>core-java-annotations</module>
         <module>core-java-annotations-2</module>
         <module>core-java-arrays-sorting</module>
-        <!-- <module>core-java-arrays-guides</module> --> <!-- JAVA-39367 -->
+        <module>core-java-arrays-guides</module>
         <module>core-java-arrays-multidimensional</module>
         <module>core-java-arrays-convert</module>
         <module>core-java-arrays-operations-basic</module>
@@ -142,7 +142,7 @@
         <module>core-java-jar</module>
         <module>core-java-jndi</module>
         <!-- <module>core-java-jvm</module> --> <!-- failing after upgrade to jdk21 -->
-        <!-- <module>core-java-jvm-2</module> --> <!-- JAVA-39367 -->
+        <module>core-java-jvm-2</module>
         <module>core-java-jvm-3</module>
         <module>core-java-lambdas</module>
         <module>core-java-lang-2</module>
@@ -217,6 +217,7 @@
         <module>core-java-string-operations-8</module>
         <module>core-java-string-operations-9</module>
         <module>core-java-string-operations-10</module>
+        <module>core-java-string-operations-11</module>
         <module>core-java-regex</module>
         <module>core-java-regex-2</module>
         <module>core-java-regex-3</module>

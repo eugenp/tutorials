@@ -208,8 +208,8 @@
                 <artifactId>avro-maven-plugin</artifactId>
                 <version>${apache.avro.version}</version>
                 <configuration>
-                    <sourceDirectory>src/main/java/com/baeldung/apache/avro/</sourceDirectory>
-                    <outputDirectory>src/main/java/com/baeldung/apache/avro/</outputDirectory>
+                    <sourceDirectory>src/main/java/com/baeldung/apache/avro/schemas</sourceDirectory>
+                    <outputDirectory>src/main/java</outputDirectory>
                     <stringType>String</stringType>
                 </configuration>
                 <executions>
@@ -226,6 +226,14 @@
                 <groupId>org.apache.meecrowave</groupId>
                 <artifactId>meecrowave-maven-plugin</artifactId>
                 <version>${meecrowave-maven-plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                </configuration>
             </plugin>
         </plugins>
     </build>
@@ -247,6 +255,8 @@
         <meecrowave-maven-plugin.version>1.2.15</meecrowave-maven-plugin.version>
         <xbean.version>4.24</xbean.version>
         <geode.core>1.15.1</geode.core>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
 </project>

@@ -59,7 +59,7 @@ class PercentDiffBetweenTwoNumbersUnitTest {
         double v1 = -50.0;
         double v2 = 50.0;
         assertThrows(IllegalArgumentException.class, () -> PercentDiffBetweenTwoNumbers.calculatePercentageDifference(v1, v2),
-            "Should throw IllegalArgumentException when the average of V1 and V2 is zero.");
+            "Should throw IllegalArgumentException when the average of v1 and v2 is zero.");
     }
 
     @Test

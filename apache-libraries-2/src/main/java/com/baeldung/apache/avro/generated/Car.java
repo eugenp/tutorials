@@ -5,17 +5,19 @@
  */
 package com.baeldung.apache.avro.generated;
 
+import org.apache.avro.generic.GenericArray;
 import org.apache.avro.specific.SpecificData;
+import org.apache.avro.util.Utf8;
 import org.apache.avro.message.BinaryMessageEncoder;
 import org.apache.avro.message.BinaryMessageDecoder;
 import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class Car extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -8258229058542686289L;
+  private static final long serialVersionUID = 5432057678575069597L;
 
 
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Car\",\"namespace\":\"generated.avro\",\"fields\":[{\"name\":\"brand\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"default\":\"Dacia\"},{\"name\":\"number_of_doors\",\"type\":\"int\",\"default\":4},{\"name\":\"color\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Car\",\"namespace\":\"com.baeldung.apache.avro.generated\",\"fields\":[{\"name\":\"brand\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"default\":\"Dacia\"},{\"name\":\"number_of_doors\",\"type\":\"int\",\"default\":4},{\"name\":\"color\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static final SpecificData MODEL$ = new SpecificData();
@@ -178,8 +180,8 @@ public class Car extends org.apache.avro.specific.SpecificRecordBase implements 
    * Creates a new Car RecordBuilder.
    * @return A new Car RecordBuilder
    */
-  public static Car.Builder newBuilder() {
-    return new Car.Builder();
+  public static com.baeldung.apache.avro.generated.Car.Builder newBuilder() {
+    return new com.baeldung.apache.avro.generated.Car.Builder();
   }
 
   /**
@@ -187,11 +189,11 @@ public class Car extends org.apache.avro.specific.SpecificRecordBase implements 
    * @param other The existing builder to copy.
    * @return A new Car RecordBuilder
    */
-  public static Car.Builder newBuilder(Car.Builder other) {
+  public static com.baeldung.apache.avro.generated.Car.Builder newBuilder(com.baeldung.apache.avro.generated.Car.Builder other) {
     if (other == null) {
-      return new Car.Builder();
+      return new com.baeldung.apache.avro.generated.Car.Builder();
     } else {
-      return new Car.Builder(other);
+      return new com.baeldung.apache.avro.generated.Car.Builder(other);
     }
   }
 
@@ -200,11 +202,11 @@ public class Car extends org.apache.avro.specific.SpecificRecordBase implements 
    * @param other The existing instance to copy.
    * @return A new Car RecordBuilder
    */
-  public static Car.Builder newBuilder(Car other) {
+  public static com.baeldung.apache.avro.generated.Car.Builder newBuilder(com.baeldung.apache.avro.generated.Car other) {
     if (other == null) {
-      return new Car.Builder();
+      return new com.baeldung.apache.avro.generated.Car.Builder();
     } else {
-      return new Car.Builder(other);
+      return new com.baeldung.apache.avro.generated.Car.Builder(other);
     }
   }
 
@@ -228,7 +230,7 @@ public class Car extends org.apache.avro.specific.SpecificRecordBase implements 
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(Car.Builder other) {
+    private Builder(com.baeldung.apache.avro.generated.Car.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.brand)) {
         this.brand = data().deepCopy(fields()[0].schema(), other.brand);
@@ -248,7 +250,7 @@ public class Car extends org.apache.avro.specific.SpecificRecordBase implements 
      * Creates a Builder by copying an existing Car instance
      * @param other The existing instance to copy.
      */
-    private Builder(Car other) {
+    private Builder(com.baeldung.apache.avro.generated.Car other) {
       super(SCHEMA$, MODEL$);
       if (isValidValue(fields()[0], other.brand)) {
         this.brand = data().deepCopy(fields()[0].schema(), other.brand);
@@ -278,7 +280,7 @@ public class Car extends org.apache.avro.specific.SpecificRecordBase implements 
       * @param value The value of 'brand'.
       * @return This builder.
       */
-    public Car.Builder setBrand(java.lang.String value) {
+    public com.baeldung.apache.avro.generated.Car.Builder setBrand(java.lang.String value) {
       validate(fields()[0], value);
       this.brand = value;
       fieldSetFlags()[0] = true;
@@ -298,7 +300,7 @@ public class Car extends org.apache.avro.specific.SpecificRecordBase implements 
       * Clears the value of the 'brand' field.
       * @return This builder.
       */
-    public Car.Builder clearBrand() {
+    public com.baeldung.apache.avro.generated.Car.Builder clearBrand() {
       brand = null;
       fieldSetFlags()[0] = false;
       return this;
@@ -318,7 +320,7 @@ public class Car extends org.apache.avro.specific.SpecificRecordBase implements 
       * @param value The value of 'number_of_doors'.
       * @return This builder.
       */
-    public Car.Builder setNumberOfDoors(int value) {
+    public com.baeldung.apache.avro.generated.Car.Builder setNumberOfDoors(int value) {
       validate(fields()[1], value);
       this.number_of_doors = value;
       fieldSetFlags()[1] = true;
@@ -338,7 +340,7 @@ public class Car extends org.apache.avro.specific.SpecificRecordBase implements 
       * Clears the value of the 'number_of_doors' field.
       * @return This builder.
       */
-    public Car.Builder clearNumberOfDoors() {
+    public com.baeldung.apache.avro.generated.Car.Builder clearNumberOfDoors() {
       fieldSetFlags()[1] = false;
       return this;
     }
@@ -357,7 +359,7 @@ public class Car extends org.apache.avro.specific.SpecificRecordBase implements 
       * @param value The value of 'color'.
       * @return This builder.
       */
-    public Car.Builder setColor(java.lang.String value) {
+    public com.baeldung.apache.avro.generated.Car.Builder setColor(java.lang.String value) {
       validate(fields()[2], value);
       this.color = value;
       fieldSetFlags()[2] = true;
@@ -377,7 +379,7 @@ public class Car extends org.apache.avro.specific.SpecificRecordBase implements 
       * Clears the value of the 'color' field.
       * @return This builder.
       */
-    public Car.Builder clearColor() {
+    public com.baeldung.apache.avro.generated.Car.Builder clearColor() {
       color = null;
       fieldSetFlags()[2] = false;
       return this;
