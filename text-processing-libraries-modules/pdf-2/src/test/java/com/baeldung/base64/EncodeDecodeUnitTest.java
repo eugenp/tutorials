@@ -1,7 +1,8 @@
-package com.baeldung.pdf.base64;
+package com.baeldung.base64;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -10,7 +11,8 @@ import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import static org.junit.Assert.*;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 public class EncodeDecodeUnitTest {
 
