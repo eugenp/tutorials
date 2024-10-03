@@ -6,8 +6,8 @@
     <groupId>com.baeldung.spring</groupId>
     <artifactId>spring-reactive-performance</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>spring-reactive-performance</name>
     <packaging>jar</packaging>
+    <name>spring-reactive-performance</name>
     <description>Spring Reactive Performance</description>
 
     <parent>
@@ -68,7 +68,6 @@
     </build>
 
     <properties>
-        <java.version>21</java.version>
         <spring-boot.version>3.2.0</spring-boot.version>
     </properties>
 

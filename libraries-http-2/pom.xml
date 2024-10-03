@@ -83,6 +83,11 @@
             <version>${retrofit.version}</version>
         </dependency>
         <dependency>
+            <groupId>com.squareup.retrofit2</groupId>
+            <artifactId>adapter-rxjava</artifactId>
+            <version>${retrofit.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-inline</artifactId>
             <version>${mockito-inline.version}</version>
@@ -92,6 +97,26 @@
             <groupId>org.jmockit</groupId>
             <artifactId>jmockit</artifactId>
             <version>${jmockit.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.javalin</groupId>
+            <artifactId>javalin</artifactId>
+            <version>${javalin.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.http-client</groupId>
+            <artifactId>google-http-client</artifactId>
+            <version>${googleclient.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.http-client</groupId>
+            <artifactId>google-http-client-jackson2</artifactId>
+            <version>${googleclient.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.asynchttpclient</groupId>
+            <artifactId>async-http-client</artifactId>
+            <version>${async.http.client.version}</version>
         </dependency>
     </dependencies>
 
@@ -122,6 +147,9 @@
         <reactor.version>3.6.0</reactor.version>
         <jmockit.version>1.49</jmockit.version>
         <mockito-inline.version>5.2.0</mockito-inline.version>
+        <javalin.version>1.6.0</javalin.version>
+        <googleclient.version>1.23.0</googleclient.version>
+        <async.http.client.version>2.2.0</async.http.client.version>
     </properties>
 
 </project>

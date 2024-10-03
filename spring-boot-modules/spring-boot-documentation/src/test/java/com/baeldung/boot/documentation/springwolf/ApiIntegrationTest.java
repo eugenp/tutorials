@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.kafka.test.context.EmbeddedKafka;
 import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.TestPropertySource;
 import org.testcontainers.shaded.org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
@@ -21,6 +22,7 @@ import java.nio.charset.StandardCharsets;
         "listeners=PLAINTEXT://localhost:9092",
         "port=9092",
 })
+@TestPropertySource(properties = "springwolf.plugin.kafka.publishing.enabled=false") // baeldung spring kafka does not match springwolf kafka
 @DirtiesContext
 public class ApiIntegrationTest {
 
@@ -35,6 +37,7 @@ public class ApiIntegrationTest {
 
         String url = "/springwolf/docs";
         String actual = restTemplate.getForObject(url, String.class);
+        // Files.writeString(Path.of("src", "test", "resources", "asyncapi.actual.json"), actual);
 
         JSONAssert.assertEquals(expected, actual, JSONCompareMode.STRICT);
     }

@@ -1,0 +1,39 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Lambda function deployment with Java 21 runtime
+
+Parameters:
+    LambdaHandler:
+        Type: String
+        Description: The handler for the Lambda function
+    S3BucketName:
+        Type: String
+        Description: The name of the S3 bucket containing the Lambda function JAR file
+    S3Key:
+        Type: String
+        Description: The S3 key (file name) of the Lambda function JAR file
+
+Resources:
+    BaeldungLambdaFunction:
+        Type: AWS::Lambda::Function
+        Properties:
+            FunctionName: baeldung-lambda-function
+            Handler: !Ref LambdaHandler
+            Role: !GetAtt LambdaExecutionRole.Arn
+            Code:
+                S3Bucket: !Ref S3BucketName
+                S3Key: !Ref S3Key
+            Runtime: java21
+            Timeout: 10
+            MemorySize: 512
+    LambdaExecutionRole:
+        Type: AWS::IAM::Role
+        Properties:
+            AssumeRolePolicyDocument:
+                Version: 2012-10-17
+                Statement:
+                    - Effect: Allow
+                      Principal:
+                          Service: lambda.amazonaws.com
+                      Action: sts:AssumeRole
+            ManagedPolicyArns:
+                - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole

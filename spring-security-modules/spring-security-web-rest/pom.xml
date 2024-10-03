@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-security-web-rest</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>spring-security-web-rest</name>
     <packaging>war</packaging>
+    <name>spring-security-web-rest</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -128,10 +128,14 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.jayway.restassured</groupId>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
+            <version>${jakarta.annotation-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
             <version>${rest-assured.version}</version>
-            <scope>test</scope>
             <exclusions>
                 <exclusion>
                     <artifactId>commons-logging</artifactId>
@@ -248,12 +252,13 @@
         <!-- various -->
         <javax.validation.version>1.1.0.Final</javax.validation.version>
         <!-- testing -->
-        <rest-assured.version>2.9.0</rest-assured.version>
+        <rest-assured.version>5.5.0</rest-assured.version>
         <!-- Maven plugins -->
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
-        <spring.version>6.0.13</spring.version>
-        <spring-security.version>6.1.5</spring-security.version>
+        <spring.version>6.1.12</spring.version>
+        <spring-security.version>6.3.1</spring-security.version>
         <jakarta.servlet.version>6.0.0</jakarta.servlet.version>
+        <jakarta.annotation-api.version>3.0.0</jakarta.annotation-api.version>
     </properties>
 
 </project>

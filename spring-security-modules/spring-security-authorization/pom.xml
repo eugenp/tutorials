@@ -4,34 +4,19 @@
     <artifactId>spring-security-authorization</artifactId>
     <name>spring-security-authorization</name>
     <packaging>pom</packaging>
+
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../../parent-boot-3</relativePath>
     </parent>
-    <properties>
-        <java.version>17</java.version>
-        <spring-boot.version>3.3.1</spring-boot.version>
-        <logback.version>1.5.6</logback.version>
-        <maven-compiler-plugin.version>3.12.1</maven-compiler-plugin.version>
-    </properties>
+
     <modules>
         <module>spring-security-annotation-template-parameter</module>
         <module>spring-security-secure-domain-object</module>
     </modules>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <parameters>true</parameters>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -52,4 +37,24 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <parameters>true</parameters>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <properties>
+        <spring-boot.version>3.3.1</spring-boot.version>
+        <logback.version>1.5.6</logback.version>
+        <maven-compiler-plugin.version>3.12.1</maven-compiler-plugin.version>
+    </properties>
+
 </project>

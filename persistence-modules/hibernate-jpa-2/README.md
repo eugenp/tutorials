@@ -9,3 +9,5 @@ This module contains articles specific to use of Hibernate as a JPA implementati
 - [JPA Entities and the Serializable Interface](https://www.baeldung.com/jpa-entities-serializable)
 - [The @Struct Annotation Type in Hibernate – Structured User-Defined Types](https://www.baeldung.com/java-hibernate-struct-annotation)
 - [PersistenceUnit vs. PersistenceContext](https://www.baeldung.com/java-persistenceunit-persistencecontext-difference)
+- [IN Clause Parameter Padding in Hibernate](https://www.baeldung.com/java-hibernate-in-clause-padding)
+- [Change Field Value Before Update and Insert in Hibernate](https://www.baeldung.com/java-hibernate-change-field-value-before-update-insert)

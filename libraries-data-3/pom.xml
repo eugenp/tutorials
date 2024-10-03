@@ -14,11 +14,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.javatuples</groupId>
-            <artifactId>javatuples</artifactId>
-            <version>${javatuples.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.multiverse</groupId>
             <artifactId>multiverse-core</artifactId>
             <version>${multiverse.version}</version>
@@ -56,20 +51,10 @@
             <version>${eclipse-collections.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.github.ben-manes.caffeine</groupId>
-            <artifactId>caffeine</artifactId>
-            <version>${caffeine.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.google.code.findbugs</groupId>
             <artifactId>jsr305</artifactId>
             <version>${findbugs.version}</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.modelmapper</groupId>
-            <artifactId>modelmapper</artifactId>
-            <version>${org.modelmapper.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -77,11 +62,51 @@
             <version>${commons-lang3.version}</version>
         </dependency>
         <dependency>
-            <groupId>net.sf.dozer</groupId>
-            <artifactId>dozer</artifactId>
-            <version>${dozer.version}</version>
+            <groupId>org.apache.ignite</groupId>
+            <artifactId>ignite-spring-data</artifactId>
+            <version>${ignite-spring-data.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>2.1.5.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>javax.persistence-api</artifactId>
+            <version>2.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.crunch</groupId>
+            <artifactId>crunch-core</artifactId>
+            <version>${org.apache.crunch.crunch-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-client</artifactId>
+            <version>${org.apache.hadoop.hadoop-client}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.storm</groupId>
+            <artifactId>storm-core</artifactId>
+            <version>${storm.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>log4j-over-slf4j</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -91,24 +116,27 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
-                    <argLine>--add-exports=java.base/jdk.internal.ref=ALL-UNNAMED --add-exports=java.base/sun.nio.ch=ALL-UNNAMED --add-exports=jdk.unsupported/sun.misc=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED --add-opens=jdk.compiler/com.sun.tools.javac=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED</argLine>
+                    <argLine>
+                        --add-exports=java.base/sun.nio.ch=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED
+                        --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
+                    </argLine>
                 </configuration>
             </plugin>
         </plugins>
     </build>
 
     <properties>
-        <javatuples.version>1.2</javatuples.version>
         <multiverse.version>0.7.0</multiverse.version>
-        <chronicle.map.version>3.24ea1</chronicle.map.version>
+        <chronicle.map.version>3.25ea0</chronicle.map.version>
         <cactoos.version>0.55.0</cactoos.version>
         <cache2k.version>1.2.3.Final</cache2k.version>
         <pcollections.version>2.1.2</pcollections.version>
         <eclipse-collections.version>8.2.0</eclipse-collections.version>
-        <caffeine.version>3.1.8</caffeine.version>
         <findbugs.version>3.0.2</findbugs.version>
-        <org.modelmapper.version>3.2.0</org.modelmapper.version>
-        <dozer.version>5.5.1</dozer.version>
+        <ignite-spring-data.version>2.9.1</ignite-spring-data.version>
+        <org.apache.crunch.crunch-core.version>1.0.0</org.apache.crunch.crunch-core.version>
+        <org.apache.hadoop.hadoop-client>2.2.0</org.apache.hadoop.hadoop-client>
+        <storm.version>1.2.2</storm.version>
     </properties>
 
 </project>

@@ -13,11 +13,18 @@ public class WrapperDeserializer extends JsonDeserializer<Wrapper<?>> implements
 
     private JavaType type;
 
+    public WrapperDeserializer() {
+        // Default constructor
+    }
+
+    private WrapperDeserializer(JavaType type) {
+        this.type = type;
+    }
+
     @Override
     public JsonDeserializer<?> createContextual(DeserializationContext ctxt, BeanProperty property) {
-        this.type = property.getType()
-            .containedType(0);
-        return this;
+        JavaType wrapperType = property.getType().containedType(0);
+        return new WrapperDeserializer(wrapperType);
     }
 
     @Override

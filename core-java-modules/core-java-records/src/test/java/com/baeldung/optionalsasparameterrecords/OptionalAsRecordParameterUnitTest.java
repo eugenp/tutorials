@@ -14,4 +14,12 @@ public class OptionalAsRecordParameterUnitTest {
         Assertions.assertEquals(1699.99, emptyDescriptionProduct.price());
         Assertions.assertNull(emptyDescriptionProduct.description().orElse(null));
     }
+
+    @Test
+    public void whenRecordCreationWithNullOptional_thenReturnOptional() {
+        User user = new User("john_doe", "john@example.com", null);
+        Optional<String> optionalPhoneNumber = user.getOptionalPhoneNumber();
+
+        Assertions.assertEquals(Optional.empty(), optionalPhoneNumber);
+    }
 }

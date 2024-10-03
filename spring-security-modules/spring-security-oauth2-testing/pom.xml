@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.spring-security-modules.testing.oauth2</groupId>
     <artifactId>spring-security-oauth2-testing</artifactId>
-    <name>spring-security-oauth2-testing</name>
     <packaging>pom</packaging>
+    <name>spring-security-oauth2-testing</name>
     <description>spring-security 6 oauth testing sample project</description>
 
     <parent>
@@ -15,6 +15,11 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../../parent-boot-3</relativePath>
     </parent>
+
+    <modules>
+        <module>reactive-resource-server</module>
+        <module>servlet-resource-server</module>
+    </modules>
 
     <dependencyManagement>
         <dependencies>
@@ -26,13 +31,7 @@
         </dependencies>
     </dependencyManagement>
 
-    <modules>
-        <module>reactive-resource-server</module>
-        <module>servlet-resource-server</module>
-    </modules>
-
     <properties>
-		<java.version>17</java.version>
 		<spring-boot.version>3.3.0</spring-boot.version>
         <spring-addons.version>7.8.0</spring-addons.version>
         <logback.version>1.5.6</logback.version>
