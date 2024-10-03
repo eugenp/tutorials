@@ -8,6 +8,7 @@
 - [Uploading File Using Selenium Webdriver in Java](https://www.baeldung.com/java-selenium-upload-file)
 - [Using Cookies With Selenium WebDriver in Java](https://www.baeldung.com/java-selenium-webdriver-cookies)
 - [StaleElementReferenceException in Selenium](https://www.baeldung.com/selenium-staleelementreferenceexception)
+- [Retrieve the Value of an HTML Input in Selenium WebDriver](https://www.baeldung.com/java-selenium-html-input-value)
 
 
 #### Notes:
