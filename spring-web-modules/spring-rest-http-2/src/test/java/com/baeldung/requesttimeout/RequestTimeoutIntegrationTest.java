@@ -10,19 +10,16 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 
-@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = WebEnvironment.DEFINED_PORT)
 @RunWith(SpringRunner.class)
 public class RequestTimeoutIntegrationTest {
-
-    @LocalServerPort
-    private int port;
 
     private WebClient webClient;
 
     @Before
     public void setUp() {
         webClient = WebClient.builder()
-          .baseUrl("http://localhost:" + port)
+          .baseUrl("http://localhost:8080")
           .build();
     }
 
@@ -44,6 +41,11 @@ public class RequestTimeoutIntegrationTest {
     @Test(expected = WebClientResponseException.InternalServerError.class)
     public void givenWebClientTimeout_whenTimeExpires_thenReceiveException() {
         getAuthor("webclient");
+    }
+
+    @Test(expected = WebClientResponseException.InternalServerError.class)
+    public void givenRestClientTimeout_whenTimeExpires_thenReceiveException() {
+        getAuthor("restclient");
     }
 
     private void getAuthor(String authorPath) {

@@ -586,7 +586,6 @@
                 <module>libraries-data-io</module>
                 <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->
                 <module>persistence-modules/spring-data-neo4j</module>
-                <module>persistence-modules/spring-data-rest-2</module>
                 <module>persistence-modules/spring-persistence-simple</module>
                 <module>quarkus-modules/quarkus</module>
                 <module>quarkus-modules/quarkus-vs-springboot/quarkus-project</module>
@@ -904,7 +903,6 @@
                 <module>libraries-data-io</module>
                 <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->
                 <module>persistence-modules/spring-data-neo4j</module>
-                <module>persistence-modules/spring-data-rest-2</module>
                 <module>persistence-modules/spring-persistence-simple</module>
                 <module>quarkus-modules/quarkus</module>
                 <module>quarkus-modules/quarkus-vs-springboot/quarkus-project</module>

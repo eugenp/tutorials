@@ -99,7 +99,6 @@
     </build>
 
     <properties>
-        <java.version>21</java.version>
         <maven-shade-plugin.version>3.6.0</maven-shade-plugin.version>
         <jackson.version>2.17.2</jackson.version>
         <json-simple.version>1.1.1</json-simple.version>

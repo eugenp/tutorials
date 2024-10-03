@@ -121,7 +121,6 @@
         <springdoc.version>2.2.0</springdoc.version>
         <springdoc-openapi-webmvc-ui.version>2.5.0</springdoc-openapi-webmvc-ui.version>
         <springdoc-openapi-maven-plugin.version>1.4</springdoc-openapi-maven-plugin.version>
-        <java.version>17</java.version>
     </properties>
 
 </project>
