@@ -5,6 +5,7 @@
 - [Switching Between Frames Using Selenium WebDriver in Java](https://www.baeldung.com/java-selenium-change-frames)
 - [Finding Element by Attribute in Selenium](https://www.baeldung.com/selenium-find-element-by-attribute)
 - [Automated Visual Regression Testing Over Scalable Cloud Grid](https://www.baeldung.com/automated-visual-regression-testing)
+- [Uploading File Using Selenium Webdriver in Java](https://www.baeldung.com/java-selenium-upload-file)
 
 #### Notes:
 - to run the live tests for the article *Fixing Selenium WebDriver Executable Path Error*, follow the manual setup described
