@@ -9,4 +9,5 @@ public class SpringAiRagApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringAiRagApplication.class, args);
 	}
+
 }

@@ -1,5 +1,7 @@
 package com.baeldung.airag.service;
 
+import java.util.List;
+
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.ai.document.Document;
@@ -7,12 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class ChatBotService {
-    @Qualifier("openAiChatModel")
     @Autowired
+    @Qualifier("openAiChatModel")
     private ChatModel chatClient;
     @Autowired
     private DataRetrievalService dataRetrievalService;

@@ -1,8 +1,11 @@
 package com.baeldung.airag;
 
-import com.baeldung.airag.service.ChatBotService;
-import com.baeldung.airag.service.DataLoaderService;
-import com.baeldung.airag.service.DataRetrievalService;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -11,11 +14,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.ai.document.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import com.baeldung.airag.service.ChatBotService;
+import com.baeldung.airag.service.DataLoaderService;
+import com.baeldung.airag.service.DataRetrievalService;
 import org.springframework.context.annotation.Profile;
-
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @Profile("airag")
 @SpringBootTest(classes = SpringAiRagApplication.class)

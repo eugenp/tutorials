@@ -48,8 +48,8 @@ public class GenericMapOutputConverter<V> implements StructuredOutputConverter<M
 
     protected ObjectMapper getObjectMapper() {
         return JsonMapper.builder()
-            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
-            .build();
+          .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
+          .build();
     }
 
     private String trimMarkdown(String text) {
@@ -63,8 +63,8 @@ public class GenericMapOutputConverter<V> implements StructuredOutputConverter<M
         try {
             JacksonModule jacksonModule = new JacksonModule();
             SchemaGeneratorConfig config = new SchemaGeneratorConfigBuilder(SchemaVersion.DRAFT_2020_12, OptionPreset.PLAIN_JSON)
-                .with(jacksonModule)
-                .build();
+              .with(jacksonModule)
+              .build();
             SchemaGenerator generator = new SchemaGenerator(config);
 
             JsonNode jsonNode = generator.generateSchema(valueType);

@@ -16,7 +16,7 @@ public class PoetryServiceImpl implements PoetryService {
     public static final String WRITE_ME_HAIKU_ABOUT_CAT = """
         Write me Haiku about cat,
         haiku should start with the word cat obligatory
-    """;
+        """;
     private final ChatModel aiClient;
 
     @Autowired
@@ -35,7 +35,7 @@ public class PoetryServiceImpl implements PoetryService {
         String promptString = """
             Write me {genre} poetry about {theme}
             {format}
-        """;
+            """;
 
         PromptTemplate promptTemplate = new PromptTemplate(promptString);
         promptTemplate.add("genre", genre);
