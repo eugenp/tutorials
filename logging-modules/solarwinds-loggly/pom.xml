@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>solarwinds-loggly</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>logging-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <dependencies>
+        <dependency>
+            <groupId>com.github.loggly.log4jSyslogWriter64k</groupId>
+            <artifactId>log4jSyslogWriter64k</artifactId>
+            <version>${loggly.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j-core.version}</version>
+        </dependency>
+        <!-- This is the needed API component. -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j-core.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.logback-extensions</groupId>
+            <artifactId>logback-ext-loggly</artifactId>
+            <scope>runtime</scope>
+            <version>${logback-loggly-ext.version}</version>
+        </dependency>
+    </dependencies>
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <loggly.version>2.0.0</loggly.version>
+        <log4j-core.version>2.23.1</log4j-core.version>
+        <logback-loggly-ext.version>0.1.5</logback-loggly-ext.version>
+    </properties>
+
+</project>
