@@ -1,9 +1,10 @@
 package com.baeldung.jsonprettyprinter;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 public class JsonPrettyPrinterUnitTest {
 

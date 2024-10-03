@@ -1,4 +1,4 @@
-package com.baeldung.jsonobject.iterate;
+package com.baeldung.iterate;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
