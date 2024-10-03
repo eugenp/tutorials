@@ -21,7 +21,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 public class ZipArchiveControllerUnitTest {
 
     @Autowired
-    private MockMvc mockMvc;
+    MockMvc mockMvc;
 
     @Test
     void givenZipArchiveController_whenGetZipArchiveBytes_thenExpectedArchiveShouldContainExpectedFiles() throws Exception {
@@ -54,7 +54,7 @@ public class ZipArchiveControllerUnitTest {
     @Test
     void givenZipArchiveController_whenGetZipArchiveSecuredStream_thenExpectedArchiveShouldContainExpectedFilesSecuredByPassword() throws Exception {
         MvcResult result = mockMvc.perform(get("/zip-archive-stream-secured"))
-                .andReturn();
+          .andReturn();
 
         MockHttpServletResponse response = result.getResponse();
         Thread.sleep(1000);
@@ -62,13 +62,13 @@ public class ZipArchiveControllerUnitTest {
 
         List<String> fileNames = fetchFileNamesFromArchive(content);
         assertThat(fileNames)
-                .containsExactly("first-file.txt", "second-file.txt");
+          .containsExactly("first-file.txt", "second-file.txt");
     }
 
-    private List<String> fetchFileNamesFromArchive(byte[] content) throws IOException {
+    List<String> fetchFileNamesFromArchive(byte[] content) throws IOException {
         InputStream byteStream = new ByteArrayInputStream(content);
         net.lingala.zip4j.io.inputstream.ZipInputStream zipStream =
-                new net.lingala.zip4j.io.inputstream.ZipInputStream(byteStream, "password".toCharArray());
+          new net.lingala.zip4j.io.inputstream.ZipInputStream(byteStream, "password".toCharArray());
 
         List<String> fileNames = new ArrayList<>();
         LocalFileHeader entry = zipStream.getNextEntry();
