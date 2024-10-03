@@ -78,7 +78,7 @@ public class StringReplaceAllUnitTest {
         String result = input.replaceAll("(\\d{3})(\\d{3})(\\d{3})", "$3-$2-$1");
         assertEquals(expected, result);
 
-        result = input.replaceAll("(?<g1>\\d{3})(?<g2>\\d{3})(?<g3>\\d{3})", "${g3}-${g2}-${g1}");
+        result = input.replaceAll("(?<first>\\d{3})(?<second>\\d{3})(?<third>\\d{3})", "${third}-${second}-${first}");
         assertEquals(expected, result);
     }
 
