@@ -10,10 +10,12 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Stream;
 
+import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import org.apache.pdfbox.pdmodel.font.Standard14Fonts;
 import org.apache.pdfbox.text.PDFTextStripper;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -57,8 +59,9 @@ public class PDFMergeUnitTest {
             document.addPage(page);
 
             try (PDPageContentStream contentStream = new PDPageContentStream(document, page)) {
+                PDType1Font font = new PDType1Font(Standard14Fonts.FontName.HELVETICA);
                 contentStream.beginText();
-                contentStream.setFont(PDType1Font.HELVETICA_BOLD, 14);
+                contentStream.setFont(font, 14);
                 contentStream.showText(content + ", page:" + i);
                 contentStream.endText();
             }
@@ -73,7 +76,7 @@ public class PDFMergeUnitTest {
         PDFMerge pdfMerge = new PDFMerge();
         pdfMerge.mergeUsingPDFBox(files, "src/test/resources/temp/output.pdf");
 
-        try (PDDocument document = PDDocument.load(new File("src/test/resources/temp/output.pdf"))) {
+        try (PDDocument document = Loader.loadPDF(new File("src/test/resources/temp/output.pdf"))) {
             PDFTextStripper pdfStripper = new PDFTextStripper();
             String actual = pdfStripper.getText(document);
             String expected = """
@@ -94,7 +97,7 @@ public class PDFMergeUnitTest {
         PDFMerge pdfMerge = new PDFMerge();
         pdfMerge.mergeUsingIText(files, "src/test/resources/temp/output1.pdf");
 
-        try (PDDocument document = PDDocument.load(new File("src/test/resources/temp/output1.pdf"))) {
+        try (PDDocument document = Loader.loadPDF(new File("src/test/resources/temp/output1.pdf"))) {
             PDFTextStripper pdfStripper = new PDFTextStripper();
             String actual = pdfStripper.getText(document);
             String expected = """
