@@ -1,6 +1,5 @@
 ### Relevant Articles:
 - [Running Selenium Scripts with JMeter](https://www.baeldung.com/selenium-jmeter)
-- [Implicit Wait vs Explicit Wait in Selenium Webdriver](https://www.baeldung.com/selenium-implicit-explicit-wait)
 - [Switching Between Frames Using Selenium WebDriver in Java](https://www.baeldung.com/java-selenium-change-frames)
 - [Finding Element by Attribute in Selenium](https://www.baeldung.com/selenium-find-element-by-attribute)
 - [Automated Visual Regression Testing Over Scalable Cloud Grid](https://www.baeldung.com/automated-visual-regression-testing)
