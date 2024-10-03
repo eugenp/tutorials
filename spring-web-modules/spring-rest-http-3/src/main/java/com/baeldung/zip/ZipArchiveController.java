@@ -64,7 +64,7 @@ public class ZipArchiveController {
           });
     }
 
-    private void addFilesToArchive(net.lingala.zip4j.io.outputstream.ZipOutputStream zipOutputStream) throws IOException {
+    void addFilesToArchive(net.lingala.zip4j.io.outputstream.ZipOutputStream zipOutputStream) throws IOException {
         List<String> filesNames = new ArrayList<>();
         filesNames.add("first-file.txt");
         filesNames.add("second-file.txt");
@@ -76,7 +76,7 @@ public class ZipArchiveController {
 
         for (String fileName : filesNames) {
             File file = new File(ZipArchiveController.class.getClassLoader()
-                    .getResource(fileName).getFile());
+              .getResource(fileName).getFile());
 
             zipParameters.setFileNameInZip(file.getName());
             zipOutputStream.putNextEntry(zipParameters);
@@ -92,7 +92,7 @@ public class ZipArchiveController {
         IOUtils.closeQuietly(zipOutputStream);
     }
 
-    private void addFilesToArchive(ZipOutputStream zipOutputStream) throws IOException {
+    void addFilesToArchive(ZipOutputStream zipOutputStream) throws IOException {
         List<String> filesNames = new ArrayList<>();
         filesNames.add("first-file.txt");
         filesNames.add("second-file.txt");
