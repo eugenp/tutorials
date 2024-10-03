@@ -1,25 +1,27 @@
-/*
- * Copyright 2015-2024 the original author or authors.
- *
- * All rights reserved. This program and the accompanying materials are
- * made available under the terms of the Eclipse Public License v2.0 which
- * accompanies this distribution and is available at
- *
- * http://www.eclipse.org/legal/epl-v20.html
- */
-
 package com.example.project;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
-class MySQLLoadDriverTest {
+public class MySQLLoadDriverUnitTest {
 
-	@Test
-	void loadDriver() {
-		MySQLLoadDriver connection = new MySQLLoadDriver();
-		assertEquals(1,connection.loadDriver());
-	}
+    @Test
+    void givenADriverClass_whenClassNotFoundExceptionThrown_thenAssertionSucceeds() {
+        Exception exception = assertThrows(ClassNotFoundException.class, () -> {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        });
 
+        String expectedMessage = "com.mysql.cj.jdbc.Driver";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.contains(expectedMessage));
+    }
+
+    @Test
+    void givenADriverClass_whenDriverLoaded_thenEnsureNoExceptionThrown() {
+        assertDoesNotThrow(() -> {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        });
+    }
 
 }
