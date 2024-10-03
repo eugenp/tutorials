@@ -5,7 +5,6 @@
 - [Retrieve the Value of an HTML Input in Selenium WebDriver](https://www.baeldung.com/java-selenium-html-input-value)
 - [Testing with Selenium/WebDriver and the Page Object Pattern](http://www.baeldung.com/selenium-webdriver-page-object)
 - [Taking Screenshots With Selenium WebDriver](https://www.baeldung.com/java-selenium-screenshots)
-- [StaleElementReferenceException in Selenium](https://www.baeldung.com/selenium-staleelementreferenceexception)
 - [How to Select Value From Dropdown Using Selenium Webdriver](https://www.baeldung.com/java-selenium-select-dropdown-value)
 
 
