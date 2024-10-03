@@ -1,4 +1,4 @@
-package com.baeldung.jsonobject.iterate;
+package com.baeldung.iterate;
 
 import java.util.HashMap;
 import java.util.Iterator;

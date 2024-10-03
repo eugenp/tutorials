@@ -1,4 +1,4 @@
-package com.baeldung.jsonjava;
+package com.baeldung.jsongetvaluebykey;
 
 import java.util.ArrayList;
 import java.util.List;
