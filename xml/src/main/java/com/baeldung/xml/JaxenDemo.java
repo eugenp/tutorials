@@ -1,5 +1,7 @@
 package com.baeldung.xml;
 
+import static com.baeldung.xml.SecureDocumentBuilderFactory.newSecureDocumentBuilderFactory;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -26,7 +28,7 @@ public class JaxenDemo {
     public List getAllTutorial() {
         try {
             FileInputStream fileIS = new FileInputStream(this.getFile());
-            DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilderFactory builderFactory = newSecureDocumentBuilderFactory();
 
             DocumentBuilder builder = builderFactory.newDocumentBuilder();
 
