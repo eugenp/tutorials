@@ -23,16 +23,16 @@ class HomePageControllerIntegrationTest {
 
     @Test
     void whenRequestFromLaptop_thenErrorScreenDisplayed() throws Exception {
-        mockMvc.perform(get("/home")
-            .header("user-agent", SAFARI_MAC_OS_USER_AGENT))
+        mockMvc.perform(get("/mobile/home")
+            .header("User-Agent", SAFARI_MAC_OS_USER_AGENT))
             .andExpect(view().name("error/open-in-mobile"))
             .andExpect(status().isForbidden());
     }
 
     @Test
     void whenRequestFromMobileDevice_thenHomePageDisplayed() throws Exception {
-        mockMvc.perform(get("/home")
-            .header("user-agent", SAFARI_IOS_USER_AGENT))
+        mockMvc.perform(get("/mobile/home")
+            .header("User-Agent", SAFARI_IOS_USER_AGENT))
             .andExpect(view().name("/mobile-home"))
             .andExpect(status().isOk());
     }

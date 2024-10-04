@@ -5,7 +5,6 @@ import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import jakarta.servlet.FilterChain;
@@ -30,14 +29,12 @@ public class UserAgentAttributeLoggingFilter extends OncePerRequestFilter {
         throws ServletException, IOException {
         String userAgentString = request.getHeader("User-Agent");
 
-        if (StringUtils.hasText(userAgentString)) {
-            UserAgent userAgent = userAgentAnalyzer.parse(userAgentString);
-            userAgent
-                .getAvailableFieldNamesSorted()
-                .forEach(fieldName -> {
-                    log.info("{}: {}", fieldName, userAgent.getValue(fieldName));
-                });
-        }
+        UserAgent userAgent = userAgentAnalyzer.parse(userAgentString);
+        userAgent
+            .getAvailableFieldNamesSorted()
+            .forEach(fieldName -> {
+                log.info("{}: {}", fieldName, userAgent.getValue(fieldName));
+            });
 
         filterChain.doFilter(request, response);
     }

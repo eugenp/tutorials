@@ -9,11 +9,13 @@ import nl.basjes.parse.useragent.UserAgentAnalyzer;
 @Configuration
 public class UserAgentAnalyzerConfiguration {
 
+    private static final int CACHE_SIZE = 1000;
+
     @Bean
     public UserAgentAnalyzer userAgentAnalyzer() {
         return UserAgentAnalyzer
             .newBuilder()
-            .withCache(1000)
+            .withCache(CACHE_SIZE)
             .withField(UserAgent.DEVICE_CLASS)
             .build();
     }

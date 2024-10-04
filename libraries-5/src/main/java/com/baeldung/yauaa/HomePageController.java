@@ -22,7 +22,7 @@ public class HomePageController {
         this.userAgentAnalyzer = userAgentAnalyzer;
     }
 
-    @GetMapping("/home")
+    @GetMapping("/mobile/home")
     public ModelAndView homePage(@RequestHeader(HttpHeaders.USER_AGENT) String userAgentString) {
         UserAgent userAgent = userAgentAnalyzer.parse(userAgentString);
         String deviceClass = userAgent.getValue(UserAgent.DEVICE_CLASS);
