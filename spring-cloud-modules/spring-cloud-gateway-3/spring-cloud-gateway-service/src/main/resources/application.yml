@@ -8,12 +8,26 @@ spring:
     name: Api-Gateway
   cloud:
     gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "https://www.baeldung.com,http://localhost:3000"
+            allowedHeaders: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - OPTIONS
       routes:
         -   id: product_service_route
             predicates:
               - Path=/product/**
             uri: http://localhost:8081
             method: GET
+        -  id: user_service_route
+           predicates:
+             - Path=/user/**
+           uri: http://localhost:8081
+           method: GET
 
 springdoc:
   api-docs:
