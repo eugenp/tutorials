@@ -1,7 +1,7 @@
-package com.baeldung.dip.daoimplementations;
+package com.baeldung.daoimplementations;
 
-import com.baeldung.dip.entities.Customer;
-import com.baeldung.dip.daointerfaces.CustomerDao;
+import com.baeldung.entities.Customer;
+import com.baeldung.daointerfaces.CustomerDao;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

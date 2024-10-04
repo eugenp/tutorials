@@ -1,8 +1,8 @@
-package com.baeldung.dip.application;
+package com.baeldung.application;
 
-import com.baeldung.dip.daoimplementations.SimpleCustomerDao;
-import com.baeldung.dip.entities.Customer;
-import com.baeldung.dip.services.CustomerService;
+import com.baeldung.daoimplementations.SimpleCustomerDao;
+import com.baeldung.entities.Customer;
+import com.baeldung.services.CustomerService;
 import java.util.Map;
 import java.util.HashMap;
 
