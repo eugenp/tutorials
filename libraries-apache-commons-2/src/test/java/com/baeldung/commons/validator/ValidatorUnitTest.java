@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.TimeZone;
+
 import org.apache.commons.validator.routines.BigDecimalValidator;
 import org.apache.commons.validator.routines.CurrencyValidator;
 import org.apache.commons.validator.routines.DateValidator;
@@ -19,6 +20,7 @@ import org.apache.commons.validator.routines.IntegerValidator;
 import org.junit.jupiter.api.Test;
 
 class ValidatorUnitTest {
+
     @Test
     void givenDate_validationCalled_checksDate() {
         DateValidator validator = DateValidator.getInstance();
@@ -43,7 +45,9 @@ class ValidatorUnitTest {
         IntegerValidator validator = IntegerValidator.getInstance();
         String pattern = "00000";
         int number = 1234;
+
         String formattedNumber = validator.format(number, pattern, Locale.US);
+
         assertEquals(number, validator.validate(formattedNumber, pattern));
         assertNotNull(validator.validate("123.4", Locale.GERMAN));
     }
@@ -51,6 +55,7 @@ class ValidatorUnitTest {
     @Test
     void givenCurrencyString_validateIsCalled_returnsCurrency() {
         BigDecimalValidator validator = CurrencyValidator.getInstance();
+
         assertEquals(new BigDecimal("1234.56"), validator.validate("$1,234.56", Locale.US));
         assertEquals("$1,234.56", validator.format(1234.56, Locale.US));
     }
