@@ -1,17 +1,18 @@
-package com.baeldung.rxjava.operators;
+package com.baeldung.rxjava.flatmapswitchmap;
 
-import io.reactivex.Observable;
-import io.reactivex.schedulers.TestScheduler;
-import org.junit.Test;
+import static org.hamcrest.CoreMatchers.hasItems;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import static org.hamcrest.CoreMatchers.hasItems;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
+import org.junit.Test;
+
+import io.reactivex.Observable;
+import io.reactivex.schedulers.TestScheduler;
 
 public class RxFlatmapAndSwitchmapUnitTest {
     @Test

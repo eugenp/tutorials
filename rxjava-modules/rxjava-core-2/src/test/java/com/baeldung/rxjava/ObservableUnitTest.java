@@ -1,10 +1,11 @@
 package com.baeldung.rxjava;
 
-import org.junit.Test;
-import rx.Observable;
-
 import static com.baeldung.rxjava.ObservableImpl.getTitle;
 import static junit.framework.Assert.assertTrue;
+
+import org.junit.Test;
+
+import rx.Observable;
 
 public class ObservableUnitTest {
 

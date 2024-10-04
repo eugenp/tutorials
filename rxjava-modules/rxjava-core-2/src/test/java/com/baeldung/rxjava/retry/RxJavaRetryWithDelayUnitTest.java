@@ -1,8 +1,10 @@
-package com.baeldung.rxjava;
-import io.reactivex.Observable;
-import org.junit.Test;
+package com.baeldung.rxjava.retry;
 
 import java.util.concurrent.TimeUnit;
+
+import org.junit.Test;
+
+import io.reactivex.Observable;
 
 public class RxJavaRetryWithDelayUnitTest {
 
