@@ -1,7 +1,7 @@
-package com.baeldung.dip.services;
+package com.baeldung.services;
 
-import com.baeldung.dip.daointerfaces.CustomerDao;
-import com.baeldung.dip.entities.Customer;
+import com.baeldung.daointerfaces.CustomerDao;
+import com.baeldung.entities.Customer;
 import java.util.List;
 import java.util.Optional;
 

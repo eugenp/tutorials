@@ -1,6 +1,6 @@
-package com.baeldung.dip.daointerfaces;
+package com.baeldung.daointerfaces;
 
-import com.baeldung.dip.entities.Customer;
+import com.baeldung.entities.Customer;
 import java.util.List;
 import java.util.Optional;
 
