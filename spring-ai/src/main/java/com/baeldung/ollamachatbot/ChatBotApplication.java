@@ -1,12 +1,12 @@
-package com.baeldung.springaistructuredoutput;
+package com.baeldung.ollamachatbot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DemoApplication {
-
+public class ChatBotApplication {
     public static void main(String[] args) {
-        SpringApplication.run(DemoApplication.class, args);
+        SpringApplication.run(ChatBotApplication.class, args);
     }
+
 }
