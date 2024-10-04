@@ -9,3 +9,5 @@ This module contains articles about RxJava.
 - [Combining RxJava Completables](https://www.baeldung.com/rxjava-completable)
 - [RxJava Hooks](https://www.baeldung.com/rxjava-hooks)
 - [Introduction to RxJava](https://www.baeldung.com/rx-java)
+- [Difference Between Flatmap and Switchmap in RxJava](https://www.baeldung.com/rxjava-flatmap-switchmap)
+- More articles: [[<-- Prev]](/rxjava-modules/rxjava-core)

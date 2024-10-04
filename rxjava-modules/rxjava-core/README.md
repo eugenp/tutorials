@@ -8,4 +8,4 @@ This module contains articles about RxJava.
 - [How to Test RxJava?](https://www.baeldung.com/rxjava-testing)
 - [Schedulers in RxJava](https://www.baeldung.com/rxjava-schedulers)
 - [RxJava and Error Handling](https://www.baeldung.com/rxjava-error-handling)
-
+- More articles: [[Next -->]](rxjava-modules/rxjava-core-2)

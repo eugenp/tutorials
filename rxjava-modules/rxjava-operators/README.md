@@ -8,7 +8,6 @@
 - [Observable Utility Operators in RxJava](https://www.baeldung.com/rxjava-observable-operators)
 - [Implementing Custom Operators in RxJava](https://www.baeldung.com/rxjava-custom-operators)
 - [Converting Synchronous and Asynchronous APIs to Observables using RxJava2](https://www.baeldung.com/rxjava-apis-to-observables)
-- [Difference Between Flatmap and Switchmap in RxJava](https://www.baeldung.com/rxjava-flatmap-switchmap)
 
 
  
