@@ -1,11 +1,12 @@
-package com.baeldung.rxjava;
+package com.baeldung.rxjava.completable;
+
+import org.junit.Before;
+import org.junit.Test;
 
 import io.reactivex.Completable;
 import io.reactivex.Flowable;
 import io.reactivex.Single;
 import io.reactivex.observers.DisposableCompletableObserver;
-import org.junit.Before;
-import org.junit.Test;
 
 public class CompletableUnitTest {
 

@@ -1,10 +1,10 @@
 package com.baeldung.rxjava;
 
-import rx.Observable;
-import rx.observables.BlockingObservable;
-
 import java.util.Arrays;
 import java.util.List;
+
+import rx.Observable;
+import rx.observables.BlockingObservable;
 
 public class ObservableImpl {
 
