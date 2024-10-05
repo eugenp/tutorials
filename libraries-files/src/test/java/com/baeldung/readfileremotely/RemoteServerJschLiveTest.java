@@ -23,5 +23,4 @@ class RemoteServerJschLiveTest {
         readFileLineByLine(channelSftp, REMOTE_DIR + "/examplefile.txt");
         disconnect(channelSftp, session);
     }
-
 }
