@@ -13,7 +13,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-
 public class RemoteServerJsch {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RemoteServerJsch.class);
@@ -21,7 +20,6 @@ public class RemoteServerJsch {
     private static final String USER = "USERNAME";
     private static final String PRIVATE_KEY = "PATH TO PRIVATE KEY";
     private static final int PORT = 22;
-
 
     public static JSch setUpJsch() throws JSchException {
         JSch jsch = new JSch();
@@ -43,14 +41,14 @@ public class RemoteServerJsch {
     }
 
     public static void readFileLineByLine(ChannelSftp channelSftp, String filePath) throws SftpException, IOException {
-    InputStream stream = channelSftp.get(filePath);
-    try (BufferedReader br = new BufferedReader(new InputStreamReader(stream))) {
-        String line;
-        while ((line = br.readLine()) != null) {
-            LOGGER.info(line);
+        InputStream stream = channelSftp.get(filePath);
+        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(stream))) {
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                LOGGER.info(line);
+            }
         }
     }
-}
 
     public static void disconnect(ChannelSftp channelSftp, Session session) {
         channelSftp.disconnect();
