@@ -12,15 +12,15 @@ import java.util.stream.IntStream;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class SubnetScannerUnitTest {
-    String subnet = "192.168.1";
+    String subnet = "192.168.1.0";
 
     @Test
     public void givenSubnet_whenScanningForDevices_thenReturnConnectedIPs() throws Exception {
         List<String> connectedIPs = new ArrayList<>();
 
         for (int i = 1; i <= 254; i++) {
-            String ip = subnet + "." + i;
-            if (InetAddress.getByName(ip).isReachable(1000)) {
+            String ip = subnet.substring(0, subnet.lastIndexOf('.')) + "." + i;
+            if (InetAddress.getByName(ip).isReachable(2000)) {
                 connectedIPs.add(ip);
             }
         }
@@ -31,10 +31,10 @@ public class SubnetScannerUnitTest {
     @Test
     public void givenSubnet_whenUsingStream_thenReturnConnectedIPs() {
         List<String> connectedIPs = IntStream.rangeClosed(1, 254)
-                .mapToObj(i -> subnet + "." + i)
+                .mapToObj(i -> subnet.substring(0, subnet.lastIndexOf('.')) + "." + i)
                 .filter(ip -> {
                     try {
-                        return InetAddress.getByName(ip).isReachable(1000);
+                        return InetAddress.getByName(ip).isReachable(2000);
                     } catch (Exception e) {
                         return false;
                     }
@@ -46,11 +46,11 @@ public class SubnetScannerUnitTest {
 
     @Test
     public void givenSubnet_whenUsingApacheCommonsNet_thenReturnConnectedIPs() {
-        SubnetUtils utils = new SubnetUtils(subnet + "/24");
+        SubnetUtils utils = new SubnetUtils("192.168.1.0/24");
         List<String> connectedIPs = Arrays.stream(utils.getInfo().getAllAddresses())
                 .filter(ip -> {
                     try {
-                        return InetAddress.getByName(ip).isReachable(1000);
+                        return InetAddress.getByName(ip).isReachable(2000);
                     } catch (Exception e) {
                         return false;
                     }
