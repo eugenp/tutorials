@@ -2,7 +2,7 @@ public class MySQLLoadDriverUnitTest {
 
     @Test
     void givenADriverClass_whenDriverLoaded_thenEnsureNoExceptionThrown() {
-        assertDoesNotThrow(() -&gt; {
+        assertDoesNotThrow(() -> {
             Class.forName("com.mysql.cj.jdbc.Driver");
         });
     }
