@@ -6,7 +6,7 @@ public class Counter {
 
     private int counter = 0;
 
-    @Locked
+    @Locked.Write
     public void increment() {
         counter++;
     }
