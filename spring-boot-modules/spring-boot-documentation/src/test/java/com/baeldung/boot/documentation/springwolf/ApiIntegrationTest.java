@@ -14,6 +14,8 @@ import org.testcontainers.shaded.org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.charset.StandardCharsets;
 
 @SpringBootTest(classes = {SpringwolfApplication.class}, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -30,14 +32,16 @@ public class ApiIntegrationTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void asyncApiResourceArtifactTest() throws JSONException, IOException {
+    public void asyncApiArtifactTest() throws JSONException, IOException {
         // given
         InputStream s = this.getClass().getResourceAsStream("/asyncapi.json");
-        String expected = IOUtils.toString(s, StandardCharsets.UTF_8);
+        String expected = new String(s.readAllBytes(), StandardCharsets.UTF_8).trim();
 
-        String url = "/springwolf/docs";
-        String actual = restTemplate.getForObject(url, String.class);
-        // Files.writeString(Path.of("src", "test", "resources", "asyncapi.actual.json"), actual);
+        // when
+        String actual = restTemplate.getForObject("/springwolf/docs", String.class);
+
+        // then
+        Files.writeString(Path.of("src", "test", "resources", "asyncapi.actual.json"), actual);
 
         JSONAssert.assertEquals(expected, actual, JSONCompareMode.STRICT);
     }
