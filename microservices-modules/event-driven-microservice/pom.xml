@@ -77,7 +77,6 @@
     </build>
 
     <properties>
-        <java.version>17</java.version>
         <conductor.client.version>2.0.8</conductor.client.version>
         <spring-boot.version>3.2.0</spring-boot.version>
         <springdoc-openapi-webmvc-ui.version>2.5.0</springdoc-openapi-webmvc-ui.version>

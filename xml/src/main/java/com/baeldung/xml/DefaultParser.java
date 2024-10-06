@@ -1,5 +1,7 @@
 package com.baeldung.xml;
 
+import static com.baeldung.xml.SecureDocumentBuilderFactory.newSecureDocumentBuilderFactory;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -31,7 +33,7 @@ public class DefaultParser {
         NodeList nodeList = null;
         try {
             FileInputStream fileIS = new FileInputStream(this.getFile());
-            DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilderFactory builderFactory = newSecureDocumentBuilderFactory();
 
             DocumentBuilder builder = builderFactory.newDocumentBuilder();
 
@@ -52,7 +54,7 @@ public class DefaultParser {
     public Node getNodeById(String id) {
         Node node = null;
         try {
-            DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilderFactory builderFactory = newSecureDocumentBuilderFactory();
 
             DocumentBuilder builder = builderFactory.newDocumentBuilder();
 
@@ -73,7 +75,7 @@ public class DefaultParser {
     public NodeList getNodeListByTitle(String name) {
         NodeList nodeList = null;
         try {
-            DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilderFactory builderFactory = newSecureDocumentBuilderFactory();
 
             DocumentBuilder builder = builderFactory.newDocumentBuilder();
 
@@ -97,7 +99,7 @@ public class DefaultParser {
         NodeList nodeList = null;
 
         try {
-            DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilderFactory builderFactory = newSecureDocumentBuilderFactory();
 
             DocumentBuilder builder = builderFactory.newDocumentBuilder();
 
@@ -120,7 +122,7 @@ public class DefaultParser {
     public NodeList getAllTutorials() {
         NodeList nodeList = null;
         try {
-            DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilderFactory builderFactory = newSecureDocumentBuilderFactory();
             builderFactory.setNamespaceAware(true);
             DocumentBuilder builder = builderFactory.newDocumentBuilder();
 

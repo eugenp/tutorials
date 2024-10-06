@@ -52,6 +52,9 @@
         <resilience4j.version>2.1.0</resilience4j.version>
         <springdoc.version>1.7.0</springdoc.version>
         <start-class>com.baeldung.Main</start-class>
+
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
 </project>

@@ -3,7 +3,6 @@
 - [Algorithm to Identify and Validate a Credit Card Number](https://www.baeldung.com/java-validate-cc-number)
 - [Find the N Most Frequent Elements in a Java Array](https://www.baeldung.com/java-n-most-frequent-elements-array)
 - [Getting Pixel Array From Image in Java](https://www.baeldung.com/java-getting-pixel-array-from-image)
-- [Calculate Distance Between Two Coordinates in Java](https://www.baeldung.com/java-find-distance-between-points)
 - [Rotate Arrays in Java](https://www.baeldung.com/java-rotate-arrays)
 - [Find Missing Number From a Given Array in Java](https://www.baeldung.com/java-array-find-missing-number)
 - [Calculate Weighted Mean in Java](https://www.baeldung.com/java-compute-weighted-average)
