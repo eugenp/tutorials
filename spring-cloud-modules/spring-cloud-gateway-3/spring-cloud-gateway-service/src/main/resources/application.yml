@@ -11,11 +11,10 @@ spring:
       globalcors:
         corsConfigurations:
           '[/**]':
-            allowedOrigins: "https://www.baeldung.com,http://localhost:3000"
-            allowedHeaders: "*"
+            allowedOrigins: "https://www.baeldung.com"
             allowedMethods:
               - GET
-              - OPTIONS
+            allowedHeaders: "*"
       routes:
         -   id: product_service_route
             predicates:
@@ -27,6 +26,14 @@ spring:
              - Path=/user/**
            uri: http://localhost:8081
            method: GET
+           metadata:
+             cors:
+               allowedOrigins: 'https://www.baeldung.com,http://localhost:3000'
+               allowedMethods:
+                 - GET
+                 - POST
+                 - PUT
+               allowedHeaders: '*'
 
 springdoc:
   api-docs:
