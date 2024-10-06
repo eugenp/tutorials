@@ -15,10 +15,13 @@ public class CompositeBookRepositoryIntegrationTest {
 
     @Test
     public void givenCompositeBook_whenSave_thenSaveToDatabase() {
-        CompositeBook compositeBook = new CompositeBook(new BookId(1L, 1234567890L), "Book Title", "Author Name");
+        CompositeBook compositeBook = new CompositeBook(new BookId(1L, 1234567890L),
+      "Book Title", "Author Name");
         compositeBookRepository.save(compositeBook);
 
-        CompositeBook savedBook = compositeBookRepository.findById(new BookId(1L, 1234567890L)).orElse(null);
+        CompositeBook savedBook = compositeBookRepository
+          .findById(new BookId(1L, 1234567890L))
+          .orElse(null);
         assertNotNull(savedBook);
         assertEquals("Book Title", savedBook.getTitle());
         assertEquals("Author Name", savedBook.getAuthor());
