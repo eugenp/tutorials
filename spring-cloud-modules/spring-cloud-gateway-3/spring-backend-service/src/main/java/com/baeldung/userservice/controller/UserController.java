@@ -22,7 +22,7 @@ public class UserController {
         return userMap.get(userId);
     }
 
-    @PostMapping(path = "/user")
+    @PutMapping(path = "/user")
     public String postUser(@RequestBody User user){
         LOGGER.info("Putting user Details {}", user);
         userMap.putIfAbsent(user.getId(), user);

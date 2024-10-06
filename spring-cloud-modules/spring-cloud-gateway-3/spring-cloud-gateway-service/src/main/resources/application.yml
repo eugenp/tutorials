@@ -15,7 +15,6 @@ spring:
             allowedHeaders: "*"
             allowedMethods:
               - GET
-              - POST
               - OPTIONS
       routes:
         -   id: product_service_route
