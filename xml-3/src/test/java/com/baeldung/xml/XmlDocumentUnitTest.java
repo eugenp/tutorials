@@ -69,7 +69,7 @@ public class XmlDocumentUnitTest {
     }
 
     @Test
-    public void givenXmlString_whenConvertToDocumentAsCharStream_thenSuccess() throws Exception {
+    public void givenXmlString_whenConvertToDocumentViaCharStream_thenSuccess() throws Exception {
         String xmlString = "<posts><post postId='1'><title>Example Post</title><author>John Doe</author></post></posts>";
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
@@ -87,7 +87,7 @@ public class XmlDocumentUnitTest {
     }
 
     @Test
-    public void givenXmlString_whenConvertToDocumentAsByteArray_thenSuccess() throws Exception {
+    public void givenXmlString_whenConvertToDocumentViaByteArray_thenSuccess() throws Exception {
         String xmlString = "<posts><post postId='1'><title>Example Post</title><author>John Doe</author></post></posts>";
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
