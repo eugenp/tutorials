@@ -24,7 +24,8 @@ public class ListToStringUnitTest {
     @Test
     public void whenStringJoinWithNonStringList_thenPrintCustom() {
         List<Integer> intList = Arrays.asList(1, 2, 3);
-        System.out.println(String.join(" : ", intList.stream().map(String::valueOf).collect(Collectors.toList())));
+        List<String> strList = intList.stream().map(String::valueOf).collect(Collectors.toList());
+        System.out.println(String.join(" : ", strList));
     }
 
     @Test
