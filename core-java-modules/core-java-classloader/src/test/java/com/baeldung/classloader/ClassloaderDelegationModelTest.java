@@ -15,14 +15,14 @@ import org.slf4j.LoggerFactory;
 import com.baeldung.classloader.internal.InternalClasspathResolver;
 import com.baeldung.classloader.internal.InternalJdkSupport;
 
-class LoadClassWithSameNameTwiceTest {
+class ClassloaderDelegationModelTest {
 
     private static final String CLASS_TO_LOAD = "com.google.common.base.Function";
 
     final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Test
-    void givenURLClassLoader_whenChildOfAppClassLoader_willLoadNotNewInstanceOfClassWithSameName() throws ClassNotFoundException, IOException {
+    void givenURLClassLoader_whenChildOfAppClassLoader_thenWillLoadNotNewInstanceOfClassWithSameName() throws ClassNotFoundException, IOException {
         var scope = scope();
         var parent = getClass().getClassLoader();
 
@@ -36,7 +36,7 @@ class LoadClassWithSameNameTwiceTest {
     }
 
     @Test
-    void givenURLClassLoader_whenIsolatedFromAppClassLoader_willLoadNewInstanceOfClassWithSameName() throws ClassNotFoundException, IOException {
+    void givenURLClassLoader_whenIsolatedFromAppClassLoader_thenWillLoadNewInstanceOfClassWithSameName() throws ClassNotFoundException, IOException {
         var scope = scope();
         var parent = getClass().getClassLoader();
 

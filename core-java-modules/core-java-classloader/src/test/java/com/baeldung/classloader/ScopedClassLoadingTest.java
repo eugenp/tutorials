@@ -76,7 +76,7 @@ class ScopedClassLoadingTest {
     }
 
     @Test
-    void givenForkedJVMWithNarrowClassPath_thenAccessWillBeLimitedToItsScope() throws InterruptedException, IOException {
+    void givenAForkedJVM_whenClassPathIsNarrowed_thenAccessWillBeLimitedToItsScope() throws InterruptedException, IOException {
         var scope = Pattern.compile("(test-classes|slf|logback)");
 
         var classpath = createNarrowClasspath(url -> scope.matcher(url.toString())
@@ -109,7 +109,7 @@ class ScopedClassLoadingTest {
     }
 
     @Test
-    void givenInstancesCreatedInScopedClassLoader_thenAccessToFullClasspathIsNotPossible() throws InterruptedException, IOException,
+    void givenScopedClassLoader_whenClasspathIsNarrowed_thenAccessWillBeLimitedToItsScope() throws InterruptedException, IOException,
     ReflectiveOperationException {
         var thread = Thread.currentThread();
         var current = thread.getContextClassLoader();

@@ -25,7 +25,7 @@ class GetURLsFromClassloaderTest {
     final Logger log = LoggerFactory.getLogger(getClass());
 
     @Test
-    void givenBasicResolver_willNotBeAbleToDetermineURLsFromApplicationClassLoader() {
+    void givenApplicationClassLoader_whenInspectingBasicResolver_thenURLsCannotBeDetermined() {
         var loader = getClass().getClassLoader();
 
         assumeFalse(loader instanceof URLClassLoader);
@@ -38,7 +38,7 @@ class GetURLsFromClassloaderTest {
     }
 
     @Test
-    void givenInternalResolver_willBeAbleToDetermineURLsFromApplicationClassLoader() {
+    void givenApplicationClassLoader_whenInspectingInternalResolver_thenURLsCanBeDetermined() {
         assumeTrue(InternalJdkSupport.available());
 
         var resolver = new InternalClasspathResolver();
@@ -52,7 +52,7 @@ class GetURLsFromClassloaderTest {
     }
 
     @Test
-    void givenRemoteClasspath_willBeAbleDetermineURLsFromCustomClassLoader() throws MalformedURLException {
+    void givenCustomClassLoader_whenInspectingInternalResolver_thenURLsCanBeDetermined() throws MalformedURLException {
         var url = URI.create("https://repo1.maven.org/maven2/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar")
             .toURL();
 
