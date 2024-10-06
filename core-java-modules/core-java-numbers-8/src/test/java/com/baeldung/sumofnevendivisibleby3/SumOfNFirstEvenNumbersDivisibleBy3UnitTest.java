@@ -6,20 +6,18 @@ import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SumOfNFirstEvenNumbersDivisibleBy3UnitTest {
+class SumOfNFirstEvenNumbersDivisibleBy3UnitTest {
 
-    private final int N = 5;
-    private final int EXPECTED_SUM = 90;
+    private static final int NUMBER = 7;
+    private static final int EXPECTED_SUM = 18;
 
     @Test
     public void givenN_whenUsingBruteForceForLoop_thenReturnsCorrectSum() {
         int sum = 0;
-        int count = 0;
 
-        for (int i = 2; count < N; i++) {
+        for (int i = 2; i <= NUMBER * 2; i++) {
             if (i % 2 == 0 && i % 3 == 0) {
                 sum += i;
-                count++;
             }
         }
 
@@ -30,8 +28,9 @@ public class SumOfNFirstEvenNumbersDivisibleBy3UnitTest {
     public void givenN_whenUsingFunctionalApproach_thenReturnsCorrectSum() {
 
         int sum = IntStream.iterate(2, i -> i + 1)
-          .filter(i -> i % 2 == 0 && i % 3 == 0)
-          .limit(N)
+          .filter(i -> i % 2 == 0)
+          .limit(NUMBER)
+          .filter(i -> i % 3 == 0)
           .sum();
 
         assertEquals(EXPECTED_SUM, sum);
@@ -41,7 +40,7 @@ public class SumOfNFirstEvenNumbersDivisibleBy3UnitTest {
     public void givenN_whenUsingImprovedBruteForce_thenReturnsCorrectSum() {
 
         int sum = IntStream.iterate(6, i -> i + 6)
-          .limit(N)
+          .limit(NUMBER / 3)
           .sum();
 
         assertEquals(EXPECTED_SUM, sum);
@@ -49,7 +48,7 @@ public class SumOfNFirstEvenNumbersDivisibleBy3UnitTest {
 
     @Test
     public void givenN_whenUsingOptimizedMethod_thenReturnsCorrectSum() {
-        int sum = 3 * (N * (N + 1));
+        int sum = 3 * (NUMBER / 3) * (NUMBER / 3 + 1);
 
         assertEquals(EXPECTED_SUM, sum);
     }
