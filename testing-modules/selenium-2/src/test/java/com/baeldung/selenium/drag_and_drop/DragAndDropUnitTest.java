@@ -9,7 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
-public class DragAndDropLiveTest {
+public class DragAndDropUnitTest {
 
     private WebDriver driver;
 
