@@ -22,13 +22,6 @@ public class UserController {
         return userMap.get(userId);
     }
 
-    @PutMapping(path = "/user")
-    public String postUser(@RequestBody User user){
-        LOGGER.info("Putting user Details {}", user);
-        userMap.putIfAbsent(user.getId(), user);
-        return "Success";
-    }
-
     @PostConstruct
     private void setupRepo() {
         User user1 = getUser(100001, "user1");

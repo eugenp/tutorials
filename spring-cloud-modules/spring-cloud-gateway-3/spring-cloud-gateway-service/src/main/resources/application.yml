@@ -31,8 +31,6 @@ spring:
                allowedOrigins: 'https://www.baeldung.com,http://localhost:3000'
                allowedMethods:
                  - GET
-                 - POST
-                 - PUT
                allowedHeaders: '*'
 
 springdoc:
