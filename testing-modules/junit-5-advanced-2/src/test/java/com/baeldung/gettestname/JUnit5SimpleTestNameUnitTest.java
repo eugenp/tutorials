@@ -1,9 +1,9 @@
 package com.baeldung.gettestname;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInfo;
-
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class JUnit5SimpleTestNameUnitTest {
 

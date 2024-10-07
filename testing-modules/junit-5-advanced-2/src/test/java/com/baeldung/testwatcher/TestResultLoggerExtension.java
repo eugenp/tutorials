@@ -1,4 +1,4 @@
-package com.baeldung.extensions.testwatcher;
+package com.baeldung.testwatcher;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,13 +1,13 @@
 package com.baeldung.displayname;
 
+import java.lang.reflect.Method;
+
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import java.lang.reflect.Method;
 
 @DisplayNameGeneration(DisplayNameGeneratorUnitTest.ReplaceCamelCase.class)
 class DisplayNameGeneratorUnitTest {
@@ -17,7 +17,7 @@ class DisplayNameGeneratorUnitTest {
     }
 
     @Nested
-    @DisplayNameGeneration(DisplayNameGeneratorUnitTest.IndicativeSentences.class)
+    @DisplayNameGeneration(IndicativeSentences.class)
     class ANumberIsFizz {
         @Test
         void ifItIsDivisibleByThree() {
@@ -30,7 +30,7 @@ class DisplayNameGeneratorUnitTest {
     }
 
     @Nested
-    @DisplayNameGeneration(DisplayNameGeneratorUnitTest.IndicativeSentences.class)
+    @DisplayNameGeneration(IndicativeSentences.class)
     class ANumberIsBuzz {
         @Test
         void ifItIsDivisibleByFive() {

@@ -1,11 +1,17 @@
 package com.baeldung.commandline;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+public class FirstUnitTest {
 
-class SecondUnitTest {
+
+
+    @Test
+    void whenThis_thenThat() {
+        assertTrue(true);
+    }
 
     @Test
     void whenSomething_thenSomething() {
@@ -16,4 +22,6 @@ class SecondUnitTest {
     void whenSomethingElse_thenSomethingElse() {
         assertTrue(true);
     }
+
 }
+
