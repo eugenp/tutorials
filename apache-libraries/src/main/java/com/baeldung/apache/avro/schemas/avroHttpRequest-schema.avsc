@@ -1,7 +1,7 @@
 {
   "type":"record",
   "name":"AvroHttpRequest",
-  "namespace":"com.baeldung.avro.model",
+  "namespace":"com.baeldung.apache.avro.generated",
   "fields":[
     {
       "name":"requestTime",
@@ -30,7 +30,7 @@
         "type":"array",
         "items":"string"
       },
-      "default":null
+      "default":["John Doe", "Jane Smith"]
     },
     {
       "name":"active",

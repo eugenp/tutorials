@@ -3,30 +3,42 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package com.baeldung.apache.avro.util.model;
+package com.baeldung.apache.avro.generated;
 
+import org.apache.avro.generic.GenericArray;
 import org.apache.avro.specific.SpecificData;
+import org.apache.avro.util.Utf8;
 import org.apache.avro.message.BinaryMessageEncoder;
 import org.apache.avro.message.BinaryMessageDecoder;
 import org.apache.avro.message.SchemaStore;
 
-@SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class ClientIdentifier extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 8754570983127295424L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"ClientIdentifier\",\"namespace\":\"com.baeldung.avro.model\",\"fields\":[{\"name\":\"hostName\",\"type\":\"string\"},{\"name\":\"ipAddress\",\"type\":\"string\"}]}");
+  private static final long serialVersionUID = -1549393766288162557L;
+
+
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"ClientIdentifier\",\"namespace\":\"com.baeldung.apache.avro.generated\",\"fields\":[{\"name\":\"hostName\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"ipAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
-  private static SpecificData MODEL$ = new SpecificData();
+  private static final SpecificData MODEL$ = new SpecificData();
 
   private static final BinaryMessageEncoder<ClientIdentifier> ENCODER =
-      new BinaryMessageEncoder<ClientIdentifier>(MODEL$, SCHEMA$);
+      new BinaryMessageEncoder<>(MODEL$, SCHEMA$);
 
   private static final BinaryMessageDecoder<ClientIdentifier> DECODER =
-      new BinaryMessageDecoder<ClientIdentifier>(MODEL$, SCHEMA$);
+      new BinaryMessageDecoder<>(MODEL$, SCHEMA$);
+
+  /**
+   * Return the BinaryMessageEncoder instance used by this class.
+   * @return the message encoder used by this class
+   */
+  public static BinaryMessageEncoder<ClientIdentifier> getEncoder() {
+    return ENCODER;
+  }
 
   /**
    * Return the BinaryMessageDecoder instance used by this class.
+   * @return the message decoder used by this class
    */
   public static BinaryMessageDecoder<ClientIdentifier> getDecoder() {
     return DECODER;
@@ -35,24 +47,34 @@ public class ClientIdentifier extends org.apache.avro.specific.SpecificRecordBas
   /**
    * Create a new BinaryMessageDecoder instance for this class that uses the specified {@link SchemaStore}.
    * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
+   * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
    */
   public static BinaryMessageDecoder<ClientIdentifier> createDecoder(SchemaStore resolver) {
-    return new BinaryMessageDecoder<ClientIdentifier>(MODEL$, SCHEMA$, resolver);
+    return new BinaryMessageDecoder<>(MODEL$, SCHEMA$, resolver);
   }
 
-  /** Serializes this ClientIdentifier to a ByteBuffer. */
+  /**
+   * Serializes this ClientIdentifier to a ByteBuffer.
+   * @return a buffer holding the serialized data for this instance
+   * @throws java.io.IOException if this instance could not be serialized
+   */
   public java.nio.ByteBuffer toByteBuffer() throws java.io.IOException {
     return ENCODER.encode(this);
   }
 
-  /** Deserializes a ClientIdentifier from a ByteBuffer. */
+  /**
+   * Deserializes a ClientIdentifier from a ByteBuffer.
+   * @param b a byte buffer holding serialized data for an instance of this class
+   * @return a ClientIdentifier instance decoded from the given buffer
+   * @throws java.io.IOException if the given bytes could not be deserialized into an instance of this class
+   */
   public static ClientIdentifier fromByteBuffer(
       java.nio.ByteBuffer b) throws java.io.IOException {
     return DECODER.decode(b);
   }
 
-  @Deprecated public java.lang.CharSequence hostName;
-  @Deprecated public java.lang.CharSequence ipAddress;
+  private java.lang.String hostName;
+  private java.lang.String ipAddress;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -66,28 +88,35 @@ public class ClientIdentifier extends org.apache.avro.specific.SpecificRecordBas
    * @param hostName The new value for hostName
    * @param ipAddress The new value for ipAddress
    */
-  public ClientIdentifier(java.lang.CharSequence hostName, java.lang.CharSequence ipAddress) {
+  public ClientIdentifier(java.lang.String hostName, java.lang.String ipAddress) {
     this.hostName = hostName;
     this.ipAddress = ipAddress;
   }
 
+  @Override
+  public org.apache.avro.specific.SpecificData getSpecificData() { return MODEL$; }
+
+  @Override
   public org.apache.avro.Schema getSchema() { return SCHEMA$; }
+
   // Used by DatumWriter.  Applications should not call.
+  @Override
   public java.lang.Object get(int field$) {
     switch (field$) {
     case 0: return hostName;
     case 1: return ipAddress;
-    default: throw new org.apache.avro.AvroRuntimeException("Bad index");
+    default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
 
   // Used by DatumReader.  Applications should not call.
+  @Override
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
-    case 0: hostName = (java.lang.CharSequence)value$; break;
-    case 1: ipAddress = (java.lang.CharSequence)value$; break;
-    default: throw new org.apache.avro.AvroRuntimeException("Bad index");
+    case 0: hostName = value$ != null ? value$.toString() : null; break;
+    case 1: ipAddress = value$ != null ? value$.toString() : null; break;
+    default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
 
@@ -95,15 +124,16 @@ public class ClientIdentifier extends org.apache.avro.specific.SpecificRecordBas
    * Gets the value of the 'hostName' field.
    * @return The value of the 'hostName' field.
    */
-  public java.lang.CharSequence getHostName() {
+  public java.lang.String getHostName() {
     return hostName;
   }
+
 
   /**
    * Sets the value of the 'hostName' field.
    * @param value the value to set.
    */
-  public void setHostName(java.lang.CharSequence value) {
+  public void setHostName(java.lang.String value) {
     this.hostName = value;
   }
 
@@ -111,15 +141,16 @@ public class ClientIdentifier extends org.apache.avro.specific.SpecificRecordBas
    * Gets the value of the 'ipAddress' field.
    * @return The value of the 'ipAddress' field.
    */
-  public java.lang.CharSequence getIpAddress() {
+  public java.lang.String getIpAddress() {
     return ipAddress;
   }
+
 
   /**
    * Sets the value of the 'ipAddress' field.
    * @param value the value to set.
    */
-  public void setIpAddress(java.lang.CharSequence value) {
+  public void setIpAddress(java.lang.String value) {
     this.ipAddress = value;
   }
 
@@ -127,8 +158,8 @@ public class ClientIdentifier extends org.apache.avro.specific.SpecificRecordBas
    * Creates a new ClientIdentifier RecordBuilder.
    * @return A new ClientIdentifier RecordBuilder
    */
-  public static ClientIdentifier.Builder newBuilder() {
-    return new ClientIdentifier.Builder();
+  public static com.baeldung.apache.avro.generated.ClientIdentifier.Builder newBuilder() {
+    return new com.baeldung.apache.avro.generated.ClientIdentifier.Builder();
   }
 
   /**
@@ -136,8 +167,12 @@ public class ClientIdentifier extends org.apache.avro.specific.SpecificRecordBas
    * @param other The existing builder to copy.
    * @return A new ClientIdentifier RecordBuilder
    */
-  public static ClientIdentifier.Builder newBuilder(ClientIdentifier.Builder other) {
-    return new ClientIdentifier.Builder(other);
+  public static com.baeldung.apache.avro.generated.ClientIdentifier.Builder newBuilder(com.baeldung.apache.avro.generated.ClientIdentifier.Builder other) {
+    if (other == null) {
+      return new com.baeldung.apache.avro.generated.ClientIdentifier.Builder();
+    } else {
+      return new com.baeldung.apache.avro.generated.ClientIdentifier.Builder(other);
+    }
   }
 
   /**
@@ -145,37 +180,42 @@ public class ClientIdentifier extends org.apache.avro.specific.SpecificRecordBas
    * @param other The existing instance to copy.
    * @return A new ClientIdentifier RecordBuilder
    */
-  public static ClientIdentifier.Builder newBuilder(ClientIdentifier other) {
-    return new ClientIdentifier.Builder(other);
+  public static com.baeldung.apache.avro.generated.ClientIdentifier.Builder newBuilder(com.baeldung.apache.avro.generated.ClientIdentifier other) {
+    if (other == null) {
+      return new com.baeldung.apache.avro.generated.ClientIdentifier.Builder();
+    } else {
+      return new com.baeldung.apache.avro.generated.ClientIdentifier.Builder(other);
+    }
   }
 
   /**
    * RecordBuilder for ClientIdentifier instances.
    */
+  @org.apache.avro.specific.AvroGenerated
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<ClientIdentifier>
     implements org.apache.avro.data.RecordBuilder<ClientIdentifier> {
 
-    private java.lang.CharSequence hostName;
-    private java.lang.CharSequence ipAddress;
+    private java.lang.String hostName;
+    private java.lang.String ipAddress;
 
     /** Creates a new Builder */
     private Builder() {
-      super(SCHEMA$);
+      super(SCHEMA$, MODEL$);
     }
 
     /**
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(ClientIdentifier.Builder other) {
+    private Builder(com.baeldung.apache.avro.generated.ClientIdentifier.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.hostName)) {
         this.hostName = data().deepCopy(fields()[0].schema(), other.hostName);
-        fieldSetFlags()[0] = true;
+        fieldSetFlags()[0] = other.fieldSetFlags()[0];
       }
       if (isValidValue(fields()[1], other.ipAddress)) {
         this.ipAddress = data().deepCopy(fields()[1].schema(), other.ipAddress);
-        fieldSetFlags()[1] = true;
+        fieldSetFlags()[1] = other.fieldSetFlags()[1];
       }
     }
 
@@ -183,8 +223,8 @@ public class ClientIdentifier extends org.apache.avro.specific.SpecificRecordBas
      * Creates a Builder by copying an existing ClientIdentifier instance
      * @param other The existing instance to copy.
      */
-    private Builder(ClientIdentifier other) {
-            super(SCHEMA$);
+    private Builder(com.baeldung.apache.avro.generated.ClientIdentifier other) {
+      super(SCHEMA$, MODEL$);
       if (isValidValue(fields()[0], other.hostName)) {
         this.hostName = data().deepCopy(fields()[0].schema(), other.hostName);
         fieldSetFlags()[0] = true;
@@ -199,16 +239,17 @@ public class ClientIdentifier extends org.apache.avro.specific.SpecificRecordBas
       * Gets the value of the 'hostName' field.
       * @return The value.
       */
-    public java.lang.CharSequence getHostName() {
+    public java.lang.String getHostName() {
       return hostName;
     }
+
 
     /**
       * Sets the value of the 'hostName' field.
       * @param value The value of 'hostName'.
       * @return This builder.
       */
-    public ClientIdentifier.Builder setHostName(java.lang.CharSequence value) {
+    public com.baeldung.apache.avro.generated.ClientIdentifier.Builder setHostName(java.lang.String value) {
       validate(fields()[0], value);
       this.hostName = value;
       fieldSetFlags()[0] = true;
@@ -228,7 +269,7 @@ public class ClientIdentifier extends org.apache.avro.specific.SpecificRecordBas
       * Clears the value of the 'hostName' field.
       * @return This builder.
       */
-    public ClientIdentifier.Builder clearHostName() {
+    public com.baeldung.apache.avro.generated.ClientIdentifier.Builder clearHostName() {
       hostName = null;
       fieldSetFlags()[0] = false;
       return this;
@@ -238,16 +279,17 @@ public class ClientIdentifier extends org.apache.avro.specific.SpecificRecordBas
       * Gets the value of the 'ipAddress' field.
       * @return The value.
       */
-    public java.lang.CharSequence getIpAddress() {
+    public java.lang.String getIpAddress() {
       return ipAddress;
     }
+
 
     /**
       * Sets the value of the 'ipAddress' field.
       * @param value The value of 'ipAddress'.
       * @return This builder.
       */
-    public ClientIdentifier.Builder setIpAddress(java.lang.CharSequence value) {
+    public com.baeldung.apache.avro.generated.ClientIdentifier.Builder setIpAddress(java.lang.String value) {
       validate(fields()[1], value);
       this.ipAddress = value;
       fieldSetFlags()[1] = true;
@@ -267,7 +309,7 @@ public class ClientIdentifier extends org.apache.avro.specific.SpecificRecordBas
       * Clears the value of the 'ipAddress' field.
       * @return This builder.
       */
-    public ClientIdentifier.Builder clearIpAddress() {
+    public com.baeldung.apache.avro.generated.ClientIdentifier.Builder clearIpAddress() {
       ipAddress = null;
       fieldSetFlags()[1] = false;
       return this;
@@ -278,9 +320,11 @@ public class ClientIdentifier extends org.apache.avro.specific.SpecificRecordBas
     public ClientIdentifier build() {
       try {
         ClientIdentifier record = new ClientIdentifier();
-        record.hostName = fieldSetFlags()[0] ? this.hostName : (java.lang.CharSequence) defaultValue(fields()[0]);
-        record.ipAddress = fieldSetFlags()[1] ? this.ipAddress : (java.lang.CharSequence) defaultValue(fields()[1]);
+        record.hostName = fieldSetFlags()[0] ? this.hostName : (java.lang.String) defaultValue(fields()[0]);
+        record.ipAddress = fieldSetFlags()[1] ? this.ipAddress : (java.lang.String) defaultValue(fields()[1]);
         return record;
+      } catch (org.apache.avro.AvroMissingFieldException e) {
+        throw e;
       } catch (java.lang.Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);
       }
@@ -305,4 +349,51 @@ public class ClientIdentifier extends org.apache.avro.specific.SpecificRecordBas
     READER$.read(this, SpecificData.getDecoder(in));
   }
 
+  @Override protected boolean hasCustomCoders() { return true; }
+
+  @Override public void customEncode(org.apache.avro.io.Encoder out)
+    throws java.io.IOException
+  {
+    out.writeString(this.hostName);
+
+    out.writeString(this.ipAddress);
+
+  }
+
+  @Override public void customDecode(org.apache.avro.io.ResolvingDecoder in)
+    throws java.io.IOException
+  {
+    org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
+    if (fieldOrder == null) {
+      this.hostName = in.readString();
+
+      this.ipAddress = in.readString();
+
+    } else {
+      for (int i = 0; i < 2; i++) {
+        switch (fieldOrder[i].pos()) {
+        case 0:
+          this.hostName = in.readString();
+          break;
+
+        case 1:
+          this.ipAddress = in.readString();
+          break;
+
+        default:
+          throw new java.io.IOException("Corrupt ResolvingDecoder.");
+        }
+      }
+    }
+  }
 }
+
+
+
+
+
+
+
+
+
+
