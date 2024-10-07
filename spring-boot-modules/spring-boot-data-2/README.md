@@ -6,3 +6,4 @@
 - [BootstrapMode for JPA Repositories](https://www.baeldung.com/jpa-bootstrap-mode)
 - [Dynamic DTO Validation Config Retrieved from the Database](https://www.baeldung.com/spring-dynamic-dto-validation)
 - [Spring Custom Property Editor](https://www.baeldung.com/spring-mvc-custom-property-editor)
+- [Fix Spring Data JPA Exception: No Property Found for Type](https://www.baeldung.com/spring-data-jpa-exception-no-property-found-for-type)
