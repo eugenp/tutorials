@@ -14,7 +14,7 @@ import java.util.Scanner;
 
 import org.junit.jupiter.api.Test;
 
-public class ReadMultipleIntegerTests {
+public class ReadMultipleIntegerTest {
 
     private static final String FILE_PATH = "src/test/resources/intinputs.txt";
     private static final int EXPECTED_NO_OF_INTEGERS = 5;
