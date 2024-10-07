@@ -36,7 +36,7 @@
             <artifactId>jackson-databind</artifactId>
         </dependency>
         <dependency>
-            <groupId>net.andreinc.mockneat</groupId>
+            <groupId>net.andreinc</groupId>
             <artifactId>mockneat</artifactId>
             <version>${mockneat.version}</version>
         </dependency>
@@ -62,16 +62,9 @@
         </dependency>
     </dependencies>
 
-    <repositories>
-        <repository>
-            <id>jcenter</id>
-            <url>https://jcenter.bintray.com/</url>
-        </repository>
-    </repositories>
-
     <properties>
         <mantis-runtime.version>2.0.42</mantis-runtime.version>
-        <mockneat.version>0.4.2</mockneat.version>
+        <mockneat.version>0.4.8</mockneat.version>
         <spectator-api.version>1.6.5</spectator-api.version>
     </properties>
 

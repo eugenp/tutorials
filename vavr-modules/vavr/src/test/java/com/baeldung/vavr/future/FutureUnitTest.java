@@ -5,6 +5,7 @@ import io.vavr.concurrent.Future;
 import io.vavr.control.Option;
 import io.vavr.control.Try;
 import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
@@ -184,6 +185,6 @@ public class FutureUnitTest {
 
         assertThat(
           errorMessage.get().getMessage())
-          .isEqualTo("begin -1, end 5, length 5");
+          .isEqualTo("Range [-1, 5) out of bounds for length 5");
     }
 }

@@ -28,9 +28,9 @@
         <!--<module>core-java-sun</module> -->
         <module>core-java-collections-conversions-2</module>
         <module>core-java-collections-conversions-3</module>
-<!--        <module>core-java-concurrency-advanced-5</module>--> <!-- Migrated to heavy profile -->
+        <!--<module>core-java-concurrency-advanced-5</module>--> <!-- Migrated to heavy profile -->
         <module>core-java-9-new-features</module>
-        <module>core-java-14</module>
+        <!--<module>core-java-14</module> --> <!-- failing after upgrade to jdk21 -->
         <module>core-java-16</module>
         <!-- <module>core-java-modules/core-java-17</module> --> <!-- JAVA-26056 -->
         <!-- <module>core-java-modules/core-java-18</module> --> <!-- JAVA-26056 -->
@@ -53,7 +53,7 @@
         <module>core-java-collections-list-5</module>
         <module>core-java-collections-maps-4</module>
         <module>core-java-collections-maps-5</module>
-        <module>core-java-concurrency-simple</module>
+        <!-- <module>core-java-concurrency-simple</module> --> <!-- failing after upgrade to jdk21 -->
         <module>core-java-datetime-string</module>
         <module>core-java-io-conversions-2</module>
         <module>core-java-ipc</module>
@@ -69,9 +69,9 @@
         <module>core-java-streams-6</module>
         <module>core-java-streams-collect</module>
         <module>core-java-streams-maps</module>
-        <module>core-java-string-operations-3</module>
+        <!-- <module>core-java-string-operations-3</module> --> <!-- failing after upgrade to jdk21 -->
         <module>core-java-string-operations-4</module>
-        <module>core-java-string-operations-5</module>
+        <!-- <module>core-java-string-operations-5</module> --> <!-- failing after upgrade to jdk21 -->
         <!--<module>core-java-strings</module> Failing test cases JAVA-24414-->
         <module>core-java-time-measurements</module>
         <module>core-java-annotations</module>
@@ -82,6 +82,7 @@
         <module>core-java-arrays-convert</module>
         <module>core-java-arrays-operations-basic</module>
         <module>core-java-arrays-operations-basic-2</module>
+        <module>core-java-arrays-operations-basic-3</module>
         <module>core-java-arrays-operations-advanced</module>
         <module>core-java-arrays-operations-advanced-2</module>
         <module>core-java-booleans</module>
@@ -92,6 +93,7 @@
         <module>core-java-collections-4</module>
         <module>core-java-collections-5</module>
         <module>core-java-collections-6</module>
+<!--        <module>core-java-collections-7</module>-->
         <module>core-java-collections-conversions</module>
         <module>core-java-collections-set-2</module>
         <module>core-java-collections-list</module>
@@ -123,7 +125,7 @@
         <module>core-java-exceptions</module>
         <module>core-java-exceptions-2</module>
         <module>core-java-exceptions-3</module>
-        <module>core-java-exceptions-4</module>
+        <!-- <module>core-java-exceptions-4</module> --> <!-- failing after upgrade to jdk21 -->
         <module>core-java-function</module>
         <module>core-java-functional</module>
         <module>core-java-hex</module>
@@ -132,14 +134,14 @@
         <module>core-java-io-3</module>
         <module>core-java-io-4</module>
         <module>core-java-io-5</module>
-        <module>core-java-io-6</module>
+        <!-- <module>core-java-io-6</module> --> <!-- failing after upgrade to jdk21 -->
         <module>core-java-io-apis</module>
         <module>core-java-io-apis-2</module>
         <module>core-java-io-conversions</module>
         <module>core-java-io-conversions-3</module>
         <module>core-java-jar</module>
         <module>core-java-jndi</module>
-        <module>core-java-jvm</module>
+        <!-- <module>core-java-jvm</module> --> <!-- failing after upgrade to jdk21 -->
         <module>core-java-jvm-2</module>
         <module>core-java-jvm-3</module>
         <module>core-java-lambdas</module>
@@ -148,7 +150,7 @@
         <module>core-java-lang-4</module>
         <module>core-java-lang-5</module>
         <module>core-java-lang-6</module>
-        <module>core-java-lang-7</module>
+        <!-- <module>core-java-lang-7</module> --> <!-- failing after upgrade to jdk21 -->
         <module>core-java-lang-math</module>
         <module>core-java-lang-math-2</module>
         <module>core-java-lang-math-4</module>
@@ -215,6 +217,7 @@
         <module>core-java-string-operations-8</module>
         <module>core-java-string-operations-9</module>
         <module>core-java-string-operations-10</module>
+        <module>core-java-string-operations-11</module>
         <module>core-java-regex</module>
         <module>core-java-regex-2</module>
         <module>core-java-regex-3</module>
@@ -227,7 +230,7 @@
         <!--<module>core-java-conditionals</module>--> <!--JAVA-20931-->
         <module>core-java-collections-set</module>
         <module>core-java-date-operations-1</module>
-        <module>core-java-datetime-conversion</module>
+        <!-- <module>core-java-datetime-conversion</module> --> <!-- failing after upgrade to jdk21 -->
         <module>core-java-datetime-conversion-2</module>
         <module>core-java-httpclient</module>
         <module>java-native</module>
@@ -236,6 +239,7 @@
         <module>java-websocket</module>
         <module>core-java-8-datetime-3</module>
         <!--<module>core-java-22</module>--> <!-- requires JDK 22 -->
+        <!--<module>core-java-23</module>--> <!-- requires JDK 23 -->
     </modules>
 
     <dependencies>

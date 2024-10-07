@@ -16,6 +16,17 @@ public class ExecuteJarFileUnitTest {
     }
 
     @Test
+    public final void givenDefaultManifestWithCP_whenManifestAttributeIsNotPresent_thenGetSuccessMessage() {
+        String output = ExecuteJarFile.executeJarWithoutManifestAttributeWithCPOption();
+        assertEquals(SUCCESS_MESSAGE, output);
+    }
+    @Test
+    public final void givenDefaultManifestWithClasspath_whenManifestAttributeIsNotPresent_thenGetSuccessMessage() {
+        String output = ExecuteJarFile.executeJarWithoutManifestAttributeWithClasspathOption();
+        assertEquals(SUCCESS_MESSAGE, output);
+    }
+
+    @Test
     public final void givenCustomManifest_whenManifestAttributeIsPresent_thenGetSuccessMessage() {
         String output = ExecuteJarFile.executeJarWithManifestAttribute();
         assertEquals(SUCCESS_MESSAGE, output);

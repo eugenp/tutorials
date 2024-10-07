@@ -3,7 +3,7 @@ package com.baeldung.quarkus.model;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import lombok.*;
 
-import javax.persistence.Entity;
+import jakarta.persistence.Entity;
 
 @Data
 @Entity

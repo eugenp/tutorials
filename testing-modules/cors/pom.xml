@@ -43,7 +43,6 @@
     </dependencies>
     
     <properties>
-        <java.version>17</java.version>
         <datafaker.version>2.2.2</datafaker.version>
     </properties>
     

@@ -1,6 +1,11 @@
 package com.baeldung.download;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.hc.client5.http.classic.methods.HttpGet;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.classic.HttpClients;
+import org.apache.hc.core5.http.HttpEntity;
+import org.apache.hc.core5.http.io.entity.EntityUtils;
 import org.asynchttpclient.*;
 
 import java.io.*;
@@ -87,6 +92,30 @@ public class FileDownload {
 
         stream.getChannel().close();
         client.close();
+    }
+
+    public static void downloadWithApacheHttpClient(String url, String localFileName) throws IOException {
+        try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
+            HttpGet httpGet = new HttpGet(url);
+            httpClient.execute(httpGet, classicHttpResponse -> {
+                int code = classicHttpResponse.getCode();
+                if (code == 200) {
+                    HttpEntity entity = classicHttpResponse.getEntity();
+                    if (entity != null) {
+                        try (InputStream inputStream = entity.getContent();
+                        FileOutputStream fileOutputStream = new FileOutputStream(localFileName)) {
+                            byte[] dataBuffer = new byte[1024];
+                            int bytesRead;
+                            while((bytesRead = inputStream.read(dataBuffer)) != -1) {
+                                fileOutputStream.write(dataBuffer, 0, bytesRead);
+                            }
+                        }
+                    }
+                    EntityUtils.consume(entity);
+                }
+                return classicHttpResponse;
+            });
+        }
     }
 
 }

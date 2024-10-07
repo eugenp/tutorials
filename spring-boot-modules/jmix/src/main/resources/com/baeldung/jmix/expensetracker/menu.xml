@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://jmix.io/schema/flowui/menu">
+
+    <menu id="application" title="msg://com.baeldung.jmix.expensetracker/menu.application.title" opened="true">
+        <item view="User.list" title="msg://com.baeldung.jmix.expensetracker.view.user/UserListView.title"/>
+        <item view="Expense.list" title="msg://com.baeldung.jmix.expensetracker.view.expense/expenseListView.title"/>
+        <item view="UserExpense.list"
+              title="msg://com.baeldung.jmix.expensetracker.view.userexpense/userExpenseListView.title"/>
+    </menu>
+
+</menu-config>
