@@ -1,12 +1,12 @@
 package com.baeldung.jdbcurlformat;
 
-import org.junit.Test;
+import static org.junit.Assert.assertNotNull;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import static org.junit.Assert.assertNotNull;
+import org.junit.Test;
 
 public class JdbcUrlFormatLiveTest {
     @Test
