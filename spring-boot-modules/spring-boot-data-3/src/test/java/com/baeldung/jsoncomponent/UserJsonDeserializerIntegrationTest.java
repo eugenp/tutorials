@@ -1,8 +1,8 @@
-package com.baeldung.boot.jsoncomponent;
+package com.baeldung.jsoncomponent;
 
-import com.baeldung.boot.jsoncomponent.User;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import javafx.scene.paint.Color;
+import static org.junit.Assert.assertEquals;
+
+import java.io.IOException;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,9 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.json.JsonTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.io.IOException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
-import static org.junit.Assert.assertEquals;
+import javafx.scene.paint.Color;
 
 @JsonTest
 @RunWith(SpringRunner.class)

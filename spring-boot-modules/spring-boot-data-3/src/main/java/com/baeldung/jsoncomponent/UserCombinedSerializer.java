@@ -1,4 +1,8 @@
-package com.baeldung.boot.jsoncomponent;
+package com.baeldung.jsoncomponent;
+
+import java.io.IOException;
+
+import org.springframework.boot.jackson.JsonComponent;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
@@ -9,10 +13,8 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.node.TextNode;
-import javafx.scene.paint.Color;
-import org.springframework.boot.jackson.JsonComponent;
 
-import java.io.IOException;
+import javafx.scene.paint.Color;
 
 @JsonComponent
 public class UserCombinedSerializer {

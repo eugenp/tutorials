@@ -43,6 +43,16 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>${javafx.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -57,6 +67,7 @@
     <properties>
         <start-class>com.baeldung.startwithoutdb.StartWithoutDbApplication</start-class>
         <hypersistence-utils-hibernate-60.version>3.7.3</hypersistence-utils-hibernate-60.version>
+        <javafx.version>19</javafx.version>
     </properties>
 
 </project>
