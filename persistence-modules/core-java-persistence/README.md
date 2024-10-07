@@ -15,3 +15,4 @@
 - [Difference Between Statement and PreparedStatement](https://www.baeldung.com/java-statement-preparedstatement)
 - [Extracting Database Metadata Using JDBC](https://www.baeldung.com/jdbc-database-metadata)
 - [Jdbc URL Format for Different Databases](https://www.baeldung.com/java-jdbc-url-format)
+- [A Guide to Auto-Commit in JDBC](https://www.baeldung.com/java-jdbc-auto-commit)
