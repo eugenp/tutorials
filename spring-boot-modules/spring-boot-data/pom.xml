@@ -55,6 +55,16 @@
             <artifactId>javafx-fxml</artifactId>
             <version>${javafx.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.awspring.cloud</groupId>
+            <artifactId>spring-cloud-starter-aws-secrets-manager-config</artifactId>
+            <version>${spring-cloud-starter-aws-secrets-manager-config.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.amazonaws.secretsmanager</groupId>
+            <artifactId>aws-secretsmanager-jdbc</artifactId>
+            <version>${aws-secretsmanager-jdbc.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -154,10 +164,12 @@
     </profiles>
 
     <properties>
+        <start-class>com.baeldung.SpringBootDataApplication</start-class>
         <spring-boot.version>3.2.2</spring-boot.version>
         <git-commit-id-plugin.version>2.2.4</git-commit-id-plugin.version>
         <javafx.version>19</javafx.version>
-        <start-class>com.baeldung.SpringBootDataApplication</start-class>
+        <spring-cloud-starter-aws-secrets-manager-config.version>2.4.4</spring-cloud-starter-aws-secrets-manager-config.version>
+        <aws-secretsmanager-jdbc.version>1.0.11</aws-secretsmanager-jdbc.version>
     </properties>
 
 </project>
