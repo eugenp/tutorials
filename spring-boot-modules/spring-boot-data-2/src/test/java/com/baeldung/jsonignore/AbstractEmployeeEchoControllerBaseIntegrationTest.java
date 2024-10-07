@@ -5,17 +5,13 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.baeldung.jsonignore.controller.AbsentEmployeeEchoController;
-import com.baeldung.jsonignore.controller.EmployeeEchoController;
-import com.baeldung.jsonignore.controller.EmptyEmployeeEchoController;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import java.lang.reflect.Field;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+
 import org.junit.platform.commons.util.ReflectionUtils;
 import org.junit.platform.commons.util.ReflectionUtils.HierarchyTraversalMode;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +19,12 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
+
+import com.baeldung.jsonignore.controller.AbsentEmployeeEchoController;
+import com.baeldung.jsonignore.controller.EmployeeEchoController;
+import com.baeldung.jsonignore.controller.EmptyEmployeeEchoController;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @WebMvcTest(controllers = {EmployeeEchoController.class, AbsentEmployeeEchoController.class,
   EmptyEmployeeEchoController.class})

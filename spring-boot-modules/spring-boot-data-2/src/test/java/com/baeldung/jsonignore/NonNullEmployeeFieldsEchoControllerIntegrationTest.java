@@ -2,17 +2,19 @@ package com.baeldung.jsonignore;
 
 import static com.baeldung.jsonignore.controller.EmployeeEchoController.USERS;
 
-import com.baeldung.jsonignore.nullfields.Employee;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
+
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.test.web.servlet.MvcResult;
+
+import com.baeldung.jsonignore.nullfields.Employee;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 
 class NonNullEmployeeFieldsEchoControllerIntegrationTest extends AbstractEmployeeEchoControllerBaseIntegrationTest {
 

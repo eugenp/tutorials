@@ -1,8 +1,9 @@
 package com.baeldung.jsonignore.nullfields;
 
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import java.util.Objects;
 
 @JsonInclude(Include.NON_NULL)
 public class Employee {

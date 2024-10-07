@@ -1,8 +1,9 @@
 package com.baeldung.jsonignore.absentfields;
 
+import java.util.Optional;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import java.util.Optional;
 
 @JsonInclude(Include.NON_ABSENT)
 public class Employee {
