@@ -15,6 +15,7 @@ public class CustomBookRepositoryImpl implements CustomBookRepository {
     }
 
     public List<CustomBookRecord> findAllBooks() {
-        return jdbcTemplate.query("SELECT id, title FROM book", (rs, rowNum) -> new CustomBookRecord(rs.getLong("id"), rs.getString("title")));
+        return jdbcTemplate.query("SELECT id, title FROM book", (rs, rowNum) ->
+          new CustomBookRecord(rs.getLong("id"), rs.getString("title")));
     }
 }
