@@ -11,4 +11,5 @@ This module contains articles about Spring Boot with Spring Data
 - [Using @JsonComponent in Spring Boot](https://www.baeldung.com/spring-boot-jsoncomponent)
 - [Guide To Running Logic on Startup in Spring](https://www.baeldung.com/running-setup-logic-on-startup-in-spring)
 - [Spring Boot: Customize the Jackson ObjectMapper](https://www.baeldung.com/spring-boot-customize-jackson-objectmapper)
+- [HttpMessageNotWritableException: No Converter for [class …] With Preset Content-Type](https://www.baeldung.com/spring-no-converter-with-preset)
 
