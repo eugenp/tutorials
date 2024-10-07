@@ -11,6 +11,8 @@ class GetWebFileSizeUnitTest {
 
     String fileUrl = "https://www.ingka.com/wp-content/uploads/2020/11/dummy.pdf";
 
+    private static final long EXPECTED_FILE_SIZE = 427;
+
     @Test
     void givenUrl_whenGetFileSizeUsingURLConnectionAndGetContentLengthLong_thenCorrect() throws IOException {
         URL url = new URL(fileUrl);
@@ -18,7 +20,7 @@ class GetWebFileSizeUnitTest {
 
         long fileSize = urlConnection.getContentLengthLong();
         if (fileSize != -1) {
-            assertEquals(29789, fileSize);
+            assertEquals(EXPECTED_FILE_SIZE, fileSize);
         } else {
             fail("Could not determine file size");
         }
@@ -33,7 +35,7 @@ class GetWebFileSizeUnitTest {
         String headerField = urlConnection.getHeaderField("Content-Length");
         if (headerField != null && !headerField.isEmpty()) {
             long fileSize = Long.parseLong(headerField);
-            assertEquals(29789, fileSize);
+            assertEquals(EXPECTED_FILE_SIZE, fileSize);
 
         } else {
             fail("Could not determine file size");
