@@ -1,8 +1,6 @@
-package com.baeldung.spring.jdbc.joins;
+package com.baeldung.joins;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,7 +8,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 public class ArticleWithAuthorDAOLiveTest {
         private Connection connection;

@@ -1,4 +1,4 @@
-package com.baeldung.spring.jdbc.joins;
+package com.baeldung.joins;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
