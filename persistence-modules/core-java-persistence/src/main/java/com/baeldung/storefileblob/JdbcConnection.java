@@ -1,17 +1,17 @@
-package storefileblob;
+package com.baeldung.storefileblob;
 
-import java.io.IOException;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.ByteArrayOutputStream;
-import java.sql.ResultSet;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.Statement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.io.FileOutputStream;
-import java.io.InputStream;
+import java.sql.Statement;
 
 public class JdbcConnection {
 
