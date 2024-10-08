@@ -35,6 +35,35 @@ public class ConditionalFlowUnitTest {
     }
 
     @Test
+    public void givenNumberMono_whenMappedToOddOrEven_thenReturnCorrectLabel() {
+        Mono<String> oddMono = Mono.just(1)
+            .map(num -> {
+                if (num % 2 == 0) {
+                    return "Even";
+                } else {
+                    return "Odd";
+                }
+            });
+
+        StepVerifier.create(oddMono)
+            .expectNext("Odd")
+            .verifyComplete();
+
+        Mono<String> evenMono = Mono.just(2)
+            .map(num -> {
+                if (num % 2 == 0) {
+                    return "Even";
+                } else {
+                    return "Odd";
+                }
+            });
+
+        StepVerifier.create(evenMono)
+            .expectNext("Even")
+            .verifyComplete();
+    }
+
+    @Test
     public void givenNumbersFlux_whenFilteredForEvenNumbers_thenReturnOnlyEvenNumbers() {
         Flux<Integer> evenNumbersFlux = Flux.just(1, 2, 3, 4, 5, 6)
             .filter(num -> num % 2 == 0);
@@ -47,15 +76,27 @@ public class ConditionalFlowUnitTest {
     }
 
     @Test
+    public void givenMono_whenFilteredForEvenNumber_thenReturnOnlyEvenNumber() {
+        Mono<Integer> oddMono = Mono.just(1)
+            .filter(num -> num % 2 == 0);
+        StepVerifier.create(oddMono)
+            .verifyComplete();
+
+        Mono<Integer> evenMono = Mono.just(2)
+            .filter(num -> num % 2 == 0);
+        StepVerifier.create(evenMono)
+            .expectNext(2)
+            .verifyComplete();
+    }
+
+    @Test
     public void givenFilteredFluxIsEmpty_whenSwitchIfEmptyApplied_thenReturnFallbackValues() {
         Flux<String> flux = Flux.just("A", "B", "C", "D", "E")
             .filter(word -> word.length() >= 2);
-
         StepVerifier.create(flux)
             .verifyComplete();
 
         flux = flux.switchIfEmpty(Flux.defer(() -> Flux.just("AA", "BB", "CC")));
-
         StepVerifier.create(flux)
             .expectNext("AA")
             .expectNext("BB")
@@ -64,17 +105,41 @@ public class ConditionalFlowUnitTest {
     }
 
     @Test
+    public void givenFilteredMonoIsEmpty_whenSwitchIfEmptyApplied_thenReturnFallbackValue() {
+        Mono<String> mono = Mono.just("A")
+            .filter(word -> word.length() >= 2);
+        StepVerifier.create(mono)
+            .verifyComplete();
+
+        mono = mono.switchIfEmpty(Mono.defer(() -> Mono.just("AA")));
+        StepVerifier.create(mono)
+            .expectNext("AA")
+            .verifyComplete();
+    }
+
+    @Test
     public void givenFilteredFluxIsEmpty_whenDefaultIfEmptyApplied_thenReturnDefaultValue() {
         Flux<String> flux = Flux.just("A", "B", "C", "D", "E")
             .filter(word -> word.length() >= 2);
-
         StepVerifier.create(flux)
             .verifyComplete();
 
         flux = flux.defaultIfEmpty("No words found!");
-
         StepVerifier.create(flux)
             .expectNext("No words found!")
+            .verifyComplete();
+    }
+
+    @Test
+    public void givenFilteredMonoIsEmpty_whenDefaultIfEmptyApplied_thenReturnDefaultValue() {
+        Mono<String> mono = Mono.just("A")
+            .filter(word -> word.length() >= 2);
+        StepVerifier.create(mono)
+            .verifyComplete();
+
+        mono = mono.defaultIfEmpty("No word found!");
+        StepVerifier.create(mono)
+            .expectNext("No word found!")
             .verifyComplete();
     }
 
@@ -84,6 +149,34 @@ public class ConditionalFlowUnitTest {
             .flatMap(word -> {
                 if (word.startsWith("A")) {
                     return Flux.just(word + "1", word + "2", word + "3");
+                } else {
+                    return Flux.just(word);
+                }
+            })
+            .flatMap(word -> {
+                if (word.startsWith("B")) {
+                    return Flux.just(word + "1", word + "2");
+                } else {
+                    return Flux.just(word);
+                }
+            });
+
+        StepVerifier.create(flux)
+            .expectNext("A1")
+            .expectNext("A2")
+            .expectNext("A3")
+            .expectNext("B1")
+            .expectNext("B2")
+            .expectNext("C")
+            .verifyComplete();
+    }
+
+    @Test
+    public void givenStringMono_whenFlatMapped_thenReturnTransformedFlattenedSequence() {
+        Flux<String> flux = Mono.just("A")
+            .flatMapMany(word -> {
+                if (word.startsWith("A")) {
+                    return Flux.just(word + "1", word + "2", word + "3", "B", "C");
                 } else {
                     return Flux.just(word);
                 }
@@ -128,6 +221,31 @@ public class ConditionalFlowUnitTest {
     }
 
     @Test
+    public void givenMono_whenEvenNumberEncountered_thenIncrementCounter() {
+        AtomicInteger evenCounter = new AtomicInteger(0);
+        Mono<Integer> oddMono = Mono.just(1)
+            .doOnNext(num -> {
+                if (num % 2 == 0) {
+                    evenCounter.incrementAndGet();
+                }
+            });
+        StepVerifier.create(oddMono)
+            .expectNextMatches(num -> num == 1 && evenCounter.get() == 0)
+            .verifyComplete();
+
+        evenCounter.set(0);
+        Mono<Integer> evenMono = Mono.just(2)
+            .doOnNext(num -> {
+                if (num % 2 == 0) {
+                    evenCounter.incrementAndGet();
+                }
+            });
+        StepVerifier.create(evenMono)
+            .expectNextMatches(num -> num == 2 && evenCounter.get() == 1)
+            .verifyComplete();
+    }
+
+    @Test
     public void givenNumbersFlux_whenFluxCompletes_thenSetDoneFlagToTrue() {
         AtomicBoolean done = new AtomicBoolean(false);
 
@@ -147,18 +265,28 @@ public class ConditionalFlowUnitTest {
     }
 
     @Test
+    public void givenMono_whenMonoEmits_thenSetDoneFlagToTrue() {
+        AtomicBoolean done = new AtomicBoolean(false);
+
+        Mono<Integer> mono = Mono.just(1)
+            .doOnSuccess(num -> done.set(true));
+
+        StepVerifier.create(mono)
+            .expectNextMatches(num -> num == 1 && done.get())
+            .verifyComplete();
+    }
+
+    @Test
     public void givenTwoMonos_whenZippedTogether_thenReturnCombinedResult() {
         int userId = 1;
         Mono<String> userAgeCategory = Mono.defer(() -> Mono.just(userId))
             .zipWhen(id -> Mono.just(20), (id, age) -> age >= 18 ? "ADULT" : "KID");
-
         StepVerifier.create(userAgeCategory)
             .expectNext("ADULT")
             .verifyComplete();
 
         Mono<String> noUserAgeCategory = Mono.empty()
             .zipWhen(id -> Mono.defer(() -> Mono.just(20)), (id, age) -> age >= 18 ? "ADULT" : "KID");
-
         StepVerifier.create(noUserAgeCategory)
             .verifyComplete();
     }
@@ -167,10 +295,8 @@ public class ConditionalFlowUnitTest {
     public void givenTwoDeferredMonos_whenFirstWithValueCalled_thenReturnFirstAvailableMono() {
         Mono<String[]> source1 = Mono.defer(() -> Mono.just(new String[] { "val", "source1" })
             .delayElement(Duration.ofMillis(200)));
-
         Mono<String[]> source2 = Mono.defer(() -> Mono.just(new String[] { "val", "source2" })
             .delayElement(Duration.ofMillis(10)));
-
         Mono<String[]> mono = Mono.firstWithValue(source1, source2);
 
         StepVerifier.create(mono)
@@ -179,15 +305,27 @@ public class ConditionalFlowUnitTest {
     }
 
     @Test
-    public void givenTwoDeferredMonosWithSameValue_whenZippedAndCompared_thenReturnTrueIfEqual() {
+    public void givenTwoDeferredMonos_whenZippedAndCompared_thenReturnTrueIfEqual() {
         Mono<String> dataFromDB = Mono.defer(() -> Mono.just("db_val")
             .delayElement(Duration.ofMillis(200)));
         Mono<String> dataFromCache = Mono.defer(() -> Mono.just("cache_val")
             .delayElement(Duration.ofMillis(10)));
-
         Mono<String[]> mono = Mono.zip(dataFromDB, dataFromCache, (dbValue, cacheValue) -> new String[] { dbValue, dbValue.equals(cacheValue) ? "VALID_CACHE" : "INVALID_CACHE" });
 
         StepVerifier.create(mono)
+            .expectNextMatches(item -> "db_val".equals(item[0]) && "INVALID_CACHE".equals(item[1]))
+            .verifyComplete();
+    }
+
+    @Test
+    public void givenTwoDeferredFlux_whenZippedAndCompared_thenReturnTrueIfEqual() {
+        Flux<String> dataFromDB = Flux.defer(() -> Flux.just("db_val")
+            .delayElements(Duration.ofMillis(200)));
+        Flux<String> dataFromCache = Flux.defer(() -> Flux.just("cache_val")
+            .delayElements(Duration.ofMillis(10)));
+        Flux<String[]> flux = Flux.zip(dataFromDB, dataFromCache, (dbValue, cacheValue) -> new String[] { dbValue, dbValue.equals(cacheValue) ? "VALID_CACHE" : "INVALID_CACHE" });
+
+        StepVerifier.create(flux)
             .expectNextMatches(item -> "db_val".equals(item[0]) && "INVALID_CACHE".equals(item[1]))
             .verifyComplete();
     }
@@ -211,7 +349,6 @@ public class ConditionalFlowUnitTest {
     @Test
     public void givenFluxEncountersError_whenOnErrorResumeApplied_thenFallbackAfterRetries() {
         AtomicInteger counter = new AtomicInteger(1);
-
         Flux<Integer> flux = Flux.defer(() -> {
                 if (counter.get() > 2) {
                     return Flux.error(new RuntimeException("Not supported even number"));
