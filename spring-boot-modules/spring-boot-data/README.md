@@ -11,4 +11,5 @@ This module contains articles about Spring Boot with Spring Data
 - [Spring Boot: Customize the Jackson ObjectMapper](https://www.baeldung.com/spring-boot-customize-jackson-objectmapper)
 - [HttpMessageNotWritableException: No Converter for [class …] With Preset Content-Type](https://www.baeldung.com/spring-no-converter-with-preset)
 - [Integrate AWS Secrets Manager in Spring Boot](https://www.baeldung.com/spring-boot-integrate-aws-secrets-manager)
+- More articles: [[next -->]](../spring-boot-data-2)
 
