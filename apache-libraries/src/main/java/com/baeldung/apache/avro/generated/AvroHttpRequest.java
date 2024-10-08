@@ -3,30 +3,40 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package com.baeldung.apache.avro.util.model;
+package com.baeldung.apache.avro.generated;
 
 import org.apache.avro.specific.SpecificData;
 import org.apache.avro.message.BinaryMessageEncoder;
 import org.apache.avro.message.BinaryMessageDecoder;
 import org.apache.avro.message.SchemaStore;
 
-@SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -8649010116827875312L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"AvroHttpRequest\",\"namespace\":\"com.baeldung.avro.model\",\"fields\":[{\"name\":\"requestTime\",\"type\":\"long\"},{\"name\":\"clientIdentifier\",\"type\":{\"type\":\"record\",\"name\":\"ClientIdentifier\",\"fields\":[{\"name\":\"hostName\",\"type\":\"string\"},{\"name\":\"ipAddress\",\"type\":\"string\"}]}},{\"name\":\"employeeNames\",\"type\":{\"type\":\"array\",\"items\":\"string\"},\"default\":null},{\"name\":\"active\",\"type\":{\"type\":\"enum\",\"name\":\"Active\",\"symbols\":[\"YES\",\"NO\"]}}]}");
+  private static final long serialVersionUID = -4208236535214244520L;
+
+
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"AvroHttpRequest\",\"namespace\":\"com.baeldung.apache.avro.generated\",\"fields\":[{\"name\":\"requestTime\",\"type\":\"long\"},{\"name\":\"clientIdentifier\",\"type\":{\"type\":\"record\",\"name\":\"ClientIdentifier\",\"fields\":[{\"name\":\"hostName\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"ipAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}]}},{\"name\":\"employeeNames\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},\"default\":[\"John Doe\",\"Jane Smith\"]},{\"name\":\"active\",\"type\":{\"type\":\"enum\",\"name\":\"Active\",\"symbols\":[\"YES\",\"NO\"]}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
-  private static SpecificData MODEL$ = new SpecificData();
+  private static final SpecificData MODEL$ = new SpecificData();
 
   private static final BinaryMessageEncoder<AvroHttpRequest> ENCODER =
-      new BinaryMessageEncoder<AvroHttpRequest>(MODEL$, SCHEMA$);
+      new BinaryMessageEncoder<>(MODEL$, SCHEMA$);
 
   private static final BinaryMessageDecoder<AvroHttpRequest> DECODER =
-      new BinaryMessageDecoder<AvroHttpRequest>(MODEL$, SCHEMA$);
+      new BinaryMessageDecoder<>(MODEL$, SCHEMA$);
+
+  /**
+   * Return the BinaryMessageEncoder instance used by this class.
+   * @return the message encoder used by this class
+   */
+  public static BinaryMessageEncoder<AvroHttpRequest> getEncoder() {
+    return ENCODER;
+  }
 
   /**
    * Return the BinaryMessageDecoder instance used by this class.
+   * @return the message decoder used by this class
    */
   public static BinaryMessageDecoder<AvroHttpRequest> getDecoder() {
     return DECODER;
@@ -35,26 +45,36 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
   /**
    * Create a new BinaryMessageDecoder instance for this class that uses the specified {@link SchemaStore}.
    * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
+   * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
    */
   public static BinaryMessageDecoder<AvroHttpRequest> createDecoder(SchemaStore resolver) {
-    return new BinaryMessageDecoder<AvroHttpRequest>(MODEL$, SCHEMA$, resolver);
+    return new BinaryMessageDecoder<>(MODEL$, SCHEMA$, resolver);
   }
 
-  /** Serializes this AvroHttpRequest to a ByteBuffer. */
+  /**
+   * Serializes this AvroHttpRequest to a ByteBuffer.
+   * @return a buffer holding the serialized data for this instance
+   * @throws java.io.IOException if this instance could not be serialized
+   */
   public java.nio.ByteBuffer toByteBuffer() throws java.io.IOException {
     return ENCODER.encode(this);
   }
 
-  /** Deserializes a AvroHttpRequest from a ByteBuffer. */
+  /**
+   * Deserializes a AvroHttpRequest from a ByteBuffer.
+   * @param b a byte buffer holding serialized data for an instance of this class
+   * @return a AvroHttpRequest instance decoded from the given buffer
+   * @throws java.io.IOException if the given bytes could not be deserialized into an instance of this class
+   */
   public static AvroHttpRequest fromByteBuffer(
       java.nio.ByteBuffer b) throws java.io.IOException {
     return DECODER.decode(b);
   }
 
-  @Deprecated public long requestTime;
-  @Deprecated public ClientIdentifier clientIdentifier;
-  @Deprecated public java.util.List<java.lang.CharSequence> employeeNames;
-  @Deprecated public Active active;
+  private long requestTime;
+  private com.baeldung.apache.avro.generated.ClientIdentifier clientIdentifier;
+  private java.util.List<java.lang.String> employeeNames;
+  private com.baeldung.apache.avro.generated.Active active;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -70,34 +90,41 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
    * @param employeeNames The new value for employeeNames
    * @param active The new value for active
    */
-  public AvroHttpRequest(java.lang.Long requestTime, ClientIdentifier clientIdentifier, java.util.List<java.lang.CharSequence> employeeNames, Active active) {
+  public AvroHttpRequest(java.lang.Long requestTime, com.baeldung.apache.avro.generated.ClientIdentifier clientIdentifier, java.util.List<java.lang.String> employeeNames, com.baeldung.apache.avro.generated.Active active) {
     this.requestTime = requestTime;
     this.clientIdentifier = clientIdentifier;
     this.employeeNames = employeeNames;
     this.active = active;
   }
 
+  @Override
+  public org.apache.avro.specific.SpecificData getSpecificData() { return MODEL$; }
+
+  @Override
   public org.apache.avro.Schema getSchema() { return SCHEMA$; }
+
   // Used by DatumWriter.  Applications should not call.
+  @Override
   public java.lang.Object get(int field$) {
     switch (field$) {
     case 0: return requestTime;
     case 1: return clientIdentifier;
     case 2: return employeeNames;
     case 3: return active;
-    default: throw new org.apache.avro.AvroRuntimeException("Bad index");
+    default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
 
   // Used by DatumReader.  Applications should not call.
+  @Override
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
     case 0: requestTime = (java.lang.Long)value$; break;
-    case 1: clientIdentifier = (ClientIdentifier)value$; break;
-    case 2: employeeNames = (java.util.List<java.lang.CharSequence>)value$; break;
-    case 3: active = (Active)value$; break;
-    default: throw new org.apache.avro.AvroRuntimeException("Bad index");
+    case 1: clientIdentifier = (com.baeldung.apache.avro.generated.ClientIdentifier)value$; break;
+    case 2: employeeNames = (java.util.List<java.lang.String>)value$; break;
+    case 3: active = (com.baeldung.apache.avro.generated.Active)value$; break;
+    default: throw new IndexOutOfBoundsException("Invalid index: " + field$);
     }
   }
 
@@ -105,15 +132,16 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
    * Gets the value of the 'requestTime' field.
    * @return The value of the 'requestTime' field.
    */
-  public java.lang.Long getRequestTime() {
+  public long getRequestTime() {
     return requestTime;
   }
+
 
   /**
    * Sets the value of the 'requestTime' field.
    * @param value the value to set.
    */
-  public void setRequestTime(java.lang.Long value) {
+  public void setRequestTime(long value) {
     this.requestTime = value;
   }
 
@@ -121,15 +149,16 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
    * Gets the value of the 'clientIdentifier' field.
    * @return The value of the 'clientIdentifier' field.
    */
-  public ClientIdentifier getClientIdentifier() {
+  public com.baeldung.apache.avro.generated.ClientIdentifier getClientIdentifier() {
     return clientIdentifier;
   }
+
 
   /**
    * Sets the value of the 'clientIdentifier' field.
    * @param value the value to set.
    */
-  public void setClientIdentifier(ClientIdentifier value) {
+  public void setClientIdentifier(com.baeldung.apache.avro.generated.ClientIdentifier value) {
     this.clientIdentifier = value;
   }
 
@@ -137,15 +166,16 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
    * Gets the value of the 'employeeNames' field.
    * @return The value of the 'employeeNames' field.
    */
-  public java.util.List<java.lang.CharSequence> getEmployeeNames() {
+  public java.util.List<java.lang.String> getEmployeeNames() {
     return employeeNames;
   }
+
 
   /**
    * Sets the value of the 'employeeNames' field.
    * @param value the value to set.
    */
-  public void setEmployeeNames(java.util.List<java.lang.CharSequence> value) {
+  public void setEmployeeNames(java.util.List<java.lang.String> value) {
     this.employeeNames = value;
   }
 
@@ -153,15 +183,16 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
    * Gets the value of the 'active' field.
    * @return The value of the 'active' field.
    */
-  public Active getActive() {
+  public com.baeldung.apache.avro.generated.Active getActive() {
     return active;
   }
+
 
   /**
    * Sets the value of the 'active' field.
    * @param value the value to set.
    */
-  public void setActive(Active value) {
+  public void setActive(com.baeldung.apache.avro.generated.Active value) {
     this.active = value;
   }
 
@@ -169,8 +200,8 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
    * Creates a new AvroHttpRequest RecordBuilder.
    * @return A new AvroHttpRequest RecordBuilder
    */
-  public static AvroHttpRequest.Builder newBuilder() {
-    return new AvroHttpRequest.Builder();
+  public static com.baeldung.apache.avro.generated.AvroHttpRequest.Builder newBuilder() {
+    return new com.baeldung.apache.avro.generated.AvroHttpRequest.Builder();
   }
 
   /**
@@ -178,8 +209,12 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
    * @param other The existing builder to copy.
    * @return A new AvroHttpRequest RecordBuilder
    */
-  public static AvroHttpRequest.Builder newBuilder(AvroHttpRequest.Builder other) {
-    return new AvroHttpRequest.Builder(other);
+  public static com.baeldung.apache.avro.generated.AvroHttpRequest.Builder newBuilder(com.baeldung.apache.avro.generated.AvroHttpRequest.Builder other) {
+    if (other == null) {
+      return new com.baeldung.apache.avro.generated.AvroHttpRequest.Builder();
+    } else {
+      return new com.baeldung.apache.avro.generated.AvroHttpRequest.Builder(other);
+    }
   }
 
   /**
@@ -187,51 +222,56 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
    * @param other The existing instance to copy.
    * @return A new AvroHttpRequest RecordBuilder
    */
-  public static AvroHttpRequest.Builder newBuilder(AvroHttpRequest other) {
-    return new AvroHttpRequest.Builder(other);
+  public static com.baeldung.apache.avro.generated.AvroHttpRequest.Builder newBuilder(com.baeldung.apache.avro.generated.AvroHttpRequest other) {
+    if (other == null) {
+      return new com.baeldung.apache.avro.generated.AvroHttpRequest.Builder();
+    } else {
+      return new com.baeldung.apache.avro.generated.AvroHttpRequest.Builder(other);
+    }
   }
 
   /**
    * RecordBuilder for AvroHttpRequest instances.
    */
+  @org.apache.avro.specific.AvroGenerated
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<AvroHttpRequest>
     implements org.apache.avro.data.RecordBuilder<AvroHttpRequest> {
 
     private long requestTime;
-    private ClientIdentifier clientIdentifier;
-    private ClientIdentifier.Builder clientIdentifierBuilder;
-    private java.util.List<java.lang.CharSequence> employeeNames;
-    private Active active;
+    private com.baeldung.apache.avro.generated.ClientIdentifier clientIdentifier;
+    private com.baeldung.apache.avro.generated.ClientIdentifier.Builder clientIdentifierBuilder;
+    private java.util.List<java.lang.String> employeeNames;
+    private com.baeldung.apache.avro.generated.Active active;
 
     /** Creates a new Builder */
     private Builder() {
-      super(SCHEMA$);
+      super(SCHEMA$, MODEL$);
     }
 
     /**
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(AvroHttpRequest.Builder other) {
+    private Builder(com.baeldung.apache.avro.generated.AvroHttpRequest.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.requestTime)) {
         this.requestTime = data().deepCopy(fields()[0].schema(), other.requestTime);
-        fieldSetFlags()[0] = true;
+        fieldSetFlags()[0] = other.fieldSetFlags()[0];
       }
       if (isValidValue(fields()[1], other.clientIdentifier)) {
         this.clientIdentifier = data().deepCopy(fields()[1].schema(), other.clientIdentifier);
-        fieldSetFlags()[1] = true;
+        fieldSetFlags()[1] = other.fieldSetFlags()[1];
       }
       if (other.hasClientIdentifierBuilder()) {
-        this.clientIdentifierBuilder = ClientIdentifier.newBuilder(other.getClientIdentifierBuilder());
+        this.clientIdentifierBuilder = com.baeldung.apache.avro.generated.ClientIdentifier.newBuilder(other.getClientIdentifierBuilder());
       }
       if (isValidValue(fields()[2], other.employeeNames)) {
         this.employeeNames = data().deepCopy(fields()[2].schema(), other.employeeNames);
-        fieldSetFlags()[2] = true;
+        fieldSetFlags()[2] = other.fieldSetFlags()[2];
       }
       if (isValidValue(fields()[3], other.active)) {
         this.active = data().deepCopy(fields()[3].schema(), other.active);
-        fieldSetFlags()[3] = true;
+        fieldSetFlags()[3] = other.fieldSetFlags()[3];
       }
     }
 
@@ -239,8 +279,8 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
      * Creates a Builder by copying an existing AvroHttpRequest instance
      * @param other The existing instance to copy.
      */
-    private Builder(AvroHttpRequest other) {
-            super(SCHEMA$);
+    private Builder(com.baeldung.apache.avro.generated.AvroHttpRequest other) {
+      super(SCHEMA$, MODEL$);
       if (isValidValue(fields()[0], other.requestTime)) {
         this.requestTime = data().deepCopy(fields()[0].schema(), other.requestTime);
         fieldSetFlags()[0] = true;
@@ -264,16 +304,17 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
       * Gets the value of the 'requestTime' field.
       * @return The value.
       */
-    public java.lang.Long getRequestTime() {
+    public long getRequestTime() {
       return requestTime;
     }
+
 
     /**
       * Sets the value of the 'requestTime' field.
       * @param value The value of 'requestTime'.
       * @return This builder.
       */
-    public AvroHttpRequest.Builder setRequestTime(long value) {
+    public com.baeldung.apache.avro.generated.AvroHttpRequest.Builder setRequestTime(long value) {
       validate(fields()[0], value);
       this.requestTime = value;
       fieldSetFlags()[0] = true;
@@ -293,7 +334,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
       * Clears the value of the 'requestTime' field.
       * @return This builder.
       */
-    public AvroHttpRequest.Builder clearRequestTime() {
+    public com.baeldung.apache.avro.generated.AvroHttpRequest.Builder clearRequestTime() {
       fieldSetFlags()[0] = false;
       return this;
     }
@@ -302,16 +343,17 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
       * Gets the value of the 'clientIdentifier' field.
       * @return The value.
       */
-    public ClientIdentifier getClientIdentifier() {
+    public com.baeldung.apache.avro.generated.ClientIdentifier getClientIdentifier() {
       return clientIdentifier;
     }
+
 
     /**
       * Sets the value of the 'clientIdentifier' field.
       * @param value The value of 'clientIdentifier'.
       * @return This builder.
       */
-    public AvroHttpRequest.Builder setClientIdentifier(ClientIdentifier value) {
+    public com.baeldung.apache.avro.generated.AvroHttpRequest.Builder setClientIdentifier(com.baeldung.apache.avro.generated.ClientIdentifier value) {
       validate(fields()[1], value);
       this.clientIdentifierBuilder = null;
       this.clientIdentifier = value;
@@ -331,12 +373,12 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
      * Gets the Builder instance for the 'clientIdentifier' field and creates one if it doesn't exist yet.
      * @return This builder.
      */
-    public ClientIdentifier.Builder getClientIdentifierBuilder() {
+    public com.baeldung.apache.avro.generated.ClientIdentifier.Builder getClientIdentifierBuilder() {
       if (clientIdentifierBuilder == null) {
         if (hasClientIdentifier()) {
-          setClientIdentifierBuilder(ClientIdentifier.newBuilder(clientIdentifier));
+          setClientIdentifierBuilder(com.baeldung.apache.avro.generated.ClientIdentifier.newBuilder(clientIdentifier));
         } else {
-          setClientIdentifierBuilder(ClientIdentifier.newBuilder());
+          setClientIdentifierBuilder(com.baeldung.apache.avro.generated.ClientIdentifier.newBuilder());
         }
       }
       return clientIdentifierBuilder;
@@ -347,7 +389,8 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
      * @param value The builder instance that must be set.
      * @return This builder.
      */
-    public AvroHttpRequest.Builder setClientIdentifierBuilder(ClientIdentifier.Builder value) {
+
+    public com.baeldung.apache.avro.generated.AvroHttpRequest.Builder setClientIdentifierBuilder(com.baeldung.apache.avro.generated.ClientIdentifier.Builder value) {
       clearClientIdentifier();
       clientIdentifierBuilder = value;
       return this;
@@ -365,7 +408,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
       * Clears the value of the 'clientIdentifier' field.
       * @return This builder.
       */
-    public AvroHttpRequest.Builder clearClientIdentifier() {
+    public com.baeldung.apache.avro.generated.AvroHttpRequest.Builder clearClientIdentifier() {
       clientIdentifier = null;
       clientIdentifierBuilder = null;
       fieldSetFlags()[1] = false;
@@ -376,16 +419,17 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
       * Gets the value of the 'employeeNames' field.
       * @return The value.
       */
-    public java.util.List<java.lang.CharSequence> getEmployeeNames() {
+    public java.util.List<java.lang.String> getEmployeeNames() {
       return employeeNames;
     }
+
 
     /**
       * Sets the value of the 'employeeNames' field.
       * @param value The value of 'employeeNames'.
       * @return This builder.
       */
-    public AvroHttpRequest.Builder setEmployeeNames(java.util.List<java.lang.CharSequence> value) {
+    public com.baeldung.apache.avro.generated.AvroHttpRequest.Builder setEmployeeNames(java.util.List<java.lang.String> value) {
       validate(fields()[2], value);
       this.employeeNames = value;
       fieldSetFlags()[2] = true;
@@ -405,7 +449,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
       * Clears the value of the 'employeeNames' field.
       * @return This builder.
       */
-    public AvroHttpRequest.Builder clearEmployeeNames() {
+    public com.baeldung.apache.avro.generated.AvroHttpRequest.Builder clearEmployeeNames() {
       employeeNames = null;
       fieldSetFlags()[2] = false;
       return this;
@@ -415,16 +459,17 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
       * Gets the value of the 'active' field.
       * @return The value.
       */
-    public Active getActive() {
+    public com.baeldung.apache.avro.generated.Active getActive() {
       return active;
     }
+
 
     /**
       * Sets the value of the 'active' field.
       * @param value The value of 'active'.
       * @return This builder.
       */
-    public AvroHttpRequest.Builder setActive(Active value) {
+    public com.baeldung.apache.avro.generated.AvroHttpRequest.Builder setActive(com.baeldung.apache.avro.generated.Active value) {
       validate(fields()[3], value);
       this.active = value;
       fieldSetFlags()[3] = true;
@@ -444,7 +489,7 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
       * Clears the value of the 'active' field.
       * @return This builder.
       */
-    public AvroHttpRequest.Builder clearActive() {
+    public com.baeldung.apache.avro.generated.AvroHttpRequest.Builder clearActive() {
       active = null;
       fieldSetFlags()[3] = false;
       return this;
@@ -457,13 +502,20 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
         AvroHttpRequest record = new AvroHttpRequest();
         record.requestTime = fieldSetFlags()[0] ? this.requestTime : (java.lang.Long) defaultValue(fields()[0]);
         if (clientIdentifierBuilder != null) {
-          record.clientIdentifier = this.clientIdentifierBuilder.build();
+          try {
+            record.clientIdentifier = this.clientIdentifierBuilder.build();
+          } catch (org.apache.avro.AvroMissingFieldException e) {
+            e.addParentField(record.getSchema().getField("clientIdentifier"));
+            throw e;
+          }
         } else {
-          record.clientIdentifier = fieldSetFlags()[1] ? this.clientIdentifier : (ClientIdentifier) defaultValue(fields()[1]);
+          record.clientIdentifier = fieldSetFlags()[1] ? this.clientIdentifier : (com.baeldung.apache.avro.generated.ClientIdentifier) defaultValue(fields()[1]);
         }
-        record.employeeNames = fieldSetFlags()[2] ? this.employeeNames : (java.util.List<java.lang.CharSequence>) defaultValue(fields()[2]);
-        record.active = fieldSetFlags()[3] ? this.active : (Active) defaultValue(fields()[3]);
+        record.employeeNames = fieldSetFlags()[2] ? this.employeeNames : (java.util.List<java.lang.String>) defaultValue(fields()[2]);
+        record.active = fieldSetFlags()[3] ? this.active : (com.baeldung.apache.avro.generated.Active) defaultValue(fields()[3]);
         return record;
+      } catch (org.apache.avro.AvroMissingFieldException e) {
+        throw e;
       } catch (java.lang.Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);
       }
@@ -488,4 +540,110 @@ public class AvroHttpRequest extends org.apache.avro.specific.SpecificRecordBase
     READER$.read(this, SpecificData.getDecoder(in));
   }
 
+  @Override protected boolean hasCustomCoders() { return true; }
+
+  @Override public void customEncode(org.apache.avro.io.Encoder out)
+    throws java.io.IOException
+  {
+    out.writeLong(this.requestTime);
+
+    this.clientIdentifier.customEncode(out);
+
+    long size0 = this.employeeNames.size();
+    out.writeArrayStart();
+    out.setItemCount(size0);
+    long actualSize0 = 0;
+    for (java.lang.String e0: this.employeeNames) {
+      actualSize0++;
+      out.startItem();
+      out.writeString(e0);
+    }
+    out.writeArrayEnd();
+    if (actualSize0 != size0)
+      throw new java.util.ConcurrentModificationException("Array-size written was " + size0 + ", but element count was " + actualSize0 + ".");
+
+    out.writeEnum(this.active.ordinal());
+
+  }
+
+  @Override public void customDecode(org.apache.avro.io.ResolvingDecoder in)
+    throws java.io.IOException
+  {
+    org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
+    if (fieldOrder == null) {
+      this.requestTime = in.readLong();
+
+      if (this.clientIdentifier == null) {
+        this.clientIdentifier = new com.baeldung.apache.avro.generated.ClientIdentifier();
+      }
+      this.clientIdentifier.customDecode(in);
+
+      long size0 = in.readArrayStart();
+      java.util.List<java.lang.String> a0 = this.employeeNames;
+      if (a0 == null) {
+        a0 = new SpecificData.Array<java.lang.String>((int)size0, SCHEMA$.getField("employeeNames").schema());
+        this.employeeNames = a0;
+      } else a0.clear();
+      SpecificData.Array<java.lang.String> ga0 = (a0 instanceof SpecificData.Array ? (SpecificData.Array<java.lang.String>)a0 : null);
+      for ( ; 0 < size0; size0 = in.arrayNext()) {
+        for ( ; size0 != 0; size0--) {
+          java.lang.String e0 = (ga0 != null ? ga0.peek() : null);
+          e0 = in.readString();
+          a0.add(e0);
+        }
+      }
+
+      this.active = com.baeldung.apache.avro.generated.Active.values()[in.readEnum()];
+
+    } else {
+      for (int i = 0; i < 4; i++) {
+        switch (fieldOrder[i].pos()) {
+        case 0:
+          this.requestTime = in.readLong();
+          break;
+
+        case 1:
+          if (this.clientIdentifier == null) {
+            this.clientIdentifier = new com.baeldung.apache.avro.generated.ClientIdentifier();
+          }
+          this.clientIdentifier.customDecode(in);
+          break;
+
+        case 2:
+          long size0 = in.readArrayStart();
+          java.util.List<java.lang.String> a0 = this.employeeNames;
+          if (a0 == null) {
+            a0 = new SpecificData.Array<java.lang.String>((int)size0, SCHEMA$.getField("employeeNames").schema());
+            this.employeeNames = a0;
+          } else a0.clear();
+          SpecificData.Array<java.lang.String> ga0 = (a0 instanceof SpecificData.Array ? (SpecificData.Array<java.lang.String>)a0 : null);
+          for ( ; 0 < size0; size0 = in.arrayNext()) {
+            for ( ; size0 != 0; size0--) {
+              java.lang.String e0 = (ga0 != null ? ga0.peek() : null);
+              e0 = in.readString();
+              a0.add(e0);
+            }
+          }
+          break;
+
+        case 3:
+          this.active = com.baeldung.apache.avro.generated.Active.values()[in.readEnum()];
+          break;
+
+        default:
+          throw new java.io.IOException("Corrupt ResolvingDecoder.");
+        }
+      }
+    }
+  }
 }
+
+
+
+
+
+
+
+
+
+
