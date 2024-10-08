@@ -582,7 +582,7 @@
                 <module>core-java-modules/core-java-jvm</module>
                 <module>core-java-modules/core-java-lang-7</module>
                 <module>core-java-modules/core-java-datetime-conversion</module>
-                <!-- <module>libraries-security</module> -->
+                <!-- <module>libraries-security</module> --> <!-- JAVA-40889 -->
                 <module>libraries-data-io</module>
                 <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->
                 <module>persistence-modules/spring-data-neo4j</module>
@@ -851,7 +851,7 @@
                 <module>xstream</module>
                 <module>libraries-data-io-2</module>
                 <module>spring-5-rest-docs</module>
-                <!-- <module>maven-modules</module> --> <!--JAVA 37707-->
+                <!-- <module>maven-modules</module> --> <!--JAVA-40888-->
             </modules>
 
             <properties>
@@ -900,7 +900,7 @@
                 <module>core-java-modules/core-java-jvm</module>
                 <module>core-java-modules/core-java-lang-7</module>
                 <module>core-java-modules/core-java-datetime-conversion</module>
-                <!--<module>libraries-security</module>-->
+                <!-- <module>libraries-security</module> --> <!-- JAVA-40889 -->
                 <module>libraries-data-io</module>
                 <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->
                 <module>persistence-modules/spring-data-neo4j</module>
@@ -1163,7 +1163,7 @@
                 <module>xstream</module>
                 <module>libraries-data-io-2</module>
                 <module>spring-5-rest-docs</module>
-                <!-- <module>maven-modules</module> --> <!--JAVA 37707-->
+                <!-- <module>maven-modules</module> --> <!--JAVA-40888-->
             </modules>
 
             <properties>
