@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class SubnetScannerUnitTest {
-
+    
     @Test
     public void givenSubnet_whenScanningForDevices_thenReturnConnectedIPs() throws Exception {
         String subnet = getSubnet();
