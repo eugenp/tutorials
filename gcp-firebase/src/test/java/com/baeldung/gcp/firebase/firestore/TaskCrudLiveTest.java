@@ -31,8 +31,8 @@ import com.google.cloud.firestore.QueryDocumentSnapshot;
 import net.bytebuddy.utility.RandomString;
 
 @SpringBootTest
-@ActiveProfiles("integration-test")
-class TaskCrudIntegrationTest {
+@ActiveProfiles("live-test")
+class TaskCrudLiveTest {
 
     @Autowired
     private Firestore firestore;
