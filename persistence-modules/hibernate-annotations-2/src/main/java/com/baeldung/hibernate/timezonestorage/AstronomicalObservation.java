@@ -23,19 +23,23 @@ public class AstronomicalObservation {
     private String celestialObjectName;
 
     @TimeZoneStorage(TimeZoneStorageType.NATIVE)
+    @Column(name = "observation_start_time", columnDefinition = "TIMESTAMP(9) WITH TIME ZONE")
     private ZonedDateTime observationStartTime;
 
     @TimeZoneStorage(TimeZoneStorageType.COLUMN)
     @TimeZoneColumn(name = "peak_visibility_time_offset")
+    @Column(name = "peak_visibility_time", columnDefinition = "TIMESTAMP(9)")
     private OffsetDateTime peakVisibilityTime;
 
     @Column(name = "peak_visibility_time_offset", insertable = false, updatable = false)
     private Integer peakVisibilityTimeOffset;
 
     @TimeZoneStorage(TimeZoneStorageType.NORMALIZE)
+    @Column(name = "next_expected_appearance", columnDefinition = "TIMESTAMP(9)")
     private ZonedDateTime nextExpectedAppearance;
 
     @TimeZoneStorage(TimeZoneStorageType.NORMALIZE_UTC)
+    @Column(name = "last_recorded_sighting", columnDefinition = "TIMESTAMP(9)")
     private OffsetDateTime lastRecordedSighting;
 
     public UUID getId() {
