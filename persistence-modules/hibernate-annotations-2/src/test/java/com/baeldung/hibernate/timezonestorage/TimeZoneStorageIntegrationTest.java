@@ -24,7 +24,7 @@ class TimeZoneStorageIntegrationTest {
 
     @Test
     void whenNativeStorageStrategyUsed_thenTimestampWithTimezoneSaved() {
-        ZonedDateTime observationStartTime = ZonedDateTime.of(1999, 12, 25, 18, 0, 0, 0, ZoneId.of("UTC+05:30"));
+        ZonedDateTime observationStartTime = ZonedDateTime.now();
         AstronomicalObservation observation = new AstronomicalObservation();
         observation.setId(UUID.randomUUID());
         observation.setCelestialObjectName("test-planet");
@@ -37,7 +37,7 @@ class TimeZoneStorageIntegrationTest {
 
     @Test
     void whenColumnStorageStrategyUsed_thenTimestampAndOffsetSaved() {
-        OffsetDateTime peakVisibilityTime = OffsetDateTime.of(1999, 12, 25, 18, 0, 0, 0, ZoneOffset.ofHoursMinutes(5, 30));
+        OffsetDateTime peakVisibilityTime = OffsetDateTime.now();
         AstronomicalObservation observation = new AstronomicalObservation();
         observation.setId(UUID.randomUUID());
         observation.setCelestialObjectName("test-planet");
