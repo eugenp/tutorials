@@ -989,7 +989,7 @@
                 <module>drools</module>
                 <module>dubbo</module>
                 <module>feign</module>
-                <!-- <module>gcp-firebase</module> --> <!-- BAEL-8475 -->
+                <module>gcp-firebase</module>
                 <module>geotools</module>
                 <module>google-auto-project</module>
                 <module>google-cloud</module>
