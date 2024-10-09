@@ -6,6 +6,7 @@ import com.baeldung.springdoc.repository.BookRepository;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -79,5 +80,21 @@ public class BookController {
     @ResponseStatus(HttpStatus.OK)
     public long deleteBook(@PathVariable final long id) {
         return id;
+    }
+
+    @Operation(summary = "Create a new book")
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "201", description = "Book created successfully",
+            content = { @Content(mediaType = "application/json",
+                schema = @Schema(implementation = Book.class)) }),
+        @ApiResponse(responseCode = "400", description = "Invalid input provided") })
+    @PostMapping("/body-description")
+    public Book createBook(@io.swagger.v3.oas.annotations.parameters.RequestBody(
+        description = "Book to create", required = true,
+        content = @Content(mediaType = "application/json",
+            schema = @Schema(implementation = Book.class),
+            examples = @ExampleObject(value = "{ \"title\": \"New Book\", \"author\": \"Author Name\" }")))
+    @RequestBody Book book) {
+        return null;
     }
 }
