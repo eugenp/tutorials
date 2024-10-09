@@ -56,6 +56,15 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>${springdoc-starter.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.awaitility</groupId>
             <artifactId>awaitility</artifactId>
             <scope>test</scope>
@@ -85,5 +94,6 @@
         <apache-camel.version>4.7.0</apache-camel.version>
         <langchain4j.version>0.33.0</langchain4j.version>
         <spring-cloud-starter.version>4.1.3</spring-cloud-starter.version>
+        <springdoc-starter.version>2.6.0</springdoc-starter.version>
     </properties>
 </project>
