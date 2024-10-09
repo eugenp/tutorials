@@ -1,0 +1,27 @@
+components:
+  schemas:
+    Person:
+      type: object
+      properties:
+        firstName:
+          type: string
+          description: "The first name of the customer."
+        lastName:
+          type: string
+          description: "The last name of the customer."
+
+    Account:
+      type: object
+      properties:
+        accountNumber:
+          type: string
+          description: "The unique account number."
+        balance:
+          type: number
+          description: "The current balance of the account."
+
+    BankCustomer:
+      allOf:
+        - $ref: '#/components/schemas/Person'
+        - $ref: '#/components/schemas/Account'
+      description: "A bank customer that includes personal and account information."
