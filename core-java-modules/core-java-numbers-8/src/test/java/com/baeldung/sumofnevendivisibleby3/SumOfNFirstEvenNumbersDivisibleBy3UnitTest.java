@@ -12,7 +12,7 @@ class SumOfNFirstEvenNumbersDivisibleBy3UnitTest {
     private static final int EXPECTED_SUM = 18;
 
     @Test
-    public void givenN_whenUsingBruteForceForLoop_thenReturnsCorrectSum() {
+    void givenN_whenUsingBruteForceForLoop_thenReturnsCorrectSum() {
         int sum = 0;
 
         for (int i = 2; i <= NUMBER * 2; i++) {
@@ -25,7 +25,7 @@ class SumOfNFirstEvenNumbersDivisibleBy3UnitTest {
     }
 
     @Test
-    public void givenN_whenUsingFunctionalApproach_thenReturnsCorrectSum() {
+    void givenN_whenUsingFunctionalApproach_thenReturnsCorrectSum() {
 
         int sum = IntStream.iterate(2, i -> i + 1)
           .filter(i -> i % 2 == 0)
@@ -37,7 +37,7 @@ class SumOfNFirstEvenNumbersDivisibleBy3UnitTest {
     }
 
     @Test
-    public void givenN_whenUsingImprovedBruteForce_thenReturnsCorrectSum() {
+    void givenN_whenUsingImprovedBruteForce_thenReturnsCorrectSum() {
 
         int sum = IntStream.iterate(6, i -> i + 6)
           .limit(NUMBER / 3)
@@ -47,7 +47,7 @@ class SumOfNFirstEvenNumbersDivisibleBy3UnitTest {
     }
 
     @Test
-    public void givenN_whenUsingOptimizedMethod_thenReturnsCorrectSum() {
+    void givenN_whenUsingOptimizedMethod_thenReturnsCorrectSum() {
         int sum = 3 * (NUMBER / 3) * (NUMBER / 3 + 1);
 
         assertEquals(EXPECTED_SUM, sum);
