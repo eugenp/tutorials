@@ -16,16 +16,29 @@ public class ListToStringUnitTest {
     }
 
     @Test
+    public void whenStringJoinWithStringList_thenPrintCustom() {
+        List<String> strList = Arrays.asList("one", "two", "three");
+        System.out.println(String.join(" : ", strList));
+    }
+
+    @Test
+    public void whenStringJoinWithNonStringList_thenPrintCustom() {
+        List<Integer> intList = Arrays.asList(1, 2, 3);
+        List<String> strList = intList.stream().map(String::valueOf).collect(Collectors.toList());
+        System.out.println(String.join(" : ", strList));
+    }
+
+    @Test
     public void whenCollectorsJoining_thenPrintCustom() {
         List<Integer> intList = Arrays.asList(1, 2, 3);
         System.out.println(intList.stream()
-            .map(n -> String.valueOf(n))
+            .map(String::valueOf)
             .collect(Collectors.joining("-", "{", "}")));
     }
-    
+
     @Test
     public void whenStringUtilsJoin_thenPrintCustom() {
         List<Integer> intList = Arrays.asList(1, 2, 3);
-       System.out.println(StringUtils.join(intList, "|"));
+        System.out.println(StringUtils.join(intList, "|"));
     }
 }
