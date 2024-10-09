@@ -1,7 +1,5 @@
 package com.baeldung.thymeleaf.config;
 
-import javax.servlet.ServletRegistration.Dynamic;
-
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 /**
@@ -26,11 +24,6 @@ public class WebApp extends AbstractAnnotationConfigDispatcherServletInitializer
     @Override
     protected String[] getServletMappings() {
         return new String[] { "/" };
-    }
-
-    @Override
-    protected void customizeRegistration(final Dynamic registration) {
-        super.customizeRegistration(registration);
     }
 
 }
