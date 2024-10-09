@@ -18,12 +18,12 @@ public class FirstDuplicate {
     }
 
     public int firstDuplicateHashSet(int[] arr) {
-        HashSet<Integer> seen = new HashSet<>(); //2, 1, 3, 5, 3, 2
+        HashSet<Integer> firstDuplicateSet = new HashSet<>();
         for (int i = 0; i < arr.length; i++) {
-            if (seen.contains(arr[i])) {
+            if (firstDuplicateSet.contains(arr[i])) {
                 return i;
             }
-            seen.add(arr[i]);
+            firstDuplicateSet.add(arr[i]);
         }
         return -1;
     }
