@@ -37,9 +37,7 @@
         <module>solid</module>
         <module>monkey-patching</module>
         <module>vertical-slice-architecture</module>
-
-        <!-- this commented out since the module needs Java 21 -->
-        <!-- <module>data-oriented-programming</module>-->
+        <module>data-oriented-programming</module>
     </modules>
 
 </project>
