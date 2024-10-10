@@ -26,8 +26,8 @@ public class FunctionalInterfaceUnitTest {
         Map<String, Integer> nameMap = new HashMap<>();
         Integer value = nameMap.computeIfAbsent("John", String::length);
 
-        assertEquals(new Integer(4), nameMap.get("John"));
-        assertEquals(new Integer(4), value);
+        assertEquals(Integer.valueOf(4), nameMap.get("John"));
+        assertEquals(Integer.valueOf(4), value);
     }
 
     @Test
@@ -35,8 +35,8 @@ public class FunctionalInterfaceUnitTest {
         Map<String, Integer> nameMap = new HashMap<>();
         Integer value = nameMap.computeIfAbsent("John", String::length);
 
-        assertEquals(new Integer(4), nameMap.get("John"));
-        assertEquals(new Integer(4), value);
+        assertEquals(Integer.valueOf(4), nameMap.get("John"));
+        assertEquals(Integer.valueOf(4), value);
     }
 
     @Test
@@ -59,9 +59,9 @@ public class FunctionalInterfaceUnitTest {
 
         salaries.replaceAll((name, oldValue) -> name.equals("Freddy") ? oldValue : oldValue + 10000);
 
-        assertEquals(new Integer(50000), salaries.get("John"));
-        assertEquals(new Integer(30000), salaries.get("Freddy"));
-        assertEquals(new Integer(60000), salaries.get("Samuel"));
+        assertEquals(Integer.valueOf(50000), salaries.get("John"));
+        assertEquals(Integer.valueOf(30000), salaries.get("Freddy"));
+        assertEquals(Integer.valueOf(60000), salaries.get("Samuel"));
     }
 
     @Test
@@ -85,11 +85,11 @@ public class FunctionalInterfaceUnitTest {
         List<Integer> fibonacci5 = fibonacci.limit(5)
             .collect(Collectors.toList());
 
-        assertEquals(new Integer(1), fibonacci5.get(0));
-        assertEquals(new Integer(1), fibonacci5.get(1));
-        assertEquals(new Integer(2), fibonacci5.get(2));
-        assertEquals(new Integer(3), fibonacci5.get(3));
-        assertEquals(new Integer(5), fibonacci5.get(4));
+        assertEquals(Integer.valueOf(1), fibonacci5.get(0));
+        assertEquals(Integer.valueOf(1), fibonacci5.get(1));
+        assertEquals(Integer.valueOf(2), fibonacci5.get(2));
+        assertEquals(Integer.valueOf(3), fibonacci5.get(3));
+        assertEquals(Integer.valueOf(5), fibonacci5.get(4));
     }
 
     @Test

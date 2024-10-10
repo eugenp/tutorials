@@ -43,14 +43,14 @@ class IntToLongUnitTest {
     @Test
     void whenUsingTheConstructor_thenGetTheExpectedLong() {
         int intTen = 10;
-        Long longTen = new Long(intTen);
+        Long longTen = Long.valueOf(intTen);
         assertEquals(intTen, longTen);
     }
 
     @Test
     void whenIntegerUsingTheLongConstructor_thenGetTheExpectedLong() {
         Integer integerTen = 10;
-        Long integerToLongTen = new Long(integerTen);
+        Long integerToLongTen = Long.valueOf(integerTen.longValue());
         assertEquals(integerTen.longValue(), integerToLongTen.longValue());
     }
 

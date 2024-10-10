@@ -17,8 +17,8 @@ public class StreamGroupingByCollectorUnitTest {
         List<String> list = new ArrayList<>(Arrays.asList("Foo", "Bar", "Bar", "Foo", "Bar"));
 
         Map<String, Long> result = list.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
-        Assert.assertEquals(new Long(2), result.get("Foo"));
-        Assert.assertEquals(new Long(3), result.get("Bar"));
+        Assert.assertEquals(2L, (long) result.get("Foo"));
+        Assert.assertEquals(3L, (long) result.get("Bar"));
 
     }
 
@@ -28,8 +28,8 @@ public class StreamGroupingByCollectorUnitTest {
         List<String> list = new ArrayList<>(Arrays.asList("Adam", "Bill", "Jack", "Joe", "Ian"));
 
         Map<Integer, Long> result = list.stream().collect(Collectors.groupingByConcurrent(String::length, Collectors.counting()));
-        Assert.assertEquals(new Long(2), result.get(3));
-        Assert.assertEquals(new Long(3), result.get(4));
+        Assert.assertEquals(2L, (long) result.get(3));
+        Assert.assertEquals(3L, (long) result.get(4));
 
     }
 
@@ -39,8 +39,8 @@ public class StreamGroupingByCollectorUnitTest {
         List<Employee> list = new ArrayList<>(Arrays.asList(new Employee(1, "Joe", 1), new Employee(2, "Josh", 1), new Employee(3, "Jamie", 2), new Employee(4, "Jim", 2), new Employee(5, "Jack", 2)));
 
         Map<Integer, Long> result = list.stream().collect(Collectors.groupingBy(Employee::getDepartmentId, Collectors.counting()));
-        Assert.assertEquals(new Long(2), result.get(1));
-        Assert.assertEquals(new Long(3), result.get(2));
+        Assert.assertEquals(2L, (long) result.get(1));
+        Assert.assertEquals(3L, (long) result.get(2));
 
     }
 

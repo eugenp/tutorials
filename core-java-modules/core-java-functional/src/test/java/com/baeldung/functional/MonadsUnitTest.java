@@ -11,8 +11,8 @@ public class MonadsUnitTest {
     @Test
     public void testOptionalAdd() {
 
-        assertEquals(5, Monads.add(Optional.of(new Integer(2)), Optional.of(new Integer(3)))
-            .get());
+        assertEquals(Integer.valueOf(5),
+            Monads.add(Optional.of(2), Optional.of(3)).get());
 
     }
 
