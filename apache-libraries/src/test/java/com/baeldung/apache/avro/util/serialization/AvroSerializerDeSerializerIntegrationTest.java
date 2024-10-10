@@ -1,10 +1,10 @@
 package com.baeldung.apache.avro.util.serialization;
 
-import com.baeldung.apache.avro.util.model.Active;
-import com.baeldung.apache.avro.util.model.AvroHttpRequest;
-import com.baeldung.apache.avro.util.model.ClientIdentifier;
-import com.baeldung.apache.avro.util.serialization.AvroDeSerializer;
-import com.baeldung.apache.avro.util.serialization.AvroSerializer;
+import com.baeldung.apache.avro.generated.Active;
+import com.baeldung.apache.avro.generated.AvroHttpRequest;
+
+import com.baeldung.apache.avro.generated.ClientIdentifier;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -31,7 +31,7 @@ public class AvroSerializerDeSerializerIntegrationTest {
             .setIpAddress("255.255.255.0")
             .build();
 
-        List<CharSequence> employees = new ArrayList();
+        List<String> employees = new ArrayList();
         employees.add("James");
         employees.add("Alice");
         employees.add("David");
@@ -68,7 +68,7 @@ public class AvroSerializerDeSerializerIntegrationTest {
         byte[] data = serializer.serializeAvroHttpRequestJSON(request);
         AvroHttpRequest actualRequest = deserializer.deSerializeAvroHttpRequestJSON(data);
         assertEquals(actualRequest, request);
-        assertTrue(actualRequest.getRequestTime()
+        assertTrue(Long.valueOf(actualRequest.getRequestTime())
             .equals(request.getRequestTime()));
     }
 
@@ -77,7 +77,7 @@ public class AvroSerializerDeSerializerIntegrationTest {
         byte[] data = serializer.serializeAvroHttpRequestBinary(request);
         AvroHttpRequest actualRequest = deserializer.deSerializeAvroHttpRequestBinary(data);
         assertEquals(actualRequest, request);
-        assertTrue(actualRequest.getRequestTime()
+        assertTrue(Long.valueOf(actualRequest.getRequestTime())
             .equals(request.getRequestTime()));
     }
 
