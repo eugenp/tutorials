@@ -26,7 +26,6 @@ class SumOfNFirstEvenNumbersDivisibleBy3UnitTest {
 
     @Test
     void givenN_whenUsingFunctionalApproach_thenReturnsCorrectSum() {
-
         int sum = IntStream.iterate(2, i -> i + 1)
           .filter(i -> i % 2 == 0)
           .limit(NUMBER)
@@ -38,7 +37,6 @@ class SumOfNFirstEvenNumbersDivisibleBy3UnitTest {
 
     @Test
     void givenN_whenUsingImprovedBruteForce_thenReturnsCorrectSum() {
-
         int sum = IntStream.iterate(6, i -> i + 6)
           .limit(NUMBER / 3)
           .sum();
