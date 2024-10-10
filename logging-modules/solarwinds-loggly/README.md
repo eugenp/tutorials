@@ -1,0 +1,1 @@
+- [Monitor Java Application Logs With Loggly](https://www.baeldung.com/loggly-monitor-java-application-logs)
