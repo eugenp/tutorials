@@ -7,7 +7,7 @@ import java.net.URLConnection;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-class GetWebFileSizeUnitTest {
+class GetWebFileSizeLiveTest {
 
     String fileUrl = "https://www.ingka.com/wp-content/uploads/2020/11/dummy.pdf";
 
