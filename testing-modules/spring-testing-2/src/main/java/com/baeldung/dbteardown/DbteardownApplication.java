@@ -1,0 +1,12 @@
+package com.baeldung.dbteardown;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class DbteardownApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(DbteardownApplication.class, args);
+    }
+}
