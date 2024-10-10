@@ -26,7 +26,7 @@ import ch.qos.logback.core.read.ListAppender;
 
 @Testcontainers
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class ConsumerListenerSeekTest {
+class ConsumerListenerSeekLiveTest {
 
     protected static ListAppender<ILoggingEvent> listAppender;
 

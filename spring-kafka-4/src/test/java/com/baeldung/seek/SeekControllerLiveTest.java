@@ -27,7 +27,7 @@ import org.testcontainers.utility.DockerImageName;
 @Testcontainers
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureWebTestClient
-class SeekControllerTest {
+class SeekControllerLiveTest {
 
     @Autowired
     private WebTestClient webClient;
