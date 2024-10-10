@@ -27,10 +27,17 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>net.lingala.zip4j</groupId>
+            <artifactId>zip4j</artifactId>
+            <version>${zip4j.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <start-class>com.baeldung.Main</start-class>
+        <zip4j.version>2.11.5</zip4j.version>
     </properties>
 
 </project>
