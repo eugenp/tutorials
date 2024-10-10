@@ -1,4 +1,4 @@
-package com.baeldung.switchIfempty.model;
+package com.baeldung.switchIfEmpty.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
