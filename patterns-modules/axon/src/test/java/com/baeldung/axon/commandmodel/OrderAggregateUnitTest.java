@@ -41,6 +41,7 @@ class OrderAggregateUnitTest {
 
     @Test
     void giveNoPriorActivity_whenCreateOrderCommand_thenShouldPublishOrderCreatedEvent() {
+        System.out.println("test");
         fixture.givenNoPriorActivity()
           .when(new CreateOrderCommand(ORDER_ID))
           .expectEvents(new OrderCreatedEvent(ORDER_ID));
