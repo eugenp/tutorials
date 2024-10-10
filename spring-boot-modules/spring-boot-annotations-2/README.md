@@ -6,6 +6,5 @@ This module contains articles about Spring Boot annotations
 
 - [Spring Conditional Annotations](https://www.baeldung.com/spring-conditional-annotations)
 - [Guide to @SpringBootConfiguration in Spring Boot](https://www.baeldung.com/springbootconfiguration-annotation)
-- [Spring @Primary Annotation](http://www.baeldung.com/spring-primary)
 - [AliasFor Annotation in Spring](https://www.baeldung.com/spring-aliasfor-annotation)
 - More articles: [[<-- prev]](/spring-boot-modules/spring-boot-annotations)
