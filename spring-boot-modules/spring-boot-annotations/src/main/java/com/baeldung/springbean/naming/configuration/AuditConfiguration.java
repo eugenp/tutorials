@@ -1,8 +1,9 @@
 package com.baeldung.springbean.naming.configuration;
 
-import com.baeldung.springbean.naming.service.AuditService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import com.baeldung.springbean.naming.service.AuditService;
 
 @Configuration
 public class AuditConfiguration {

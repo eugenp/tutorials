@@ -1,8 +1,9 @@
 package com.baeldung.springbean.naming.configuration;
 
-import com.baeldung.springbean.naming.component.CustomComponent;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import com.baeldung.springbean.naming.component.CustomComponent;
 
 @Configuration("configuration")
 public class MyConfiguration {

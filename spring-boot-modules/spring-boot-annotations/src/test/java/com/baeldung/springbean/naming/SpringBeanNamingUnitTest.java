@@ -1,16 +1,17 @@
 package com.baeldung.springbean.naming;
 
-import com.baeldung.springbean.naming.component.Cat;
-import com.baeldung.springbean.naming.component.Dog;
-import com.baeldung.springbean.naming.service.PetShow;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import com.baeldung.springbean.naming.component.Cat;
+import com.baeldung.springbean.naming.component.Dog;
+import com.baeldung.springbean.naming.service.PetShow;
 
 @ExtendWith(SpringExtension.class)
 public class SpringBeanNamingUnitTest {
