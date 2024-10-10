@@ -1,4 +1,4 @@
-package com.baeldung.annotations.componentscanautoconfigure.healthcare;
+package com.baeldung.componentscanautoconfigure.healthcare;
 
 public class Doctor {
 

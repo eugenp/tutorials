@@ -1,4 +1,4 @@
-package com.baeldung.annotations.componentscanautoconfigure.employee;
+package com.baeldung.componentscanautoconfigure.employee;
 
 import org.springframework.stereotype.Component;
 

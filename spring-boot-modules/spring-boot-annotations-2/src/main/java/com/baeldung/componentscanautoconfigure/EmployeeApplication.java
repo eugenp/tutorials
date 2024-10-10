@@ -1,11 +1,11 @@
-package com.baeldung.annotations;
+package com.baeldung.componentscanautoconfigure;
 
-import com.baeldung.annotations.componentscanautoconfigure.teacher.Teacher;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
+
+import com.baeldung.componentscanautoconfigure.teacher.Teacher;
 
 @ComponentScan(basePackages = {"com.baeldung.annotations.componentscanautoconfigure.healthcare",
         "com.baeldung.annotations.componentscanautoconfigure.employee"},
