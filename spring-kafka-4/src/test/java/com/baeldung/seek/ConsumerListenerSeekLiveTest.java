@@ -63,7 +63,7 @@ class ConsumerListenerSeekLiveTest {
     }
 
     @Test
-    void givenKafkaBrokerExists_whenMessagesAreSent_ThenLastMessageShouldBeRetrieved() {
+    void givenKafkaBrokerExists_whenMessagesAreSent_thenLastMessageShouldBeRetrieved() {
         Map<String, String> messages = consumerListener.MESSAGES;
         Assertions.assertEquals(1, messages.size());
         Assertions.assertEquals("Message no : 4", messages.get("4"));
