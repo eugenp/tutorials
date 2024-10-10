@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:mydb;MODE=Oracle
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.OracleDialect
+    defer-datasource-initialization: true
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  sql:
+    init:
+      data-locations:
