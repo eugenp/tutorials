@@ -10,4 +10,5 @@ This module contains articles about Spring Boot annotations
 - [Spring Bean Annotations](https://www.baeldung.com/spring-bean-annotations)
 - [Difference Between @ComponentScan and @EnableAutoConfiguration in Spring Boot](https://www.baeldung.com/spring-componentscan-vs-enableautoconfiguration)
 - [Where Should the Spring @Service Annotation Be Kept?](https://www.baeldung.com/spring-service-annotation-placement)
+- [A Quick Guide to the Spring @Lazy Annotation](https://www.baeldung.com/spring-lazy-annotation)
 - More articles: [[next -->]](/spring-boot-modules/spring-boot-annotations-2)
