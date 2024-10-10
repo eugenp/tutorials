@@ -1,0 +1,14 @@
+{
+  "name": "flot-axislabels",
+  "homepage": "https://github.com/markrcote/flot-axislabels",
+  "_release": "a181e09d04",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "a181e09d04d120d05e5bc2baaa8738b5b3670428"
+  },
+  "_source": "git://github.com/markrcote/flot-axislabels.git",
+  "_target": "*",
+  "_originalSource": "flot-axislabels",
+  "_direct": true
+}
