@@ -55,7 +55,7 @@ public class FtpClientIntegrationTest {
 
     @Test
     public void givenRemoteFile_whenDownloading_thenItIsOnTheLocalFilesystem() throws IOException {
-        ftpClient.downloadFile("/foobar.txt", "downloaded_buz.txt");
+        ftpClient.downloadFile("/data/foobar.txt", "downloaded_buz.txt");
 
         assertThat(new File("downloaded_buz.txt")).exists();
         new File("downloaded_buz.txt").delete(); // cleanup

@@ -50,6 +50,16 @@
             <version>${avaitility.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-core</artifactId>
+            <version>${jmh.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-generator-annprocess</artifactId>
+            <version>${jmh.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -58,6 +68,7 @@
         <eclipse-collections.version>8.2.0</eclipse-collections.version>
         <hppc.version>0.7.2</hppc.version>
         <fastutil.version>8.1.0</fastutil.version>
+        <jmh.version>1.37</jmh.version>
     </properties>
 
 </project>
