@@ -1,12 +1,15 @@
 package com.baeldung.setparam;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
+
+import org.apache.commons.text.StringEscapeUtils;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletRequestWrapper;
-
-import org.apache.commons.text.StringEscapeUtils;
 
 public class SanitizeParametersRequestWrapper extends HttpServletRequestWrapper {
 
