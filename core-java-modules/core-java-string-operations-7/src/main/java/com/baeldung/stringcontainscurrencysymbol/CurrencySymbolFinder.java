@@ -9,26 +9,24 @@ import java.util.regex.Pattern;
 
 public class CurrencySymbolFinder {
 
-    public static String currencySymbolMatcher(String symbol, String content) {
+    public static String currencyInputMatcher(String symbol, String content) {
         Pattern pattern = Pattern.compile(symbol, Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(content);
         return matcher.find() ? matcher.group() : "";
     }
 
-    public static String currencyNameMatcher(Locale locale, String content) {
+    public static String localCurrencyInputMatcher(Locale locale, String content) {
         String symbol = Currency.getInstance(locale)
             .getSymbol();
-        return currencySymbolMatcher(symbol, content);
+        return currencyInputMatcher(symbol, content);
     }
 
-    public static Number parseCurrencyAmount(Locale locale, String input) {
-        Number value;
+    public static Number validateCurrencyAmount(Locale locale, String input) {
         try {
-            value = NumberFormat.getCurrencyInstance(locale)
+            return NumberFormat.getCurrencyInstance(locale)
                 .parse(input);
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
-        return value;
     }
 }
