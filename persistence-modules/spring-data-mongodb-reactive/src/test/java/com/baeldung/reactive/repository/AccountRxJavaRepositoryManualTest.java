@@ -2,8 +2,8 @@ package com.baeldung.reactive.repository;
 
 import com.baeldung.reactive.Spring5ReactiveApplication;
 import com.baeldung.reactive.model.Account;
-import io.reactivex.Observable;
-import io.reactivex.Single;
+import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.Single;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

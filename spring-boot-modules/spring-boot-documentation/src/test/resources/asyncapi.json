@@ -34,6 +34,7 @@
   "components": {
     "schemas": {
       "SpringKafkaDefaultHeaders-IncomingPayloadDto": {
+        "title": "SpringKafkaDefaultHeaders-IncomingPayloadDto",
         "type": "object",
         "properties": {
           "__TypeId__": {
@@ -54,6 +55,7 @@
         ]
       },
       "SpringKafkaDefaultHeadersIncomingPayloadDto": {
+        "title": "SpringKafkaDefaultHeadersIncomingPayloadDto",
         "type": "object",
         "properties": {
           "__TypeId__": {
@@ -74,6 +76,7 @@
         ]
       },
       "SpringKafkaDefaultHeadersOutgoingPayloadDto": {
+        "title": "SpringKafkaDefaultHeadersOutgoingPayloadDto",
         "type": "object",
         "properties": {
           "__TypeId__": {
@@ -182,7 +185,6 @@
         },
         "name": "com.baeldung.boot.documentation.springwolf.dto.IncomingPayloadDto",
         "title": "IncomingPayloadDto",
-        "description": "Incoming payload model",
         "bindings": {
           "kafka": {
             "bindingVersion": "0.5.0"
@@ -201,7 +203,6 @@
         },
         "name": "com.baeldung.boot.documentation.springwolf.dto.OutgoingPayloadDto",
         "title": "OutgoingPayloadDto",
-        "description": "Outgoing payload model",
         "bindings": {
           "kafka": {
             "bindingVersion": "0.5.0"
