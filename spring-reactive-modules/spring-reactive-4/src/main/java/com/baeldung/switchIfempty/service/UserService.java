@@ -1,4 +1,4 @@
-package com.baeldung.switchifempty.service;
+package com.baeldung.switchIfempty.service;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
-import com.baeldung.switchifempty.model.User;
+import com.baeldung.switchIfempty.model.User;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 

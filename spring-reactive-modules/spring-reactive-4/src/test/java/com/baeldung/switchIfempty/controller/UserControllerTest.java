@@ -1,4 +1,4 @@
-package com.baeldung.switchifempty.controller;
+package com.baeldung.switchIfempty.controller;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -12,8 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
-import com.baeldung.switchifempty.model.User;
-import com.baeldung.switchifempty.service.UserService;
+import com.baeldung.switchIfempty.model.User;
+import com.baeldung.switchIfempty.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import ch.qos.logback.classic.Level;
