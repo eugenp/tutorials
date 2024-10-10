@@ -43,6 +43,7 @@ public class ZipArchiveControllerUnitTest {
           .andReturn();
 
         MockHttpServletResponse response = result.getResponse();
+        Thread.sleep(1000);
 
         byte[] content = response.getContentAsByteArray();
 
