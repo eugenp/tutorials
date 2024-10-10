@@ -7,16 +7,16 @@ import static org.mockito.Mockito.when;
 import java.util.HashMap;
 import java.util.Map;
 
-import jakarta.servlet.http.HttpServletRequest;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 @RunWith(MockitoJUnitRunner.class)
-public class SetParameterRequestWrapperUnitTest {
+public class SanitizeParametersRequestWrapperUnitTest {
 
     private static final String NEW_VALUE = "NEW VALUE";
 
@@ -28,29 +28,28 @@ public class SetParameterRequestWrapperUnitTest {
     @Before
     public void initBeforeEachTest() {
         parameterMap = new HashMap<>();
-        parameterMap.put("input", new String[] {"inputValue"});
+        parameterMap.put("input", new String[] {"<script>alert('Hello');</script>"});
         when(request.getParameterMap()).thenReturn(parameterMap);
     }
 
     @Test
-    public void whenSetParameterViaWrapper_thenGetParameterShouldReturnTheSameValue() {
-        SetParameterRequestWrapper wrapper = new SetParameterRequestWrapper(request);
-        wrapper.setParameter("newInput", "newInputValue");
-        String actualValue = wrapper.getParameter("newInput");
+    public void whenGetParameterViaWrapper_thenParameterReturnedIsSanitized() {
+        SanitizeParametersRequestWrapper wrapper = new SanitizeParametersRequestWrapper(request);
+        String actualValue = wrapper.getParameter("input");
 
-        assertEquals("newInputValue", actualValue);
+        assertEquals("&lt;script&gt;alert('Hello');&lt;/script&gt;", actualValue);
     }
 
     @Test(expected = UnsupportedOperationException.class)
     public void whenPutValueToWrapperParameterMap_thenThrowsUnsupportedOperationException() {
-        SetParameterRequestWrapper wrapper = new SetParameterRequestWrapper(request);
+        SanitizeParametersRequestWrapper wrapper = new SanitizeParametersRequestWrapper(request);
         Map<String, String[]> wrapperParamMap = wrapper.getParameterMap();
         wrapperParamMap.put("input", new String[] {NEW_VALUE});
     }
 
     @Test
     public void whenSetValueToWrapperParametersStringArray_thenThe2ndCallShouldNotEqualToNewValue() {
-        SetParameterRequestWrapper wrapper = new SetParameterRequestWrapper(request);
+        SanitizeParametersRequestWrapper wrapper = new SanitizeParametersRequestWrapper(request);
         String[] firstCallValues = wrapper.getParameterValues("input");
 
         firstCallValues[0] = NEW_VALUE;

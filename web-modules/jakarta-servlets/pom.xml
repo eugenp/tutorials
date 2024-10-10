@@ -45,12 +45,18 @@
             <artifactId>gson</artifactId>
             <version>${gson.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
+            <version>${commons-text.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <httpclient.version>4.5.3</httpclient.version>
         <gson.version>2.11.0</gson.version>
         <jakarta.servlet-api.version>6.1.0</jakarta.servlet-api.version>
+        <commons-text.version>1.10.0</commons-text.version>
     </properties>
 
 </project>
