@@ -1,10 +1,22 @@
 package com.baeldung.stringsplit;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.util.regex.PatternSyntaxException;
 
 import org.junit.jupiter.api.Test;
 
 public class StringSplitUnitTest {
+
+    @Test
+    void whenSplit_thenCorrect() {
+        String s = "Welcome to Baeldung";
+        String[] expected1 = new String[] { "Welcome", "to", "Baeldung" };
+        String[] expected2 = new String[] { "Welcome", "to Baeldung" };
+        assertArrayEquals(expected1, s.split(" "));
+        assertArrayEquals(expected2, s.split(" ", 2));
+    }
 
     @Test
     void whenSplitEmptyString_thenGetExpectedArray() {
@@ -48,5 +60,14 @@ public class StringSplitUnitTest {
         String[] expectedWithLimit = new String[] { "", "apple", "banana", "" };
         String[] resultWithLimit = s.split(",", -1);
         assertArrayEquals(expectedWithLimit, resultWithLimit);
+    }
+
+    @Test
+    void whenPassInvalidParameterToSplit_thenPatternSyntaxExceptionThrown() {
+        String s = "Welcome*to Baeldung";
+
+        assertThrows(PatternSyntaxException.class, () -> {
+            String[] result = s.split("*");
+        });
     }
 }
