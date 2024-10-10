@@ -850,7 +850,7 @@
                 <module>xstream</module>
                 <module>libraries-data-io-2</module>
                 <module>spring-5-rest-docs</module>
-                <!-- <module>maven-modules</module> --> <!--JAVA 37707-->
+                <module>maven-modules</module>
             </modules>
 
             <properties>
@@ -1161,7 +1161,7 @@
                 <module>xstream</module>
                 <module>libraries-data-io-2</module>
                 <module>spring-5-rest-docs</module>
-                <!-- <module>maven-modules</module> --> <!--JAVA 37707-->
+                <module>maven-modules</module>
             </modules>
 
             <properties>
