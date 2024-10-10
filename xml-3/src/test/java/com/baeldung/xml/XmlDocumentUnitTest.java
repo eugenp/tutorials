@@ -9,14 +9,17 @@ import org.xml.sax.SAXParseException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.io.StringReader;
+import java.nio.charset.StandardCharsets;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class XmlDocumentUnitTest {
 
     @Test
-    public void givenXmlString_whenConvertToDocument_thenSuccess() throws Exception {
+    public void givenXmlString_whenConvertToDocumentViaString_thenSuccess() throws Exception {
         String xmlString = "<root><child>Example</child></root>";
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
@@ -64,4 +67,41 @@ public class XmlDocumentUnitTest {
             builder.parse(new InputSource(new StringReader(invalidXmlString)));
         });
     }
+
+    @Test
+    public void givenXmlString_whenConvertToDocumentViaCharStream_thenSuccess() throws Exception {
+        String xmlString = "<posts><post postId='1'><title>Example Post</title><author>John Doe</author></post></posts>";
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = factory.newDocumentBuilder();
+
+        InputSource inputSource = new InputSource(new StringReader(xmlString));
+        Document document = builder.parse(inputSource);
+
+        assertNotNull(document);
+        assertEquals("posts", document.getDocumentElement().getNodeName());
+
+        Element rootElement = document.getDocumentElement();
+        var childElements = rootElement.getElementsByTagName("post");
+        assertNotNull(childElements);
+        assertEquals(1, childElements.getLength());
+    }
+
+    @Test
+    public void givenXmlString_whenConvertToDocumentViaByteArray_thenSuccess() throws Exception {
+        String xmlString = "<posts><post postId='1'><title>Example Post</title><author>John Doe</author></post></posts>";
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = factory.newDocumentBuilder();
+
+        InputStream inputStream = new ByteArrayInputStream(xmlString.getBytes(StandardCharsets.UTF_8));
+        Document document = builder.parse(inputStream);
+
+        assertNotNull(document);
+        assertEquals("posts", document.getDocumentElement().getNodeName());
+
+        Element rootElement = document.getDocumentElement();
+        var childElements = rootElement.getElementsByTagName("post");
+        assertNotNull(childElements);
+        assertEquals(1, childElements.getLength());
+    }
+
 }
