@@ -64,7 +64,7 @@ class SeekControllerTest {
     }
 
     @Test
-    void givenKafkaBrokerExists_whenSeekByPartition_thenMessageShouldBeRetrieved() {
+    void givenKafkaBrokerExists_whenSeekByPartitionAndOffset_thenMessageShouldBeRetrieved() {
         this.webClient.get()
             .uri("/seek/api/v1/partition/0/offset/2")
             .exchange()
@@ -86,7 +86,7 @@ class SeekControllerTest {
     }
 
     @Test
-    void givenKafkaBrokerExists_whenSeekByEnd_thenLastMessageShouldBeRetrieved() {
+    void givenKafkaBrokerExists_whenSeekByEnd_thenLatestOffsetShouldBeRetrieved() {
         this.webClient.get()
             .uri("/seek/api/v1/partition/0/end")
             .exchange()
