@@ -1,14 +1,15 @@
 package com.baeldung.annotations.service;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.NoSuchBeanDefinitionException;
+import org.springframework.boot.test.context.runner.ApplicationContextRunner;
+
 import com.baeldung.annotations.service.abstracts.AbstractAuthenticationService;
 import com.baeldung.annotations.service.config.AbstractsAnnotatedTestConfiguration;
 import com.baeldung.annotations.service.config.ConcreteClassesAnnotatedTestConfiguration;
 import com.baeldung.annotations.service.config.InterfacesAnnotatedTestConfiguration;
 import com.baeldung.annotations.service.interfaces.AuthenticationService;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.NoSuchBeanDefinitionException;
-import org.springframework.boot.test.context.runner.ApplicationContextRunner;
 
 public class AuthApplicationUnitTest {
 

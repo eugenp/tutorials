@@ -1,7 +1,8 @@
 package com.baeldung.annotations.service.concretes;
 
-import com.baeldung.annotations.service.interfaces.AuthenticationService;
 import org.springframework.stereotype.Service;
+
+import com.baeldung.annotations.service.interfaces.AuthenticationService;
 
 @Service
 public class InMemoryAuthenticationService implements AuthenticationService {

@@ -1,7 +1,8 @@
 package com.baeldung.annotations.service.concretes;
 
-import com.baeldung.annotations.service.abstracts.AbstractAuthenticationService;
 import org.springframework.stereotype.Service;
+
+import com.baeldung.annotations.service.abstracts.AbstractAuthenticationService;
 
 @Service
 public class LdapAuthenticationService extends AbstractAuthenticationService {
