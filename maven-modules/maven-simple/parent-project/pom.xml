@@ -31,7 +31,7 @@
     </dependencyManagement>
 
     <properties>
-        <spring-core.version>5.3.16</spring-core.version>
+        <spring-core.version>6.1.13</spring-core.version>
     </properties>
 
 </project>

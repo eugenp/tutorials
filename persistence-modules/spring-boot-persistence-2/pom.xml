@@ -124,9 +124,9 @@
         <dependency>
             <groupId>com.oracle.database.spring</groupId>
             <artifactId>oracle-spring-boot-starter-ucp</artifactId>
-            <version>3.1.0</version>   <!-- or 2.7.7 for Spring Boot 2.x -->
-            <type>pom</type>
+            <version>${oracle-spring-boot-starter-ucp.version}</version>
         </dependency>
+
     </dependencies>
 
     <build>
@@ -149,6 +149,7 @@
         <mysql-connector-java.version>8.2.0</mysql-connector-java.version>
         <junit-jupiter.version>5.9.3</junit-jupiter.version> <!-- Upgrading to latest version breaks the tests -->
         <spring-boot.version>3.1.5</spring-boot.version>
+        <oracle-spring-boot-starter-ucp.version>24.2.0</oracle-spring-boot-starter-ucp.version>
     </properties>
 
 </project>

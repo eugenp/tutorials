@@ -17,7 +17,7 @@ import com.google.firebase.FirebaseOptions;
 import com.google.firebase.cloud.FirestoreClient;
 
 @Configuration
-@Profile("!integration-test")
+@Profile("!live-test")
 public class FirestoreConfiguration {
 
     @Value("classpath:/private-key.json")
