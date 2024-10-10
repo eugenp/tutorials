@@ -11,7 +11,6 @@ import static org.hamcrest.Matchers.nullValue;
 import java.io.File;
 import java.time.Duration;
 import java.util.Set;
-import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
 import org.junit.Before;

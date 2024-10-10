@@ -1,5 +1,12 @@
 package com.baeldung.selenium.clickusingjavascript;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import java.io.File;
+import java.time.Duration;
+import java.time.temporal.ChronoUnit;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,13 +17,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
-import java.io.File;
-import java.time.Duration;
-import java.time.temporal.ChronoUnit;
 
 public class SeleniumJavaScriptClickLiveTest {
 
