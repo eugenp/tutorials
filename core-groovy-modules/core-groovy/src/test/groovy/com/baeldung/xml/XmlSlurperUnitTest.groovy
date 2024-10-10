@@ -4,6 +4,7 @@ package com.baeldung.xml
 import groovy.xml.XmlUtil
 import spock.lang.Shared
 import spock.lang.Specification
+import groovy.xml.XmlSlurper
 
 class XmlSlurperUnitTest extends Specification {
 
