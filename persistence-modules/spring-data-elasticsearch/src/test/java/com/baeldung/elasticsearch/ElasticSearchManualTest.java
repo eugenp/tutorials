@@ -40,6 +40,7 @@ public class ElasticSearchManualTest {
 
     @BeforeEach
     public void setUp() throws IOException {
+        System.out.println("Test");
         RestClient restClient = RestClient.builder(HttpHost.create("http://localhost:9200"))
             .build();
         ElasticsearchTransport transport = new RestClientTransport(restClient, new JacksonJsonpMapper());
