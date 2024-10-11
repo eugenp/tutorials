@@ -1,4 +1,4 @@
-package com.baeldung.filter;
+package com.baeldung.filters;
 
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
