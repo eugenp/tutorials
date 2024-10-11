@@ -1,20 +1,21 @@
 package com.baeldung.ipaddresses;
 
+import org.apache.commons.net.telnet.TelnetClient;
 import org.apache.commons.net.util.SubnetUtils;
-import org.junit.jupiter.api.Assumptions;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
 public class SubnetScannerUnitTest {
-    
+
     @Test
     public void givenSubnet_whenScanningForDevices_thenReturnConnectedIPs() throws Exception {
         String subnet = getSubnet();
@@ -27,7 +28,7 @@ public class SubnetScannerUnitTest {
             }
         }
 
-        Assumptions.assumeTrue(!connectedIPs.isEmpty());
+        assertFalse(connectedIPs.isEmpty());
     }
 
     @Test
@@ -45,32 +46,40 @@ public class SubnetScannerUnitTest {
                 })
                 .toList();
 
-        Assumptions.assumeTrue(!connectedIPs.isEmpty());
+        assertFalse(connectedIPs.isEmpty());
     }
 
     @Test
     public void givenSubnet_whenCheckingForOpenPorts_thenReturnDevicesWithOpenPort() throws UnknownHostException {
-        String subnet = getSubnet() + ".0/24";
-        SubnetUtils utils = new SubnetUtils(subnet);
+        SubnetUtils utils = new SubnetUtils(getSubnet() + ".0/24");
         int port = 80;
-
         List<String> devicesWithOpenPort = Arrays.stream(utils.getInfo().getAllAddresses())
                 .filter(ip -> {
-                    try (Socket socket = new Socket()) {
-                        socket.connect(new InetSocketAddress(ip, port), 100);
-                        return true;
+                    TelnetClient telnetClient = new TelnetClient();
+                    try {
+                        telnetClient.setConnectTimeout(100);
+                        telnetClient.connect(ip, port);
+                        return telnetClient.isConnected();
                     } catch (Exception e) {
                         return false;
+                    } finally {
+                        try {
+                            if (telnetClient.isConnected()) {
+                                telnetClient.disconnect();
+                            }
+                        } catch (IOException ex) {
+                            System.err.println(ex.getMessage());
+                        }
                     }
                 })
                 .toList();
 
-        Assumptions.assumeTrue(!devicesWithOpenPort.isEmpty());
+        assertFalse(devicesWithOpenPort.isEmpty());
     }
 
     private String getSubnet() throws UnknownHostException {
         InetAddress localHost = InetAddress.getLocalHost();
         byte[] ipAddr = localHost.getAddress();
-        return String.format("%d.%d.%d", (ipAddr[0] & 0xFF), (ipAddr[1] & 0xFF), (ipAddr[2] & 0xFF)); // Returns only the first three octets
+        return String.format("%d.%d.%d", (ipAddr[0] & 0xFF), (ipAddr[1] & 0xFF), (ipAddr[2] & 0xFF));
     }
 }
