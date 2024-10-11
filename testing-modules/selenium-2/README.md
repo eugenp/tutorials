@@ -6,6 +6,7 @@
 - [Finding Element by Attribute in Selenium](https://www.baeldung.com/selenium-find-element-by-attribute)
 - [Automated Visual Regression Testing Over Scalable Cloud Grid](https://www.baeldung.com/automated-visual-regression-testing)
 - [How to Handle Alerts and Popups in Selenium](https://www.baeldung.com/java-selenium-handle-alerts-popups)
+- [Automated Accessibility Testing With Selenium](https://www.baeldung.com/java-selenium-accessibility-testing)
 
 #### Notes:
 - to run the live tests for the article *Fixing Selenium WebDriver Executable Path Error*, follow the manual setup described
