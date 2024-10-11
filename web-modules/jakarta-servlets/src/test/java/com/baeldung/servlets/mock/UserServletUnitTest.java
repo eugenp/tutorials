@@ -1,4 +1,4 @@
-package com.baeldung.servlets;
+package com.baeldung.servlets.mock;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
@@ -10,20 +10,19 @@ import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.Map;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import mockit.Expectations;
 import mockit.Mocked;
 
 class UserServletUnitTest {
 
-    private UserServlet servlet;
+    private com.baeldung.servlets.mock.UserServlet servlet;
     private StringWriter writer;
     
     @Mocked
@@ -65,7 +64,7 @@ class UserServletUnitTest {
     }
 
     @Test
-    void givenHttpServletRequest_whenMockedWithJMockit_thenReturnsParameterValues() throws IOException {
+    void givenHttpServletRequest_whenMockedWithJMockit_thenReturnsParameterValues() throws IOException{
         
         new Expectations() {{
             mockRequest.getParameter("firstName"); result = "JMockit";
@@ -79,7 +78,7 @@ class UserServletUnitTest {
     }
 
     @Test
-    void givenHttpServletRequest_whenUsingMockHttpServletRequest_thenReturnsParameterValues() throws IOException {
+    void givenHttpServletRequest_whenUsingMockHttpServletRequest_thenReturnsParameterValues() throws IOException{
         MockHttpServletRequest request = new MockHttpServletRequest();
         request.setParameter("firstName", "Spring");
         request.setParameter("lastName", "Test");

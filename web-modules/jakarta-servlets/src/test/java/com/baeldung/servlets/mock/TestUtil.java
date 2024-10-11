@@ -1,4 +1,4 @@
-package com.baeldung.servlets;
+package com.baeldung.servlets.mock;
 
 import java.io.BufferedReader;
 import java.io.IOException;

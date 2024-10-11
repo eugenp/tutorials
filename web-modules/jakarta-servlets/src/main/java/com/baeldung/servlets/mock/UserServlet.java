@@ -1,4 +1,4 @@
-package com.baeldung.servlets;
+package com.baeldung.servlets.mock;
 
 import java.io.IOException;
 
@@ -13,7 +13,7 @@ public class UserServlet extends HttpServlet {
     private static final long serialVersionUID = 2923732283720972121L;
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
 

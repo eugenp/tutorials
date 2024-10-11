@@ -15,3 +15,4 @@ This module contains articles about Servlets.
 - [Difference Between request.getSession() and request.getSession(true)](https://www.baeldung.com/java-request-getsession)
 - [Set a Parameter in an HttpServletRequest in Java](https://www.baeldung.com/java-servlet-request-set-parameter)
 - [Get Client Information From HTTP Request in Java](https://www.baeldung.com/java-http-request-client-info)
+- [How to Mock HttpServletRequest](https://www.baeldung.com/java-httpservletrequest-mock)
