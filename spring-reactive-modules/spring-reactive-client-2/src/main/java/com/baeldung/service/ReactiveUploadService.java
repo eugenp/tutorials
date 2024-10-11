@@ -1,7 +1,7 @@
-package com.baeldung.reactive.service;
+package com.baeldung.service;
 
+import java.net.URI;
 
-import com.baeldung.reactive.exception.ServiceException;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -12,9 +12,10 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.util.UriComponentsBuilder;
-import reactor.core.publisher.Mono;
 
-import java.net.URI;
+import com.baeldung.exception.ServiceException;
+
+import reactor.core.publisher.Mono;
 
 @Service
 public class ReactiveUploadService {

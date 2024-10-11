@@ -1,4 +1,8 @@
-package com.baeldung.reactive.service;
+package com.baeldung.service;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.core.io.Resource;
@@ -7,11 +11,8 @@ import org.springframework.http.HttpStatusCode;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.reactive.function.client.ClientResponse;
 import org.springframework.web.reactive.function.client.WebClient;
-import reactor.core.publisher.Mono;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import reactor.core.publisher.Mono;
 
 class ReactiveUploadServiceUnitTest {
 
