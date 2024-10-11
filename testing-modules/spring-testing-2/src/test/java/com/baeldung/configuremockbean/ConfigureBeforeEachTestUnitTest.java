@@ -11,7 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 @SpringBootTest(classes = ConfigureMockBeanApplication.class)
-public class ParentContextConfigUnitTest {
+public class ConfigureBeforeEachTestUnitTest {
 
     @MockBean
     private UserService mockUserService;
