@@ -1,17 +1,15 @@
-package com.baeldung.servlets;
+package com.baeldung.clientinfo;
 
 import java.io.IOException;
 import java.util.Map;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import com.baeldung.servlets.clientinfo.AccountLogic;
 
 @WebServlet(name = "AccountServlet", urlPatterns = "/account")
 public class AccountServlet extends HttpServlet {

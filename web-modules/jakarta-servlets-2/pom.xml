@@ -74,11 +74,6 @@
             <version>${mockito.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>com.github.ua-parser</groupId>
-            <artifactId>uap-java</artifactId>
-            <version>${uap.version}</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -112,7 +107,6 @@
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
         <jetty-maven-plugin.version>10.0.4</jetty-maven-plugin.version>
         <commons-text.version>1.10.0</commons-text.version>
-        <uap.version>1.5.4</uap.version>
         <jakarta.servlet-api.version>6.1.0</jakarta.servlet-api.version>
         <jakarta.servlet.jsp-api.version>4.0.0</jakarta.servlet.jsp-api.version>
         <jakarta.servlet.jsp.jstl-api.version>3.0.0</jakarta.servlet.jsp.jstl-api.version>

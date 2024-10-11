@@ -50,6 +50,11 @@
             <artifactId>commons-text</artifactId>
             <version>${commons-text.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.ua-parser</groupId>
+            <artifactId>uap-java</artifactId>
+            <version>${uap.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -57,6 +62,7 @@
         <gson.version>2.11.0</gson.version>
         <jakarta.servlet-api.version>6.1.0</jakarta.servlet-api.version>
         <commons-text.version>1.10.0</commons-text.version>
+        <uap.version>1.5.4</uap.version>
     </properties>
 
 </project>

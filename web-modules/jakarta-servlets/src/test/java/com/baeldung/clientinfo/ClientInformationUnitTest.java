@@ -1,14 +1,14 @@
-package com.baeldung.servlets.clientinfo;
+package com.baeldung.clientinfo;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.Mockito.when;
 
 import java.util.Map;
 
-import jakarta.servlet.http.HttpServletRequest;
-
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 public class ClientInformationUnitTest {
 
