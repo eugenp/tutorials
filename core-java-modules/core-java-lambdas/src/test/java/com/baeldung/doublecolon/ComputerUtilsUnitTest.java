@@ -65,7 +65,7 @@ public class ComputerUtilsUnitTest {
         List<Computer> inventory = Arrays.asList(c1, c2, c3);
         inventory.forEach(ComputerUtils::repair);
 
-        Assert.assertEquals("Computer repaired", new Integer(100), c1.getHealty());
+        Assert.assertEquals("Computer repaired", Integer.valueOf(100), c1.getHealty());
     }
 
     @Test
