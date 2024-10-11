@@ -5,6 +5,8 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.text.PDFTextStripper;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -15,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class AddHeaderFooterToPDFUnitTest {
 
     @Test
-    void givenHeaderAndFooter_whenCreatingPDF_thenFileIsCreated() throws IOException {
+    void givenHeaderAndFooter_whenCreatingPDF_thenHeaderFooterAreOnEachPage() throws IOException {
         String dest = "documentWithHeaderFooter.pdf";
         PdfWriter writer = new PdfWriter(dest);
         PdfDocument pdf = new PdfDocument(writer);
@@ -27,7 +29,13 @@ public class AddHeaderFooterToPDFUnitTest {
         document.add(new Paragraph("This document contains a header and footer on every page."));
         document.close();
 
-        File file = new File(dest);
-        assertTrue(file.exists());
+        PDDocument pdDocument = PDDocument.load(new File(dest));
+        PDFTextStripper stripper = new PDFTextStripper();
+
+        String text = stripper.getText(pdDocument);
+        pdDocument.close();
+
+        assertTrue(text.contains("Header text"));
+        assertTrue(text.contains("Footer text"));
     }
 }
