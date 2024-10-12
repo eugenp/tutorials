@@ -1,4 +1,4 @@
-package tableformatter;
+package com.baeldung.tableformatter;
 
 import de.vandermeer.asciitable.AsciiTable;
 
