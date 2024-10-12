@@ -1,14 +1,14 @@
 package com.splunk.log4j.controller;
 
-import com.splunk.log4j.dto.Student;
-import com.splunk.log4j.service.StudentService;
+import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import java.util.List;
+import com.splunk.log4j.dto.Student;
+import com.splunk.log4j.service.StudentService;
 
 @RestController
 @RequestMapping("students")

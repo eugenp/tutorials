@@ -1,11 +1,11 @@
 package com.splunk.log4j.service;
 
-import com.splunk.log4j.dto.Student;
+import java.util.ArrayList;
+import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
-import java.util.List;
+import com.splunk.log4j.dto.Student;
 
 @Service
 public class StudentService {

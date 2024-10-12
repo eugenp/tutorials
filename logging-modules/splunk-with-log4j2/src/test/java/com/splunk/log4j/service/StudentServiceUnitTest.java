@@ -1,11 +1,11 @@
 package com.splunk.log4j.service;
 
-import com.splunk.log4j.dto.Student;
+import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import java.util.List;
+import com.splunk.log4j.dto.Student;
 
 @SpringBootTest
 class StudentServiceUnitTest {
