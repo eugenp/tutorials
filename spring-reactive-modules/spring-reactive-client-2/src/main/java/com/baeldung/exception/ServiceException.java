@@ -1,4 +1,4 @@
-package com.baeldung.reactive.exception;
+package com.baeldung.exception;
 
 public class ServiceException extends RuntimeException{
 
