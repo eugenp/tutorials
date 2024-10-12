@@ -3,6 +3,7 @@ package com.baeldung.xml
 
 import spock.lang.Shared
 import spock.lang.Specification
+import groovy.xml.XmlParser
 
 class XmlParserUnitTest extends Specification {
 
