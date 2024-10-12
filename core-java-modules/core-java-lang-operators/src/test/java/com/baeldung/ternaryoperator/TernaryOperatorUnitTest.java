@@ -1,6 +1,7 @@
 package com.baeldung.ternaryoperator;
 
 import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.Test;
 
 public class TernaryOperatorUnitTest {
@@ -11,6 +12,14 @@ public class TernaryOperatorUnitTest {
         String msg = number > 10 ? "Number is greater than 10" : "Number is less than or equal to 10";
 
         assertThat(msg).isEqualTo("Number is less than or equal to 10");
+    }
+
+    @Test
+    public void whenUsingTernaryOperatorAsReturnStatement_thenConditionIsEvaluatedAndValueReturned() {
+        int number = 11;
+        String msg = TernaryOperator.checkNumber(number);
+
+        assertThat(msg).isEqualTo("Number is greater than 10");
     }
 
     @Test

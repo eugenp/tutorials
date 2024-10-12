@@ -8,3 +8,4 @@
 - [Lazy Verification with Mockito 2](https://www.baeldung.com/mockito-lazy-verification)
 - [Difference Between when() and doXxx() Methods in Mockito](https://www.baeldung.com/java-mockito-when-vs-do)
 - [Mockito and Fluent APIs](https://www.baeldung.com/mockito-fluent-apis)
+- [Mocking an Enum Using Mockito](https://www.baeldung.com/java-mockito-mocking-enum)
