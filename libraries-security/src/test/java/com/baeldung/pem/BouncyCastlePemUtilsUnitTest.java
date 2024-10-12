@@ -23,6 +23,7 @@ public class BouncyCastlePemUtilsUnitTest {
 
         assertEquals("X.509", publicKey2.getFormat());
         assertEquals("RSA", publicKey2.getAlgorithm());
+        System.out.println("test");
     }
 
     @Test
