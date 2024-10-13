@@ -136,6 +136,7 @@
         <module>spring-boot-persistence-5</module>
         <module>hibernate-annotations-2</module>
         <module>hibernate-reactive</module>
+        <module>my-sql</module>
     </modules>
 
     <properties>
