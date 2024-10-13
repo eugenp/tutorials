@@ -15,7 +15,7 @@ import com.baeldung.ddlauto.repository.PersonRepository;
 
 @DataJpaTest
 @ActiveProfiles("ddlauto")
-class SpringBootDDLAutoTest {
+class SpringBootDDLAutoUnitTest {
 
     @Autowired
     private PersonRepository personRepository;
