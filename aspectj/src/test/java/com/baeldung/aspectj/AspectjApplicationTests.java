@@ -19,32 +19,20 @@ class AspectjApplicationTests {
     UserRepository userRepository;
 
     @Test
-    void testCreateUserService() {
+    void testUserService() {
         userService.createUser("create new user john", 21);
-    }
-
-    @Test
-    void testCreateUserRepository() {
-        userRepository.createUser("john", 21);
-    }
-
-    @Test
-    void testSendMessage() {
-        messageService.sendMessage("send message from user john");
-    }
-
-    @Test
-    void testReceiveMessage() {
-        messageService.receiveMessage("receive message from user john");
-    }
-
-    @Test
-    void testDeleteUserService() {
         userService.deleteUser("john");
     }
 
     @Test
-    void testDeleteUserRepository() {
+    void testMessageService() {
+        messageService.sendMessage("send message from user john");
+        messageService.receiveMessage("receive message from user john");
+    }
+
+    @Test
+    void testUserRepository() {
+        userRepository.createUser("john", 21);
         userRepository.deleteUser("john");
     }
 }
