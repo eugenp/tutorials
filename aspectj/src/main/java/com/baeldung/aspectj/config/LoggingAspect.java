@@ -8,11 +8,24 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class LoggingAspect {
-
-    @Before("execution(* com.baeldung.aspectj.service..*(..))")
-    public void logBeforeMethodExecution(JoinPoint joinPoint) {
+    @Before("execution(* com.baeldung.aspectj..*(..))")
+    public void pointcutInsideAspectjPackage(JoinPoint joinPoint) {
         String methodName = joinPoint.getSignature().getName();
         String className = joinPoint.getTarget().getClass().getSimpleName();
-        System.out.println("Executing method: " + className + "." + methodName);
+        System.out.println("Executing method inside aspectj package: " + className + "." + methodName);
+    }
+
+    @Before("execution(* com.baeldung.aspectj.service..*(..))")
+    public void pointcutInsideServicePackage(JoinPoint joinPoint) {
+        String methodName = joinPoint.getSignature().getName();
+        String className = joinPoint.getTarget().getClass().getSimpleName();
+        System.out.println("Executing method inside service package: " + className + "." + methodName);
+    }
+
+    @Before("execution(* com.baeldung.aspectj..*(..)) && !execution(* com.baeldung.aspectj.repository..*(..))")
+    public void pointcutWithoutSubPackageRepository(JoinPoint joinPoint) {
+        String methodName = joinPoint.getSignature().getName();
+        String className = joinPoint.getTarget().getClass().getSimpleName();
+        System.out.println("Executing method without sub-package repository: " + className + "." + methodName);
     }
 }
