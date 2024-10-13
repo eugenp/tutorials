@@ -10,3 +10,5 @@ This module contains articles about sorting arrays in Java
 - [Get the Indices of an Array After Sorting in Java](https://www.baeldung.com/java-indices-array-after-sorting)
 - [Using Comparator.nullsLast() to Avoid NullPointerException When Sorting](https://www.baeldung.com/java-comparator-nullslast-avoid-nullpointerexception)
 - [Sort an Array of Strings According to String Lengths](https://www.baeldung.com/java-sort-string-array-length-comparator)
+- [Efficient Way to Insert a Number Into a Sorted Array of Numbers in Java](https://www.baeldung.com/java-array-sorted-insert-number)
+
