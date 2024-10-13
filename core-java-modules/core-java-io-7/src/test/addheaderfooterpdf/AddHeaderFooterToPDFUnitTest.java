@@ -28,6 +28,11 @@ public class AddHeaderFooterToPDFUnitTest {
 
         document.add(new Paragraph("This document contains a header and footer on every page."));
         document.close();
+    }
+
+    @Test
+    void givenHeaderAndFooter_whenTestingPDF_thenHeaderFooterAreVerified() throws IOException {
+        String dest = "documentWithHeaderFooter.pdf";
 
         PDDocument pdDocument = PDDocument.load(new File(dest));
         PDFTextStripper stripper = new PDFTextStripper();
