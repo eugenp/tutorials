@@ -13,7 +13,7 @@ class StringMatchingSpec extends Specification {
         expect:
         p instanceof Pattern
 
-        and: "you can use slash strings to avoid escaping of backslash"
+        and: "you can use slash strings to avoid escaping of blackslash"
         def digitPattern = ~/\d*/
         digitPattern.matcher('4711').matches()
     }

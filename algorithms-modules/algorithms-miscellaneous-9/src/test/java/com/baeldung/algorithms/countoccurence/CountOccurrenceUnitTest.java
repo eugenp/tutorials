@@ -1,8 +1,8 @@
 package com.baeldung.algorithms.countoccurence;
 
-import static com.baledung.algorithms.countoccurence.CountOccurrence.countOccurrencesWithCounter;
-import static com.baledung.algorithms.countoccurence.CountOccurrence.countOccurrencesWithMap;
-import static com.baledung.algorithms.countoccurence.CountOccurrence.countOccurrencesWithStream;
+import static com.baeldung.algorithms.countoccurence.CountOccurrence.countOccurrencesWithCounter;
+import static com.baeldung.algorithms.countoccurence.CountOccurrence.countOccurrencesWithMap;
+import static com.baeldung.algorithms.countoccurence.CountOccurrence.countOccurrencesWithStream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Map;

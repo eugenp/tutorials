@@ -43,16 +43,6 @@
             <version>${c3p0.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-            <version>${springframework.spring-web.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-            <version>${springframework.boot.spring-boot-starter.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
             <version>${mysql-connector.version}</version>
@@ -60,12 +50,23 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>17</source>
+                    <target>17</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
         <commons-dbcp2.version>2.9.0</commons-dbcp2.version>
         <HikariCP.version>5.1.0</HikariCP.version>
         <c3p0.version>0.9.5.5</c3p0.version>
-        <springframework.boot.spring-boot-starter.version>3.0.4</springframework.boot.spring-boot-starter.version>
-        <springframework.spring-web.version>6.0.6</springframework.spring-web.version>
         <mysql-connector.version>8.2.0</mysql-connector.version>
     </properties>
 
