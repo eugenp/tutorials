@@ -1,10 +1,11 @@
 package com.baeldung.selenium.visualregression.tests;
 
-import com.baeldung.selenium.visualregression.DriverManager;
-import com.baeldung.selenium.visualregression.pages.CameraProductPage;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
+import com.baeldung.selenium.visualregression.DriverManager;
+import com.baeldung.selenium.visualregression.pages.CameraProductPage;
 
 public class SeleniumVisualRegressionLiveTest {
 

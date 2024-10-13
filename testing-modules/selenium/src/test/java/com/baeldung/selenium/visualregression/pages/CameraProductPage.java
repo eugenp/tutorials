@@ -1,9 +1,9 @@
 package com.baeldung.selenium.visualregression.pages;
 
+import java.text.MessageFormat;
+
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-
-import java.text.MessageFormat;
 
 public class CameraProductPage {
     private static String SCREEN_NAME = "Camera-Product-Page";
