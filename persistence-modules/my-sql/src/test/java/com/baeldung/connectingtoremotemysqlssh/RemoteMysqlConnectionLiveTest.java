@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class RemoteMysqlConnectionLiveTest {
 
     @Test
-    public void givenJschSessionAndMySqlServer_whenConnectingToRemoteDatabase_thenSuccess() throws JSchException, SQLException {
+    public void givenJschSessionAndMySqlServer_whenConnectingToRemoteMySqlDatabase_thenSuccess() throws JSchException, SQLException {
         JSch jsch = setUpJsch();
         Session session = createSession(jsch);
         int port = RemoteMysqlConnection.tunnelNetwork(session);
