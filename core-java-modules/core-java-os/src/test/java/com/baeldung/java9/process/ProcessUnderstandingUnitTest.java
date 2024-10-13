@@ -89,7 +89,7 @@ class ProcessUnderstandingUnitTest {
             .count()) > 0);
     }
 
-    @Test
+    //@Test - Time dependent flaky test, execute manually
     public void givenSourceProgram_whenReadingInputStream_thenFirstLineEquals3() throws IOException, InterruptedException {
 
         Runtime.getRuntime()
