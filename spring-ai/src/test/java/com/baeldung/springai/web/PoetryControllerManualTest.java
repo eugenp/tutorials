@@ -33,8 +33,8 @@ public class PoetryControllerManualTest {
     @Test
     public void givenGetCatHaiku_whenCallingAiClient_thenCorrect() throws Exception {
         mockMvc.perform(get("/ai/cathaiku"))
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsStringIgnoringCase("cat")));
+          .andExpect(status().isOk())
+          .andExpect(content().string(containsStringIgnoringCase("cat")));
     }
 
     @Test
@@ -42,11 +42,11 @@ public class PoetryControllerManualTest {
         String genre = "lyric";
         String theme = "coffee";
         mockMvc.perform(get("/ai/poetry?genre={genre}&theme={theme}", genre, theme))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.genre").value(containsStringIgnoringCase(genre)))
-                .andExpect(jsonPath("$.theme").value(containsStringIgnoringCase(theme)))
-                .andExpect(jsonPath("$.poetry").isNotEmpty())
-                .andExpect(jsonPath("$.title").exists());
+          .andExpect(status().isOk())
+          .andExpect(jsonPath("$.genre").value(containsStringIgnoringCase(genre)))
+          .andExpect(jsonPath("$.theme").value(containsStringIgnoringCase(theme)))
+          .andExpect(jsonPath("$.poetry").isNotEmpty())
+          .andExpect(jsonPath("$.title").exists());
     }
 }
 

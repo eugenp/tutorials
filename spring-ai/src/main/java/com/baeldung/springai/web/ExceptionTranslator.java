@@ -17,8 +17,8 @@ public class ExceptionTranslator extends ResponseEntityExceptionHandler {
     @ExceptionHandler(OpenAiApiException.class)
     ProblemDetail handleOpenAiHttpException(OpenAiApiException ex) {
         HttpStatus status = Optional
-                .ofNullable(HttpStatus.resolve(400))
-                .orElse(HttpStatus.BAD_REQUEST);
+          .ofNullable(HttpStatus.resolve(400))
+          .orElse(HttpStatus.BAD_REQUEST);
 
         ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(status, ex.getMessage());
         problemDetail.setTitle(OPEN_AI_CLIENT_RAISED_EXCEPTION);
