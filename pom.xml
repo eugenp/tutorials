@@ -639,6 +639,7 @@
             </build>
 
             <modules>
+                <module>maven-modules</module>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
                 <module>parent-boot-3</module>
@@ -850,7 +851,6 @@
                 <module>xstream</module>
                 <module>libraries-data-io-2</module>
                 <module>spring-5-rest-docs</module>
-                <module>maven-modules</module>
             </modules>
 
             <properties>
