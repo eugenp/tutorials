@@ -1,6 +1,7 @@
 package com.baeldung.deletewrequestbody.model;
 
 public class Body {
+
     private String name;
     private Integer value;
 
