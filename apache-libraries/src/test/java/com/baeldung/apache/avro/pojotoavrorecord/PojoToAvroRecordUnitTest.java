@@ -9,7 +9,7 @@ import org.apache.avro.generic.GenericData;
 import org.apache.avro.util.Utf8;
 import org.junit.Test;
 
-public class PojoToAvroRecordTest {
+public class PojoToAvroRecordUnitTest {
 
     Pojo pojo = new Pojo();
 
