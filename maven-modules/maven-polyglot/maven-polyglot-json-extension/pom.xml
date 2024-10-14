@@ -48,7 +48,7 @@
 
     <properties>
         <maven-core.version>3.5.4</maven-core.version>
-        <plexus.component.version>2.1.1</plexus.component.version>
+        <plexus.component.version>2.2.0</plexus.component.version>
     </properties>
 
 </project>
