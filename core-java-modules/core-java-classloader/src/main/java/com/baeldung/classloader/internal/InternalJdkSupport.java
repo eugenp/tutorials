@@ -26,7 +26,7 @@ public class InternalJdkSupport {
         } catch (ClassNotFoundException e) {
             log.warn("JDK {} not supported => {} not available.", jdkInfo(), e.getMessage());
         } catch (NoSuchFieldException e) {
-            log.warn("JDK {} not supported => {} BuiltinClassLoader.ucp not present", jdkInfo());
+            log.warn("JDK {} not supported => BuiltinClassLoader.ucp not present", jdkInfo());
         } catch (IllegalAccessException e) {
             log.warn("BuiltinClassLoader.ucp requires --add-opens java.base/jdk.internal.loader=baeldung.classloader");
         }
@@ -53,7 +53,6 @@ public class InternalJdkSupport {
         } catch (Exception e) {
             throw new InternalError(e);
         }
-
     }
 
     static boolean isBuiltIn(ClassLoader loader) {
@@ -75,7 +74,6 @@ public class InternalJdkSupport {
             vendor = System.getProperty("java.vendor");
             version = System.getProperty("java.vendor");
         }
-
         return String.format("{name: %s, vendor: %s, version: %s}", name, vendor, version);
     }
 }
