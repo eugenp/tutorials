@@ -23,7 +23,7 @@ public class PlainDeleteClient {
             .header("Content-Type", "application/json")
             .method("DELETE", body)
             .build();
-        
+
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         return response.body();
     }

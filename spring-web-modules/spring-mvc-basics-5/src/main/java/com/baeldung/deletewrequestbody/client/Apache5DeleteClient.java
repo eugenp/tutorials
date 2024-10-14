@@ -31,7 +31,7 @@ public class Apache5DeleteClient {
                     return EntityUtils.toString(entity);
                 }
             };
-            
+
             return client.execute(delete, handler);
         }
     }
