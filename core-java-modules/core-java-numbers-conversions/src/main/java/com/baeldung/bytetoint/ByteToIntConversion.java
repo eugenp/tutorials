@@ -11,7 +11,7 @@ public class ByteToIntConversion {
     }
 
     static int usingByteIntValue(byte b){
-        Byte byteObj = new Byte(b);
+        Byte byteObj = Byte.valueOf(b);
         return byteObj.intValue();
     }
 
