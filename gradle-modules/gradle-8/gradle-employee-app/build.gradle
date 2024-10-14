@@ -15,10 +15,6 @@ task configured {
     println 'The project is configured'
 }
 
-wrapper {
-    gradleVersion = '5.3.1'
-}
-
 repositories {
     mavenCentral()
 }
