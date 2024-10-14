@@ -21,7 +21,6 @@ public class BasicClasspathResolver implements ClasspathResolver {
         if(loader instanceof URLClassLoader ucl) {
             var urls = Arrays.asList(ucl.getURLs());
 
-
             log.info("{} has {} urls", loader, urls.size());
 
             result.addAll(urls);

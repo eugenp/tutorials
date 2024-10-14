@@ -31,7 +31,6 @@ public interface ClasspathResolver {
             collectClasspath(loader, result);
             loader = loader.getParent();
         }
-
         return result;
     }
 
