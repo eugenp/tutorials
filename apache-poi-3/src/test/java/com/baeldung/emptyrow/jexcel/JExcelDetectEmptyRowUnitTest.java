@@ -1,6 +1,5 @@
-package com.baeldung.jexcel;
+package com.baeldung.emptyrow.jexcel;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;

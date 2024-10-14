@@ -1,4 +1,4 @@
-package com.baeldung.fastexcel;
+package com.baeldung.emptyrow.fastexcel;
 
 import org.dhatim.fastexcel.reader.Cell;
 import org.dhatim.fastexcel.reader.Row;

@@ -1,4 +1,4 @@
-package com.baeldung.poi.columnnames;
+package com.baeldung.emptyrow.poi;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -19,9 +19,9 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-public class ExcelUtils {
+public class PoiHelper {
 
-    public static Workbook openWorkbook(String filePath) throws IOException {
+    public Workbook openWorkbook(String filePath) throws IOException {
         try (InputStream fileInputStream = new FileInputStream(filePath)) {
             if (filePath.toLowerCase()
               .endsWith("xlsx")) {
@@ -37,39 +37,17 @@ public class ExcelUtils {
               "The file format is not supported. Ensure the file is a valid Excel file.", e);
         }
     }
-
-    public static Sheet getSheet(Workbook workbook, String sheetName) {
-        return workbook.getSheet(sheetName);
-    }
-
-    public static List<String> getColumnNames1(Sheet sheet) {
-        List<String> columnNames = new ArrayList<>();
-        Row headerRow = sheet.getRow(0);
-        if (headerRow != null) {
-            for (Cell cell : headerRow) {
-                if (cell.getCellType() != CellType.BLANK && cell.getStringCellValue() != null
-                  && !cell.getStringCellValue()
-                  .trim()
-                  .isEmpty()) {
-                    columnNames.add(cell.getStringCellValue()
-                      .trim());
-                }
+    
+    public boolean isRowEmpty(Row row) {
+        if (row == null) {
+            return true;
+        }
+        for (int cellNum = row.getFirstCellNum(); cellNum < row.getLastCellNum(); cellNum++) {
+            Cell cell = row.getCell(cellNum);
+            if (cell != null && cell.getCellType() != CellType.BLANK) {
+                return false;
             }
         }
-        return columnNames;
-    }
-
-    public static List<String> getColumnNames(Sheet sheet) {
-        Row headerRow = sheet.getRow(0);
-        if (headerRow == null) {
-            return Collections.EMPTY_LIST;
-        }
-        return StreamSupport.stream(headerRow.spliterator(), false)
-          .filter(cell -> cell.getCellType() != CellType.BLANK)
-          .map(nonEmptyCell -> nonEmptyCell.getStringCellValue())
-          .filter(cellValue -> cellValue != null && !cellValue.trim()
-            .isEmpty())
-          .map(String::trim)
-          .collect(Collectors.toList());
+        return true;
     }
 }
