@@ -11,7 +11,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.util.SocketUtils;
+import org.springframework.test.util.TestSocketUtils;
 
 import com.baeldung.tailablecursor.domain.Log;
 import com.baeldung.tailablecursor.domain.LogLevel;
@@ -33,7 +33,7 @@ import de.flapdoodle.embed.process.runtime.Network;
 public class ErrorLogsCounterManualTest {
 
     private static final String SERVER = "localhost";
-    private static final int PORT = SocketUtils.findAvailableTcpPort(10000);
+    private static final int PORT = TestSocketUtils.findAvailableTcpPort();
     private static final String DB_NAME = "test";
     private static final String COLLECTION_NAME = Log.class.getName().toLowerCase();
 

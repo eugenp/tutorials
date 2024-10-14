@@ -35,6 +35,11 @@
             <version>${poi-ooxml-schemas.version}</version>
         </dependency>
         <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.apache.xmlbeans</groupId>
             <artifactId>xmlbeans</artifactId>
             <version>${xmlbeans.version}</version>
@@ -77,7 +82,8 @@
     </dependencies>
 
     <properties>
-        <poi.version>5.2.5</poi.version>
+        <h2.version>2.3.232</h2.version>
+        <poi.version>5.3.0</poi.version>
         <poi-ooxml-schemas.version>4.1.2</poi-ooxml-schemas.version>
         <xmlbeans.version>5.2.0</xmlbeans.version>
         <fastexcel.version>0.17.0</fastexcel.version>

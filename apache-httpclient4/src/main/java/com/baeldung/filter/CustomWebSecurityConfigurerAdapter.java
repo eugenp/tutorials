@@ -31,7 +31,7 @@ public class CustomWebSecurityConfigurerAdapter {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
           .authorizeRequests()
-          .antMatchers("/securityNone")
+          .requestMatchers("/securityNone")
           .permitAll()
           .anyRequest()
           .authenticated()
