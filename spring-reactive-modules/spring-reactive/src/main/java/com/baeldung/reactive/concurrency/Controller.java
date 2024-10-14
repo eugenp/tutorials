@@ -1,6 +1,6 @@
 package com.baeldung.reactive.concurrency;
 
-import io.reactivex.rxjava3.core.Flowable;
+import io.reactivex.rxjava3.core.Observable;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -64,13 +64,13 @@ public class Controller {
     }
 
     @GetMapping("/threads/rxjava")
-    public Flowable<String> getIndexRxJava() {
-        Flowable.fromIterable(Arrays.asList("Hello", "World"))
+    public Observable<String> getIndexRxJava() {
+        Observable.fromIterable(Arrays.asList("Hello", "World"))
           .map(s -> s.toUpperCase())
           .observeOn(io.reactivex.rxjava3.schedulers.Schedulers.trampoline())
           .doOnNext(s -> logger.info("String: {}", s))
           .subscribe();
-        return Flowable.fromIterable(getThreads());
+        return Observable.fromIterable(getThreads());
     }
 
     @GetMapping("/threads/mongodb")
