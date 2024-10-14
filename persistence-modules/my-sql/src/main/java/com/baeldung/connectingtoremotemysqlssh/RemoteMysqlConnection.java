@@ -3,8 +3,7 @@ package com.baeldung.connectingtoremotemysqlssh;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -49,20 +48,23 @@ public class RemoteMysqlConnection {
 
     public static void createTable(Connection connection, String tableName) throws SQLException {
         String createTableSQL = "CREATE TABLE " + tableName + " (id INT, data VARCHAR(255))";
-        Statement statement = connection.createStatement();
-        statement.execute(createTableSQL);
+        try (Statement statement = connection.createStatement()) {
+            statement.execute(createTableSQL);
+        }
     }
 
     public static void insertData(Connection connection, String tableName) throws SQLException {
         String insertDataSQL = "INSERT INTO " + tableName + " (id, data) VALUES (1, 'test data')";
-        Statement statement = connection.createStatement();
-        statement.execute(insertDataSQL);
+        try (Statement statement = connection.createStatement()) {
+            statement.execute(insertDataSQL);
+        }
     }
 
     public static boolean isTableExists(Connection connection, String tableName) throws SQLException {
-        Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery("SHOW TABLES LIKE '" + tableName + "'");
-        return resultSet.next();
+        try (Statement statement = connection.createStatement()) {
+            ResultSet resultSet = statement.executeQuery("SHOW TABLES LIKE '" + tableName + "'");
+            return resultSet.next();
+        }
     }
 
     public static void disconnect(Session session, Connection connection) throws SQLException {
