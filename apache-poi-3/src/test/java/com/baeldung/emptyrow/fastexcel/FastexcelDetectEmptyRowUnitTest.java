@@ -1,12 +1,9 @@
-package com.baeldung.fastexcel;
+package com.baeldung.emptyrow.fastexcel;
 
 import static org.junit.Assert.assertTrue;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.Optional;
 import java.util.stream.Stream;
 
 import org.dhatim.fastexcel.reader.ReadableWorkbook;

@@ -8,15 +8,12 @@ import java.io.IOException;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ExcelUtilsUnitTest {
 
     private static final String XLS_TEST_FILE_PATH = "src/main/resources/consumer_info.xls";
     private static final String XLSX_TEST_FILE_PATH = "src/main/resources/food_info.xlsx";
-    private static final String XLS_EMPTY_FILE_PATH = "src/main/resources/empty_excel_file.xls";
-    private static final String XLSX_EMPTY_FILE_PATH = "src/main/resources/empty_excel_file.xlsx";
     private static final String SHEET_NAME = "Sheet1";
 
     @Test
@@ -45,27 +42,5 @@ public class ExcelUtilsUnitTest {
         assertTrue(columnNames.contains("City"));
 
         workbook.close();
-    }
-    
-    @Test
-    public void givenXLSXFile_whenParsingExcelFile_thenDetectAllRowsEmpty() throws IOException {
-        Workbook workbook = ExcelUtils.openWorkbook(XLSX_EMPTY_FILE_PATH);
-        Sheet sheet = workbook.getSheetAt(0);
-
-        for (int rowNum = 0; rowNum <= sheet.getLastRowNum(); rowNum++) {
-            Row row = sheet.getRow(rowNum);
-            assertTrue(ExcelUtils.isRowEmpty(row));
-        }
-    }
-    
-    @Test
-    public void givenXLSFile_whenParsingExcelFile_thenDetectAllRowsEmpty() throws IOException {
-        Workbook workbook = ExcelUtils.openWorkbook(XLS_EMPTY_FILE_PATH);
-        Sheet sheet = workbook.getSheetAt(0);
-
-        for (int rowNum = 0; rowNum <= sheet.getLastRowNum(); rowNum++) {
-            Row row = sheet.getRow(rowNum);
-            assertTrue(ExcelUtils.isRowEmpty(row));
-        }
     }
 }

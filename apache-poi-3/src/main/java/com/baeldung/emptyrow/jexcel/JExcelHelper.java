@@ -1,4 +1,4 @@
-package com.baeldung.jexcel;
+package com.baeldung.emptyrow.jexcel;
 
 import jxl.Cell;
 
