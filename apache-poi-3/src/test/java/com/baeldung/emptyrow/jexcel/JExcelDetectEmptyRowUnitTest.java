@@ -33,5 +33,4 @@ public class JExcelDetectEmptyRowUnitTest {
             assertTrue(jexcelHelper.isRowEmpty(row));
         }
     }
-
 }
