@@ -10,3 +10,4 @@ This module contains articles about Servlets.
 - [Returning a JSON Response from a Servlet](https://www.baeldung.com/servlet-json-response)
 - [Jakarta EE Servlet Exception Handling](https://www.baeldung.com/servlet-exceptions)
 - [Context and Servlet Initialization Parameters](https://www.baeldung.com/context-servlet-initialization-param)
+- [The Difference between getRequestURI and getPathInfo in HttpServletRequest](https://www.baeldung.com/http-servlet-request-requesturi-pathinfo)
