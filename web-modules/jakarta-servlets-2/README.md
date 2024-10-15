@@ -12,3 +12,4 @@ This module contains articles about Servlets.
 - [Context and Servlet Initialization Parameters](https://www.baeldung.com/context-servlet-initialization-param)
 - [The Difference between getRequestURI and getPathInfo in HttpServletRequest](https://www.baeldung.com/http-servlet-request-requesturi-pathinfo)
 - [Difference Between request.getSession() and request.getSession(true)](https://www.baeldung.com/java-request-getsession)
+- More articles: [[<-- prev]](/jakarta-servlets)
