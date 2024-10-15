@@ -1,6 +1,7 @@
-package com.baeldung.servlets;
+package com.baeldung;
 
 import java.io.IOException;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebInitParam;
 import jakarta.servlet.annotation.WebServlet;
