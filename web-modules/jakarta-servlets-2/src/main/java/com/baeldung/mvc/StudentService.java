@@ -1,6 +1,4 @@
-package com.baeldung.service;
-
-import com.baeldung.model.Student;
+package com.baeldung.mvc;
 
 import java.util.Optional;
 
