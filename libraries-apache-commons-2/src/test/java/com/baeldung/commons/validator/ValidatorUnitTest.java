@@ -22,13 +22,16 @@ import org.junit.jupiter.api.Test;
 class ValidatorUnitTest {
 
     @Test
-    void givenDate_validationCalled_checksDate() {
+    void givenDate_whenValidationIsCalled_thenChecksDate() {
         DateValidator validator = DateValidator.getInstance();
-        assertNotNull(validator.validate("28/01/2024", "dd/MM/yyyy"));
-        assertNull(validator.validate("28/13/2024", "dd/MM/yyyy"));
+        String validDate = "28/01/2024";
+        String invalidDate = "28/13/2024";
 
-        assertTrue(validator.isValid("28/01/2024", "dd/MM/yyyy"));
-        assertFalse(validator.isValid("28/13/2024", "dd/MM/yyyy"));
+        assertNotNull(validator.validate(validDate, "dd/MM/yyyy"));
+        assertTrue(validator.isValid(validDate, "dd/MM/yyyy"));
+
+        assertNull(validator.validate(invalidDate, "dd/MM/yyyy"));
+        assertFalse(validator.isValid(invalidDate, "dd/MM/yyyy"));
 
         GregorianCalendar gregorianCalendar = new GregorianCalendar(2024, Calendar.JANUARY, 28, 10, 30);
         gregorianCalendar.setTimeZone(TimeZone.getTimeZone("GMT"));
@@ -41,7 +44,7 @@ class ValidatorUnitTest {
     }
 
     @Test
-    void givenNumericString_validateIsCalled_returnsNumber() {
+    void givenNumericString_whenValidationIsCalled_thenReturnsNumber() {
         IntegerValidator validator = IntegerValidator.getInstance();
         String pattern = "00000";
         int number = 1234;
@@ -53,7 +56,7 @@ class ValidatorUnitTest {
     }
 
     @Test
-    void givenCurrencyString_validateIsCalled_returnsCurrency() {
+    void givenCurrencyString_whenValidationIsCalled_thenReturnsCurrency() {
         BigDecimalValidator validator = CurrencyValidator.getInstance();
 
         assertEquals(new BigDecimal("1234.56"), validator.validate("$1,234.56", Locale.US));
