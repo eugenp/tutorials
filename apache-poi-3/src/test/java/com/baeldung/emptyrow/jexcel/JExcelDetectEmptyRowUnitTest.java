@@ -4,7 +4,6 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
-import org.junit.Before;
 import org.junit.Test;
 
 import jxl.Cell;
@@ -15,13 +14,8 @@ import jxl.read.biff.BiffException;
 
 public class JExcelDetectEmptyRowUnitTest {
 
-    private JExcelHelper jexcelHelper;
+    private JExcelHelper jexcelHelper = new JExcelHelper();
     private static final String EMPTY_FILE_PATH = "src/main/resources/empty_excel_file.xls";
-
-    @Before
-    public void loadExcelFile() throws IOException {
-        jexcelHelper = new JExcelHelper();
-    }
 
     @Test
     public void givenXLSFile_whenParsingJExcelFile_thenDetectAllRowsEmpty() throws IOException, BiffException {
