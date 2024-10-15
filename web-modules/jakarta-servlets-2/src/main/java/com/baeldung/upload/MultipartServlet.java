@@ -1,6 +1,10 @@
-package com.baeldung.servlets;
+package com.baeldung.upload;
 
-import com.baeldung.Constants;
+import static com.baeldung.upload.Constants.UPLOAD_DIRECTORY;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
@@ -9,11 +13,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
-import static com.baeldung.Constants.UPLOAD_DIRECTORY;
 
 @WebServlet(
     name = "MultiPartServlet",

@@ -1,21 +1,23 @@
-package com.baeldung.servlets;
+package com.baeldung.upload;
 
-import jakarta.servlet.annotation.WebServlet;
+import static com.baeldung.upload.Constants.MAX_FILE_SIZE;
+import static com.baeldung.upload.Constants.MAX_REQUEST_SIZE;
+import static com.baeldung.upload.Constants.UPLOAD_DIRECTORY;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
 
-import static com.baeldung.Constants.*;
-
 import org.apache.commons.fileupload2.core.DiskFileItemFactory;
 import org.apache.commons.fileupload2.core.FileItem;
 import org.apache.commons.fileupload2.jakarta.servlet6.JakartaServletFileUpload;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet(
     name = "UploadServlet",
