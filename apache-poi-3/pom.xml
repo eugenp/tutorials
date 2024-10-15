@@ -86,7 +86,7 @@
         <poi.version>5.3.0</poi.version>
         <poi-ooxml-schemas.version>4.1.2</poi-ooxml-schemas.version>
         <xmlbeans.version>5.2.0</xmlbeans.version>
-        <fastexcel.version>0.17.0</fastexcel.version>
+        <fastexcel.version>0.18.3</fastexcel.version>
         <jxl.version>2.6.12</jxl.version>
         <poitl.version>1.12.2</poitl.version>
         <logback-classic.version>1.5.6</logback-classic.version>
