@@ -2,6 +2,9 @@ package com.baeldung.filterbyanyfield;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.InaccessibleObjectException;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -83,6 +86,52 @@ public class FilterListByAnyMatchingFieldUnitTest {
 
         List<Book> byLets = fullTextSearchByStrForFiltering(BOOKS, "Let's");
         assertThat(byLets).containsExactlyInAnyOrder(KOTLIN, GUITAR);
+    }
+
+    boolean fullTextSearchOnObject(Object obj, String keyword, String... excludedFields) {
+        Field[] fields = obj.getClass()
+            .getDeclaredFields();
+        for (Field field : fields) {
+            if (Arrays.stream(excludedFields)
+                .noneMatch(exceptName -> exceptName.equals(field.getName()))) {
+                field.setAccessible(true);
+                try {
+                    Object value = field.get(obj);
+                    if (value != null && value.toString()
+                        .contains(keyword)) {
+                        return true;
+                    }
+                    if (!field.getType()
+                        .isPrimitive() && !(value instanceof String)) {
+                        return fullTextSearchOnObject(value, keyword);
+                    }
+                } catch (InaccessibleObjectException | IllegalAccessException e) {
+                    //ignore
+                }
+            }
+        }
+        return false;
+    }
+
+    List<Book> fullTextSearchByReflection(List<Book> books, String keyword, String... excludeFields) {
+        return books.stream()
+            .filter(book -> fullTextSearchOnObject(book, keyword, excludeFields))
+            .toList();
+    }
+
+    @Test
+    void whenFilteringInAllFieldsUsingReflection_thenCorrect() {
+        List<Book> byJava = fullTextSearchByReflection(BOOKS, "Java", "pages");
+        assertThat(byJava).containsExactlyInAnyOrder(JAVA, KOTLIN);
+
+        List<Book> byArt = fullTextSearchByReflection(BOOKS, "Art", "pages");
+        assertThat(byArt).containsExactlyInAnyOrder(JAVA, GUITAR);
+
+        List<Book> byLets = fullTextSearchByReflection(BOOKS, "Let's", "pages");
+        assertThat(byLets).containsExactlyInAnyOrder(KOTLIN, GUITAR);
+
+        List<Book> byArtExcludeTag = fullTextSearchByReflection(BOOKS, "Art", "tags", "pages");
+        assertThat(byArtExcludeTag).containsExactlyInAnyOrder(JAVA);
     }
 }
 
