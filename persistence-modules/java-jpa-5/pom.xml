@@ -31,16 +31,6 @@
             <version>${jakarta.persistence-api.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>${postgresql.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${fasterxml.jackson.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-dbcp2</artifactId>
             <version>${commons-dbcp2.version}</version>
@@ -101,12 +91,9 @@
     </build>
 
     <properties>
-        <postgresql.version>42.2.18</postgresql.version>
         <maven-processor-plugin.version>3.3.3</maven-processor-plugin.version>
-        <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
         <h2.version>2.1.214</h2.version>
         <jakarta.persistence-api.version>3.2.0</jakarta.persistence-api.version>
-        <fasterxml.jackson.version>2.17.0</fasterxml.jackson.version>
         <hibernate.version>7.0.0.Beta1</hibernate.version>
         <commons-dbcp2.version>2.12.0</commons-dbcp2.version>
         <simple-jndi.version>0.23.0</simple-jndi.version>
