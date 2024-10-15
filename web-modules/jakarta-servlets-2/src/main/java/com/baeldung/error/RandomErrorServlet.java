@@ -1,7 +1,9 @@
-package com.baeldung.servlets;
+package com.baeldung.error;
 
-import jakarta.servlet.annotation.*;
-import jakarta.servlet.http.*;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet(urlPatterns = "/randomError")
 public class RandomErrorServlet extends HttpServlet {
