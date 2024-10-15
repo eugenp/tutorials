@@ -1,4 +1,4 @@
-package com.baeldung.servlets;
+package com.baeldung.download;
 
 import java.io.IOException;
 import java.io.InputStream;
