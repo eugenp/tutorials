@@ -1,16 +1,14 @@
-package com.baeldung.servlets;
+package com.baeldung.jsonresponse;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+
+import com.google.gson.Gson;
 
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
-import com.baeldung.model.Employee;
-import com.google.gson.Gson;
-
 
 @WebServlet(name = "EmployeeServlet", urlPatterns = "/employeeServlet")
 public class EmployeeServlet extends HttpServlet {

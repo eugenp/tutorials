@@ -1,4 +1,4 @@
-package com.baeldung.servlets;
+package com.baeldung.jsonresponse;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
@@ -6,17 +6,15 @@ import static org.mockito.Mockito.when;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import com.baeldung.model.Employee;
 import com.google.gson.Gson;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 @RunWith(MockitoJUnitRunner.class)
 public class EmployeeServletIntegrationTest {

@@ -1,4 +1,4 @@
-package com.baeldung.model;
+package com.baeldung.jsonresponse;
 
 public class Employee {
 	
