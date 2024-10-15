@@ -9,4 +9,4 @@
 - [Guide to MicroStream](https://www.baeldung.com/microstream-intro)
 - [Executing SQL Script File in Java](https://www.baeldung.com/java-run-sql-script)
 - [Loading JDBC Drivers](https://www.baeldung.com/java-jdbc-loading-drivers)
-- More articles: [[<-- prev]](/persistence-moules/core-java-persistence) [[next -->]](/persistence-moules/core-java-persistence-3)
+- More articles: [[<-- prev]](/persistence-modules/core-java-persistence) [[next -->]](/persistence-modules/core-java-persistence-3)
