@@ -24,7 +24,7 @@ public class SqlScriptLiveTest {
     private MockMvc mockMvc;
 
     @Test
-    void whenPostHttpRequestCustomers_thenStatusOK() throws Exception {
+    void givenCustomer_whenPostRequest_thenStatusOk() throws Exception {
         Customer customer = new Customer("John", "john@domain.com");
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(SerializationFeature.WRAP_ROOT_VALUE, false);
@@ -40,7 +40,7 @@ public class SqlScriptLiveTest {
     }
 
     @Test
-    void whenGetCustomerByName_thenStatusOK() throws Exception {
+    void givenCustomerExists_whenGetCustomerByName_thenStatusOk() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/customers/John"))
             .andExpect(MockMvcResultMatchers.status()
                 .isOk())
@@ -52,7 +52,7 @@ public class SqlScriptLiveTest {
 
     @Test
     @Sql(scripts = "/cleanup.sql")
-    void whenGetCustomerByName_notFound_thenStatus404() throws Exception {
+    void givenCustomerNotExist_whenGetCustomerByName_thenStatus404() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/customers/Doe")
                 .contentType(MediaType.APPLICATION_JSON))
             .andExpect(MockMvcResultMatchers.status()

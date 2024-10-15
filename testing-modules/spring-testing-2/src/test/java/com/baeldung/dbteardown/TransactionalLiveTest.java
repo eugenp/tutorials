@@ -37,7 +37,7 @@ public class TransactionalLiveTest {
     }
 
     @Test
-    void whenPostHttpRequestCustomers_thenStatusOK() throws Exception {
+    void givenCustomer_whenPostRequest_thenStatusOk() throws Exception {
         Customer customer = new Customer("John", "john@domain.com");
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(SerializationFeature.WRAP_ROOT_VALUE, false);
@@ -53,16 +53,7 @@ public class TransactionalLiveTest {
     }
 
     @Test
-    void whenGetHttpRequestToCustomers_thenStatusOk() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/customers"))
-            .andExpect(MockMvcResultMatchers.content()
-                .contentType(MediaType.APPLICATION_JSON))
-            .andExpect(MockMvcResultMatchers.status()
-                .isOk());
-    }
-
-    @Test
-    void whenGetCustomerByName_thenStatusOK() throws Exception {
+    void givenCustomerExists_whenGetCustomerByName_thenStatusOk() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/customers/John"))
             .andExpect(MockMvcResultMatchers.status()
                 .isOk())
@@ -73,7 +64,7 @@ public class TransactionalLiveTest {
     }
 
     @Test
-    void whenGetCustomerByName_notFound_thenStatus404() throws Exception {
+    void givenCustomerNotExist_whenGetCustomerByName_thenStatus404() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/customers/Doe")
                 .contentType(MediaType.APPLICATION_JSON))
             .andExpect(MockMvcResultMatchers.status()

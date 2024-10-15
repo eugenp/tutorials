@@ -35,7 +35,7 @@ class JdbcTemplateLiveTest {
     }
 
     @Test
-    void whenPostHttpRequestCustomers_thenStatusOK() throws Exception {
+    void givenCustomer_whenPostRequest_thenStatusOk() throws Exception {
         Customer customer = new Customer("John", "john@domain.com");
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(SerializationFeature.WRAP_ROOT_VALUE, false);
@@ -51,7 +51,7 @@ class JdbcTemplateLiveTest {
     }
 
     @Test
-    void whenGetCustomerByName_thenStatusOK() throws Exception {
+    void givenCustomerExists_whenGetCustomerByName_thenStatusOk() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/customers/John"))
             .andExpect(MockMvcResultMatchers.status()
                 .isOk())
@@ -62,7 +62,7 @@ class JdbcTemplateLiveTest {
     }
 
     @Test
-    void whenGetCustomerByName_notFound_thenStatus404() throws Exception {
+    void givenCustomerNotExist_whenGetCustomerByName_thenStatus404() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/customers/Doe")
                 .contentType(MediaType.APPLICATION_JSON))
             .andExpect(MockMvcResultMatchers.status()
