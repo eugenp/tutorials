@@ -42,7 +42,7 @@
     </build>
 
     <properties>
-        <commons-codec.version>1.16.0</commons-codec.version>
+        <commons-codec.version>1.17.1</commons-codec.version>
         <jakarta.xml.bind-api.version>4.0.0</jakarta.xml.bind-api.version>
     </properties>
 
