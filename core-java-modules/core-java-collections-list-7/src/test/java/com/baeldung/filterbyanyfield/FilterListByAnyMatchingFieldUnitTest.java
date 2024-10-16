@@ -97,15 +97,17 @@ public class FilterListByAnyMatchingFieldUnitTest {
                 field.setAccessible(true);
                 try {
                     Object value = field.get(obj);
-                    if (value != null && value.toString()
-                        .contains(keyword)) {
-                        return true;
+                    if (value != null) {
+                        if (value.toString()
+                            .contains(keyword)) {
+                            return true;
+                        }
+                        if (!field.getType()
+                            .isPrimitive() && !(value instanceof String) && fullTextSearchOnObject(value, keyword, excludedFields)) {
+                            return true;
+                        }
                     }
-                    if (!field.getType()
-                        .isPrimitive() && !(value instanceof String)) {
-                        return fullTextSearchOnObject(value, keyword);
-                    }
-                } catch (InaccessibleObjectException | IllegalAccessException e) {
+                } catch (InaccessibleObjectException | IllegalAccessException ignored) {
                     //ignore
                 }
             }
