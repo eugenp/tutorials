@@ -1,6 +1,6 @@
-## Static Analysis
+## Static Analysis Modules
 
-This module contains articles about static program analysis
+This module contains submodules about static program analysis and their articles
 
 ## Relevant articles:
 
