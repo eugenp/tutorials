@@ -1,0 +1,7 @@
+components:
+  schemas:
+    BankCustomerWithAddress:
+      allOf:
+        - $ref: '#/components/schemas/BankCustomer'
+        - $ref: '#/components/schemas/Address'
+      description: "A bank customer with personal and address information."
