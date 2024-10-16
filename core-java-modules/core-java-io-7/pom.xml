@@ -30,6 +30,21 @@
             <artifactId>tika-core</artifactId>
             <version>${tika-core.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>kernel</artifactId>
+            <version>${itextpdf.kernel.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>layout</artifactId>
+            <version>${itextpdf.layput.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.pdfbox</groupId>
+            <artifactId>pdfbox</artifactId>
+            <version>${pdfbox.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -55,6 +70,10 @@
 
     <properties>
         <tika-core.version>2.9.2</tika-core.version>
+        <commons-csv.version>1.9.0</commons-csv.version>
+        <itextpdf.layput.version>7.2.5</itextpdf.layput.version>
+        <itextpdf.kernel.version>7.2.5</itextpdf.kernel.version>
+        <pdfbox.version>2.0.29</pdfbox.version>
         <commons-csv.version>1.9.0</commons-csv.version>
     </properties>
 
