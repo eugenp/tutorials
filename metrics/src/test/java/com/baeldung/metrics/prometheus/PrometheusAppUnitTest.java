@@ -22,7 +22,7 @@ import io.prometheus.metrics.exporter.httpserver.HTTPServer;
 import io.prometheus.metrics.instrumentation.jvm.JvmMetrics;
 import io.prometheus.metrics.model.registry.PrometheusRegistry;
 
-class PrometheusAppTest {
+class PrometheusAppUnitTest {
 
     private Counter requestCounter;
 
