@@ -15,6 +15,7 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [web.xml vs Initializer with Spring](https://www.baeldung.com/spring-xml-vs-java-config)
 - [A Java Web Application Without a web.xml](https://www.baeldung.com/java-web-app-without-web-xml)
 - [Introduction to Servlets and Servlet Containers](https://www.baeldung.com/java-servlets-containers-intro)
+- [Exploring SpringMVC’s Form Tag Library](https://www.baeldung.com/spring-mvc-form-tags)
 - More articles: [[<-- prev]](../spring-mvc-xml)
 
 ## Spring MVC with XML Configuration Example Project
