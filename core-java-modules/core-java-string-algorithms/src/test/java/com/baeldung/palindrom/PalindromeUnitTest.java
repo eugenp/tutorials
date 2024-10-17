@@ -1,26 +1,15 @@
 package com.baeldung.palindrom;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
 public class PalindromeUnitTest {
 
-    private String[] words = {
-            "Anna",
-            "Civic",
-            "Kayak",
-            "Level",
-            "Madam",
-    };
+    private String[] words = { "Anna", "Civic", "Kayak", "Level", "Madam", };
 
-    private String[] sentences = {
-            "Sore was I ere I saw Eros",
-            "Euston saw I was not Sue",
-            "Too hot to hoot",
-            "No mists or frost Simon",
-            "Stella won no wallets"
-    };
+    private String[] sentences = { "Sore was I ere I saw Eros", "Euston saw I was not Sue", "Too hot to hoot", "No mists or frost Simon", "Stella won no wallets" };
 
     private Palindrome palindrome = new Palindrome();
 
@@ -94,5 +83,16 @@ public class PalindromeUnitTest {
     public void whenPalindromeStreams_sentenceShouldBePalindrome() {
         for (String sentence : sentences)
             assertTrue(palindrome.isPalindromeUsingIntStream(sentence));
+    }
+
+    @Test
+    public void givenAWordWithAtLeastOnePalindromePermutation_WhenHasPalindromePermutation_ThenTrue() {
+        assertTrue(palindrome.hasPalindromePermutation("kkaya"));
+        assertTrue(palindrome.hasPalindromePermutation("nnoo"));
+    }
+
+    @Test
+    public void givenAWordWithoutAnyPalindromePermutation_WhenHasPalindromePermutation_ThenFalse() {
+        assertFalse(palindrome.hasPalindromePermutation("abc"));
     }
 }
