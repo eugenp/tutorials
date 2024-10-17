@@ -3,10 +3,13 @@ package s3proxy;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -31,7 +34,7 @@ import software.amazon.awssdk.services.s3.model.S3Object;
 @ActiveProfiles({ "local", "test" })
 @SpringBootTest(classes = Application.class)
 @EnableConfigurationProperties(StorageProperties.class)
-class LocalFileSystemStorageLiveTest {
+class LocalFileSystemStorageIntegrationTest {
 
     @Autowired
     private S3Client s3Client;
@@ -41,12 +44,21 @@ class LocalFileSystemStorageLiveTest {
 
     @BeforeAll
     void setup() {
+        File directory = new File(storageProperties.getLocalFileBaseDirectory());
+        directory.mkdir();
+
         String bucketName = storageProperties.getBucketName();
         try {
             s3Client.createBucket(request -> request.bucket(bucketName));   
         } catch (BucketAlreadyOwnedByYouException exception) {
             // do nothing
         }
+    }
+    
+    @AfterAll
+    void teardown() throws IOException {
+        File directory = new File(storageProperties.getLocalFileBaseDirectory());
+        FileUtils.forceDelete(directory);
     }
 
     @Test
