@@ -4,7 +4,6 @@ This module contains articles about Spring Boot annotations
 
 ### Relevant Articles:
 
-- [Spring Web Annotations](https://www.baeldung.com/spring-mvc-annotations)
 - [Spring Core Annotations](https://www.baeldung.com/spring-core-annotations)
 - [Spring Bean Annotations](https://www.baeldung.com/spring-bean-annotations)
 - [A Quick Guide to the Spring @Lazy Annotation](https://www.baeldung.com/spring-lazy-annotation)

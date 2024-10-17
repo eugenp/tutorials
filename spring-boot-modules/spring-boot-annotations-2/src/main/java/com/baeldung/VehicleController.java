@@ -1,4 +1,4 @@
-package com.baeldung.annotations;
+package com.baeldung;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
