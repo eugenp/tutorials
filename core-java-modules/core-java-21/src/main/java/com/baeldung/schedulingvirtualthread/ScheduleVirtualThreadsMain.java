@@ -24,7 +24,7 @@ public class ScheduleVirtualThreadsMain {
         try (virtualThreadExecutor) {
             for (int i = 0; i < 10_000; i++) {
                 schedule(mockSlowHelloWorldTask(Duration.of(2, SECONDS)), 3, TimeUnit.SECONDS, virtualThreadExecutor);
-                schedule(mockSlowHelloWorldTask(Duration.of(2, SECONDS)), 3, ChronoUnit.SECONDS, virtualThreadExecutor))
+                schedule(mockSlowHelloWorldTask(Duration.of(2, SECONDS)), 3, ChronoUnit.SECONDS, virtualThreadExecutor);
             }
         }
     }
