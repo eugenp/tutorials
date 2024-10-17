@@ -37,7 +37,7 @@ public class FilterNestedListUnitTest {
 
     @Test
     void givenUsersWithOrders_whenFilterByProductUsingStreams_thenReturnUsersWhoOrderedLaptop() {
-        String productToFilter = "Laptop";
+        double priceThreshold = 500.0;
         Order order1 = new Order("Laptop", 600.0);
         Order order2 = new Order("Phone", 300.0);
         User user1 = new User("Alice", Arrays.asList(order1, order2));
@@ -46,7 +46,7 @@ public class FilterNestedListUnitTest {
 
         List<User> filteredUsers = users.stream()
             .filter(user -> user.getOrders().stream()
-                .anyMatch(order -> order.getProduct().equals(productToFilter)))
+                .anyMatch(order -> order.getPrice() > priceThreshold))
             .collect(Collectors.toList());
 
         assertEquals(1, filteredUsers.size());
