@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class FirstDuplicateUnitTest {
 
     @Test
-    public void givenArray_findFirstDuplicate_whenUsingBruteForce() {
+    public void givenArray_whenUsingBruteForce_thenFindFirstDuplicate() {
         FirstDuplicate firstDuplicate = new FirstDuplicate();
 
         assertEquals(4, firstDuplicate.firstDuplicateBruteForce(new int[] { 2, 1, 3, 5, 3, 2 }));
@@ -18,7 +18,7 @@ public class FirstDuplicateUnitTest {
     }
 
     @Test
-    public void givenArray_findFirstDuplicate_whenUsingHashSet() {
+    public void givenArray_whenUsingHashSet_thenFindFirstDuplicate() {
         FirstDuplicate firstDuplicate = new FirstDuplicate();
 
         assertEquals(4, firstDuplicate.firstDuplicateHashSet(new int[] { 2, 1, 3, 5, 3, 2 }));
@@ -29,7 +29,7 @@ public class FirstDuplicateUnitTest {
     }
 
     @Test
-    public void givenArray_findFirstDuplicate_whenUsingArrayIndexing() {
+    public void givenArray_whenUsingArrayIndexing_thenFindFirstDuplicate() {
         FirstDuplicate firstDuplicate = new FirstDuplicate();
 
         assertEquals(4, firstDuplicate.firstDuplicateArrayIndexing(new int[] { 2, 1, 3, 5, 3, 2 }));
