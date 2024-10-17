@@ -15,6 +15,7 @@ import software.amazon.awssdk.auth.credentials.AwsCredentials;
 import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.s3.S3Client;
+import software.amazon.awssdk.services.s3.S3Configuration;
 
 @Configuration
 @Profile("!local && !test")
@@ -56,6 +57,10 @@ public class StorageConfiguration {
 
     @Bean
     public S3Client s3Client() {
+        S3Configuration s3Configuration = S3Configuration
+            .builder()
+            .checksumValidationEnabled(false)
+            .build();
         AwsCredentials credentials = AwsBasicCredentials.create(
             storageProperties.getIdentity(),
             storageProperties.getCredential()
@@ -65,6 +70,7 @@ public class StorageConfiguration {
             .region(Region.of(storageProperties.getRegion()))
             .endpointOverride(URI.create(storageProperties.getProxyEndpoint()))
             .credentialsProvider(StaticCredentialsProvider.create(credentials))
+            .serviceConfiguration(s3Configuration)
             .build();
     }
 
