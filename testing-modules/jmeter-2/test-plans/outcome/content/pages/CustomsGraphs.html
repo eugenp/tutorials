@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Apache JMeter Dashboard</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../sbadmin2-1.0.7/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- icone onglet -->
+    <link rel="icon" type="image/png" href="icon-apache.png" />
+
+    <!-- MetisMenu CSS -->
+    <link href="../../sbadmin2-1.0.7/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Legends CSS -->
+    <link href="../css/legends.css" rel="stylesheet">
+
+
+    <!-- Custom CSS -->
+    <link href="../../sbadmin2-1.0.7/dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../../sbadmin2-1.0.7/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+   <!-- JQuery UI style -->
+    <link href="../css/jquery-ui.min.css" rel="stylesheet">
+    <link href="../css/jquery-ui.structure.min.css" rel="stylesheet">
+    <link href="../css/jquery-ui.theme.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="../../index.html">Apache JMeter Dashboard</a>
+            </div>
+            <!-- /.navbar-header -->
+
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+
+                        <li>
+                            <a href="../../index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="OverTime.html">Over Time</a>
+
+                                </li>
+                                <li>
+                                    <a href="Throughput.html">Throughput</a>
+                                </li>
+                                <li>
+                                    <a href="ResponseTimes.html">Response Times</a>
+                                </li>
+                
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        
+                        <li>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Customs Graphs<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="CustomsGraphs.html">Over Time<span class="fa arrow"></span></a>
+                                    <ul class="nav nav-third-level in" id="submenu">
+                                    </ul>
+                                <li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                     <div class="panel panel-default" >
+                        <div class="panel-heading" style="text-align:center;">
+                           <p class="dashboard-title">Test and Report information</p>
+                        </div>
+                        <div class="panel-body">
+                            <table id="generalInfos" class="table table-bordered table-condensed " >
+                                <tr>
+                                    <td>File:</td>
+                                    <td>"jmeter-result.jtl"</td>
+                                </tr>
+                                <tr>
+                                    <td>Start Time:</td>
+                                    <td>"317"</td>
+                                </tr>
+                                <tr>
+                                    <td>End Time:</td>
+                                    <td>"3225"</td>
+                                </tr>
+                                    <tr>
+                                        <td>Filter for display:</td>
+                                        <td>""</td>
+                                    </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+            <!-- /.row -->
+                <div class="row" id="graphContainer">
+                
+                </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+     <!-- jQuery -->
+    <script src="../../sbadmin2-1.0.7/bower_components/jquery/dist/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../../sbadmin2-1.0.7/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../../sbadmin2-1.0.7/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+
+    <!-- Flot Charts JavaScript -->
+    <script src="../../sbadmin2-1.0.7/bower_components/flot/excanvas.min.js"></script>
+    <script src="../../sbadmin2-1.0.7/bower_components/flot/jquery.flot.js"></script>
+    <script src="../../sbadmin2-1.0.7/bower_components/flot/jquery.flot.pie.js"></script>
+    <script src="../../sbadmin2-1.0.7/bower_components/flot/jquery.flot.resize.js"></script>
+    <script src="../../sbadmin2-1.0.7/bower_components/flot/jquery.flot.canvas.js"></script>
+    <script src="../../sbadmin2-1.0.7/bower_components/flot/jquery.flot.navigate.js"></script>
+    <script src="../../sbadmin2-1.0.7/bower_components/flot/jquery.flot.time.js"></script>
+    <script src="../../sbadmin2-1.0.7/bower_components/flot/jquery.flot.selection.js"></script>
+    <script src="../../sbadmin2-1.0.7/bower_components/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+    <script src="../../sbadmin2-1.0.7/bower_components/flot-axislabels/jquery.flot.axislabels.js"></script>
+    <script src="../js/hashtable.js"></script>
+    <script src="../js/jquery.numberformatter-1.2.3.min.js"></script>
+    <script src="../js/curvedLines.js"></script>
+    <script src="../js/dashboard-commons.js"></script>
+    <script src="../js/customGraph.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
+    <script src="../../sbadmin2-1.0.7/bower_components/flot/jquery.flot.threshold.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="../../sbadmin2-1.0.7/dist/js/sb-admin-2.js"></script>
+    <script src="../js/jquery.cookie.js"></script>
+
+    <script src="../../sbadmin2-1.0.7/bower_components/flot/jquery.flot.symbol.js"></script>
+
+</body>
+
+</html>
