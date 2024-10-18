@@ -127,6 +127,21 @@
             <artifactId>jackson-datatype-problem</artifactId>
             <version>${jackson-datatype-problem.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.togglz</groupId>
+            <artifactId>togglz-spring-boot-starter</artifactId>
+            <version>${togglz.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.togglz</groupId>
+            <artifactId>togglz-spring-security</artifactId>
+            <version>${togglz.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.persistence</groupId>
+            <artifactId>jakarta.persistence-api</artifactId>
+            <version>${jakarta.persistence-api.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -202,6 +217,8 @@
         <spring-boot.version>3.2.2</spring-boot.version>
         <problem-spring-web.version>0.29.1</problem-spring-web.version>
         <jackson-datatype-problem.version>0.27.1</jackson-datatype-problem.version>
+        <togglz.version>4.4.0</togglz.version>
+        <jakarta.persistence-api.version>3.1.0</jakarta.persistence-api.version>
     </properties>
 
 </project>
