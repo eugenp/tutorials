@@ -43,12 +43,12 @@ public class TriviaResource {
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    public Response retreiveCard() {
+    public Response retrieveCard() {
         DoubleGauge requestDuration = meter.gaugeBuilder("http.request.duration")
             .setDescription("Duration of HTTP request")
             .setUnit("ms").build();
 
-        Span span = tracer.spanBuilder("retreiveCard")
+        Span span = tracer.spanBuilder("retrieveCard")
             .setAttribute("http.method", "GET")
             .setAttribute("http.url", WORD_SERVICE_URL)
             .setSpanKind(SpanKind.CLIENT).startSpan();
@@ -58,26 +58,24 @@ public class TriviaResource {
         try (Scope scope = span.makeCurrent()) {
             Instant start = Instant.now();
 
-            try {
-                span.addEvent("http.request.word-api", start);
-                
-                WordResponse wordResponse = triviaService.requestWordFromSource(WORD_SERVICE_URL);
-                Instant end = Instant.now();
-                callDuration = end.toEpochMilli() - start.toEpochMilli();
-                requestDuration.set(callDuration, Attributes.builder().put("request.duration", "word-wonder-api").build());
-                                
-                span.setAttribute("http.status_code", wordResponse.httpResponseCode());
-                span.setAttribute("http.request_duration", callDuration);
+            span.addEvent("http.request.word-api", start);
+            
+            WordResponse wordResponse = triviaService.requestWordFromSource(WORD_SERVICE_URL);
+            Instant end = Instant.now();
+            callDuration = end.toEpochMilli() - start.toEpochMilli();
+            requestDuration.set(callDuration, Attributes.builder().put("request.duration", "word-wonder-api").build());
+                            
+            span.setAttribute("http.status_code", wordResponse.httpResponseCode());
+            span.setAttribute("http.request_duration", callDuration);
 
-                logger.info("word-api response payload: {}", wordResponse.wordWithDefinition());
+            logger.info("word-api response payload: {}", wordResponse.wordWithDefinition());
 
-                return Response.ok(wordResponse.wordWithDefinition()).build();
-            } catch(IOException exception) {
-                span.setStatus(StatusCode.ERROR, "Error while retreiving info from word wonder service");
-                span.recordException(exception);
-                logger.error("Error while calling word wonder service", exception);
-                return Response.noContent().build();
-            }
+            return Response.ok(wordResponse.wordWithDefinition()).build();
+        } catch(IOException exception) {
+            span.setStatus(StatusCode.ERROR, "Error while retreiving info from word wonder service");
+            span.recordException(exception);
+            logger.error("Error while calling word wonder service", exception);
+            return Response.noContent().build();
         } finally {
             span.end();
         }
