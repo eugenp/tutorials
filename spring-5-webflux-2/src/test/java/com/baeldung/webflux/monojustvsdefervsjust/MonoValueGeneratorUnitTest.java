@@ -18,7 +18,7 @@ class MonoValueGeneratorUnitTest {
     }
 
     @Test
-    public void givenStaticValue_whenMonoSubscribed_thenShouldReturnStaticValue() {
+    void givenStaticValue_whenMonoSubscribed_thenShouldReturnStaticValue() {
         Mono<String> mono = generator.getStaticMono();
 
         StepVerifier.create(mono)
@@ -27,7 +27,7 @@ class MonoValueGeneratorUnitTest {
     }
 
     @Test
-    public void givenNameIsAlice_whenMonoSubscribed_thenShouldReturnGreetingForAlice() {
+    void givenNameIsAlice_whenMonoSubscribed_thenShouldReturnGreetingForAlice() {
         Mono<String> mono = generator.getGreetingMono("Alice");
 
         StepVerifier.create(mono)
@@ -36,7 +36,7 @@ class MonoValueGeneratorUnitTest {
     }
 
     @Test
-    public void givenNameIsBob_whenMonoSubscribed_thenShouldReturnGreetingForBob() {
+    void givenNameIsBob_whenMonoSubscribed_thenShouldReturnGreetingForBob() {
         Mono<String> mono = generator.getGreetingMono("Bob");
 
         StepVerifier.create(mono)
@@ -45,7 +45,7 @@ class MonoValueGeneratorUnitTest {
     }
 
     @Test
-    public void givenSuccessScenario_whenMonoSubscribed_thenShouldReturnSuccessValue() {
+    void givenSuccessScenario_whenMonoSubscribed_thenShouldReturnSuccessValue() {
         Mono<String> mono = generator.performOperation(true);
 
         StepVerifier.create(mono)
@@ -54,7 +54,7 @@ class MonoValueGeneratorUnitTest {
     }
 
     @Test
-    public void givenErrorScenario_whenMonoSubscribed_thenShouldReturnError() {
+    void givenErrorScenario_whenMonoSubscribed_thenShouldReturnError() {
         Mono<String> mono = generator.performOperation(false);
 
         StepVerifier.create(mono)
