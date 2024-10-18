@@ -51,7 +51,7 @@ public class SpringBootBatchIntegrationTest {
         assertEquals("importUserJob", jobInstance.getJobName());
         assertEquals("COMPLETED", jobExitStatus.getExitCode());
 
-        String regex = "\\[virtual-thread-executor\\d+\\] INFO  c.baeldung.batch.CoffeeItemProcessor";
+        String regex = "\\[virtual-thread-executor\\d+\\] INFO  com.baeldung.bootbatch.CoffeeItemProcessor";
         assertThat(output.getAll()).containsPattern(regex);
     }
 }
