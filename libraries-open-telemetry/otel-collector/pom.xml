@@ -15,7 +15,7 @@
     </parent>
 
     <modules>
-        <module>word-wonder-demo</module>
+        <module>dictionary-service</module>
         <module>trivia-service</module>
     </modules>
 

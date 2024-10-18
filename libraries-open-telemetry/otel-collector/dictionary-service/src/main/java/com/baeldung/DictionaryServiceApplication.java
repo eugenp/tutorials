@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class WordWonderApplication {
+public class DictionaryServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(WordWonderApplication.class, args);
+		SpringApplication.run(DictionaryServiceApplication.class, args);
 	}
 }

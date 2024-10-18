@@ -10,11 +10,11 @@
 	</parent>	
 
 	<groupId>com.baeldung</groupId>
-	<artifactId>word-wonder-demo</artifactId>
+	<artifactId>dictionary-service</artifactId>
 	<version>0.0.1</version>
 	<packaging>jar</packaging>
 
-	<name>Word Wonder Demo</name>
+	<name>Dictionary Service Application</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
