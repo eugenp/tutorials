@@ -76,7 +76,7 @@
 
     <properties>
         <swagger-core-jakarta.version>2.2.22</swagger-core-jakarta.version>
-        <springwolf.version>1.5.0</springwolf.version>
+        <springwolf.version>1.7.0</springwolf.version>
         <testcontainers-kafka.version>1.20.0</testcontainers-kafka.version>
     </properties>
 

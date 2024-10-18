@@ -16,8 +16,7 @@ public class Character {
         this.characterClass = characterClass;
     }
 
-    public Character() {
-    }
+    public Character() {}
 
     public String getName() {
         return name;

@@ -51,7 +51,6 @@
         <httpclient.version>4.5.3</httpclient.version>
         <gson.version>2.11.0</gson.version>
         <jakarta.servlet-api.version>6.1.0</jakarta.servlet-api.version>
-        <java.version>17</java.version>
     </properties>
 
 </project>

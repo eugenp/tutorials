@@ -24,10 +24,28 @@
             <artifactId>org-netbeans-lib-profiler</artifactId>
             <version>${neabeans-lib-profiler.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.openjdk.jol</groupId>
+            <artifactId>jol-core</artifactId>
+            <version>${jol-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.collections</groupId>
+            <artifactId>eclipse-collections-api</artifactId>
+            <version>${eclipse-collections.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.collections</groupId>
+            <artifactId>eclipse-collections</artifactId>
+            <version>${eclipse-collections.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <datafaker.version>1.6.0</datafaker.version>
         <neabeans-lib-profiler.version>RELEASE220</neabeans-lib-profiler.version>
+        <jol-core.version>0.17</jol-core.version>
+        <eclipse-collections.version>11.1.0</eclipse-collections.version>
     </properties>
 </project>

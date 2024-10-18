@@ -21,6 +21,7 @@
         <module>log-mdc</module>
         <module>tinylog2</module>
         <module>logging-techniques</module>
+        <module>solarwinds-loggly</module>
     </modules>
 
 </project>
