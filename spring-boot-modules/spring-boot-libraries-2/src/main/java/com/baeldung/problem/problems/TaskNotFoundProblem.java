@@ -1,4 +1,4 @@
-package com.baeldung.boot.problem.problems;
+package com.baeldung.problem.problems;
 
 import java.net.URI;
 

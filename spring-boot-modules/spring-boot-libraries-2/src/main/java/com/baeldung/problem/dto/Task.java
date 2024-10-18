@@ -1,4 +1,4 @@
-package com.baeldung.boot.problem.dto;
+package com.baeldung.problem.dto;
 
 public class Task {
 

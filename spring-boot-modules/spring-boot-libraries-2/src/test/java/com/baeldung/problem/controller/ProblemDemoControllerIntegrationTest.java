@@ -1,4 +1,4 @@
-package com.baeldung.boot.problem.controller;
+package com.baeldung.problem.controller;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -20,7 +20,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.baeldung.boot.problem.SpringProblemApplication;
+import com.baeldung.problem.SpringProblemApplication;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK, classes = SpringProblemApplication.class)

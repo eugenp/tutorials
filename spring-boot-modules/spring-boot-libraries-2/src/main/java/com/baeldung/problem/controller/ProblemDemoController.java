@@ -1,4 +1,4 @@
-package com.baeldung.boot.problem.controller;
+package com.baeldung.problem.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.baeldung.boot.problem.dto.Task;
-import com.baeldung.boot.problem.problems.TaskNotFoundProblem;
+import com.baeldung.problem.dto.Task;
+import com.baeldung.problem.problems.TaskNotFoundProblem;
 
 @RestController
 @RequestMapping("/tasks")

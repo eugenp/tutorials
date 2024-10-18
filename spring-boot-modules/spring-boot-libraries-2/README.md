@@ -11,4 +11,5 @@ This module contains articles about various Spring Boot libraries
 - [Guide to Resilience4j With Spring Boot](https://www.baeldung.com/spring-boot-resilience4j)  
 - [Using OpenAI ChatGPT APIs in Spring Boot](https://www.baeldung.com/spring-boot-chatgpt-api-openai)
 - [Introduction to Spring Modulith](https://www.baeldung.com/spring-modulith)
+- [A Guide to the Problem Spring Web Library](https://www.baeldung.com/problem-spring-web)
 - More articles: [[prev -->]](/spring-boot-modules/spring-boot-libraries)

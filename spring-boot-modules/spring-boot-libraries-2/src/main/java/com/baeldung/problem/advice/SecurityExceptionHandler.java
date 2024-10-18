@@ -1,4 +1,4 @@
-package com.baeldung.boot.problem.advice;
+package com.baeldung.problem.advice;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.zalando.problem.spring.web.advice.security.SecurityAdviceTrait;

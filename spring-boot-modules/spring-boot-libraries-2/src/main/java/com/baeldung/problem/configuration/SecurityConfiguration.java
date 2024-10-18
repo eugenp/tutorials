@@ -1,4 +1,4 @@
-package com.baeldung.boot.problem.configuration;
+package com.baeldung.problem.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

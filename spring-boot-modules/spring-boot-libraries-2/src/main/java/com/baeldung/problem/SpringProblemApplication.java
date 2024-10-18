@@ -1,4 +1,4 @@
-package com.baeldung.boot.problem;
+package com.baeldung.problem;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;

@@ -30,6 +30,10 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
         <dependency>
@@ -112,6 +116,17 @@
             <artifactId>spring-modulith-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <!-- Problem Spring Web -->
+        <dependency>
+            <groupId>org.zalando</groupId>
+            <artifactId>problem-spring-web</artifactId>
+            <version>${problem-spring-web.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.zalando</groupId>
+            <artifactId>jackson-datatype-problem</artifactId>
+            <version>${jackson-datatype-problem.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -185,6 +200,8 @@
         <springdoc.version>1.7.0</springdoc.version>
         <start-class>com.baeldung.OpenApiApplication</start-class>
         <spring-boot.version>3.2.2</spring-boot.version>
+        <problem-spring-web.version>0.29.1</problem-spring-web.version>
+        <jackson-datatype-problem.version>0.27.1</jackson-datatype-problem.version>
     </properties>
 
 </project>
