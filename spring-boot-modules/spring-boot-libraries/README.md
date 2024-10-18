@@ -13,4 +13,5 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Spring Boot and Caffeine Cache](https://www.baeldung.com/spring-boot-caffeine-cache)
 - [Guide to Resilience4j With Spring Boot](https://www.baeldung.com/spring-boot-resilience4j)
 - [Introduction to Spring Modulith](https://www.baeldung.com/spring-modulith)
+- [Open API Server Implementation Using OpenAPI Generator](https://www.baeldung.com/java-openapi-generator-server)
 - More articles: [[next -->]](../spring-boot-libraries-2)
