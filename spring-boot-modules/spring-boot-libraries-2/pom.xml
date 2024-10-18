@@ -33,14 +33,6 @@
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-        <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
         </dependency>
@@ -95,18 +87,7 @@
             <artifactId>jandex</artifactId>
             <version>${jandex.version}</version>
         </dependency>
-        <dependency>
-            <groupId>io.github.resilience4j</groupId>
-            <artifactId>resilience4j-spring-boot2</artifactId>
-            <version>${resilience4j-spring-boot2.version}</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/com.github.tomakehurst/wiremock-jre8 -->
-        <dependency>
-            <groupId>com.github.tomakehurst</groupId>
-            <artifactId>wiremock-jre8</artifactId>
-            <version>${wiremock-jre8.version}</version>
-            <scope>test</scope>
-        </dependency>
+
         <dependency>
             <groupId>org.springframework.modulith</groupId>
             <artifactId>spring-modulith-api</artifactId>
@@ -209,8 +190,6 @@
         <jackson-databind-nullable.version>0.2.1</jackson-databind-nullable.version>
         <reflections.version>0.10.2</reflections.version>
         <jandex.version>2.4.3.Final</jandex.version>
-        <resilience4j-spring-boot2.version>2.0.2</resilience4j-spring-boot2.version>
-        <wiremock-jre8.version>2.34.0</wiremock-jre8.version>
         <jandex-maven-plugin.version>1.2.3</jandex-maven-plugin.version>
         <springdoc.version>1.7.0</springdoc.version>
         <start-class>com.baeldung.OpenApiApplication</start-class>
