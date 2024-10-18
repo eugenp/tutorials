@@ -1,11 +1,12 @@
 package com.baeldung.modulith.notification;
 
-import com.baeldung.modulith.notification.internal.Notification;
-import com.baeldung.modulith.notification.internal.NotificationType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.modulith.ApplicationModuleListener;
 import org.springframework.stereotype.Service;
+
+import com.baeldung.modulith.notification.internal.Notification;
+import com.baeldung.modulith.notification.internal.NotificationType;
 
 @Service
 public class NotificationService {

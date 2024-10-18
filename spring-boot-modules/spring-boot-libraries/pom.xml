@@ -13,6 +13,18 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.modulith</groupId>
+                <artifactId>spring-modulith-bom</artifactId>
+                <version>${spring-modulith-bom.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -33,6 +45,15 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.modulith</groupId>
+            <artifactId>spring-modulith-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.modulith</groupId>
+            <artifactId>spring-modulith-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
         <!-- ShedLock -->
@@ -241,6 +262,7 @@
         <qrcodegen.version>1.8.0</qrcodegen.version>
         <resilience4j-spring-boot2.version>2.0.2</resilience4j-spring-boot2.version>
         <wiremock-jre8.version>2.34.0</wiremock-jre8.version>
+        <spring-modulith-bom.version>1.2.2</spring-modulith-bom.version>
     </properties>
 
 </project>

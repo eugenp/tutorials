@@ -11,18 +11,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.modulith</groupId>
-                <artifactId>spring-modulith-bom</artifactId>
-                <version>${spring-modulith-bom.version}</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -86,16 +74,6 @@
             <groupId>org.jboss</groupId>
             <artifactId>jandex</artifactId>
             <version>${jandex.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.modulith</groupId>
-            <artifactId>spring-modulith-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.modulith</groupId>
-            <artifactId>spring-modulith-starter-test</artifactId>
-            <scope>test</scope>
         </dependency>
         <!-- Problem Spring Web -->
         <dependency>
@@ -182,7 +160,6 @@
     </build>
 
     <properties>
-        <spring-modulith-bom.version>1.2.2</spring-modulith-bom.version>
         <jobrunr-spring-boot-starter.version>5.1.7</jobrunr-spring-boot-starter.version>
         <awaitility.version>4.0.3</awaitility.version>
         <openapi-generator.version>7.8.0</openapi-generator.version>

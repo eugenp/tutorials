@@ -1,11 +1,12 @@
 package com.baeldung.modulith;
 
-import com.baeldung.modulith.product.ProductService;
-import com.baeldung.modulith.product.internal.Product;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableAsync;
+
+import com.baeldung.modulith.product.ProductService;
+import com.baeldung.modulith.product.internal.Product;
 
 @EnableAsync
 @SpringBootApplication
