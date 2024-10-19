@@ -20,7 +20,7 @@ public class ArgumentsValidatorUnitTest {
     }
 
     @Test
-    void givenAConstructorValidator_whenCalledWithInvalidArguments_nothingIsConstructed() {
+    void givenAConstructorValidator_whenCalledWithInvalidArguments_thenNothingIsConstructed() {
         Arguments2Validator<String, Integer, Person> validator = ArgumentsValidatorBuilder.of(Person::new)
             .builder(b -> b
                 ._string(Arguments1::arg1, "name", c -> c.notBlank())
@@ -40,7 +40,7 @@ public class ArgumentsValidatorUnitTest {
     }
 
     @Test
-    void givenAConstructorValidator_whenCalledWithValidArguments_somethingIsConstructed() {
+    void givenAConstructorValidator_whenCalledWithValidArguments_thenSomethingIsConstructed() {
         Arguments2Validator<String, Integer, Person> validator = ArgumentsValidatorBuilder.of(Person::new)
             .builder(b -> b
                 ._string(Arguments1::arg1, "name", c -> c.notBlank())
@@ -56,7 +56,7 @@ public class ArgumentsValidatorUnitTest {
     }
 
     @Test
-    void givenAMethodValidator_whenCalledWithValidArguments_somethingIsDone() {
+    void givenAMethodValidator_whenCalledWithValidArguments_thenSomethingIsDone() {
         Arguments2Validator<Person, Integer, Boolean> validator = ArgumentsValidatorBuilder.of(Person::isOlderThan)
             .builder(b -> b
                 ._integer(Arguments2::arg2, "age", c -> c.positiveOrZero())
@@ -71,7 +71,7 @@ public class ArgumentsValidatorUnitTest {
     }
 
     @Test
-    void givenAMethodValidator_whenCalledWithInvalidArguments_nothingIsDone() {
+    void givenAMethodValidator_whenCalledWithInvalidArguments_thenNothingIsDone() {
         Arguments2Validator<Person, Integer, Boolean> validator = ArgumentsValidatorBuilder.of(Person::isOlderThan)
             .builder(b -> b
                 ._integer(Arguments2::arg2, "age", c -> c.positiveOrZero())

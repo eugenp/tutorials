@@ -23,7 +23,7 @@ public class ArgumentsAnnotationUnitTest {
     }
 
     @Test
-    void givenAConstructorValidator_whenCalledWithInvalidArguments_nothingIsConstructed() {
+    void givenAConstructorValidator_whenCalledWithInvalidArguments_thenNothingIsConstructed() {
         Arguments2Validator<String, Integer, Person> validator = ArgumentsValidatorBuilder.of(Person::new)
             .builder(b -> b
                 .constraint(_ArgumentsAnnotationUnitTest_PersonArgumentsMeta.NAME, c -> c.notBlank())
@@ -43,7 +43,7 @@ public class ArgumentsAnnotationUnitTest {
     }
 
     @Test
-    void givenAMethodValidator_whenCalledWithInvalidArguments_nothingIsDone() {
+    void givenAMethodValidator_whenCalledWithInvalidArguments_thenNothingIsDone() {
         Arguments2Validator<Person, Integer, Boolean> validator = ArgumentsValidatorBuilder.of(Person::isOlderThan)
             .builder(b -> b
                 .constraint(_ArgumentsAnnotationUnitTest_PersonIsOlderThanArgumentsMeta.CHECK, c -> c.positiveOrZero())
