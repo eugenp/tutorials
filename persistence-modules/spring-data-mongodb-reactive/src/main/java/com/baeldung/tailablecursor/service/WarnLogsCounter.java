@@ -2,12 +2,12 @@ package com.baeldung.tailablecursor.service;
 
 import com.baeldung.tailablecursor.domain.Log;
 import com.baeldung.tailablecursor.domain.LogLevel;
+import jakarta.annotation.PreDestroy;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.mongodb.core.ReactiveMongoOperations;
 import reactor.core.Disposable;
 import reactor.core.publisher.Flux;
 
-import javax.annotation.PreDestroy;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.springframework.data.mongodb.core.query.Criteria.where;
