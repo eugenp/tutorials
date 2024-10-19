@@ -1,23 +1,28 @@
 package com.baeldung.mappingexception;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.notNullValue;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertThrows;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-import com.baeldung.exceptions.EmptyObject;
-import com.baeldung.exceptions.Person;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.SerializationFeature;
 import org.junit.Test;
 
+import com.baeldung.exceptions.EmptyObject;
 import com.fasterxml.jackson.annotation.JsonAutoDetect.Visibility;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
 public class JacksonMappingExceptionUnitTest {
 
@@ -87,6 +92,40 @@ public class JacksonMappingExceptionUnitTest {
         String json = objectMapper.writeValueAsString(emptyObject);
         // Verify that serialization is successful
         assertEquals("{}", json);
+    }
+
+    @Test
+    public void givenJsonArray_whenDeserializingToMap_thenThrowException() {
+        final String json = "[{\"firstName\":\"Abderrahim\",\"lastName\":\"Azhrioun\"}, {\"firstName\":\"Nicole\",\"lastName\":\"Smith\"}]";
+        final ObjectMapper mapper = new ObjectMapper();
+
+        Exception exception = assertThrows(JsonMappingException.class, () -> mapper.readValue(json, HashMap.class));
+
+        assertTrue(exception.getMessage()
+          .contains("Cannot deserialize value of type `java.util.HashMap<java.lang.Object,java.lang.Object>` from Array value (token `JsonToken.START_ARRAY`)"));
+    }
+
+    @Test
+    public void givenJsonArray_whenDeserializingToListOfMap_thenConvert() throws JsonProcessingException {
+        final List<Map<String, String>> expectedListOfMaps = Arrays.asList(Map.of("firstName", "Abderrahim", "lastName", "Azhrioun"), Map.of("firstName", "Nicole", "lastName", "Smith"));
+        final String json = "[{\"firstName\":\"Abderrahim\",\"lastName\":\"Azhrioun\"}, {\"firstName\":\"Nicole\",\"lastName\":\"Smith\"}]";
+        final ObjectMapper mapper = new ObjectMapper();
+
+        List<Map<String, String>> personList = mapper.readValue(json, new TypeReference<>() {});
+
+        assertThat(expectedListOfMaps).isEqualTo(personList);
+    }
+
+    @Test
+    public void givenJsonArray_whenDeserializingToListOfCustomObjects_thenConvert() throws JsonProcessingException {
+        final List<Person> expectedPersonList = Arrays.asList(new Person("Abderrahim", "Azhrioun"), new Person("Nicole", "Smith"));
+        final String json = "[{\"firstName\":\"Abderrahim\",\"lastName\":\"Azhrioun\"}, {\"firstName\":\"Nicole\",\"lastName\":\"Smith\"}]";
+        final ObjectMapper mapper = new ObjectMapper();
+
+        List<Person> personList = mapper.readValue(json, new TypeReference<>() {});
+
+        assertThat(expectedPersonList).usingRecursiveComparison()
+          .isEqualTo(personList);
     }
 
 }
