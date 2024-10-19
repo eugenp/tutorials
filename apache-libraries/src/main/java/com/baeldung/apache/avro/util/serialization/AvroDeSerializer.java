@@ -1,6 +1,7 @@
 package com.baeldung.apache.avro.util.serialization;
 
-import com.baeldung.apache.avro.util.model.AvroHttpRequest;
+import com.baeldung.apache.avro.generated.AvroHttpRequest;
+
 import org.apache.avro.io.DatumReader;
 import org.apache.avro.io.Decoder;
 import org.apache.avro.io.DecoderFactory;

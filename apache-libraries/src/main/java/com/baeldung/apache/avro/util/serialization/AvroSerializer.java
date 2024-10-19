@@ -1,6 +1,6 @@
 package com.baeldung.apache.avro.util.serialization;
 
-import com.baeldung.apache.avro.util.model.AvroHttpRequest;
+import com.baeldung.apache.avro.generated.AvroHttpRequest;
 import org.apache.avro.io.*;
 import org.apache.avro.specific.SpecificDatumWriter;
 import org.slf4j.Logger;
