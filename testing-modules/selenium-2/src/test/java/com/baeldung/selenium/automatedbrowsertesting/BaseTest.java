@@ -80,7 +80,7 @@ public class BaseTest {
         HashMap ltOptions = new HashMap<String, Object> ();
         ltOptions.put ("project", "ECommerce playground website");
         ltOptions.put ("build", "LambdaTest Ecommerce Website tests");
-        ltOptions.put ("name", "Search for a product test");
+        ltOptions.put ("name", "Automated Browser Testing");
         ltOptions.put ("w3c", true);
         ltOptions.put ("visual", true);
         ltOptions.put ("plugin", "java-testNG");
