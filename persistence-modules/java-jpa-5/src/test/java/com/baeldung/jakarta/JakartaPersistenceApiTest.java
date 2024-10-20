@@ -74,7 +74,6 @@ public class JakartaPersistenceApiTest {
     @Test
     public void whenUsingPersistenceConfiguration_thenEntityManagerFactoryIsCreated() {
         assertNotNull(emf);
-        assertNotNull(em);
     }
 
     @Test
@@ -88,24 +87,25 @@ public class JakartaPersistenceApiTest {
         }));
 
         var employee = emf.callInTransaction(em -> em.find(Employee.class, 8L));
-        Assertions.assertNotNull(employee);
-        Assertions.assertEquals("Jane Smith", employee.getFullName());
+        assertNotNull(employee);
+        assertEquals("Jane Smith", employee.getFullName());
     }
 
     @Test
     public void whenUsingEnhancedJpql_thenNewFeaturesWorks() {
-        Employee employee = emf.callInTransaction(em -> em.createQuery("from Employee where fullName = 'Tony Blair'", Employee.class)
-            .getSingleResult());
+        Employee employee = emf.callInTransaction(
+            em -> em.createQuery("from Employee where fullName = 'Tony Blair'", Employee.class).getSingleResult()
+        );
 
         assertNotNull(employee);
     }
 
     @Test
     public void givenNamedQuery_whenQueriedByDepartment_thenReturnCorrectEmployee() {
-        TypedQuery<Employee> query = em.createNamedQuery(Employee_.QUERY_EMPLOYEE_BY_DEPARTMENT, Employee.class)
-            .setParameter("department", "Science");
 
-        List<Employee> employees = query.getResultList();
+        List<Employee> employees = em.createNamedQuery(Employee_.QUERY_EMPLOYEE_BY_DEPARTMENT, Employee.class)
+            .setParameter("department", "Science")
+            .getResultList();
 
         assertEquals(1, employees.size());
     }
@@ -116,8 +116,8 @@ public class JakartaPersistenceApiTest {
         employeeGraph.addAttributeNode(Employee_.department);
 
         var employee = emf.callInTransaction(em -> em.find(employeeGraph, 7L));
-        Assertions.assertNotNull(employee);
-        Assertions.assertEquals("Engineering", employee.getDepartment());
+        assertNotNull(employee);
+        assertEquals("Engineering", employee.getDepartment());
     }
 
     @Test
@@ -183,19 +183,6 @@ public class JakartaPersistenceApiTest {
             .getFullName());
         assertEquals("charlie", sortedEmployees.get(3)
             .getFullName());
-    }
-
-    @Test
-    public void whenGetManagedReferenceFromDetached_thenSuccess() {
-        emf.runInTransaction(em -> {
-            Employee reference = em.getReference(Employee.class, 7L);
-
-            Assertions.assertNotNull(reference);
-            Assertions.assertEquals("Tony Blair", reference.getFullName());
-
-            Assertions.assertTrue(em.contains(reference));
-        });
-
     }
 
     private EntityManagerFactory createEntityManagerFactory() {

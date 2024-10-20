@@ -8,7 +8,6 @@ import org.hibernate.annotations.Immutable;
 
 @Entity
 @NamedQuery(name = "Employee.byDepartment", query = "FROM Employee WHERE department = :department")
-@Immutable
 public class Employee {
 
     @Id
