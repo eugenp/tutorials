@@ -36,5 +36,5 @@ public class MySQLDataTruncationUnitTest {
             stmt.execute ("INSERT INTO DEPARTMENT(id,name,code) VALUES(6,'Data Science','DS')");
         });
     }
-
+    
 }
