@@ -14,47 +14,31 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>io.gatling</groupId>
-                <artifactId>gatling-app</artifactId>
-                <version>${gatling.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.gatling</groupId>
-                <artifactId>gatling-recorder</artifactId>
-                <version>${gatling.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.gatling.highcharts</groupId>
-                <artifactId>gatling-charts-highcharts</artifactId>
-                <version>${gatling.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.scala-lang</groupId>
-                <artifactId>scala3-library_3</artifactId>
-                <version>${scala.version}</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <dependencies>
         <dependency>
             <groupId>io.gatling.highcharts</groupId>
             <artifactId>gatling-charts-highcharts</artifactId>
+            <version>${gatling.version}</version>
         </dependency>
         <dependency>
             <groupId>io.gatling</groupId>
             <artifactId>gatling-app</artifactId>
+            <version>${gatling.version}</version>
         </dependency>
         <dependency>
             <groupId>io.gatling</groupId>
             <artifactId>gatling-recorder</artifactId>
+            <version>${gatling.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala3-library_3</artifactId>
+            <version>${scala.version}</version>
         </dependency>
     </dependencies>
 
@@ -109,6 +93,7 @@
         <gatling.version>3.10.5</gatling.version>
         <scala-maven-plugin.version>4.8.1</scala-maven-plugin.version>
         <gatling-maven-plugin.version>4.8.1</gatling-maven-plugin.version>
+        <spring.version>3.3.4</spring.version>
     </properties>
 
 </project>
