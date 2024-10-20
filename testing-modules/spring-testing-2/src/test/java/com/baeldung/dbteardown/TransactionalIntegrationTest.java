@@ -33,7 +33,7 @@ public class TransactionalIntegrationTest {
 
     @Test
     void givenCustomer_whenSaved_thenReturnSameCustomer() throws Exception {
-        Customer customer = new Customer("John", "john@domain.com");
+        Customer customer = new Customer("Doe", "doe@domain.com");
 
         Customer savedCustomer = customerRepository.save(customer);
 
