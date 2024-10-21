@@ -15,7 +15,7 @@ import org.springframework.test.annotation.DirtiesContext;
 @SpringBootTest
 @DirtiesContext
 @PropertySource("classpath:application.properties")
-public class SpringBatchSchedulerIntegrationTest {
+public class SpringBatchSchedulerLiveTest {
 
     @Autowired
     private ApplicationContext context;
