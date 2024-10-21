@@ -9,7 +9,7 @@ import org.junit.Test;
 public class ShallowCopyTest {
 
     @Test
-    private void whenCloningObject_thenObjectsShouldNotBeEqual() throws CloneNotSupportedException {
+    void whenCloningObject_thenObjectsShouldNotBeEqual() throws CloneNotSupportedException {
         Country country = new Country("KE", "Kenya", new Currency("KES", "Ksh", BigDecimal.valueOf(1000)));
         Country shallowClone = new Country(country.getCode(), country.getName(), country.getCurrency());
 
@@ -19,7 +19,7 @@ public class ShallowCopyTest {
     }
 
     @Test
-    private void whenOriginalObjectIsModified_thenObjectsShouldBeEqual() throws CloneNotSupportedException {
+    void whenOriginalObjectIsModified_thenObjectsShouldBeEqual() throws CloneNotSupportedException {
         Country country = new Country("KE", "Kenya", new Currency("KES", "Ksh", BigDecimal.valueOf(1000)));
         Country shallowClone = new Country(country.getCode(), country.getName(), country.getCurrency());
 
