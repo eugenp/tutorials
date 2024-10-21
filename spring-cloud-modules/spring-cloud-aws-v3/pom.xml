@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.2</version>
+        <version>3.3.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.baeldung.spring.cloud.aws.sqs</groupId>
@@ -45,6 +45,10 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-testcontainers</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.testcontainers</groupId>
             <artifactId>localstack</artifactId>
             <scope>test</scope>
@@ -77,7 +81,7 @@
 
     <properties>
         <start-class>com.baeldung.spring.cloud.aws.sqs.SpringCloudAwsApplication</start-class>
-        <spring-cloud-aws.version>3.1.1</spring-cloud-aws.version>
+        <spring-cloud-aws.version>3.2.0</spring-cloud-aws.version>
         <maven.surefire.version>3.1.0</maven.surefire.version>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
