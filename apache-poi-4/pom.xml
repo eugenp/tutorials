@@ -57,7 +57,7 @@
     </dependencies>
 
     <properties>
-        <poi.version>5.2.5</poi.version>
+        <poi.version>5.3.0</poi.version>
         <poi-ooxml-schemas.version>4.1.2</poi-ooxml-schemas.version>
         <xmlbeans.version>5.2.0</xmlbeans.version>
         <logback-classic.version>1.5.6</logback-classic.version>
