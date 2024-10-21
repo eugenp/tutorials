@@ -20,7 +20,7 @@ import io.opentelemetry.api.trace.Tracer;
 import io.opentelemetry.api.metrics.Meter;
 import io.opentelemetry.context.Scope;
 import io.opentelemetry.api.common.Attributes;
-import io.opentelemetry.api.metrics.DoubleGauge;
+import io.opentelemetry.api.metrics.LongCounter;
 
 @Path("/trivia")
 public class TriviaResource {
@@ -29,9 +29,10 @@ public class TriviaResource {
     private final Tracer tracer;
     private final Meter meter;
     private TriviaService triviaService;
+    private final LongCounter httpRequestCounter;
     
     static final String OTEL_SERVICE_NAME = "trivia-service";
-    static final String WORD_SERVICE_URL = "http://localhost:8081/api/words/random";
+    static final String WORD_SERVICE_URL = "http://127.0.0.1:8081/api/words/random";
 
     public TriviaResource() {
         this.triviaService = new TriviaService(new OkHttpClient());
@@ -39,34 +40,32 @@ public class TriviaResource {
         TelemetryConfig telemetryConfig = TelemetryConfig.getInstance();
         this.tracer = telemetryConfig.getOpenTelemetry().getTracer(OTEL_SERVICE_NAME, "0.0.1-SNAPSHOT");
         this.meter = telemetryConfig.getOpenTelemetry().getMeter(OTEL_SERVICE_NAME);
+
+        this.httpRequestCounter = meter.counterBuilder("http.request.count")
+            .setDescription("Counts the number of HTTP requests")
+            .setUnit("1")
+            .build();
     }
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public Response retrieveCard() {
-        DoubleGauge requestDuration = meter.gaugeBuilder("http.request.duration")
-            .setDescription("Duration of HTTP request")
-            .setUnit("ms").build();
+        httpRequestCounter.add(1, Attributes.builder().put("endpoint", "/trivia").build());
 
-        Span span = tracer.spanBuilder("retrieveCard")
+        Span span = tracer.spanBuilder("retreive_card")
             .setAttribute("http.method", "GET")
             .setAttribute("http.url", WORD_SERVICE_URL)
             .setSpanKind(SpanKind.CLIENT).startSpan();
 
 
-        long callDuration = 0;
         try (Scope scope = span.makeCurrent()) {
             Instant start = Instant.now();
 
             span.addEvent("http.request.word-api", start);
             
             WordResponse wordResponse = triviaService.requestWordFromSource(WORD_SERVICE_URL);
-            Instant end = Instant.now();
-            callDuration = end.toEpochMilli() - start.toEpochMilli();
-            requestDuration.set(callDuration, Attributes.builder().put("request.duration", "word-wonder-api").build());
                             
             span.setAttribute("http.status_code", wordResponse.httpResponseCode());
-            span.setAttribute("http.request_duration", callDuration);
 
             logger.info("word-api response payload: {}", wordResponse.wordWithDefinition());
 

@@ -5,8 +5,6 @@ services:
     container_name: jaeger
     ports:
       - 16686:16686
-      - "14268"
-      - "14250"
     networks:
       - otel-network
 
@@ -17,14 +15,10 @@ services:
     command:
       - --config=/etc/collector-config.yaml
     ports:
-      - 1888:1888
-      - 1777:1777
-      - 13133:13133
       - 4317:4317
       - 4318:4318
-      - 55670:55679
-      - 8888:8888
       - 8889:8889
+      - 55679:55679
     networks:
       - otel-network
 

@@ -34,8 +34,8 @@ public class DictionaryController {
     @GetMapping("/random")
     public Map<String, String> getRandomWord() {
         Map<String, String> response = new HashMap<>();
-        Tracer tracer = openTelemetry.getTracer("word-wonder-application");
-        Span span = tracer.spanBuilder("getWord")
+        Tracer tracer = openTelemetry.getTracer("dictionary-service-application");
+        Span span = tracer.spanBuilder("get_word")
             .setParent(Context.current().with(Span.current()))
             .startSpan();
         try (Scope scope = span.makeCurrent()) {
