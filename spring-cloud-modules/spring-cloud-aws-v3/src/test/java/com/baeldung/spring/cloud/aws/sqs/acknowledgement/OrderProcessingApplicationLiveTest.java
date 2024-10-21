@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
-import com.baeldung.spring.cloud.aws.sqs.BaseSqsLiveTest;
 import com.baeldung.spring.cloud.aws.sqs.acknowledgement.configuration.EventsQueuesProperties;
 import com.baeldung.spring.cloud.aws.sqs.acknowledgement.configuration.ProductIdProperties;
 import com.baeldung.spring.cloud.aws.sqs.acknowledgement.model.OrderCreatedEvent;
@@ -26,7 +25,7 @@ import io.awspring.cloud.sqs.operations.SqsTemplate;
 
 @ActiveProfiles("acknowledgement")
 @SpringBootTest
-class OrderProcessingApplicationLiveTest extends BaseSqsLiveTest {
+class OrderProcessingApplicationLiveTest {
 
     private static final Logger logger = LoggerFactory.getLogger(OrderProcessingApplicationLiveTest.class);
 

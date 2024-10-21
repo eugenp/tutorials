@@ -21,7 +21,7 @@ public class TransactionService {
     private final Set<UUID> failedTransactions = ConcurrentHashMap.newKeySet();
 
     public void processTransaction(Transaction transaction) {
-        logger.info("Processing transaction: {} for account {}", transaction.transactionId(), transaction.accountId());
+        logger.info("Processing transaction: {}:{} for account {}", transaction.type(), transaction.amount(), transaction.accountId());
         processedTransactions.computeIfAbsent(transaction.accountId(), k -> new ArrayList<>())
             .add(transaction);
     }
@@ -35,7 +35,7 @@ public class TransactionService {
             processTransaction(transaction);
             Thread.sleep(Double.valueOf(500)
                 .intValue());
-            logger.info("Transaction processing completed: {} for account {}", transaction.transactionId(), transaction.accountId());
+            logger.info("Transaction processing completed: {}:{} for account {}", transaction.type(), transaction.amount(), transaction.accountId());
         } catch (InterruptedException e) {
             Thread.currentThread()
                 .interrupt();
@@ -46,7 +46,7 @@ public class TransactionService {
     public void processTransactionWithFailure(Transaction transaction) {
         if (!failedTransactions.contains(transaction.transactionId())) {
             failedTransactions.add(transaction.transactionId());
-            throw new RuntimeException("Simulated failure for transaction " + transaction.transactionId());
+            throw new RuntimeException("Simulated failure for transaction " + transaction.type() + ":" + transaction.amount());
         }
         processTransaction(transaction);
     }

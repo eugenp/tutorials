@@ -17,7 +17,6 @@ import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.test.context.ActiveProfiles;
 
-import com.baeldung.spring.cloud.aws.sqs.BaseSqsLiveTest;
 import com.baeldung.spring.cloud.aws.sqs.fifo.model.entity.Transaction;
 import com.baeldung.spring.cloud.aws.sqs.fifo.model.entity.TransactionType;
 import com.baeldung.spring.cloud.aws.sqs.fifo.model.event.TransactionEvent;
@@ -28,7 +27,7 @@ import io.awspring.cloud.sqs.operations.SqsTemplate;
 
 @ActiveProfiles("fifo")
 @SpringBootTest
-public class SpringCloudAwsSQSTransactionProcessingTest extends BaseSqsLiveTest {
+public class SpringCloudAwsSQSTransactionProcessingTest {
 
     @Autowired
     private SqsTemplate sqsTemplate;

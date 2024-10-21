@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
-import com.baeldung.spring.cloud.aws.sqs.BaseSqsLiveTest;
 import com.baeldung.spring.cloud.aws.sqs.conversion.configuration.ShipmentEventsQueuesProperties;
 import com.baeldung.spring.cloud.aws.sqs.conversion.configuration.ShippingHeaderTypesProperties;
 import com.baeldung.spring.cloud.aws.sqs.conversion.model.entity.DomesticShipment;
@@ -31,7 +30,7 @@ import software.amazon.awssdk.services.sqs.SqsAsyncClient;
 
 @ActiveProfiles("shipping")
 @SpringBootTest
-public class ShipmentServiceApplicationLiveTest extends BaseSqsLiveTest {
+public class ShipmentServiceApplicationLiveTest {
 
     @Autowired
     private SqsTemplate sqsTemplate;
