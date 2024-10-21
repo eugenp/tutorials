@@ -9,17 +9,15 @@ import org.junit.Test;
 public class DeepCloningTest {
 
     @Test
-    public void whenCloningObject_thenObjectsShouldNotBeTheSame() throws CloneNotSupportedException {
+    private void whenCloningObject_thenObjectsShouldNotBeTheSame() throws CloneNotSupportedException {
         Country country = new Country("KE", "Kenya", new Currency("KES", "Ksh", BigDecimal.valueOf(1000)));
         Country deepClone = country.clone();
-
         assertThat(country).isNotSameAs(deepClone);
         assertThat(country.getCurrency()).isNotSameAs(deepClone.getCurrency());
-
     }
 
     @Test
-    public void whenDeepCloningObjectWithConstructor_thenObjectsShouldNotBeTheSame() throws CloneNotSupportedException {
+    private void whenDeepCloningObjectWithConstructor_thenObjectsShouldNotBeTheSame() throws CloneNotSupportedException {
         Country country = new Country("KE", "Kenya", new Currency("KES", "Ksh", BigDecimal.valueOf(1000)));
         Country deepClone = new Country(country);
         assertThat(country).isNotSameAs(deepClone);
@@ -27,10 +25,9 @@ public class DeepCloningTest {
     }
 
     @Test
-    public void whenOriginalObjectIsModified_thenObjectsShouldNotBeEqual() throws CloneNotSupportedException {
+    private void whenOriginalObjectIsModified_thenObjectsShouldNotBeEqual() throws CloneNotSupportedException {
         Country country = new Country("KE", "Kenya", new Currency("KES", "Ksh", BigDecimal.valueOf(1000)));
         Country deepClone = new Country(country);
-
         country.getCurrency().setCode("KE");
         assertThat(country).isNotSameAs(deepClone);
         assertThat(country.getCurrency()).isNotSameAs(deepClone.getCurrency());
