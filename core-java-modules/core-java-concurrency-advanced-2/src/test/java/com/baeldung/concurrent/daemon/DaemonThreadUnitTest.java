@@ -12,12 +12,12 @@ public class DaemonThreadUnitTest {
     @Ignore
     public void whenCallIsDaemon_thenCorrect() {
         NewThread daemonThread = new NewThread();
-        NewThread userThread = new NewThread();
         daemonThread.setDaemon(true);
         daemonThread.start();
-        userThread.start();
-
         assertTrue(daemonThread.isDaemon());
+
+        NewThread userThread = new NewThread();
+        userThread.start();
         assertFalse(userThread.isDaemon());
     }
 
