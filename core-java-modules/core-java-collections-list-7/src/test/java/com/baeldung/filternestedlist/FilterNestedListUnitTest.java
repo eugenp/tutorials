@@ -17,8 +17,9 @@ public class FilterNestedListUnitTest {
         double priceThreshold = 500.0;
         Order order1 = new Order("Laptop", 600.0);
         Order order2 = new Order("Phone", 300.0);
+        Order order3 = new Order("Nintendo Switch", 510.0);
         User user1 = new User("Alice", Arrays.asList(order1, order2));
-        User user2 = new User("Bob", Arrays.asList(order2));
+        User user2 = new User("Bob", Arrays.asList(order2, order3));
         List<User> users = Arrays.asList(user1, user2);
 
         List<User> filteredUsers = new ArrayList<>();
@@ -31,8 +32,9 @@ public class FilterNestedListUnitTest {
             }
         }
 
-        assertEquals(1, filteredUsers.size());
+        assertEquals(2, filteredUsers.size());
         assertEquals("Alice", filteredUsers.get(0).getName());
+        assertEquals("Bob", filteredUsers.get(1).getName());
     }
 
     @Test
@@ -40,8 +42,9 @@ public class FilterNestedListUnitTest {
         double priceThreshold = 500.0;
         Order order1 = new Order("Laptop", 600.0);
         Order order2 = new Order("Phone", 300.0);
+        Order order3 = new Order("Nintendo Switch", 510.0);
         User user1 = new User("Alice", Arrays.asList(order1, order2));
-        User user2 = new User("Bob", Arrays.asList(order2));
+        User user2 = new User("Bob", Arrays.asList(order2, order3));
         List<User> users = Arrays.asList(user1, user2);
 
         List<User> filteredUsers = users.stream()
@@ -49,8 +52,9 @@ public class FilterNestedListUnitTest {
                 .anyMatch(order -> order.getPrice() > priceThreshold))
             .collect(Collectors.toList());
 
-        assertEquals(1, filteredUsers.size());
+        assertEquals(2, filteredUsers.size());
         assertEquals("Alice", filteredUsers.get(0).getName());
+        assertEquals("Bob", filteredUsers.get(1).getName());
     }
 
     @Test
@@ -58,9 +62,10 @@ public class FilterNestedListUnitTest {
         String productToFilter = "Laptop";
         double priceThreshold = 500.0;
         Order order1 = new Order("Laptop", 600.0);
-        Order order2 = new Order("Laptop", 400.0);
+        Order order2 = new Order("Phone", 300.0);
+        Order order3 = new Order("Nintendo Switch", 510.0);
         User user1 = new User("Alice", Arrays.asList(order1, order2));
-        User user2 = new User("Bob", Arrays.asList(order2));
+        User user2 = new User("Bob", Arrays.asList(order2, order3));
         List<User> users = Arrays.asList(user1, user2);
 
         List<User> filteredUsers = users.stream()
@@ -77,8 +82,9 @@ public class FilterNestedListUnitTest {
         double priceThreshold = 500.0;
         Order order1 = new Order("Laptop", 600.0);
         Order order2 = new Order("Phone", 300.0);
+        Order order3 = new Order("Nintendo Switch", 510.0);
         User user1 = new User("Alice", Arrays.asList(order1, order2));
-        User user2 = new User("Bob", Arrays.asList(order2));
+        User user2 = new User("Bob", Arrays.asList(order2, order3));
         List<User> users = Arrays.asList(user1, user2);
 
         Predicate<User> hasExpensiveOrder = user -> user.getOrders().stream()
@@ -88,8 +94,9 @@ public class FilterNestedListUnitTest {
             .filter(hasExpensiveOrder)
             .collect(Collectors.toList());
 
-        assertEquals(1, filteredUsers.size());
+        assertEquals(2, filteredUsers.size());
         assertEquals("Alice", filteredUsers.get(0).getName());
+        assertEquals("Bob", filteredUsers.get(1).getName());
     }
 
     @Test
@@ -97,8 +104,9 @@ public class FilterNestedListUnitTest {
         double priceThreshold = 500.0;
         Order order1 = new Order("Laptop", 600.0);
         Order order2 = new Order("Phone", 300.0);
+        Order order3 = new Order("Nintendo Switch", 510.0);
         User user1 = new User("Alice", Arrays.asList(order1, order2));
-        User user2 = new User("Bob", Arrays.asList(order2));
+        User user2 = new User("Bob", Arrays.asList(order2, order3));
         List<User> users = Arrays.asList(user1, user2);
 
         List<User> filteredUsersWithLimitedOrders = users.stream()
@@ -112,9 +120,9 @@ public class FilterNestedListUnitTest {
             .filter(user -> !user.getOrders().isEmpty())
             .collect(Collectors.toList());
 
-        assertEquals(1, filteredUsersWithLimitedOrders.size());
+        assertEquals(2, filteredUsersWithLimitedOrders.size());
         assertEquals(1, filteredUsersWithLimitedOrders.get(0).getOrders().size());
-        assertEquals("Laptop", filteredUsersWithLimitedOrders.get(0).getOrders().get(0).getProduct());
+        assertEquals(1, filteredUsersWithLimitedOrders.get(1).getOrders().size());
     }
 
     @Test
@@ -122,19 +130,21 @@ public class FilterNestedListUnitTest {
         double priceThreshold = 500.0;
         Order order1 = new Order("Laptop", 600.0);
         Order order2 = new Order("Phone", 300.0);
+        Order order3 = new Order("Nintendo Switch", 510.0);
         User user1 = new User("Alice", Arrays.asList(order1, order2));
-        User user2 = new User("Bob", Arrays.asList(order2));
+        User user2 = new User("Bob", Arrays.asList(order2, order3));
         List<User> users = Arrays.asList(user1, user2);
 
         List<User> filteredUsers = users.stream()
             .flatMap(user -> user.getOrders().stream()
                 .filter(order -> order.getPrice() > priceThreshold)
                 .map(order -> user))
-            .distinct() // Ensure we don't get duplicates
+            .distinct()
             .collect(Collectors.toList());
 
-        assertEquals(1, filteredUsers.size());
+        assertEquals(2, filteredUsers.size());
         assertEquals("Alice", filteredUsers.get(0).getName());
+        assertEquals("Bob", filteredUsers.get(1).getName());
     }
 
     @Test
@@ -142,7 +152,8 @@ public class FilterNestedListUnitTest {
         double priceThreshold = 500.0;
         Order order1 = new Order("Laptop", 600.0);
         Order order2 = new Order("Phone", 300.0);
-        User user1 = new User("Alice", Arrays.asList(order1, order2));
+        Order order3 = new Order("Nintendo Switch", 510.0);
+        User user1 = new User("Alice", Arrays.asList(order1, order2, order3));
         User user2 = new User("Bob", null);  // User with null orders
         User user3 = new User("Charlie", new ArrayList<>());  // User with empty orders
         List<User> users = Arrays.asList(user1, user2, user3);
