@@ -51,6 +51,11 @@
             <artifactId>hibernate-types-52</artifactId>
             <version>${vladmihalcea.version}</version>
         </dependency>
+        <dependency>
+            <groupId>net.bytebuddy</groupId>
+            <artifactId>byte-buddy</artifactId>
+            <version>${byte-buddy.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -71,5 +76,6 @@
         <vladmihalcea.version>2.18.0</vladmihalcea.version>
         <datasource-proxy.version>1.9.1</datasource-proxy.version>
         <vladmihalcea.version>2.18.0</vladmihalcea.version>
+        <byte-buddy.version>1.14.17</byte-buddy.version>
     </properties>
 </project>
