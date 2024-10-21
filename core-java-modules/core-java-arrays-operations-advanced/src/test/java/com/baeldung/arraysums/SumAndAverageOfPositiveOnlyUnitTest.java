@@ -10,7 +10,7 @@ public class SumAndAverageOfPositiveOnlyUnitTest {
 
     private static final int[] MY_ARRAY = new int[] { 1, -2, 3, -4, 5, -6, 7, 42, 0 };
     private static final int EXPECTED_SUM = 58; //1+3+5+7+42
-    private static final double EXPECTED_AVG = (double) 58 / 5; //(1+3+5+7+42)/5
+    private static final double EXPECTED_AVG = 11.60D; //(1+3+5+7+42)/5
 
     @Test
     void whenUsingForLoop_thenCorrect() {
