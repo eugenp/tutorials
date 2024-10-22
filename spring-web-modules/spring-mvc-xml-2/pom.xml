@@ -10,9 +10,8 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-spring-6</artifactId>
+        <artifactId>spring-web-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-spring-6</relativePath>
     </parent>
 
     <dependencies>
@@ -35,7 +34,6 @@
         <dependency>
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
-            <version>${hibernate-validator.version}</version>
         </dependency>
         <!-- Json conversion -->
         <dependency>
@@ -57,7 +55,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>${spring-boot-starter-test.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -87,6 +84,13 @@
                     <parameters>true</parameters>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
@@ -94,11 +98,9 @@
         <mysql-connector-java.version>5.1.40</mysql-connector-java.version>
         <httpcore.version>4.4.5</httpcore.version>
         <httpclient.version>4.5.2</httpclient.version>
-        <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
         <expressly.version>5.0.0</expressly.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
         <jakarta.servlet-api.version>6.0.0</jakarta.servlet-api.version>
-        <spring-boot-starter-test.version>3.1.5</spring-boot-starter-test.version>
     </properties>
 
 </project>
