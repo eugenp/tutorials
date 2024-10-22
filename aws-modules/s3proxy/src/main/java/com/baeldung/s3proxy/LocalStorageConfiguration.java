@@ -6,6 +6,7 @@ import java.util.Properties;
 import org.gaul.s3proxy.AuthenticationType;
 import org.gaul.s3proxy.S3Proxy;
 import org.jclouds.ContextBuilder;
+import org.jclouds.blobstore.BlobStore;
 import org.jclouds.blobstore.BlobStoreContext;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -27,21 +28,22 @@ public class LocalStorageConfiguration {
     }
     
     @Bean
-    public BlobStoreContext blobStoreContext() {
+    public BlobStore blobStore() {
         Properties properties = new Properties();
         properties.setProperty("jclouds.filesystem.basedir", storageProperties.getLocalFileBaseDirectory());
         return ContextBuilder
             .newBuilder("filesystem")
             .overrides(properties)
-            .build(BlobStoreContext.class);
+            .build(BlobStoreContext.class)
+            .getBlobStore();
     }
 
     @Bean
-    public S3Proxy s3Proxy(BlobStoreContext blobStoreContext) {
+    public S3Proxy s3Proxy(BlobStore blobStore) {
         return S3Proxy
             .builder()
             .awsAuthentication(AuthenticationType.NONE, null, null)
-            .blobStore(blobStoreContext.getBlobStore())
+            .blobStore(blobStore)
             .endpoint(URI.create(storageProperties.getProxyEndpoint()))
             .build();
     }
