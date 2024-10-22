@@ -195,11 +195,6 @@
                     </environmentVariables>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>findbugs-maven-plugin</artifactId>
-                <version>${findbugs-plugin.version}</version>
-            </plugin>
         </plugins>
     </build>
 
@@ -222,7 +217,6 @@
         <cucumber.version>4.8.0</cucumber.version>
         <checkstyle-maven-plugin.version>3.0.0</checkstyle-maven-plugin.version>
         <spring-boot.version>2.4.3</spring-boot.version>
-        <findbugs-plugin.version>3.0.5</findbugs-plugin.version>
         <system-rules.version>1.19.0</system-rules.version>
         <system-lambda.version>1.0.0</system-lambda.version>
         <system-stubs.version>2.1.6</system-stubs.version>

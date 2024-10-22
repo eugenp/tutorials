@@ -107,6 +107,11 @@
                     <htmlOutput>true</htmlOutput>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>${findbugs-plugin.version}</version>
+            </plugin>
         </plugins>
         <resources>
             <resource>
@@ -122,6 +127,7 @@
         <system-stubs.version>2.1.6</system-stubs.version>
         <spotbugs-maven-plugin.version>4.8.5.0</spotbugs-maven-plugin.version>
         <spotbugs.version>4.8.5</spotbugs.version>
+        <findbugs-plugin.version>3.0.5</findbugs-plugin.version>
     </properties>
 
 </project>
