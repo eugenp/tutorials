@@ -34,4 +34,5 @@ public class NullArray {
             return Arrays.asList(notNullArray);
         }
     }
+
 }
