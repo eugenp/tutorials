@@ -3,12 +3,12 @@ version: '3.7'
 services:
   zookeeper:
     restart: always
-    image: manios/zookeeper:3.8
+    image: zookeeper:3.8
     container_name: zookeeper
     ports:
       - "2181:2181"
     volumes:
-      - "zookeeper-volume:/bitnami"
+      - "zookeeper-volume"
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
     networks:
@@ -16,12 +16,12 @@ services:
 
   kafka:
     restart: always
-    image: apache/kafka:3.3
+    image: apache/kafka:latest
     container_name: kafka
     ports:
       - "9092:9092"
     volumes:
-      - "kafka-volume:/bitnami"
+      - "kafka-volume"
     environment:
       - KAFKA_BROKER_ID=1
       - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
