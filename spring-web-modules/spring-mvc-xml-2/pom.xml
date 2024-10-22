@@ -76,7 +76,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>${spring-boot.version}</version>
+            <version>${spring-boot-starter-test.version}</version>
             <scope>test</scope>
         </dependency>
         <!-- CRaSH Dependency -->
@@ -138,7 +138,7 @@
     <properties>
         <!-- Spring -->
         <org.springframework.version>6.0.6</org.springframework.version>
-        <spring-boot.version>3.1.5</spring-boot.version>
+        <spring-boot-starter-test.version>3.1.5</spring-boot-starter-test.version>
         <!-- persistence -->
         <mysql-connector-java.version>5.1.40</mysql-connector-java.version>
         <!-- http -->
