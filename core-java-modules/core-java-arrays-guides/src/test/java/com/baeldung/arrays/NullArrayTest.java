@@ -1,4 +1,4 @@
-package java.com.baeldung.arrays;
+package com.baeldung.arrays;
 
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
@@ -31,9 +31,9 @@ public class NullArrayTest {
     public void whenArrayIsNotEmpty_thenReturnListWithSameElements() {
         String[] possiblyNullArray = {"a", "b"};
 
-        Assertions.assertThat(Java8.getAsList(possiblyNullArray)).isNotNull().isEmpty();
-        Assertions.assertThat(TernaryOperator.getAsList(possiblyNullArray)).isNotNull().isEmpty();
-        Assertions.assertThat(ApacheCommons.getAsList(possiblyNullArray)).isNotNull().isEmpty();
+        Assertions.assertThat(Java8.getAsList(possiblyNullArray)).isNotNull().containsExactly(possiblyNullArray);
+        Assertions.assertThat(TernaryOperator.getAsList(possiblyNullArray)).containsExactly(possiblyNullArray);
+        Assertions.assertThat(ApacheCommons.getAsList(possiblyNullArray)).containsExactly(possiblyNullArray);
     }
 
 }
