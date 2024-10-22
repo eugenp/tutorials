@@ -31,7 +31,7 @@ public class PassCollectionToVarargsUnitTest {
     }
 
     @BeforeEach
-    public void init() {
+    void init() {
         listOfStrings = List.of("string one", "string two", "string three");
     }
 
