@@ -1,5 +1,7 @@
 package com.baeldung.systemout;
 
+import static com.github.stefanbirkner.systemlambda.SystemLambda.tapSystemOut;
+
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
@@ -7,8 +9,6 @@ import org.junit.Assert;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static com.github.stefanbirkner.systemlambda.SystemLambda.tapSystemOut;
 
 class SystemOutPrintlnUnitTest {
 
