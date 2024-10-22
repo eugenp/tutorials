@@ -4,6 +4,7 @@ import java.net.URI;
 
 import org.gaul.s3proxy.S3Proxy;
 import org.jclouds.ContextBuilder;
+import org.jclouds.blobstore.BlobStore;
 import org.jclouds.blobstore.BlobStoreContext;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -30,27 +31,29 @@ public class StorageConfiguration {
 
     @Bean
     @Profile("azure")
-    public BlobStoreContext azureBlobStoreContext() {
+    public BlobStore azureBlobStore() {
         return ContextBuilder
             .newBuilder("azureblob")
             .credentials(storageProperties.getIdentity(), storageProperties.getCredential())
-            .build(BlobStoreContext.class);
+            .build(BlobStoreContext.class)
+            .getBlobStore();
     }
 
     @Bean
     @Profile("gcp")
-    public BlobStoreContext gcpBlobStoreContext() {
+    public BlobStore gcpBlobStore() {
         return ContextBuilder
             .newBuilder("google-cloud-storage")
             .credentials(storageProperties.getIdentity(), storageProperties.getCredential())
-            .build(BlobStoreContext.class);
+            .build(BlobStoreContext.class)
+            .getBlobStore();
     }
 
     @Bean
-    public S3Proxy s3Proxy(BlobStoreContext blobStoreContext) {
+    public S3Proxy s3Proxy(BlobStore blobStore) {
         return S3Proxy
             .builder()
-            .blobStore(blobStoreContext.getBlobStore())
+            .blobStore(blobStore)
             .endpoint(URI.create(storageProperties.getProxyEndpoint()))
             .build();
     }
