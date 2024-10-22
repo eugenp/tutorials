@@ -129,7 +129,6 @@
     </build>
 
     <properties>
-
         <system-rules.version>1.19.0</system-rules.version>
         <system-lambda.version>1.0.0</system-lambda.version>
         <system-stubs.version>2.1.6</system-stubs.version>
