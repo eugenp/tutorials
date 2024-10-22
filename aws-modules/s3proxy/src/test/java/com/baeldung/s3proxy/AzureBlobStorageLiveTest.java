@@ -1,15 +1,12 @@
-package s3proxy;
+package com.baeldung.s3proxy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.ByteArrayInputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-import org.apache.commons.io.FileUtils;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -21,20 +18,17 @@ import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.baeldung.s3proxy.Application;
-import com.baeldung.s3proxy.StorageProperties;
-
 import net.bytebuddy.utility.RandomString;
 import software.amazon.awssdk.core.sync.RequestBody;
 import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.BucketAlreadyOwnedByYouException;
 import software.amazon.awssdk.services.s3.model.S3Object;
 
+@ActiveProfiles("azure")
 @TestInstance(Lifecycle.PER_CLASS)
-@ActiveProfiles({ "local", "test" })
 @SpringBootTest(classes = Application.class)
 @EnableConfigurationProperties(StorageProperties.class)
-class LocalFileSystemStorageIntegrationTest {
+class AzureBlobStorageLiveTest {
 
     @Autowired
     private S3Client s3Client;
@@ -44,31 +38,22 @@ class LocalFileSystemStorageIntegrationTest {
 
     @BeforeAll
     void setup() {
-        File directory = new File(storageProperties.getLocalFileBaseDirectory());
-        directory.mkdir();
-
         String bucketName = storageProperties.getBucketName();
         try {
-            s3Client.createBucket(request -> request.bucket(bucketName));   
+            s3Client.createBucket(request -> request.bucket(bucketName));
         } catch (BucketAlreadyOwnedByYouException exception) {
             // do nothing
         }
     }
-    
-    @AfterAll
-    void teardown() throws IOException {
-        File directory = new File(storageProperties.getLocalFileBaseDirectory());
-        FileUtils.forceDelete(directory);
-    }
 
     @Test
-    void whenFileUploaded_thenFileSavedInFileSystem() throws Exception {
+    void whenFileUploaded_thenFileSavedInAzureBlobContainer() throws Exception {
         // Prepare test file to upload
         String key = RandomString.make(10) + ".txt";
         String fileContent = RandomString.make(50);
         MultipartFile fileToUpload = createTextFile(key, fileContent);
         
-        // Save file to file system
+        // Save file to Azure blob storage container
         s3Client.putObject(request -> 
             request
                 .bucket(storageProperties.getBucketName())
@@ -76,7 +61,7 @@ class LocalFileSystemStorageIntegrationTest {
                 .contentType(fileToUpload.getContentType())
             , RequestBody.fromBytes(fileToUpload.getBytes()));
         
-        // Verify that the file is saved successfully by checking if it exists in the file system
+        // Verify that the file is saved successfully by checking if it exists in the container
         List<S3Object> savedObjects = s3Client.listObjects(request -> 
             request.bucket(storageProperties.getBucketName())
         ).contents();

@@ -1,4 +1,4 @@
-package s3proxy;
+package com.baeldung.s3proxy;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -18,20 +18,17 @@ import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.baeldung.s3proxy.Application;
-import com.baeldung.s3proxy.StorageProperties;
-
 import net.bytebuddy.utility.RandomString;
 import software.amazon.awssdk.core.sync.RequestBody;
 import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.BucketAlreadyOwnedByYouException;
 import software.amazon.awssdk.services.s3.model.S3Object;
 
-@ActiveProfiles("azure")
+@ActiveProfiles("gcp")
 @TestInstance(Lifecycle.PER_CLASS)
 @SpringBootTest(classes = Application.class)
 @EnableConfigurationProperties(StorageProperties.class)
-class AzureBlobStorageLiveTest {
+class GcpCloudStorageLiveTest {
 
     @Autowired
     private S3Client s3Client;
@@ -43,20 +40,20 @@ class AzureBlobStorageLiveTest {
     void setup() {
         String bucketName = storageProperties.getBucketName();
         try {
-            s3Client.createBucket(request -> request.bucket(bucketName));
+            s3Client.createBucket(request -> request.bucket(bucketName));            
         } catch (BucketAlreadyOwnedByYouException exception) {
             // do nothing
         }
     }
 
     @Test
-    void whenFileUploaded_thenFileSavedInAzureBlobContainer() throws Exception {
+    void whenFileUploaded_thenFileSavedInGcpCloudStorageBucket() throws Exception {
         // Prepare test file to upload
         String key = RandomString.make(10) + ".txt";
         String fileContent = RandomString.make(50);
         MultipartFile fileToUpload = createTextFile(key, fileContent);
         
-        // Save file to Azure blob storage container
+        // Save file to GCP cloud storage bucket
         s3Client.putObject(request -> 
             request
                 .bucket(storageProperties.getBucketName())
@@ -64,7 +61,7 @@ class AzureBlobStorageLiveTest {
                 .contentType(fileToUpload.getContentType())
             , RequestBody.fromBytes(fileToUpload.getBytes()));
         
-        // Verify that the file is saved successfully by checking if it exists in the container
+        // Verify that the file is saved successfully by checking if it exists in the bucket
         List<S3Object> savedObjects = s3Client.listObjects(request -> 
             request.bucket(storageProperties.getBucketName())
         ).contents();
