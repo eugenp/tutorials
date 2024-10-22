@@ -13,4 +13,5 @@ This module contains articles about Properties in Spring Boot.
 - [Using application.yml vs application.properties in Spring Boot](https://www.baeldung.com/spring-boot-yaml-vs-properties)
 - [Using Spring @Value With Defaults](https://www.baeldung.com/spring-value-defaults)
 - [A Quick Guide to Spring @Value](https://www.baeldung.com/spring-value-annotation)
+- [YAML to List of Objects in Spring Boot](https://www.baeldung.com/spring-boot-yaml-list)
 - More articles: [[more -->]](../spring-boot-properties-2)
