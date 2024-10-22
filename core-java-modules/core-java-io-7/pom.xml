@@ -30,6 +30,11 @@
             <artifactId>tika-core</artifactId>
             <version>${tika-core.version}</version>
         </dependency>
+        <dependency>
+            <groupId>de.vandermeer</groupId>
+            <artifactId>asciitable</artifactId>
+            <version>0.3.2</version>
+        </dependency>
     </dependencies>
 
     <build>

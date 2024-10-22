@@ -35,7 +35,7 @@
     </build>
 
     <properties>
-        <jna.version>5.6.0</jna.version>
+        <jna.version>5.15.0</jna.version>
     </properties>
 
 </project>
