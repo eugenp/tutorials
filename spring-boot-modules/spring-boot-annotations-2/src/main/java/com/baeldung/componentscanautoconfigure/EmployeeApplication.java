@@ -7,8 +7,8 @@ import org.springframework.context.annotation.ComponentScan;
 
 import com.baeldung.componentscanautoconfigure.teacher.Teacher;
 
-@ComponentScan(basePackages = {"com.baeldung.annotations.componentscanautoconfigure.healthcare",
-        "com.baeldung.annotations.componentscanautoconfigure.employee"},
+@ComponentScan(basePackages = {"com.baeldung.componentscanautoconfigure.healthcare",
+        "com.baeldung.componentscanautoconfigure.employee"},
         basePackageClasses = Teacher.class)
 @EnableAutoConfiguration(exclude = {JdbcTemplateAutoConfiguration.class})
 //@EnableAutoConfiguration(excludeName = {"org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration"})
