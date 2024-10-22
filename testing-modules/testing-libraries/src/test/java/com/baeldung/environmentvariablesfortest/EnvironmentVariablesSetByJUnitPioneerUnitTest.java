@@ -1,10 +1,10 @@
 package com.baeldung.environmentvariablesfortest;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.jupiter.api.Test;
 import org.junitpioneer.jupiter.ClearEnvironmentVariable;
 import org.junitpioneer.jupiter.SetEnvironmentVariable;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 @SetEnvironmentVariable(key = "pioneer", value = "is pioneering")
 class EnvironmentVariablesSetByJUnitPioneerUnitTest {

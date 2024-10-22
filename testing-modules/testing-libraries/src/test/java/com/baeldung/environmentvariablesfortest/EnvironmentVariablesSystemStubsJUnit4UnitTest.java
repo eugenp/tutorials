@@ -1,10 +1,11 @@
 package com.baeldung.environmentvariablesfortest;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.Rule;
 import org.junit.Test;
-import uk.org.webcompere.systemstubs.rules.EnvironmentVariablesRule;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import uk.org.webcompere.systemstubs.rules.EnvironmentVariablesRule;
 
 public class EnvironmentVariablesSystemStubsJUnit4UnitTest {
     @Rule

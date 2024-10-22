@@ -1,9 +1,9 @@
 package com.baeldung.environmentvariablesfortest;
 
-import org.junit.jupiter.api.Test;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static uk.org.webcompere.systemstubs.SystemStubs.withEnvironmentVariables;
+
+import org.junit.jupiter.api.Test;
 
 class EnvironmentVariablesSystemStubsNoFrameworkUnitTest {
 

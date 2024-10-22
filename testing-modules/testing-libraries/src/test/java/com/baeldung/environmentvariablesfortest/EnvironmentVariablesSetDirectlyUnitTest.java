@@ -1,13 +1,14 @@
 package com.baeldung.environmentvariablesfortest;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.lang.reflect.Field;
+import java.util.Map;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.EnabledForJreRange;
 import org.junit.jupiter.api.condition.JRE;
-
-import java.lang.reflect.Field;
-import java.util.Map;
-import static org.assertj.core.api.Assertions.assertThat;
 
 @EnabledForJreRange(min = JRE.JAVA_8, max = JRE.JAVA_16)
 class EnvironmentVariablesSetDirectlyUnitTest {

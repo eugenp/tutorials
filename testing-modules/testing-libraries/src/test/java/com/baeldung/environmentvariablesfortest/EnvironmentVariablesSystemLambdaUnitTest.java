@@ -1,10 +1,9 @@
 package com.baeldung.environmentvariablesfortest;
 
-import org.junit.jupiter.api.Test;
-
 import static com.github.stefanbirkner.systemlambda.SystemLambda.withEnvironmentVariable;
-
 import static org.assertj.core.api.Assertions.assertThat;
+
+import org.junit.jupiter.api.Test;
 
 class EnvironmentVariablesSystemLambdaUnitTest {
 
