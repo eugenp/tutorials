@@ -5,8 +5,6 @@ import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
 
-import com.baeldung.sonarqubeandjacoco.product.Product;
-
 public class ProductUnitTest {
 
     @Test
