@@ -17,6 +17,9 @@ import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.when;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import io.opentelemetry.context.propagation.TextMapPropagator;
+import io.opentelemetry.context.Context;
+
 class TriviaServiceUnitTest {
 
     @Mock
@@ -35,10 +38,16 @@ class TriviaServiceUnitTest {
 
     private String wordServiceUrl;
 
+    @Mock
+    private TextMapPropagator mockTextMapPropagator;
+
+    @Mock
+    private Context mockContext;
+
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        triviaService = new TriviaService(mockHttpClient);
+        triviaService = new TriviaService(mockHttpClient, mockTextMapPropagator);
         wordServiceUrl = "https://localhost:8081/api/words/random";
     }
 
@@ -53,7 +62,7 @@ class TriviaServiceUnitTest {
         when(mockHttpResponseBody.string()).thenReturn(responseBody);
         when(mockHttpResponse.code()).thenReturn(200);
 
-        WordResponse result = triviaService.requestWordFromSource(wordServiceUrl);
+        WordResponse result = triviaService.requestWordFromSource(mockContext, wordServiceUrl);
 
         assertEquals(responseBody, result.wordWithDefinition());
         assertEquals(200, result.httpResponseCode());

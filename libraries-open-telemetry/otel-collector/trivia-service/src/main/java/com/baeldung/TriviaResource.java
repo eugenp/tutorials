@@ -19,6 +19,7 @@ import io.opentelemetry.api.trace.StatusCode;
 import io.opentelemetry.api.trace.Tracer;
 import io.opentelemetry.api.metrics.Meter;
 import io.opentelemetry.context.Scope;
+import io.opentelemetry.context.Context;
 import io.opentelemetry.api.common.Attributes;
 import io.opentelemetry.api.metrics.LongCounter;
 
@@ -35,11 +36,12 @@ public class TriviaResource {
     static final String WORD_SERVICE_URL = "http://127.0.0.1:8081/api/words/random";
 
     public TriviaResource() {
-        this.triviaService = new TriviaService(new OkHttpClient());
-
         TelemetryConfig telemetryConfig = TelemetryConfig.getInstance();
         this.tracer = telemetryConfig.getOpenTelemetry().getTracer(OTEL_SERVICE_NAME, "0.0.1-SNAPSHOT");
         this.meter = telemetryConfig.getOpenTelemetry().getMeter(OTEL_SERVICE_NAME);
+        var textMapPropagator = telemetryConfig.getOpenTelemetry().getPropagators().getTextMapPropagator();
+
+        this.triviaService = new TriviaService(new OkHttpClient(), textMapPropagator);
 
         this.httpRequestCounter = meter.counterBuilder("http.request.count")
             .setDescription("Counts the number of HTTP requests")
@@ -60,10 +62,9 @@ public class TriviaResource {
 
         try (Scope scope = span.makeCurrent()) {
             Instant start = Instant.now();
-
             span.addEvent("http.request.word-api", start);
             
-            WordResponse wordResponse = triviaService.requestWordFromSource(WORD_SERVICE_URL);
+            WordResponse wordResponse = triviaService.requestWordFromSource(Context.current().with(span), WORD_SERVICE_URL);
                             
             span.setAttribute("http.status_code", wordResponse.httpResponseCode());
 
@@ -71,9 +72,9 @@ public class TriviaResource {
 
             return Response.ok(wordResponse.wordWithDefinition()).build();
         } catch(IOException exception) {
-            span.setStatus(StatusCode.ERROR, "Error while retreiving info from word wonder service");
+            span.setStatus(StatusCode.ERROR, "Error retreiving info from dictionary service");
             span.recordException(exception);
-            logger.error("Error while calling word wonder service", exception);
+            logger.error("Error while calling dictionary service", exception);
             return Response.noContent().build();
         } finally {
             span.end();
