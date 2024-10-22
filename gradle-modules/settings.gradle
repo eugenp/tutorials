@@ -6,3 +6,11 @@ include 'gradle-7'
 include 'gradle-8'
 include 'gradle-customization'
 include 'gradle-core'
+
+dependencyResolutionManagement {
+    repositories {
+        mavenCentral()
+        // Add this line if it's not already present
+        maven { url "https://repo1.maven.org/maven2" }
+    }
+}
