@@ -61,3 +61,27 @@ enabled: true
 servers:
     - www.abc.dev.com
     - www.xyz.dev.com
+
+application:
+  servers:
+    - ip: '127.0.0.1'
+      path: '/path1'
+    - ip: '127.0.0.2'
+      path: '/path2'
+    - ip: '127.0.0.3'
+      path: '/path3'
+
+logging:
+  file:
+    name: myapplication.log
+
+spring:
+      config:
+        activate:
+          on-profile: staging
+      datasource:
+        password: 'password'
+        url: jdbc:h2:staging
+        username: SA
+bael:
+      property: stagingValue
