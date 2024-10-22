@@ -1,31 +1,64 @@
 package com.baeldung;
 
-import java.io.Serializable;
+class Title {
 
-public class MyPayload implements Serializable {
+	private String name;
 
-	private static final long serialVersionUID = 1L;
-	private String value;
+	// standard constructors, getters/setters, equals and hashcode
 
-	public MyPayload(String value) {
-		this.value = value;
+	public Title deepCopy() {
+		return new Title(name);
+	}
+}
+
+class Book {
+
+	private Title title;
+	private String author;
+
+	// standard constructors, getters/setters, equals and hashcode
+
+	public Book deepCopy() {
+		return new Book(title.deepCopy(), author);
+	}
+}
+
+class MyTest {
+
+	@Test
+	public void whenShallowCopyInvoked_thenObjectsAreNotSame_butParametersAreSame() {
+
+		Book originalBook = new Book(new Title("Original"));
+
+		Book shallowCopy = new Book(originalBook.getTitle(), "Baeldung");
+
+		assertThat(shallowCopy).isNotSameAs(originalBook);
+		assertThat(shallowCopy.getTitle()).isSameAs(originalBook.getTitle());
 	}
 
-	public String getValue() {
-		return value;
+	@Test
+	public void whenModifingOriginal_thenFieldsOfCopyAreChanged() {
+
+		Book originalBook = new Book(new Title("Original"));
+		Book shallowCopy = new Book(originalBook.getTitle(), "Baeldung");
+
+		shallowCopy.getTitle().setName("Copy");
+
+		assertThat(originalBook.getTitle().getValue()).isNotEqualTo("Original");
+		assertThat(originalBook.getTitle().getValue()).isEqualTo(shallowCopy.getTitle().getValue());
 	}
 
-	public void setValue(String value) {
-		this.value = value;
-	}
+	@Test
+	public void whenModifingOriginal_thenFieldsOfDeepCopyAreNotAffected() {
 
-	public String toString() {
-		return value;
-	}
+		Book originalBook = new Book(new Title("Original"));
+		Book deepCopy = originalBook.deepCopy();
 
-	public MyPayload deepClone() {
-		MyPayload myPayload = new MyPayload(value);
-		return myPayload;
+		shallowCopy.getTitle().setName("Copy");
+
+		assertThat(originalBook.getTitle().getValue()).isEqual("Original");
+		assertThat(originalBook).isNotSameAs(shallowCopy);
+		assertThat(originalBook.getTitle()).isNotSameAs(shallowCopy.getTitle());
 	}
 
 }
