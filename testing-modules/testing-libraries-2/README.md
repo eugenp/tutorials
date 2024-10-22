@@ -10,3 +10,4 @@
 - [How to Mock Environment Variables in Unit Tests](https://www.baeldung.com/java-unit-testing-environment-variables)
 - [Intro to SpotBugs](https://www.baeldung.com/spotbugs-detect-bugs-code)
 - [Unit Testing of System.out.println() with JUnit](https://www.baeldung.com/java-testing-system-out-println)
+- [Mutation Testing with PITest](http://www.baeldung.com/java-mutation-testing-with-pitest)

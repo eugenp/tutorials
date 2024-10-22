@@ -5,8 +5,6 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import com.baeldung.mutation.Palindrome;
-
 public class PalindromeUnitTest {
     @Test
     public void whenEmptyString_thenAccept() {
