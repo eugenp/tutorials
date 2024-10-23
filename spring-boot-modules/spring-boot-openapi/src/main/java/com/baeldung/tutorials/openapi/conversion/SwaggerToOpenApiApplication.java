@@ -2,36 +2,21 @@ package com.baeldung.tutorials.openapi.conversion;
 
 import java.io.IOException;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import io.swagger.parser.OpenAPIParser;
-import io.swagger.v3.oas.models.OpenAPI;
-import io.swagger.v3.parser.core.models.SwaggerParseResult;
+import com.baeldung.tutorials.openapi.conversion.converter.SwaggerToOpenApiConverter;
 
 public class SwaggerToOpenApiApplication {
 
-    private static final String FILE_OPEN_API_2_SPECIFICATION = "/OpenAPI2/swagger.json";
+    private static final Logger logger = LoggerFactory.getLogger(SwaggerToOpenApiApplication.class);
+
+    private static final String FILE_OPEN_API_2_SPECIFICATION = "/openApi2/swagger.json";
 
     public static void main(String[] args) throws IOException {
-        OpenAPI openAPI = processSpecificationFile();
-        printSpecification(openAPI);
-    }
+        String converted = SwaggerToOpenApiConverter.convert(FILE_OPEN_API_2_SPECIFICATION);
 
-    private static OpenAPI processSpecificationFile() {
-        SwaggerParseResult result = new OpenAPIParser().readLocation(FILE_OPEN_API_2_SPECIFICATION, null, null);
-
-        return result.getOpenAPI();
-    }
-
-    private static void printSpecification(OpenAPI openAPI) throws IOException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-
-        String jsonString = objectMapper.writerWithDefaultPrettyPrinter()
-            .writeValueAsString(openAPI);
-
-        System.out.println(jsonString);
+        logger.info("OpenAPI 3 Specification:\n {}", converted);
     }
 
 }
