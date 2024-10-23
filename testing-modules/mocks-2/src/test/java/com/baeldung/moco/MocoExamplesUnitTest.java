@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class MocoExamplesUnitTest {
 
     @Test
-    public void testMocoHttpServer() throws Exception {
+    public void givenMocoHttpServer_whenClientSendsRequest_thenShouldReturnExpectedResponse() throws Exception {
         HttpServer server = httpServer(12349);
         server.request(by(uri("/test"))).response("Test response");
 
@@ -35,7 +35,7 @@ public class MocoExamplesUnitTest {
     }
 
     @Test
-    public void testMocoJsonResponse() throws Exception {
+    public void givenMocoJsonResponse_whenClientSendsRequest_thenShouldReturnJsonResponse() throws Exception {
         HttpServer server = httpServer(12350);
         server.request(by(uri("/api/user")))
                 .response(header("Content-Type", "application/json"),
@@ -56,7 +56,7 @@ public class MocoExamplesUnitTest {
     }
 
     @Test
-    public void testMocoWithJsonFile() throws Exception {
+    public void givenMocoJsonFile_whenClientRequestsUserData_thenShouldReturnCorrectJsonResponse() throws Exception {
         HttpServer server = httpServer(12351);
         server.request(by(uri("/api/user")))
                 .response(header("Content-Type", "application/json"), file("src/test/resources/user.json"));
@@ -77,7 +77,7 @@ public class MocoExamplesUnitTest {
     }
 
     @Test
-    public void testMocoCustomHttpCodes() throws Exception {
+    public void givenMocoCustomHttpCode_whenRequestingUnknownEndpoint_thenShouldReturn404NotFound() throws Exception {
         // Custom HTTP code (404 Not Found)
         HttpServer server = httpServer(12352);
         server.request(by(uri("/unknown")))
@@ -99,7 +99,7 @@ public class MocoExamplesUnitTest {
     }
 
     @Test
-    public void testMocoPostRequest() throws Exception {
+    public void givenMocoPostRequest_whenClientSendsPost_thenShouldReturnUpdatedResourceMessage() throws Exception {
         HttpServer server = httpServer(12353);
         server.post(by(uri("/resource")))
                 .response(text("resource updated"));
@@ -120,7 +120,7 @@ public class MocoExamplesUnitTest {
     }
 
     @Test
-    public void testMocoJsonPathMatching() throws Exception {
+    public void givenMocoJsonPath_whenRequestMatchesJsonPath_thenShouldReturnSpecifiedMessage() throws Exception {
         HttpServer server = httpServer(12354);
         server.request(eq(jsonPath("$.item[*].price"), "0"))
                 .response("we have free item");
@@ -143,7 +143,7 @@ public class MocoExamplesUnitTest {
     }
 
     @Test
-    public void testMocoSequentialResponses() throws Exception {
+    public void givenMocoSequentialResponses_whenClientMakesMultipleRequests_thenShouldReturnResponsesInSequence() throws Exception {
         // Sequential responses example
         HttpServer server = httpServer(12355);
         server.request(by(uri("/user")))

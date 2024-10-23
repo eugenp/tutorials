@@ -27,7 +27,7 @@ public class MocoJunitHttpUnitTest {
     public MocoJunitRunner runner = MocoJunitRunner.httpRunner(server);
 
     @Test
-    public void shouldRespondAsExpected() throws IOException, InterruptedException {
+    public void givenMocoServer_whenClientSendsRequest_thenShouldReturnExpectedResponse() throws IOException, InterruptedException {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("http://localhost:12306"))
