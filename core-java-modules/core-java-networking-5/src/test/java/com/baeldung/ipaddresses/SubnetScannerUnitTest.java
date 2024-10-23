@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -19,14 +18,18 @@ public class SubnetScannerUnitTest {
     @Test
     public void givenSubnet_whenScanningForDevices_thenReturnConnectedIPs() throws Exception {
         String subnet = getSubnet();
-        List<String> connectedIPs = new ArrayList<>();
 
-        for (int i = 1; i <= 254; i++) {
-            String ip = subnet + "." + i;
-            if (InetAddress.getByName(ip).isReachable(100)) {
-                connectedIPs.add(ip);
-            }
-        }
+        List<String> connectedIPs = IntStream.rangeClosed(1, 254)
+            .parallel()
+            .mapToObj(i -> subnet + "." + i)
+            .filter(ip -> {
+                try {
+                    return InetAddress.getByName(ip).isReachable(50);
+                } catch (Exception e) {
+                    return false;
+                }
+            })
+            .toList();
 
         assertFalse(connectedIPs.isEmpty());
     }
@@ -36,15 +39,16 @@ public class SubnetScannerUnitTest {
         String subnet = getSubnet();
 
         List<String> connectedIPs = IntStream.rangeClosed(1, 254)
-                .mapToObj(i -> subnet + "." + i)
-                .filter(ip -> {
-                    try {
-                        return InetAddress.getByName(ip).isReachable(100);
-                    } catch (Exception e) {
-                        return false;
-                    }
-                })
-                .toList();
+            .parallel()
+            .mapToObj(i -> subnet + "." + i)
+            .filter(ip -> {
+                try {
+                    return InetAddress.getByName(ip).isReachable(50);
+                } catch (Exception e) {
+                    return false;
+                }
+            })
+            .toList();
 
         assertFalse(connectedIPs.isEmpty());
     }
