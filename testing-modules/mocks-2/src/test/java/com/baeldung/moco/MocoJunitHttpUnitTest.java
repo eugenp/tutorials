@@ -15,7 +15,7 @@ import static com.github.dreamhead.moco.Moco.httpServer;
 import static com.github.dreamhead.moco.Moco.text;
 import static org.junit.Assert.assertEquals;
 
-public class MocoJunitHttpTest {
+public class MocoJunitHttpUnitTest {
 
     private static final HttpServer server = httpServer(12306);
 

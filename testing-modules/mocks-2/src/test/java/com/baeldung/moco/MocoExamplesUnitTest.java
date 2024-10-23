@@ -13,7 +13,7 @@ import java.net.http.HttpResponse;
 import static com.github.dreamhead.moco.Moco.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class MocoExamplesTest {
+public class MocoExamplesUnitTest {
 
     @Test
     public void testMocoHttpServer() throws Exception {

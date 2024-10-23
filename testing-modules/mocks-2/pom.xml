@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>mocks-2</artifactId>
     <name>mocks-2</name>
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>17</source>
-                    <target>17</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
         </plugins>
@@ -38,19 +39,19 @@
         <dependency>
             <groupId>com.github.dreamhead</groupId>
             <artifactId>moco-core</artifactId>
-            <version>1.5.0</version>
+            <version>${moco.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.github.dreamhead</groupId>
             <artifactId>moco-runner</artifactId>
-            <version>1.5.0</version>
+            <version>${moco.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.github.dreamhead</groupId>
             <artifactId>moco-junit</artifactId>
-            <version>1.5.0</version>
+            <version>${moco.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -62,7 +63,10 @@
     </dependencies>
 
     <properties>
+        <java.version>17</java.version>
         <datafaker.version>1.6.0</datafaker.version>
+        <jackson.version>2.14.1</jackson.version>
+        <moco.version>1.5.0</moco.version>
         <spring-test.version>5.3.25</spring-test.version>
     </properties>
 
