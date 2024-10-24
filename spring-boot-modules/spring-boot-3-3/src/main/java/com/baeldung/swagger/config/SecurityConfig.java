@@ -16,7 +16,7 @@ public class SecurityConfig {
 
         http.authorizeHttpRequests(authorizeRequests -> authorizeRequests.requestMatchers("/swagger-ui/**")
             .permitAll()
-            .requestMatchers("/v3/api-docs/**")
+            .requestMatchers("/v3/api-docs*/**")
             .permitAll());
 
         return http.build();
@@ -25,7 +25,7 @@ public class SecurityConfig {
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
         return (web) -> web.ignoring()
-            .requestMatchers("/swagger-ui/**", "/v3/api-docs/**");
+            .requestMatchers("/swagger-ui/**", "/v3/api-docs*/**");
     }
 
 }
