@@ -11,4 +11,5 @@ This module contains articles about Spring Boot customization
  - [Setting Default TimeZone in Spring Boot Application](https://www.baeldung.com/spring-boot-set-default-timezone)
  - [What Is OncePerRequestFilter?](https://www.baeldung.com/spring-onceperrequestfilter)
  - [XML Defined Beans in Spring Boot](https://www.baeldung.com/spring-boot-xml-beans)
+ - [DispatcherServlet and web.xml in Spring Boot](https://www.baeldung.com/spring-boot-dispatcherservlet-web-xml)
  - More articles: [[next -->]](/spring-boot-modules/spring-boot-basic-customization-2)
