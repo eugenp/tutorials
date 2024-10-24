@@ -8,4 +8,5 @@ This module contains articles about Spring Boot customization
  - [Spring Boot: Customize Whitelabel Error Page](https://www.baeldung.com/spring-boot-custom-error-page)
  - [Spring Boot: Configuring a Main Class](https://www.baeldung.com/spring-boot-main-class)
  - [How to Define a Spring Boot Filter?](https://www.baeldung.com/spring-boot-add-filter)
+ - [Setting Default TimeZone in Spring Boot Application](https://www.baeldung.com/spring-boot-set-default-timezone)
  - More articles: [[next -->]](/spring-boot-modules/spring-boot-basic-customization-2)
