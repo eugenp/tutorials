@@ -1,4 +1,4 @@
-package com.baeldung.properties.value;
+package com.baeldung.value;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

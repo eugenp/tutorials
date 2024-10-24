@@ -1,4 +1,4 @@
-package com.baeldung.properties.yamllist;
+package com.baeldung.yamllist;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,7 @@
-package com.baeldung.properties.value.defaults;
+package com.baeldung.value.defaults;
+
+import java.util.Arrays;
+import java.util.List;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.beans.factory.annotation.Value;
@@ -7,9 +10,6 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.util.Assert;
-
-import java.util.Arrays;
-import java.util.List;
 
 import jakarta.annotation.PostConstruct;
 

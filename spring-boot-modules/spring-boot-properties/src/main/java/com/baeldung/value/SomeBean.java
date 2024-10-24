@@ -1,4 +1,4 @@
-package com.baeldung.properties.value;
+package com.baeldung.value;
 
 public class SomeBean {
     private int someValue;

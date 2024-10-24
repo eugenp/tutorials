@@ -1,4 +1,4 @@
-package com.baeldung.properties.value;
+package com.baeldung.value;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,14 +9,15 @@ import org.springframework.test.context.junit4.SpringRunner;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = CollectionProvider.class)
-public class CollectionProviderIntegrationTest {
+@SpringBootTest(classes = PriorityRecord.class)
+public class PriorityRecordIntegrationTest {
 
     @Autowired
-    private CollectionProvider collectionProvider;
+    private PriorityRecord priorityRecord;
 
     @Test
-    public void givenPropertyFileWhenSetterInjectionUsedThenValueInjected() {
-        assertThat(collectionProvider.getValues()).contains("A", "B", "C");
+    public void givenPropertyFile_WhenConstructorInjectionUsedInRecord_ThenValueInjected() {
+        assertThat(priorityRecord.priority()).isEqualTo("high");
     }
+
 }
