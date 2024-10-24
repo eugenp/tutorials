@@ -42,6 +42,15 @@
         </dependency>
     </dependencies>
 
+    <profiles>
+        <profile>
+            <id>favicon</id>
+            <properties>
+                <spring.boot.mainclass>com.baeldung.favicon.FaviconApplication</spring.boot.mainclass>
+            </properties>
+        </profile>
+    </profiles>
+
     <build>
         <plugins>
             <plugin>

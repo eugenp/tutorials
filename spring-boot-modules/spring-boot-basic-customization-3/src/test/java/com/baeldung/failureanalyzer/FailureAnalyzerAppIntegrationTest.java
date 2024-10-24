@@ -1,19 +1,19 @@
 package com.baeldung.failureanalyzer;
 
-import ch.qos.logback.classic.spi.ILoggingEvent;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import com.baeldung.failureanalyzer.utils.ListAppender;
+import java.util.Collection;
+import java.util.Properties;
+import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.boot.SpringApplication;
 
-import java.util.Collection;
-import java.util.Properties;
-import java.util.stream.Collectors;
+import com.baeldung.failureanalyzer.utils.ListAppender;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import ch.qos.logback.classic.spi.ILoggingEvent;
 
 public class FailureAnalyzerAppIntegrationTest {
 

@@ -53,18 +53,6 @@
                 <spring.boot.mainclass>com.baeldung.changeport.CustomApplication</spring.boot.mainclass>
             </properties>
         </profile>
-        <profile>
-            <id>failureanalyzer</id>
-            <properties>
-                <spring.boot.mainclass>com.baeldung.failureanalyzer.FailureAnalyzerApplication</spring.boot.mainclass>
-            </properties>
-        </profile>
-        <profile>
-            <id>favicon</id>
-            <properties>
-                <spring.boot.mainclass>com.baeldung.favicon.FaviconApplication</spring.boot.mainclass>
-            </properties>
-        </profile>
     </profiles>
 
     <build>
