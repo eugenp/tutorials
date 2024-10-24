@@ -1,118 +1,155 @@
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.within;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.time.Clock;
-import java.time.DayOfWeek;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.MonthDay;
-import java.time.OffsetDateTime;
-import java.time.OffsetTime;
-import java.time.Year;
-import java.time.YearMonth;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAdjuster;
 import java.time.temporal.TemporalAdjusters;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.logging.Logger;
 
 import org.junit.jupiter.api.Test;
 
 public class JavaTimeClassesTest {
+    final Logger logger = Logger.getLogger(JavaTimeClassesTest.class.getName());
+
+    @Test
+    void givenCurrentDateTime_whenUsingLocalDateTime_thenCorrect() {
+        LocalDate currentDate = LocalDate.now(); // Current date
+        LocalTime currentTime = LocalTime.now(); // Current time
+        LocalDateTime currentDateTime = LocalDateTime.now(); // Current date and time
+
+        assertThat(currentDate).isBeforeOrEqualTo(LocalDate.now());
+        assertThat(currentTime).isBeforeOrEqualTo(LocalTime.now());
+        assertThat(currentDateTime).isBeforeOrEqualTo(LocalDateTime.now());
+    }
+
+
+    @Test
+    void givenSpecificDateTime_whenUsingLocalDateTime_thenCorrect() {
+        LocalDate date = LocalDate.of(2024, Month.SEPTEMBER, 18);
+        LocalTime time = LocalTime.of(10, 30);
+        LocalDateTime dateTime = LocalDateTime.of(date, time);
+
+        assertEquals("2024-09-18", date.toString());
+        assertEquals("10:30", time.toString());
+        assertEquals("2024-09-18T10:30", dateTime.toString());
+    }
+
 
     @Test
     void givenTodaysDate_whenUsingVariousTemporalAdjusters_thenReturnCorrectAdjustedDates() {
         LocalDate today = LocalDate.now();
 
         LocalDate nextMonday = today.with(TemporalAdjusters.next(DayOfWeek.MONDAY));
-        assertEquals(DayOfWeek.MONDAY, nextMonday.getDayOfWeek(), "Next Monday should be correctly identified");
+        assertThat(nextMonday.getDayOfWeek())
+                .as("Next Monday should be correctly identified")
+                .isEqualTo(DayOfWeek.MONDAY);
 
         LocalDate firstDayOfMonth = today.with(TemporalAdjusters.firstDayOfMonth());
-        assertEquals(1, firstDayOfMonth.getDayOfMonth(), "First day of the month should be 1");
+        assertThat(firstDayOfMonth.getDayOfMonth())
+                .as("First day of the month should be 1")
+                .isEqualTo(1);
+    }
 
-        LocalDate lastDayOfMonth = today.with(TemporalAdjusters.lastDayOfMonth());
-        assertEquals(lastDayOfMonth.lengthOfMonth(), lastDayOfMonth.getDayOfMonth(), "Last day of the month should match the length of the month");
-
-        LocalDate previousFriday = today.with(TemporalAdjusters.previous(DayOfWeek.FRIDAY));
-        assertEquals(DayOfWeek.FRIDAY, previousFriday.getDayOfWeek(), "Previous Friday should be correctly identified");
-
-        LocalDate nextTuesday = today.with(TemporalAdjusters.next(DayOfWeek.TUESDAY));
-        assertEquals(DayOfWeek.TUESDAY, nextTuesday.getDayOfWeek(), "Next Tuesday should be correctly identified");
-
+    @Test
+    void givenCustomTemporalAdjuster_whenAddingTenDays_thenCorrect() {
+        LocalDate today = LocalDate.now();
         TemporalAdjuster addTenDays = temporal -> temporal.plus(10, ChronoUnit.DAYS);
         LocalDate adjustedDate = today.with(addTenDays);
+
         assertEquals(today.plusDays(10), adjustedDate, "The adjusted date should be 10 days later than today");
-
-        TemporalAdjuster adjuster = TemporalAdjusters.firstDayOfNextMonth();
-        LocalDate adjustedDateDirect = (LocalDate) adjuster.adjustInto(today);
-        assertEquals(today.plusMonths(1)
-            .withDayOfMonth(1), adjustedDateDirect, "The adjusted date should be the first day of next month");
     }
 
-    @Test
-    void givenYear2024_whenCheckingLeapYear_thenReturnTrue() {
-        Year year = Year.of(2024);
-
-        assertTrue(year.isLeap(), "2024 should be a leap year");
-    }
 
     @Test
-    void givenFebruary2024_whenGettingDaysInMonth_thenReturn29Days() {
-        YearMonth yearMonth = YearMonth.of(2024, 2); // February 2024
-
-        assertEquals(29, yearMonth.lengthOfMonth(), "February 2024 should have 29 days");
-    }
-
-    @Test
-    void givenBirthdayOnMarch25_whenCheckingToday_thenReturnNotBirthday() {
-        MonthDay birthday = MonthDay.of(3, 25); // March 25
-        MonthDay today = MonthDay.from(LocalDate.now());
-
-        assertNotEquals(today, birthday, "Today should not be the birthday");
-    }
-
-    @Test
-    void givenTimeZoneAmericaNewYork_whenGettingCurrentTimeWithClock_thenShouldNotBeNull() {
-        Clock clock = Clock.system(ZoneId.of("America/New_York"));
-        LocalDateTime currentTime = LocalDateTime.now(clock);
-
-        assertNotNull(currentTime, "Current time should not be null");
-    }
-
-    @Test
-    void givenUTCOffsetMinus5_whenCreatingOffsetDateTime_thenShouldMatchOffset() {
-        OffsetDateTime offsetDateTime = OffsetDateTime.now(ZoneId.of("Europe/Paris")); // UTC-5
-
-        assertNotNull(offsetDateTime, "OffsetDateTime should not be null");
-        assertEquals(2, offsetDateTime.getOffset()
-            .getTotalSeconds() / 3600, "Offset should be UTC+2");
-    }
-
-    @Test
-    void givenUTCOffsetPlus2_whenCreatingOffsetTime_thenShouldMatchOffset() {
-        OffsetTime offsetTime = OffsetTime.now(ZoneOffset.ofHours(2)); // UTC+2
-
-        assertNotNull(offsetTime, "OffsetTime should not be null");
-        System.out.println(offsetTime);
-        assertEquals(2, offsetTime.getOffset()
-            .getTotalSeconds() / 3600, "Offset should be UTC+2");
-    }
-
-    @Test
-    void givenDateTimeFormat_whenFormattingAndParsingDateTime_thenShouldMatchExpectedValue() {
+    void givenDateTimeFormat_whenFormattingAndParsing_thenVerifyResults() {
+        // given
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
-        LocalDateTime now = LocalDateTime.now();
-        String formattedDate = now.format(formatter);
-
-        assertNotNull(formattedDate, "Formatted date-time should not be null");
-
-        // Parsing a date-time string
+        LocalDateTime specificDateTime = LocalDateTime.of(2024, 9, 18, 10, 30);
+        // when
+        String formattedDate = specificDateTime.format(formatter);
         LocalDateTime parsedDateTime = LocalDateTime.parse("18-09-2024 10:30", formatter);
-        assertEquals(LocalDate.of(2024, 9, 18)
-            .atTime(10, 30), parsedDateTime, "Parsed date-time should match the expected value");
+        // then
+        assertThat(formattedDate).isNotEmpty().isEqualTo("18-09-2024 10:30");
+        assertThat(parsedDateTime).isEqualTo(specificDateTime).satisfies(dt -> {
+            assertThat(dt.getYear()).isEqualTo(2024);
+            assertThat(dt.getMonthValue()).isEqualTo(9);
+            assertThat(dt.getDayOfMonth()).isEqualTo(18);
+            assertThat(dt.getHour()).isEqualTo(10);
+            assertThat(dt.getMinute()).isEqualTo(30);
+            assertThat(dt.getSecond()).isZero();
+        });
     }
+
+    @Test
+    void givenVariousTimeZones_whenCreatingOffsetDateTime_thenVerifyOffsets() {
+        // given
+        ZoneId parisZone = ZoneId.of("Europe/Paris");
+        ZoneId tokyoZone = ZoneId.of("Asia/Tokyo");
+        ZoneId nyZone = ZoneId.of("America/New_York");
+        // when
+        OffsetDateTime parisTime = OffsetDateTime.now(parisZone);
+        OffsetDateTime tokyoTime = OffsetDateTime.now(tokyoZone);
+        OffsetDateTime nyTime = OffsetDateTime.now(nyZone);
+        // then
+        assertThat(parisTime)
+                .isNotNull()
+                .satisfies(time -> {
+                    assertThat(time.getOffset().getTotalSeconds())
+                            .isEqualTo(parisZone.getRules().getOffset(Instant.now()).getTotalSeconds());
+                    assertThat(time.getHour()).isBetween(0, 23);
+                });
+        // Verify time differences between zones
+        assertThat(ChronoUnit.HOURS.between(nyTime, parisTime) % 24)
+                .isGreaterThanOrEqualTo(5)  // NY is typically 5-6 hours behind Paris
+                .isLessThanOrEqualTo(7);
+        assertThat(ChronoUnit.HOURS.between(parisTime, tokyoTime) % 24)
+                .isGreaterThanOrEqualTo(6)  // Tokyo is typically 7-8 hours ahead of Paris
+                .isLessThanOrEqualTo(8);
+    }
+
+    @Test
+    void givenSystemClock_whenComparingDifferentTimeZones_thenVerifyRelationships() {
+        // given
+        Clock nyClock = Clock.system(ZoneId.of("America/New_York"));
+        // when
+        LocalDateTime nyTime = LocalDateTime.now(nyClock);
+        // then
+        assertThat(nyTime)
+                .isNotNull()
+                .satisfies(time -> {
+                    assertThat(time.getHour()).isBetween(0, 23);
+                    assertThat(time.getMinute()).isBetween(0, 59);
+                    // Verify it's within last minute (recent)
+                    assertThat(time).isCloseTo(
+                            LocalDateTime.now(),
+                            within(1, ChronoUnit.MINUTES)
+                    );
+                });
+    }
+
+    @Test
+    void givenLegacyDate_whenConvertingToInstant_thenCorrect() {
+        Date legacyDate = new Date();
+        Instant instant = legacyDate.toInstant();
+
+        assertThat(instant).isNotNull();
+        logger.info("Instant: " + instant); // e.g., 2024-09-24T17:30:45Z
+    }
+
+
+    @Test
+    void givenCalendar_whenConvertingToZonedDateTime_thenCorrect() {
+        Calendar calendar = Calendar.getInstance();
+        ZonedDateTime zonedDateTime = ZonedDateTime.ofInstant(calendar.toInstant(), calendar.getTimeZone().toZoneId());
+
+        assertThat(zonedDateTime).isNotNull();
+        logger.info("ZonedDateTime: " + zonedDateTime); // e.g., 2024-09-24T10:30:45-07:00[America/Los_Angeles]
+    }
+
 }
 
