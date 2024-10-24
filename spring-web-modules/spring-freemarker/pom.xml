@@ -62,13 +62,6 @@
                     </argLine>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <skip>true</skip>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 
@@ -76,6 +69,7 @@
         <freemarker.version>2.3.32</freemarker.version>
         <failOnMissingWebXml>false</failOnMissingWebXml>
         <start-class>com.baeldung.Spring5Application</start-class>
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
     </properties>
 
 </project>

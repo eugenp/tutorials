@@ -87,13 +87,6 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
             </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <skip>true</skip>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 
@@ -108,6 +101,7 @@
         <spring-boot-starter-test.version>3.3.3</spring-boot-starter-test.version>
         <tomee-maven-plugin.version>8.0.1</tomee-maven-plugin.version>
         <jakarta-servlet.version>6.1.0</jakarta-servlet.version>
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
     </properties>
 
 </project>

@@ -126,13 +126,6 @@
                         <outputDirectory>${deploy-path}</outputDirectory>
                     </configuration>
                 </plugin>
-                <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                    <configuration>
-                       <skip>true</skip>
-                    </configuration>
-                </plugin>
             </plugins>
         </pluginManagement>
     </build>
@@ -150,6 +143,7 @@
         <json.version>20240303</json.version>
         <jakarta.mail.version>2.0.1</jakarta.mail.version>
         <jakarta.servlet-api.version>6.1.0-M2</jakarta.servlet-api.version>
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
     </properties>
 
 </project>

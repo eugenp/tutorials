@@ -84,13 +84,6 @@
                     <parameters>true</parameters>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <skip>true</skip>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 
@@ -101,6 +94,7 @@
         <expressly.version>5.0.0</expressly.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
         <jakarta.servlet-api.version>6.0.0</jakarta.servlet-api.version>
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
     </properties>
 
 </project>
