@@ -4,10 +4,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.NamedQuery;
 
-import org.hibernate.annotations.Immutable;
-
 @Entity
-@NamedQuery(name = "Employee.byDepartment", query = "FROM Employee WHERE department = :department")
+@NamedQuery(name = "Employee.byDepartment", query = "FROM Employee WHERE department = :department", resultClass = Employee.class)
 public class Employee {
 
     @Id

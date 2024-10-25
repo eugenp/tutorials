@@ -1,16 +1,19 @@
 package com.baeldung.jakarta;
 
+import static com.baeldung.jakarta.Employee_.QUERY_EMPLOYEE_BY_DEPARTMENT;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.sql.Connection;
 import java.util.List;
+import java.util.Map;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.PersistenceConfiguration;
 import jakarta.persistence.TypedQuery;
+import jakarta.persistence.TypedQueryReference;
 import jakarta.persistence.metamodel.EntityType;
 
 import javax.naming.InitialContext;
@@ -93,9 +96,8 @@ public class JakartaPersistenceApiTest {
 
     @Test
     public void whenUsingEnhancedJpql_thenNewFeaturesWorks() {
-        Employee employee = emf.callInTransaction(
-            em -> em.createQuery("from Employee where fullName = 'Tony Blair'", Employee.class).getSingleResult()
-        );
+        Employee employee = emf.callInTransaction(em -> em.createQuery("from Employee where fullName = 'Tony Blair'", Employee.class)
+            .getSingleResult());
 
         assertNotNull(employee);
     }
@@ -103,7 +105,9 @@ public class JakartaPersistenceApiTest {
     @Test
     public void givenNamedQuery_whenQueriedByDepartment_thenReturnCorrectEmployee() {
 
-        List<Employee> employees = em.createNamedQuery(Employee_.QUERY_EMPLOYEE_BY_DEPARTMENT, Employee.class)
+        Map<String, TypedQueryReference<Employee>> namedQueries = emf.getNamedQueries(Employee.class);
+
+        List<Employee> employees = em.createQuery(namedQueries.get(QUERY_EMPLOYEE_BY_DEPARTMENT))
             .setParameter("department", "Science")
             .getResultList();
 
