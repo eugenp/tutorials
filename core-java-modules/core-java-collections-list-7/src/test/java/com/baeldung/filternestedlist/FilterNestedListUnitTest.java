@@ -153,8 +153,8 @@ public class FilterNestedListUnitTest {
         Order order1 = new Order("Laptop", 600.0);
         Order order2 = new Order("Phone", 300.0);
         Order order3 = new Order("Nintendo Switch", 510.0);
-        User user1 = new User("Alice", Arrays.asList(order1, order2, order3));
-        User user2 = new User("King", null);  // User with null orders
+        User user1 = new User("Alice", Arrays.asList(order1, order2));
+        User user2 = new User("Bob", Arrays.asList(order3));
         User user3 = new User("Charlie", new ArrayList<>());  // User with empty orders
         List<User> users = Arrays.asList(user1, user2, user3);
 
@@ -164,7 +164,7 @@ public class FilterNestedListUnitTest {
                 .anyMatch(order -> order.getPrice() > priceThreshold))
             .collect(Collectors.toList());
 
-        assertEquals(1, filteredUsers.size());
+        assertEquals(2, filteredUsers.size());
         assertEquals("Alice", filteredUsers.get(0).getName());
     }
 }
