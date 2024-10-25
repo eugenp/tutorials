@@ -102,21 +102,6 @@
             <version>${jnats.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-controls</artifactId>
-            <version>${javafx.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-fxml</artifactId>
-            <version>${javafx.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.vavr</groupId>
-            <artifactId>vavr</artifactId>
-            <version>${vavr.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.mutabilitydetector</groupId>
             <artifactId>MutabilityDetector</artifactId>
             <version>${mutabilitydetector.version}</version>
@@ -152,8 +137,6 @@
         <docker.version>3.0.14</docker.version>
         <immutables.version>2.5.6</immutables.version>
         <jnats.version>2.17.3</jnats.version>
-        <javafx.version>19</javafx.version>
-        <vavr.version>0.9.0</vavr.version>
         <mutabilitydetector.version>0.9.6</mutabilitydetector.version>
         <awaitility.version>4.2.1</awaitility.version>
     </properties>

@@ -16,6 +16,5 @@ Remember, for advanced libraries like [Jackson](/jackson) and [JUnit](/testing-m
 - [A Docker Guide for Java](https://www.baeldung.com/docker-java-api)
 - [Introduction to Immutables](https://www.baeldung.com/immutables)
 - [Publish and Receive Messages with Nats Java Client](https://www.baeldung.com/nats-java-client)
-- [Using Pairs in Java](https://www.baeldung.com/java-pairs)
 - More articles [[<-- prev]](/libraries) [[next -->]](/libraries-3)
 
