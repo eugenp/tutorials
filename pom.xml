@@ -419,6 +419,7 @@
                 <module>core-java-modules/core-java-concurrency-advanced-5</module>
                 <module>spring-boot-modules/spring-boot-react</module>
                 <module>testing-modules/jmeter</module>
+                <module>core-java-modules/core-java-networking-5</module>
             </modules>
 
             <properties>
@@ -531,6 +532,7 @@
                 <module>core-java-modules/core-java-concurrency-advanced-5</module>
                 <module>spring-boot-modules/spring-boot-react</module>
                 <module>testing-modules/jmeter</module>
+                <module>core-java-modules/core-java-networking-5</module>
             </modules>
 
             <properties>
