@@ -166,6 +166,7 @@ public class FilterNestedListUnitTest {
 
         assertEquals(2, filteredUsers.size());
         assertEquals("Alice", filteredUsers.get(0).getName());
+        assertEquals("Bob", filteredUsers.get(1).getName());
     }
 }
 
