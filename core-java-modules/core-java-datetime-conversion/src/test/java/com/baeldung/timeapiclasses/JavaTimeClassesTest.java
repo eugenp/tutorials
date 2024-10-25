@@ -72,17 +72,26 @@ public class JavaTimeClassesTest {
         LocalDateTime specificDateTime = LocalDateTime.of(2024, 9, 18, 10, 30);
         // when
         String formattedDate = specificDateTime.format(formatter);
-        LocalDateTime parsedDateTime = LocalDateTime.parse("18-09-2024 10:30", formatter);
         // then
         assertThat(formattedDate).isNotEmpty().isEqualTo("18-09-2024 10:30");
-        assertThat(parsedDateTime).isEqualTo(specificDateTime).satisfies(dt -> {
-            assertThat(dt.getYear()).isEqualTo(2024);
-            assertThat(dt.getMonthValue()).isEqualTo(9);
-            assertThat(dt.getDayOfMonth()).isEqualTo(18);
-            assertThat(dt.getHour()).isEqualTo(10);
-            assertThat(dt.getMinute()).isEqualTo(30);
-            assertThat(dt.getSecond()).isZero();
-        });
+    }
+
+    @Test
+    void givenDateTimeFormat_whenParsing_thenVerifyResults() {
+        // given
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+        // when
+        LocalDateTime parsedDateTime = LocalDateTime.parse("18-09-2024 10:30", formatter);
+        // then
+        assertThat(parsedDateTime)
+                .isNotNull()
+                .satisfies(time -> {
+                    assertThat(time.getYear()).isEqualTo(2024);
+                    assertThat(time.getMonth()).isEqualTo(Month.SEPTEMBER);
+                    assertThat(time.getDayOfMonth()).isEqualTo(18);
+                    assertThat(time.getHour()).isEqualTo(10);
+                    assertThat(time.getMinute()).isEqualTo(30);
+                });
     }
 
     @Test
@@ -133,22 +142,23 @@ public class JavaTimeClassesTest {
     }
 
     @Test
-    void givenLegacyDate_whenConvertingToInstant_thenCorrect() {
-        Date legacyDate = new Date();
-        Instant instant = legacyDate.toInstant();
+    void givenSameEpochMillis_whenConvertingDateAndInstant_thenCorrect() {
+        long epochMillis = System.currentTimeMillis();
+        Date legacyDate = new Date(epochMillis);
+        Instant instant = Instant.ofEpochMilli(epochMillis);
 
-        assertThat(instant).isNotNull();
-        logger.info("Instant: " + instant); // e.g., 2024-09-24T17:30:45Z
+        assertEquals(legacyDate.toInstant(), instant, "Date and Instant should represent the same moment in time");
     }
 
 
     @Test
     void givenCalendar_whenConvertingToZonedDateTime_thenCorrect() {
         Calendar calendar = Calendar.getInstance();
+        calendar.set(2024, Calendar.SEPTEMBER, 18, 10, 30);
         ZonedDateTime zonedDateTime = ZonedDateTime.ofInstant(calendar.toInstant(), calendar.getTimeZone().toZoneId());
 
-        assertThat(zonedDateTime).isNotNull();
-        logger.info("ZonedDateTime: " + zonedDateTime); // e.g., 2024-09-24T10:30:45-07:00[America/Los_Angeles]
+        assertEquals(LocalDate.of(2024, 9, 18), zonedDateTime.toLocalDate());
+        assertEquals(LocalTime.of(10, 30), zonedDateTime.toLocalTime());
     }
 
 }
