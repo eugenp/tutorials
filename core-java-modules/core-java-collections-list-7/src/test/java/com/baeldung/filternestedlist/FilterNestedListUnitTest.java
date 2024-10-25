@@ -19,7 +19,7 @@ public class FilterNestedListUnitTest {
         Order order2 = new Order("Phone", 300.0);
         Order order3 = new Order("Nintendo Switch", 510.0);
         User user1 = new User("Alice", Arrays.asList(order1, order2));
-        User user2 = new User("Bob", Arrays.asList(order2, order3));
+        User user2 = new User("Bob", Arrays.asList(order3));
         List<User> users = Arrays.asList(user1, user2);
 
         List<User> filteredUsers = new ArrayList<>();
@@ -154,7 +154,7 @@ public class FilterNestedListUnitTest {
         Order order2 = new Order("Phone", 300.0);
         Order order3 = new Order("Nintendo Switch", 510.0);
         User user1 = new User("Alice", Arrays.asList(order1, order2, order3));
-        User user2 = new User("Bob", null);  // User with null orders
+        User user2 = new User("King", null);  // User with null orders
         User user3 = new User("Charlie", new ArrayList<>());  // User with empty orders
         List<User> users = Arrays.asList(user1, user2, user3);
 
