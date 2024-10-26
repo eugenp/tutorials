@@ -6,7 +6,6 @@ import java.util.List;
 
 import software.amazon.awssdk.core.sync.ResponseTransformer;
 import software.amazon.awssdk.services.s3.S3Client;
-import software.amazon.awssdk.services.s3.model.NoSuchKeyException;
 import software.amazon.awssdk.services.s3.model.ObjectIdentifier;
 
 class S3ObjectOperationService {
@@ -67,15 +66,6 @@ class S3ObjectOperationService {
                 .delete(deleteRequest -> 
                     deleteRequest
                         .objects(objectsToDelete)));
-    }
-
-    public boolean objectExists(String bucket, String key) {
-        try {
-            s3Client.headObject(request -> request.bucket(bucket).key(key));
-            return true;
-        } catch (NoSuchKeyException exception) {
-            return false;
-        }
     }
 
 }

@@ -23,6 +23,7 @@ import software.amazon.awssdk.auth.credentials.AwsCredentials;
 import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.s3.S3Client;
+import software.amazon.awssdk.services.s3.model.NoSuchKeyException;
 
 @TestInstance(Lifecycle.PER_CLASS)
 class S3ObjectOperationServiceLiveTest {
@@ -63,7 +64,7 @@ class S3ObjectOperationServiceLiveTest {
         File fileToUpload = FileGeneratorUtil.generate();
         s3ObjectOperationService.upload(DEFAULT_BUCKET_NAME, fileToUpload);
 
-        boolean isObjectSaved = s3ObjectOperationService.objectExists(DEFAULT_BUCKET_NAME, fileToUpload.getName());
+        boolean isObjectSaved = objectExists(DEFAULT_BUCKET_NAME, fileToUpload.getName());
         assertThat(isObjectSaved)
             .isTrue();
     }
@@ -95,8 +96,8 @@ class S3ObjectOperationServiceLiveTest {
             destinationKey
         );
 
-        boolean originalObjectExists = s3ObjectOperationService.objectExists(DEFAULT_BUCKET_NAME, sourceFile.getName());
-        boolean newCopiedObjectExists = s3ObjectOperationService.objectExists(DEFAULT_BUCKET_NAME, destinationKey);
+        boolean originalObjectExists = objectExists(DEFAULT_BUCKET_NAME, sourceFile.getName());
+        boolean newCopiedObjectExists = objectExists(DEFAULT_BUCKET_NAME, destinationKey);
         assertThat(originalObjectExists)
             .isTrue();
         assertThat(newCopiedObjectExists)
@@ -110,7 +111,7 @@ class S3ObjectOperationServiceLiveTest {
 
         s3ObjectOperationService.delete(DEFAULT_BUCKET_NAME, fileToDelete.getName());
 
-        boolean isObjectPresent = s3ObjectOperationService.objectExists(DEFAULT_BUCKET_NAME, fileToDelete.getName());
+        boolean isObjectPresent = objectExists(DEFAULT_BUCKET_NAME, fileToDelete.getName());
         assertThat(isObjectPresent)
             .isFalse();
     }
@@ -125,12 +126,21 @@ class S3ObjectOperationServiceLiveTest {
         List<String> keysToDelete = List.of(file1.getName(), file2.getName());
         s3ObjectOperationService.delete(DEFAULT_BUCKET_NAME, keysToDelete);
 
-        boolean file1Exists = s3ObjectOperationService.objectExists(DEFAULT_BUCKET_NAME, file1.getName());
-        boolean file2Exists = s3ObjectOperationService.objectExists(DEFAULT_BUCKET_NAME, file2.getName());
+        boolean file1Exists = objectExists(DEFAULT_BUCKET_NAME, file1.getName());
+        boolean file2Exists = objectExists(DEFAULT_BUCKET_NAME, file2.getName());
         assertThat(file1Exists)
             .isFalse();
         assertThat(file2Exists)
             .isFalse();
+    }
+
+    private boolean objectExists(String bucket, String key) {
+        try {
+            s3Client.headObject(request -> request.bucket(bucket).key(key));
+            return true;
+        } catch (NoSuchKeyException exception) {
+            return false;
+        }
     }
 
 }
