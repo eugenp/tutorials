@@ -10,9 +10,8 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-spring-6</artifactId>
+        <artifactId>spring-web-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-spring-6</relativePath>
     </parent>
 
     <dependencies>
@@ -99,6 +98,7 @@
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
         <jakarta.servlet-api.version>6.0.0</jakarta.servlet-api.version>
         <spring-boot-starter-test.version>3.1.5</spring-boot-starter-test.version>
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
     </properties>
 
 </project>

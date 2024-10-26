@@ -10,9 +10,8 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-spring-6</artifactId>
+        <artifactId>spring-web-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-spring-6</relativePath>
     </parent>
 
     <dependencies>
@@ -144,6 +143,7 @@
         <!-- http -->
         <httpcore.version>4.4.5</httpcore.version>
         <httpclient.version>4.5.2</httpclient.version>
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
         <!-- various -->
         <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
 
