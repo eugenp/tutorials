@@ -30,7 +30,7 @@ class S3BucketOperationService {
         s3Client.createBucket(request -> request.bucket(bucketName));
     }
 
-    public List<Bucket> listBuckets(String bucketName) {
+    public List<Bucket> listBuckets() {
         List<Bucket> allBuckets = new ArrayList<>();
         String nextToken = null;
 
