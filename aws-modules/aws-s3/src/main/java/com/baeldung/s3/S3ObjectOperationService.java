@@ -34,13 +34,14 @@ class S3ObjectOperationService {
             ResponseTransformer.toFile(downloadPath));
     }
 
-    public void copyObject(ObjectCopyRequest objectCopyRequest) {
+    public void copyObject(String sourceBucketName, String sourceKey, 
+        String destinationBucketName, String destinationKey) {
         s3Client.copyObject(request -> 
             request
-                .sourceBucket(objectCopyRequest.sourceBucketName)
-                .sourceKey(objectCopyRequest.sourceKey)
-                .destinationBucket(objectCopyRequest.destinationBucketName)
-                .destinationKey(objectCopyRequest.destinationKey));
+                .sourceBucket(sourceBucketName)
+                .sourceKey(sourceKey)
+                .destinationBucket(destinationBucketName)
+                .destinationKey(destinationKey));
     }
 
     public void delete(String bucketName, String key) {
@@ -66,9 +67,5 @@ class S3ObjectOperationService {
                     deleteRequest
                         .objects(objectsToDelete)));
     }
-
-    record ObjectCopyRequest(String sourceBucketName, String sourceKey, 
-        String destinationBucketName, String destinationKey) {
-    };
 
 }
