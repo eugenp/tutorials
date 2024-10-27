@@ -8,8 +8,15 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.apache.commons.lang3.ArrayUtils;
+
+/**
+ * This class demonstrates different ways to handle null arrays in Java.
+ */
 public class NullArray {
 
+    /**
+     * How to handle null arrays using Java 8.
+     */
     public static class Java8 {
 
         public static List<String> getAsList(String[] possiblyNullArray) {
@@ -20,6 +27,9 @@ public class NullArray {
         }
     }
 
+    /**
+     * How to handle null arrays using the ternary operator.
+     */
     public static class TernaryOperator {
 
         public static List<String> getAsList(String[] possiblyNullArray) {
@@ -27,6 +37,9 @@ public class NullArray {
         }
     }
 
+    /**
+     * How to handle null arrays using Apache Commons Lang.
+     */
     public static class ApacheCommons {
 
         public static List<String> getAsList(String[] possiblyNullArray) {
