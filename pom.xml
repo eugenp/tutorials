@@ -598,7 +598,7 @@
                 <!--<module>spring-integration</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-jinq</module>--><!--disabling the jinq modules, as the default build profile is failing due to bad mv files. Please refer: JAVA-31341-->
                 <module>spring-security-modules/spring-security-legacy-oidc</module>
-                <!--<module>static-analysis</module> - requires additional configuration to be compiled due to the JVM strong encapsulation -->
+                <!--<module>static-analysis-modules</module> - requires additional configuration to be compiled due to the JVM strong encapsulation -->
                 <!--<module>tablesaw</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-swagger-codegen-modules/openapi-custom-generator</module>
                 <module>spring-swagger-codegen-modules/openapi-custom-generator-api-client</module> --> <!-- cannot add the individual modules here because the order is not guaranteed -->
@@ -656,7 +656,7 @@
                 <module>apache-httpclient</module>
                 <module>apache-kafka-2</module>
                 <module>apache-kafka-3</module>
-                <!-- <module>apache-libraries-2</module> --> <!-- JAVA-38868 -->
+                <module>apache-libraries-2</module>
                 <module>apache-libraries</module>
                 <module>apache-olingo</module><!-- apache-olingo wasn't updated to boot-3 because a workaround for jakarta namespace wasn't found JAVA-27818 -->
                 <module>apache-poi-2</module>
@@ -786,7 +786,6 @@
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
                 <module>spring-ai</module>
-                <module>spring-ai-2</module>
                 <module>spring-aop-2</module>
                 <module>spring-aop</module>
                 <module>spring-batch</module>
@@ -853,7 +852,7 @@
                 <module>xstream</module>
                 <module>libraries-data-io-2</module>
                 <module>spring-5-rest-docs</module>
-                <!-- <module>maven-modules</module> --> <!--JAVA 37707-->
+                <module>maven-modules</module>
             </modules>
 
             <properties>
@@ -915,7 +914,7 @@
                 <!--<module>spring-integration</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-jinq</module>--><!--disabling the jinq modules, as the default build profile is failing due to bad mv files. Please refer: JAVA-31341-->
                 <module>spring-security-modules/spring-security-legacy-oidc</module>
-                <!--<module>static-analysis</module> - requires additional configuration to be compiled due to the JVM strong encapsulation -->
+                <!--<module>static-analysis-modules</module> - requires additional configuration to be compiled due to the JVM strong encapsulation -->
                 <!--<module>tablesaw</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-swagger-codegen-modules/openapi-custom-generator</module>
                 <module>spring-swagger-codegen-modules/openapi-custom-generator-api-client</module> --> <!-- cannot add the individual modules here because the order is not guaranteed -->
@@ -992,7 +991,7 @@
                 <module>drools</module>
                 <module>dubbo</module>
                 <module>feign</module>
-                <!-- <module>gcp-firebase</module> --> <!-- BAEL-8475 -->
+                <module>gcp-firebase</module>
                 <module>geotools</module>
                 <module>google-auto-project</module>
                 <module>google-cloud</module>
@@ -1097,7 +1096,6 @@
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
                 <module>spring-ai</module>
-                <module>spring-ai-2</module>
                 <module>spring-aop-2</module>
                 <module>spring-aop</module>
                 <module>spring-batch</module>
@@ -1164,7 +1162,7 @@
                 <module>xstream</module>
                 <module>libraries-data-io-2</module>
                 <module>spring-5-rest-docs</module>
-                <!-- <module>maven-modules</module> --> <!--JAVA 37707-->
+                <module>maven-modules</module>
             </modules>
 
             <properties>

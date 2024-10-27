@@ -15,7 +15,7 @@ import reactor.core.publisher.Mono;
 public class CustomerController {
 
     public static final String PATH_CUSTOMER = "/customer";
-    public static final Duration SLEEP_DURATION = Duration.ofSeconds(2);
+    public static final Duration SLEEP_DURATION = Duration.ofSeconds(4);
 
     private final CustomerService customerService;
 
