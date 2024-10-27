@@ -8,6 +8,9 @@
     <artifactId>parent-modules</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <name>parent-modules</name>
+    <modules>
+        <module>core-java-modules/core-java-concurrency-advanced-6</module>
+    </modules>
 
     <packaging>pom</packaging>
 
@@ -595,7 +598,7 @@
                 <!--<module>spring-integration</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-jinq</module>--><!--disabling the jinq modules, as the default build profile is failing due to bad mv files. Please refer: JAVA-31341-->
                 <module>spring-security-modules/spring-security-legacy-oidc</module>
-                <!--<module>static-analysis</module> - requires additional configuration to be compiled due to the JVM strong encapsulation -->
+                <!--<module>static-analysis-modules</module> - requires additional configuration to be compiled due to the JVM strong encapsulation -->
                 <!--<module>tablesaw</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-swagger-codegen-modules/openapi-custom-generator</module>
                 <module>spring-swagger-codegen-modules/openapi-custom-generator-api-client</module> --> <!-- cannot add the individual modules here because the order is not guaranteed -->
@@ -783,7 +786,6 @@
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
                 <module>spring-ai</module>
-                <module>spring-ai-2</module>
                 <module>spring-aop-2</module>
                 <module>spring-aop</module>
                 <module>spring-batch</module>
@@ -850,7 +852,7 @@
                 <module>xstream</module>
                 <module>libraries-data-io-2</module>
                 <module>spring-5-rest-docs</module>
-                <!-- <module>maven-modules</module> --> <!--JAVA 37707-->
+                <module>maven-modules</module>
             </modules>
 
             <properties>
@@ -912,7 +914,7 @@
                 <!--<module>spring-integration</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-jinq</module>--><!--disabling the jinq modules, as the default build profile is failing due to bad mv files. Please refer: JAVA-31341-->
                 <module>spring-security-modules/spring-security-legacy-oidc</module>
-                <!--<module>static-analysis</module> - requires additional configuration to be compiled due to the JVM strong encapsulation -->
+                <!--<module>static-analysis-modules</module> - requires additional configuration to be compiled due to the JVM strong encapsulation -->
                 <!--<module>tablesaw</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-swagger-codegen-modules/openapi-custom-generator</module>
                 <module>spring-swagger-codegen-modules/openapi-custom-generator-api-client</module> --> <!-- cannot add the individual modules here because the order is not guaranteed -->
@@ -1094,7 +1096,6 @@
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
                 <module>spring-ai</module>
-                <module>spring-ai-2</module>
                 <module>spring-aop-2</module>
                 <module>spring-aop</module>
                 <module>spring-batch</module>
@@ -1161,7 +1162,7 @@
                 <module>xstream</module>
                 <module>libraries-data-io-2</module>
                 <module>spring-5-rest-docs</module>
-                <!-- <module>maven-modules</module> --> <!--JAVA 37707-->
+                <module>maven-modules</module>
             </modules>
 
             <properties>
