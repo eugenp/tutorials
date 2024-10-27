@@ -66,7 +66,7 @@ public class JavaTimeClassesTest {
 
 
     @Test
-    void givenDateTimeFormat_whenFormattingAndParsing_thenVerifyResults() {
+    void givenDateTimeFormat_whenFormatting_thenVerifyResults() {
         // given
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
         LocalDateTime specificDateTime = LocalDateTime.of(2024, 9, 18, 10, 30);
@@ -110,7 +110,6 @@ public class JavaTimeClassesTest {
                 .satisfies(time -> {
                     assertThat(time.getOffset().getTotalSeconds())
                             .isEqualTo(parisZone.getRules().getOffset(Instant.now()).getTotalSeconds());
-                    assertThat(time.getHour()).isBetween(0, 23);
                 });
         // Verify time differences between zones
         assertThat(ChronoUnit.HOURS.between(nyTime, parisTime) % 24)
