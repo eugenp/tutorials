@@ -18,6 +18,7 @@ public class CurrencySymbolFinderTest {
     public void givenCurrencySymbol_whenCheckingString_validationPass(String input) {
         String currencySymbol = input.substring(0, 1);
         String value = currencyInputMatcher(input, currencySymbol);
+
         assertEquals(input, value);
     }
 
@@ -27,6 +28,7 @@ public class CurrencySymbolFinderTest {
         String currencySymbol = Currency.getInstance(new Locale("", "CH"))
             .getSymbol();
         String value = currencyInputMatcher(input, currencySymbol);
+
         assertEquals(input, value);
     }
 
@@ -34,6 +36,7 @@ public class CurrencySymbolFinderTest {
     public void givenPoundsWithMatchingCountryCode_whenCheckingString_validationPass() {
         String poundValue = "£599,000";
         float value = validateCurrencyAmount(Locale.UK, poundValue).floatValue();
+
         assertEquals(599000.0, value, 0);
     }
 
@@ -41,6 +44,7 @@ public class CurrencySymbolFinderTest {
     public void givenRupeeWithMatchingCountryCode_whenCheckingString_validationPass() {
         String rupeeValue = "₹1,00,00,000";
         float value = validateCurrencyAmount(new Locale("hi", "IN"), rupeeValue).floatValue();
+
         assertEquals(10000000, value, 0);
     }
 }
