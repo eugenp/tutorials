@@ -1,10 +1,10 @@
 package com.baeldung.stringcontainscurrencysymbol;
 
 import static com.baeldung.stringcontainscurrencysymbol.CurrencySymbolFinder.currencyInputMatcher;
-import static com.baeldung.stringcontainscurrencysymbol.CurrencySymbolFinder.localCurrencyInputMatcher;
 import static com.baeldung.stringcontainscurrencysymbol.CurrencySymbolFinder.validateCurrencyAmount;
 import static org.junit.Assert.assertEquals;
 
+import java.util.Currency;
 import java.util.Locale;
 
 import org.junit.Test;
@@ -13,25 +13,26 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 public class CurrencySymbolFinderTest {
 
-    private static final String REGEX = "^\\p{Sc}?\\d{1,3}(,\\d{3})*(\\.\\d{2})?$";
-
     @ParameterizedTest
-    @ValueSource(strings = { "$4,100.00", "€85.50", "£75", "₹500.25" })
+    @ValueSource(strings = { "$4,100.00", "₹5 000.25", "€85.50", "£0.75" })
     public void givenCurrencySymbol_whenCheckingString_validationPass(String input) {
-        String value = currencyInputMatcher(REGEX, input);
+        String currencySymbol = input.substring(0, 1);
+        String value = currencyInputMatcher(input, currencySymbol);
         assertEquals(input, value);
     }
 
     @Test
     public void givenLocaleInstance_whenCheckingString_validationPass() {
-        String chfValue = "750CHF";
-        String currencyName = localCurrencyInputMatcher(new Locale("", "CH"), chfValue);
-        assertEquals("CHF", currencyName);
+        String input = "750CHF";
+        String currencySymbol = Currency.getInstance(new Locale("", "CH"))
+            .getSymbol();
+        String value = currencyInputMatcher(input, currencySymbol);
+        assertEquals(input, value);
     }
 
     @Test
     public void givenPoundsWithMatchingCountryCode_whenCheckingString_validationPass() {
-        String poundValue = "£599000";
+        String poundValue = "£599,000";
         float value = validateCurrencyAmount(Locale.UK, poundValue).floatValue();
         assertEquals(599000.0, value, 0);
     }
