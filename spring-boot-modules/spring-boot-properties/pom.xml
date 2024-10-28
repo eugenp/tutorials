@@ -17,11 +17,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>commons-configuration</groupId>
-            <artifactId>commons-configuration</artifactId>
-            <version>${commons-configuration.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
@@ -150,7 +145,7 @@
 
     <properties>
         <spring-cloud.version>2023.0.1</spring-cloud.version>
-        <commons-configuration.version>1.10</commons-configuration.version>
+
         <resource.delimiter>@</resource.delimiter>
         <!-- <start-class>com.baeldung.buildproperties.Application</start-class> -->
         <start-class>com.baeldung.yaml.MyApplication</start-class>

@@ -7,4 +7,5 @@ This module contains articles about Properties in Spring Boot.
 - [@PropertySource with YAML Files in Spring Boot](https://www.baeldung.com/spring-yaml-propertysource)
 - [Inject Arrays and Lists From Spring Properties Files](https://www.baeldung.com/spring-inject-arrays-lists)
 - [Inject a Map from a YAML File with Spring](https://www.baeldung.com/spring-yaml-inject-map)
+- [Reloading Properties Files in Spring](https://www.baeldung.com/spring-reloading-properties)
 - More articles: [[<-- Prev]](../spring-boot-properties) [[Next -->]](../spring-boot-properties-3)
