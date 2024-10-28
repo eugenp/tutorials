@@ -10,5 +10,4 @@ This module contains articles about Vavr.
 - [Exceptions in Lambda Expression Using Vavr](https://www.baeldung.com/exceptions-using-vavr)
 - [Vavr Support in Spring Data](https://www.baeldung.com/spring-vavr)
 - [Introduction to Vavr’s Validation API](https://www.baeldung.com/vavr-validation-api)
-- [Collection Factory Methods for Vavr](https://www.baeldung.com/vavr-collection-factory-methods)
 - [[next -->]](/vavr-modules/vavr-2)
