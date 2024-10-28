@@ -1,18 +1,18 @@
 package com.baeldung.vavr.future;
 
-import io.vavr.Tuple;
-import io.vavr.concurrent.Future;
-import io.vavr.control.Option;
-import io.vavr.control.Try;
-import org.junit.Test;
-import org.junit.jupiter.api.Disabled;
+import static java.util.concurrent.Executors.newSingleThreadExecutor;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
-import static java.util.concurrent.Executors.newSingleThreadExecutor;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import org.junit.Test;
+
+import io.vavr.Tuple;
+import io.vavr.concurrent.Future;
+import io.vavr.control.Option;
+import io.vavr.control.Try;
 
 public class FutureUnitTest {
 
