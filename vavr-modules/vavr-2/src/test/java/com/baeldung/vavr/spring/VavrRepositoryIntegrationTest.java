@@ -1,10 +1,9 @@
-package com.baeldung.vavr.repositories;
+package com.baeldung.vavr.spring;
 
-import com.baeldung.Application;
-import com.baeldung.repositories.VavrUserRepository;
-import com.baeldung.vavr.User;
-import io.vavr.collection.Seq;
-import io.vavr.control.Option;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,9 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import com.baeldung.vavr.spring.repositories.VavrUserRepository;
+import com.baeldung.vavr.spring.model.User;
+
+import io.vavr.collection.Seq;
+import io.vavr.control.Option;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
