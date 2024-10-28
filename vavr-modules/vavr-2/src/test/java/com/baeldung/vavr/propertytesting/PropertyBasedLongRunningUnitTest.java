@@ -1,17 +1,18 @@
-package com.baeldung.vavr;
+package com.baeldung.vavr.propertytesting;
+
+import static io.vavr.API.$;
+import static io.vavr.API.Case;
+import static io.vavr.API.Match;
+
+import java.util.function.Predicate;
+
+import org.junit.Test;
 
 import io.vavr.CheckedFunction1;
 import io.vavr.collection.Stream;
 import io.vavr.test.Arbitrary;
 import io.vavr.test.CheckResult;
 import io.vavr.test.Property;
-import org.junit.Test;
-
-import java.util.function.Predicate;
-
-import static io.vavr.API.$;
-import static io.vavr.API.Case;
-import static io.vavr.API.Match;
 
 public class PropertyBasedLongRunningUnitTest {
 

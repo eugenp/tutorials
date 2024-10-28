@@ -10,4 +10,5 @@ This module contains articles about Vavr.
 - [Introduction to Future in Vavr](https://www.baeldung.com/vavr-future)
 - [Introduction to Vavr’s Validation API](https://www.baeldung.com/vavr-validation-api)
 - [Guide to Pattern Matching in Vavr](https://www.baeldung.com/vavr-pattern-matching)
+- [Property Testing Example With Vavr](https://www.baeldung.com/vavr-property-testing) 
 - [[<-- prev]](/vavr-modules/vavr)
