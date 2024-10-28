@@ -3,6 +3,7 @@ package com.baeldung.s3;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
@@ -60,7 +61,7 @@ class S3ObjectOperationServiceLiveTest {
     private static final String DEFAULT_BUCKET_NAME = "baeldung-bucket";
 
     @Test
-    void whenUploadCalled_thenFileSavedToBucket() {
+    void whenUploadCalled_thenFileSavedToBucket() throws IOException {
         File fileToUpload = FileGeneratorUtil.generate();
         s3ObjectOperationService.upload(DEFAULT_BUCKET_NAME, fileToUpload);
 
@@ -84,7 +85,7 @@ class S3ObjectOperationServiceLiveTest {
     }
 
     @Test
-    void whenCopyObjectCalled_thenObjectCopiedSuccessfully() {
+    void whenCopyObjectCalled_thenObjectCopiedSuccessfully() throws IOException {
         File sourceFile = FileGeneratorUtil.generate();
         s3ObjectOperationService.upload(DEFAULT_BUCKET_NAME, sourceFile);
 
@@ -105,7 +106,7 @@ class S3ObjectOperationServiceLiveTest {
     }
 
     @Test
-    void whenDeleteCalled_thenObjectDeleted() {
+    void whenDeleteCalled_thenObjectDeleted() throws IOException {
         File fileToDelete = FileGeneratorUtil.generate();
         s3ObjectOperationService.upload(DEFAULT_BUCKET_NAME, fileToDelete);
 
@@ -117,7 +118,7 @@ class S3ObjectOperationServiceLiveTest {
     }
 
     @Test
-    void whenDeleteMultipleCalled_thenObjectsDeleted() {
+    void whenDeleteMultipleCalled_thenObjectsDeleted() throws IOException {
         File file1 = FileGeneratorUtil.generate();
         File file2 = FileGeneratorUtil.generate();
         s3ObjectOperationService.upload(DEFAULT_BUCKET_NAME, file1);
