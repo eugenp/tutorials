@@ -21,7 +21,6 @@ import org.springframework.test.context.ActiveProfiles;
 @SpringBootTest
 @Import(KafkaKpiConsumerWithNoBatchConfig.class)
 @ActiveProfiles("no-batch")
-//@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @EnableKafka
 @EmbeddedKafka(partitions = 1, topics = { "kpi_topic" }, brokerProperties = { "listeners=PLAINTEXT://localhost:9092", "port=9092" })
@@ -53,9 +52,10 @@ public class KafkaNoBatchLiveTest {
         }
     }
 
-   @RepeatedTest(10)
-    void givenKafka_whenMessage1OnTopic_ThenListenerconsumes(RepetitionInfo repetitionInfo) {
-       assertThat(kpiConsumer.getMessage()).isEqualTo("Test KPI Message-".concat(String.valueOf(repetitionInfo.getCurrentRepetition())));
-       kpiConsumer.getLatch().countDown();
+    @RepeatedTest(10)
+    void givenKafka_whenMessage1OnTopic_ThenListenerConsumesMessages(RepetitionInfo repetitionInfo) {
+        String testNo = String.valueOf(repetitionInfo.getCurrentRepetition());
+        assertThat(kpiConsumer.getMessage().value()).isEqualTo("Test KPI Message-".concat(testNo));
+        kpiConsumer.getLatch().countDown();
     }
 }

@@ -23,14 +23,11 @@ public class KpiBatchConsumer {
     @KafkaListener(id = "kpi-batch-listener", topics = "kpi_batch_topic", batch = "true", containerFactory = "kafkaKpiListenerContainerFactory")
     public void listen(ConsumerRecords<String, String> records) throws InterruptedException {
         logger.info("Number of elements in the records: {}", records.count());
-        List<String> messages = new ArrayList<>();
-        records.forEach(record -> messages.add(record.value()));
+        records.forEach(record -> receivedMessages.add(record.value()));
 
         latch.await();
 
-        receivedMessages.addAll(messages);
-        dataLakeService.save(messages);
-      //latch.countDown();  // Signals that the message was received
+        dataLakeService.save(receivedMessages);
         latch = new CountDownLatch(1);
     }
 

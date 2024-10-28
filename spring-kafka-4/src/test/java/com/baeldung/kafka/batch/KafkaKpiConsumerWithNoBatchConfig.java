@@ -18,18 +18,10 @@ public class KafkaKpiConsumerWithNoBatchConfig {
     @Bean
     public ConcurrentKafkaListenerContainerFactory<String, String> kafkaKpiListenerContainerFactory(
         ConsumerFactory<String, String> consumerFactory, EmbeddedKafkaBroker embeddedKafka) {
-        logger.info("kafkaKpiListenerContainerFactory invoked");
-//        Map<String, Object> configProps = new HashMap<>();
-//        configProps.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "latest");
-//        configProps.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "true");
-//        consumerFactory.updateConfigs(configProps);
-
-        ConcurrentKafkaListenerContainerFactory<String, String> factory =
-            new ConcurrentKafkaListenerContainerFactory();
+        ConcurrentKafkaListenerContainerFactory<String, String> factory = new ConcurrentKafkaListenerContainerFactory();
         factory.setConsumerFactory(consumerFactory);
         factory.setConcurrency(3);
         factory.getContainerProperties().setPollTimeout(3000);
-
         return factory;
     }
 }

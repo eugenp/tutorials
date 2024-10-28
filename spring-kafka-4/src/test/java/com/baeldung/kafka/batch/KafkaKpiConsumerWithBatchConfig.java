@@ -23,13 +23,9 @@ public class KafkaKpiConsumerWithBatchConfig {
             new ConcurrentKafkaListenerContainerFactory();
         Map<String, Object> configProps = new HashMap<>();
         configProps.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, "20");
-//        configProps.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "latest");
-//        configProps.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, "true");
         consumerFactory.updateConfigs(configProps);
-
+        factory.setConcurrency(1);
         factory.setConsumerFactory(consumerFactory);
-        //factory.setConcurrency(3);
-
         factory.getContainerProperties().setPollTimeout(3000);
         factory.setBatchListener(true);
         return factory;

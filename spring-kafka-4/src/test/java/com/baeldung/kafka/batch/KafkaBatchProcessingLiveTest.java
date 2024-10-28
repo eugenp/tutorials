@@ -20,11 +20,11 @@ import org.springframework.test.context.ActiveProfiles;
 @SpringBootTest
 @Import(KafkaKpiConsumerWithBatchConfig.class)
 @ActiveProfiles("batch")
-//@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @EnableKafka
-@EmbeddedKafka(partitions = 1, topics = { "kpi_batch_topic" }, brokerProperties = { "listeners=PLAINTEXT://localhost:9092", "port=9092" })
+@EmbeddedKafka(partitions = 1, topics = { "kpi_batch_topic" }, brokerProperties = {"listeners=PLAINTEXT://localhost:9092", "port=9092" })
 public class KafkaBatchProcessingLiveTest {
+
     private final Logger logger = LoggerFactory.getLogger(KafkaBatchProcessingLiveTest.class);
     @Autowired
     private EmbeddedKafkaBroker embeddedKafka;
@@ -38,14 +38,13 @@ public class KafkaBatchProcessingLiveTest {
     @BeforeAll
     void setup() throws ExecutionException, InterruptedException {
         assertThat(embeddedKafka).isNotNull();
-
         publishMessages();
     }
 
     private void publishMessages() throws ExecutionException, InterruptedException {
         int count = 1;
         String messageTemplate = "Test KPI Message-";
-        while(count <= 100) {
+        while (count <= 100) {
             logger.info("publishing message number {}", count);
             kpiProducer.sendMessage("kpi_batch_topic", messageTemplate.concat(Integer.valueOf(count).toString()));
             count++;
@@ -53,10 +52,10 @@ public class KafkaBatchProcessingLiveTest {
     }
 
     @RepeatedTest(5)
-    void givenKafka_whenMessagesOnTopic_ThenListenerconsumes() {
-            kpiBatchConsumer.getLatch().countDown();
-            assertThat(kpiBatchConsumer.getReceivedMessages().size() % 20).isEqualTo(0);
-            logger.info("The message received by test {}", kpiBatchConsumer.getReceivedMessages().size() );
+    void givenKafka_whenMessagesOnTopic_ThenListenerConsumesMessages() {
+        int messageSize = kpiBatchConsumer.getReceivedMessages().size();
+        logger.info("The message received by test {}", messageSize);
+        assertThat(messageSize % 20).isEqualTo(0);
+        kpiBatchConsumer.getLatch().countDown();
     }
-
 }
