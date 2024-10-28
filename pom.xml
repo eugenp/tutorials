@@ -865,7 +865,7 @@
         </profile>
 
         <profile>
-            <id>default-jdk22</id>
+            <id>profile-jdk22</id>
             <build>
                 <plugins>
                     <plugin>
@@ -903,7 +903,7 @@
         </profile>
 
         <profile>
-            <id>default-jdk23</id>
+            <id>profile-jdk23</id>
             <build>
                 <plugins>
                     <plugin>
