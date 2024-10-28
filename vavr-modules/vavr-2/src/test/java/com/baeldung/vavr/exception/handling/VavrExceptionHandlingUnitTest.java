@@ -1,17 +1,18 @@
 package com.baeldung.vavr.exception.handling;
 
-import io.vavr.API;
-import io.vavr.CheckedFunction1;
-import io.vavr.Value;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
+import io.vavr.API;
+import io.vavr.CheckedFunction1;
+import io.vavr.Value;
 
 public class VavrExceptionHandlingUnitTest {
 
