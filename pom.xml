@@ -865,6 +865,82 @@
         </profile>
 
         <profile>
+            <id>profile-jdk22</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <forkCount>3</forkCount>
+                            <reuseForks>true</reuseForks>
+                            <includes>
+                                <include>SpringContextTest</include>
+                                <include>**/*UnitTest</include>
+                                <include>**/*IntegrationTest.java</include>
+                                <include>**/*IntTest.java</include>
+                                <include>**/*LongRunningUnitTest.java</include>
+                                <include>**/*ManualTest.java</include>
+                                <include>**/JdbcTest.java</include>
+                                <include>**/*LiveTest.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+
+            <modules>
+                <module>core-java-modules/core-java-22</module>
+            </modules>
+
+            <properties>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <java.version>22</java.version>
+                <maven.compiler.source>22</maven.compiler.source>
+                <maven.compiler.target>22</maven.compiler.target>
+            </properties>
+
+        </profile>
+
+        <profile>
+            <id>profile-jdk23</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <forkCount>3</forkCount>
+                            <reuseForks>true</reuseForks>
+                            <includes>
+                                <include>SpringContextTest</include>
+                                <include>**/*UnitTest</include>
+                                <include>**/*IntegrationTest.java</include>
+                                <include>**/*IntTest.java</include>
+                                <include>**/*LongRunningUnitTest.java</include>
+                                <include>**/*ManualTest.java</include>
+                                <include>**/JdbcTest.java</include>
+                                <include>**/*LiveTest.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+
+            <modules>
+                <module>core-java-modules/core-java-23</module>
+            </modules>
+
+            <properties>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <java.version>23</java.version>
+                <maven.compiler.source>23</maven.compiler.source>
+                <maven.compiler.target>23</maven.compiler.target>
+            </properties>
+
+        </profile>
+
+        <profile>
             <id>integration-jdk17</id>
             <build>
                 <plugins>
