@@ -1,31 +1,44 @@
 package com.baeldung.schedulingvirtualthread;
 
-import static java.time.temporal.ChronoUnit.MILLIS;
-import static java.time.temporal.ChronoUnit.SECONDS;
-
 import java.time.Duration;
-import java.time.Period;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalUnit;
-import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.LockSupport;
 
 public class ScheduleVirtualThreadsMain {
 
-    public static void main(String[] args) throws InterruptedException, ExecutionException {
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
         ExecutorService virtualThreadExecutor = Executors.newVirtualThreadPerTaskExecutor();
 
         try (virtualThreadExecutor) {
-            for (int i = 0; i < 10_000; i++) {
-                schedule(mockSlowHelloWorldTask(Duration.of(2, SECONDS)), 3, TimeUnit.SECONDS, virtualThreadExecutor);
-                schedule(mockSlowHelloWorldTask(Duration.of(2, SECONDS)), 3, ChronoUnit.SECONDS, virtualThreadExecutor);
+            var taskResult = schedule(() -> System.out.println("Running on a scheduled virtual thread!"), 5, TimeUnit.SECONDS, virtualThreadExecutor);
+
+            try {
+                Thread.sleep(10 * 1000); // Sleep for 10 seconds to wait task results
+            } catch (InterruptedException e) {
+                Thread.currentThread()
+                    .interrupt();
             }
+
+            System.out.println(taskResult.get());
+        }
+
+        try (virtualThreadExecutor) {
+            var taskResult = schedule(() -> System.out.println("Running on a scheduled virtual thread!"), 5, ChronoUnit.SECONDS, virtualThreadExecutor);
+
+            try {
+                Thread.sleep(10 * 1000); // Sleep for 10 seconds to wait task results
+            } catch (InterruptedException e) {
+                Thread.currentThread()
+                    .interrupt();
+            }
+
+            System.out.println(taskResult.get());
         }
     }
 
@@ -46,22 +59,11 @@ public class ScheduleVirtualThreadsMain {
             try {
                 Thread.sleep(Duration.of(delay, unit));
             } catch (InterruptedException e) {
-                // handle interrupted error
+                Thread.currentThread()
+                    .interrupt();
             }
 
             task.run();
         });
-    }
-
-    private static Runnable mockSlowHelloWorldTask(Duration time) {
-        return () -> {
-            try {
-                Thread.sleep(time);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-
-            System.out.println("Hello World");
-        };
     }
 }
