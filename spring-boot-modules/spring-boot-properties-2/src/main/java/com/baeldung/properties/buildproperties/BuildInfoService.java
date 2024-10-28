@@ -1,4 +1,4 @@
-package com.baeldung.buildproperties;
+package com.baeldung.properties.buildproperties;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;

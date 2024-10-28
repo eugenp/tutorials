@@ -1,4 +1,4 @@
-package com.baeldung.buildproperties;
+package com.baeldung.properties.buildproperties;
 
 import static org.junit.Assert.assertThat;
 

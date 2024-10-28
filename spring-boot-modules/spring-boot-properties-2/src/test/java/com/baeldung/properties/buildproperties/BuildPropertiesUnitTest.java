@@ -1,4 +1,4 @@
-package com.baeldung.buildproperties;
+package com.baeldung.properties.buildproperties;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -16,7 +16,7 @@ class BuildPropertiesUnitTest {
 
     @Test
     void givenBuildPropertiesBean_WhenFetchDefaultBuildProperties_ThenGetValidValues() {
-        Assertions.assertEquals("spring-boot-properties", buildProperties.getArtifact());
+        Assertions.assertEquals("spring-boot-properties-2", buildProperties.getArtifact());
         Assertions.assertEquals("com.baeldung.spring-boot-modules", buildProperties.getGroup());
         Assertions.assertEquals("0.0.1-SNAPSHOT", buildProperties.getVersion());
     }
