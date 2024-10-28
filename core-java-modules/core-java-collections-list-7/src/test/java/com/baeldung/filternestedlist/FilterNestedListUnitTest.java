@@ -20,7 +20,8 @@ public class FilterNestedListUnitTest {
         Order order3 = new Order("Nintendo Switch", 510.0);
         User user1 = new User("Alice", Arrays.asList(order1, order2));
         User user2 = new User("Bob", Arrays.asList(order3));
-        List<User> users = Arrays.asList(user1, user2);
+        User user3 = new User("Mity", Arrays.asList(order2));
+        List<User> users = Arrays.asList(user1, user2, user3);
 
         List<User> filteredUsers = new ArrayList<>();
         for (User user : users) {
@@ -44,8 +45,9 @@ public class FilterNestedListUnitTest {
         Order order2 = new Order("Phone", 300.0);
         Order order3 = new Order("Nintendo Switch", 510.0);
         User user1 = new User("Alice", Arrays.asList(order1, order2));
-        User user2 = new User("Bob", Arrays.asList(order2, order3));
-        List<User> users = Arrays.asList(user1, user2);
+        User user2 = new User("Bob", Arrays.asList(order3));
+        User user3 = new User("Mity", Arrays.asList(order2));
+        List<User> users = Arrays.asList(user1, user2, user3);
 
         List<User> filteredUsers = users.stream()
             .filter(user -> user.getOrders().stream()
@@ -65,8 +67,9 @@ public class FilterNestedListUnitTest {
         Order order2 = new Order("Phone", 300.0);
         Order order3 = new Order("Nintendo Switch", 510.0);
         User user1 = new User("Alice", Arrays.asList(order1, order2));
-        User user2 = new User("Bob", Arrays.asList(order2, order3));
-        List<User> users = Arrays.asList(user1, user2);
+        User user2 = new User("Bob", Arrays.asList(order3));
+        User user3 = new User("Mity", Arrays.asList(order2));
+        List<User> users = Arrays.asList(user1, user2, user3);
 
         List<User> filteredUsers = users.stream()
             .filter(user -> user.getOrders().stream()
@@ -84,8 +87,9 @@ public class FilterNestedListUnitTest {
         Order order2 = new Order("Phone", 300.0);
         Order order3 = new Order("Nintendo Switch", 510.0);
         User user1 = new User("Alice", Arrays.asList(order1, order2));
-        User user2 = new User("Bob", Arrays.asList(order2, order3));
-        List<User> users = Arrays.asList(user1, user2);
+        User user2 = new User("Bob", Arrays.asList(order3));
+        User user3 = new User("Mity", Arrays.asList(order2));
+        List<User> users = Arrays.asList(user1, user2, user3);
 
         Predicate<User> hasExpensiveOrder = user -> user.getOrders().stream()
             .anyMatch(order -> order.getPrice() > priceThreshold);
@@ -106,8 +110,9 @@ public class FilterNestedListUnitTest {
         Order order2 = new Order("Phone", 300.0);
         Order order3 = new Order("Nintendo Switch", 510.0);
         User user1 = new User("Alice", Arrays.asList(order1, order2));
-        User user2 = new User("Bob", Arrays.asList(order2, order3));
-        List<User> users = Arrays.asList(user1, user2);
+        User user2 = new User("Bob", Arrays.asList(order3));
+        User user3 = new User("Mity", Arrays.asList(order2));
+        List<User> users = Arrays.asList(user1, user2, user3);
 
         List<User> filteredUsersWithLimitedOrders = users.stream()
             .map(user -> {
@@ -132,8 +137,9 @@ public class FilterNestedListUnitTest {
         Order order2 = new Order("Phone", 300.0);
         Order order3 = new Order("Nintendo Switch", 510.0);
         User user1 = new User("Alice", Arrays.asList(order1, order2));
-        User user2 = new User("Bob", Arrays.asList(order2, order3));
-        List<User> users = Arrays.asList(user1, user2);
+        User user2 = new User("Bob", Arrays.asList(order3));
+        User user3 = new User("Mity", Arrays.asList(order2));
+        List<User> users = Arrays.asList(user1, user2, user3);
 
         List<User> filteredUsers = users.stream()
             .flatMap(user -> user.getOrders().stream()
