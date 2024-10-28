@@ -1,8 +1,4 @@
-package com.baeldung.vavr;
-
-import io.vavr.MatchError;
-import io.vavr.control.Option;
-import org.junit.Test;
+package com.baeldung.vavr.patternmatching;
 
 import static io.vavr.API.$;
 import static io.vavr.API.Case;
@@ -18,6 +14,11 @@ import static io.vavr.Predicates.isNull;
 import static io.vavr.Predicates.noneOf;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+
+import org.junit.Test;
+
+import io.vavr.MatchError;
+import io.vavr.control.Option;
 
 public class PatternMatchingUnitTest {
     @Test

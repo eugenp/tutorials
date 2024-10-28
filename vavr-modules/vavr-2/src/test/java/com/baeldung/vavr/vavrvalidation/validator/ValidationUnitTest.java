@@ -9,7 +9,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.baeldung.vavrvalidation.model.User;
+import com.baeldung.vavr.vavrvalidation.model.User;
 
 import io.vavr.collection.Seq;
 import io.vavr.control.Either.Right;

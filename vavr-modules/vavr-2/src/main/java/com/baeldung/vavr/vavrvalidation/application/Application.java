@@ -1,7 +1,7 @@
 package com.baeldung.vavr.vavrvalidation.application;
 
-import com.baeldung.vavrvalidation.model.User;
-import com.baeldung.vavrvalidation.validator.UserValidator;
+import com.baeldung.vavr.vavrvalidation.model.User;
+import com.baeldung.vavr.vavrvalidation.validator.UserValidator;
 
 import io.vavr.collection.Seq;
 import io.vavr.control.Validation;

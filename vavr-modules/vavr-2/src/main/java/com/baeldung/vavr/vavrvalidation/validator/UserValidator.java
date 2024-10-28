@@ -1,6 +1,6 @@
 package com.baeldung.vavr.vavrvalidation.validator;
 
-import com.baeldung.vavrvalidation.model.User;
+import com.baeldung.vavr.vavrvalidation.model.User;
 
 import io.vavr.collection.CharSeq;
 import io.vavr.collection.Seq;
