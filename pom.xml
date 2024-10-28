@@ -420,6 +420,7 @@
                 <module>spring-boot-modules/spring-boot-react</module>
                 <module>testing-modules/jmeter</module>
                 <module>core-java-modules/core-java-networking-5</module>
+                <module>quarkus-modules/quarkus-hibernate-reactive</module>
             </modules>
 
             <properties>
@@ -533,6 +534,7 @@
                 <module>spring-boot-modules/spring-boot-react</module>
                 <module>testing-modules/jmeter</module>
                 <module>core-java-modules/core-java-networking-5</module>
+                <module>quarkus-modules/quarkus-hibernate-reactive</module>
             </modules>
 
             <properties>
