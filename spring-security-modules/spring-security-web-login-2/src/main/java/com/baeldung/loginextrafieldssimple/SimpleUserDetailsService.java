@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class SimpleUserDetailsService implements UserDetailsService {
 
     private UserRepository userRepository;
- 
+
     public SimpleUserDetailsService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
@@ -24,7 +24,7 @@ public class SimpleUserDetailsService implements UserDetailsService {
         User user = userRepository.findUser(usernameAndDomain[0], usernameAndDomain[1]);
         if (user == null) {
             throw new UsernameNotFoundException(
-                String.format("Username not found for domain, username=%s, domain=%s", 
+                String.format("Username not found for domain, username=%s, domain=%s",
                     usernameAndDomain[0], usernameAndDomain[1]));
         }
         return user;

@@ -69,6 +69,11 @@
             <artifactId>zstd-jni</artifactId>
             <version>${zstd-jni.version}</version>
         </dependency>
+        <dependency>
+            <groupId>commons-validator</groupId>
+            <artifactId>commons-validator</artifactId>
+            <version>${commons-validator.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -83,6 +88,7 @@
         <commons-jexl.version>2.1.1</commons-jexl.version>
         <xz.version>1.9</xz.version>
         <zstd-jni.version>1.5.5-11</zstd-jni.version>
+        <commons-validator.version>1.9.0</commons-validator.version>
     </properties>
 
 </project>

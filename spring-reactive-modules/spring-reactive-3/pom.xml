@@ -98,6 +98,7 @@
             <plugin>
                 <groupId>org.cyclonedx</groupId>
                 <artifactId>cyclonedx-maven-plugin</artifactId>
+                <version>${cyclonedx-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <phase>generate-resources</phase>
@@ -134,6 +135,7 @@
         <spring-cloud.version>2021.0.4</spring-cloud.version>
         <mockwebserver.version>5.0.0-alpha.12</mockwebserver.version>
         <kotlin-stdlib.version>2.0.0-Beta4</kotlin-stdlib.version>
+        <cyclonedx-maven-plugin.version>2.9.0</cyclonedx-maven-plugin.version>
         <start-class>com.baeldung.custom.deserialization.Application</start-class>
     </properties>
 
