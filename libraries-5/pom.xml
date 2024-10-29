@@ -28,6 +28,11 @@
                             <artifactId>manifold-json</artifactId>
                             <version>${manifold.version}</version>
                         </path>
+                        <path>
+                            <groupId>am.ik.yavi</groupId>
+                            <artifactId>yavi</artifactId>
+                            <version>${yavi.version}</version>
+                        </path>
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
@@ -118,6 +123,11 @@
             <version>${yauaa.version}</version>
         </dependency>
         <dependency>
+            <groupId>am.ik.yavi</groupId>
+            <artifactId>yavi</artifactId>
+            <version>${yavi.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <version>${spring-boot.version}</version>
@@ -132,6 +142,7 @@
         <manifold.version>2024.1.20</manifold.version>
         <armeria.version>1.29.2</armeria.version>
         <yauaa.version>7.28.1</yauaa.version>
+        <yavi.version>0.14.1</yavi.version>
     </properties>
 
 </project>
