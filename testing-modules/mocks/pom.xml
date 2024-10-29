@@ -19,12 +19,6 @@
             <version>${javafaker.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.jmockit</groupId>
-            <artifactId>jmockit</artifactId>
-            <version>${jmockit.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.easymock</groupId>
             <artifactId>easymock</artifactId>
             <version>${easymock.version}</version>
@@ -56,7 +50,6 @@
     <properties>
         <javafaker.version>0.15</javafaker.version>
         <easymock.version>3.5.1</easymock.version>
-        <jmockit.version>1.49</jmockit.version>
     </properties>
 
 </project>

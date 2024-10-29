@@ -47,6 +47,12 @@
             <version>${jmockit.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.easymock</groupId>
+            <artifactId>easymock</artifactId>
+            <version>${easymock.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -76,6 +82,7 @@
         <jukito.version>1.5</jukito.version>
         <jimf.version>1.1</jimf.version>
         <jmockit.version>1.49</jmockit.version>
+        <easymock.version>3.5.1</easymock.version>
     </properties>
 
 </project>
