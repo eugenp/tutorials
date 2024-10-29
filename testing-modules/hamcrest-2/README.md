@@ -11,3 +11,5 @@ This module contains articles about Hamcrest
 - [Hamcrest Custom Matchers](https://www.baeldung.com/hamcrest-custom-matchers)
 - [Hamcrest Bean Matchers](https://www.baeldung.com/hamcrest-bean-matchers) 
 - [Check Whether a Collection Contains an Element or Not Using Hamcrest](https://www.baeldung.com/java-hamcrest-collection-hasitem)
+- [Difference Between hasItems(), contains(), and containsInAnyOrder() in Hamcrest](https://www.baeldung.com/hamcrest-hasitems-contains-containsinanyorder)
+- More Articles: [[prev -->]](../hamcrest)

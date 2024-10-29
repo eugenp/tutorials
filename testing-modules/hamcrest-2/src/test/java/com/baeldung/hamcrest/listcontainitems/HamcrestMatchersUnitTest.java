@@ -1,10 +1,10 @@
-package com.baeldung.hamcrest;
+package com.baeldung.hamcrest.listcontainitems;
 
-import static org.hamcrest.Matchers.not;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.hasItems;
-import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.containsInAnyOrder;
+import static org.hamcrest.Matchers.hasItems;
+import static org.hamcrest.Matchers.not;
 
 import java.util.Arrays;
 import java.util.List;
