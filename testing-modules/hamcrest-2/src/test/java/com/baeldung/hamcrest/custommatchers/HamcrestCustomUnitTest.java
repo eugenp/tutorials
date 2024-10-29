@@ -1,13 +1,13 @@
 package com.baeldung.hamcrest.custommatchers;
 
-import org.junit.Test;
-
 import static com.baeldung.hamcrest.custommatchers.IsDivisibleBy.divisibleBy;
 import static com.baeldung.hamcrest.custommatchers.IsOnlyDigits.onlyDigits;
 import static com.baeldung.hamcrest.custommatchers.IsUppercase.uppercase;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
+
+import org.junit.Test;
 
 public class HamcrestCustomUnitTest {
 

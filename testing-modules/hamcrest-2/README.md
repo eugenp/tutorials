@@ -8,3 +8,4 @@ This module contains articles about Hamcrest
 - [Hamcrest File Matchers](https://www.baeldung.com/hamcrest-file-matchers)
 - [Hamcrest Object Matchers](https://www.baeldung.com/hamcrest-object-matchers)
 - [Using Hamcrest Number Matchers](https://www.baeldung.com/hamcrest-number-matchers)
+- [Hamcrest Custom Matchers](https://www.baeldung.com/hamcrest-custom-matchers)
