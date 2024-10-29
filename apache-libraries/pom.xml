@@ -73,6 +73,11 @@
             <artifactId>solr-solrj</artifactId>
             <version>${solr.solr-solrj.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.mesos</groupId>
+            <artifactId>mesos</artifactId>
+            <version>${mesos.library.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -105,6 +110,7 @@
         <jakarta.validation.validation-api.version>3.1.0</jakarta.validation.validation-api.version><opennlp.opennlp-tools.version>1.8.4</opennlp.opennlp-tools.version>
         <solr.solr-solrj.version>6.4.0</solr.solr-solrj.version>
         <apache.avro.version>1.12.0</apache.avro.version>
+        <mesos.library.version>1.11.0</mesos.library.version>
     </properties>
 
 </project>
