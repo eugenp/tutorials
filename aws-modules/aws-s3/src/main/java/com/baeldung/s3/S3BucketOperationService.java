@@ -3,6 +3,8 @@ package com.baeldung.s3;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.http.HttpStatus;
+
 import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.Bucket;
 import software.amazon.awssdk.services.s3.model.ListBucketsResponse;
@@ -50,7 +52,7 @@ class S3BucketOperationService {
         try {
             s3Client.deleteBucket(request -> request.bucket(bucketName));
         } catch (S3Exception exception) {
-            if (exception.getMessage().contains("The bucket you tried to delete is not empty")) {
+            if (exception.statusCode() == HttpStatus.SC_CONFLICT) {
                 throw new BucketNotEmptyException();
             }
             throw exception;
