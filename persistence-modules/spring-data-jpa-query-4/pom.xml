@@ -47,11 +47,6 @@
             <version>${postgresql.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.vladmihalcea</groupId>
-            <artifactId>hibernate-types-52</artifactId>
-            <version>${vladmihalcea.version}</version>
-        </dependency>
-        <dependency>
             <groupId>net.bytebuddy</groupId>
             <artifactId>byte-buddy</artifactId>
             <version>${byte-buddy.version}</version>
