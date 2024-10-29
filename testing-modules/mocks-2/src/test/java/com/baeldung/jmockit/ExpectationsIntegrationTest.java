@@ -1,16 +1,17 @@
 package com.baeldung.jmockit;
 
-import mockit.Delegate;
-import mockit.Expectations;
-import mockit.Mocked;
-import mockit.Verifications;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import org.junit.Test;
+
+import mockit.Delegate;
+import mockit.Expectations;
+import mockit.Mocked;
+import mockit.Verifications;
 
 @SuppressWarnings("unchecked")
 public class ExpectationsIntegrationTest {

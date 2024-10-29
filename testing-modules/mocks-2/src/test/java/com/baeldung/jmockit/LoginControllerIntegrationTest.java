@@ -1,12 +1,20 @@
 package com.baeldung.jmockit;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 import com.baeldung.testCase.LoginController;
 import com.baeldung.testCase.LoginDao;
 import com.baeldung.testCase.LoginService;
 import com.baeldung.testCase.UserForm;
-import mockit.*;
-import org.junit.Assert;
-import org.junit.Test;
+
+import mockit.Delegate;
+import mockit.Expectations;
+import mockit.FullVerifications;
+import mockit.Injectable;
+import mockit.Mocked;
+import mockit.Tested;
+import mockit.Verifications;
 
 public class LoginControllerIntegrationTest {
 
