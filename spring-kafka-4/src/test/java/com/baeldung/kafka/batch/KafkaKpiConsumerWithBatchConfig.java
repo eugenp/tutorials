@@ -9,18 +9,17 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.ConsumerFactory;
-import org.springframework.kafka.test.EmbeddedKafkaBroker;
 
 @TestConfiguration
 @Profile("batch")
 public class KafkaKpiConsumerWithBatchConfig {
-
-    @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, String> kafkaKpiListenerContainerFactory(
-        ConsumerFactory<String, String> consumerFactory, EmbeddedKafkaBroker embeddedKafka) {
+    @Bean(name="kafkaKpiListenerContainerFactory")
+    public ConcurrentKafkaListenerContainerFactory<String, String> kafkaKpiBatchListenerContainerFactory(
+        ConsumerFactory<String, String> consumerFactory) {
 
         ConcurrentKafkaListenerContainerFactory<String, String> factory =
             new ConcurrentKafkaListenerContainerFactory();
+
         Map<String, Object> configProps = new HashMap<>();
         configProps.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, "20");
         consumerFactory.updateConfigs(configProps);
@@ -28,6 +27,7 @@ public class KafkaKpiConsumerWithBatchConfig {
         factory.setConsumerFactory(consumerFactory);
         factory.getContainerProperties().setPollTimeout(3000);
         factory.setBatchListener(true);
+
         return factory;
     }
 }

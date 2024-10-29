@@ -53,7 +53,7 @@ public class KafkaNoBatchLiveTest {
     }
 
     @RepeatedTest(10)
-    void givenKafka_whenMessage1OnTopic_ThenListenerConsumesMessages(RepetitionInfo repetitionInfo) {
+    void givenKafka_whenMessage1OnTopic_thenListenerConsumesMessages(RepetitionInfo repetitionInfo) {
         String testNo = String.valueOf(repetitionInfo.getCurrentRepetition());
         assertThat(kpiConsumer.getMessage().value()).isEqualTo("Test KPI Message-".concat(testNo));
         kpiConsumer.getLatch().countDown();

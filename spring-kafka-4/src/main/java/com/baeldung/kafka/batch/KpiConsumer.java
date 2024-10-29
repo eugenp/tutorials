@@ -15,13 +15,8 @@ import org.springframework.stereotype.Component;
 @Component
 @Profile("no-batch")
 public class KpiConsumer {
-
     private final Logger logger = LoggerFactory.getLogger(KpiConsumer.class);
     private CountDownLatch latch = new CountDownLatch(1);
-
-    public ConsumerRecord<String, String> getMessage() {
-        return message;
-    }
 
     private ConsumerRecord<String, String> message;
     @Autowired
@@ -39,8 +34,12 @@ public class KpiConsumer {
         List<String> messages = new ArrayList<>();
         messages.add(record.value());
         dataLakeService.save(messages);
-        //reset the message
+        //reset the latch
         latch = new CountDownLatch(1);
+    }
+
+    public ConsumerRecord<String, String> getMessage() {
+        return message;
     }
 
     public CountDownLatch getLatch() {

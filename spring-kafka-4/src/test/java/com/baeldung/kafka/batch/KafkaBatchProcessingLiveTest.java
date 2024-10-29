@@ -52,7 +52,7 @@ public class KafkaBatchProcessingLiveTest {
     }
 
     @RepeatedTest(5)
-    void givenKafka_whenMessagesOnTopic_ThenListenerConsumesMessages() {
+    void givenKafka_whenMessagesOnTopic_thenListenerConsumesMessages() {
         int messageSize = kpiBatchConsumer.getReceivedMessages().size();
         logger.info("The message received by test {}", messageSize);
         assertThat(messageSize % 20).isEqualTo(0);
