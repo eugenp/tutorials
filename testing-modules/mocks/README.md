@@ -8,4 +8,3 @@
 - [A Guide to JMockit Expectations](http://www.baeldung.com/jmockit-expectations)
 - [JMockit Advanced Usage](http://www.baeldung.com/jmockit-advanced-usage)
 - [A Guide to JavaFaker](https://www.baeldung.com/java-faker)
-- [File System Mocking with Jimfs](https://www.baeldung.com/jimfs-file-system-mocking)

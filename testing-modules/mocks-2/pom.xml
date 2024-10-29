@@ -36,12 +36,18 @@
             <version>${jukito.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.google.jimfs</groupId>
+            <artifactId>jimfs</artifactId>
+            <version>${jimf.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <datafaker.version>1.6.0</datafaker.version>
         <spring-test.version>5.3.25</spring-test.version>
         <jukito.version>1.5</jukito.version>
+        <jimf.version>1.1</jimf.version>
     </properties>
 
 </project>

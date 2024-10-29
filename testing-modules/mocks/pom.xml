@@ -30,11 +30,6 @@
             <version>${easymock.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>com.google.jimfs</groupId>
-            <artifactId>jimfs</artifactId>
-            <version>${jimf.version}</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -62,7 +57,6 @@
         <javafaker.version>0.15</javafaker.version>
         <easymock.version>3.5.1</easymock.version>
         <jmockit.version>1.49</jmockit.version>
-        <jimf.version>1.1</jimf.version>
     </properties>
 
 </project>
