@@ -9,4 +9,5 @@ This module contains articles about Hamcrest
 - [Hamcrest Object Matchers](https://www.baeldung.com/hamcrest-object-matchers)
 - [Using Hamcrest Number Matchers](https://www.baeldung.com/hamcrest-number-matchers)
 - [Hamcrest Custom Matchers](https://www.baeldung.com/hamcrest-custom-matchers)
-- [Hamcrest Bean Matchers](https://www.baeldung.com/hamcrest-bean-matchers)
+- [Hamcrest Bean Matchers](https://www.baeldung.com/hamcrest-bean-matchers) 
+- [Check Whether a Collection Contains an Element or Not Using Hamcrest](https://www.baeldung.com/java-hamcrest-collection-hasitem)
