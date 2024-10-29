@@ -24,32 +24,39 @@
             <version>${easymock.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring-test.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
-                <configuration>
-                    <argLine>
-                        --add-opens java.base/java.lang=ALL-UNNAMED
-                        -javaagent:${settings.localRepository}/org/jmockit/jmockit/${jmockit.version}/jmockit-${jmockit.version}.jar
-                        -Djdk.attach.allowAttachSelf
-                    </argLine>
-                    <disableXmlReport>true</disableXmlReport>
-                    <excludes>
-                        <exclude>**/testsuite/**/*UnitTest.java</exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+<!--    <build>-->
+<!--        <plugins>-->
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-surefire-plugin</artifactId>-->
+<!--                <version>${maven-surefire-plugin.version}</version>-->
+<!--                <configuration>-->
+<!--                    <argLine>-->
+<!--                        &#45;&#45;add-opens java.base/java.lang=ALL-UNNAMED-->
+<!--                        -javaagent:${settings.localRepository}/org/jmockit/jmockit/${jmockit.version}/jmockit-${jmockit.version}.jar-->
+<!--                        -Djdk.attach.allowAttachSelf-->
+<!--                    </argLine>-->
+<!--                    <disableXmlReport>true</disableXmlReport>-->
+<!--                    <excludes>-->
+<!--                        <exclude>**/testsuite/**/*UnitTest.java</exclude>-->
+<!--                    </excludes>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
+<!--        </plugins>-->
+<!--    </build>-->
 
     <properties>
         <javafaker.version>0.15</javafaker.version>
         <easymock.version>3.5.1</easymock.version>
+        <spring-test.version>5.3.25</spring-test.version>
     </properties>
 
 </project>
