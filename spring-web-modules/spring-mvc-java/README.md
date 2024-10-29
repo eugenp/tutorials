@@ -9,9 +9,6 @@ The "REST With Spring" Classes: https://bit.ly/restwithspring
 ### Relevant Articles: 
 - [Integration Testing in Spring](https://www.baeldung.com/integration-testing-in-spring)
 - [File Upload with Spring MVC](https://www.baeldung.com/spring-file-upload)
-- [web.xml vs Initializer with Spring](https://www.baeldung.com/spring-xml-vs-java-config)
-- [A Java Web Application Without a web.xml](https://www.baeldung.com/java-web-app-without-web-xml)
-- [Accessing Spring MVC Model Objects in JavaScript](https://www.baeldung.com/spring-mvc-model-objects-js)
 - [Spring @PathVariable Annotation](https://www.baeldung.com/spring-pathvariable)
 - [Working with Date Parameters in Spring](https://www.baeldung.com/spring-date-parameters)
-
+- [Converting a Spring MultipartFile to a File](https://www.baeldung.com/spring-multipartfile-to-file)

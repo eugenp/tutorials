@@ -6,7 +6,7 @@
     <groupId>com.baeldung.quarkus</groupId>
     <artifactId>quarkus-elasticsearch</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>elasticsearch</name>
+    <name>quarkus-elasticsearch</name>
 
     <parent>
         <groupId>com.baeldung</groupId>

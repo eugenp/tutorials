@@ -90,15 +90,11 @@
     </build>
 
     <properties>
-        <java.version>17</java.version>
-
         <!-- spring -->
         <org.springframework.version>6.0.6</org.springframework.version>
-
         <!-- jsf -->
         <jakarta.faces-api.version>4.0.0</jakarta.faces-api.version>
         <org.glassfish.jakarta.faces-version>4.0.0</org.glassfish.jakarta.faces-version>
-
         <!-- other -->
         <jakarta.el.version>3.0.3</jakarta.el.version>
         <jakarta.jakartaee-api.version>10.0.0</jakarta.jakartaee-api.version>

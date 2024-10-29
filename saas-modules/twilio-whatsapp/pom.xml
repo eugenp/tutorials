@@ -52,7 +52,6 @@
     </dependencies>
 
     <properties>
-        <java.version>17</java.version>
         <json.version>20240303</json.version>
         <twilio.version>10.4.1</twilio.version>
         <mockserver.version>5.15.0</mockserver.version>
