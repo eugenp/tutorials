@@ -18,7 +18,8 @@ public class FilterNestedListUnitTest {
         Order order1 = new Order("Laptop", 600.0);
         Order order2 = new Order("Phone", 300.0);
         Order order3 = new Order("Nintendo Switch", 510.0);
-        User user1 = new User("Alice", Arrays.asList(order1, order2));
+        Order order4 = new Order("Monitor", 200.0);
+        User user1 = new User("Alice", Arrays.asList(order1, order4));
         User user2 = new User("Bob", Arrays.asList(order3));
         User user3 = new User("Mity", Arrays.asList(order2));
         List<User> users = Arrays.asList(user1, user2, user3);
@@ -44,7 +45,8 @@ public class FilterNestedListUnitTest {
         Order order1 = new Order("Laptop", 600.0);
         Order order2 = new Order("Phone", 300.0);
         Order order3 = new Order("Nintendo Switch", 510.0);
-        User user1 = new User("Alice", Arrays.asList(order1, order2));
+        Order order4 = new Order("Monitor", 200.0);
+        User user1 = new User("Alice", Arrays.asList(order1, order4));
         User user2 = new User("Bob", Arrays.asList(order3));
         User user3 = new User("Mity", Arrays.asList(order2));
         List<User> users = Arrays.asList(user1, user2, user3);
@@ -66,7 +68,8 @@ public class FilterNestedListUnitTest {
         Order order1 = new Order("Laptop", 600.0);
         Order order2 = new Order("Phone", 300.0);
         Order order3 = new Order("Nintendo Switch", 510.0);
-        User user1 = new User("Alice", Arrays.asList(order1, order2));
+        Order order4 = new Order("Monitor", 200.0);
+        User user1 = new User("Alice", Arrays.asList(order1, order4));
         User user2 = new User("Bob", Arrays.asList(order3));
         User user3 = new User("Mity", Arrays.asList(order2));
         List<User> users = Arrays.asList(user1, user2, user3);
@@ -86,7 +89,8 @@ public class FilterNestedListUnitTest {
         Order order1 = new Order("Laptop", 600.0);
         Order order2 = new Order("Phone", 300.0);
         Order order3 = new Order("Nintendo Switch", 510.0);
-        User user1 = new User("Alice", Arrays.asList(order1, order2));
+        Order order4 = new Order("Monitor", 200.0);
+        User user1 = new User("Alice", Arrays.asList(order1, order4));
         User user2 = new User("Bob", Arrays.asList(order3));
         User user3 = new User("Mity", Arrays.asList(order2));
         List<User> users = Arrays.asList(user1, user2, user3);
@@ -109,7 +113,8 @@ public class FilterNestedListUnitTest {
         Order order1 = new Order("Laptop", 600.0);
         Order order2 = new Order("Phone", 300.0);
         Order order3 = new Order("Nintendo Switch", 510.0);
-        User user1 = new User("Alice", Arrays.asList(order1, order2));
+        Order order4 = new Order("Monitor", 200.0);
+        User user1 = new User("Alice", Arrays.asList(order1, order4));
         User user2 = new User("Bob", Arrays.asList(order3));
         User user3 = new User("Mity", Arrays.asList(order2));
         List<User> users = Arrays.asList(user1, user2, user3);
@@ -136,7 +141,8 @@ public class FilterNestedListUnitTest {
         Order order1 = new Order("Laptop", 600.0);
         Order order2 = new Order("Phone", 300.0);
         Order order3 = new Order("Nintendo Switch", 510.0);
-        User user1 = new User("Alice", Arrays.asList(order1, order2));
+        Order order4 = new Order("Monitor", 200.0);
+        User user1 = new User("Alice", Arrays.asList(order1, order4));
         User user2 = new User("Bob", Arrays.asList(order3));
         User user3 = new User("Mity", Arrays.asList(order2));
         List<User> users = Arrays.asList(user1, user2, user3);
