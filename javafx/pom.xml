@@ -23,16 +23,6 @@
             <artifactId>javafx-fxml</artifactId>
             <version>${javafx.version}</version>
         </dependency>
-        <dependency>
-            <groupId>io.vavr</groupId>
-            <artifactId>vavr</artifactId>
-            <version>${vavr.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>${commons-lang.version}</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -51,8 +41,6 @@
     <properties>
         <javafx.version>19</javafx.version>
         <javafx-maven-plugin.version>0.0.8</javafx-maven-plugin.version>
-        <vavr.version>0.9.0</vavr.version>
-        <commons-lang.version>3.14.0</commons-lang.version>
     </properties>
 
 </project>
