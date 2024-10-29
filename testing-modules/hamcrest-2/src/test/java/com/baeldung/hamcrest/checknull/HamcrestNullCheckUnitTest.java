@@ -1,4 +1,4 @@
-package com.baeldung.hamcrest;
+package com.baeldung.hamcrest.checknull;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.notNullValue;
