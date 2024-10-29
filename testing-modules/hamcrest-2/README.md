@@ -7,3 +7,4 @@ This module contains articles about Hamcrest
 - [Check if a Variable Is Null Using Hamcrest](https://www.baeldung.com/java-hamcrest-check-null)
 - [Hamcrest File Matchers](https://www.baeldung.com/hamcrest-file-matchers)
 - [Hamcrest Object Matchers](https://www.baeldung.com/hamcrest-object-matchers)
+- [Using Hamcrest Number Matchers](https://www.baeldung.com/hamcrest-number-matchers)

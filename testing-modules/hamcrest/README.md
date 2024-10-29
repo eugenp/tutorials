@@ -5,7 +5,6 @@ This module contains articles about Hamcrest
 ### Relevant articles
 - [Hamcrest Text Matchers](https://www.baeldung.com/hamcrest-text-matchers)
 - [Hamcrest Bean Matchers](https://www.baeldung.com/hamcrest-bean-matchers)
-- [Using Hamcrest Number Matchers](https://www.baeldung.com/hamcrest-number-matchers)
 - [Hamcrest Common Core Matchers](https://www.baeldung.com/hamcrest-core-matchers)
 - [Hamcrest Custom Matchers](https://www.baeldung.com/hamcrest-custom-matchers)
 - [Difference Between hasItems(), contains(), and containsInAnyOrder() in Hamcrest](https://www.baeldung.com/hamcrest-hasitems-contains-containsinanyorder)
