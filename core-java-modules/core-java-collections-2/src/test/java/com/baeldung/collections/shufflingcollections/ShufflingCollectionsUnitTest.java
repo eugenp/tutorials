@@ -2,7 +2,6 @@ package com.baeldung.collections.shufflingcollections;
 
 import org.junit.Ignore;
 import org.junit.Test;
-import org.junit.jupiter.api.Disabled;
 
 import java.util.*;
 import java.util.stream.Collectors;
