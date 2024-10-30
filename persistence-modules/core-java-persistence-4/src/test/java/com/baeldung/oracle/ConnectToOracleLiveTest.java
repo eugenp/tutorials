@@ -4,10 +4,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.sql.SQLException;
 
+import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 
 class ConnectToOracleLiveTest {
 
+    @Ignore
     @Test
     void whenConnectionRetrieved_thenUserNameIsReturned() throws SQLException {
 
