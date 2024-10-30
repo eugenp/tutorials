@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.3.5'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '3.3.5'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat', version: '3.3.5'
+}
+
+springBoot {
+    mainClass = 'com.baeldung.gradle.ExampleApplication'
+}
+tasks.named("jar") {
+    enabled = false
+}
