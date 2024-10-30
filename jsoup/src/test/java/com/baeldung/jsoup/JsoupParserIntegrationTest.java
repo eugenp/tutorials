@@ -74,7 +74,7 @@ public class JsoupParserIntegrationTest {
         Elements children = firstArticle.children();
         Elements siblings = firstArticle.siblingElements();
 
-        articles.forEach(el -> System.out.println("article: " + el));
+//        articles.forEach(el -> System.out.println("article: " + el));
     }
 
     @Test
