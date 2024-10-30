@@ -64,7 +64,6 @@
     </build>
 
     <properties>
-        <gson.version>2.11.0</gson.version>
         <joda-time.version>2.12.5</joda-time.version>
     </properties>
 
