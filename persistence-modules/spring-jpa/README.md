@@ -1,7 +1,6 @@
 ## Spring JPA (1)
 
 ### Relevant Articles: 
-- [The DAO with JPA and Spring](https://www.baeldung.com/spring-dao-jpa)
 - [JPA Pagination](https://www.baeldung.com/jpa-pagination)
 - [Sorting with JPA](https://www.baeldung.com/jpa-sort)
 - [Self-Contained Testing Using an In-Memory Database](https://www.baeldung.com/spring-jpa-test-in-memory-database)

@@ -1,6 +1,7 @@
 ## Spring JPA (2)
 
 ### Relevant Articles: 
+- [The DAO with JPA and Spring](https://www.baeldung.com/spring-dao-jpa)
 - [Many-To-Many Relationship in JPA](https://www.baeldung.com/jpa-many-to-many)
 - [A Guide to JPA with Spring](https://www.baeldung.com/the-persistence-layer-with-spring-and-jpa)
 - [Transactions with Spring and JPA](https://www.baeldung.com/transaction-configuration-with-jpa-and-spring)
