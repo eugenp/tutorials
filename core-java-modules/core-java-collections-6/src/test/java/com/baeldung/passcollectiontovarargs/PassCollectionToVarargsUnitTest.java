@@ -5,13 +5,13 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class PassCollectionToVarargsUnitTest {
+class PassCollectionToVarargsUnitTest {
 
     private List<String> listOfStrings;
 
     @Test
     void givenList_whenUsingCollectionToArray_thenInvokeVarargsMethod() {
-        method(listOfStrings.toArray(new String[0]));
+        assertDoesNotThrow(() -> method(listOfStrings.toArray(new String[0])));
     }
 
     @Test
@@ -20,14 +20,14 @@ public class PassCollectionToVarargsUnitTest {
         for (int i = 0; i < listOfStrings.size(); i++) {
             array[i] = listOfStrings.get(i);
         }
-        method(array);
+        assertDoesNotThrow(() -> method(array));
     }
 
     @Test
     void givenList_whenUsingStreamAPI_thenInvokeVarargsMethod() {
         String[] array = listOfStrings.stream()
             .toArray(String[]::new);
-        method(array);
+        assertDoesNotThrow(() -> method(array));
     }
 
     @BeforeEach
