@@ -1,4 +1,4 @@
-package com.baeldung.hamcrest;
+package com.baeldung.hamcrest.listcontainitems;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasItem;

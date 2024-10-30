@@ -1,11 +1,17 @@
-package com.baeldung.hamcrest;
+package com.baeldung.hamcrest.objectmatchers;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.emptyOrNullString;
+import static org.hamcrest.Matchers.equalToIgnoringCase;
+import static org.hamcrest.Matchers.hasToString;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.typeCompatibleWith;
+
+import org.junit.Test;
 
 import com.baeldung.hamcrest.objectmatchers.City;
 import com.baeldung.hamcrest.objectmatchers.Location;
-import org.junit.Test;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
 
 public class HamcrestObjectUnitTest {
 

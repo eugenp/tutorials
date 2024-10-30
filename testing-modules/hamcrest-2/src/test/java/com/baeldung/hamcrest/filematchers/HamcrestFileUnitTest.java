@@ -1,13 +1,19 @@
-package com.baeldung.hamcrest;
+package com.baeldung.hamcrest.filematchers;
 
-import org.junit.Test;
-
-import java.io.File;
-
-import static org.hamcrest.io.FileMatchers.*;
+import static org.hamcrest.io.FileMatchers.aFileNamed;
+import static org.hamcrest.io.FileMatchers.aFileWithSize;
+import static org.hamcrest.io.FileMatchers.aReadableFile;
+import static org.hamcrest.io.FileMatchers.aWritableFile;
+import static org.hamcrest.io.FileMatchers.anExistingDirectory;
+import static org.hamcrest.io.FileMatchers.anExistingFile;
+import static org.hamcrest.io.FileMatchers.anExistingFileOrDirectory;
 import static org.hamcrest.number.OrderingComparison.greaterThan;
 import static org.hamcrest.text.IsEqualIgnoringCase.equalToIgnoringCase;
 import static org.junit.Assert.assertThat;
+
+import java.io.File;
+
+import org.junit.Test;
 
 public class HamcrestFileUnitTest {
 
