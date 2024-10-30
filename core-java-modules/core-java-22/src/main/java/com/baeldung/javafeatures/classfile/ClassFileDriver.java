@@ -11,7 +11,7 @@ import java.nio.file.Path;
 public class ClassFileDriver {
     public Path updateClass() throws IOException {
         final String PREFIX = "test_";
-        final Path PATH = Path.of("src/main/java/com/baeldung/javafeatures/classfile/ClassFileExample.class");
+        final Path PATH = Path.of("target/classes/com/baeldung/javafeatures/classfile/ClassFileExample.class");
         ClassFile cf = ClassFile.of();
         ClassModel classModel = cf.parse(PATH);
         byte[] newBytes = cf.build(classModel.thisClass().asSymbol(), classBuilder -> {
