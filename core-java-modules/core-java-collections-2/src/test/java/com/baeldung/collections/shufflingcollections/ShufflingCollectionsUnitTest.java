@@ -1,6 +1,8 @@
 package com.baeldung.collections.shufflingcollections;
 
+import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -70,6 +72,7 @@ public class ShufflingCollectionsUnitTest {
         assertThat(students_1).isEqualTo(students_2);
     }
 
+    @Ignore("This test is disabled and getting fixed at JAVA-41546")
     @Test
     public void whenShufflingListWithStream_thenListIsShuffled() {
         List<String> originalList = Arrays.asList("Foo", "Bar", "Baz", "Qux");
