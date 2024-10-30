@@ -843,6 +843,7 @@
                 <module>timefold-solver</module>
                 <module>vaadin</module>
                 <module>vavr-modules</module>
+                <module>vector-db</module>
                 <module>vertx-modules</module>
                 <module>web-modules</module>
                 <module>webrtc</module>
@@ -1229,6 +1230,7 @@
                 <module>timefold-solver</module>
                 <module>vavr-modules</module>
                 <module>vaadin</module>
+                <module>vector-db</module>
                 <module>vertx-modules</module>
                 <module>web-modules</module>
                 <module>webrtc</module>
