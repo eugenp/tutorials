@@ -9,7 +9,6 @@ This module contains articles about Jackson conversions.
 - [Jackson Streaming API](https://www.baeldung.com/jackson-streaming-api)
 - [Jackson: java.util.LinkedHashMap cannot be cast to X](https://www.baeldung.com/jackson-linkedhashmap-cannot-be-cast)
 - [Deserialize Snake Case to Camel Case With Jackson](https://www.baeldung.com/jackson-deserialize-snake-to-camel-case)
-- [Reading JSON From a URL in Java](https://www.baeldung.com/java-read-json-from-url)
 - [Jackson – Marshall String to JsonNode](https://www.baeldung.com/jackson-json-to-jsonnode)
 - [Jackson – Unmarshall to Collection/Array](https://www.baeldung.com/jackson-collection-array)
 - [Jackson – Decide What Fields Get Serialized/Deserialized](https://www.baeldung.com/jackson-field-serializable-deserializable-or-not)
