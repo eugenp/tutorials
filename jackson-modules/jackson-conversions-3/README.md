@@ -3,4 +3,5 @@
 - [Forcing Jackson to Deserialize to Specific Type](https://www.baeldung.com/java-jackson-deserialize-particular-type)
 - [Jackson – Working With Maps and Nulls](https://www.baeldung.com/jackson-map-null-values-or-null-key)
 - [Deserialize Immutable Objects with Jackson](https://www.baeldung.com/jackson-deserialize-immutable-objects)
+- [Serialize and Deserialize Booleans as Integers With Jackson](https://www.baeldung.com/jackson-booleans-as-integers)
 
