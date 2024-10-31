@@ -10,4 +10,5 @@ This module contains articles about Jackson conversions.
 - [Mapping Nested Values with Jackson](https://www.baeldung.com/jackson-nested-values)
 - [Mapping a Dynamic JSON Object with Jackson](https://www.baeldung.com/jackson-mapping-dynamic-object)
 - [How to Process YAML with Jackson](https://www.baeldung.com/jackson-yaml)
+- [Jackson: java.util.LinkedHashMap cannot be cast to X](https://www.baeldung.com/jackson-linkedhashmap-cannot-be-cast)
 - More articles: [[next -->]](../jackson-conversions-2)

@@ -7,7 +7,6 @@ This module contains articles about Jackson conversions.
 - [Convert XML to JSON Using Jackson](https://www.baeldung.com/jackson-convert-xml-json)
 - [Converting JSON to CSV in Java](https://www.baeldung.com/java-converting-json-to-csv)
 - [Jackson Streaming API](https://www.baeldung.com/jackson-streaming-api)
-- [Jackson: java.util.LinkedHashMap cannot be cast to X](https://www.baeldung.com/jackson-linkedhashmap-cannot-be-cast)
 - [Deserialize Snake Case to Camel Case With Jackson](https://www.baeldung.com/jackson-deserialize-snake-to-camel-case)
 - [Jackson – Marshall String to JsonNode](https://www.baeldung.com/jackson-json-to-jsonnode)
 - [Jackson – Unmarshall to Collection/Array](https://www.baeldung.com/jackson-collection-array)
