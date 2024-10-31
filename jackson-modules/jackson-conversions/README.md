@@ -3,7 +3,6 @@
 This module contains articles about Jackson conversions.
 
 ### Relevant Articles:
-- [Jackson – Unmarshall to Collection/Array](https://www.baeldung.com/jackson-collection-array)
 - [Jackson Date](https://www.baeldung.com/jackson-serialize-dates)
 - [Jackson – Working With Maps and Nulls](https://www.baeldung.com/jackson-map-null-values-or-null-key)
 - [Jackson – Decide What Fields Get Serialized/Deserialized](https://www.baeldung.com/jackson-field-serializable-deserializable-or-not)

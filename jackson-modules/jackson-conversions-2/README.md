@@ -14,4 +14,5 @@ This module contains articles about Jackson conversions.
 - [Serialize and Deserialize Booleans as Integers With Jackson](https://www.baeldung.com/jackson-booleans-as-integers)
 - [Reading JSON From a URL in Java](https://www.baeldung.com/java-read-json-from-url)
 - [Jackson – Marshall String to JsonNode](https://www.baeldung.com/jackson-json-to-jsonnode)
+- [Jackson – Unmarshall to Collection/Array](https://www.baeldung.com/jackson-collection-array)
 - More articles: [[<-- prev]](../jackson-conversions)
