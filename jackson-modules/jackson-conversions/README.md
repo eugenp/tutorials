@@ -8,4 +8,5 @@ This module contains articles about Jackson conversions.
 - [Map Serialization and Deserialization with Jackson](https://www.baeldung.com/jackson-map)
 - [How To Serialize and Deserialize Enums with Jackson](https://www.baeldung.com/jackson-serialize-enums)
 - [Mapping Nested Values with Jackson](https://www.baeldung.com/jackson-nested-values)
+- [Mapping a Dynamic JSON Object with Jackson](https://www.baeldung.com/jackson-mapping-dynamic-object)
 - More articles: [[next -->]](../jackson-conversions-2)
