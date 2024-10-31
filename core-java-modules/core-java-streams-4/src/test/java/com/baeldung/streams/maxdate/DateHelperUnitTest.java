@@ -186,5 +186,13 @@ class DateHelperUnitTest {
         assertEquals(TODAY_LOCAL, DateHelper.findMinDateOfLocalEventsWithComparator(List.of(TODAY_LOCAL_EVENT, TOMORROW_LOCAL_EVENT, NEXT_WEEK_LOCAL_EVENT)));
     }
 
-    
+    @Test
+    void givenEventList_whenFindMaxDateWithCollections_thenReturnMaxDate() {
+        assertEquals(NEXT_WEEK, DateHelper.findMaxDateWithCollections(List.of(TODAYS_EVENT, TOMORROWS_EVENT, NEXT_WEEK_EVENT)));
+    }
+
+    @Test
+    void givenLocalEventList_whenFindMaxLocalDateWithCollections_thenReturnMaxDate() {
+        assertEquals(NEXT_WEEK_LOCAL, DateHelper.findMaxLocalDateWithCollections(List.of(TODAY_LOCAL_EVENT, TOMORROW_LOCAL_EVENT, NEXT_WEEK_LOCAL_EVENT)));
+    }
 }
