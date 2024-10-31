@@ -15,4 +15,5 @@ This module contains articles about Jackson conversions.
 - [Reading JSON From a URL in Java](https://www.baeldung.com/java-read-json-from-url)
 - [Jackson – Marshall String to JsonNode](https://www.baeldung.com/jackson-json-to-jsonnode)
 - [Jackson – Unmarshall to Collection/Array](https://www.baeldung.com/jackson-collection-array)
+- [Jackson – Decide What Fields Get Serialized/Deserialized](https://www.baeldung.com/jackson-field-serializable-deserializable-or-not)
 - More articles: [[<-- prev]](../jackson-conversions)
