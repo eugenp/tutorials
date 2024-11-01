@@ -137,6 +137,7 @@
         <!--<module>spring-boot-persistence-5</module>--> <!-- failing after spring boot upgrade to 3.3.2 -->
         <module>hibernate-annotations-2</module>
         <module>hibernate-reactive</module>
+        <module>my-sql</module>
     </modules>
 
     <properties>
