@@ -1,17 +1,21 @@
 package com.baeldung.kafka.service;
 
+import com.baeldung.kafka.configs.KafkaTopicConfig;
 import com.baeldung.kafka.model.NotificationModel;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 @Service
-@Slf4j
 public class KafkaProducerService {
 
     @Autowired
     private KafkaTemplate<String, NotificationModel> kafkaTemplate;
+
+    private static final Logger log = LoggerFactory.getLogger(KafkaProducerService.class);
 
     public void sendMessage(NotificationModel notificationModel) {
         log.error("original message reached kafka producer service " + notificationModel.getMessage());
