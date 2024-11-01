@@ -1,9 +1,11 @@
 package com.baeldung.streams.maxdate;
 
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class DateHelper {
 
@@ -87,4 +89,21 @@ public class DateHelper {
             .get();
     }
 
+    static Date findMaxDateWithCollections(List<Event> events) {
+        if (events == null || events.isEmpty()) {
+            return null;
+        }
+        return Collections.max(events.stream()
+            .map(Event::getDate)
+            .collect(Collectors.toList()));
+    }
+
+    static LocalDate findMaxLocalDateWithCollections(List<LocalEvent> events) {
+        if (events == null || events.isEmpty()) {
+            return null;
+        }
+        return Collections.max(events.stream()
+            .map(LocalEvent::getDate)
+            .collect(Collectors.toList()));
+    }
 }

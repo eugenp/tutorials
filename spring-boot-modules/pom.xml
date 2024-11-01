@@ -27,7 +27,7 @@
         <module>spring-boot-basic-customization</module>
         <module>spring-boot-basic-customization-2</module>
         <module>spring-boot-bootstrap</module>
-        <!--<module>spring-boot-basic-customization-3</module>--> <!--JAVA-33979-->
+        <module>spring-boot-basic-customization-3</module>
         <module>spring-boot-logging-loki</module>
         <module>spring-boot-caching</module>
         <module>spring-boot-caching-2</module>
