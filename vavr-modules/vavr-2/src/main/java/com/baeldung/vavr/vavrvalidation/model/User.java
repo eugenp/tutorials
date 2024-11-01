@@ -1,4 +1,4 @@
-package com.baeldung.vavrvalidation.model;
+package com.baeldung.vavr.vavrvalidation.model;
 
 public class User {
     private String name;

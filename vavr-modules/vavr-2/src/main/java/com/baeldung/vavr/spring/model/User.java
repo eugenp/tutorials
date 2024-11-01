@@ -1,4 +1,4 @@
-package com.baeldung.vavr;
+package com.baeldung.vavr.spring.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

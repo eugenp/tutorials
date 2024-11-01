@@ -1,9 +1,10 @@
-package com.baeldung.vavrvalidation.validator;
+package com.baeldung.vavr.vavrvalidation.validator;
 
-import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.junit.Assert.assertThat;
+
 import org.junit.Test;
-import com.baeldung.vavrvalidation.validator.UserValidator;
+
 import io.vavr.control.Validation.Invalid;
 import io.vavr.control.Validation.Valid;
 

@@ -1,11 +1,16 @@
-package com.baeldung.vavrvalidation.validator;
+package com.baeldung.vavr.vavrvalidation.validator;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import com.baeldung.vavrvalidation.model.User;
+
+import com.baeldung.vavr.vavrvalidation.model.User;
+
 import io.vavr.collection.Seq;
 import io.vavr.control.Either.Right;
 import io.vavr.control.Validation.Invalid;
