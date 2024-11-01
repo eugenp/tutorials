@@ -21,13 +21,10 @@ import com.baeldung.kafka.model.NotificationModel;
 @Configuration
 public class KafkaConsumerConfig {
 
-    @Value("${spring.kafka.bootstrap-servers}")
-    private String bootstrapAddress;
-
     @Bean
     public ConsumerFactory<String, NotificationModel> consumerFactory() {
         Map<String, Object> config = new HashMap<>();
-        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
+        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "kafka:9092");
         config.put(ConsumerConfig.GROUP_ID_CONFIG, "springConsumerGroup1");
         config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, ErrorHandlingDeserializer.class);
         config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, ErrorHandlingDeserializer.class);

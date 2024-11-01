@@ -11,7 +11,7 @@ public class NotificationModel {
     public NotificationModel() {
     }
 
-    public NotificationModel(@NotNull int userId, @NotNull String message, @NotNull int recipientId) {
+    public NotificationModel(int userId, String message, int recipientId) {
         this.userId = userId;
         this.message = message;
         this.recipientId = recipientId;

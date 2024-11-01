@@ -13,12 +13,10 @@ import java.time.format.DateTimeFormatter;
 @Configuration
 public class ImperativeElasticsearchConfig extends ElasticsearchConfiguration {
 
-    private String elasticsearchUri = "elasticsearch:9200";
-
     @Override
     public ClientConfiguration clientConfiguration() {
         ClientConfiguration clientConfiguration = ClientConfiguration.builder()
-            .connectedTo(elasticsearchUri)
+            .connectedTo("elasticsearch:9200")
             .usingSsl(false)
             .withConnectTimeout(Duration.ofSeconds(30))
             .withSocketTimeout(Duration.ofSeconds(30))
