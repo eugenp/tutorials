@@ -12,6 +12,7 @@ public class KafkaProducerService {
 
     @Autowired
     private KafkaTemplate<String, NotificationModel> kafkaTemplate;
+
     public void sendMessage(NotificationModel notificationModel) {
         log.error("original message reached kafka producer service " + notificationModel.getMessage());
 
