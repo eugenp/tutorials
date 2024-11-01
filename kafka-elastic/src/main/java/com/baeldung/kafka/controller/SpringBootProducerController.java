@@ -14,6 +14,8 @@ public class SpringBootProducerController {
     @Autowired
     KafkaProducerService kafkaProducerService;
 
+    private static final Logger log = LoggerFactory.getLogger(SpringBootProducerController.class);
+
     @GetMapping("/status")
     public String checkMethod() {
         return "working";
@@ -24,6 +26,7 @@ public class SpringBootProducerController {
         try {
             kafkaProducerService.sendMessage(notificationModel);
         } catch (Exception e) {
+            log.error("exception occurred while calling sendMessage ", e);
             return ResponseEntity.internalServerError()
                 .body("Error sending message: " + e.getMessage());
         }

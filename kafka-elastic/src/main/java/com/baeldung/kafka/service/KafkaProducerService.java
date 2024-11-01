@@ -19,7 +19,6 @@ public class KafkaProducerService {
 
     public void sendMessage(NotificationModel notificationModel) {
         log.error("original message reached kafka producer service " + notificationModel.getMessage());
-
         kafkaTemplate.send(KafkaTopicConfig.TOPIC_NAME, notificationModel);
     }
 }

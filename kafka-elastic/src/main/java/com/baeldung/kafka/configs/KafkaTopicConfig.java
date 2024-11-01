@@ -14,7 +14,7 @@ import java.util.Map;
 public class KafkaTopicConfig {
 
     public static final String TOPIC_NAME = "foodsOrder";
-    
+
     @Value(value = "${spring.kafka.bootstrap-servers}")
     private String bootstrapAddress;
 

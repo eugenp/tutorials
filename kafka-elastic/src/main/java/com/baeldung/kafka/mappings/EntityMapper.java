@@ -6,7 +6,6 @@ import com.baeldung.kafka.model.NotificationModel;
 public class EntityMapper {
 
     public static NotificationEntity mapToEntity(NotificationModel notificationModel) {
-
         NotificationEntity notificationEntity = new NotificationEntity();
         notificationEntity.setMessage(notificationModel.getMessage());
         return notificationEntity;
