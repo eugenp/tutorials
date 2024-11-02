@@ -28,6 +28,7 @@
         <module>hamcrest-2</module>
         <module>instancio</module>
         <!-- <module>jmeter</module> --> <!-- Migrated to heavy profile -->
+        <module>jmeter-2</module>
         <module>jqwik</module>
         <module>junit-4</module>
         <module>junit-5-advanced</module>
@@ -40,7 +41,7 @@
         <module>load-testing-comparison</module>
         <module>mockito</module>
         <module>mockito-simple</module>
-        <!-- <module>mocks</module>--> <!-- failing after upgrading to jdk17 -->
+        <module>mocks</module>
         <module>mocks-2</module>
         <module>mockserver</module>
         <module>parallel-tests-junit</module>

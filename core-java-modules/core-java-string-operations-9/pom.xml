@@ -45,11 +45,6 @@
             <version>${apache.commons.collection.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-text</artifactId>
-            <version>${commons-text.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.unbescape</groupId>
             <artifactId>unbescape</artifactId>
             <version>1.1.6.RELEASE</version>

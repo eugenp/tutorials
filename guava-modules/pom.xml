@@ -36,4 +36,8 @@
         </dependency>
     </dependencies>
 
+    <properties>
+        <java-hamcrest.version>2.0.0.0</java-hamcrest.version>
+    </properties>
+
 </project>

@@ -8,6 +8,9 @@
     <artifactId>parent-modules</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <name>parent-modules</name>
+    <modules>
+        <module>core-java-modules/core-java-concurrency-advanced-6</module>
+    </modules>
 
     <packaging>pom</packaging>
 
@@ -595,11 +598,10 @@
                 <!--<module>spring-integration</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-jinq</module>--><!--disabling the jinq modules, as the default build profile is failing due to bad mv files. Please refer: JAVA-31341-->
                 <module>spring-security-modules/spring-security-legacy-oidc</module>
-                <!--<module>static-analysis</module> - requires additional configuration to be compiled due to the JVM strong encapsulation -->
+                <!--<module>static-analysis-modules</module> - requires additional configuration to be compiled due to the JVM strong encapsulation -->
                 <!--<module>tablesaw</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-swagger-codegen-modules/openapi-custom-generator</module>
                 <module>spring-swagger-codegen-modules/openapi-custom-generator-api-client</module> --> <!-- cannot add the individual modules here because the order is not guaranteed -->
-                <module>vavr-modules/vavr</module>
             </modules>
 
             <properties>
@@ -783,7 +785,6 @@
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
                 <module>spring-ai</module>
-                <module>spring-ai-2</module>
                 <module>spring-aop-2</module>
                 <module>spring-aop</module>
                 <module>spring-batch</module>
@@ -841,6 +842,7 @@
                 <module>timefold-solver</module>
                 <module>vaadin</module>
                 <module>vavr-modules</module>
+                <module>vector-db</module>
                 <module>vertx-modules</module>
                 <module>web-modules</module>
                 <module>webrtc</module>
@@ -850,7 +852,7 @@
                 <module>xstream</module>
                 <module>libraries-data-io-2</module>
                 <module>spring-5-rest-docs</module>
-                <!-- <module>maven-modules</module> --> <!--JAVA 37707-->
+                <module>maven-modules</module>
             </modules>
 
             <properties>
@@ -858,6 +860,82 @@
                 <java.version>21</java.version>
                 <maven.compiler.source>21</maven.compiler.source>
                 <maven.compiler.target>21</maven.compiler.target>
+            </properties>
+
+        </profile>
+
+        <profile>
+            <id>profile-jdk22</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <forkCount>3</forkCount>
+                            <reuseForks>true</reuseForks>
+                            <includes>
+                                <include>SpringContextTest</include>
+                                <include>**/*UnitTest</include>
+                                <include>**/*IntegrationTest.java</include>
+                                <include>**/*IntTest.java</include>
+                                <include>**/*LongRunningUnitTest.java</include>
+                                <include>**/*ManualTest.java</include>
+                                <include>**/JdbcTest.java</include>
+                                <include>**/*LiveTest.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+
+            <modules>
+                <module>core-java-modules/core-java-22</module>
+            </modules>
+
+            <properties>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <java.version>22</java.version>
+                <maven.compiler.source>22</maven.compiler.source>
+                <maven.compiler.target>22</maven.compiler.target>
+            </properties>
+
+        </profile>
+
+        <profile>
+            <id>profile-jdk23</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <forkCount>3</forkCount>
+                            <reuseForks>true</reuseForks>
+                            <includes>
+                                <include>SpringContextTest</include>
+                                <include>**/*UnitTest</include>
+                                <include>**/*IntegrationTest.java</include>
+                                <include>**/*IntTest.java</include>
+                                <include>**/*LongRunningUnitTest.java</include>
+                                <include>**/*ManualTest.java</include>
+                                <include>**/JdbcTest.java</include>
+                                <include>**/*LiveTest.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+
+            <modules>
+                <module>core-java-modules/core-java-23</module>
+            </modules>
+
+            <properties>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <java.version>23</java.version>
+                <maven.compiler.source>23</maven.compiler.source>
+                <maven.compiler.target>23</maven.compiler.target>
             </properties>
 
         </profile>
@@ -912,11 +990,10 @@
                 <!--<module>spring-integration</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-jinq</module>--><!--disabling the jinq modules, as the default build profile is failing due to bad mv files. Please refer: JAVA-31341-->
                 <module>spring-security-modules/spring-security-legacy-oidc</module>
-                <!--<module>static-analysis</module> - requires additional configuration to be compiled due to the JVM strong encapsulation -->
+                <!--<module>static-analysis-modules</module> - requires additional configuration to be compiled due to the JVM strong encapsulation -->
                 <!--<module>tablesaw</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-swagger-codegen-modules/openapi-custom-generator</module>
                 <module>spring-swagger-codegen-modules/openapi-custom-generator-api-client</module> --> <!-- cannot add the individual modules here because the order is not guaranteed -->
-                <module>vavr-modules/vavr</module>
             </modules>
 
             <properties>
@@ -989,7 +1066,7 @@
                 <module>drools</module>
                 <module>dubbo</module>
                 <module>feign</module>
-                <!-- <module>gcp-firebase</module> --> <!-- BAEL-8475 -->
+                <module>gcp-firebase</module>
                 <module>geotools</module>
                 <module>google-auto-project</module>
                 <module>google-cloud</module>
@@ -1094,7 +1171,6 @@
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
                 <module>spring-ai</module>
-                <module>spring-ai-2</module>
                 <module>spring-aop-2</module>
                 <module>spring-aop</module>
                 <module>spring-batch</module>
@@ -1152,6 +1228,7 @@
                 <module>timefold-solver</module>
                 <module>vavr-modules</module>
                 <module>vaadin</module>
+                <module>vector-db</module>
                 <module>vertx-modules</module>
                 <module>web-modules</module>
                 <module>webrtc</module>
@@ -1161,7 +1238,7 @@
                 <module>xstream</module>
                 <module>libraries-data-io-2</module>
                 <module>spring-5-rest-docs</module>
-                <!-- <module>maven-modules</module> --> <!--JAVA 37707-->
+                <module>maven-modules</module>
             </modules>
 
             <properties>
