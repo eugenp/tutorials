@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.*;
 import com.baeldung.kafka.model.NotificationModel;
 import com.baeldung.kafka.service.KafkaProducerService;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @RestController
 @RequestMapping("/api/v1")
 public class SpringBootProducerController {
