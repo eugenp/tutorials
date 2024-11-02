@@ -1,5 +1,6 @@
 package com.baeldung.kafka.service;
 
+import com.baeldung.kafka.configs.KafkaTopicConfig;
 import com.baeldung.kafka.model.NotificationModel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

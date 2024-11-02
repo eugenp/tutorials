@@ -1,14 +1,16 @@
 package com.baeldung.kafka.service;
 
 import com.baeldung.kafka.entity.NotificationEntity;
-import org.junit.jupiter.api.BeforeEach;
+
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
 
 import static org.mockito.Mockito.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.mockito.MockitoAnnotations;
 
 class ElasticSearchServiceTest {
 
@@ -17,6 +19,11 @@ class ElasticSearchServiceTest {
 
     @InjectMocks
     private ElasticsearchService elasticsearchService;
+
+    @BeforeEach
+    void setUp() {
+        MockitoAnnotations.openMocks(this);
+    }
 
     @Test
     void testSaveData() {
