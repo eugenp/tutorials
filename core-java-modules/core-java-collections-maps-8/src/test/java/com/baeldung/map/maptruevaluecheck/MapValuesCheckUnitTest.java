@@ -1,4 +1,4 @@
-package com.baeldung.map.maptruevaluecheckertest;
+package com.baeldung.map.maptruevaluecheck;
 
 import org.junit.jupiter.api.Test;
 import java.util.Map;

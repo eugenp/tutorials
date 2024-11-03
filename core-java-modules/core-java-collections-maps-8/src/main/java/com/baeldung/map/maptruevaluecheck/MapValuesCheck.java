@@ -1,8 +1,8 @@
-package com.baeldung.map.maptruevaluechecker;
+package com.baeldung.map.maptruevaluecheck;
 
 import java.util.Map;
 
-public class MapValueCheck {
+public class MapValuesCheck {
 
     public static boolean areAllValuesTrueWithReduce(Map<String, Boolean> map) {
         return map.values().stream().reduce(true, Boolean::logicalAnd);
