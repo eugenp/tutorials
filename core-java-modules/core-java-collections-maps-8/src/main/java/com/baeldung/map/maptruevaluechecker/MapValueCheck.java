@@ -1,3 +1,5 @@
+package com.baeldung.map.maptruevaluechecker;
+
 import java.util.Map;
 
 public class MapValueCheck {
