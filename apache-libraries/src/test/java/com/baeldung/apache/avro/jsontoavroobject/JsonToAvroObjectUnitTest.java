@@ -58,7 +58,7 @@ public class JsonToAvroObjectUnitTest {
     }
 
     @Test
-    void whenSerializingAvroRecord_thenProducesByteArray() throws IOException {
+    public void whenSerializingAvroRecord_thenProducesByteArray() throws IOException {
         JsonToAvroConverter converter = new JsonToAvroConverter();
         GenericRecord record = converter.convertJsonToAvro(json);
 
