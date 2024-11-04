@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '3.0.6'
+    id 'org.springframework.boot' version '3.3.5'
     id 'io.spring.dependency-management' version '1.1.0'
 }
 
@@ -31,4 +31,12 @@ tasks.named("bootJar"){
 
 tasks.named("bootBuildImage") {
     imageName = 'bael-6094:latest'
+}
+
+springBoot {
+    mainClass = 'com.baeldung.gradle.SpringBootGradle2Application'
+}
+
+tasks.named("jar") {
+    enabled = false
 }
