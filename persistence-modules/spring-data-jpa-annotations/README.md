@@ -4,7 +4,6 @@ This module contains articles about annotations used in Spring Data JPA
 
 ### Relevant articles
 
-- [DDD Aggregates and @DomainEvents](https://www.baeldung.com/spring-data-ddd)
 - [Jpa @Embedded and @Embeddable](https://www.baeldung.com/jpa-embedded-embeddable)
 - [Spring JPA @Embedded and @EmbeddedId](https://www.baeldung.com/spring-jpa-embedded-method-parameters)
 - [Programmatic Transaction Management in Spring](https://www.baeldung.com/spring-programmatic-transaction-management)
