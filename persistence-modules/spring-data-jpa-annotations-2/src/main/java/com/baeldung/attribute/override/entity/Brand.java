@@ -1,8 +1,9 @@
 package com.baeldung.attribute.override.entity;
 
+import java.time.LocalDate;
+
 import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
-import java.time.LocalDate;
 
 @Embeddable
 public class Brand {

@@ -1,10 +1,7 @@
 package com.baeldung.attribute.override;
 
-import com.baeldung.Application;
-import com.baeldung.attribute.override.entity.Address;
-import com.baeldung.attribute.override.entity.Brand;
-import com.baeldung.attribute.override.entity.Car;
-import com.baeldung.attribute.override.repository.CarRepository;
+import java.time.LocalDate;
+
 import org.assertj.core.api.Assertions;
 import org.jetbrains.annotations.NotNull;
 import org.junit.Test;
@@ -14,7 +11,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDate;
+import com.baeldung.attribute.override.entity.Address;
+import com.baeldung.attribute.override.entity.Brand;
+import com.baeldung.attribute.override.entity.Car;
+import com.baeldung.attribute.override.repository.CarRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = { Application.class })
