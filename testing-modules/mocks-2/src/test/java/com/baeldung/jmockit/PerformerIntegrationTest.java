@@ -1,7 +1,12 @@
 package com.baeldung.jmockit;
 
-import mockit.*;
 import org.junit.Test;
+
+import mockit.Expectations;
+import mockit.Injectable;
+import mockit.Mocked;
+import mockit.Tested;
+import mockit.Verifications;
 
 public class PerformerIntegrationTest {
 

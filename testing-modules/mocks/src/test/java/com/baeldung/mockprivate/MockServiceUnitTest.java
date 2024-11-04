@@ -1,15 +1,15 @@
 package com.baeldung.mockprivate;
 
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+import java.lang.reflect.Field;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.platform.commons.util.ReflectionUtils;
 import org.springframework.test.util.ReflectionTestUtils;
-
-import java.lang.reflect.Field;
-
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 class MockServiceUnitTest {
 

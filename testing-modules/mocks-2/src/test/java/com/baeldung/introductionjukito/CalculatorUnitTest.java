@@ -1,11 +1,12 @@
 package com.baeldung.introductionjukito;
 
+import static org.junit.Assert.assertEquals;
+
 import org.jukito.All;
 import org.jukito.JukitoModule;
 import org.jukito.JukitoRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import static org.junit.Assert.*;
 
 @RunWith(JukitoRunner.class)
 public class CalculatorUnitTest {
