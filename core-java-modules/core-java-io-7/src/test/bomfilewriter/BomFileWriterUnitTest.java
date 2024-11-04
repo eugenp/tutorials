@@ -14,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class BomFileWriterUnitTest {
     private static final String TEST_CONTENT = "This is the content of the file.";
     private static final byte[] UTF8_BOM = {(byte) 0xEF, (byte) 0xBB, (byte) 0xBF};
+    private static final String UTF8_BOM_UNICODE = "\uFEFF";
     private static final String FILE_PATH_OUTPUT_STREAM = "output_with_bom_output_stream.txt";
     private static final String FILE_PATH_BUFFERED_WRITER = "output_with_bom_buffered.txt";
     private static final String FILE_PATH_PRINT_WRITER = "output_with_bom_print_writer.txt";
@@ -27,7 +28,7 @@ public class BomFileWriterUnitTest {
         }
 
         String result = Files.readString(Path.of(FILE_PATH_OUTPUT_STREAM), StandardCharsets.UTF_8);
-        assertTrue(result.startsWith("\uFEFF"));
+        assertTrue(result.startsWith(UTF8_BOM_UNICODE));
         assertTrue(result.contains(TEST_CONTENT));
     }
 
@@ -37,12 +38,12 @@ public class BomFileWriterUnitTest {
                 new FileOutputStream(FILE_PATH_BUFFERED_WRITER), StandardCharsets.UTF_8);
              BufferedWriter writer = new BufferedWriter(osw)) {
 
-            writer.write("\uFEFF");
+            writer.write(UTF8_BOM_UNICODE);
             writer.write(TEST_CONTENT);
         }
 
         String result = Files.readString(Path.of(FILE_PATH_BUFFERED_WRITER), StandardCharsets.UTF_8);
-        assertTrue(result.startsWith("\uFEFF"));
+        assertTrue(result.startsWith(UTF8_BOM_UNICODE));
         assertTrue(result.contains(TEST_CONTENT));
     }
 
@@ -50,12 +51,12 @@ public class BomFileWriterUnitTest {
     public void givenText_whenUsingPrintWriter_thenBOMAdded() throws IOException {
         try (PrintWriter writer = new PrintWriter(
                 new OutputStreamWriter(new FileOutputStream(FILE_PATH_PRINT_WRITER), StandardCharsets.UTF_8))) {
-            writer.write("\uFEFF");
+            writer.write(UTF8_BOM_UNICODE);
             writer.println(TEST_CONTENT);
         }
 
         String result = Files.readString(Path.of(FILE_PATH_PRINT_WRITER), StandardCharsets.UTF_8);
-        assertTrue(result.startsWith("\uFEFF"));
+        assertTrue(result.startsWith(UTF8_BOM_UNICODE));
         assertTrue(result.contains(TEST_CONTENT));
     }
 
@@ -65,7 +66,7 @@ public class BomFileWriterUnitTest {
         FileUtils.writeByteArrayToFile(new File(FILE_PATH_COMMONS_IO), bomAndContent);
 
         String result = FileUtils.readFileToString(new File(FILE_PATH_COMMONS_IO), StandardCharsets.UTF_8);
-        assertTrue(result.startsWith("\uFEFF"));
+        assertTrue(result.startsWith(UTF8_BOM_UNICODE));
         assertTrue(result.contains(TEST_CONTENT));
     }
 }
