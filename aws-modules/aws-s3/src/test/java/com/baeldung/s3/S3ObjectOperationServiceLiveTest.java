@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -24,6 +25,7 @@ import software.amazon.awssdk.auth.credentials.AwsCredentials;
 import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.s3.S3Client;
+import software.amazon.awssdk.services.s3.model.HeadObjectResponse;
 import software.amazon.awssdk.services.s3.model.NoSuchKeyException;
 
 @TestInstance(Lifecycle.PER_CLASS)
@@ -68,6 +70,24 @@ class S3ObjectOperationServiceLiveTest {
         boolean isObjectSaved = objectExists(DEFAULT_BUCKET_NAME, fileToUpload.getName());
         assertThat(isObjectSaved)
             .isTrue();
+    }
+
+    @Test
+    void whenUploadCalledWithMetadata_thenFileAndMetadataSavedToBucket() throws IOException {
+        String metadataKey = "company";
+        String metadataValue = "Baeldung";
+        Map<String, String> metadata = Map.of(metadataKey, metadataValue);
+        File fileToUpload = FileGeneratorUtil.generate();
+
+        s3ObjectOperationService.upload(DEFAULT_BUCKET_NAME, fileToUpload, metadata);
+
+        HeadObjectResponse headObjectResponse = s3Client.headObject(request ->
+            request
+                .bucket(DEFAULT_BUCKET_NAME)
+                .key(fileToUpload.getName()));
+        Map<String, String> retreivedMetadata = headObjectResponse.metadata();
+        assertThat(retreivedMetadata.get(metadataKey))
+            .isEqualTo(metadataValue);
     }
 
     @Test

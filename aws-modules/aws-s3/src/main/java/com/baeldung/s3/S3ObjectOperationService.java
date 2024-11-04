@@ -3,6 +3,7 @@ package com.baeldung.s3;
 import java.io.File;
 import java.nio.file.Path;
 import java.util.List;
+import java.util.Map;
 
 import software.amazon.awssdk.core.sync.ResponseTransformer;
 import software.amazon.awssdk.services.s3.S3Client;
@@ -17,11 +18,16 @@ class S3ObjectOperationService {
     }
 
     public void upload(String bucketName, File file) {
+        upload(bucketName, file, null);
+    }
+
+    public void upload(String bucketName, File file, Map<String, String> metadata) {
         s3Client
             .putObject(request -> 
                 request
                     .bucket(bucketName)
                     .key(file.getName())
+                    .metadata(metadata)
                     .ifNoneMatch("*"), 
                 file.toPath());
     }
