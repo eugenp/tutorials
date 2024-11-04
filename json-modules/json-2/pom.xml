@@ -253,7 +253,6 @@
         <jsonld-java.version>0.13.0</jsonld-java.version>
         <jsonschema-generator.version>4.31.1</jsonschema-generator.version>
         <jakarta.validation.version>3.0.2</jakarta.validation.version>
-        <javax.version>1.1.2</javax.version>
         <jsonb-api.version>1.0</jsonb-api.version>
         <yasson.version>1.0.1</yasson.version>
     </properties>

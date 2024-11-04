@@ -1,0 +1,24 @@
+{
+  "name": "flot.tooltip",
+  "version": "0.8.4",
+  "main": "js/jquery.flot.tooltip.js",
+  "ignore": [
+    ".gitignore",
+    "Gruntfile.js",
+    "README.md",
+    "package.json",
+    "examples",
+    "js/old"
+  ],
+  "homepage": "https://github.com/krzysu/flot.tooltip",
+  "_release": "0.8.4",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.8.4",
+    "commit": "312a7570f6dfeff00d9c0ce6f6263160b84ee652"
+  },
+  "_source": "git://github.com/krzysu/flot.tooltip.git",
+  "_target": "~0.8.4",
+  "_originalSource": "flot.tooltip",
+  "_direct": true
+}

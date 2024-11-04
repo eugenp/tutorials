@@ -9,4 +9,5 @@
 - [Introduction to Apache BVal](https://www.baeldung.com/apache-bval)
 - [Building a Microservice with Apache Meecrowave](https://www.baeldung.com/apache-meecrowave)
 - [A Quick Guide to Apache Geode](https://www.baeldung.com/apache-geode)
+- [Convert Avro File to JSON File in Java](https://www.baeldung.com/java-avro-json)
 - More articles: [[<-- prev]](../apache-libraries)

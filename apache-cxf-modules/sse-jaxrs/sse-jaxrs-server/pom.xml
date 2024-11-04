@@ -81,7 +81,6 @@
         <liberty-maven-plugin.version>2.4.2</liberty-maven-plugin.version>
         <failOnMissingWebXml>false</failOnMissingWebXml>
         <openliberty-version>18.0.0.2</openliberty-version>
-        <jakarta-ws.version>3.1.0</jakarta-ws.version>
         <jakarta-cdi-api>4.0.1</jakarta-cdi-api>
         <bind-api.version>1.0</bind-api.version>
         <maven-war-plugin.version>3.3.2</maven-war-plugin.version>

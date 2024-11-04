@@ -16,12 +16,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.github.stefanbirkner</groupId>
-            <artifactId>system-lambda</artifactId>
-            <version>${system-lambda.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.jmockit</groupId>
             <artifactId>jmockit</artifactId>
             <version>${jmockit.version}</version>
@@ -42,12 +36,6 @@
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-runner</artifactId>
-            <version>${junit-platform.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-launcher</artifactId>
             <version>${junit-platform.version}</version>
             <scope>test</scope>
         </dependency>
@@ -80,7 +68,6 @@
     </build>
 
     <properties>
-        <system-lambda.version>1.2.1</system-lambda.version>
         <jmockit.version>1.49</jmockit.version>
         <junit-platform.version>1.10.1</junit-platform.version>
     </properties>
