@@ -15,7 +15,7 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
-public class AuthorizationServiceTest {
+public class AuthorizationServiceUnitTest {
 
     @Mock
     private AuthorizationService authorizationService;
