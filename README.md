@@ -1,3 +1,5 @@
+[![Open in Codeanywhere](https://img.shields.io/badge/Open%20in-Codeanywhere-7f3f97)](https://app.codeanywhere.com/#https://github.com/eugenp/tutorials/)
+
 # Cloning the repository
 
 If you are getting an error while cloning the repository, try running:
