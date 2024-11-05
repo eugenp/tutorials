@@ -3,7 +3,6 @@ package com.baeldung.quarkus;
 import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
-import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
@@ -15,9 +14,9 @@ import java.util.UUID;
 public class MyFunctionsUnitTest {
 
     @Test
-    @Ignore
     public void givenFunctionAPI_whenCallWithoutBody_thenShouldReturnDefault() {
         given()
+            .contentType(ContentType.JSON)
             .post("/GreetUser")
             .then()
             .statusCode(200)
