@@ -85,4 +85,25 @@ public class Java8MaxMinUnitTest {
         assertEquals(minValue, expectedMinValue);
         assertEquals(minIndex, expectedMinIndex);
     }
+
+    @Test
+    public void givenIntegerList_whenGetMinAbsolute_thenReturnMinAbsolute() {
+        List<Integer> numbers = Arrays.asList(-10, 3, -2, 8, 7);
+        int absMin = numbers.stream()
+            .min(Comparator.comparingInt(Math::abs))
+            .orElseThrow(NoSuchElementException::new);
+
+        assertEquals(-2, absMin);
+    }
+
+    @Test
+    public void givenIntegerList_whenGetMaxAbsolute_thenReturnMaxAbsolute() {
+        List<Integer> numbers = Arrays.asList(-10, 3, -2, 8, 7);
+        int absMax = numbers.stream()
+            .max(Comparator.comparingInt(Math::abs))
+            .orElseThrow(NoSuchElementException::new);
+
+        assertEquals(-10, absMax);
+    }
+
 }
