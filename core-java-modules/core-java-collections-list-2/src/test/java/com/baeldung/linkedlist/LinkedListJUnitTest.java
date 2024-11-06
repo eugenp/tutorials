@@ -1,4 +1,4 @@
-package com.baeldung.java.list;
+package com.baeldung.linkedlist;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
