@@ -1,9 +1,10 @@
 package com.baeldung.requesttimeout.domain;
 
-import com.google.common.base.Stopwatch;
+import static java.util.concurrent.TimeUnit.SECONDS;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import static java.util.concurrent.TimeUnit.SECONDS;
+import com.google.common.base.Stopwatch;
 
 public interface BookRepository extends JpaRepository<Book, String> {
 
