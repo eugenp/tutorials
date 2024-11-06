@@ -1,4 +1,4 @@
-package com.baeldung.java.list;
+package com.baeldung.linkedlist;
 
 import java.util.LinkedList;
 import java.util.ArrayList; 
