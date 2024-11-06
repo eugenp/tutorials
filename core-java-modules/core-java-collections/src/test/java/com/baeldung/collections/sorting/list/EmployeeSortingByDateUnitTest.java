@@ -1,4 +1,4 @@
-package com.baeldung.collections.sorting;
+package com.baeldung.collections.sorting.list;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;

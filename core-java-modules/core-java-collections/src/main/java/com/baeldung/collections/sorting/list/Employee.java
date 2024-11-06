@@ -1,4 +1,4 @@
-package com.baeldung.collections.sorting;
+package com.baeldung.collections.sorting.list;
 
 import java.util.Date;
 
