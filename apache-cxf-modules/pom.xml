@@ -37,6 +37,7 @@
 
     <properties>
         <cxf.version>4.0.0</cxf.version>
+        <jakarta-ws.version>3.1.0</jakarta-ws.version>
     </properties>
 
 </project>

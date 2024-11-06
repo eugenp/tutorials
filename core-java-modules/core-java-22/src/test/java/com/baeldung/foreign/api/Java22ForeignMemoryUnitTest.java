@@ -15,7 +15,7 @@ import java.nio.ByteBuffer;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ForeignMemoryUnitTest {
+public class Java22ForeignMemoryUnitTest {
 
     @Test
     void whenGlobalArenaClosed_thenThrowsException() {

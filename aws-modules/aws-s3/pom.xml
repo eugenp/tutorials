@@ -18,20 +18,8 @@
         <dependency>
             <groupId>software.amazon.awssdk</groupId>
             <artifactId>s3</artifactId>
-            <version>${aws-java-sdk-v2.version}</version>
+            <version>${amazon-s3.version}</version>
         </dependency>
-        <dependency>
-            <groupId>software.amazon.awssdk</groupId>
-            <artifactId>url-connection-client</artifactId>
-            <version>${aws.java.sdk.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>${commons-io.version}</version>
-        </dependency>
-        <!-- JetS3t -->
         <dependency>
             <groupId>org.lucee</groupId>
             <artifactId>jets3t</artifactId>
@@ -42,7 +30,14 @@
             <artifactId>commons-codec</artifactId>
             <version>${commons-codec.version}</version>
         </dependency>
-        <!-- adobe s3mock -->
+
+        <!-- Test dependencies -->
+        <dependency>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>url-connection-client</artifactId>
+            <version>${amazon-s3.version}</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>com.adobe.testing</groupId>
             <artifactId>s3mock</artifactId>
@@ -61,10 +56,18 @@
             <version>${org.testcontainers.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>localstack</artifactId>
+            <version>${testcontainers-localstack.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <properties>
-        <aws.java.sdk.version>2.20.52</aws.java.sdk.version>
+        <java.version>21</java.version>
+        <amazon-s3.version>2.29.0</amazon-s3.version>
+        <testcontainers-localstack.version>1.20.3</testcontainers-localstack.version>
         <com.adobe.testing.version>3.3.0</com.adobe.testing.version>
         <org.testcontainers.version>1.19.4</org.testcontainers.version>
         <commons-codec.version>1.10.L001</commons-codec.version>

@@ -78,7 +78,17 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-core</artifactId>
             <version>${logback-core.version}</version>
-        </dependency>        
+        </dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-core</artifactId>
+            <version>${jmh.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-generator-annprocess</artifactId>
+            <version>${jmh.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -90,7 +100,8 @@
         <jxl.version>2.6.12</jxl.version>
         <poitl.version>1.12.2</poitl.version>
         <logback-classic.version>1.5.6</logback-classic.version>
-        <logback-core.version>1.5.6</logback-core.version>        
+        <logback-core.version>1.5.6</logback-core.version>
+        <jmh.version>1.37</jmh.version>
     </properties>
 
 </project>
