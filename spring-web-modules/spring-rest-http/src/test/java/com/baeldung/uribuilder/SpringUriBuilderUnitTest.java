@@ -1,12 +1,12 @@
 package com.baeldung.uribuilder;
 
-import org.junit.Test;
-import org.springframework.web.util.UriComponents;
-import org.springframework.web.util.UriComponentsBuilder;
+import static org.junit.Assert.assertEquals;
 
 import java.util.Collections;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
 
 public class SpringUriBuilderUnitTest {
 

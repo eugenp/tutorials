@@ -14,4 +14,5 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Using JSON Patch in Spring REST APIs](https://www.baeldung.com/spring-rest-json-patch)
 - [OpenAPI JSON Objects as Query Parameters](https://www.baeldung.com/openapi-json-query-parameters)
 - [Dates in OpenAPI Files](https://www.baeldung.com/openapi-dates)
+- [Guide to UriComponentsBuilder in Spring](https://www.baeldung.com/spring-uricomponentsbuilder)
 - More articles: [[next -->]](../spring-rest-http-2)
