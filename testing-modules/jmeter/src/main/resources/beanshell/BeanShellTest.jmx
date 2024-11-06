@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan">
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group">
+        <intProp name="ThreadGroup.num_threads">3</intProp>
+        <intProp name="ThreadGroup.ramp_time">1</intProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <stringProp name="LoopController.loops">10</stringProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="BeanShell PreProcessor">
+          <stringProp name="filename"></stringProp>
+          <stringProp name="parameters"></stringProp>
+          <boolProp name="resetInterpreter">false</boolProp>
+          <stringProp name="script">random = new Random();
+
+key = &quot;k&quot;+random.nextInt();
+value = random.nextInt();
+
+vars.put(&quot;base-api&quot;, &quot;http://localhost:8080/api&quot;);
+vars.put(&quot;key&quot;, key);
+vars.putObject(&quot;value&quot;, value);
+
+vars.putObject(&quot;summary-iterations&quot;, 5)</stringProp>
+        </BeanShellPreProcessor>
+        <hashTree/>
+        <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
+          <stringProp name="BeanShellSampler.query">import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.ContentType;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
+import org.apache.http.entity.StringEntity;
+
+url = vars.get(&quot;base-api&quot;);
+json = String.format(&quot;{\&quot;key\&quot;: \&quot;%s\&quot;, \&quot;value\&quot;: %s}&quot;, new Object[]{ vars.get(&quot;key&quot;), vars.get(&quot;value&quot;) });
+
+client = HttpClients.createDefault();
+body = new StringEntity(json, ContentType.APPLICATION_JSON);
+
+post = new HttpPost(url);
+post.setEntity(body);
+
+response = client.execute(post);
+
+ResponseCode = response.getStatusLine().getStatusCode();
+ResponseMessage = EntityUtils.toString(response.getEntity());
+
+response.close();
+client.close();
+
+return json;</stringProp>
+        </BeanShellSampler>
+        <hashTree/>
+        <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
+          <boolProp name="resetInterpreter">false</boolProp>
+          <stringProp name="parameters"></stringProp>
+          <stringProp name="filename"></stringProp>
+          <stringProp name="script">import java.util.Map.Entry;
+
+incrementVar(name, increment) {
+	value = (Long) vars.getObject(name);
+	if (value == null) value = 0l;
+
+	value += increment;
+	vars.putObject(name, value);
+	log.info(&quot;{}: {}&quot;, name, value);
+}
+
+incrementVar(&quot;elapsed-time-total&quot;, prev.getTime());
+incrementVar(&quot;latency-total&quot;, prev.getLatency());
+incrementVar(&quot;bytes-received-total&quot;, prev.getResponseMessage().getBytes().length);
+incrementVar(&quot;bytes-sent-total&quot;, prev.getBytesAsLong());
+incrementVar(&quot;error-count-total&quot;, prev.getErrorCount());
+</stringProp>
+        </BeanShellPostProcessor>
+        <hashTree/>
+        <BeanShellListener guiclass="TestBeanGUI" testclass="BeanShellListener" testname="BeanShell Listener">
+          <stringProp name="filename"></stringProp>
+          <stringProp name="parameters"></stringProp>
+          <boolProp name="resetInterpreter">false</boolProp>
+          <stringProp name="script">println(writer, message, arg1) {
+	writer.println(String.format(message, new Object[] {arg1}));
+}
+
+thread = ctx.getThread();
+threadGroup = ctx.getThreadGroup();
+
+request = prev.getResponseDataAsString();
+response = prev.getResponseMessage();
+
+fw = new FileWriter(new File(System.getProperty(&quot;user.home&quot;), &quot;jmeter-report.txt&quot;), true);
+writer = new PrintWriter(new BufferedWriter(fw));
+
+writer.println(String.format(&quot;# %s - %s@%s&quot;, new Object[] {new Date(prev.getStartTime()), thread.getThreadName(), sampleEvent.getHostname()}));
+writer.println(String.format(&quot;* Active/threads: %s/%s&quot;, new Object[] {threadGroup.numberOfActiveThreads(), threadGroup.getNumThreads()}));
+println(writer, &quot;* iteration: %s&quot;, vars.getIteration());
+println(writer, &quot;* elapsed time: %s ms.&quot;, prev.getTime());
+println(writer, &quot;* request: %s&quot;, request);
+println(writer, &quot;= %s bytes&quot;, prev.getBytesAsLong());
+println(writer, &quot;* response body: %s&quot;, response);
+println(writer, &quot;* response code: %s&quot;, prev.getResponseCode());
+println(writer, &quot;= %s bytes&quot;, response.getBytes().length);
+writer.println();
+
+if (vars.getIteration() % vars.getObject(&quot;summary-iterations&quot;) == 0) {
+	println(writer, &quot;## summary for %s&quot;, thread.getThreadName());
+	println(writer, &quot;* total bytes sent: %s bytes&quot;, vars.get(&quot;bytes-sent-total&quot;));
+	println(writer, &quot;* total bytes received: %s bytes&quot;, vars.get(&quot;bytes-received-total&quot;));
+	println(writer, &quot;* total latency: %s ms.&quot;, vars.get(&quot;latency-total&quot;));
+	println(writer, &quot;* total elapsed time: %s ms.&quot;, vars.get(&quot;elapsed-time-total&quot;));
+	println(writer, &quot;* total errors: %s ms.&quot;, vars.get(&quot;error-count-total&quot;));
+	writer.println();
+}
+
+writer.close();
+</stringProp>
+        </BeanShellListener>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
