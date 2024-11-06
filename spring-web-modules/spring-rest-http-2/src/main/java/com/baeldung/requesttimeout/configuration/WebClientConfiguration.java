@@ -12,13 +12,10 @@ import java.time.Duration;
 @Configuration
 public class WebClientConfiguration {
 
-    @Value("${server.port}")
-    private int serverPort;
-
     @Bean
     public WebClient webClient() {
         return WebClient.builder()
-          .baseUrl("http://localhost:" + serverPort)
+          .baseUrl("http://localhost:8080")
           .clientConnector(new ReactorClientHttpConnector(HttpClient.create().responseTimeout(Duration.ofMillis(250))))
           .build();
     }

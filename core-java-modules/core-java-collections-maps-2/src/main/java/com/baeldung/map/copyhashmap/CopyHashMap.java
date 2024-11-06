@@ -21,7 +21,7 @@ public class CopyHashMap {
     public static <String, Employee> HashMap<String, Employee> copyUsingPut(HashMap<String, Employee> originalMap) {
         HashMap<String, Employee> shallowCopy = new HashMap<String, Employee>();
         Set<Entry<String, Employee>> entries = originalMap.entrySet();
-        for(Map.Entry<String, Employee> mapEntry: entries) {
+        for(Entry<String, Employee> mapEntry: entries) {
             shallowCopy.put(mapEntry.getKey(), mapEntry.getValue());
         }
         
@@ -39,7 +39,7 @@ public class CopyHashMap {
         Set<Entry<String, Employee>> entries = originalMap.entrySet();
         HashMap<String, Employee> shallowCopy = (HashMap<String, Employee>) entries
             .stream()
-            .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+            .collect(Collectors.toMap(Entry::getKey, Entry::getValue));
         
         return shallowCopy;
     }

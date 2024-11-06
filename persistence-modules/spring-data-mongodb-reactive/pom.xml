@@ -9,9 +9,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-2</relativePath>
+        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -44,8 +44,9 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>io.reactivex.rxjava2</groupId>
+            <groupId>io.reactivex.rxjava3</groupId>
             <artifactId>rxjava</artifactId>
+            <version>${io.reactivex.rxjava3.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -59,6 +60,7 @@
         <dependency>
             <groupId>de.flapdoodle.embed</groupId>
             <artifactId>de.flapdoodle.embed.mongo</artifactId>
+            <version>${de.flapdoodle.embed.mongo.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -125,9 +127,12 @@
     </build>
 
     <properties>
-        <spring-tx.version>5.3.15</spring-tx.version>
+        <spring-tx.version>6.1.13</spring-tx.version>
         <httpclient.version>4.5.2</httpclient.version>
         <reactor.version>3.6.0</reactor.version>
+        <io.reactivex.rxjava3.version>3.1.9</io.reactivex.rxjava3.version>
+        <de.flapdoodle.embed.mongo.version>3.5.4</de.flapdoodle.embed.mongo.version>
+        <start-class>com.baeldung.reactive.Spring5ReactiveApplication</start-class>
     </properties>
 
 </project>
