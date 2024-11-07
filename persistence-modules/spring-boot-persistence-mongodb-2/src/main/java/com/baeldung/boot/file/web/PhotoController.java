@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.baeldung.mongodb.file.models.Photo;
-import com.baeldung.mongodb.file.services.PhotoService;
+import com.baeldung.boot.file.models.Photo;
+import com.baeldung.boot.file.services.PhotoService;
 
 @Controller
 public class PhotoController {
