@@ -1,4 +1,4 @@
-package com.baeldung.mongodb.file.models;
+package com.baeldung.boot.file.models;
 
 import java.io.InputStream;
 

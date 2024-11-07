@@ -1,4 +1,4 @@
-package com.baeldung.mongodb.file.models;
+package com.baeldung.boot.file.models;
 
 import org.bson.types.Binary;
 import org.springframework.data.annotation.Id;

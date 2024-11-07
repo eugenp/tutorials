@@ -1,4 +1,4 @@
-package com.baeldung.mongodb.file.daos;
+package com.baeldung.boot.file.daos;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 

@@ -1,4 +1,4 @@
-package com.baeldung.mongodb.file.services;
+package com.baeldung.boot.file.services;
 
 import java.io.IOException;
 
