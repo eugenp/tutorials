@@ -5,4 +5,5 @@
 - [Unique Field in MongoDB Document in Spring Data](https://www.baeldung.com/spring-data-mongodb-unique)
 - [Count Documents Using Spring Data MongoDB Repository](https://www.baeldung.com/spring-data-mongodb-count)
 - [GridFS in Spring Data MongoDB](http://www.baeldung.com/spring-data-mongodb-gridfs)
+- [Import Data to MongoDB From JSON File Using Java](https://www.baeldung.com/java-import-json-mongodb)
 - More articles: [[<--prev]](../spring-boot-persistence-mongodb) [[next-->]](../spring-boot-persistence-mongodb-3)
