@@ -29,7 +29,7 @@ public class FromCallableJustEmptyUnitTest {
             .verifyComplete();
 
         log.debug("Time Taken to Retrieve Data with Lazy Execution with Subscription");
-        assertThat(TimeUnit.NANOSECONDS.toMillis(timeTakenForCompletion.get())).isCloseTo(1000L, Offset.offset(50L));
+        assertThat(TimeUnit.NANOSECONDS.toMillis(timeTakenForCompletion.get())).isCloseTo(5000L, Offset.offset(50L));
 
     }
 
@@ -52,16 +52,21 @@ public class FromCallableJustEmptyUnitTest {
 
     @Test
     public void givenDataAvailable_whenCallingJustOrEmpty_thenEagerEvaluation() {
-        AtomicLong timeTakenForCompletion = new AtomicLong();
+        AtomicLong timeTakenToReceiveOnCompleteSignalAfterSubscription = new AtomicLong();
+        AtomicLong timeTakenForMethodCompletion = new AtomicLong(-1 * System.nanoTime());
         Mono<String> dataFetched = Mono.justOrEmpty(fetchData())
-            .doOnSubscribe(subscription -> timeTakenForCompletion.set(-1 * System.nanoTime()))
-            .doFinally(consumer -> timeTakenForCompletion.addAndGet(System.nanoTime()));
+            .doOnSubscribe(subscription -> timeTakenToReceiveOnCompleteSignalAfterSubscription.set(-1 * System.nanoTime()))
+            .doFinally(consumer -> timeTakenToReceiveOnCompleteSignalAfterSubscription.addAndGet(System.nanoTime()));
+
+        timeTakenForMethodCompletion.addAndGet(System.nanoTime());
 
         StepVerifier.create(dataFetched)
             .expectNext("Data Fetched")
             .verifyComplete();
 
-        assertThat(TimeUnit.NANOSECONDS.toMillis(timeTakenForCompletion.get())).isCloseTo(1L, Offset.offset(1L));
+        assertThat(TimeUnit.NANOSECONDS.toMillis(timeTakenToReceiveOnCompleteSignalAfterSubscription.get())).isCloseTo(1L, Offset.offset(1L));
+        assertThat(TimeUnit.NANOSECONDS.toMillis(timeTakenForMethodCompletion.get())).isCloseTo(5000L, Offset.offset(50L));
+
     }
 
     @Test
@@ -69,7 +74,7 @@ public class FromCallableJustEmptyUnitTest {
         Optional<String> latestStatus = fetchLatestStatus();
         String updatedStatus = "ACTIVE";
         Mono<String> currentStatus = Mono.justOrEmpty(latestStatus)
-            .switchIfEmpty(Mono.fromCallable(()-> updatedStatus));
+            .switchIfEmpty(Mono.fromCallable(() -> updatedStatus));
 
         StepVerifier.create(currentStatus)
             .expectNext(updatedStatus)
@@ -86,7 +91,7 @@ public class FromCallableJustEmptyUnitTest {
 
     private String fetchData() {
         try {
-            Thread.sleep(1000);
+            Thread.sleep(5000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
