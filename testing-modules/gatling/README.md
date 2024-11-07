@@ -4,3 +4,5 @@
 
 ### Running a simualtion
 - To run a simulation use "simulation" profile, command - `mvn install -Psimulation -Dgib.enabled=false`
+- To run the default scenario, use `mvn install gatling:test`
+- To run specific simulation, use the parameter to specify the class: `mvn install gatling:test -Dgatling.simulation.class=org.baeldung.RecordedSimulation`

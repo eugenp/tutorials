@@ -36,6 +36,18 @@
             <version>${spring.version}</version>
         </dependency>
         <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>${logback.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala3-library_3</artifactId>
             <version>${scala.version}</version>
@@ -82,8 +94,13 @@
                 <artifactId>gatling-maven-plugin</artifactId>
                 <version>${gatling-maven-plugin.version}</version>
                 <configuration>
-                    <simulationClass>org.baeldung.RecordedSimulation</simulationClass>
+                    <simulationClass>${gatling.simulation.class}</simulationClass>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring.version}</version>
             </plugin>
         </plugins>
     </build>
@@ -94,6 +111,8 @@
         <scala-maven-plugin.version>4.8.1</scala-maven-plugin.version>
         <gatling-maven-plugin.version>4.8.1</gatling-maven-plugin.version>
         <spring.version>3.3.4</spring.version>
+        <logback.version>1.5.11</logback.version>
+        <gatling.simulation.class>org.baeldung.RecordedSimulation</gatling.simulation.class>
     </properties>
 
 </project>
