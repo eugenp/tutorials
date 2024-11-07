@@ -16,15 +16,13 @@
 
     <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
         <constructor-arg ref="mongoDbFactory" />
-        <constructor-arg ref="mongoConverter" />
     </bean>
 
     <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
 
     <mongo:repositories base-package="com.baeldung.repository" mongo-template-ref="mongoTemplate" />
 
-    <mongo:mapping-converter id="mongoConverter" base-package="com.baeldung.converter">
-        <mongo:custom-converters base-package="com.baeldung.converter" />
-    </mongo:mapping-converter>
+    <bean class="com.baeldung.event.CascadeSaveMongoEventListener">
+    </bean>
 
 </beans>
