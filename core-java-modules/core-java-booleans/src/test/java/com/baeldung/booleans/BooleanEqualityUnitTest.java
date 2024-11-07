@@ -31,6 +31,14 @@ public class BooleanEqualityUnitTest {
     }
 
     @Test
+    void givenBooleansTypes_whenUsingDirectOperator_thenCompare() {
+        Boolean a = Boolean.TRUE;
+        Boolean b = new Boolean(true);
+        boolean areEqual = (a == b);
+        assertFalse(areEqual, "Using == on different boolean objects should be false when values differ");
+    }
+
+    @Test
     void givenBooleans_whenUsingXORApproach_thenCompare() {
         boolean a = true;
         boolean b = true;
