@@ -15,7 +15,7 @@ class ImageGeneratorLiveTest {
     @Autowired
     private ImageGenerator imageGenerator;
 
-    private static final String PROMPT = "a banana shaped watermelon training in the gym";
+    private static final String PROMPT = "A cartoon depicting a gangster donkey wearing sunglasses and eating grapes in a city street.";
 
     @Test
     void whenGeneratingImageFromPrompt_thenBase64StringResponseReturned() {
