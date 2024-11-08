@@ -13,8 +13,7 @@ public class Movie {
     private String title;
     private String director;
 
-    // Constructors, getters, and setters
-    public Movie() {}
+    public Movie(){}
 
     public Movie(String id, String title, String director) {
         this.id = id;

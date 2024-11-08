@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.Assert.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -21,38 +20,36 @@ class MovieRepositoryIntegrationTest {
     }
 
     @Test
-    void testCreateAndRetrieveMovie() {
-        Movie movie = new Movie(null, "Inception", "Christopher Nolan");
-
+    void testCreateAndRetrieveMovieWithManualId() {
+        Movie movie = new Movie("MOVIE-1", "Inception", "Christopher Nolan");
         Movie savedMovie = movieRepository.save(movie);
-
-        assertNotNull(savedMovie.getId()); // Ensure ID is generated
+        assertEquals("MOVIE-1", savedMovie.getId());
         assertEquals("Inception", savedMovie.getTitle());
         assertEquals("Christopher Nolan", savedMovie.getDirector());
     }
 
     @Test
-    void testUniqueIdGeneration() {
-        Movie movie1 = new Movie(null, "The Matrix", "Wachowski Brothers");
-        Movie movie2 = new Movie(null, "Interstellar", "Christopher Nolan");
-
-        Movie savedMovie1 = movieRepository.save(movie1);
-        Movie savedMovie2 = movieRepository.save(movie2);
-
-        assertNotNull(savedMovie1.getId());
-        assertNotNull(savedMovie2.getId());
-        assertNotEquals(savedMovie1.getId(), savedMovie2.getId()); // Ensure unique IDs
-    }
-
-    @Test
-    void testRetrieveMovieById() {
-        Movie movie = new Movie(null, "The Shawshank Redemption", "Frank Darabont");
-        Movie savedMovie = movieRepository.save(movie);
-
-        Movie retrievedMovie = movieRepository.findById(savedMovie.getId()).orElse(null);
-
+    void testRetrieveMovieByManualId() {
+        Movie movie = new Movie("MOVIE-2", "The Shawshank Redemption", "Frank Darabont");
+        movieRepository.save(movie);
+        Movie retrievedMovie = movieRepository.findById("MOVIE-2").orElse(null);
         assertNotNull(retrievedMovie);
         assertEquals("The Shawshank Redemption", retrievedMovie.getTitle());
         assertEquals("Frank Darabont", retrievedMovie.getDirector());
+        assertEquals("MOVIE-2", retrievedMovie.getId());
+    }
+
+    @Test
+    void testPreventIdGenerationWhenManualIdAssigned() {
+        Movie movie1 = new Movie("MOVIE-3", "The Matrix", "Wachowski Brothers");
+        movieRepository.save(movie1);
+        Movie movie2 = new Movie("MOVIE-4", "Interstellar", "Christopher Nolan");
+        movieRepository.save(movie2);
+        Movie retrievedMovie1 = movieRepository.findById("MOVIE-3").orElse(null);
+        Movie retrievedMovie2 = movieRepository.findById("MOVIE-4").orElse(null);
+        assertNotNull(retrievedMovie1);
+        assertNotNull(retrievedMovie2);
+        assertEquals("MOVIE-3", retrievedMovie1.getId());
+        assertEquals("MOVIE-4", retrievedMovie2.getId());
     }
 }
