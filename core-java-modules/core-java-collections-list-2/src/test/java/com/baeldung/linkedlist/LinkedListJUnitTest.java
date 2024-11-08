@@ -29,4 +29,19 @@ public class LinkedListJUnitTest {
 
         Assertions.assertArrayEquals(linkedListElements,collectionElements);
     }
+
+    @Test
+    public void whenAddingElementsInLinkedListAtSpecificPosition_ShouldReturnElementsInProperSequence() throws Exception {
+        LinkedList<String> linkedList=new LinkedList<String>();
+        
+        linkedList.addFirst("one");
+        linkedList.addLast("three");
+        linkedList.add("four");
+        linkedList.add(1,"two");
+
+        Object[] linkedListElements = linkedList.toArray();
+        Object[] expectedListElements = {"one","two","three","four"};
+
+        Assertions.assertArrayEquals(linkedListElements,expectedListElements);
+    }
 }
