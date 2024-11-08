@@ -2,7 +2,7 @@
 
 ## Core Java Persistence Examples
 
-### Relevant Articles: 
+### Relevant Articles:
 
 - [Introduction to JDBC](http://www.baeldung.com/java-jdbc)
 - [Batch Processing in JDBC](http://www.baeldung.com/jdbc-batch-processing)
@@ -14,4 +14,4 @@
 - [Jdbc URL Format for Different Databases](https://www.baeldung.com/java-jdbc-url-format)
 - [A Guide to Auto-Commit in JDBC](https://www.baeldung.com/java-jdbc-auto-commit)
 - [Store File or byte[] as SQL Blob in Java (Store and Load)](https://www.baeldung.com/java-sql-store-load-file-blob)
-- More articles: [[next -->]](/persistence-moules/core-java-persistence-2)
+- More articles: [[next -->]](/persistence-modules/core-java-persistence-2)
