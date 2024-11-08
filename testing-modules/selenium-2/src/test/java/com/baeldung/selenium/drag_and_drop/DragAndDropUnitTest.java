@@ -28,7 +28,7 @@ public class DragAndDropUnitTest {
 
     @Test
     public void givenTwoElements_whenDragAndDropPerformed_thenElementsSwitched() {
-        String url = "http://the-internet.herokuapp.com/drag_and_dro";
+        String url = "http://the-internet.herokuapp.com/drag_and_drop";
         driver.get(url);
 
         WebElement sourceElement = driver.findElement(By.id("column-a"));
