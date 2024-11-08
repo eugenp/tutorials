@@ -15,9 +15,6 @@
         <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
-    <properties>
-        <start-class>com.baeldung.Main</start-class>
-    </properties>
 
     <dependencies>
         <dependency>
