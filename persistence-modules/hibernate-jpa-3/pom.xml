@@ -53,7 +53,7 @@
         <dependency>
             <groupId>p6spy</groupId>
             <artifactId>p6spy</artifactId>
-            <version>3.9.1</version>
+            <version>${p6spy.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -61,6 +61,7 @@
     <properties>
         <spring-boot.version>3.0.4</spring-boot.version>
         <h2.version>2.1.214</h2.version>
+        <p6spy.version>3.9.1</p6spy.version>
     </properties>
 
 </project>
