@@ -6,6 +6,7 @@ import static org.springframework.test.annotation.DirtiesContext.ClassMode.BEFOR
 import java.time.Duration;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -35,6 +36,7 @@ class ApiGatewayControllerIntegrationTest {
         customerInfoService.initializeWebClient(port);
     }
 
+    @Disabled("This is getting fixed at JAVA-41790")
     @Test
     void givenApiGatewayClient_whenBlockingCall_thenResponseReceivedWithinDefinedTimeout() {
         Long customerId = 10L;

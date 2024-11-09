@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 import static org.junit.Assert.assertEquals;
 
-@Ignore
+@Ignore("This is getting fixed at JAVA-41791")
 public class RestIntegrationTest {
     @Test
     public void whenSendingGet_thenMessageIsReturned() throws Exception {
