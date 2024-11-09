@@ -1,4 +1,4 @@
-package com.baeldung.disableautowiring;
+package com.baeldung.thirdpartylib.disableautowiring;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
