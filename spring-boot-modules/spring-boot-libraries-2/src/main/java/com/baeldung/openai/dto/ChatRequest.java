@@ -1,4 +1,4 @@
-package com.baeldung.openapi.dto;
+package com.baeldung.openai.dto;
 
 import java.util.ArrayList;
 import java.util.List;
