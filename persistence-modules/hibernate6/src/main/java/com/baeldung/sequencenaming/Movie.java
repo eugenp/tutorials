@@ -8,24 +8,31 @@ public class Movie {
 
     @Id
     @MovieGeneratedId
-    private String id;
+    private Long id;
 
     private String title;
     private String director;
 
-    public Movie(){}
+    public Movie() {
+    }
 
-    public Movie(String id, String title, String director) {
+    public Movie(Long id, String title, String director) {
         this.id = id;
         this.title = title;
         this.director = director;
     }
 
-    public String getId() {
+    public Movie(String title, String director) {
+        this.id = id;
+        this.title = title;
+        this.director = director;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

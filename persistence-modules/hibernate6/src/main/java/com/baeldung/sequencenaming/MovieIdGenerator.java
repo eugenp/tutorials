@@ -1,27 +1,19 @@
 package com.baeldung.sequencenaming;
-
-import org.hibernate.id.IdentifierGenerator;
+import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
+import org.hibernate.id.enhanced.SequenceStyleGenerator;
 
-import java.io.Serializable;
-import java.util.UUID;
-
-public class MovieIdGenerator implements IdentifierGenerator {
-    private final String prefix = "MOVIE";
-
-    public MovieIdGenerator() {
-    }
-
+public class MovieIdGenerator extends SequenceStyleGenerator {
     @Override
-    public Serializable generate(SharedSessionContractImplementor session, Object obj) {
-        if (obj instanceof Movie movie) {
-            if (movie.getId() != null) {
-                return movie.getId();
-            }
+    public Object generate(SharedSessionContractImplementor session, Object owner) throws HibernateException {
+        final Long id;
+        if (this.allowAssignedIdentifiers() && owner instanceof Movie) {
+            id = ((Movie) owner).getId();
         } else {
-            return "MOVIE-" + UUID.randomUUID().toString();
+            id = null;
         }
-        return  null;
+
+        return id != null ? id : super.generate(session, owner);
     }
 
     @Override
