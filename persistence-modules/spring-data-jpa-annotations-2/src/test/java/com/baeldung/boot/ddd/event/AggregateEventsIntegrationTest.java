@@ -16,11 +16,6 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
-import com.baeldung.boot.ddd.event.Aggregate;
-import com.baeldung.boot.ddd.event.AggregateRepository;
-import com.baeldung.boot.ddd.event.DomainEvent;
-import com.baeldung.boot.ddd.event.DomainService;
-
 @SpringJUnitConfig
 @SpringBootTest
 class AggregateEventsIntegrationTest {
