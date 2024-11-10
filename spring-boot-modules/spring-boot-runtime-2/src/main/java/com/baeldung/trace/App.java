@@ -1,4 +1,4 @@
-package com.baeldung.spring.boot.management.trace;
+package com.baeldung.trace;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

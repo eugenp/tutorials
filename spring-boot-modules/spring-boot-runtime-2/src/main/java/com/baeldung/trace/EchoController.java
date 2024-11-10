@@ -1,4 +1,4 @@
-package com.baeldung.spring.boot.management.trace;
+package com.baeldung.trace;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;

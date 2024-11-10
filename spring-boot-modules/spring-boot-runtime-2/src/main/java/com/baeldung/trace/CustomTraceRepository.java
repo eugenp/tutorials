@@ -1,10 +1,9 @@
-package com.baeldung.spring.boot.management.trace;
+package com.baeldung.trace;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
-import org.apache.hc.client5.http.classic.methods.HttpTrace;
 import org.springframework.boot.actuate.web.exchanges.HttpExchange;
 import org.springframework.boot.actuate.web.exchanges.HttpExchangeRepository;
 import org.springframework.stereotype.Repository;
