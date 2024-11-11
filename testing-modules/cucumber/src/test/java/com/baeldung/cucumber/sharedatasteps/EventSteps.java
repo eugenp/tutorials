@@ -20,8 +20,7 @@ public class EventSteps {
     public void createNewEvent() {
         Event event = new Event();
         event.setStatus(EventStatus.PROCESSING);
-        event.setUuid(UUID.randomUUID()
-            .toString());
+        event.setUuid(UUID.randomUUID().toString());
         sharedEvent.setEvent(event);
         sharedEvent.setCreatedAt(Instant.now());
     }
@@ -39,16 +38,15 @@ public class EventSteps {
     public void processEvent(String processingStatus) {
         // process event ...
 
-        EventStatus eventStatus = "succeeds".equalsIgnoreCase(processingStatus) ? EventStatus.COMPLETE : EventStatus.ERROR;
-        sharedEvent.getEvent()
-            .setStatus(eventStatus);
+        EventStatus eventStatus = "succeeds".equalsIgnoreCase(processingStatus) ?
+            EventStatus.COMPLETE : EventStatus.ERROR;
+        sharedEvent.getEvent().setStatus(eventStatus);
         sharedEvent.setProcessedAt(Instant.now());
     }
 
     @Then("event has {status} status")
     public void verifyEventStatus(EventStatus status) {
-        assertThat(sharedEvent.getEvent()
-            .getStatus()).isEqualTo(status);
+        assertThat(sharedEvent.getEvent().getStatus()).isEqualTo(status);
     }
 
     @Then("event has processedAt")
