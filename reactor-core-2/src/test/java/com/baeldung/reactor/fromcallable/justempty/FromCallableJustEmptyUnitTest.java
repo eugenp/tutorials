@@ -30,12 +30,10 @@ public class FromCallableJustEmptyUnitTest {
 
         log.debug("Time Taken to Retrieve Data with Lazy Execution with Subscription");
         assertThat(TimeUnit.NANOSECONDS.toMillis(timeTakenForCompletion.get())).isCloseTo(5000L, Offset.offset(50L));
-
     }
 
     @Test
     public void givenExceptionThrown_whenCallingFromCallable_thenFromCallableCapturesError() {
-
         Mono<String> dataFetched = Mono.fromCallable(() -> {
                 String data = fetchData();
                 if (data.equals("Data Fetched")) {
@@ -66,7 +64,6 @@ public class FromCallableJustEmptyUnitTest {
 
         assertThat(TimeUnit.NANOSECONDS.toMillis(timeTakenToReceiveOnCompleteSignalAfterSubscription.get())).isCloseTo(1L, Offset.offset(1L));
         assertThat(TimeUnit.NANOSECONDS.toMillis(timeTakenForMethodCompletion.get())).isCloseTo(5000L, Offset.offset(50L));
-
     }
 
     @Test
@@ -97,5 +94,4 @@ public class FromCallableJustEmptyUnitTest {
         }
         return "Data Fetched";
     }
-
 }
