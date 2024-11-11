@@ -1,5 +1,5 @@
 <configuration>
-    <property resource="logback-uat.properties" />
+    <property resource="logback.properties" />
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
