@@ -3,7 +3,6 @@
 This module contains articles about core Java input/output(IO) conversions. 
 
 ### Relevant Articles:
-- [Java String to InputStream](https://www.baeldung.com/convert-string-to-input-stream)
 - [Converting a BufferedReader to a JSONObject](https://www.baeldung.com/java-bufferedreader-to-jsonobject)
 - [Reading a CSV File into an Array](https://www.baeldung.com/java-csv-file-array)
 - [How to Write to a CSV File in Java](https://www.baeldung.com/java-csv)
