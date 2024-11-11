@@ -1,5 +1,5 @@
 package com.baeldung.java9.language.stream;
-s
+
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
