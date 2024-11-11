@@ -28,11 +28,6 @@
 
     </dependencies>
 
-    <build>
-        <plugins>
-        </plugins>
-    </build>
-
     <properties>
         <mariadb.version>3.5.0</mariadb.version>
         <mariadb4j.version>3.1.0</mariadb4j.version>

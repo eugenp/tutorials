@@ -4,6 +4,8 @@ import ch.vorburger.mariadb4j.DB;
 import ch.vorburger.mariadb4j.DBConfigurationBuilder;
 import org.junit.jupiter.api.Test;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
@@ -26,10 +28,12 @@ public class JavaLiveTest {
 
     @Test
     void whenStartingADatabaseWithConfiguration_thenTheDatabaseIsUsable() throws Exception {
+        Path tempDir = Files.createTempDirectory("mariadb");
+
         DBConfigurationBuilder config = DBConfigurationBuilder.newBuilder();
         config.setPort(13306);
-        config.setDataDir("/tmp/data");
-        config.setBaseDir("/tmp/db");
+        config.setDataDir(Path.of(tempDir.toString(), "data").toString());
+        config.setBaseDir(Path.of(tempDir.toString(), "data").toString());
 
         DB db = DB.newEmbeddedDB(config.build());
         try {
