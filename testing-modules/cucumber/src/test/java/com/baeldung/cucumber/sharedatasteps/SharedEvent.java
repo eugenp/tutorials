@@ -1,14 +1,13 @@
 package com.baeldung.sharedatasteps;
 
-import static io.cucumber.spring.CucumberTestContext.SCOPE_CUCUMBER_GLUE;
-
 import java.time.Instant;
 
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import io.cucumber.spring.ScenarioScope;
+
+@ScenarioScope
 @Component
-@Scope(SCOPE_CUCUMBER_GLUE)
 public class SharedEvent {
     private Event event;
     private Instant createdAt;
