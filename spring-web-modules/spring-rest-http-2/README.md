@@ -14,4 +14,5 @@ The "REST With Spring 2" Classes: http://bit.ly/restwithspring
 - [Returning Custom Status Codes from Spring Controllers](https://www.baeldung.com/spring-mvc-controller-custom-http-status-code)
 - [OpenAPI JSON Objects as Query Parameters](https://www.baeldung.com/openapi-json-query-parameters)
 - [Dates in OpenAPI Files](https://www.baeldung.com/openapi-dates)
+- [Guide to DeferredResult in Spring](https://www.baeldung.com/spring-deferred-result)
 - More articles: [[next -->]](../spring-rest-http-3)

@@ -9,7 +9,6 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 
 - [How to Set a Header on a Response with Spring 6](https://www.baeldung.com/spring-response-header)
 - [Spring RequestMapping](https://www.baeldung.com/spring-requestmapping)
-- [Guide to DeferredResult in Spring](https://www.baeldung.com/spring-deferred-result)
 - [Using JSON Patch in Spring REST APIs](https://www.baeldung.com/spring-rest-json-patch)
 - [Guide to UriComponentsBuilder in Spring](https://www.baeldung.com/spring-uricomponentsbuilder)
 - [Get All Endpoints in Spring Boot](https://www.baeldung.com/spring-boot-get-all-endpoints)
