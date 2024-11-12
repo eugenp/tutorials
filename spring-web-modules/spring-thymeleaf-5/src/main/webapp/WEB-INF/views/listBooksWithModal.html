@@ -21,7 +21,7 @@
             <td th:text="${book.name}"></td>
             <td>
                 <!-- Button to open modal for the selected book -->
-                <button th:attr="onclick=showModal('infoModal' + ${book.id})">View Details</button>
+                <button th:attr="onclick=|showModal('infoModal' + ${book.id})|">View Details</button>
             </td>
         </tr>
         </tbody>
@@ -34,7 +34,7 @@
         <h3>Book Details</h3>
         <p><strong>ID:</strong> <span th:text="${book.id}"></span></p>
         <p><strong>Name:</strong> <span th:text="${book.name}"></span></p>
-        <button th:attr="onclick=hideModal('infoModal' + ${book.id})">Close</button>
+        <button th:attr="onclick=|hideModal('infoModal' + ${book.id})|">Close</button>
     </div>
 </div>
 
