@@ -1,7 +1,5 @@
 package com.baeldung.kafka.model;
 
-import jakarta.validation.constraints.NotNull;
-
 public class NotificationModel {
 
     private int userId;
@@ -9,9 +7,6 @@ public class NotificationModel {
     private String message;
 
     private int recipientId;
-
-    public NotificationModel() {
-    }
 
     public NotificationModel(int userId, String message, int recipientId) {
         this.userId = userId;

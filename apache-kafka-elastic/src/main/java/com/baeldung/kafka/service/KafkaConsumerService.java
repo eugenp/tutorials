@@ -26,7 +26,6 @@ public class KafkaConsumerService {
         try {
             elasticsearchService.saveData(mapToEntity(notificationModel));
             log.info("Data Saved in Elastic");
-
         } catch (Exception e) {
             log.error("Data Not Saved in Elastic", e);
             throw new RuntimeException("Data Not Saved in Elastic", e);

@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ElasticsearchService {
+
     @Autowired
     private ElasticsearchOperations elasticsearchOperations;
+
     public NotificationEntity saveData(NotificationEntity notificationEntity) {
         return elasticsearchOperations.save(notificationEntity);
     }

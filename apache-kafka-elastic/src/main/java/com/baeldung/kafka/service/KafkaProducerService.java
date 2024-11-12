@@ -12,10 +12,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class KafkaProducerService {
 
+    private static final Logger log = LoggerFactory.getLogger(KafkaProducerService.class);
+
     @Autowired
     private KafkaTemplate<String, NotificationModel> kafkaTemplate;
-
-    private static final Logger log = LoggerFactory.getLogger(KafkaProducerService.class);
 
     public void sendMessage(NotificationModel notificationModel) {
         log.error("original message reached kafka producer service " + notificationModel.getMessage());

@@ -7,10 +7,10 @@
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-    <artifactId>kafka-elastic</artifactId>
+    <artifactId>apache-kafka-elastic</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>kafka-elastic</name>
-    <description>kafka-elastic</description>
+    <name>apache-kafka-elastic</name>
+    <description>apache-kafka-elastic</description>
 
     <properties>
         <testcontainers-jupiter.version>1.19.3</testcontainers-jupiter.version>
@@ -18,6 +18,7 @@
         <spring-boot-starter-web.version>3.1.0</spring-boot-starter-web.version>
         <spring-boot-starter-data-elasticsearch.version>3.3.3</spring-boot-starter-data-elasticsearch.version>
         <spring-boot-starter-validation.version>3.3.3</spring-boot-starter-validation.version>
+        <org.testcontainers.elasticsearch.version>1.19.8</org.testcontainers.elasticsearch.version>
     </properties>
     <dependencies>
         <dependency>
@@ -43,7 +44,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>3.3.3</version>
+            <version>${spring-boot.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -55,31 +56,25 @@
         <dependency>
             <groupId>org.testcontainers</groupId>
             <artifactId>kafka</artifactId>
-            <version>1.19.8</version>
+            <version>${testcontainers-kafka.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.testcontainers</groupId>
             <artifactId>elasticsearch</artifactId>
-            <version>1.19.8</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.testcontainers</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>1.19.8</version>
+            <version>${org.testcontainers.elasticsearch.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.testcontainers</groupId>
             <artifactId>testcontainers</artifactId>
-            <version>1.19.8</version>
+            <version>${testcontaienr.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka-test</artifactId>
-            <version>3.2.3</version>
+            <version>${spring-kafka.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
