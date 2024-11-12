@@ -10,4 +10,6 @@ This module contains articles about Properties in Spring Boot.
 - [Add Build Properties to a Spring Boot Application](https://www.baeldung.com/spring-boot-build-properties)
 - [Spring YAML vs Properties](https://www.baeldung.com/spring-yaml-vs-properties)
 - [Using Environment Variables in Spring Boot’s Properties Files](https://www.baeldung.com/spring-boot-properties-env-variables)
+- [A Quick Guide to Spring @Value](https://www.baeldung.com/spring-value-annotation)
+- [Using Spring @Value With Defaults](https://www.baeldung.com/spring-value-defaults)
 - More articles: [[more -->]](../spring-boot-properties-2)

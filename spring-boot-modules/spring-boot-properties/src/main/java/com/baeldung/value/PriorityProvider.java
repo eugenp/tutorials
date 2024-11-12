@@ -1,4 +1,4 @@
-package com.baeldung.properties.value;
+package com.baeldung.value;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
