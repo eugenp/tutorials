@@ -40,6 +40,7 @@ public class StringNumberValidatorUnitTest {
         assertTrue(isValidNumberRegex("123"));
         assertTrue(isValidNumberRegex("-123.45"));
         assertTrue(isValidNumberRegex("+123.45"));
+        assertTrue(isValidNumberRegex("1.23E3"));
         assertFalse(isValidNumberRegex("123a"));
         assertFalse(isValidNumberRegex("123..45"));
     }

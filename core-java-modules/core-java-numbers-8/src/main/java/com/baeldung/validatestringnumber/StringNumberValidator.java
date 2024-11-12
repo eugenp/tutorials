@@ -59,7 +59,7 @@ public class StringNumberValidator {
     }
 
     public static boolean isValidNumberRegex(String str) {
-        return str != null && Pattern.matches("^[-+]?[0-9]*\\.?[0-9]+$", str);
+        return str != null && Pattern.matches("^[-+]?[0-9]*\\.?[0-9]+([eE][-+]?[0-9]+)?$", str);
     }
 
     public static boolean isCreatable(String str) {
