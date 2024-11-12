@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 class TapeEquilibriumSolverUnitTest {
     
     @Test
-    void whenCalculateTapeEquilibrium_ThenReturnMinimalDifference() {
+    void whenCalculateTapeEquilibrium_thenReturnMinimalDifference() {
         int[] array = {1, 2, 3, 4, 5};
         assertEquals(3, new TapeEquilibriumSolver().calculateTapeEquilibrium(array));
         int[] arrayOnly2Elements = {0, 12};
