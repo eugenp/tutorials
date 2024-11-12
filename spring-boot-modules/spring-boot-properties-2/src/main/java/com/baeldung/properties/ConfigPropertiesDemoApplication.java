@@ -1,9 +1,10 @@
 package com.baeldung.properties;
 
-import com.baeldung.configurationproperties.ConfigProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
+
+import com.baeldung.configurationproperties.ConfigProperties;
 
 @SpringBootApplication
 @ComponentScan(basePackageClasses = {ConfigProperties.class, AdditionalProperties.class})
