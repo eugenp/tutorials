@@ -419,6 +419,8 @@
                 <module>core-java-modules/core-java-concurrency-advanced-5</module>
                 <module>spring-boot-modules/spring-boot-react</module>
                 <module>testing-modules/jmeter</module>
+                <module>core-java-modules/core-java-networking-5</module>
+                <module>quarkus-modules/quarkus-hibernate-reactive</module>
             </modules>
 
             <properties>
@@ -531,6 +533,8 @@
                 <module>core-java-modules/core-java-concurrency-advanced-5</module>
                 <module>spring-boot-modules/spring-boot-react</module>
                 <module>testing-modules/jmeter</module>
+                <module>core-java-modules/core-java-networking-5</module>
+                <module>quarkus-modules/quarkus-hibernate-reactive</module>
             </modules>
 
             <properties>
@@ -574,7 +578,6 @@
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
                 <module>parent-boot-3</module>
-                <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
                 <module>apache-kafka</module>
@@ -602,7 +605,6 @@
                 <!--<module>tablesaw</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-swagger-codegen-modules/openapi-custom-generator</module>
                 <module>spring-swagger-codegen-modules/openapi-custom-generator-api-client</module> --> <!-- cannot add the individual modules here because the order is not guaranteed -->
-                <module>vavr-modules/vavr</module>
             </modules>
 
             <properties>
@@ -645,7 +647,6 @@
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
                 <module>parent-boot-3</module>
-                <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
                 <module>akka-modules</module>
@@ -843,6 +844,7 @@
                 <module>timefold-solver</module>
                 <module>vaadin</module>
                 <module>vavr-modules</module>
+                <module>vector-db</module>
                 <module>vertx-modules</module>
                 <module>web-modules</module>
                 <module>webrtc</module>
@@ -966,7 +968,6 @@
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
                 <module>parent-boot-3</module>
-                <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
                 <module>apache-kafka</module>
@@ -994,7 +995,6 @@
                 <!--<module>tablesaw</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-swagger-codegen-modules/openapi-custom-generator</module>
                 <module>spring-swagger-codegen-modules/openapi-custom-generator-api-client</module> --> <!-- cannot add the individual modules here because the order is not guaranteed -->
-                <module>vavr-modules/vavr</module>
             </modules>
 
             <properties>
@@ -1031,7 +1031,6 @@
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
                 <module>parent-boot-3</module>
-                <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
                 <module>akka-modules</module>
@@ -1229,6 +1228,7 @@
                 <module>timefold-solver</module>
                 <module>vavr-modules</module>
                 <module>vaadin</module>
+                <module>vector-db</module>
                 <module>vertx-modules</module>
                 <module>web-modules</module>
                 <module>webrtc</module>
@@ -1311,7 +1311,6 @@
             <modules>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
-                <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
             </modules>
