@@ -19,7 +19,7 @@ public class LogbackPropertiesUnitTest {
 
     @BeforeAll
     public static void setUp() {
-        System.setProperty("logback.configurationFile", "src/test/resources/logback-uat.xml");
+        System.setProperty("logback.configurationFile", "src/test/resources/logback-properties.xml");
         loggerContext = (LoggerContext) LoggerFactory.getILoggerFactory();
     }
 
