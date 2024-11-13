@@ -1,4 +1,4 @@
-package com.baeldung.openapi.dto;
+package com.baeldung.openai.dto;
 
 public class Message {
 

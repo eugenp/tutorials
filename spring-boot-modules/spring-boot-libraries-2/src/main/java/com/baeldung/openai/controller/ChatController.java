@@ -1,7 +1,7 @@
-package com.baeldung.openapi.controller;
+package com.baeldung.openai.controller;
 
-import com.baeldung.openapi.dto.ChatRequest;
-import com.baeldung.openapi.dto.ChatResponse;
+import com.baeldung.openai.dto.ChatRequest;
+import com.baeldung.openai.dto.ChatResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
