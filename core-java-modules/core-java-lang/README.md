@@ -12,5 +12,4 @@ This module contains articles about core features in the Java language
 - [How to Return Multiple Values From a Java Method](https://www.baeldung.com/java-method-return-multiple-values)
 - [Comparing Long Values in Java](https://www.baeldung.com/java-compare-long-values)
 - [Comparing Objects in Java](https://www.baeldung.com/java-comparing-objects)
-
-[[Next --> ]](/core-java-modules/core-java-lang-2)
+- More articles: [[Next --> ]](/core-java-modules/core-java-lang-2)

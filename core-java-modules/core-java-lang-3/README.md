@@ -11,4 +11,4 @@ This module contains articles about core features in the Java language
 - [Guide to Implementing the compareTo Method](https://www.baeldung.com/java-compareto)
 - [Java Objects.hash() vs Objects.hashCode()](https://www.baeldung.com/java-objects-hash-vs-objects-hashcode)
 - [The package-info.java File](https://www.baeldung.com/java-package-info)
-- [[<-- Prev]](/core-java-modules/core-java-lang-2)
+- More articles: [[<-- Prev]](/core-java-modules/core-java-lang-2) [[Next --> ]](/core-java-modules/core-java-lang-4)
