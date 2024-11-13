@@ -153,7 +153,7 @@
         <module>core-java-lang-4</module>
         <module>core-java-lang-5</module>
         <module>core-java-lang-6</module>
-        <!-- <module>core-java-lang-7</module> --> <!-- failing after upgrade to jdk21 -->
+        <module>core-java-lang-7</module>
         <module>core-java-lang-8</module>
         <module>core-java-lang-math</module>
         <module>core-java-lang-math-2</module>
