@@ -1,6 +1,6 @@
 package com.baeldung.disableautowiring;
 
-import com.baeldung.thirdpartylib.TestBean;
+import com.baeldung.disableautowiring.thirdpartylib.TestBean;
 
 import org.springframework.beans.factory.FactoryBean;
 
