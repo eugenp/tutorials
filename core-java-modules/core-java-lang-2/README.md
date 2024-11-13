@@ -13,4 +13,5 @@ This module contains articles about core features in the Java language
 - [Comparing Long Values in Java](https://www.baeldung.com/java-compare-long-values)
 - [Comparing Objects in Java](https://www.baeldung.com/java-comparing-objects)
 - [Casting int to Enum in Java](https://www.baeldung.com/java-cast-int-to-enum)
+- [Type Parameter vs Wildcard in Java Generics](https://www.baeldung.com/java-generics-type-parameter-vs-wildcard)
 [[ <-- Prev]](/core-java-modules/core-java-lang)[[Next --> ]](/core-java-modules/core-java-lang-3)
