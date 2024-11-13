@@ -3,9 +3,9 @@ package com.baeldung.comparelong;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 
-import org.junit.Test;
-
 import java.util.Objects;
+
+import org.junit.Test;
 
 public class CompareLongUnitTest {
 

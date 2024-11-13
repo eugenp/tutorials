@@ -1,6 +1,7 @@
 package com.baeldung.methodmultiplereturnvalues;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 
 class MultipleReturnValuesUsingContainerUnitTest {

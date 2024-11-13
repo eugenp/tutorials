@@ -1,14 +1,14 @@
 package com.baeldung.methodmultiplereturnvalues;
 
-import org.apache.commons.lang3.tuple.ImmutableTriple;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.apache.commons.lang3.tuple.ImmutableTriple;
+import org.junit.jupiter.api.Test;
 
 class MultipleReturnValuesUsingApacheCommonsTripleUnitTest {
 

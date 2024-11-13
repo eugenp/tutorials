@@ -1,9 +1,9 @@
 package com.baeldung.methodmultiplereturnvalues;
 
-import org.apache.commons.lang3.tuple.ImmutableTriple;
-
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.apache.commons.lang3.tuple.ImmutableTriple;
 
 class MultipleReturnValuesUsingApacheCommonsTriple {
 

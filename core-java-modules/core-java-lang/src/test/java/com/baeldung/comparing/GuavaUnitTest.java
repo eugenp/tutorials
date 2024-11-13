@@ -1,12 +1,13 @@
 package com.baeldung.comparing;
 
-import com.google.common.base.Objects;
-import com.google.common.collect.ComparisonChain;
-import com.google.common.primitives.Ints;
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import com.google.common.base.Objects;
+import com.google.common.collect.ComparisonChain;
+import com.google.common.primitives.Ints;
 
 class GuavaUnitTest {
 

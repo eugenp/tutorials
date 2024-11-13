@@ -1,9 +1,9 @@
 package com.baeldung.comparing;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.apache.commons.lang3.ObjectUtils;
 import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 class ApacheCommonsObjectUtilsUnitTest {
 
