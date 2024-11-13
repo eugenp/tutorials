@@ -1,9 +1,9 @@
 package com.baeldung.equalshashcode.entities;
 
+import java.awt.*;
+
 import org.junit.Assert;
 import org.junit.Test;
-
-import java.awt.*;
 
 public class SquareClassUnitTest {
 
