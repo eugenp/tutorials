@@ -1,9 +1,13 @@
 package com.baeldung.iterationcounter;
 
-import org.junit.Test;
+import static com.baeldung.iterationcounter.IterationCounter.IMDB_TOP_MOVIES;
+import static com.baeldung.iterationcounter.IterationCounter.getRankingsWithForEachLoop;
+import static com.baeldung.iterationcounter.IterationCounter.getRankingsWithForLoop;
+import static com.baeldung.iterationcounter.IterationCounter.getRankingsWithFunctionalForEachLoop;
+import static com.baeldung.iterationcounter.IterationCounter.getRankingsWithStream;
+import static org.assertj.core.api.Assertions.assertThat;
 
-import static com.baeldung.iterationcounter.IterationCounter.*;
-import static org.assertj.core.api.Assertions.*;
+import org.junit.Test;
 
 public class IterationCounterUnitTest {
     @Test
