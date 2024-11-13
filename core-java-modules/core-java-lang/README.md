@@ -6,7 +6,6 @@ This module contains articles about core features in the Java language
 - [Comparator and Comparable in Java](https://www.baeldung.com/java-comparator-comparable)
 - [Using Java Assertions](https://www.baeldung.com/java-assert)
 - [The Java continue and break Keywords](https://www.baeldung.com/java-continue-and-break)
-- [Infinite Loops in Java](https://www.baeldung.com/infinite-loops-java)
 - [The transient Keyword in Java](https://www.baeldung.com/java-transient-keyword)
 - [Command-Line Arguments in Java](https://www.baeldung.com/java-command-line-arguments)
 - [What Is a Pojo Class?](https://www.baeldung.com/java-pojo-class)

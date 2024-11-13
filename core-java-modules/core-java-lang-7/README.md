@@ -9,5 +9,6 @@ This module contains articles about core features in the Java language
 - [Compress and Uncompress Byte Array Using Deflater/Inflater](https://www.baeldung.com/java-compress-uncompress-byte-array)
 - [Retrieving a Class Name in Java](https://www.baeldung.com/java-class-name)
 - [A Guide to the finalize Method in Java](https://www.baeldung.com/java-finalize)
+- [Infinite Loops in Java](https://www.baeldung.com/infinite-loops-java)
 
 [[<-- Prev]](/core-java-modules/core-java-lang-6)

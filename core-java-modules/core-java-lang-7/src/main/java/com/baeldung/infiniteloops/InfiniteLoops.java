@@ -1,4 +1,4 @@
-package com.baeldung.loops;
+package com.baeldung.infiniteloops;
 
 public class InfiniteLoops {
 
