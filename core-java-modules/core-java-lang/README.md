@@ -9,5 +9,6 @@ This module contains articles about core features in the Java language
 - [Retrieving a Class Name in Java](https://www.baeldung.com/java-class-name)
 - [The Java continue and break Keywords](https://www.baeldung.com/java-continue-and-break)
 - [Infinite Loops in Java](https://www.baeldung.com/infinite-loops-java)
+- [The transient Keyword in Java](https://www.baeldung.com/java-transient-keyword)
 
 [[Next --> ]](/core-java-modules/core-java-lang-2)

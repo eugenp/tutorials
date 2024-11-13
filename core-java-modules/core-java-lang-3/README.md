@@ -7,7 +7,6 @@ This module contains articles about core features in the Java language
 - [When Are Static Variables Initialized in Java?](https://www.baeldung.com/java-static-variables-initialization)
 - [Checking if a Class Exists in Java](https://www.baeldung.com/java-check-class-exists)
 - [The Difference Between a.getClass() and A.class in Java](https://www.baeldung.com/java-getclass-vs-class)
-- [The transient Keyword in Java](https://www.baeldung.com/java-transient-keyword)
 - [Comparing Doubles in Java](https://www.baeldung.com/java-comparing-doubles)
 - [Guide to Implementing the compareTo Method](https://www.baeldung.com/java-compareto)
 - [Java Objects.hash() vs Objects.hashCode()](https://www.baeldung.com/java-objects-hash-vs-objects-hashcode)
