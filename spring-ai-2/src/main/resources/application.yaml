@@ -1,0 +1,13 @@
+spring:
+  ai:
+    vectorstore:
+      chroma:
+        initialize-schema: true
+    ollama:
+      init:
+        pull-model-strategy: WHEN_MISSING
+        chat:
+          include: false
+      embedding:
+        options:
+          model: nomic-embed-text
