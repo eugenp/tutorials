@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.testcontainers.chromadb.ChromaDBContainer;
 import org.testcontainers.ollama.OllamaContainer;
 
-@TestConfiguration(proxyBeanMethods = false)
+@TestConfiguration
 class TestcontainersConfiguration {
 
     @Bean
