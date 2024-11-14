@@ -34,7 +34,7 @@ class ProductUnitTest {
             String actualDescription = product.getDescription();
             String expectedDescription = new String("A bike with a battery");
 
-            Assertions.assertTrue(actualDescription.equals(expectedDescription));
+            assertTrue(actualDescription.equals(expectedDescription));
 
         } catch(ClassCastException e) {
               System.out.println(e.getMessage());
@@ -55,10 +55,10 @@ class ProductUnitTest {
         String actualDescription = product.getDescription();
         String expectedDescription = new String("A bike with a battery");
 
-        Assertions.assertTrue(actualDescription.equals(expectedDescription));
+        assertTrue(actualDescription.equals(expectedDescription));
 
         HashMap<String,Product> objectMap = productMap;
-        Assertions.assertSame(objectMap,productMap);
+        assertSame(objectMap,productMap);
     }
 
     
