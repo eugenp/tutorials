@@ -4,3 +4,4 @@
 - [What’s the Difference Between Iterator and ListIterator?](https://www.baeldung.com/java-iterator-vs-listiterator)
 - [Java List Interface](https://www.baeldung.com/java-list-interface)
 - [How to TDD a List Implementation in Java](http://www.baeldung.com/java-test-driven-list)
+- [Iterating Backward Through a List](http://www.baeldung.com/java-list-iterate-backwards)
