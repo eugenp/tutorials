@@ -4,6 +4,7 @@ import static com.baeldung.validatestringnumber.StringNumberValidator.*;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import org.apache.commons.lang3.math.NumberUtils;
 import org.junit.Test;
 
 public class StringNumberValidatorUnitTest {
@@ -47,12 +48,12 @@ public class StringNumberValidatorUnitTest {
 
     @Test
     public void whenUsingNumberUtils_thenReturnExpectedResult() {
-        assertTrue(isCreatable("123"));
-        assertTrue(isCreatable("123.45"));
-        assertTrue(isCreatable("-123.45"));
-        assertTrue(isCreatable("1.23E3"));
-        assertFalse(isCreatable("123a"));
-        assertFalse(isCreatable("12.3.45"));
-        assertFalse(isCreatable(""));
+        assertTrue(NumberUtils.isCreatable("123"));
+        assertTrue(NumberUtils.isCreatable("123.45"));
+        assertTrue(NumberUtils.isCreatable("-123.45"));
+        assertTrue(NumberUtils.isCreatable("1.23E3"));
+        assertFalse(NumberUtils.isCreatable("123a"));
+        assertFalse(NumberUtils.isCreatable("12.3.45"));
+        assertFalse(NumberUtils.isCreatable(""));
     }
 }
