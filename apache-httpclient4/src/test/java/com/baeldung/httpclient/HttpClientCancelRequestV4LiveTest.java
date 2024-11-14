@@ -8,15 +8,12 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 class HttpClientCancelRequestV4LiveTest {
-
-    private static final Logger log = LoggerFactory.getLogger(HttpClientCancelRequestV4LiveTest.class);
 
     private static final String SAMPLE_URL = "http://www.github.com";
 
@@ -43,12 +40,14 @@ class HttpClientCancelRequestV4LiveTest {
         try {
             final HttpEntity entity = response.getEntity();
 
-            log.debug(String.valueOf(response.getStatusLine()));
+            System.out.println("----------------------------------------");
+            System.out.println(response.getStatusLine());
             if (entity != null) {
-                log.debug("Response content length: {}" , entity.getContentLength());
+                System.out.println("Response content length: " + entity.getContentLength());
                 entity.getContent().close();
             }
 
+            System.out.println("----------------------------------------");
 
             // Do not feel like reading the response body
             // Call abort on the request object
