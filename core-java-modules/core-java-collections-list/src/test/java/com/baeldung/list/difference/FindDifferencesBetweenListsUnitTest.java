@@ -1,16 +1,17 @@
 package com.baeldung.list.difference;
 
-import com.google.common.collect.Sets;
-import org.apache.commons.collections4.CollectionUtils;
-import org.junit.Test;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.assertj.core.api.Assertions.*;
+import org.apache.commons.collections4.CollectionUtils;
+import org.junit.Test;
+
+import com.google.common.collect.Sets;
 
 public class FindDifferencesBetweenListsUnitTest {
 

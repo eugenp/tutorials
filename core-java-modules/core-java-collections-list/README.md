@@ -13,4 +13,5 @@ This module contains articles about the Java List collection
 - [Remove All Occurrences of a Specific Value from a List](https://www.baeldung.com/java-remove-value-from-list)
 - [Java List Initialization in One Line](https://www.baeldung.com/java-init-list-one-line)
 - [Ways to Iterate Over a List in Java](https://www.baeldung.com/java-iterate-list)
+- [Finding the Differences Between Two Lists in Java](https://www.baeldung.com/java-lists-difference)
 - [[Next -->]](/core-java-modules/core-java-collections-list-2)
