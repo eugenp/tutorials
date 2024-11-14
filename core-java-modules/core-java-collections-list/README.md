@@ -3,7 +3,6 @@
 This module contains articles about the Java List collection
 
 ### Relevant Articles:
-- [Remove All Occurrences of a Specific Value from a List](https://www.baeldung.com/java-remove-value-from-list)
 - [Removing All Duplicates From a List in Java](https://www.baeldung.com/java-remove-duplicates-from-list)
 - [How to Find an Element in a List with Java](http://www.baeldung.com/find-list-element-java)
 - [Finding Max/Min of a List or Collection](http://www.baeldung.com/java-collection-min-max)
