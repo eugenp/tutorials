@@ -12,4 +12,5 @@ This module contains articles about the Java List collection
 - [Flattening Nested Collections in Java](https://www.baeldung.com/java-flatten-nested-collections)
 - [Intersection of Two Lists in Java](https://www.baeldung.com/java-lists-intersection)
 - [Searching for a String in an ArrayList](https://www.baeldung.com/java-search-string-arraylist)
+- [Java – Get Random Item/Element From a List](http://www.baeldung.com/java-random-list-element)
 - [[<-- Prev]](/core-java-modules/core-java-collections-list)[[Next -->]](/core-java-modules/core-java-collections-list-3)

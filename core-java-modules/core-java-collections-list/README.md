@@ -2,8 +2,7 @@
 
 This module contains articles about the Java List collection
 
-### Relevant Articles: 
-- [Java – Get Random Item/Element From a List](http://www.baeldung.com/java-random-list-element)
+### Relevant Articles:
 - [Removing All Nulls From a List in Java](https://www.baeldung.com/java-remove-nulls-from-list)
 - [Removing All Duplicates From a List in Java](https://www.baeldung.com/java-remove-duplicates-from-list)
 - [How to TDD a List Implementation in Java](http://www.baeldung.com/java-test-driven-list)

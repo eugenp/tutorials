@@ -1,10 +1,13 @@
 package com.baeldung.list.random;
 
-import com.google.common.collect.Lists;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
+
 import org.junit.Test;
 
-import java.util.*;
-import java.util.concurrent.ThreadLocalRandom;
+import com.google.common.collect.Lists;
 
 public class RandomListElementUnitTest {
 
