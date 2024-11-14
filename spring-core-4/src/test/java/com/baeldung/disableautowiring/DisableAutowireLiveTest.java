@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 
-import com.baeldung.thirdpartylib.TestBean;
+import com.baeldung.disableautowiring.thirdpartylib.TestBean;
 
 //@SpringBootTest
 class DisableAutowireLiveTest {
