@@ -11,13 +11,13 @@ class TestcontainersConfiguration {
 
     @Bean
     @ServiceConnection
-    ChromaDBContainer chromaDB() {
+    public ChromaDBContainer chromaDB() {
         return new ChromaDBContainer("ghcr.io/chroma-core/chroma:0.4.15");
     }
 
     @Bean
     @ServiceConnection
-    OllamaContainer ollama() {
+    public OllamaContainer ollama() {
         return new OllamaContainer("ollama/ollama:0.4.1");
     }
 
