@@ -2,6 +2,7 @@ package com.baeldung.springai.chromadb;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.ai.document.Document;
 import org.springframework.ai.vectorstore.VectorStore;
@@ -24,8 +25,10 @@ public class VectorStoreInitializer implements ApplicationRunner {
         PoetryFetcher
             .fetch()
             .forEach(poetry -> {
+                Map<String, Object> metadata = Map.of("title", poetry.title());
                 String content = String.join("", poetry.lines());
-                Document document = new Document(content);
+
+                Document document = new Document(content, metadata);
                 documents.add(document);
             });
         vectorStore.add(documents);

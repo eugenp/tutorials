@@ -6,8 +6,6 @@ spring:
     ollama:
       init:
         pull-model-strategy: WHEN_MISSING
-        chat:
-          include: false
       embedding:
         options:
           model: nomic-embed-text

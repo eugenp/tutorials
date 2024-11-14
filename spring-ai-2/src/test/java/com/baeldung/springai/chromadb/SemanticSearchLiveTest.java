@@ -29,10 +29,15 @@ class SemanticSearchLiveTest {
         SearchRequest searchRequest = SearchRequest
             .query(theme)
             .withTopK(MAX_RESULTS);
-        List<Document> response = vectorStore.similaritySearch(searchRequest);
+        List<Document> documents = vectorStore.similaritySearch(searchRequest);
 
-        assertThat(response)
-            .hasSizeLessThanOrEqualTo(MAX_RESULTS);
+        assertThat(documents)
+            .hasSizeLessThanOrEqualTo(MAX_RESULTS)
+            .allSatisfy(document -> {
+                String title = String.valueOf(document.getMetadata().get("title"));
+                assertThat(title)
+                    .isNotBlank();
+            });
     }
 
 }
