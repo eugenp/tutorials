@@ -64,15 +64,16 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>javax.annotation</groupId>
-            <artifactId>javax.annotation-api</artifactId>
-            <version>1.3.2</version>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
+            <version>${jakarta.annotation-api.version}</version>
         </dependency>
     </dependencies>
 
     <properties>
         <couchbase.client.version>2.7.2</couchbase.client.version>
-        <spring-framework.version>5.3.25</spring-framework.version>
+        <spring-framework.version>6.1.13</spring-framework.version>
+        <jakarta.annotation-api.version>3.0.0</jakarta.annotation-api.version>
     </properties>
 
 </project>

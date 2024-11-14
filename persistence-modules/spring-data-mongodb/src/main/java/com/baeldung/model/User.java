@@ -1,6 +1,5 @@
 package com.baeldung.model;
 
-import com.baeldung.annotation.CascadeSave;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
@@ -9,7 +8,6 @@ import org.springframework.data.mongodb.core.index.CompoundIndex;
 import org.springframework.data.mongodb.core.index.CompoundIndexes;
 import org.springframework.data.mongodb.core.index.IndexDirection;
 import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -27,9 +25,7 @@ public class User {
     @Indexed(direction = IndexDirection.ASCENDING)
     private Integer age;
 
-    @DBRef
     @Field("email")
-    @CascadeSave
     private EmailAddress emailAddress;
 
     @Transient
