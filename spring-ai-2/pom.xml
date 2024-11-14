@@ -17,9 +17,9 @@
 
    <repositories>
        <repository>
-           <id>spring-snapshots</id>
-           <name>Spring Snapshots</name>
-           <url>https://repo.spring.io/snapshot</url>
+           <id>spring-milestones</id>
+           <name>Spring Milestones</name>
+           <url>https://repo.spring.io/milestone</url>
            <releases>
                <enabled>false</enabled>
            </releases>
@@ -89,7 +89,7 @@
 
    <properties>
        <spring-boot.version>3.3.5</spring-boot.version>
-       <spring-ai.version>1.0.0-SNAPSHOT</spring-ai.version>
+       <spring-ai.version>1.0.0-M3</spring-ai.version>
    </properties>
 
 </project>
