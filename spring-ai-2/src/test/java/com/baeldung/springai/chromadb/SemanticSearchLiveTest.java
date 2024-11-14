@@ -3,7 +3,7 @@ package com.baeldung.springai.chromadb;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.FieldSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.ai.document.Document;
 import org.springframework.ai.vectorstore.SearchRequest;
 import org.springframework.ai.vectorstore.VectorStore;
@@ -18,13 +18,12 @@ import java.util.List;
 class SemanticSearchLiveTest {
 
     private static final int MAX_RESULTS = 3;
-    private static final List<String> THEMES = List.of("Love and Romance", "Time and Mortality", "Jealousy and Betrayal");
 
     @Autowired
     private VectorStore vectorStore;
 
     @ParameterizedTest
-    @FieldSource("THEMES")
+    @ValueSource(strings = {"Love and Romance", "Time and Mortality", "Jealousy and Betrayal"})
     void whenSearchingShakespeareTheme_thenRelevantPoemsReturned(String theme) {
         SearchRequest searchRequest = SearchRequest
             .query(theme)
