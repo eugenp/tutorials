@@ -6,3 +6,4 @@
 - [How to TDD a List Implementation in Java](http://www.baeldung.com/java-test-driven-list)
 - [Iterating Backward Through a List](http://www.baeldung.com/java-list-iterate-backwards)
 - [Removing All Nulls From a List in Java](https://www.baeldung.com/java-remove-nulls-from-list)
+- [Remove the First Element from a List](http://www.baeldung.com/java-remove-first-element-from-list)
