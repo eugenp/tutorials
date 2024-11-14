@@ -8,3 +8,4 @@
 - [Removing All Nulls From a List in Java](https://www.baeldung.com/java-remove-nulls-from-list)
 - [Remove the First Element from a List](http://www.baeldung.com/java-remove-first-element-from-list)
 - [Remove All Occurrences of a Specific Value from a List](https://www.baeldung.com/java-remove-value-from-list)
+- [Removing the Last Node in a Linked List](https://www.baeldung.com/java-linked-list-remove-last-element)
