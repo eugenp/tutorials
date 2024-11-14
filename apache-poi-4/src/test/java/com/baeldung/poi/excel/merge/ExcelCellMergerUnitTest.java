@@ -22,7 +22,7 @@ import org.junit.jupiter.api.Test;
 
 class ExcelCellMergerUnitTest {
 
-    private static final String FILE_NAME = "ExcelCellFormatterTest.xlsx";
+    private static final String FILE_NAME = "ExcelCellFormatterTest2.xlsx";
     private static final String FILE_NAME_2 = "MergedAlignCell.xlsx";
 
     private String fileLocation;

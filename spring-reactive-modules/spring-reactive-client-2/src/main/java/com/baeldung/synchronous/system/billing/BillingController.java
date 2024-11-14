@@ -15,7 +15,7 @@ import reactor.core.publisher.Mono;
 public class BillingController {
 
     public static final String PATH_BILLING = "/billing";
-    public static final Duration SLEEP_DURATION = Duration.ofSeconds(2);
+    public static final Duration SLEEP_DURATION = Duration.ofSeconds(4);
 
     private final BillingService billingService;
 

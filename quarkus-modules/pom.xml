@@ -25,7 +25,7 @@
         <module>quarkus-testcontainers</module>
         <module>consume-rest-api</module>
         <module>quarkus-virtual-threads</module>
-        <module>quarkus-hibernate-reactive</module>
+        <!--<module>quarkus-hibernate-reactive</module>--> <!--moved to heavy profile-->
         <module>quarkus-langchain4j</module>
     </modules>
 
