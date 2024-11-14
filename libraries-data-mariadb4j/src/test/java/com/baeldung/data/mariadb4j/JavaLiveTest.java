@@ -3,6 +3,7 @@ package com.baeldung.data.mariadb4j;
 import ch.vorburger.mariadb4j.DB;
 import ch.vorburger.mariadb4j.DBConfigurationBuilder;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -27,13 +28,11 @@ public class JavaLiveTest {
     }
 
     @Test
-    void whenStartingADatabaseWithConfiguration_thenTheDatabaseIsUsable() throws Exception {
-        Path tempDir = Files.createTempDirectory("mariadb");
-
+    void whenStartingADatabaseWithConfiguration_thenTheDatabaseIsUsable(@TempDir Path tempDir) throws Exception {
         DBConfigurationBuilder config = DBConfigurationBuilder.newBuilder();
         config.setPort(13306);
         config.setDataDir(Path.of(tempDir.toString(), "data").toString());
-        config.setBaseDir(Path.of(tempDir.toString(), "data").toString());
+        config.setBaseDir(Path.of(tempDir.toString(), "base").toString());
 
         DB db = DB.newEmbeddedDB(config.build());
         try {
