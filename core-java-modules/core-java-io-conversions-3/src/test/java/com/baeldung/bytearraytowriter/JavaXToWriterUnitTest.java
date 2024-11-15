@@ -1,16 +1,17 @@
 package com.baeldung.bytearraytowriter;
 
-import com.google.common.io.CharSink;
-import org.apache.commons.io.output.StringBuilderWriter;
-import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
 
-import static org.junit.Assert.assertEquals;
+import org.apache.commons.io.output.StringBuilderWriter;
+import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.google.common.io.CharSink;
 
 public class JavaXToWriterUnitTest {
     protected final Logger logger = LoggerFactory.getLogger(getClass());

@@ -1,14 +1,9 @@
-package com.baeldung.inputstreamtostring;
+package com.baeldung.inputstreamtox;
 
-import com.google.common.base.Charsets;
-import com.google.common.io.ByteSource;
-import com.google.common.io.CharStreams;
-import com.google.common.io.Files;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
-import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
+import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
@@ -22,7 +17,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.Reader;
 import java.io.StringWriter;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -31,10 +25,16 @@ import java.util.Scanner;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
-import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
+import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.google.common.base.Charsets;
+import com.google.common.io.ByteSource;
+import com.google.common.io.CharStreams;
+import com.google.common.io.Files;
 
 @SuppressWarnings("unused")
 public class JavaInputStreamToXUnitTest {

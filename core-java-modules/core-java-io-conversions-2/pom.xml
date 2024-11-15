@@ -24,12 +24,6 @@
             <artifactId>json</artifactId>
             <version>${org.json.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.opencsv</groupId>
-            <artifactId>opencsv</artifactId>
-            <version>${opencsv.version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -38,10 +32,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>${source.version}</source>
-                    <target>${target.version}</target>
-                </configuration>
             </plugin>
         </plugins>
         <resources>
@@ -51,11 +41,5 @@
             </resource>
         </resources>
     </build>
-
-    <properties>
-        <source.version>11</source.version>
-        <target.version>11</target.version>
-        <opencsv.version>5.8</opencsv.version>
-    </properties>
 
 </project>
