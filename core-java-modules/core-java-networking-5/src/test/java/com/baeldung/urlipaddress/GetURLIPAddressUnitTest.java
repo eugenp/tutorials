@@ -13,7 +13,7 @@ public class GetURLIPAddressUnitTest {
     @Test
     public void givenValidURL_whenGetByInetAddress_thenReturnAValidIPAddress() throws UnknownHostException {
         URLIPAddress urlipAddress = new URLIPAddress();
-        assertTrue(validate(urlipAddress.getByInetAddress("www.example.com")));
+        assertTrue(urlipAddress.validate(urlipAddress.getByInetAddress("www.example.com")));
     }
 
     @Test
@@ -25,7 +25,7 @@ public class GetURLIPAddressUnitTest {
     @Test
     public void givenValidURL_whenGetBySocketConnection_thenReturnAValidIPAddress() throws IOException {
         URLIPAddress urlipAddress = new URLIPAddress();
-        assertTrue(validate(urlipAddress.getBySocketConnection("google.com")));
+        assertTrue(urlipAddress.validate(urlipAddress.getBySocketConnection("google.com")));
     }
 
     @Test
@@ -33,12 +33,4 @@ public class GetURLIPAddressUnitTest {
         URLIPAddress urlipAddress = new URLIPAddress();
         assertThrows(UnknownHostException.class, () -> urlipAddress.getBySocketConnection("https://www.example.com"));
     }
-
-    public static boolean validate(final String ip) {
-        System.out.println("ip = " + ip);
-        String PATTERN = "^((0|1\\d?\\d?|2[0-4]?\\d?|25[0-5]?|[3-9]\\d?)\\.){3}(0|1\\d?\\d?|2[0-4]?\\d?|25[0-5]?|[3-9]\\d?)$";
-
-        return ip.matches(PATTERN);
-    }
-
 }

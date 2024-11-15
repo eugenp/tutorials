@@ -15,8 +15,6 @@ import org.springframework.data.mongodb.core.convert.MongoCustomConversions;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 import com.baeldung.converter.UserWriterConverter;
-import com.baeldung.event.CascadeSaveMongoEventListener;
-import com.baeldung.event.UserCascadeSaveMongoEventListener;
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
@@ -45,16 +43,6 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
     @Override
     public Collection<String> getMappingBasePackages() {
         return Collections.singleton("com.baeldung");
-    }
-
-    @Bean
-    public UserCascadeSaveMongoEventListener userCascadingMongoEventListener() {
-        return new UserCascadeSaveMongoEventListener();
-    }
-
-    @Bean
-    public CascadeSaveMongoEventListener cascadingMongoEventListener() {
-        return new CascadeSaveMongoEventListener();
     }
 
     @Override
