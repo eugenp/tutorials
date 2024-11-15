@@ -1,17 +1,18 @@
 package com.baeldung.regexp.datepattern.gregorian;
 
-import com.baeldung.regexp.datepattern.DateMatcher;
-import com.baeldung.regexp.datepattern.gregorian.testhelper.GregorianDateTestHelper;
 import org.junit.Test;
 
-public class MonthsOf31DaysMatcherUnitTest {
+import com.baeldung.regexp.datepattern.DateMatcher;
+import com.baeldung.regexp.datepattern.gregorian.testhelper.GregorianDateTestHelper;
 
-    private DateMatcher matcher = new MonthsOf31DaysMatcher();
+public class February29thMatcherUnitTest {
+
+    private DateMatcher matcher = new February29thMatcher();
 
     private GregorianDateTestHelper testHelper = new GregorianDateTestHelper(matcher);
 
     @Test
-    public void whenMonthIsLong_thenMonthContainsUpTo31Days() {
-        testHelper.assertMonthsOf31Dates();
+    public void whenYearIsLeap_thenYearHasFebruary29th() {
+        testHelper.assertFebruary29th();
     }
 }

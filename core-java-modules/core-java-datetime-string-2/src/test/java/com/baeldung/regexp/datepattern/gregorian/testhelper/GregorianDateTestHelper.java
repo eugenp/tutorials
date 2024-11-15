@@ -1,7 +1,8 @@
 package com.baeldung.regexp.datepattern.gregorian.testhelper;
 
-import com.baeldung.regexp.datepattern.DateMatcher;
 import org.junit.Assert;
+
+import com.baeldung.regexp.datepattern.DateMatcher;
 
 public class GregorianDateTestHelper {
 

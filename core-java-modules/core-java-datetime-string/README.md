@@ -4,7 +4,6 @@ This module contains articles about parsing and formatting Java date and time ob
 
 ### Relevant Articles: 
 - [Check If a String Is a Valid Date in Java](https://www.baeldung.com/java-string-valid-date)
-- [Regex for Matching Date Pattern in Java](https://www.baeldung.com/java-date-regular-expressions)
 - [Guide to DateTimeFormatter](https://www.baeldung.com/java-datetimeformatter)
 - [Format ZonedDateTime to String](https://www.baeldung.com/java-format-zoned-datetime-string)
 - [A Guide to SimpleDateFormat](https://www.baeldung.com/java-simple-date-format)

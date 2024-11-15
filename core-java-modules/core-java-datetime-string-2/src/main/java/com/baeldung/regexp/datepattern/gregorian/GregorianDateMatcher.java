@@ -1,8 +1,8 @@
 package com.baeldung.regexp.datepattern.gregorian;
 
-import com.baeldung.regexp.datepattern.DateMatcher;
-
 import java.util.regex.Pattern;
+
+import com.baeldung.regexp.datepattern.DateMatcher;
 
 class GregorianDateMatcher implements DateMatcher {
 
