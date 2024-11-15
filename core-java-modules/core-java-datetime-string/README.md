@@ -9,7 +9,6 @@ This module contains articles about parsing and formatting Java date and time ob
 - [Format ZonedDateTime to String](https://www.baeldung.com/java-format-zoned-datetime-string)
 - [A Guide to SimpleDateFormat](https://www.baeldung.com/java-simple-date-format)
 - [Display All Time Zones With GMT and UTC in Java](https://www.baeldung.com/java-time-zones)
-- [Convert Between String and Timestamp](https://www.baeldung.com/java-string-to-timestamp)
 - [Convert String to Date in Java](http://www.baeldung.com/java-string-to-date)
 - [Format Instant to String in Java](https://www.baeldung.com/java-instant-to-string)
 - More articles: [[next -->]](../core-java-datetimestring-2)

@@ -1,11 +1,11 @@
 package com.baeldung.timestamp;
 
-import org.junit.Assert;
-import org.junit.Test;
-
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+
+import org.junit.Assert;
+import org.junit.Test;
 
 public class StringToTimestampConverterUnitTest {
 
