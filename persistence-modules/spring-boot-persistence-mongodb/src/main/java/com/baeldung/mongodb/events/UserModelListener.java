@@ -1,13 +1,14 @@
 package com.baeldung.mongodb.events;
 
-
 import java.math.BigInteger;
-import com.baeldung.mongodb.models.User;
-import com.baeldung.mongodb.services.SequenceGeneratorService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.mapping.event.AbstractMongoEventListener;
 import org.springframework.data.mongodb.core.mapping.event.BeforeConvertEvent;
 import org.springframework.stereotype.Component;
+
+import com.baeldung.mongodb.models.User;
+import com.baeldung.mongodb.services.SequenceGeneratorService;
 
 
 @Component
