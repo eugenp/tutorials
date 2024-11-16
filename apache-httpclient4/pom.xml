@@ -236,7 +236,6 @@
         <httpcore.version>4.4.16</httpcore.version>
         <httpclient.version>4.5.14</httpclient.version>
         <mockserver.version>5.11.2</mockserver.version>
-        <jakarta.servlet-api.version>6.1.0</jakarta.servlet-api.version>
     </properties>
 
 </project>
