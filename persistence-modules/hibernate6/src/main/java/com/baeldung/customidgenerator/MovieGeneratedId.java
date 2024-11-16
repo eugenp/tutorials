@@ -1,4 +1,4 @@
-package com.baeldung.sequencenaming;
+package com.baeldung.customidgenerator;
 
 import org.hibernate.annotations.IdGeneratorType;
 

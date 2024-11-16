@@ -1,4 +1,4 @@
-package com.baeldung.sequencenaming;
+package com.baeldung.customidgenerator;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

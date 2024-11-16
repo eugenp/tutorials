@@ -1,4 +1,4 @@
-package com.baeldung.sequencenaming;
+package com.baeldung.customidgenerator;
 import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.hibernate.id.enhanced.SequenceStyleGenerator;

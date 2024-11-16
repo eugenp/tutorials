@@ -1,4 +1,4 @@
-package com.baeldung.sequencenaming;
+package com.baeldung.customidgenerator;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

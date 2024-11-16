@@ -1,4 +1,4 @@
-package com.baeldung.sequencenaming;
+package com.baeldung.customidgenerator;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
