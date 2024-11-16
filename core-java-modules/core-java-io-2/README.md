@@ -4,7 +4,6 @@ This module contains articles about core Java input and output (IO)
 
 ### Relevant Articles: 
 - [Create a File in a Specific Directory in Java](https://www.baeldung.com/java-create-file-in-directory)
-- [Java – Write to File](https://www.baeldung.com/java-write-to-file)
 - [FileNotFoundException in Java](https://www.baeldung.com/java-filenotfound-exception)
 - [Delete the Contents of a File in Java](https://www.baeldung.com/java-delete-file-contents)
 - [List Files in a Directory in Java](https://www.baeldung.com/java-list-directory-files)
