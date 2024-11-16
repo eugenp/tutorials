@@ -5,3 +5,4 @@ This module contains articles about core Java input and output (IO)
 ### Relevant Articles: 
 - [Reading a File Into a 2d Array in Java](https://www.baeldung.com/java-file-two-dimensional-array)
 - [Java File Separator vs File Path Separator](https://www.baeldung.com/java-file-vs-file-path-separator)
+- [How to Get the File Extension of a File in Java](https://www.baeldung.com/java-file-extension)
