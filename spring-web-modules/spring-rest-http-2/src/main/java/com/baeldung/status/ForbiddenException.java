@@ -1,4 +1,4 @@
-package com.baeldung.web.controller.status;
+package com.baeldung.status;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

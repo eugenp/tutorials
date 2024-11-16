@@ -1,13 +1,13 @@
 package com.baeldung.requesttimeout.configuration;
 
-import org.springframework.beans.factory.annotation.Value;
+import java.time.Duration;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.reactive.ReactorClientHttpConnector;
 import org.springframework.web.reactive.function.client.WebClient;
-import reactor.netty.http.client.HttpClient;
 
-import java.time.Duration;
+import reactor.netty.http.client.HttpClient;
 
 @Configuration
 public class WebClientConfiguration {

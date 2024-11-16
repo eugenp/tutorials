@@ -1,4 +1,6 @@
-package com.baeldung.controllers;
+package com.baeldung.deffered.controllers;
+
+import java.util.concurrent.ForkJoinPool;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,8 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.async.DeferredResult;
-
-import java.util.concurrent.ForkJoinPool;
 
 @RestController
 public class DeferredResultController {
