@@ -1,7 +1,6 @@
 package com.baeldung.tempdirectory;
 
-import org.apache.commons.io.FileUtils;
-import org.junit.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.IOException;
 import java.nio.file.FileSystems;
@@ -9,14 +8,13 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.attribute.FileAttribute;
-import java.nio.file.attribute.PosixFileAttributes;
 import java.nio.file.attribute.PosixFilePermission;
 import java.nio.file.attribute.PosixFilePermissions;
 import java.util.Set;
 import java.util.UUID;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
+import org.apache.commons.io.FileUtils;
+import org.junit.Test;
 
 /**
  * Tests several possibilities on how to create
