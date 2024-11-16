@@ -24,9 +24,9 @@ public class VectorStoreInitializer implements ApplicationRunner {
         List<Document> documents = new ArrayList<>();
         PoetryFetcher
             .fetch()
-            .forEach(poetry -> {
-                Map<String, Object> metadata = Map.of("title", poetry.title());
-                String content = String.join("", poetry.lines());
+            .forEach(poem -> {
+                Map<String, Object> metadata = Map.of("title", poem.title());
+                String content = String.join("", poem.lines());
 
                 Document document = new Document(content, metadata);
                 documents.add(document);

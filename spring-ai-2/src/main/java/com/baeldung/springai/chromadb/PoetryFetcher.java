@@ -11,11 +11,11 @@ public class PoetryFetcher {
     private static final String BASE_URL = "https://poetrydb.org/author/";
     private static final String DEFAULT_AUTHOR_NAME = "Shakespeare";
 
-    public static List<Poetry> fetch() {
+    public static List<Poem> fetch() {
         return fetch(DEFAULT_AUTHOR_NAME);
     }
 
-    public static List<Poetry> fetch(String authorName) {
+    public static List<Poem> fetch(String authorName) {
         return RestClient
             .create()
             .get()
