@@ -1,4 +1,4 @@
-package com.baeldung.string_interpolation;
+package com.baeldung.stringinterpolation;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
