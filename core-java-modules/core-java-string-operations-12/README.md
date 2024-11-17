@@ -9,4 +9,5 @@ This module contains articles about string operations.
 - [Java toString() Method](https://www.baeldung.com/java-tostring)
 - [Get the Initials of a Name in Java](https://www.baeldung.com/java-shorten-name-initials)
 - [Normalizing the EOL Character in Java](https://www.baeldung.com/java-normalize-end-of-line-character)
+- [Common String Operations in Java](https://www.baeldung.com/java-string-operations)
 - More articles: [[<-- prev]](../core-java-string-operations-11)

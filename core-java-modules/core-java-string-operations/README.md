@@ -6,7 +6,6 @@ This module contains articles about string operations.
 - [Comparing Strings in Java](https://www.baeldung.com/java-compare-strings)
 - [Check If a String Is Numeric in Java](https://www.baeldung.com/java-check-string-number)
 - [Get Substring from String in Java](https://www.baeldung.com/java-substring)
-- [Common String Operations in Java](https://www.baeldung.com/java-string-operations)
 - [Adding a Newline Character to a String in Java](https://www.baeldung.com/java-string-newline)
 - [Java Base64 Encoding and Decoding](https://www.baeldung.com/java-base64-encode-and-decode)
 - More articles: [[next -->]](../core-java-string-operations-2)
