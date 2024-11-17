@@ -9,12 +9,19 @@ import org.testcontainers.ollama.OllamaContainer;
 @TestConfiguration(proxyBeanMethods = false)
 class TestcontainersConfiguration {
 
+    /**
+     * ChromaDB container for vector storage and semantic search operations.
+     */
     @Bean
     @ServiceConnection
     public ChromaDBContainer chromaDB() {
         return new ChromaDBContainer("ghcr.io/chroma-core/chroma:0.4.15");
     }
 
+    /**
+     * Ollama container for running embedding model to convert plaintext data to
+     * vector representation.
+     */
     @Bean
     @ServiceConnection
     public OllamaContainer ollama() {
