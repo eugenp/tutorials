@@ -1,7 +1,10 @@
 package com.baeldung.initials;
 
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import static com.baeldung.initials.InitialFinder.getInitialUsingLoop;
+import static com.baeldung.initials.InitialFinder.getInitialUsingRegex;
+import static com.baeldung.initials.InitialFinder.getInitialUsingStreamsAPI;
+import static com.baeldung.initials.InitialFinder.getInitialUsingStringTokenizer;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
 import java.util.StringTokenizer;
@@ -9,8 +12,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import static com.baeldung.initials.InitialFinder.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 public class GetInitialsFromNameUnitTest {
 

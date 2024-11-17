@@ -17,6 +17,16 @@
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.storm</groupId>
+            <artifactId>storm-core</artifactId>
+            <version>${storm-core.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
+
+    <properties>
+        <storm-core.version>1.2.2</storm-core.version>
+    </properties>
 
 </project>
