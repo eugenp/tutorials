@@ -10,7 +10,7 @@ import org.mockito.MockitoAnnotations;
 
 import static org.mockito.Mockito.*;
 
-class KafkaConsumerServiceTest {
+class KafkaConsumerServiceUnitTest {
 
     @Mock
     private ElasticsearchService elasticsearchService;
@@ -24,7 +24,7 @@ class KafkaConsumerServiceTest {
     }
 
     @Test
-    void testListen() {
+    void givenTestMessageThenCheckListen() {
         NotificationModel notificationModel = new NotificationModel(1, "Test message", 2);
         NotificationEntity notificationEntity = new NotificationEntity(1, "Test message", 2);
 

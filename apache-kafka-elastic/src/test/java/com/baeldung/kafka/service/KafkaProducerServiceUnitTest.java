@@ -11,7 +11,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 
 import static org.mockito.Mockito.*;
 
-class KafkaProducerServiceLiveTest {
+class KafkaProducerServiceUnitTest {
 
     @Mock
     private KafkaTemplate<String, NotificationModel> kafkaTemplate;
@@ -25,7 +25,7 @@ class KafkaProducerServiceLiveTest {
     }
 
     @Test
-    void testSendMessage() {
+    void givenApiCallThenCheckSend() {
         NotificationModel notificationModel = new NotificationModel(1, "Test message", 2);
 
         kafkaProducerService.sendMessage(notificationModel);

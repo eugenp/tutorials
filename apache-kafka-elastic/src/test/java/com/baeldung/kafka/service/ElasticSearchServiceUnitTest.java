@@ -12,7 +12,7 @@ import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-class ElasticSearchServiceTest {
+class ElasticSearchServiceUnitTest {
 
     @Mock
     private ElasticsearchOperations elasticsearchOperations;
@@ -21,7 +21,7 @@ class ElasticSearchServiceTest {
     private ElasticsearchService elasticsearchService;
 
     @Test
-    void testSaveData() {
+    void givenTestDataThenCheckSave() {
         NotificationEntity notificationEntity = new NotificationEntity(1, "Test message", 2);
 
         when(elasticsearchOperations.save(notificationEntity)).thenReturn(notificationEntity);

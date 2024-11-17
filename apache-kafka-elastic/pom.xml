@@ -13,7 +13,10 @@
     <description>apache-kafka-elastic</description>
 
     <properties>
+        <spring-boot.version>3.3.2</spring-boot.version>
+        <testcontainers-kafka.version>1.19.3</testcontainers-kafka.version>
         <testcontainers-jupiter.version>1.19.3</testcontainers-jupiter.version>
+        <testcontaienr.version>1.19.3</testcontaienr.version>
         <spring-kafka.version>3.1.2</spring-kafka.version>
         <spring-boot-starter-web.version>3.1.0</spring-boot-starter-web.version>
         <spring-boot-starter-data-elasticsearch.version>3.3.3</spring-boot-starter-data-elasticsearch.version>
