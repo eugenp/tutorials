@@ -1,9 +1,9 @@
 package com.baeldung.removewhitespace;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 class RemoveWhitespaceUnitTest {
     private final String myString = "   I    am a    wonderful String     !   ";
