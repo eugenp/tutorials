@@ -22,9 +22,9 @@ class CreateS3Bucket {
     public CreateS3Bucket() {
         AWSCredentialsProvider credentialsProvider = new ProfileCredentialsProvider();
         this.s3Client = AmazonS3ClientBuilder.standard()
-          .withCredentials(new AWSStaticCredentialsProvider(credentialsProvider.getCredentials()))
-          .withRegion(Regions.EU_CENTRAL_1)
-          .build();
+            .withCredentials(new AWSStaticCredentialsProvider(credentialsProvider.getCredentials()))
+            .withRegion(Regions.EU_CENTRAL_1)
+            .build();
     }
 
     public void createBucket(String bucketName) throws SdkClientException, AmazonServiceException {
