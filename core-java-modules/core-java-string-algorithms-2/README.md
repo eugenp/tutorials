@@ -13,4 +13,5 @@ This module contains articles about string-related algorithms.
 - [Remove Leading and Trailing Characters from a String](https://www.baeldung.com/java-remove-trailing-characters)
 - [Counting Words in a String with Java](https://www.baeldung.com/java-word-counting)
 - [Finding the Difference Between Two Strings in Java](https://www.baeldung.com/java-difference-between-two-strings)
+- [Check if a String Is a Palindrome in Java](https://www.baeldung.com/java-palindrome)
 - More articles: [[<-- Prev]](../core-java-string-algorithms) [[Next -->]](../core-java-string-algorithms-3)
