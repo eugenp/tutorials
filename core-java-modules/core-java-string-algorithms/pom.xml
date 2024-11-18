@@ -20,11 +20,6 @@
             <version>${commons-lang3.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.ahocorasick</groupId>
-            <artifactId>ahocorasick</artifactId>
-            <version>${ahocorasick.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-core</artifactId>
             <version>${jmh-core.version}</version>
@@ -45,9 +40,5 @@
             </resource>
         </resources>
     </build>
-
-    <properties>
-        <ahocorasick.version>0.4.0</ahocorasick.version>
-    </properties>
 
 </project>
