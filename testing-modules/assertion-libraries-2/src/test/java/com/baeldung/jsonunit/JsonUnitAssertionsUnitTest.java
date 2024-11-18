@@ -1,34 +1,41 @@
 package com.baeldung.jsonunit;
 
-import org.junit.jupiter.api.Test;
+import static net.javacrumbs.jsonunit.assertj.JsonAssertions.assertThatJson;
 
 import java.util.List;
 
-import static net.javacrumbs.jsonunit.assertj.JsonAssertions.assertThatJson;
+import org.junit.jupiter.api.Test;
 
-public class JsonUnitAssertionsUnitTest {
+class JsonUnitAssertionsUnitTest {
 
-	@Test
-	void test() {
-		String articleJson = """ 
-						{
-						   "id": 100,
-						   "name": "A Guide to Spring Boot",
-						   "tags": ["java", "spring boot", "backend"],
-						   "author": {
-						       "id": "john-doe",
-						       "name": "John Doe"
-						   }
-						}
-				""";
+    @Test
+    void whenWeVerifyAJsonObject_thenItContainsKeyValueEntries() {
+        String articleJson = """ 
+                {
+                   "name": "A Guide to Spring Boot",
+                   "tags": ["java", "spring boot", "backend"]
+                }
+            """;
 
-		assertThatJson(articleJson)
-				.isObject()
-				.containsEntry("id", 100L)
-				.containsEntry("name", "A Guide to Spring Boot")
-				.containsEntry("tags", List.of("java", "spring boot", "backend"))
-					.node("author").isObject()
-					.containsEntry("name", "John Doe");
-	}
+        assertThatJson(articleJson).isObject()
+            .containsEntry("name", "A Guide to Spring Boot")
+            .containsEntry("tags", List.of("java", "spring boot", "backend"));
+    }
+
+    @Test
+    void whenWeVerifyAJsonArrayField_thenItContainsExpectedValues() {
+        String articleJson = """ 
+            		{
+            		   "name": "A Guide to Spring Boot",
+            		   "tags": ["java", "spring boot", "backend"]
+            		}
+            """;
+
+        assertThatJson(articleJson).isObject()
+            .containsEntry("name", "A Guide to Spring Boot")
+            .node("tags")
+            .isArray()
+            .containsExactlyInAnyOrder("java", "spring boot", "backend");
+    }
 
 }
