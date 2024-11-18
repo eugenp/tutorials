@@ -1,7 +1,6 @@
 package com.baeldung.substring;
 
-import org.apache.commons.lang3.StringUtils;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +8,8 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static org.junit.Assert.assertEquals;
+import org.apache.commons.lang3.StringUtils;
+import org.junit.Test;
 
 public class SubstringUnitTest {
 
