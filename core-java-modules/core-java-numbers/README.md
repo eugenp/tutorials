@@ -7,4 +7,6 @@ This module contains articles about numbers in Java.
 - [How to Round a Number to N Decimal Places in Java](https://www.baeldung.com/java-round-decimal-number)
 - [BigDecimal and BigInteger in Java](https://www.baeldung.com/java-bigdecimal-biginteger)
 - [A Practical Guide to DecimalFormat](https://www.baeldung.com/java-decimalformat)
+- [Generating Random Numbers in a Range in Java](https://www.baeldung.com/java-generating-random-numbers-in-range)
+- [Number Formatting in Java](https://www.baeldung.com/java-number-formatting)
 - More articles: [[next -->]](../core-java-numbers-2)

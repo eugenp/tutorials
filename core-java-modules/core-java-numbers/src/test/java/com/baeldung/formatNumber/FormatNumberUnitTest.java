@@ -1,11 +1,23 @@
 package com.baeldung.formatNumber;
 
-import org.junit.Test;
+import static org.assertj.core.api.Assertions.*;
+
+import static com.baeldung.formatNumber.FormatNumber.byPaddingZeros;
+import static com.baeldung.formatNumber.FormatNumber.currencyWithChosenLocalisation;
+import static com.baeldung.formatNumber.FormatNumber.forPercentages;
+import static com.baeldung.formatNumber.FormatNumber.formatScientificNotation;
+import static com.baeldung.formatNumber.FormatNumber.formatScientificNotationWithMinChars;
+import static com.baeldung.formatNumber.FormatNumber.withBigDecimal;
+import static com.baeldung.formatNumber.FormatNumber.withDecimalFormatLocal;
+import static com.baeldung.formatNumber.FormatNumber.withDecimalFormatPattern;
+import static com.baeldung.formatNumber.FormatNumber.withLargeIntegers;
+import static com.baeldung.formatNumber.FormatNumber.withMathRound;
+import static com.baeldung.formatNumber.FormatNumber.withStringFormat;
+import static com.baeldung.formatNumber.FormatNumber.withTwoDecimalPlaces;
 
 import java.util.Locale;
 
-import static com.baeldung.formatNumber.FormatNumber.*;
-import static org.assertj.core.api.Assertions.*;
+import org.junit.Test;
 
 public class FormatNumberUnitTest {
     private static final double D = 4.2352989244d;
