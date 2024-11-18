@@ -4,12 +4,13 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.junit.Test;
+
 import com.squareup.moshi.FromJson;
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 import com.squareup.moshi.ToJson;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.junit.Test;
 
 public class SimpleAdapterUnitTest {
     @Test

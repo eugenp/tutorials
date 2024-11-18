@@ -1,14 +1,13 @@
 package com.baeldung.jsoniter;
 
+import org.junit.Test;
+
 import com.baeldung.jsoniter.model.Name;
 import com.baeldung.jsoniter.model.Student;
 import com.jsoniter.JsonIterator;
 import com.jsoniter.ValueType;
 import com.jsoniter.any.Any;
 
-import org.junit.Test;
-
-import static com.jsoniter.ValueType.STRING;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class JsoniterIntroUnitTest {

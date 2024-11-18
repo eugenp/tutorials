@@ -16,6 +16,7 @@
     <modules>
         <module>json</module>
         <module>json-2</module>
+        <module>json-3</module>
         <module>json-arrays</module>
         <module>json-conversion</module>
         <module>json-operations</module>

@@ -5,10 +5,11 @@ import java.lang.reflect.Type;
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.Test;
+
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 import com.squareup.moshi.Types;
-import org.junit.Test;
 
 public class ArrayUnitTest {
     @Test
