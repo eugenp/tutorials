@@ -6,6 +6,7 @@ import static org.junit.Assert.assertThat;
 import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.List;
+
 import org.junit.Test;
 
 import com.fasterxml.jackson.core.JsonParseException;
