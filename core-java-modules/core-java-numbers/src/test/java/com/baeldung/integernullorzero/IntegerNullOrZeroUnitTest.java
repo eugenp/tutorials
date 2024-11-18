@@ -1,4 +1,4 @@
-package com.baeldung.intnullorzero;
+package com.baeldung.integernullorzero;
 
 import static com.baeldung.IntegerNullOrZero.usingObjectUtils;
 import static com.baeldung.IntegerNullOrZero.usingOptional;

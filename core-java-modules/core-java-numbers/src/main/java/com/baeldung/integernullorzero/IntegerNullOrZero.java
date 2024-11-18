@@ -1,6 +1,7 @@
-package com.baeldung;
+package com.baeldung.integernullorzero;
 
 import java.util.Optional;
+
 import org.apache.commons.lang3.ObjectUtils;
 
 public class IntegerNullOrZero {

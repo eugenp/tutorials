@@ -9,4 +9,5 @@ This module contains articles about numbers in Java.
 - [A Practical Guide to DecimalFormat](https://www.baeldung.com/java-decimalformat)
 - [Generating Random Numbers in a Range in Java](https://www.baeldung.com/java-generating-random-numbers-in-range)
 - [Number Formatting in Java](https://www.baeldung.com/java-number-formatting)
+- [Check if an Integer Value Is Null or Zero in Java](https://www.baeldung.com/java-check-integer-null-or-zero)
 - More articles: [[next -->]](../core-java-numbers-2)
