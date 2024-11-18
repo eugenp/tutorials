@@ -11,12 +11,12 @@ public class BruteForce {
 
         int closest = nums[0];
 
-        for (int i = 1; i &lt; nums.length; i++) {
+        for (int i = 1; i < nums.length; i++) {
             if (Math.abs(closest) == (nums[i])) {
                 closest = nums[i];
             }
 
-            if (Math.abs(nums[i]) &lt; Math.abs(closest)) {
+            if (Math.abs(nums[i]) < Math.abs(closest)) {
                 closest = nums[i];
             }
         }
