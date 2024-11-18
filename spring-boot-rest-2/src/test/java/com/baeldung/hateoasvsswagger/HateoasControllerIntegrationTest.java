@@ -32,7 +32,7 @@ class HateoasControllerIntegrationTest {
     private UserRepository userService;
 
     @Test
-    void shouldReturnAllUsersWithLinks() throws Exception {
+    void whenAllUsersRequested_thenReturnAllUsersWithLinks() throws Exception {
         User user1 = new User(1, "John Doe", "john.doe@example.com", LocalDateTime.now());
         User user2 = new User(2, "Jane Smith", "jane.smith@example.com", LocalDateTime.now());
 
@@ -49,7 +49,7 @@ class HateoasControllerIntegrationTest {
     }
 
     @Test
-    void shouldReturnUserByIdWithLinks() throws Exception {
+    void whenUserByIdRequested_thenReturnUserByIdWithLinks() throws Exception {
         User user = new User(1, "John Doe", "john.doe@example.com", LocalDateTime.now());
 
         when(userService.getUserById(1)).thenReturn(user);
@@ -64,7 +64,7 @@ class HateoasControllerIntegrationTest {
     }
 
     @Test
-    void shouldCreateUserAndReturnWithLinks() throws Exception {
+    void whenUserCreationRequested_thenReturnUserByIdWithLinks() throws Exception {
         User user = new User(1, "John Doe", "john.doe@example.com", LocalDateTime.now());
         when(userService.createUser(any(NewUser.class))).thenReturn(user);
 

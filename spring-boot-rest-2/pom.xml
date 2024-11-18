@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.web</groupId>
-    <artifactId>spring-boot-rest</artifactId>
+    <artifactId>spring-boot-rest-2</artifactId>
     <name>spring-boot-rest</name>
     <packaging>war</packaging>
     <description>Spring Boot Rest Module</description>
@@ -57,8 +57,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>16</source>
-                    <target>16</target>
+                    <source>17</source>
+                    <target>17</target>
                 </configuration>
             </plugin>
         </plugins>
