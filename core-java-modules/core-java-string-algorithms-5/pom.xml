@@ -13,9 +13,15 @@
     </parent>
 
     <dependencies>
+        <dependency>
+            <groupId>com.vdurmont</groupId>
+            <artifactId>emoji-java</artifactId>
+            <version>${emoji-java.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
+        <emoji-java.version>4.0.0</emoji-java.version>
     </properties>
 
 </project>
