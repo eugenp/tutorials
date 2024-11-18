@@ -37,7 +37,7 @@ public class WebConfig {
 		  .trailingSlashHandler("/greetings/**").wrapRequest()
 		  .build();
         
-        registrationBean.setFilter(filter);
+        registrationBean.setFilter(urlHandlerFilter);
         
         return registrationBean;
     }
