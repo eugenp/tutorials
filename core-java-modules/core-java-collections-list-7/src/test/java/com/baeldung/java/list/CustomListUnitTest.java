@@ -13,6 +13,8 @@ import java.util.List;
 
 import org.junit.Test;
 
+import com.baeldung.list.CustomList;
+
 public class CustomListUnitTest {
      @Test
      public void givenEmptyList_whenIsEmpty_thenTrueIsReturned() {

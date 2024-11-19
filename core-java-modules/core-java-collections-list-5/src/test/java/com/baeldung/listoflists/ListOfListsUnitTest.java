@@ -1,4 +1,4 @@
-package com.baeldung.list.listoflists;
+package com.baeldung.listoflists;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
