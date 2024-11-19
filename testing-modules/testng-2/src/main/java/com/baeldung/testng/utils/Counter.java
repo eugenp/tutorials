@@ -1,4 +1,4 @@
-package com.baeldung.testng.service.utils;
+package com.baeldung.testng.utils;
 
 public class Counter {
     private int totalCount;

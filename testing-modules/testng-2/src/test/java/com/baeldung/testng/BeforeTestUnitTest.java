@@ -1,6 +1,6 @@
 package com.baeldung.testng;
 
-import com.baeldung.testng.service.utils.Counter;
+import com.baeldung.testng.utils.Counter;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.BeforeTest;
