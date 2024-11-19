@@ -10,26 +10,29 @@ public class StringNumberValidator {
     private static final Pattern NUMBER_PATTERN = Pattern.compile("^[-+]?[0-9]*\\.?[0-9]+([eE][-+]?[0-9]+)?$");
 
     public static boolean isNumeric(String str) {
-        if (str == null || str.isEmpty())
+        if (str == null || str.isEmpty()) {
             return false;
+        }
 
         int decimalCount = 0;
         for (char c : str.toCharArray()) {
             if (c == '.') {
                 decimalCount++;
-                if (decimalCount > 1)
+                if (decimalCount > 1) {
                     return false;
+                }
             }
-            else if (!Character.isDigit(c))
+            else if (!Character.isDigit(c)) {
                 return false;
-
+            }
         }
         return true;
     }
 
     public static boolean isInteger(String str) {
-        if (str == null)
+        if (str == null) {
             return false;
+        }
 
         try {
             Integer.parseInt(str);
@@ -40,8 +43,9 @@ public class StringNumberValidator {
     }
 
     public static boolean isDouble(String str) {
-        if (str == null)
+        if (str == null) {
             return false;
+        }
 
         try {
             Double.parseDouble(str);
@@ -52,8 +56,9 @@ public class StringNumberValidator {
     }
 
     public static boolean isBigDecimal(String str) {
-        if (str == null)
+        if (str == null) {
             return false;
+        }
 
         try {
             new BigDecimal(str);
