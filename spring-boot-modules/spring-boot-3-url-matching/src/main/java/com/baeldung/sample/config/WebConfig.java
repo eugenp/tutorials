@@ -2,7 +2,9 @@ package com.baeldung.sample.config;
 
 import com.baeldung.sample.filters.TrailingSlashRedirectFilterReactive;
 import jakarta.servlet.Filter;
+import org.springframework.web.filter.UrlHandlerFilter;
 import org.springframework.web.server.WebFilter;
+import org.springframework.http.HttpStatus;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,6 +28,19 @@ public class WebConfig {
         FilterRegistrationBean<Filter> registrationBean = new FilterRegistrationBean<>();
         registrationBean.setFilter(trailingSlashRedirectFilter());
         registrationBean.addUrlPatterns("/*");
+        return registrationBean;
+    }
+
+    @Bean
+    public FilterRegistrationBean<OncePerRequestFilter> urlHandlerFilterRegistrationBean() {
+        FilterRegistrationBean<OncePerRequestFilter> registrationBean = new FilterRegistrationBean<>();
+        UrlHandlerFilter urlHandlerFilter = UrlHandlerFilter
+		  .trailingSlashHandler("/blog/**").redirect(HttpStatus.PERMANENT_REDIRECT)
+		  .trailingSlashHandler("/greetings/**").wrapRequest()
+		  .build();
+        
+        registrationBean.setFilter(urlHandlerFilter);
+        
         return registrationBean;
     }
 }
