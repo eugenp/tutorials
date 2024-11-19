@@ -27,6 +27,6 @@ public class HillValleyCounter {
             }
         }
 
-        return hills+valleys;
+        return hills + valleys;
     }
 }
