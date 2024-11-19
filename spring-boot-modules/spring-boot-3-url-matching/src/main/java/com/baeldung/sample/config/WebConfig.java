@@ -32,16 +32,5 @@ public class WebConfig {
         return registrationBean;
     }
 
-    @Bean
-    public FilterRegistrationBean<OncePerRequestFilter> urlHandlerFilterRegistrationBean() {
-        FilterRegistrationBean<OncePerRequestFilter> registrationBean = new FilterRegistrationBean<>();
-        UrlHandlerFilter urlHandlerFilter = UrlHandlerFilter
-		  .trailingSlashHandler("/blog/**").redirect(PERMANENT_REDIRECT)
-		  .trailingSlashHandler("/greetings/**").wrapRequest()
-		  .build();
-        
-        registrationBean.setFilter(urlHandlerFilter);
-        
-        return registrationBean;
-    }
+    
 }
