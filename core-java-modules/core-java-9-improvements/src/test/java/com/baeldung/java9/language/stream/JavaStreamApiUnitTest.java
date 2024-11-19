@@ -1,4 +1,4 @@
-package com.baeldung.streams;
+package com.baeldung.java9.language.stream;
 
 import org.junit.Before;
 import org.junit.Ignore;
@@ -13,15 +13,25 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
 import java.util.regex.Pattern;
-import java.util.stream.*;
 
 import static org.junit.Assert.*;
 
-public class Java8StreamApiUnitTest {
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.IntSummaryStatistics;
+import java.util.OptionalInt;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.DoubleStream;
+import java.util.stream.IntStream;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
 
+public class JavaStreamApiUnitTest {
     private long counter;
 
-    private static Logger log = LoggerFactory.getLogger(Java8StreamApiUnitTest.class);
+    private static Logger log = LoggerFactory.getLogger(JavaStreamApiUnitTest.class);
 
     private List<Product> productList;
 
@@ -240,5 +250,46 @@ public class Java8StreamApiUnitTest {
 
     private void wasCalled() {
         counter++;
+    }
+}
+
+class Product {
+
+    private int price;
+
+    private String name;
+
+    private boolean utilize;
+
+    public Product(int price, String name) {
+        this(price);
+        this.name = name;
+    }
+
+    public Product(int price) {
+        this.price = price;
+    }
+
+    public Product() {
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public static Stream<String> streamOf(List<String> list) {
+        return (list == null || list.isEmpty()) ? Stream.empty() : list.stream();
     }
 }
