@@ -16,26 +16,26 @@ public class BeforeMethodUnitTest extends AbstractTestNGSpringContextTests {
     Counter counter;
 
     @BeforeTest
-    public void init() {
+    public void counterInitialized() {
         log.info("Initializing ...");
         counter = new Counter(0);
     }
 
     @BeforeMethod
-    public void resetCounter() {
+    public void counterInitializedResetTotalCountValue() {
         log.info("resetting total counter value ...");
         counter.resetTotalCount();
     }
 
     @Test
-    public void testAddCounter() {
+    public void counterInitializedAddingValueTotalCountIncreased() {
         log.info("total counter before added: " + counter.getTotalCount());
         counter.addCounter(2);
         log.info("total counter after added: " + counter.getTotalCount());
     }
 
     @Test
-    public void testSubtractCounter() {
+    public void counterInitializedSubtractingValueTotalCountDecreased() {
         log.info("total counter before subtracted: " + counter.getTotalCount());
         counter.subtractCounter(2);
         log.info("total counter after subtracted: " + counter.getTotalCount());
