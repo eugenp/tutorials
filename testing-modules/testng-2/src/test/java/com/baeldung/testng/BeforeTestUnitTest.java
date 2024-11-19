@@ -5,28 +5,32 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @SpringBootTest
-public class TestngCounterBTTests extends AbstractTestNGSpringContextTests {
+public class BeforeTestUnitTest extends AbstractTestNGSpringContextTests {
+    private static final Logger log = LoggerFactory.getLogger(BeforeTestUnitTest.class);
+
     Counter counter;
 
     @BeforeTest
     public void init() {
-        System.out.println("Initializing ...");
+        log.info("Initializing ...");
         counter = new Counter(0);
     }
 
     @Test
     public void testAddCounter() {
-        System.out.println("total counter before added: " + counter.getTotalCount());
+        log.info("total counter before added: " + counter.getTotalCount());
         counter.addCounter(2);
-        System.out.println("total counter after added: " + counter.getTotalCount());
+        log.info("total counter after added: " + counter.getTotalCount());
     }
 
     @Test
     public void testSubtractCounter() {
-        System.out.println("total counter before subtracted: " + counter.getTotalCount());
+        log.info("total counter before subtracted: " + counter.getTotalCount());
         counter.subtractCounter(1);
-        System.out.println("total counter after subtracted: " + counter.getTotalCount());
+        log.info("total counter after subtracted: " + counter.getTotalCount());
     }
 }
