@@ -1,6 +1,6 @@
 package com.baeldung.sample.config;
-import static org.springframework.http.HttpStatus.PERMANENT_REDIRECT;
-import org.springframework.web.filter.UrlHandlerFilter;
+import static org.springframework.http.HttpStatus.*;
+
 import com.baeldung.sample.filters.TrailingSlashRedirectFilterReactive;
 import jakarta.servlet.Filter;
 import org.springframework.web.server.WebFilter;
