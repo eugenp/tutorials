@@ -1,13 +1,13 @@
 package com.baeldung.formatduration;
 
-import org.apache.commons.lang3.time.DurationFormatUtils;
-import org.joda.time.Period;
-import org.junit.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import org.apache.commons.lang3.time.DurationFormatUtils;
+import org.joda.time.Period;
+import org.junit.Test;
 
 public class FormatDurationUnitTest {
 
