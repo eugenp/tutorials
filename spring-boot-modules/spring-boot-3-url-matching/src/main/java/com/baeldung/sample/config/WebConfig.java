@@ -7,8 +7,8 @@ import org.springframework.web.server.WebFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.filter.UrlHandlerFilter;
-import org.springframework.web.filter.OncePerRequestFilter;
+/**import org.springframework.web.filter.UrlHandlerFilter;
+import org.springframework.web.filter.OncePerRequestFilter;**/
 
 import com.baeldung.sample.filters.TrailingSlashRedirectFilter;
 
@@ -32,7 +32,7 @@ public class WebConfig {
         return registrationBean;
     }
 
-    @Bean
+/**    @Bean
     public FilterRegistrationBean<OncePerRequestFilter> urlHandlerFilterRegistrationBean() {
         FilterRegistrationBean<OncePerRequestFilter> registrationBean = new FilterRegistrationBean<>();
         UrlHandlerFilter urlHandlerFilter = UrlHandlerFilter
@@ -43,5 +43,5 @@ public class WebConfig {
         registrationBean.setFilter(urlHandlerFilter);
         
         return registrationBean;
-    }
+    }**/
 }
