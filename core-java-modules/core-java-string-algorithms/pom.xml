@@ -29,6 +29,11 @@
             <artifactId>jmh-generator-annprocess</artifactId>
             <version>${jmh-generator.version}</version>
         </dependency>
+        <dependency>
+            <groupId>commons-validator</groupId>
+            <artifactId>commons-validator</artifactId>
+            <version>${validator.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -41,4 +46,7 @@
         </resources>
     </build>
 
+    <properties>
+        <validator.version>1.8.0</validator.version>
+    </properties>
 </project>

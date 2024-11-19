@@ -1,18 +1,18 @@
 package com.baeldung.repeatedcharstring;
 
-import org.apache.commons.lang3.RandomStringUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.junit.jupiter.api.Test;
+import static java.util.stream.Stream.generate;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.stream.Collectors;
 
+import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.junit.jupiter.api.Test;
+
 import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
-
-import static java.util.stream.Stream.generate;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RepeatedCharacterStringUnitTest {
 
