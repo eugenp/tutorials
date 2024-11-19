@@ -4,7 +4,8 @@ public class HillValleyCounter {
 
     public int countHillsAndValleys(int[] numbers) {
 
-        int countOfHillsAndValleys = 0;
+        int hills = 0;
+        int valleys = 0;
         for (int i = 1; i < numbers.length - 1; i++) {
 
             int prev = numbers[i - 1];
@@ -19,11 +20,13 @@ public class HillValleyCounter {
                 next = numbers[i + 1];
             }
 
-            if (current > prev && current > next || current < prev && current < next) {
-                countOfHillsAndValleys++;
+            if (current > prev && current > next) {
+                hills++;
+            } else if (current < prev && current < next) {
+                valleys++;
             }
         }
 
-        return countOfHillsAndValleys;
+        return hills+valleys;
     }
 }
