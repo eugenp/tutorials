@@ -1,10 +1,11 @@
 package com.baeldung.padding;
 
-import com.google.common.base.Strings;
+import static org.junit.Assert.assertEquals;
+
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import com.google.common.base.Strings;
 
 public class StringPaddingUtilUnitTest {
 
