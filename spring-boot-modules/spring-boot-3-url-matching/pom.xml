@@ -15,12 +15,13 @@
     </parent>
 
     <dependencies>
-   <!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
+  <!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
 <dependency>
     <groupId>org.springframework</groupId>
-    <artifactId>spring-core</artifactId>
+    <artifactId>spring-web</artifactId>
     <version>6.2.0</version>
 </dependency>
+
 
 
         <dependency>
