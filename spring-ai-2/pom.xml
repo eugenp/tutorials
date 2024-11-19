@@ -20,9 +20,9 @@
            <id>spring-milestones</id>
            <name>Spring Milestones</name>
            <url>https://repo.spring.io/milestone</url>
-           <releases>
+           <snapshots>
                <enabled>false</enabled>
-           </releases>
+           </snapshots>
        </repository>
    </repositories>
 
