@@ -65,7 +65,6 @@
     </build>
 
     <properties>
-        <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
         <greeter.version>0.0.1-SNAPSHOT</greeter.version>
     </properties>
 
