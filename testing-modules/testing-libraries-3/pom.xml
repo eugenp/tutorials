@@ -48,10 +48,22 @@
             <version>${cucumber.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.github.stefanbirkner</groupId>
+            <artifactId>system-rules</artifactId>
+            <version>${system-rules.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.stefanbirkner</groupId>
+            <artifactId>system-lambda</artifactId>
+            <version>${system-lambda.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
-        <finalName>testing-libraries3</finalName>
+        <finalName>testing-libraries-3</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -80,6 +92,8 @@
 
     <properties>
         <cucumber.version>4.8.0</cucumber.version>
+        <system-lambda.version>1.0.0</system-lambda.version>
+        <system-rules.version>1.19.0</system-rules.version>
     </properties>
 
 </project>
