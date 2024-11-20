@@ -19,7 +19,7 @@ public class GoogleService {
     private void init(){
         this.service  = new ServiceBuilder(API_KEY)
                 .apiSecret(API_SECRET)
-                .scope(SCOPE)
+                .defaultScope(SCOPE)
                 .callback(CALLBACK)
                 .build(GoogleApi20.instance());
     }

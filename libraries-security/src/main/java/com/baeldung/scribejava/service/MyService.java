@@ -18,7 +18,7 @@ public class MyService {
     private void init(){
         this.service  = new ServiceBuilder(API_KEY)
                 .apiSecret(API_SECRET)
-                .scope("read write")
+                .defaultScope("read write")
                 .build(MyApi.instance());
     }
 
