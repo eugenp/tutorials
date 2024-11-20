@@ -3,12 +3,10 @@
 This module contains articles about Spring Boot annotations
 
 ### Relevant Articles:
-
-- [Spring Conditional Annotations](https://www.baeldung.com/spring-conditional-annotations)
+- [Spring Web Annotations](https://www.baeldung.com/spring-mvc-annotations)
+- [Difference Between @ComponentScan and @EnableAutoConfiguration in Spring Boot](https://www.baeldung.com/spring-componentscan-vs-enableautoconfiguration)
 - [Guide to @SpringBootConfiguration in Spring Boot](https://www.baeldung.com/springbootconfiguration-annotation)
-- [Spring @Primary Annotation](http://www.baeldung.com/spring-primary)
-- [Spring Bean Names](https://www.baeldung.com/spring-bean-names)
 - [AliasFor Annotation in Spring](https://www.baeldung.com/spring-aliasfor-annotation)
-- [A Quick Guide to the Spring @Lazy Annotation](https://www.baeldung.com/spring-lazy-annotation)
-- [Instantiating Multiple Beans of the Same Class with Spring Annotations](https://www.baeldung.com/spring-same-class-multiple-beans)
+- [Where Should the Spring @Service Annotation Be Kept?](https://www.baeldung.com/spring-service-annotation-placement)
+- [Spring Scheduling Annotations](https://www.baeldung.com/spring-scheduling-annotations)
 - More articles: [[<-- prev]](/spring-boot-modules/spring-boot-annotations)

@@ -8,6 +8,8 @@ import org.jsoup.parser.Tag;
 import org.jsoup.select.Elements;
 import org.junit.Before;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
@@ -17,6 +19,8 @@ import static org.junit.Assert.assertTrue;
 public class JsoupParserIntegrationTest {
 
     private Document doc;
+
+    private static final Logger log = LoggerFactory.getLogger(JsoupParserIntegrationTest.class);
 
     @Before
     public void setUp() throws IOException {
@@ -74,7 +78,7 @@ public class JsoupParserIntegrationTest {
         Elements children = firstArticle.children();
         Elements siblings = firstArticle.siblingElements();
 
-        articles.forEach(el -> System.out.println("article: " + el));
+        articles.forEach(el -> log.debug("article: {}", el));
     }
 
     @Test

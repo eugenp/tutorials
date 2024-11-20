@@ -2,14 +2,11 @@
 
 This module contains articles about the Java List collection
 
-### Relevant Articles: 
-- [Java – Get Random Item/Element From a List](http://www.baeldung.com/java-random-list-element)
-- [Removing All Nulls From a List in Java](https://www.baeldung.com/java-remove-nulls-from-list)
+### Relevant Articles:
 - [Removing All Duplicates From a List in Java](https://www.baeldung.com/java-remove-duplicates-from-list)
-- [How to TDD a List Implementation in Java](http://www.baeldung.com/java-test-driven-list)
-- [Iterating Backward Through a List](http://www.baeldung.com/java-list-iterate-backwards)
-- [Remove the First Element from a List](http://www.baeldung.com/java-remove-first-element-from-list)
 - [How to Find an Element in a List with Java](http://www.baeldung.com/find-list-element-java)
 - [Finding Max/Min of a List or Collection](http://www.baeldung.com/java-collection-min-max)
-- [Remove All Occurrences of a Specific Value from a List](https://www.baeldung.com/java-remove-value-from-list)
+- [Java List Initialization in One Line](https://www.baeldung.com/java-init-list-one-line)
+- [Ways to Iterate Over a List in Java](https://www.baeldung.com/java-iterate-list)
+- [Finding the Differences Between Two Lists in Java](https://www.baeldung.com/java-lists-difference)
 - [[Next -->]](/core-java-modules/core-java-collections-list-2)

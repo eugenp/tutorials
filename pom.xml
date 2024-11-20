@@ -419,6 +419,8 @@
                 <module>core-java-modules/core-java-concurrency-advanced-5</module>
                 <module>spring-boot-modules/spring-boot-react</module>
                 <module>testing-modules/jmeter</module>
+                <module>core-java-modules/core-java-networking-5</module>
+                <module>quarkus-modules/quarkus-hibernate-reactive</module>
             </modules>
 
             <properties>
@@ -531,6 +533,8 @@
                 <module>core-java-modules/core-java-concurrency-advanced-5</module>
                 <module>spring-boot-modules/spring-boot-react</module>
                 <module>testing-modules/jmeter</module>
+                <module>core-java-modules/core-java-networking-5</module>
+                <module>quarkus-modules/quarkus-hibernate-reactive</module>
             </modules>
 
             <properties>
@@ -574,7 +578,6 @@
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
                 <module>parent-boot-3</module>
-                <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
                 <module>apache-kafka</module>
@@ -602,7 +605,6 @@
                 <!--<module>tablesaw</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-swagger-codegen-modules/openapi-custom-generator</module>
                 <module>spring-swagger-codegen-modules/openapi-custom-generator-api-client</module> --> <!-- cannot add the individual modules here because the order is not guaranteed -->
-                <module>vavr-modules/vavr</module>
             </modules>
 
             <properties>
@@ -645,7 +647,6 @@
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
                 <module>parent-boot-3</module>
-                <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
                 <module>akka-modules</module>
@@ -733,6 +734,7 @@
                 <module>libraries-data-3</module>
                 <module>libraries-data-db</module>
                 <module>libraries-data</module>
+                <module>libraries-data-mariadb4j</module>
                 <module>libraries-files</module>
                 <module>libraries-http</module>
 		        <module>libraries-http-2</module>
@@ -843,6 +845,7 @@
                 <module>timefold-solver</module>
                 <module>vaadin</module>
                 <module>vavr-modules</module>
+                <module>vector-db</module>
                 <module>vertx-modules</module>
                 <module>web-modules</module>
                 <module>webrtc</module>
@@ -860,6 +863,82 @@
                 <java.version>21</java.version>
                 <maven.compiler.source>21</maven.compiler.source>
                 <maven.compiler.target>21</maven.compiler.target>
+            </properties>
+
+        </profile>
+
+        <profile>
+            <id>profile-jdk22</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <forkCount>3</forkCount>
+                            <reuseForks>true</reuseForks>
+                            <includes>
+                                <include>SpringContextTest</include>
+                                <include>**/*UnitTest</include>
+                                <include>**/*IntegrationTest.java</include>
+                                <include>**/*IntTest.java</include>
+                                <include>**/*LongRunningUnitTest.java</include>
+                                <include>**/*ManualTest.java</include>
+                                <include>**/JdbcTest.java</include>
+                                <include>**/*LiveTest.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+
+            <modules>
+                <module>core-java-modules/core-java-22</module>
+            </modules>
+
+            <properties>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <java.version>22</java.version>
+                <maven.compiler.source>22</maven.compiler.source>
+                <maven.compiler.target>22</maven.compiler.target>
+            </properties>
+
+        </profile>
+
+        <profile>
+            <id>profile-jdk23</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <forkCount>3</forkCount>
+                            <reuseForks>true</reuseForks>
+                            <includes>
+                                <include>SpringContextTest</include>
+                                <include>**/*UnitTest</include>
+                                <include>**/*IntegrationTest.java</include>
+                                <include>**/*IntTest.java</include>
+                                <include>**/*LongRunningUnitTest.java</include>
+                                <include>**/*ManualTest.java</include>
+                                <include>**/JdbcTest.java</include>
+                                <include>**/*LiveTest.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+
+            <modules>
+                <module>core-java-modules/core-java-23</module>
+            </modules>
+
+            <properties>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <java.version>23</java.version>
+                <maven.compiler.source>23</maven.compiler.source>
+                <maven.compiler.target>23</maven.compiler.target>
             </properties>
 
         </profile>
@@ -890,7 +969,6 @@
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
                 <module>parent-boot-3</module>
-                <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
                 <module>apache-kafka</module>
@@ -918,7 +996,6 @@
                 <!--<module>tablesaw</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-swagger-codegen-modules/openapi-custom-generator</module>
                 <module>spring-swagger-codegen-modules/openapi-custom-generator-api-client</module> --> <!-- cannot add the individual modules here because the order is not guaranteed -->
-                <module>vavr-modules/vavr</module>
             </modules>
 
             <properties>
@@ -955,7 +1032,6 @@
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
                 <module>parent-boot-3</module>
-                <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
                 <module>akka-modules</module>
@@ -1153,6 +1229,7 @@
                 <module>timefold-solver</module>
                 <module>vavr-modules</module>
                 <module>vaadin</module>
+                <module>vector-db</module>
                 <module>vertx-modules</module>
                 <module>web-modules</module>
                 <module>webrtc</module>
@@ -1235,7 +1312,6 @@
             <modules>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
-                <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
             </modules>

@@ -9,4 +9,14 @@
         <artifactId>core-java-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${apache.commons.lang3.version}</version>
+        </dependency>
+    </dependencies>
+    <properties>
+        <apache.commons.lang3.version>3.13.0</apache.commons.lang3.version>
+    </properties>
 </project>

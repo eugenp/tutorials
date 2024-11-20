@@ -49,9 +49,6 @@
         <module>core-java-15</module>
         <module>core-java-collections-array-list</module>
         <module>core-java-collections-array-list-2</module>
-        <module>core-java-collections-list-4</module>
-        <module>core-java-collections-list-5</module>
-        <module>core-java-collections-list-7</module>
         <module>core-java-collections-maps-4</module>
         <module>core-java-collections-maps-5</module>
         <!-- <module>core-java-concurrency-simple</module> --> <!-- failing after upgrade to jdk21 -->
@@ -86,6 +83,7 @@
         <module>core-java-arrays-operations-basic-3</module>
         <module>core-java-arrays-operations-advanced</module>
         <module>core-java-arrays-operations-advanced-2</module>
+        <module>core-java-arrays-operations-advanced-3</module>
         <module>core-java-booleans</module>
         <module>core-java-char</module>
         <module>core-java-collections</module>
@@ -100,7 +98,10 @@
         <module>core-java-collections-list</module>
         <module>core-java-collections-list-2</module>
         <module>core-java-collections-list-3</module>
+        <module>core-java-collections-list-4</module>
+        <module>core-java-collections-list-5</module>
         <module>core-java-collections-list-6</module>
+        <module>core-java-collections-list-7</module>
         <module>core-java-collections-maps</module>
         <module>core-java-collections-maps-2</module>
         <module>core-java-collections-maps-3</module>
@@ -177,7 +178,7 @@
         <module>core-java-networking</module>
         <module>core-java-networking-2</module>
         <module>core-java-networking-4</module>
-        <module>core-java-networking-5</module>
+        <!--<module>core-java-networking-5</module>--> <!--moved to heavy profile-->
         <module>core-java-nio</module>
         <module>core-java-nio-2</module>
         <module>core-java-numbers</module>
@@ -236,14 +237,15 @@
         <module>core-java-date-operations-1</module>
         <module>core-java-datetime-conversion</module>
         <module>core-java-datetime-conversion-2</module>
+        <module>core-java-datetime-conversion-3</module>
         <module>core-java-httpclient</module>
         <module>java-native</module>
         <module>java-rmi</module>
         <module>java-spi</module>
         <module>java-websocket</module>
         <module>core-java-8-datetime-3</module>
-        <!--<module>core-java-22</module>--> <!-- requires JDK 22 -->
-        <!--<module>core-java-23</module>--> <!-- requires JDK 23 -->
+        <!--<module>core-java-22</module>--> <!-- Migrated to default-jdk22 profile -->
+        <!--<module>core-java-23</module>--> <!-- Migrated to default-jdk23 profile -->
     </modules>
 
     <dependencies>
