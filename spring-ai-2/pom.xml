@@ -96,7 +96,7 @@
 
    <properties>
        <spring-boot.version>3.3.5</spring-boot.version>
-       <spring-ai.version>1.0.0-M3</spring-ai.version>
+       <spring-ai.version>1.0.0-M4</spring-ai.version>
    </properties>
 
 </project>
