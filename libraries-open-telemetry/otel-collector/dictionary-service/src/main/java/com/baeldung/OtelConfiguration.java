@@ -9,7 +9,7 @@ import io.opentelemetry.api.OpenTelemetry;
 @Configuration
 public class OtelConfiguration {
     @Bean
-	public OpenTelemetry openTelemetry() {
-		return GlobalOpenTelemetry.get();
-	}
+    public OpenTelemetry openTelemetry() {
+        return GlobalOpenTelemetry.get();
+    }
 }

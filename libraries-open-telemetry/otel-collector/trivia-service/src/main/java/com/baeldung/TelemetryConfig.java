@@ -47,18 +47,18 @@ public class TelemetryConfig {
         SpanExporter spanExporter = OtlpHttpSpanExporter.builder().setEndpoint(OTLP_TRACES_ENDPOINT).build();
         SdkTracerProvider tracerProvider = SdkTracerProvider.builder()
             .setResource(resource)
-			.addSpanProcessor(SimpleSpanProcessor.create(spanExporter))
-			.build();
+            .addSpanProcessor(SimpleSpanProcessor.create(spanExporter))
+            .build();
 
         // Metrics setup
         MetricExporter metricExporter = OtlpHttpMetricExporter.builder().setEndpoint(OTLP_METRICS_ENDPOINT).build();
         MetricReader metricReader = PeriodicMetricReader.builder(metricExporter)
-			.setInterval(30, TimeUnit.SECONDS)
-			.build();
+            .setInterval(30, TimeUnit.SECONDS)
+            .build();
         SdkMeterProvider meterProvider = SdkMeterProvider.builder()
             .setResource(resource)
-			.registerMetricReader(metricReader)
-			.build();
+            .registerMetricReader(metricReader)
+            .build();
         
         // Logging setup 
         LogRecordExporter logRecordExporter = OtlpGrpcLogRecordExporter.builder().setEndpoint(OTLP_LOGS_ENDPOINT).build();
@@ -68,11 +68,11 @@ public class TelemetryConfig {
             .addLogRecordProcessor(logRecordProcessor).build();
 
         openTelemetry = OpenTelemetrySdk.builder()
-			.setMeterProvider(meterProvider)
-			.setTracerProvider(tracerProvider)
+            .setMeterProvider(meterProvider)
+            .setTracerProvider(tracerProvider)
             .setLoggerProvider(sdkLoggerProvider)
-			.setPropagators(ContextPropagators.create(TextMapPropagator.composite(W3CTraceContextPropagator.getInstance(), W3CBaggagePropagator.getInstance())))
-			.buildAndRegisterGlobal();
+            .setPropagators(ContextPropagators.create(TextMapPropagator.composite(W3CTraceContextPropagator.getInstance(), W3CBaggagePropagator.getInstance())))
+            .buildAndRegisterGlobal();
 
         //OpenTelemetryAppender in log4j configuration and install
         OpenTelemetryAppender.install(openTelemetry);
@@ -80,7 +80,7 @@ public class TelemetryConfig {
 
     public OpenTelemetry getOpenTelemetry() {
         return openTelemetry;
-	}
+    }
 
     public static TelemetryConfig getInstance() {
         if (telemetryConfig == null) {
@@ -88,5 +88,5 @@ public class TelemetryConfig {
         }
 
         return telemetryConfig;
-    }	    
+    }
 }

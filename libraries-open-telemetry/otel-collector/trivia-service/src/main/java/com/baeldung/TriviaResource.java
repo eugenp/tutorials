@@ -65,7 +65,7 @@ public class TriviaResource {
             span.addEvent("http.request.word-api", start);
             
             WordResponse wordResponse = triviaService.requestWordFromSource(Context.current().with(span), WORD_SERVICE_URL);
-                            
+
             span.setAttribute("http.status_code", wordResponse.httpResponseCode());
 
             logger.info("word-api response payload: {}", wordResponse.wordWithDefinition());
