@@ -7,8 +7,8 @@ import org.springframework.web.server.WebFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.filter.UrlHandlerFilter;
-/**import org.springframework.web.filter.OncePerRequestFilter;**/
+/**import org.springframework.web.filter.UrlHandlerFilter;**/
+ import org.springframework.web.filter.OncePerRequestFilter; 
 
 import com.baeldung.sample.filters.TrailingSlashRedirectFilter;
 
