@@ -1,7 +1,11 @@
 package com.baeldung.networking.proxies;
 
 import java.io.IOException;
-import java.net.*;
+import java.net.HttpURLConnection;
+import java.net.Proxy;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 
 public class DirectProxyDemo {
 

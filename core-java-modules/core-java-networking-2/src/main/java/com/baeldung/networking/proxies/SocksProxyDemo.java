@@ -1,7 +1,11 @@
 package com.baeldung.networking.proxies;
 
-import java.io.IOException;
-import java.net.*;
+import java.net.HttpURLConnection;
+import java.net.InetSocketAddress;
+import java.net.Proxy;
+import java.net.Socket;
+import java.net.URI;
+import java.net.URL;
 
 public class SocksProxyDemo {
 
