@@ -1,0 +1,28 @@
+#  To run: docker compose -f docker-compose-chromadb-ollama.yaml up -d
+
+version: 3.9
+
+networks:
+  net:
+    driver: bridge
+
+services:
+  chromadb:
+    image: chromadb/chroma:0.5.20
+    volumes:
+      - ./chromadb:/chroma/chroma
+    environment:
+      - IS_PERSISTENT=TRUE
+    ports:
+      - 8000:8000
+    networks:
+      - net
+
+  ollama:
+    image: ollama/ollama:0.4.2
+    volumes:
+      - ./ollama:/root/.ollama
+    ports:
+      - 11434:11434
+    networks:
+      - net
