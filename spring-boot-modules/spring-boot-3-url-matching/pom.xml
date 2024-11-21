@@ -15,14 +15,12 @@
     </parent>
 
     <dependencies>
-  <!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
-    <dependency>
-       <groupId>org.springframework</groupId>
-       <artifactId>spring-web</artifactId>
-       <version>6.2.0</version>
-   </dependency>
-
-
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>6.2.0</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
