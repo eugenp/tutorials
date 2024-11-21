@@ -23,7 +23,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @Slf4j
 @SpringBootTest
-class CustomAuditApplicationUnitTest {
+public class CustomAuditApplicationUnitTest {
 
     @Autowired
     AdoptionService adoptionService;

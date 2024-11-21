@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @EnableJpaRepositories(
   basePackages = "com.baeldung.envers.customrevision",
   repositoryFactoryBeanClass = EnversRevisionRepositoryFactoryBean.class)
-class AdoptionServiceUnitTest {
+public class AdoptionServiceUnitTest {
 
     @Autowired
     AdoptionService adoptionService;
