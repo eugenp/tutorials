@@ -1,6 +1,7 @@
 package com.baeldung.envers.customrevision.service;
 
 import com.baeldung.envers.customrevision.domain.Owner;
+import com.baeldung.envers.customrevision.domain.PetHistoryEntry;
 import com.baeldung.envers.customrevision.domain.PetLogInfo;
 import com.baeldung.envers.customrevision.domain.Species;
 import com.baeldung.envers.customrevision.repository.OwnerRepository;
@@ -48,7 +49,7 @@ class AdoptionServiceTest {
         var petUuid = adoptionService.registerForAdoption("cat");
         var kitty = adoptionService.adoptPet(petUuid,"adam", "kitty");
 
-        List<PetLogInfo> kittyHistory = adoptionService.listPetRevisions(kitty.getUuid());
+        List<PetHistoryEntry> kittyHistory = adoptionService.listPetHistory(kitty.getUuid());
         assertNotNull(kittyHistory);
 
 
@@ -63,9 +64,9 @@ class AdoptionServiceTest {
             return (args) -> {
                 // Add species
                 speciesRepo.saveAll(List.of(
-                  Species.valueOf("dog"),
-                  Species.valueOf("cat"),
-                  Species.valueOf("chinchilla")));
+                  Species.forName("dog"),
+                  Species.forName("cat"),
+                  Species.forName("chinchilla")));
 
                 // Add Owners
                 ownerRepo.saveAll( List.of(
