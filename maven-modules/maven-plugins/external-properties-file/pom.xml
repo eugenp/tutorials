@@ -28,6 +28,15 @@
                 </configuration>
             </plugin>
             <plugin>
+                <artifactId>maven-verifier-plugin</artifactId>
+                <version>${maven.verifier.version}</version>
+                <configuration>
+                    <verificationFile>../input-resources/verifications.xml</verificationFile>
+                    <failOnError>false</failOnError>
+                </configuration>
+            </plugin>
+
+            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>properties-maven-plugin</artifactId>
                 <version>${properties.plugin.version}</version>
