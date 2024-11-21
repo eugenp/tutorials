@@ -10,4 +10,5 @@ This module contains articles about networking in Java
 - [Sending Emails with Java](https://www.baeldung.com/java-email)
 - [Download a File From an URL in Java](https://www.baeldung.com/java-download-file)
 - [Do a Simple HTTP Request in Java](https://www.baeldung.com/java-http-request)
+- [Understanding the java.net.SocketException Broken Pipe Error](https://www.baeldung.com/java-socketexception-broken-pipe-error)
 - [[More -->]](/core-java-modules/core-java-networking-2)
