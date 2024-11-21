@@ -749,6 +749,7 @@
                 <module>libraries-stream</module>
                 <module>libraries-testing-2</module>
                 <module>libraries-transform</module>
+                <module>libraries-security-2</module>
                 <module>lightrun</module>
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
@@ -1128,6 +1129,7 @@
                 <module>libraries-primitive</module>
                 <module>libraries-reporting</module>
                 <module>libraries-rpc</module>
+                <module>libraries-security-2</module>
                 <module>libraries-server-2</module>
                 <module>libraries-server</module>
                 <module>libraries-stream</module>
