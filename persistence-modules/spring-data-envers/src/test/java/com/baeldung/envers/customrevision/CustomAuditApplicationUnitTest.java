@@ -1,31 +1,29 @@
-package com.baeldung.envers.customrevision.service;
+package com.baeldung.envers.customrevision;
 
 import com.baeldung.envers.customrevision.domain.Owner;
 import com.baeldung.envers.customrevision.domain.PetHistoryEntry;
-import com.baeldung.envers.customrevision.domain.PetLogInfo;
 import com.baeldung.envers.customrevision.domain.Species;
 import com.baeldung.envers.customrevision.repository.OwnerRepository;
-import com.baeldung.envers.customrevision.repository.PetRepository;
 import com.baeldung.envers.customrevision.repository.SpeciesRepository;
+import com.baeldung.envers.customrevision.service.AdoptionService;
+import com.baeldung.envers.customrevision.service.RequestInfo;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
-import org.springframework.data.envers.repository.support.EnversRevisionRepositoryFactoryBean;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.transaction.support.TransactionTemplate;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.function.Supplier;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@Slf4j
 @SpringBootTest
-@EnableJpaRepositories(
-  basePackages = "com.baeldung.envers.customrevision",
-  repositoryFactoryBeanClass = EnversRevisionRepositoryFactoryBean.class)
-class AdoptionServiceTest {
+class CustomAuditApplicationUnitTest {
 
     @Autowired
     AdoptionService adoptionService;
@@ -51,12 +49,22 @@ class AdoptionServiceTest {
 
         List<PetHistoryEntry> kittyHistory = adoptionService.listPetHistory(kitty.getUuid());
         assertNotNull(kittyHistory);
-
+        assertTrue(kittyHistory.size() > 0 , "kitty should have a history");
+        for (PetHistoryEntry e : kittyHistory) {
+            log.info("Entry: {}", e);
+        }
 
     }
 
     @TestConfiguration
     static class TestConfig {
+
+        @Bean
+        Supplier<Optional<RequestInfo>> requestInfoSupplier() {
+
+            return () -> Optional.of(new RequestInfo("example.com", "thomas"));
+
+        }
 
         @Bean
         CommandLineRunner populateShelter(SpeciesRepository speciesRepo, OwnerRepository ownerRepo) {
