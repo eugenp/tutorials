@@ -1,8 +1,10 @@
 package com.baeldung.socket.read;
 
-import java.net.*;
+import java.io.BufferedInputStream;
+import java.io.DataInputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.nio.charset.StandardCharsets;
-import java.io.*; 
 
 public class Server {
     

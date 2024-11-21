@@ -1,11 +1,11 @@
 package com.baeldung.networking.udp.broadcast;
 
-import org.junit.After;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.After;
+import org.junit.Test;
 
 public class BroadcastLiveTest {
     private BroadcastingClient client;

@@ -1,6 +1,9 @@
 package com.baeldung.networking.cookies;
 
-import java.net.*;
+import java.net.CookieManager;
+import java.net.CookieStore;
+import java.net.HttpCookie;
+import java.net.URI;
 import java.util.List;
 
 public class PersistentCookieStore implements CookieStore, Runnable {

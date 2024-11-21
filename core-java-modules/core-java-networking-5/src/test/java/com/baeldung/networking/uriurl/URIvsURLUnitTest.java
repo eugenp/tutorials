@@ -1,12 +1,15 @@
 package com.baeldung.networking.uriurl;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+
 import org.apache.commons.io.IOUtils;
-import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class URIvsURLUnitTest {

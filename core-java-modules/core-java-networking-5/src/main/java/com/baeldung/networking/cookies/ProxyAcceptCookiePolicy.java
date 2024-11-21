@@ -1,6 +1,10 @@
 package com.baeldung.networking.cookies;
 
-import java.net.*;
+import java.net.CookiePolicy;
+import java.net.HttpCookie;
+import java.net.InetAddress;
+import java.net.URI;
+import java.net.UnknownHostException;
 
 public class ProxyAcceptCookiePolicy implements CookiePolicy {
     String acceptedProxy;
