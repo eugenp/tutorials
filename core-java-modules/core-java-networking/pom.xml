@@ -25,15 +25,9 @@
             <version>${apache.httpclient.version}</version>
         </dependency>
         <dependency>
-            <groupId>jakarta.xml.bind</groupId>
-            <artifactId>jakarta.xml.bind-api</artifactId>
-            <version>${jakarta.bind.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.icegreen</groupId>
             <artifactId>greenmail</artifactId>
             <version>${greenmail.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents.client5</groupId>
@@ -54,7 +48,6 @@
     <properties>
         <springframework.spring-web.version>4.3.4.RELEASE</springframework.spring-web.version>
         <apache.httpclient.version>4.5.14</apache.httpclient.version>
-        <jakarta.bind.version>2.3.3</jakarta.bind.version>
         <greenmail.version>2.0.0-alpha-3</greenmail.version>
         <apache.httpclient5.version>5.3.1</apache.httpclient5.version>
     </properties>

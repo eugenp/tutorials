@@ -11,4 +11,5 @@ This module contains articles about networking in Java
 - [Download a File From an URL in Java](https://www.baeldung.com/java-download-file)
 - [Do a Simple HTTP Request in Java](https://www.baeldung.com/java-http-request)
 - [Understanding the java.net.SocketException Broken Pipe Error](https://www.baeldung.com/java-socketexception-broken-pipe-error)
+- [Connection Timeout vs. Read Timeout for Java Sockets](https://www.baeldung.com/java-socket-connection-read-timeout)
 - [[More -->]](/core-java-modules/core-java-networking-2)
