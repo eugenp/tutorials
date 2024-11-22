@@ -83,16 +83,19 @@ class NullValueCheckUnitTest {
     }
 
     @Test
-    void givenTreeMap_whenNullKeyValueAdded_fails() {
+    void givenTreeMap_whenNullKeyAdded_fails() {
         // adding nulls to key value pairs
-        Integer[] numberArray = { null, 0, 1, null, 2, 3, null };
         Map<Integer, Integer> numbers = new TreeMap<>();
-        for (Integer num : numberArray) {
-            if (num == null) {
-                assertThrows(NullPointerException.class, () -> numbers.put(num, num));
-            } else {
-                assertDoesNotThrow(() -> numbers.put(num, num));
-            }
-        }
+        // adding null key and null value
+        assertThrows(NullPointerException.class, () -> numbers.put(null, null));
+
+        // adding null key and non-null value
+        assertThrows(NullPointerException.class, () -> numbers.put(null, 1));
+
+        // adding non-null key and null value
+        assertDoesNotThrow(() -> numbers.put(1, null));
+
+        // adding non-null key and non-null value
+        assertDoesNotThrow(() -> numbers.put(1, 1));
     }
 }
