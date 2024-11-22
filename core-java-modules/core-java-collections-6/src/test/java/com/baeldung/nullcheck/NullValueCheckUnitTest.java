@@ -30,7 +30,7 @@ class NullValueCheckUnitTest {
         // adding nulls to a list
         Integer[] numberArray = { null, 0, 1, null, 2, 3, null };
         List<Integer> numbers = Arrays.asList(numberArray);
-        assertEquals(countNulls.apply(numbers), 3);
+        assertEquals(3, countNulls.apply(numbers));
 
         // accessing nulls from a list
         assertNull(numbers.get(0));
@@ -45,7 +45,7 @@ class NullValueCheckUnitTest {
         // adding nulls to a HashSet
         Integer[] numberArray = { null, 0, 1, null, 2, 3, null };
         Set<Integer> numbers = new HashSet<>(Arrays.asList(numberArray));
-        assertEquals(countNulls.apply(numbers), 1);
+        assertEquals(1, countNulls.apply(numbers));
 
         // accessing null from a set
         assertTrue(numbers.contains(null));
@@ -68,8 +68,8 @@ class NullValueCheckUnitTest {
         Map<Integer, Integer> numbers = new HashMap<>();
         Arrays.stream(numberArray)
             .forEach(integer -> numbers.put(integer, integer));
-        assertEquals(countNulls.apply(numbers.keySet()), 1);
-        assertEquals(countNulls.apply(numbers.values()), 1);
+        assertEquals(1, countNulls.apply(numbers.keySet()));
+        assertEquals(1, countNulls.apply(numbers.values()));
 
         // accessing nulls from a map
         assertTrue(numbers.containsKey(null));
