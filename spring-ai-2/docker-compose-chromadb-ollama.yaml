@@ -1,6 +1,6 @@
 #  To run: docker compose -f docker-compose-chromadb-ollama.yaml up -d
 
-version: 3.9
+version: '3.9'
 
 networks:
   net:
