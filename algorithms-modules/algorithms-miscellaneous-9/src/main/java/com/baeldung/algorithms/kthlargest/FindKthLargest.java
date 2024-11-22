@@ -13,7 +13,7 @@ public class FindKthLargest {
     }
 
     public int findSecondLargestWihoutSorting(Integer[] arr) {
-        int[] result = new int[2];
+        Integer[] result = new int[2];
 
         if (arr == null || arr.length < 2) {
             throw new Exception(
