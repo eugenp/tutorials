@@ -7,13 +7,14 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import java.time.Instant;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.junit.Test;
+
 import com.squareup.moshi.FromJson;
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.JsonQualifier;
 import com.squareup.moshi.Moshi;
 import com.squareup.moshi.ToJson;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.junit.Test;
 
 public class AlternativeAdapterUnitTest {
     @Test
