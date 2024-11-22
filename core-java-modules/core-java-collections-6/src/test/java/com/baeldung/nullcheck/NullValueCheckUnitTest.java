@@ -1,5 +1,6 @@
 package com.baeldung.nullcheck;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -86,7 +87,12 @@ class NullValueCheckUnitTest {
         // adding nulls to key value pairs
         Integer[] numberArray = { null, 0, 1, null, 2, 3, null };
         Map<Integer, Integer> numbers = new TreeMap<>();
-        assertThrows(NullPointerException.class, () -> Arrays.stream(numberArray)
-            .forEach(integer -> numbers.put(integer, integer)));
+        for (Integer num : numberArray) {
+            if (num == null) {
+                assertThrows(NullPointerException.class, () -> numbers.put(num, num));
+            } else {
+                assertDoesNotThrow(() -> numbers.put(num, num));
+            }
+        }
     }
 }
