@@ -1,10 +1,10 @@
 package com.baeldung.random;
 
-import java.security.SecureRandom;
 import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
-import java.util.stream.DoubleStream;
 
 public interface SecureRandomDemo {
 

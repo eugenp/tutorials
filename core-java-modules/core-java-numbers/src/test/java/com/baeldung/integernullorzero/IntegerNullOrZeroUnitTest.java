@@ -1,9 +1,9 @@
-package com.baeldung.intnullorzero;
+package com.baeldung.integernullorzero;
 
-import static com.baeldung.IntegerNullOrZero.usingObjectUtils;
-import static com.baeldung.IntegerNullOrZero.usingOptional;
-import static com.baeldung.IntegerNullOrZero.usingStandardWay;
-import static com.baeldung.IntegerNullOrZero.usingTernaryOperator;
+import static com.baeldung.integernullorzero.IntegerNullOrZero.usingObjectUtils;
+import static com.baeldung.integernullorzero.IntegerNullOrZero.usingOptional;
+import static com.baeldung.integernullorzero.IntegerNullOrZero.usingStandardWay;
+import static com.baeldung.integernullorzero.IntegerNullOrZero.usingTernaryOperator;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

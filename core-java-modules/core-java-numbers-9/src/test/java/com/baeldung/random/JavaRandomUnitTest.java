@@ -1,11 +1,11 @@
 package com.baeldung.random;
 
+import java.util.Random;
+
 import org.apache.commons.math3.random.RandomDataGenerator;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.Random;
 
 public class JavaRandomUnitTest {
 

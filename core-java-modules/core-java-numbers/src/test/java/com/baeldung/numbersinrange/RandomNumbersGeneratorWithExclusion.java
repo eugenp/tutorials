@@ -1,4 +1,4 @@
-package com.baeldung.randomnumbers;
+package com.baeldung.numbersinrange;
 
 import java.util.Arrays;
 import java.util.OptionalInt;
