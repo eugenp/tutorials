@@ -27,7 +27,7 @@ public class DateTimeValues {
     private String zoneId;
 
     public DateTimeValues() {
-        Clock clock = Clock.fixed(Instant.parse("2024-08-01T14:15:00Z"), ZoneId.of("UCT"));
+        Clock clock = Clock.fixed(Instant.parse("2024-08-01T14:15:00Z"), ZoneId.of("UTC"));
 
         this.date = new Date(clock.millis());
         this.localDate = LocalDate.now(clock);
