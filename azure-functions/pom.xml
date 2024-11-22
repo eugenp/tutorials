@@ -4,10 +4,8 @@
 
     <artifactId>azure-functions</artifactId>
     <version>1.0.0-SNAPSHOT</version>
+    <name>azure-functions</name>
     <packaging>jar</packaging>
-
-    <name>Azure Java Functions</name>
-
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -17,7 +15,6 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>17</java.version>
         <azure.functions.maven.plugin.version>1.24.0</azure.functions.maven.plugin.version>
         <azure.functions.java.library.version>3.0.0</azure.functions.java.library.version>
         <functionAppName>azure-functions-1722835137455</functionAppName>

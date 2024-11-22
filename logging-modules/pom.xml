@@ -21,6 +21,8 @@
         <module>log-mdc</module>
         <module>tinylog2</module>
         <module>logging-techniques</module>
+        <module>solarwinds-loggly</module>
+        <module>splunk-with-log4j2</module>
     </modules>
 
 </project>

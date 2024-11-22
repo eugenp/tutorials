@@ -7,8 +7,8 @@
     <name>mocks-2</name>
 
     <parent>
-        <artifactId>testing-modules</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>testing-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
@@ -24,16 +24,57 @@
             <version>${jackson.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${spring-test.version}</version>
+            <groupId>org.jukito</groupId>
+            <artifactId>jukito</artifactId>
+            <version>${jukito.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.jimfs</groupId>
+            <artifactId>jimfs</artifactId>
+            <version>${jimf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jmockit</groupId>
+            <artifactId>jmockit</artifactId>
+            <version>${jmockit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.easymock</groupId>
+            <artifactId>easymock</artifactId>
+            <version>${easymock.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <argLine>
+                        --add-opens java.base/java.lang=ALL-UNNAMED
+                        -javaagent:${settings.localRepository}/org/jmockit/jmockit/${jmockit.version}/jmockit-${jmockit.version}.jar
+                        -Djdk.attach.allowAttachSelf
+                    </argLine>
+                    <disableXmlReport>true</disableXmlReport>
+                    <excludes>
+                        <exclude>**/testsuite/**/*UnitTest.java</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
         <datafaker.version>1.6.0</datafaker.version>
-        <spring-test.version>5.3.25</spring-test.version>
+        <jukito.version>1.5</jukito.version>
+        <jimf.version>1.1</jimf.version>
+        <jmockit.version>1.49</jmockit.version>
+        <easymock.version>3.5.1</easymock.version>
     </properties>
 
 </project>

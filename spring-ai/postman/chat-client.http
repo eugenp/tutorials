@@ -1,0 +1,13 @@
+
+GET http://localhost:8080/api/articles/v1
+    ?question=suggest 10 articles for learning Quarkus
+
+###
+
+GET http://localhost:8080/api/articles/v2
+    ?question=suggest 10 articles for learning Quarkus
+
+###
+
+GET http://localhost:8080/api/articles/v3
+    ?question=suggest 10 articles for learning Quarkus

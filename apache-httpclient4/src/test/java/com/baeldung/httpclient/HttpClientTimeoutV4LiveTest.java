@@ -132,7 +132,7 @@ class HttpClientTimeoutV4LiveTest extends GetRequestMockServer {
         new Timer(true).schedule(task, hardTimeout * 1000);
 
         HttpResponse response = httpClient.execute(getMethod);
-        System.out.println("HTTP Status of response: " + response.getStatusLine().getStatusCode());
+        //System.out.println("HTTP Status of response: " + response.getStatusLine().getStatusCode());
     }
 
 }

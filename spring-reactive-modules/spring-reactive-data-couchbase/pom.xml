@@ -131,9 +131,6 @@
     <properties>
         <httpclient.version>5.3.1</httpclient.version>
         <couchbaseMock.version>1.5.27</couchbaseMock.version>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <java.version>17</java.version>
     </properties>
 
 </project>

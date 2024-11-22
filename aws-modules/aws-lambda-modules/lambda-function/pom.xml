@@ -53,6 +53,11 @@
             <version>${gson.version}</version>
         </dependency>
         <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>${commons-io.version}</version>
@@ -94,9 +99,11 @@
     </build>
 
     <properties>
+        <maven-shade-plugin.version>3.6.0</maven-shade-plugin.version>
+        <jackson.version>2.17.2</jackson.version>
         <json-simple.version>1.1.1</json-simple.version>
         <aws-lambda-java-events.version>3.11.0</aws-lambda-java-events.version>
-        <aws-lambda-java-core.version>1.2.1</aws-lambda-java-core.version>
+        <aws-lambda-java-core.version>1.2.3</aws-lambda-java-core.version>
         <gson.version>2.11.0</gson.version>
     </properties>
 

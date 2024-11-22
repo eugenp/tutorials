@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>data-oriented-programming</artifactId>
     <version>1.0</version>
-    <name>Data-Oriented Programming</name>
+    <name>data-oriented-programming</name>
     <description>Project for Data Oriented Programming in Java</description>
 
     <parent>
