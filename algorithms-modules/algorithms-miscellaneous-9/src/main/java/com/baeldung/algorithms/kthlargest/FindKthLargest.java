@@ -14,7 +14,7 @@ public class FindKthLargest {
 
     public int findSecondLargestWihoutSorting(Integer[] arr) throws Exception{
         Integer[] result = new Integer[2];
-        
+
         if (arr == null || arr.length < 2) {
             throw new Exception(
                 "Array should have at least two elements and be not null");
@@ -26,7 +26,17 @@ public class FindKthLargest {
                 result[0] = arr[1];
                 result[1] = arr[0];
             }
-         
+            if (arr.length > 2) {
+                for (int i = 2; i < arr.length; i++) {
+                    if (arr[i] > result[0]) {
+                        result[1] = result[0];
+                        result[0] = arr[i];
+
+                    } else if (arr[i] > result[1]) {
+                        result[1] = arr[i];
+                    }
+                }
+            }
         }
 
         return result[1];
