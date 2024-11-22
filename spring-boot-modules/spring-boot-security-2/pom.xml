@@ -65,6 +65,7 @@
     </build>
 
     <properties>
+        <start-class>com.baeldung.permitallanonymous.SecuredEcommerceApplication</start-class>
         <jstl.api.version>3.0.0</jstl.api.version>
     </properties>
 
