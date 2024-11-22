@@ -20,7 +20,11 @@ public class MessageReceiver {
     private QueueSession session;
     private QueueReceiver receiver;
 
-    public MessageReceiver() throws JMSException {
+    public MessageReceiver() {
+
+    }
+
+    public void initialize() throws JMSException {
         factory = new JMSSetup().createConnectionFactory();
         connection = factory.createQueueConnection();
         session = connection.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);
