@@ -12,9 +12,9 @@ public class FindKthLargest {
         return arr[targetIndex];
     }
 
-    public int findSecondLargestWihoutSorting(Integer[] arr) {
+    public int findSecondLargestWihoutSorting(Integer[] arr) throws Exception{
         Integer[] result = new Integer[2];
-
+        
         if (arr == null || arr.length < 2) {
             throw new Exception(
                 "Array should have at least two elements and be not null");
