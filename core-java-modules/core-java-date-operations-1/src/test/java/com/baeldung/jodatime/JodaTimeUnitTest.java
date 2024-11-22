@@ -55,9 +55,9 @@ public class JodaTimeUnitTest {
         Instant oneMinuteAgoInstant = new Instant(oneMinuteAgoDate);
 
         // epochMilli and epochSecond
-        long milliesFromEpochTime = System.currentTimeMillis();
-        long secondsFromEpochTime = milliesFromEpochTime / 1000;
-        Instant instantFromEpochMilli = Instant.ofEpochMilli(milliesFromEpochTime);
+        long millisFromEpochTime = System.currentTimeMillis();
+        long secondsFromEpochTime = millisFromEpochTime / 1000;
+        Instant instantFromEpochMilli = Instant.ofEpochMilli(millisFromEpochTime);
         Instant instantFromEpocSeconds = Instant.ofEpochSecond(secondsFromEpochTime);
 
         // convert Instants
