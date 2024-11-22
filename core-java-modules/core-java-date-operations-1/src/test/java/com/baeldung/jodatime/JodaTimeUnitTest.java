@@ -71,7 +71,7 @@ public class JodaTimeUnitTest {
 
         // Duration, Period, Instant
         long currentTimestamp = System.currentTimeMillis();
-        long oneHourAgo = currentTimestamp - 24*60*1000;
+        long oneHourAgo = currentTimestamp - 24 * 60 * 1000;
 
         Duration duration = new Duration(oneHourAgo, currentTimestamp);
         Instant.now().plus(duration);
@@ -84,7 +84,7 @@ public class JodaTimeUnitTest {
 
         // converting between classes
         DateTimeUtils.setCurrentMillisFixed(currentTimestamp);
-        LocalDateTime currentDateAndTime  = LocalDateTime.now();
+        LocalDateTime currentDateAndTime = LocalDateTime.now();
 
         assertEquals(new DateTime(currentTimestamp), currentDateAndTime.toDateTime());
         assertEquals(new LocalDate(currentTimestamp), currentDateAndTime.toLocalDate());
