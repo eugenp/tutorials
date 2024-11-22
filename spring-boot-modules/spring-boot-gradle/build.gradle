@@ -38,7 +38,7 @@ springBoot {
     mainClass = 'com.baeldung.DemoApplication'
 }
 
-bootJar {
+tasks.named("bootJar") {
 //    This is overridden by the mainClass in springBoot{} and added here for reference purposes.
     mainClass = 'com.baeldung.DemoApplication'
 
