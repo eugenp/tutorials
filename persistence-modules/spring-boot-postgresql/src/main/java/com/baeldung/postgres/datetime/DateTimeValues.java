@@ -21,8 +21,8 @@ public class DateTimeValues {
     private OffsetDateTime offsetDateTime;
     private java.sql.Date sqlDate;
 
-@Column(columnDefinition = "date")
-private Instant instantAsDate;
+    @Column(columnDefinition = "date")
+    private Instant instantAsDate;
 
     private String zoneId;
 
