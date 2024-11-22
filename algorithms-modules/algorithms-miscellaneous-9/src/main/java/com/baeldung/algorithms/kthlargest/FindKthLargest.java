@@ -12,6 +12,36 @@ public class FindKthLargest {
         return arr[targetIndex];
     }
 
+    public int findSecondLargestWihoutSorting(int[] arr) {
+        int[] result = new int[2];
+
+        if (arr == null || arr.length < 2) {
+            throw new Exception(
+                "Array should have at least two elements and be not null");
+        } else {
+            if (arr[0] > arr[1]) {
+                result[0] = arr[0];
+                result[1] = arr[1];
+            } else {
+                result[0] = arr[1];
+                result[1] = arr[0];
+            }
+            if (arr.length > 2) {
+                for (int i = 2; i < arr.length; i++) {
+                    if (arr[i] > result[0]) {
+                        result[1] = result[0];
+                        result[0] = arr[i];
+
+                    } else if (arr[i] > result[1]) {
+                        result[1] = arr[i];
+                    }
+                }
+            }
+        }
+
+        return result[1];
+    }
+    
     public int findKthLargestBySortingDesc(Integer[] arr, int k) {
         Arrays.sort(arr, Collections.reverseOrder());
         return arr[k - 1];
