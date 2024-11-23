@@ -140,6 +140,7 @@
         <module>hibernate-annotations-2</module>
         <module>hibernate-reactive</module>
         <module>my-sql</module>
+        <module>spring-data-envers</module>
     </modules>
 
     <properties>
