@@ -16,7 +16,7 @@ class FindKthLargestUnitTest {
     }
 
     @Test
-    void givenIntArray_whenFindSecondLargestWithoutSorting_thenGetResult() {
+    void givenIntArray_whenFindSecondLargestWithoutSorting_thenGetResult() throws Exception {
         assertThat(findKthLargest.findSecondLargestWithoutSorting(arr)).isEqualTo(9);
     }
 
