@@ -15,7 +15,7 @@ public class ImperativeElasticsearchConfig extends ElasticsearchConfiguration {
     @Override
     public ClientConfiguration clientConfiguration() {
         ClientConfiguration clientConfiguration = ClientConfiguration.builder()
-            .connectedTo("elasticsearch:9200")
+            .connectedTo("127.0.0.1:9200")
             .usingSsl(false)
             .withConnectTimeout(Duration.ofSeconds(30))
             .withSocketTimeout(Duration.ofSeconds(30))
