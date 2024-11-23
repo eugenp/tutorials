@@ -13,15 +13,16 @@
     <description>apache-kafka-elastic</description>
 
     <properties>
-        <spring-boot.version>3.3.2</spring-boot.version>
-        <testcontainers-kafka.version>1.19.3</testcontainers-kafka.version>
-        <testcontainers-jupiter.version>1.19.3</testcontainers-jupiter.version>
-        <testcontaienr.version>1.19.3</testcontaienr.version>
-        <spring-kafka.version>3.1.2</spring-kafka.version>
-        <spring-boot-starter-web.version>3.1.0</spring-boot-starter-web.version>
+        <java.version>17</java.version>
+        <spring-boot.version>3.3.3</spring-boot.version>
+        <testcontainers-kafka.version>1.19.8</testcontainers-kafka.version>
+        <testcontainers-jupiter.version>1.19.8</testcontainers-jupiter.version>
+        <testcontainers-elastic.version>1.19.8</testcontainers-elastic.version>
+        <testcontaienr.version>1.19.8</testcontaienr.version>
+        <spring-kafka.version>3.2.3</spring-kafka.version>
+        <spring-boot-starter-web.version>3.3.3</spring-boot-starter-web.version>
         <spring-boot-starter-data-elasticsearch.version>3.3.3</spring-boot-starter-data-elasticsearch.version>
         <spring-boot-starter-validation.version>3.3.3</spring-boot-starter-validation.version>
-        <org.testcontainers.elasticsearch.version>1.19.8</org.testcontainers.elasticsearch.version>
     </properties>
     <dependencies>
         <dependency>
@@ -65,7 +66,7 @@
         <dependency>
             <groupId>org.testcontainers</groupId>
             <artifactId>elasticsearch</artifactId>
-            <version>${org.testcontainers.elasticsearch.version}</version>
+            <version>${testcontainers-elastic.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
