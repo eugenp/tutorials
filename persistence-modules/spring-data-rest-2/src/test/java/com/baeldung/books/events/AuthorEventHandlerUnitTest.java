@@ -1,13 +1,11 @@
 package com.baeldung.books.events;
 
-import com.baeldung.books.events.AuthorEventHandler;
-import com.baeldung.books.models.Author;
+import static org.mockito.Mockito.mock;
 
 import org.junit.Test;
 import org.mockito.Mockito;
-import org.springframework.data.rest.core.annotation.RepositoryEventHandler;
 
-import static org.mockito.Mockito.mock;
+import com.baeldung.books.models.Author;
 
 public class AuthorEventHandlerUnitTest {
 

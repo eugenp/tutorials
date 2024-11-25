@@ -7,7 +7,6 @@ This module contains articles about Spring Data REST
 - [Working with Relationships in Spring Data REST](https://www.baeldung.com/spring-data-rest-relationships)
 - [AngularJS CRUD Application with Spring Data REST](https://www.baeldung.com/angularjs-crud-with-spring-data-rest)
 - [Projections and Excerpts in Spring Data REST](https://www.baeldung.com/spring-data-rest-projections-excerpts)
-- [Spring Data REST Events with @RepositoryEventHandler](https://www.baeldung.com/spring-data-rest-events)
 - [Customizing HTTP Endpoints in Spring Data REST](https://www.baeldung.com/spring-data-rest-customize-http-endpoints)
 - [Spring Boot With SQLite](https://www.baeldung.com/spring-boot-sqlite)
 - [Spring Data Web Support](https://www.baeldung.com/spring-data-web-support)

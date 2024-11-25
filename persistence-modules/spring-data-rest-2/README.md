@@ -6,6 +6,7 @@ This module contains articles about Spring Data REST
 - [Guide to Spring Data REST Validators](https://www.baeldung.com/spring-data-rest-validators)
 - [Spring REST and HAL Browser](https://www.baeldung.com/spring-rest-hal)
 - [Spring Data Rest – Serializing the Entity ID](https://www.baeldung.com/spring-data-rest-serialize-entity-id)
+- [Spring Data REST Events with @RepositoryEventHandler](https://www.baeldung.com/spring-data-rest-events)
 
 ### The Course
 The "REST With Spring" Classes: http://bit.ly/restwithspring
