@@ -3,6 +3,7 @@ package com.baeldung.hateoasvsswagger;
 import com.baeldung.hateoasvsswagger.model.NewUser;
 import com.baeldung.hateoasvsswagger.model.User;
 import com.baeldung.hateoasvsswagger.repository.UserRepository;
+
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.http.MediaType;
@@ -53,7 +54,7 @@ public class UserHateoasController {
         User createdUser = userService.createUser(user);
         createdUser.add(linkTo(methodOn(UserController.class).getUserById(createdUser.getId())).withSelfRel());
         return ResponseEntity.created(linkTo(methodOn(UserController.class).getUserById(createdUser.getId())).toUri())
-                .body(EntityModel.of(createdUser));
+          .body(EntityModel.of(createdUser));
     }
 }
 
