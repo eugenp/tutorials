@@ -1,7 +1,7 @@
 package com.baeldung.springdatawebsupport.application.test;
 
-import com.baeldung.springdatawebsupport.application.controllers.UserController;
 import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +12,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+
+import com.baeldung.springdatawebsupport.application.controllers.UserController;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
