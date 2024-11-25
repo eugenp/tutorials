@@ -1,0 +1,44 @@
+---
+services:
+  jaeger-all-in-one:
+    image: jaegertracing/all-in-one:latest
+    container_name: jaeger
+    ports:
+      - 16686:16686
+    networks:
+      - otel-network
+
+  telemetry-collector:
+    image: otel/opentelemetry-collector:latest
+    volumes:
+      - ./collector-config.yaml:/etc/collector-config.yaml
+    command:
+      - --config=/etc/collector-config.yaml
+    ports:
+      - 4317:4317
+      - 4318:4318
+      - 8889:8889
+      - 55679:55679
+    networks:
+      - otel-network
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    volumes:
+      - "./prometheus.yml:/etc/prometheus/prometheus.yml"
+    ports:
+      - 9090:9090    
+    networks:
+      - otel-network        
+
+  web:
+    image: trivia-webservice:latest
+    ports:
+      - 8080:8080
+    networks:
+      - otel-network      
+
+networks:
+  otel-network:
+    driver: bridge

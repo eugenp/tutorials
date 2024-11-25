@@ -4,6 +4,7 @@
     <artifactId>core-java-string-operations-11</artifactId>
     <packaging>jar</packaging>
     <name>core-java-string-operations-11</name>
+
     <parent>
         <groupId>com.baeldung.core-java-modules</groupId>
         <artifactId>core-java-modules</artifactId>

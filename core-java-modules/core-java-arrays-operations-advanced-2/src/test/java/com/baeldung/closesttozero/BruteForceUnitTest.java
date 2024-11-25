@@ -11,7 +11,7 @@ class BruteForceUnitTest {
 
     @Test
     void whenFindingClosestToZeroWithBruteForce_thenResultShouldBeCorrect() throws IllegalAccessException {
-        int[] arr = {11, 60, -1, 70, -11, 85};
-        assertEquals(-1, BruteForce.findClosestToZero(arr));
+        int[] arr = {10,2,4,-2,12,25};
+        assertEquals(2, BruteForce.findClosestToZero(arr));
     }
 }

@@ -35,12 +35,12 @@ dependencies {
 }
 
 springBoot {
-    mainClassName = 'com.baeldung.DemoApplication'
+    mainClass = 'com.baeldung.DemoApplication'
 }
 
-bootJar {
-//    This is overridden by the mainClassName in springBoot{} and added here for reference purposes.
-    mainClassName = 'com.baeldung.DemoApplication'
+tasks.named("bootJar") {
+//    This is overridden by the mainClass in springBoot{} and added here for reference purposes.
+    mainClass = 'com.baeldung.DemoApplication'
 
 //    This block serves the same purpose as the above thus commented out. Added here for reference purposes
 //    manifest {
