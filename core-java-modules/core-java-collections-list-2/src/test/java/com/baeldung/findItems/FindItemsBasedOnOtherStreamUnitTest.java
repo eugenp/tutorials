@@ -1,14 +1,13 @@
 package com.baeldung.findItems;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test; 
 
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import org.junit.Test;
 
 public class FindItemsBasedOnOtherStreamUnitTest {
 
@@ -23,14 +22,28 @@ public class FindItemsBasedOnOtherStreamUnitTest {
         populate(employeeList, departmentList);
 
         List<Employee> filteredList = employeeList.stream()
-            .filter(empl -> departmentList.stream()
-                .anyMatch(dept -> dept.getDepartment()
-                    .equals("sales") && empl.getEmployeeId()
-                    .equals(dept.getEmployeeId())))
-            .collect(Collectors.toList());
+          .filter(empl -> departmentList.stream()
+          .anyMatch(dept -> dept.getDepartment()
+          .equals("sales") && empl.getEmployeeId()
+          .equals(dept.getEmployeeId())))
+          .collect(Collectors.toList());
 
-        assertEquals(expectedId, filteredList.get(0)
-            .getEmployeeId());
+        Assertions.assertEquals(expectedId, filteredList.get(0).getEmployeeId());
+    }
+
+    @Test
+    public void givenEmployeeListToExclude_thenDepartmentListIsFilteredCorrectly() {
+        String expectedDepartment = "sales";
+
+        List<Integer> employeeIdList = Arrays.asList(1001, 1002, 1004, 1005);
+
+        populate(employeeList, departmentList);
+      
+        List<Department> filteredList = departmentList.stream()
+          .filter(dept -> !employeeIdList.contains(dept.getEmployeeId()))
+          .collect(Collectors.toList());
+
+        Assertions.assertNotEquals(expectedDepartment, filteredList.get(0).getDepartment());
     }
 
     private void populate(List<Employee> EmplList, List<Department> deptList) {
