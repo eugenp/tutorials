@@ -36,6 +36,7 @@
         <module>hibernate-mapping-2</module>
         <module>hibernate-annotations</module>
         <module>hibernate-exceptions</module>
+        <module>hibernate-exceptions-2</module>
         <module>hibernate-libraries</module>
         <module>hibernate-jpa</module>
         <module>hibernate-jpa-2</module>
