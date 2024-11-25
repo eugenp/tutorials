@@ -1,6 +1,8 @@
 package com.baeldung.findItems;
 
-import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
 import org.junit.jupiter.api.Test; 
 
 import java.text.ParseException;
@@ -28,7 +30,7 @@ public class FindItemsBasedOnOtherStreamUnitTest {
           .equals(dept.getEmployeeId())))
           .collect(Collectors.toList());
 
-        Assertions.assertEquals(expectedId, filteredList.get(0).getEmployeeId());
+        assertEquals(expectedId, filteredList.get(0).getEmployeeId());
     }
 
     @Test
@@ -43,7 +45,10 @@ public class FindItemsBasedOnOtherStreamUnitTest {
           .filter(dept -> !employeeIdList.contains(dept.getEmployeeId()))
           .collect(Collectors.toList());
 
-        Assertions.assertNotEquals(expectedDepartment, filteredList.get(0).getDepartment());
+        for(Department department : filteredList) {
+            assertNotEquals(expectedDepartment, department.getDepartment());
+        }
+    //    assertNotEquals(expectedDepartment, filteredList.get(0).getDepartment());
     }
 
     private void populate(List<Employee> EmplList, List<Department> deptList) {
