@@ -1,0 +1,43 @@
+@startuml
+!theme  sunlust
+<style>
+sequenceDiagram {
+LineColor #63b175
+LineThickness 1.7
+}
+</style>
+skinparam BackgroundColor #fffce8/#f8f9fa
+skinparam sequenceMessageAlign direction
+
+skinparam sequence {
+    ParticipantBackgroundColor #63b175
+    ParticipantPadding 50
+    ParticipantFontColor #fff
+}
+autonumber
+actor User
+participant "Application" as App
+participant "Chat Client" as ChatClient
+participant "LLM Service" as LLM
+
+activate User
+User -> ChatClient: query (e.g., "Show my orders")
+activate ChatClient
+ChatClient --> App: query
+activate App
+App -> LLM: prompt with function schema (e.g., GetOrderRequest)
+activate LLM
+LLM --> LLM: identify appropriate function
+LLM --> App: request to execute function
+deactivate LLM
+App --> App: executes function
+App -> LLM: function execution result
+activate LLM
+LLM --> App: Final response
+deactivate LLM
+App -> ChatClient: Final Response
+deactivate App
+ChatClient --> User: Final Response
+deactivate ChatClient
+
+@enduml

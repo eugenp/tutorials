@@ -1,0 +1,35 @@
+@startuml
+'https://plantuml.com/class-diagram
+hide empty attributes
+skinparam Handwritten false
+skinparam ClassBorderColor black
+skinparam BackgroundColor #fffce8/#f8f9fa
+skinparam class {
+ ArrowColor SeaGreen
+ BackgroundColor #fffce8
+}
+
+class OrderManagementService {
+  +createOrder(OrderInfo):Long
+  +getAllUserOrders(String):String
+}
+interface JpaRepository<OrderInfo, Long> {
+  +save(OrderInfo):OrderInfo
+}
+
+class OrderRepository {
+  +save():OrderInfo
+  +findByUserID():Optional<List<OrderInfo>>
+}
+class OrderInfo {
+  -orderID:Long
+  -userID:String
+  -orderQuantity:Integer
+}
+
+OrderManagementService -right-> OrderInfo:uses
+OrderManagementService -up-> OrderRepository:uses
+OrderRepository -up-|> JpaRepository:extends
+OrderRepository -down-> OrderInfo:uses
+
+@enduml

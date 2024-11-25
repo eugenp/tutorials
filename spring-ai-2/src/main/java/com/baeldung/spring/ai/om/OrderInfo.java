@@ -3,7 +3,6 @@ package com.baeldung.spring.ai.om;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.Transient;
 
 @Entity(name = "User_Order")
 public class OrderInfo   {
@@ -27,9 +26,6 @@ public class OrderInfo   {
         this.orderID = orderID;
     }
 
-    @Transient
-    private String orderInfoText;
-
     public Long getOrderID() {
         return orderID;
     }
@@ -44,14 +40,6 @@ public class OrderInfo   {
 
     public void setUserID(String userID) {
         this.userID = userID;
-    }
-
-    public String getOrderInfoText() {
-        return orderInfoText;
-    }
-
-    public void setOrderInfoText(String orderInfoText) {
-        this.orderInfoText = orderInfoText;
     }
 
     public Integer getOrderQuantity() {
