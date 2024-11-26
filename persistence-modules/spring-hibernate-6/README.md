@@ -8,3 +8,4 @@ This module contains articles about Hibernate 6 with Spring.
 - [@DynamicUpdate with Spring Data JPA](https://www.baeldung.com/spring-data-jpa-dynamicupdate)
 - [Bootstrapping Hibernate with Spring](https://www.baeldung.com/hibernate-spring)
 - [load() vs. get() in Hibernate](https://www.baeldung.com/hibernate-load-get-difference)
+- [Hibernate Second-Level Cache](https://www.baeldung.com/hibernate-second-level-cache)
