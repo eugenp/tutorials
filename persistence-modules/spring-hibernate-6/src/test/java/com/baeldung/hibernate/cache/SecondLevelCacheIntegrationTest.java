@@ -64,7 +64,7 @@ public class SecondLevelCacheIntegrationTest {
         assertTrue(cached);
         assertNotNull(service.findOneFoo(foo.getId()));
 
-        var bars = foo.getBars();
+        List<Bar> bars = foo.getBars();
 
         assertEquals(2, bars.size());
 
