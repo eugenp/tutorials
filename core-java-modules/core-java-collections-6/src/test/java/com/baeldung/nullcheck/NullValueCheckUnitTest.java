@@ -52,7 +52,7 @@ class NullValueCheckUnitTest {
         assertTrue(numbers.contains(null));
 
         // dereferencing nulls from a set
-        assertThrows(NullPointerException.class, () -> numbers.forEach(item -> item.toString()));
+        assertThrows(NullPointerException.class, () -> numbers.forEach(Object::toString));
     }
 
     @Test
