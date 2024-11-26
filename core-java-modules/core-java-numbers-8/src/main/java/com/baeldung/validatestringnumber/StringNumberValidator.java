@@ -15,6 +15,8 @@ public class StringNumberValidator {
         }
 
         int decimalCount = 0;
+        boolean hasDigits = false;
+
         for (char c : str.toCharArray()) {
             if (c == '.') {
                 decimalCount++;
@@ -22,11 +24,13 @@ public class StringNumberValidator {
                     return false;
                 }
             }
-            else if (!Character.isDigit(c)) {
+            else if (Character.isDigit(c)) {
+                hasDigits = true;
+            } else {
                 return false;
             }
         }
-        return true;
+        return hasDigits && decimalCount <= 1;
     }
 
     public static boolean isInteger(String str) {

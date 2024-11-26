@@ -16,6 +16,7 @@ public class StringNumberValidatorUnitTest {
         assertFalse(isNumeric("123a"));
         assertFalse(isNumeric("123.45.67"));
         assertFalse(isNumeric(""));
+        assertFalse(isNumeric("."));
         assertFalse(isNumeric(null));
     }
 
