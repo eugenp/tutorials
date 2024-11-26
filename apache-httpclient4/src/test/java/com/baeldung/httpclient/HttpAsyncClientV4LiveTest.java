@@ -31,11 +31,14 @@ import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
 import org.apache.http.ssl.SSLContexts;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.baeldung.GetRequestMockServer;
 
 class HttpAsyncClientV4LiveTest extends GetRequestMockServer {
 
+    private static final Logger log = LoggerFactory.getLogger(HttpAsyncClientV4LiveTest.class);
     private static final String HOST = "http://www.google.com";
     private static final String HOST_WITH_SSL = "https://mms.nw.ru/";
     private static final String HOST_WITH_PROXY = "http://httpbin.org/";
@@ -169,7 +172,7 @@ class HttpAsyncClientV4LiveTest extends GetRequestMockServer {
                 final HttpResponse response = future.get();
                 assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
             } catch (final Exception ex) {
-                System.out.println(ex.getLocalizedMessage());
+               log.debug(ex.getLocalizedMessage());
             }
         }
 

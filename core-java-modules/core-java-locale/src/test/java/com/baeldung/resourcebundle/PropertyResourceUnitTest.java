@@ -4,9 +4,11 @@ import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.Locale;
+import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 
 public class PropertyResourceUnitTest {
@@ -75,6 +77,15 @@ public class PropertyResourceUnitTest {
         // this depends on the local system encoding
         //assertEquals(bundle.getString("helloLabelNoEncoding"), "czeÅ\u009BÄ\u0087");
         Locale.setDefault(locale);
+    }
+
+    @Test
+    public void givenListResourceBundle_whenUsingInheritance_thenItShouldNotInherit() {
+        ResourceBundle listBundle = ResourceBundle.getBundle("com.baeldung.resourcebundle.CustomListResourceBundle", Locale.ENGLISH);
+
+        assertEquals("This is a custom message.", listBundle.getString("customMessage"));
+
+        assertThrows(MissingResourceException.class, () -> listBundle.getString("greeting"));
     }
 
 }

@@ -1,12 +1,13 @@
 ## Spring JPA (1)
 
 ### Relevant Articles: 
-- [The DAO with JPA and Spring](https://www.baeldung.com/spring-dao-jpa)
 - [JPA Pagination](https://www.baeldung.com/jpa-pagination)
 - [Sorting with JPA](https://www.baeldung.com/jpa-sort)
-- [Self-Contained Testing Using an In-Memory Database](https://www.baeldung.com/spring-jpa-test-in-memory-database)
 - [Spring Data Annotations](http://www.baeldung.com/spring-data-annotations)
-- [Inheritance vs. Composition in JPA](https://www.baeldung.com/jpa-inheritance-vs-composition)
+- [Many-To-Many Relationship in JPA](https://www.baeldung.com/jpa-many-to-many)
+- [A Guide to JPA with Spring](https://www.baeldung.com/the-persistence-layer-with-spring-and-jpa)
+- [Transactions with Spring and JPA](https://www.baeldung.com/transaction-configuration-with-jpa-and-spring)
+- [Multitenancy With Spring Data JPA](https://www.baeldung.com/multitenancy-with-spring-data-jpa)
 - More articles: [[next -->]](/spring-jpa-2)
 
 ### Eclipse Config 
