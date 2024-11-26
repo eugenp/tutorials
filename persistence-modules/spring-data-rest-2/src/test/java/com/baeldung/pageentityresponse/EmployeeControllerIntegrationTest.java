@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.http.HttpMethod;
@@ -30,7 +30,7 @@ public class EmployeeControllerIntegrationTest {
   void givenGetData_whenRestTemplateExchange_thenReturnsPageOfEmployee() {
       ResponseEntity<CustomPageImpl<EmployeeDto>> responseEntity = restTemplate.exchange(
         "http://localhost:" + port + "/organisation/data", HttpMethod.GET, null,
-        new ParameterizedTypeReference<CustomPageImpl<EmployeeDto>>() {
+        new ParameterizedTypeReference<>() {
         });
 
       assertEquals(200, responseEntity.getStatusCodeValue());

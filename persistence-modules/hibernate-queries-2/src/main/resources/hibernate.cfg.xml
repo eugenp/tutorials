@@ -14,5 +14,7 @@
         <property name="format_sql">true</property>
         <property name="hbm2ddl.auto">create-drop</property>
         <property name="current_session_context_class">thread</property>
+
+        <mapping class="com.baeldung.hibernate.groupby.Product"/>
     </session-factory>
 </hibernate-configuration>

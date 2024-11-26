@@ -68,6 +68,14 @@ public class MapMax {
             .getValue();
     }
 
+    public <K, V extends Comparable<V>> K keyOfMaxUsingStream(Map<K, V> map) {
+        return map.entrySet()
+            .stream()
+            .max(Map.Entry.comparingByValue())
+            .map(Map.Entry::getKey)
+            .orElse(null);
+    }
+
     public static void main(String[] args) {
 
         Map<Integer, Integer> map = new HashMap<Integer, Integer>();

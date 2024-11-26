@@ -45,7 +45,6 @@
     </build>
 
     <properties>
-
         <apache.commons.lang3.version>3.13.0</apache.commons.lang3.version>
         <apache.tika.version>2.9.1</apache.tika.version>
         <commons-text.version>1.10.0</commons-text.version>

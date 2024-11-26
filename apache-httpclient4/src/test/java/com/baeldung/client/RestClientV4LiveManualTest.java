@@ -39,7 +39,7 @@ class RestClientV4LiveManualTest {
 
     final String urlOverHttps = "http://localhost:8082/httpclient-simple/api/bars/1";
 
-    /*@Test
+    @Test
     void givenAcceptingAllCertificates_whenHttpsUrlIsConsumed_thenOk_2() throws GeneralSecurityException {
 
         final TrustStrategy acceptingTrustStrategy = (cert, authType) -> true;
@@ -59,7 +59,7 @@ class RestClientV4LiveManualTest {
         final HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory(httpClient);
         final ResponseEntity<String> response = new RestTemplate(requestFactory).exchange(urlOverHttps, HttpMethod.GET, null, String.class);
         assertThat(response.getStatusCode().value(), equalTo(200));
-    }*/
+    }
 
     @Test
     void givenAcceptingAllCertificatesUsing4_4_whenHttpsUrlIsConsumed_thenCorrect() throws IOException {
@@ -70,7 +70,7 @@ class RestClientV4LiveManualTest {
         assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
     }
 
-    /*@Test
+    @Test
     void givenAcceptingAllCertificatesUsing4_4_whenUsingRestTemplate_thenCorrect(){
         final CloseableHttpClient httpClient = HttpClients.custom().setSSLHostnameVerifier(new NoopHostnameVerifier()).build();
         final HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory();
@@ -78,7 +78,7 @@ class RestClientV4LiveManualTest {
 
         final ResponseEntity<String> response = new RestTemplate(requestFactory).exchange(urlOverHttps, HttpMethod.GET, null, String.class);
         assertThat(response.getStatusCode().value(), equalTo(200));
-    }*/
+    }
 
     @Test
     void whenHttpsUrlIsConsumed_thenException() throws ClientProtocolException, IOException {

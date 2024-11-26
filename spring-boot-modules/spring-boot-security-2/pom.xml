@@ -37,6 +37,22 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
         </dependency>
+        <!-- security taglib -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-taglibs</artifactId>
+        </dependency>
+        <!-- JSTL -->
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.servlet.jsp.jstl</groupId>
+            <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+            <version>${jstl.api.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -47,5 +63,10 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <start-class>com.baeldung.permitallanonymous.SecuredEcommerceApplication</start-class>
+        <jstl.api.version>3.0.0</jstl.api.version>
+    </properties>
 
 </project>
