@@ -30,6 +30,12 @@
             <plugin>
                 <artifactId>maven-verifier-plugin</artifactId>
                 <version>${maven.verifier.version}</version>
+                <executions>
+                    <execution>
+                        <id>default</id>
+                        <phase>none</phase>
+                    </execution>
+                </executions>
                 <configuration>
                     <verificationFile>../input-resources/verifications.xml</verificationFile>
                     <failOnError>false</failOnError>
@@ -48,10 +54,7 @@
                         </goals>
                         <configuration>
                             <files>
-                                <file>props/user.properties</file>
-                                <!-- we can also pass in the file through mvn command line:
                                 <file>${user.properties.file}</file>
-                                -->
                             </files>
                         </configuration>
                     </execution>
@@ -62,6 +65,7 @@
 
     <properties>
         <greeting>Hi there, how are you</greeting>
+        <user.properties.file>props/user.properties</user.properties.file>
         <properties.plugin.version>1.2.1</properties.plugin.version>
     </properties>
 </project>
