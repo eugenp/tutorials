@@ -25,7 +25,7 @@ class TestcontainersConfiguration {
     @Bean
     @ServiceConnection
     public OllamaContainer ollama() {
-        return new OllamaContainer("ollama/ollama:0.4.2");
+        return new OllamaContainer("ollama/ollama:0.4.5");
     }
 
 }
