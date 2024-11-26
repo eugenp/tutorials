@@ -37,24 +37,6 @@
             <version>${jackson.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.github.dreamhead</groupId>
-            <artifactId>moco-core</artifactId>
-            <version>${moco.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.github.dreamhead</groupId>
-            <artifactId>moco-runner</artifactId>
-            <version>${moco.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.github.dreamhead</groupId>
-            <artifactId>moco-junit</artifactId>
-            <version>${moco.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <version>${spring-test.version}</version>
@@ -66,7 +48,6 @@
         <java.version>17</java.version>
         <datafaker.version>1.6.0</datafaker.version>
         <jackson.version>2.14.1</jackson.version>
-        <moco.version>1.5.0</moco.version>
         <spring-test.version>5.3.25</spring-test.version>
     </properties>
 
