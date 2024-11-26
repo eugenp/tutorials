@@ -24,11 +24,11 @@
 
 	<cache alias="default-update-timestamps-region">
 		<expiry>
-			<ttl unit="minutes">1</ttl>
+			<none />
 		</expiry>
 
 		<resources>
-			<heap unit="entries">100000</heap>
+			<heap unit="entries">1000</heap>
 		</resources>
 	</cache>
 
