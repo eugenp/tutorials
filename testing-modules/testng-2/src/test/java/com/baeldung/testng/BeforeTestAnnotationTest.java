@@ -9,26 +9,26 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @SpringBootTest
-public class BeforeTestUnitTest extends AbstractTestNGSpringContextTests {
-    private static final Logger log = LoggerFactory.getLogger(BeforeTestUnitTest.class);
+public class BeforeTestAnnotationTest extends AbstractTestNGSpringContextTests {
+    private static final Logger log = LoggerFactory.getLogger(BeforeTestAnnotationTest.class);
 
     Counter counter;
 
     @BeforeTest
-    public void counterInitialized() {
+    public void init() {
         log.info("Initializing ...");
         counter = new Counter(0);
     }
 
     @Test
-    public void counterInitializedAddingValueTotalCountIncreased() {
+    public void givenCounterInitialized_whenAddingValue_thenTotalCountIncreased() {
         log.info("total counter before added: " + counter.getTotalCount());
         counter.addCounter(2);
         log.info("total counter after added: " + counter.getTotalCount());
     }
 
     @Test
-    public void counterInitializedSubtractingValueTotalCountDecreased() {
+    public void givenCounterInitialized_whenSubtractingValue_TotalCountDecreased() {
         log.info("total counter before subtracted: " + counter.getTotalCount());
         counter.subtractCounter(1);
         log.info("total counter after subtracted: " + counter.getTotalCount());
