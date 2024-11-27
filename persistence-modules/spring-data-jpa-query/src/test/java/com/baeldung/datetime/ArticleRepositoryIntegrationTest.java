@@ -1,4 +1,11 @@
-package com.baeldung.spring.data.jpa.query.datetime;
+package com.baeldung.datetime;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -6,15 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.baeldung.spring.data.jpa.query.datetime.Article;
-import com.baeldung.spring.data.jpa.query.datetime.ArticleRepository;
-
-import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.List;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest(properties="spring.sql.init.data-locations=classpath:import_entities.sql", showSql = false)
