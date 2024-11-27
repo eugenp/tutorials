@@ -20,16 +20,6 @@
             <version>${commons-lang3.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.hibernate.validator</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>${hibernate-validator.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.expressly</groupId>
-            <artifactId>expressly</artifactId>
-            <version>${expressly.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-core</artifactId>
             <version>${jmh-core.version}</version>
@@ -43,11 +33,6 @@
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
             <version>${commons-codec.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>${spring-core.version}</version>
         </dependency>
     </dependencies>
 
@@ -85,10 +70,7 @@
     </build>
 
     <properties>
-        <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
-        <expressly.version>5.0.0</expressly.version>
         <commons-codec.version>1.16.0</commons-codec.version>
-        <spring-core.version>5.3.0</spring-core.version>
     </properties>
 
 </project>
