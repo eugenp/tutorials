@@ -34,11 +34,11 @@ class NullValueCheckUnitTest {
         assertEquals(3, countNulls.apply(numbers));
 
         // accessing nulls from a list
-        assertNull(numbers.get(0));
-
+        final Integer number = numbers.get(0);
+        assertNull(number);
+        
         // dereferencing nulls from a list
-        assertThrows(NullPointerException.class, () -> numbers.get(0)
-            .toString());
+        assertThrows(NullPointerException.class, () -> number.toString());
     }
 
     @Test
