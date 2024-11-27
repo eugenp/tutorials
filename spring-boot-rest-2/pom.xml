@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.web</groupId>
     <artifactId>spring-boot-rest-2</artifactId>
-    <name>spring-boot-rest</name>
+    <name>spring-boot-rest-2</name>
     <packaging>war</packaging>
-    <description>Spring Boot Rest Module</description>
+    <description>Spring Boot Rest Module 2</description>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -51,12 +51,6 @@
                     <compilerArgs>
                         <arg>-parameters</arg>
                     </compilerArgs>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
                     <source>17</source>
                     <target>17</target>
                 </configuration>
