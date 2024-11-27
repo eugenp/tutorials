@@ -20,7 +20,7 @@ INSERT INTO User_Order (order_id, user_id, quantity) VALUES (13, 'Alex', 2);
 INSERT INTO User_Order (order_id, user_id, quantity) VALUES (14, 'John', 4);
 INSERT INTO User_Order (order_id, user_id, quantity) VALUES (15, 'Sophia', 3);
 INSERT INTO User_Order (order_id, user_id, quantity) VALUES (16, 'Jenny', 5);
-INSERT INTO User_Order (order_id, user_id, quantity) VALUES (17, 'Mary', 7);
+INSERT INTO User_Order (order_id, user_id, quantity) VALUES (17, 'Mary', 6);
 INSERT INTO User_Order (order_id, user_id, quantity) VALUES (18, 'Alex', 6);
 INSERT INTO User_Order (order_id, user_id, quantity) VALUES (19, 'John', 2);
 INSERT INTO User_Order (order_id, user_id, quantity) VALUES (20, 'Sophia', 1);
