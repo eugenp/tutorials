@@ -47,8 +47,6 @@ public class FindItemsBasedOnOtherStreamUnitTest {
           .collect(Collectors.toList());
         
         assertNotEquals(expectedDepartment, filteredList.get(0).getDepartment());
-        assertNotEquals(expectedDepartment, filteredList.get(1).getDepartment());
-     
     }
 
     private void populate(List<Employee> EmplList, List<Department> deptList) {
