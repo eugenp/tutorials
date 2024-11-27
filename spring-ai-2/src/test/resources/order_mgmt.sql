@@ -25,7 +25,3 @@ INSERT INTO User_Order (order_id, user_id, quantity) VALUES (18, 'Alex', 6);
 INSERT INTO User_Order (order_id, user_id, quantity) VALUES (19, 'John', 2);
 INSERT INTO User_Order (order_id, user_id, quantity) VALUES (20, 'Sophia', 1);
 INSERT INTO User_Order (order_id, user_id, quantity) VALUES (21, 'David', 1);
-
-
-
-
