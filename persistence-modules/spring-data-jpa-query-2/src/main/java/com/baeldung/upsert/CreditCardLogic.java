@@ -1,17 +1,15 @@
-package com.baeldung.spring.data.jpa.upsert;
+package com.baeldung.upsert;
 
 import java.math.BigInteger;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.stream.Collectors;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.baeldung.upsert.CreditCardRepository;
 
 @Service
 public class CreditCardLogic {
@@ -36,7 +34,7 @@ public class CreditCardLogic {
     public void updateOrInsertUsingBuiltInFeature(CreditCard creditCard) {
         Long id = creditCard.getId();
         if (creditCard.getId() == null) {
-            BigInteger nextVal = (BigInteger) em.createNativeQuery("SELECT nextval('credit_card_id_seq')")
+            Long nextVal = (Long) em.createNativeQuery("SELECT nextval('credit_card_id_seq')")
                 .getSingleResult();
             id = nextVal.longValue();
         }

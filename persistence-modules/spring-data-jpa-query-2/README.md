@@ -9,6 +9,7 @@ This module contains articles about querying data using Spring Data JPA .
 - [Stored Procedures with Hibernate](https://www.baeldung.com/stored-procedures-with-hibernate-tutorial)
 - [Eager/Lazy Loading in Hibernate](https://www.baeldung.com/hibernate-lazy-eager-loading)
 - [Auditing with JPA, Hibernate, and Spring Data JPA](https://www.baeldung.com/database-auditing-jpa)
+- [Implement Update-Or-Insert in Spring Data JPA](https://www.baeldung.com/spring-data-jpa-update-or-insert)
 - More articles: [[<-- prev]](../spring-data-jpa-query)[[more -->]](../spring-data-jpa-query-3)
 
 ### Eclipse Config 

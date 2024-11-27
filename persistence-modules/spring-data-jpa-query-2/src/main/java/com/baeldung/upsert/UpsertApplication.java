@@ -1,4 +1,4 @@
-package com.baeldung.spring.data.jpa.upsert;
+package com.baeldung.upsert;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
