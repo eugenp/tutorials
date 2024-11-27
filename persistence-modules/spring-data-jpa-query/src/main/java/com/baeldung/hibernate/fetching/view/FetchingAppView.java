@@ -1,14 +1,15 @@
 package com.baeldung.hibernate.fetching.view;
 
+import java.util.List;
+import java.util.Set;
+
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
 import com.baeldung.hibernate.fetching.model.OrderDetail;
 import com.baeldung.hibernate.fetching.model.UserEager;
 import com.baeldung.hibernate.fetching.model.UserLazy;
 import com.baeldung.hibernate.fetching.util.HibernateUtil;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-
-import java.util.List;
-import java.util.Set;
 
 public class FetchingAppView {
 

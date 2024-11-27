@@ -1,15 +1,16 @@
 package com.baeldung.hibernate.fetching;
 
-import com.baeldung.hibernate.fetching.model.OrderDetail;
-import com.baeldung.hibernate.fetching.view.FetchingAppView;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import java.util.Set;
+
 import org.hibernate.Hibernate;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Set;
-
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import com.baeldung.hibernate.fetching.model.OrderDetail;
+import com.baeldung.hibernate.fetching.view.FetchingAppView;
 
 public class HibernateFetchingIntegrationTest {
 

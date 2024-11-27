@@ -36,11 +36,23 @@
             <artifactId>spring-oxm</artifactId>
             <version>${spring-oxm.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <datasource-proxy.version>1.4.1</datasource-proxy.version>
         <spring-oxm.version>6.1.4</spring-oxm.version>
+        <hibernate.version>6.5.2.Final</hibernate.version>
+        <mysql.version>8.2.0</mysql.version>
     </properties>
 
 </project>
