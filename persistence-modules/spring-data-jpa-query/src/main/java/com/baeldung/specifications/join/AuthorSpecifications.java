@@ -1,8 +1,8 @@
-package com.baeldung.spring.data.jpa.query.specifications.join;
+package com.baeldung.specifications.join;
 
 import org.springframework.data.jpa.domain.Specification;
 
-import javax.persistence.criteria.*;
+import jakarta.persistence.criteria.Join;
 
 public class AuthorSpecifications {
 
@@ -16,7 +16,7 @@ public class AuthorSpecifications {
 
     public static Specification<Author> hasBookWithTitle(String bookTitle) {
         return (root, query, criteriaBuilder) -> {
-            Join<Book, Author> authorsBook = root.join("books");
+            Join<BookAuthorEntity, Author> authorsBook = root.join("bookAuthorEntities");
             return criteriaBuilder.equal(authorsBook.get("title"), bookTitle);
         };
     }

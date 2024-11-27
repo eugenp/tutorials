@@ -1,8 +1,13 @@
-package com.baeldung.spring.data.jpa.query.specifications.join;
-
-import javax.persistence.*;
+package com.baeldung.specifications.join;
 
 import java.util.List;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Author {
@@ -16,7 +21,7 @@ public class Author {
     private String lastName;
 
     @OneToMany(cascade = CascadeType.ALL)
-    private List<Book> books;
+    private List<BookAuthorEntity> bookAuthorEntities;
 
     public Long getId() {
         return id;
@@ -42,16 +47,16 @@ public class Author {
         this.lastName = lastName;
     }
 
-    public List<Book> getBooks() {
-        return books;
+    public List<BookAuthorEntity> getBookAuthorEntities() {
+        return bookAuthorEntities;
     }
 
-    public void setBooks(List<Book> books) {
-        this.books = books;
+    public void setBookAuthorEntities(List<BookAuthorEntity> bookAuthorEntities) {
+        this.bookAuthorEntities = bookAuthorEntities;
     }
 
     @Override
     public String toString() {
-        return "Author{" + "id=" + id + ", firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + ", books=" + books + '}';
+        return "Author{" + "id=" + id + ", firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + ", books=" + bookAuthorEntities + '}';
     }
 }

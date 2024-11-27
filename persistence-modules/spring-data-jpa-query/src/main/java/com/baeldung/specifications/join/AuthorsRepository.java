@@ -1,4 +1,4 @@
-package com.baeldung.spring.data.jpa.query.specifications.join;
+package com.baeldung.specifications.join;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;

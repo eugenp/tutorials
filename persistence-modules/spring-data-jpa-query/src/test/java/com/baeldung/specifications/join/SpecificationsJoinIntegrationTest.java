@@ -1,4 +1,12 @@
-package com.baeldung.spring.data.jpa.query.specifications.join;
+package com.baeldung.specifications.join;
+
+import static com.baeldung.specifications.join.AuthorSpecifications.hasBookWithTitle;
+import static com.baeldung.specifications.join.AuthorSpecifications.hasFirstNameLike;
+import static com.baeldung.specifications.join.AuthorSpecifications.hasLastName;
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.util.Arrays;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -7,12 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.util.Arrays;
-import java.util.List;
-
-import static com.baeldung.spring.data.jpa.query.specifications.join.AuthorSpecifications.*;
-import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
@@ -69,12 +71,12 @@ public class SpecificationsJoinIntegrationTest {
         uncleBob.setFirstName("Robert");
         uncleBob.setLastName("Martin");
 
-        Book book1 = new Book();
-        book1.setTitle("Clean Code");
-        Book book2 = new Book();
-        book2.setTitle("Clean Architecture");
+        BookAuthorEntity bookAuthorEntity1 = new BookAuthorEntity();
+        bookAuthorEntity1.setTitle("Clean Code");
+        BookAuthorEntity bookAuthorEntity2 = new BookAuthorEntity();
+        bookAuthorEntity2.setTitle("Clean Architecture");
 
-        uncleBob.setBooks(Arrays.asList(book1, book2));
+        uncleBob.setBookAuthorEntities(Arrays.asList(bookAuthorEntity1, bookAuthorEntity2));
         repository.save(uncleBob);
     }
 }
