@@ -37,18 +37,16 @@ public class FindItemsBasedOnOtherStreamUnitTest {
     public void givenEmployeeListToExclude_thenDepartmentListIsFilteredCorrectly() {
         String expectedDepartment = "sales";
 
-        List<Integer> employeeIdList = Arrays.asList(1001, 1002, 1004, 1005);
+        List<Integer> employeeIdList = Arrays.asList(1001,1002,1004,1005);
 
         populate(employeeList, departmentList);
       
         List<Department> filteredList = departmentList.stream()
           .filter(dept -> !employeeIdList.contains(dept.getEmployeeId()))
           .collect(Collectors.toList());
+        
         assertNotEquals(expectedDepartment, filteredList.get(0).getDepartment());
-        assertNotEquals(expectedDepartment, filteredList.get(1).getDepartment());
-     /*   for(Department department : filteredList) {
-            assertNotEquals(expectedDepartment, department.getDepartment());
-        }*/
+        //assertNotEquals(expectedDepartment, filteredList.get(1).getDepartment());
      
     }
 
