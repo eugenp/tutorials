@@ -2,6 +2,9 @@ package com.baeldung.s3;
 
 import java.util.UUID;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import com.amazonaws.AmazonServiceException;
 import com.amazonaws.SdkClientException;
 import com.amazonaws.auth.AWSCredentialsProvider;
@@ -12,6 +15,8 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 
 class CreateS3Bucket {
+
+    private final Log log = LogFactory.getLog(CreateS3Bucket.class);
 
     private AmazonS3 s3Client;
 
@@ -29,11 +34,12 @@ class CreateS3Bucket {
 
     public void createBucket(String bucketName) throws SdkClientException, AmazonServiceException {
         try {
-            if (!this.s3Client.doesBucketExistV2(bucketName))
+            if (!this.s3Client.doesBucketExistV2(bucketName)) {
                 this.s3Client.createBucket(bucketName);
+            }
 
             String bucketRegion = this.s3Client.getBucketLocation(bucketName);
-            System.out.println(bucketRegion);
+            log.info(bucketRegion);
 
         } catch (AmazonServiceException e) {
             // The call was transmitted successfully, but Amazon S3 couldn't process
