@@ -2,16 +2,14 @@
 
 This module contains articles about core features in the Java language
 
-### Relevant Articles: 
-- [Generate equals() and hashCode() with Eclipse](https://www.baeldung.com/java-eclipse-equals-and-hashcode)
+### Relevant Articles:
 - [Comparator and Comparable in Java](https://www.baeldung.com/java-comparator-comparable)
-- [Recursion in Java](https://www.baeldung.com/java-recursion)
-- [A Guide to the finalize Method in Java](https://www.baeldung.com/java-finalize)
-- [Quick Guide to java.lang.System](https://www.baeldung.com/java-lang-system)
 - [Using Java Assertions](https://www.baeldung.com/java-assert)
-- [Synthetic Constructs in Java](https://www.baeldung.com/java-synthetic)
-- [Retrieving a Class Name in Java](https://www.baeldung.com/java-class-name)
 - [The Java continue and break Keywords](https://www.baeldung.com/java-continue-and-break)
-- [Infinite Loops in Java](https://www.baeldung.com/infinite-loops-java)
-
-[[Next --> ]](/core-java-modules/core-java-lang-2)
+- [The transient Keyword in Java](https://www.baeldung.com/java-transient-keyword)
+- [Command-Line Arguments in Java](https://www.baeldung.com/java-command-line-arguments)
+- [What Is a Pojo Class?](https://www.baeldung.com/java-pojo-class)
+- [How to Return Multiple Values From a Java Method](https://www.baeldung.com/java-method-return-multiple-values)
+- [Comparing Long Values in Java](https://www.baeldung.com/java-compare-long-values)
+- [Comparing Objects in Java](https://www.baeldung.com/java-comparing-objects)
+- More articles: [[Next --> ]](/core-java-modules/core-java-lang-2)

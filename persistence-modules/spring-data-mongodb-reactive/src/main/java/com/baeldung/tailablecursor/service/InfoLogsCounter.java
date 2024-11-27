@@ -3,11 +3,11 @@ package com.baeldung.tailablecursor.service;
 import com.baeldung.tailablecursor.domain.Log;
 import com.baeldung.tailablecursor.domain.LogLevel;
 import com.baeldung.tailablecursor.repository.LogsRepository;
+import jakarta.annotation.PreDestroy;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.Disposable;
 import reactor.core.publisher.Flux;
 
-import javax.annotation.PreDestroy;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Slf4j

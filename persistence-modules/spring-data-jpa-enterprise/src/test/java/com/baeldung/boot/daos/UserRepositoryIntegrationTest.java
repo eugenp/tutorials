@@ -17,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 @SpringBootTest(classes = Application.class)
 @DirtiesContext
-public class UserRepositoryIntegrationTest extends UserRepositoryCommon {
+public class UserRepositoryIntegrationTest extends UserRepositoryCommonIntegrationTest {
 
     @Test
     @Transactional

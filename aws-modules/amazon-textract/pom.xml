@@ -37,7 +37,6 @@
     </dependencies>
 
     <properties>
-        <java.version>17</java.version>
         <amazon-textract.version>2.27.5</amazon-textract.version>
     </properties>
 

@@ -2,6 +2,8 @@ package com.baeldung.printarray;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
+import com.baeldung.printarrays.PrintArrayJava;
+
 class PrintArrayTest {
 
     @Test

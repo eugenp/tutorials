@@ -14,21 +14,10 @@
     </parent>
 
     <modules>
-        <!-- <module>vavr</module> --> <!-- failing after upgrade to jdk21 -->
+        <module>vavr</module>
         <module>vavr-2</module>
         <module>java-vavr-stream</module>
     </modules>
-
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
 
     <properties>
         <vavr.version>0.9.2</vavr.version>

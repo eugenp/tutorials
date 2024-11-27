@@ -8,6 +8,9 @@
     <artifactId>parent-modules</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <name>parent-modules</name>
+    <modules>
+        <module>core-java-modules/core-java-concurrency-advanced-6</module>
+    </modules>
 
     <packaging>pom</packaging>
 
@@ -416,6 +419,8 @@
                 <module>core-java-modules/core-java-concurrency-advanced-5</module>
                 <module>spring-boot-modules/spring-boot-react</module>
                 <module>testing-modules/jmeter</module>
+                <module>core-java-modules/core-java-networking-5</module>
+                <module>quarkus-modules/quarkus-hibernate-reactive</module>
             </modules>
 
             <properties>
@@ -528,6 +533,8 @@
                 <module>core-java-modules/core-java-concurrency-advanced-5</module>
                 <module>spring-boot-modules/spring-boot-react</module>
                 <module>testing-modules/jmeter</module>
+                <module>core-java-modules/core-java-networking-5</module>
+                <module>quarkus-modules/quarkus-hibernate-reactive</module>
             </modules>
 
             <properties>
@@ -571,7 +578,6 @@
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
                 <module>parent-boot-3</module>
-                <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
                 <module>apache-kafka</module>
@@ -586,7 +592,6 @@
                 <module>libraries-data-io</module>
                 <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->
                 <module>persistence-modules/spring-data-neo4j</module>
-                <module>persistence-modules/spring-data-rest-2</module>
                 <module>persistence-modules/spring-persistence-simple</module>
                 <module>quarkus-modules/quarkus</module>
                 <module>quarkus-modules/quarkus-vs-springboot/quarkus-project</module>
@@ -596,11 +601,10 @@
                 <!--<module>spring-integration</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-jinq</module>--><!--disabling the jinq modules, as the default build profile is failing due to bad mv files. Please refer: JAVA-31341-->
                 <module>spring-security-modules/spring-security-legacy-oidc</module>
-                <!--<module>static-analysis</module> - requires additional configuration to be compiled due to the JVM strong encapsulation -->
+                <!--<module>static-analysis-modules</module> - requires additional configuration to be compiled due to the JVM strong encapsulation -->
                 <!--<module>tablesaw</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-swagger-codegen-modules/openapi-custom-generator</module>
                 <module>spring-swagger-codegen-modules/openapi-custom-generator-api-client</module> --> <!-- cannot add the individual modules here because the order is not guaranteed -->
-                <module>vavr-modules/vavr</module>
             </modules>
 
             <properties>
@@ -643,7 +647,6 @@
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
                 <module>parent-boot-3</module>
-                <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
                 <module>akka-modules</module>
@@ -654,7 +657,7 @@
                 <module>apache-httpclient</module>
                 <module>apache-kafka-2</module>
                 <module>apache-kafka-3</module>
-                <!-- <module>apache-libraries-2</module> --> <!-- JAVA-38868 -->
+                <module>apache-libraries-2</module>
                 <module>apache-libraries</module>
                 <module>apache-olingo</module><!-- apache-olingo wasn't updated to boot-3 because a workaround for jakarta namespace wasn't found JAVA-27818 -->
                 <module>apache-poi-2</module>
@@ -668,7 +671,7 @@
                 <module>azure</module>
                 <!-- <module>azure-functions</module>--> <!-- BAEL-6423 -->
                 <module>bazel</module>
-                <!-- <module>checker-framework</module>  --> <!-- JAVA-39367 -->
+                <module>checker-framework</module>
                 <module>core-java-modules</module>
                 <module>custom-pmd</module>
                 <module>data-structures</module>
@@ -707,7 +710,7 @@
                 <module>jaxb</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
-                <!-- <module>jmh</module> --> <!-- JAVA-39367 -->
+                <module>jmh</module>
                 <module>json-modules</module>
                 <module>jsoup</module>
                 <module>jws</module>
@@ -731,6 +734,7 @@
                 <module>libraries-data-3</module>
                 <module>libraries-data-db</module>
                 <module>libraries-data</module>
+                <module>libraries-data-mariadb4j</module>
                 <module>libraries-files</module>
                 <module>libraries-http</module>
 		        <module>libraries-http-2</module>
@@ -745,6 +749,7 @@
                 <module>libraries-stream</module>
                 <module>libraries-testing-2</module>
                 <module>libraries-transform</module>
+                <module>libraries-security-2</module>
                 <module>lightrun</module>
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
@@ -779,12 +784,11 @@
                 <module>spf4j</module>
                 <module>spring-5-webflux-2</module>
                 <module>spring-5-webflux</module>
-                <!-- <module>spring-5</module> --> <!-- JAVA-39367 -->
+                <module>spring-5</module>
                 <module>spring-6-rsocket</module>
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
                 <module>spring-ai</module>
-                <module>spring-ai-2</module>
                 <module>spring-aop-2</module>
                 <module>spring-aop</module>
                 <module>spring-batch</module>
@@ -842,6 +846,7 @@
                 <module>timefold-solver</module>
                 <module>vaadin</module>
                 <module>vavr-modules</module>
+                <module>vector-db</module>
                 <module>vertx-modules</module>
                 <module>web-modules</module>
                 <module>webrtc</module>
@@ -849,9 +854,9 @@
                 <module>xml-2</module>
                 <module>xml-3</module>
                 <module>xstream</module>
-                <!-- <module>libraries-data-io-2</module> --> <!-- JAVA-39367 -->
+                <module>libraries-data-io-2</module>
                 <module>spring-5-rest-docs</module>
-                <!-- <module>maven-modules</module> --> <!--JAVA 37707-->
+                <module>maven-modules</module>
             </modules>
 
             <properties>
@@ -859,6 +864,82 @@
                 <java.version>21</java.version>
                 <maven.compiler.source>21</maven.compiler.source>
                 <maven.compiler.target>21</maven.compiler.target>
+            </properties>
+
+        </profile>
+
+        <profile>
+            <id>profile-jdk22</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <forkCount>3</forkCount>
+                            <reuseForks>true</reuseForks>
+                            <includes>
+                                <include>SpringContextTest</include>
+                                <include>**/*UnitTest</include>
+                                <include>**/*IntegrationTest.java</include>
+                                <include>**/*IntTest.java</include>
+                                <include>**/*LongRunningUnitTest.java</include>
+                                <include>**/*ManualTest.java</include>
+                                <include>**/JdbcTest.java</include>
+                                <include>**/*LiveTest.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+
+            <modules>
+                <module>core-java-modules/core-java-22</module>
+            </modules>
+
+            <properties>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <java.version>22</java.version>
+                <maven.compiler.source>22</maven.compiler.source>
+                <maven.compiler.target>22</maven.compiler.target>
+            </properties>
+
+        </profile>
+
+        <profile>
+            <id>profile-jdk23</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <forkCount>3</forkCount>
+                            <reuseForks>true</reuseForks>
+                            <includes>
+                                <include>SpringContextTest</include>
+                                <include>**/*UnitTest</include>
+                                <include>**/*IntegrationTest.java</include>
+                                <include>**/*IntTest.java</include>
+                                <include>**/*LongRunningUnitTest.java</include>
+                                <include>**/*ManualTest.java</include>
+                                <include>**/JdbcTest.java</include>
+                                <include>**/*LiveTest.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+
+            <modules>
+                <module>core-java-modules/core-java-23</module>
+            </modules>
+
+            <properties>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <java.version>23</java.version>
+                <maven.compiler.source>23</maven.compiler.source>
+                <maven.compiler.target>23</maven.compiler.target>
             </properties>
 
         </profile>
@@ -889,7 +970,6 @@
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
                 <module>parent-boot-3</module>
-                <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
                 <module>apache-kafka</module>
@@ -904,7 +984,6 @@
                 <module>libraries-data-io</module>
                 <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->
                 <module>persistence-modules/spring-data-neo4j</module>
-                <module>persistence-modules/spring-data-rest-2</module>
                 <module>persistence-modules/spring-persistence-simple</module>
                 <module>quarkus-modules/quarkus</module>
                 <module>quarkus-modules/quarkus-vs-springboot/quarkus-project</module>
@@ -914,11 +993,10 @@
                 <!--<module>spring-integration</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-jinq</module>--><!--disabling the jinq modules, as the default build profile is failing due to bad mv files. Please refer: JAVA-31341-->
                 <module>spring-security-modules/spring-security-legacy-oidc</module>
-                <!--<module>static-analysis</module> - requires additional configuration to be compiled due to the JVM strong encapsulation -->
+                <!--<module>static-analysis-modules</module> - requires additional configuration to be compiled due to the JVM strong encapsulation -->
                 <!--<module>tablesaw</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-swagger-codegen-modules/openapi-custom-generator</module>
                 <module>spring-swagger-codegen-modules/openapi-custom-generator-api-client</module> --> <!-- cannot add the individual modules here because the order is not guaranteed -->
-                <module>vavr-modules/vavr</module>
             </modules>
 
             <properties>
@@ -955,7 +1033,6 @@
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
                 <module>parent-boot-3</module>
-                <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
                 <module>akka-modules</module>
@@ -980,7 +1057,7 @@
                 <module>azure</module>
                 <!-- <module>azure-functions</module>--> <!-- BAEL-6423 -->
                 <module>bazel</module>
-                <!-- <module>checker-framework</module> --> <!-- JAVA-39367 -->
+                <module>checker-framework</module>
                 <module>core-java-modules</module>
                 <module>custom-pmd</module>
                 <module>data-structures</module>
@@ -991,7 +1068,7 @@
                 <module>drools</module>
                 <module>dubbo</module>
                 <module>feign</module>
-                <!-- <module>gcp-firebase</module> --> <!-- BAEL-8475 -->
+                <module>gcp-firebase</module>
                 <module>geotools</module>
                 <module>google-auto-project</module>
                 <module>google-cloud</module>
@@ -1019,7 +1096,7 @@
                 <module>jdbc-cp</module>
                 <module>jetbrains</module>
                 <module>jgit</module>
-                <!-- <module>jmh</module> --> <!-- JAVA-39367 -->
+                <module>jmh</module>
                 <module>json-modules</module>
                 <module>jsoup</module>
                 <module>jws</module>
@@ -1052,6 +1129,7 @@
                 <module>libraries-primitive</module>
                 <module>libraries-reporting</module>
                 <module>libraries-rpc</module>
+                <module>libraries-security-2</module>
                 <module>libraries-server-2</module>
                 <module>libraries-server</module>
                 <module>libraries-stream</module>
@@ -1091,12 +1169,11 @@
                 <module>spf4j</module>
                 <module>spring-5-webflux-2</module>
                 <module>spring-5-webflux</module>
-                <!-- <module>spring-5</module> --> <!-- JAVA-39367 -->
+                <module>spring-5</module>
                 <module>spring-6-rsocket</module>
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
                 <module>spring-ai</module>
-                <module>spring-ai-2</module>
                 <module>spring-aop-2</module>
                 <module>spring-aop</module>
                 <module>spring-batch</module>
@@ -1154,6 +1231,7 @@
                 <module>timefold-solver</module>
                 <module>vavr-modules</module>
                 <module>vaadin</module>
+                <module>vector-db</module>
                 <module>vertx-modules</module>
                 <module>web-modules</module>
                 <module>webrtc</module>
@@ -1161,9 +1239,9 @@
                 <module>xml-2</module>
                 <module>xml-3</module>
                 <module>xstream</module>
-                <!-- <module>libraries-data-io-2</module> --> <!-- JAVA-39367 -->
+                <module>libraries-data-io-2</module>
                 <module>spring-5-rest-docs</module>
-                <!-- <module>maven-modules</module> --> <!--JAVA 37707-->
+                <module>maven-modules</module>
             </modules>
 
             <properties>
@@ -1236,7 +1314,6 @@
             <modules>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
-                <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
             </modules>
