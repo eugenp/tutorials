@@ -6,8 +6,10 @@ import java.util.function.Function;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Description;
+import org.springframework.context.annotation.Profile;
 
 @Configuration
+@Profile("aiassistant")
 public class OmAiAssistantConfiguration {
     @Bean
     @Description("Create an order. The Order ID is identified with orderID. The order quantity is identified by orderQuantity."

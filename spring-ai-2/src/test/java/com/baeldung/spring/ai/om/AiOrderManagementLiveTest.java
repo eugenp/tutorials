@@ -11,9 +11,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 
 @SpringBootTest
+@ActiveProfiles("aiassistant")
+
 @Sql(scripts = "classpath:/order_mgmt.sql", executionPhase = BEFORE_TEST_CLASS)
 public class AiOrderManagementLiveTest {
 
