@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.utiil.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -46,7 +47,7 @@ public class FindItemsBasedOnOtherStreamUnitTest {
           .collect(Collectors.toList());
         
         assertNotEquals(expectedDepartment, filteredList.get(0).getDepartment());
-        //assertNotEquals(expectedDepartment, filteredList.get(1).getDepartment());
+        assertNotEquals(expectedDepartment, filteredList.get(1).getDepartment());
      
     }
 
