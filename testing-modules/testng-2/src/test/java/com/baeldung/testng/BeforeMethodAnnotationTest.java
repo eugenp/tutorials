@@ -10,8 +10,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @SpringBootTest
-public class BeforeMethodTest extends AbstractTestNGSpringContextTests {
-    private static final Logger log = LoggerFactory.getLogger(BeforeMethodTest.class);
+public class BeforeMethodAnnotationTest extends AbstractTestNGSpringContextTests {
+    private static final Logger log = LoggerFactory.getLogger(BeforeMethodAnnotationTest.class);
 
     Counter counter;
 
