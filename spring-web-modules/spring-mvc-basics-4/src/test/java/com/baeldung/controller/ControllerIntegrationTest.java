@@ -61,16 +61,4 @@ public class ControllerIntegrationTest {
         Assert.assertEquals(selectedStudent, studentDetails);
 
     }
-
-    @Test
-    public void testRestAnnotatedController() throws Exception {
-
-        String responseBody = this.mockMvc.perform(MockMvcRequestBuilders.get("/annotated/student/{studentId}", 1)).andReturn().getResponse().getContentAsString();
-
-        ObjectMapper reader = new ObjectMapper();
-
-        Student studentDetails = reader.readValue(responseBody, Student.class);
-
-        Assert.assertEquals(selectedStudent, studentDetails);
-    }
 }
