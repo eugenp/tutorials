@@ -1,15 +1,8 @@
-## Spring Boot Data
+## Spring Boot Snakeyaml
 
-This module contains articles about Spring Boot with Spring Data
+This module contains articles about Spring Boot with Snakeyaml
 
 ## Relevant Articles:
 
-- [Formatting JSON Dates in Spring Boot](https://www.baeldung.com/spring-boot-formatting-json-dates)
-- [Disable Spring Data Auto Configuration](https://www.baeldung.com/spring-data-disable-auto-config)
-- [Repositories with Multiple Spring Data Modules](https://www.baeldung.com/spring-multiple-data-modules)
-- [Guide To Running Logic on Startup in Spring](https://www.baeldung.com/running-setup-logic-on-startup-in-spring)
-- [Spring Boot: Customize the Jackson ObjectMapper](https://www.baeldung.com/spring-boot-customize-jackson-objectmapper)
-- [HttpMessageNotWritableException: No Converter for [class …] With Preset Content-Type](https://www.baeldung.com/spring-no-converter-with-preset)
-- [Integrate AWS Secrets Manager in Spring Boot](https://www.baeldung.com/spring-boot-integrate-aws-secrets-manager)
-- More articles: [[next -->]](../spring-boot-data-2)
+- [Resolving CVE-2022-1471  with the SnakeYAML 2.0 Release](https://drafts.baeldung.com/?p=215658&preview_id=215658&preview_nonce=5b5ad69827&_thumbnail_id=-1&preview=true)
 
