@@ -10,7 +10,6 @@ This module contains articles about the Java List collection
 - [Performance Comparison of Primitive Lists in Java](https://www.baeldung.com/java-list-primitive-performance)
 - [Filtering a Java Collection by a List](https://www.baeldung.com/java-filter-collection-by-list)
 - [How to Count Duplicate Elements in Arraylist](https://www.baeldung.com/java-count-duplicate-elements-arraylist)
-- [Finding the Differences Between Two Lists in Java](https://www.baeldung.com/java-lists-difference)
 - [List vs. ArrayList in Java](https://www.baeldung.com/java-list-vs-arraylist)
 - [Set vs List in Java](https://www.baeldung.com/java-set-vs-list)
 - [[<-- Prev]](/core-java-modules/core-java-collections-list-2)

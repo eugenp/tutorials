@@ -4,7 +4,6 @@ This module contains articles about JSON.
 
 ### Relevant Articles:
 - [Introduction to JSON Schema in Java](https://www.baeldung.com/introduction-to-json-schema-in-java)
-- [Introduction to JSONForms](https://www.baeldung.com/introduction-to-jsonforms)
 - [Introduction to JSON-Java (org.json)](https://www.baeldung.com/java-org-json)
 - [Overview of JSON Pointer](https://www.baeldung.com/json-pointer)
 - [Escape JSON String in Java](https://www.baeldung.com/java-json-escaping)

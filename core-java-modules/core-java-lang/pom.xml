@@ -13,6 +13,19 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
+    <dependencies>
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>${commons.beanutils.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
+    </dependencies>
+
     <build>
         <finalName>core-java-lang</finalName>
         <resources>
@@ -22,5 +35,9 @@
             </resource>
         </resources>
     </build>
+
+    <properties>
+        <commons.beanutils.version>1.9.4</commons.beanutils.version>
+    </properties>
 
 </project>

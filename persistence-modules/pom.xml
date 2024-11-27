@@ -39,6 +39,7 @@
         <module>hibernate-libraries</module>
         <module>hibernate-jpa</module>
         <module>hibernate-jpa-2</module>
+        <module>hibernate-jpa-3</module>
         <module>hibernate-queries</module>
         <module>hibernate-enterprise</module>
         <module>influxdb</module>
@@ -139,6 +140,7 @@
         <module>hibernate-annotations-2</module>
         <module>hibernate-reactive</module>
         <module>my-sql</module>
+        <module>spring-data-envers</module>
     </modules>
 
     <properties>
