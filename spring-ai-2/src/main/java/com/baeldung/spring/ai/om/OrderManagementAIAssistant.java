@@ -1,7 +1,6 @@
 package com.baeldung.spring.ai.om;
 
 import java.util.Set;
-
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.chat.prompt.Prompt;
