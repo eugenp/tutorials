@@ -6,7 +6,6 @@ This module contains articles about Java collections
 - [Thread Safe LIFO Data Structure Implementations](https://www.baeldung.com/java-lifo-thread-safe)
 - [Time Complexity of Java Collections](https://www.baeldung.com/java-collections-complexity)
 - [A Guide to EnumMap](https://www.baeldung.com/java-enum-map)
-- [Defining a Char Stack in Java](https://www.baeldung.com/java-char-stack)
 - [An Introduction to Synchronized Java Collections](https://www.baeldung.com/java-synchronized-collections)
 - [Convert an Array of Primitives to a List](https://www.baeldung.com/java-primitive-array-to-list)
 - [Java Null-Safe Streams from Collections](https://www.baeldung.com/java-null-safe-streams-from-collections)
