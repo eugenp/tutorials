@@ -3,8 +3,6 @@ package com.baeldung.books.projections;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import io.restassured.RestAssured;
-import io.restassured.response.Response;
 
 import java.util.Arrays;
 
@@ -21,6 +19,9 @@ import com.baeldung.books.models.Author;
 import com.baeldung.books.models.Book;
 import com.baeldung.books.repositories.AuthorRepository;
 import com.baeldung.books.repositories.BookRepository;
+
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = SpringDataRestApplication.class, webEnvironment = WebEnvironment.DEFINED_PORT)

@@ -1,13 +1,12 @@
 package com.baeldung.books.events;
 
-import com.baeldung.books.events.BookEventHandler;
-import com.baeldung.books.models.Author;
-import com.baeldung.books.models.Book;
+import static org.mockito.Mockito.mock;
 
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import static org.mockito.Mockito.mock;
+import com.baeldung.books.models.Author;
+import com.baeldung.books.models.Book;
 
 public class BookEventHandlerUnitTest {
     @Test
