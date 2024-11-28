@@ -2,8 +2,7 @@
 
 This module contains articles about Java collections
 
-### Relevant Articles: 
-- [Thread Safe LIFO Data Structure Implementations](https://www.baeldung.com/java-lifo-thread-safe)
+### Relevant Articles:
 - [Time Complexity of Java Collections](https://www.baeldung.com/java-collections-complexity)
 - [A Guide to EnumMap](https://www.baeldung.com/java-enum-map)
 - [An Introduction to Synchronized Java Collections](https://www.baeldung.com/java-synchronized-collections)
