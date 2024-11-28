@@ -1,12 +1,20 @@
 package com.baeldung.performance;
 
-import org.openjdk.jmh.annotations.*;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.TimeUnit;
+
+import org.openjdk.jmh.annotations.Benchmark;
+import org.openjdk.jmh.annotations.BenchmarkMode;
+import org.openjdk.jmh.annotations.Level;
+import org.openjdk.jmh.annotations.Mode;
+import org.openjdk.jmh.annotations.OutputTimeUnit;
+import org.openjdk.jmh.annotations.Scope;
+import org.openjdk.jmh.annotations.Setup;
+import org.openjdk.jmh.annotations.State;
+import org.openjdk.jmh.annotations.Warmup;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
-
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.TimeUnit;
 
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.MICROSECONDS)
@@ -37,32 +45,32 @@ public class CopyOnWriteBenchmark {
     }
 
         @Benchmark
-    public void testAdd(CopyOnWriteBenchmark.MyState state) {
+    public void testAdd(MyState state) {
             state.employeeList.add(new Employee(state.iterations + 1, "John"));
     }
 
     @Benchmark
-    public void testAddAt(CopyOnWriteBenchmark.MyState state) {
+    public void testAddAt(MyState state) {
         state.employeeList.add((int) (state.iterations), new Employee(state.iterations, "John"));
     }
 
     @Benchmark
-    public boolean testContains(CopyOnWriteBenchmark.MyState state) {
+    public boolean testContains(MyState state) {
         return state.employeeList.contains(state.employee);
     }
 
     @Benchmark
-    public int testIndexOf(CopyOnWriteBenchmark.MyState state) {
+    public int testIndexOf(MyState state) {
         return state.employeeList.indexOf(state.employee);
     }
 
     @Benchmark
-    public Employee testGet(CopyOnWriteBenchmark.MyState state) {
+    public Employee testGet(MyState state) {
         return state.employeeList.get(state.employeeIndex);
     }
 
     @Benchmark
-    public boolean testRemove(CopyOnWriteBenchmark.MyState state) {
+    public boolean testRemove(MyState state) {
         return state.employeeList.remove(state.employee);
     }
 

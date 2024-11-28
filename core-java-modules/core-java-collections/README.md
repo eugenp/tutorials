@@ -3,7 +3,6 @@
 This module contains articles about Java collections
 
 ### Relevant Articles:
-- [Time Complexity of Java Collections](https://www.baeldung.com/java-collections-complexity)
 - [A Guide to EnumMap](https://www.baeldung.com/java-enum-map)
 - [An Introduction to Synchronized Java Collections](https://www.baeldung.com/java-synchronized-collections)
 - [Convert an Array of Primitives to a List](https://www.baeldung.com/java-primitive-array-to-list)
