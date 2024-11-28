@@ -55,37 +55,6 @@ public class SecondLevelCacheIntegrationTest {
     @Autowired
     private Cache cache;
 
-    @Test
-    public final void _00_givenCacheableEntityIsCreated_whenLoaded_thenItAndItsAssociationsAreLoadedFromSecondLevelCache() {
-        final Foo foo = randomFoo(2);
-        service.create(foo);
-        boolean cached = cache.contains(Foo.class, foo.getId());
-
-        assertTrue(cached);
-        assertNotNull(service.findOneFoo(foo.getId()));
-
-        List<Bar> bars = foo.getBars();
-
-        assertEquals(2, bars.size());
-
-        for (Bar bar : bars) {
-            cached = cache.contains(Bar.class, bar.getId());
-            assertTrue(cached);
-            assertEquals(bar, service.findOneBar(bar.getId()));
-        }
-    }
-
-    @Test
-    public final void _01_givenNonCacheableEntityIsCreated_whenLoaded_thenItIsFromDatabase() {
-        final Roo roo = new Roo(randomAlphabetic(6));
-        service.create(roo);
-        boolean cached = cache.contains(Roo.class, roo.getId());
-
-        assertFalse(cached);
-
-        assertNotNull(service.findOneFoo(roo.getId()));
-    }
-
     @Before
     public final void before() {
         cache.evictAll();
@@ -227,6 +196,26 @@ public class SecondLevelCacheIntegrationTest {
         assertTrue(cached);
     }
 
+    @Test
+    public final void givenCacheableEntityIsCreated_whenLoaded_thenItAndItsAssociationsAreLoadedFromSecondLevelCache() {
+        final Foo foo = randomFoo(2);
+        service.create(foo);
+        boolean cached = cache.contains(Foo.class, foo.getId());
+
+        assertTrue(cached);
+        assertNotNull(service.findOneFoo(foo.getId()));
+
+        List<Bar> bars = foo.getBars();
+
+        assertEquals(2, bars.size());
+
+        for (Bar bar : bars) {
+            cached = cache.contains(Bar.class, bar.getId());
+            assertTrue(cached);
+            assertEquals(bar, service.findOneBar(bar.getId()));
+        }
+    }
+
     @SuppressWarnings("unchecked")
     @Test
     public final void givenCacheableQuery_whenExecutedForCacheableEntities_thenTheyWillCachedForPrimaryKeyLookups() {
@@ -327,6 +316,17 @@ public class SecondLevelCacheIntegrationTest {
         service.findOneFoo(foo.getId());
         cached = cache.contains(Foo.class, foo.getId());
         assertTrue(cached);
+    }
+
+    @Test
+    public final void givenNonCacheableEntityIsCreated_whenLoaded_thenItIsFromDatabase() {
+        final Roo roo = new Roo(randomAlphabetic(6));
+        service.create(roo);
+        boolean cached = cache.contains(Roo.class, roo.getId());
+
+        assertFalse(cached);
+
+        assertNotNull(service.findOneFoo(roo.getId()));
     }
 
     private Bar randomBar(int n) {

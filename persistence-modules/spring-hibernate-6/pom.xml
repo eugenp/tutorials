@@ -128,7 +128,7 @@
         <dependency>
             <groupId>com.sun.istack</groupId>
             <artifactId>istack-commons-runtime</artifactId>
-            <version>4.0.0</version>
+            <version>${istack-commons-runtime.version}</version>
         </dependency>
     </dependencies>
 
@@ -143,6 +143,7 @@
         <tomcat-dbcp.version>9.0.80</tomcat-dbcp.version>
         <!-- cache -->
         <ehcache.version>3.10.8</ehcache.version>
+        <istack-commons-runtime.version>4.0.0</istack-commons-runtime.version>
     </properties>
 
 </project>
