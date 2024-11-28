@@ -1,4 +1,4 @@
-package com.baeldung.collections.convertarrayprimitives;
+package com.baeldung.convertarrayprimitives;
 
 import java.util.ArrayList;
 import java.util.Arrays;

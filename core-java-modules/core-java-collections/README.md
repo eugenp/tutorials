@@ -5,7 +5,6 @@ This module contains articles about Java collections
 ### Relevant Articles:
 - [A Guide to EnumMap](https://www.baeldung.com/java-enum-map)
 - [An Introduction to Synchronized Java Collections](https://www.baeldung.com/java-synchronized-collections)
-- [Convert an Array of Primitives to a List](https://www.baeldung.com/java-primitive-array-to-list)
 - [Java Null-Safe Streams from Collections](https://www.baeldung.com/java-null-safe-streams-from-collections)
 - [Combining Different Types of Collections in Java](https://www.baeldung.com/java-combine-collections)
 - [Sorting in Java](https://www.baeldung.com/java-sorting)

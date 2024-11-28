@@ -1,4 +1,4 @@
-package com.baeldung.collections.convertarrayprimitives;
+package com.baeldung.convertarrayprimitives;
 
 import static org.junit.Assert.assertEquals;
 
