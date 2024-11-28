@@ -1,0 +1,18 @@
+# https://editorconfig.org
+root = true
+
+[*]
+indent_style = space
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.{java,scala,groovy,kt,kts}]
+indent_size = 4
+
+[*.gradle]
+indent_size = 2
+
+[*.md]
+trim_trailing_whitespace = false
