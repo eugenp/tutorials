@@ -12,4 +12,4 @@
 - [Java Generics PECS – Producer Extends Consumer Super](https://www.baeldung.com/java-generics-pecs)
 - [Reversing a Stack in Java](https://www.baeldung.com/java-reversing-a-stack)
 - [Guide to the Java Queue Interface](https://www.baeldung.com/java-queue)
-- More articles: [[<-- prev]](/core-java-modules/core-java-collections-3)
+- More articles: [[<-- prev]](/core-java-modules/core-java-collections-3)[[next -->]](/core-java-modules/core-java-collections-5)

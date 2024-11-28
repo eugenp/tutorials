@@ -12,4 +12,4 @@
 - [Comparison of for Loops and Iterators](https://www.baeldung.com/java-for-loops-vs-iterators)
 - [PriorityQueue iterator() Method in Java](https://www.baeldung.com/java-priorityqueue-iterator)
 - [Immutable vs Unmodifiable Collection in Java](https://www.baeldung.com/java-collection-immutable-unmodifiable-differences)
-- More articles: [[<-- prev]](/core-java-modules/core-java-collections-4)
+- More articles: [[<-- prev]](/core-java-modules/core-java-collections-4)[[next -->]](/core-java-modules/core-java-collections-6)
