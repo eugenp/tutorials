@@ -1,0 +1,55 @@
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+      http:
+        endpoint: 0.0.0.0:4318
+
+  hostmetrics:
+    collection_interval: 60s
+    scrapers:
+      cpu:
+      memory:
+      load:
+
+processors:
+  batch:
+  attributes/remove_client_address:
+    actions:
+      - key: client.address
+        action: delete
+  memory_limiter:
+    check_interval: 1s
+    limit_mib: 6000        # 6GB total memory limit
+    spike_limit_mib: 1200  # 20% of limit_mib
+
+exporters:
+  prometheus:
+    endpoint: "0.0.0.0:8889"
+  otlp:
+    endpoint: "jaeger:4317"
+    tls:
+      insecure: true
+  debug:
+    verbosity: detailed  	  
+
+extensions:
+  zpages:
+    endpoint: 0.0.0.0:55679
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [memory_limiter, batch, attributes/remove_client_address]
+      exporters: [otlp]
+    metrics:
+      receivers: [hostmetrics, otlp]
+      processors: [memory_limiter]
+      exporters: [prometheus]
+    logs:
+      receivers: [otlp]
+      processors: [memory_limiter, batch]
+      exporters: [debug]	
+  extensions: [zpages]

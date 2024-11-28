@@ -1,6 +1,5 @@
 ### Relevant Articles:
 
-- [Guide to the System Rules Library](https://www.baeldung.com/java-system-rules-junit)
 - [Guide to the System Stubs Library](https://www.baeldung.com/java-system-stubs)
 - [Gray Box Testing Using the OAT Technique](https://www.baeldung.com/java-gray-box-orthogonal-array-testing)
 - [Unit Testing of System.in With JUnit](https://www.baeldung.com/java-junit-testing-system-in)
@@ -10,4 +9,4 @@
 - [Mutation Testing with PITest](http://www.baeldung.com/java-mutation-testing-with-pitest)
 - [Introduction to FindBugs](https://www.baeldung.com/intro-to-findbugs)
 - [Cucumber Background](https://www.baeldung.com/java-cucumber-background)
-- More Articles: [[prev -->]](../testing-libraries)
+- More articles: [[<-- prev]](../testing-libraries) [[next -->]](../testing-libraries-3)

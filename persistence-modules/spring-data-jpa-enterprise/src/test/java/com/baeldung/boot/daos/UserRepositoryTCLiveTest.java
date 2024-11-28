@@ -19,7 +19,7 @@ import com.baeldung.boot.domain.User;
 @Testcontainers
 @SpringBootTest
 @ActiveProfiles("tc")
-public class UserRepositoryTCLiveTest extends UserRepositoryCommon {
+public class UserRepositoryTCLiveTest extends UserRepositoryCommonIntegrationTest {
 
     @Container
     public static PostgreSQLContainer postgreSQLContainer = new PostgreSQLContainer("postgres:11.1")

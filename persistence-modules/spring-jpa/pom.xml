@@ -16,6 +16,21 @@
 
     <dependencies>
         <!-- Spring -->
+       <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-api</artifactId>
+            <version>${jjwt.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
@@ -98,6 +113,11 @@
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jakson-databind.version}</version>
+        </dependency>
         <!-- test scoped -->
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -127,6 +147,9 @@
         <h2.version>2.1.214</h2.version>
         <expressly-language.version>5.0.0</expressly-language.version>
         <jakarta-servlet-jpa-jstl-api.version>3.0.0</jakarta-servlet-jpa-jstl-api.version>
+        <spring-boot.version>3.1.0</spring-boot.version>
+        <jjwt.version>0.12.3</jjwt.version>
+        <jakson-databind.version>2.16.1</jakson-databind.version>
     </properties>
 
 </project>

@@ -79,22 +79,24 @@
         <module>spring-boot-telegram</module>
         <module>spring-boot-springdoc</module>
         <module>spring-boot-swagger</module>
-<!--        <module>spring-boot-swagger-2</module>--> <!-- failing after upgrading to spring boot 3. Swagger codegen yet not compatible?!-->
+        <!--        <module>spring-boot-swagger-2</module>--> <!-- failing after upgrading to spring boot 3. Swagger codegen yet not
+        compatible?!-->
         <module>spring-boot-swagger-jwt</module>
         <module>spring-boot-swagger-keycloak</module>
         <module>spring-boot-swagger-springfox</module>
         <module>spring-boot-testing</module>
         <module>spring-boot-testing-2</module>
         <module>spring-boot-testing-3</module>
+        <module>spring-boot-testing-4</module>
         <module>spring-boot-testing-spock</module>
         <module>spring-boot-vue</module>
         <module>spring-boot-actuator</module>
         <module>spring-boot-data-2</module>
         <module>spring-boot-validation</module>
-<!--        <module>spring-boot-data-3</module>--> <!-- failing after upgrading to spring boot 3.2.x -->
+        <!--        <module>spring-boot-data-3</module>--> <!-- failing after upgrading to spring boot 3.2.x -->
         <module>spring-boot-redis</module>
         <module>spring-boot-cassandre</module>
-<!--        <module>spring-boot-react</module>--> <!-- Migrated to heavy profile -->
+        <!--        <module>spring-boot-react</module>--> <!-- Migrated to heavy profile -->
         <module>spring-caching-3</module>
         <!-- <module>spring-boot-3</module> --> <!-- JAVA-20931 -->
         <module>spring-boot-3-grpc</module>
@@ -132,7 +134,7 @@
                         <arg>-parameters</arg>
                     </compilerArgs>
                 </configuration>
-           </plugin>
+            </plugin>
         </plugins>
     </build>
 
