@@ -28,6 +28,7 @@
         <module>algorithms-searching</module>
         <module>algorithms-sorting</module>
         <module>algorithms-sorting-2</module>
+        <module>algorithms-sorting-3</module>
     </modules>
 
     <properties>
