@@ -1,9 +1,11 @@
 package com.baeldung.array.operations;
 
-import org.junit.jupiter.api.Test;
-
-import static com.baeldung.array.operations.ArraysIntersectionOperations.*;
+import static com.baeldung.array.operations.ArraysIntersectionOperations.intersectionMultiSet;
+import static com.baeldung.array.operations.ArraysIntersectionOperations.intersectionSet;
+import static com.baeldung.array.operations.ArraysIntersectionOperations.intersectionSimple;
 import static org.assertj.core.api.Assertions.assertThat;
+
+import org.junit.jupiter.api.Test;
 
 class IntersectionUnitTest {
     private static final Integer[] a = { 1, 3, 2 };

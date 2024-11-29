@@ -1,10 +1,12 @@
 package com.baeldung.arrays.deepequals;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
 import java.util.Objects;
+
 import org.junit.jupiter.api.Test;
 
 public class ArraysDeepEqualsUnitTest {
@@ -78,8 +80,8 @@ public class ArraysDeepEqualsUnitTest {
 
     @Test
     void givenTwoMultidimensionalObjectTypeArrays_whenUsingEqualsAndDeepEquals_thenBothShouldReturnDifferently() {
-        Person personArray1[][] = { { new Person(1, "John", 22), new Person(2, "Mike", 23) }, { new Person(3, "Steve", 27), new Person(4, "Gary", 28) } };
-        Person personArray2[][] = { { new Person(1, "John", 22), new Person(2, "Mike", 23) }, { new Person(3, "Steve", 27), new Person(4, "Gary", 28) } };
+        Person[][] personArray1 = { { new Person(1, "John", 22), new Person(2, "Mike", 23) }, { new Person(3, "Steve", 27), new Person(4, "Gary", 28) } };
+        Person[][] personArray2 = { { new Person(1, "John", 22), new Person(2, "Mike", 23) }, { new Person(3, "Steve", 27), new Person(4, "Gary", 28) } };
 
         assertFalse(Arrays.equals(personArray1, personArray2));
         assertTrue(Arrays.deepEquals(personArray1, personArray2));
@@ -87,8 +89,8 @@ public class ArraysDeepEqualsUnitTest {
 
     @Test
     void givenTwoMultidimensionalObjectTypeArrays_whenUsingDeepEqualsFromObjectsAndArraysClasses_thenBothShouldReturnTrue() {
-        Person personArray1[][] = { { new Person(1, "John", 22), new Person(2, "Mike", 23) }, { new Person(3, "Steve", 27), new Person(4, "Gary", 28) } };
-        Person personArray2[][] = { { new Person(1, "John", 22), new Person(2, "Mike", 23) }, { new Person(3, "Steve", 27), new Person(4, "Gary", 28) } };
+        Person[][] personArray1 = { { new Person(1, "John", 22), new Person(2, "Mike", 23) }, { new Person(3, "Steve", 27), new Person(4, "Gary", 28) } };
+        Person[][] personArray2 = { { new Person(1, "John", 22), new Person(2, "Mike", 23) }, { new Person(3, "Steve", 27), new Person(4, "Gary", 28) } };
 
         assertTrue(Objects.deepEquals(personArray1, personArray2));
         assertTrue(Arrays.deepEquals(personArray1, personArray2));

@@ -1,12 +1,11 @@
 package com.baeldung.arraycompare;
 
-import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
 import java.util.Comparator;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertTrue;
+import org.junit.jupiter.api.Test;
 
 public class OrderCompareUnitTest {
     @Test
