@@ -30,16 +30,6 @@
             <version>${angus.mail.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.asynchttpclient</groupId>
-            <artifactId>async-http-client</artifactId>
-            <version>${async-http-client.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>jakarta.xml.bind</groupId>
-            <artifactId>jakarta.xml.bind-api</artifactId>
-            <version>${jakarta.bind.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.icegreen</groupId>
             <artifactId>greenmail</artifactId>
             <version>${greenmail.version}</version>
@@ -53,8 +43,6 @@
 
     <properties>
         <angus.mail.version>2.0.1</angus.mail.version>
-        <async-http-client.version>2.4.5</async-http-client.version>
-        <jakarta.bind.version>2.3.3</jakarta.bind.version>
         <greenmail.version>2.0.0-alpha-3</greenmail.version>
         <commons-codec.version>1.16.0</commons-codec.version>
     </properties>

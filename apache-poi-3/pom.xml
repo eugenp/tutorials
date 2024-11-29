@@ -25,11 +25,6 @@
             <version>${poi.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.github.ozlerhakan</groupId>
-            <artifactId>poiji</artifactId>
-            <version>${poiji.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
             <version>${poi.version}</version>
@@ -38,6 +33,11 @@
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml-schemas</artifactId>
             <version>${poi-ooxml-schemas.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.xmlbeans</groupId>
@@ -64,16 +64,44 @@
             <artifactId>jxl</artifactId>
             <version>${jxl.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.deepoove</groupId>
+            <artifactId>poi-tl</artifactId>
+            <version>${poitl.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback-classic.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>${logback-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-core</artifactId>
+            <version>${jmh.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-generator-annprocess</artifactId>
+            <version>${jmh.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
-        <poi.version>5.2.5</poi.version>
+        <h2.version>2.3.232</h2.version>
+        <poi.version>5.3.0</poi.version>
         <poi-ooxml-schemas.version>4.1.2</poi-ooxml-schemas.version>
-        <poiji.version>4.2.0</poiji.version>
         <xmlbeans.version>5.2.0</xmlbeans.version>
-        <commons-collections4.version>4.4</commons-collections4.version>
-        <fastexcel.version>0.17.0</fastexcel.version>
+        <fastexcel.version>0.18.3</fastexcel.version>
         <jxl.version>2.6.12</jxl.version>
+        <poitl.version>1.12.2</poitl.version>
+        <logback-classic.version>1.5.6</logback-classic.version>
+        <logback-core.version>1.5.6</logback-core.version>
+        <jmh.version>1.37</jmh.version>
     </properties>
 
 </project>

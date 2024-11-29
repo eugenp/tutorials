@@ -23,12 +23,6 @@
             <groupId>org.jxls</groupId>
             <artifactId>jxls-jexcel</artifactId>
             <version>${jexcel.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.dhatim</groupId>
@@ -50,6 +44,11 @@
             <artifactId>log4j-core</artifactId>
             <version>${log4j.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.ozlerhakan</groupId>
+            <artifactId>poiji</artifactId>
+            <version>${poiji.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -70,11 +69,13 @@
     </build>
 
     <properties>
-        <poi.version>5.2.5</poi.version>
+        <poi.version>5.3.0</poi.version>
         <jexcel.version>1.0.9</jexcel.version>
-        <fastexcel.version>0.17.0</fastexcel.version>
+        <fastexcel.version>0.18.0</fastexcel.version>
         <maven.resources.plugin.version>3.3.1</maven.resources.plugin.version>
         <log4j.version>2.23.1</log4j.version>
+        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version> <!-- cannot upgrade without breaking build -->
+        <poiji.version>4.2.0</poiji.version>
     </properties>
 
 </project>

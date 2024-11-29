@@ -17,6 +17,7 @@ class SettingChildProcessEnvironmentVariableUnitTest {
     public static final String CHILD_PROCESS_TAG = "child_process";
     public static final String TAG = String.format("-Dgroups=%s", CHILD_PROCESS_TAG);
     private final String testClass = String.format("-Dtest=%s", getClass().getName());
+    // to run on windows the first argument should be "mvn.cmd"
     private final String[] arguments = {"mvn", "test", TAG, testClass};
 
     @Test

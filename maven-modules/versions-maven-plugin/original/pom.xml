@@ -61,10 +61,11 @@
 
     <properties>
         <commons-compress-version>1.15</commons-compress-version>
-        <commons-io.version>2.3</commons-io.version>
         <commons-collections4.version>4.0</commons-collections4.version>
         <commons-beanutils.version>1.9.1</commons-beanutils.version>
         <versions.plugin.version>2.7</versions.plugin.version>
+        <commons-io.version>2.16.1</commons-io.version>
+        <commons-collections4.version>4.5.0-M2</commons-collections4.version>
     </properties>
 
 </project>

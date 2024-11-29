@@ -1,0 +1,47 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+spring:
+  application:
+    name: Api-Gateway
+  cloud:
+    gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "https://www.baeldung.com"
+            allowedMethods:
+              - GET
+            allowedHeaders: "*"
+      routes:
+        -   id: product_service_route
+            predicates:
+              - Path=/product/**
+            uri: http://localhost:8081
+            method: GET
+        -  id: user_service_route
+           predicates:
+             - Path=/user/**
+           uri: http://localhost:8081
+           method: GET
+           metadata:
+             cors:
+               allowedOrigins: 'https://www.baeldung.com,http://localhost:3000'
+               allowedMethods:
+                 - GET
+               allowedHeaders: '*'
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+  swagger-ui:
+    enabled: true
+    config-url: /v3/api-docs/swagger-config
+    urls:
+      -   name: gateway-service
+          url: /v3/api-docs
+      -   name: product-service
+          url: /product/v3/api-docs

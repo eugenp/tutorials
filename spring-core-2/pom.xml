@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-core-2</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>spring-core-2</name>
     <packaging>war</packaging>
+    <name>spring-core-2</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -113,6 +113,11 @@
             <version>${spring-boot.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -142,10 +147,10 @@
         <hibernate-core.version>6.5.2.Final</hibernate-core.version>
         <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
         <!-- util -->
-        <easymock.version>3.6</easymock.version>
         <javassist.version>3.22.0-GA</javassist.version>
         <spring-retry.version>2.0.5</spring-retry.version>
         <spring-boot.version>2.2.2.RELEASE</spring-boot.version>
+        <commons-io.version>2.16.1</commons-io.version>
     </properties>
 
 </project>

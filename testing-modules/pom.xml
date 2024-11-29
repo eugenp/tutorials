@@ -16,6 +16,7 @@
 
     <modules>
         <module>assertion-libraries</module>
+        <module>assertion-libraries-2</module>
         <module>assertJ</module>
         <module>cors</module>
         <module>cucumber</module>
@@ -26,7 +27,8 @@
         <module>hamcrest</module>
         <module>hamcrest-2</module>
         <module>instancio</module>
-<!--        <module>jmeter</module>--> <!-- Migrated to heavy profile -->
+        <!-- <module>jmeter</module> --> <!-- Migrated to heavy profile -->
+        <module>jmeter-2</module>
         <module>jqwik</module>
         <module>junit-4</module>
         <module>junit-5-advanced</module>
@@ -38,9 +40,9 @@
         <module>junit5-migration</module>
         <module>load-testing-comparison</module>
         <module>mockito</module>
-        <!-- <module>mockito-simple</module> --> <!-- Uncomment when testing-modules is moved to JDK9+ -->
-        <!-- <module>mocks</module>--> <!-- failing after upgrading to jdk17 -->
-        <!-- <module>mocks-2</module>--> <!-- failing after upgrading to jdk17 -->
+        <module>mockito-simple</module>
+        <module>mocks</module>
+        <module>mocks-2</module>
         <module>mockserver</module>
         <module>parallel-tests-junit</module>
         <module>powermock</module>
@@ -49,20 +51,21 @@
         <module>selenide</module>
         <module>selenium</module>
         <module>selenium-2</module>
+        <module>selenium-testng</module>
         <module>spring-mockito</module>
         <module>spring-testing-2</module>
         <module>spring-testing</module>
         <module>testing-assertions</module>
         <module>test-containers</module>
-        <module>testing-libraries-2</module>
         <module>testing-libraries</module>
+        <module>testing-libraries-2</module>
+        <module>testing-libraries-3</module>
         <module>testng</module>
         <module>testng-command-line</module>
         <module>xmlunit-2</module>
         <module>zerocode</module>
         <module>mockito-2</module>
         <module>mockito-3</module>
-        <module>testing-techniques</module>
         <module>gatling-java</module>
     </modules>
 

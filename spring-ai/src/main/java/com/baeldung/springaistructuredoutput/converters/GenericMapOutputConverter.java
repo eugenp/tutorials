@@ -41,15 +41,15 @@ public class GenericMapOutputConverter<V> implements StructuredOutputConverter<M
 
     public String getFormat() {
         String raw = "Your response should be in JSON format.\nThe data structure for the JSON should match this Java class: %s\n" +
-                "For the map values, here is the JSON Schema instance your output must adhere to:\n```%s```\n" +
-                "Do not include any explanations, only provide a RFC8259 compliant JSON response following this format without deviation.\n";
+            "For the map values, here is the JSON Schema instance your output must adhere to:\n```%s```\n" +
+            "Do not include any explanations, only provide a RFC8259 compliant JSON response following this format without deviation.\n";
         return String.format(raw, HashMap.class.getName(), this.jsonSchema);
     }
 
     protected ObjectMapper getObjectMapper() {
         return JsonMapper.builder()
-                .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
-                .build();
+          .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
+          .build();
     }
 
     private String trimMarkdown(String text) {
@@ -63,8 +63,8 @@ public class GenericMapOutputConverter<V> implements StructuredOutputConverter<M
         try {
             JacksonModule jacksonModule = new JacksonModule();
             SchemaGeneratorConfig config = new SchemaGeneratorConfigBuilder(SchemaVersion.DRAFT_2020_12, OptionPreset.PLAIN_JSON)
-                    .with(jacksonModule)
-                    .build();
+              .with(jacksonModule)
+              .build();
             SchemaGenerator generator = new SchemaGenerator(config);
 
             JsonNode jsonNode = generator.generateSchema(valueType);

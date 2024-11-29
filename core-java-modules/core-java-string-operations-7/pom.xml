@@ -27,7 +27,7 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>
-            <version>${apache.commons.collection.version}</version>
+            <version>${commons-collections4.version}</version>
         </dependency>
     </dependencies>
 
@@ -45,9 +45,7 @@
     </build>
 
     <properties>
-
         <apache.commons.lang3.version>3.13.0</apache.commons.lang3.version>
-        <apache.commons.collection.version>4.4</apache.commons.collection.version>        
         <apache.tika.version>2.9.1</apache.tika.version>
         <commons-text.version>1.10.0</commons-text.version>
         <icu4j.version>74.1</icu4j.version>

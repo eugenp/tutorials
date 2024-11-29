@@ -4,8 +4,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-mvc-views</artifactId>
-    <name>spring-mvc-views</name>
     <packaging>war</packaging>
+    <name>spring-mvc-views</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -25,6 +25,7 @@
             <artifactId>spring-context</artifactId>
             <version>${spring.version}</version>
         </dependency>
+        <!-- JAVA-37413 impossible to migrate to Jakarta due to incompatibilities with apache-tiles -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>

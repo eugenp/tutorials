@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>azure-functions</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>azure-functions</name>
+    <packaging>jar</packaging>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <azure.functions.maven.plugin.version>1.24.0</azure.functions.maven.plugin.version>
+        <azure.functions.java.library.version>3.0.0</azure.functions.java.library.version>
+        <functionAppName>azure-functions-1722835137455</functionAppName>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.microsoft.azure.functions</groupId>
+            <artifactId>azure-functions-java-library</artifactId>
+            <version>${azure.functions.java.library.version}</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.microsoft.azure</groupId>
+                <artifactId>azure-functions-maven-plugin</artifactId>
+                <version>${azure.functions.maven.plugin.version}</version>
+                <configuration>
+                    <!-- function app name -->
+                    <appName>${functionAppName}</appName>
+                    <!-- function app resource group -->
+                    <resourceGroup>java-functions-group</resourceGroup>
+                    <!-- function app service plan name -->
+                    <appServicePlanName>java-functions-app-service-plan</appServicePlanName>
+                    <!-- function app region-->
+                    <!-- refers https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details#supported-regions for all valid values -->
+                    <region>westus</region>
+                    <!-- function pricingTier, default to be consumption if not specified -->
+                    <!-- refers https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details#supported-pricing-tiers for all valid values -->
+                    <!-- <pricingTier></pricingTier> -->
+
+                    <!-- Whether to disable application insights, default is false -->
+                    <!-- refers https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details for all valid configurations for application insights-->
+                    <!-- <disableAppInsights></disableAppInsights> -->
+                    <runtime>
+                        <!-- runtime os, could be windows, linux or docker-->
+                        <os>windows</os>
+                        <javaVersion>17</javaVersion>
+                        <!-- for docker function, please set the following parameters -->
+                        <!-- <image>[hub-user/]repo-name[:tag]</image> -->
+                        <!-- <serverId></serverId> -->
+                        <!-- <registryUrl></registryUrl>  -->
+                    </runtime>
+                    <appSettings>
+                        <property>
+                            <name>FUNCTIONS_EXTENSION_VERSION</name>
+                            <value>~4</value>
+                        </property>
+                        <property>
+                            <name>AZURE_STORAGE</name>
+                            <value>DefaultEndpointsProtocol=https;AccountName=databasesas;AccountKey=J1yyyyb0m/XXXXXXXXXXXXXXmk9b3kQ0uZeLJHeivQzw+AStT++dUw==;EndpointSuffix=core.windows.net</value>
+                        </property>
+                        <property>
+                            <name>COSMOS_DB</name>
+                            <value>AccountEndpoint=https://baeldungcosmosdbdemo.documents.azure.com:443/;AccountKey=GXPD2zqqpYYYYYYYYKv4sFa66jE2W5XXXXXXXXXXXf33mInPKGxmLuLn6mivocLCACDbbIlhDQ==;</value>
+                        </property>
+
+                    </appSettings>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>package-functions</id>
+                        <goals>
+                            <goal>package</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--Remove obj folder generated by .NET SDK in maven clean-->
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>obj</directory>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

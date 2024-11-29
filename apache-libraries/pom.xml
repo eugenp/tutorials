@@ -18,7 +18,7 @@
         <dependency>
             <groupId>org.apache.avro</groupId>
             <artifactId>avro</artifactId>
-            <version>${avro.version}</version>
+            <version>${apache.avro.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.avro</groupId>
@@ -30,19 +30,6 @@
             <artifactId>avro-maven-plugin</artifactId>
             <version>${avro.version}</version>
         </dependency>
-        <!-- beam -->
-        <dependency>
-            <groupId>org.apache.beam</groupId>
-            <artifactId>beam-sdks-java-core</artifactId>
-            <version>${beam.version}</version>
-        </dependency>
-        <!-- runtime scoped -->
-        <dependency>
-            <groupId>org.apache.beam</groupId>
-            <artifactId>beam-runners-direct-java</artifactId>
-            <version>${beam.version}</version>
-            <scope>runtime</scope>
-        </dependency>
         <!-- bval -->
         <dependency>
             <groupId>org.apache.bval</groupId>
@@ -50,73 +37,20 @@
             <version>${bval.version}</version>
         </dependency>
         <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-            <version>${javax.validation.validation-api.version}</version>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <version>${jakarta.validation.validation-api.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.bval</groupId>
             <artifactId>bval-extras</artifactId>
             <version>${bval.version}</version>
         </dependency>
-        <!-- meecrowave -->
-        <dependency>
-            <groupId>org.apache.meecrowave</groupId>
-            <artifactId>meecrowave-core</artifactId>
-            <version>${meecrowave-core.version}</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.meecrowave/meecrowave-jpa -->
-        <dependency>
-            <groupId>org.apache.meecrowave</groupId>
-            <artifactId>meecrowave-jpa</artifactId>
-            <version>${meecrowave-jpa.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.squareup.okhttp3</groupId>
-            <artifactId>okhttp</artifactId>
-            <version>${okhttp.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.meecrowave</groupId>
-            <artifactId>meecrowave-junit</artifactId>
-            <version>${meecrowave-junit.version}</version>
-            <scope>test</scope>
-        </dependency>
         <!-- opennlp -->
         <dependency>
             <groupId>org.apache.opennlp</groupId>
             <artifactId>opennlp-tools</artifactId>
             <version>${opennlp.opennlp-tools.version}</version>
-        </dependency>
-        <!-- pulsar -->
-        <dependency>
-            <groupId>org.apache.pulsar</groupId>
-            <artifactId>pulsar-client</artifactId>
-            <version>${pulsar-client.version}</version>
-            <scope>compile</scope>
-        </dependency>
-        <!-- zookeeper -->
-        <dependency>
-            <groupId>org.apache.zookeeper</groupId>
-            <artifactId>zookeeper</artifactId>
-            <version>${zookeeper.version}</version>
-        </dependency>
-        <!-- curator -->
-        <dependency>
-            <groupId>org.apache.curator</groupId>
-            <artifactId>curator-x-async</artifactId>
-            <version>${curator.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.apache.zookeeper</groupId>
-                    <artifactId>zookeeper</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.curator</groupId>
-            <artifactId>curator-recipes</artifactId>
-            <version>${curator.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -133,23 +67,16 @@
             <artifactId>jackson-annotations</artifactId>
             <version>${jackson.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.jayway.awaitility</groupId>
-            <artifactId>awaitility</artifactId>
-            <version>${avaitility.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <!-- geode -->
-        <dependency>
-            <groupId>org.apache.geode</groupId>
-            <artifactId>geode-core</artifactId>
-            <version>${geode.core}</version>
-        </dependency>
         <!-- solr -->
         <dependency>
             <groupId>org.apache.solr</groupId>
             <artifactId>solr-solrj</artifactId>
             <version>${solr.solr-solrj.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.mesos</groupId>
+            <artifactId>mesos</artifactId>
+            <version>${mesos.library.version}</version>
         </dependency>
     </dependencies>
 
@@ -159,49 +86,31 @@
             <plugin>
                 <groupId>org.apache.avro</groupId>
                 <artifactId>avro-maven-plugin</artifactId>
-                <version>${avro.version}</version>
+                <version>${apache.avro.version}</version>
+                <configuration>
+                    <sourceDirectory>src/main/java/com/baeldung/apache/avro/schemas</sourceDirectory>
+                    <outputDirectory>src/main/java</outputDirectory>
+                    <stringType>String</stringType>
+                </configuration>
                 <executions>
                     <execution>
-                        <id>schemas</id>
                         <phase>generate-sources</phase>
                         <goals>
                             <goal>schema</goal>
-                            <goal>protocol</goal>
-                            <goal>idl-protocol</goal>
                         </goals>
-                        <configuration>
-                            <sourceDirectory>${project.basedir}/src/main/resources/</sourceDirectory>
-                            <outputDirectory>${project.basedir}/src/main/java/</outputDirectory>
-                        </configuration>
                     </execution>
                 </executions>
-            </plugin>
-            <!-- meecrowave -->
-            <plugin>
-                <groupId>org.apache.meecrowave</groupId>
-                <artifactId>meecrowave-maven-plugin</artifactId>
-                <version>${meecrowave-maven-plugin.version}</version>
             </plugin>
         </plugins>
     </build>
 
     <properties>
         <avro.version>1.8.2</avro.version>
-        <beam.version>2.45.0</beam.version>
-        <bval.version>2.0.6</bval.version>
-        <javax.validation.validation-api.version>2.0.1.Final</javax.validation.validation-api.version>
-        <meecrowave-junit.version>1.2.15</meecrowave-junit.version>
-        <okhttp.version>5.0.0-alpha.12</okhttp.version>
-        <meecrowave-jpa.version>1.2.15</meecrowave-jpa.version>
-        <meecrowave-core.version>1.2.15</meecrowave-core.version>
-        <meecrowave-maven-plugin.version>1.2.15</meecrowave-maven-plugin.version>
-        <opennlp.opennlp-tools.version>1.8.4</opennlp.opennlp-tools.version>
-        <pulsar-client.version>2.1.1-incubating</pulsar-client.version>
-        <zookeeper.version>3.4.11</zookeeper.version>
-        <curator.version>4.0.1</curator.version>
-        <avaitility.version>1.7.0</avaitility.version>
-        <geode.core>1.6.0</geode.core>
+        <bval.version>3.0.1</bval.version>
+        <jakarta.validation.validation-api.version>3.1.0</jakarta.validation.validation-api.version><opennlp.opennlp-tools.version>1.8.4</opennlp.opennlp-tools.version>
         <solr.solr-solrj.version>6.4.0</solr.solr-solrj.version>
+        <apache.avro.version>1.12.0</apache.avro.version>
+        <mesos.library.version>1.11.0</mesos.library.version>
     </properties>
 
 </project>

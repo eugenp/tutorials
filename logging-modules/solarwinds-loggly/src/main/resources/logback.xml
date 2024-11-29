@@ -1,0 +1,17 @@
+<configuration debug="true">
+    <!--Comment this appender when LogglyBatchAppender is enabled -->
+    <appender name="loggly" class="ch.qos.logback.ext.loggly.LogglyAppender">
+        <endpointUrl>https://logs-01.loggly.com/inputs/a3a21667-e23a-4378-b0b4-f2260ecfc25b/tag/logback</endpointUrl>
+        <pattern>%d{"ISO8601", UTC} %p %t %c{0}.%M - %m%n</pattern>
+    </appender>
+
+    <root level="debug">
+        <appender-ref ref="loggly"/>
+    </root>
+    <!--Uncomment it to use bulk transfer of to Loggly -->
+    <!--<appender name="loggly" class="ch.qos.logback.ext.loggly.LogglyBatchAppender">
+        <endpointUrl>https://logs-01.loggly.com/bulk/a3a21667-e23a-4378-b0b4-f2260ecfc25b/tag/logback</endpointUrl>
+        <pattern>%d{"ISO8601", UTC} %p %t %c %M - %m%n</pattern>
+    </appender>-->
+
+</configuration>

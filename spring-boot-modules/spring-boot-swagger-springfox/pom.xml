@@ -40,7 +40,7 @@
 
     <properties>
         <springfox.version>3.0.0</springfox.version>
-        <rest-assured.version>5.4.0</rest-assured.version>
+        <rest-assured.version>5.5.0</rest-assured.version>
         <start-class>com.baeldung.apiswagger.Application</start-class>
     </properties>
 

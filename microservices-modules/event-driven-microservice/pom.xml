@@ -10,11 +10,22 @@
     <description>Demo Project for Orkes Conductor on Spring Boot</description>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.0</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <groupId>com.baeldung</groupId>
+        <artifactId>microservices-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>
@@ -41,6 +52,11 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -48,6 +64,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
                 <configuration>
                     <excludes>
                         <exclude>
@@ -61,8 +78,8 @@
     </build>
 
     <properties>
-        <java.version>17</java.version>
         <conductor.client.version>2.0.8</conductor.client.version>
+        <spring-boot.version>3.2.0</spring-boot.version>
         <springdoc-openapi-webmvc-ui.version>2.5.0</springdoc-openapi-webmvc-ui.version>
     </properties>
 

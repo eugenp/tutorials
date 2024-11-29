@@ -14,15 +14,23 @@
     </parent>
 
     <dependencies>
+        <!-- Apache Commons CSV dependency -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-csv</artifactId>
             <version>${commons-csv.version}</version>
         </dependency>
+        <!-- OpenCSV dependency -->
         <dependency>
             <groupId>com.opencsv</groupId>
             <artifactId>opencsv</artifactId>
             <version>${opencsv.version}</version>
+        </dependency>
+        <!-- Apache POI dependency -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>${poi.version}</version>
         </dependency>
     </dependencies>
 
@@ -32,10 +40,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>${source.version}</source>
-                    <target>${target.version}</target>
-                </configuration>
             </plugin>
         </plugins>
         <resources>
@@ -47,10 +51,9 @@
     </build>
 
     <properties>
-        <source.version>11</source.version>
-        <target.version>11</target.version>
         <opencsv.version>5.8</opencsv.version>
         <commons-csv.version>1.11.0</commons-csv.version>
+        <poi.version>5.2.5</poi.version>
     </properties>
 
 </project>

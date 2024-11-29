@@ -111,8 +111,7 @@
     <properties>
         <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
         <testcontainers.version>1.19.8</testcontainers.version>
-        <rest-assured.version>5.3.1</rest-assured.version>
-        <java.version>17</java.version>
+        <rest-assured.version>5.5.0</rest-assured.version>
         <postgresql.version>42.7.3</postgresql.version>
     </properties>
 

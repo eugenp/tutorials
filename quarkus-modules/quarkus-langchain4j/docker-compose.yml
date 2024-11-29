@@ -1,0 +1,22 @@
+
+services:
+  redis:
+    image: redis:7-alpine
+    hostname: redis
+    ports:
+      - 6379:6379
+
+  chatbot:
+    hostname: chatbot
+    build:
+      context: .
+      dockerfile: src/main/docker/Dockerfile.jvm
+    environment:
+      QUARKUS_REDIS_HOSTS: redis://redis:6379
+      QUARKUS_LANGCHAIN4J_OPENAI_API_KEY: changeme
+      QUARKUS_LANGCHAIN4J_OPENAI_ORGANIZATION_ID: changeme
+    ports:
+      - 8080:8080
+
+networks:
+  default:

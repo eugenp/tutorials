@@ -32,11 +32,6 @@
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-            <version>${spring-boot-starter.version}</version>
-        </dependency>
-        <dependency>
             <groupId>edu.uci.ics</groupId>
             <artifactId>crawler4j</artifactId>
             <version>${crawler4j.version}</version>
@@ -53,24 +48,9 @@
             <version>${handlebars.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.mesos</groupId>
-            <artifactId>mesos</artifactId>
-            <version>${mesos.library.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
             <version>${hsqldb.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-jdbc</artifactId>
-            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>com.sleepycat</groupId>
@@ -88,14 +68,50 @@
             <version>${commons-io.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-collections4</artifactId>
-            <version>${commons-collections4.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.mvel</groupId>
             <artifactId>mvel2</artifactId>
             <version>${mvel2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.docker-java</groupId>
+            <artifactId>docker-java</artifactId>
+            <version>${docker.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>jcl-over-slf4j</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>ch.qos.logback</groupId>
+                    <artifactId>logback-classic</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.immutables</groupId>
+            <artifactId>value</artifactId>
+            <version>${immutables.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.nats</groupId>
+            <artifactId>jnats</artifactId>
+            <version>${jnats.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mutabilitydetector</groupId>
+            <artifactId>MutabilityDetector</artifactId>
+            <version>${mutabilitydetector.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.awaitility</groupId>
+            <artifactId>awaitility</artifactId>
+            <version>${awaitility.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -104,6 +120,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
             </plugin>
         </plugins>
     </build>
@@ -113,13 +130,15 @@
         <classgraph.version>4.8.153</classgraph.version>
         <jbpm.version>7.20.0.Final</jbpm.version>
         <crawler4j.version>4.4.0</crawler4j.version>
-        <spring-boot-starter.version>2.7.8</spring-boot-starter.version>
-        <mesos.library.version>1.11.0</mesos.library.version>
         <handlebars.version>4.3.1</handlebars.version>
-        <spring.version>5.3.25</spring.version>
         <hsqldb.version>2.7.1</hsqldb.version>
         <mvel2.version>2.5.2.Final</mvel2.version>
         <sleepycat-je.version>18.3.12</sleepycat-je.version>
+        <docker.version>3.0.14</docker.version>
+        <immutables.version>2.5.6</immutables.version>
+        <jnats.version>2.17.3</jnats.version>
+        <mutabilitydetector.version>0.9.6</mutabilitydetector.version>
+        <awaitility.version>4.2.1</awaitility.version>
     </properties>
 
 </project>

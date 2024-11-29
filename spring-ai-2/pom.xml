@@ -1,75 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>com.baeldung</groupId>
-		<artifactId>parent-boot-3</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../parent-boot-3</relativePath>
-	</parent>
-	<groupId>com.baeldung</groupId>
-	<artifactId>spring-ai-2</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-ai-2</name>
-	<description>Demo project for Spring Boot</description>
-	<properties>
-		<java.version>17</java.version>
-		<spring-ai.version>1.0.0-M1</spring-ai.version>
-		<spring-boot.version>3.2.7</spring-boot.version>
-	</properties>
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-			<version>${spring-boot.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.ai</groupId>
-			<artifactId>spring-ai-openai-spring-boot-starter</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.ai</groupId>
-			<artifactId>spring-ai-redis-store-spring-boot-starter</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.ai</groupId>
-			<artifactId>spring-ai-transformers-spring-boot-starter</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.ai</groupId>
-			<artifactId>spring-ai-pdf-document-reader</artifactId>
-		</dependency>
-	</dependencies>
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.ai</groupId>
-				<artifactId>spring-ai-bom</artifactId>
-				<version>${spring-ai.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+   <artifactId>spring-ai-2</artifactId>
+   <version>0.0.1</version>
+   <packaging>jar</packaging>
+   <name>spring-ai-2</name>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
-	<repositories>
-		<repository>
-			<id>spring-milestones</id>
-			<name>Spring Milestones</name>
-			<url>https://repo.spring.io/milestone</url>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
+   <parent>
+       <groupId>com.baeldung</groupId>
+       <artifactId>parent-boot-3</artifactId>
+       <version>0.0.1-SNAPSHOT</version>
+       <relativePath>../parent-boot-3</relativePath>
+   </parent>
+
+   <repositories>
+       <repository>
+           <id>spring-milestones</id>
+           <name>Spring Milestones</name>
+           <url>https://repo.spring.io/milestone</url>
+           <snapshots>
+               <enabled>false</enabled>
+           </snapshots>
+       </repository>
+   </repositories>
+
+   <dependencyManagement>
+       <dependencies>
+           <dependency>
+               <groupId>org.springframework.ai</groupId>
+               <artifactId>spring-ai-bom</artifactId>
+               <version>${spring-ai.version}</version>
+               <type>pom</type>
+               <scope>import</scope>
+           </dependency>
+       </dependencies>
+   </dependencyManagement>
+
+   <dependencies>
+       <dependency>
+           <groupId>org.springframework.boot</groupId>
+           <artifactId>spring-boot-starter-web</artifactId>
+       </dependency>
+       <dependency>
+           <groupId>org.springframework.ai</groupId>
+           <artifactId>spring-ai-ollama-spring-boot-starter</artifactId>
+       </dependency>
+       <dependency>
+           <groupId>org.springframework.ai</groupId>
+           <artifactId>spring-ai-chroma-store-spring-boot-starter</artifactId>
+       </dependency>
+
+       <!-- Test dependencies -->
+       <dependency>
+           <groupId>org.springframework.boot</groupId>
+           <artifactId>spring-boot-starter-test</artifactId>
+           <scope>test</scope>
+       </dependency>
+       <dependency>
+           <groupId>org.springframework.ai</groupId>
+           <artifactId>spring-ai-spring-boot-testcontainers</artifactId>
+           <scope>test</scope>
+       </dependency>
+       <dependency>
+           <groupId>org.testcontainers</groupId>
+           <artifactId>chromadb</artifactId>
+           <scope>test</scope>
+       </dependency>
+       <dependency>
+           <groupId>org.testcontainers</groupId>
+           <artifactId>ollama</artifactId>
+           <scope>test</scope>
+       </dependency>
+   </dependencies>
+
+   <build>
+       <plugins>
+           <plugin>
+               <groupId>org.springframework.boot</groupId>
+               <artifactId>spring-boot-maven-plugin</artifactId>
+               <configuration>
+                   <mainClass>com.baeldung.springai.chromadb.Application</mainClass>
+               </configuration>
+           </plugin>
+           <plugin>
+               <groupId>org.apache.maven.plugins</groupId>
+               <artifactId>maven-compiler-plugin</artifactId>
+               <configuration>
+                   <release>21</release>
+               </configuration>
+           </plugin>
+       </plugins>
+   </build>
+
+   <properties>
+       <spring-boot.version>3.3.5</spring-boot.version>
+       <spring-ai.version>1.0.0-M4</spring-ai.version>
+   </properties>
 
 </project>

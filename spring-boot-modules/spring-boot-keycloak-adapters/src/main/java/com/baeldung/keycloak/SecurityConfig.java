@@ -2,6 +2,7 @@ package com.baeldung.keycloak;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -28,17 +29,31 @@ class SecurityConfig {
         return new RegisterSessionAuthenticationStrategy(new SessionRegistryImpl());
     }
 
+    @Order(1)
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        return http.authorizeHttpRequests(request -> request.requestMatchers(new AntPathRequestMatcher("/customers*", "/users*"))
-                .hasRole("USER")
-                .anyRequest()
-                .permitAll())
-            .oauth2Login(Customizer.withDefaults())
+    public SecurityFilterChain clientFilterChain(HttpSecurity http) throws Exception {
+        http.authorizeHttpRequests(auth -> auth
+            .requestMatchers(new AntPathRequestMatcher("/"))
+            .permitAll()
+            .anyRequest()
+            .authenticated());
+        http.oauth2Login(Customizer.withDefaults())
             .logout(logout -> logout.addLogoutHandler(keycloakLogoutHandler)
-                .logoutSuccessUrl("/"))
-            .oauth2ResourceServer(httpSecurityOAuth2ResourceServerConfigurer -> httpSecurityOAuth2ResourceServerConfigurer.jwt(Customizer.withDefaults()))
-            .build();
+                .logoutSuccessUrl("/"));
+        return http.build();
+    }
+    
+    @Order(2)
+    @Bean
+    public SecurityFilterChain resourceServerFilterChain(HttpSecurity http) throws Exception {
+        http.authorizeHttpRequests(auth -> auth
+            .requestMatchers(new AntPathRequestMatcher("/customers*", "/users*"))
+            .hasRole("USER")
+            .anyRequest()
+            .authenticated());
+        http.oauth2ResourceServer((oauth2) -> oauth2
+            .jwt(Customizer.withDefaults()));
+        return http.build();
     }
 
     @Bean

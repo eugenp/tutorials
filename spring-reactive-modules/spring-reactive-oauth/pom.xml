@@ -6,15 +6,14 @@
     <groupId>com.baeldung.reactive.oauth</groupId>
     <artifactId>spring-reactive-oauth</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>spring-reactive-oauth</name>
     <packaging>jar</packaging>
+    <name>spring-reactive-oauth</name>
     <description>WebFlux and Spring Security OAuth</description>
 
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-3</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-3</relativePath>
+        <groupId>com.baeldung.spring.reactive</groupId>
+        <artifactId>spring-reactive-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <dependencies>
@@ -52,6 +51,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <testFailureIgnore>true</testFailureIgnore>
                     <excludes>

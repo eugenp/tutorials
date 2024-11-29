@@ -45,11 +45,6 @@
             <version>${apache.commons.collection.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-text</artifactId>
-            <version>${commons-text.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.unbescape</groupId>
             <artifactId>unbescape</artifactId>
             <version>1.1.6.RELEASE</version>
@@ -82,7 +77,7 @@
 
     <properties>
         <apache.commons.lang3.version>3.13.0</apache.commons.lang3.version>
-        <apache.commons.collection.version>4.4</apache.commons.collection.version>        
+        <apache.commons.collection.version>4.5.0-M2</apache.commons.collection.version>
         <apache.tika.version>2.9.1</apache.tika.version>
         <commons-text.version>1.10.0</commons-text.version>
         <icu4j.version>74.1</icu4j.version>

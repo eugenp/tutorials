@@ -25,11 +25,22 @@
             <version>${hsqldb.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.jetbrains.xodus</groupId>
+            <artifactId>xodus-openAPI</artifactId>
+            <version>${xodus.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains.xodus</groupId>
+            <artifactId>xodus-entity-store</artifactId>
+            <version>${xodus.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <hsqldb.version>2.4.0</hsqldb.version>
         <sql2o.version>1.6.0</sql2o.version>
+        <xodus.version>2.0.1</xodus.version>
     </properties>
 
 </project>
