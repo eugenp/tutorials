@@ -8,17 +8,17 @@ import java.time.LocalDate;
 import java.util.Collections;
 import java.util.Set;
 
-import jakarta.validation.ConstraintViolation;
-import jakarta.validation.Validation;
-import jakarta.validation.ValidatorFactory;
-import jakarta.validation.executable.ExecutableValidator;
-
 import org.junit.Before;
 import org.junit.Test;
 
 import com.baeldung.javaxval.methodvalidation.model.Customer;
 import com.baeldung.javaxval.methodvalidation.model.Reservation;
 import com.baeldung.javaxval.methodvalidation.model.ReservationManagement;
+
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.Validation;
+import jakarta.validation.ValidatorFactory;
+import jakarta.validation.executable.ExecutableValidator;
 
 public class ValidationIntegrationTest {
 
