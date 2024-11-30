@@ -13,7 +13,7 @@ public class ConsecutiveSumCheckerUnitTest {
 
     public static int[] getConsecutiveNumbersSum(int number) {
         if (number % 2 == 0) {
-            return null;
+            return new int[0];
         }
         int n = (number - 1) / 2;
         return new int[]{n, n + 1};
@@ -59,7 +59,7 @@ public class ConsecutiveSumCheckerUnitTest {
     @Test
     public void givenEvenNumber_whenUsingMathFormula_thenReturnNull() {
         int[] result = getConsecutiveNumbersSum(evenNumber);
-        assertNull(result);
+        assertNull(new int[0], result);
     }
 
     @Test
