@@ -19,7 +19,7 @@ public class DateTimeIntegrationTest {
     private DateTimeValueRepository dateTimeValueRepository;
 
     @Test
-    public void given_java_date_times_values_when_persisted_then_all_values_are_stored() {
+    public void givenJavaDateTimesValues_whenPersisted_thenAllValuesAreStored() {
 
         // Given
         DateTimeValues dateTimeValues = new DateTimeValues();
@@ -33,7 +33,7 @@ public class DateTimeIntegrationTest {
     }
 
     @Test
-    public void given_java_instant_when_persisted_as_sql_date_then_retrieved_without_time() {
+    public void givenJavaInstant_whenPersistedAsSqlDate_thenRetrievedWithoutTime() {
         DateTimeValues dateTimeValues = new DateTimeValues();
         DateTimeValues persisted = dateTimeValueRepository.save(dateTimeValues);
         DateTimeValues fromDatabase = dateTimeValueRepository.findById(persisted.getId()).get();
