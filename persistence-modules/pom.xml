@@ -75,9 +75,9 @@
         <module>spring-boot-persistence-h2</module>
         <module>spring-boot-persistence-h2-2</module>
         <!-- <module>spring-boot-persistence-mongodb</module> --> <!-- JAVA-42144 -->
-        <module>spring-boot-persistence-mongodb-2</module>
+        <!-- <module>spring-boot-persistence-mongodb-2</module> --> <!-- JAVA-42371 -->
         <module>spring-boot-persistence-mongodb-3</module>
-        <module>spring-boot-persistence-mongodb-4</module>
+        <!-- <module>spring-boot-persistence-mongodb-4</module> --> <!-- JAVA-42372 -->
         <module>spring-data-arangodb</module>
         <!--<module>spring-data-cassandra</module>-->   <!-- failing after upgrading to jdk17. JDK 17 compatibility in progress CASSANDRA-16895 -->
         <module>spring-data-cassandra-test</module>
