@@ -25,7 +25,7 @@ public class VectorStoreInitializer implements ApplicationRunner {
             .stream()
             .map(poem -> {
                 Map<String, Object> metadata = Map.of("title", poem.title());
-                String content = String.join("", poem.lines());
+                String content = String.join("\n", poem.lines());
 
                 return new Document(content, metadata);
             })
