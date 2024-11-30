@@ -11,12 +11,13 @@ import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
+import org.hibernate.validator.constraints.Length;
+
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
+import jakarta.validation.ReportAsSingleViolation;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-
-import org.hibernate.validator.constraints.Length;
 
 @NotNull
 @Pattern(regexp = ".*\\d.*", message = "must contain at least one numeric character")
@@ -25,7 +26,8 @@ import org.hibernate.validator.constraints.Length;
 @Retention(RUNTIME)
 @Documented
 @Constraint(validatedBy = {})
-public @interface ValidAlphanumeric {
+@ReportAsSingleViolation
+public @interface ValidAlphanumericWithSingleViolation {
 
     String message() default "field should have a valid length and contain numeric character(s).";
 
@@ -34,4 +36,3 @@ public @interface ValidAlphanumeric {
     Class<? extends Payload>[] payload() default {};
 
 }
-
