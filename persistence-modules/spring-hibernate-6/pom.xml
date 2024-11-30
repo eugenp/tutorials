@@ -42,11 +42,13 @@
             <artifactId>spring-data-jpa</artifactId>
             <version>${org.springframework.data.version}</version>
         </dependency>
+        
         <dependency>
             <groupId>org.hibernate.orm</groupId>
-            <artifactId>hibernate-core</artifactId>
+            <artifactId>hibernate-jcache</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
+        
         <dependency>
             <groupId>org.apache.tomcat</groupId>
             <artifactId>tomcat-dbcp</artifactId>
@@ -93,6 +95,41 @@
             <artifactId>h2</artifactId>
             <version>${h2.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.ehcache</groupId>
+            <artifactId>ehcache</artifactId>
+            <version>${ehcache.version}</version>
+            <classifier>jakarta</classifier>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.sun.istack</groupId>
+                    <artifactId>istack-commons-runtime</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.sun.xml.fastinfoset</groupId>
+                    <artifactId>FastInfoset</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>javax.xml.bind</groupId>
+                    <artifactId>jaxb-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sun.istack</groupId>
+            <artifactId>istack-commons-runtime</artifactId>
+            <version>${istack-commons-runtime.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -104,6 +141,9 @@
         <!-- persistence -->
         <mysql-connector-java.version>8.2.0</mysql-connector-java.version>
         <tomcat-dbcp.version>9.0.80</tomcat-dbcp.version>
+        <!-- cache -->
+        <ehcache.version>3.10.8</ehcache.version>
+        <istack-commons-runtime.version>4.0.0</istack-commons-runtime.version>
     </properties>
 
 </project>
