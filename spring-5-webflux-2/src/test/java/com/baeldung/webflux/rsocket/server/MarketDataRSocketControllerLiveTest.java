@@ -1,8 +1,10 @@
-package com.baeldung.spring.rsocket.server;
+package com.baeldung.webflux.rsocket.server;
 
-import com.baeldung.spring.rsocket.model.MarketData;
-import com.baeldung.spring.rsocket.model.MarketDataRequest;
-import io.rsocket.RSocket;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.verify;
+
+import java.time.Duration;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +18,12 @@ import org.springframework.messaging.rsocket.RSocketStrategies;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.MimeTypeUtils;
+
+import com.baeldung.webflux.rsocket.model.MarketData;
+import com.baeldung.webflux.rsocket.model.MarketDataRequest;
+
+import io.rsocket.RSocket;
 import reactor.util.retry.Retry;
-
-import java.time.Duration;
-
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

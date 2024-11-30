@@ -1,14 +1,16 @@
-package com.baeldung.spring.rsocket.client;
+package com.baeldung.webflux.rsocket.client;
 
-import com.baeldung.spring.rsocket.model.MarketData;
-import com.baeldung.spring.rsocket.model.MarketDataRequest;
 import java.util.Random;
+
 import org.reactivestreams.Publisher;
 import org.springframework.http.MediaType;
 import org.springframework.messaging.rsocket.RSocketRequester;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.baeldung.webflux.rsocket.model.MarketData;
+import com.baeldung.webflux.rsocket.model.MarketDataRequest;
 
 @RestController
 public class MarketDataRestController {

@@ -1,10 +1,12 @@
-package com.baeldung.spring.rsocket.server;
+package com.baeldung.webflux.rsocket.server;
 
-import com.baeldung.spring.rsocket.model.MarketData;
-import com.baeldung.spring.rsocket.model.MarketDataRequest;
 import org.springframework.messaging.handler.annotation.MessageExceptionHandler;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.stereotype.Controller;
+
+import com.baeldung.webflux.rsocket.model.MarketData;
+import com.baeldung.webflux.rsocket.model.MarketDataRequest;
+
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 

@@ -1,16 +1,16 @@
-package com.baeldung.spring.rsocket.client;
+package com.baeldung.webflux.rsocket.server;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
 @SpringBootApplication
-public class ClientApplication {
+public class ServerApplication {
 
     public static void main(String[] args) {
         new SpringApplicationBuilder()
-                .main(ClientApplication.class)
-                .sources(ClientApplication.class)
-                .profiles("client")
+                .main(ServerApplication.class)
+                .sources(ServerApplication.class)
+                .profiles("server")
                 .run(args);
     }
 }

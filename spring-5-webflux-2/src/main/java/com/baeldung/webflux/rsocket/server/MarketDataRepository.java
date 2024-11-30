@@ -1,11 +1,14 @@
-package com.baeldung.spring.rsocket.server;
+package com.baeldung.webflux.rsocket.server;
 
-import com.baeldung.spring.rsocket.model.MarketData;
 import java.time.Duration;
 import java.util.Random;
 import java.util.stream.Stream;
-import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.stereotype.Component;
+
+import com.baeldung.webflux.rsocket.model.MarketData;
+
+import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 

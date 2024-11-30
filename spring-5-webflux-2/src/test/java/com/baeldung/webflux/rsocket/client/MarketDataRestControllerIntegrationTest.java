@@ -1,10 +1,9 @@
-package com.baeldung.spring.rsocket.client;
+package com.baeldung.webflux.rsocket.client;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.http.MediaType.TEXT_EVENT_STREAM;
 
-import com.baeldung.spring.rsocket.model.MarketData;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -16,6 +15,9 @@ import org.springframework.messaging.rsocket.RSocketRequester.RequestSpec;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.FluxExchangeResult;
 import org.springframework.test.web.reactive.server.WebTestClient;
+
+import com.baeldung.webflux.rsocket.model.MarketData;
+
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;

@@ -1,4 +1,4 @@
-package com.baeldung.spring.responsestatus;
+package com.baeldung.webflux.responsestatus;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

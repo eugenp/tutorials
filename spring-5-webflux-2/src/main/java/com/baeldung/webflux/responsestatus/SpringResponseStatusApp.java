@@ -1,4 +1,4 @@
-package com.baeldung.spring.responsestatus;
+package com.baeldung.webflux.responsestatus;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

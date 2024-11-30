@@ -1,4 +1,4 @@
-package com.baeldung.spring.rsocket.model;
+package com.baeldung.webflux.rsocket.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
