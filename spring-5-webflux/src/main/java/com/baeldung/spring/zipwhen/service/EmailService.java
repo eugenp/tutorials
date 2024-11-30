@@ -1,4 +1,4 @@
-package com.baeldung.webflux.zipwhen.service;
+package com.baeldung.spring.zipwhen.service;
 
 import reactor.core.publisher.Mono;
 

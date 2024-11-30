@@ -1,6 +1,6 @@
-package com.baeldung.webflux.zipwhen.service;
+package com.baeldung.spring.zipwhen.service;
 
-import com.baeldung.webflux.zipwhen.model.User;
+import com.baeldung.spring.zipwhen.model.User;
 
 import reactor.core.publisher.Mono;
 

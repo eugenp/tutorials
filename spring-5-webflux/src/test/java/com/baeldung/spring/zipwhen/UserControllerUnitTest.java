@@ -1,15 +1,15 @@
-package com.baeldung.webflux.zipwhen;
+package com.baeldung.spring.zipwhen;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import com.baeldung.webflux.zipwhen.model.User;
-import com.baeldung.webflux.zipwhen.service.DatabaseService;
-import com.baeldung.webflux.zipwhen.service.EmailService;
-import com.baeldung.webflux.zipwhen.service.UserService;
-import com.baeldung.webflux.zipwhen.web.UserController;
+import com.baeldung.spring.zipwhen.model.User;
+import com.baeldung.spring.zipwhen.service.DatabaseService;
+import com.baeldung.spring.zipwhen.service.EmailService;
+import com.baeldung.spring.zipwhen.service.UserService;
+import com.baeldung.spring.zipwhen.web.UserController;
 
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;

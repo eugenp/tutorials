@@ -1,4 +1,4 @@
-package com.baeldung.webflux.zipwhen.model;
+package com.baeldung.spring.zipwhen.model;
 
 public class User {
 

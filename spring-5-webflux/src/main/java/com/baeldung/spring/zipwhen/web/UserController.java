@@ -1,13 +1,13 @@
-package com.baeldung.webflux.zipwhen.web;
+package com.baeldung.spring.zipwhen.web;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-import com.baeldung.webflux.zipwhen.model.User;
-import com.baeldung.webflux.zipwhen.service.DatabaseService;
-import com.baeldung.webflux.zipwhen.service.EmailService;
-import com.baeldung.webflux.zipwhen.service.UserService;
+import com.baeldung.spring.zipwhen.model.User;
+import com.baeldung.spring.zipwhen.service.DatabaseService;
+import com.baeldung.spring.zipwhen.service.EmailService;
+import com.baeldung.spring.zipwhen.service.UserService;
 
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
