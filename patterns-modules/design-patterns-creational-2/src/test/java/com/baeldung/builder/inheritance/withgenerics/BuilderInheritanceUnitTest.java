@@ -1,11 +1,8 @@
-package com.baledung.builder.inheritance.withgenerics;
+package com.baeldung.builder.inheritance.withgenerics;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
-
-import com.baeldung.builder.inheritance.withgenerics.Car;
-import com.baeldung.builder.inheritance.withgenerics.ElectricCar;
 
 public class BuilderInheritanceUnitTest {
 
