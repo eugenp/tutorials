@@ -15,7 +15,7 @@
     </parent>
 
     <modules>
-        <module>jackson-annotations</module>
+        <module>jackson-annotations-video</module>
     </modules>
 
 </project>
