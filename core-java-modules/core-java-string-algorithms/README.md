@@ -3,13 +3,11 @@
 This module contains articles about string-related algorithms.
 
 ### Relevant Articles:
-- [Check if a String Is a Palindrome in Java](https://www.baeldung.com/java-palindrome)
 - [Count Occurrences of a Char in a String](https://www.baeldung.com/java-count-chars)
-- [Using indexOf to Find All Occurrences of a Word in a String](https://www.baeldung.com/java-indexof-find-string-occurrences)
-- [Removing Stopwords from a String in Java](https://www.baeldung.com/java-string-remove-stopwords)
-- [Removing Repeated Characters from a String](https://www.baeldung.com/java-remove-repeated-char)
 - [How to Reverse a String in Java](https://www.baeldung.com/java-reverse-string)
-- [Check if a String Is a Pangram in Java](https://www.baeldung.com/java-string-pangram)
-- [Check If a String Contains Multiple Keywords in Java](https://www.baeldung.com/string-contains-multiple-words)
-- [Remove Emojis from a Java String](https://www.baeldung.com/java-string-remove-emojis)
+- [Email Validation in Java](https://www.baeldung.com/java-email-validation-regex)
+- [Generating a Java String of N Repeated Characters](https://www.baeldung.com/java-string-of-repeated-characters)
+- [Pad a String with Zeros or Spaces in Java](https://www.baeldung.com/java-pad-string)
+- [How to Remove the Last Character of a String?](https://www.baeldung.com/java-remove-last-character-of-string)
+- [Remove or Replace Part of a String in Java](https://www.baeldung.com/java-remove-replace-string-part)
 - More articles: [[next -->]](../core-java-string-algorithms-2)

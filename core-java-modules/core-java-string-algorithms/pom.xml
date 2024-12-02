@@ -20,11 +20,6 @@
             <version>${commons-lang3.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.ahocorasick</groupId>
-            <artifactId>ahocorasick</artifactId>
-            <version>${ahocorasick.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-core</artifactId>
             <version>${jmh-core.version}</version>
@@ -35,9 +30,9 @@
             <version>${jmh-generator.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.vdurmont</groupId>
-            <artifactId>emoji-java</artifactId>
-            <version>${emoji-java.version}</version>
+            <groupId>commons-validator</groupId>
+            <artifactId>commons-validator</artifactId>
+            <version>${validator.version}</version>
         </dependency>
     </dependencies>
 
@@ -52,8 +47,6 @@
     </build>
 
     <properties>
-        <ahocorasick.version>0.4.0</ahocorasick.version>
-        <emoji-java.version>4.0.0</emoji-java.version>
+        <validator.version>1.8.0</validator.version>
     </properties>
-
 </project>

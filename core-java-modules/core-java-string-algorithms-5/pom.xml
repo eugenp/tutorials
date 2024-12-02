@@ -2,9 +2,9 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>core-java-string-algorithms-4</artifactId>
+    <artifactId>core-java-string-algorithms-5</artifactId>
     <packaging>jar</packaging>
-    <name>core-java-string-algorithms-4</name>
+    <name>core-java-string-algorithms-5</name>
 
     <parent>
         <groupId>com.baeldung.core-java-modules</groupId>
@@ -14,20 +14,14 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>${commons-lang.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.ahocorasick</groupId>
-            <artifactId>ahocorasick</artifactId>
-            <version>${ahocorasick.version}</version>
+            <groupId>com.vdurmont</groupId>
+            <artifactId>emoji-java</artifactId>
+            <version>${emoji-java.version}</version>
         </dependency>
     </dependencies>
 
     <properties>
-        <commons-lang.version>3.14.0</commons-lang.version>
-        <ahocorasick.version>0.4.0</ahocorasick.version>
+        <emoji-java.version>4.0.0</emoji-java.version>
     </properties>
 
 </project>
