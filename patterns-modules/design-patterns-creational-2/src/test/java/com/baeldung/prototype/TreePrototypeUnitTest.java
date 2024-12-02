@@ -1,10 +1,10 @@
 package com.baeldung.prototype;
 
+import static java.util.stream.Collectors.toList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
 import java.util.List;
-import static java.util.stream.Collectors.toList;
 
 import org.junit.jupiter.api.Test;
 

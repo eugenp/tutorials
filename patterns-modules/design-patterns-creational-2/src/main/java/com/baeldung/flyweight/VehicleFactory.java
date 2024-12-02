@@ -1,6 +1,6 @@
 package com.baeldung.flyweight;
 
-import java.awt.Color;
+import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 

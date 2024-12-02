@@ -1,11 +1,12 @@
 package com.baeldung.freebuilder;
 
-import org.inferred.freebuilder.FreeBuilder;
-
-import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+
+import javax.annotation.Nullable;
+
+import org.inferred.freebuilder.FreeBuilder;
 
 @FreeBuilder
 public interface Employee {

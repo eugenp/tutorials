@@ -1,6 +1,6 @@
-package com.baeldung.creational.abstractfactory2;
+package com.baeldung.abstractfactory2;
 
-public class SkyAnimal extends Animal{
+public class SkyAnimal extends Animal {
 
     SkyAnimal(AnimalEra era, String name) {
         super(AnimalType.SKY, era, name);

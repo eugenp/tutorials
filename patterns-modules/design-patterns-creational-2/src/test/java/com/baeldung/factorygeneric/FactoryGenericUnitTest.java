@@ -1,9 +1,12 @@
 package com.baeldung.factorygeneric;
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Date;
+
+import org.junit.jupiter.api.Test;
 
 // Unit test for the NotifierFactory class.
 public class FactoryGenericUnitTest {

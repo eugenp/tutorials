@@ -1,8 +1,8 @@
 package com.baeldung.freebuilder;
 
-import org.inferred.freebuilder.FreeBuilder;
-
 import java.util.Optional;
+
+import org.inferred.freebuilder.FreeBuilder;
 
 @FreeBuilder
 public interface Address {

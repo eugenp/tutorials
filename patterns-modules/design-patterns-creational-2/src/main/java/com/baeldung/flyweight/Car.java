@@ -1,6 +1,6 @@
 package com.baeldung.flyweight;
 
-import java.awt.Color;
+import java.awt.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,10 +1,8 @@
 package com.baeldung.constructorsstaticfactorymethods.entities;
 
 import java.time.LocalTime;
-import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
 
 public class User {
 

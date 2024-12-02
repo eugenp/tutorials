@@ -1,4 +1,4 @@
-package com.baeldung.creational.abstractfactory2;
+package com.baeldung.abstractfactory2;
 
 public class AnimalAbstractFactory {
 

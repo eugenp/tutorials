@@ -1,8 +1,10 @@
 package com.baeldung.constructorsstaticfactorymethods;
 
-import com.baeldung.constructorsstaticfactorymethods.entities.User;
 import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.Test;
+
+import com.baeldung.constructorsstaticfactorymethods.entities.User;
 
 public class UserUnitTest {
     
