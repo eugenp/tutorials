@@ -12,7 +12,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ChainExampleFilterTest {
+public class ChainExampleFilterUnitTest {
 
     @Autowired
     private MockMvc mockMvc;
