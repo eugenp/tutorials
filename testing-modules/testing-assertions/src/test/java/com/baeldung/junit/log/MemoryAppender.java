@@ -56,17 +56,14 @@ public class MemoryAppender extends ListAppender<ILoggingEvent> {
         return Collections.unmodifiableList(this.list);
     }
 
-    public boolean containsPattern(String regex, Level level) {
-        Pattern pattern = Pattern.compile(regex);
+    public boolean containsPattern(Pattern pattern, Level level) {
         return this.list.stream()
-            .filter(event -> event.getLevel()
-                .equals(level))
-            .anyMatch(event -> pattern.matcher(event.getFormattedMessage())
-                .matches());
+            .filter(event -> event.getLevel().equals(level))
+            .anyMatch(event -> pattern.matcher(event.getFormattedMessage()).matches());
     }
 
-    public boolean containsPatterns(List<String> regexList, Level level) {
-        return regexList.stream()
-            .allMatch(regex -> containsPattern(regex, level));
+    public boolean containsPatterns(List<Pattern> patternList, Level level) {
+        return patternList.stream()
+            .allMatch(pattern -> containsPattern(pattern, level));
     }
 }
