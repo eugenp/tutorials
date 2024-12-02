@@ -25,20 +25,17 @@ public class TransmittableThreadLocalUnitTest {
 
     @Test
     void givenInheritableThreadLocal_whenChangeTheTransactionIdAfterSubmissionToThreadPool_thenNewValueWillNotBeAvailableInParallelThread() {
-
         String firstTransactionIDValue = UUID.randomUUID().toString();
-        String secondTransactionIDValue = UUID.randomUUID().toString();
-
         InheritableThreadLocal<String> transactionID = new InheritableThreadLocal<>();
         transactionID.set(firstTransactionIDValue);
-
         Runnable task = () -> assertEquals(firstTransactionIDValue, transactionID.get());
-        Runnable task2 = () -> assertNotEquals(secondTransactionIDValue, transactionID.get());
 
         ExecutorService executorService = Executors.newFixedThreadPool(1);
         executorService.submit(task);
 
+        String secondTransactionIDValue = UUID.randomUUID().toString();
         transactionID.set(secondTransactionIDValue);
+        Runnable task2 = () -> assertNotEquals(secondTransactionIDValue, transactionID.get());
         executorService.submit(task2);
 
         executorService.shutdown();
