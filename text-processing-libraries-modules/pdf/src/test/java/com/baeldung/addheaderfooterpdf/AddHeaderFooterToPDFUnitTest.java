@@ -7,16 +7,21 @@ import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 
 import java.io.File;
 import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@TestMethodOrder(OrderAnnotation.class)
 public class AddHeaderFooterToPDFUnitTest {
 
     @Test
+    @Order(1)
     void givenHeaderAndFooter_whenCreatingPDF_thenHeaderFooterAreOnEachPage() throws IOException {
         String dest = "documentWithHeaderFooter.pdf";
         PdfWriter writer = new PdfWriter(dest);
@@ -31,6 +36,7 @@ public class AddHeaderFooterToPDFUnitTest {
     }
 
     @Test
+    @Order(2)
     void givenHeaderAndFooter_whenTestingPDF_thenHeaderFooterAreVerified() throws IOException {
         String dest = "documentWithHeaderFooter.pdf";
 

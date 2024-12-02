@@ -16,7 +16,7 @@ class ReadPdfFileUnitTest {
 
     @Test
     public void givenSamplePdf_whenUsingApachePdfBox_thenCompareOutput() throws IOException {
-        String expectedText = "Hello World!\n";
+        String expectedText = "Hello World!" + System.lineSeparator();
 
         File file = new File("sample.pdf");
         PDDocument document = PDDocument.load(file);
