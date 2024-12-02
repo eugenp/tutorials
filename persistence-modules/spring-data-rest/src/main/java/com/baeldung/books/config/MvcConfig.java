@@ -8,8 +8,6 @@ import org.springframework.web.servlet.config.annotation.DefaultServletHandlerCo
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import com.baeldung.books.events.AuthorEventHandler;
-import com.baeldung.books.events.BookEventHandler;
 
 @Configuration
 @EnableWebMvc
@@ -27,16 +25,6 @@ public class MvcConfig implements WebMvcConfigurer {
     @Bean
     WebServerFactoryCustomizer<ConfigurableServletWebServerFactory> enableDefaultServlet() {
         return (factory) -> factory.setRegisterDefaultServlet(true);
-    }
-    
-    @Bean
-    AuthorEventHandler authorEventHandler() {
-        return new AuthorEventHandler();
-    }
-
-    @Bean
-    BookEventHandler bookEventHandler() {
-        return new BookEventHandler();
     }
 
 }

@@ -1,0 +1,51 @@
+<config
+    xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+    xmlns='http://www.ehcache.org/v3'
+    xmlns:jsr107='http://www.ehcache.org/v3/jsr107'
+    xsi:schemaLocation="http://www.ehcache.org/v3 http://www.ehcache.org/schema/ehcache-core-3.10.xsd">
+
+    <cache-template name="entities">
+        <expiry>
+            <ttl unit="minutes">10</ttl>
+        </expiry>
+        <resources>
+            <heap unit="entries">100000</heap>
+        </resources>
+    </cache-template>
+
+    <cache-template name="entities.collections">
+        <expiry>
+            <ttl unit="minutes">10</ttl>
+        </expiry>
+        <resources>
+            <heap unit="entries">100000</heap>
+        </resources>
+    </cache-template>
+
+    <cache alias="default-update-timestamps-region">
+        <expiry>
+            <none />
+        </expiry>
+
+        <resources>
+            <heap unit="entries">1000</heap>
+        </resources>
+    </cache>
+
+    <cache
+        alias="com.baeldung.hibernate.cache.model.Foo"
+        uses-template="entities">
+    </cache>
+
+    <cache
+        alias="com.baeldung.hibernate.cache.model.Foo.bars"
+        uses-template="entities.collections">
+    </cache>
+
+    <cache
+        alias="com.baeldung.hibernate.cache.model.Bar"
+        uses-template="entities">
+    </cache>
+
+    <cache alias="default-query-results-region" uses-template="entities" />
+</config>
