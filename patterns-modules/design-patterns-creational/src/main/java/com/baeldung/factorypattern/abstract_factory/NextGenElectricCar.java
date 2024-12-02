@@ -1,4 +1,4 @@
-package com.baeldung.factory_pattern.abstract_factory;
+package com.baeldung.factorypattern.abstract_factory;
 
 public class NextGenElectricCar implements ElectricVehicle {
     @Override

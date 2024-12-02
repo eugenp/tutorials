@@ -1,4 +1,4 @@
-package com.baeldung.factory_pattern.abstract_factory;
+package com.baeldung.factorypattern.abstract_factory;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

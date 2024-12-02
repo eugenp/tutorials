@@ -1,4 +1,4 @@
-package com.baeldung.factory_pattern.method;
+package com.baeldung.factorypattern.method;
 
 public class Car implements MotorVehicle {
     @Override

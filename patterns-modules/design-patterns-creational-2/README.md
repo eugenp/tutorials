@@ -1,5 +1,4 @@
 ## Relevant Articles
-- [The Factory Design Pattern in Java](https://www.baeldung.com/java-factory-pattern)
 - [Drawbacks of the Singleton Design Pattern](https://www.baeldung.com/java-patterns-singleton-cons)
 - [Builder Pattern and Inheritance](https://www.baeldung.com/java-builder-pattern-inheritance)
 - [Implement the Builder Pattern in Java 8](https://www.baeldung.com/java-builder-pattern)
@@ -9,3 +8,4 @@
 - [Automatic Generation of the Builder Pattern with FreeBuilder](https://www.baeldung.com/java-builder-pattern-freebuilder)
 - [Java Constructors vs Static Factory Methods](https://www.baeldung.com/java-constructors-vs-static-factory-methods)
 - [Abstract Factory Pattern in Java](https://www.baeldung.com/java-abstract-factory-pattern)
+- More articles: [[<-- prev]](../design-patterns-creational)
