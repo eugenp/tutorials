@@ -38,6 +38,7 @@ public class JsonAssertUnitTest {
         actual = "{id:123,name:\"John\"}";
         JSONAssert.assertNotEquals("{name:\"John\"}", actual, JSONCompareMode.STRICT);
         JSONAssert.assertNotEquals("{name:\"John\"}", actual, true);
+        System.out.println("Testing");
     }
 
     @Test
