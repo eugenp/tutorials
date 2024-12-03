@@ -1,10 +1,10 @@
 package com.baeldung.arraycompare;
 
-import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.jupiter.api.Test;
 
 public class DeepEqualsCompareUnitTest {
 

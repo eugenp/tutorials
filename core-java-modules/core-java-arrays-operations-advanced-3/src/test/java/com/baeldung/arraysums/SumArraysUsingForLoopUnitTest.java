@@ -1,8 +1,8 @@
 package com.baeldung.arraysums;
 
-import com.baeldung.arraysums.SumArraysUsingForLoop;
+import static org.junit.Assert.assertArrayEquals;
+
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 public class SumArraysUsingForLoopUnitTest {
 
