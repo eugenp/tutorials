@@ -3,7 +3,6 @@ package com.baeldung.sharedatasteps;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.time.Instant;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -12,6 +11,9 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class EventSteps {
+    public static final String UUID = "1a-2b-3c-4d-5e";
+    public static final String CREATED_AT = "2024-12-03T09:00:00Z";
+    public static final String PROCESSED_AT = "2024-12-03T10:00:00Z";
 
     @Autowired
     private SharedEvent sharedEvent;
@@ -20,17 +22,17 @@ public class EventSteps {
     public void createNewEvent() {
         Event event = new Event();
         event.setStatus(EventStatus.PROCESSING);
-        event.setUuid(UUID.randomUUID().toString());
+        event.setUuid(UUID);
         sharedEvent.setEvent(event);
-        sharedEvent.setCreatedAt(Instant.now());
+        sharedEvent.setCreatedAt(Instant.parse(CREATED_AT));
     }
 
     @Then("event is properly initialized")
     public void verifyEventIsInitialized() {
         Event event = sharedEvent.getEvent();
         assertThat(event.getStatus()).isEqualTo(EventStatus.PROCESSING);
-        assertThat(event.getUuid()).isNotNull();
-        assertThat(sharedEvent.getCreatedAt()).isNotNull();
+        assertThat(event.getUuid()).isEqualTo(UUID);
+        assertThat(sharedEvent.getCreatedAt().toString()).isEqualTo(CREATED_AT);
         assertThat(sharedEvent.getProcessedAt()).isNull();
     }
 
@@ -39,9 +41,9 @@ public class EventSteps {
         // process event ...
 
         EventStatus eventStatus = "succeeds".equalsIgnoreCase(processingStatus) ?
-            EventStatus.COMPLETE : EventStatus.ERROR;
+          EventStatus.COMPLETE : EventStatus.ERROR;
         sharedEvent.getEvent().setStatus(eventStatus);
-        sharedEvent.setProcessedAt(Instant.now());
+        sharedEvent.setProcessedAt(Instant.parse(PROCESSED_AT));
     }
 
     @Then("event has {status} status")
@@ -51,7 +53,7 @@ public class EventSteps {
 
     @Then("event has processedAt")
     public void verifyProcessedAt() {
-        assertThat(sharedEvent.getProcessedAt()).isNotNull();
+        assertThat(sharedEvent.getProcessedAt().toString()).isEqualTo(PROCESSED_AT);
     }
 
     @ParameterType("PROCESSING|ERROR|COMPLETE")
