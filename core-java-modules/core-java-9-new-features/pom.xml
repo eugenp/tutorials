@@ -67,15 +67,11 @@
                         <configuration>
                             <source>${maven.compiler.source}</source>
                             <target>${maven.compiler.target}</target>
-                            <compilerArgument>--add-modules=jdk.incubator.httpclient</compilerArgument>
                         </configuration>
                     </plugin>
                     <plugin>
                         <artifactId>maven-surefire-plugin</artifactId>
                         <version>${maven-surefire-plugin.version}</version>
-                        <configuration>
-                            <argLine>--add-modules=jdk.incubator.httpclient</argLine>
-                        </configuration>
                     </plugin>
                 </plugins>
             </build>

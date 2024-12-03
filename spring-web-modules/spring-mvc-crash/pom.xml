@@ -5,14 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-mvc-crash</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>spring-mvc-crash</name>
     <packaging>war</packaging>
+    <name>spring-mvc-crash</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-spring-5</artifactId>
+        <artifactId>spring-web-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-spring-5</relativePath>
     </parent>
 
     <dependencies>
@@ -20,25 +19,17 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>${org.springframework.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>${org.springframework.version}</version>
         </dependency>
         <!-- web -->
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>${javax.servlet-api.version}</version>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>${jakarta-servlet.version}</version>
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
-            <version>${jstl.version}</version>
-            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.hibernate.validator</groupId>
@@ -71,11 +62,6 @@
                     <groupId>commons-logging</groupId>
                 </exclusion>
             </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish</groupId>
-            <artifactId>javax.el</artifactId>
-            <version>${javax.el.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -136,8 +122,7 @@
 
     <properties>
         <!-- Spring -->
-        <org.springframework.version>5.0.2.RELEASE</org.springframework.version>
-        <spring-boot.version>1.5.10.RELEASE</spring-boot.version>
+        <spring-boot.version>3.3.3</spring-boot.version>
         <!-- persistence -->
         <mysql-connector-java.version>5.1.40</mysql-connector-java.version>
         <!-- http -->
@@ -145,13 +130,14 @@
         <httpclient.version>4.5.2</httpclient.version>
         <!-- various -->
         <hibernate-validator.version>8.0.1.Final</hibernate-validator.version>
-        <javax.el.version>3.0.1-b08</javax.el.version>
         <!-- util -->
         <geoip2.version>2.8.0</geoip2.version>
         <!-- Maven plugins -->
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
         <crash.version>1.3.2</crash.version>
         <groovy.version>3.0.0-rc-3</groovy.version>
+        <jakarta-servlet.version>6.1.0</jakarta-servlet.version>
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
     </properties>
 
 </project>

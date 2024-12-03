@@ -1,0 +1,19 @@
+{
+    "namespace": "com.baeldung.apache.avro.generated",
+    "type": "record",
+    "name": "Car",
+    "fields": [
+        {   "name": "brand",
+            "type": "string",
+            "default": "Dacia"
+         },
+        {   "name": "number_of_doors",
+            "type": "int",
+            "default": 4
+        },
+        {   "name": "color",
+            "type": ["null", "string"],
+            "default": null
+        }
+    ]
+}

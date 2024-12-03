@@ -14,14 +14,16 @@
     </parent>
 
     <modules>
+        <module>amazon-athena</module>
+        <module>amazon-textract</module>
         <module>aws-app-sync</module>
         <module>aws-dynamodb</module>
         <module>aws-lambda-modules</module>
         <module>aws-miscellaneous</module>
         <module>aws-reactive</module>
-        <module>aws-s3</module>
         <module>aws-rest</module>
-        <module>amazon-athena</module>
+        <module>aws-s3</module>
+        <module>s3proxy</module>
     </modules>
 
     <dependencies>

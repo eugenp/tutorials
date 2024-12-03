@@ -69,16 +69,6 @@
             <version>${glassfish.web.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-controls</artifactId>
-            <version>${javafx.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-fxml</artifactId>
-            <version>${javafx.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
             <version>${jackson-core.version}</version>
@@ -87,11 +77,6 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
             <version>${jackson-annotations.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.vavr</groupId>
-            <artifactId>vavr</artifactId>
-            <version>${vavr.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -135,9 +120,6 @@
         <javax.el.version>3.0.0</javax.el.version>
         <glassfish.web.version>2.2.4</glassfish.web.version>
         <olap4j.version>1.2.0</olap4j.version>
-        <javafx.version>19</javafx.version>
-        <spoon-core.version>10.3.0</spoon-core.version>
-        <vavr.version>0.9.0</vavr.version>
         <jfreechart.version>1.5.4</jfreechart.version>
         <javaparser.version>3.25.10</javaparser.version>
         <dev.failsafe.version>3.3.2</dev.failsafe.version>

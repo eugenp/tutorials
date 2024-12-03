@@ -1,0 +1,90 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    google()
+    mavenCentral()
+}
+
+dependencies {
+    // exclude group
+    implementation ('com.google.guava:guava:31.1-jre') {
+        exclude group: 'com.google.guava' // Excludes all modules except the main module in com.google.guava.
+    }
+
+    // exclude specific module
+    implementation ('org.hibernate.orm:hibernate-core:7.0.0.Beta1') {
+        exclude group: 'org.glassfish.jaxb', module : 'txw2'
+    }
+
+    // exclude specific module & multiple module
+    implementation('com.google.android.gms:play-services-mlkit-face-detection:17.1.0') {
+        exclude group: 'androidx.annotation', module: 'annotation'
+        exclude group: 'android.support.v4', module: 'core'
+        exclude group: 'androidx.arch.core', module: 'core'
+        exclude group: 'androidx.collection', module: 'collection'
+        exclude group: 'androidx.coordinatorlayout', module: 'coordinatorlayout'
+        exclude group: 'androidx.core', module: 'core'
+        exclude group: 'androidx.viewpager', module: 'viewpager'
+        exclude group: 'androidx.print', module: 'print'
+        exclude group: 'androidx.localbroadcastmanager', module: 'localbroadcastmanager'
+        exclude group: 'androidx.loader', module: 'loader'
+        exclude group: 'androidx.lifecycle', module: 'lifecycle-viewmodel'
+        exclude group: 'androidx.lifecycle', module: 'lifecycle-livedata'
+        exclude group: 'androidx.lifecycle', module: 'lifecycle-common'
+        exclude group: 'androidx.fragment', module: 'fragment'
+        exclude group: 'androidx.drawerlayout', module: 'drawerlayout'
+        exclude group: 'androidx.legacy.content', module: 'legacy-support-core-utils'
+        exclude group: 'androidx.cursoradapter', module: 'cursoradapter'
+        exclude group: 'androidx.customview', module: 'customview'
+        exclude group: 'androidx.documentfile.provider', module: 'documentfile'
+        exclude group: 'androidx.interpolator', module: 'interpolator'
+        exclude group: 'androidx.exifinterface', module: 'exifinterface'
+    }
+
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation ('org.junit.jupiter:junit-jupiter'){
+        exclude group: 'org.junit.jupiter', module : 'junit-jupiter-api'
+        exclude group: 'org.junit.jupiter', module : 'junit-jupiter-params'
+    }
+
+    testImplementation 'org.mockito:mockito-core:3.+' // excluded on configureEach
+
+    implementation 'com.google.code.gson:gson:2.11.0' // excluded on configurations.implementation
+
+    implementation('org.hibernate.orm:hibernate-core:7.0.0.Beta1'){
+        transitive = false
+    }
+
+    implementation 'org.mapstruct:mapstruct:1.5.5.Final'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.44'
+
+    implementation("io.smallrye:jandex") {
+        version {
+            strictly '3.1.2'
+        }
+    }
+}
+
+configurations.configureEach {// prefer use .configureEach instead of .all
+    exclude group: 'net.bytebuddy', module: 'byte-buddy-agent'
+}
+
+configurations.implementation {
+    exclude group: 'com.google.errorprone', module: 'error_prone_annotations'
+}
+
+configurations.testImplementation {
+    exclude group: 'org.junit.jupiter', module : 'junit-jupiter-engine'
+}
+
+configurations.testCompileClasspath {
+    exclude group : 'com.google.j2objc', module : 'j2objc-annotations'
+}
+
+configurations.annotationProcessor {
+    exclude group: 'com.google.guava'
+}

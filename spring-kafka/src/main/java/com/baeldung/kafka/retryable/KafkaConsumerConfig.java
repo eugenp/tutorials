@@ -42,8 +42,6 @@ public class KafkaConsumerConfig {
         props.put(ConsumerConfig.GROUP_ID_CONFIG, groupId);
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-        props.put(ConsumerConfig.MAX_PARTITION_FETCH_BYTES_CONFIG, "20971520");
-        props.put(ConsumerConfig.FETCH_MAX_BYTES_CONFIG, "20971520");
         return new DefaultKafkaConsumerFactory<>(props);
     }
 
@@ -71,11 +69,6 @@ public class KafkaConsumerConfig {
     @Bean
     public ConcurrentKafkaListenerContainerFactory<String, String> partitionsKafkaListenerContainerFactory() {
         return kafkaListenerContainerFactory("partitions");
-    }
-
-    @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, String> longMessageKafkaListenerContainerFactory() {
-        return kafkaListenerContainerFactory("longMessage");
     }
 
     @Bean

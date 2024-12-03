@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-security-web-rest-basic-auth</artifactId>
     <version>0.2-SNAPSHOT</version>
-    <name>spring-security-web-rest-basic-auth</name>
     <packaging>war</packaging>
+    <name>spring-security-web-rest-basic-auth</name>
 
     <parent>
         <groupId>com.baeldung</groupId>

@@ -55,6 +55,7 @@
                     <encoding>UTF-8</encoding>
                     <excludes>
                         <exclude>**/pointcutadvice/**</exclude>
+                        <exclude>**/logging/**</exclude>
                     </excludes>
                 </configuration>
                 <executions>

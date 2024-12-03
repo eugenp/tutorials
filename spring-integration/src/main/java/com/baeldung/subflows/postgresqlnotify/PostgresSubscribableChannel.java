@@ -26,7 +26,6 @@ import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageDeliveryException;
 import org.springframework.messaging.MessageHandler;
 import org.springframework.messaging.support.ErrorMessage;
-import org.springframework.messaging.support.GenericMessage;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -42,7 +41,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
  */
 public class PostgresSubscribableChannel extends AbstractSubscribableChannel {
     
-    private static Logger log = LoggerFactory.getLogger(PostgresSubscribableChannel.class);
+    private static final Logger log = LoggerFactory.getLogger(PostgresSubscribableChannel.class);
 
     private static final String HEADER_FIELD = "h";
     private static final String BODY_FIELD = "b";
@@ -52,8 +51,8 @@ public class PostgresSubscribableChannel extends AbstractSubscribableChannel {
     private final MessageDispatcher dispatcher = new UnicastingDispatcher();
     private final DataSource ds;
     private CountDownLatch startLatch;
-    private Executor executor;
-    private ObjectMapper om;
+    private final Executor executor;
+    private final ObjectMapper om;
     private NotifierTask notifierTask;
 
     public PostgresSubscribableChannel(String channelName, Supplier<Connection> connectionProvider, DataSource ds, ObjectMapper om) {

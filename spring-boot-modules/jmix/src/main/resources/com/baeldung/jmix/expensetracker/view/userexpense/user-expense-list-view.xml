@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      xmlns:c="http://jmix.io/schema/flowui/jpql-condition"
+      title="msg://userExpenseListView.title"
+      focusComponent="userExpensesDataGrid">
+    <data>
+        <collection id="userExpensesDc"
+                    class="com.baeldung.jmix.expensetracker.entity.UserExpense">
+            <fetchPlan extends="_base">
+                <property name="expense" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="userExpensesDl" readOnly="true">
+                <query>
+                    <![CDATA[select e from UserExpense e]]>
+                </query>
+            </loader>
+        </collection>
+        <instance id="userExpenseDc"
+                  class="com.baeldung.jmix.expensetracker.entity.UserExpense">
+            <fetchPlan extends="_base">
+                <property name="user" fetchPlan="_base"/>
+                <property name="expense" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="userExpenseDl"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <urlQueryParameters>
+            <genericFilter component="genericFilter"/>
+            <pagination component="pagination"/>
+        </urlQueryParameters>
+    </facets>
+    <actions>
+        <action id="selectAction" type="lookup_select"/>
+        <action id="discardAction" type="lookup_discard"/>
+    </actions>
+    <layout padding="false">
+        <formLayout id="layoutWrapper" classNames="master-detail-layout" height="100%">
+            <vbox id="listLayout" height="100%">
+                <genericFilter id="genericFilter"
+                               dataLoader="userExpensesDl">
+                    <properties include=".*"/>
+                </genericFilter>
+                <hbox id="buttonsPanel" classNames="buttons-panel">
+                    <button id="createBtn" action="userExpensesDataGrid.create"/>
+                    <button id="editBtn" action="userExpensesDataGrid.edit"/>
+                    <button id="removeBtn" action="userExpensesDataGrid.remove"/>
+                    <simplePagination id="pagination" dataLoader="userExpensesDl"/>
+                </hbox>
+                <dataGrid id="userExpensesDataGrid"
+                          width="100%"
+                          minHeight="20em"
+                          dataContainer="userExpensesDc"
+                          columnReorderingAllowed="true">
+                    <actions>
+                        <action id="create" type="list_create"/>
+                        <action id="edit" type="list_edit"/>
+                        <action id="remove" type="list_remove"/>
+                    </actions>
+                    <columns resizable="true">
+                        <column property="expense"/>
+                        <column property="amount"/>
+                        <column property="date"/>
+                        <column property="details"/>
+                    </columns>
+                </dataGrid>
+                <hbox id="lookupActions" visible="false">
+                    <button id="selectBtn" action="selectAction"/>
+                    <button id="discardBtn" action="discardAction"/>
+                </hbox>
+            </vbox>
+            <vbox id="detailsLayout" height="100%">
+                <formLayout id="form" dataContainer="userExpenseDc">
+                    <entityPicker id="userField" property="user">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <entityPicker id="expenseField" property="expense">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <textField id="amountField" property="amount"/>
+                    <datePicker id="dateField" property="date"/>
+                    <textField id="detailsField" property="details"/>
+                </formLayout>
+                <hbox id="detailActions">
+                    <button id="saveBtn" text="msg:///actions.Save" icon="CHECK" themeNames="primary"/>
+                    <button id="cancelBtn" text="msg:///actions.Cancel" icon="BAN"/>
+                </hbox>
+            </vbox>
+        </formLayout>
+    </layout>
+</view>

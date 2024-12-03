@@ -27,16 +27,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-            <version>${json.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-xml</artifactId>
             <version>${jackson.version}</version>
@@ -52,16 +42,6 @@
             <version>${xstream.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.sun.xml.bind</groupId>
-            <artifactId>jaxb-impl</artifactId>
-            <version>${jaxb.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.xmlbeans</groupId>
-            <artifactId>xmlbeans</artifactId>
-            <version>${xmlbeans.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.apache.xmlgraphics</groupId>
             <artifactId>fop</artifactId>
             <version>${fop.version}</version>
@@ -70,6 +50,88 @@
             <groupId>com.itextpdf</groupId>
             <artifactId>itextpdf</artifactId>
             <version>${itextpdf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jibx</groupId>
+            <artifactId>jibx-run</artifactId>
+            <version>${jibx-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.xmlunit</groupId>
+            <artifactId>xmlunit-assertj</artifactId>
+            <version>${xmlunit-assertj.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jooq</groupId>
+            <artifactId>joox-java-6</artifactId>
+            <version>${joox.version}</version>
+        </dependency>
+        <!-- JMH Libraries -->
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-core</artifactId>
+            <version>${jmh-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-generator-annprocess</artifactId>
+            <version>${jmh-generator.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>jaxen</groupId>
+            <artifactId>jaxen</artifactId>
+            <version>${jaxen.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>${freemarker.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>${jakarta.xml.bind-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.spullara.mustache.java</groupId>
+            <artifactId>compiler</artifactId>
+            <version>${mustache.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>${jaxb-impl.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>${jaxb-runtime.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-core</artifactId>
+            <version>${jaxb-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.htmlparser.jericho</groupId>
+            <artifactId>jericho-html</artifactId>
+            <version>${jericho.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sourceforge.htmlcleaner</groupId>
+            <artifactId>htmlcleaner</artifactId>
+            <version>${htmlcleaner.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>${jsoup.version}</version>
         </dependency>
     </dependencies>
 
@@ -81,6 +143,14 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.jibx</groupId>
+                    <artifactId>maven-jibx-plugin</artifactId>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -91,19 +161,226 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
             </plugin>
+            <plugin>
+                <groupId>org.jibx</groupId>
+                <artifactId>maven-jibx-plugin</artifactId>
+                <version>${maven-jibx-plugin.version}</version>
+                <configuration>
+                    <directory>src/main/resources</directory>
+                    <includes>
+                        <includes>*-binding.xml</includes>
+                    </includes>
+                    <excludes>
+                        <exclude>template-binding.xml</exclude>
+                    </excludes>
+                    <schemaBindingDirectory>src/main/resources</schemaBindingDirectory>
+                    <includeSchemaBindings>
+                        <includeSchemaBindings>*-binding.xml</includeSchemaBindings>
+                    </includeSchemaBindings>
+                    <verbose>true</verbose>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>process-classes</id>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>bind</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>process-test-classes</id>
+                        <phase>process-test-classes</phase>
+                        <goals>
+                            <goal>test-bind</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.bcel</groupId>
+                        <artifactId>bcel</artifactId>
+                        <version>${bcel.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
         </plugins>
     </build>
 
+    <profiles>
+        <profile>
+            <id>schemaGen</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.jibx</groupId>
+                        <artifactId>maven-jibx-plugin</artifactId>
+                        <version>${maven-jibx-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>generate-java-code-from-schema</id>
+                                <goals>
+                                    <goal>schema-codegen</goal>
+                                </goals>
+                                <configuration>
+                                    <directory>src/main/resources</directory>
+                                    <includes>
+                                        <include>Order.xsd</include>
+                                    </includes>
+                                    <verbose>true</verbose>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>compile-binding</id>
+                                <goals>
+                                    <goal>bind</goal>
+                                </goals>
+                                <configuration>
+                                    <directory>target/generated-sources</directory>
+                                    <load>true</load>
+                                    <validate>true</validate>
+                                    <!--<verbose>true</verbose> -->
+                                    <verify>true</verify>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>generate-test-code-from-schema</id>
+                                <phase>generate-test-sources</phase>
+                                <goals>
+                                    <goal>test-schema-codegen</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>compile-test-binding</id>
+                                <phase>process-test-classes</phase>
+                                <goals>
+                                    <goal>test-bind</goal>
+                                </goals>
+                                <configuration>
+                                    <directory>target/generated-test-sources</directory>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
+                        <configuration>
+                            <excludes>
+                                <exclude>CustomerTest.java</exclude>
+                            </excludes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>bindGen</id>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.jibx</groupId>
+                            <artifactId>maven-jibx-plugin</artifactId>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+                <plugins>
+                    <plugin>
+                        <groupId>org.jibx</groupId>
+                        <artifactId>maven-jibx-plugin</artifactId>
+                        <version>${maven-jibx-plugin.version}</version>
+                        <configuration>
+                            <directory>src/main/resources</directory>
+                            <includes>
+                                <includes>*-binding.xml</includes>
+                            </includes>
+                            <excludes>
+                                <exclude>template-binding.xml</exclude>
+                            </excludes>
+                            <schemaBindingDirectory>src/main/resources</schemaBindingDirectory>
+                            <includeSchemaBindings>
+                                <includeSchemaBindings>*-binding.xml</includeSchemaBindings>
+                            </includeSchemaBindings>
+                            <verbose>true</verbose>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>process-classes</id>
+                                <phase>process-classes</phase>
+                                <goals>
+                                    <goal>bind</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>process-test-classes</id>
+                                <phase>process-test-classes</phase>
+                                <goals>
+                                    <goal>test-bind</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                    </plugin>
+                    <plugin>
+                        <!-- NOTE: We don't need a groupId specification because the group is org.apache.maven.plugins -->
+                        <!--...which is assumed by default. -->
+                        <artifactId>maven-assembly-plugin</artifactId>
+                        <configuration>
+                            <archiveBaseDirectory>${project.basedir}</archiveBaseDirectory>
+                            <descriptorRefs>
+                                <descriptorRef>
+                                    jar-with-dependencies
+                                </descriptorRef>
+                            </descriptorRefs>
+                            <archive>
+                                <manifest>
+                                    <mainClass>
+                                        com.baeldung.xml.jibx.JiBXDemoApplication
+                                    </mainClass>
+                                </manifest>
+                            </archive>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>make-assembly</id><!-- this is used for inheritance merges -->
+                                <phase>package</phase><!-- append to the packaging phase. -->
+                                <goals>
+                                    <goal>attached</goal><!-- goals == mojos -->
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
     <properties>
         <dom4j.version>2.1.3</dom4j.version>
-        <json.version>20240303</json.version>
         <underscore.version>1.89</underscore.version>
         <xstream.version>1.4.18</xstream.version>
-        <jaxb.version>2.3.3</jaxb.version>
-        <xmlbeans.version>5.0.2</xmlbeans.version>
-        <log4j-core.version>2.12.4</log4j-core.version>
         <fop.version>2.9</fop.version>
         <itextpdf.version>5.5.13.3</itextpdf.version>
+        <jibx-version>1.2.4.5</jibx-version>
+        <bcel.version>6.7.0</bcel.version>
+        <maven-jibx-plugin.version>1.3.1</maven-jibx-plugin.version>
+        <commons-lang3.version>3.14.0</commons-lang3.version>
+        <xmlunit-assertj.version>2.6.3</xmlunit-assertj.version>
+        <joox.version>1.6.2</joox.version>
+        <jaxen.version>1.2.0</jaxen.version>
+        <freemarker.version>2.3.29</freemarker.version>
+        <jakarta.xml.bind-api.version>4.0.2</jakarta.xml.bind-api.version>
+        <mustache.version>0.9.6</mustache.version>
+        <jaxb-core.version>2.3.0.1</jaxb-core.version>
+        <jaxb-impl.version>4.0.4</jaxb-impl.version>
+        <jaxb-runtime.version>4.0.3</jaxb-runtime.version>
+        <jericho.version>3.4</jericho.version>
+        <htmlcleaner.version>2.25</htmlcleaner.version>
+        <jsoup.version>1.17.2</jsoup.version>
     </properties>
 
 </project>

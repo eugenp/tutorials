@@ -56,8 +56,8 @@ class JpaProjectionIntegrationTest {
     @Test
     void whenUsingClassBasedProjections_thenDtoWithRequiredPropertiesIsReturned() {
         PersonDto personDto = personRepository.findByFirstName("John");
-        assertThat(personDto.getFirstName()).isEqualTo("John");
-        assertThat(personDto.getLastName()).isEqualTo("Doe");
+        assertThat(personDto.firstName()).isEqualTo("John");
+        assertThat(personDto.lastName()).isEqualTo("Doe");
     }
 
     @Test
@@ -68,6 +68,6 @@ class JpaProjectionIntegrationTest {
 
         assertThat(person.getFirstName()).isEqualTo("John");
         assertThat(personView.getFirstName()).isEqualTo("John");
-        assertThat(personDto.getFirstName()).isEqualTo("John");
+        assertThat(personDto.firstName()).isEqualTo("John");
     }
 }

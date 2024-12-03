@@ -3,7 +3,7 @@ package com.baeldung.ignorable.fields;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module;
+import com.fasterxml.jackson.datatype.hibernate6.Hibernate6Module;
 import org.junit.Test;
 
 import java.io.File;
@@ -68,7 +68,7 @@ public class TransientFieldUnitTest {
     @Test
     public void givenJacksonHibernate5Module_whenSerializingTransientAnnotation_thenFieldIgnored() throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.registerModule(new Hibernate5Module());
+        objectMapper.registerModule(new Hibernate6Module());
         String json = objectMapper.writeValueAsString(user);
         User savedUser = objectMapper.readValue(json, User.class);
 

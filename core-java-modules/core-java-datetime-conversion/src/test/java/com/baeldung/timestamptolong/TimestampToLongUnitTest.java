@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.TimeZone;
 
 import static org.junit.Assert.assertEquals;
 
@@ -18,6 +19,7 @@ public class TimestampToLongUnitTest {
     @Test
     public void givenSimpleDateFormat_whenFormattingDate_thenConvertToLong() throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
         Date date = sdf.parse(timestampString);
 
         String currentDateString = sdf.format(date);
@@ -28,7 +30,7 @@ public class TimestampToLongUnitTest {
     @Test
     public void givenInstantClass_whenGettingTimestamp_thenConvertToLong() {
         Instant instant = LocalDateTime.parse(timestampString, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))
-                .atZone(ZoneId.systemDefault())
+                .atZone(ZoneId.of("UTC"))
                 .toInstant();
         long actualTimestamp = instant.toEpochMilli();
         assertEquals(1700010123000L, actualTimestamp);
@@ -37,7 +39,7 @@ public class TimestampToLongUnitTest {
     @Test
     public void givenJava8DateTime_whenGettingTimestamp_thenConvertToLong() {
         LocalDateTime localDateTime = LocalDateTime.parse(timestampString.replace(" ", "T"));
-        long actualTimestamp = localDateTime.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
+        long actualTimestamp = localDateTime.atZone(ZoneId.of("UTC")).toInstant().toEpochMilli();
         assertEquals(1700010123000L, actualTimestamp);
     }
 }

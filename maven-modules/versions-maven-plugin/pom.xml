@@ -22,7 +22,7 @@
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>${commons.io.version}</version>
+            <version>${commons-io.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -77,7 +77,6 @@
 
     <properties>
         <commons-compress-version>1.15</commons-compress-version>
-        <commons.io.version>2.3</commons.io.version>
         <versions.plugin.version>2.7</versions.plugin.version>
         <commons.beanutils.version>1.9.1</commons.beanutils.version>
         <commons.lang3.version>3.11</commons.lang3.version>

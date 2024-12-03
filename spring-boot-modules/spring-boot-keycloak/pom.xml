@@ -3,110 +3,45 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung.keycloak</groupId>
-    <artifactId>spring-boot-keycloak</artifactId>
-    <version>0.0.1</version>
-    <name>spring-boot-keycloak</name>
-    <packaging>jar</packaging>
-    <description>This is a simple application demonstrating integration between Keycloak and Spring Boot.</description>
-
     <parent>
         <groupId>com.baeldung.spring-boot-modules</groupId>
         <artifactId>spring-boot-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
+        <relativePath>..</relativePath>
     </parent>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-oauth2-client</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.hsqldb</groupId>
-            <artifactId>hsqldb</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>wsdl4j</groupId>
-            <artifactId>wsdl4j</artifactId>
-            <version>${wsdl4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web-services</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.jaxb</groupId>
-            <artifactId>jaxb-runtime</artifactId>
-            <version>${jaxb-runtime.version}</version>
-        </dependency>
-    </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>jaxb2-maven-plugin</artifactId>
-                <version>${jaxb2-maven-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <id>xjc</id>
-                        <goals>
-                            <goal>xjc</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <packageName>com.baeldung</packageName>
-                    <sources>
-                        <source>/${project.basedir}/src/main/resources/products.xsd</source>
-                    </sources>
-
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+    <groupId>com.baeldung.spring-boot-modules.keycloak</groupId>
+    <artifactId>spring-boot-keycloak</artifactId>
+    <packaging>pom</packaging>
+    <description>Parent for a set of simple applications demonstrating
+        integration between Keycloak and Spring Boot.</description>
+        
+    <developers>
+        <developer>
+            <id>ch4mpy</id>
+            <name>Jérôme Wacongne</name>
+            <email>ch4mp@c4-soft.com</email>
+            <url>https://github.com/ch4mpy</url>
+        </developer>
+    </developers>
 
     <properties>
-        <start-class>com.baeldung.keycloak.SpringBootKeycloakApp</start-class>
-        <jaxb-runtime.version>4.0.0</jaxb-runtime.version>
-        <wsdl4j.version>1.6.3</wsdl4j.version>
-        <jaxb2-maven-plugin.version>3.1.0</jaxb2-maven-plugin.version>
-        <maven.compiler.release>17</maven.compiler.release>
+        <spring-boot.version>3.3.1</spring-boot.version>
+        <spring-addons.version>7.8.7</spring-addons.version>
     </properties>
+
+    <modules>
+        <module>spring-boot-mvc-client</module>
+        <module>spring-boot-resource-server</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.c4-soft.springaddons</groupId>
+                <artifactId>spring-addons-oauth2-test</artifactId>
+                <version>${spring-addons.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 </project>

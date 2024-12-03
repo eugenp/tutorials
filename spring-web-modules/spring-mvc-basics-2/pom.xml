@@ -5,21 +5,19 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-mvc-basics-2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-mvc-basics-2</name>
     <packaging>war</packaging>
+    <name>spring-mvc-basics-2</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-spring-6</artifactId>
+        <artifactId>spring-web-modules</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-spring-6</relativePath>
     </parent>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-oxm</artifactId>
-            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>com.sun.mail</groupId>
@@ -30,16 +28,6 @@
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
             <version>${jakarta.servlet-api.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet.jsp</groupId>
-            <artifactId>javax.servlet.jsp-api</artifactId>
-            <version>${javax.servlet.jsp-api.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
-            <version>${jstl.version}</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate.validator</groupId>
@@ -54,12 +42,10 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
-            <version>${spring.version}</version>
         </dependency>
         <!-- thymeleaf dependencies -->
         <dependency>
@@ -81,12 +67,10 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
-            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-freemarker</artifactId>
-            <version>${spring-boot.version}</version>
         </dependency>
         <!-- groovy template dependency -->
         <dependency>
@@ -104,7 +88,6 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -159,8 +142,8 @@
         <scribejava.version>5.1.0</scribejava.version>
         <json.version>20240303</json.version>
         <jakarta.mail.version>2.0.1</jakarta.mail.version>
-        <spring-boot.version>3.1.5</spring-boot.version>
         <jakarta.servlet-api.version>6.1.0-M2</jakarta.servlet-api.version>
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
     </properties>
 
 </project>

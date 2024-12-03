@@ -9,4 +9,5 @@
     <root level="error">
         <appender-ref ref="STDOUT"/>
     </root>
+    <logger name="com.baeldung.testloglevel" level="debug"/>
 </configuration>

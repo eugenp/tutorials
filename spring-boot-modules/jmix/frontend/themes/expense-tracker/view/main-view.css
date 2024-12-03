@@ -1,0 +1,66 @@
+/* Predefined styles for the MainView */
+
+.jmix-main-view-header {
+  box-sizing: border-box;
+  display: flex;
+  height: var(--lumo-size-xl);
+  align-items: center;
+  width: 100%;
+}
+
+.jmix-main-view-drawer-toggle {
+  color: var(--lumo-secondary-text-color);
+}
+
+.jmix-main-view-title {
+  margin: 0;
+  font-size: var(--lumo-font-size-l);
+}
+
+.jmix-main-view-section {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  max-height: 100%;
+  min-height: 100%;
+}
+
+.jmix-main-view-application-title {
+  display: flex;
+  align-items: center;
+  height: var(--lumo-size-xl);
+  margin: 0;
+  padding-left: var(--lumo-space-m);
+  padding-right: var(--lumo-space-m);
+  font-size: var(--lumo-font-size-m);
+}
+
+.jmix-main-view-application-title-base-link {
+  color: var(--lumo-header-text-color);
+}
+
+.jmix-main-view-application-title-base-link:hover {
+  text-decoration: none;
+}
+
+.jmix-main-view-navigation {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid;
+  border-color: var(--lumo-contrast-10pct);
+  flex-grow: 1;
+  overflow: auto;
+}
+
+.jmix-main-view-footer {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--lumo-space-s);
+  margin-top: var(--lumo-space-s);
+  padding: var(--lumo-space-xs) var(--lumo-space-m);
+  gap: var(--lumo-space-m);
+}
+
+.jmix-main-view-footer .jmix-user-indicator {
+  flex-grow: 1;
+}

@@ -6,8 +6,8 @@
     <groupId>com.baeldung.spring.cloud</groupId>
     <artifactId>spring-cloud-ribbon-retry</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-cloud-ribbon-retry</name>
     <packaging>pom</packaging>
+    <name>spring-cloud-ribbon-retry</name>
 
     <parent>
         <groupId>com.baeldung.spring.cloud</groupId>

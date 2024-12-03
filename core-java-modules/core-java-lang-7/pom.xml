@@ -53,8 +53,8 @@
                             <version>${jmh.version}</version>
                         </path>
                     </annotationProcessorPaths>
-                    <source>14</source>
-                    <target>14</target>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
                 </configuration>
             </plugin>
         </plugins>

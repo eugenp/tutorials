@@ -51,6 +51,12 @@
             <version>${junit-platform.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.github.stefanbirkner</groupId>
+            <artifactId>system-lambda</artifactId>
+            <version>${system-lambda.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -62,6 +68,7 @@
                 <configuration>
                     <argLine>
                         -javaagent:${settings.localRepository}/org/jmockit/jmockit/${jmockit.version}/jmockit-${jmockit.version}.jar
+                        -Djava.security.manager=allow
                     </argLine>
                     <disableXmlReport>true</disableXmlReport>
                     <excludes>
@@ -75,6 +82,7 @@
     <properties>
         <jmockit.version>1.49</jmockit.version>
         <junit-platform.version>1.10.1</junit-platform.version>
+        <system-lambda.version>1.2.1</system-lambda.version>
     </properties>
 
 </project>

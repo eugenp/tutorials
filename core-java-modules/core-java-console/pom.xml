@@ -17,7 +17,7 @@
         <dependency>
             <groupId>org.fusesource.jansi</groupId>
             <artifactId>jansi</artifactId>
-            <version>2.4.0</version>
+            <version>${jansi.version}</version>
         </dependency>
         <dependency>
             <groupId>org.junit.vintage</groupId>
@@ -161,9 +161,10 @@
 
     <properties>
         <maven-javadoc-plugin.version>3.6.2</maven-javadoc-plugin.version>
-        <source.version>1.8</source.version>
-        <target.version>1.8</target.version>
+        <source.version>21</source.version>
+        <target.version>21</target.version>
         <ascii.version>0.3.2</ascii.version>
+        <jansi.version>2.4.1</jansi.version>
     </properties>
 
 </project>

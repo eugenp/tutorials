@@ -73,7 +73,6 @@
 	</build>
 
 	<properties>
-		<java.version>17</java.version>
 		<org-json.version>20240303</org-json.version>
 		<commons-io.version>2.16.1</commons-io.version>
 		<amazon-athena.version>2.26.0</amazon-athena.version>

@@ -1,6 +1,7 @@
 package com.baeldung.reactive.concurrency;
 
-import io.reactivex.Observable;
+import io.reactivex.rxjava3.core.Observable;
+
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
@@ -66,7 +67,7 @@ public class Controller {
     public Observable<String> getIndexRxJava() {
         Observable.fromIterable(Arrays.asList("Hello", "World"))
           .map(s -> s.toUpperCase())
-          .observeOn(io.reactivex.schedulers.Schedulers.trampoline())
+          .observeOn(io.reactivex.rxjava3.schedulers.Schedulers.trampoline())
           .doOnNext(s -> logger.info("String: {}", s))
           .subscribe();
         return Observable.fromIterable(getThreads());

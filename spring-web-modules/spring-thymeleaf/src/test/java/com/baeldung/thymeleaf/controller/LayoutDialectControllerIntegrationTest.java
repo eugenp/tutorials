@@ -6,7 +6,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
-import javax.servlet.Filter;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -25,6 +24,8 @@ import com.baeldung.thymeleaf.config.InitSecurity;
 import com.baeldung.thymeleaf.config.WebApp;
 import com.baeldung.thymeleaf.config.WebMVCConfig;
 import com.baeldung.thymeleaf.config.WebMVCSecurity;
+
+import jakarta.servlet.Filter;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration

@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-security-web-thymeleaf</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-security-web-thymeleaf</name>
     <packaging>jar</packaging>
+    <name>spring-security-web-thymeleaf</name>
     <description>Spring Security with Thymeleaf tutorial</description>
 
     <parent>

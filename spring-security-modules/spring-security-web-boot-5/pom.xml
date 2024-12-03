@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-security-web-boot-5</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-security-web-boot-5</name>
     <packaging>jar</packaging>
+    <name>spring-security-web-boot-5</name>
     <description>Spring Security Custom Auth Application</description>
 
     <parent>

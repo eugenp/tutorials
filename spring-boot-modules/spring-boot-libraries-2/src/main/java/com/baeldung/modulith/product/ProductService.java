@@ -23,4 +23,9 @@ public class ProductService {
         notificationService.createNotification(new NotificationDTO(new Date(), "SMS", product.getName()));
         events.publishEvent(new NotificationDTO(new Date(), "SMS", product.getName()));
     }
+
+    public void create(ProductDto productDto) {
+        notificationService.createNotification(new NotificationDTO(new Date(), "SMS", productDto.getName()));
+        events.publishEvent(new NotificationDTO(new Date(), "SMS", productDto.getName()));
+    }
 }

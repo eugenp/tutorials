@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-zuul-rate-limiting</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-zuul-rate-limiting</name>
     <packaging>jar</packaging>
+    <name>spring-zuul-rate-limiting</name>
 
     <parent>
         <groupId>com.baeldung.spring.cloud</groupId>

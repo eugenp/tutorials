@@ -60,6 +60,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
         </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -148,6 +149,7 @@
         <db.util.version>1.0.7</db.util.version>
         <hypersistence-utils.version>3.7.0</hypersistence-utils.version>
         <jakarta.persistence-api.version>3.1.0</jakarta.persistence-api.version>
+        <lombok.version>1.18.34</lombok.version>
     </properties>
 
 </project>

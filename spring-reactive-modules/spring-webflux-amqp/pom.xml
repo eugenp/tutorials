@@ -6,17 +6,15 @@
     <groupId>com.baeldung.spring</groupId>
     <artifactId>spring-webflux-amqp</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>spring-webflux-amqp</name>
     <packaging>jar</packaging>
+    <name>spring-webflux-amqp</name>
     <description>Spring WebFlux AMQP Sample</description>
-
+   
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-3</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-3</relativePath>
+        <groupId>com.baeldung.spring.reactive</groupId>
+        <artifactId>spring-reactive-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
-
 
     <dependencies>
         <dependency>

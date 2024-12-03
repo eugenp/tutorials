@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-security-web-x509-basic-auth</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-security-web-x509-basic-auth</name>
     <packaging>jar</packaging>
+    <name>spring-security-web-x509-basic-auth</name>
     <description>Spring x.509 Authentication Demo</description>
 
     <parent>

@@ -1,0 +1,13 @@
+{
+  "name": "flot.tooltip",
+  "version": "0.7.1",
+  "main": "js/jquery.flot.tooltip.js",
+  "ignore": [
+    ".gitignore",
+    "Gruntfile.js",
+    "README.md",
+    "package.json",
+    "examples",
+    "js/old"
+  ]
+}

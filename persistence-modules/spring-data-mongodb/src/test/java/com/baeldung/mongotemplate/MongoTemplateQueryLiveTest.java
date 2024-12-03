@@ -158,18 +158,6 @@ public class MongoTemplateQueryLiveTest {
     }
 
     @Test
-    public void whenSavingUserWithEmailAddress_thenUserandEmailAddressSaved() {
-        final User user = new User();
-        user.setName("Brendan");
-        final EmailAddress emailAddress = new EmailAddress();
-        emailAddress.setValue("b@gmail.com");
-        user.setEmailAddress(emailAddress);
-        mongoTemplate.insert(user);
-
-        assertThat(mongoTemplate.findOne(Query.query(Criteria.where("name").is("Brendan")), User.class).getEmailAddress().getValue(), is("b@gmail.com"));
-    }
-
-    @Test
     public void givenUserExistsWithIndexAddedFromCode_whenCheckingIndex_thenIndexIsExisted() {
         final User user = new User();
         user.setName("Brendan");

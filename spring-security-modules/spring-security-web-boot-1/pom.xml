@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-security-web-boot-1</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-security-web-boot-1</name>
     <packaging>war</packaging>
+    <name>spring-security-web-boot-1</name>
     <description>Spring Security MVC Boot - 1</description>
 
     <parent>
@@ -101,6 +101,15 @@
             <artifactId>rest-assured</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents.client5</groupId>
+            <artifactId>httpclient5</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -123,6 +132,15 @@
                             <cargo.servlet.port>8082</cargo.servlet.port>
                         </properties>
                     </configuration>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <compilerArgs>
+                        <arg>-parameters</arg>
+                    </compilerArgs>
                 </configuration>
             </plugin>
         </plugins>

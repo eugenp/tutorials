@@ -1,3 +1,11 @@
 ## Relevant Articles:
 - [Finding the Redirected URL of a URL in Java](https://www.baeldung.com/java-find-redirected-url)
+- [How to Read Text Inside Mail Body](https://www.baeldung.com/java-read-text-inside-mail-body)
+- [Finding the Size of a Web File Using URLConnection in Java](https://www.baeldung.com/java-urlconnection-web-file-size)
+- [Broadcasting and Multicasting in Java](http://www.baeldung.com/java-broadcast-multicast)
+- [A Guide to UDP In Java](https://www.baeldung.com/udp-in-java)
+- [Difference Between URL and URI](https://www.baeldung.com/java-url-vs-uri)
+- [A Guide to HTTP Cookies in Java](https://www.baeldung.com/cookies-java)
+- [Working with Network Interfaces in Java](http://www.baeldung.com/java-network-interfaces)
+- [Read an InputStream using the Java Server Socket](https://www.baeldung.com/java-inputstream-server-socket)
 - [[<-- Prev]](/core-java-modules/core-java-networking-4)

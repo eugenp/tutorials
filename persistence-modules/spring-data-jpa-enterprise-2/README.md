@@ -5,7 +5,7 @@ This module contains articles about Spring Data JPA used in enterprise applicati
 ### Relevant Articles: 
 - [Custom Naming Convention with Spring Data JPA](https://www.baeldung.com/spring-data-jpa-custom-naming)
 - [Working with Lazy Element Collections in JPA](https://www.baeldung.com/java-jpa-lazy-collections)
-
+- [Spring Data Java 8 Support](https://www.baeldung.com/spring-data-java-8)
 
 ### Eclipse Config 
 After importing the project into Eclipse, you may see the following error:  

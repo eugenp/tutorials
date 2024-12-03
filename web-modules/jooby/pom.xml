@@ -38,8 +38,8 @@
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
-            <scope>test</scope>
             <version>${rest-assured.version}</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
@@ -73,7 +73,7 @@
 
     <properties>
         <jooby.version>2.16.1</jooby.version>
-        <rest-assured.version>3.1.1</rest-assured.version>
+        <rest-assured.version>5.5.0</rest-assured.version>
         <application.class>com.baeldung.jooby.App</application.class>
         <maven-shade-plugin.version>3.2.4</maven-shade-plugin.version>
         <okhttp.version>5.0.0-alpha.12</okhttp.version>

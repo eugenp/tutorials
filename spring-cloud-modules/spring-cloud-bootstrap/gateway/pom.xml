@@ -127,7 +127,7 @@
 
     <properties>
         <spring-cloud-dependencies.version>2023.0.1</spring-cloud-dependencies.version>
-        <rest-assured.version>5.4.0</rest-assured.version>
+        <rest-assured.version>5.5.0</rest-assured.version>
         <spring-boot.version>3.2.2</spring-boot.version>
         <spring-session-data-redis.version>3.2.2</spring-session-data-redis.version>
         <jakarta.servlet-api.version>6.1.0-M2</jakarta.servlet-api.version>

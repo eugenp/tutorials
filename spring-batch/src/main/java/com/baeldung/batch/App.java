@@ -20,7 +20,6 @@ public class App {
         final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
         context.getEnvironment().addActiveProfile("spring");
         context.register(SpringBatchConfig.class);
-        context.register(SpringBatchRetryConfig.class);
 
         context.refresh();
 
@@ -30,7 +29,6 @@ public class App {
         runJob(context, "firstBatchJob");
         runJob(context, "skippingBatchJob");
         runJob(context, "skipPolicyBatchJob");
-        runJob(context, "retryBatchJob");
     }
 
     private static void runJob(AnnotationConfigApplicationContext context, String batchJobName) {
