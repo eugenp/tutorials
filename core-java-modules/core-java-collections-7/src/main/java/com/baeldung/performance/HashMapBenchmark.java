@@ -1,12 +1,21 @@
 package com.baeldung.performance;
 
-import org.openjdk.jmh.annotations.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
+import org.openjdk.jmh.annotations.Benchmark;
+import org.openjdk.jmh.annotations.BenchmarkMode;
+import org.openjdk.jmh.annotations.Level;
+import org.openjdk.jmh.annotations.Mode;
+import org.openjdk.jmh.annotations.OutputTimeUnit;
+import org.openjdk.jmh.annotations.Scope;
+import org.openjdk.jmh.annotations.Setup;
+import org.openjdk.jmh.annotations.State;
+import org.openjdk.jmh.annotations.Warmup;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
-
-import java.util.*;
-import java.util.concurrent.TimeUnit;
 
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.MICROSECONDS)
@@ -42,22 +51,22 @@ public class HashMapBenchmark {
     }
 
     @Benchmark
-    public Employee testGet(HashMapBenchmark.MyState state) {
+    public Employee testGet(MyState state) {
         return state.employeeMap.get(state.iterations);
     }
 
     @Benchmark
-    public Employee testRemove(HashMapBenchmark.MyState state) {
+    public Employee testRemove(MyState state) {
         return state.employeeMap.remove(state.iterations);
     }
 
     @Benchmark
-    public Employee testPut(HashMapBenchmark.MyState state) {
+    public Employee testPut(MyState state) {
         return state.employeeMap.put(state.employee.getId(), state.employee);
     }
 
     @Benchmark
-    public Boolean testContainsKey(HashMapBenchmark.MyState state) {
+    public Boolean testContainsKey(MyState state) {
         return state.employeeMap.containsKey(state.employee.getId());
     }
 

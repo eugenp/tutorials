@@ -1,13 +1,14 @@
-package com.baeldung.stack_tests;
+package com.baeldung.stacktests;
 
-import com.baeldung.thread_safe_lifo.DequeBasedSynchronizedStack;
-import org.junit.Assert;
-import org.junit.Test;
+import static java.util.stream.IntStream.range;
 
 import java.util.ArrayDeque;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
-import static java.util.stream.IntStream.range;
+import org.junit.Assert;
+import org.junit.Test;
+
+import com.baeldung.threadsafelifo.DequeBasedSynchronizedStack;
 
 /**
  * Correctness tests for Stack in multi threaded environment.
