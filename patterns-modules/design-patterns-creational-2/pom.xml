@@ -14,6 +14,12 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.inferred</groupId>
+            <artifactId>freebuilder</artifactId>
+            <version>${freebuilder.version}</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-inline</artifactId>
             <version>${mockito-inline.version}</version>
@@ -22,11 +28,18 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.32</version>
+            <version>${lombok.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <version>${javax.annotations.version}</version>
         </dependency>
     </dependencies>
 
     <properties>
+        <freebuilder.version>2.4.1</freebuilder.version>
+        <javax.annotations.version>3.0.2</javax.annotations.version>
         <mockito-inline.version>5.2.0</mockito-inline.version>
     </properties>
 
