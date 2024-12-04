@@ -716,7 +716,7 @@
                 <module>jws</module>
                 <module>ksqldb</module>
                 <module>kubernetes-modules</module>
-                <module>language-interop</module>
+                <!--<module>language-interop</module>-->
                 <module>libraries</module> <!-- very long running -->
                 <module>libraries-2</module>
                 <module>libraries-3</module>
@@ -789,12 +789,14 @@
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
                 <module>spring-ai</module>
+                <module>spring-ai-2</module>
                 <module>spring-aop-2</module>
                 <module>spring-aop</module>
                 <module>spring-batch</module>
                 <module>spring-batch-2</module>
                 <module>spring-boot-modules</module>
                 <module>spring-boot-rest</module>
+                <module>spring-boot-rest-2</module>
                 <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
                 <module>spring-cloud-modules/spring-cloud-contract</module>
                 <module>spring-cloud-modules/spring-cloud-eureka</module>
@@ -1102,7 +1104,7 @@
                 <module>jws</module>
                 <module>ksqldb</module>
                 <module>kubernetes-modules</module>
-                <module>language-interop</module>
+               <!-- <module>language-interop</module>-->
                 <module>libraries</module> <!-- very long running -->
                 <module>libraries-2</module>
                 <module>libraries-3</module>
@@ -1174,6 +1176,7 @@
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
                 <module>spring-ai</module>
+                <module>spring-ai-2</module>
                 <module>spring-aop-2</module>
                 <module>spring-aop</module>
                 <module>spring-batch</module>

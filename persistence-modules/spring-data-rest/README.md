@@ -5,11 +5,10 @@ This module contains articles about Spring Data REST
 ### Relevant Articles:
 - [Introduction to Spring Data REST](https://www.baeldung.com/spring-data-rest-intro)
 - [Working with Relationships in Spring Data REST](https://www.baeldung.com/spring-data-rest-relationships)
-- [AngularJS CRUD Application with Spring Data REST](https://www.baeldung.com/angularjs-crud-with-spring-data-rest)
-- [Projections and Excerpts in Spring Data REST](https://www.baeldung.com/spring-data-rest-projections-excerpts)
-- [Spring Data REST Events with @RepositoryEventHandler](https://www.baeldung.com/spring-data-rest-events)
-- [Customizing HTTP Endpoints in Spring Data REST](https://www.baeldung.com/spring-data-rest-customize-http-endpoints)
 - [Spring Boot With SQLite](https://www.baeldung.com/spring-boot-sqlite)
+- [Spring Data Web Support](https://www.baeldung.com/spring-data-web-support)
+- [Consuming Page Entity Response From RestTemplate](https://www.baeldung.com/resttemplate-page-entity-response)
+
 
 ### The Course
 The "REST With Spring" Classes: http://bit.ly/restwithspring
