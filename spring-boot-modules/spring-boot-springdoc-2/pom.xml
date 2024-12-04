@@ -122,7 +122,6 @@
 
     <properties>
         <springdoc.version>2.6.0</springdoc.version>
-        <springdoc-openapi-webmvc-ui.version>2.6.0</springdoc-openapi-webmvc-ui.version>
         <springdoc-openapi-maven-plugin.version>1.4</springdoc-openapi-maven-plugin.version>
     </properties>
 
