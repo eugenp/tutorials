@@ -36,7 +36,7 @@ class NullValueCheckUnitTest {
         // accessing nulls from a list
         final Integer number = numbers.get(0);
         assertNull(number);
-        
+
         // dereferencing nulls from a list
         assertThrows(NullPointerException.class, () -> number.toString());
     }
