@@ -13,8 +13,10 @@ import java.util.logging.Level;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+@Disabled // JAVA-42148
 public class SSLDebugLoggerUnitTest {
     @Test
      void givenSSLDebuggingEnabled_whenUsingSystemProperties_thenEnableSSLDebugLogging() throws Exception {

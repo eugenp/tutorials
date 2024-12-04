@@ -28,6 +28,21 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.apache.camel.quarkus</groupId>
+            <artifactId>camel-quarkus-jsonpath</artifactId>
+            <version>${camel-quarkus.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel.quarkus</groupId>
+            <artifactId>camel-quarkus-langchain4j</artifactId>
+            <version>${quarkus-camel-langchain4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel.quarkus</groupId>
+            <artifactId>camel-quarkus-platform-http</artifactId>
+            <version>${camel-quarkus.version}</version>
+        </dependency>
+        <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-rest</artifactId>
         </dependency>
@@ -183,7 +198,8 @@
         <quarkus.platform.version>3.14.2</quarkus.platform.version>
         <quarkus-langchain4j.version>0.18.0.CR1</quarkus-langchain4j.version>
         <surefire-plugin.version>3.2.5</surefire-plugin.version>
-
+        <camel-quarkus.version>3.13.0</camel-quarkus.version>
+        <quarkus-camel-langchain4j.version>3.16.0</quarkus-camel-langchain4j.version>
     </properties>
 
 </project>

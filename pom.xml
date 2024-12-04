@@ -716,7 +716,7 @@
                 <module>jws</module>
                 <module>ksqldb</module>
                 <module>kubernetes-modules</module>
-                <module>language-interop</module>
+                <!--<module>language-interop</module>-->
                 <module>libraries</module> <!-- very long running -->
                 <module>libraries-2</module>
                 <module>libraries-3</module>
@@ -734,6 +734,7 @@
                 <module>libraries-data-3</module>
                 <module>libraries-data-db</module>
                 <module>libraries-data</module>
+                <module>libraries-data-mariadb4j</module>
                 <module>libraries-files</module>
                 <module>libraries-http</module>
 		        <module>libraries-http-2</module>
@@ -748,6 +749,7 @@
                 <module>libraries-stream</module>
                 <module>libraries-testing-2</module>
                 <module>libraries-transform</module>
+                <module>libraries-security-2</module>
                 <module>lightrun</module>
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
@@ -787,12 +789,14 @@
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
                 <module>spring-ai</module>
+                <module>spring-ai-2</module>
                 <module>spring-aop-2</module>
                 <module>spring-aop</module>
                 <module>spring-batch</module>
                 <module>spring-batch-2</module>
                 <module>spring-boot-modules</module>
                 <module>spring-boot-rest</module>
+                <module>spring-boot-rest-2</module>
                 <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
                 <module>spring-cloud-modules/spring-cloud-contract</module>
                 <module>spring-cloud-modules/spring-cloud-eureka</module>
@@ -1100,7 +1104,7 @@
                 <module>jws</module>
                 <module>ksqldb</module>
                 <module>kubernetes-modules</module>
-                <module>language-interop</module>
+               <!-- <module>language-interop</module>-->
                 <module>libraries</module> <!-- very long running -->
                 <module>libraries-2</module>
                 <module>libraries-3</module>
@@ -1127,6 +1131,7 @@
                 <module>libraries-primitive</module>
                 <module>libraries-reporting</module>
                 <module>libraries-rpc</module>
+                <module>libraries-security-2</module>
                 <module>libraries-server-2</module>
                 <module>libraries-server</module>
                 <module>libraries-stream</module>
@@ -1171,6 +1176,7 @@
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
                 <module>spring-ai</module>
+                <module>spring-ai-2</module>
                 <module>spring-aop-2</module>
                 <module>spring-aop</module>
                 <module>spring-batch</module>

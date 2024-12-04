@@ -29,21 +29,6 @@
             <version>${jsonschema2pojo-core.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.jsoniter</groupId>
-            <artifactId>jsoniter</artifactId>
-            <version>${jsoniter.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.squareup.moshi</groupId>
-            <artifactId>moshi</artifactId>
-            <version>${moshi.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.squareup.moshi</groupId>
-            <artifactId>moshi-adapters</artifactId>
-            <version>${moshi.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
@@ -57,55 +42,6 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.io-informatics.oss</groupId>
-            <artifactId>jackson-jsonld</artifactId>
-            <version>${jackson-jsonld.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>jackson-databind</artifactId>
-                    <groupId>com.fasterxml.jackson.core</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>jackson-annotations</artifactId>
-                    <groupId>com.fasterxml.jackson.core</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>jackson-core</artifactId>
-                    <groupId>com.fasterxml.jackson.core</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>jsonld-java</artifactId>
-                    <groupId>com.github.jsonld-java</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>de.escalon.hypermedia</groupId>
-            <artifactId>hydra-jsonld</artifactId>
-            <version>${hydra-jsonld.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>jackson-databind</artifactId>
-                    <groupId>com.fasterxml.jackson.core</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>com.github.jsonld-java</groupId>
-            <artifactId>jsonld-java</artifactId>
-            <version>${jsonld-java.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>jackson-core</artifactId>
-                    <groupId>com.fasterxml.jackson.core</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>jackson-databind</artifactId>
-                    <groupId>com.fasterxml.jackson.core</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>
@@ -244,13 +180,8 @@
     </build>
 
     <properties>
-        <jsoniter.version>0.9.23</jsoniter.version>
-        <moshi.version>1.9.2</moshi.version>
         <fastjson.version>1.2.21</fastjson.version>
         <jsonschema2pojo-core.version>1.1.1</jsonschema2pojo-core.version>
-        <jackson-jsonld.version>0.1.1</jackson-jsonld.version>
-        <hydra-jsonld.version>0.4.2</hydra-jsonld.version>
-        <jsonld-java.version>0.13.0</jsonld-java.version>
         <jsonschema-generator.version>4.31.1</jsonschema-generator.version>
         <jakarta.validation.version>3.0.2</jakarta.validation.version>
         <jsonb-api.version>1.0</jsonb-api.version>
