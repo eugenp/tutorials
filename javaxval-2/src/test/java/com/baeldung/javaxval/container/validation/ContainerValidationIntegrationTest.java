@@ -6,14 +6,15 @@ import java.util.Collections;
 import java.util.OptionalInt;
 import java.util.Set;
 
+import org.junit.Before;
+import org.junit.Test;
+
+import com.baeldung.javaxval.container.validation.valueextractors.ProfileValueExtractor;
+
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
 import jakarta.validation.ValidatorFactory;
-
-import com.baeldung.javaxval.container.validation.valueextractors.ProfileValueExtractor;
-import org.junit.Before;
-import org.junit.Test;
 
 public class ContainerValidationIntegrationTest {
     private Validator validator;

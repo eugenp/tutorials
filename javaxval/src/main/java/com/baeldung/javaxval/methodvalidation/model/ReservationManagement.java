@@ -3,18 +3,18 @@ package com.baeldung.javaxval.methodvalidation.model;
 import java.time.LocalDate;
 import java.util.List;
 
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Future;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 
 import com.baeldung.javaxval.methodvalidation.constraints.ConsistentDateParameters;
+
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Controller
 @Validated
