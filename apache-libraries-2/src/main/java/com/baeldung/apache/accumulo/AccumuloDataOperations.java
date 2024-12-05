@@ -17,8 +17,8 @@ public class AccumuloDataOperations {
     public AccumuloClient createAccumuloClient() {
 
         AccumuloClient client = Accumulo.newClient()
-                .to("accumuloInstanceName", "localhost:2181")
-                .as("username", "password").build();
+            .to("accumuloInstanceName", "localhost:2181")
+            .as("username", "password").build();
 
         return client;
     }
@@ -26,7 +26,6 @@ public class AccumuloDataOperations {
     public void createTable(String tableName) throws TableExistsException, AccumuloException, AccumuloSecurityException {
 
         client.tableOperations().create(tableName);
-        System.out.println("Table " + tableName + " created successfully.");
     }
 
     public void performBatchWrite(String tableName) throws TableNotFoundException, MutationsRejectedException {
@@ -34,29 +33,28 @@ public class AccumuloDataOperations {
         try (BatchWriter writer = client.createBatchWriter(tableName, new BatchWriterConfig())) {
             Mutation mutation1 = new Mutation("row1");
             mutation1.at()
-                    .family("column family 1")
-                    .qualifier("column family 1 qualifier 1")
-                    .visibility("public").put("value 1");
+                .family("column family 1")
+                .qualifier("column family 1 qualifier 1")
+                .visibility("public").put("value 1");
 
             Mutation mutation2 = new Mutation("row2");
             mutation2.at()
-                    .family("column family 1")
-                    .qualifier("column family 1 qualifier 2")
-                    .visibility("private").put("value 2");
+                .family("column family 1")
+                .qualifier("column family 1 qualifier 2")
+                .visibility("private").put("value 2");
 
             writer.addMutation(mutation1);
             writer.addMutation(mutation2);
-
-            System.out.println("Batch write completed successfully.");
         }
     }
 
     public void scanTableData(String tableName) throws TableNotFoundException {
 
         try (var scanner = client.createScanner(tableName, new Authorizations("public"))) {
+            String keyValue = "";
             scanner.setRange(new Range());
             for (Map.Entry<Key, Value> entry : scanner) {
-                System.out.println(entry.getKey() + " -> " + entry.getValue());
+                keyValue = entry.getKey() + " -> " + entry.getValue();
             }
         }
     }
