@@ -102,10 +102,10 @@
         <jackson-datatype.version>2.16.0</jackson-datatype.version>
         <http-client.version>4.5.14</http-client.version>
         <jettison.version>1.5.3</jettison.version>
-        <spring-oxm.version>6.2.0</spring-oxm.version>
-        <spring-batch-core.version>5.2.0</spring-batch-core.version>
+        <spring-oxm.version>6.1.4</spring-oxm.version>
+        <spring-batch-core.version>5.1.1</spring-batch-core.version>
         <start-class>com.baeldung.batchtesting.SpringBatchApplication</start-class>
-        <spring-boot.version>3.4.0</spring-boot.version>
+        <spring-boot.version>3.2.2</spring-boot.version>
     </properties>
 
 </project>
