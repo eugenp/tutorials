@@ -11,7 +11,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class EventSteps {
-    public static final String UUID = "1a-2b-3c-4d-5e";
+    public static final String UUID = "1ed80153-666c-4904-8e03-08c4a41e716a";
     public static final String CREATED_AT = "2024-12-03T09:00:00Z";
     public static final String PROCESSED_AT = "2024-12-03T10:00:00Z";
 
