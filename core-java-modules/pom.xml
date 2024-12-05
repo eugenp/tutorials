@@ -92,7 +92,7 @@
         <module>core-java-collections-4</module>
         <module>core-java-collections-5</module>
         <module>core-java-collections-6</module>
-        <!-- <module>core-java-collections-7</module> -->
+        <module>core-java-collections-7</module>
         <module>core-java-collections-conversions</module>
         <module>core-java-collections-set-2</module>
         <module>core-java-collections-list</module>
