@@ -18,7 +18,6 @@
     <properties>
         <start-class>com.baeldung.Main</start-class>
     </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
