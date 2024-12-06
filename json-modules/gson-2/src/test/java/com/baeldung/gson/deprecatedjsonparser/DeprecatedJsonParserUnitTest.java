@@ -1,4 +1,4 @@
-package com.baeldung.deprecatedjsonparser;
+package com.baeldung.gson.deprecatedjsonparser;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
