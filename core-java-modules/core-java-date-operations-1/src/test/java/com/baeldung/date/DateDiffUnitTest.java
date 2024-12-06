@@ -28,8 +28,8 @@ public class DateDiffUnitTest {
         Date firstDate = sdf.parse("06/24/2017");
         Date secondDate = sdf.parse("06/30/2017");
 
-        long diffInMillies = Math.abs(secondDate.getTime() - firstDate.getTime());
-        long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+        long diffInMillis = Math.abs(secondDate.getTime() - firstDate.getTime());
+        long diff = TimeUnit.DAYS.convert(diffInMillis, TimeUnit.MILLISECONDS);
 
         assertEquals(6, diff);
     }
