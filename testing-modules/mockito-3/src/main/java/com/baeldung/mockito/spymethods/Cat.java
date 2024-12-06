@@ -20,12 +20,7 @@ public class Cat {
         KNOCK_THING_OFF_TABLE
     }
 
-    public void meowLoudly(){
-        System.out.println("MEOW");
-    }
-
-
-    public Human.HumanReaction whatIsHumanReactions(Action action){
+    public Human.HumanReaction whatIsHumanReaction(Action action){
         return switch (action) {
             case MEOW -> Human.HumanReaction.PET_ON_HEAD;
             case VOMIT_ON_CARPET -> Human.HumanReaction.CLEAN;
@@ -34,7 +29,5 @@ public class Cat {
             case BITE -> myHuman.biteCatBack();
         };
     }
-
-
 
 }
