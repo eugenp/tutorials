@@ -14,6 +14,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -45,6 +47,8 @@ class BaseStorageTest {
             s3Client.createBucket(request -> request.bucket(bucketName));
         } catch (BucketAlreadyOwnedByYouException exception) {
             // do nothing
+        } catch (Exception exception) {
+            System.out.println(exception.getMessage());
         }
         
         String localFileBaseDir = storageProperties.getLocalFileBaseDirectory();
@@ -94,5 +98,6 @@ class BaseStorageTest {
         InputStream inputStream = new ByteArrayInputStream(fileContentBytes);
         return new MockMultipartFile(fileName, fileName, "text/plain", inputStream);
     }
-    
+
+    private static final Logger log = LoggerFactory.getLogger(BaseStorageTest.class);
 }
