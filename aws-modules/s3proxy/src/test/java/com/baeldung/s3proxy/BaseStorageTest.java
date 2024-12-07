@@ -59,15 +59,18 @@ class BaseStorageTest {
         String localFileBaseDir = storageProperties.getLocalFileBaseDirectory();
         if (StringUtils.hasText(localFileBaseDir)) {
             File directory = new File(localFileBaseDir);
-            FileUtils.forceDelete(directory);   
+            System.out.println("DELETING TEST FILES");
+            FileUtils.forceDelete(directory);
         }
     }
 
     @Test
     void whenFileUploaded_thenFileSavedInStorageBackend() throws Exception {
         // Prepare test file to upload
+        System.out.println("RUNNING TESTS");
         String key = RandomString.make(10) + ".txt";
         String fileContent = RandomString.make(50);
+        System.out.println("CREATING TEST FILE");
         MultipartFile fileToUpload = createTextFile(key, fileContent);
         
         // Save file to storage backend
