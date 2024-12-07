@@ -20,11 +20,11 @@ public class FindAll {
         this.session = session;
     }
 
-    public List<Student> findAllWithJpql() {
+    public List<Student> findAllStudentsWithJpql() {
         return session.createQuery("SELECT a FROM Student a", Student.class).getResultList();
     }
 
-    public List<Student> findAllWithCriteriaQuery() {
+    public List<Student> findAllStudentsWithCriteriaQuery() {
         CriteriaBuilder cb = session.getCriteriaBuilder();
         CriteriaQuery<Student> cq = cb.createQuery(Student.class);
         Root<Student> rootEntry = cq.from(Student.class);
