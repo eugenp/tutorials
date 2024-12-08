@@ -50,7 +50,7 @@
     </build>
 
     <properties>
-        <embedded-mongodb.version>4.12.2</embedded-mongodb.version>
+        <embedded-mongodb.version>4.13.0</embedded-mongodb.version>
     </properties>
 
 </project>

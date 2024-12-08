@@ -74,10 +74,10 @@
         <module>spring-boot-persistence</module>
         <module>spring-boot-persistence-h2</module>
         <module>spring-boot-persistence-h2-2</module>
-        <module>spring-boot-persistence-mongodb</module>
-        <module>spring-boot-persistence-mongodb-2</module>
+        <!-- <module>spring-boot-persistence-mongodb</module> --> <!-- JAVA-42144 -->
+        <!-- <module>spring-boot-persistence-mongodb-2</module> --> <!-- JAVA-42371 -->
         <module>spring-boot-persistence-mongodb-3</module>
-        <module>spring-boot-persistence-mongodb-4</module>
+        <!-- <module>spring-boot-persistence-mongodb-4</module> --> <!-- JAVA-42372 -->
         <module>spring-data-arangodb</module>
         <!--<module>spring-data-cassandra</module>-->   <!-- failing after upgrading to jdk17. JDK 17 compatibility in progress CASSANDRA-16895 -->
         <module>spring-data-cassandra-test</module>
@@ -85,7 +85,7 @@
         <module>spring-data-couchbase-2</module>
         <module>spring-data-dynamodb</module>
         <module>spring-data-eclipselink</module>
-        <module>spring-data-elasticsearch</module>
+        <!-- <module>spring-data-elasticsearch</module> --> <!-- JAVA-42359 -->
         <!-- <module>spring-data-gemfire</module> Won't Fix in JAVA-14499, The dependencies used are -->
         <!-- no longer available or maintained. Ref: https://spring.io/projects/spring-data-gemfire#overview -->
         <module>spring-data-geode</module>
@@ -107,7 +107,7 @@
         <module>spring-data-jpa-simple</module>
         <module>spring-data-keyvalue</module>
         <module>spring-data-mongodb</module>
-        <module>spring-data-mongodb-2</module>
+        <!-- <module>spring-data-mongodb-2</module> --> <!-- JAVA-42145 -->
         <module>spring-data-mongodb-reactive</module>
         <module>spring-data-redis</module>
         <module>spring-data-rest-2</module>
