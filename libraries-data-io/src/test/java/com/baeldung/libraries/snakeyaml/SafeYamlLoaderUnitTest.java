@@ -1,4 +1,4 @@
-package com.baeldung.boot;
+package com.baeldung.libraries.snakeyaml;
 
 import org.junit.jupiter.api.Test;
 import org.yaml.snakeyaml.constructor.ConstructorException;
@@ -7,10 +7,10 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class SafeYamlLoaderTest {
+class SafeYamlLoaderUnitTest {
 
     @Test
-    void testLoadYamlSafely() {
+    void givenValidYamlContent_whenLoadYamlSafely_thenReturnParsedMap() {
         SafeYamlLoader safeYamlLoader = new SafeYamlLoader();
         String yamlContent = "key: value\nnested:\n  subkey: subvalue";
 
@@ -22,7 +22,7 @@ class SafeYamlLoaderTest {
     }
 
     @Test
-    void testSafeYamlLoader_NoExploit() {
+    void givenExploitPayload_whenLoadYamlSafely_thenThrowConstructorException() {
         String exploitPayload = "!!java.util.date\n";
 
         SafeYamlLoader yamlLoader = new SafeYamlLoader();
@@ -38,7 +38,7 @@ class SafeYamlLoaderTest {
     }
 
     @Test
-    void testSafeYamlLoader_ValidInput() {
+    void givenValidYamlInput_whenLoadYamlSafely_thenReturnParsedMap() {
         String validYaml = "key: value\nanotherKey: 123";
 
         SafeYamlLoader yamlLoader = new SafeYamlLoader();

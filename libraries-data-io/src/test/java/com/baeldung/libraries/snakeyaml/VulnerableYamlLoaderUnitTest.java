@@ -1,14 +1,14 @@
-package com.baeldung.boot;
+package com.baeldung.libraries.snakeyaml;
 
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class VulnerableYamlLoaderTest {
+class VulnerableYamlLoaderUnitTest {
 
     @Test
-    void testVulnerableYamlLoader_Exploit() {
+    void givenExploitPayload_whenLoadYamlWithVulnerableLoader_thenDeserializeObject() {
         // Example payload to demonstrate vulnerability
         String exploitPayload = "!!javax.script.ScriptEngineManager [  \n" +
                 "     !!java.net.URLClassLoader [[  \n" +
@@ -26,7 +26,7 @@ class VulnerableYamlLoaderTest {
     }
 
     @Test
-    void testVulnerableYamlLoader_SafeDeserialization() {
+    void givenSafeYamlPayload_whenLoadYamlWithVulnerableLoader_thenDeserializeToMap() {
         // A safe and valid YAML payload
         String safePayload = "name: Test User\nage: 25";
 
@@ -39,7 +39,7 @@ class VulnerableYamlLoaderTest {
     }
 
     @Test
-    void testVulnerableYamlLoader_NonExploit() {
+    void givenNonExploitYamlPayload_whenLoadYamlWithVulnerableLoader_thenDeserializeToMap() {
         // Non-exploit YAML payload with simple data
         String nonExploitPayload = "name: Normal User\nrole: admin";
 

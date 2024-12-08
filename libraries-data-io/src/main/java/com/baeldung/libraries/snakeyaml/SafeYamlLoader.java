@@ -1,12 +1,10 @@
-package com.baeldung.boot;
+package com.baeldung.libraries.snakeyaml;
 
-import org.springframework.stereotype.Service;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.SafeConstructor;
 
 import java.util.Map;
 
-@Service
 public class SafeYamlLoader {
 
     public Map<String, Object> loadYamlSafely(String yamlContent) {
