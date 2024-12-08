@@ -2,6 +2,7 @@ package com.baeldung.liquibase.utility;
 
 import java.util.List;
 
+import liquibase.database.AbstractJdbcDatabase;
 import liquibase.database.Database;
 import liquibase.database.core.DB2Database;
 import liquibase.database.core.DerbyDatabase;
@@ -24,7 +25,6 @@ import liquibase.datatype.core.BooleanType;
 import liquibase.datatype.core.CharType;
 import liquibase.datatype.core.ClobType;
 import liquibase.datatype.core.CurrencyType;
-import liquibase.datatype.core.DatabaseFunctionType;
 import liquibase.datatype.core.DateTimeType;
 import liquibase.datatype.core.DateType;
 import liquibase.datatype.core.DecimalType;
@@ -39,47 +39,43 @@ import liquibase.datatype.core.TimeType;
 import liquibase.datatype.core.TimestampType;
 import liquibase.datatype.core.TinyIntType;
 import liquibase.datatype.core.UUIDType;
-import liquibase.datatype.core.UnknownType;
 import liquibase.datatype.core.VarcharType;
 
 public class LiquibaseDatatypes {
     public static void main(String[] args) {
-        List<Class<? extends LiquibaseDataType>> dataTypes = getDataTypes();
-        List<Class<? extends Database>> databases = getDatabases();
+        List<LiquibaseDataType> dataTypes = getDataTypes();
+        List<AbstractJdbcDatabase> databases = getDatabases();
 
-        for (Class<? extends LiquibaseDataType> dataTypeClass : dataTypes) {
+        for (LiquibaseDataType dataTypeInstance : dataTypes) {
             try {
-                LiquibaseDataType dataType = dataTypeClass.getDeclaredConstructor()
-                  .newInstance();
+                LiquibaseDataType dataType = dataTypeInstance;
                 dataType.finishInitialization("");
                 System.out.println(dataType.getName());
 
-                for (Class<? extends Database> databaseClass : databases) {
+                for (AbstractJdbcDatabase databaseInstance : databases) {
                     try {
-                        Database database = databaseClass.getDeclaredConstructor()
-                          .newInstance();
+                        Database database = databaseInstance;
                         String databaseType = dataType.toDatabaseDataType(database)
                           .toString();
-                        System.out.println(databaseClass.getSimpleName() + ": " + databaseType);
+                        System.out.println(databaseInstance.getName() + ": " + databaseType);
                     } catch (Exception e) {
-                        System.err.println("Error initializing database class " + databaseClass.getSimpleName() + ": " + e.getMessage());
+                        System.err.println("Error initializing database class " + databaseInstance.getName() + ": " + e.getMessage());
                     }
                 }
                 System.out.println();
             } catch (Exception e) {
-                System.err.println("Error initializing data type class " + dataTypeClass.getSimpleName() + ": " + e.getMessage());
+                System.err.println("Error initializing data type class " + dataTypeInstance.getName() + ": " + e.getMessage());
             }
         }
     }
 
-    private static List<Class<? extends LiquibaseDataType>> getDataTypes() {
-        return List.of(BooleanType.class, TinyIntType.class, IntType.class, MediumIntType.class, BigIntType.class, FloatType.class, DoubleType.class, DecimalType.class, NumberType.class, BlobType.class, DatabaseFunctionType.class, UnknownType.class,
-          DateTimeType.class, TimeType.class, TimestampType.class, DateType.class, CharType.class, VarcharType.class, NCharType.class, NVarcharType.class, ClobType.class, CurrencyType.class, UUIDType.class);
+    private static List<LiquibaseDataType> getDataTypes() {
+        return List.of(new BooleanType(), new TinyIntType(), new IntType(), new MediumIntType(), new BigIntType(), new FloatType(),new DoubleType(), new DecimalType(), new NumberType(), new BlobType(), new DateTimeType(), new TimeType(), new TimestampType(),new DateType(), new CharType(), new VarcharType(), new NCharType(), new NVarcharType(), new ClobType(), new CurrencyType(), new UUIDType());
     }
 
-    private static List<Class<? extends Database>> getDatabases() {
-        return List.of(MySQLDatabase.class, SQLiteDatabase.class, H2Database.class, PostgresDatabase.class, UnsupportedDatabase.class, DB2Database.class, MSSQLDatabase.class, OracleDatabase.class, HsqlDatabase.class, FirebirdDatabase.class,
-          DerbyDatabase.class, InformixDatabase.class, SybaseDatabase.class, SybaseASADatabase.class);
+    private static List<AbstractJdbcDatabase> getDatabases() {
+        return List.of(new MySQLDatabase(), new SQLiteDatabase(), new H2Database(), new PostgresDatabase(), new UnsupportedDatabase(), new DB2Database(), new MSSQLDatabase(), new OracleDatabase(), new HsqlDatabase(), new FirebirdDatabase(),
+          new DerbyDatabase(), new InformixDatabase(), new SybaseDatabase(), new SybaseASADatabase());
     }
 }
 
