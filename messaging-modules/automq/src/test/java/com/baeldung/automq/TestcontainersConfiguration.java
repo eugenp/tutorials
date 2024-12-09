@@ -19,7 +19,9 @@ class TestcontainersConfiguration {
 
     @Bean
     public ComposeContainer composeContainer() throws IOException {
-        return new ComposeContainer(downloadComposeFile()).withLocalCompose(true);
+        File dockerCompose = downloadComposeFile();
+        return new ComposeContainer(dockerCompose)
+            .withLocalCompose(true);
     }
 
     @Bean
