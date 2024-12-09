@@ -1,0 +1,45 @@
+spring:
+  cloud:
+    stream:
+      default-binder: kafka  # Specify kafka as the default binder
+      kafka:
+        binder:
+          brokers: ${KAFKA_BROKER}
+      function:
+        definition: processStockPrices
+      bindings:
+        default:
+          content-type: application/json
+        processStockPrices-in-0:
+          destination: stock-prices-in
+          group: live-stock-consumers-x
+        processStockPrices-out-0:
+          destination: stock-prices-out
+          group: live-stock-consumers-y
+          producer:
+            useNativeEncoding: true
+            configuration:
+              key:
+                serializer: org.apache.kafka.common.serialization.StringSerializer
+              value:
+                serializer: com.baeldung.reactive.kafka.stream.binder.domain.StockUpdate$StockUpdateJsonSerde
+  kafka:
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      group-id: my-group
+      properties:
+        reactiveAutoCommit: true
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    properties:
+      spring:
+        json:
+          trusted:
+            packages: '*'
+
+clickhouse:
+  r2dbc:
+    url: r2dbc:clickhouse://localhost:8123/default
+

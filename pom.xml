@@ -605,6 +605,7 @@
                 <!--<module>tablesaw</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-swagger-codegen-modules/openapi-custom-generator</module>
                 <module>spring-swagger-codegen-modules/openapi-custom-generator-api-client</module> --> <!-- cannot add the individual modules here because the order is not guaranteed -->
+                <module>spring-reactive-modules/spring-reactive-kafka-stream-binder</module>
             </modules>
 
             <properties>
@@ -1000,6 +1001,7 @@
                 <!--<module>tablesaw</module>--><!-- failing after upgrading to jdk17-->
                 <!--<module>spring-swagger-codegen-modules/openapi-custom-generator</module>
                 <module>spring-swagger-codegen-modules/openapi-custom-generator-api-client</module> --> <!-- cannot add the individual modules here because the order is not guaranteed -->
+                <module>spring-reactive-modules/spring-reactive-kafka-stream-binder</module>
             </modules>
 
             <properties>
