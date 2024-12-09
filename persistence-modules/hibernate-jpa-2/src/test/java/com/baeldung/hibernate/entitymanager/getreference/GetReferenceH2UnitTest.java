@@ -14,7 +14,7 @@ import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class GetReferenceH2IntegrationTest {
+public class GetReferenceH2UnitTest {
 
     private static EntityManagerFactory entityManagerFactory;
     private static EntityManager entityManager;
@@ -28,6 +28,8 @@ public class GetReferenceH2IntegrationTest {
         ((Logger) LoggerFactory.getLogger("org.hibernate.SQL")).setLevel(Level.OFF);
         ((Logger) LoggerFactory.getLogger("org.hibernate.type.descriptor.sql")).setLevel(Level.OFF);
         ((Logger) LoggerFactory.getLogger("org.hibernate.stat")).setLevel(Level.OFF);
+        ((Logger) LoggerFactory.getLogger("org.hibernate.orm.jdbc.bind")).setLevel(Level.OFF);
+        ((Logger) LoggerFactory.getLogger("org.hibernate.orm.jdbc.work")).setLevel(Level.OFF);
 
         entityManagerFactory = Persistence.createEntityManagerFactory("com.baeldung.hibernate.entitymanager.game_player_h2");
         entityManager = entityManagerFactory.createEntityManager();
