@@ -942,6 +942,7 @@
                 <java.version>23</java.version>
                 <maven.compiler.source>23</maven.compiler.source>
                 <maven.compiler.target>23</maven.compiler.target>
+                <maven-pmd-plugin.version>3.26.0</maven-pmd-plugin.version>
             </properties>
 
         </profile>
