@@ -36,6 +36,10 @@ class TestcontainersConfiguration {
         return removeContainerNames(dockerCompose);
     }
 
+    /**
+     * The container_name property of Docker Compose is not currently supported by Testcontainers.
+     * The issue can be tracked at https://github.com/testcontainers/testcontainers-java/issues/2472
+     */
     private File removeContainerNames(File composeFile) throws IOException {
         List<String> filteredLines = Files.readAllLines(composeFile.toPath())
             .stream()
