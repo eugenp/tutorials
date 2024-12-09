@@ -4,7 +4,9 @@ import org.openapitools.api.AccountApi;
 import org.openapitools.model.Account;
 import org.openapitools.model.DepositRequest;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 
+@Controller
 public class AccountController implements AccountApi {
     @Override
     public ResponseEntity<Void> depositToAccount(DepositRequest depositRequest) {
