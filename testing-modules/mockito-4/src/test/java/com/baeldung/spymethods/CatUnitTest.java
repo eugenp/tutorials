@@ -1,7 +1,7 @@
-import com.baeldung.mockito.spymethods.Cat;
-import com.baeldung.mockito.spymethods.Human;
-import com.baeldung.mockito.spymethods.Cat.Action;
-import com.baeldung.mockito.spymethods.Human.HumanReaction;
+import com.baeldung.spymethods.Cat;
+import com.baeldung.spymethods.Human;
+import com.baeldung.spymethods.Cat.Action;
+import com.baeldung.spymethods.Human.HumanReaction;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 

@@ -1,4 +1,4 @@
-package com.baeldung.mockito.spymethods;
+package com.baeldung.spymethods;
 
 public class Cat {
 
