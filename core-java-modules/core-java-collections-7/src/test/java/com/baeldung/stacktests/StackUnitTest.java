@@ -1,18 +1,12 @@
-package com.baeldung.stack_tests;
+package com.baeldung.stacktests;
 
-import com.baeldung.thread_safe_lifo.DequeBasedSynchronizedStack;
-import com.google.common.collect.Streams;
+import java.util.Stack;
+import java.util.concurrent.ConcurrentLinkedDeque;
+
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.ArrayDeque;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Stack;
-import java.util.concurrent.ConcurrentLinkedDeque;
-import java.util.stream.Stream;
-
-import static java.util.stream.IntStream.range;
+import com.baeldung.threadsafelifo.DequeBasedSynchronizedStack;
 
 /**
  * These tests are to understand the Stack implementation in Java Collections.

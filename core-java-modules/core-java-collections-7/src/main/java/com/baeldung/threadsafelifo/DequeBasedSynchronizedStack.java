@@ -1,4 +1,4 @@
-package com.baeldung.thread_safe_lifo;
+package com.baeldung.threadsafelifo;
 
 import java.util.ArrayDeque;
 
