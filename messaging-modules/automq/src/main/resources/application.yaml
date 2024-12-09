@@ -1,0 +1,16 @@
+spring:
+  kafka:
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    properties:
+      spring.json.value.default.type: com.baeldung.automq.User
+      allow.auto.create.topics: true
+
+com:
+  baeldung:
+    queue:
+      onboarding-initiated: user-service.onboarding.initiated.v1

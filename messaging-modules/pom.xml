@@ -17,6 +17,7 @@
     <modules>
         <module>apache-camel</module>
         <module>apache-rocketmq</module>
+        <module>automq</module>
         <module>jgroups</module>
         <module>java-redpanda</module>
         <module>rabbitmq</module>
