@@ -10,6 +10,7 @@
 
     <properties>
         <json-unit.version>3.5.0</json-unit.version>
+        <jackson-databind.version>2.18.1</jackson-databind.version>
     </properties>
 
 
@@ -37,7 +38,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.18.1</version>
+            <version>${jackson-databind.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
