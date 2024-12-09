@@ -8,9 +8,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-3</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-2</relativePath>
+        <relativePath>../../parent-boot-3</relativePath>
     </parent>
 
     <dependencies>
@@ -23,10 +23,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>javax.persistence</groupId>
             <artifactId>javax.persistence-api</artifactId>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
@@ -37,8 +37,8 @@
         </dependency>
         <dependency>
             <groupId>io.hypersistence</groupId>
-            <artifactId>hypersistence-utils-hibernate-55</artifactId>
-            <version>${hypersistance-utils-hibernate-55.version}</version>
+            <artifactId>hypersistence-utils-hibernate-60</artifactId>
+            <version>${hypersistance-utils-hibernate-60.version}</version>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
@@ -96,23 +96,23 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>com.mysema.maven</groupId>
-                <artifactId>apt-maven-plugin</artifactId>
-                <version>1.1.3</version>
-                <executions>
-                    <execution>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>process</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${project.build.directory}/generated-sources</outputDirectory>
-                            <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>com.mysema.maven</groupId>-->
+<!--                <artifactId>apt-maven-plugin</artifactId>-->
+<!--                <version>1.1.3</version>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <phase>generate-sources</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>process</goal>-->
+<!--                        </goals>-->
+<!--                        <configuration>-->
+<!--                            <outputDirectory>${project.build.directory}/generated-sources</outputDirectory>-->
+<!--                            <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
             <plugin>
                 <groupId>org.bsc.maven</groupId>
                 <artifactId>maven-processor-plugin</artifactId>
@@ -144,12 +144,12 @@
     </build>
 
     <properties>
-        <hypersistance-utils-hibernate-55.version>3.7.0</hypersistance-utils-hibernate-55.version>
-        <postgresql.version>42.7.1</postgresql.version>
+        <hypersistance-utils-hibernate-60.version>3.9.0</hypersistance-utils-hibernate-60.version>
+        <postgresql.version>42.7.4</postgresql.version>
         <db.util.version>1.0.7</db.util.version>
-        <hypersistence-utils.version>3.7.0</hypersistence-utils.version>
-        <jakarta.persistence-api.version>3.1.0</jakarta.persistence-api.version>
-        <lombok.version>1.18.34</lombok.version>
+        <hypersistence-utils.version>3.9.0</hypersistence-utils.version>
+        <jakarta.persistence-api.version>3.2.0</jakarta.persistence-api.version>
+        <lombok.version>1.18.36</lombok.version>
     </properties>
 
 </project>
