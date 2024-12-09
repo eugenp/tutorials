@@ -39,16 +39,29 @@ public class AuthorizationServiceUnitTest {
 
     @Test
     public void givenRoles_whenInvokingAuthorizationService_thenReturnExpectedResults() {
-        CmsUser adminUser = new CmsUser("Admin User", "ADMIN");
-        CmsUser guestUser = new CmsUser("Guest User", "GUEST");
-        CmsUser editorUser = new CmsUser("Editor User", "EDITOR");
-        CmsUser viewerUser = new CmsUser("Viewer User", "VIEWER");
+        CmsUser adminUser = createCmsUser("Admin User", "ADMIN");
+        CmsUser guestUser = createCmsUser("Guest User", "GUEST");
+        CmsUser editorUser = createCmsUser("Editor User", "EDITOR");
+        CmsUser viewerUser = createCmsUser("Viewer User", "VIEWER");
 
+        verifyAdminUserAccess(adminUser);
+        verifyEditorUserAccess(editorUser);
+        verifyViewerUserAccess(viewerUser);
+        verifyGuestUserAccess(guestUser);
+    }
+
+    private CmsUser createCmsUser(String name, String role) {
+        return new CmsUser(name, role);
+    }
+
+    private void verifyAdminUserAccess(CmsUser adminUser) {
         for (ActionEnum action : ActionEnum.values()) {
             assertTrue("Admin should have access to all actions",
                     authorizationService.authorize(adminUser, action));
         }
+    }
 
+    private void verifyEditorUserAccess(CmsUser editorUser) {
         for (ActionEnum action : ActionEnum.values()) {
             if (action == ActionEnum.DELETE) {
                 assertFalse("Editor should not have access to DELETE",
@@ -58,7 +71,9 @@ public class AuthorizationServiceUnitTest {
                         authorizationService.authorize(editorUser, action));
             }
         }
+    }
 
+    private void verifyViewerUserAccess(CmsUser viewerUser) {
         for (ActionEnum action : ActionEnum.values()) {
             if (action == ActionEnum.READ) {
                 assertTrue("Viewer should have access to READ",
@@ -68,7 +83,9 @@ public class AuthorizationServiceUnitTest {
                         authorizationService.authorize(viewerUser, action));
             }
         }
+    }
 
+    private void verifyGuestUserAccess(CmsUser guestUser) {
         for (ActionEnum action : ActionEnum.values()) {
             assertFalse("Guest should not have access to any actions",
                     authorizationService.authorize(guestUser, action));
