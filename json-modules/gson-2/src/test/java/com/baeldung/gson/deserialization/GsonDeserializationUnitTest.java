@@ -1,4 +1,4 @@
-package com.baeldung.gson.deserialization.test;
+package com.baeldung.gson.deserialization;
 
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.instanceOf;
