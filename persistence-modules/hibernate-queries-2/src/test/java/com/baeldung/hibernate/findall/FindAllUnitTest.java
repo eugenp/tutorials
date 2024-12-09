@@ -51,13 +51,13 @@ public class FindAllUnitTest {
 
     @Test
     public void givenCriteriaQuery_WhenFindAll_ThenGetAllPersons() {
-        List<Student> list = findAll.findAllWithCriteriaQuery();
+        List<Student> list = findAll.findAllStudentsWithCriteriaQuery();
         assertEquals(3, list.size());
     }
     
     @Test
     public void givenJpql_WhenFindAll_ThenGetAllPersons() {
-        List<Student> list = findAll.findAllWithJpql();
+        List<Student> list = findAll.findAllStudentsWithJpql();
         assertEquals(3, list.size());
     }
 }
