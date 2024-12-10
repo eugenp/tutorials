@@ -71,7 +71,7 @@ public class StringInterpolationUnitTest {
     }
 
     @Test
-    public void givenTwoString_thenInterpolateWithStringTemplate() {
+    public void whenInterpolateWithStringTemplate_thenGetExpectedResult() {
         String first = "Interpolation";
         String second = "Java";
         String result = STR."String \{first} in \{second} with some \{second} examples.";
