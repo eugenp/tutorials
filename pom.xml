@@ -1285,7 +1285,7 @@
                 <module>apache-libraries</module>
                 <module>apache-spark</module> <!-- failing after upgrading to jdk17 -->
                 <module>atomix</module>
-                <!-- <module>gcp-firebase</module> --> <!-- BAEL-8475 -->
+                <module>gcp-firebase</module>
                 <module>libraries-data-io</module>
                 <module>persistence-modules/spring-data-jpa-enterprise</module>
                 <module>persistence-modules/spring-data-jpa-query-2</module>
