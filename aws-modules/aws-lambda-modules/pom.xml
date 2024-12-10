@@ -15,8 +15,8 @@
 
     <modules>
         <module>lambda-function</module>
-        <module>shipping-tracker-lambda/ShippingFunction</module>
-        <module>todo-reminder-lambda/ToDoFunction</module>
+        <module>shipping-tracker-lambda</module>
+        <module>todo-reminder-lambda</module>
     </modules>
 
 </project>
