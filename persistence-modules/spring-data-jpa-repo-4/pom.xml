@@ -150,6 +150,7 @@
         <hypersistence-utils.version>3.9.0</hypersistence-utils.version>
         <jakarta.persistence-api.version>3.2.0</jakarta.persistence-api.version>
         <lombok.version>1.18.36</lombok.version>
+        <start-class>com.baeldung.spring.data.noconverterfound.NoConverterFoundApplication</start-class>
     </properties>
 
 </project>
