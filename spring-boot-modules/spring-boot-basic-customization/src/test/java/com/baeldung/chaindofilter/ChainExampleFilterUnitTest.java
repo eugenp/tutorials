@@ -1,5 +1,7 @@
 package com.baeldung.chaindofilter;
 
+import static com.baeldung.chaindofilter.ChainDoFilterController.RESPONSE_MESSAGE;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
@@ -19,7 +21,8 @@ public class ChainExampleFilterUnitTest {
     @Test
     void givenHeaderInResponse_whenFilterDoChain_thenAssertHeaderPresent() throws Exception {
         mockMvc.perform(get("/chain/do-filter"))
-            .andExpect(status().isOk());
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$").value(RESPONSE_MESSAGE));
     }
 
 }

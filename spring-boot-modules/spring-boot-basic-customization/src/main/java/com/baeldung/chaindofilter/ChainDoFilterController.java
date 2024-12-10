@@ -9,9 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/chain/do-filter")
 public class ChainDoFilterController {
 
+    public static final String RESPONSE_MESSAGE = "Chain doFilter test!";
+
     @GetMapping
     public ResponseEntity<String> chainDoFilter() {
-        return ResponseEntity.ok("Chain doFilter test!");
+        return ResponseEntity.ok(RESPONSE_MESSAGE);
     }
 
 }
