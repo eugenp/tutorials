@@ -1,4 +1,4 @@
-package com.baeldung.reactive.kafka.stream.binder.currency;
+package com.baeldung.reactive.kafka.stream.binder.domain.currency;
 
 import reactor.core.publisher.Mono;
 

@@ -1,4 +1,4 @@
-package com.baeldung.reactive.kafka.stream.binder.consumer;
+package com.baeldung.reactive.kafka.stream.binder.kafka.consumer;
 
 import com.baeldung.reactive.kafka.stream.binder.domain.StockUpdate;
 import com.baeldung.reactive.kafka.stream.binder.kafka.TopicConfig;
@@ -40,6 +40,7 @@ public class StockPriceConsumer {
       Schedulers.boundedElastic().schedule(() -> kafkaConsumerTemplate
               .receiveAutoAck()
               .doOnNext(consumerRecord -> {
+                  // simulate processing
                   count.incrementAndGet();
 
                   log.info(
@@ -56,6 +57,10 @@ public class StockPriceConsumer {
 
     public int getCount() {
         return count.get();
+    }
+
+    public void resetCount() {
+        count.set(0);
     }
 
 }
