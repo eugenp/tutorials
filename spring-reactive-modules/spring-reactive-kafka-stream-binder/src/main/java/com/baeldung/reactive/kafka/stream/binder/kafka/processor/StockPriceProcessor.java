@@ -1,7 +1,7 @@
-package com.baeldung.reactive.kafka.stream.binder.processor;
+package com.baeldung.reactive.kafka.stream.binder.kafka.processor;
 
-import com.baeldung.reactive.kafka.stream.binder.clickhouse.ClickHouseRepository;
-import com.baeldung.reactive.kafka.stream.binder.currency.CurrencyRate;
+import com.baeldung.reactive.kafka.stream.binder.repository.ClickHouseRepository;
+import com.baeldung.reactive.kafka.stream.binder.domain.currency.CurrencyRate;
 import com.baeldung.reactive.kafka.stream.binder.domain.StockUpdate;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

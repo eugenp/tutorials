@@ -1,4 +1,4 @@
-package com.baeldung.reactive.kafka.stream.binder.producer;
+package com.baeldung.reactive.kafka.stream.binder.kafka.producer;
 
 import com.baeldung.reactive.kafka.stream.binder.domain.StockUpdate;
 import com.baeldung.reactive.kafka.stream.binder.kafka.TopicConfig;
@@ -22,10 +22,10 @@ import java.util.Random;
 @Component
 public class StockPriceProducer {
 
+    public static final String[] stocks = {"AAPL", "GOOG", "MSFT", "AMZN", "TSLA"};
+
     private final ReactiveKafkaProducerTemplate<String, StockUpdate> kafkaProducer;
     private final NewTopic topic;
-
-    private final String[] stocks = {"AAPL", "GOOG", "MSFT", "AMZN", "TSLA"};
     private final Random random = new Random();
 
     @SuppressWarnings("all")

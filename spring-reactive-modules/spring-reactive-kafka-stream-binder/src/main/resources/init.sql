@@ -5,18 +5,20 @@ CREATE TABLE IF NOT EXISTS stock_prices (
 ) ENGINE = MergeTree() ORDER BY (symbol, timestamp);
 
 CREATE TABLE IF NOT EXISTS avg_stock_prices (
-	date_time DateTime64(9, 'UTC'),
-	symbol AggregateFunction(uniq, String),
-	avg_price AggregateFunction(avg, Float64)
-) ENGINE = AggregatingMergeTree() ORDER BY (date_time);
+    date_time DateTime64(9, 'UTC'),
+    symbol String,
+    avg_price AggregateFunction(avg, Float64)
+) ENGINE = AggregatingMergeTree()
+ORDER BY (date_time, symbol);
 
 DROP TABLE IF EXISTS avg_stock_prices_mv;
 
-CREATE MATERIALIZED VIEW avg_stock_prices_mv TO avg_stock_prices AS SELECT
-	toStartOfHour(timestamp) AS date_time,
-	uniqState(symbol) AS symbol,
-	avgState(original_price) AS avg_price
+CREATE MATERIALIZED VIEW avg_stock_prices_mv TO avg_stock_prices AS
+SELECT
+    toStartOfMinute(timestamp) AS date_time,
+    symbol,
+    avgState(original_price) AS avg_price
 FROM stock_prices
-GROUP BY date_time;
+GROUP BY date_time, symbol;
 
 

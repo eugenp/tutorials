@@ -1,4 +1,4 @@
-package com.baeldung.reactive.kafka.stream.binder.clickhouse;
+package com.baeldung.reactive.kafka.stream.binder.repository;
 
 import io.r2dbc.spi.ConnectionFactories;
 import io.r2dbc.spi.ConnectionFactory;

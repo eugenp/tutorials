@@ -1,9 +1,10 @@
 package com.baeldung.reactive.kafka.stream.binder;
 
-import com.baeldung.reactive.kafka.stream.binder.clickhouse.ClickHouseRepository;
-import com.baeldung.reactive.kafka.stream.binder.consumer.StockPriceConsumer;
-import com.baeldung.reactive.kafka.stream.binder.currency.CurrencyRate;
-import com.baeldung.reactive.kafka.stream.binder.producer.StockPriceProducer;
+import com.baeldung.reactive.kafka.stream.binder.domain.StockUpdate;
+import com.baeldung.reactive.kafka.stream.binder.repository.ClickHouseRepository;
+import com.baeldung.reactive.kafka.stream.binder.kafka.consumer.StockPriceConsumer;
+import com.baeldung.reactive.kafka.stream.binder.domain.currency.CurrencyRate;
+import com.baeldung.reactive.kafka.stream.binder.kafka.producer.StockPriceProducer;
 import org.awaitility.Awaitility;
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,6 +16,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
+import org.springframework.test.web.reactive.server.WebTestClient;
 import org.testcontainers.clickhouse.ClickHouseContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
@@ -22,8 +24,13 @@ import org.testcontainers.kafka.KafkaContainer;
 import reactor.core.publisher.Mono;
 
 import java.time.Duration;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalUnit;
+import java.util.List;
+import java.util.Set;
 
-@SpringBootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Testcontainers(parallel = true)
 class StockIntegrationTest {
 
@@ -66,24 +73,64 @@ class StockIntegrationTest {
     @Autowired
     private ClickHouseRepository clickHouseRepository;
 
+    @Autowired
+    private WebTestClient webTestClient;
+
     @BeforeEach
     void setup() {
         clickHouseRepository.initDatabase().block();
+        clickHouseRepository.runScript("DELETE FROM stock_prices WHERE symbol IS NOT NULL").block();
+        consumer.resetCount();
     }
 
     @Test
-    void contextLoads() {
+    void shouldProduceAndConsumerEvents() {
 
         var eventCount = 200;
 
         producer.produceStockPrices(eventCount).subscribe();
 
         Awaitility
+            .waitAtMost(Duration.ofSeconds(60))
+            .untilAsserted(() -> {
+                Assert.assertTrue(consumer.getCount() == eventCount);
+            });
+    }
+
+    @Test
+    void shouldGetAllPersistedEvents() {
+        var eventCount = 200;
+
+        var start = Instant.now().truncatedTo(ChronoUnit.MINUTES);
+
+        producer.produceStockPrices(eventCount).subscribe();
+
+        Awaitility
                 .waitAtMost(Duration.ofSeconds(60))
-                .pollInterval(Duration.ofMillis(500))
                 .untilAsserted(() -> {
                     Assert.assertTrue(consumer.getCount() == eventCount);
                 });
 
+        var end = Instant.now().plusSeconds(60).truncatedTo(ChronoUnit.MINUTES);
+
+        List<StockUpdate> updates = webTestClient.get()
+                .uri("/stock-prices-out?from={from}&to={to}", start, end)
+                .exchange()
+                .expectStatus().isOk()
+                .expectBodyList(StockUpdate.class)
+                .returnResult()
+                .getResponseBody();
+
+        Assert.assertFalse(updates.isEmpty());
+
+        updates.forEach(update -> {
+            Assert.assertTrue(update.price() > 0);
+            Assert.assertTrue(Set.of(StockPriceProducer.stocks).contains(update.symbol()));
+            Assert.assertTrue(isBetween(update.timestamp(), start, end));
+        });
+    }
+
+    public boolean isBetween(Instant target, Instant start, Instant end) {
+        return !target.isBefore(start) && !target.isAfter(end);
     }
 }

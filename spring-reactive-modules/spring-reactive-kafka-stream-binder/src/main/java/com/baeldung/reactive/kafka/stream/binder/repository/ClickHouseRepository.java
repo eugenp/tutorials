@@ -1,4 +1,4 @@
-package com.baeldung.reactive.kafka.stream.binder.clickhouse;
+package com.baeldung.reactive.kafka.stream.binder.repository;
 
 import com.baeldung.reactive.kafka.stream.binder.domain.StockUpdate;
 import io.r2dbc.spi.Connection;
@@ -12,6 +12,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.nio.charset.StandardCharsets;
+import java.time.Instant;
 import java.util.Arrays;
 
 public interface ClickHouseRepository {
@@ -41,7 +42,7 @@ public interface ClickHouseRepository {
         });
     }
 
-    private Mono<Void> runScript(String scriptContent) {
+    default Mono<Void> runScript(String scriptContent) {
         return Mono.usingWhen(
                 create(),
                 connection -> executeScript(connection, scriptContent),
@@ -70,4 +71,24 @@ public interface ClickHouseRepository {
 
     }
 
+    default Flux<StockUpdate> findMinuteAvgStockPrices(Instant from, Instant to) {
+        return create()
+                .flatMapMany(connection -> connection.createStatement("""
+                            SELECT
+                                symbol,
+                                date_time,
+                                avgMerge(avg_price) AS avg_price
+                            FROM avg_stock_prices
+                            WHERE date_time BETWEEN parseDateTime64BestEffort(:from, 9) AND parseDateTime64BestEffort(:to, 9)
+                            GROUP BY symbol, date_time;
+                    """)
+                        .bind("from", from.toString())
+                        .bind("to", to.toString())
+                        .execute())
+                .flatMap(result -> result.map((row, rowMetadata) -> new StockUpdate(
+                        row.get("symbol", String.class),
+                        row.get("avg_price", Double.class),
+                        row.get("date_time", Instant.class)
+                )));
+    }
 }
