@@ -12,5 +12,5 @@ spring:
 
 com:
   baeldung:
-    queue:
+    topic:
       onboarding-initiated: user-service.onboarding.initiated.v1

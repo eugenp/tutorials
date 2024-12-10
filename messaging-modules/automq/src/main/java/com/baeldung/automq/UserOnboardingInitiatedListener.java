@@ -10,7 +10,7 @@ public class UserOnboardingInitiatedListener {
 
     private static final Logger log = LoggerFactory.getLogger(UserOnboardingInitiatedListener.class);
 
-    @KafkaListener(topics = { "${com.baeldung.queue.onboarding-initiated}" }, groupId = "user-service")
+    @KafkaListener(topics = { "${com.baeldung.topic.onboarding-initiated}" }, groupId = "user-service")
     public void listen(final User user) {
         log.info("Dispatching user account confirmation email to {}", user.email());
     }

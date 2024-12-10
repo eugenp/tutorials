@@ -26,7 +26,7 @@ class UserOnboardingInitiatedListenerLiveTest {
     @Autowired
     private KafkaTemplate<String, User> kafkaTemplate;
 
-    @Value("${com.baeldung.queue.onboarding-initiated}")
+    @Value("${com.baeldung.topic.onboarding-initiated}")
     private String onboardingInitiatedTopic;
 
     @BeforeAll
