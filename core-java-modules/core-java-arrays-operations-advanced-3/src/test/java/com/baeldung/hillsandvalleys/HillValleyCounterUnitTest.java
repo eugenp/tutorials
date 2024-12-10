@@ -15,7 +15,7 @@ public class HillValleyCounterUnitTest {
     }
 
     @Test
-    public void findHillAndValleys_givenArrayOfIntegers_thenReturnCorrectCount() {
+    public void givenArrayOfIntegers_whenCountHillsAndValleys_thenReturnCorrectCount() {
         int[] numbers = { 4, 5, 6, 5, 4, 5, 4 };
         int expected = 3;
         int result = hillValleyCounter.countHillsAndValleys(numbers);
@@ -23,7 +23,7 @@ public class HillValleyCounterUnitTest {
     }
 
     @Test
-    public void findHillAndValleys_givenStrictlyIncreasingArrayOfIntegers_thenReturnCountZero() {
+    public void givenArrayOfStrictlyIncreasingIntegers_whenCountHillsAndValleys_thenReturnCountZero() {
         int[] numbers = { 1, 2, 3, 4, 5, 6 };
         int expected = 0;
         int result = hillValleyCounter.countHillsAndValleys(numbers);
@@ -31,7 +31,7 @@ public class HillValleyCounterUnitTest {
     }
 
     @Test
-    public void findHillAndValleys_givenConstantArrayOfIntegers_thenReturnCountZero() {
+    public void givenArrayOfConstantIntegers_whenCountHillsAndValleys_thenReturnCountZero() {
         int[] numbers = { 5, 5, 5, 5, 5 };
         int expected = 0;
         int result = hillValleyCounter.countHillsAndValleys(numbers);
@@ -39,7 +39,7 @@ public class HillValleyCounterUnitTest {
     }
 
     @Test
-    public void findHillAndValleys_givenArrayWithNoHillOrValley_thenReturnCountZero() {
+    public void givenArrayWithNoHillOrValley_whenCountHillsAndValleys_thenReturnCountZero() {
         int[] numbers = { 6, 6, 5, 5, 4, 1 };
         int expected = 0;
         int result = hillValleyCounter.countHillsAndValleys(numbers);
@@ -47,7 +47,7 @@ public class HillValleyCounterUnitTest {
     }
 
     @Test
-    public void findHillAndValleys_givenArrayWithFlattenValley_thenReturnCountOne() {
+    public void givenArrayWithFlattenValley_whenCountsHillAndValleys_thenReturnCountOne() {
         int[] numbers = { 6, 5, 4, 4, 4, 5, 6 };
         int expected = 1;
         int result = hillValleyCounter.countHillsAndValleys(numbers);
@@ -55,7 +55,7 @@ public class HillValleyCounterUnitTest {
     }
 
     @Test
-    public void findHillAndValleys_givenArrayWithFlattenHill_thenReturnCountOne() {
+    public void givenArrayWithFlattenHill_whenCountHillsAndValleys_thenReturnCountOne() {
         int[] numbers = { 1, 2, 4, 4, 4, 2, 1 };
         int expected = 1;
         int result = hillValleyCounter.countHillsAndValleys(numbers);
@@ -63,7 +63,7 @@ public class HillValleyCounterUnitTest {
     }
 
     @Test
-    public void findHillAndValleys_givenArrayWithSingleElement_thenReturnCountZero() {
+    public void givenArrayWithSingleElement_whenCountHillsAndValleys_thenReturnCountZero() {
         int[] numbers = { 1 };
         int expected = 0;
         int result = hillValleyCounter.countHillsAndValleys(numbers);
