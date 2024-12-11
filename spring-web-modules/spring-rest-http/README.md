@@ -12,4 +12,5 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Using JSON Patch in Spring REST APIs](https://www.baeldung.com/spring-rest-json-patch)
 - [Guide to UriComponentsBuilder in Spring](https://www.baeldung.com/spring-uricomponentsbuilder)
 - [Get All Endpoints in Spring Boot](https://www.baeldung.com/spring-boot-get-all-endpoints)
+- [Setting a Request Timeout for a Spring REST API](https://www.baeldung.com/spring-rest-timeout)
 - More articles: [[next -->]](../spring-rest-http-2)
