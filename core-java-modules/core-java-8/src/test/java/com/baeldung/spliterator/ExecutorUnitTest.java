@@ -10,6 +10,8 @@ import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -60,7 +62,10 @@ public class ExecutorUnitTest {
         AtomicInteger sum = new AtomicInteger(0);
 
         // Process elements in parallel using parallelStream
-        forkJoinPool.submit(() -> customSpliterator.forEachRemaining(sum::addAndGet)).join();
+        forkJoinPool.submit(() -> {
+            Stream<Integer> parallelStream = StreamSupport.stream(customSpliterator, true); // true for parallel stream
+            parallelStream.forEach(sum::addAndGet); // Process elements in parallel
+        }).join();
         assertThat(sum.get()).isEqualTo(15);
     }
 
