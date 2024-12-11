@@ -1,3 +1,5 @@
+package com.baeldung.collection;
+
 public class Employee implements Comparable<Employee> {
     private int employeeId;
     private String employeeName;
