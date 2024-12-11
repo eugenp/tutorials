@@ -71,17 +71,19 @@ public class WhenUsingHashSet {
         }
     }
 
-    @Test(expected = ConcurrentModificationException.class)
+    @Test
     public void whenModifyingHashSetWhileIterating_shouldThrowException() {
         Set<String> hashset = new HashSet<>();
         hashset.add("First");
         hashset.add("Second");
         hashset.add("Third");
         Iterator<String> itr = hashset.iterator();
-        while (itr.hasNext()) {
+        assertThrows(ConcurrentModificationException.class,() -> { 
+          while (itr.hasNext()) {
             itr.next();
             hashset.remove("Second");
-        }
+          } 
+        });
     }
 
     @Test
