@@ -1,10 +1,10 @@
 package com.baeldung.reactive.kafka.stream.binder;
 
 import com.baeldung.reactive.kafka.stream.binder.domain.StockUpdate;
-import com.baeldung.reactive.kafka.stream.binder.repository.ClickHouseRepository;
-import com.baeldung.reactive.kafka.stream.binder.kafka.consumer.StockPriceConsumer;
 import com.baeldung.reactive.kafka.stream.binder.domain.currency.CurrencyRate;
+import com.baeldung.reactive.kafka.stream.binder.kafka.consumer.StockPriceConsumer;
 import com.baeldung.reactive.kafka.stream.binder.kafka.producer.StockPriceProducer;
+import com.baeldung.reactive.kafka.stream.binder.repository.ClickHouseRepository;
 import org.awaitility.Awaitility;
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
@@ -26,7 +26,6 @@ import reactor.core.publisher.Mono;
 import java.time.Duration;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalUnit;
 import java.util.List;
 import java.util.Set;
 
@@ -126,6 +125,7 @@ class StockIntegrationTest {
         updates.forEach(update -> {
             Assert.assertTrue(update.price() > 0);
             Assert.assertTrue(Set.of(StockPriceProducer.stocks).contains(update.symbol()));
+            Assert.assertTrue(update.currency().equals("USD"));
             Assert.assertTrue(isBetween(update.timestamp(), start, end));
         });
     }

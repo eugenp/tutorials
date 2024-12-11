@@ -60,9 +60,10 @@ public interface ClickHouseRepository {
 
     default Mono<Boolean> saveStockPrice(StockUpdate stockUpdate) {
         return create()
-                .flatMapMany(connection -> connection.createStatement("INSERT INTO stock_prices (symbol, original_price, timestamp) VALUES (:symbol, :original_price, parseDateTime64BestEffort(:timestamp, 9))")
+                .flatMapMany(connection -> connection.createStatement("INSERT INTO stock_prices (symbol, original_price, currency, timestamp) VALUES (:symbol, :original_price, :currency, parseDateTime64BestEffort(:timestamp, 9))")
                         .bind("symbol", stockUpdate.symbol())
                         .bind("original_price", stockUpdate.price())
+                        .bind("currency", stockUpdate.currency())
                         .bind("timestamp", stockUpdate.timestamp().toString())
                         .execute())
                 .flatMap(Result::getRowsUpdated)
@@ -76,11 +77,12 @@ public interface ClickHouseRepository {
                 .flatMapMany(connection -> connection.createStatement("""
                             SELECT
                                 symbol,
+                                currency,
                                 date_time,
                                 avgMerge(avg_price) AS avg_price
                             FROM avg_stock_prices
                             WHERE date_time BETWEEN parseDateTime64BestEffort(:from, 9) AND parseDateTime64BestEffort(:to, 9)
-                            GROUP BY symbol, date_time;
+                            GROUP BY symbol, currency, date_time;
                     """)
                         .bind("from", from.toString())
                         .bind("to", to.toString())
@@ -88,6 +90,7 @@ public interface ClickHouseRepository {
                 .flatMap(result -> result.map((row, rowMetadata) -> new StockUpdate(
                         row.get("symbol", String.class),
                         row.get("avg_price", Double.class),
+                        row.get("currency", String.class),
                         row.get("date_time", Instant.class)
                 )));
     }

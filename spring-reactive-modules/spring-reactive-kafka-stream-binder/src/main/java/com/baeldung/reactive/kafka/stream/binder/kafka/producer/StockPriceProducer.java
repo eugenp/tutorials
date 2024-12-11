@@ -23,6 +23,7 @@ import java.util.Random;
 public class StockPriceProducer {
 
     public static final String[] stocks = {"AAPL", "GOOG", "MSFT", "AMZN", "TSLA"};
+    private static final String CURRENCY = "USD";
 
     private final ReactiveKafkaProducerTemplate<String, StockUpdate> kafkaProducer;
     private final NewTopic topic;
@@ -39,7 +40,7 @@ public class StockPriceProducer {
                 .map(i -> {
                     String stock = stocks[random.nextInt(stocks.length)];
                     double price = 100 + (200 * random.nextDouble());
-                    return MessageBuilder.withPayload(new StockUpdate(stock, price, Instant.now()))
+                    return MessageBuilder.withPayload(new StockUpdate(stock, price, CURRENCY, Instant.now()))
                             .setHeader(MessageHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                             .build();
                 })
