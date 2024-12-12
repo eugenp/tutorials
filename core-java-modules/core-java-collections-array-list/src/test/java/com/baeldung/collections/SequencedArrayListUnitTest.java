@@ -61,7 +61,7 @@ public class SequencedArrayListUnitTest {
         ArrayList<Integer> arrayList = new ArrayList<Integer>(Arrays.asList(3,1,2));
      
         Integer expectedElement=2;
-        assertEquals(expectedElement, arrayList.arrayList.removeLast());
+        assertEquals(expectedElement, arrayList.removeLast());
     } 
 
 }
