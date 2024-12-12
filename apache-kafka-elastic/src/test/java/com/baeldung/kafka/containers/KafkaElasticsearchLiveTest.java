@@ -9,10 +9,10 @@ import com.baeldung.kafka.service.KafkaProducerService;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.EnableKafka;
 
-import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.elasticsearch.ElasticsearchContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
@@ -40,39 +40,43 @@ public class KafkaElasticsearchLiveTest {
     private ElasticsearchService elasticsearchService;
 
     @Container
-    public static ElasticsearchContainer elasticsearchContainer = new ElasticsearchContainer(
-        DockerImageName.parse("docker.elastic.co/elasticsearch/elasticsearch:8.6.0"))
-        .withExposedPorts(9200, 9300)
-        .withEnv("discovery.type", "single-node");
+    public static ElasticsearchContainer elasticsearch = new ElasticsearchContainer(DockerImageName.parse("docker.elastic.co/elasticsearch/elasticsearch:8.5.0"))
+        .withPassword("Elasticsearch@123")
+        .withAccessToHost(true)
+        .withExposedPorts(9200,9300)
+        .withEnv("discovery.type", "single-node")
+        .withEnv("xpack.security.transport.ssl.enabled", "false")
+        .withEnv("xpack.security.http.ssl.enabled", "false");
 
     @BeforeAll
     public static void setUp() {
-        elasticsearchContainer.start();
+        elasticsearch.start();
+        elasticsearch.addExposedPort(9200);
+        System.out.println(elasticsearch.getHttpHostAddress());
+        System.out.println(elasticsearch.getExposedPorts());
+        System.setProperty("spring.elasticsearch.uris", elasticsearch.getHttpHostAddress());
     }
 
     @AfterAll
     public static void tearDown() {
-        elasticsearchContainer.stop();
-    }
-
-    @DynamicPropertySource
-    static void elasticsearchProperties(org.springframework.test.context.DynamicPropertyRegistry registry) {
-        registry.add("spring.elasticsearch.rest.uris", () -> elasticsearchContainer.getHttpHostAddress());
+        elasticsearch.stop();
     }
 
     @Test
-    public void givenKafkaAndElasticSetupThenCheckIntegration() {
+    public void testKafkaAndElasticsearchIntegration() {
         NotificationModel notificationModel = new NotificationModel(1, "Test message", 2);
 
-        // Send the message to Kafka
         kafkaProducerService.sendMessage(notificationModel);
 
-        // Simulate a wait period to allow the message to be consumed and processed
         Awaitility.await().atMost(5, TimeUnit.SECONDS);
 
-        // Check if the data was saved in Elasticsearch
-        NotificationEntity savedEntity = elasticsearchService.saveData(new NotificationEntity(1, "Test message", 2));
-
+        NotificationEntity savedEntity = null;
+        try{
+            savedEntity = elasticsearchService.saveData(new NotificationEntity(1, "Test message", 2));
+        } catch (Exception e) {
+            Logger logger = org.slf4j.LoggerFactory.getLogger(KafkaElasticsearchLiveTest.class);
+            logger.error("Error while saving data to Elasticsearch", e);
+        }
         assertThat(savedEntity.getMessage()).isEqualTo("Test message");
     }
 }
