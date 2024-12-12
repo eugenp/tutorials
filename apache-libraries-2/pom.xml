@@ -199,12 +199,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!-- accumulo -->
-        <dependency>
-            <groupId>org.apache.accumulo</groupId>
-            <artifactId>accumulo-core</artifactId>
-            <version>${accumulo.core}</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -261,7 +255,6 @@
         <meecrowave-maven-plugin.version>1.2.15</meecrowave-maven-plugin.version>
         <xbean.version>4.24</xbean.version>
         <geode.core>1.15.1</geode.core>
-        <accumulo.core>2.1.3</accumulo.core>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
