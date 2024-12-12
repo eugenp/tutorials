@@ -7,6 +7,7 @@ import java.util.Properties;
 
 import com.baeldung.hibernate.distinct.entities.Comment;
 import com.baeldung.hibernate.distinct.entities.Post;
+import com.baeldung.hibernate.entities.DeptEmployee;
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
@@ -41,6 +42,8 @@ public class HibernateUtil {
         metadataSources.addAnnotatedClass(Student.class);
         metadataSources.addAnnotatedClass(Comment.class);
         metadataSources.addAnnotatedClass(Post.class);
+        metadataSources.addAnnotatedClass(DeptEmployee.class);
+        metadataSources.addAnnotatedClass(com.baeldung.hibernate.entities.Department.class);
 
         Metadata metadata = metadataSources.getMetadataBuilder()
                 .build();
