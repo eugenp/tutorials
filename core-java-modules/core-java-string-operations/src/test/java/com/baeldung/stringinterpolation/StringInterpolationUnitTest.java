@@ -1,5 +1,6 @@
 package com.baeldung.stringinterpolation;
 
+import static java.lang.StringTemplate.STR;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.text.MessageFormat;
@@ -66,6 +67,14 @@ public class StringInterpolationUnitTest {
         String first = "Interpolation";
         String second = "Java";
         String result = MessageFormat.format("String {0} in {1} with some {1} examples.", first, second);
+        assertEquals(EXPECTED_STRING, result);
+    }
+
+    @Test
+    public void whenInterpolateWithStringTemplate_thenGetExpectedResult() {
+        String first = "Interpolation";
+        String second = "Java";
+        String result = STR."String \{first} in \{second} with some \{second} examples.";
         assertEquals(EXPECTED_STRING, result);
     }
 

@@ -782,8 +782,8 @@
                 <module>security-modules</module>
                 <module>server-modules</module>
                 <module>spf4j</module>
-                <module>spring-5-webflux-2</module>
-                <module>spring-5-webflux</module>
+                <module>spring-webflux-2</module>
+                <module>spring-webflux</module>
                 <module>spring-5</module>
                 <module>spring-6-rsocket</module>
                 <module>spring-activiti</module>
@@ -1169,8 +1169,8 @@
                 <module>security-modules</module>
                 <module>server-modules</module>
                 <module>spf4j</module>
-                <module>spring-5-webflux-2</module>
-                <module>spring-5-webflux</module>
+                <module>spring-webflux-2</module>
+                <module>spring-webflux</module>
                 <module>spring-5</module>
                 <module>spring-6-rsocket</module>
                 <module>spring-activiti</module>
