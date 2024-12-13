@@ -1,14 +1,15 @@
 package com.baeldung.graphqlvsrest.repository.impl;
 
-import com.baeldung.graphqlvsrest.entity.Order;
-import com.baeldung.graphqlvsrest.repository.OrderRepository;
-import org.springframework.stereotype.Repository;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
+
+import org.springframework.stereotype.Repository;
+
+import com.baeldung.graphqlvsrest.entity.Order;
+import com.baeldung.graphqlvsrest.repository.OrderRepository;
 
 @Repository
 public class OrderRepositoryImpl implements OrderRepository {

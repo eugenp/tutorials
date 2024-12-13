@@ -6,7 +6,7 @@ This module contains articles about Spring Boot Graphql 2
 The "REST With Spring" Classes: http://bit.ly/restwithspring
 
 ### Relevant Articles:
-
+- [GraphQL vs REST](https://www.baeldung.com/graphql-vs-rest)
 
 ### GraphQL sample queries
 

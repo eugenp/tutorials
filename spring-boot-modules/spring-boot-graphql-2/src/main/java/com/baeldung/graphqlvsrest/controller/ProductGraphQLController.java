@@ -1,17 +1,18 @@
 package com.baeldung.graphqlvsrest.controller;
 
-import com.baeldung.graphqlvsrest.entity.Order;
-import com.baeldung.graphqlvsrest.entity.Product;
-import com.baeldung.graphqlvsrest.model.ProductModel;
-import com.baeldung.graphqlvsrest.repository.OrderRepository;
-import com.baeldung.graphqlvsrest.repository.ProductRepository;
+import java.util.List;
+
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.graphql.data.method.annotation.SchemaMapping;
 import org.springframework.stereotype.Controller;
 
-import java.util.List;
+import com.baeldung.graphqlvsrest.entity.Order;
+import com.baeldung.graphqlvsrest.entity.Product;
+import com.baeldung.graphqlvsrest.model.ProductModel;
+import com.baeldung.graphqlvsrest.repository.OrderRepository;
+import com.baeldung.graphqlvsrest.repository.ProductRepository;
 
 @Controller
 public class ProductGraphQLController {
