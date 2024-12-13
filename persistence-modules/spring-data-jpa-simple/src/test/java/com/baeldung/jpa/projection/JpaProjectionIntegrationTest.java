@@ -41,6 +41,16 @@ class JpaProjectionIntegrationTest {
     }
 
     @Test
+    void whenUsingCustomQueryForNestedProjection_thenViewWithRequiredPropertiesIsReturned() {
+        AddressView addressView = addressRepository.getViewAddressByState("CA").get(0);
+        assertThat(addressView.getZipCode()).isEqualTo("90001");
+
+        PersonView personView = addressView.getPerson();
+        assertThat(personView.getFirstName()).isEqualTo("John");
+        assertThat(personView.getLastName()).isEqualTo("Doe");
+    }
+
+    @Test
     void whenUsingOpenProjections_thenViewWithRequiredPropertiesIsReturned() {
         PersonView personView = personRepository.findByLastName("Doe");
         assertThat(personView.getFullName()).isEqualTo("John Doe");
