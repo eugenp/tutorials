@@ -13,3 +13,4 @@ This module contains articles about Simple Storage Service (S3) on AWS
 - [How To Rename Files and Folders in Amazon S3](https://www.baeldung.com/java-amazon-s3-rename-files-folders)
 - [Update an Existing Amazon S3 Object Using Java](https://www.baeldung.com/java-update-amazon-s3-object)
 - [How to Mock Amazon S3 for Integration Test](https://www.baeldung.com/java-amazon-simple-storage-service-mock-testing)
+- More articles: [[next -->]](../aws-s3-2)
