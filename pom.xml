@@ -655,6 +655,7 @@
                 <module>apache-kafka-3</module>
                 <module>apache-libraries</module>
                 <module>apache-libraries-2</module>
+                <module>apache-libraries-3</module>
                 <module>apache-olingo</module><!-- apache-olingo wasn't updated to boot-3 because a workaround for jakarta namespace wasn't found JAVA-27818 -->
                 <module>apache-poi</module>
                 <module>apache-poi-2</module>
@@ -1044,6 +1045,7 @@
                 <module>apache-kafka-3</module>
                 <module>apache-libraries</module>
                 <module>apache-libraries-2</module>
+                <module>apache-libraries-3</module>
                 <module>apache-olingo</module><!-- apache-olingo wasn't updated to boot-3 because a workaround for jakarta namespace wasn't found JAVA-27818 -->
                 <module>apache-poi</module>
                 <module>apache-poi-2</module>
