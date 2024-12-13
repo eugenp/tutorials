@@ -51,6 +51,9 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <!-- Reducing forked process timeout to 2 seconds for faster test execution.
+                In production, consider using longer timeouts to ensure proper container cleanup.
+                -->
                 <configuration>
                     <forkedProcessExitTimeoutInSeconds>2</forkedProcessExitTimeoutInSeconds>
                 </configuration>
