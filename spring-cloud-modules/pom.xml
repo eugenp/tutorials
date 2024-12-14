@@ -37,7 +37,7 @@
         <module>spring-cloud-aws-v3</module>
         <module>spring-cloud-consul</module>
         <!--        <module>spring-cloud-zuul-eureka-integration</module>-->
-        <!-- <module>spring-cloud-contract</module> -->
+        <!-- <module>spring-cloud-contract</module> --> <!-- JAVA-42360 -->
         <module>spring-cloud-kubernetes</module>
         <module>spring-cloud-open-service-broker</module>
         <module>spring-cloud-archaius</module>
