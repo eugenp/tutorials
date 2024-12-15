@@ -14,4 +14,5 @@ This module contains articles about basic Java concurrency.
 - [Convert From List of CompletableFuture to CompletableFuture List](https://www.baeldung.com/java-completablefuture-list-convert)
 - [Synchronize a Static Variable Among Different Threads](https://www.baeldung.com/java-synchronize-static-variable-different-threads)
 - [Difference Between execute() and submit() in Executor Service](https://www.baeldung.com/java-execute-vs-submit-executor-service)
+- [ExecutorService – Waiting for Threads to Finish](https://www.baeldung.com/java-executor-wait-for-threads)
 - [[<-- Prev]](../core-java-concurrency-basic-2)
