@@ -5,8 +5,6 @@ spring:
       kafka:
         binder:
           brokers: ${KAFKA_BROKER}
-      function:
-        definition: processStockPrices
       bindings:
         default:
           content-type: application/json
@@ -18,11 +16,7 @@ spring:
           group: live-stock-consumers-y
           producer:
             useNativeEncoding: true
-            configuration:
-              key:
-                serializer: org.apache.kafka.common.serialization.StringSerializer
-              value:
-                serializer: com.baeldung.reactive.kafka.stream.binder.domain.StockUpdate$StockUpdateJsonSerde
+
   kafka:
     consumer:
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer

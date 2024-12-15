@@ -31,7 +31,7 @@ import java.util.Set;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Testcontainers(parallel = true)
-class StockIntegrationTest {
+class StockLiveTest {
 
     @TestConfiguration
     public static class Configuration {
@@ -124,7 +124,7 @@ class StockIntegrationTest {
 
         updates.forEach(update -> {
             Assert.assertTrue(update.price() > 0);
-            Assert.assertTrue(Set.of(StockPriceProducer.stocks).contains(update.symbol()));
+            Assert.assertTrue(Set.of(StockPriceProducer.STOCKS).contains(update.symbol()));
             Assert.assertTrue(update.currency().equals("USD"));
             Assert.assertTrue(isBetween(update.timestamp(), start, end));
         });

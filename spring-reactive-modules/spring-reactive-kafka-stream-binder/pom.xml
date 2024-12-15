@@ -145,9 +145,11 @@
     </build>
 
     <properties>
-        <spring-cloud.version>2023.0.2</spring-cloud.version>
+        <spring-cloud.version>2023.0.4</spring-cloud.version>
         <start-class>com.baeldung.webflux.kafka.stream.Application</start-class>
         <java.version>17</java.version>
+        <maven.compiler.release>17</maven.compiler.release>
+        <maven.compiler.release>17</maven.compiler.release>
     </properties>
 
 </project>
