@@ -8,7 +8,7 @@ import org.jbehave.core.annotations.When;
 import java.io.IOException;
 
 import static com.baeldung.rest.jbehave.GithubUserNotFoundSteps.getGithubUserProfile;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GithubUserResponseMediaTypeSteps {
 
@@ -29,8 +29,8 @@ public class GithubUserResponseMediaTypeSteps {
     @When("I look for the user via the api")
     public void whenILookForTheUserViaTheApi() throws IOException {
         mediaType = ContentType
-          .getOrDefault(getGithubUserProfile(api, validUser).getEntity())
-          .getMimeType();
+                .getOrDefault(getGithubUserProfile(api, validUser).getEntity())
+                .getMimeType();
     }
 
     @Then("github respond data of type json")
