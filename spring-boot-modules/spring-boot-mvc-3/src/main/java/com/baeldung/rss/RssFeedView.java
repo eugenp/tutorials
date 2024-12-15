@@ -6,13 +6,14 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.view.feed.AbstractRssFeedView;
 
 import com.rometools.rome.feed.rss.Channel;
 import com.rometools.rome.feed.rss.Item;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * View for a RSS feed.

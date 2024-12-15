@@ -55,10 +55,17 @@
             <artifactId>rest-assured</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.rometools</groupId>
+            <artifactId>rome</artifactId>
+            <version>${rome.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <start-class>com.baeldung.charencoding.CharacterEncodingDemo</start-class>
+        <!-- ROME for RSS -->
+        <rome.version>1.10.0</rome.version>
     </properties>
 
 </project>
