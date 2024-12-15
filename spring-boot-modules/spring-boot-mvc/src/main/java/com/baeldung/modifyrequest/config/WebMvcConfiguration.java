@@ -1,13 +1,13 @@
 package com.baeldung.modifyrequest.config;
 
-import com.baeldung.modifyrequest.interceptor.EscapeHtmlRequestInterceptor;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import com.baeldung.modifyrequest.interceptor.EscapeHtmlRequestInterceptor;
 
 @Configuration
 @Profile("interceptorExample")

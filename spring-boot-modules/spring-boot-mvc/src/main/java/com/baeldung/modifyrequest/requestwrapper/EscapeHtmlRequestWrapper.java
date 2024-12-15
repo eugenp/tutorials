@@ -1,13 +1,19 @@
 package com.baeldung.modifyrequest.requestwrapper;
 
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.Collections;
+import java.util.Enumeration;
+
+import org.springframework.http.HttpHeaders;
+
 import jakarta.servlet.ReadListener;
 import jakarta.servlet.ServletInputStream;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletRequestWrapper;
-import java.io.*;
-import java.util.Collections;
-import java.util.Enumeration;
-import org.springframework.http.HttpHeaders;
 
 public class EscapeHtmlRequestWrapper extends HttpServletRequestWrapper {
     private String body = null;

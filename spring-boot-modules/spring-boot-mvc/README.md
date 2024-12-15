@@ -11,4 +11,5 @@ This module contains articles about Spring Web MVC in Spring Boot projects.
 - [Download an Image or a File with Spring MVC](https://www.baeldung.com/spring-controller-return-image-file)
 - [Spring Boot Consuming and Producing JSON](https://www.baeldung.com/spring-boot-json)
 - [Serve Static Resources with Spring](https://www.baeldung.com/spring-mvc-static-resources)
+- [Modify Request Body Before Reaching Controller in Spring Boot](https://www.baeldung.com/spring-boot-change-request-body-before-controller)
 - More articles: [[next -->]](../spring-boot-mvc-2)
