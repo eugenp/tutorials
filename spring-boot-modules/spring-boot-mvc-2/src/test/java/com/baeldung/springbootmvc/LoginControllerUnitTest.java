@@ -12,7 +12,9 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import com.baeldung.springbootmvc.config.CustomMessageSourceConfiguration;
+import com.baeldung.springbootmvc.customvalidation.LoginController;
+import com.baeldung.springbootmvc.customvalidation.SpringBootMvcApplication;
+import com.baeldung.springbootmvc.customvalidation.config.CustomMessageSourceConfiguration;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(value = LoginController.class)

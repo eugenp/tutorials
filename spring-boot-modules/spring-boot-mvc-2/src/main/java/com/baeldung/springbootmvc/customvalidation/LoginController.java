@@ -1,11 +1,12 @@
-package com.baeldung.springbootmvc;
+package com.baeldung.springbootmvc.customvalidation;
 
-import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.baeldung.springbootmvc.model.LoginForm;
+import com.baeldung.springbootmvc.customvalidation.model.LoginForm;
+
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/")

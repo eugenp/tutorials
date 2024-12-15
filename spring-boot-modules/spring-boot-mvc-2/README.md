@@ -10,4 +10,5 @@ This module contains articles about Spring Web MVC in Spring Boot projects.
 - [Add Header to Every Request in Postman](https://www.baeldung.com/postman-add-headers-pre-request)
 - [Uploading a File and JSON Data in Postman](https://www.baeldung.com/postman-upload-file-json)
 - [A Controller, Service and DAO Example with Spring Boot and JSF](https://www.baeldung.com/jsf-spring-boot-controller-service-dao)
-- More articles: [[prev -->]](/spring-boot-modules/spring-boot-mvc)
+- [Custom Validation MessageSource in Spring Boot](https://www.baeldung.com/spring-custom-validation-message-source)
+- More articles: [[<-- Prev]](../spring-boot-mvc)[[Next -->]](../spring-boot-mvc-3)

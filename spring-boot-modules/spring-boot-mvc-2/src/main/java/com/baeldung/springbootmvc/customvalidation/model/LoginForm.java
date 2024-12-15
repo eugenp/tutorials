@@ -1,4 +1,4 @@
-package com.baeldung.springbootmvc.model;
+package com.baeldung.springbootmvc.customvalidation.model;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
