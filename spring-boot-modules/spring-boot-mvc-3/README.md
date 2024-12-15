@@ -13,4 +13,5 @@ This module contains articles about Spring Web MVC in Spring Boot projects.
 - [ETags for REST with Spring](https://www.baeldung.com/etags-for-rest-with-spring)
 - [Display RSS Feed with Spring MVC](https://www.baeldung.com/spring-mvc-rss-feed)
 - [Localized Validation Messages in REST](https://www.baeldung.com/rest-localized-validation-messages)
+- [The @ServletComponentScan Annotation in Spring Boot](https://www.baeldung.com/spring-servletcomponentscan)
 - More articles: [[<-- Prev]](/spring-boot-modules/spring-boot-mvc-2)[[Next -->]](/spring-boot-modules/spring-boot-mvc-4)
