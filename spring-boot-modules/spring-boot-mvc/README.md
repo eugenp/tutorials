@@ -5,7 +5,6 @@ This module contains articles about Spring Web MVC in Spring Boot projects.
 ### Relevant Articles:
 
 - [Custom Validation MessageSource in Spring Boot](https://www.baeldung.com/spring-custom-validation-message-source)
-- [A Controller, Service and DAO Example with Spring Boot and JSF](https://www.baeldung.com/jsf-spring-boot-controller-service-dao)
 - [Using Spring ResponseEntity to Manipulate the HTTP Response](https://www.baeldung.com/spring-response-entity)
 - [Guide to Internationalization in Spring Boot](https://www.baeldung.com/spring-boot-internationalization)
-- More articles: [[next -->]](/spring-boot-modules/spring-boot-mvc-2)
+- More articles: [[next -->]](../spring-boot-mvc-2)

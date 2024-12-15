@@ -1,6 +1,5 @@
 package com.baeldung.springbootmvc.jsfapplication;
 
-import jakarta.faces.webapp.FacesServlet;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
@@ -11,6 +10,8 @@ import org.springframework.context.annotation.ComponentScan;
 import com.baeldung.springbootmvc.jsfapplication.controller.JsfController;
 import com.baeldung.springbootmvc.jsfapplication.model.TodoDao;
 import com.baeldung.springbootmvc.jsfapplication.service.TodoService;
+
+import jakarta.faces.webapp.FacesServlet;
 
 @SpringBootApplication
 @ComponentScan(basePackageClasses = { JsfController.class, TodoDao.class, TodoService.class })

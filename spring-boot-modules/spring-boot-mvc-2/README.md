@@ -11,4 +11,5 @@ This module contains articles about Spring Web MVC in Spring Boot projects.
 - [Serve Static Resources with Spring](https://www.baeldung.com/spring-mvc-static-resources)
 - [Add Header to Every Request in Postman](https://www.baeldung.com/postman-add-headers-pre-request)
 - [Uploading a File and JSON Data in Postman](https://www.baeldung.com/postman-upload-file-json)
+- [A Controller, Service and DAO Example with Spring Boot and JSF](https://www.baeldung.com/jsf-spring-boot-controller-service-dao)
 - More articles: [[prev -->]](/spring-boot-modules/spring-boot-mvc)
