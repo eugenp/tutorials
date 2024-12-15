@@ -19,11 +19,6 @@
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
         </dependency>
-        <dependency>
-            <groupId>io.reactivex.rxjava3</groupId>
-            <artifactId>rxjava</artifactId>
-            <version>${rxjava.version}</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -35,9 +30,5 @@
             </resource>
         </resources>
     </build>
-
-    <properties>
-        <rxjava.version>3.1.6</rxjava.version>
-    </properties>
 
 </project>

@@ -2,8 +2,6 @@ package com.baeldung.concurrent.futurevscompletablefuturevsrxjava;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -12,9 +10,7 @@ import java.util.concurrent.Future;
 
 import org.junit.Test;
 
-import io.reactivex.rxjava3.annotations.NonNull;
 import io.reactivex.rxjava3.core.Observable;
-import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 import io.reactivex.rxjava3.subjects.PublishSubject;
 

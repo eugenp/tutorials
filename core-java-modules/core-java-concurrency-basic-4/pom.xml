@@ -20,6 +20,11 @@
             <version>${awaitility.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>io.reactivex.rxjava3</groupId>
+            <artifactId>rxjava</artifactId>
+            <version>${rxjava.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -34,5 +39,6 @@
 
     <properties>
         <awaitility.version>1.7.0</awaitility.version>
+        <rxjava.version>3.1.6</rxjava.version>
     </properties>
 </project>
