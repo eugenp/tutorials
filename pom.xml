@@ -419,6 +419,8 @@
                 <module>core-java-modules/core-java-concurrency-advanced-5</module>
                 <module>spring-boot-modules/spring-boot-react</module>
                 <module>testing-modules/jmeter</module>
+                <module>core-java-modules/core-java-networking-5</module>
+                <module>quarkus-modules/quarkus-hibernate-reactive</module>
             </modules>
 
             <properties>
@@ -531,6 +533,8 @@
                 <module>core-java-modules/core-java-concurrency-advanced-5</module>
                 <module>spring-boot-modules/spring-boot-react</module>
                 <module>testing-modules/jmeter</module>
+                <module>core-java-modules/core-java-networking-5</module>
+                <module>quarkus-modules/quarkus-hibernate-reactive</module>
             </modules>
 
             <properties>
@@ -574,7 +578,6 @@
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
                 <module>parent-boot-3</module>
-                <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
                 <module>apache-kafka</module>
@@ -644,7 +647,6 @@
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
                 <module>parent-boot-3</module>
-                <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
                 <module>akka-modules</module>
@@ -655,8 +657,9 @@
                 <module>apache-httpclient</module>
                 <module>apache-kafka-2</module>
                 <module>apache-kafka-3</module>
-                <module>apache-libraries-2</module>
                 <module>apache-libraries</module>
+                <module>apache-libraries-2</module>
+                <module>apache-libraries-3</module>
                 <module>apache-olingo</module><!-- apache-olingo wasn't updated to boot-3 because a workaround for jakarta namespace wasn't found JAVA-27818 -->
                 <module>apache-poi-2</module>
                 <module>apache-poi-3</module>
@@ -714,7 +717,7 @@
                 <module>jws</module>
                 <module>ksqldb</module>
                 <module>kubernetes-modules</module>
-                <module>language-interop</module>
+                <!--<module>language-interop</module>-->
                 <module>libraries</module> <!-- very long running -->
                 <module>libraries-2</module>
                 <module>libraries-3</module>
@@ -732,6 +735,7 @@
                 <module>libraries-data-3</module>
                 <module>libraries-data-db</module>
                 <module>libraries-data</module>
+                <module>libraries-data-mariadb4j</module>
                 <module>libraries-files</module>
                 <module>libraries-http</module>
 		        <module>libraries-http-2</module>
@@ -746,6 +750,7 @@
                 <module>libraries-stream</module>
                 <module>libraries-testing-2</module>
                 <module>libraries-transform</module>
+                <module>libraries-security-2</module>
                 <module>lightrun</module>
                 <module>logging-modules</module>
                 <module>lombok-modules</module>
@@ -778,19 +783,21 @@
                 <module>security-modules</module>
                 <module>server-modules</module>
                 <module>spf4j</module>
-                <module>spring-5-webflux-2</module>
-                <module>spring-5-webflux</module>
+                <module>spring-webflux-2</module>
+                <module>spring-webflux</module>
                 <module>spring-5</module>
                 <module>spring-6-rsocket</module>
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
                 <module>spring-ai</module>
+                <module>spring-ai-2</module>
                 <module>spring-aop-2</module>
                 <module>spring-aop</module>
                 <module>spring-batch</module>
                 <module>spring-batch-2</module>
                 <module>spring-boot-modules</module>
                 <module>spring-boot-rest</module>
+                <module>spring-boot-rest-2</module>
                 <module>spring-cloud-modules/spring-cloud-circuit-breaker</module>
                 <module>spring-cloud-modules/spring-cloud-contract</module>
                 <module>spring-cloud-modules/spring-cloud-eureka</module>
@@ -966,7 +973,6 @@
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
                 <module>parent-boot-3</module>
-                <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
                 <module>apache-kafka</module>
@@ -1030,7 +1036,6 @@
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
                 <module>parent-boot-3</module>
-                <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
                 <module>akka-modules</module>
@@ -1041,8 +1046,9 @@
                 <module>apache-httpclient</module>
                 <module>apache-kafka-2</module>
                 <module>apache-kafka-3</module>
-                <module>apache-libraries-2</module>
                 <module>apache-libraries</module>
+                <module>apache-libraries-2</module>
+                <module>apache-libraries-3</module>
                 <module>apache-olingo</module><!-- apache-olingo wasn't updated to boot-3 because a workaround for jakarta namespace wasn't found JAVA-27818 -->
                 <module>apache-poi-2</module>
                 <module>apache-poi-3</module>
@@ -1100,7 +1106,7 @@
                 <module>jws</module>
                 <module>ksqldb</module>
                 <module>kubernetes-modules</module>
-                <module>language-interop</module>
+               <!-- <module>language-interop</module>-->
                 <module>libraries</module> <!-- very long running -->
                 <module>libraries-2</module>
                 <module>libraries-3</module>
@@ -1127,6 +1133,7 @@
                 <module>libraries-primitive</module>
                 <module>libraries-reporting</module>
                 <module>libraries-rpc</module>
+                <module>libraries-security-2</module>
                 <module>libraries-server-2</module>
                 <module>libraries-server</module>
                 <module>libraries-stream</module>
@@ -1164,13 +1171,14 @@
                 <module>security-modules</module>
                 <module>server-modules</module>
                 <module>spf4j</module>
-                <module>spring-5-webflux-2</module>
-                <module>spring-5-webflux</module>
+                <module>spring-webflux-2</module>
+                <module>spring-webflux</module>
                 <module>spring-5</module>
                 <module>spring-6-rsocket</module>
                 <module>spring-activiti</module>
                 <module>spring-actuator</module>
                 <module>spring-ai</module>
+                <module>spring-ai-2</module>
                 <module>spring-aop-2</module>
                 <module>spring-aop</module>
                 <module>spring-batch</module>
@@ -1311,7 +1319,6 @@
             <modules>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
-                <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-spring-6</module>
             </modules>

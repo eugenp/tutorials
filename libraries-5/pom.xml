@@ -128,6 +128,11 @@
             <version>${yavi.version}</version>
         </dependency>
         <dependency>
+            <groupId>com.googlecode.lanterna</groupId>
+            <artifactId>lanterna</artifactId>
+            <version>${lanterna.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <version>${spring-boot.version}</version>
@@ -139,6 +144,7 @@
         <jetcache.version>2.7.6</jetcache.version>
         <spring-boot.version>3.3.0</spring-boot.version>
         <spring.version>6.1.8</spring.version>
+        <lanterna.version>3.1.2</lanterna.version>
         <manifold.version>2024.1.20</manifold.version>
         <armeria.version>1.29.2</armeria.version>
         <yauaa.version>7.28.1</yauaa.version>

@@ -23,7 +23,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Testcontainers
 @SpringBootTest(classes = Application.class)
 @ActiveProfiles({"tc", "tc-auto"})
-public class UserRepositoryTCAutoLiveTest extends UserRepositoryCommon {
+public class UserRepositoryTCAutoLiveTest extends UserRepositoryCommonIntegrationTest {
 
     @Container
     public static PostgreSQLContainer<BaeldungPostgresqlContainer> postgreSQLContainer = BaeldungPostgresqlContainer.getInstance();

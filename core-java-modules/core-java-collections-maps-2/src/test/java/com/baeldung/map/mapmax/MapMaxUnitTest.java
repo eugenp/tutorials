@@ -54,5 +54,9 @@ public class MapMaxUnitTest {
         assertEquals(Integer.valueOf(38), mapMax.maxUsingStreamAndMethodReference(map));
     }
 
+    @Test
+    public void givenMap_whenUsingStreamAndLambda_thenReturnKeyOfMaxValue() {
+        assertEquals(Integer.valueOf(27), mapMax.keyOfMaxUsingStream(map));
+    }
 
 }

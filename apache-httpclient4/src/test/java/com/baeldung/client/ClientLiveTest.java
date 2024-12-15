@@ -36,7 +36,7 @@ import com.baeldung.GetRequestMockServer;
 class ClientLiveTest extends GetRequestMockServer {
 
 
-    /*@Test
+    @Test
     void givenAcceptingAllCertificates_whenHttpsUrlIsConsumed_thenOk_2() throws GeneralSecurityException {
 
         final TrustStrategy acceptingTrustStrategy = (cert, authType) -> true;
@@ -56,7 +56,7 @@ class ClientLiveTest extends GetRequestMockServer {
         final HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory(httpClient);
         final ResponseEntity<String> response = new RestTemplate(requestFactory).exchange(simplePathUrl, HttpMethod.GET, null, String.class);
         assertThat(response.getStatusCode().value(), equalTo(200));
-    }*/
+    }
 
     @Test
     void givenAcceptingAllCertificates_whenHttpsUrlIsConsumed_thenCorrect() throws IOException {
@@ -72,7 +72,7 @@ class ClientLiveTest extends GetRequestMockServer {
         }
     }
 
-    /*@Test
+    @Test
     void givenAcceptingAllCertificates_whenUsingRestTemplate_thenCorrect() {
         final CloseableHttpClient httpClient = HttpClients.custom()
             .setSSLHostnameVerifier(new NoopHostnameVerifier())
@@ -82,7 +82,7 @@ class ClientLiveTest extends GetRequestMockServer {
 
         final ResponseEntity<String> response = new RestTemplate(requestFactory).exchange(simplePathUrl, HttpMethod.GET, null, String.class);
         assertThat(response.getStatusCode().value(), equalTo(200));
-    }*/
+    }
 
     @Test
     void whenHttpsUrlIsConsumed_thenException() {

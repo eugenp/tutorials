@@ -114,7 +114,8 @@
 
     <properties>
         <spring-boot.version>3.3.2</spring-boot.version>
-        <spring-ai.version>1.0.0-M1</spring-ai.version>
+        <spring-ai.version>1.0.0-M3</spring-ai.version>
+        <junit-jupiter.version>5.9.0</junit-jupiter.version>
     </properties>
 
 </project>

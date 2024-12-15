@@ -3,7 +3,7 @@
 If you are getting an error while cloning the repository, try running:
 git config --global http.postBuffer 5000000
 
-This will increase the size of the buffer from the default 1MiB to 5MiB.
+This will increase the buffer size from the default 1MiB to 5MiB.
 
 To revert this value to the default, use:
 git config --global http.postBuffer 1000000
@@ -27,18 +27,18 @@ The Courses
 Java and Spring Tutorials
 ================
 
-This project is **a collection of small and focused tutorials** - each covering a single and well defined area of development in the Java ecosystem. 
-A strong focus of these is, of course, the Spring Framework - Spring, Spring Boot and Spring Security. 
-In addition to Spring, the modules here cover a number of aspects of Java. 
+This project is **a collection of small and focused tutorials** - each covering a single and well-defined area of development in the Java ecosystem. 
+A strong focus of these is the Spring Framework - Spring, Spring Boot and Spring Security. 
+In addition to Spring, the modules here cover several aspects of Java. 
 
-Profile based segregation
+Profile-based segregation
 ====================
 
-We are using maven build profiles to segregate the huge list of individual projects we have in our repository.
+We use Maven build profiles to segregate the huge list of individual projects in our repository.
 
 The projects are broadly divided into 4 lists: default, default-jdk17, default-jdk8 and default-heavy. 
 
-Next, they are segregated further on the basis of the tests that we want to execute.
+Next, they are segregated further based on the tests that we want to execute.
 
 We also have a parents profile to build only parent modules.
 
@@ -48,8 +48,8 @@ Therefore, we have a total of 9 profiles:
 |--------------------|-----------------------------|------------------------------|
 | default            | JDK21 projects              | *UnitTest                    |
 | integration        | JDK21 projects              | *IntegrationTest             |
-| default-jdk17      | JDK17 and above projects    | *UnitTest                    |
-| integration-jdk17  | JDK17 and above projects    | *IntegrationTest             |
+| default-jdk17      | JDK17 projects              | *UnitTest                    |
+| integration-jdk17  | JDK17 projects              | *IntegrationTest             |
 | profile-jdk22      | JDK22 projects              | *UnitTest & *IntegrationTest |
 | profile-jdk23      | JDK23 projects              | *UnitTest & *IntegrationTest |
 | default-heavy      | Heavy/long running projects | *UnitTest                    |

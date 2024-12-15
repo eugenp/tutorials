@@ -1,6 +1,6 @@
 package com.baeldung.collections.stackreversal;
 
-import com.baeldung.collections.sorting.Employee;
+import com.baeldung.collections.stackreversal.Employee;
 
 import java.util.LinkedList;
 import java.util.Queue;

@@ -26,14 +26,9 @@
             <version>${commons-csv.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.tika</groupId>
-            <artifactId>tika-core</artifactId>
-            <version>${tika-core.version}</version>
-        </dependency>
-        <dependency>
             <groupId>de.vandermeer</groupId>
             <artifactId>asciitable</artifactId>
-            <version>0.3.2</version>
+            <version>${asciitable.version}</version>
         </dependency>
     </dependencies>
 
@@ -44,8 +39,6 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
                     <annotationProcessorPaths>
                         <path>
                             <groupId>org.openjdk.jmh</groupId>
@@ -59,8 +52,8 @@
     </build>
 
     <properties>
-        <tika-core.version>2.9.2</tika-core.version>
         <commons-csv.version>1.9.0</commons-csv.version>
+        <asciitable.version>0.3.2</asciitable.version>
     </properties>
 
 </project>

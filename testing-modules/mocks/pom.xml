@@ -19,27 +19,16 @@
             <version>${javafaker.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.jmockit</groupId>
-            <artifactId>jmockit</artifactId>
-            <version>${jmockit.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jukito</groupId>
-            <artifactId>jukito</artifactId>
-            <version>${jukito.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.easymock</groupId>
             <artifactId>easymock</artifactId>
             <version>${easymock.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.google.jimfs</groupId>
-            <artifactId>jimfs</artifactId>
-            <version>${jimf.version}</version>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring-test.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -52,7 +41,6 @@
                 <configuration>
                     <argLine>
                         --add-opens java.base/java.lang=ALL-UNNAMED
-                        -javaagent:${settings.localRepository}/org/jmockit/jmockit/${jmockit.version}/jmockit-${jmockit.version}.jar
                         -Djdk.attach.allowAttachSelf
                     </argLine>
                     <disableXmlReport>true</disableXmlReport>
@@ -66,10 +54,8 @@
 
     <properties>
         <javafaker.version>0.15</javafaker.version>
-        <jukito.version>1.5</jukito.version>
         <easymock.version>3.5.1</easymock.version>
-        <jmockit.version>1.49</jmockit.version>
-        <jimf.version>1.1</jimf.version>
+        <spring-test.version>5.3.25</spring-test.version>
     </properties>
 
 </project>

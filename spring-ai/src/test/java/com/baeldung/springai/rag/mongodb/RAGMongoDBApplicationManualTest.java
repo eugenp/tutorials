@@ -1,10 +1,14 @@
 package com.baeldung.springai.rag.mongodb;
 
+import com.baeldung.springai.rag.mongodb.config.VectorStoreConfig;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.ai.autoconfigure.mistralai.MistralAiAutoConfiguration;
+import org.springframework.ai.autoconfigure.vectorstore.redis.RedisVectorStoreAutoConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -21,7 +25,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * */
 @AutoConfigureMockMvc
 @ExtendWith(SpringExtension.class)
-@SpringBootTest
+@EnableAutoConfiguration(exclude = {RedisVectorStoreAutoConfiguration.class, MistralAiAutoConfiguration.class})
+@SpringBootTest(classes = VectorStoreConfig.class)
 class RAGMongoDBApplicationManualTest {
     private static Logger logger = LoggerFactory.getLogger(RAGMongoDBApplicationManualTest.class);
 

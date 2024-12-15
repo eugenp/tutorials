@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns="http://maven.apache.org/POM/4.0.0"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>persistence-modules</artifactId>
     <name>persistence-modules</name>
@@ -20,9 +20,11 @@
         <module>apache-derby</module>
         <module>atomikos</module>
         <module>blaze-persistence</module>
+        <module>clickhouse</module>
         <module>core-java-persistence</module>
         <module>core-java-persistence-2</module>
         <module>core-java-persistence-3</module>
+        <module>core-java-persistence-4</module>
         <module>couchbase</module>
         <module>duckdb</module>
         <module>elasticsearch</module>
@@ -38,6 +40,7 @@
         <module>hibernate-libraries</module>
         <module>hibernate-jpa</module>
         <module>hibernate-jpa-2</module>
+        <module>hibernate-jpa-3</module>
         <module>hibernate-queries</module>
         <module>hibernate-enterprise</module>
         <module>influxdb</module>
@@ -72,10 +75,10 @@
         <module>spring-boot-persistence</module>
         <module>spring-boot-persistence-h2</module>
         <module>spring-boot-persistence-h2-2</module>
-        <module>spring-boot-persistence-mongodb</module>
-        <module>spring-boot-persistence-mongodb-2</module>
+        <!-- <module>spring-boot-persistence-mongodb</module> --> <!-- JAVA-42144 -->
+        <!-- <module>spring-boot-persistence-mongodb-2</module> --> <!-- JAVA-42371 -->
         <module>spring-boot-persistence-mongodb-3</module>
-        <module>spring-boot-persistence-mongodb-4</module>
+        <!-- <module>spring-boot-persistence-mongodb-4</module> --> <!-- JAVA-42372 -->
         <module>spring-data-arangodb</module>
         <!--<module>spring-data-cassandra</module>-->   <!-- failing after upgrading to jdk17. JDK 17 compatibility in progress CASSANDRA-16895 -->
         <module>spring-data-cassandra-test</module>
@@ -83,7 +86,7 @@
         <module>spring-data-couchbase-2</module>
         <module>spring-data-dynamodb</module>
         <module>spring-data-eclipselink</module>
-        <module>spring-data-elasticsearch</module>
+        <!-- <module>spring-data-elasticsearch</module> --> <!-- JAVA-42359 -->
         <!-- <module>spring-data-gemfire</module> Won't Fix in JAVA-14499, The dependencies used are -->
         <!-- no longer available or maintained. Ref: https://spring.io/projects/spring-data-gemfire#overview -->
         <module>spring-data-geode</module>
@@ -105,7 +108,7 @@
         <module>spring-data-jpa-simple</module>
         <module>spring-data-keyvalue</module>
         <module>spring-data-mongodb</module>
-        <module>spring-data-mongodb-2</module>
+        <!-- <module>spring-data-mongodb-2</module> --> <!-- JAVA-42145 -->
         <module>spring-data-mongodb-reactive</module>
         <module>spring-data-redis</module>
         <module>spring-data-rest-2</module>
@@ -119,7 +122,7 @@
         <module>spring-jpa-2</module>
         <module>spring-jpa-3</module>
         <module>spring-jdbc</module>
-	      <module>spring-jdbc-2</module>
+        <module>spring-jdbc-2</module>
         <!--<module>spring-jooq</module>--><!--disabling the jooq modules, as the default build profile is failing due to bad mv files. Please refer: JAVA-31341-->
         <module>spring-mybatis</module>
         <!-- <module>spring-persistence-simple</module> --> <!-- failing after upgrade to jdk21 -->
@@ -138,6 +141,7 @@
         <module>hibernate-annotations-2</module>
         <module>hibernate-reactive</module>
         <module>my-sql</module>
+        <module>spring-data-envers</module>
     </modules>
 
     <properties>
