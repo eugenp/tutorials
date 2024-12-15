@@ -8,4 +8,5 @@ This module contains articles about basic Java concurrency
 - [Runnable vs. Callable in Java](https://www.baeldung.com/java-runnable-callable)
 - [What Is Thread-Safety and How to Achieve It?](https://www.baeldung.com/java-thread-safety)
 - [CompletableFuture allOf().join() vs. CompletableFuture.join()](https://www.baeldung.com/java-completablefuture-allof-join)
+- [CompletableFuture and ThreadPool in Java](https://www.baeldung.com/java-completablefuture-threadpool)
 - [[Next -->]](/core-java-modules/core-java-concurrency-basic-2)
