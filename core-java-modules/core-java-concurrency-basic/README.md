@@ -10,4 +10,5 @@ This module contains articles about basic Java concurrency
 - [CompletableFuture allOf().join() vs. CompletableFuture.join()](https://www.baeldung.com/java-completablefuture-allof-join)
 - [CompletableFuture and ThreadPool in Java](https://www.baeldung.com/java-completablefuture-threadpool)
 - [How to Handle InterruptedException in Java](https://www.baeldung.com/java-interrupted-exception)
+- [How to Delay Code Execution in Java](https://www.baeldung.com/java-delay-code-execution)
 - [[Next -->]](/core-java-modules/core-java-concurrency-basic-2)
