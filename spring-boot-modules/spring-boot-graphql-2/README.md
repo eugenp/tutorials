@@ -7,6 +7,7 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 
 ### Relevant Articles:
 - [GraphQL vs REST](https://www.baeldung.com/graphql-vs-rest)
+- [Implementing GraphQL Mutation Without Returning Data](https://www.baeldung.com/java-graphql-mutation-no-return-data)
 - [Upload Files With GraphQL in Java](https://www.baeldung.com/java-graphql-upload-file)
 
 ### GraphQL sample queries
