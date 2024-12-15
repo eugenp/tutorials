@@ -9,4 +9,5 @@ This module contains articles about Spring Web MVC in Spring Boot projects.
 - [Guide to Internationalization in Spring Boot](https://www.baeldung.com/spring-boot-internationalization)
 - [Differences in @Valid and @Validated Annotations in Spring](https://www.baeldung.com/spring-valid-vs-validated)
 - [Download an Image or a File with Spring MVC](https://www.baeldung.com/spring-controller-return-image-file)
+- [Spring Boot Consuming and Producing JSON](https://www.baeldung.com/spring-boot-json)
 - More articles: [[next -->]](../spring-boot-mvc-2)

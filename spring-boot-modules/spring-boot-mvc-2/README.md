@@ -7,7 +7,6 @@ This module contains articles about Spring Web MVC in Spring Boot projects.
 - [Functional Controllers in Spring MVC](https://www.baeldung.com/spring-mvc-functional-controllers)
 - [Testing REST with multiple MIME types](https://www.baeldung.com/testing-rest-api-with-multiple-media-types)
 - [Testing Web APIs with Postman Collections](https://www.baeldung.com/postman-testing-collections)
-- [Spring Boot Consuming and Producing JSON](https://www.baeldung.com/spring-boot-json)
 - [Serve Static Resources with Spring](https://www.baeldung.com/spring-mvc-static-resources)
 - [Add Header to Every Request in Postman](https://www.baeldung.com/postman-add-headers-pre-request)
 - [Uploading a File and JSON Data in Postman](https://www.baeldung.com/postman-upload-file-json)
