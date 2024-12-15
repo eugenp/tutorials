@@ -20,15 +20,9 @@
             <version>${commons-lang3.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.jayway.awaitility</groupId>
-            <artifactId>awaitility</artifactId>
-            <version>${avaitility.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>io.reactivex.rxjava3</groupId>
             <artifactId>rxjava</artifactId>
-            <version>3.1.6</version>
+            <version>${rxjava.version}</version>
         </dependency>
     </dependencies>
 
@@ -43,7 +37,7 @@
     </build>
 
     <properties>
-        <avaitility.version>1.7.0</avaitility.version>
+        <rxjava.version>3.1.6</rxjava.version>
     </properties>
 
 </project>
