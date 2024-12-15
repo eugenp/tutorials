@@ -1,7 +1,5 @@
 package com.baeldung.springvalidation.controller;
 
-import jakarta.validation.Valid;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -14,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.baeldung.springvalidation.domain.UserAccount;
 import com.baeldung.springvalidation.interfaces.BasicInfo;
+
+import jakarta.validation.Valid;
 
 @Controller
 public class UserAccountController {
