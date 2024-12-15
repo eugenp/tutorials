@@ -3,9 +3,9 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>selenium-2</artifactId>
+    <artifactId>selenium-3</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>selenium-2</name>
+    <name>selenium-3</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -24,6 +24,11 @@
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>${webdrivermanager.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -41,7 +46,9 @@
 
     <properties>
         <testng.version>7.10.2</testng.version>
-        <selenium-java.version>4.26.0</selenium-java.version>
+        <selenium-java.version>4.27.0</selenium-java.version>
+        <webdrivermanager.version>5.9.2</webdrivermanager.version>
+
     </properties>
 
 </project>

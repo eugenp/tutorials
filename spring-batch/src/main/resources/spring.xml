@@ -15,12 +15,6 @@
         <property name="password" value="" />
     </bean>
 
-    <!-- create job-meta tables automatically -->
-    <jdbc:initialize-database data-source="dataSource">
-        <jdbc:script
-            location="org/springframework/batch/core/schema-drop-h2.sql" />
-        <jdbc:script location="org/springframework/batch/core/schema-h2.sql" />
-    </jdbc:initialize-database>
 
     <!-- stored job-meta in memory -->
     <!-- <bean id="jobRepository" class="org.springframework.batch.core.repository.support.MapJobRepositoryFactoryBean"> 

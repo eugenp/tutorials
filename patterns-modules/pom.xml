@@ -14,7 +14,7 @@
     </parent>
 
     <modules>
-        <module>axon</module>
+        <!-- <module>axon</module> --> <!-- JAVA-42358 -->
         <module>clean-architecture</module>
         <module>coupling</module>
         <module>cqrs-es</module>
