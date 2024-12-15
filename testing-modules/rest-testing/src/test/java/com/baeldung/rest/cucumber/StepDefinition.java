@@ -38,9 +38,9 @@ public class StepDefinition {
 
         configureFor("localhost", wireMockServer.port());
         stubFor(post(urlEqualTo(CREATE_PATH))
-                .withHeader("content-type", equalTo(APPLICATION_JSON))
-                .withRequestBody(containing("testing-framework"))
-                .willReturn(aResponse().withStatus(200)));
+            .withHeader("content-type", equalTo(APPLICATION_JSON))
+            .withRequestBody(containing("testing-framework"))
+            .willReturn(aResponse().withStatus(200)));
 
         HttpPost request = new HttpPost("http://localhost:" + wireMockServer.port() + "/create");
         StringEntity entity = new StringEntity(jsonString);
@@ -50,7 +50,7 @@ public class StepDefinition {
 
         assertEquals(200, response.getStatusLine().getStatusCode());
         verify(postRequestedFor(urlEqualTo(CREATE_PATH))
-                .withHeader("content-type", equalTo(APPLICATION_JSON)));
+            .withHeader("content-type", equalTo(APPLICATION_JSON)));
 
         wireMockServer.stop();
     }
@@ -62,7 +62,7 @@ public class StepDefinition {
 
         configureFor("localhost", wireMockServer.port());
         stubFor(get(urlEqualTo("/projects/cucumber")).withHeader("accept", equalTo(APPLICATION_JSON))
-                .willReturn(aResponse().withBody(jsonString)));
+            .willReturn(aResponse().withBody(jsonString)));
 
         HttpGet request = new HttpGet("http://localhost:" + wireMockServer.port() + "/projects/" + projectName.toLowerCase());
         request.addHeader("accept", APPLICATION_JSON);

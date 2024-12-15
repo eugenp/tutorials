@@ -1,6 +1,8 @@
 package com.baeldung.rest.wiremock.scenario;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
+import com.github.tomakehurst.wiremock.client.WireMock;
+import com.github.tomakehurst.wiremock.core.WireMockConfiguration;
 import com.github.tomakehurst.wiremock.stubbing.Scenario;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -28,19 +30,20 @@ public class WireMockScenarioExampleIntegrationTest {
     private static final String TEXT_PLAIN = "text/plain";
 
     static int port = 9999;
-
-
     private WireMockServer wireMockServer;
 
     @BeforeEach
     void setup() {
-        wireMockServer = new WireMockServer(port); // Port defaults to 8080 if not specified
+        wireMockServer = new WireMockServer(WireMockConfiguration.options().port(port));
         wireMockServer.start();
+        WireMock.configureFor("localhost", port);
     }
 
     @AfterEach
     void teardown() {
-        wireMockServer.stop();
+        if (wireMockServer != null) {
+            wireMockServer.stop();
+        }
     }
 
     @Test
@@ -57,13 +60,13 @@ public class WireMockScenarioExampleIntegrationTest {
 
     private void createWireMockStub(String currentState, String nextState, String responseBody) {
         stubFor(get(urlEqualTo("/java-tip"))
-                .inScenario("java tips")
-                .whenScenarioStateIs(currentState)
-                .willReturn(aResponse()
-                        .withStatus(200)
-                        .withHeader("Content-Type", TEXT_PLAIN)
-                        .withBody(responseBody))
-                .willSetStateTo(nextState)
+            .inScenario("java tips")
+            .whenScenarioStateIs(currentState)
+            .willReturn(aResponse()
+                .withStatus(200)
+                .withHeader("Content-Type", TEXT_PLAIN)
+                .withBody(responseBody))
+            .willSetStateTo(nextState)
         );
     }
 

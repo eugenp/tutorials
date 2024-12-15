@@ -1,6 +1,8 @@
 package com.baeldung.rest.wiremock.introduction;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
+import com.github.tomakehurst.wiremock.client.WireMock;
+import com.github.tomakehurst.wiremock.core.WireMockConfiguration;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
@@ -42,23 +44,26 @@ public class JUnitManagedIntegrationTest {
 
     @BeforeEach
     void setup() {
-        wireMockServer = new WireMockServer(port); // Port defaults to 8080 if not specified
+        wireMockServer = new WireMockServer(WireMockConfiguration.options().port(port));
         wireMockServer.start();
+        WireMock.configureFor("localhost", port);
     }
 
     @AfterEach
     void teardown() {
-        wireMockServer.stop();
+        if (wireMockServer != null) {
+            wireMockServer.stop();
+        }
     }
 
     @Test
     public void givenJUnitManagedServer_whenMatchingURL_thenCorrect() throws IOException {
 
         stubFor(get(urlPathMatching("/baeldung/.*"))
-                .willReturn(aResponse()
-                        .withStatus(200)
-                        .withHeader("Content-Type", APPLICATION_JSON)
-                        .withBody("\"testing-library\": \"WireMock\"")));
+            .willReturn(aResponse()
+                .withStatus(200)
+                .withHeader("Content-Type", APPLICATION_JSON)
+                .withBody("\"testing-library\": \"WireMock\"")));
 
         CloseableHttpClient httpClient = HttpClients.createDefault();
         HttpGet request = new HttpGet(String.format("http://localhost:%s/baeldung/wiremock", port));
@@ -74,11 +79,11 @@ public class JUnitManagedIntegrationTest {
     @Test
     public void givenJUnitManagedServer_whenMatchingHeaders_thenCorrect() throws IOException {
         stubFor(get(urlPathEqualTo(BAELDUNG_WIREMOCK_PATH))
-                .withHeader("Accept", matching("text/.*"))
-                .willReturn(aResponse()
-                        .withStatus(503)
-                        .withHeader("Content-Type", "text/html")
-                        .withBody("!!! Service Unavailable !!!")));
+            .withHeader("Accept", matching("text/.*"))
+            .willReturn(aResponse()
+                .withStatus(503)
+                .withHeader("Content-Type", "text/html")
+                .withBody("!!! Service Unavailable !!!")));
 
         CloseableHttpClient httpClient = HttpClients.createDefault();
         HttpGet request = new HttpGet(String.format("http://localhost:%s/baeldung/wiremock", port));
@@ -95,11 +100,11 @@ public class JUnitManagedIntegrationTest {
     @Test
     public void givenJUnitManagedServer_whenMatchingBody_thenCorrect() throws IOException {
         stubFor(post(urlEqualTo(BAELDUNG_WIREMOCK_PATH))
-                .withHeader("Content-Type", equalTo(APPLICATION_JSON))
-                .withRequestBody(containing("\"testing-library\": \"WireMock\""))
-                .withRequestBody(containing("\"creator\": \"Tom Akehurst\""))
-                .withRequestBody(containing("\"website\": \"wiremock.org\""))
-                .willReturn(aResponse().withStatus(200)));
+            .withHeader("Content-Type", equalTo(APPLICATION_JSON))
+            .withRequestBody(containing("\"testing-library\": \"WireMock\""))
+            .withRequestBody(containing("\"creator\": \"Tom Akehurst\""))
+            .withRequestBody(containing("\"website\": \"wiremock.org\""))
+            .willReturn(aResponse().withStatus(200)));
 
         InputStream jsonInputStream = this.getClass().getClassLoader().getResourceAsStream("wiremock_intro.json");
         String jsonString = convertInputStreamToString(jsonInputStream);
@@ -112,7 +117,7 @@ public class JUnitManagedIntegrationTest {
         HttpResponse response = httpClient.execute(request);
 
         verify(postRequestedFor(urlEqualTo(BAELDUNG_WIREMOCK_PATH))
-                .withHeader("Content-Type", equalTo(APPLICATION_JSON)));
+            .withHeader("Content-Type", equalTo(APPLICATION_JSON)));
         assertEquals(200, response.getStatusLine().getStatusCode());
     }
 
