@@ -10,4 +10,5 @@ This module contains articles about Spring Web MVC in Spring Boot projects.
 - [Differences in @Valid and @Validated Annotations in Spring](https://www.baeldung.com/spring-valid-vs-validated)
 - [Download an Image or a File with Spring MVC](https://www.baeldung.com/spring-controller-return-image-file)
 - [Spring Boot Consuming and Producing JSON](https://www.baeldung.com/spring-boot-json)
+- [Serve Static Resources with Spring](https://www.baeldung.com/spring-mvc-static-resources)
 - More articles: [[next -->]](../spring-boot-mvc-2)
