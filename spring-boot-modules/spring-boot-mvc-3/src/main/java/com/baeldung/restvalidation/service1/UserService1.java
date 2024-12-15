@@ -1,15 +1,20 @@
 package com.baeldung.restvalidation.service1;
 
-import jakarta.validation.Valid;
-import org.springframework.http.*;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.baeldung.restvalidation.response.InputFieldError;
 import com.baeldung.restvalidation.response.UpdateUserResponse;
+
+import jakarta.validation.Valid;
 
 @RestController
 public class UserService1 {

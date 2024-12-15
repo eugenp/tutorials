@@ -4,9 +4,10 @@ import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import jakarta.validation.MessageInterpolator;
 import org.hibernate.validator.messageinterpolation.AbstractMessageInterpolator;
 import org.hibernate.validator.messageinterpolation.ResourceBundleMessageInterpolator;
+
+import jakarta.validation.MessageInterpolator;
 
 public class RecursiveLocaleContextMessageInterpolator extends AbstractMessageInterpolator {
 
@@ -19,7 +20,7 @@ public class RecursiveLocaleContextMessageInterpolator extends AbstractMessageIn
     }
 
     @Override
-    public String interpolate(MessageInterpolator.Context context, Locale locale, String message) {
+    public String interpolate(Context context, Locale locale, String message) {
         int level = 0;
         while (containsPlaceholder(message) && (level++ < 2)) {
             message = this.interpolator.interpolate(message, context, locale);

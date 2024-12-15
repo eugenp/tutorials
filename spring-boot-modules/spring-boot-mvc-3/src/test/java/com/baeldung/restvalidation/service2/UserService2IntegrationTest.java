@@ -1,4 +1,4 @@
-package com.baeldung.restvalidation.service1;
+package com.baeldung.restvalidation.service2;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -9,7 +9,11 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.http.*;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.baeldung.restvalidation.RestValidationApplication;
@@ -18,7 +22,7 @@ import com.baeldung.restvalidation.response.UpdateUserResponse;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = RestValidationApplication.class)
-class UserService1IntegrationTest {
+class UserService2IntegrationTest {
 
     @Autowired
     private TestRestTemplate restTemplate;
@@ -42,7 +46,7 @@ class UserService1IntegrationTest {
         // Then
         InputFieldError error = responseEntity.getBody().getFieldErrors().get(0);
         assertEquals(HttpStatus.BAD_REQUEST, responseEntity.getStatusCode());
-        assertEquals("The field cannot be empty", error.getMessage());
+        assertEquals("Email cannot be empty", error.getMessage());
     }
 
     @Test
@@ -54,7 +58,7 @@ class UserService1IntegrationTest {
         // Then
         InputFieldError error = responseEntity.getBody().getFieldErrors().get(0);
         assertEquals(HttpStatus.BAD_REQUEST, responseEntity.getStatusCode());
-        assertEquals("本欄不能留空", error.getMessage());
+        assertEquals("電郵不能留空", error.getMessage());
     }
 
     private ResponseEntity<UpdateUserResponse> updateUser(User user, String language) {
@@ -65,7 +69,7 @@ class UserService1IntegrationTest {
         }
 
         return restTemplate.exchange(
-            "/user1",
+            "/user2",
             HttpMethod.PUT,
             new HttpEntity<>(user, headers),
             UpdateUserResponse.class

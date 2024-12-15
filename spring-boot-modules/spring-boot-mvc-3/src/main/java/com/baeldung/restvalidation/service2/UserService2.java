@@ -1,9 +1,8 @@
-package com.baeldung.restvalidation.service3;
+package com.baeldung.restvalidation.service2;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -15,10 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.baeldung.restvalidation.response.InputFieldError;
 import com.baeldung.restvalidation.response.UpdateUserResponse;
 
-@RestController
-public class UserService3 {
+import jakarta.validation.Valid;
 
-    @PutMapping(value = "/user3", produces = MediaType.APPLICATION_JSON_VALUE)
+@RestController
+public class UserService2 {
+
+    @PutMapping(value = "/user2", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<UpdateUserResponse> updateUser(@RequestBody @Valid User user,
                                                          BindingResult bindingResult) {
         if (bindingResult.hasFieldErrors()) {

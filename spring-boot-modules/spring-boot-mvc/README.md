@@ -9,5 +9,4 @@ This module contains articles about Spring Web MVC in Spring Boot projects.
 - [Using Spring ResponseEntity to Manipulate the HTTP Response](https://www.baeldung.com/spring-response-entity)
 - [The @ServletComponentScan Annotation in Spring Boot](https://www.baeldung.com/spring-servletcomponentscan)
 - [Guide to Internationalization in Spring Boot](https://www.baeldung.com/spring-boot-internationalization)
-- [Localized Validation Messages in REST](https://www.baeldung.com/rest-localized-validation-messages)
 - More articles: [[next -->]](/spring-boot-modules/spring-boot-mvc-2)
