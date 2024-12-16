@@ -83,7 +83,7 @@ class StockLiveTest {
     }
 
     @Test
-    void shouldProduceAndConsumerEvents() {
+    void givenTheKafkaProducer_whenSubmittingEvents_thenProcessAllEventUntilItArrivesToConsumers() {
 
         var eventCount = 200;
 
@@ -97,7 +97,7 @@ class StockLiveTest {
     }
 
     @Test
-    void shouldGetAllPersistedEvents() {
+    void givenTheKafkaProducer_whenStreamConfigured_thenProcessAllEventsAndSaveThemInClickHouse() {
         var eventCount = 200;
 
         var start = Instant.now().truncatedTo(ChronoUnit.MINUTES);
