@@ -1,4 +1,4 @@
-package com.baeldung.controller.controller;
+package com.baeldung.spring.controller;
 
 import java.util.HashMap;
 import java.util.Map;

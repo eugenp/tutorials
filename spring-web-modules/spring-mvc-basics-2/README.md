@@ -11,4 +11,5 @@ This module contains articles about Spring MVC
 - [Using ThymeLeaf and FreeMarker Emails Templates with Spring](https://www.baeldung.com/spring-email-templates)
 - [Request Method Not Supported (405) in Spring](https://www.baeldung.com/spring-request-method-not-supported-405)
 - [Using Enums as Request Parameters in Spring](https://www.baeldung.com/spring-enum-request-param)
+- [How to Set JSON Content Type in Spring MVC](https://www.baeldung.com/spring-mvc-set-json-content-type)
 - More articles: [[<-- prev]](../spring-mvc-basics)[[more -->]](../spring-mvc-basics-3)
