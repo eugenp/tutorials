@@ -70,12 +70,45 @@ public class LiquibaseDatatypes {
     }
 
     private static List<LiquibaseDataType> getDataTypes() {
-        return List.of(new BooleanType(), new TinyIntType(), new IntType(), new MediumIntType(), new BigIntType(), new FloatType(),new DoubleType(), new DecimalType(), new NumberType(), new BlobType(), new DateTimeType(), new TimeType(), new TimestampType(),new DateType(), new CharType(), new VarcharType(), new NCharType(), new NVarcharType(), new ClobType(), new CurrencyType(), new UUIDType());
+        return List.of(
+          new BooleanType(),
+          new TinyIntType(),
+          new IntType(),
+          new MediumIntType(),
+          new BigIntType(),
+          new FloatType(),
+          new DoubleType(),
+          new DecimalType(),
+          new NumberType(),
+          new BlobType(),
+          new DateTimeType(),
+          new TimeType(),
+          new TimestampType(),
+          new DateType(),
+          new CharType(),
+          new VarcharType(),
+          new NCharType(),
+          new NVarcharType(),
+          new ClobType(),
+          new CurrencyType(),
+          new UUIDType());
     }
 
     private static List<AbstractJdbcDatabase> getDatabases() {
-        return List.of(new MySQLDatabase(), new SQLiteDatabase(), new H2Database(), new PostgresDatabase(), new UnsupportedDatabase(), new DB2Database(), new MSSQLDatabase(), new OracleDatabase(), new HsqlDatabase(), new FirebirdDatabase(),
-          new DerbyDatabase(), new InformixDatabase(), new SybaseDatabase(), new SybaseASADatabase());
+        return List.of(
+          new MySQLDatabase(),
+          new SQLiteDatabase(),
+          new H2Database(),
+          new PostgresDatabase(),
+          new DB2Database(),
+          new MSSQLDatabase(),
+          new OracleDatabase(),
+          new HsqlDatabase(),
+          new FirebirdDatabase(),
+          new DerbyDatabase(),
+          new InformixDatabase(),
+          new SybaseDatabase(),
+          new SybaseASADatabase());
     }
 }
 
