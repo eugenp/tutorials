@@ -1,9 +1,9 @@
 package com.baeldung.customvalidator;
 
+import org.springframework.beans.BeanWrapperImpl;
+
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
-
-import org.springframework.beans.BeanWrapperImpl;
 
 public class FieldsValueMatchValidator implements ConstraintValidator<FieldsValueMatch, Object> {
 
