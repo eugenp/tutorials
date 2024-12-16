@@ -48,21 +48,21 @@ public class HashMapVsDictionaryUnitTest {
     }
 
     @Test
-    void testDoesNotAllowNullKey() {
+    void given_whenUsingDictionary_thenDoesNotAllowNullKey() {
         Dictionary<String, String> dictionary = new Hashtable<>();
 
         assertThrows(NullPointerException.class, () -> dictionary.put(null, "NullKey"));
     }
 
     @Test
-    void testDoesNotAllowNullValue() {
+    void given_whenUsingDictionary_thenDoesNotAllowNullValue() {
         Dictionary<String, String> dictionary = new Hashtable<>();
 
         assertThrows(NullPointerException.class, () -> dictionary.put("Key1", null));
     }
 
     @Test
-    void testOverwriteExistingKeyDict() {
+    void given_whenUsingDictionary_thenOverwriteExistingKeyDict() {
         Dictionary<String, String> dictionary = new Hashtable<>();
         dictionary.put("Key1", "Value1");
         dictionary.put("Key1", "Value2");
@@ -71,7 +71,7 @@ public class HashMapVsDictionaryUnitTest {
     }
 
     @Test
-    void testKeyDoesNotExistDict() {
+    void given_whenUsingDictionary_thenKeyDoesNotExistDict() {
         Dictionary<String, String> dictionary = new Hashtable<>();
         assertNull(dictionary.get("NonExistentKey"));
     }
