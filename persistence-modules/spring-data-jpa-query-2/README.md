@@ -10,6 +10,7 @@ This module contains articles about querying data using Spring Data JPA .
 - [Auditing with JPA, Hibernate, and Spring Data JPA](https://www.baeldung.com/database-auditing-jpa)
 - [Implement Update-Or-Insert in Spring Data JPA](https://www.baeldung.com/spring-data-jpa-update-or-insert)
 - [The Exists Query in Spring Data](https://www.baeldung.com/spring-data-exists-query)
+- [Spring Data JPA and Named Entity Graphs](https://www.baeldung.com/spring-data-jpa-named-entity-graphs)
 - More articles: [[<-- prev]](../spring-data-jpa-query)[[more -->]](../spring-data-jpa-query-3)
 
 ### Eclipse Config 
