@@ -5,7 +5,6 @@ This module contains articles about querying data using Spring Data JPA
 ### Relevant Articles: 
 - [Limiting Query Results With JPA and Spring Data JPA](https://www.baeldung.com/jpa-limit-query-results)
 - [Sorting Query Results with Spring Data](https://www.baeldung.com/spring-data-sorting)
-- [Spring Data JPA Query by Example](https://www.baeldung.com/spring-data-query-by-example)
 - [JPA Join Types](https://www.baeldung.com/jpa-join-types)
 - [Use Criteria Queries in a Spring Data Application](https://www.baeldung.com/spring-data-criteria-queries)
 - [Query Entities by Dates and Times with Spring Data JPA](https://www.baeldung.com/spring-data-jpa-query-by-date)

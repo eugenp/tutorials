@@ -11,6 +11,7 @@ This module contains articles about querying data using Spring Data JPA .
 - [Implement Update-Or-Insert in Spring Data JPA](https://www.baeldung.com/spring-data-jpa-update-or-insert)
 - [The Exists Query in Spring Data](https://www.baeldung.com/spring-data-exists-query)
 - [Spring Data JPA and Named Entity Graphs](https://www.baeldung.com/spring-data-jpa-named-entity-graphs)
+- [Spring Data JPA Query by Example](https://www.baeldung.com/spring-data-query-by-example)
 - More articles: [[<-- prev]](../spring-data-jpa-query)[[more -->]](../spring-data-jpa-query-3)
 
 ### Eclipse Config 
