@@ -7,7 +7,7 @@ import com.baeldung.array.NullArray.ApacheCommons;
 import com.baeldung.array.NullArray.Java8;
 import com.baeldung.array.NullArray.TernaryOperator;
 
-public class NullArrayTest {
+public class NullArrayUnitTest {
 
     @Test
     public void whenArrayIsNull_thenReturnEmptyList() {
