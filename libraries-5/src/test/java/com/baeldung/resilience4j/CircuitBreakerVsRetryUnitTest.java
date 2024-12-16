@@ -1,7 +1,9 @@
 package com.baeldung.resilience4j;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.reset;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -59,17 +61,18 @@ public class CircuitBreakerVsRetryUnitTest {
     }
 
     @Test
-    public void whenCircuitBreakerIsUsed_thenItOpensAfterFailures() {
+    public void whenCircuitBreakerTransitionsThroughStates_thenBehaviorIsVerified() {
         CircuitBreakerConfig circuitBreakerConfig = CircuitBreakerConfig.custom()
             .failureRateThreshold(50)
             .slidingWindowSize(5)
+            .permittedNumberOfCallsInHalfOpenState(3)
             .build();
 
         CircuitBreaker circuitBreaker = CircuitBreaker.of("paymentCircuitBreaker", circuitBreakerConfig);
 
         AtomicInteger callCount = new AtomicInteger(0);
 
-        when(paymentService.processPayment(1)).thenAnswer(invocationOnMock -> {
+        when(paymentService.processPayment(anyInt())).thenAnswer(invocationOnMock -> {
             callCount.incrementAndGet();
             throw new RuntimeException("Service Failure");
         });
@@ -86,5 +89,26 @@ public class CircuitBreakerVsRetryUnitTest {
 
         assertEquals(5, callCount.get());
         assertEquals(CircuitBreaker.State.OPEN, circuitBreaker.getState());
+
+        callCount.set(0);
+        circuitBreaker.transitionToHalfOpenState();
+
+        assertEquals(CircuitBreaker.State.HALF_OPEN, circuitBreaker.getState());
+        reset(paymentService);
+        when(paymentService.processPayment(anyInt())).thenAnswer(invocationOnMock -> {
+            callCount.incrementAndGet();
+            return "Success";
+        });
+
+        for (int i = 0; i < 3; i++) {
+            try {
+                decoratedCallable.call();
+            } catch (Exception ignored) {
+
+            }
+        }
+
+        assertEquals(3, callCount.get());
+        assertEquals(CircuitBreaker.State.CLOSED, circuitBreaker.getState());
     }
 }
