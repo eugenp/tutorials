@@ -1,4 +1,4 @@
-package com.baeldung.spring.config.converter;
+package com.baeldung.spring.configuration.converter;
 
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;

@@ -10,4 +10,5 @@ This module contains articles about Spring MVC
 - [Guide to Spring Email](https://www.baeldung.com/spring-email)
 - [Using ThymeLeaf and FreeMarker Emails Templates with Spring](https://www.baeldung.com/spring-email-templates)
 - [Request Method Not Supported (405) in Spring](https://www.baeldung.com/spring-request-method-not-supported-405)
+- [Using Enums as Request Parameters in Spring](https://www.baeldung.com/spring-enum-request-param)
 - More articles: [[<-- prev]](../spring-mvc-basics)[[more -->]](../spring-mvc-basics-3)
