@@ -7,9 +7,9 @@ This module contains articles about querying data using Spring Data JPA .
 - [Hibernate Pagination](https://www.baeldung.com/hibernate-pagination)
 - [Sorting with Hibernate](https://www.baeldung.com/hibernate-sort)
 - [Stored Procedures with Hibernate](https://www.baeldung.com/stored-procedures-with-hibernate-tutorial)
-- [Eager/Lazy Loading in Hibernate](https://www.baeldung.com/hibernate-lazy-eager-loading)
 - [Auditing with JPA, Hibernate, and Spring Data JPA](https://www.baeldung.com/database-auditing-jpa)
 - [Implement Update-Or-Insert in Spring Data JPA](https://www.baeldung.com/spring-data-jpa-update-or-insert)
+- [The Exists Query in Spring Data](https://www.baeldung.com/spring-data-exists-query)
 - More articles: [[<-- prev]](../spring-data-jpa-query)[[more -->]](../spring-data-jpa-query-3)
 
 ### Eclipse Config 

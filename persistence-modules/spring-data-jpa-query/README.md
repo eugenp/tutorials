@@ -3,7 +3,6 @@
 This module contains articles about querying data using Spring Data JPA 
 
 ### Relevant Articles: 
-- [The Exists Query in Spring Data](https://www.baeldung.com/spring-data-exists-query)
 - [Limiting Query Results With JPA and Spring Data JPA](https://www.baeldung.com/jpa-limit-query-results)
 - [Sorting Query Results with Spring Data](https://www.baeldung.com/spring-data-sorting)
 - [Spring Data JPA Query by Example](https://www.baeldung.com/spring-data-query-by-example)
@@ -12,6 +11,8 @@ This module contains articles about querying data using Spring Data JPA
 - [Use Criteria Queries in a Spring Data Application](https://www.baeldung.com/spring-data-criteria-queries)
 - [Query Entities by Dates and Times with Spring Data JPA](https://www.baeldung.com/spring-data-jpa-query-by-date)
 - [Joining Tables With Spring Data JPA Specifications](https://www.baeldung.com/spring-jpa-joining-tables)
+- [Eager/Lazy Loading in Hibernate](https://www.baeldung.com/hibernate-lazy-eager-loading)
+
 - More articles: [[more -->]](../spring-data-jpa-query-2)
 
 ### Eclipse Config 
