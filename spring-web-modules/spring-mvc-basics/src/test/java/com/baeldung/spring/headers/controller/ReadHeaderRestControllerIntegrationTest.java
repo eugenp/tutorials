@@ -1,4 +1,4 @@
-package com.baeldung.headers.controller;
+package com.baeldung.spring.headers.controller;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -16,12 +16,9 @@ import org.springframework.test.context.junit.jupiter.web.SpringJUnitWebConfig;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import com.baeldung.spring.headers.controller.ReadHeaderRestController;
-
 @SpringJUnitWebConfig(ReadHeaderRestControllerIntegrationTest.Config.class)
 @ExtendWith(SpringExtension.class)
 public class ReadHeaderRestControllerIntegrationTest {
-    private static final Log LOG = LogFactory.getLog(ReadHeaderRestControllerIntegrationTest.class);
 
     @Configuration
     static class Config {

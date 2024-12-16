@@ -15,4 +15,5 @@ The "REST With Spring" Classes: https://bit.ly/restwithspring
 - [Spring MVC Content Negotiation](https://www.baeldung.com/spring-mvc-content-negotiation-json-xml)
 - [Spring @RequestMapping New Shortcut Annotations](https://www.baeldung.com/spring-new-requestmapping-shortcuts)
 - [Spring MVC Custom Validation](https://www.baeldung.com/spring-mvc-custom-validator)
+- [How to Read HTTP Headers in Spring REST Controllers](https://www.baeldung.com/spring-rest-http-headers)
 - More articles: [[more -->]](../spring-mvc-basics-2)
