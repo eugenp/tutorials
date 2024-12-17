@@ -1,10 +1,10 @@
 package com.baeldung.persistence.audit;
 
-import com.baeldung.persistence.model.Bar;
-import com.baeldung.persistence.model.Foo;
-import com.baeldung.persistence.service.IBarAuditableService;
-import com.baeldung.persistence.service.IFooAuditableService;
-import com.baeldung.spring.config.PersistenceTestConfig;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.junit.After;
@@ -20,10 +20,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
-import java.util.List;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import com.baeldung.persistence.model.Bar;
+import com.baeldung.persistence.model.Foo;
+import com.baeldung.persistence.service.IBarAuditableService;
+import com.baeldung.persistence.service.IFooAuditableService;
+import com.baeldung.persistence.config.PersistenceTestConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { PersistenceTestConfig.class }, loader = AnnotationConfigContextLoader.class)

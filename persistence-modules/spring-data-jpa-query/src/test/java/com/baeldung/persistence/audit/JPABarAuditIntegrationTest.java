@@ -4,9 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -24,7 +21,10 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import com.baeldung.persistence.model.Bar;
 import com.baeldung.persistence.model.Bar.OPERATION;
 import com.baeldung.persistence.service.IBarService;
-import com.baeldung.spring.config.PersistenceTestConfig;
+import com.baeldung.persistence.config.PersistenceTestConfig;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { PersistenceTestConfig.class }, loader = AnnotationConfigContextLoader.class)
