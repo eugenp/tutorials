@@ -1,4 +1,8 @@
-package com.baeldung.web.controller;
+package com.baeldung.contentnegotiation;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,11 +12,9 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import com.baeldung.validation.listvalidation.SpringListValidationApplication;
 
-@SpringBootTest
+@SpringBootTest(classes = SpringListValidationApplication.class)
 @AutoConfigureMockMvc
 public class EmployeeControllerContentNegotiationIntegrationTest {
 

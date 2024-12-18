@@ -113,17 +113,4 @@ public class WebConfig implements WebMvcConfigurer {
         return new JstlView("/WEB-INF/view3/sample3.jsp");
     }
 
-    /**
-     * Spring Boot allows configuring Content Negotiation using properties
-     */
-    @Override
-    public void configureContentNegotiation(final ContentNegotiationConfigurer configurer) {
-        configurer.favorParameter(true)
-            .parameterName("mediaType")
-            .ignoreAcceptHeader(false)
-            .useRegisteredExtensionsOnly(false)
-            .defaultContentType(MediaType.APPLICATION_JSON)
-            .mediaType("xml", MediaType.APPLICATION_XML)
-            .mediaType("json", MediaType.APPLICATION_JSON);
-    }
 }

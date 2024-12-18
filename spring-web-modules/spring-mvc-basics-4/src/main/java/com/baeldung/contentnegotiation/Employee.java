@@ -1,4 +1,4 @@
-package com.baeldung.model;
+package com.baeldung.contentnegotiation;
 
 import jakarta.xml.bind.annotation.XmlRootElement;
 

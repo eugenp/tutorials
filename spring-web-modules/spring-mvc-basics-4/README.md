@@ -10,4 +10,5 @@ The "REST With Spring" Classes: https://bit.ly/restwithspring
 - [Spring Optional Path Variables](https://www.baeldung.com/spring-optional-path-variables)
 - [JSON Parameters with Spring MVC](https://www.baeldung.com/spring-mvc-send-json-parameters)
 - [Validating Lists in a Spring Controller](https://www.baeldung.com/spring-validate-list-controller)
+- [Spring MVC Content Negotiation](https://www.baeldung.com/spring-mvc-content-negotiation-json-xml)
 - More articles: [[<-- prev]](../spring-mvc-basics-3)[[next -->]](../spring-mvc-basics-5)

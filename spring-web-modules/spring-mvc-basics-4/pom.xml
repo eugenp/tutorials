@@ -35,10 +35,16 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>${jaxb-runtime.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <jstl.version>1.2</jstl.version>
+        <jaxb-runtime.version>4.0.1</jaxb-runtime.version>
     </properties>
 
 </project>

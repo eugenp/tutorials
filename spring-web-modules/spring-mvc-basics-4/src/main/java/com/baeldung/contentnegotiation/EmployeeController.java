@@ -1,4 +1,4 @@
-package com.baeldung.web.controller;
+package com.baeldung.contentnegotiation;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.baeldung.model.Employee;
+import com.baeldung.contentnegotiation.Employee;
 
 @Controller
 public class EmployeeController {
