@@ -2,6 +2,7 @@ package com.baeldung.spring.mail;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Map;
 
 import jakarta.mail.MessagingException;
@@ -10,6 +11,7 @@ import jakarta.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
@@ -128,6 +130,28 @@ public class EmailServiceImpl implements EmailService {
         helper.setText(htmlBody, true);
         helper.addInline("attachment.png", resourceFile);
         emailSender.send(message);
+    }
+
+    @Override
+    public void sendMessageWithInputStreamAttachment(
+        String to, String subject, String text, String attachmentName, InputStream inputStream) {
+
+        try {
+            MimeMessage message = emailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true);
+
+            helper.setFrom(NOREPLY_ADDRESS);
+            helper.setTo(to);
+            helper.setSubject(subject);
+            helper.setText(text);
+
+            // Add the attachment from InputStream
+            helper.addAttachment(attachmentName, new InputStreamResource(inputStream));
+
+            emailSender.send(message);
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
     }
    
 }
