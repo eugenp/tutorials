@@ -329,7 +329,6 @@
             </build>
 
             <modules>
-                <!-- <module>clojure-modules</module> --> <!-- Not a maven project -->
                 <module>core-java-modules/core-java-8</module>
                 <module>core-java-modules/core-java-8-2</module>
                 <module>core-java-modules/core-java-8-datetime</module>
@@ -339,10 +338,6 @@
                 <module>core-java-modules/core-java-lang</module>
                 <module>core-java-modules/core-java-lang-math-3</module>
                 <module>core-java-modules/core-java-streams-2</module>
-                <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
-                <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
-                <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
-                <!-- <module>pants</module> --> <!-- Not a maven project -->
                 <module>libraries-jdk8</module>
                 <module>lombok-modules/lombok-custom</module>
                 <module>muleesb</module>
@@ -356,10 +351,8 @@
                 <module>jenkins-modules</module> <!-- Not able to upgrade now to jdk17. JAVA-21748 -->
                 <module>spring-4</module>
                 <module>spring-cloud-modules</module>
-                <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
                 <module>spring-exceptions</module>
                 <module>spring-integration</module>
-                <!-- <module>spring-roo</module> --> <!-- Not supported JAVA-17327 -->
                 <module>spring-security-modules/spring-security-ldap</module>
                 <module>spring-swagger-codegen-modules</module>
                 <module>video-tutorials</module>
@@ -403,8 +396,6 @@
             </build>
 
             <modules>
-                <!--<module>apache-spark</module>--><!-- failing after upgrading to jdk17-->
-                <!--<module>jhipster-modules/jhipster-uaa</module>--><!-- failing after upgrading to jdk17-->
                 <module>jhipster-8-modules</module>
                 <module>microservices-modules/microprofile</module>
                 <module>spring-cloud-modules/spring-cloud-azure</module>
@@ -451,7 +442,6 @@
             </build>
 
             <modules>
-                <!-- <module>clojure-modules</module> --> <!-- Not a maven project -->
                 <module>core-java-modules/core-java-8</module>
                 <module>core-java-modules/core-java-8-2</module>
                 <module>core-java-modules/core-java-8-datetime</module>
@@ -461,9 +451,6 @@
                 <module>core-java-modules/core-java-lang</module>
                 <module>core-java-modules/core-java-lang-math-3</module>
                 <module>core-java-modules/core-java-streams-2</module>
-                <!-- <module>ethereum</module> --> <!-- JAVA-6001 -->
-                <!-- <module>gradle-modules</module> --> <!-- Not a maven project -->
-                <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
                 <module>libraries-jdk8</module>
                 <module>lombok-modules/lombok-custom</module>
                 <module>muleesb</module>
@@ -477,10 +464,8 @@
                 <module>jenkins-modules</module> <!-- Not able to upgrade now to jdk17. JAVA-21748 -->
                 <module>spring-4</module>
                 <module>spring-cloud-modules</module>
-                <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
                 <module>spring-exceptions</module>
                 <module>spring-integration</module>
-                <!-- <module>spring-roo</module> --> <!-- Not supported JAVA-17327 -->
                 <module>spring-security-modules/spring-security-ldap</module>
                 <module>spring-swagger-codegen-modules</module>
                 <module>video-tutorials</module>
@@ -517,8 +502,6 @@
             </build>
 
             <modules>
-                <!--<module>apache-spark</module>--><!-- failing after upgrading to jdk17-->
-                <!--<module>jhipster-modules/jhipster-uaa</module>--><!-- failing after upgrading to jdk17-->
                 <module>jhipster-8-modules</module>
                 <module>microservices-modules/microprofile</module>
                 <module>spring-cloud-modules/spring-cloud-azure</module>
@@ -584,23 +567,13 @@
                 <module>core-java-modules/core-java-jvm</module>
                 <module>core-java-modules/core-java-lang-7</module>
                 <module>core-java-modules/core-java-datetime-conversion</module>
-                <!-- <module>libraries-security</module> -->
                 <module>libraries-data-io</module>
-                <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->
                 <module>persistence-modules/spring-data-neo4j</module>
                 <module>persistence-modules/spring-persistence-simple</module>
                 <module>quarkus-modules/quarkus</module>
                 <module>quarkus-modules/quarkus-vs-springboot/quarkus-project</module>
-                <!--<module>spring-cloud-modules/spring-cloud-data-flow</module>--><!-- failing after upgrading to jdk17-->
-                <!--<module>spring-cloud-modules/spring-cloud-stream-starters</module>--><!-- failing after upgrading to jdk17-->
                 <module>spring-di-2</module>
-                <!--<module>spring-integration</module>--><!-- failing after upgrading to jdk17-->
-                <!--<module>spring-jinq</module>--><!--disabling the jinq modules, as the default build profile is failing due to bad mv files. Please refer: JAVA-31341-->
                 <module>spring-security-modules/spring-security-legacy-oidc</module>
-                <!--<module>static-analysis-modules</module> - requires additional configuration to be compiled due to the JVM strong encapsulation -->
-                <!--<module>tablesaw</module>--><!-- failing after upgrading to jdk17-->
-                <!--<module>spring-swagger-codegen-modules/openapi-custom-generator</module>
-                <module>spring-swagger-codegen-modules/openapi-custom-generator-api-client</module> --> <!-- cannot add the individual modules here because the order is not guaranteed -->
             </modules>
 
             <properties>
@@ -713,7 +686,6 @@
                 <module>jws</module>
                 <module>ksqldb</module>
                 <module>kubernetes-modules</module>
-                <!--<module>language-interop</module>-->
                 <module>libraries</module> <!-- very long running -->
                 <module>libraries-2</module>
                 <module>libraries-3</module>
@@ -828,7 +800,6 @@
                 <module>spring-quartz</module>
                 <module>spring-reactive-modules</module>
                 <module>spring-remoting-modules</module> <!-- Upgrade to Boot 3 not possible as since Spring 6 the remoting modules has been removed from Spring. -->
-                <!-- <module>spring-scheduling</module> --> <!-- BAEL-8382 -->
                 <module>spring-scheduling-2</module>
                 <module>spring-security-modules</module>
                 <module>spring-shell</module>
@@ -981,23 +952,13 @@
                 <module>core-java-modules/core-java-jvm</module>
                 <module>core-java-modules/core-java-lang-7</module>
                 <module>core-java-modules/core-java-datetime-conversion</module>
-                <!--<module>libraries-security</module>-->
                 <module>libraries-data-io</module>
-                <!--<module>persistence-modules/java-harperdb</module>--> <!-- This module requires a library to download manually -->
                 <module>persistence-modules/spring-data-neo4j</module>
                 <module>persistence-modules/spring-persistence-simple</module>
                 <module>quarkus-modules/quarkus</module>
                 <module>quarkus-modules/quarkus-vs-springboot/quarkus-project</module>
-                <!--<module>spring-cloud-modules/spring-cloud-data-flow</module>--><!-- failing after upgrading to jdk17-->
-                <!--<module>spring-cloud-modules/spring-cloud-stream-starters</module>--><!-- failing after upgrading to jdk17-->
                 <module>spring-di-2</module>
-                <!--<module>spring-integration</module>--><!-- failing after upgrading to jdk17-->
-                <!--<module>spring-jinq</module>--><!--disabling the jinq modules, as the default build profile is failing due to bad mv files. Please refer: JAVA-31341-->
                 <module>spring-security-modules/spring-security-legacy-oidc</module>
-                <!--<module>static-analysis-modules</module> - requires additional configuration to be compiled due to the JVM strong encapsulation -->
-                <!--<module>tablesaw</module>--><!-- failing after upgrading to jdk17-->
-                <!--<module>spring-swagger-codegen-modules/openapi-custom-generator</module>
-                <module>spring-swagger-codegen-modules/openapi-custom-generator-api-client</module> --> <!-- cannot add the individual modules here because the order is not guaranteed -->
             </modules>
 
             <properties>
@@ -1104,7 +1065,6 @@
                 <module>jws</module>
                 <module>ksqldb</module>
                 <module>kubernetes-modules</module>
-                <!--<module>language-interop</module>-->
                 <module>libraries</module> <!-- very long running -->
                 <module>libraries-2</module>
                 <module>libraries-3</module>
@@ -1219,7 +1179,6 @@
                 <module>spring-quartz</module>
                 <module>spring-reactive-modules</module>
                 <module>spring-remoting-modules</module> <!-- Upgrade to Boot 3 not possible as since Spring 6 the remoting modules has been removed from Spring. -->
-                <!-- <module>spring-scheduling</module> --> <!-- BAEL-8382 -->
                 <module>spring-scheduling-2</module>
                 <module>spring-security-modules</module>
                 <module>spring-shell</module>
@@ -1323,6 +1282,52 @@
                 <module>parent-spring-6</module>
             </modules>
         </profile>
+
+        <profile>
+            <id>disabled-modules</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
+
+            <modules>
+                <!-- from jdk8 profile -->
+                    <module>clojure-modules</module> <!-- Not a maven project -->
+                    <module>ethereum</module> <!-- JAVA-6001 -->
+                    <module>gradle-modules</module> <!-- Not a maven project -->
+                    <module>guest</module> <!-- not to be built as its for guest articles  -->
+                    <module>pants</module> <!-- Not a maven project -->
+                    <module>spring-cloud-cli</module> <!-- Not a maven project -->
+                    <module>spring-roo</module> <!-- Not supported JAVA-17327 -->
+
+                <!-- from heavy profile -->
+                    <module>apache-spark</module><!-- failing after upgrading to jdk17 --> <!-- JAVA-42030 -->
+                    <module>jhipster-modules/jhipster-uaa</module><!-- failing after upgrading to jdk17-->
+
+                <!-- from jdk17 profile -->
+                    <module>libraries-security</module> <!-- JAVA-40889 -->
+                    <module>persistence-modules/java-harperdb</module> <!-- This module requires a library to download manually --> <!-- JAVA-42044 -->
+                    <module>spring-cloud-modules/spring-cloud-data-flow</module> <!-- failing after upgrading to jdk17--> <!-- JAVA-42054 -->
+                    <module>spring-cloud-modules/spring-cloud-stream-starters</module> <!-- failing after upgrading to jdk17--> <!-- JAVA-42055 -->
+                    <module>spring-jinq</module> <!--disabling the jinq modules, as the default build profile is failing due to bad mv files. Please refer: JAVA-31341-->
+                    <module>static-analysis-modules</module> <!-- requires additional configuration to be compiled due to the JVM strong encapsulation -->
+                    <module>tablesaw</module> <!-- failing after upgrading to jdk17--> <!-- JAVA-42037 -->
+                    <module>spring-swagger-codegen-modules/openapi-custom-generator</module>
+                    <module>spring-swagger-codegen-modules/openapi-custom-generator-api-client</module> <!-- cannot add the individual modules here because the order is not guaranteed -->
+
+                <!-- from jdk21 profile -->
+                    <module>language-interop</module>
+                    <module>spring-scheduling</module> <!-- BAEL-8382 -->
+
+                <!-- modules not added to the build process -->
+
+            </modules>
+        </profile>
+
     </profiles>
 
     <reporting>
