@@ -1,0 +1,69 @@
+{
+  "@timestamp": "2024-12-19T10:34:02.220152180Z",
+  "log.level": "INFO",
+  "process.pid": 34696,
+  "process.thread.name": "main",
+  "service.name": "BaeldungService",
+  "service.version": "1",
+  "service.environment": "Production",
+  "service.node.name": "Primary",
+  "log.logger": "com.baeldung.springstructuredlogging.StructuredLoggingApp",
+  "message": "Starting StructuredLoggingApp using Java 23 with PID 34696 (\/home\/michael\/tutorials\/spring-boot-modules\/spring-boot-3-4\/target\/classes started by michael in \/home\/michael\/tutorials\/spring-boot-modules\/spring-boot-3-4)",
+  "ecs.version": "8.11"
+}
+{
+  "@timestamp": "2024-12-19T10:34:02.240898973Z",
+  "log.level": "INFO",
+  "process.pid": 34696,
+  "process.thread.name": "main",
+  "service.name": "BaeldungService",
+  "service.version": "1",
+  "service.environment": "Production",
+  "service.node.name": "Primary",
+  "log.logger": "com.baeldung.springstructuredlogging.StructuredLoggingApp",
+  "message": "No active profile set, falling back to 1 default profile: \"default\"",
+  "ecs.version": "8.11"
+}
+{
+  "@timestamp": "2024-12-19T10:34:03.558243665Z",
+  "log.level": "INFO",
+  "process.pid": 34696,
+  "process.thread.name": "main",
+  "service.name": "BaeldungService",
+  "service.version": "1",
+  "service.environment": "Production",
+  "service.node.name": "Primary",
+  "log.logger": "com.baeldung.springstructuredlogging.StructuredLoggingApp",
+  "message": "Started StructuredLoggingApp in 2.777 seconds (process running for 4.356)",
+  "ecs.version": "8.11"
+}
+{
+  "@timestamp": "2024-12-19T10:34:03.564752429Z",
+  "log.level": "INFO",
+  "process.pid": 34696,
+  "process.thread.name": "main",
+  "service.name": "BaeldungService",
+  "service.version": "1",
+  "service.environment": "Production",
+  "service.node.name": "Primary",
+  "log.logger": "com.baeldung.springstructuredlogging.CustomLog",
+  "message": "Hello structured logging!",
+  "userName": "Baeldung",
+  "userId": "1",
+  "ecs.version": "8.11"
+}
+{
+  "@timestamp": "2024-12-19T10:34:03.568047793Z",
+  "log.level": "INFO",
+  "process.pid": 34696,
+  "process.thread.name": "main",
+  "service.name": "BaeldungService",
+  "service.version": "1",
+  "service.environment": "Production",
+  "service.node.name": "Primary",
+  "log.logger": "com.baeldung.springstructuredlogging.CustomLog",
+  "message": "Hello Structure logging!",
+  "userId": "1",
+  "userName": "Baeldung",
+  "ecs.version": "8.11"
+}
