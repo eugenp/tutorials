@@ -15,8 +15,8 @@ public class RegexFilterExample {
         Pattern pattern = Pattern.compile("^a.*");
 
         return fruits.stream()
-            .filter(pattern.asPredicate())
-            .toList();
+          .filter(pattern.asPredicate())
+          .toList();
     }
 
     public List<String> method2() {

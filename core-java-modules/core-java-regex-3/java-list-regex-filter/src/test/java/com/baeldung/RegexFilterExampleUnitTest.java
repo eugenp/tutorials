@@ -11,25 +11,25 @@ class RegexFilterExampleUnitTest {
     RegexFilterExample regexFilterExample = new RegexFilterExample();
 
     @Test
-    void whenMethod1Called_ThenReturnElementsStartingWithA() {
+    void whenMethod1Called_thenReturnElementsStartingWithA() {
         List<String> newList = regexFilterExample.method1();
         Assertions.assertEquals(List.of("apple", "apricot", "avocado"), newList);
     }
 
     @Test
-    void whenMethod2Called_ThenReturnElementsContainingDig() {
+    void whenMethod2Called_thenReturnElementsContainingDig() {
         List<String> newList = regexFilterExample.method2();
         Assertions.assertEquals(List.of("123", "789"), newList);
     }
 
     @Test
-    void whenMethod1Called_ThenReturnElementsStartingWithT3() {
+    void whenMethod1Called_thenReturnElementsStartingWithT3() {
         List<String> newList = regexFilterExample.method3();
         Assertions.assertEquals(List.of("two", "three"), newList);
     }
 
     @Test
-    void whenMethod1Called_ThenReturnElementsStartingWithA4() {
+    void whenMethod1Called_thenReturnElementsStartingWithA4() {
         Map<Boolean, List<String>> newList = regexFilterExample.method4();
         Assertions.assertEquals(List.of("apple", "apricot"), newList.get(true));
         Assertions.assertEquals(List.of("banana", "berry"), newList.get(false));
