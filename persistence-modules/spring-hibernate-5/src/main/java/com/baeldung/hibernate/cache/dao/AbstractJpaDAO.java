@@ -1,10 +1,14 @@
 package com.baeldung.hibernate.cache.dao;
 
-import java.io.Serializable;
-import java.util.List;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.io.Serializable;
+import java.util.List;
 
 public abstract class AbstractJpaDAO<T extends Serializable> {
 
@@ -43,4 +47,30 @@ public abstract class AbstractJpaDAO<T extends Serializable> {
         delete(entity);
     }
 
+    public long countAllRowsUsingHibernateCriteria() {
+        Session session = entityManager.unwrap(Session.class);
+        Criteria criteria = session.createCriteria(clazz);
+        criteria.setProjection(Projections.rowCount());
+        Long count = (Long) criteria.uniqueResult();
+        return count != null ? count : 0L;
+    }
+
+    public long getFooCountByBarNameUsingHibernateCriteria(String barName) {
+        Session session = entityManager.unwrap(Session.class);
+        Criteria criteria = session.createCriteria(clazz);
+        criteria.createAlias("bar", "b");
+        criteria.add(Restrictions.eq("b.name", barName));
+        criteria.setProjection(Projections.rowCount());
+        return (Long) criteria.uniqueResult();
+    }
+
+    public long getFooCountByBarNameAndFooNameUsingHibernateCriteria(String barName, String fooName) {
+        Session session = entityManager.unwrap(Session.class);
+        Criteria criteria = session.createCriteria(clazz);
+        criteria.createAlias("bar", "b");
+        criteria.add(Restrictions.eq("b.name", barName));
+        criteria.add(Restrictions.eq("name", fooName));
+        criteria.setProjection(Projections.rowCount());
+        return (Long) criteria.uniqueResult();
+    }
 }
