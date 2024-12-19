@@ -4,12 +4,9 @@ import jakarta.servlet.MultipartConfigElement;
 import org.springframework.boot.web.servlet.MultipartConfigFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.MediaType;
 import org.springframework.ui.context.support.ResourceBundleThemeSource;
 import org.springframework.util.unit.DataSize;
-import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.ViewResolver;
-import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -17,7 +14,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.resource.PathResourceResolver;
 import org.springframework.web.servlet.theme.CookieThemeResolver;
 import org.springframework.web.servlet.theme.ThemeChangeInterceptor;
-import org.springframework.web.servlet.view.BeanNameViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
@@ -87,30 +83,6 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(themeChangeInterceptor());
-    }
-
-    /** END theme configuration */
-
-    @Bean
-    public BeanNameViewResolver beanNameViewResolver(){
-        BeanNameViewResolver beanNameViewResolver = new BeanNameViewResolver();
-        beanNameViewResolver.setOrder(1);
-        return beanNameViewResolver;
-    }
-
-    @Bean
-    public View sample() {
-        return new JstlView("/WEB-INF/view/sample.jsp");
-    }
-
-    @Bean
-    public View sample2() {
-        return new JstlView("/WEB-INF/view2/sample2.jsp");
-    }
-
-    @Bean
-    public View sample3(){
-        return new JstlView("/WEB-INF/view3/sample3.jsp");
     }
 
 }
