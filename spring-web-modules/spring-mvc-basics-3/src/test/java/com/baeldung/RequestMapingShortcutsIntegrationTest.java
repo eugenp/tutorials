@@ -1,4 +1,4 @@
-package com.baeldung.web.controller;
+package com.baeldung;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -8,6 +8,8 @@ import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilde
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
+import com.baeldung.boot.controller.RequestMappingShortcutsController;
 
 public class RequestMapingShortcutsIntegrationTest {
 

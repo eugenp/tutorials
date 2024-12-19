@@ -1,4 +1,4 @@
-package com.baeldung.web.controller;
+package com.baeldung.boot.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

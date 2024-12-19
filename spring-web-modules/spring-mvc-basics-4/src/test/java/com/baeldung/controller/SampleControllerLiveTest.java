@@ -1,4 +1,4 @@
-package com.baeldung.web.controller;
+package com.baeldung.controller;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
