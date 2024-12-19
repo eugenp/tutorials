@@ -25,8 +25,4 @@
 
 	<bean name="beanNameUrl" class="com.baeldung.WelcomeController" />
 
-
-
-
-
 </beans>

@@ -1,9 +1,10 @@
-package com.baeldung.web.controller.handlermapping;
+package com.baeldung.handlermappings;
+
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.AbstractController;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.AbstractController;
 
 public class SimpleUrlMappingController extends AbstractController {
     @Override

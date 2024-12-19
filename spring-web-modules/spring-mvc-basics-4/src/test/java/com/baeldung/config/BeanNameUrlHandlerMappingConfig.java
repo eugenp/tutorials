@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping;
 
-import com.baeldung.web.controller.handlermapping.WelcomeController;
+import com.baeldung.handlermappings.WelcomeController;
 
 @Configuration
 public class BeanNameUrlHandlerMappingConfig {

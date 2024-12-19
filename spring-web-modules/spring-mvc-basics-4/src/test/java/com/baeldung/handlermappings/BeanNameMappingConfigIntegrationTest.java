@@ -1,6 +1,10 @@
 package com.baeldung.handlermappings;
 
-import com.baeldung.config.HandlerMappingPrioritiesConfig;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,15 +17,13 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
+import com.baeldung.config.BeanNameUrlHandlerMappingConfig;
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@ContextConfiguration(classes = HandlerMappingPrioritiesConfig.class)
-public class HandlerMappingPriorityConfigIntegrationTest {
+@ContextConfiguration(classes = BeanNameUrlHandlerMappingConfig.class)
+public class BeanNameMappingConfigIntegrationTest {
 
     @Autowired
     private WebApplicationContext webAppContext;
@@ -34,7 +36,7 @@ public class HandlerMappingPriorityConfigIntegrationTest {
     }
 
     @Test
-    public void whenConfiguringPriorities_thenMappedOK() throws Exception {
-        mockMvc.perform(get("/welcome")).andExpect(status().isOk()).andExpect(view().name("simple-url-handler-mapping")).andDo(print());
+    public void whenBeanNameMapping_thenMappedOK() throws Exception {
+        mockMvc.perform(get("/beanNameUrl")).andExpect(status().isOk()).andExpect(view().name("welcome")).andDo(print());
     }
 }

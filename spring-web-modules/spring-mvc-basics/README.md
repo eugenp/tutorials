@@ -11,7 +11,6 @@ The "REST With Spring" Classes: https://bit.ly/restwithspring
 - [An Intro to the Spring DispatcherServlet](https://www.baeldung.com/spring-dispatcherservlet)
 - [The Spring @Controller and @RestController Annotations](https://www.baeldung.com/spring-controller-vs-restcontroller)
 - [A Guide to the ViewResolver in Spring MVC](https://www.baeldung.com/spring-mvc-view-resolver-tutorial)
-- [Guide to Spring Handler Mappings](https://www.baeldung.com/spring-handler-mappings)
 - [Spring @RequestMapping New Shortcut Annotations](https://www.baeldung.com/spring-new-requestmapping-shortcuts)
 - [Spring MVC Custom Validation](https://www.baeldung.com/spring-mvc-custom-validator)
 - [How to Read HTTP Headers in Spring REST Controllers](https://www.baeldung.com/spring-rest-http-headers)

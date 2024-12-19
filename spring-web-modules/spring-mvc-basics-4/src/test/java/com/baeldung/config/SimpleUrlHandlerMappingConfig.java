@@ -3,16 +3,13 @@ package com.baeldung.config;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.baeldung.web.controller.handlermapping.WelcomeController;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.handler.SimpleUrlHandlerMapping;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-
-
-
+import com.baeldung.handlermappings.WelcomeController;
 
 @Configuration
 public class SimpleUrlHandlerMappingConfig {
