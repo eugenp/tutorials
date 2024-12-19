@@ -2,14 +2,14 @@ package com.baeldung.getthreadbyname;
 
 public class ThreadFinder {
 
-    public static Thread getThreadByName(String name) {
-        for (Thread thread : Thread.getAllStackTraces().keySet()) {
-            if (thread.getName().equals(name)) {
-                return thread;
-            }
-        }
-        return null; // Thread not found
-    }
+public static Thread getThreadByName(String name) {
+    return Thread.getAllStackTraces()
+        .keySet()
+        .stream()
+        .filter(thread -> thread.getName().equals(name))
+        .findFirst()
+        .orElse(null); // Return null if thread not found
+}
 
     public static Thread getThreadByThreadGroupAndName(ThreadGroup threadGroup, String name) {
         Thread[] threads = new Thread[threadGroup.activeCount()];
