@@ -61,6 +61,7 @@
         <module>testing-libraries-2</module>
         <module>testing-libraries-3</module>
         <module>testng</module>
+        <module>testng-2</module>
         <module>testng-command-line</module>
         <module>xmlunit-2</module>
         <module>zerocode</module>

@@ -15,6 +15,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${org.springframework.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.hibernate.orm</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>${hibernate.version}</version>
@@ -34,6 +39,22 @@
             <artifactId>mariaDB4j</artifactId>
             <version>${mariaDB4j.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-generator-annprocess</artifactId>
+            <version>${jmh-generator.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>mysql</artifactId>
+            <version>${testcontainers.mysql.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -50,8 +71,11 @@
     </build>
 
     <properties>
+        <org.springframework.version>6.0.6</org.springframework.version>
         <mariaDB4j.version>2.6.0</mariaDB4j.version>
         <h2.version>2.1.214</h2.version>
+        <testcontainers.mysql.version>1.17.6</testcontainers.mysql.version>
+        <mysql.version>8.2.0</mysql.version>
     </properties>
 
 </project>

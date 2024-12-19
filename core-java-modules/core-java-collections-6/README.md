@@ -11,4 +11,4 @@
 - [Introduction to the Java ArrayDeque](https://www.baeldung.com/java-array-deque)
 - [An Introduction to Java.util.Hashtable Class](https://www.baeldung.com/java-hash-table)
 - [Fail-Safe Iterator vs Fail-Fast Iterator](https://www.baeldung.com/java-fail-safe-vs-fail-fast-iterator)
-- More articles: [[<-- prev]](/core-java-modules/core-java-collections-5)
+- More articles: [[<-- prev]](/core-java-modules/core-java-collections-5)[[next -->]](/core-java-modules/core-java-collections-7)
