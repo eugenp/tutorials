@@ -88,7 +88,8 @@
     </dependencies>
 
     <properties>
-        <snakeyaml.version>2.2</snakeyaml.version>
+        <!-- Downgraded SNAKEYAML version 1.30 to demonstrate the vulnerability scenario (CVE-2022-1471) -->
+        <snakeyaml.version>1.30</snakeyaml.version>
         <opencsv.version>5.8</opencsv.version>
         <google-api.version>1.23.0</google-api.version>
         <google-sheets.version>v4-rev493-1.21.0</google-sheets.version>
