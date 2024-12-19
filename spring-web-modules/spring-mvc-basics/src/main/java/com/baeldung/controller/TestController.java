@@ -2,7 +2,7 @@
 /**
  * @author Prashant Dutta
  */
-package com.baeldung.controller.controller;
+package com.baeldung.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

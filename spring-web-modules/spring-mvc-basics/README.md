@@ -15,4 +15,5 @@ The "REST With Spring" Classes: https://bit.ly/restwithspring
 - [Spring @RequestParam vs @PathVariable Annotations](https://www.baeldung.com/spring-requestparam-vs-pathvariable)
 - [Spring @RequestParam Annotation](https://www.baeldung.com/spring-request-param)
 - [Spring MVC and the @ModelAttribute Annotation](https://www.baeldung.com/spring-mvc-and-the-modelattribute-annotation)
+- [Quick Guide to Spring Controllers](https://www.baeldung.com/spring-controllers)
 - More articles: [[more -->]](../spring-mvc-basics-2)

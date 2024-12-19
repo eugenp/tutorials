@@ -14,11 +14,10 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.baeldung.controller.student.Student;
-import com.baeldung.validation.listvalidation.SpringListValidationApplication;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = SpringListValidationApplication.class)
+@SpringBootTest(classes = ControllerApplication.class)
 public class ControllerIntegrationTest {
 
     private MockMvc mockMvc;
