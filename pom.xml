@@ -1284,7 +1284,7 @@
         </profile>
 
         <profile>
-            <id>disabled-modules</id>
+            <id>default-disabled</id>
             <build>
                 <plugins>
                     <plugin>
@@ -1296,35 +1296,116 @@
 
             <modules>
                 <!-- from jdk8 profile -->
-                    <module>clojure-modules</module> <!-- Not a maven project -->
-                    <module>ethereum</module> <!-- JAVA-6001 -->
-                    <module>gradle-modules</module> <!-- Not a maven project -->
-                    <module>guest</module> <!-- not to be built as its for guest articles  -->
-                    <module>pants</module> <!-- Not a maven project -->
-                    <module>spring-cloud-cli</module> <!-- Not a maven project -->
-                    <module>spring-roo</module> <!-- Not supported JAVA-17327 -->
+                <module>clojure-modules</module> <!-- Not a maven project -->
+                <module>ethereum</module> <!-- JAVA-6001 -->
+                <module>gradle-modules</module> <!-- Not a maven project -->
+                <module>guest</module> <!-- not to be built as its for guest articles  -->
+                <module>pants</module> <!-- Not a maven project -->
+                <module>spring-cloud-cli</module> <!-- Not a maven project -->
+                <module>spring-roo</module> <!-- Not supported JAVA-17327 -->
 
                 <!-- from heavy profile -->
-                    <module>apache-spark</module><!-- failing after upgrading to jdk17 --> <!-- JAVA-42030 -->
-                    <module>jhipster-modules/jhipster-uaa</module><!-- failing after upgrading to jdk17-->
+                <module>apache-spark</module> <!-- JAVA-42030 -->
+                <module>jhipster-modules/jhipster-uaa</module><!-- failing after upgrading to jdk17-->
 
                 <!-- from jdk17 profile -->
-                    <module>libraries-security</module> <!-- JAVA-40889 -->
-                    <module>persistence-modules/java-harperdb</module> <!-- This module requires a library to download manually --> <!-- JAVA-42044 -->
-                    <module>spring-cloud-modules/spring-cloud-data-flow</module> <!-- failing after upgrading to jdk17--> <!-- JAVA-42054 -->
-                    <module>spring-cloud-modules/spring-cloud-stream-starters</module> <!-- failing after upgrading to jdk17--> <!-- JAVA-42055 -->
-                    <module>spring-jinq</module> <!--disabling the jinq modules, as the default build profile is failing due to bad mv files. Please refer: JAVA-31341-->
-                    <module>static-analysis-modules</module> <!-- requires additional configuration to be compiled due to the JVM strong encapsulation -->
-                    <module>tablesaw</module> <!-- failing after upgrading to jdk17--> <!-- JAVA-42037 -->
-                    <module>spring-swagger-codegen-modules/openapi-custom-generator</module>
-                    <module>spring-swagger-codegen-modules/openapi-custom-generator-api-client</module> <!-- cannot add the individual modules here because the order is not guaranteed -->
+                <module>libraries-security</module> <!-- JAVA-40889 -->
+                <module>persistence-modules/java-harperdb</module> <!-- This module requires a library to download manually --> <!-- JAVA-42044 -->
+                <module>spring-cloud-modules/spring-cloud-data-flow</module> <!-- failing after upgrading to jdk17--> <!-- JAVA-42054 -->
+                <module>spring-cloud-modules/spring-cloud-stream-starters</module> <!-- failing after upgrading to jdk17--> <!-- JAVA-42055 -->
+                <module>spring-jinq</module> <!--disabling the jinq modules, as the default build profile is failing due to bad mv files. Please refer: JAVA-31341-->
+                <module>static-analysis-modules</module> <!-- requires additional configuration to be compiled due to the JVM strong encapsulation -->
+                <module>tablesaw</module> <!-- failing after upgrading to jdk17--> <!-- JAVA-42037 -->
+                <module>spring-swagger-codegen-modules/openapi-custom-generator</module>
+                <module>spring-swagger-codegen-modules/openapi-custom-generator-api-client</module> <!-- cannot add the individual modules here because the order is not guaranteed -->
+                <module>persistence-modules/spring-data-cassandra</module>   <!-- failing after upgrading to jdk17. JDK 17 compatibility in progress CASSANDRA-16895 --> <!-- JAVA-42047 -->
 
                 <!-- from jdk21 profile -->
-                    <module>language-interop</module>
-                    <module>spring-scheduling</module> <!-- BAEL-8382 -->
+                <module>language-interop</module>
+                <module>spring-scheduling</module> <!-- BAEL-8382 -->
+                <module>spring-security-modules/spring-security-web-login</module> <!-- JAVA-42041 -->
+                <module>persistence-modules/spring-boot-persistence-mongodb</module> --> <!-- JAVA-42144 -->
+                <module>persistence-modules/spring-boot-persistence-mongodb-2</module> --> <!-- JAVA-42371 -->
+                <module>persistence-modules/spring-boot-persistence-mongodb-4</module> --> <!-- JAVA-42372 -->
+                <module>persistence-modules/spring-data-elasticsearch</module> --> <!-- JAVA-42359 -->
+                <module>persistence-modules/spring-boot-persistence-4</module> <!-- JAVA-42045 -->
+                <module>persistence-modules/spring-boot-persistence-5</module> <!-- JAVA-42046 -->
+                <module>maven-modules/maven-exec-plugin</module> <!-- JAVA-42059 -->
+                <module>spring-boot-modules/spring-boot-swagger-2</module> <!-- JAVA-42060 -->
+                <module>spring-boot-modules/spring-boot-groovy</module> <!-- JAVA-42052 -->
+                <module>spring-boot-modules/spring-boot-data-3</module> <!-- JAVA-42051 -->
+                <module>spring-reactive-modules/spring-reactive-performance</module> <!-- JAVA-42050 -->
+
 
                 <!-- modules not added to the build process -->
+                <module>aspectj</module> <!-- JAVA-42031 -->
+                <module>core-java-modules/core-java-classloader</module> <!-- JAVA-42033 -->
+                <module>core-java-modules/core-java-conditionals</module> <!-- JAVA-42035 -->
+                <module>persistence-modules/hibernate-queries-2</module> <!-- JAVA-42042 -->
+                <module>spring-boot-modules/spring-boot-3</module> <!-- JAVA-42049 -->
+            </modules>
+        </profile>
 
+        <profile>
+            <id>integration-disabled</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                    </plugin>
+                </plugins>
+            </build>
+
+            <modules>
+                <!-- from jdk8 profile -->
+                <module>clojure-modules</module> <!-- Not a maven project -->
+                <module>ethereum</module> <!-- JAVA-6001 -->
+                <module>gradle-modules</module> <!-- Not a maven project -->
+                <module>guest</module> <!-- not to be built as its for guest articles  -->
+                <module>pants</module> <!-- Not a maven project -->
+                <module>spring-cloud-cli</module> <!-- Not a maven project -->
+                <module>spring-roo</module> <!-- Not supported JAVA-17327 -->
+
+                <!-- from heavy profile -->
+                <module>apache-spark</module> <!-- JAVA-42030 -->
+                <module>jhipster-modules/jhipster-uaa</module><!-- failing after upgrading to jdk17-->
+
+                <!-- from jdk17 profile -->
+                <module>libraries-security</module> <!-- JAVA-40889 -->
+                <module>persistence-modules/java-harperdb</module> <!-- This module requires a library to download manually --> <!-- JAVA-42044 -->
+                <module>spring-cloud-modules/spring-cloud-data-flow</module> <!-- failing after upgrading to jdk17--> <!-- JAVA-42054 -->
+                <module>spring-cloud-modules/spring-cloud-stream-starters</module> <!-- failing after upgrading to jdk17--> <!-- JAVA-42055 -->
+                <module>spring-jinq</module> <!--disabling the jinq modules, as the default build profile is failing due to bad mv files. Please refer: JAVA-31341-->
+                <module>static-analysis-modules</module> <!-- requires additional configuration to be compiled due to the JVM strong encapsulation -->
+                <module>tablesaw</module> <!-- failing after upgrading to jdk17--> <!-- JAVA-42037 -->
+                <module>spring-swagger-codegen-modules/openapi-custom-generator</module>
+                <module>spring-swagger-codegen-modules/openapi-custom-generator-api-client</module> <!-- cannot add the individual modules here because the order is not guaranteed -->
+                <module>persistence-modules/spring-data-cassandra</module>   <!-- failing after upgrading to jdk17. JDK 17 compatibility in progress CASSANDRA-16895 --> <!-- JAVA-42047 -->
+
+                <!-- from jdk21 profile -->
+                <module>language-interop</module>
+                <module>spring-scheduling</module> <!-- BAEL-8382 -->
+                <module>spring-security-modules/spring-security-web-login</module> <!-- JAVA-42041 -->
+                <module>persistence-modules/spring-boot-persistence-mongodb</module> --> <!-- JAVA-42144 -->
+                <module>persistence-modules/spring-boot-persistence-mongodb-2</module> --> <!-- JAVA-42371 -->
+                <module>persistence-modules/spring-boot-persistence-mongodb-4</module> --> <!-- JAVA-42372 -->
+                <module>persistence-modules/spring-data-elasticsearch</module> --> <!-- JAVA-42359 -->
+                <module>persistence-modules/spring-boot-persistence-4</module> <!-- JAVA-42045 -->
+                <module>persistence-modules/spring-boot-persistence-5</module> <!-- JAVA-42046 -->
+                <module>maven-modules/maven-exec-plugin</module> <!-- JAVA-42059 -->
+                <module>spring-boot-modules/spring-boot-swagger-2</module> <!-- JAVA-42060 -->
+                <module>spring-boot-modules/spring-boot-groovy</module> <!-- JAVA-42052 -->
+                <module>spring-boot-modules/spring-boot-data-3</module> <!-- JAVA-42051 -->
+                <module>spring-reactive-modules/spring-reactive-performance</module> <!-- JAVA-42050 -->
+
+
+                <!-- modules not added to the build process -->
+                <module>aspectj</module> <!-- JAVA-42031 -->
+                <module>core-java-modules/core-java-classloader</module> <!-- JAVA-42033 -->
+                <module>core-java-modules/core-java-conditionals</module> <!-- JAVA-42035 -->
+                <module>persistence-modules/hibernate-queries-2</module> <!-- JAVA-42042 -->
+                <module>spring-boot-modules/spring-boot-3</module> <!-- JAVA-42049 -->
             </modules>
         </profile>
 
