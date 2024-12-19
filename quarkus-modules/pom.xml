@@ -27,6 +27,7 @@
         <module>quarkus-virtual-threads</module>
         <!--<module>quarkus-hibernate-reactive</module>--> <!--moved to heavy profile-->
         <module>quarkus-langchain4j</module>
+        <module>quarkus-websockets-next</module>
     </modules>
 
 </project>
