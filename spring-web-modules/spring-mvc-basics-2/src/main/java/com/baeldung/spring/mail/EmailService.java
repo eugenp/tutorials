@@ -1,6 +1,7 @@
 package com.baeldung.spring.mail;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Map;
 
 import jakarta.mail.MessagingException;
@@ -31,4 +32,7 @@ public interface EmailService {
                                             String subject,
                                             Map<String, Object> templateModel)
             throws IOException, TemplateException, MessagingException;
+
+    void sendMessageWithInputStreamAttachment(
+        String to, String subject, String text, String attachmentName, InputStream inputStream);
 }
