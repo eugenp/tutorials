@@ -1,0 +1,57 @@
+package com.baeldung.sootup;
+
+import org.junit.jupiter.api.Test;
+import sootup.core.inputlocation.AnalysisInputLocation;
+import sootup.java.bytecode.inputlocation.JavaClassPathAnalysisInputLocation;
+import sootup.java.bytecode.inputlocation.JrtFileSystemAnalysisInputLocation;
+import sootup.java.bytecode.inputlocation.OTFCompileAnalysisInputLocation;
+import sootup.java.core.views.JavaView;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+public class AnalyzeUnitTest {
+    @Test
+    void whenAnalyzingTheJVM_thenWeCanListClasses() {
+        AnalysisInputLocation inputLocation = new JrtFileSystemAnalysisInputLocation();
+
+        JavaView view = new JavaView(inputLocation);
+
+        assertTrue(view.getClasses().size() > 0);
+    }
+
+    @Test
+    void whenAnalyzingThisTestClass_thenWeCanListClasses() {
+        Path javaFile = Path.of("src/test/java/com/baeldung/sootup/AnalyzeUnitTest.java");
+        AnalysisInputLocation inputLocation = new OTFCompileAnalysisInputLocation(javaFile);
+
+        JavaView view = new JavaView(inputLocation);
+
+        assertEquals(1, view.getClasses().size());
+    }
+
+    @Test
+    void whenAnalyzingAString_thenWeCanListClasses() throws IOException {
+        Path javaFile = Path.of("src/test/java/com/baeldung/sootup/AnalyzeUnitTest.java");
+        String javaContents = Files.readString(javaFile);
+
+        AnalysisInputLocation inputLocation = new OTFCompileAnalysisInputLocation("AnalyzeUnitTest.java", javaContents);
+
+        JavaView view = new JavaView(inputLocation);
+
+        assertEquals(1, view.getClasses().size());
+    }
+
+    @Test
+    void whenAnalyzingCompiledByteCode_thenWeCanListClasses() {
+        AnalysisInputLocation inputLocation = new JavaClassPathAnalysisInputLocation("target/classes");
+
+        JavaView view = new JavaView(inputLocation);
+
+        assertTrue(view.getClasses().size() > 0);
+    }
+}

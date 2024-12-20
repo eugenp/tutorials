@@ -133,6 +133,26 @@
             <version>${lanterna.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.soot-oss</groupId>
+            <artifactId>sootup.core</artifactId>
+            <version>${sootup.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.soot-oss</groupId>
+            <artifactId>sootup.java.core</artifactId>
+            <version>${sootup.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.soot-oss</groupId>
+            <artifactId>sootup.java.sourcecode</artifactId>
+            <version>${sootup.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.soot-oss</groupId>
+            <artifactId>sootup.java.bytecode</artifactId>
+            <version>${sootup.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <version>${spring-boot.version}</version>
@@ -149,6 +169,7 @@
         <armeria.version>1.29.2</armeria.version>
         <yauaa.version>7.28.1</yauaa.version>
         <yavi.version>0.14.1</yavi.version>
+        <sootup.version>1.3.0</sootup.version>
     </properties>
 
 </project>
