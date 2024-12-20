@@ -1324,10 +1324,10 @@
                 <module>language-interop</module>
                 <module>spring-scheduling</module> <!-- BAEL-8382 -->
                 <module>spring-security-modules/spring-security-web-login</module> <!-- JAVA-42041 -->
-                <module>persistence-modules/spring-boot-persistence-mongodb</module> --> <!-- JAVA-42144 -->
-                <module>persistence-modules/spring-boot-persistence-mongodb-2</module> --> <!-- JAVA-42371 -->
-                <module>persistence-modules/spring-boot-persistence-mongodb-4</module> --> <!-- JAVA-42372 -->
-                <module>persistence-modules/spring-data-elasticsearch</module> --> <!-- JAVA-42359 -->
+                <module>persistence-modules/spring-boot-persistence-mongodb</module> <!-- JAVA-42144 -->
+                <module>persistence-modules/spring-boot-persistence-mongodb-2</module> <!-- JAVA-42371 -->
+                <module>persistence-modules/spring-boot-persistence-mongodb-4</module> <!-- JAVA-42372 -->
+                <module>persistence-modules/spring-data-elasticsearch</module> <!-- JAVA-42359 -->
                 <module>persistence-modules/spring-boot-persistence-4</module> <!-- JAVA-42045 -->
                 <module>persistence-modules/spring-boot-persistence-5</module> <!-- JAVA-42046 -->
                 <module>maven-modules/maven-exec-plugin</module> <!-- JAVA-42059 -->
@@ -1387,10 +1387,10 @@
                 <module>language-interop</module>
                 <module>spring-scheduling</module> <!-- BAEL-8382 -->
                 <module>spring-security-modules/spring-security-web-login</module> <!-- JAVA-42041 -->
-                <module>persistence-modules/spring-boot-persistence-mongodb</module> --> <!-- JAVA-42144 -->
-                <module>persistence-modules/spring-boot-persistence-mongodb-2</module> --> <!-- JAVA-42371 -->
-                <module>persistence-modules/spring-boot-persistence-mongodb-4</module> --> <!-- JAVA-42372 -->
-                <module>persistence-modules/spring-data-elasticsearch</module> --> <!-- JAVA-42359 -->
+                <module>persistence-modules/spring-boot-persistence-mongodb</module> <!-- JAVA-42144 -->
+                <module>persistence-modules/spring-boot-persistence-mongodb-2</module> <!-- JAVA-42371 -->
+                <module>persistence-modules/spring-boot-persistence-mongodb-4</module> <!-- JAVA-42372 -->
+                <module>persistence-modules/spring-data-elasticsearch</module> <!-- JAVA-42359 -->
                 <module>persistence-modules/spring-boot-persistence-4</module> <!-- JAVA-42045 -->
                 <module>persistence-modules/spring-boot-persistence-5</module> <!-- JAVA-42046 -->
                 <module>maven-modules/maven-exec-plugin</module> <!-- JAVA-42059 -->
