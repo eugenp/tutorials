@@ -27,14 +27,11 @@ import lombok.extern.slf4j.Slf4j;
 public class EmployeeRegistrationSimulation extends Simulation {
 
     private static final HttpProtocolBuilder HTTP_PROTOCOL_BUILDER = setupProtocolForSimulation();
-
     private static final Iterator<Map<String, Object>> FEED_DATA = setupTestFeedData();
-
-    private static final ScenarioBuilder POST_SCENARIO_BUILDER = buildPostScenario();
 
     public EmployeeRegistrationSimulation() {
 
-        setUp(POST_SCENARIO_BUILDER.injectOpen(postEndpointInjectionProfile())
+        setUp(buildPostScenario().injectOpen(postEndpointInjectionProfile())
           .protocols(HTTP_PROTOCOL_BUILDER)).assertions(global().responseTime()
           .max()
           .lte(10000), global().successfulRequests()
